@@ -85,3 +85,16 @@ Project is in active development, please contact me if you get any issues of hav
 Twitter: https://twitter.com/ITMayWorkDev
 
 LinkedIn: https://www.linkedin.com/in/evgenymuryshkin/
+
+## Other resources and parts of Quokka Toolkit
+https://github.com/EvgenyMuryshkin/Quokka.RTL
+
+https://github.com/EvgenyMuryshkin/Quokka.RISCV.Docker
+
+https://github.com/EvgenyMuryshkin/Quokka.RISCV.Server
+
+https://github.com/EvgenyMuryshkin/Quokka.RISCV.CS2CPP
+
+https://github.com/EvgenyMuryshkin/QuokkaEvaluation
+
+
