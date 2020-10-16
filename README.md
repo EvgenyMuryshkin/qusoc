@@ -8,8 +8,8 @@ This repository contains
 
 ## Setup 
 
-* Install .NET Core 3.0. Please refer to framework installation guide for Linux https://www.microsoft.com/net/download/linux-package-manager/centos/sdk-current
-* Install docker
+* Install latest .NET Core. Please refer to framework installation guide for Linux (https://docs.microsoft.com/en-us/dotnet/core/install/linux)
+* Install docker (https://www.docker.com/)
 
 ### QuSoC modules and demo projects
 
@@ -18,7 +18,7 @@ This repository contains
 git clone https://github.com/EvgenyMuryshkin/qusoc.git
 cd ./qusoc
 ```
-* Run RISC-V toolchain, is available as docker image.
+* Run RISC-V toolchain, it is available as docker image.
 ```
 ./riscv-pull.cmd
 ```

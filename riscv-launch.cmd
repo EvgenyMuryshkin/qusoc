@@ -1,0 +1,1 @@
+docker run --rm -p 15000:15000 -it evgenymuryshkin/quokka-riscv:latest bash -c ~/launch
