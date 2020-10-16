@@ -1,0 +1,17 @@
+{
+    "Project": "modules",
+    "Configurations": [
+        {
+          "Name": "Quokka",
+          "ClockFrequency": 50000000
+        }
+    ],
+    "RTL": {
+        "TemplatesPath": "../rtl.hdl/templates",
+        "Vendor": "intel",
+        "Device": "generic"
+    },
+    "HDL": "Verilog",
+    "ProjectLocation": "../rtl.hdl/verilog/generated",
+    "PostRun": "postrun.cmd"
+}
