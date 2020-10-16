@@ -21,14 +21,14 @@ using System.Text;
 
 namespace QuSoC
 {
-    public class QuokkaAssembly : IQuokkaAssembly
+    public abstract class DefaultQuokkaAssembly : IQuokkaAssembly
     {
         private readonly ILogStream _logStream;
         private readonly RuntimeConfiguration _runtimeConfiguration;
         private readonly RTLModulesDiscovery _rtlModulesDiscovery;
         private readonly ComponentsLibrary _componentsLibrary;
 
-        public QuokkaAssembly(
+        public DefaultQuokkaAssembly(
             ILogStream logStream,
             RuntimeConfiguration runtimeConfiguration, 
             RTLModulesDiscovery rtlModulesDiscovery,

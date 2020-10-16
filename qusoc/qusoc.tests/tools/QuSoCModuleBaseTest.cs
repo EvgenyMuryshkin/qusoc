@@ -15,8 +15,8 @@ namespace QuSoC.Tests
         protected string AppPath(string app)
             => Path.Combine(
                 Inst.SolutionLocation,
-                "QuSoC",
-                "QuSoC",
+                "qusoc",
+                "qusoc.demos",
                 "apps", app);
 
         protected string VCDOutputPath([CallerMemberName] string testName = "")
@@ -55,7 +55,7 @@ namespace QuSoC.Tests
         protected QuSoCModuleSimulator<T> PowerUp<T>()
             where T : QuSoCModule, new()
         {
-            using (new CurrentDirectory(Path.Combine(PathTools.SolutionPath, "QuSoC", "QuSoC")))
+            using (new CurrentDirectory(Path.Combine(PathTools.SolutionPath, "qusoc", "qusoc.demos")))
             {
                 var module = new T();
 

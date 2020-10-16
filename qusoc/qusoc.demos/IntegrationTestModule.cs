@@ -1,4 +1,4 @@
-﻿namespace QuSoC
+﻿namespace QuSoC.Demos
 {
     public class IntegrationTestModule : QuSoCModule
     {

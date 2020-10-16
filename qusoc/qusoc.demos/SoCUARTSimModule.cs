@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace QuSoC
+namespace QuSoC.Demos
 {
     public class SoCUARTSimModuleInputs : SoCComponentModuleInputs
     {

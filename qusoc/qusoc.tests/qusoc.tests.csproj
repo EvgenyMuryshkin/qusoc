@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\tools\Quokka.RTL.Simulator\Quokka.RTL.Simulator.csproj" />
+    <ProjectReference Include="..\qusoc.demos\qusoc.demos.csproj" />
     <ProjectReference Include="..\qusoc\qusoc.csproj" />
   </ItemGroup>
 

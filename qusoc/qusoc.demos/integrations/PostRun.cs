@@ -9,7 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace QuSoC
+namespace QuSoC.Demos
 {
     /// <summary>
     /// PostRun will add all generated files to quartus project

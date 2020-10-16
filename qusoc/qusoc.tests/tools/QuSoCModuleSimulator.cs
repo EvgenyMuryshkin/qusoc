@@ -1,10 +1,10 @@
-﻿using QuSoC;
-using Quokka.RTL.Simulator;
+﻿using Quokka.RTL.Simulator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using QRV32.CPU;
 using System.Diagnostics;
+using QuSoC.Demos;
 
 namespace QuSoC.Tests
 {
