@@ -1016,13 +1016,13 @@ wire  [2:0] Mem_L12F13L14T24_Lookup2;
 integer State_CSR_Iterator;
 reg [31:0] State_CSR [0 : 12];
 initial
-begin
+begin : Init_State_CSR
 	$readmemh("Arrays_TopLevel_Arrays_CPU_State_CSR.hex", State_CSR);
 end
 integer NextState_CSR_Iterator;
 reg [31:0] NextState_CSR [0 : 12];
 initial
-begin
+begin : Init_NextState_CSR
 	for (NextState_CSR_Iterator = 0; NextState_CSR_Iterator < 13; NextState_CSR_Iterator = NextState_CSR_Iterator + 1)
 		NextState_CSR[NextState_CSR_Iterator] = 0;
 end
@@ -1534,6 +1534,10 @@ NextState_WBDataReady = State_WBDataReady;
 NextState_WBData = State_WBData;
 NextState_PC = State_PC;
 NextState_PCOffset = State_PCOffset;
+RISCVModule_Stage_L8F9L33T10_RISCVModule_Stage_L9F13L32T14_RISCVModule_Stage_L21F21T35_EX_L11F9L52T10_EX_L16F13L51T14_EX_L25F21T31_B_L11F9L44T10_branchOffset = { {31{1'b0}}, Zero }/*expand*/;
+RISCVModule_Stage_L8F9L33T10_RISCVModule_Stage_L9F13L32T14_RISCVModule_Stage_L21F21T35_EX_L11F9L52T10_EX_L16F13L51T14_EX_L46F21T31_System_L11F9L26T10_IsCSR = Zero;
+RISCVModule_Stage_L8F9L33T10_RISCVModule_Stage_L9F13L32T14_RISCVModule_Stage_L27F21T37_WB_L52F9L80T10_pcMisaligned = Zero;
+RISCVModule_Stage_L8F9L33T10_RISCVModule_Stage_L9F13L32T14_RISCVModule_Stage_L27F21T37_WB_L52F9L80T10_isMRET = Zero;
 if ( RISCVModule_Stage_L8F9L33T10_RISCVModule_Stage_L9F13L32T14_RISCVModule_Stage_L11F17L13T27_Case == 1 ) begin
 NextState_State = { {2{1'b0}}, RISCVModule_Stage_L8F9L33T10_RISCVModule_Stage_L9F13L32T14_RISCVModule_Stage_L12F21T33_Reset_L10F9L13T10_Reset_L11F31T42_Expr }/*expand*/;
 NextState_PC = Inputs_BaseAddress;

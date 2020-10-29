@@ -34,5 +34,31 @@ namespace QuSoC.Demos
                 componentsLibrary)
         {
         }
+
+        public override IEnumerable<RTLModuleConfig> RTLModules
+        {
+            get
+            {
+                var modules = new HashSet<string>()
+                {
+                    //nameof(SimpleCounterModule),
+                    //nameof(Increment)
+                };
+
+                if (modules.Any())
+                {
+                    foreach (var moduleType in _rtlModulesDiscovery.ModuleTypes.Where(m => modules.Contains(m.Name)))
+                    {
+                        var instance = Activator.CreateInstance(moduleType) as IRTLCombinationalModule;
+                        yield return new RTLModuleConfig() { Instance = instance, Name = instance.ModuleName };
+                    }
+                }
+                else
+                {
+                    foreach (var m in base.RTLModules)
+                        yield return m;
+                }
+            }
+        }
     }
 }

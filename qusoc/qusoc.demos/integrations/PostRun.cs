@@ -103,6 +103,28 @@ namespace QuSoC.Demos
                 _logStream.WriteLine(DirectoryLogging.Summary, $"Project not found");
             }
 
+            var incrementFiles = _virtualFS
+                .RecursiveFileNames
+                .Where(f => Path.GetFileNameWithoutExtension(f) != "Quokka")
+                .Where(f => f.StartsWith("Increment"))
+                .OrderBy(f => f)
+                .ToList();
+
+            foreach (var fileName in incrementFiles)
+            {
+                var folderName = Path.GetDirectoryName(fileName);
+                var name = Path.GetFileName(fileName);
+
+                var dir = _virtualFS.Root.CreateDirectory(folderName);
+
+                var tinyFPGAPath = Path.Combine(PathTools.SolutionPath, "qusoc", "tinyfpga", name);
+                var stream = dir.GetStream(name);
+
+                var content = stream.ToString();
+                File.WriteAllText(tinyFPGAPath, content);
+                _logStream.WriteLine(DirectoryLogging.Summary, $"TinyFPGA file: {tinyFPGAPath}");
+            }
+
             _logStream.WriteLine(DirectoryLogging.Summary, $"====================================== {DateTime.Now}");
         }
     }

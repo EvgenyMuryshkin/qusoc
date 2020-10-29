@@ -1,0 +1,16 @@
+{
+  "Project": "modules",
+  "Configurations": [
+    {
+      "Name": "Quokka",
+      "ClockFrequency": 50000000
+    }
+  ],
+  "RTL": {
+    "TemplatesPath": "../qusoc.hdl/templates",
+    "Vendor": "lattice",
+    "Device": "generic"
+  },
+  "HDL": "Verilog",
+  "ProjectLocation": "../qusoc.hdl/verilog/generated"
+}

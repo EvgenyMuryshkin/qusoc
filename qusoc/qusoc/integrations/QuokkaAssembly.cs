@@ -25,7 +25,7 @@ namespace QuSoC
     {
         private readonly ILogStream _logStream;
         private readonly RuntimeConfiguration _runtimeConfiguration;
-        private readonly RTLModulesDiscovery _rtlModulesDiscovery;
+        protected readonly RTLModulesDiscovery _rtlModulesDiscovery;
         private readonly ComponentsLibrary _componentsLibrary;
 
         public DefaultQuokkaAssembly(
@@ -184,7 +184,7 @@ namespace QuSoC
             return !wasModified;
         }
 
-        public IEnumerable<RTLModuleConfig> RTLModules
+        public virtual IEnumerable<RTLModuleConfig> RTLModules
         {
             get
             {
