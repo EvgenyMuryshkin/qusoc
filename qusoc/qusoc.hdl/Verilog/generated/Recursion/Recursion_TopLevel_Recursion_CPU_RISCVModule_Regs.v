@@ -68,7 +68,7 @@ reg  [31:0] NextState_RS2 = 32'b00000000000000000000000000000000;
 reg  NextState_Ready = 1'b0;
 wire  [4:0] ReadAddress;
 wire  RegistersRAMModule_L28F9L55T10_we;
-reg  [31:0] State_ReadData;
+reg  [31:0] State_ReadData = 32'b00000000000000000000000000000000;
 reg  [7:0] State_Mode = 8'b00000000;
 wire  [7:0] State_ModeDefault = 8'b00000000;
 reg  [31:0] State_RS1 = 32'b00000000000000000000000000000000;
@@ -104,7 +104,7 @@ wire  [4:0] RegistersRAMModule_L25F36T85_Lookup1;
 wire  [4:0] RegistersRAMModule_L25F36T85_Lookup2;
 reg [31:0] State_x [0 : 31];
 initial
-begin : Init_State_x
+begin
 	integer i;
 	for (i = 0; i < 32; i = i + 1)
 		State_x[i] = 0;
@@ -167,12 +167,11 @@ end
 
 end
 // inferred simple dual port RAM with read-first behaviour
-always @(posedge BoardSignals_Clock) begin
+always @ (posedge BoardSignals_Clock)
+begin
 	if (RegistersRAMModule_L28F9L55T10_we)
 		State_x[Inputs_RD] <= Inputs_WriteData;
-end
 
-always @(posedge BoardSignals_Clock) begin
 	State_ReadData <= State_x[ReadAddress];
 end
 
