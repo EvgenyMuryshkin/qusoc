@@ -1,8 +1,9 @@
-# QuSoC
+# QuSoC - Low-level RTL design using C# and Quokka FPGA toolkit.
 
 This repository contains 
 * Basic CLI for running C# => HDL (Verilog or VHDL) translation
 * Test examples for toolkit functionality
+* Basic RTL Simulator
 * QRV32 - riscv synthesizable core
 * QuSoC - initial implementation for SoC design core
 
@@ -84,3 +85,16 @@ Project is in active development, please contact me if you get any issues of hav
 Twitter: https://twitter.com/ITMayWorkDev
 
 LinkedIn: https://www.linkedin.com/in/evgenymuryshkin/
+
+## Other resources and parts of Quokka Toolkit
+https://github.com/EvgenyMuryshkin/Quokka.RTL
+
+https://github.com/EvgenyMuryshkin/Quokka.RISCV.Docker
+
+https://github.com/EvgenyMuryshkin/Quokka.RISCV.Server
+
+https://github.com/EvgenyMuryshkin/Quokka.RISCV.CS2CPP
+
+https://github.com/EvgenyMuryshkin/QuokkaEvaluation
+
+
