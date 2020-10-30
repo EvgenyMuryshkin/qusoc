@@ -4,8 +4,9 @@ This repository contains
 * Basic CLI for running C# => HDL (Verilog or VHDL) translation
 * Test examples for toolkit functionality
 * Basic RTL Simulator
-* QRV32 - riscv synthesizable core
+* QRV32 - RISCV synthesizable core
 * QuSoC - initial implementation for SoC design core
+* **TinyFPGA reference project with blinking LED, running off RISCV CPU and sample firmware**
 
 ## Setup 
 
