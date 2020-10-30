@@ -38,6 +38,13 @@ cd qusoc/qusoc/qusoc.demos
 ./verilog.cmd
 ```
 
+* Or run CLI in watch mode for **TinyFPGA board**
+```
+./tinyfpga.cmd
+```
+TinyFPGA project is prebuilt, so you can run it straight from Atom and APIO (Please refer to TinyFPGA installation guide for all required tools https://tinyfpga.com/bx/guide.html)
+
+
 Output should look something like next:
 ```
 Quokka.FPGA version: 0.1.0.90
