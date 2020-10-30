@@ -61,8 +61,8 @@ wire  Inputs_Common_WE;
 wire  Inputs_Common_RE;
 wire  [1:0] Inputs_Common_MemAccessMode;
 wire  [31:0] Inputs_DeviceAddress;
-reg  NextState_Ready = 1'b0;
-reg  NextState_ReadBeforeWrite = 1'b0;
+reg  NextState_Ready;
+reg  NextState_ReadBeforeWrite;
 wire  addressMatch;
 wire  [31:0] internalAddressBits;
 wire  [4:0] internalByteAddress;
@@ -79,12 +79,12 @@ wire  [1:0] SoCComponentModule_L47F54T79_Index;
 wire  [9:0] SoCBlockRAMModule_L27F44T70_Index;
 wire  [31:0] SoCBlockRAMModule_L35F34T84_Resize;
 wire  [31:0] SoCBlockRAMModule_L48F13L57T14_SoCBlockRAMModule_L49F28T58_Source;
-reg  [31:0] SoCBlockRAMModule_L48F13L57T14_mask = 32'b00000000000000000000000000000000;
+reg  [31:0] SoCBlockRAMModule_L48F13L57T14_mask;
 wire  [7:0] SoCBlockRAMModule_L48F13L57T14_SoCBlockRAMModule_L52F28T58_Source;
 wire  [31:0] SoCBlockRAMModule_L48F13L57T14_SoCBlockRAMModule_L52F28T70_Resize;
 wire  [15:0] SoCBlockRAMModule_L48F13L57T14_SoCBlockRAMModule_L54F28T60_Source;
 wire  [31:0] SoCBlockRAMModule_L48F13L57T14_SoCBlockRAMModule_L54F28T72_Resize;
-reg  [31:0] State_ReadValue = 32'b00000000000000000000000000000000;
+reg  [31:0] State_ReadValue;
 reg  State_Ready = 1'b0;
 wire  State_ReadyDefault = 1'b0;
 reg  State_ReadBeforeWrite = 1'b0;
@@ -163,13 +163,13 @@ wire signed  [2:0] SoCBlockRAMModule_L48F13L57T14_SoCBlockRAMModule_L51F21T53_Ex
 wire  SoCBlockRAMModule_L48F13L57T14_SoCBlockRAMModule_L53F26T58_Expr;
 wire signed  [2:0] SoCBlockRAMModule_L48F13L57T14_SoCBlockRAMModule_L53F26T58_ExprLhs;
 wire signed  [2:0] SoCBlockRAMModule_L48F13L57T14_SoCBlockRAMModule_L53F26T58_ExprRhs;
-reg  [31:0] SoCBlockRAMModule_L37F13L39T109_Lookup = 32'b00000000000000000000000000000000;
+reg  [31:0] SoCBlockRAMModule_L37F13L39T109_Lookup;
 wire  SoCBlockRAMModule_L37F13L39T109_LookupMultiplexerAddress;
 wire  [31:0] SoCBlockRAMModule_L37F13L39T109_Lookup1;
 wire  [31:0] SoCBlockRAMModule_L37F13L39T109_Lookup2;
 reg [31:0] State_BlockRAM [0 : 1023];
 initial
-begin
+begin : Init_State_BlockRAM
 	integer i;
 	for (i = 0; i < 1024; i = i + 1)
 		State_BlockRAM[i] = 0;
@@ -253,11 +253,12 @@ end
 
 end
 // inferred simple dual port RAM with read-first behaviour
-always @ (posedge BoardSignals_Clock)
-begin
+always @(posedge BoardSignals_Clock) begin
 	if (SoCBlockRAMModule_L61F9L71T10_SoCBlockRAMModule_L65F17T67_Expr)
 		State_BlockRAM[internalWordAddress] <= internalWriteData;
+end
 
+always @(posedge BoardSignals_Clock) begin
 	State_ReadValue <= State_BlockRAM[internalWordAddress];
 end
 

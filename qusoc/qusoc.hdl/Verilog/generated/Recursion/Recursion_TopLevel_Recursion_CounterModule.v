@@ -55,7 +55,7 @@ wire  Inputs_Common_WE;
 wire  Inputs_Common_RE;
 wire  [1:0] Inputs_Common_MemAccessMode;
 wire  [31:0] Inputs_DeviceAddress;
-reg  [31:0] NextState_Value = 32'b00000000000000000000000000000000;
+reg  [31:0] NextState_Value;
 wire  addressMatch;
 wire  [31:0] internalAddressBits;
 wire  [4:0] internalByteAddress;
