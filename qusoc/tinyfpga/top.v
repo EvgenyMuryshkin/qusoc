@@ -19,7 +19,7 @@ module top (
 
   // QuSoC increment module connected to LED
   wire [31:0] counter;
-  assign LED = counter[18];
+  assign LED = counter[17];
   Increment_TopLevel Increment_TopLevel
   (
     .Clock (CLK),
