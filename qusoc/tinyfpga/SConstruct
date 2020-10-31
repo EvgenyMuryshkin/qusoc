@@ -169,15 +169,15 @@ except IndexError:
 
 # -- Define the Sintesizing Builder
 synth = Builder(
-    action='yosys -p \"synth_ice40 -top top -blif $TARGET\" {} $SOURCES'.format(
+    action='yosys -p \"synth_ice40 -top top -json $TARGET\" {} $SOURCES'.format(
         '' if VERBOSE_ALL or VERBOSE_YOSYS else '-q'
     ),
-    suffix='.blif',
+    suffix='.json',
     src_suffix='.v',
     source_scanner=list_scanner)
 
 pnr = Builder(
-    action='arachne-pnr -d {0} -P {1} -p {2} -o $TARGET {3} $SOURCE'.format(
+    action='nextpnr-ice40 --lp8k --package cm81 --pcf {2} --asc $TARGET {3} --json $SOURCE'.format(
         FPGA_SIZE, FPGA_PACK, PCF,
         '' if VERBOSE_ALL or VERBOSE_ARACHNE else '-q'),
     suffix='.asc',

@@ -9,17 +9,17 @@ module top (
   assign USBPU = 0;
 
   // issue with BRAM initialization, keep CPU in reset for some number of clocks. 127 seems to be ok, 63 does not route
-  reg [6:0] resetCounter = 0;
-  wire isRunning = resetCounter == 127;
+  reg [5:0] resetCounter = 0;
+  wire isRunning = resetCounter == 63;
   always @(posedge CLK) begin
-    if (resetCounter < 127) begin
+    if (resetCounter < 63) begin
       resetCounter <= resetCounter + 1;
     end
   end
 
   // QuSoC increment module connected to LED
   wire [31:0] counter;
-  assign LED = counter[17];
+  assign LED = counter[18];
   Increment_TopLevel Increment_TopLevel
   (
     .Clock (CLK),
