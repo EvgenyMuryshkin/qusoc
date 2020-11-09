@@ -39,11 +39,12 @@ namespace QuSoC.Demos
         {
             get
             {
-                var modules = new HashSet<string>()
+                var modules = new HashSet<string>();
+
+                if (_runtimeConfiguration.Config.Project == "TinyFPGA")
                 {
-                    //nameof(SimpleCounterModule),
-                    //nameof(Increment)
-                };
+                    modules.AddRange(new[] { nameof(SimpleCounterModule), nameof(Increment) });
+                }
 
                 if (modules.Any())
                 {

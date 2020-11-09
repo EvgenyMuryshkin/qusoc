@@ -22,20 +22,20 @@ module Increment_TopLevel_Increment_CPU_RISCVModule_Regs (
 // [BEGIN USER PORTS]
 // [END USER PORTS]
 
-	input  BoardSignals_Clock,
-	input  BoardSignals_Reset,
-	input  BoardSignals_Running,
-	input  BoardSignals_Starting,
-	input  BoardSignals_Started,
-	input  Read,
-	input  [5: 1] RS1Addr,
-	input  [5: 1] RS2Addr,
-	input  [5: 1] RD,
-	input  WE,
-	input  [32: 1] WriteData,
-	output [32: 1] RS1,
-	output [32: 1] RS2,
-	output Ready
+	input wire  BoardSignals_Clock,
+	input wire  BoardSignals_Reset,
+	input wire  BoardSignals_Running,
+	input wire  BoardSignals_Starting,
+	input wire  BoardSignals_Started,
+	input wire  Read,
+	input wire  [5: 1] RS1Addr,
+	input wire  [5: 1] RS2Addr,
+	input wire  [5: 1] RD,
+	input wire  WE,
+	input wire  [32: 1] WriteData,
+	output wire [32: 1] RS1,
+	output wire [32: 1] RS2,
+	output wire Ready
     );
 
 // [BEGIN USER SIGNALS]
@@ -167,12 +167,11 @@ end
 
 end
 // inferred simple dual port RAM with read-first behaviour
-always @(posedge BoardSignals_Clock) begin
+always @ (posedge BoardSignals_Clock)
+begin
 	if (RegistersRAMModule_L28F9L55T10_we)
 		State_x[Inputs_RD] <= Inputs_WriteData;
-end
 
-always @(posedge BoardSignals_Clock) begin
 	State_ReadData <= State_x[ReadAddress];
 end
 

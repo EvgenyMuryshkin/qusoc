@@ -8,41 +8,41 @@ RAM              0x0000000000000000 0x0000000000008000 xrw
 Linker script and memory map
 
 
-.text           0x0000000000000000      0x278
+.text           0x0000000000000000      0x504
                 0x0000000000000000                . = ALIGN (0x4)
  *(.text)
- .text          0x0000000000000000      0x278 /tmp/ccTuPifp.o
-                0x0000000000000278                . = ALIGN (0x4)
-                0x0000000000000278                _etext = .
-                0x0000000000000278                _sidata = _etext
+ .text          0x0000000000000000      0x504 /tmp/ccpyZAR7.o
+                0x0000000000000504                . = ALIGN (0x4)
+                0x0000000000000504                _etext = .
+                0x0000000000000504                _sidata = _etext
 
-.data           0x0000000000000300      0x20c
-                0x0000000000000300                . = ALIGN (0x4)
+.data           0x0000000000000600      0x20c
+                0x0000000000000600                . = ALIGN (0x4)
  *(.data)
- .data          0x0000000000000300      0x20c /tmp/ccTuPifp.o
-                0x0000000000000300                begin_signature
-                0x0000000000000340                end_signature
-                0x0000000000000400                begin_regstate
-                0x0000000000000500                end_regstate
-                0x000000000000050c                . = ALIGN (0x4)
-                0x000000000000050c                _edata = .
-LOAD /tmp/ccTuPifp.o
+ .data          0x0000000000000600      0x20c /tmp/ccpyZAR7.o
+                0x0000000000000600                begin_signature
+                0x0000000000000690                end_signature
+                0x0000000000000700                begin_regstate
+                0x0000000000000800                end_regstate
+                0x000000000000080c                . = ALIGN (0x4)
+                0x000000000000080c                _edata = .
+LOAD /tmp/ccpyZAR7.o
 OUTPUT(firmware.elf elf32-littleriscv)
 
-.tohost         0x0000000000000600      0x108
- .tohost        0x0000000000000600      0x108 /tmp/ccTuPifp.o
-                0x0000000000000600                tohost
-                0x0000000000000700                fromhost
+.tohost         0x0000000000000900      0x108
+ .tohost        0x0000000000000900      0x108 /tmp/ccpyZAR7.o
+                0x0000000000000900                tohost
+                0x0000000000000a00                fromhost
 
-.bss            0x0000000000000708        0x0
- .bss           0x0000000000000708        0x0 /tmp/ccTuPifp.o
+.bss            0x0000000000000a08        0x0
+ .bss           0x0000000000000a08        0x0 /tmp/ccpyZAR7.o
 
 Cross Reference Table
 
 Symbol                                            File
-begin_regstate                                    /tmp/ccTuPifp.o
-begin_signature                                   /tmp/ccTuPifp.o
-end_regstate                                      /tmp/ccTuPifp.o
-end_signature                                     /tmp/ccTuPifp.o
-fromhost                                          /tmp/ccTuPifp.o
-tohost                                            /tmp/ccTuPifp.o
+begin_regstate                                    /tmp/ccpyZAR7.o
+begin_signature                                   /tmp/ccpyZAR7.o
+end_regstate                                      /tmp/ccpyZAR7.o
+end_signature                                     /tmp/ccpyZAR7.o
+fromhost                                          /tmp/ccpyZAR7.o
+tohost                                            /tmp/ccpyZAR7.o

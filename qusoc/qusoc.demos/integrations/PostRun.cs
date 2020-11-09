@@ -33,20 +33,27 @@ namespace QuSoC.Demos
             _runtimeConfiguration = runtimeConfiguration;
         }
 
+        QuokkaConfig config => _runtimeConfiguration.Config;
+        string hdlLocation => Path.Combine(Path.GetDirectoryName(_runtimeConfiguration.SourceLocation), "QuSoC.HDL");
+        string qsfPath => Path.Combine(hdlLocation, "Verilog.qsf");
+        string generatedFilesLocation => FileTools.ToAbsolutePath(_runtimeConfiguration.SourceLocation, config.ProjectLocation);
+        string quokkaPath => Path.Combine(hdlLocation, "Quokka.qsf");
+
         public void Run()
         {
             _logStream.WriteLine(DirectoryLogging.Summary, $"QuSoC translation completed");
             _logStream.WriteLine(DirectoryLogging.Summary, $"Source location: {_runtimeConfiguration.SourceLocation}");
             _logStream.WriteLine(DirectoryLogging.Summary, $"Config name: {Path.GetFileName(_runtimeConfiguration.ConfigPath)}");
-
-            var config = _runtimeConfiguration.Config;
-            var generatedFilesLocation = FileTools.ToAbsolutePath(_runtimeConfiguration.SourceLocation, config.ProjectLocation);
             _logStream.WriteLine(DirectoryLogging.Summary, $"Generated files location: {generatedFilesLocation}");
-
-            var hdlLocation = Path.Combine(Path.GetDirectoryName(_runtimeConfiguration.SourceLocation), "QuSoC.HDL");
-            var qsfPath = Path.Combine(hdlLocation, "Verilog.qsf");
             _logStream.WriteLine(DirectoryLogging.Summary, $"Updating quartus files: {qsfPath}");
 
+            ModifyVerilogQSF();
+            ModifyQuokkaBoardQSF();
+            CopyTinyFPGAFiles();
+        }
+
+        void ModifyVerilogQSF()
+        {
             if (File.Exists(qsfPath))
             {
                 var generatedFiles = _virtualFS
@@ -55,7 +62,7 @@ namespace QuSoC.Demos
                     .Select(f => Path.Combine(generatedFilesLocation, f))
                     .OrderBy(f => f)
                     .ToList();
-                
+
                 foreach (var fileName in generatedFiles)
                 {
                     _logStream.WriteLine(DirectoryLogging.Summary, $"Generated file: {fileName}");
@@ -68,9 +75,13 @@ namespace QuSoC.Demos
             {
                 _logStream.WriteLine(DirectoryLogging.Summary, $"Project not found");
             }
+        }
 
+        void ModifyQuokkaBoardQSF()
+        {
+            if (_runtimeConfiguration.Config.Project != "Demos")
+                return;
 
-            var quokkaPath = Path.Combine(hdlLocation, "Quokka.qsf");
             _logStream.WriteLine(DirectoryLogging.Summary, "");
             _logStream.WriteLine(DirectoryLogging.Summary, $"Updating quokka files: {quokkaPath}");
 
@@ -102,11 +113,15 @@ namespace QuSoC.Demos
             {
                 _logStream.WriteLine(DirectoryLogging.Summary, $"Project not found");
             }
+        }
+
+        void CopyTinyFPGAFiles()
+        {
+            if (_runtimeConfiguration.Config.Project != "TinyFPGA")
+                return;
 
             var incrementFiles = _virtualFS
                 .RecursiveFileNames
-                .Where(f => Path.GetFileNameWithoutExtension(f) != "Quokka")
-                .Where(f => f.StartsWith("Increment"))
                 .OrderBy(f => f)
                 .ToList();
 

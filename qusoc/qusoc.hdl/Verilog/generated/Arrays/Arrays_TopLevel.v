@@ -22,9 +22,9 @@ module Arrays_TopLevel (
 // [BEGIN USER PORTS]
 // [END USER PORTS]
 
-	input  Clock,
-	input  Reset,
-	output [31: 0] Counter
+	input wire  Clock,
+	input wire  Reset,
+	output wire [31: 0] Counter
     );
 
 // [BEGIN USER SIGNALS]

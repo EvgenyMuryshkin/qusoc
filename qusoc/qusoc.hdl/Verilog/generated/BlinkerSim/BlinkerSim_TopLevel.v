@@ -22,8 +22,8 @@ module BlinkerSim_TopLevel (
 // [BEGIN USER PORTS]
 // [END USER PORTS]
 
-	input  Clock,
-	input  Reset
+	input wire  Clock,
+	input wire  Reset
     );
 
 // [BEGIN USER SIGNALS]

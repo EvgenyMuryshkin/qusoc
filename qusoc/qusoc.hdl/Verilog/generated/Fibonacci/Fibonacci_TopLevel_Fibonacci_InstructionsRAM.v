@@ -22,20 +22,20 @@ module Fibonacci_TopLevel_Fibonacci_InstructionsRAM (
 // [BEGIN USER PORTS]
 // [END USER PORTS]
 
-	input  BoardSignals_Clock,
-	input  BoardSignals_Reset,
-	input  BoardSignals_Running,
-	input  BoardSignals_Starting,
-	input  BoardSignals_Started,
-	input  [32: 1] Common_Address,
-	input  [32: 1] Common_WriteValue,
-	input  Common_WE,
-	input  Common_RE,
-	input  [2: 1] Common_MemAccessMode,
-	input  [32: 1] DeviceAddress,
-	output [32: 1] ReadValue,
-	output IsReady,
-	output IsActive
+	input wire  BoardSignals_Clock,
+	input wire  BoardSignals_Reset,
+	input wire  BoardSignals_Running,
+	input wire  BoardSignals_Starting,
+	input wire  BoardSignals_Started,
+	input wire  [32: 1] Common_Address,
+	input wire  [32: 1] Common_WriteValue,
+	input wire  Common_WE,
+	input wire  Common_RE,
+	input wire  [2: 1] Common_MemAccessMode,
+	input wire  [32: 1] DeviceAddress,
+	output wire [32: 1] ReadValue,
+	output wire IsReady,
+	output wire IsActive
     );
 
 // [BEGIN USER SIGNALS]
@@ -251,12 +251,11 @@ end
 
 end
 // inferred simple dual port RAM with read-first behaviour
-always @(posedge BoardSignals_Clock) begin
+always @ (posedge BoardSignals_Clock)
+begin
 	if (SoCBlockRAMModule_L61F9L71T10_SoCBlockRAMModule_L65F17T67_Expr)
 		State_BlockRAM[internalWordAddress] <= internalWriteData;
-end
 
-always @(posedge BoardSignals_Clock) begin
 	State_ReadValue <= State_BlockRAM[internalWordAddress];
 end
 

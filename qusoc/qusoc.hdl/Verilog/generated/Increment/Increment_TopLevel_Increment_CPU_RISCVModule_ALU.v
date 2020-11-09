@@ -22,17 +22,17 @@ module Increment_TopLevel_Increment_CPU_RISCVModule_ALU (
 // [BEGIN USER PORTS]
 // [END USER PORTS]
 
-	input  [32: 1] Op1,
-	input  [32: 1] Op2,
-	input  [5: 1] SHAMT,
-	output [32: 1] ADD,
-	output [32: 1] SUB,
-	output [32: 1] resAND,
-	output [32: 1] resOR,
-	output [32: 1] resXOR,
-	output [32: 1] SHLL,
-	output [32: 1] SHRL,
-	output [32: 1] SHRA
+	input wire  [32: 1] Op1,
+	input wire  [32: 1] Op2,
+	input wire  [5: 1] SHAMT,
+	output wire [32: 1] ADD,
+	output wire [32: 1] SUB,
+	output wire [32: 1] resAND,
+	output wire [32: 1] resOR,
+	output wire [32: 1] resXOR,
+	output wire [32: 1] SHLL,
+	output wire [32: 1] SHRL,
+	output wire [32: 1] SHRA
     );
 
 // [BEGIN USER SIGNALS]

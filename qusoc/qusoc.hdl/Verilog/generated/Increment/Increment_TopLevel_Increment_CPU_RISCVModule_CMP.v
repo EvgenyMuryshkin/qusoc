@@ -22,14 +22,14 @@ module Increment_TopLevel_Increment_CPU_RISCVModule_CMP (
 // [BEGIN USER PORTS]
 // [END USER PORTS]
 
-	input  [32: 1] Lhs,
-	input  [32: 1] Rhs,
-	output EQ,
-	output NE,
-	output GTU,
-	output LTU,
-	output GTS,
-	output LTS
+	input wire  [32: 1] Lhs,
+	input wire  [32: 1] Rhs,
+	output wire EQ,
+	output wire NE,
+	output wire GTU,
+	output wire LTU,
+	output wire GTS,
+	output wire LTS
     );
 
 // [BEGIN USER SIGNALS]

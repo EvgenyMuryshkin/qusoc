@@ -23,10 +23,10 @@ namespace QuSoC
 {
     public abstract class DefaultQuokkaAssembly : IQuokkaAssembly
     {
-        private readonly ILogStream _logStream;
-        private readonly RuntimeConfiguration _runtimeConfiguration;
+        protected readonly ILogStream _logStream;
+        protected readonly RuntimeConfiguration _runtimeConfiguration;
         protected readonly RTLModulesDiscovery _rtlModulesDiscovery;
-        private readonly ComponentsLibrary _componentsLibrary;
+        protected readonly ComponentsLibrary _componentsLibrary;
 
         public DefaultQuokkaAssembly(
             ILogStream logStream,

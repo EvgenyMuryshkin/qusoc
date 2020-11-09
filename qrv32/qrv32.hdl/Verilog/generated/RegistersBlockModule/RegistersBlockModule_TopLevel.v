@@ -22,17 +22,17 @@ module RegistersBlockModule_TopLevel (
 // [BEGIN USER PORTS]
 // [END USER PORTS]
 
-	input  Clock,
-	input  Reset,
-	input  Read,
-	input  [4: 0] RS1Addr,
-	input  [4: 0] RS2Addr,
-	input  [4: 0] RD,
-	input  WE,
-	input  [31: 0] WriteData,
-	output [31: 0] RS1,
-	output [31: 0] RS2,
-	output Ready
+	input wire  Clock,
+	input wire  Reset,
+	input wire  Read,
+	input wire  [4: 0] RS1Addr,
+	input wire  [4: 0] RS2Addr,
+	input wire  [4: 0] RD,
+	input wire  WE,
+	input wire  [31: 0] WriteData,
+	output wire [31: 0] RS1,
+	output wire [31: 0] RS2,
+	output wire Ready
     );
 
 // [BEGIN USER SIGNALS]
@@ -45,34 +45,34 @@ wire  true = 1'b1;
 wire  false = 1'b0;
 wire  RegistersBlockModule_L20F9L23T10_RegistersBlockModule_L21F43T44_Expr = 1'b0;
 wire  Inputs_Read;
-wire  [5:1] Inputs_RS1Addr;
-wire  [5:1] Inputs_RS2Addr;
-wire  [5:1] Inputs_RD;
+wire  [4:0] Inputs_RS1Addr;
+wire  [4:0] Inputs_RS2Addr;
+wire  [4:0] Inputs_RD;
 wire  Inputs_WE;
-wire  [32:1] Inputs_WriteData;
-reg  [32:1] NextState_ReadData = 32'b00000000000000000000000000000000;
-reg  [32:1] State_xDefault = 32'b00000000000000000000000000000000;
-wire  [32:1] RegistersBlockModule_L15F44T67_Index;
-wire  [32:1] RegistersBlockModule_L16F44T67_Index;
-reg  [32:1] State_ReadData = 32'b00000000000000000000000000000000;
-wire  [32:1] State_ReadDataDefault = 32'b00000000000000000000000000000000;
+wire  [31:0] Inputs_WriteData;
+reg  [31:0] NextState_ReadData;
+reg  [31:0] State_xDefault = 32'b00000000000000000000000000000000;
+wire  [31:0] RegistersBlockModule_L15F44T67_Index;
+wire  [31:0] RegistersBlockModule_L16F44T67_Index;
+reg  [31:0] State_ReadData = 32'b00000000000000000000000000000000;
+wire  [31:0] State_ReadDataDefault = 32'b00000000000000000000000000000000;
 wire  RegistersBlockModule_L20F9L23T10_RegistersBlockModule_L21F17T44_Expr;
 wire  RegistersBlockModule_L20F9L23T10_RegistersBlockModule_L21F17T44_Expr_1;
 wire  RegistersBlockModule_L20F9L23T10_RegistersBlockModule_L21F17T44_Expr_2;
 wire  RegistersBlockModule_L20F9L23T10_RegistersBlockModule_L21F30T44_Expr;
-wire signed  [6:1] RegistersBlockModule_L20F9L23T10_RegistersBlockModule_L21F30T44_ExprLhs;
-wire signed  [6:1] RegistersBlockModule_L20F9L23T10_RegistersBlockModule_L21F30T44_ExprRhs;
+wire signed  [5:0] RegistersBlockModule_L20F9L23T10_RegistersBlockModule_L21F30T44_ExprLhs;
+wire signed  [5:0] RegistersBlockModule_L20F9L23T10_RegistersBlockModule_L21F30T44_ExprRhs;
 integer State_x_Iterator;
-reg [32:1] State_x [0 : 31];
+reg [31:0] State_x [0 : 31];
 initial
-begin
+begin : Init_State_x
 	for (State_x_Iterator = 0; State_x_Iterator < 32; State_x_Iterator = State_x_Iterator + 1)
 		State_x[State_x_Iterator] = 0;
 end
 integer NextState_x_Iterator;
-reg [32:1] NextState_x [0 : 31];
+reg [31:0] NextState_x [0 : 31];
 initial
-begin
+begin : Init_NextState_x
 	for (NextState_x_Iterator = 0; NextState_x_Iterator < 32; NextState_x_Iterator = NextState_x_Iterator + 1)
 		NextState_x[NextState_x_Iterator] = 0;
 end
@@ -104,31 +104,31 @@ assign RegistersBlockModule_L20F9L23T10_RegistersBlockModule_L21F30T44_Expr = Re
 assign RegistersBlockModule_L20F9L23T10_RegistersBlockModule_L21F17T44_Expr = RegistersBlockModule_L20F9L23T10_RegistersBlockModule_L21F17T44_Expr_1 & RegistersBlockModule_L20F9L23T10_RegistersBlockModule_L21F17T44_Expr_2;
 always @*
 begin
-NextState_ReadData = State_ReadData/*cast*/;
 for (NextState_x_Iterator = 0; NextState_x_Iterator < 32; NextState_x_Iterator = NextState_x_Iterator + 1)
 begin
-NextState_x[NextState_x_Iterator] = State_x[NextState_x_Iterator]/*cast*/;
+NextState_x[NextState_x_Iterator] = State_x[NextState_x_Iterator];
 end
+NextState_ReadData = State_ReadData;
 if ( RegistersBlockModule_L20F9L23T10_RegistersBlockModule_L21F17T44_Expr == 1 ) begin
-NextState_x[Inputs_RD] = Inputs_WriteData/*cast*/;
+NextState_x[Inputs_RD] = Inputs_WriteData;
 end
 
 end
-assign RegistersBlockModule_L15F44T67_Index = State_x[Inputs_RS1Addr];
-assign RegistersBlockModule_L16F44T67_Index = State_x[Inputs_RS2Addr];
 assign RegistersBlockModule_L20F9L23T10_RegistersBlockModule_L21F30T44_ExprLhs = { {1{1'b0}}, Inputs_RD }/*expand*/;
 assign RegistersBlockModule_L20F9L23T10_RegistersBlockModule_L21F30T44_ExprRhs = { {5{1'b0}}, RegistersBlockModule_L20F9L23T10_RegistersBlockModule_L21F43T44_Expr }/*expand*/;
 assign RegistersBlockModule_L20F9L23T10_RegistersBlockModule_L21F17T44_Expr_1 = Inputs_WE;
 assign RegistersBlockModule_L20F9L23T10_RegistersBlockModule_L21F17T44_Expr_2 = RegistersBlockModule_L20F9L23T10_RegistersBlockModule_L21F30T44_Expr;
 assign Inputs_Read = Read;
-assign Inputs_RS1Addr = RS1Addr/*cast*/;
-assign Inputs_RS2Addr = RS2Addr/*cast*/;
-assign Inputs_RD = RD/*cast*/;
+assign Inputs_RS1Addr = RS1Addr;
+assign Inputs_RS2Addr = RS2Addr;
+assign Inputs_RD = RD;
 assign Inputs_WE = WE;
-assign Inputs_WriteData = WriteData/*cast*/;
-assign RS1 = RegistersBlockModule_L15F44T67_Index/*cast*/;
-assign RS2 = RegistersBlockModule_L16F44T67_Index/*cast*/;
+assign Inputs_WriteData = WriteData;
+assign RS1 = RegistersBlockModule_L15F44T67_Index;
+assign RS2 = RegistersBlockModule_L16F44T67_Index;
 assign Ready = Inputs_Read;
+assign RegistersBlockModule_L15F44T67_Index = State_x[Inputs_RS1Addr];
+assign RegistersBlockModule_L16F44T67_Index = State_x[Inputs_RS2Addr];
 // [BEGIN USER ARCHITECTURE]
 // [END USER ARCHITECTURE]
 endmodule

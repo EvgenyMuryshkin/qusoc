@@ -1,5 +1,5 @@
 {
-  "Project": "modules",
+  "Project": "TinyFPGA",
   "Configurations": [
     {
       "Name": "Quokka",
@@ -12,5 +12,5 @@
     "Device": "generic"
   },
   "HDL": "Verilog",
-  "ProjectLocation": "../qusoc.hdl/verilog/generated"
+  "ProjectLocation": "../tinyfpga"
 }

@@ -1,6 +1,7 @@
 ﻿using Quokka.RTL;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 
 namespace QRV32.CPU
