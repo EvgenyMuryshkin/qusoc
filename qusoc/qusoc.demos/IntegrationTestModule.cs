@@ -6,7 +6,7 @@
         internal SoCRegisterModule CounterModule = new SoCRegisterModule();
         protected override ISoCComponentModule[] ManualModules => new ISoCComponentModule[] { CounterModule, UARTSim };
         
-        public uint Counter => CounterModule.ReadValue;
+        public uint Counter => CounterModule.Value;
 
         public IntegrationTestModule(uint[] instructions) : base(instructions)
         {

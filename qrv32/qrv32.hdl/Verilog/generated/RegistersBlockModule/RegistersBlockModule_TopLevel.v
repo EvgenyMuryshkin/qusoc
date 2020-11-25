@@ -44,6 +44,7 @@ wire  One = 1'b1;
 wire  true = 1'b1;
 wire  false = 1'b0;
 wire  RegistersBlockModule_L20F9L23T10_RegistersBlockModule_L21F43T44_Expr = 1'b0;
+wire  RegistersBlockModule_L17F39T43_Expr = 1'b1;
 wire  Inputs_Read;
 wire  [4:0] Inputs_RS1Addr;
 wire  [4:0] Inputs_RS2Addr;
@@ -126,7 +127,7 @@ assign Inputs_WE = WE;
 assign Inputs_WriteData = WriteData;
 assign RS1 = RegistersBlockModule_L15F44T67_Index;
 assign RS2 = RegistersBlockModule_L16F44T67_Index;
-assign Ready = Inputs_Read;
+assign Ready = RegistersBlockModule_L17F39T43_Expr;
 assign RegistersBlockModule_L15F44T67_Index = State_x[Inputs_RS1Addr];
 assign RegistersBlockModule_L16F44T67_Index = State_x[Inputs_RS2Addr];
 // [BEGIN USER ARCHITECTURE]

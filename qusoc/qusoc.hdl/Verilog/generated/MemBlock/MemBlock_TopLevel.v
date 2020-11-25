@@ -87,6 +87,7 @@ wire  [31:0] CounterModule_DeviceAddress;
 wire  [31:0] CounterModule_ReadValue;
 wire  CounterModule_IsReady;
 wire  CounterModule_IsActive;
+wire  [31:0] CounterModule_Value;
 wire  [31:0] MemBlockModule_Common_Address;
 wire  [31:0] MemBlockModule_Common_WriteValue;
 wire  MemBlockModule_Common_WE;
@@ -129,6 +130,7 @@ wire  [31:0] CounterModuleDeviceAddressCounterModule_DeviceAddressHardLink;
 wire  [31:0] CounterModuleReadValueCounterModule_ReadValueHardLink;
 wire  CounterModuleIsReadyCounterModule_IsReadyHardLink;
 wire  CounterModuleIsActiveCounterModule_IsActiveHardLink;
+wire  [31:0] CounterModuleValueCounterModule_ValueHardLink;
 wire  [31:0] MemBlockModuleCommon_AddressMemBlockModule_Common_AddressHardLink;
 wire  [31:0] MemBlockModuleCommon_WriteValueMemBlockModule_Common_WriteValueHardLink;
 wire  MemBlockModuleCommon_WEMemBlockModule_Common_WEHardLink;
@@ -235,7 +237,8 @@ MemBlock_TopLevel_MemBlock_CounterModule MemBlock_TopLevel_MemBlock_CounterModul
 	.DeviceAddress (CounterModuleDeviceAddressCounterModule_DeviceAddressHardLink),
 	.ReadValue (CounterModuleReadValueCounterModule_ReadValueHardLink),
 	.IsReady (CounterModuleIsReadyCounterModule_IsReadyHardLink),
-	.IsActive (CounterModuleIsActiveCounterModule_IsActiveHardLink)
+	.IsActive (CounterModuleIsActiveCounterModule_IsActiveHardLink),
+	.Value (CounterModuleValueCounterModule_ValueHardLink)
 
 );
 MemBlock_TopLevel_MemBlock_MemBlockModule MemBlock_TopLevel_MemBlock_MemBlockModule
@@ -355,7 +358,7 @@ assign MemBlockModule_Common_WE = ModuleCommon_WE;
 assign MemBlockModule_Common_RE = ModuleCommon_RE;
 assign MemBlockModule_Common_MemAccessMode = ModuleCommon_MemAccessMode;
 assign MemBlockModule_DeviceAddress = MemBlock_generated_L18F105T115_Expr;
-assign Counter = CounterModule_ReadValue;
+assign Counter = CounterModule_Value;
 assign CPUBaseAddressCPU_BaseAddressHardLink = CPU_BaseAddress;
 assign CPUMemReadDataCPU_MemReadDataHardLink = CPU_MemReadData;
 assign CPUMemReadyCPU_MemReadyHardLink = CPU_MemReady;
@@ -384,6 +387,7 @@ assign CounterModuleDeviceAddressCounterModule_DeviceAddressHardLink = CounterMo
 assign CounterModule_ReadValue = CounterModuleReadValueCounterModule_ReadValueHardLink;
 assign CounterModule_IsReady = CounterModuleIsReadyCounterModule_IsReadyHardLink;
 assign CounterModule_IsActive = CounterModuleIsActiveCounterModule_IsActiveHardLink;
+assign CounterModule_Value = CounterModuleValueCounterModule_ValueHardLink;
 assign MemBlockModuleCommon_AddressMemBlockModule_Common_AddressHardLink = MemBlockModule_Common_Address;
 assign MemBlockModuleCommon_WriteValueMemBlockModule_Common_WriteValueHardLink = MemBlockModule_Common_WriteValue;
 assign MemBlockModuleCommon_WEMemBlockModule_Common_WEHardLink = MemBlockModule_Common_WE;

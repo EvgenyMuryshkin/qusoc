@@ -1,4 +1,4 @@
-# RISC-V Compliance Test ADDI-01
+# RISC-V Compliance Test ADD-01
 #
 # Copyright (c) 2019, Imperas Software Ltd.
 # All rights reserved.
@@ -26,7 +26,7 @@
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 # Specification: RV32I Base Integer Instruction Set, Version 2.1
-# Description: Testing instruction 'ADDI'.
+# Description: Testing instruction 'ADD'.
 
 #include "riscv_test_macros.h"
 #include "compliance_test.h"
@@ -49,11 +49,11 @@ RV_COMPLIANCE_CODE_BEGIN
     # address for test results
 	la	x5, test_1_res
 
-	TEST_IMM_OP(addi, x0, x31, 0x0, -0x1, 0x0, x5, 0, x6)   # Testcase 0
-	TEST_IMM_OP(addi, x1, x30, 0xfffff802, 0x1, -0x7ff, x5, 4, x6)   # Testcase 1
-	TEST_IMM_OP(addi, x2, x29, 0xffffffff, 0x0, -0x1, x5, 8, x6)   # Testcase 2
-	TEST_IMM_OP(addi, x3, x28, 0xffffffff, 0x7ff, -0x800, x5, 12, x6)   # Testcase 3
-	TEST_IMM_OP(addi, x4, x27, 0xfffff800, 0x0, 0x800, x5, 16, x6)   # Testcase 4
+	TEST_RR_OP(add, x0, x31, x16, 0x0, -0x1, 0x0, x5, 0, x6)   # Testcase 0
+	TEST_RR_OP(add, x1, x30, x15, 0xfffff802, 0x1, -0x7ff, x5, 4, x6)   # Testcase 1
+	TEST_RR_OP(add, x2, x29, x14, 0xffffffff, 0x0, -0x1, x5, 8, x6)   # Testcase 2
+	TEST_RR_OP(add, x3, x28, x13, 0xfffff5cb, 0x7ff, -0x1234, x5, 12, x6)   # Testcase 3
+	TEST_RR_OP(add, x4, x27, x12, 0x80000000, 0x0, 0x80000000, x5, 16, x6)   # Testcase 4
 
 
 	# ---------------------------------------------------------------------------------------------
@@ -63,11 +63,11 @@ RV_COMPLIANCE_CODE_BEGIN
     # address for test results
 	la	x1, test_2_res
 
-	TEST_IMM_OP(addi, x5, x26, 0x0, 0x800, 0x800, x1, 0, x2)   # Testcase 5
-	TEST_IMM_OP(addi, x6, x25, 0x7653b21, 0x7654321, 0x800, x1, 4, x2)   # Testcase 6
-	TEST_IMM_OP(addi, x7, x24, 0x80000000, 0x7fffffff, 0x1, x1, 8, x2)   # Testcase 7
-	TEST_IMM_OP(addi, x8, x23, 0xfffff801, 0x1, 0x800, x1, 12, x2)   # Testcase 8
-	TEST_IMM_OP(addi, x9, x22, 0xfffff7ff, 0xffffffff, 0x800, x1, 16, x2)   # Testcase 9
+	TEST_RR_OP(add, x5, x26, x11, 0x1a34, 0x800, 0x1234, x1, 0, x2)   # Testcase 5
+	TEST_RR_OP(add, x6, x25, x10, 0x7654320, 0x7654321, 0xffffffff, x1, 4, x2)   # Testcase 6
+	TEST_RR_OP(add, x7, x24, x9, 0x80000000, 0x7fffffff, 0x1, x1, 8, x2)   # Testcase 7
+	TEST_RR_OP(add, x8, x23, x8, 0x80000000, 0x1, 0x7fffffff, x1, 12, x2)   # Testcase 8
+	TEST_RR_OP(add, x9, x22, x7, 0x7654320, 0xffffffff, 0x7654321, x1, 16, x2)   # Testcase 9
 
 
 	# ---------------------------------------------------------------------------------------------
@@ -77,11 +77,11 @@ RV_COMPLIANCE_CODE_BEGIN
     # address for test results
 	la	x1, test_3_res
 
-	TEST_IMM_OP(addi, x10, x21, 0xa34, 0x1234, 0x800, x1, 0, x7)   # Testcase 10
-	TEST_IMM_OP(addi, x11, x20, 0x80000000, 0x80000000, 0x0, x1, 4, x7)   # Testcase 11
-	TEST_IMM_OP(addi, x12, x19, 0xfffff5cb, -0x1234, 0x7ff, x1, 8, x7)   # Testcase 12
-	TEST_IMM_OP(addi, x13, x18, 0xfffffffe, -0x1, -0x1, x1, 12, x7)   # Testcase 13
-	TEST_IMM_OP(addi, x14, x17, 0xfffff802, -0x7ff, 0x1, x1, 16, x7)   # Testcase 14
+	TEST_RR_OP(add, x10, x21, x6, 0x1a34, 0x1234, 0x800, x1, 0, x7)   # Testcase 10
+	TEST_RR_OP(add, x11, x20, x5, 0x80000000, 0x80000000, 0x0, x1, 4, x7)   # Testcase 11
+	TEST_RR_OP(add, x12, x19, x4, 0xfffff5cb, -0x1234, 0x7ff, x1, 8, x7)   # Testcase 12
+	TEST_RR_OP(add, x13, x18, x3, 0xfffffffe, -0x1, -0x1, x1, 12, x7)   # Testcase 13
+	TEST_RR_OP(add, x14, x17, x2, 0xfffff802, -0x7ff, 0x1, x1, 16, x7)   # Testcase 14
 
 
 	# ---------------------------------------------------------------------------------------------
@@ -91,11 +91,11 @@ RV_COMPLIANCE_CODE_BEGIN
     # address for test results
 	la	x2, test_4_res
 
-	TEST_IMM_OP(addi, x15, x16, 0x0, 0x0, 0x0, x2, 0, x3)   # Testcase 15
-	TEST_IMM_OP(addi, x16, x15, 0xffffffff, -0x1, 0x0, x2, 4, x3)   # Testcase 16
-	TEST_IMM_OP(addi, x17, x14, 0xfffff802, 0x1, -0x7ff, x2, 8, x3)   # Testcase 17
-	TEST_IMM_OP(addi, x18, x13, 0xffffffff, 0x0, -0x1, x2, 12, x3)   # Testcase 18
-	TEST_IMM_OP(addi, x19, x12, 0xffffffff, 0x7ff, -0x800, x2, 16, x3)   # Testcase 19
+	TEST_RR_OP(add, x15, x16, x1, 0x0, 0x0, 0x0, x2, 0, x3)   # Testcase 15
+	TEST_RR_OP(add, x16, x15, x0, 0xffffffff, -0x1, 0x0, x2, 4, x3)   # Testcase 16
+	TEST_RR_OP(add, x17, x14, x31, 0xfffff802, 0x1, -0x7ff, x2, 8, x3)   # Testcase 17
+	TEST_RR_OP(add, x18, x13, x30, 0xffffffff, 0x0, -0x1, x2, 12, x3)   # Testcase 18
+	TEST_RR_OP(add, x19, x12, x29, 0xfffff5cb, 0x7ff, -0x1234, x2, 16, x3)   # Testcase 19
 
 
 	# ---------------------------------------------------------------------------------------------
@@ -105,11 +105,11 @@ RV_COMPLIANCE_CODE_BEGIN
     # address for test results
 	la	x1, test_5_res
 
-	TEST_IMM_OP(addi, x20, x11, 0xfffff800, 0x0, 0x800, x1, 0, x2)   # Testcase 20
-	TEST_IMM_OP(addi, x21, x10, 0x0, 0x800, 0x800, x1, 4, x2)   # Testcase 21
-	TEST_IMM_OP(addi, x22, x9, 0x7653b21, 0x7654321, 0x800, x1, 8, x2)   # Testcase 22
-	TEST_IMM_OP(addi, x23, x8, 0x80000000, 0x7fffffff, 0x1, x1, 12, x2)   # Testcase 23
-	TEST_IMM_OP(addi, x24, x7, 0xfffff801, 0x1, 0x800, x1, 16, x2)   # Testcase 24
+	TEST_RR_OP(add, x20, x11, x28, 0x80000000, 0x0, 0x80000000, x1, 0, x2)   # Testcase 20
+	TEST_RR_OP(add, x21, x10, x27, 0x1a34, 0x800, 0x1234, x1, 4, x2)   # Testcase 21
+	TEST_RR_OP(add, x22, x9, x26, 0x7654320, 0x7654321, 0xffffffff, x1, 8, x2)   # Testcase 22
+	TEST_RR_OP(add, x23, x8, x25, 0x80000000, 0x7fffffff, 0x1, x1, 12, x2)   # Testcase 23
+	TEST_RR_OP(add, x24, x7, x24, 0x80000000, 0x1, 0x7fffffff, x1, 16, x2)   # Testcase 24
 
 
 	# ---------------------------------------------------------------------------------------------
@@ -119,11 +119,11 @@ RV_COMPLIANCE_CODE_BEGIN
     # address for test results
 	la	x1, test_6_res
 
-	TEST_IMM_OP(addi, x25, x6, 0xfffff7ff, 0xffffffff, 0x800, x1, 0, x7)   # Testcase 25
-	TEST_IMM_OP(addi, x26, x5, 0xa34, 0x1234, 0x800, x1, 4, x7)   # Testcase 26
-	TEST_IMM_OP(addi, x27, x4, 0x80000000, 0x80000000, 0x0, x1, 8, x7)   # Testcase 27
-	TEST_IMM_OP(addi, x28, x3, 0xfffff5cb, -0x1234, 0x7ff, x1, 12, x7)   # Testcase 28
-	TEST_IMM_OP(addi, x29, x2, 0xfffffffe, -0x1, -0x1, x1, 16, x7)   # Testcase 29
+	TEST_RR_OP(add, x25, x6, x23, 0x7654320, 0xffffffff, 0x7654321, x1, 0, x7)   # Testcase 25
+	TEST_RR_OP(add, x26, x5, x22, 0x1a34, 0x1234, 0x800, x1, 4, x7)   # Testcase 26
+	TEST_RR_OP(add, x27, x4, x21, 0x80000000, 0x80000000, 0x0, x1, 8, x7)   # Testcase 27
+	TEST_RR_OP(add, x28, x3, x20, 0xfffff5cb, -0x1234, 0x7ff, x1, 12, x7)   # Testcase 28
+	TEST_RR_OP(add, x29, x2, x19, 0xfffffffe, -0x1, -0x1, x1, 16, x7)   # Testcase 29
 
 
 	# ---------------------------------------------------------------------------------------------
@@ -133,8 +133,8 @@ RV_COMPLIANCE_CODE_BEGIN
     # address for test results
 	la	x2, test_7_res
 
-	TEST_IMM_OP(addi, x30, x1, 0xfffff802, -0x7ff, 0x1, x2, 0, x3)   # Testcase 30
-	TEST_IMM_OP(addi, x31, x0, 0x0, 0x0, 0x0, x2, 4, x3)   # Testcase 31
+	TEST_RR_OP(add, x30, x1, x18, 0xfffff802, -0x7ff, 0x1, x2, 0, x3)   # Testcase 30
+	TEST_RR_OP(add, x31, x0, x17, 0x0, 0x0, 0x0, x2, 4, x3)   # Testcase 31
 
 
 	# ---------------------------------------------------------------------------------------------

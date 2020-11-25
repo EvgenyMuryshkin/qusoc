@@ -74,3 +74,12 @@ set_global_assignment -name VERILOG_FILE C:/code/tmp/qusoc/qusoc/tinyfpga/Increm
 set_global_assignment -name VERILOG_FILE C:/code/tmp/qusoc/qusoc/tinyfpga/Increment/Increment_TopLevel_Increment_CPU_RISCVModule_Regs.v
 set_global_assignment -name VERILOG_FILE C:/code/tmp/qusoc/qusoc/tinyfpga/Increment/Increment_TopLevel_Increment_InstructionsRAM.v
 set_global_assignment -name VERILOG_FILE C:/code/tmp/qusoc/qusoc/tinyfpga/SimpleCounterModule/SimpleCounterModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE C:/code/qusoc/qusoc/tinyfpga/Increment/Increment_TopLevel.v
+set_global_assignment -name VERILOG_FILE C:/code/qusoc/qusoc/tinyfpga/Increment/Increment_TopLevel_Increment_CounterModule.v
+set_global_assignment -name VERILOG_FILE C:/code/qusoc/qusoc/tinyfpga/Increment/Increment_TopLevel_Increment_CPU.v
+set_global_assignment -name VERILOG_FILE C:/code/qusoc/qusoc/tinyfpga/Increment/Increment_TopLevel_Increment_CPU_RISCVModule_ALU.v
+set_global_assignment -name VERILOG_FILE C:/code/qusoc/qusoc/tinyfpga/Increment/Increment_TopLevel_Increment_CPU_RISCVModule_CMP.v
+set_global_assignment -name VERILOG_FILE C:/code/qusoc/qusoc/tinyfpga/Increment/Increment_TopLevel_Increment_CPU_RISCVModule_ID.v
+set_global_assignment -name VERILOG_FILE C:/code/qusoc/qusoc/tinyfpga/Increment/Increment_TopLevel_Increment_CPU_RISCVModule_Regs.v
+set_global_assignment -name VERILOG_FILE C:/code/qusoc/qusoc/tinyfpga/Increment/Increment_TopLevel_Increment_InstructionsRAM.v
+set_global_assignment -name VERILOG_FILE C:/code/qusoc/qusoc/tinyfpga/SimpleCounterModule/SimpleCounterModule_TopLevel.v

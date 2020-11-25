@@ -40,11 +40,6 @@ namespace QRV32.Modules.Tests
                 sim.ClockCycle(new RegistersModuleInput() { RD = idx, WE = true, WriteData = idx });
             }
 
-            sim.ClockCycle(new RegistersModuleInput() { Read = true, RS1Addr = 1, RS2Addr = 2 });
-            sim.ClockCycle(new RegistersModuleInput() { Read = true, RS1Addr = 1, RS2Addr = 2 });
-            sim.ClockCycle(new RegistersModuleInput() { Read = true, RS1Addr = 1, RS2Addr = 2 });
-
-
             foreach (var rs1 in IncRange)
             {
                 foreach (var rs2 in IncRange)
@@ -55,6 +50,10 @@ namespace QRV32.Modules.Tests
                     }
                     while (!tl.Ready);
 
+                    Assert.AreEqual(rs1, tl.RS1);
+                    Assert.AreEqual(rs2, tl.RS2);
+
+                    sim.ClockCycle(new RegistersModuleInput() { RS1Addr = rs1, RS2Addr = rs2 });
                     Assert.AreEqual(rs1, tl.RS1);
                     Assert.AreEqual(rs2, tl.RS2);
                 }

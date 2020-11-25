@@ -7,6 +7,6 @@ namespace Increment
 {
     public partial class Increment : QuSoCModule
     {
-        public uint Counter => CounterModule.ReadValue;
+        public uint Counter => CounterModule.Value;
     }
 }

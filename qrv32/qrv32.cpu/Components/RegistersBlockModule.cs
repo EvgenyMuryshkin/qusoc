@@ -14,7 +14,7 @@ namespace QRV32.CPU
     {
         public override RTLBitArray RS1 => State.x[Inputs.RS1Addr];
         public override RTLBitArray RS2 => State.x[Inputs.RS2Addr];
-        public override bool Ready => true;// Inputs.Read;
+        public override bool Ready => true;
 
         protected override void OnStage()
         {

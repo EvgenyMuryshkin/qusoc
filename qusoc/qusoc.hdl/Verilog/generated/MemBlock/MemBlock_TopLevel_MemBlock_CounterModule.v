@@ -35,7 +35,8 @@ module MemBlock_TopLevel_MemBlock_CounterModule (
 	input wire  [32: 1] DeviceAddress,
 	output wire [32: 1] ReadValue,
 	output wire IsReady,
-	output wire IsActive
+	output wire IsActive,
+	output wire [32: 1] Value
     );
 
 // [BEGIN USER SIGNALS]
@@ -69,9 +70,9 @@ wire  SoCComponentModule_L45F48T157_Expr_1;
 wire  SoCComponentModule_L45F48T157_Expr_2;
 wire  [7:0] SoCComponentModule_L47F54T84_Expr;
 wire  [7:0] SoCComponentModule_L47F54T84_Expr_1;
-wire  SoCRegisterModule_L30F9L35T10_SoCRegisterModule_L31F17T53_Expr;
-wire  SoCRegisterModule_L30F9L35T10_SoCRegisterModule_L31F17T53_Expr_1;
-wire  SoCRegisterModule_L30F9L35T10_SoCRegisterModule_L31F17T53_Expr_2;
+wire  SoCRegisterModule_L31F9L36T10_SoCRegisterModule_L32F17T53_Expr;
+wire  SoCRegisterModule_L31F9L36T10_SoCRegisterModule_L32F17T53_Expr_1;
+wire  SoCRegisterModule_L31F9L36T10_SoCRegisterModule_L32F17T53_Expr_2;
 wire  [31:0] SoCRegisterModule_L26F43T77_Expr;
 wire  [31:0] SoCRegisterModule_L26F43T77_Expr_1;
 wire  [33:0] SoCComponentModule_L45F122T156_Expr;
@@ -103,13 +104,13 @@ assign SoCComponentModule_L47F54T84_Expr[4] = SoCComponentModule_L47F54T84_Expr_
 assign SoCComponentModule_L47F54T84_Expr[5] = 0;
 assign SoCComponentModule_L47F54T84_Expr[6] = 0;
 assign SoCComponentModule_L47F54T84_Expr[7] = 0;
-assign SoCRegisterModule_L30F9L35T10_SoCRegisterModule_L31F17T53_Expr = SoCRegisterModule_L30F9L35T10_SoCRegisterModule_L31F17T53_Expr_1 & SoCRegisterModule_L30F9L35T10_SoCRegisterModule_L31F17T53_Expr_2;
+assign SoCRegisterModule_L31F9L36T10_SoCRegisterModule_L32F17T53_Expr = SoCRegisterModule_L31F9L36T10_SoCRegisterModule_L32F17T53_Expr_1 & SoCRegisterModule_L31F9L36T10_SoCRegisterModule_L32F17T53_Expr_2;
 assign SoCRegisterModule_L26F43T77_Expr = SoCRegisterModule_L26F43T77_Expr_1 >> internalByteAddress;
 assign SoCComponentModule_L45F122T156_Expr = SoCComponentModule_L45F122T156_Expr_1 + SoCComponentModule_L45F122T156_Expr_2;
 always @*
 begin
 NextState_Value = State_Value;
-if ( SoCRegisterModule_L30F9L35T10_SoCRegisterModule_L31F17T53_Expr == 1 ) begin
+if ( SoCRegisterModule_L31F9L36T10_SoCRegisterModule_L32F17T53_Expr == 1 ) begin
 NextState_Value = Inputs_Common_WriteValue;
 end
 
@@ -121,8 +122,8 @@ assign SoCComponentModule_L45F97T157_ExprRhs = { {1{1'b0}}, SoCComponentModule_L
 assign SoCComponentModule_L45F48T157_Expr_1 = SoCComponentModule_L45F48T93_Expr;
 assign SoCComponentModule_L45F48T157_Expr_2 = SoCComponentModule_L45F97T157_Expr;
 assign SoCComponentModule_L47F54T84_Expr_1 = { {6{1'b0}}, SoCComponentModule_L47F54T79_Index }/*expand*/;
-assign SoCRegisterModule_L30F9L35T10_SoCRegisterModule_L31F17T53_Expr_1 = Inputs_Common_WE;
-assign SoCRegisterModule_L30F9L35T10_SoCRegisterModule_L31F17T53_Expr_2 = internalIsActive;
+assign SoCRegisterModule_L31F9L36T10_SoCRegisterModule_L32F17T53_Expr_1 = Inputs_Common_WE;
+assign SoCRegisterModule_L31F9L36T10_SoCRegisterModule_L32F17T53_Expr_2 = internalIsActive;
 assign SoCRegisterModule_L26F43T77_Expr_1 = State_Value;
 assign SoCComponentModule_L45F122T156_Expr_1 = { {2{1'b0}}, Inputs_DeviceAddress }/*expand*/;
 assign SoCComponentModule_L45F122T156_Expr_2 = { {31{1'b0}}, addressSpan }/*expand*/;
@@ -141,6 +142,7 @@ assign internalIsActive = addressMatch;
 assign ReadValue = SoCRegisterModule_L26F43T77_Expr;
 assign IsReady = SoCRegisterModule_L27F41T45_Expr;
 assign IsActive = internalIsActive;
+assign Value = State_Value;
 // [BEGIN USER ARCHITECTURE]
 // [END USER ARCHITECTURE]
 endmodule

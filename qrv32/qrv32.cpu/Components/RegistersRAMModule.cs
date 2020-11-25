@@ -21,17 +21,15 @@ namespace QRV32.CPU
         public override RTLBitArray RS2 => State.RS2;
         public override bool Ready => State.Ready;
 
-        // TODO: support local declarations in stage
-        RTLBitArray ReadAddress => State.Mode == 0 ? Inputs.RS1Addr : Inputs.RS2Addr;
-
         protected override void OnStage()
         {
+            var readAddress = State.Mode == 0 ? Inputs.RS1Addr : Inputs.RS2Addr;
             var we = Inputs.WE && Inputs.RD != 0;
 
             if (we)
                 NextState.x[Inputs.RD] = Inputs.WriteData;
 
-            NextState.ReadData = State.x[ReadAddress];
+            NextState.ReadData = State.x[readAddress];
 
             NextState.Ready = false;
 

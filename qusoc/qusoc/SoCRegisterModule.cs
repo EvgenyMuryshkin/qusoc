@@ -26,6 +26,7 @@ namespace QuSoC
         public override uint ReadValue => State.Value >> internalByteAddress;
         public override bool IsReady => true;
         public override bool IsActive => internalIsActive;
+        public uint Value => State.Value;
         protected override void OnStage()
         {
             if (Inputs.Common.WE && internalIsActive)

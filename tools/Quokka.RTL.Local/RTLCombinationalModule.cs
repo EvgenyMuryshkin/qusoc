@@ -194,6 +194,25 @@ namespace Quokka.RTL
                         return result;
                     }
 
+                    if (valueType.IsConstructedGenericType)
+                    {
+                        var genericType = valueType.GetGenericTypeDefinition();
+
+                        // TODO: something smarter then this
+                        if (genericType.Name.StartsWith("ValueTuple`"))
+                        {
+                            var result = new List<VCDVariable>();
+
+                            var props = RTLModuleHelper.SynthesizableMembers(valueType).Where(m => m.Name.StartsWith("Item"));
+                            foreach (var m in props)
+                            {
+                                result.AddRange(ToVCDVariables(m, m.GetValue(value), $"{namePrefix}{memberInfo.Name}_"));
+                            }
+
+                            return result;
+                        }
+                    }
+
                     return new[]
                     {
                         new VCDVariable($"{namePrefix}{memberInfo.Name}", value, SizeOf(value))
@@ -223,6 +242,14 @@ namespace Quokka.RTL
 
                 currentSnapshot = snapshot.Scope("Outputs");
                 foreach (var prop in OutputProps)
+                {
+                    currentMember = prop;
+                    var value = currentMember.GetValue(this);
+                    currentSnapshot.SetVariables(ToVCDVariables(currentMember, value));
+                }
+
+                currentSnapshot = snapshot.Scope("Internals");
+                foreach (var prop in InternalProps)
                 {
                     currentMember = prop;
                     var value = currentMember.GetValue(this);

@@ -86,6 +86,7 @@ wire  [31:0] CounterModule_DeviceAddress;
 wire  [31:0] CounterModule_ReadValue;
 wire  CounterModule_IsReady;
 wire  CounterModule_IsActive;
+wire  [31:0] CounterModule_Value;
 wire  [1:0] QuSoCModule_L46F47T98_Source;
 wire  [1:0] QuSoCModule_L47F46T69_Index;
 reg  QuSoCModule_L108F13L121T14_hasActive;
@@ -119,6 +120,7 @@ wire  [31:0] CounterModuleDeviceAddressCounterModule_DeviceAddressHardLink;
 wire  [31:0] CounterModuleReadValueCounterModule_ReadValueHardLink;
 wire  CounterModuleIsReadyCounterModule_IsReadyHardLink;
 wire  CounterModuleIsActiveCounterModule_IsActiveHardLink;
+wire  [31:0] CounterModuleValueCounterModule_ValueHardLink;
 reg  State_MemReady = 1'b0;
 wire  State_MemReadyDefault = 1'b0;
 wire  [1:0] QuSoCModule_L46F47T109_Expr;
@@ -214,7 +216,8 @@ Fibonacci_TopLevel_Fibonacci_CounterModule Fibonacci_TopLevel_Fibonacci_CounterM
 	.DeviceAddress (CounterModuleDeviceAddressCounterModule_DeviceAddressHardLink),
 	.ReadValue (CounterModuleReadValueCounterModule_ReadValueHardLink),
 	.IsReady (CounterModuleIsReadyCounterModule_IsReadyHardLink),
-	.IsActive (CounterModuleIsActiveCounterModule_IsActiveHardLink)
+	.IsActive (CounterModuleIsActiveCounterModule_IsActiveHardLink),
+	.Value (CounterModuleValueCounterModule_ValueHardLink)
 
 );
 always @*
@@ -303,7 +306,7 @@ assign CounterModule_Common_WE = ModuleCommon_WE;
 assign CounterModule_Common_RE = ModuleCommon_RE;
 assign CounterModule_Common_MemAccessMode = ModuleCommon_MemAccessMode;
 assign CounterModule_DeviceAddress = Fibonacci_generated_L15F104T114_Expr;
-assign Counter = CounterModule_ReadValue;
+assign Counter = CounterModule_Value;
 assign CPUBaseAddressCPU_BaseAddressHardLink = CPU_BaseAddress;
 assign CPUMemReadDataCPU_MemReadDataHardLink = CPU_MemReadData;
 assign CPUMemReadyCPU_MemReadyHardLink = CPU_MemReady;
@@ -332,6 +335,7 @@ assign CounterModuleDeviceAddressCounterModule_DeviceAddressHardLink = CounterMo
 assign CounterModule_ReadValue = CounterModuleReadValueCounterModule_ReadValueHardLink;
 assign CounterModule_IsReady = CounterModuleIsReadyCounterModule_IsReadyHardLink;
 assign CounterModule_IsActive = CounterModuleIsActiveCounterModule_IsActiveHardLink;
+assign CounterModule_Value = CounterModuleValueCounterModule_ValueHardLink;
 assign QuSoCModule_L127F40T73_Mux1 = InstructionsRAM_ReadValue;
 assign QuSoCModule_L127F40T73_Mux2 = CounterModule_ReadValue;
 assign QuSoCModule_L127F40T73_MuxMultiplexerAddress = ModuleIndex[0];
