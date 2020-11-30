@@ -5,12 +5,7 @@ namespace RTL.Modules
     public class YandexTestModuleInputs
     {
         public bool inReady;
-        public byte inData0;
-        public byte inData1;
-        public byte inData2;
-        public byte inData3;
-        public byte inData4;
-        public byte inData5;
+        public byte[] inData = new byte[6];
     }
 
     public struct Stage0
@@ -81,23 +76,23 @@ namespace RTL.Modules
         }
 
         Stage0 nextStage0 => new Stage0()
-        { 
+        {
             ready = Inputs.inReady,
-            sum01 = (ushort)(Inputs.inData0 + Inputs.inData1),
-            sum23 = (ushort)(Inputs.inData2 + Inputs.inData3),
-            sum45 = (ushort)(Inputs.inData4 + Inputs.inData5),
-            max01 = Max(Inputs.inData0, Inputs.inData1),
-            max23 = Max(Inputs.inData2, Inputs.inData3),
-            max45 = Max(Inputs.inData4, Inputs.inData5),
-            min01 = Min(Inputs.inData0, Inputs.inData1),
-            min23 = Min(Inputs.inData2, Inputs.inData3),
-            min45 = Min(Inputs.inData4, Inputs.inData5),
+            sum01 = (ushort)(Inputs.inData[0] + Inputs.inData[1]),
+            sum23 = (ushort)(Inputs.inData[2] + Inputs.inData[3]),
+            sum45 = (ushort)(Inputs.inData[4] + Inputs.inData[5]),
+            max01 = Max(Inputs.inData[0], Inputs.inData[1]),
+            max23 = Max(Inputs.inData[2], Inputs.inData[3]),
+            max45 = Max(Inputs.inData[4], Inputs.inData[5]),
+            min01 = Min(Inputs.inData[0], Inputs.inData[1]),
+            min23 = Min(Inputs.inData[2], Inputs.inData[3]),
+            min45 = Min(Inputs.inData[4], Inputs.inData[5]),
         };
 
         Stage1 nextStage1 => new Stage1()
         {
             ready = State.stage0.ready,
-            max0123 = Max(State.stage0.max01, State.stage0.max23), 
+            max0123 = Max(State.stage0.max01, State.stage0.max23),
             max45 = State.stage0.max45,
             min0123 = Min(State.stage0.min01, State.stage0.min23),
             min45 = State.stage0.min45,
@@ -121,7 +116,7 @@ namespace RTL.Modules
         };
 
         Stage4 nextStage4 => new Stage4()
-        { 
+        {
             ready = State.stage3.ready,
             sum_ave = (ushort)(State.stage3.sum - State.stage3.max_min)
         };

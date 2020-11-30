@@ -28,7 +28,7 @@ namespace RTL.Modules.PostRun
         {
             _logStream.WriteLine(DirectoryLogging.Summary, $"Post run called from code");
 
-            foreach (var fileName in _virtualFS.RecursiveFileNames.Where(f => Path.GetFileNameWithoutExtension(f) != "Quokka"))
+            foreach (var fileName in _virtualFS.RecursiveFileNames.Where(f => Path.GetFileNameWithoutExtension(f) != "Quokka").OrderBy(f => f))
             {
                 _logStream.WriteLine(DirectoryLogging.Summary, $"Generated file: {fileName}");
             }

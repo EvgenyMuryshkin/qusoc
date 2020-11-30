@@ -40,26 +40,6 @@ namespace QuSoC
             _componentsLibrary = componentsLibrary;
         }
 
-        public virtual uint[] FromAsmSource(string asmSource)
-        {
-            // making a API call to integration server.
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                // on Windows, integration server is required to run in Docker or WSL.
-                // Installation steps are same for WSL and for docker.
-                // https://github.com/EvgenyMuryshkin/Quokka.RISCV.Docker/blob/master/Dockerfile
-
-                var instructions = RISCVIntegrationClient.Asm(new RISCVIntegrationEndpoint(), asmSource);
-                return instructions.Result;
-            }
-            else
-            {
-                // on Linux, just make local call to RISCV toolchain
-                return RISCVIntegrationClient.ToInstructions(Toolchain.Asm(asmSource)).ToArray();
-            }
-        }
-
         bool WriteFileIfChanged(string path, string content)
         {
             if (File.Exists(path) && File.ReadAllText(path) == content)

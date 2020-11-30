@@ -543,12 +543,7 @@ namespace RTL.Modules
             {
                 t.Cycle(new YandexTestModuleInputs() 
                 { 
-                    inData0 = inputs[0],
-                    inData1 = inputs[1],
-                    inData2 = inputs[2],
-                    inData3 = inputs[3],
-                    inData4 = inputs[4],
-                    inData5 = inputs[5],
+                    inData = inputs,
                     inReady = inReady
                 });
                 Assert.AreEqual(outResult, t.outResult, $"Result failed for {inputs.ToCSV()}, {inReady}");
