@@ -20,6 +20,7 @@ namespace Quokka.RTL
     {
         public Type StateType { get; } = typeof(TState);
         public List<MemberInfo> StateProps { get; } = RTLModuleHelper.SignalProperties(typeof(TState));
+        public List<MemberInfo> PipelineProps { get; private set; }
 
         TState DefaultState;
         public TState State { get; private set; } = new TState();
@@ -29,6 +30,7 @@ namespace Quokka.RTL
         public override void Setup()
         {
             base.Setup();
+            PipelineProps = RTLModuleHelper.PipelineProperties(GetType());
 
             // store default state for reset logic
             DefaultState = CopyState();
