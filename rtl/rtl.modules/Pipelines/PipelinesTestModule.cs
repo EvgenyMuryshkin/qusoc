@@ -1,7 +1,7 @@
 using Quokka.RTL;
 using Quokka.RTL.Local;
 using System;
-/*
+
 namespace RTL.Modules
 {
     public class PipelinesTestModuleInputs
@@ -64,5 +64,3 @@ namespace RTL.Modules
         }
     }
 }
-
-*/
