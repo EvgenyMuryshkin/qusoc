@@ -12,6 +12,10 @@ namespace Quokka.RTL.Local
         public TOutput State { get; set; }
         public TOutput NextState { get; set; }
 
+        Type IRTLPipelineStage.StateType => typeof(TOutput);
+        object IRTLPipelineStage.StateValue => State;
+        object IRTLPipelineStage.NextStateValue => NextState;
+
         IRTLPipelineHead<TSource> _pipelineHead;
         IRTLPipelineHead<TSource> pipelineHead
         {
@@ -40,6 +44,8 @@ namespace Quokka.RTL.Local
         IRTLPipelineHead IRTLPipelineDiagnostics.Head => pipelineHead;
         IRTLPipelineStage IRTLPipelineDiagnostics.NextStage => nextStage;
         List<IRTLPipelineStage> IRTLPipelineDiagnostics.Stages => (pipelineHead as IRTLPipelineDiagnostics).Stages;
+        Type IRTLPipelineDiagnostics.SourceType => typeof(TSource);
+        Type IRTLPipelineDiagnostics.ResultType => typeof(TOutput);
         #endregion
 
         #region IRTLPipelineStage

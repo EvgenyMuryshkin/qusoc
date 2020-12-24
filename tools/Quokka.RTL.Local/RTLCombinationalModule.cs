@@ -79,7 +79,7 @@ namespace Quokka.RTL
             }
         }
 
-        public virtual void Setup()
+        protected virtual void OnSetup()
         {
             Initialize();
 
@@ -87,6 +87,11 @@ namespace Quokka.RTL
             {
                 child.Setup();
             }
+        }
+
+        public void Setup()
+        {
+            OnSetup();
 
             Schedule(() => new TInput());
         }

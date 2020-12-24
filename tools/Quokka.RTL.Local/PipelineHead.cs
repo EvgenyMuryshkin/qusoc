@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Quokka.RTL.Local
 {
@@ -44,6 +45,8 @@ namespace Quokka.RTL.Local
                 return result;
             }
         }
+        Type IRTLPipelineDiagnostics.SourceType => typeof(TSource);
+        Type IRTLPipelineDiagnostics.ResultType => (this as IRTLPipelineDiagnostics).Stages.Last().Diag.ResultType;
         #endregion
 
         #region IRTLControlFlow
