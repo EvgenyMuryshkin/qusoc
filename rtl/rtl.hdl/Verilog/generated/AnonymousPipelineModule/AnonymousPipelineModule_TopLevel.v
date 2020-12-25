@@ -15,10 +15,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 // 
-// System configuration name is PipelinesTestModule_TopLevel, clock frequency is 1Hz, Top-level
+// System configuration name is AnonymousPipelineModule_TopLevel, clock frequency is 1Hz, Top-level
 // FSM summary
 // -- Packages
-module PipelinesTestModule_TopLevel (
+module AnonymousPipelineModule_TopLevel (
 // [BEGIN USER PORTS]
 // [END USER PORTS]
 
@@ -34,7 +34,7 @@ module PipelinesTestModule_TopLevel (
 	input wire  [7: 0] inData6,
 	input wire  [7: 0] inData7,
 	output wire outReady,
-	output wire [15: 0] outSum
+	output wire [15: 0] outResult
     );
 
 // [BEGIN USER SIGNALS]
@@ -63,7 +63,7 @@ reg  Pipeline_stage1_NextState_IsS1Ready;
 reg signed  [31:0] Pipeline_stage1_NextState_sum0123;
 reg signed  [31:0] Pipeline_stage1_NextState_sum4567;
 reg  Pipeline_NextState_ready;
-reg  [15:0] Pipeline_NextState_sum;
+reg  [15:0] Pipeline_NextState_result;
 wire  Pipeline_Inputs_inReady;
 wire  [7:0] Pipeline_Inputs_inData0;
 wire  [7:0] Pipeline_Inputs_inData1;
@@ -73,7 +73,7 @@ wire  [7:0] Pipeline_Inputs_inData4;
 wire  [7:0] Pipeline_Inputs_inData5;
 wire  [7:0] Pipeline_Inputs_inData6;
 wire  [7:0] Pipeline_Inputs_inData7;
-wire  [15:0] PipelinesTestModule_L52F27T60_Cast;
+wire  [15:0] AnonymousPipelineModule_L52F30T63_Cast;
 reg  Pipeline_stage0_State_IsS0Ready = 1'b0;
 wire  Pipeline_stage0_State_IsS0ReadyDefault = 1'b0;
 reg signed  [31:0] Pipeline_stage0_State_sum01 = 32'b00000000000000000000000000000000;
@@ -92,29 +92,29 @@ reg signed  [31:0] Pipeline_stage1_State_sum4567 = 32'b0000000000000000000000000
 wire signed  [31:0] Pipeline_stage1_State_sum4567Default = 32'b00000000000000000000000000000000;
 reg  Pipeline_State_ready = 1'b0;
 wire  Pipeline_State_readyDefault = 1'b0;
-reg  [15:0] Pipeline_State_sum = 16'b0000000000000000;
-wire  [15:0] Pipeline_State_sumDefault = 16'b0000000000000000;
-wire  [9:0] PipelinesTestModule_L40F29T54_Expr;
-wire signed  [9:0] PipelinesTestModule_L40F29T54_Expr_1;
-wire signed  [9:0] PipelinesTestModule_L40F29T54_Expr_2;
-wire  [9:0] PipelinesTestModule_L41F29T54_Expr;
-wire signed  [9:0] PipelinesTestModule_L41F29T54_Expr_1;
-wire signed  [9:0] PipelinesTestModule_L41F29T54_Expr_2;
-wire  [9:0] PipelinesTestModule_L42F29T54_Expr;
-wire signed  [9:0] PipelinesTestModule_L42F29T54_Expr_1;
-wire signed  [9:0] PipelinesTestModule_L42F29T54_Expr_2;
-wire  [9:0] PipelinesTestModule_L43F29T54_Expr;
-wire signed  [9:0] PipelinesTestModule_L43F29T54_Expr_1;
-wire signed  [9:0] PipelinesTestModule_L43F29T54_Expr_2;
-wire signed  [32:0] PipelinesTestModule_L47F31T50_Expr;
-wire signed  [32:0] PipelinesTestModule_L47F31T50_Expr_1;
-wire signed  [32:0] PipelinesTestModule_L47F31T50_Expr_2;
-wire signed  [32:0] PipelinesTestModule_L48F31T50_Expr;
-wire signed  [32:0] PipelinesTestModule_L48F31T50_Expr_1;
-wire signed  [32:0] PipelinesTestModule_L48F31T50_Expr_2;
-wire signed  [32:0] PipelinesTestModule_L52F36T59_Expr;
-wire signed  [32:0] PipelinesTestModule_L52F36T59_Expr_1;
-wire signed  [32:0] PipelinesTestModule_L52F36T59_Expr_2;
+reg  [15:0] Pipeline_State_result = 16'b0000000000000000;
+wire  [15:0] Pipeline_State_resultDefault = 16'b0000000000000000;
+wire  [9:0] AnonymousPipelineModule_L40F29T54_Expr;
+wire signed  [9:0] AnonymousPipelineModule_L40F29T54_Expr_1;
+wire signed  [9:0] AnonymousPipelineModule_L40F29T54_Expr_2;
+wire  [9:0] AnonymousPipelineModule_L41F29T54_Expr;
+wire signed  [9:0] AnonymousPipelineModule_L41F29T54_Expr_1;
+wire signed  [9:0] AnonymousPipelineModule_L41F29T54_Expr_2;
+wire  [9:0] AnonymousPipelineModule_L42F29T54_Expr;
+wire signed  [9:0] AnonymousPipelineModule_L42F29T54_Expr_1;
+wire signed  [9:0] AnonymousPipelineModule_L42F29T54_Expr_2;
+wire  [9:0] AnonymousPipelineModule_L43F29T54_Expr;
+wire signed  [9:0] AnonymousPipelineModule_L43F29T54_Expr_1;
+wire signed  [9:0] AnonymousPipelineModule_L43F29T54_Expr_2;
+wire signed  [32:0] AnonymousPipelineModule_L47F31T50_Expr;
+wire signed  [32:0] AnonymousPipelineModule_L47F31T50_Expr_1;
+wire signed  [32:0] AnonymousPipelineModule_L47F31T50_Expr_2;
+wire signed  [32:0] AnonymousPipelineModule_L48F31T50_Expr;
+wire signed  [32:0] AnonymousPipelineModule_L48F31T50_Expr_1;
+wire signed  [32:0] AnonymousPipelineModule_L48F31T50_Expr_2;
+wire signed  [32:0] AnonymousPipelineModule_L52F39T62_Expr;
+wire signed  [32:0] AnonymousPipelineModule_L52F39T62_Expr_1;
+wire signed  [32:0] AnonymousPipelineModule_L52F39T62_Expr_2;
 always @(posedge Clock)
 begin
 if ( Reset == 1 ) begin
@@ -127,7 +127,7 @@ Pipeline_stage1_State_IsS1Ready <= Pipeline_stage1_State_IsS1ReadyDefault;
 Pipeline_stage1_State_sum0123 <= Pipeline_stage1_State_sum0123Default;
 Pipeline_stage1_State_sum4567 <= Pipeline_stage1_State_sum4567Default;
 Pipeline_State_ready <= Pipeline_State_readyDefault;
-Pipeline_State_sum <= Pipeline_State_sumDefault;
+Pipeline_State_result <= Pipeline_State_resultDefault;
 end
 else begin
 Pipeline_stage0_State_IsS0Ready <= Pipeline_stage0_NextState_IsS0Ready;
@@ -139,16 +139,16 @@ Pipeline_stage1_State_IsS1Ready <= Pipeline_stage1_NextState_IsS1Ready;
 Pipeline_stage1_State_sum0123 <= Pipeline_stage1_NextState_sum0123;
 Pipeline_stage1_State_sum4567 <= Pipeline_stage1_NextState_sum4567;
 Pipeline_State_ready <= Pipeline_NextState_ready;
-Pipeline_State_sum <= Pipeline_NextState_sum;
+Pipeline_State_result <= Pipeline_NextState_result;
 end
 end
-assign PipelinesTestModule_L40F29T54_Expr = PipelinesTestModule_L40F29T54_Expr_1 + PipelinesTestModule_L40F29T54_Expr_2;
-assign PipelinesTestModule_L41F29T54_Expr = PipelinesTestModule_L41F29T54_Expr_1 + PipelinesTestModule_L41F29T54_Expr_2;
-assign PipelinesTestModule_L42F29T54_Expr = PipelinesTestModule_L42F29T54_Expr_1 + PipelinesTestModule_L42F29T54_Expr_2;
-assign PipelinesTestModule_L43F29T54_Expr = PipelinesTestModule_L43F29T54_Expr_1 + PipelinesTestModule_L43F29T54_Expr_2;
-assign PipelinesTestModule_L47F31T50_Expr = PipelinesTestModule_L47F31T50_Expr_1 + PipelinesTestModule_L47F31T50_Expr_2;
-assign PipelinesTestModule_L48F31T50_Expr = PipelinesTestModule_L48F31T50_Expr_1 + PipelinesTestModule_L48F31T50_Expr_2;
-assign PipelinesTestModule_L52F36T59_Expr = PipelinesTestModule_L52F36T59_Expr_1 + PipelinesTestModule_L52F36T59_Expr_2;
+assign AnonymousPipelineModule_L40F29T54_Expr = AnonymousPipelineModule_L40F29T54_Expr_1 + AnonymousPipelineModule_L40F29T54_Expr_2;
+assign AnonymousPipelineModule_L41F29T54_Expr = AnonymousPipelineModule_L41F29T54_Expr_1 + AnonymousPipelineModule_L41F29T54_Expr_2;
+assign AnonymousPipelineModule_L42F29T54_Expr = AnonymousPipelineModule_L42F29T54_Expr_1 + AnonymousPipelineModule_L42F29T54_Expr_2;
+assign AnonymousPipelineModule_L43F29T54_Expr = AnonymousPipelineModule_L43F29T54_Expr_1 + AnonymousPipelineModule_L43F29T54_Expr_2;
+assign AnonymousPipelineModule_L47F31T50_Expr = AnonymousPipelineModule_L47F31T50_Expr_1 + AnonymousPipelineModule_L47F31T50_Expr_2;
+assign AnonymousPipelineModule_L48F31T50_Expr = AnonymousPipelineModule_L48F31T50_Expr_1 + AnonymousPipelineModule_L48F31T50_Expr_2;
+assign AnonymousPipelineModule_L52F39T62_Expr = AnonymousPipelineModule_L52F39T62_Expr_1 + AnonymousPipelineModule_L52F39T62_Expr_2;
 always @*
 begin
 Pipeline_stage0_NextState_IsS0Ready = Pipeline_stage0_State_IsS0Ready;
@@ -160,33 +160,33 @@ Pipeline_stage1_NextState_IsS1Ready = Pipeline_stage1_State_IsS1Ready;
 Pipeline_stage1_NextState_sum0123 = Pipeline_stage1_State_sum0123;
 Pipeline_stage1_NextState_sum4567 = Pipeline_stage1_State_sum4567;
 Pipeline_NextState_ready = Pipeline_State_ready;
-Pipeline_NextState_sum = Pipeline_State_sum;
+Pipeline_NextState_result = Pipeline_State_result;
 Pipeline_stage0_NextState_IsS0Ready = Pipeline_Inputs_inReady;
-Pipeline_stage0_NextState_sum01 = { {22{1'b0}}, PipelinesTestModule_L40F29T54_Expr }/*expand*/;
-Pipeline_stage0_NextState_sum23 = { {22{1'b0}}, PipelinesTestModule_L41F29T54_Expr }/*expand*/;
-Pipeline_stage0_NextState_sum45 = { {22{1'b0}}, PipelinesTestModule_L42F29T54_Expr }/*expand*/;
-Pipeline_stage0_NextState_sum67 = { {22{1'b0}}, PipelinesTestModule_L43F29T54_Expr }/*expand*/;
+Pipeline_stage0_NextState_sum01 = { {22{1'b0}}, AnonymousPipelineModule_L40F29T54_Expr }/*expand*/;
+Pipeline_stage0_NextState_sum23 = { {22{1'b0}}, AnonymousPipelineModule_L41F29T54_Expr }/*expand*/;
+Pipeline_stage0_NextState_sum45 = { {22{1'b0}}, AnonymousPipelineModule_L42F29T54_Expr }/*expand*/;
+Pipeline_stage0_NextState_sum67 = { {22{1'b0}}, AnonymousPipelineModule_L43F29T54_Expr }/*expand*/;
 Pipeline_stage1_NextState_IsS1Ready = Pipeline_stage0_State_IsS0Ready;
-Pipeline_stage1_NextState_sum0123 = PipelinesTestModule_L47F31T50_Expr[31:0]/*truncate*/;
-Pipeline_stage1_NextState_sum4567 = PipelinesTestModule_L48F31T50_Expr[31:0]/*truncate*/;
+Pipeline_stage1_NextState_sum0123 = AnonymousPipelineModule_L47F31T50_Expr[31:0]/*truncate*/;
+Pipeline_stage1_NextState_sum4567 = AnonymousPipelineModule_L48F31T50_Expr[31:0]/*truncate*/;
 Pipeline_NextState_ready = Pipeline_stage1_State_IsS1Ready;
-Pipeline_NextState_sum = PipelinesTestModule_L52F27T60_Cast;
+Pipeline_NextState_result = AnonymousPipelineModule_L52F30T63_Cast;
 
 end
-assign PipelinesTestModule_L40F29T54_Expr_1 = { {2{1'b0}}, Pipeline_Inputs_inData0 }/*expand*/;
-assign PipelinesTestModule_L40F29T54_Expr_2 = { {2{1'b0}}, Pipeline_Inputs_inData1 }/*expand*/;
-assign PipelinesTestModule_L41F29T54_Expr_1 = { {2{1'b0}}, Pipeline_Inputs_inData2 }/*expand*/;
-assign PipelinesTestModule_L41F29T54_Expr_2 = { {2{1'b0}}, Pipeline_Inputs_inData3 }/*expand*/;
-assign PipelinesTestModule_L42F29T54_Expr_1 = { {2{1'b0}}, Pipeline_Inputs_inData4 }/*expand*/;
-assign PipelinesTestModule_L42F29T54_Expr_2 = { {2{1'b0}}, Pipeline_Inputs_inData5 }/*expand*/;
-assign PipelinesTestModule_L43F29T54_Expr_1 = { {2{1'b0}}, Pipeline_Inputs_inData6 }/*expand*/;
-assign PipelinesTestModule_L43F29T54_Expr_2 = { {2{1'b0}}, Pipeline_Inputs_inData7 }/*expand*/;
-assign PipelinesTestModule_L47F31T50_Expr_1 = { {1{Pipeline_stage0_State_sum01[31]}}, Pipeline_stage0_State_sum01 }/*expand*/;
-assign PipelinesTestModule_L47F31T50_Expr_2 = { {1{Pipeline_stage0_State_sum23[31]}}, Pipeline_stage0_State_sum23 }/*expand*/;
-assign PipelinesTestModule_L48F31T50_Expr_1 = { {1{Pipeline_stage0_State_sum45[31]}}, Pipeline_stage0_State_sum45 }/*expand*/;
-assign PipelinesTestModule_L48F31T50_Expr_2 = { {1{Pipeline_stage0_State_sum67[31]}}, Pipeline_stage0_State_sum67 }/*expand*/;
-assign PipelinesTestModule_L52F36T59_Expr_1 = { {1{Pipeline_stage1_State_sum0123[31]}}, Pipeline_stage1_State_sum0123 }/*expand*/;
-assign PipelinesTestModule_L52F36T59_Expr_2 = { {1{Pipeline_stage1_State_sum4567[31]}}, Pipeline_stage1_State_sum4567 }/*expand*/;
+assign AnonymousPipelineModule_L40F29T54_Expr_1 = { {2{1'b0}}, Pipeline_Inputs_inData0 }/*expand*/;
+assign AnonymousPipelineModule_L40F29T54_Expr_2 = { {2{1'b0}}, Pipeline_Inputs_inData1 }/*expand*/;
+assign AnonymousPipelineModule_L41F29T54_Expr_1 = { {2{1'b0}}, Pipeline_Inputs_inData2 }/*expand*/;
+assign AnonymousPipelineModule_L41F29T54_Expr_2 = { {2{1'b0}}, Pipeline_Inputs_inData3 }/*expand*/;
+assign AnonymousPipelineModule_L42F29T54_Expr_1 = { {2{1'b0}}, Pipeline_Inputs_inData4 }/*expand*/;
+assign AnonymousPipelineModule_L42F29T54_Expr_2 = { {2{1'b0}}, Pipeline_Inputs_inData5 }/*expand*/;
+assign AnonymousPipelineModule_L43F29T54_Expr_1 = { {2{1'b0}}, Pipeline_Inputs_inData6 }/*expand*/;
+assign AnonymousPipelineModule_L43F29T54_Expr_2 = { {2{1'b0}}, Pipeline_Inputs_inData7 }/*expand*/;
+assign AnonymousPipelineModule_L47F31T50_Expr_1 = { {1{Pipeline_stage0_State_sum01[31]}}, Pipeline_stage0_State_sum01 }/*expand*/;
+assign AnonymousPipelineModule_L47F31T50_Expr_2 = { {1{Pipeline_stage0_State_sum23[31]}}, Pipeline_stage0_State_sum23 }/*expand*/;
+assign AnonymousPipelineModule_L48F31T50_Expr_1 = { {1{Pipeline_stage0_State_sum45[31]}}, Pipeline_stage0_State_sum45 }/*expand*/;
+assign AnonymousPipelineModule_L48F31T50_Expr_2 = { {1{Pipeline_stage0_State_sum67[31]}}, Pipeline_stage0_State_sum67 }/*expand*/;
+assign AnonymousPipelineModule_L52F39T62_Expr_1 = { {1{Pipeline_stage1_State_sum0123[31]}}, Pipeline_stage1_State_sum0123 }/*expand*/;
+assign AnonymousPipelineModule_L52F39T62_Expr_2 = { {1{Pipeline_stage1_State_sum4567[31]}}, Pipeline_stage1_State_sum4567 }/*expand*/;
 assign Inputs_inReady = inReady;
 assign Inputs_inData0 = inData0;
 assign Inputs_inData1 = inData1;
@@ -196,9 +196,9 @@ assign Inputs_inData4 = inData4;
 assign Inputs_inData5 = inData5;
 assign Inputs_inData6 = inData6;
 assign Inputs_inData7 = inData7;
-assign PipelinesTestModule_L52F27T60_Cast = PipelinesTestModule_L52F36T59_Expr[15:0]/*truncate*/;
+assign AnonymousPipelineModule_L52F30T63_Cast = AnonymousPipelineModule_L52F39T62_Expr[15:0]/*truncate*/;
 assign outReady = Pipeline_State_ready;
-assign outSum = Pipeline_State_sum;
+assign outResult = Pipeline_State_result;
 assign Pipeline_Inputs_inReady = Inputs_inReady;
 assign Pipeline_Inputs_inData0 = Inputs_inData0;
 assign Pipeline_Inputs_inData1 = Inputs_inData1;

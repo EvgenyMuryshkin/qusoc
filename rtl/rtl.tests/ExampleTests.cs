@@ -560,6 +560,28 @@ namespace RTL.Modules
             iteration(empty, false, 0, false); // result at stage 4, empty
         }
 
+        [TestMethod]
+        public void AnonymousPipelineModuleTest()
+        {
+            var t = Module<AnonymousPipelineModule>();
+            Action<byte[], bool, ushort, bool> iteration = (inputs, inReady, outResult, outReady) =>
+            {
+                t.Cycle(new AnonymousPipelineModuleInputs()
+                {
+                    inData = inputs,
+                    inReady = inReady
+                });
+                Assert.AreEqual(outResult, t.outResult, $"Result failed for {inputs.ToCSV()}, {inReady}");
+                Assert.AreEqual(outReady, t.outReady, $"Ready failed for {inputs.ToCSV()}, {inReady}");
+            };
+
+            var empty = new byte[8];
+            iteration(new byte[] { 0, 1, 2, 3, 4, 5, 6, 7 }, true, 0, false);
+            iteration(new byte[] { 0, 1, 2, 3, 4, 5, 6, 8 }, true, 0, false);
+            iteration(empty, false, 28, true);
+            iteration(empty, false, 29, true);
+            iteration(empty, false, 0, false);
+        }
     }
 }
 

@@ -1,4 +1,4 @@
-set_global_assignment -name TOP_LEVEL_ENTITY YandexTestModule_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY AnonymousPipelineModule_TopLevel
 # -------------------------------------------------------------------------- #
 #
 # Copyright (C) 1991-2010 Altera Corporation
@@ -145,9 +145,8 @@ set_global_assignment -name VHDL_FILE VHDL/generated/NativeGetterModule/NativeGe
 set_global_assignment -name VHDL_FILE VHDL/generated/BitArrayGetterModule/BitArrayGetterModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/LoopModule/LoopModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/YandexTestModule/YandexTestModule_TopLevel.vhdl
-set_global_assignment -name VHDL_FILE VHDL/generated/PipelinesTestModule/PipelinesTestModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/YandexTestModule.vwf
-
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AnonymousPipelineModule.vwf
 
 
 
@@ -169,10 +168,12 @@ set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/YandexTestModule.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/AnonymousPipelineModule.vwf
 
 
 
+
+set_global_assignment -name VHDL_FILE VHDL/generated/PipelinesTestModule/PipelinesTestModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AnonymousPipelineModule/AnonymousPipelineModule_TopLevel.vhdl
 
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-set_global_assignment -name VHDL_FILE VHDL/generated/PipelinesTestModule/PipelinesTestModule_TopLevel.vhdl

@@ -4,6 +4,7 @@ using Quokka.VCD;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace Quokka.RTL
@@ -27,10 +28,15 @@ namespace Quokka.RTL
         object IRTLSynchronousModule.RawState => State;
         public TState NextState = new TState();
 
+        IEnumerable<IRTLPipeline> Pipelines => PipelineProps.Select(p => p.GetValue(this)).OfType<IRTLPipeline>();
+
         protected override void OnSetup()
         {
             base.OnSetup();
             PipelineProps = RTLModuleHelper.PipelineProperties(GetType());
+
+            foreach (var pl in Pipelines)
+                pl.Diag.Head.Setup();
 
             // store default state for reset logic
             DefaultState = CopyState();
@@ -96,6 +102,9 @@ namespace Quokka.RTL
             if (!base.Stage(iteration))
                 return false;
 
+            foreach (var pl in Pipelines)
+                pl.Diag.Head.Stage(iteration);
+
             NextState = CopyState();
             OnStage();
 
@@ -106,6 +115,9 @@ namespace Quokka.RTL
         public override void Reset()
         {
             base.Reset();
+
+            foreach (var pl in Pipelines)
+                pl.Diag.Head.Reset();
 
             if (Equals(DefaultState, default(TState)))
             {
@@ -152,6 +164,10 @@ namespace Quokka.RTL
         public override void Commit()
         {
             base.Commit();
+
+            foreach (var pl in Pipelines)
+                pl.Diag.Head.Commit();
+
             State = NextState;
             NextState = CopyState();
         }

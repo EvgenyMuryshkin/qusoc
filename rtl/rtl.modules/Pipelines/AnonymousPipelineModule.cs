@@ -4,7 +4,7 @@ using System;
 
 namespace RTL.Modules
 {
-    public class PipelinesTestModuleInputs
+    public class AnonymousPipelineModuleInputs
     {
         public bool inReady;
         public byte[] inData = new byte[8];
@@ -13,28 +13,28 @@ namespace RTL.Modules
     public struct PipelineResult
     {
         public bool ready;
-        public ushort sum;
+        public ushort result;
     }
 
     public class PipelinesTestModuleState
     {
     }
 
-    public class PipelinesTestModule : RTLSynchronousModule<PipelinesTestModuleInputs, PipelinesTestModuleState>
+    public class AnonymousPipelineModule : RTLSynchronousModule<AnonymousPipelineModuleInputs, PipelinesTestModuleState>
     {
-        IRTLPipelineStage<PipelinesTestModuleInputs, PipelineResult> Pipeline;
+        IRTLPipelineStage<AnonymousPipelineModuleInputs, PipelineResult> Pipeline;
 
         public bool outReady => Pipeline.State.ready;
-        public ushort outSum => Pipeline.State.sum;
+        public ushort outResult => Pipeline.State.result;
 
-        public PipelinesTestModule()
+        public AnonymousPipelineModule()
         {
             Pipeline = PipelineConfig;
         }
 
-        IRTLPipelineStage<PipelinesTestModuleInputs, PipelineResult> PipelineConfig
+        IRTLPipelineStage<AnonymousPipelineModuleInputs, PipelineResult> PipelineConfig
             => PipelineBuilder
-                .Source<PipelinesTestModuleInputs>()
+                .Source<AnonymousPipelineModuleInputs>()
                 .Stage(i => new { 
                     IsS0Ready = i.inReady, 
                     sum01 = i.inData[0] + i.inData[1],
@@ -48,11 +48,11 @@ namespace RTL.Modules
                     sum4567 = s0.sum45 + s0.sum67
                 })
                 .Stage(s1 => new PipelineResult() { 
-                    ready = s1.IsS1Ready, 
-                    sum = (ushort)(s1.sum0123 + s1.sum4567)
+                    ready = s1.IsS1Ready,
+                    result = (ushort)(s1.sum0123 + s1.sum4567)
                 });
 
-        protected override void OnSchedule(Func<PipelinesTestModuleInputs> inputsFactory)
+        protected override void OnSchedule(Func<AnonymousPipelineModuleInputs> inputsFactory)
         {
             base.OnSchedule(inputsFactory);
 
