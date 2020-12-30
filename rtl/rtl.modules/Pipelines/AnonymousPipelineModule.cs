@@ -4,37 +4,26 @@ using System;
 
 namespace RTL.Modules
 {
-    public class AnonymousPipelineModuleInputs
+    public class AnonymousPipelineModuleInputs : PipelineTestInputs
     {
-        public bool inReady;
-        public byte[] inData = new byte[8];
+
     }
 
-    public struct PipelineResult
+    public class AnonymousPipelineModule : RTLSynchronousModule<AnonymousPipelineModuleInputs, PipelinesTestModuleEmptyState>
     {
-        public bool ready;
-        public ushort result;
-    }
-
-    public class PipelinesTestModuleState
-    {
-    }
-
-    public class AnonymousPipelineModule : RTLSynchronousModule<AnonymousPipelineModuleInputs, PipelinesTestModuleState>
-    {
-        IRTLPipelineStage<AnonymousPipelineModuleInputs, PipelineResult> Pipeline;
+        IRTLPipelineStage<PipelineTestInputs, PipelineResult> Pipeline;
 
         public bool outReady => Pipeline.State.ready;
         public ushort outResult => Pipeline.State.result;
 
         public AnonymousPipelineModule()
         {
-            Pipeline = PipelineConfig;
+            Pipeline = LocalPipelineConfig;
         }
 
-        IRTLPipelineStage<AnonymousPipelineModuleInputs, PipelineResult> PipelineConfig
+        IRTLPipelineStage<PipelineTestInputs, PipelineResult> LocalPipelineConfig
             => PipelineBuilder
-                .Source<AnonymousPipelineModuleInputs>()
+                .Source<PipelineTestInputs>()
                 .Stage(i => new { 
                     IsS0Ready = i.inReady, 
                     sum01 = i.inData[0] + i.inData[1],

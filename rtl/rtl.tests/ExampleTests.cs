@@ -582,6 +582,55 @@ namespace RTL.Modules
             iteration(empty, false, 29, true);
             iteration(empty, false, 0, false);
         }
+
+        [TestMethod]
+        public void FromConfigurationPipelineModuleTest()
+        {
+            var t = Module<FromConfigurationPipelineModule>();
+            Action<byte[], bool, ushort, bool> iteration = (inputs, inReady, outResult, outReady) =>
+            {
+                t.Cycle(new AnonymousPipelineModuleInputs()
+                {
+                    inData = inputs,
+                    inReady = inReady
+                });
+                Assert.AreEqual(outResult, t.outResult, $"Result failed for {inputs.ToCSV()}, {inReady}");
+                Assert.AreEqual(outReady, t.outReady, $"Ready failed for {inputs.ToCSV()}, {inReady}");
+            };
+
+            var empty = new byte[8];
+            iteration(new byte[] { byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue }, true, 0, false);
+            iteration(new byte[] { 1, 0, 0, 0, 0, 0, 0, 1 }, true, 0, false);
+            iteration(empty, false, 0xFCFC, true);
+            iteration(empty, false, 0x0101, true);
+            iteration(empty, false, 0, false);
+        }
+
+        [TestMethod]
+        public void CustomSchedulePipelineModuleTest()
+        {
+            var t = Module<CustomSchedulePipelineModule>();
+            Action<byte[], bool, ushort, bool, ushort, bool> iteration = (inputs, inReady, outResult1, outReady1, outResult2, outReady2) =>
+            {
+                t.Cycle(new PipelineTestInputs()
+                {
+                    inData = inputs,
+                    inReady = inReady
+                });
+                Assert.AreEqual(outResult1, t.outResult1, $"Result1 failed for {inputs.ToCSV()}, {inReady}");
+                Assert.AreEqual(outReady1, t.outReady1, $"Ready1 failed for {inputs.ToCSV()}, {inReady}");
+                Assert.AreEqual(outResult2, t.outResult2, $"Result2 failed for {inputs.ToCSV()}, {inReady}");
+                Assert.AreEqual(outReady2, t.outReady2, $"Ready2 failed for {inputs.ToCSV()}, {inReady}");
+            };
+
+            var empty = new byte[8];
+            iteration(empty, false, 0, false, 0, false);
+            iteration(new byte[] { byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue }, true, 0, false, 0, false);
+            iteration(new byte[] { 1, 0, 0, 0, 0, 0, 0, 1 }, true, 0, false, 65024, false);
+            iteration(empty, false, 0xFCFC, true, 63612, true);
+            iteration(empty, false, 0x0101, true, 65281, true);
+            iteration(empty, false, 0, false, 65024, false);
+        }
     }
 }
 
