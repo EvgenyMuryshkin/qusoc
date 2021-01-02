@@ -35,12 +35,27 @@ namespace Quokka.RTL
             base.OnSetup();
             PipelineProps = RTLModuleHelper.PipelineProperties(GetType());
 
-            foreach (var pl in Pipelines)
-                pl.Diag.Head.Setup();
+            foreach (var head in Pipelines.Select(pl => pl.Diag.Head))
+            {
+                head.Setup();
+            }
 
             // store default state for reset logic
             DefaultState = CopyState();
         }
+        
+        /*
+        protected override void OnSetupCompleted()
+        {
+            base.OnSetupCompleted();
+
+            foreach (var head in Pipelines.Select(pl => pl.Diag.Head))
+            {
+                head.Stage(0);
+                head.Commit();
+            }
+        }
+        */
 
         public override void PopulateSnapshot(VCDSignalsSnapshot snapshot)
         {

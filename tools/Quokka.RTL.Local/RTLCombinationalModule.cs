@@ -89,11 +89,18 @@ namespace Quokka.RTL
             }
         }
 
+        protected virtual void OnSetupCompleted()
+        {
+
+        }
+
         public void Setup()
         {
             OnSetup();
 
             Schedule(() => new TInput());
+
+            OnSetupCompleted();
         }
 
         public TInput Inputs { get; private set; } = new TInput();

@@ -607,6 +607,30 @@ namespace RTL.Modules
         }
 
         [TestMethod]
+        public void StageArraysPipelineModule()
+        {
+            var t = Module<StageArraysPipelineModule>();
+            Action<byte[], bool, ushort, bool> iteration = (inputs, inReady, outResult, outReady) =>
+            {
+                t.Cycle(new AnonymousPipelineModuleInputs()
+                {
+                    inData = inputs,
+                    inReady = inReady
+                });
+                Assert.AreEqual(outResult, t.outResult, $"Result failed for {inputs.ToCSV()}, {inReady}");
+                Assert.AreEqual(outReady, t.outReady, $"Ready failed for {inputs.ToCSV()}, {inReady}");
+            };
+
+            var empty = new byte[8];
+            iteration(empty, false, 0, false);
+            iteration(new byte[] { byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue }, true, 0, false);
+            iteration(new byte[] { 1, 0, 0, 0, 0, 0, 0, 1 }, true, 42, false);
+            iteration(empty, false, 2082, true);
+            iteration(empty, false, 44, true);
+            iteration(empty, false, 42, false);
+        }
+
+        [TestMethod]
         public void CustomSchedulePipelineModuleTest()
         {
             var t = Module<CustomSchedulePipelineModule>();
