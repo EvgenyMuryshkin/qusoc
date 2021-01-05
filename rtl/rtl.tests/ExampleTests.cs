@@ -487,9 +487,9 @@ namespace RTL.Modules
             foreach (var shiftBy in Enumerable.Range(0, 8))
             {
                 var sb = new RTLBitArray(shiftBy).Unsigned().Resized(3);
-                shifter.Cycle(new ShifterInputs() 
-                { 
-                    Value = shlData, 
+                shifter.Cycle(new ShifterInputs()
+                {
+                    Value = shlData,
                     ShiftBy = sb
                 });
 
@@ -503,7 +503,7 @@ namespace RTL.Modules
         public void SignalsMuxTest()
         {
             var mux = Module<SignalsMuxModule>();
-            foreach (var idx in Enumerable.Range(0,4))
+            foreach (var idx in Enumerable.Range(0, 4))
             {
                 mux.Cycle(new SignalsMuxModuleInputs()
                 {
@@ -541,8 +541,8 @@ namespace RTL.Modules
 
             Action<byte[], bool, byte, bool> iteration = (inputs, inReady, outResult, outReady) =>
             {
-                t.Cycle(new YandexTestModuleInputs() 
-                { 
+                t.Cycle(new YandexTestModuleInputs()
+                {
                     inData = inputs,
                     inReady = inReady
                 });
@@ -560,6 +560,10 @@ namespace RTL.Modules
             iteration(empty, false, 0, false); // result at stage 4, empty
         }
 
+        byte[] emptyPipelineArray = new byte[8];
+        byte[] maxPipelineArray = new byte[8] { byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue };
+        byte[] edgePipelineArray = new byte[] { 1, 0, 0, 0, 0, 0, 0, 1 };
+
         [TestMethod]
         public void AnonymousPipelineModuleTest()
         {
@@ -575,12 +579,11 @@ namespace RTL.Modules
                 Assert.AreEqual(outReady, t.outReady, $"Ready failed for {inputs.ToCSV()}, {inReady}");
             };
 
-            var empty = new byte[8];
             iteration(new byte[] { 0, 1, 2, 3, 4, 5, 6, 7 }, true, 0, false);
             iteration(new byte[] { 0, 1, 2, 3, 4, 5, 6, 8 }, true, 0, false);
-            iteration(empty, false, 28, true);
-            iteration(empty, false, 29, true);
-            iteration(empty, false, 0, false);
+            iteration(emptyPipelineArray, false, 28, true);
+            iteration(emptyPipelineArray, false, 29, true);
+            iteration(emptyPipelineArray, false, 0, false);
         }
 
         [TestMethod]
@@ -598,12 +601,34 @@ namespace RTL.Modules
                 Assert.AreEqual(outReady, t.outReady, $"Ready failed for {inputs.ToCSV()}, {inReady}");
             };
 
-            var empty = new byte[8];
-            iteration(new byte[] { byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue }, true, 0, false);
-            iteration(new byte[] { 1, 0, 0, 0, 0, 0, 0, 1 }, true, 0, false);
-            iteration(empty, false, 0xFCFC, true);
-            iteration(empty, false, 0x0101, true);
-            iteration(empty, false, 0, false);
+            iteration(maxPipelineArray, true, 0, false);
+            iteration(edgePipelineArray, true, 0, false);
+            iteration(emptyPipelineArray, false, 0xFCFC, true);
+            iteration(emptyPipelineArray, false, 0x0101, true);
+            iteration(emptyPipelineArray, false, 0, false);
+        }
+
+        [TestMethod]
+        public void TypedPipelineModuleTest()
+        {
+            var t = Module<TypedPipelineModule>();
+            Action<byte[], bool, ushort, bool> iteration = (inputs, inReady, outResult, outReady) =>
+            {
+                t.Cycle(new PipelineTestInputs()
+                {
+                    inData = inputs,
+                    inReady = inReady
+                });
+                Assert.AreEqual(outResult, t.outResult, $"Result failed for {inputs.ToCSV()}, {inReady}");
+                Assert.AreEqual(outReady, t.outReady, $"Ready failed for {inputs.ToCSV()}, {inReady}");
+            };
+
+            iteration(emptyPipelineArray, false, 42, false);
+            iteration(maxPipelineArray, true, 42, false);
+            iteration(edgePipelineArray, true, 42, false);
+            iteration(emptyPipelineArray, false, 2082, true);
+            iteration(emptyPipelineArray, false, 44, true);
+            iteration(emptyPipelineArray, false, 42, false);
         }
 
         [TestMethod]
@@ -621,13 +646,12 @@ namespace RTL.Modules
                 Assert.AreEqual(outReady, t.outReady, $"Ready failed for {inputs.ToCSV()}, {inReady}");
             };
 
-            var empty = new byte[8];
-            iteration(empty, false, 0, false);
-            iteration(new byte[] { byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue }, true, 0, false);
-            iteration(new byte[] { 1, 0, 0, 0, 0, 0, 0, 1 }, true, 42, false);
-            iteration(empty, false, 2082, true);
-            iteration(empty, false, 44, true);
-            iteration(empty, false, 42, false);
+            iteration(emptyPipelineArray, false, 0, false);
+            iteration(maxPipelineArray, true, 0, false);
+            iteration(edgePipelineArray, true, 42, false);
+            iteration(emptyPipelineArray, false, 2082, true);
+            iteration(emptyPipelineArray, false, 44, true);
+            iteration(emptyPipelineArray, false, 42, false);
         }
 
         [TestMethod]
@@ -647,13 +671,12 @@ namespace RTL.Modules
                 Assert.AreEqual(outReady2, t.outReady2, $"Ready2 failed for {inputs.ToCSV()}, {inReady}");
             };
 
-            var empty = new byte[8];
-            iteration(empty, false, 0, false, 0, false);
-            iteration(new byte[] { byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue }, true, 0, false, 0, false);
-            iteration(new byte[] { 1, 0, 0, 0, 0, 0, 0, 1 }, true, 0, false, 65024, false);
-            iteration(empty, false, 0xFCFC, true, 63612, true);
-            iteration(empty, false, 0x0101, true, 65281, true);
-            iteration(empty, false, 0, false, 65024, false);
+            iteration(emptyPipelineArray, false, 0, false, 0, false);
+            iteration(maxPipelineArray, true, 0, false, 0, false);
+            iteration(edgePipelineArray, true, 0, false, 65024, false);
+            iteration(emptyPipelineArray, false, 0xFCFC, true, 63612, true);
+            iteration(emptyPipelineArray, false, 0x0101, true, 65281, true);
+            iteration(emptyPipelineArray, false, 0, false, 65024, false);
         }
     }
 }

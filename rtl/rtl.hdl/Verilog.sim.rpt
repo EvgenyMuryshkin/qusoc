@@ -1,5 +1,5 @@
 Simulator report for Verilog
-Sat Jan 02 20:46:02 2021
+Tue Jan 05 21:43:15 2021
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -45,42 +45,42 @@ applicable agreement for further details.
 +-----------------------------+--------------+
 ; Simulation Start Time       ; 0 ps         ;
 ; Simulation End Time         ; 1.0 ms       ;
-; Simulation Netlist Size     ; 187 nodes    ;
-; Simulation Coverage         ;      85.26 % ;
-; Total Number of Transitions ; 688          ;
+; Simulation Netlist Size     ; 188 nodes    ;
+; Simulation Coverage         ;      84.29 % ;
+; Total Number of Transitions ; 678          ;
 ; Simulation Breakpoints      ; 0            ;
 ; Family                      ; Cyclone II   ;
 ; Device                      ; EP2C5F256C6  ;
 +-----------------------------+--------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Simulator Settings                                                                                                                                   ;
-+--------------------------------------------------------------------------------------------+-----------------------------------------+---------------+
-; Option                                                                                     ; Setting                                 ; Default Value ;
-+--------------------------------------------------------------------------------------------+-----------------------------------------+---------------+
-; Simulation mode                                                                            ; Timing                                  ; Timing        ;
-; Start time                                                                                 ; 0 ns                                    ; 0 ns          ;
-; Simulation results format                                                                  ; CVWF                                    ;               ;
-; Vector input source                                                                        ; Waveforms/StageArraysPipelineModule.vwf ;               ;
-; Add pins automatically to simulation output waveforms                                      ; On                                      ; On            ;
-; Check outputs                                                                              ; Off                                     ; Off           ;
-; Report simulation coverage                                                                 ; On                                      ; On            ;
-; Display complete 1/0 value coverage report                                                 ; On                                      ; On            ;
-; Display missing 1-value coverage report                                                    ; On                                      ; On            ;
-; Display missing 0-value coverage report                                                    ; On                                      ; On            ;
-; Detect setup and hold time violations                                                      ; Off                                     ; Off           ;
-; Detect glitches                                                                            ; Off                                     ; Off           ;
-; Disable timing delays in Timing Simulation                                                 ; Off                                     ; Off           ;
-; Generate Signal Activity File                                                              ; Off                                     ; Off           ;
-; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                                     ; Off           ;
-; Group bus channels in simulation results                                                   ; Off                                     ; Off           ;
-; Preserve fewer signal transitions to reduce memory requirements                            ; On                                      ; On            ;
-; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                              ; INPUT_EDGE    ;
-; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                                     ; Off           ;
-; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                                      ;               ;
-; Perform Glitch Filtering in Timing Simulation                                              ; Auto                                    ; Auto          ;
-+--------------------------------------------------------------------------------------------+-----------------------------------------+---------------+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                                             ;
++--------------------------------------------------------------------------------------------+-----------------------------------+---------------+
+; Option                                                                                     ; Setting                           ; Default Value ;
++--------------------------------------------------------------------------------------------+-----------------------------------+---------------+
+; Simulation mode                                                                            ; Timing                            ; Timing        ;
+; Start time                                                                                 ; 0 ns                              ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF                              ;               ;
+; Vector input source                                                                        ; Waveforms/TypedPipelineModule.vwf ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On                                ; On            ;
+; Check outputs                                                                              ; Off                               ; Off           ;
+; Report simulation coverage                                                                 ; On                                ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On                                ; On            ;
+; Display missing 1-value coverage report                                                    ; On                                ; On            ;
+; Display missing 0-value coverage report                                                    ; On                                ; On            ;
+; Detect setup and hold time violations                                                      ; Off                               ; Off           ;
+; Detect glitches                                                                            ; Off                               ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off                               ; Off           ;
+; Generate Signal Activity File                                                              ; Off                               ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                               ; Off           ;
+; Group bus channels in simulation results                                                   ; Off                               ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On                                ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                        ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                               ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                                ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto                              ; Auto          ;
++--------------------------------------------------------------------------------------------+-----------------------------------+---------------+
 
 
 +----------------------+
@@ -95,252 +95,257 @@ Please use Quartus II to view the waveform report data.
 +-----------------------------------------------------+--------------+
 ; Type                                                ; Value        ;
 +-----------------------------------------------------+--------------+
-; Total coverage as a percentage                      ;      85.26 % ;
-; Total nodes checked                                 ; 187          ;
-; Total output ports checked                          ; 190          ;
-; Total output ports with complete 1/0-value coverage ; 162          ;
-; Total output ports with no 1/0-value coverage       ; 21           ;
-; Total output ports with no 1-value coverage         ; 22           ;
-; Total output ports with no 0-value coverage         ; 27           ;
+; Total coverage as a percentage                      ;      84.29 % ;
+; Total nodes checked                                 ; 188          ;
+; Total output ports checked                          ; 191          ;
+; Total output ports with complete 1/0-value coverage ; 161          ;
+; Total output ports with no 1/0-value coverage       ; 25           ;
+; Total output ports with no 1-value coverage         ; 26           ;
+; Total output ports with no 0-value coverage         ; 29           ;
 +-----------------------------------------------------+--------------+
 
 
 The following table displays output ports that toggle between 1 and 0 during simulation.
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Complete 1/0-Value Coverage                                                                                                                                              ;
-+---------------------------------------------------------------------------+---------------------------------------------------------------------------+------------------+
-; Node Name                                                                 ; Output Port Name                                                          ; Output Port Type ;
-+---------------------------------------------------------------------------+---------------------------------------------------------------------------+------------------+
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[1]              ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[1]              ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[2]              ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[2]              ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[3]              ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[3]              ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[11]             ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[11]             ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[0]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[0]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[1]~11           ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[1]~11           ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[1]~11           ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[1]~12           ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[2]~13           ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[2]~13           ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[2]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[2]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[3]~15           ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[3]~15           ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[3]~15           ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[3]~16           ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[3]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[3]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[4]~17           ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[4]~17           ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[4]~17           ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[4]~18           ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[4]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[4]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[5]~19           ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[5]~19           ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[5]~19           ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[5]~20           ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[5]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[5]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[6]~21           ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[6]~21           ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[6]~21           ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[6]~22           ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[6]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[6]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[7]~23           ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[7]~23           ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[7]~23           ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[7]~24           ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[7]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[7]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[8]~25           ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[8]~25           ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[8]~25           ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[8]~26           ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[8]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[8]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[9]~27           ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[9]~27           ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[9]~27           ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[9]~28           ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[9]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[9]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[10]~29          ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[10]~29          ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[10]~29          ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[10]~30          ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[11]~31          ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[11]~31          ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[0]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[0]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[0]~10     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[0]~10     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[1]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[1]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[1]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[1]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[1]~12     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[1]~12     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[1]~12     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[1]~13     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[2]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[2]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[2]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[2]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[2]~14     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[2]~14     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[2]~14     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[2]~15     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[3]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[3]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[3]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[3]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[3]~16     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[3]~16     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[3]~16     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[3]~17     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[4]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[4]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[4]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[4]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[4]~18     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[4]~18     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[4]~18     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[4]~19     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[5]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[5]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[5]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[5]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[5]~20     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[5]~20     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[5]~20     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[5]~21     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[6]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[6]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[6]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[6]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[6]~22     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[6]~22     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[6]~22     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[6]~23     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[7]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[7]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[7]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[7]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[7]~24     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[7]~24     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[7]~24     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[7]~25     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[8]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[8]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[8]        ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[8]        ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[8]~26     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[8]~26     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[8]~26     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[8]~27     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[9]~28     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[9]~28     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[0]~9      ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[0]~9      ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[0]~9      ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[0]~10     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[0]~9      ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[0]~9      ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[0]~9      ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[0]~10     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[1]~11     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[1]~11     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[1]~11     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[1]~12     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[1]~11     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[1]~11     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[1]~11     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[1]~12     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[2]~13     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[2]~13     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[2]~13     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[2]~14     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[2]~13     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[2]~13     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[2]~13     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[2]~14     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[3]~15     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[3]~15     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[3]~15     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[3]~16     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[3]~15     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[3]~15     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[3]~15     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[3]~16     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[4]~17     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[4]~17     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[4]~17     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[4]~18     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[4]~17     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[4]~17     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[4]~17     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[4]~18     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[5]~19     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[5]~19     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[5]~19     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[5]~20     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[5]~19     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[5]~19     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[5]~19     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[5]~20     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[6]~21     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[6]~21     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[6]~21     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[6]~22     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[6]~21     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[6]~21     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[6]~21     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[6]~22     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[7]~23     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[7]~23     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[7]~23     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[7]~24     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[7]~23     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[7]~23     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[7]~23     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[7]~24     ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[8]~25     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[8]~25     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[8]~25     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[8]~25     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_ready                  ; |StageArraysPipelineModule_TopLevel|Pipeline_State_ready                  ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_IsS1Ready       ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_IsS1Ready       ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_ready~0                ; |StageArraysPipelineModule_TopLevel|Pipeline_State_ready~0                ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_IsS0Ready       ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_IsS0Ready       ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_IsS1Ready~0     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_IsS1Ready~0     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_IsS0Ready~0     ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_IsS0Ready~0     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|outReady                              ; |StageArraysPipelineModule_TopLevel|outReady                              ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[1]                          ; |StageArraysPipelineModule_TopLevel|outResult[1]                          ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[2]                          ; |StageArraysPipelineModule_TopLevel|outResult[2]                          ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[3]                          ; |StageArraysPipelineModule_TopLevel|outResult[3]                          ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[11]                         ; |StageArraysPipelineModule_TopLevel|outResult[11]                         ; padio            ;
-; |StageArraysPipelineModule_TopLevel|Clock                                 ; |StageArraysPipelineModule_TopLevel|Clock~corein                          ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inReady                               ; |StageArraysPipelineModule_TopLevel|inReady~corein                        ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData3[0]                            ; |StageArraysPipelineModule_TopLevel|inData3[0]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData2[0]                            ; |StageArraysPipelineModule_TopLevel|inData2[0]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData1[0]                            ; |StageArraysPipelineModule_TopLevel|inData1[0]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData0[0]                            ; |StageArraysPipelineModule_TopLevel|inData0[0]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData3[1]                            ; |StageArraysPipelineModule_TopLevel|inData3[1]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData2[1]                            ; |StageArraysPipelineModule_TopLevel|inData2[1]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData1[1]                            ; |StageArraysPipelineModule_TopLevel|inData1[1]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData0[1]                            ; |StageArraysPipelineModule_TopLevel|inData0[1]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData3[2]                            ; |StageArraysPipelineModule_TopLevel|inData3[2]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData2[2]                            ; |StageArraysPipelineModule_TopLevel|inData2[2]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData1[2]                            ; |StageArraysPipelineModule_TopLevel|inData1[2]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData0[2]                            ; |StageArraysPipelineModule_TopLevel|inData0[2]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData3[3]                            ; |StageArraysPipelineModule_TopLevel|inData3[3]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData2[3]                            ; |StageArraysPipelineModule_TopLevel|inData2[3]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData1[3]                            ; |StageArraysPipelineModule_TopLevel|inData1[3]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData0[3]                            ; |StageArraysPipelineModule_TopLevel|inData0[3]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData3[4]                            ; |StageArraysPipelineModule_TopLevel|inData3[4]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData2[4]                            ; |StageArraysPipelineModule_TopLevel|inData2[4]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData1[4]                            ; |StageArraysPipelineModule_TopLevel|inData1[4]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData0[4]                            ; |StageArraysPipelineModule_TopLevel|inData0[4]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData3[5]                            ; |StageArraysPipelineModule_TopLevel|inData3[5]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData2[5]                            ; |StageArraysPipelineModule_TopLevel|inData2[5]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData1[5]                            ; |StageArraysPipelineModule_TopLevel|inData1[5]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData0[5]                            ; |StageArraysPipelineModule_TopLevel|inData0[5]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData3[6]                            ; |StageArraysPipelineModule_TopLevel|inData3[6]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData2[6]                            ; |StageArraysPipelineModule_TopLevel|inData2[6]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData1[6]                            ; |StageArraysPipelineModule_TopLevel|inData1[6]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData0[6]                            ; |StageArraysPipelineModule_TopLevel|inData0[6]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData3[7]                            ; |StageArraysPipelineModule_TopLevel|inData3[7]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData2[7]                            ; |StageArraysPipelineModule_TopLevel|inData2[7]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData1[7]                            ; |StageArraysPipelineModule_TopLevel|inData1[7]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|inData0[7]                            ; |StageArraysPipelineModule_TopLevel|inData0[7]~corein                     ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Clock~clkctrl                         ; |StageArraysPipelineModule_TopLevel|Clock~clkctrl                         ; outclk           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[0]~feeder ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[0]~feeder ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[0]~feeder ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[0]~feeder ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[1]~feeder ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[1]~feeder ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[1]~feeder ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[1]~feeder ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[2]~feeder ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[2]~feeder ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[2]~feeder ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[2]~feeder ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[3]~feeder ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[3]~feeder ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[3]~feeder ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[3]~feeder ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[4]~feeder ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[4]~feeder ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[4]~feeder ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[4]~feeder ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[5]~feeder ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[5]~feeder ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[5]~feeder ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[5]~feeder ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[6]~feeder ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[6]~feeder ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[6]~feeder ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums0[6]~feeder ; combout          ;
-+---------------------------------------------------------------------------+---------------------------------------------------------------------------+------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                                                                                  ;
++---------------------------------------------------------------------+---------------------------------------------------------------------+------------------+
+; Node Name                                                           ; Output Port Name                                                    ; Output Port Type ;
++---------------------------------------------------------------------+---------------------------------------------------------------------+------------------+
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[1]              ; |TypedPipelineModule_TopLevel|Pipeline_State_result[1]              ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[2]              ; |TypedPipelineModule_TopLevel|Pipeline_State_result[2]              ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[3]              ; |TypedPipelineModule_TopLevel|Pipeline_State_result[3]              ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[11]             ; |TypedPipelineModule_TopLevel|Pipeline_State_result[11]             ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[0]        ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[0]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[1]~11           ; |TypedPipelineModule_TopLevel|Pipeline_State_result[1]~11           ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[1]~11           ; |TypedPipelineModule_TopLevel|Pipeline_State_result[1]~12           ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[2]~13           ; |TypedPipelineModule_TopLevel|Pipeline_State_result[2]~13           ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[2]        ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[2]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[3]~15           ; |TypedPipelineModule_TopLevel|Pipeline_State_result[3]~15           ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[3]~15           ; |TypedPipelineModule_TopLevel|Pipeline_State_result[3]~16           ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[3]        ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[3]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[4]~17           ; |TypedPipelineModule_TopLevel|Pipeline_State_result[4]~17           ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[4]~17           ; |TypedPipelineModule_TopLevel|Pipeline_State_result[4]~18           ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[4]        ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[4]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[5]~19           ; |TypedPipelineModule_TopLevel|Pipeline_State_result[5]~19           ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[5]~19           ; |TypedPipelineModule_TopLevel|Pipeline_State_result[5]~20           ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[5]        ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[5]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[6]~21           ; |TypedPipelineModule_TopLevel|Pipeline_State_result[6]~21           ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[6]~21           ; |TypedPipelineModule_TopLevel|Pipeline_State_result[6]~22           ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[6]        ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[6]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[7]~23           ; |TypedPipelineModule_TopLevel|Pipeline_State_result[7]~23           ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[7]~23           ; |TypedPipelineModule_TopLevel|Pipeline_State_result[7]~24           ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[7]        ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[7]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[8]~25           ; |TypedPipelineModule_TopLevel|Pipeline_State_result[8]~25           ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[8]~25           ; |TypedPipelineModule_TopLevel|Pipeline_State_result[8]~26           ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[8]        ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[8]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[9]~27           ; |TypedPipelineModule_TopLevel|Pipeline_State_result[9]~27           ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[9]~27           ; |TypedPipelineModule_TopLevel|Pipeline_State_result[9]~28           ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[9]        ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[9]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[10]~29          ; |TypedPipelineModule_TopLevel|Pipeline_State_result[10]~29          ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[10]~29          ; |TypedPipelineModule_TopLevel|Pipeline_State_result[10]~30          ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[11]~31          ; |TypedPipelineModule_TopLevel|Pipeline_State_result[11]~31          ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[0]        ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[0]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[0]~10     ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[0]~10     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[1]        ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[1]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[1]        ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[1]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[1]~12     ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[1]~12     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[1]~12     ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[1]~13     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[2]        ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[2]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[2]        ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[2]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[2]~14     ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[2]~14     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[2]~14     ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[2]~15     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[3]        ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[3]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[3]        ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[3]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[3]~16     ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[3]~16     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[3]~16     ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[3]~17     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[4]        ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[4]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[4]        ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[4]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[4]~18     ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[4]~18     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[4]~18     ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[4]~19     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[5]        ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[5]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[5]        ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[5]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[5]~20     ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[5]~20     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[5]~20     ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[5]~21     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[6]        ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[6]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[6]        ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[6]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[6]~22     ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[6]~22     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[6]~22     ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[6]~23     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[7]        ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[7]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[7]        ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[7]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[7]~24     ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[7]~24     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[7]~24     ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[7]~25     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[8]        ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[8]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[8]        ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[8]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[8]~26     ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[8]~26     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[8]~26     ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[8]~27     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[9]~28     ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[9]~28     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[0]~9      ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[0]~9      ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[0]~9      ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[0]~10     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[0]~9      ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[0]~9      ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[0]~9      ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[0]~10     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[1]~11     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[1]~11     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[1]~11     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[1]~12     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[1]~11     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[1]~11     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[1]~11     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[1]~12     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[2]~13     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[2]~13     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[2]~13     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[2]~14     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[2]~13     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[2]~13     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[2]~13     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[2]~14     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[3]~15     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[3]~15     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[3]~15     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[3]~16     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[3]~15     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[3]~15     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[3]~15     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[3]~16     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[4]~17     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[4]~17     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[4]~17     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[4]~18     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[4]~17     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[4]~17     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[4]~17     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[4]~18     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[5]~19     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[5]~19     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[5]~19     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[5]~20     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[5]~19     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[5]~19     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[5]~19     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[5]~20     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[6]~21     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[6]~21     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[6]~21     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[6]~22     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[6]~21     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[6]~21     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[6]~21     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[6]~22     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[7]~23     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[7]~23     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[7]~23     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[7]~24     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[7]~23     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[7]~23     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[7]~23     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[7]~24     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[8]~25     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[8]~25     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[8]~25     ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[8]~25     ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_ready                  ; |TypedPipelineModule_TopLevel|Pipeline_State_ready                  ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_ready           ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_ready           ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_ready~0                ; |TypedPipelineModule_TopLevel|Pipeline_State_ready~0                ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_ready           ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_ready           ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_ready~0         ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_ready~0         ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_ready~0         ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_ready~0         ; combout          ;
+; |TypedPipelineModule_TopLevel|outReady                              ; |TypedPipelineModule_TopLevel|outReady                              ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[1]                          ; |TypedPipelineModule_TopLevel|outResult[1]                          ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[2]                          ; |TypedPipelineModule_TopLevel|outResult[2]                          ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[3]                          ; |TypedPipelineModule_TopLevel|outResult[3]                          ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[11]                         ; |TypedPipelineModule_TopLevel|outResult[11]                         ; padio            ;
+; |TypedPipelineModule_TopLevel|Clock                                 ; |TypedPipelineModule_TopLevel|Clock~corein                          ; combout          ;
+; |TypedPipelineModule_TopLevel|inReady                               ; |TypedPipelineModule_TopLevel|inReady~corein                        ; combout          ;
+; |TypedPipelineModule_TopLevel|inData3[0]                            ; |TypedPipelineModule_TopLevel|inData3[0]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData2[0]                            ; |TypedPipelineModule_TopLevel|inData2[0]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData1[0]                            ; |TypedPipelineModule_TopLevel|inData1[0]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData0[0]                            ; |TypedPipelineModule_TopLevel|inData0[0]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData3[1]                            ; |TypedPipelineModule_TopLevel|inData3[1]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData2[1]                            ; |TypedPipelineModule_TopLevel|inData2[1]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData1[1]                            ; |TypedPipelineModule_TopLevel|inData1[1]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData0[1]                            ; |TypedPipelineModule_TopLevel|inData0[1]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData3[2]                            ; |TypedPipelineModule_TopLevel|inData3[2]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData2[2]                            ; |TypedPipelineModule_TopLevel|inData2[2]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData1[2]                            ; |TypedPipelineModule_TopLevel|inData1[2]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData0[2]                            ; |TypedPipelineModule_TopLevel|inData0[2]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData3[3]                            ; |TypedPipelineModule_TopLevel|inData3[3]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData2[3]                            ; |TypedPipelineModule_TopLevel|inData2[3]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData1[3]                            ; |TypedPipelineModule_TopLevel|inData1[3]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData0[3]                            ; |TypedPipelineModule_TopLevel|inData0[3]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData3[4]                            ; |TypedPipelineModule_TopLevel|inData3[4]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData2[4]                            ; |TypedPipelineModule_TopLevel|inData2[4]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData1[4]                            ; |TypedPipelineModule_TopLevel|inData1[4]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData0[4]                            ; |TypedPipelineModule_TopLevel|inData0[4]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData3[5]                            ; |TypedPipelineModule_TopLevel|inData3[5]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData2[5]                            ; |TypedPipelineModule_TopLevel|inData2[5]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData1[5]                            ; |TypedPipelineModule_TopLevel|inData1[5]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData0[5]                            ; |TypedPipelineModule_TopLevel|inData0[5]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData3[6]                            ; |TypedPipelineModule_TopLevel|inData3[6]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData2[6]                            ; |TypedPipelineModule_TopLevel|inData2[6]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData1[6]                            ; |TypedPipelineModule_TopLevel|inData1[6]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData0[6]                            ; |TypedPipelineModule_TopLevel|inData0[6]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData3[7]                            ; |TypedPipelineModule_TopLevel|inData3[7]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData2[7]                            ; |TypedPipelineModule_TopLevel|inData2[7]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData1[7]                            ; |TypedPipelineModule_TopLevel|inData1[7]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|inData0[7]                            ; |TypedPipelineModule_TopLevel|inData0[7]~corein                     ; combout          ;
+; |TypedPipelineModule_TopLevel|Clock~clkctrl                         ; |TypedPipelineModule_TopLevel|Clock~clkctrl                         ; outclk           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[0]~feeder ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[0]~feeder ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[1]~feeder ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[1]~feeder ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[1]~feeder ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[1]~feeder ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[2]~feeder ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[2]~feeder ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[2]~feeder ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[2]~feeder ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[3]~feeder ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[3]~feeder ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[3]~feeder ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[3]~feeder ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[4]~feeder ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[4]~feeder ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[4]~feeder ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[4]~feeder ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[5]~feeder ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[5]~feeder ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[5]~feeder ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[5]~feeder ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[6]~feeder ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[6]~feeder ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[6]~feeder ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums0[6]~feeder ; combout          ;
++---------------------------------------------------------------------+---------------------------------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 1 during simulation.
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Missing 1-Value Coverage                                                                                                                                         ;
-+-----------------------------------------------------------------------+-----------------------------------------------------------------------+------------------+
-; Node Name                                                             ; Output Port Name                                                      ; Output Port Type ;
-+-----------------------------------------------------------------------+-----------------------------------------------------------------------+------------------+
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[4]          ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[4]          ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[6]          ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[6]          ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[7]          ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[7]          ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[8]          ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[8]          ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[9]          ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[9]          ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[10]         ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[10]         ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[1]    ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[1]    ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[2]~13       ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[2]~14       ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[0]    ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[0]    ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[0]~10 ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[0]~11 ; cout             ;
-; |StageArraysPipelineModule_TopLevel|outResult[0]                      ; |StageArraysPipelineModule_TopLevel|outResult[0]                      ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[4]                      ; |StageArraysPipelineModule_TopLevel|outResult[4]                      ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[6]                      ; |StageArraysPipelineModule_TopLevel|outResult[6]                      ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[7]                      ; |StageArraysPipelineModule_TopLevel|outResult[7]                      ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[8]                      ; |StageArraysPipelineModule_TopLevel|outResult[8]                      ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[9]                      ; |StageArraysPipelineModule_TopLevel|outResult[9]                      ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[10]                     ; |StageArraysPipelineModule_TopLevel|outResult[10]                     ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[12]                     ; |StageArraysPipelineModule_TopLevel|outResult[12]                     ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[13]                     ; |StageArraysPipelineModule_TopLevel|outResult[13]                     ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[14]                     ; |StageArraysPipelineModule_TopLevel|outResult[14]                     ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[15]                     ; |StageArraysPipelineModule_TopLevel|outResult[15]                     ; padio            ;
-; |StageArraysPipelineModule_TopLevel|Reset                             ; |StageArraysPipelineModule_TopLevel|Reset~corein                      ; combout          ;
-+-----------------------------------------------------------------------+-----------------------------------------------------------------------+------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                                                                                                     ;
++---------------------------------------------------------------------+---------------------------------------------------------------------+------------------+
+; Node Name                                                           ; Output Port Name                                                    ; Output Port Type ;
++---------------------------------------------------------------------+---------------------------------------------------------------------+------------------+
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[4]              ; |TypedPipelineModule_TopLevel|Pipeline_State_result[4]              ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[6]              ; |TypedPipelineModule_TopLevel|Pipeline_State_result[6]              ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[7]              ; |TypedPipelineModule_TopLevel|Pipeline_State_result[7]              ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[8]              ; |TypedPipelineModule_TopLevel|Pipeline_State_result[8]              ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[9]              ; |TypedPipelineModule_TopLevel|Pipeline_State_result[9]              ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[10]             ; |TypedPipelineModule_TopLevel|Pipeline_State_result[10]             ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[1]        ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[1]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[2]~13           ; |TypedPipelineModule_TopLevel|Pipeline_State_result[2]~14           ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[0]        ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[0]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[0]~10     ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[0]~11     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_s0Sums4~0       ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_s0Sums4~0       ; combout          ;
+; |TypedPipelineModule_TopLevel|~GND                                  ; |TypedPipelineModule_TopLevel|~GND                                  ; combout          ;
+; |TypedPipelineModule_TopLevel|outResult[0]                          ; |TypedPipelineModule_TopLevel|outResult[0]                          ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[4]                          ; |TypedPipelineModule_TopLevel|outResult[4]                          ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[6]                          ; |TypedPipelineModule_TopLevel|outResult[6]                          ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[7]                          ; |TypedPipelineModule_TopLevel|outResult[7]                          ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[8]                          ; |TypedPipelineModule_TopLevel|outResult[8]                          ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[9]                          ; |TypedPipelineModule_TopLevel|outResult[9]                          ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[10]                         ; |TypedPipelineModule_TopLevel|outResult[10]                         ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[12]                         ; |TypedPipelineModule_TopLevel|outResult[12]                         ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[13]                         ; |TypedPipelineModule_TopLevel|outResult[13]                         ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[14]                         ; |TypedPipelineModule_TopLevel|outResult[14]                         ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[15]                         ; |TypedPipelineModule_TopLevel|outResult[15]                         ; padio            ;
+; |TypedPipelineModule_TopLevel|Reset                                 ; |TypedPipelineModule_TopLevel|Reset~corein                          ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[0]~feeder ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[0]~feeder ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums4[5]~feeder ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums4[5]~feeder ; combout          ;
++---------------------------------------------------------------------+---------------------------------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 0 during simulation.
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Missing 0-Value Coverage                                                                                                                                         ;
-+-----------------------------------------------------------------------+-----------------------------------------------------------------------+------------------+
-; Node Name                                                             ; Output Port Name                                                      ; Output Port Type ;
-+-----------------------------------------------------------------------+-----------------------------------------------------------------------+------------------+
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[4]          ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[4]          ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[5]          ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[5]          ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[6]          ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[6]          ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[7]          ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[7]          ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[8]          ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[8]          ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[9]          ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[9]          ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[10]         ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[10]         ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[1]    ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[1]    ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[2]~13       ; |StageArraysPipelineModule_TopLevel|Pipeline_State_result[2]~14       ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[0]    ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums1[0]    ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[0]~10 ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_sums0[0]~11 ; cout             ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_s0Sums4[5]  ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_s0Sums4[5]  ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums4[5]    ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums4[5]    ; regout           ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_s0Sums4~0   ; |StageArraysPipelineModule_TopLevel|Pipeline_stage1_State_s0Sums4~0   ; combout          ;
-; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums4[5]~0  ; |StageArraysPipelineModule_TopLevel|Pipeline_stage0_State_sums4[5]~0  ; combout          ;
-; |StageArraysPipelineModule_TopLevel|outResult[0]                      ; |StageArraysPipelineModule_TopLevel|outResult[0]                      ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[4]                      ; |StageArraysPipelineModule_TopLevel|outResult[4]                      ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[5]                      ; |StageArraysPipelineModule_TopLevel|outResult[5]                      ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[6]                      ; |StageArraysPipelineModule_TopLevel|outResult[6]                      ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[7]                      ; |StageArraysPipelineModule_TopLevel|outResult[7]                      ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[8]                      ; |StageArraysPipelineModule_TopLevel|outResult[8]                      ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[9]                      ; |StageArraysPipelineModule_TopLevel|outResult[9]                      ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[10]                     ; |StageArraysPipelineModule_TopLevel|outResult[10]                     ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[12]                     ; |StageArraysPipelineModule_TopLevel|outResult[12]                     ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[13]                     ; |StageArraysPipelineModule_TopLevel|outResult[13]                     ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[14]                     ; |StageArraysPipelineModule_TopLevel|outResult[14]                     ; padio            ;
-; |StageArraysPipelineModule_TopLevel|outResult[15]                     ; |StageArraysPipelineModule_TopLevel|outResult[15]                     ; padio            ;
-+-----------------------------------------------------------------------+-----------------------------------------------------------------------+------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                                                                                                     ;
++---------------------------------------------------------------------+---------------------------------------------------------------------+------------------+
+; Node Name                                                           ; Output Port Name                                                    ; Output Port Type ;
++---------------------------------------------------------------------+---------------------------------------------------------------------+------------------+
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[4]              ; |TypedPipelineModule_TopLevel|Pipeline_State_result[4]              ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[5]              ; |TypedPipelineModule_TopLevel|Pipeline_State_result[5]              ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[6]              ; |TypedPipelineModule_TopLevel|Pipeline_State_result[6]              ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[7]              ; |TypedPipelineModule_TopLevel|Pipeline_State_result[7]              ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[8]              ; |TypedPipelineModule_TopLevel|Pipeline_State_result[8]              ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[9]              ; |TypedPipelineModule_TopLevel|Pipeline_State_result[9]              ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[10]             ; |TypedPipelineModule_TopLevel|Pipeline_State_result[10]             ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[1]        ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[1]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_State_result[2]~13           ; |TypedPipelineModule_TopLevel|Pipeline_State_result[2]~14           ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[0]        ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[0]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[0]~10     ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_sums0[0]~11     ; cout             ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_s0Sums4[5]      ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_s0Sums4[5]      ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums4[5]        ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums4[5]        ; regout           ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_s0Sums4~0       ; |TypedPipelineModule_TopLevel|Pipeline_stage1_State_s0Sums4~0       ; combout          ;
+; |TypedPipelineModule_TopLevel|~GND                                  ; |TypedPipelineModule_TopLevel|~GND                                  ; combout          ;
+; |TypedPipelineModule_TopLevel|outResult[0]                          ; |TypedPipelineModule_TopLevel|outResult[0]                          ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[4]                          ; |TypedPipelineModule_TopLevel|outResult[4]                          ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[5]                          ; |TypedPipelineModule_TopLevel|outResult[5]                          ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[6]                          ; |TypedPipelineModule_TopLevel|outResult[6]                          ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[7]                          ; |TypedPipelineModule_TopLevel|outResult[7]                          ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[8]                          ; |TypedPipelineModule_TopLevel|outResult[8]                          ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[9]                          ; |TypedPipelineModule_TopLevel|outResult[9]                          ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[10]                         ; |TypedPipelineModule_TopLevel|outResult[10]                         ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[12]                         ; |TypedPipelineModule_TopLevel|outResult[12]                         ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[13]                         ; |TypedPipelineModule_TopLevel|outResult[13]                         ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[14]                         ; |TypedPipelineModule_TopLevel|outResult[14]                         ; padio            ;
+; |TypedPipelineModule_TopLevel|outResult[15]                         ; |TypedPipelineModule_TopLevel|outResult[15]                         ; padio            ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[0]~feeder ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums1[0]~feeder ; combout          ;
+; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums4[5]~feeder ; |TypedPipelineModule_TopLevel|Pipeline_stage0_State_sums4[5]~feeder ; combout          ;
++---------------------------------------------------------------------+---------------------------------------------------------------------+------------------+
 
 
 +---------------------+
@@ -369,20 +374,20 @@ Info: Running Quartus II Simulator
     Info: programming logic devices manufactured by Altera and sold by 
     Info: Altera or its authorized distributors.  Please refer to the 
     Info: applicable agreement for further details.
-    Info: Processing started: Sat Jan 02 20:46:01 2021
+    Info: Processing started: Tue Jan 05 21:43:14 2021
 Info: Command: quartus_sim C:\code\qusoc\rtl\rtl.hdl\Verilog.qpf --read_settings_files=on --write_settings_files=off -c Verilog
-Info: Using vector source file "Waveforms/StageArraysPipelineModule.vwf"
+Info: Using vector source file "Waveforms/TypedPipelineModule.vwf"
 Info: Overwriting simulation input file with simulation results
-    Info: A backup of StageArraysPipelineModule.vwf called Verilog.sim_ori.vwf has been created in the db folder
+    Info: A backup of TypedPipelineModule.vwf called Verilog.sim_ori.vwf has been created in the db folder
 Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
     Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
 Info: Simulation partitioned into 1 sub-simulations
-Info: Simulation coverage is      85.26 %
-Info: Number of transitions in simulation is 688
-Info: Vector file StageArraysPipelineModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
+Info: Simulation coverage is      84.29 %
+Info: Number of transitions in simulation is 678
+Info: Vector file TypedPipelineModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
 Info: Quartus II Simulator was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 157 megabytes
-    Info: Processing ended: Sat Jan 02 20:46:02 2021
+    Info: Processing ended: Tue Jan 05 21:43:15 2021
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:02
 
