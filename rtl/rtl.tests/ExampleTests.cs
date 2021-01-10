@@ -623,8 +623,31 @@ namespace RTL.Modules
                 Assert.AreEqual(outReady, t.outReady, $"Ready failed for {inputs.ToCSV()}, {inReady}");
             };
 
+            iteration(emptyPipelineArray, false, 0, false);
+            iteration(maxPipelineArray, true, 0, false);
+            iteration(edgePipelineArray, true, 42, false);
+            iteration(emptyPipelineArray, false, 2082, true);
+            iteration(emptyPipelineArray, false, 44, true);
             iteration(emptyPipelineArray, false, 42, false);
-            iteration(maxPipelineArray, true, 42, false);
+        }
+
+        [TestMethod]
+        public void AutoPropagatePipelineModule()
+        {
+            var t = Module<AutoPropagatePipelineModule>();
+            Action<byte[], bool, ushort, bool> iteration = (inputs, inReady, outResult, outReady) =>
+            {
+                t.Cycle(new PipelineTestInputs()
+                {
+                    inData = inputs,
+                    inReady = inReady
+                });
+                Assert.AreEqual(outResult, t.outResult, $"Result failed for {inputs.ToCSV()}, {inReady}");
+                Assert.AreEqual(outReady, t.outReady, $"Ready failed for {inputs.ToCSV()}, {inReady}");
+            };
+
+            iteration(emptyPipelineArray, false, 0, false);
+            iteration(maxPipelineArray, true, 0, false);
             iteration(edgePipelineArray, true, 42, false);
             iteration(emptyPipelineArray, false, 2082, true);
             iteration(emptyPipelineArray, false, 44, true);

@@ -6,6 +6,98 @@ using System.Reflection;
 
 namespace Quokka.RTL.Local
 {
+    public class RTLPipelineStageTools
+    {
+        // https://stackoverflow.com/questions/17441420/how-to-set-value-for-property-of-an-anonymous-object
+
+        static MemberInfo getBackingField(object value, MemberInfo member)
+        {
+            var type = value.GetType();
+
+            if (member is FieldInfo)
+                return member;
+
+            var memberName = member.Name;
+            const BindingFlags FieldFlags = BindingFlags.NonPublic | BindingFlags.Instance;
+            string[] backingFieldNames = { $"<{memberName}>i__Field", $"<{memberName}>" };
+
+            var fi = type
+                .GetFields(FieldFlags)
+                .FirstOrDefault(f => backingFieldNames.Contains(f.Name));
+
+            if (fi == null)
+                throw new NotSupportedException($"Cannot find backing field for {memberName}");
+
+            return fi;
+        }
+
+        public static T RecurviseResetToDefaults<T>(T value)
+        {
+            var type = value.GetType();
+            foreach (var m in RTLModuleHelper.SynthesizableMembers(type))
+            {
+                var memberType = m.GetMemberType();
+                var memberValue = m.GetValue(value);
+                var backingField = getBackingField(value, m);
+
+                if (RTLModuleHelper.IsSynthesizableSignalType(memberType))
+                {
+                    if (RTLModuleHelper.TryGetNullableType(memberType, out var actualType))
+                    {
+                        backingField.SetValue(value, Activator.CreateInstance(actualType));
+                    }
+                    else
+                    {
+                        backingField.SetValue(value, Activator.CreateInstance(memberType));
+                    }
+                    continue;
+                }
+
+                if (RTLModuleHelper.IsSynthesizableObject(memberType))
+                {
+                    RecurviseResetToDefaults(memberValue);
+                    continue;
+                }
+
+                if (RTLModuleHelper.IsSynthesizableArrayType(memberType))
+                {
+                    var emptyArray = Array.CreateInstance(memberType.GetElementType(), (memberValue as Array).Length);
+                    backingField.SetValue(value, emptyArray);
+                    continue;
+                }
+            }
+
+            return value;
+        }
+
+        public static void CarryOverAutoPropagateValues<TSource, TTarget>(TSource source, TTarget target)
+        {
+            var sourceType = typeof(TSource);
+            var sourceMembers = RTLModuleHelper.SynthesizableMembers(sourceType);
+
+            var targetType = typeof(TTarget);
+            var targetMembers = RTLModuleHelper.SynthesizableMembers(targetType);
+
+            foreach (var m in targetMembers)
+            {
+                var targetValue = m.GetValue(target);
+                if (targetValue != null)
+                    return;
+
+                var sourceMember = sourceMembers.SingleOrDefault(s => s == m);
+                if (sourceMember == null)
+                    throw new Exception($"Member value is null on target ({targetType}.{m.Name}). Source type {sourceType.Name} does not containe fallback member");
+
+                var carryOverValue = sourceMember.GetValue(source);
+                if (carryOverValue == null)
+                    throw new Exception($"Member value is null on target ({targetType}.{m.Name}). Source type {sourceType.Name} returned null fallback value");
+
+                var backingField = getBackingField(target, m);
+                backingField.SetValue(target, carryOverValue);
+            }
+        }
+    }
+    
     [RTLToolkitType]
     public class RTLPipelineStage<TSource, TInput, TOutput> : 
         IRTLPipelineStage<TSource, TInput, TOutput>,
@@ -59,62 +151,19 @@ namespace Quokka.RTL.Local
             nextStage?.StageSetup();
         }
 
-        // https://stackoverflow.com/questions/17441420/how-to-set-value-for-property-of-an-anonymous-object
-        T RecurviseResetToDefaults<T>(T value)
-        {
-            var type = value.GetType();
-            Func<string, MemberInfo> getBackingField = (member) =>
-            {
-                const BindingFlags FieldFlags = BindingFlags.NonPublic | BindingFlags.Instance;
-                string[] backingFieldNames = { $"<{member}>i__Field", $"<{member}>" };
-
-                var fi = type
-                    .GetFields(FieldFlags)
-                    .FirstOrDefault(f => backingFieldNames.Contains(f.Name));
-
-                if (fi == null)
-                    throw new NotSupportedException(string.Format("Cannot find backing field for {0}", member));
-
-                return fi;
-            };
-
-            foreach (var m in RTLModuleHelper.SynthesizableMembers(type).Where(m => m is PropertyInfo))
-            {
-                var memberType = m.GetMemberType();
-                var memberValue = m.GetValue(value);
-                var backingField = getBackingField(m.Name);
-
-                if (RTLModuleHelper.IsSynthesizableSignalType(m.GetMemberType()))
-                {
-                    backingField.SetValue(value, Activator.CreateInstance(memberType));
-                    continue;
-                }
-
-                if (RTLModuleHelper.IsSynthesizableObject(memberType))
-                {
-                    RecurviseResetToDefaults(memberValue);
-                    continue;
-                }
-
-                if (RTLModuleHelper.IsSynthesizableArrayType(memberType))
-                {
-                    var emptyArray = Array.CreateInstance(memberType.GetElementType(), (memberValue as Array).Length);
-                    backingField.SetValue(value, emptyArray);
-                    continue;
-                }
-            }
-
-            return value;
-        }
-
         public void StageSchedule(Func<TInput> inputsFactory)
         {
             this.inputsFactory = inputsFactory;
 
             if (State == null && NextState == null)
             {
-                State = RecurviseResetToDefaults(stageMap(inputsFactory()));
-                NextState = RecurviseResetToDefaults(stageMap(inputsFactory()));
+                var stageInputs = inputsFactory();
+                State = RTLPipelineStageTools.RecurviseResetToDefaults(stageMap(stageInputs));
+                RTLPipelineStageTools.CarryOverAutoPropagateValues(stageInputs, State);
+
+                var nextStageInputs = inputsFactory();
+                NextState = RTLPipelineStageTools.RecurviseResetToDefaults(stageMap(nextStageInputs));
+                RTLPipelineStageTools.CarryOverAutoPropagateValues(nextStageInputs, NextState);
             }
 
             nextStage?.StageSchedule(() => State);
@@ -135,6 +184,8 @@ namespace Quokka.RTL.Local
         {
             var inputs = inputsFactory();
             NextState = stageMap(inputs);
+            RTLPipelineStageTools.CarryOverAutoPropagateValues(inputs, NextState);
+
             return nextStage?.StageStage(iteration) ?? false;
         }
         #endregion;
