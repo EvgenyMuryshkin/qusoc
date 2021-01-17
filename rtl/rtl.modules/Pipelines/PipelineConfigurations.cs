@@ -37,5 +37,36 @@ namespace RTL.Modules
                     ready = s1.IsS1Ready,
                     result = (ushort)(((byte)s1.sum0123 << 8) | (byte)s1.sum4567)
                 });
+
+        public static IRTLPipelineStage<PipelineTestInputs, TypedPipelineModuleStage2> TypedPipelineConfig
+            => PipelineBuilder
+                .Source<PipelineTestInputs>()
+                .Stage(inputs =>
+                {
+                    var sum0 = (ushort)(inputs.inData[0] + inputs.inData[1]);
+                    return new TypedPipelineModuleStage0
+                    {
+                        ready = inputs.inReady,
+                        sums = new ushort[]
+                        {
+                            sum0,
+                            (ushort)(inputs.inData[2] + inputs.inData[3]),
+                            (ushort)(inputs.inData[4] + inputs.inData[5]),
+                            (ushort)(inputs.inData[6] + inputs.inData[7]),
+                            42
+                        }
+                    };
+                })
+                .Stage(stage0 => new TypedPipelineModuleStage1
+                {
+                    ready = stage0.ready,
+                    s0Sums = stage0.sums,
+                    sums = new[]
+                    {
+                        (ushort)(stage0.sums[0] + stage0.sums[1]),
+                        (ushort)(stage0.sums[2] + stage0.sums[3])
+                    }
+                })
+                .Stage(s1 => TypedPipelineModuleLogic.Stage2Logic(s1));
     }
 }

@@ -1,14 +1,11 @@
 ﻿using Experimental.Tests;
 using Microsoft.CodeAnalysis.Operations;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Quokka.Public.Tools;
 using Quokka.RTL;
 using Quokka.RTL.Simulator;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace RTL.Modules
 {
@@ -30,22 +27,8 @@ namespace RTL.Modules
     }
 
     [TestClass]
-    public class ExampleTests
+    public class ExampleTests : BaseRTLModuleTests
     {
-        static string VCDOutputPath([CallerMemberName] string testName = "")
-        {
-            return Path.Combine(PathTools.ProjectPath, "SimResults", $"{testName}.vcd");
-        }
-
-        T Module<T>()
-            where T : IRTLCombinationalModule, new()
-        {
-            var module = new T();
-            module.Setup();
-
-            return module;
-        }
-
         [TestMethod]
         public void SignedCastModuleTest()
         {
@@ -558,148 +541,6 @@ namespace RTL.Modules
             iteration(empty, false, 2, true); // result at stage 4, second case
             iteration(empty, false, 3, true); // result at stage 4, third case
             iteration(empty, false, 0, false); // result at stage 4, empty
-        }
-
-        byte[] emptyPipelineArray = new byte[8];
-        byte[] maxPipelineArray = new byte[8] { byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue };
-        byte[] edgePipelineArray = new byte[] { 1, 0, 0, 0, 0, 0, 0, 1 };
-
-        [TestMethod]
-        public void AnonymousPipelineModuleTest()
-        {
-            var t = Module<AnonymousPipelineModule>();
-            Action<byte[], bool, ushort, bool> iteration = (inputs, inReady, outResult, outReady) =>
-            {
-                t.Cycle(new AnonymousPipelineModuleInputs()
-                {
-                    inData = inputs,
-                    inReady = inReady
-                });
-                Assert.AreEqual(outResult, t.outResult, $"Result failed for {inputs.ToCSV()}, {inReady}");
-                Assert.AreEqual(outReady, t.outReady, $"Ready failed for {inputs.ToCSV()}, {inReady}");
-            };
-
-            iteration(new byte[] { 0, 1, 2, 3, 4, 5, 6, 7 }, true, 0, false);
-            iteration(new byte[] { 0, 1, 2, 3, 4, 5, 6, 8 }, true, 0, false);
-            iteration(emptyPipelineArray, false, 28, true);
-            iteration(emptyPipelineArray, false, 29, true);
-            iteration(emptyPipelineArray, false, 0, false);
-        }
-
-        [TestMethod]
-        public void FromConfigurationPipelineModuleTest()
-        {
-            var t = Module<FromConfigurationPipelineModule>();
-            Action<byte[], bool, ushort, bool> iteration = (inputs, inReady, outResult, outReady) =>
-            {
-                t.Cycle(new AnonymousPipelineModuleInputs()
-                {
-                    inData = inputs,
-                    inReady = inReady
-                });
-                Assert.AreEqual(outResult, t.outResult, $"Result failed for {inputs.ToCSV()}, {inReady}");
-                Assert.AreEqual(outReady, t.outReady, $"Ready failed for {inputs.ToCSV()}, {inReady}");
-            };
-
-            iteration(maxPipelineArray, true, 0, false);
-            iteration(edgePipelineArray, true, 0, false);
-            iteration(emptyPipelineArray, false, 0xFCFC, true);
-            iteration(emptyPipelineArray, false, 0x0101, true);
-            iteration(emptyPipelineArray, false, 0, false);
-        }
-
-        [TestMethod]
-        public void TypedPipelineModuleTest()
-        {
-            var t = Module<TypedPipelineModule>();
-            Action<byte[], bool, ushort, bool> iteration = (inputs, inReady, outResult, outReady) =>
-            {
-                t.Cycle(new PipelineTestInputs()
-                {
-                    inData = inputs,
-                    inReady = inReady
-                });
-                Assert.AreEqual(outResult, t.outResult, $"Result failed for {inputs.ToCSV()}, {inReady}");
-                Assert.AreEqual(outReady, t.outReady, $"Ready failed for {inputs.ToCSV()}, {inReady}");
-            };
-
-            iteration(emptyPipelineArray, false, 0, false);
-            iteration(maxPipelineArray, true, 0, false);
-            iteration(edgePipelineArray, true, 42, false);
-            iteration(emptyPipelineArray, false, 2082, true);
-            iteration(emptyPipelineArray, false, 44, true);
-            iteration(emptyPipelineArray, false, 42, false);
-        }
-
-        [TestMethod]
-        public void AutoPropagatePipelineModule()
-        {
-            var t = Module<AutoPropagatePipelineModule>();
-            Action<byte[], bool, ushort, bool> iteration = (inputs, inReady, outResult, outReady) =>
-            {
-                t.Cycle(new PipelineTestInputs()
-                {
-                    inData = inputs,
-                    inReady = inReady
-                });
-                Assert.AreEqual(outResult, t.outResult, $"Result failed for {inputs.ToCSV()}, {inReady}");
-                Assert.AreEqual(outReady, t.outReady, $"Ready failed for {inputs.ToCSV()}, {inReady}");
-            };
-
-            iteration(emptyPipelineArray, false, 0, false);
-            iteration(maxPipelineArray, true, 0, false);
-            iteration(edgePipelineArray, true, 42, false);
-            iteration(emptyPipelineArray, false, 2082, true);
-            iteration(emptyPipelineArray, false, 44, true);
-            iteration(emptyPipelineArray, false, 42, false);
-        }
-
-        [TestMethod]
-        public void StageArraysPipelineModule()
-        {
-            var t = Module<StageArraysPipelineModule>();
-            Action<byte[], bool, ushort, bool> iteration = (inputs, inReady, outResult, outReady) =>
-            {
-                t.Cycle(new AnonymousPipelineModuleInputs()
-                {
-                    inData = inputs,
-                    inReady = inReady
-                });
-                Assert.AreEqual(outResult, t.outResult, $"Result failed for {inputs.ToCSV()}, {inReady}");
-                Assert.AreEqual(outReady, t.outReady, $"Ready failed for {inputs.ToCSV()}, {inReady}");
-            };
-
-            iteration(emptyPipelineArray, false, 0, false);
-            iteration(maxPipelineArray, true, 0, false);
-            iteration(edgePipelineArray, true, 42, false);
-            iteration(emptyPipelineArray, false, 2082, true);
-            iteration(emptyPipelineArray, false, 44, true);
-            iteration(emptyPipelineArray, false, 42, false);
-        }
-
-        [TestMethod]
-        public void CustomSchedulePipelineModuleTest()
-        {
-            var t = Module<CustomSchedulePipelineModule>();
-            Action<byte[], bool, ushort, bool, ushort, bool> iteration = (inputs, inReady, outResult1, outReady1, outResult2, outReady2) =>
-            {
-                t.Cycle(new PipelineTestInputs()
-                {
-                    inData = inputs,
-                    inReady = inReady
-                });
-                Assert.AreEqual(outResult1, t.outResult1, $"Result1 failed for {inputs.ToCSV()}, {inReady}");
-                Assert.AreEqual(outReady1, t.outReady1, $"Ready1 failed for {inputs.ToCSV()}, {inReady}");
-                Assert.AreEqual(outResult2, t.outResult2, $"Result2 failed for {inputs.ToCSV()}, {inReady}");
-                Assert.AreEqual(outReady2, t.outReady2, $"Ready2 failed for {inputs.ToCSV()}, {inReady}");
-            };
-
-            iteration(emptyPipelineArray, false, 0, false, 0, false);
-            iteration(maxPipelineArray, true, 0, false, 0, false);
-            iteration(edgePipelineArray, true, 0, false, 65024, false);
-            iteration(emptyPipelineArray, false, 0xFCFC, true, 63612, true);
-            iteration(emptyPipelineArray, false, 0x0101, true, 65281, true);
-            iteration(emptyPipelineArray, false, 0, false, 65024, false);
         }
     }
 }

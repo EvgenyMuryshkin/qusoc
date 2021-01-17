@@ -35,7 +35,6 @@
 #
 # -------------------------------------------------------------------------- #
 
-
 set_global_assignment -name FAMILY "Cyclone II"
 set_global_assignment -name DEVICE AUTO
 set_global_assignment -name TOP_LEVEL_ENTITY Enc
@@ -48,11 +47,8 @@ set_global_assignment -name SDC_FILE quokka.sdc
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/ALUModule.vwf
 set_global_assignment -name VERILOG_FILE Quokka.v
 
-
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/Blinker20.vwf
 set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
-
-
 
 set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
 

@@ -1,0 +1,25 @@
+﻿using Quokka.Public.Tools;
+using Quokka.RTL;
+using System.IO;
+using System.Runtime.CompilerServices;
+
+namespace RTL.Modules
+{
+    public class BaseRTLModuleTests
+    {
+        protected static string VCDOutputPath([CallerMemberName] string testName = "")
+        {
+            return Path.Combine(PathTools.ProjectPath, "SimResults", $"{testName}.vcd");
+        }
+
+        protected T Module<T>()
+            where T : IRTLCombinationalModule, new()
+        {
+            var module = new T();
+            module.Setup();
+
+            return module;
+        }
+    }
+}
+

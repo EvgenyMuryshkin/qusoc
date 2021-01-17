@@ -49,6 +49,19 @@ namespace Quokka.RTL.Local
         Type IRTLPipelineDiagnostics.ResultType => (this as IRTLPipelineDiagnostics).Stages.Last().Diag.ResultType;
         #endregion
 
+        public IRTLPipelinePeek<TState> Peek<TState>()
+        {
+            var stateType = typeof(TState);
+            var stages = (this as IRTLPipelineDiagnostics).Stages;
+            var matchingStages = stages.Where(s => s.StateType == stateType).ToList();
+            switch(matchingStages.Count)
+            {
+                case 0: throw new Exception($"No stages of type '{stateType.Name}' found on pipeline");
+                case 1: return new RTLPipelinePeek<TState>((TState)matchingStages.Single().StateValue);
+                default: throw new Exception($"Multiple stages of type '{stateType.Name}' found on pipeline");
+            }
+        }
+
         #region IRTLControlFlow
         public void Schedule(Func<TSource> sourceFactory) => FirstStage.StageSchedule(sourceFactory);
         public bool Stage(int iteration) => FirstStage.StageStage(iteration);
