@@ -94,6 +94,8 @@ namespace Quokka.RTL
 
         }
 
+        public virtual bool OnRelatedObjectCreating(object data) => false;
+
         public void Setup()
         {
             OnSetup();

@@ -37,7 +37,7 @@ namespace Quokka.RTL
 
             foreach (var head in Pipelines.Select(pl => pl.Diag.Head))
             {
-                head.Setup();
+                head.Setup(this);
             }
 
             // store default state for reset logic

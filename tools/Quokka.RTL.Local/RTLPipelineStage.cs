@@ -26,8 +26,10 @@ namespace Quokka.RTL.Local
         }
 
         private readonly Func<TInput, TOutput> stageMap;
+        private readonly Func<TInput, TOutput, TOutput> stageMapWithState;
         private Func<TInput> inputsFactory;
         private IRTLPipelineStage<TOutput> nextStage;
+        private IRTLCombinationalModule rtlModule;
 
         public RTLPipelineStage(IRTLPipelineHead<TSource> head, Func<TInput, TOutput> stage)
         {
@@ -35,7 +37,20 @@ namespace Quokka.RTL.Local
             stageMap = stage;
         }
 
+        public RTLPipelineStage(IRTLPipelineHead<TSource> head, Func<TInput, TOutput, TOutput> stage)
+        {
+            pipelineHead = head;
+            stageMapWithState = stage;
+        }
+
         public IRTLPipelineStage<TSource, TResult> Stage<TResult>(Func<TOutput, TResult> map)
+        {
+            var next = new RTLPipelineStage<TSource, TOutput, TResult>(pipelineHead, map);
+            nextStage = next;
+            return next;
+        }
+
+        public IRTLPipelineStage<TSource, TResult> Stage<TResult>(Func<TOutput, TResult, TResult> map)
         {
             var next = new RTLPipelineStage<TSource, TOutput, TResult>(pipelineHead, map);
             nextStage = next;
@@ -53,11 +68,12 @@ namespace Quokka.RTL.Local
         #region IRTLPipelineStage
         public IRTLPipelinePeek<TState> Peek<TState>() => pipelineHead.Peek<TState>();
 
-        public void StageSetup()
+        public void StageSetup(IRTLCombinationalModule module)
         {
+            rtlModule = module;
             // do not setup state values of pipeline in StageSetup
             // moved to initial schedule with actual input values to support stage arrays
-            nextStage?.StageSetup();
+            nextStage?.StageSetup(module);
         }
 
         public void StageSchedule(Func<TInput> inputsFactory)
@@ -67,12 +83,35 @@ namespace Quokka.RTL.Local
             if (State == null && NextState == null)
             {
                 var stageInputs = inputsFactory();
-                State = RTLPipelineStageTools.RecurviseResetToDefaults(stageMap(stageInputs));
-                RTLPipelineStageTools.CarryOverAutoPropagateValues(stageInputs, State);
-
                 var nextStageInputs = inputsFactory();
-                NextState = RTLPipelineStageTools.RecurviseResetToDefaults(stageMap(nextStageInputs));
+
+                if (stageMap != null)
+                {
+                    State = RTLPipelineStageTools.RecurviseResetToDefaults(stageMap(stageInputs));
+                    NextState = RTLPipelineStageTools.RecurviseResetToDefaults(stageMap(nextStageInputs));
+                }
+                else if (stageMapWithState != null)
+                {
+                    var virtualState = RTLModuleHelper.Activate<TOutput>();
+                    rtlModule.OnRelatedObjectCreating(virtualState);
+
+                    State = RTLPipelineStageTools.RecurviseResetToDefaults(stageMapWithState(stageInputs, virtualState));
+
+                    var virtualNextState = RTLModuleHelper.Activate<TOutput>();
+                    rtlModule.OnRelatedObjectCreating(virtualNextState);
+
+                    NextState = RTLPipelineStageTools.RecurviseResetToDefaults(stageMapWithState(nextStageInputs, virtualNextState));
+                }
+                else
+                {
+                    throw new Exception($"Pipeline stage is not initialized with scheduling method");
+                }
+
+                RTLPipelineStageTools.CarryOverAutoPropagateValues(stageInputs, State);
+                rtlModule.OnRelatedObjectCreating(State);
+
                 RTLPipelineStageTools.CarryOverAutoPropagateValues(nextStageInputs, NextState);
+                rtlModule.OnRelatedObjectCreating(NextState);
             }
 
             nextStage?.StageSchedule(() => State);
@@ -92,7 +131,15 @@ namespace Quokka.RTL.Local
         public bool StageStage(int iteration)
         {
             var inputs = inputsFactory();
-            NextState = stageMap(inputs);
+            if (stageMap != null)
+            {
+                NextState = stageMap(inputs);
+            }
+            else if (stageMapWithState != null)
+            {
+                NextState = stageMapWithState(inputs, State);
+            }
+
             RTLPipelineStageTools.CarryOverAutoPropagateValues(inputs, NextState);
 
             return nextStage?.StageStage(iteration) ?? false;
@@ -104,7 +151,7 @@ namespace Quokka.RTL.Local
         public bool Stage(int iteration) => pipelineHead.Stage(iteration);
         public void Commit() => pipelineHead.Commit();
         public void Reset() => pipelineHead.Reset();
-        public void Setup() => pipelineHead.Setup();
         #endregion
+        public void Setup(IRTLCombinationalModule module) => pipelineHead.Setup(module);
     }
 }

@@ -14,11 +14,18 @@ namespace Quokka.RTL.Local.Tests
         public bool IsValid;
     }
 
+    class PipelineTestModule : RTLCombinationalModule<TestPipelineInput>
+    {
+
+    }
+
     [TestClass]
     public class PipelineBuilderTests
     {
         IRTLPipelineStage<TestPipelineInput, TestPipelineOutput> TestPipeline()
         {
+            var module = new PipelineTestModule();
+
             var result =  PipelineBuilder
                 .Source<TestPipelineInput>()
                 .Stage(inputs => new { stage1Value = inputs.Ready ? inputs.Value + 1 : 0, flag = inputs.Ready })
@@ -26,7 +33,7 @@ namespace Quokka.RTL.Local.Tests
                 .Stage(stage2 => new TestPipelineOutput { Result = stage2.flag ? stage2.stage2Value + 1 : 0, IsValid = stage2.flag })
                 ;
 
-            result.Setup();
+            result.Setup(module);
 
             return result;
         }

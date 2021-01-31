@@ -179,6 +179,32 @@ namespace RTL.Modules
             iteration(emptyPipelineArray, false, 44, true, 0, 0, false);
             iteration(emptyPipelineArray, false, 42, false, 0, 0, false);
         }
+
+        [TestMethod]
+        public void StageStatePipelineModuleTest()
+        {
+            var t = Module<StageStatePipelineModule>();
+            Action<byte[], bool, ushort, bool, ushort, ushort, ushort> iteration = (inputs, inReady, outResult, outReady, outS0Counter, outS1Counter, outS2Counter) =>
+            {
+                t.Cycle(new PipelineTestInputs()
+                {
+                    inData = inputs,
+                    inReady = inReady
+                });
+                Assert.AreEqual(outResult, t.outResult, $"Result failed for {inputs.ToCSV()}, {inReady}, {outS0Counter}, {outS1Counter}, {outS2Counter}");
+                Assert.AreEqual(outReady, t.outReady, $"Ready failed for {inputs.ToCSV()}, {inReady}, {outS0Counter}, {outS1Counter}, {outS2Counter}");
+                Assert.AreEqual(outS0Counter, t.outS0Counter, $"S0 Counter failed for {inputs.ToCSV()}, {inReady}, {outS0Counter}, {outS1Counter}, {outS2Counter}");
+                Assert.AreEqual(outS1Counter, t.outS1Counter, $"S1 Counter failed for {inputs.ToCSV()}, {inReady}, {outS0Counter}, {outS1Counter}, {outS2Counter}");
+                Assert.AreEqual(outS2Counter, t.outS2Counter, $"S2 Counter failed for {inputs.ToCSV()}, {inReady}, {outS0Counter}, {outS1Counter}, {outS2Counter}");
+            };
+
+            iteration(emptyPipelineArray, false, 0, false,  0, 0, 1);
+            iteration(maxPipelineArray, true, 0, false,     0, 1, 2);
+            iteration(edgePipelineArray, true, 0, false,    1, 2, 3);
+            iteration(emptyPipelineArray, false, 2040, true,2, 3, 4);
+            iteration(emptyPipelineArray, false, 2, true,   3, 4, 5);
+            iteration(emptyPipelineArray, false, 0, false,  4, 5, 6);
+        }
     }
 }
 

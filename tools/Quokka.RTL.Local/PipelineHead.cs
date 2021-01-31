@@ -23,7 +23,14 @@ namespace Quokka.RTL.Local
             return result;
         }
 
-        public void Setup() => FirstStage.StageSetup();
+        public IRTLPipelineStage<TSource, TResult> Stage<TResult>(Func<TSource, TResult, TResult> map)
+        {
+            var result = new RTLPipelineStage<TSource, TSource, TResult>(this, map);
+            FirstStage = result;
+            return result;
+        }
+
+        public void Setup(IRTLCombinationalModule module) => FirstStage.StageSetup(module);
 
         #region IRTLPipelineDiagnostics
         IRTLPipelineHead IRTLPipelineDiagnostics.Head => this;

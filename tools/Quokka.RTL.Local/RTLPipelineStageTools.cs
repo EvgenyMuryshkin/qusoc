@@ -1,15 +1,49 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
 namespace Quokka.RTL.Local
 {
+
+    /// <summary>
+    /// Pipeline state class must implement this interface in order to enable automatic stall management
+    /// </summary>
+    public interface IRTLPipelineManagedState
+    {
+        /// <summary>
+        /// Flag indicates that stage has stalled. 
+        /// Can be set in any stage
+        /// All previous stages will freeze. 
+        /// All subsequent stages will continue to push data throught
+        /// </summary>
+        bool? Stall { set; }
+
+        /// <summary>
+        /// Flag indicates that subsequent stage has stalled
+        /// </summary>
+        bool? Stalled { get; }
+    }
+
     [RTLToolkitType]
     public class RTLPipelineStageTools
     {
-        // https://stackoverflow.com/questions/17441420/how-to-set-value-for-property-of-an-anonymous-object
+        static List<MemberInfo> GetAllFields(Type type)
+        {
+            var result = new List<MemberInfo>();
+            if (type == null || type == typeof(object))
+                return result;
 
-        static MemberInfo getBackingField(object value, MemberInfo member)
+            const BindingFlags FieldFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy;
+
+            result.AddRange(type.GetFields(FieldFlags));
+            result.AddRange(GetAllFields(type.BaseType));
+
+            return result;
+        }
+
+        // https://stackoverflow.com/questions/17441420/how-to-set-value-for-property-of-an-anonymous-object
+        public static MemberInfo getBackingField(object value, MemberInfo member)
         {
             var type = value.GetType();
 
@@ -17,12 +51,15 @@ namespace Quokka.RTL.Local
                 return member;
 
             var memberName = member.Name;
-            const BindingFlags FieldFlags = BindingFlags.NonPublic | BindingFlags.Instance;
-            string[] backingFieldNames = { $"<{memberName}>i__Field", $"<{memberName}>" };
 
-            var fi = type
-                .GetFields(FieldFlags)
-                .FirstOrDefault(f => backingFieldNames.Contains(f.Name));
+            string[] backingFieldNames = { 
+                $"<{memberName}>i__Field",
+                $"<{memberName}>k__BackingField",
+                $"<{memberName}>" 
+            };
+
+            var allFields = GetAllFields(type);
+            var fi = allFields.FirstOrDefault(f => backingFieldNames.Contains(f.Name));
 
             if (fi == null)
                 throw new NotSupportedException($"Cannot find backing field for {memberName}");

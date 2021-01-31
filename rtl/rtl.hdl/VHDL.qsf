@@ -1,4 +1,4 @@
-set_global_assignment -name TOP_LEVEL_ENTITY StagePeekPipelineModule_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY YandexTestModule_TopLevel
 # -------------------------------------------------------------------------- #
 #
 # Copyright (C) 1991-2010 Altera Corporation
@@ -107,6 +107,7 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StageArraysPipelineMo
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/TypedPipelineModule.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AutoPropagatePipelineModule.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StagePeekPipelineModule.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StageStatePipelineModule.vwf
 
 set_global_assignment -name VHDL_FILE VHDL/generated/OverridesComposition/OverridesComposition_TopLevel_OverridesComposition_NoOverride.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/OverridesComposition/OverridesComposition_TopLevel.vhdl
@@ -149,7 +150,7 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/FromConfigurationPipe
 set_global_assignment -name VHDL_FILE VHDL/generated/AnonymousPipelineModule/AnonymousPipelineModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/FromConfigurationPipelineModule/FromConfigurationPipelineModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/CustomSchedulePipelineModule/CustomSchedulePipelineModule_TopLevel.vhdl
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/StagePeekPipelineModule.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/YandexTestModule.vwf
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
@@ -160,3 +161,4 @@ set_global_assignment -name VHDL_FILE VHDL/generated/StageArraysPipelineModule/S
 set_global_assignment -name VHDL_FILE VHDL/generated/TypedPipelineModule/TypedPipelineModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/AutoPropagatePipelineModule/AutoPropagatePipelineModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/StagePeekPipelineModule/StagePeekPipelineModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/StageStatePipelineModule/StageStatePipelineModule_TopLevel.vhdl
