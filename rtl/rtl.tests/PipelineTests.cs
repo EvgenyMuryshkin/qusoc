@@ -215,6 +215,29 @@ namespace RTL.Modules
             iteration(emptyPipelineArray, false, 2, true,   3, 4, 5);
             iteration(emptyPipelineArray, false, 0, false,  4, 5, 6);
         }
+
+        [TestMethod]
+        public void StallControlPipelineModuleTest_StallPipeline()
+        {
+            var t = Module<StallControlPipelineModule>();
+            t.Cycle(new StallControlInputs());
+            Assert.IsTrue(t.outPipelineStalled);
+        }
+
+        [TestMethod]
+        public void StallControlPipelineModuleTest_StallSelf()
+        {
+            var t = Module<StallControlPipelineModule>();
+            t.Cycle(new StallControlInputs()
+            {
+                inProcessed = true
+            });
+
+            Assert.IsTrue(t.outStage0Stalled);
+            Assert.IsFalse(t.outStage1Stalled);
+            Assert.IsFalse(t.outStage2Stalled);
+            Assert.IsFalse(t.outPipelineStalled);
+        }
     }
 }
 

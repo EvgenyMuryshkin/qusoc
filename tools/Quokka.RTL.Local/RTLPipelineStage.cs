@@ -13,8 +13,8 @@ namespace Quokka.RTL.Local
         public TOutput State { get; set; }
         public TOutput NextState { get; set; }
 
-        RTLPipelineStageControl StateControl = new RTLPipelineStageControl();
-        RTLPipelineStageControl NextStateControl = new RTLPipelineStageControl(); 
+        RTLPipelineStageControlSignals ControlSignals = new RTLPipelineStageControlSignals();
+        RTLPipelineStageControlSignals NextControlSignals = new RTLPipelineStageControlSignals(); 
 
         Type IRTLPipelineStage.InputsType => typeof(TInput);
         Type IRTLPipelineStage.StateType => typeof(TOutput);
@@ -30,7 +30,7 @@ namespace Quokka.RTL.Local
 
         private readonly Func<TInput, TOutput> stageMap;
         private readonly Func<TInput, TOutput, TOutput> stageMapWithState;
-        private readonly Func<TInput, TOutput, IRTLPipelineStageContol, TOutput> stageMapWithStateAndControl;
+        private readonly Func<TInput, TOutput, IRTLPipelineStageControlSignals, TOutput> stageMapWithStateAndControl;
 
         private Func<TInput> inputsFactory;
         private IRTLPipelineStage<TOutput> nextStage;
@@ -48,7 +48,7 @@ namespace Quokka.RTL.Local
             stageMapWithState = stage;
         }
 
-        public RTLPipelineStage(IRTLPipelineHead<TSource> head, Func<TInput, TOutput, IRTLPipelineStageContol, TOutput> stage)
+        public RTLPipelineStage(IRTLPipelineHead<TSource> head, Func<TInput, TOutput, IRTLPipelineStageControlSignals, TOutput> stage)
         {
             pipelineHead = head;
             stageMapWithStateAndControl = stage;
@@ -68,7 +68,7 @@ namespace Quokka.RTL.Local
             return next;
         }
 
-        public IRTLPipelineStage<TSource, TResult> Stage<TResult>(Func<TOutput, TResult, IRTLPipelineStageContol, TResult> map)
+        public IRTLPipelineStage<TSource, TResult> Stage<TResult>(Func<TOutput, TResult, IRTLPipelineStageControlSignals, TResult> map)
         {
             var next = new RTLPipelineStage<TSource, TOutput, TResult>(pipelineHead, map);
             nextStage = next;
@@ -122,7 +122,7 @@ namespace Quokka.RTL.Local
                 }
                 else if (stageMapWithStateAndControl != null)
                 {
-                    var stageControl = new RTLPipelineStageControl();
+                    var stageControl = new RTLPipelineStageControlSignals();
                     var virtualState = RTLModuleHelper.Activate<TOutput>();
                     rtlModule.OnRelatedObjectCreating(virtualState);
 
@@ -149,21 +149,63 @@ namespace Quokka.RTL.Local
         }
         public void StageCommit()
         {
-            State = NextState;
+            if (!NextControlSignals.StageWillStall)
+            {
+                State = NextState;
+                ControlSignals = NextControlSignals;
+            }
+
             nextStage?.StageCommit();
         }
 
         public void StageReset()
         {
             NextState = State;
+            NextControlSignals = ControlSignals;
             nextStage?.StageReset();
         }
 
-        (TOutput, RTLPipelineStageControl) NextStateCandidate()
+        bool internalPipelineWillStall(RTLPipelineStageControlSignals nextControlSignals)
+        {
+            return
+                (nextControlSignals.StallPipeline ?? false) ||
+                (nextStage?.PipelineWillStall ?? false) ||
+                (nextStage == null && NextControlSignals.StallSelf == true);
+        }
+
+        bool internalStageWillStall(RTLPipelineStageControlSignals nextControlSignals)
+        {
+            return
+                (PipelineWillStall) ||
+                (nextControlSignals.StallSelf ?? false) ||
+                (nextStage?.StageWillStall ?? false) ||
+                (nextStage?.PrevStageWillStall ?? false);
+        }
+
+        public bool PipelineWillStall => internalPipelineWillStall(NextControlSignals);
+        public bool StageWillStall => internalStageWillStall(NextControlSignals);
+        public bool PrevStageWillStall => NextControlSignals.PrevStageWillStall;
+        public bool StageStalled => ControlSignals.StageStalled;
+        public bool PipelineStalled => _pipelineHead.PipelineStalled;
+
+        RTLPipelineStageControlSignals NextStageControlCandidate(RTLPipelineStageControlSignals nextControlSignals)
+        {
+            var stageControl = new RTLPipelineStageControlSignals()
+            {
+                PipelineStalled = PipelineStalled,
+                StageStalled = StageStalled,
+                StageWillStall = internalStageWillStall(nextControlSignals),
+                PipelineWillStall = pipelineHead.PipelineWillStall
+            };
+
+            return stageControl;
+        }
+
+        (TOutput, RTLPipelineStageControlSignals) NextStateCandidate()
         {
             var inputs = inputsFactory();
             TOutput result = default(TOutput);
-            var stageControl = new RTLPipelineStageControl();
+            var stageControl = NextStageControlCandidate(NextControlSignals);
 
             if (stageMap != null)
             {
@@ -184,40 +226,16 @@ namespace Quokka.RTL.Local
 
         public RTLModuleStageResult StageStage(int iteration)
         {
-            var (nextStateCandidate, stageControlCandidate) = NextStateCandidate();
+            var (nextStateCandidate, nextStageControlCandidates) = NextStateCandidate();
 
             var modified = rtlModule.DeepEquals(NextState, nextStateCandidate);
 
             NextState = nextStateCandidate;
+            NextControlSignals = NextStageControlCandidate(nextStageControlCandidates);
 
             var nextStageResult = nextStage?.StageStage(iteration) ?? RTLModuleStageResult.Stable;
 
-            return nextStageResult;
-            /*
-            // stall control root
-            if (managedState?.Stalled ?? false)
-                return RTLPipelineStageResult.Stalled;
-
-            switch (nextStageResult)
-            {
-                case RTLPipelineStageResult.Stable:
-                    return RTLPipelineStageResult.Stable;
-                case RTLPipelineStageResult.Unstable:
-                    return RTLPipelineStageResult.Unstable;
-                case RTLPipelineStageResult.Stalled:
-                    if (NextState is IRTLPipelineManagedState managedState)
-                    {
-
-                    }
-                    else
-                    {
-                        return RTLPipelineStageResult.Stalled;
-                    }
-                    break;
-                default:
-                    throw new Exception($"Unsupported response from pipeline stage: {nextStageResult}");
-            }
-            */
+            return (modified || nextStageResult == RTLModuleStageResult.Unstable) ? RTLModuleStageResult.Unstable : RTLModuleStageResult.Stable;
         }
         #endregion;
 

@@ -35,10 +35,17 @@ namespace RTL.Modules
     public class StallControlPipelineModule : RTLSynchronousModule<StallControlInputs, PipelinesTestModuleEmptyState>
     {
         IRTLPipelineStage<StallControlInputs, StallControlStage2> Pipeline;
+        IRTLPipelinePeek<StallControlStage0> stage0Peek => Pipeline.Peek<StallControlStage0>();
+        IRTLPipelinePeek<StallControlStage1> stage1Peek => Pipeline.Peek<StallControlStage1>();
+        IRTLPipelinePeek<StallControlStage2> stage2Peek => Pipeline.Peek<StallControlStage2>();
 
         public bool outReady => (bool)Pipeline.State.IsReady;
-        //public ushort outResult => Pipeline.State.result;
-        //public bool outStalled => (bool)Pipeline.State.Stalled;
+        public ushort outResult => Pipeline.State.result;
+        public bool outPipelineWillStall => Pipeline.PipelineWillStall;
+        public bool outPipelineStalled => Pipeline.PipelineStalled;
+        public bool outStage0Stalled => stage0Peek.StageStalled;
+        public bool outStage1Stalled => stage1Peek.StageStalled;
+        public bool outStage2Stalled => stage2Peek.StageStalled;
 
         public StallControlPipelineModule()
         {
@@ -61,7 +68,7 @@ namespace RTL.Modules
                 .Stage<StallControlStage1>((s0, prevState, stageControl) =>
                 {
                     // stall previous stage until count to input value
-                    stageControl.StallPrev = prevState.counter < s0.data;
+                    stageControl.StallPrev = prevState.counter != s0.data;
                     return new StallControlStage1
                     {
                         counter = (byte)(prevState.counter == s0.data ? 0 : prevState.counter + 1),

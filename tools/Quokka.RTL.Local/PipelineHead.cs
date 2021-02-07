@@ -13,6 +13,7 @@ namespace Quokka.RTL.Local
             get => _stage ?? throw new NullReferenceException(nameof(Stage));
             set => _stage = value;
         }
+        bool _pipelineStalled;
 
         public IRTLPipelineDiagnostics Diag => this;
 
@@ -30,7 +31,7 @@ namespace Quokka.RTL.Local
             return result;
         }
 
-        public IRTLPipelineStage<TSource, TResult> Stage<TResult>(Func<TSource, TResult, IRTLPipelineStageContol, TResult> map)
+        public IRTLPipelineStage<TSource, TResult> Stage<TResult>(Func<TSource, TResult, IRTLPipelineStageControlSignals, TResult> map)
         {
             var result = new RTLPipelineStage<TSource, TSource, TResult>(this, map);
             FirstStage = result;
@@ -73,15 +74,22 @@ namespace Quokka.RTL.Local
                 case 0: throw new Exception($"No stages of type '{stateType.Name}' found on pipeline");
                 case 1:
                     var stage = matchingStages.Single();
-                    return new RTLPipelinePeek<TState>((TState)stage.StateValue, (TState)stage.NextStateValue);
+                    return new RTLPipelinePeek<TState>((TState)stage.StateValue, (TState)stage.NextStateValue, stage);
                 default: throw new Exception($"Multiple stages of type '{stateType.Name}' found on pipeline");
             }
         }
 
         #region IRTLControlFlow
+        public bool PipelineWillStall => FirstStage.PipelineWillStall;
+        public bool PipelineStalled => _pipelineStalled;
         public void Schedule(Func<TSource> sourceFactory) => FirstStage.StageSchedule(sourceFactory);
         public RTLModuleStageResult Stage(int iteration) => FirstStage.StageStage(iteration);
-        public void Commit() => FirstStage.StageCommit();
+        public void Commit()
+        {
+            _pipelineStalled = PipelineWillStall;
+            FirstStage.StageCommit();
+        }
+
         public void Reset() => FirstStage.StageReset();
         #endregion
     }
