@@ -86,12 +86,12 @@ namespace Quokka.RTL.Simulator
             {
                 _simulatorContext.CurrentTime++;
 
-                var modified = _topLevel.Stage(_simulatorContext.Iteration);
+                var stageResult = _topLevel.Stage(_simulatorContext.Iteration);
 
                 TraceSignals();
 
                 // no modules were modified during stage iteration, all converged
-                if (!modified)
+                if (stageResult == RTLModuleStageResult.Stable)
                     break;
             }
             while (++_simulatorContext.Iteration < _simulatorContext.MaxStageIterations);

@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Quokka.RTL;
 using System;
 using System.Collections.Generic;
 
@@ -159,11 +160,20 @@ namespace RTL.Modules
                 outResult, outReady,
                 stage1Sum0, stage1Sum1, stage1Ready) =>
             {
-                t.Cycle(new PipelineTestInputs()
-                {
-                    inData = inputs,
-                    inReady = inReady
-                });
+                t.Cycle(
+                    new PipelineTestInputs()
+                    {
+                        inData = inputs,
+                        inReady = inReady
+                    }, 
+                    new RTLModuleCycleParams()
+                    {
+                        OnBeforeStage = () =>
+                        {
+                            Assert.AreEqual(stage1Sum0, t.stage1NextSum0, $"Stage1NextSum0 failed for {inputs.ToCSV()}, {inReady}");
+                        }
+                    });
+
                 Assert.AreEqual(outResult, t.outResult, $"Result failed for {inputs.ToCSV()}, {inReady}");
                 Assert.AreEqual(outReady, t.outReady, $"Ready failed for {inputs.ToCSV()}, {inReady}");
 
@@ -172,12 +182,12 @@ namespace RTL.Modules
                 Assert.AreEqual(stage1Ready, t.stage1Ready, $"Stage1Ready failed for {inputs.ToCSV()}, {inReady}");
             };
 
-            iteration(emptyPipelineArray, false, 0, false, 0, 0, false);
-            iteration(maxPipelineArray, true, 0, false, 0, 0, false);
-            iteration(edgePipelineArray, true, 42, false, 1020, 1020, true);
-            iteration(emptyPipelineArray, false, 2082, true, 1, 1, true);
-            iteration(emptyPipelineArray, false, 44, true, 0, 0, false);
-            iteration(emptyPipelineArray, false, 42, false, 0, 0, false);
+            iteration(emptyPipelineArray,   false, 0,       false, 0, 0, false);
+            iteration(maxPipelineArray,     true, 0,        false, 0, 0, false);
+            iteration(edgePipelineArray,    true, 42,       false, 1020, 1020, true);
+            iteration(emptyPipelineArray,   false, 2082,    true, 1, 1, true);
+            iteration(emptyPipelineArray,   false, 44,      true, 0, 0, false);
+            iteration(emptyPipelineArray,   false, 42,      false, 0, 0, false);
         }
 
         [TestMethod]

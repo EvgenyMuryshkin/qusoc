@@ -5,26 +5,6 @@ using System.Reflection;
 
 namespace Quokka.RTL.Local
 {
-
-    /// <summary>
-    /// Pipeline state class must implement this interface in order to enable automatic stall management
-    /// </summary>
-    public interface IRTLPipelineManagedState
-    {
-        /// <summary>
-        /// Flag indicates that stage has stalled. 
-        /// Can be set in any stage
-        /// All previous stages will freeze. 
-        /// All subsequent stages will continue to push data throught
-        /// </summary>
-        bool? Stall { set; }
-
-        /// <summary>
-        /// Flag indicates that subsequent stage has stalled
-        /// </summary>
-        bool? Stalled { get; }
-    }
-
     [RTLToolkitType]
     public class RTLPipelineStageTools
     {
@@ -122,7 +102,7 @@ namespace Quokka.RTL.Local
 
                 var sourceMember = sourceMembers.SingleOrDefault(s => s == m);
                 if (sourceMember == null)
-                    throw new Exception($"Member value is null on target ({targetType}.{m.Name}). Source type {sourceType.Name} does not containe fallback member");
+                    throw new Exception($"Member value is null on target ({targetType}.{m.Name}). Source type {sourceType.Name} does not contain fallback member");
 
                 var carryOverValue = sourceMember.GetValue(source);
                 if (carryOverValue == null)

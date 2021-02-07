@@ -14,6 +14,7 @@ namespace RTL.Modules
         IRTLPipelinePeek<TypedPipelineModuleStage1> stage1Peek => Pipeline.Peek<TypedPipelineModuleStage1>();
         public bool stage1Ready => stage1Peek.State.ready;
         public ushort stage1Sum0 => stage1Peek.State.sums[0];
+        public ushort stage1NextSum0 => stage1Peek.NextState.sums[0];
         public ushort stage1Sum1 => Pipeline.Peek<TypedPipelineModuleStage1>().State.sums[1];
 
         public StagePeekPipelineModule()

@@ -13,6 +13,9 @@ namespace Quokka.RTL.Local
         public TOutput State { get; set; }
         public TOutput NextState { get; set; }
 
+        RTLPipelineStageControl StateControl = new RTLPipelineStageControl();
+        RTLPipelineStageControl NextStateControl = new RTLPipelineStageControl(); 
+
         Type IRTLPipelineStage.InputsType => typeof(TInput);
         Type IRTLPipelineStage.StateType => typeof(TOutput);
         object IRTLPipelineStage.StateValue => State;
@@ -27,6 +30,8 @@ namespace Quokka.RTL.Local
 
         private readonly Func<TInput, TOutput> stageMap;
         private readonly Func<TInput, TOutput, TOutput> stageMapWithState;
+        private readonly Func<TInput, TOutput, IRTLPipelineStageContol, TOutput> stageMapWithStateAndControl;
+
         private Func<TInput> inputsFactory;
         private IRTLPipelineStage<TOutput> nextStage;
         private IRTLCombinationalModule rtlModule;
@@ -43,6 +48,12 @@ namespace Quokka.RTL.Local
             stageMapWithState = stage;
         }
 
+        public RTLPipelineStage(IRTLPipelineHead<TSource> head, Func<TInput, TOutput, IRTLPipelineStageContol, TOutput> stage)
+        {
+            pipelineHead = head;
+            stageMapWithStateAndControl = stage;
+        }
+
         public IRTLPipelineStage<TSource, TResult> Stage<TResult>(Func<TOutput, TResult> map)
         {
             var next = new RTLPipelineStage<TSource, TOutput, TResult>(pipelineHead, map);
@@ -51,6 +62,13 @@ namespace Quokka.RTL.Local
         }
 
         public IRTLPipelineStage<TSource, TResult> Stage<TResult>(Func<TOutput, TResult, TResult> map)
+        {
+            var next = new RTLPipelineStage<TSource, TOutput, TResult>(pipelineHead, map);
+            nextStage = next;
+            return next;
+        }
+
+        public IRTLPipelineStage<TSource, TResult> Stage<TResult>(Func<TOutput, TResult, IRTLPipelineStageContol, TResult> map)
         {
             var next = new RTLPipelineStage<TSource, TOutput, TResult>(pipelineHead, map);
             nextStage = next;
@@ -102,6 +120,19 @@ namespace Quokka.RTL.Local
 
                     NextState = RTLPipelineStageTools.RecurviseResetToDefaults(stageMapWithState(nextStageInputs, virtualNextState));
                 }
+                else if (stageMapWithStateAndControl != null)
+                {
+                    var stageControl = new RTLPipelineStageControl();
+                    var virtualState = RTLModuleHelper.Activate<TOutput>();
+                    rtlModule.OnRelatedObjectCreating(virtualState);
+
+                    State = RTLPipelineStageTools.RecurviseResetToDefaults(stageMapWithStateAndControl(stageInputs, virtualState, stageControl));
+
+                    var virtualNextState = RTLModuleHelper.Activate<TOutput>();
+                    rtlModule.OnRelatedObjectCreating(virtualNextState);
+
+                    NextState = RTLPipelineStageTools.RecurviseResetToDefaults(stageMapWithStateAndControl(nextStageInputs, virtualNextState, stageControl));
+                }
                 else
                 {
                     throw new Exception($"Pipeline stage is not initialized with scheduling method");
@@ -128,27 +159,71 @@ namespace Quokka.RTL.Local
             nextStage?.StageReset();
         }
 
-        public bool StageStage(int iteration)
+        (TOutput, RTLPipelineStageControl) NextStateCandidate()
         {
             var inputs = inputsFactory();
+            TOutput result = default(TOutput);
+            var stageControl = new RTLPipelineStageControl();
+
             if (stageMap != null)
             {
-                NextState = stageMap(inputs);
+                result = stageMap(inputs);
             }
             else if (stageMapWithState != null)
             {
-                NextState = stageMapWithState(inputs, State);
+                result = stageMapWithState(inputs, State);
+            }
+            else if (stageMapWithStateAndControl != null)
+            {
+                result = stageMapWithStateAndControl(inputs, State, stageControl);
             }
 
-            RTLPipelineStageTools.CarryOverAutoPropagateValues(inputs, NextState);
+            RTLPipelineStageTools.CarryOverAutoPropagateValues(inputs, result);
+            return (result, stageControl);
+        }
 
-            return nextStage?.StageStage(iteration) ?? false;
+        public RTLModuleStageResult StageStage(int iteration)
+        {
+            var (nextStateCandidate, stageControlCandidate) = NextStateCandidate();
+
+            var modified = rtlModule.DeepEquals(NextState, nextStateCandidate);
+
+            NextState = nextStateCandidate;
+
+            var nextStageResult = nextStage?.StageStage(iteration) ?? RTLModuleStageResult.Stable;
+
+            return nextStageResult;
+            /*
+            // stall control root
+            if (managedState?.Stalled ?? false)
+                return RTLPipelineStageResult.Stalled;
+
+            switch (nextStageResult)
+            {
+                case RTLPipelineStageResult.Stable:
+                    return RTLPipelineStageResult.Stable;
+                case RTLPipelineStageResult.Unstable:
+                    return RTLPipelineStageResult.Unstable;
+                case RTLPipelineStageResult.Stalled:
+                    if (NextState is IRTLPipelineManagedState managedState)
+                    {
+
+                    }
+                    else
+                    {
+                        return RTLPipelineStageResult.Stalled;
+                    }
+                    break;
+                default:
+                    throw new Exception($"Unsupported response from pipeline stage: {nextStageResult}");
+            }
+            */
         }
         #endregion;
 
         #region IRTLControlFlow
         public void Schedule(Func<TSource> sourceFactory) => pipelineHead.Schedule(sourceFactory);
-        public bool Stage(int iteration) => pipelineHead.Stage(iteration);
+        public RTLModuleStageResult Stage(int iteration) => pipelineHead.Stage(iteration);
         public void Commit() => pipelineHead.Commit();
         public void Reset() => pipelineHead.Reset();
         #endregion

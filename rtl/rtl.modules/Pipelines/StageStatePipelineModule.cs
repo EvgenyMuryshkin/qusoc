@@ -17,7 +17,7 @@ namespace RTL.Modules
 
     class Stage1PipelineState : StageStateBaseType
     {
-        // size of the field may be unknown and can only be defined during module constructior. 
+        // size of the field may be unknown and can only be defined during module constructor. 
         // See OnRelatedObjectCreating override
         public ushort[] sums { get; set; }
         public ushort S0Counter { get; set; }
@@ -50,12 +50,15 @@ namespace RTL.Modules
         /// <summary>
         /// Pipelines are using default inputs propagation in order to determine size of data members
         /// When Stage method with inputs and current state is used, it is not possible to determine
-        /// sizef os array, as state must me passed as argument.
+        /// size of array, as state must me passed as argument.
         /// To resolve this chicken and egg situation, next method is introduced.
         /// It will be called to populate default state values.
         /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
+        /// <param name="data">object to initialize</param>
+        /// <returns>
+        /// true: object is ready to use
+        /// false: run object initialization with default type values
+        /// </returns>
         public override bool OnRelatedObjectCreating(object data)
         {
             switch (data)
@@ -73,9 +76,9 @@ namespace RTL.Modules
         IRTLPipelineStage<PipelineTestInputs, StatePipelineResult> LocalPipelineConfig
             => PipelineBuilder
                 .Source<PipelineTestInputs>()
-                // Using Stage with current state value required explicit type for stage stage type and its specification
+                // Using Stage with current state value required explicit type for stage and its specification
                 // Alternative way is to user Pipeline.Peek, which still requires state type, but does not need 
-                // explicit type speicication in stage and OnRelatedObjectCreating call override
+                // explicit type specification in stage and OnRelatedObjectCreating call override
                 .Stage<Stage0PipelineState>((i, prevStage) => new Stage0PipelineState
                 { 
                     IsReady = i.inReady, 

@@ -112,10 +112,10 @@ namespace Quokka.RTL
             return RTLModuleHelper.DeepCopy(State);
         }
 
-        public override bool Stage(int iteration)
+        public override RTLModuleStageResult Stage(int iteration)
         {
-            if (!base.Stage(iteration))
-                return false;
+            if (base.Stage(iteration) == RTLModuleStageResult.Stable)
+                return RTLModuleStageResult.Stable;
 
             foreach (var pl in Pipelines)
                 pl.Diag.Head.Stage(iteration);
@@ -124,7 +124,7 @@ namespace Quokka.RTL
             OnStage();
 
             // indicated processed inputs
-            return true;
+            return RTLModuleStageResult.Unstable;
         }
 
         public override void Reset()

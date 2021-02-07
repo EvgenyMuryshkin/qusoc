@@ -1,4 +1,5 @@
-﻿using Quokka.VCD;
+﻿using Quokka.RTL.Simulator;
+using Quokka.VCD;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +8,13 @@ using System.Reflection;
 
 namespace Quokka.RTL
 {
+    [RTLToolkitType]
+    public class RTLModuleCycleParams
+    {
+        public int MaxDeltaCycles = 1000;
+        public Action OnBeforeStage;
+    }
+
     [RTLToolkitType]
     public abstract class RTLCombinationalModule<TInput> : IRTLCombinationalModule<TInput>
         where TInput : new()
@@ -121,7 +129,7 @@ namespace Quokka.RTL
             Scheduled?.Invoke(this, new EventArgs());
         }
 
-        protected virtual bool DeepEquals(object lhs, object rhs) => RTLModuleHelper.DeepEquals(lhs, rhs);
+        public virtual bool DeepEquals(object lhs, object rhs) => RTLModuleHelper.DeepEquals(lhs, rhs);
         protected virtual bool ShouldStage(TInput nextInputs)
         {
             if (InputProps == null)
@@ -131,7 +139,7 @@ namespace Quokka.RTL
             return !DeepEquals(Inputs, nextInputs);
         }
 
-        public virtual bool Stage(int iteration)
+        public virtual RTLModuleStageResult Stage(int iteration)
         {
             if (InputsFactory == null)
                 throw new InvalidOperationException($"InputsFactory is not specified. Did you forget to schedule module?");
@@ -145,10 +153,10 @@ namespace Quokka.RTL
 
             foreach (var child in Modules)
             {
-                childrenModified |= child.Stage(iteration);
+                childrenModified |= child.Stage(iteration) == RTLModuleStageResult.Unstable;
             }
 
-            return selfModified | childrenModified;
+            return (selfModified | childrenModified) ? RTLModuleStageResult.Unstable : RTLModuleStageResult.Stable;
         }
 
         public virtual void Commit()
@@ -297,10 +305,24 @@ namespace Quokka.RTL
             }
         }
 
-        public void Cycle(TInput inputs)
+        public void Cycle(TInput inputs, RTLModuleCycleParams cycleParams = null)
         {
+            if (cycleParams == null)
+                cycleParams = new RTLModuleCycleParams();
+
             Schedule(() => inputs);
-            Stage(0);
+            var iteration = 0;
+            for (; iteration < cycleParams.MaxDeltaCycles; iteration++)
+            {
+                if (Stage(iteration) == RTLModuleStageResult.Stable)
+                    break;
+            }
+
+            if (iteration == cycleParams.MaxDeltaCycles)
+                throw new MaxStageIterationReachedException();
+
+            cycleParams.OnBeforeStage?.Invoke();
+
             Commit();
         }
     }
