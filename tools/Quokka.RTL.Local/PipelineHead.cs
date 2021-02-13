@@ -13,7 +13,9 @@ namespace Quokka.RTL.Local
             get => _stage ?? throw new NullReferenceException(nameof(Stage));
             set => _stage = value;
         }
-        bool _pipelineStalled;
+
+
+        RTLPipelineControlSignals _pipelineControl = new RTLPipelineControlSignals();
 
         public IRTLPipelineDiagnostics Diag => this;
 
@@ -31,7 +33,7 @@ namespace Quokka.RTL.Local
             return result;
         }
 
-        public IRTLPipelineStage<TSource, TResult> Stage<TResult>(Func<TSource, TResult, IRTLPipelineStageControlSignals, TResult> map)
+        public IRTLPipelineStage<TSource, TResult> Stage<TResult>(Func<TSource, TResult, IRTLPipelineStageManagedSignals, TResult> map)
         {
             var result = new RTLPipelineStage<TSource, TSource, TResult>(this, map);
             FirstStage = result;
@@ -74,19 +76,19 @@ namespace Quokka.RTL.Local
                 case 0: throw new Exception($"No stages of type '{stateType.Name}' found on pipeline");
                 case 1:
                     var stage = matchingStages.Single();
-                    return new RTLPipelinePeek<TState>((TState)stage.StateValue, (TState)stage.NextStateValue, stage);
+                    return new RTLPipelinePeek<TState>((TState)stage.StateValue, (TState)stage.NextStateValue, stage.ManagedSignals);
                 default: throw new Exception($"Multiple stages of type '{stateType.Name}' found on pipeline");
             }
         }
 
         #region IRTLControlFlow
-        public bool PipelineWillStall => FirstStage.PipelineWillStall;
-        public bool PipelineStalled => _pipelineStalled;
+        public IRTLPipelinePreviewSignals PipelinePreview => new RTLPipelinePreviewSignals() { PipelineWillStall = FirstStage.ManagedSignals.Preview.PipelineWillStall };
+        public IRTLPipelineControlSignals PipelineControl => _pipelineControl;
         public void Schedule(Func<TSource> sourceFactory) => FirstStage.StageSchedule(sourceFactory);
-        public RTLModuleStageResult Stage(int iteration) => FirstStage.StageStage(iteration);
+        public RTLModuleStageResult DeltaCycle(int deltaCycle) => FirstStage.StageDeltaCycle(deltaCycle);
         public void Commit()
         {
-            _pipelineStalled = PipelineWillStall;
+            _pipelineControl = new RTLPipelineControlSignals() { PipelineStalled = PipelinePreview.PipelineWillStall };
             FirstStage.StageCommit();
         }
 

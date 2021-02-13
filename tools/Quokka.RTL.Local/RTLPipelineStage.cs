@@ -5,83 +5,18 @@ using System.Collections.Generic;
 namespace Quokka.RTL.Local
 {
     [RTLToolkitType]
-    public class RTLPipelineStage<TSource, TInput, TOutput> : 
+    public partial class RTLPipelineStage<TSource, TInput, TOutput> : 
         IRTLPipelineStage<TSource, TInput, TOutput>,
         IRTLPipelineDiagnostics
     {
-        public IRTLPipelineDiagnostics Diag => this;
         public TOutput State { get; set; }
         public TOutput NextState { get; set; }
 
-        RTLPipelineStageControlSignals ControlSignals = new RTLPipelineStageControlSignals();
-        RTLPipelineStageControlSignals NextControlSignals = new RTLPipelineStageControlSignals(); 
-
-        Type IRTLPipelineStage.InputsType => typeof(TInput);
-        Type IRTLPipelineStage.StateType => typeof(TOutput);
-        object IRTLPipelineStage.StateValue => State;
-        object IRTLPipelineStage.NextStateValue => NextState;
-
-        IRTLPipelineHead<TSource> _pipelineHead;
-        IRTLPipelineHead<TSource> pipelineHead
-        {
-            get => _pipelineHead ?? throw new NullReferenceException(nameof(IRTLPipelineDiagnostics.Head));
-            set => _pipelineHead = value;
-        }
-
-        private readonly Func<TInput, TOutput> stageMap;
-        private readonly Func<TInput, TOutput, TOutput> stageMapWithState;
-        private readonly Func<TInput, TOutput, IRTLPipelineStageControlSignals, TOutput> stageMapWithStateAndControl;
+        RTLPipelineStageControlSignals _сontrolSignals = new RTLPipelineStageControlSignals();
+        RTLPipelineStageRequestSignals _requestSignals = new RTLPipelineStageRequestSignals();
 
         private Func<TInput> inputsFactory;
-        private IRTLPipelineStage<TOutput> nextStage;
         private IRTLCombinationalModule rtlModule;
-
-        public RTLPipelineStage(IRTLPipelineHead<TSource> head, Func<TInput, TOutput> stage)
-        {
-            pipelineHead = head;
-            stageMap = stage;
-        }
-
-        public RTLPipelineStage(IRTLPipelineHead<TSource> head, Func<TInput, TOutput, TOutput> stage)
-        {
-            pipelineHead = head;
-            stageMapWithState = stage;
-        }
-
-        public RTLPipelineStage(IRTLPipelineHead<TSource> head, Func<TInput, TOutput, IRTLPipelineStageControlSignals, TOutput> stage)
-        {
-            pipelineHead = head;
-            stageMapWithStateAndControl = stage;
-        }
-
-        public IRTLPipelineStage<TSource, TResult> Stage<TResult>(Func<TOutput, TResult> map)
-        {
-            var next = new RTLPipelineStage<TSource, TOutput, TResult>(pipelineHead, map);
-            nextStage = next;
-            return next;
-        }
-
-        public IRTLPipelineStage<TSource, TResult> Stage<TResult>(Func<TOutput, TResult, TResult> map)
-        {
-            var next = new RTLPipelineStage<TSource, TOutput, TResult>(pipelineHead, map);
-            nextStage = next;
-            return next;
-        }
-
-        public IRTLPipelineStage<TSource, TResult> Stage<TResult>(Func<TOutput, TResult, IRTLPipelineStageControlSignals, TResult> map)
-        {
-            var next = new RTLPipelineStage<TSource, TOutput, TResult>(pipelineHead, map);
-            nextStage = next;
-            return next;
-        }
-
-        #region IRTLPipelineDiagnostics
-        IRTLPipelineHead IRTLPipelineDiagnostics.Head => pipelineHead;
-        IRTLPipelineStage IRTLPipelineDiagnostics.NextStage => nextStage;
-        List<IRTLPipelineStage> IRTLPipelineDiagnostics.Stages => (pipelineHead as IRTLPipelineDiagnostics).Stages;
-        Type IRTLPipelineDiagnostics.SourceType => typeof(TSource);
-        Type IRTLPipelineDiagnostics.ResultType => typeof(TOutput);
-        #endregion
 
         #region IRTLPipelineStage
         public IRTLPipelinePeek<TState> Peek<TState>() => pipelineHead.Peek<TState>();
@@ -122,16 +57,15 @@ namespace Quokka.RTL.Local
                 }
                 else if (stageMapWithStateAndControl != null)
                 {
-                    var stageControl = new RTLPipelineStageControlSignals();
                     var virtualState = RTLModuleHelper.Activate<TOutput>();
                     rtlModule.OnRelatedObjectCreating(virtualState);
 
-                    State = RTLPipelineStageTools.RecurviseResetToDefaults(stageMapWithStateAndControl(stageInputs, virtualState, stageControl));
+                    State = RTLPipelineStageTools.RecurviseResetToDefaults(stageMapWithStateAndControl(stageInputs, virtualState, ManagedSignals));
 
                     var virtualNextState = RTLModuleHelper.Activate<TOutput>();
                     rtlModule.OnRelatedObjectCreating(virtualNextState);
 
-                    NextState = RTLPipelineStageTools.RecurviseResetToDefaults(stageMapWithStateAndControl(nextStageInputs, virtualNextState, stageControl));
+                    NextState = RTLPipelineStageTools.RecurviseResetToDefaults(stageMapWithStateAndControl(nextStageInputs, virtualNextState, ManagedSignals));
                 }
                 else
                 {
@@ -149,11 +83,17 @@ namespace Quokka.RTL.Local
         }
         public void StageCommit()
         {
-            if (!NextControlSignals.StageWillStall)
+            _сontrolSignals = new RTLPipelineStageControlSignals()
+            {
+                StageStalled = ManagedSignals.Preview.StageWillStall
+            };
+            
+            if (!_сontrolSignals.StageStalled)
             {
                 State = NextState;
-                ControlSignals = NextControlSignals;
             }
+
+            _requestSignals = new RTLPipelineStageRequestSignals();
 
             nextStage?.StageCommit();
         }
@@ -161,52 +101,51 @@ namespace Quokka.RTL.Local
         public void StageReset()
         {
             NextState = State;
-            NextControlSignals = ControlSignals;
+            _requestSignals = new RTLPipelineStageRequestSignals();
             nextStage?.StageReset();
         }
 
-        bool internalPipelineWillStall(RTLPipelineStageControlSignals nextControlSignals)
+        bool internalPipelineWillStall(RTLPipelineStageRequestSignals requestSignals)
         {
             return
-                (nextControlSignals.StallPipeline ?? false) ||
-                (nextStage?.PipelineWillStall ?? false) ||
-                (nextStage == null && NextControlSignals.StallSelf == true);
+                (requestSignals.StallPipeline ?? false) ||
+                (nextStage?.ManagedSignals?.Preview?.PipelineWillStall ?? false) ||
+                (nextStage == null && requestSignals.StallSelf == true);
         }
 
-        bool internalStageWillStall(RTLPipelineStageControlSignals nextControlSignals)
+        bool internalStageWillStall(RTLPipelineStageRequestSignals requestSignals)
         {
             return
-                (PipelineWillStall) ||
-                (nextControlSignals.StallSelf ?? false) ||
-                (nextStage?.StageWillStall ?? false) ||
-                (nextStage?.PrevStageWillStall ?? false);
+                (internalPipelineWillStall(requestSignals)) ||
+                (requestSignals.StallSelf ?? false) ||
+                (nextStage?.ManagedSignals?.Preview?.StageWillStall ?? false) ||
+                (nextStage?.ManagedSignals?.Preview?.PrevStageWillStall ?? false);
         }
 
-        public bool PipelineWillStall => internalPipelineWillStall(NextControlSignals);
-        public bool StageWillStall => internalStageWillStall(NextControlSignals);
-        public bool PrevStageWillStall => NextControlSignals.PrevStageWillStall;
-        public bool StageStalled => ControlSignals.StageStalled;
-        public bool PipelineStalled => _pipelineHead.PipelineStalled;
-
-        RTLPipelineStageControlSignals NextStageControlCandidate(RTLPipelineStageControlSignals nextControlSignals)
+        public IRTLPipelineStageManagedSignals ManagedSignals
         {
-            var stageControl = new RTLPipelineStageControlSignals()
+            get
             {
-                PipelineStalled = PipelineStalled,
-                StageStalled = StageStalled,
-                StageWillStall = internalStageWillStall(nextControlSignals),
-                PipelineWillStall = pipelineHead.PipelineWillStall
-            };
-
-            return stageControl;
+                return new RTLPipelineStageManagedSignals()
+                {
+                    Control = _сontrolSignals,
+                    Preview = new RTLPipelineStagePreviewSignals()
+                    {
+                        PrevStageWillStall = _requestSignals.StallPrev ?? false,
+                        StageWillStall = internalStageWillStall(_requestSignals),
+                        PipelineWillStall = internalPipelineWillStall(_requestSignals),
+                    },
+                    Request = _requestSignals
+                };
+            }
         }
 
-        (TOutput, RTLPipelineStageControlSignals) NextStateCandidate()
+        (TOutput, IRTLPipelineStageManagedSignals) NextStateCandidate()
         {
             var inputs = inputsFactory();
             TOutput result = default(TOutput);
-            var stageControl = NextStageControlCandidate(NextControlSignals);
 
+            var managedSignals = ManagedSignals;
             if (stageMap != null)
             {
                 result = stageMap(inputs);
@@ -217,34 +156,28 @@ namespace Quokka.RTL.Local
             }
             else if (stageMapWithStateAndControl != null)
             {
-                result = stageMapWithStateAndControl(inputs, State, stageControl);
+                result = stageMapWithStateAndControl(inputs, State, managedSignals);
             }
 
             RTLPipelineStageTools.CarryOverAutoPropagateValues(inputs, result);
-            return (result, stageControl);
+            return (result, managedSignals);
         }
 
-        public RTLModuleStageResult StageStage(int iteration)
+        public RTLModuleStageResult StageDeltaCycle(int deltaCycle)
         {
-            var (nextStateCandidate, nextStageControlCandidates) = NextStateCandidate();
+            var (nextStateCandidate, managedSignals) = NextStateCandidate();
 
             var modified = rtlModule.DeepEquals(NextState, nextStateCandidate);
 
             NextState = nextStateCandidate;
-            NextControlSignals = NextStageControlCandidate(nextStageControlCandidates);
+            _requestSignals = managedSignals.Request as RTLPipelineStageRequestSignals;
 
-            var nextStageResult = nextStage?.StageStage(iteration) ?? RTLModuleStageResult.Stable;
+            var nextStageResult = nextStage?.StageDeltaCycle(deltaCycle) ?? RTLModuleStageResult.Stable;
 
             return (modified || nextStageResult == RTLModuleStageResult.Unstable) ? RTLModuleStageResult.Unstable : RTLModuleStageResult.Stable;
         }
         #endregion;
 
-        #region IRTLControlFlow
-        public void Schedule(Func<TSource> sourceFactory) => pipelineHead.Schedule(sourceFactory);
-        public RTLModuleStageResult Stage(int iteration) => pipelineHead.Stage(iteration);
-        public void Commit() => pipelineHead.Commit();
-        public void Reset() => pipelineHead.Reset();
-        #endregion
         public void Setup(IRTLCombinationalModule module) => pipelineHead.Setup(module);
     }
 }

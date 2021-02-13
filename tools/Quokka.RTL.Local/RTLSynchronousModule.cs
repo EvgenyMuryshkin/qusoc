@@ -112,13 +112,13 @@ namespace Quokka.RTL
             return RTLModuleHelper.DeepCopy(State);
         }
 
-        public override RTLModuleStageResult Stage(int iteration)
+        public override RTLModuleStageResult DeltaCycle(int deltaCycle)
         {
-            if (base.Stage(iteration) == RTLModuleStageResult.Stable)
+            if (base.DeltaCycle(deltaCycle) == RTLModuleStageResult.Stable)
                 return RTLModuleStageResult.Stable;
 
             foreach (var pl in Pipelines)
-                pl.Diag.Head.Stage(iteration);
+                pl.Diag.Head.DeltaCycle(deltaCycle);
 
             NextState = CopyState();
             OnStage();

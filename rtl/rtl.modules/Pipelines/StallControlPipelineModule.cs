@@ -41,11 +41,11 @@ namespace RTL.Modules
 
         public bool outReady => (bool)Pipeline.State.IsReady;
         public ushort outResult => Pipeline.State.result;
-        public bool outPipelineWillStall => Pipeline.PipelineWillStall;
-        public bool outPipelineStalled => Pipeline.PipelineStalled;
-        public bool outStage0Stalled => stage0Peek.StageStalled;
-        public bool outStage1Stalled => stage1Peek.StageStalled;
-        public bool outStage2Stalled => stage2Peek.StageStalled;
+        public bool outPipelineWillStall => Pipeline.PipelinePreview.PipelineWillStall;
+        public bool outPipelineStalled => Pipeline.PipelineControl.PipelineStalled;
+        public bool outStage0Stalled => stage0Peek.Control.StageStalled;
+        public bool outStage1Stalled => stage1Peek.Control.StageStalled;
+        public bool outStage2Stalled => stage2Peek.Control.StageStalled;
 
         public StallControlPipelineModule()
         {
@@ -58,7 +58,7 @@ namespace RTL.Modules
                 .Stage<StallControlStage0>((i, prevState, stageControl) =>
                 {
                     // stall first stage until in data is ready
-                    stageControl.StallSelf = !i.inReady;
+                    stageControl.Request.StallSelf = !i.inReady;
                     return new StallControlStage0
                     {
                         IsReady = i.inReady,
@@ -68,7 +68,7 @@ namespace RTL.Modules
                 .Stage<StallControlStage1>((s0, prevState, stageControl) =>
                 {
                     // stall previous stage until count to input value
-                    stageControl.StallPrev = prevState.counter != s0.data;
+                    stageControl.Request.StallPrev = prevState.counter != s0.data;
                     return new StallControlStage1
                     {
                         counter = (byte)(prevState.counter == s0.data ? 0 : prevState.counter + 1),
@@ -78,7 +78,7 @@ namespace RTL.Modules
                 .Stage<StallControlStage2>((s1, prev, stageControl) =>
                 {
                     // stall whole pipeline until input indicates ready to proceed
-                    stageControl.StallPipeline = !Inputs.inProcessed;
+                    stageControl.Request.StallPipeline = !Inputs.inProcessed;
                     return new StallControlStage2()
                     {
                         result = (byte)(s1.data + prev.result + 1)

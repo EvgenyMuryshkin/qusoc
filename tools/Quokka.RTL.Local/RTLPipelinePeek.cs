@@ -14,9 +14,8 @@
         public TState NextState { get; private set; }
         public TState State { get; private set; }
 
-        // IRTLPipelineStageManagedSignals members
-        public bool PrevStageWillStall => _managedSignals.PrevStageWillStall;
-        public bool StageWillStall => _managedSignals.StageWillStall;
-        public bool StageStalled => _managedSignals.StageStalled;
+        public IRTLPipelineStageControlSignals Control => _managedSignals.Control;
+        public IRTLPipelineStageRequestSignals Request => _managedSignals.Request;
+        public IRTLPipelineStagePreviewSignals Preview => _managedSignals.Preview;
     }
 }

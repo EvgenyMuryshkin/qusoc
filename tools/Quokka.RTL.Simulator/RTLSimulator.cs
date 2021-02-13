@@ -18,7 +18,7 @@ namespace Quokka.RTL.Simulator
             {
                 TopLevel = _topLevel,
                 Clock = _simulatorContext.Clock,
-                StageIteration = _simulatorContext.Iteration
+                StageIteration = _simulatorContext.DeltaCycle
             };
 
         public TModule TopLevel => _topLevel;
@@ -78,15 +78,15 @@ namespace Quokka.RTL.Simulator
 
         public void ClockCycle()
         {
-            _simulatorContext.CurrentTime = _simulatorContext.Clock * 2 * _simulatorContext.MaxStageIterations;
+            _simulatorContext.CurrentTime = _simulatorContext.Clock * 2 * _simulatorContext.MaxDeltaCycles;
             _simulatorContext.ClockSignal?.SetValue(true);
 
-            _simulatorContext.Iteration = 0;
+            _simulatorContext.DeltaCycle = 0;
             do
             {
                 _simulatorContext.CurrentTime++;
 
-                var stageResult = _topLevel.Stage(_simulatorContext.Iteration);
+                var stageResult = _topLevel.DeltaCycle(_simulatorContext.DeltaCycle);
 
                 TraceSignals();
 
@@ -94,14 +94,14 @@ namespace Quokka.RTL.Simulator
                 if (stageResult == RTLModuleStageResult.Stable)
                     break;
             }
-            while (++_simulatorContext.Iteration < _simulatorContext.MaxStageIterations);
+            while (++_simulatorContext.DeltaCycle < _simulatorContext.MaxDeltaCycles);
 
-            if (_simulatorContext.Iteration >= _simulatorContext.MaxStageIterations)
+            if (_simulatorContext.DeltaCycle >= _simulatorContext.MaxDeltaCycles)
                 throw new MaxStageIterationReachedException();
 
             OnPostStage?.Invoke(_topLevel);
 
-            _simulatorContext.CurrentTime = _simulatorContext.Clock * 2 * _simulatorContext.MaxStageIterations + _simulatorContext.MaxStageIterations;
+            _simulatorContext.CurrentTime = _simulatorContext.Clock * 2 * _simulatorContext.MaxDeltaCycles + _simulatorContext.MaxDeltaCycles;
             _simulatorContext.ClockSignal?.SetValue(false);
             TraceSignals();
 

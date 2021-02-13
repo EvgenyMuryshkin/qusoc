@@ -1,4 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Quokka.RTL.Simulator;
+using System;
 
 namespace Quokka.RTL.Local.Tests
 {
@@ -38,13 +40,22 @@ namespace Quokka.RTL.Local.Tests
             return result;
         }
 
-        void Cycle(IRTLPipeline pipeline, int cycles)
+        void Cycle(IRTLPipeline pipeline, int clockCycles, int maxDeltaCycles = 1000)
         {
             var head = pipeline.Diag.Head;
-
-            while (cycles-- > 0)
+            while(clockCycles-- > 0)
             {
-                head.Stage(0);
+                var idx = 0;
+                while (idx < maxDeltaCycles)
+                {
+                    if (head.DeltaCycle(idx) == RTLModuleStageResult.Stable)
+                        break;
+
+                    idx++;
+                }
+                if (idx >= maxDeltaCycles)
+                    throw new MaxStageIterationReachedException();
+
                 head.Commit();
             }
         }
