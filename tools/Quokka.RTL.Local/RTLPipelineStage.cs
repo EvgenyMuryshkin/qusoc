@@ -81,6 +81,11 @@ namespace Quokka.RTL.Local
 
             nextStage?.StageSchedule(() => State);
         }
+        protected TOutput CopyState()
+        {
+            return RTLModuleHelper.DeepCopy(State);
+        }
+
         public void StageCommit()
         {
             _сontrolSignals = new RTLPipelineStageControlSignals()
@@ -93,9 +98,11 @@ namespace Quokka.RTL.Local
                 State = NextState;
             }
 
-            _requestSignals = new RTLPipelineStageRequestSignals();
+            NextState = CopyState();
 
             nextStage?.StageCommit();
+
+            _requestSignals = new RTLPipelineStageRequestSignals();
         }
 
         public void StageReset()
@@ -105,21 +112,22 @@ namespace Quokka.RTL.Local
             nextStage?.StageReset();
         }
 
-        bool internalPipelineWillStall(RTLPipelineStageRequestSignals requestSignals)
-        {
-            return
-                (requestSignals.StallPipeline ?? false) ||
-                (nextStage?.ManagedSignals?.Preview?.PipelineWillStall ?? false) ||
-                (nextStage == null && requestSignals.StallSelf == true);
-        }
+        IRTLPipelineStageHardwareSignals NextStateHardwareSignals => nextStage;
 
-        bool internalStageWillStall(RTLPipelineStageRequestSignals requestSignals)
+        IRTLPipelineStagePreviewSignals PreviewSignals
         {
-            return
-                (internalPipelineWillStall(requestSignals)) ||
-                (requestSignals.StallSelf ?? false) ||
-                (nextStage?.ManagedSignals?.Preview?.StageWillStall ?? false) ||
-                (nextStage?.ManagedSignals?.Preview?.PrevStageWillStall ?? false);
+            get
+            {
+                var pipelineWillStall = pipelineHead.PipelinePreview.PipelineWillStall;
+                var selfStallRequested = _requestSignals.StallSelf ?? false;
+                var nextStageWillStall = NextStateHardwareSignals?.StageWillStall ?? false;
+                var nestStagePrevStageStallRequested = NextStateHardwareSignals?.PrevStageStallRequested ?? false;
+
+                return new RTLPipelineStagePreviewSignals()
+                {
+                    StageWillStall = pipelineWillStall || selfStallRequested || nextStageWillStall || nestStagePrevStageStallRequested
+                };
+            }
         }
 
         public IRTLPipelineStageManagedSignals ManagedSignals
@@ -129,12 +137,7 @@ namespace Quokka.RTL.Local
                 return new RTLPipelineStageManagedSignals()
                 {
                     Control = _сontrolSignals,
-                    Preview = new RTLPipelineStagePreviewSignals()
-                    {
-                        PrevStageWillStall = _requestSignals.StallPrev ?? false,
-                        StageWillStall = internalStageWillStall(_requestSignals),
-                        PipelineWillStall = internalPipelineWillStall(_requestSignals),
-                    },
+                    Preview = PreviewSignals,
                     Request = _requestSignals
                 };
             }
@@ -167,7 +170,7 @@ namespace Quokka.RTL.Local
         {
             var (nextStateCandidate, managedSignals) = NextStateCandidate();
 
-            var modified = rtlModule.DeepEquals(NextState, nextStateCandidate);
+            var modified = !rtlModule.DeepEquals(NextState, nextStateCandidate);
 
             NextState = nextStateCandidate;
             _requestSignals = managedSignals.Request as RTLPipelineStageRequestSignals;

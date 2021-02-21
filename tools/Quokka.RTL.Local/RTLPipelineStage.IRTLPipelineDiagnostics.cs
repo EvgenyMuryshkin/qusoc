@@ -14,6 +14,7 @@ namespace Quokka.RTL.Local
         List<IRTLPipelineStage> IRTLPipelineDiagnostics.Stages => (pipelineHead as IRTLPipelineDiagnostics).Stages;
         Type IRTLPipelineDiagnostics.SourceType => typeof(TSource);
         Type IRTLPipelineDiagnostics.ResultType => typeof(TOutput);
+        bool IRTLPipelineDiagnostics.HasControlSignals => stageMapWithStateAndControl != null;
         #endregion
     }
 }

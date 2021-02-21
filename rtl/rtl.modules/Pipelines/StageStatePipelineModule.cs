@@ -79,7 +79,7 @@ namespace RTL.Modules
                 // Using Stage with current state value required explicit type for stage and its specification
                 // Alternative way is to user Pipeline.Peek, which still requires state type, but does not need 
                 // explicit type specification in stage and OnRelatedObjectCreating call override
-                .Stage<Stage0PipelineState>((i, prevStage) => new Stage0PipelineState
+                .Stage<Stage0PipelineState>((i, state) => new Stage0PipelineState
                 { 
                     IsReady = i.inReady, 
                     sums = new ushort[]
@@ -89,7 +89,7 @@ namespace RTL.Modules
                         (ushort)(i.inData[0] + i.inData[1]),
                         (ushort)(i.inData[6] + i.inData[7]),
                     },
-                    S0Counter = (ushort)(prevStage.S0Counter + 1)
+                    S0Counter = (ushort)(state.S0Counter + 1)
                 })
                 .Stage<Stage1PipelineState>((s0, prevState) => new Stage1PipelineState
                 { 

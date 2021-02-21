@@ -1,4 +1,5 @@
 ﻿using Quokka.RTL.Simulator;
+using Quokka.RTL.Tools;
 using Quokka.VCD;
 using System;
 using System.Collections;
@@ -186,20 +187,25 @@ namespace Quokka.RTL
             }
         }
 
-        protected virtual IEnumerable<VCDVariable> ToVCDVariables(MemberInfo memberInfo, object value, string namePrefix = "")
+        protected virtual IEnumerable<VCDVariable> ToVCDVariables(string name, object value, bool includeToolkitTypes = false)
         {
+            if (value == null)
+                return Enumerable.Empty<VCDVariable>();
+
+            var recursivePrefix = string.IsNullOrEmpty(name) ? "" : $"{name}_";
+
             switch (value)
             {
                 case Enum v:
                     return new[]
                     {
-                        new VCDVariable($"{namePrefix}{memberInfo.Name}ToString", value.ToString(), SizeOf("")),
-                        new VCDVariable($"{namePrefix}{memberInfo.Name}", value, SizeOf(value))
+                        new VCDVariable($"{name}ToString", value.ToString(), SizeOf("")),
+                        new VCDVariable($"{name}", value, SizeOf(value))
                     };
                 case RTLBitArray b:
                     return new[]
                     {
-                        new VCDVariable(memberInfo.Name, value, SizeOf(value))
+                        new VCDVariable($"{name}", value, SizeOf(value))
                     };
                 default:
                     var valueType = value.GetType();
@@ -207,10 +213,12 @@ namespace Quokka.RTL
                     {
                         var result = new List<VCDVariable>();
 
-                        var props = RTLModuleHelper.SynthesizableMembers(valueType);
+                        var props = RTLReflectionTools.SynthesizableMembers(valueType, includeToolkitTypes);
                         foreach (var m in props)
                         {
-                            result.AddRange(ToVCDVariables(m, m.GetValue(value), $"{namePrefix}{memberInfo.Name}_"));
+                            var memberValue = m.GetValue(value) ?? RTLModuleHelper.Activate(m.GetMemberType());
+
+                            result.AddRange(ToVCDVariables(m, memberValue, recursivePrefix));
                         }
 
                         return result;
@@ -225,10 +233,12 @@ namespace Quokka.RTL
                         {
                             var result = new List<VCDVariable>();
 
-                            var props = RTLModuleHelper.SynthesizableMembers(valueType).Where(m => m.Name.StartsWith("Item"));
+                            var props = RTLReflectionTools.SynthesizableMembers(valueType, includeToolkitTypes).Where(m => m.Name.StartsWith("Item"));
                             foreach (var m in props)
                             {
-                                result.AddRange(ToVCDVariables(m, m.GetValue(value), $"{namePrefix}{memberInfo.Name}_"));
+                                var memberValue = m.GetValue(value) ?? RTLModuleHelper.Activate(m.GetMemberType());
+
+                                result.AddRange(ToVCDVariables(m, memberValue, recursivePrefix));
                             }
 
                             return result;
@@ -237,9 +247,14 @@ namespace Quokka.RTL
 
                     return new[]
                     {
-                        new VCDVariable($"{namePrefix}{memberInfo.Name}", value, SizeOf(value))
+                        new VCDVariable($"{name}", value, SizeOf(value))
                     };
             }
+        }
+
+        protected virtual IEnumerable<VCDVariable> ToVCDVariables(MemberInfo memberInfo, object value, string namePrefix = "")
+        {
+            return ToVCDVariables($"{namePrefix}{memberInfo.Name}", value);
         }
 
         protected VCDSignalsSnapshot currentSnapshot = null;

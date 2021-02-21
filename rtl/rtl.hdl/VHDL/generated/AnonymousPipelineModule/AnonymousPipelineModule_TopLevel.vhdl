@@ -71,8 +71,8 @@ signal Pipeline_stage0_NextState_sum67 : signed(31 downto 0) := (others => '0');
 signal Pipeline_stage1_NextState_IsS1Ready : std_logic := '0';
 signal Pipeline_stage1_NextState_sum0123 : signed(31 downto 0) := (others => '0');
 signal Pipeline_stage1_NextState_sum4567 : signed(31 downto 0) := (others => '0');
-signal Pipeline_NextState_ready : std_logic := '0';
-signal Pipeline_NextState_result : unsigned(15 downto 0) := (others => '0');
+signal Pipeline_stage2_NextState_ready : std_logic := '0';
+signal Pipeline_stage2_NextState_result : unsigned(15 downto 0) := (others => '0');
 signal Pipeline_Inputs_inReady : std_logic := '0';
 signal Pipeline_Inputs_inData0 : unsigned(7 downto 0) := (others => '0');
 signal Pipeline_Inputs_inData1 : unsigned(7 downto 0) := (others => '0');
@@ -82,6 +82,10 @@ signal Pipeline_Inputs_inData4 : unsigned(7 downto 0) := (others => '0');
 signal Pipeline_Inputs_inData5 : unsigned(7 downto 0) := (others => '0');
 signal Pipeline_Inputs_inData6 : unsigned(7 downto 0) := (others => '0');
 signal Pipeline_Inputs_inData7 : unsigned(7 downto 0) := (others => '0');
+signal Pipeline_State_ready : std_logic := '0';
+signal Pipeline_State_result : unsigned(15 downto 0) := (others => '0');
+signal Pipeline_NextState_ready : std_logic := '0';
+signal Pipeline_NextState_result : unsigned(15 downto 0) := (others => '0');
 signal Pipeline_AnonymousPipelineModule_L41F30T63_Cast : unsigned(15 downto 0) := (others => '0');
 signal Pipeline_stage0_State_IsS0Ready : std_logic := '0';
 constant Pipeline_stage0_State_IsS0ReadyDefault : std_logic := '0';
@@ -99,10 +103,10 @@ signal Pipeline_stage1_State_sum0123 : signed(31 downto 0)  := "0000000000000000
 constant Pipeline_stage1_State_sum0123Default : signed(31 downto 0)  := "00000000000000000000000000000000";
 signal Pipeline_stage1_State_sum4567 : signed(31 downto 0)  := "00000000000000000000000000000000";
 constant Pipeline_stage1_State_sum4567Default : signed(31 downto 0)  := "00000000000000000000000000000000";
-signal Pipeline_State_ready : std_logic := '0';
-constant Pipeline_State_readyDefault : std_logic := '0';
-signal Pipeline_State_result : unsigned(15 downto 0)  := "0000000000000000";
-constant Pipeline_State_resultDefault : unsigned(15 downto 0)  := "0000000000000000";
+signal Pipeline_stage2_State_ready : std_logic := '0';
+constant Pipeline_stage2_State_readyDefault : std_logic := '0';
+signal Pipeline_stage2_State_result : unsigned(15 downto 0)  := "0000000000000000";
+constant Pipeline_stage2_State_resultDefault : unsigned(15 downto 0)  := "0000000000000000";
 signal Pipeline_AnonymousPipelineModule_L29F29T54_Expr : unsigned(9 downto 0)  := "0000000000";
 signal Pipeline_AnonymousPipelineModule_L29F29T54_Expr_1 : signed(9 downto 0)  := "0000000000";
 signal Pipeline_AnonymousPipelineModule_L29F29T54_Expr_2 : signed(9 downto 0)  := "0000000000";
@@ -125,7 +129,7 @@ signal Pipeline_AnonymousPipelineModule_L41F39T62_Expr : signed(32 downto 0)  :=
 signal Pipeline_AnonymousPipelineModule_L41F39T62_Expr_1 : signed(32 downto 0)  := "000000000000000000000000000000000";
 signal Pipeline_AnonymousPipelineModule_L41F39T62_Expr_2 : signed(32 downto 0)  := "000000000000000000000000000000000";
 begin
-process (Clock, Pipeline_NextState_ready, Pipeline_NextState_result, Pipeline_stage0_NextState_IsS0Ready, Pipeline_stage0_NextState_sum01, Pipeline_stage0_NextState_sum23, Pipeline_stage0_NextState_sum45, Pipeline_stage0_NextState_sum67, Pipeline_stage1_NextState_IsS1Ready, Pipeline_stage1_NextState_sum0123, Pipeline_stage1_NextState_sum4567, Reset)
+process (Clock, Pipeline_stage0_NextState_IsS0Ready, Pipeline_stage0_NextState_sum01, Pipeline_stage0_NextState_sum23, Pipeline_stage0_NextState_sum45, Pipeline_stage0_NextState_sum67, Pipeline_stage1_NextState_IsS1Ready, Pipeline_stage1_NextState_sum0123, Pipeline_stage1_NextState_sum4567, Pipeline_stage2_NextState_ready, Pipeline_stage2_NextState_result, Reset)
 begin
 if rising_edge(Clock) then
 if ( Reset = '1' ) then
@@ -137,8 +141,8 @@ Pipeline_stage0_State_sum67 <= Pipeline_stage0_State_sum67Default;
 Pipeline_stage1_State_IsS1Ready <= Pipeline_stage1_State_IsS1ReadyDefault;
 Pipeline_stage1_State_sum0123 <= Pipeline_stage1_State_sum0123Default;
 Pipeline_stage1_State_sum4567 <= Pipeline_stage1_State_sum4567Default;
-Pipeline_State_ready <= Pipeline_State_readyDefault;
-Pipeline_State_result <= Pipeline_State_resultDefault;
+Pipeline_stage2_State_ready <= Pipeline_stage2_State_readyDefault;
+Pipeline_stage2_State_result <= Pipeline_stage2_State_resultDefault;
 else
 Pipeline_stage0_State_IsS0Ready <= Pipeline_stage0_NextState_IsS0Ready;
 Pipeline_stage0_State_sum01 <= Pipeline_stage0_NextState_sum01;
@@ -148,8 +152,8 @@ Pipeline_stage0_State_sum67 <= Pipeline_stage0_NextState_sum67;
 Pipeline_stage1_State_IsS1Ready <= Pipeline_stage1_NextState_IsS1Ready;
 Pipeline_stage1_State_sum0123 <= Pipeline_stage1_NextState_sum0123;
 Pipeline_stage1_State_sum4567 <= Pipeline_stage1_NextState_sum4567;
-Pipeline_State_ready <= Pipeline_NextState_ready;
-Pipeline_State_result <= Pipeline_NextState_result;
+Pipeline_stage2_State_ready <= Pipeline_stage2_NextState_ready;
+Pipeline_stage2_State_result <= Pipeline_stage2_NextState_result;
 end if;
 end if;
 end process;
@@ -195,7 +199,7 @@ begin
     Pipeline_AnonymousPipelineModule_L41F39T62_Expr <= resize(signed(signed(resize(Pipeline_AnonymousPipelineModule_L41F39T62_Expr_1, Pipeline_AnonymousPipelineModule_L41F39T62_Expr_1'length + 1)) + signed(resize(Pipeline_AnonymousPipelineModule_L41F39T62_Expr_2, Pipeline_AnonymousPipelineModule_L41F39T62_Expr_2'length + 1))), Pipeline_AnonymousPipelineModule_L41F39T62_Expr'length);
 
 end process;
-process(Pipeline_AnonymousPipelineModule_L29F29T54_Expr, Pipeline_AnonymousPipelineModule_L30F29T54_Expr, Pipeline_AnonymousPipelineModule_L31F29T54_Expr, Pipeline_AnonymousPipelineModule_L32F29T54_Expr, Pipeline_AnonymousPipelineModule_L36F31T50_Expr, Pipeline_AnonymousPipelineModule_L37F31T50_Expr, Pipeline_AnonymousPipelineModule_L41F30T63_Cast, Pipeline_Inputs_inReady, Pipeline_stage0_State_IsS0Ready, Pipeline_stage0_State_sum01, Pipeline_stage0_State_sum23, Pipeline_stage0_State_sum45, Pipeline_stage0_State_sum67, Pipeline_stage1_State_IsS1Ready, Pipeline_stage1_State_sum0123, Pipeline_stage1_State_sum4567, Pipeline_State_ready, Pipeline_State_result)
+process(Pipeline_AnonymousPipelineModule_L29F29T54_Expr, Pipeline_AnonymousPipelineModule_L30F29T54_Expr, Pipeline_AnonymousPipelineModule_L31F29T54_Expr, Pipeline_AnonymousPipelineModule_L32F29T54_Expr, Pipeline_AnonymousPipelineModule_L36F31T50_Expr, Pipeline_AnonymousPipelineModule_L37F31T50_Expr, Pipeline_AnonymousPipelineModule_L41F30T63_Cast, Pipeline_Inputs_inReady, Pipeline_stage0_State_IsS0Ready, Pipeline_stage0_State_sum01, Pipeline_stage0_State_sum23, Pipeline_stage0_State_sum45, Pipeline_stage0_State_sum67, Pipeline_stage1_State_IsS1Ready, Pipeline_stage1_State_sum0123, Pipeline_stage1_State_sum4567, Pipeline_stage2_State_ready, Pipeline_stage2_State_result)
 begin
 Pipeline_stage0_NextState_IsS0Ready <= Pipeline_stage0_State_IsS0Ready;
 Pipeline_stage0_NextState_sum01 <= Pipeline_stage0_State_sum01;
@@ -205,8 +209,8 @@ Pipeline_stage0_NextState_sum67 <= Pipeline_stage0_State_sum67;
 Pipeline_stage1_NextState_IsS1Ready <= Pipeline_stage1_State_IsS1Ready;
 Pipeline_stage1_NextState_sum0123 <= Pipeline_stage1_State_sum0123;
 Pipeline_stage1_NextState_sum4567 <= Pipeline_stage1_State_sum4567;
-Pipeline_NextState_ready <= Pipeline_State_ready;
-Pipeline_NextState_result <= Pipeline_State_result;
+Pipeline_stage2_NextState_ready <= Pipeline_stage2_State_ready;
+Pipeline_stage2_NextState_result <= Pipeline_stage2_State_result;
 Pipeline_stage0_NextState_IsS0Ready <= Pipeline_Inputs_inReady;
 Pipeline_stage0_NextState_sum01 <= signed(resize(unsigned(Pipeline_AnonymousPipelineModule_L29F29T54_Expr), Pipeline_stage0_NextState_sum01'length));
 Pipeline_stage0_NextState_sum23 <= signed(resize(unsigned(Pipeline_AnonymousPipelineModule_L30F29T54_Expr), Pipeline_stage0_NextState_sum23'length));
@@ -215,10 +219,10 @@ Pipeline_stage0_NextState_sum67 <= signed(resize(unsigned(Pipeline_AnonymousPipe
 Pipeline_stage1_NextState_IsS1Ready <= Pipeline_stage0_State_IsS0Ready;
 Pipeline_stage1_NextState_sum0123 <= Pipeline_AnonymousPipelineModule_L36F31T50_Expr(31 downto 0);
 Pipeline_stage1_NextState_sum4567 <= Pipeline_AnonymousPipelineModule_L37F31T50_Expr(31 downto 0);
-Pipeline_NextState_ready <= Pipeline_stage1_State_IsS1Ready;
-Pipeline_NextState_result <= Pipeline_AnonymousPipelineModule_L41F30T63_Cast;
+Pipeline_stage2_NextState_ready <= Pipeline_stage1_State_IsS1Ready;
+Pipeline_stage2_NextState_result <= Pipeline_AnonymousPipelineModule_L41F30T63_Cast;
 end process;
-process(inData0, inData1, inData2, inData3, inData4, inData5, inData6, inData7, Inputs_inData0, Inputs_inData1, Inputs_inData2, Inputs_inData3, Inputs_inData4, Inputs_inData5, Inputs_inData6, Inputs_inData7, Inputs_inReady, inReady, Pipeline_AnonymousPipelineModule_L41F39T62_Expr, Pipeline_Inputs_inData0, Pipeline_Inputs_inData1, Pipeline_Inputs_inData2, Pipeline_Inputs_inData3, Pipeline_Inputs_inData4, Pipeline_Inputs_inData5, Pipeline_Inputs_inData6, Pipeline_Inputs_inData7, Pipeline_stage0_State_sum01, Pipeline_stage0_State_sum23, Pipeline_stage0_State_sum45, Pipeline_stage0_State_sum67, Pipeline_stage1_State_sum0123, Pipeline_stage1_State_sum4567, Pipeline_State_ready, Pipeline_State_result)
+process(inData0, inData1, inData2, inData3, inData4, inData5, inData6, inData7, Inputs_inData0, Inputs_inData1, Inputs_inData2, Inputs_inData3, Inputs_inData4, Inputs_inData5, Inputs_inData6, Inputs_inData7, Inputs_inReady, inReady, Pipeline_AnonymousPipelineModule_L41F39T62_Expr, Pipeline_Inputs_inData0, Pipeline_Inputs_inData1, Pipeline_Inputs_inData2, Pipeline_Inputs_inData3, Pipeline_Inputs_inData4, Pipeline_Inputs_inData5, Pipeline_Inputs_inData6, Pipeline_Inputs_inData7, Pipeline_stage0_State_sum01, Pipeline_stage0_State_sum23, Pipeline_stage0_State_sum45, Pipeline_stage0_State_sum67, Pipeline_stage1_State_sum0123, Pipeline_stage1_State_sum4567, Pipeline_stage2_NextState_ready, Pipeline_stage2_NextState_result, Pipeline_stage2_State_ready, Pipeline_stage2_State_result, Pipeline_State_ready, Pipeline_State_result)
 begin
 Pipeline_AnonymousPipelineModule_L29F29T54_Expr_1 <= signed(resize(unsigned(Pipeline_Inputs_inData0), Pipeline_AnonymousPipelineModule_L29F29T54_Expr_1'length));
 Pipeline_AnonymousPipelineModule_L29F29T54_Expr_2 <= signed(resize(unsigned(Pipeline_Inputs_inData1), Pipeline_AnonymousPipelineModule_L29F29T54_Expr_2'length));
@@ -243,6 +247,10 @@ Inputs_inData4 <= inData4;
 Inputs_inData5 <= inData5;
 Inputs_inData6 <= inData6;
 Inputs_inData7 <= inData7;
+Pipeline_State_ready <= Pipeline_stage2_State_ready;
+Pipeline_State_result <= Pipeline_stage2_State_result;
+Pipeline_NextState_ready <= Pipeline_stage2_NextState_ready;
+Pipeline_NextState_result <= Pipeline_stage2_NextState_result;
 Pipeline_AnonymousPipelineModule_L41F30T63_Cast <= unsigned(Pipeline_AnonymousPipelineModule_L41F39T62_Expr(15 downto 0));
 outReady <= Pipeline_State_ready;
 outResult <= Pipeline_State_result;

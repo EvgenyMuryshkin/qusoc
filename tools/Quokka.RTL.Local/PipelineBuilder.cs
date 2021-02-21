@@ -3,7 +3,7 @@
     [RTLToolkitType]
     public static class PipelineBuilder
     {
-        public static PipelineHead<TSource> Source<TSource>()
+        public static IRTLPipelineHead<TSource> Source<TSource>()
         {
             return new PipelineHead<TSource>();
         }

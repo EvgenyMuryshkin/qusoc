@@ -11,7 +11,7 @@ Linker script and memory map
 .text           0x0000000000000000      0x278
                 0x0000000000000000                . = ALIGN (0x4)
  *(.text)
- .text          0x0000000000000000      0x278 /tmp/ccUk3ZjX.o
+ .text          0x0000000000000000      0x278 /tmp/ccVfNYvx.o
                 0x0000000000000278                . = ALIGN (0x4)
                 0x0000000000000278                _etext = .
                 0x0000000000000278                _sidata = _etext
@@ -19,30 +19,30 @@ Linker script and memory map
 .data           0x0000000000000300      0x20c
                 0x0000000000000300                . = ALIGN (0x4)
  *(.data)
- .data          0x0000000000000300      0x20c /tmp/ccUk3ZjX.o
+ .data          0x0000000000000300      0x20c /tmp/ccVfNYvx.o
                 0x0000000000000300                begin_signature
                 0x0000000000000340                end_signature
                 0x0000000000000400                begin_regstate
                 0x0000000000000500                end_regstate
                 0x000000000000050c                . = ALIGN (0x4)
                 0x000000000000050c                _edata = .
-LOAD /tmp/ccUk3ZjX.o
+LOAD /tmp/ccVfNYvx.o
 OUTPUT(firmware.elf elf32-littleriscv)
 
 .tohost         0x0000000000000600      0x108
- .tohost        0x0000000000000600      0x108 /tmp/ccUk3ZjX.o
+ .tohost        0x0000000000000600      0x108 /tmp/ccVfNYvx.o
                 0x0000000000000600                tohost
                 0x0000000000000700                fromhost
 
 .bss            0x0000000000000708        0x0
- .bss           0x0000000000000708        0x0 /tmp/ccUk3ZjX.o
+ .bss           0x0000000000000708        0x0 /tmp/ccVfNYvx.o
 
 Cross Reference Table
 
 Symbol                                            File
-begin_regstate                                    /tmp/ccUk3ZjX.o
-begin_signature                                   /tmp/ccUk3ZjX.o
-end_regstate                                      /tmp/ccUk3ZjX.o
-end_signature                                     /tmp/ccUk3ZjX.o
-fromhost                                          /tmp/ccUk3ZjX.o
-tohost                                            /tmp/ccUk3ZjX.o
+begin_regstate                                    /tmp/ccVfNYvx.o
+begin_signature                                   /tmp/ccVfNYvx.o
+end_regstate                                      /tmp/ccVfNYvx.o
+end_signature                                     /tmp/ccVfNYvx.o
+fromhost                                          /tmp/ccVfNYvx.o
+tohost                                            /tmp/ccVfNYvx.o

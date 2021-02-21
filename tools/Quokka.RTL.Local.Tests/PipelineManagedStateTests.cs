@@ -10,8 +10,8 @@ namespace Quokka.RTL.Local.Tests
         [TestMethod]
         public void StageControlSetValue()
         {
-            var state = new RTLPipelineStageControlSignals();
-            var member = typeof(RTLPipelineStageControlSignals).GetMember(nameof(RTLPipelineStageControlSignals.StallPipeline)).SingleOrDefault();
+            var state = new RTLPipelineStageRequestSignals();
+            var member = typeof(RTLPipelineStageRequestSignals).GetMember(nameof(IRTLPipelineStageRequestSignals.StallPipeline)).SingleOrDefault();
             Assert.IsNotNull(member, "member should not be null");
             var field = RTLPipelineStageTools.getBackingField(state, member);
             Assert.IsNotNull(field, "field should not be null");
@@ -23,8 +23,8 @@ namespace Quokka.RTL.Local.Tests
         [TestMethod]
         public void StageControlGetValue()
         {
-            var state = new RTLPipelineStageControlSignals() { StallPipeline = true };
-            var member = typeof(IRTLPipelineStageControlSignals).GetMember(nameof(IRTLPipelineStageControlSignals.StallPipeline)).SingleOrDefault();
+            var state = new RTLPipelineStageRequestSignals() { StallPipeline = true };
+            var member = typeof(RTLPipelineStageRequestSignals).GetMember(nameof(IRTLPipelineStageRequestSignals.StallPipeline)).SingleOrDefault();
             Assert.IsNotNull(member, "member should not be null");
             var field = RTLPipelineStageTools.getBackingField(state, member);
             Assert.IsNotNull(field, "field should not be null");

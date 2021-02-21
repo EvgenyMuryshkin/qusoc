@@ -63,13 +63,16 @@ namespace Quokka.RTL.Local
             }
         }
         Type IRTLPipelineDiagnostics.SourceType => typeof(TSource);
-        Type IRTLPipelineDiagnostics.ResultType => (this as IRTLPipelineDiagnostics).Stages.Last().Diag.ResultType;
+        Type IRTLPipelineDiagnostics.ResultType => Diag.Stages.Last().Diag.ResultType;
+
+        bool IRTLPipelineDiagnostics.HasControlSignals => Diag.Stages.Any(s => s.Diag.HasControlSignals);
+
         #endregion
 
         public IRTLPipelinePeek<TState> Peek<TState>()
         {
             var stateType = typeof(TState);
-            var stages = (this as IRTLPipelineDiagnostics).Stages;
+            var stages = Diag.Stages;
             var matchingStages = stages.Where(s => s.StateType == stateType).ToList();
             switch(matchingStages.Count)
             {
@@ -82,7 +85,18 @@ namespace Quokka.RTL.Local
         }
 
         #region IRTLControlFlow
-        public IRTLPipelinePreviewSignals PipelinePreview => new RTLPipelinePreviewSignals() { PipelineWillStall = FirstStage.ManagedSignals.Preview.PipelineWillStall };
+        public IRTLPipelinePreviewSignals PipelinePreview
+        {
+            get
+            {
+                var hardwareSignals = Diag.Stages.Select(s => s as IRTLPipelineStageHardwareSignals);
+                var pipelineStall = hardwareSignals.Any(s => s.PipelineStallRequested);
+                var lastStageStallRequested = hardwareSignals.Last().StageStallRequested;
+
+                return new RTLPipelinePreviewSignals() { PipelineWillStall = pipelineStall || lastStageStallRequested };
+            }
+        }
+    
         public IRTLPipelineControlSignals PipelineControl => _pipelineControl;
         public void Schedule(Func<TSource> sourceFactory) => FirstStage.StageSchedule(sourceFactory);
         public RTLModuleStageResult DeltaCycle(int deltaCycle) => FirstStage.StageDeltaCycle(deltaCycle);

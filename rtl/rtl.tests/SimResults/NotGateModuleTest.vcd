@@ -1,0 +1,40 @@
+$date
+Sunday, 21 February 2021 7:58:44 PM
+$end
+$version
+Quokka VCD Generator
+$end
+$timescale
+1s
+$end
+$scope module TOP $end
+$scope module Control $end
+$var wire 1 TOP_Control_Clock TOP_Control_Clock $end
+$upscope
+$end
+$scope module Inputs $end
+$var wire 1 TOP_Inputs_Input TOP_Inputs_Input $end
+$upscope
+$end
+$scope module Outputs $end
+$var wire 1 TOP_Outputs_Output TOP_Outputs_Output $end
+$upscope
+$end
+$scope module Internals $end
+$upscope
+$end
+$upscope
+$end
+$enddefinitions
+$end
+#0
+1TOP_Control_Clock
+0TOP_Inputs_Input
+1TOP_Outputs_Output
+#1
+1TOP_Inputs_Input
+0TOP_Outputs_Output
+#1000
+0TOP_Control_Clock
+#2000
+1TOP_Control_Clock

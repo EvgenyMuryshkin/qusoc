@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Quokka.RTL.Tools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -50,7 +51,7 @@ namespace Quokka.RTL.Local
         public static T RecurviseResetToDefaults<T>(T value)
         {
             var type = value.GetType();
-            foreach (var m in RTLModuleHelper.SynthesizableMembers(type))
+            foreach (var m in RTLReflectionTools.SynthesizableMembers(type))
             {
                 var memberType = m.GetMemberType();
                 var memberValue = m.GetValue(value);
@@ -89,10 +90,10 @@ namespace Quokka.RTL.Local
         public static void CarryOverAutoPropagateValues<TSource, TTarget>(TSource source, TTarget target)
         {
             var sourceType = typeof(TSource);
-            var sourceMembers = RTLModuleHelper.SynthesizableMembers(sourceType);
+            var sourceMembers = RTLReflectionTools.SynthesizableMembers(sourceType);
 
             var targetType = typeof(TTarget);
-            var targetMembers = RTLModuleHelper.SynthesizableMembers(targetType);
+            var targetMembers = RTLReflectionTools.SynthesizableMembers(targetType);
 
             foreach (var m in targetMembers)
             {
