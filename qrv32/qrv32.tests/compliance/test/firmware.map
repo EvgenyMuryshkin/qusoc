@@ -8,41 +8,41 @@ RAM              0x0000000000000000 0x0000000000008000 xrw
 Linker script and memory map
 
 
-.text           0x0000000000000000      0x5bc
+.text           0x0000000000000000      0x278
                 0x0000000000000000                . = ALIGN (0x4)
  *(.text)
- .text          0x0000000000000000      0x5bc /tmp/ccL6b00b.o
-                0x00000000000005bc                . = ALIGN (0x4)
-                0x00000000000005bc                _etext = .
-                0x00000000000005bc                _sidata = _etext
+ .text          0x0000000000000000      0x278 /tmp/ccVfNYvx.o
+                0x0000000000000278                . = ALIGN (0x4)
+                0x0000000000000278                _etext = .
+                0x0000000000000278                _sidata = _etext
 
-.data           0x0000000000000600      0x20c
-                0x0000000000000600                . = ALIGN (0x4)
+.data           0x0000000000000300      0x20c
+                0x0000000000000300                . = ALIGN (0x4)
  *(.data)
- .data          0x0000000000000600      0x20c /tmp/ccL6b00b.o
-                0x0000000000000600                begin_signature
-                0x0000000000000690                end_signature
-                0x0000000000000700                begin_regstate
-                0x0000000000000800                end_regstate
-                0x000000000000080c                . = ALIGN (0x4)
-                0x000000000000080c                _edata = .
-LOAD /tmp/ccL6b00b.o
+ .data          0x0000000000000300      0x20c /tmp/ccVfNYvx.o
+                0x0000000000000300                begin_signature
+                0x0000000000000340                end_signature
+                0x0000000000000400                begin_regstate
+                0x0000000000000500                end_regstate
+                0x000000000000050c                . = ALIGN (0x4)
+                0x000000000000050c                _edata = .
+LOAD /tmp/ccVfNYvx.o
 OUTPUT(firmware.elf elf32-littleriscv)
 
-.tohost         0x0000000000000900      0x108
- .tohost        0x0000000000000900      0x108 /tmp/ccL6b00b.o
-                0x0000000000000900                tohost
-                0x0000000000000a00                fromhost
+.tohost         0x0000000000000600      0x108
+ .tohost        0x0000000000000600      0x108 /tmp/ccVfNYvx.o
+                0x0000000000000600                tohost
+                0x0000000000000700                fromhost
 
-.bss            0x0000000000000a08        0x0
- .bss           0x0000000000000a08        0x0 /tmp/ccL6b00b.o
+.bss            0x0000000000000708        0x0
+ .bss           0x0000000000000708        0x0 /tmp/ccVfNYvx.o
 
 Cross Reference Table
 
 Symbol                                            File
-begin_regstate                                    /tmp/ccL6b00b.o
-begin_signature                                   /tmp/ccL6b00b.o
-end_regstate                                      /tmp/ccL6b00b.o
-end_signature                                     /tmp/ccL6b00b.o
-fromhost                                          /tmp/ccL6b00b.o
-tohost                                            /tmp/ccL6b00b.o
+begin_regstate                                    /tmp/ccVfNYvx.o
+begin_signature                                   /tmp/ccVfNYvx.o
+end_regstate                                      /tmp/ccVfNYvx.o
+end_signature                                     /tmp/ccVfNYvx.o
+fromhost                                          /tmp/ccVfNYvx.o
+tohost                                            /tmp/ccVfNYvx.o

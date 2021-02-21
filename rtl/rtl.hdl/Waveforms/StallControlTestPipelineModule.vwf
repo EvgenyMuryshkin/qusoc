@@ -1,0 +1,1907 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+
+/*
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+
+HEADER
+{
+	VERSION = 1;
+	TIME_UNIT = ns;
+	PRINT_OPTIONS = "Print_options_version 6\
+range_start 0ps\
+range_end 1.0ms\
+width 1\
+names_percentage 25\
+comments 1\
+grid_lines 1\
+time_bars 1\
+name_every_page 0\
+expand_groups 0\
+print_all 1\
+print_row_height 100";
+	DATA_OFFSET = 0.0;
+	DATA_DURATION = 1572000.0;
+	SIMULATION_TIME = 1572000.0;
+	GRID_PHASE = 0.0;
+	GRID_PERIOD = 10.0;
+	GRID_DUTY_CYCLE = 50;
+}
+
+SIGNAL("Clock")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("Reset")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("outResult_pipelineStalled")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("outResult_pipelineWillStall")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("outResult_stage0Counter")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = BUS;
+	WIDTH = 8;
+	LSB_INDEX = 0;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("outResult_stage0Counter[7]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage0Counter";
+}
+
+SIGNAL("outResult_stage0Counter[6]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage0Counter";
+}
+
+SIGNAL("outResult_stage0Counter[5]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage0Counter";
+}
+
+SIGNAL("outResult_stage0Counter[4]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage0Counter";
+}
+
+SIGNAL("outResult_stage0Counter[3]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage0Counter";
+}
+
+SIGNAL("outResult_stage0Counter[2]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage0Counter";
+}
+
+SIGNAL("outResult_stage0Counter[1]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage0Counter";
+}
+
+SIGNAL("outResult_stage0Counter[0]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage0Counter";
+}
+
+SIGNAL("outResult_stage0Stalled")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("outResult_stage0WillStall")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("outResult_stage1Counter")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = BUS;
+	WIDTH = 8;
+	LSB_INDEX = 0;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("outResult_stage1Counter[7]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage1Counter";
+}
+
+SIGNAL("outResult_stage1Counter[6]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage1Counter";
+}
+
+SIGNAL("outResult_stage1Counter[5]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage1Counter";
+}
+
+SIGNAL("outResult_stage1Counter[4]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage1Counter";
+}
+
+SIGNAL("outResult_stage1Counter[3]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage1Counter";
+}
+
+SIGNAL("outResult_stage1Counter[2]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage1Counter";
+}
+
+SIGNAL("outResult_stage1Counter[1]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage1Counter";
+}
+
+SIGNAL("outResult_stage1Counter[0]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage1Counter";
+}
+
+SIGNAL("outResult_stage1Stalled")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("outResult_stage1WillStall")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("outResult_stage2Counter")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = BUS;
+	WIDTH = 8;
+	LSB_INDEX = 0;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("outResult_stage2Counter[7]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage2Counter";
+}
+
+SIGNAL("outResult_stage2Counter[6]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage2Counter";
+}
+
+SIGNAL("outResult_stage2Counter[5]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage2Counter";
+}
+
+SIGNAL("outResult_stage2Counter[4]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage2Counter";
+}
+
+SIGNAL("outResult_stage2Counter[3]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage2Counter";
+}
+
+SIGNAL("outResult_stage2Counter[2]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage2Counter";
+}
+
+SIGNAL("outResult_stage2Counter[1]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage2Counter";
+}
+
+SIGNAL("outResult_stage2Counter[0]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage2Counter";
+}
+
+SIGNAL("outResult_stage2Stalled")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("outResult_stage2WillStall")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("outResult_stage3Counter")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = BUS;
+	WIDTH = 8;
+	LSB_INDEX = 0;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("outResult_stage3Counter[7]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage3Counter";
+}
+
+SIGNAL("outResult_stage3Counter[6]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage3Counter";
+}
+
+SIGNAL("outResult_stage3Counter[5]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage3Counter";
+}
+
+SIGNAL("outResult_stage3Counter[4]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage3Counter";
+}
+
+SIGNAL("outResult_stage3Counter[3]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage3Counter";
+}
+
+SIGNAL("outResult_stage3Counter[2]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage3Counter";
+}
+
+SIGNAL("outResult_stage3Counter[1]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage3Counter";
+}
+
+SIGNAL("outResult_stage3Counter[0]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "outResult_stage3Counter";
+}
+
+SIGNAL("outResult_stage3Stalled")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("outResult_stage3WillStall")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("stallPrev")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("stallPipeline")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("stallStage0")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("stallStage1")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("stallStage2")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("stallStage3")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+TRANSITION_LIST("Clock")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 50;
+			LEVEL 0 FOR 10000.0;
+			LEVEL 1 FOR 10000.0;
+		}
+		LEVEL 0 FOR 572000.0;
+	}
+}
+
+TRANSITION_LIST("Reset")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 39680.0;
+		LEVEL 0 FOR 1532320.0;
+	}
+}
+
+TRANSITION_LIST("outResult_pipelineStalled")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 130006.793;
+		LEVEL 1 FOR 40000.0;
+		LEVEL 0 FOR 60000.0;
+		NODE
+		{
+			REPEAT = 3;
+			LEVEL 1 FOR 20000.0;
+			LEVEL 0 FOR 80000.0;
+		}
+		LEVEL 1 FOR 60000.0;
+		LEVEL 0 FOR 981993.207;
+	}
+}
+
+TRANSITION_LIST("outResult_pipelineWillStall")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 112010.635;
+		LEVEL 1 FOR 39995.964;
+		LEVEL 0 FOR 40000.0;
+		LEVEL 1 FOR 4.036;
+		LEVEL 0 FOR 19999.896;
+		NODE
+		{
+			REPEAT = 2;
+			LEVEL 1 FOR 19996.068;
+			LEVEL 0 FOR 80003.932;
+		}
+		LEVEL 1 FOR 19996.068;
+		LEVEL 0 FOR 80004.036;
+		LEVEL 1 FOR 60000.0;
+		LEVEL 0 FOR 999989.365;
+	}
+}
+
+TRANSITION_LIST("outResult_stage0Counter[7]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 1572000.0;
+	}
+}
+
+TRANSITION_LIST("outResult_stage0Counter[6]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 1572000.0;
+	}
+}
+
+TRANSITION_LIST("outResult_stage0Counter[5]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 1572000.0;
+	}
+}
+
+TRANSITION_LIST("outResult_stage0Counter[4]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 790006.809;
+		LEVEL 1 FOR 781993.191;
+	}
+}
+
+TRANSITION_LIST("outResult_stage0Counter[3]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 630006.294;
+		LEVEL 1 FOR 160000.0;
+		LEVEL 0 FOR 160000.0;
+		LEVEL 1 FOR 621993.706;
+	}
+}
+
+TRANSITION_LIST("outResult_stage0Counter[2]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 390006.785;
+		LEVEL 1 FOR 240000.0;
+		NODE
+		{
+			REPEAT = 2;
+			LEVEL 0 FOR 80000.0;
+			LEVEL 1 FOR 80000.0;
+		}
+		LEVEL 0 FOR 621993.215;
+	}
+}
+
+TRANSITION_LIST("outResult_stage0Counter[1]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 170006.841;
+		LEVEL 1 FOR 220000.0;
+		LEVEL 0 FOR 200000.0;
+		NODE
+		{
+			REPEAT = 5;
+			LEVEL 1 FOR 40000.0;
+			LEVEL 0 FOR 40000.0;
+		}
+		LEVEL 1 FOR 581993.159;
+	}
+}
+
+TRANSITION_LIST("outResult_stage0Counter[0]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 110007.313;
+		LEVEL 1 FOR 60000.0;
+		LEVEL 0 FOR 100000.0;
+		LEVEL 1 FOR 120000.0;
+		LEVEL 0 FOR 120000.0;
+		LEVEL 1 FOR 80000.0;
+		NODE
+		{
+			REPEAT = 10;
+			LEVEL 0 FOR 20000.0;
+			LEVEL 1 FOR 20000.0;
+		}
+		LEVEL 0 FOR 581992.687;
+	}
+}
+
+TRANSITION_LIST("outResult_stage0Stalled")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 130006.866;
+		LEVEL 1 FOR 320000.0;
+		LEVEL 0 FOR 80000.0;
+		LEVEL 1 FOR 60000.0;
+		LEVEL 0 FOR 981993.134;
+	}
+}
+
+TRANSITION_LIST("outResult_stage0WillStall")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 112011.928;
+		LEVEL 1 FOR 39995.811;
+		LEVEL 0 FOR 3.439;
+		LEVEL 1 FOR 79996.561;
+		LEVEL 0 FOR 3.439;
+		LEVEL 1 FOR 59997.046;
+		LEVEL 0 FOR 3.029;
+		LEVEL 1 FOR 39996.486;
+		LEVEL 0 FOR 3.439;
+		LEVEL 1 FOR 99996.561;
+		LEVEL 0 FOR 80000.0;
+		LEVEL 1 FOR 3.595;
+		LEVEL 0 FOR 0.594;
+		LEVEL 1 FOR 60000.0;
+		LEVEL 0 FOR 999988.072;
+	}
+}
+
+TRANSITION_LIST("outResult_stage1Counter[7]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 1572000.0;
+	}
+}
+
+TRANSITION_LIST("outResult_stage1Counter[6]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 1572000.0;
+	}
+}
+
+TRANSITION_LIST("outResult_stage1Counter[5]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 1572000.0;
+	}
+}
+
+TRANSITION_LIST("outResult_stage1Counter[4]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 690007.346;
+		LEVEL 1 FOR 881992.654;
+	}
+}
+
+TRANSITION_LIST("outResult_stage1Counter[3]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 470007.136;
+		LEVEL 1 FOR 220000.0;
+		LEVEL 0 FOR 160000.0;
+		LEVEL 1 FOR 721992.864;
+	}
+}
+
+TRANSITION_LIST("outResult_stage1Counter[2]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 270007.352;
+		LEVEL 1 FOR 200000.0;
+		LEVEL 0 FOR 140000.0;
+		NODE
+		{
+			REPEAT = 2;
+			LEVEL 1 FOR 80000.0;
+			LEVEL 0 FOR 80000.0;
+		}
+		LEVEL 1 FOR 641992.648;
+	}
+}
+
+TRANSITION_LIST("outResult_stage1Counter[1]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 110006.66;
+		LEVEL 1 FOR 160000.0;
+		LEVEL 0 FOR 140000.0;
+		LEVEL 1 FOR 60000.0;
+		LEVEL 0 FOR 40000.0;
+		LEVEL 1 FOR 100000.0;
+		NODE
+		{
+			REPEAT = 4;
+			LEVEL 0 FOR 40000.0;
+			LEVEL 1 FOR 40000.0;
+		}
+		LEVEL 0 FOR 40000.0;
+		LEVEL 1 FOR 601993.34;
+	}
+}
+
+TRANSITION_LIST("outResult_stage1Counter[0]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 90007.36;
+		LEVEL 1 FOR 20000.0;
+		LEVEL 0 FOR 60000.0;
+		LEVEL 1 FOR 100000.0;
+		LEVEL 0 FOR 120000.0;
+		LEVEL 1 FOR 20000.0;
+		LEVEL 0 FOR 40000.0;
+		LEVEL 1 FOR 20000.0;
+		LEVEL 0 FOR 20000.0;
+		LEVEL 1 FOR 20000.0;
+		LEVEL 0 FOR 80000.0;
+		NODE
+		{
+			REPEAT = 10;
+			LEVEL 1 FOR 20000.0;
+			LEVEL 0 FOR 20000.0;
+		}
+		LEVEL 1 FOR 581992.64;
+	}
+}
+
+TRANSITION_LIST("outResult_stage1Stalled")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 130006.362;
+		LEVEL 1 FOR 220000.0;
+		LEVEL 0 FOR 80000.0;
+		LEVEL 1 FOR 20000.0;
+		LEVEL 0 FOR 80000.0;
+		LEVEL 1 FOR 60000.0;
+		LEVEL 0 FOR 981993.638;
+	}
+}
+
+TRANSITION_LIST("outResult_stage1WillStall")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 112010.968;
+		LEVEL 1 FOR 39995.886;
+		LEVEL 0 FOR 3.593;
+		LEVEL 1 FOR 60000.0;
+		LEVEL 0 FOR 0.339;
+		LEVEL 1 FOR 19996.068;
+		LEVEL 0 FOR 3.81;
+		LEVEL 1 FOR 59996.483;
+		LEVEL 0 FOR 4.031;
+		LEVEL 1 FOR 39995.676;
+		LEVEL 0 FOR 60000.295;
+		LEVEL 1 FOR 4.029;
+		LEVEL 0 FOR 19999.608;
+		LEVEL 1 FOR 19996.068;
+		LEVEL 0 FOR 80004.036;
+		LEVEL 1 FOR 60000.0;
+		LEVEL 0 FOR 999989.11;
+	}
+}
+
+TRANSITION_LIST("outResult_stage2Counter[7]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 1572000.0;
+	}
+}
+
+TRANSITION_LIST("outResult_stage2Counter[6]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 1572000.0;
+	}
+}
+
+TRANSITION_LIST("outResult_stage2Counter[5]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 910006.051;
+		LEVEL 1 FOR 661993.949;
+	}
+}
+
+TRANSITION_LIST("outResult_stage2Counter[4]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 590005.906;
+		LEVEL 1 FOR 320000.0;
+		LEVEL 0 FOR 661994.094;
+	}
+}
+
+TRANSITION_LIST("outResult_stage2Counter[3]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 350005.932;
+		LEVEL 1 FOR 240000.0;
+		LEVEL 0 FOR 160000.0;
+		LEVEL 1 FOR 160000.0;
+		LEVEL 0 FOR 661994.068;
+	}
+}
+
+TRANSITION_LIST("outResult_stage2Counter[2]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 170005.89;
+		LEVEL 1 FOR 180000.0;
+		LEVEL 0 FOR 100000.0;
+		LEVEL 1 FOR 140000.0;
+		NODE
+		{
+			REPEAT = 2;
+			LEVEL 0 FOR 80000.0;
+			LEVEL 1 FOR 80000.0;
+		}
+		LEVEL 0 FOR 80000.0;
+		LEVEL 1 FOR 581994.11;
+	}
+}
+
+TRANSITION_LIST("outResult_stage2Counter[1]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 90006.043;
+		LEVEL 1 FOR 80000.0;
+		LEVEL 0 FOR 120000.0;
+		NODE
+		{
+			REPEAT = 2;
+			LEVEL 1 FOR 60000.0;
+			LEVEL 0 FOR 40000.0;
+		}
+		LEVEL 1 FOR 100000.0;
+		NODE
+		{
+			REPEAT = 5;
+			LEVEL 0 FOR 40000.0;
+			LEVEL 1 FOR 40000.0;
+		}
+		LEVEL 0 FOR 581993.957;
+	}
+}
+
+TRANSITION_LIST("outResult_stage2Counter[0]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 70005.938;
+		LEVEL 1 FOR 20000.0;
+		LEVEL 0 FOR 20000.0;
+		LEVEL 1 FOR 60000.0;
+		LEVEL 0 FOR 100000.0;
+		NODE
+		{
+			REPEAT = 2;
+			LEVEL 1 FOR 20000.0;
+			LEVEL 0 FOR 20000.0;
+			LEVEL 1 FOR 40000.0;
+			LEVEL 0 FOR 20000.0;
+		}
+		LEVEL 1 FOR 20000.0;
+		LEVEL 0 FOR 20000.0;
+		LEVEL 1 FOR 80000.0;
+		NODE
+		{
+			REPEAT = 10;
+			LEVEL 0 FOR 20000.0;
+			LEVEL 1 FOR 20000.0;
+		}
+		LEVEL 0 FOR 581994.062;
+	}
+}
+
+TRANSITION_LIST("outResult_stage2Stalled")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 130005.746;
+		LEVEL 1 FOR 120000.0;
+		NODE
+		{
+			REPEAT = 2;
+			LEVEL 0 FOR 80000.0;
+			LEVEL 1 FOR 20000.0;
+		}
+		LEVEL 0 FOR 80000.0;
+		LEVEL 1 FOR 60000.0;
+		LEVEL 0 FOR 981994.254;
+	}
+}
+
+TRANSITION_LIST("outResult_stage2WillStall")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 112010.91;
+		LEVEL 1 FOR 39996.105;
+		LEVEL 0 FOR 3.872;
+		LEVEL 1 FOR 79996.128;
+		NODE
+		{
+			REPEAT = 2;
+			LEVEL 0 FOR 80003.787;
+			LEVEL 1 FOR 19996.213;
+		}
+		LEVEL 0 FOR 80003.895;
+		LEVEL 1 FOR 60000.498;
+		LEVEL 0 FOR 999988.592;
+	}
+}
+
+TRANSITION_LIST("outResult_stage3Counter[7]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 1572000.0;
+	}
+}
+
+TRANSITION_LIST("outResult_stage3Counter[6]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 1572000.0;
+	}
+}
+
+TRANSITION_LIST("outResult_stage3Counter[5]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 830006.172;
+		LEVEL 1 FOR 741993.828;
+	}
+}
+
+TRANSITION_LIST("outResult_stage3Counter[4]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 450006.182;
+		LEVEL 1 FOR 380000.0;
+		LEVEL 0 FOR 741993.818;
+	}
+}
+
+TRANSITION_LIST("outResult_stage3Counter[3]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 250006.392;
+		LEVEL 1 FOR 200000.0;
+		LEVEL 0 FOR 220000.0;
+		LEVEL 1 FOR 160000.0;
+		LEVEL 0 FOR 160000.0;
+		LEVEL 1 FOR 581993.608;
+	}
+}
+
+TRANSITION_LIST("outResult_stage3Counter[2]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 110006.348;
+		LEVEL 1 FOR 140000.0;
+		LEVEL 0 FOR 100000.0;
+		LEVEL 1 FOR 100000.0;
+		LEVEL 0 FOR 140000.0;
+		NODE
+		{
+			REPEAT = 2;
+			LEVEL 1 FOR 80000.0;
+			LEVEL 0 FOR 80000.0;
+		}
+		LEVEL 1 FOR 80000.0;
+		LEVEL 0 FOR 581993.652;
+	}
+}
+
+TRANSITION_LIST("outResult_stage3Counter[1]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 70005.844;
+		LEVEL 1 FOR 40000.0;
+		LEVEL 0 FOR 80000.0;
+		NODE
+		{
+			REPEAT = 3;
+			LEVEL 1 FOR 60000.0;
+			LEVEL 0 FOR 40000.0;
+		}
+		LEVEL 1 FOR 100000.0;
+		NODE
+		{
+			REPEAT = 5;
+			LEVEL 0 FOR 40000.0;
+			LEVEL 1 FOR 40000.0;
+		}
+		LEVEL 0 FOR 581994.156;
+	}
+}
+
+TRANSITION_LIST("outResult_stage3Counter[0]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 50006.353;
+		LEVEL 1 FOR 20000.0;
+		LEVEL 0 FOR 20000.0;
+		LEVEL 1 FOR 20000.0;
+		LEVEL 0 FOR 60000.0;
+		NODE
+		{
+			REPEAT = 3;
+			LEVEL 1 FOR 20000.0;
+			LEVEL 0 FOR 20000.0;
+			LEVEL 1 FOR 40000.0;
+			LEVEL 0 FOR 20000.0;
+		}
+		LEVEL 1 FOR 20000.0;
+		LEVEL 0 FOR 20000.0;
+		LEVEL 1 FOR 80000.0;
+		NODE
+		{
+			REPEAT = 10;
+			LEVEL 0 FOR 20000.0;
+			LEVEL 1 FOR 20000.0;
+		}
+		LEVEL 0 FOR 581993.647;
+	}
+}
+
+TRANSITION_LIST("outResult_stage3Stalled")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 130007.664;
+		LEVEL 1 FOR 40000.0;
+		LEVEL 0 FOR 60000.0;
+		NODE
+		{
+			REPEAT = 3;
+			LEVEL 1 FOR 20000.0;
+			LEVEL 0 FOR 80000.0;
+		}
+		LEVEL 1 FOR 60000.0;
+		LEVEL 0 FOR 981992.336;
+	}
+}
+
+TRANSITION_LIST("outResult_stage3WillStall")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 112010.645;
+		LEVEL 1 FOR 39995.964;
+		LEVEL 0 FOR 40000.0;
+		LEVEL 1 FOR 4.036;
+		LEVEL 0 FOR 19999.896;
+		NODE
+		{
+			REPEAT = 2;
+			LEVEL 1 FOR 19996.068;
+			LEVEL 0 FOR 80003.932;
+		}
+		LEVEL 1 FOR 19996.068;
+		LEVEL 0 FOR 80004.036;
+		LEVEL 1 FOR 60000.0;
+		LEVEL 0 FOR 999989.355;
+	}
+}
+
+TRANSITION_LIST("stallPrev")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 152000.0;
+		LEVEL 1 FOR 40000.0;
+		LEVEL 0 FOR 40000.0;
+		LEVEL 1 FOR 60000.0;
+		LEVEL 0 FOR 40000.0;
+		LEVEL 1 FOR 60000.0;
+		LEVEL 0 FOR 40000.0;
+		LEVEL 1 FOR 80000.0;
+		LEVEL 0 FOR 1060000.0;
+	}
+}
+
+TRANSITION_LIST("stallPipeline")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 132000.0;
+		LEVEL 1 FOR 20000.0;
+		LEVEL 0 FOR 60000.0;
+		LEVEL 1 FOR 20000.0;
+		LEVEL 0 FOR 80000.0;
+		LEVEL 1 FOR 20000.0;
+		LEVEL 0 FOR 80000.0;
+		LEVEL 1 FOR 20000.0;
+		LEVEL 0 FOR 80000.0;
+		LEVEL 1 FOR 60000.0;
+		NODE
+		{
+			REPEAT = 1;
+			LEVEL 0 FOR 1000000.0;
+		}
+	}
+}
+
+TRANSITION_LIST("stallStage0")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 392000.0;
+		LEVEL 1 FOR 120000.0;
+		LEVEL 0 FOR 1060000.0;
+	}
+}
+
+TRANSITION_LIST("stallStage1")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 292000.0;
+		LEVEL 1 FOR 100000.0;
+		LEVEL 0 FOR 1180000.0;
+	}
+}
+
+TRANSITION_LIST("stallStage2")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 192000.0;
+		LEVEL 1 FOR 100000.0;
+		LEVEL 0 FOR 1280000.0;
+	}
+}
+
+TRANSITION_LIST("stallStage3")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 112000.0;
+		LEVEL 1 FOR 80000.0;
+		LEVEL 0 FOR 320000.0;
+		LEVEL 1 FOR 60000.0;
+		NODE
+		{
+			REPEAT = 1;
+			LEVEL 0 FOR 1000000.0;
+		}
+	}
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Clock";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 0;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Reset";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 1;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "stallPipeline";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 2;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "stallPrev";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 3;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "stallStage0";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 4;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "stallStage1";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 5;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "stallStage2";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 6;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "stallStage3";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 7;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_pipelineWillStall";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 8;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_pipelineStalled";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 9;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage0WillStall";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 10;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage0Stalled";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 11;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage1WillStall";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 12;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage1Stalled";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 13;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage2WillStall";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 14;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage2Stalled";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 15;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage3WillStall";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 16;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage3Stalled";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 17;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage0Counter";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 18;
+	TREE_LEVEL = 0;
+	CHILDREN = 19, 20, 21, 22, 23, 24, 25, 26;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage0Counter[7]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 19;
+	TREE_LEVEL = 1;
+	PARENT = 18;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage0Counter[6]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 20;
+	TREE_LEVEL = 1;
+	PARENT = 18;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage0Counter[5]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 21;
+	TREE_LEVEL = 1;
+	PARENT = 18;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage0Counter[4]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 22;
+	TREE_LEVEL = 1;
+	PARENT = 18;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage0Counter[3]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 23;
+	TREE_LEVEL = 1;
+	PARENT = 18;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage0Counter[2]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 24;
+	TREE_LEVEL = 1;
+	PARENT = 18;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage0Counter[1]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 25;
+	TREE_LEVEL = 1;
+	PARENT = 18;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage0Counter[0]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 26;
+	TREE_LEVEL = 1;
+	PARENT = 18;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage1Counter";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 27;
+	TREE_LEVEL = 0;
+	CHILDREN = 28, 29, 30, 31, 32, 33, 34, 35;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage1Counter[7]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 28;
+	TREE_LEVEL = 1;
+	PARENT = 27;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage1Counter[6]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 29;
+	TREE_LEVEL = 1;
+	PARENT = 27;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage1Counter[5]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 30;
+	TREE_LEVEL = 1;
+	PARENT = 27;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage1Counter[4]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 31;
+	TREE_LEVEL = 1;
+	PARENT = 27;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage1Counter[3]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 32;
+	TREE_LEVEL = 1;
+	PARENT = 27;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage1Counter[2]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 33;
+	TREE_LEVEL = 1;
+	PARENT = 27;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage1Counter[1]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 34;
+	TREE_LEVEL = 1;
+	PARENT = 27;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage1Counter[0]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 35;
+	TREE_LEVEL = 1;
+	PARENT = 27;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage2Counter";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 36;
+	TREE_LEVEL = 0;
+	CHILDREN = 37, 38, 39, 40, 41, 42, 43, 44;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage2Counter[7]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 37;
+	TREE_LEVEL = 1;
+	PARENT = 36;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage2Counter[6]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 38;
+	TREE_LEVEL = 1;
+	PARENT = 36;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage2Counter[5]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 39;
+	TREE_LEVEL = 1;
+	PARENT = 36;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage2Counter[4]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 40;
+	TREE_LEVEL = 1;
+	PARENT = 36;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage2Counter[3]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 41;
+	TREE_LEVEL = 1;
+	PARENT = 36;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage2Counter[2]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 42;
+	TREE_LEVEL = 1;
+	PARENT = 36;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage2Counter[1]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 43;
+	TREE_LEVEL = 1;
+	PARENT = 36;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage2Counter[0]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 44;
+	TREE_LEVEL = 1;
+	PARENT = 36;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage3Counter";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 45;
+	TREE_LEVEL = 0;
+	CHILDREN = 46, 47, 48, 49, 50, 51, 52, 53;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage3Counter[7]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 46;
+	TREE_LEVEL = 1;
+	PARENT = 45;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage3Counter[6]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 47;
+	TREE_LEVEL = 1;
+	PARENT = 45;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage3Counter[5]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 48;
+	TREE_LEVEL = 1;
+	PARENT = 45;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage3Counter[4]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 49;
+	TREE_LEVEL = 1;
+	PARENT = 45;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage3Counter[3]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 50;
+	TREE_LEVEL = 1;
+	PARENT = 45;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage3Counter[2]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 51;
+	TREE_LEVEL = 1;
+	PARENT = 45;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage3Counter[1]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 52;
+	TREE_LEVEL = 1;
+	PARENT = 45;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "outResult_stage3Counter[0]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 53;
+	TREE_LEVEL = 1;
+	PARENT = 45;
+}
+
+TIME_BAR
+{
+	TIME = 15050;
+	MASTER = TRUE;
+}
+;

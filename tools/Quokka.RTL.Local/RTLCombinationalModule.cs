@@ -1,4 +1,6 @@
-﻿using Quokka.VCD;
+﻿using Quokka.RTL.Simulator;
+using Quokka.RTL.Tools;
+using Quokka.VCD;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +9,13 @@ using System.Reflection;
 
 namespace Quokka.RTL
 {
+    [RTLToolkitType]
+    public class RTLModuleCycleParams
+    {
+        public int MaxDeltaCycles = 1000;
+        public Action OnBeforeStage;
+    }
+
     [RTLToolkitType]
     public abstract class RTLCombinationalModule<TInput> : IRTLCombinationalModule<TInput>
         where TInput : new()
@@ -79,7 +88,7 @@ namespace Quokka.RTL
             }
         }
 
-        public virtual void Setup()
+        protected virtual void OnSetup()
         {
             Initialize();
 
@@ -87,8 +96,22 @@ namespace Quokka.RTL
             {
                 child.Setup();
             }
+        }
+
+        protected virtual void OnSetupCompleted()
+        {
+
+        }
+
+        public virtual bool OnRelatedObjectCreating(object data) => false;
+
+        public void Setup()
+        {
+            OnSetup();
 
             Schedule(() => new TInput());
+
+            OnSetupCompleted();
         }
 
         public TInput Inputs { get; private set; } = new TInput();
@@ -107,7 +130,7 @@ namespace Quokka.RTL
             Scheduled?.Invoke(this, new EventArgs());
         }
 
-        protected virtual bool DeepEquals(object lhs, object rhs) => RTLModuleHelper.DeepEquals(lhs, rhs);
+        public virtual bool DeepEquals(object lhs, object rhs) => RTLModuleHelper.DeepEquals(lhs, rhs);
         protected virtual bool ShouldStage(TInput nextInputs)
         {
             if (InputProps == null)
@@ -117,24 +140,24 @@ namespace Quokka.RTL
             return !DeepEquals(Inputs, nextInputs);
         }
 
-        public virtual bool Stage(int iteration)
+        public virtual RTLModuleStageResult DeltaCycle(int deltaCycle)
         {
             if (InputsFactory == null)
                 throw new InvalidOperationException($"InputsFactory is not specified. Did you forget to schedule module?");
 
             var nextInputs = InputsFactory();
 
-            bool selfModified = iteration == 0 || ShouldStage(nextInputs);
+            bool selfModified = deltaCycle == 0 || ShouldStage(nextInputs);
             bool childrenModified = false;
 
             Inputs = nextInputs;
 
             foreach (var child in Modules)
             {
-                childrenModified |= child.Stage(iteration);
+                childrenModified |= child.DeltaCycle(deltaCycle) == RTLModuleStageResult.Unstable;
             }
 
-            return selfModified | childrenModified;
+            return (selfModified | childrenModified) ? RTLModuleStageResult.Unstable : RTLModuleStageResult.Stable;
         }
 
         public virtual void Commit()
@@ -164,20 +187,25 @@ namespace Quokka.RTL
             }
         }
 
-        protected virtual IEnumerable<VCDVariable> ToVCDVariables(MemberInfo memberInfo, object value, string namePrefix = "")
+        protected virtual IEnumerable<VCDVariable> ToVCDVariables(string name, object value, bool includeToolkitTypes = false)
         {
+            if (value == null)
+                return Enumerable.Empty<VCDVariable>();
+
+            var recursivePrefix = string.IsNullOrEmpty(name) ? "" : $"{name}_";
+
             switch (value)
             {
                 case Enum v:
                     return new[]
                     {
-                        new VCDVariable($"{namePrefix}{memberInfo.Name}ToString", value.ToString(), SizeOf("")),
-                        new VCDVariable($"{namePrefix}{memberInfo.Name}", value, SizeOf(value))
+                        new VCDVariable($"{name}ToString", value.ToString(), SizeOf("")),
+                        new VCDVariable($"{name}", value, SizeOf(value))
                     };
                 case RTLBitArray b:
                     return new[]
                     {
-                        new VCDVariable(memberInfo.Name, value, SizeOf(value))
+                        new VCDVariable($"{name}", value, SizeOf(value))
                     };
                 default:
                     var valueType = value.GetType();
@@ -185,10 +213,12 @@ namespace Quokka.RTL
                     {
                         var result = new List<VCDVariable>();
 
-                        var props = RTLModuleHelper.SynthesizableMembers(valueType);
+                        var props = RTLReflectionTools.SynthesizableMembers(valueType, includeToolkitTypes);
                         foreach (var m in props)
                         {
-                            result.AddRange(ToVCDVariables(m, m.GetValue(value), $"{namePrefix}{memberInfo.Name}_"));
+                            var memberValue = m.GetValue(value) ?? RTLModuleHelper.Activate(m.GetMemberType());
+
+                            result.AddRange(ToVCDVariables(m, memberValue, recursivePrefix));
                         }
 
                         return result;
@@ -203,10 +233,12 @@ namespace Quokka.RTL
                         {
                             var result = new List<VCDVariable>();
 
-                            var props = RTLModuleHelper.SynthesizableMembers(valueType).Where(m => m.Name.StartsWith("Item"));
+                            var props = RTLReflectionTools.SynthesizableMembers(valueType, includeToolkitTypes).Where(m => m.Name.StartsWith("Item"));
                             foreach (var m in props)
                             {
-                                result.AddRange(ToVCDVariables(m, m.GetValue(value), $"{namePrefix}{memberInfo.Name}_"));
+                                var memberValue = m.GetValue(value) ?? RTLModuleHelper.Activate(m.GetMemberType());
+
+                                result.AddRange(ToVCDVariables(m, memberValue, recursivePrefix));
                             }
 
                             return result;
@@ -215,9 +247,14 @@ namespace Quokka.RTL
 
                     return new[]
                     {
-                        new VCDVariable($"{namePrefix}{memberInfo.Name}", value, SizeOf(value))
+                        new VCDVariable($"{name}", value, SizeOf(value))
                     };
             }
+        }
+
+        protected virtual IEnumerable<VCDVariable> ToVCDVariables(MemberInfo memberInfo, object value, string namePrefix = "")
+        {
+            return ToVCDVariables($"{namePrefix}{memberInfo.Name}", value);
         }
 
         protected VCDSignalsSnapshot currentSnapshot = null;
@@ -283,10 +320,24 @@ namespace Quokka.RTL
             }
         }
 
-        public void Cycle(TInput inputs)
+        public void Cycle(TInput inputs, RTLModuleCycleParams cycleParams = null)
         {
+            if (cycleParams == null)
+                cycleParams = new RTLModuleCycleParams();
+
             Schedule(() => inputs);
-            Stage(0);
+            var iteration = 0;
+            for (; iteration < cycleParams.MaxDeltaCycles; iteration++)
+            {
+                if (DeltaCycle(iteration) == RTLModuleStageResult.Stable)
+                    break;
+            }
+
+            if (iteration == cycleParams.MaxDeltaCycles)
+                throw new MaxStageIterationReachedException();
+
+            cycleParams.OnBeforeStage?.Invoke();
+
             Commit();
         }
     }

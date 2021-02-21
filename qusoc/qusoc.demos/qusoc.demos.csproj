@@ -1,20 +1,17 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="Quokka.FPGA" Version="0.1.0.94" />
+    <PackageReference Include="Quokka.FPGA" Version="0.1.0.95" />
     <PackageReference Include="Quokka.RISCV.CS2CPP" Version="1.0.0.9" />
-    <PackageReference Include="Quokka.RTL" Version="0.1.0.71" />
+    <PackageReference Include="Quokka.RTL" Version="0.1.0.151" />
     <PackageReference Include="Quokka.RISCV.Integration" Version="1.0.0.14" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\qrv32\qrv32.cpu\qrv32.cpu.csproj" />
     <ProjectReference Include="..\..\tools\Quokka.RTL.Local\Quokka.RTL.Local.csproj" />
     <ProjectReference Include="..\qusoc\qusoc.csproj" />
   </ItemGroup>
-
 </Project>

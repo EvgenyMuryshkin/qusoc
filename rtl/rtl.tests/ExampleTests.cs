@@ -1,14 +1,11 @@
 ﻿using Experimental.Tests;
 using Microsoft.CodeAnalysis.Operations;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Quokka.Public.Tools;
 using Quokka.RTL;
 using Quokka.RTL.Simulator;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace RTL.Modules
 {
@@ -30,22 +27,8 @@ namespace RTL.Modules
     }
 
     [TestClass]
-    public class ExampleTests
+    public class ExampleTests : BaseRTLModuleTests
     {
-        static string VCDOutputPath([CallerMemberName] string testName = "")
-        {
-            return Path.Combine(PathTools.ProjectPath, "SimResults", $"{testName}.vcd");
-        }
-
-        T Module<T>()
-            where T : IRTLCombinationalModule, new()
-        {
-            var module = new T();
-            module.Setup();
-
-            return module;
-        }
-
         [TestMethod]
         public void SignedCastModuleTest()
         {
@@ -447,7 +430,7 @@ namespace RTL.Modules
             Assert.IsTrue(module.IsReady);
 
             module.Schedule(() => new TransmitterInputs() { Trigger = true, Data = sourceData });
-            module.Stage(0);
+            module.DeltaCycle(0);
 
             // property depends on state change
             Assert.IsTrue(module.IsTransmissionStarted);
@@ -487,9 +470,9 @@ namespace RTL.Modules
             foreach (var shiftBy in Enumerable.Range(0, 8))
             {
                 var sb = new RTLBitArray(shiftBy).Unsigned().Resized(3);
-                shifter.Cycle(new ShifterInputs() 
-                { 
-                    Value = shlData, 
+                shifter.Cycle(new ShifterInputs()
+                {
+                    Value = shlData,
                     ShiftBy = sb
                 });
 
@@ -503,7 +486,7 @@ namespace RTL.Modules
         public void SignalsMuxTest()
         {
             var mux = Module<SignalsMuxModule>();
-            foreach (var idx in Enumerable.Range(0,4))
+            foreach (var idx in Enumerable.Range(0, 4))
             {
                 mux.Cycle(new SignalsMuxModuleInputs()
                 {
@@ -541,14 +524,9 @@ namespace RTL.Modules
 
             Action<byte[], bool, byte, bool> iteration = (inputs, inReady, outResult, outReady) =>
             {
-                t.Cycle(new YandexTestModuleInputs() 
-                { 
-                    inData0 = inputs[0],
-                    inData1 = inputs[1],
-                    inData2 = inputs[2],
-                    inData3 = inputs[3],
-                    inData4 = inputs[4],
-                    inData5 = inputs[5],
+                t.Cycle(new YandexTestModuleInputs()
+                {
+                    inData = inputs,
                     inReady = inReady
                 });
                 Assert.AreEqual(outResult, t.outResult, $"Result failed for {inputs.ToCSV()}, {inReady}");
@@ -564,7 +542,6 @@ namespace RTL.Modules
             iteration(empty, false, 3, true); // result at stage 4, third case
             iteration(empty, false, 0, false); // result at stage 4, empty
         }
-
     }
 }
 

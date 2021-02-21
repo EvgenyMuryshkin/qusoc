@@ -18,7 +18,7 @@ namespace Quokka.RTL.Simulator
             {
                 TopLevel = _topLevel,
                 Clock = _simulatorContext.Clock,
-                StageIteration = _simulatorContext.Iteration
+                StageIteration = _simulatorContext.DeltaCycle
             };
 
         public TModule TopLevel => _topLevel;
@@ -78,37 +78,39 @@ namespace Quokka.RTL.Simulator
 
         public void ClockCycle()
         {
-            _simulatorContext.CurrentTime = _simulatorContext.Clock * 2 * _simulatorContext.MaxStageIterations;
-            _simulatorContext.ClockSignal?.SetValue(true);
-
-            _simulatorContext.Iteration = 0;
+            _simulatorContext.DeltaCycle = 0;
             do
             {
                 _simulatorContext.CurrentTime++;
 
-                var modified = _topLevel.Stage(_simulatorContext.Iteration);
+                var stageResult = _topLevel.DeltaCycle(_simulatorContext.DeltaCycle);
 
                 TraceSignals();
 
                 // no modules were modified during stage iteration, all converged
-                if (!modified)
+                if (stageResult == RTLModuleStageResult.Stable)
                     break;
             }
-            while (++_simulatorContext.Iteration < _simulatorContext.MaxStageIterations);
+            while (++_simulatorContext.DeltaCycle < _simulatorContext.MaxDeltaCycles);
 
-            if (_simulatorContext.Iteration >= _simulatorContext.MaxStageIterations)
+            if (_simulatorContext.DeltaCycle >= _simulatorContext.MaxDeltaCycles)
                 throw new MaxStageIterationReachedException();
 
             OnPostStage?.Invoke(_topLevel);
 
-            _simulatorContext.CurrentTime = _simulatorContext.Clock * 2 * _simulatorContext.MaxStageIterations + _simulatorContext.MaxStageIterations;
+            _simulatorContext.CurrentTime = _simulatorContext.Clock * 2 * _simulatorContext.MaxDeltaCycles + _simulatorContext.MaxDeltaCycles;
+
+            // clock fall is not handled in RTL module, all sync is done of clock rise at the moment
             _simulatorContext.ClockSignal?.SetValue(false);
             TraceSignals();
 
-            _topLevel.Commit();
-            OnPostCommit?.Invoke(_topLevel);
-
+            // clock rise will commit all changes
             _simulatorContext.Clock++;
+            _simulatorContext.CurrentTime = _simulatorContext.Clock * 2 * _simulatorContext.MaxDeltaCycles;
+            _simulatorContext.ClockSignal?.SetValue(true);
+            _topLevel.Commit();
+            TraceSignals();
+            OnPostCommit?.Invoke(_topLevel);
         }
 
         public void Run()
