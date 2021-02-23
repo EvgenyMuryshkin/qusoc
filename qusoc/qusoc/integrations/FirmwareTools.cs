@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Schema;
 using QRV32.CPU;
+using Quokka.Core.Tools;
 using Quokka.Public.Tools;
 using Quokka.RISCV.CS2CPP.Tools;
 using Quokka.RISCV.CS2CPP.Translator;
@@ -29,7 +30,7 @@ namespace QuSoC
         public string FirmwareFolder => Path.Combine(appPath, "firmware");
         public string FirmwareFile => Path.Combine(FirmwareFolder, "firmware.bin");
         public string FirmwareAsmFile => Path.Combine(FirmwareFolder, "firmware.asm");
-        public string MakefileFile => Path.Combine(FirmwareFolder, "makefile");
+        public string MakefileFile => Path.Combine(FirmwareFolder, "Makefile");
         public bool SourceExists => Directory.Exists(SourceFolder);
         public string MainFile => Path.Combine(SourceFolder, "main.S");
 
@@ -123,11 +124,25 @@ namespace QuSoC
 
             if (File.Exists(MakefileFile))
             {
-                var context = RISCVIntegration
-                    .DefaultContext(FirmwareFolder)
-                    .WithMakeTarget("bin");
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    var context = RISCVIntegration
+                        .DefaultContext(FirmwareFolder)
+                        .WithMakeTarget("bin");
 
-                RISCVIntegrationClient.Make(context).Wait();
+                    RISCVIntegrationClient.Make(context).Wait();
+                }
+                else
+                {
+                    using (new CurrentDirectory(FirmwareFolder))
+                    {
+                        Toolchain.Make("bin");
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Makefile was not found: {MakefileFile}");
             }
         }
 
@@ -153,6 +168,10 @@ namespace QuSoC
             {
                 var disassembler = new Disassembler();
                 FileTools.WriteAllText(FirmwareAsmFile, disassembler.Disassemble(Instructions()));
+            }
+            else
+            {
+                Console.WriteLine($"Firmware file was not found: {FirmwareFile}");
             }
 
             return File.Exists(FirmwareFile);
