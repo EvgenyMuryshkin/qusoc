@@ -3,6 +3,8 @@ using System.IO;
 using Quokka.Core.Bootstrap;
 using Quokka.Core.Tools;
 using Quokka.Public.Tools;
+using Quokka.RISCV.CS2CPP.Translator;
+using Quokka.RISCV.Integration.Client;
 using Quokka.RTL;
 
 namespace QuokkaCLI
@@ -14,6 +16,8 @@ namespace QuokkaCLI
             Console.WriteLine($"Current location: {Directory.GetCurrentDirectory()}");
             Console.WriteLine($"Quokka.FPGA version: {typeof(QuokkaRunner).Assembly.GetName().Version}");
             Console.WriteLine($"Quokka.RTL version: {typeof(RTLBitArray).Assembly.GetName().Version}");
+            Console.WriteLine($"Quokka.RISCV.Integration version: {typeof(RISCVIntegrationClient).Assembly.GetName().Version}");
+            Console.WriteLine($"Quokka.RISCV.CS2CPP version: {typeof(CSharp2CPPTranslator).Assembly.GetName().Version}");
 
             Console.WriteLine("Cleaning up ...");
 
