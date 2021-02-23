@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using Quokka.Core.Bootstrap;
 using Quokka.Core.Tools;
 using Quokka.Public.Tools;
@@ -13,6 +14,7 @@ namespace QuokkaCLI
     {
         static void RunInCurrentLocation(string[] args)
         {
+            Console.WriteLine($"Environment: {RuntimeInformation.OSDescription}, {RuntimeInformation.OSArchitecture}, {RuntimeInformation.FrameworkDescription}, {RuntimeInformation.ProcessArchitecture}");
             Console.WriteLine($"Current location: {Directory.GetCurrentDirectory()}");
             Console.WriteLine($"Quokka.FPGA version: {typeof(QuokkaRunner).Assembly.GetName().Version}");
             Console.WriteLine($"Quokka.RTL version: {typeof(RTLBitArray).Assembly.GetName().Version}");

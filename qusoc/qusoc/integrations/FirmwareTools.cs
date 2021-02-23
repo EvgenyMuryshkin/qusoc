@@ -30,7 +30,7 @@ namespace QuSoC
         public string FirmwareFolder => Path.Combine(appPath, "firmware");
         public string FirmwareFile => Path.Combine(FirmwareFolder, "firmware.bin");
         public string FirmwareAsmFile => Path.Combine(FirmwareFolder, "firmware.asm");
-        public string MakefileFile => Path.Combine(FirmwareFolder, "makefile");
+        public string MakefileFile => Path.Combine(FirmwareFolder, "Makefile");
         public bool SourceExists => Directory.Exists(SourceFolder);
         public string MainFile => Path.Combine(SourceFolder, "main.S");
 
@@ -124,8 +124,6 @@ namespace QuSoC
 
             if (File.Exists(MakefileFile))
             {
-                Console.WriteLine($"{RuntimeInformation.OSDescription}, {RuntimeInformation.OSArchitecture}, {RuntimeInformation.FrameworkDescription}, {RuntimeInformation.ProcessArchitecture}");
-                
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
                     var context = RISCVIntegration
@@ -141,6 +139,10 @@ namespace QuSoC
                         Toolchain.Make("bin");
                     }
                 }
+            }
+            else
+            {
+                Console.WriteLine($"Makefile was not found: {MakefileFile}");
             }
         }
 
@@ -166,6 +168,10 @@ namespace QuSoC
             {
                 var disassembler = new Disassembler();
                 FileTools.WriteAllText(FirmwareAsmFile, disassembler.Disassemble(Instructions()));
+            }
+            else
+            {
+                Console.WriteLine($"Firmware file was not found: {FirmwareFile}");
             }
 
             return File.Exists(FirmwareFile);
