@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Schema;
 using QRV32.CPU;
+using Quokka.Core.Tools;
 using Quokka.Public.Tools;
 using Quokka.RISCV.CS2CPP.Tools;
 using Quokka.RISCV.CS2CPP.Translator;
@@ -123,11 +124,23 @@ namespace QuSoC
 
             if (File.Exists(MakefileFile))
             {
-                var context = RISCVIntegration
-                    .DefaultContext(FirmwareFolder)
-                    .WithMakeTarget("bin");
+                Console.WriteLine($"{RuntimeInformation.OSDescription}, {RuntimeInformation.OSArchitecture}, {RuntimeInformation.FrameworkDescription}, {RuntimeInformation.ProcessArchitecture}");
+                
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    var context = RISCVIntegration
+                        .DefaultContext(FirmwareFolder)
+                        .WithMakeTarget("bin");
 
-                RISCVIntegrationClient.Make(context).Wait();
+                    RISCVIntegrationClient.Make(context).Wait();
+                }
+                else
+                {
+                    using (new CurrentDirectory(FirmwareFolder))
+                    {
+                        Toolchain.Make("bin");
+                    }
+                }
             }
         }
 
