@@ -1,0 +1,12 @@
+-- inferred single port RAM with write-first behaviour
+signal <<addr>>_reg: unsigned(<<width>> downto 1);
+process (Clock)
+begin
+	if rising_edge(Clock) then
+		if (<<write_enable>> = '1') then
+			<<ram>>(TO_INTEGER(<<addr>>)) <= <<write_data>>;
+		end if;
+		<<addr>>_reg <= <<addr>>;
+	end if;
+	<<read_data>> <= <<ram>>(TO_INTEGER(<<addr>>_reg));
+end process;

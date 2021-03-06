@@ -1379,7 +1379,7 @@ TRANSITION_LIST("stallStage3")
 
 DISPLAY_LINE
 {
-	CHANNEL = "Clock";
+	CHANNEL = "Reset";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Hexadecimal;
 	TREE_INDEX = 0;
@@ -1388,7 +1388,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "Reset";
+	CHANNEL = "Clock";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Hexadecimal;
 	TREE_INDEX = 1;

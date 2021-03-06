@@ -1,5 +1,5 @@
 Simulator report for Verilog
-Sun Feb 21 17:41:42 2021
+Sat Mar 06 17:33:29 2021
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -10,12 +10,13 @@ Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
   2. Simulator Summary
   3. Simulator Settings
   4. Simulation Waveforms
-  5. Coverage Summary
-  6. Complete 1/0-Value Coverage
-  7. Missing 1-Value Coverage
-  8. Missing 0-Value Coverage
-  9. Simulator INI Usage
- 10. Simulator Messages
+  5. |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ALTSYNCRAM
+  6. Coverage Summary
+  7. Complete 1/0-Value Coverage
+  8. Missing 1-Value Coverage
+  9. Missing 0-Value Coverage
+ 10. Simulator INI Usage
+ 11. Simulator Messages
 
 
 
@@ -44,43 +45,43 @@ applicable agreement for further details.
 ; Type                        ; Value        ;
 +-----------------------------+--------------+
 ; Simulation Start Time       ; 0 ps         ;
-; Simulation End Time         ; 1.57 ms      ;
-; Simulation Netlist Size     ; 233 nodes    ;
-; Simulation Coverage         ;      68.20 % ;
-; Total Number of Transitions ; 3009         ;
+; Simulation End Time         ; 1.0 ms       ;
+; Simulation Netlist Size     ; 29 nodes     ;
+; Simulation Coverage         ;      34.29 % ;
+; Total Number of Transitions ; 226          ;
 ; Simulation Breakpoints      ; 0            ;
 ; Family                      ; Cyclone II   ;
 ; Device                      ; EP2C5T144C6  ;
 +-----------------------------+--------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Simulator Settings                                                                                                                                        ;
-+--------------------------------------------------------------------------------------------+----------------------------------------------+---------------+
-; Option                                                                                     ; Setting                                      ; Default Value ;
-+--------------------------------------------------------------------------------------------+----------------------------------------------+---------------+
-; Simulation mode                                                                            ; Timing                                       ; Timing        ;
-; Start time                                                                                 ; 0 ns                                         ; 0 ns          ;
-; Simulation results format                                                                  ; CVWF                                         ;               ;
-; Vector input source                                                                        ; Waveforms/StallControlTestPipelineModule.vwf ;               ;
-; Add pins automatically to simulation output waveforms                                      ; On                                           ; On            ;
-; Check outputs                                                                              ; Off                                          ; Off           ;
-; Report simulation coverage                                                                 ; On                                           ; On            ;
-; Display complete 1/0 value coverage report                                                 ; On                                           ; On            ;
-; Display missing 1-value coverage report                                                    ; On                                           ; On            ;
-; Display missing 0-value coverage report                                                    ; On                                           ; On            ;
-; Detect setup and hold time violations                                                      ; Off                                          ; Off           ;
-; Detect glitches                                                                            ; Off                                          ; Off           ;
-; Disable timing delays in Timing Simulation                                                 ; Off                                          ; Off           ;
-; Generate Signal Activity File                                                              ; Off                                          ; Off           ;
-; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                                          ; Off           ;
-; Group bus channels in simulation results                                                   ; Off                                          ; Off           ;
-; Preserve fewer signal transitions to reduce memory requirements                            ; On                                           ; On            ;
-; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                                   ; INPUT_EDGE    ;
-; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                                          ; Off           ;
-; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                                           ;               ;
-; Perform Glitch Filtering in Timing Simulation                                              ; Auto                                         ; Auto          ;
-+--------------------------------------------------------------------------------------------+----------------------------------------------+---------------+
++--------------------------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                                         ;
++--------------------------------------------------------------------------------------------+-------------------------------+---------------+
+; Option                                                                                     ; Setting                       ; Default Value ;
++--------------------------------------------------------------------------------------------+-------------------------------+---------------+
+; Simulation mode                                                                            ; Timing                        ; Timing        ;
+; Start time                                                                                 ; 0 ns                          ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF                          ;               ;
+; Vector input source                                                                        ; Waveforms/SP_WF_RAMModule.vwf ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On                            ; On            ;
+; Check outputs                                                                              ; Off                           ; Off           ;
+; Report simulation coverage                                                                 ; On                            ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On                            ; On            ;
+; Display missing 1-value coverage report                                                    ; On                            ; On            ;
+; Display missing 0-value coverage report                                                    ; On                            ; On            ;
+; Detect setup and hold time violations                                                      ; Off                           ; Off           ;
+; Detect glitches                                                                            ; Off                           ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off                           ; Off           ;
+; Generate Signal Activity File                                                              ; Off                           ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                           ; Off           ;
+; Group bus channels in simulation results                                                   ; Off                           ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On                            ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                    ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                           ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                            ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto                          ; Auto          ;
++--------------------------------------------------------------------------------------------+-------------------------------+---------------+
 
 
 +----------------------+
@@ -90,369 +91,110 @@ Waveform report data cannot be output to ASCII.
 Please use Quartus II to view the waveform report data.
 
 
++-------------------------------------------------------------------------------------------------+
+; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ALTSYNCRAM ;
++-------------------------------------------------------------------------------------------------+
+Please refer to fitter text-based report (*.fit.rpt) to view logical memory report content in ASCII.
+
+
 +--------------------------------------------------------------------+
 ; Coverage Summary                                                   ;
 +-----------------------------------------------------+--------------+
 ; Type                                                ; Value        ;
 +-----------------------------------------------------+--------------+
-; Total coverage as a percentage                      ;      68.20 % ;
-; Total nodes checked                                 ; 233          ;
-; Total output ports checked                          ; 261          ;
-; Total output ports with complete 1/0-value coverage ; 178          ;
-; Total output ports with no 1/0-value coverage       ; 62           ;
-; Total output ports with no 1-value coverage         ; 63           ;
-; Total output ports with no 0-value coverage         ; 82           ;
+; Total coverage as a percentage                      ;      34.29 % ;
+; Total nodes checked                                 ; 29           ;
+; Total output ports checked                          ; 35           ;
+; Total output ports with complete 1/0-value coverage ; 12           ;
+; Total output ports with no 1/0-value coverage       ; 23           ;
+; Total output ports with no 1-value coverage         ; 23           ;
+; Total output ports with no 0-value coverage         ; 23           ;
 +-----------------------------------------------------+--------------+
 
 
 The following table displays output ports that toggle between 1 and 0 during simulation.
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Complete 1/0-Value Coverage                                                                                                                                                                                    ;
-+----------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+------------------+
-; Node Name                                                                                    ; Output Port Name                                                                             ; Output Port Type ;
-+----------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+------------------+
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[0]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[0]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[1]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[1]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[2]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[2]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[3]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[3]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[4]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[4]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[0]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[0]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[1]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[1]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[2]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[2]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[3]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[3]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[4]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[4]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[0]~8            ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[0]~8            ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[0]~8            ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[0]~9            ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[1]~10           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[1]~10           ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[1]~10           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[1]~11           ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[2]~12           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[2]~12           ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[2]~12           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[2]~13           ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[3]~14           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[3]~14           ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[3]~14           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[3]~15           ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[4]~16           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[4]~16           ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[4]~16           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[4]~17           ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[5]~18           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[5]~18           ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[5]~18           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[5]~19           ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[6]~20           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[6]~20           ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[0]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[0]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[1]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[1]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[2]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[2]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[3]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[3]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[4]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[4]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[0]~8            ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[0]~8            ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[0]~8            ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[0]~9            ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[1]~10           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[1]~10           ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[1]~10           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[1]~11           ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[2]~12           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[2]~12           ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[2]~12           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[2]~13           ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[3]~14           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[3]~14           ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[3]~14           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[3]~15           ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[4]~16           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[4]~16           ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[4]~16           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[4]~17           ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[5]~18           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[5]~18           ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[0]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[0]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[1]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[1]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[2]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[2]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[3]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[3]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[0]~8            ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[0]~8            ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[0]~8            ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[0]~9            ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[1]~10           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[1]~10           ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[1]~10           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[1]~11           ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[2]~12           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[2]~12           ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[2]~12           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[2]~13           ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[3]~14           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[3]~14           ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[3]~14           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[3]~15           ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[4]~16           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[4]~16           ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[4]~16           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[4]~17           ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[5]~18           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[5]~18           ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[5]~18           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[5]~19           ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[6]~20           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[6]~20           ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[0]~8            ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[0]~8            ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[0]~8            ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[0]~9            ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[1]~10           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[1]~10           ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[1]~10           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[1]~11           ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[2]~12           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[2]~12           ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[2]~12           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[2]~13           ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[3]~14           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[3]~14           ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[3]~14           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[3]~15           ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[4]~16           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[4]~16           ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[4]~16           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[4]~17           ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[5]~18           ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[5]~18           ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_PipelinePreview_PipelineWillStall_Source~0 ; |StallControlTestPipelineModule_TopLevel|Pipeline_PipelinePreview_PipelineWillStall_Source~0 ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_PipelinePreview_PipelineWillStall_Source~1 ; |StallControlTestPipelineModule_TopLevel|Pipeline_PipelinePreview_PipelineWillStall_Source~1 ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_PipelineControl_PipelineStalled            ; |StallControlTestPipelineModule_TopLevel|Pipeline_PipelineControl_PipelineStalled            ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_Preview_StageWillStall_Source~0     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_Preview_StageWillStall_Source~0     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_Preview_StageWillStall_Source~1     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_Preview_StageWillStall_Source~1     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_Control_StageStalled                ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_Control_StageStalled                ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_Preview_StageWillStall_Source~0     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_Preview_StageWillStall_Source~0     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_Preview_StageWillStall_Source~0     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_Preview_StageWillStall_Source~0     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_Preview_StageWillStall_Source~1     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_Preview_StageWillStall_Source~1     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_Control_StageStalled                ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_Control_StageStalled                ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_Preview_StageWillStall_Source~1     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_Preview_StageWillStall_Source~1     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_Control_StageStalled                ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_Control_StageStalled                ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_Control_StageStalled                ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_Control_StageStalled                ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter[0]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter[0]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter[1]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter[1]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter[2]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter[2]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter[3]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter[3]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter[0]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter[0]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter[1]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter[1]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter[2]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter[2]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter[3]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter[3]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter[0]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter[0]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter[1]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter[1]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter[2]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter[2]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter[3]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter[3]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter[4]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter[4]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_PipelineControl_PipelineStalled~0          ; |StallControlTestPipelineModule_TopLevel|Pipeline_PipelineControl_PipelineStalled~0          ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_Control_StageStalled~0              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_Control_StageStalled~0              ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_Control_StageStalled~1              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_Control_StageStalled~1              ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_Control_StageStalled~0              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_Control_StageStalled~0              ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_Control_StageStalled~0              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_Control_StageStalled~0              ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter[0]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter[0]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter~0               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter~0               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter[1]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter[1]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter~1               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter~1               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter[2]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter[2]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter~2               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter~2               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter[3]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter[3]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter~3               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter~3               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter[0]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter[0]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter~0               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter~0               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter[1]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter[1]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter~1               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter~1               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter[2]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter[2]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter~2               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter~2               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter[3]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter[3]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter~3               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter~3               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter[4]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter[4]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter~4               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter~4               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter~0               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter~0               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter~1               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter~1               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter~2               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter~2               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter~3               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter~3               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter~4               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter~4               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter[0]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter[0]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter~0               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter~0               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter[1]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter[1]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter~1               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter~1               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter[2]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter[2]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter~2               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter~2               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter[3]              ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter[3]              ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter~3               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter~3               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter~0               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter~0               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter~1               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter~1               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter~2               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter~2               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter~3               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter~3               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter~4               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter~4               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter~0               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter~0               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter~1               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter~1               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter~2               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter~2               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter~3               ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter~3               ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_PipelineControl_PipelineStalled~0_wirecell ; |StallControlTestPipelineModule_TopLevel|Pipeline_PipelineControl_PipelineStalled~0_wirecell ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_Control_StageStalled~0_wirecell     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_Control_StageStalled~0_wirecell     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_Control_StageStalled~0_wirecell     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_Control_StageStalled~0_wirecell     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|outResult_pipelineWillStall                         ; |StallControlTestPipelineModule_TopLevel|outResult_pipelineWillStall                         ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_pipelineStalled                           ; |StallControlTestPipelineModule_TopLevel|outResult_pipelineStalled                           ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage0WillStall                           ; |StallControlTestPipelineModule_TopLevel|outResult_stage0WillStall                           ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage0Stalled                             ; |StallControlTestPipelineModule_TopLevel|outResult_stage0Stalled                             ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage1WillStall                           ; |StallControlTestPipelineModule_TopLevel|outResult_stage1WillStall                           ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage1Stalled                             ; |StallControlTestPipelineModule_TopLevel|outResult_stage1Stalled                             ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage2WillStall                           ; |StallControlTestPipelineModule_TopLevel|outResult_stage2WillStall                           ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage2Stalled                             ; |StallControlTestPipelineModule_TopLevel|outResult_stage2Stalled                             ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage3WillStall                           ; |StallControlTestPipelineModule_TopLevel|outResult_stage3WillStall                           ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage3Stalled                             ; |StallControlTestPipelineModule_TopLevel|outResult_stage3Stalled                             ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage0Counter[0]                          ; |StallControlTestPipelineModule_TopLevel|outResult_stage0Counter[0]                          ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage0Counter[1]                          ; |StallControlTestPipelineModule_TopLevel|outResult_stage0Counter[1]                          ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage0Counter[2]                          ; |StallControlTestPipelineModule_TopLevel|outResult_stage0Counter[2]                          ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage0Counter[3]                          ; |StallControlTestPipelineModule_TopLevel|outResult_stage0Counter[3]                          ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage1Counter[0]                          ; |StallControlTestPipelineModule_TopLevel|outResult_stage1Counter[0]                          ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage1Counter[1]                          ; |StallControlTestPipelineModule_TopLevel|outResult_stage1Counter[1]                          ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage1Counter[2]                          ; |StallControlTestPipelineModule_TopLevel|outResult_stage1Counter[2]                          ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage1Counter[3]                          ; |StallControlTestPipelineModule_TopLevel|outResult_stage1Counter[3]                          ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage2Counter[0]                          ; |StallControlTestPipelineModule_TopLevel|outResult_stage2Counter[0]                          ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage2Counter[1]                          ; |StallControlTestPipelineModule_TopLevel|outResult_stage2Counter[1]                          ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage2Counter[2]                          ; |StallControlTestPipelineModule_TopLevel|outResult_stage2Counter[2]                          ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage2Counter[3]                          ; |StallControlTestPipelineModule_TopLevel|outResult_stage2Counter[3]                          ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage2Counter[4]                          ; |StallControlTestPipelineModule_TopLevel|outResult_stage2Counter[4]                          ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage3Counter[0]                          ; |StallControlTestPipelineModule_TopLevel|outResult_stage3Counter[0]                          ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage3Counter[1]                          ; |StallControlTestPipelineModule_TopLevel|outResult_stage3Counter[1]                          ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage3Counter[2]                          ; |StallControlTestPipelineModule_TopLevel|outResult_stage3Counter[2]                          ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage3Counter[3]                          ; |StallControlTestPipelineModule_TopLevel|outResult_stage3Counter[3]                          ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage3Counter[4]                          ; |StallControlTestPipelineModule_TopLevel|outResult_stage3Counter[4]                          ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|stallStage3                                         ; |StallControlTestPipelineModule_TopLevel|stallStage3~corein                                  ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|stallPipeline                                       ; |StallControlTestPipelineModule_TopLevel|stallPipeline~corein                                ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|stallStage0                                         ; |StallControlTestPipelineModule_TopLevel|stallStage0~corein                                  ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|stallStage1                                         ; |StallControlTestPipelineModule_TopLevel|stallStage1~corein                                  ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|stallStage2                                         ; |StallControlTestPipelineModule_TopLevel|stallStage2~corein                                  ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|stallPrev                                           ; |StallControlTestPipelineModule_TopLevel|stallPrev~corein                                    ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Clock                                               ; |StallControlTestPipelineModule_TopLevel|Clock~corein                                        ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Clock~clkctrl                                       ; |StallControlTestPipelineModule_TopLevel|Clock~clkctrl                                       ; outclk           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_Control_StageStalled~feeder         ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_Control_StageStalled~feeder         ; combout          ;
-+----------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                                                                                                                                              ;
++---------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------+------------------+
+; Node Name                                                                                         ; Output Port Name                                                                                  ; Output Port Type ;
++---------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------+------------------+
+; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a0 ; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a0 ; portadataout0    ;
+; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a0 ; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a1 ; portadataout1    ;
+; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a0 ; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a2 ; portadataout2    ;
+; |SP_WF_RAMModule_TopLevel|Data[0]                                                                 ; |SP_WF_RAMModule_TopLevel|Data[0]                                                                 ; padio            ;
+; |SP_WF_RAMModule_TopLevel|Data[1]                                                                 ; |SP_WF_RAMModule_TopLevel|Data[1]                                                                 ; padio            ;
+; |SP_WF_RAMModule_TopLevel|Data[2]                                                                 ; |SP_WF_RAMModule_TopLevel|Data[2]                                                                 ; padio            ;
+; |SP_WF_RAMModule_TopLevel|WE                                                                      ; |SP_WF_RAMModule_TopLevel|WE~corein                                                               ; combout          ;
+; |SP_WF_RAMModule_TopLevel|Clock                                                                   ; |SP_WF_RAMModule_TopLevel|Clock~corein                                                            ; combout          ;
+; |SP_WF_RAMModule_TopLevel|WriteData[0]                                                            ; |SP_WF_RAMModule_TopLevel|WriteData[0]~corein                                                     ; combout          ;
+; |SP_WF_RAMModule_TopLevel|WriteData[1]                                                            ; |SP_WF_RAMModule_TopLevel|WriteData[1]~corein                                                     ; combout          ;
+; |SP_WF_RAMModule_TopLevel|WriteData[2]                                                            ; |SP_WF_RAMModule_TopLevel|WriteData[2]~corein                                                     ; combout          ;
+; |SP_WF_RAMModule_TopLevel|Clock~clkctrl                                                           ; |SP_WF_RAMModule_TopLevel|Clock~clkctrl                                                           ; outclk           ;
++---------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 1 during simulation.
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Missing 1-Value Coverage                                                                                                                                                                   ;
-+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+------------------+
-; Node Name                                                                          ; Output Port Name                                                                   ; Output Port Type ;
-+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+------------------+
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[6]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[6]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[7]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[7]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[6]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[6]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[7]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[7]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[6]~20 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[6]~21 ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[7]~22 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[7]~22 ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[6]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[6]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[7]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[7]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[5]~18 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[5]~19 ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[6]~20 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[6]~20 ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[6]~20 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[6]~21 ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[7]~22 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[7]~22 ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[5]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[5]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[6]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[6]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[7]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[7]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[6]~20 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[6]~21 ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[7]~22 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[7]~22 ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[5]~18 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[5]~19 ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[6]~20 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[6]~20 ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[6]~20 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[6]~21 ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[7]~22 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[7]~22 ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter[5]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter[5]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter[6]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter[6]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter[7]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter[7]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter[5]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter[5]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter[6]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter[6]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter[7]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter[7]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter[6]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter[6]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter[7]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter[7]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter[5]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter[5]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter~5     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter~5     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter[6]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter[6]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter~6     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter~6     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter[7]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter[7]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter~7     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter~7     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter[6]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter[6]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter~6     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter~6     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter[7]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter[7]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter~7     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter~7     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter~6     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter~6     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter~7     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter~7     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter[5]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter[5]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter~5     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter~5     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter[6]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter[6]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter~6     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter~6     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter[7]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter[7]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter~7     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter~7     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter~6     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter~6     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter~7     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter~7     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter~5     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter~5     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter~6     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter~6     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter~7     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter~7     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage0Counter[5]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage0Counter[5]                ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage0Counter[6]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage0Counter[6]                ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage0Counter[7]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage0Counter[7]                ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage1Counter[5]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage1Counter[5]                ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage1Counter[6]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage1Counter[6]                ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage1Counter[7]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage1Counter[7]                ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage2Counter[6]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage2Counter[6]                ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage2Counter[7]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage2Counter[7]                ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage3Counter[6]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage3Counter[6]                ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage3Counter[7]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage3Counter[7]                ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|Reset                                     ; |StallControlTestPipelineModule_TopLevel|Reset~corein                              ; combout          ;
-+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                                                                                                                                                                 ;
++---------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------+------------------+
+; Node Name                                                                                         ; Output Port Name                                                                                  ; Output Port Type ;
++---------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------+------------------+
+; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a0 ; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a3 ; portadataout3    ;
+; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a0 ; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a4 ; portadataout4    ;
+; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a0 ; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a5 ; portadataout5    ;
+; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a0 ; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a6 ; portadataout6    ;
+; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a0 ; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a7 ; portadataout7    ;
+; |SP_WF_RAMModule_TopLevel|Data[3]                                                                 ; |SP_WF_RAMModule_TopLevel|Data[3]                                                                 ; padio            ;
+; |SP_WF_RAMModule_TopLevel|Data[4]                                                                 ; |SP_WF_RAMModule_TopLevel|Data[4]                                                                 ; padio            ;
+; |SP_WF_RAMModule_TopLevel|Data[5]                                                                 ; |SP_WF_RAMModule_TopLevel|Data[5]                                                                 ; padio            ;
+; |SP_WF_RAMModule_TopLevel|Data[6]                                                                 ; |SP_WF_RAMModule_TopLevel|Data[6]                                                                 ; padio            ;
+; |SP_WF_RAMModule_TopLevel|Data[7]                                                                 ; |SP_WF_RAMModule_TopLevel|Data[7]                                                                 ; padio            ;
+; |SP_WF_RAMModule_TopLevel|Address[0]                                                              ; |SP_WF_RAMModule_TopLevel|Address[0]~corein                                                       ; combout          ;
+; |SP_WF_RAMModule_TopLevel|Address[1]                                                              ; |SP_WF_RAMModule_TopLevel|Address[1]~corein                                                       ; combout          ;
+; |SP_WF_RAMModule_TopLevel|Address[2]                                                              ; |SP_WF_RAMModule_TopLevel|Address[2]~corein                                                       ; combout          ;
+; |SP_WF_RAMModule_TopLevel|Address[3]                                                              ; |SP_WF_RAMModule_TopLevel|Address[3]~corein                                                       ; combout          ;
+; |SP_WF_RAMModule_TopLevel|Address[4]                                                              ; |SP_WF_RAMModule_TopLevel|Address[4]~corein                                                       ; combout          ;
+; |SP_WF_RAMModule_TopLevel|Address[5]                                                              ; |SP_WF_RAMModule_TopLevel|Address[5]~corein                                                       ; combout          ;
+; |SP_WF_RAMModule_TopLevel|Address[6]                                                              ; |SP_WF_RAMModule_TopLevel|Address[6]~corein                                                       ; combout          ;
+; |SP_WF_RAMModule_TopLevel|Address[7]                                                              ; |SP_WF_RAMModule_TopLevel|Address[7]~corein                                                       ; combout          ;
+; |SP_WF_RAMModule_TopLevel|WriteData[3]                                                            ; |SP_WF_RAMModule_TopLevel|WriteData[3]~corein                                                     ; combout          ;
+; |SP_WF_RAMModule_TopLevel|WriteData[4]                                                            ; |SP_WF_RAMModule_TopLevel|WriteData[4]~corein                                                     ; combout          ;
+; |SP_WF_RAMModule_TopLevel|WriteData[5]                                                            ; |SP_WF_RAMModule_TopLevel|WriteData[5]~corein                                                     ; combout          ;
+; |SP_WF_RAMModule_TopLevel|WriteData[6]                                                            ; |SP_WF_RAMModule_TopLevel|WriteData[6]~corein                                                     ; combout          ;
+; |SP_WF_RAMModule_TopLevel|WriteData[7]                                                            ; |SP_WF_RAMModule_TopLevel|WriteData[7]~corein                                                     ; combout          ;
++---------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 0 during simulation.
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Missing 0-Value Coverage                                                                                                                                                                   ;
-+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+------------------+
-; Node Name                                                                          ; Output Port Name                                                                   ; Output Port Type ;
-+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+------------------+
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[5]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[5]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[6]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[6]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[7]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[7]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[5]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[5]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[6]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[6]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[7]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[7]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[6]~20 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[6]~21 ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[7]~22 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage3Counter[7]~22 ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[5]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[5]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[6]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[6]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[7]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[7]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[5]~18 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[5]~19 ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[6]~20 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[6]~20 ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[6]~20 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[6]~21 ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[7]~22 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage2Counter[7]~22 ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[4]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[4]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[5]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[5]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[6]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[6]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[7]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[7]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[6]~20 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[6]~21 ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[7]~22 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage1Counter[7]~22 ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[5]~18 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[5]~19 ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[6]~20 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[6]~20 ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[6]~20 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[6]~21 ; cout             ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[7]~22 ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage0_State_stage0Counter[7]~22 ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter[4]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter[4]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter[5]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter[5]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter[6]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter[6]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter[7]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter[7]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter[4]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter[4]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter[5]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter[5]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter[6]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter[6]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter[7]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter[7]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter[5]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter[5]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter[6]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter[6]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter[7]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter[7]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter[4]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter[4]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter~4     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter~4     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter[5]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter[5]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter~5     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter~5     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter[6]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter[6]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter~6     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter~6     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter[7]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter[7]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter~7     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage0Counter~7     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter[5]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter[5]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter~5     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter~5     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter[6]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter[6]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter~6     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter~6     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter[7]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter[7]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter~7     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage1Counter~7     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter~5     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter~5     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter~6     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter~6     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter~7     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage3_State_stage2Counter~7     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter[4]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter[4]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter~4     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter~4     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter[5]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter[5]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter~5     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter~5     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter[6]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter[6]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter~6     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter~6     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter[7]    ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter[7]    ; regout           ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter~7     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage0Counter~7     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter~5     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter~5     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter~6     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter~6     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter~7     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage2_State_stage1Counter~7     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter~4     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter~4     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter~5     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter~5     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter~6     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter~6     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter~7     ; |StallControlTestPipelineModule_TopLevel|Pipeline_stage1_State_stage0Counter~7     ; combout          ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage0Counter[4]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage0Counter[4]                ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage0Counter[5]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage0Counter[5]                ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage0Counter[6]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage0Counter[6]                ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage0Counter[7]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage0Counter[7]                ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage1Counter[4]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage1Counter[4]                ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage1Counter[5]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage1Counter[5]                ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage1Counter[6]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage1Counter[6]                ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage1Counter[7]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage1Counter[7]                ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage2Counter[5]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage2Counter[5]                ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage2Counter[6]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage2Counter[6]                ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage2Counter[7]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage2Counter[7]                ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage3Counter[5]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage3Counter[5]                ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage3Counter[6]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage3Counter[6]                ; padio            ;
-; |StallControlTestPipelineModule_TopLevel|outResult_stage3Counter[7]                ; |StallControlTestPipelineModule_TopLevel|outResult_stage3Counter[7]                ; padio            ;
-+------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                                                                                                                                                                 ;
++---------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------+------------------+
+; Node Name                                                                                         ; Output Port Name                                                                                  ; Output Port Type ;
++---------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------+------------------+
+; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a0 ; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a3 ; portadataout3    ;
+; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a0 ; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a4 ; portadataout4    ;
+; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a0 ; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a5 ; portadataout5    ;
+; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a0 ; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a6 ; portadataout6    ;
+; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a0 ; |SP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_rja1:auto_generated|ram_block1a7 ; portadataout7    ;
+; |SP_WF_RAMModule_TopLevel|Data[3]                                                                 ; |SP_WF_RAMModule_TopLevel|Data[3]                                                                 ; padio            ;
+; |SP_WF_RAMModule_TopLevel|Data[4]                                                                 ; |SP_WF_RAMModule_TopLevel|Data[4]                                                                 ; padio            ;
+; |SP_WF_RAMModule_TopLevel|Data[5]                                                                 ; |SP_WF_RAMModule_TopLevel|Data[5]                                                                 ; padio            ;
+; |SP_WF_RAMModule_TopLevel|Data[6]                                                                 ; |SP_WF_RAMModule_TopLevel|Data[6]                                                                 ; padio            ;
+; |SP_WF_RAMModule_TopLevel|Data[7]                                                                 ; |SP_WF_RAMModule_TopLevel|Data[7]                                                                 ; padio            ;
+; |SP_WF_RAMModule_TopLevel|Address[0]                                                              ; |SP_WF_RAMModule_TopLevel|Address[0]~corein                                                       ; combout          ;
+; |SP_WF_RAMModule_TopLevel|Address[1]                                                              ; |SP_WF_RAMModule_TopLevel|Address[1]~corein                                                       ; combout          ;
+; |SP_WF_RAMModule_TopLevel|Address[2]                                                              ; |SP_WF_RAMModule_TopLevel|Address[2]~corein                                                       ; combout          ;
+; |SP_WF_RAMModule_TopLevel|Address[3]                                                              ; |SP_WF_RAMModule_TopLevel|Address[3]~corein                                                       ; combout          ;
+; |SP_WF_RAMModule_TopLevel|Address[4]                                                              ; |SP_WF_RAMModule_TopLevel|Address[4]~corein                                                       ; combout          ;
+; |SP_WF_RAMModule_TopLevel|Address[5]                                                              ; |SP_WF_RAMModule_TopLevel|Address[5]~corein                                                       ; combout          ;
+; |SP_WF_RAMModule_TopLevel|Address[6]                                                              ; |SP_WF_RAMModule_TopLevel|Address[6]~corein                                                       ; combout          ;
+; |SP_WF_RAMModule_TopLevel|Address[7]                                                              ; |SP_WF_RAMModule_TopLevel|Address[7]~corein                                                       ; combout          ;
+; |SP_WF_RAMModule_TopLevel|WriteData[3]                                                            ; |SP_WF_RAMModule_TopLevel|WriteData[3]~corein                                                     ; combout          ;
+; |SP_WF_RAMModule_TopLevel|WriteData[4]                                                            ; |SP_WF_RAMModule_TopLevel|WriteData[4]~corein                                                     ; combout          ;
+; |SP_WF_RAMModule_TopLevel|WriteData[5]                                                            ; |SP_WF_RAMModule_TopLevel|WriteData[5]~corein                                                     ; combout          ;
+; |SP_WF_RAMModule_TopLevel|WriteData[6]                                                            ; |SP_WF_RAMModule_TopLevel|WriteData[6]~corein                                                     ; combout          ;
+; |SP_WF_RAMModule_TopLevel|WriteData[7]                                                            ; |SP_WF_RAMModule_TopLevel|WriteData[7]~corein                                                     ; combout          ;
++---------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------+------------------+
 
 
 +---------------------+
@@ -481,21 +223,21 @@ Info: Running Quartus II Simulator
     Info: programming logic devices manufactured by Altera and sold by 
     Info: Altera or its authorized distributors.  Please refer to the 
     Info: applicable agreement for further details.
-    Info: Processing started: Sun Feb 21 17:41:42 2021
+    Info: Processing started: Sat Mar 06 17:33:28 2021
 Info: Command: quartus_sim C:\code\qusoc\rtl\rtl.hdl\Verilog.qpf --read_settings_files=on --write_settings_files=off -c Verilog
-Info: Using vector source file "Waveforms/StallControlTestPipelineModule.vwf"
+Info: Using vector source file "Waveforms/SP_WF_RAMModule.vwf"
 Info: Overwriting simulation input file with simulation results
-    Info: A backup of StallControlTestPipelineModule.vwf called Verilog.sim_ori.vwf has been created in the db folder
+    Info: A backup of SP_WF_RAMModule.vwf called Verilog.sim_ori.vwf has been created in the db folder
 Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
     Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
 Info: Simulation partitioned into 1 sub-simulations
-Info: Simulation coverage is      68.20 %
-Info: Number of transitions in simulation is 3009
-Info: Vector file StallControlTestPipelineModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
+Info: Simulation coverage is      34.29 %
+Info: Number of transitions in simulation is 226
+Info: Vector file SP_WF_RAMModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
 Info: Quartus II Simulator was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 158 megabytes
-    Info: Processing ended: Sun Feb 21 17:41:42 2021
-    Info: Elapsed time: 00:00:00
-    Info: Total CPU time (on all processors): 00:00:02
+    Info: Peak virtual memory: 156 megabytes
+    Info: Processing ended: Sat Mar 06 17:33:29 2021
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
 
 

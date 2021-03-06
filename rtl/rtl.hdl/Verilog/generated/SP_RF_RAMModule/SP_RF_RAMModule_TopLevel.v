@@ -15,22 +15,19 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 // 
-// System configuration name is SynchronousROMModule_TopLevel, clock frequency is 1Hz, Top-level
+// System configuration name is SP_RF_RAMModule_TopLevel, clock frequency is 1Hz, Top-level
 // FSM summary
 // -- Packages
-module SynchronousROMModule_TopLevel (
+module SP_RF_RAMModule_TopLevel (
 // [BEGIN USER PORTS]
 // [END USER PORTS]
 
 	input wire  Clock,
 	input wire  Reset,
-	input wire  [7: 0] Addr1,
-	input wire  [7: 0] Addr2,
-	input wire  [7: 0] REAddr,
-	input wire  RE,
-	output wire [7: 0] Data1,
-	output wire [7: 0] Data2,
-	output wire [7: 0] REData
+	input wire  [7: 0] Address,
+	input wire  [7: 0] WriteData,
+	input wire  WE,
+	output wire [7: 0] Data
     );
 
 // [BEGIN USER SIGNALS]
@@ -41,39 +38,30 @@ wire  Zero = 1'b0;
 wire  One = 1'b1;
 wire  true = 1'b1;
 wire  false = 1'b0;
-wire  [7:0] Inputs_Addr1;
-wire  [7:0] Inputs_Addr2;
-wire  [7:0] Inputs_REAddr;
-wire  Inputs_RE;
-reg  [7:0] State_Data1 = 8'b00000000;
-reg  [7:0] State_Data2 = 8'b00000000;
-reg  [7:0] State_REData = 8'b00000000;
+wire  [7:0] Inputs_Address;
+wire  [7:0] Inputs_WriteData;
+wire  Inputs_WE;
+reg  [7:0] State_ReadData;
 reg [7:0] State_Buff [0 : 255];
 initial
 begin : Init_State_Buff
-	$readmemh("SynchronousROMModule_TopLevel_State_Buff.hex", State_Buff);
+	integer i;
+	for (i = 0; i < 256; i = i + 1)
+		State_Buff[i] = 0;
 end
-always @(posedge Clock)
+// inferred single port RAM with read-first behaviour
+always @ (posedge Clock)
 begin
-State_Data1 <= State_Buff[Inputs_Addr1];
+	if (Inputs_WE)
+		State_Buff[Inputs_Address] <= Inputs_WriteData;
+
+	State_ReadData <= State_Buff[Inputs_Address];
 end
-always @(posedge Clock)
-begin
-State_Data2 <= State_Buff[Inputs_Addr2];
-end
-always @(posedge Clock)
-begin
-if ( Inputs_RE == 1 ) begin
-State_REData <= State_Buff[Inputs_REAddr];
-end
-end
-assign Inputs_Addr1 = Addr1;
-assign Inputs_Addr2 = Addr2;
-assign Inputs_REAddr = REAddr;
-assign Inputs_RE = RE;
-assign Data1 = State_Data1;
-assign Data2 = State_Data2;
-assign REData = State_REData;
+
+assign Inputs_Address = Address;
+assign Inputs_WriteData = WriteData;
+assign Inputs_WE = WE;
+assign Data = State_ReadData;
 // [BEGIN USER ARCHITECTURE]
 // [END USER ARCHITECTURE]
 endmodule

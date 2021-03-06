@@ -9,12 +9,15 @@ namespace RTL.Modules
     {
         public byte Addr1;
         public byte Addr2;
+        public byte REAddr;
+        public bool RE;
     }
 
     public class SynchronousROMModuleState
     {
         public byte Data1;
         public byte Data2;
+        public byte REData;
         public byte[] Buff;
     }
 
@@ -38,11 +41,15 @@ namespace RTL.Modules
 
         public byte Data1 => State.Data1;
         public byte Data2 => State.Data2;
+        public byte REData => State.REData;
 
         protected override void OnStage()
         {
             NextState.Data1 = State.Buff[Inputs.Addr1];
             NextState.Data2 = State.Buff[Inputs.Addr2];
+
+            if (Inputs.RE)
+                NextState.REData = State.Buff[Inputs.REAddr];
         }
     }
 }

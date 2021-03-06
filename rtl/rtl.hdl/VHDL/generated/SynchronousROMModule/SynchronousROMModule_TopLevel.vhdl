@@ -31,8 +31,11 @@ Clock : in  std_logic;
 Reset : in  std_logic;
 Addr1 : in  unsigned(7 downto 0);
 Addr2 : in  unsigned(7 downto 0);
+REAddr : in  unsigned(7 downto 0);
+RE : in  std_logic;
 Data1 : out  unsigned(7 downto 0);
-Data2 : out  unsigned(7 downto 0)
+Data2 : out  unsigned(7 downto 0);
+REData : out  unsigned(7 downto 0)
     );
 end entity;
 
@@ -49,8 +52,11 @@ constant true : std_logic := '1';
 constant false : std_logic := '0';
 signal Inputs_Addr1 : unsigned(7 downto 0) := (others => '0');
 signal Inputs_Addr2 : unsigned(7 downto 0) := (others => '0');
+signal Inputs_REAddr : unsigned(7 downto 0) := (others => '0');
+signal Inputs_RE : std_logic := '0';
 signal State_Data1 : unsigned(7 downto 0) := (others => '0');
 signal State_Data2 : unsigned(7 downto 0) := (others => '0');
+signal State_REData : unsigned(7 downto 0) := (others => '0');
 type State_BuffArray is array(0 to 255) of unsigned(7 downto 0);
 constant State_BuffArrayInit: State_BuffArray:= (
 "10110000",
@@ -312,7 +318,7 @@ constant State_BuffArrayInit: State_BuffArray:= (
 );
 signal State_Buff : State_BuffArray := State_BuffArrayInit;
 begin
-process (Clock, State_Buff)
+process (Clock, Inputs_RE, State_Buff)
 begin
 if rising_edge(Clock) then
 State_Data1 <= State_Buff(TO_INTEGER(UNSIGNED(Inputs_Addr1)));
@@ -320,13 +326,21 @@ end if;
 if rising_edge(Clock) then
 State_Data2 <= State_Buff(TO_INTEGER(UNSIGNED(Inputs_Addr2)));
 end if;
+if rising_edge(Clock) then
+if ( Inputs_RE = '1' ) then
+State_REData <= State_Buff(TO_INTEGER(UNSIGNED(Inputs_REAddr)));
+end if;
+end if;
 end process;
-process(Addr1, Addr2, State_Data1, State_Data2)
+process(Addr1, Addr2, RE, REAddr, State_Data1, State_Data2, State_REData)
 begin
 Inputs_Addr1 <= Addr1;
 Inputs_Addr2 <= Addr2;
+Inputs_REAddr <= REAddr;
+Inputs_RE <= RE;
 Data1 <= State_Data1;
 Data2 <= State_Data2;
+REData <= State_REData;
 end process;
 -- [BEGIN USER ARCHITECTURE]
 -- [END USER ARCHITECTURE]

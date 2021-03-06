@@ -1,0 +1,12 @@
+// inferred single port RAM with write-first behaviour
+
+reg [<<width>>-1:0] <<addr>>_reg;
+always @ (posedge Clock)
+begin
+	if (<<write_enable>>)
+		<<ram>>[<<addr>>] <= <<write_data>>;
+
+	<<addr>>_reg <= <<addr>>;
+end
+
+assign <<read_data>> = <<ram>>[<<addr>>_reg];
