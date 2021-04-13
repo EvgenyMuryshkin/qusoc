@@ -2,6 +2,11 @@
 
 namespace Quokka.RTL.Simulator
 {
+    public class RTLSimulatorSnapshot
+    {
+        public int Clock { get; set; }
+    }
+
     public class RTLSimulatorContext
     {
         public int MaxClockCycles { get; set; } = 100000;

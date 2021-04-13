@@ -1,4 +1,4 @@
-set_global_assignment -name TOP_LEVEL_ENTITY TDP_RAMModule_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY BoardTimerModule_TopLevel
 # -------------------------------------------------------------------------- #
 #
 # Copyright (C) 1991-2010 Altera Corporation
@@ -37,7 +37,7 @@ set_global_assignment -name TOP_LEVEL_ENTITY TDP_RAMModule_TopLevel
 # -------------------------------------------------------------------------- #
 
 set_global_assignment -name FAMILY "Cyclone II"
-set_global_assignment -name DEVICE AUTO
+set_global_assignment -name DEVICE EP2C5T144C6
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "20:45:17  JUNE 07, 2019"
 set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
@@ -47,12 +47,23 @@ set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
 set_global_assignment -name LL_ROOT_REGION ON -entity VHDL -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -entity VHDL -section_id "Root Region"
 
+set_global_assignment -name SDC_FILE rtl.sdc
+set_location_assignment PIN_17 -to Clock
+set_location_assignment PIN_113 -to Reset
+set_location_assignment PIN_112 -to Restart
+
+set_global_assignment -name FMAX_REQUIREMENT "50 MHz" -section_id Clock
+
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT 144
+set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 6
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
-
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/TDP_RAMModule.vwf
+set_instance_assignment -name CLOCK_SETTINGS Clock -to Clock
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/BoardTimerModule.vwf
 
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 
@@ -65,6 +76,10 @@ set_global_assignment -name VHDL_FILE VHDL/generated/AutoPropagatePipelineModule
 set_global_assignment -name VHDL_FILE VHDL/generated/BitArrayGetterModule/BitArrayGetterModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/BitArrayModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/BitArrayModule/BitArrayModule_TopLevel.vhdl
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/BoardTimerModule.vwf
+set_global_assignment -name VHDL_FILE VHDL/generated/BoardTimerModule/BoardTimerModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/BoardTimerModule/BoardTimerModule_TopLevel_BoardTimerModule_timerModule10.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/BoardTimerModule/BoardTimerModule_TopLevel_BoardTimerModule_timerModule20.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/CoderModule/CoderModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/CombinationalAutoValueOverride/CombinationalAutoValueOverride_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/CombinationalGetValueOverride/CombinationalGetValueOverride_TopLevel.vhdl
@@ -155,7 +170,6 @@ set_global_assignment -name VHDL_FILE VHDL/generated/StageStatePipelineModule/St
 set_global_assignment -name VHDL_FILE VHDL/generated/StallControlPipelineModule/StallControlPipelineModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StallControlTestPipelineModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/StallControlTestPipelineModule/StallControlTestPipelineModule_TopLevel.vhdl
-set_global_assignment -name VHDL_FILE VHDL/generated/StateMembersModule/StateMembersModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/StructsCombinationalModule/StructsCombinationalModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/SynchronousROMModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/SynchronousROMModule/SynchronousROMModule_TopLevel.vhdl

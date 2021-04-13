@@ -23,8 +23,9 @@ namespace RTL.Modules
 
     public class SynchronousROMModule : RTLSynchronousModule<SynchronousROMModuleInputs, SynchronousROMModuleState>
     {
-        public SynchronousROMModule()
+        protected override void OnSetup()
         {
+            base.OnSetup();
             State.Buff = GetBuffer();
         }
 

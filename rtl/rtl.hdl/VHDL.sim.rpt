@@ -1,5 +1,5 @@
 Simulator report for VHDL
-Sun Mar 07 17:28:58 2021
+Sat Mar 13 20:25:59 2021
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -10,13 +10,12 @@ Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
   2. Simulator Summary
   3. Simulator Settings
   4. Simulation Waveforms
-  5. |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ALTSYNCRAM
-  6. Coverage Summary
-  7. Complete 1/0-Value Coverage
-  8. Missing 1-Value Coverage
-  9. Missing 0-Value Coverage
- 10. Simulator INI Usage
- 11. Simulator Messages
+  5. Coverage Summary
+  6. Complete 1/0-Value Coverage
+  7. Missing 1-Value Coverage
+  8. Missing 0-Value Coverage
+  9. Simulator INI Usage
+ 10. Simulator Messages
 
 
 
@@ -46,42 +45,42 @@ applicable agreement for further details.
 +-----------------------------+--------------+
 ; Simulation Start Time       ; 0 ps         ;
 ; Simulation End Time         ; 1.0 ms       ;
-; Simulation Netlist Size     ; 63 nodes     ;
-; Simulation Coverage         ;      65.38 % ;
-; Total Number of Transitions ; 2172         ;
+; Simulation Netlist Size     ; 79 nodes     ;
+; Simulation Coverage         ;      79.38 % ;
+; Total Number of Transitions ; 11597        ;
 ; Simulation Breakpoints      ; 0            ;
 ; Family                      ; Cyclone II   ;
 ; Device                      ; EP2C5T144C6  ;
 +-----------------------------+--------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Simulator Settings                                                                                                                       ;
-+--------------------------------------------------------------------------------------------+-----------------------------+---------------+
-; Option                                                                                     ; Setting                     ; Default Value ;
-+--------------------------------------------------------------------------------------------+-----------------------------+---------------+
-; Simulation mode                                                                            ; Timing                      ; Timing        ;
-; Start time                                                                                 ; 0 ns                        ; 0 ns          ;
-; Simulation results format                                                                  ; CVWF                        ;               ;
-; Vector input source                                                                        ; Waveforms/TDP_RAMModule.vwf ;               ;
-; Add pins automatically to simulation output waveforms                                      ; On                          ; On            ;
-; Check outputs                                                                              ; Off                         ; Off           ;
-; Report simulation coverage                                                                 ; On                          ; On            ;
-; Display complete 1/0 value coverage report                                                 ; On                          ; On            ;
-; Display missing 1-value coverage report                                                    ; On                          ; On            ;
-; Display missing 0-value coverage report                                                    ; On                          ; On            ;
-; Detect setup and hold time violations                                                      ; Off                         ; Off           ;
-; Detect glitches                                                                            ; Off                         ; Off           ;
-; Disable timing delays in Timing Simulation                                                 ; Off                         ; Off           ;
-; Generate Signal Activity File                                                              ; Off                         ; Off           ;
-; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                         ; Off           ;
-; Group bus channels in simulation results                                                   ; Off                         ; Off           ;
-; Preserve fewer signal transitions to reduce memory requirements                            ; On                          ; On            ;
-; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                  ; INPUT_EDGE    ;
-; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                         ; Off           ;
-; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                          ;               ;
-; Perform Glitch Filtering in Timing Simulation                                              ; Auto                        ; Auto          ;
-+--------------------------------------------------------------------------------------------+-----------------------------+---------------+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                                          ;
++--------------------------------------------------------------------------------------------+--------------------------------+---------------+
+; Option                                                                                     ; Setting                        ; Default Value ;
++--------------------------------------------------------------------------------------------+--------------------------------+---------------+
+; Simulation mode                                                                            ; Timing                         ; Timing        ;
+; Start time                                                                                 ; 0 ns                           ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF                           ;               ;
+; Vector input source                                                                        ; Waveforms/BoardTimerModule.vwf ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On                             ; On            ;
+; Check outputs                                                                              ; Off                            ; Off           ;
+; Report simulation coverage                                                                 ; On                             ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On                             ; On            ;
+; Display missing 1-value coverage report                                                    ; On                             ; On            ;
+; Display missing 0-value coverage report                                                    ; On                             ; On            ;
+; Detect setup and hold time violations                                                      ; Off                            ; Off           ;
+; Detect glitches                                                                            ; Off                            ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off                            ; Off           ;
+; Generate Signal Activity File                                                              ; Off                            ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                            ; Off           ;
+; Group bus channels in simulation results                                                   ; Off                            ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On                             ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                     ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                            ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                             ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto                           ; Auto          ;
++--------------------------------------------------------------------------------------------+--------------------------------+---------------+
 
 
 +----------------------+
@@ -91,151 +90,159 @@ Waveform report data cannot be output to ASCII.
 Please use Quartus II to view the waveform report data.
 
 
-+-----------------------------------------------------------------------------------------------+
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ALTSYNCRAM ;
-+-----------------------------------------------------------------------------------------------+
-Please refer to fitter text-based report (*.fit.rpt) to view logical memory report content in ASCII.
-
-
 +--------------------------------------------------------------------+
 ; Coverage Summary                                                   ;
 +-----------------------------------------------------+--------------+
 ; Type                                                ; Value        ;
 +-----------------------------------------------------+--------------+
-; Total coverage as a percentage                      ;      65.38 % ;
-; Total nodes checked                                 ; 63           ;
-; Total output ports checked                          ; 78           ;
-; Total output ports with complete 1/0-value coverage ; 51           ;
-; Total output ports with no 1/0-value coverage       ; 21           ;
-; Total output ports with no 1-value coverage         ; 24           ;
-; Total output ports with no 0-value coverage         ; 24           ;
+; Total coverage as a percentage                      ;      79.38 % ;
+; Total nodes checked                                 ; 79           ;
+; Total output ports checked                          ; 97           ;
+; Total output ports with complete 1/0-value coverage ; 77           ;
+; Total output ports with no 1/0-value coverage       ; 16           ;
+; Total output ports with no 1-value coverage         ; 16           ;
+; Total output ports with no 0-value coverage         ; 20           ;
 +-----------------------------------------------------+--------------+
 
 
 The following table displays output ports that toggle between 1 and 0 during simulation.
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Complete 1/0-Value Coverage                                                                                                                                                                                                        ;
-+-------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------+
-; Node Name                                                                                       ; Output Port Name                                                                                              ; Output Port Type ;
-+-------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------+
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0               ; portadataout0    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a1               ; portadataout1    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a2               ; portadataout2    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a4               ; portadataout4    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a5               ; portadataout5    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a6               ; portadataout6    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a7               ; portadataout7    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0~PORTBDATAOUT0 ; portbdataout0    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a1~PORTBDATAOUT0 ; portbdataout1    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a2~PORTBDATAOUT0 ; portbdataout2    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a4~PORTBDATAOUT0 ; portbdataout4    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a5~PORTBDATAOUT0 ; portbdataout5    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a6~PORTBDATAOUT0 ; portbdataout6    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a7~PORTBDATAOUT0 ; portbdataout7    ;
-; |TDP_RAMModule_TopLevel|State_SameAddressWrite~0                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~0                                                              ; combout          ;
-; |TDP_RAMModule_TopLevel|State_SameAddressWrite~1                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~1                                                              ; combout          ;
-; |TDP_RAMModule_TopLevel|State_SameAddressWrite~5                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~5                                                              ; combout          ;
-; |TDP_RAMModule_TopLevel|OutDataA[0]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[0]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataA[1]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[1]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataA[2]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[2]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataA[4]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[4]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataA[5]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[5]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataA[6]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[6]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataA[7]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[7]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataB[0]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[0]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataB[1]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[1]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataB[2]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[2]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataB[4]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[4]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataB[5]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[5]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataB[6]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[6]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataB[7]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[7]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|WE_A                                                                    ; |TDP_RAMModule_TopLevel|WE_A~corein                                                                           ; combout          ;
-; |TDP_RAMModule_TopLevel|WE_B                                                                    ; |TDP_RAMModule_TopLevel|WE_B~corein                                                                           ; combout          ;
-; |TDP_RAMModule_TopLevel|Clock                                                                   ; |TDP_RAMModule_TopLevel|Clock~corein                                                                          ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_A[0]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[0]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[0]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[0]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[1]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[1]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_B[0]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[0]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[0]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[0]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[1]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[1]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_B[1]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[1]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_B[2]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[2]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_A[4]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[4]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_B[4]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[4]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_A[5]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[5]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_B[5]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[5]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_A[6]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[6]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_B[6]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[6]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_A[7]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[7]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_B[7]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[7]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|Clock~clkctrl                                                           ; |TDP_RAMModule_TopLevel|Clock~clkctrl                                                                         ; outclk           ;
-+-------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                                                                                                                                                                                                                                                                            ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
+; Node Name                                                                                                                                                        ; Output Port Name                                                                                                                                                 ; Output Port Type ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[4]    ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[4]    ; regout           ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[0]    ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[0]    ; regout           ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[1]    ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[1]    ; regout           ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[2]    ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[2]    ; regout           ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[3]    ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[3]    ; regout           ;
+; |BoardTimerModule_TopLevel|State_t1[0]                                                                                                                           ; |BoardTimerModule_TopLevel|State_t1[0]                                                                                                                           ; regout           ;
+; |BoardTimerModule_TopLevel|State_t1[1]                                                                                                                           ; |BoardTimerModule_TopLevel|State_t1[1]                                                                                                                           ; regout           ;
+; |BoardTimerModule_TopLevel|State_t1[2]                                                                                                                           ; |BoardTimerModule_TopLevel|State_t1[2]                                                                                                                           ; regout           ;
+; |BoardTimerModule_TopLevel|State_t1[3]                                                                                                                           ; |BoardTimerModule_TopLevel|State_t1[3]                                                                                                                           ; regout           ;
+; |BoardTimerModule_TopLevel|State_t1[4]                                                                                                                           ; |BoardTimerModule_TopLevel|State_t1[4]                                                                                                                           ; regout           ;
+; |BoardTimerModule_TopLevel|State_t2[0]                                                                                                                           ; |BoardTimerModule_TopLevel|State_t2[0]                                                                                                                           ; regout           ;
+; |BoardTimerModule_TopLevel|State_t2[1]                                                                                                                           ; |BoardTimerModule_TopLevel|State_t2[1]                                                                                                                           ; regout           ;
+; |BoardTimerModule_TopLevel|State_t2[2]                                                                                                                           ; |BoardTimerModule_TopLevel|State_t2[2]                                                                                                                           ; regout           ;
+; |BoardTimerModule_TopLevel|State_t2[3]                                                                                                                           ; |BoardTimerModule_TopLevel|State_t2[3]                                                                                                                           ; regout           ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[0]~8  ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[0]~8  ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[0]~8  ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[0]~9  ; cout             ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[1]~10 ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[1]~10 ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[1]~10 ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[1]~11 ; cout             ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[2]~12 ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[2]~12 ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[2]~12 ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[2]~13 ; cout             ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[3]~14 ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[3]~14 ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[3]~14 ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[3]~15 ; cout             ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[4]~16 ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[4]~16 ; combout          ;
+; |BoardTimerModule_TopLevel|State_t1[0]~8                                                                                                                         ; |BoardTimerModule_TopLevel|State_t1[0]~8                                                                                                                         ; combout          ;
+; |BoardTimerModule_TopLevel|State_t1[0]~8                                                                                                                         ; |BoardTimerModule_TopLevel|State_t1[0]~9                                                                                                                         ; cout             ;
+; |BoardTimerModule_TopLevel|State_t1[1]~10                                                                                                                        ; |BoardTimerModule_TopLevel|State_t1[1]~10                                                                                                                        ; combout          ;
+; |BoardTimerModule_TopLevel|State_t1[1]~10                                                                                                                        ; |BoardTimerModule_TopLevel|State_t1[1]~11                                                                                                                        ; cout             ;
+; |BoardTimerModule_TopLevel|State_t1[2]~12                                                                                                                        ; |BoardTimerModule_TopLevel|State_t1[2]~12                                                                                                                        ; combout          ;
+; |BoardTimerModule_TopLevel|State_t1[2]~12                                                                                                                        ; |BoardTimerModule_TopLevel|State_t1[2]~13                                                                                                                        ; cout             ;
+; |BoardTimerModule_TopLevel|State_t1[3]~14                                                                                                                        ; |BoardTimerModule_TopLevel|State_t1[3]~14                                                                                                                        ; combout          ;
+; |BoardTimerModule_TopLevel|State_t1[3]~14                                                                                                                        ; |BoardTimerModule_TopLevel|State_t1[3]~15                                                                                                                        ; cout             ;
+; |BoardTimerModule_TopLevel|State_t1[4]~16                                                                                                                        ; |BoardTimerModule_TopLevel|State_t1[4]~16                                                                                                                        ; combout          ;
+; |BoardTimerModule_TopLevel|State_t1[4]~16                                                                                                                        ; |BoardTimerModule_TopLevel|State_t1[4]~17                                                                                                                        ; cout             ;
+; |BoardTimerModule_TopLevel|State_t1[5]~18                                                                                                                        ; |BoardTimerModule_TopLevel|State_t1[5]~18                                                                                                                        ; combout          ;
+; |BoardTimerModule_TopLevel|State_t1[5]~18                                                                                                                        ; |BoardTimerModule_TopLevel|State_t1[5]~19                                                                                                                        ; cout             ;
+; |BoardTimerModule_TopLevel|State_t1[6]~20                                                                                                                        ; |BoardTimerModule_TopLevel|State_t1[6]~20                                                                                                                        ; combout          ;
+; |BoardTimerModule_TopLevel|State_t2[0]~8                                                                                                                         ; |BoardTimerModule_TopLevel|State_t2[0]~8                                                                                                                         ; combout          ;
+; |BoardTimerModule_TopLevel|State_t2[0]~8                                                                                                                         ; |BoardTimerModule_TopLevel|State_t2[0]~9                                                                                                                         ; cout             ;
+; |BoardTimerModule_TopLevel|State_t2[1]~10                                                                                                                        ; |BoardTimerModule_TopLevel|State_t2[1]~10                                                                                                                        ; combout          ;
+; |BoardTimerModule_TopLevel|State_t2[1]~10                                                                                                                        ; |BoardTimerModule_TopLevel|State_t2[1]~11                                                                                                                        ; cout             ;
+; |BoardTimerModule_TopLevel|State_t2[2]~12                                                                                                                        ; |BoardTimerModule_TopLevel|State_t2[2]~12                                                                                                                        ; combout          ;
+; |BoardTimerModule_TopLevel|State_t2[2]~12                                                                                                                        ; |BoardTimerModule_TopLevel|State_t2[2]~13                                                                                                                        ; cout             ;
+; |BoardTimerModule_TopLevel|State_t2[3]~14                                                                                                                        ; |BoardTimerModule_TopLevel|State_t2[3]~14                                                                                                                        ; combout          ;
+; |BoardTimerModule_TopLevel|State_t2[3]~14                                                                                                                        ; |BoardTimerModule_TopLevel|State_t2[3]~15                                                                                                                        ; cout             ;
+; |BoardTimerModule_TopLevel|State_t2[4]~16                                                                                                                        ; |BoardTimerModule_TopLevel|State_t2[4]~16                                                                                                                        ; combout          ;
+; |BoardTimerModule_TopLevel|State_t2[4]~16                                                                                                                        ; |BoardTimerModule_TopLevel|State_t2[4]~17                                                                                                                        ; cout             ;
+; |BoardTimerModule_TopLevel|State_t2[5]~18                                                                                                                        ; |BoardTimerModule_TopLevel|State_t2[5]~18                                                                                                                        ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter[3]    ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter[3]    ; regout           ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter[0]    ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter[0]    ; regout           ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter[2]    ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter[2]    ; regout           ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter[1]    ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter[1]    ; regout           ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|Equal0~0            ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|Equal0~0            ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|Equal0~0            ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|Equal0~0            ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|Equal0~1            ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|Equal0~1            ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|Add0~0              ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|Add0~0              ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[4]~7  ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[4]~7  ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter~4     ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter~4     ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|Add0~1              ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|Add0~1              ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter~5     ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter~5     ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter~6     ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter~6     ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter~7     ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter~7     ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[4]~18 ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[4]~18 ; combout          ;
+; |BoardTimerModule_TopLevel|OutActive10                                                                                                                           ; |BoardTimerModule_TopLevel|OutActive10                                                                                                                           ; padio            ;
+; |BoardTimerModule_TopLevel|OutActive20                                                                                                                           ; |BoardTimerModule_TopLevel|OutActive20                                                                                                                           ; padio            ;
+; |BoardTimerModule_TopLevel|OutT1[0]                                                                                                                              ; |BoardTimerModule_TopLevel|OutT1[0]                                                                                                                              ; padio            ;
+; |BoardTimerModule_TopLevel|OutT1[1]                                                                                                                              ; |BoardTimerModule_TopLevel|OutT1[1]                                                                                                                              ; padio            ;
+; |BoardTimerModule_TopLevel|OutT1[2]                                                                                                                              ; |BoardTimerModule_TopLevel|OutT1[2]                                                                                                                              ; padio            ;
+; |BoardTimerModule_TopLevel|OutT1[3]                                                                                                                              ; |BoardTimerModule_TopLevel|OutT1[3]                                                                                                                              ; padio            ;
+; |BoardTimerModule_TopLevel|OutT1[4]                                                                                                                              ; |BoardTimerModule_TopLevel|OutT1[4]                                                                                                                              ; padio            ;
+; |BoardTimerModule_TopLevel|OutT2[0]                                                                                                                              ; |BoardTimerModule_TopLevel|OutT2[0]                                                                                                                              ; padio            ;
+; |BoardTimerModule_TopLevel|OutT2[1]                                                                                                                              ; |BoardTimerModule_TopLevel|OutT2[1]                                                                                                                              ; padio            ;
+; |BoardTimerModule_TopLevel|OutT2[2]                                                                                                                              ; |BoardTimerModule_TopLevel|OutT2[2]                                                                                                                              ; padio            ;
+; |BoardTimerModule_TopLevel|OutT2[3]                                                                                                                              ; |BoardTimerModule_TopLevel|OutT2[3]                                                                                                                              ; padio            ;
+; |BoardTimerModule_TopLevel|Reset                                                                                                                                 ; |BoardTimerModule_TopLevel|Reset~corein                                                                                                                          ; combout          ;
+; |BoardTimerModule_TopLevel|Restart                                                                                                                               ; |BoardTimerModule_TopLevel|Restart~corein                                                                                                                        ; combout          ;
+; |BoardTimerModule_TopLevel|Clock                                                                                                                                 ; |BoardTimerModule_TopLevel|Clock~corein                                                                                                                          ; combout          ;
+; |BoardTimerModule_TopLevel|Clock~clkctrl                                                                                                                         ; |BoardTimerModule_TopLevel|Clock~clkctrl                                                                                                                         ; outclk           ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 1 during simulation.
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Missing 1-Value Coverage                                                                                                                                                                                                           ;
-+-------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------+
-; Node Name                                                                                       ; Output Port Name                                                                                              ; Output Port Type ;
-+-------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------+
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a3               ; portadataout3    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a3~PORTBDATAOUT0 ; portbdataout3    ;
-; |TDP_RAMModule_TopLevel|State_SameAddressWrite~2                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~2                                                              ; combout          ;
-; |TDP_RAMModule_TopLevel|State_SameAddressWrite~3                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~3                                                              ; combout          ;
-; |TDP_RAMModule_TopLevel|State_SameAddressWrite~4                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~4                                                              ; combout          ;
-; |TDP_RAMModule_TopLevel|OutDataA[3]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[3]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataB[3]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[3]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|Addr_A[2]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[2]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[3]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[3]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[4]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[4]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[5]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[5]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[6]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[6]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[7]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[7]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[2]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[2]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[3]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[3]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[4]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[4]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[5]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[5]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[6]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[6]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[7]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[7]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_A[1]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[1]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_A[2]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[2]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_A[3]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[3]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_B[3]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[3]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|Reset                                                                   ; |TDP_RAMModule_TopLevel|Reset~corein                                                                          ; combout          ;
-+-------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------+
++----------------------------------------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                                                 ;
++-------------------------------------------+-------------------------------------------+------------------+
+; Node Name                                 ; Output Port Name                          ; Output Port Type ;
++-------------------------------------------+-------------------------------------------+------------------+
+; |BoardTimerModule_TopLevel|State_t1[6]    ; |BoardTimerModule_TopLevel|State_t1[6]    ; regout           ;
+; |BoardTimerModule_TopLevel|State_t1[7]    ; |BoardTimerModule_TopLevel|State_t1[7]    ; regout           ;
+; |BoardTimerModule_TopLevel|State_t2[5]    ; |BoardTimerModule_TopLevel|State_t2[5]    ; regout           ;
+; |BoardTimerModule_TopLevel|State_t2[6]    ; |BoardTimerModule_TopLevel|State_t2[6]    ; regout           ;
+; |BoardTimerModule_TopLevel|State_t2[7]    ; |BoardTimerModule_TopLevel|State_t2[7]    ; regout           ;
+; |BoardTimerModule_TopLevel|State_t1[6]~20 ; |BoardTimerModule_TopLevel|State_t1[6]~21 ; cout             ;
+; |BoardTimerModule_TopLevel|State_t1[7]~22 ; |BoardTimerModule_TopLevel|State_t1[7]~22 ; combout          ;
+; |BoardTimerModule_TopLevel|State_t2[5]~18 ; |BoardTimerModule_TopLevel|State_t2[5]~19 ; cout             ;
+; |BoardTimerModule_TopLevel|State_t2[6]~20 ; |BoardTimerModule_TopLevel|State_t2[6]~20 ; combout          ;
+; |BoardTimerModule_TopLevel|State_t2[6]~20 ; |BoardTimerModule_TopLevel|State_t2[6]~21 ; cout             ;
+; |BoardTimerModule_TopLevel|State_t2[7]~22 ; |BoardTimerModule_TopLevel|State_t2[7]~22 ; combout          ;
+; |BoardTimerModule_TopLevel|OutT1[6]       ; |BoardTimerModule_TopLevel|OutT1[6]       ; padio            ;
+; |BoardTimerModule_TopLevel|OutT1[7]       ; |BoardTimerModule_TopLevel|OutT1[7]       ; padio            ;
+; |BoardTimerModule_TopLevel|OutT2[5]       ; |BoardTimerModule_TopLevel|OutT2[5]       ; padio            ;
+; |BoardTimerModule_TopLevel|OutT2[6]       ; |BoardTimerModule_TopLevel|OutT2[6]       ; padio            ;
+; |BoardTimerModule_TopLevel|OutT2[7]       ; |BoardTimerModule_TopLevel|OutT2[7]       ; padio            ;
++-------------------------------------------+-------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 0 during simulation.
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Missing 0-Value Coverage                                                                                                                                                                                             ;
-+-------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+------------------+
-; Node Name                                                                                       ; Output Port Name                                                                                ; Output Port Type ;
-+-------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+------------------+
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a3 ; portadataout3    ;
-; |TDP_RAMModule_TopLevel|State_SameAddressWrite                                                  ; |TDP_RAMModule_TopLevel|State_SameAddressWrite                                                  ; regout           ;
-; |TDP_RAMModule_TopLevel|State_SameAddressWrite~2                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~2                                                ; combout          ;
-; |TDP_RAMModule_TopLevel|State_SameAddressWrite~3                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~3                                                ; combout          ;
-; |TDP_RAMModule_TopLevel|State_SameAddressWrite~4                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~4                                                ; combout          ;
-; |TDP_RAMModule_TopLevel|State_SameAddressWrite~6                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~6                                                ; combout          ;
-; |TDP_RAMModule_TopLevel|OutDataA[3]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[3]                                                             ; padio            ;
-; |TDP_RAMModule_TopLevel|OutCorrupted                                                            ; |TDP_RAMModule_TopLevel|OutCorrupted                                                            ; padio            ;
-; |TDP_RAMModule_TopLevel|Addr_A[2]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[2]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[3]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[3]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[4]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[4]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[5]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[5]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[6]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[6]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[7]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[7]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[2]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[2]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[3]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[3]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[4]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[4]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[5]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[5]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[6]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[6]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[7]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[7]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_A[1]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[1]~corein                                                   ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_A[2]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[2]~corein                                                   ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_A[3]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[3]~corein                                                   ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_B[3]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[3]~corein                                                   ; combout          ;
-+-------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+------------------+
++----------------------------------------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                                                 ;
++-------------------------------------------+-------------------------------------------+------------------+
+; Node Name                                 ; Output Port Name                          ; Output Port Type ;
++-------------------------------------------+-------------------------------------------+------------------+
+; |BoardTimerModule_TopLevel|State_t1[5]    ; |BoardTimerModule_TopLevel|State_t1[5]    ; regout           ;
+; |BoardTimerModule_TopLevel|State_t1[6]    ; |BoardTimerModule_TopLevel|State_t1[6]    ; regout           ;
+; |BoardTimerModule_TopLevel|State_t1[7]    ; |BoardTimerModule_TopLevel|State_t1[7]    ; regout           ;
+; |BoardTimerModule_TopLevel|State_t2[4]    ; |BoardTimerModule_TopLevel|State_t2[4]    ; regout           ;
+; |BoardTimerModule_TopLevel|State_t2[5]    ; |BoardTimerModule_TopLevel|State_t2[5]    ; regout           ;
+; |BoardTimerModule_TopLevel|State_t2[6]    ; |BoardTimerModule_TopLevel|State_t2[6]    ; regout           ;
+; |BoardTimerModule_TopLevel|State_t2[7]    ; |BoardTimerModule_TopLevel|State_t2[7]    ; regout           ;
+; |BoardTimerModule_TopLevel|State_t1[6]~20 ; |BoardTimerModule_TopLevel|State_t1[6]~21 ; cout             ;
+; |BoardTimerModule_TopLevel|State_t1[7]~22 ; |BoardTimerModule_TopLevel|State_t1[7]~22 ; combout          ;
+; |BoardTimerModule_TopLevel|State_t2[5]~18 ; |BoardTimerModule_TopLevel|State_t2[5]~19 ; cout             ;
+; |BoardTimerModule_TopLevel|State_t2[6]~20 ; |BoardTimerModule_TopLevel|State_t2[6]~20 ; combout          ;
+; |BoardTimerModule_TopLevel|State_t2[6]~20 ; |BoardTimerModule_TopLevel|State_t2[6]~21 ; cout             ;
+; |BoardTimerModule_TopLevel|State_t2[7]~22 ; |BoardTimerModule_TopLevel|State_t2[7]~22 ; combout          ;
+; |BoardTimerModule_TopLevel|OutT1[5]       ; |BoardTimerModule_TopLevel|OutT1[5]       ; padio            ;
+; |BoardTimerModule_TopLevel|OutT1[6]       ; |BoardTimerModule_TopLevel|OutT1[6]       ; padio            ;
+; |BoardTimerModule_TopLevel|OutT1[7]       ; |BoardTimerModule_TopLevel|OutT1[7]       ; padio            ;
+; |BoardTimerModule_TopLevel|OutT2[4]       ; |BoardTimerModule_TopLevel|OutT2[4]       ; padio            ;
+; |BoardTimerModule_TopLevel|OutT2[5]       ; |BoardTimerModule_TopLevel|OutT2[5]       ; padio            ;
+; |BoardTimerModule_TopLevel|OutT2[6]       ; |BoardTimerModule_TopLevel|OutT2[6]       ; padio            ;
+; |BoardTimerModule_TopLevel|OutT2[7]       ; |BoardTimerModule_TopLevel|OutT2[7]       ; padio            ;
++-------------------------------------------+-------------------------------------------+------------------+
 
 
 +---------------------+
@@ -251,50 +258,21 @@ The following table displays output ports that do not toggle to 0 during simulat
 Info: *******************************************************************
 Info: Running Quartus II Simulator
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Copyright (C) 1991-2010 Altera Corporation. All rights reserved.
-    Info: Your use of Altera Corporation's design tools, logic functions 
-    Info: and other software and tools, and its AMPP partner logic 
-    Info: functions, and any output files from any of the foregoing 
-    Info: (including device programming or simulation files), and any 
-    Info: associated documentation or information are expressly subject 
-    Info: to the terms and conditions of the Altera Program License 
-    Info: Subscription Agreement, Altera MegaCore Function License 
-    Info: Agreement, or other applicable license agreement, including, 
-    Info: without limitation, that your use is for the sole purpose of 
-    Info: programming logic devices manufactured by Altera and sold by 
-    Info: Altera or its authorized distributors.  Please refer to the 
-    Info: applicable agreement for further details.
-    Info: Processing started: Sun Mar 07 17:28:58 2021
-Info: Command: quartus_sim C:\code\qusoc\rtl\rtl.hdl\VHDL.qpf --read_settings_files=on --write_settings_files=off -c VHDL
-Info: Using vector source file "Waveforms/TDP_RAMModule.vwf"
+    Info: Processing started: Sat Mar 13 20:25:58 2021
+Info: Command: quartus_sim --read_settings_files=on --write_settings_files=off VHDL -c VHDL
+Info: Using vector source file "Waveforms/BoardTimerModule.vwf"
 Info: Overwriting simulation input file with simulation results
-    Info: A backup of TDP_RAMModule.vwf called VHDL.sim_ori.vwf has been created in the db folder
+    Info: A backup of BoardTimerModule.vwf called VHDL.sim_ori.vwf has been created in the db folder
 Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
     Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
-Warning: Simultaneous write to memory block address 0 at time 21002.62 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 21002.62 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 21002.62 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 21002.62 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 21002.62 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 21002.62 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 21002.62 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 21002.62 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 22002.62 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 22002.62 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 22002.62 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 22002.62 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 22002.62 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 22002.62 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 22002.62 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 22002.62 ns in vector source file -- data is invalid in memory block
 Info: Simulation partitioned into 1 sub-simulations
-Info: Simulation coverage is      65.38 %
-Info: Number of transitions in simulation is 2172
-Info: Vector file TDP_RAMModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
-Info: Quartus II Simulator was successful. 0 errors, 16 warnings
+Info: Simulation coverage is      79.38 %
+Info: Number of transitions in simulation is 11597
+Info: Vector file BoardTimerModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
+Info: Quartus II Simulator was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 157 megabytes
-    Info: Processing ended: Sun Mar 07 17:28:58 2021
-    Info: Elapsed time: 00:00:00
-    Info: Total CPU time (on all processors): 00:00:03
+    Info: Processing ended: Sat Mar 13 20:25:59 2021
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
 
 

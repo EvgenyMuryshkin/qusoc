@@ -59,7 +59,7 @@ namespace Quokka.RTL.Local
 
                 if (RTLModuleHelper.IsSynthesizableSignalType(memberType))
                 {
-                    if (RTLModuleHelper.TryGetNullableType(memberType, out var actualType))
+                    if (RTLReflectionTools.TryGetNullableType(memberType, out var actualType))
                     {
                         backingField.SetValue(value, Activator.CreateInstance(actualType));
                     }
