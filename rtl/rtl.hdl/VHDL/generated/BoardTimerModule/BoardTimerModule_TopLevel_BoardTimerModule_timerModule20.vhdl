@@ -46,28 +46,28 @@ constant true : std_logic := '1';
 constant false : std_logic := '0';
 constant countTo : unsigned(7 downto 0)  := "00010011";
 constant CapacityBits : unsigned(2 downto 0)  := "101";
-constant TimerModule_L50F9L52T10_TimerModule_L51F79T80_Expr : std_logic := '0';
-constant TimerModule_L50F9L52T10_TimerModule_L51F100T101_Expr : std_logic := '1';
+constant TimerModule_L51F9L53T10_TimerModule_L52F79T80_Expr : std_logic := '0';
+constant TimerModule_L51F9L53T10_TimerModule_L52F100T101_Expr : std_logic := '1';
 signal Inputs_Restart : std_logic := '0';
 signal NextState_counter : unsigned(4 downto 0) := (others => '0');
 signal active : std_logic := '0';
-signal TimerModule_L50F9L52T10_TimerModule_L51F63T81_Source : std_logic := '0';
-signal TimerModule_L50F9L52T10_TimerModule_L51F33T124_Resize : unsigned(4 downto 0) := (others => '0');
+signal TimerModule_L51F9L53T10_TimerModule_L52F63T81_Source : std_logic := '0';
+signal TimerModule_L51F9L53T10_TimerModule_L52F33T124_Resize : unsigned(4 downto 0) := (others => '0');
 signal State_counter : unsigned(4 downto 0)  := "00000";
 constant State_counterDefault : unsigned(4 downto 0)  := "00000";
-signal TimerModule_L50F9L52T10_TimerModule_L51F35T59_Expr : std_logic := '0';
-signal TimerModule_L50F9L52T10_TimerModule_L51F35T59_Expr_1 : std_logic := '0';
-signal TimerModule_L50F9L52T10_TimerModule_L51F35T59_Expr_2 : std_logic := '0';
-signal TimerModule_L50F9L52T10_TimerModule_L51F84T101_Expr : unsigned(6 downto 0)  := "0000000";
-signal TimerModule_L50F9L52T10_TimerModule_L51F84T101_Expr_1 : signed(6 downto 0)  := "0000000";
-signal TimerModule_L50F9L52T10_TimerModule_L51F84T101_Expr_2 : signed(6 downto 0)  := "0000000";
-signal TimerModule_L46F24T48_Expr : std_logic := '0';
-signal TimerModule_L46F24T48_ExprLhs : signed(8 downto 0)  := "000000000";
-signal TimerModule_L46F24T48_ExprRhs : signed(8 downto 0)  := "000000000";
-signal TimerModule_L50F9L52T10_TimerModule_L51F34T101_Lookup : unsigned(4 downto 0)  := "00000";
-signal TimerModule_L50F9L52T10_TimerModule_L51F34T101_LookupMultiplexerAddress : std_logic := '0';
-signal TimerModule_L50F9L52T10_TimerModule_L51F34T101_Lookup1 : unsigned(4 downto 0)  := "00000";
-signal TimerModule_L50F9L52T10_TimerModule_L51F34T101_Lookup2 : unsigned(4 downto 0)  := "00000";
+signal TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr : std_logic := '0';
+signal TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr_1 : std_logic := '0';
+signal TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr_2 : std_logic := '0';
+signal TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr : unsigned(6 downto 0)  := "0000000";
+signal TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_1 : signed(6 downto 0)  := "0000000";
+signal TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_2 : signed(6 downto 0)  := "0000000";
+signal TimerModule_L47F24T48_Expr : std_logic := '0';
+signal TimerModule_L47F24T48_ExprLhs : signed(8 downto 0)  := "000000000";
+signal TimerModule_L47F24T48_ExprRhs : signed(8 downto 0)  := "000000000";
+signal TimerModule_L51F9L53T10_TimerModule_L52F34T101_Lookup : unsigned(4 downto 0)  := "00000";
+signal TimerModule_L51F9L53T10_TimerModule_L52F34T101_LookupMultiplexerAddress : std_logic := '0';
+signal TimerModule_L51F9L53T10_TimerModule_L52F34T101_Lookup1 : unsigned(4 downto 0)  := "00000";
+signal TimerModule_L51F9L53T10_TimerModule_L52F34T101_Lookup2 : unsigned(4 downto 0)  := "00000";
 begin
 process (BoardSignals, NextState_counter)
 begin
@@ -79,52 +79,52 @@ State_counter <= NextState_counter;
 end if;
 end if;
 end process;
-    TimerModule_L46F24T48_Expr <= '1' when (signed(resize(TimerModule_L46F24T48_ExprLhs, TimerModule_L46F24T48_ExprLhs'length + 1)) = signed(resize(TimerModule_L46F24T48_ExprRhs, TimerModule_L46F24T48_ExprRhs'length + 1))) else '0';
+    TimerModule_L47F24T48_Expr <= '1' when (signed(resize(TimerModule_L47F24T48_ExprLhs, TimerModule_L47F24T48_ExprLhs'length + 1)) = signed(resize(TimerModule_L47F24T48_ExprRhs, TimerModule_L47F24T48_ExprRhs'length + 1))) else '0';
 
-process(TimerModule_L50F9L52T10_TimerModule_L51F35T59_Expr_1, TimerModule_L50F9L52T10_TimerModule_L51F35T59_Expr_2)
+process(TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr_1, TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr_2)
 begin
-TimerModule_L50F9L52T10_TimerModule_L51F35T59_Expr <= TimerModule_L50F9L52T10_TimerModule_L51F35T59_Expr_1 OR TimerModule_L50F9L52T10_TimerModule_L51F35T59_Expr_2;
+TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr <= TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr_1 OR TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr_2;
 
     end process;
 
-process(TimerModule_L50F9L52T10_TimerModule_L51F84T101_Expr_1, TimerModule_L50F9L52T10_TimerModule_L51F84T101_Expr_2)
+process(TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_1, TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_2)
 begin
-    TimerModule_L50F9L52T10_TimerModule_L51F84T101_Expr <= resize(unsigned(signed(resize(TimerModule_L50F9L52T10_TimerModule_L51F84T101_Expr_1, TimerModule_L50F9L52T10_TimerModule_L51F84T101_Expr_1'length + 1)) + signed(resize(TimerModule_L50F9L52T10_TimerModule_L51F84T101_Expr_2, TimerModule_L50F9L52T10_TimerModule_L51F84T101_Expr_2'length + 1))), TimerModule_L50F9L52T10_TimerModule_L51F84T101_Expr'length);
+    TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr <= resize(unsigned(signed(resize(TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_1, TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_1'length + 1)) + signed(resize(TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_2, TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_2'length + 1))), TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr'length);
 
 end process;
-process(TimerModule_L50F9L52T10_TimerModule_L51F34T101_Lookup1, TimerModule_L50F9L52T10_TimerModule_L51F34T101_Lookup2, TimerModule_L50F9L52T10_TimerModule_L51F34T101_LookupMultiplexerAddress)
+process(TimerModule_L51F9L53T10_TimerModule_L52F34T101_Lookup1, TimerModule_L51F9L53T10_TimerModule_L52F34T101_Lookup2, TimerModule_L51F9L53T10_TimerModule_L52F34T101_LookupMultiplexerAddress)
 begin
-case TimerModule_L50F9L52T10_TimerModule_L51F34T101_LookupMultiplexerAddress is
+case TimerModule_L51F9L53T10_TimerModule_L52F34T101_LookupMultiplexerAddress is
   when '0' => 
-TimerModule_L50F9L52T10_TimerModule_L51F34T101_Lookup <= TimerModule_L50F9L52T10_TimerModule_L51F34T101_Lookup1;
+TimerModule_L51F9L53T10_TimerModule_L52F34T101_Lookup <= TimerModule_L51F9L53T10_TimerModule_L52F34T101_Lookup1;
   when '1' => 
-TimerModule_L50F9L52T10_TimerModule_L51F34T101_Lookup <= TimerModule_L50F9L52T10_TimerModule_L51F34T101_Lookup2;
+TimerModule_L51F9L53T10_TimerModule_L52F34T101_Lookup <= TimerModule_L51F9L53T10_TimerModule_L52F34T101_Lookup2;
   when others => 
-TimerModule_L50F9L52T10_TimerModule_L51F34T101_Lookup <= "00000";
+TimerModule_L51F9L53T10_TimerModule_L52F34T101_Lookup <= "00000";
 end case;
 
 end process;
-process(State_counter, TimerModule_L50F9L52T10_TimerModule_L51F33T124_Resize)
+process(State_counter, TimerModule_L51F9L53T10_TimerModule_L52F33T124_Resize)
 begin
 NextState_counter <= State_counter;
-NextState_counter <= TimerModule_L50F9L52T10_TimerModule_L51F33T124_Resize;
+NextState_counter <= TimerModule_L51F9L53T10_TimerModule_L52F33T124_Resize;
 end process;
-process(active, Inputs_Restart, Restart, State_counter, TimerModule_L46F24T48_Expr, TimerModule_L50F9L52T10_TimerModule_L51F34T101_Lookup, TimerModule_L50F9L52T10_TimerModule_L51F35T59_Expr, TimerModule_L50F9L52T10_TimerModule_L51F63T81_Source, TimerModule_L50F9L52T10_TimerModule_L51F84T101_Expr)
+process(active, Inputs_Restart, Restart, State_counter, TimerModule_L47F24T48_Expr, TimerModule_L51F9L53T10_TimerModule_L52F34T101_Lookup, TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr, TimerModule_L51F9L53T10_TimerModule_L52F63T81_Source, TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr)
 begin
-TimerModule_L46F24T48_ExprLhs <= signed(resize(unsigned(State_counter), TimerModule_L46F24T48_ExprLhs'length));
-TimerModule_L46F24T48_ExprRhs <= signed(resize(unsigned(countTo), TimerModule_L46F24T48_ExprRhs'length));
-TimerModule_L50F9L52T10_TimerModule_L51F35T59_Expr_1 <= Inputs_Restart;
-TimerModule_L50F9L52T10_TimerModule_L51F35T59_Expr_2 <= active;
-TimerModule_L50F9L52T10_TimerModule_L51F84T101_Expr_1 <= signed(resize(unsigned(State_counter), TimerModule_L50F9L52T10_TimerModule_L51F84T101_Expr_1'length));
-TimerModule_L50F9L52T10_TimerModule_L51F84T101_Expr_2 <= (0 => TimerModule_L50F9L52T10_TimerModule_L51F100T101_Expr, others => '0');
+TimerModule_L47F24T48_ExprLhs <= signed(resize(unsigned(State_counter), TimerModule_L47F24T48_ExprLhs'length));
+TimerModule_L47F24T48_ExprRhs <= signed(resize(unsigned(countTo), TimerModule_L47F24T48_ExprRhs'length));
+TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr_1 <= Inputs_Restart;
+TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr_2 <= active;
+TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_1 <= signed(resize(unsigned(State_counter), TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_1'length));
+TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_2 <= (0 => TimerModule_L51F9L53T10_TimerModule_L52F100T101_Expr, others => '0');
 Inputs_Restart <= Restart;
-active <= TimerModule_L46F24T48_Expr;
-TimerModule_L50F9L52T10_TimerModule_L51F63T81_Source <= TimerModule_L50F9L52T10_TimerModule_L51F79T80_Expr;
-TimerModule_L50F9L52T10_TimerModule_L51F33T124_Resize <= TimerModule_L50F9L52T10_TimerModule_L51F34T101_Lookup;
+active <= TimerModule_L47F24T48_Expr;
+TimerModule_L51F9L53T10_TimerModule_L52F63T81_Source <= TimerModule_L51F9L53T10_TimerModule_L52F79T80_Expr;
+TimerModule_L51F9L53T10_TimerModule_L52F33T124_Resize <= TimerModule_L51F9L53T10_TimerModule_L52F34T101_Lookup;
 OutActive <= active;
-TimerModule_L50F9L52T10_TimerModule_L51F34T101_Lookup1 <= TimerModule_L50F9L52T10_TimerModule_L51F84T101_Expr(4 downto 0);
-TimerModule_L50F9L52T10_TimerModule_L51F34T101_Lookup2 <= (0 => TimerModule_L50F9L52T10_TimerModule_L51F63T81_Source, others => '0');
-TimerModule_L50F9L52T10_TimerModule_L51F34T101_LookupMultiplexerAddress <= TimerModule_L50F9L52T10_TimerModule_L51F35T59_Expr;
+TimerModule_L51F9L53T10_TimerModule_L52F34T101_Lookup1 <= TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr(4 downto 0);
+TimerModule_L51F9L53T10_TimerModule_L52F34T101_Lookup2 <= (0 => TimerModule_L51F9L53T10_TimerModule_L52F63T81_Source, others => '0');
+TimerModule_L51F9L53T10_TimerModule_L52F34T101_LookupMultiplexerAddress <= TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr;
 end process;
 -- [BEGIN USER ARCHITECTURE]
 -- [END USER ARCHITECTURE]
