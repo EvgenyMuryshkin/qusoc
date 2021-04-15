@@ -51,13 +51,13 @@ namespace Experimental.Tests
         [TestMethod]
         public void EnumSizeTest()
         {
-            Assert.AreEqual(1, RTLSignalTools.SizeOf(typeof(EmptyEnum)));
-            Assert.AreEqual(1, RTLSignalTools.SizeOf(typeof(OneStateZero)));
-            Assert.AreEqual(1, RTLSignalTools.SizeOf(typeof(OneStateOne)));
-            Assert.AreEqual(2, RTLSignalTools.SizeOf(typeof(OneStateTwo)));
-            Assert.AreEqual(2, RTLSignalTools.SizeOf(typeof(OneStateThree)));
-            Assert.AreEqual(3, RTLSignalTools.SizeOf(typeof(OneStateFour)));
-            Assert.AreEqual(8, RTLSignalTools.SizeOf(typeof(BitMask)));
+            Assert.AreEqual(1, RTLSignalTools.SizeOf(typeof(EmptyEnum)).Size);
+            Assert.AreEqual(1, RTLSignalTools.SizeOf(typeof(OneStateZero)).Size);
+            Assert.AreEqual(1, RTLSignalTools.SizeOf(typeof(OneStateOne)).Size);
+            Assert.AreEqual(2, RTLSignalTools.SizeOf(typeof(OneStateTwo)).Size);
+            Assert.AreEqual(2, RTLSignalTools.SizeOf(typeof(OneStateThree)).Size);
+            Assert.AreEqual(3, RTLSignalTools.SizeOf(typeof(OneStateFour)).Size);
+            Assert.AreEqual(8, RTLSignalTools.SizeOf(typeof(BitMask)).Size);
         }
     }
 }

@@ -11,7 +11,7 @@ Linker script and memory map
 .text           0x0000000000000000      0x278
                 0x0000000000000000                . = ALIGN (0x4)
  *(.text)
- .text          0x0000000000000000      0x278 /tmp/ccbc3Cn1.o
+ .text          0x0000000000000000      0x278 /tmp/ccEoQdqM.o
                 0x0000000000000278                . = ALIGN (0x4)
                 0x0000000000000278                _etext = .
                 0x0000000000000278                _sidata = _etext
@@ -19,30 +19,30 @@ Linker script and memory map
 .data           0x0000000000000300      0x20c
                 0x0000000000000300                . = ALIGN (0x4)
  *(.data)
- .data          0x0000000000000300      0x20c /tmp/ccbc3Cn1.o
+ .data          0x0000000000000300      0x20c /tmp/ccEoQdqM.o
                 0x0000000000000300                begin_signature
                 0x0000000000000340                end_signature
                 0x0000000000000400                begin_regstate
                 0x0000000000000500                end_regstate
                 0x000000000000050c                . = ALIGN (0x4)
                 0x000000000000050c                _edata = .
-LOAD /tmp/ccbc3Cn1.o
+LOAD /tmp/ccEoQdqM.o
 OUTPUT(firmware.elf elf32-littleriscv)
 
 .tohost         0x0000000000000600      0x108
- .tohost        0x0000000000000600      0x108 /tmp/ccbc3Cn1.o
+ .tohost        0x0000000000000600      0x108 /tmp/ccEoQdqM.o
                 0x0000000000000600                tohost
                 0x0000000000000700                fromhost
 
 .bss            0x0000000000000708        0x0
- .bss           0x0000000000000708        0x0 /tmp/ccbc3Cn1.o
+ .bss           0x0000000000000708        0x0 /tmp/ccEoQdqM.o
 
 Cross Reference Table
 
 Symbol                                            File
-begin_regstate                                    /tmp/ccbc3Cn1.o
-begin_signature                                   /tmp/ccbc3Cn1.o
-end_regstate                                      /tmp/ccbc3Cn1.o
-end_signature                                     /tmp/ccbc3Cn1.o
-fromhost                                          /tmp/ccbc3Cn1.o
-tohost                                            /tmp/ccbc3Cn1.o
+begin_regstate                                    /tmp/ccEoQdqM.o
+begin_signature                                   /tmp/ccEoQdqM.o
+end_regstate                                      /tmp/ccEoQdqM.o
+end_signature                                     /tmp/ccEoQdqM.o
+fromhost                                          /tmp/ccEoQdqM.o
+tohost                                            /tmp/ccEoQdqM.o

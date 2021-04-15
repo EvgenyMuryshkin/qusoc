@@ -40,6 +40,14 @@ namespace Quokka.RTL
             State = state;
         }
 
+        protected void InitState(TState state)
+        {
+            if (State != null)
+                throw new Exception("State is already initialized");
+
+            State = state;
+        }
+
         protected override void OnSetup()
         {
             base.OnSetup();

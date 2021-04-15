@@ -185,6 +185,7 @@ namespace Quokka.RTL
         }
 
         public virtual RTLSignalInfo SizeOfValue(object value) => RTLSignalTools.SizeOfValue(value);
+        public virtual int VCDSizeOfValue(object value) => VCDInteraction.SizeOf(value);
 
         protected virtual IEnumerable<VCDVariable> ToVCDVariables(string name, object value, bool includeToolkitTypes = false)
         {
@@ -198,13 +199,13 @@ namespace Quokka.RTL
                 case Enum v:
                     return new[]
                     {
-                        new VCDVariable($"{name}ToString", value.ToString(), SizeOfValue("").Size),
-                        new VCDVariable($"{name}", value, SizeOfValue(value).Size)
+                        new VCDVariable($"{name}ToString", value.ToString(), VCDSizeOfValue("")),
+                        new VCDVariable($"{name}", value, VCDSizeOfValue(value))
                     };
                 case RTLBitArray b:
                     return new[]
                     {
-                        new VCDVariable($"{name}", value, SizeOfValue(value).Size)
+                        new VCDVariable($"{name}", value, VCDSizeOfValue(value))
                     };
                 default:
                     var valueType = value.GetType();
@@ -246,7 +247,7 @@ namespace Quokka.RTL
 
                     return new[]
                     {
-                        new VCDVariable($"{name}", value, SizeOfValue(value).Size)
+                        new VCDVariable($"{name}", value, VCDSizeOfValue(value))
                     };
             }
         }

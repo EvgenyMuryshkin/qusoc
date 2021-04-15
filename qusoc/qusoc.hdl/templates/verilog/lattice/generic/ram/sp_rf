@@ -1,0 +1,9 @@
+// inferred simple dual port RAM with read-first behaviour
+always @(posedge <<clock>>) begin
+	if (<<write_enable>>)
+		<<ram>>[<<addr>>] <= <<write_data>>;
+end
+
+always @(posedge <<clock>>) begin
+	<<read_data>> <= <<ram>>[<<addr>>];
+end

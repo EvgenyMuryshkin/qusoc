@@ -21,7 +21,9 @@ namespace QuSoC.Demos
         public SimpleCounterModule()
         {
             var rnd = new Random(42);
-            State.buff = Enumerable.Range(0, State.buff.Length).Select(i => (uint)rnd.Next()).ToArray();
+            var state = new SimpleCounterModuleState();
+            state.buff = Enumerable.Range(0, state.buff.Length).Select(i => (uint)rnd.Next()).ToArray();
+            InitState(state);
         }
 
         RTLBitArray Addr => new RTLBitArray(State.counter)[31, 22];
