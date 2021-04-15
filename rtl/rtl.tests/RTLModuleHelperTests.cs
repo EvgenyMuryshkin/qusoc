@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Quokka.RTL;
+using Quokka.RTL.Tools;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -50,13 +51,13 @@ namespace Experimental.Tests
         [TestMethod]
         public void EnumSizeTest()
         {
-            Assert.AreEqual(1, RTLModuleHelper.SizeOfEnum(typeof(EmptyEnum)));
-            Assert.AreEqual(1, RTLModuleHelper.SizeOfEnum(typeof(OneStateZero)));
-            Assert.AreEqual(1, RTLModuleHelper.SizeOfEnum(typeof(OneStateOne)));
-            Assert.AreEqual(2, RTLModuleHelper.SizeOfEnum(typeof(OneStateTwo)));
-            Assert.AreEqual(2, RTLModuleHelper.SizeOfEnum(typeof(OneStateThree)));
-            Assert.AreEqual(3, RTLModuleHelper.SizeOfEnum(typeof(OneStateFour)));
-            Assert.AreEqual(8, RTLModuleHelper.SizeOfEnum(typeof(BitMask)));
+            Assert.AreEqual(1, RTLSignalTools.SizeOf(typeof(EmptyEnum)).Size);
+            Assert.AreEqual(1, RTLSignalTools.SizeOf(typeof(OneStateZero)).Size);
+            Assert.AreEqual(1, RTLSignalTools.SizeOf(typeof(OneStateOne)).Size);
+            Assert.AreEqual(2, RTLSignalTools.SizeOf(typeof(OneStateTwo)).Size);
+            Assert.AreEqual(2, RTLSignalTools.SizeOf(typeof(OneStateThree)).Size);
+            Assert.AreEqual(3, RTLSignalTools.SizeOf(typeof(OneStateFour)).Size);
+            Assert.AreEqual(8, RTLSignalTools.SizeOf(typeof(BitMask)).Size);
         }
     }
 }

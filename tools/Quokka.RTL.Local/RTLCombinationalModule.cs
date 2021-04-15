@@ -36,8 +36,16 @@ namespace Quokka.RTL
             throw new InvalidOperationException($"Module '{GetType().Name}' is not initialized. Please call .Setup() on module instance or top of the hierarchy.");
         }
 
+        protected T CreateAndInitializeRelatedObject<T>() where T : new()
+        {
+            var t = new T();
+            OnRelatedObjectCreating(t);
+            return t;
+        }
+
         void Initialize()
         {
+            Inputs = CreateAndInitializeRelatedObject<TInput>();
             InputProps = RTLModuleHelper.SignalProperties(InputsType);
             OutputProps = RTLModuleHelper.OutputProperties(GetType());
             InternalProps = RTLModuleHelper.InternalProperties(GetType());
@@ -109,12 +117,12 @@ namespace Quokka.RTL
         {
             OnSetup();
 
-            Schedule(() => new TInput());
+            Schedule(() => Inputs);
 
             OnSetupCompleted();
         }
 
-        public TInput Inputs { get; private set; } = new TInput();
+        public TInput Inputs { get; private set; }
         object IRTLCombinationalModule.RawInputs => Inputs;
         protected Func<TInput> InputsFactory;
 
@@ -176,16 +184,8 @@ namespace Quokka.RTL
             }
         }
 
-        protected virtual int SizeOf(object value)
-        {
-            switch (value)
-            {
-                case Enum v:
-                    return RTLModuleHelper.SizeOfEnum(value.GetType());
-                default:
-                    return VCDInteraction.SizeOf(value);
-            }
-        }
+        public virtual RTLSignalInfo SizeOfValue(object value) => RTLSignalTools.SizeOfValue(value);
+        public virtual int VCDSizeOfValue(object value) => VCDInteraction.SizeOf(value);
 
         protected virtual IEnumerable<VCDVariable> ToVCDVariables(string name, object value, bool includeToolkitTypes = false)
         {
@@ -199,13 +199,13 @@ namespace Quokka.RTL
                 case Enum v:
                     return new[]
                     {
-                        new VCDVariable($"{name}ToString", value.ToString(), SizeOf("")),
-                        new VCDVariable($"{name}", value, SizeOf(value))
+                        new VCDVariable($"{name}ToString", value.ToString(), VCDSizeOfValue("")),
+                        new VCDVariable($"{name}", value, VCDSizeOfValue(value))
                     };
                 case RTLBitArray b:
                     return new[]
                     {
-                        new VCDVariable($"{name}", value, SizeOf(value))
+                        new VCDVariable($"{name}", value, VCDSizeOfValue(value))
                     };
                 default:
                     var valueType = value.GetType();
@@ -247,7 +247,7 @@ namespace Quokka.RTL
 
                     return new[]
                     {
-                        new VCDVariable($"{name}", value, SizeOf(value))
+                        new VCDVariable($"{name}", value, VCDSizeOfValue(value))
                     };
             }
         }

@@ -1,10 +1,12 @@
 ﻿using Experimental.Tests;
 using Microsoft.CodeAnalysis.Operations;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Quokka.Core.Bootstrap;
 using Quokka.RTL;
 using Quokka.RTL.Simulator;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace RTL.Modules
@@ -184,29 +186,30 @@ namespace RTL.Modules
         [TestMethod]
         public void LogicRAMModuleTest()
         {
-            var sim = new RTLSimulator<LogicRAMModule>();
+            var sim = new RTLSimulator<LogicRAMModule, LogicRAMModuleInputs>();
 
-            sim.TopLevel.Cycle(new LogicRAMModuleInputs() { Value = 0xFF });
+            sim.ClockCycle(new LogicRAMModuleInputs() { Value = 0xFF });
             Assert.AreEqual(0x3F, sim.TopLevel.Avg);
-            sim.TopLevel.Cycle(new LogicRAMModuleInputs() { Value = 0xFF });
+            sim.ClockCycle(new LogicRAMModuleInputs() { Value = 0xFF });
             Assert.AreEqual(0x7F, sim.TopLevel.Avg);
-            sim.TopLevel.Cycle(new LogicRAMModuleInputs() { Value = 0xFF });
+            sim.ClockCycle(new LogicRAMModuleInputs() { Value = 0xFF });
             Assert.AreEqual(0xBF, sim.TopLevel.Avg);
-            sim.TopLevel.Cycle(new LogicRAMModuleInputs() { Value = 0xFF });
+            sim.ClockCycle(new LogicRAMModuleInputs() { Value = 0xFF });
             Assert.AreEqual(0xFF, sim.TopLevel.Avg);
         }
 
         [TestMethod]
         public void LogicRAMIndexingModuleTest()
         {
-            var sim = new RTLSimulator<LogicRAMIndexingModule>();
+            var sim = new RTLSimulator<LogicRAMIndexingModule, LogicRAMIndexingModuleInputs>(true);
+            sim.TraceToVCD(VCDOutputPath());
             var tl = sim.TopLevel;
-            tl.Cycle(new LogicRAMIndexingModuleInputs() { WE = true, WriteAddr = 0, WriteData = 0x66 });
-            tl.Cycle(new LogicRAMIndexingModuleInputs() { WE = true, WriteAddr = 1, WriteData = 0xAA });
-            tl.Cycle(new LogicRAMIndexingModuleInputs() { WE = true, WriteAddr = 2, WriteData = 0x55 });
-            tl.Cycle(new LogicRAMIndexingModuleInputs() { WE = true, WriteAddr = 3, WriteData = 0xFF });
+            sim.ClockCycle(new LogicRAMIndexingModuleInputs() { WE = true, WriteAddr = 0, WriteData = 0x66 });
+            sim.ClockCycle(new LogicRAMIndexingModuleInputs() { WE = true, WriteAddr = 1, WriteData = 0xAA });
+            sim.ClockCycle(new LogicRAMIndexingModuleInputs() { WE = true, WriteAddr = 2, WriteData = 0x55 });
+            sim.ClockCycle(new LogicRAMIndexingModuleInputs() { WE = true, WriteAddr = 3, WriteData = 0xFF });
 
-            sim.TopLevel.Cycle(new LogicRAMIndexingModuleInputs() { ReadAddr = 2, OpData = 0xF0 });
+            sim.ClockCycle(new LogicRAMIndexingModuleInputs() { ReadAddr = 2, OpData = 0xF0 });
             Assert.AreEqual(false, tl.CmpMemLhs);
             Assert.AreEqual(true, tl.CmpMemRhs);
             Assert.AreEqual(0xF5, tl.LogicMemLhs);
@@ -215,7 +218,7 @@ namespace RTL.Modules
             Assert.AreEqual(0x45, tl.MathMemRhs);
             Assert.AreEqual(0xFF, tl.MemLhsRhs);
 
-            sim.TopLevel.Cycle(new LogicRAMIndexingModuleInputs() { ReadAddr = 0, OpData = 0x50 });
+            sim.ClockCycle(new LogicRAMIndexingModuleInputs() { ReadAddr = 0, OpData = 0x50 });
             Assert.AreEqual(true, tl.CmpMemLhs);
             Assert.AreEqual(false, tl.CmpMemRhs);
             Assert.AreEqual(0x76, tl.LogicMemLhs);
@@ -223,6 +226,9 @@ namespace RTL.Modules
             Assert.AreEqual(0x16, tl.MathMemLhs);
             Assert.AreEqual(0xB6, tl.MathMemRhs);
             Assert.AreEqual(0x10, tl.MemLhsRhs);
+
+            var tb = sim.TBAdapter(@"C:\code\qusoc\RTL\RTL.Modules\rtl.verilog.json");
+            tb.PostSynthTimingSimulation();
         }
 
 

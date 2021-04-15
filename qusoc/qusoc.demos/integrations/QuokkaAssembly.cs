@@ -23,15 +23,7 @@ namespace QuSoC.Demos
 {
     public class QuokkaAssembly : DefaultQuokkaAssembly
     {
-        public QuokkaAssembly(
-            ILogStream logStream,
-            RuntimeConfiguration runtimeConfiguration, 
-            RTLModulesDiscovery rtlModulesDiscovery,
-            ComponentsLibrary componentsLibrary) : base(
-                logStream, 
-                runtimeConfiguration, 
-                rtlModulesDiscovery, 
-                componentsLibrary)
+        public QuokkaAssembly(DefaultQuokkaAssemblyDeps deps) : base(deps)
         {
         }
 
@@ -50,7 +42,7 @@ namespace QuSoC.Demos
                 {
                     foreach (var moduleType in _rtlModulesDiscovery.ModuleTypes.Where(m => modules.Contains(m.Name)))
                     {
-                        var instance = Activator.CreateInstance(moduleType) as IRTLCombinationalModule;
+                        var instance = _classFactory.Create<IRTLCombinationalModule>(moduleType);
                         yield return new RTLModuleConfig() { Instance = instance, Name = instance.ModuleName };
                     }
                 }

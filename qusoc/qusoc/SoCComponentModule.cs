@@ -42,6 +42,11 @@ namespace QuSoC
             this.addressSpan = addressSpan;
         }
 
+        public SoCComponentModule(uint addressSpan, TState state) : base(state)
+        {
+            this.addressSpan = addressSpan;
+        }
+
         protected virtual bool addressMatch => Inputs.Common.Address >= Inputs.DeviceAddress && Inputs.Common.Address < (Inputs.DeviceAddress + addressSpan);
         protected RTLBitArray internalAddressBits => new RTLBitArray(Inputs.Common.Address);
         protected RTLBitArray internalByteAddress => internalAddressBits[1, 0] << 3;

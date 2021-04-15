@@ -1,3 +1,6 @@
+`timescale 1ns/1ps
+`default_nettype none
+
 module work_Quokka_BoardSignalsProc (
 	BoardSignals_Clock,
 	BoardSignals_Reset,
@@ -46,10 +49,11 @@ module work_Quokka_BoardSignalsProc (
 endmodule
 
 module work_Quokka_Metastability(Clock, Reset, in, out);
-input Clock;
-input Reset;
-input in;
-output out;
+input wire Clock;
+input wire Reset;
+input wire in;
+output wire out;
+
 reg [2:1] buff = 2'b00;
 
 always @(posedge Clock)

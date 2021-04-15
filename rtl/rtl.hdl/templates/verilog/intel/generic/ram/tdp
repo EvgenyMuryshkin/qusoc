@@ -1,0 +1,27 @@
+always @ (posedge <<clock_a>>)
+begin
+	// Port A 
+	if (<<write_enable_a>>) 
+	begin
+		<<ram>>[<<addr_a>>] <= <<write_data_a>>;
+		<<read_data_a>> <= <<write_data_a>>;
+	end
+	else 
+	begin
+		<<read_data_a>> <= <<ram>>[<<addr_a>>];
+	end 
+end
+
+always @ (posedge <<clock_b>>)
+begin
+	// Port B 
+	if (<<write_enable_b>>) 
+	begin
+		<<ram>>[<<addr_b>>] <= <<write_data_b>>;
+		<<read_data_b>> <= <<write_data_b>>;
+	end
+	else 
+	begin
+		<<read_data_b>> <= <<ram>>[<<addr_b>>];
+	end 
+end

@@ -19,9 +19,8 @@ namespace QuSoC
 
     public class SoCBlockRAMModule : SoCComponentModule<SoCBlockRAMModuleInputs, SoCBlockRAMModuleState>
     {
-        public SoCBlockRAMModule(uint size) : base(size * 4)
+        public SoCBlockRAMModule(uint size) : base(size * 4, new SoCBlockRAMModuleState() { BlockRAM = new uint[size] })
         {
-            State.BlockRAM = new uint[size];
         }
 
         RTLBitArray internalWordAddress => internalAddressBits[11, 2];

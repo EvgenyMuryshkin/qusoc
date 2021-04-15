@@ -1,0 +1,21 @@
+-- Port A
+process(<<clock_a>>, <<addr_a>>, <<write_enable_a>>, <<write_data_a>>)
+begin
+if(rising_edge(<<clock_a>>)) then 
+    if(<<write_enable_a>> = '1') then
+        <<ram>>(TO_INTEGER(<<addr_a>>)) := <<write_data_a>>;
+    end if;
+    <<read_data_a>> <= <<ram>>(TO_INTEGER(<<addr_a>>));
+end if;
+end process;
+
+-- Port B 
+process(<<clock_b>>, <<addr_b>>, <<write_enable_b>>, <<write_data_b>>)
+begin
+if(rising_edge(<<clock_b>>)) then 
+    if(<<write_enable_b>> = '1') then
+        <<ram>>(TO_INTEGER(<<addr_b>>)) := <<write_data_b>>;
+    end if;
+    <<read_data_b>> <= <<ram>>(TO_INTEGER(<<addr_b>>));
+end if;
+end process;

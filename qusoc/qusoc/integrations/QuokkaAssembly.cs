@@ -21,23 +21,41 @@ using System.Text;
 
 namespace QuSoC
 {
-    public abstract class DefaultQuokkaAssembly : IQuokkaAssembly
+    public class DefaultQuokkaAssemblyDeps
     {
-        protected readonly ILogStream _logStream;
-        protected readonly RuntimeConfiguration _runtimeConfiguration;
-        protected readonly RTLModulesDiscovery _rtlModulesDiscovery;
-        protected readonly ComponentsLibrary _componentsLibrary;
+        public readonly ILogStream _logStream;
+        public readonly RuntimeConfiguration _runtimeConfiguration;
+        public readonly RTLModulesDiscovery _rtlModulesDiscovery;
+        public readonly ComponentsLibrary _componentsLibrary;
+        public readonly ClassFactory _classFactory;
 
-        public DefaultQuokkaAssembly(
+        public DefaultQuokkaAssemblyDeps(
             ILogStream logStream,
-            RuntimeConfiguration runtimeConfiguration, 
+            RuntimeConfiguration runtimeConfiguration,
             RTLModulesDiscovery rtlModulesDiscovery,
-            ComponentsLibrary componentsLibrary)
+            ComponentsLibrary componentsLibrary,
+            ClassFactory classFactory)
         {
             _logStream = logStream;
             _runtimeConfiguration = runtimeConfiguration;
             _rtlModulesDiscovery = rtlModulesDiscovery;
             _componentsLibrary = componentsLibrary;
+            _classFactory = classFactory;
+        }
+    }
+
+    public abstract class DefaultQuokkaAssembly : IQuokkaAssembly
+    {
+        private readonly DefaultQuokkaAssemblyDeps _deps;
+        protected ILogStream _logStream => _deps._logStream;
+        protected RuntimeConfiguration _runtimeConfiguration => _deps._runtimeConfiguration;
+        protected RTLModulesDiscovery _rtlModulesDiscovery => _deps._rtlModulesDiscovery;
+        protected ComponentsLibrary _componentsLibrary => _deps._componentsLibrary;
+        protected ClassFactory _classFactory => _deps._classFactory;
+
+        public DefaultQuokkaAssembly(DefaultQuokkaAssemblyDeps deps)
+        {
+            _deps = deps;
         }
 
         bool WriteFileIfChanged(string path, string content)
@@ -187,7 +205,7 @@ namespace QuSoC
                     // add default creatable modules, declared in this assembly only
                     foreach (var moduleType in _rtlModulesDiscovery.ModuleTypes.Where(t => typeof(QuSoCModule).IsAssignableFrom(t)))
                     {
-                        var instance = Activator.CreateInstance(moduleType) as IRTLCombinationalModule;
+                        var instance = _classFactory.Create< IRTLCombinationalModule>(moduleType);
                         yield return new RTLModuleConfig() { Instance = instance, Name = instance.ModuleName };
                     }
                 }

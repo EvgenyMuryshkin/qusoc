@@ -24,15 +24,40 @@ namespace Quokka.RTL
         public List<MemberInfo> PipelineProps { get; private set; }
 
         TState DefaultState;
-        public TState State { get; private set; } = new TState();
+        public TState State { get; private set; }
+        public TState NextState { get; private set; }
         object IRTLSynchronousModule.RawState => State;
-        public TState NextState = new TState();
 
         IEnumerable<IRTLPipeline> Pipelines => PipelineProps.Select(p => p.GetValue(this)).OfType<IRTLPipeline>();
+
+        public RTLSynchronousModule()
+        {
+
+        }
+
+        public RTLSynchronousModule(TState state)
+        {
+            State = state;
+        }
+
+        protected void InitState(TState state)
+        {
+            if (State != null)
+                throw new Exception("State is already initialized");
+
+            State = state;
+        }
 
         protected override void OnSetup()
         {
             base.OnSetup();
+
+            // do not create default state object if it was already assigned in ctor
+            if (State == null)
+                State = CreateAndInitializeRelatedObject<TState>();
+            
+            NextState = CreateAndInitializeRelatedObject<TState>();
+
             PipelineProps = RTLModuleHelper.PipelineProperties(GetType());
 
             foreach (var head in Pipelines.Select(pl => pl.Diag.Head))
@@ -43,7 +68,7 @@ namespace Quokka.RTL
             // store default state for reset logic
             DefaultState = CopyState();
         }
-        
+
         /*
         protected override void OnSetupCompleted()
         {
@@ -56,6 +81,8 @@ namespace Quokka.RTL
             }
         }
         */
+
+        protected bool InReset { get; private set; }
 
         public override void PopulateSnapshot(VCDSignalsSnapshot snapshot)
         {
