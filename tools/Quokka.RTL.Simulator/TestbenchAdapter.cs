@@ -97,6 +97,17 @@ namespace Quokka.RTL.Simulator
             if (tcl != null)
                 SaveTCL(tcl);
 
+            var path = Environment.GetEnvironmentVariable("PATH");
+            var locations = path.Split(new[] { ';' });
+            var vivadoLocation = locations
+                .Where(l => File.Exists(Path.Combine(l, "vivado.bat")))
+                .FirstOrDefault();
+
+            if (!vivadoLocation.HasValue())
+            {
+                throw new Exception($"vivado.bat was not found. Please add Vivado bin folder to path.");
+            }
+
             var process = Process.Start(new ProcessStartInfo()
             {
                 FileName = "cmd.exe",
@@ -116,7 +127,10 @@ namespace Quokka.RTL.Simulator
             }
 
             if (process.ExitCode != 0)
+            {
+                var log = File.ReadAllLines(LogFile);
                 throw new Exception($"Vivado exit code: {process.ExitCode}");
+            }
         }
 
 

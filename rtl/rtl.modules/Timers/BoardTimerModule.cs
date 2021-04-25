@@ -11,23 +11,17 @@ namespace RTL.Modules
         public bool Restart;
     }
 
-    public class BoardTimerModuleState
-    {
-        public byte t1;
-        public byte t2;
-    }
+    public class BoardTimerModuleState { }
 
     [BoardConfig(Name = "Test")]
     public class BoardTimerModule : RTLSynchronousModule<BoardTimerModuleInputs, BoardTimerModuleState>
     {
+        TimerInputs nestedTimerInputs => new TimerInputs { Restart = Inputs.Restart };
         TimerModule timerModule10;
         TimerModule timerModule20;
 
         public bool OutActive10 => timerModule10.OutActive;
         public bool OutActive20 => timerModule20.OutActive;
-
-        public byte OutT1 => State.t1;
-        public byte OutT2 => State.t2;
 
         public BoardTimerModule(
             RuntimeConfiguration runtimeConfiguration,
@@ -42,24 +36,16 @@ namespace RTL.Modules
             timerModule20 = timerFactory(config.ClockFrequency * 2);
         }
 
-        TimerInputs nestedTimerInputs => new TimerInputs()
-        { 
-            Restart = Inputs.Restart
-        };
-
         protected override void OnSchedule(Func<BoardTimerModuleInputs> inputsFactory)
         {
+            base.OnSchedule(inputsFactory);
+
             timerModule10.Schedule(() => nestedTimerInputs);
             timerModule20.Schedule(() => nestedTimerInputs);
         }
 
         protected override void OnStage()
         {
-            if (timerModule10.OutActive)
-                NextState.t1 = (byte)(State.t1 + 1);
-
-            if (timerModule20.OutActive)
-                NextState.t2 = (byte)(State.t2 + 1);
         }
     }
 }

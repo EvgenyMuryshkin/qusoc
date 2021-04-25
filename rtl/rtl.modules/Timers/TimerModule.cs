@@ -25,7 +25,7 @@ namespace RTL.Modules
         {
             var maxCount = clocks - 1;
             CapacityBits = RTLCalculators.CalcBitsForValue(maxCount);
-            countTo = new RTLBitArray(maxCount).Resized(CapacityBits);
+            countTo = new RTLBitArray(maxCount).Resized(CapacityBits).Unsigned();
         }
 
         public override bool OnRelatedObjectCreating(object data)
@@ -34,7 +34,7 @@ namespace RTL.Modules
             {
                 case TimerState state:
                 {
-                    state.counter = new RTLBitArray().Resized(CapacityBits);
+                    state.counter = new RTLBitArray().Resized(CapacityBits).Unsigned();
                     return true;
                 }
                 default:
@@ -49,7 +49,7 @@ namespace RTL.Modules
 
         protected override void OnStage()
         {
-            NextState.counter = ((Inputs.Restart || active) ? new RTLBitArray(0) : State.counter + 1).Resized(CapacityBits);
+            NextState.counter = ((Inputs.Restart || active) ? new RTLBitArray(0) : State.counter + 1).Resized(CapacityBits).Unsigned();
         }
     }
 }

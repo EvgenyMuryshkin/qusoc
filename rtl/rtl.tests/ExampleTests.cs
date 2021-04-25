@@ -1,11 +1,15 @@
 ﻿using Experimental.Tests;
+using FPGA.Attributes;
 using Microsoft.CodeAnalysis.Operations;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Quokka.Core.Bootstrap;
+using Quokka.Public.Config;
+using Quokka.Public.Tools;
 using Quokka.RTL;
 using Quokka.RTL.Simulator;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -231,6 +235,36 @@ namespace RTL.Modules
             tb.PostSynthTimingSimulation();
         }
 
+        [TestMethod]
+        public void BoardTimerModuleTest()
+        {
+            var container = new QuokkaContainer();
+            var runtimeConfig = container.Resolve<RuntimeConfiguration>();
+            uint testClock = 10;
+
+            runtimeConfig.Initialize(new QuokkaConfig()
+            {
+                Configurations = new List<BoardConfigAttribute>() {
+                new BoardConfigAttribute() { Name = "Test", ClockFrequency = testClock }}
+            });
+
+            var moduleInstance = container.Resolve<BoardTimerModule>();
+            var sim = new RTLInstanceSimulator<BoardTimerModule, BoardTimerModuleInputs>(moduleInstance, true);
+            sim.TraceToVCD(VCDOutputPath());
+
+            var topLevel = sim.TopLevel;
+
+            for (var i = 1; i <= testClock * 10; i++)
+            {
+                Assert.AreEqual(i % testClock == 0, topLevel.OutActive10);
+                Assert.AreEqual(i % (testClock * 2) == 0, topLevel.OutActive20);
+
+                sim.ClockCycle(new BoardTimerModuleInputs());
+            }
+
+            var tb = sim.TBAdapter(@"C:\code\qusoc\RTL\RTL.Modules\rtl.verilog.json");
+            tb.PostSynthTimingSimulation();
+        }
 
         [TestMethod]
         public void CompositionModuleTest()
