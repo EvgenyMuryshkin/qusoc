@@ -27,9 +27,7 @@ module BoardTimerModule_TopLevel (
 	input wire  Reset,
 	input wire  Restart,
 	output wire OutActive10,
-	output wire OutActive20,
-	output wire [7: 0] OutT1,
-	output wire [7: 0] OutT2
+	output wire OutActive20
     );
 
 // [BEGIN USER SIGNALS]
@@ -40,32 +38,16 @@ wire  Zero = 1'b0;
 wire  One = 1'b1;
 wire  true = 1'b1;
 wire  false = 1'b0;
-wire  BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F50T51_Expr = 1'b1;
-wire  BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F50T51_Expr = 1'b1;
 wire  Inputs_Restart;
-reg  [7:0] NextState_t1;
-reg  [7:0] NextState_t2;
 wire  nestedTimerInputs_Restart;
 wire  timerModule10_Restart;
 wire  timerModule10_OutActive;
 wire  timerModule20_Restart;
 wire  timerModule20_OutActive;
-wire  [7:0] BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F32T52_Cast;
-wire  [7:0] BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F32T52_Cast;
 wire  timerModule10RestarttimerModule10_RestartHardLink;
 wire  timerModule10OutActivetimerModule10_OutActiveHardLink;
 wire  timerModule20RestarttimerModule20_RestartHardLink;
 wire  timerModule20OutActivetimerModule20_OutActiveHardLink;
-reg  [7:0] State_t1 = 8'b00000000;
-wire  [7:0] State_t1Default = 8'b00000000;
-reg  [7:0] State_t2 = 8'b00000000;
-wire  [7:0] State_t2Default = 8'b00000000;
-wire  [9:0] BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr;
-wire signed  [9:0] BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr_1;
-wire signed  [9:0] BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr_2;
-wire  [9:0] BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr;
-wire signed  [9:0] BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr_1;
-wire signed  [9:0] BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr_2;
 wire  BoardSignals_Clock;
 wire  BoardSignals_Reset;
 wire  BoardSignals_Running;
@@ -73,19 +55,6 @@ wire  BoardSignals_Starting;
 wire  BoardSignals_Started;
 reg  InternalReset = 1'b0;
 work_Quokka_BoardSignalsProc BoardSignalsConnection(BoardSignals_Clock,BoardSignals_Reset,BoardSignals_Running,BoardSignals_Starting,BoardSignals_Started,Clock,Reset,InternalReset);
-always @(posedge Clock)
-begin
-if ( Reset == 1 ) begin
-State_t1 <= State_t1Default;
-State_t2 <= State_t2Default;
-end
-else begin
-State_t1 <= NextState_t1;
-State_t2 <= NextState_t2;
-end
-end
-assign BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr = BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr_1 + BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr_2;
-assign BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr = BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr_1 + BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr_2;
 BoardTimerModule_TopLevel_BoardTimerModule_timerModule10 BoardTimerModule_TopLevel_BoardTimerModule_timerModule10
 (
 // [BEGIN USER MAP FOR timerModule10]
@@ -112,32 +81,12 @@ BoardTimerModule_TopLevel_BoardTimerModule_timerModule20 BoardTimerModule_TopLev
 	.OutActive (timerModule20OutActivetimerModule20_OutActiveHardLink)
 
 );
-always @*
-begin
-NextState_t1 = State_t1;
-NextState_t2 = State_t2;
-if ( timerModule10_OutActive == 1 ) begin
-NextState_t1 = BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F32T52_Cast;
-end
-if ( timerModule20_OutActive == 1 ) begin
-NextState_t2 = BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F32T52_Cast;
-end
-
-end
-assign BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr_1 = { {2{1'b0}}, State_t1 }/*expand*/;
-assign BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr_2 = { {9{1'b0}}, BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F50T51_Expr }/*expand*/;
-assign BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr_1 = { {2{1'b0}}, State_t2 }/*expand*/;
-assign BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr_2 = { {9{1'b0}}, BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F50T51_Expr }/*expand*/;
 assign Inputs_Restart = Restart;
 assign nestedTimerInputs_Restart = Inputs_Restart;
 assign timerModule10_Restart = nestedTimerInputs_Restart;
 assign timerModule20_Restart = nestedTimerInputs_Restart;
-assign BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F32T52_Cast = BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr[7:0]/*truncate*/;
-assign BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F32T52_Cast = BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr[7:0]/*truncate*/;
 assign OutActive10 = timerModule10_OutActive;
 assign OutActive20 = timerModule20_OutActive;
-assign OutT1 = State_t1;
-assign OutT2 = State_t2;
 assign timerModule10RestarttimerModule10_RestartHardLink = timerModule10_Restart;
 assign timerModule10_OutActive = timerModule10OutActivetimerModule10_OutActiveHardLink;
 assign timerModule20RestarttimerModule20_RestartHardLink = timerModule20_Restart;

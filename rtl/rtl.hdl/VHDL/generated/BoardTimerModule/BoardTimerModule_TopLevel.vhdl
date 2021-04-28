@@ -31,9 +31,7 @@ Clock : in  std_logic;
 Reset : in  std_logic;
 Restart : in  std_logic;
 OutActive10 : out  std_logic;
-OutActive20 : out  std_logic;
-OutT1 : out  unsigned(7 downto 0);
-OutT2 : out  unsigned(7 downto 0)
+OutActive20 : out  std_logic
     );
 end entity;
 
@@ -48,60 +46,20 @@ constant Zero : std_logic := '0';
 constant One : std_logic := '1';
 constant true : std_logic := '1';
 constant false : std_logic := '0';
-constant BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F50T51_Expr : std_logic := '1';
-constant BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F50T51_Expr : std_logic := '1';
 signal Inputs_Restart : std_logic := '0';
-signal NextState_t1 : unsigned(7 downto 0) := (others => '0');
-signal NextState_t2 : unsigned(7 downto 0) := (others => '0');
 signal nestedTimerInputs_Restart : std_logic := '0';
 signal timerModule10_Restart : std_logic := '0';
 signal timerModule10_OutActive : std_logic := '0';
 signal timerModule20_Restart : std_logic := '0';
 signal timerModule20_OutActive : std_logic := '0';
-signal BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F32T52_Cast : unsigned(7 downto 0) := (others => '0');
-signal BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F32T52_Cast : unsigned(7 downto 0) := (others => '0');
 signal timerModule10RestarttimerModule10_RestartHardLink : std_logic := '0';
 signal timerModule10OutActivetimerModule10_OutActiveHardLink : std_logic := '0';
 signal timerModule20RestarttimerModule20_RestartHardLink : std_logic := '0';
 signal timerModule20OutActivetimerModule20_OutActiveHardLink : std_logic := '0';
-signal State_t1 : unsigned(7 downto 0)  := "00000000";
-constant State_t1Default : unsigned(7 downto 0)  := "00000000";
-signal State_t2 : unsigned(7 downto 0)  := "00000000";
-constant State_t2Default : unsigned(7 downto 0)  := "00000000";
-signal BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr : unsigned(9 downto 0)  := "0000000000";
-signal BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr_1 : signed(9 downto 0)  := "0000000000";
-signal BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr_2 : signed(9 downto 0)  := "0000000000";
-signal BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr : unsigned(9 downto 0)  := "0000000000";
-signal BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr_1 : signed(9 downto 0)  := "0000000000";
-signal BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr_2 : signed(9 downto 0)  := "0000000000";
 signal BoardSignals : BoardSignalsType;
 signal InternalReset : std_logic := '0';
 begin
 work.Quokka.BoardSignalsProc(BoardSignals,Clock,Reset,InternalReset);
-process (Clock, NextState_t1, NextState_t2, Reset)
-begin
-if rising_edge(Clock) then
-if ( Reset = '1' ) then
-State_t1 <= State_t1Default;
-State_t2 <= State_t2Default;
-else
-State_t1 <= NextState_t1;
-State_t2 <= NextState_t2;
-end if;
-end if;
-end process;
-
-process(BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr_1, BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr_2)
-begin
-    BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr <= resize(unsigned(signed(resize(BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr_1, BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr_1'length + 1)) + signed(resize(BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr_2, BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr_2'length + 1))), BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr'length);
-
-end process;
-
-process(BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr_1, BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr_2)
-begin
-    BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr <= resize(unsigned(signed(resize(BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr_1, BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr_1'length + 1)) + signed(resize(BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr_2, BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr_2'length + 1))), BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr'length);
-
-end process;
 BoardTimerModule_TopLevel_BoardTimerModule_timerModule10 : entity work.BoardTimerModule_TopLevel_BoardTimerModule_timerModule10 port map
 (
 --[BEGIN USER MAP FOR timerModule10]
@@ -120,33 +78,14 @@ Restart => timerModule20RestarttimerModule20_RestartHardLink,
 OutActive => timerModule20OutActivetimerModule20_OutActiveHardLink
 
 );
-process(BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F32T52_Cast, BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F32T52_Cast, State_t1, State_t2, timerModule10_OutActive, timerModule20_OutActive)
+process(Inputs_Restart, nestedTimerInputs_Restart, Restart, timerModule10_OutActive, timerModule10_Restart, timerModule10OutActivetimerModule10_OutActiveHardLink, timerModule20_OutActive, timerModule20_Restart, timerModule20OutActivetimerModule20_OutActiveHardLink)
 begin
-NextState_t1 <= State_t1;
-NextState_t2 <= State_t2;
-if ( timerModule10_OutActive = '1' ) then
-NextState_t1 <= BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F32T52_Cast;
-end if;
-if ( timerModule20_OutActive = '1' ) then
-NextState_t2 <= BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F32T52_Cast;
-end if;
-end process;
-process(BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr, BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr, Inputs_Restart, nestedTimerInputs_Restart, Restart, State_t1, State_t2, timerModule10_OutActive, timerModule10_Restart, timerModule10OutActivetimerModule10_OutActiveHardLink, timerModule20_OutActive, timerModule20_Restart, timerModule20OutActivetimerModule20_OutActiveHardLink)
-begin
-BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr_1 <= signed(resize(unsigned(State_t1), BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr_1'length));
-BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr_2 <= (0 => BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F50T51_Expr, others => '0');
-BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr_1 <= signed(resize(unsigned(State_t2), BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr_1'length));
-BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr_2 <= (0 => BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F50T51_Expr, others => '0');
 Inputs_Restart <= Restart;
 nestedTimerInputs_Restart <= Inputs_Restart;
 timerModule10_Restart <= nestedTimerInputs_Restart;
 timerModule20_Restart <= nestedTimerInputs_Restart;
-BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F32T52_Cast <= BoardTimerModule_L57F9L63T10_BoardTimerModule_L59F39T51_Expr(7 downto 0);
-BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F32T52_Cast <= BoardTimerModule_L57F9L63T10_BoardTimerModule_L62F39T51_Expr(7 downto 0);
 OutActive10 <= timerModule10_OutActive;
 OutActive20 <= timerModule20_OutActive;
-OutT1 <= State_t1;
-OutT2 <= State_t2;
 timerModule10RestarttimerModule10_RestartHardLink <= timerModule10_Restart;
 timerModule10_OutActive <= timerModule10OutActivetimerModule10_OutActiveHardLink;
 timerModule20RestarttimerModule20_RestartHardLink <= timerModule20_Restart;

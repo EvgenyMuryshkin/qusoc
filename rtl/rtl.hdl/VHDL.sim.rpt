@@ -1,5 +1,5 @@
 Simulator report for VHDL
-Mon Apr 12 21:39:06 2021
+Mon Apr 26 17:20:30 2021
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -10,13 +10,12 @@ Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
   2. Simulator Summary
   3. Simulator Settings
   4. Simulation Waveforms
-  5. |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ALTSYNCRAM
-  6. Coverage Summary
-  7. Complete 1/0-Value Coverage
-  8. Missing 1-Value Coverage
-  9. Missing 0-Value Coverage
- 10. Simulator INI Usage
- 11. Simulator Messages
+  5. Coverage Summary
+  6. Complete 1/0-Value Coverage
+  7. Missing 1-Value Coverage
+  8. Missing 0-Value Coverage
+  9. Simulator INI Usage
+ 10. Simulator Messages
 
 
 
@@ -46,9 +45,9 @@ applicable agreement for further details.
 +-----------------------------+--------------+
 ; Simulation Start Time       ; 0 ps         ;
 ; Simulation End Time         ; 1.0 ms       ;
-; Simulation Netlist Size     ; 83 nodes     ;
-; Simulation Coverage         ;      21.35 % ;
-; Total Number of Transitions ; 271          ;
+; Simulation Netlist Size     ; 31 nodes     ;
+; Simulation Coverage         ;      91.43 % ;
+; Total Number of Transitions ; 1024         ;
 ; Simulation Breakpoints      ; 0            ;
 ; Family                      ; Cyclone II   ;
 ; Device                      ; EP2C8F256C6  ;
@@ -63,7 +62,7 @@ applicable agreement for further details.
 ; Simulation mode                                                                            ; Timing                         ; Timing        ;
 ; Start time                                                                                 ; 0 ns                           ; 0 ns          ;
 ; Simulation results format                                                                  ; CVWF                           ;               ;
-; Vector input source                                                                        ; Waveforms/SDP_WF_RAMModule.vwf ;               ;
+; Vector input source                                                                        ; Waveforms/BoardTimerModule.vwf ;               ;
 ; Add pins automatically to simulation output waveforms                                      ; On                             ; On            ;
 ; Check outputs                                                                              ; Off                            ; Off           ;
 ; Report simulation coverage                                                                 ; On                             ; On            ;
@@ -91,211 +90,82 @@ Waveform report data cannot be output to ASCII.
 Please use Quartus II to view the waveform report data.
 
 
-+--------------------------------------------------------------------------------------------------+
-; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ALTSYNCRAM ;
-+--------------------------------------------------------------------------------------------------+
-Please refer to fitter text-based report (*.fit.rpt) to view logical memory report content in ASCII.
-
-
 +--------------------------------------------------------------------+
 ; Coverage Summary                                                   ;
 +-----------------------------------------------------+--------------+
 ; Type                                                ; Value        ;
 +-----------------------------------------------------+--------------+
-; Total coverage as a percentage                      ;      21.35 % ;
-; Total nodes checked                                 ; 83           ;
-; Total output ports checked                          ; 89           ;
-; Total output ports with complete 1/0-value coverage ; 19           ;
-; Total output ports with no 1/0-value coverage       ; 70           ;
-; Total output ports with no 1-value coverage         ; 70           ;
-; Total output ports with no 0-value coverage         ; 70           ;
+; Total coverage as a percentage                      ;      91.43 % ;
+; Total nodes checked                                 ; 31           ;
+; Total output ports checked                          ; 35           ;
+; Total output ports with complete 1/0-value coverage ; 32           ;
+; Total output ports with no 1/0-value coverage       ; 1            ;
+; Total output ports with no 1-value coverage         ; 2            ;
+; Total output ports with no 0-value coverage         ; 2            ;
 +-----------------------------------------------------+--------------+
 
 
 The following table displays output ports that toggle between 1 and 0 during simulation.
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Complete 1/0-Value Coverage                                                                                                                                                                                                ;
-+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+------------------+
-; Node Name                                                                                          ; Output Port Name                                                                                   ; Output Port Type ;
-+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+------------------+
-; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a0 ; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a0 ; portbdataout0    ;
-; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a0 ; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a1 ; portbdataout1    ;
-; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a0 ; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a2 ; portbdataout2    ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[17]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[17]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[0]                                                 ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[0]                                                 ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff~23                                                           ; |SDP_WF_RAMModule_TopLevel|State_Buff~23                                                           ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[18]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[18]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff~24                                                           ; |SDP_WF_RAMModule_TopLevel|State_Buff~24                                                           ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[19]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[19]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff~25                                                           ; |SDP_WF_RAMModule_TopLevel|State_Buff~25                                                           ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|Data[0]                                                                 ; |SDP_WF_RAMModule_TopLevel|Data[0]                                                                 ; padio            ;
-; |SDP_WF_RAMModule_TopLevel|Data[1]                                                                 ; |SDP_WF_RAMModule_TopLevel|Data[1]                                                                 ; padio            ;
-; |SDP_WF_RAMModule_TopLevel|Data[2]                                                                 ; |SDP_WF_RAMModule_TopLevel|Data[2]                                                                 ; padio            ;
-; |SDP_WF_RAMModule_TopLevel|WriteData[0]                                                            ; |SDP_WF_RAMModule_TopLevel|WriteData[0]~corein                                                     ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|Clock                                                                   ; |SDP_WF_RAMModule_TopLevel|Clock~corein                                                            ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WE                                                                      ; |SDP_WF_RAMModule_TopLevel|WE~corein                                                               ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteData[1]                                                            ; |SDP_WF_RAMModule_TopLevel|WriteData[1]~corein                                                     ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteData[2]                                                            ; |SDP_WF_RAMModule_TopLevel|WriteData[2]~corein                                                     ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|Clock~clkctrl                                                           ; |SDP_WF_RAMModule_TopLevel|Clock~clkctrl                                                           ; outclk           ;
-+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                                                                                                                                                                                                                                                                            ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
+; Node Name                                                                                                                                                        ; Output Port Name                                                                                                                                                 ; Output Port Type ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[4]    ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[4]    ; regout           ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[0]    ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[0]    ; regout           ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[1]    ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[1]    ; regout           ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[2]    ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[2]    ; regout           ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[3]    ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[3]    ; regout           ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[0]~8  ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[0]~8  ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[0]~8  ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[0]~9  ; cout             ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[1]~10 ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[1]~10 ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[1]~10 ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[1]~11 ; cout             ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[2]~12 ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[2]~12 ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[2]~12 ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[2]~13 ; cout             ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[3]~14 ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[3]~14 ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[3]~14 ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[3]~15 ; cout             ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[4]~16 ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[4]~16 ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter[3]    ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter[3]    ; regout           ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter[0]    ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter[0]    ; regout           ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter[2]    ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter[2]    ; regout           ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter[1]    ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter[1]    ; regout           ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|Equal0~0            ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|Equal0~0            ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|Equal0~0            ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|Equal0~0            ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|Equal0~1            ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|Equal0~1            ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|Add0~0              ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|Add0~0              ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter~4     ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter~4     ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|Add0~1              ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|Add0~1              ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter~5     ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter~5     ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter~6     ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter~6     ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter~7     ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule10:BoardTimerModule_TopLevel_BoardTimerModule_timerModule10|State_counter~7     ; combout          ;
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[4]~18 ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[4]~18 ; combout          ;
+; |BoardTimerModule_TopLevel|OutActive10                                                                                                                           ; |BoardTimerModule_TopLevel|OutActive10                                                                                                                           ; padio            ;
+; |BoardTimerModule_TopLevel|OutActive20                                                                                                                           ; |BoardTimerModule_TopLevel|OutActive20                                                                                                                           ; padio            ;
+; |BoardTimerModule_TopLevel|Clock                                                                                                                                 ; |BoardTimerModule_TopLevel|Clock~corein                                                                                                                          ; combout          ;
+; |BoardTimerModule_TopLevel|Clock~clkctrl                                                                                                                         ; |BoardTimerModule_TopLevel|Clock~clkctrl                                                                                                                         ; outclk           ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 1 during simulation.
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Missing 1-Value Coverage                                                                                                                                                                                                   ;
-+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+------------------+
-; Node Name                                                                                          ; Output Port Name                                                                                   ; Output Port Type ;
-+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+------------------+
-; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a0 ; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a3 ; portbdataout3    ;
-; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a0 ; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a4 ; portbdataout4    ;
-; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a0 ; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a5 ; portbdataout5    ;
-; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a0 ; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a6 ; portbdataout6    ;
-; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a0 ; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a7 ; portbdataout7    ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[1]                                                 ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[1]                                                 ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[3]                                                 ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[3]                                                 ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[4]                                                 ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[4]                                                 ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[2]                                                 ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[2]                                                 ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff~18                                                           ; |SDP_WF_RAMModule_TopLevel|State_Buff~18                                                           ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[5]                                                 ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[5]                                                 ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[7]                                                 ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[7]                                                 ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[8]                                                 ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[8]                                                 ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[6]                                                 ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[6]                                                 ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff~19                                                           ; |SDP_WF_RAMModule_TopLevel|State_Buff~19                                                           ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[9]                                                 ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[9]                                                 ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[11]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[11]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[12]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[12]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[10]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[10]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff~20                                                           ; |SDP_WF_RAMModule_TopLevel|State_Buff~20                                                           ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[13]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[13]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[15]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[15]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[16]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[16]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[14]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[14]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff~21                                                           ; |SDP_WF_RAMModule_TopLevel|State_Buff~21                                                           ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff~22                                                           ; |SDP_WF_RAMModule_TopLevel|State_Buff~22                                                           ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[20]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[20]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff~26                                                           ; |SDP_WF_RAMModule_TopLevel|State_Buff~26                                                           ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[21]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[21]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff~27                                                           ; |SDP_WF_RAMModule_TopLevel|State_Buff~27                                                           ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[22]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[22]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff~28                                                           ; |SDP_WF_RAMModule_TopLevel|State_Buff~28                                                           ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[23]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[23]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff~29                                                           ; |SDP_WF_RAMModule_TopLevel|State_Buff~29                                                           ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[24]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[24]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff~30                                                           ; |SDP_WF_RAMModule_TopLevel|State_Buff~30                                                           ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|Data[3]                                                                 ; |SDP_WF_RAMModule_TopLevel|Data[3]                                                                 ; padio            ;
-; |SDP_WF_RAMModule_TopLevel|Data[4]                                                                 ; |SDP_WF_RAMModule_TopLevel|Data[4]                                                                 ; padio            ;
-; |SDP_WF_RAMModule_TopLevel|Data[5]                                                                 ; |SDP_WF_RAMModule_TopLevel|Data[5]                                                                 ; padio            ;
-; |SDP_WF_RAMModule_TopLevel|Data[6]                                                                 ; |SDP_WF_RAMModule_TopLevel|Data[6]                                                                 ; padio            ;
-; |SDP_WF_RAMModule_TopLevel|Data[7]                                                                 ; |SDP_WF_RAMModule_TopLevel|Data[7]                                                                 ; padio            ;
-; |SDP_WF_RAMModule_TopLevel|WriteAddress[0]                                                         ; |SDP_WF_RAMModule_TopLevel|WriteAddress[0]~corein                                                  ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteAddress[1]                                                         ; |SDP_WF_RAMModule_TopLevel|WriteAddress[1]~corein                                                  ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteAddress[2]                                                         ; |SDP_WF_RAMModule_TopLevel|WriteAddress[2]~corein                                                  ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteAddress[3]                                                         ; |SDP_WF_RAMModule_TopLevel|WriteAddress[3]~corein                                                  ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteAddress[4]                                                         ; |SDP_WF_RAMModule_TopLevel|WriteAddress[4]~corein                                                  ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteAddress[5]                                                         ; |SDP_WF_RAMModule_TopLevel|WriteAddress[5]~corein                                                  ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteAddress[6]                                                         ; |SDP_WF_RAMModule_TopLevel|WriteAddress[6]~corein                                                  ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteAddress[7]                                                         ; |SDP_WF_RAMModule_TopLevel|WriteAddress[7]~corein                                                  ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|ReadAddress[0]                                                          ; |SDP_WF_RAMModule_TopLevel|ReadAddress[0]~corein                                                   ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|ReadAddress[1]                                                          ; |SDP_WF_RAMModule_TopLevel|ReadAddress[1]~corein                                                   ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|ReadAddress[2]                                                          ; |SDP_WF_RAMModule_TopLevel|ReadAddress[2]~corein                                                   ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|ReadAddress[3]                                                          ; |SDP_WF_RAMModule_TopLevel|ReadAddress[3]~corein                                                   ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|ReadAddress[4]                                                          ; |SDP_WF_RAMModule_TopLevel|ReadAddress[4]~corein                                                   ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|ReadAddress[5]                                                          ; |SDP_WF_RAMModule_TopLevel|ReadAddress[5]~corein                                                   ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|ReadAddress[6]                                                          ; |SDP_WF_RAMModule_TopLevel|ReadAddress[6]~corein                                                   ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|ReadAddress[7]                                                          ; |SDP_WF_RAMModule_TopLevel|ReadAddress[7]~corein                                                   ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteData[3]                                                            ; |SDP_WF_RAMModule_TopLevel|WriteData[3]~corein                                                     ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteData[4]                                                            ; |SDP_WF_RAMModule_TopLevel|WriteData[4]~corein                                                     ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteData[5]                                                            ; |SDP_WF_RAMModule_TopLevel|WriteData[5]~corein                                                     ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteData[6]                                                            ; |SDP_WF_RAMModule_TopLevel|WriteData[6]~corein                                                     ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteData[7]                                                            ; |SDP_WF_RAMModule_TopLevel|WriteData[7]~corein                                                     ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[3]~feeder                                          ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[3]~feeder                                          ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[11]~feeder                                         ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[11]~feeder                                         ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[15]~feeder                                         ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[15]~feeder                                         ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[2]~feeder                                          ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[2]~feeder                                          ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[4]~feeder                                          ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[4]~feeder                                          ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[8]~feeder                                          ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[8]~feeder                                          ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[12]~feeder                                         ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[12]~feeder                                         ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[16]~feeder                                         ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[16]~feeder                                         ; combout          ;
-+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+------------------+
++---------------------------------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                                          ;
++------------------------------------+-------------------------------------------+------------------+
+; Node Name                          ; Output Port Name                          ; Output Port Type ;
++------------------------------------+-------------------------------------------+------------------+
+; |BoardTimerModule_TopLevel|Reset   ; |BoardTimerModule_TopLevel|Reset~corein   ; combout          ;
+; |BoardTimerModule_TopLevel|Restart ; |BoardTimerModule_TopLevel|Restart~corein ; combout          ;
++------------------------------------+-------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 0 during simulation.
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Missing 0-Value Coverage                                                                                                                                                                                                   ;
-+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+------------------+
-; Node Name                                                                                          ; Output Port Name                                                                                   ; Output Port Type ;
-+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+------------------+
-; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a0 ; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a3 ; portbdataout3    ;
-; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a0 ; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a4 ; portbdataout4    ;
-; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a0 ; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a5 ; portbdataout5    ;
-; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a0 ; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a6 ; portbdataout6    ;
-; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a0 ; |SDP_WF_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_edi1:auto_generated|ram_block1a7 ; portbdataout7    ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[1]                                                 ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[1]                                                 ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[3]                                                 ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[3]                                                 ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[4]                                                 ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[4]                                                 ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[2]                                                 ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[2]                                                 ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff~18                                                           ; |SDP_WF_RAMModule_TopLevel|State_Buff~18                                                           ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[5]                                                 ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[5]                                                 ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[7]                                                 ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[7]                                                 ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[8]                                                 ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[8]                                                 ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[6]                                                 ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[6]                                                 ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff~19                                                           ; |SDP_WF_RAMModule_TopLevel|State_Buff~19                                                           ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[9]                                                 ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[9]                                                 ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[11]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[11]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[12]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[12]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[10]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[10]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff~20                                                           ; |SDP_WF_RAMModule_TopLevel|State_Buff~20                                                           ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[13]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[13]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[15]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[15]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[16]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[16]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[14]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[14]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff~21                                                           ; |SDP_WF_RAMModule_TopLevel|State_Buff~21                                                           ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff~22                                                           ; |SDP_WF_RAMModule_TopLevel|State_Buff~22                                                           ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[20]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[20]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff~26                                                           ; |SDP_WF_RAMModule_TopLevel|State_Buff~26                                                           ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[21]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[21]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff~27                                                           ; |SDP_WF_RAMModule_TopLevel|State_Buff~27                                                           ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[22]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[22]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff~28                                                           ; |SDP_WF_RAMModule_TopLevel|State_Buff~28                                                           ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[23]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[23]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff~29                                                           ; |SDP_WF_RAMModule_TopLevel|State_Buff~29                                                           ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[24]                                                ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[24]                                                ; regout           ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff~30                                                           ; |SDP_WF_RAMModule_TopLevel|State_Buff~30                                                           ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|Data[3]                                                                 ; |SDP_WF_RAMModule_TopLevel|Data[3]                                                                 ; padio            ;
-; |SDP_WF_RAMModule_TopLevel|Data[4]                                                                 ; |SDP_WF_RAMModule_TopLevel|Data[4]                                                                 ; padio            ;
-; |SDP_WF_RAMModule_TopLevel|Data[5]                                                                 ; |SDP_WF_RAMModule_TopLevel|Data[5]                                                                 ; padio            ;
-; |SDP_WF_RAMModule_TopLevel|Data[6]                                                                 ; |SDP_WF_RAMModule_TopLevel|Data[6]                                                                 ; padio            ;
-; |SDP_WF_RAMModule_TopLevel|Data[7]                                                                 ; |SDP_WF_RAMModule_TopLevel|Data[7]                                                                 ; padio            ;
-; |SDP_WF_RAMModule_TopLevel|WriteAddress[0]                                                         ; |SDP_WF_RAMModule_TopLevel|WriteAddress[0]~corein                                                  ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteAddress[1]                                                         ; |SDP_WF_RAMModule_TopLevel|WriteAddress[1]~corein                                                  ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteAddress[2]                                                         ; |SDP_WF_RAMModule_TopLevel|WriteAddress[2]~corein                                                  ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteAddress[3]                                                         ; |SDP_WF_RAMModule_TopLevel|WriteAddress[3]~corein                                                  ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteAddress[4]                                                         ; |SDP_WF_RAMModule_TopLevel|WriteAddress[4]~corein                                                  ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteAddress[5]                                                         ; |SDP_WF_RAMModule_TopLevel|WriteAddress[5]~corein                                                  ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteAddress[6]                                                         ; |SDP_WF_RAMModule_TopLevel|WriteAddress[6]~corein                                                  ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteAddress[7]                                                         ; |SDP_WF_RAMModule_TopLevel|WriteAddress[7]~corein                                                  ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|ReadAddress[0]                                                          ; |SDP_WF_RAMModule_TopLevel|ReadAddress[0]~corein                                                   ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|ReadAddress[1]                                                          ; |SDP_WF_RAMModule_TopLevel|ReadAddress[1]~corein                                                   ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|ReadAddress[2]                                                          ; |SDP_WF_RAMModule_TopLevel|ReadAddress[2]~corein                                                   ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|ReadAddress[3]                                                          ; |SDP_WF_RAMModule_TopLevel|ReadAddress[3]~corein                                                   ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|ReadAddress[4]                                                          ; |SDP_WF_RAMModule_TopLevel|ReadAddress[4]~corein                                                   ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|ReadAddress[5]                                                          ; |SDP_WF_RAMModule_TopLevel|ReadAddress[5]~corein                                                   ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|ReadAddress[6]                                                          ; |SDP_WF_RAMModule_TopLevel|ReadAddress[6]~corein                                                   ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|ReadAddress[7]                                                          ; |SDP_WF_RAMModule_TopLevel|ReadAddress[7]~corein                                                   ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteData[3]                                                            ; |SDP_WF_RAMModule_TopLevel|WriteData[3]~corein                                                     ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteData[4]                                                            ; |SDP_WF_RAMModule_TopLevel|WriteData[4]~corein                                                     ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteData[5]                                                            ; |SDP_WF_RAMModule_TopLevel|WriteData[5]~corein                                                     ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteData[6]                                                            ; |SDP_WF_RAMModule_TopLevel|WriteData[6]~corein                                                     ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|WriteData[7]                                                            ; |SDP_WF_RAMModule_TopLevel|WriteData[7]~corein                                                     ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[3]~feeder                                          ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[3]~feeder                                          ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[11]~feeder                                         ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[11]~feeder                                         ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[15]~feeder                                         ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[15]~feeder                                         ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[2]~feeder                                          ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[2]~feeder                                          ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[4]~feeder                                          ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[4]~feeder                                          ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[8]~feeder                                          ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[8]~feeder                                          ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[12]~feeder                                         ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[12]~feeder                                         ; combout          ;
-; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[16]~feeder                                         ; |SDP_WF_RAMModule_TopLevel|State_Buff_17_bypass[16]~feeder                                         ; combout          ;
-+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                                                                                                                                                                                                                                                                                             ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
+; Node Name                                                                                                                                                       ; Output Port Name                                                                                                                                                ; Output Port Type ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
+; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[4]~7 ; |BoardTimerModule_TopLevel|BoardTimerModule_TopLevel_BoardTimerModule_timerModule20:BoardTimerModule_TopLevel_BoardTimerModule_timerModule20|State_counter[4]~7 ; combout          ;
+; |BoardTimerModule_TopLevel|Restart                                                                                                                              ; |BoardTimerModule_TopLevel|Restart~corein                                                                                                                       ; combout          ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
 
 
 +---------------------+
@@ -324,21 +194,37 @@ Info: Running Quartus II Simulator
     Info: programming logic devices manufactured by Altera and sold by 
     Info: Altera or its authorized distributors.  Please refer to the 
     Info: applicable agreement for further details.
-    Info: Processing started: Mon Apr 12 21:39:05 2021
+    Info: Processing started: Mon Apr 26 17:20:30 2021
 Info: Command: quartus_sim C:\code\qusoc\rtl\rtl.hdl\VHDL.qpf --read_settings_files=on --write_settings_files=off -c VHDL
-Info: Using vector source file "Waveforms/SDP_WF_RAMModule.vwf"
+Info: Using vector source file "Waveforms/BoardTimerModule.vwf"
 Info: Overwriting simulation input file with simulation results
-    Info: A backup of SDP_WF_RAMModule.vwf called VHDL.sim_ori.vwf has been created in the db folder
+    Info: A backup of BoardTimerModule.vwf called VHDL.sim_ori.vwf has been created in the db folder
+Warning: Ignored node in vector source file. Can't find corresponding node name "OutT1[7]" in design.
+Warning: Ignored node in vector source file. Can't find corresponding node name "OutT1[6]" in design.
+Warning: Ignored node in vector source file. Can't find corresponding node name "OutT1[5]" in design.
+Warning: Ignored node in vector source file. Can't find corresponding node name "OutT1[4]" in design.
+Warning: Ignored node in vector source file. Can't find corresponding node name "OutT1[3]" in design.
+Warning: Ignored node in vector source file. Can't find corresponding node name "OutT1[2]" in design.
+Warning: Ignored node in vector source file. Can't find corresponding node name "OutT1[1]" in design.
+Warning: Ignored node in vector source file. Can't find corresponding node name "OutT1[0]" in design.
+Warning: Ignored node in vector source file. Can't find corresponding node name "OutT2[7]" in design.
+Warning: Ignored node in vector source file. Can't find corresponding node name "OutT2[6]" in design.
+Warning: Ignored node in vector source file. Can't find corresponding node name "OutT2[5]" in design.
+Warning: Ignored node in vector source file. Can't find corresponding node name "OutT2[4]" in design.
+Warning: Ignored node in vector source file. Can't find corresponding node name "OutT2[3]" in design.
+Warning: Ignored node in vector source file. Can't find corresponding node name "OutT2[2]" in design.
+Warning: Ignored node in vector source file. Can't find corresponding node name "OutT2[1]" in design.
+Warning: Ignored node in vector source file. Can't find corresponding node name "OutT2[0]" in design.
 Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
     Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
 Info: Simulation partitioned into 1 sub-simulations
-Info: Simulation coverage is      21.35 %
-Info: Number of transitions in simulation is 271
-Info: Vector file SDP_WF_RAMModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
-Info: Quartus II Simulator was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 157 megabytes
-    Info: Processing ended: Mon Apr 12 21:39:06 2021
-    Info: Elapsed time: 00:00:01
+Info: Simulation coverage is      91.43 %
+Info: Number of transitions in simulation is 1024
+Info: Vector file BoardTimerModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
+Info: Quartus II Simulator was successful. 0 errors, 16 warnings
+    Info: Peak virtual memory: 156 megabytes
+    Info: Processing ended: Mon Apr 26 17:20:30 2021
+    Info: Elapsed time: 00:00:00
     Info: Total CPU time (on all processors): 00:00:03
 
 

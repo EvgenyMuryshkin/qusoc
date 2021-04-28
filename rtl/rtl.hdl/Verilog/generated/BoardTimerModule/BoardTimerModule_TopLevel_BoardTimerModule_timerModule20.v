@@ -49,6 +49,7 @@ reg  [4:0] NextState_counter;
 wire  active;
 wire  TimerModule_L51F9L53T10_TimerModule_L52F63T81_Source;
 wire  [4:0] TimerModule_L51F9L53T10_TimerModule_L52F33T124_Resize;
+wire  [4:0] TimerModule_L51F9L53T10_TimerModule_L52F33T135_SignChange;
 reg  [4:0] State_counter = 5'b00000;
 wire  [4:0] State_counterDefault = 5'b00000;
 wire  TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr;
@@ -91,7 +92,7 @@ end
 always @*
 begin
 NextState_counter = State_counter;
-NextState_counter = TimerModule_L51F9L53T10_TimerModule_L52F33T124_Resize;
+NextState_counter = TimerModule_L51F9L53T10_TimerModule_L52F33T135_SignChange;
 
 end
 assign TimerModule_L47F24T48_ExprLhs = { {4{1'b0}}, State_counter }/*expand*/;
@@ -104,6 +105,7 @@ assign Inputs_Restart = Restart;
 assign active = TimerModule_L47F24T48_Expr;
 assign TimerModule_L51F9L53T10_TimerModule_L52F63T81_Source = TimerModule_L51F9L53T10_TimerModule_L52F79T80_Expr;
 assign TimerModule_L51F9L53T10_TimerModule_L52F33T124_Resize = TimerModule_L51F9L53T10_TimerModule_L52F34T101_Lookup;
+assign TimerModule_L51F9L53T10_TimerModule_L52F33T135_SignChange = TimerModule_L51F9L53T10_TimerModule_L52F33T124_Resize;
 assign OutActive = active;
 assign TimerModule_L51F9L53T10_TimerModule_L52F34T101_Lookup1 = TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr[4:0]/*truncate*/;
 assign TimerModule_L51F9L53T10_TimerModule_L52F34T101_Lookup2 = { {4{1'b0}}, TimerModule_L51F9L53T10_TimerModule_L52F63T81_Source }/*expand*/;
