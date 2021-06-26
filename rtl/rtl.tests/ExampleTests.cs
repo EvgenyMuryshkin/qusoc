@@ -203,67 +203,51 @@ namespace RTL.Modules
         }
 
         [TestMethod]
-        public void LogicRAMIndexingModuleTest()
+        public void VGASyncModule_HSyncTest()
         {
-            var sim = new RTLSimulator<LogicRAMIndexingModule, LogicRAMIndexingModuleInputs>(true);
+            var sim = new RTLInstanceSimulator<VGASyncModule, VGASyncModuleInputs>(new VGASyncModule(640, 16, 96, 48));
             sim.TraceToVCD(VCDOutputPath());
+
             var tl = sim.TopLevel;
-            sim.ClockCycle(new LogicRAMIndexingModuleInputs() { WE = true, WriteAddr = 0, WriteData = 0x66 });
-            sim.ClockCycle(new LogicRAMIndexingModuleInputs() { WE = true, WriteAddr = 1, WriteData = 0xAA });
-            sim.ClockCycle(new LogicRAMIndexingModuleInputs() { WE = true, WriteAddr = 2, WriteData = 0x55 });
-            sim.ClockCycle(new LogicRAMIndexingModuleInputs() { WE = true, WriteAddr = 3, WriteData = 0xFF });
 
-            sim.ClockCycle(new LogicRAMIndexingModuleInputs() { ReadAddr = 2, OpData = 0xF0 });
-            Assert.AreEqual(false, tl.CmpMemLhs);
-            Assert.AreEqual(true, tl.CmpMemRhs);
-            Assert.AreEqual(0xF5, tl.LogicMemLhs);
-            Assert.AreEqual(0x50, tl.LogicMemRhs);
-            Assert.AreEqual(0x65, tl.MathMemLhs);
-            Assert.AreEqual(0x45, tl.MathMemRhs);
-            Assert.AreEqual(0xFF, tl.MemLhsRhs);
+            Action assertSingleFlag = () =>
+            {
+                var flags = new[] { tl.OutVisible, tl.OutFP, tl.OutSP, tl.OutBP };
+                var set = flags.Where(f => f);
+                Assert.IsTrue(set.Count() == 1, "Multiple flags are set");
+            };
 
-            sim.ClockCycle(new LogicRAMIndexingModuleInputs() { ReadAddr = 0, OpData = 0x50 });
-            Assert.AreEqual(true, tl.CmpMemLhs);
-            Assert.AreEqual(false, tl.CmpMemRhs);
-            Assert.AreEqual(0x76, tl.LogicMemLhs);
-            Assert.AreEqual(0x40, tl.LogicMemRhs);
-            Assert.AreEqual(0x16, tl.MathMemLhs);
-            Assert.AreEqual(0xB6, tl.MathMemRhs);
-            Assert.AreEqual(0x10, tl.MemLhsRhs);
+            for (var i = 0; i <= 800; i++)
+            {
+                assertSingleFlag();
+                sim.ClockCycle(new VGASyncModuleInputs() { Enabled = true });
+            }
 
-            var tb = sim.TBAdapter(@"C:\code\qusoc\RTL\RTL.Modules\rtl.verilog.json");
-            tb.PostSynthTimingSimulation();
+            assertSingleFlag();
         }
 
         [TestMethod]
-        public void BoardTimerModuleTest()
+        public void VGASyncModule_VSyncTest()
         {
-            var container = new QuokkaContainer();
-            var runtimeConfig = container.Resolve<RuntimeConfiguration>();
-            uint testClock = 10;
-
-            runtimeConfig.Initialize(new QuokkaConfig()
-            {
-                Configurations = new List<BoardConfigAttribute>() {
-                new BoardConfigAttribute() { Name = "Test", ClockFrequency = testClock }}
-            });
-
-            var moduleInstance = container.Resolve<BoardTimerModule>();
-            var sim = new RTLInstanceSimulator<BoardTimerModule, BoardTimerModuleInputs>(moduleInstance, true);
+            var sim = new RTLInstanceSimulator<VGASyncModule, VGASyncModuleInputs>(new VGASyncModule(480, 10, 2, 33));
             sim.TraceToVCD(VCDOutputPath());
 
-            var topLevel = sim.TopLevel;
+            var tl = sim.TopLevel;
 
-            for (var i = 1; i <= testClock * 10; i++)
+            Action assertSingleFlag = () =>
             {
-                Assert.AreEqual(i % testClock == 0, topLevel.OutActive10);
-                Assert.AreEqual(i % (testClock * 2) == 0, topLevel.OutActive20);
+                var flags = new[] { tl.OutVisible, tl.OutFP, tl.OutSP, tl.OutBP };
+                var set = flags.Where(f => f);
+                Assert.IsTrue(set.Count() == 1, "Multiple flags are set");
+            };
 
-                sim.ClockCycle(new BoardTimerModuleInputs());
+            for (var i = 0; i <= 525; i++)
+            {
+                assertSingleFlag();
+                sim.ClockCycle(new VGASyncModuleInputs() { Enabled = true });
             }
 
-            var tb = sim.TBAdapter(@"C:\code\qusoc\RTL\RTL.Modules\rtl.verilog.json");
-            tb.PostSynthTimingSimulation();
+            assertSingleFlag();
         }
 
         [TestMethod]

@@ -9,6 +9,7 @@ namespace Quokka.RTL.Simulator
     {
         protected TModule _topLevel;
 
+        RTLModuleSnapshotConfig _snapshotConfig;
         VCDBuilder _vcdBuilder;
         VCDSignalsSnapshot _topLevelSnapshot;
         protected RTLSimulatorContext _simulatorContext;
@@ -55,17 +56,18 @@ namespace Quokka.RTL.Simulator
             Directory.CreateDirectory(directory);
         }
 
-        public void TraceToVCD(string outputFileName)
+        public void TraceToVCD(string outputFileName, RTLModuleSnapshotConfig config = null)
         {
             Console.WriteLine($"Tracing to: {outputFileName}");
             RecursiveCreateTargetDirectory(Path.GetDirectoryName(outputFileName));
 
+            _snapshotConfig = config;
             _vcdBuilder = new VCDBuilder(outputFileName);
             _topLevelSnapshot = new VCDSignalsSnapshot("TOP");
             _simulatorContext.ControlScope = _topLevelSnapshot.Scope("Control");
             _simulatorContext.ClockSignal = _simulatorContext.ControlScope.Add(new VCDVariable("Clock", true, 1));
 
-            _topLevel.PopulateSnapshot(_topLevelSnapshot);
+            _topLevel.PopulateSnapshot(_topLevelSnapshot, _snapshotConfig);
             _vcdBuilder.Init(_topLevelSnapshot);
         }
 
@@ -74,11 +76,11 @@ namespace Quokka.RTL.Simulator
             if (_vcdBuilder == null)
                 return;
 
-            _topLevel.PopulateSnapshot(_topLevelSnapshot);
+            _topLevel.PopulateSnapshot(_topLevelSnapshot, _snapshotConfig);
             _vcdBuilder.Snapshot(_simulatorContext.CurrentTime, _topLevelSnapshot);
         }
 
-        public void ClockCycle()
+        public virtual void ClockCycle()
         {
             _simulatorContext.DeltaCycle = 0;
             do
@@ -146,6 +148,7 @@ namespace Quokka.RTL.Simulator
 
         public virtual void ClockCycle(TInputs inputs)
         {
+            // TODO: override parameterless ClockCycle and write tb signals
             _topLevel.Schedule(() => inputs);
             _tbGen?.SetTestbenchInputs(inputs);
             ClockCycle();

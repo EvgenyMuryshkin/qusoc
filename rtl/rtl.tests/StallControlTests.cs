@@ -162,7 +162,7 @@ namespace RTL.Modules
 
             Action<StallControlTestOutput> assert = (expected) =>
             {
-                var compare = RTLModuleHelper.DeepCompare(expected, sim.TopLevel.outResult);
+                var compare = DeepDiff.DeepCompare(expected, sim.TopLevel.outResult);
                 if (compare != null)
                 {
                     Assert.Fail($"{string.Join(".", compare.Path.Select(p => p.Name))}: Expecting {compare.lhs}, Actual {compare.rhs}. {compare.Messages.ToCSV()}");

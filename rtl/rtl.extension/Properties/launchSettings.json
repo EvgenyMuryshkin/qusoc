@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "rtl.extension": {
+      "commandName": "Project",
+      "commandLineArgs": "VGAModuleExtension.ProgramDevice"
+    }
+  }
+}

@@ -12,6 +12,11 @@ namespace RTL.Modules
             return Path.Combine(PathTools.ProjectPath, "SimResults", $"{testName}.vcd");
         }
 
+        protected static string PNGOutputPath([CallerMemberName] string testName = "")
+        {
+            return Path.Combine(PathTools.ProjectPath, "SimResults", $"{testName}.png");
+        }
+
         protected T Module<T>()
             where T : IRTLCombinationalModule, new()
         {

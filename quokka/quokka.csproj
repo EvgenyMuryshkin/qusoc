@@ -5,9 +5,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Quokka.FPGA" Version="0.1.2.113" />
+    <PackageReference Include="Quokka.FPGA" Version="0.1.2.139" />
     <PackageReference Include="Quokka.RISCV.CS2CPP" Version="1.0.0.9" />
-    <PackageReference Include="Quokka.RTL" Version="0.1.2.167" />
+    <PackageReference Include="Quokka.RTL" Version="0.1.2.180" />
     <PackageReference Include="Quokka.RISCV.Integration" Version="1.0.0.15" />
   </ItemGroup>
 </Project>

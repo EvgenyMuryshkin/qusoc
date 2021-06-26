@@ -83,7 +83,7 @@ namespace Quokka.RTL.Local
         }
         protected TOutput CopyState()
         {
-            return RTLModuleHelper.DeepCopy(State);
+            return DeepReflectionCopy.DeepCopy(State);
         }
 
         public void StageCommit()

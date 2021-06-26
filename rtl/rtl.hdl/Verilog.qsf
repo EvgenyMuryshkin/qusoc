@@ -36,8 +36,8 @@
 # -------------------------------------------------------------------------- #
 
 set_global_assignment -name FAMILY "Cyclone II"
-set_global_assignment -name DEVICE EP2C8F256C6
-set_global_assignment -name TOP_LEVEL_ENTITY BoardTimerModule_TopLevel
+set_global_assignment -name DEVICE EP2C70F672C6
+set_global_assignment -name TOP_LEVEL_ENTITY IntDividerPipelineModule_TopLevel
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "20:45:17  JUNE 07, 2019"
 set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
@@ -58,13 +58,8 @@ set_global_assignment -name SIMULATION_WITH_AUTO_GLITCH_FILTERING AUTO
 
 set_global_assignment -name VECTOR_COMPARE_TRIGGER_MODE INPUT_EDGE
 
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
-set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
-set_instance_assignment -name CLOCK_SETTINGS Clock -to Clock
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/BoardTimerModule.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/BitsMuxModule.vwf
+
 
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AndGateModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/AndGateModule/AndGateModule_TopLevel.v
@@ -76,6 +71,8 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/BitArrayGetterModule.
 set_global_assignment -name VERILOG_FILE Verilog/generated/BitArrayGetterModule/BitArrayGetterModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/BitArrayModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/BitArrayModule/BitArrayModule_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/BitsMuxModule.vwf
+set_global_assignment -name VERILOG_FILE Verilog/generated/BitsMuxModule/BitsMuxModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/BoardTimerModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/BoardTimerModule/BoardTimerModule_TopLevel.v
 set_global_assignment -name VERILOG_FILE Verilog/generated/BoardTimerModule/BoardTimerModule_TopLevel_BoardTimerModule_timerModule10.v
@@ -104,6 +101,7 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/FromConfigurationPipe
 set_global_assignment -name VERILOG_FILE Verilog/generated/FromConfigurationPipelineModule/FromConfigurationPipelineModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/FullAdderModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/FullAdderModule/FullAdderModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/IntDividerPipelineModule/IntDividerPipelineModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicRAMIndexingModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/LogicRAMIndexingModule/LogicRAMIndexingModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicRAMModule.vwf
@@ -186,7 +184,24 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/TypedPipelineModule.v
 set_global_assignment -name VERILOG_FILE Verilog/generated/TypedPipelineModule/TypedPipelineModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/UnsignedCastModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/UnsignedCastModule/UnsignedCastModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/VGAController/VGAController_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/VGAController/VGAController_TopLevel_VGAController_hSync.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/VGAController/VGAController_TopLevel_VGAController_vSync.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/VGAModule/VGAModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/VGAModule/VGAModule_TopLevel_VGAModule_hSync.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/VGAModule/VGAModule_TopLevel_VGAModule_vSync.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/VGAStaticQRModule/VGAStaticQRModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/VGAStaticQRModule/VGAStaticQRModule_TopLevel_VGAStaticQRModule_vgaController.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/VGAStaticQRModule/VGAStaticQRModule_TopLevel_VGAStaticQRModule_vgaController_VGAController_hSync.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/VGAStaticQRModule/VGAStaticQRModule_TopLevel_VGAStaticQRModule_vgaController_VGAController_vSync.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/XorGateModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/XorGateModule/XorGateModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/YandexTestModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/YandexTestModule/YandexTestModule_TopLevel.v
+
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
+set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
+set_instance_assignment -name CLOCK_SETTINGS Clock -to Clock
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -40,6 +40,22 @@ namespace Quokka.RTL.Local
             return result;
         }
 
+        public IRTLPipelineStage<TSource, TSource> Generate(int range, Func<int, TSource, TSource> map)
+        {
+            if (range <= 0) throw new ArgumentOutOfRangeException(nameof(range), "should be positive");
+            var firstStage = new RTLPipelineStage<TSource, TSource, TSource>(this, (source) => map(0, source));
+
+            FirstStage = firstStage;
+            IRTLPipelineStage<TSource, TSource> lastStage = firstStage;
+
+            foreach (var idx in Enumerable.Range(1, range - 1))
+            {
+                lastStage = lastStage.Stage((source) => map(idx, source));
+            }
+
+            return lastStage;
+        }
+
         public void Setup(IRTLCombinationalModule module) => FirstStage.StageSetup(module);
 
         #region IRTLPipelineDiagnostics

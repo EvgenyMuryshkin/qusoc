@@ -130,6 +130,9 @@ namespace Quokka.RTL.Simulator
                     case bool v:
                         AppendTestbenchLines($"{i.Name} = {(v ? "1'b1" : "1'b0")};");
                         break;
+                    case RTLBitArray b:
+                        AppendTestbenchLines($"{i.Name} = {b.Size}'b{b.AsBinaryString()};");
+                        break;
                     default:
                         AppendTestbenchLines($"{i.Name} = {value};");
                         break;
@@ -148,6 +151,9 @@ namespace Quokka.RTL.Simulator
                 {
                     case bool v:
                         AppendTestbenchLines($"`Assert({(v ? "1'b1" : "1'b0")}, {o.Name}, \"{message}\");");
+                        break;
+                    case RTLBitArray b:
+                        AppendTestbenchLines($"`Assert({b.Size}'b{b.AsBinaryString()}, {o.Name}, \"{message}\");");
                         break;
                     default:
                         AppendTestbenchLines($"`Assert({value}, {o.Name}, \"{message}\");");

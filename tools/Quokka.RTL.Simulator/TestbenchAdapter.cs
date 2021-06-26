@@ -1,11 +1,8 @@
 ﻿using Quokka.Core.Bootstrap;
 using Quokka.Public.Tools;
-using Quokka.TCL.Tools;
 using Quokka.TCL.Vivado;
 using System;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 
 namespace Quokka.RTL.Simulator
 {
@@ -39,12 +36,26 @@ namespace Quokka.RTL.Simulator
                 throw new NotImplementedException($"Project creation for VHDL is not there yet");
         }
 
-        protected void TranslateModule()
+        public void TranslateInstance()
+        {
+            QuokkaRunner.FromInstances(
+                _configPath, 
+                new[] 
+                { 
+                    new RTLModuleConfig() 
+                    { 
+                        Instance = _simulator.TopLevel, 
+                        Name = moduleType 
+                    } 
+                });
+        }
+
+        public void TranslateModule()
         {
             QuokkaRunner.FromConfig(_configPath, new[] { moduleType });
         }
 
-        protected void SaveTestbench()
+        public void SaveTestbench()
         {
             var tb = _simulator.CompleteTestbench();
             File.WriteAllText(testbenchPath, tb);
@@ -82,76 +93,10 @@ namespace Quokka.RTL.Simulator
                 .close_sim()
                 ;
 
-            RunTCL(tcl);
-        }
-        protected void SaveTCL(TCLFile tcl)
-        {
-            if (tcl == null)
-                throw new NullReferenceException(nameof(tcl));
-
-            File.WriteAllText(Path.Combine(VivadoProjectLocation, $"script.tcl"), tcl.ToString());
-        }
-
-        protected void RunTCL(TCLFile tcl = null)
-        {
-            if (tcl != null)
-                SaveTCL(tcl);
-
-            var path = Environment.GetEnvironmentVariable("PATH");
-            var locations = path.Split(new[] { ';' });
-            var vivadoLocation = locations
-                .Where(l => File.Exists(Path.Combine(l, "vivado.bat")))
-                .FirstOrDefault();
-
-            if (!vivadoLocation.HasValue())
-            {
-                throw new Exception($"vivado.bat was not found. Please add Vivado bin folder to path.");
-            }
-
-            var process = Process.Start(new ProcessStartInfo()
-            {
-                FileName = "cmd.exe",
-                WorkingDirectory = VivadoProjectLocation,
-                Arguments = $"/c vivado.bat -mode batch -source script.tcl"
-            });
-
-            File.WriteAllText(pidFile, $"{process.Id}");
-
-            process.WaitForExit();
-
-            // fix line endings in log file
-            if (File.Exists(LogFile))
-            {
-                var lines = File.ReadAllLines(LogFile);
-                File.WriteAllLines(LogFile, lines);
-            }
-
-            if (process.ExitCode != 0)
-            {
-                var log = File.ReadAllLines(LogFile);
-                throw new Exception($"Vivado exit code: {process.ExitCode}");
-            }
-        }
-
-
-        void CleanupVivado()
-        {
-            if (File.Exists(pidFile))
-            {
-                var pid = int.Parse(File.ReadAllText(pidFile));
-                // previous run was not completed, vivado may hang in there and lock files. Kill it
-                var running = Process.GetProcesses().FirstOrDefault(p => p.Id == pid);
-                if (running != null)
-                {
-                    // override for process kill for the whole process tree
-                    running.Kill();
-                }
-            }
-
-            if (Directory.Exists(VivadoProjectLocation))
-                Directory.Delete(VivadoProjectLocation, true);
-
-            Directory.CreateDirectory(VivadoProjectLocation);
+            var va = new VivadoAdapter(VivadoProjectLocation);
+            va.CleanupVivado();
+            va.SaveTCL(tcl);
+            va.RunScript();
         }
 
         public void PostSynthTimingSimulation()
@@ -159,10 +104,10 @@ namespace Quokka.RTL.Simulator
             if (!_simulator.HasTestbench)
                 throw new Exception($"Testbench was not generated during test run");
 
-            TranslateModule();
-            SaveTestbench();
+            TranslateInstance();
+            //TranslateModule();
 
-            CleanupVivado();
+            SaveTestbench();
             RunVivadoSimulator();
         }
     }

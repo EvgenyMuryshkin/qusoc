@@ -84,86 +84,96 @@ namespace Quokka.RTL
 
         protected bool InReset { get; private set; }
 
-        public override void PopulateSnapshot(VCDSignalsSnapshot snapshot)
+        public override void PopulateSnapshot(VCDSignalsSnapshot snapshot, RTLModuleSnapshotConfig config = null)
         {
+            config = config ?? RTLModuleSnapshotConfig.Default;
             try
             {
-                base.PopulateSnapshot(snapshot);
+                base.PopulateSnapshot(snapshot, config);
 
-                currentSnapshot = snapshot.Scope("State");
-                if (State == null)
-                    throw new NullReferenceException("State is not initialized");
-
-                foreach (var prop in StateProps)
+                if (config.IsIncluded(RTLModuleSnapshotConfigInclude.State))
                 {
-                    // TODO: support arrays in VCD
-                    if (prop.GetMemberType().IsArray)
-                        continue;
+                    currentSnapshot = snapshot.Scope("State");
+                    if (State == null)
+                        throw new NullReferenceException("State is not initialized");
 
-                    currentMember = prop;
-                    var value = currentMember.GetValue(State);
-                    currentSnapshot.SetVariables(ToVCDVariables(currentMember, value));
-                }
-
-                currentSnapshot = snapshot.Scope("NextState");
-                if (NextState == null)
-                    throw new NullReferenceException("NextState is not initialized");
-
-                foreach (var prop in StateProps)
-                {
-                    // TODO: support arrays in VCD
-                    if (prop.GetMemberType().IsArray)
-                        continue;
-
-                    currentMember = prop;
-                    var value = currentMember.GetValue(NextState);
-                    currentSnapshot.SetVariables(ToVCDVariables(currentMember, value));
-                }
-
-                var pipelinesScope = snapshot.Scope("Pipelines");
-                currentSnapshot = pipelinesScope;
-                foreach (var pipelineProp in PipelineProps)
-                {
-                    var pipeline = pipelineProp.GetValue(this) as IRTLPipeline;
-                    var head = pipeline.Diag.Head;
-
-                    var pipelineScope = pipelinesScope.Scope(pipelineProp.Name);
-                    currentSnapshot = pipelineScope.Scope("Control");
-                    currentSnapshot.SetVariables(ToVCDVariables("", head.PipelineControl, true));
-
-                    currentSnapshot = pipelineScope.Scope("Preview");
-                    currentSnapshot.SetVariables(ToVCDVariables("", head.PipelinePreview, true));
-
-                    var stagesScope = pipelineScope.Scope("Stages");
-
-                    foreach (var stage in pipeline.Diag.Stages)
+                    foreach (var prop in StateProps)
                     {
-                        var index = pipeline.Diag.Stages.IndexOf(stage);
-                        var stageScope = stagesScope.Scope($"Stage{index}");
+                        // TODO: support arrays in VCD
+                        if (prop.GetMemberType().IsArray)
+                            continue;
 
-                        currentSnapshot = stageScope.Scope("Inputs");
+                        currentMember = prop;
+                        var value = currentMember.GetValue(State);
+                        currentSnapshot.SetVariables(ToVCDVariables(currentMember, value));
+                    }
+                }                    
 
-                        currentSnapshot = stageScope.Scope("State");
-                        var stateMember = stage.GetType().GetMember("State")[0];
-                        currentSnapshot.SetVariables(ToVCDVariables("", stage.StateValue));
+                if (config.IsIncluded(RTLModuleSnapshotConfigInclude.NextState))
+                {
+                    currentSnapshot = snapshot.Scope("NextState");
+                    if (NextState == null)
+                        throw new NullReferenceException("NextState is not initialized");
 
-                        currentSnapshot = stageScope.Scope("NextState");
-                        var nextStateMember = stage.GetType().GetMember("NextState")[0];
-                        currentSnapshot.SetVariables(ToVCDVariables("", stage.NextStateValue));
+                    foreach (var prop in StateProps)
+                    {
+                        // TODO: support arrays in VCD
+                        if (prop.GetMemberType().IsArray)
+                            continue;
 
-                        var managed = stage.ManagedSignals;
-                        currentSnapshot = stageScope.Scope("Control");
-                        currentSnapshot.SetVariables(ToVCDVariables("", managed.Control, true));
-
-                        currentSnapshot = stageScope.Scope("Request");
-                        currentSnapshot.SetVariables(ToVCDVariables("", managed.Request, true));
-
-                        currentSnapshot = stageScope.Scope("Preview");
-                        currentSnapshot.SetVariables(ToVCDVariables("", managed.Preview, true));
+                        currentMember = prop;
+                        var value = currentMember.GetValue(NextState);
+                        currentSnapshot.SetVariables(ToVCDVariables(currentMember, value));
                     }
                 }
 
-                currentSnapshot = null;
+                if (config.IsIncluded(RTLModuleSnapshotConfigInclude.Pipelines))
+                {
+                    var pipelinesScope = snapshot.Scope("Pipelines");
+                    currentSnapshot = pipelinesScope;
+                    foreach (var pipelineProp in PipelineProps)
+                    {
+                        var pipeline = pipelineProp.GetValue(this) as IRTLPipeline;
+                        var head = pipeline.Diag.Head;
+
+                        var pipelineScope = pipelinesScope.Scope(pipelineProp.Name);
+                        currentSnapshot = pipelineScope.Scope("Control");
+                        currentSnapshot.SetVariables(ToVCDVariables("", head.PipelineControl, true));
+
+                        currentSnapshot = pipelineScope.Scope("Preview");
+                        currentSnapshot.SetVariables(ToVCDVariables("", head.PipelinePreview, true));
+
+                        var stagesScope = pipelineScope.Scope("Stages");
+
+                        foreach (var stage in pipeline.Diag.Stages)
+                        {
+                            var index = pipeline.Diag.Stages.IndexOf(stage);
+                            var stageScope = stagesScope.Scope($"Stage{index}");
+
+                            currentSnapshot = stageScope.Scope("Inputs");
+
+                            currentSnapshot = stageScope.Scope("State");
+                            var stateMember = stage.GetType().GetMember("State")[0];
+                            currentSnapshot.SetVariables(ToVCDVariables("", stage.StateValue));
+
+                            currentSnapshot = stageScope.Scope("NextState");
+                            var nextStateMember = stage.GetType().GetMember("NextState")[0];
+                            currentSnapshot.SetVariables(ToVCDVariables("", stage.NextStateValue));
+
+                            var managed = stage.ManagedSignals;
+                            currentSnapshot = stageScope.Scope("Control");
+                            currentSnapshot.SetVariables(ToVCDVariables("", managed.Control, true));
+
+                            currentSnapshot = stageScope.Scope("Request");
+                            currentSnapshot.SetVariables(ToVCDVariables("", managed.Request, true));
+
+                            currentSnapshot = stageScope.Scope("Preview");
+                            currentSnapshot.SetVariables(ToVCDVariables("", managed.Preview, true));
+                        }
+                    }
+
+                    currentSnapshot = null;
+                }
             }
             catch (VCDSnapshotException)
             {
@@ -179,7 +189,7 @@ namespace Quokka.RTL
 
         protected TState CopyState()
         {
-            return RTLModuleHelper.DeepCopy(State);
+            return DeepReflectionCopy.DeepCopy(State);
         }
 
         public override RTLModuleStageResult DeltaCycle(int deltaCycle)

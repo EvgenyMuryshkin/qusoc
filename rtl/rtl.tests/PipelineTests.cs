@@ -3,6 +3,7 @@ using Quokka.RTL;
 using Quokka.RTL.Simulator;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RTL.Modules
 {
@@ -256,7 +257,7 @@ namespace RTL.Modules
         public void StallControlPipelineModuleTest_IdleRun()
         {
             var t = Module<StallControlPipelineModule>();
-            Action<StallControlOutput> assert = (expected) => Assert.IsTrue(RTLModuleHelper.DeepEquals(expected, t.outResult));
+            Action<StallControlOutput> assert = (expected) => Assert.IsTrue(DeepDiff.DeepEquals(expected, t.outResult));
             var idle = new StallControlInputs() { inProcessed = true, inReady = true };
             t.Cycle(idle);
             assert(new StallControlOutput() { result = 0 });
@@ -276,7 +277,7 @@ namespace RTL.Modules
         {
             var t = new RTLSimulator<StallControlPipelineModule, StallControlInputs>();
             t.TraceToVCD(VCDOutputPath());
-            Action<StallControlOutput> assert = (expected) => Assert.IsTrue(RTLModuleHelper.DeepEquals(expected, t.TopLevel.outResult));
+            Action<StallControlOutput> assert = (expected) => Assert.IsTrue(DeepDiff.DeepEquals(expected, t.TopLevel.outResult));
 
             t.ClockCycle(new StallControlInputs() { inProcessed = true, inData = 3, inReady = true });
             assert(new StallControlOutput());
@@ -297,6 +298,52 @@ namespace RTL.Modules
             assert(new StallControlOutput() { result = 17, ready = true });
 
             t.ClockCycle(new StallControlInputs { inProcessed = true });
+        }
+
+        [TestMethod]
+        public void IntDividerPipelineModuleTest()
+        {
+            var t = new RTLSimulator<IntDividerPipelineModule, IntDividerPipelineModuleInputs>();
+            var tl = t.TopLevel;
+
+            foreach (var i in Enumerable.Range(0, 32))
+            {
+                t.ClockCycle(new IntDividerPipelineModuleInputs() { inReady = true, inNumerator = i, inDenominator = 1 });
+            }
+
+            Assert.IsTrue(tl.OutReady);
+            Assert.AreEqual(32, tl.OutRes);
+        }
+
+        [TestMethod]
+        public void DividerSim()
+        {
+            var rnd = new Random(Environment.TickCount);
+            foreach (var _ in Enumerable.Range(0, 1000000))
+            {
+                int result = 0;
+                long numerator = rnd.Next();
+                long denominator = rnd.Next();
+
+                var expectedResult = numerator / denominator;
+                var expectedRemainder = numerator % denominator;
+
+                long currentDenominator = denominator << 32;
+                for (int i = 0; i < 32; i++)
+                {
+                    result = result << 1;
+                    currentDenominator = currentDenominator >> 1;
+
+                    if (numerator >= currentDenominator)
+                    {
+                        result |= 1;
+                        numerator = numerator - currentDenominator;
+                    }
+                }
+
+                Assert.AreEqual(expectedResult, result);
+                Assert.AreEqual(expectedRemainder, numerator);
+            }
         }
     }
 }

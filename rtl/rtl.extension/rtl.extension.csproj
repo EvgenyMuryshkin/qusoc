@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Quokka.Extension.Interop" Version="1.0.2.30" />
+    <PackageReference Include="Quokka.FPGA" Version="0.1.2.139" />
+    <PackageReference Include="Quokka.RTL" Version="0.1.2.180" />
+    <PackageReference Include="Quokka.TCL" Version="1.0.3.13" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Tools\Quokka.RTL.Simulator\Quokka.RTL.Simulator.csproj" />
+    <ProjectReference Include="..\RTL.Modules\rtl.modules.csproj" />
+  </ItemGroup>
+</Project>
