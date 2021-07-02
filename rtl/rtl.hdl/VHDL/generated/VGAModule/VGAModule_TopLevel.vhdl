@@ -90,22 +90,6 @@ signal VGAModule_L34F30T42_Expr : std_logic := '0';
 signal VGAModule_L34F30T42_Expr_1 : std_logic := '0';
 signal VGAModule_L35F30T42_Expr : std_logic := '0';
 signal VGAModule_L35F30T42_Expr_1 : std_logic := '0';
-signal VGAModule_L41F26T54_Expr : std_logic := '0';
-signal VGAModule_L41F26T54_Expr_1 : std_logic := '0';
-signal VGAModule_L41F26T54_Expr_2 : std_logic := '0';
-signal VGAModule_L42F26T68_Expr : std_logic := '0';
-signal VGAModule_L42F26T68_Expr_1 : std_logic := '0';
-signal VGAModule_L42F26T68_Expr_2 : std_logic := '0';
-signal VGAModule_L42F26T56_Expr : std_logic := '0';
-signal VGAModule_L42F26T56_Expr_1 : std_logic := '0';
-signal VGAModule_L42F26T56_Expr_2 : std_logic := '0';
-signal VGAModule_L42F47T56_Expr : std_logic := '0';
-signal VGAModule_L42F47T56_Expr_1 : std_logic := '0';
-signal VGAModule_L42F60T68_Expr : std_logic := '0';
-signal VGAModule_L42F60T68_Expr_1 : std_logic := '0';
-signal VGAModule_L43F26T53_Expr : std_logic := '0';
-signal VGAModule_L43F26T53_Expr_1 : std_logic := '0';
-signal VGAModule_L43F26T53_Expr_2 : std_logic := '0';
 signal VGAModule_L38F26T48_Expr : std_logic := '0';
 signal VGAModule_L38F26T48_ExprLhs : signed(11 downto 0)  := "000000000000";
 signal VGAModule_L38F26T48_ExprRhs : signed(11 downto 0)  := "000000000000";
@@ -136,42 +120,6 @@ begin
 VGAModule_L35F30T42_Expr <= NOT VGAModule_L35F30T42_Expr_1;
 
     end process;
-
-process(VGAModule_L41F26T54_Expr_1, VGAModule_L41F26T54_Expr_2)
-begin
-VGAModule_L41F26T54_Expr <= VGAModule_L41F26T54_Expr_1 AND VGAModule_L41F26T54_Expr_2;
-
-    end process;
-
-process(VGAModule_L42F26T68_Expr_1, VGAModule_L42F26T68_Expr_2)
-begin
-VGAModule_L42F26T68_Expr <= VGAModule_L42F26T68_Expr_1 AND VGAModule_L42F26T68_Expr_2;
-
-    end process;
-
-process(VGAModule_L42F26T56_Expr_1, VGAModule_L42F26T56_Expr_2)
-begin
-VGAModule_L42F26T56_Expr <= VGAModule_L42F26T56_Expr_1 AND VGAModule_L42F26T56_Expr_2;
-
-    end process;
-
-process(VGAModule_L42F47T56_Expr_1)
-begin
-VGAModule_L42F47T56_Expr <= NOT VGAModule_L42F47T56_Expr_1;
-
-    end process;
-
-process(VGAModule_L42F60T68_Expr_1)
-begin
-VGAModule_L42F60T68_Expr <= NOT VGAModule_L42F60T68_Expr_1;
-
-    end process;
-
-process(VGAModule_L43F26T53_Expr_1, VGAModule_L43F26T53_Expr_2)
-begin
-VGAModule_L43F26T53_Expr <= VGAModule_L43F26T53_Expr_1 AND VGAModule_L43F26T53_Expr_2;
-
-    end process;
 VGAModule_TopLevel_VGAModule_hSync : entity work.VGAModule_TopLevel_VGAModule_hSync port map
 (
 --[BEGIN USER MAP FOR hSync]
@@ -200,7 +148,7 @@ OutMax => vSyncOutMaxvSync_OutMaxHardLink,
 OutCounter => vSyncOutCountervSync_OutCounterHardLink
 
 );
-process(first100, hSync_Enabled, hSync_OutCounter, hSync_OutMax, hSync_OutSP, hSync_OutVisible, hSyncOutBPhSync_OutBPHardLink, hSyncOutCounterhSync_OutCounterHardLink, hSyncOutFPhSync_OutFPHardLink, hSyncOutMaxhSync_OutMaxHardLink, hSyncOutSPhSync_OutSPHardLink, hSyncOutVisiblehSync_OutVisibleHardLink, internalIsVisible, last100, VGAModule_L31F35T71_Expr, VGAModule_L34F30T42_Expr, VGAModule_L35F30T42_Expr, VGAModule_L38F26T48_Expr, VGAModule_L39F25T47_Expr, VGAModule_L41F26T54_Expr, VGAModule_L42F26T56_Expr, VGAModule_L42F26T68_Expr, VGAModule_L42F47T56_Expr, VGAModule_L42F60T68_Expr, VGAModule_L43F26T53_Expr, vSync_Enabled, vSync_OutSP, vSync_OutVisible, vSyncOutBPvSync_OutBPHardLink, vSyncOutCountervSync_OutCounterHardLink, vSyncOutFPvSync_OutFPHardLink, vSyncOutMaxvSync_OutMaxHardLink, vSyncOutSPvSync_OutSPHardLink, vSyncOutVisiblevSync_OutVisibleHardLink)
+process(hSync_Enabled, hSync_OutCounter, hSync_OutMax, hSync_OutSP, hSync_OutVisible, hSyncOutBPhSync_OutBPHardLink, hSyncOutCounterhSync_OutCounterHardLink, hSyncOutFPhSync_OutFPHardLink, hSyncOutMaxhSync_OutMaxHardLink, hSyncOutSPhSync_OutSPHardLink, hSyncOutVisiblehSync_OutVisibleHardLink, internalIsVisible, VGAModule_L31F35T71_Expr, VGAModule_L34F30T42_Expr, VGAModule_L35F30T42_Expr, VGAModule_L38F26T48_Expr, VGAModule_L39F25T47_Expr, vSync_Enabled, vSync_OutSP, vSync_OutVisible, vSyncOutBPvSync_OutBPHardLink, vSyncOutCountervSync_OutCounterHardLink, vSyncOutFPvSync_OutFPHardLink, vSyncOutMaxvSync_OutMaxHardLink, vSyncOutSPvSync_OutSPHardLink, vSyncOutVisiblevSync_OutVisibleHardLink)
 begin
 VGAModule_L38F26T48_ExprLhs <= signed(resize(unsigned(hSync_OutCounter), VGAModule_L38F26T48_ExprLhs'length));
 VGAModule_L38F26T48_ExprRhs <= signed(resize(unsigned(VGAModule_L38F45T48_Expr), VGAModule_L38F26T48_ExprRhs'length));
@@ -210,16 +158,6 @@ VGAModule_L31F35T71_Expr_1 <= vSync_OutVisible;
 VGAModule_L31F35T71_Expr_2 <= hSync_OutVisible;
 VGAModule_L34F30T42_Expr_1 <= vSync_OutSP;
 VGAModule_L35F30T42_Expr_1 <= hSync_OutSP;
-VGAModule_L41F26T54_Expr_1 <= internalIsVisible;
-VGAModule_L41F26T54_Expr_2 <= first100;
-VGAModule_L42F26T68_Expr_1 <= VGAModule_L42F26T56_Expr;
-VGAModule_L42F26T68_Expr_2 <= VGAModule_L42F60T68_Expr;
-VGAModule_L42F26T56_Expr_1 <= internalIsVisible;
-VGAModule_L42F26T56_Expr_2 <= VGAModule_L42F47T56_Expr;
-VGAModule_L42F47T56_Expr_1 <= first100;
-VGAModule_L42F60T68_Expr_1 <= last100;
-VGAModule_L43F26T53_Expr_1 <= internalIsVisible;
-VGAModule_L43F26T53_Expr_2 <= last100;
 internalIsVisible <= VGAModule_L31F35T71_Expr;
 first100 <= VGAModule_L38F26T48_Expr;
 last100 <= VGAModule_L39F25T47_Expr;
@@ -228,9 +166,9 @@ vSync_Enabled <= hSync_OutMax;
 VSync <= VGAModule_L34F30T42_Expr;
 HSync <= VGAModule_L35F30T42_Expr;
 IsVisible <= internalIsVisible;
-R <= VGAModule_L41F26T54_Expr;
-G <= VGAModule_L42F26T68_Expr;
-B <= VGAModule_L43F26T53_Expr;
+R <= internalIsVisible;
+G <= internalIsVisible;
+B <= internalIsVisible;
 hSyncEnabledhSync_EnabledHardLink <= hSync_Enabled;
 hSync_OutVisible <= hSyncOutVisiblehSync_OutVisibleHardLink;
 hSync_OutFP <= hSyncOutFPhSync_OutFPHardLink;

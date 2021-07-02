@@ -300,19 +300,77 @@ namespace RTL.Modules
             t.ClockCycle(new StallControlInputs { inProcessed = true });
         }
 
+        class IntDividerPipelineModuleTestRecord
+        {
+            public int Numerator;
+            public int Denominator;
+            public int Result => Numerator / Denominator;
+            public int Remainder => Numerator % Denominator;
+
+            public IntDividerPipelineModuleTestRecord(int num, int den)
+            {
+                Numerator = num;
+                Denominator = den;
+            }
+        }
+
+        class IntDividerPipelineModuleTestResult
+        {
+            public int Result;
+            public int Remainder;
+
+            public IntDividerPipelineModuleTestResult(int res, int rem)
+            {
+                Result = res;
+                Remainder = rem;
+            }
+        }
+
         [TestMethod]
         public void IntDividerPipelineModuleTest()
         {
             var t = new RTLSimulator<IntDividerPipelineModule, IntDividerPipelineModuleInputs>();
             var tl = t.TopLevel;
+            var rnd = new Random(Environment.TickCount);
 
-            foreach (var i in Enumerable.Range(0, 32))
+            var testCases = new List<IntDividerPipelineModuleTestRecord>();
+            var testResults = new List<IntDividerPipelineModuleTestResult>();
+
+            int max = 1000;
+
+            foreach (var i in Enumerable.Range(0, max))
             {
-                t.ClockCycle(new IntDividerPipelineModuleInputs() { inReady = true, inNumerator = i, inDenominator = 1 });
+                var testCase = new IntDividerPipelineModuleTestRecord(rnd.Next(), rnd.Next());
+                testCases.Add(testCase);
+
+                t.ClockCycle(new IntDividerPipelineModuleInputs() { inReady = true, inNumerator = testCase.Numerator, inDenominator = testCase.Denominator });
+
+                if (tl.OutReady)
+                {
+                    testResults.Add(new IntDividerPipelineModuleTestResult(tl.OutRes, tl.OutRem));
+                }
             }
 
-            Assert.IsTrue(tl.OutReady);
-            Assert.AreEqual(32, tl.OutRes);
+            while(tl.OutReady)
+            {
+                t.ClockCycle(new IntDividerPipelineModuleInputs());
+
+                if (tl.OutReady)
+                {
+                    testResults.Add(new IntDividerPipelineModuleTestResult(tl.OutRes, tl.OutRem));
+                }
+            }
+
+            Assert.AreEqual(max, testResults.Count);
+
+            foreach (var i in Enumerable.Range(0, max))
+            {
+                var testCase = testCases[i];
+                var testResult = testResults[i];
+
+                Assert.AreEqual(testCase.Result, testResult.Result, $"res failed for {testCase.Numerator} / {testCase.Denominator}");
+                Assert.AreEqual(testCase.Remainder, testResult.Remainder, $"rem failed for {testCase.Numerator} / {testCase.Denominator}");
+            }
         }
 
         [TestMethod]

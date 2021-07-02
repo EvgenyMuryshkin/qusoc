@@ -8,9 +8,15 @@ namespace rtl.extension
     public class RTLModulesExtension
     {
         [ExtensionMethod(icon: TopLevelIcon.Translate)]
-        public static void Translate()
+        public static void IntDividerPipelineModule()
         {
             QuokkaRunner.FromConfig(Env.RTLVerilogConfig, new[] { nameof(IntDividerPipelineModule) });
+        }
+
+        [ExtensionMethod(icon: TopLevelIcon.Translate)]
+        public static void FunctionsPipelineModule()
+        {
+            QuokkaRunner.FromConfig(Env.RTLVerilogConfig, new[] { nameof(FunctionsPipelineModule) });
         }
     }
 }

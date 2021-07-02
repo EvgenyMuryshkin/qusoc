@@ -1,4 +1,4 @@
-set_global_assignment -name TOP_LEVEL_ENTITY VGAStaticQRModule_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY TypedPipelineModule_TopLevel
 # -------------------------------------------------------------------------- #
 #
 # Copyright (C) 1991-2010 Altera Corporation
@@ -54,7 +54,7 @@ set_global_assignment -name FMAX_REQUIREMENT "50 MHz" -section_id Clock
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 6
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/BitsMuxModule.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/TypedPipelineModule.vwf
 
 set_global_assignment -name MISC_FILE "C:/code/qusoc/rtl/rtl.hdl/VHDL.dpf"
 
@@ -104,6 +104,7 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/FromConfigurationPipe
 set_global_assignment -name VHDL_FILE VHDL/generated/FromConfigurationPipelineModule/FromConfigurationPipelineModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/FullAdderModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/FullAdderModule/FullAdderModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/FunctionsPipelineModule/FunctionsPipelineModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/IntDividerPipelineModule/IntDividerPipelineModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicRAMIndexingModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/LogicRAMIndexingModule/LogicRAMIndexingModule_TopLevel.vhdl

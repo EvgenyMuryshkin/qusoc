@@ -57,6 +57,12 @@ namespace Quokka.RTL.Local
                 var memberValue = m.GetValue(value);
                 var backingField = getBackingField(value, m);
 
+                if (memberValue is RTLBitArray bitArray)
+                {
+                    backingField.SetValue(value, new RTLBitArray().Resized(bitArray.Size).TypeChanged(bitArray.DataType));
+                    continue;
+                }
+
                 if (RTLModuleHelper.IsSynthesizableSignalType(memberType))
                 {
                     if (RTLReflectionTools.TryGetNullableType(memberType, out var actualType))
