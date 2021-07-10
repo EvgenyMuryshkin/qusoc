@@ -23,7 +23,7 @@ namespace RTL.Modules
 
     public class VGAStaticQRModule : RTLSynchronousModule<VGAStaticQRModuleInputs, VGAStaticQRModuleState>
     {
-        VGAController vgaController = new VGAController();
+        VGAController vgaController = new VGAController(VGAControllerMode.SVGA_800_600_60);
         private readonly int ramBits;
         public VGAStaticQRModule(RuntimeConfiguration runtimeConfiguration)
         {

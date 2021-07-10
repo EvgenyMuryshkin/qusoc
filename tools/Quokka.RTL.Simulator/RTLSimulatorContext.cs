@@ -16,6 +16,7 @@ namespace Quokka.RTL.Simulator
 
         public int Clock { get; set; }
         public int DeltaCycle { get; set; }
+        public int TotalDeltaCycles { get; set; }
 
         public VCDSignalsSnapshot ControlScope { get; set; }
         public VCDVariable ClockSignal { get; set; }

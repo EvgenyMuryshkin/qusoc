@@ -180,6 +180,38 @@ namespace RTL.Modules
             //Assert.AreEqual(480, hSyncCounter, "HSync is wrong");
             //Assert.AreEqual(640, hSyncCounter, "VSync is wrong");
         }
+
+        [TestMethod]
+        public void VGAAlienArtModuleTest()
+        {
+            var module = new VGAAlienArtModule((clocks) => new TimerModule(clocks));
+            module.InitVGA(VGAControllerMode.Test);
+            var sim = new RTLInstanceSimulator<VGAAlienArtModule, VGAAlienArtModuleInputs>(module);
+            var tl = sim.TopLevel;
+
+            var result = new List<bool>();
+            while (result.Count != 4800)
+            {
+                if (tl.OutVisible)
+                {
+                    result.Add(tl.R);
+                }
+                sim.ClockCycle();
+            }
+
+            var resized = new Bitmap(80, 60);
+            for (var row = 0; row < 60; row++)
+            {
+                for (var col = 0; col < 80; col++)
+                {
+                    if (result.Count <= (row * 80 + col))
+                        continue;
+
+                    resized.SetPixel(col, row, result[row * 80 + col] ? Color.Green : Color.White);
+                }
+            }
+            resized.Save(PNGOutputPath(), ImageFormat.Png);
+        }
     }
-}
+ }
 

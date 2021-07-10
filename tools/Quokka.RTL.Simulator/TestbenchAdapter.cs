@@ -83,7 +83,7 @@ namespace Quokka.RTL.Simulator
                     mode: launch_simulation_mode.post_implementation, 
                     type: launch_simulation_type.timing)
                 .restart()
-                .open_vcd(file_name: tcl.FileName(VCDFile))
+                .open_vcd(file_name: VCDFile)
                 .log_vcd(hdl_objects: "*")
                 .run(
                     time: $"{duration}", 

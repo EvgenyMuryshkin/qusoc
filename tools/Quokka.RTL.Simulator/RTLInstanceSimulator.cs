@@ -88,6 +88,7 @@ namespace Quokka.RTL.Simulator
                 _simulatorContext.CurrentTime++;
 
                 var stageResult = _topLevel.DeltaCycle(_simulatorContext.DeltaCycle);
+                _simulatorContext.TotalDeltaCycles++;
 
                 TraceSignals();
 

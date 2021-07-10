@@ -45,9 +45,9 @@ wire  One = 1'b1;
 wire  true = 1'b1;
 wire  false = 1'b0;
 wire  [4:0] addrBits = 5'b10011;
-wire  VGAController_L42F72T76_Expr = 1'b1;
-wire  [9:0] VGAController_L29F85T88_Expr = 10'b1100100000;
-wire  VGAController_L29F126T127_Expr = 1'b0;
+wire  VGAController_L58F72T76_Expr = 1'b1;
+wire  [9:0] VGAController_L35F85T88_Expr = 10'b1100100000;
+wire  VGAController_L35F126T127_Expr = 1'b0;
 wire  internalVisible;
 wire  hSync_Enabled;
 wire  hSync_OutVisible;
@@ -63,9 +63,9 @@ wire  vSync_OutSP;
 wire  vSync_OutBP;
 wire  vSync_OutMax;
 wire  [9:0] vSync_OutCounter;
-wire  VGAController_L29F110T128_Source;
-wire  [18:0] VGAController_L29F47T140_SignChange;
-wire  [18:0] VGAController_L29F47T158_Resize;
+wire  VGAController_L35F110T128_Source;
+wire  [18:0] VGAController_L35F47T140_SignChange;
+wire  [18:0] VGAController_L35F47T158_Resize;
 wire  hSyncEnabledhSync_EnabledHardLink;
 wire  hSyncOutVisiblehSync_OutVisibleHardLink;
 wire  hSyncOutFPhSync_OutFPHardLink;
@@ -80,32 +80,32 @@ wire  vSyncOutSPvSync_OutSPHardLink;
 wire  vSyncOutBPvSync_OutBPHardLink;
 wire  vSyncOutMaxvSync_OutMaxHardLink;
 wire  [9:0] vSyncOutCountervSync_OutCounterHardLink;
-wire  VGAController_L23F33T69_Expr;
-wire  VGAController_L23F33T69_Expr_1;
-wire  VGAController_L23F33T69_Expr_2;
-wire  VGAController_L24F30T42_Expr;
-wire  VGAController_L24F30T42_Expr_1;
-wire  VGAController_L25F30T42_Expr;
-wire  VGAController_L25F30T42_Expr_1;
-wire  VGAController_L26F35T71_Expr;
-wire  VGAController_L26F35T71_Expr_1;
-wire  VGAController_L26F35T71_Expr_2;
-wire  [22:0] VGAController_L29F66T107_Expr;
-wire signed  [22:0] VGAController_L29F66T107_Expr_1;
-wire signed  [22:0] VGAController_L29F66T107_Expr_2;
-wire  [20:0] VGAController_L29F66T88_Expr;
-wire signed  [20:0] VGAController_L29F66T88_Expr_1;
-wire signed  [20:0] VGAController_L29F66T88_Expr_2;
-reg  [18:0] VGAController_L29F48T128_Lookup;
-wire  VGAController_L29F48T128_LookupMultiplexerAddress;
-wire  [18:0] VGAController_L29F48T128_Lookup1;
-wire  [18:0] VGAController_L29F48T128_Lookup2;
-assign VGAController_L23F33T69_Expr = VGAController_L23F33T69_Expr_1 & VGAController_L23F33T69_Expr_2;
-assign VGAController_L24F30T42_Expr = ~VGAController_L24F30T42_Expr_1;
-assign VGAController_L25F30T42_Expr = ~VGAController_L25F30T42_Expr_1;
-assign VGAController_L26F35T71_Expr = VGAController_L26F35T71_Expr_1 & VGAController_L26F35T71_Expr_2;
-assign VGAController_L29F66T107_Expr = VGAController_L29F66T107_Expr_1 + VGAController_L29F66T107_Expr_2;
-assign VGAController_L29F66T88_Expr = VGAController_L29F66T88_Expr_1 * VGAController_L29F66T88_Expr_2;
+wire  VGAController_L29F33T69_Expr;
+wire  VGAController_L29F33T69_Expr_1;
+wire  VGAController_L29F33T69_Expr_2;
+wire  VGAController_L30F30T42_Expr;
+wire  VGAController_L30F30T42_Expr_1;
+wire  VGAController_L31F30T42_Expr;
+wire  VGAController_L31F30T42_Expr_1;
+wire  VGAController_L32F35T71_Expr;
+wire  VGAController_L32F35T71_Expr_1;
+wire  VGAController_L32F35T71_Expr_2;
+wire  [22:0] VGAController_L35F66T107_Expr;
+wire signed  [22:0] VGAController_L35F66T107_Expr_1;
+wire signed  [22:0] VGAController_L35F66T107_Expr_2;
+wire  [20:0] VGAController_L35F66T88_Expr;
+wire signed  [20:0] VGAController_L35F66T88_Expr_1;
+wire signed  [20:0] VGAController_L35F66T88_Expr_2;
+reg  [18:0] VGAController_L35F48T128_Lookup;
+wire  VGAController_L35F48T128_LookupMultiplexerAddress;
+wire  [18:0] VGAController_L35F48T128_Lookup1;
+wire  [18:0] VGAController_L35F48T128_Lookup2;
+assign VGAController_L29F33T69_Expr = VGAController_L29F33T69_Expr_1 & VGAController_L29F33T69_Expr_2;
+assign VGAController_L30F30T42_Expr = ~VGAController_L30F30T42_Expr_1;
+assign VGAController_L31F30T42_Expr = ~VGAController_L31F30T42_Expr_1;
+assign VGAController_L32F35T71_Expr = VGAController_L32F35T71_Expr_1 & VGAController_L32F35T71_Expr_2;
+assign VGAController_L35F66T107_Expr = VGAController_L35F66T107_Expr_1 + VGAController_L35F66T107_Expr_2;
+assign VGAController_L35F66T88_Expr = VGAController_L35F66T88_Expr_1 * VGAController_L35F66T88_Expr_2;
 VGAStaticQRModule_TopLevel_VGAStaticQRModule_vgaController_VGAController_hSync VGAStaticQRModule_TopLevel_VGAStaticQRModule_vgaController_VGAController_hSync
 (
 // [BEGIN USER MAP FOR hSync]
@@ -144,38 +144,38 @@ VGAStaticQRModule_TopLevel_VGAStaticQRModule_vgaController_VGAController_vSync V
 );
 always @*
 begin
-case (VGAController_L29F48T128_LookupMultiplexerAddress)
+case (VGAController_L35F48T128_LookupMultiplexerAddress)
     'b0:
-VGAController_L29F48T128_Lookup = VGAController_L29F48T128_Lookup1;
+VGAController_L35F48T128_Lookup = VGAController_L35F48T128_Lookup1;
     'b1:
-VGAController_L29F48T128_Lookup = VGAController_L29F48T128_Lookup2;
+VGAController_L35F48T128_Lookup = VGAController_L35F48T128_Lookup2;
   default:
-VGAController_L29F48T128_Lookup = 'b0000000000000000000;
+VGAController_L35F48T128_Lookup = 'b0000000000000000000;
 endcase
 
 end
-assign VGAController_L23F33T69_Expr_1 = vSync_OutVisible;
-assign VGAController_L23F33T69_Expr_2 = hSync_OutVisible;
-assign VGAController_L24F30T42_Expr_1 = vSync_OutSP;
-assign VGAController_L25F30T42_Expr_1 = hSync_OutSP;
-assign VGAController_L26F35T71_Expr_1 = vSync_OutVisible;
-assign VGAController_L26F35T71_Expr_2 = hSync_OutVisible;
-assign VGAController_L29F66T107_Expr_1 = { {2{1'b0}}, VGAController_L29F66T88_Expr }/*expand*/;
-assign VGAController_L29F66T107_Expr_2 = { {12{1'b0}}, hSync_OutCounter }/*expand*/;
-assign VGAController_L29F66T88_Expr_1 = { {11{1'b0}}, vSync_OutCounter }/*expand*/;
-assign VGAController_L29F66T88_Expr_2 = { {11{1'b0}}, VGAController_L29F85T88_Expr }/*expand*/;
-assign internalVisible = VGAController_L23F33T69_Expr;
-assign hSync_Enabled = VGAController_L42F72T76_Expr;
+assign VGAController_L29F33T69_Expr_1 = vSync_OutVisible;
+assign VGAController_L29F33T69_Expr_2 = hSync_OutVisible;
+assign VGAController_L30F30T42_Expr_1 = vSync_OutSP;
+assign VGAController_L31F30T42_Expr_1 = hSync_OutSP;
+assign VGAController_L32F35T71_Expr_1 = vSync_OutVisible;
+assign VGAController_L32F35T71_Expr_2 = hSync_OutVisible;
+assign VGAController_L35F66T107_Expr_1 = { {2{1'b0}}, VGAController_L35F66T88_Expr }/*expand*/;
+assign VGAController_L35F66T107_Expr_2 = { {12{1'b0}}, hSync_OutCounter }/*expand*/;
+assign VGAController_L35F66T88_Expr_1 = { {11{1'b0}}, vSync_OutCounter }/*expand*/;
+assign VGAController_L35F66T88_Expr_2 = { {11{1'b0}}, VGAController_L35F85T88_Expr }/*expand*/;
+assign internalVisible = VGAController_L29F33T69_Expr;
+assign hSync_Enabled = VGAController_L58F72T76_Expr;
 assign vSync_Enabled = hSync_OutMax;
-assign VSync = VGAController_L24F30T42_Expr;
-assign HSync = VGAController_L25F30T42_Expr;
-assign OutVisible = VGAController_L26F35T71_Expr;
+assign VSync = VGAController_L30F30T42_Expr;
+assign HSync = VGAController_L31F30T42_Expr;
+assign OutVisible = VGAController_L32F35T71_Expr;
 assign OutVPixel = vSync_OutCounter;
 assign OutHPixel = hSync_OutCounter;
-assign VGAController_L29F110T128_Source = VGAController_L29F126T127_Expr;
-assign VGAController_L29F47T140_SignChange = VGAController_L29F48T128_Lookup;
-assign VGAController_L29F47T158_Resize = VGAController_L29F47T140_SignChange;
-assign OutPixelAddress = VGAController_L29F47T158_Resize;
+assign VGAController_L35F110T128_Source = VGAController_L35F126T127_Expr;
+assign VGAController_L35F47T140_SignChange = VGAController_L35F48T128_Lookup;
+assign VGAController_L35F47T158_Resize = VGAController_L35F47T140_SignChange;
+assign OutPixelAddress = VGAController_L35F47T158_Resize;
 assign hSyncEnabledhSync_EnabledHardLink = hSync_Enabled;
 assign hSync_OutVisible = hSyncOutVisiblehSync_OutVisibleHardLink;
 assign hSync_OutFP = hSyncOutFPhSync_OutFPHardLink;
@@ -190,9 +190,9 @@ assign vSync_OutSP = vSyncOutSPvSync_OutSPHardLink;
 assign vSync_OutBP = vSyncOutBPvSync_OutBPHardLink;
 assign vSync_OutMax = vSyncOutMaxvSync_OutMaxHardLink;
 assign vSync_OutCounter = vSyncOutCountervSync_OutCounterHardLink;
-assign VGAController_L29F48T128_Lookup1 = { {18{1'b0}}, VGAController_L29F110T128_Source }/*expand*/;
-assign VGAController_L29F48T128_Lookup2 = VGAController_L29F66T107_Expr[18:0]/*truncate*/;
-assign VGAController_L29F48T128_LookupMultiplexerAddress = internalVisible;
+assign VGAController_L35F48T128_Lookup1 = { {18{1'b0}}, VGAController_L35F110T128_Source }/*expand*/;
+assign VGAController_L35F48T128_Lookup2 = VGAController_L35F66T107_Expr[18:0]/*truncate*/;
+assign VGAController_L35F48T128_LookupMultiplexerAddress = internalVisible;
 // [BEGIN USER ARCHITECTURE]
 // [END USER ARCHITECTURE]
 endmodule

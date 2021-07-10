@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Linq;
 
-namespace QRV32.Tests
+namespace QuokkaIntegrationTests
 {
     public class TestPathTools
     {

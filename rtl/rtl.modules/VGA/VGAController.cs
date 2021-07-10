@@ -13,6 +13,12 @@ namespace RTL.Modules
 
     }
 
+    public enum VGAControllerMode
+    {
+        Test,
+        SVGA_800_600_60
+    }
+
     public class VGAController : RTLSynchronousModule<VGAControllerInputs, VGAControllerState>
     {
         internal readonly uint addrBits;
@@ -28,11 +34,21 @@ namespace RTL.Modules
         public RTLBitArray OutHPixel => hSync.OutCounter;
         public RTLBitArray OutPixelAddress => (internalVisible ? vSync.OutCounter * 800 + hSync.OutCounter : new RTLBitArray(0)).Unsigned().Resized(addrBits);
 
-        public VGAController()
+        public VGAController(VGAControllerMode mode)
         {
-            hSync = new VGASyncModule(800, 40, 128, 88);
-            vSync = new VGASyncModule(600, 1, 4, 23);
-            addrBits = RTLCalculators.CalcBitsForValue(800 * 600);
+            switch (mode)
+            {
+                case VGAControllerMode.SVGA_800_600_60:
+                    hSync = new VGASyncModule(800, 40, 128, 88);
+                    vSync = new VGASyncModule(600, 1, 4, 23);
+                    addrBits = RTLCalculators.CalcBitsForValue(800 * 600);
+                    break;
+                case VGAControllerMode.Test:
+                    hSync = new VGASyncModule(80, 40, 128, 88);
+                    vSync = new VGASyncModule(60, 1, 4, 23);
+                    addrBits = RTLCalculators.CalcBitsForValue(80 * 60);
+                    break;
+            }
         }
 
         protected override void OnSchedule(Func<VGAControllerInputs> inputsFactory)
