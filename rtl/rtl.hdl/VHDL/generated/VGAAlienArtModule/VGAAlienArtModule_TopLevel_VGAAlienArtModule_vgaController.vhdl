@@ -49,9 +49,9 @@ constant One : std_logic := '1';
 constant true : std_logic := '1';
 constant false : std_logic := '0';
 constant addrBits : unsigned(4 downto 0)  := "10011";
-constant VGAController_L42F72T76_Expr : std_logic := '1';
-constant VGAController_L29F85T88_Expr : unsigned(9 downto 0)  := "1100100000";
-constant VGAController_L29F126T127_Expr : std_logic := '0';
+constant VGAController_L58F72T76_Expr : std_logic := '1';
+constant VGAController_L35F85T88_Expr : unsigned(9 downto 0)  := "1100100000";
+constant VGAController_L35F126T127_Expr : std_logic := '0';
 signal internalVisible : std_logic := '0';
 signal hSync_Enabled : std_logic := '0';
 signal hSync_OutVisible : std_logic := '0';
@@ -67,9 +67,9 @@ signal vSync_OutSP : std_logic := '0';
 signal vSync_OutBP : std_logic := '0';
 signal vSync_OutMax : std_logic := '0';
 signal vSync_OutCounter : unsigned(9 downto 0) := (others => '0');
-signal VGAController_L29F110T128_Source : std_logic := '0';
-signal VGAController_L29F47T140_SignChange : unsigned(18 downto 0) := (others => '0');
-signal VGAController_L29F47T158_Resize : unsigned(18 downto 0) := (others => '0');
+signal VGAController_L35F110T128_Source : std_logic := '0';
+signal VGAController_L35F47T140_SignChange : unsigned(18 downto 0) := (others => '0');
+signal VGAController_L35F47T158_Resize : unsigned(18 downto 0) := (others => '0');
 signal hSyncEnabledhSync_EnabledHardLink : std_logic := '0';
 signal hSyncOutVisiblehSync_OutVisibleHardLink : std_logic := '0';
 signal hSyncOutFPhSync_OutFPHardLink : std_logic := '0';
@@ -84,61 +84,61 @@ signal vSyncOutSPvSync_OutSPHardLink : std_logic := '0';
 signal vSyncOutBPvSync_OutBPHardLink : std_logic := '0';
 signal vSyncOutMaxvSync_OutMaxHardLink : std_logic := '0';
 signal vSyncOutCountervSync_OutCounterHardLink : unsigned(9 downto 0)  := "0000000000";
-signal VGAController_L23F33T69_Expr : std_logic := '0';
-signal VGAController_L23F33T69_Expr_1 : std_logic := '0';
-signal VGAController_L23F33T69_Expr_2 : std_logic := '0';
-signal VGAController_L24F30T42_Expr : std_logic := '0';
-signal VGAController_L24F30T42_Expr_1 : std_logic := '0';
-signal VGAController_L25F30T42_Expr : std_logic := '0';
-signal VGAController_L25F30T42_Expr_1 : std_logic := '0';
-signal VGAController_L26F35T71_Expr : std_logic := '0';
-signal VGAController_L26F35T71_Expr_1 : std_logic := '0';
-signal VGAController_L26F35T71_Expr_2 : std_logic := '0';
-signal VGAController_L29F66T107_Expr : unsigned(22 downto 0)  := "00000000000000000000000";
-signal VGAController_L29F66T107_Expr_1 : signed(22 downto 0)  := "00000000000000000000000";
-signal VGAController_L29F66T107_Expr_2 : signed(22 downto 0)  := "00000000000000000000000";
-signal VGAController_L29F66T88_Expr : unsigned(20 downto 0)  := "000000000000000000000";
-signal VGAController_L29F66T88_Expr_1 : signed(20 downto 0)  := "000000000000000000000";
-signal VGAController_L29F66T88_Expr_2 : signed(20 downto 0)  := "000000000000000000000";
-signal VGAController_L29F48T128_Lookup : unsigned(18 downto 0)  := "0000000000000000000";
-signal VGAController_L29F48T128_LookupMultiplexerAddress : std_logic := '0';
-signal VGAController_L29F48T128_Lookup1 : unsigned(18 downto 0)  := "0000000000000000000";
-signal VGAController_L29F48T128_Lookup2 : unsigned(18 downto 0)  := "0000000000000000000";
+signal VGAController_L29F33T69_Expr : std_logic := '0';
+signal VGAController_L29F33T69_Expr_1 : std_logic := '0';
+signal VGAController_L29F33T69_Expr_2 : std_logic := '0';
+signal VGAController_L30F30T42_Expr : std_logic := '0';
+signal VGAController_L30F30T42_Expr_1 : std_logic := '0';
+signal VGAController_L31F30T42_Expr : std_logic := '0';
+signal VGAController_L31F30T42_Expr_1 : std_logic := '0';
+signal VGAController_L32F35T71_Expr : std_logic := '0';
+signal VGAController_L32F35T71_Expr_1 : std_logic := '0';
+signal VGAController_L32F35T71_Expr_2 : std_logic := '0';
+signal VGAController_L35F66T107_Expr : unsigned(22 downto 0)  := "00000000000000000000000";
+signal VGAController_L35F66T107_Expr_1 : signed(22 downto 0)  := "00000000000000000000000";
+signal VGAController_L35F66T107_Expr_2 : signed(22 downto 0)  := "00000000000000000000000";
+signal VGAController_L35F66T88_Expr : unsigned(20 downto 0)  := "000000000000000000000";
+signal VGAController_L35F66T88_Expr_1 : signed(20 downto 0)  := "000000000000000000000";
+signal VGAController_L35F66T88_Expr_2 : signed(20 downto 0)  := "000000000000000000000";
+signal VGAController_L35F48T128_Lookup : unsigned(18 downto 0)  := "0000000000000000000";
+signal VGAController_L35F48T128_LookupMultiplexerAddress : std_logic := '0';
+signal VGAController_L35F48T128_Lookup1 : unsigned(18 downto 0)  := "0000000000000000000";
+signal VGAController_L35F48T128_Lookup2 : unsigned(18 downto 0)  := "0000000000000000000";
 begin
 
-process(VGAController_L23F33T69_Expr_1, VGAController_L23F33T69_Expr_2)
+process(VGAController_L29F33T69_Expr_1, VGAController_L29F33T69_Expr_2)
 begin
-VGAController_L23F33T69_Expr <= VGAController_L23F33T69_Expr_1 AND VGAController_L23F33T69_Expr_2;
+VGAController_L29F33T69_Expr <= VGAController_L29F33T69_Expr_1 AND VGAController_L29F33T69_Expr_2;
 
     end process;
 
-process(VGAController_L24F30T42_Expr_1)
+process(VGAController_L30F30T42_Expr_1)
 begin
-VGAController_L24F30T42_Expr <= NOT VGAController_L24F30T42_Expr_1;
+VGAController_L30F30T42_Expr <= NOT VGAController_L30F30T42_Expr_1;
 
     end process;
 
-process(VGAController_L25F30T42_Expr_1)
+process(VGAController_L31F30T42_Expr_1)
 begin
-VGAController_L25F30T42_Expr <= NOT VGAController_L25F30T42_Expr_1;
+VGAController_L31F30T42_Expr <= NOT VGAController_L31F30T42_Expr_1;
 
     end process;
 
-process(VGAController_L26F35T71_Expr_1, VGAController_L26F35T71_Expr_2)
+process(VGAController_L32F35T71_Expr_1, VGAController_L32F35T71_Expr_2)
 begin
-VGAController_L26F35T71_Expr <= VGAController_L26F35T71_Expr_1 AND VGAController_L26F35T71_Expr_2;
+VGAController_L32F35T71_Expr <= VGAController_L32F35T71_Expr_1 AND VGAController_L32F35T71_Expr_2;
 
     end process;
 
-process(VGAController_L29F66T107_Expr_1, VGAController_L29F66T107_Expr_2)
+process(VGAController_L35F66T107_Expr_1, VGAController_L35F66T107_Expr_2)
 begin
-    VGAController_L29F66T107_Expr <= resize(unsigned(signed(resize(VGAController_L29F66T107_Expr_1, VGAController_L29F66T107_Expr_1'length + 1)) + signed(resize(VGAController_L29F66T107_Expr_2, VGAController_L29F66T107_Expr_2'length + 1))), VGAController_L29F66T107_Expr'length);
+    VGAController_L35F66T107_Expr <= resize(unsigned(signed(resize(VGAController_L35F66T107_Expr_1, VGAController_L35F66T107_Expr_1'length + 1)) + signed(resize(VGAController_L35F66T107_Expr_2, VGAController_L35F66T107_Expr_2'length + 1))), VGAController_L35F66T107_Expr'length);
 
 end process;
 
-process(VGAController_L29F66T88_Expr_1, VGAController_L29F66T88_Expr_2)
+process(VGAController_L35F66T88_Expr_1, VGAController_L35F66T88_Expr_2)
 begin
-    VGAController_L29F66T88_Expr <= resize(unsigned(signed(resize(VGAController_L29F66T88_Expr_1, VGAController_L29F66T88_Expr_1'length + 1)) * signed(resize(VGAController_L29F66T88_Expr_2, VGAController_L29F66T88_Expr_2'length + 1))), VGAController_L29F66T88_Expr'length);
+    VGAController_L35F66T88_Expr <= resize(unsigned(signed(resize(VGAController_L35F66T88_Expr_1, VGAController_L35F66T88_Expr_1'length + 1)) * signed(resize(VGAController_L35F66T88_Expr_2, VGAController_L35F66T88_Expr_2'length + 1))), VGAController_L35F66T88_Expr'length);
 
 end process;
 VGAAlienArtModule_TopLevel_VGAAlienArtModule_vgaController_VGAController_hSync : entity work.VGAAlienArtModule_TopLevel_VGAAlienArtModule_vgaController_VGAController_hSync port map
@@ -169,42 +169,42 @@ OutMax => vSyncOutMaxvSync_OutMaxHardLink,
 OutCounter => vSyncOutCountervSync_OutCounterHardLink
 
 );
-process(VGAController_L29F48T128_Lookup1, VGAController_L29F48T128_Lookup2, VGAController_L29F48T128_LookupMultiplexerAddress)
+process(VGAController_L35F48T128_Lookup1, VGAController_L35F48T128_Lookup2, VGAController_L35F48T128_LookupMultiplexerAddress)
 begin
-case VGAController_L29F48T128_LookupMultiplexerAddress is
+case VGAController_L35F48T128_LookupMultiplexerAddress is
   when '0' => 
-VGAController_L29F48T128_Lookup <= VGAController_L29F48T128_Lookup1;
+VGAController_L35F48T128_Lookup <= VGAController_L35F48T128_Lookup1;
   when '1' => 
-VGAController_L29F48T128_Lookup <= VGAController_L29F48T128_Lookup2;
+VGAController_L35F48T128_Lookup <= VGAController_L35F48T128_Lookup2;
   when others => 
-VGAController_L29F48T128_Lookup <= "0000000000000000000";
+VGAController_L35F48T128_Lookup <= "0000000000000000000";
 end case;
 
 end process;
-process(hSync_Enabled, hSync_OutCounter, hSync_OutMax, hSync_OutSP, hSync_OutVisible, hSyncOutBPhSync_OutBPHardLink, hSyncOutCounterhSync_OutCounterHardLink, hSyncOutFPhSync_OutFPHardLink, hSyncOutMaxhSync_OutMaxHardLink, hSyncOutSPhSync_OutSPHardLink, hSyncOutVisiblehSync_OutVisibleHardLink, internalVisible, VGAController_L23F33T69_Expr, VGAController_L24F30T42_Expr, VGAController_L25F30T42_Expr, VGAController_L26F35T71_Expr, VGAController_L29F110T128_Source, VGAController_L29F47T140_SignChange, VGAController_L29F47T158_Resize, VGAController_L29F48T128_Lookup, VGAController_L29F66T107_Expr, VGAController_L29F66T88_Expr, vSync_Enabled, vSync_OutCounter, vSync_OutSP, vSync_OutVisible, vSyncOutBPvSync_OutBPHardLink, vSyncOutCountervSync_OutCounterHardLink, vSyncOutFPvSync_OutFPHardLink, vSyncOutMaxvSync_OutMaxHardLink, vSyncOutSPvSync_OutSPHardLink, vSyncOutVisiblevSync_OutVisibleHardLink)
+process(hSync_Enabled, hSync_OutCounter, hSync_OutMax, hSync_OutSP, hSync_OutVisible, hSyncOutBPhSync_OutBPHardLink, hSyncOutCounterhSync_OutCounterHardLink, hSyncOutFPhSync_OutFPHardLink, hSyncOutMaxhSync_OutMaxHardLink, hSyncOutSPhSync_OutSPHardLink, hSyncOutVisiblehSync_OutVisibleHardLink, internalVisible, VGAController_L29F33T69_Expr, VGAController_L30F30T42_Expr, VGAController_L31F30T42_Expr, VGAController_L32F35T71_Expr, VGAController_L35F110T128_Source, VGAController_L35F47T140_SignChange, VGAController_L35F47T158_Resize, VGAController_L35F48T128_Lookup, VGAController_L35F66T107_Expr, VGAController_L35F66T88_Expr, vSync_Enabled, vSync_OutCounter, vSync_OutSP, vSync_OutVisible, vSyncOutBPvSync_OutBPHardLink, vSyncOutCountervSync_OutCounterHardLink, vSyncOutFPvSync_OutFPHardLink, vSyncOutMaxvSync_OutMaxHardLink, vSyncOutSPvSync_OutSPHardLink, vSyncOutVisiblevSync_OutVisibleHardLink)
 begin
-VGAController_L23F33T69_Expr_1 <= vSync_OutVisible;
-VGAController_L23F33T69_Expr_2 <= hSync_OutVisible;
-VGAController_L24F30T42_Expr_1 <= vSync_OutSP;
-VGAController_L25F30T42_Expr_1 <= hSync_OutSP;
-VGAController_L26F35T71_Expr_1 <= vSync_OutVisible;
-VGAController_L26F35T71_Expr_2 <= hSync_OutVisible;
-VGAController_L29F66T107_Expr_1 <= signed(resize(unsigned(VGAController_L29F66T88_Expr), VGAController_L29F66T107_Expr_1'length));
-VGAController_L29F66T107_Expr_2 <= signed(resize(unsigned(hSync_OutCounter), VGAController_L29F66T107_Expr_2'length));
-VGAController_L29F66T88_Expr_1 <= signed(resize(unsigned(vSync_OutCounter), VGAController_L29F66T88_Expr_1'length));
-VGAController_L29F66T88_Expr_2 <= signed(resize(unsigned(VGAController_L29F85T88_Expr), VGAController_L29F66T88_Expr_2'length));
-internalVisible <= VGAController_L23F33T69_Expr;
-hSync_Enabled <= VGAController_L42F72T76_Expr;
+VGAController_L29F33T69_Expr_1 <= vSync_OutVisible;
+VGAController_L29F33T69_Expr_2 <= hSync_OutVisible;
+VGAController_L30F30T42_Expr_1 <= vSync_OutSP;
+VGAController_L31F30T42_Expr_1 <= hSync_OutSP;
+VGAController_L32F35T71_Expr_1 <= vSync_OutVisible;
+VGAController_L32F35T71_Expr_2 <= hSync_OutVisible;
+VGAController_L35F66T107_Expr_1 <= signed(resize(unsigned(VGAController_L35F66T88_Expr), VGAController_L35F66T107_Expr_1'length));
+VGAController_L35F66T107_Expr_2 <= signed(resize(unsigned(hSync_OutCounter), VGAController_L35F66T107_Expr_2'length));
+VGAController_L35F66T88_Expr_1 <= signed(resize(unsigned(vSync_OutCounter), VGAController_L35F66T88_Expr_1'length));
+VGAController_L35F66T88_Expr_2 <= signed(resize(unsigned(VGAController_L35F85T88_Expr), VGAController_L35F66T88_Expr_2'length));
+internalVisible <= VGAController_L29F33T69_Expr;
+hSync_Enabled <= VGAController_L58F72T76_Expr;
 vSync_Enabled <= hSync_OutMax;
-VSync <= VGAController_L24F30T42_Expr;
-HSync <= VGAController_L25F30T42_Expr;
-OutVisible <= VGAController_L26F35T71_Expr;
+VSync <= VGAController_L30F30T42_Expr;
+HSync <= VGAController_L31F30T42_Expr;
+OutVisible <= VGAController_L32F35T71_Expr;
 OutVPixel <= vSync_OutCounter;
 OutHPixel <= hSync_OutCounter;
-VGAController_L29F110T128_Source <= VGAController_L29F126T127_Expr;
-VGAController_L29F47T140_SignChange <= VGAController_L29F48T128_Lookup;
-VGAController_L29F47T158_Resize <= VGAController_L29F47T140_SignChange;
-OutPixelAddress <= VGAController_L29F47T158_Resize;
+VGAController_L35F110T128_Source <= VGAController_L35F126T127_Expr;
+VGAController_L35F47T140_SignChange <= VGAController_L35F48T128_Lookup;
+VGAController_L35F47T158_Resize <= VGAController_L35F47T140_SignChange;
+OutPixelAddress <= VGAController_L35F47T158_Resize;
 hSyncEnabledhSync_EnabledHardLink <= hSync_Enabled;
 hSync_OutVisible <= hSyncOutVisiblehSync_OutVisibleHardLink;
 hSync_OutFP <= hSyncOutFPhSync_OutFPHardLink;
@@ -219,9 +219,9 @@ vSync_OutSP <= vSyncOutSPvSync_OutSPHardLink;
 vSync_OutBP <= vSyncOutBPvSync_OutBPHardLink;
 vSync_OutMax <= vSyncOutMaxvSync_OutMaxHardLink;
 vSync_OutCounter <= vSyncOutCountervSync_OutCounterHardLink;
-VGAController_L29F48T128_Lookup1 <= (0 => VGAController_L29F110T128_Source, others => '0');
-VGAController_L29F48T128_Lookup2 <= VGAController_L29F66T107_Expr(18 downto 0);
-VGAController_L29F48T128_LookupMultiplexerAddress <= internalVisible;
+VGAController_L35F48T128_Lookup1 <= (0 => VGAController_L35F110T128_Source, others => '0');
+VGAController_L35F48T128_Lookup2 <= VGAController_L35F66T107_Expr(18 downto 0);
+VGAController_L35F48T128_LookupMultiplexerAddress <= internalVisible;
 end process;
 -- [BEGIN USER ARCHITECTURE]
 -- [END USER ARCHITECTURE]

@@ -16,6 +16,7 @@ namespace Quokka.RTL
         public Action OnBeforeStage;
     }
 
+
     [RTLToolkitType]
     public abstract class RTLCombinationalModule<TInput> : IRTLCombinationalModule<TInput>
         where TInput : new()
@@ -31,6 +32,12 @@ namespace Quokka.RTL
 
         public event EventHandler Scheduled;
 
+        protected void InitInputs(TInput inputs)
+        {
+            if (inputs == null) throw new NullReferenceException(nameof(inputs));
+            Inputs = inputs;
+        }
+
         protected void ThrowNotSetup()
         {
             throw new InvalidOperationException($"Module '{GetType().Name}' is not initialized. Please call .Setup() on module instance or top of the hierarchy.");
@@ -45,7 +52,9 @@ namespace Quokka.RTL
 
         void Initialize()
         {
-            Inputs = CreateAndInitializeRelatedObject<TInput>();
+            if (Inputs == null)
+                Inputs = CreateAndInitializeRelatedObject<TInput>();
+
             InputProps = RTLModuleHelper.SignalProperties(InputsType);
             OutputProps = RTLModuleHelper.OutputProperties(GetType());
             InternalProps = RTLModuleHelper.InternalProperties(GetType());
@@ -354,6 +363,29 @@ namespace Quokka.RTL
             cycleParams.OnBeforeStage?.Invoke();
 
             Commit();
+        }
+
+        protected int[] range(int length)
+        {
+            return Enumerable.Range(0, length).ToArray();
+        }
+
+        protected int[] range(int from, int length)
+        {
+            return Enumerable.Range(from, length).ToArray();
+        }
+
+        [RTLNonSynthesizable]
+        protected void Assert(bool condition, string message)
+        {
+            if (!condition)
+                throw new Exception($"Condition failed: {message}");
+        }
+
+        [RTLNonSynthesizable]
+        protected void Assert(Action action)
+        {
+            action();
         }
     }
 }

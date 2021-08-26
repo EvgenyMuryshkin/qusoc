@@ -3,6 +3,7 @@ using QRV32.CPU;
 using QRV32.Tests;
 using Quokka.Public.Tools;
 using Quokka.RISCV.Integration.Client;
+using QuokkaIntegrationTests;
 using System;
 using System.IO;
 using System.Linq;
