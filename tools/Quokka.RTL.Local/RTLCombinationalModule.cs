@@ -220,7 +220,20 @@ namespace Quokka.RTL
                     };
                 default:
                     var valueType = value.GetType();
-                    if (value.GetType().IsClass)
+                    if (valueType.IsArray)
+                    {
+                        var result = new List<VCDVariable>();
+                        // TODO: array of objects
+                        var enumerable = value as IEnumerable;
+                        var idx = 0;
+                        foreach (var item in enumerable)
+                        {
+                            result.AddRange(ToVCDVariables($"{name}{idx++}", item, includeToolkitTypes));
+                        }
+                        return result;
+                    }
+
+                    if (valueType.IsClass)
                     {
                         var result = new List<VCDVariable>();
 

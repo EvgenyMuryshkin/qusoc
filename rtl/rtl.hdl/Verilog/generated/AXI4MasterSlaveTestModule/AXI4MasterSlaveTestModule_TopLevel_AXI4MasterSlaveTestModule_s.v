@@ -16,74 +16,77 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 // 
-// System configuration name is AXI4RegisterModuleB4_TopLevel, clock frequency is 1Hz, Top-level
+// System configuration name is AXI4MasterSlaveTestModule_TopLevel_AXI4MasterSlaveTestModule_s, clock frequency is 1Hz, Embedded
 // FSM summary
 // -- Packages
-module AXI4RegisterModuleB4_TopLevel (
+module AXI4MasterSlaveTestModule_TopLevel_AXI4MasterSlaveTestModule_s (
 // [BEGIN USER PORTS]
 // [END USER PORTS]
 
-	input wire  Clock,
-	input wire  Reset,
-	input wire  [7: 0] M2S_AR_ARID,
-	input wire  [31: 0] M2S_AR_ARADDR,
-	input wire  [7: 0] M2S_AR_ARLEN,
-	input wire  [2: 0] M2S_AR_ARSIZE,
-	input wire  [1: 0] M2S_AR_ARBURST,
-	input wire  [1: 0] M2S_AR_ARLOCK,
-	input wire  [3: 0] M2S_AR_ARCACHE,
-	input wire  [2: 0] M2S_AR_ARPROT,
-	input wire  [3: 0] M2S_AR_ARQOS,
-	input wire  [7: 0] M2S_AR_ARREGION,
-	input wire  [7: 0] M2S_AR_ARUSER,
+	input wire  BoardSignals_Clock,
+	input wire  BoardSignals_Reset,
+	input wire  BoardSignals_Running,
+	input wire  BoardSignals_Starting,
+	input wire  BoardSignals_Started,
+	input wire  [8: 1] M2S_AR_ARID,
+	input wire  [32: 1] M2S_AR_ARADDR,
+	input wire  [8: 1] M2S_AR_ARLEN,
+	input wire  [3: 1] M2S_AR_ARSIZE,
+	input wire  [2: 1] M2S_AR_ARBURST,
+	input wire  [2: 1] M2S_AR_ARLOCK,
+	input wire  [4: 1] M2S_AR_ARCACHE,
+	input wire  [3: 1] M2S_AR_ARPROT,
+	input wire  [4: 1] M2S_AR_ARQOS,
+	input wire  [8: 1] M2S_AR_ARREGION,
+	input wire  [8: 1] M2S_AR_ARUSER,
 	input wire  M2S_AR_ARVALID,
 	input wire  M2S_R_RREADY,
-	input wire  [7: 0] M2S_AW_AWID,
-	input wire  [31: 0] M2S_AW_AWADDR,
-	input wire  [7: 0] M2S_AW_AWLEN,
-	input wire  [2: 0] M2S_AW_AWSIZE,
-	input wire  [1: 0] M2S_AW_AWBURST,
-	input wire  [1: 0] M2S_AW_AWLOCK,
-	input wire  [3: 0] M2S_AW_AWCACHE,
-	input wire  [2: 0] M2S_AW_AWPROT,
-	input wire  [3: 0] M2S_AW_AWQOS,
-	input wire  [7: 0] M2S_AW_AWREGION,
-	input wire  [7: 0] M2S_AW_AWUSER,
+	input wire  [8: 1] M2S_AW_AWID,
+	input wire  [32: 1] M2S_AW_AWADDR,
+	input wire  [8: 1] M2S_AW_AWLEN,
+	input wire  [3: 1] M2S_AW_AWSIZE,
+	input wire  [2: 1] M2S_AW_AWBURST,
+	input wire  [2: 1] M2S_AW_AWLOCK,
+	input wire  [4: 1] M2S_AW_AWCACHE,
+	input wire  [3: 1] M2S_AW_AWPROT,
+	input wire  [4: 1] M2S_AW_AWQOS,
+	input wire  [8: 1] M2S_AW_AWREGION,
+	input wire  [8: 1] M2S_AW_AWUSER,
 	input wire  M2S_AW_AWVALID,
-	input wire  [7: 0] M2S_W_WID,
-	input wire  [7: 0] M2S_W_WDATA0,
-	input wire  [7: 0] M2S_W_WDATA1,
-	input wire  [7: 0] M2S_W_WDATA2,
-	input wire  [7: 0] M2S_W_WDATA3,
-	input wire  [3: 0] M2S_W_WSTRB,
+	input wire  [8: 1] M2S_W_WID,
+	input wire  [8: 1] M2S_W_WDATA0,
+	input wire  [8: 1] M2S_W_WDATA1,
+	input wire  [8: 1] M2S_W_WDATA2,
+	input wire  [8: 1] M2S_W_WDATA3,
+	input wire  [4: 1] M2S_W_WSTRB,
 	input wire  M2S_W_WLAST,
-	input wire  [7: 0] M2S_W_WUSER,
+	input wire  [8: 1] M2S_W_WUSER,
 	input wire  M2S_W_WVALID,
 	input wire  M2S_B_BREADY,
 	input wire  WE,
-	input wire  [7: 0] WDATA0,
-	input wire  [7: 0] WDATA1,
-	input wire  [7: 0] WDATA2,
-	input wire  [7: 0] WDATA3,
-	output wire [7: 0] OutData0,
-	output wire [7: 0] OutData1,
-	output wire [7: 0] OutData2,
-	output wire [7: 0] OutData3,
+	input wire  [8: 1] WDATA0,
+	input wire  [8: 1] WDATA1,
+	input wire  [8: 1] WDATA2,
+	input wire  [8: 1] WDATA3,
+	output wire [8: 1] OutData0,
+	output wire [8: 1] OutData1,
+	output wire [8: 1] OutData2,
+	output wire [8: 1] OutData3,
 	output wire OutACK,
 	output wire S2M_AR_ARREADY,
 	output wire S2M_AW_AWREADY,
-	output wire [7: 0] S2M_B_BID,
-	output wire [1: 0] S2M_B_BRESP,
-	output wire [7: 0] S2M_B_BUSER,
+	output wire [8: 1] S2M_B_BID,
+	output wire [2: 1] S2M_B_BRESP,
+	output wire [8: 1] S2M_B_BUSER,
 	output wire S2M_B_BVALID,
-	output wire [7: 0] S2M_R_RID,
-	output wire [7: 0] S2M_R_RDATA0,
-	output wire [7: 0] S2M_R_RDATA1,
-	output wire [7: 0] S2M_R_RDATA2,
-	output wire [7: 0] S2M_R_RDATA3,
-	output wire [1: 0] S2M_R_RRESP,
+	output wire [8: 1] S2M_R_RID,
+	output wire [8: 1] S2M_R_RDATA0,
+	output wire [8: 1] S2M_R_RDATA1,
+	output wire [8: 1] S2M_R_RDATA2,
+	output wire [8: 1] S2M_R_RDATA3,
+	output wire [2: 1] S2M_R_RRESP,
 	output wire S2M_R_RLAST,
-	output wire [7: 0] S2M_R_RUSER,
+	output wire [8: 1] S2M_R_RUSER,
 	output wire S2M_R_RVALID,
 	output wire S2M_W_WREADY
     );
@@ -240,9 +243,9 @@ begin : Init_NextState_bytes
 	for (NextState_bytes_Iterator = 0; NextState_bytes_Iterator < 4; NextState_bytes_Iterator = NextState_bytes_Iterator + 1)
 		NextState_bytes[NextState_bytes_Iterator] = 0;
 end
-always @(posedge Clock)
+always @(posedge BoardSignals_Clock)
 begin
-if ( Reset == 1 ) begin
+if ( BoardSignals_Reset == 1 ) begin
 State_readFSM <= State_readFSMDefault;
 State_writeFSM <= State_writeFSMDefault;
 end
@@ -251,9 +254,9 @@ State_readFSM <= NextState_readFSM;
 State_writeFSM <= NextState_writeFSM;
 end
 end
-always @(posedge Clock)
+always @(posedge BoardSignals_Clock)
 begin
-if ( Reset == 1 ) begin
+if ( BoardSignals_Reset == 1 ) begin
 for (State_bytes_Iterator = 0; State_bytes_Iterator < 4; State_bytes_Iterator = State_bytes_Iterator + 1)
 begin
 State_bytes[State_bytes_Iterator] <= State_bytesDefault;

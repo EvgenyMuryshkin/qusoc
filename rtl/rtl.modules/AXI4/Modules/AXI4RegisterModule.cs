@@ -6,7 +6,7 @@ namespace rtl.modules
 {
     public class AXI4RegisterModuleInputs
     {
-        public AXI4RegisterModuleInputs() { }
+        public AXI4RegisterModuleInputs() : this(axiSize.B4) { }
 
         public AXI4RegisterModuleInputs(axiSize size)
         {
@@ -16,12 +16,12 @@ namespace rtl.modules
 
         public AXI4_M2S M2S;
         public bool WE = false;
-        public byte[] WDATA;
+        public byte[] WDATA = null;
     }
 
     public class AXI4RegisterModuleState
     {
-        public AXI4RegisterModuleState() { }
+        public AXI4RegisterModuleState() : this(axiSize.B4) { }
         public AXI4RegisterModuleState(axiSize size) 
         {
             bytes = new byte[AXI4Tools.Bytes(size)];
@@ -104,6 +104,11 @@ namespace rtl.modules
                         NextState.readFSM = axiSlaveReadFSM.Idle;
                 }
                 break;
+                default:
+                {
+                    NextState.readFSM = axiSlaveReadFSM.Idle;
+                }
+                break;
             }
  
             switch (State.writeFSM)
@@ -150,15 +155,12 @@ namespace rtl.modules
                         NextState.writeFSM = axiSlaveWriteFSM.Idle;
                 }
                 break;
-            }
- 
-        }
-    }
-    public class AXI4RegisterModuleB4 : AXI4RegisterModule
-    {
-        public AXI4RegisterModuleB4() : base(axiSize.B4)
-        {
-
+                default:
+                {
+                    NextState.writeFSM = axiSlaveWriteFSM.Idle;
+                }
+                break;
+            } 
         }
     }
 }

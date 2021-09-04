@@ -4,11 +4,6 @@ using System.Text;
 
 namespace RTL.Modules
 {
-    public enum axiMasterFSM
-    {
-        RESET
-    }
-
     public enum axiSlaveWriteFSM
     {
         RESET,
@@ -21,5 +16,15 @@ namespace RTL.Modules
         RESET,
         Idle,
         OK
+    }
+
+    public enum axiMasterFSM
+    {
+        RESET,
+        Idle,
+        RWAIT,
+        RACK,
+        WWAIT,
+        WACK,
     }
 }

@@ -2,7 +2,7 @@
 {
     public class AXI4_S2M
     {
-        public AXI4_S2M() { }
+        public AXI4_S2M() : this(axiSize.B4) { }
         public AXI4_S2M(axiSize size)
         {
             AR = new AXI4_S_AR();

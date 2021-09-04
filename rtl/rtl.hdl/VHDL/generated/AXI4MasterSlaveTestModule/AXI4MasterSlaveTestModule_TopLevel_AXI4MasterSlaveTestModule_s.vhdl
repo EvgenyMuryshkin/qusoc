@@ -14,80 +14,79 @@
 --   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 --   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 -- 
--- System configuration name is AXI4RegisterModuleB4_TopLevel, clock frequency is 1Hz, Top-level
+-- System configuration name is AXI4MasterSlaveTestModule_TopLevel_AXI4MasterSlaveTestModule_s, clock frequency is 1Hz, Embedded
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 use work.Quokka.all;
 
-entity AXI4RegisterModuleB4_TopLevel is
+entity AXI4MasterSlaveTestModule_TopLevel_AXI4MasterSlaveTestModule_s is
     port
     (
 -- [BEGIN USER PORTS]
 -- [END USER PORTS]
 
-Clock : in  std_logic;
-Reset : in  std_logic;
-M2S_AR_ARID : in  unsigned(7 downto 0);
-M2S_AR_ARADDR : in  unsigned(31 downto 0);
-M2S_AR_ARLEN : in  unsigned(7 downto 0);
-M2S_AR_ARSIZE : in  unsigned(2 downto 0);
-M2S_AR_ARBURST : in  unsigned(1 downto 0);
-M2S_AR_ARLOCK : in  unsigned(1 downto 0);
-M2S_AR_ARCACHE : in  unsigned(3 downto 0);
-M2S_AR_ARPROT : in  unsigned(2 downto 0);
-M2S_AR_ARQOS : in  unsigned(3 downto 0);
-M2S_AR_ARREGION : in  unsigned(7 downto 0);
-M2S_AR_ARUSER : in  unsigned(7 downto 0);
+BoardSignals : in  BoardSignalsType;
+M2S_AR_ARID : in  unsigned(8 downto 1);
+M2S_AR_ARADDR : in  unsigned(32 downto 1);
+M2S_AR_ARLEN : in  unsigned(8 downto 1);
+M2S_AR_ARSIZE : in  unsigned(3 downto 1);
+M2S_AR_ARBURST : in  unsigned(2 downto 1);
+M2S_AR_ARLOCK : in  unsigned(2 downto 1);
+M2S_AR_ARCACHE : in  unsigned(4 downto 1);
+M2S_AR_ARPROT : in  unsigned(3 downto 1);
+M2S_AR_ARQOS : in  unsigned(4 downto 1);
+M2S_AR_ARREGION : in  unsigned(8 downto 1);
+M2S_AR_ARUSER : in  unsigned(8 downto 1);
 M2S_AR_ARVALID : in  std_logic;
 M2S_R_RREADY : in  std_logic;
-M2S_AW_AWID : in  unsigned(7 downto 0);
-M2S_AW_AWADDR : in  unsigned(31 downto 0);
-M2S_AW_AWLEN : in  unsigned(7 downto 0);
-M2S_AW_AWSIZE : in  unsigned(2 downto 0);
-M2S_AW_AWBURST : in  unsigned(1 downto 0);
-M2S_AW_AWLOCK : in  unsigned(1 downto 0);
-M2S_AW_AWCACHE : in  unsigned(3 downto 0);
-M2S_AW_AWPROT : in  unsigned(2 downto 0);
-M2S_AW_AWQOS : in  unsigned(3 downto 0);
-M2S_AW_AWREGION : in  unsigned(7 downto 0);
-M2S_AW_AWUSER : in  unsigned(7 downto 0);
+M2S_AW_AWID : in  unsigned(8 downto 1);
+M2S_AW_AWADDR : in  unsigned(32 downto 1);
+M2S_AW_AWLEN : in  unsigned(8 downto 1);
+M2S_AW_AWSIZE : in  unsigned(3 downto 1);
+M2S_AW_AWBURST : in  unsigned(2 downto 1);
+M2S_AW_AWLOCK : in  unsigned(2 downto 1);
+M2S_AW_AWCACHE : in  unsigned(4 downto 1);
+M2S_AW_AWPROT : in  unsigned(3 downto 1);
+M2S_AW_AWQOS : in  unsigned(4 downto 1);
+M2S_AW_AWREGION : in  unsigned(8 downto 1);
+M2S_AW_AWUSER : in  unsigned(8 downto 1);
 M2S_AW_AWVALID : in  std_logic;
-M2S_W_WID : in  unsigned(7 downto 0);
-M2S_W_WDATA0 : in  unsigned(7 downto 0);
-M2S_W_WDATA1 : in  unsigned(7 downto 0);
-M2S_W_WDATA2 : in  unsigned(7 downto 0);
-M2S_W_WDATA3 : in  unsigned(7 downto 0);
-M2S_W_WSTRB : in  unsigned(3 downto 0);
+M2S_W_WID : in  unsigned(8 downto 1);
+M2S_W_WDATA0 : in  unsigned(8 downto 1);
+M2S_W_WDATA1 : in  unsigned(8 downto 1);
+M2S_W_WDATA2 : in  unsigned(8 downto 1);
+M2S_W_WDATA3 : in  unsigned(8 downto 1);
+M2S_W_WSTRB : in  unsigned(4 downto 1);
 M2S_W_WLAST : in  std_logic;
-M2S_W_WUSER : in  unsigned(7 downto 0);
+M2S_W_WUSER : in  unsigned(8 downto 1);
 M2S_W_WVALID : in  std_logic;
 M2S_B_BREADY : in  std_logic;
 WE : in  std_logic;
-WDATA0 : in  unsigned(7 downto 0);
-WDATA1 : in  unsigned(7 downto 0);
-WDATA2 : in  unsigned(7 downto 0);
-WDATA3 : in  unsigned(7 downto 0);
-OutData0 : out  unsigned(7 downto 0);
-OutData1 : out  unsigned(7 downto 0);
-OutData2 : out  unsigned(7 downto 0);
-OutData3 : out  unsigned(7 downto 0);
+WDATA0 : in  unsigned(8 downto 1);
+WDATA1 : in  unsigned(8 downto 1);
+WDATA2 : in  unsigned(8 downto 1);
+WDATA3 : in  unsigned(8 downto 1);
+OutData0 : out  unsigned(8 downto 1);
+OutData1 : out  unsigned(8 downto 1);
+OutData2 : out  unsigned(8 downto 1);
+OutData3 : out  unsigned(8 downto 1);
 OutACK : out  std_logic;
 S2M_AR_ARREADY : out  std_logic;
 S2M_AW_AWREADY : out  std_logic;
-S2M_B_BID : out  unsigned(7 downto 0);
-S2M_B_BRESP : out  unsigned(1 downto 0);
-S2M_B_BUSER : out  unsigned(7 downto 0);
+S2M_B_BID : out  unsigned(8 downto 1);
+S2M_B_BRESP : out  unsigned(2 downto 1);
+S2M_B_BUSER : out  unsigned(8 downto 1);
 S2M_B_BVALID : out  std_logic;
-S2M_R_RID : out  unsigned(7 downto 0);
-S2M_R_RDATA0 : out  unsigned(7 downto 0);
-S2M_R_RDATA1 : out  unsigned(7 downto 0);
-S2M_R_RDATA2 : out  unsigned(7 downto 0);
-S2M_R_RDATA3 : out  unsigned(7 downto 0);
-S2M_R_RRESP : out  unsigned(1 downto 0);
+S2M_R_RID : out  unsigned(8 downto 1);
+S2M_R_RDATA0 : out  unsigned(8 downto 1);
+S2M_R_RDATA1 : out  unsigned(8 downto 1);
+S2M_R_RDATA2 : out  unsigned(8 downto 1);
+S2M_R_RDATA3 : out  unsigned(8 downto 1);
+S2M_R_RRESP : out  unsigned(2 downto 1);
 S2M_R_RLAST : out  std_logic;
-S2M_R_RUSER : out  unsigned(7 downto 0);
+S2M_R_RUSER : out  unsigned(8 downto 1);
 S2M_R_RVALID : out  std_logic;
 S2M_W_WREADY : out  std_logic
     );
@@ -95,7 +94,7 @@ end entity;
 
 -- FSM summary
 -- Packages
-architecture rtl of AXI4RegisterModuleB4_TopLevel is
+architecture rtl of AXI4MasterSlaveTestModule_TopLevel_AXI4MasterSlaveTestModule_s is
 -- [BEGIN USER SIGNALS]
 -- [END USER SIGNALS]
 constant HiSignal : std_logic := '1';
@@ -239,10 +238,10 @@ signal State_bytes : State_bytesArray := (others => (others => '0'));
 type NextState_bytesArray is array(0 to 3) of unsigned(7 downto 0);
 signal NextState_bytes : NextState_bytesArray := (others => (others => '0'));
 begin
-process (Clock, NextState_readFSM, NextState_writeFSM, Reset)
+process (BoardSignals, NextState_readFSM, NextState_writeFSM)
 begin
-if rising_edge(Clock) then
-if ( Reset = '1' ) then
+if rising_edge(BoardSignals.Clock) then
+if ( BoardSignals.Reset = '1' ) then
 State_readFSM <= State_readFSMDefault;
 State_writeFSM <= State_writeFSMDefault;
 else
@@ -251,10 +250,10 @@ State_writeFSM <= NextState_writeFSM;
 end if;
 end if;
 end process;
-process (Clock, NextState_bytes, Reset, State_bytesDefault)
+process (BoardSignals, NextState_bytes, State_bytesDefault)
 begin
-if rising_edge(Clock) then
-if ( Reset = '1' ) then
+if rising_edge(BoardSignals.Clock) then
+if ( BoardSignals.Reset = '1' ) then
 for State_bytes_Iterator in 0 to 3 loop
 State_bytes(State_bytes_Iterator) <= State_bytesDefault;
 end loop;
@@ -431,7 +430,7 @@ OutACK <= AXI4RegisterModule_L46F31T81_Expr;
 S2M_AR_ARREADY <= AXI4RegisterModule_L52F27T64_Expr;
 S2M_AW_AWREADY <= AXI4RegisterModule_L64F27T66_Expr;
 S2M_B_BID <= Inputs_M2S_W_WID;
-S2M_B_BRESP <= (0 => AXI4RegisterModule_L73F25T37_Expr, others => '0');
+S2M_B_BRESP <= (1 => AXI4RegisterModule_L73F25T37_Expr, others => '0');
 S2M_B_BUSER <= Inputs_M2S_W_WUSER;
 S2M_B_BVALID <= AXI4RegisterModule_L75F26T63_Expr;
 S2M_R_RID <= Inputs_M2S_AR_ARID;
@@ -439,7 +438,7 @@ S2M_R_RDATA0 <= State_bytes(0);
 S2M_R_RDATA1 <= State_bytes(1);
 S2M_R_RDATA2 <= State_bytes(2);
 S2M_R_RDATA3 <= State_bytes(3);
-S2M_R_RRESP <= (0 => AXI4RegisterModule_L60F25T37_Expr, others => '0');
+S2M_R_RRESP <= (1 => AXI4RegisterModule_L60F25T37_Expr, others => '0');
 S2M_R_RLAST <= AXI4_S_R_L18F29T33_Expr;
 S2M_R_RUSER <= Inputs_M2S_AR_ARUSER;
 S2M_R_RVALID <= AXI4RegisterModule_L58F26T61_Expr;

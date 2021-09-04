@@ -147,6 +147,19 @@ namespace Quokka.RTL.Simulator
             _tbGen?.SetupTestbench();
         }
 
+        public virtual void ClockCycles(Func<TInputs> inputsFactory, Func<bool> runWhile, int maxIterations = 100, string message = "Max cycles exceeded")
+        {
+            while (maxIterations-- >= 0)
+            {
+                if (!runWhile())
+                    return;
+
+                ClockCycle(inputsFactory());
+            }
+
+            throw new Exception(message);
+        }
+
         public virtual void ClockCycle(TInputs inputs)
         {
             // TODO: override parameterless ClockCycle and write tb signals

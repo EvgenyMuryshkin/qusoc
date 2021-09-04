@@ -11,11 +11,11 @@ namespace RTL.Modules
             WSTRB = new RTLBitArray().Resized(AXI4Tools.Bytes(size));
         }
 
-        public byte WID;
+        public byte WID = 0;
         public byte[] WDATA;
         public RTLBitArray WSTRB;
-        public bool WLAST;
-        public byte WUSER;
+        public bool WLAST = true;
+        public byte WUSER = 0;
         public bool WVALID;
     }
 }
