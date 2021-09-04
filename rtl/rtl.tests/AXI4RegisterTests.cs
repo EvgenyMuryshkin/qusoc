@@ -25,8 +25,8 @@ namespace RTL.Modules
         public void SetupTest()
         {
             var (sim, topLevel) = Setup;
-            Assert.AreEqual(topLevel.State.readFSM, axiSlaveReadFSM.Idle);
-            Assert.AreEqual(topLevel.State.writeFSM, axiSlaveWriteFSM.Idle);
+            Assert.AreEqual(topLevel.axiSlave.State.readFSM, axiSlaveReadFSM.Idle);
+            Assert.AreEqual(topLevel.axiSlave.State.writeFSM, axiSlaveWriteFSM.Idle);
         }
 
         [TestMethod]
@@ -39,8 +39,8 @@ namespace RTL.Modules
             topLevel.DeltaCycle(0);
             Assert.IsTrue(topLevel.OutACK);
             sim.ClockCycle();
-            Assert.AreEqual(topLevel.State.readFSM, axiSlaveReadFSM.Idle);
-            Assert.AreEqual(topLevel.State.writeFSM, axiSlaveWriteFSM.Idle);
+            Assert.AreEqual(topLevel.axiSlave.State.readFSM, axiSlaveReadFSM.Idle);
+            Assert.AreEqual(topLevel.axiSlave.State.writeFSM, axiSlaveWriteFSM.Idle);
             Assert.AreEqual(extData, BitConverter.ToInt32(topLevel.OutData));
         }
 
@@ -55,7 +55,7 @@ namespace RTL.Modules
                 M2S = {
                     W = {
                         WDATA = BitConverter.GetBytes(axiData),
-                        WSTRB = new RTLBitArray(true, true, true, true),
+                        WSTRB = new RTLBitArray(0xF)[3,0],
                         WVALID = true
                     },
                     AW = {
@@ -63,13 +63,13 @@ namespace RTL.Modules
                     }
                 }
             });
-            Assert.AreEqual(topLevel.State.readFSM, axiSlaveReadFSM.Idle);
-            Assert.AreEqual(topLevel.State.writeFSM, axiSlaveWriteFSM.OK);
+            Assert.AreEqual(topLevel.axiSlave.State.readFSM, axiSlaveReadFSM.Idle);
+            Assert.AreEqual(topLevel.axiSlave.State.writeFSM, axiSlaveWriteFSM.OK);
 
             // make sure that it waits for master ack
             sim.ClockCycle();
-            Assert.AreEqual(topLevel.State.readFSM, axiSlaveReadFSM.Idle);
-            Assert.AreEqual(topLevel.State.writeFSM, axiSlaveWriteFSM.OK);
+            Assert.AreEqual(topLevel.axiSlave.State.readFSM, axiSlaveReadFSM.Idle);
+            Assert.AreEqual(topLevel.axiSlave.State.writeFSM, axiSlaveWriteFSM.OK);
 
             sim.ClockCycle(new AXI4RegisterModuleInputs(axiSize.B4)
             {
@@ -81,8 +81,8 @@ namespace RTL.Modules
                 }
             });
             Assert.AreEqual(axiData, BitConverter.ToInt32(topLevel.OutData));
-            Assert.AreEqual(topLevel.State.readFSM, axiSlaveReadFSM.Idle);
-            Assert.AreEqual(topLevel.State.writeFSM, axiSlaveWriteFSM.Idle);
+            Assert.AreEqual(topLevel.axiSlave.State.readFSM, axiSlaveReadFSM.Idle);
+            Assert.AreEqual(topLevel.axiSlave.State.writeFSM, axiSlaveWriteFSM.Idle);
         }
 
         [TestMethod]
@@ -105,14 +105,14 @@ namespace RTL.Modules
                     }
                 }
             });
-            Assert.AreEqual(topLevel.State.readFSM, axiSlaveReadFSM.OK);
+            Assert.AreEqual(topLevel.axiSlave.State.readFSM, axiSlaveReadFSM.OK);
             Assert.IsTrue(topLevel.S2M.R.RVALID);
             Assert.AreEqual(extData, BitConverter.ToInt32(topLevel.S2M.R.RDATA));
 
             // make sure that slave waits for master ack
             sim.ClockCycle();
 
-            Assert.AreEqual(topLevel.State.readFSM, axiSlaveReadFSM.OK);
+            Assert.AreEqual(topLevel.axiSlave.State.readFSM, axiSlaveReadFSM.OK);
             Assert.IsTrue(topLevel.S2M.R.RVALID);
             Assert.AreEqual(extData, BitConverter.ToInt32(topLevel.S2M.R.RDATA));
 
@@ -127,7 +127,7 @@ namespace RTL.Modules
                     }
                 }
             });
-            Assert.AreEqual(topLevel.State.readFSM, axiSlaveReadFSM.Idle);
+            Assert.AreEqual(topLevel.axiSlave.State.readFSM, axiSlaveReadFSM.Idle);
             Assert.IsFalse(topLevel.S2M.R.RVALID);
         }
     }
