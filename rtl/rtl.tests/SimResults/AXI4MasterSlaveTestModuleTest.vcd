@@ -1,5 +1,5 @@
 $date
-Saturday, 4 September 2021 10:03:15 PM
+Tuesday, 7 September 2021 8:52:36 PM
 $end
 $version
 Quokka VCD Generator
@@ -172,7 +172,6 @@ $var wire 1 TOP_s_axiSlave_Inputs_M2S_W_WLAST TOP_s_axiSlave_Inputs_M2S_W_WLAST 
 $var wire 8 TOP_s_axiSlave_Inputs_M2S_W_WUSER TOP_s_axiSlave_Inputs_M2S_W_WUSER[7:0] $end
 $var wire 1 TOP_s_axiSlave_Inputs_M2S_W_WVALID TOP_s_axiSlave_Inputs_M2S_W_WVALID $end
 $var wire 1 TOP_s_axiSlave_Inputs_M2S_B_BREADY TOP_s_axiSlave_Inputs_M2S_B_BREADY $end
-$var wire 1 TOP_s_axiSlave_Inputs_RVALID TOP_s_axiSlave_Inputs_RVALID $end
 $var wire 8 TOP_s_axiSlave_Inputs_RDATA0 TOP_s_axiSlave_Inputs_RDATA0[7:0] $end
 $var wire 8 TOP_s_axiSlave_Inputs_RDATA1 TOP_s_axiSlave_Inputs_RDATA1[7:0] $end
 $var wire 8 TOP_s_axiSlave_Inputs_RDATA2 TOP_s_axiSlave_Inputs_RDATA2[7:0] $end
@@ -206,10 +205,14 @@ $var wire 8 TOP_s_axiSlave_Outputs_WDATA1 TOP_s_axiSlave_Outputs_WDATA1[7:0] $en
 $var wire 8 TOP_s_axiSlave_Outputs_WDATA2 TOP_s_axiSlave_Outputs_WDATA2[7:0] $end
 $var wire 8 TOP_s_axiSlave_Outputs_WDATA3 TOP_s_axiSlave_Outputs_WDATA3[7:0] $end
 $var wire 1 TOP_s_axiSlave_Outputs_WVALID TOP_s_axiSlave_Outputs_WVALID $end
+$var wire 1 TOP_s_axiSlave_Outputs_RVALID TOP_s_axiSlave_Outputs_RVALID $end
+$var wire 32 TOP_s_axiSlave_Outputs_ARADDR TOP_s_axiSlave_Outputs_ARADDR[31:0] $end
+$var wire 32 TOP_s_axiSlave_Outputs_AWADDR TOP_s_axiSlave_Outputs_AWADDR[31:0] $end
 $upscope
 $end
 $scope module Internals $end
 $var wire 1 TOP_s_axiSlave_Internals_axiWE TOP_s_axiSlave_Internals_axiWE $end
+$var wire 1 TOP_s_axiSlave_Internals_axiRE TOP_s_axiSlave_Internals_axiRE $end
 $var string 1 TOP_s_axiSlave_Internals_sizeToString TOP_s_axiSlave_Internals_sizeToString $end
 $var wire 3 TOP_s_axiSlave_Internals_size TOP_s_axiSlave_Internals_size[2:0] $end
 $upscope
@@ -509,7 +512,6 @@ b0000 TOP_s_axiSlave_Inputs_M2S_W_WSTRB
 b00000000 TOP_s_axiSlave_Inputs_M2S_W_WUSER
 0TOP_s_axiSlave_Inputs_M2S_W_WVALID
 0TOP_s_axiSlave_Inputs_M2S_B_BREADY
-1TOP_s_axiSlave_Inputs_RVALID
 b00000000 TOP_s_axiSlave_Inputs_RDATA0
 b00000000 TOP_s_axiSlave_Inputs_RDATA1
 b00000000 TOP_s_axiSlave_Inputs_RDATA2
@@ -540,7 +542,11 @@ b00000000 TOP_s_axiSlave_Outputs_WDATA1
 b00000000 TOP_s_axiSlave_Outputs_WDATA2
 b00000000 TOP_s_axiSlave_Outputs_WDATA3
 0TOP_s_axiSlave_Outputs_WVALID
+0TOP_s_axiSlave_Outputs_RVALID
+b00000000000000000000000000000000 TOP_s_axiSlave_Outputs_ARADDR
+b00000000000000000000000000000000 TOP_s_axiSlave_Outputs_AWADDR
 0TOP_s_axiSlave_Internals_axiWE
+0TOP_s_axiSlave_Internals_axiRE
 sB4 TOP_s_axiSlave_Internals_sizeToString
 b010 TOP_s_axiSlave_Internals_size
 sIdle TOP_s_axiSlave_State_readFSMToString
@@ -813,6 +819,8 @@ b010 TOP_m_State_fsm
 0TOP_Inputs_RE
 1TOP_s_Inputs_M2S_AR_ARVALID
 1TOP_s_axiSlave_Inputs_M2S_AR_ARVALID
+1TOP_s_axiSlave_Outputs_RVALID
+1TOP_s_axiSlave_Internals_axiRE
 sOK TOP_s_axiSlave_NextState_readFSMToString
 b10 TOP_s_axiSlave_NextState_readFSM
 0TOP_m_Inputs_RE
@@ -855,6 +863,8 @@ b011 TOP_m_State_fsm
 1TOP_s_Inputs_M2S_R_RREADY
 0TOP_s_axiSlave_Inputs_M2S_AR_ARVALID
 1TOP_s_axiSlave_Inputs_M2S_R_RREADY
+0TOP_s_axiSlave_Outputs_RVALID
+0TOP_s_axiSlave_Internals_axiRE
 sIdle TOP_s_axiSlave_NextState_readFSMToString
 b01 TOP_s_axiSlave_NextState_readFSM
 sIdle TOP_m_NextState_fsmToString

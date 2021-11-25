@@ -54,7 +54,6 @@ namespace rtl.modules
             {
                 M2S = Inputs.M2S,
                 RACK = true,
-                RVALID = true,
                 RDATA = State.bytes,
                 WACK = true
             });

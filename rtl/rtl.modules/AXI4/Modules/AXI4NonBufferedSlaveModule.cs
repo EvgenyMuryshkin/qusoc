@@ -15,7 +15,6 @@ namespace rtl.modules
         }
 
         public AXI4_M2S M2S;
-        public bool RVALID;
         public byte[] RDATA;
         public bool RACK;
         public bool WACK;
@@ -68,10 +67,15 @@ namespace rtl.modules
         };
 
         bool axiWE => Inputs.M2S.AW.AWVALID && Inputs.M2S.W.WVALID;
+        bool axiRE => Inputs.M2S.AR.ARVALID;
 
         public RTLBitArray WSTRB => Inputs.M2S.W.WSTRB;
         public byte[] WDATA => Inputs.M2S.W.WDATA;
         public bool WVALID => axiWE;
+        public bool RVALID => axiRE;
+
+        public uint ARADDR => Inputs.M2S.AR.ARADDR;
+        public uint AWADDR => Inputs.M2S.AW.AWADDR;
 
         protected override void OnStage()
         {

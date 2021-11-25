@@ -37,7 +37,7 @@
 
 set_global_assignment -name FAMILY "Cyclone II"
 set_global_assignment -name DEVICE EP2C70F672C6
-set_global_assignment -name TOP_LEVEL_ENTITY AXI4MasterSlaveTestModule_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY SP_WF_WSTRB_RAMModule_TopLevel
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "20:45:17  JUNE 07, 2019"
 set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
@@ -59,13 +59,13 @@ set_global_assignment -name VECTOR_COMPARE_TRIGGER_MODE INPUT_EDGE
 
 set_global_assignment -name SDC_FILE rtl.sdc
 
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/AXI4MasterSlaveTestModule.vwf
+
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
 set_instance_assignment -name CLOCK_SETTINGS Clock -to Clock
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/AXI4MasterSlaveTestModule.vwf
-
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AndGateModule.vwf
@@ -178,6 +178,7 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/SP_RF_RAMModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/SP_RF_RAMModule/SP_RF_RAMModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/SP_WF_RAMModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/SP_WF_RAMModule/SP_WF_RAMModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/SP_WF_WSTRB_RAMModule/SP_WF_WSTRB_RAMModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StageArraysPipelineModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/StageArraysPipelineModule/StageArraysPipelineModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StagePeekPipelineModule.vwf
