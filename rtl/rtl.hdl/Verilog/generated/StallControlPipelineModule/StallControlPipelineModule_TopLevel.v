@@ -11,23 +11,23 @@
 //   You can use some of signals in custom code, but most likely they will not exist in future (e.g. will get shorter or gone completely)
 // * Please send your feedback, comments, improvement ideas etc. to evmuryshkin@gmail.com
 // * Visit https://github.com/EvgenyMuryshkin/QuokkaEvaluation to access latest version of playground
-// 
+//
 // DISCLAIMER:
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
-// 
+//
 // System configuration name is StallControlPipelineModule_TopLevel, clock frequency is 1Hz, Top-level
 // FSM summary
 // -- Packages
-module StallControlPipelineModule_TopLevel (
-// [BEGIN USER PORTS]
-// [END USER PORTS]
-
-	input wire  Clock,
-	input wire  Reset,
-	input wire  [7: 0] inData,
-	input wire  inReady,
-	input wire  inProcessed,
+module StallControlPipelineModule_TopLevel
+(
+	// [BEGIN USER PORTS]
+	// [END USER PORTS]
+	input wire Clock,
+	input wire Reset,
+	input wire [7: 0] inData,
+	input wire inReady,
+	input wire inProcessed,
 	output wire outResult_ready,
 	output wire [15: 0] outResult_result,
 	output wire outResult_pipelineWillStall,
@@ -38,274 +38,282 @@ module StallControlPipelineModule_TopLevel (
 	output wire outResult_stage1Stalled,
 	output wire outResult_stage2WillStall,
 	output wire outResult_stage2Stalled
-    );
-
-// [BEGIN USER SIGNALS]
-// [END USER SIGNALS]
-localparam HiSignal = 1'b1;
-localparam LoSignal = 1'b0;
-wire  Zero = 1'b0;
-wire  One = 1'b1;
-wire  true = 1'b1;
-wire  false = 1'b0;
-wire  Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F69T70_Expr = 1'b0;
-wire  Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F89T90_Expr = 1'b1;
-wire  Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F49T50_Expr = 1'b1;
-wire  [7:0] Inputs_inData;
-wire  Inputs_inReady;
-wire  Inputs_inProcessed;
-wire  Pipeline_PipelinePreview_PipelineWillStall;
-reg  Pipeline_stage0_NextState_ready;
-reg  [7:0] Pipeline_stage0_NextState_data;
-wire  Pipeline_stage0_Preview_StageWillStall;
-reg  Pipeline_stage0_Request_StallPipeline = 1'b0;
-reg  Pipeline_stage0_Request_StallSelf = 1'b0;
-reg  Pipeline_stage0_Request_StallPrev = 1'b0;
-reg  Pipeline_stage1_NextState_ready;
-reg  [7:0] Pipeline_stage1_NextState_data;
-reg  [7:0] Pipeline_stage1_NextState_counter;
-wire  Pipeline_stage1_Preview_StageWillStall;
-reg  Pipeline_stage1_Request_StallPipeline = 1'b0;
-reg  Pipeline_stage1_Request_StallSelf = 1'b0;
-reg  Pipeline_stage1_Request_StallPrev = 1'b0;
-reg  Pipeline_stage2_NextState_ready;
-reg  [7:0] Pipeline_stage2_NextState_result;
-wire  Pipeline_stage2_Preview_StageWillStall;
-reg  Pipeline_stage2_Request_StallPipeline = 1'b0;
-reg  Pipeline_stage2_Request_StallSelf = 1'b0;
-reg  Pipeline_stage2_Request_StallPrev = 1'b0;
-wire  [7:0] Pipeline_Inputs_inData;
-wire  Pipeline_Inputs_inReady;
-wire  Pipeline_Inputs_inProcessed;
-wire  Pipeline_State_ready;
-wire  [7:0] Pipeline_State_result;
-wire  Pipeline_NextState_ready;
-wire  [7:0] Pipeline_NextState_result;
-wire  Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T68_Cast;
-wire  [7:0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F35T91_Cast;
-wire  [7:0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F32T51_Cast;
-wire  Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T47_Cast;
-wire  [7:0] Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F34T64_Cast;
-wire  StallControlPipelineModule_L58F21T47_Cast;
-reg  Pipeline_PipelineControl_PipelineStalled = 1'b0;
-wire  Pipeline_PipelineControl_PipelineStalledDefault = 1'b0;
-reg  Pipeline_stage0_State_ready = 1'b0;
-wire  Pipeline_stage0_State_readyDefault = 1'b0;
-reg  [7:0] Pipeline_stage0_State_data = 8'b00000000;
-wire  [7:0] Pipeline_stage0_State_dataDefault = 8'b00000000;
-reg  Pipeline_stage0_Control_StageStalled = 1'b0;
-wire  Pipeline_stage0_Control_StageStalledDefault = 1'b0;
-reg  Pipeline_stage1_State_ready = 1'b0;
-wire  Pipeline_stage1_State_readyDefault = 1'b0;
-reg  [7:0] Pipeline_stage1_State_data = 8'b00000000;
-wire  [7:0] Pipeline_stage1_State_dataDefault = 8'b00000000;
-reg  [7:0] Pipeline_stage1_State_counter = 8'b00000000;
-wire  [7:0] Pipeline_stage1_State_counterDefault = 8'b00000000;
-reg  Pipeline_stage1_Control_StageStalled = 1'b0;
-wire  Pipeline_stage1_Control_StageStalledDefault = 1'b0;
-reg  Pipeline_stage2_State_ready = 1'b0;
-wire  Pipeline_stage2_State_readyDefault = 1'b0;
-reg  [7:0] Pipeline_stage2_State_result = 8'b00000000;
-wire  [7:0] Pipeline_stage2_State_resultDefault = 8'b00000000;
-reg  Pipeline_stage2_Control_StageStalled = 1'b0;
-wire  Pipeline_stage2_Control_StageStalledDefault = 1'b0;
-wire  Pipeline_PipelinePreview_PipelineWillStall_Source;
-wire  Pipeline_PipelinePreview_PipelineWillStall_Source_1;
-wire  Pipeline_PipelinePreview_PipelineWillStall_Source_2;
-wire  Pipeline_PipelinePreview_PipelineWillStall_Source_3;
-wire  Pipeline_PipelinePreview_PipelineWillStall_Source_4;
-wire  Pipeline_stage0_Preview_StageWillStall_Source;
-wire  Pipeline_stage0_Preview_StageWillStall_Source_1;
-wire  Pipeline_stage0_Preview_StageWillStall_Source_2;
-wire  Pipeline_stage0_Preview_StageWillStall_Source_3;
-wire  Pipeline_stage0_Preview_StageWillStall_Source_4;
-wire  Pipeline_stage1_Preview_StageWillStall_Source;
-wire  Pipeline_stage1_Preview_StageWillStall_Source_1;
-wire  Pipeline_stage1_Preview_StageWillStall_Source_2;
-wire  Pipeline_stage1_Preview_StageWillStall_Source_3;
-wire  Pipeline_stage1_Preview_StageWillStall_Source_4;
-wire  Pipeline_stage2_Preview_StageWillStall_Source;
-wire  Pipeline_stage2_Preview_StageWillStall_Source_1;
-wire  Pipeline_stage2_Preview_StageWillStall_Source_2;
-wire  Pipeline_StallControlPipelineModule_L79F17L87T18_StallControlPipelineModule_L81F54T64_Expr;
-wire  Pipeline_StallControlPipelineModule_L79F17L87T18_StallControlPipelineModule_L81F54T64_Expr_1;
-wire  Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T97_Expr;
-wire  Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T97_Expr_1;
-wire  Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T97_Expr_2;
-wire  Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T75_Expr;
-wire  Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T75_Expr_1;
-wire  Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T75_Expr_2;
-wire  Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L102F58T77_Expr;
-wire  Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L102F58T77_Expr_1;
-wire  [9:0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F73T90_Expr;
-wire signed  [9:0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F73T90_Expr_1;
-wire signed  [9:0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F73T90_Expr_2;
-wire  [9:0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F39T50_Expr;
-wire signed  [9:0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F39T50_Expr_1;
-wire signed  [9:0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F39T50_Expr_2;
-wire  [9:0] Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F41T63_Expr;
-wire signed  [9:0] Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F41T63_Expr_1;
-wire signed  [9:0] Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F41T63_Expr_2;
-wire  Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F73T96_Expr;
-wire signed  [8:0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F73T96_ExprLhs;
-wire signed  [8:0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F73T96_ExprRhs;
-wire  Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T66_Expr;
-wire signed  [8:0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T66_ExprLhs;
-wire signed  [8:0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T66_ExprRhs;
-wire  Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F51T75_Expr;
-wire signed  [8:0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F51T75_ExprLhs;
-wire signed  [8:0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F51T75_ExprRhs;
-reg  [7:0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_Lookup;
-wire  Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_LookupMultiplexerAddress;
-wire  [7:0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_Lookup1;
-wire  [7:0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_Lookup2;
-always @(posedge Clock)
-begin
-if ( Reset == 1 ) begin
-Pipeline_PipelineControl_PipelineStalled <= Pipeline_PipelineControl_PipelineStalledDefault;
-Pipeline_stage0_State_ready <= Pipeline_stage0_State_readyDefault;
-Pipeline_stage0_State_data <= Pipeline_stage0_State_dataDefault;
-Pipeline_stage0_Control_StageStalled <= Pipeline_stage0_Control_StageStalledDefault;
-Pipeline_stage1_State_ready <= Pipeline_stage1_State_readyDefault;
-Pipeline_stage1_State_data <= Pipeline_stage1_State_dataDefault;
-Pipeline_stage1_State_counter <= Pipeline_stage1_State_counterDefault;
-Pipeline_stage1_Control_StageStalled <= Pipeline_stage1_Control_StageStalledDefault;
-Pipeline_stage2_State_ready <= Pipeline_stage2_State_readyDefault;
-Pipeline_stage2_State_result <= Pipeline_stage2_State_resultDefault;
-Pipeline_stage2_Control_StageStalled <= Pipeline_stage2_Control_StageStalledDefault;
-end
-else begin
-Pipeline_PipelineControl_PipelineStalled <= Pipeline_PipelinePreview_PipelineWillStall;
-Pipeline_stage0_Control_StageStalled <= Pipeline_stage0_Preview_StageWillStall;
-Pipeline_stage1_Control_StageStalled <= Pipeline_stage1_Preview_StageWillStall;
-Pipeline_stage2_Control_StageStalled <= Pipeline_stage2_Preview_StageWillStall;
-if ( Pipeline_stage0_Preview_StageWillStall != 1 ) begin
-Pipeline_stage0_State_ready <= Pipeline_stage0_NextState_ready;
-Pipeline_stage0_State_data <= Pipeline_stage0_NextState_data;
-end
-if ( Pipeline_stage1_Preview_StageWillStall != 1 ) begin
-Pipeline_stage1_State_ready <= Pipeline_stage1_NextState_ready;
-Pipeline_stage1_State_data <= Pipeline_stage1_NextState_data;
-Pipeline_stage1_State_counter <= Pipeline_stage1_NextState_counter;
-end
-if ( Pipeline_stage2_Preview_StageWillStall != 1 ) begin
-Pipeline_stage2_State_ready <= Pipeline_stage2_NextState_ready;
-Pipeline_stage2_State_result <= Pipeline_stage2_NextState_result;
-end
-end
-end
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F73T96_Expr = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F73T96_ExprLhs < Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F73T96_ExprRhs ? 1'b1 : 1'b0;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T66_Expr = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T66_ExprLhs == Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T66_ExprRhs ? 1'b1 : 1'b0;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F51T75_Expr = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F51T75_ExprLhs == Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F51T75_ExprRhs ? 1'b1 : 1'b0;
-assign Pipeline_PipelinePreview_PipelineWillStall_Source = Pipeline_PipelinePreview_PipelineWillStall_Source_1 | Pipeline_PipelinePreview_PipelineWillStall_Source_2 | Pipeline_PipelinePreview_PipelineWillStall_Source_3 | Pipeline_PipelinePreview_PipelineWillStall_Source_4;
-assign Pipeline_stage0_Preview_StageWillStall_Source = Pipeline_stage0_Preview_StageWillStall_Source_1 | Pipeline_stage0_Preview_StageWillStall_Source_2 | Pipeline_stage0_Preview_StageWillStall_Source_3 | Pipeline_stage0_Preview_StageWillStall_Source_4;
-assign Pipeline_stage1_Preview_StageWillStall_Source = Pipeline_stage1_Preview_StageWillStall_Source_1 | Pipeline_stage1_Preview_StageWillStall_Source_2 | Pipeline_stage1_Preview_StageWillStall_Source_3 | Pipeline_stage1_Preview_StageWillStall_Source_4;
-assign Pipeline_stage2_Preview_StageWillStall_Source = Pipeline_stage2_Preview_StageWillStall_Source_1 | Pipeline_stage2_Preview_StageWillStall_Source_2;
-assign Pipeline_StallControlPipelineModule_L79F17L87T18_StallControlPipelineModule_L81F54T64_Expr = ~Pipeline_StallControlPipelineModule_L79F17L87T18_StallControlPipelineModule_L81F54T64_Expr_1;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T97_Expr = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T97_Expr_1 & Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T97_Expr_2;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T75_Expr = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T75_Expr_1 & Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T75_Expr_2;
-assign Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L102F58T77_Expr = ~Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L102F58T77_Expr_1;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F73T90_Expr = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F73T90_Expr_1 + Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F73T90_Expr_2;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F39T50_Expr = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F39T50_Expr_1 + Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F39T50_Expr_2;
-assign Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F41T63_Expr = Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F41T63_Expr_1 + Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F41T63_Expr_2;
-always @*
-begin
-case (Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_LookupMultiplexerAddress)
-    'b0:
-Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_Lookup = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_Lookup1;
-    'b1:
-Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_Lookup = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_Lookup2;
-  default:
-Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_Lookup = 'b00000000;
-endcase
-
-end
-always @*
-begin
-Pipeline_stage0_NextState_ready = Pipeline_stage0_State_ready;
-Pipeline_stage0_NextState_data = Pipeline_stage0_State_data;
-Pipeline_stage1_NextState_ready = Pipeline_stage1_State_ready;
-Pipeline_stage1_NextState_data = Pipeline_stage1_State_data;
-Pipeline_stage1_NextState_counter = Pipeline_stage1_State_counter;
-Pipeline_stage2_NextState_ready = Pipeline_stage2_State_ready;
-Pipeline_stage2_NextState_result = Pipeline_stage2_State_result;
-Pipeline_stage0_Request_StallSelf = Pipeline_StallControlPipelineModule_L79F17L87T18_StallControlPipelineModule_L81F54T64_Expr;
-Pipeline_stage0_NextState_ready = Pipeline_Inputs_inReady;
-Pipeline_stage0_NextState_data = Pipeline_Inputs_inData;
-Pipeline_stage1_Request_StallPrev = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T97_Expr;
-Pipeline_stage1_NextState_ready = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T75_Expr;
-Pipeline_stage1_NextState_data = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F32T51_Cast;
-Pipeline_stage1_NextState_counter = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F35T91_Cast;
-Pipeline_stage2_Request_StallPipeline = Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L102F58T77_Expr;
-Pipeline_stage2_NextState_ready = Pipeline_stage1_State_ready;
-Pipeline_stage2_NextState_result = Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F34T64_Cast;
-
-end
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F73T96_ExprLhs = { {1{1'b0}}, Pipeline_stage1_State_counter }/*expand*/;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F73T96_ExprRhs = { {1{1'b0}}, Pipeline_stage0_State_data }/*expand*/;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T66_ExprLhs = { {1{1'b0}}, Pipeline_stage1_State_counter }/*expand*/;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T66_ExprRhs = { {1{1'b0}}, Pipeline_stage0_State_data }/*expand*/;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F51T75_ExprLhs = { {1{1'b0}}, Pipeline_stage1_State_counter }/*expand*/;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F51T75_ExprRhs = { {1{1'b0}}, Pipeline_stage0_State_data }/*expand*/;
-assign Pipeline_PipelinePreview_PipelineWillStall_Source_1 = Pipeline_stage0_Request_StallPipeline;
-assign Pipeline_PipelinePreview_PipelineWillStall_Source_2 = Pipeline_stage1_Request_StallPipeline;
-assign Pipeline_PipelinePreview_PipelineWillStall_Source_3 = Pipeline_stage2_Request_StallPipeline;
-assign Pipeline_PipelinePreview_PipelineWillStall_Source_4 = Pipeline_stage2_Request_StallSelf;
-assign Pipeline_stage0_Preview_StageWillStall_Source_1 = Pipeline_PipelinePreview_PipelineWillStall;
-assign Pipeline_stage0_Preview_StageWillStall_Source_2 = Pipeline_stage0_Request_StallSelf;
-assign Pipeline_stage0_Preview_StageWillStall_Source_3 = Pipeline_stage1_Preview_StageWillStall;
-assign Pipeline_stage0_Preview_StageWillStall_Source_4 = Pipeline_stage1_Request_StallPrev;
-assign Pipeline_stage1_Preview_StageWillStall_Source_1 = Pipeline_PipelinePreview_PipelineWillStall;
-assign Pipeline_stage1_Preview_StageWillStall_Source_2 = Pipeline_stage1_Request_StallSelf;
-assign Pipeline_stage1_Preview_StageWillStall_Source_3 = Pipeline_stage2_Preview_StageWillStall;
-assign Pipeline_stage1_Preview_StageWillStall_Source_4 = Pipeline_stage2_Request_StallPrev;
-assign Pipeline_stage2_Preview_StageWillStall_Source_1 = Pipeline_PipelinePreview_PipelineWillStall;
-assign Pipeline_stage2_Preview_StageWillStall_Source_2 = Pipeline_stage2_Request_StallSelf;
-assign Pipeline_StallControlPipelineModule_L79F17L87T18_StallControlPipelineModule_L81F54T64_Expr_1 = Pipeline_Inputs_inReady;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T97_Expr_1 = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T68_Cast;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T97_Expr_2 = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F73T96_Expr;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T75_Expr_1 = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T47_Cast;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T75_Expr_2 = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F51T75_Expr;
-assign Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L102F58T77_Expr_1 = Inputs_inProcessed;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F73T90_Expr_1 = { {2{1'b0}}, Pipeline_stage1_State_counter }/*expand*/;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F73T90_Expr_2 = { {9{1'b0}}, Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F89T90_Expr }/*expand*/;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F39T50_Expr_1 = { {2{1'b0}}, Pipeline_stage0_State_data }/*expand*/;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F39T50_Expr_2 = { {9{1'b0}}, Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F49T50_Expr }/*expand*/;
-assign Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F41T63_Expr_1 = { {2{1'b0}}, Pipeline_stage1_State_data }/*expand*/;
-assign Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F41T63_Expr_2 = { {2{1'b0}}, Pipeline_stage2_State_result }/*expand*/;
-assign Inputs_inData = inData;
-assign Inputs_inReady = inReady;
-assign Inputs_inProcessed = inProcessed;
-assign Pipeline_PipelinePreview_PipelineWillStall = Pipeline_PipelinePreview_PipelineWillStall_Source;
-assign Pipeline_stage0_Preview_StageWillStall = Pipeline_stage0_Preview_StageWillStall_Source;
-assign Pipeline_stage1_Preview_StageWillStall = Pipeline_stage1_Preview_StageWillStall_Source;
-assign Pipeline_stage2_Preview_StageWillStall = Pipeline_stage2_Preview_StageWillStall_Source;
-assign Pipeline_State_ready = Pipeline_stage2_State_ready;
-assign Pipeline_State_result = Pipeline_stage2_State_result;
-assign Pipeline_NextState_ready = Pipeline_stage2_NextState_ready;
-assign Pipeline_NextState_result = Pipeline_stage2_NextState_result;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T68_Cast = Pipeline_stage0_State_ready;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F35T91_Cast = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_Lookup;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F32T51_Cast = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F39T50_Expr[7:0]/*truncate*/;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T47_Cast = Pipeline_stage0_State_ready;
-assign Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F34T64_Cast = Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F41T63_Expr[7:0]/*truncate*/;
-assign StallControlPipelineModule_L58F21T47_Cast = Pipeline_State_ready;
-assign outResult_ready = StallControlPipelineModule_L58F21T47_Cast;
-assign outResult_result = { {8{1'b0}}, Pipeline_State_result }/*expand*/;
-assign outResult_pipelineWillStall = Pipeline_PipelinePreview_PipelineWillStall;
-assign outResult_pipelineStalled = Pipeline_PipelineControl_PipelineStalled;
-assign outResult_stage0WillStall = Pipeline_stage0_Preview_StageWillStall;
-assign outResult_stage0Stalled = Pipeline_stage0_Control_StageStalled;
-assign outResult_stage1WillStall = Pipeline_stage1_Preview_StageWillStall;
-assign outResult_stage1Stalled = Pipeline_stage1_Control_StageStalled;
-assign outResult_stage2WillStall = Pipeline_stage2_Preview_StageWillStall;
-assign outResult_stage2Stalled = Pipeline_stage2_Control_StageStalled;
-assign Pipeline_Inputs_inData = Inputs_inData;
-assign Pipeline_Inputs_inReady = Inputs_inReady;
-assign Pipeline_Inputs_inProcessed = Inputs_inProcessed;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_Lookup1 = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F73T90_Expr[7:0]/*truncate*/;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_Lookup2 = { {7{1'b0}}, Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F69T70_Expr }/*expand*/;
-assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_LookupMultiplexerAddress = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T66_Expr;
-// [BEGIN USER ARCHITECTURE]
-// [END USER ARCHITECTURE]
+);
+	// [BEGIN USER SIGNALS]
+	// [END USER SIGNALS]
+	localparam HiSignal = 1'b1;
+	localparam LoSignal = 1'b0;
+	wire Zero = 1'b0;
+	wire One = 1'b1;
+	wire true = 1'b1;
+	wire false = 1'b0;
+	wire Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F69T70_Expr = 1'b0;
+	wire Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F89T90_Expr = 1'b1;
+	wire Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F49T50_Expr = 1'b1;
+	wire [7: 0] Inputs_inData;
+	wire Inputs_inReady;
+	wire Inputs_inProcessed;
+	wire Pipeline_PipelinePreview_PipelineWillStall;
+	reg Pipeline_stage0_NextState_ready;
+	reg [7: 0] Pipeline_stage0_NextState_data;
+	wire Pipeline_stage0_Preview_StageWillStall;
+	reg Pipeline_stage0_Request_StallPipeline = 1'b0;
+	reg Pipeline_stage0_Request_StallSelf = 1'b0;
+	reg Pipeline_stage0_Request_StallPrev = 1'b0;
+	reg Pipeline_stage1_NextState_ready;
+	reg [7: 0] Pipeline_stage1_NextState_data;
+	reg [7: 0] Pipeline_stage1_NextState_counter;
+	wire Pipeline_stage1_Preview_StageWillStall;
+	reg Pipeline_stage1_Request_StallPipeline = 1'b0;
+	reg Pipeline_stage1_Request_StallSelf = 1'b0;
+	reg Pipeline_stage1_Request_StallPrev = 1'b0;
+	reg Pipeline_stage2_NextState_ready;
+	reg [7: 0] Pipeline_stage2_NextState_result;
+	wire Pipeline_stage2_Preview_StageWillStall;
+	reg Pipeline_stage2_Request_StallPipeline = 1'b0;
+	reg Pipeline_stage2_Request_StallSelf = 1'b0;
+	reg Pipeline_stage2_Request_StallPrev = 1'b0;
+	wire [7: 0] Pipeline_Inputs_inData;
+	wire Pipeline_Inputs_inReady;
+	wire Pipeline_Inputs_inProcessed;
+	wire Pipeline_State_ready;
+	wire [7: 0] Pipeline_State_result;
+	wire Pipeline_NextState_ready;
+	wire [7: 0] Pipeline_NextState_result;
+	wire Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T68_Cast;
+	wire [7: 0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F35T91_Cast;
+	wire [7: 0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F32T51_Cast;
+	wire Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T47_Cast;
+	wire [7: 0] Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F34T64_Cast;
+	wire StallControlPipelineModule_L58F21T47_Cast;
+	reg Pipeline_PipelineControl_PipelineStalled = 1'b0;
+	wire Pipeline_PipelineControl_PipelineStalledDefault = 1'b0;
+	reg Pipeline_stage0_State_ready = 1'b0;
+	wire Pipeline_stage0_State_readyDefault = 1'b0;
+	reg [7: 0] Pipeline_stage0_State_data = 8'b00000000;
+	wire [7: 0] Pipeline_stage0_State_dataDefault = 8'b00000000;
+	reg Pipeline_stage0_Control_StageStalled = 1'b0;
+	wire Pipeline_stage0_Control_StageStalledDefault = 1'b0;
+	reg Pipeline_stage1_State_ready = 1'b0;
+	wire Pipeline_stage1_State_readyDefault = 1'b0;
+	reg [7: 0] Pipeline_stage1_State_data = 8'b00000000;
+	wire [7: 0] Pipeline_stage1_State_dataDefault = 8'b00000000;
+	reg [7: 0] Pipeline_stage1_State_counter = 8'b00000000;
+	wire [7: 0] Pipeline_stage1_State_counterDefault = 8'b00000000;
+	reg Pipeline_stage1_Control_StageStalled = 1'b0;
+	wire Pipeline_stage1_Control_StageStalledDefault = 1'b0;
+	reg Pipeline_stage2_State_ready = 1'b0;
+	wire Pipeline_stage2_State_readyDefault = 1'b0;
+	reg [7: 0] Pipeline_stage2_State_result = 8'b00000000;
+	wire [7: 0] Pipeline_stage2_State_resultDefault = 8'b00000000;
+	reg Pipeline_stage2_Control_StageStalled = 1'b0;
+	wire Pipeline_stage2_Control_StageStalledDefault = 1'b0;
+	wire Pipeline_PipelinePreview_PipelineWillStall_Source;
+	wire Pipeline_PipelinePreview_PipelineWillStall_Source_1;
+	wire Pipeline_PipelinePreview_PipelineWillStall_Source_2;
+	wire Pipeline_PipelinePreview_PipelineWillStall_Source_3;
+	wire Pipeline_PipelinePreview_PipelineWillStall_Source_4;
+	wire Pipeline_stage0_Preview_StageWillStall_Source;
+	wire Pipeline_stage0_Preview_StageWillStall_Source_1;
+	wire Pipeline_stage0_Preview_StageWillStall_Source_2;
+	wire Pipeline_stage0_Preview_StageWillStall_Source_3;
+	wire Pipeline_stage0_Preview_StageWillStall_Source_4;
+	wire Pipeline_stage1_Preview_StageWillStall_Source;
+	wire Pipeline_stage1_Preview_StageWillStall_Source_1;
+	wire Pipeline_stage1_Preview_StageWillStall_Source_2;
+	wire Pipeline_stage1_Preview_StageWillStall_Source_3;
+	wire Pipeline_stage1_Preview_StageWillStall_Source_4;
+	wire Pipeline_stage2_Preview_StageWillStall_Source;
+	wire Pipeline_stage2_Preview_StageWillStall_Source_1;
+	wire Pipeline_stage2_Preview_StageWillStall_Source_2;
+	wire Pipeline_StallControlPipelineModule_L79F17L87T18_StallControlPipelineModule_L81F54T64_Expr;
+	wire Pipeline_StallControlPipelineModule_L79F17L87T18_StallControlPipelineModule_L81F54T64_Expr_1;
+	wire Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T97_Expr;
+	wire Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T97_Expr_1;
+	wire Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T97_Expr_2;
+	wire Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T75_Expr;
+	wire Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T75_Expr_1;
+	wire Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T75_Expr_2;
+	wire Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L102F58T77_Expr;
+	wire Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L102F58T77_Expr_1;
+	wire [9: 0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F73T90_Expr;
+	wire signed [9: 0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F73T90_Expr_1;
+	wire signed [9: 0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F73T90_Expr_2;
+	wire [9: 0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F39T50_Expr;
+	wire signed [9: 0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F39T50_Expr_1;
+	wire signed [9: 0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F39T50_Expr_2;
+	wire [9: 0] Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F41T63_Expr;
+	wire signed [9: 0] Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F41T63_Expr_1;
+	wire signed [9: 0] Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F41T63_Expr_2;
+	wire Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F73T96_Expr;
+	wire signed [8: 0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F73T96_ExprLhs;
+	wire signed [8: 0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F73T96_ExprRhs;
+	wire Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T66_Expr;
+	wire signed [8: 0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T66_ExprLhs;
+	wire signed [8: 0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T66_ExprRhs;
+	wire Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F51T75_Expr;
+	wire signed [8: 0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F51T75_ExprLhs;
+	wire signed [8: 0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F51T75_ExprRhs;
+	reg [7: 0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_Lookup;
+	wire Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_LookupMultiplexerAddress;
+	wire [7: 0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_Lookup1;
+	wire [7: 0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_Lookup2;
+	always @ (posedge Clock)
+	begin
+		if (((Reset) == (1)))
+		begin
+			Pipeline_PipelineControl_PipelineStalled <= Pipeline_PipelineControl_PipelineStalledDefault;
+			Pipeline_stage0_State_ready <= Pipeline_stage0_State_readyDefault;
+			Pipeline_stage0_State_data <= Pipeline_stage0_State_dataDefault;
+			Pipeline_stage0_Control_StageStalled <= Pipeline_stage0_Control_StageStalledDefault;
+			Pipeline_stage1_State_ready <= Pipeline_stage1_State_readyDefault;
+			Pipeline_stage1_State_data <= Pipeline_stage1_State_dataDefault;
+			Pipeline_stage1_State_counter <= Pipeline_stage1_State_counterDefault;
+			Pipeline_stage1_Control_StageStalled <= Pipeline_stage1_Control_StageStalledDefault;
+			Pipeline_stage2_State_ready <= Pipeline_stage2_State_readyDefault;
+			Pipeline_stage2_State_result <= Pipeline_stage2_State_resultDefault;
+			Pipeline_stage2_Control_StageStalled <= Pipeline_stage2_Control_StageStalledDefault;
+		end
+		else
+		begin
+			Pipeline_PipelineControl_PipelineStalled <= Pipeline_PipelinePreview_PipelineWillStall;
+			Pipeline_stage0_Control_StageStalled <= Pipeline_stage0_Preview_StageWillStall;
+			Pipeline_stage1_Control_StageStalled <= Pipeline_stage1_Preview_StageWillStall;
+			Pipeline_stage2_Control_StageStalled <= Pipeline_stage2_Preview_StageWillStall;
+			if (((Pipeline_stage0_Preview_StageWillStall) != (1)))
+			begin
+				Pipeline_stage0_State_ready <= Pipeline_stage0_NextState_ready;
+				Pipeline_stage0_State_data <= Pipeline_stage0_NextState_data;
+			end
+			if (((Pipeline_stage1_Preview_StageWillStall) != (1)))
+			begin
+				Pipeline_stage1_State_ready <= Pipeline_stage1_NextState_ready;
+				Pipeline_stage1_State_data <= Pipeline_stage1_NextState_data;
+				Pipeline_stage1_State_counter <= Pipeline_stage1_NextState_counter;
+			end
+			if (((Pipeline_stage2_Preview_StageWillStall) != (1)))
+			begin
+				Pipeline_stage2_State_ready <= Pipeline_stage2_NextState_ready;
+				Pipeline_stage2_State_result <= Pipeline_stage2_NextState_result;
+			end
+		end
+	end
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F73T96_Expr = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F73T96_ExprLhs < Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F73T96_ExprRhs ? 1'b1 : 1'b0;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T66_Expr = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T66_ExprLhs == Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T66_ExprRhs ? 1'b1 : 1'b0;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F51T75_Expr = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F51T75_ExprLhs == Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F51T75_ExprRhs ? 1'b1 : 1'b0;
+	assign Pipeline_PipelinePreview_PipelineWillStall_Source = Pipeline_PipelinePreview_PipelineWillStall_Source_1 | Pipeline_PipelinePreview_PipelineWillStall_Source_2 | Pipeline_PipelinePreview_PipelineWillStall_Source_3 | Pipeline_PipelinePreview_PipelineWillStall_Source_4;
+	assign Pipeline_stage0_Preview_StageWillStall_Source = Pipeline_stage0_Preview_StageWillStall_Source_1 | Pipeline_stage0_Preview_StageWillStall_Source_2 | Pipeline_stage0_Preview_StageWillStall_Source_3 | Pipeline_stage0_Preview_StageWillStall_Source_4;
+	assign Pipeline_stage1_Preview_StageWillStall_Source = Pipeline_stage1_Preview_StageWillStall_Source_1 | Pipeline_stage1_Preview_StageWillStall_Source_2 | Pipeline_stage1_Preview_StageWillStall_Source_3 | Pipeline_stage1_Preview_StageWillStall_Source_4;
+	assign Pipeline_stage2_Preview_StageWillStall_Source = Pipeline_stage2_Preview_StageWillStall_Source_1 | Pipeline_stage2_Preview_StageWillStall_Source_2;
+	assign Pipeline_StallControlPipelineModule_L79F17L87T18_StallControlPipelineModule_L81F54T64_Expr = ~Pipeline_StallControlPipelineModule_L79F17L87T18_StallControlPipelineModule_L81F54T64_Expr_1;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T97_Expr = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T97_Expr_1 & Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T97_Expr_2;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T75_Expr = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T75_Expr_1 & Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T75_Expr_2;
+	assign Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L102F58T77_Expr = ~Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L102F58T77_Expr_1;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F73T90_Expr = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F73T90_Expr_1 + Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F73T90_Expr_2;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F39T50_Expr = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F39T50_Expr_1 + Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F39T50_Expr_2;
+	assign Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F41T63_Expr = Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F41T63_Expr_1 + Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F41T63_Expr_2;
+	always @ (*)
+	begin
+		case (Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_LookupMultiplexerAddress)
+			'b0:
+			begin
+				Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_Lookup = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_Lookup1;
+			end
+			'b1:
+			begin
+				Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_Lookup = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_Lookup2;
+			end
+			default:
+			begin
+				Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_Lookup = 'b00000000;
+			end
+		endcase
+	end
+	always @ (*)
+	begin
+		Pipeline_stage0_NextState_ready = Pipeline_stage0_State_ready;
+		Pipeline_stage0_NextState_data = Pipeline_stage0_State_data;
+		Pipeline_stage1_NextState_ready = Pipeline_stage1_State_ready;
+		Pipeline_stage1_NextState_data = Pipeline_stage1_State_data;
+		Pipeline_stage1_NextState_counter = Pipeline_stage1_State_counter;
+		Pipeline_stage2_NextState_ready = Pipeline_stage2_State_ready;
+		Pipeline_stage2_NextState_result = Pipeline_stage2_State_result;
+		Pipeline_stage0_Request_StallSelf = Pipeline_StallControlPipelineModule_L79F17L87T18_StallControlPipelineModule_L81F54T64_Expr;
+		Pipeline_stage0_NextState_ready = Pipeline_Inputs_inReady;
+		Pipeline_stage0_NextState_data = Pipeline_Inputs_inData;
+		Pipeline_stage1_Request_StallPrev = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T97_Expr;
+		Pipeline_stage1_NextState_ready = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T75_Expr;
+		Pipeline_stage1_NextState_data = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F32T51_Cast;
+		Pipeline_stage1_NextState_counter = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F35T91_Cast;
+		Pipeline_stage2_Request_StallPipeline = Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L102F58T77_Expr;
+		Pipeline_stage2_NextState_ready = Pipeline_stage1_State_ready;
+		Pipeline_stage2_NextState_result = Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F34T64_Cast;
+	end
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F73T96_ExprLhs = { {1{1'b0}}, Pipeline_stage1_State_counter }/*expand*/;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F73T96_ExprRhs = { {1{1'b0}}, Pipeline_stage0_State_data }/*expand*/;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T66_ExprLhs = { {1{1'b0}}, Pipeline_stage1_State_counter }/*expand*/;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T66_ExprRhs = { {1{1'b0}}, Pipeline_stage0_State_data }/*expand*/;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F51T75_ExprLhs = { {1{1'b0}}, Pipeline_stage1_State_counter }/*expand*/;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F51T75_ExprRhs = { {1{1'b0}}, Pipeline_stage0_State_data }/*expand*/;
+	assign Pipeline_PipelinePreview_PipelineWillStall_Source_1 = Pipeline_stage0_Request_StallPipeline;
+	assign Pipeline_PipelinePreview_PipelineWillStall_Source_2 = Pipeline_stage1_Request_StallPipeline;
+	assign Pipeline_PipelinePreview_PipelineWillStall_Source_3 = Pipeline_stage2_Request_StallPipeline;
+	assign Pipeline_PipelinePreview_PipelineWillStall_Source_4 = Pipeline_stage2_Request_StallSelf;
+	assign Pipeline_stage0_Preview_StageWillStall_Source_1 = Pipeline_PipelinePreview_PipelineWillStall;
+	assign Pipeline_stage0_Preview_StageWillStall_Source_2 = Pipeline_stage0_Request_StallSelf;
+	assign Pipeline_stage0_Preview_StageWillStall_Source_3 = Pipeline_stage1_Preview_StageWillStall;
+	assign Pipeline_stage0_Preview_StageWillStall_Source_4 = Pipeline_stage1_Request_StallPrev;
+	assign Pipeline_stage1_Preview_StageWillStall_Source_1 = Pipeline_PipelinePreview_PipelineWillStall;
+	assign Pipeline_stage1_Preview_StageWillStall_Source_2 = Pipeline_stage1_Request_StallSelf;
+	assign Pipeline_stage1_Preview_StageWillStall_Source_3 = Pipeline_stage2_Preview_StageWillStall;
+	assign Pipeline_stage1_Preview_StageWillStall_Source_4 = Pipeline_stage2_Request_StallPrev;
+	assign Pipeline_stage2_Preview_StageWillStall_Source_1 = Pipeline_PipelinePreview_PipelineWillStall;
+	assign Pipeline_stage2_Preview_StageWillStall_Source_2 = Pipeline_stage2_Request_StallSelf;
+	assign Pipeline_StallControlPipelineModule_L79F17L87T18_StallControlPipelineModule_L81F54T64_Expr_1 = Pipeline_Inputs_inReady;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T97_Expr_1 = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T68_Cast;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T97_Expr_2 = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F73T96_Expr;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T75_Expr_1 = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T47_Cast;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T75_Expr_2 = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F51T75_Expr;
+	assign Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L102F58T77_Expr_1 = Inputs_inProcessed;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F73T90_Expr_1 = { {2{1'b0}}, Pipeline_stage1_State_counter }/*expand*/;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F73T90_Expr_2 = { {9{1'b0}}, Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F89T90_Expr }/*expand*/;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F39T50_Expr_1 = { {2{1'b0}}, Pipeline_stage0_State_data }/*expand*/;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F39T50_Expr_2 = { {9{1'b0}}, Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F49T50_Expr }/*expand*/;
+	assign Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F41T63_Expr_1 = { {2{1'b0}}, Pipeline_stage1_State_data }/*expand*/;
+	assign Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F41T63_Expr_2 = { {2{1'b0}}, Pipeline_stage2_State_result }/*expand*/;
+	assign Inputs_inData = inData;
+	assign Inputs_inReady = inReady;
+	assign Inputs_inProcessed = inProcessed;
+	assign Pipeline_PipelinePreview_PipelineWillStall = Pipeline_PipelinePreview_PipelineWillStall_Source;
+	assign Pipeline_stage0_Preview_StageWillStall = Pipeline_stage0_Preview_StageWillStall_Source;
+	assign Pipeline_stage1_Preview_StageWillStall = Pipeline_stage1_Preview_StageWillStall_Source;
+	assign Pipeline_stage2_Preview_StageWillStall = Pipeline_stage2_Preview_StageWillStall_Source;
+	assign Pipeline_State_ready = Pipeline_stage2_State_ready;
+	assign Pipeline_State_result = Pipeline_stage2_State_result;
+	assign Pipeline_NextState_ready = Pipeline_stage2_NextState_ready;
+	assign Pipeline_NextState_result = Pipeline_stage2_NextState_result;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L91F54T68_Cast = Pipeline_stage0_State_ready;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F35T91_Cast = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_Lookup;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F32T51_Cast = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L95F39T50_Expr[7:0]/*truncate*/;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L96F33T47_Cast = Pipeline_stage0_State_ready;
+	assign Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F34T64_Cast = Pipeline_StallControlPipelineModule_L100F17L107T18_StallControlPipelineModule_L105F41T63_Expr[7:0]/*truncate*/;
+	assign StallControlPipelineModule_L58F21T47_Cast = Pipeline_State_ready;
+	assign outResult_ready = StallControlPipelineModule_L58F21T47_Cast;
+	assign outResult_result = { {8{1'b0}}, Pipeline_State_result }/*expand*/;
+	assign outResult_pipelineWillStall = Pipeline_PipelinePreview_PipelineWillStall;
+	assign outResult_pipelineStalled = Pipeline_PipelineControl_PipelineStalled;
+	assign outResult_stage0WillStall = Pipeline_stage0_Preview_StageWillStall;
+	assign outResult_stage0Stalled = Pipeline_stage0_Control_StageStalled;
+	assign outResult_stage1WillStall = Pipeline_stage1_Preview_StageWillStall;
+	assign outResult_stage1Stalled = Pipeline_stage1_Control_StageStalled;
+	assign outResult_stage2WillStall = Pipeline_stage2_Preview_StageWillStall;
+	assign outResult_stage2Stalled = Pipeline_stage2_Control_StageStalled;
+	assign Pipeline_Inputs_inData = Inputs_inData;
+	assign Pipeline_Inputs_inReady = Inputs_inReady;
+	assign Pipeline_Inputs_inProcessed = Inputs_inProcessed;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_Lookup1 = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F73T90_Expr[7:0]/*truncate*/;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_Lookup2 = { {7{1'b0}}, Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F69T70_Expr }/*expand*/;
+	assign Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_LookupMultiplexerAddress = Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T66_Expr;
+	// [BEGIN USER ARCHITECTURE]
+	// [END USER ARCHITECTURE]
 endmodule

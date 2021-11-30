@@ -11,37 +11,36 @@
 //   You can use some of signals in custom code, but most likely they will not exist in future (e.g. will get shorter or gone completely)
 // * Please send your feedback, comments, improvement ideas etc. to evmuryshkin@gmail.com
 // * Visit https://github.com/EvgenyMuryshkin/QuokkaEvaluation to access latest version of playground
-// 
+//
 // DISCLAIMER:
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
-// 
+//
 // System configuration name is NotGateModule_TopLevel, clock frequency is 1Hz, Top-level
 // FSM summary
 // -- Packages
-module NotGateModule_TopLevel (
-// [BEGIN USER PORTS]
-// [END USER PORTS]
-
-	input wire  Input,
+module NotGateModule_TopLevel
+(
+	// [BEGIN USER PORTS]
+	// [END USER PORTS]
+	input wire Input,
 	output wire Output
-    );
-
-// [BEGIN USER SIGNALS]
-// [END USER SIGNALS]
-localparam HiSignal = 1'b1;
-localparam LoSignal = 1'b0;
-wire  Zero = 1'b0;
-wire  One = 1'b1;
-wire  true = 1'b1;
-wire  false = 1'b0;
-wire  Inputs_Input;
-wire  NotGateModule_L17F31T44_Expr;
-wire  NotGateModule_L17F31T44_Expr_1;
-assign NotGateModule_L17F31T44_Expr = ~NotGateModule_L17F31T44_Expr_1;
-assign NotGateModule_L17F31T44_Expr_1 = Inputs_Input;
-assign Inputs_Input = Input;
-assign Output = NotGateModule_L17F31T44_Expr;
-// [BEGIN USER ARCHITECTURE]
-// [END USER ARCHITECTURE]
+);
+	// [BEGIN USER SIGNALS]
+	// [END USER SIGNALS]
+	localparam HiSignal = 1'b1;
+	localparam LoSignal = 1'b0;
+	wire Zero = 1'b0;
+	wire One = 1'b1;
+	wire true = 1'b1;
+	wire false = 1'b0;
+	wire Inputs_Input;
+	wire NotGateModule_L17F31T44_Expr;
+	wire NotGateModule_L17F31T44_Expr_1;
+	assign NotGateModule_L17F31T44_Expr = ~NotGateModule_L17F31T44_Expr_1;
+	assign NotGateModule_L17F31T44_Expr_1 = Inputs_Input;
+	assign Inputs_Input = Input;
+	assign Output = NotGateModule_L17F31T44_Expr;
+	// [BEGIN USER ARCHITECTURE]
+	// [END USER ARCHITECTURE]
 endmodule

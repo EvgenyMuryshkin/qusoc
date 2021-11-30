@@ -11,86 +11,85 @@
 //   You can use some of signals in custom code, but most likely they will not exist in future (e.g. will get shorter or gone completely)
 // * Please send your feedback, comments, improvement ideas etc. to evmuryshkin@gmail.com
 // * Visit https://github.com/EvgenyMuryshkin/QuokkaEvaluation to access latest version of playground
-// 
+//
 // DISCLAIMER:
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
-// 
+//
 // System configuration name is BoardTimerModule_TopLevel, clock frequency is 1Hz, Top-level
 // FSM summary
 // -- Packages
-module BoardTimerModule_TopLevel (
-// [BEGIN USER PORTS]
-// [END USER PORTS]
-
-	input wire  Clock,
-	input wire  Reset,
-	input wire  Restart,
+module BoardTimerModule_TopLevel
+(
+	// [BEGIN USER PORTS]
+	// [END USER PORTS]
+	input wire Clock,
+	input wire Reset,
+	input wire Restart,
 	output wire OutActive10,
 	output wire OutActive20
-    );
-
-// [BEGIN USER SIGNALS]
-// [END USER SIGNALS]
-localparam HiSignal = 1'b1;
-localparam LoSignal = 1'b0;
-wire  Zero = 1'b0;
-wire  One = 1'b1;
-wire  true = 1'b1;
-wire  false = 1'b0;
-wire  Inputs_Restart;
-wire  nestedTimerInputs_Restart;
-wire  timerModule10_Restart;
-wire  timerModule10_OutActive;
-wire  timerModule20_Restart;
-wire  timerModule20_OutActive;
-wire  timerModule10RestarttimerModule10_RestartHardLink;
-wire  timerModule10OutActivetimerModule10_OutActiveHardLink;
-wire  timerModule20RestarttimerModule20_RestartHardLink;
-wire  timerModule20OutActivetimerModule20_OutActiveHardLink;
-wire  BoardSignals_Clock;
-wire  BoardSignals_Reset;
-wire  BoardSignals_Running;
-wire  BoardSignals_Starting;
-wire  BoardSignals_Started;
-reg  InternalReset = 1'b0;
-work_Quokka_BoardSignalsProc BoardSignalsConnection(BoardSignals_Clock,BoardSignals_Reset,BoardSignals_Running,BoardSignals_Starting,BoardSignals_Started,Clock,Reset,InternalReset);
-BoardTimerModule_TopLevel_BoardTimerModule_timerModule10 BoardTimerModule_TopLevel_BoardTimerModule_timerModule10
-(
-// [BEGIN USER MAP FOR timerModule10]
-// [END USER MAP FOR timerModule10]
-	.BoardSignals_Clock (BoardSignals_Clock),
-	.BoardSignals_Reset (BoardSignals_Reset),
-	.BoardSignals_Running (BoardSignals_Running),
-	.BoardSignals_Starting (BoardSignals_Starting),
-	.BoardSignals_Started (BoardSignals_Started),
-	.Restart (timerModule10RestarttimerModule10_RestartHardLink),
-	.OutActive (timerModule10OutActivetimerModule10_OutActiveHardLink)
-
 );
-BoardTimerModule_TopLevel_BoardTimerModule_timerModule20 BoardTimerModule_TopLevel_BoardTimerModule_timerModule20
-(
-// [BEGIN USER MAP FOR timerModule20]
-// [END USER MAP FOR timerModule20]
-	.BoardSignals_Clock (BoardSignals_Clock),
-	.BoardSignals_Reset (BoardSignals_Reset),
-	.BoardSignals_Running (BoardSignals_Running),
-	.BoardSignals_Starting (BoardSignals_Starting),
-	.BoardSignals_Started (BoardSignals_Started),
-	.Restart (timerModule20RestarttimerModule20_RestartHardLink),
-	.OutActive (timerModule20OutActivetimerModule20_OutActiveHardLink)
-
-);
-assign Inputs_Restart = Restart;
-assign nestedTimerInputs_Restart = Inputs_Restart;
-assign timerModule10_Restart = nestedTimerInputs_Restart;
-assign timerModule20_Restart = nestedTimerInputs_Restart;
-assign OutActive10 = timerModule10_OutActive;
-assign OutActive20 = timerModule20_OutActive;
-assign timerModule10RestarttimerModule10_RestartHardLink = timerModule10_Restart;
-assign timerModule10_OutActive = timerModule10OutActivetimerModule10_OutActiveHardLink;
-assign timerModule20RestarttimerModule20_RestartHardLink = timerModule20_Restart;
-assign timerModule20_OutActive = timerModule20OutActivetimerModule20_OutActiveHardLink;
-// [BEGIN USER ARCHITECTURE]
-// [END USER ARCHITECTURE]
+	// [BEGIN USER SIGNALS]
+	// [END USER SIGNALS]
+	localparam HiSignal = 1'b1;
+	localparam LoSignal = 1'b0;
+	wire Zero = 1'b0;
+	wire One = 1'b1;
+	wire true = 1'b1;
+	wire false = 1'b0;
+	wire Inputs_Restart;
+	wire nestedTimerInputs_Restart;
+	wire timerModule10_Restart;
+	wire timerModule10_OutActive;
+	wire timerModule20_Restart;
+	wire timerModule20_OutActive;
+	wire timerModule10RestarttimerModule10_RestartHardLink;
+	wire timerModule10OutActivetimerModule10_OutActiveHardLink;
+	wire timerModule20RestarttimerModule20_RestartHardLink;
+	wire timerModule20OutActivetimerModule20_OutActiveHardLink;
+	wire BoardSignals_Clock;
+	wire BoardSignals_Reset;
+	wire BoardSignals_Running;
+	wire BoardSignals_Starting;
+	wire BoardSignals_Started;
+	reg InternalReset = 1'b0;
+	work_Quokka_BoardSignalsProc BoardSignalsConnection(BoardSignals_Clock, BoardSignals_Reset, BoardSignals_Running, BoardSignals_Starting, BoardSignals_Started, Clock, Reset, InternalReset);
+	BoardTimerModule_TopLevel_BoardTimerModule_timerModule10
+	BoardTimerModule_TopLevel_BoardTimerModule_timerModule10
+	(
+		// [BEGIN USER MAP FOR timerModule10]
+		// [END USER MAP FOR timerModule10]
+		.BoardSignals_Clock (BoardSignals_Clock),
+		.BoardSignals_Reset (BoardSignals_Reset),
+		.BoardSignals_Running (BoardSignals_Running),
+		.BoardSignals_Starting (BoardSignals_Starting),
+		.BoardSignals_Started (BoardSignals_Started),
+		.Restart (timerModule10RestarttimerModule10_RestartHardLink),
+		.OutActive (timerModule10OutActivetimerModule10_OutActiveHardLink)
+	);
+	BoardTimerModule_TopLevel_BoardTimerModule_timerModule20
+	BoardTimerModule_TopLevel_BoardTimerModule_timerModule20
+	(
+		// [BEGIN USER MAP FOR timerModule20]
+		// [END USER MAP FOR timerModule20]
+		.BoardSignals_Clock (BoardSignals_Clock),
+		.BoardSignals_Reset (BoardSignals_Reset),
+		.BoardSignals_Running (BoardSignals_Running),
+		.BoardSignals_Starting (BoardSignals_Starting),
+		.BoardSignals_Started (BoardSignals_Started),
+		.Restart (timerModule20RestarttimerModule20_RestartHardLink),
+		.OutActive (timerModule20OutActivetimerModule20_OutActiveHardLink)
+	);
+	assign Inputs_Restart = Restart;
+	assign nestedTimerInputs_Restart = Inputs_Restart;
+	assign timerModule10_Restart = nestedTimerInputs_Restart;
+	assign timerModule20_Restart = nestedTimerInputs_Restart;
+	assign OutActive10 = timerModule10_OutActive;
+	assign OutActive20 = timerModule20_OutActive;
+	assign timerModule10RestarttimerModule10_RestartHardLink = timerModule10_Restart;
+	assign timerModule10_OutActive = timerModule10OutActivetimerModule10_OutActiveHardLink;
+	assign timerModule20RestarttimerModule20_RestartHardLink = timerModule20_Restart;
+	assign timerModule20_OutActive = timerModule20OutActivetimerModule20_OutActiveHardLink;
+	// [BEGIN USER ARCHITECTURE]
+	// [END USER ARCHITECTURE]
 endmodule

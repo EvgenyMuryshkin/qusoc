@@ -11,42 +11,41 @@
 //   You can use some of signals in custom code, but most likely they will not exist in future (e.g. will get shorter or gone completely)
 // * Please send your feedback, comments, improvement ideas etc. to evmuryshkin@gmail.com
 // * Visit https://github.com/EvgenyMuryshkin/QuokkaEvaluation to access latest version of playground
-// 
+//
 // DISCLAIMER:
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
-// 
+//
 // System configuration name is AndGateModule_TopLevel, clock frequency is 1Hz, Top-level
 // FSM summary
 // -- Packages
-module AndGateModule_TopLevel (
-// [BEGIN USER PORTS]
-// [END USER PORTS]
-
-	input wire  I1,
-	input wire  I2,
+module AndGateModule_TopLevel
+(
+	// [BEGIN USER PORTS]
+	// [END USER PORTS]
+	input wire I1,
+	input wire I2,
 	output wire O
-    );
-
-// [BEGIN USER SIGNALS]
-// [END USER SIGNALS]
-localparam HiSignal = 1'b1;
-localparam LoSignal = 1'b0;
-wire  Zero = 1'b0;
-wire  One = 1'b1;
-wire  true = 1'b1;
-wire  false = 1'b0;
-wire  Inputs_I1;
-wire  Inputs_I2;
-wire  AndGateModule_L7F26T48_Expr;
-wire  AndGateModule_L7F26T48_Expr_1;
-wire  AndGateModule_L7F26T48_Expr_2;
-assign AndGateModule_L7F26T48_Expr = AndGateModule_L7F26T48_Expr_1 & AndGateModule_L7F26T48_Expr_2;
-assign AndGateModule_L7F26T48_Expr_1 = Inputs_I1;
-assign AndGateModule_L7F26T48_Expr_2 = Inputs_I2;
-assign Inputs_I1 = I1;
-assign Inputs_I2 = I2;
-assign O = AndGateModule_L7F26T48_Expr;
-// [BEGIN USER ARCHITECTURE]
-// [END USER ARCHITECTURE]
+);
+	// [BEGIN USER SIGNALS]
+	// [END USER SIGNALS]
+	localparam HiSignal = 1'b1;
+	localparam LoSignal = 1'b0;
+	wire Zero = 1'b0;
+	wire One = 1'b1;
+	wire true = 1'b1;
+	wire false = 1'b0;
+	wire Inputs_I1;
+	wire Inputs_I2;
+	wire AndGateModule_L7F26T48_Expr;
+	wire AndGateModule_L7F26T48_Expr_1;
+	wire AndGateModule_L7F26T48_Expr_2;
+	assign AndGateModule_L7F26T48_Expr = AndGateModule_L7F26T48_Expr_1 & AndGateModule_L7F26T48_Expr_2;
+	assign AndGateModule_L7F26T48_Expr_1 = Inputs_I1;
+	assign AndGateModule_L7F26T48_Expr_2 = Inputs_I2;
+	assign Inputs_I1 = I1;
+	assign Inputs_I2 = I2;
+	assign O = AndGateModule_L7F26T48_Expr;
+	// [BEGIN USER ARCHITECTURE]
+	// [END USER ARCHITECTURE]
 endmodule

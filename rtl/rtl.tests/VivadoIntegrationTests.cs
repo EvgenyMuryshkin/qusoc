@@ -80,7 +80,8 @@ namespace RTL.Modules
             }
 
             var tb = sim.TBAdapter(RTLVerilogConfig);
-            tb.PostSynthTimingSimulation();
+            tb.TranslateInstance();
+            //tb.PostSynthTimingSimulation();
         }
 
         [TestMethod]

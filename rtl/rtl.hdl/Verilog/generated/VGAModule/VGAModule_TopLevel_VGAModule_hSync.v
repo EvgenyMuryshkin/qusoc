@@ -11,177 +11,183 @@
 //   You can use some of signals in custom code, but most likely they will not exist in future (e.g. will get shorter or gone completely)
 // * Please send your feedback, comments, improvement ideas etc. to evmuryshkin@gmail.com
 // * Visit https://github.com/EvgenyMuryshkin/QuokkaEvaluation to access latest version of playground
-// 
+//
 // DISCLAIMER:
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
-// 
+//
 // System configuration name is VGAModule_TopLevel_VGAModule_hSync, clock frequency is 1Hz, Embedded
 // FSM summary
 // -- Packages
-module VGAModule_TopLevel_VGAModule_hSync (
-// [BEGIN USER PORTS]
-// [END USER PORTS]
-
-	input wire  BoardSignals_Clock,
-	input wire  BoardSignals_Reset,
-	input wire  BoardSignals_Running,
-	input wire  BoardSignals_Starting,
-	input wire  BoardSignals_Started,
-	input wire  Enabled,
+module VGAModule_TopLevel_VGAModule_hSync
+(
+	// [BEGIN USER PORTS]
+	// [END USER PORTS]
+	input wire BoardSignals_Clock,
+	input wire BoardSignals_Reset,
+	input wire BoardSignals_Running,
+	input wire BoardSignals_Starting,
+	input wire BoardSignals_Started,
+	input wire Enabled,
 	output wire OutVisible,
 	output wire OutFP,
 	output wire OutSP,
 	output wire OutBP,
 	output wire OutMax,
-	output wire [11: 1] OutCounter
-    );
-
-// [BEGIN USER SIGNALS]
-// [END USER SIGNALS]
-localparam HiSignal = 1'b1;
-localparam LoSignal = 1'b0;
-wire  Zero = 1'b0;
-wire  One = 1'b1;
-wire  true = 1'b1;
-wire  false = 1'b0;
-wire  [9:0] visible = 10'b1100100000;
-wire  [9:0] fp = 10'b1101001000;
-wire  [9:0] sp = 10'b1111001000;
-wire  [10:0] bp = 11'b10000100000;
-wire  [10:0] max = 11'b10000011111;
-wire  [3:0] capacity = 4'b1011;
-wire  VGASyncModule_L64F9L67T10_VGASyncModule_L66F85T86_Expr = 1'b0;
-wire  VGASyncModule_L64F9L67T10_VGASyncModule_L66F106T107_Expr = 1'b1;
-wire  Inputs_Enabled;
-reg  [10:0] NextState_counter;
-wire  internalIsMax;
-wire  [10:0] VGASyncModule_L64F9L67T10_VGASyncModule_L66F37T108_Source;
-wire  VGASyncModule_L64F9L67T10_VGASyncModule_L66F69T87_Source;
-wire  [10:0] VGASyncModule_L64F9L67T10_VGASyncModule_L66F37T126_Resize;
-wire  [10:0] VGASyncModule_L64F9L67T10_VGASyncModule_L66F37T137_SignChange;
-reg  [10:0] State_counter = 11'b00000000000;
-wire  [10:0] State_counterDefault = 11'b00000000000;
-wire  VGASyncModule_L57F30T76_Expr;
-wire  VGASyncModule_L57F30T76_Expr_1;
-wire  VGASyncModule_L57F30T76_Expr_2;
-wire  VGASyncModule_L58F30T71_Expr;
-wire  VGASyncModule_L58F30T71_Expr_1;
-wire  VGASyncModule_L58F30T71_Expr_2;
-wire  VGASyncModule_L59F30T71_Expr;
-wire  VGASyncModule_L59F30T71_Expr_1;
-wire  VGASyncModule_L59F30T71_Expr_2;
-wire  [12:0] VGASyncModule_L64F9L67T10_VGASyncModule_L66F90T107_Expr;
-wire signed  [12:0] VGASyncModule_L64F9L67T10_VGASyncModule_L66F90T107_Expr_1;
-wire signed  [12:0] VGASyncModule_L64F9L67T10_VGASyncModule_L66F90T107_Expr_2;
-wire  VGASyncModule_L54F31T51_Expr;
-wire signed  [11:0] VGASyncModule_L54F31T51_ExprLhs;
-wire signed  [11:0] VGASyncModule_L54F31T51_ExprRhs;
-wire  VGASyncModule_L56F35T58_Expr;
-wire signed  [11:0] VGASyncModule_L56F35T58_ExprLhs;
-wire signed  [11:0] VGASyncModule_L56F35T58_ExprRhs;
-wire  VGASyncModule_L57F30T54_Expr;
-wire signed  [11:0] VGASyncModule_L57F30T54_ExprLhs;
-wire signed  [11:0] VGASyncModule_L57F30T54_ExprRhs;
-wire  VGASyncModule_L57F58T76_Expr;
-wire signed  [11:0] VGASyncModule_L57F58T76_ExprLhs;
-wire signed  [11:0] VGASyncModule_L57F58T76_ExprRhs;
-wire  VGASyncModule_L58F30T49_Expr;
-wire signed  [11:0] VGASyncModule_L58F30T49_ExprLhs;
-wire signed  [11:0] VGASyncModule_L58F30T49_ExprRhs;
-wire  VGASyncModule_L58F53T71_Expr;
-wire signed  [11:0] VGASyncModule_L58F53T71_ExprLhs;
-wire signed  [11:0] VGASyncModule_L58F53T71_ExprRhs;
-wire  VGASyncModule_L59F30T49_Expr;
-wire signed  [11:0] VGASyncModule_L59F30T49_ExprLhs;
-wire signed  [11:0] VGASyncModule_L59F30T49_ExprRhs;
-wire  VGASyncModule_L59F53T71_Expr;
-wire signed  [11:0] VGASyncModule_L59F53T71_ExprLhs;
-wire signed  [11:0] VGASyncModule_L59F53T71_ExprRhs;
-reg  [10:0] VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_Lookup;
-wire  VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_LookupMultiplexerAddress;
-wire  [10:0] VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_Lookup1;
-wire  [10:0] VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_Lookup2;
-always @(posedge BoardSignals_Clock)
-begin
-if ( BoardSignals_Reset == 1 ) begin
-State_counter <= State_counterDefault;
-end
-else begin
-State_counter <= NextState_counter;
-end
-end
-assign VGASyncModule_L54F31T51_Expr = VGASyncModule_L54F31T51_ExprLhs == VGASyncModule_L54F31T51_ExprRhs ? 1'b1 : 1'b0;
-assign VGASyncModule_L56F35T58_Expr = VGASyncModule_L56F35T58_ExprLhs < VGASyncModule_L56F35T58_ExprRhs ? 1'b1 : 1'b0;
-assign VGASyncModule_L57F30T54_Expr = VGASyncModule_L57F30T54_ExprLhs >= VGASyncModule_L57F30T54_ExprRhs ? 1'b1 : 1'b0;
-assign VGASyncModule_L57F58T76_Expr = VGASyncModule_L57F58T76_ExprLhs < VGASyncModule_L57F58T76_ExprRhs ? 1'b1 : 1'b0;
-assign VGASyncModule_L58F30T49_Expr = VGASyncModule_L58F30T49_ExprLhs >= VGASyncModule_L58F30T49_ExprRhs ? 1'b1 : 1'b0;
-assign VGASyncModule_L58F53T71_Expr = VGASyncModule_L58F53T71_ExprLhs < VGASyncModule_L58F53T71_ExprRhs ? 1'b1 : 1'b0;
-assign VGASyncModule_L59F30T49_Expr = VGASyncModule_L59F30T49_ExprLhs >= VGASyncModule_L59F30T49_ExprRhs ? 1'b1 : 1'b0;
-assign VGASyncModule_L59F53T71_Expr = VGASyncModule_L59F53T71_ExprLhs < VGASyncModule_L59F53T71_ExprRhs ? 1'b1 : 1'b0;
-assign VGASyncModule_L57F30T76_Expr = VGASyncModule_L57F30T76_Expr_1 & VGASyncModule_L57F30T76_Expr_2;
-assign VGASyncModule_L58F30T71_Expr = VGASyncModule_L58F30T71_Expr_1 & VGASyncModule_L58F30T71_Expr_2;
-assign VGASyncModule_L59F30T71_Expr = VGASyncModule_L59F30T71_Expr_1 & VGASyncModule_L59F30T71_Expr_2;
-assign VGASyncModule_L64F9L67T10_VGASyncModule_L66F90T107_Expr = VGASyncModule_L64F9L67T10_VGASyncModule_L66F90T107_Expr_1 + VGASyncModule_L64F9L67T10_VGASyncModule_L66F90T107_Expr_2;
-always @*
-begin
-case (VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_LookupMultiplexerAddress)
-    'b0:
-VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_Lookup = VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_Lookup1;
-    'b1:
-VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_Lookup = VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_Lookup2;
-  default:
-VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_Lookup = 'b00000000000;
-endcase
-
-end
-always @*
-begin
-NextState_counter = State_counter;
-if ( Inputs_Enabled == 1 ) begin
-NextState_counter = VGASyncModule_L64F9L67T10_VGASyncModule_L66F37T137_SignChange;
-end
-
-end
-assign VGASyncModule_L54F31T51_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
-assign VGASyncModule_L54F31T51_ExprRhs = { {1{1'b0}}, max }/*expand*/;
-assign VGASyncModule_L56F35T58_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
-assign VGASyncModule_L56F35T58_ExprRhs = { {2{1'b0}}, visible }/*expand*/;
-assign VGASyncModule_L57F30T54_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
-assign VGASyncModule_L57F30T54_ExprRhs = { {2{1'b0}}, visible }/*expand*/;
-assign VGASyncModule_L57F58T76_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
-assign VGASyncModule_L57F58T76_ExprRhs = { {2{1'b0}}, fp }/*expand*/;
-assign VGASyncModule_L58F30T49_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
-assign VGASyncModule_L58F30T49_ExprRhs = { {2{1'b0}}, fp }/*expand*/;
-assign VGASyncModule_L58F53T71_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
-assign VGASyncModule_L58F53T71_ExprRhs = { {2{1'b0}}, sp }/*expand*/;
-assign VGASyncModule_L59F30T49_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
-assign VGASyncModule_L59F30T49_ExprRhs = { {2{1'b0}}, sp }/*expand*/;
-assign VGASyncModule_L59F53T71_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
-assign VGASyncModule_L59F53T71_ExprRhs = { {1{1'b0}}, bp }/*expand*/;
-assign VGASyncModule_L57F30T76_Expr_1 = VGASyncModule_L57F30T54_Expr;
-assign VGASyncModule_L57F30T76_Expr_2 = VGASyncModule_L57F58T76_Expr;
-assign VGASyncModule_L58F30T71_Expr_1 = VGASyncModule_L58F30T49_Expr;
-assign VGASyncModule_L58F30T71_Expr_2 = VGASyncModule_L58F53T71_Expr;
-assign VGASyncModule_L59F30T71_Expr_1 = VGASyncModule_L59F30T49_Expr;
-assign VGASyncModule_L59F30T71_Expr_2 = VGASyncModule_L59F53T71_Expr;
-assign VGASyncModule_L64F9L67T10_VGASyncModule_L66F90T107_Expr_1 = { {2{1'b0}}, State_counter }/*expand*/;
-assign VGASyncModule_L64F9L67T10_VGASyncModule_L66F90T107_Expr_2 = { {12{1'b0}}, VGASyncModule_L64F9L67T10_VGASyncModule_L66F106T107_Expr }/*expand*/;
-assign Inputs_Enabled = Enabled;
-assign internalIsMax = VGASyncModule_L54F31T51_Expr;
-assign VGASyncModule_L64F9L67T10_VGASyncModule_L66F69T87_Source = VGASyncModule_L64F9L67T10_VGASyncModule_L66F85T86_Expr;
-assign VGASyncModule_L64F9L67T10_VGASyncModule_L66F37T108_Source = VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_Lookup;
-assign VGASyncModule_L64F9L67T10_VGASyncModule_L66F37T126_Resize = VGASyncModule_L64F9L67T10_VGASyncModule_L66F37T108_Source;
-assign VGASyncModule_L64F9L67T10_VGASyncModule_L66F37T137_SignChange = VGASyncModule_L64F9L67T10_VGASyncModule_L66F37T126_Resize;
-assign OutVisible = VGASyncModule_L56F35T58_Expr;
-assign OutFP = VGASyncModule_L57F30T76_Expr;
-assign OutSP = VGASyncModule_L58F30T71_Expr;
-assign OutBP = VGASyncModule_L59F30T71_Expr;
-assign OutMax = internalIsMax;
-assign OutCounter = State_counter;
-assign VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_Lookup1 = VGASyncModule_L64F9L67T10_VGASyncModule_L66F90T107_Expr[10:0]/*truncate*/;
-assign VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_Lookup2 = { {10{1'b0}}, VGASyncModule_L64F9L67T10_VGASyncModule_L66F69T87_Source }/*expand*/;
-assign VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_LookupMultiplexerAddress = internalIsMax;
-// [BEGIN USER ARCHITECTURE]
-// [END USER ARCHITECTURE]
+	output wire [10: 0] OutCounter
+);
+	// [BEGIN USER SIGNALS]
+	// [END USER SIGNALS]
+	localparam HiSignal = 1'b1;
+	localparam LoSignal = 1'b0;
+	wire Zero = 1'b0;
+	wire One = 1'b1;
+	wire true = 1'b1;
+	wire false = 1'b0;
+	wire [9: 0] visible = 10'b1100100000;
+	wire [9: 0] fp = 10'b1101001000;
+	wire [9: 0] sp = 10'b1111001000;
+	wire [10: 0] bp = 11'b10000100000;
+	wire [10: 0] max = 11'b10000011111;
+	wire [3: 0] capacity = 4'b1011;
+	wire VGASyncModule_L64F9L67T10_VGASyncModule_L66F85T86_Expr = 1'b0;
+	wire VGASyncModule_L64F9L67T10_VGASyncModule_L66F106T107_Expr = 1'b1;
+	wire Inputs_Enabled;
+	reg [10: 0] NextState_counter;
+	wire internalIsMax;
+	wire [10: 0] VGASyncModule_L64F9L67T10_VGASyncModule_L66F37T108_Source;
+	wire VGASyncModule_L64F9L67T10_VGASyncModule_L66F69T87_Source;
+	wire [10: 0] VGASyncModule_L64F9L67T10_VGASyncModule_L66F37T126_Resize;
+	wire [10: 0] VGASyncModule_L64F9L67T10_VGASyncModule_L66F37T137_SignChange;
+	reg [10: 0] State_counter = 11'b00000000000;
+	wire [10: 0] State_counterDefault = 11'b00000000000;
+	wire VGASyncModule_L57F30T76_Expr;
+	wire VGASyncModule_L57F30T76_Expr_1;
+	wire VGASyncModule_L57F30T76_Expr_2;
+	wire VGASyncModule_L58F30T71_Expr;
+	wire VGASyncModule_L58F30T71_Expr_1;
+	wire VGASyncModule_L58F30T71_Expr_2;
+	wire VGASyncModule_L59F30T71_Expr;
+	wire VGASyncModule_L59F30T71_Expr_1;
+	wire VGASyncModule_L59F30T71_Expr_2;
+	wire [12: 0] VGASyncModule_L64F9L67T10_VGASyncModule_L66F90T107_Expr;
+	wire signed [12: 0] VGASyncModule_L64F9L67T10_VGASyncModule_L66F90T107_Expr_1;
+	wire signed [12: 0] VGASyncModule_L64F9L67T10_VGASyncModule_L66F90T107_Expr_2;
+	wire VGASyncModule_L54F31T51_Expr;
+	wire signed [11: 0] VGASyncModule_L54F31T51_ExprLhs;
+	wire signed [11: 0] VGASyncModule_L54F31T51_ExprRhs;
+	wire VGASyncModule_L56F35T58_Expr;
+	wire signed [11: 0] VGASyncModule_L56F35T58_ExprLhs;
+	wire signed [11: 0] VGASyncModule_L56F35T58_ExprRhs;
+	wire VGASyncModule_L57F30T54_Expr;
+	wire signed [11: 0] VGASyncModule_L57F30T54_ExprLhs;
+	wire signed [11: 0] VGASyncModule_L57F30T54_ExprRhs;
+	wire VGASyncModule_L57F58T76_Expr;
+	wire signed [11: 0] VGASyncModule_L57F58T76_ExprLhs;
+	wire signed [11: 0] VGASyncModule_L57F58T76_ExprRhs;
+	wire VGASyncModule_L58F30T49_Expr;
+	wire signed [11: 0] VGASyncModule_L58F30T49_ExprLhs;
+	wire signed [11: 0] VGASyncModule_L58F30T49_ExprRhs;
+	wire VGASyncModule_L58F53T71_Expr;
+	wire signed [11: 0] VGASyncModule_L58F53T71_ExprLhs;
+	wire signed [11: 0] VGASyncModule_L58F53T71_ExprRhs;
+	wire VGASyncModule_L59F30T49_Expr;
+	wire signed [11: 0] VGASyncModule_L59F30T49_ExprLhs;
+	wire signed [11: 0] VGASyncModule_L59F30T49_ExprRhs;
+	wire VGASyncModule_L59F53T71_Expr;
+	wire signed [11: 0] VGASyncModule_L59F53T71_ExprLhs;
+	wire signed [11: 0] VGASyncModule_L59F53T71_ExprRhs;
+	reg [10: 0] VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_Lookup;
+	wire VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_LookupMultiplexerAddress;
+	wire [10: 0] VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_Lookup1;
+	wire [10: 0] VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_Lookup2;
+	always @ (posedge BoardSignals_Clock)
+	begin
+		if (((BoardSignals_Reset) == (1)))
+		begin
+			State_counter <= State_counterDefault;
+		end
+		else
+		begin
+			State_counter <= NextState_counter;
+		end
+	end
+	assign VGASyncModule_L54F31T51_Expr = VGASyncModule_L54F31T51_ExprLhs == VGASyncModule_L54F31T51_ExprRhs ? 1'b1 : 1'b0;
+	assign VGASyncModule_L56F35T58_Expr = VGASyncModule_L56F35T58_ExprLhs < VGASyncModule_L56F35T58_ExprRhs ? 1'b1 : 1'b0;
+	assign VGASyncModule_L57F30T54_Expr = VGASyncModule_L57F30T54_ExprLhs >= VGASyncModule_L57F30T54_ExprRhs ? 1'b1 : 1'b0;
+	assign VGASyncModule_L57F58T76_Expr = VGASyncModule_L57F58T76_ExprLhs < VGASyncModule_L57F58T76_ExprRhs ? 1'b1 : 1'b0;
+	assign VGASyncModule_L58F30T49_Expr = VGASyncModule_L58F30T49_ExprLhs >= VGASyncModule_L58F30T49_ExprRhs ? 1'b1 : 1'b0;
+	assign VGASyncModule_L58F53T71_Expr = VGASyncModule_L58F53T71_ExprLhs < VGASyncModule_L58F53T71_ExprRhs ? 1'b1 : 1'b0;
+	assign VGASyncModule_L59F30T49_Expr = VGASyncModule_L59F30T49_ExprLhs >= VGASyncModule_L59F30T49_ExprRhs ? 1'b1 : 1'b0;
+	assign VGASyncModule_L59F53T71_Expr = VGASyncModule_L59F53T71_ExprLhs < VGASyncModule_L59F53T71_ExprRhs ? 1'b1 : 1'b0;
+	assign VGASyncModule_L57F30T76_Expr = VGASyncModule_L57F30T76_Expr_1 & VGASyncModule_L57F30T76_Expr_2;
+	assign VGASyncModule_L58F30T71_Expr = VGASyncModule_L58F30T71_Expr_1 & VGASyncModule_L58F30T71_Expr_2;
+	assign VGASyncModule_L59F30T71_Expr = VGASyncModule_L59F30T71_Expr_1 & VGASyncModule_L59F30T71_Expr_2;
+	assign VGASyncModule_L64F9L67T10_VGASyncModule_L66F90T107_Expr = VGASyncModule_L64F9L67T10_VGASyncModule_L66F90T107_Expr_1 + VGASyncModule_L64F9L67T10_VGASyncModule_L66F90T107_Expr_2;
+	always @ (*)
+	begin
+		case (VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_LookupMultiplexerAddress)
+			'b0:
+			begin
+				VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_Lookup = VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_Lookup1;
+			end
+			'b1:
+			begin
+				VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_Lookup = VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_Lookup2;
+			end
+			default:
+			begin
+				VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_Lookup = 'b00000000000;
+			end
+		endcase
+	end
+	always @ (*)
+	begin
+		NextState_counter = State_counter;
+		if (((Inputs_Enabled) == (1)))
+		begin
+			NextState_counter = VGASyncModule_L64F9L67T10_VGASyncModule_L66F37T137_SignChange;
+		end
+	end
+	assign VGASyncModule_L54F31T51_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
+	assign VGASyncModule_L54F31T51_ExprRhs = { {1{1'b0}}, max }/*expand*/;
+	assign VGASyncModule_L56F35T58_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
+	assign VGASyncModule_L56F35T58_ExprRhs = { {2{1'b0}}, visible }/*expand*/;
+	assign VGASyncModule_L57F30T54_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
+	assign VGASyncModule_L57F30T54_ExprRhs = { {2{1'b0}}, visible }/*expand*/;
+	assign VGASyncModule_L57F58T76_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
+	assign VGASyncModule_L57F58T76_ExprRhs = { {2{1'b0}}, fp }/*expand*/;
+	assign VGASyncModule_L58F30T49_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
+	assign VGASyncModule_L58F30T49_ExprRhs = { {2{1'b0}}, fp }/*expand*/;
+	assign VGASyncModule_L58F53T71_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
+	assign VGASyncModule_L58F53T71_ExprRhs = { {2{1'b0}}, sp }/*expand*/;
+	assign VGASyncModule_L59F30T49_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
+	assign VGASyncModule_L59F30T49_ExprRhs = { {2{1'b0}}, sp }/*expand*/;
+	assign VGASyncModule_L59F53T71_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
+	assign VGASyncModule_L59F53T71_ExprRhs = { {1{1'b0}}, bp }/*expand*/;
+	assign VGASyncModule_L57F30T76_Expr_1 = VGASyncModule_L57F30T54_Expr;
+	assign VGASyncModule_L57F30T76_Expr_2 = VGASyncModule_L57F58T76_Expr;
+	assign VGASyncModule_L58F30T71_Expr_1 = VGASyncModule_L58F30T49_Expr;
+	assign VGASyncModule_L58F30T71_Expr_2 = VGASyncModule_L58F53T71_Expr;
+	assign VGASyncModule_L59F30T71_Expr_1 = VGASyncModule_L59F30T49_Expr;
+	assign VGASyncModule_L59F30T71_Expr_2 = VGASyncModule_L59F53T71_Expr;
+	assign VGASyncModule_L64F9L67T10_VGASyncModule_L66F90T107_Expr_1 = { {2{1'b0}}, State_counter }/*expand*/;
+	assign VGASyncModule_L64F9L67T10_VGASyncModule_L66F90T107_Expr_2 = { {12{1'b0}}, VGASyncModule_L64F9L67T10_VGASyncModule_L66F106T107_Expr }/*expand*/;
+	assign Inputs_Enabled = Enabled;
+	assign internalIsMax = VGASyncModule_L54F31T51_Expr;
+	assign VGASyncModule_L64F9L67T10_VGASyncModule_L66F69T87_Source = VGASyncModule_L64F9L67T10_VGASyncModule_L66F85T86_Expr;
+	assign VGASyncModule_L64F9L67T10_VGASyncModule_L66F37T108_Source = VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_Lookup;
+	assign VGASyncModule_L64F9L67T10_VGASyncModule_L66F37T126_Resize = VGASyncModule_L64F9L67T10_VGASyncModule_L66F37T108_Source;
+	assign VGASyncModule_L64F9L67T10_VGASyncModule_L66F37T137_SignChange = VGASyncModule_L64F9L67T10_VGASyncModule_L66F37T126_Resize;
+	assign OutVisible = VGASyncModule_L56F35T58_Expr;
+	assign OutFP = VGASyncModule_L57F30T76_Expr;
+	assign OutSP = VGASyncModule_L58F30T71_Expr;
+	assign OutBP = VGASyncModule_L59F30T71_Expr;
+	assign OutMax = internalIsMax;
+	assign OutCounter = State_counter;
+	assign VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_Lookup1 = VGASyncModule_L64F9L67T10_VGASyncModule_L66F90T107_Expr[10:0]/*truncate*/;
+	assign VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_Lookup2 = { {10{1'b0}}, VGASyncModule_L64F9L67T10_VGASyncModule_L66F69T87_Source }/*expand*/;
+	assign VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_LookupMultiplexerAddress = internalIsMax;
+	// [BEGIN USER ARCHITECTURE]
+	// [END USER ARCHITECTURE]
 endmodule

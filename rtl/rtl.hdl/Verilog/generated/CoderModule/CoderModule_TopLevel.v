@@ -11,235 +11,252 @@
 //   You can use some of signals in custom code, but most likely they will not exist in future (e.g. will get shorter or gone completely)
 // * Please send your feedback, comments, improvement ideas etc. to evmuryshkin@gmail.com
 // * Visit https://github.com/EvgenyMuryshkin/QuokkaEvaluation to access latest version of playground
-// 
+//
 // DISCLAIMER:
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
-// 
+//
 // System configuration name is CoderModule_TopLevel, clock frequency is 1Hz, Top-level
 // FSM summary
 // -- Packages
-module CoderModule_TopLevel (
-// [BEGIN USER PORTS]
-// [END USER PORTS]
-
-	input wire  Clock,
-	input wire  Reset,
-	input wire  [15: 0] dec,
+module CoderModule_TopLevel
+(
+	// [BEGIN USER PORTS]
+	// [END USER PORTS]
+	input wire Clock,
+	input wire Reset,
+	input wire [15: 0] dec,
 	output wire signed [1: 0] IN1,
 	output wire signed [1: 0] IN2
-    );
-
-// [BEGIN USER SIGNALS]
-// [END USER SIGNALS]
-localparam HiSignal = 1'b1;
-localparam LoSignal = 1'b0;
-wire  Zero = 1'b0;
-wire  One = 1'b1;
-wire  true = 1'b1;
-wire  false = 1'b0;
-wire  CoderModule_L15F47T48_Expr = 1'b0;
-wire  CoderModule_L19F13L31T14_CoderModule_L20F31T32_Expr = 1'b0;
-wire  CoderModule_L19F13L31T14_CoderModule_L21F38T39_Expr = 1'b1;
-wire  [2:0] CoderModule_L19F13L31T14_CoderModule_L21F60T61_Expr = 3'b101;
-wire  [1:0] CoderModule_L19F13L31T14_CoderModule_L22F30T31_Expr = 2'b10;
-wire  [2:0] CoderModule_L19F13L31T14_CoderModule_L24F38T39_Expr = 3'b111;
-wire  [3:0] CoderModule_L19F13L31T14_CoderModule_L24F60T62_Expr = 4'b1011;
-wire  CoderModule_L19F13L31T14_CoderModule_L25F30T31_Expr = 1'b1;
-wire  [9:0] CoderModule_L19F13L31T14_CoderModule_L27F38T41_Expr = 10'b1011101111;
-wire  [11:0] CoderModule_L19F13L31T14_CoderModule_L27F62T66_Expr = 12'b100111000101;
-wire  [1:0] CoderModule_L19F13L31T14_CoderModule_L28F30T31_Expr = 2'b11;
-wire  [14:0] CoderModule_L37F9L39T10_CoderModule_L38F59T64_Expr = 15'b110000110101001;
-wire  CoderModule_L37F9L39T10_CoderModule_L38F67T68_Expr = 1'b0;
-wire  CoderModule_L37F9L39T10_CoderModule_L38F87T88_Expr = 1'b1;
-wire  [15:0] CoderModule_L33F49T55_Expr = 16'b1111111111111110;
-wire  [15:0] CoderModule_L34F49T55_Expr = 16'b1111111111111101;
-wire  [15:0] Inputs_dec;
-reg  [15:0] NextState_counter;
-wire signed  [1:0] INNone;
-wire  [1:0] INx;
-wire  CoderModule_L15F31T49_Source;
-wire  [1:0] CoderModule_L15F31T60_Resize;
-reg  [7:0] CoderModule_L19F13L31T14_result;
-wire  [7:0] CoderModule_L19F13L31T14_CoderModule_L30F24T47_Source;
-wire  [1:0] CoderModule_L19F13L31T14_CoderModule_L30F24T53_Index;
-wire  [15:0] CoderModule_L37F9L39T10_CoderModule_L38F33T89_Cast;
-reg  [15:0] State_counter = 16'b0000000000000000;
-wire  [15:0] State_counterDefault = 16'b0000000000000000;
-wire  CoderModule_L19F13L31T14_CoderModule_L21F21T61_Expr;
-wire  CoderModule_L19F13L31T14_CoderModule_L21F21T61_Expr_1;
-wire  CoderModule_L19F13L31T14_CoderModule_L21F21T61_Expr_2;
-wire  CoderModule_L19F13L31T14_CoderModule_L24F21T62_Expr;
-wire  CoderModule_L19F13L31T14_CoderModule_L24F21T62_Expr_1;
-wire  CoderModule_L19F13L31T14_CoderModule_L24F21T62_Expr_2;
-wire  CoderModule_L19F13L31T14_CoderModule_L27F21T66_Expr;
-wire  CoderModule_L19F13L31T14_CoderModule_L27F21T66_Expr_1;
-wire  CoderModule_L19F13L31T14_CoderModule_L27F21T66_Expr_2;
-wire  [17:0] CoderModule_L37F9L39T10_CoderModule_L38F71T88_Expr;
-wire signed  [17:0] CoderModule_L37F9L39T10_CoderModule_L38F71T88_Expr_1;
-wire signed  [17:0] CoderModule_L37F9L39T10_CoderModule_L38F71T88_Expr_2;
-wire  CoderModule_L19F13L31T14_CoderModule_L21F21T39_Expr;
-wire signed  [16:0] CoderModule_L19F13L31T14_CoderModule_L21F21T39_ExprLhs;
-wire signed  [16:0] CoderModule_L19F13L31T14_CoderModule_L21F21T39_ExprRhs;
-wire  CoderModule_L19F13L31T14_CoderModule_L21F43T61_Expr;
-wire signed  [16:0] CoderModule_L19F13L31T14_CoderModule_L21F43T61_ExprLhs;
-wire signed  [16:0] CoderModule_L19F13L31T14_CoderModule_L21F43T61_ExprRhs;
-wire  CoderModule_L19F13L31T14_CoderModule_L24F21T39_Expr;
-wire signed  [16:0] CoderModule_L19F13L31T14_CoderModule_L24F21T39_ExprLhs;
-wire signed  [16:0] CoderModule_L19F13L31T14_CoderModule_L24F21T39_ExprRhs;
-wire  CoderModule_L19F13L31T14_CoderModule_L24F43T62_Expr;
-wire signed  [16:0] CoderModule_L19F13L31T14_CoderModule_L24F43T62_ExprLhs;
-wire signed  [16:0] CoderModule_L19F13L31T14_CoderModule_L24F43T62_ExprRhs;
-wire  CoderModule_L19F13L31T14_CoderModule_L27F21T41_Expr;
-wire signed  [16:0] CoderModule_L19F13L31T14_CoderModule_L27F21T41_ExprLhs;
-wire signed  [16:0] CoderModule_L19F13L31T14_CoderModule_L27F21T41_ExprRhs;
-wire  CoderModule_L19F13L31T14_CoderModule_L27F45T66_Expr;
-wire signed  [16:0] CoderModule_L19F13L31T14_CoderModule_L27F45T66_ExprLhs;
-wire signed  [16:0] CoderModule_L19F13L31T14_CoderModule_L27F45T66_ExprRhs;
-wire  CoderModule_L37F9L39T10_CoderModule_L38F42T64_Expr;
-wire signed  [16:0] CoderModule_L37F9L39T10_CoderModule_L38F42T64_ExprLhs;
-wire signed  [16:0] CoderModule_L37F9L39T10_CoderModule_L38F42T64_ExprRhs;
-wire  CoderModule_L33F35T55_Expr;
-wire signed  [16:0] CoderModule_L33F35T55_ExprLhs;
-wire signed  [16:0] CoderModule_L33F35T55_ExprRhs;
-wire  CoderModule_L34F35T55_Expr;
-wire signed  [16:0] CoderModule_L34F35T55_ExprLhs;
-wire signed  [16:0] CoderModule_L34F35T55_ExprRhs;
-reg  [15:0] CoderModule_L37F9L39T10_CoderModule_L38F42T88_Lookup;
-reg  [1:0] CoderModule_L33F35T70_Lookup;
-reg  [1:0] CoderModule_L34F35T70_Lookup;
-wire  CoderModule_L37F9L39T10_CoderModule_L38F42T88_LookupMultiplexerAddress;
-wire  [15:0] CoderModule_L37F9L39T10_CoderModule_L38F42T88_Lookup1;
-wire  [15:0] CoderModule_L37F9L39T10_CoderModule_L38F42T88_Lookup2;
-wire  CoderModule_L33F35T70_LookupMultiplexerAddress;
-wire  [1:0] CoderModule_L33F35T70_Lookup1;
-wire  [1:0] CoderModule_L33F35T70_Lookup2;
-wire  CoderModule_L34F35T70_LookupMultiplexerAddress;
-wire  [1:0] CoderModule_L34F35T70_Lookup1;
-wire  [1:0] CoderModule_L34F35T70_Lookup2;
-always @(posedge Clock)
-begin
-if ( Reset == 1 ) begin
-State_counter <= State_counterDefault;
-end
-else begin
-State_counter <= NextState_counter;
-end
-end
-assign CoderModule_L19F13L31T14_CoderModule_L21F21T39_Expr = CoderModule_L19F13L31T14_CoderModule_L21F21T39_ExprLhs >= CoderModule_L19F13L31T14_CoderModule_L21F21T39_ExprRhs ? 1'b1 : 1'b0;
-assign CoderModule_L19F13L31T14_CoderModule_L21F43T61_Expr = CoderModule_L19F13L31T14_CoderModule_L21F43T61_ExprLhs <= CoderModule_L19F13L31T14_CoderModule_L21F43T61_ExprRhs ? 1'b1 : 1'b0;
-assign CoderModule_L19F13L31T14_CoderModule_L24F21T39_Expr = CoderModule_L19F13L31T14_CoderModule_L24F21T39_ExprLhs >= CoderModule_L19F13L31T14_CoderModule_L24F21T39_ExprRhs ? 1'b1 : 1'b0;
-assign CoderModule_L19F13L31T14_CoderModule_L24F43T62_Expr = CoderModule_L19F13L31T14_CoderModule_L24F43T62_ExprLhs <= CoderModule_L19F13L31T14_CoderModule_L24F43T62_ExprRhs ? 1'b1 : 1'b0;
-assign CoderModule_L19F13L31T14_CoderModule_L27F21T41_Expr = CoderModule_L19F13L31T14_CoderModule_L27F21T41_ExprLhs >= CoderModule_L19F13L31T14_CoderModule_L27F21T41_ExprRhs ? 1'b1 : 1'b0;
-assign CoderModule_L19F13L31T14_CoderModule_L27F45T66_Expr = CoderModule_L19F13L31T14_CoderModule_L27F45T66_ExprLhs <= CoderModule_L19F13L31T14_CoderModule_L27F45T66_ExprRhs ? 1'b1 : 1'b0;
-assign CoderModule_L37F9L39T10_CoderModule_L38F42T64_Expr = CoderModule_L37F9L39T10_CoderModule_L38F42T64_ExprLhs == CoderModule_L37F9L39T10_CoderModule_L38F42T64_ExprRhs ? 1'b1 : 1'b0;
-assign CoderModule_L33F35T55_Expr = CoderModule_L33F35T55_ExprLhs == CoderModule_L33F35T55_ExprRhs ? 1'b1 : 1'b0;
-assign CoderModule_L34F35T55_Expr = CoderModule_L34F35T55_ExprLhs == CoderModule_L34F35T55_ExprRhs ? 1'b1 : 1'b0;
-assign CoderModule_L19F13L31T14_CoderModule_L21F21T61_Expr = CoderModule_L19F13L31T14_CoderModule_L21F21T61_Expr_1 & CoderModule_L19F13L31T14_CoderModule_L21F21T61_Expr_2;
-assign CoderModule_L19F13L31T14_CoderModule_L24F21T62_Expr = CoderModule_L19F13L31T14_CoderModule_L24F21T62_Expr_1 & CoderModule_L19F13L31T14_CoderModule_L24F21T62_Expr_2;
-assign CoderModule_L19F13L31T14_CoderModule_L27F21T66_Expr = CoderModule_L19F13L31T14_CoderModule_L27F21T66_Expr_1 & CoderModule_L19F13L31T14_CoderModule_L27F21T66_Expr_2;
-assign CoderModule_L37F9L39T10_CoderModule_L38F71T88_Expr = CoderModule_L37F9L39T10_CoderModule_L38F71T88_Expr_1 + CoderModule_L37F9L39T10_CoderModule_L38F71T88_Expr_2;
-always @*
-begin
-case (CoderModule_L37F9L39T10_CoderModule_L38F42T88_LookupMultiplexerAddress)
-    'b0:
-CoderModule_L37F9L39T10_CoderModule_L38F42T88_Lookup = CoderModule_L37F9L39T10_CoderModule_L38F42T88_Lookup1;
-    'b1:
-CoderModule_L37F9L39T10_CoderModule_L38F42T88_Lookup = CoderModule_L37F9L39T10_CoderModule_L38F42T88_Lookup2;
-  default:
-CoderModule_L37F9L39T10_CoderModule_L38F42T88_Lookup = 'b0000000000000000;
-endcase
-
-end
-always @*
-begin
-case (CoderModule_L33F35T70_LookupMultiplexerAddress)
-    'b0:
-CoderModule_L33F35T70_Lookup = CoderModule_L33F35T70_Lookup1;
-    'b1:
-CoderModule_L33F35T70_Lookup = CoderModule_L33F35T70_Lookup2;
-  default:
-CoderModule_L33F35T70_Lookup = 'b00;
-endcase
-
-end
-always @*
-begin
-case (CoderModule_L34F35T70_LookupMultiplexerAddress)
-    'b0:
-CoderModule_L34F35T70_Lookup = CoderModule_L34F35T70_Lookup1;
-    'b1:
-CoderModule_L34F35T70_Lookup = CoderModule_L34F35T70_Lookup2;
-  default:
-CoderModule_L34F35T70_Lookup = 'b00;
-endcase
-
-end
-always @*
-begin
-CoderModule_L19F13L31T14_result = { {7{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L20F31T32_Expr }/*expand*/;
-if ( CoderModule_L19F13L31T14_CoderModule_L21F21T61_Expr == 1 ) begin
-CoderModule_L19F13L31T14_result = { {6{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L22F30T31_Expr }/*expand*/;
-end
-if ( CoderModule_L19F13L31T14_CoderModule_L24F21T62_Expr == 1 ) begin
-CoderModule_L19F13L31T14_result = { {7{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L25F30T31_Expr }/*expand*/;
-end
-if ( CoderModule_L19F13L31T14_CoderModule_L27F21T66_Expr == 1 ) begin
-CoderModule_L19F13L31T14_result = { {6{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L28F30T31_Expr }/*expand*/;
-end
-
-end
-always @*
-begin
-NextState_counter = State_counter;
-NextState_counter = CoderModule_L37F9L39T10_CoderModule_L38F33T89_Cast;
-
-end
-assign CoderModule_L19F13L31T14_CoderModule_L21F21T39_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
-assign CoderModule_L19F13L31T14_CoderModule_L21F21T39_ExprRhs = { {16{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L21F38T39_Expr }/*expand*/;
-assign CoderModule_L19F13L31T14_CoderModule_L21F43T61_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
-assign CoderModule_L19F13L31T14_CoderModule_L21F43T61_ExprRhs = { {14{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L21F60T61_Expr }/*expand*/;
-assign CoderModule_L19F13L31T14_CoderModule_L24F21T39_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
-assign CoderModule_L19F13L31T14_CoderModule_L24F21T39_ExprRhs = { {14{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L24F38T39_Expr }/*expand*/;
-assign CoderModule_L19F13L31T14_CoderModule_L24F43T62_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
-assign CoderModule_L19F13L31T14_CoderModule_L24F43T62_ExprRhs = { {13{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L24F60T62_Expr }/*expand*/;
-assign CoderModule_L19F13L31T14_CoderModule_L27F21T41_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
-assign CoderModule_L19F13L31T14_CoderModule_L27F21T41_ExprRhs = { {7{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L27F38T41_Expr }/*expand*/;
-assign CoderModule_L19F13L31T14_CoderModule_L27F45T66_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
-assign CoderModule_L19F13L31T14_CoderModule_L27F45T66_ExprRhs = { {5{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L27F62T66_Expr }/*expand*/;
-assign CoderModule_L37F9L39T10_CoderModule_L38F42T64_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
-assign CoderModule_L37F9L39T10_CoderModule_L38F42T64_ExprRhs = { {2{1'b0}}, CoderModule_L37F9L39T10_CoderModule_L38F59T64_Expr }/*expand*/;
-assign CoderModule_L33F35T55_ExprLhs = { {1{1'b0}}, Inputs_dec }/*expand*/;
-assign CoderModule_L33F35T55_ExprRhs = { {1{1'b0}}, CoderModule_L33F49T55_Expr }/*expand*/;
-assign CoderModule_L34F35T55_ExprLhs = { {1{1'b0}}, Inputs_dec }/*expand*/;
-assign CoderModule_L34F35T55_ExprRhs = { {1{1'b0}}, CoderModule_L34F49T55_Expr }/*expand*/;
-assign CoderModule_L19F13L31T14_CoderModule_L21F21T61_Expr_1 = CoderModule_L19F13L31T14_CoderModule_L21F21T39_Expr;
-assign CoderModule_L19F13L31T14_CoderModule_L21F21T61_Expr_2 = CoderModule_L19F13L31T14_CoderModule_L21F43T61_Expr;
-assign CoderModule_L19F13L31T14_CoderModule_L24F21T62_Expr_1 = CoderModule_L19F13L31T14_CoderModule_L24F21T39_Expr;
-assign CoderModule_L19F13L31T14_CoderModule_L24F21T62_Expr_2 = CoderModule_L19F13L31T14_CoderModule_L24F43T62_Expr;
-assign CoderModule_L19F13L31T14_CoderModule_L27F21T66_Expr_1 = CoderModule_L19F13L31T14_CoderModule_L27F21T41_Expr;
-assign CoderModule_L19F13L31T14_CoderModule_L27F21T66_Expr_2 = CoderModule_L19F13L31T14_CoderModule_L27F45T66_Expr;
-assign CoderModule_L37F9L39T10_CoderModule_L38F71T88_Expr_1 = { {2{1'b0}}, State_counter }/*expand*/;
-assign CoderModule_L37F9L39T10_CoderModule_L38F71T88_Expr_2 = { {17{1'b0}}, CoderModule_L37F9L39T10_CoderModule_L38F87T88_Expr }/*expand*/;
-assign Inputs_dec = dec;
-assign CoderModule_L15F31T49_Source = CoderModule_L15F47T48_Expr;
-assign CoderModule_L15F31T60_Resize = { {1{1'b0}}, CoderModule_L15F31T49_Source }/*expand*/;
-assign INNone = CoderModule_L15F31T60_Resize/*cast*/;
-assign CoderModule_L19F13L31T14_CoderModule_L30F24T47_Source = CoderModule_L19F13L31T14_result;
-assign CoderModule_L19F13L31T14_CoderModule_L30F24T53_Index = CoderModule_L19F13L31T14_CoderModule_L30F24T47_Source[1:0];
-assign INx = CoderModule_L19F13L31T14_CoderModule_L30F24T53_Index;
-assign CoderModule_L37F9L39T10_CoderModule_L38F33T89_Cast = CoderModule_L37F9L39T10_CoderModule_L38F42T88_Lookup;
-assign IN1 = CoderModule_L33F35T70_Lookup/*cast*/;
-assign IN2 = CoderModule_L34F35T70_Lookup/*cast*/;
-assign CoderModule_L37F9L39T10_CoderModule_L38F42T88_Lookup1 = CoderModule_L37F9L39T10_CoderModule_L38F71T88_Expr[15:0]/*truncate*/;
-assign CoderModule_L37F9L39T10_CoderModule_L38F42T88_Lookup2 = { {15{1'b0}}, CoderModule_L37F9L39T10_CoderModule_L38F67T68_Expr }/*expand*/;
-assign CoderModule_L37F9L39T10_CoderModule_L38F42T88_LookupMultiplexerAddress = CoderModule_L37F9L39T10_CoderModule_L38F42T64_Expr;
-assign CoderModule_L33F35T70_Lookup1 = INNone/*cast*/;
-assign CoderModule_L33F35T70_Lookup2 = INx;
-assign CoderModule_L33F35T70_LookupMultiplexerAddress = CoderModule_L33F35T55_Expr;
-assign CoderModule_L34F35T70_Lookup1 = INNone/*cast*/;
-assign CoderModule_L34F35T70_Lookup2 = INx;
-assign CoderModule_L34F35T70_LookupMultiplexerAddress = CoderModule_L34F35T55_Expr;
-// [BEGIN USER ARCHITECTURE]
-// [END USER ARCHITECTURE]
+);
+	// [BEGIN USER SIGNALS]
+	// [END USER SIGNALS]
+	localparam HiSignal = 1'b1;
+	localparam LoSignal = 1'b0;
+	wire Zero = 1'b0;
+	wire One = 1'b1;
+	wire true = 1'b1;
+	wire false = 1'b0;
+	wire CoderModule_L15F47T48_Expr = 1'b0;
+	wire CoderModule_L19F13L31T14_CoderModule_L20F31T32_Expr = 1'b0;
+	wire CoderModule_L19F13L31T14_CoderModule_L21F38T39_Expr = 1'b1;
+	wire [2: 0] CoderModule_L19F13L31T14_CoderModule_L21F60T61_Expr = 3'b101;
+	wire [1: 0] CoderModule_L19F13L31T14_CoderModule_L22F30T31_Expr = 2'b10;
+	wire [2: 0] CoderModule_L19F13L31T14_CoderModule_L24F38T39_Expr = 3'b111;
+	wire [3: 0] CoderModule_L19F13L31T14_CoderModule_L24F60T62_Expr = 4'b1011;
+	wire CoderModule_L19F13L31T14_CoderModule_L25F30T31_Expr = 1'b1;
+	wire [9: 0] CoderModule_L19F13L31T14_CoderModule_L27F38T41_Expr = 10'b1011101111;
+	wire [11: 0] CoderModule_L19F13L31T14_CoderModule_L27F62T66_Expr = 12'b100111000101;
+	wire [1: 0] CoderModule_L19F13L31T14_CoderModule_L28F30T31_Expr = 2'b11;
+	wire [14: 0] CoderModule_L37F9L39T10_CoderModule_L38F59T64_Expr = 15'b110000110101001;
+	wire CoderModule_L37F9L39T10_CoderModule_L38F67T68_Expr = 1'b0;
+	wire CoderModule_L37F9L39T10_CoderModule_L38F87T88_Expr = 1'b1;
+	wire [15: 0] CoderModule_L33F49T55_Expr = 16'b1111111111111110;
+	wire [15: 0] CoderModule_L34F49T55_Expr = 16'b1111111111111101;
+	wire [15: 0] Inputs_dec;
+	reg [15: 0] NextState_counter;
+	wire signed [1: 0] INNone;
+	wire [1: 0] INx;
+	wire CoderModule_L15F31T49_Source;
+	wire [1: 0] CoderModule_L15F31T60_Resize;
+	reg [7: 0] CoderModule_L19F13L31T14_result;
+	wire [7: 0] CoderModule_L19F13L31T14_CoderModule_L30F24T47_Source;
+	wire [1: 0] CoderModule_L19F13L31T14_CoderModule_L30F24T53_Index;
+	wire [15: 0] CoderModule_L37F9L39T10_CoderModule_L38F33T89_Cast;
+	reg [15: 0] State_counter = 16'b0000000000000000;
+	wire [15: 0] State_counterDefault = 16'b0000000000000000;
+	wire CoderModule_L19F13L31T14_CoderModule_L21F21T61_Expr;
+	wire CoderModule_L19F13L31T14_CoderModule_L21F21T61_Expr_1;
+	wire CoderModule_L19F13L31T14_CoderModule_L21F21T61_Expr_2;
+	wire CoderModule_L19F13L31T14_CoderModule_L24F21T62_Expr;
+	wire CoderModule_L19F13L31T14_CoderModule_L24F21T62_Expr_1;
+	wire CoderModule_L19F13L31T14_CoderModule_L24F21T62_Expr_2;
+	wire CoderModule_L19F13L31T14_CoderModule_L27F21T66_Expr;
+	wire CoderModule_L19F13L31T14_CoderModule_L27F21T66_Expr_1;
+	wire CoderModule_L19F13L31T14_CoderModule_L27F21T66_Expr_2;
+	wire [17: 0] CoderModule_L37F9L39T10_CoderModule_L38F71T88_Expr;
+	wire signed [17: 0] CoderModule_L37F9L39T10_CoderModule_L38F71T88_Expr_1;
+	wire signed [17: 0] CoderModule_L37F9L39T10_CoderModule_L38F71T88_Expr_2;
+	wire CoderModule_L19F13L31T14_CoderModule_L21F21T39_Expr;
+	wire signed [16: 0] CoderModule_L19F13L31T14_CoderModule_L21F21T39_ExprLhs;
+	wire signed [16: 0] CoderModule_L19F13L31T14_CoderModule_L21F21T39_ExprRhs;
+	wire CoderModule_L19F13L31T14_CoderModule_L21F43T61_Expr;
+	wire signed [16: 0] CoderModule_L19F13L31T14_CoderModule_L21F43T61_ExprLhs;
+	wire signed [16: 0] CoderModule_L19F13L31T14_CoderModule_L21F43T61_ExprRhs;
+	wire CoderModule_L19F13L31T14_CoderModule_L24F21T39_Expr;
+	wire signed [16: 0] CoderModule_L19F13L31T14_CoderModule_L24F21T39_ExprLhs;
+	wire signed [16: 0] CoderModule_L19F13L31T14_CoderModule_L24F21T39_ExprRhs;
+	wire CoderModule_L19F13L31T14_CoderModule_L24F43T62_Expr;
+	wire signed [16: 0] CoderModule_L19F13L31T14_CoderModule_L24F43T62_ExprLhs;
+	wire signed [16: 0] CoderModule_L19F13L31T14_CoderModule_L24F43T62_ExprRhs;
+	wire CoderModule_L19F13L31T14_CoderModule_L27F21T41_Expr;
+	wire signed [16: 0] CoderModule_L19F13L31T14_CoderModule_L27F21T41_ExprLhs;
+	wire signed [16: 0] CoderModule_L19F13L31T14_CoderModule_L27F21T41_ExprRhs;
+	wire CoderModule_L19F13L31T14_CoderModule_L27F45T66_Expr;
+	wire signed [16: 0] CoderModule_L19F13L31T14_CoderModule_L27F45T66_ExprLhs;
+	wire signed [16: 0] CoderModule_L19F13L31T14_CoderModule_L27F45T66_ExprRhs;
+	wire CoderModule_L37F9L39T10_CoderModule_L38F42T64_Expr;
+	wire signed [16: 0] CoderModule_L37F9L39T10_CoderModule_L38F42T64_ExprLhs;
+	wire signed [16: 0] CoderModule_L37F9L39T10_CoderModule_L38F42T64_ExprRhs;
+	wire CoderModule_L33F35T55_Expr;
+	wire signed [16: 0] CoderModule_L33F35T55_ExprLhs;
+	wire signed [16: 0] CoderModule_L33F35T55_ExprRhs;
+	wire CoderModule_L34F35T55_Expr;
+	wire signed [16: 0] CoderModule_L34F35T55_ExprLhs;
+	wire signed [16: 0] CoderModule_L34F35T55_ExprRhs;
+	reg [15: 0] CoderModule_L37F9L39T10_CoderModule_L38F42T88_Lookup;
+	reg [1: 0] CoderModule_L33F35T70_Lookup;
+	reg [1: 0] CoderModule_L34F35T70_Lookup;
+	wire CoderModule_L37F9L39T10_CoderModule_L38F42T88_LookupMultiplexerAddress;
+	wire [15: 0] CoderModule_L37F9L39T10_CoderModule_L38F42T88_Lookup1;
+	wire [15: 0] CoderModule_L37F9L39T10_CoderModule_L38F42T88_Lookup2;
+	wire CoderModule_L33F35T70_LookupMultiplexerAddress;
+	wire [1: 0] CoderModule_L33F35T70_Lookup1;
+	wire [1: 0] CoderModule_L33F35T70_Lookup2;
+	wire CoderModule_L34F35T70_LookupMultiplexerAddress;
+	wire [1: 0] CoderModule_L34F35T70_Lookup1;
+	wire [1: 0] CoderModule_L34F35T70_Lookup2;
+	always @ (posedge Clock)
+	begin
+		if (((Reset) == (1)))
+		begin
+			State_counter <= State_counterDefault;
+		end
+		else
+		begin
+			State_counter <= NextState_counter;
+		end
+	end
+	assign CoderModule_L19F13L31T14_CoderModule_L21F21T39_Expr = CoderModule_L19F13L31T14_CoderModule_L21F21T39_ExprLhs >= CoderModule_L19F13L31T14_CoderModule_L21F21T39_ExprRhs ? 1'b1 : 1'b0;
+	assign CoderModule_L19F13L31T14_CoderModule_L21F43T61_Expr = CoderModule_L19F13L31T14_CoderModule_L21F43T61_ExprLhs <= CoderModule_L19F13L31T14_CoderModule_L21F43T61_ExprRhs ? 1'b1 : 1'b0;
+	assign CoderModule_L19F13L31T14_CoderModule_L24F21T39_Expr = CoderModule_L19F13L31T14_CoderModule_L24F21T39_ExprLhs >= CoderModule_L19F13L31T14_CoderModule_L24F21T39_ExprRhs ? 1'b1 : 1'b0;
+	assign CoderModule_L19F13L31T14_CoderModule_L24F43T62_Expr = CoderModule_L19F13L31T14_CoderModule_L24F43T62_ExprLhs <= CoderModule_L19F13L31T14_CoderModule_L24F43T62_ExprRhs ? 1'b1 : 1'b0;
+	assign CoderModule_L19F13L31T14_CoderModule_L27F21T41_Expr = CoderModule_L19F13L31T14_CoderModule_L27F21T41_ExprLhs >= CoderModule_L19F13L31T14_CoderModule_L27F21T41_ExprRhs ? 1'b1 : 1'b0;
+	assign CoderModule_L19F13L31T14_CoderModule_L27F45T66_Expr = CoderModule_L19F13L31T14_CoderModule_L27F45T66_ExprLhs <= CoderModule_L19F13L31T14_CoderModule_L27F45T66_ExprRhs ? 1'b1 : 1'b0;
+	assign CoderModule_L37F9L39T10_CoderModule_L38F42T64_Expr = CoderModule_L37F9L39T10_CoderModule_L38F42T64_ExprLhs == CoderModule_L37F9L39T10_CoderModule_L38F42T64_ExprRhs ? 1'b1 : 1'b0;
+	assign CoderModule_L33F35T55_Expr = CoderModule_L33F35T55_ExprLhs == CoderModule_L33F35T55_ExprRhs ? 1'b1 : 1'b0;
+	assign CoderModule_L34F35T55_Expr = CoderModule_L34F35T55_ExprLhs == CoderModule_L34F35T55_ExprRhs ? 1'b1 : 1'b0;
+	assign CoderModule_L19F13L31T14_CoderModule_L21F21T61_Expr = CoderModule_L19F13L31T14_CoderModule_L21F21T61_Expr_1 & CoderModule_L19F13L31T14_CoderModule_L21F21T61_Expr_2;
+	assign CoderModule_L19F13L31T14_CoderModule_L24F21T62_Expr = CoderModule_L19F13L31T14_CoderModule_L24F21T62_Expr_1 & CoderModule_L19F13L31T14_CoderModule_L24F21T62_Expr_2;
+	assign CoderModule_L19F13L31T14_CoderModule_L27F21T66_Expr = CoderModule_L19F13L31T14_CoderModule_L27F21T66_Expr_1 & CoderModule_L19F13L31T14_CoderModule_L27F21T66_Expr_2;
+	assign CoderModule_L37F9L39T10_CoderModule_L38F71T88_Expr = CoderModule_L37F9L39T10_CoderModule_L38F71T88_Expr_1 + CoderModule_L37F9L39T10_CoderModule_L38F71T88_Expr_2;
+	always @ (*)
+	begin
+		case (CoderModule_L37F9L39T10_CoderModule_L38F42T88_LookupMultiplexerAddress)
+			'b0:
+			begin
+				CoderModule_L37F9L39T10_CoderModule_L38F42T88_Lookup = CoderModule_L37F9L39T10_CoderModule_L38F42T88_Lookup1;
+			end
+			'b1:
+			begin
+				CoderModule_L37F9L39T10_CoderModule_L38F42T88_Lookup = CoderModule_L37F9L39T10_CoderModule_L38F42T88_Lookup2;
+			end
+			default:
+			begin
+				CoderModule_L37F9L39T10_CoderModule_L38F42T88_Lookup = 'b0000000000000000;
+			end
+		endcase
+	end
+	always @ (*)
+	begin
+		case (CoderModule_L33F35T70_LookupMultiplexerAddress)
+			'b0:
+			begin
+				CoderModule_L33F35T70_Lookup = CoderModule_L33F35T70_Lookup1;
+			end
+			'b1:
+			begin
+				CoderModule_L33F35T70_Lookup = CoderModule_L33F35T70_Lookup2;
+			end
+			default:
+			begin
+				CoderModule_L33F35T70_Lookup = 'b00;
+			end
+		endcase
+	end
+	always @ (*)
+	begin
+		case (CoderModule_L34F35T70_LookupMultiplexerAddress)
+			'b0:
+			begin
+				CoderModule_L34F35T70_Lookup = CoderModule_L34F35T70_Lookup1;
+			end
+			'b1:
+			begin
+				CoderModule_L34F35T70_Lookup = CoderModule_L34F35T70_Lookup2;
+			end
+			default:
+			begin
+				CoderModule_L34F35T70_Lookup = 'b00;
+			end
+		endcase
+	end
+	always @ (*)
+	begin
+		CoderModule_L19F13L31T14_result = { {7{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L20F31T32_Expr }/*expand*/;
+		if (((CoderModule_L19F13L31T14_CoderModule_L21F21T61_Expr) == (1)))
+		begin
+			CoderModule_L19F13L31T14_result = { {6{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L22F30T31_Expr }/*expand*/;
+		end
+		if (((CoderModule_L19F13L31T14_CoderModule_L24F21T62_Expr) == (1)))
+		begin
+			CoderModule_L19F13L31T14_result = { {7{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L25F30T31_Expr }/*expand*/;
+		end
+		if (((CoderModule_L19F13L31T14_CoderModule_L27F21T66_Expr) == (1)))
+		begin
+			CoderModule_L19F13L31T14_result = { {6{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L28F30T31_Expr }/*expand*/;
+		end
+	end
+	always @ (*)
+	begin
+		NextState_counter = State_counter;
+		NextState_counter = CoderModule_L37F9L39T10_CoderModule_L38F33T89_Cast;
+	end
+	assign CoderModule_L19F13L31T14_CoderModule_L21F21T39_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
+	assign CoderModule_L19F13L31T14_CoderModule_L21F21T39_ExprRhs = { {16{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L21F38T39_Expr }/*expand*/;
+	assign CoderModule_L19F13L31T14_CoderModule_L21F43T61_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
+	assign CoderModule_L19F13L31T14_CoderModule_L21F43T61_ExprRhs = { {14{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L21F60T61_Expr }/*expand*/;
+	assign CoderModule_L19F13L31T14_CoderModule_L24F21T39_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
+	assign CoderModule_L19F13L31T14_CoderModule_L24F21T39_ExprRhs = { {14{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L24F38T39_Expr }/*expand*/;
+	assign CoderModule_L19F13L31T14_CoderModule_L24F43T62_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
+	assign CoderModule_L19F13L31T14_CoderModule_L24F43T62_ExprRhs = { {13{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L24F60T62_Expr }/*expand*/;
+	assign CoderModule_L19F13L31T14_CoderModule_L27F21T41_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
+	assign CoderModule_L19F13L31T14_CoderModule_L27F21T41_ExprRhs = { {7{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L27F38T41_Expr }/*expand*/;
+	assign CoderModule_L19F13L31T14_CoderModule_L27F45T66_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
+	assign CoderModule_L19F13L31T14_CoderModule_L27F45T66_ExprRhs = { {5{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L27F62T66_Expr }/*expand*/;
+	assign CoderModule_L37F9L39T10_CoderModule_L38F42T64_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
+	assign CoderModule_L37F9L39T10_CoderModule_L38F42T64_ExprRhs = { {2{1'b0}}, CoderModule_L37F9L39T10_CoderModule_L38F59T64_Expr }/*expand*/;
+	assign CoderModule_L33F35T55_ExprLhs = { {1{1'b0}}, Inputs_dec }/*expand*/;
+	assign CoderModule_L33F35T55_ExprRhs = { {1{1'b0}}, CoderModule_L33F49T55_Expr }/*expand*/;
+	assign CoderModule_L34F35T55_ExprLhs = { {1{1'b0}}, Inputs_dec }/*expand*/;
+	assign CoderModule_L34F35T55_ExprRhs = { {1{1'b0}}, CoderModule_L34F49T55_Expr }/*expand*/;
+	assign CoderModule_L19F13L31T14_CoderModule_L21F21T61_Expr_1 = CoderModule_L19F13L31T14_CoderModule_L21F21T39_Expr;
+	assign CoderModule_L19F13L31T14_CoderModule_L21F21T61_Expr_2 = CoderModule_L19F13L31T14_CoderModule_L21F43T61_Expr;
+	assign CoderModule_L19F13L31T14_CoderModule_L24F21T62_Expr_1 = CoderModule_L19F13L31T14_CoderModule_L24F21T39_Expr;
+	assign CoderModule_L19F13L31T14_CoderModule_L24F21T62_Expr_2 = CoderModule_L19F13L31T14_CoderModule_L24F43T62_Expr;
+	assign CoderModule_L19F13L31T14_CoderModule_L27F21T66_Expr_1 = CoderModule_L19F13L31T14_CoderModule_L27F21T41_Expr;
+	assign CoderModule_L19F13L31T14_CoderModule_L27F21T66_Expr_2 = CoderModule_L19F13L31T14_CoderModule_L27F45T66_Expr;
+	assign CoderModule_L37F9L39T10_CoderModule_L38F71T88_Expr_1 = { {2{1'b0}}, State_counter }/*expand*/;
+	assign CoderModule_L37F9L39T10_CoderModule_L38F71T88_Expr_2 = { {17{1'b0}}, CoderModule_L37F9L39T10_CoderModule_L38F87T88_Expr }/*expand*/;
+	assign Inputs_dec = dec;
+	assign CoderModule_L15F31T49_Source = CoderModule_L15F47T48_Expr;
+	assign CoderModule_L15F31T60_Resize = { {1{1'b0}}, CoderModule_L15F31T49_Source }/*expand*/;
+	assign INNone = CoderModule_L15F31T60_Resize/*cast*/;
+	assign CoderModule_L19F13L31T14_CoderModule_L30F24T47_Source = CoderModule_L19F13L31T14_result;
+	assign CoderModule_L19F13L31T14_CoderModule_L30F24T53_Index = CoderModule_L19F13L31T14_CoderModule_L30F24T47_Source[1:0];
+	assign INx = CoderModule_L19F13L31T14_CoderModule_L30F24T53_Index;
+	assign CoderModule_L37F9L39T10_CoderModule_L38F33T89_Cast = CoderModule_L37F9L39T10_CoderModule_L38F42T88_Lookup;
+	assign IN1 = CoderModule_L33F35T70_Lookup/*cast*/;
+	assign IN2 = CoderModule_L34F35T70_Lookup/*cast*/;
+	assign CoderModule_L37F9L39T10_CoderModule_L38F42T88_Lookup1 = CoderModule_L37F9L39T10_CoderModule_L38F71T88_Expr[15:0]/*truncate*/;
+	assign CoderModule_L37F9L39T10_CoderModule_L38F42T88_Lookup2 = { {15{1'b0}}, CoderModule_L37F9L39T10_CoderModule_L38F67T68_Expr }/*expand*/;
+	assign CoderModule_L37F9L39T10_CoderModule_L38F42T88_LookupMultiplexerAddress = CoderModule_L37F9L39T10_CoderModule_L38F42T64_Expr;
+	assign CoderModule_L33F35T70_Lookup1 = INNone/*cast*/;
+	assign CoderModule_L33F35T70_Lookup2 = INx;
+	assign CoderModule_L33F35T70_LookupMultiplexerAddress = CoderModule_L33F35T55_Expr;
+	assign CoderModule_L34F35T70_Lookup1 = INNone/*cast*/;
+	assign CoderModule_L34F35T70_Lookup2 = INx;
+	assign CoderModule_L34F35T70_LookupMultiplexerAddress = CoderModule_L34F35T55_Expr;
+	// [BEGIN USER ARCHITECTURE]
+	// [END USER ARCHITECTURE]
 endmodule

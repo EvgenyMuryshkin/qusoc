@@ -11,73 +11,72 @@
 //   You can use some of signals in custom code, but most likely they will not exist in future (e.g. will get shorter or gone completely)
 // * Please send your feedback, comments, improvement ideas etc. to evmuryshkin@gmail.com
 // * Visit https://github.com/EvgenyMuryshkin/QuokkaEvaluation to access latest version of playground
-// 
+//
 // DISCLAIMER:
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
-// 
+//
 // System configuration name is FullAdderModule_TopLevel, clock frequency is 1Hz, Top-level
 // FSM summary
 // -- Packages
-module FullAdderModule_TopLevel (
-// [BEGIN USER PORTS]
-// [END USER PORTS]
-
-	input wire  A,
-	input wire  B,
-	input wire  CIn,
+module FullAdderModule_TopLevel
+(
+	// [BEGIN USER PORTS]
+	// [END USER PORTS]
+	input wire A,
+	input wire B,
+	input wire CIn,
 	output wire O,
 	output wire COut
-    );
-
-// [BEGIN USER SIGNALS]
-// [END USER SIGNALS]
-localparam HiSignal = 1'b1;
-localparam LoSignal = 1'b0;
-wire  Zero = 1'b0;
-wire  One = 1'b1;
-wire  true = 1'b1;
-wire  false = 1'b0;
-wire  Inputs_A;
-wire  Inputs_B;
-wire  Inputs_CIn;
-wire  P;
-wire  FullAdder_L14F27T46_Expr;
-wire  FullAdder_L14F27T46_Expr_1;
-wire  FullAdder_L14F27T46_Expr_2;
-wire  FullAdder_L16F26T40_Expr;
-wire  FullAdder_L16F26T40_Expr_1;
-wire  FullAdder_L16F26T40_Expr_2;
-wire  FullAdder_L17F29T70_Expr;
-wire  FullAdder_L17F29T70_Expr_1;
-wire  FullAdder_L17F29T70_Expr_2;
-wire  FullAdder_L17F30T49_Expr;
-wire  FullAdder_L17F30T49_Expr_1;
-wire  FullAdder_L17F30T49_Expr_2;
-wire  FullAdder_L17F55T69_Expr;
-wire  FullAdder_L17F55T69_Expr_1;
-wire  FullAdder_L17F55T69_Expr_2;
-assign FullAdder_L14F27T46_Expr = FullAdder_L14F27T46_Expr_1 ^ FullAdder_L14F27T46_Expr_2;
-assign FullAdder_L16F26T40_Expr = FullAdder_L16F26T40_Expr_1 ^ FullAdder_L16F26T40_Expr_2;
-assign FullAdder_L17F29T70_Expr = FullAdder_L17F29T70_Expr_1 | FullAdder_L17F29T70_Expr_2;
-assign FullAdder_L17F30T49_Expr = FullAdder_L17F30T49_Expr_1 & FullAdder_L17F30T49_Expr_2;
-assign FullAdder_L17F55T69_Expr = FullAdder_L17F55T69_Expr_1 & FullAdder_L17F55T69_Expr_2;
-assign FullAdder_L14F27T46_Expr_1 = Inputs_A;
-assign FullAdder_L14F27T46_Expr_2 = Inputs_B;
-assign FullAdder_L16F26T40_Expr_1 = P;
-assign FullAdder_L16F26T40_Expr_2 = Inputs_CIn;
-assign FullAdder_L17F29T70_Expr_1 = FullAdder_L17F30T49_Expr;
-assign FullAdder_L17F29T70_Expr_2 = FullAdder_L17F55T69_Expr;
-assign FullAdder_L17F30T49_Expr_1 = Inputs_A;
-assign FullAdder_L17F30T49_Expr_2 = Inputs_B;
-assign FullAdder_L17F55T69_Expr_1 = P;
-assign FullAdder_L17F55T69_Expr_2 = Inputs_CIn;
-assign Inputs_A = A;
-assign Inputs_B = B;
-assign Inputs_CIn = CIn;
-assign P = FullAdder_L14F27T46_Expr;
-assign O = FullAdder_L16F26T40_Expr;
-assign COut = FullAdder_L17F29T70_Expr;
-// [BEGIN USER ARCHITECTURE]
-// [END USER ARCHITECTURE]
+);
+	// [BEGIN USER SIGNALS]
+	// [END USER SIGNALS]
+	localparam HiSignal = 1'b1;
+	localparam LoSignal = 1'b0;
+	wire Zero = 1'b0;
+	wire One = 1'b1;
+	wire true = 1'b1;
+	wire false = 1'b0;
+	wire Inputs_A;
+	wire Inputs_B;
+	wire Inputs_CIn;
+	wire P;
+	wire FullAdder_L14F27T46_Expr;
+	wire FullAdder_L14F27T46_Expr_1;
+	wire FullAdder_L14F27T46_Expr_2;
+	wire FullAdder_L16F26T40_Expr;
+	wire FullAdder_L16F26T40_Expr_1;
+	wire FullAdder_L16F26T40_Expr_2;
+	wire FullAdder_L17F29T70_Expr;
+	wire FullAdder_L17F29T70_Expr_1;
+	wire FullAdder_L17F29T70_Expr_2;
+	wire FullAdder_L17F30T49_Expr;
+	wire FullAdder_L17F30T49_Expr_1;
+	wire FullAdder_L17F30T49_Expr_2;
+	wire FullAdder_L17F55T69_Expr;
+	wire FullAdder_L17F55T69_Expr_1;
+	wire FullAdder_L17F55T69_Expr_2;
+	assign FullAdder_L14F27T46_Expr = FullAdder_L14F27T46_Expr_1 ^ FullAdder_L14F27T46_Expr_2;
+	assign FullAdder_L16F26T40_Expr = FullAdder_L16F26T40_Expr_1 ^ FullAdder_L16F26T40_Expr_2;
+	assign FullAdder_L17F29T70_Expr = FullAdder_L17F29T70_Expr_1 | FullAdder_L17F29T70_Expr_2;
+	assign FullAdder_L17F30T49_Expr = FullAdder_L17F30T49_Expr_1 & FullAdder_L17F30T49_Expr_2;
+	assign FullAdder_L17F55T69_Expr = FullAdder_L17F55T69_Expr_1 & FullAdder_L17F55T69_Expr_2;
+	assign FullAdder_L14F27T46_Expr_1 = Inputs_A;
+	assign FullAdder_L14F27T46_Expr_2 = Inputs_B;
+	assign FullAdder_L16F26T40_Expr_1 = P;
+	assign FullAdder_L16F26T40_Expr_2 = Inputs_CIn;
+	assign FullAdder_L17F29T70_Expr_1 = FullAdder_L17F30T49_Expr;
+	assign FullAdder_L17F29T70_Expr_2 = FullAdder_L17F55T69_Expr;
+	assign FullAdder_L17F30T49_Expr_1 = Inputs_A;
+	assign FullAdder_L17F30T49_Expr_2 = Inputs_B;
+	assign FullAdder_L17F55T69_Expr_1 = P;
+	assign FullAdder_L17F55T69_Expr_2 = Inputs_CIn;
+	assign Inputs_A = A;
+	assign Inputs_B = B;
+	assign Inputs_CIn = CIn;
+	assign P = FullAdder_L14F27T46_Expr;
+	assign O = FullAdder_L16F26T40_Expr;
+	assign COut = FullAdder_L17F29T70_Expr;
+	// [BEGIN USER ARCHITECTURE]
+	// [END USER ARCHITECTURE]
 endmodule
