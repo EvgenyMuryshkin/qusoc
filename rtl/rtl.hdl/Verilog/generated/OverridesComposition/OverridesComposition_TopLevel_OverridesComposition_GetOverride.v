@@ -80,7 +80,7 @@ module OverridesComposition_TopLevel_OverridesComposition_GetOverride
 	always @ (*)
 	begin
 		CombinationalGetValueOverride_L12F13L19T14_result = CombinationalGetValueOverride_L12F13L19T14_CombinationalOverridesBase_L14F41T96_Lookup;
-		if (((Inputs_InOverride) == (1)))
+		if ((Inputs_InOverride == 1))
 		begin
 			CombinationalGetValueOverride_L12F13L19T14_result = CombinationalGetValueOverride_L12F13L19T14_CombinationalGetValueOverride_L16F30T56_Cast;
 		end

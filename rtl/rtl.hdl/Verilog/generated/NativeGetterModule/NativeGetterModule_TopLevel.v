@@ -45,7 +45,7 @@ module NativeGetterModule_TopLevel
 	always @ (*)
 	begin
 		BitArrayGetterModule_L34F13L41T14_result = BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L35F30T43_Expr;
-		if (((BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_Expr) == (1)))
+		if ((BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_Expr == 1))
 		begin
 			BitArrayGetterModule_L34F13L41T14_result = Inputs_Value;
 		end

@@ -103,7 +103,7 @@ module VGAStaticQRModule_TopLevel_VGAStaticQRModule_vgaController_VGAController_
 	wire [10: 0] VGASyncModule_L64F9L67T10_VGASyncModule_L66F53T107_Lookup2;
 	always @ (posedge BoardSignals_Clock)
 	begin
-		if (((BoardSignals_Reset) == (1)))
+		if ((BoardSignals_Reset == 1))
 		begin
 			State_counter <= State_counterDefault;
 		end
@@ -144,7 +144,7 @@ module VGAStaticQRModule_TopLevel_VGAStaticQRModule_vgaController_VGAController_
 	always @ (*)
 	begin
 		NextState_counter = State_counter;
-		if (((Inputs_Enabled) == (1)))
+		if ((Inputs_Enabled == 1))
 		begin
 			NextState_counter = VGASyncModule_L64F9L67T10_VGASyncModule_L66F37T137_SignChange;
 		end

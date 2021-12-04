@@ -118,7 +118,7 @@ module CoderModule_TopLevel
 	wire [1: 0] CoderModule_L34F35T70_Lookup2;
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
 			State_counter <= State_counterDefault;
 		end
@@ -194,15 +194,15 @@ module CoderModule_TopLevel
 	always @ (*)
 	begin
 		CoderModule_L19F13L31T14_result = { {7{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L20F31T32_Expr }/*expand*/;
-		if (((CoderModule_L19F13L31T14_CoderModule_L21F21T61_Expr) == (1)))
+		if ((CoderModule_L19F13L31T14_CoderModule_L21F21T61_Expr == 1))
 		begin
 			CoderModule_L19F13L31T14_result = { {6{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L22F30T31_Expr }/*expand*/;
 		end
-		if (((CoderModule_L19F13L31T14_CoderModule_L24F21T62_Expr) == (1)))
+		if ((CoderModule_L19F13L31T14_CoderModule_L24F21T62_Expr == 1))
 		begin
 			CoderModule_L19F13L31T14_result = { {7{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L25F30T31_Expr }/*expand*/;
 		end
-		if (((CoderModule_L19F13L31T14_CoderModule_L27F21T66_Expr) == (1)))
+		if ((CoderModule_L19F13L31T14_CoderModule_L27F21T66_Expr == 1))
 		begin
 			CoderModule_L19F13L31T14_result = { {6{1'b0}}, CoderModule_L19F13L31T14_CoderModule_L28F30T31_Expr }/*expand*/;
 		end

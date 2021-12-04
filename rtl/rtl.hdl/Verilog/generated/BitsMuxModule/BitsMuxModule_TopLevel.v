@@ -47,7 +47,7 @@ module BitsMuxModule_TopLevel
 	wire [4: 0] BitsMuxModule_L14F76T92_Expr;
 	wire signed [4: 0] BitsMuxModule_L14F76T92_Expr_1;
 	wire signed [4: 0] BitsMuxModule_L14F76T92_Expr_2;
-	assign BitsMuxModule_L14F42T93_Expr = ((BitsMuxModule_L14F42T93_Expr_1) >> (BitsMuxModule_L14F76T92_Expr));
+	assign BitsMuxModule_L14F42T93_Expr = (BitsMuxModule_L14F42T93_Expr_1 >> BitsMuxModule_L14F76T92_Expr);
 	assign BitsMuxModule_L14F76T92_Expr = BitsMuxModule_L14F76T92_Expr_1 * BitsMuxModule_L14F76T92_Expr_2;
 	assign BitsMuxModule_L14F42T93_Expr_1 = BitsMuxModule_L14F42T71_Source;
 	assign BitsMuxModule_L14F76T92_Expr_1 = { {3{1'b0}}, BitsMuxModule_L14F76T77_Expr }/*expand*/;

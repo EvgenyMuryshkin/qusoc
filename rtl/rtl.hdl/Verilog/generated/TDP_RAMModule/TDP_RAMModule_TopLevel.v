@@ -75,7 +75,7 @@ module TDP_RAMModule_TopLevel
 	end
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
 			State_SameAddressWrite <= State_SameAddressWriteDefault;
 		end
@@ -92,10 +92,10 @@ module TDP_RAMModule_TopLevel
 	begin
 		NextState_SameAddressWrite = State_SameAddressWrite;
 		NextState_SameAddressWrite = TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr;
-		if (((Inputs_WE_A) == (1)))
+		if ((Inputs_WE_A == 1))
 		begin
 		end
-		if (((Inputs_WE_B) == (1)))
+		if ((Inputs_WE_B == 1))
 		begin
 		end
 	end

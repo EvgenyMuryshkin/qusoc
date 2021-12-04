@@ -53,7 +53,7 @@ module EmitterModule_TopLevel
 	wire signed [9: 0] EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_2;
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
 			State_Data <= State_DataDefault;
 		end
@@ -67,7 +67,7 @@ module EmitterModule_TopLevel
 	always @ (*)
 	begin
 		NextState_Data = State_Data;
-		if (((EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr) == (1)))
+		if ((EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr == 1))
 		begin
 			NextState_Data = EmitterModule_L22F9L25T10_EmitterModule_L24F34T56_Cast;
 		end

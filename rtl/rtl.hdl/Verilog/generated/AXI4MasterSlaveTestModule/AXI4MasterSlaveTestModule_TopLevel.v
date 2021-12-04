@@ -337,16 +337,16 @@ module AXI4MasterSlaveTestModule_TopLevel
 	work_Quokka_BoardSignalsProc BoardSignalsConnection(BoardSignals_Clock, BoardSignals_Reset, BoardSignals_Running, BoardSignals_Starting, BoardSignals_Started, Clock, Reset, InternalReset);
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
-			for (State_ReadData_Iterator = 0; ((State_ReadData_Iterator) < (4)); State_ReadData_Iterator = ((State_ReadData_Iterator) + (1)))
+			for (State_ReadData_Iterator = 0; (State_ReadData_Iterator < 4); State_ReadData_Iterator = (State_ReadData_Iterator + 1))
 			begin
 				State_ReadData[State_ReadData_Iterator] <= State_ReadDataDefault;
 			end
 		end
 		else
 		begin
-			for (State_ReadData_Iterator = 0; ((State_ReadData_Iterator) < (4)); State_ReadData_Iterator = ((State_ReadData_Iterator) + (1)))
+			for (State_ReadData_Iterator = 0; (State_ReadData_Iterator < 4); State_ReadData_Iterator = (State_ReadData_Iterator + 1))
 			begin
 				State_ReadData[State_ReadData_Iterator] <= NextState_ReadData[State_ReadData_Iterator];
 			end
@@ -502,11 +502,11 @@ module AXI4MasterSlaveTestModule_TopLevel
 	);
 	always @ (*)
 	begin
-		for (NextState_ReadData_Iterator = 0; ((NextState_ReadData_Iterator) < (4)); NextState_ReadData_Iterator = ((NextState_ReadData_Iterator) + (1)))
+		for (NextState_ReadData_Iterator = 0; (NextState_ReadData_Iterator < 4); NextState_ReadData_Iterator = (NextState_ReadData_Iterator + 1))
 		begin
 			NextState_ReadData[NextState_ReadData_Iterator] = State_ReadData[NextState_ReadData_Iterator];
 		end
-		if (((s_S2M_R_RVALID) == (1)))
+		if ((s_S2M_R_RVALID == 1))
 		begin
 			NextState_ReadData[0] = s_S2M_R_RDATA0;
 			NextState_ReadData[1] = s_S2M_R_RDATA1;

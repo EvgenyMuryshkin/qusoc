@@ -225,7 +225,7 @@ module AXI4RegisterModuleB4_TopLevel_AXI4RegisterModuleB4_axiSlave
 	wire signed [2: 0] AXI4NonBufferedSlaveModule_L65F26T63_ExprRhs;
 	always @ (posedge BoardSignals_Clock)
 	begin
-		if (((BoardSignals_Reset) == (1)))
+		if ((BoardSignals_Reset == 1))
 		begin
 			State_readFSM <= State_readFSMDefault;
 			State_writeFSM <= State_writeFSMDefault;
@@ -256,20 +256,20 @@ module AXI4RegisterModuleB4_TopLevel_AXI4RegisterModuleB4_axiSlave
 	begin
 		NextState_readFSM = State_readFSM;
 		NextState_writeFSM = State_writeFSM;
-		if (((AXI4NonBufferedSlaveModule_L81F9L137T10_AXI4NonBufferedSlaveModule_L84F13L110T14_AXI4NonBufferedSlaveModule_L86F17L90T23_Case) == (1)))
+		if ((AXI4NonBufferedSlaveModule_L81F9L137T10_AXI4NonBufferedSlaveModule_L84F13L110T14_AXI4NonBufferedSlaveModule_L86F17L90T23_Case == 1))
 		begin
 			NextState_readFSM = { {1{1'b0}}, AXI4NonBufferedSlaveModule_L81F9L137T10_AXI4NonBufferedSlaveModule_L84F13L110T14_AXI4NonBufferedSlaveModule_L87F17L89T18_AXI4NonBufferedSlaveModule_L88F41T61_Expr }/*expand*/;
 		end
-		else if (((AXI4NonBufferedSlaveModule_L81F9L137T10_AXI4NonBufferedSlaveModule_L84F13L110T14_AXI4NonBufferedSlaveModule_L91F17L98T23_Case) == (1)))
+		else if ((AXI4NonBufferedSlaveModule_L81F9L137T10_AXI4NonBufferedSlaveModule_L84F13L110T14_AXI4NonBufferedSlaveModule_L91F17L98T23_Case == 1))
 		begin
-			if (((Inputs_M2S_AR_ARVALID) == (1)))
+			if ((Inputs_M2S_AR_ARVALID == 1))
 			begin
 				NextState_readFSM = AXI4NonBufferedSlaveModule_L81F9L137T10_AXI4NonBufferedSlaveModule_L84F13L110T14_AXI4NonBufferedSlaveModule_L92F17L97T18_AXI4NonBufferedSlaveModule_L94F21L96T22_AXI4NonBufferedSlaveModule_L95F45T63_Expr;
 			end
 		end
-		else if (((AXI4NonBufferedSlaveModule_L81F9L137T10_AXI4NonBufferedSlaveModule_L84F13L110T14_AXI4NonBufferedSlaveModule_L99F17L104T23_Case) == (1)))
+		else if ((AXI4NonBufferedSlaveModule_L81F9L137T10_AXI4NonBufferedSlaveModule_L84F13L110T14_AXI4NonBufferedSlaveModule_L99F17L104T23_Case == 1))
 		begin
-			if (((AXI4NonBufferedSlaveModule_L81F9L137T10_AXI4NonBufferedSlaveModule_L84F13L110T14_AXI4NonBufferedSlaveModule_L100F17L103T18_AXI4NonBufferedSlaveModule_L101F25T59_Expr) == (1)))
+			if ((AXI4NonBufferedSlaveModule_L81F9L137T10_AXI4NonBufferedSlaveModule_L84F13L110T14_AXI4NonBufferedSlaveModule_L100F17L103T18_AXI4NonBufferedSlaveModule_L101F25T59_Expr == 1))
 			begin
 				NextState_readFSM = { {1{1'b0}}, AXI4NonBufferedSlaveModule_L81F9L137T10_AXI4NonBufferedSlaveModule_L84F13L110T14_AXI4NonBufferedSlaveModule_L100F17L103T18_AXI4NonBufferedSlaveModule_L102F45T65_Expr }/*expand*/;
 			end
@@ -278,20 +278,20 @@ module AXI4RegisterModuleB4_TopLevel_AXI4RegisterModuleB4_axiSlave
 		begin
 			NextState_readFSM = { {1{1'b0}}, AXI4NonBufferedSlaveModule_L81F9L137T10_AXI4NonBufferedSlaveModule_L84F13L110T14_AXI4NonBufferedSlaveModule_L106F17L108T18_AXI4NonBufferedSlaveModule_L107F41T61_Expr }/*expand*/;
 		end
-		if (((AXI4NonBufferedSlaveModule_L81F9L137T10_AXI4NonBufferedSlaveModule_L112F13L136T14_AXI4NonBufferedSlaveModule_L114F17L118T23_Case) == (1)))
+		if ((AXI4NonBufferedSlaveModule_L81F9L137T10_AXI4NonBufferedSlaveModule_L112F13L136T14_AXI4NonBufferedSlaveModule_L114F17L118T23_Case == 1))
 		begin
 			NextState_writeFSM = { {1{1'b0}}, AXI4NonBufferedSlaveModule_L81F9L137T10_AXI4NonBufferedSlaveModule_L112F13L136T14_AXI4NonBufferedSlaveModule_L115F17L117T18_AXI4NonBufferedSlaveModule_L116F42T63_Expr }/*expand*/;
 		end
-		else if (((AXI4NonBufferedSlaveModule_L81F9L137T10_AXI4NonBufferedSlaveModule_L112F13L136T14_AXI4NonBufferedSlaveModule_L119F17L124T23_Case) == (1)))
+		else if ((AXI4NonBufferedSlaveModule_L81F9L137T10_AXI4NonBufferedSlaveModule_L112F13L136T14_AXI4NonBufferedSlaveModule_L119F17L124T23_Case == 1))
 		begin
-			if (((axiWE) == (1)))
+			if ((axiWE == 1))
 			begin
 				NextState_writeFSM = AXI4NonBufferedSlaveModule_L81F9L137T10_AXI4NonBufferedSlaveModule_L112F13L136T14_AXI4NonBufferedSlaveModule_L120F17L123T18_AXI4NonBufferedSlaveModule_L122F46T65_Expr;
 			end
 		end
-		else if (((AXI4NonBufferedSlaveModule_L81F9L137T10_AXI4NonBufferedSlaveModule_L112F13L136T14_AXI4NonBufferedSlaveModule_L125F17L130T23_Case) == (1)))
+		else if ((AXI4NonBufferedSlaveModule_L81F9L137T10_AXI4NonBufferedSlaveModule_L112F13L136T14_AXI4NonBufferedSlaveModule_L125F17L130T23_Case == 1))
 		begin
-			if (((AXI4NonBufferedSlaveModule_L81F9L137T10_AXI4NonBufferedSlaveModule_L112F13L136T14_AXI4NonBufferedSlaveModule_L126F17L129T18_AXI4NonBufferedSlaveModule_L127F25T59_Expr) == (1)))
+			if ((AXI4NonBufferedSlaveModule_L81F9L137T10_AXI4NonBufferedSlaveModule_L112F13L136T14_AXI4NonBufferedSlaveModule_L126F17L129T18_AXI4NonBufferedSlaveModule_L127F25T59_Expr == 1))
 			begin
 				NextState_writeFSM = { {1{1'b0}}, AXI4NonBufferedSlaveModule_L81F9L137T10_AXI4NonBufferedSlaveModule_L112F13L136T14_AXI4NonBufferedSlaveModule_L126F17L129T18_AXI4NonBufferedSlaveModule_L128F46T67_Expr }/*expand*/;
 			end

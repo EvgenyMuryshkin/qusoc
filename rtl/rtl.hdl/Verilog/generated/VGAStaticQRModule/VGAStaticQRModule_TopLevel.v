@@ -115,7 +115,7 @@ $readmemh("VGAStaticQRModule_TopLevel_State_QR.hex", State_QR);
 	work_Quokka_BoardSignalsProc BoardSignalsConnection(BoardSignals_Clock, BoardSignals_Reset, BoardSignals_Running, BoardSignals_Starting, BoardSignals_Started, Clock, Reset, InternalReset);
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
 			State_Visible <= State_VisibleDefault;
 			State_HSync <= State_HSyncDefault;
@@ -133,7 +133,7 @@ $readmemh("VGAStaticQRModule_TopLevel_State_QR.hex", State_QR);
 	assign VGAStaticQRModule_L87F42T56_Expr = VGAStaticQRModule_L87F42T56_ExprLhs == VGAStaticQRModule_L87F42T56_ExprRhs ? 1'b1 : 1'b0;
 	assign VGAStaticQRModule_L88F42T56_Expr = VGAStaticQRModule_L88F42T56_ExprLhs == VGAStaticQRModule_L88F42T56_ExprRhs ? 1'b1 : 1'b0;
 	assign VGAStaticQRModule_L89F42T56_Expr = VGAStaticQRModule_L89F42T56_ExprLhs == VGAStaticQRModule_L89F42T56_ExprRhs ? 1'b1 : 1'b0;
-	assign VGAStaticQRModule_L85F35T86_Expr = ((VGAStaticQRModule_L85F35T86_Expr_1) >> (VGAStaticQRModule_L85F69T85_Expr));
+	assign VGAStaticQRModule_L85F35T86_Expr = (VGAStaticQRModule_L85F35T86_Expr_1 >> VGAStaticQRModule_L85F69T85_Expr);
 	// Output: VGAStaticQRModule_L102F9L108T10_VGAStaticQRModule_L103F41T75_Expr, Width: 19, ShiftBy: 2, Sources: 1
 	assign VGAStaticQRModule_L102F9L108T10_VGAStaticQRModule_L103F41T75_Expr[0] = VGAStaticQRModule_L102F9L108T10_VGAStaticQRModule_L103F41T75_Expr_1[2];
 	assign VGAStaticQRModule_L102F9L108T10_VGAStaticQRModule_L103F41T75_Expr[1] = VGAStaticQRModule_L102F9L108T10_VGAStaticQRModule_L103F41T75_Expr_1[3];

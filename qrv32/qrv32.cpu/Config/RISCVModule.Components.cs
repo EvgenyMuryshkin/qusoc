@@ -23,7 +23,7 @@ namespace QRV32.CPU
         RTLBitArray CMPLhs => Regs.RS1;
         RTLBitArray CMPRhs => ID.OpTypeCode == OpTypeCodes.OPIMM ? ID.ITypeImm : Regs.RS2;
 
-        public RISCVModule() : this(CPURegsType.DoubleRAM)
+        public RISCVModule() : this(CPURegsType.RAM)
         {
 
         }

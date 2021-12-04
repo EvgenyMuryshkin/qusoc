@@ -160,7 +160,7 @@ module StallControlPipelineModule_TopLevel
 	wire [7: 0] Pipeline_StallControlPipelineModule_L89F17L98T18_StallControlPipelineModule_L94F42T90_Lookup2;
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
 			Pipeline_PipelineControl_PipelineStalled <= Pipeline_PipelineControl_PipelineStalledDefault;
 			Pipeline_stage0_State_ready <= Pipeline_stage0_State_readyDefault;
@@ -180,18 +180,18 @@ module StallControlPipelineModule_TopLevel
 			Pipeline_stage0_Control_StageStalled <= Pipeline_stage0_Preview_StageWillStall;
 			Pipeline_stage1_Control_StageStalled <= Pipeline_stage1_Preview_StageWillStall;
 			Pipeline_stage2_Control_StageStalled <= Pipeline_stage2_Preview_StageWillStall;
-			if (((Pipeline_stage0_Preview_StageWillStall) != (1)))
+			if ((Pipeline_stage0_Preview_StageWillStall != 1))
 			begin
 				Pipeline_stage0_State_ready <= Pipeline_stage0_NextState_ready;
 				Pipeline_stage0_State_data <= Pipeline_stage0_NextState_data;
 			end
-			if (((Pipeline_stage1_Preview_StageWillStall) != (1)))
+			if ((Pipeline_stage1_Preview_StageWillStall != 1))
 			begin
 				Pipeline_stage1_State_ready <= Pipeline_stage1_NextState_ready;
 				Pipeline_stage1_State_data <= Pipeline_stage1_NextState_data;
 				Pipeline_stage1_State_counter <= Pipeline_stage1_NextState_counter;
 			end
-			if (((Pipeline_stage2_Preview_StageWillStall) != (1)))
+			if ((Pipeline_stage2_Preview_StageWillStall != 1))
 			begin
 				Pipeline_stage2_State_ready <= Pipeline_stage2_NextState_ready;
 				Pipeline_stage2_State_result <= Pipeline_stage2_NextState_result;

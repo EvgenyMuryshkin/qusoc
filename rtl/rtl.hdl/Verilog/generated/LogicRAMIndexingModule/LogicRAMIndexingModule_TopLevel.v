@@ -103,16 +103,16 @@ module LogicRAMIndexingModule_TopLevel
 	end
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
-			for (State_Buff_Iterator = 0; ((State_Buff_Iterator) < (4)); State_Buff_Iterator = ((State_Buff_Iterator) + (1)))
+			for (State_Buff_Iterator = 0; (State_Buff_Iterator < 4); State_Buff_Iterator = (State_Buff_Iterator + 1))
 			begin
 				State_Buff[State_Buff_Iterator] <= State_BuffDefault;
 			end
 		end
 		else
 		begin
-			for (State_Buff_Iterator = 0; ((State_Buff_Iterator) < (4)); State_Buff_Iterator = ((State_Buff_Iterator) + (1)))
+			for (State_Buff_Iterator = 0; (State_Buff_Iterator < 4); State_Buff_Iterator = (State_Buff_Iterator + 1))
 			begin
 				State_Buff[State_Buff_Iterator] <= NextState_Buff[State_Buff_Iterator];
 			end
@@ -127,11 +127,11 @@ module LogicRAMIndexingModule_TopLevel
 	assign LogicRAMIndexingModule_L28F42T85_Expr = LogicRAMIndexingModule_L28F42T85_Expr_1 + LogicRAMIndexingModule_L28F42T85_Expr_2;
 	always @ (*)
 	begin
-		for (NextState_Buff_Iterator = 0; ((NextState_Buff_Iterator) < (4)); NextState_Buff_Iterator = ((NextState_Buff_Iterator) + (1)))
+		for (NextState_Buff_Iterator = 0; (NextState_Buff_Iterator < 4); NextState_Buff_Iterator = (NextState_Buff_Iterator + 1))
 		begin
 			NextState_Buff[NextState_Buff_Iterator] = State_Buff[NextState_Buff_Iterator];
 		end
-		if (((Inputs_WE) == (1)))
+		if ((Inputs_WE == 1))
 		begin
 			NextState_Buff[Inputs_WriteAddr] = Inputs_WriteData;
 		end

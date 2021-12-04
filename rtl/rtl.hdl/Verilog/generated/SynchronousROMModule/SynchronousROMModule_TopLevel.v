@@ -63,7 +63,7 @@ $readmemh("SynchronousROMModule_TopLevel_State_Buff.hex", State_Buff);
 	end
 	always @ (posedge Clock)
 	begin
-		if (((Inputs_RE) == (1)))
+		if ((Inputs_RE == 1))
 		begin
 			State_REData <= State_Buff[Inputs_REAddr];
 		end

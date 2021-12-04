@@ -151,7 +151,7 @@ module AutoPropagatePipelineModule_TopLevel
 	wire signed [17: 0] Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T66_Expr_2;
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
 			Pipeline_stage0_State_sums0 <= Pipeline_stage0_State_sums0Default;
 			Pipeline_stage0_State_sums1 <= Pipeline_stage0_State_sums1Default;

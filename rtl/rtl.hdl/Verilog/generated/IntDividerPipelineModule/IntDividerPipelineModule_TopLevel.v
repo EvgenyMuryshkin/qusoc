@@ -1432,7 +1432,7 @@ module IntDividerPipelineModule_TopLevel
 	wire [31: 0] DivPipeline_IntDividerPipelineTools_L87F32T46_IntDividerPipelineTools_L73F9L80T10_IntDividerPipelineTools_L78F29T84_Lookup2;
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
 			DivPipeline_stage0_State_Payload <= DivPipeline_stage0_State_PayloadDefault;
 			DivPipeline_stage0_State_isResultNegative <= DivPipeline_stage0_State_isResultNegativeDefault;
@@ -2960,10 +2960,10 @@ module IntDividerPipelineModule_TopLevel
 		DivPipeline_stage0_NextState_numerator = DivPipeline_IntDividerPipelineTools_L85F32T45_IntDividerPipelineTools_L37F9L50T10_IntDividerPipelineTools_L47F29T86_Lookup/*cast*/;
 		DivPipeline_stage0_NextState_denominator = DivPipeline_IntDividerPipelineTools_L85F32T45_IntDividerPipelineTools_L37F9L50T10_IntDividerPipelineTools_L48F31T94_Lookup/*cast*/;
 		DivPipeline_stage0_NextState_result = { {31{1'b0}}, DivPipeline_IntDividerPipelineTools_L85F32T45_IntDividerPipelineTools_L37F9L50T10_IntDividerPipelineTools_L46F26T27_Expr }/*expand*/;
+		DivPipeline_stage1_NextState_numerator = DivPipeline_generatedStage0_IntDividerPipelineTools_L86F46T66_IntDividerPipelineTools_L54F9L69T10_nextNumerator;
 		DivPipeline_stage1_NextState_Payload = DivPipeline_stage0_State_Payload;
 		DivPipeline_stage1_NextState_isResultNegative = DivPipeline_stage0_State_isResultNegative;
 		DivPipeline_stage1_NextState_isRemainderNegative = DivPipeline_stage0_State_isRemainderNegative;
-		DivPipeline_stage1_NextState_numerator = DivPipeline_generatedStage0_IntDividerPipelineTools_L86F46T66_IntDividerPipelineTools_L54F9L69T10_nextNumerator;
 		DivPipeline_stage1_NextState_denominator = DivPipeline_stage0_State_denominator;
 		DivPipeline_stage1_NextState_result = DivPipeline_generatedStage0_IntDividerPipelineTools_L86F46T66_IntDividerPipelineTools_L54F9L69T10_result;
 		DivPipeline_stage2_NextState_Payload = DivPipeline_stage1_State_Payload;

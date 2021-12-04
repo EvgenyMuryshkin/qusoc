@@ -71,7 +71,7 @@ module BitArrayModule_TopLevel
 	wire [7: 0] BitArrayModule_L17F46T61_Expr_1;
 	genvar LogicalFunctionLogicalFunction1_idx;
 	generate
-		for (LogicalFunctionLogicalFunction1_idx = 7; ((LogicalFunctionLogicalFunction1_idx) >= (0)); LogicalFunctionLogicalFunction1_idx = ((LogicalFunctionLogicalFunction1_idx) - (1)))
+		for (LogicalFunctionLogicalFunction1_idx = 7; (LogicalFunctionLogicalFunction1_idx >= 0); LogicalFunctionLogicalFunction1_idx = (LogicalFunctionLogicalFunction1_idx - 1))
 		begin : LogicalFunctionLogicalFunction1_idxReverse
 			assign BitArrayModule_L17F46T61_Expr[LogicalFunctionLogicalFunction1_idx] = BitArrayModule_L17F46T61_Expr_1[7 - LogicalFunctionLogicalFunction1_idx];
 		end

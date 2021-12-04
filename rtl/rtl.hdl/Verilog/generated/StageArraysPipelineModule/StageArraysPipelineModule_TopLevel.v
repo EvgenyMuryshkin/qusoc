@@ -149,7 +149,7 @@ module StageArraysPipelineModule_TopLevel
 	wire signed [17: 0] Pipeline_StageArraysPipelineModule_L44F39T62_Expr_2;
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
 			Pipeline_stage0_State_IsS0Ready <= Pipeline_stage0_State_IsS0ReadyDefault;
 			Pipeline_stage0_State_sums0 <= Pipeline_stage0_State_sums0Default;

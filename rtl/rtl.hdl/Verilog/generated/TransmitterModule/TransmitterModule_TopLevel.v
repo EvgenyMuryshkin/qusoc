@@ -103,7 +103,7 @@ module TransmitterModule_TopLevel
 	wire signed [2: 0] TransmitterModule_L11F82T126_ExprRhs;
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
 			State_FSM <= State_FSMDefault;
 			State_Data <= State_DataDefault;
@@ -140,18 +140,18 @@ module TransmitterModule_TopLevel
 		NextState_FSM = State_FSM;
 		NextState_Data = State_Data;
 		NextState_Counter = State_Counter;
-		if (((TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L16F17L23T27_Case) == (1)))
+		if ((TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L16F17L23T27_Case == 1))
 		begin
-			if (((Inputs_Trigger) == (1)))
+			if ((Inputs_Trigger == 1))
 			begin
 				NextState_Counter = { {7{1'b0}}, TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L18F21L22T22_TransmitterModule_L19F45T46_Expr }/*expand*/;
 				NextState_Data = Inputs_Data;
 				NextState_FSM = { {1{1'b0}}, TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L18F21L22T22_TransmitterModule_L21F41T68_Expr }/*expand*/;
 			end
 		end
-		else if (((TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L24F17L34T27_Case) == (1)))
+		else if ((TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L24F17L34T27_Case == 1))
 		begin
-			if (((TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L25F25T43_Expr) == (1)))
+			if ((TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L25F25T43_Expr == 1))
 			begin
 				NextState_FSM = TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L26F21L28T22_TransmitterModule_L27F41T69_Expr;
 			end
@@ -161,9 +161,9 @@ module TransmitterModule_TopLevel
 			end
 			NextState_Data = TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L33F38T53_Expr;
 		end
-		else if (((TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L35F17L38T27_Case) == (1)))
+		else if ((TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L35F17L38T27_Case == 1))
 		begin
-			if (((Inputs_Ack) == (1)))
+			if ((Inputs_Ack == 1))
 			begin
 				NextState_FSM = { {1{1'b0}}, TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L37F41T60_Expr }/*expand*/;
 			end

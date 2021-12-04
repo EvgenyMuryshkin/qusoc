@@ -54,11 +54,11 @@ module BitArrayGetterModule_TopLevel
 	always @ (*)
 	begin
 		BitArrayGetterModule_L16F13L25T14_result = BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L17F30T60_Source;
-		if (((BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_Expr) == (1)))
+		if ((BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_Expr == 1))
 		begin
 			BitArrayGetterModule_L16F13L25T14_result = BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L20F30T38_Cast;
 		end
-		else if (((BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_Expr) == (1)))
+		else if ((BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_Expr == 1))
 		begin
 			BitArrayGetterModule_L16F13L25T14_result = BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L22F30T70_Resize;
 		end

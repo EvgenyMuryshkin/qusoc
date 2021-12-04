@@ -85,7 +85,7 @@ module ReceiverModule_TopLevel
 	wire [7: 0] ReceiverModule_L10F36T57_Lookup2;
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
 			State_FSM <= State_FSMDefault;
 			State_Data <= State_DataDefault;
@@ -131,17 +131,17 @@ module ReceiverModule_TopLevel
 	begin
 		NextState_FSM = State_FSM;
 		NextState_Data = State_Data;
-		if (((ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L16F17L22T27_Case) == (1)))
+		if ((ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L16F17L22T27_Case == 1))
 		begin
-			if (((Inputs_IsValid) == (1)))
+			if ((Inputs_IsValid == 1))
 			begin
 				NextState_Data = PartialData;
 				NextState_FSM = { {1{1'b0}}, ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L18F21L21T22_ReceiverModule_L20F41T62_Expr }/*expand*/;
 			end
 		end
-		else if (((ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L23F17L32T27_Case) == (1)))
+		else if ((ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L23F17L32T27_Case == 1))
 		begin
-			if (((Inputs_IsValid) == (1)))
+			if ((Inputs_IsValid == 1))
 			begin
 				NextState_Data = ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F42T81_Cast;
 			end
@@ -150,9 +150,9 @@ module ReceiverModule_TopLevel
 				NextState_FSM = ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L29F21L31T22_ReceiverModule_L30F41T66_Expr;
 			end
 		end
-		else if (((ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L33F17L39T27_Case) == (1)))
+		else if ((ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L33F17L39T27_Case == 1))
 		begin
-			if (((Inputs_Ack) == (1)))
+			if ((Inputs_Ack == 1))
 			begin
 				NextState_FSM = { {1{1'b0}}, ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L35F21L38T22_ReceiverModule_L36F41T57_Expr }/*expand*/;
 				NextState_Data = { {7{1'b0}}, ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L35F21L38T22_ReceiverModule_L37F42T43_Expr }/*expand*/;

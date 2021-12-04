@@ -150,7 +150,7 @@ module TypedPipelineModule_TopLevel
 	wire signed [17: 0] Pipeline_TypedPipelineModule_L88F30T70_TypedPipelineModule_L31F9L37T10_TypedPipelineModule_L35F35T66_Expr_2;
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
 			Pipeline_stage0_State_sums0 <= Pipeline_stage0_State_sums0Default;
 			Pipeline_stage0_State_sums1 <= Pipeline_stage0_State_sums1Default;

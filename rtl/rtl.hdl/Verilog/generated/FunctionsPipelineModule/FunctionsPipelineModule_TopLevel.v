@@ -55,7 +55,7 @@ module FunctionsPipelineModule_TopLevel
 	wire [31: 0] Pipeline_FunctionsPipelineModule_L34F29L41T18_FunctionsPipelineModule_L39F37T94_Lookup2;
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
 			Pipeline_stage0_State_numerator <= Pipeline_stage0_State_numeratorDefault;
 		end

@@ -66,7 +66,7 @@ module VGAAlienArtModule_TopLevel_VGAAlienArtModule_offsetTimer
 	wire [21: 0] TimerModule_L51F9L53T10_TimerModule_L52F34T101_Lookup2;
 	always @ (posedge BoardSignals_Clock)
 	begin
-		if (((BoardSignals_Reset) == (1)))
+		if ((BoardSignals_Reset == 1))
 		begin
 			State_counter <= State_counterDefault;
 		end

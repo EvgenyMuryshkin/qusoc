@@ -1707,7 +1707,7 @@ module VGAAlienArtModule_TopLevel
 	work_Quokka_BoardSignalsProc BoardSignalsConnection(BoardSignals_Clock, BoardSignals_Reset, BoardSignals_Running, BoardSignals_Starting, BoardSignals_Started, Clock, Reset, InternalReset);
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
 			State_denominator <= State_denominatorDefault;
 			State_offset <= State_offsetDefault;
@@ -3506,21 +3506,21 @@ module VGAAlienArtModule_TopLevel
 		Pipeline_stage33_NextState_Payload_HSync = Pipeline_stage33_State_Payload_HSync;
 		Pipeline_stage33_NextState_result = Pipeline_stage33_State_result;
 		Pipeline_stage33_NextState_remainder = Pipeline_stage33_State_remainder;
-		if (((patternTimer_OutActive) == (1)))
+		if ((patternTimer_OutActive == 1))
 		begin
 			NextState_denominator = VGAAlienArtModule_L79F9L85T10_VGAAlienArtModule_L81F41T92_Lookup/*cast*/;
 		end
-		if (((offsetTimer_OutActive) == (1)))
+		if ((offsetTimer_OutActive == 1))
 		begin
 			NextState_offset = VGAAlienArtModule_L79F9L85T10_VGAAlienArtModule_L84F36T52_Expr[31:0]/*truncate*/;
 		end
-		Pipeline_stage0_NextState_denominator = Pipeline_IntDividerPipelineTools_L85F32T45_IntDividerPipelineTools_L37F9L50T10_IntDividerPipelineTools_L48F31T94_Lookup/*cast*/;
 		Pipeline_stage0_NextState_Payload_Visible = Pipeline_Inputs_Payload_Visible;
 		Pipeline_stage0_NextState_Payload_VSync = Pipeline_Inputs_Payload_VSync;
 		Pipeline_stage0_NextState_Payload_HSync = Pipeline_Inputs_Payload_HSync;
 		Pipeline_stage0_NextState_isResultNegative = Pipeline_IntDividerPipelineTools_L85F32T45_IntDividerPipelineTools_L37F9L50T10_IntDividerPipelineTools_L44F36T80_Expr;
 		Pipeline_stage0_NextState_isRemainderNegative = Pipeline_IntDividerPipelineTools_L85F32T45_IntDividerPipelineTools_L37F9L50T10_isNumeratorNegative;
 		Pipeline_stage0_NextState_numerator = Pipeline_IntDividerPipelineTools_L85F32T45_IntDividerPipelineTools_L37F9L50T10_IntDividerPipelineTools_L47F29T86_Lookup/*cast*/;
+		Pipeline_stage0_NextState_denominator = Pipeline_IntDividerPipelineTools_L85F32T45_IntDividerPipelineTools_L37F9L50T10_IntDividerPipelineTools_L48F31T94_Lookup/*cast*/;
 		Pipeline_stage0_NextState_result = { {31{1'b0}}, Pipeline_IntDividerPipelineTools_L85F32T45_IntDividerPipelineTools_L37F9L50T10_IntDividerPipelineTools_L46F26T27_Expr }/*expand*/;
 		Pipeline_stage1_NextState_Payload_Visible = Pipeline_stage0_State_Payload_Visible;
 		Pipeline_stage1_NextState_Payload_VSync = Pipeline_stage0_State_Payload_VSync;
@@ -3778,11 +3778,11 @@ module VGAAlienArtModule_TopLevel
 		Pipeline_stage32_NextState_numerator = Pipeline_generatedStage31_IntDividerPipelineTools_L86F46T66_IntDividerPipelineTools_L54F9L69T10_nextNumerator;
 		Pipeline_stage32_NextState_denominator = Pipeline_stage31_State_denominator;
 		Pipeline_stage32_NextState_result = Pipeline_generatedStage31_IntDividerPipelineTools_L86F46T66_IntDividerPipelineTools_L54F9L69T10_result;
-		Pipeline_stage33_NextState_remainder = Pipeline_IntDividerPipelineTools_L87F32T46_IntDividerPipelineTools_L73F9L80T10_IntDividerPipelineTools_L78F29T84_Lookup/*cast*/;
 		Pipeline_stage33_NextState_Payload_Visible = Pipeline_stage32_State_Payload_Visible;
 		Pipeline_stage33_NextState_Payload_VSync = Pipeline_stage32_State_Payload_VSync;
 		Pipeline_stage33_NextState_Payload_HSync = Pipeline_stage32_State_Payload_HSync;
 		Pipeline_stage33_NextState_result = Pipeline_IntDividerPipelineTools_L87F32T46_IntDividerPipelineTools_L73F9L80T10_IntDividerPipelineTools_L77F26T72_Lookup/*cast*/;
+		Pipeline_stage33_NextState_remainder = Pipeline_IntDividerPipelineTools_L87F32T46_IntDividerPipelineTools_L73F9L80T10_IntDividerPipelineTools_L78F29T84_Lookup/*cast*/;
 	end
 	assign VGAAlienArtModule_L79F9L85T10_VGAAlienArtModule_L81F41T64_ExprLhs = { {1{State_denominator[31]}}, State_denominator }/*expand*/;
 	assign VGAAlienArtModule_L79F9L85T10_VGAAlienArtModule_L81F41T64_ExprRhs = { {29{1'b0}}, VGAAlienArtModule_L79F9L85T10_VGAAlienArtModule_L81F62T64_Expr }/*expand*/;

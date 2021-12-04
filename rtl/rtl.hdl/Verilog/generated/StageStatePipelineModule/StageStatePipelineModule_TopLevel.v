@@ -170,7 +170,7 @@ module StageStatePipelineModule_TopLevel
 	wire signed [17: 0] Pipeline_StageStatePipelineModule_L108F42T60_Expr_2;
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
 			Pipeline_stage0_State_sums0 <= Pipeline_stage0_State_sums0Default;
 			Pipeline_stage0_State_sums1 <= Pipeline_stage0_State_sums1Default;

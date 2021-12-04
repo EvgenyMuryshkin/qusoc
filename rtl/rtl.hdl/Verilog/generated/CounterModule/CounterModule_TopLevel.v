@@ -52,7 +52,7 @@ module CounterModule_TopLevel
 	wire [7: 0] CounterModule_L19F34T80_Lookup2;
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
 			State_Value <= State_ValueDefault;
 		end

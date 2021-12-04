@@ -94,7 +94,7 @@ module IOTestModule_TopLevel
 	end
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
 			State_Flag <= State_FlagDefault;
 		end
@@ -105,16 +105,16 @@ module IOTestModule_TopLevel
 	end
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
-			for (State_Array_Iterator = 0; ((State_Array_Iterator) < (2)); State_Array_Iterator = ((State_Array_Iterator) + (1)))
+			for (State_Array_Iterator = 0; (State_Array_Iterator < 2); State_Array_Iterator = (State_Array_Iterator + 1))
 			begin
 				State_Array[State_Array_Iterator] <= State_ArrayDefault;
 			end
 		end
 		else
 		begin
-			for (State_Array_Iterator = 0; ((State_Array_Iterator) < (2)); State_Array_Iterator = ((State_Array_Iterator) + (1)))
+			for (State_Array_Iterator = 0; (State_Array_Iterator < 2); State_Array_Iterator = (State_Array_Iterator + 1))
 			begin
 				State_Array[State_Array_Iterator] <= NextState_Array[State_Array_Iterator];
 			end
@@ -122,16 +122,16 @@ module IOTestModule_TopLevel
 	end
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
-			for (State_IteratorArray_Iterator = 0; ((State_IteratorArray_Iterator) < (2)); State_IteratorArray_Iterator = ((State_IteratorArray_Iterator) + (1)))
+			for (State_IteratorArray_Iterator = 0; (State_IteratorArray_Iterator < 2); State_IteratorArray_Iterator = (State_IteratorArray_Iterator + 1))
 			begin
 				State_IteratorArray[State_IteratorArray_Iterator] <= State_IteratorArrayDefault;
 			end
 		end
 		else
 		begin
-			for (State_IteratorArray_Iterator = 0; ((State_IteratorArray_Iterator) < (2)); State_IteratorArray_Iterator = ((State_IteratorArray_Iterator) + (1)))
+			for (State_IteratorArray_Iterator = 0; (State_IteratorArray_Iterator < 2); State_IteratorArray_Iterator = (State_IteratorArray_Iterator + 1))
 			begin
 				State_IteratorArray[State_IteratorArray_Iterator] <= NextState_IteratorArray[State_IteratorArray_Iterator];
 			end
@@ -139,17 +139,17 @@ module IOTestModule_TopLevel
 	end
 	always @ (*)
 	begin
-		for (NextState_IteratorArray_Iterator = 0; ((NextState_IteratorArray_Iterator) < (2)); NextState_IteratorArray_Iterator = ((NextState_IteratorArray_Iterator) + (1)))
+		for (NextState_IteratorArray_Iterator = 0; (NextState_IteratorArray_Iterator < 2); NextState_IteratorArray_Iterator = (NextState_IteratorArray_Iterator + 1))
 		begin
 			NextState_IteratorArray[NextState_IteratorArray_Iterator] = State_IteratorArray[NextState_IteratorArray_Iterator];
 		end
-		for (NextState_Array_Iterator = 0; ((NextState_Array_Iterator) < (2)); NextState_Array_Iterator = ((NextState_Array_Iterator) + (1)))
+		for (NextState_Array_Iterator = 0; (NextState_Array_Iterator < 2); NextState_Array_Iterator = (NextState_Array_Iterator + 1))
 		begin
 			NextState_Array[NextState_Array_Iterator] = State_Array[NextState_Array_Iterator];
 		end
 		NextState_Flag = State_Flag;
 		NextState_Flag = Inputs_InFlag;
-		if (((Inputs_InFlag) == (1)))
+		if ((Inputs_InFlag == 1))
 		begin
 			NextState_Array[0] = Inputs_InArray0;
 			NextState_Array[1] = Inputs_InArray1;

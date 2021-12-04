@@ -121,7 +121,7 @@ module AnonymousPipelineModule_TopLevel
 	wire signed [32: 0] Pipeline_AnonymousPipelineModule_L41F39T62_Expr_2;
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
 			Pipeline_stage0_State_IsS0Ready <= Pipeline_stage0_State_IsS0ReadyDefault;
 			Pipeline_stage0_State_sum01 <= Pipeline_stage0_State_sum01Default;

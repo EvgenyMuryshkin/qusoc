@@ -47,9 +47,9 @@ module ShifterModule_TopLevel
 	wire [7: 0] ShifterModule_L14F36T77_Expr_1;
 	wire signed [7: 0] ShifterModule_L15F36T75_Expr;
 	wire signed [7: 0] ShifterModule_L15F36T75_Expr_1;
-	assign ShifterModule_L13F36T66_Expr = ((ShifterModule_L13F36T66_Expr_1) << (Inputs_ShiftBy));
-	assign ShifterModule_L14F36T77_Expr = ((ShifterModule_L14F36T77_Expr_1) >> (Inputs_ShiftBy));
-	assign ShifterModule_L15F36T75_Expr = ((ShifterModule_L15F36T75_Expr_1) >>> (Inputs_ShiftBy));
+	assign ShifterModule_L13F36T66_Expr = (ShifterModule_L13F36T66_Expr_1 << Inputs_ShiftBy);
+	assign ShifterModule_L14F36T77_Expr = (ShifterModule_L14F36T77_Expr_1 >> Inputs_ShiftBy);
+	assign ShifterModule_L15F36T75_Expr = (ShifterModule_L15F36T75_Expr_1 >>> Inputs_ShiftBy);
 	assign ShifterModule_L13F36T66_Expr_1 = Inputs_Value;
 	assign ShifterModule_L14F36T77_Expr_1 = ShifterModule_L14F36T59_SignChange;
 	assign ShifterModule_L15F36T75_Expr_1 = ShifterModule_L15F36T57_SignChange;

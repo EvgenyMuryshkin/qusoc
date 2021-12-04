@@ -268,7 +268,7 @@ module YandexTestModule_TopLevel
 	wire [7: 0] YandexTestModule_L127F55T76_Lookup2;
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
 			State_stage0_ready <= State_stage0_readyDefault;
 			State_stage0_max01 <= State_stage0_max01Default;

@@ -221,7 +221,7 @@ module CustomSchedulePipelineModule_TopLevel
 	wire signed [9: 0] CustomSchedulePipelineModule_L40F28T48_Expr_2;
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
 			Pipeline1_stage0_State_IsS0Ready <= Pipeline1_stage0_State_IsS0ReadyDefault;
 			Pipeline1_stage0_State_sum01 <= Pipeline1_stage0_State_sum01Default;

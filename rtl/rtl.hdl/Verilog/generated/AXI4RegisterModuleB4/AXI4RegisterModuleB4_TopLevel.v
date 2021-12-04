@@ -302,16 +302,16 @@ module AXI4RegisterModuleB4_TopLevel
 	work_Quokka_BoardSignalsProc BoardSignalsConnection(BoardSignals_Clock, BoardSignals_Reset, BoardSignals_Running, BoardSignals_Starting, BoardSignals_Started, Clock, Reset, InternalReset);
 	always @ (posedge Clock)
 	begin
-		if (((Reset) == (1)))
+		if ((Reset == 1))
 		begin
-			for (State_bytes_Iterator = 0; ((State_bytes_Iterator) < (4)); State_bytes_Iterator = ((State_bytes_Iterator) + (1)))
+			for (State_bytes_Iterator = 0; (State_bytes_Iterator < 4); State_bytes_Iterator = (State_bytes_Iterator + 1))
 			begin
 				State_bytes[State_bytes_Iterator] <= State_bytesDefault;
 			end
 		end
 		else
 		begin
-			for (State_bytes_Iterator = 0; ((State_bytes_Iterator) < (4)); State_bytes_Iterator = ((State_bytes_Iterator) + (1)))
+			for (State_bytes_Iterator = 0; (State_bytes_Iterator < 4); State_bytes_Iterator = (State_bytes_Iterator + 1))
 			begin
 				State_bytes[State_bytes_Iterator] <= NextState_bytes[State_bytes_Iterator];
 			end
@@ -396,32 +396,32 @@ module AXI4RegisterModuleB4_TopLevel
 	);
 	always @ (*)
 	begin
-		for (NextState_bytes_Iterator = 0; ((NextState_bytes_Iterator) < (4)); NextState_bytes_Iterator = ((NextState_bytes_Iterator) + (1)))
+		for (NextState_bytes_Iterator = 0; (NextState_bytes_Iterator < 4); NextState_bytes_Iterator = (NextState_bytes_Iterator + 1))
 		begin
 			NextState_bytes[NextState_bytes_Iterator] = State_bytes[NextState_bytes_Iterator];
 		end
-		if (((Inputs_WE) == (1)))
+		if ((Inputs_WE == 1))
 		begin
 			NextState_bytes[0] = Inputs_WDATA0;
 			NextState_bytes[1] = Inputs_WDATA1;
 			NextState_bytes[2] = Inputs_WDATA2;
 			NextState_bytes[3] = Inputs_WDATA3;
 		end
-		else if (((axiSlave_WVALID) == (1)))
+		else if ((axiSlave_WVALID == 1))
 		begin
-			if (((AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_0_AXI4RegisterModule_L70F17L73T18_AXI4RegisterModule_L71F25T42_Index) == (1)))
+			if ((AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_0_AXI4RegisterModule_L70F17L73T18_AXI4RegisterModule_L71F25T42_Index == 1))
 			begin
 				NextState_bytes[AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_0_w] = axiSlave_WDATA0;
 			end
-			if (((AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_1_AXI4RegisterModule_L70F17L73T18_AXI4RegisterModule_L71F25T42_Index) == (1)))
+			if ((AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_1_AXI4RegisterModule_L70F17L73T18_AXI4RegisterModule_L71F25T42_Index == 1))
 			begin
 				NextState_bytes[AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_1_w] = axiSlave_WDATA1;
 			end
-			if (((AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_2_AXI4RegisterModule_L70F17L73T18_AXI4RegisterModule_L71F25T42_Index) == (1)))
+			if ((AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_2_AXI4RegisterModule_L70F17L73T18_AXI4RegisterModule_L71F25T42_Index == 1))
 			begin
 				NextState_bytes[AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_2_w] = axiSlave_WDATA2;
 			end
-			if (((AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_3_AXI4RegisterModule_L70F17L73T18_AXI4RegisterModule_L71F25T42_Index) == (1)))
+			if ((AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_3_AXI4RegisterModule_L70F17L73T18_AXI4RegisterModule_L71F25T42_Index == 1))
 			begin
 				NextState_bytes[AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_3_w] = axiSlave_WDATA3;
 			end
