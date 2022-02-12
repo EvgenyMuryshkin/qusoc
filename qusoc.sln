@@ -41,6 +41,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "rtl.extension", "rtl\rtl.ex
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "rtl.hdl", "rtl\rtl.hdl\rtl.hdl.csproj", "{7023444C-6647-4FDF-AF95-6158271B17DA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "qrv32.extension", "qrv32\qrv32.extension\qrv32.extension.csproj", "{A8BBD6A3-55D1-470F-BBA5-F15399090C3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,6 +109,10 @@ Global
 		{7023444C-6647-4FDF-AF95-6158271B17DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7023444C-6647-4FDF-AF95-6158271B17DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7023444C-6647-4FDF-AF95-6158271B17DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8BBD6A3-55D1-470F-BBA5-F15399090C3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8BBD6A3-55D1-470F-BBA5-F15399090C3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8BBD6A3-55D1-470F-BBA5-F15399090C3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8BBD6A3-55D1-470F-BBA5-F15399090C3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -126,6 +132,7 @@ Global
 		{0A35DEA7-CFA2-4986-9F4F-5255919BBB8D} = {F258CF27-3DC1-4746-BECA-C398E940375C}
 		{BEA6081A-3033-4DDC-8B6D-F50AE6B7B604} = {49F137C7-01F3-4899-A365-F5E93A128425}
 		{7023444C-6647-4FDF-AF95-6158271B17DA} = {49F137C7-01F3-4899-A365-F5E93A128425}
+		{A8BBD6A3-55D1-470F-BBA5-F15399090C3D} = {EC11E090-86D0-44A3-9D28-23EE6E7C31F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0BE3F9BA-A23D-459E-8A7D-2D9F1612D011}
