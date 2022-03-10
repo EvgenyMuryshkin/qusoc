@@ -1,5 +1,5 @@
 Simulator report for VHDL
-Mon Nov 29 21:07:32 2021
+Tue Mar 01 21:55:25 2022
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -10,13 +10,12 @@ Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
   2. Simulator Summary
   3. Simulator Settings
   4. Simulation Waveforms
-  5. |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ALTSYNCRAM
-  6. Coverage Summary
-  7. Complete 1/0-Value Coverage
-  8. Missing 1-Value Coverage
-  9. Missing 0-Value Coverage
- 10. Simulator INI Usage
- 11. Simulator Messages
+  5. Coverage Summary
+  6. Complete 1/0-Value Coverage
+  7. Missing 1-Value Coverage
+  8. Missing 0-Value Coverage
+  9. Simulator INI Usage
+ 10. Simulator Messages
 
 
 
@@ -46,42 +45,42 @@ applicable agreement for further details.
 +-----------------------------+--------------+
 ; Simulation Start Time       ; 0 ps         ;
 ; Simulation End Time         ; 1.0 ms       ;
-; Simulation Netlist Size     ; 63 nodes     ;
-; Simulation Coverage         ;      65.38 % ;
-; Total Number of Transitions ; 2160         ;
+; Simulation Netlist Size     ; 227 nodes    ;
+; Simulation Coverage         ;      57.27 % ;
+; Total Number of Transitions ; 551          ;
 ; Simulation Breakpoints      ; 0            ;
 ; Family                      ; Cyclone II   ;
 ; Device                      ; EP2C70F672C6 ;
 +-----------------------------+--------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Simulator Settings                                                                                                                       ;
-+--------------------------------------------------------------------------------------------+-----------------------------+---------------+
-; Option                                                                                     ; Setting                     ; Default Value ;
-+--------------------------------------------------------------------------------------------+-----------------------------+---------------+
-; Simulation mode                                                                            ; Timing                      ; Timing        ;
-; Start time                                                                                 ; 0 ns                        ; 0 ns          ;
-; Simulation results format                                                                  ; CVWF                        ;               ;
-; Vector input source                                                                        ; Waveforms/TDP_RAMModule.vwf ;               ;
-; Add pins automatically to simulation output waveforms                                      ; On                          ; On            ;
-; Check outputs                                                                              ; Off                         ; Off           ;
-; Report simulation coverage                                                                 ; On                          ; On            ;
-; Display complete 1/0 value coverage report                                                 ; On                          ; On            ;
-; Display missing 1-value coverage report                                                    ; On                          ; On            ;
-; Display missing 0-value coverage report                                                    ; On                          ; On            ;
-; Detect setup and hold time violations                                                      ; Off                         ; Off           ;
-; Detect glitches                                                                            ; Off                         ; Off           ;
-; Disable timing delays in Timing Simulation                                                 ; Off                         ; Off           ;
-; Generate Signal Activity File                                                              ; Off                         ; Off           ;
-; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                         ; Off           ;
-; Group bus channels in simulation results                                                   ; Off                         ; Off           ;
-; Preserve fewer signal transitions to reduce memory requirements                            ; On                          ; On            ;
-; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                  ; INPUT_EDGE    ;
-; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                         ; Off           ;
-; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                          ;               ;
-; Perform Glitch Filtering in Timing Simulation                                              ; Auto                        ; Auto          ;
-+--------------------------------------------------------------------------------------------+-----------------------------+---------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                                               ;
++--------------------------------------------------------------------------------------------+-------------------------------------+---------------+
+; Option                                                                                     ; Setting                             ; Default Value ;
++--------------------------------------------------------------------------------------------+-------------------------------------+---------------+
+; Simulation mode                                                                            ; Timing                              ; Timing        ;
+; Start time                                                                                 ; 0 ns                                ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF                                ;               ;
+; Vector input source                                                                        ; Waveforms/ArrayToBitArrayModule.vwf ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On                                  ; On            ;
+; Check outputs                                                                              ; Off                                 ; Off           ;
+; Report simulation coverage                                                                 ; On                                  ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On                                  ; On            ;
+; Display missing 1-value coverage report                                                    ; On                                  ; On            ;
+; Display missing 0-value coverage report                                                    ; On                                  ; On            ;
+; Detect setup and hold time violations                                                      ; Off                                 ; Off           ;
+; Detect glitches                                                                            ; Off                                 ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off                                 ; Off           ;
+; Generate Signal Activity File                                                              ; Off                                 ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                                 ; Off           ;
+; Group bus channels in simulation results                                                   ; Off                                 ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On                                  ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                          ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                                 ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                                  ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto                                ; Auto          ;
++--------------------------------------------------------------------------------------------+-------------------------------------+---------------+
 
 
 +----------------------+
@@ -91,151 +90,272 @@ Waveform report data cannot be output to ASCII.
 Please use Quartus II to view the waveform report data.
 
 
-+-----------------------------------------------------------------------------------------------+
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ALTSYNCRAM ;
-+-----------------------------------------------------------------------------------------------+
-Please refer to fitter text-based report (*.fit.rpt) to view logical memory report content in ASCII.
-
-
 +--------------------------------------------------------------------+
 ; Coverage Summary                                                   ;
 +-----------------------------------------------------+--------------+
 ; Type                                                ; Value        ;
 +-----------------------------------------------------+--------------+
-; Total coverage as a percentage                      ;      65.38 % ;
-; Total nodes checked                                 ; 63           ;
-; Total output ports checked                          ; 78           ;
-; Total output ports with complete 1/0-value coverage ; 51           ;
-; Total output ports with no 1/0-value coverage       ; 21           ;
-; Total output ports with no 1-value coverage         ; 24           ;
-; Total output ports with no 0-value coverage         ; 24           ;
+; Total coverage as a percentage                      ;      57.27 % ;
+; Total nodes checked                                 ; 227          ;
+; Total output ports checked                          ; 227          ;
+; Total output ports with complete 1/0-value coverage ; 130          ;
+; Total output ports with no 1/0-value coverage       ; 0            ;
+; Total output ports with no 1-value coverage         ; 97           ;
+; Total output ports with no 0-value coverage         ; 0            ;
 +-----------------------------------------------------+--------------+
 
 
 The following table displays output ports that toggle between 1 and 0 during simulation.
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Complete 1/0-Value Coverage                                                                                                                                                                                                        ;
-+-------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------+
-; Node Name                                                                                       ; Output Port Name                                                                                              ; Output Port Type ;
-+-------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------+
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0               ; portadataout0    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a1               ; portadataout1    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a2               ; portadataout2    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a4               ; portadataout4    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a5               ; portadataout5    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a6               ; portadataout6    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a7               ; portadataout7    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0~PORTBDATAOUT0 ; portbdataout0    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a1~PORTBDATAOUT0 ; portbdataout1    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a2~PORTBDATAOUT0 ; portbdataout2    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a4~PORTBDATAOUT0 ; portbdataout4    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a5~PORTBDATAOUT0 ; portbdataout5    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a6~PORTBDATAOUT0 ; portbdataout6    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a7~PORTBDATAOUT0 ; portbdataout7    ;
-; |TDP_RAMModule_TopLevel|State_SameAddressWrite~0                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~0                                                              ; combout          ;
-; |TDP_RAMModule_TopLevel|State_SameAddressWrite~1                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~1                                                              ; combout          ;
-; |TDP_RAMModule_TopLevel|State_SameAddressWrite~5                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~5                                                              ; combout          ;
-; |TDP_RAMModule_TopLevel|OutDataA[0]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[0]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataA[1]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[1]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataA[2]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[2]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataA[4]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[4]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataA[5]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[5]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataA[6]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[6]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataA[7]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[7]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataB[0]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[0]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataB[1]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[1]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataB[2]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[2]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataB[4]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[4]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataB[5]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[5]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataB[6]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[6]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataB[7]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[7]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|WE_A                                                                    ; |TDP_RAMModule_TopLevel|WE_A~corein                                                                           ; combout          ;
-; |TDP_RAMModule_TopLevel|WE_B                                                                    ; |TDP_RAMModule_TopLevel|WE_B~corein                                                                           ; combout          ;
-; |TDP_RAMModule_TopLevel|Clock                                                                   ; |TDP_RAMModule_TopLevel|Clock~corein                                                                          ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_A[0]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[0]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[0]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[0]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[1]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[1]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_B[0]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[0]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[0]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[0]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[1]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[1]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_B[1]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[1]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_B[2]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[2]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_A[4]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[4]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_B[4]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[4]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_A[5]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[5]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_B[5]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[5]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_A[6]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[6]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_B[6]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[6]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_A[7]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[7]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_B[7]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[7]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|Clock~clkctrl                                                           ; |TDP_RAMModule_TopLevel|Clock~clkctrl                                                                         ; outclk           ;
-+-------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------+
++--------------------------------------------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                                                    ;
++------------------------------------------------------+------------------------------------------------------+------------------+
+; Node Name                                            ; Output Port Name                                     ; Output Port Type ;
++------------------------------------------------------+------------------------------------------------------+------------------+
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[0][0] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[0][0] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[0][1] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[0][1] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[0][2] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[0][2] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[0][3] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[0][3] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[0][4] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[0][4] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[0][5] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[0][5] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[0][6] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[0][6] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[0][7] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[0][7] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[1][0] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[1][0] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[1][1] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[1][1] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[1][2] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[1][2] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[1][3] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[1][3] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[1][4] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[1][4] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[1][5] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[1][5] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[1][6] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[1][6] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[1][7] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[1][7] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[2][0] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[2][0] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[2][1] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[2][1] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[2][2] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[2][2] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[2][3] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[2][3] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[2][4] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[2][4] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[2][5] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[2][5] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[2][6] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[2][6] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[2][7] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[2][7] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[3][0] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[3][0] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[3][1] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[3][1] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[3][2] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[3][2] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[3][3] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[3][3] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[3][4] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[3][4] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[3][5] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[3][5] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[3][6] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[3][6] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData[3][7] ; |ArrayToBitArrayModule_TopLevel|State_ReadData[3][7] ; regout           ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~0     ; |ArrayToBitArrayModule_TopLevel|State_ReadData~0     ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~1     ; |ArrayToBitArrayModule_TopLevel|State_ReadData~1     ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~2     ; |ArrayToBitArrayModule_TopLevel|State_ReadData~2     ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~3     ; |ArrayToBitArrayModule_TopLevel|State_ReadData~3     ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~4     ; |ArrayToBitArrayModule_TopLevel|State_ReadData~4     ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~5     ; |ArrayToBitArrayModule_TopLevel|State_ReadData~5     ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~6     ; |ArrayToBitArrayModule_TopLevel|State_ReadData~6     ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~7     ; |ArrayToBitArrayModule_TopLevel|State_ReadData~7     ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~8     ; |ArrayToBitArrayModule_TopLevel|State_ReadData~8     ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~9     ; |ArrayToBitArrayModule_TopLevel|State_ReadData~9     ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~10    ; |ArrayToBitArrayModule_TopLevel|State_ReadData~10    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~11    ; |ArrayToBitArrayModule_TopLevel|State_ReadData~11    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~12    ; |ArrayToBitArrayModule_TopLevel|State_ReadData~12    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~13    ; |ArrayToBitArrayModule_TopLevel|State_ReadData~13    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~14    ; |ArrayToBitArrayModule_TopLevel|State_ReadData~14    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~15    ; |ArrayToBitArrayModule_TopLevel|State_ReadData~15    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~16    ; |ArrayToBitArrayModule_TopLevel|State_ReadData~16    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~17    ; |ArrayToBitArrayModule_TopLevel|State_ReadData~17    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~18    ; |ArrayToBitArrayModule_TopLevel|State_ReadData~18    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~19    ; |ArrayToBitArrayModule_TopLevel|State_ReadData~19    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~20    ; |ArrayToBitArrayModule_TopLevel|State_ReadData~20    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~21    ; |ArrayToBitArrayModule_TopLevel|State_ReadData~21    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~22    ; |ArrayToBitArrayModule_TopLevel|State_ReadData~22    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~23    ; |ArrayToBitArrayModule_TopLevel|State_ReadData~23    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~24    ; |ArrayToBitArrayModule_TopLevel|State_ReadData~24    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~25    ; |ArrayToBitArrayModule_TopLevel|State_ReadData~25    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~26    ; |ArrayToBitArrayModule_TopLevel|State_ReadData~26    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~27    ; |ArrayToBitArrayModule_TopLevel|State_ReadData~27    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~28    ; |ArrayToBitArrayModule_TopLevel|State_ReadData~28    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~29    ; |ArrayToBitArrayModule_TopLevel|State_ReadData~29    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~30    ; |ArrayToBitArrayModule_TopLevel|State_ReadData~30    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|State_ReadData~31    ; |ArrayToBitArrayModule_TopLevel|State_ReadData~31    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray0[0]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray0[0]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray0[1]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray0[1]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray0[2]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray0[2]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray0[3]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray0[3]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray0[4]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray0[4]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray0[5]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray0[5]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray0[6]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray0[6]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray0[7]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray0[7]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray1[0]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray1[0]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray1[1]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray1[1]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray1[2]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray1[2]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray1[3]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray1[3]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray1[4]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray1[4]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray1[5]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray1[5]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray1[6]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray1[6]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray1[7]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray1[7]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray2[0]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray2[0]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray2[1]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray2[1]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray2[2]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray2[2]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray2[3]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray2[3]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray2[4]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray2[4]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray2[5]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray2[5]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray2[6]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray2[6]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray2[7]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray2[7]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray3[0]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray3[0]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray3[1]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray3[1]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray3[2]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray3[2]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray3[3]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray3[3]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray3[4]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray3[4]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray3[5]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray3[5]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray3[6]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray3[6]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataArray3[7]     ; |ArrayToBitArrayModule_TopLevel|OutDataArray3[7]     ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[0]   ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[0]   ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[1]   ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[1]   ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[2]   ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[2]   ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[3]   ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[3]   ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[4]   ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[4]   ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[5]   ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[5]   ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[6]   ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[6]   ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[7]   ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[7]   ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[8]   ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[8]   ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[9]   ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[9]   ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[10]  ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[10]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[11]  ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[11]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[12]  ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[12]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[13]  ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[13]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[14]  ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[14]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[15]  ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[15]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[16]  ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[16]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[17]  ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[17]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[18]  ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[18]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[19]  ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[19]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[20]  ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[20]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[21]  ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[21]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[22]  ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[22]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[23]  ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[23]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[24]  ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[24]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[25]  ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[25]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[26]  ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[26]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[27]  ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[27]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[28]  ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[28]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[29]  ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[29]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[30]  ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[30]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[31]  ; |ArrayToBitArrayModule_TopLevel|OutDataBitArray[31]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|Clock                ; |ArrayToBitArrayModule_TopLevel|Clock~corein         ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|Clock~clkctrl        ; |ArrayToBitArrayModule_TopLevel|Clock~clkctrl        ; outclk           ;
++------------------------------------------------------+------------------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 1 during simulation.
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Missing 1-Value Coverage                                                                                                                                                                                                           ;
-+-------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------+
-; Node Name                                                                                       ; Output Port Name                                                                                              ; Output Port Type ;
-+-------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------+
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a3               ; portadataout3    ;
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a3~PORTBDATAOUT0 ; portbdataout3    ;
-; |TDP_RAMModule_TopLevel|State_SameAddressWrite~2                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~2                                                              ; combout          ;
-; |TDP_RAMModule_TopLevel|State_SameAddressWrite~3                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~3                                                              ; combout          ;
-; |TDP_RAMModule_TopLevel|State_SameAddressWrite~4                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~4                                                              ; combout          ;
-; |TDP_RAMModule_TopLevel|OutDataA[3]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[3]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|OutDataB[3]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[3]                                                                           ; padio            ;
-; |TDP_RAMModule_TopLevel|Addr_A[2]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[2]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[3]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[3]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[4]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[4]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[5]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[5]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[6]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[6]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[7]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[7]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[2]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[2]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[3]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[3]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[4]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[4]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[5]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[5]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[6]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[6]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[7]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[7]~corein                                                                      ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_A[1]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[1]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_A[2]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[2]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_A[3]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[3]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_B[3]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[3]~corein                                                                 ; combout          ;
-; |TDP_RAMModule_TopLevel|Reset                                                                   ; |TDP_RAMModule_TopLevel|Reset~corein                                                                          ; combout          ;
-+-------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------+
++----------------------------------------------------------------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                                                                         ;
++-------------------------------------------------------+-------------------------------------------------------+------------------+
+; Node Name                                             ; Output Port Name                                      ; Output Port Type ;
++-------------------------------------------------------+-------------------------------------------------------+------------------+
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray0[0]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray0[0]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray0[1]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray0[1]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray0[2]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray0[2]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray0[3]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray0[3]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray0[4]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray0[4]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray0[5]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray0[5]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray0[6]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray0[6]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray0[7]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray0[7]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray1[0]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray1[0]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray1[1]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray1[1]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray1[2]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray1[2]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray1[3]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray1[3]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray1[4]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray1[4]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray1[5]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray1[5]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray1[6]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray1[6]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray1[7]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray1[7]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray2[0]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray2[0]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray2[1]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray2[1]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray2[2]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray2[2]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray2[3]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray2[3]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray2[4]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray2[4]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray2[5]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray2[5]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray2[6]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray2[6]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray2[7]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray2[7]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray3[0]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray3[0]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray3[1]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray3[1]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray3[2]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray3[2]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray3[3]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray3[3]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray3[4]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray3[4]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray3[5]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray3[5]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray3[6]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray3[6]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsArray3[7]    ; |ArrayToBitArrayModule_TopLevel|OutInputsArray3[7]    ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[0]  ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[0]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[1]  ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[1]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[2]  ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[2]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[3]  ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[3]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[4]  ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[4]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[5]  ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[5]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[6]  ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[6]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[7]  ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[7]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[8]  ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[8]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[9]  ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[9]  ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[10] ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[10] ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[11] ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[11] ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[12] ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[12] ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[13] ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[13] ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[14] ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[14] ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[15] ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[15] ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[16] ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[16] ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[17] ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[17] ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[18] ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[18] ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[19] ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[19] ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[20] ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[20] ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[21] ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[21] ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[22] ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[22] ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[23] ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[23] ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[24] ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[24] ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[25] ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[25] ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[26] ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[26] ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[27] ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[27] ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[28] ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[28] ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[29] ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[29] ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[30] ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[30] ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[31] ; |ArrayToBitArrayModule_TopLevel|OutInputsBitArray[31] ; padio            ;
+; |ArrayToBitArrayModule_TopLevel|InArray0[0]           ; |ArrayToBitArrayModule_TopLevel|InArray0[0]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray0[1]           ; |ArrayToBitArrayModule_TopLevel|InArray0[1]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray0[2]           ; |ArrayToBitArrayModule_TopLevel|InArray0[2]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray0[3]           ; |ArrayToBitArrayModule_TopLevel|InArray0[3]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray0[4]           ; |ArrayToBitArrayModule_TopLevel|InArray0[4]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray0[5]           ; |ArrayToBitArrayModule_TopLevel|InArray0[5]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray0[6]           ; |ArrayToBitArrayModule_TopLevel|InArray0[6]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray0[7]           ; |ArrayToBitArrayModule_TopLevel|InArray0[7]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray1[0]           ; |ArrayToBitArrayModule_TopLevel|InArray1[0]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray1[1]           ; |ArrayToBitArrayModule_TopLevel|InArray1[1]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray1[2]           ; |ArrayToBitArrayModule_TopLevel|InArray1[2]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray1[3]           ; |ArrayToBitArrayModule_TopLevel|InArray1[3]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray1[4]           ; |ArrayToBitArrayModule_TopLevel|InArray1[4]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray1[5]           ; |ArrayToBitArrayModule_TopLevel|InArray1[5]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray1[6]           ; |ArrayToBitArrayModule_TopLevel|InArray1[6]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray1[7]           ; |ArrayToBitArrayModule_TopLevel|InArray1[7]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray2[0]           ; |ArrayToBitArrayModule_TopLevel|InArray2[0]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray2[1]           ; |ArrayToBitArrayModule_TopLevel|InArray2[1]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray2[2]           ; |ArrayToBitArrayModule_TopLevel|InArray2[2]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray2[3]           ; |ArrayToBitArrayModule_TopLevel|InArray2[3]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray2[4]           ; |ArrayToBitArrayModule_TopLevel|InArray2[4]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray2[5]           ; |ArrayToBitArrayModule_TopLevel|InArray2[5]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray2[6]           ; |ArrayToBitArrayModule_TopLevel|InArray2[6]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray2[7]           ; |ArrayToBitArrayModule_TopLevel|InArray2[7]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray3[0]           ; |ArrayToBitArrayModule_TopLevel|InArray3[0]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray3[1]           ; |ArrayToBitArrayModule_TopLevel|InArray3[1]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray3[2]           ; |ArrayToBitArrayModule_TopLevel|InArray3[2]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray3[3]           ; |ArrayToBitArrayModule_TopLevel|InArray3[3]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray3[4]           ; |ArrayToBitArrayModule_TopLevel|InArray3[4]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray3[5]           ; |ArrayToBitArrayModule_TopLevel|InArray3[5]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray3[6]           ; |ArrayToBitArrayModule_TopLevel|InArray3[6]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|InArray3[7]           ; |ArrayToBitArrayModule_TopLevel|InArray3[7]~corein    ; combout          ;
+; |ArrayToBitArrayModule_TopLevel|Reset                 ; |ArrayToBitArrayModule_TopLevel|Reset~corein          ; combout          ;
++-------------------------------------------------------+-------------------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 0 during simulation.
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Missing 0-Value Coverage                                                                                                                                                                                             ;
-+-------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+------------------+
-; Node Name                                                                                       ; Output Port Name                                                                                ; Output Port Type ;
-+-------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+------------------+
-; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_qas1:auto_generated|ram_block1a3 ; portadataout3    ;
-; |TDP_RAMModule_TopLevel|State_SameAddressWrite                                                  ; |TDP_RAMModule_TopLevel|State_SameAddressWrite                                                  ; regout           ;
-; |TDP_RAMModule_TopLevel|State_SameAddressWrite~2                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~2                                                ; combout          ;
-; |TDP_RAMModule_TopLevel|State_SameAddressWrite~3                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~3                                                ; combout          ;
-; |TDP_RAMModule_TopLevel|State_SameAddressWrite~4                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~4                                                ; combout          ;
-; |TDP_RAMModule_TopLevel|State_SameAddressWrite~6                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~6                                                ; combout          ;
-; |TDP_RAMModule_TopLevel|OutDataA[3]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[3]                                                             ; padio            ;
-; |TDP_RAMModule_TopLevel|OutCorrupted                                                            ; |TDP_RAMModule_TopLevel|OutCorrupted                                                            ; padio            ;
-; |TDP_RAMModule_TopLevel|Addr_A[2]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[2]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[3]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[3]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[4]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[4]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[5]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[5]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[6]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[6]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_A[7]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[7]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[2]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[2]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[3]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[3]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[4]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[4]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[5]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[5]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[6]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[6]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|Addr_B[7]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[7]~corein                                                        ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_A[1]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[1]~corein                                                   ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_A[2]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[2]~corein                                                   ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_A[3]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[3]~corein                                                   ; combout          ;
-; |TDP_RAMModule_TopLevel|WriteData_B[3]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[3]~corein                                                   ; combout          ;
-+-------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+------------------+
++-------------------------------------------------+
+; Missing 0-Value Coverage                        ;
++-----------+------------------+------------------+
+; Node Name ; Output Port Name ; Output Port Type ;
++-----------+------------------+------------------+
 
 
 +---------------------+
@@ -264,37 +384,21 @@ Info: Running Quartus II Simulator
     Info: programming logic devices manufactured by Altera and sold by 
     Info: Altera or its authorized distributors.  Please refer to the 
     Info: applicable agreement for further details.
-    Info: Processing started: Mon Nov 29 21:07:32 2021
+    Info: Processing started: Tue Mar 01 21:55:24 2022
 Info: Command: quartus_sim C:\code\qusoc\rtl\rtl.hdl\VHDL.qpf --read_settings_files=on --write_settings_files=off -c VHDL
-Info: Using vector source file "Waveforms/TDP_RAMModule.vwf"
+Info: Using vector source file "Waveforms/ArrayToBitArrayModule.vwf"
 Info: Overwriting simulation input file with simulation results
-    Info: A backup of TDP_RAMModule.vwf called VHDL.sim_ori.vwf has been created in the db folder
+    Info: A backup of ArrayToBitArrayModule.vwf called VHDL.sim_ori.vwf has been created in the db folder
 Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
     Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
-Warning: Simultaneous write to memory block address 0 at time 21003.17 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 21003.17 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 21003.17 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 21003.17 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 21003.17 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 21003.17 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 21003.17 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 21003.17 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 22003.17 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 22003.17 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 22003.17 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 22003.17 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 22003.17 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 22003.17 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 22003.17 ns in vector source file -- data is invalid in memory block
-Warning: Simultaneous write to memory block address 0 at time 22003.17 ns in vector source file -- data is invalid in memory block
 Info: Simulation partitioned into 1 sub-simulations
-Info: Simulation coverage is      65.38 %
-Info: Number of transitions in simulation is 2160
-Info: Vector file TDP_RAMModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
-Info: Quartus II Simulator was successful. 0 errors, 16 warnings
-    Info: Peak virtual memory: 159 megabytes
-    Info: Processing ended: Mon Nov 29 21:07:32 2021
-    Info: Elapsed time: 00:00:00
-    Info: Total CPU time (on all processors): 00:00:01
+Info: Simulation coverage is      57.27 %
+Info: Number of transitions in simulation is 551
+Info: Vector file ArrayToBitArrayModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
+Info: Quartus II Simulator was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 161 megabytes
+    Info: Processing ended: Tue Mar 01 21:55:25 2022
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:04
 
 

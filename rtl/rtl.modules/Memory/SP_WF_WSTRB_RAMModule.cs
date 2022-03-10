@@ -25,20 +25,23 @@ namespace RTL.Modules
         {
         }
 
-        public RTLBitArray Data => new RTLBitArray(State.ReadData);
+        public byte[] Data => State.ReadData;//public RTLBitArray Data => new RTLBitArray(State.ReadData);
+        //public byte[] Buff0 => State.Buff[0];//public RTLBitArray Data => new RTLBitArray(State.ReadData);
 
         protected override void OnStage()
         {
             if (Inputs.WE)
             {
+                //NextState.Buff[Inputs.WriteAddress] = Inputs.WriteData;
                 foreach (var w in range(4))
                 {
                     if (Inputs.WSTRB[w])
                         NextState.Buff[Inputs.WriteAddress][w] = Inputs.WriteData[w];
                 }
+                //NextState.Buff[Inputs.WriteAddress] = Inputs.WriteData;
             }
-
-            NextState.ReadData = NextState.Buff[Inputs.ReadAddress];
+            //NextState.ReadData = NextState.Buff[Inputs.ReadAddress];
+            //NextState.ReadData = State.Buff[Inputs.ReadAddress];
         }
     }
 }

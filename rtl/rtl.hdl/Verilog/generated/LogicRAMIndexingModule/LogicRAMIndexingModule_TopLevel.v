@@ -26,15 +26,15 @@ module LogicRAMIndexingModule_TopLevel
 	input wire Clock,
 	input wire Reset,
 	input wire WE,
-	input wire [1: 0] WriteAddr,
-	input wire [7: 0] WriteData,
-	input wire [1: 0] ReadAddr,
-	input wire [7: 0] OpData,
-	output wire [7: 0] MemLhsRhs,
-	output wire [7: 0] MathMemLhs,
-	output wire [7: 0] MathMemRhs,
-	output wire [7: 0] LogicMemLhs,
-	output wire [7: 0] LogicMemRhs,
+	input wire [1:0] WriteAddr,
+	input wire [7:0] WriteData,
+	input wire [1:0] ReadAddr,
+	input wire [7:0] OpData,
+	output wire [7:0] MemLhsRhs,
+	output wire [7:0] MathMemLhs,
+	output wire [7:0] MathMemRhs,
+	output wire [7:0] LogicMemLhs,
+	output wire [7:0] LogicMemRhs,
 	output wire CmpMemLhs,
 	output wire CmpMemRhs
 );
@@ -46,26 +46,17 @@ module LogicRAMIndexingModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire LogicRAMIndexingModule_L26F52T53_Expr = 1'b1;
 	wire Inputs_WE;
 	wire [1: 0] Inputs_WriteAddr;
 	wire [7: 0] Inputs_WriteData;
 	wire [1: 0] Inputs_ReadAddr;
 	wire [7: 0] Inputs_OpData;
 	reg [7: 0] State_BuffDefault = 8'b00000000;
-	wire [7: 0] LogicRAMIndexingModule_L26F41T54_Index;
-	wire [7: 0] LogicRAMIndexingModule_L26F57T84_Index;
 	wire [7: 0] LogicRAMIndexingModule_L26F34T85_Cast;
-	wire [7: 0] LogicRAMIndexingModule_L27F42T69_Index;
 	wire [7: 0] LogicRAMIndexingModule_L27F35T86_Cast;
-	wire [7: 0] LogicRAMIndexingModule_L28F58T85_Index;
 	wire [7: 0] LogicRAMIndexingModule_L28F35T86_Cast;
-	wire [7: 0] LogicRAMIndexingModule_L30F43T70_Index;
 	wire [7: 0] LogicRAMIndexingModule_L30F36T87_Cast;
-	wire [7: 0] LogicRAMIndexingModule_L31F59T86_Index;
 	wire [7: 0] LogicRAMIndexingModule_L31F36T87_Cast;
-	wire [7: 0] LogicRAMIndexingModule_L33F34T61_Index;
-	wire [7: 0] LogicRAMIndexingModule_L34F50T77_Index;
 	wire [7: 0] LogicRAMIndexingModule_L30F43T86_Expr;
 	wire [7: 0] LogicRAMIndexingModule_L30F43T86_Expr_1;
 	wire [7: 0] LogicRAMIndexingModule_L30F43T86_Expr_2;
@@ -136,30 +127,30 @@ module LogicRAMIndexingModule_TopLevel
 			NextState_Buff[Inputs_WriteAddr] = Inputs_WriteData;
 		end
 	end
-	assign LogicRAMIndexingModule_L33F34T77_ExprLhs = { {1{1'b0}}, LogicRAMIndexingModule_L33F34T61_Index }/*expand*/;
-	assign LogicRAMIndexingModule_L33F34T77_ExprRhs = { {1{1'b0}}, Inputs_OpData }/*expand*/;
-	assign LogicRAMIndexingModule_L34F34T77_ExprLhs = { {1{1'b0}}, Inputs_OpData }/*expand*/;
-	assign LogicRAMIndexingModule_L34F34T77_ExprRhs = { {1{1'b0}}, LogicRAMIndexingModule_L34F50T77_Index }/*expand*/;
-	assign LogicRAMIndexingModule_L30F43T86_Expr_1 = LogicRAMIndexingModule_L30F43T70_Index;
+	assign LogicRAMIndexingModule_L33F34T77_ExprLhs = { 1'b0, State_Buff[Inputs_ReadAddr] };
+	assign LogicRAMIndexingModule_L33F34T77_ExprRhs = { 1'b0, Inputs_OpData };
+	assign LogicRAMIndexingModule_L34F34T77_ExprLhs = { 1'b0, Inputs_OpData };
+	assign LogicRAMIndexingModule_L34F34T77_ExprRhs = { 1'b0, State_Buff[Inputs_ReadAddr] };
+	assign LogicRAMIndexingModule_L30F43T86_Expr_1 = State_Buff[Inputs_ReadAddr];
 	assign LogicRAMIndexingModule_L30F43T86_Expr_2 = Inputs_OpData;
 	assign LogicRAMIndexingModule_L31F43T86_Expr_1 = Inputs_OpData;
-	assign LogicRAMIndexingModule_L31F43T86_Expr_2 = LogicRAMIndexingModule_L31F59T86_Index;
-	assign LogicRAMIndexingModule_L26F41T84_Expr_1 = { {2{1'b0}}, LogicRAMIndexingModule_L26F41T54_Index }/*expand*/;
-	assign LogicRAMIndexingModule_L26F41T84_Expr_2 = { {2{1'b0}}, LogicRAMIndexingModule_L26F57T84_Index }/*expand*/;
-	assign LogicRAMIndexingModule_L27F42T85_Expr_1 = { {2{1'b0}}, LogicRAMIndexingModule_L27F42T69_Index }/*expand*/;
-	assign LogicRAMIndexingModule_L27F42T85_Expr_2 = { {2{1'b0}}, Inputs_OpData }/*expand*/;
-	assign LogicRAMIndexingModule_L28F42T85_Expr_1 = { {2{1'b0}}, Inputs_OpData }/*expand*/;
-	assign LogicRAMIndexingModule_L28F42T85_Expr_2 = { {2{1'b0}}, LogicRAMIndexingModule_L28F58T85_Index }/*expand*/;
+	assign LogicRAMIndexingModule_L31F43T86_Expr_2 = State_Buff[Inputs_ReadAddr];
+	assign LogicRAMIndexingModule_L26F41T84_Expr_1 = { {2{1'b0}}, State_Buff[1] };
+	assign LogicRAMIndexingModule_L26F41T84_Expr_2 = { {2{1'b0}}, State_Buff[Inputs_ReadAddr] };
+	assign LogicRAMIndexingModule_L27F42T85_Expr_1 = { {2{1'b0}}, State_Buff[Inputs_ReadAddr] };
+	assign LogicRAMIndexingModule_L27F42T85_Expr_2 = { {2{1'b0}}, Inputs_OpData };
+	assign LogicRAMIndexingModule_L28F42T85_Expr_1 = { {2{1'b0}}, Inputs_OpData };
+	assign LogicRAMIndexingModule_L28F42T85_Expr_2 = { {2{1'b0}}, State_Buff[Inputs_ReadAddr] };
 	assign Inputs_WE = WE;
 	assign Inputs_WriteAddr = WriteAddr;
 	assign Inputs_WriteData = WriteData;
 	assign Inputs_ReadAddr = ReadAddr;
 	assign Inputs_OpData = OpData;
-	assign LogicRAMIndexingModule_L26F34T85_Cast = LogicRAMIndexingModule_L26F41T84_Expr[7:0]/*truncate*/;
+	assign LogicRAMIndexingModule_L26F34T85_Cast = LogicRAMIndexingModule_L26F41T84_Expr[7:0];
 	assign MemLhsRhs = LogicRAMIndexingModule_L26F34T85_Cast;
-	assign LogicRAMIndexingModule_L27F35T86_Cast = LogicRAMIndexingModule_L27F42T85_Expr[7:0]/*truncate*/;
+	assign LogicRAMIndexingModule_L27F35T86_Cast = LogicRAMIndexingModule_L27F42T85_Expr[7:0];
 	assign MathMemLhs = LogicRAMIndexingModule_L27F35T86_Cast;
-	assign LogicRAMIndexingModule_L28F35T86_Cast = LogicRAMIndexingModule_L28F42T85_Expr[7:0]/*truncate*/;
+	assign LogicRAMIndexingModule_L28F35T86_Cast = LogicRAMIndexingModule_L28F42T85_Expr[7:0];
 	assign MathMemRhs = LogicRAMIndexingModule_L28F35T86_Cast;
 	assign LogicRAMIndexingModule_L30F36T87_Cast = LogicRAMIndexingModule_L30F43T86_Expr;
 	assign LogicMemLhs = LogicRAMIndexingModule_L30F36T87_Cast;
@@ -167,14 +158,6 @@ module LogicRAMIndexingModule_TopLevel
 	assign LogicMemRhs = LogicRAMIndexingModule_L31F36T87_Cast;
 	assign CmpMemLhs = LogicRAMIndexingModule_L33F34T77_Expr;
 	assign CmpMemRhs = LogicRAMIndexingModule_L34F34T77_Expr;
-	assign LogicRAMIndexingModule_L26F41T54_Index = State_Buff[LogicRAMIndexingModule_L26F52T53_Expr];
-	assign LogicRAMIndexingModule_L26F57T84_Index = State_Buff[Inputs_ReadAddr];
-	assign LogicRAMIndexingModule_L27F42T69_Index = State_Buff[Inputs_ReadAddr];
-	assign LogicRAMIndexingModule_L28F58T85_Index = State_Buff[Inputs_ReadAddr];
-	assign LogicRAMIndexingModule_L30F43T70_Index = State_Buff[Inputs_ReadAddr];
-	assign LogicRAMIndexingModule_L31F59T86_Index = State_Buff[Inputs_ReadAddr];
-	assign LogicRAMIndexingModule_L33F34T61_Index = State_Buff[Inputs_ReadAddr];
-	assign LogicRAMIndexingModule_L34F50T77_Index = State_Buff[Inputs_ReadAddr];
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule
