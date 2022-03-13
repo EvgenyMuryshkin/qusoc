@@ -1,5 +1,5 @@
 Simulator report for Verilog
-Thu Mar 10 21:43:06 2022
+Sun Mar 13 17:17:51 2022
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -44,43 +44,43 @@ applicable agreement for further details.
 ; Type                        ; Value        ;
 +-----------------------------+--------------+
 ; Simulation Start Time       ; 0 ps         ;
-; Simulation End Time         ; 10.0 us      ;
-; Simulation Netlist Size     ; 186 nodes    ;
-; Simulation Coverage         ;      59.42 % ;
-; Total Number of Transitions ; 728          ;
+; Simulation End Time         ; 1.0 us       ;
+; Simulation Netlist Size     ; 4 nodes      ;
+; Simulation Coverage         ;     100.00 % ;
+; Total Number of Transitions ; 18           ;
 ; Simulation Breakpoints      ; 0            ;
 ; Family                      ; Cyclone II   ;
 ; Device                      ; EP2C70F672C6 ;
 +-----------------------------+--------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Simulator Settings                                                                                                                                ;
-+--------------------------------------------------------------------------------------------+--------------------------------------+---------------+
-; Option                                                                                     ; Setting                              ; Default Value ;
-+--------------------------------------------------------------------------------------------+--------------------------------------+---------------+
-; Simulation mode                                                                            ; Timing                               ; Timing        ;
-; Start time                                                                                 ; 0 ns                                 ; 0 ns          ;
-; Simulation results format                                                                  ; CVWF                                 ;               ;
-; Vector input source                                                                        ; Waveforms/LogicRAMIndexingModule.vwf ;               ;
-; Add pins automatically to simulation output waveforms                                      ; On                                   ; On            ;
-; Check outputs                                                                              ; Off                                  ; Off           ;
-; Report simulation coverage                                                                 ; On                                   ; On            ;
-; Display complete 1/0 value coverage report                                                 ; On                                   ; On            ;
-; Display missing 1-value coverage report                                                    ; On                                   ; On            ;
-; Display missing 0-value coverage report                                                    ; On                                   ; On            ;
-; Detect setup and hold time violations                                                      ; Off                                  ; Off           ;
-; Detect glitches                                                                            ; Off                                  ; Off           ;
-; Disable timing delays in Timing Simulation                                                 ; Off                                  ; Off           ;
-; Generate Signal Activity File                                                              ; Off                                  ; Off           ;
-; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                                  ; Off           ;
-; Group bus channels in simulation results                                                   ; Off                                  ; Off           ;
-; Preserve fewer signal transitions to reduce memory requirements                            ; On                                   ; On            ;
-; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                           ; INPUT_EDGE    ;
-; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                                  ; Off           ;
-; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                                   ;               ;
-; Perform Glitch Filtering in Timing Simulation                                              ; Auto                                 ; Auto          ;
-+--------------------------------------------------------------------------------------------+--------------------------------------+---------------+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                                       ;
++--------------------------------------------------------------------------------------------+-----------------------------+---------------+
+; Option                                                                                     ; Setting                     ; Default Value ;
++--------------------------------------------------------------------------------------------+-----------------------------+---------------+
+; Simulation mode                                                                            ; Timing                      ; Timing        ;
+; Start time                                                                                 ; 0 ns                        ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF                        ;               ;
+; Vector input source                                                                        ; Waveforms/XorGateModule.vwf ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On                          ; On            ;
+; Check outputs                                                                              ; Off                         ; Off           ;
+; Report simulation coverage                                                                 ; On                          ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On                          ; On            ;
+; Display missing 1-value coverage report                                                    ; On                          ; On            ;
+; Display missing 0-value coverage report                                                    ; On                          ; On            ;
+; Detect setup and hold time violations                                                      ; Off                         ; Off           ;
+; Detect glitches                                                                            ; Off                         ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off                         ; Off           ;
+; Generate Signal Activity File                                                              ; Off                         ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                         ; Off           ;
+; Group bus channels in simulation results                                                   ; Off                         ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On                          ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                  ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                         ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                          ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto                        ; Auto          ;
++--------------------------------------------------------------------------------------------+-----------------------------+---------------+
 
 
 +----------------------+
@@ -95,298 +95,43 @@ Please use Quartus II to view the waveform report data.
 +-----------------------------------------------------+--------------+
 ; Type                                                ; Value        ;
 +-----------------------------------------------------+--------------+
-; Total coverage as a percentage                      ;      59.42 % ;
-; Total nodes checked                                 ; 186          ;
-; Total output ports checked                          ; 207          ;
-; Total output ports with complete 1/0-value coverage ; 123          ;
-; Total output ports with no 1/0-value coverage       ; 50           ;
-; Total output ports with no 1-value coverage         ; 51           ;
-; Total output ports with no 0-value coverage         ; 83           ;
+; Total coverage as a percentage                      ;     100.00 % ;
+; Total nodes checked                                 ; 4            ;
+; Total output ports checked                          ; 4            ;
+; Total output ports with complete 1/0-value coverage ; 4            ;
+; Total output ports with no 1/0-value coverage       ; 0            ;
+; Total output ports with no 1-value coverage         ; 0            ;
+; Total output ports with no 0-value coverage         ; 0            ;
 +-----------------------------------------------------+--------------+
 
 
 The following table displays output ports that toggle between 1 and 0 during simulation.
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Complete 1/0-Value Coverage                                                                                                                                            ;
-+--------------------------------------------------------------------------+--------------------------------------------------------------------------+------------------+
-; Node Name                                                                ; Output Port Name                                                         ; Output Port Type ;
-+--------------------------------------------------------------------------+--------------------------------------------------------------------------+------------------+
-; |LogicRAMIndexingModule_TopLevel|Add0~0                                  ; |LogicRAMIndexingModule_TopLevel|Add0~0                                  ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add0~2                                  ; |LogicRAMIndexingModule_TopLevel|Add0~2                                  ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add0~2                                  ; |LogicRAMIndexingModule_TopLevel|Add0~3                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add0~4                                  ; |LogicRAMIndexingModule_TopLevel|Add0~4                                  ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add0~4                                  ; |LogicRAMIndexingModule_TopLevel|Add0~5                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add0~6                                  ; |LogicRAMIndexingModule_TopLevel|Add0~6                                  ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add0~6                                  ; |LogicRAMIndexingModule_TopLevel|Add0~7                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add0~8                                  ; |LogicRAMIndexingModule_TopLevel|Add0~8                                  ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add0~8                                  ; |LogicRAMIndexingModule_TopLevel|Add0~9                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add0~10                                 ; |LogicRAMIndexingModule_TopLevel|Add0~10                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add0~10                                 ; |LogicRAMIndexingModule_TopLevel|Add0~11                                 ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add0~12                                 ; |LogicRAMIndexingModule_TopLevel|Add0~12                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add0~12                                 ; |LogicRAMIndexingModule_TopLevel|Add0~13                                 ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add0~14                                 ; |LogicRAMIndexingModule_TopLevel|Add0~14                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add1~0                                  ; |LogicRAMIndexingModule_TopLevel|Add1~0                                  ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add1~2                                  ; |LogicRAMIndexingModule_TopLevel|Add1~2                                  ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add1~8                                  ; |LogicRAMIndexingModule_TopLevel|Add1~8                                  ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add1~8                                  ; |LogicRAMIndexingModule_TopLevel|Add1~9                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add1~10                                 ; |LogicRAMIndexingModule_TopLevel|Add1~10                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add1~10                                 ; |LogicRAMIndexingModule_TopLevel|Add1~11                                 ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add1~12                                 ; |LogicRAMIndexingModule_TopLevel|Add1~12                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add1~12                                 ; |LogicRAMIndexingModule_TopLevel|Add1~13                                 ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add1~14                                 ; |LogicRAMIndexingModule_TopLevel|Add1~14                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add2~0                                  ; |LogicRAMIndexingModule_TopLevel|Add2~0                                  ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add2~2                                  ; |LogicRAMIndexingModule_TopLevel|Add2~2                                  ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add2~8                                  ; |LogicRAMIndexingModule_TopLevel|Add2~8                                  ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add2~8                                  ; |LogicRAMIndexingModule_TopLevel|Add2~9                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add2~10                                 ; |LogicRAMIndexingModule_TopLevel|Add2~10                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add2~10                                 ; |LogicRAMIndexingModule_TopLevel|Add2~11                                 ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add2~12                                 ; |LogicRAMIndexingModule_TopLevel|Add2~12                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add2~12                                 ; |LogicRAMIndexingModule_TopLevel|Add2~13                                 ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add2~14                                 ; |LogicRAMIndexingModule_TopLevel|Add2~14                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LessThan0~1                             ; |LogicRAMIndexingModule_TopLevel|LessThan0~1                             ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|LessThan0~3                             ; |LogicRAMIndexingModule_TopLevel|LessThan0~3                             ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|LessThan0~9                             ; |LogicRAMIndexingModule_TopLevel|LessThan0~9                             ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|LessThan0~11                            ; |LogicRAMIndexingModule_TopLevel|LessThan0~11                            ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|LessThan0~13                            ; |LogicRAMIndexingModule_TopLevel|LessThan0~13                            ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|LessThan0~14                            ; |LogicRAMIndexingModule_TopLevel|LessThan0~14                            ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LessThan1~9                             ; |LogicRAMIndexingModule_TopLevel|LessThan1~9                             ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|LessThan1~11                            ; |LogicRAMIndexingModule_TopLevel|LessThan1~11                            ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|LessThan1~13                            ; |LogicRAMIndexingModule_TopLevel|LessThan1~13                            ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|LessThan1~14                            ; |LogicRAMIndexingModule_TopLevel|LessThan1~14                            ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Mux39~0                                 ; |LogicRAMIndexingModule_TopLevel|Mux39~0                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Mux39~1                                 ; |LogicRAMIndexingModule_TopLevel|Mux39~1                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Mux38~0                                 ; |LogicRAMIndexingModule_TopLevel|Mux38~0                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Mux38~1                                 ; |LogicRAMIndexingModule_TopLevel|Mux38~1                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Mux35~0                                 ; |LogicRAMIndexingModule_TopLevel|Mux35~0                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Mux35~1                                 ; |LogicRAMIndexingModule_TopLevel|Mux35~1                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Mux34~0                                 ; |LogicRAMIndexingModule_TopLevel|Mux34~0                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Mux34~1                                 ; |LogicRAMIndexingModule_TopLevel|Mux34~1                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L30F43T86_Expr~0 ; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L30F43T86_Expr~0 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L30F43T86_Expr~1 ; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L30F43T86_Expr~1 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L30F43T86_Expr~4 ; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L30F43T86_Expr~4 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L30F43T86_Expr~5 ; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L30F43T86_Expr~5 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L30F43T86_Expr~7 ; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L30F43T86_Expr~7 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~4 ; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~4 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~5 ; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~5 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~6 ; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~6 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff~0                            ; |LogicRAMIndexingModule_TopLevel|State_Buff~0                            ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[1][5]~1                      ; |LogicRAMIndexingModule_TopLevel|State_Buff[1][5]~1                      ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[2][4]~2                      ; |LogicRAMIndexingModule_TopLevel|State_Buff[2][4]~2                      ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[0][1]~3                      ; |LogicRAMIndexingModule_TopLevel|State_Buff[0][1]~3                      ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[3][7]~4                      ; |LogicRAMIndexingModule_TopLevel|State_Buff[3][7]~4                      ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff~5                            ; |LogicRAMIndexingModule_TopLevel|State_Buff~5                            ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff~6                            ; |LogicRAMIndexingModule_TopLevel|State_Buff~6                            ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff~7                            ; |LogicRAMIndexingModule_TopLevel|State_Buff~7                            ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff~8                            ; |LogicRAMIndexingModule_TopLevel|State_Buff~8                            ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff~9                            ; |LogicRAMIndexingModule_TopLevel|State_Buff~9                            ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff~10                           ; |LogicRAMIndexingModule_TopLevel|State_Buff~10                           ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff~11                           ; |LogicRAMIndexingModule_TopLevel|State_Buff~11                           ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|MemLhsRhs[0]                            ; |LogicRAMIndexingModule_TopLevel|MemLhsRhs[0]                            ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|MemLhsRhs[1]                            ; |LogicRAMIndexingModule_TopLevel|MemLhsRhs[1]                            ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|MemLhsRhs[2]                            ; |LogicRAMIndexingModule_TopLevel|MemLhsRhs[2]                            ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|MemLhsRhs[3]                            ; |LogicRAMIndexingModule_TopLevel|MemLhsRhs[3]                            ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|MemLhsRhs[4]                            ; |LogicRAMIndexingModule_TopLevel|MemLhsRhs[4]                            ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|MemLhsRhs[5]                            ; |LogicRAMIndexingModule_TopLevel|MemLhsRhs[5]                            ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|MemLhsRhs[6]                            ; |LogicRAMIndexingModule_TopLevel|MemLhsRhs[6]                            ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|MemLhsRhs[7]                            ; |LogicRAMIndexingModule_TopLevel|MemLhsRhs[7]                            ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|MathMemLhs[0]                           ; |LogicRAMIndexingModule_TopLevel|MathMemLhs[0]                           ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|MathMemLhs[1]                           ; |LogicRAMIndexingModule_TopLevel|MathMemLhs[1]                           ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|MathMemLhs[4]                           ; |LogicRAMIndexingModule_TopLevel|MathMemLhs[4]                           ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|MathMemLhs[5]                           ; |LogicRAMIndexingModule_TopLevel|MathMemLhs[5]                           ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|MathMemLhs[6]                           ; |LogicRAMIndexingModule_TopLevel|MathMemLhs[6]                           ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|MathMemLhs[7]                           ; |LogicRAMIndexingModule_TopLevel|MathMemLhs[7]                           ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|MathMemRhs[0]                           ; |LogicRAMIndexingModule_TopLevel|MathMemRhs[0]                           ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|MathMemRhs[1]                           ; |LogicRAMIndexingModule_TopLevel|MathMemRhs[1]                           ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|MathMemRhs[4]                           ; |LogicRAMIndexingModule_TopLevel|MathMemRhs[4]                           ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|MathMemRhs[5]                           ; |LogicRAMIndexingModule_TopLevel|MathMemRhs[5]                           ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|MathMemRhs[6]                           ; |LogicRAMIndexingModule_TopLevel|MathMemRhs[6]                           ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|MathMemRhs[7]                           ; |LogicRAMIndexingModule_TopLevel|MathMemRhs[7]                           ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|LogicMemLhs[0]                          ; |LogicRAMIndexingModule_TopLevel|LogicMemLhs[0]                          ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|LogicMemLhs[1]                          ; |LogicRAMIndexingModule_TopLevel|LogicMemLhs[1]                          ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|LogicMemLhs[4]                          ; |LogicRAMIndexingModule_TopLevel|LogicMemLhs[4]                          ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|LogicMemLhs[5]                          ; |LogicRAMIndexingModule_TopLevel|LogicMemLhs[5]                          ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|LogicMemLhs[7]                          ; |LogicRAMIndexingModule_TopLevel|LogicMemLhs[7]                          ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[4]                          ; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[4]                          ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[5]                          ; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[5]                          ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[6]                          ; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[6]                          ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|CmpMemLhs                               ; |LogicRAMIndexingModule_TopLevel|CmpMemLhs                               ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|CmpMemRhs                               ; |LogicRAMIndexingModule_TopLevel|CmpMemRhs                               ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|ReadAddr[1]                             ; |LogicRAMIndexingModule_TopLevel|ReadAddr[1]~corein                      ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|OpData[4]                               ; |LogicRAMIndexingModule_TopLevel|OpData[4]~corein                        ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|OpData[5]                               ; |LogicRAMIndexingModule_TopLevel|OpData[5]~corein                        ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|OpData[6]                               ; |LogicRAMIndexingModule_TopLevel|OpData[6]~corein                        ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|OpData[7]                               ; |LogicRAMIndexingModule_TopLevel|OpData[7]~corein                        ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|WriteData[0]                            ; |LogicRAMIndexingModule_TopLevel|WriteData[0]~corein                     ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Reset                                   ; |LogicRAMIndexingModule_TopLevel|Reset~corein                            ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Clock                                   ; |LogicRAMIndexingModule_TopLevel|Clock~corein                            ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|WriteAddr[1]                            ; |LogicRAMIndexingModule_TopLevel|WriteAddr[1]~corein                     ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|WE                                      ; |LogicRAMIndexingModule_TopLevel|WE~corein                               ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|WriteAddr[0]                            ; |LogicRAMIndexingModule_TopLevel|WriteAddr[0]~corein                     ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|WriteData[1]                            ; |LogicRAMIndexingModule_TopLevel|WriteData[1]~corein                     ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|WriteData[2]                            ; |LogicRAMIndexingModule_TopLevel|WriteData[2]~corein                     ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|WriteData[3]                            ; |LogicRAMIndexingModule_TopLevel|WriteData[3]~corein                     ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|WriteData[4]                            ; |LogicRAMIndexingModule_TopLevel|WriteData[4]~corein                     ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|WriteData[5]                            ; |LogicRAMIndexingModule_TopLevel|WriteData[5]~corein                     ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|WriteData[6]                            ; |LogicRAMIndexingModule_TopLevel|WriteData[6]~corein                     ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|WriteData[7]                            ; |LogicRAMIndexingModule_TopLevel|WriteData[7]~corein                     ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Clock~clkctrl                           ; |LogicRAMIndexingModule_TopLevel|Clock~clkctrl                           ; outclk           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[0][2]~feeder                 ; |LogicRAMIndexingModule_TopLevel|State_Buff[0][2]~feeder                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[3][3]~feeder                 ; |LogicRAMIndexingModule_TopLevel|State_Buff[3][3]~feeder                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[0][4]~feeder                 ; |LogicRAMIndexingModule_TopLevel|State_Buff[0][4]~feeder                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[3][7]~feeder                 ; |LogicRAMIndexingModule_TopLevel|State_Buff[3][7]~feeder                 ; combout          ;
-+--------------------------------------------------------------------------+--------------------------------------------------------------------------+------------------+
++----------------------------------------------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                                                      ;
++-------------------------------------------------------+-------------------------------------------------------+------------------+
+; Node Name                                             ; Output Port Name                                      ; Output Port Type ;
++-------------------------------------------------------+-------------------------------------------------------+------------------+
+; |XorGateModule_TopLevel|XorGateModule_L8F26T47_Expr~0 ; |XorGateModule_TopLevel|XorGateModule_L8F26T47_Expr~0 ; combout          ;
+; |XorGateModule_TopLevel|O                             ; |XorGateModule_TopLevel|O                             ; padio            ;
+; |XorGateModule_TopLevel|I1                            ; |XorGateModule_TopLevel|I1~corein                     ; combout          ;
+; |XorGateModule_TopLevel|I2                            ; |XorGateModule_TopLevel|I2~corein                     ; combout          ;
++-------------------------------------------------------+-------------------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 1 during simulation.
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Missing 1-Value Coverage                                                                                                                                               ;
-+--------------------------------------------------------------------------+--------------------------------------------------------------------------+------------------+
-; Node Name                                                                ; Output Port Name                                                         ; Output Port Type ;
-+--------------------------------------------------------------------------+--------------------------------------------------------------------------+------------------+
-; |LogicRAMIndexingModule_TopLevel|Add0~0                                  ; |LogicRAMIndexingModule_TopLevel|Add0~1                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add1~0                                  ; |LogicRAMIndexingModule_TopLevel|Add1~1                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add1~2                                  ; |LogicRAMIndexingModule_TopLevel|Add1~3                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add1~4                                  ; |LogicRAMIndexingModule_TopLevel|Add1~5                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add1~6                                  ; |LogicRAMIndexingModule_TopLevel|Add1~6                                  ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add1~6                                  ; |LogicRAMIndexingModule_TopLevel|Add1~7                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add2~0                                  ; |LogicRAMIndexingModule_TopLevel|Add2~1                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add2~2                                  ; |LogicRAMIndexingModule_TopLevel|Add2~3                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add2~4                                  ; |LogicRAMIndexingModule_TopLevel|Add2~5                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add2~6                                  ; |LogicRAMIndexingModule_TopLevel|Add2~6                                  ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add2~6                                  ; |LogicRAMIndexingModule_TopLevel|Add2~7                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|LessThan0~7                             ; |LogicRAMIndexingModule_TopLevel|LessThan0~7                             ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|LessThan1~1                             ; |LogicRAMIndexingModule_TopLevel|LessThan1~1                             ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|LessThan1~3                             ; |LogicRAMIndexingModule_TopLevel|LessThan1~3                             ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|LessThan1~5                             ; |LogicRAMIndexingModule_TopLevel|LessThan1~5                             ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|LessThan1~7                             ; |LogicRAMIndexingModule_TopLevel|LessThan1~7                             ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[1][0]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[1][0]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[0][0]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[0][0]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[2][1]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[2][1]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[1][2]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[1][2]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[2][3]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[2][3]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[0][3]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[0][3]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|Mux36~0                                 ; |LogicRAMIndexingModule_TopLevel|Mux36~0                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Mux36~1                                 ; |LogicRAMIndexingModule_TopLevel|Mux36~1                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[1][4]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[1][4]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[0][4]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[0][4]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[2][5]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[2][5]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[1][6]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[1][6]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[2][7]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[2][7]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[0][7]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[0][7]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|Mux32~0                                 ; |LogicRAMIndexingModule_TopLevel|Mux32~0                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Mux32~1                                 ; |LogicRAMIndexingModule_TopLevel|Mux32~1                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L30F43T86_Expr~3 ; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L30F43T86_Expr~3 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~0 ; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~0 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~1 ; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~1 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~2 ; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~2 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~3 ; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~3 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~7 ; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~7 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|MathMemLhs[3]                           ; |LogicRAMIndexingModule_TopLevel|MathMemLhs[3]                           ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|MathMemRhs[3]                           ; |LogicRAMIndexingModule_TopLevel|MathMemRhs[3]                           ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|LogicMemLhs[3]                          ; |LogicRAMIndexingModule_TopLevel|LogicMemLhs[3]                          ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[0]                          ; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[0]                          ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[1]                          ; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[1]                          ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[2]                          ; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[2]                          ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[3]                          ; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[3]                          ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[7]                          ; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[7]                          ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|ReadAddr[0]                             ; |LogicRAMIndexingModule_TopLevel|ReadAddr[0]~corein                      ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|OpData[0]                               ; |LogicRAMIndexingModule_TopLevel|OpData[0]~corein                        ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|OpData[1]                               ; |LogicRAMIndexingModule_TopLevel|OpData[1]~corein                        ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|OpData[2]                               ; |LogicRAMIndexingModule_TopLevel|OpData[2]~corein                        ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|OpData[3]                               ; |LogicRAMIndexingModule_TopLevel|OpData[3]~corein                        ; combout          ;
-+--------------------------------------------------------------------------+--------------------------------------------------------------------------+------------------+
++-------------------------------------------------+
+; Missing 1-Value Coverage                        ;
++-----------+------------------+------------------+
+; Node Name ; Output Port Name ; Output Port Type ;
++-----------+------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 0 during simulation.
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Missing 0-Value Coverage                                                                                                                                               ;
-+--------------------------------------------------------------------------+--------------------------------------------------------------------------+------------------+
-; Node Name                                                                ; Output Port Name                                                         ; Output Port Type ;
-+--------------------------------------------------------------------------+--------------------------------------------------------------------------+------------------+
-; |LogicRAMIndexingModule_TopLevel|Add0~0                                  ; |LogicRAMIndexingModule_TopLevel|Add0~1                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add1~0                                  ; |LogicRAMIndexingModule_TopLevel|Add1~1                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add1~2                                  ; |LogicRAMIndexingModule_TopLevel|Add1~3                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add1~4                                  ; |LogicRAMIndexingModule_TopLevel|Add1~4                                  ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add1~4                                  ; |LogicRAMIndexingModule_TopLevel|Add1~5                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add1~6                                  ; |LogicRAMIndexingModule_TopLevel|Add1~6                                  ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add1~6                                  ; |LogicRAMIndexingModule_TopLevel|Add1~7                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add2~0                                  ; |LogicRAMIndexingModule_TopLevel|Add2~1                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add2~2                                  ; |LogicRAMIndexingModule_TopLevel|Add2~3                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add2~4                                  ; |LogicRAMIndexingModule_TopLevel|Add2~4                                  ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add2~4                                  ; |LogicRAMIndexingModule_TopLevel|Add2~5                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|Add2~6                                  ; |LogicRAMIndexingModule_TopLevel|Add2~6                                  ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|Add2~6                                  ; |LogicRAMIndexingModule_TopLevel|Add2~7                                  ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|LessThan0~5                             ; |LogicRAMIndexingModule_TopLevel|LessThan0~5                             ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|LessThan1~1                             ; |LogicRAMIndexingModule_TopLevel|LessThan1~1                             ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|LessThan1~3                             ; |LogicRAMIndexingModule_TopLevel|LessThan1~3                             ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|LessThan1~5                             ; |LogicRAMIndexingModule_TopLevel|LessThan1~5                             ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|LessThan1~7                             ; |LogicRAMIndexingModule_TopLevel|LessThan1~7                             ; cout             ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[1][0]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[1][0]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[2][0]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[2][0]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[0][0]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[0][0]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[3][0]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[3][0]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[2][1]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[2][1]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[1][1]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[1][1]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[0][1]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[0][1]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[3][1]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[3][1]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[1][2]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[1][2]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[2][2]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[2][2]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[0][2]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[0][2]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|Mux37~0                                 ; |LogicRAMIndexingModule_TopLevel|Mux37~0                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[3][2]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[3][2]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|Mux37~1                                 ; |LogicRAMIndexingModule_TopLevel|Mux37~1                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[2][3]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[2][3]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[1][3]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[1][3]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[0][3]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[0][3]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|Mux36~0                                 ; |LogicRAMIndexingModule_TopLevel|Mux36~0                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[3][3]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[3][3]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|Mux36~1                                 ; |LogicRAMIndexingModule_TopLevel|Mux36~1                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[1][4]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[1][4]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[2][4]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[2][4]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[0][4]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[0][4]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[3][4]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[3][4]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[2][5]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[2][5]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[1][5]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[1][5]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[0][5]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[0][5]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[3][5]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[3][5]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[1][6]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[1][6]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[2][6]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[2][6]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[0][6]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[0][6]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|Mux33~0                                 ; |LogicRAMIndexingModule_TopLevel|Mux33~0                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[3][6]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[3][6]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|Mux33~1                                 ; |LogicRAMIndexingModule_TopLevel|Mux33~1                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[2][7]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[2][7]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[1][7]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[1][7]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[0][7]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[0][7]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|Mux32~0                                 ; |LogicRAMIndexingModule_TopLevel|Mux32~0                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|State_Buff[3][7]                        ; |LogicRAMIndexingModule_TopLevel|State_Buff[3][7]                        ; regout           ;
-; |LogicRAMIndexingModule_TopLevel|Mux32~1                                 ; |LogicRAMIndexingModule_TopLevel|Mux32~1                                 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L30F43T86_Expr~2 ; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L30F43T86_Expr~2 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L30F43T86_Expr~3 ; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L30F43T86_Expr~3 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L30F43T86_Expr~6 ; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L30F43T86_Expr~6 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~0 ; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~0 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~1 ; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~1 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~2 ; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~2 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~3 ; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~3 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~7 ; |LogicRAMIndexingModule_TopLevel|LogicRAMIndexingModule_L31F43T86_Expr~7 ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|MathMemLhs[2]                           ; |LogicRAMIndexingModule_TopLevel|MathMemLhs[2]                           ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|MathMemLhs[3]                           ; |LogicRAMIndexingModule_TopLevel|MathMemLhs[3]                           ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|MathMemRhs[2]                           ; |LogicRAMIndexingModule_TopLevel|MathMemRhs[2]                           ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|MathMemRhs[3]                           ; |LogicRAMIndexingModule_TopLevel|MathMemRhs[3]                           ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|LogicMemLhs[2]                          ; |LogicRAMIndexingModule_TopLevel|LogicMemLhs[2]                          ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|LogicMemLhs[3]                          ; |LogicRAMIndexingModule_TopLevel|LogicMemLhs[3]                          ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|LogicMemLhs[6]                          ; |LogicRAMIndexingModule_TopLevel|LogicMemLhs[6]                          ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[0]                          ; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[0]                          ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[1]                          ; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[1]                          ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[2]                          ; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[2]                          ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[3]                          ; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[3]                          ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[7]                          ; |LogicRAMIndexingModule_TopLevel|LogicMemRhs[7]                          ; padio            ;
-; |LogicRAMIndexingModule_TopLevel|ReadAddr[0]                             ; |LogicRAMIndexingModule_TopLevel|ReadAddr[0]~corein                      ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|OpData[0]                               ; |LogicRAMIndexingModule_TopLevel|OpData[0]~corein                        ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|OpData[1]                               ; |LogicRAMIndexingModule_TopLevel|OpData[1]~corein                        ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|OpData[2]                               ; |LogicRAMIndexingModule_TopLevel|OpData[2]~corein                        ; combout          ;
-; |LogicRAMIndexingModule_TopLevel|OpData[3]                               ; |LogicRAMIndexingModule_TopLevel|OpData[3]~corein                        ; combout          ;
-+--------------------------------------------------------------------------+--------------------------------------------------------------------------+------------------+
++-------------------------------------------------+
+; Missing 0-Value Coverage                        ;
++-----------+------------------+------------------+
+; Node Name ; Output Port Name ; Output Port Type ;
++-----------+------------------+------------------+
 
 
 +---------------------+
@@ -415,21 +160,21 @@ Info: Running Quartus II Simulator
     Info: programming logic devices manufactured by Altera and sold by 
     Info: Altera or its authorized distributors.  Please refer to the 
     Info: applicable agreement for further details.
-    Info: Processing started: Thu Mar 10 21:43:05 2022
+    Info: Processing started: Sun Mar 13 17:17:51 2022
 Info: Command: quartus_sim C:\code\qusoc\rtl\rtl.hdl\Verilog.qpf --read_settings_files=on --write_settings_files=off -c Verilog
-Info: Using vector source file "Waveforms/LogicRAMIndexingModule.vwf"
+Info: Using vector source file "Waveforms/XorGateModule.vwf"
 Info: Overwriting simulation input file with simulation results
-    Info: A backup of LogicRAMIndexingModule.vwf called Verilog.sim_ori.vwf has been created in the db folder
+    Info: A backup of XorGateModule.vwf called Verilog.sim_ori.vwf has been created in the db folder
 Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
     Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
 Info: Simulation partitioned into 1 sub-simulations
-Info: Simulation coverage is      59.42 %
-Info: Number of transitions in simulation is 728
-Info: Vector file LogicRAMIndexingModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
+Info: Simulation coverage is     100.00 %
+Info: Number of transitions in simulation is 18
+Info: Vector file XorGateModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
 Info: Quartus II Simulator was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 160 megabytes
-    Info: Processing ended: Thu Mar 10 21:43:06 2022
+    Info: Processing ended: Sun Mar 13 17:17:52 2022
     Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:02
+    Info: Total CPU time (on all processors): 00:00:01
 
 

@@ -27,7 +27,7 @@ module EmitterModule_TopLevel
 	input wire Reset,
 	input wire IsEnabled,
 	input wire Ack,
-	output wire [7: 0] Data,
+	output wire [7:0] Data,
 	output wire HasData
 );
 	// [BEGIN USER SIGNALS]
@@ -74,11 +74,11 @@ module EmitterModule_TopLevel
 	end
 	assign EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr_1 = Inputs_IsEnabled;
 	assign EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr_2 = Inputs_Ack;
-	assign EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_1 = { {2{1'b0}}, State_Data }/*expand*/;
-	assign EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_2 = { {9{1'b0}}, EmitterModule_L22F9L25T10_EmitterModule_L24F54T55_Expr }/*expand*/;
+	assign EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_1 = { {2{1'b0}}, State_Data };
+	assign EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_2 = { {9{1'b0}}, EmitterModule_L22F9L25T10_EmitterModule_L24F54T55_Expr };
 	assign Inputs_IsEnabled = IsEnabled;
 	assign Inputs_Ack = Ack;
-	assign EmitterModule_L22F9L25T10_EmitterModule_L24F34T56_Cast = EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr[7:0]/*truncate*/;
+	assign EmitterModule_L22F9L25T10_EmitterModule_L24F34T56_Cast = EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr[7:0];
 	assign Data = State_Data;
 	assign HasData = Inputs_IsEnabled;
 	// [BEGIN USER ARCHITECTURE]

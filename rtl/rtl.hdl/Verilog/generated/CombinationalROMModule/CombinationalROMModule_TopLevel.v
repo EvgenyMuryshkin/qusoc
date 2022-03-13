@@ -23,10 +23,10 @@ module CombinationalROMModule_TopLevel
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
-	input wire [7: 0] ReadAddress1,
-	input wire [7: 0] ReadAddress2,
-	output wire [7: 0] Value1,
-	output wire [7: 0] Value2
+	input wire [7:0] ReadAddress1,
+	input wire [7:0] ReadAddress2,
+	output wire [7:0] Value1,
+	output wire [7:0] Value2
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]

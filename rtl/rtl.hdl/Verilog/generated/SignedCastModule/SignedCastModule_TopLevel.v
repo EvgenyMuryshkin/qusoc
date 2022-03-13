@@ -23,12 +23,12 @@ module SignedCastModule_TopLevel
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
-	input wire signed [15: 0] ShortValue,
-	output wire [7: 0] ByteValue,
-	output wire signed [7: 0] SByteValue,
-	output wire [15: 0] UShortValue,
-	output wire signed [31: 0] IntValue,
-	output wire [31: 0] UIntValue
+	input wire signed [15:0] ShortValue,
+	output wire [7:0] ByteValue,
+	output wire signed [7:0] SByteValue,
+	output wire [15:0] UShortValue,
+	output wire signed [31:0] IntValue,
+	output wire [31:0] UIntValue
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -44,14 +44,14 @@ module SignedCastModule_TopLevel
 	wire [15: 0] SignedCastModule_L15F38T63_Cast;
 	wire [31: 0] SignedCastModule_L17F34T57_Cast;
 	assign Inputs_ShortValue = ShortValue;
-	assign SignedCastModule_L13F34T57_Cast = Inputs_ShortValue[7:0]/*truncate*/;
+	assign SignedCastModule_L13F34T57_Cast = Inputs_ShortValue[7:0];
 	assign ByteValue = SignedCastModule_L13F34T57_Cast;
-	assign SignedCastModule_L14F36T60_Cast = Inputs_ShortValue[7:0]/*truncate*/;
+	assign SignedCastModule_L14F36T60_Cast = Inputs_ShortValue[7:0];
 	assign SByteValue = SignedCastModule_L14F36T60_Cast;
-	assign SignedCastModule_L15F38T63_Cast = Inputs_ShortValue/*cast*/;
+	assign SignedCastModule_L15F38T63_Cast = Inputs_ShortValue;
 	assign UShortValue = SignedCastModule_L15F38T63_Cast;
-	assign IntValue = { {16{Inputs_ShortValue[15]}}, Inputs_ShortValue }/*expand*/;
-	assign SignedCastModule_L17F34T57_Cast = { {16{Inputs_ShortValue[15]}}, Inputs_ShortValue }/*expand*/;
+	assign IntValue = { {16{Inputs_ShortValue[15]}}, Inputs_ShortValue };
+	assign SignedCastModule_L17F34T57_Cast = { {16{Inputs_ShortValue[15]}}, Inputs_ShortValue };
 	assign UIntValue = SignedCastModule_L17F34T57_Cast;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]

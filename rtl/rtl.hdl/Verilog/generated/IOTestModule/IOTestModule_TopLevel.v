@@ -26,23 +26,23 @@ module IOTestModule_TopLevel
 	input wire Clock,
 	input wire Reset,
 	input wire InFlag,
-	input wire [7: 0] InArray0,
-	input wire [7: 0] InArray1,
+	input wire [7:0] InArray0,
+	input wire [7:0] InArray1,
 	output wire ClassOut_Flag,
-	output wire [7: 0] ClassOut_Array0,
-	output wire [7: 0] ClassOut_Array1,
+	output wire [7:0] ClassOut_Array0,
+	output wire [7:0] ClassOut_Array1,
 	output wire ClassOut_Nested_Flag,
-	output wire [7: 0] ClassOut_Nested_Array0,
-	output wire [7: 0] ClassOut_Nested_Array1,
+	output wire [7:0] ClassOut_Nested_Array0,
+	output wire [7:0] ClassOut_Nested_Array1,
 	output wire NestedClassOut_Flag,
-	output wire [7: 0] NestedClassOut_Array0,
-	output wire [7: 0] NestedClassOut_Array1,
-	output wire [7: 0] OutIteratorArray0,
-	output wire [7: 0] OutIteratorArray1,
-	output wire [7: 0] OutStateArray0,
-	output wire [7: 0] OutStateArray1,
-	output wire [7: 0] OutDirectArray0,
-	output wire [7: 0] OutDirectArray1,
+	output wire [7:0] NestedClassOut_Array0,
+	output wire [7:0] NestedClassOut_Array1,
+	output wire [7:0] OutIteratorArray0,
+	output wire [7:0] OutIteratorArray1,
+	output wire [7:0] OutStateArray0,
+	output wire [7:0] OutStateArray1,
+	output wire [7:0] OutDirectArray0,
+	output wire [7:0] OutDirectArray1,
 	output wire OutFlag
 );
 	// [BEGIN USER SIGNALS]
@@ -57,13 +57,12 @@ module IOTestModule_TopLevel
 	wire IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_0_idx = 1'b0;
 	wire IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_1_idx = 1'b1;
 	wire Inputs_InFlag;
-	wire [7: 0] Inputs_InArray0;
-	wire [7: 0] Inputs_InArray1;
 	reg NextState_Flag;
 	reg [7: 0] State_ArrayDefault = 8'b00000000;
 	reg [7: 0] State_IteratorArrayDefault = 8'b00000000;
 	reg State_Flag = 1'b0;
 	wire State_FlagDefault = 1'b0;
+	wire [7 : 0] Inputs_InArray [0 : 1];
 	integer State_Array_Iterator;
 	reg [7 : 0] State_Array [0 : 1];
 	initial
@@ -151,15 +150,15 @@ module IOTestModule_TopLevel
 		NextState_Flag = Inputs_InFlag;
 		if ((Inputs_InFlag == 1))
 		begin
-			NextState_Array[0] = Inputs_InArray0;
-			NextState_Array[1] = Inputs_InArray1;
+			NextState_Array[0] = Inputs_InArray[0];
+			NextState_Array[1] = Inputs_InArray[1];
 		end
-		NextState_IteratorArray[IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_0_idx] = Inputs_InArray0;
-		NextState_IteratorArray[IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_1_idx] = Inputs_InArray1;
+		NextState_IteratorArray[IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_0_idx] = Inputs_InArray[IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_0_idx];
+		NextState_IteratorArray[IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_1_idx] = Inputs_InArray[IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_1_idx];
 	end
 	assign Inputs_InFlag = InFlag;
-	assign Inputs_InArray0 = InArray0;
-	assign Inputs_InArray1 = InArray1;
+	assign Inputs_InArray[0] = InArray0;
+	assign Inputs_InArray[1] = InArray1;
 	assign ClassOut_Flag = State_Flag;
 	assign ClassOut_Array0 = State_Array[0];
 	assign ClassOut_Array1 = State_Array[1];
@@ -173,8 +172,8 @@ module IOTestModule_TopLevel
 	assign OutIteratorArray1 = State_IteratorArray[1];
 	assign OutStateArray0 = State_Array[0];
 	assign OutStateArray1 = State_Array[1];
-	assign OutDirectArray0 = Inputs_InArray0;
-	assign OutDirectArray1 = Inputs_InArray1;
+	assign OutDirectArray0 = Inputs_InArray[0];
+	assign OutDirectArray1 = Inputs_InArray[1];
 	assign OutFlag = State_Flag;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]

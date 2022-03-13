@@ -100,20 +100,20 @@ module BoardTimerModule_TopLevel_BoardTimerModule_timerModule10
 		NextState_counter = State_counter;
 		NextState_counter = TimerModule_L51F9L53T10_TimerModule_L52F33T135_SignChange;
 	end
-	assign TimerModule_L47F24T48_ExprLhs = { {1{1'b0}}, State_counter }/*expand*/;
-	assign TimerModule_L47F24T48_ExprRhs = { {1{1'b0}}, countTo }/*expand*/;
+	assign TimerModule_L47F24T48_ExprLhs = { 1'b0, State_counter };
+	assign TimerModule_L47F24T48_ExprRhs = { 1'b0, countTo };
 	assign TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr_1 = Inputs_Restart;
 	assign TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr_2 = active;
-	assign TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_1 = { {2{1'b0}}, State_counter }/*expand*/;
-	assign TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_2 = { {5{1'b0}}, TimerModule_L51F9L53T10_TimerModule_L52F100T101_Expr }/*expand*/;
+	assign TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_1 = { {2{1'b0}}, State_counter };
+	assign TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_2 = { {5{1'b0}}, TimerModule_L51F9L53T10_TimerModule_L52F100T101_Expr };
 	assign Inputs_Restart = Restart;
 	assign active = TimerModule_L47F24T48_Expr;
 	assign TimerModule_L51F9L53T10_TimerModule_L52F63T81_Source = TimerModule_L51F9L53T10_TimerModule_L52F79T80_Expr;
 	assign TimerModule_L51F9L53T10_TimerModule_L52F33T124_Resize = TimerModule_L51F9L53T10_TimerModule_L52F34T101_Lookup;
 	assign TimerModule_L51F9L53T10_TimerModule_L52F33T135_SignChange = TimerModule_L51F9L53T10_TimerModule_L52F33T124_Resize;
 	assign OutActive = active;
-	assign TimerModule_L51F9L53T10_TimerModule_L52F34T101_Lookup1 = TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr[3:0]/*truncate*/;
-	assign TimerModule_L51F9L53T10_TimerModule_L52F34T101_Lookup2 = { {3{1'b0}}, TimerModule_L51F9L53T10_TimerModule_L52F63T81_Source }/*expand*/;
+	assign TimerModule_L51F9L53T10_TimerModule_L52F34T101_Lookup1 = TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr[3:0];
+	assign TimerModule_L51F9L53T10_TimerModule_L52F34T101_Lookup2 = { {3{1'b0}}, TimerModule_L51F9L53T10_TimerModule_L52F63T81_Source };
 	assign TimerModule_L51F9L53T10_TimerModule_L52F34T101_LookupMultiplexerAddress = TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]

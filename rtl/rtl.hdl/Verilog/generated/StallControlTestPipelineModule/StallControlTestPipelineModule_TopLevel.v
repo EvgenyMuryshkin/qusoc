@@ -41,10 +41,10 @@ module StallControlTestPipelineModule_TopLevel
 	output wire outResult_stage2Stalled,
 	output wire outResult_stage3WillStall,
 	output wire outResult_stage3Stalled,
-	output wire [7: 0] outResult_stage0Counter,
-	output wire [7: 0] outResult_stage1Counter,
-	output wire [7: 0] outResult_stage2Counter,
-	output wire [7: 0] outResult_stage3Counter
+	output wire [7:0] outResult_stage0Counter,
+	output wire [7:0] outResult_stage1Counter,
+	output wire [7:0] outResult_stage2Counter,
+	output wire [7:0] outResult_stage3Counter
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -497,14 +497,14 @@ module StallControlTestPipelineModule_TopLevel
 	assign Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L135F58T100_Expr_1 = Inputs_stallStage3;
 	assign Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L135F58T100_Expr_2 = Inputs_stallPipeline;
 	assign Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L135F104T121_Expr_1 = Inputs_stallPrev;
-	assign Pipeline_StallControlTestPipelineModule_L96F17L105T18_StallControlTestPipelineModule_L103F48T71_Expr_1 = { {2{1'b0}}, Pipeline_stage0_State_stage0Counter }/*expand*/;
-	assign Pipeline_StallControlTestPipelineModule_L96F17L105T18_StallControlTestPipelineModule_L103F48T71_Expr_2 = { {9{1'b0}}, Pipeline_StallControlTestPipelineModule_L96F17L105T18_StallControlTestPipelineModule_L103F70T71_Expr }/*expand*/;
-	assign Pipeline_StallControlTestPipelineModule_L107F17L117T18_StallControlTestPipelineModule_L115F48T71_Expr_1 = { {2{1'b0}}, Pipeline_stage1_State_stage1Counter }/*expand*/;
-	assign Pipeline_StallControlTestPipelineModule_L107F17L117T18_StallControlTestPipelineModule_L115F48T71_Expr_2 = { {9{1'b0}}, Pipeline_StallControlTestPipelineModule_L107F17L117T18_StallControlTestPipelineModule_L115F70T71_Expr }/*expand*/;
-	assign Pipeline_StallControlTestPipelineModule_L119F17L130T18_StallControlTestPipelineModule_L128F48T71_Expr_1 = { {2{1'b0}}, Pipeline_stage2_State_stage2Counter }/*expand*/;
-	assign Pipeline_StallControlTestPipelineModule_L119F17L130T18_StallControlTestPipelineModule_L128F48T71_Expr_2 = { {9{1'b0}}, Pipeline_StallControlTestPipelineModule_L119F17L130T18_StallControlTestPipelineModule_L128F70T71_Expr }/*expand*/;
-	assign Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L142F48T71_Expr_1 = { {2{1'b0}}, Pipeline_stage3_State_stage3Counter }/*expand*/;
-	assign Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L142F48T71_Expr_2 = { {9{1'b0}}, Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L142F70T71_Expr }/*expand*/;
+	assign Pipeline_StallControlTestPipelineModule_L96F17L105T18_StallControlTestPipelineModule_L103F48T71_Expr_1 = { {2{1'b0}}, Pipeline_stage0_State_stage0Counter };
+	assign Pipeline_StallControlTestPipelineModule_L96F17L105T18_StallControlTestPipelineModule_L103F48T71_Expr_2 = { {9{1'b0}}, Pipeline_StallControlTestPipelineModule_L96F17L105T18_StallControlTestPipelineModule_L103F70T71_Expr };
+	assign Pipeline_StallControlTestPipelineModule_L107F17L117T18_StallControlTestPipelineModule_L115F48T71_Expr_1 = { {2{1'b0}}, Pipeline_stage1_State_stage1Counter };
+	assign Pipeline_StallControlTestPipelineModule_L107F17L117T18_StallControlTestPipelineModule_L115F48T71_Expr_2 = { {9{1'b0}}, Pipeline_StallControlTestPipelineModule_L107F17L117T18_StallControlTestPipelineModule_L115F70T71_Expr };
+	assign Pipeline_StallControlTestPipelineModule_L119F17L130T18_StallControlTestPipelineModule_L128F48T71_Expr_1 = { {2{1'b0}}, Pipeline_stage2_State_stage2Counter };
+	assign Pipeline_StallControlTestPipelineModule_L119F17L130T18_StallControlTestPipelineModule_L128F48T71_Expr_2 = { {9{1'b0}}, Pipeline_StallControlTestPipelineModule_L119F17L130T18_StallControlTestPipelineModule_L128F70T71_Expr };
+	assign Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L142F48T71_Expr_1 = { {2{1'b0}}, Pipeline_stage3_State_stage3Counter };
+	assign Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L142F48T71_Expr_2 = { {9{1'b0}}, Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L142F70T71_Expr };
 	assign Inputs_stallStage0 = stallStage0;
 	assign Inputs_stallStage1 = stallStage1;
 	assign Inputs_stallStage2 = stallStage2;
@@ -524,10 +524,10 @@ module StallControlTestPipelineModule_TopLevel
 	assign Pipeline_NextState_stage1Counter = Pipeline_stage3_NextState_stage1Counter;
 	assign Pipeline_NextState_stage2Counter = Pipeline_stage3_NextState_stage2Counter;
 	assign Pipeline_NextState_stage3Counter = Pipeline_stage3_NextState_stage3Counter;
-	assign Pipeline_StallControlTestPipelineModule_L96F17L105T18_StallControlTestPipelineModule_L103F41T72_Cast = Pipeline_StallControlTestPipelineModule_L96F17L105T18_StallControlTestPipelineModule_L103F48T71_Expr[7:0]/*truncate*/;
-	assign Pipeline_StallControlTestPipelineModule_L107F17L117T18_StallControlTestPipelineModule_L115F41T72_Cast = Pipeline_StallControlTestPipelineModule_L107F17L117T18_StallControlTestPipelineModule_L115F48T71_Expr[7:0]/*truncate*/;
-	assign Pipeline_StallControlTestPipelineModule_L119F17L130T18_StallControlTestPipelineModule_L128F41T72_Cast = Pipeline_StallControlTestPipelineModule_L119F17L130T18_StallControlTestPipelineModule_L128F48T71_Expr[7:0]/*truncate*/;
-	assign Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L142F41T72_Cast = Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L142F48T71_Expr[7:0]/*truncate*/;
+	assign Pipeline_StallControlTestPipelineModule_L96F17L105T18_StallControlTestPipelineModule_L103F41T72_Cast = Pipeline_StallControlTestPipelineModule_L96F17L105T18_StallControlTestPipelineModule_L103F48T71_Expr[7:0];
+	assign Pipeline_StallControlTestPipelineModule_L107F17L117T18_StallControlTestPipelineModule_L115F41T72_Cast = Pipeline_StallControlTestPipelineModule_L107F17L117T18_StallControlTestPipelineModule_L115F48T71_Expr[7:0];
+	assign Pipeline_StallControlTestPipelineModule_L119F17L130T18_StallControlTestPipelineModule_L128F41T72_Cast = Pipeline_StallControlTestPipelineModule_L119F17L130T18_StallControlTestPipelineModule_L128F48T71_Expr[7:0];
+	assign Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L142F41T72_Cast = Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L142F48T71_Expr[7:0];
 	assign outResult_pipelineWillStall = Pipeline_PipelinePreview_PipelineWillStall;
 	assign outResult_pipelineStalled = Pipeline_PipelineControl_PipelineStalled;
 	assign outResult_stage0WillStall = Pipeline_stage0_Preview_StageWillStall;

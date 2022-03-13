@@ -23,11 +23,11 @@ module ShifterModule_TopLevel
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
-	input wire [7: 0] Value,
-	input wire [2: 0] ShiftBy,
-	output wire [7: 0] SHLL,
-	output wire [7: 0] SHRL,
-	output wire signed [7: 0] SHRA
+	input wire [7:0] Value,
+	input wire [2:0] ShiftBy,
+	output wire [7:0] SHLL,
+	output wire [7:0] SHRL,
+	output wire signed [7:0] SHRA
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -58,7 +58,7 @@ module ShifterModule_TopLevel
 	assign SHLL = ShifterModule_L13F36T66_Expr;
 	assign ShifterModule_L14F36T59_SignChange = Inputs_Value;
 	assign SHRL = ShifterModule_L14F36T77_Expr;
-	assign ShifterModule_L15F36T57_SignChange = Inputs_Value/*cast*/;
+	assign ShifterModule_L15F36T57_SignChange = Inputs_Value;
 	assign SHRA = ShifterModule_L15F36T75_Expr;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]

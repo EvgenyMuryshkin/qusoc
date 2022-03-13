@@ -23,13 +23,13 @@ module LoopModule_TopLevel
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
-	input wire [7: 0] InData,
+	input wire [7:0] InData,
 	output wire OutOr,
 	output wire OutAnd,
 	output wire OutXor,
-	output wire [7: 0] Encode,
-	output wire [7: 0] EncodeInv,
-	output wire [7: 0] OutTupleAddress,
+	output wire [7:0] Encode,
+	output wire [7:0] EncodeInv,
+	output wire [7:0] OutTupleAddress,
 	output wire OutTupleIsValid
 );
 	// [BEGIN USER SIGNALS]
@@ -73,7 +73,7 @@ module LoopModule_TopLevel
 	always @ (*)
 	begin
 		LoopModule_L85F13L96T14_isValid = LoopModule_L85F13L96T14_LoopModule_L86F32T37_Expr;
-		LoopModule_L85F13L96T14_result = { {7{1'b0}}, LoopModule_L85F13L96T14_LoopModule_L87F31T32_Expr }/*expand*/;
+		LoopModule_L85F13L96T14_result = { {7{1'b0}}, LoopModule_L85F13L96T14_LoopModule_L87F31T32_Expr };
 		for (LoopModule_L85F13L96T14_idx = 0; (LoopModule_L85F13L96T14_idx < 8); LoopModule_L85F13L96T14_idx = (LoopModule_L85F13L96T14_idx + 1))
 		begin
 			LoopModule_L85F13L96T14_isValid = (LoopModule_L85F13L96T14_isValid | Inputs_InData[LoopModule_L85F13L96T14_idx]);
@@ -109,7 +109,7 @@ module LoopModule_TopLevel
 	end
 	always @ (*)
 	begin
-		LoopModule_L55F13L64T14_result = { {7{1'b0}}, LoopModule_L55F13L64T14_LoopModule_L56F31T32_Expr }/*expand*/;
+		LoopModule_L55F13L64T14_result = { {7{1'b0}}, LoopModule_L55F13L64T14_LoopModule_L56F31T32_Expr };
 		for (LoopModule_L55F13L64T14_idx = 0; (LoopModule_L55F13L64T14_idx < 8); LoopModule_L55F13L64T14_idx = (LoopModule_L55F13L64T14_idx + 1))
 		begin
 			if (Inputs_InData[LoopModule_L55F13L64T14_idx])
@@ -120,7 +120,7 @@ module LoopModule_TopLevel
 	end
 	always @ (*)
 	begin
-		LoopModule_L70F13L79T14_result = { {31{1'b0}}, LoopModule_L70F13L79T14_LoopModule_L71F30T31_Expr }/*expand*/;
+		LoopModule_L70F13L79T14_result = { {31{1'b0}}, LoopModule_L70F13L79T14_LoopModule_L71F30T31_Expr };
 		for (LoopModule_L70F13L79T14_idx = 8; (LoopModule_L70F13L79T14_idx > 0); LoopModule_L70F13L79T14_idx = (LoopModule_L70F13L79T14_idx - 1))
 		begin
 			if (Inputs_InData[(LoopModule_L70F13L79T14_idx - 1)])
@@ -138,7 +138,7 @@ module LoopModule_TopLevel
 	assign LoopModule_L42F13L49T14_LoopModule_L43F31T47_Index = Inputs_InData[0];
 	assign OutXor = LoopModule_L42F13L49T14_result;
 	assign Encode = LoopModule_L55F13L64T14_result;
-	assign LoopModule_L70F13L79T14_LoopModule_L78F24T36_Cast = LoopModule_L70F13L79T14_result[7:0]/*truncate*/;
+	assign LoopModule_L70F13L79T14_LoopModule_L78F24T36_Cast = LoopModule_L70F13L79T14_result[7:0];
 	assign EncodeInv = LoopModule_L70F13L79T14_LoopModule_L78F24T36_Cast;
 	assign OutTupleAddress = Tuple_Item1;
 	assign OutTupleIsValid = Tuple_Item2;

@@ -23,11 +23,11 @@ module ModuleSignalsMuxModule_TopLevel
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
-	input wire [1: 0] Addr,
+	input wire [1:0] Addr,
 	input wire I1,
 	input wire I2,
 	output wire O,
-	output wire [2: 0] CombinedO
+	output wire [2:0] CombinedO
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -122,9 +122,7 @@ module ModuleSignalsMuxModule_TopLevel
 	assign XorGate_I1 = Inputs_I1;
 	assign XorGate_I2 = Inputs_I2;
 	assign O = ModuleSignalsMuxModule_L27F26T46_Mux;
-	assign ModuleSignalsMuxModule_L29F41T80_Source[0] = XorGate_O;
-	assign ModuleSignalsMuxModule_L29F41T80_Source[1] = OrGate_O;
-	assign ModuleSignalsMuxModule_L29F41T80_Source[2] = AndGate_O;
+	assign ModuleSignalsMuxModule_L29F41T80_Source = { AndGate_O, OrGate_O, XorGate_O };
 	assign CombinedO = ModuleSignalsMuxModule_L29F41T80_Source;
 	assign AndGateI1AndGate_I1HardLink = AndGate_I1;
 	assign AndGateI2AndGate_I2HardLink = AndGate_I2;

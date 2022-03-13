@@ -23,9 +23,9 @@ module BitsMuxModule_TopLevel
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
-	input wire [7: 0] Addr,
-	input wire [7: 0] Value,
-	output wire [1: 0] pixelBits
+	input wire [7:0] Addr,
+	input wire [7:0] Value,
+	output wire [1:0] pixelBits
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -50,8 +50,8 @@ module BitsMuxModule_TopLevel
 	assign BitsMuxModule_L14F42T93_Expr = (BitsMuxModule_L14F42T93_Expr_1 >> BitsMuxModule_L14F76T92_Expr);
 	assign BitsMuxModule_L14F76T92_Expr = BitsMuxModule_L14F76T92_Expr_1 * BitsMuxModule_L14F76T92_Expr_2;
 	assign BitsMuxModule_L14F42T93_Expr_1 = BitsMuxModule_L14F42T71_Source;
-	assign BitsMuxModule_L14F76T92_Expr_1 = { {3{1'b0}}, BitsMuxModule_L14F76T77_Expr }/*expand*/;
-	assign BitsMuxModule_L14F76T92_Expr_2 = { {3{1'b0}}, pixelAddress }/*expand*/;
+	assign BitsMuxModule_L14F76T92_Expr_1 = { {3{1'b0}}, BitsMuxModule_L14F76T77_Expr };
+	assign BitsMuxModule_L14F76T92_Expr_2 = { {3{1'b0}}, pixelAddress };
 	assign Inputs_Addr = Addr;
 	assign Inputs_Value = Value;
 	assign BitsMuxModule_L13F37T54_Index = Inputs_Addr[1:0];

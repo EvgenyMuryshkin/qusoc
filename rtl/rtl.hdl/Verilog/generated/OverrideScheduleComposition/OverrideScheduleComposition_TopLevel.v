@@ -24,17 +24,17 @@ module OverrideScheduleComposition_TopLevel
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
 	input wire InOverride,
-	input wire [7: 0] InValue,
-	output wire [7: 0] NoOverrideValue,
-	output wire [7: 0] AutoOverrideValue,
-	output wire [7: 0] L1Value,
-	output wire [7: 0] L2Value,
-	output wire [7: 0] L3Value,
-	output wire [7: 0] GetValue,
+	input wire [7:0] InValue,
+	output wire [7:0] NoOverrideValue,
+	output wire [7:0] AutoOverrideValue,
+	output wire [7:0] L1Value,
+	output wire [7:0] L2Value,
+	output wire [7:0] L3Value,
+	output wire [7:0] GetValue,
 	output wire RawInputs_InOverride,
-	output wire [7: 0] RawInputs_InValue,
+	output wire [7:0] RawInputs_InValue,
 	output wire OverrideInputs_InOverride,
-	output wire [7: 0] OverrideInputs_InValue
+	output wire [7:0] OverrideInputs_InValue
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]

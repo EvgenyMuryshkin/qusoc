@@ -24,8 +24,8 @@ module OverrideScheduleComposition_TopLevel_OverrideScheduleComposition_L1Overri
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
 	input wire InOverride,
-	input wire [7: 0] InValue,
-	output wire [7: 0] OutValue
+	input wire [7:0] InValue,
+	output wire [7:0] OutValue
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -72,15 +72,15 @@ module OverrideScheduleComposition_TopLevel_OverrideScheduleComposition_L1Overri
 			end
 		endcase
 	end
-	assign CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr_1 = { {2{1'b0}}, Inputs_InValue }/*expand*/;
-	assign CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr_2 = { {8{1'b0}}, CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F44T45_Expr }/*expand*/;
-	assign CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr_1 = { {2{1'b0}}, Inputs_InValue }/*expand*/;
-	assign CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr_2 = { {8{1'b0}}, CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F44T45_Expr }/*expand*/;
+	assign CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr_1 = { {2{1'b0}}, Inputs_InValue };
+	assign CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr_2 = { {8{1'b0}}, CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F44T45_Expr };
+	assign CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr_1 = { {2{1'b0}}, Inputs_InValue };
+	assign CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr_2 = { {8{1'b0}}, CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F44T45_Expr };
 	assign Inputs_InOverride = InOverride;
 	assign Inputs_InValue = InValue;
-	assign InternalOffset = { {7{1'b0}}, CombinationalOverridesBase_L16F50T51_Expr }/*expand*/;
-	assign CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F20T46_Cast = CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr[7:0]/*truncate*/;
-	assign CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F20T46_Cast = CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr[7:0]/*truncate*/;
+	assign InternalOffset = { {7{1'b0}}, CombinationalOverridesBase_L16F50T51_Expr };
+	assign CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F20T46_Cast = CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr[7:0];
+	assign CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F20T46_Cast = CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr[7:0];
 	assign OutValue = CombinationalOverridesBase_L14F41T96_Lookup;
 	assign CombinationalOverridesBase_L14F41T96_Lookup1 = CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F20T46_Cast;
 	assign CombinationalOverridesBase_L14F41T96_Lookup2 = CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F20T46_Cast;

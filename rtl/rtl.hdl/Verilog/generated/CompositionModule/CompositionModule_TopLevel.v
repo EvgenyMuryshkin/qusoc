@@ -27,7 +27,7 @@ module CompositionModule_TopLevel
 	input wire Reset,
 	input wire IsEnabled,
 	output wire HasData,
-	output wire [7: 0] Data
+	output wire [7:0] Data
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]

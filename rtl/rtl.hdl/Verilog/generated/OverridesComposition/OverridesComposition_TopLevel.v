@@ -24,13 +24,13 @@ module OverridesComposition_TopLevel
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
 	input wire InOverride,
-	input wire [7: 0] InValue,
-	output wire [7: 0] NoOverrideValue,
-	output wire [7: 0] AutoOverrideValue,
-	output wire [7: 0] L1Value,
-	output wire [7: 0] L2Value,
-	output wire [7: 0] L3Value,
-	output wire [7: 0] GetValue
+	input wire [7:0] InValue,
+	output wire [7:0] NoOverrideValue,
+	output wire [7:0] AutoOverrideValue,
+	output wire [7:0] L1Value,
+	output wire [7:0] L2Value,
+	output wire [7:0] L3Value,
+	output wire [7:0] GetValue
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]

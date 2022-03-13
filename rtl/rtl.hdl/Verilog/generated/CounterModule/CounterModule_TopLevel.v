@@ -26,7 +26,7 @@ module CounterModule_TopLevel
 	input wire Clock,
 	input wire Reset,
 	input wire Enabled,
-	output wire [7: 0] Value
+	output wire [7:0] Value
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -84,14 +84,14 @@ module CounterModule_TopLevel
 		NextState_Value = State_Value;
 		NextState_Value = NextValue;
 	end
-	assign CounterModule_L19F51T66_Expr_1 = { {2{1'b0}}, State_Value }/*expand*/;
-	assign CounterModule_L19F51T66_Expr_2 = { {9{1'b0}}, CounterModule_L19F65T66_Expr }/*expand*/;
+	assign CounterModule_L19F51T66_Expr_1 = { {2{1'b0}}, State_Value };
+	assign CounterModule_L19F51T66_Expr_2 = { {9{1'b0}}, CounterModule_L19F65T66_Expr };
 	assign Inputs_Enabled = Enabled;
 	assign CounterModule_L19F27T81_Cast = CounterModule_L19F34T80_Lookup;
 	assign NextValue = CounterModule_L19F27T81_Cast;
 	assign Value = State_Value;
 	assign CounterModule_L19F34T80_Lookup1 = State_Value;
-	assign CounterModule_L19F34T80_Lookup2 = CounterModule_L19F51T66_Expr[7:0]/*truncate*/;
+	assign CounterModule_L19F34T80_Lookup2 = CounterModule_L19F51T66_Expr[7:0];
 	assign CounterModule_L19F34T80_LookupMultiplexerAddress = Inputs_Enabled;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
