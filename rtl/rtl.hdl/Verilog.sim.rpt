@@ -1,5 +1,5 @@
 Simulator report for Verilog
-Sun Mar 13 17:17:51 2022
+Tue Mar 15 21:00:19 2022
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -10,12 +10,13 @@ Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
   2. Simulator Summary
   3. Simulator Settings
   4. Simulation Waveforms
-  5. Coverage Summary
-  6. Complete 1/0-Value Coverage
-  7. Missing 1-Value Coverage
-  8. Missing 0-Value Coverage
-  9. Simulator INI Usage
- 10. Simulator Messages
+  5. |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ALTSYNCRAM
+  6. Coverage Summary
+  7. Complete 1/0-Value Coverage
+  8. Missing 1-Value Coverage
+  9. Missing 0-Value Coverage
+ 10. Simulator INI Usage
+ 11. Simulator Messages
 
 
 
@@ -44,10 +45,10 @@ applicable agreement for further details.
 ; Type                        ; Value        ;
 +-----------------------------+--------------+
 ; Simulation Start Time       ; 0 ps         ;
-; Simulation End Time         ; 1.0 us       ;
-; Simulation Netlist Size     ; 4 nodes      ;
-; Simulation Coverage         ;     100.00 % ;
-; Total Number of Transitions ; 18           ;
+; Simulation End Time         ; 1.0 ms       ;
+; Simulation Netlist Size     ; 63 nodes     ;
+; Simulation Coverage         ;      65.38 % ;
+; Total Number of Transitions ; 2160         ;
 ; Simulation Breakpoints      ; 0            ;
 ; Family                      ; Cyclone II   ;
 ; Device                      ; EP2C70F672C6 ;
@@ -62,7 +63,7 @@ applicable agreement for further details.
 ; Simulation mode                                                                            ; Timing                      ; Timing        ;
 ; Start time                                                                                 ; 0 ns                        ; 0 ns          ;
 ; Simulation results format                                                                  ; CVWF                        ;               ;
-; Vector input source                                                                        ; Waveforms/XorGateModule.vwf ;               ;
+; Vector input source                                                                        ; Waveforms/TDP_RAMModule.vwf ;               ;
 ; Add pins automatically to simulation output waveforms                                      ; On                          ; On            ;
 ; Check outputs                                                                              ; Off                         ; Off           ;
 ; Report simulation coverage                                                                 ; On                          ; On            ;
@@ -90,48 +91,151 @@ Waveform report data cannot be output to ASCII.
 Please use Quartus II to view the waveform report data.
 
 
++-----------------------------------------------------------------------------------------------+
+; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ALTSYNCRAM ;
++-----------------------------------------------------------------------------------------------+
+Please refer to fitter text-based report (*.fit.rpt) to view logical memory report content in ASCII.
+
+
 +--------------------------------------------------------------------+
 ; Coverage Summary                                                   ;
 +-----------------------------------------------------+--------------+
 ; Type                                                ; Value        ;
 +-----------------------------------------------------+--------------+
-; Total coverage as a percentage                      ;     100.00 % ;
-; Total nodes checked                                 ; 4            ;
-; Total output ports checked                          ; 4            ;
-; Total output ports with complete 1/0-value coverage ; 4            ;
-; Total output ports with no 1/0-value coverage       ; 0            ;
-; Total output ports with no 1-value coverage         ; 0            ;
-; Total output ports with no 0-value coverage         ; 0            ;
+; Total coverage as a percentage                      ;      65.38 % ;
+; Total nodes checked                                 ; 63           ;
+; Total output ports checked                          ; 78           ;
+; Total output ports with complete 1/0-value coverage ; 51           ;
+; Total output ports with no 1/0-value coverage       ; 21           ;
+; Total output ports with no 1-value coverage         ; 24           ;
+; Total output ports with no 0-value coverage         ; 24           ;
 +-----------------------------------------------------+--------------+
 
 
 The following table displays output ports that toggle between 1 and 0 during simulation.
-+----------------------------------------------------------------------------------------------------------------------------------+
-; Complete 1/0-Value Coverage                                                                                                      ;
-+-------------------------------------------------------+-------------------------------------------------------+------------------+
-; Node Name                                             ; Output Port Name                                      ; Output Port Type ;
-+-------------------------------------------------------+-------------------------------------------------------+------------------+
-; |XorGateModule_TopLevel|XorGateModule_L8F26T47_Expr~0 ; |XorGateModule_TopLevel|XorGateModule_L8F26T47_Expr~0 ; combout          ;
-; |XorGateModule_TopLevel|O                             ; |XorGateModule_TopLevel|O                             ; padio            ;
-; |XorGateModule_TopLevel|I1                            ; |XorGateModule_TopLevel|I1~corein                     ; combout          ;
-; |XorGateModule_TopLevel|I2                            ; |XorGateModule_TopLevel|I2~corein                     ; combout          ;
-+-------------------------------------------------------+-------------------------------------------------------+------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                                                                                                                                                        ;
++-------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------+
+; Node Name                                                                                       ; Output Port Name                                                                                              ; Output Port Type ;
++-------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------+
+; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a0               ; portadataout0    ;
+; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a1               ; portadataout1    ;
+; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a2               ; portadataout2    ;
+; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a4               ; portadataout4    ;
+; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a5               ; portadataout5    ;
+; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a6               ; portadataout6    ;
+; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a7               ; portadataout7    ;
+; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a0~PORTBDATAOUT0 ; portbdataout0    ;
+; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a1~PORTBDATAOUT0 ; portbdataout1    ;
+; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a2~PORTBDATAOUT0 ; portbdataout2    ;
+; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a4~PORTBDATAOUT0 ; portbdataout4    ;
+; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a5~PORTBDATAOUT0 ; portbdataout5    ;
+; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a6~PORTBDATAOUT0 ; portbdataout6    ;
+; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a7~PORTBDATAOUT0 ; portbdataout7    ;
+; |TDP_RAMModule_TopLevel|State_SameAddressWrite~0                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~0                                                              ; combout          ;
+; |TDP_RAMModule_TopLevel|State_SameAddressWrite~1                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~1                                                              ; combout          ;
+; |TDP_RAMModule_TopLevel|State_SameAddressWrite~5                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~5                                                              ; combout          ;
+; |TDP_RAMModule_TopLevel|OutDataA[0]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[0]                                                                           ; padio            ;
+; |TDP_RAMModule_TopLevel|OutDataA[1]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[1]                                                                           ; padio            ;
+; |TDP_RAMModule_TopLevel|OutDataA[2]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[2]                                                                           ; padio            ;
+; |TDP_RAMModule_TopLevel|OutDataA[4]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[4]                                                                           ; padio            ;
+; |TDP_RAMModule_TopLevel|OutDataA[5]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[5]                                                                           ; padio            ;
+; |TDP_RAMModule_TopLevel|OutDataA[6]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[6]                                                                           ; padio            ;
+; |TDP_RAMModule_TopLevel|OutDataA[7]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[7]                                                                           ; padio            ;
+; |TDP_RAMModule_TopLevel|OutDataB[0]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[0]                                                                           ; padio            ;
+; |TDP_RAMModule_TopLevel|OutDataB[1]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[1]                                                                           ; padio            ;
+; |TDP_RAMModule_TopLevel|OutDataB[2]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[2]                                                                           ; padio            ;
+; |TDP_RAMModule_TopLevel|OutDataB[4]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[4]                                                                           ; padio            ;
+; |TDP_RAMModule_TopLevel|OutDataB[5]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[5]                                                                           ; padio            ;
+; |TDP_RAMModule_TopLevel|OutDataB[6]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[6]                                                                           ; padio            ;
+; |TDP_RAMModule_TopLevel|OutDataB[7]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[7]                                                                           ; padio            ;
+; |TDP_RAMModule_TopLevel|WE_A                                                                    ; |TDP_RAMModule_TopLevel|WE_A~corein                                                                           ; combout          ;
+; |TDP_RAMModule_TopLevel|WE_B                                                                    ; |TDP_RAMModule_TopLevel|WE_B~corein                                                                           ; combout          ;
+; |TDP_RAMModule_TopLevel|Clock                                                                   ; |TDP_RAMModule_TopLevel|Clock~corein                                                                          ; combout          ;
+; |TDP_RAMModule_TopLevel|WriteData_A[0]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[0]~corein                                                                 ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_A[0]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[0]~corein                                                                      ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_A[1]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[1]~corein                                                                      ; combout          ;
+; |TDP_RAMModule_TopLevel|WriteData_B[0]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[0]~corein                                                                 ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_B[0]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[0]~corein                                                                      ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_B[1]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[1]~corein                                                                      ; combout          ;
+; |TDP_RAMModule_TopLevel|WriteData_B[1]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[1]~corein                                                                 ; combout          ;
+; |TDP_RAMModule_TopLevel|WriteData_B[2]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[2]~corein                                                                 ; combout          ;
+; |TDP_RAMModule_TopLevel|WriteData_A[4]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[4]~corein                                                                 ; combout          ;
+; |TDP_RAMModule_TopLevel|WriteData_B[4]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[4]~corein                                                                 ; combout          ;
+; |TDP_RAMModule_TopLevel|WriteData_A[5]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[5]~corein                                                                 ; combout          ;
+; |TDP_RAMModule_TopLevel|WriteData_B[5]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[5]~corein                                                                 ; combout          ;
+; |TDP_RAMModule_TopLevel|WriteData_A[6]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[6]~corein                                                                 ; combout          ;
+; |TDP_RAMModule_TopLevel|WriteData_B[6]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[6]~corein                                                                 ; combout          ;
+; |TDP_RAMModule_TopLevel|WriteData_A[7]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[7]~corein                                                                 ; combout          ;
+; |TDP_RAMModule_TopLevel|WriteData_B[7]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[7]~corein                                                                 ; combout          ;
+; |TDP_RAMModule_TopLevel|Clock~clkctrl                                                           ; |TDP_RAMModule_TopLevel|Clock~clkctrl                                                                         ; outclk           ;
++-------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 1 during simulation.
-+-------------------------------------------------+
-; Missing 1-Value Coverage                        ;
-+-----------+------------------+------------------+
-; Node Name ; Output Port Name ; Output Port Type ;
-+-----------+------------------+------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                                                                                                                                                                           ;
++-------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------+
+; Node Name                                                                                       ; Output Port Name                                                                                              ; Output Port Type ;
++-------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------+
+; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a3               ; portadataout3    ;
+; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a3~PORTBDATAOUT0 ; portbdataout3    ;
+; |TDP_RAMModule_TopLevel|State_SameAddressWrite~2                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~2                                                              ; combout          ;
+; |TDP_RAMModule_TopLevel|State_SameAddressWrite~3                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~3                                                              ; combout          ;
+; |TDP_RAMModule_TopLevel|State_SameAddressWrite~4                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~4                                                              ; combout          ;
+; |TDP_RAMModule_TopLevel|OutDataA[3]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[3]                                                                           ; padio            ;
+; |TDP_RAMModule_TopLevel|OutDataB[3]                                                             ; |TDP_RAMModule_TopLevel|OutDataB[3]                                                                           ; padio            ;
+; |TDP_RAMModule_TopLevel|Addr_A[2]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[2]~corein                                                                      ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_A[3]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[3]~corein                                                                      ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_A[4]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[4]~corein                                                                      ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_A[5]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[5]~corein                                                                      ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_A[6]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[6]~corein                                                                      ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_A[7]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[7]~corein                                                                      ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_B[2]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[2]~corein                                                                      ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_B[3]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[3]~corein                                                                      ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_B[4]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[4]~corein                                                                      ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_B[5]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[5]~corein                                                                      ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_B[6]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[6]~corein                                                                      ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_B[7]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[7]~corein                                                                      ; combout          ;
+; |TDP_RAMModule_TopLevel|WriteData_A[1]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[1]~corein                                                                 ; combout          ;
+; |TDP_RAMModule_TopLevel|WriteData_A[2]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[2]~corein                                                                 ; combout          ;
+; |TDP_RAMModule_TopLevel|WriteData_A[3]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[3]~corein                                                                 ; combout          ;
+; |TDP_RAMModule_TopLevel|WriteData_B[3]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[3]~corein                                                                 ; combout          ;
+; |TDP_RAMModule_TopLevel|Reset                                                                   ; |TDP_RAMModule_TopLevel|Reset~corein                                                                          ; combout          ;
++-------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 0 during simulation.
-+-------------------------------------------------+
-; Missing 0-Value Coverage                        ;
-+-----------+------------------+------------------+
-; Node Name ; Output Port Name ; Output Port Type ;
-+-----------+------------------+------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                                                                                                                                                             ;
++-------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+------------------+
+; Node Name                                                                                       ; Output Port Name                                                                                ; Output Port Type ;
++-------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+------------------+
+; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a0 ; |TDP_RAMModule_TopLevel|altsyncram:State_Buff_rtl_0|altsyncram_s412:auto_generated|ram_block1a3 ; portadataout3    ;
+; |TDP_RAMModule_TopLevel|State_SameAddressWrite                                                  ; |TDP_RAMModule_TopLevel|State_SameAddressWrite                                                  ; regout           ;
+; |TDP_RAMModule_TopLevel|State_SameAddressWrite~2                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~2                                                ; combout          ;
+; |TDP_RAMModule_TopLevel|State_SameAddressWrite~3                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~3                                                ; combout          ;
+; |TDP_RAMModule_TopLevel|State_SameAddressWrite~4                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~4                                                ; combout          ;
+; |TDP_RAMModule_TopLevel|State_SameAddressWrite~6                                                ; |TDP_RAMModule_TopLevel|State_SameAddressWrite~6                                                ; combout          ;
+; |TDP_RAMModule_TopLevel|OutDataA[3]                                                             ; |TDP_RAMModule_TopLevel|OutDataA[3]                                                             ; padio            ;
+; |TDP_RAMModule_TopLevel|OutCorrupted                                                            ; |TDP_RAMModule_TopLevel|OutCorrupted                                                            ; padio            ;
+; |TDP_RAMModule_TopLevel|Addr_A[2]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[2]~corein                                                        ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_A[3]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[3]~corein                                                        ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_A[4]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[4]~corein                                                        ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_A[5]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[5]~corein                                                        ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_A[6]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[6]~corein                                                        ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_A[7]                                                               ; |TDP_RAMModule_TopLevel|Addr_A[7]~corein                                                        ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_B[2]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[2]~corein                                                        ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_B[3]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[3]~corein                                                        ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_B[4]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[4]~corein                                                        ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_B[5]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[5]~corein                                                        ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_B[6]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[6]~corein                                                        ; combout          ;
+; |TDP_RAMModule_TopLevel|Addr_B[7]                                                               ; |TDP_RAMModule_TopLevel|Addr_B[7]~corein                                                        ; combout          ;
+; |TDP_RAMModule_TopLevel|WriteData_A[1]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[1]~corein                                                   ; combout          ;
+; |TDP_RAMModule_TopLevel|WriteData_A[2]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[2]~corein                                                   ; combout          ;
+; |TDP_RAMModule_TopLevel|WriteData_A[3]                                                          ; |TDP_RAMModule_TopLevel|WriteData_A[3]~corein                                                   ; combout          ;
+; |TDP_RAMModule_TopLevel|WriteData_B[3]                                                          ; |TDP_RAMModule_TopLevel|WriteData_B[3]~corein                                                   ; combout          ;
++-------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+------------------+
 
 
 +---------------------+
@@ -160,21 +264,37 @@ Info: Running Quartus II Simulator
     Info: programming logic devices manufactured by Altera and sold by 
     Info: Altera or its authorized distributors.  Please refer to the 
     Info: applicable agreement for further details.
-    Info: Processing started: Sun Mar 13 17:17:51 2022
+    Info: Processing started: Tue Mar 15 21:00:18 2022
 Info: Command: quartus_sim C:\code\qusoc\rtl\rtl.hdl\Verilog.qpf --read_settings_files=on --write_settings_files=off -c Verilog
-Info: Using vector source file "Waveforms/XorGateModule.vwf"
+Info: Using vector source file "Waveforms/TDP_RAMModule.vwf"
 Info: Overwriting simulation input file with simulation results
-    Info: A backup of XorGateModule.vwf called Verilog.sim_ori.vwf has been created in the db folder
+    Info: A backup of TDP_RAMModule.vwf called Verilog.sim_ori.vwf has been created in the db folder
 Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
     Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
+Warning: Simultaneous write to memory block address 0 at time 21003.17 ns in vector source file -- data is invalid in memory block
+Warning: Simultaneous write to memory block address 0 at time 21003.17 ns in vector source file -- data is invalid in memory block
+Warning: Simultaneous write to memory block address 0 at time 21003.17 ns in vector source file -- data is invalid in memory block
+Warning: Simultaneous write to memory block address 0 at time 21003.17 ns in vector source file -- data is invalid in memory block
+Warning: Simultaneous write to memory block address 0 at time 21003.17 ns in vector source file -- data is invalid in memory block
+Warning: Simultaneous write to memory block address 0 at time 21003.17 ns in vector source file -- data is invalid in memory block
+Warning: Simultaneous write to memory block address 0 at time 21003.17 ns in vector source file -- data is invalid in memory block
+Warning: Simultaneous write to memory block address 0 at time 21003.17 ns in vector source file -- data is invalid in memory block
+Warning: Simultaneous write to memory block address 0 at time 22003.17 ns in vector source file -- data is invalid in memory block
+Warning: Simultaneous write to memory block address 0 at time 22003.17 ns in vector source file -- data is invalid in memory block
+Warning: Simultaneous write to memory block address 0 at time 22003.17 ns in vector source file -- data is invalid in memory block
+Warning: Simultaneous write to memory block address 0 at time 22003.17 ns in vector source file -- data is invalid in memory block
+Warning: Simultaneous write to memory block address 0 at time 22003.17 ns in vector source file -- data is invalid in memory block
+Warning: Simultaneous write to memory block address 0 at time 22003.17 ns in vector source file -- data is invalid in memory block
+Warning: Simultaneous write to memory block address 0 at time 22003.17 ns in vector source file -- data is invalid in memory block
+Warning: Simultaneous write to memory block address 0 at time 22003.17 ns in vector source file -- data is invalid in memory block
 Info: Simulation partitioned into 1 sub-simulations
-Info: Simulation coverage is     100.00 %
-Info: Number of transitions in simulation is 18
-Info: Vector file XorGateModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
-Info: Quartus II Simulator was successful. 0 errors, 0 warnings
+Info: Simulation coverage is      65.38 %
+Info: Number of transitions in simulation is 2160
+Info: Vector file TDP_RAMModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
+Info: Quartus II Simulator was successful. 0 errors, 16 warnings
     Info: Peak virtual memory: 160 megabytes
-    Info: Processing ended: Sun Mar 13 17:17:52 2022
+    Info: Processing ended: Tue Mar 15 21:00:19 2022
     Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Total CPU time (on all processors): 00:00:02
 
 

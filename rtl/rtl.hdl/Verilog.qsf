@@ -37,7 +37,7 @@
 
 set_global_assignment -name FAMILY "Cyclone II"
 set_global_assignment -name DEVICE EP2C70F672C6
-set_global_assignment -name TOP_LEVEL_ENTITY XorGateModule_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY TDP_RAMModule_TopLevel
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "20:45:17  JUNE 07, 2019"
 set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
@@ -58,7 +58,7 @@ set_global_assignment -name SIMULATION_WITH_AUTO_GLITCH_FILTERING AUTO
 set_global_assignment -name VECTOR_COMPARE_TRIGGER_MODE INPUT_EDGE
 
 set_global_assignment -name SDC_FILE rtl.sdc
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/XorGateModule.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/TDP_RAMModule.vwf
 
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
