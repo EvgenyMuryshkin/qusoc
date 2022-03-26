@@ -23,17 +23,17 @@ module Increment_TopLevel_Increment_CPU_RISCVModule_ALU
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
-	input wire [31: 0] Op1,
-	input wire [31: 0] Op2,
-	input wire [4: 0] SHAMT,
-	output wire [31: 0] ADD,
-	output wire [31: 0] SUB,
-	output wire [31: 0] resAND,
-	output wire [31: 0] resOR,
-	output wire [31: 0] resXOR,
-	output wire [31: 0] SHLL,
-	output wire [31: 0] SHRL,
-	output wire [31: 0] SHRA
+	input wire [31:0] Op1,
+	input wire [31:0] Op2,
+	input wire [4:0] SHAMT,
+	output wire [31:0] ADD,
+	output wire [31:0] SUB,
+	output wire [31:0] resAND,
+	output wire [31:0] resOR,
+	output wire [31:0] resXOR,
+	output wire [31:0] SHLL,
+	output wire [31:0] SHRL,
+	output wire [31:0] SHRA
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -99,35 +99,35 @@ module Increment_TopLevel_Increment_CPU_RISCVModule_ALU
 	assign ALUModule_L23F37T63_Expr_1 = Inputs_Op1;
 	assign ALUModule_L24F37T74_Expr_1 = ALUModule_L24F37T58_SignChange;
 	assign ALUModule_L25F37T72_Expr_1 = ALUModule_L25F37T56_SignChange;
-	assign ALUModule_L15F46T87_Expr_1 = { {1{ALUModule_L15F46T65_SignChange[31]}}, ALUModule_L15F46T65_SignChange }/*expand*/;
-	assign ALUModule_L15F46T87_Expr_2 = { {1{ALUModule_L15F68T87_SignChange[31]}}, ALUModule_L15F68T87_SignChange }/*expand*/;
-	assign ALUModule_L16F46T111_Expr_1 = { {1{ALUModule_L16F46T77_Resize[32]}}, ALUModule_L16F46T77_Resize }/*expand*/;
-	assign ALUModule_L16F46T111_Expr_2 = { {1{ALUModule_L16F80T111_Resize[32]}}, ALUModule_L16F80T111_Resize }/*expand*/;
+	assign ALUModule_L15F46T87_Expr_1 = { ALUModule_L15F46T65_SignChange[31], ALUModule_L15F46T65_SignChange };
+	assign ALUModule_L15F46T87_Expr_2 = { ALUModule_L15F68T87_SignChange[31], ALUModule_L15F68T87_SignChange };
+	assign ALUModule_L16F46T111_Expr_1 = { ALUModule_L16F46T77_Resize[32], ALUModule_L16F46T77_Resize };
+	assign ALUModule_L16F46T111_Expr_2 = { ALUModule_L16F80T111_Resize[32], ALUModule_L16F80T111_Resize };
 	assign Inputs_Op1 = Op1;
 	assign Inputs_Op2 = Op2;
 	assign Inputs_SHAMT = SHAMT;
-	assign ALUModule_L15F46T65_SignChange = Inputs_Op1/*cast*/;
-	assign ALUModule_L15F68T87_SignChange = Inputs_Op2/*cast*/;
+	assign ALUModule_L15F46T65_SignChange = Inputs_Op1;
+	assign ALUModule_L15F68T87_SignChange = Inputs_Op2;
 	assign internalAdd = ALUModule_L15F46T87_Expr;
-	assign ALUModule_L16F46T65_SignChange = Inputs_Op1/*cast*/;
-	assign ALUModule_L16F46T77_Resize = { {1{ALUModule_L16F46T65_SignChange[31]}}, ALUModule_L16F46T65_SignChange }/*expand*/;
-	assign ALUModule_L16F80T99_SignChange = Inputs_Op2/*cast*/;
-	assign ALUModule_L16F80T111_Resize = { {1{ALUModule_L16F80T99_SignChange[31]}}, ALUModule_L16F80T99_SignChange }/*expand*/;
-	assign internalSub = { {1{ALUModule_L16F46T111_Expr[33]}}, ALUModule_L16F46T111_Expr }/*expand*/;
-	assign ALUModule_L18F35T53_Index = internalAdd[31:0]/*cast*/;
+	assign ALUModule_L16F46T65_SignChange = Inputs_Op1;
+	assign ALUModule_L16F46T77_Resize = { ALUModule_L16F46T65_SignChange[31], ALUModule_L16F46T65_SignChange };
+	assign ALUModule_L16F80T99_SignChange = Inputs_Op2;
+	assign ALUModule_L16F80T111_Resize = { ALUModule_L16F80T99_SignChange[31], ALUModule_L16F80T99_SignChange };
+	assign internalSub = { ALUModule_L16F46T111_Expr[33], ALUModule_L16F46T111_Expr };
+	assign ALUModule_L18F35T53_Index = internalAdd[31:0];
 	assign ADD = ALUModule_L18F35T53_Index;
-	assign ALUModule_L19F35T53_Index = internalSub[31:0]/*cast*/;
+	assign ALUModule_L19F35T53_Index = internalSub[31:0];
 	assign SUB = ALUModule_L19F35T53_Index;
 	assign resAND = ALUModule_L20F38T61_Expr;
 	assign resOR = ALUModule_L21F37T60_Expr;
 	assign resXOR = ALUModule_L22F38T61_Expr;
-	assign ALUModule_L23F36T71_Index = ALUModule_L23F37T63_Expr;
+	assign ALUModule_L23F36T71_Index = ALUModule_L23F37T63_Expr[31:0];
 	assign SHLL = ALUModule_L23F36T71_Index;
 	assign ALUModule_L24F37T58_SignChange = Inputs_Op1;
-	assign ALUModule_L24F36T82_Index = ALUModule_L24F37T74_Expr;
+	assign ALUModule_L24F36T82_Index = ALUModule_L24F37T74_Expr[31:0];
 	assign SHRL = ALUModule_L24F36T82_Index;
-	assign ALUModule_L25F37T56_SignChange = Inputs_Op1/*cast*/;
-	assign ALUModule_L25F36T80_Index = ALUModule_L25F37T72_Expr/*cast*/;
+	assign ALUModule_L25F37T56_SignChange = Inputs_Op1;
+	assign ALUModule_L25F36T80_Index = ALUModule_L25F37T72_Expr[31:0];
 	assign SHRA = ALUModule_L25F36T80_Index;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]

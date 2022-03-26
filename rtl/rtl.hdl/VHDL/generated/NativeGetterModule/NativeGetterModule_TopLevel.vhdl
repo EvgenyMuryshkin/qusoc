@@ -9,63 +9,61 @@
 --   You can use some of signals in custom code, but most likely they will not exist in future (e.g. will get shorter or gone completely)
 -- * Please send your feedback, comments, improvement ideas etc. to evmuryshkin@gmail.com
 -- * Visit https://github.com/EvgenyMuryshkin/QuokkaEvaluation to access latest version of playground
--- 
+--
 -- DISCLAIMER:
 --   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 --   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
--- 
+--
 -- System configuration name is NativeGetterModule_TopLevel, clock frequency is 1Hz, Top-level
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-
 use work.Quokka.all;
-
 entity NativeGetterModule_TopLevel is
-    port
-    (
--- [BEGIN USER PORTS]
--- [END USER PORTS]
-
-Value : in  unsigned(7 downto 0);
-Getter : out  unsigned(7 downto 0)
-    );
+	port
+	(
+		-- [BEGIN USER PORTS]
+		-- [END USER PORTS]
+		Value : in unsigned (7 downto 0);
+		Getter : out unsigned (7 downto 0)
+	);
 end entity;
-
 -- FSM summary
 -- Packages
 architecture rtl of NativeGetterModule_TopLevel is
--- [BEGIN USER SIGNALS]
--- [END USER SIGNALS]
-constant HiSignal : std_logic := '1';
-constant LoSignal : std_logic := '0';
-constant Zero : std_logic := '0';
-constant One : std_logic := '1';
-constant true : std_logic := '1';
-constant false : std_logic := '0';
-constant BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L35F30T43_Expr : unsigned(7 downto 0)  := "11111111";
-constant BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F36T39_Expr : unsigned(6 downto 0)  := "1100100";
-signal Inputs_Value : unsigned(7 downto 0) := (others => '0');
-signal BitArrayGetterModule_L34F13L41T14_result : unsigned(7 downto 0)  := "11111111";
-signal BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_Expr : std_logic := '0';
-signal BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprLhs : signed(8 downto 0)  := "000000000";
-signal BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprRhs : signed(8 downto 0)  := "000000000";
+	-- [BEGIN USER SIGNALS]
+	-- [END USER SIGNALS]
+	constant HiSignal : std_logic := '1';
+	constant LoSignal : std_logic := '0';
+	constant Zero : std_logic := '0';
+	constant One : std_logic := '1';
+	constant true : std_logic := '1';
+	constant false : std_logic := '0';
+	constant BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L35F30T43_Expr : unsigned(7 downto 0) := "11111111";
+	constant BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F36T39_Expr : unsigned(6 downto 0) := "1100100";
+	signal Inputs_Value : unsigned(7 downto 0) := (others => '0');
+	signal BitArrayGetterModule_L34F13L41T14_result : unsigned(7 downto 0) := "11111111";
+	signal BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_Expr : std_logic := '0';
+	signal BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprLhs : signed(8 downto 0) := "000000000";
+	signal BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprRhs : signed(8 downto 0) := "000000000";
 begin
-    BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_Expr <= '1' when (signed(resize(BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprLhs, BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprLhs'length + 1)) < signed(resize(BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprRhs, BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprRhs'length + 1))) else '0';
-process(BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_Expr, Inputs_Value)
-begin
-BitArrayGetterModule_L34F13L41T14_result <= BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L35F30T43_Expr;
-if ( BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_Expr = '1' ) then
-BitArrayGetterModule_L34F13L41T14_result <= Inputs_Value;
-end if;
-end process;
-process(BitArrayGetterModule_L34F13L41T14_result, Inputs_Value, Value)
-begin
-BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprLhs <= signed(resize(unsigned(Inputs_Value), BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprLhs'length));
-BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprRhs <= signed(resize(unsigned(BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F36T39_Expr), BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprRhs'length));
-Inputs_Value <= Value;
-Getter <= BitArrayGetterModule_L34F13L41T14_result;
-end process;
--- [BEGIN USER ARCHITECTURE]
--- [END USER ARCHITECTURE]
+	BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_Expr <= '1' when (signed(resize(BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprLhs, BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprLhs'length + 1)) < signed(resize(BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprRhs, BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprRhs'length + 1))) else '0';
+	process (BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_Expr, Inputs_Value)
+	begin
+		BitArrayGetterModule_L34F13L41T14_result <= BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L35F30T43_Expr;
+		if BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_Expr = '1' then
+			BitArrayGetterModule_L34F13L41T14_result <= Inputs_Value;
+		end if;
+	end process;
+	process (BitArrayGetterModule_L34F13L41T14_result, Inputs_Value, Value)
+	begin
+		BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprLhs(8) <= '0';
+		BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprLhs(7 downto 0) <= signed(Inputs_Value);
+		BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprRhs(8 downto 7) <= (others => '0');
+		BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprRhs(6 downto 0) <= signed(BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F36T39_Expr);
+		Inputs_Value <= Value;
+		Getter <= BitArrayGetterModule_L34F13L41T14_result;
+	end process;
+	-- [BEGIN USER ARCHITECTURE]
+	-- [END USER ARCHITECTURE]
 end architecture;

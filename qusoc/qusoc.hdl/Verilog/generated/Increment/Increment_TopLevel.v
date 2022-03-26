@@ -25,7 +25,7 @@ module Increment_TopLevel
 	// [END USER PORTS]
 	input wire Clock,
 	input wire Reset,
-	output wire [31: 0] Counter
+	output wire [31:0] Counter
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -257,7 +257,7 @@ module Increment_TopLevel
 	always @ (*)
 	begin
 		QuSoCModule_L108F13L121T14_hasActive = QuSoCModule_L108F13L121T14_QuSoCModule_L109F34T39_Expr;
-		QuSoCModule_L108F13L121T14_address = { {7{1'b0}}, QuSoCModule_L108F13L121T14_QuSoCModule_L110F32T33_Expr }/*expand*/;
+		QuSoCModule_L108F13L121T14_address = { {7{1'b0}}, QuSoCModule_L108F13L121T14_QuSoCModule_L110F32T33_Expr };
 		for (QuSoCModule_L108F13L121T14_idx = 0; (QuSoCModule_L108F13L121T14_idx < 2); QuSoCModule_L108F13L121T14_idx = (QuSoCModule_L108F13L121T14_idx + 1))
 		begin
 			QuSoCModule_L108F13L121T14_hasActive = (QuSoCModule_L108F13L121T14_hasActive | CombinedModuleIsActive[QuSoCModule_L108F13L121T14_idx]);
@@ -284,8 +284,7 @@ module Increment_TopLevel
 		end
 	end
 	assign QuSoCModule_L46F47T109_Expr_1 = QuSoCModule_L46F47T98_Source;
-	assign QuSoCModule_L46F47T98_Source[0] = CounterModule_IsActive;
-	assign QuSoCModule_L46F47T98_Source[1] = InstructionsRAM_IsActive;
+	assign QuSoCModule_L46F47T98_Source = { InstructionsRAM_IsActive, CounterModule_IsActive };
 	assign CombinedModuleIsActive = QuSoCModule_L46F47T109_Expr;
 	assign QuSoCModule_L47F46T69_Index = CPU_MemAccessMode[1:0];
 	assign internalMemAccessMode = QuSoCModule_L47F46T69_Index;
@@ -301,7 +300,7 @@ module Increment_TopLevel
 	assign internalModuleReadData = QuSoCModule_L127F40T73_Mux;
 	assign internalModuleIsReady = QuSoCModule_L128F39T70_Mux;
 	assign internalMemReady = State_MemReady;
-	assign CPU_BaseAddress = { {31{1'b0}}, QuSoCModule_L79F31T33_Expr }/*expand*/;
+	assign CPU_BaseAddress = { {31{1'b0}}, QuSoCModule_L79F31T33_Expr };
 	assign CPU_MemReadData = internalModuleReadData;
 	assign CPU_MemReady = internalMemReady;
 	assign CPU_ExtIRQ = RISCVModule_Types_L11F30T35_Expr;
@@ -310,7 +309,7 @@ module Increment_TopLevel
 	assign InstructionsRAM_Common_WE = ModuleCommon_WE;
 	assign InstructionsRAM_Common_RE = ModuleCommon_RE;
 	assign InstructionsRAM_Common_MemAccessMode = ModuleCommon_MemAccessMode;
-	assign InstructionsRAM_DeviceAddress = { {31{1'b0}}, QuSoCModule_L87F33T43_Expr }/*expand*/;
+	assign InstructionsRAM_DeviceAddress = { {31{1'b0}}, QuSoCModule_L87F33T43_Expr };
 	assign CounterModule_Common_Address = ModuleCommon_Address;
 	assign CounterModule_Common_WriteValue = ModuleCommon_WriteValue;
 	assign CounterModule_Common_WE = ModuleCommon_WE;

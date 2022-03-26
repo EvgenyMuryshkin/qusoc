@@ -23,8 +23,8 @@ module Increment_TopLevel_Increment_CPU_RISCVModule_CMP
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
-	input wire [31: 0] Lhs,
-	input wire [31: 0] Rhs,
+	input wire [31:0] Lhs,
+	input wire [31:0] Rhs,
 	output wire EQ,
 	output wire NE,
 	output wire GTU,
@@ -74,12 +74,12 @@ module Increment_TopLevel_Increment_CPU_RISCVModule_CMP
 	assign CompareModule_L19F28T69_Expr = CompareModule_L19F28T69_ExprLhs > CompareModule_L19F28T69_ExprRhs ? 1'b1 : 1'b0;
 	assign CompareModule_L20F28T69_Expr = CompareModule_L20F28T69_ExprLhs < CompareModule_L20F28T69_ExprRhs ? 1'b1 : 1'b0;
 	assign CompareModule_L15F27T38_Expr = ~CompareModule_L15F27T38_Expr_1;
-	assign CompareModule_L13F28T52_ExprLhs = { {1{1'b0}}, Inputs_Lhs }/*expand*/;
-	assign CompareModule_L13F28T52_ExprRhs = { {1{1'b0}}, Inputs_Rhs }/*expand*/;
-	assign CompareModule_L16F28T73_ExprLhs = { {1{1'b0}}, CompareModule_L16F28T49_SignChange }/*expand*/;
-	assign CompareModule_L16F28T73_ExprRhs = { {1{1'b0}}, CompareModule_L16F52T73_SignChange }/*expand*/;
-	assign CompareModule_L17F28T73_ExprLhs = { {1{1'b0}}, CompareModule_L17F28T49_SignChange }/*expand*/;
-	assign CompareModule_L17F28T73_ExprRhs = { {1{1'b0}}, CompareModule_L17F52T73_SignChange }/*expand*/;
+	assign CompareModule_L13F28T52_ExprLhs = { 1'b0, Inputs_Lhs };
+	assign CompareModule_L13F28T52_ExprRhs = { 1'b0, Inputs_Rhs };
+	assign CompareModule_L16F28T73_ExprLhs = { 1'b0, CompareModule_L16F28T49_SignChange };
+	assign CompareModule_L16F28T73_ExprRhs = { 1'b0, CompareModule_L16F52T73_SignChange };
+	assign CompareModule_L17F28T73_ExprLhs = { 1'b0, CompareModule_L17F28T49_SignChange };
+	assign CompareModule_L17F28T73_ExprRhs = { 1'b0, CompareModule_L17F52T73_SignChange };
 	assign CompareModule_L19F28T69_ExprLhs = CompareModule_L19F28T47_SignChange;
 	assign CompareModule_L19F28T69_ExprRhs = CompareModule_L19F50T69_SignChange;
 	assign CompareModule_L20F28T69_ExprLhs = CompareModule_L20F28T47_SignChange;
@@ -96,11 +96,11 @@ module Increment_TopLevel_Increment_CPU_RISCVModule_CMP
 	assign CompareModule_L17F28T49_SignChange = Inputs_Lhs;
 	assign CompareModule_L17F52T73_SignChange = Inputs_Rhs;
 	assign LTU = CompareModule_L17F28T73_Expr;
-	assign CompareModule_L19F28T47_SignChange = Inputs_Lhs/*cast*/;
-	assign CompareModule_L19F50T69_SignChange = Inputs_Rhs/*cast*/;
+	assign CompareModule_L19F28T47_SignChange = Inputs_Lhs;
+	assign CompareModule_L19F50T69_SignChange = Inputs_Rhs;
 	assign GTS = CompareModule_L19F28T69_Expr;
-	assign CompareModule_L20F28T47_SignChange = Inputs_Lhs/*cast*/;
-	assign CompareModule_L20F50T69_SignChange = Inputs_Rhs/*cast*/;
+	assign CompareModule_L20F28T47_SignChange = Inputs_Lhs;
+	assign CompareModule_L20F50T69_SignChange = Inputs_Rhs;
 	assign LTS = CompareModule_L20F28T69_Expr;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]

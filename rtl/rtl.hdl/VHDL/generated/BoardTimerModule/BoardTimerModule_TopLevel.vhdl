@@ -9,88 +9,84 @@
 --   You can use some of signals in custom code, but most likely they will not exist in future (e.g. will get shorter or gone completely)
 -- * Please send your feedback, comments, improvement ideas etc. to evmuryshkin@gmail.com
 -- * Visit https://github.com/EvgenyMuryshkin/QuokkaEvaluation to access latest version of playground
--- 
+--
 -- DISCLAIMER:
 --   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 --   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
--- 
+--
 -- System configuration name is BoardTimerModule_TopLevel, clock frequency is 1Hz, Top-level
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-
 use work.Quokka.all;
-
 entity BoardTimerModule_TopLevel is
-    port
-    (
--- [BEGIN USER PORTS]
--- [END USER PORTS]
-
-Clock : in  std_logic;
-Reset : in  std_logic;
-Restart : in  std_logic;
-OutActive10 : out  std_logic;
-OutActive20 : out  std_logic
-    );
+	port
+	(
+		-- [BEGIN USER PORTS]
+		-- [END USER PORTS]
+		Clock : in std_logic;
+		Reset : in std_logic;
+		Restart : in std_logic;
+		OutActive10 : out std_logic;
+		OutActive20 : out std_logic
+	);
 end entity;
-
 -- FSM summary
 -- Packages
 architecture rtl of BoardTimerModule_TopLevel is
--- [BEGIN USER SIGNALS]
--- [END USER SIGNALS]
-constant HiSignal : std_logic := '1';
-constant LoSignal : std_logic := '0';
-constant Zero : std_logic := '0';
-constant One : std_logic := '1';
-constant true : std_logic := '1';
-constant false : std_logic := '0';
-signal Inputs_Restart : std_logic := '0';
-signal nestedTimerInputs_Restart : std_logic := '0';
-signal timerModule10_Restart : std_logic := '0';
-signal timerModule10_OutActive : std_logic := '0';
-signal timerModule20_Restart : std_logic := '0';
-signal timerModule20_OutActive : std_logic := '0';
-signal timerModule10RestarttimerModule10_RestartHardLink : std_logic := '0';
-signal timerModule10OutActivetimerModule10_OutActiveHardLink : std_logic := '0';
-signal timerModule20RestarttimerModule20_RestartHardLink : std_logic := '0';
-signal timerModule20OutActivetimerModule20_OutActiveHardLink : std_logic := '0';
-signal BoardSignals : BoardSignalsType;
-signal InternalReset : std_logic := '0';
+	-- [BEGIN USER SIGNALS]
+	-- [END USER SIGNALS]
+	constant HiSignal : std_logic := '1';
+	constant LoSignal : std_logic := '0';
+	constant Zero : std_logic := '0';
+	constant One : std_logic := '1';
+	constant true : std_logic := '1';
+	constant false : std_logic := '0';
+	signal Inputs_Restart : std_logic := '0';
+	signal nestedTimerInputs_Restart : std_logic := '0';
+	signal timerModule10_Restart : std_logic := '0';
+	signal timerModule10_OutActive : std_logic := '0';
+	signal timerModule20_Restart : std_logic := '0';
+	signal timerModule20_OutActive : std_logic := '0';
+	signal timerModule10RestarttimerModule10_RestartHardLink : std_logic := '0';
+	signal timerModule10OutActivetimerModule10_OutActiveHardLink : std_logic := '0';
+	signal timerModule20RestarttimerModule20_RestartHardLink : std_logic := '0';
+	signal timerModule20OutActivetimerModule20_OutActiveHardLink : std_logic := '0';
+	signal BoardSignals : BoardSignalsType;
+	signal InternalReset : std_logic := '0';
 begin
-work.Quokka.BoardSignalsProc(BoardSignals,Clock,Reset,InternalReset);
-BoardTimerModule_TopLevel_BoardTimerModule_timerModule10 : entity work.BoardTimerModule_TopLevel_BoardTimerModule_timerModule10 port map
-(
---[BEGIN USER MAP FOR timerModule10]
---[END USER MAP FOR timerModule10]
+	work.Quokka.BoardSignalsProc(BoardSignals, Clock, Reset, InternalReset);
+	BoardTimerModule_TopLevel_BoardTimerModule_timerModule10 : entity work.BoardTimerModule_TopLevel_BoardTimerModule_timerModule10
+	port map
+	(
+		-- [BEGIN USER MAP FOR timerModule10]
+		-- [END USER MAP FOR timerModule10]
 BoardSignals => BoardSignals,
 Restart => timerModule10RestarttimerModule10_RestartHardLink,
 OutActive => timerModule10OutActivetimerModule10_OutActiveHardLink
-
-);
-BoardTimerModule_TopLevel_BoardTimerModule_timerModule20 : entity work.BoardTimerModule_TopLevel_BoardTimerModule_timerModule20 port map
-(
---[BEGIN USER MAP FOR timerModule20]
---[END USER MAP FOR timerModule20]
+	);
+	BoardTimerModule_TopLevel_BoardTimerModule_timerModule20 : entity work.BoardTimerModule_TopLevel_BoardTimerModule_timerModule20
+	port map
+	(
+		-- [BEGIN USER MAP FOR timerModule20]
+		-- [END USER MAP FOR timerModule20]
 BoardSignals => BoardSignals,
 Restart => timerModule20RestarttimerModule20_RestartHardLink,
 OutActive => timerModule20OutActivetimerModule20_OutActiveHardLink
-
-);
-process(Inputs_Restart, nestedTimerInputs_Restart, Restart, timerModule10_OutActive, timerModule10_Restart, timerModule10OutActivetimerModule10_OutActiveHardLink, timerModule20_OutActive, timerModule20_Restart, timerModule20OutActivetimerModule20_OutActiveHardLink)
-begin
-Inputs_Restart <= Restart;
-nestedTimerInputs_Restart <= Inputs_Restart;
-timerModule10_Restart <= nestedTimerInputs_Restart;
-timerModule20_Restart <= nestedTimerInputs_Restart;
-OutActive10 <= timerModule10_OutActive;
-OutActive20 <= timerModule20_OutActive;
-timerModule10RestarttimerModule10_RestartHardLink <= timerModule10_Restart;
-timerModule10_OutActive <= timerModule10OutActivetimerModule10_OutActiveHardLink;
-timerModule20RestarttimerModule20_RestartHardLink <= timerModule20_Restart;
-timerModule20_OutActive <= timerModule20OutActivetimerModule20_OutActiveHardLink;
-end process;
--- [BEGIN USER ARCHITECTURE]
--- [END USER ARCHITECTURE]
+	);
+	process (Inputs_Restart, nestedTimerInputs_Restart, Restart, timerModule10_OutActive, timerModule10_Restart, timerModule10OutActivetimerModule10_OutActiveHardLink, timerModule20_OutActive, timerModule20_Restart, timerModule20OutActivetimerModule20_OutActiveHardLink)
+	begin
+		Inputs_Restart <= Restart;
+		nestedTimerInputs_Restart <= Inputs_Restart;
+		timerModule10_Restart <= nestedTimerInputs_Restart;
+		timerModule20_Restart <= nestedTimerInputs_Restart;
+		OutActive10 <= timerModule10_OutActive;
+		OutActive20 <= timerModule20_OutActive;
+		timerModule10RestarttimerModule10_RestartHardLink <= timerModule10_Restart;
+		timerModule10_OutActive <= timerModule10OutActivetimerModule10_OutActiveHardLink;
+		timerModule20RestarttimerModule20_RestartHardLink <= timerModule20_Restart;
+		timerModule20_OutActive <= timerModule20OutActivetimerModule20_OutActiveHardLink;
+	end process;
+	-- [BEGIN USER ARCHITECTURE]
+	-- [END USER ARCHITECTURE]
 end architecture;

@@ -9,156 +9,152 @@
 --   You can use some of signals in custom code, but most likely they will not exist in future (e.g. will get shorter or gone completely)
 -- * Please send your feedback, comments, improvement ideas etc. to evmuryshkin@gmail.com
 -- * Visit https://github.com/EvgenyMuryshkin/QuokkaEvaluation to access latest version of playground
--- 
+--
 -- DISCLAIMER:
 --   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 --   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
--- 
+--
 -- System configuration name is IOTestModule_TopLevel, clock frequency is 1Hz, Top-level
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-
 use work.Quokka.all;
-
 entity IOTestModule_TopLevel is
-    port
-    (
--- [BEGIN USER PORTS]
--- [END USER PORTS]
-
-Clock : in  std_logic;
-Reset : in  std_logic;
-InFlag : in  std_logic;
-InArray0 : in  unsigned(7 downto 0);
-InArray1 : in  unsigned(7 downto 0);
-ClassOut_Flag : out  std_logic;
-ClassOut_Array0 : out  unsigned(7 downto 0);
-ClassOut_Array1 : out  unsigned(7 downto 0);
-ClassOut_Nested_Flag : out  std_logic;
-ClassOut_Nested_Array0 : out  unsigned(7 downto 0);
-ClassOut_Nested_Array1 : out  unsigned(7 downto 0);
-NestedClassOut_Flag : out  std_logic;
-NestedClassOut_Array0 : out  unsigned(7 downto 0);
-NestedClassOut_Array1 : out  unsigned(7 downto 0);
-OutIteratorArray0 : out  unsigned(7 downto 0);
-OutIteratorArray1 : out  unsigned(7 downto 0);
-OutStateArray0 : out  unsigned(7 downto 0);
-OutStateArray1 : out  unsigned(7 downto 0);
-OutDirectArray0 : out  unsigned(7 downto 0);
-OutDirectArray1 : out  unsigned(7 downto 0);
-OutFlag : out  std_logic
-    );
+	port
+	(
+		-- [BEGIN USER PORTS]
+		-- [END USER PORTS]
+		Clock : in std_logic;
+		Reset : in std_logic;
+		InFlag : in std_logic;
+		InArray0 : in unsigned (7 downto 0);
+		InArray1 : in unsigned (7 downto 0);
+		ClassOut_Flag : out std_logic;
+		ClassOut_Array0 : out unsigned (7 downto 0);
+		ClassOut_Array1 : out unsigned (7 downto 0);
+		ClassOut_Nested_Flag : out std_logic;
+		ClassOut_Nested_Array0 : out unsigned (7 downto 0);
+		ClassOut_Nested_Array1 : out unsigned (7 downto 0);
+		NestedClassOut_Flag : out std_logic;
+		NestedClassOut_Array0 : out unsigned (7 downto 0);
+		NestedClassOut_Array1 : out unsigned (7 downto 0);
+		OutIteratorArray0 : out unsigned (7 downto 0);
+		OutIteratorArray1 : out unsigned (7 downto 0);
+		OutStateArray0 : out unsigned (7 downto 0);
+		OutStateArray1 : out unsigned (7 downto 0);
+		OutDirectArray0 : out unsigned (7 downto 0);
+		OutDirectArray1 : out unsigned (7 downto 0);
+		OutFlag : out std_logic
+	);
 end entity;
-
 -- FSM summary
 -- Packages
 architecture rtl of IOTestModule_TopLevel is
--- [BEGIN USER SIGNALS]
--- [END USER SIGNALS]
-constant HiSignal : std_logic := '1';
-constant LoSignal : std_logic := '0';
-constant Zero : std_logic := '0';
-constant One : std_logic := '1';
-constant true : std_logic := '1';
-constant false : std_logic := '0';
-constant size : unsigned(1 downto 0)  := "10";
-constant IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_0_idx : std_logic := '0';
-constant IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_1_idx : std_logic := '1';
-signal Inputs_InFlag : std_logic := '0';
-signal Inputs_InArray0 : unsigned(7 downto 0) := (others => '0');
-signal Inputs_InArray1 : unsigned(7 downto 0) := (others => '0');
-signal NextState_Flag : std_logic := '0';
-signal State_ArrayDefault : unsigned(7 downto 0)  := "00000000";
-signal State_IteratorArrayDefault : unsigned(7 downto 0)  := "00000000";
-signal State_Flag : std_logic := '0';
-constant State_FlagDefault : std_logic := '0';
-type State_ArrayArray is array(0 to 1) of unsigned(7 downto 0);
-signal State_Array : State_ArrayArray := (others => (others => '0'));
-type NextState_ArrayArray is array(0 to 1) of unsigned(7 downto 0);
-signal NextState_Array : NextState_ArrayArray := (others => (others => '0'));
-type State_IteratorArrayArray is array(0 to 1) of unsigned(7 downto 0);
-signal State_IteratorArray : State_IteratorArrayArray := (others => (others => '0'));
-type NextState_IteratorArrayArray is array(0 to 1) of unsigned(7 downto 0);
-signal NextState_IteratorArray : NextState_IteratorArrayArray := (others => (others => '0'));
+	-- [BEGIN USER SIGNALS]
+	-- [END USER SIGNALS]
+	constant HiSignal : std_logic := '1';
+	constant LoSignal : std_logic := '0';
+	constant Zero : std_logic := '0';
+	constant One : std_logic := '1';
+	constant true : std_logic := '1';
+	constant false : std_logic := '0';
+	constant size : unsigned(1 downto 0) := "10";
+	constant IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_0_idx : std_logic := '0';
+	constant IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_1_idx : std_logic := '1';
+	signal Inputs_InFlag : std_logic := '0';
+	signal NextState_Flag : std_logic := '0';
+	signal State_ArrayDefault : unsigned(7 downto 0) := "00000000";
+	signal State_IteratorArrayDefault : unsigned(7 downto 0) := "00000000";
+	signal State_Flag : std_logic := '0';
+	constant State_FlagDefault : std_logic := '0';
+	type Inputs_InArrayArray is array (0 to 1) of unsigned (7 downto 0);
+	signal Inputs_InArray : Inputs_InArrayArray := (others => (others => '0'));
+	type State_ArrayArray is array (0 to 1) of unsigned (7 downto 0);
+	signal State_Array : State_ArrayArray := (others => (others => '0'));
+	type NextState_ArrayArray is array (0 to 1) of unsigned (7 downto 0);
+	signal NextState_Array : NextState_ArrayArray := (others => (others => '0'));
+	type State_IteratorArrayArray is array (0 to 1) of unsigned (7 downto 0);
+	signal State_IteratorArray : State_IteratorArrayArray := (others => (others => '0'));
+	type NextState_IteratorArrayArray is array (0 to 1) of unsigned (7 downto 0);
+	signal NextState_IteratorArray : NextState_IteratorArrayArray := (others => (others => '0'));
 begin
-process (Clock, NextState_Flag, Reset)
-begin
-if rising_edge(Clock) then
-if ( Reset = '1' ) then
-State_Flag <= State_FlagDefault;
-else
-State_Flag <= NextState_Flag;
-end if;
-end if;
-end process;
-process (Clock, NextState_Array, Reset, State_ArrayDefault)
-begin
-if rising_edge(Clock) then
-if ( Reset = '1' ) then
-for State_Array_Iterator in 0 to 1 loop
-State_Array(State_Array_Iterator) <= State_ArrayDefault;
-end loop;
-else
-for State_Array_Iterator in 0 to 1 loop
-State_Array(State_Array_Iterator) <= NextState_Array(State_Array_Iterator);
-end loop;
-end if;
-end if;
-end process;
-process (Clock, NextState_IteratorArray, Reset, State_IteratorArrayDefault)
-begin
-if rising_edge(Clock) then
-if ( Reset = '1' ) then
-for State_IteratorArray_Iterator in 0 to 1 loop
-State_IteratorArray(State_IteratorArray_Iterator) <= State_IteratorArrayDefault;
-end loop;
-else
-for State_IteratorArray_Iterator in 0 to 1 loop
-State_IteratorArray(State_IteratorArray_Iterator) <= NextState_IteratorArray(State_IteratorArray_Iterator);
-end loop;
-end if;
-end if;
-end process;
-process(Inputs_InArray0, Inputs_InArray1, Inputs_InFlag, State_Array, State_Flag, State_IteratorArray)
-begin
-for NextState_IteratorArray_Iterator in 0 to 1 loop
-NextState_IteratorArray(NextState_IteratorArray_Iterator) <= State_IteratorArray(NextState_IteratorArray_Iterator);
-end loop;
-for NextState_Array_Iterator in 0 to 1 loop
-NextState_Array(NextState_Array_Iterator) <= State_Array(NextState_Array_Iterator);
-end loop;
-NextState_Flag <= State_Flag;
-NextState_Flag <= Inputs_InFlag;
-if ( Inputs_InFlag = '1' ) then
-NextState_Array(0) <= Inputs_InArray0;
-NextState_Array(1) <= Inputs_InArray1;
-end if;
-NextState_IteratorArray(bit_to_integer(IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_0_idx)) <= Inputs_InArray0;
-NextState_IteratorArray(bit_to_integer(IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_1_idx)) <= Inputs_InArray1;
-end process;
-process(InArray0, InArray1, InFlag, Inputs_InArray0, Inputs_InArray1, State_Array, State_Flag, State_IteratorArray)
-begin
-Inputs_InFlag <= InFlag;
-Inputs_InArray0 <= InArray0;
-Inputs_InArray1 <= InArray1;
-ClassOut_Flag <= State_Flag;
-ClassOut_Array0 <= State_Array(0);
-ClassOut_Array1 <= State_Array(1);
-ClassOut_Nested_Flag <= State_Flag;
-ClassOut_Nested_Array0 <= State_IteratorArray(0);
-ClassOut_Nested_Array1 <= State_IteratorArray(1);
-NestedClassOut_Flag <= State_Flag;
-NestedClassOut_Array0 <= State_Array(0);
-NestedClassOut_Array1 <= State_Array(1);
-OutIteratorArray0 <= State_IteratorArray(0);
-OutIteratorArray1 <= State_IteratorArray(1);
-OutStateArray0 <= State_Array(0);
-OutStateArray1 <= State_Array(1);
-OutDirectArray0 <= Inputs_InArray0;
-OutDirectArray1 <= Inputs_InArray1;
-OutFlag <= State_Flag;
-end process;
--- [BEGIN USER ARCHITECTURE]
--- [END USER ARCHITECTURE]
+	process (Clock, NextState_Flag, Reset)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				State_Flag <= State_FlagDefault;
+			else
+				State_Flag <= NextState_Flag;
+			end if;
+		end if;
+	end process;
+	process (Clock, NextState_Array, Reset, State_ArrayDefault)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				for State_Array_Iterator in 0 to 1 loop
+					State_Array(State_Array_Iterator) <= State_ArrayDefault;
+				end loop;
+			else
+				for State_Array_Iterator in 0 to 1 loop
+					State_Array(State_Array_Iterator) <= NextState_Array(State_Array_Iterator);
+				end loop;
+			end if;
+		end if;
+	end process;
+	process (Clock, NextState_IteratorArray, Reset, State_IteratorArrayDefault)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				for State_IteratorArray_Iterator in 0 to 1 loop
+					State_IteratorArray(State_IteratorArray_Iterator) <= State_IteratorArrayDefault;
+				end loop;
+			else
+				for State_IteratorArray_Iterator in 0 to 1 loop
+					State_IteratorArray(State_IteratorArray_Iterator) <= NextState_IteratorArray(State_IteratorArray_Iterator);
+				end loop;
+			end if;
+		end if;
+	end process;
+	process (Inputs_InArray, Inputs_InFlag, State_Array, State_Flag, State_IteratorArray)
+	begin
+		for NextState_IteratorArray_Iterator in 0 to 1 loop
+			NextState_IteratorArray(NextState_IteratorArray_Iterator) <= State_IteratorArray(NextState_IteratorArray_Iterator);
+		end loop;
+		for NextState_Array_Iterator in 0 to 1 loop
+			NextState_Array(NextState_Array_Iterator) <= State_Array(NextState_Array_Iterator);
+		end loop;
+		NextState_Flag <= State_Flag;
+		NextState_Flag <= Inputs_InFlag;
+		if Inputs_InFlag = '1' then
+			NextState_Array(0) <= Inputs_InArray(0);
+			NextState_Array(1) <= Inputs_InArray(1);
+		end if;
+		NextState_IteratorArray(bit_to_integer(IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_0_idx)) <= Inputs_InArray(bit_to_integer(IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_0_idx));
+		NextState_IteratorArray(bit_to_integer(IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_1_idx)) <= Inputs_InArray(bit_to_integer(IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_1_idx));
+	end process;
+	process (InArray0, InArray1, InFlag, Inputs_InArray, State_Array, State_Flag, State_IteratorArray)
+	begin
+		Inputs_InFlag <= InFlag;
+		Inputs_InArray(0) <= InArray0;
+		Inputs_InArray(1) <= InArray1;
+		ClassOut_Flag <= State_Flag;
+		ClassOut_Array0 <= State_Array(0);
+		ClassOut_Array1 <= State_Array(1);
+		ClassOut_Nested_Flag <= State_Flag;
+		ClassOut_Nested_Array0 <= State_IteratorArray(0);
+		ClassOut_Nested_Array1 <= State_IteratorArray(1);
+		NestedClassOut_Flag <= State_Flag;
+		NestedClassOut_Array0 <= State_Array(0);
+		NestedClassOut_Array1 <= State_Array(1);
+		OutIteratorArray0 <= State_IteratorArray(0);
+		OutIteratorArray1 <= State_IteratorArray(1);
+		OutStateArray0 <= State_Array(0);
+		OutStateArray1 <= State_Array(1);
+		OutDirectArray0 <= Inputs_InArray(0);
+		OutDirectArray1 <= Inputs_InArray(1);
+		OutFlag <= State_Flag;
+	end process;
+	-- [BEGIN USER ARCHITECTURE]
+	-- [END USER ARCHITECTURE]
 end architecture;

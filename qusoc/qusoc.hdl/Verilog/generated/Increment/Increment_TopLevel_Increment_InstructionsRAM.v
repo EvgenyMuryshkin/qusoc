@@ -28,13 +28,13 @@ module Increment_TopLevel_Increment_InstructionsRAM
 	input wire BoardSignals_Running,
 	input wire BoardSignals_Starting,
 	input wire BoardSignals_Started,
-	input wire [31: 0] Common_Address,
-	input wire [31: 0] Common_WriteValue,
+	input wire [31:0] Common_Address,
+	input wire [31:0] Common_WriteValue,
 	input wire Common_WE,
 	input wire Common_RE,
-	input wire [1: 0] Common_MemAccessMode,
-	input wire [31: 0] DeviceAddress,
-	output wire [31: 0] ReadValue,
+	input wire [1:0] Common_MemAccessMode,
+	input wire [31:0] DeviceAddress,
+	output wire [31:0] ReadValue,
 	output wire IsReady,
 	output wire IsActive
 );
@@ -267,21 +267,21 @@ begin
 	State_ReadValue <= State_BlockRAM[internalWordAddress];
 end
 
-	assign SoCComponentModule_L50F48T93_ExprLhs = { {1{1'b0}}, Inputs_Common_Address }/*expand*/;
-	assign SoCComponentModule_L50F48T93_ExprRhs = { {1{1'b0}}, Inputs_DeviceAddress }/*expand*/;
-	assign SoCComponentModule_L50F97T157_ExprLhs = { {3{1'b0}}, Inputs_Common_Address }/*expand*/;
-	assign SoCComponentModule_L50F97T157_ExprRhs = { {1{1'b0}}, SoCComponentModule_L50F122T156_Expr }/*expand*/;
-	assign SoCBlockRAMModule_L36F13T45_ExprLhs = { {1{1'b0}}, Inputs_Common_MemAccessMode }/*expand*/;
-	assign SoCBlockRAMModule_L36F13T45_ExprRhs = { {1{1'b0}}, SoCBlockRAMModule_L36F44T45_Expr }/*expand*/;
-	assign SoCBlockRAMModule_L40F33T65_ExprLhs = { {1{1'b0}}, Inputs_Common_MemAccessMode }/*expand*/;
-	assign SoCBlockRAMModule_L40F33T65_ExprRhs = { {1{1'b0}}, SoCBlockRAMModule_L40F64T65_Expr }/*expand*/;
-	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L50F21T53_ExprLhs = { {1{1'b0}}, Inputs_Common_MemAccessMode }/*expand*/;
-	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L50F21T53_ExprRhs = { {2{1'b0}}, SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L50F52T53_Expr }/*expand*/;
-	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L52F26T58_ExprLhs = { {1{1'b0}}, Inputs_Common_MemAccessMode }/*expand*/;
-	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L52F26T58_ExprRhs = { {2{1'b0}}, SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L52F57T58_Expr }/*expand*/;
+	assign SoCComponentModule_L50F48T93_ExprLhs = { 1'b0, Inputs_Common_Address };
+	assign SoCComponentModule_L50F48T93_ExprRhs = { 1'b0, Inputs_DeviceAddress };
+	assign SoCComponentModule_L50F97T157_ExprLhs = { {3{1'b0}}, Inputs_Common_Address };
+	assign SoCComponentModule_L50F97T157_ExprRhs = { 1'b0, SoCComponentModule_L50F122T156_Expr };
+	assign SoCBlockRAMModule_L36F13T45_ExprLhs = { 1'b0, Inputs_Common_MemAccessMode };
+	assign SoCBlockRAMModule_L36F13T45_ExprRhs = { 1'b0, SoCBlockRAMModule_L36F44T45_Expr };
+	assign SoCBlockRAMModule_L40F33T65_ExprLhs = { 1'b0, Inputs_Common_MemAccessMode };
+	assign SoCBlockRAMModule_L40F33T65_ExprRhs = { 1'b0, SoCBlockRAMModule_L40F64T65_Expr };
+	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L50F21T53_ExprLhs = { 1'b0, Inputs_Common_MemAccessMode };
+	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L50F21T53_ExprRhs = { {2{1'b0}}, SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L50F52T53_Expr };
+	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L52F26T58_ExprLhs = { 1'b0, Inputs_Common_MemAccessMode };
+	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L52F26T58_ExprRhs = { {2{1'b0}}, SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L52F57T58_Expr };
 	assign SoCComponentModule_L50F48T157_Expr_1 = SoCComponentModule_L50F48T93_Expr;
 	assign SoCComponentModule_L50F48T157_Expr_2 = SoCComponentModule_L50F97T157_Expr;
-	assign SoCComponentModule_L52F54T84_Expr_1 = { {6{1'b0}}, SoCComponentModule_L52F54T79_Index }/*expand*/;
+	assign SoCComponentModule_L52F54T84_Expr_1 = { {6{1'b0}}, SoCComponentModule_L52F54T79_Index };
 	assign SoCBlockRAMModule_L27F34T88_Expr_1 = SoCBlockRAMModule_L27F35T71_Expr;
 	assign SoCBlockRAMModule_L27F34T88_Expr_2 = addressMatch;
 	assign SoCBlockRAMModule_L27F35T71_Expr_1 = Inputs_Common_RE;
@@ -312,8 +312,8 @@ end
 	assign SoCBlockRAMModule_L29F43T99_Expr_1 = SoCBlockRAMModule_L29F44T82_Expr;
 	assign SoCBlockRAMModule_L29F43T99_Expr_2 = memAccessMask;
 	assign SoCBlockRAMModule_L29F44T82_Expr_1 = State_ReadValue;
-	assign SoCComponentModule_L50F122T156_Expr_1 = { {2{1'b0}}, Inputs_DeviceAddress }/*expand*/;
-	assign SoCComponentModule_L50F122T156_Expr_2 = { {21{1'b0}}, addressSpan }/*expand*/;
+	assign SoCComponentModule_L50F122T156_Expr_1 = { {2{1'b0}}, Inputs_DeviceAddress };
+	assign SoCComponentModule_L50F122T156_Expr_2 = { {21{1'b0}}, addressSpan };
 	assign Inputs_Common_Address = Common_Address;
 	assign Inputs_Common_WriteValue = Common_WriteValue;
 	assign Inputs_Common_WE = Common_WE;
@@ -324,7 +324,7 @@ end
 	assign SoCComponentModule_L51F54T92_Source = Inputs_Common_Address;
 	assign internalAddressBits = SoCComponentModule_L51F54T92_Source;
 	assign SoCComponentModule_L52F54T79_Index = internalAddressBits[1:0];
-	assign internalByteAddress = SoCComponentModule_L52F54T84_Expr[4:0]/*truncate*/;
+	assign internalByteAddress = SoCComponentModule_L52F54T84_Expr[4:0];
 	assign SoCBlockRAMModule_L26F44T70_Index = internalAddressBits[11:2];
 	assign internalWordAddress = SoCBlockRAMModule_L26F44T70_Index;
 	assign internalIsActive = SoCBlockRAMModule_L27F34T88_Expr;
@@ -336,9 +336,9 @@ end
 	assign internalWE = SoCBlockRAMModule_L42F28T69_Expr;
 	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L48F28T58_Source = SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L48F44T57_Expr;
 	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L51F28T58_Source = SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L51F44T57_Expr;
-	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L51F28T70_Resize = { {24{1'b0}}, SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L51F28T58_Source }/*expand*/;
+	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L51F28T70_Resize = { {24{1'b0}}, SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L51F28T58_Source };
 	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L53F28T60_Source = SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L53F44T59_Expr;
-	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L53F28T72_Resize = { {16{1'b0}}, SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L53F28T60_Source }/*expand*/;
+	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L53F28T72_Resize = { {16{1'b0}}, SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L53F28T60_Source };
 	assign memAccessMask = SoCBlockRAMModule_L47F13L56T14_mask;
 	assign ReadValue = SoCBlockRAMModule_L29F43T99_Expr;
 	assign IsReady = State_Ready;

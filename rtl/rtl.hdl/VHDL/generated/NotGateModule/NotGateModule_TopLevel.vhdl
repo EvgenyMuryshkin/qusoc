@@ -9,56 +9,50 @@
 --   You can use some of signals in custom code, but most likely they will not exist in future (e.g. will get shorter or gone completely)
 -- * Please send your feedback, comments, improvement ideas etc. to evmuryshkin@gmail.com
 -- * Visit https://github.com/EvgenyMuryshkin/QuokkaEvaluation to access latest version of playground
--- 
+--
 -- DISCLAIMER:
 --   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 --   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
--- 
+--
 -- System configuration name is NotGateModule_TopLevel, clock frequency is 1Hz, Top-level
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-
 use work.Quokka.all;
-
 entity NotGateModule_TopLevel is
-    port
-    (
--- [BEGIN USER PORTS]
--- [END USER PORTS]
-
-Input : in  std_logic;
-Output : out  std_logic
-    );
+	port
+	(
+		-- [BEGIN USER PORTS]
+		-- [END USER PORTS]
+		Input : in std_logic;
+		Output : out std_logic
+	);
 end entity;
-
 -- FSM summary
 -- Packages
 architecture rtl of NotGateModule_TopLevel is
--- [BEGIN USER SIGNALS]
--- [END USER SIGNALS]
-constant HiSignal : std_logic := '1';
-constant LoSignal : std_logic := '0';
-constant Zero : std_logic := '0';
-constant One : std_logic := '1';
-constant true : std_logic := '1';
-constant false : std_logic := '0';
-signal Inputs_Input : std_logic := '0';
-signal NotGateModule_L17F31T44_Expr : std_logic := '0';
-signal NotGateModule_L17F31T44_Expr_1 : std_logic := '0';
+	-- [BEGIN USER SIGNALS]
+	-- [END USER SIGNALS]
+	constant HiSignal : std_logic := '1';
+	constant LoSignal : std_logic := '0';
+	constant Zero : std_logic := '0';
+	constant One : std_logic := '1';
+	constant true : std_logic := '1';
+	constant false : std_logic := '0';
+	signal Inputs_Input : std_logic := '0';
+	signal NotGateModule_L17F31T44_Expr : std_logic := '0';
+	signal NotGateModule_L17F31T44_Expr_1 : std_logic := '0';
 begin
-
-process(NotGateModule_L17F31T44_Expr_1)
-begin
-NotGateModule_L17F31T44_Expr <= NOT NotGateModule_L17F31T44_Expr_1;
-
-    end process;
-process(Input, Inputs_Input, NotGateModule_L17F31T44_Expr)
-begin
-NotGateModule_L17F31T44_Expr_1 <= Inputs_Input;
-Inputs_Input <= Input;
-Output <= NotGateModule_L17F31T44_Expr;
-end process;
--- [BEGIN USER ARCHITECTURE]
--- [END USER ARCHITECTURE]
+	process (NotGateModule_L17F31T44_Expr_1)
+	begin
+		NotGateModule_L17F31T44_Expr <= NOT NotGateModule_L17F31T44_Expr_1;
+	end process;
+	process (Input, Inputs_Input, NotGateModule_L17F31T44_Expr)
+	begin
+		NotGateModule_L17F31T44_Expr_1 <= Inputs_Input;
+		Inputs_Input <= Input;
+		Output <= NotGateModule_L17F31T44_Expr;
+	end process;
+	-- [BEGIN USER ARCHITECTURE]
+	-- [END USER ARCHITECTURE]
 end architecture;

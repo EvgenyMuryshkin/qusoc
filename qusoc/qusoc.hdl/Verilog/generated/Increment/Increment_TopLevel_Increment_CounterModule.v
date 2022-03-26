@@ -28,16 +28,16 @@ module Increment_TopLevel_Increment_CounterModule
 	input wire BoardSignals_Running,
 	input wire BoardSignals_Starting,
 	input wire BoardSignals_Started,
-	input wire [31: 0] Common_Address,
-	input wire [31: 0] Common_WriteValue,
+	input wire [31:0] Common_Address,
+	input wire [31:0] Common_WriteValue,
 	input wire Common_WE,
 	input wire Common_RE,
-	input wire [1: 0] Common_MemAccessMode,
-	input wire [31: 0] DeviceAddress,
-	output wire [31: 0] ReadValue,
+	input wire [1:0] Common_MemAccessMode,
+	input wire [31:0] DeviceAddress,
+	output wire [31:0] ReadValue,
 	output wire IsReady,
 	output wire IsActive,
-	output wire [31: 0] Value
+	output wire [31:0] Value
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -117,18 +117,18 @@ module Increment_TopLevel_Increment_CounterModule
 			NextState_Value = Inputs_Common_WriteValue;
 		end
 	end
-	assign SoCComponentModule_L50F48T93_ExprLhs = { {1{1'b0}}, Inputs_Common_Address }/*expand*/;
-	assign SoCComponentModule_L50F48T93_ExprRhs = { {1{1'b0}}, Inputs_DeviceAddress }/*expand*/;
-	assign SoCComponentModule_L50F97T157_ExprLhs = { {3{1'b0}}, Inputs_Common_Address }/*expand*/;
-	assign SoCComponentModule_L50F97T157_ExprRhs = { {1{1'b0}}, SoCComponentModule_L50F122T156_Expr }/*expand*/;
+	assign SoCComponentModule_L50F48T93_ExprLhs = { 1'b0, Inputs_Common_Address };
+	assign SoCComponentModule_L50F48T93_ExprRhs = { 1'b0, Inputs_DeviceAddress };
+	assign SoCComponentModule_L50F97T157_ExprLhs = { {3{1'b0}}, Inputs_Common_Address };
+	assign SoCComponentModule_L50F97T157_ExprRhs = { 1'b0, SoCComponentModule_L50F122T156_Expr };
 	assign SoCComponentModule_L50F48T157_Expr_1 = SoCComponentModule_L50F48T93_Expr;
 	assign SoCComponentModule_L50F48T157_Expr_2 = SoCComponentModule_L50F97T157_Expr;
-	assign SoCComponentModule_L52F54T84_Expr_1 = { {6{1'b0}}, SoCComponentModule_L52F54T79_Index }/*expand*/;
+	assign SoCComponentModule_L52F54T84_Expr_1 = { {6{1'b0}}, SoCComponentModule_L52F54T79_Index };
 	assign SoCRegisterModule_L31F9L36T10_SoCRegisterModule_L32F17T53_Expr_1 = Inputs_Common_WE;
 	assign SoCRegisterModule_L31F9L36T10_SoCRegisterModule_L32F17T53_Expr_2 = internalIsActive;
 	assign SoCRegisterModule_L26F43T77_Expr_1 = State_Value;
-	assign SoCComponentModule_L50F122T156_Expr_1 = { {2{1'b0}}, Inputs_DeviceAddress }/*expand*/;
-	assign SoCComponentModule_L50F122T156_Expr_2 = { {31{1'b0}}, addressSpan }/*expand*/;
+	assign SoCComponentModule_L50F122T156_Expr_1 = { {2{1'b0}}, Inputs_DeviceAddress };
+	assign SoCComponentModule_L50F122T156_Expr_2 = { {31{1'b0}}, addressSpan };
 	assign Inputs_Common_Address = Common_Address;
 	assign Inputs_Common_WriteValue = Common_WriteValue;
 	assign Inputs_Common_WE = Common_WE;
@@ -139,7 +139,7 @@ module Increment_TopLevel_Increment_CounterModule
 	assign SoCComponentModule_L51F54T92_Source = Inputs_Common_Address;
 	assign internalAddressBits = SoCComponentModule_L51F54T92_Source;
 	assign SoCComponentModule_L52F54T79_Index = internalAddressBits[1:0];
-	assign internalByteAddress = SoCComponentModule_L52F54T84_Expr[4:0]/*truncate*/;
+	assign internalByteAddress = SoCComponentModule_L52F54T84_Expr[4:0];
 	assign internalIsActive = addressMatch;
 	assign ReadValue = SoCRegisterModule_L26F43T77_Expr;
 	assign IsReady = SoCRegisterModule_L27F41T45_Expr;

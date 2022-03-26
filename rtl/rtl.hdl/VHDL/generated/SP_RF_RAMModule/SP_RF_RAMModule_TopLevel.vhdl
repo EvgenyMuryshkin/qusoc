@@ -9,50 +9,46 @@
 --   You can use some of signals in custom code, but most likely they will not exist in future (e.g. will get shorter or gone completely)
 -- * Please send your feedback, comments, improvement ideas etc. to evmuryshkin@gmail.com
 -- * Visit https://github.com/EvgenyMuryshkin/QuokkaEvaluation to access latest version of playground
--- 
+--
 -- DISCLAIMER:
 --   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 --   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
--- 
+--
 -- System configuration name is SP_RF_RAMModule_TopLevel, clock frequency is 1Hz, Top-level
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-
 use work.Quokka.all;
-
 entity SP_RF_RAMModule_TopLevel is
-    port
-    (
--- [BEGIN USER PORTS]
--- [END USER PORTS]
-
-Clock : in  std_logic;
-Reset : in  std_logic;
-Address : in  unsigned(7 downto 0);
-WriteData : in  unsigned(7 downto 0);
-WE : in  std_logic;
-Data : out  unsigned(7 downto 0)
-    );
+	port
+	(
+		-- [BEGIN USER PORTS]
+		-- [END USER PORTS]
+		Clock : in std_logic;
+		Reset : in std_logic;
+		Address : in unsigned (7 downto 0);
+		WriteData : in unsigned (7 downto 0);
+		WE : in std_logic;
+		Data : out unsigned (7 downto 0)
+	);
 end entity;
-
 -- FSM summary
 -- Packages
 architecture rtl of SP_RF_RAMModule_TopLevel is
--- [BEGIN USER SIGNALS]
--- [END USER SIGNALS]
-constant HiSignal : std_logic := '1';
-constant LoSignal : std_logic := '0';
-constant Zero : std_logic := '0';
-constant One : std_logic := '1';
-constant true : std_logic := '1';
-constant false : std_logic := '0';
-signal Inputs_Address : unsigned(7 downto 0) := (others => '0');
-signal Inputs_WriteData : unsigned(7 downto 0) := (others => '0');
-signal Inputs_WE : std_logic := '0';
-signal State_ReadData : unsigned(7 downto 0) := (others => '0');
-type State_BuffArray is array(0 to 255) of unsigned(7 downto 0);
-signal State_Buff : State_BuffArray := (others => (others => '0'));
+	-- [BEGIN USER SIGNALS]
+	-- [END USER SIGNALS]
+	constant HiSignal : std_logic := '1';
+	constant LoSignal : std_logic := '0';
+	constant Zero : std_logic := '0';
+	constant One : std_logic := '1';
+	constant true : std_logic := '1';
+	constant false : std_logic := '0';
+	signal Inputs_Address : unsigned(7 downto 0) := (others => '0');
+	signal Inputs_WriteData : unsigned(7 downto 0) := (others => '0');
+	signal Inputs_WE : std_logic := '0';
+	signal State_ReadData : unsigned(7 downto 0) := (others => '0');
+	type State_BuffArray is array (0 to 255) of unsigned (7 downto 0);
+	signal State_Buff : State_BuffArray := (others => (others => '0'));
 begin
 -- inferred single port RAM with read-first behaviour
 process (Clock)
@@ -65,13 +61,13 @@ begin
 	end if;
 end process;
 
-process(Address, State_ReadData, WE, WriteData)
-begin
-Inputs_Address <= Address;
-Inputs_WriteData <= WriteData;
-Inputs_WE <= WE;
-Data <= State_ReadData;
-end process;
--- [BEGIN USER ARCHITECTURE]
--- [END USER ARCHITECTURE]
+	process (Address, State_ReadData, WE, WriteData)
+	begin
+		Inputs_Address <= Address;
+		Inputs_WriteData <= WriteData;
+		Inputs_WE <= WE;
+		Data <= State_ReadData;
+	end process;
+	-- [BEGIN USER ARCHITECTURE]
+	-- [END USER ARCHITECTURE]
 end architecture;
