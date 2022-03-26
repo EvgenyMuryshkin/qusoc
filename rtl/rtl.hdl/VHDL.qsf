@@ -1,4 +1,4 @@
-set_global_assignment -name TOP_LEVEL_ENTITY IOTestModule_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY LogicRAMModule_TopLevel
 # -------------------------------------------------------------------------- #
 #
 # Copyright (C) 1991-2010 Altera Corporation
@@ -57,7 +57,7 @@ set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 6
 
 set_global_assignment -name MISC_FILE "C:/code/qusoc/rtl/rtl.hdl/VHDL.dpf"
 
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/IOTestModule.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/LogicRAMModule.vwf
 
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
