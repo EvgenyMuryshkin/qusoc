@@ -50,23 +50,22 @@ architecture rtl of SP_RF_RAMModule_TopLevel is
 	type State_BuffArray is array (0 to 255) of unsigned (7 downto 0);
 	signal State_Buff : State_BuffArray := (others => (others => '0'));
 begin
--- inferred single port RAM with read-first behaviour
-process (Clock)
-begin
-	if rising_edge(Clock) then
-		if (Inputs_WE = '1') then
-			State_Buff(TO_INTEGER(Inputs_Address)) <= Inputs_WriteData;
-		end if;
-		State_ReadData <= State_Buff(TO_INTEGER(Inputs_Address));
-	end if;
-end process;
-
 	process (Address, State_ReadData, WE, WriteData)
 	begin
 		Inputs_Address <= Address;
 		Inputs_WriteData <= WriteData;
 		Inputs_WE <= WE;
 		Data <= State_ReadData;
+	end process;
+	-- inferred single port RAM with read-first behaviour
+	process (Clock, Inputs_WE, Inputs_Address, Inputs_WriteData)
+	begin
+		if rising_edge(Clock) then
+			if Inputs_WE = '1' then
+				State_Buff(TO_INTEGER(Inputs_Address)) <= Inputs_WriteData;
+			end if;
+			State_ReadData <= State_Buff(TO_INTEGER(Inputs_Address));
+		end if;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

@@ -49,15 +49,15 @@ module SP_RF_RAMModule_TopLevel
 		for (State_Buff_i = 0; State_Buff_i < 256; State_Buff_i = State_Buff_i + 1)
 			State_Buff[State_Buff_i] = 0;
 	end
-// inferred single port RAM with read-first behaviour
-always @ (posedge Clock)
-begin
-	if (Inputs_WE)
-		State_Buff[Inputs_Address] <= Inputs_WriteData;
-
-	State_ReadData <= State_Buff[Inputs_Address];
-end
-
+	// inferred single port RAM with read-first behaviour
+	always @ (posedge Clock)
+	begin
+		if (Inputs_WE)
+		begin
+			State_Buff[Inputs_Address] <= Inputs_WriteData;
+		end
+		State_ReadData <= State_Buff[Inputs_Address];
+	end
 	assign Inputs_Address = Address;
 	assign Inputs_WriteData = WriteData;
 	assign Inputs_WE = WE;

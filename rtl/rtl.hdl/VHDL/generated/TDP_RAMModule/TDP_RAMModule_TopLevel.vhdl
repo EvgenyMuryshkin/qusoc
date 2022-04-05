@@ -106,29 +106,6 @@ begin
 		if Inputs_WE_B = '1' then
 		end if;
 	end process;
--- Port A
-process(Clock, Inputs_Addr_A, Inputs_WE_A, Inputs_WriteData_A)
-begin
-if(rising_edge(Clock)) then
-    if(Inputs_WE_A = '1') then
-        State_Buff(TO_INTEGER(Inputs_Addr_A)) := Inputs_WriteData_A;
-    end if;
-    State_DataA <= State_Buff(TO_INTEGER(Inputs_Addr_A));
-end if;
-end process;
-
--- Port B
-process(Clock, Inputs_Addr_B, Inputs_WE_B, Inputs_WriteData_B)
-begin
-if(rising_edge(Clock)) then
-    if(Inputs_WE_B = '1') then
-        State_Buff(TO_INTEGER(Inputs_Addr_B)) := Inputs_WriteData_B;
-    end if;
-    State_DataB <= State_Buff(TO_INTEGER(Inputs_Addr_B));
-end if;
-end process;
-
-
 	process (Addr_A, Addr_B, Inputs_Addr_A, Inputs_Addr_B, Inputs_WE_A, Inputs_WE_B, State_DataA, State_DataB, State_SameAddressWrite, TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T129_Expr, TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr, TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_Expr, WE_A, WE_B, WriteData_A, WriteData_B)
 	begin
 		TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_ExprLhs(8) <= '0';
@@ -150,6 +127,26 @@ end process;
 		OutDataA <= State_DataA;
 		OutDataB <= State_DataB;
 		OutCorrupted <= State_SameAddressWrite;
+	end process;
+	-- Port A
+	process (Clock, Inputs_WE_A, Inputs_Addr_A, Inputs_WriteData_A)
+	begin
+		if rising_edge(Clock) then
+			if Inputs_WE_A = '1' then
+				State_Buff(TO_INTEGER(Inputs_Addr_A)) := Inputs_WriteData_A;
+			end if;
+			State_DataA <= State_Buff(TO_INTEGER(Inputs_Addr_A));
+		end if;
+	end process;
+	-- Port B
+	process (Clock, Inputs_WE_B, Inputs_Addr_B, Inputs_WriteData_B)
+	begin
+		if rising_edge(Clock) then
+			if Inputs_WE_B = '1' then
+				State_Buff(TO_INTEGER(Inputs_Addr_B)) := Inputs_WriteData_B;
+			end if;
+			State_DataB <= State_Buff(TO_INTEGER(Inputs_Addr_B));
+		end if;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

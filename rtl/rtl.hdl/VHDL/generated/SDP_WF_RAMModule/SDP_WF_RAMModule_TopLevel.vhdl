@@ -51,21 +51,8 @@ architecture rtl of SDP_WF_RAMModule_TopLevel is
 	signal State_ReadData : unsigned(7 downto 0) := (others => '0');
 	type State_BuffArray is array (0 to 255) of unsigned (7 downto 0);
 	signal State_Buff : State_BuffArray := (others => (others => '0'));
-signal Inputs_ReadAddress_reg: unsigned(8 downto 1);
-
+	signal Inputs_ReadAddress_reg : unsigned(7 downto 0);
 begin
--- inferred simple dual port RAM with write-first behaviour
-process (Clock)
-begin
-	if rising_edge(Clock) then
-		if (Inputs_WE = '1') then
-			State_Buff(TO_INTEGER(Inputs_WriteAddress)) <= Inputs_WriteData;
-		end if;
-		Inputs_ReadAddress_reg <= Inputs_ReadAddress;
-	end if;
-	State_ReadData <= State_Buff(TO_INTEGER(Inputs_ReadAddress_reg));
-end process;
-
 	process (ReadAddress, State_ReadData, WE, WriteAddress, WriteData)
 	begin
 		Inputs_ReadAddress <= ReadAddress;
@@ -73,6 +60,17 @@ end process;
 		Inputs_WriteData <= WriteData;
 		Inputs_WE <= WE;
 		Data <= State_ReadData;
+	end process;
+	-- inferred simple dual port RAM with write-first behaviour
+	process (Clock, Inputs_WE, Inputs_WriteAddress, Inputs_WriteData, Inputs_ReadAddress)
+	begin
+		if rising_edge(Clock) then
+			if Inputs_WE = '1' then
+				State_Buff(TO_INTEGER(Inputs_WriteAddress)) <= Inputs_WriteData;
+			end if;
+			Inputs_ReadAddress_reg <= Inputs_ReadAddress;
+		end if;
+		State_ReadData <= State_Buff(TO_INTEGER(Inputs_ReadAddress_reg));
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

@@ -49,20 +49,17 @@ module SP_WF_RAMModule_TopLevel
 		for (State_Buff_i = 0; State_Buff_i < 256; State_Buff_i = State_Buff_i + 1)
 			State_Buff[State_Buff_i] = 0;
 	end
-reg [8-1:0] Inputs_Address_reg;
-
-// inferred single port RAM with write-first behaviour
-
-always @ (posedge Clock)
-begin
-	if (Inputs_WE)
-		State_Buff[Inputs_Address] <= Inputs_WriteData;
-
-	Inputs_Address_reg <= Inputs_Address;
-end
-
-assign State_ReadData = State_Buff[Inputs_Address_reg];
-
+	// inferred single port RAM with write-first behaviour
+	reg [7: 0] Inputs_Address_reg;
+	always @ (posedge Clock)
+	begin
+		if (Inputs_WE)
+		begin
+			State_Buff[Inputs_Address] <= Inputs_WriteData;
+		end
+		Inputs_Address_reg <= Inputs_Address;
+	end
+	assign State_ReadData = State_Buff[Inputs_Address_reg];
 	assign Inputs_Address = Address;
 	assign Inputs_WriteData = WriteData;
 	assign Inputs_WE = WE;

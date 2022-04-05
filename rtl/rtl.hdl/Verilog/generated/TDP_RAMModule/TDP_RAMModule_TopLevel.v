@@ -73,6 +73,32 @@ module TDP_RAMModule_TopLevel
 		for (State_Buff_i = 0; State_Buff_i < 256; State_Buff_i = State_Buff_i + 1)
 			State_Buff[State_Buff_i] = 0;
 	end
+	// Port A
+	always @ (posedge Clock)
+	begin
+		if (Inputs_WE_A)
+		begin
+			State_Buff[Inputs_Addr_A] <= Inputs_WriteData_A;
+			State_DataA <= Inputs_WriteData_A;
+		end
+		else
+		begin
+			State_DataA <= State_Buff[Inputs_Addr_A];
+		end
+	end
+	// Port B
+	always @ (posedge Clock)
+	begin
+		if (Inputs_WE_B)
+		begin
+			State_Buff[Inputs_Addr_B] <= Inputs_WriteData_B;
+			State_DataB <= Inputs_WriteData_B;
+		end
+		else
+		begin
+			State_DataB <= State_Buff[Inputs_Addr_B];
+		end
+	end
 	always @ (posedge Clock)
 	begin
 		if ((Reset == 1))
@@ -99,35 +125,6 @@ module TDP_RAMModule_TopLevel
 		begin
 		end
 	end
-always @ (posedge Clock)
-begin
-	// Port A
-	if (Inputs_WE_A)
-	begin
-		State_Buff[Inputs_Addr_A] <= Inputs_WriteData_A;
-		State_DataA <= Inputs_WriteData_A;
-	end
-	else
-	begin
-		State_DataA <= State_Buff[Inputs_Addr_A];
-	end
-end
-
-always @ (posedge Clock)
-begin
-	// Port B
-	if (Inputs_WE_B)
-	begin
-		State_Buff[Inputs_Addr_B] <= Inputs_WriteData_B;
-		State_DataB <= Inputs_WriteData_B;
-	end
-	else
-	begin
-		State_DataB <= State_Buff[Inputs_Addr_B];
-	end
-end
-
-
 	assign TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_ExprLhs = { 1'b0, Inputs_Addr_A };
 	assign TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_ExprRhs = { 1'b0, Inputs_Addr_B };
 	assign TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr_1 = State_SameAddressWrite;

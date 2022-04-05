@@ -51,15 +51,15 @@ module SDP_RF_RAMModule_TopLevel
 		for (State_Buff_i = 0; State_Buff_i < 256; State_Buff_i = State_Buff_i + 1)
 			State_Buff[State_Buff_i] = 0;
 	end
-// inferred simple dual port RAM with read-first behaviour
-always @ (posedge Clock)
-begin
-	if (Inputs_WE)
-		State_Buff[Inputs_WriteAddress] <= Inputs_WriteData;
-
-	State_ReadData <= State_Buff[Inputs_ReadAddress];
-end
-
+	// inferred simple dual port RAM with read-first behaviour
+	always @ (posedge Clock)
+	begin
+		if (Inputs_WE)
+		begin
+			State_Buff[Inputs_WriteAddress] <= Inputs_WriteData;
+		end
+		State_ReadData <= State_Buff[Inputs_ReadAddress];
+	end
 	assign Inputs_ReadAddress = ReadAddress;
 	assign Inputs_WriteAddress = WriteAddress;
 	assign Inputs_WriteData = WriteData;

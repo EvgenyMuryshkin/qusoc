@@ -49,27 +49,25 @@ architecture rtl of SP_WF_RAMModule_TopLevel is
 	signal State_ReadData : unsigned(7 downto 0) := (others => '0');
 	type State_BuffArray is array (0 to 255) of unsigned (7 downto 0);
 	signal State_Buff : State_BuffArray := (others => (others => '0'));
-signal Inputs_Address_reg: unsigned(8 downto 1);
-
+	signal Inputs_Address_reg : unsigned(7 downto 0);
 begin
--- inferred single port RAM with write-first behaviour
-process (Clock)
-begin
-	if rising_edge(Clock) then
-		if (Inputs_WE = '1') then
-			State_Buff(TO_INTEGER(Inputs_Address)) <= Inputs_WriteData;
-		end if;
-		Inputs_Address_reg <= Inputs_Address;
-	end if;
-	State_ReadData <= State_Buff(TO_INTEGER(Inputs_Address_reg));
-end process;
-
 	process (Address, State_ReadData, WE, WriteData)
 	begin
 		Inputs_Address <= Address;
 		Inputs_WriteData <= WriteData;
 		Inputs_WE <= WE;
 		Data <= State_ReadData;
+	end process;
+	-- inferred single port RAM with write-first behaviour
+	process (Clock, Inputs_WE, Inputs_Address, Inputs_WriteData)
+	begin
+		if rising_edge(Clock) then
+			if Inputs_WE = '1' then
+				State_Buff(TO_INTEGER(Inputs_Address_reg)) <= Inputs_WriteData;
+			end if;
+			Inputs_Address_reg <= Inputs_Address;
+		end if;
+		State_ReadData <= State_Buff(TO_INTEGER(Inputs_Address_reg));
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]
