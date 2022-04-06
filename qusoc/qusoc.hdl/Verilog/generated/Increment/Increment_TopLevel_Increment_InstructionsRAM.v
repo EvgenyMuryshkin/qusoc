@@ -172,6 +172,15 @@ module Increment_TopLevel_Increment_InstructionsRAM
 	begin : Init_State_BlockRAM
 $readmemh("Increment_TopLevel_Increment_InstructionsRAM_State_BlockRAM.hex", State_BlockRAM);
 	end
+	// inferred single port RAM with read-first behaviour
+	always @ (posedge BoardSignals_Clock)
+	begin
+		if (SoCBlockRAMModule_L60F9L70T10_SoCBlockRAMModule_L64F17T67_Expr)
+		begin
+			State_BlockRAM[internalWordAddress] <= internalWriteData;
+		end
+		State_ReadValue <= State_BlockRAM[internalWordAddress];
+	end
 	always @ (posedge BoardSignals_Clock)
 	begin
 		if ((BoardSignals_Reset == 1))
@@ -258,15 +267,6 @@ $readmemh("Increment_TopLevel_Increment_InstructionsRAM_State_BlockRAM.hex", Sta
 		begin
 		end
 	end
-// inferred single port RAM with read-first behaviour
-always @ (posedge BoardSignals_Clock)
-begin
-	if (SoCBlockRAMModule_L60F9L70T10_SoCBlockRAMModule_L64F17T67_Expr)
-		State_BlockRAM[internalWordAddress] <= internalWriteData;
-
-	State_ReadValue <= State_BlockRAM[internalWordAddress];
-end
-
 	assign SoCComponentModule_L50F48T93_ExprLhs = { 1'b0, Inputs_Common_Address };
 	assign SoCComponentModule_L50F48T93_ExprRhs = { 1'b0, Inputs_DeviceAddress };
 	assign SoCComponentModule_L50F97T157_ExprLhs = { {3{1'b0}}, Inputs_Common_Address };

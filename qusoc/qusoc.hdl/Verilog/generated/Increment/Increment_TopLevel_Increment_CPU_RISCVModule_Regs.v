@@ -109,6 +109,15 @@ module Increment_TopLevel_Increment_CPU_RISCVModule_Regs
 		for (State_x_i = 0; State_x_i < 32; State_x_i = State_x_i + 1)
 			State_x[State_x_i] = 0;
 	end
+	// inferred simple dual port RAM with read-first behaviour
+	always @ (posedge BoardSignals_Clock)
+	begin
+		if (RegistersRAMModule_L25F9L53T10_we)
+		begin
+			State_x[Inputs_RD] <= Inputs_WriteData;
+		end
+		State_ReadData <= State_x[RegistersRAMModule_L25F9L53T10_readAddress];
+	end
 	always @ (posedge BoardSignals_Clock)
 	begin
 		if ((BoardSignals_Reset == 1))
@@ -180,15 +189,6 @@ module Increment_TopLevel_Increment_CPU_RISCVModule_Regs
 			NextState_RS2 = State_ReadData;
 		end
 	end
-// inferred simple dual port RAM with read-first behaviour
-always @ (posedge BoardSignals_Clock)
-begin
-	if (RegistersRAMModule_L25F9L53T10_we)
-		State_x[Inputs_RD] <= Inputs_WriteData;
-
-	State_ReadData <= State_x[RegistersRAMModule_L25F9L53T10_readAddress];
-end
-
 	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T46_ExprLhs = { 1'b0, State_Mode };
 	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T46_ExprRhs = { {8{1'b0}}, RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F45T46_Expr };
 	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F35T49_ExprLhs = { 1'b0, Inputs_RD };
