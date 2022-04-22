@@ -43,7 +43,7 @@ module SDP_WF_RAMModule_TopLevel
 	wire [7: 0] Inputs_WriteAddress;
 	wire [7: 0] Inputs_WriteData;
 	wire Inputs_WE;
-	reg [7: 0] State_ReadData;
+	wire [7: 0] State_ReadData;
 	reg [7 : 0] State_Buff [0 : 255];
 	integer State_Buff_i;
 	initial
@@ -52,14 +52,16 @@ module SDP_WF_RAMModule_TopLevel
 			State_Buff[State_Buff_i] = 0;
 	end
 	// inferred simple dual port RAM with write-first behaviour
+	reg [7: 0] Inputs_ReadAddress_reg;
 	always @ (posedge Clock)
 	begin
 		if (Inputs_WE)
 		begin
-			State_Buff[Inputs_WriteAddress] = Inputs_WriteData;
+			State_Buff[Inputs_WriteAddress] <= Inputs_WriteData;
 		end
-		State_ReadData <= State_Buff[Inputs_ReadAddress];
+		Inputs_ReadAddress_reg <= Inputs_ReadAddress;
 	end
+	assign State_ReadData = State_Buff[Inputs_ReadAddress_reg];
 	assign Inputs_ReadAddress = ReadAddress;
 	assign Inputs_WriteAddress = WriteAddress;
 	assign Inputs_WriteData = WriteData;

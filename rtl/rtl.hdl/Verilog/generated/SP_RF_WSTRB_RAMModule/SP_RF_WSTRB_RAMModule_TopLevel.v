@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is SP_WF_WSTRB_RAMModule_TopLevel, clock frequency is 1Hz, Top-level
+// System configuration name is SP_RF_WSTRB_RAMModule_TopLevel, clock frequency is 1Hz, Top-level
 // FSM summary
 // -- Packages
-module SP_WF_WSTRB_RAMModule_TopLevel
+module SP_RF_WSTRB_RAMModule_TopLevel
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
@@ -45,17 +45,17 @@ module SP_WF_WSTRB_RAMModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_0_w = 1'b0;
-	wire SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_1_w = 1'b1;
-	wire [1: 0] SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_2_w = 2'b10;
-	wire [1: 0] SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_3_w = 2'b11;
+	wire SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_0_w = 1'b0;
+	wire SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_1_w = 1'b1;
+	wire [1: 0] SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_2_w = 2'b10;
+	wire [1: 0] SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_3_w = 2'b11;
 	wire [7: 0] Inputs_Address;
 	wire Inputs_WE;
 	wire [3: 0] Inputs_WSTRB;
-	wire SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_0_SP_WF_WSTRB_RAMModule_L32F13L35T14_SP_WF_WSTRB_RAMModule_L33F21T36_Index;
-	wire SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_1_SP_WF_WSTRB_RAMModule_L32F13L35T14_SP_WF_WSTRB_RAMModule_L33F21T36_Index;
-	wire SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_2_SP_WF_WSTRB_RAMModule_L32F13L35T14_SP_WF_WSTRB_RAMModule_L33F21T36_Index;
-	wire SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_3_SP_WF_WSTRB_RAMModule_L32F13L35T14_SP_WF_WSTRB_RAMModule_L33F21T36_Index;
+	wire SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_0_SP_RF_WSTRB_RAMModule_L32F13L35T14_SP_RF_WSTRB_RAMModule_L33F21T36_Index;
+	wire SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_1_SP_RF_WSTRB_RAMModule_L32F13L35T14_SP_RF_WSTRB_RAMModule_L33F21T36_Index;
+	wire SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_2_SP_RF_WSTRB_RAMModule_L32F13L35T14_SP_RF_WSTRB_RAMModule_L33F21T36_Index;
+	wire SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_3_SP_RF_WSTRB_RAMModule_L32F13L35T14_SP_RF_WSTRB_RAMModule_L33F21T36_Index;
 	reg [7: 0] State_ReadDataDefault = 8'b00000000;
 	reg [31: 0] State_BuffDefault = 32'b00000000000000000000000000000000;
 	wire [7 : 0] Inputs_WriteData [0 : 3];
@@ -77,7 +77,7 @@ module SP_WF_WSTRB_RAMModule_TopLevel
 	reg [31 : 0] State_Buff [0 : 31];
 	initial
 	begin : Init_State_Buff
-$readmemh("SP_WF_WSTRB_RAMModule_TopLevel_State_Buff.hex", State_Buff);
+$readmemh("SP_RF_WSTRB_RAMModule_TopLevel_State_Buff.hex", State_Buff);
 	end
 	integer NextState_Buff_Iterator;
 	reg [31 : 0] NextState_Buff [0 : 31];
@@ -130,26 +130,26 @@ $readmemh("SP_WF_WSTRB_RAMModule_TopLevel_State_Buff.hex", State_Buff);
 		begin
 			NextState_ReadData[NextState_ReadData_Iterator] = State_ReadData[NextState_ReadData_Iterator];
 		end
-		if ((SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_0_SP_WF_WSTRB_RAMModule_L32F13L35T14_SP_WF_WSTRB_RAMModule_L33F21T36_Index == 1))
+		if ((SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_0_SP_RF_WSTRB_RAMModule_L32F13L35T14_SP_RF_WSTRB_RAMModule_L33F21T36_Index == 1))
 		begin
 			NextState_Buff[Inputs_Address][7:0] = Inputs_WriteData[0];
 		end
-		if ((SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_1_SP_WF_WSTRB_RAMModule_L32F13L35T14_SP_WF_WSTRB_RAMModule_L33F21T36_Index == 1))
+		if ((SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_1_SP_RF_WSTRB_RAMModule_L32F13L35T14_SP_RF_WSTRB_RAMModule_L33F21T36_Index == 1))
 		begin
 			NextState_Buff[Inputs_Address][15:8] = Inputs_WriteData[1];
 		end
-		if ((SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_2_SP_WF_WSTRB_RAMModule_L32F13L35T14_SP_WF_WSTRB_RAMModule_L33F21T36_Index == 1))
+		if ((SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_2_SP_RF_WSTRB_RAMModule_L32F13L35T14_SP_RF_WSTRB_RAMModule_L33F21T36_Index == 1))
 		begin
 			NextState_Buff[Inputs_Address][23:16] = Inputs_WriteData[2];
 		end
-		if ((SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_3_SP_WF_WSTRB_RAMModule_L32F13L35T14_SP_WF_WSTRB_RAMModule_L33F21T36_Index == 1))
+		if ((SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_3_SP_RF_WSTRB_RAMModule_L32F13L35T14_SP_RF_WSTRB_RAMModule_L33F21T36_Index == 1))
 		begin
 			NextState_Buff[Inputs_Address][31:24] = Inputs_WriteData[3];
 		end
-		NextState_ReadData[0] = NextState_Buff[Inputs_Address][7:0];
-		NextState_ReadData[1] = NextState_Buff[Inputs_Address][15:8];
-		NextState_ReadData[2] = NextState_Buff[Inputs_Address][23:16];
-		NextState_ReadData[3] = NextState_Buff[Inputs_Address][31:24];
+		NextState_ReadData[0] = State_Buff[Inputs_Address][7:0];
+		NextState_ReadData[1] = State_Buff[Inputs_Address][15:8];
+		NextState_ReadData[2] = State_Buff[Inputs_Address][23:16];
+		NextState_ReadData[3] = State_Buff[Inputs_Address][31:24];
 	end
 	assign Inputs_Address = Address;
 	assign Inputs_WriteData[0] = WriteData0;
@@ -158,10 +158,10 @@ $readmemh("SP_WF_WSTRB_RAMModule_TopLevel_State_Buff.hex", State_Buff);
 	assign Inputs_WriteData[3] = WriteData3;
 	assign Inputs_WE = WE;
 	assign Inputs_WSTRB = WSTRB;
-	assign SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_0_SP_WF_WSTRB_RAMModule_L32F13L35T14_SP_WF_WSTRB_RAMModule_L33F21T36_Index = Inputs_WSTRB[SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_0_w];
-	assign SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_1_SP_WF_WSTRB_RAMModule_L32F13L35T14_SP_WF_WSTRB_RAMModule_L33F21T36_Index = Inputs_WSTRB[SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_1_w];
-	assign SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_2_SP_WF_WSTRB_RAMModule_L32F13L35T14_SP_WF_WSTRB_RAMModule_L33F21T36_Index = Inputs_WSTRB[SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_2_w];
-	assign SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_3_SP_WF_WSTRB_RAMModule_L32F13L35T14_SP_WF_WSTRB_RAMModule_L33F21T36_Index = Inputs_WSTRB[SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_3_w];
+	assign SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_0_SP_RF_WSTRB_RAMModule_L32F13L35T14_SP_RF_WSTRB_RAMModule_L33F21T36_Index = Inputs_WSTRB[SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_0_w];
+	assign SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_1_SP_RF_WSTRB_RAMModule_L32F13L35T14_SP_RF_WSTRB_RAMModule_L33F21T36_Index = Inputs_WSTRB[SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_1_w];
+	assign SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_2_SP_RF_WSTRB_RAMModule_L32F13L35T14_SP_RF_WSTRB_RAMModule_L33F21T36_Index = Inputs_WSTRB[SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_2_w];
+	assign SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_3_SP_RF_WSTRB_RAMModule_L32F13L35T14_SP_RF_WSTRB_RAMModule_L33F21T36_Index = Inputs_WSTRB[SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_3_w];
 	assign Data0 = State_ReadData[0];
 	assign Data1 = State_ReadData[1];
 	assign Data2 = State_ReadData[2];

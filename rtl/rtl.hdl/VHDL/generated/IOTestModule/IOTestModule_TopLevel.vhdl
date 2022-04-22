@@ -130,8 +130,8 @@ begin
 			NextState_Array(0) <= Inputs_InArray(0);
 			NextState_Array(1) <= Inputs_InArray(1);
 		end if;
-		NextState_IteratorArray(bit_to_integer(IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_0_idx)) <= Inputs_InArray(bit_to_integer(IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_0_idx));
-		NextState_IteratorArray(bit_to_integer(IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_1_idx)) <= Inputs_InArray(bit_to_integer(IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_1_idx));
+		NextState_IteratorArray(bit_to_integer(IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_0_idx)) <= Inputs_InArray(0);
+		NextState_IteratorArray(bit_to_integer(IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_1_idx)) <= Inputs_InArray(1);
 	end process;
 	process (InArray0, InArray1, InFlag, Inputs_InArray, State_Array, State_Flag, State_IteratorArray)
 	begin

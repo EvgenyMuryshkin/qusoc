@@ -37,7 +37,7 @@
 
 set_global_assignment -name FAMILY "Cyclone II"
 set_global_assignment -name DEVICE EP2C70F672C6
-set_global_assignment -name TOP_LEVEL_ENTITY SP_WF_RAMModule_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY TDP_RAMModule_TopLevel
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "20:45:17  JUNE 07, 2019"
 set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
@@ -58,7 +58,8 @@ set_global_assignment -name SIMULATION_WITH_AUTO_GLITCH_FILTERING AUTO
 set_global_assignment -name VECTOR_COMPARE_TRIGGER_MODE INPUT_EDGE
 
 set_global_assignment -name SDC_FILE rtl.sdc
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/SP_WF_RAMModule.vwf
+
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/TDP_RAMModule.vwf
 
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
@@ -173,8 +174,12 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/ReceiverModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/ReceiverModule/ReceiverModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/SDP_RF_RAMModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/SDP_RF_RAMModule/SDP_RF_RAMModule_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/SDP_RF_WSTRB_RAMModule.vwf
+set_global_assignment -name VERILOG_FILE Verilog/generated/SDP_RF_WSTRB_RAMModule/SDP_RF_WSTRB_RAMModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/SDP_WF_RAMModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/SDP_WF_RAMModule/SDP_WF_RAMModule_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/SDP_WF_WSTRB_RAMModule.vwf
+set_global_assignment -name VERILOG_FILE Verilog/generated/SDP_WF_WSTRB_RAMModule/SDP_WF_WSTRB_RAMModule_TopLevel.v
 set_global_assignment -name VERILOG_FILE Quokka.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/ShifterModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/ShifterModule/ShifterModule_TopLevel.v
@@ -184,8 +189,11 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/SignedCastModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/SignedCastModule/SignedCastModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/SP_RF_RAMModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/SP_RF_RAMModule/SP_RF_RAMModule_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/SP_RF_WSTRB_RAMModule.vwf
+set_global_assignment -name VERILOG_FILE Verilog/generated/SP_RF_WSTRB_RAMModule/SP_RF_WSTRB_RAMModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/SP_WF_RAMModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/SP_WF_RAMModule/SP_WF_RAMModule_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/SP_WF_WSTRB_RAMModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/SP_WF_WSTRB_RAMModule/SP_WF_WSTRB_RAMModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StageArraysPipelineModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/StageArraysPipelineModule/StageArraysPipelineModule_TopLevel.v

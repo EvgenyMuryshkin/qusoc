@@ -63,7 +63,7 @@ begin
 	begin
 		if rising_edge(Clock) then
 			if Inputs_WE = '1' then
-				State_Buff(TO_INTEGER(Inputs_Address_reg)) <= Inputs_WriteData;
+				State_Buff(TO_INTEGER(Inputs_Address)) <= Inputs_WriteData;
 			end if;
 			Inputs_Address_reg <= Inputs_Address;
 		end if;
