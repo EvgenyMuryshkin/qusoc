@@ -54,10 +54,6 @@ module SDP_WF_WSTRB_RAMModule_TopLevel
 	wire [7: 0] Inputs_WriteAddress;
 	wire Inputs_WE;
 	wire [3: 0] Inputs_WSTRB;
-	wire SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_0_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index;
-	wire SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_1_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index;
-	wire SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_2_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index;
-	wire SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_3_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index;
 	reg [7: 0] State_ReadDataDefault = 8'b00000000;
 	reg [31: 0] State_BuffDefault = 32'b00000000000000000000000000000000;
 	wire [7 : 0] Inputs_WriteData [0 : 3];
@@ -132,19 +128,19 @@ $readmemh("SDP_WF_WSTRB_RAMModule_TopLevel_State_Buff.hex", State_Buff);
 		begin
 			NextState_ReadData[NextState_ReadData_Iterator] = State_ReadData[NextState_ReadData_Iterator];
 		end
-		if ((SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_0_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index == 1))
+		if ((Inputs_WSTRB[0] == 1))
 		begin
 			NextState_Buff[Inputs_WriteAddress][7:0] = Inputs_WriteData[0];
 		end
-		if ((SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_1_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index == 1))
+		if ((Inputs_WSTRB[1] == 1))
 		begin
 			NextState_Buff[Inputs_WriteAddress][15:8] = Inputs_WriteData[1];
 		end
-		if ((SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_2_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index == 1))
+		if ((Inputs_WSTRB[2] == 1))
 		begin
 			NextState_Buff[Inputs_WriteAddress][23:16] = Inputs_WriteData[2];
 		end
-		if ((SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_3_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index == 1))
+		if ((Inputs_WSTRB[3] == 1))
 		begin
 			NextState_Buff[Inputs_WriteAddress][31:24] = Inputs_WriteData[3];
 		end
@@ -161,10 +157,6 @@ $readmemh("SDP_WF_WSTRB_RAMModule_TopLevel_State_Buff.hex", State_Buff);
 	assign Inputs_WriteData[3] = WriteData3;
 	assign Inputs_WE = WE;
 	assign Inputs_WSTRB = WSTRB;
-	assign SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_0_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index = Inputs_WSTRB[SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_0_w];
-	assign SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_1_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index = Inputs_WSTRB[SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_1_w];
-	assign SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_2_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index = Inputs_WSTRB[SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_2_w];
-	assign SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_3_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index = Inputs_WSTRB[SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_3_w];
 	assign Data0 = State_ReadData[0];
 	assign Data1 = State_ReadData[1];
 	assign Data2 = State_ReadData[2];

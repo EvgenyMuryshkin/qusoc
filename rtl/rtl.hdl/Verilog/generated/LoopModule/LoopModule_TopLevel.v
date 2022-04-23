@@ -57,12 +57,10 @@ module LoopModule_TopLevel
 	reg LoopModule_L85F13L96T14_isValid;
 	reg [7: 0] LoopModule_L85F13L96T14_result;
 	integer LoopModule_L85F13L96T14_idx;
-	wire LoopModule_L16F13L23T14_LoopModule_L17F31T47_Index;
 	reg LoopModule_L16F13L23T14_result;
 	integer LoopModule_L16F13L23T14_idx;
 	reg LoopModule_L29F13L36T14_result;
 	integer LoopModule_L29F13L36T14_idx;
-	wire LoopModule_L42F13L49T14_LoopModule_L43F31T47_Index;
 	reg LoopModule_L42F13L49T14_result;
 	integer LoopModule_L42F13L49T14_idx;
 	reg [7: 0] LoopModule_L55F13L64T14_result;
@@ -85,7 +83,7 @@ module LoopModule_TopLevel
 	end
 	always @ (*)
 	begin
-		LoopModule_L16F13L23T14_result = LoopModule_L16F13L23T14_LoopModule_L17F31T47_Index;
+		LoopModule_L16F13L23T14_result = Inputs_InData[0];
 		for (LoopModule_L16F13L23T14_idx = 1; (LoopModule_L16F13L23T14_idx < 8); LoopModule_L16F13L23T14_idx = (LoopModule_L16F13L23T14_idx + 1))
 		begin
 			LoopModule_L16F13L23T14_result = (LoopModule_L16F13L23T14_result | Inputs_InData[LoopModule_L16F13L23T14_idx]);
@@ -101,7 +99,7 @@ module LoopModule_TopLevel
 	end
 	always @ (*)
 	begin
-		LoopModule_L42F13L49T14_result = LoopModule_L42F13L49T14_LoopModule_L43F31T47_Index;
+		LoopModule_L42F13L49T14_result = Inputs_InData[0];
 		for (LoopModule_L42F13L49T14_idx = 1; (LoopModule_L42F13L49T14_idx < 8); LoopModule_L42F13L49T14_idx = (LoopModule_L42F13L49T14_idx + 1))
 		begin
 			LoopModule_L42F13L49T14_result = (LoopModule_L42F13L49T14_result ^ Inputs_InData[LoopModule_L42F13L49T14_idx]);
@@ -132,10 +130,8 @@ module LoopModule_TopLevel
 	assign Inputs_InData = InData;
 	assign Tuple_Item1 = LoopModule_L85F13L96T14_result;
 	assign Tuple_Item2 = LoopModule_L85F13L96T14_isValid;
-	assign LoopModule_L16F13L23T14_LoopModule_L17F31T47_Index = Inputs_InData[0];
 	assign OutOr = LoopModule_L16F13L23T14_result;
 	assign OutAnd = LoopModule_L29F13L36T14_result;
-	assign LoopModule_L42F13L49T14_LoopModule_L43F31T47_Index = Inputs_InData[0];
 	assign OutXor = LoopModule_L42F13L49T14_result;
 	assign Encode = LoopModule_L55F13L64T14_result;
 	assign LoopModule_L70F13L79T14_LoopModule_L78F24T36_Cast = LoopModule_L70F13L79T14_result[7:0];

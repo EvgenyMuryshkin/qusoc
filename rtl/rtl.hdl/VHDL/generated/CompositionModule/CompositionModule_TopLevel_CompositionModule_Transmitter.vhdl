@@ -66,7 +66,6 @@ architecture rtl of CompositionModule_TopLevel_CompositionModule_Transmitter is
 	signal NextState_Data : unsigned(7 downto 0) := (others => '0');
 	signal NextState_Counter : unsigned(7 downto 0) := (others => '0');
 	signal TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F45T70_Cast : unsigned(7 downto 0) := (others => '0');
-	signal TransmitterModule_L8F28T41_Index : std_logic := '0';
 	signal State_FSM : unsigned(1 downto 0) := "00";
 	constant State_FSMDefault : unsigned(1 downto 0) := "00";
 	signal State_Data : unsigned(7 downto 0) := "00000000";
@@ -177,7 +176,7 @@ begin
 			end if;
 		end if;
 	end process;
-	process (Ack, Data, NextState_FSM, State_Counter, State_Data, State_FSM, TransmitterModule_L10F39T79_Expr, TransmitterModule_L11F46T126_Expr, TransmitterModule_L11F46T78_Expr, TransmitterModule_L11F82T126_Expr, TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F52T69_Expr, TransmitterModule_L8F28T41_Index, TransmitterModule_L9F32T65_Expr, Trigger)
+	process (Ack, Data, NextState_FSM, State_Counter, State_Data, State_FSM, TransmitterModule_L10F39T79_Expr, TransmitterModule_L11F46T126_Expr, TransmitterModule_L11F46T78_Expr, TransmitterModule_L11F82T126_Expr, TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F52T69_Expr, TransmitterModule_L9F32T65_Expr, Trigger)
 	begin
 		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L16F17L23T27_CaseLhs(2) <= '0';
 		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L16F17L23T27_CaseLhs(1 downto 0) <= signed(State_FSM);
@@ -222,8 +221,7 @@ begin
 		Inputs_Ack <= Ack;
 		Inputs_Data <= Data;
 		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F45T70_Cast <= TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F52T69_Expr(7 downto 0);
-		TransmitterModule_L8F28T41_Index <= State_Data(0);
-		Bit <= TransmitterModule_L8F28T41_Index;
+		Bit <= State_Data(0);
 		IsReady <= TransmitterModule_L9F32T65_Expr;
 		IsTransmitting <= TransmitterModule_L10F39T79_Expr;
 		IsTransmissionStarted <= TransmitterModule_L11F46T126_Expr;

@@ -65,7 +65,6 @@ module CompositionModule_TopLevel_CompositionModule_Transmitter
 	reg [7: 0] NextState_Data;
 	reg [7: 0] NextState_Counter;
 	wire [7: 0] TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F45T70_Cast;
-	wire TransmitterModule_L8F28T41_Index;
 	reg [1: 0] State_FSM = 2'b00;
 	wire [1: 0] State_FSMDefault = 2'b00;
 	reg [7: 0] State_Data = 8'b00000000;
@@ -197,8 +196,7 @@ module CompositionModule_TopLevel_CompositionModule_Transmitter
 	assign Inputs_Ack = Ack;
 	assign Inputs_Data = Data;
 	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F45T70_Cast = TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F52T69_Expr[7:0];
-	assign TransmitterModule_L8F28T41_Index = State_Data[0];
-	assign Bit = TransmitterModule_L8F28T41_Index;
+	assign Bit = State_Data[0];
 	assign IsReady = TransmitterModule_L9F32T65_Expr;
 	assign IsTransmitting = TransmitterModule_L10F39T79_Expr;
 	assign IsTransmissionStarted = TransmitterModule_L11F46T126_Expr;

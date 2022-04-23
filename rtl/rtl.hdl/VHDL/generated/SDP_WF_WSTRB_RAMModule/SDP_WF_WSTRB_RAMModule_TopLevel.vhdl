@@ -59,10 +59,6 @@ architecture rtl of SDP_WF_WSTRB_RAMModule_TopLevel is
 	signal Inputs_WriteAddress : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_WE : std_logic := '0';
 	signal Inputs_WSTRB : unsigned(3 downto 0) := (others => '0');
-	signal SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_0_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index : std_logic := '0';
-	signal SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_1_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index : std_logic := '0';
-	signal SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_2_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index : std_logic := '0';
-	signal SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_3_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index : std_logic := '0';
 	signal State_ReadDataDefault : unsigned(7 downto 0) := "00000000";
 	signal State_BuffDefault : unsigned(31 downto 0) := "00000000000000000000000000000000";
 	type Inputs_WriteDataArray is array (0 to 3) of unsigned (7 downto 0);
@@ -138,7 +134,7 @@ begin
 			end if;
 		end if;
 	end process;
-	process (Inputs_WriteData, NextState_Buff, SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_0_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index, SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_1_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index, SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_2_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index, SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_3_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index, State_Buff, State_ReadData)
+	process (Inputs_WriteData, Inputs_WSTRB, NextState_Buff, State_Buff, State_ReadData)
 	begin
 		for NextState_Buff_Iterator in 0 to 31 loop
 			NextState_Buff(NextState_Buff_Iterator) <= State_Buff(NextState_Buff_Iterator);
@@ -146,16 +142,16 @@ begin
 		for NextState_ReadData_Iterator in 0 to 3 loop
 			NextState_ReadData(NextState_ReadData_Iterator) <= State_ReadData(NextState_ReadData_Iterator);
 		end loop;
-		if SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_0_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index = '1' then
+		if Inputs_WSTRB(0) = '1' then
 			NextState_Buff(TO_INTEGER(Inputs_WriteAddress))(7 downto 0) <= Inputs_WriteData(0);
 		end if;
-		if SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_1_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index = '1' then
+		if Inputs_WSTRB(1) = '1' then
 			NextState_Buff(TO_INTEGER(Inputs_WriteAddress))(15 downto 8) <= Inputs_WriteData(1);
 		end if;
-		if SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_2_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index = '1' then
+		if Inputs_WSTRB(2) = '1' then
 			NextState_Buff(TO_INTEGER(Inputs_WriteAddress))(23 downto 16) <= Inputs_WriteData(2);
 		end if;
-		if SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_3_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index = '1' then
+		if Inputs_WSTRB(3) = '1' then
 			NextState_Buff(TO_INTEGER(Inputs_WriteAddress))(31 downto 24) <= Inputs_WriteData(3);
 		end if;
 		NextState_ReadData(0) <= NextState_Buff(TO_INTEGER(Inputs_ReadAddress))(7 downto 0);
@@ -163,7 +159,7 @@ begin
 		NextState_ReadData(2) <= NextState_Buff(TO_INTEGER(Inputs_ReadAddress))(23 downto 16);
 		NextState_ReadData(3) <= NextState_Buff(TO_INTEGER(Inputs_ReadAddress))(31 downto 24);
 	end process;
-	process (Inputs_WSTRB, ReadAddress, State_ReadData, WE, WriteAddress, WriteData0, WriteData1, WriteData2, WriteData3, WSTRB)
+	process (ReadAddress, State_ReadData, WE, WriteAddress, WriteData0, WriteData1, WriteData2, WriteData3, WSTRB)
 	begin
 		Inputs_ReadAddress <= ReadAddress;
 		Inputs_WriteAddress <= WriteAddress;
@@ -173,10 +169,6 @@ begin
 		Inputs_WriteData(3) <= WriteData3;
 		Inputs_WE <= WE;
 		Inputs_WSTRB <= WSTRB;
-		SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_0_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index <= Inputs_WSTRB(bit_to_integer(SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_0_w));
-		SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_1_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index <= Inputs_WSTRB(bit_to_integer(SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_1_w));
-		SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_2_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index <= Inputs_WSTRB(TO_INTEGER(SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_2_w));
-		SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_3_SDP_WF_WSTRB_RAMModule_L33F13L36T14_SDP_WF_WSTRB_RAMModule_L34F21T36_Index <= Inputs_WSTRB(TO_INTEGER(SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_3_w));
 		Data0 <= State_ReadData(0);
 		Data1 <= State_ReadData(1);
 		Data2 <= State_ReadData(2);
