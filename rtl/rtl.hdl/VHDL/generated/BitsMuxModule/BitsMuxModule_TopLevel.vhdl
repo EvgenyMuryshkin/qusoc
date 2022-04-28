@@ -44,7 +44,6 @@ architecture rtl of BitsMuxModule_TopLevel is
 	signal Inputs_Addr : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_Value : unsigned(7 downto 0) := (others => '0');
 	signal pixelAddress : unsigned(1 downto 0) := (others => '0');
-	signal BitsMuxModule_L14F42T71_Source : unsigned(7 downto 0) := (others => '0');
 	signal BitsMuxModule_L14F41T100_Index : unsigned(1 downto 0) := (others => '0');
 	signal BitsMuxModule_L14F42T93_Expr : unsigned(7 downto 0) := "00000000";
 	signal BitsMuxModule_L14F42T93_Expr_1 : unsigned(7 downto 0) := "00000000";
@@ -60,9 +59,9 @@ begin
 	begin
 		BitsMuxModule_L14F76T92_Expr <= resize(unsigned(signed(resize(BitsMuxModule_L14F76T92_Expr_1, BitsMuxModule_L14F76T92_Expr_1'length + 1)) * signed(resize(BitsMuxModule_L14F76T92_Expr_2, BitsMuxModule_L14F76T92_Expr_2'length + 1))), BitsMuxModule_L14F76T92_Expr'length);
 	end process;
-	process (Addr, BitsMuxModule_L14F41T100_Index, BitsMuxModule_L14F42T71_Source, BitsMuxModule_L14F42T93_Expr, Inputs_Addr, Inputs_Value, pixelAddress, Value)
+	process (Addr, BitsMuxModule_L14F41T100_Index, BitsMuxModule_L14F42T93_Expr, Inputs_Addr, Inputs_Value, pixelAddress, Value)
 	begin
-		BitsMuxModule_L14F42T93_Expr_1 <= BitsMuxModule_L14F42T71_Source;
+		BitsMuxModule_L14F42T93_Expr_1 <= Inputs_Value;
 		BitsMuxModule_L14F76T92_Expr_1(4 downto 2) <= (others => '0');
 		BitsMuxModule_L14F76T92_Expr_1(1 downto 0) <= signed(BitsMuxModule_L14F76T77_Expr);
 		BitsMuxModule_L14F76T92_Expr_2(4 downto 2) <= (others => '0');
@@ -70,7 +69,6 @@ begin
 		Inputs_Addr <= Addr;
 		Inputs_Value <= Value;
 		pixelAddress <= Inputs_Addr(1 downto 0);
-		BitsMuxModule_L14F42T71_Source <= Inputs_Value;
 		BitsMuxModule_L14F41T100_Index <= BitsMuxModule_L14F42T93_Expr(1 downto 0);
 		pixelBits <= BitsMuxModule_L14F41T100_Index;
 	end process;

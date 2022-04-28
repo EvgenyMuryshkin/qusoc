@@ -43,10 +43,8 @@ architecture rtl of BitArrayGetterModule_TopLevel is
 	constant BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F36T38_Expr : unsigned(5 downto 0) := "110010";
 	constant BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F41T44_Expr : unsigned(6 downto 0) := "1100100";
 	signal Inputs_Value : unsigned(7 downto 0) := (others => '0');
-	signal BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L17F30T60_Source : unsigned(7 downto 0) := (others => '0');
 	signal BitArrayGetterModule_L16F13L25T14_result : unsigned(7 downto 0) := (others => '0');
 	signal BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L20F30T38_Cast : unsigned(7 downto 0) := "00101010";
-	signal BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L22F30T59_Source : unsigned(7 downto 0) := (others => '0');
 	signal BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L22F30T70_Resize : unsigned(7 downto 0) := (others => '0');
 	signal BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_Expr : std_logic := '0';
 	signal BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_ExprLhs : signed(8 downto 0) := "000000000";
@@ -57,16 +55,16 @@ architecture rtl of BitArrayGetterModule_TopLevel is
 begin
 	BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_Expr <= '1' when (signed(resize(BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_ExprLhs, BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_ExprLhs'length + 1)) < signed(resize(BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_ExprRhs, BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_ExprRhs'length + 1))) else '0';
 	BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_Expr <= '1' when (signed(resize(BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_ExprLhs, BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_ExprLhs'length + 1)) < signed(resize(BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_ExprRhs, BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_ExprRhs'length + 1))) else '0';
-	process (BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L17F30T60_Source, BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_Expr, BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L20F30T38_Cast, BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_Expr, BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L22F30T70_Resize)
+	process (BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_Expr, BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L20F30T38_Cast, BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_Expr, BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L22F30T70_Resize)
 	begin
-		BitArrayGetterModule_L16F13L25T14_result <= BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L17F30T60_Source;
+		BitArrayGetterModule_L16F13L25T14_result <= BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L17F46T59_Expr;
 		if BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_Expr = '1' then
 			BitArrayGetterModule_L16F13L25T14_result <= BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L20F30T38_Cast;
 		elsif BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_Expr = '1' then
 			BitArrayGetterModule_L16F13L25T14_result <= BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L22F30T70_Resize;
 		end if;
 	end process;
-	process (BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L22F30T59_Source, BitArrayGetterModule_L16F13L25T14_result, Inputs_Value, Value)
+	process (BitArrayGetterModule_L16F13L25T14_result, Inputs_Value, Value)
 	begin
 		BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_ExprLhs(8) <= '0';
 		BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_ExprLhs(7 downto 0) <= signed(Inputs_Value);
@@ -77,9 +75,7 @@ begin
 		BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_ExprRhs(8 downto 7) <= (others => '0');
 		BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_ExprRhs(6 downto 0) <= signed(BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F41T44_Expr);
 		Inputs_Value <= Value;
-		BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L17F30T60_Source <= BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L17F46T59_Expr;
-		BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L22F30T59_Source <= Inputs_Value;
-		BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L22F30T70_Resize <= BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L22F30T59_Source;
+		BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L22F30T70_Resize <= Inputs_Value;
 		Getter <= BitArrayGetterModule_L16F13L25T14_result;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]

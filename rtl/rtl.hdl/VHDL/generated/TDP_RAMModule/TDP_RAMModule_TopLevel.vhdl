@@ -129,7 +129,7 @@ begin
 		OutCorrupted <= State_SameAddressWrite;
 	end process;
 	-- Port A
-	process (Clock, Inputs_WE_A, Inputs_Addr_A, Inputs_WriteData_A)
+	process (Clock, Inputs_WE_A, Inputs_Addr_A)
 	begin
 		if rising_edge(Clock) then
 			if Inputs_WE_A = '1' then
@@ -139,7 +139,7 @@ begin
 		end if;
 	end process;
 	-- Port B
-	process (Clock, Inputs_WE_B, Inputs_Addr_B, Inputs_WriteData_B)
+	process (Clock, Inputs_WE_B, Inputs_Addr_B)
 	begin
 		if rising_edge(Clock) then
 			if Inputs_WE_B = '1' then

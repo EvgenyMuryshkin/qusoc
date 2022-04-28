@@ -49,8 +49,6 @@ module ArrayToBitArrayModule_TopLevel
 	wire true = 1'b1;
 	wire false = 1'b0;
 	reg [7: 0] State_ReadDataDefault = 8'b00000000;
-	wire [31: 0] ArrayToBitArrayModule_L20F49T80_Source;
-	wire [31: 0] ArrayToBitArrayModule_L21F47T78_Source;
 	wire [7 : 0] Inputs_InArray [0 : 3];
 	integer State_ReadData_Iterator;
 	reg [7 : 0] State_ReadData [0 : 3];
@@ -106,10 +104,8 @@ module ArrayToBitArrayModule_TopLevel
 	assign OutDataArray1 = State_ReadData[1];
 	assign OutDataArray2 = State_ReadData[2];
 	assign OutDataArray3 = State_ReadData[3];
-	assign ArrayToBitArrayModule_L20F49T80_Source = { Inputs_InArray[3], Inputs_InArray[2], Inputs_InArray[1], Inputs_InArray[0] };
-	assign OutInputsBitArray = ArrayToBitArrayModule_L20F49T80_Source;
-	assign ArrayToBitArrayModule_L21F47T78_Source = { State_ReadData[3], State_ReadData[2], State_ReadData[1], State_ReadData[0] };
-	assign OutDataBitArray = ArrayToBitArrayModule_L21F47T78_Source;
+	assign OutInputsBitArray = { Inputs_InArray[3], Inputs_InArray[2], Inputs_InArray[1], Inputs_InArray[0] };
+	assign OutDataBitArray = { State_ReadData[3], State_ReadData[2], State_ReadData[1], State_ReadData[0] };
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

@@ -62,9 +62,9 @@ module BitArrayModule_TopLevel
 	wire [7: 0] BitArrayModule_L20F40T50_Index;
 	wire [3: 0] BitArrayModule_L21F44T54_Index;
 	wire [3: 0] BitArrayModule_L22F43T53_Index;
-	wire [3: 0] BitArrayModule_L23F37T74_Source;
 	wire [1: 0] BitArrayModule_L23F53T62_Index;
 	wire [1: 0] BitArrayModule_L23F64T73_Index;
+	wire [3: 0] BitArrayModule_L23F37T74_Source;
 	wire [3: 0] BitArrayModule_L24F41T81_Source;
 	wire [3: 0] BitArrayModule_L25F41T81_Source;
 	wire [7: 0] BitArrayModule_L17F46T61_Expr;

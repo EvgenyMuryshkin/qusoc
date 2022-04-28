@@ -67,7 +67,6 @@ module OverrideScheduleComposition_TopLevel
 	wire L3Override_InOverride;
 	wire [7: 0] L3Override_InValue;
 	wire [7: 0] L3Override_OutValue;
-	wire [7: 0] OverrideInputsComposition_L7F40T71_Source;
 	wire NoOverrideInOverrideNoOverride_InOverrideHardLink;
 	wire [7: 0] NoOverrideInValueNoOverride_InValueHardLink;
 	wire [7: 0] NoOverrideOutValueNoOverride_OutValueHardLink;
@@ -147,12 +146,11 @@ module OverrideScheduleComposition_TopLevel
 		.OutValue (L3OverrideOutValueL3Override_OutValueHardLink)
 	);
 	assign OverrideInputsComposition_L14F30T48_Expr_1 = Inputs_InOverride;
-	assign OverrideInputsComposition_L7F38T72_Expr_1 = OverrideInputsComposition_L7F40T71_Source;
+	assign OverrideInputsComposition_L7F38T72_Expr_1 = Inputs_InValue;
 	assign Inputs_InOverride = InOverride;
 	assign Inputs_InValue = InValue;
 	assign ModulesInputs_InOverride = OverrideInputsComposition_L14F30T48_Expr;
 	assign ModulesInputs_InValue = InvertedInput;
-	assign OverrideInputsComposition_L7F40T71_Source = Inputs_InValue;
 	assign InvertedInput = OverrideInputsComposition_L7F38T72_Expr;
 	assign L1Override_InOverride = ModulesInputs_InOverride;
 	assign L1Override_InValue = ModulesInputs_InValue;

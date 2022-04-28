@@ -11,12 +11,12 @@ Linker script and memory map
 .text           0x0000000000000000      0x29c
                 0x0000000000000000                . = ALIGN (0x4)
  *(.text)
- .text          0x0000000000000000        0xc /tmp/ccyvc4wH.o
- .text          0x000000000000000c      0x1b0 /tmp/ccFKYJid.o
+ .text          0x0000000000000000        0xc /tmp/ccDoHXdv.o
+ .text          0x000000000000000c      0x1b0 /tmp/cc7YDL47.o
                 0x000000000000000c                Arrays::Firmware::Fill(unsigned long)
                 0x00000000000000c0                Arrays::Firmware::Sum(unsigned long)
                 0x0000000000000170                Arrays::Firmware::EntryPoint()
- .text          0x00000000000001bc       0x28 /tmp/ccozqY5I.o
+ .text          0x00000000000001bc       0x28 /tmp/ccfKytXK.o
                 0x00000000000001bc                main
  *(.text*)
  *(.rodata)
@@ -24,8 +24,8 @@ Linker script and memory map
  *(.srodata)
  *(.srodata*)
  *(.eh_frame)
- .eh_frame      0x00000000000001e4       0x80 /tmp/ccFKYJid.o
- .eh_frame      0x0000000000000264       0x38 /tmp/ccozqY5I.o
+ .eh_frame      0x00000000000001e4       0x80 /tmp/cc7YDL47.o
+ .eh_frame      0x0000000000000264       0x38 /tmp/ccfKytXK.o
  *(.eh_frame*)
                 0x000000000000029c                . = ALIGN (0x4)
                 0x000000000000029c                _etext = .
@@ -36,9 +36,9 @@ Linker script and memory map
                 0x000000000000029c                _sdata = .
                 0x000000000000029c                _ram_start = .
  *(.data)
- .data          0x000000000000029c        0x0 /tmp/ccyvc4wH.o
- .data          0x000000000000029c        0x0 /tmp/ccFKYJid.o
- .data          0x000000000000029c        0x0 /tmp/ccozqY5I.o
+ .data          0x000000000000029c        0x0 /tmp/ccDoHXdv.o
+ .data          0x000000000000029c        0x0 /tmp/cc7YDL47.o
+ .data          0x000000000000029c        0x0 /tmp/ccfKytXK.o
  *(.data*)
  *(.sdata)
  *(.sdata*)
@@ -51,12 +51,12 @@ Linker script and memory map
                 0x000000000000029c                . = ALIGN (0x4)
                 0x000000000000029c                _sbss = .
  *(.bss)
- .bss           0x000000000000029c        0x0 /tmp/ccyvc4wH.o
- .bss           0x000000000000029c       0x70 /tmp/ccFKYJid.o
+ .bss           0x000000000000029c        0x0 /tmp/ccDoHXdv.o
+ .bss           0x000000000000029c       0x70 /tmp/cc7YDL47.o
                 0x000000000000029c                Arrays::Firmware::S8Buff
                 0x00000000000002ac                Arrays::Firmware::S16Buff
                 0x00000000000002cc                Arrays::Firmware::U32Buff
- .bss           0x000000000000030c        0x0 /tmp/ccozqY5I.o
+ .bss           0x000000000000030c        0x0 /tmp/ccfKytXK.o
  *(.bss*)
  *(.sbss)
  *(.sbss*)
@@ -67,25 +67,25 @@ Linker script and memory map
 .heap           0x000000000000030c        0x0
                 0x000000000000030c                . = ALIGN (0x4)
                 0x000000000000030c                _heap_start = .
-LOAD /tmp/ccyvc4wH.o
-LOAD /tmp/ccFKYJid.o
-LOAD /tmp/ccozqY5I.o
+LOAD /tmp/ccDoHXdv.o
+LOAD /tmp/cc7YDL47.o
+LOAD /tmp/ccfKytXK.o
 OUTPUT(firmware.elf elf32-littleriscv)
 
 .comment        0x0000000000000000       0x11
- .comment       0x0000000000000000       0x11 /tmp/ccFKYJid.o
+ .comment       0x0000000000000000       0x11 /tmp/cc7YDL47.o
                                          0x12 (size before relaxing)
- .comment       0x0000000000000011       0x12 /tmp/ccozqY5I.o
+ .comment       0x0000000000000011       0x12 /tmp/ccfKytXK.o
 
 Cross Reference Table
 
 Symbol                                            File
-Arrays::Firmware::EntryPoint()                    /tmp/ccFKYJid.o
-                                                  /tmp/ccozqY5I.o
-Arrays::Firmware::Fill(unsigned long)             /tmp/ccFKYJid.o
-Arrays::Firmware::S16Buff                         /tmp/ccFKYJid.o
-Arrays::Firmware::S8Buff                          /tmp/ccFKYJid.o
-Arrays::Firmware::Sum(unsigned long)              /tmp/ccFKYJid.o
-Arrays::Firmware::U32Buff                         /tmp/ccFKYJid.o
-main                                              /tmp/ccozqY5I.o
-                                                  /tmp/ccyvc4wH.o
+Arrays::Firmware::EntryPoint()                    /tmp/cc7YDL47.o
+                                                  /tmp/ccfKytXK.o
+Arrays::Firmware::Fill(unsigned long)             /tmp/cc7YDL47.o
+Arrays::Firmware::S16Buff                         /tmp/cc7YDL47.o
+Arrays::Firmware::S8Buff                          /tmp/cc7YDL47.o
+Arrays::Firmware::Sum(unsigned long)              /tmp/cc7YDL47.o
+Arrays::Firmware::U32Buff                         /tmp/cc7YDL47.o
+main                                              /tmp/ccfKytXK.o
+                                                  /tmp/ccDoHXdv.o

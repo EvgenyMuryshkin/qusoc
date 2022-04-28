@@ -58,7 +58,7 @@ begin
 		Data <= State_ReadData;
 	end process;
 	-- inferred single port RAM with read-first behaviour
-	process (Clock, Inputs_WE, Inputs_Address, Inputs_WriteData)
+	process (Clock, Inputs_WE, Inputs_Address, Inputs_WriteData, State_Buff)
 	begin
 		if rising_edge(Clock) then
 			if Inputs_WE = '1' then

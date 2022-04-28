@@ -67,9 +67,9 @@ architecture rtl of BitArrayModule_TopLevel is
 	signal BitArrayModule_L20F40T50_Index : unsigned(7 downto 0) := (others => '0');
 	signal BitArrayModule_L21F44T54_Index : unsigned(3 downto 0) := (others => '0');
 	signal BitArrayModule_L22F43T53_Index : unsigned(3 downto 0) := (others => '0');
-	signal BitArrayModule_L23F37T74_Source : unsigned(3 downto 0) := (others => '0');
 	signal BitArrayModule_L23F53T62_Index : unsigned(1 downto 0) := (others => '0');
 	signal BitArrayModule_L23F64T73_Index : unsigned(1 downto 0) := (others => '0');
+	signal BitArrayModule_L23F37T74_Source : unsigned(3 downto 0) := (others => '0');
 	signal BitArrayModule_L24F41T81_Source : unsigned(3 downto 0) := (others => '0');
 	signal BitArrayModule_L25F41T81_Source : unsigned(3 downto 0) := (others => '0');
 	signal BitArrayModule_L17F46T61_Expr : unsigned(7 downto 0) := "00000000";

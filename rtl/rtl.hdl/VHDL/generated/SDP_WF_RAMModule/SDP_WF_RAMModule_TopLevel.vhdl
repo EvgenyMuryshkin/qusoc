@@ -62,7 +62,7 @@ begin
 		Data <= State_ReadData;
 	end process;
 	-- inferred simple dual port RAM with write-first behaviour
-	process (Clock, Inputs_WE, Inputs_WriteAddress, Inputs_WriteData, Inputs_ReadAddress)
+	process (Clock, Inputs_WE, Inputs_WriteAddress, Inputs_WriteData, Inputs_ReadAddress_reg, State_Buff, Inputs_ReadAddress)
 	begin
 		if rising_edge(Clock) then
 			if Inputs_WE = '1' then

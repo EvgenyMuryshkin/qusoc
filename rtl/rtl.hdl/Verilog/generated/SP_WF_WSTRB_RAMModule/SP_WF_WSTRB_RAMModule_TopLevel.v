@@ -32,10 +32,7 @@ module SP_WF_WSTRB_RAMModule_TopLevel
 	input wire [7:0] WriteData3,
 	input wire WE,
 	input wire [3:0] WSTRB,
-	output wire [7:0] Data0,
-	output wire [7:0] Data1,
-	output wire [7:0] Data2,
-	output wire [7:0] Data3
+	output wire [31:0] Data
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -52,23 +49,11 @@ module SP_WF_WSTRB_RAMModule_TopLevel
 	wire [7: 0] Inputs_Address;
 	wire Inputs_WE;
 	wire [3: 0] Inputs_WSTRB;
-	reg [7: 0] State_ReadDataDefault = 8'b00000000;
+	reg [31: 0] NextState_ReadData;
 	reg [31: 0] State_BuffDefault = 32'b00000000000000000000000000000000;
+	reg [31: 0] State_ReadData = 32'b00000000000000000000000000000000;
+	wire [31: 0] State_ReadDataDefault = 32'b00000000000000000000000000000000;
 	wire [7 : 0] Inputs_WriteData [0 : 3];
-	integer State_ReadData_Iterator;
-	reg [7 : 0] State_ReadData [0 : 3];
-	initial
-	begin : Init_State_ReadData
-		for (State_ReadData_Iterator = 0; State_ReadData_Iterator < 4; State_ReadData_Iterator = State_ReadData_Iterator + 1)
-			State_ReadData[State_ReadData_Iterator] = 0;
-	end
-	integer NextState_ReadData_Iterator;
-	reg [7 : 0] NextState_ReadData [0 : 3];
-	initial
-	begin : Init_NextState_ReadData
-		for (NextState_ReadData_Iterator = 0; NextState_ReadData_Iterator < 4; NextState_ReadData_Iterator = NextState_ReadData_Iterator + 1)
-			NextState_ReadData[NextState_ReadData_Iterator] = 0;
-	end
 	integer State_Buff_Iterator;
 	reg [31 : 0] State_Buff [0 : 31];
 	initial
@@ -86,17 +71,11 @@ $readmemh("SP_WF_WSTRB_RAMModule_TopLevel_State_Buff.hex", State_Buff);
 	begin
 		if ((Reset == 1))
 		begin
-			for (State_ReadData_Iterator = 0; (State_ReadData_Iterator < 4); State_ReadData_Iterator = (State_ReadData_Iterator + 1))
-			begin
-				State_ReadData[State_ReadData_Iterator] <= State_ReadDataDefault;
-			end
+			State_ReadData <= State_ReadDataDefault;
 		end
 		else
 		begin
-			for (State_ReadData_Iterator = 0; (State_ReadData_Iterator < 4); State_ReadData_Iterator = (State_ReadData_Iterator + 1))
-			begin
-				State_ReadData[State_ReadData_Iterator] <= NextState_ReadData[State_ReadData_Iterator];
-			end
+			State_ReadData <= NextState_ReadData;
 		end
 	end
 	always @ (posedge Clock)
@@ -122,10 +101,7 @@ $readmemh("SP_WF_WSTRB_RAMModule_TopLevel_State_Buff.hex", State_Buff);
 		begin
 			NextState_Buff[NextState_Buff_Iterator] = State_Buff[NextState_Buff_Iterator];
 		end
-		for (NextState_ReadData_Iterator = 0; (NextState_ReadData_Iterator < 4); NextState_ReadData_Iterator = (NextState_ReadData_Iterator + 1))
-		begin
-			NextState_ReadData[NextState_ReadData_Iterator] = State_ReadData[NextState_ReadData_Iterator];
-		end
+		NextState_ReadData = State_ReadData;
 		if ((Inputs_WSTRB[0] == 1))
 		begin
 			NextState_Buff[Inputs_Address][7:0] = Inputs_WriteData[0];
@@ -142,10 +118,7 @@ $readmemh("SP_WF_WSTRB_RAMModule_TopLevel_State_Buff.hex", State_Buff);
 		begin
 			NextState_Buff[Inputs_Address][31:24] = Inputs_WriteData[3];
 		end
-		NextState_ReadData[0] = NextState_Buff[Inputs_Address][7:0];
-		NextState_ReadData[1] = NextState_Buff[Inputs_Address][15:8];
-		NextState_ReadData[2] = NextState_Buff[Inputs_Address][23:16];
-		NextState_ReadData[3] = NextState_Buff[Inputs_Address][31:24];
+		NextState_ReadData = NextState_Buff[Inputs_Address];
 	end
 	assign Inputs_Address = Address;
 	assign Inputs_WriteData[0] = WriteData0;
@@ -154,10 +127,7 @@ $readmemh("SP_WF_WSTRB_RAMModule_TopLevel_State_Buff.hex", State_Buff);
 	assign Inputs_WriteData[3] = WriteData3;
 	assign Inputs_WE = WE;
 	assign Inputs_WSTRB = WSTRB;
-	assign Data0 = State_ReadData[0];
-	assign Data1 = State_ReadData[1];
-	assign Data2 = State_ReadData[2];
-	assign Data3 = State_ReadData[3];
+	assign Data = State_ReadData;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

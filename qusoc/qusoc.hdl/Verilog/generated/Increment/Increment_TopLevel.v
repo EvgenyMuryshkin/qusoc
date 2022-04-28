@@ -88,7 +88,6 @@ module Increment_TopLevel
 	wire CounterModule_IsActive;
 	wire [31: 0] CounterModule_Value;
 	wire [1: 0] QuSoCModule_L46F47T98_Source;
-	wire [1: 0] QuSoCModule_L47F46T69_Index;
 	reg QuSoCModule_L108F13L121T14_hasActive;
 	reg [7: 0] QuSoCModule_L108F13L121T14_address;
 	integer QuSoCModule_L108F13L121T14_idx;
@@ -286,8 +285,7 @@ module Increment_TopLevel
 	assign QuSoCModule_L46F47T109_Expr_1 = QuSoCModule_L46F47T98_Source;
 	assign QuSoCModule_L46F47T98_Source = { InstructionsRAM_IsActive, CounterModule_IsActive };
 	assign CombinedModuleIsActive = QuSoCModule_L46F47T109_Expr;
-	assign QuSoCModule_L47F46T69_Index = CPU_MemAccessMode[1:0];
-	assign internalMemAccessMode = QuSoCModule_L47F46T69_Index;
+	assign internalMemAccessMode = CPU_MemAccessMode[1:0];
 	assign ModuleCommon_Address = CPU_MemAddress;
 	assign ModuleCommon_WriteValue = CPU_MemWriteData;
 	assign ModuleCommon_WE = CPU_MemWrite;
