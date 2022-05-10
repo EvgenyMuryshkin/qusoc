@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Quokka.FPGA" Version="0.1.3.160" />
+    <PackageReference Include="Quokka.FPGA" Version="0.1.3.161" />
     <PackageReference Include="Quokka.RTL" Version="0.1.3.404" />
   </ItemGroup>
   <ItemGroup>
