@@ -1,1 +1,1 @@
-Warning (10268): Verilog HDL information at SDP_WF_RAMModule_TopLevel.v(55): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at SP_WF_WSTRB_RAMModule_TopLevel.v(61): always construct contains both blocking and non-blocking assignments

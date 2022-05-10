@@ -118,12 +118,6 @@ module TDP_RAMModule_TopLevel
 	begin
 		NextState_SameAddressWrite = State_SameAddressWrite;
 		NextState_SameAddressWrite = TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr;
-		if ((Inputs_WE_A == 1))
-		begin
-		end
-		if ((Inputs_WE_B == 1))
-		begin
-		end
 	end
 	assign TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_ExprLhs = { 1'b0, Inputs_Addr_A };
 	assign TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_ExprRhs = { 1'b0, Inputs_Addr_B };

@@ -1,5 +1,5 @@
 Simulator report for VHDL
-Thu Apr 28 21:49:13 2022
+Tue May 10 21:30:30 2022
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -264,7 +264,7 @@ Info: Running Quartus II Simulator
     Info: programming logic devices manufactured by Altera and sold by 
     Info: Altera or its authorized distributors.  Please refer to the 
     Info: applicable agreement for further details.
-    Info: Processing started: Thu Apr 28 21:49:13 2022
+    Info: Processing started: Tue May 10 21:30:29 2022
 Info: Command: quartus_sim C:\code\qusoc\rtl\rtl.hdl\VHDL.qpf --read_settings_files=on --write_settings_files=off -c VHDL
 Info: Using vector source file "Waveforms/TDP_RAMModule.vwf"
 Info: Overwriting simulation input file with simulation results
@@ -293,8 +293,8 @@ Info: Number of transitions in simulation is 2160
 Info: Vector file TDP_RAMModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
 Info: Quartus II Simulator was successful. 0 errors, 16 warnings
     Info: Peak virtual memory: 160 megabytes
-    Info: Processing ended: Thu Apr 28 21:49:13 2022
-    Info: Elapsed time: 00:00:00
+    Info: Processing ended: Tue May 10 21:30:30 2022
+    Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:02
 
 

@@ -14,7 +14,7 @@ namespace RTL.Modules
 
     public class SP_WF_WSTRB_RAMModule_State
     {
-        public uint ReadData;
+        public byte[] ReadData = new byte[4];
         public byte[][] Buff = Enumerable.Range(0, 32).Select(idx => new byte[4]).ToArray();
     }
 
@@ -32,9 +32,9 @@ namespace RTL.Modules
             {
                 if (Inputs.WSTRB[w])
                     NextState.Buff[Inputs.Address][w] = Inputs.WriteData[w];
-            }
 
-            NextState.ReadData = new RTLBitArray(NextState.Buff[Inputs.Address]);
+                NextState.ReadData[w] = NextState.Buff[Inputs.Address][w];
+            }
         }
     }
 }

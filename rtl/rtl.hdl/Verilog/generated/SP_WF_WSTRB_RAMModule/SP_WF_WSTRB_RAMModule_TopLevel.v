@@ -42,84 +42,80 @@ module SP_WF_WSTRB_RAMModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_0_w = 1'b0;
-	wire SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_1_w = 1'b1;
-	wire [1: 0] SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_2_w = 2'b10;
-	wire [1: 0] SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L35T14_3_w = 2'b11;
+	wire SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L37T14_0_w = 1'b0;
+	wire SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L37T14_1_w = 1'b1;
+	wire [1: 0] SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L37T14_2_w = 2'b10;
+	wire [1: 0] SP_WF_WSTRB_RAMModule_L30F9L38T10_SP_WF_WSTRB_RAMModule_L31F13L37T14_3_w = 2'b11;
 	wire [7: 0] Inputs_Address;
 	wire Inputs_WE;
 	wire [3: 0] Inputs_WSTRB;
-	reg [31: 0] NextState_ReadData;
-	reg [31: 0] State_BuffDefault = 32'b00000000000000000000000000000000;
-	reg [31: 0] State_ReadData = 32'b00000000000000000000000000000000;
-	wire [31: 0] State_ReadDataDefault = 32'b00000000000000000000000000000000;
 	wire [7 : 0] Inputs_WriteData [0 : 3];
-	integer State_Buff_Iterator;
-	reg [31 : 0] State_Buff [0 : 31];
+	integer State_ReadData_Iterator;
+	wire [7 : 0] State_ReadData [0 : 3];
+	reg [7 : 0] State_Buff0 [0 : 31];
 	initial
-	begin : Init_State_Buff
-$readmemh("SP_WF_WSTRB_RAMModule_TopLevel_State_Buff.hex", State_Buff);
+	begin : Init_State_Buff0
+$readmemh("SP_WF_WSTRB_RAMModule_TopLevel_State_Buff0.hex", State_Buff0);
 	end
-	integer NextState_Buff_Iterator;
-	reg [31 : 0] NextState_Buff [0 : 31];
+	reg [7 : 0] State_Buff1 [0 : 31];
 	initial
-	begin : Init_NextState_Buff
-		for (NextState_Buff_Iterator = 0; NextState_Buff_Iterator < 32; NextState_Buff_Iterator = NextState_Buff_Iterator + 1)
-			NextState_Buff[NextState_Buff_Iterator] = 0;
+	begin : Init_State_Buff1
+$readmemh("SP_WF_WSTRB_RAMModule_TopLevel_State_Buff1.hex", State_Buff1);
 	end
+	reg [7 : 0] State_Buff2 [0 : 31];
+	initial
+	begin : Init_State_Buff2
+$readmemh("SP_WF_WSTRB_RAMModule_TopLevel_State_Buff2.hex", State_Buff2);
+	end
+	reg [7 : 0] State_Buff3 [0 : 31];
+	initial
+	begin : Init_State_Buff3
+$readmemh("SP_WF_WSTRB_RAMModule_TopLevel_State_Buff3.hex", State_Buff3);
+	end
+	// inferred single port RAM with write-first behaviour
+	reg [7: 0] Inputs_Address_reg0;
 	always @ (posedge Clock)
 	begin
-		if ((Reset == 1))
+		if (Inputs_WSTRB[0])
 		begin
-			State_ReadData <= State_ReadDataDefault;
+			State_Buff0[Inputs_Address] <= Inputs_WriteData[0];
 		end
-		else
-		begin
-			State_ReadData <= NextState_ReadData;
-		end
+		Inputs_Address_reg0 <= Inputs_Address;
 	end
+	assign State_ReadData[0] = State_Buff0[Inputs_Address_reg0];
+	// inferred single port RAM with write-first behaviour
+	reg [7: 0] Inputs_Address_reg1;
 	always @ (posedge Clock)
 	begin
-		if ((Reset == 1))
+		if (Inputs_WSTRB[1])
 		begin
-			for (State_Buff_Iterator = 0; (State_Buff_Iterator < 32); State_Buff_Iterator = (State_Buff_Iterator + 1))
-			begin
-				State_Buff[State_Buff_Iterator] <= State_BuffDefault;
-			end
+			State_Buff1[Inputs_Address] <= Inputs_WriteData[1];
 		end
-		else
-		begin
-			for (State_Buff_Iterator = 0; (State_Buff_Iterator < 32); State_Buff_Iterator = (State_Buff_Iterator + 1))
-			begin
-				State_Buff[State_Buff_Iterator] <= NextState_Buff[State_Buff_Iterator];
-			end
-		end
+		Inputs_Address_reg1 <= Inputs_Address;
 	end
-	always @ (*)
+	assign State_ReadData[1] = State_Buff1[Inputs_Address_reg1];
+	// inferred single port RAM with write-first behaviour
+	reg [7: 0] Inputs_Address_reg2;
+	always @ (posedge Clock)
 	begin
-		for (NextState_Buff_Iterator = 0; (NextState_Buff_Iterator < 32); NextState_Buff_Iterator = (NextState_Buff_Iterator + 1))
+		if (Inputs_WSTRB[2])
 		begin
-			NextState_Buff[NextState_Buff_Iterator] = State_Buff[NextState_Buff_Iterator];
+			State_Buff2[Inputs_Address] <= Inputs_WriteData[2];
 		end
-		NextState_ReadData = State_ReadData;
-		if ((Inputs_WSTRB[0] == 1))
-		begin
-			NextState_Buff[Inputs_Address][7:0] = Inputs_WriteData[0];
-		end
-		if ((Inputs_WSTRB[1] == 1))
-		begin
-			NextState_Buff[Inputs_Address][15:8] = Inputs_WriteData[1];
-		end
-		if ((Inputs_WSTRB[2] == 1))
-		begin
-			NextState_Buff[Inputs_Address][23:16] = Inputs_WriteData[2];
-		end
-		if ((Inputs_WSTRB[3] == 1))
-		begin
-			NextState_Buff[Inputs_Address][31:24] = Inputs_WriteData[3];
-		end
-		NextState_ReadData = NextState_Buff[Inputs_Address];
+		Inputs_Address_reg2 <= Inputs_Address;
 	end
+	assign State_ReadData[2] = State_Buff2[Inputs_Address_reg2];
+	// inferred single port RAM with write-first behaviour
+	reg [7: 0] Inputs_Address_reg3;
+	always @ (posedge Clock)
+	begin
+		if (Inputs_WSTRB[3])
+		begin
+			State_Buff3[Inputs_Address] <= Inputs_WriteData[3];
+		end
+		Inputs_Address_reg3 <= Inputs_Address;
+	end
+	assign State_ReadData[3] = State_Buff3[Inputs_Address_reg3];
 	assign Inputs_Address = Address;
 	assign Inputs_WriteData[0] = WriteData0;
 	assign Inputs_WriteData[1] = WriteData1;
@@ -127,7 +123,7 @@ $readmemh("SP_WF_WSTRB_RAMModule_TopLevel_State_Buff.hex", State_Buff);
 	assign Inputs_WriteData[3] = WriteData3;
 	assign Inputs_WE = WE;
 	assign Inputs_WSTRB = WSTRB;
-	assign Data = State_ReadData;
+	assign Data = { State_ReadData[3], State_ReadData[2], State_ReadData[1], State_ReadData[0] };
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

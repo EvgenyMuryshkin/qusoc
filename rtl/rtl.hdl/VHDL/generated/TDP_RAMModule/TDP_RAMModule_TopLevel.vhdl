@@ -97,14 +97,10 @@ begin
 	begin
 		TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr <= TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr_1 AND TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr_2;
 	end process;
-	process (Inputs_WE_A, Inputs_WE_B, State_SameAddressWrite, TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr)
+	process (State_SameAddressWrite, TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr)
 	begin
 		NextState_SameAddressWrite <= State_SameAddressWrite;
 		NextState_SameAddressWrite <= TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr;
-		if Inputs_WE_A = '1' then
-		end if;
-		if Inputs_WE_B = '1' then
-		end if;
 	end process;
 	process (Addr_A, Addr_B, Inputs_Addr_A, Inputs_Addr_B, Inputs_WE_A, Inputs_WE_B, State_DataA, State_DataB, State_SameAddressWrite, TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T129_Expr, TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr, TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_Expr, WE_A, WE_B, WriteData_A, WriteData_B)
 	begin

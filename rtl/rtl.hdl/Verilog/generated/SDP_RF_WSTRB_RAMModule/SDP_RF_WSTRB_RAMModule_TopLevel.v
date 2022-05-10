@@ -54,100 +54,64 @@ module SDP_RF_WSTRB_RAMModule_TopLevel
 	wire [7: 0] Inputs_WriteAddress;
 	wire Inputs_WE;
 	wire [3: 0] Inputs_WSTRB;
-	reg [7: 0] State_ReadDataDefault = 8'b00000000;
-	reg [31: 0] State_BuffDefault = 32'b00000000000000000000000000000000;
 	wire [7 : 0] Inputs_WriteData [0 : 3];
 	integer State_ReadData_Iterator;
 	reg [7 : 0] State_ReadData [0 : 3];
+	reg [7 : 0] State_Buff0 [0 : 31];
 	initial
-	begin : Init_State_ReadData
-		for (State_ReadData_Iterator = 0; State_ReadData_Iterator < 4; State_ReadData_Iterator = State_ReadData_Iterator + 1)
-			State_ReadData[State_ReadData_Iterator] = 0;
+	begin : Init_State_Buff0
+$readmemh("SDP_RF_WSTRB_RAMModule_TopLevel_State_Buff0.hex", State_Buff0);
 	end
-	integer NextState_ReadData_Iterator;
-	reg [7 : 0] NextState_ReadData [0 : 3];
+	reg [7 : 0] State_Buff1 [0 : 31];
 	initial
-	begin : Init_NextState_ReadData
-		for (NextState_ReadData_Iterator = 0; NextState_ReadData_Iterator < 4; NextState_ReadData_Iterator = NextState_ReadData_Iterator + 1)
-			NextState_ReadData[NextState_ReadData_Iterator] = 0;
+	begin : Init_State_Buff1
+$readmemh("SDP_RF_WSTRB_RAMModule_TopLevel_State_Buff1.hex", State_Buff1);
 	end
-	integer State_Buff_Iterator;
-	reg [31 : 0] State_Buff [0 : 31];
+	reg [7 : 0] State_Buff2 [0 : 31];
 	initial
-	begin : Init_State_Buff
-$readmemh("SDP_RF_WSTRB_RAMModule_TopLevel_State_Buff.hex", State_Buff);
+	begin : Init_State_Buff2
+$readmemh("SDP_RF_WSTRB_RAMModule_TopLevel_State_Buff2.hex", State_Buff2);
 	end
-	integer NextState_Buff_Iterator;
-	reg [31 : 0] NextState_Buff [0 : 31];
+	reg [7 : 0] State_Buff3 [0 : 31];
 	initial
-	begin : Init_NextState_Buff
-		for (NextState_Buff_Iterator = 0; NextState_Buff_Iterator < 32; NextState_Buff_Iterator = NextState_Buff_Iterator + 1)
-			NextState_Buff[NextState_Buff_Iterator] = 0;
+	begin : Init_State_Buff3
+$readmemh("SDP_RF_WSTRB_RAMModule_TopLevel_State_Buff3.hex", State_Buff3);
 	end
+	// inferred simple dual port RAM with read-first behaviour
 	always @ (posedge Clock)
 	begin
-		if ((Reset == 1))
+		if (Inputs_WSTRB[0])
 		begin
-			for (State_ReadData_Iterator = 0; (State_ReadData_Iterator < 4); State_ReadData_Iterator = (State_ReadData_Iterator + 1))
-			begin
-				State_ReadData[State_ReadData_Iterator] <= State_ReadDataDefault;
-			end
+			State_Buff0[Inputs_WriteAddress] <= Inputs_WriteData[0];
 		end
-		else
-		begin
-			for (State_ReadData_Iterator = 0; (State_ReadData_Iterator < 4); State_ReadData_Iterator = (State_ReadData_Iterator + 1))
-			begin
-				State_ReadData[State_ReadData_Iterator] <= NextState_ReadData[State_ReadData_Iterator];
-			end
-		end
+		State_ReadData[0] <= State_Buff0[Inputs_ReadAddress];
 	end
+	// inferred simple dual port RAM with read-first behaviour
 	always @ (posedge Clock)
 	begin
-		if ((Reset == 1))
+		if (Inputs_WSTRB[1])
 		begin
-			for (State_Buff_Iterator = 0; (State_Buff_Iterator < 32); State_Buff_Iterator = (State_Buff_Iterator + 1))
-			begin
-				State_Buff[State_Buff_Iterator] <= State_BuffDefault;
-			end
+			State_Buff1[Inputs_WriteAddress] <= Inputs_WriteData[1];
 		end
-		else
-		begin
-			for (State_Buff_Iterator = 0; (State_Buff_Iterator < 32); State_Buff_Iterator = (State_Buff_Iterator + 1))
-			begin
-				State_Buff[State_Buff_Iterator] <= NextState_Buff[State_Buff_Iterator];
-			end
-		end
+		State_ReadData[1] <= State_Buff1[Inputs_ReadAddress];
 	end
-	always @ (*)
+	// inferred simple dual port RAM with read-first behaviour
+	always @ (posedge Clock)
 	begin
-		for (NextState_Buff_Iterator = 0; (NextState_Buff_Iterator < 32); NextState_Buff_Iterator = (NextState_Buff_Iterator + 1))
+		if (Inputs_WSTRB[2])
 		begin
-			NextState_Buff[NextState_Buff_Iterator] = State_Buff[NextState_Buff_Iterator];
+			State_Buff2[Inputs_WriteAddress] <= Inputs_WriteData[2];
 		end
-		for (NextState_ReadData_Iterator = 0; (NextState_ReadData_Iterator < 4); NextState_ReadData_Iterator = (NextState_ReadData_Iterator + 1))
+		State_ReadData[2] <= State_Buff2[Inputs_ReadAddress];
+	end
+	// inferred simple dual port RAM with read-first behaviour
+	always @ (posedge Clock)
+	begin
+		if (Inputs_WSTRB[3])
 		begin
-			NextState_ReadData[NextState_ReadData_Iterator] = State_ReadData[NextState_ReadData_Iterator];
+			State_Buff3[Inputs_WriteAddress] <= Inputs_WriteData[3];
 		end
-		if ((Inputs_WSTRB[0] == 1))
-		begin
-			NextState_Buff[Inputs_WriteAddress][7:0] = Inputs_WriteData[0];
-		end
-		if ((Inputs_WSTRB[1] == 1))
-		begin
-			NextState_Buff[Inputs_WriteAddress][15:8] = Inputs_WriteData[1];
-		end
-		if ((Inputs_WSTRB[2] == 1))
-		begin
-			NextState_Buff[Inputs_WriteAddress][23:16] = Inputs_WriteData[2];
-		end
-		if ((Inputs_WSTRB[3] == 1))
-		begin
-			NextState_Buff[Inputs_WriteAddress][31:24] = Inputs_WriteData[3];
-		end
-		NextState_ReadData[0] = State_Buff[Inputs_ReadAddress][7:0];
-		NextState_ReadData[1] = State_Buff[Inputs_ReadAddress][15:8];
-		NextState_ReadData[2] = State_Buff[Inputs_ReadAddress][23:16];
-		NextState_ReadData[3] = State_Buff[Inputs_ReadAddress][31:24];
+		State_ReadData[3] <= State_Buff3[Inputs_ReadAddress];
 	end
 	assign Inputs_ReadAddress = ReadAddress;
 	assign Inputs_WriteAddress = WriteAddress;
