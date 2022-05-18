@@ -139,10 +139,20 @@ module StageStatePipelineModule_TopLevel
 	wire [7 : 0] Inputs_inData [0 : 7];
 	integer Pipeline_stage0_State_sums_Iterator;
 	reg [15 : 0] Pipeline_stage0_State_sums [0 : 3];
+	initial
+	begin : Init_Pipeline_stage0_State_sums
+		for (Pipeline_stage0_State_sums_Iterator = 0; Pipeline_stage0_State_sums_Iterator < 4; Pipeline_stage0_State_sums_Iterator = Pipeline_stage0_State_sums_Iterator + 1)
+			Pipeline_stage0_State_sums[Pipeline_stage0_State_sums_Iterator] = 0;
+	end
 	integer Pipeline_stage0_NextState_sums_Iterator;
 	reg [15 : 0] Pipeline_stage0_NextState_sums [0 : 3];
 	integer Pipeline_stage1_State_sums_Iterator;
 	reg [15 : 0] Pipeline_stage1_State_sums [0 : 1];
+	initial
+	begin : Init_Pipeline_stage1_State_sums
+		for (Pipeline_stage1_State_sums_Iterator = 0; Pipeline_stage1_State_sums_Iterator < 2; Pipeline_stage1_State_sums_Iterator = Pipeline_stage1_State_sums_Iterator + 1)
+			Pipeline_stage1_State_sums[Pipeline_stage1_State_sums_Iterator] = 0;
+	end
 	integer Pipeline_stage1_NextState_sums_Iterator;
 	reg [15 : 0] Pipeline_stage1_NextState_sums [0 : 1];
 	wire [7 : 0] Pipeline_Inputs_inData [0 : 7];

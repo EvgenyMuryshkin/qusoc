@@ -153,8 +153,8 @@ module IOTestModule_TopLevel
 			NextState_Array[0] = Inputs_InArray[0];
 			NextState_Array[1] = Inputs_InArray[1];
 		end
-		NextState_IteratorArray[IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_0_idx] = Inputs_InArray[0];
-		NextState_IteratorArray[IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_1_idx] = Inputs_InArray[1];
+		NextState_IteratorArray[0] = Inputs_InArray[0];
+		NextState_IteratorArray[1] = Inputs_InArray[1];
 	end
 	assign Inputs_InFlag = InFlag;
 	assign Inputs_InArray[0] = InArray0;

@@ -37,11 +37,11 @@ namespace rtl.modules
 
         public AXI4_S2M S2M => new AXI4_S2M()
         {
-            AR = new AXI4_S_AR() 
+            AR =
             { 
                 ARREADY = State.readFSM == axiSlaveReadFSM.Idle 
             },
-            R = new AXI4_S_R() 
+            R =
             {
                 RID = Inputs.M2S.AR.ARID,
                 RUSER = Inputs.M2S.AR.ARUSER,
@@ -49,15 +49,15 @@ namespace rtl.modules
                 RDATA = Inputs.RDATA,
                 RRESP = axiResp.OKAY
             },
-            AW = new AXI4_S_AW()
+            AW =
             {
                 AWREADY = State.writeFSM == axiSlaveWriteFSM.Idle
             },
-            W = new AXI4_S_W()
+            W =
             {
                 WREADY = State.writeFSM == axiSlaveWriteFSM.Idle && Inputs.WACK
             },
-            B = new AXI4_S_B()
+            B =
             {
                 BID = Inputs.M2S.W.WID,
                 BRESP = axiResp.OKAY,

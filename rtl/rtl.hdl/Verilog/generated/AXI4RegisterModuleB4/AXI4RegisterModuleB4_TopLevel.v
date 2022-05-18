@@ -25,65 +25,65 @@ module AXI4RegisterModuleB4_TopLevel
 	// [END USER PORTS]
 	input wire Clock,
 	input wire Reset,
-	input wire [7: 0] M2S_AR_ARID,
-	input wire [31: 0] M2S_AR_ARADDR,
-	input wire [7: 0] M2S_AR_ARLEN,
-	input wire [2: 0] M2S_AR_ARSIZE,
-	input wire [1: 0] M2S_AR_ARBURST,
-	input wire [1: 0] M2S_AR_ARLOCK,
-	input wire [3: 0] M2S_AR_ARCACHE,
-	input wire [2: 0] M2S_AR_ARPROT,
-	input wire [3: 0] M2S_AR_ARQOS,
-	input wire [7: 0] M2S_AR_ARREGION,
-	input wire [7: 0] M2S_AR_ARUSER,
+	input wire [7:0] M2S_AR_ARID,
+	input wire [31:0] M2S_AR_ARADDR,
+	input wire [7:0] M2S_AR_ARLEN,
+	input wire [2:0] M2S_AR_ARSIZE,
+	input wire [1:0] M2S_AR_ARBURST,
+	input wire [1:0] M2S_AR_ARLOCK,
+	input wire [3:0] M2S_AR_ARCACHE,
+	input wire [2:0] M2S_AR_ARPROT,
+	input wire [3:0] M2S_AR_ARQOS,
+	input wire [7:0] M2S_AR_ARREGION,
+	input wire [7:0] M2S_AR_ARUSER,
 	input wire M2S_AR_ARVALID,
 	input wire M2S_R_RREADY,
-	input wire [7: 0] M2S_AW_AWID,
-	input wire [31: 0] M2S_AW_AWADDR,
-	input wire [7: 0] M2S_AW_AWLEN,
-	input wire [2: 0] M2S_AW_AWSIZE,
-	input wire [1: 0] M2S_AW_AWBURST,
-	input wire [1: 0] M2S_AW_AWLOCK,
-	input wire [3: 0] M2S_AW_AWCACHE,
-	input wire [2: 0] M2S_AW_AWPROT,
-	input wire [3: 0] M2S_AW_AWQOS,
-	input wire [7: 0] M2S_AW_AWREGION,
-	input wire [7: 0] M2S_AW_AWUSER,
+	input wire [7:0] M2S_AW_AWID,
+	input wire [31:0] M2S_AW_AWADDR,
+	input wire [7:0] M2S_AW_AWLEN,
+	input wire [2:0] M2S_AW_AWSIZE,
+	input wire [1:0] M2S_AW_AWBURST,
+	input wire [1:0] M2S_AW_AWLOCK,
+	input wire [3:0] M2S_AW_AWCACHE,
+	input wire [2:0] M2S_AW_AWPROT,
+	input wire [3:0] M2S_AW_AWQOS,
+	input wire [7:0] M2S_AW_AWREGION,
+	input wire [7:0] M2S_AW_AWUSER,
 	input wire M2S_AW_AWVALID,
-	input wire [7: 0] M2S_W_WID,
-	input wire [7: 0] M2S_W_WDATA0,
-	input wire [7: 0] M2S_W_WDATA1,
-	input wire [7: 0] M2S_W_WDATA2,
-	input wire [7: 0] M2S_W_WDATA3,
-	input wire [3: 0] M2S_W_WSTRB,
+	input wire [7:0] M2S_W_WID,
+	input wire [7:0] M2S_W_WDATA0,
+	input wire [7:0] M2S_W_WDATA1,
+	input wire [7:0] M2S_W_WDATA2,
+	input wire [7:0] M2S_W_WDATA3,
+	input wire [3:0] M2S_W_WSTRB,
 	input wire M2S_W_WLAST,
-	input wire [7: 0] M2S_W_WUSER,
+	input wire [7:0] M2S_W_WUSER,
 	input wire M2S_W_WVALID,
 	input wire M2S_B_BREADY,
 	input wire WE,
-	input wire [7: 0] WDATA0,
-	input wire [7: 0] WDATA1,
-	input wire [7: 0] WDATA2,
-	input wire [7: 0] WDATA3,
-	output wire [7: 0] OutData0,
-	output wire [7: 0] OutData1,
-	output wire [7: 0] OutData2,
-	output wire [7: 0] OutData3,
+	input wire [7:0] WDATA0,
+	input wire [7:0] WDATA1,
+	input wire [7:0] WDATA2,
+	input wire [7:0] WDATA3,
+	output wire [7:0] OutData0,
+	output wire [7:0] OutData1,
+	output wire [7:0] OutData2,
+	output wire [7:0] OutData3,
 	output wire OutACK,
 	output wire S2M_AR_ARREADY,
 	output wire S2M_AW_AWREADY,
-	output wire [7: 0] S2M_B_BID,
-	output wire [1: 0] S2M_B_BRESP,
-	output wire [7: 0] S2M_B_BUSER,
+	output wire [7:0] S2M_B_BID,
+	output wire [1:0] S2M_B_BRESP,
+	output wire [7:0] S2M_B_BUSER,
 	output wire S2M_B_BVALID,
-	output wire [7: 0] S2M_R_RID,
-	output wire [7: 0] S2M_R_RDATA0,
-	output wire [7: 0] S2M_R_RDATA1,
-	output wire [7: 0] S2M_R_RDATA2,
-	output wire [7: 0] S2M_R_RDATA3,
-	output wire [1: 0] S2M_R_RRESP,
+	output wire [7:0] S2M_R_RID,
+	output wire [7:0] S2M_R_RDATA0,
+	output wire [7:0] S2M_R_RDATA1,
+	output wire [7:0] S2M_R_RDATA2,
+	output wire [7:0] S2M_R_RDATA3,
+	output wire [1:0] S2M_R_RRESP,
 	output wire S2M_R_RLAST,
-	output wire [7: 0] S2M_R_RUSER,
+	output wire [7:0] S2M_R_RUSER,
 	output wire S2M_R_RVALID,
 	output wire S2M_W_WREADY
 );
@@ -128,20 +128,12 @@ module AXI4RegisterModuleB4_TopLevel
 	wire [7: 0] Inputs_M2S_AW_AWUSER;
 	wire Inputs_M2S_AW_AWVALID;
 	wire [7: 0] Inputs_M2S_W_WID;
-	wire [7: 0] Inputs_M2S_W_WDATA0;
-	wire [7: 0] Inputs_M2S_W_WDATA1;
-	wire [7: 0] Inputs_M2S_W_WDATA2;
-	wire [7: 0] Inputs_M2S_W_WDATA3;
 	wire [3: 0] Inputs_M2S_W_WSTRB;
 	wire Inputs_M2S_W_WLAST;
 	wire [7: 0] Inputs_M2S_W_WUSER;
 	wire Inputs_M2S_W_WVALID;
 	wire Inputs_M2S_B_BREADY;
 	wire Inputs_WE;
-	wire [7: 0] Inputs_WDATA0;
-	wire [7: 0] Inputs_WDATA1;
-	wire [7: 0] Inputs_WDATA2;
-	wire [7: 0] Inputs_WDATA3;
 	wire [7: 0] axiSlave_M2S_AR_ARID;
 	wire [31: 0] axiSlave_M2S_AR_ARADDR;
 	wire [7: 0] axiSlave_M2S_AR_ARLEN;
@@ -168,19 +160,11 @@ module AXI4RegisterModuleB4_TopLevel
 	wire [7: 0] axiSlave_M2S_AW_AWUSER;
 	wire axiSlave_M2S_AW_AWVALID;
 	wire [7: 0] axiSlave_M2S_W_WID;
-	wire [7: 0] axiSlave_M2S_W_WDATA0;
-	wire [7: 0] axiSlave_M2S_W_WDATA1;
-	wire [7: 0] axiSlave_M2S_W_WDATA2;
-	wire [7: 0] axiSlave_M2S_W_WDATA3;
 	wire [3: 0] axiSlave_M2S_W_WSTRB;
 	wire axiSlave_M2S_W_WLAST;
 	wire [7: 0] axiSlave_M2S_W_WUSER;
 	wire axiSlave_M2S_W_WVALID;
 	wire axiSlave_M2S_B_BREADY;
-	wire [7: 0] axiSlave_RDATA0;
-	wire [7: 0] axiSlave_RDATA1;
-	wire [7: 0] axiSlave_RDATA2;
-	wire [7: 0] axiSlave_RDATA3;
 	wire axiSlave_RACK;
 	wire axiSlave_WACK;
 	wire axiSlave_S2M_AR_ARREADY;
@@ -190,28 +174,16 @@ module AXI4RegisterModuleB4_TopLevel
 	wire [7: 0] axiSlave_S2M_B_BUSER;
 	wire axiSlave_S2M_B_BVALID;
 	wire [7: 0] axiSlave_S2M_R_RID;
-	wire [7: 0] axiSlave_S2M_R_RDATA0;
-	wire [7: 0] axiSlave_S2M_R_RDATA1;
-	wire [7: 0] axiSlave_S2M_R_RDATA2;
-	wire [7: 0] axiSlave_S2M_R_RDATA3;
 	wire [1: 0] axiSlave_S2M_R_RRESP;
 	wire axiSlave_S2M_R_RLAST;
 	wire [7: 0] axiSlave_S2M_R_RUSER;
 	wire axiSlave_S2M_R_RVALID;
 	wire axiSlave_S2M_W_WREADY;
 	wire [3: 0] axiSlave_WSTRB;
-	wire [7: 0] axiSlave_WDATA0;
-	wire [7: 0] axiSlave_WDATA1;
-	wire [7: 0] axiSlave_WDATA2;
-	wire [7: 0] axiSlave_WDATA3;
 	wire axiSlave_WVALID;
 	wire axiSlave_RVALID;
 	wire [31: 0] axiSlave_ARADDR;
 	wire [31: 0] axiSlave_AWADDR;
-	wire AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_0_AXI4RegisterModule_L70F17L73T18_AXI4RegisterModule_L71F25T42_Index;
-	wire AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_1_AXI4RegisterModule_L70F17L73T18_AXI4RegisterModule_L71F25T42_Index;
-	wire AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_2_AXI4RegisterModule_L70F17L73T18_AXI4RegisterModule_L71F25T42_Index;
-	wire AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_3_AXI4RegisterModule_L70F17L73T18_AXI4RegisterModule_L71F25T42_Index;
 	reg [7: 0] State_bytesDefault = 8'b00000000;
 	wire [7: 0] axiSlaveM2S_AR_ARIDaxiSlave_M2S_AR_ARIDHardLink;
 	wire [31: 0] axiSlaveM2S_AR_ARADDRaxiSlave_M2S_AR_ARADDRHardLink;
@@ -239,19 +211,19 @@ module AXI4RegisterModuleB4_TopLevel
 	wire [7: 0] axiSlaveM2S_AW_AWUSERaxiSlave_M2S_AW_AWUSERHardLink;
 	wire axiSlaveM2S_AW_AWVALIDaxiSlave_M2S_AW_AWVALIDHardLink;
 	wire [7: 0] axiSlaveM2S_W_WIDaxiSlave_M2S_W_WIDHardLink;
-	wire [7: 0] axiSlaveM2S_W_WDATA0axiSlave_M2S_W_WDATA0HardLink;
-	wire [7: 0] axiSlaveM2S_W_WDATA1axiSlave_M2S_W_WDATA1HardLink;
-	wire [7: 0] axiSlaveM2S_W_WDATA2axiSlave_M2S_W_WDATA2HardLink;
-	wire [7: 0] axiSlaveM2S_W_WDATA3axiSlave_M2S_W_WDATA3HardLink;
+	wire [7: 0] axiSlaveM2S_W_WDATA0axiSlave_M2S_W_WDATAHardLink;
+	wire [7: 0] axiSlaveM2S_W_WDATA1axiSlave_M2S_W_WDATAHardLink;
+	wire [7: 0] axiSlaveM2S_W_WDATA2axiSlave_M2S_W_WDATAHardLink;
+	wire [7: 0] axiSlaveM2S_W_WDATA3axiSlave_M2S_W_WDATAHardLink;
 	wire [3: 0] axiSlaveM2S_W_WSTRBaxiSlave_M2S_W_WSTRBHardLink;
 	wire axiSlaveM2S_W_WLASTaxiSlave_M2S_W_WLASTHardLink;
 	wire [7: 0] axiSlaveM2S_W_WUSERaxiSlave_M2S_W_WUSERHardLink;
 	wire axiSlaveM2S_W_WVALIDaxiSlave_M2S_W_WVALIDHardLink;
 	wire axiSlaveM2S_B_BREADYaxiSlave_M2S_B_BREADYHardLink;
-	wire [7: 0] axiSlaveRDATA0axiSlave_RDATA0HardLink;
-	wire [7: 0] axiSlaveRDATA1axiSlave_RDATA1HardLink;
-	wire [7: 0] axiSlaveRDATA2axiSlave_RDATA2HardLink;
-	wire [7: 0] axiSlaveRDATA3axiSlave_RDATA3HardLink;
+	wire [7: 0] axiSlaveRDATA0axiSlave_RDATAHardLink;
+	wire [7: 0] axiSlaveRDATA1axiSlave_RDATAHardLink;
+	wire [7: 0] axiSlaveRDATA2axiSlave_RDATAHardLink;
+	wire [7: 0] axiSlaveRDATA3axiSlave_RDATAHardLink;
 	wire axiSlaveRACKaxiSlave_RACKHardLink;
 	wire axiSlaveWACKaxiSlave_WACKHardLink;
 	wire axiSlaveS2M_AR_ARREADYaxiSlave_S2M_AR_ARREADYHardLink;
@@ -261,24 +233,26 @@ module AXI4RegisterModuleB4_TopLevel
 	wire [7: 0] axiSlaveS2M_B_BUSERaxiSlave_S2M_B_BUSERHardLink;
 	wire axiSlaveS2M_B_BVALIDaxiSlave_S2M_B_BVALIDHardLink;
 	wire [7: 0] axiSlaveS2M_R_RIDaxiSlave_S2M_R_RIDHardLink;
-	wire [7: 0] axiSlaveS2M_R_RDATA0axiSlave_S2M_R_RDATA0HardLink;
-	wire [7: 0] axiSlaveS2M_R_RDATA1axiSlave_S2M_R_RDATA1HardLink;
-	wire [7: 0] axiSlaveS2M_R_RDATA2axiSlave_S2M_R_RDATA2HardLink;
-	wire [7: 0] axiSlaveS2M_R_RDATA3axiSlave_S2M_R_RDATA3HardLink;
+	wire [7: 0] axiSlaveS2M_R_RDATA0axiSlave_S2M_R_RDATAHardLink;
+	wire [7: 0] axiSlaveS2M_R_RDATA1axiSlave_S2M_R_RDATAHardLink;
+	wire [7: 0] axiSlaveS2M_R_RDATA2axiSlave_S2M_R_RDATAHardLink;
+	wire [7: 0] axiSlaveS2M_R_RDATA3axiSlave_S2M_R_RDATAHardLink;
 	wire [1: 0] axiSlaveS2M_R_RRESPaxiSlave_S2M_R_RRESPHardLink;
 	wire axiSlaveS2M_R_RLASTaxiSlave_S2M_R_RLASTHardLink;
 	wire [7: 0] axiSlaveS2M_R_RUSERaxiSlave_S2M_R_RUSERHardLink;
 	wire axiSlaveS2M_R_RVALIDaxiSlave_S2M_R_RVALIDHardLink;
 	wire axiSlaveS2M_W_WREADYaxiSlave_S2M_W_WREADYHardLink;
 	wire [3: 0] axiSlaveWSTRBaxiSlave_WSTRBHardLink;
-	wire [7: 0] axiSlaveWDATA0axiSlave_WDATA0HardLink;
-	wire [7: 0] axiSlaveWDATA1axiSlave_WDATA1HardLink;
-	wire [7: 0] axiSlaveWDATA2axiSlave_WDATA2HardLink;
-	wire [7: 0] axiSlaveWDATA3axiSlave_WDATA3HardLink;
+	wire [7: 0] axiSlaveWDATA0axiSlave_WDATAHardLink;
+	wire [7: 0] axiSlaveWDATA1axiSlave_WDATAHardLink;
+	wire [7: 0] axiSlaveWDATA2axiSlave_WDATAHardLink;
+	wire [7: 0] axiSlaveWDATA3axiSlave_WDATAHardLink;
 	wire axiSlaveWVALIDaxiSlave_WVALIDHardLink;
 	wire axiSlaveRVALIDaxiSlave_RVALIDHardLink;
 	wire [31: 0] axiSlaveARADDRaxiSlave_ARADDRHardLink;
 	wire [31: 0] axiSlaveAWADDRaxiSlave_AWADDRHardLink;
+	wire [7 : 0] Inputs_M2S_W_WDATA [0 : 3];
+	wire [7 : 0] Inputs_WDATA [0 : 3];
 	integer State_bytes_Iterator;
 	reg [7 : 0] State_bytes [0 : 3];
 	initial
@@ -293,6 +267,10 @@ module AXI4RegisterModuleB4_TopLevel
 		for (NextState_bytes_Iterator = 0; NextState_bytes_Iterator < 4; NextState_bytes_Iterator = NextState_bytes_Iterator + 1)
 			NextState_bytes[NextState_bytes_Iterator] = 0;
 	end
+	wire [7 : 0] axiSlave_M2S_W_WDATA [0 : 3];
+	wire [7 : 0] axiSlave_RDATA [0 : 3];
+	wire [7 : 0] axiSlave_S2M_R_RDATA [0 : 3];
+	wire [7 : 0] axiSlave_WDATA [0 : 3];
 	wire BoardSignals_Clock;
 	wire BoardSignals_Reset;
 	wire BoardSignals_Running;
@@ -353,19 +331,19 @@ module AXI4RegisterModuleB4_TopLevel
 		.M2S_AW_AWUSER (axiSlaveM2S_AW_AWUSERaxiSlave_M2S_AW_AWUSERHardLink),
 		.M2S_AW_AWVALID (axiSlaveM2S_AW_AWVALIDaxiSlave_M2S_AW_AWVALIDHardLink),
 		.M2S_W_WID (axiSlaveM2S_W_WIDaxiSlave_M2S_W_WIDHardLink),
-		.M2S_W_WDATA0 (axiSlaveM2S_W_WDATA0axiSlave_M2S_W_WDATA0HardLink),
-		.M2S_W_WDATA1 (axiSlaveM2S_W_WDATA1axiSlave_M2S_W_WDATA1HardLink),
-		.M2S_W_WDATA2 (axiSlaveM2S_W_WDATA2axiSlave_M2S_W_WDATA2HardLink),
-		.M2S_W_WDATA3 (axiSlaveM2S_W_WDATA3axiSlave_M2S_W_WDATA3HardLink),
+		.M2S_W_WDATA0 (axiSlaveM2S_W_WDATA0axiSlave_M2S_W_WDATAHardLink),
+		.M2S_W_WDATA1 (axiSlaveM2S_W_WDATA1axiSlave_M2S_W_WDATAHardLink),
+		.M2S_W_WDATA2 (axiSlaveM2S_W_WDATA2axiSlave_M2S_W_WDATAHardLink),
+		.M2S_W_WDATA3 (axiSlaveM2S_W_WDATA3axiSlave_M2S_W_WDATAHardLink),
 		.M2S_W_WSTRB (axiSlaveM2S_W_WSTRBaxiSlave_M2S_W_WSTRBHardLink),
 		.M2S_W_WLAST (axiSlaveM2S_W_WLASTaxiSlave_M2S_W_WLASTHardLink),
 		.M2S_W_WUSER (axiSlaveM2S_W_WUSERaxiSlave_M2S_W_WUSERHardLink),
 		.M2S_W_WVALID (axiSlaveM2S_W_WVALIDaxiSlave_M2S_W_WVALIDHardLink),
 		.M2S_B_BREADY (axiSlaveM2S_B_BREADYaxiSlave_M2S_B_BREADYHardLink),
-		.RDATA0 (axiSlaveRDATA0axiSlave_RDATA0HardLink),
-		.RDATA1 (axiSlaveRDATA1axiSlave_RDATA1HardLink),
-		.RDATA2 (axiSlaveRDATA2axiSlave_RDATA2HardLink),
-		.RDATA3 (axiSlaveRDATA3axiSlave_RDATA3HardLink),
+		.RDATA0 (axiSlaveRDATA0axiSlave_RDATAHardLink),
+		.RDATA1 (axiSlaveRDATA1axiSlave_RDATAHardLink),
+		.RDATA2 (axiSlaveRDATA2axiSlave_RDATAHardLink),
+		.RDATA3 (axiSlaveRDATA3axiSlave_RDATAHardLink),
 		.RACK (axiSlaveRACKaxiSlave_RACKHardLink),
 		.WACK (axiSlaveWACKaxiSlave_WACKHardLink),
 		.S2M_AR_ARREADY (axiSlaveS2M_AR_ARREADYaxiSlave_S2M_AR_ARREADYHardLink),
@@ -375,20 +353,20 @@ module AXI4RegisterModuleB4_TopLevel
 		.S2M_B_BUSER (axiSlaveS2M_B_BUSERaxiSlave_S2M_B_BUSERHardLink),
 		.S2M_B_BVALID (axiSlaveS2M_B_BVALIDaxiSlave_S2M_B_BVALIDHardLink),
 		.S2M_R_RID (axiSlaveS2M_R_RIDaxiSlave_S2M_R_RIDHardLink),
-		.S2M_R_RDATA0 (axiSlaveS2M_R_RDATA0axiSlave_S2M_R_RDATA0HardLink),
-		.S2M_R_RDATA1 (axiSlaveS2M_R_RDATA1axiSlave_S2M_R_RDATA1HardLink),
-		.S2M_R_RDATA2 (axiSlaveS2M_R_RDATA2axiSlave_S2M_R_RDATA2HardLink),
-		.S2M_R_RDATA3 (axiSlaveS2M_R_RDATA3axiSlave_S2M_R_RDATA3HardLink),
+		.S2M_R_RDATA0 (axiSlaveS2M_R_RDATA0axiSlave_S2M_R_RDATAHardLink),
+		.S2M_R_RDATA1 (axiSlaveS2M_R_RDATA1axiSlave_S2M_R_RDATAHardLink),
+		.S2M_R_RDATA2 (axiSlaveS2M_R_RDATA2axiSlave_S2M_R_RDATAHardLink),
+		.S2M_R_RDATA3 (axiSlaveS2M_R_RDATA3axiSlave_S2M_R_RDATAHardLink),
 		.S2M_R_RRESP (axiSlaveS2M_R_RRESPaxiSlave_S2M_R_RRESPHardLink),
 		.S2M_R_RLAST (axiSlaveS2M_R_RLASTaxiSlave_S2M_R_RLASTHardLink),
 		.S2M_R_RUSER (axiSlaveS2M_R_RUSERaxiSlave_S2M_R_RUSERHardLink),
 		.S2M_R_RVALID (axiSlaveS2M_R_RVALIDaxiSlave_S2M_R_RVALIDHardLink),
 		.S2M_W_WREADY (axiSlaveS2M_W_WREADYaxiSlave_S2M_W_WREADYHardLink),
 		.WSTRB (axiSlaveWSTRBaxiSlave_WSTRBHardLink),
-		.WDATA0 (axiSlaveWDATA0axiSlave_WDATA0HardLink),
-		.WDATA1 (axiSlaveWDATA1axiSlave_WDATA1HardLink),
-		.WDATA2 (axiSlaveWDATA2axiSlave_WDATA2HardLink),
-		.WDATA3 (axiSlaveWDATA3axiSlave_WDATA3HardLink),
+		.WDATA0 (axiSlaveWDATA0axiSlave_WDATAHardLink),
+		.WDATA1 (axiSlaveWDATA1axiSlave_WDATAHardLink),
+		.WDATA2 (axiSlaveWDATA2axiSlave_WDATAHardLink),
+		.WDATA3 (axiSlaveWDATA3axiSlave_WDATAHardLink),
 		.WVALID (axiSlaveWVALIDaxiSlave_WVALIDHardLink),
 		.RVALID (axiSlaveRVALIDaxiSlave_RVALIDHardLink),
 		.ARADDR (axiSlaveARADDRaxiSlave_ARADDRHardLink),
@@ -402,28 +380,28 @@ module AXI4RegisterModuleB4_TopLevel
 		end
 		if ((Inputs_WE == 1))
 		begin
-			NextState_bytes[0] = Inputs_WDATA0;
-			NextState_bytes[1] = Inputs_WDATA1;
-			NextState_bytes[2] = Inputs_WDATA2;
-			NextState_bytes[3] = Inputs_WDATA3;
+			NextState_bytes[0] = Inputs_WDATA[0];
+			NextState_bytes[1] = Inputs_WDATA[1];
+			NextState_bytes[2] = Inputs_WDATA[2];
+			NextState_bytes[3] = Inputs_WDATA[3];
 		end
 		else if ((axiSlave_WVALID == 1))
 		begin
-			if ((AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_0_AXI4RegisterModule_L70F17L73T18_AXI4RegisterModule_L71F25T42_Index == 1))
+			if ((axiSlave_WSTRB[0] == 1))
 			begin
-				NextState_bytes[AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_0_w] = axiSlave_WDATA0;
+				NextState_bytes[0] = axiSlave_WDATA[0];
 			end
-			if ((AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_1_AXI4RegisterModule_L70F17L73T18_AXI4RegisterModule_L71F25T42_Index == 1))
+			if ((axiSlave_WSTRB[1] == 1))
 			begin
-				NextState_bytes[AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_1_w] = axiSlave_WDATA1;
+				NextState_bytes[1] = axiSlave_WDATA[1];
 			end
-			if ((AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_2_AXI4RegisterModule_L70F17L73T18_AXI4RegisterModule_L71F25T42_Index == 1))
+			if ((axiSlave_WSTRB[2] == 1))
 			begin
-				NextState_bytes[AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_2_w] = axiSlave_WDATA2;
+				NextState_bytes[2] = axiSlave_WDATA[2];
 			end
-			if ((AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_3_AXI4RegisterModule_L70F17L73T18_AXI4RegisterModule_L71F25T42_Index == 1))
+			if ((axiSlave_WSTRB[3] == 1))
 			begin
-				NextState_bytes[AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_3_w] = axiSlave_WDATA3;
+				NextState_bytes[3] = axiSlave_WDATA[3];
 			end
 		end
 	end
@@ -453,20 +431,20 @@ module AXI4RegisterModuleB4_TopLevel
 	assign Inputs_M2S_AW_AWUSER = M2S_AW_AWUSER;
 	assign Inputs_M2S_AW_AWVALID = M2S_AW_AWVALID;
 	assign Inputs_M2S_W_WID = M2S_W_WID;
-	assign Inputs_M2S_W_WDATA0 = M2S_W_WDATA0;
-	assign Inputs_M2S_W_WDATA1 = M2S_W_WDATA1;
-	assign Inputs_M2S_W_WDATA2 = M2S_W_WDATA2;
-	assign Inputs_M2S_W_WDATA3 = M2S_W_WDATA3;
+	assign Inputs_M2S_W_WDATA[0] = M2S_W_WDATA0;
+	assign Inputs_M2S_W_WDATA[1] = M2S_W_WDATA1;
+	assign Inputs_M2S_W_WDATA[2] = M2S_W_WDATA2;
+	assign Inputs_M2S_W_WDATA[3] = M2S_W_WDATA3;
 	assign Inputs_M2S_W_WSTRB = M2S_W_WSTRB;
 	assign Inputs_M2S_W_WLAST = M2S_W_WLAST;
 	assign Inputs_M2S_W_WUSER = M2S_W_WUSER;
 	assign Inputs_M2S_W_WVALID = M2S_W_WVALID;
 	assign Inputs_M2S_B_BREADY = M2S_B_BREADY;
 	assign Inputs_WE = WE;
-	assign Inputs_WDATA0 = WDATA0;
-	assign Inputs_WDATA1 = WDATA1;
-	assign Inputs_WDATA2 = WDATA2;
-	assign Inputs_WDATA3 = WDATA3;
+	assign Inputs_WDATA[0] = WDATA0;
+	assign Inputs_WDATA[1] = WDATA1;
+	assign Inputs_WDATA[2] = WDATA2;
+	assign Inputs_WDATA[3] = WDATA3;
 	assign axiSlave_M2S_AR_ARID = Inputs_M2S_AR_ARID;
 	assign axiSlave_M2S_AR_ARADDR = Inputs_M2S_AR_ARADDR;
 	assign axiSlave_M2S_AR_ARLEN = Inputs_M2S_AR_ARLEN;
@@ -493,25 +471,21 @@ module AXI4RegisterModuleB4_TopLevel
 	assign axiSlave_M2S_AW_AWUSER = Inputs_M2S_AW_AWUSER;
 	assign axiSlave_M2S_AW_AWVALID = Inputs_M2S_AW_AWVALID;
 	assign axiSlave_M2S_W_WID = Inputs_M2S_W_WID;
-	assign axiSlave_M2S_W_WDATA0 = Inputs_M2S_W_WDATA0;
-	assign axiSlave_M2S_W_WDATA1 = Inputs_M2S_W_WDATA1;
-	assign axiSlave_M2S_W_WDATA2 = Inputs_M2S_W_WDATA2;
-	assign axiSlave_M2S_W_WDATA3 = Inputs_M2S_W_WDATA3;
+	assign axiSlave_M2S_W_WDATA[0] = Inputs_M2S_W_WDATA[0];
+	assign axiSlave_M2S_W_WDATA[1] = Inputs_M2S_W_WDATA[1];
+	assign axiSlave_M2S_W_WDATA[2] = Inputs_M2S_W_WDATA[2];
+	assign axiSlave_M2S_W_WDATA[3] = Inputs_M2S_W_WDATA[3];
 	assign axiSlave_M2S_W_WSTRB = Inputs_M2S_W_WSTRB;
 	assign axiSlave_M2S_W_WLAST = Inputs_M2S_W_WLAST;
 	assign axiSlave_M2S_W_WUSER = Inputs_M2S_W_WUSER;
 	assign axiSlave_M2S_W_WVALID = Inputs_M2S_W_WVALID;
 	assign axiSlave_M2S_B_BREADY = Inputs_M2S_B_BREADY;
-	assign axiSlave_RDATA0 = State_bytes[0];
-	assign axiSlave_RDATA1 = State_bytes[1];
-	assign axiSlave_RDATA2 = State_bytes[2];
-	assign axiSlave_RDATA3 = State_bytes[3];
+	assign axiSlave_RDATA[0] = State_bytes[0];
+	assign axiSlave_RDATA[1] = State_bytes[1];
+	assign axiSlave_RDATA[2] = State_bytes[2];
+	assign axiSlave_RDATA[3] = State_bytes[3];
 	assign axiSlave_RACK = AXI4RegisterModule_L56F24T28_Expr;
 	assign axiSlave_WACK = AXI4RegisterModule_L58F24T28_Expr;
-	assign AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_0_AXI4RegisterModule_L70F17L73T18_AXI4RegisterModule_L71F25T42_Index = axiSlave_WSTRB[AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_0_w];
-	assign AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_1_AXI4RegisterModule_L70F17L73T18_AXI4RegisterModule_L71F25T42_Index = axiSlave_WSTRB[AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_1_w];
-	assign AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_2_AXI4RegisterModule_L70F17L73T18_AXI4RegisterModule_L71F25T42_Index = axiSlave_WSTRB[AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_2_w];
-	assign AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_3_AXI4RegisterModule_L70F17L73T18_AXI4RegisterModule_L71F25T42_Index = axiSlave_WSTRB[AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_3_w];
 	assign OutData0 = State_bytes[0];
 	assign OutData1 = State_bytes[1];
 	assign OutData2 = State_bytes[2];
@@ -524,10 +498,10 @@ module AXI4RegisterModuleB4_TopLevel
 	assign S2M_B_BUSER = axiSlave_S2M_B_BUSER;
 	assign S2M_B_BVALID = axiSlave_S2M_B_BVALID;
 	assign S2M_R_RID = axiSlave_S2M_R_RID;
-	assign S2M_R_RDATA0 = axiSlave_S2M_R_RDATA0;
-	assign S2M_R_RDATA1 = axiSlave_S2M_R_RDATA1;
-	assign S2M_R_RDATA2 = axiSlave_S2M_R_RDATA2;
-	assign S2M_R_RDATA3 = axiSlave_S2M_R_RDATA3;
+	assign S2M_R_RDATA0 = axiSlave_S2M_R_RDATA[0];
+	assign S2M_R_RDATA1 = axiSlave_S2M_R_RDATA[1];
+	assign S2M_R_RDATA2 = axiSlave_S2M_R_RDATA[2];
+	assign S2M_R_RDATA3 = axiSlave_S2M_R_RDATA[3];
 	assign S2M_R_RRESP = axiSlave_S2M_R_RRESP;
 	assign S2M_R_RLAST = axiSlave_S2M_R_RLAST;
 	assign S2M_R_RUSER = axiSlave_S2M_R_RUSER;
@@ -559,19 +533,19 @@ module AXI4RegisterModuleB4_TopLevel
 	assign axiSlaveM2S_AW_AWUSERaxiSlave_M2S_AW_AWUSERHardLink = axiSlave_M2S_AW_AWUSER;
 	assign axiSlaveM2S_AW_AWVALIDaxiSlave_M2S_AW_AWVALIDHardLink = axiSlave_M2S_AW_AWVALID;
 	assign axiSlaveM2S_W_WIDaxiSlave_M2S_W_WIDHardLink = axiSlave_M2S_W_WID;
-	assign axiSlaveM2S_W_WDATA0axiSlave_M2S_W_WDATA0HardLink = axiSlave_M2S_W_WDATA0;
-	assign axiSlaveM2S_W_WDATA1axiSlave_M2S_W_WDATA1HardLink = axiSlave_M2S_W_WDATA1;
-	assign axiSlaveM2S_W_WDATA2axiSlave_M2S_W_WDATA2HardLink = axiSlave_M2S_W_WDATA2;
-	assign axiSlaveM2S_W_WDATA3axiSlave_M2S_W_WDATA3HardLink = axiSlave_M2S_W_WDATA3;
+	assign axiSlaveM2S_W_WDATA0axiSlave_M2S_W_WDATAHardLink = axiSlave_M2S_W_WDATA[0];
+	assign axiSlaveM2S_W_WDATA1axiSlave_M2S_W_WDATAHardLink = axiSlave_M2S_W_WDATA[1];
+	assign axiSlaveM2S_W_WDATA2axiSlave_M2S_W_WDATAHardLink = axiSlave_M2S_W_WDATA[2];
+	assign axiSlaveM2S_W_WDATA3axiSlave_M2S_W_WDATAHardLink = axiSlave_M2S_W_WDATA[3];
 	assign axiSlaveM2S_W_WSTRBaxiSlave_M2S_W_WSTRBHardLink = axiSlave_M2S_W_WSTRB;
 	assign axiSlaveM2S_W_WLASTaxiSlave_M2S_W_WLASTHardLink = axiSlave_M2S_W_WLAST;
 	assign axiSlaveM2S_W_WUSERaxiSlave_M2S_W_WUSERHardLink = axiSlave_M2S_W_WUSER;
 	assign axiSlaveM2S_W_WVALIDaxiSlave_M2S_W_WVALIDHardLink = axiSlave_M2S_W_WVALID;
 	assign axiSlaveM2S_B_BREADYaxiSlave_M2S_B_BREADYHardLink = axiSlave_M2S_B_BREADY;
-	assign axiSlaveRDATA0axiSlave_RDATA0HardLink = axiSlave_RDATA0;
-	assign axiSlaveRDATA1axiSlave_RDATA1HardLink = axiSlave_RDATA1;
-	assign axiSlaveRDATA2axiSlave_RDATA2HardLink = axiSlave_RDATA2;
-	assign axiSlaveRDATA3axiSlave_RDATA3HardLink = axiSlave_RDATA3;
+	assign axiSlaveRDATA0axiSlave_RDATAHardLink = axiSlave_RDATA[0];
+	assign axiSlaveRDATA1axiSlave_RDATAHardLink = axiSlave_RDATA[1];
+	assign axiSlaveRDATA2axiSlave_RDATAHardLink = axiSlave_RDATA[2];
+	assign axiSlaveRDATA3axiSlave_RDATAHardLink = axiSlave_RDATA[3];
 	assign axiSlaveRACKaxiSlave_RACKHardLink = axiSlave_RACK;
 	assign axiSlaveWACKaxiSlave_WACKHardLink = axiSlave_WACK;
 	assign axiSlave_S2M_AR_ARREADY = axiSlaveS2M_AR_ARREADYaxiSlave_S2M_AR_ARREADYHardLink;
@@ -581,20 +555,20 @@ module AXI4RegisterModuleB4_TopLevel
 	assign axiSlave_S2M_B_BUSER = axiSlaveS2M_B_BUSERaxiSlave_S2M_B_BUSERHardLink;
 	assign axiSlave_S2M_B_BVALID = axiSlaveS2M_B_BVALIDaxiSlave_S2M_B_BVALIDHardLink;
 	assign axiSlave_S2M_R_RID = axiSlaveS2M_R_RIDaxiSlave_S2M_R_RIDHardLink;
-	assign axiSlave_S2M_R_RDATA0 = axiSlaveS2M_R_RDATA0axiSlave_S2M_R_RDATA0HardLink;
-	assign axiSlave_S2M_R_RDATA1 = axiSlaveS2M_R_RDATA1axiSlave_S2M_R_RDATA1HardLink;
-	assign axiSlave_S2M_R_RDATA2 = axiSlaveS2M_R_RDATA2axiSlave_S2M_R_RDATA2HardLink;
-	assign axiSlave_S2M_R_RDATA3 = axiSlaveS2M_R_RDATA3axiSlave_S2M_R_RDATA3HardLink;
+	assign axiSlave_S2M_R_RDATA[0] = axiSlaveS2M_R_RDATA0axiSlave_S2M_R_RDATAHardLink;
+	assign axiSlave_S2M_R_RDATA[1] = axiSlaveS2M_R_RDATA1axiSlave_S2M_R_RDATAHardLink;
+	assign axiSlave_S2M_R_RDATA[2] = axiSlaveS2M_R_RDATA2axiSlave_S2M_R_RDATAHardLink;
+	assign axiSlave_S2M_R_RDATA[3] = axiSlaveS2M_R_RDATA3axiSlave_S2M_R_RDATAHardLink;
 	assign axiSlave_S2M_R_RRESP = axiSlaveS2M_R_RRESPaxiSlave_S2M_R_RRESPHardLink;
 	assign axiSlave_S2M_R_RLAST = axiSlaveS2M_R_RLASTaxiSlave_S2M_R_RLASTHardLink;
 	assign axiSlave_S2M_R_RUSER = axiSlaveS2M_R_RUSERaxiSlave_S2M_R_RUSERHardLink;
 	assign axiSlave_S2M_R_RVALID = axiSlaveS2M_R_RVALIDaxiSlave_S2M_R_RVALIDHardLink;
 	assign axiSlave_S2M_W_WREADY = axiSlaveS2M_W_WREADYaxiSlave_S2M_W_WREADYHardLink;
 	assign axiSlave_WSTRB = axiSlaveWSTRBaxiSlave_WSTRBHardLink;
-	assign axiSlave_WDATA0 = axiSlaveWDATA0axiSlave_WDATA0HardLink;
-	assign axiSlave_WDATA1 = axiSlaveWDATA1axiSlave_WDATA1HardLink;
-	assign axiSlave_WDATA2 = axiSlaveWDATA2axiSlave_WDATA2HardLink;
-	assign axiSlave_WDATA3 = axiSlaveWDATA3axiSlave_WDATA3HardLink;
+	assign axiSlave_WDATA[0] = axiSlaveWDATA0axiSlave_WDATAHardLink;
+	assign axiSlave_WDATA[1] = axiSlaveWDATA1axiSlave_WDATAHardLink;
+	assign axiSlave_WDATA[2] = axiSlaveWDATA2axiSlave_WDATAHardLink;
+	assign axiSlave_WDATA[3] = axiSlaveWDATA3axiSlave_WDATAHardLink;
 	assign axiSlave_WVALID = axiSlaveWVALIDaxiSlave_WVALIDHardLink;
 	assign axiSlave_RVALID = axiSlaveRVALIDaxiSlave_RVALIDHardLink;
 	assign axiSlave_ARADDR = axiSlaveARADDRaxiSlave_ARADDRHardLink;
