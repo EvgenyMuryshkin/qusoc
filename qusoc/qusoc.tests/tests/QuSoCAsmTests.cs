@@ -86,10 +86,8 @@ namespace QuSoC.Tests
         [TestMethod]
         public void BlinkerSimTest()
         {
-            var sim = PowerUp("blinker_sim");
-            
             // WIP, does not support arrays yet
-            sim.TraceToVCD(VCDOutputPath());
+            var sim = PowerUp("blinker_sim", VCDOutputPath());            
 
             var tl = sim.TopLevel;
 
@@ -104,10 +102,8 @@ namespace QuSoC.Tests
         [TestMethod]
         public void UARTSim()
         {
-            var sim = PowerUp("uart_sim");
-
             // WIP, does not support arrays yet
-            sim.TraceToVCD(VCDOutputPath());
+            var sim = PowerUp("uart_sim", VCDOutputPath());
 
             var tl = sim.TopLevel;
 

@@ -68,7 +68,7 @@ begin
 			if Inputs_WE = '1' then
 				State_Buff(TO_INTEGER(Inputs_WriteAddress)) <= Inputs_WriteData;
 			end if;
-			Inputs_ReadAddress_reg <= Inputs_ReadAddress;
+			Inputs_ReadAddress_reg <= Inputs_ReadAddress(7 downto 0);
 		end if;
 		State_ReadData <= State_Buff(TO_INTEGER(Inputs_ReadAddress_reg));
 	end process;

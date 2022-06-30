@@ -3,7 +3,7 @@
     public class RTLSimulator<TModule> : RTLInstanceSimulator<TModule>
         where TModule : IRTLCombinationalModule, new()
     {
-        public RTLSimulator() : base(new TModule())
+        public RTLSimulator(string vcdPath = null, RTLModuleSnapshotConfig config = null) : base(new TModule(), vcdPath, config)
         {
 
         }
@@ -13,7 +13,9 @@
         where TModule : IRTLCombinationalModule<TInputs>, new()
         where TInputs : new()
     {
-        public RTLSimulator(bool withTestbench = false) : base(new TModule(), withTestbench)
+        public RTLSimulator(
+            string vcdPath = null, RTLModuleSnapshotConfig config = null,
+            bool withTestbench = false) : base(new TModule(), vcdPath, config, withTestbench)
         {
 
         }

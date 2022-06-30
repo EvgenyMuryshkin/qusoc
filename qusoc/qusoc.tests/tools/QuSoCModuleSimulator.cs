@@ -10,9 +10,9 @@ namespace QuSoC.Tests
 {
     public class QuSoCModuleSimulator : QuSoCModuleSimulator<IntegrationTestModule>
     {
-        public QuSoCModuleSimulator(uint[] instructions)
+        public QuSoCModuleSimulator(uint[] instructions, string vcdPath = null)
         {
-            Initialize(new IntegrationTestModule(instructions));
+            Initialize(new IntegrationTestModule(instructions), vcdPath);
 
             InfiniteLoopAddresses.AddRange(
                 instructions
@@ -31,9 +31,9 @@ namespace QuSoC.Tests
 
         protected QuSoCModuleSimulator() { }
 
-        public QuSoCModuleSimulator(T module)
+        public QuSoCModuleSimulator(T module, string vcdPath = null)
         {
-            Initialize(module);
+            Initialize(module, vcdPath);
             InfiniteLoopAddresses.AddRange(
                 module.InstructionsRAM.State.BlockRAM
                 .Select((i, idx) => new { i, idx })

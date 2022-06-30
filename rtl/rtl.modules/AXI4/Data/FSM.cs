@@ -4,7 +4,27 @@ using System.Text;
 
 namespace RTL.Modules
 {
+    /*
     public enum axiSlaveWriteFSM
+    {
+        RESET,
+        Idle,
+        AWREADY,
+        WREADY,
+        AWREADY_WREADY,
+        WWAIT,
+        BVALID
+    }
+    */
+
+    public enum axiMasterReadFSM
+    {
+        RESET,
+        Idle,
+        OK
+    }
+
+    public enum axiMasterWriteFSM
     {
         RESET,
         Idle,
@@ -15,16 +35,13 @@ namespace RTL.Modules
     {
         RESET,
         Idle,
-        OK
+        Ack
     }
 
-    public enum axiMasterFSM
+    public enum axiSlaveWriteFSM
     {
         RESET,
         Idle,
-        RWAIT,
-        RACK,
-        WWAIT,
-        WACK,
+        Ack
     }
 }

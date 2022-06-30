@@ -12,7 +12,9 @@ namespace Quokka.RTL.Simulator
         public int MaxClockCycles { get; set; } = 100000;
         public int MaxDeltaCycles { get; set; } = 1000;
 
-        public int CurrentTime { get; set; }
+        public int MilestoneTime { get; set; }
+        public int MilestoneOffset { get; set; }
+        public int CurrentTime => MilestoneTime + MilestoneOffset;
 
         public int Clock { get; set; }
         public int DeltaCycle { get; set; }
@@ -20,5 +22,10 @@ namespace Quokka.RTL.Simulator
 
         public VCDSignalsSnapshot ControlScope { get; set; }
         public VCDVariable ClockSignal { get; set; }
+
+        public void NextMilestone()
+        {
+            MilestoneTime += MaxDeltaCycles;
+        }
     }
 }

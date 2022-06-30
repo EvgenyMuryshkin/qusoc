@@ -207,10 +207,10 @@ architecture rtl of SDP_WF_WSTRB_RAMModule_TopLevel is
 		"00000000"
 	);
 	signal State_Buff3 : State_Buff3Array := State_Buff3ArrayInit;
-	signal Inputs_ReadAddress_reg0 : unsigned(7 downto 0);
-	signal Inputs_ReadAddress_reg1 : unsigned(7 downto 0);
-	signal Inputs_ReadAddress_reg2 : unsigned(7 downto 0);
-	signal Inputs_ReadAddress_reg3 : unsigned(7 downto 0);
+	signal Inputs_ReadAddress_reg0 : unsigned(4 downto 0);
+	signal Inputs_ReadAddress_reg1 : unsigned(4 downto 0);
+	signal Inputs_ReadAddress_reg2 : unsigned(4 downto 0);
+	signal Inputs_ReadAddress_reg3 : unsigned(4 downto 0);
 begin
 	process (ReadAddress, State_ReadData, WE, WriteAddress, WriteData0, WriteData1, WriteData2, WriteData3, WSTRB)
 	begin
@@ -234,7 +234,7 @@ begin
 			if Inputs_WSTRB(0) = '1' then
 				State_Buff0(TO_INTEGER(Inputs_WriteAddress)) <= Inputs_WriteData(0);
 			end if;
-			Inputs_ReadAddress_reg0 <= Inputs_ReadAddress;
+			Inputs_ReadAddress_reg0 <= Inputs_ReadAddress(4 downto 0);
 		end if;
 		State_ReadData(0) <= State_Buff0(TO_INTEGER(Inputs_ReadAddress_reg0));
 	end process;
@@ -245,7 +245,7 @@ begin
 			if Inputs_WSTRB(1) = '1' then
 				State_Buff1(TO_INTEGER(Inputs_WriteAddress)) <= Inputs_WriteData(1);
 			end if;
-			Inputs_ReadAddress_reg1 <= Inputs_ReadAddress;
+			Inputs_ReadAddress_reg1 <= Inputs_ReadAddress(4 downto 0);
 		end if;
 		State_ReadData(1) <= State_Buff1(TO_INTEGER(Inputs_ReadAddress_reg1));
 	end process;
@@ -256,7 +256,7 @@ begin
 			if Inputs_WSTRB(2) = '1' then
 				State_Buff2(TO_INTEGER(Inputs_WriteAddress)) <= Inputs_WriteData(2);
 			end if;
-			Inputs_ReadAddress_reg2 <= Inputs_ReadAddress;
+			Inputs_ReadAddress_reg2 <= Inputs_ReadAddress(4 downto 0);
 		end if;
 		State_ReadData(2) <= State_Buff2(TO_INTEGER(Inputs_ReadAddress_reg2));
 	end process;
@@ -267,7 +267,7 @@ begin
 			if Inputs_WSTRB(3) = '1' then
 				State_Buff3(TO_INTEGER(Inputs_WriteAddress)) <= Inputs_WriteData(3);
 			end if;
-			Inputs_ReadAddress_reg3 <= Inputs_ReadAddress;
+			Inputs_ReadAddress_reg3 <= Inputs_ReadAddress(4 downto 0);
 		end if;
 		State_ReadData(3) <= State_Buff3(TO_INTEGER(Inputs_ReadAddress_reg3));
 	end process;

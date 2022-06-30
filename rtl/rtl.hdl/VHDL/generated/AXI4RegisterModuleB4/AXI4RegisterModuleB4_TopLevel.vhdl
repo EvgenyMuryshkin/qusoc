@@ -61,16 +61,16 @@ entity AXI4RegisterModuleB4_TopLevel is
 		M2S_W_WUSER : in unsigned (7 downto 0);
 		M2S_W_WVALID : in std_logic;
 		M2S_B_BREADY : in std_logic;
-		WE : in std_logic;
-		WDATA0 : in unsigned (7 downto 0);
-		WDATA1 : in unsigned (7 downto 0);
-		WDATA2 : in unsigned (7 downto 0);
-		WDATA3 : in unsigned (7 downto 0);
-		OutData0 : out unsigned (7 downto 0);
-		OutData1 : out unsigned (7 downto 0);
-		OutData2 : out unsigned (7 downto 0);
-		OutData3 : out unsigned (7 downto 0);
-		OutACK : out std_logic;
+		inWE : in std_logic;
+		inWDATA0 : in unsigned (7 downto 0);
+		inWDATA1 : in unsigned (7 downto 0);
+		inWDATA2 : in unsigned (7 downto 0);
+		inWDATA3 : in unsigned (7 downto 0);
+		outData0 : out unsigned (7 downto 0);
+		outData1 : out unsigned (7 downto 0);
+		outData2 : out unsigned (7 downto 0);
+		outData3 : out unsigned (7 downto 0);
+		outACK : out std_logic;
 		S2M_AR_ARREADY : out std_logic;
 		S2M_AW_AWREADY : out std_logic;
 		S2M_B_BID : out unsigned (7 downto 0);
@@ -86,7 +86,8 @@ entity AXI4RegisterModuleB4_TopLevel is
 		S2M_R_RLAST : out std_logic;
 		S2M_R_RUSER : out unsigned (7 downto 0);
 		S2M_R_RVALID : out std_logic;
-		S2M_W_WREADY : out std_logic
+		S2M_W_WREADY : out std_logic;
+		outWritten : out std_logic
 	);
 end entity;
 -- FSM summary
@@ -101,12 +102,14 @@ architecture rtl of AXI4RegisterModuleB4_TopLevel is
 	constant true : std_logic := '1';
 	constant false : std_logic := '0';
 	constant size : unsigned(1 downto 0) := "10";
-	constant AXI4RegisterModule_L56F24T28_Expr : std_logic := '1';
-	constant AXI4RegisterModule_L58F24T28_Expr : std_logic := '1';
-	constant AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_0_w : std_logic := '0';
-	constant AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_1_w : std_logic := '1';
-	constant AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_2_w : unsigned(1 downto 0) := "10";
-	constant AXI4RegisterModule_L62F9L75T10_AXI4RegisterModule_L68F13L74T14_AXI4RegisterModule_L69F17L73T18_3_w : unsigned(1 downto 0) := "11";
+	constant AXI4RegisterModule_L58F29T33_Expr : std_logic := '1';
+	constant AXI4RegisterModule_L59F28T32_Expr : std_logic := '1';
+	constant AXI4RegisterModule_L60F29T33_Expr : std_logic := '1';
+	constant AXI4RegisterModule_L62F28T32_Expr : std_logic := '1';
+	constant AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L75F13L81T14_AXI4RegisterModule_L76F17L80T18_0_w : std_logic := '0';
+	constant AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L75F13L81T14_AXI4RegisterModule_L76F17L80T18_1_w : std_logic := '1';
+	constant AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L75F13L81T14_AXI4RegisterModule_L76F17L80T18_2_w : unsigned(1 downto 0) := "10";
+	constant AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L75F13L81T14_AXI4RegisterModule_L76F17L80T18_3_w : unsigned(1 downto 0) := "11";
 	signal Inputs_M2S_AR_ARID : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_M2S_AR_ARADDR : unsigned(31 downto 0) := (others => '0');
 	signal Inputs_M2S_AR_ARLEN : unsigned(7 downto 0) := (others => '0');
@@ -138,7 +141,8 @@ architecture rtl of AXI4RegisterModuleB4_TopLevel is
 	signal Inputs_M2S_W_WUSER : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_M2S_W_WVALID : std_logic := '0';
 	signal Inputs_M2S_B_BREADY : std_logic := '0';
-	signal Inputs_WE : std_logic := '0';
+	signal Inputs_inWE : std_logic := '0';
+	signal NextState_Written : std_logic := '0';
 	signal axiSlave_M2S_AR_ARID : unsigned(7 downto 0) := (others => '0');
 	signal axiSlave_M2S_AR_ARADDR : unsigned(31 downto 0) := (others => '0');
 	signal axiSlave_M2S_AR_ARLEN : unsigned(7 downto 0) := (others => '0');
@@ -170,8 +174,11 @@ architecture rtl of AXI4RegisterModuleB4_TopLevel is
 	signal axiSlave_M2S_W_WUSER : unsigned(7 downto 0) := (others => '0');
 	signal axiSlave_M2S_W_WVALID : std_logic := '0';
 	signal axiSlave_M2S_B_BREADY : std_logic := '0';
-	signal axiSlave_RACK : std_logic := '0';
-	signal axiSlave_WACK : std_logic := '0';
+	signal axiSlave_inARREADY : std_logic := '0';
+	signal axiSlave_inRVALID : std_logic := '0';
+	signal axiSlave_inAWREADY : std_logic := '0';
+	signal axiSlave_inWREADY : std_logic := '0';
+	signal axiSlave_inBVALID : std_logic := '0';
 	signal axiSlave_S2M_AR_ARREADY : std_logic := '0';
 	signal axiSlave_S2M_AW_AWREADY : std_logic := '0';
 	signal axiSlave_S2M_B_BID : unsigned(7 downto 0) := (others => '0');
@@ -184,11 +191,17 @@ architecture rtl of AXI4RegisterModuleB4_TopLevel is
 	signal axiSlave_S2M_R_RUSER : unsigned(7 downto 0) := (others => '0');
 	signal axiSlave_S2M_R_RVALID : std_logic := '0';
 	signal axiSlave_S2M_W_WREADY : std_logic := '0';
-	signal axiSlave_WSTRB : unsigned(3 downto 0) := (others => '0');
-	signal axiSlave_WVALID : std_logic := '0';
-	signal axiSlave_RVALID : std_logic := '0';
-	signal axiSlave_ARADDR : unsigned(31 downto 0) := (others => '0');
-	signal axiSlave_AWADDR : unsigned(31 downto 0) := (others => '0');
+	signal axiSlave_outReadTXCompleting : std_logic := '0';
+	signal axiSlave_outWriteTXCompleting : std_logic := '0';
+	signal axiSlave_outARREADYConfirming : std_logic := '0';
+	signal axiSlave_outARVALID : std_logic := '0';
+	signal axiSlave_outARADDR : unsigned(31 downto 0) := (others => '0');
+	signal axiSlave_outAWREADYConfirming : std_logic := '0';
+	signal axiSlave_outAWVALID : std_logic := '0';
+	signal axiSlave_outAWADDR : unsigned(31 downto 0) := (others => '0');
+	signal axiSlave_outWREADYConfirming : std_logic := '0';
+	signal axiSlave_outWVALID : std_logic := '0';
+	signal axiSlave_outWSTRB : unsigned(3 downto 0) := (others => '0');
 	signal State_bytesDefault : unsigned(7 downto 0) := "00000000";
 	signal axiSlaveM2S_AR_ARIDaxiSlave_M2S_AR_ARIDHardLink : unsigned(7 downto 0) := "00000000";
 	signal axiSlaveM2S_AR_ARADDRaxiSlave_M2S_AR_ARADDRHardLink : unsigned(31 downto 0) := "00000000000000000000000000000000";
@@ -225,12 +238,15 @@ architecture rtl of AXI4RegisterModuleB4_TopLevel is
 	signal axiSlaveM2S_W_WUSERaxiSlave_M2S_W_WUSERHardLink : unsigned(7 downto 0) := "00000000";
 	signal axiSlaveM2S_W_WVALIDaxiSlave_M2S_W_WVALIDHardLink : std_logic := '0';
 	signal axiSlaveM2S_B_BREADYaxiSlave_M2S_B_BREADYHardLink : std_logic := '0';
-	signal axiSlaveRDATA0axiSlave_RDATAHardLink : unsigned(7 downto 0) := "00000000";
-	signal axiSlaveRDATA1axiSlave_RDATAHardLink : unsigned(7 downto 0) := "00000000";
-	signal axiSlaveRDATA2axiSlave_RDATAHardLink : unsigned(7 downto 0) := "00000000";
-	signal axiSlaveRDATA3axiSlave_RDATAHardLink : unsigned(7 downto 0) := "00000000";
-	signal axiSlaveRACKaxiSlave_RACKHardLink : std_logic := '0';
-	signal axiSlaveWACKaxiSlave_WACKHardLink : std_logic := '0';
+	signal axiSlaveinRDATA0axiSlave_inRDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal axiSlaveinRDATA1axiSlave_inRDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal axiSlaveinRDATA2axiSlave_inRDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal axiSlaveinRDATA3axiSlave_inRDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal axiSlaveinARREADYaxiSlave_inARREADYHardLink : std_logic := '0';
+	signal axiSlaveinRVALIDaxiSlave_inRVALIDHardLink : std_logic := '0';
+	signal axiSlaveinAWREADYaxiSlave_inAWREADYHardLink : std_logic := '0';
+	signal axiSlaveinWREADYaxiSlave_inWREADYHardLink : std_logic := '0';
+	signal axiSlaveinBVALIDaxiSlave_inBVALIDHardLink : std_logic := '0';
 	signal axiSlaveS2M_AR_ARREADYaxiSlave_S2M_AR_ARREADYHardLink : std_logic := '0';
 	signal axiSlaveS2M_AW_AWREADYaxiSlave_S2M_AW_AWREADYHardLink : std_logic := '0';
 	signal axiSlaveS2M_B_BIDaxiSlave_S2M_B_BIDHardLink : unsigned(7 downto 0) := "00000000";
@@ -247,35 +263,58 @@ architecture rtl of AXI4RegisterModuleB4_TopLevel is
 	signal axiSlaveS2M_R_RUSERaxiSlave_S2M_R_RUSERHardLink : unsigned(7 downto 0) := "00000000";
 	signal axiSlaveS2M_R_RVALIDaxiSlave_S2M_R_RVALIDHardLink : std_logic := '0';
 	signal axiSlaveS2M_W_WREADYaxiSlave_S2M_W_WREADYHardLink : std_logic := '0';
-	signal axiSlaveWSTRBaxiSlave_WSTRBHardLink : unsigned(3 downto 0) := "0000";
-	signal axiSlaveWDATA0axiSlave_WDATAHardLink : unsigned(7 downto 0) := "00000000";
-	signal axiSlaveWDATA1axiSlave_WDATAHardLink : unsigned(7 downto 0) := "00000000";
-	signal axiSlaveWDATA2axiSlave_WDATAHardLink : unsigned(7 downto 0) := "00000000";
-	signal axiSlaveWDATA3axiSlave_WDATAHardLink : unsigned(7 downto 0) := "00000000";
-	signal axiSlaveWVALIDaxiSlave_WVALIDHardLink : std_logic := '0';
-	signal axiSlaveRVALIDaxiSlave_RVALIDHardLink : std_logic := '0';
-	signal axiSlaveARADDRaxiSlave_ARADDRHardLink : unsigned(31 downto 0) := "00000000000000000000000000000000";
-	signal axiSlaveAWADDRaxiSlave_AWADDRHardLink : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal axiSlaveoutReadTXCompletingaxiSlave_outReadTXCompletingHardLink : std_logic := '0';
+	signal axiSlaveoutWriteTXCompletingaxiSlave_outWriteTXCompletingHardLink : std_logic := '0';
+	signal axiSlaveoutARREADYConfirmingaxiSlave_outARREADYConfirmingHardLink : std_logic := '0';
+	signal axiSlaveoutARVALIDaxiSlave_outARVALIDHardLink : std_logic := '0';
+	signal axiSlaveoutARADDRaxiSlave_outARADDRHardLink : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal axiSlaveoutAWREADYConfirmingaxiSlave_outAWREADYConfirmingHardLink : std_logic := '0';
+	signal axiSlaveoutAWVALIDaxiSlave_outAWVALIDHardLink : std_logic := '0';
+	signal axiSlaveoutAWADDRaxiSlave_outAWADDRHardLink : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal axiSlaveoutWREADYConfirmingaxiSlave_outWREADYConfirmingHardLink : std_logic := '0';
+	signal axiSlaveoutWVALIDaxiSlave_outWVALIDHardLink : std_logic := '0';
+	signal axiSlaveoutWDATA0axiSlave_outWDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal axiSlaveoutWDATA1axiSlave_outWDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal axiSlaveoutWDATA2axiSlave_outWDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal axiSlaveoutWDATA3axiSlave_outWDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal axiSlaveoutWSTRBaxiSlave_outWSTRBHardLink : unsigned(3 downto 0) := "0000";
+	signal State_Written : std_logic := '0';
+	constant State_WrittenDefault : std_logic := '0';
+	signal AXI4RegisterModule_L61F28T40_Expr : std_logic := '0';
+	signal AXI4RegisterModule_L61F28T40_Expr_1 : std_logic := '0';
+	signal AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr : std_logic := '0';
+	signal AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr_1 : std_logic := '0';
+	signal AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr_2 : std_logic := '0';
 	type Inputs_M2S_W_WDATAArray is array (0 to 3) of unsigned (7 downto 0);
 	signal Inputs_M2S_W_WDATA : Inputs_M2S_W_WDATAArray := (others => (others => '0'));
-	type Inputs_WDATAArray is array (0 to 3) of unsigned (7 downto 0);
-	signal Inputs_WDATA : Inputs_WDATAArray := (others => (others => '0'));
+	type Inputs_inWDATAArray is array (0 to 3) of unsigned (7 downto 0);
+	signal Inputs_inWDATA : Inputs_inWDATAArray := (others => (others => '0'));
 	type State_bytesArray is array (0 to 3) of unsigned (7 downto 0);
 	signal State_bytes : State_bytesArray := (others => (others => '0'));
 	type NextState_bytesArray is array (0 to 3) of unsigned (7 downto 0);
 	signal NextState_bytes : NextState_bytesArray := (others => (others => '0'));
 	type axiSlave_M2S_W_WDATAArray is array (0 to 3) of unsigned (7 downto 0);
 	signal axiSlave_M2S_W_WDATA : axiSlave_M2S_W_WDATAArray := (others => (others => '0'));
-	type axiSlave_RDATAArray is array (0 to 3) of unsigned (7 downto 0);
-	signal axiSlave_RDATA : axiSlave_RDATAArray := (others => (others => '0'));
+	type axiSlave_inRDATAArray is array (0 to 3) of unsigned (7 downto 0);
+	signal axiSlave_inRDATA : axiSlave_inRDATAArray := (others => (others => '0'));
 	type axiSlave_S2M_R_RDATAArray is array (0 to 3) of unsigned (7 downto 0);
 	signal axiSlave_S2M_R_RDATA : axiSlave_S2M_R_RDATAArray := (others => (others => '0'));
-	type axiSlave_WDATAArray is array (0 to 3) of unsigned (7 downto 0);
-	signal axiSlave_WDATA : axiSlave_WDATAArray := (others => (others => '0'));
+	type axiSlave_outWDATAArray is array (0 to 3) of unsigned (7 downto 0);
+	signal axiSlave_outWDATA : axiSlave_outWDATAArray := (others => (others => '0'));
 	signal BoardSignals : BoardSignalsType;
 	signal InternalReset : std_logic := '0';
 begin
 	work.Quokka.BoardSignalsProc(BoardSignals, Clock, Reset, InternalReset);
+	process (Clock, NextState_Written, Reset)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				State_Written <= State_WrittenDefault;
+			else
+				State_Written <= NextState_Written;
+			end if;
+		end if;
+	end process;
 	process (Clock, NextState_bytes, Reset, State_bytesDefault)
 	begin
 		if rising_edge(Clock) then
@@ -289,6 +328,14 @@ begin
 				end loop;
 			end if;
 		end if;
+	end process;
+	process (AXI4RegisterModule_L61F28T40_Expr_1)
+	begin
+		AXI4RegisterModule_L61F28T40_Expr <= NOT AXI4RegisterModule_L61F28T40_Expr_1;
+	end process;
+	process (AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr_1, AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr_2)
+	begin
+		AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr <= AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr_1 OR AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr_2;
 	end process;
 	AXI4RegisterModuleB4_TopLevel_AXI4RegisterModuleB4_axiSlave : entity work.AXI4RegisterModuleB4_TopLevel_AXI4RegisterModuleB4_axiSlave
 	port map
@@ -331,12 +378,15 @@ M2S_W_WLAST => axiSlaveM2S_W_WLASTaxiSlave_M2S_W_WLASTHardLink,
 M2S_W_WUSER => axiSlaveM2S_W_WUSERaxiSlave_M2S_W_WUSERHardLink,
 M2S_W_WVALID => axiSlaveM2S_W_WVALIDaxiSlave_M2S_W_WVALIDHardLink,
 M2S_B_BREADY => axiSlaveM2S_B_BREADYaxiSlave_M2S_B_BREADYHardLink,
-RDATA0 => axiSlaveRDATA0axiSlave_RDATAHardLink,
-RDATA1 => axiSlaveRDATA1axiSlave_RDATAHardLink,
-RDATA2 => axiSlaveRDATA2axiSlave_RDATAHardLink,
-RDATA3 => axiSlaveRDATA3axiSlave_RDATAHardLink,
-RACK => axiSlaveRACKaxiSlave_RACKHardLink,
-WACK => axiSlaveWACKaxiSlave_WACKHardLink,
+inRDATA0 => axiSlaveinRDATA0axiSlave_inRDATAHardLink,
+inRDATA1 => axiSlaveinRDATA1axiSlave_inRDATAHardLink,
+inRDATA2 => axiSlaveinRDATA2axiSlave_inRDATAHardLink,
+inRDATA3 => axiSlaveinRDATA3axiSlave_inRDATAHardLink,
+inARREADY => axiSlaveinARREADYaxiSlave_inARREADYHardLink,
+inRVALID => axiSlaveinRVALIDaxiSlave_inRVALIDHardLink,
+inAWREADY => axiSlaveinAWREADYaxiSlave_inAWREADYHardLink,
+inWREADY => axiSlaveinWREADYaxiSlave_inWREADYHardLink,
+inBVALID => axiSlaveinBVALIDaxiSlave_inBVALIDHardLink,
 S2M_AR_ARREADY => axiSlaveS2M_AR_ARREADYaxiSlave_S2M_AR_ARREADYHardLink,
 S2M_AW_AWREADY => axiSlaveS2M_AW_AWREADYaxiSlave_S2M_AW_AWREADYHardLink,
 S2M_B_BID => axiSlaveS2M_B_BIDaxiSlave_S2M_B_BIDHardLink,
@@ -353,43 +403,54 @@ S2M_R_RLAST => axiSlaveS2M_R_RLASTaxiSlave_S2M_R_RLASTHardLink,
 S2M_R_RUSER => axiSlaveS2M_R_RUSERaxiSlave_S2M_R_RUSERHardLink,
 S2M_R_RVALID => axiSlaveS2M_R_RVALIDaxiSlave_S2M_R_RVALIDHardLink,
 S2M_W_WREADY => axiSlaveS2M_W_WREADYaxiSlave_S2M_W_WREADYHardLink,
-WSTRB => axiSlaveWSTRBaxiSlave_WSTRBHardLink,
-WDATA0 => axiSlaveWDATA0axiSlave_WDATAHardLink,
-WDATA1 => axiSlaveWDATA1axiSlave_WDATAHardLink,
-WDATA2 => axiSlaveWDATA2axiSlave_WDATAHardLink,
-WDATA3 => axiSlaveWDATA3axiSlave_WDATAHardLink,
-WVALID => axiSlaveWVALIDaxiSlave_WVALIDHardLink,
-RVALID => axiSlaveRVALIDaxiSlave_RVALIDHardLink,
-ARADDR => axiSlaveARADDRaxiSlave_ARADDRHardLink,
-AWADDR => axiSlaveAWADDRaxiSlave_AWADDRHardLink
+outReadTXCompleting => axiSlaveoutReadTXCompletingaxiSlave_outReadTXCompletingHardLink,
+outWriteTXCompleting => axiSlaveoutWriteTXCompletingaxiSlave_outWriteTXCompletingHardLink,
+outARREADYConfirming => axiSlaveoutARREADYConfirmingaxiSlave_outARREADYConfirmingHardLink,
+outARVALID => axiSlaveoutARVALIDaxiSlave_outARVALIDHardLink,
+outARADDR => axiSlaveoutARADDRaxiSlave_outARADDRHardLink,
+outAWREADYConfirming => axiSlaveoutAWREADYConfirmingaxiSlave_outAWREADYConfirmingHardLink,
+outAWVALID => axiSlaveoutAWVALIDaxiSlave_outAWVALIDHardLink,
+outAWADDR => axiSlaveoutAWADDRaxiSlave_outAWADDRHardLink,
+outWREADYConfirming => axiSlaveoutWREADYConfirmingaxiSlave_outWREADYConfirmingHardLink,
+outWVALID => axiSlaveoutWVALIDaxiSlave_outWVALIDHardLink,
+outWDATA0 => axiSlaveoutWDATA0axiSlave_outWDATAHardLink,
+outWDATA1 => axiSlaveoutWDATA1axiSlave_outWDATAHardLink,
+outWDATA2 => axiSlaveoutWDATA2axiSlave_outWDATAHardLink,
+outWDATA3 => axiSlaveoutWDATA3axiSlave_outWDATAHardLink,
+outWSTRB => axiSlaveoutWSTRBaxiSlave_outWSTRBHardLink
 	);
-	process (axiSlave_WDATA, axiSlave_WSTRB, axiSlave_WVALID, Inputs_WDATA, Inputs_WE, State_bytes)
+	process (AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr, axiSlave_outWDATA, axiSlave_outWREADYConfirming, axiSlave_outWSTRB, Inputs_inWDATA, Inputs_inWE, State_bytes, State_Written)
 	begin
 		for NextState_bytes_Iterator in 0 to 3 loop
 			NextState_bytes(NextState_bytes_Iterator) <= State_bytes(NextState_bytes_Iterator);
 		end loop;
-		if Inputs_WE = '1' then
-			NextState_bytes(0) <= Inputs_WDATA(0);
-			NextState_bytes(1) <= Inputs_WDATA(1);
-			NextState_bytes(2) <= Inputs_WDATA(2);
-			NextState_bytes(3) <= Inputs_WDATA(3);
-		elsif axiSlave_WVALID = '1' then
-			if axiSlave_WSTRB(0) = '1' then
-				NextState_bytes(0) <= axiSlave_WDATA(0);
+		NextState_Written <= State_Written;
+		NextState_Written <= AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr;
+		if Inputs_inWE = '1' then
+			NextState_bytes(0) <= Inputs_inWDATA(0);
+			NextState_bytes(1) <= Inputs_inWDATA(1);
+			NextState_bytes(2) <= Inputs_inWDATA(2);
+			NextState_bytes(3) <= Inputs_inWDATA(3);
+		elsif axiSlave_outWREADYConfirming = '1' then
+			if axiSlave_outWSTRB(0) = '1' then
+				NextState_bytes(0) <= axiSlave_outWDATA(0);
 			end if;
-			if axiSlave_WSTRB(1) = '1' then
-				NextState_bytes(1) <= axiSlave_WDATA(1);
+			if axiSlave_outWSTRB(1) = '1' then
+				NextState_bytes(1) <= axiSlave_outWDATA(1);
 			end if;
-			if axiSlave_WSTRB(2) = '1' then
-				NextState_bytes(2) <= axiSlave_WDATA(2);
+			if axiSlave_outWSTRB(2) = '1' then
+				NextState_bytes(2) <= axiSlave_outWDATA(2);
 			end if;
-			if axiSlave_WSTRB(3) = '1' then
-				NextState_bytes(3) <= axiSlave_WDATA(3);
+			if axiSlave_outWSTRB(3) = '1' then
+				NextState_bytes(3) <= axiSlave_outWDATA(3);
 			end if;
 		end if;
 	end process;
-	process (axiSlave_M2S_AR_ARADDR, axiSlave_M2S_AR_ARBURST, axiSlave_M2S_AR_ARCACHE, axiSlave_M2S_AR_ARID, axiSlave_M2S_AR_ARLEN, axiSlave_M2S_AR_ARLOCK, axiSlave_M2S_AR_ARPROT, axiSlave_M2S_AR_ARQOS, axiSlave_M2S_AR_ARREGION, axiSlave_M2S_AR_ARSIZE, axiSlave_M2S_AR_ARUSER, axiSlave_M2S_AR_ARVALID, axiSlave_M2S_AW_AWADDR, axiSlave_M2S_AW_AWBURST, axiSlave_M2S_AW_AWCACHE, axiSlave_M2S_AW_AWID, axiSlave_M2S_AW_AWLEN, axiSlave_M2S_AW_AWLOCK, axiSlave_M2S_AW_AWPROT, axiSlave_M2S_AW_AWQOS, axiSlave_M2S_AW_AWREGION, axiSlave_M2S_AW_AWSIZE, axiSlave_M2S_AW_AWUSER, axiSlave_M2S_AW_AWVALID, axiSlave_M2S_B_BREADY, axiSlave_M2S_R_RREADY, axiSlave_M2S_W_WDATA, axiSlave_M2S_W_WID, axiSlave_M2S_W_WLAST, axiSlave_M2S_W_WSTRB, axiSlave_M2S_W_WUSER, axiSlave_M2S_W_WVALID, axiSlave_RACK, axiSlave_RDATA, axiSlave_S2M_AR_ARREADY, axiSlave_S2M_AW_AWREADY, axiSlave_S2M_B_BID, axiSlave_S2M_B_BRESP, axiSlave_S2M_B_BUSER, axiSlave_S2M_B_BVALID, axiSlave_S2M_R_RDATA, axiSlave_S2M_R_RID, axiSlave_S2M_R_RLAST, axiSlave_S2M_R_RRESP, axiSlave_S2M_R_RUSER, axiSlave_S2M_R_RVALID, axiSlave_S2M_W_WREADY, axiSlave_WACK, axiSlaveARADDRaxiSlave_ARADDRHardLink, axiSlaveAWADDRaxiSlave_AWADDRHardLink, axiSlaveRVALIDaxiSlave_RVALIDHardLink, axiSlaveS2M_AR_ARREADYaxiSlave_S2M_AR_ARREADYHardLink, axiSlaveS2M_AW_AWREADYaxiSlave_S2M_AW_AWREADYHardLink, axiSlaveS2M_B_BIDaxiSlave_S2M_B_BIDHardLink, axiSlaveS2M_B_BRESPaxiSlave_S2M_B_BRESPHardLink, axiSlaveS2M_B_BUSERaxiSlave_S2M_B_BUSERHardLink, axiSlaveS2M_B_BVALIDaxiSlave_S2M_B_BVALIDHardLink, axiSlaveS2M_R_RDATA0axiSlave_S2M_R_RDATAHardLink, axiSlaveS2M_R_RDATA1axiSlave_S2M_R_RDATAHardLink, axiSlaveS2M_R_RDATA2axiSlave_S2M_R_RDATAHardLink, axiSlaveS2M_R_RDATA3axiSlave_S2M_R_RDATAHardLink, axiSlaveS2M_R_RIDaxiSlave_S2M_R_RIDHardLink, axiSlaveS2M_R_RLASTaxiSlave_S2M_R_RLASTHardLink, axiSlaveS2M_R_RRESPaxiSlave_S2M_R_RRESPHardLink, axiSlaveS2M_R_RUSERaxiSlave_S2M_R_RUSERHardLink, axiSlaveS2M_R_RVALIDaxiSlave_S2M_R_RVALIDHardLink, axiSlaveS2M_W_WREADYaxiSlave_S2M_W_WREADYHardLink, axiSlaveWDATA0axiSlave_WDATAHardLink, axiSlaveWDATA1axiSlave_WDATAHardLink, axiSlaveWDATA2axiSlave_WDATAHardLink, axiSlaveWDATA3axiSlave_WDATAHardLink, axiSlaveWSTRBaxiSlave_WSTRBHardLink, axiSlaveWVALIDaxiSlave_WVALIDHardLink, Inputs_M2S_AR_ARADDR, Inputs_M2S_AR_ARBURST, Inputs_M2S_AR_ARCACHE, Inputs_M2S_AR_ARID, Inputs_M2S_AR_ARLEN, Inputs_M2S_AR_ARLOCK, Inputs_M2S_AR_ARPROT, Inputs_M2S_AR_ARQOS, Inputs_M2S_AR_ARREGION, Inputs_M2S_AR_ARSIZE, Inputs_M2S_AR_ARUSER, Inputs_M2S_AR_ARVALID, Inputs_M2S_AW_AWADDR, Inputs_M2S_AW_AWBURST, Inputs_M2S_AW_AWCACHE, Inputs_M2S_AW_AWID, Inputs_M2S_AW_AWLEN, Inputs_M2S_AW_AWLOCK, Inputs_M2S_AW_AWPROT, Inputs_M2S_AW_AWQOS, Inputs_M2S_AW_AWREGION, Inputs_M2S_AW_AWSIZE, Inputs_M2S_AW_AWUSER, Inputs_M2S_AW_AWVALID, Inputs_M2S_B_BREADY, Inputs_M2S_R_RREADY, Inputs_M2S_W_WDATA, Inputs_M2S_W_WID, Inputs_M2S_W_WLAST, Inputs_M2S_W_WSTRB, Inputs_M2S_W_WUSER, Inputs_M2S_W_WVALID, Inputs_WE, M2S_AR_ARADDR, M2S_AR_ARBURST, M2S_AR_ARCACHE, M2S_AR_ARID, M2S_AR_ARLEN, M2S_AR_ARLOCK, M2S_AR_ARPROT, M2S_AR_ARQOS, M2S_AR_ARREGION, M2S_AR_ARSIZE, M2S_AR_ARUSER, M2S_AR_ARVALID, M2S_AW_AWADDR, M2S_AW_AWBURST, M2S_AW_AWCACHE, M2S_AW_AWID, M2S_AW_AWLEN, M2S_AW_AWLOCK, M2S_AW_AWPROT, M2S_AW_AWQOS, M2S_AW_AWREGION, M2S_AW_AWSIZE, M2S_AW_AWUSER, M2S_AW_AWVALID, M2S_B_BREADY, M2S_R_RREADY, M2S_W_WDATA0, M2S_W_WDATA1, M2S_W_WDATA2, M2S_W_WDATA3, M2S_W_WID, M2S_W_WLAST, M2S_W_WSTRB, M2S_W_WUSER, M2S_W_WVALID, State_bytes, WDATA0, WDATA1, WDATA2, WDATA3, WE)
+	process (AXI4RegisterModule_L61F28T40_Expr, axiSlave_inARREADY, axiSlave_inAWREADY, axiSlave_inBVALID, axiSlave_inRDATA, axiSlave_inRVALID, axiSlave_inWREADY, axiSlave_M2S_AR_ARADDR, axiSlave_M2S_AR_ARBURST, axiSlave_M2S_AR_ARCACHE, axiSlave_M2S_AR_ARID, axiSlave_M2S_AR_ARLEN, axiSlave_M2S_AR_ARLOCK, axiSlave_M2S_AR_ARPROT, axiSlave_M2S_AR_ARQOS, axiSlave_M2S_AR_ARREGION, axiSlave_M2S_AR_ARSIZE, axiSlave_M2S_AR_ARUSER, axiSlave_M2S_AR_ARVALID, axiSlave_M2S_AW_AWADDR, axiSlave_M2S_AW_AWBURST, axiSlave_M2S_AW_AWCACHE, axiSlave_M2S_AW_AWID, axiSlave_M2S_AW_AWLEN, axiSlave_M2S_AW_AWLOCK, axiSlave_M2S_AW_AWPROT, axiSlave_M2S_AW_AWQOS, axiSlave_M2S_AW_AWREGION, axiSlave_M2S_AW_AWSIZE, axiSlave_M2S_AW_AWUSER, axiSlave_M2S_AW_AWVALID, axiSlave_M2S_B_BREADY, axiSlave_M2S_R_RREADY, axiSlave_M2S_W_WDATA, axiSlave_M2S_W_WID, axiSlave_M2S_W_WLAST, axiSlave_M2S_W_WSTRB, axiSlave_M2S_W_WUSER, axiSlave_M2S_W_WVALID, axiSlave_outWREADYConfirming, axiSlave_S2M_AR_ARREADY, axiSlave_S2M_AW_AWREADY, axiSlave_S2M_B_BID, axiSlave_S2M_B_BRESP, axiSlave_S2M_B_BUSER, axiSlave_S2M_B_BVALID, axiSlave_S2M_R_RDATA, axiSlave_S2M_R_RID, axiSlave_S2M_R_RLAST, axiSlave_S2M_R_RRESP, axiSlave_S2M_R_RUSER, axiSlave_S2M_R_RVALID, axiSlave_S2M_W_WREADY, axiSlaveoutARADDRaxiSlave_outARADDRHardLink, axiSlaveoutARREADYConfirmingaxiSlave_outARREADYConfirmingHardLink, axiSlaveoutARVALIDaxiSlave_outARVALIDHardLink, axiSlaveoutAWADDRaxiSlave_outAWADDRHardLink, axiSlaveoutAWREADYConfirmingaxiSlave_outAWREADYConfirmingHardLink, axiSlaveoutAWVALIDaxiSlave_outAWVALIDHardLink, axiSlaveoutReadTXCompletingaxiSlave_outReadTXCompletingHardLink, axiSlaveoutWDATA0axiSlave_outWDATAHardLink, axiSlaveoutWDATA1axiSlave_outWDATAHardLink, axiSlaveoutWDATA2axiSlave_outWDATAHardLink, axiSlaveoutWDATA3axiSlave_outWDATAHardLink, axiSlaveoutWREADYConfirmingaxiSlave_outWREADYConfirmingHardLink, axiSlaveoutWriteTXCompletingaxiSlave_outWriteTXCompletingHardLink, axiSlaveoutWSTRBaxiSlave_outWSTRBHardLink, axiSlaveoutWVALIDaxiSlave_outWVALIDHardLink, axiSlaveS2M_AR_ARREADYaxiSlave_S2M_AR_ARREADYHardLink, axiSlaveS2M_AW_AWREADYaxiSlave_S2M_AW_AWREADYHardLink, axiSlaveS2M_B_BIDaxiSlave_S2M_B_BIDHardLink, axiSlaveS2M_B_BRESPaxiSlave_S2M_B_BRESPHardLink, axiSlaveS2M_B_BUSERaxiSlave_S2M_B_BUSERHardLink, axiSlaveS2M_B_BVALIDaxiSlave_S2M_B_BVALIDHardLink, axiSlaveS2M_R_RDATA0axiSlave_S2M_R_RDATAHardLink, axiSlaveS2M_R_RDATA1axiSlave_S2M_R_RDATAHardLink, axiSlaveS2M_R_RDATA2axiSlave_S2M_R_RDATAHardLink, axiSlaveS2M_R_RDATA3axiSlave_S2M_R_RDATAHardLink, axiSlaveS2M_R_RIDaxiSlave_S2M_R_RIDHardLink, axiSlaveS2M_R_RLASTaxiSlave_S2M_R_RLASTHardLink, axiSlaveS2M_R_RRESPaxiSlave_S2M_R_RRESPHardLink, axiSlaveS2M_R_RUSERaxiSlave_S2M_R_RUSERHardLink, axiSlaveS2M_R_RVALIDaxiSlave_S2M_R_RVALIDHardLink, axiSlaveS2M_W_WREADYaxiSlave_S2M_W_WREADYHardLink, Inputs_inWE, Inputs_M2S_AR_ARADDR, Inputs_M2S_AR_ARBURST, Inputs_M2S_AR_ARCACHE, Inputs_M2S_AR_ARID, Inputs_M2S_AR_ARLEN, Inputs_M2S_AR_ARLOCK, Inputs_M2S_AR_ARPROT, Inputs_M2S_AR_ARQOS, Inputs_M2S_AR_ARREGION, Inputs_M2S_AR_ARSIZE, Inputs_M2S_AR_ARUSER, Inputs_M2S_AR_ARVALID, Inputs_M2S_AW_AWADDR, Inputs_M2S_AW_AWBURST, Inputs_M2S_AW_AWCACHE, Inputs_M2S_AW_AWID, Inputs_M2S_AW_AWLEN, Inputs_M2S_AW_AWLOCK, Inputs_M2S_AW_AWPROT, Inputs_M2S_AW_AWQOS, Inputs_M2S_AW_AWREGION, Inputs_M2S_AW_AWSIZE, Inputs_M2S_AW_AWUSER, Inputs_M2S_AW_AWVALID, Inputs_M2S_B_BREADY, Inputs_M2S_R_RREADY, Inputs_M2S_W_WDATA, Inputs_M2S_W_WID, Inputs_M2S_W_WLAST, Inputs_M2S_W_WSTRB, Inputs_M2S_W_WUSER, Inputs_M2S_W_WVALID, inWDATA0, inWDATA1, inWDATA2, inWDATA3, inWE, M2S_AR_ARADDR, M2S_AR_ARBURST, M2S_AR_ARCACHE, M2S_AR_ARID, M2S_AR_ARLEN, M2S_AR_ARLOCK, M2S_AR_ARPROT, M2S_AR_ARQOS, M2S_AR_ARREGION, M2S_AR_ARSIZE, M2S_AR_ARUSER, M2S_AR_ARVALID, M2S_AW_AWADDR, M2S_AW_AWBURST, M2S_AW_AWCACHE, M2S_AW_AWID, M2S_AW_AWLEN, M2S_AW_AWLOCK, M2S_AW_AWPROT, M2S_AW_AWQOS, M2S_AW_AWREGION, M2S_AW_AWSIZE, M2S_AW_AWUSER, M2S_AW_AWVALID, M2S_B_BREADY, M2S_R_RREADY, M2S_W_WDATA0, M2S_W_WDATA1, M2S_W_WDATA2, M2S_W_WDATA3, M2S_W_WID, M2S_W_WLAST, M2S_W_WSTRB, M2S_W_WUSER, M2S_W_WVALID, State_bytes, State_Written)
 	begin
+		AXI4RegisterModule_L61F28T40_Expr_1 <= Inputs_inWE;
+		AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr_1 <= Inputs_inWE;
+		AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr_2 <= axiSlave_outWREADYConfirming;
 		Inputs_M2S_AR_ARID <= M2S_AR_ARID;
 		Inputs_M2S_AR_ARADDR <= M2S_AR_ARADDR;
 		Inputs_M2S_AR_ARLEN <= M2S_AR_ARLEN;
@@ -425,11 +486,11 @@ AWADDR => axiSlaveAWADDRaxiSlave_AWADDRHardLink
 		Inputs_M2S_W_WUSER <= M2S_W_WUSER;
 		Inputs_M2S_W_WVALID <= M2S_W_WVALID;
 		Inputs_M2S_B_BREADY <= M2S_B_BREADY;
-		Inputs_WE <= WE;
-		Inputs_WDATA(0) <= WDATA0;
-		Inputs_WDATA(1) <= WDATA1;
-		Inputs_WDATA(2) <= WDATA2;
-		Inputs_WDATA(3) <= WDATA3;
+		Inputs_inWE <= inWE;
+		Inputs_inWDATA(0) <= inWDATA0;
+		Inputs_inWDATA(1) <= inWDATA1;
+		Inputs_inWDATA(2) <= inWDATA2;
+		Inputs_inWDATA(3) <= inWDATA3;
 		axiSlave_M2S_AR_ARID <= Inputs_M2S_AR_ARID;
 		axiSlave_M2S_AR_ARADDR <= Inputs_M2S_AR_ARADDR;
 		axiSlave_M2S_AR_ARLEN <= Inputs_M2S_AR_ARLEN;
@@ -465,17 +526,20 @@ AWADDR => axiSlaveAWADDRaxiSlave_AWADDRHardLink
 		axiSlave_M2S_W_WUSER <= Inputs_M2S_W_WUSER;
 		axiSlave_M2S_W_WVALID <= Inputs_M2S_W_WVALID;
 		axiSlave_M2S_B_BREADY <= Inputs_M2S_B_BREADY;
-		axiSlave_RDATA(0) <= State_bytes(0);
-		axiSlave_RDATA(1) <= State_bytes(1);
-		axiSlave_RDATA(2) <= State_bytes(2);
-		axiSlave_RDATA(3) <= State_bytes(3);
-		axiSlave_RACK <= AXI4RegisterModule_L56F24T28_Expr;
-		axiSlave_WACK <= AXI4RegisterModule_L58F24T28_Expr;
-		OutData0 <= State_bytes(0);
-		OutData1 <= State_bytes(1);
-		OutData2 <= State_bytes(2);
-		OutData3 <= State_bytes(3);
-		OutACK <= Inputs_WE;
+		axiSlave_inRDATA(0) <= State_bytes(0);
+		axiSlave_inRDATA(1) <= State_bytes(1);
+		axiSlave_inRDATA(2) <= State_bytes(2);
+		axiSlave_inRDATA(3) <= State_bytes(3);
+		axiSlave_inARREADY <= AXI4RegisterModule_L58F29T33_Expr;
+		axiSlave_inRVALID <= AXI4RegisterModule_L59F28T32_Expr;
+		axiSlave_inAWREADY <= AXI4RegisterModule_L60F29T33_Expr;
+		axiSlave_inWREADY <= AXI4RegisterModule_L61F28T40_Expr;
+		axiSlave_inBVALID <= AXI4RegisterModule_L62F28T32_Expr;
+		outData0 <= State_bytes(0);
+		outData1 <= State_bytes(1);
+		outData2 <= State_bytes(2);
+		outData3 <= State_bytes(3);
+		outACK <= Inputs_inWE;
 		S2M_AR_ARREADY <= axiSlave_S2M_AR_ARREADY;
 		S2M_AW_AWREADY <= axiSlave_S2M_AW_AWREADY;
 		S2M_B_BID <= axiSlave_S2M_B_BID;
@@ -492,6 +556,7 @@ AWADDR => axiSlaveAWADDRaxiSlave_AWADDRHardLink
 		S2M_R_RUSER <= axiSlave_S2M_R_RUSER;
 		S2M_R_RVALID <= axiSlave_S2M_R_RVALID;
 		S2M_W_WREADY <= axiSlave_S2M_W_WREADY;
+		outWritten <= State_Written;
 		axiSlaveM2S_AR_ARIDaxiSlave_M2S_AR_ARIDHardLink <= axiSlave_M2S_AR_ARID;
 		axiSlaveM2S_AR_ARADDRaxiSlave_M2S_AR_ARADDRHardLink <= axiSlave_M2S_AR_ARADDR;
 		axiSlaveM2S_AR_ARLENaxiSlave_M2S_AR_ARLENHardLink <= axiSlave_M2S_AR_ARLEN;
@@ -527,12 +592,15 @@ AWADDR => axiSlaveAWADDRaxiSlave_AWADDRHardLink
 		axiSlaveM2S_W_WUSERaxiSlave_M2S_W_WUSERHardLink <= axiSlave_M2S_W_WUSER;
 		axiSlaveM2S_W_WVALIDaxiSlave_M2S_W_WVALIDHardLink <= axiSlave_M2S_W_WVALID;
 		axiSlaveM2S_B_BREADYaxiSlave_M2S_B_BREADYHardLink <= axiSlave_M2S_B_BREADY;
-		axiSlaveRDATA0axiSlave_RDATAHardLink <= axiSlave_RDATA(0);
-		axiSlaveRDATA1axiSlave_RDATAHardLink <= axiSlave_RDATA(1);
-		axiSlaveRDATA2axiSlave_RDATAHardLink <= axiSlave_RDATA(2);
-		axiSlaveRDATA3axiSlave_RDATAHardLink <= axiSlave_RDATA(3);
-		axiSlaveRACKaxiSlave_RACKHardLink <= axiSlave_RACK;
-		axiSlaveWACKaxiSlave_WACKHardLink <= axiSlave_WACK;
+		axiSlaveinRDATA0axiSlave_inRDATAHardLink <= axiSlave_inRDATA(0);
+		axiSlaveinRDATA1axiSlave_inRDATAHardLink <= axiSlave_inRDATA(1);
+		axiSlaveinRDATA2axiSlave_inRDATAHardLink <= axiSlave_inRDATA(2);
+		axiSlaveinRDATA3axiSlave_inRDATAHardLink <= axiSlave_inRDATA(3);
+		axiSlaveinARREADYaxiSlave_inARREADYHardLink <= axiSlave_inARREADY;
+		axiSlaveinRVALIDaxiSlave_inRVALIDHardLink <= axiSlave_inRVALID;
+		axiSlaveinAWREADYaxiSlave_inAWREADYHardLink <= axiSlave_inAWREADY;
+		axiSlaveinWREADYaxiSlave_inWREADYHardLink <= axiSlave_inWREADY;
+		axiSlaveinBVALIDaxiSlave_inBVALIDHardLink <= axiSlave_inBVALID;
 		axiSlave_S2M_AR_ARREADY <= axiSlaveS2M_AR_ARREADYaxiSlave_S2M_AR_ARREADYHardLink;
 		axiSlave_S2M_AW_AWREADY <= axiSlaveS2M_AW_AWREADYaxiSlave_S2M_AW_AWREADYHardLink;
 		axiSlave_S2M_B_BID <= axiSlaveS2M_B_BIDaxiSlave_S2M_B_BIDHardLink;
@@ -549,15 +617,21 @@ AWADDR => axiSlaveAWADDRaxiSlave_AWADDRHardLink
 		axiSlave_S2M_R_RUSER <= axiSlaveS2M_R_RUSERaxiSlave_S2M_R_RUSERHardLink;
 		axiSlave_S2M_R_RVALID <= axiSlaveS2M_R_RVALIDaxiSlave_S2M_R_RVALIDHardLink;
 		axiSlave_S2M_W_WREADY <= axiSlaveS2M_W_WREADYaxiSlave_S2M_W_WREADYHardLink;
-		axiSlave_WSTRB <= axiSlaveWSTRBaxiSlave_WSTRBHardLink;
-		axiSlave_WDATA(0) <= axiSlaveWDATA0axiSlave_WDATAHardLink;
-		axiSlave_WDATA(1) <= axiSlaveWDATA1axiSlave_WDATAHardLink;
-		axiSlave_WDATA(2) <= axiSlaveWDATA2axiSlave_WDATAHardLink;
-		axiSlave_WDATA(3) <= axiSlaveWDATA3axiSlave_WDATAHardLink;
-		axiSlave_WVALID <= axiSlaveWVALIDaxiSlave_WVALIDHardLink;
-		axiSlave_RVALID <= axiSlaveRVALIDaxiSlave_RVALIDHardLink;
-		axiSlave_ARADDR <= axiSlaveARADDRaxiSlave_ARADDRHardLink;
-		axiSlave_AWADDR <= axiSlaveAWADDRaxiSlave_AWADDRHardLink;
+		axiSlave_outReadTXCompleting <= axiSlaveoutReadTXCompletingaxiSlave_outReadTXCompletingHardLink;
+		axiSlave_outWriteTXCompleting <= axiSlaveoutWriteTXCompletingaxiSlave_outWriteTXCompletingHardLink;
+		axiSlave_outARREADYConfirming <= axiSlaveoutARREADYConfirmingaxiSlave_outARREADYConfirmingHardLink;
+		axiSlave_outARVALID <= axiSlaveoutARVALIDaxiSlave_outARVALIDHardLink;
+		axiSlave_outARADDR <= axiSlaveoutARADDRaxiSlave_outARADDRHardLink;
+		axiSlave_outAWREADYConfirming <= axiSlaveoutAWREADYConfirmingaxiSlave_outAWREADYConfirmingHardLink;
+		axiSlave_outAWVALID <= axiSlaveoutAWVALIDaxiSlave_outAWVALIDHardLink;
+		axiSlave_outAWADDR <= axiSlaveoutAWADDRaxiSlave_outAWADDRHardLink;
+		axiSlave_outWREADYConfirming <= axiSlaveoutWREADYConfirmingaxiSlave_outWREADYConfirmingHardLink;
+		axiSlave_outWVALID <= axiSlaveoutWVALIDaxiSlave_outWVALIDHardLink;
+		axiSlave_outWDATA(0) <= axiSlaveoutWDATA0axiSlave_outWDATAHardLink;
+		axiSlave_outWDATA(1) <= axiSlaveoutWDATA1axiSlave_outWDATAHardLink;
+		axiSlave_outWDATA(2) <= axiSlaveoutWDATA2axiSlave_outWDATAHardLink;
+		axiSlave_outWDATA(3) <= axiSlaveoutWDATA3axiSlave_outWDATAHardLink;
+		axiSlave_outWSTRB <= axiSlaveoutWSTRBaxiSlave_outWSTRBHardLink;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

@@ -36,15 +36,15 @@ namespace QuSoC.Tests
             return sim;
         }
 
-        protected QuSoCModuleSimulator PowerUp(string source)
+        protected QuSoCModuleSimulator PowerUp(string source, string vcdPath = null)
         {
             var instructions = Inst.FromAsmFile(source);
-            return PowerUp(instructions);
+            return PowerUp(instructions, vcdPath);
         }
 
-        protected QuSoCModuleSimulator PowerUp(uint[] instructions)
+        protected QuSoCModuleSimulator PowerUp(uint[] instructions, string vcdPath = null)
         {
-            var sim = new QuSoCModuleSimulator(instructions);
+            var sim = new QuSoCModuleSimulator(instructions, vcdPath);
 
             // first cycle handles CPU reset state
             sim.ClockCycle();

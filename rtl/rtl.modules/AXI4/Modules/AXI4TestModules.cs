@@ -27,4 +27,12 @@ namespace rtl.modules
 
         }
     }
+
+    public class AXI4NonBufferedSlaveModuleB4 : AXI4NonBufferedSlaveModule
+    {
+        public AXI4NonBufferedSlaveModuleB4() : base(axiSize.B4)
+        {
+
+        }
+    }
 }

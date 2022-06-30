@@ -9,651 +9,647 @@
 --   You can use some of signals in custom code, but most likely they will not exist in future (e.g. will get shorter or gone completely)
 -- * Please send your feedback, comments, improvement ideas etc. to evmuryshkin@gmail.com
 -- * Visit https://github.com/EvgenyMuryshkin/QuokkaEvaluation to access latest version of playground
--- 
+--
 -- DISCLAIMER:
 --   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 --   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
--- 
+--
 -- System configuration name is AXI4MasterSlaveMemoryTestModule_TopLevel, clock frequency is 1Hz, Top-level
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-
 use work.Quokka.all;
-
 entity AXI4MasterSlaveMemoryTestModule_TopLevel is
-    port
-    (
--- [BEGIN USER PORTS]
--- [END USER PORTS]
-
-Clock : in  std_logic;
-Reset : in  std_logic;
-AXADDR : in  unsigned(31 downto 0);
-InData : in  unsigned(31 downto 0);
-WE : in  std_logic;
-RE : in  std_logic;
-SWE : in  std_logic;
-OutACK : out  std_logic;
-OutMasterData0 : out  unsigned(7 downto 0);
-OutMasterData1 : out  unsigned(7 downto 0);
-OutMasterData2 : out  unsigned(7 downto 0);
-OutMasterData3 : out  unsigned(7 downto 0);
-OutMasterWord : out  unsigned(31 downto 0)
-    );
+	port
+	(
+		-- [BEGIN USER PORTS]
+		-- [END USER PORTS]
+		Clock : in std_logic;
+		Reset : in std_logic;
+		AXADDR : in unsigned (31 downto 0);
+		InData : in unsigned (31 downto 0);
+		MWE : in std_logic;
+		WSTRB : in unsigned (3 downto 0);
+		MRE : in std_logic;
+		ReadData : out unsigned (31 downto 0);
+		RVALID : out std_logic;
+		BVALID : out std_logic;
+		RACK : out std_logic;
+		WACK : out std_logic
+	);
 end entity;
-
 -- FSM summary
 -- Packages
 architecture rtl of AXI4MasterSlaveMemoryTestModule_TopLevel is
--- [BEGIN USER SIGNALS]
--- [END USER SIGNALS]
-constant HiSignal : std_logic := '1';
-constant LoSignal : std_logic := '0';
-constant Zero : std_logic := '0';
-constant One : std_logic := '1';
-constant true : std_logic := '1';
-constant false : std_logic := '0';
-constant AXI4MasterSlaveMemoryTestModule_L53F41T54_Expr : unsigned(7 downto 0)  := "11111111";
-signal Inputs_AXADDR : unsigned(31 downto 0) := (others => '0');
-signal Inputs_InData : unsigned(31 downto 0) := (others => '0');
-signal Inputs_WE : std_logic := '0';
-signal Inputs_RE : std_logic := '0';
-signal Inputs_SWE : std_logic := '0';
-signal s_M2S_AR_ARID : unsigned(7 downto 0) := (others => '0');
-signal s_M2S_AR_ARADDR : unsigned(31 downto 0) := (others => '0');
-signal s_M2S_AR_ARLEN : unsigned(7 downto 0) := (others => '0');
-signal s_M2S_AR_ARSIZE : unsigned(2 downto 0) := (others => '0');
-signal s_M2S_AR_ARBURST : unsigned(1 downto 0) := (others => '0');
-signal s_M2S_AR_ARLOCK : unsigned(1 downto 0) := (others => '0');
-signal s_M2S_AR_ARCACHE : unsigned(3 downto 0) := (others => '0');
-signal s_M2S_AR_ARPROT : unsigned(2 downto 0) := (others => '0');
-signal s_M2S_AR_ARQOS : unsigned(3 downto 0) := (others => '0');
-signal s_M2S_AR_ARREGION : unsigned(7 downto 0) := (others => '0');
-signal s_M2S_AR_ARUSER : unsigned(7 downto 0) := (others => '0');
-signal s_M2S_AR_ARVALID : std_logic := '0';
-signal s_M2S_R_RREADY : std_logic := '0';
-signal s_M2S_AW_AWID : unsigned(7 downto 0) := (others => '0');
-signal s_M2S_AW_AWADDR : unsigned(31 downto 0) := (others => '0');
-signal s_M2S_AW_AWLEN : unsigned(7 downto 0) := (others => '0');
-signal s_M2S_AW_AWSIZE : unsigned(2 downto 0) := (others => '0');
-signal s_M2S_AW_AWBURST : unsigned(1 downto 0) := (others => '0');
-signal s_M2S_AW_AWLOCK : unsigned(1 downto 0) := (others => '0');
-signal s_M2S_AW_AWCACHE : unsigned(3 downto 0) := (others => '0');
-signal s_M2S_AW_AWPROT : unsigned(2 downto 0) := (others => '0');
-signal s_M2S_AW_AWQOS : unsigned(3 downto 0) := (others => '0');
-signal s_M2S_AW_AWREGION : unsigned(7 downto 0) := (others => '0');
-signal s_M2S_AW_AWUSER : unsigned(7 downto 0) := (others => '0');
-signal s_M2S_AW_AWVALID : std_logic := '0';
-signal s_M2S_W_WID : unsigned(7 downto 0) := (others => '0');
-signal s_M2S_W_WDATA0 : unsigned(7 downto 0) := (others => '0');
-signal s_M2S_W_WDATA1 : unsigned(7 downto 0) := (others => '0');
-signal s_M2S_W_WDATA2 : unsigned(7 downto 0) := (others => '0');
-signal s_M2S_W_WDATA3 : unsigned(7 downto 0) := (others => '0');
-signal s_M2S_W_WSTRB : unsigned(3 downto 0) := (others => '0');
-signal s_M2S_W_WLAST : std_logic := '0';
-signal s_M2S_W_WUSER : unsigned(7 downto 0) := (others => '0');
-signal s_M2S_W_WVALID : std_logic := '0';
-signal s_M2S_B_BREADY : std_logic := '0';
-signal s_S2M_AR_ARREADY : std_logic := '0';
-signal s_S2M_AW_AWREADY : std_logic := '0';
-signal s_S2M_B_BID : unsigned(7 downto 0) := (others => '0');
-signal s_S2M_B_BRESP : unsigned(1 downto 0) := (others => '0');
-signal s_S2M_B_BUSER : unsigned(7 downto 0) := (others => '0');
-signal s_S2M_B_BVALID : std_logic := '0';
-signal s_S2M_R_RID : unsigned(7 downto 0) := (others => '0');
-signal s_S2M_R_RDATA0 : unsigned(7 downto 0) := (others => '0');
-signal s_S2M_R_RDATA1 : unsigned(7 downto 0) := (others => '0');
-signal s_S2M_R_RDATA2 : unsigned(7 downto 0) := (others => '0');
-signal s_S2M_R_RDATA3 : unsigned(7 downto 0) := (others => '0');
-signal s_S2M_R_RRESP : unsigned(1 downto 0) := (others => '0');
-signal s_S2M_R_RLAST : std_logic := '0';
-signal s_S2M_R_RUSER : unsigned(7 downto 0) := (others => '0');
-signal s_S2M_R_RVALID : std_logic := '0';
-signal s_S2M_W_WREADY : std_logic := '0';
-signal m_S2M_AR_ARREADY : std_logic := '0';
-signal m_S2M_AW_AWREADY : std_logic := '0';
-signal m_S2M_B_BID : unsigned(7 downto 0) := (others => '0');
-signal m_S2M_B_BRESP : unsigned(1 downto 0) := (others => '0');
-signal m_S2M_B_BUSER : unsigned(7 downto 0) := (others => '0');
-signal m_S2M_B_BVALID : std_logic := '0';
-signal m_S2M_R_RID : unsigned(7 downto 0) := (others => '0');
-signal m_S2M_R_RDATA0 : unsigned(7 downto 0) := (others => '0');
-signal m_S2M_R_RDATA1 : unsigned(7 downto 0) := (others => '0');
-signal m_S2M_R_RDATA2 : unsigned(7 downto 0) := (others => '0');
-signal m_S2M_R_RDATA3 : unsigned(7 downto 0) := (others => '0');
-signal m_S2M_R_RRESP : unsigned(1 downto 0) := (others => '0');
-signal m_S2M_R_RLAST : std_logic := '0';
-signal m_S2M_R_RUSER : unsigned(7 downto 0) := (others => '0');
-signal m_S2M_R_RVALID : std_logic := '0';
-signal m_S2M_W_WREADY : std_logic := '0';
-signal m_AXADDR : unsigned(31 downto 0) := (others => '0');
-signal m_RE : std_logic := '0';
-signal m_WE : std_logic := '0';
-signal m_WDATA0 : unsigned(7 downto 0) := (others => '0');
-signal m_WDATA1 : unsigned(7 downto 0) := (others => '0');
-signal m_WDATA2 : unsigned(7 downto 0) := (others => '0');
-signal m_WDATA3 : unsigned(7 downto 0) := (others => '0');
-signal m_WSTRB : unsigned(3 downto 0) := (others => '0');
-signal m_InvalidInputs : std_logic := '0';
-signal m_OutACK : std_logic := '0';
-signal m_RDATA0 : unsigned(7 downto 0) := (others => '0');
-signal m_RDATA1 : unsigned(7 downto 0) := (others => '0');
-signal m_RDATA2 : unsigned(7 downto 0) := (others => '0');
-signal m_RDATA3 : unsigned(7 downto 0) := (others => '0');
-signal m_M2S_AR_ARID : unsigned(7 downto 0) := (others => '0');
-signal m_M2S_AR_ARADDR : unsigned(31 downto 0) := (others => '0');
-signal m_M2S_AR_ARLEN : unsigned(7 downto 0) := (others => '0');
-signal m_M2S_AR_ARSIZE : unsigned(2 downto 0) := (others => '0');
-signal m_M2S_AR_ARBURST : unsigned(1 downto 0) := (others => '0');
-signal m_M2S_AR_ARLOCK : unsigned(1 downto 0) := (others => '0');
-signal m_M2S_AR_ARCACHE : unsigned(3 downto 0) := (others => '0');
-signal m_M2S_AR_ARPROT : unsigned(2 downto 0) := (others => '0');
-signal m_M2S_AR_ARQOS : unsigned(3 downto 0) := (others => '0');
-signal m_M2S_AR_ARREGION : unsigned(7 downto 0) := (others => '0');
-signal m_M2S_AR_ARUSER : unsigned(7 downto 0) := (others => '0');
-signal m_M2S_AR_ARVALID : std_logic := '0';
-signal m_M2S_R_RREADY : std_logic := '0';
-signal m_M2S_AW_AWID : unsigned(7 downto 0) := (others => '0');
-signal m_M2S_AW_AWADDR : unsigned(31 downto 0) := (others => '0');
-signal m_M2S_AW_AWLEN : unsigned(7 downto 0) := (others => '0');
-signal m_M2S_AW_AWSIZE : unsigned(2 downto 0) := (others => '0');
-signal m_M2S_AW_AWBURST : unsigned(1 downto 0) := (others => '0');
-signal m_M2S_AW_AWLOCK : unsigned(1 downto 0) := (others => '0');
-signal m_M2S_AW_AWCACHE : unsigned(3 downto 0) := (others => '0');
-signal m_M2S_AW_AWPROT : unsigned(2 downto 0) := (others => '0');
-signal m_M2S_AW_AWQOS : unsigned(3 downto 0) := (others => '0');
-signal m_M2S_AW_AWREGION : unsigned(7 downto 0) := (others => '0');
-signal m_M2S_AW_AWUSER : unsigned(7 downto 0) := (others => '0');
-signal m_M2S_AW_AWVALID : std_logic := '0';
-signal m_M2S_W_WID : unsigned(7 downto 0) := (others => '0');
-signal m_M2S_W_WDATA0 : unsigned(7 downto 0) := (others => '0');
-signal m_M2S_W_WDATA1 : unsigned(7 downto 0) := (others => '0');
-signal m_M2S_W_WDATA2 : unsigned(7 downto 0) := (others => '0');
-signal m_M2S_W_WDATA3 : unsigned(7 downto 0) := (others => '0');
-signal m_M2S_W_WSTRB : unsigned(3 downto 0) := (others => '0');
-signal m_M2S_W_WLAST : std_logic := '0';
-signal m_M2S_W_WUSER : unsigned(7 downto 0) := (others => '0');
-signal m_M2S_W_WVALID : std_logic := '0';
-signal m_M2S_B_BREADY : std_logic := '0';
-signal AXI4MasterSlaveMemoryTestModule_L52F25T55_Source : unsigned(31 downto 0) := (others => '0');
-signal AXI4MasterSlaveMemoryTestModule_L53F25T55_Source : unsigned(7 downto 0) := (others => '0');
-signal AXI4MasterSlaveMemoryTestModule_L53F25T60_Index : unsigned(3 downto 0) := (others => '0');
-signal State_ReadDataDefault : unsigned(7 downto 0)  := "00000000";
-signal AXI4MasterSlaveMemoryTestModule_L34F45T69_Source : unsigned(31 downto 0) := (others => '0');
-signal sM2S_AR_ARIDs_M2S_AR_ARIDHardLink : unsigned(7 downto 0)  := "00000000";
-signal sM2S_AR_ARADDRs_M2S_AR_ARADDRHardLink : unsigned(31 downto 0)  := "00000000000000000000000000000000";
-signal sM2S_AR_ARLENs_M2S_AR_ARLENHardLink : unsigned(7 downto 0)  := "00000000";
-signal sM2S_AR_ARSIZEs_M2S_AR_ARSIZEHardLink : unsigned(2 downto 0)  := "000";
-signal sM2S_AR_ARBURSTs_M2S_AR_ARBURSTHardLink : unsigned(1 downto 0)  := "00";
-signal sM2S_AR_ARLOCKs_M2S_AR_ARLOCKHardLink : unsigned(1 downto 0)  := "00";
-signal sM2S_AR_ARCACHEs_M2S_AR_ARCACHEHardLink : unsigned(3 downto 0)  := "0000";
-signal sM2S_AR_ARPROTs_M2S_AR_ARPROTHardLink : unsigned(2 downto 0)  := "000";
-signal sM2S_AR_ARQOSs_M2S_AR_ARQOSHardLink : unsigned(3 downto 0)  := "0000";
-signal sM2S_AR_ARREGIONs_M2S_AR_ARREGIONHardLink : unsigned(7 downto 0)  := "00000000";
-signal sM2S_AR_ARUSERs_M2S_AR_ARUSERHardLink : unsigned(7 downto 0)  := "00000000";
-signal sM2S_AR_ARVALIDs_M2S_AR_ARVALIDHardLink : std_logic := '0';
-signal sM2S_R_RREADYs_M2S_R_RREADYHardLink : std_logic := '0';
-signal sM2S_AW_AWIDs_M2S_AW_AWIDHardLink : unsigned(7 downto 0)  := "00000000";
-signal sM2S_AW_AWADDRs_M2S_AW_AWADDRHardLink : unsigned(31 downto 0)  := "00000000000000000000000000000000";
-signal sM2S_AW_AWLENs_M2S_AW_AWLENHardLink : unsigned(7 downto 0)  := "00000000";
-signal sM2S_AW_AWSIZEs_M2S_AW_AWSIZEHardLink : unsigned(2 downto 0)  := "000";
-signal sM2S_AW_AWBURSTs_M2S_AW_AWBURSTHardLink : unsigned(1 downto 0)  := "00";
-signal sM2S_AW_AWLOCKs_M2S_AW_AWLOCKHardLink : unsigned(1 downto 0)  := "00";
-signal sM2S_AW_AWCACHEs_M2S_AW_AWCACHEHardLink : unsigned(3 downto 0)  := "0000";
-signal sM2S_AW_AWPROTs_M2S_AW_AWPROTHardLink : unsigned(2 downto 0)  := "000";
-signal sM2S_AW_AWQOSs_M2S_AW_AWQOSHardLink : unsigned(3 downto 0)  := "0000";
-signal sM2S_AW_AWREGIONs_M2S_AW_AWREGIONHardLink : unsigned(7 downto 0)  := "00000000";
-signal sM2S_AW_AWUSERs_M2S_AW_AWUSERHardLink : unsigned(7 downto 0)  := "00000000";
-signal sM2S_AW_AWVALIDs_M2S_AW_AWVALIDHardLink : std_logic := '0';
-signal sM2S_W_WIDs_M2S_W_WIDHardLink : unsigned(7 downto 0)  := "00000000";
-signal sM2S_W_WDATA0s_M2S_W_WDATA0HardLink : unsigned(7 downto 0)  := "00000000";
-signal sM2S_W_WDATA1s_M2S_W_WDATA1HardLink : unsigned(7 downto 0)  := "00000000";
-signal sM2S_W_WDATA2s_M2S_W_WDATA2HardLink : unsigned(7 downto 0)  := "00000000";
-signal sM2S_W_WDATA3s_M2S_W_WDATA3HardLink : unsigned(7 downto 0)  := "00000000";
-signal sM2S_W_WSTRBs_M2S_W_WSTRBHardLink : unsigned(3 downto 0)  := "0000";
-signal sM2S_W_WLASTs_M2S_W_WLASTHardLink : std_logic := '0';
-signal sM2S_W_WUSERs_M2S_W_WUSERHardLink : unsigned(7 downto 0)  := "00000000";
-signal sM2S_W_WVALIDs_M2S_W_WVALIDHardLink : std_logic := '0';
-signal sM2S_B_BREADYs_M2S_B_BREADYHardLink : std_logic := '0';
-signal sS2M_AR_ARREADYs_S2M_AR_ARREADYHardLink : std_logic := '0';
-signal sS2M_AW_AWREADYs_S2M_AW_AWREADYHardLink : std_logic := '0';
-signal sS2M_B_BIDs_S2M_B_BIDHardLink : unsigned(7 downto 0)  := "00000000";
-signal sS2M_B_BRESPs_S2M_B_BRESPHardLink : unsigned(1 downto 0)  := "00";
-signal sS2M_B_BUSERs_S2M_B_BUSERHardLink : unsigned(7 downto 0)  := "00000000";
-signal sS2M_B_BVALIDs_S2M_B_BVALIDHardLink : std_logic := '0';
-signal sS2M_R_RIDs_S2M_R_RIDHardLink : unsigned(7 downto 0)  := "00000000";
-signal sS2M_R_RDATA0s_S2M_R_RDATA0HardLink : unsigned(7 downto 0)  := "00000000";
-signal sS2M_R_RDATA1s_S2M_R_RDATA1HardLink : unsigned(7 downto 0)  := "00000000";
-signal sS2M_R_RDATA2s_S2M_R_RDATA2HardLink : unsigned(7 downto 0)  := "00000000";
-signal sS2M_R_RDATA3s_S2M_R_RDATA3HardLink : unsigned(7 downto 0)  := "00000000";
-signal sS2M_R_RRESPs_S2M_R_RRESPHardLink : unsigned(1 downto 0)  := "00";
-signal sS2M_R_RLASTs_S2M_R_RLASTHardLink : std_logic := '0';
-signal sS2M_R_RUSERs_S2M_R_RUSERHardLink : unsigned(7 downto 0)  := "00000000";
-signal sS2M_R_RVALIDs_S2M_R_RVALIDHardLink : std_logic := '0';
-signal sS2M_W_WREADYs_S2M_W_WREADYHardLink : std_logic := '0';
-signal mS2M_AR_ARREADYm_S2M_AR_ARREADYHardLink : std_logic := '0';
-signal mS2M_AW_AWREADYm_S2M_AW_AWREADYHardLink : std_logic := '0';
-signal mS2M_B_BIDm_S2M_B_BIDHardLink : unsigned(7 downto 0)  := "00000000";
-signal mS2M_B_BRESPm_S2M_B_BRESPHardLink : unsigned(1 downto 0)  := "00";
-signal mS2M_B_BUSERm_S2M_B_BUSERHardLink : unsigned(7 downto 0)  := "00000000";
-signal mS2M_B_BVALIDm_S2M_B_BVALIDHardLink : std_logic := '0';
-signal mS2M_R_RIDm_S2M_R_RIDHardLink : unsigned(7 downto 0)  := "00000000";
-signal mS2M_R_RDATA0m_S2M_R_RDATA0HardLink : unsigned(7 downto 0)  := "00000000";
-signal mS2M_R_RDATA1m_S2M_R_RDATA1HardLink : unsigned(7 downto 0)  := "00000000";
-signal mS2M_R_RDATA2m_S2M_R_RDATA2HardLink : unsigned(7 downto 0)  := "00000000";
-signal mS2M_R_RDATA3m_S2M_R_RDATA3HardLink : unsigned(7 downto 0)  := "00000000";
-signal mS2M_R_RRESPm_S2M_R_RRESPHardLink : unsigned(1 downto 0)  := "00";
-signal mS2M_R_RLASTm_S2M_R_RLASTHardLink : std_logic := '0';
-signal mS2M_R_RUSERm_S2M_R_RUSERHardLink : unsigned(7 downto 0)  := "00000000";
-signal mS2M_R_RVALIDm_S2M_R_RVALIDHardLink : std_logic := '0';
-signal mS2M_W_WREADYm_S2M_W_WREADYHardLink : std_logic := '0';
-signal mAXADDRm_AXADDRHardLink : unsigned(31 downto 0)  := "00000000000000000000000000000000";
-signal mREm_REHardLink : std_logic := '0';
-signal mWEm_WEHardLink : std_logic := '0';
-signal mWDATA0m_WDATA0HardLink : unsigned(7 downto 0)  := "00000000";
-signal mWDATA1m_WDATA1HardLink : unsigned(7 downto 0)  := "00000000";
-signal mWDATA2m_WDATA2HardLink : unsigned(7 downto 0)  := "00000000";
-signal mWDATA3m_WDATA3HardLink : unsigned(7 downto 0)  := "00000000";
-signal mWSTRBm_WSTRBHardLink : unsigned(3 downto 0)  := "0000";
-signal mInvalidInputsm_InvalidInputsHardLink : std_logic := '0';
-signal mOutACKm_OutACKHardLink : std_logic := '0';
-signal mRDATA0m_RDATA0HardLink : unsigned(7 downto 0)  := "00000000";
-signal mRDATA1m_RDATA1HardLink : unsigned(7 downto 0)  := "00000000";
-signal mRDATA2m_RDATA2HardLink : unsigned(7 downto 0)  := "00000000";
-signal mRDATA3m_RDATA3HardLink : unsigned(7 downto 0)  := "00000000";
-signal mM2S_AR_ARIDm_M2S_AR_ARIDHardLink : unsigned(7 downto 0)  := "00000000";
-signal mM2S_AR_ARADDRm_M2S_AR_ARADDRHardLink : unsigned(31 downto 0)  := "00000000000000000000000000000000";
-signal mM2S_AR_ARLENm_M2S_AR_ARLENHardLink : unsigned(7 downto 0)  := "00000000";
-signal mM2S_AR_ARSIZEm_M2S_AR_ARSIZEHardLink : unsigned(2 downto 0)  := "000";
-signal mM2S_AR_ARBURSTm_M2S_AR_ARBURSTHardLink : unsigned(1 downto 0)  := "00";
-signal mM2S_AR_ARLOCKm_M2S_AR_ARLOCKHardLink : unsigned(1 downto 0)  := "00";
-signal mM2S_AR_ARCACHEm_M2S_AR_ARCACHEHardLink : unsigned(3 downto 0)  := "0000";
-signal mM2S_AR_ARPROTm_M2S_AR_ARPROTHardLink : unsigned(2 downto 0)  := "000";
-signal mM2S_AR_ARQOSm_M2S_AR_ARQOSHardLink : unsigned(3 downto 0)  := "0000";
-signal mM2S_AR_ARREGIONm_M2S_AR_ARREGIONHardLink : unsigned(7 downto 0)  := "00000000";
-signal mM2S_AR_ARUSERm_M2S_AR_ARUSERHardLink : unsigned(7 downto 0)  := "00000000";
-signal mM2S_AR_ARVALIDm_M2S_AR_ARVALIDHardLink : std_logic := '0';
-signal mM2S_R_RREADYm_M2S_R_RREADYHardLink : std_logic := '0';
-signal mM2S_AW_AWIDm_M2S_AW_AWIDHardLink : unsigned(7 downto 0)  := "00000000";
-signal mM2S_AW_AWADDRm_M2S_AW_AWADDRHardLink : unsigned(31 downto 0)  := "00000000000000000000000000000000";
-signal mM2S_AW_AWLENm_M2S_AW_AWLENHardLink : unsigned(7 downto 0)  := "00000000";
-signal mM2S_AW_AWSIZEm_M2S_AW_AWSIZEHardLink : unsigned(2 downto 0)  := "000";
-signal mM2S_AW_AWBURSTm_M2S_AW_AWBURSTHardLink : unsigned(1 downto 0)  := "00";
-signal mM2S_AW_AWLOCKm_M2S_AW_AWLOCKHardLink : unsigned(1 downto 0)  := "00";
-signal mM2S_AW_AWCACHEm_M2S_AW_AWCACHEHardLink : unsigned(3 downto 0)  := "0000";
-signal mM2S_AW_AWPROTm_M2S_AW_AWPROTHardLink : unsigned(2 downto 0)  := "000";
-signal mM2S_AW_AWQOSm_M2S_AW_AWQOSHardLink : unsigned(3 downto 0)  := "0000";
-signal mM2S_AW_AWREGIONm_M2S_AW_AWREGIONHardLink : unsigned(7 downto 0)  := "00000000";
-signal mM2S_AW_AWUSERm_M2S_AW_AWUSERHardLink : unsigned(7 downto 0)  := "00000000";
-signal mM2S_AW_AWVALIDm_M2S_AW_AWVALIDHardLink : std_logic := '0';
-signal mM2S_W_WIDm_M2S_W_WIDHardLink : unsigned(7 downto 0)  := "00000000";
-signal mM2S_W_WDATA0m_M2S_W_WDATA0HardLink : unsigned(7 downto 0)  := "00000000";
-signal mM2S_W_WDATA1m_M2S_W_WDATA1HardLink : unsigned(7 downto 0)  := "00000000";
-signal mM2S_W_WDATA2m_M2S_W_WDATA2HardLink : unsigned(7 downto 0)  := "00000000";
-signal mM2S_W_WDATA3m_M2S_W_WDATA3HardLink : unsigned(7 downto 0)  := "00000000";
-signal mM2S_W_WSTRBm_M2S_W_WSTRBHardLink : unsigned(3 downto 0)  := "0000";
-signal mM2S_W_WLASTm_M2S_W_WLASTHardLink : std_logic := '0';
-signal mM2S_W_WUSERm_M2S_W_WUSERHardLink : unsigned(7 downto 0)  := "00000000";
-signal mM2S_W_WVALIDm_M2S_W_WVALIDHardLink : std_logic := '0';
-signal mM2S_B_BREADYm_M2S_B_BREADYHardLink : std_logic := '0';
-type State_ReadDataArray is array(0 to 3) of unsigned(7 downto 0);
-signal State_ReadData : State_ReadDataArray := (others => (others => '0'));
-type NextState_ReadDataArray is array(0 to 3) of unsigned(7 downto 0);
-signal NextState_ReadData : NextState_ReadDataArray := (others => (others => '0'));
-signal BoardSignals : BoardSignalsType;
-signal InternalReset : std_logic := '0';
+	-- [BEGIN USER SIGNALS]
+	-- [END USER SIGNALS]
+	constant HiSignal : std_logic := '1';
+	constant LoSignal : std_logic := '0';
+	constant Zero : std_logic := '0';
+	constant One : std_logic := '1';
+	constant true : std_logic := '1';
+	constant false : std_logic := '0';
+	signal Inputs_AXADDR : unsigned(31 downto 0) := (others => '0');
+	signal Inputs_InData : unsigned(31 downto 0) := (others => '0');
+	signal Inputs_MWE : std_logic := '0';
+	signal Inputs_WSTRB : unsigned(3 downto 0) := (others => '0');
+	signal Inputs_MRE : std_logic := '0';
+	signal NextState_RACK : std_logic := '0';
+	signal mem_M2S_AR_ARID : unsigned(7 downto 0) := (others => '0');
+	signal mem_M2S_AR_ARADDR : unsigned(31 downto 0) := (others => '0');
+	signal mem_M2S_AR_ARLEN : unsigned(7 downto 0) := (others => '0');
+	signal mem_M2S_AR_ARSIZE : unsigned(2 downto 0) := (others => '0');
+	signal mem_M2S_AR_ARBURST : unsigned(1 downto 0) := (others => '0');
+	signal mem_M2S_AR_ARLOCK : unsigned(1 downto 0) := (others => '0');
+	signal mem_M2S_AR_ARCACHE : unsigned(3 downto 0) := (others => '0');
+	signal mem_M2S_AR_ARPROT : unsigned(2 downto 0) := (others => '0');
+	signal mem_M2S_AR_ARQOS : unsigned(3 downto 0) := (others => '0');
+	signal mem_M2S_AR_ARREGION : unsigned(7 downto 0) := (others => '0');
+	signal mem_M2S_AR_ARUSER : unsigned(7 downto 0) := (others => '0');
+	signal mem_M2S_AR_ARVALID : std_logic := '0';
+	signal mem_M2S_R_RREADY : std_logic := '0';
+	signal mem_M2S_AW_AWID : unsigned(7 downto 0) := (others => '0');
+	signal mem_M2S_AW_AWADDR : unsigned(31 downto 0) := (others => '0');
+	signal mem_M2S_AW_AWLEN : unsigned(7 downto 0) := (others => '0');
+	signal mem_M2S_AW_AWSIZE : unsigned(2 downto 0) := (others => '0');
+	signal mem_M2S_AW_AWBURST : unsigned(1 downto 0) := (others => '0');
+	signal mem_M2S_AW_AWLOCK : unsigned(1 downto 0) := (others => '0');
+	signal mem_M2S_AW_AWCACHE : unsigned(3 downto 0) := (others => '0');
+	signal mem_M2S_AW_AWPROT : unsigned(2 downto 0) := (others => '0');
+	signal mem_M2S_AW_AWQOS : unsigned(3 downto 0) := (others => '0');
+	signal mem_M2S_AW_AWREGION : unsigned(7 downto 0) := (others => '0');
+	signal mem_M2S_AW_AWUSER : unsigned(7 downto 0) := (others => '0');
+	signal mem_M2S_AW_AWVALID : std_logic := '0';
+	signal mem_M2S_W_WID : unsigned(7 downto 0) := (others => '0');
+	signal mem_M2S_W_WSTRB : unsigned(3 downto 0) := (others => '0');
+	signal mem_M2S_W_WLAST : std_logic := '0';
+	signal mem_M2S_W_WUSER : unsigned(7 downto 0) := (others => '0');
+	signal mem_M2S_W_WVALID : std_logic := '0';
+	signal mem_M2S_B_BREADY : std_logic := '0';
+	signal mem_S2M_AR_ARREADY : std_logic := '0';
+	signal mem_S2M_AW_AWREADY : std_logic := '0';
+	signal mem_S2M_B_BID : unsigned(7 downto 0) := (others => '0');
+	signal mem_S2M_B_BRESP : unsigned(1 downto 0) := (others => '0');
+	signal mem_S2M_B_BUSER : unsigned(7 downto 0) := (others => '0');
+	signal mem_S2M_B_BVALID : std_logic := '0';
+	signal mem_S2M_R_RID : unsigned(7 downto 0) := (others => '0');
+	signal mem_S2M_R_RRESP : unsigned(1 downto 0) := (others => '0');
+	signal mem_S2M_R_RLAST : std_logic := '0';
+	signal mem_S2M_R_RUSER : unsigned(7 downto 0) := (others => '0');
+	signal mem_S2M_R_RVALID : std_logic := '0';
+	signal mem_S2M_W_WREADY : std_logic := '0';
+	signal master_S2M_AR_ARREADY : std_logic := '0';
+	signal master_S2M_AW_AWREADY : std_logic := '0';
+	signal master_S2M_B_BID : unsigned(7 downto 0) := (others => '0');
+	signal master_S2M_B_BRESP : unsigned(1 downto 0) := (others => '0');
+	signal master_S2M_B_BUSER : unsigned(7 downto 0) := (others => '0');
+	signal master_S2M_B_BVALID : std_logic := '0';
+	signal master_S2M_R_RID : unsigned(7 downto 0) := (others => '0');
+	signal master_S2M_R_RRESP : unsigned(1 downto 0) := (others => '0');
+	signal master_S2M_R_RLAST : std_logic := '0';
+	signal master_S2M_R_RUSER : unsigned(7 downto 0) := (others => '0');
+	signal master_S2M_R_RVALID : std_logic := '0';
+	signal master_S2M_W_WREADY : std_logic := '0';
+	signal master_ARADDR : unsigned(31 downto 0) := (others => '0');
+	signal master_RE : std_logic := '0';
+	signal master_AWADDR : unsigned(31 downto 0) := (others => '0');
+	signal master_WE : std_logic := '0';
+	signal master_WSTRB : unsigned(3 downto 0) := (others => '0');
+	signal master_RACK : std_logic := '0';
+	signal master_WACK : std_logic := '0';
+	signal master_M2S_AR_ARID : unsigned(7 downto 0) := (others => '0');
+	signal master_M2S_AR_ARADDR : unsigned(31 downto 0) := (others => '0');
+	signal master_M2S_AR_ARLEN : unsigned(7 downto 0) := (others => '0');
+	signal master_M2S_AR_ARSIZE : unsigned(2 downto 0) := (others => '0');
+	signal master_M2S_AR_ARBURST : unsigned(1 downto 0) := (others => '0');
+	signal master_M2S_AR_ARLOCK : unsigned(1 downto 0) := (others => '0');
+	signal master_M2S_AR_ARCACHE : unsigned(3 downto 0) := (others => '0');
+	signal master_M2S_AR_ARPROT : unsigned(2 downto 0) := (others => '0');
+	signal master_M2S_AR_ARQOS : unsigned(3 downto 0) := (others => '0');
+	signal master_M2S_AR_ARREGION : unsigned(7 downto 0) := (others => '0');
+	signal master_M2S_AR_ARUSER : unsigned(7 downto 0) := (others => '0');
+	signal master_M2S_AR_ARVALID : std_logic := '0';
+	signal master_M2S_R_RREADY : std_logic := '0';
+	signal master_M2S_AW_AWID : unsigned(7 downto 0) := (others => '0');
+	signal master_M2S_AW_AWADDR : unsigned(31 downto 0) := (others => '0');
+	signal master_M2S_AW_AWLEN : unsigned(7 downto 0) := (others => '0');
+	signal master_M2S_AW_AWSIZE : unsigned(2 downto 0) := (others => '0');
+	signal master_M2S_AW_AWBURST : unsigned(1 downto 0) := (others => '0');
+	signal master_M2S_AW_AWLOCK : unsigned(1 downto 0) := (others => '0');
+	signal master_M2S_AW_AWCACHE : unsigned(3 downto 0) := (others => '0');
+	signal master_M2S_AW_AWPROT : unsigned(2 downto 0) := (others => '0');
+	signal master_M2S_AW_AWQOS : unsigned(3 downto 0) := (others => '0');
+	signal master_M2S_AW_AWREGION : unsigned(7 downto 0) := (others => '0');
+	signal master_M2S_AW_AWUSER : unsigned(7 downto 0) := (others => '0');
+	signal master_M2S_AW_AWVALID : std_logic := '0';
+	signal master_M2S_W_WID : unsigned(7 downto 0) := (others => '0');
+	signal master_M2S_W_WSTRB : unsigned(3 downto 0) := (others => '0');
+	signal master_M2S_W_WLAST : std_logic := '0';
+	signal master_M2S_W_WUSER : unsigned(7 downto 0) := (others => '0');
+	signal master_M2S_W_WVALID : std_logic := '0';
+	signal master_M2S_B_BREADY : std_logic := '0';
+	signal State_ReadDataDefault : unsigned(7 downto 0) := "00000000";
+	signal memM2S_AR_ARIDmem_M2S_AR_ARIDHardLink : unsigned(7 downto 0) := "00000000";
+	signal memM2S_AR_ARADDRmem_M2S_AR_ARADDRHardLink : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal memM2S_AR_ARLENmem_M2S_AR_ARLENHardLink : unsigned(7 downto 0) := "00000000";
+	signal memM2S_AR_ARSIZEmem_M2S_AR_ARSIZEHardLink : unsigned(2 downto 0) := "000";
+	signal memM2S_AR_ARBURSTmem_M2S_AR_ARBURSTHardLink : unsigned(1 downto 0) := "00";
+	signal memM2S_AR_ARLOCKmem_M2S_AR_ARLOCKHardLink : unsigned(1 downto 0) := "00";
+	signal memM2S_AR_ARCACHEmem_M2S_AR_ARCACHEHardLink : unsigned(3 downto 0) := "0000";
+	signal memM2S_AR_ARPROTmem_M2S_AR_ARPROTHardLink : unsigned(2 downto 0) := "000";
+	signal memM2S_AR_ARQOSmem_M2S_AR_ARQOSHardLink : unsigned(3 downto 0) := "0000";
+	signal memM2S_AR_ARREGIONmem_M2S_AR_ARREGIONHardLink : unsigned(7 downto 0) := "00000000";
+	signal memM2S_AR_ARUSERmem_M2S_AR_ARUSERHardLink : unsigned(7 downto 0) := "00000000";
+	signal memM2S_AR_ARVALIDmem_M2S_AR_ARVALIDHardLink : std_logic := '0';
+	signal memM2S_R_RREADYmem_M2S_R_RREADYHardLink : std_logic := '0';
+	signal memM2S_AW_AWIDmem_M2S_AW_AWIDHardLink : unsigned(7 downto 0) := "00000000";
+	signal memM2S_AW_AWADDRmem_M2S_AW_AWADDRHardLink : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal memM2S_AW_AWLENmem_M2S_AW_AWLENHardLink : unsigned(7 downto 0) := "00000000";
+	signal memM2S_AW_AWSIZEmem_M2S_AW_AWSIZEHardLink : unsigned(2 downto 0) := "000";
+	signal memM2S_AW_AWBURSTmem_M2S_AW_AWBURSTHardLink : unsigned(1 downto 0) := "00";
+	signal memM2S_AW_AWLOCKmem_M2S_AW_AWLOCKHardLink : unsigned(1 downto 0) := "00";
+	signal memM2S_AW_AWCACHEmem_M2S_AW_AWCACHEHardLink : unsigned(3 downto 0) := "0000";
+	signal memM2S_AW_AWPROTmem_M2S_AW_AWPROTHardLink : unsigned(2 downto 0) := "000";
+	signal memM2S_AW_AWQOSmem_M2S_AW_AWQOSHardLink : unsigned(3 downto 0) := "0000";
+	signal memM2S_AW_AWREGIONmem_M2S_AW_AWREGIONHardLink : unsigned(7 downto 0) := "00000000";
+	signal memM2S_AW_AWUSERmem_M2S_AW_AWUSERHardLink : unsigned(7 downto 0) := "00000000";
+	signal memM2S_AW_AWVALIDmem_M2S_AW_AWVALIDHardLink : std_logic := '0';
+	signal memM2S_W_WIDmem_M2S_W_WIDHardLink : unsigned(7 downto 0) := "00000000";
+	signal memM2S_W_WDATA0mem_M2S_W_WDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal memM2S_W_WDATA1mem_M2S_W_WDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal memM2S_W_WDATA2mem_M2S_W_WDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal memM2S_W_WDATA3mem_M2S_W_WDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal memM2S_W_WSTRBmem_M2S_W_WSTRBHardLink : unsigned(3 downto 0) := "0000";
+	signal memM2S_W_WLASTmem_M2S_W_WLASTHardLink : std_logic := '0';
+	signal memM2S_W_WUSERmem_M2S_W_WUSERHardLink : unsigned(7 downto 0) := "00000000";
+	signal memM2S_W_WVALIDmem_M2S_W_WVALIDHardLink : std_logic := '0';
+	signal memM2S_B_BREADYmem_M2S_B_BREADYHardLink : std_logic := '0';
+	signal memS2M_AR_ARREADYmem_S2M_AR_ARREADYHardLink : std_logic := '0';
+	signal memS2M_AW_AWREADYmem_S2M_AW_AWREADYHardLink : std_logic := '0';
+	signal memS2M_B_BIDmem_S2M_B_BIDHardLink : unsigned(7 downto 0) := "00000000";
+	signal memS2M_B_BRESPmem_S2M_B_BRESPHardLink : unsigned(1 downto 0) := "00";
+	signal memS2M_B_BUSERmem_S2M_B_BUSERHardLink : unsigned(7 downto 0) := "00000000";
+	signal memS2M_B_BVALIDmem_S2M_B_BVALIDHardLink : std_logic := '0';
+	signal memS2M_R_RIDmem_S2M_R_RIDHardLink : unsigned(7 downto 0) := "00000000";
+	signal memS2M_R_RDATA0mem_S2M_R_RDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal memS2M_R_RDATA1mem_S2M_R_RDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal memS2M_R_RDATA2mem_S2M_R_RDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal memS2M_R_RDATA3mem_S2M_R_RDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal memS2M_R_RRESPmem_S2M_R_RRESPHardLink : unsigned(1 downto 0) := "00";
+	signal memS2M_R_RLASTmem_S2M_R_RLASTHardLink : std_logic := '0';
+	signal memS2M_R_RUSERmem_S2M_R_RUSERHardLink : unsigned(7 downto 0) := "00000000";
+	signal memS2M_R_RVALIDmem_S2M_R_RVALIDHardLink : std_logic := '0';
+	signal memS2M_W_WREADYmem_S2M_W_WREADYHardLink : std_logic := '0';
+	signal masterS2M_AR_ARREADYmaster_S2M_AR_ARREADYHardLink : std_logic := '0';
+	signal masterS2M_AW_AWREADYmaster_S2M_AW_AWREADYHardLink : std_logic := '0';
+	signal masterS2M_B_BIDmaster_S2M_B_BIDHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterS2M_B_BRESPmaster_S2M_B_BRESPHardLink : unsigned(1 downto 0) := "00";
+	signal masterS2M_B_BUSERmaster_S2M_B_BUSERHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterS2M_B_BVALIDmaster_S2M_B_BVALIDHardLink : std_logic := '0';
+	signal masterS2M_R_RIDmaster_S2M_R_RIDHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterS2M_R_RDATA0master_S2M_R_RDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterS2M_R_RDATA1master_S2M_R_RDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterS2M_R_RDATA2master_S2M_R_RDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterS2M_R_RDATA3master_S2M_R_RDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterS2M_R_RRESPmaster_S2M_R_RRESPHardLink : unsigned(1 downto 0) := "00";
+	signal masterS2M_R_RLASTmaster_S2M_R_RLASTHardLink : std_logic := '0';
+	signal masterS2M_R_RUSERmaster_S2M_R_RUSERHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterS2M_R_RVALIDmaster_S2M_R_RVALIDHardLink : std_logic := '0';
+	signal masterS2M_W_WREADYmaster_S2M_W_WREADYHardLink : std_logic := '0';
+	signal masterARADDRmaster_ARADDRHardLink : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal masterREmaster_REHardLink : std_logic := '0';
+	signal masterAWADDRmaster_AWADDRHardLink : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal masterWEmaster_WEHardLink : std_logic := '0';
+	signal masterWSTRBmaster_WSTRBHardLink : unsigned(3 downto 0) := "0000";
+	signal masterWDATA0master_WDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterWDATA1master_WDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterWDATA2master_WDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterWDATA3master_WDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterRACKmaster_RACKHardLink : std_logic := '0';
+	signal masterRDATA0master_RDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterRDATA1master_RDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterRDATA2master_RDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterRDATA3master_RDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterWACKmaster_WACKHardLink : std_logic := '0';
+	signal masterM2S_AR_ARIDmaster_M2S_AR_ARIDHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterM2S_AR_ARADDRmaster_M2S_AR_ARADDRHardLink : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal masterM2S_AR_ARLENmaster_M2S_AR_ARLENHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterM2S_AR_ARSIZEmaster_M2S_AR_ARSIZEHardLink : unsigned(2 downto 0) := "000";
+	signal masterM2S_AR_ARBURSTmaster_M2S_AR_ARBURSTHardLink : unsigned(1 downto 0) := "00";
+	signal masterM2S_AR_ARLOCKmaster_M2S_AR_ARLOCKHardLink : unsigned(1 downto 0) := "00";
+	signal masterM2S_AR_ARCACHEmaster_M2S_AR_ARCACHEHardLink : unsigned(3 downto 0) := "0000";
+	signal masterM2S_AR_ARPROTmaster_M2S_AR_ARPROTHardLink : unsigned(2 downto 0) := "000";
+	signal masterM2S_AR_ARQOSmaster_M2S_AR_ARQOSHardLink : unsigned(3 downto 0) := "0000";
+	signal masterM2S_AR_ARREGIONmaster_M2S_AR_ARREGIONHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterM2S_AR_ARUSERmaster_M2S_AR_ARUSERHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterM2S_AR_ARVALIDmaster_M2S_AR_ARVALIDHardLink : std_logic := '0';
+	signal masterM2S_R_RREADYmaster_M2S_R_RREADYHardLink : std_logic := '0';
+	signal masterM2S_AW_AWIDmaster_M2S_AW_AWIDHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterM2S_AW_AWADDRmaster_M2S_AW_AWADDRHardLink : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal masterM2S_AW_AWLENmaster_M2S_AW_AWLENHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterM2S_AW_AWSIZEmaster_M2S_AW_AWSIZEHardLink : unsigned(2 downto 0) := "000";
+	signal masterM2S_AW_AWBURSTmaster_M2S_AW_AWBURSTHardLink : unsigned(1 downto 0) := "00";
+	signal masterM2S_AW_AWLOCKmaster_M2S_AW_AWLOCKHardLink : unsigned(1 downto 0) := "00";
+	signal masterM2S_AW_AWCACHEmaster_M2S_AW_AWCACHEHardLink : unsigned(3 downto 0) := "0000";
+	signal masterM2S_AW_AWPROTmaster_M2S_AW_AWPROTHardLink : unsigned(2 downto 0) := "000";
+	signal masterM2S_AW_AWQOSmaster_M2S_AW_AWQOSHardLink : unsigned(3 downto 0) := "0000";
+	signal masterM2S_AW_AWREGIONmaster_M2S_AW_AWREGIONHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterM2S_AW_AWUSERmaster_M2S_AW_AWUSERHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterM2S_AW_AWVALIDmaster_M2S_AW_AWVALIDHardLink : std_logic := '0';
+	signal masterM2S_W_WIDmaster_M2S_W_WIDHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterM2S_W_WDATA0master_M2S_W_WDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterM2S_W_WDATA1master_M2S_W_WDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterM2S_W_WDATA2master_M2S_W_WDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterM2S_W_WDATA3master_M2S_W_WDATAHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterM2S_W_WSTRBmaster_M2S_W_WSTRBHardLink : unsigned(3 downto 0) := "0000";
+	signal masterM2S_W_WLASTmaster_M2S_W_WLASTHardLink : std_logic := '0';
+	signal masterM2S_W_WUSERmaster_M2S_W_WUSERHardLink : unsigned(7 downto 0) := "00000000";
+	signal masterM2S_W_WVALIDmaster_M2S_W_WVALIDHardLink : std_logic := '0';
+	signal masterM2S_B_BREADYmaster_M2S_B_BREADYHardLink : std_logic := '0';
+	signal State_RACK : std_logic := '0';
+	constant State_RACKDefault : std_logic := '0';
+	type State_ReadDataArray is array (0 to 3) of unsigned (7 downto 0);
+	signal State_ReadData : State_ReadDataArray := (others => (others => '0'));
+	type NextState_ReadDataArray is array (0 to 3) of unsigned (7 downto 0);
+	signal NextState_ReadData : NextState_ReadDataArray := (others => (others => '0'));
+	type mem_M2S_W_WDATAArray is array (0 to 3) of unsigned (7 downto 0);
+	signal mem_M2S_W_WDATA : mem_M2S_W_WDATAArray := (others => (others => '0'));
+	type mem_S2M_R_RDATAArray is array (0 to 3) of unsigned (7 downto 0);
+	signal mem_S2M_R_RDATA : mem_S2M_R_RDATAArray := (others => (others => '0'));
+	type master_S2M_R_RDATAArray is array (0 to 3) of unsigned (7 downto 0);
+	signal master_S2M_R_RDATA : master_S2M_R_RDATAArray := (others => (others => '0'));
+	type master_WDATAArray is array (0 to 3) of unsigned (7 downto 0);
+	signal master_WDATA : master_WDATAArray := (others => (others => '0'));
+	type master_RDATAArray is array (0 to 3) of unsigned (7 downto 0);
+	signal master_RDATA : master_RDATAArray := (others => (others => '0'));
+	type master_M2S_W_WDATAArray is array (0 to 3) of unsigned (7 downto 0);
+	signal master_M2S_W_WDATA : master_M2S_W_WDATAArray := (others => (others => '0'));
+	signal BoardSignals : BoardSignalsType;
+	signal InternalReset : std_logic := '0';
 begin
-work.Quokka.BoardSignalsProc(BoardSignals,Clock,Reset,InternalReset);
-process (Clock, NextState_ReadData, Reset, State_ReadDataDefault)
-begin
-if rising_edge(Clock) then
-if ( Reset = '1' ) then
-for State_ReadData_Iterator in 0 to 3 loop
-State_ReadData(State_ReadData_Iterator) <= State_ReadDataDefault;
-end loop;
-else
-for State_ReadData_Iterator in 0 to 3 loop
-State_ReadData(State_ReadData_Iterator) <= NextState_ReadData(State_ReadData_Iterator);
-end loop;
-end if;
-end if;
-end process;
-AXI4MasterSlaveMemoryTestModule_TopLevel_AXI4MasterSlaveMemoryTestModule_s : entity work.AXI4MasterSlaveMemoryTestModule_TopLevel_AXI4MasterSlaveMemoryTestModule_s port map
-(
---[BEGIN USER MAP FOR s]
---[END USER MAP FOR s]
+	work.Quokka.BoardSignalsProc(BoardSignals, Clock, Reset, InternalReset);
+	process (Clock, NextState_RACK, Reset)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				State_RACK <= State_RACKDefault;
+			else
+				State_RACK <= NextState_RACK;
+			end if;
+		end if;
+	end process;
+	process (Clock, NextState_ReadData, Reset, State_ReadDataDefault)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				for State_ReadData_Iterator in 0 to 3 loop
+					State_ReadData(State_ReadData_Iterator) <= State_ReadDataDefault;
+				end loop;
+			else
+				for State_ReadData_Iterator in 0 to 3 loop
+					State_ReadData(State_ReadData_Iterator) <= NextState_ReadData(State_ReadData_Iterator);
+				end loop;
+			end if;
+		end if;
+	end process;
+	AXI4MasterSlaveMemoryTestModule_TopLevel_AXI4MasterSlaveMemoryTestModule_mem : entity work.AXI4MasterSlaveMemoryTestModule_TopLevel_AXI4MasterSlaveMemoryTestModule_mem
+	port map
+	(
+		-- [BEGIN USER MAP FOR mem]
+		-- [END USER MAP FOR mem]
 BoardSignals => BoardSignals,
-M2S_AR_ARID => sM2S_AR_ARIDs_M2S_AR_ARIDHardLink,
-M2S_AR_ARADDR => sM2S_AR_ARADDRs_M2S_AR_ARADDRHardLink,
-M2S_AR_ARLEN => sM2S_AR_ARLENs_M2S_AR_ARLENHardLink,
-M2S_AR_ARSIZE => sM2S_AR_ARSIZEs_M2S_AR_ARSIZEHardLink,
-M2S_AR_ARBURST => sM2S_AR_ARBURSTs_M2S_AR_ARBURSTHardLink,
-M2S_AR_ARLOCK => sM2S_AR_ARLOCKs_M2S_AR_ARLOCKHardLink,
-M2S_AR_ARCACHE => sM2S_AR_ARCACHEs_M2S_AR_ARCACHEHardLink,
-M2S_AR_ARPROT => sM2S_AR_ARPROTs_M2S_AR_ARPROTHardLink,
-M2S_AR_ARQOS => sM2S_AR_ARQOSs_M2S_AR_ARQOSHardLink,
-M2S_AR_ARREGION => sM2S_AR_ARREGIONs_M2S_AR_ARREGIONHardLink,
-M2S_AR_ARUSER => sM2S_AR_ARUSERs_M2S_AR_ARUSERHardLink,
-M2S_AR_ARVALID => sM2S_AR_ARVALIDs_M2S_AR_ARVALIDHardLink,
-M2S_R_RREADY => sM2S_R_RREADYs_M2S_R_RREADYHardLink,
-M2S_AW_AWID => sM2S_AW_AWIDs_M2S_AW_AWIDHardLink,
-M2S_AW_AWADDR => sM2S_AW_AWADDRs_M2S_AW_AWADDRHardLink,
-M2S_AW_AWLEN => sM2S_AW_AWLENs_M2S_AW_AWLENHardLink,
-M2S_AW_AWSIZE => sM2S_AW_AWSIZEs_M2S_AW_AWSIZEHardLink,
-M2S_AW_AWBURST => sM2S_AW_AWBURSTs_M2S_AW_AWBURSTHardLink,
-M2S_AW_AWLOCK => sM2S_AW_AWLOCKs_M2S_AW_AWLOCKHardLink,
-M2S_AW_AWCACHE => sM2S_AW_AWCACHEs_M2S_AW_AWCACHEHardLink,
-M2S_AW_AWPROT => sM2S_AW_AWPROTs_M2S_AW_AWPROTHardLink,
-M2S_AW_AWQOS => sM2S_AW_AWQOSs_M2S_AW_AWQOSHardLink,
-M2S_AW_AWREGION => sM2S_AW_AWREGIONs_M2S_AW_AWREGIONHardLink,
-M2S_AW_AWUSER => sM2S_AW_AWUSERs_M2S_AW_AWUSERHardLink,
-M2S_AW_AWVALID => sM2S_AW_AWVALIDs_M2S_AW_AWVALIDHardLink,
-M2S_W_WID => sM2S_W_WIDs_M2S_W_WIDHardLink,
-M2S_W_WDATA0 => sM2S_W_WDATA0s_M2S_W_WDATA0HardLink,
-M2S_W_WDATA1 => sM2S_W_WDATA1s_M2S_W_WDATA1HardLink,
-M2S_W_WDATA2 => sM2S_W_WDATA2s_M2S_W_WDATA2HardLink,
-M2S_W_WDATA3 => sM2S_W_WDATA3s_M2S_W_WDATA3HardLink,
-M2S_W_WSTRB => sM2S_W_WSTRBs_M2S_W_WSTRBHardLink,
-M2S_W_WLAST => sM2S_W_WLASTs_M2S_W_WLASTHardLink,
-M2S_W_WUSER => sM2S_W_WUSERs_M2S_W_WUSERHardLink,
-M2S_W_WVALID => sM2S_W_WVALIDs_M2S_W_WVALIDHardLink,
-M2S_B_BREADY => sM2S_B_BREADYs_M2S_B_BREADYHardLink,
-S2M_AR_ARREADY => sS2M_AR_ARREADYs_S2M_AR_ARREADYHardLink,
-S2M_AW_AWREADY => sS2M_AW_AWREADYs_S2M_AW_AWREADYHardLink,
-S2M_B_BID => sS2M_B_BIDs_S2M_B_BIDHardLink,
-S2M_B_BRESP => sS2M_B_BRESPs_S2M_B_BRESPHardLink,
-S2M_B_BUSER => sS2M_B_BUSERs_S2M_B_BUSERHardLink,
-S2M_B_BVALID => sS2M_B_BVALIDs_S2M_B_BVALIDHardLink,
-S2M_R_RID => sS2M_R_RIDs_S2M_R_RIDHardLink,
-S2M_R_RDATA0 => sS2M_R_RDATA0s_S2M_R_RDATA0HardLink,
-S2M_R_RDATA1 => sS2M_R_RDATA1s_S2M_R_RDATA1HardLink,
-S2M_R_RDATA2 => sS2M_R_RDATA2s_S2M_R_RDATA2HardLink,
-S2M_R_RDATA3 => sS2M_R_RDATA3s_S2M_R_RDATA3HardLink,
-S2M_R_RRESP => sS2M_R_RRESPs_S2M_R_RRESPHardLink,
-S2M_R_RLAST => sS2M_R_RLASTs_S2M_R_RLASTHardLink,
-S2M_R_RUSER => sS2M_R_RUSERs_S2M_R_RUSERHardLink,
-S2M_R_RVALID => sS2M_R_RVALIDs_S2M_R_RVALIDHardLink,
-S2M_W_WREADY => sS2M_W_WREADYs_S2M_W_WREADYHardLink
-
-);
-AXI4MasterSlaveMemoryTestModule_TopLevel_AXI4MasterSlaveMemoryTestModule_m : entity work.AXI4MasterSlaveMemoryTestModule_TopLevel_AXI4MasterSlaveMemoryTestModule_m port map
-(
---[BEGIN USER MAP FOR m]
---[END USER MAP FOR m]
+M2S_AR_ARID => memM2S_AR_ARIDmem_M2S_AR_ARIDHardLink,
+M2S_AR_ARADDR => memM2S_AR_ARADDRmem_M2S_AR_ARADDRHardLink,
+M2S_AR_ARLEN => memM2S_AR_ARLENmem_M2S_AR_ARLENHardLink,
+M2S_AR_ARSIZE => memM2S_AR_ARSIZEmem_M2S_AR_ARSIZEHardLink,
+M2S_AR_ARBURST => memM2S_AR_ARBURSTmem_M2S_AR_ARBURSTHardLink,
+M2S_AR_ARLOCK => memM2S_AR_ARLOCKmem_M2S_AR_ARLOCKHardLink,
+M2S_AR_ARCACHE => memM2S_AR_ARCACHEmem_M2S_AR_ARCACHEHardLink,
+M2S_AR_ARPROT => memM2S_AR_ARPROTmem_M2S_AR_ARPROTHardLink,
+M2S_AR_ARQOS => memM2S_AR_ARQOSmem_M2S_AR_ARQOSHardLink,
+M2S_AR_ARREGION => memM2S_AR_ARREGIONmem_M2S_AR_ARREGIONHardLink,
+M2S_AR_ARUSER => memM2S_AR_ARUSERmem_M2S_AR_ARUSERHardLink,
+M2S_AR_ARVALID => memM2S_AR_ARVALIDmem_M2S_AR_ARVALIDHardLink,
+M2S_R_RREADY => memM2S_R_RREADYmem_M2S_R_RREADYHardLink,
+M2S_AW_AWID => memM2S_AW_AWIDmem_M2S_AW_AWIDHardLink,
+M2S_AW_AWADDR => memM2S_AW_AWADDRmem_M2S_AW_AWADDRHardLink,
+M2S_AW_AWLEN => memM2S_AW_AWLENmem_M2S_AW_AWLENHardLink,
+M2S_AW_AWSIZE => memM2S_AW_AWSIZEmem_M2S_AW_AWSIZEHardLink,
+M2S_AW_AWBURST => memM2S_AW_AWBURSTmem_M2S_AW_AWBURSTHardLink,
+M2S_AW_AWLOCK => memM2S_AW_AWLOCKmem_M2S_AW_AWLOCKHardLink,
+M2S_AW_AWCACHE => memM2S_AW_AWCACHEmem_M2S_AW_AWCACHEHardLink,
+M2S_AW_AWPROT => memM2S_AW_AWPROTmem_M2S_AW_AWPROTHardLink,
+M2S_AW_AWQOS => memM2S_AW_AWQOSmem_M2S_AW_AWQOSHardLink,
+M2S_AW_AWREGION => memM2S_AW_AWREGIONmem_M2S_AW_AWREGIONHardLink,
+M2S_AW_AWUSER => memM2S_AW_AWUSERmem_M2S_AW_AWUSERHardLink,
+M2S_AW_AWVALID => memM2S_AW_AWVALIDmem_M2S_AW_AWVALIDHardLink,
+M2S_W_WID => memM2S_W_WIDmem_M2S_W_WIDHardLink,
+M2S_W_WDATA0 => memM2S_W_WDATA0mem_M2S_W_WDATAHardLink,
+M2S_W_WDATA1 => memM2S_W_WDATA1mem_M2S_W_WDATAHardLink,
+M2S_W_WDATA2 => memM2S_W_WDATA2mem_M2S_W_WDATAHardLink,
+M2S_W_WDATA3 => memM2S_W_WDATA3mem_M2S_W_WDATAHardLink,
+M2S_W_WSTRB => memM2S_W_WSTRBmem_M2S_W_WSTRBHardLink,
+M2S_W_WLAST => memM2S_W_WLASTmem_M2S_W_WLASTHardLink,
+M2S_W_WUSER => memM2S_W_WUSERmem_M2S_W_WUSERHardLink,
+M2S_W_WVALID => memM2S_W_WVALIDmem_M2S_W_WVALIDHardLink,
+M2S_B_BREADY => memM2S_B_BREADYmem_M2S_B_BREADYHardLink,
+S2M_AR_ARREADY => memS2M_AR_ARREADYmem_S2M_AR_ARREADYHardLink,
+S2M_AW_AWREADY => memS2M_AW_AWREADYmem_S2M_AW_AWREADYHardLink,
+S2M_B_BID => memS2M_B_BIDmem_S2M_B_BIDHardLink,
+S2M_B_BRESP => memS2M_B_BRESPmem_S2M_B_BRESPHardLink,
+S2M_B_BUSER => memS2M_B_BUSERmem_S2M_B_BUSERHardLink,
+S2M_B_BVALID => memS2M_B_BVALIDmem_S2M_B_BVALIDHardLink,
+S2M_R_RID => memS2M_R_RIDmem_S2M_R_RIDHardLink,
+S2M_R_RDATA0 => memS2M_R_RDATA0mem_S2M_R_RDATAHardLink,
+S2M_R_RDATA1 => memS2M_R_RDATA1mem_S2M_R_RDATAHardLink,
+S2M_R_RDATA2 => memS2M_R_RDATA2mem_S2M_R_RDATAHardLink,
+S2M_R_RDATA3 => memS2M_R_RDATA3mem_S2M_R_RDATAHardLink,
+S2M_R_RRESP => memS2M_R_RRESPmem_S2M_R_RRESPHardLink,
+S2M_R_RLAST => memS2M_R_RLASTmem_S2M_R_RLASTHardLink,
+S2M_R_RUSER => memS2M_R_RUSERmem_S2M_R_RUSERHardLink,
+S2M_R_RVALID => memS2M_R_RVALIDmem_S2M_R_RVALIDHardLink,
+S2M_W_WREADY => memS2M_W_WREADYmem_S2M_W_WREADYHardLink
+	);
+	AXI4MasterSlaveMemoryTestModule_TopLevel_AXI4MasterSlaveMemoryTestModule_master : entity work.AXI4MasterSlaveMemoryTestModule_TopLevel_AXI4MasterSlaveMemoryTestModule_master
+	port map
+	(
+		-- [BEGIN USER MAP FOR master]
+		-- [END USER MAP FOR master]
 BoardSignals => BoardSignals,
-S2M_AR_ARREADY => mS2M_AR_ARREADYm_S2M_AR_ARREADYHardLink,
-S2M_AW_AWREADY => mS2M_AW_AWREADYm_S2M_AW_AWREADYHardLink,
-S2M_B_BID => mS2M_B_BIDm_S2M_B_BIDHardLink,
-S2M_B_BRESP => mS2M_B_BRESPm_S2M_B_BRESPHardLink,
-S2M_B_BUSER => mS2M_B_BUSERm_S2M_B_BUSERHardLink,
-S2M_B_BVALID => mS2M_B_BVALIDm_S2M_B_BVALIDHardLink,
-S2M_R_RID => mS2M_R_RIDm_S2M_R_RIDHardLink,
-S2M_R_RDATA0 => mS2M_R_RDATA0m_S2M_R_RDATA0HardLink,
-S2M_R_RDATA1 => mS2M_R_RDATA1m_S2M_R_RDATA1HardLink,
-S2M_R_RDATA2 => mS2M_R_RDATA2m_S2M_R_RDATA2HardLink,
-S2M_R_RDATA3 => mS2M_R_RDATA3m_S2M_R_RDATA3HardLink,
-S2M_R_RRESP => mS2M_R_RRESPm_S2M_R_RRESPHardLink,
-S2M_R_RLAST => mS2M_R_RLASTm_S2M_R_RLASTHardLink,
-S2M_R_RUSER => mS2M_R_RUSERm_S2M_R_RUSERHardLink,
-S2M_R_RVALID => mS2M_R_RVALIDm_S2M_R_RVALIDHardLink,
-S2M_W_WREADY => mS2M_W_WREADYm_S2M_W_WREADYHardLink,
-AXADDR => mAXADDRm_AXADDRHardLink,
-RE => mREm_REHardLink,
-WE => mWEm_WEHardLink,
-WDATA0 => mWDATA0m_WDATA0HardLink,
-WDATA1 => mWDATA1m_WDATA1HardLink,
-WDATA2 => mWDATA2m_WDATA2HardLink,
-WDATA3 => mWDATA3m_WDATA3HardLink,
-WSTRB => mWSTRBm_WSTRBHardLink,
-InvalidInputs => mInvalidInputsm_InvalidInputsHardLink,
-OutACK => mOutACKm_OutACKHardLink,
-RDATA0 => mRDATA0m_RDATA0HardLink,
-RDATA1 => mRDATA1m_RDATA1HardLink,
-RDATA2 => mRDATA2m_RDATA2HardLink,
-RDATA3 => mRDATA3m_RDATA3HardLink,
-M2S_AR_ARID => mM2S_AR_ARIDm_M2S_AR_ARIDHardLink,
-M2S_AR_ARADDR => mM2S_AR_ARADDRm_M2S_AR_ARADDRHardLink,
-M2S_AR_ARLEN => mM2S_AR_ARLENm_M2S_AR_ARLENHardLink,
-M2S_AR_ARSIZE => mM2S_AR_ARSIZEm_M2S_AR_ARSIZEHardLink,
-M2S_AR_ARBURST => mM2S_AR_ARBURSTm_M2S_AR_ARBURSTHardLink,
-M2S_AR_ARLOCK => mM2S_AR_ARLOCKm_M2S_AR_ARLOCKHardLink,
-M2S_AR_ARCACHE => mM2S_AR_ARCACHEm_M2S_AR_ARCACHEHardLink,
-M2S_AR_ARPROT => mM2S_AR_ARPROTm_M2S_AR_ARPROTHardLink,
-M2S_AR_ARQOS => mM2S_AR_ARQOSm_M2S_AR_ARQOSHardLink,
-M2S_AR_ARREGION => mM2S_AR_ARREGIONm_M2S_AR_ARREGIONHardLink,
-M2S_AR_ARUSER => mM2S_AR_ARUSERm_M2S_AR_ARUSERHardLink,
-M2S_AR_ARVALID => mM2S_AR_ARVALIDm_M2S_AR_ARVALIDHardLink,
-M2S_R_RREADY => mM2S_R_RREADYm_M2S_R_RREADYHardLink,
-M2S_AW_AWID => mM2S_AW_AWIDm_M2S_AW_AWIDHardLink,
-M2S_AW_AWADDR => mM2S_AW_AWADDRm_M2S_AW_AWADDRHardLink,
-M2S_AW_AWLEN => mM2S_AW_AWLENm_M2S_AW_AWLENHardLink,
-M2S_AW_AWSIZE => mM2S_AW_AWSIZEm_M2S_AW_AWSIZEHardLink,
-M2S_AW_AWBURST => mM2S_AW_AWBURSTm_M2S_AW_AWBURSTHardLink,
-M2S_AW_AWLOCK => mM2S_AW_AWLOCKm_M2S_AW_AWLOCKHardLink,
-M2S_AW_AWCACHE => mM2S_AW_AWCACHEm_M2S_AW_AWCACHEHardLink,
-M2S_AW_AWPROT => mM2S_AW_AWPROTm_M2S_AW_AWPROTHardLink,
-M2S_AW_AWQOS => mM2S_AW_AWQOSm_M2S_AW_AWQOSHardLink,
-M2S_AW_AWREGION => mM2S_AW_AWREGIONm_M2S_AW_AWREGIONHardLink,
-M2S_AW_AWUSER => mM2S_AW_AWUSERm_M2S_AW_AWUSERHardLink,
-M2S_AW_AWVALID => mM2S_AW_AWVALIDm_M2S_AW_AWVALIDHardLink,
-M2S_W_WID => mM2S_W_WIDm_M2S_W_WIDHardLink,
-M2S_W_WDATA0 => mM2S_W_WDATA0m_M2S_W_WDATA0HardLink,
-M2S_W_WDATA1 => mM2S_W_WDATA1m_M2S_W_WDATA1HardLink,
-M2S_W_WDATA2 => mM2S_W_WDATA2m_M2S_W_WDATA2HardLink,
-M2S_W_WDATA3 => mM2S_W_WDATA3m_M2S_W_WDATA3HardLink,
-M2S_W_WSTRB => mM2S_W_WSTRBm_M2S_W_WSTRBHardLink,
-M2S_W_WLAST => mM2S_W_WLASTm_M2S_W_WLASTHardLink,
-M2S_W_WUSER => mM2S_W_WUSERm_M2S_W_WUSERHardLink,
-M2S_W_WVALID => mM2S_W_WVALIDm_M2S_W_WVALIDHardLink,
-M2S_B_BREADY => mM2S_B_BREADYm_M2S_B_BREADYHardLink
-
-);
-process(s_S2M_R_RDATA0, s_S2M_R_RDATA1, s_S2M_R_RDATA2, s_S2M_R_RDATA3, s_S2M_R_RVALID, State_ReadData)
-begin
-for NextState_ReadData_Iterator in 0 to 3 loop
-NextState_ReadData(NextState_ReadData_Iterator) <= State_ReadData(NextState_ReadData_Iterator);
-end loop;
-if ( s_S2M_R_RVALID = '1' ) then
-NextState_ReadData(0) <= s_S2M_R_RDATA0;
-NextState_ReadData(1) <= s_S2M_R_RDATA1;
-NextState_ReadData(2) <= s_S2M_R_RDATA2;
-NextState_ReadData(3) <= s_S2M_R_RDATA3;
-end if;
-end process;
-process(AXADDR, AXI4MasterSlaveMemoryTestModule_L34F45T69_Source, AXI4MasterSlaveMemoryTestModule_L52F25T55_Source, AXI4MasterSlaveMemoryTestModule_L53F25T55_Source, AXI4MasterSlaveMemoryTestModule_L53F25T60_Index, InData, Inputs_AXADDR, Inputs_InData, Inputs_RE, Inputs_WE, m_AXADDR, m_M2S_AR_ARADDR, m_M2S_AR_ARBURST, m_M2S_AR_ARCACHE, m_M2S_AR_ARID, m_M2S_AR_ARLEN, m_M2S_AR_ARLOCK, m_M2S_AR_ARPROT, m_M2S_AR_ARQOS, m_M2S_AR_ARREGION, m_M2S_AR_ARSIZE, m_M2S_AR_ARUSER, m_M2S_AR_ARVALID, m_M2S_AW_AWADDR, m_M2S_AW_AWBURST, m_M2S_AW_AWCACHE, m_M2S_AW_AWID, m_M2S_AW_AWLEN, m_M2S_AW_AWLOCK, m_M2S_AW_AWPROT, m_M2S_AW_AWQOS, m_M2S_AW_AWREGION, m_M2S_AW_AWSIZE, m_M2S_AW_AWUSER, m_M2S_AW_AWVALID, m_M2S_B_BREADY, m_M2S_R_RREADY, m_M2S_W_WDATA0, m_M2S_W_WDATA1, m_M2S_W_WDATA2, m_M2S_W_WDATA3, m_M2S_W_WID, m_M2S_W_WLAST, m_M2S_W_WSTRB, m_M2S_W_WUSER, m_M2S_W_WVALID, m_OutACK, m_RDATA0, m_RDATA1, m_RDATA2, m_RDATA3, m_RE, m_S2M_AR_ARREADY, m_S2M_AW_AWREADY, m_S2M_B_BID, m_S2M_B_BRESP, m_S2M_B_BUSER, m_S2M_B_BVALID, m_S2M_R_RDATA0, m_S2M_R_RDATA1, m_S2M_R_RDATA2, m_S2M_R_RDATA3, m_S2M_R_RID, m_S2M_R_RLAST, m_S2M_R_RRESP, m_S2M_R_RUSER, m_S2M_R_RVALID, m_S2M_W_WREADY, m_WDATA0, m_WDATA1, m_WDATA2, m_WDATA3, m_WE, m_WSTRB, mInvalidInputsm_InvalidInputsHardLink, mM2S_AR_ARADDRm_M2S_AR_ARADDRHardLink, mM2S_AR_ARBURSTm_M2S_AR_ARBURSTHardLink, mM2S_AR_ARCACHEm_M2S_AR_ARCACHEHardLink, mM2S_AR_ARIDm_M2S_AR_ARIDHardLink, mM2S_AR_ARLENm_M2S_AR_ARLENHardLink, mM2S_AR_ARLOCKm_M2S_AR_ARLOCKHardLink, mM2S_AR_ARPROTm_M2S_AR_ARPROTHardLink, mM2S_AR_ARQOSm_M2S_AR_ARQOSHardLink, mM2S_AR_ARREGIONm_M2S_AR_ARREGIONHardLink, mM2S_AR_ARSIZEm_M2S_AR_ARSIZEHardLink, mM2S_AR_ARUSERm_M2S_AR_ARUSERHardLink, mM2S_AR_ARVALIDm_M2S_AR_ARVALIDHardLink, mM2S_AW_AWADDRm_M2S_AW_AWADDRHardLink, mM2S_AW_AWBURSTm_M2S_AW_AWBURSTHardLink, mM2S_AW_AWCACHEm_M2S_AW_AWCACHEHardLink, mM2S_AW_AWIDm_M2S_AW_AWIDHardLink, mM2S_AW_AWLENm_M2S_AW_AWLENHardLink, mM2S_AW_AWLOCKm_M2S_AW_AWLOCKHardLink, mM2S_AW_AWPROTm_M2S_AW_AWPROTHardLink, mM2S_AW_AWQOSm_M2S_AW_AWQOSHardLink, mM2S_AW_AWREGIONm_M2S_AW_AWREGIONHardLink, mM2S_AW_AWSIZEm_M2S_AW_AWSIZEHardLink, mM2S_AW_AWUSERm_M2S_AW_AWUSERHardLink, mM2S_AW_AWVALIDm_M2S_AW_AWVALIDHardLink, mM2S_B_BREADYm_M2S_B_BREADYHardLink, mM2S_R_RREADYm_M2S_R_RREADYHardLink, mM2S_W_WDATA0m_M2S_W_WDATA0HardLink, mM2S_W_WDATA1m_M2S_W_WDATA1HardLink, mM2S_W_WDATA2m_M2S_W_WDATA2HardLink, mM2S_W_WDATA3m_M2S_W_WDATA3HardLink, mM2S_W_WIDm_M2S_W_WIDHardLink, mM2S_W_WLASTm_M2S_W_WLASTHardLink, mM2S_W_WSTRBm_M2S_W_WSTRBHardLink, mM2S_W_WUSERm_M2S_W_WUSERHardLink, mM2S_W_WVALIDm_M2S_W_WVALIDHardLink, mOutACKm_OutACKHardLink, mRDATA0m_RDATA0HardLink, mRDATA1m_RDATA1HardLink, mRDATA2m_RDATA2HardLink, mRDATA3m_RDATA3HardLink, RE, s_M2S_AR_ARADDR, s_M2S_AR_ARBURST, s_M2S_AR_ARCACHE, s_M2S_AR_ARID, s_M2S_AR_ARLEN, s_M2S_AR_ARLOCK, s_M2S_AR_ARPROT, s_M2S_AR_ARQOS, s_M2S_AR_ARREGION, s_M2S_AR_ARSIZE, s_M2S_AR_ARUSER, s_M2S_AR_ARVALID, s_M2S_AW_AWADDR, s_M2S_AW_AWBURST, s_M2S_AW_AWCACHE, s_M2S_AW_AWID, s_M2S_AW_AWLEN, s_M2S_AW_AWLOCK, s_M2S_AW_AWPROT, s_M2S_AW_AWQOS, s_M2S_AW_AWREGION, s_M2S_AW_AWSIZE, s_M2S_AW_AWUSER, s_M2S_AW_AWVALID, s_M2S_B_BREADY, s_M2S_R_RREADY, s_M2S_W_WDATA0, s_M2S_W_WDATA1, s_M2S_W_WDATA2, s_M2S_W_WDATA3, s_M2S_W_WID, s_M2S_W_WLAST, s_M2S_W_WSTRB, s_M2S_W_WUSER, s_M2S_W_WVALID, s_S2M_AR_ARREADY, s_S2M_AW_AWREADY, s_S2M_B_BID, s_S2M_B_BRESP, s_S2M_B_BUSER, s_S2M_B_BVALID, s_S2M_R_RDATA0, s_S2M_R_RDATA1, s_S2M_R_RDATA2, s_S2M_R_RDATA3, s_S2M_R_RID, s_S2M_R_RLAST, s_S2M_R_RRESP, s_S2M_R_RUSER, s_S2M_R_RVALID, s_S2M_W_WREADY, sS2M_AR_ARREADYs_S2M_AR_ARREADYHardLink, sS2M_AW_AWREADYs_S2M_AW_AWREADYHardLink, sS2M_B_BIDs_S2M_B_BIDHardLink, sS2M_B_BRESPs_S2M_B_BRESPHardLink, sS2M_B_BUSERs_S2M_B_BUSERHardLink, sS2M_B_BVALIDs_S2M_B_BVALIDHardLink, sS2M_R_RDATA0s_S2M_R_RDATA0HardLink, sS2M_R_RDATA1s_S2M_R_RDATA1HardLink, sS2M_R_RDATA2s_S2M_R_RDATA2HardLink, sS2M_R_RDATA3s_S2M_R_RDATA3HardLink, sS2M_R_RIDs_S2M_R_RIDHardLink, sS2M_R_RLASTs_S2M_R_RLASTHardLink, sS2M_R_RRESPs_S2M_R_RRESPHardLink, sS2M_R_RUSERs_S2M_R_RUSERHardLink, sS2M_R_RVALIDs_S2M_R_RVALIDHardLink, sS2M_W_WREADYs_S2M_W_WREADYHardLink, SWE, WE)
-begin
-Inputs_AXADDR <= AXADDR;
-Inputs_InData <= InData;
-Inputs_WE <= WE;
-Inputs_RE <= RE;
-Inputs_SWE <= SWE;
-s_M2S_AR_ARID <= m_M2S_AR_ARID;
-s_M2S_AR_ARADDR <= m_M2S_AR_ARADDR;
-s_M2S_AR_ARLEN <= m_M2S_AR_ARLEN;
-s_M2S_AR_ARSIZE <= m_M2S_AR_ARSIZE;
-s_M2S_AR_ARBURST <= m_M2S_AR_ARBURST;
-s_M2S_AR_ARLOCK <= m_M2S_AR_ARLOCK;
-s_M2S_AR_ARCACHE <= m_M2S_AR_ARCACHE;
-s_M2S_AR_ARPROT <= m_M2S_AR_ARPROT;
-s_M2S_AR_ARQOS <= m_M2S_AR_ARQOS;
-s_M2S_AR_ARREGION <= m_M2S_AR_ARREGION;
-s_M2S_AR_ARUSER <= m_M2S_AR_ARUSER;
-s_M2S_AR_ARVALID <= m_M2S_AR_ARVALID;
-s_M2S_R_RREADY <= m_M2S_R_RREADY;
-s_M2S_AW_AWID <= m_M2S_AW_AWID;
-s_M2S_AW_AWADDR <= m_M2S_AW_AWADDR;
-s_M2S_AW_AWLEN <= m_M2S_AW_AWLEN;
-s_M2S_AW_AWSIZE <= m_M2S_AW_AWSIZE;
-s_M2S_AW_AWBURST <= m_M2S_AW_AWBURST;
-s_M2S_AW_AWLOCK <= m_M2S_AW_AWLOCK;
-s_M2S_AW_AWCACHE <= m_M2S_AW_AWCACHE;
-s_M2S_AW_AWPROT <= m_M2S_AW_AWPROT;
-s_M2S_AW_AWQOS <= m_M2S_AW_AWQOS;
-s_M2S_AW_AWREGION <= m_M2S_AW_AWREGION;
-s_M2S_AW_AWUSER <= m_M2S_AW_AWUSER;
-s_M2S_AW_AWVALID <= m_M2S_AW_AWVALID;
-s_M2S_W_WID <= m_M2S_W_WID;
-s_M2S_W_WDATA0 <= m_M2S_W_WDATA0;
-s_M2S_W_WDATA1 <= m_M2S_W_WDATA1;
-s_M2S_W_WDATA2 <= m_M2S_W_WDATA2;
-s_M2S_W_WDATA3 <= m_M2S_W_WDATA3;
-s_M2S_W_WSTRB <= m_M2S_W_WSTRB;
-s_M2S_W_WLAST <= m_M2S_W_WLAST;
-s_M2S_W_WUSER <= m_M2S_W_WUSER;
-s_M2S_W_WVALID <= m_M2S_W_WVALID;
-s_M2S_B_BREADY <= m_M2S_B_BREADY;
-AXI4MasterSlaveMemoryTestModule_L52F25T55_Source <= Inputs_InData;
-AXI4MasterSlaveMemoryTestModule_L53F25T55_Source <= AXI4MasterSlaveMemoryTestModule_L53F41T54_Expr;
-AXI4MasterSlaveMemoryTestModule_L53F25T60_Index <= AXI4MasterSlaveMemoryTestModule_L53F25T55_Source(3 downto 0);
-m_S2M_AR_ARREADY <= s_S2M_AR_ARREADY;
-m_S2M_AW_AWREADY <= s_S2M_AW_AWREADY;
-m_S2M_B_BID <= s_S2M_B_BID;
-m_S2M_B_BRESP <= s_S2M_B_BRESP;
-m_S2M_B_BUSER <= s_S2M_B_BUSER;
-m_S2M_B_BVALID <= s_S2M_B_BVALID;
-m_S2M_R_RID <= s_S2M_R_RID;
-m_S2M_R_RDATA0 <= s_S2M_R_RDATA0;
-m_S2M_R_RDATA1 <= s_S2M_R_RDATA1;
-m_S2M_R_RDATA2 <= s_S2M_R_RDATA2;
-m_S2M_R_RDATA3 <= s_S2M_R_RDATA3;
-m_S2M_R_RRESP <= s_S2M_R_RRESP;
-m_S2M_R_RLAST <= s_S2M_R_RLAST;
-m_S2M_R_RUSER <= s_S2M_R_RUSER;
-m_S2M_R_RVALID <= s_S2M_R_RVALID;
-m_S2M_W_WREADY <= s_S2M_W_WREADY;
-m_AXADDR <= Inputs_AXADDR;
-m_RE <= Inputs_RE;
-m_WE <= Inputs_WE;
-m_WDATA0 <= AXI4MasterSlaveMemoryTestModule_L52F25T55_Source(7 downto 0);
-m_WDATA1 <= AXI4MasterSlaveMemoryTestModule_L52F25T55_Source(15 downto 8);
-m_WDATA2 <= AXI4MasterSlaveMemoryTestModule_L52F25T55_Source(23 downto 16);
-m_WDATA3 <= AXI4MasterSlaveMemoryTestModule_L52F25T55_Source(31 downto 24);
-m_WSTRB <= AXI4MasterSlaveMemoryTestModule_L53F25T60_Index;
-OutACK <= m_OutACK;
-OutMasterData0 <= m_RDATA0;
-OutMasterData1 <= m_RDATA1;
-OutMasterData2 <= m_RDATA2;
-OutMasterData3 <= m_RDATA3;
-AXI4MasterSlaveMemoryTestModule_L34F45T69_Source <= (0 => m_RDATA0(0), 1 => m_RDATA0(1), 2 => m_RDATA0(2), 3 => m_RDATA0(3), 4 => m_RDATA0(4), 5 => m_RDATA0(5), 6 => m_RDATA0(6), 7 => m_RDATA0(7), 8 => m_RDATA1(0), 9 => m_RDATA1(1), 10 => m_RDATA1(2), 11 => m_RDATA1(3), 12 => m_RDATA1(4), 13 => m_RDATA1(5), 14 => m_RDATA1(6), 15 => m_RDATA1(7), 16 => m_RDATA2(0), 17 => m_RDATA2(1), 18 => m_RDATA2(2), 19 => m_RDATA2(3), 20 => m_RDATA2(4), 21 => m_RDATA2(5), 22 => m_RDATA2(6), 23 => m_RDATA2(7), 24 => m_RDATA3(0), 25 => m_RDATA3(1), 26 => m_RDATA3(2), 27 => m_RDATA3(3), 28 => m_RDATA3(4), 29 => m_RDATA3(5), 30 => m_RDATA3(6), 31 => m_RDATA3(7), others => '0');
-OutMasterWord <= AXI4MasterSlaveMemoryTestModule_L34F45T69_Source;
-sM2S_AR_ARIDs_M2S_AR_ARIDHardLink <= s_M2S_AR_ARID;
-sM2S_AR_ARADDRs_M2S_AR_ARADDRHardLink <= s_M2S_AR_ARADDR;
-sM2S_AR_ARLENs_M2S_AR_ARLENHardLink <= s_M2S_AR_ARLEN;
-sM2S_AR_ARSIZEs_M2S_AR_ARSIZEHardLink <= s_M2S_AR_ARSIZE;
-sM2S_AR_ARBURSTs_M2S_AR_ARBURSTHardLink <= s_M2S_AR_ARBURST;
-sM2S_AR_ARLOCKs_M2S_AR_ARLOCKHardLink <= s_M2S_AR_ARLOCK;
-sM2S_AR_ARCACHEs_M2S_AR_ARCACHEHardLink <= s_M2S_AR_ARCACHE;
-sM2S_AR_ARPROTs_M2S_AR_ARPROTHardLink <= s_M2S_AR_ARPROT;
-sM2S_AR_ARQOSs_M2S_AR_ARQOSHardLink <= s_M2S_AR_ARQOS;
-sM2S_AR_ARREGIONs_M2S_AR_ARREGIONHardLink <= s_M2S_AR_ARREGION;
-sM2S_AR_ARUSERs_M2S_AR_ARUSERHardLink <= s_M2S_AR_ARUSER;
-sM2S_AR_ARVALIDs_M2S_AR_ARVALIDHardLink <= s_M2S_AR_ARVALID;
-sM2S_R_RREADYs_M2S_R_RREADYHardLink <= s_M2S_R_RREADY;
-sM2S_AW_AWIDs_M2S_AW_AWIDHardLink <= s_M2S_AW_AWID;
-sM2S_AW_AWADDRs_M2S_AW_AWADDRHardLink <= s_M2S_AW_AWADDR;
-sM2S_AW_AWLENs_M2S_AW_AWLENHardLink <= s_M2S_AW_AWLEN;
-sM2S_AW_AWSIZEs_M2S_AW_AWSIZEHardLink <= s_M2S_AW_AWSIZE;
-sM2S_AW_AWBURSTs_M2S_AW_AWBURSTHardLink <= s_M2S_AW_AWBURST;
-sM2S_AW_AWLOCKs_M2S_AW_AWLOCKHardLink <= s_M2S_AW_AWLOCK;
-sM2S_AW_AWCACHEs_M2S_AW_AWCACHEHardLink <= s_M2S_AW_AWCACHE;
-sM2S_AW_AWPROTs_M2S_AW_AWPROTHardLink <= s_M2S_AW_AWPROT;
-sM2S_AW_AWQOSs_M2S_AW_AWQOSHardLink <= s_M2S_AW_AWQOS;
-sM2S_AW_AWREGIONs_M2S_AW_AWREGIONHardLink <= s_M2S_AW_AWREGION;
-sM2S_AW_AWUSERs_M2S_AW_AWUSERHardLink <= s_M2S_AW_AWUSER;
-sM2S_AW_AWVALIDs_M2S_AW_AWVALIDHardLink <= s_M2S_AW_AWVALID;
-sM2S_W_WIDs_M2S_W_WIDHardLink <= s_M2S_W_WID;
-sM2S_W_WDATA0s_M2S_W_WDATA0HardLink <= s_M2S_W_WDATA0;
-sM2S_W_WDATA1s_M2S_W_WDATA1HardLink <= s_M2S_W_WDATA1;
-sM2S_W_WDATA2s_M2S_W_WDATA2HardLink <= s_M2S_W_WDATA2;
-sM2S_W_WDATA3s_M2S_W_WDATA3HardLink <= s_M2S_W_WDATA3;
-sM2S_W_WSTRBs_M2S_W_WSTRBHardLink <= s_M2S_W_WSTRB;
-sM2S_W_WLASTs_M2S_W_WLASTHardLink <= s_M2S_W_WLAST;
-sM2S_W_WUSERs_M2S_W_WUSERHardLink <= s_M2S_W_WUSER;
-sM2S_W_WVALIDs_M2S_W_WVALIDHardLink <= s_M2S_W_WVALID;
-sM2S_B_BREADYs_M2S_B_BREADYHardLink <= s_M2S_B_BREADY;
-s_S2M_AR_ARREADY <= sS2M_AR_ARREADYs_S2M_AR_ARREADYHardLink;
-s_S2M_AW_AWREADY <= sS2M_AW_AWREADYs_S2M_AW_AWREADYHardLink;
-s_S2M_B_BID <= sS2M_B_BIDs_S2M_B_BIDHardLink;
-s_S2M_B_BRESP <= sS2M_B_BRESPs_S2M_B_BRESPHardLink;
-s_S2M_B_BUSER <= sS2M_B_BUSERs_S2M_B_BUSERHardLink;
-s_S2M_B_BVALID <= sS2M_B_BVALIDs_S2M_B_BVALIDHardLink;
-s_S2M_R_RID <= sS2M_R_RIDs_S2M_R_RIDHardLink;
-s_S2M_R_RDATA0 <= sS2M_R_RDATA0s_S2M_R_RDATA0HardLink;
-s_S2M_R_RDATA1 <= sS2M_R_RDATA1s_S2M_R_RDATA1HardLink;
-s_S2M_R_RDATA2 <= sS2M_R_RDATA2s_S2M_R_RDATA2HardLink;
-s_S2M_R_RDATA3 <= sS2M_R_RDATA3s_S2M_R_RDATA3HardLink;
-s_S2M_R_RRESP <= sS2M_R_RRESPs_S2M_R_RRESPHardLink;
-s_S2M_R_RLAST <= sS2M_R_RLASTs_S2M_R_RLASTHardLink;
-s_S2M_R_RUSER <= sS2M_R_RUSERs_S2M_R_RUSERHardLink;
-s_S2M_R_RVALID <= sS2M_R_RVALIDs_S2M_R_RVALIDHardLink;
-s_S2M_W_WREADY <= sS2M_W_WREADYs_S2M_W_WREADYHardLink;
-mS2M_AR_ARREADYm_S2M_AR_ARREADYHardLink <= m_S2M_AR_ARREADY;
-mS2M_AW_AWREADYm_S2M_AW_AWREADYHardLink <= m_S2M_AW_AWREADY;
-mS2M_B_BIDm_S2M_B_BIDHardLink <= m_S2M_B_BID;
-mS2M_B_BRESPm_S2M_B_BRESPHardLink <= m_S2M_B_BRESP;
-mS2M_B_BUSERm_S2M_B_BUSERHardLink <= m_S2M_B_BUSER;
-mS2M_B_BVALIDm_S2M_B_BVALIDHardLink <= m_S2M_B_BVALID;
-mS2M_R_RIDm_S2M_R_RIDHardLink <= m_S2M_R_RID;
-mS2M_R_RDATA0m_S2M_R_RDATA0HardLink <= m_S2M_R_RDATA0;
-mS2M_R_RDATA1m_S2M_R_RDATA1HardLink <= m_S2M_R_RDATA1;
-mS2M_R_RDATA2m_S2M_R_RDATA2HardLink <= m_S2M_R_RDATA2;
-mS2M_R_RDATA3m_S2M_R_RDATA3HardLink <= m_S2M_R_RDATA3;
-mS2M_R_RRESPm_S2M_R_RRESPHardLink <= m_S2M_R_RRESP;
-mS2M_R_RLASTm_S2M_R_RLASTHardLink <= m_S2M_R_RLAST;
-mS2M_R_RUSERm_S2M_R_RUSERHardLink <= m_S2M_R_RUSER;
-mS2M_R_RVALIDm_S2M_R_RVALIDHardLink <= m_S2M_R_RVALID;
-mS2M_W_WREADYm_S2M_W_WREADYHardLink <= m_S2M_W_WREADY;
-mAXADDRm_AXADDRHardLink <= m_AXADDR;
-mREm_REHardLink <= m_RE;
-mWEm_WEHardLink <= m_WE;
-mWDATA0m_WDATA0HardLink <= m_WDATA0;
-mWDATA1m_WDATA1HardLink <= m_WDATA1;
-mWDATA2m_WDATA2HardLink <= m_WDATA2;
-mWDATA3m_WDATA3HardLink <= m_WDATA3;
-mWSTRBm_WSTRBHardLink <= m_WSTRB;
-m_InvalidInputs <= mInvalidInputsm_InvalidInputsHardLink;
-m_OutACK <= mOutACKm_OutACKHardLink;
-m_RDATA0 <= mRDATA0m_RDATA0HardLink;
-m_RDATA1 <= mRDATA1m_RDATA1HardLink;
-m_RDATA2 <= mRDATA2m_RDATA2HardLink;
-m_RDATA3 <= mRDATA3m_RDATA3HardLink;
-m_M2S_AR_ARID <= mM2S_AR_ARIDm_M2S_AR_ARIDHardLink;
-m_M2S_AR_ARADDR <= mM2S_AR_ARADDRm_M2S_AR_ARADDRHardLink;
-m_M2S_AR_ARLEN <= mM2S_AR_ARLENm_M2S_AR_ARLENHardLink;
-m_M2S_AR_ARSIZE <= mM2S_AR_ARSIZEm_M2S_AR_ARSIZEHardLink;
-m_M2S_AR_ARBURST <= mM2S_AR_ARBURSTm_M2S_AR_ARBURSTHardLink;
-m_M2S_AR_ARLOCK <= mM2S_AR_ARLOCKm_M2S_AR_ARLOCKHardLink;
-m_M2S_AR_ARCACHE <= mM2S_AR_ARCACHEm_M2S_AR_ARCACHEHardLink;
-m_M2S_AR_ARPROT <= mM2S_AR_ARPROTm_M2S_AR_ARPROTHardLink;
-m_M2S_AR_ARQOS <= mM2S_AR_ARQOSm_M2S_AR_ARQOSHardLink;
-m_M2S_AR_ARREGION <= mM2S_AR_ARREGIONm_M2S_AR_ARREGIONHardLink;
-m_M2S_AR_ARUSER <= mM2S_AR_ARUSERm_M2S_AR_ARUSERHardLink;
-m_M2S_AR_ARVALID <= mM2S_AR_ARVALIDm_M2S_AR_ARVALIDHardLink;
-m_M2S_R_RREADY <= mM2S_R_RREADYm_M2S_R_RREADYHardLink;
-m_M2S_AW_AWID <= mM2S_AW_AWIDm_M2S_AW_AWIDHardLink;
-m_M2S_AW_AWADDR <= mM2S_AW_AWADDRm_M2S_AW_AWADDRHardLink;
-m_M2S_AW_AWLEN <= mM2S_AW_AWLENm_M2S_AW_AWLENHardLink;
-m_M2S_AW_AWSIZE <= mM2S_AW_AWSIZEm_M2S_AW_AWSIZEHardLink;
-m_M2S_AW_AWBURST <= mM2S_AW_AWBURSTm_M2S_AW_AWBURSTHardLink;
-m_M2S_AW_AWLOCK <= mM2S_AW_AWLOCKm_M2S_AW_AWLOCKHardLink;
-m_M2S_AW_AWCACHE <= mM2S_AW_AWCACHEm_M2S_AW_AWCACHEHardLink;
-m_M2S_AW_AWPROT <= mM2S_AW_AWPROTm_M2S_AW_AWPROTHardLink;
-m_M2S_AW_AWQOS <= mM2S_AW_AWQOSm_M2S_AW_AWQOSHardLink;
-m_M2S_AW_AWREGION <= mM2S_AW_AWREGIONm_M2S_AW_AWREGIONHardLink;
-m_M2S_AW_AWUSER <= mM2S_AW_AWUSERm_M2S_AW_AWUSERHardLink;
-m_M2S_AW_AWVALID <= mM2S_AW_AWVALIDm_M2S_AW_AWVALIDHardLink;
-m_M2S_W_WID <= mM2S_W_WIDm_M2S_W_WIDHardLink;
-m_M2S_W_WDATA0 <= mM2S_W_WDATA0m_M2S_W_WDATA0HardLink;
-m_M2S_W_WDATA1 <= mM2S_W_WDATA1m_M2S_W_WDATA1HardLink;
-m_M2S_W_WDATA2 <= mM2S_W_WDATA2m_M2S_W_WDATA2HardLink;
-m_M2S_W_WDATA3 <= mM2S_W_WDATA3m_M2S_W_WDATA3HardLink;
-m_M2S_W_WSTRB <= mM2S_W_WSTRBm_M2S_W_WSTRBHardLink;
-m_M2S_W_WLAST <= mM2S_W_WLASTm_M2S_W_WLASTHardLink;
-m_M2S_W_WUSER <= mM2S_W_WUSERm_M2S_W_WUSERHardLink;
-m_M2S_W_WVALID <= mM2S_W_WVALIDm_M2S_W_WVALIDHardLink;
-m_M2S_B_BREADY <= mM2S_B_BREADYm_M2S_B_BREADYHardLink;
-end process;
--- [BEGIN USER ARCHITECTURE]
--- [END USER ARCHITECTURE]
+S2M_AR_ARREADY => masterS2M_AR_ARREADYmaster_S2M_AR_ARREADYHardLink,
+S2M_AW_AWREADY => masterS2M_AW_AWREADYmaster_S2M_AW_AWREADYHardLink,
+S2M_B_BID => masterS2M_B_BIDmaster_S2M_B_BIDHardLink,
+S2M_B_BRESP => masterS2M_B_BRESPmaster_S2M_B_BRESPHardLink,
+S2M_B_BUSER => masterS2M_B_BUSERmaster_S2M_B_BUSERHardLink,
+S2M_B_BVALID => masterS2M_B_BVALIDmaster_S2M_B_BVALIDHardLink,
+S2M_R_RID => masterS2M_R_RIDmaster_S2M_R_RIDHardLink,
+S2M_R_RDATA0 => masterS2M_R_RDATA0master_S2M_R_RDATAHardLink,
+S2M_R_RDATA1 => masterS2M_R_RDATA1master_S2M_R_RDATAHardLink,
+S2M_R_RDATA2 => masterS2M_R_RDATA2master_S2M_R_RDATAHardLink,
+S2M_R_RDATA3 => masterS2M_R_RDATA3master_S2M_R_RDATAHardLink,
+S2M_R_RRESP => masterS2M_R_RRESPmaster_S2M_R_RRESPHardLink,
+S2M_R_RLAST => masterS2M_R_RLASTmaster_S2M_R_RLASTHardLink,
+S2M_R_RUSER => masterS2M_R_RUSERmaster_S2M_R_RUSERHardLink,
+S2M_R_RVALID => masterS2M_R_RVALIDmaster_S2M_R_RVALIDHardLink,
+S2M_W_WREADY => masterS2M_W_WREADYmaster_S2M_W_WREADYHardLink,
+ARADDR => masterARADDRmaster_ARADDRHardLink,
+RE => masterREmaster_REHardLink,
+AWADDR => masterAWADDRmaster_AWADDRHardLink,
+WE => masterWEmaster_WEHardLink,
+WSTRB => masterWSTRBmaster_WSTRBHardLink,
+WDATA0 => masterWDATA0master_WDATAHardLink,
+WDATA1 => masterWDATA1master_WDATAHardLink,
+WDATA2 => masterWDATA2master_WDATAHardLink,
+WDATA3 => masterWDATA3master_WDATAHardLink,
+RACK => masterRACKmaster_RACKHardLink,
+RDATA0 => masterRDATA0master_RDATAHardLink,
+RDATA1 => masterRDATA1master_RDATAHardLink,
+RDATA2 => masterRDATA2master_RDATAHardLink,
+RDATA3 => masterRDATA3master_RDATAHardLink,
+WACK => masterWACKmaster_WACKHardLink,
+M2S_AR_ARID => masterM2S_AR_ARIDmaster_M2S_AR_ARIDHardLink,
+M2S_AR_ARADDR => masterM2S_AR_ARADDRmaster_M2S_AR_ARADDRHardLink,
+M2S_AR_ARLEN => masterM2S_AR_ARLENmaster_M2S_AR_ARLENHardLink,
+M2S_AR_ARSIZE => masterM2S_AR_ARSIZEmaster_M2S_AR_ARSIZEHardLink,
+M2S_AR_ARBURST => masterM2S_AR_ARBURSTmaster_M2S_AR_ARBURSTHardLink,
+M2S_AR_ARLOCK => masterM2S_AR_ARLOCKmaster_M2S_AR_ARLOCKHardLink,
+M2S_AR_ARCACHE => masterM2S_AR_ARCACHEmaster_M2S_AR_ARCACHEHardLink,
+M2S_AR_ARPROT => masterM2S_AR_ARPROTmaster_M2S_AR_ARPROTHardLink,
+M2S_AR_ARQOS => masterM2S_AR_ARQOSmaster_M2S_AR_ARQOSHardLink,
+M2S_AR_ARREGION => masterM2S_AR_ARREGIONmaster_M2S_AR_ARREGIONHardLink,
+M2S_AR_ARUSER => masterM2S_AR_ARUSERmaster_M2S_AR_ARUSERHardLink,
+M2S_AR_ARVALID => masterM2S_AR_ARVALIDmaster_M2S_AR_ARVALIDHardLink,
+M2S_R_RREADY => masterM2S_R_RREADYmaster_M2S_R_RREADYHardLink,
+M2S_AW_AWID => masterM2S_AW_AWIDmaster_M2S_AW_AWIDHardLink,
+M2S_AW_AWADDR => masterM2S_AW_AWADDRmaster_M2S_AW_AWADDRHardLink,
+M2S_AW_AWLEN => masterM2S_AW_AWLENmaster_M2S_AW_AWLENHardLink,
+M2S_AW_AWSIZE => masterM2S_AW_AWSIZEmaster_M2S_AW_AWSIZEHardLink,
+M2S_AW_AWBURST => masterM2S_AW_AWBURSTmaster_M2S_AW_AWBURSTHardLink,
+M2S_AW_AWLOCK => masterM2S_AW_AWLOCKmaster_M2S_AW_AWLOCKHardLink,
+M2S_AW_AWCACHE => masterM2S_AW_AWCACHEmaster_M2S_AW_AWCACHEHardLink,
+M2S_AW_AWPROT => masterM2S_AW_AWPROTmaster_M2S_AW_AWPROTHardLink,
+M2S_AW_AWQOS => masterM2S_AW_AWQOSmaster_M2S_AW_AWQOSHardLink,
+M2S_AW_AWREGION => masterM2S_AW_AWREGIONmaster_M2S_AW_AWREGIONHardLink,
+M2S_AW_AWUSER => masterM2S_AW_AWUSERmaster_M2S_AW_AWUSERHardLink,
+M2S_AW_AWVALID => masterM2S_AW_AWVALIDmaster_M2S_AW_AWVALIDHardLink,
+M2S_W_WID => masterM2S_W_WIDmaster_M2S_W_WIDHardLink,
+M2S_W_WDATA0 => masterM2S_W_WDATA0master_M2S_W_WDATAHardLink,
+M2S_W_WDATA1 => masterM2S_W_WDATA1master_M2S_W_WDATAHardLink,
+M2S_W_WDATA2 => masterM2S_W_WDATA2master_M2S_W_WDATAHardLink,
+M2S_W_WDATA3 => masterM2S_W_WDATA3master_M2S_W_WDATAHardLink,
+M2S_W_WSTRB => masterM2S_W_WSTRBmaster_M2S_W_WSTRBHardLink,
+M2S_W_WLAST => masterM2S_W_WLASTmaster_M2S_W_WLASTHardLink,
+M2S_W_WUSER => masterM2S_W_WUSERmaster_M2S_W_WUSERHardLink,
+M2S_W_WVALID => masterM2S_W_WVALIDmaster_M2S_W_WVALIDHardLink,
+M2S_B_BREADY => masterM2S_B_BREADYmaster_M2S_B_BREADYHardLink
+	);
+	process (master_RACK, mem_S2M_R_RDATA, mem_S2M_R_RVALID, State_RACK, State_ReadData)
+	begin
+		for NextState_ReadData_Iterator in 0 to 3 loop
+			NextState_ReadData(NextState_ReadData_Iterator) <= State_ReadData(NextState_ReadData_Iterator);
+		end loop;
+		NextState_RACK <= State_RACK;
+		NextState_RACK <= master_RACK;
+		if mem_S2M_R_RVALID = '1' then
+			NextState_ReadData(0) <= mem_S2M_R_RDATA(0);
+			NextState_ReadData(1) <= mem_S2M_R_RDATA(1);
+			NextState_ReadData(2) <= mem_S2M_R_RDATA(2);
+			NextState_ReadData(3) <= mem_S2M_R_RDATA(3);
+		end if;
+	end process;
+	process (AXADDR, InData, Inputs_AXADDR, Inputs_InData, Inputs_MRE, Inputs_MWE, Inputs_WSTRB, master_ARADDR, master_AWADDR, master_M2S_AR_ARADDR, master_M2S_AR_ARBURST, master_M2S_AR_ARCACHE, master_M2S_AR_ARID, master_M2S_AR_ARLEN, master_M2S_AR_ARLOCK, master_M2S_AR_ARPROT, master_M2S_AR_ARQOS, master_M2S_AR_ARREGION, master_M2S_AR_ARSIZE, master_M2S_AR_ARUSER, master_M2S_AR_ARVALID, master_M2S_AW_AWADDR, master_M2S_AW_AWBURST, master_M2S_AW_AWCACHE, master_M2S_AW_AWID, master_M2S_AW_AWLEN, master_M2S_AW_AWLOCK, master_M2S_AW_AWPROT, master_M2S_AW_AWQOS, master_M2S_AW_AWREGION, master_M2S_AW_AWSIZE, master_M2S_AW_AWUSER, master_M2S_AW_AWVALID, master_M2S_B_BREADY, master_M2S_R_RREADY, master_M2S_W_WDATA, master_M2S_W_WID, master_M2S_W_WLAST, master_M2S_W_WSTRB, master_M2S_W_WUSER, master_M2S_W_WVALID, master_RE, master_S2M_AR_ARREADY, master_S2M_AW_AWREADY, master_S2M_B_BID, master_S2M_B_BRESP, master_S2M_B_BUSER, master_S2M_B_BVALID, master_S2M_R_RDATA, master_S2M_R_RID, master_S2M_R_RLAST, master_S2M_R_RRESP, master_S2M_R_RUSER, master_S2M_R_RVALID, master_S2M_W_WREADY, master_WACK, master_WDATA, master_WE, master_WSTRB, masterM2S_AR_ARADDRmaster_M2S_AR_ARADDRHardLink, masterM2S_AR_ARBURSTmaster_M2S_AR_ARBURSTHardLink, masterM2S_AR_ARCACHEmaster_M2S_AR_ARCACHEHardLink, masterM2S_AR_ARIDmaster_M2S_AR_ARIDHardLink, masterM2S_AR_ARLENmaster_M2S_AR_ARLENHardLink, masterM2S_AR_ARLOCKmaster_M2S_AR_ARLOCKHardLink, masterM2S_AR_ARPROTmaster_M2S_AR_ARPROTHardLink, masterM2S_AR_ARQOSmaster_M2S_AR_ARQOSHardLink, masterM2S_AR_ARREGIONmaster_M2S_AR_ARREGIONHardLink, masterM2S_AR_ARSIZEmaster_M2S_AR_ARSIZEHardLink, masterM2S_AR_ARUSERmaster_M2S_AR_ARUSERHardLink, masterM2S_AR_ARVALIDmaster_M2S_AR_ARVALIDHardLink, masterM2S_AW_AWADDRmaster_M2S_AW_AWADDRHardLink, masterM2S_AW_AWBURSTmaster_M2S_AW_AWBURSTHardLink, masterM2S_AW_AWCACHEmaster_M2S_AW_AWCACHEHardLink, masterM2S_AW_AWIDmaster_M2S_AW_AWIDHardLink, masterM2S_AW_AWLENmaster_M2S_AW_AWLENHardLink, masterM2S_AW_AWLOCKmaster_M2S_AW_AWLOCKHardLink, masterM2S_AW_AWPROTmaster_M2S_AW_AWPROTHardLink, masterM2S_AW_AWQOSmaster_M2S_AW_AWQOSHardLink, masterM2S_AW_AWREGIONmaster_M2S_AW_AWREGIONHardLink, masterM2S_AW_AWSIZEmaster_M2S_AW_AWSIZEHardLink, masterM2S_AW_AWUSERmaster_M2S_AW_AWUSERHardLink, masterM2S_AW_AWVALIDmaster_M2S_AW_AWVALIDHardLink, masterM2S_B_BREADYmaster_M2S_B_BREADYHardLink, masterM2S_R_RREADYmaster_M2S_R_RREADYHardLink, masterM2S_W_WDATA0master_M2S_W_WDATAHardLink, masterM2S_W_WDATA1master_M2S_W_WDATAHardLink, masterM2S_W_WDATA2master_M2S_W_WDATAHardLink, masterM2S_W_WDATA3master_M2S_W_WDATAHardLink, masterM2S_W_WIDmaster_M2S_W_WIDHardLink, masterM2S_W_WLASTmaster_M2S_W_WLASTHardLink, masterM2S_W_WSTRBmaster_M2S_W_WSTRBHardLink, masterM2S_W_WUSERmaster_M2S_W_WUSERHardLink, masterM2S_W_WVALIDmaster_M2S_W_WVALIDHardLink, masterRACKmaster_RACKHardLink, masterRDATA0master_RDATAHardLink, masterRDATA1master_RDATAHardLink, masterRDATA2master_RDATAHardLink, masterRDATA3master_RDATAHardLink, masterWACKmaster_WACKHardLink, mem_M2S_AR_ARADDR, mem_M2S_AR_ARBURST, mem_M2S_AR_ARCACHE, mem_M2S_AR_ARID, mem_M2S_AR_ARLEN, mem_M2S_AR_ARLOCK, mem_M2S_AR_ARPROT, mem_M2S_AR_ARQOS, mem_M2S_AR_ARREGION, mem_M2S_AR_ARSIZE, mem_M2S_AR_ARUSER, mem_M2S_AR_ARVALID, mem_M2S_AW_AWADDR, mem_M2S_AW_AWBURST, mem_M2S_AW_AWCACHE, mem_M2S_AW_AWID, mem_M2S_AW_AWLEN, mem_M2S_AW_AWLOCK, mem_M2S_AW_AWPROT, mem_M2S_AW_AWQOS, mem_M2S_AW_AWREGION, mem_M2S_AW_AWSIZE, mem_M2S_AW_AWUSER, mem_M2S_AW_AWVALID, mem_M2S_B_BREADY, mem_M2S_R_RREADY, mem_M2S_W_WDATA, mem_M2S_W_WID, mem_M2S_W_WLAST, mem_M2S_W_WSTRB, mem_M2S_W_WUSER, mem_M2S_W_WVALID, mem_S2M_AR_ARREADY, mem_S2M_AW_AWREADY, mem_S2M_B_BID, mem_S2M_B_BRESP, mem_S2M_B_BUSER, mem_S2M_B_BVALID, mem_S2M_R_RDATA, mem_S2M_R_RID, mem_S2M_R_RLAST, mem_S2M_R_RRESP, mem_S2M_R_RUSER, mem_S2M_R_RVALID, mem_S2M_W_WREADY, memS2M_AR_ARREADYmem_S2M_AR_ARREADYHardLink, memS2M_AW_AWREADYmem_S2M_AW_AWREADYHardLink, memS2M_B_BIDmem_S2M_B_BIDHardLink, memS2M_B_BRESPmem_S2M_B_BRESPHardLink, memS2M_B_BUSERmem_S2M_B_BUSERHardLink, memS2M_B_BVALIDmem_S2M_B_BVALIDHardLink, memS2M_R_RDATA0mem_S2M_R_RDATAHardLink, memS2M_R_RDATA1mem_S2M_R_RDATAHardLink, memS2M_R_RDATA2mem_S2M_R_RDATAHardLink, memS2M_R_RDATA3mem_S2M_R_RDATAHardLink, memS2M_R_RIDmem_S2M_R_RIDHardLink, memS2M_R_RLASTmem_S2M_R_RLASTHardLink, memS2M_R_RRESPmem_S2M_R_RRESPHardLink, memS2M_R_RUSERmem_S2M_R_RUSERHardLink, memS2M_R_RVALIDmem_S2M_R_RVALIDHardLink, memS2M_W_WREADYmem_S2M_W_WREADYHardLink, MRE, MWE, State_RACK, State_ReadData, WSTRB)
+	begin
+		Inputs_AXADDR <= AXADDR;
+		Inputs_InData <= InData;
+		Inputs_MWE <= MWE;
+		Inputs_WSTRB <= WSTRB;
+		Inputs_MRE <= MRE;
+		mem_M2S_AR_ARID <= master_M2S_AR_ARID;
+		mem_M2S_AR_ARADDR <= master_M2S_AR_ARADDR;
+		mem_M2S_AR_ARLEN <= master_M2S_AR_ARLEN;
+		mem_M2S_AR_ARSIZE <= master_M2S_AR_ARSIZE;
+		mem_M2S_AR_ARBURST <= master_M2S_AR_ARBURST;
+		mem_M2S_AR_ARLOCK <= master_M2S_AR_ARLOCK;
+		mem_M2S_AR_ARCACHE <= master_M2S_AR_ARCACHE;
+		mem_M2S_AR_ARPROT <= master_M2S_AR_ARPROT;
+		mem_M2S_AR_ARQOS <= master_M2S_AR_ARQOS;
+		mem_M2S_AR_ARREGION <= master_M2S_AR_ARREGION;
+		mem_M2S_AR_ARUSER <= master_M2S_AR_ARUSER;
+		mem_M2S_AR_ARVALID <= master_M2S_AR_ARVALID;
+		mem_M2S_R_RREADY <= master_M2S_R_RREADY;
+		mem_M2S_AW_AWID <= master_M2S_AW_AWID;
+		mem_M2S_AW_AWADDR <= master_M2S_AW_AWADDR;
+		mem_M2S_AW_AWLEN <= master_M2S_AW_AWLEN;
+		mem_M2S_AW_AWSIZE <= master_M2S_AW_AWSIZE;
+		mem_M2S_AW_AWBURST <= master_M2S_AW_AWBURST;
+		mem_M2S_AW_AWLOCK <= master_M2S_AW_AWLOCK;
+		mem_M2S_AW_AWCACHE <= master_M2S_AW_AWCACHE;
+		mem_M2S_AW_AWPROT <= master_M2S_AW_AWPROT;
+		mem_M2S_AW_AWQOS <= master_M2S_AW_AWQOS;
+		mem_M2S_AW_AWREGION <= master_M2S_AW_AWREGION;
+		mem_M2S_AW_AWUSER <= master_M2S_AW_AWUSER;
+		mem_M2S_AW_AWVALID <= master_M2S_AW_AWVALID;
+		mem_M2S_W_WID <= master_M2S_W_WID;
+		mem_M2S_W_WDATA(0) <= master_M2S_W_WDATA(0);
+		mem_M2S_W_WDATA(1) <= master_M2S_W_WDATA(1);
+		mem_M2S_W_WDATA(2) <= master_M2S_W_WDATA(2);
+		mem_M2S_W_WDATA(3) <= master_M2S_W_WDATA(3);
+		mem_M2S_W_WSTRB <= master_M2S_W_WSTRB;
+		mem_M2S_W_WLAST <= master_M2S_W_WLAST;
+		mem_M2S_W_WUSER <= master_M2S_W_WUSER;
+		mem_M2S_W_WVALID <= master_M2S_W_WVALID;
+		mem_M2S_B_BREADY <= master_M2S_B_BREADY;
+		master_S2M_AR_ARREADY <= mem_S2M_AR_ARREADY;
+		master_S2M_AW_AWREADY <= mem_S2M_AW_AWREADY;
+		master_S2M_B_BID <= mem_S2M_B_BID;
+		master_S2M_B_BRESP <= mem_S2M_B_BRESP;
+		master_S2M_B_BUSER <= mem_S2M_B_BUSER;
+		master_S2M_B_BVALID <= mem_S2M_B_BVALID;
+		master_S2M_R_RID <= mem_S2M_R_RID;
+		master_S2M_R_RDATA(0) <= mem_S2M_R_RDATA(0);
+		master_S2M_R_RDATA(1) <= mem_S2M_R_RDATA(1);
+		master_S2M_R_RDATA(2) <= mem_S2M_R_RDATA(2);
+		master_S2M_R_RDATA(3) <= mem_S2M_R_RDATA(3);
+		master_S2M_R_RRESP <= mem_S2M_R_RRESP;
+		master_S2M_R_RLAST <= mem_S2M_R_RLAST;
+		master_S2M_R_RUSER <= mem_S2M_R_RUSER;
+		master_S2M_R_RVALID <= mem_S2M_R_RVALID;
+		master_S2M_W_WREADY <= mem_S2M_W_WREADY;
+		master_ARADDR <= Inputs_AXADDR;
+		master_RE <= Inputs_MRE;
+		master_AWADDR <= Inputs_AXADDR;
+		master_WE <= Inputs_MWE;
+		master_WSTRB <= Inputs_WSTRB;
+		master_WDATA(0) <= Inputs_InData(7 downto 0);
+		master_WDATA(1) <= Inputs_InData(15 downto 8);
+		master_WDATA(2) <= Inputs_InData(23 downto 16);
+		master_WDATA(3) <= Inputs_InData(31 downto 24);
+		ReadData(31 downto 24) <= State_ReadData(3);
+		ReadData(23 downto 16) <= State_ReadData(2);
+		ReadData(15 downto 8) <= State_ReadData(1);
+		ReadData(7 downto 0) <= State_ReadData(0);
+		RVALID <= mem_S2M_R_RVALID;
+		BVALID <= mem_S2M_B_BVALID;
+		RACK <= State_RACK;
+		WACK <= master_WACK;
+		memM2S_AR_ARIDmem_M2S_AR_ARIDHardLink <= mem_M2S_AR_ARID;
+		memM2S_AR_ARADDRmem_M2S_AR_ARADDRHardLink <= mem_M2S_AR_ARADDR;
+		memM2S_AR_ARLENmem_M2S_AR_ARLENHardLink <= mem_M2S_AR_ARLEN;
+		memM2S_AR_ARSIZEmem_M2S_AR_ARSIZEHardLink <= mem_M2S_AR_ARSIZE;
+		memM2S_AR_ARBURSTmem_M2S_AR_ARBURSTHardLink <= mem_M2S_AR_ARBURST;
+		memM2S_AR_ARLOCKmem_M2S_AR_ARLOCKHardLink <= mem_M2S_AR_ARLOCK;
+		memM2S_AR_ARCACHEmem_M2S_AR_ARCACHEHardLink <= mem_M2S_AR_ARCACHE;
+		memM2S_AR_ARPROTmem_M2S_AR_ARPROTHardLink <= mem_M2S_AR_ARPROT;
+		memM2S_AR_ARQOSmem_M2S_AR_ARQOSHardLink <= mem_M2S_AR_ARQOS;
+		memM2S_AR_ARREGIONmem_M2S_AR_ARREGIONHardLink <= mem_M2S_AR_ARREGION;
+		memM2S_AR_ARUSERmem_M2S_AR_ARUSERHardLink <= mem_M2S_AR_ARUSER;
+		memM2S_AR_ARVALIDmem_M2S_AR_ARVALIDHardLink <= mem_M2S_AR_ARVALID;
+		memM2S_R_RREADYmem_M2S_R_RREADYHardLink <= mem_M2S_R_RREADY;
+		memM2S_AW_AWIDmem_M2S_AW_AWIDHardLink <= mem_M2S_AW_AWID;
+		memM2S_AW_AWADDRmem_M2S_AW_AWADDRHardLink <= mem_M2S_AW_AWADDR;
+		memM2S_AW_AWLENmem_M2S_AW_AWLENHardLink <= mem_M2S_AW_AWLEN;
+		memM2S_AW_AWSIZEmem_M2S_AW_AWSIZEHardLink <= mem_M2S_AW_AWSIZE;
+		memM2S_AW_AWBURSTmem_M2S_AW_AWBURSTHardLink <= mem_M2S_AW_AWBURST;
+		memM2S_AW_AWLOCKmem_M2S_AW_AWLOCKHardLink <= mem_M2S_AW_AWLOCK;
+		memM2S_AW_AWCACHEmem_M2S_AW_AWCACHEHardLink <= mem_M2S_AW_AWCACHE;
+		memM2S_AW_AWPROTmem_M2S_AW_AWPROTHardLink <= mem_M2S_AW_AWPROT;
+		memM2S_AW_AWQOSmem_M2S_AW_AWQOSHardLink <= mem_M2S_AW_AWQOS;
+		memM2S_AW_AWREGIONmem_M2S_AW_AWREGIONHardLink <= mem_M2S_AW_AWREGION;
+		memM2S_AW_AWUSERmem_M2S_AW_AWUSERHardLink <= mem_M2S_AW_AWUSER;
+		memM2S_AW_AWVALIDmem_M2S_AW_AWVALIDHardLink <= mem_M2S_AW_AWVALID;
+		memM2S_W_WIDmem_M2S_W_WIDHardLink <= mem_M2S_W_WID;
+		memM2S_W_WDATA0mem_M2S_W_WDATAHardLink <= mem_M2S_W_WDATA(0);
+		memM2S_W_WDATA1mem_M2S_W_WDATAHardLink <= mem_M2S_W_WDATA(1);
+		memM2S_W_WDATA2mem_M2S_W_WDATAHardLink <= mem_M2S_W_WDATA(2);
+		memM2S_W_WDATA3mem_M2S_W_WDATAHardLink <= mem_M2S_W_WDATA(3);
+		memM2S_W_WSTRBmem_M2S_W_WSTRBHardLink <= mem_M2S_W_WSTRB;
+		memM2S_W_WLASTmem_M2S_W_WLASTHardLink <= mem_M2S_W_WLAST;
+		memM2S_W_WUSERmem_M2S_W_WUSERHardLink <= mem_M2S_W_WUSER;
+		memM2S_W_WVALIDmem_M2S_W_WVALIDHardLink <= mem_M2S_W_WVALID;
+		memM2S_B_BREADYmem_M2S_B_BREADYHardLink <= mem_M2S_B_BREADY;
+		mem_S2M_AR_ARREADY <= memS2M_AR_ARREADYmem_S2M_AR_ARREADYHardLink;
+		mem_S2M_AW_AWREADY <= memS2M_AW_AWREADYmem_S2M_AW_AWREADYHardLink;
+		mem_S2M_B_BID <= memS2M_B_BIDmem_S2M_B_BIDHardLink;
+		mem_S2M_B_BRESP <= memS2M_B_BRESPmem_S2M_B_BRESPHardLink;
+		mem_S2M_B_BUSER <= memS2M_B_BUSERmem_S2M_B_BUSERHardLink;
+		mem_S2M_B_BVALID <= memS2M_B_BVALIDmem_S2M_B_BVALIDHardLink;
+		mem_S2M_R_RID <= memS2M_R_RIDmem_S2M_R_RIDHardLink;
+		mem_S2M_R_RDATA(0) <= memS2M_R_RDATA0mem_S2M_R_RDATAHardLink;
+		mem_S2M_R_RDATA(1) <= memS2M_R_RDATA1mem_S2M_R_RDATAHardLink;
+		mem_S2M_R_RDATA(2) <= memS2M_R_RDATA2mem_S2M_R_RDATAHardLink;
+		mem_S2M_R_RDATA(3) <= memS2M_R_RDATA3mem_S2M_R_RDATAHardLink;
+		mem_S2M_R_RRESP <= memS2M_R_RRESPmem_S2M_R_RRESPHardLink;
+		mem_S2M_R_RLAST <= memS2M_R_RLASTmem_S2M_R_RLASTHardLink;
+		mem_S2M_R_RUSER <= memS2M_R_RUSERmem_S2M_R_RUSERHardLink;
+		mem_S2M_R_RVALID <= memS2M_R_RVALIDmem_S2M_R_RVALIDHardLink;
+		mem_S2M_W_WREADY <= memS2M_W_WREADYmem_S2M_W_WREADYHardLink;
+		masterS2M_AR_ARREADYmaster_S2M_AR_ARREADYHardLink <= master_S2M_AR_ARREADY;
+		masterS2M_AW_AWREADYmaster_S2M_AW_AWREADYHardLink <= master_S2M_AW_AWREADY;
+		masterS2M_B_BIDmaster_S2M_B_BIDHardLink <= master_S2M_B_BID;
+		masterS2M_B_BRESPmaster_S2M_B_BRESPHardLink <= master_S2M_B_BRESP;
+		masterS2M_B_BUSERmaster_S2M_B_BUSERHardLink <= master_S2M_B_BUSER;
+		masterS2M_B_BVALIDmaster_S2M_B_BVALIDHardLink <= master_S2M_B_BVALID;
+		masterS2M_R_RIDmaster_S2M_R_RIDHardLink <= master_S2M_R_RID;
+		masterS2M_R_RDATA0master_S2M_R_RDATAHardLink <= master_S2M_R_RDATA(0);
+		masterS2M_R_RDATA1master_S2M_R_RDATAHardLink <= master_S2M_R_RDATA(1);
+		masterS2M_R_RDATA2master_S2M_R_RDATAHardLink <= master_S2M_R_RDATA(2);
+		masterS2M_R_RDATA3master_S2M_R_RDATAHardLink <= master_S2M_R_RDATA(3);
+		masterS2M_R_RRESPmaster_S2M_R_RRESPHardLink <= master_S2M_R_RRESP;
+		masterS2M_R_RLASTmaster_S2M_R_RLASTHardLink <= master_S2M_R_RLAST;
+		masterS2M_R_RUSERmaster_S2M_R_RUSERHardLink <= master_S2M_R_RUSER;
+		masterS2M_R_RVALIDmaster_S2M_R_RVALIDHardLink <= master_S2M_R_RVALID;
+		masterS2M_W_WREADYmaster_S2M_W_WREADYHardLink <= master_S2M_W_WREADY;
+		masterARADDRmaster_ARADDRHardLink <= master_ARADDR;
+		masterREmaster_REHardLink <= master_RE;
+		masterAWADDRmaster_AWADDRHardLink <= master_AWADDR;
+		masterWEmaster_WEHardLink <= master_WE;
+		masterWSTRBmaster_WSTRBHardLink <= master_WSTRB;
+		masterWDATA0master_WDATAHardLink <= master_WDATA(0);
+		masterWDATA1master_WDATAHardLink <= master_WDATA(1);
+		masterWDATA2master_WDATAHardLink <= master_WDATA(2);
+		masterWDATA3master_WDATAHardLink <= master_WDATA(3);
+		master_RACK <= masterRACKmaster_RACKHardLink;
+		master_RDATA(0) <= masterRDATA0master_RDATAHardLink;
+		master_RDATA(1) <= masterRDATA1master_RDATAHardLink;
+		master_RDATA(2) <= masterRDATA2master_RDATAHardLink;
+		master_RDATA(3) <= masterRDATA3master_RDATAHardLink;
+		master_WACK <= masterWACKmaster_WACKHardLink;
+		master_M2S_AR_ARID <= masterM2S_AR_ARIDmaster_M2S_AR_ARIDHardLink;
+		master_M2S_AR_ARADDR <= masterM2S_AR_ARADDRmaster_M2S_AR_ARADDRHardLink;
+		master_M2S_AR_ARLEN <= masterM2S_AR_ARLENmaster_M2S_AR_ARLENHardLink;
+		master_M2S_AR_ARSIZE <= masterM2S_AR_ARSIZEmaster_M2S_AR_ARSIZEHardLink;
+		master_M2S_AR_ARBURST <= masterM2S_AR_ARBURSTmaster_M2S_AR_ARBURSTHardLink;
+		master_M2S_AR_ARLOCK <= masterM2S_AR_ARLOCKmaster_M2S_AR_ARLOCKHardLink;
+		master_M2S_AR_ARCACHE <= masterM2S_AR_ARCACHEmaster_M2S_AR_ARCACHEHardLink;
+		master_M2S_AR_ARPROT <= masterM2S_AR_ARPROTmaster_M2S_AR_ARPROTHardLink;
+		master_M2S_AR_ARQOS <= masterM2S_AR_ARQOSmaster_M2S_AR_ARQOSHardLink;
+		master_M2S_AR_ARREGION <= masterM2S_AR_ARREGIONmaster_M2S_AR_ARREGIONHardLink;
+		master_M2S_AR_ARUSER <= masterM2S_AR_ARUSERmaster_M2S_AR_ARUSERHardLink;
+		master_M2S_AR_ARVALID <= masterM2S_AR_ARVALIDmaster_M2S_AR_ARVALIDHardLink;
+		master_M2S_R_RREADY <= masterM2S_R_RREADYmaster_M2S_R_RREADYHardLink;
+		master_M2S_AW_AWID <= masterM2S_AW_AWIDmaster_M2S_AW_AWIDHardLink;
+		master_M2S_AW_AWADDR <= masterM2S_AW_AWADDRmaster_M2S_AW_AWADDRHardLink;
+		master_M2S_AW_AWLEN <= masterM2S_AW_AWLENmaster_M2S_AW_AWLENHardLink;
+		master_M2S_AW_AWSIZE <= masterM2S_AW_AWSIZEmaster_M2S_AW_AWSIZEHardLink;
+		master_M2S_AW_AWBURST <= masterM2S_AW_AWBURSTmaster_M2S_AW_AWBURSTHardLink;
+		master_M2S_AW_AWLOCK <= masterM2S_AW_AWLOCKmaster_M2S_AW_AWLOCKHardLink;
+		master_M2S_AW_AWCACHE <= masterM2S_AW_AWCACHEmaster_M2S_AW_AWCACHEHardLink;
+		master_M2S_AW_AWPROT <= masterM2S_AW_AWPROTmaster_M2S_AW_AWPROTHardLink;
+		master_M2S_AW_AWQOS <= masterM2S_AW_AWQOSmaster_M2S_AW_AWQOSHardLink;
+		master_M2S_AW_AWREGION <= masterM2S_AW_AWREGIONmaster_M2S_AW_AWREGIONHardLink;
+		master_M2S_AW_AWUSER <= masterM2S_AW_AWUSERmaster_M2S_AW_AWUSERHardLink;
+		master_M2S_AW_AWVALID <= masterM2S_AW_AWVALIDmaster_M2S_AW_AWVALIDHardLink;
+		master_M2S_W_WID <= masterM2S_W_WIDmaster_M2S_W_WIDHardLink;
+		master_M2S_W_WDATA(0) <= masterM2S_W_WDATA0master_M2S_W_WDATAHardLink;
+		master_M2S_W_WDATA(1) <= masterM2S_W_WDATA1master_M2S_W_WDATAHardLink;
+		master_M2S_W_WDATA(2) <= masterM2S_W_WDATA2master_M2S_W_WDATAHardLink;
+		master_M2S_W_WDATA(3) <= masterM2S_W_WDATA3master_M2S_W_WDATAHardLink;
+		master_M2S_W_WSTRB <= masterM2S_W_WSTRBmaster_M2S_W_WSTRBHardLink;
+		master_M2S_W_WLAST <= masterM2S_W_WLASTmaster_M2S_W_WLASTHardLink;
+		master_M2S_W_WUSER <= masterM2S_W_WUSERmaster_M2S_W_WUSERHardLink;
+		master_M2S_W_WVALID <= masterM2S_W_WVALIDmaster_M2S_W_WVALIDHardLink;
+		master_M2S_B_BREADY <= masterM2S_B_BREADYmaster_M2S_B_BREADYHardLink;
+	end process;
+	-- [BEGIN USER ARCHITECTURE]
+	-- [END USER ARCHITECTURE]
 end architecture;

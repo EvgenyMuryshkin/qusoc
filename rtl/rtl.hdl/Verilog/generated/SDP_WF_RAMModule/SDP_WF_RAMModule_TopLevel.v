@@ -59,7 +59,7 @@ module SDP_WF_RAMModule_TopLevel
 		begin
 			State_Buff[Inputs_WriteAddress] <= Inputs_WriteData;
 		end
-		Inputs_ReadAddress_reg <= Inputs_ReadAddress;
+		Inputs_ReadAddress_reg <= Inputs_ReadAddress[7:0];
 	end
 	assign State_ReadData = State_Buff[Inputs_ReadAddress_reg];
 	assign Inputs_ReadAddress = ReadAddress;

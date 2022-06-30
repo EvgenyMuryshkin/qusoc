@@ -256,6 +256,7 @@ namespace Quokka.RTL
                 }
             }
         }
+
         public override void Commit()
         {
             base.Commit();

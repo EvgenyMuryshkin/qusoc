@@ -275,9 +275,16 @@ namespace RTL.Modules
         [TestMethod]
         public void StallControlPipelineModuleTest_StallPrev()
         {
-            var t = new RTLSimulator<StallControlPipelineModule, StallControlInputs>();
-            t.TraceToVCD(VCDOutputPath());
-            Action<StallControlOutput> assert = (expected) => Assert.IsTrue(DeepDiff.DeepEquals(expected, t.TopLevel.outResult));
+            var t = new RTLSimulator<StallControlPipelineModule, StallControlInputs>(VCDOutputPath());
+
+            Action<StallControlOutput> assert = (expected) =>
+            {
+                var compare = DeepDiff.DeepCompare(expected, t.TopLevel.outResult);
+                if (compare != null)
+                {
+                    Assert.Fail($"{string.Join(".", compare.Path.Select(p => p.Name))}: Expecting {compare.lhs}, Actual {compare.rhs}. {compare.Messages.ToCSV()}");
+                }
+            };
 
             t.ClockCycle(new StallControlInputs() { inProcessed = true, inData = 3, inReady = true });
             assert(new StallControlOutput());

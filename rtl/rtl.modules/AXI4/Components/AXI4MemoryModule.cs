@@ -28,12 +28,20 @@ namespace rtl.modules
         public AXI4MemoryModuleState(axiSize size, int depth) 
         {
             buff = Enumerable.Range(0, depth).Select(i => new byte[AXI4Tools.Bytes(size)]).ToArray();
-            read = new byte[AXI4Tools.Bytes(size)];
+            rdata = new byte[AXI4Tools.Bytes(size)];
+            wdata = new byte[AXI4Tools.Bytes(size)];
+            wstrb = new RTLBitArray().Resized(AXI4Tools.Bytes(size));
         }
 
         public byte[][] buff;
-        public byte[] read;
-        public bool rValid;
+        public byte[] rdata;
+        public uint raddr;
+
+        public bool waddrSet;
+        public bool wdataSet;
+        public uint waddr;
+        public byte[] wdata;
+        public RTLBitArray wstrb;
     }
 
     public class AXI4MemoryModule : RTLSynchronousModule<AXI4MemoryModuleInputs, AXI4MemoryModuleState>
@@ -53,30 +61,78 @@ namespace rtl.modules
         */
         public AXI4_S2M S2M => axiSlave.S2M;
 
+        bool internalSameTxWrite => Inputs.M2S.AW.AWVALID && Inputs.M2S.W.WVALID;
+        bool internalDelayedTxWrite => State.waddrSet && State.wdataSet;
+        bool internalWE => internalSameTxWrite || internalDelayedTxWrite;
+
+        RTLBitArray internalWSTRB =>
+            internalSameTxWrite
+            ? axiSlave.outWSTRB
+            : State.wstrb;
+
+        uint internalWADDR =>
+            internalSameTxWrite
+            ? axiSlave.outAWADDR
+            : State.waddr;
+
+        byte[] internalWDATA =>
+            internalSameTxWrite
+            ? axiSlave.outWDATA
+            : State.wdata;
+
+        uint internalRADDR =>
+            axiSlave.outARREADYConfirming
+            ? axiSlave.outARADDR
+            : State.raddr;
+
         protected override void OnSchedule(Func<AXI4MemoryModuleInputs> inputsFactory)
         {
             base.OnSchedule(inputsFactory);
             axiSlave.Schedule(() => new AXI4NonBufferedSlaveModuleInputs()
             {
                 M2S = Inputs.M2S,
-                RACK = State.rValid,
-                RDATA = State.read,
-                WACK = true
+                inRDATA = State.rdata,
+                inARREADY = true,
+                inRVALID = true,
+                inAWREADY = true,
+                inWREADY = true,
+                inBVALID = true,
             });
         }
+
         protected override void OnStage()
         {
-            if (axiSlave.WVALID)
+            if (axiSlave.outAWREADYConfirming)
             {
-                foreach (var w in range(AXI4Tools.Bytes(size)))
-                {
-                    if (axiSlave.WSTRB[w])
-                        NextState.buff[axiSlave.AWADDR][w] = axiSlave.WDATA[w];
-                }
+                NextState.waddr = axiSlave.outAWADDR;
+                NextState.waddrSet = true;
             }
 
-            NextState.rValid = axiSlave.RVALID;
-            NextState.read = NextState.buff[axiSlave.ARADDR];
+            if (axiSlave.outWREADYConfirming)
+            {
+                NextState.wdata = axiSlave.outWDATA;
+                NextState.wstrb = axiSlave.outWSTRB;
+                NextState.wdataSet = true;
+            }
+
+            if (axiSlave.outWriteTXCompleting)
+            {
+                NextState.waddrSet = false;
+                NextState.wdataSet = false;
+            }
+
+            foreach (var w in range(AXI4Tools.Bytes(size)))
+            {
+                if (internalWE && internalWSTRB[w])
+                    NextState.buff[internalWADDR][w] = internalWDATA[w];
+            }
+
+            if (axiSlave.outARREADYConfirming)
+            {
+                NextState.raddr = axiSlave.outARADDR;
+            }
+
+            NextState.rdata = NextState.buff[internalRADDR];
         }
     }
 }

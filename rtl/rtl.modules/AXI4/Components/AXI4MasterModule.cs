@@ -11,32 +11,35 @@ namespace rtl.modules
             S2M = new AXI4_S2M(size);
             WDATA = new byte[AXI4Tools.Bytes(size)];
             WSTRB = new RTLBitArray().Resized(AXI4Tools.Bytes(size));
+            ARADDR = new RTLBitArray().Resized(AXI4Tools.Bits(size));
+            AWADDR = new RTLBitArray().Resized(AXI4Tools.Bits(size));
         }
 
         public AXI4_S2M S2M;
 
-        public uint AXADDR = 0;
+        public RTLBitArray ARADDR;
         public bool RE = false;
+
+        public RTLBitArray AWADDR;
         public bool WE = false;
-        public byte[] WDATA = null;
-        public RTLBitArray WSTRB = null;
+        public RTLBitArray WSTRB;
+
+        public byte[] WDATA;
     }
 
     public class AXI4MasterModuleState
     {
         public AXI4MasterModuleState() { }
-        public AXI4MasterModuleState(axiSize size)
-        {
-            ARDATA = new byte[AXI4Tools.Bytes(size)];
-            AWDATA = new byte[AXI4Tools.Bytes(size)];
-            WSTRB = new RTLBitArray().Resized(AXI4Tools.Bytes(size));
-        }
 
-        public axiMasterFSM fsm = axiMasterFSM.RESET;
-        public uint AXADDR;
-        public byte[] ARDATA;
-        public byte[] AWDATA;
-        public RTLBitArray WSTRB;
+        public axiMasterReadFSM readFSM = axiMasterReadFSM.RESET;
+        public axiMasterWriteFSM writeFSM = axiMasterWriteFSM.RESET;
+
+        // read channel
+        public bool ARREADYACK;
+
+        // write channel
+        public bool AWREADYACK;
+        public bool WREADYACK;
     }
 
     public class AXI4MasterModule : RTLSynchronousModule<AXI4MasterModuleInputs, AXI4MasterModuleState>
@@ -47,90 +50,116 @@ namespace rtl.modules
         {
             this.size = size;
             InitInputs(new AXI4MasterModuleInputs(size));
-            InitState(new AXI4MasterModuleState(size));
+            InitState(new AXI4MasterModuleState());
         }
 
-        bool internalInvalidInputs => Inputs.RE & Inputs.WE;
-        public bool InvalidInputs => internalInvalidInputs;
-        public bool OutACK => State.fsm == axiMasterFSM.RACK || State.fsm == axiMasterFSM.WACK;
-        public byte[] RDATA => State.ARDATA;
+        bool readAck => State.ARREADYACK && Inputs.S2M.R.RVALID;
+        bool writeAck => State.AWREADYACK && State.WREADYACK && Inputs.S2M.B.BVALID;
+
+        public bool RACK => State.readFSM == axiMasterReadFSM.OK && readAck;
+        public byte[] RDATA => Inputs.S2M.R.RDATA;
+
+        public bool WACK => State.writeFSM == axiMasterWriteFSM.OK && writeAck;
+
         public AXI4_M2S M2S => new AXI4_M2S(size)
         {
-            AR = new AXI4_M_AR()
+            AR =
             {
-                ARADDR = State.AXADDR,                
-                ARVALID = State.fsm == axiMasterFSM.RWAIT                
+                ARADDR = Inputs.ARADDR,                
+                ARVALID = Inputs.RE           
             },
-            R = new AXI4_M_R()
+            R =
             {
-                RREADY = State.fsm == axiMasterFSM.RACK
+                RREADY = true
             },
-            AW = new AXI4_M_AW()
+            AW =
             {
-                AWADDR = State.AXADDR,
-                AWVALID = State.fsm == axiMasterFSM.WWAIT                
+                AWADDR = Inputs.AWADDR,
+                AWVALID = Inputs.WE
             },
-            W = new AXI4_M_W()
+            W =
             {
                 WID = 0,
-                WDATA = State.AWDATA,
-                WSTRB = State.WSTRB,
-                WVALID = State.fsm == axiMasterFSM.WWAIT
+                WDATA = Inputs.WDATA,
+                WSTRB = Inputs.WSTRB,
+                WVALID = Inputs.WE
             },
-            B = new AXI4_M_B()
+            B =
             {
-                BREADY = State.fsm == axiMasterFSM.WACK
+                BREADY = true
             }
         };
 
+        void ResetRead()
+        {
+            NextState.readFSM = axiMasterReadFSM.Idle;
+            NextState.ARREADYACK = false;
+        }
+
+        void ResetWrite()
+        {
+            NextState.writeFSM = axiMasterWriteFSM.Idle;
+            NextState.AWREADYACK = false;
+            NextState.WREADYACK = false;
+        }
+
         protected override void OnStage()
         {
-            switch (State.fsm)
+            switch (State.readFSM)
             {
-                case axiMasterFSM.RESET:
-                    NextState.fsm = axiMasterFSM.Idle;
+                case axiMasterReadFSM.RESET:
+                    ResetRead();
                     break;
-                case axiMasterFSM.Idle:
-                    if (!internalInvalidInputs)
+                case axiMasterReadFSM.Idle:
+                    if (Inputs.RE)
                     {
-                        if (Inputs.WE)
-                        {
-                            NextState.AXADDR = Inputs.AXADDR;
-                            NextState.AWDATA = Inputs.WDATA;
-                            NextState.WSTRB = Inputs.WSTRB;
-                            NextState.fsm = axiMasterFSM.WWAIT;
-                        }
-                        else if (Inputs.RE)
-                        {
-                            NextState.AXADDR = Inputs.AXADDR;
-                            NextState.fsm = axiMasterFSM.RWAIT;
-                        }
+                        NextState.readFSM = axiMasterReadFSM.OK;
+                        NextState.ARREADYACK = Inputs.S2M.AR.ARREADY;
                     }
                     break;
-                case axiMasterFSM.RWAIT:
-                    if (Inputs.S2M.R.RVALID)
+                case axiMasterReadFSM.OK:
+                    if (Inputs.S2M.AR.ARREADY)
                     {
-                        NextState.ARDATA = Inputs.S2M.R.RDATA;
-                        NextState.fsm = axiMasterFSM.RACK;
+                        NextState.ARREADYACK = true;
+                    }
+
+                    if (readAck)
+                    {
+                        ResetRead();
+                    }
+
+                    break;
+            }
+
+            switch (State.writeFSM)
+            {
+                case axiMasterWriteFSM.RESET:
+                    ResetWrite();
+                    break;
+                case axiMasterWriteFSM.Idle:
+                    if (Inputs.WE)
+                    {
+                        NextState.writeFSM = axiMasterWriteFSM.OK;
+                        NextState.AWREADYACK = Inputs.S2M.AW.AWREADY;
+                        NextState.WREADYACK = Inputs.S2M.W.WREADY;
                     }
                     break;
-                case axiMasterFSM.RACK:
-                    NextState.fsm = axiMasterFSM.Idle;
-                    break;
-                case axiMasterFSM.WWAIT:
-                    if (Inputs.S2M.B.BVALID)
+                case axiMasterWriteFSM.OK:
+                    if (Inputs.S2M.AW.AWREADY)
                     {
-                        NextState.fsm = axiMasterFSM.WACK;
+                        NextState.AWREADYACK = true;
+                    }
+
+                    if (Inputs.S2M.W.WREADY)
+                    {
+                        NextState.WREADYACK = true;
+                    }
+
+                    if (writeAck)
+                    {
+                        ResetWrite();
                     }
                     break;
-                case axiMasterFSM.WACK:
-                    NextState.fsm = axiMasterFSM.Idle;
-                    break;
-                default:
-                {
-                    NextState.fsm = axiMasterFSM.Idle;
-                }
-                break;
             }
         }
     }

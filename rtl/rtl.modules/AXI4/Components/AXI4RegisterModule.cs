@@ -11,12 +11,12 @@ namespace rtl.modules
         public AXI4RegisterModuleInputs(axiSize size)
         {
             M2S = new AXI4_M2S(size);
-            WDATA = new byte[AXI4Tools.Bytes(size)];
+            inWDATA = new byte[AXI4Tools.Bytes(size)];
         }
 
         public AXI4_M2S M2S;
-        public bool WE = false;
-        public byte[] WDATA = null;
+        public bool inWE = false;
+        public byte[] inWDATA = null;
     }
 
     public class AXI4RegisterModuleState
@@ -28,6 +28,7 @@ namespace rtl.modules
         }
 
         public byte[] bytes;
+        public bool Written;
     }
 
     public class AXI4RegisterModule : RTLSynchronousModule<AXI4RegisterModuleInputs, AXI4RegisterModuleState>
@@ -42,10 +43,11 @@ namespace rtl.modules
             InitState(new AXI4RegisterModuleState(size));
         }
 
-        public byte[] OutData => State.bytes;
-        public bool OutACK => Inputs.WE;
+        public byte[] outData => State.bytes;
+        public bool outACK => Inputs.inWE;
 
         public AXI4_S2M S2M => axiSlave.S2M;
+        public bool outWritten => State.Written;
 
         protected override void OnSchedule(Func<AXI4RegisterModuleInputs> inputsFactory)
         {
@@ -53,23 +55,28 @@ namespace rtl.modules
             axiSlave.Schedule(() => new AXI4NonBufferedSlaveModuleInputs()
             {
                 M2S = Inputs.M2S,
-                RACK = true,
-                RDATA = State.bytes,
-                WACK = true
+                inARREADY = true,
+                inRVALID = true,
+                inAWREADY = true,
+                inWREADY = !Inputs.inWE,
+                inBVALID = true,
+                inRDATA = State.bytes,
             });
         }
         protected override void OnStage()
         {
-            if (Inputs.WE)
+            NextState.Written = Inputs.inWE || axiSlave.outWREADYConfirming;
+
+            if (Inputs.inWE)
             {
-                NextState.bytes = Inputs.WDATA;
+                NextState.bytes = Inputs.inWDATA;
             }
-            else if (axiSlave.WVALID)
+            else if (axiSlave.outWREADYConfirming)
             {
                 foreach (var w in range(AXI4Tools.Bytes(size)))
                 {
-                    if (axiSlave.WSTRB[w])
-                        NextState.bytes[w] = axiSlave.WDATA[w];
+                    if (axiSlave.outWSTRB[w])
+                        NextState.bytes[w] = axiSlave.outWDATA[w];
                 }
             } 
         }

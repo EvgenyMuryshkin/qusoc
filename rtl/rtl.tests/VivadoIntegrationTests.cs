@@ -22,8 +22,7 @@ namespace RTL.Modules
         [TestMethod]
         public void LogicRAMIndexingModuleTest()
         {
-            var sim = new RTLSimulator<LogicRAMIndexingModule, LogicRAMIndexingModuleInputs>(true);
-            sim.TraceToVCD(VCDOutputPath());
+            var sim = new RTLSimulator<LogicRAMIndexingModule, LogicRAMIndexingModuleInputs>(VCDOutputPath(), withTestbench: true);
             var tl = sim.TopLevel;
             sim.ClockCycle(new LogicRAMIndexingModuleInputs() { WE = true, WriteAddr = 0, WriteData = 0x66 });
             sim.ClockCycle(new LogicRAMIndexingModuleInputs() { WE = true, WriteAddr = 1, WriteData = 0xAA });
@@ -66,8 +65,7 @@ namespace RTL.Modules
             });
 
             var moduleInstance = container.Resolve<BoardTimerModule>();
-            var sim = new RTLInstanceSimulator<BoardTimerModule, BoardTimerModuleInputs>(moduleInstance, true);
-            sim.TraceToVCD(VCDOutputPath());
+            var sim = new RTLInstanceSimulator<BoardTimerModule, BoardTimerModuleInputs>(moduleInstance, VCDOutputPath(), withTestbench: true);
 
             var topLevel = sim.TopLevel;
 
@@ -92,7 +90,7 @@ namespace RTL.Modules
                 .WithRuntimeConfiguration(config);
             var module = container.Resolve<VGAStaticQRModule>();
 
-            var sim = new RTLInstanceSimulator<VGAStaticQRModule, VGAStaticQRModuleInputs>(module, true);
+            var sim = new RTLInstanceSimulator<VGAStaticQRModule, VGAStaticQRModuleInputs>(module, withTestbench: true);
             var tb = sim.TBAdapter(RTLVerilogConfig);
             tb.TranslateInstance();
 
@@ -132,7 +130,7 @@ namespace RTL.Modules
         [TestMethod]
         public void VGASyncModuleTest()
         {
-            var sim = new RTLInstanceSimulator<VGASyncModule, VGASyncModuleInputs>(new VGASyncModule(480, 10, 2, 33), true);
+            var sim = new RTLInstanceSimulator<VGASyncModule, VGASyncModuleInputs>(new VGASyncModule(480, 10, 2, 33), withTestbench: true);
 
             for (var i = 0; i <= 525; i++)
             {
@@ -146,7 +144,7 @@ namespace RTL.Modules
         [TestMethod]
         public void VGAModule_FrameTest()
         {
-            var sim = new RTLSimulator<VGAModule, VGAModuleInputs>(true);
+            var sim = new RTLSimulator<VGAModule, VGAModuleInputs>(withTestbench: true);
             
             /*
             // VCD output takes about 15 minutes to write

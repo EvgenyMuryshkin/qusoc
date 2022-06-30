@@ -6,5 +6,7 @@
         {
             return 1 << (int)size;
         }
+
+        public static int Bits(axiSize size) => Bytes(size) * 8;
     }
 }

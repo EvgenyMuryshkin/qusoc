@@ -57,7 +57,7 @@ module SP_WF_RAMModule_TopLevel
 		begin
 			State_Buff[Inputs_Address] <= Inputs_WriteData;
 		end
-		Inputs_Address_reg <= Inputs_Address;
+		Inputs_Address_reg <= Inputs_Address[7:0];
 	end
 	assign State_ReadData = State_Buff[Inputs_Address_reg];
 	assign Inputs_Address = Address;

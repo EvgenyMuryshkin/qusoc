@@ -205,8 +205,7 @@ namespace RTL.Modules
         [TestMethod]
         public void VGASyncModule_HSyncTest()
         {
-            var sim = new RTLInstanceSimulator<VGASyncModule, VGASyncModuleInputs>(new VGASyncModule(640, 16, 96, 48));
-            sim.TraceToVCD(VCDOutputPath());
+            var sim = new RTLInstanceSimulator<VGASyncModule, VGASyncModuleInputs>(new VGASyncModule(640, 16, 96, 48), VCDOutputPath());
 
             var tl = sim.TopLevel;
 
@@ -229,8 +228,7 @@ namespace RTL.Modules
         [TestMethod]
         public void VGASyncModule_VSyncTest()
         {
-            var sim = new RTLInstanceSimulator<VGASyncModule, VGASyncModuleInputs>(new VGASyncModule(480, 10, 2, 33));
-            sim.TraceToVCD(VCDOutputPath());
+            var sim = new RTLInstanceSimulator<VGASyncModule, VGASyncModuleInputs>(new VGASyncModule(480, 10, 2, 33), VCDOutputPath());
 
             var tl = sim.TopLevel;
 
@@ -335,9 +333,8 @@ namespace RTL.Modules
         [TestMethod]
         public void CounterModuleTest()
         {
-            var sim = new RTLSimulator<CounterModule>();
+            var sim = new RTLSimulator<CounterModule>(VCDOutputPath());
             sim.IsRunning = (cb) => cb.Clock < 100;
-            sim.TraceToVCD(VCDOutputPath());
             sim.TopLevel.Schedule(() => new CounterInputs() { Enabled = true });
 
             Assert.AreEqual(0, sim.TopLevel.Value);
@@ -348,11 +345,9 @@ namespace RTL.Modules
         [TestMethod]
         public void NotGateFeedbackModuleTest()
         {
-            var sim = new RTLSimulator<NotGateFeedbackModule>();
-            sim.TraceToVCD(VCDOutputPath());
-
             Assert.ThrowsException<MaxStageIterationReachedException>(() =>
             {
+                var sim = new RTLSimulator<NotGateFeedbackModule>(VCDOutputPath());
                 sim.Run();
             });
         }
@@ -360,9 +355,8 @@ namespace RTL.Modules
         [TestMethod]
         public void NotGateModuleTest()
         {
-            var sim = new RTLSimulator<NotGateModule>();
+            var sim = new RTLSimulator<NotGateModule>(VCDOutputPath());
             sim.IsRunning = (cb) => cb.Clock == 0;
-            sim.TraceToVCD(VCDOutputPath());
             sim.TopLevel.Schedule(() => new NotGateInputs() { Input = true }); ;
 
             Assert.AreEqual(true, sim.TopLevel.Output);

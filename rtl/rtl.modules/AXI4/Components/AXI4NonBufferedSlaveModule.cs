@@ -11,24 +11,32 @@ namespace rtl.modules
         public AXI4NonBufferedSlaveModuleInputs(axiSize size)
         {
             M2S = new AXI4_M2S(size);
-            RDATA = new byte[AXI4Tools.Bytes(size)];
+            inRDATA = new byte[AXI4Tools.Bytes(size)];
         }
 
         public AXI4_M2S M2S;
-        public byte[] RDATA;
-        public bool RACK;
-        public bool WACK;
+        public byte[] inRDATA;
+        public bool inARREADY;
+        public bool inRVALID;
+
+
+        public bool inAWREADY;
+        public bool inWREADY;
+        public bool inBVALID;
     }
 
     public class AXI4NonBufferedSlaveModuleState
     {
         public axiSlaveReadFSM readFSM = axiSlaveReadFSM.RESET;
-        public axiSlaveWriteFSM writeFSM = axiSlaveWriteFSM.RESET;
+
+        public axiSlaveWriteFSM writeAWFSM = axiSlaveWriteFSM.RESET;
+        public axiSlaveWriteFSM writeWFSM = axiSlaveWriteFSM.RESET;
     }
 
     public class AXI4NonBufferedSlaveModule : RTLSynchronousModule<AXI4NonBufferedSlaveModuleInputs, AXI4NonBufferedSlaveModuleState>
     {
         private readonly axiSize size;
+
         public AXI4NonBufferedSlaveModule(axiSize size)
         {
             this.size = size;
@@ -39,43 +47,63 @@ namespace rtl.modules
         {
             AR =
             { 
-                ARREADY = State.readFSM == axiSlaveReadFSM.Idle 
+                ARREADY = internalARREADY
             },
             R =
             {
                 RID = Inputs.M2S.AR.ARID,
                 RUSER = Inputs.M2S.AR.ARUSER,
-                RVALID = State.readFSM == axiSlaveReadFSM.OK && Inputs.RACK, 
-                RDATA = Inputs.RDATA,
+                RVALID = internalRVALID,
+                RDATA = Inputs.inRDATA,
                 RRESP = axiResp.OKAY
             },
             AW =
             {
-                AWREADY = State.writeFSM == axiSlaveWriteFSM.Idle
+                AWREADY = internalAWREADY
             },
             W =
             {
-                WREADY = State.writeFSM == axiSlaveWriteFSM.Idle && Inputs.WACK
+                WREADY = internalWREADY
             },
             B =
             {
                 BID = Inputs.M2S.W.WID,
                 BRESP = axiResp.OKAY,
                 BUSER = Inputs.M2S.W.WUSER,
-                BVALID = State.writeFSM == axiSlaveWriteFSM.OK
+                BVALID = internalBVALID
             }
         };
 
-        bool axiWE => Inputs.M2S.AW.AWVALID && Inputs.M2S.W.WVALID;
-        bool axiRE => Inputs.M2S.AR.ARVALID;
+        // tx
+        bool readTXCompleting => internalRVALID && Inputs.M2S.R.RREADY;
+        bool writeTXCompleting => internalBVALID && Inputs.M2S.B.BREADY;
+        // read channel
+        bool internalARREADY => State.readFSM == axiSlaveReadFSM.Idle && Inputs.inARREADY;
+        bool internalRVALID => State.readFSM == axiSlaveReadFSM.Ack && Inputs.inRVALID;
 
-        public RTLBitArray WSTRB => Inputs.M2S.W.WSTRB;
-        public byte[] WDATA => Inputs.M2S.W.WDATA;
-        public bool WVALID => axiWE;
-        public bool RVALID => axiRE;
+        // write channel
+        bool internalAWREADY => State.writeAWFSM == axiSlaveWriteFSM.Idle && Inputs.inAWREADY;
+        bool internalWREADY => State.writeWFSM == axiSlaveWriteFSM.Idle && Inputs.inWREADY;
+        bool internalBVALID => State.writeAWFSM == axiSlaveWriteFSM.Ack && State.writeWFSM == axiSlaveWriteFSM.Ack && Inputs.inBVALID;
 
-        public uint ARADDR => Inputs.M2S.AR.ARADDR;
-        public uint AWADDR => Inputs.M2S.AW.AWADDR;
+        // tx
+        public bool outReadTXCompleting => readTXCompleting;
+        public bool outWriteTXCompleting => writeTXCompleting;
+
+        // read channel
+        public bool outARREADYConfirming => State.readFSM == axiSlaveReadFSM.Idle && NextState.readFSM == axiSlaveReadFSM.Ack;
+        public bool outARVALID => Inputs.M2S.AR.ARVALID;
+        public uint outARADDR => Inputs.M2S.AR.ARADDR;
+
+        // write channel
+        public bool outAWREADYConfirming => State.writeAWFSM == axiSlaveWriteFSM.Idle && NextState.writeAWFSM == axiSlaveWriteFSM.Ack;
+        public bool outAWVALID => Inputs.M2S.AW.AWVALID;
+        public uint outAWADDR => Inputs.M2S.AW.AWADDR;
+
+        public bool outWREADYConfirming => State.writeWFSM == axiSlaveWriteFSM.Idle && NextState.writeWFSM == axiSlaveWriteFSM.Ack;
+        public bool outWVALID => Inputs.M2S.W.WVALID;
+        public byte[] outWDATA => Inputs.M2S.W.WDATA;
+        public RTLBitArray outWSTRB => Inputs.M2S.W.WSTRB;
 
         protected override void OnStage()
         {
@@ -84,56 +112,47 @@ namespace rtl.modules
             switch (State.readFSM)
             {
                 case axiSlaveReadFSM.RESET:
-                {
                     NextState.readFSM = axiSlaveReadFSM.Idle;
-                }
-                break;
+                    break;
                 case axiSlaveReadFSM.Idle:
-                {
-                    if (Inputs.M2S.AR.ARVALID)
-                    {
-                        NextState.readFSM = axiSlaveReadFSM.OK;
-                    }
-                }
-                break;
-                case axiSlaveReadFSM.OK:
-                {
-                    if (Inputs.M2S.R.RREADY && Inputs.RACK)
+                    if (internalARREADY && Inputs.M2S.AR.ARVALID)
+                        NextState.readFSM = axiSlaveReadFSM.Ack;
+                    break;
+                case axiSlaveReadFSM.Ack:
+                    if (readTXCompleting)
                         NextState.readFSM = axiSlaveReadFSM.Idle;
-                }
-                break;
-                default:
-                {
-                    NextState.readFSM = axiSlaveReadFSM.Idle;
-                }
-                break;
+                    break;
             }
- 
-            switch (State.writeFSM)
+
+            switch (State.writeAWFSM)
             {
                 case axiSlaveWriteFSM.RESET:
-                {
-                    NextState.writeFSM = axiSlaveWriteFSM.Idle;
-                }
-                break;
+                    NextState.writeAWFSM = axiSlaveWriteFSM.Idle;
+                    break;
                 case axiSlaveWriteFSM.Idle:
-                {
-                    if (axiWE)
-                        NextState.writeFSM = axiSlaveWriteFSM.OK;
-                }
-                break;
-                case axiSlaveWriteFSM.OK:
-                {
-                    if (Inputs.M2S.B.BREADY && Inputs.WACK)
-                        NextState.writeFSM = axiSlaveWriteFSM.Idle;
-                }
-                break;
-                default:
-                {
-                    NextState.writeFSM = axiSlaveWriteFSM.Idle;
-                }
-                break;
-            } 
+                    if (internalAWREADY && Inputs.M2S.AW.AWVALID)
+                        NextState.writeAWFSM = axiSlaveWriteFSM.Ack;
+                    break;
+                case axiSlaveWriteFSM.Ack:
+                    if (writeTXCompleting)
+                        NextState.writeAWFSM = axiSlaveWriteFSM.Idle;
+                    break;
+            }
+
+            switch (State.writeWFSM)
+            {
+                case axiSlaveWriteFSM.RESET:
+                    NextState.writeWFSM = axiSlaveWriteFSM.Idle;
+                    break;
+                case axiSlaveWriteFSM.Idle:
+                    if (internalWREADY && Inputs.M2S.W.WVALID)
+                        NextState.writeWFSM = axiSlaveWriteFSM.Ack;
+                    break;
+                case axiSlaveWriteFSM.Ack:
+                    if (writeTXCompleting)
+                        NextState.writeWFSM = axiSlaveWriteFSM.Idle;
+                    break;
+            }
         }
 
         [RTLNonSynthesizable]

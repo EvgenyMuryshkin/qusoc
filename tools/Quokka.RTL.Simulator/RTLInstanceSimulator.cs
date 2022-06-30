@@ -4,6 +4,11 @@ using System.IO;
 
 namespace Quokka.RTL.Simulator
 {
+    public class RTLInstanceSimulatorHooks
+    {
+
+    }
+
     public class RTLInstanceSimulator<TModule>
         where TModule : IRTLCombinationalModule
     {
@@ -34,16 +39,24 @@ namespace Quokka.RTL.Simulator
 
         }
 
-        public RTLInstanceSimulator(TModule topLevel)
+        public RTLInstanceSimulator(TModule topLevel, string vcdPath, RTLModuleSnapshotConfig config = null)
         {
-            Initialize(topLevel);
+            Initialize(topLevel, vcdPath, config);
         }
 
-        protected void Initialize(TModule topLevel)
+        protected void Initialize(TModule topLevel, string vcdPath, RTLModuleSnapshotConfig config = null)
         {
             _topLevel = topLevel;
             _topLevel.Setup();
             _simulatorContext = new RTLSimulatorContext();
+
+            if (vcdPath != null)
+            {
+                TraceToVCD(vcdPath, config);
+            }
+
+            DeltaCycles();
+            _simulatorContext.NextMilestone();
         }
 
         internal void RecursiveCreateTargetDirectory(string directory)
@@ -56,7 +69,7 @@ namespace Quokka.RTL.Simulator
             Directory.CreateDirectory(directory);
         }
 
-        public void TraceToVCD(string outputFileName, RTLModuleSnapshotConfig config = null)
+        void TraceToVCD(string outputFileName, RTLModuleSnapshotConfig config = null)
         {
             Console.WriteLine($"Tracing to: {outputFileName}");
             RecursiveCreateTargetDirectory(Path.GetDirectoryName(outputFileName));
@@ -65,7 +78,7 @@ namespace Quokka.RTL.Simulator
             _vcdBuilder = new VCDBuilder(outputFileName);
             _topLevelSnapshot = new VCDSignalsSnapshot("TOP");
             _simulatorContext.ControlScope = _topLevelSnapshot.Scope("Control");
-            _simulatorContext.ClockSignal = _simulatorContext.ControlScope.Add(new VCDVariable("Clock", true, 1));
+            _simulatorContext.ClockSignal = _simulatorContext.ControlScope.Add(new VCDVariable("Clock", false, 1));
 
             _topLevel.PopulateSnapshot(_topLevelSnapshot, _snapshotConfig);
             _vcdBuilder.Init(_topLevelSnapshot);
@@ -80,12 +93,14 @@ namespace Quokka.RTL.Simulator
             _vcdBuilder.Snapshot(_simulatorContext.CurrentTime, _topLevelSnapshot);
         }
 
-        public virtual void ClockCycle()
+        public virtual void DeltaCycles()
         {
             _simulatorContext.DeltaCycle = 0;
+            _simulatorContext.MilestoneOffset = 0;
+
             do
             {
-                _simulatorContext.CurrentTime++;
+                _simulatorContext.MilestoneOffset++;
 
                 var stageResult = _topLevel.DeltaCycle(_simulatorContext.DeltaCycle);
                 _simulatorContext.TotalDeltaCycles++;
@@ -100,22 +115,30 @@ namespace Quokka.RTL.Simulator
 
             if (_simulatorContext.DeltaCycle >= _simulatorContext.MaxDeltaCycles)
                 throw new MaxStageIterationReachedException();
+        }
+
+        public virtual void ClockCycle()
+        {
+            DeltaCycles();
 
             OnPostStage?.Invoke(_topLevel);
 
-            _simulatorContext.CurrentTime = _simulatorContext.Clock * 2 * _simulatorContext.MaxDeltaCycles + _simulatorContext.MaxDeltaCycles;
+            _simulatorContext.NextMilestone();
+
+            // clock rise will commit all changes
+            _simulatorContext.ClockSignal?.SetValue(true);
+            _topLevel.Commit();
+            TraceSignals();
+
+            DeltaCycles();
+            OnPostCommit?.Invoke(_topLevel);
+
+            _simulatorContext.Clock++;
+            _simulatorContext.NextMilestone();
 
             // clock fall is not handled in RTL module, all sync is done of clock rise at the moment
             _simulatorContext.ClockSignal?.SetValue(false);
             TraceSignals();
-
-            // clock rise will commit all changes
-            _simulatorContext.Clock++;
-            _simulatorContext.CurrentTime = _simulatorContext.Clock * 2 * _simulatorContext.MaxDeltaCycles;
-            _simulatorContext.ClockSignal?.SetValue(true);
-            _topLevel.Commit();
-            TraceSignals();
-            OnPostCommit?.Invoke(_topLevel);
         }
 
         public void Run()
@@ -139,7 +162,11 @@ namespace Quokka.RTL.Simulator
     {
         TestbenchGenerator _tbGen = null;
 
-        public RTLInstanceSimulator(TModule topLevel, bool withTestbench = false) : base(topLevel)
+        public RTLInstanceSimulator(
+            TModule topLevel, 
+            string vcdPath = null,
+            RTLModuleSnapshotConfig config = null,
+            bool withTestbench = false) : base(topLevel, vcdPath, config)
         {
             if (withTestbench)
                 _tbGen = new TestbenchGenerator(_simulatorContext, topLevel);
@@ -147,14 +174,22 @@ namespace Quokka.RTL.Simulator
             _tbGen?.SetupTestbench();
         }
 
-        public virtual void ClockCycles(Func<TInputs> inputsFactory, Func<bool> runWhile, int maxIterations = 100, string message = "Max cycles exceeded")
+        public virtual void ClockCycles(
+            Func<bool> preCheck,
+            Func<TInputs> inputsFactory, 
+            Func<bool> postCheck, 
+            int maxIterations = 100, 
+            string message = "Max cycles exceeded")
         {
             while (maxIterations-- >= 0)
             {
-                if (!runWhile())
+                if (preCheck != null && preCheck())
                     return;
 
                 ClockCycle(inputsFactory());
+
+                if (postCheck != null && postCheck())
+                    return;
             }
 
             throw new Exception(message);

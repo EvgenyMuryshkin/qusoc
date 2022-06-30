@@ -73,47 +73,47 @@ $readmemh("SP_WF_WSTRB_RAMModule_TopLevel_State_Buff2.hex", State_Buff2);
 $readmemh("SP_WF_WSTRB_RAMModule_TopLevel_State_Buff3.hex", State_Buff3);
 	end
 	// inferred single port RAM with write-first behaviour
-	reg [7: 0] Inputs_Address_reg0;
+	reg [4: 0] Inputs_Address_reg0;
 	always @ (posedge Clock)
 	begin
 		if (Inputs_WSTRB[0])
 		begin
 			State_Buff0[Inputs_Address] <= Inputs_WriteData[0];
 		end
-		Inputs_Address_reg0 <= Inputs_Address;
+		Inputs_Address_reg0 <= Inputs_Address[4:0];
 	end
 	assign State_ReadData[0] = State_Buff0[Inputs_Address_reg0];
 	// inferred single port RAM with write-first behaviour
-	reg [7: 0] Inputs_Address_reg1;
+	reg [4: 0] Inputs_Address_reg1;
 	always @ (posedge Clock)
 	begin
 		if (Inputs_WSTRB[1])
 		begin
 			State_Buff1[Inputs_Address] <= Inputs_WriteData[1];
 		end
-		Inputs_Address_reg1 <= Inputs_Address;
+		Inputs_Address_reg1 <= Inputs_Address[4:0];
 	end
 	assign State_ReadData[1] = State_Buff1[Inputs_Address_reg1];
 	// inferred single port RAM with write-first behaviour
-	reg [7: 0] Inputs_Address_reg2;
+	reg [4: 0] Inputs_Address_reg2;
 	always @ (posedge Clock)
 	begin
 		if (Inputs_WSTRB[2])
 		begin
 			State_Buff2[Inputs_Address] <= Inputs_WriteData[2];
 		end
-		Inputs_Address_reg2 <= Inputs_Address;
+		Inputs_Address_reg2 <= Inputs_Address[4:0];
 	end
 	assign State_ReadData[2] = State_Buff2[Inputs_Address_reg2];
 	// inferred single port RAM with write-first behaviour
-	reg [7: 0] Inputs_Address_reg3;
+	reg [4: 0] Inputs_Address_reg3;
 	always @ (posedge Clock)
 	begin
 		if (Inputs_WSTRB[3])
 		begin
 			State_Buff3[Inputs_Address] <= Inputs_WriteData[3];
 		end
-		Inputs_Address_reg3 <= Inputs_Address;
+		Inputs_Address_reg3 <= Inputs_Address[4:0];
 	end
 	assign State_ReadData[3] = State_Buff3[Inputs_Address_reg3];
 	assign Inputs_Address = Address;

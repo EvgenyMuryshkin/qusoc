@@ -1,4 +1,4 @@
-set_global_assignment -name TOP_LEVEL_ENTITY AXI4RegisterModuleB4_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY AXI4MasterModuleB4_TopLevel
 # -------------------------------------------------------------------------- #
 #
 # Copyright (C) 1991-2010 Altera Corporation
@@ -37,7 +37,7 @@ set_global_assignment -name TOP_LEVEL_ENTITY AXI4RegisterModuleB4_TopLevel
 # -------------------------------------------------------------------------- #
 
 set_global_assignment -name FAMILY "Cyclone II"
-set_global_assignment -name DEVICE EP2C70F672C6
+set_global_assignment -name DEVICE EP2C70F896C6
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "20:45:17  JUNE 07, 2019"
 set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
@@ -55,15 +55,15 @@ set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 6
 
 set_global_assignment -name MISC_FILE "C:/code/qusoc/rtl/rtl.hdl/VHDL.dpf"
 
-set_global_assignment -name SDC_FILE rtl.sdc
-
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/AXI4RegisterModuleB4.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/AXI4MasterModuleB4.vwf
 
 set_instance_assignment -name CLOCK_SETTINGS Clock -to Clock
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
+
+set_global_assignment -name SDC_FILE rtl.sdc
 
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 
@@ -75,10 +75,45 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/ArrayToBitArrayModule
 set_global_assignment -name VHDL_FILE VHDL/generated/ArrayToBitArrayModule/ArrayToBitArrayModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AutoPropagatePipelineModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/AutoPropagatePipelineModule/AutoPropagatePipelineModule_TopLevel.vhdl
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4MasterModuleB4.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/AXI4MasterModuleB4/AXI4MasterModuleB4_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4MasterSlaveMemoryTestModule/AXI4MasterSlaveMemoryTestModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4MasterSlaveMemoryTestModule/AXI4MasterSlaveMemoryTestModule_TopLevel_AXI4MasterSlaveMemoryTestModule_master.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4MasterSlaveMemoryTestModule/AXI4MasterSlaveMemoryTestModule_TopLevel_AXI4MasterSlaveMemoryTestModule_mem.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4MasterSlaveMemoryTestModule/AXI4MasterSlaveMemoryTestModule_TopLevel_AXI4MasterSlaveMemoryTestModule_mem_AXI4MemoryModule_axiSlave.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4MasterSlaveTestModule.vwf
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4MasterSlaveTestModule/AXI4MasterSlaveTestModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4MasterSlaveTestModule/AXI4MasterSlaveTestModule_TopLevel_AXI4MasterSlaveTestModule_m.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4MasterSlaveTestModule/AXI4MasterSlaveTestModule_TopLevel_AXI4MasterSlaveTestModule_master.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4MasterSlaveTestModule/AXI4MasterSlaveTestModule_TopLevel_AXI4MasterSlaveTestModule_reg.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4MasterSlaveTestModule/AXI4MasterSlaveTestModule_TopLevel_AXI4MasterSlaveTestModule_reg_AXI4RegisterModule_axiSlave.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4MasterSlaveTestModule/AXI4MasterSlaveTestModule_TopLevel_AXI4MasterSlaveTestModule_reg_AXI4RegisterModule_axiSlave_AXI4NonBufferedSlaveModule_confirmARREADY.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4MasterSlaveTestModule/AXI4MasterSlaveTestModule_TopLevel_AXI4MasterSlaveTestModule_reg_AXI4RegisterModule_axiSlave_AXI4NonBufferedSlaveModule_confirmRVALID.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4MasterSlaveTestModule/AXI4MasterSlaveTestModule_TopLevel_AXI4MasterSlaveTestModule_s.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4MasterSlaveTestModule/AXI4MasterSlaveTestModule_TopLevel_AXI4MasterSlaveTestModule_s_AXI4RegisterModule_axiSlave.vhdl
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4MemoryModuleB4.vwf
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4MemoryModuleB4/AXI4MemoryModuleB4_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4MemoryModuleB4/AXI4MemoryModuleB4_TopLevel_AXI4MemoryModuleB4_axiSlave.vhdl
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4NonBufferedSlaveModuleB4.vwf
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4NonBufferedSlaveModuleB4/AXI4NonBufferedSlaveModuleB4_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4NonBufferedSlaveModuleB4/AXI4NonBufferedSlaveModuleB4_TopLevel_AXI4NonBufferedSlaveModuleB4_confirmARREADY.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4NonBufferedSlaveModuleB4/AXI4NonBufferedSlaveModuleB4_TopLevel_AXI4NonBufferedSlaveModuleB4_confirmAWREADY.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4NonBufferedSlaveModuleB4/AXI4NonBufferedSlaveModuleB4_TopLevel_AXI4NonBufferedSlaveModuleB4_confirmBVALID.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4NonBufferedSlaveModuleB4/AXI4NonBufferedSlaveModuleB4_TopLevel_AXI4NonBufferedSlaveModuleB4_confirmRVALID.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4NonBufferedSlaveModuleB4/AXI4NonBufferedSlaveModuleB4_TopLevel_AXI4NonBufferedSlaveModuleB4_confirmWREADY.vhdl
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4RegisterModuleB4_ConcurrentWrite.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4RegisterModuleB4_Read.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/AXI4RegisterModuleB4/AXI4RegisterModuleB4_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/AXI4RegisterModuleB4/AXI4RegisterModuleB4_TopLevel_AXI4RegisterModuleB4_axiSlave.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4RegisterModuleB4/AXI4RegisterModuleB4_TopLevel_AXI4RegisterModuleB4_axiSlave_AXI4NonBufferedSlaveModule_confirmARREADY.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4RegisterModuleB4/AXI4RegisterModuleB4_TopLevel_AXI4RegisterModuleB4_axiSlave_AXI4NonBufferedSlaveModule_confirmAWREADY.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4RegisterModuleB4/AXI4RegisterModuleB4_TopLevel_AXI4RegisterModuleB4_axiSlave_AXI4NonBufferedSlaveModule_confirmBVALID.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4RegisterModuleB4/AXI4RegisterModuleB4_TopLevel_AXI4RegisterModuleB4_axiSlave_AXI4NonBufferedSlaveModule_confirmRVALID.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4RegisterModuleB4/AXI4RegisterModuleB4_TopLevel_AXI4RegisterModuleB4_axiSlave_AXI4NonBufferedSlaveModule_confirmWREADY.vhdl
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4RegisterModuleB4_Write.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXIConfirmModule.vwf
+set_global_assignment -name VHDL_FILE VHDL/generated/AXIConfirmModule/AXIConfirmModule_TopLevel.vhdl
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/BitArrayGetterModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/BitArrayGetterModule/BitArrayGetterModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/BitArrayModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/BitArrayModule/BitArrayModule_TopLevel.vhdl
@@ -127,6 +162,7 @@ set_global_assignment -name VHDL_FILE VHDL/generated/ModuleSignalsMuxModule/Modu
 set_global_assignment -name VHDL_FILE VHDL/generated/ModuleSignalsMuxModule/ModuleSignalsMuxModule_TopLevel_ModuleSignalsMuxModule_AndGate.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/ModuleSignalsMuxModule/ModuleSignalsMuxModule_TopLevel_ModuleSignalsMuxModule_OrGate.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/ModuleSignalsMuxModule/ModuleSignalsMuxModule_TopLevel_ModuleSignalsMuxModule_XorGate.vhdl
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/NativeGetterModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/NativeGetterModule/NativeGetterModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/NotGateModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/NotGateModule/NotGateModule_TopLevel.vhdl
@@ -191,6 +227,7 @@ set_global_assignment -name VHDL_FILE VHDL/generated/StageStatePipelineModule/St
 set_global_assignment -name VHDL_FILE VHDL/generated/StallControlPipelineModule/StallControlPipelineModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StallControlTestPipelineModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/StallControlTestPipelineModule/StallControlTestPipelineModule_TopLevel.vhdl
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StructsCombinationalModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/StructsCombinationalModule/StructsCombinationalModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/SynchronousROMModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/SynchronousROMModule/SynchronousROMModule_TopLevel.vhdl

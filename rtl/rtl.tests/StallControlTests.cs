@@ -130,8 +130,7 @@ namespace RTL.Modules
         [TestMethod]
         public void StallControlTestPipelineModuleTest()
         {
-            var sim = new RTLSimulator<StallControlTestPipelineModule, StallControlTestPipelineModuleInputs>();
-            sim.TraceToVCD(VCDOutputPath());
+            var sim = new RTLSimulator<StallControlTestPipelineModule, StallControlTestPipelineModuleInputs>(VCDOutputPath());
 
             var dataLog = new IntegrationTestDataLogger();
 
