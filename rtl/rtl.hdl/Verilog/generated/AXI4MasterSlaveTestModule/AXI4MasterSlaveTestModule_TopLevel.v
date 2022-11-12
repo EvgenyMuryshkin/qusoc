@@ -323,8 +323,8 @@ module AXI4MasterSlaveTestModule_TopLevel
 			end
 		end
 	end
-	AXI4MasterSlaveTestModule_TopLevel_AXI4MasterSlaveTestModule_reg
-	AXI4MasterSlaveTestModule_TopLevel_AXI4MasterSlaveTestModule_reg
+	AXI4MasterSlaveTestModule_TopLevel_reg
+	AXI4MasterSlaveTestModule_TopLevel_reg
 	(
 		// [BEGIN USER MAP FOR reg]
 		// [END USER MAP FOR reg]
@@ -396,8 +396,8 @@ module AXI4MasterSlaveTestModule_TopLevel
 		.S2M_W_WREADY (regS2M_W_WREADYreg_S2M_W_WREADYHardLink),
 		.outWritten (regoutWrittenreg_outWrittenHardLink)
 	);
-	AXI4MasterSlaveTestModule_TopLevel_AXI4MasterSlaveTestModule_master
-	AXI4MasterSlaveTestModule_TopLevel_AXI4MasterSlaveTestModule_master
+	AXI4MasterSlaveTestModule_TopLevel_master
+	AXI4MasterSlaveTestModule_TopLevel_master
 	(
 		// [BEGIN USER MAP FOR master]
 		// [END USER MAP FOR master]

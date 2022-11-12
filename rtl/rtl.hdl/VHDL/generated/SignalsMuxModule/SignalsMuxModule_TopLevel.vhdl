@@ -48,41 +48,23 @@ architecture rtl of SignalsMuxModule_TopLevel is
 	signal Inputs_Sig1 : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_Sig2 : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_Sig3 : unsigned(7 downto 0) := (others => '0');
-	signal SignalsMuxModule_L24F30T50_Mux : unsigned(7 downto 0) := "00000000";
-	signal SignalsMuxModule_L24F30T50_MuxMultiplexerAddress : unsigned(1 downto 0) := "00";
-	signal SignalsMuxModule_L24F30T50_Mux1 : unsigned(7 downto 0) := "00000000";
-	signal SignalsMuxModule_L24F30T50_Mux2 : unsigned(7 downto 0) := "00000000";
-	signal SignalsMuxModule_L24F30T50_Mux3 : unsigned(7 downto 0) := "00000000";
-	signal SignalsMuxModule_L24F30T50_Mux4 : unsigned(7 downto 0) := "00000000";
+	signal SignalsMuxModule_L24F30T50_Index : unsigned(7 downto 0) := (others => '0');
+	type signalsArray is array (0 to 3) of unsigned (7 downto 0);
+	signal signals : signalsArray := (others => (others => '0'));
 begin
-	process (SignalsMuxModule_L24F30T50_Mux1, SignalsMuxModule_L24F30T50_Mux2, SignalsMuxModule_L24F30T50_Mux3, SignalsMuxModule_L24F30T50_Mux4, SignalsMuxModule_L24F30T50_MuxMultiplexerAddress)
-	begin
-		case SignalsMuxModule_L24F30T50_MuxMultiplexerAddress is
-			when "00" =>
-				SignalsMuxModule_L24F30T50_Mux <= SignalsMuxModule_L24F30T50_Mux1;
-			when "01" =>
-				SignalsMuxModule_L24F30T50_Mux <= SignalsMuxModule_L24F30T50_Mux2;
-			when "10" =>
-				SignalsMuxModule_L24F30T50_Mux <= SignalsMuxModule_L24F30T50_Mux3;
-			when "11" =>
-				SignalsMuxModule_L24F30T50_Mux <= SignalsMuxModule_L24F30T50_Mux4;
-			when others =>
-				SignalsMuxModule_L24F30T50_Mux <= "00000000";
-		end case;
-	end process;
-	process (Addr, Inputs_Addr, Inputs_Sig0, Inputs_Sig1, Inputs_Sig2, Inputs_Sig3, Sig0, Sig1, Sig2, Sig3, SignalsMuxModule_L24F30T50_Mux)
+	process (Addr, Inputs_Sig0, Inputs_Sig1, Inputs_Sig2, Inputs_Sig3, Sig0, Sig1, Sig2, Sig3, signals, SignalsMuxModule_L24F30T50_Index)
 	begin
 		Inputs_Addr <= Addr;
 		Inputs_Sig0 <= Sig0;
 		Inputs_Sig1 <= Sig1;
 		Inputs_Sig2 <= Sig2;
 		Inputs_Sig3 <= Sig3;
-		Value <= SignalsMuxModule_L24F30T50_Mux;
-		SignalsMuxModule_L24F30T50_Mux1 <= Inputs_Sig0;
-		SignalsMuxModule_L24F30T50_Mux2 <= Inputs_Sig1;
-		SignalsMuxModule_L24F30T50_Mux3 <= Inputs_Sig2;
-		SignalsMuxModule_L24F30T50_Mux4 <= Inputs_Sig3;
-		SignalsMuxModule_L24F30T50_MuxMultiplexerAddress <= Inputs_Addr;
+		signals(0) <= Inputs_Sig0;
+		signals(1) <= Inputs_Sig1;
+		signals(2) <= Inputs_Sig2;
+		signals(3) <= Inputs_Sig3;
+		Value <= SignalsMuxModule_L24F30T50_Index;
+		SignalsMuxModule_L24F30T50_Index <= signals(TO_INTEGER(Inputs_Addr));
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

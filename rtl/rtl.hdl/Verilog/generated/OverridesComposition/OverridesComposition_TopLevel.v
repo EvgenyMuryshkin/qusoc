@@ -80,8 +80,8 @@ module OverridesComposition_TopLevel
 	wire L3OverrideInOverrideL3Override_InOverrideHardLink;
 	wire [7: 0] L3OverrideInValueL3Override_InValueHardLink;
 	wire [7: 0] L3OverrideOutValueL3Override_OutValueHardLink;
-	OverridesComposition_TopLevel_OverridesComposition_NoOverride
-	OverridesComposition_TopLevel_OverridesComposition_NoOverride
+	OverridesComposition_TopLevel_NoOverride
+	OverridesComposition_TopLevel_NoOverride
 	(
 		// [BEGIN USER MAP FOR NoOverride]
 		// [END USER MAP FOR NoOverride]
@@ -89,8 +89,8 @@ module OverridesComposition_TopLevel
 		.InValue (NoOverrideInValueNoOverride_InValueHardLink),
 		.OutValue (NoOverrideOutValueNoOverride_OutValueHardLink)
 	);
-	OverridesComposition_TopLevel_OverridesComposition_AutoOverride
-	OverridesComposition_TopLevel_OverridesComposition_AutoOverride
+	OverridesComposition_TopLevel_AutoOverride
+	OverridesComposition_TopLevel_AutoOverride
 	(
 		// [BEGIN USER MAP FOR AutoOverride]
 		// [END USER MAP FOR AutoOverride]
@@ -98,8 +98,8 @@ module OverridesComposition_TopLevel
 		.InValue (AutoOverrideInValueAutoOverride_InValueHardLink),
 		.OutValue (AutoOverrideOutValueAutoOverride_OutValueHardLink)
 	);
-	OverridesComposition_TopLevel_OverridesComposition_GetOverride
-	OverridesComposition_TopLevel_OverridesComposition_GetOverride
+	OverridesComposition_TopLevel_GetOverride
+	OverridesComposition_TopLevel_GetOverride
 	(
 		// [BEGIN USER MAP FOR GetOverride]
 		// [END USER MAP FOR GetOverride]
@@ -107,8 +107,8 @@ module OverridesComposition_TopLevel
 		.InValue (GetOverrideInValueGetOverride_InValueHardLink),
 		.OutValue (GetOverrideOutValueGetOverride_OutValueHardLink)
 	);
-	OverridesComposition_TopLevel_OverridesComposition_L1Override
-	OverridesComposition_TopLevel_OverridesComposition_L1Override
+	OverridesComposition_TopLevel_L1Override
+	OverridesComposition_TopLevel_L1Override
 	(
 		// [BEGIN USER MAP FOR L1Override]
 		// [END USER MAP FOR L1Override]
@@ -116,8 +116,8 @@ module OverridesComposition_TopLevel
 		.InValue (L1OverrideInValueL1Override_InValueHardLink),
 		.OutValue (L1OverrideOutValueL1Override_OutValueHardLink)
 	);
-	OverridesComposition_TopLevel_OverridesComposition_L2Override
-	OverridesComposition_TopLevel_OverridesComposition_L2Override
+	OverridesComposition_TopLevel_L2Override
+	OverridesComposition_TopLevel_L2Override
 	(
 		// [BEGIN USER MAP FOR L2Override]
 		// [END USER MAP FOR L2Override]
@@ -125,8 +125,8 @@ module OverridesComposition_TopLevel
 		.InValue (L2OverrideInValueL2Override_InValueHardLink),
 		.OutValue (L2OverrideOutValueL2Override_OutValueHardLink)
 	);
-	OverridesComposition_TopLevel_OverridesComposition_L3Override
-	OverridesComposition_TopLevel_OverridesComposition_L3Override
+	OverridesComposition_TopLevel_L3Override
+	OverridesComposition_TopLevel_L3Override
 	(
 		// [BEGIN USER MAP FOR L3Override]
 		// [END USER MAP FOR L3Override]

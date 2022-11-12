@@ -343,30 +343,38 @@ module AXI4MemoryModuleB4_TopLevel
 		for (NextState_wdata_Iterator = 0; NextState_wdata_Iterator < 4; NextState_wdata_Iterator = NextState_wdata_Iterator + 1)
 			NextState_wdata[NextState_wdata_Iterator] = 0;
 	end
+	wire [7 : 0] internalWDATA [0 : 3];
 	wire [7 : 0] axiSlave_M2S_W_WDATA [0 : 3];
 	wire [7 : 0] axiSlave_inRDATA [0 : 3];
 	wire [7 : 0] axiSlave_S2M_R_RDATA [0 : 3];
 	wire [7 : 0] axiSlave_outWDATA [0 : 3];
-	wire [7 : 0] internalWDATA [0 : 3];
 	reg [7 : 0] State_buff0 [0 : 1023];
+	integer State_buff0_i;
 	initial
 	begin : Init_State_buff0
-$readmemh("AXI4MemoryModuleB4_TopLevel_State_buff0.hex", State_buff0);
+		for (State_buff0_i = 0; State_buff0_i < 1024; State_buff0_i = State_buff0_i + 1)
+			State_buff0[State_buff0_i] = 0;
 	end
 	reg [7 : 0] State_buff1 [0 : 1023];
+	integer State_buff1_i;
 	initial
 	begin : Init_State_buff1
-$readmemh("AXI4MemoryModuleB4_TopLevel_State_buff1.hex", State_buff1);
+		for (State_buff1_i = 0; State_buff1_i < 1024; State_buff1_i = State_buff1_i + 1)
+			State_buff1[State_buff1_i] = 0;
 	end
 	reg [7 : 0] State_buff2 [0 : 1023];
+	integer State_buff2_i;
 	initial
 	begin : Init_State_buff2
-$readmemh("AXI4MemoryModuleB4_TopLevel_State_buff2.hex", State_buff2);
+		for (State_buff2_i = 0; State_buff2_i < 1024; State_buff2_i = State_buff2_i + 1)
+			State_buff2[State_buff2_i] = 0;
 	end
 	reg [7 : 0] State_buff3 [0 : 1023];
+	integer State_buff3_i;
 	initial
 	begin : Init_State_buff3
-$readmemh("AXI4MemoryModuleB4_TopLevel_State_buff3.hex", State_buff3);
+		for (State_buff3_i = 0; State_buff3_i < 1024; State_buff3_i = State_buff3_i + 1)
+			State_buff3[State_buff3_i] = 0;
 	end
 	wire BoardSignals_Clock;
 	wire BoardSignals_Reset;
@@ -462,8 +470,8 @@ $readmemh("AXI4MemoryModuleB4_TopLevel_State_buff3.hex", State_buff3);
 	assign AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_1_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F21T51_Expr = AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_1_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F21T51_Expr_1 & AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_1_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F21T51_Expr_2;
 	assign AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_2_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F21T51_Expr = AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_2_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F21T51_Expr_1 & AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_2_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F21T51_Expr_2;
 	assign AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_3_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F21T51_Expr = AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_3_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F21T51_Expr_1 & AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_3_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F21T51_Expr_2;
-	AXI4MemoryModuleB4_TopLevel_AXI4MemoryModuleB4_axiSlave
-	AXI4MemoryModuleB4_TopLevel_AXI4MemoryModuleB4_axiSlave
+	AXI4MemoryModuleB4_TopLevel_axiSlave
+	AXI4MemoryModuleB4_TopLevel_axiSlave
 	(
 		// [BEGIN USER MAP FOR axiSlave]
 		// [END USER MAP FOR axiSlave]

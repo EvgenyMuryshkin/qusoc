@@ -11,11 +11,11 @@ Linker script and memory map
 .text           0x0000000000000000      0x1a0
                 0x0000000000000000                . = ALIGN (0x4)
  *(.text)
- .text          0x0000000000000000        0xc /tmp/ccEbMelX.o
- .text          0x000000000000000c       0xcc /tmp/cc6qC8gz.o
+ .text          0x0000000000000000        0xc /tmp/ccDt8Kt1.o
+ .text          0x000000000000000c       0xcc /tmp/cccu9GgQ.o
                 0x000000000000000c                Fibonacci::Firmware::Fib(unsigned long)
                 0x0000000000000090                Fibonacci::Firmware::EntryPoint()
- .text          0x00000000000000d8       0x28 /tmp/ccfZYefb.o
+ .text          0x00000000000000d8       0x28 /tmp/ccnbsxbF.o
                 0x00000000000000d8                main
  *(.text*)
  *(.rodata)
@@ -23,8 +23,8 @@ Linker script and memory map
  *(.srodata)
  *(.srodata*)
  *(.eh_frame)
- .eh_frame      0x0000000000000100       0x68 /tmp/cc6qC8gz.o
- .eh_frame      0x0000000000000168       0x38 /tmp/ccfZYefb.o
+ .eh_frame      0x0000000000000100       0x68 /tmp/cccu9GgQ.o
+ .eh_frame      0x0000000000000168       0x38 /tmp/ccnbsxbF.o
  *(.eh_frame*)
                 0x00000000000001a0                . = ALIGN (0x4)
                 0x00000000000001a0                _etext = .
@@ -35,9 +35,9 @@ Linker script and memory map
                 0x00000000000001a0                _sdata = .
                 0x00000000000001a0                _ram_start = .
  *(.data)
- .data          0x00000000000001a0        0x0 /tmp/ccEbMelX.o
- .data          0x00000000000001a0        0x0 /tmp/cc6qC8gz.o
- .data          0x00000000000001a0        0x0 /tmp/ccfZYefb.o
+ .data          0x00000000000001a0        0x0 /tmp/ccDt8Kt1.o
+ .data          0x00000000000001a0        0x0 /tmp/cccu9GgQ.o
+ .data          0x00000000000001a0        0x0 /tmp/ccnbsxbF.o
  *(.data*)
  *(.sdata)
  *(.sdata*)
@@ -50,9 +50,9 @@ Linker script and memory map
                 0x00000000000001a0                . = ALIGN (0x4)
                 0x00000000000001a0                _sbss = .
  *(.bss)
- .bss           0x00000000000001a0        0x0 /tmp/ccEbMelX.o
- .bss           0x00000000000001a0        0x0 /tmp/cc6qC8gz.o
- .bss           0x00000000000001a0        0x0 /tmp/ccfZYefb.o
+ .bss           0x00000000000001a0        0x0 /tmp/ccDt8Kt1.o
+ .bss           0x00000000000001a0        0x0 /tmp/cccu9GgQ.o
+ .bss           0x00000000000001a0        0x0 /tmp/ccnbsxbF.o
  *(.bss*)
  *(.sbss)
  *(.sbss*)
@@ -63,21 +63,21 @@ Linker script and memory map
 .heap           0x00000000000001a0        0x0
                 0x00000000000001a0                . = ALIGN (0x4)
                 0x00000000000001a0                _heap_start = .
-LOAD /tmp/ccEbMelX.o
-LOAD /tmp/cc6qC8gz.o
-LOAD /tmp/ccfZYefb.o
+LOAD /tmp/ccDt8Kt1.o
+LOAD /tmp/cccu9GgQ.o
+LOAD /tmp/ccnbsxbF.o
 OUTPUT(firmware.elf elf32-littleriscv)
 
 .comment        0x0000000000000000       0x11
- .comment       0x0000000000000000       0x11 /tmp/cc6qC8gz.o
+ .comment       0x0000000000000000       0x11 /tmp/cccu9GgQ.o
                                          0x12 (size before relaxing)
- .comment       0x0000000000000011       0x12 /tmp/ccfZYefb.o
+ .comment       0x0000000000000011       0x12 /tmp/ccnbsxbF.o
 
 Cross Reference Table
 
 Symbol                                            File
-Fibonacci::Firmware::EntryPoint()                 /tmp/cc6qC8gz.o
-                                                  /tmp/ccfZYefb.o
-Fibonacci::Firmware::Fib(unsigned long)           /tmp/cc6qC8gz.o
-main                                              /tmp/ccfZYefb.o
-                                                  /tmp/ccEbMelX.o
+Fibonacci::Firmware::EntryPoint()                 /tmp/cccu9GgQ.o
+                                                  /tmp/ccnbsxbF.o
+Fibonacci::Firmware::Fib(unsigned long)           /tmp/cccu9GgQ.o
+main                                              /tmp/ccnbsxbF.o
+                                                  /tmp/ccDt8Kt1.o

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
+using Quokka.RTL.Tools;
 using Quokka.VCD;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,7 @@ namespace Quokka.RTL
         object IRTLSynchronousModule.RawState => State;
 
         IEnumerable<IRTLPipeline> Pipelines => PipelineProps.Select(p => p.GetValue(this)).OfType<IRTLPipeline>();
+        StateBitArrayAdjust<TState> stateAdjust = new StateBitArrayAdjust<TState>();
 
         public RTLSynchronousModule()
         {
@@ -46,6 +48,8 @@ namespace Quokka.RTL
                 throw new Exception("State is already initialized");
 
             State = state;
+            DefaultState = CopyState();
+            NextState = CopyState();
         }
 
         protected override void OnSetup()
@@ -56,7 +60,8 @@ namespace Quokka.RTL
             if (State == null)
                 State = CreateAndInitializeRelatedObject<TState>();
             
-            NextState = CreateAndInitializeRelatedObject<TState>();
+            if (NextState == null)
+                NextState = CreateAndInitializeRelatedObject<TState>();
 
             PipelineProps = RTLModuleHelper.PipelineProperties(GetType());
 
@@ -65,8 +70,11 @@ namespace Quokka.RTL
                 head.Setup(this);
             }
 
-            // store default state for reset logic
-            DefaultState = CopyState();
+            if (DefaultState == null)
+            {
+                // store default state for reset logic
+                DefaultState = CopyState();
+            }
         }
 
         /*
@@ -202,6 +210,8 @@ namespace Quokka.RTL
 
             NextState = CopyState();
             OnStage();
+
+            stateAdjust.Run(State, NextState);
 
             // indicated processed inputs
             return RTLModuleStageResult.Unstable;

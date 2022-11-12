@@ -64,8 +64,8 @@ module ModuleSignalsMuxModule_TopLevel
 	wire ModuleSignalsMuxModule_L27F26T46_Mux1;
 	wire ModuleSignalsMuxModule_L27F26T46_Mux2;
 	wire ModuleSignalsMuxModule_L27F26T46_Mux3;
-	ModuleSignalsMuxModule_TopLevel_ModuleSignalsMuxModule_AndGate
-	ModuleSignalsMuxModule_TopLevel_ModuleSignalsMuxModule_AndGate
+	ModuleSignalsMuxModule_TopLevel_AndGate
+	ModuleSignalsMuxModule_TopLevel_AndGate
 	(
 		// [BEGIN USER MAP FOR AndGate]
 		// [END USER MAP FOR AndGate]
@@ -73,8 +73,8 @@ module ModuleSignalsMuxModule_TopLevel
 		.I2 (AndGateI2AndGate_I2HardLink),
 		.O (AndGateOAndGate_OHardLink)
 	);
-	ModuleSignalsMuxModule_TopLevel_ModuleSignalsMuxModule_OrGate
-	ModuleSignalsMuxModule_TopLevel_ModuleSignalsMuxModule_OrGate
+	ModuleSignalsMuxModule_TopLevel_OrGate
+	ModuleSignalsMuxModule_TopLevel_OrGate
 	(
 		// [BEGIN USER MAP FOR OrGate]
 		// [END USER MAP FOR OrGate]
@@ -82,8 +82,8 @@ module ModuleSignalsMuxModule_TopLevel
 		.I2 (OrGateI2OrGate_I2HardLink),
 		.O (OrGateOOrGate_OHardLink)
 	);
-	ModuleSignalsMuxModule_TopLevel_ModuleSignalsMuxModule_XorGate
-	ModuleSignalsMuxModule_TopLevel_ModuleSignalsMuxModule_XorGate
+	ModuleSignalsMuxModule_TopLevel_XorGate
+	ModuleSignalsMuxModule_TopLevel_XorGate
 	(
 		// [BEGIN USER MAP FOR XorGate]
 		// [END USER MAP FOR XorGate]

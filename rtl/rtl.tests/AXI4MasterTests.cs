@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Quokka.RTL.Simulator;
+using QuokkaIntegrationTests;
 using rtl.modules;
 using System;
 

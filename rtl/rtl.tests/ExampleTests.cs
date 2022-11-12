@@ -7,6 +7,7 @@ using Quokka.Public.Config;
 using Quokka.Public.Tools;
 using Quokka.RTL;
 using Quokka.RTL.Simulator;
+using QuokkaIntegrationTests;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -101,6 +102,15 @@ namespace RTL.Modules
             Assert.AreEqual(0x9, (byte)sim.TopLevel.Picks);
             Assert.AreEqual(0xD, (byte)sim.TopLevel.FromBits1);
             Assert.AreEqual(0x7, (byte)sim.TopLevel.FromBits2);
+        }
+
+        [TestMethod]
+        public void BitArrayAdderModuleTest()
+        {
+            var sim = new RTLSimulator<BitArrayAdderModule>();
+            sim.TopLevel.Cycle(new BitArrayAdderInputs() { I1 = (byte)0xC2, I2 = (byte)0x42 });
+            sim.TopLevel.Cycle(new BitArrayAdderInputs() { I1 = (byte)0xC2, I2 = (byte)0x43 });
+            sim.TopLevel.Cycle(new BitArrayAdderInputs() { I1 = (byte)0xC2, I2 = (byte)0x44 });
         }
 
         [TestMethod]

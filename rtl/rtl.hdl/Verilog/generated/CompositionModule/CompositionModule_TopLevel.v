@@ -78,8 +78,8 @@ module CompositionModule_TopLevel
 	wire BoardSignals_Started;
 	reg InternalReset = 1'b0;
 	work_Quokka_BoardSignalsProc BoardSignalsConnection(BoardSignals_Clock, BoardSignals_Reset, BoardSignals_Running, BoardSignals_Starting, BoardSignals_Started, Clock, Reset, InternalReset);
-	CompositionModule_TopLevel_CompositionModule_Emitter
-	CompositionModule_TopLevel_CompositionModule_Emitter
+	CompositionModule_TopLevel_Emitter
+	CompositionModule_TopLevel_Emitter
 	(
 		// [BEGIN USER MAP FOR Emitter]
 		// [END USER MAP FOR Emitter]
@@ -93,8 +93,8 @@ module CompositionModule_TopLevel
 		.Data (EmitterDataEmitter_DataHardLink),
 		.HasData (EmitterHasDataEmitter_HasDataHardLink)
 	);
-	CompositionModule_TopLevel_CompositionModule_Transmitter
-	CompositionModule_TopLevel_CompositionModule_Transmitter
+	CompositionModule_TopLevel_Transmitter
+	CompositionModule_TopLevel_Transmitter
 	(
 		// [BEGIN USER MAP FOR Transmitter]
 		// [END USER MAP FOR Transmitter]
@@ -111,8 +111,8 @@ module CompositionModule_TopLevel
 		.IsTransmitting (TransmitterIsTransmittingTransmitter_IsTransmittingHardLink),
 		.IsTransmissionStarted (TransmitterIsTransmissionStartedTransmitter_IsTransmissionStartedHardLink)
 	);
-	CompositionModule_TopLevel_CompositionModule_Receiver
-	CompositionModule_TopLevel_CompositionModule_Receiver
+	CompositionModule_TopLevel_Receiver
+	CompositionModule_TopLevel_Receiver
 	(
 		// [BEGIN USER MAP FOR Receiver]
 		// [END USER MAP FOR Receiver]

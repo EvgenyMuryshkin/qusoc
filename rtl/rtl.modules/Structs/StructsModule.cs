@@ -7,7 +7,10 @@ namespace RTL.Modules
 {
     public class Data
     {
+        [MemberIndex(0)]
         public byte Op1 = 10;
+
+        [MemberIndex(1)]
         public byte Op2 = 20;
     }
 

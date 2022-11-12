@@ -82,7 +82,8 @@ namespace Quokka.RTL.Local
         Type IRTLPipelineDiagnostics.ResultType => Diag.Stages.Last().Diag.ResultType;
 
         bool IRTLPipelineDiagnostics.HasControlSignals => Diag.Stages.Any(s => s.Diag.HasControlSignals);
-
+        object IRTLPipelineDiagnostics.Source => Diag.Stages.First().Diag.Source;
+        object IRTLPipelineDiagnostics.Result => Diag.Stages.Last().Diag.Result;
         #endregion
 
         public IRTLPipelinePeek<TState> Peek<TState>()

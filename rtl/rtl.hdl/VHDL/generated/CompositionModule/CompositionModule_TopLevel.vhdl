@@ -80,43 +80,46 @@ architecture rtl of CompositionModule_TopLevel is
 	signal InternalReset : std_logic := '0';
 begin
 	work.Quokka.BoardSignalsProc(BoardSignals, Clock, Reset, InternalReset);
-	CompositionModule_TopLevel_CompositionModule_Emitter : entity work.CompositionModule_TopLevel_CompositionModule_Emitter
+	CompositionModule_TopLevel_Emitter : entity work.CompositionModule_TopLevel_Emitter
 	port map
 	(
 		-- [BEGIN USER MAP FOR Emitter]
 		-- [END USER MAP FOR Emitter]
-BoardSignals => BoardSignals,
-IsEnabled => EmitterIsEnabledEmitter_IsEnabledHardLink,
-Ack => EmitterAckEmitter_AckHardLink,
-Data => EmitterDataEmitter_DataHardLink,
-HasData => EmitterHasDataEmitter_HasDataHardLink
-	);
-	CompositionModule_TopLevel_CompositionModule_Transmitter : entity work.CompositionModule_TopLevel_CompositionModule_Transmitter
+		BoardSignals => BoardSignals,
+		IsEnabled => EmitterIsEnabledEmitter_IsEnabledHardLink,
+		Ack => EmitterAckEmitter_AckHardLink,
+		Data => EmitterDataEmitter_DataHardLink,
+		HasData => EmitterHasDataEmitter_HasDataHardLink
+	)
+	;
+	CompositionModule_TopLevel_Transmitter : entity work.CompositionModule_TopLevel_Transmitter
 	port map
 	(
 		-- [BEGIN USER MAP FOR Transmitter]
 		-- [END USER MAP FOR Transmitter]
-BoardSignals => BoardSignals,
-Trigger => TransmitterTriggerTransmitter_TriggerHardLink,
-Ack => TransmitterAckTransmitter_AckHardLink,
-Data => TransmitterDataTransmitter_DataHardLink,
-Bit => TransmitterBitTransmitter_BitHardLink,
-IsReady => TransmitterIsReadyTransmitter_IsReadyHardLink,
-IsTransmitting => TransmitterIsTransmittingTransmitter_IsTransmittingHardLink,
-IsTransmissionStarted => TransmitterIsTransmissionStartedTransmitter_IsTransmissionStartedHardLink
-	);
-	CompositionModule_TopLevel_CompositionModule_Receiver : entity work.CompositionModule_TopLevel_CompositionModule_Receiver
+		BoardSignals => BoardSignals,
+		Trigger => TransmitterTriggerTransmitter_TriggerHardLink,
+		Ack => TransmitterAckTransmitter_AckHardLink,
+		Data => TransmitterDataTransmitter_DataHardLink,
+		Bit => TransmitterBitTransmitter_BitHardLink,
+		IsReady => TransmitterIsReadyTransmitter_IsReadyHardLink,
+		IsTransmitting => TransmitterIsTransmittingTransmitter_IsTransmittingHardLink,
+		IsTransmissionStarted => TransmitterIsTransmissionStartedTransmitter_IsTransmissionStartedHardLink
+	)
+	;
+	CompositionModule_TopLevel_Receiver : entity work.CompositionModule_TopLevel_Receiver
 	port map
 	(
 		-- [BEGIN USER MAP FOR Receiver]
 		-- [END USER MAP FOR Receiver]
-BoardSignals => BoardSignals,
-IsValid => ReceiverIsValidReceiver_IsValidHardLink,
-Ack => ReceiverAckReceiver_AckHardLink,
-Bit => ReceiverBitReceiver_BitHardLink,
-HasData => ReceiverHasDataReceiver_HasDataHardLink,
-Data => ReceiverDataReceiver_DataHardLink
-	);
+		BoardSignals => BoardSignals,
+		IsValid => ReceiverIsValidReceiver_IsValidHardLink,
+		Ack => ReceiverAckReceiver_AckHardLink,
+		Bit => ReceiverBitReceiver_BitHardLink,
+		HasData => ReceiverHasDataReceiver_HasDataHardLink,
+		Data => ReceiverDataReceiver_DataHardLink
+	)
+	;
 	process (Emitter_Ack, Emitter_Data, Emitter_HasData, Emitter_IsEnabled, EmitterDataEmitter_DataHardLink, EmitterHasDataEmitter_HasDataHardLink, Inputs_IsEnabled, IsEnabled, Receiver_Ack, Receiver_Bit, Receiver_Data, Receiver_HasData, Receiver_IsValid, ReceiverDataReceiver_DataHardLink, ReceiverHasDataReceiver_HasDataHardLink, Transmitter_Ack, Transmitter_Bit, Transmitter_Data, Transmitter_IsReady, Transmitter_IsTransmitting, Transmitter_Trigger, TransmitterBitTransmitter_BitHardLink, TransmitterIsReadyTransmitter_IsReadyHardLink, TransmitterIsTransmissionStartedTransmitter_IsTransmissionStartedHardLink, TransmitterIsTransmittingTransmitter_IsTransmittingHardLink)
 	begin
 		Inputs_IsEnabled <= IsEnabled;

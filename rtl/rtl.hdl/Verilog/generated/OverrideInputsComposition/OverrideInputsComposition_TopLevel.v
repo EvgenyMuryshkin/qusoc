@@ -91,8 +91,8 @@ module OverrideInputsComposition_TopLevel
 	wire [7: 0] OverrideInputsComposition_L7F38T72_Expr_1;
 	assign OverrideInputsComposition_L14F30T48_Expr = ~OverrideInputsComposition_L14F30T48_Expr_1;
 	assign OverrideInputsComposition_L7F38T72_Expr = ~OverrideInputsComposition_L7F38T72_Expr_1;
-	OverrideInputsComposition_TopLevel_OverrideInputsComposition_NoOverride
-	OverrideInputsComposition_TopLevel_OverrideInputsComposition_NoOverride
+	OverrideInputsComposition_TopLevel_NoOverride
+	OverrideInputsComposition_TopLevel_NoOverride
 	(
 		// [BEGIN USER MAP FOR NoOverride]
 		// [END USER MAP FOR NoOverride]
@@ -100,8 +100,8 @@ module OverrideInputsComposition_TopLevel
 		.InValue (NoOverrideInValueNoOverride_InValueHardLink),
 		.OutValue (NoOverrideOutValueNoOverride_OutValueHardLink)
 	);
-	OverrideInputsComposition_TopLevel_OverrideInputsComposition_AutoOverride
-	OverrideInputsComposition_TopLevel_OverrideInputsComposition_AutoOverride
+	OverrideInputsComposition_TopLevel_AutoOverride
+	OverrideInputsComposition_TopLevel_AutoOverride
 	(
 		// [BEGIN USER MAP FOR AutoOverride]
 		// [END USER MAP FOR AutoOverride]
@@ -109,8 +109,8 @@ module OverrideInputsComposition_TopLevel
 		.InValue (AutoOverrideInValueAutoOverride_InValueHardLink),
 		.OutValue (AutoOverrideOutValueAutoOverride_OutValueHardLink)
 	);
-	OverrideInputsComposition_TopLevel_OverrideInputsComposition_GetOverride
-	OverrideInputsComposition_TopLevel_OverrideInputsComposition_GetOverride
+	OverrideInputsComposition_TopLevel_GetOverride
+	OverrideInputsComposition_TopLevel_GetOverride
 	(
 		// [BEGIN USER MAP FOR GetOverride]
 		// [END USER MAP FOR GetOverride]
@@ -118,8 +118,8 @@ module OverrideInputsComposition_TopLevel
 		.InValue (GetOverrideInValueGetOverride_InValueHardLink),
 		.OutValue (GetOverrideOutValueGetOverride_OutValueHardLink)
 	);
-	OverrideInputsComposition_TopLevel_OverrideInputsComposition_L1Override
-	OverrideInputsComposition_TopLevel_OverrideInputsComposition_L1Override
+	OverrideInputsComposition_TopLevel_L1Override
+	OverrideInputsComposition_TopLevel_L1Override
 	(
 		// [BEGIN USER MAP FOR L1Override]
 		// [END USER MAP FOR L1Override]
@@ -127,8 +127,8 @@ module OverrideInputsComposition_TopLevel
 		.InValue (L1OverrideInValueL1Override_InValueHardLink),
 		.OutValue (L1OverrideOutValueL1Override_OutValueHardLink)
 	);
-	OverrideInputsComposition_TopLevel_OverrideInputsComposition_L2Override
-	OverrideInputsComposition_TopLevel_OverrideInputsComposition_L2Override
+	OverrideInputsComposition_TopLevel_L2Override
+	OverrideInputsComposition_TopLevel_L2Override
 	(
 		// [BEGIN USER MAP FOR L2Override]
 		// [END USER MAP FOR L2Override]
@@ -136,8 +136,8 @@ module OverrideInputsComposition_TopLevel
 		.InValue (L2OverrideInValueL2Override_InValueHardLink),
 		.OutValue (L2OverrideOutValueL2Override_OutValueHardLink)
 	);
-	OverrideInputsComposition_TopLevel_OverrideInputsComposition_L3Override
-	OverrideInputsComposition_TopLevel_OverrideInputsComposition_L3Override
+	OverrideInputsComposition_TopLevel_L3Override
+	OverrideInputsComposition_TopLevel_L3Override
 	(
 		// [BEGIN USER MAP FOR L3Override]
 		// [END USER MAP FOR L3Override]

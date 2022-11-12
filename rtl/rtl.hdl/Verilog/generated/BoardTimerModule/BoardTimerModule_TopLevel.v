@@ -54,8 +54,8 @@ module BoardTimerModule_TopLevel
 	wire BoardSignals_Started;
 	reg InternalReset = 1'b0;
 	work_Quokka_BoardSignalsProc BoardSignalsConnection(BoardSignals_Clock, BoardSignals_Reset, BoardSignals_Running, BoardSignals_Starting, BoardSignals_Started, Clock, Reset, InternalReset);
-	BoardTimerModule_TopLevel_BoardTimerModule_timerModule10
-	BoardTimerModule_TopLevel_BoardTimerModule_timerModule10
+	BoardTimerModule_TopLevel_timerModule10
+	BoardTimerModule_TopLevel_timerModule10
 	(
 		// [BEGIN USER MAP FOR timerModule10]
 		// [END USER MAP FOR timerModule10]
@@ -67,8 +67,8 @@ module BoardTimerModule_TopLevel
 		.Restart (timerModule10RestarttimerModule10_RestartHardLink),
 		.OutActive (timerModule10OutActivetimerModule10_OutActiveHardLink)
 	);
-	BoardTimerModule_TopLevel_BoardTimerModule_timerModule20
-	BoardTimerModule_TopLevel_BoardTimerModule_timerModule20
+	BoardTimerModule_TopLevel_timerModule20
+	BoardTimerModule_TopLevel_timerModule20
 	(
 		// [BEGIN USER MAP FOR timerModule20]
 		// [END USER MAP FOR timerModule20]

@@ -58,24 +58,32 @@ module SDP_RF_WSTRB_RAMModule_TopLevel
 	integer State_ReadData_Iterator;
 	reg [7 : 0] State_ReadData [0 : 3];
 	reg [7 : 0] State_Buff0 [0 : 31];
+	integer State_Buff0_i;
 	initial
 	begin : Init_State_Buff0
-$readmemh("SDP_RF_WSTRB_RAMModule_TopLevel_State_Buff0.hex", State_Buff0);
+		for (State_Buff0_i = 0; State_Buff0_i < 32; State_Buff0_i = State_Buff0_i + 1)
+			State_Buff0[State_Buff0_i] = 0;
 	end
 	reg [7 : 0] State_Buff1 [0 : 31];
+	integer State_Buff1_i;
 	initial
 	begin : Init_State_Buff1
-$readmemh("SDP_RF_WSTRB_RAMModule_TopLevel_State_Buff1.hex", State_Buff1);
+		for (State_Buff1_i = 0; State_Buff1_i < 32; State_Buff1_i = State_Buff1_i + 1)
+			State_Buff1[State_Buff1_i] = 0;
 	end
 	reg [7 : 0] State_Buff2 [0 : 31];
+	integer State_Buff2_i;
 	initial
 	begin : Init_State_Buff2
-$readmemh("SDP_RF_WSTRB_RAMModule_TopLevel_State_Buff2.hex", State_Buff2);
+		for (State_Buff2_i = 0; State_Buff2_i < 32; State_Buff2_i = State_Buff2_i + 1)
+			State_Buff2[State_Buff2_i] = 0;
 	end
 	reg [7 : 0] State_Buff3 [0 : 31];
+	integer State_Buff3_i;
 	initial
 	begin : Init_State_Buff3
-$readmemh("SDP_RF_WSTRB_RAMModule_TopLevel_State_Buff3.hex", State_Buff3);
+		for (State_Buff3_i = 0; State_Buff3_i < 32; State_Buff3_i = State_Buff3_i + 1)
+			State_Buff3[State_Buff3_i] = 0;
 	end
 	// inferred simple dual port RAM with read-first behaviour
 	always @ (posedge Clock)

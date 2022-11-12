@@ -1,5 +1,7 @@
 ﻿using Quokka.RTL.Simulator;
 using Quokka.RTL.Tools;
+using Quokka.RTL.Verilog;
+using Quokka.RTL.VHDL;
 using Quokka.VCD;
 using System;
 using System.Collections;
@@ -400,5 +402,8 @@ namespace Quokka.RTL
         {
             action();
         }
+
+        [RTLNonSynthesizable]
+        public virtual IRTLModuleTranslator InstanceTranslator(IRTLModuleTranslatorDeps deps) => null;
     }
 }

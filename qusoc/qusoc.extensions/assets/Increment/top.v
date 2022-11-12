@@ -77,7 +77,7 @@ module top (
   wire [31:0] counter;
   assign led = counter[20:17];
   
-  Increment_TopLevel Increment_TopLevel
+  Increment_TopLevel_TopLevel Increment_TopLevel_TopLevel
   (
     .Clock (clk100),
     .Reset (!isRunning || !locked),

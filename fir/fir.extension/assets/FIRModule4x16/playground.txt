@@ -1,0 +1,62 @@
+﻿    -- coefficients write logic
+    subtype signals_coef is std_logic;
+        signal
+            coef_wr_cnt_cell
+                : std_logic_vector(8 downto 0) := (others => '0');
+        signal
+            coef_wr_cnt_ram
+                : std_logic_vector(log2(g_order) downto 0) := (others => '0');
+        signal
+            coef_ram_wr
+                : std_logic_vector(0 to g_order - 1) := (others => '0');
+        signal
+            coef_ram_wr_addr
+                : slv9_array(0 to g_order - 1) := (others => (others => '0'));
+        signal
+            coef_ram_wr_data
+                : slv16_array(0 to g_order - 1) := (others => (others => '0'));
+        signal
+            coef_ram_cnt
+                : std_logic_vector(15 downto 0) := (others => '0');
+
+
+
+    p_coef : process(iCLK)
+    begin
+        if (rising_edge(iCLK)) then
+            if (ib_coef_v = '1') then
+                if (coef_wr_cnt_cell = set_coef_mask) then
+                    coef_wr_cnt_cell <= (others => '0');
+                    coef_ram_cnt <= ext(coef_wr_cnt_ram, 16) + '1';
+                    if (coef_wr_cnt_ram = 2 * g_order - 1) then
+                        coef_wr_cnt_ram <= (others => '0');
+                    else
+                        coef_wr_cnt_ram <= coef_wr_cnt_ram + '1';
+                    end if;
+                else
+                    coef_wr_cnt_cell <= coef_wr_cnt_cell + '1';
+                end if;
+            end if; -- WRITE
+
+            for a in 0 to g_order - 1 loop
+                if (conv_integer(coef_wr_cnt_ram) = a) then
+                    coef_ram_wr(a) <= ib_coef_v;
+                    coef_ram_wr_addr(a) <= coef_wr_cnt_cell;
+                    coef_ram_wr_data(a) <= ib_coef;
+                else
+                    coef_ram_wr(a) <= '0';
+                    coef_ram_wr_addr(a) <= (others => '0');
+                    coef_ram_wr_data(a) <= (others => '0');
+                end if;
+            end loop;
+
+            if (conv_integer(coef_ram_cnt) = 2 * c_coef_num_array(0)) then
+            -- loading is done
+                ob_coef_rdy         <= '1';
+            else
+                ob_coef_rdy         <= '0';
+            end if;
+        end if; -- CLK
+    end process;
+
+    ob_coef_cnt                     <= coef_ram_cnt;

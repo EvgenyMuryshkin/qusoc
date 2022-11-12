@@ -56,24 +56,26 @@ architecture rtl of BoardTimerModule_TopLevel is
 	signal InternalReset : std_logic := '0';
 begin
 	work.Quokka.BoardSignalsProc(BoardSignals, Clock, Reset, InternalReset);
-	BoardTimerModule_TopLevel_BoardTimerModule_timerModule10 : entity work.BoardTimerModule_TopLevel_BoardTimerModule_timerModule10
+	BoardTimerModule_TopLevel_timerModule10 : entity work.BoardTimerModule_TopLevel_timerModule10
 	port map
 	(
 		-- [BEGIN USER MAP FOR timerModule10]
 		-- [END USER MAP FOR timerModule10]
-BoardSignals => BoardSignals,
-Restart => timerModule10RestarttimerModule10_RestartHardLink,
-OutActive => timerModule10OutActivetimerModule10_OutActiveHardLink
-	);
-	BoardTimerModule_TopLevel_BoardTimerModule_timerModule20 : entity work.BoardTimerModule_TopLevel_BoardTimerModule_timerModule20
+		BoardSignals => BoardSignals,
+		Restart => timerModule10RestarttimerModule10_RestartHardLink,
+		OutActive => timerModule10OutActivetimerModule10_OutActiveHardLink
+	)
+	;
+	BoardTimerModule_TopLevel_timerModule20 : entity work.BoardTimerModule_TopLevel_timerModule20
 	port map
 	(
 		-- [BEGIN USER MAP FOR timerModule20]
 		-- [END USER MAP FOR timerModule20]
-BoardSignals => BoardSignals,
-Restart => timerModule20RestarttimerModule20_RestartHardLink,
-OutActive => timerModule20OutActivetimerModule20_OutActiveHardLink
-	);
+		BoardSignals => BoardSignals,
+		Restart => timerModule20RestarttimerModule20_RestartHardLink,
+		OutActive => timerModule20OutActivetimerModule20_OutActiveHardLink
+	)
+	;
 	process (Inputs_Restart, nestedTimerInputs_Restart, Restart, timerModule10_OutActive, timerModule10_Restart, timerModule10OutActivetimerModule10_OutActiveHardLink, timerModule20_OutActive, timerModule20_Restart, timerModule20OutActivetimerModule20_OutActiveHardLink)
 	begin
 		Inputs_Restart <= Restart;

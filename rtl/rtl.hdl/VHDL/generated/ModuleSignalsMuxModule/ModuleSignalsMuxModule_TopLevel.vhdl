@@ -70,33 +70,36 @@ architecture rtl of ModuleSignalsMuxModule_TopLevel is
 	signal ModuleSignalsMuxModule_L27F26T46_Mux2 : std_logic := '0';
 	signal ModuleSignalsMuxModule_L27F26T46_Mux3 : std_logic := '0';
 begin
-	ModuleSignalsMuxModule_TopLevel_ModuleSignalsMuxModule_AndGate : entity work.ModuleSignalsMuxModule_TopLevel_ModuleSignalsMuxModule_AndGate
+	ModuleSignalsMuxModule_TopLevel_AndGate : entity work.ModuleSignalsMuxModule_TopLevel_AndGate
 	port map
 	(
 		-- [BEGIN USER MAP FOR AndGate]
 		-- [END USER MAP FOR AndGate]
-I1 => AndGateI1AndGate_I1HardLink,
-I2 => AndGateI2AndGate_I2HardLink,
-O => AndGateOAndGate_OHardLink
-	);
-	ModuleSignalsMuxModule_TopLevel_ModuleSignalsMuxModule_OrGate : entity work.ModuleSignalsMuxModule_TopLevel_ModuleSignalsMuxModule_OrGate
+		I1 => AndGateI1AndGate_I1HardLink,
+		I2 => AndGateI2AndGate_I2HardLink,
+		O => AndGateOAndGate_OHardLink
+	)
+	;
+	ModuleSignalsMuxModule_TopLevel_OrGate : entity work.ModuleSignalsMuxModule_TopLevel_OrGate
 	port map
 	(
 		-- [BEGIN USER MAP FOR OrGate]
 		-- [END USER MAP FOR OrGate]
-I1 => OrGateI1OrGate_I1HardLink,
-I2 => OrGateI2OrGate_I2HardLink,
-O => OrGateOOrGate_OHardLink
-	);
-	ModuleSignalsMuxModule_TopLevel_ModuleSignalsMuxModule_XorGate : entity work.ModuleSignalsMuxModule_TopLevel_ModuleSignalsMuxModule_XorGate
+		I1 => OrGateI1OrGate_I1HardLink,
+		I2 => OrGateI2OrGate_I2HardLink,
+		O => OrGateOOrGate_OHardLink
+	)
+	;
+	ModuleSignalsMuxModule_TopLevel_XorGate : entity work.ModuleSignalsMuxModule_TopLevel_XorGate
 	port map
 	(
 		-- [BEGIN USER MAP FOR XorGate]
 		-- [END USER MAP FOR XorGate]
-I1 => XorGateI1XorGate_I1HardLink,
-I2 => XorGateI2XorGate_I2HardLink,
-O => XorGateOXorGate_OHardLink
-	);
+		I1 => XorGateI1XorGate_I1HardLink,
+		I2 => XorGateI2XorGate_I2HardLink,
+		O => XorGateOXorGate_OHardLink
+	)
+	;
 	process (ModuleSignalsMuxModule_L27F26T46_Mux1, ModuleSignalsMuxModule_L27F26T46_Mux2, ModuleSignalsMuxModule_L27F26T46_Mux3, ModuleSignalsMuxModule_L27F26T46_MuxMultiplexerAddress)
 	begin
 		case ModuleSignalsMuxModule_L27F26T46_MuxMultiplexerAddress is

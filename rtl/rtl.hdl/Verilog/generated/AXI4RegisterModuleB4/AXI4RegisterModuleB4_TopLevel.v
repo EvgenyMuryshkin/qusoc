@@ -337,8 +337,8 @@ module AXI4RegisterModuleB4_TopLevel
 	end
 	assign AXI4RegisterModule_L61F28T40_Expr = ~AXI4RegisterModule_L61F28T40_Expr_1;
 	assign AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr = AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr_1 | AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr_2;
-	AXI4RegisterModuleB4_TopLevel_AXI4RegisterModuleB4_axiSlave
-	AXI4RegisterModuleB4_TopLevel_AXI4RegisterModuleB4_axiSlave
+	AXI4RegisterModuleB4_TopLevel_axiSlave
+	AXI4RegisterModuleB4_TopLevel_axiSlave
 	(
 		// [BEGIN USER MAP FOR axiSlave]
 		// [END USER MAP FOR axiSlave]

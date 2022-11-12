@@ -298,3 +298,5 @@ __pycache__/
 /AES/AES.HDL/db/**
 /rtl/rtl.hdl/Verilog/generated/Vivado/*
 /qusoc/qusoc.hdl/Verilog/generated/Vivado/**
+/fir/fir.modules/hdl/VHDL/generated/Vivado/*
+/fir/fir.modules/hdl/Verilog/generated/Vivado/**

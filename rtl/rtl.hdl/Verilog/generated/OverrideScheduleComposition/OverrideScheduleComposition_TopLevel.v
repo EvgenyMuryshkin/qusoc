@@ -91,8 +91,8 @@ module OverrideScheduleComposition_TopLevel
 	wire [7: 0] OverrideInputsComposition_L7F38T72_Expr_1;
 	assign OverrideInputsComposition_L14F30T48_Expr = ~OverrideInputsComposition_L14F30T48_Expr_1;
 	assign OverrideInputsComposition_L7F38T72_Expr = ~OverrideInputsComposition_L7F38T72_Expr_1;
-	OverrideScheduleComposition_TopLevel_OverrideScheduleComposition_NoOverride
-	OverrideScheduleComposition_TopLevel_OverrideScheduleComposition_NoOverride
+	OverrideScheduleComposition_TopLevel_NoOverride
+	OverrideScheduleComposition_TopLevel_NoOverride
 	(
 		// [BEGIN USER MAP FOR NoOverride]
 		// [END USER MAP FOR NoOverride]
@@ -100,8 +100,8 @@ module OverrideScheduleComposition_TopLevel
 		.InValue (NoOverrideInValueNoOverride_InValueHardLink),
 		.OutValue (NoOverrideOutValueNoOverride_OutValueHardLink)
 	);
-	OverrideScheduleComposition_TopLevel_OverrideScheduleComposition_AutoOverride
-	OverrideScheduleComposition_TopLevel_OverrideScheduleComposition_AutoOverride
+	OverrideScheduleComposition_TopLevel_AutoOverride
+	OverrideScheduleComposition_TopLevel_AutoOverride
 	(
 		// [BEGIN USER MAP FOR AutoOverride]
 		// [END USER MAP FOR AutoOverride]
@@ -109,8 +109,8 @@ module OverrideScheduleComposition_TopLevel
 		.InValue (AutoOverrideInValueAutoOverride_InValueHardLink),
 		.OutValue (AutoOverrideOutValueAutoOverride_OutValueHardLink)
 	);
-	OverrideScheduleComposition_TopLevel_OverrideScheduleComposition_GetOverride
-	OverrideScheduleComposition_TopLevel_OverrideScheduleComposition_GetOverride
+	OverrideScheduleComposition_TopLevel_GetOverride
+	OverrideScheduleComposition_TopLevel_GetOverride
 	(
 		// [BEGIN USER MAP FOR GetOverride]
 		// [END USER MAP FOR GetOverride]
@@ -118,8 +118,8 @@ module OverrideScheduleComposition_TopLevel
 		.InValue (GetOverrideInValueGetOverride_InValueHardLink),
 		.OutValue (GetOverrideOutValueGetOverride_OutValueHardLink)
 	);
-	OverrideScheduleComposition_TopLevel_OverrideScheduleComposition_L1Override
-	OverrideScheduleComposition_TopLevel_OverrideScheduleComposition_L1Override
+	OverrideScheduleComposition_TopLevel_L1Override
+	OverrideScheduleComposition_TopLevel_L1Override
 	(
 		// [BEGIN USER MAP FOR L1Override]
 		// [END USER MAP FOR L1Override]
@@ -127,8 +127,8 @@ module OverrideScheduleComposition_TopLevel
 		.InValue (L1OverrideInValueL1Override_InValueHardLink),
 		.OutValue (L1OverrideOutValueL1Override_OutValueHardLink)
 	);
-	OverrideScheduleComposition_TopLevel_OverrideScheduleComposition_L2Override
-	OverrideScheduleComposition_TopLevel_OverrideScheduleComposition_L2Override
+	OverrideScheduleComposition_TopLevel_L2Override
+	OverrideScheduleComposition_TopLevel_L2Override
 	(
 		// [BEGIN USER MAP FOR L2Override]
 		// [END USER MAP FOR L2Override]
@@ -136,8 +136,8 @@ module OverrideScheduleComposition_TopLevel
 		.InValue (L2OverrideInValueL2Override_InValueHardLink),
 		.OutValue (L2OverrideOutValueL2Override_OutValueHardLink)
 	);
-	OverrideScheduleComposition_TopLevel_OverrideScheduleComposition_L3Override
-	OverrideScheduleComposition_TopLevel_OverrideScheduleComposition_L3Override
+	OverrideScheduleComposition_TopLevel_L3Override
+	OverrideScheduleComposition_TopLevel_L3Override
 	(
 		// [BEGIN USER MAP FOR L3Override]
 		// [END USER MAP FOR L3Override]

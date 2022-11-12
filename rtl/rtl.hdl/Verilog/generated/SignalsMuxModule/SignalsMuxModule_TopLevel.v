@@ -43,48 +43,19 @@ module SignalsMuxModule_TopLevel
 	wire [7: 0] Inputs_Sig1;
 	wire [7: 0] Inputs_Sig2;
 	wire [7: 0] Inputs_Sig3;
-	reg [7: 0] SignalsMuxModule_L24F30T50_Mux = 8'b00000000;
-	wire [1: 0] SignalsMuxModule_L24F30T50_MuxMultiplexerAddress;
-	wire [7: 0] SignalsMuxModule_L24F30T50_Mux1;
-	wire [7: 0] SignalsMuxModule_L24F30T50_Mux2;
-	wire [7: 0] SignalsMuxModule_L24F30T50_Mux3;
-	wire [7: 0] SignalsMuxModule_L24F30T50_Mux4;
-	always @ (*)
-	begin
-		case (SignalsMuxModule_L24F30T50_MuxMultiplexerAddress)
-			'b00:
-			begin
-				SignalsMuxModule_L24F30T50_Mux = SignalsMuxModule_L24F30T50_Mux1;
-			end
-			'b01:
-			begin
-				SignalsMuxModule_L24F30T50_Mux = SignalsMuxModule_L24F30T50_Mux2;
-			end
-			'b10:
-			begin
-				SignalsMuxModule_L24F30T50_Mux = SignalsMuxModule_L24F30T50_Mux3;
-			end
-			'b11:
-			begin
-				SignalsMuxModule_L24F30T50_Mux = SignalsMuxModule_L24F30T50_Mux4;
-			end
-			default:
-			begin
-				SignalsMuxModule_L24F30T50_Mux = 'b00000000;
-			end
-		endcase
-	end
+	wire [7: 0] SignalsMuxModule_L24F30T50_Index;
+	wire [7 : 0] signals [0 : 3];
 	assign Inputs_Addr = Addr;
 	assign Inputs_Sig0 = Sig0;
 	assign Inputs_Sig1 = Sig1;
 	assign Inputs_Sig2 = Sig2;
 	assign Inputs_Sig3 = Sig3;
-	assign Value = SignalsMuxModule_L24F30T50_Mux;
-	assign SignalsMuxModule_L24F30T50_Mux1 = Inputs_Sig0;
-	assign SignalsMuxModule_L24F30T50_Mux2 = Inputs_Sig1;
-	assign SignalsMuxModule_L24F30T50_Mux3 = Inputs_Sig2;
-	assign SignalsMuxModule_L24F30T50_Mux4 = Inputs_Sig3;
-	assign SignalsMuxModule_L24F30T50_MuxMultiplexerAddress = Inputs_Addr;
+	assign signals[0] = Inputs_Sig0;
+	assign signals[1] = Inputs_Sig1;
+	assign signals[2] = Inputs_Sig2;
+	assign signals[3] = Inputs_Sig3;
+	assign Value = SignalsMuxModule_L24F30T50_Index;
+	assign SignalsMuxModule_L24F30T50_Index = signals[Inputs_Addr];
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

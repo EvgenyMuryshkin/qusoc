@@ -1,5 +1,5 @@
 $date
-Saturday, 11 June 2022 5:08:26 PM
+Thursday, 25 August 2022 10:15:35 PM
 $end
 $version
 Quokka VCD Generator
@@ -95,7 +95,7 @@ $end
 $enddefinitions
 $end
 #0
-1TOP_Control_Clock
+0TOP_Control_Clock
 0TOP_Inputs_Restart
 0TOP_Outputs_OutActive10
 0TOP_Outputs_OutActive20
@@ -117,8 +117,6 @@ b00000 TOP_timerModule20_NextState_counter
 #1
 b0001 TOP_timerModule10_NextState_counter
 b00001 TOP_timerModule20_NextState_counter
-#1000
-0TOP_Control_Clock
 #2000
 1TOP_Control_Clock
 b0001 TOP_timerModule10_State_counter
@@ -1104,3 +1102,8 @@ b0000 TOP_timerModule10_State_counter
 0TOP_timerModule20_Outputs_OutActive
 0TOP_timerModule20_Internals_active
 b00000 TOP_timerModule20_State_counter
+#200001
+b0001 TOP_timerModule10_NextState_counter
+b00001 TOP_timerModule20_NextState_counter
+#201000
+0TOP_Control_Clock

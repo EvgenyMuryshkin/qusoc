@@ -26,6 +26,7 @@ namespace Quokka.RTL.Simulator
         public void NextMilestone()
         {
             MilestoneTime += MaxDeltaCycles;
+            MilestoneOffset = 0;
         }
     }
 }

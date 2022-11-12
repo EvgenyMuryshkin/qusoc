@@ -4,6 +4,7 @@ using Quokka.Public.Config;
 using Quokka.Public.Tools;
 using Quokka.RTL;
 using Quokka.RTL.Simulator;
+using QuokkaIntegrationTests;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -22,7 +23,8 @@ namespace RTL.Modules
         [TestMethod]
         public void LogicRAMIndexingModuleTest()
         {
-            var sim = new RTLSimulator<LogicRAMIndexingModule, LogicRAMIndexingModuleInputs>(VCDOutputPath(), withTestbench: true);
+            var vcdOutput = VCDOutputPath();
+            var sim = new RTLSimulator<LogicRAMIndexingModule, LogicRAMIndexingModuleInputs>(vcdOutput, withTestbench: true);
             var tl = sim.TopLevel;
             sim.ClockCycle(new LogicRAMIndexingModuleInputs() { WE = true, WriteAddr = 0, WriteData = 0x66 });
             sim.ClockCycle(new LogicRAMIndexingModuleInputs() { WE = true, WriteAddr = 1, WriteData = 0xAA });

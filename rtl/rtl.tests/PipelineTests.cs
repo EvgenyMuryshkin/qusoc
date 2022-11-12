@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Quokka.RTL;
 using Quokka.RTL.Simulator;
+using QuokkaIntegrationTests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -287,16 +288,16 @@ namespace RTL.Modules
             };
 
             t.ClockCycle(new StallControlInputs() { inProcessed = true, inData = 3, inReady = true });
-            assert(new StallControlOutput());
+            assert(new StallControlOutput() { stage0WillStall = true });
 
             t.ClockCycle(new StallControlInputs { inProcessed = true });
-            assert(new StallControlOutput() { result = 1, stage0Stalled = true });
+            assert(new StallControlOutput() { result = 1, stage0Stalled = true, stage0WillStall = true });
 
             t.ClockCycle(new StallControlInputs { inProcessed = true });
-            assert(new StallControlOutput() { result = 5, stage0Stalled = true });
+            assert(new StallControlOutput() { result = 5, stage0Stalled = true, stage0WillStall = true });
 
             t.ClockCycle(new StallControlInputs { inProcessed = true });
-            assert(new StallControlOutput() { result = 9, stage0Stalled = true });
+            assert(new StallControlOutput() { result = 9, stage0Stalled = true, stage0WillStall = true });
 
             t.ClockCycle(new StallControlInputs { inProcessed = true, inReady = true });
             assert(new StallControlOutput() { result = 13 });

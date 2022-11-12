@@ -47,15 +47,15 @@ architecture rtl of LoopModule_TopLevel is
 	constant false : std_logic := '0';
 	constant LoopModule_L85F13L96T14_LoopModule_L86F32T37_Expr : std_logic := '0';
 	constant LoopModule_L85F13L96T14_LoopModule_L87F31T32_Expr : std_logic := '0';
-	constant LoopModule_L85F13L96T14_Inputs_InData_Size : unsigned(3 downto 0) := "1000";
-	constant LoopModule_L16F13L23T14_Inputs_InData_Size : unsigned(3 downto 0) := "1000";
+	constant LoopModule_L85F13L96T14_LoopModule_L88F17L93T18_Inputs_InData_Size : unsigned(3 downto 0) := "1000";
+	constant LoopModule_L16F13L23T14_LoopModule_L18F17L21T18_Inputs_InData_Size : unsigned(3 downto 0) := "1000";
 	constant LoopModule_L29F13L36T14_LoopModule_L30F31T35_Expr : std_logic := '1';
-	constant LoopModule_L29F13L36T14_Inputs_InData_Size : unsigned(3 downto 0) := "1000";
-	constant LoopModule_L42F13L49T14_Inputs_InData_Size : unsigned(3 downto 0) := "1000";
+	constant LoopModule_L29F13L36T14_LoopModule_L31F17L34T18_Inputs_InData_Size : unsigned(3 downto 0) := "1000";
+	constant LoopModule_L42F13L49T14_LoopModule_L44F17L47T18_Inputs_InData_Size : unsigned(3 downto 0) := "1000";
 	constant LoopModule_L55F13L64T14_LoopModule_L56F31T32_Expr : std_logic := '0';
-	constant LoopModule_L55F13L64T14_Inputs_InData_Size : unsigned(3 downto 0) := "1000";
+	constant LoopModule_L55F13L64T14_LoopModule_L57F17L61T18_Inputs_InData_Size : unsigned(3 downto 0) := "1000";
 	constant LoopModule_L70F13L79T14_LoopModule_L71F30T31_Expr : std_logic := '0';
-	constant LoopModule_L70F13L79T14_Inputs_InData_Size : unsigned(3 downto 0) := "1000";
+	constant LoopModule_L70F13L79T14_LoopModule_L72F17L76T18_Inputs_InData_Size : unsigned(3 downto 0) := "1000";
 	signal Inputs_InData : unsigned(7 downto 0) := (others => '0');
 	signal Tuple_Item1 : unsigned(7 downto 0) := (others => '0');
 	signal Tuple_Item2 : std_logic := '0';
@@ -77,10 +77,10 @@ begin
 		LoopModule_L85F13L96T14_result(0) <= LoopModule_L85F13L96T14_LoopModule_L87F31T32_Expr;
 		tmp0 := LoopModule_L85F13L96T14_LoopModule_L86F32T37_Expr;
 		tmp1 := (0 => LoopModule_L85F13L96T14_LoopModule_L87F31T32_Expr, others => '0');
-		for LoopModule_L85F13L96T14_idx in 0 to 7 loop
-			tmp0 := tmp0 OR Inputs_InData(LoopModule_L85F13L96T14_idx);
-			if Inputs_InData(LoopModule_L85F13L96T14_idx) = '1' then
-				tmp1 := to_unsigned(LoopModule_L85F13L96T14_idx, 8);
+		for idx in 0 to 7 loop
+			tmp0 := tmp0 OR Inputs_InData(idx);
+			if Inputs_InData(idx) = '1' then
+				tmp1 := to_unsigned(idx, 8);
 			end if;
 		end loop;
 		LoopModule_L85F13L96T14_isValid <= tmp0;
@@ -91,8 +91,8 @@ begin
 	begin
 		LoopModule_L16F13L23T14_result <= Inputs_InData(0);
 		tmp0 := Inputs_InData(0);
-		for LoopModule_L16F13L23T14_idx in 1 to 7 loop
-			tmp0 := tmp0 OR Inputs_InData(LoopModule_L16F13L23T14_idx);
+		for idx1 in 1 to 7 loop
+			tmp0 := tmp0 OR Inputs_InData(idx1);
 		end loop;
 		LoopModule_L16F13L23T14_result <= tmp0;
 	end process;
@@ -101,8 +101,8 @@ begin
 	begin
 		LoopModule_L29F13L36T14_result <= LoopModule_L29F13L36T14_LoopModule_L30F31T35_Expr;
 		tmp0 := LoopModule_L29F13L36T14_LoopModule_L30F31T35_Expr;
-		for LoopModule_L29F13L36T14_idx in 0 to 7 loop
-			tmp0 := tmp0 AND Inputs_InData(LoopModule_L29F13L36T14_idx);
+		for idx2 in 0 to 7 loop
+			tmp0 := tmp0 AND Inputs_InData(idx2);
 		end loop;
 		LoopModule_L29F13L36T14_result <= tmp0;
 	end process;
@@ -111,8 +111,8 @@ begin
 	begin
 		LoopModule_L42F13L49T14_result <= Inputs_InData(0);
 		tmp0 := Inputs_InData(0);
-		for LoopModule_L42F13L49T14_idx in 1 to 7 loop
-			tmp0 := tmp0 XOR Inputs_InData(LoopModule_L42F13L49T14_idx);
+		for idx3 in 1 to 7 loop
+			tmp0 := tmp0 XOR Inputs_InData(idx3);
 		end loop;
 		LoopModule_L42F13L49T14_result <= tmp0;
 	end process;
@@ -122,9 +122,9 @@ begin
 		LoopModule_L55F13L64T14_result(7 downto 1) <= (others => '0');
 		LoopModule_L55F13L64T14_result(0) <= LoopModule_L55F13L64T14_LoopModule_L56F31T32_Expr;
 		tmp0 := (0 => LoopModule_L55F13L64T14_LoopModule_L56F31T32_Expr, others => '0');
-		for LoopModule_L55F13L64T14_idx in 0 to 7 loop
-			if Inputs_InData(LoopModule_L55F13L64T14_idx) = '1' then
-				tmp0 := to_unsigned(LoopModule_L55F13L64T14_idx, 8);
+		for idx4 in 0 to 7 loop
+			if Inputs_InData(idx4) = '1' then
+				tmp0 := to_unsigned(idx4, 8);
 			end if;
 		end loop;
 		LoopModule_L55F13L64T14_result <= tmp0;
@@ -135,9 +135,9 @@ begin
 		LoopModule_L70F13L79T14_result(31 downto 1) <= (others => '0');
 		LoopModule_L70F13L79T14_result(0) <= LoopModule_L70F13L79T14_LoopModule_L71F30T31_Expr;
 		tmp0 := (0 => LoopModule_L70F13L79T14_LoopModule_L71F30T31_Expr, others => '0');
-		for LoopModule_L70F13L79T14_idx in 8 downto 1 loop
-			if Inputs_InData(LoopModule_L70F13L79T14_idx - 1) = '1' then
-				tmp0 := to_signed(LoopModule_L70F13L79T14_idx - 1, 32);
+		for idx5 in 8 downto 1 loop
+			if Inputs_InData(idx5 - 1) = '1' then
+				tmp0 := to_signed(idx5 - 1, 32);
 			end if;
 		end loop;
 		LoopModule_L70F13L79T14_result <= tmp0;

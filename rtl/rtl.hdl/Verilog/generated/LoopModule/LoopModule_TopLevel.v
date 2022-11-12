@@ -42,88 +42,88 @@ module LoopModule_TopLevel
 	wire false = 1'b0;
 	wire LoopModule_L85F13L96T14_LoopModule_L86F32T37_Expr = 1'b0;
 	wire LoopModule_L85F13L96T14_LoopModule_L87F31T32_Expr = 1'b0;
-	wire [3: 0] LoopModule_L85F13L96T14_Inputs_InData_Size = 4'b1000;
-	wire [3: 0] LoopModule_L16F13L23T14_Inputs_InData_Size = 4'b1000;
+	wire [3: 0] LoopModule_L85F13L96T14_LoopModule_L88F17L93T18_Inputs_InData_Size = 4'b1000;
+	wire [3: 0] LoopModule_L16F13L23T14_LoopModule_L18F17L21T18_Inputs_InData_Size = 4'b1000;
 	wire LoopModule_L29F13L36T14_LoopModule_L30F31T35_Expr = 1'b1;
-	wire [3: 0] LoopModule_L29F13L36T14_Inputs_InData_Size = 4'b1000;
-	wire [3: 0] LoopModule_L42F13L49T14_Inputs_InData_Size = 4'b1000;
+	wire [3: 0] LoopModule_L29F13L36T14_LoopModule_L31F17L34T18_Inputs_InData_Size = 4'b1000;
+	wire [3: 0] LoopModule_L42F13L49T14_LoopModule_L44F17L47T18_Inputs_InData_Size = 4'b1000;
 	wire LoopModule_L55F13L64T14_LoopModule_L56F31T32_Expr = 1'b0;
-	wire [3: 0] LoopModule_L55F13L64T14_Inputs_InData_Size = 4'b1000;
+	wire [3: 0] LoopModule_L55F13L64T14_LoopModule_L57F17L61T18_Inputs_InData_Size = 4'b1000;
 	wire LoopModule_L70F13L79T14_LoopModule_L71F30T31_Expr = 1'b0;
-	wire [3: 0] LoopModule_L70F13L79T14_Inputs_InData_Size = 4'b1000;
+	wire [3: 0] LoopModule_L70F13L79T14_LoopModule_L72F17L76T18_Inputs_InData_Size = 4'b1000;
 	wire [7: 0] Inputs_InData;
 	wire [7: 0] Tuple_Item1;
 	wire Tuple_Item2;
 	reg LoopModule_L85F13L96T14_isValid;
 	reg [7: 0] LoopModule_L85F13L96T14_result;
-	integer LoopModule_L85F13L96T14_idx;
+	integer idx;
 	reg LoopModule_L16F13L23T14_result;
-	integer LoopModule_L16F13L23T14_idx;
+	integer idx1;
 	reg LoopModule_L29F13L36T14_result;
-	integer LoopModule_L29F13L36T14_idx;
+	integer idx2;
 	reg LoopModule_L42F13L49T14_result;
-	integer LoopModule_L42F13L49T14_idx;
+	integer idx3;
 	reg [7: 0] LoopModule_L55F13L64T14_result;
-	integer LoopModule_L55F13L64T14_idx;
+	integer idx4;
 	reg signed [31: 0] LoopModule_L70F13L79T14_result;
-	integer LoopModule_L70F13L79T14_idx;
+	integer idx5;
 	wire [7: 0] LoopModule_L70F13L79T14_LoopModule_L78F24T36_Cast;
 	always @ (*)
 	begin
 		LoopModule_L85F13L96T14_isValid = LoopModule_L85F13L96T14_LoopModule_L86F32T37_Expr;
 		LoopModule_L85F13L96T14_result = { {7{1'b0}}, LoopModule_L85F13L96T14_LoopModule_L87F31T32_Expr };
-		for (LoopModule_L85F13L96T14_idx = 0; (LoopModule_L85F13L96T14_idx < 8); LoopModule_L85F13L96T14_idx = (LoopModule_L85F13L96T14_idx + 1))
+		for (idx = 0; (idx < 8); idx = (idx + 1))
 		begin
-			LoopModule_L85F13L96T14_isValid = (LoopModule_L85F13L96T14_isValid | Inputs_InData[LoopModule_L85F13L96T14_idx]);
-			if (Inputs_InData[LoopModule_L85F13L96T14_idx])
+			LoopModule_L85F13L96T14_isValid = (LoopModule_L85F13L96T14_isValid | Inputs_InData[idx]);
+			if (Inputs_InData[idx])
 			begin
-				LoopModule_L85F13L96T14_result = LoopModule_L85F13L96T14_idx;
+				LoopModule_L85F13L96T14_result = idx;
 			end
 		end
 	end
 	always @ (*)
 	begin
 		LoopModule_L16F13L23T14_result = Inputs_InData[0];
-		for (LoopModule_L16F13L23T14_idx = 1; (LoopModule_L16F13L23T14_idx < 8); LoopModule_L16F13L23T14_idx = (LoopModule_L16F13L23T14_idx + 1))
+		for (idx1 = 1; (idx1 < 8); idx1 = (idx1 + 1))
 		begin
-			LoopModule_L16F13L23T14_result = (LoopModule_L16F13L23T14_result | Inputs_InData[LoopModule_L16F13L23T14_idx]);
+			LoopModule_L16F13L23T14_result = (LoopModule_L16F13L23T14_result | Inputs_InData[idx1]);
 		end
 	end
 	always @ (*)
 	begin
 		LoopModule_L29F13L36T14_result = LoopModule_L29F13L36T14_LoopModule_L30F31T35_Expr;
-		for (LoopModule_L29F13L36T14_idx = 0; (LoopModule_L29F13L36T14_idx < 8); LoopModule_L29F13L36T14_idx = (LoopModule_L29F13L36T14_idx + 1))
+		for (idx2 = 0; (idx2 < 8); idx2 = (idx2 + 1))
 		begin
-			LoopModule_L29F13L36T14_result = (LoopModule_L29F13L36T14_result & Inputs_InData[LoopModule_L29F13L36T14_idx]);
+			LoopModule_L29F13L36T14_result = (LoopModule_L29F13L36T14_result & Inputs_InData[idx2]);
 		end
 	end
 	always @ (*)
 	begin
 		LoopModule_L42F13L49T14_result = Inputs_InData[0];
-		for (LoopModule_L42F13L49T14_idx = 1; (LoopModule_L42F13L49T14_idx < 8); LoopModule_L42F13L49T14_idx = (LoopModule_L42F13L49T14_idx + 1))
+		for (idx3 = 1; (idx3 < 8); idx3 = (idx3 + 1))
 		begin
-			LoopModule_L42F13L49T14_result = (LoopModule_L42F13L49T14_result ^ Inputs_InData[LoopModule_L42F13L49T14_idx]);
+			LoopModule_L42F13L49T14_result = (LoopModule_L42F13L49T14_result ^ Inputs_InData[idx3]);
 		end
 	end
 	always @ (*)
 	begin
 		LoopModule_L55F13L64T14_result = { {7{1'b0}}, LoopModule_L55F13L64T14_LoopModule_L56F31T32_Expr };
-		for (LoopModule_L55F13L64T14_idx = 0; (LoopModule_L55F13L64T14_idx < 8); LoopModule_L55F13L64T14_idx = (LoopModule_L55F13L64T14_idx + 1))
+		for (idx4 = 0; (idx4 < 8); idx4 = (idx4 + 1))
 		begin
-			if (Inputs_InData[LoopModule_L55F13L64T14_idx])
+			if (Inputs_InData[idx4])
 			begin
-				LoopModule_L55F13L64T14_result = LoopModule_L55F13L64T14_idx;
+				LoopModule_L55F13L64T14_result = idx4;
 			end
 		end
 	end
 	always @ (*)
 	begin
 		LoopModule_L70F13L79T14_result = { {31{1'b0}}, LoopModule_L70F13L79T14_LoopModule_L71F30T31_Expr };
-		for (LoopModule_L70F13L79T14_idx = 8; (LoopModule_L70F13L79T14_idx > 0); LoopModule_L70F13L79T14_idx = (LoopModule_L70F13L79T14_idx - 1))
+		for (idx5 = 8; (idx5 > 0); idx5 = (idx5 - 1))
 		begin
-			if (Inputs_InData[(LoopModule_L70F13L79T14_idx - 1)])
+			if (Inputs_InData[(idx5 - 1)])
 			begin
-				LoopModule_L70F13L79T14_result = (LoopModule_L70F13L79T14_idx - 1);
+				LoopModule_L70F13L79T14_result = (idx5 - 1);
 			end
 		end
 	end

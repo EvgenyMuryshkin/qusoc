@@ -86,60 +86,66 @@ architecture rtl of OverridesComposition_TopLevel is
 	signal L3OverrideInValueL3Override_InValueHardLink : unsigned(7 downto 0) := "00000000";
 	signal L3OverrideOutValueL3Override_OutValueHardLink : unsigned(7 downto 0) := "00000000";
 begin
-	OverridesComposition_TopLevel_OverridesComposition_NoOverride : entity work.OverridesComposition_TopLevel_OverridesComposition_NoOverride
+	OverridesComposition_TopLevel_NoOverride : entity work.OverridesComposition_TopLevel_NoOverride
 	port map
 	(
 		-- [BEGIN USER MAP FOR NoOverride]
 		-- [END USER MAP FOR NoOverride]
-InOverride => NoOverrideInOverrideNoOverride_InOverrideHardLink,
-InValue => NoOverrideInValueNoOverride_InValueHardLink,
-OutValue => NoOverrideOutValueNoOverride_OutValueHardLink
-	);
-	OverridesComposition_TopLevel_OverridesComposition_AutoOverride : entity work.OverridesComposition_TopLevel_OverridesComposition_AutoOverride
+		InOverride => NoOverrideInOverrideNoOverride_InOverrideHardLink,
+		InValue => NoOverrideInValueNoOverride_InValueHardLink,
+		OutValue => NoOverrideOutValueNoOverride_OutValueHardLink
+	)
+	;
+	OverridesComposition_TopLevel_AutoOverride : entity work.OverridesComposition_TopLevel_AutoOverride
 	port map
 	(
 		-- [BEGIN USER MAP FOR AutoOverride]
 		-- [END USER MAP FOR AutoOverride]
-InOverride => AutoOverrideInOverrideAutoOverride_InOverrideHardLink,
-InValue => AutoOverrideInValueAutoOverride_InValueHardLink,
-OutValue => AutoOverrideOutValueAutoOverride_OutValueHardLink
-	);
-	OverridesComposition_TopLevel_OverridesComposition_GetOverride : entity work.OverridesComposition_TopLevel_OverridesComposition_GetOverride
+		InOverride => AutoOverrideInOverrideAutoOverride_InOverrideHardLink,
+		InValue => AutoOverrideInValueAutoOverride_InValueHardLink,
+		OutValue => AutoOverrideOutValueAutoOverride_OutValueHardLink
+	)
+	;
+	OverridesComposition_TopLevel_GetOverride : entity work.OverridesComposition_TopLevel_GetOverride
 	port map
 	(
 		-- [BEGIN USER MAP FOR GetOverride]
 		-- [END USER MAP FOR GetOverride]
-InOverride => GetOverrideInOverrideGetOverride_InOverrideHardLink,
-InValue => GetOverrideInValueGetOverride_InValueHardLink,
-OutValue => GetOverrideOutValueGetOverride_OutValueHardLink
-	);
-	OverridesComposition_TopLevel_OverridesComposition_L1Override : entity work.OverridesComposition_TopLevel_OverridesComposition_L1Override
+		InOverride => GetOverrideInOverrideGetOverride_InOverrideHardLink,
+		InValue => GetOverrideInValueGetOverride_InValueHardLink,
+		OutValue => GetOverrideOutValueGetOverride_OutValueHardLink
+	)
+	;
+	OverridesComposition_TopLevel_L1Override : entity work.OverridesComposition_TopLevel_L1Override
 	port map
 	(
 		-- [BEGIN USER MAP FOR L1Override]
 		-- [END USER MAP FOR L1Override]
-InOverride => L1OverrideInOverrideL1Override_InOverrideHardLink,
-InValue => L1OverrideInValueL1Override_InValueHardLink,
-OutValue => L1OverrideOutValueL1Override_OutValueHardLink
-	);
-	OverridesComposition_TopLevel_OverridesComposition_L2Override : entity work.OverridesComposition_TopLevel_OverridesComposition_L2Override
+		InOverride => L1OverrideInOverrideL1Override_InOverrideHardLink,
+		InValue => L1OverrideInValueL1Override_InValueHardLink,
+		OutValue => L1OverrideOutValueL1Override_OutValueHardLink
+	)
+	;
+	OverridesComposition_TopLevel_L2Override : entity work.OverridesComposition_TopLevel_L2Override
 	port map
 	(
 		-- [BEGIN USER MAP FOR L2Override]
 		-- [END USER MAP FOR L2Override]
-InOverride => L2OverrideInOverrideL2Override_InOverrideHardLink,
-InValue => L2OverrideInValueL2Override_InValueHardLink,
-OutValue => L2OverrideOutValueL2Override_OutValueHardLink
-	);
-	OverridesComposition_TopLevel_OverridesComposition_L3Override : entity work.OverridesComposition_TopLevel_OverridesComposition_L3Override
+		InOverride => L2OverrideInOverrideL2Override_InOverrideHardLink,
+		InValue => L2OverrideInValueL2Override_InValueHardLink,
+		OutValue => L2OverrideOutValueL2Override_OutValueHardLink
+	)
+	;
+	OverridesComposition_TopLevel_L3Override : entity work.OverridesComposition_TopLevel_L3Override
 	port map
 	(
 		-- [BEGIN USER MAP FOR L3Override]
 		-- [END USER MAP FOR L3Override]
-InOverride => L3OverrideInOverrideL3Override_InOverrideHardLink,
-InValue => L3OverrideInValueL3Override_InValueHardLink,
-OutValue => L3OverrideOutValueL3Override_OutValueHardLink
-	);
+		InOverride => L3OverrideInOverrideL3Override_InOverrideHardLink,
+		InValue => L3OverrideInValueL3Override_InValueHardLink,
+		OutValue => L3OverrideOutValueL3Override_OutValueHardLink
+	)
+	;
 	process (AutoOverride_InOverride, AutoOverride_InValue, AutoOverride_OutValue, AutoOverrideOutValueAutoOverride_OutValueHardLink, GetOverride_InOverride, GetOverride_InValue, GetOverride_OutValue, GetOverrideOutValueGetOverride_OutValueHardLink, InOverride, Inputs_InOverride, Inputs_InValue, InValue, L1Override_InOverride, L1Override_InValue, L1Override_OutValue, L1OverrideOutValueL1Override_OutValueHardLink, L2Override_InOverride, L2Override_InValue, L2Override_OutValue, L2OverrideOutValueL2Override_OutValueHardLink, L3Override_InOverride, L3Override_InValue, L3Override_OutValue, L3OverrideOutValueL3Override_OutValueHardLink, ModulesInputs_InOverride, ModulesInputs_InValue, NoOverride_InOverride, NoOverride_InValue, NoOverride_OutValue, NoOverrideOutValueNoOverride_OutValueHardLink)
 	begin
 		Inputs_InOverride <= InOverride;

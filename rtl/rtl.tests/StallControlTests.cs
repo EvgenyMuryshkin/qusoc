@@ -2,6 +2,7 @@
 using Quokka.RTL;
 using Quokka.RTL.Simulator;
 using Quokka.RTL.Tools;
+using QuokkaIntegrationTests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -198,10 +199,15 @@ namespace RTL.Modules
                 stage2Counter = 3,
                 stage3Counter = 4,
                 pipelineStalled = true,
+                pipelineWillStall = true,
                 stage0Stalled = true,
+                stage0WillStall = true,
                 stage1Stalled = true,
+                stage1WillStall = true,
                 stage2Stalled = true,
-                stage3Stalled = true
+                stage2WillStall = true,
+                stage3Stalled = true,
+                stage3WillStall = true
             });
 
             // stall pipeline from stage 3
@@ -214,10 +220,15 @@ namespace RTL.Modules
                 stage2Counter = 3,
                 stage3Counter = 4,
                 pipelineStalled = true,
+                pipelineWillStall = true,
                 stage0Stalled = true,
+                stage0WillStall = true,
                 stage1Stalled = true,
+                stage1WillStall = true,
                 stage2Stalled = true,
-                stage3Stalled = true
+                stage2WillStall = true,
+                stage3Stalled = true,
+                stage3WillStall = true
             });
 
             // stall stage2 from stage 3
@@ -230,10 +241,15 @@ namespace RTL.Modules
                 stage2Counter = 4,
                 stage3Counter = 5,
                 pipelineStalled = false,
+                pipelineWillStall = false,
                 stage0Stalled = true,
+                stage0WillStall = true,
                 stage1Stalled = true,
+                stage1WillStall = true,
                 stage2Stalled = true,
-                stage3Stalled = false
+                stage2WillStall = true,
+                stage3Stalled = false,
+                stage3WillStall = false
             });
 
             // stall stage 2 from stage 3 again
@@ -246,10 +262,15 @@ namespace RTL.Modules
                 stage2Counter = 4,
                 stage3Counter = 6,
                 pipelineStalled = false,
+                pipelineWillStall = false,
                 stage0Stalled = true,
+                stage0WillStall = true,
                 stage1Stalled = true,
+                stage1WillStall = true,
                 stage2Stalled = true,
-                stage3Stalled = false
+                stage2WillStall = true,
+                stage3Stalled = false,
+                stage3WillStall = false
             });
             #endregion
 
@@ -265,10 +286,15 @@ namespace RTL.Modules
                 stage2Counter = 4,
                 stage3Counter = 7,
                 pipelineStalled = false,
+                pipelineWillStall = false,
                 stage0Stalled = true,
+                stage0WillStall = true,
                 stage1Stalled = true,
+                stage1WillStall = true,
                 stage2Stalled = true,
-                stage3Stalled = false
+                stage2WillStall = true,
+                stage3Stalled = false,
+                stage3WillStall = false
             });
 
             // stall pipeline from stage 2
@@ -281,10 +307,15 @@ namespace RTL.Modules
                 stage2Counter = 4,
                 stage3Counter = 7,
                 pipelineStalled = true,
+                pipelineWillStall = true,
                 stage0Stalled = true,
+                stage0WillStall = true,
                 stage1Stalled = true,
+                stage1WillStall = true,
                 stage2Stalled = true,
-                stage3Stalled = true
+                stage2WillStall = true,
+                stage3Stalled = true,
+                stage3WillStall = true
             });
 
             // stall stage1 from stage 2
@@ -297,10 +328,15 @@ namespace RTL.Modules
                 stage2Counter = 4,
                 stage3Counter = 8,
                 pipelineStalled = false,
+                pipelineWillStall = false,
                 stage0Stalled = true,
+                stage0WillStall = true,
                 stage1Stalled = true,
+                stage1WillStall = true,
                 stage2Stalled = false,
-                stage3Stalled = false
+                stage2WillStall = false,
+                stage3Stalled = false,
+                stage3WillStall = false
             });
 
             // stall stage1 from stage 2 again
@@ -312,11 +348,10 @@ namespace RTL.Modules
                 stage1Counter = 4,
                 stage2Counter = 5,
                 stage3Counter = 9,
-                pipelineStalled = false,
                 stage0Stalled = true,
+                stage0WillStall = true,
                 stage1Stalled = true,
-                stage2Stalled = false,
-                stage3Stalled = false
+                stage1WillStall = true
             });
 
             // stall stage1 from stage 2 one more time
@@ -328,11 +363,10 @@ namespace RTL.Modules
                 stage1Counter = 4,
                 stage2Counter = 6,
                 stage3Counter = 10,
-                pipelineStalled = false,
                 stage0Stalled = true,
+                stage0WillStall = true,
                 stage1Stalled = true,
-                stage2Stalled = false,
-                stage3Stalled = false
+                stage1WillStall = true
             });
             #endregion stage2 stall control
 
@@ -345,11 +379,10 @@ namespace RTL.Modules
                 stage1Counter = 4,
                 stage2Counter = 7,
                 stage3Counter = 11,
-                pipelineStalled = false,
                 stage0Stalled = true,
+                stage0WillStall = true,
                 stage1Stalled = true,
-                stage2Stalled = false,
-                stage3Stalled = false
+                stage1WillStall = true,
             });
 
             clockCycle(new StallControlTestPipelineModuleInputs() { stallPipeline = true, stallStage1 = true });
@@ -361,10 +394,15 @@ namespace RTL.Modules
                 stage2Counter = 7,
                 stage3Counter = 11,
                 pipelineStalled = true,
+                pipelineWillStall = true,
                 stage0Stalled = true,
+                stage0WillStall = true,
                 stage1Stalled = true,
+                stage1WillStall = true,
                 stage2Stalled = true,
-                stage3Stalled = true
+                stage2WillStall = true,
+                stage3Stalled = true,
+                stage3WillStall = true,
             });
 
             clockCycle(new StallControlTestPipelineModuleInputs() { stallPrev = true, stallStage1 = true });
@@ -375,11 +413,8 @@ namespace RTL.Modules
                 stage1Counter = 4,
                 stage2Counter = 8,
                 stage3Counter = 12,
-                pipelineStalled = false,
                 stage0Stalled = true,
-                stage1Stalled = false,
-                stage2Stalled = false,
-                stage3Stalled = false
+                stage0WillStall = true
             });
 
             clockCycle(new StallControlTestPipelineModuleInputs() { stallPrev = true, stallStage1 = true });
@@ -390,11 +425,8 @@ namespace RTL.Modules
                 stage1Counter = 4,
                 stage2Counter = 9,
                 stage3Counter = 13,
-                pipelineStalled = false,
                 stage0Stalled = true,
-                stage1Stalled = false,
-                stage2Stalled = false,
-                stage3Stalled = false
+                stage0WillStall = true
             });
 
             clockCycle(new StallControlTestPipelineModuleInputs() { stallPrev = true, stallStage1 = true });
@@ -405,16 +437,13 @@ namespace RTL.Modules
                 stage1Counter = 5,
                 stage2Counter = 10,
                 stage3Counter = 14,
-                pipelineStalled = false,
                 stage0Stalled = true,
-                stage1Stalled = false,
-                stage2Stalled = false,
-                stage3Stalled = false
+                stage0WillStall = true
             });
 
             #endregion stage1 stall control
 
-            #region stage2 stall control
+            #region stage0 stall control
             clockCycle(new StallControlTestPipelineModuleInputs() { stallStage0 = true });
             assertStateCounters(new byte[] { 4, 8, 12, 15 });
             assert(new StallControlTestOutput()
@@ -423,11 +452,8 @@ namespace RTL.Modules
                 stage1Counter = 6,
                 stage2Counter = 11,
                 stage3Counter = 15,
-                pipelineStalled = false,
                 stage0Stalled = true,
-                stage1Stalled = false,
-                stage2Stalled = false,
-                stage3Stalled = false
+                stage0WillStall = true
             });
 
             clockCycle(new StallControlTestPipelineModuleInputs() { stallPipeline = true, stallStage0 = true });
@@ -439,10 +465,15 @@ namespace RTL.Modules
                 stage2Counter = 11,
                 stage3Counter = 15,
                 pipelineStalled = true,
+                pipelineWillStall = true,
                 stage0Stalled = true,
+                stage0WillStall = true,
                 stage1Stalled = true,
+                stage1WillStall = true,
                 stage2Stalled = true,
-                stage3Stalled = true
+                stage2WillStall = true,
+                stage3Stalled = true,
+                stage3WillStall = true,
             });
 
             clockCycle(new StallControlTestPipelineModuleInputs() { stallPrev = true, stallStage0 = true });
@@ -452,12 +483,7 @@ namespace RTL.Modules
                 stage0Counter = 4,
                 stage1Counter = 7,
                 stage2Counter = 12,
-                stage3Counter = 16,
-                pipelineStalled = false,
-                stage0Stalled = false,
-                stage1Stalled = false,
-                stage2Stalled = false,
-                stage3Stalled = false
+                stage3Counter = 16
             });
 
             clockCycle(new StallControlTestPipelineModuleInputs() { stallPrev = true, stallStage0 = true });
@@ -467,12 +493,7 @@ namespace RTL.Modules
                 stage0Counter = 4,
                 stage1Counter = 8,
                 stage2Counter = 13,
-                stage3Counter = 17,
-                pipelineStalled = false,
-                stage0Stalled = false,
-                stage1Stalled = false,
-                stage2Stalled = false,
-                stage3Stalled = false
+                stage3Counter = 17
             });
 
             clockCycle(new StallControlTestPipelineModuleInputs() { stallPrev = true, stallStage0 = true });
@@ -482,12 +503,7 @@ namespace RTL.Modules
                 stage0Counter = 4,
                 stage1Counter = 9,
                 stage2Counter = 14,
-                stage3Counter = 18,
-                pipelineStalled = false,
-                stage0Stalled = false,
-                stage1Stalled = false,
-                stage2Stalled = false,
-                stage3Stalled = false
+                stage3Counter = 18
             });
 
             clockCycle(new StallControlTestPipelineModuleInputs() { stallPrev = true, stallStage0 = true });
@@ -497,15 +513,20 @@ namespace RTL.Modules
                 stage0Counter = 5,
                 stage1Counter = 10,
                 stage2Counter = 15,
-                stage3Counter = 19,
-                pipelineStalled = false,
-                stage0Stalled = false,
-                stage1Stalled = false,
-                stage2Stalled = false,
-                stage3Stalled = false
+                stage3Counter = 19
             });
 
-            #endregion stage2 stall control
+            clockCycle(new StallControlTestPipelineModuleInputs() {});
+            assertStateCounters(new byte[] { 9, 13, 17, 20 });
+            assert(new StallControlTestOutput()
+            {
+                stage0Counter = 6,
+                stage1Counter = 11,
+                stage2Counter = 16,
+                stage3Counter = 20
+            });
+
+            #endregion stage0 stall control
 
             // filler in VCD
             clockCycle(new StallControlTestPipelineModuleInputs() { stallPipeline = true, stallStage3 = true });

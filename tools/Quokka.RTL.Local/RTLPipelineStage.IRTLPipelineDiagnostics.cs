@@ -15,6 +15,9 @@ namespace Quokka.RTL.Local
         Type IRTLPipelineDiagnostics.SourceType => typeof(TSource);
         Type IRTLPipelineDiagnostics.ResultType => typeof(TOutput);
         bool IRTLPipelineDiagnostics.HasControlSignals => stageMapWithStateAndControl != null;
+
+        object IRTLPipelineDiagnostics.Source => this.inputsFactory();
+        object IRTLPipelineDiagnostics.Result => this.State;
         #endregion
     }
 }
