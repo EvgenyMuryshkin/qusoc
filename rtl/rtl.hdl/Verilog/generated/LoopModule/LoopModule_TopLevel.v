@@ -70,6 +70,7 @@ module LoopModule_TopLevel
 	wire [7: 0] LoopModule_L70F13L79T14_LoopModule_L78F24T36_Cast;
 	always @ (*)
 	begin
+		idx = 0;
 		LoopModule_L85F13L96T14_isValid = LoopModule_L85F13L96T14_LoopModule_L86F32T37_Expr;
 		LoopModule_L85F13L96T14_result = { {7{1'b0}}, LoopModule_L85F13L96T14_LoopModule_L87F31T32_Expr };
 		for (idx = 0; (idx < 8); idx = (idx + 1))
@@ -83,6 +84,7 @@ module LoopModule_TopLevel
 	end
 	always @ (*)
 	begin
+		idx1 = 1;
 		LoopModule_L16F13L23T14_result = Inputs_InData[0];
 		for (idx1 = 1; (idx1 < 8); idx1 = (idx1 + 1))
 		begin
@@ -91,6 +93,7 @@ module LoopModule_TopLevel
 	end
 	always @ (*)
 	begin
+		idx2 = 0;
 		LoopModule_L29F13L36T14_result = LoopModule_L29F13L36T14_LoopModule_L30F31T35_Expr;
 		for (idx2 = 0; (idx2 < 8); idx2 = (idx2 + 1))
 		begin
@@ -99,6 +102,7 @@ module LoopModule_TopLevel
 	end
 	always @ (*)
 	begin
+		idx3 = 1;
 		LoopModule_L42F13L49T14_result = Inputs_InData[0];
 		for (idx3 = 1; (idx3 < 8); idx3 = (idx3 + 1))
 		begin
@@ -107,6 +111,7 @@ module LoopModule_TopLevel
 	end
 	always @ (*)
 	begin
+		idx4 = 0;
 		LoopModule_L55F13L64T14_result = { {7{1'b0}}, LoopModule_L55F13L64T14_LoopModule_L56F31T32_Expr };
 		for (idx4 = 0; (idx4 < 8); idx4 = (idx4 + 1))
 		begin
@@ -118,6 +123,7 @@ module LoopModule_TopLevel
 	end
 	always @ (*)
 	begin
+		idx5 = 8;
 		LoopModule_L70F13L79T14_result = { {31{1'b0}}, LoopModule_L70F13L79T14_LoopModule_L71F30T31_Expr };
 		for (idx5 = 8; (idx5 > 0); idx5 = (idx5 - 1))
 		begin

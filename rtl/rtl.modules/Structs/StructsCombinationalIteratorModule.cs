@@ -52,11 +52,15 @@ namespace RTL.Modules
             i1 = Enumerable.Range(0, 4).Select(_ => new TStruct4()).ToArray();
             i2 = Enumerable.Range(0, 4).Select(_ => new TStruct4()).ToArray();
             o = Enumerable.Range(0, 4).Select(_ => new TStruct12()).ToArray();
+            c = Enumerable.Range(0, 4).Select(_ => new TStruct4()).ToArray();
+            f = Enumerable.Range(0, 4).Select(_ => new TStruct4()).ToArray();
         }
 
         public TStruct4[] i1;
         public TStruct4[] i2;
         public TStruct12[] o;
+        public TStruct4[] c;
+        public TStruct4[] f;
     }
 
     public class StructsCombinationalIteratorModule : RTLSynchronousModule<StructsCombinationalIteratorModuleInputs, StructsCombinationalIteratorModuleState>
@@ -64,6 +68,8 @@ namespace RTL.Modules
         public short sOut => (short)(Inputs.s1 * Inputs.s2);
         public sbyte sByte => (sbyte)(Inputs.s1 * Inputs.s2);
         public TStruct12[] sStruct => State.o;
+        public TStruct4[] cStruct => State.c;
+        public TStruct4[] fStruct => State.f;
 
         protected override void OnStage()
         {
@@ -79,6 +85,18 @@ namespace RTL.Modules
                     NextState.o[i].a = (State.i1[i].a.Signed().Resized(6) * State.i2[i].a.Signed().Resized(6)).Unsigned();
                     NextState.o[i].b = (State.i1[i].b.Unsigned().Resized(6) * State.i2[i].b.Unsigned().Resized(6)).Unsigned();
                 }
+            }
+
+            for (var i = 0; i < 4; i++)
+            {
+                NextState.c[i].a = Inputs.addr == 0 ? new RTLBitArray(10).Resized(4) : Inputs.i1.a;
+                NextState.c[i].b = Inputs.addr != 0 ? new RTLBitArray(11).Resized(4) : Inputs.i1.b;
+            }
+
+            for (var i = 0; i < 4; i++)
+            {
+                NextState.f[i].a = Inputs.store ? Inputs.i1.b : Inputs.i1.a;
+                NextState.f[i].b = !Inputs.store ? Inputs.i1.a : Inputs.i1.b;
             }
         }
     }

@@ -425,6 +425,7 @@ module AXI4RegisterModuleB4_TopLevel
 	);
 	always @ (*)
 	begin
+		NextState_bytes_Iterator = 0;
 		for (NextState_bytes_Iterator = 0; (NextState_bytes_Iterator < 4); NextState_bytes_Iterator = (NextState_bytes_Iterator + 1))
 		begin
 			NextState_bytes[NextState_bytes_Iterator] = State_bytes[NextState_bytes_Iterator];

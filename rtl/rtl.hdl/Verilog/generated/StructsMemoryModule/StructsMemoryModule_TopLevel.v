@@ -95,6 +95,7 @@ $readmemh("StructsMemoryModule_TopLevel_State_Buff.hex", State_Buff);
 	end
 	always @ (*)
 	begin
+		NextState_Buff_Iterator = 0;
 		for (NextState_Buff_Iterator = 0; (NextState_Buff_Iterator < 4); NextState_Buff_Iterator = (NextState_Buff_Iterator + 1))
 		begin
 			NextState_Buff[NextState_Buff_Iterator] = State_Buff[NextState_Buff_Iterator];

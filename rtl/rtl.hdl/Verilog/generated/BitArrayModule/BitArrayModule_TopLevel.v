@@ -35,7 +35,10 @@ module BitArrayModule_TopLevel
 	output wire [3:0] ReversedLow,
 	output wire [3:0] Picks,
 	output wire [3:0] FromBits1,
-	output wire [3:0] FromBits2
+	output wire [3:0] FromBits2,
+	output wire [7:0] ZeroString,
+	output wire [7:0] ValueString,
+	output wire [7:0] CtorMux
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -53,6 +56,11 @@ module BitArrayModule_TopLevel
 	wire BitArrayModule_L25F64T68_Expr = 1'b1;
 	wire BitArrayModule_L25F70T74_Expr = 1'b1;
 	wire BitArrayModule_L25F76T80_Expr = 1'b1;
+	wire [7: 0] BitArrayModule_L26F58T68_Expr = 8'b00000000;
+	wire [7: 0] BitArrayModule_L27F59T69_Expr = 8'b01000000;
+	wire BitArrayModule_L29F53T54_Expr = 1'b0;
+	wire [7: 0] BitArrayModule_L29F73T83_Expr = 8'b00000000;
+	wire [7: 0] BitArrayModule_L29F103T113_Expr = 8'b01000000;
 	wire [7: 0] Inputs_Value;
 	wire [2: 0] Inputs_Bit;
 	wire [7: 0] Bits;
@@ -69,6 +77,14 @@ module BitArrayModule_TopLevel
 	wire [3: 0] BitArrayModule_L25F41T81_Source;
 	wire [7: 0] BitArrayModule_L17F46T61_Expr;
 	wire [7: 0] BitArrayModule_L17F46T61_Expr_1;
+	wire BitArrayModule_L29F39T54_Expr;
+	wire signed [3: 0] BitArrayModule_L29F39T54_ExprLhs;
+	wire signed [3: 0] BitArrayModule_L29F39T54_ExprRhs;
+	reg [7: 0] BitArrayModule_L29F39T114_Lookup;
+	wire BitArrayModule_L29F39T114_LookupMultiplexerAddress;
+	wire [7: 0] BitArrayModule_L29F39T114_Lookup1;
+	wire [7: 0] BitArrayModule_L29F39T114_Lookup2;
+	assign BitArrayModule_L29F39T54_Expr = BitArrayModule_L29F39T54_ExprLhs == BitArrayModule_L29F39T54_ExprRhs ? 1'b1 : 1'b0;
 	genvar LogicalFunctionLogicalFunction1_idx;
 	generate
 		for (LogicalFunctionLogicalFunction1_idx = 7; (LogicalFunctionLogicalFunction1_idx >= 0); LogicalFunctionLogicalFunction1_idx = (LogicalFunctionLogicalFunction1_idx - 1))
@@ -76,6 +92,25 @@ module BitArrayModule_TopLevel
 			assign BitArrayModule_L17F46T61_Expr[LogicalFunctionLogicalFunction1_idx] = BitArrayModule_L17F46T61_Expr_1[7 - LogicalFunctionLogicalFunction1_idx];
 		end
 	endgenerate
+	always @ (*)
+	begin
+		case (BitArrayModule_L29F39T114_LookupMultiplexerAddress)
+			'b0:
+			begin
+				BitArrayModule_L29F39T114_Lookup = BitArrayModule_L29F39T114_Lookup1;
+			end
+			'b1:
+			begin
+				BitArrayModule_L29F39T114_Lookup = BitArrayModule_L29F39T114_Lookup2;
+			end
+			default:
+			begin
+				BitArrayModule_L29F39T114_Lookup = 'b00000000;
+			end
+		endcase
+	end
+	assign BitArrayModule_L29F39T54_ExprLhs = { 1'b0, Inputs_Bit };
+	assign BitArrayModule_L29F39T54_ExprRhs = { {3{1'b0}}, BitArrayModule_L29F53T54_Expr };
 	assign BitArrayModule_L17F46T61_Expr_1 = Bits;
 	assign Inputs_Value = Value;
 	assign Inputs_Bit = Bit;
@@ -116,6 +151,12 @@ module BitArrayModule_TopLevel
 	assign FromBits1 = BitArrayModule_L24F41T81_Source;
 	assign BitArrayModule_L25F41T81_Source = { BitArrayModule_L25F57T62_Expr, BitArrayModule_L25F64T68_Expr, BitArrayModule_L25F70T74_Expr, BitArrayModule_L25F76T80_Expr };
 	assign FromBits2 = BitArrayModule_L25F41T81_Source;
+	assign ZeroString = BitArrayModule_L26F58T68_Expr;
+	assign ValueString = BitArrayModule_L27F59T69_Expr;
+	assign CtorMux = BitArrayModule_L29F39T114_Lookup;
+	assign BitArrayModule_L29F39T114_Lookup1 = BitArrayModule_L29F103T113_Expr;
+	assign BitArrayModule_L29F39T114_Lookup2 = BitArrayModule_L29F73T83_Expr;
+	assign BitArrayModule_L29F39T114_LookupMultiplexerAddress = BitArrayModule_L29F39T54_Expr;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

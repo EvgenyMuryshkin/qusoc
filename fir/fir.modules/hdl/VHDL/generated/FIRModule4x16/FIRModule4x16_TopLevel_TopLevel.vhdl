@@ -31,7 +31,13 @@ entity FIRModule4x16_TopLevel_TopLevel is
 		iDO : in unsigned (3 downto 0);
 		iIQ_V : in std_logic;
 		iIQ_i : in unsigned (15 downto 0);
-		iIQ_q : in unsigned (15 downto 0)
+		iIQ_q : in unsigned (15 downto 0);
+		oCOEF_NUM : out signed (15 downto 0);
+		oCOEF_CNT : out unsigned (15 downto 0);
+		oCOEF_RDY : out std_logic;
+		oIQ_V : out std_logic;
+		oIQ_i : out unsigned (23 downto 0);
+		oIQ_q : out unsigned (23 downto 0)
 	);
 end entity;
 -- FSM summary
@@ -60,89 +66,106 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	constant c_ram_addr_hight_msb : unsigned(1 downto 0) := "10";
 	constant c_dl_accum : unsigned(3 downto 0) := "1001";
 	constant c_out_lsb : unsigned(2 downto 0) := "100";
-	constant FIRModule_L159F41T56_Expr : std_logic := '0';
-	constant FIRModule_L160F41T56_Expr : std_logic := '0';
-	constant FIRModule_L164F41T56_Expr : std_logic := '0';
-	constant FIRModule_L165F41T56_Expr : std_logic := '0';
-	constant FIRModule_L156F42T47_Expr : std_logic := '0';
-	constant FIRModule_L189F13L200T14_0_a : std_logic := '0';
-	constant FIRModule_L189F13L200T14_0_FIRModule_L193F26T30_Expr : std_logic := '1';
-	constant FIRModule_L189F13L200T14_1_a : std_logic := '1';
-	constant FIRModule_L189F13L200T14_1_FIRModule_L193F26T30_Expr : std_logic := '1';
-	constant FIRModule_L189F13L200T14_2_a : unsigned(1 downto 0) := "10";
-	constant FIRModule_L189F13L200T14_2_FIRModule_L193F26T30_Expr : std_logic := '1';
-	constant FIRModule_L189F13L200T14_3_a : unsigned(1 downto 0) := "11";
-	constant FIRModule_L189F13L200T14_3_FIRModule_L193F26T30_Expr : std_logic := '1';
-	constant FIRModule_L204F13L208T14_0_a : std_logic := '0';
-	constant FIRModule_L204F13L208T14_1_a : std_logic := '1';
-	constant FIRModule_L204F13L208T14_2_a : unsigned(1 downto 0) := "10";
-	constant FIRModule_L204F13L208T14_3_a : unsigned(1 downto 0) := "11";
-	constant FIRModule_L211F13L214T14_1_a : std_logic := '1';
-	constant FIRModule_L211F13L214T14_1_FIRModule_L213F41T46_Expr : std_logic := '0';
-	constant FIRModule_L211F13L214T14_2_a : unsigned(1 downto 0) := "10";
-	constant FIRModule_L211F13L214T14_2_FIRModule_L213F41T46_Expr : std_logic := '1';
-	constant FIRModule_L211F13L214T14_3_a : unsigned(1 downto 0) := "11";
-	constant FIRModule_L211F13L214T14_3_FIRModule_L213F41T46_Expr : unsigned(1 downto 0) := "10";
-	constant FIRModule_L216F13L227T14_0_a : std_logic := '0';
-	constant FIRModule_L216F13L227T14_0_FIRModule_L220F26T30_Expr : std_logic := '1';
-	constant FIRModule_L216F13L227T14_1_a : std_logic := '1';
-	constant FIRModule_L216F13L227T14_1_FIRModule_L220F26T30_Expr : std_logic := '1';
-	constant FIRModule_L216F13L227T14_2_a : unsigned(1 downto 0) := "10";
-	constant FIRModule_L216F13L227T14_2_FIRModule_L220F26T30_Expr : std_logic := '1';
-	constant FIRModule_L216F13L227T14_3_a : unsigned(1 downto 0) := "11";
-	constant FIRModule_L216F13L227T14_3_FIRModule_L220F26T30_Expr : std_logic := '1';
-	constant FIRModule_L229F13L240T14_0_a : std_logic := '0';
-	constant FIRModule_L229F13L240T14_0_FIRModule_L233F26T30_Expr : std_logic := '1';
-	constant FIRModule_L229F13L240T14_1_a : std_logic := '1';
-	constant FIRModule_L229F13L240T14_1_FIRModule_L233F26T30_Expr : std_logic := '1';
-	constant FIRModule_L229F13L240T14_2_a : unsigned(1 downto 0) := "10";
-	constant FIRModule_L229F13L240T14_2_FIRModule_L233F26T30_Expr : std_logic := '1';
-	constant FIRModule_L229F13L240T14_3_a : unsigned(1 downto 0) := "11";
-	constant FIRModule_L229F13L240T14_3_FIRModule_L233F26T30_Expr : std_logic := '1';
-	constant FIRModule_L246F22T26_Expr : std_logic := '1';
-	constant FIRModule_L256F22T26_Expr : std_logic := '1';
-	constant FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L329F56T57_Expr : std_logic := '0';
-	constant FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F94T95_Expr : std_logic := '1';
-	constant FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L331F56T79_Expr : unsigned(2 downto 0) := "111";
-	constant FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L332F21L334T22_FIRModule_L333F59T60_Expr : std_logic := '0';
-	constant FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L336F21L338T22_FIRModule_L337F89T90_Expr : std_logic := '1';
-	constant FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L341F17L343T18_FIRModule_L342F87T88_Expr : std_logic := '1';
-	constant FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F45T46_Expr : unsigned(1 downto 0) := "10";
-	constant FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F66T67_Expr : std_logic := '0';
-	constant FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L363F13L365T14_FIRModule_L364F41T45_Expr : std_logic := '1';
-	constant FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L367F13L369T14_FIRModule_L368F41T46_Expr : std_logic := '0';
-	constant FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L377F69T70_Expr : std_logic := '1';
-	constant FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L387F17L389T18_FIRModule_L388F62T66_Expr : std_logic := '1';
-	constant FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L391F17L393T18_FIRModule_L392F62T67_Expr : std_logic := '0';
-	constant FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L406F37T38_Expr : std_logic := '1';
-	constant FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L411F17L420T18_FIRModule_L412F57T58_Expr : std_logic := '0';
-	constant FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L411F17L420T18_FIRModule_L413F21L415T22_FIRModule_L414F57T61_Expr : std_logic := '1';
-	constant FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L411F17L420T18_FIRModule_L417F21L419T22_FIRModule_L418F57T62_Expr : std_logic := '0';
-	constant FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L423F17L425T18_FIRModule_L424F49T50_Expr : std_logic := '0';
-	constant FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L427F17L429T18_FIRModule_L428F73T74_Expr : std_logic := '1';
-	constant FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L443F81T82_Expr : std_logic := '1';
-	constant FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L444F81T82_Expr : std_logic := '1';
-	constant FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L448F44T49_Expr : std_logic := '0';
-	constant FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L451F53T54_Expr : std_logic := '0';
-	constant FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L461F37T38_Expr : std_logic := '0';
-	constant FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L462F50T51_Expr : std_logic := '0';
-	constant FIRModule_L544F9L551T10_FIRModule_L549F13T28_FIRModule_L469F9L484T10_FIRModule_L471F13L483T14_FIRModule_L472F43T44_Expr : std_logic := '0';
-	constant FIRModule_L544F9L551T10_FIRModule_L549F13T28_FIRModule_L469F9L484T10_FIRModule_L471F13L483T14_FIRModule_L473F17L476T18_0_idx : std_logic := '0';
-	constant FIRModule_L544F9L551T10_FIRModule_L549F13T28_FIRModule_L469F9L484T10_FIRModule_L471F13L483T14_FIRModule_L473F17L476T18_0_FIRModule_L474F17L476T18_FIRModule_L475F47T54_Expr : std_logic := '1';
-	constant FIRModule_L544F9L551T10_FIRModule_L549F13T28_FIRModule_L469F9L484T10_FIRModule_L471F13L483T14_FIRModule_L473F17L476T18_1_idx : std_logic := '1';
-	constant FIRModule_L544F9L551T10_FIRModule_L549F13T28_FIRModule_L469F9L484T10_FIRModule_L471F13L483T14_FIRModule_L473F17L476T18_1_FIRModule_L474F17L476T18_FIRModule_L475F47T54_Expr : unsigned(1 downto 0) := "10";
-	constant FIRModule_L544F9L551T10_FIRModule_L549F13T28_FIRModule_L469F9L484T10_FIRModule_L471F13L483T14_FIRModule_L473F17L476T18_2_idx : unsigned(1 downto 0) := "10";
-	constant FIRModule_L544F9L551T10_FIRModule_L549F13T28_FIRModule_L469F9L484T10_FIRModule_L471F13L483T14_FIRModule_L473F17L476T18_2_FIRModule_L474F17L476T18_FIRModule_L475F47T54_Expr : unsigned(1 downto 0) := "11";
-	constant FIRModule_L544F9L551T10_FIRModule_L549F13T28_FIRModule_L469F9L484T10_FIRModule_L471F13L483T14_FIRModule_L473F17L476T18_3_idx : unsigned(1 downto 0) := "11";
-	constant FIRModule_L544F9L551T10_FIRModule_L549F13T28_FIRModule_L469F9L484T10_FIRModule_L471F13L483T14_FIRModule_L473F17L476T18_3_FIRModule_L474F17L476T18_FIRModule_L475F47T54_Expr : unsigned(2 downto 0) := "100";
-	constant FIRModule_L544F9L551T10_FIRModule_L549F13T28_FIRModule_L469F9L484T10_FIRModule_L471F13L483T14_FIRModule_L473F17L476T18_4_idx : unsigned(2 downto 0) := "100";
-	constant FIRModule_L544F9L551T10_FIRModule_L549F13T28_FIRModule_L469F9L484T10_FIRModule_L471F13L483T14_FIRModule_L473F17L476T18_4_FIRModule_L474F17L476T18_FIRModule_L475F47T54_Expr : unsigned(2 downto 0) := "101";
-	constant FIRModule_L544F9L551T10_FIRModule_L549F13T28_FIRModule_L469F9L484T10_FIRModule_L471F13L483T14_FIRModule_L473F17L476T18_5_idx : unsigned(2 downto 0) := "101";
-	constant FIRModule_L544F9L551T10_FIRModule_L549F13T28_FIRModule_L469F9L484T10_FIRModule_L471F13L483T14_FIRModule_L473F17L476T18_5_FIRModule_L474F17L476T18_FIRModule_L475F47T54_Expr : unsigned(2 downto 0) := "110";
-	constant FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L518F82T83_Expr : std_logic := '1';
-	constant FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L519F82T83_Expr : std_logic := '1';
-	constant FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L528F17L532T18_FIRModule_L530F72T91_Expr : unsigned(1 downto 0) := "11";
-	constant FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L528F17L532T18_FIRModule_L531F72T91_Expr : unsigned(1 downto 0) := "11";
+	constant FIRModule_L136F25T44_Expr : unsigned(1 downto 0) := "10";
+	constant FIRModule_L134F44T49_Expr : std_logic := '0';
+	constant FIRModule_L156F13L167T14_0_a : std_logic := '0';
+	constant FIRModule_L156F13L167T14_0_FIRModule_L160F26T30_Expr : std_logic := '1';
+	constant FIRModule_L156F13L167T14_1_a : std_logic := '1';
+	constant FIRModule_L156F13L167T14_1_FIRModule_L160F26T30_Expr : std_logic := '1';
+	constant FIRModule_L156F13L167T14_2_a : unsigned(1 downto 0) := "10";
+	constant FIRModule_L156F13L167T14_2_FIRModule_L160F26T30_Expr : std_logic := '1';
+	constant FIRModule_L156F13L167T14_3_a : unsigned(1 downto 0) := "11";
+	constant FIRModule_L156F13L167T14_3_FIRModule_L160F26T30_Expr : std_logic := '1';
+	constant FIRModule_L171F13L175T14_0_a : std_logic := '0';
+	constant FIRModule_L171F13L175T14_1_a : std_logic := '1';
+	constant FIRModule_L171F13L175T14_2_a : unsigned(1 downto 0) := "10";
+	constant FIRModule_L171F13L175T14_3_a : unsigned(1 downto 0) := "11";
+	constant FIRModule_L178F13L181T14_1_a : std_logic := '1';
+	constant FIRModule_L178F13L181T14_1_FIRModule_L180F41T46_Expr : std_logic := '0';
+	constant FIRModule_L178F13L181T14_2_a : unsigned(1 downto 0) := "10";
+	constant FIRModule_L178F13L181T14_2_FIRModule_L180F41T46_Expr : std_logic := '1';
+	constant FIRModule_L178F13L181T14_3_a : unsigned(1 downto 0) := "11";
+	constant FIRModule_L178F13L181T14_3_FIRModule_L180F41T46_Expr : unsigned(1 downto 0) := "10";
+	constant FIRModule_L183F13L194T14_0_a : std_logic := '0';
+	constant FIRModule_L183F13L194T14_0_FIRModule_L187F26T30_Expr : std_logic := '1';
+	constant FIRModule_L183F13L194T14_1_a : std_logic := '1';
+	constant FIRModule_L183F13L194T14_1_FIRModule_L187F26T30_Expr : std_logic := '1';
+	constant FIRModule_L183F13L194T14_2_a : unsigned(1 downto 0) := "10";
+	constant FIRModule_L183F13L194T14_2_FIRModule_L187F26T30_Expr : std_logic := '1';
+	constant FIRModule_L183F13L194T14_3_a : unsigned(1 downto 0) := "11";
+	constant FIRModule_L183F13L194T14_3_FIRModule_L187F26T30_Expr : std_logic := '1';
+	constant FIRModule_L196F13L207T14_0_a : std_logic := '0';
+	constant FIRModule_L196F13L207T14_0_FIRModule_L200F26T30_Expr : std_logic := '1';
+	constant FIRModule_L196F13L207T14_1_a : std_logic := '1';
+	constant FIRModule_L196F13L207T14_1_FIRModule_L200F26T30_Expr : std_logic := '1';
+	constant FIRModule_L196F13L207T14_2_a : unsigned(1 downto 0) := "10";
+	constant FIRModule_L196F13L207T14_2_FIRModule_L200F26T30_Expr : std_logic := '1';
+	constant FIRModule_L196F13L207T14_3_a : unsigned(1 downto 0) := "11";
+	constant FIRModule_L196F13L207T14_3_FIRModule_L200F26T30_Expr : std_logic := '1';
+	constant FIRModule_L213F22T26_Expr : std_logic := '1';
+	constant FIRModule_L223F22T26_Expr : std_logic := '1';
+	constant FIRModule_L232F13L255T14_0_i : std_logic := '0';
+	constant FIRModule_L232F13L255T14_0_FIRModule_L237F27T32_Expr : std_logic := '0';
+	constant FIRModule_L232F13L255T14_0_FIRModule_L248F27T32_Expr : std_logic := '0';
+	constant FIRModule_L232F13L255T14_1_i : std_logic := '1';
+	constant FIRModule_L232F13L255T14_1_FIRModule_L237F27T32_Expr : std_logic := '0';
+	constant FIRModule_L232F13L255T14_1_FIRModule_L248F27T32_Expr : std_logic := '0';
+	constant FIRModule_L232F13L255T14_2_i : unsigned(1 downto 0) := "10";
+	constant FIRModule_L232F13L255T14_2_FIRModule_L237F27T32_Expr : std_logic := '0';
+	constant FIRModule_L232F13L255T14_2_FIRModule_L248F27T32_Expr : std_logic := '0';
+	constant FIRModule_L232F13L255T14_3_i : unsigned(1 downto 0) := "11";
+	constant FIRModule_L232F13L255T14_3_FIRModule_L237F27T32_Expr : std_logic := '0';
+	constant FIRModule_L232F13L255T14_3_FIRModule_L248F27T32_Expr : std_logic := '0';
+	constant FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L283F56T57_Expr : std_logic := '0';
+	constant FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F94T95_Expr : std_logic := '1';
+	constant FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L285F56T79_Expr : unsigned(2 downto 0) := "111";
+	constant FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L286F21L288T22_FIRModule_L287F59T60_Expr : std_logic := '0';
+	constant FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L290F21L292T22_FIRModule_L291F89T90_Expr : std_logic := '1';
+	constant FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L295F17L297T18_FIRModule_L296F87T88_Expr : std_logic := '1';
+	constant FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F45T46_Expr : unsigned(1 downto 0) := "10";
+	constant FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F66T67_Expr : std_logic := '0';
+	constant FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L317F13L319T14_FIRModule_L318F41T45_Expr : std_logic := '1';
+	constant FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L321F13L323T14_FIRModule_L322F41T46_Expr : std_logic := '0';
+	constant FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L331F69T70_Expr : std_logic := '1';
+	constant FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L341F17L343T18_FIRModule_L342F62T66_Expr : std_logic := '1';
+	constant FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L345F17L347T18_FIRModule_L346F62T67_Expr : std_logic := '0';
+	constant FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L360F37T38_Expr : std_logic := '1';
+	constant FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L365F17L374T18_FIRModule_L366F57T58_Expr : std_logic := '0';
+	constant FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L365F17L374T18_FIRModule_L367F21L369T22_FIRModule_L368F57T61_Expr : std_logic := '1';
+	constant FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L365F17L374T18_FIRModule_L371F21L373T22_FIRModule_L372F57T62_Expr : std_logic := '0';
+	constant FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L377F17L379T18_FIRModule_L378F49T50_Expr : std_logic := '0';
+	constant FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L381F17L383T18_FIRModule_L382F73T74_Expr : std_logic := '1';
+	constant FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L397F81T82_Expr : std_logic := '1';
+	constant FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L398F81T82_Expr : std_logic := '1';
+	constant FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L402F44T49_Expr : std_logic := '0';
+	constant FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L405F53T54_Expr : std_logic := '0';
+	constant FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L415F37T38_Expr : std_logic := '0';
+	constant FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L416F50T51_Expr : std_logic := '0';
+	constant FIRModule_L531F9L539T10_FIRModule_L536F13T28_FIRModule_L423F9L438T10_FIRModule_L425F13L437T14_FIRModule_L426F43T44_Expr : std_logic := '0';
+	constant FIRModule_L531F9L539T10_FIRModule_L536F13T28_FIRModule_L423F9L438T10_FIRModule_L425F13L437T14_FIRModule_L427F17L430T18_0_idx : std_logic := '0';
+	constant FIRModule_L531F9L539T10_FIRModule_L536F13T28_FIRModule_L423F9L438T10_FIRModule_L425F13L437T14_FIRModule_L427F17L430T18_0_FIRModule_L428F17L430T18_FIRModule_L429F47T54_Expr : std_logic := '1';
+	constant FIRModule_L531F9L539T10_FIRModule_L536F13T28_FIRModule_L423F9L438T10_FIRModule_L425F13L437T14_FIRModule_L427F17L430T18_1_idx : std_logic := '1';
+	constant FIRModule_L531F9L539T10_FIRModule_L536F13T28_FIRModule_L423F9L438T10_FIRModule_L425F13L437T14_FIRModule_L427F17L430T18_1_FIRModule_L428F17L430T18_FIRModule_L429F47T54_Expr : unsigned(1 downto 0) := "10";
+	constant FIRModule_L531F9L539T10_FIRModule_L536F13T28_FIRModule_L423F9L438T10_FIRModule_L425F13L437T14_FIRModule_L427F17L430T18_2_idx : unsigned(1 downto 0) := "10";
+	constant FIRModule_L531F9L539T10_FIRModule_L536F13T28_FIRModule_L423F9L438T10_FIRModule_L425F13L437T14_FIRModule_L427F17L430T18_2_FIRModule_L428F17L430T18_FIRModule_L429F47T54_Expr : unsigned(1 downto 0) := "11";
+	constant FIRModule_L531F9L539T10_FIRModule_L536F13T28_FIRModule_L423F9L438T10_FIRModule_L425F13L437T14_FIRModule_L427F17L430T18_3_idx : unsigned(1 downto 0) := "11";
+	constant FIRModule_L531F9L539T10_FIRModule_L536F13T28_FIRModule_L423F9L438T10_FIRModule_L425F13L437T14_FIRModule_L427F17L430T18_3_FIRModule_L428F17L430T18_FIRModule_L429F47T54_Expr : unsigned(2 downto 0) := "100";
+	constant FIRModule_L531F9L539T10_FIRModule_L536F13T28_FIRModule_L423F9L438T10_FIRModule_L425F13L437T14_FIRModule_L427F17L430T18_4_idx : unsigned(2 downto 0) := "100";
+	constant FIRModule_L531F9L539T10_FIRModule_L536F13T28_FIRModule_L423F9L438T10_FIRModule_L425F13L437T14_FIRModule_L427F17L430T18_4_FIRModule_L428F17L430T18_FIRModule_L429F47T54_Expr : unsigned(2 downto 0) := "101";
+	constant FIRModule_L531F9L539T10_FIRModule_L536F13T28_FIRModule_L423F9L438T10_FIRModule_L425F13L437T14_FIRModule_L427F17L430T18_5_idx : unsigned(2 downto 0) := "101";
+	constant FIRModule_L531F9L539T10_FIRModule_L536F13T28_FIRModule_L423F9L438T10_FIRModule_L425F13L437T14_FIRModule_L427F17L430T18_5_FIRModule_L428F17L430T18_FIRModule_L429F47T54_Expr : unsigned(2 downto 0) := "110";
+	constant FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F102T111_Expr : unsigned(6 downto 0) := "0000000";
+	constant FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F131T140_Expr : unsigned(6 downto 0) := "0100000";
+	constant FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L503F44T65_FIRModule_L503F58T59_Expr : std_logic := '0';
+	constant FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L505F13L512T14_FIRModule_L508F106T115_Expr : unsigned(6 downto 0) := "0010000";
+	constant FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L505F13L512T14_FIRModule_L508F135T144_Expr : unsigned(6 downto 0) := "0100000";
+	constant FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F102T111_Expr : unsigned(6 downto 0) := "0000000";
+	constant FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F131T140_Expr : unsigned(6 downto 0) := "0100000";
+	constant FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L518F44T65_FIRModule_L518F58T59_Expr : std_logic := '0';
+	constant FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L520F13L527T14_FIRModule_L523F106T115_Expr : unsigned(6 downto 0) := "0010000";
+	constant FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L520F13L527T14_FIRModule_L523F135T144_Expr : unsigned(6 downto 0) := "0100000";
+	constant FIRModule_L143F57T58_Expr : unsigned(1 downto 0) := "10";
+	constant FIRModule_L143F78T79_Expr : std_logic := '0';
 	signal Inputs_iCOEF_V : std_logic := '0';
 	signal Inputs_iCOEFF : unsigned(15 downto 0) := (others => '0');
 	signal Inputs_iDO : unsigned(3 downto 0) := (others => '0');
@@ -223,7 +246,6 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal ramf_din_q : unsigned(15 downto 0) := (others => '0');
 	signal ramf_dout_i : unsigned(15 downto 0) := (others => '0');
 	signal ramf_dout_q : unsigned(15 downto 0) := (others => '0');
-	signal ob_coef_cnt : unsigned(15 downto 0) := (others => '0');
 	signal u_ram_coef0_CE : std_logic := '0';
 	signal u_ram_coef0_WR : std_logic := '0';
 	signal u_ram_coef0_WR_ADDR : unsigned(8 downto 0) := (others => '0');
@@ -323,6 +345,7 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal u_ram_filo_q_RD_ADDR : unsigned(8 downto 0) := (others => '0');
 	signal u_ram_filo_q_DOUT : unsigned(15 downto 0) := (others => '0');
 	signal u_dsp48_i0_CE : std_logic := '0';
+	signal u_dsp48_i0_RST : std_logic := '0';
 	signal u_dsp48_i0_A : unsigned(29 downto 0) := (others => '0');
 	signal u_dsp48_i0_B : unsigned(17 downto 0) := (others => '0');
 	signal u_dsp48_i0_D : unsigned(24 downto 0) := (others => '0');
@@ -331,6 +354,7 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal u_dsp48_i0_PCOUT : unsigned(47 downto 0) := (others => '0');
 	signal u_dsp48_i0_P : unsigned(47 downto 0) := (others => '0');
 	signal u_dsp48_i1_CE : std_logic := '0';
+	signal u_dsp48_i1_RST : std_logic := '0';
 	signal u_dsp48_i1_A : unsigned(29 downto 0) := (others => '0');
 	signal u_dsp48_i1_B : unsigned(17 downto 0) := (others => '0');
 	signal u_dsp48_i1_D : unsigned(24 downto 0) := (others => '0');
@@ -339,6 +363,7 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal u_dsp48_i1_PCOUT : unsigned(47 downto 0) := (others => '0');
 	signal u_dsp48_i1_P : unsigned(47 downto 0) := (others => '0');
 	signal u_dsp48_i2_CE : std_logic := '0';
+	signal u_dsp48_i2_RST : std_logic := '0';
 	signal u_dsp48_i2_A : unsigned(29 downto 0) := (others => '0');
 	signal u_dsp48_i2_B : unsigned(17 downto 0) := (others => '0');
 	signal u_dsp48_i2_D : unsigned(24 downto 0) := (others => '0');
@@ -347,6 +372,7 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal u_dsp48_i2_PCOUT : unsigned(47 downto 0) := (others => '0');
 	signal u_dsp48_i2_P : unsigned(47 downto 0) := (others => '0');
 	signal u_dsp48_i3_CE : std_logic := '0';
+	signal u_dsp48_i3_RST : std_logic := '0';
 	signal u_dsp48_i3_A : unsigned(29 downto 0) := (others => '0');
 	signal u_dsp48_i3_B : unsigned(17 downto 0) := (others => '0');
 	signal u_dsp48_i3_D : unsigned(24 downto 0) := (others => '0');
@@ -355,6 +381,7 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal u_dsp48_i3_PCOUT : unsigned(47 downto 0) := (others => '0');
 	signal u_dsp48_i3_P : unsigned(47 downto 0) := (others => '0');
 	signal u_dsp48_q0_CE : std_logic := '0';
+	signal u_dsp48_q0_RST : std_logic := '0';
 	signal u_dsp48_q0_A : unsigned(29 downto 0) := (others => '0');
 	signal u_dsp48_q0_B : unsigned(17 downto 0) := (others => '0');
 	signal u_dsp48_q0_D : unsigned(24 downto 0) := (others => '0');
@@ -363,6 +390,7 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal u_dsp48_q0_PCOUT : unsigned(47 downto 0) := (others => '0');
 	signal u_dsp48_q0_P : unsigned(47 downto 0) := (others => '0');
 	signal u_dsp48_q1_CE : std_logic := '0';
+	signal u_dsp48_q1_RST : std_logic := '0';
 	signal u_dsp48_q1_A : unsigned(29 downto 0) := (others => '0');
 	signal u_dsp48_q1_B : unsigned(17 downto 0) := (others => '0');
 	signal u_dsp48_q1_D : unsigned(24 downto 0) := (others => '0');
@@ -371,6 +399,7 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal u_dsp48_q1_PCOUT : unsigned(47 downto 0) := (others => '0');
 	signal u_dsp48_q1_P : unsigned(47 downto 0) := (others => '0');
 	signal u_dsp48_q2_CE : std_logic := '0';
+	signal u_dsp48_q2_RST : std_logic := '0';
 	signal u_dsp48_q2_A : unsigned(29 downto 0) := (others => '0');
 	signal u_dsp48_q2_B : unsigned(17 downto 0) := (others => '0');
 	signal u_dsp48_q2_D : unsigned(24 downto 0) := (others => '0');
@@ -379,6 +408,7 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal u_dsp48_q2_PCOUT : unsigned(47 downto 0) := (others => '0');
 	signal u_dsp48_q2_P : unsigned(47 downto 0) := (others => '0');
 	signal u_dsp48_q3_CE : std_logic := '0';
+	signal u_dsp48_q3_RST : std_logic := '0';
 	signal u_dsp48_q3_A : unsigned(29 downto 0) := (others => '0');
 	signal u_dsp48_q3_B : unsigned(17 downto 0) := (others => '0');
 	signal u_dsp48_q3_D : unsigned(24 downto 0) := (others => '0');
@@ -386,21 +416,38 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal u_dsp48_q3_OPMODE : unsigned(2 downto 0) := (others => '0');
 	signal u_dsp48_q3_PCOUT : unsigned(47 downto 0) := (others => '0');
 	signal u_dsp48_q3_P : unsigned(47 downto 0) := (others => '0');
-	signal FIRModule_L156F26L166T18_Ternary_i : unsigned(15 downto 0) := (others => '0');
-	signal FIRModule_L156F26L166T18_Ternary_q : unsigned(15 downto 0) := (others => '0');
-	signal FIRModule_L157F17L161T18_WhenTrue_i : unsigned(15 downto 0) := (others => '0');
-	signal FIRModule_L157F17L161T18_WhenTrue_q : unsigned(15 downto 0) := (others => '0');
-	signal FIRModule_L162F17L166T18_WhenFalse_i : unsigned(15 downto 0) := (others => '0');
-	signal FIRModule_L162F17L166T18_WhenFalse_q : unsigned(15 downto 0) := (others => '0');
-	signal FIRModule_L211F13L214T14_1_FIRModule_L213F31T47_Index : unsigned(31 downto 0) := (others => '0');
-	signal FIRModule_L211F13L214T14_2_FIRModule_L213F31T47_Index : unsigned(31 downto 0) := (others => '0');
-	signal FIRModule_L211F13L214T14_3_FIRModule_L213F31T47_Index : unsigned(31 downto 0) := (others => '0');
-	signal FIRModule_L544F9L551T10_FIRModule_L545F13T29_FIRModule_L308F9L318T10_next_set_do : unsigned(3 downto 0) := (others => '0');
-	signal FIRModule_L544F9L551T10_FIRModule_L545F13T29_FIRModule_L308F9L318T10_FIRModule_L311F39T69_Index : unsigned(8 downto 0) := (others => '0');
-	signal FIRModule_L544F9L551T10_FIRModule_L545F13T29_FIRModule_L308F9L318T10_FIRModule_L312F39T69_Index : unsigned(9 downto 0) := (others => '0');
-	signal FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F52T91_Resize : unsigned(15 downto 0) := (others => '0');
-	signal FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F49T68_Index : signed(31 downto 0) := (others => '0');
+	signal FIRModule_L134F28L136T45_Ternary_i : unsigned(15 downto 0) := (others => '0');
+	signal FIRModule_L134F28L136T45_Ternary_q : unsigned(15 downto 0) := (others => '0');
+	signal FIRModule_L135F15T61_WhenTrue_i : unsigned(15 downto 0) := (others => '0');
+	signal FIRModule_L135F15T61_WhenTrue_q : unsigned(15 downto 0) := (others => '0');
+	signal FIRModule_L136F15T45_WhenFalse_i : unsigned(15 downto 0) := (others => '0');
+	signal FIRModule_L136F15T45_WhenFalse_q : unsigned(15 downto 0) := (others => '0');
+	signal FIRModule_L136F15T45_Index : unsigned(31 downto 0) := (others => '0');
+	signal FIRModule_L178F13L181T14_1_FIRModule_L180F31T47_Index : unsigned(31 downto 0) := (others => '0');
+	signal FIRModule_L178F13L181T14_2_FIRModule_L180F31T47_Index : unsigned(31 downto 0) := (others => '0');
+	signal FIRModule_L178F13L181T14_3_FIRModule_L180F31T47_Index : unsigned(31 downto 0) := (others => '0');
+	signal FIRModule_L531F9L539T10_FIRModule_L532F13T29_FIRModule_L262F9L272T10_next_set_do : unsigned(3 downto 0) := (others => '0');
+	signal FIRModule_L531F9L539T10_FIRModule_L532F13T29_FIRModule_L262F9L272T10_FIRModule_L265F39T69_Index : unsigned(8 downto 0) := (others => '0');
+	signal FIRModule_L531F9L539T10_FIRModule_L532F13T29_FIRModule_L262F9L272T10_FIRModule_L266F39T69_Index : unsigned(9 downto 0) := (others => '0');
+	signal FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F52T91_Resize : unsigned(15 downto 0) := (others => '0');
+	signal FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F49T68_Index : signed(31 downto 0) := (others => '0');
+	signal FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L500F44T60_FIRModule_L149F58T73_SignChange : signed(15 downto 0) := (others => '0');
+	signal FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L500F44T60_FIRModule_L149F58T87_Resize : signed(29 downto 0) := (others => '0');
+	signal FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L502F44T77_FIRModule_L149F58T73_SignChange : signed(15 downto 0) := (others => '0');
+	signal FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L502F44T77_FIRModule_L149F58T87_Resize : signed(24 downto 0) := (others => '0');
+	signal FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L503F44T65_FIRModule_L503F48T60_Index : unsigned(15 downto 0) := (others => '0');
+	signal FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L503F44T65_FIRModule_L149F58T73_SignChange : signed(15 downto 0) := (others => '0');
+	signal FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L503F44T65_FIRModule_L149F58T87_Resize : signed(17 downto 0) := (others => '0');
+	signal FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L515F44T60_FIRModule_L149F58T73_SignChange : signed(15 downto 0) := (others => '0');
+	signal FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L515F44T60_FIRModule_L149F58T87_Resize : signed(29 downto 0) := (others => '0');
+	signal FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L517F44T77_FIRModule_L149F58T73_SignChange : signed(15 downto 0) := (others => '0');
+	signal FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L517F44T77_FIRModule_L149F58T87_Resize : signed(24 downto 0) := (others => '0');
+	signal FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L518F44T65_FIRModule_L518F48T60_Index : unsigned(15 downto 0) := (others => '0');
+	signal FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L518F44T65_FIRModule_L149F58T73_SignChange : signed(15 downto 0) := (others => '0');
+	signal FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L518F44T65_FIRModule_L149F58T87_Resize : signed(17 downto 0) := (others => '0');
 	signal State_set_do_muxDefault : unsigned(3 downto 0) := "0000";
+	signal FIRModule_L143F61T80_Index : signed(31 downto 0) := (others => '0');
+	signal FIRModule_L143F41T93_Resize : signed(15 downto 0) := (others => '0');
 	signal u_ram_coef0CEu_ram_coef0_CEHardLink : std_logic := '0';
 	signal u_ram_coef0WRu_ram_coef0_WRHardLink : std_logic := '0';
 	signal u_ram_coef0WR_ADDRu_ram_coef0_WR_ADDRHardLink : unsigned(8 downto 0) := "000000000";
@@ -500,6 +547,7 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal u_ram_filo_qRD_ADDRu_ram_filo_q_RD_ADDRHardLink : unsigned(8 downto 0) := "000000000";
 	signal u_ram_filo_qDOUTu_ram_filo_q_DOUTHardLink : unsigned(15 downto 0) := "0000000000000000";
 	signal u_dsp48_i0CEu_dsp48_i0_CEHardLink : std_logic := '0';
+	signal u_dsp48_i0RSTu_dsp48_i0_RSTHardLink : std_logic := '0';
 	signal u_dsp48_i0Au_dsp48_i0_AHardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
 	signal u_dsp48_i0Bu_dsp48_i0_BHardLink : unsigned(17 downto 0) := "000000000000000000";
 	signal u_dsp48_i0Du_dsp48_i0_DHardLink : unsigned(24 downto 0) := "0000000000000000000000000";
@@ -508,6 +556,7 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal u_dsp48_i0PCOUTu_dsp48_i0_PCOUTHardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
 	signal u_dsp48_i0Pu_dsp48_i0_PHardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
 	signal u_dsp48_i1CEu_dsp48_i1_CEHardLink : std_logic := '0';
+	signal u_dsp48_i1RSTu_dsp48_i1_RSTHardLink : std_logic := '0';
 	signal u_dsp48_i1Au_dsp48_i1_AHardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
 	signal u_dsp48_i1Bu_dsp48_i1_BHardLink : unsigned(17 downto 0) := "000000000000000000";
 	signal u_dsp48_i1Du_dsp48_i1_DHardLink : unsigned(24 downto 0) := "0000000000000000000000000";
@@ -516,6 +565,7 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal u_dsp48_i1PCOUTu_dsp48_i1_PCOUTHardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
 	signal u_dsp48_i1Pu_dsp48_i1_PHardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
 	signal u_dsp48_i2CEu_dsp48_i2_CEHardLink : std_logic := '0';
+	signal u_dsp48_i2RSTu_dsp48_i2_RSTHardLink : std_logic := '0';
 	signal u_dsp48_i2Au_dsp48_i2_AHardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
 	signal u_dsp48_i2Bu_dsp48_i2_BHardLink : unsigned(17 downto 0) := "000000000000000000";
 	signal u_dsp48_i2Du_dsp48_i2_DHardLink : unsigned(24 downto 0) := "0000000000000000000000000";
@@ -524,6 +574,7 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal u_dsp48_i2PCOUTu_dsp48_i2_PCOUTHardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
 	signal u_dsp48_i2Pu_dsp48_i2_PHardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
 	signal u_dsp48_i3CEu_dsp48_i3_CEHardLink : std_logic := '0';
+	signal u_dsp48_i3RSTu_dsp48_i3_RSTHardLink : std_logic := '0';
 	signal u_dsp48_i3Au_dsp48_i3_AHardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
 	signal u_dsp48_i3Bu_dsp48_i3_BHardLink : unsigned(17 downto 0) := "000000000000000000";
 	signal u_dsp48_i3Du_dsp48_i3_DHardLink : unsigned(24 downto 0) := "0000000000000000000000000";
@@ -532,6 +583,7 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal u_dsp48_i3PCOUTu_dsp48_i3_PCOUTHardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
 	signal u_dsp48_i3Pu_dsp48_i3_PHardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
 	signal u_dsp48_q0CEu_dsp48_q0_CEHardLink : std_logic := '0';
+	signal u_dsp48_q0RSTu_dsp48_q0_RSTHardLink : std_logic := '0';
 	signal u_dsp48_q0Au_dsp48_q0_AHardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
 	signal u_dsp48_q0Bu_dsp48_q0_BHardLink : unsigned(17 downto 0) := "000000000000000000";
 	signal u_dsp48_q0Du_dsp48_q0_DHardLink : unsigned(24 downto 0) := "0000000000000000000000000";
@@ -540,6 +592,7 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal u_dsp48_q0PCOUTu_dsp48_q0_PCOUTHardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
 	signal u_dsp48_q0Pu_dsp48_q0_PHardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
 	signal u_dsp48_q1CEu_dsp48_q1_CEHardLink : std_logic := '0';
+	signal u_dsp48_q1RSTu_dsp48_q1_RSTHardLink : std_logic := '0';
 	signal u_dsp48_q1Au_dsp48_q1_AHardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
 	signal u_dsp48_q1Bu_dsp48_q1_BHardLink : unsigned(17 downto 0) := "000000000000000000";
 	signal u_dsp48_q1Du_dsp48_q1_DHardLink : unsigned(24 downto 0) := "0000000000000000000000000";
@@ -548,6 +601,7 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal u_dsp48_q1PCOUTu_dsp48_q1_PCOUTHardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
 	signal u_dsp48_q1Pu_dsp48_q1_PHardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
 	signal u_dsp48_q2CEu_dsp48_q2_CEHardLink : std_logic := '0';
+	signal u_dsp48_q2RSTu_dsp48_q2_RSTHardLink : std_logic := '0';
 	signal u_dsp48_q2Au_dsp48_q2_AHardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
 	signal u_dsp48_q2Bu_dsp48_q2_BHardLink : unsigned(17 downto 0) := "000000000000000000";
 	signal u_dsp48_q2Du_dsp48_q2_DHardLink : unsigned(24 downto 0) := "0000000000000000000000000";
@@ -556,6 +610,7 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal u_dsp48_q2PCOUTu_dsp48_q2_PCOUTHardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
 	signal u_dsp48_q2Pu_dsp48_q2_PHardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
 	signal u_dsp48_q3CEu_dsp48_q3_CEHardLink : std_logic := '0';
+	signal u_dsp48_q3RSTu_dsp48_q3_RSTHardLink : std_logic := '0';
 	signal u_dsp48_q3Au_dsp48_q3_AHardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
 	signal u_dsp48_q3Bu_dsp48_q3_BHardLink : unsigned(17 downto 0) := "000000000000000000";
 	signal u_dsp48_q3Du_dsp48_q3_DHardLink : unsigned(24 downto 0) := "0000000000000000000000000";
@@ -649,87 +704,92 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	constant State_ob_iq_iDefault : unsigned(23 downto 0) := "000000000000000000000000";
 	signal State_ob_iq_q : unsigned(23 downto 0) := "000000000000000000000000";
 	constant State_ob_iq_qDefault : unsigned(23 downto 0) := "000000000000000000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L378F52T95_Expr : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L378F52T95_Expr_1 : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L378F52T95_Expr_2 : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L407F17L409T18_FIRModule_L408F53T79_Expr : std_logic := '0';
-	signal FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L407F17L409T18_FIRModule_L408F53T79_Expr_1 : std_logic := '0';
-	signal FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L431F52T95_Expr : unsigned(9 downto 0) := "0000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L431F52T95_Expr_1 : unsigned(9 downto 0) := "0000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L431F52T95_Expr_2 : unsigned(9 downto 0) := "0000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L445F48T97_Expr : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L445F48T97_Expr_1 : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L445F48T97_Expr_2 : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L446F48T97_Expr : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L446F48T97_Expr_1 : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L446F48T97_Expr_2 : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L452F51T71_Expr : std_logic := '0';
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L452F51T71_Expr_1 : std_logic := '0';
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L455F17L459T18_FIRModule_L458F51T71_Expr : std_logic := '0';
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L455F17L459T18_FIRModule_L458F51T71_Expr_1 : std_logic := '0';
-	signal FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F52T95_Expr : unsigned(17 downto 0) := "000000000000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F52T95_Expr_1 : signed(17 downto 0) := "000000000000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F52T95_Expr_2 : signed(17 downto 0) := "000000000000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L336F21L338T22_FIRModule_L337F59T90_Expr : unsigned(3 downto 0) := "0000";
-	signal FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L336F21L338T22_FIRModule_L337F59T90_Expr_1 : signed(3 downto 0) := "0000";
-	signal FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L336F21L338T22_FIRModule_L337F59T90_Expr_2 : signed(3 downto 0) := "0000";
-	signal FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L341F17L343T18_FIRModule_L342F56T88_Expr : unsigned(9 downto 0) := "0000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L341F17L343T18_FIRModule_L342F56T88_Expr_1 : signed(9 downto 0) := "0000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L341F17L343T18_FIRModule_L342F56T88_Expr_2 : signed(9 downto 0) := "0000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F45T68_Expr : signed(34 downto 0) := "00000000000000000000000000000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F45T68_Expr_1 : signed(34 downto 0) := "00000000000000000000000000000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F45T68_Expr_2 : signed(34 downto 0) := "00000000000000000000000000000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L377F45T70_Expr : signed(10 downto 0) := "00000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L377F45T70_Expr_1 : signed(10 downto 0) := "00000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L377F45T70_Expr_2 : signed(10 downto 0) := "00000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L427F17L429T18_FIRModule_L428F49T74_Expr : unsigned(10 downto 0) := "00000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L427F17L429T18_FIRModule_L428F49T74_Expr_1 : signed(10 downto 0) := "00000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L427F17L429T18_FIRModule_L428F49T74_Expr_2 : signed(10 downto 0) := "00000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L443F51T82_Expr : signed(10 downto 0) := "00000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L443F51T82_Expr_1 : signed(10 downto 0) := "00000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L443F51T82_Expr_2 : signed(10 downto 0) := "00000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L444F51T82_Expr : unsigned(10 downto 0) := "00000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L444F51T82_Expr_1 : signed(10 downto 0) := "00000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L444F51T82_Expr_2 : signed(10 downto 0) := "00000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L518F78T83_Expr : signed(33 downto 0) := "0000000000000000000000000000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L518F78T83_Expr_1 : signed(33 downto 0) := "0000000000000000000000000000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L518F78T83_Expr_2 : signed(33 downto 0) := "0000000000000000000000000000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L519F78T83_Expr : signed(33 downto 0) := "0000000000000000000000000000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L519F78T83_Expr_1 : signed(33 downto 0) := "0000000000000000000000000000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L519F78T83_Expr_2 : signed(33 downto 0) := "0000000000000000000000000000000000";
-	signal FIRModule_L156F26T47_Expr : std_logic := '0';
-	signal FIRModule_L156F26T47_ExprLhs : signed(4 downto 0) := "00000";
-	signal FIRModule_L156F26T47_ExprRhs : signed(4 downto 0) := "00000";
-	signal FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L327F21T72_Expr : std_logic := '0';
-	signal FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L327F21T72_ExprLhs : signed(9 downto 0) := "0000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L327F21T72_ExprRhs : signed(9 downto 0) := "0000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L331F25T79_Expr : std_logic := '0';
-	signal FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L331F25T79_ExprLhs : signed(3 downto 0) := "0000";
-	signal FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L331F25T79_ExprRhs : signed(3 downto 0) := "0000";
-	signal FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F17T68_Expr : std_logic := '0';
-	signal FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F17T68_ExprLhs : signed(35 downto 0) := "000000000000000000000000000000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F17T68_ExprRhs : signed(35 downto 0) := "000000000000000000000000000000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L386F21T73_Expr : std_logic := '0';
-	signal FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L386F21T73_ExprLhs : signed(9 downto 0) := "0000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L386F21T73_ExprRhs : signed(9 downto 0) := "0000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L406F21T38_Expr : std_logic := '0';
-	signal FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L406F21T38_ExprLhs : signed(4 downto 0) := "00000";
-	signal FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L406F21T38_ExprRhs : signed(4 downto 0) := "00000";
-	signal FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L411F17L420T18_FIRModule_L412F25T58_Expr : std_logic := '0';
-	signal FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L411F17L420T18_FIRModule_L412F25T58_ExprLhs : signed(10 downto 0) := "00000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L411F17L420T18_FIRModule_L412F25T58_ExprRhs : signed(10 downto 0) := "00000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L448F21T49_Expr : std_logic := '0';
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L448F21T49_ExprLhs : signed(1 downto 0) := "00";
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L448F21T49_ExprRhs : signed(1 downto 0) := "00";
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L451F25T54_Expr : std_logic := '0';
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L451F25T54_ExprLhs : signed(9 downto 0) := "0000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L451F25T54_ExprRhs : signed(9 downto 0) := "0000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L455F17L459T18_FIRModule_L457F25T72_Expr : std_logic := '0';
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L455F17L459T18_FIRModule_L457F25T72_ExprLhs : signed(9 downto 0) := "0000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L455F17L459T18_FIRModule_L457F25T72_ExprRhs : signed(9 downto 0) := "0000000000";
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L461F21T38_Expr : std_logic := '0';
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L461F21T38_ExprLhs : signed(4 downto 0) := "00000";
-	signal FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L461F21T38_ExprRhs : signed(4 downto 0) := "00000";
+	signal FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L332F52T95_Expr : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L332F52T95_Expr_1 : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L332F52T95_Expr_2 : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L361F17L363T18_FIRModule_L362F53T79_Expr : std_logic := '0';
+	signal FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L361F17L363T18_FIRModule_L362F53T79_Expr_1 : std_logic := '0';
+	signal FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L385F52T95_Expr : unsigned(9 downto 0) := "0000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L385F52T95_Expr_1 : unsigned(9 downto 0) := "0000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L385F52T95_Expr_2 : unsigned(9 downto 0) := "0000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L399F48T97_Expr : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L399F48T97_Expr_1 : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L399F48T97_Expr_2 : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L400F48T97_Expr : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L400F48T97_Expr_1 : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L400F48T97_Expr_2 : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L406F51T71_Expr : std_logic := '0';
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L406F51T71_Expr_1 : std_logic := '0';
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L409F17L413T18_FIRModule_L412F51T71_Expr : std_logic := '0';
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L409F17L413T18_FIRModule_L412F51T71_Expr_1 : std_logic := '0';
+	signal FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F52T95_Expr : unsigned(17 downto 0) := "000000000000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F52T95_Expr_1 : signed(17 downto 0) := "000000000000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F52T95_Expr_2 : signed(17 downto 0) := "000000000000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L290F21L292T22_FIRModule_L291F59T90_Expr : unsigned(3 downto 0) := "0000";
+	signal FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L290F21L292T22_FIRModule_L291F59T90_Expr_1 : signed(3 downto 0) := "0000";
+	signal FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L290F21L292T22_FIRModule_L291F59T90_Expr_2 : signed(3 downto 0) := "0000";
+	signal FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L295F17L297T18_FIRModule_L296F56T88_Expr : unsigned(9 downto 0) := "0000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L295F17L297T18_FIRModule_L296F56T88_Expr_1 : signed(9 downto 0) := "0000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L295F17L297T18_FIRModule_L296F56T88_Expr_2 : signed(9 downto 0) := "0000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F45T68_Expr : signed(34 downto 0) := "00000000000000000000000000000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F45T68_Expr_1 : signed(34 downto 0) := "00000000000000000000000000000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F45T68_Expr_2 : signed(34 downto 0) := "00000000000000000000000000000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L331F45T70_Expr : signed(10 downto 0) := "00000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L331F45T70_Expr_1 : signed(10 downto 0) := "00000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L331F45T70_Expr_2 : signed(10 downto 0) := "00000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L381F17L383T18_FIRModule_L382F49T74_Expr : unsigned(10 downto 0) := "00000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L381F17L383T18_FIRModule_L382F49T74_Expr_1 : signed(10 downto 0) := "00000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L381F17L383T18_FIRModule_L382F49T74_Expr_2 : signed(10 downto 0) := "00000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L397F51T82_Expr : signed(10 downto 0) := "00000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L397F51T82_Expr_1 : signed(10 downto 0) := "00000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L397F51T82_Expr_2 : signed(10 downto 0) := "00000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L398F51T82_Expr : unsigned(10 downto 0) := "00000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L398F51T82_Expr_1 : signed(10 downto 0) := "00000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L398F51T82_Expr_2 : signed(10 downto 0) := "00000000000";
+	signal FIRModule_L143F57T80_Expr : signed(34 downto 0) := "00000000000000000000000000000000000";
+	signal FIRModule_L143F57T80_Expr_1 : signed(34 downto 0) := "00000000000000000000000000000000000";
+	signal FIRModule_L143F57T80_Expr_2 : signed(34 downto 0) := "00000000000000000000000000000000000";
+	signal FIRModule_L134F28T49_Expr : std_logic := '0';
+	signal FIRModule_L134F28T49_ExprLhs : signed(4 downto 0) := "00000";
+	signal FIRModule_L134F28T49_ExprRhs : signed(4 downto 0) := "00000";
+	signal FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L281F21T72_Expr : std_logic := '0';
+	signal FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L281F21T72_ExprLhs : signed(9 downto 0) := "0000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L281F21T72_ExprRhs : signed(9 downto 0) := "0000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L285F25T79_Expr : std_logic := '0';
+	signal FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L285F25T79_ExprLhs : signed(3 downto 0) := "0000";
+	signal FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L285F25T79_ExprRhs : signed(3 downto 0) := "0000";
+	signal FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F17T68_Expr : std_logic := '0';
+	signal FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F17T68_ExprLhs : signed(35 downto 0) := "000000000000000000000000000000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F17T68_ExprRhs : signed(35 downto 0) := "000000000000000000000000000000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L340F21T73_Expr : std_logic := '0';
+	signal FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L340F21T73_ExprLhs : signed(9 downto 0) := "0000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L340F21T73_ExprRhs : signed(9 downto 0) := "0000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L360F21T38_Expr : std_logic := '0';
+	signal FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L360F21T38_ExprLhs : signed(4 downto 0) := "00000";
+	signal FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L360F21T38_ExprRhs : signed(4 downto 0) := "00000";
+	signal FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L365F17L374T18_FIRModule_L366F25T58_Expr : std_logic := '0';
+	signal FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L365F17L374T18_FIRModule_L366F25T58_ExprLhs : signed(10 downto 0) := "00000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L365F17L374T18_FIRModule_L366F25T58_ExprRhs : signed(10 downto 0) := "00000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L402F21T49_Expr : std_logic := '0';
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L402F21T49_ExprLhs : signed(1 downto 0) := "00";
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L402F21T49_ExprRhs : signed(1 downto 0) := "00";
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L405F25T54_Expr : std_logic := '0';
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L405F25T54_ExprLhs : signed(9 downto 0) := "0000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L405F25T54_ExprRhs : signed(9 downto 0) := "0000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L409F17L413T18_FIRModule_L411F25T72_Expr : std_logic := '0';
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L409F17L413T18_FIRModule_L411F25T72_ExprLhs : signed(9 downto 0) := "0000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L409F17L413T18_FIRModule_L411F25T72_ExprRhs : signed(9 downto 0) := "0000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L415F21T38_Expr : std_logic := '0';
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L415F21T38_ExprLhs : signed(4 downto 0) := "00000";
+	signal FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L415F21T38_ExprRhs : signed(4 downto 0) := "00000";
+	signal FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F49T141_Lookup : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F49T141_Lookup : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F49T141_LookupMultiplexerAddress : std_logic := '0';
+	signal FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F49T141_Lookup1 : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F49T141_Lookup2 : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F49T141_LookupMultiplexerAddress : std_logic := '0';
+	signal FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F49T141_Lookup1 : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F49T141_Lookup2 : unsigned(8 downto 0) := "000000000";
 	type State_set_do_muxArray is array (0 to 3) of unsigned (3 downto 0);
 	signal State_set_do_mux : State_set_do_muxArray := (others => (others => '0'));
 	type NextState_set_do_muxArray is array (0 to 3) of unsigned (3 downto 0);
@@ -832,6 +892,28 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal ramd_dout : ramd_doutArray := (others => (others => '0'));
 	signal BoardSignals : BoardSignalsType;
 	signal InternalReset : std_logic := '0';
+	subtype signed30 is signed (29 downto 0);
+	subtype unsigned7 is unsigned (6 downto 0);
+	function ternary_signed_30(condition : boolean; whenTrue : signed30; whenFalse : signed30) return signed30 is
+	begin
+		if condition then
+			return whenTrue;
+		else
+			return whenFalse;
+		end if;
+	end function;
+	function ternary_unsigned_7(condition : boolean; whenTrue : unsigned7; whenFalse : unsigned7) return unsigned7 is
+	begin
+		if condition then
+			return whenTrue;
+		else
+			return whenFalse;
+		end if;
+	end function;
+	function bit_to_boolean(source : std_logic) return boolean is
+	begin
+		return source /= '0';
+	end function;
 begin
 	work.Quokka.BoardSignalsProc(BoardSignals, Clock, Reset, InternalReset);
 	process (Clock, NextState_coeff_coef_ram_cnt, NextState_coeff_coef_ram_wr, NextState_coeff_coef_wr_cnt_cell, NextState_coeff_coef_wr_cnt_ram, NextState_dsp48_dsp48_srl_out_i, NextState_dsp48_dsp48_srl_out_p_i, NextState_dsp48_dsp48_srl_out_p_q, NextState_dsp48_dsp48_srl_out_p1_i, NextState_dsp48_dsp48_srl_out_p1_q, NextState_dsp48_dsp48_srl_out_q, NextState_filo_filo_addr_dec, NextState_filo_filo_addr_inc, NextState_filo_filo_addr_p, NextState_filo_filo_addr_p1, NextState_filo_filo_counter_dec, NextState_filo_filo_counter_inc, NextState_filo_filo_way, NextState_main_main_c_cnt, NextState_main_main_c_cnt_masked, NextState_main_main_c_rd_addr_cmn, NextState_main_main_d_cnt, NextState_main_main_d_cnt_masked, NextState_main_main_d_cnt_rst, NextState_mult_reset_mult_reset, NextState_mult_reset_mult_reset_common, NextState_mult_reset_mult_reset_common_p, NextState_mult_reset_mult_reset_common_p1, NextState_mult_reset_mult_reset_common_p2, NextState_mult_reset_mult_reset_common_p3, NextState_mult_reset_mult_reset_dsp, NextState_ob_coef_rdy, NextState_ob_iq_i, NextState_ob_iq_q, NextState_ob_iq_v, NextState_set_coef_mask, NextState_set_data_mask, NextState_set_do, NextState_tr_tr_fir_mreg_i, NextState_tr_tr_fir_mreg_q, NextState_tr_tr_fir_preg_i, NextState_tr_tr_fir_preg_q, NextState_tr_tr_fir_result_i, NextState_tr_tr_fir_result_q, Reset)
@@ -1236,84 +1318,80 @@ begin
 			end if;
 		end if;
 	end process;
-	FIRModule_L156F26T47_Expr <= '1' when (signed(resize(FIRModule_L156F26T47_ExprLhs, FIRModule_L156F26T47_ExprLhs'length + 1)) = signed(resize(FIRModule_L156F26T47_ExprRhs, FIRModule_L156F26T47_ExprRhs'length + 1))) else '0';
-	FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L327F21T72_Expr <= '1' when (signed(resize(FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L327F21T72_ExprLhs, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L327F21T72_ExprLhs'length + 1)) = signed(resize(FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L327F21T72_ExprRhs, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L327F21T72_ExprRhs'length + 1))) else '0';
-	FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L331F25T79_Expr <= '1' when (signed(resize(FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L331F25T79_ExprLhs, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L331F25T79_ExprLhs'length + 1)) = signed(resize(FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L331F25T79_ExprRhs, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L331F25T79_ExprRhs'length + 1))) else '0';
-	FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F17T68_Expr <= '1' when (signed(resize(FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F17T68_ExprLhs, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F17T68_ExprLhs'length + 1)) = signed(resize(FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F17T68_ExprRhs, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F17T68_ExprRhs'length + 1))) else '0';
-	FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L386F21T73_Expr <= '1' when (signed(resize(FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L386F21T73_ExprLhs, FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L386F21T73_ExprLhs'length + 1)) = signed(resize(FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L386F21T73_ExprRhs, FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L386F21T73_ExprRhs'length + 1))) else '0';
-	FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L406F21T38_Expr <= '1' when (signed(resize(FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L406F21T38_ExprLhs, FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L406F21T38_ExprLhs'length + 1)) = signed(resize(FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L406F21T38_ExprRhs, FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L406F21T38_ExprRhs'length + 1))) else '0';
-	FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L411F17L420T18_FIRModule_L412F25T58_Expr <= '1' when (signed(resize(FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L411F17L420T18_FIRModule_L412F25T58_ExprLhs, FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L411F17L420T18_FIRModule_L412F25T58_ExprLhs'length + 1)) = signed(resize(FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L411F17L420T18_FIRModule_L412F25T58_ExprRhs, FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L411F17L420T18_FIRModule_L412F25T58_ExprRhs'length + 1))) else '0';
-	FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L448F21T49_Expr <= '1' when (signed(resize(FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L448F21T49_ExprLhs, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L448F21T49_ExprLhs'length + 1)) = signed(resize(FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L448F21T49_ExprRhs, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L448F21T49_ExprRhs'length + 1))) else '0';
-	FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L451F25T54_Expr <= '1' when (signed(resize(FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L451F25T54_ExprLhs, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L451F25T54_ExprLhs'length + 1)) = signed(resize(FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L451F25T54_ExprRhs, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L451F25T54_ExprRhs'length + 1))) else '0';
-	FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L455F17L459T18_FIRModule_L457F25T72_Expr <= '1' when (signed(resize(FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L455F17L459T18_FIRModule_L457F25T72_ExprLhs, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L455F17L459T18_FIRModule_L457F25T72_ExprLhs'length + 1)) = signed(resize(FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L455F17L459T18_FIRModule_L457F25T72_ExprRhs, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L455F17L459T18_FIRModule_L457F25T72_ExprRhs'length + 1))) else '0';
-	FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L461F21T38_Expr <= '1' when (signed(resize(FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L461F21T38_ExprLhs, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L461F21T38_ExprLhs'length + 1)) = signed(resize(FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L461F21T38_ExprRhs, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L461F21T38_ExprRhs'length + 1))) else '0';
-	process (FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L378F52T95_Expr_1, FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L378F52T95_Expr_2)
+	FIRModule_L134F28T49_Expr <= '1' when (signed(resize(FIRModule_L134F28T49_ExprLhs, FIRModule_L134F28T49_ExprLhs'length + 1)) = signed(resize(FIRModule_L134F28T49_ExprRhs, FIRModule_L134F28T49_ExprRhs'length + 1))) else '0';
+	FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L281F21T72_Expr <= '1' when (signed(resize(FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L281F21T72_ExprLhs, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L281F21T72_ExprLhs'length + 1)) = signed(resize(FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L281F21T72_ExprRhs, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L281F21T72_ExprRhs'length + 1))) else '0';
+	FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L285F25T79_Expr <= '1' when (signed(resize(FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L285F25T79_ExprLhs, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L285F25T79_ExprLhs'length + 1)) = signed(resize(FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L285F25T79_ExprRhs, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L285F25T79_ExprRhs'length + 1))) else '0';
+	FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F17T68_Expr <= '1' when (signed(resize(FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F17T68_ExprLhs, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F17T68_ExprLhs'length + 1)) = signed(resize(FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F17T68_ExprRhs, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F17T68_ExprRhs'length + 1))) else '0';
+	FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L340F21T73_Expr <= '1' when (signed(resize(FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L340F21T73_ExprLhs, FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L340F21T73_ExprLhs'length + 1)) = signed(resize(FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L340F21T73_ExprRhs, FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L340F21T73_ExprRhs'length + 1))) else '0';
+	FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L360F21T38_Expr <= '1' when (signed(resize(FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L360F21T38_ExprLhs, FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L360F21T38_ExprLhs'length + 1)) = signed(resize(FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L360F21T38_ExprRhs, FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L360F21T38_ExprRhs'length + 1))) else '0';
+	FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L365F17L374T18_FIRModule_L366F25T58_Expr <= '1' when (signed(resize(FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L365F17L374T18_FIRModule_L366F25T58_ExprLhs, FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L365F17L374T18_FIRModule_L366F25T58_ExprLhs'length + 1)) = signed(resize(FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L365F17L374T18_FIRModule_L366F25T58_ExprRhs, FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L365F17L374T18_FIRModule_L366F25T58_ExprRhs'length + 1))) else '0';
+	FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L402F21T49_Expr <= '1' when (signed(resize(FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L402F21T49_ExprLhs, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L402F21T49_ExprLhs'length + 1)) = signed(resize(FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L402F21T49_ExprRhs, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L402F21T49_ExprRhs'length + 1))) else '0';
+	FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L405F25T54_Expr <= '1' when (signed(resize(FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L405F25T54_ExprLhs, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L405F25T54_ExprLhs'length + 1)) = signed(resize(FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L405F25T54_ExprRhs, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L405F25T54_ExprRhs'length + 1))) else '0';
+	FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L409F17L413T18_FIRModule_L411F25T72_Expr <= '1' when (signed(resize(FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L409F17L413T18_FIRModule_L411F25T72_ExprLhs, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L409F17L413T18_FIRModule_L411F25T72_ExprLhs'length + 1)) = signed(resize(FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L409F17L413T18_FIRModule_L411F25T72_ExprRhs, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L409F17L413T18_FIRModule_L411F25T72_ExprRhs'length + 1))) else '0';
+	FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L415F21T38_Expr <= '1' when (signed(resize(FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L415F21T38_ExprLhs, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L415F21T38_ExprLhs'length + 1)) = signed(resize(FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L415F21T38_ExprRhs, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L415F21T38_ExprRhs'length + 1))) else '0';
+	process (FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L332F52T95_Expr_1, FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L332F52T95_Expr_2)
 	begin
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L378F52T95_Expr <= FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L378F52T95_Expr_1 AND FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L378F52T95_Expr_2;
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L332F52T95_Expr <= FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L332F52T95_Expr_1 AND FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L332F52T95_Expr_2;
 	end process;
-	process (FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L407F17L409T18_FIRModule_L408F53T79_Expr_1)
+	process (FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L361F17L363T18_FIRModule_L362F53T79_Expr_1)
 	begin
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L407F17L409T18_FIRModule_L408F53T79_Expr <= NOT FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L407F17L409T18_FIRModule_L408F53T79_Expr_1;
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L361F17L363T18_FIRModule_L362F53T79_Expr <= NOT FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L361F17L363T18_FIRModule_L362F53T79_Expr_1;
 	end process;
-	process (FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L431F52T95_Expr_1, FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L431F52T95_Expr_2)
+	process (FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L385F52T95_Expr_1, FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L385F52T95_Expr_2)
 	begin
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L431F52T95_Expr <= FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L431F52T95_Expr_1 XOR FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L431F52T95_Expr_2;
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L385F52T95_Expr <= FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L385F52T95_Expr_1 XOR FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L385F52T95_Expr_2;
 	end process;
-	process (FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L445F48T97_Expr_1, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L445F48T97_Expr_2)
+	process (FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L399F48T97_Expr_1, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L399F48T97_Expr_2)
 	begin
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L445F48T97_Expr <= FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L445F48T97_Expr_1 AND FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L445F48T97_Expr_2;
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L399F48T97_Expr <= FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L399F48T97_Expr_1 AND FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L399F48T97_Expr_2;
 	end process;
-	process (FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L446F48T97_Expr_1, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L446F48T97_Expr_2)
+	process (FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L400F48T97_Expr_1, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L400F48T97_Expr_2)
 	begin
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L446F48T97_Expr <= FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L446F48T97_Expr_1 AND FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L446F48T97_Expr_2;
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L400F48T97_Expr <= FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L400F48T97_Expr_1 AND FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L400F48T97_Expr_2;
 	end process;
-	process (FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L452F51T71_Expr_1)
+	process (FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L406F51T71_Expr_1)
 	begin
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L452F51T71_Expr <= NOT FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L452F51T71_Expr_1;
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L406F51T71_Expr <= NOT FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L406F51T71_Expr_1;
 	end process;
-	process (FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L455F17L459T18_FIRModule_L458F51T71_Expr_1)
+	process (FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L409F17L413T18_FIRModule_L412F51T71_Expr_1)
 	begin
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L455F17L459T18_FIRModule_L458F51T71_Expr <= NOT FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L455F17L459T18_FIRModule_L458F51T71_Expr_1;
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L409F17L413T18_FIRModule_L412F51T71_Expr <= NOT FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L409F17L413T18_FIRModule_L412F51T71_Expr_1;
 	end process;
-	process (FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F52T95_Expr_1, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F52T95_Expr_2)
+	process (FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F52T95_Expr_1, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F52T95_Expr_2)
 	begin
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F52T95_Expr <= resize(unsigned(signed(resize(FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F52T95_Expr_1, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F52T95_Expr_1'length + 1)) + signed(resize(FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F52T95_Expr_2, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F52T95_Expr_2'length + 1))), FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F52T95_Expr'length);
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F52T95_Expr <= resize(unsigned(signed(resize(FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F52T95_Expr_1, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F52T95_Expr_1'length + 1)) + signed(resize(FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F52T95_Expr_2, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F52T95_Expr_2'length + 1))), FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F52T95_Expr'length);
 	end process;
-	process (FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L336F21L338T22_FIRModule_L337F59T90_Expr_1, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L336F21L338T22_FIRModule_L337F59T90_Expr_2)
+	process (FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L290F21L292T22_FIRModule_L291F59T90_Expr_1, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L290F21L292T22_FIRModule_L291F59T90_Expr_2)
 	begin
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L336F21L338T22_FIRModule_L337F59T90_Expr <= resize(unsigned(signed(resize(FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L336F21L338T22_FIRModule_L337F59T90_Expr_1, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L336F21L338T22_FIRModule_L337F59T90_Expr_1'length + 1)) + signed(resize(FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L336F21L338T22_FIRModule_L337F59T90_Expr_2, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L336F21L338T22_FIRModule_L337F59T90_Expr_2'length + 1))), FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L336F21L338T22_FIRModule_L337F59T90_Expr'length);
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L290F21L292T22_FIRModule_L291F59T90_Expr <= resize(unsigned(signed(resize(FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L290F21L292T22_FIRModule_L291F59T90_Expr_1, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L290F21L292T22_FIRModule_L291F59T90_Expr_1'length + 1)) + signed(resize(FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L290F21L292T22_FIRModule_L291F59T90_Expr_2, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L290F21L292T22_FIRModule_L291F59T90_Expr_2'length + 1))), FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L290F21L292T22_FIRModule_L291F59T90_Expr'length);
 	end process;
-	process (FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L341F17L343T18_FIRModule_L342F56T88_Expr_1, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L341F17L343T18_FIRModule_L342F56T88_Expr_2)
+	process (FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L295F17L297T18_FIRModule_L296F56T88_Expr_1, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L295F17L297T18_FIRModule_L296F56T88_Expr_2)
 	begin
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L341F17L343T18_FIRModule_L342F56T88_Expr <= resize(unsigned(signed(resize(FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L341F17L343T18_FIRModule_L342F56T88_Expr_1, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L341F17L343T18_FIRModule_L342F56T88_Expr_1'length + 1)) + signed(resize(FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L341F17L343T18_FIRModule_L342F56T88_Expr_2, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L341F17L343T18_FIRModule_L342F56T88_Expr_2'length + 1))), FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L341F17L343T18_FIRModule_L342F56T88_Expr'length);
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L295F17L297T18_FIRModule_L296F56T88_Expr <= resize(unsigned(signed(resize(FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L295F17L297T18_FIRModule_L296F56T88_Expr_1, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L295F17L297T18_FIRModule_L296F56T88_Expr_1'length + 1)) + signed(resize(FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L295F17L297T18_FIRModule_L296F56T88_Expr_2, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L295F17L297T18_FIRModule_L296F56T88_Expr_2'length + 1))), FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L295F17L297T18_FIRModule_L296F56T88_Expr'length);
 	end process;
-	process (FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F45T68_Expr_1, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F45T68_Expr_2)
+	process (FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F45T68_Expr_1, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F45T68_Expr_2)
 	begin
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F45T68_Expr <= resize(signed(signed(resize(FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F45T68_Expr_1, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F45T68_Expr_1'length + 1)) * signed(resize(FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F45T68_Expr_2, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F45T68_Expr_2'length + 1))), FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F45T68_Expr'length);
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F45T68_Expr <= resize(signed(signed(resize(FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F45T68_Expr_1, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F45T68_Expr_1'length + 1)) * signed(resize(FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F45T68_Expr_2, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F45T68_Expr_2'length + 1))), FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F45T68_Expr'length);
 	end process;
-	process (FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L377F45T70_Expr_1, FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L377F45T70_Expr_2)
+	process (FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L331F45T70_Expr_1, FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L331F45T70_Expr_2)
 	begin
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L377F45T70_Expr <= resize(signed(signed(resize(FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L377F45T70_Expr_1, FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L377F45T70_Expr_1'length + 1)) - signed(resize(FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L377F45T70_Expr_2, FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L377F45T70_Expr_2'length + 1))), FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L377F45T70_Expr'length);
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L331F45T70_Expr <= resize(signed(signed(resize(FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L331F45T70_Expr_1, FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L331F45T70_Expr_1'length + 1)) - signed(resize(FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L331F45T70_Expr_2, FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L331F45T70_Expr_2'length + 1))), FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L331F45T70_Expr'length);
 	end process;
-	process (FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L427F17L429T18_FIRModule_L428F49T74_Expr_1, FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L427F17L429T18_FIRModule_L428F49T74_Expr_2)
+	process (FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L381F17L383T18_FIRModule_L382F49T74_Expr_1, FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L381F17L383T18_FIRModule_L382F49T74_Expr_2)
 	begin
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L427F17L429T18_FIRModule_L428F49T74_Expr <= resize(unsigned(signed(resize(FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L427F17L429T18_FIRModule_L428F49T74_Expr_1, FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L427F17L429T18_FIRModule_L428F49T74_Expr_1'length + 1)) + signed(resize(FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L427F17L429T18_FIRModule_L428F49T74_Expr_2, FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L427F17L429T18_FIRModule_L428F49T74_Expr_2'length + 1))), FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L427F17L429T18_FIRModule_L428F49T74_Expr'length);
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L381F17L383T18_FIRModule_L382F49T74_Expr <= resize(unsigned(signed(resize(FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L381F17L383T18_FIRModule_L382F49T74_Expr_1, FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L381F17L383T18_FIRModule_L382F49T74_Expr_1'length + 1)) + signed(resize(FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L381F17L383T18_FIRModule_L382F49T74_Expr_2, FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L381F17L383T18_FIRModule_L382F49T74_Expr_2'length + 1))), FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L381F17L383T18_FIRModule_L382F49T74_Expr'length);
 	end process;
-	process (FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L443F51T82_Expr_1, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L443F51T82_Expr_2)
+	process (FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L397F51T82_Expr_1, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L397F51T82_Expr_2)
 	begin
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L443F51T82_Expr <= resize(signed(signed(resize(FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L443F51T82_Expr_1, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L443F51T82_Expr_1'length + 1)) - signed(resize(FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L443F51T82_Expr_2, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L443F51T82_Expr_2'length + 1))), FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L443F51T82_Expr'length);
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L397F51T82_Expr <= resize(signed(signed(resize(FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L397F51T82_Expr_1, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L397F51T82_Expr_1'length + 1)) - signed(resize(FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L397F51T82_Expr_2, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L397F51T82_Expr_2'length + 1))), FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L397F51T82_Expr'length);
 	end process;
-	process (FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L444F51T82_Expr_1, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L444F51T82_Expr_2)
+	process (FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L398F51T82_Expr_1, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L398F51T82_Expr_2)
 	begin
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L444F51T82_Expr <= resize(unsigned(signed(resize(FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L444F51T82_Expr_1, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L444F51T82_Expr_1'length + 1)) + signed(resize(FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L444F51T82_Expr_2, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L444F51T82_Expr_2'length + 1))), FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L444F51T82_Expr'length);
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L398F51T82_Expr <= resize(unsigned(signed(resize(FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L398F51T82_Expr_1, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L398F51T82_Expr_1'length + 1)) + signed(resize(FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L398F51T82_Expr_2, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L398F51T82_Expr_2'length + 1))), FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L398F51T82_Expr'length);
 	end process;
-	process (FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L518F78T83_Expr_1, FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L518F78T83_Expr_2)
+	process (FIRModule_L143F57T80_Expr_1, FIRModule_L143F57T80_Expr_2)
 	begin
-		FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L518F78T83_Expr <= resize(signed(signed(resize(FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L518F78T83_Expr_1, FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L518F78T83_Expr_1'length + 1)) - signed(resize(FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L518F78T83_Expr_2, FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L518F78T83_Expr_2'length + 1))), FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L518F78T83_Expr'length);
-	end process;
-	process (FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L519F78T83_Expr_1, FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L519F78T83_Expr_2)
-	begin
-		FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L519F78T83_Expr <= resize(signed(signed(resize(FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L519F78T83_Expr_1, FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L519F78T83_Expr_1'length + 1)) - signed(resize(FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L519F78T83_Expr_2, FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L519F78T83_Expr_2'length + 1))), FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L519F78T83_Expr'length);
+		FIRModule_L143F57T80_Expr <= resize(signed(signed(resize(FIRModule_L143F57T80_Expr_1, FIRModule_L143F57T80_Expr_1'length + 1)) * signed(resize(FIRModule_L143F57T80_Expr_2, FIRModule_L143F57T80_Expr_2'length + 1))), FIRModule_L143F57T80_Expr'length);
 	end process;
 	FIRModule4x16_TopLevel_TopLevel_u_ram_coef0 : entity work.FIRModule4x16_TopLevel_TopLevel_u_ram_coef0
 	port map
@@ -1532,6 +1610,7 @@ begin
 		-- [END USER MAP FOR u_dsp48_i0]
 		BoardSignals => BoardSignals,
 		CE => u_dsp48_i0CEu_dsp48_i0_CEHardLink,
+		RST => u_dsp48_i0RSTu_dsp48_i0_RSTHardLink,
 		A => u_dsp48_i0Au_dsp48_i0_AHardLink,
 		B => u_dsp48_i0Bu_dsp48_i0_BHardLink,
 		D => u_dsp48_i0Du_dsp48_i0_DHardLink,
@@ -1548,6 +1627,7 @@ begin
 		-- [END USER MAP FOR u_dsp48_i1]
 		BoardSignals => BoardSignals,
 		CE => u_dsp48_i1CEu_dsp48_i1_CEHardLink,
+		RST => u_dsp48_i1RSTu_dsp48_i1_RSTHardLink,
 		A => u_dsp48_i1Au_dsp48_i1_AHardLink,
 		B => u_dsp48_i1Bu_dsp48_i1_BHardLink,
 		D => u_dsp48_i1Du_dsp48_i1_DHardLink,
@@ -1564,6 +1644,7 @@ begin
 		-- [END USER MAP FOR u_dsp48_i2]
 		BoardSignals => BoardSignals,
 		CE => u_dsp48_i2CEu_dsp48_i2_CEHardLink,
+		RST => u_dsp48_i2RSTu_dsp48_i2_RSTHardLink,
 		A => u_dsp48_i2Au_dsp48_i2_AHardLink,
 		B => u_dsp48_i2Bu_dsp48_i2_BHardLink,
 		D => u_dsp48_i2Du_dsp48_i2_DHardLink,
@@ -1580,6 +1661,7 @@ begin
 		-- [END USER MAP FOR u_dsp48_i3]
 		BoardSignals => BoardSignals,
 		CE => u_dsp48_i3CEu_dsp48_i3_CEHardLink,
+		RST => u_dsp48_i3RSTu_dsp48_i3_RSTHardLink,
 		A => u_dsp48_i3Au_dsp48_i3_AHardLink,
 		B => u_dsp48_i3Bu_dsp48_i3_BHardLink,
 		D => u_dsp48_i3Du_dsp48_i3_DHardLink,
@@ -1596,6 +1678,7 @@ begin
 		-- [END USER MAP FOR u_dsp48_q0]
 		BoardSignals => BoardSignals,
 		CE => u_dsp48_q0CEu_dsp48_q0_CEHardLink,
+		RST => u_dsp48_q0RSTu_dsp48_q0_RSTHardLink,
 		A => u_dsp48_q0Au_dsp48_q0_AHardLink,
 		B => u_dsp48_q0Bu_dsp48_q0_BHardLink,
 		D => u_dsp48_q0Du_dsp48_q0_DHardLink,
@@ -1612,6 +1695,7 @@ begin
 		-- [END USER MAP FOR u_dsp48_q1]
 		BoardSignals => BoardSignals,
 		CE => u_dsp48_q1CEu_dsp48_q1_CEHardLink,
+		RST => u_dsp48_q1RSTu_dsp48_q1_RSTHardLink,
 		A => u_dsp48_q1Au_dsp48_q1_AHardLink,
 		B => u_dsp48_q1Bu_dsp48_q1_BHardLink,
 		D => u_dsp48_q1Du_dsp48_q1_DHardLink,
@@ -1628,6 +1712,7 @@ begin
 		-- [END USER MAP FOR u_dsp48_q2]
 		BoardSignals => BoardSignals,
 		CE => u_dsp48_q2CEu_dsp48_q2_CEHardLink,
+		RST => u_dsp48_q2RSTu_dsp48_q2_RSTHardLink,
 		A => u_dsp48_q2Au_dsp48_q2_AHardLink,
 		B => u_dsp48_q2Bu_dsp48_q2_BHardLink,
 		D => u_dsp48_q2Du_dsp48_q2_DHardLink,
@@ -1644,6 +1729,7 @@ begin
 		-- [END USER MAP FOR u_dsp48_q3]
 		BoardSignals => BoardSignals,
 		CE => u_dsp48_q3CEu_dsp48_q3_CEHardLink,
+		RST => u_dsp48_q3RSTu_dsp48_q3_RSTHardLink,
 		A => u_dsp48_q3Au_dsp48_q3_AHardLink,
 		B => u_dsp48_q3Bu_dsp48_q3_BHardLink,
 		D => u_dsp48_q3Du_dsp48_q3_DHardLink,
@@ -1653,9 +1739,31 @@ begin
 		P => u_dsp48_q3Pu_dsp48_q3_PHardLink
 	)
 	;
-	FIRModule_L156F26L166T18_Ternary_i <= FIRModule_L157F17L161T18_WhenTrue_i when (FIRModule_L156F26T47_Expr = '1') else FIRModule_L162F17L166T18_WhenFalse_i;
-	FIRModule_L156F26L166T18_Ternary_q <= FIRModule_L157F17L161T18_WhenTrue_q when (FIRModule_L156F26T47_Expr = '1') else FIRModule_L162F17L166T18_WhenFalse_q;
-	process (FIRModule_L544F9L551T10_FIRModule_L545F13T29_FIRModule_L308F9L318T10_FIRModule_L311F39T69_Index, FIRModule_L544F9L551T10_FIRModule_L545F13T29_FIRModule_L308F9L318T10_FIRModule_L312F39T69_Index, FIRModule_L544F9L551T10_FIRModule_L545F13T29_FIRModule_L308F9L318T10_next_set_do, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L327F21T72_Expr, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F52T95_Expr, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L331F25T79_Expr, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L336F21L338T22_FIRModule_L337F59T90_Expr, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L341F17L343T18_FIRModule_L342F56T88_Expr, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F17T68_Expr, FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L377F45T70_Expr, FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L378F52T95_Expr, FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L386F21T73_Expr, FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L406F21T38_Expr, FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L407F17L409T18_FIRModule_L408F53T79_Expr, FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L411F17L420T18_FIRModule_L412F25T58_Expr, FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L427F17L429T18_FIRModule_L428F49T74_Expr, FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L431F52T95_Expr, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L443F51T82_Expr, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L444F51T82_Expr, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L445F48T97_Expr, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L446F48T97_Expr, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L448F21T49_Expr, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L451F25T54_Expr, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L452F51T71_Expr, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L455F17L459T18_FIRModule_L457F25T72_Expr, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L455F17L459T18_FIRModule_L458F51T71_Expr, FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L461F21T38_Expr, ib_coef, ib_coef_v, ib_do, ib_iq_i, ib_iq_q, ib_iq_v, ramf_dout_i, ramf_dout_q, State_coeff_coef_ram_cnt, State_coeff_coef_ram_wr, State_coeff_coef_ram_wr_addr, State_coeff_coef_ram_wr_data, State_coeff_coef_wr_cnt_cell, State_coeff_coef_wr_cnt_ram, State_dsp48_dsp48_a, State_dsp48_dsp48_b, State_dsp48_dsp48_d, State_dsp48_dsp48_opmode, State_dsp48_dsp48_p, State_dsp48_dsp48_pcin, State_dsp48_dsp48_pcout, State_dsp48_dsp48_result, State_dsp48_dsp48_srl, State_dsp48_dsp48_srl_out_i, State_dsp48_dsp48_srl_out_p_i, State_dsp48_dsp48_srl_out_p_q, State_dsp48_dsp48_srl_out_p1_i, State_dsp48_dsp48_srl_out_p1_q, State_dsp48_dsp48_srl_out_q, State_filo_filo_addr_dec, State_filo_filo_addr_inc, State_filo_filo_addr_p, State_filo_filo_addr_p1, State_filo_filo_counter_dec, State_filo_filo_counter_inc, State_filo_filo_way, State_filo_fir_dreg, State_fir_fir_adreg, State_fir_fir_areg1, State_fir_fir_areg2, State_fir_fir_breg, State_fir_fir_mreg, State_fir_fir_preg, State_fir_fir_result, State_main_main_c_cnt, State_main_main_c_cnt_masked, State_main_main_c_rd_addr, State_main_main_c_rd_addr_cmn, State_main_main_d_addr, State_main_main_d_cnt, State_main_main_d_cnt_masked, State_main_main_d_cnt_rst, State_mult_reset_mult_reset, State_mult_reset_mult_reset_common, State_mult_reset_mult_reset_common_p, State_mult_reset_mult_reset_common_p1, State_mult_reset_mult_reset_common_p2, State_mult_reset_mult_reset_common_p3, State_mult_reset_mult_reset_dsp, State_ob_coef_rdy, State_ob_iq_i, State_ob_iq_q, State_ob_iq_v, State_set_coef_mask, State_set_data_mask, State_set_do, State_set_do_mux, State_tr_tr_fir_mreg_i, State_tr_tr_fir_mreg_q, State_tr_tr_fir_preg_i, State_tr_tr_fir_preg_q, State_tr_tr_fir_result_i, State_tr_tr_fir_result_q)
+	FIRModule_L134F28L136T45_Ternary_i <= FIRModule_L135F15T61_WhenTrue_i when (FIRModule_L134F28T49_Expr = '1') else FIRModule_L136F15T45_WhenFalse_i;
+	FIRModule_L134F28L136T45_Ternary_q <= FIRModule_L135F15T61_WhenTrue_q when (FIRModule_L134F28T49_Expr = '1') else FIRModule_L136F15T45_WhenFalse_q;
+	process (FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F49T141_Lookup1, FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F49T141_Lookup2, FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F49T141_LookupMultiplexerAddress)
+	begin
+		case FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F49T141_LookupMultiplexerAddress is
+			when '0' =>
+				FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F49T141_Lookup <= FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F49T141_Lookup1;
+			when '1' =>
+				FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F49T141_Lookup <= FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F49T141_Lookup2;
+			when others =>
+				FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F49T141_Lookup <= "000000000";
+		end case;
+	end process;
+	process (FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F49T141_Lookup1, FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F49T141_Lookup2, FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F49T141_LookupMultiplexerAddress)
+	begin
+		case FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F49T141_LookupMultiplexerAddress is
+			when '0' =>
+				FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F49T141_Lookup <= FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F49T141_Lookup1;
+			when '1' =>
+				FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F49T141_Lookup <= FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F49T141_Lookup2;
+			when others =>
+				FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F49T141_Lookup <= "000000000";
+		end case;
+	end process;
+	process (FIRModule_L531F9L539T10_FIRModule_L532F13T29_FIRModule_L262F9L272T10_FIRModule_L265F39T69_Index, FIRModule_L531F9L539T10_FIRModule_L532F13T29_FIRModule_L262F9L272T10_FIRModule_L266F39T69_Index, FIRModule_L531F9L539T10_FIRModule_L532F13T29_FIRModule_L262F9L272T10_next_set_do, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L281F21T72_Expr, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F52T95_Expr, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L285F25T79_Expr, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L290F21L292T22_FIRModule_L291F59T90_Expr, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L295F17L297T18_FIRModule_L296F56T88_Expr, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F17T68_Expr, FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L331F45T70_Expr, FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L332F52T95_Expr, FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L340F21T73_Expr, FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L360F21T38_Expr, FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L361F17L363T18_FIRModule_L362F53T79_Expr, FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L365F17L374T18_FIRModule_L366F25T58_Expr, FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L381F17L383T18_FIRModule_L382F49T74_Expr, FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L385F52T95_Expr, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L397F51T82_Expr, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L398F51T82_Expr, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L399F48T97_Expr, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L400F48T97_Expr, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L402F21T49_Expr, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L405F25T54_Expr, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L406F51T71_Expr, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L409F17L413T18_FIRModule_L411F25T72_Expr, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L409F17L413T18_FIRModule_L412F51T71_Expr, FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L415F21T38_Expr, FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L500F44T60_FIRModule_L149F58T87_Resize, FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F49T141_Lookup, FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L502F44T77_FIRModule_L149F58T87_Resize, FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L503F44T65_FIRModule_L149F58T87_Resize, FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L515F44T60_FIRModule_L149F58T87_Resize, FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F49T141_Lookup, FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L517F44T77_FIRModule_L149F58T87_Resize, FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L518F44T65_FIRModule_L149F58T87_Resize, ib_coef, ib_coef_v, ib_do, ib_iq_i, ib_iq_q, ib_iq_v, ramc_dout, ramd_dout, ramf_dout_i, ramf_dout_q, State_coeff_coef_ram_cnt, State_coeff_coef_ram_wr, State_coeff_coef_ram_wr_addr, State_coeff_coef_ram_wr_data, State_coeff_coef_wr_cnt_cell, State_coeff_coef_wr_cnt_ram, State_dsp48_dsp48_a, State_dsp48_dsp48_b, State_dsp48_dsp48_d, State_dsp48_dsp48_opmode, State_dsp48_dsp48_p, State_dsp48_dsp48_pcin, State_dsp48_dsp48_pcout, State_dsp48_dsp48_result, State_dsp48_dsp48_srl, State_dsp48_dsp48_srl_out_i, State_dsp48_dsp48_srl_out_p_i, State_dsp48_dsp48_srl_out_p_q, State_dsp48_dsp48_srl_out_p1_i, State_dsp48_dsp48_srl_out_p1_q, State_dsp48_dsp48_srl_out_q, State_filo_filo_addr_dec, State_filo_filo_addr_inc, State_filo_filo_addr_p, State_filo_filo_addr_p1, State_filo_filo_counter_dec, State_filo_filo_counter_inc, State_filo_filo_way, State_filo_fir_dreg, State_fir_fir_adreg, State_fir_fir_areg1, State_fir_fir_areg2, State_fir_fir_breg, State_fir_fir_mreg, State_fir_fir_preg, State_fir_fir_result, State_main_main_c_cnt, State_main_main_c_cnt_masked, State_main_main_c_rd_addr, State_main_main_c_rd_addr_cmn, State_main_main_d_addr, State_main_main_d_cnt, State_main_main_d_cnt_masked, State_main_main_d_cnt_rst, State_mult_reset_mult_reset, State_mult_reset_mult_reset_common, State_mult_reset_mult_reset_common_p, State_mult_reset_mult_reset_common_p1, State_mult_reset_mult_reset_common_p2, State_mult_reset_mult_reset_common_p3, State_mult_reset_mult_reset_dsp, State_ob_coef_rdy, State_ob_iq_i, State_ob_iq_q, State_ob_iq_v, State_set_coef_mask, State_set_data_mask, State_set_do, State_set_do_mux, State_tr_tr_fir_mreg_i, State_tr_tr_fir_mreg_q, State_tr_tr_fir_preg_i, State_tr_tr_fir_preg_q, State_tr_tr_fir_result_i, State_tr_tr_fir_result_q)
 	begin
 		for NextState_set_do_mux_Iterator in 0 to 3 loop
 			NextState_set_do_mux(NextState_set_do_mux_Iterator) <= State_set_do_mux(NextState_set_do_mux_Iterator);
@@ -1787,28 +1895,28 @@ begin
 		NextState_ob_iq_v <= State_ob_iq_v;
 		NextState_ob_iq_i <= State_ob_iq_i;
 		NextState_ob_iq_q <= State_ob_iq_q;
-		FIRModule_L544F9L551T10_FIRModule_L545F13T29_FIRModule_L308F9L318T10_next_set_do(3 downto 1) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L545F13T29_FIRModule_L308F9L318T10_next_set_do(0) <= Zero;
-		FIRModule_L544F9L551T10_FIRModule_L545F13T29_FIRModule_L308F9L318T10_next_set_do <= ib_do;
-		NextState_set_do <= FIRModule_L544F9L551T10_FIRModule_L545F13T29_FIRModule_L308F9L318T10_next_set_do;
-		NextState_set_coef_mask <= FIRModule_L544F9L551T10_FIRModule_L545F13T29_FIRModule_L308F9L318T10_FIRModule_L311F39T69_Index;
-		NextState_set_data_mask <= FIRModule_L544F9L551T10_FIRModule_L545F13T29_FIRModule_L308F9L318T10_FIRModule_L312F39T69_Index;
+		FIRModule_L531F9L539T10_FIRModule_L532F13T29_FIRModule_L262F9L272T10_next_set_do(3 downto 1) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L532F13T29_FIRModule_L262F9L272T10_next_set_do(0) <= Zero;
+		FIRModule_L531F9L539T10_FIRModule_L532F13T29_FIRModule_L262F9L272T10_next_set_do <= ib_do;
+		NextState_set_do <= FIRModule_L531F9L539T10_FIRModule_L532F13T29_FIRModule_L262F9L272T10_next_set_do;
+		NextState_set_coef_mask <= FIRModule_L531F9L539T10_FIRModule_L532F13T29_FIRModule_L262F9L272T10_FIRModule_L265F39T69_Index;
+		NextState_set_data_mask <= FIRModule_L531F9L539T10_FIRModule_L532F13T29_FIRModule_L262F9L272T10_FIRModule_L266F39T69_Index;
 		for a in 0 to 3 loop
-			NextState_set_do_mux(a) <= FIRModule_L544F9L551T10_FIRModule_L545F13T29_FIRModule_L308F9L318T10_next_set_do;
+			NextState_set_do_mux(a) <= FIRModule_L531F9L539T10_FIRModule_L532F13T29_FIRModule_L262F9L272T10_next_set_do;
 		end loop;
 		if ib_coef_v = '1' then
-			if FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L327F21T72_Expr = '1' then
+			if FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L281F21T72_Expr = '1' then
 				NextState_coeff_coef_wr_cnt_cell(7 downto 1) <= (others => '0');
-				NextState_coeff_coef_wr_cnt_cell(0) <= FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L329F56T57_Expr;
-				NextState_coeff_coef_ram_cnt <= FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F52T95_Expr(15 downto 0);
-				if FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L331F25T79_Expr = '1' then
+				NextState_coeff_coef_wr_cnt_cell(0) <= FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L283F56T57_Expr;
+				NextState_coeff_coef_ram_cnt <= FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F52T95_Expr(15 downto 0);
+				if FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L285F25T79_Expr = '1' then
 					NextState_coeff_coef_wr_cnt_ram(1) <= '0';
-					NextState_coeff_coef_wr_cnt_ram(0) <= FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L332F21L334T22_FIRModule_L333F59T60_Expr;
+					NextState_coeff_coef_wr_cnt_ram(0) <= FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L286F21L288T22_FIRModule_L287F59T60_Expr;
 				else
-					NextState_coeff_coef_wr_cnt_ram <= FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L336F21L338T22_FIRModule_L337F59T90_Expr(1 downto 0);
+					NextState_coeff_coef_wr_cnt_ram <= FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L290F21L292T22_FIRModule_L291F59T90_Expr(1 downto 0);
 				end if;
 			else
-				NextState_coeff_coef_wr_cnt_cell <= FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L341F17L343T18_FIRModule_L342F56T88_Expr(7 downto 0);
+				NextState_coeff_coef_wr_cnt_cell <= FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L295F17L297T18_FIRModule_L296F56T88_Expr(7 downto 0);
 			end if;
 		end if;
 		for a1 in 0 to 3 loop
@@ -1822,22 +1930,22 @@ begin
 				NextState_coeff_coef_ram_wr_data(a1) <= (others => '0');
 			end if;
 		end loop;
-		if FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F17T68_Expr = '1' then
-			NextState_ob_coef_rdy <= FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L363F13L365T14_FIRModule_L364F41T45_Expr;
+		if FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F17T68_Expr = '1' then
+			NextState_ob_coef_rdy <= FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L317F13L319T14_FIRModule_L318F41T45_Expr;
 		else
-			NextState_ob_coef_rdy <= FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L367F13L369T14_FIRModule_L368F41T46_Expr;
+			NextState_ob_coef_rdy <= FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L321F13L323T14_FIRModule_L322F41T46_Expr;
 		end if;
 		if ib_iq_v = '1' then
-			NextState_main_main_c_cnt <= unsigned(FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L377F45T70_Expr(8 downto 0));
-			NextState_main_main_c_cnt_masked <= FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L378F52T95_Expr;
+			NextState_main_main_c_cnt <= unsigned(FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L331F45T70_Expr(8 downto 0));
+			NextState_main_main_c_cnt_masked <= FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L332F52T95_Expr;
 			NextState_main_main_c_rd_addr_cmn <= State_main_main_c_cnt_masked;
 			for a2 in 0 to 3 loop
 				NextState_main_main_c_rd_addr(a2) <= State_main_main_c_rd_addr_cmn;
 			end loop;
-			if FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L386F21T73_Expr = '1' then
-				NextState_mult_reset_mult_reset_common <= FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L387F17L389T18_FIRModule_L388F62T66_Expr;
+			if FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L340F21T73_Expr = '1' then
+				NextState_mult_reset_mult_reset_common <= FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L341F17L343T18_FIRModule_L342F62T66_Expr;
 			else
-				NextState_mult_reset_mult_reset_common <= FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L391F17L393T18_FIRModule_L392F62T67_Expr;
+				NextState_mult_reset_mult_reset_common <= FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L345F17L347T18_FIRModule_L346F62T67_Expr;
 			end if;
 			NextState_mult_reset_mult_reset_common_p <= State_mult_reset_mult_reset_common;
 			NextState_mult_reset_mult_reset_common_p1 <= State_mult_reset_mult_reset_common_p;
@@ -1846,45 +1954,45 @@ begin
 			for a3 in 0 to 3 loop
 				NextState_mult_reset_mult_reset_dsp(a3) <= State_mult_reset_mult_reset_common_p1;
 			end loop;
-			if FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L406F21T38_Expr = '1' then
-				NextState_main_main_d_cnt_rst <= FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L407F17L409T18_FIRModule_L408F53T79_Expr;
+			if FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L360F21T38_Expr = '1' then
+				NextState_main_main_d_cnt_rst <= FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L361F17L363T18_FIRModule_L362F53T79_Expr;
 			else
-				if FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L411F17L420T18_FIRModule_L412F25T58_Expr = '1' then
-					NextState_main_main_d_cnt_rst <= FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L411F17L420T18_FIRModule_L413F21L415T22_FIRModule_L414F57T61_Expr;
+				if FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L365F17L374T18_FIRModule_L366F25T58_Expr = '1' then
+					NextState_main_main_d_cnt_rst <= FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L365F17L374T18_FIRModule_L367F21L369T22_FIRModule_L368F57T61_Expr;
 				else
-					NextState_main_main_d_cnt_rst <= FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L411F17L420T18_FIRModule_L417F21L419T22_FIRModule_L418F57T62_Expr;
+					NextState_main_main_d_cnt_rst <= FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L365F17L374T18_FIRModule_L371F21L373T22_FIRModule_L372F57T62_Expr;
 				end if;
 			end if;
 			if State_main_main_d_cnt_rst = '1' then
 				NextState_main_main_c_cnt(8 downto 1) <= (others => '0');
-				NextState_main_main_c_cnt(0) <= FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L423F17L425T18_FIRModule_L424F49T50_Expr;
+				NextState_main_main_c_cnt(0) <= FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L377F17L379T18_FIRModule_L378F49T50_Expr;
 			else
-				NextState_main_main_c_cnt <= FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L427F17L429T18_FIRModule_L428F49T74_Expr(8 downto 0);
+				NextState_main_main_c_cnt <= FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L381F17L383T18_FIRModule_L382F49T74_Expr(8 downto 0);
 			end if;
-			NextState_main_main_c_cnt_masked <= FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L431F52T95_Expr(8 downto 0);
+			NextState_main_main_c_cnt_masked <= FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L385F52T95_Expr(8 downto 0);
 			for a4 in 0 to 2 loop
 				NextState_main_main_d_addr(a4) <= resize(State_main_main_c_cnt, 10);
 			end loop;
 		end if;
 		if ib_iq_v = '1' then
-			NextState_filo_filo_counter_dec <= unsigned(FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L443F51T82_Expr(8 downto 0));
-			NextState_filo_filo_counter_inc <= FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L444F51T82_Expr(8 downto 0);
-			NextState_filo_filo_addr_inc <= FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L445F48T97_Expr;
-			NextState_filo_filo_addr_dec <= FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L446F48T97_Expr;
-			if FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L448F21T49_Expr = '1' then
+			NextState_filo_filo_counter_dec <= unsigned(FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L397F51T82_Expr(8 downto 0));
+			NextState_filo_filo_counter_inc <= FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L398F51T82_Expr(8 downto 0);
+			NextState_filo_filo_addr_inc <= FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L399F48T97_Expr;
+			NextState_filo_filo_addr_dec <= FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L400F48T97_Expr;
+			if FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L402F21T49_Expr = '1' then
 				NextState_filo_filo_addr_p1 <= State_filo_filo_addr_inc;
-				if FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L451F25T54_Expr = '1' then
-					NextState_filo_filo_way <= FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L452F51T71_Expr;
+				if FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L405F25T54_Expr = '1' then
+					NextState_filo_filo_way <= FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L406F51T71_Expr;
 				end if;
 			else
 				NextState_filo_filo_addr_p1 <= State_filo_filo_addr_dec;
-				if FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L455F17L459T18_FIRModule_L457F25T72_Expr = '1' then
-					NextState_filo_filo_way <= FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L455F17L459T18_FIRModule_L458F51T71_Expr;
+				if FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L409F17L413T18_FIRModule_L411F25T72_Expr = '1' then
+					NextState_filo_filo_way <= FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L409F17L413T18_FIRModule_L412F51T71_Expr;
 				end if;
 			end if;
-			if FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L461F21T38_Expr = '1' then
+			if FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L415F21T38_Expr = '1' then
 				NextState_filo_filo_addr_p(8 downto 1) <= (others => '0');
-				NextState_filo_filo_addr_p(0) <= FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L462F50T51_Expr;
+				NextState_filo_filo_addr_p(0) <= FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L416F50T51_Expr;
 			else
 				NextState_filo_filo_addr_p <= State_filo_filo_addr_p1;
 			end if;
@@ -1905,38 +2013,60 @@ begin
 				NextState_filo_fir_dreg(a5)(31 downto 16) <= ramf_dout_q;
 			end loop;
 		end if;
+		NextState_dsp48_dsp48_a(0)(29 downto 0) <= unsigned(FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L500F44T60_FIRModule_L149F58T87_Resize);
+		NextState_dsp48_dsp48_opmode(0)(6 downto 0) <= FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F49T141_Lookup(6 downto 0);
+		NextState_dsp48_dsp48_d(0)(24 downto 0) <= unsigned(FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L502F44T77_FIRModule_L149F58T87_Resize);
+		NextState_dsp48_dsp48_b(0)(17 downto 0) <= unsigned(FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L503F44T65_FIRModule_L149F58T87_Resize);
+		for a6 in 1 to 3 loop
+			NextState_dsp48_dsp48_a(a6)(29 downto 0) <= ternary_signed_30(State_set_do_mux(a6) /= 0, resize(signed(ramd_dout(a6 - 1)(15 downto 0)), 30), resize(signed(State_dsp48_dsp48_srl((a6 * 2) - 1)(15 downto 0)), 30));
+			NextState_dsp48_dsp48_opmode(a6)(6 downto 0) <= ternary_unsigned_7(bit_to_boolean(State_mult_reset_mult_reset_dsp(a6)), FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L505F13L512T14_FIRModule_L508F106T115_Expr, FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L505F13L512T14_FIRModule_L508F135T144_Expr);
+			NextState_dsp48_dsp48_d(a6)(24 downto 0) <= resize(signed(State_filo_fir_dreg(a6)(15 downto 0)), 25);
+			NextState_dsp48_dsp48_b(a6)(17 downto 0) <= resize(signed(ramc_dout(a6)), 18);
+			NextState_dsp48_dsp48_pcin(a6)(47 downto 0) <= State_dsp48_dsp48_pcout(a6 - 1)(47 downto 0);
+		end loop;
+		NextState_dsp48_dsp48_a(0)(59 downto 30) <= unsigned(FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L515F44T60_FIRModule_L149F58T87_Resize);
+		NextState_dsp48_dsp48_opmode(0)(13 downto 7) <= FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F49T141_Lookup(6 downto 0);
+		NextState_dsp48_dsp48_d(0)(49 downto 25) <= unsigned(FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L517F44T77_FIRModule_L149F58T87_Resize);
+		NextState_dsp48_dsp48_b(0)(35 downto 18) <= unsigned(FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L518F44T65_FIRModule_L149F58T87_Resize);
+		for a7 in 1 to 3 loop
+			NextState_dsp48_dsp48_a(a7)(59 downto 30) <= ternary_signed_30(State_set_do_mux(a7) /= 0, resize(signed(ramd_dout(a7 - 1)(31 downto 16)), 30), resize(signed(State_dsp48_dsp48_srl((a7 * 2) - 1)(31 downto 16)), 30));
+			NextState_dsp48_dsp48_opmode(a7)(13 downto 7) <= ternary_unsigned_7(bit_to_boolean(State_mult_reset_mult_reset_dsp(a7)), FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L520F13L527T14_FIRModule_L523F106T115_Expr, FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L520F13L527T14_FIRModule_L523F135T144_Expr);
+			NextState_dsp48_dsp48_d(a7)(49 downto 25) <= resize(signed(State_filo_fir_dreg(a7)(31 downto 16)), 25);
+			NextState_dsp48_dsp48_b(a7)(35 downto 18) <= resize(signed(ramc_dout(a7)), 18);
+			NextState_dsp48_dsp48_pcin(a7)(95 downto 48) <= State_dsp48_dsp48_pcout(a7 - 1)(95 downto 48);
+		end loop;
 		if ib_iq_v = '1' then
-			for a6 in 0 to 3 loop
-				NextState_fir_fir_areg1(a6)(24 downto 0) <= State_dsp48_dsp48_a(a6)(24 downto 0);
-				NextState_fir_fir_areg1(a6)(49 downto 25) <= State_dsp48_dsp48_a(a6)(54 downto 30);
-				NextState_fir_fir_areg2(a6) <= State_fir_fir_areg1(a6);
-				NextState_fir_fir_breg(a6) <= State_dsp48_dsp48_b(a6);
-				NextState_fir_fir_adreg(a6)(24 downto 0) <= State_fir_fir_areg2(a6)(24 downto 0) + State_dsp48_dsp48_d(a6)(24 downto 0);
-				NextState_fir_fir_adreg(a6)(49 downto 25) <= State_fir_fir_areg2(a6)(49 downto 25) + State_dsp48_dsp48_d(a6)(49 downto 25);
-				NextState_fir_fir_mreg(a6)(42 downto 0) <= signed(State_fir_fir_adreg(a6)(24 downto 0)) * signed(State_fir_fir_breg(a6)(17 downto 0));
-				NextState_fir_fir_mreg(a6)(85 downto 43) <= signed(State_fir_fir_adreg(a6)(49 downto 25)) * signed(State_fir_fir_breg(a6)(35 downto 18));
-				NextState_mult_reset_mult_reset(a6) <= State_mult_reset_mult_reset_dsp(a6);
-				if a6 = 0 then
-					if State_mult_reset_mult_reset(a6) = '1' then
-						NextState_fir_fir_preg(a6)(47 downto 0) <= resize(signed(State_fir_fir_mreg(a6)(42 downto 0)), 48);
-						NextState_fir_fir_preg(a6)(95 downto 48) <= resize(signed(State_fir_fir_mreg(a6)(85 downto 43)), 48);
+			for a8 in 0 to 3 loop
+				NextState_fir_fir_areg1(a8)(24 downto 0) <= State_dsp48_dsp48_a(a8)(24 downto 0);
+				NextState_fir_fir_areg1(a8)(49 downto 25) <= State_dsp48_dsp48_a(a8)(54 downto 30);
+				NextState_fir_fir_areg2(a8) <= State_fir_fir_areg1(a8);
+				NextState_fir_fir_breg(a8) <= State_dsp48_dsp48_b(a8);
+				NextState_fir_fir_adreg(a8)(24 downto 0) <= State_fir_fir_areg2(a8)(24 downto 0) + State_dsp48_dsp48_d(a8)(24 downto 0);
+				NextState_fir_fir_adreg(a8)(49 downto 25) <= State_fir_fir_areg2(a8)(49 downto 25) + State_dsp48_dsp48_d(a8)(49 downto 25);
+				NextState_fir_fir_mreg(a8)(42 downto 0) <= signed(State_fir_fir_adreg(a8)(24 downto 0)) * signed(State_fir_fir_breg(a8)(17 downto 0));
+				NextState_fir_fir_mreg(a8)(85 downto 43) <= signed(State_fir_fir_adreg(a8)(49 downto 25)) * signed(State_fir_fir_breg(a8)(35 downto 18));
+				NextState_mult_reset_mult_reset(a8) <= State_mult_reset_mult_reset_dsp(a8);
+				if a8 = 0 then
+					if State_mult_reset_mult_reset(a8) = '1' then
+						NextState_fir_fir_preg(a8)(47 downto 0) <= resize(signed(State_fir_fir_mreg(a8)(42 downto 0)), 48);
+						NextState_fir_fir_preg(a8)(95 downto 48) <= resize(signed(State_fir_fir_mreg(a8)(85 downto 43)), 48);
 					else
-						NextState_fir_fir_preg(a6)(47 downto 0) <= State_fir_fir_preg(a6)(47 downto 0) + (resize(signed(State_fir_fir_mreg(a6)(42 downto 0)), 48));
-						NextState_fir_fir_preg(a6)(95 downto 48) <= State_fir_fir_preg(a6)(95 downto 48) + (resize(signed(State_fir_fir_mreg(a6)(85 downto 43)), 48));
+						NextState_fir_fir_preg(a8)(47 downto 0) <= State_fir_fir_preg(a8)(47 downto 0) + (resize(signed(State_fir_fir_mreg(a8)(42 downto 0)), 48));
+						NextState_fir_fir_preg(a8)(95 downto 48) <= State_fir_fir_preg(a8)(95 downto 48) + (resize(signed(State_fir_fir_mreg(a8)(85 downto 43)), 48));
 					end if;
 				else
-					if State_mult_reset_mult_reset(a6) = '1' then
-						NextState_fir_fir_preg(a6)(47 downto 0) <= State_fir_fir_preg(a6 - 1)(47 downto 0) + (resize(signed(State_fir_fir_mreg(a6)(42 downto 0)), 48));
-						NextState_fir_fir_preg(a6)(95 downto 48) <= State_fir_fir_preg(a6 - 1)(95 downto 48) + (resize(signed(State_fir_fir_mreg(a6)(85 downto 43)), 48));
+					if State_mult_reset_mult_reset(a8) = '1' then
+						NextState_fir_fir_preg(a8)(47 downto 0) <= State_fir_fir_preg(a8 - 1)(47 downto 0) + (resize(signed(State_fir_fir_mreg(a8)(42 downto 0)), 48));
+						NextState_fir_fir_preg(a8)(95 downto 48) <= State_fir_fir_preg(a8 - 1)(95 downto 48) + (resize(signed(State_fir_fir_mreg(a8)(85 downto 43)), 48));
 					else
-						NextState_fir_fir_preg(a6)(47 downto 0) <= State_fir_fir_preg(a6)(47 downto 0) + (resize(signed(State_fir_fir_mreg(a6)(42 downto 0)), 48));
-						NextState_fir_fir_preg(a6)(95 downto 48) <= State_fir_fir_preg(a6)(95 downto 48) + (resize(signed(State_fir_fir_mreg(a6)(85 downto 43)), 48));
+						NextState_fir_fir_preg(a8)(47 downto 0) <= State_fir_fir_preg(a8)(47 downto 0) + (resize(signed(State_fir_fir_mreg(a8)(42 downto 0)), 48));
+						NextState_fir_fir_preg(a8)(95 downto 48) <= State_fir_fir_preg(a8)(95 downto 48) + (resize(signed(State_fir_fir_mreg(a8)(85 downto 43)), 48));
 					end if;
 				end if;
 			end loop;
-			for a7 in 0 to 9 loop
-				NextState_fir_fir_result(a7)(23 downto 0) <= State_fir_fir_preg(FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L528F17L532T18_FIRModule_L530F72T91_Expr)(47 downto 0)((c_out_lsb + a7) + 23 downto c_out_lsb + a7);
-				NextState_fir_fir_result(a7)(47 downto 24) <= State_fir_fir_preg(FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L528F17L532T18_FIRModule_L531F72T91_Expr)(95 downto 48)((c_out_lsb + a7) + 23 downto c_out_lsb + a7);
+			for a9 in 0 to 9 loop
+				NextState_fir_fir_result(a9)(23 downto 0) <= State_fir_fir_preg(firParams_Order - 1)(47 downto 0)((c_out_lsb + a9) + 23 downto c_out_lsb + a9);
+				NextState_fir_fir_result(a9)(47 downto 24) <= State_fir_fir_preg(firParams_Order - 1)(95 downto 48)((c_out_lsb + a9) + 23 downto c_out_lsb + a9);
 			end loop;
 			NextState_tr_tr_fir_mreg_i <= State_fir_fir_adreg(3)(24 downto 0);
 			NextState_tr_tr_fir_mreg_q <= State_fir_fir_adreg(3)(49 downto 25);
@@ -1946,104 +2076,100 @@ begin
 			NextState_tr_tr_fir_result_q <= State_tr_tr_fir_preg_q;
 		end if;
 	end process;
-	process (a6, c_coef_mask_array, c_coef_num_array, c_data_mask_array, FIRModule_L156F26L166T18_Ternary_i, FIRModule_L156F26L166T18_Ternary_q, FIRModule_L211F13L214T14_1_FIRModule_L213F31T47_Index, FIRModule_L211F13L214T14_2_FIRModule_L213F31T47_Index, FIRModule_L211F13L214T14_3_FIRModule_L213F31T47_Index, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F52T91_Resize, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F45T68_Expr, FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F49T68_Index, ib_iq_i, ib_iq_q, ib_iq_v, iCOEF_V, iCOEFF, iDO, iIQ_i, iIQ_q, iIQ_V, Inputs_iCOEF_V, Inputs_iCOEFF, Inputs_iDO, Inputs_iIQ_i, Inputs_iIQ_q, Inputs_iIQ_V, ramd_din, ramd_dout, ramf_din_i, ramf_din_q, State_coeff_coef_ram_cnt, State_coeff_coef_ram_wr, State_coeff_coef_ram_wr_addr, State_coeff_coef_ram_wr_data, State_coeff_coef_wr_cnt_cell, State_coeff_coef_wr_cnt_ram, State_filo_filo_addr_dec, State_filo_filo_addr_inc, State_filo_filo_addr_p, State_filo_filo_counter_dec, State_filo_filo_counter_inc, State_filo_filo_way, State_main_main_c_cnt, State_main_main_c_rd_addr, State_main_main_c_rd_addr_cmn, State_main_main_d_addr, State_main_main_d_cnt_masked, State_main_main_d_cnt_rst, State_set_coef_mask, State_set_data_mask, State_set_do, u_dsp48_i0_A, u_dsp48_i0_B, u_dsp48_i0_CE, u_dsp48_i0_D, u_dsp48_i0_OPMODE, u_dsp48_i0_PCIN, u_dsp48_i0PCOUTu_dsp48_i0_PCOUTHardLink, u_dsp48_i0Pu_dsp48_i0_PHardLink, u_dsp48_i1_A, u_dsp48_i1_B, u_dsp48_i1_CE, u_dsp48_i1_D, u_dsp48_i1_OPMODE, u_dsp48_i1_PCIN, u_dsp48_i1PCOUTu_dsp48_i1_PCOUTHardLink, u_dsp48_i1Pu_dsp48_i1_PHardLink, u_dsp48_i2_A, u_dsp48_i2_B, u_dsp48_i2_CE, u_dsp48_i2_D, u_dsp48_i2_OPMODE, u_dsp48_i2_PCIN, u_dsp48_i2PCOUTu_dsp48_i2_PCOUTHardLink, u_dsp48_i2Pu_dsp48_i2_PHardLink, u_dsp48_i3_A, u_dsp48_i3_B, u_dsp48_i3_CE, u_dsp48_i3_D, u_dsp48_i3_OPMODE, u_dsp48_i3_PCIN, u_dsp48_i3PCOUTu_dsp48_i3_PCOUTHardLink, u_dsp48_i3Pu_dsp48_i3_PHardLink, u_dsp48_q0_A, u_dsp48_q0_B, u_dsp48_q0_CE, u_dsp48_q0_D, u_dsp48_q0_OPMODE, u_dsp48_q0_PCIN, u_dsp48_q0PCOUTu_dsp48_q0_PCOUTHardLink, u_dsp48_q0Pu_dsp48_q0_PHardLink, u_dsp48_q1_A, u_dsp48_q1_B, u_dsp48_q1_CE, u_dsp48_q1_D, u_dsp48_q1_OPMODE, u_dsp48_q1_PCIN, u_dsp48_q1PCOUTu_dsp48_q1_PCOUTHardLink, u_dsp48_q1Pu_dsp48_q1_PHardLink, u_dsp48_q2_A, u_dsp48_q2_B, u_dsp48_q2_CE, u_dsp48_q2_D, u_dsp48_q2_OPMODE, u_dsp48_q2_PCIN, u_dsp48_q2PCOUTu_dsp48_q2_PCOUTHardLink, u_dsp48_q2Pu_dsp48_q2_PHardLink, u_dsp48_q3_A, u_dsp48_q3_B, u_dsp48_q3_CE, u_dsp48_q3_D, u_dsp48_q3_OPMODE, u_dsp48_q3_PCIN, u_dsp48_q3PCOUTu_dsp48_q3_PCOUTHardLink, u_dsp48_q3Pu_dsp48_q3_PHardLink, u_ram_coef0_CE, u_ram_coef0_DIN, u_ram_coef0_DOUT, u_ram_coef0_RD, u_ram_coef0_RD_ADDR, u_ram_coef0_WR, u_ram_coef0_WR_ADDR, u_ram_coef0DOUTu_ram_coef0_DOUTHardLink, u_ram_coef1_CE, u_ram_coef1_DIN, u_ram_coef1_DOUT, u_ram_coef1_RD, u_ram_coef1_RD_ADDR, u_ram_coef1_WR, u_ram_coef1_WR_ADDR, u_ram_coef1DOUTu_ram_coef1_DOUTHardLink, u_ram_coef2_CE, u_ram_coef2_DIN, u_ram_coef2_DOUT, u_ram_coef2_RD, u_ram_coef2_RD_ADDR, u_ram_coef2_WR, u_ram_coef2_WR_ADDR, u_ram_coef2DOUTu_ram_coef2_DOUTHardLink, u_ram_coef3_CE, u_ram_coef3_DIN, u_ram_coef3_DOUT, u_ram_coef3_RD, u_ram_coef3_RD_ADDR, u_ram_coef3_WR, u_ram_coef3_WR_ADDR, u_ram_coef3DOUTu_ram_coef3_DOUTHardLink, u_ram_filo_i_CE, u_ram_filo_i_DIN, u_ram_filo_i_DOUT, u_ram_filo_i_RD, u_ram_filo_i_RD_ADDR, u_ram_filo_i_WR, u_ram_filo_i_WR_ADDR, u_ram_filo_iDOUTu_ram_filo_i_DOUTHardLink, u_ram_filo_q_CE, u_ram_filo_q_DIN, u_ram_filo_q_DOUT, u_ram_filo_q_RD, u_ram_filo_q_RD_ADDR, u_ram_filo_q_WR, u_ram_filo_q_WR_ADDR, u_ram_filo_qDOUTu_ram_filo_q_DOUTHardLink, u_ram_srls_i0_CE, u_ram_srls_i0_DIN, u_ram_srls_i0_DOUT, u_ram_srls_i0_RD, u_ram_srls_i0_RD_ADDR, u_ram_srls_i0_WR, u_ram_srls_i0_WR_ADDR, u_ram_srls_i0DOUTu_ram_srls_i0_DOUTHardLink, u_ram_srls_i1_CE, u_ram_srls_i1_DIN, u_ram_srls_i1_DOUT, u_ram_srls_i1_RD, u_ram_srls_i1_RD_ADDR, u_ram_srls_i1_WR, u_ram_srls_i1_WR_ADDR, u_ram_srls_i1DOUTu_ram_srls_i1_DOUTHardLink, u_ram_srls_i2_CE, u_ram_srls_i2_DIN, u_ram_srls_i2_DOUT, u_ram_srls_i2_RD, u_ram_srls_i2_RD_ADDR, u_ram_srls_i2_WR, u_ram_srls_i2_WR_ADDR, u_ram_srls_i2DOUTu_ram_srls_i2_DOUTHardLink, u_ram_srls_i3_CE, u_ram_srls_i3_DIN, u_ram_srls_i3_DOUT, u_ram_srls_i3_RD, u_ram_srls_i3_RD_ADDR, u_ram_srls_i3_WR, u_ram_srls_i3_WR_ADDR, u_ram_srls_i3DOUTu_ram_srls_i3_DOUTHardLink, u_ram_srls_q0_CE, u_ram_srls_q0_DIN, u_ram_srls_q0_DOUT, u_ram_srls_q0_RD, u_ram_srls_q0_RD_ADDR, u_ram_srls_q0_WR, u_ram_srls_q0_WR_ADDR, u_ram_srls_q0DOUTu_ram_srls_q0_DOUTHardLink, u_ram_srls_q1_CE, u_ram_srls_q1_DIN, u_ram_srls_q1_DOUT, u_ram_srls_q1_RD, u_ram_srls_q1_RD_ADDR, u_ram_srls_q1_WR, u_ram_srls_q1_WR_ADDR, u_ram_srls_q1DOUTu_ram_srls_q1_DOUTHardLink, u_ram_srls_q2_CE, u_ram_srls_q2_DIN, u_ram_srls_q2_DOUT, u_ram_srls_q2_RD, u_ram_srls_q2_RD_ADDR, u_ram_srls_q2_WR, u_ram_srls_q2_WR_ADDR, u_ram_srls_q2DOUTu_ram_srls_q2_DOUTHardLink, u_ram_srls_q3_CE, u_ram_srls_q3_DIN, u_ram_srls_q3_DOUT, u_ram_srls_q3_RD, u_ram_srls_q3_RD_ADDR, u_ram_srls_q3_WR, u_ram_srls_q3_WR_ADDR, u_ram_srls_q3DOUTu_ram_srls_q3_DOUTHardLink)
+	process (c_coef_mask_array, c_coef_num_array, c_data_mask_array, FIRModule_L134F28L136T45_Ternary_i, FIRModule_L134F28L136T45_Ternary_q, FIRModule_L136F15T45_Index, FIRModule_L143F41T93_Resize, FIRModule_L143F57T80_Expr, FIRModule_L143F61T80_Index, FIRModule_L178F13L181T14_1_FIRModule_L180F31T47_Index, FIRModule_L178F13L181T14_2_FIRModule_L180F31T47_Index, FIRModule_L178F13L181T14_3_FIRModule_L180F31T47_Index, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F52T91_Resize, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F45T68_Expr, FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F49T68_Index, FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L500F44T60_FIRModule_L149F58T73_SignChange, FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L502F44T77_FIRModule_L149F58T73_SignChange, FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L503F44T65_FIRModule_L149F58T73_SignChange, FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L503F44T65_FIRModule_L503F48T60_Index, FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L515F44T60_FIRModule_L149F58T73_SignChange, FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L517F44T77_FIRModule_L149F58T73_SignChange, FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L518F44T65_FIRModule_L149F58T73_SignChange, FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L518F44T65_FIRModule_L518F48T60_Index, ib_iq_i, ib_iq_q, ib_iq_v, iCOEF_V, iCOEFF, iDO, iIQ_i, iIQ_q, iIQ_V, Inputs_iCOEF_V, Inputs_iCOEFF, Inputs_iDO, Inputs_iIQ_i, Inputs_iIQ_q, Inputs_iIQ_V, ramc_dout, ramd_din, ramd_dout, ramf_din_i, ramf_din_q, State_coeff_coef_ram_cnt, State_coeff_coef_ram_wr, State_coeff_coef_ram_wr_addr, State_coeff_coef_ram_wr_data, State_coeff_coef_wr_cnt_cell, State_coeff_coef_wr_cnt_ram, State_dsp48_dsp48_a, State_dsp48_dsp48_b, State_dsp48_dsp48_d, State_dsp48_dsp48_opmode, State_dsp48_dsp48_pcin, State_dsp48_dsp48_srl, State_filo_filo_addr_dec, State_filo_filo_addr_inc, State_filo_filo_addr_p, State_filo_filo_counter_dec, State_filo_filo_counter_inc, State_filo_filo_way, State_filo_fir_dreg, State_main_main_c_cnt, State_main_main_c_rd_addr, State_main_main_c_rd_addr_cmn, State_main_main_d_addr, State_main_main_d_cnt_masked, State_main_main_d_cnt_rst, State_mult_reset_mult_reset_dsp, State_ob_coef_rdy, State_ob_iq_i, State_ob_iq_q, State_ob_iq_v, State_set_coef_mask, State_set_data_mask, State_set_do, u_dsp48_i0_A, u_dsp48_i0_B, u_dsp48_i0_CE, u_dsp48_i0_D, u_dsp48_i0_OPMODE, u_dsp48_i0_PCIN, u_dsp48_i0_RST, u_dsp48_i0PCOUTu_dsp48_i0_PCOUTHardLink, u_dsp48_i0Pu_dsp48_i0_PHardLink, u_dsp48_i1_A, u_dsp48_i1_B, u_dsp48_i1_CE, u_dsp48_i1_D, u_dsp48_i1_OPMODE, u_dsp48_i1_PCIN, u_dsp48_i1_RST, u_dsp48_i1PCOUTu_dsp48_i1_PCOUTHardLink, u_dsp48_i1Pu_dsp48_i1_PHardLink, u_dsp48_i2_A, u_dsp48_i2_B, u_dsp48_i2_CE, u_dsp48_i2_D, u_dsp48_i2_OPMODE, u_dsp48_i2_PCIN, u_dsp48_i2_RST, u_dsp48_i2PCOUTu_dsp48_i2_PCOUTHardLink, u_dsp48_i2Pu_dsp48_i2_PHardLink, u_dsp48_i3_A, u_dsp48_i3_B, u_dsp48_i3_CE, u_dsp48_i3_D, u_dsp48_i3_OPMODE, u_dsp48_i3_PCIN, u_dsp48_i3_RST, u_dsp48_i3PCOUTu_dsp48_i3_PCOUTHardLink, u_dsp48_i3Pu_dsp48_i3_PHardLink, u_dsp48_q0_A, u_dsp48_q0_B, u_dsp48_q0_CE, u_dsp48_q0_D, u_dsp48_q0_OPMODE, u_dsp48_q0_PCIN, u_dsp48_q0_RST, u_dsp48_q0PCOUTu_dsp48_q0_PCOUTHardLink, u_dsp48_q0Pu_dsp48_q0_PHardLink, u_dsp48_q1_A, u_dsp48_q1_B, u_dsp48_q1_CE, u_dsp48_q1_D, u_dsp48_q1_OPMODE, u_dsp48_q1_PCIN, u_dsp48_q1_RST, u_dsp48_q1PCOUTu_dsp48_q1_PCOUTHardLink, u_dsp48_q1Pu_dsp48_q1_PHardLink, u_dsp48_q2_A, u_dsp48_q2_B, u_dsp48_q2_CE, u_dsp48_q2_D, u_dsp48_q2_OPMODE, u_dsp48_q2_PCIN, u_dsp48_q2_RST, u_dsp48_q2PCOUTu_dsp48_q2_PCOUTHardLink, u_dsp48_q2Pu_dsp48_q2_PHardLink, u_dsp48_q3_A, u_dsp48_q3_B, u_dsp48_q3_CE, u_dsp48_q3_D, u_dsp48_q3_OPMODE, u_dsp48_q3_PCIN, u_dsp48_q3_RST, u_dsp48_q3PCOUTu_dsp48_q3_PCOUTHardLink, u_dsp48_q3Pu_dsp48_q3_PHardLink, u_ram_coef0_CE, u_ram_coef0_DIN, u_ram_coef0_DOUT, u_ram_coef0_RD, u_ram_coef0_RD_ADDR, u_ram_coef0_WR, u_ram_coef0_WR_ADDR, u_ram_coef0DOUTu_ram_coef0_DOUTHardLink, u_ram_coef1_CE, u_ram_coef1_DIN, u_ram_coef1_DOUT, u_ram_coef1_RD, u_ram_coef1_RD_ADDR, u_ram_coef1_WR, u_ram_coef1_WR_ADDR, u_ram_coef1DOUTu_ram_coef1_DOUTHardLink, u_ram_coef2_CE, u_ram_coef2_DIN, u_ram_coef2_DOUT, u_ram_coef2_RD, u_ram_coef2_RD_ADDR, u_ram_coef2_WR, u_ram_coef2_WR_ADDR, u_ram_coef2DOUTu_ram_coef2_DOUTHardLink, u_ram_coef3_CE, u_ram_coef3_DIN, u_ram_coef3_DOUT, u_ram_coef3_RD, u_ram_coef3_RD_ADDR, u_ram_coef3_WR, u_ram_coef3_WR_ADDR, u_ram_coef3DOUTu_ram_coef3_DOUTHardLink, u_ram_filo_i_CE, u_ram_filo_i_DIN, u_ram_filo_i_DOUT, u_ram_filo_i_RD, u_ram_filo_i_RD_ADDR, u_ram_filo_i_WR, u_ram_filo_i_WR_ADDR, u_ram_filo_iDOUTu_ram_filo_i_DOUTHardLink, u_ram_filo_q_CE, u_ram_filo_q_DIN, u_ram_filo_q_DOUT, u_ram_filo_q_RD, u_ram_filo_q_RD_ADDR, u_ram_filo_q_WR, u_ram_filo_q_WR_ADDR, u_ram_filo_qDOUTu_ram_filo_q_DOUTHardLink, u_ram_srls_i0_CE, u_ram_srls_i0_DIN, u_ram_srls_i0_DOUT, u_ram_srls_i0_RD, u_ram_srls_i0_RD_ADDR, u_ram_srls_i0_WR, u_ram_srls_i0_WR_ADDR, u_ram_srls_i0DOUTu_ram_srls_i0_DOUTHardLink, u_ram_srls_i1_CE, u_ram_srls_i1_DIN, u_ram_srls_i1_DOUT, u_ram_srls_i1_RD, u_ram_srls_i1_RD_ADDR, u_ram_srls_i1_WR, u_ram_srls_i1_WR_ADDR, u_ram_srls_i1DOUTu_ram_srls_i1_DOUTHardLink, u_ram_srls_i2_CE, u_ram_srls_i2_DIN, u_ram_srls_i2_DOUT, u_ram_srls_i2_RD, u_ram_srls_i2_RD_ADDR, u_ram_srls_i2_WR, u_ram_srls_i2_WR_ADDR, u_ram_srls_i2DOUTu_ram_srls_i2_DOUTHardLink, u_ram_srls_i3_CE, u_ram_srls_i3_DIN, u_ram_srls_i3_DOUT, u_ram_srls_i3_RD, u_ram_srls_i3_RD_ADDR, u_ram_srls_i3_WR, u_ram_srls_i3_WR_ADDR, u_ram_srls_i3DOUTu_ram_srls_i3_DOUTHardLink, u_ram_srls_q0_CE, u_ram_srls_q0_DIN, u_ram_srls_q0_DOUT, u_ram_srls_q0_RD, u_ram_srls_q0_RD_ADDR, u_ram_srls_q0_WR, u_ram_srls_q0_WR_ADDR, u_ram_srls_q0DOUTu_ram_srls_q0_DOUTHardLink, u_ram_srls_q1_CE, u_ram_srls_q1_DIN, u_ram_srls_q1_DOUT, u_ram_srls_q1_RD, u_ram_srls_q1_RD_ADDR, u_ram_srls_q1_WR, u_ram_srls_q1_WR_ADDR, u_ram_srls_q1DOUTu_ram_srls_q1_DOUTHardLink, u_ram_srls_q2_CE, u_ram_srls_q2_DIN, u_ram_srls_q2_DOUT, u_ram_srls_q2_RD, u_ram_srls_q2_RD_ADDR, u_ram_srls_q2_WR, u_ram_srls_q2_WR_ADDR, u_ram_srls_q2DOUTu_ram_srls_q2_DOUTHardLink, u_ram_srls_q3_CE, u_ram_srls_q3_DIN, u_ram_srls_q3_DOUT, u_ram_srls_q3_RD, u_ram_srls_q3_RD_ADDR, u_ram_srls_q3_WR, u_ram_srls_q3_WR_ADDR, u_ram_srls_q3DOUTu_ram_srls_q3_DOUTHardLink)
 	begin
-		FIRModule_L156F26T47_ExprLhs(4) <= '0';
-		FIRModule_L156F26T47_ExprLhs(3 downto 0) <= signed(State_set_do);
-		FIRModule_L156F26T47_ExprRhs(4 downto 1) <= (others => '0');
-		FIRModule_L156F26T47_ExprRhs(0) <= FIRModule_L156F42T47_Expr;
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L327F21T72_ExprLhs(9 downto 8) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L327F21T72_ExprLhs(7 downto 0) <= signed(State_coeff_coef_wr_cnt_cell);
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L327F21T72_ExprRhs(9) <= '0';
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L327F21T72_ExprRhs(8 downto 0) <= signed(State_set_coef_mask);
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L331F25T79_ExprLhs(3 downto 2) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L331F25T79_ExprLhs(1 downto 0) <= signed(State_coeff_coef_wr_cnt_ram);
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L331F25T79_ExprRhs(3) <= '0';
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L331F25T79_ExprRhs(2 downto 0) <= signed(FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L331F56T79_Expr);
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F17T68_ExprLhs(35 downto 16) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F17T68_ExprLhs(15 downto 0) <= signed(State_coeff_coef_ram_cnt);
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F17T68_ExprRhs(35) <= FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F45T68_Expr(34);
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F17T68_ExprRhs(34 downto 0) <= FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F45T68_Expr;
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L386F21T73_ExprLhs(9) <= '0';
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L386F21T73_ExprLhs(8 downto 0) <= signed(State_main_main_c_rd_addr_cmn);
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L386F21T73_ExprRhs(9) <= '0';
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L386F21T73_ExprRhs(8 downto 0) <= signed(State_set_coef_mask);
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L406F21T38_ExprLhs(4) <= '0';
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L406F21T38_ExprLhs(3 downto 0) <= signed(State_set_do);
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L406F21T38_ExprRhs(4 downto 1) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L406F21T38_ExprRhs(0) <= FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L406F37T38_Expr;
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L411F17L420T18_FIRModule_L412F25T58_ExprLhs(10) <= '0';
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L411F17L420T18_FIRModule_L412F25T58_ExprLhs(9 downto 0) <= signed(State_main_main_d_cnt_masked);
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L411F17L420T18_FIRModule_L412F25T58_ExprRhs(10 downto 1) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L411F17L420T18_FIRModule_L412F25T58_ExprRhs(0) <= FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L411F17L420T18_FIRModule_L412F57T58_Expr;
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L448F21T49_ExprLhs(1) <= '0';
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L448F21T49_ExprLhs(0) <= State_filo_filo_way;
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L448F21T49_ExprRhs(1) <= '0';
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L448F21T49_ExprRhs(0) <= FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L448F44T49_Expr;
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L451F25T54_ExprLhs(9) <= '0';
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L451F25T54_ExprLhs(8 downto 0) <= signed(State_filo_filo_addr_dec);
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L451F25T54_ExprRhs(9 downto 1) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L451F25T54_ExprRhs(0) <= FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L451F53T54_Expr;
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L455F17L459T18_FIRModule_L457F25T72_ExprLhs(9) <= '0';
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L455F17L459T18_FIRModule_L457F25T72_ExprLhs(8 downto 0) <= signed(State_filo_filo_addr_inc);
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L455F17L459T18_FIRModule_L457F25T72_ExprRhs(9) <= '0';
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L455F17L459T18_FIRModule_L457F25T72_ExprRhs(8 downto 0) <= signed(State_set_coef_mask);
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L461F21T38_ExprLhs(4) <= '0';
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L461F21T38_ExprLhs(3 downto 0) <= signed(State_set_do);
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L461F21T38_ExprRhs(4 downto 1) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L461F21T38_ExprRhs(0) <= FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L461F37T38_Expr;
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L378F52T95_Expr_1 <= State_main_main_c_cnt;
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L378F52T95_Expr_2 <= State_set_coef_mask;
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L407F17L409T18_FIRModule_L408F53T79_Expr_1 <= State_main_main_d_cnt_rst;
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L431F52T95_Expr_1(9) <= '0';
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L431F52T95_Expr_1(8 downto 0) <= State_main_main_c_cnt;
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L431F52T95_Expr_2 <= State_set_data_mask;
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L445F48T97_Expr_1 <= State_filo_filo_counter_inc;
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L445F48T97_Expr_2 <= State_set_coef_mask;
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L446F48T97_Expr_1 <= State_filo_filo_counter_dec;
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L446F48T97_Expr_2 <= State_set_coef_mask;
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L449F17L453T18_FIRModule_L452F51T71_Expr_1 <= State_filo_filo_way;
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L455F17L459T18_FIRModule_L458F51T71_Expr_1 <= State_filo_filo_way;
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F52T95_Expr_1(17 downto 16) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F52T95_Expr_1(15 downto 0) <= signed(FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F52T91_Resize);
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F52T95_Expr_2(17 downto 1) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F52T95_Expr_2(0) <= FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F94T95_Expr;
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L336F21L338T22_FIRModule_L337F59T90_Expr_1(3 downto 2) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L336F21L338T22_FIRModule_L337F59T90_Expr_1(1 downto 0) <= signed(State_coeff_coef_wr_cnt_ram);
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L336F21L338T22_FIRModule_L337F59T90_Expr_2(3 downto 1) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L336F21L338T22_FIRModule_L337F59T90_Expr_2(0) <= FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L336F21L338T22_FIRModule_L337F89T90_Expr;
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L341F17L343T18_FIRModule_L342F56T88_Expr_1(9 downto 8) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L341F17L343T18_FIRModule_L342F56T88_Expr_1(7 downto 0) <= signed(State_coeff_coef_wr_cnt_cell);
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L341F17L343T18_FIRModule_L342F56T88_Expr_2(9 downto 1) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L341F17L343T18_FIRModule_L342F56T88_Expr_2(0) <= FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L341F17L343T18_FIRModule_L342F87T88_Expr;
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F45T68_Expr_1(34 downto 2) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F45T68_Expr_1(1 downto 0) <= signed(FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F45T46_Expr);
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F45T68_Expr_2(34 downto 32) <= (others => FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F49T68_Index(31));
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F45T68_Expr_2(31 downto 0) <= FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F49T68_Index;
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L377F45T70_Expr_1(10 downto 9) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L377F45T70_Expr_1(8 downto 0) <= signed(State_main_main_c_cnt);
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L377F45T70_Expr_2(10 downto 1) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L377F45T70_Expr_2(0) <= FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L377F69T70_Expr;
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L427F17L429T18_FIRModule_L428F49T74_Expr_1(10 downto 9) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L427F17L429T18_FIRModule_L428F49T74_Expr_1(8 downto 0) <= signed(State_main_main_c_cnt);
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L427F17L429T18_FIRModule_L428F49T74_Expr_2(10 downto 1) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L427F17L429T18_FIRModule_L428F49T74_Expr_2(0) <= FIRModule_L544F9L551T10_FIRModule_L547F13T24_FIRModule_L374F9L437T10_FIRModule_L376F13L436T14_FIRModule_L427F17L429T18_FIRModule_L428F73T74_Expr;
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L443F51T82_Expr_1(10 downto 9) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L443F51T82_Expr_1(8 downto 0) <= signed(State_filo_filo_counter_dec);
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L443F51T82_Expr_2(10 downto 1) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L443F51T82_Expr_2(0) <= FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L443F81T82_Expr;
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L444F51T82_Expr_1(10 downto 9) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L444F51T82_Expr_1(8 downto 0) <= signed(State_filo_filo_counter_inc);
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L444F51T82_Expr_2(10 downto 1) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L444F51T82_Expr_2(0) <= FIRModule_L544F9L551T10_FIRModule_L548F13T24_FIRModule_L440F9L466T10_FIRModule_L442F13L465T14_FIRModule_L444F81T82_Expr;
-		FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L518F78T83_Expr_1(33 downto 32) <= (others => 0);
-		FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L518F78T83_Expr_1(31 downto 0) <= a6;
-		FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L518F78T83_Expr_2(33 downto 1) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L518F78T83_Expr_2(0) <= FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L518F82T83_Expr;
-		FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L519F78T83_Expr_1(33 downto 32) <= (others => 0);
-		FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L519F78T83_Expr_1(31 downto 0) <= a6;
-		FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L519F78T83_Expr_2(33 downto 1) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L519F78T83_Expr_2(0) <= FIRModule_L544F9L551T10_FIRModule_L550F13T38_FIRModule_L487F9L541T10_FIRModule_L489F13L540T14_FIRModule_L490F17L527T18_FIRModule_L519F82T83_Expr;
+		FIRModule_L134F28T49_ExprLhs(4) <= '0';
+		FIRModule_L134F28T49_ExprLhs(3 downto 0) <= signed(State_set_do);
+		FIRModule_L134F28T49_ExprRhs(4 downto 1) <= (others => '0');
+		FIRModule_L134F28T49_ExprRhs(0) <= FIRModule_L134F44T49_Expr;
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L281F21T72_ExprLhs(9 downto 8) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L281F21T72_ExprLhs(7 downto 0) <= signed(State_coeff_coef_wr_cnt_cell);
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L281F21T72_ExprRhs(9) <= '0';
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L281F21T72_ExprRhs(8 downto 0) <= signed(State_set_coef_mask);
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L285F25T79_ExprLhs(3 downto 2) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L285F25T79_ExprLhs(1 downto 0) <= signed(State_coeff_coef_wr_cnt_ram);
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L285F25T79_ExprRhs(3) <= '0';
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L285F25T79_ExprRhs(2 downto 0) <= signed(FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L285F56T79_Expr);
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F17T68_ExprLhs(35 downto 16) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F17T68_ExprLhs(15 downto 0) <= signed(State_coeff_coef_ram_cnt);
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F17T68_ExprRhs(35) <= FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F45T68_Expr(34);
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F17T68_ExprRhs(34 downto 0) <= FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F45T68_Expr;
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L340F21T73_ExprLhs(9) <= '0';
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L340F21T73_ExprLhs(8 downto 0) <= signed(State_main_main_c_rd_addr_cmn);
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L340F21T73_ExprRhs(9) <= '0';
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L340F21T73_ExprRhs(8 downto 0) <= signed(State_set_coef_mask);
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L360F21T38_ExprLhs(4) <= '0';
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L360F21T38_ExprLhs(3 downto 0) <= signed(State_set_do);
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L360F21T38_ExprRhs(4 downto 1) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L360F21T38_ExprRhs(0) <= FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L360F37T38_Expr;
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L365F17L374T18_FIRModule_L366F25T58_ExprLhs(10) <= '0';
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L365F17L374T18_FIRModule_L366F25T58_ExprLhs(9 downto 0) <= signed(State_main_main_d_cnt_masked);
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L365F17L374T18_FIRModule_L366F25T58_ExprRhs(10 downto 1) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L365F17L374T18_FIRModule_L366F25T58_ExprRhs(0) <= FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L365F17L374T18_FIRModule_L366F57T58_Expr;
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L402F21T49_ExprLhs(1) <= '0';
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L402F21T49_ExprLhs(0) <= State_filo_filo_way;
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L402F21T49_ExprRhs(1) <= '0';
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L402F21T49_ExprRhs(0) <= FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L402F44T49_Expr;
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L405F25T54_ExprLhs(9) <= '0';
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L405F25T54_ExprLhs(8 downto 0) <= signed(State_filo_filo_addr_dec);
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L405F25T54_ExprRhs(9 downto 1) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L405F25T54_ExprRhs(0) <= FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L405F53T54_Expr;
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L409F17L413T18_FIRModule_L411F25T72_ExprLhs(9) <= '0';
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L409F17L413T18_FIRModule_L411F25T72_ExprLhs(8 downto 0) <= signed(State_filo_filo_addr_inc);
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L409F17L413T18_FIRModule_L411F25T72_ExprRhs(9) <= '0';
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L409F17L413T18_FIRModule_L411F25T72_ExprRhs(8 downto 0) <= signed(State_set_coef_mask);
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L415F21T38_ExprLhs(4) <= '0';
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L415F21T38_ExprLhs(3 downto 0) <= signed(State_set_do);
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L415F21T38_ExprRhs(4 downto 1) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L415F21T38_ExprRhs(0) <= FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L415F37T38_Expr;
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L332F52T95_Expr_1 <= State_main_main_c_cnt;
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L332F52T95_Expr_2 <= State_set_coef_mask;
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L361F17L363T18_FIRModule_L362F53T79_Expr_1 <= State_main_main_d_cnt_rst;
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L385F52T95_Expr_1(9) <= '0';
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L385F52T95_Expr_1(8 downto 0) <= State_main_main_c_cnt;
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L385F52T95_Expr_2 <= State_set_data_mask;
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L399F48T97_Expr_1 <= State_filo_filo_counter_inc;
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L399F48T97_Expr_2 <= State_set_coef_mask;
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L400F48T97_Expr_1 <= State_filo_filo_counter_dec;
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L400F48T97_Expr_2 <= State_set_coef_mask;
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L403F17L407T18_FIRModule_L406F51T71_Expr_1 <= State_filo_filo_way;
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L409F17L413T18_FIRModule_L412F51T71_Expr_1 <= State_filo_filo_way;
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F52T95_Expr_1(17 downto 16) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F52T95_Expr_1(15 downto 0) <= signed(FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F52T91_Resize);
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F52T95_Expr_2(17 downto 1) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F52T95_Expr_2(0) <= FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F94T95_Expr;
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L290F21L292T22_FIRModule_L291F59T90_Expr_1(3 downto 2) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L290F21L292T22_FIRModule_L291F59T90_Expr_1(1 downto 0) <= signed(State_coeff_coef_wr_cnt_ram);
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L290F21L292T22_FIRModule_L291F59T90_Expr_2(3 downto 1) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L290F21L292T22_FIRModule_L291F59T90_Expr_2(0) <= FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L290F21L292T22_FIRModule_L291F89T90_Expr;
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L295F17L297T18_FIRModule_L296F56T88_Expr_1(9 downto 8) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L295F17L297T18_FIRModule_L296F56T88_Expr_1(7 downto 0) <= signed(State_coeff_coef_wr_cnt_cell);
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L295F17L297T18_FIRModule_L296F56T88_Expr_2(9 downto 1) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L295F17L297T18_FIRModule_L296F56T88_Expr_2(0) <= FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L295F17L297T18_FIRModule_L296F87T88_Expr;
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F45T68_Expr_1(34 downto 2) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F45T68_Expr_1(1 downto 0) <= signed(FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F45T46_Expr);
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F45T68_Expr_2(34 downto 32) <= (others => FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F49T68_Index(31));
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F45T68_Expr_2(31 downto 0) <= FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F49T68_Index;
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L331F45T70_Expr_1(10 downto 9) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L331F45T70_Expr_1(8 downto 0) <= signed(State_main_main_c_cnt);
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L331F45T70_Expr_2(10 downto 1) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L331F45T70_Expr_2(0) <= FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L331F69T70_Expr;
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L381F17L383T18_FIRModule_L382F49T74_Expr_1(10 downto 9) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L381F17L383T18_FIRModule_L382F49T74_Expr_1(8 downto 0) <= signed(State_main_main_c_cnt);
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L381F17L383T18_FIRModule_L382F49T74_Expr_2(10 downto 1) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L381F17L383T18_FIRModule_L382F49T74_Expr_2(0) <= FIRModule_L531F9L539T10_FIRModule_L534F13T24_FIRModule_L328F9L391T10_FIRModule_L330F13L390T14_FIRModule_L381F17L383T18_FIRModule_L382F73T74_Expr;
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L397F51T82_Expr_1(10 downto 9) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L397F51T82_Expr_1(8 downto 0) <= signed(State_filo_filo_counter_dec);
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L397F51T82_Expr_2(10 downto 1) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L397F51T82_Expr_2(0) <= FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L397F81T82_Expr;
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L398F51T82_Expr_1(10 downto 9) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L398F51T82_Expr_1(8 downto 0) <= signed(State_filo_filo_counter_inc);
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L398F51T82_Expr_2(10 downto 1) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L398F51T82_Expr_2(0) <= FIRModule_L531F9L539T10_FIRModule_L535F13T24_FIRModule_L394F9L420T10_FIRModule_L396F13L419T14_FIRModule_L398F81T82_Expr;
+		FIRModule_L143F57T80_Expr_1(34 downto 2) <= (others => '0');
+		FIRModule_L143F57T80_Expr_1(1 downto 0) <= signed(FIRModule_L143F57T58_Expr);
+		FIRModule_L143F57T80_Expr_2(34 downto 32) <= (others => FIRModule_L143F61T80_Index(31));
+		FIRModule_L143F57T80_Expr_2(31 downto 0) <= FIRModule_L143F61T80_Index;
 		Inputs_iCOEF_V <= iCOEF_V;
 		Inputs_iCOEFF <= iCOEFF;
 		Inputs_iDO <= iDO;
@@ -2060,38 +2186,33 @@ begin
 		ramc_dout(1) <= u_ram_coef1_DOUT;
 		ramc_dout(2) <= u_ram_coef2_DOUT;
 		ramc_dout(3) <= u_ram_coef3_DOUT;
-		FIRModule_L157F17L161T18_WhenTrue_i(15 downto 1) <= (others => '0');
-		FIRModule_L157F17L161T18_WhenTrue_i(0) <= FIRModule_L159F41T56_Expr;
-		FIRModule_L157F17L161T18_WhenTrue_q(15 downto 1) <= (others => '0');
-		FIRModule_L157F17L161T18_WhenTrue_q(0) <= FIRModule_L160F41T56_Expr;
-		FIRModule_L162F17L166T18_WhenFalse_i(15 downto 1) <= (others => '0');
-		FIRModule_L162F17L166T18_WhenFalse_i(0) <= FIRModule_L164F41T56_Expr;
-		FIRModule_L162F17L166T18_WhenFalse_q(15 downto 1) <= (others => '0');
-		FIRModule_L162F17L166T18_WhenFalse_q(0) <= FIRModule_L165F41T56_Expr;
-		ramf_din_i <= FIRModule_L156F26L166T18_Ternary_i;
-		ramf_din_q <= FIRModule_L156F26L166T18_Ternary_q;
+		FIRModule_L135F15T61_WhenTrue_i <= State_dsp48_dsp48_srl(5)(15 downto 0);
+		FIRModule_L135F15T61_WhenTrue_q <= State_dsp48_dsp48_srl(5)(31 downto 16);
+		FIRModule_L136F15T45_WhenFalse_i <= FIRModule_L136F15T45_Index(15 downto 0);
+		FIRModule_L136F15T45_WhenFalse_q <= FIRModule_L136F15T45_Index(31 downto 16);
+		ramf_din_i <= FIRModule_L134F28L136T45_Ternary_i;
+		ramf_din_q <= FIRModule_L134F28L136T45_Ternary_q;
 		ramf_dout_i <= u_ram_filo_i_DOUT;
 		ramf_dout_q <= u_ram_filo_q_DOUT;
-		ob_coef_cnt <= State_coeff_coef_ram_cnt;
-		u_ram_coef0_CE <= FIRModule_L189F13L200T14_0_FIRModule_L193F26T30_Expr;
+		u_ram_coef0_CE <= FIRModule_L156F13L167T14_0_FIRModule_L160F26T30_Expr;
 		u_ram_coef0_WR <= State_coeff_coef_ram_wr(0);
 		u_ram_coef0_WR_ADDR <= State_coeff_coef_ram_wr_addr(0);
 		u_ram_coef0_DIN <= State_coeff_coef_ram_wr_data(0);
 		u_ram_coef0_RD <= ib_iq_v;
 		u_ram_coef0_RD_ADDR <= State_main_main_c_rd_addr(0);
-		u_ram_coef1_CE <= FIRModule_L189F13L200T14_1_FIRModule_L193F26T30_Expr;
+		u_ram_coef1_CE <= FIRModule_L156F13L167T14_1_FIRModule_L160F26T30_Expr;
 		u_ram_coef1_WR <= State_coeff_coef_ram_wr(1);
 		u_ram_coef1_WR_ADDR <= State_coeff_coef_ram_wr_addr(1);
 		u_ram_coef1_DIN <= State_coeff_coef_ram_wr_data(1);
 		u_ram_coef1_RD <= ib_iq_v;
 		u_ram_coef1_RD_ADDR <= State_main_main_c_rd_addr(1);
-		u_ram_coef2_CE <= FIRModule_L189F13L200T14_2_FIRModule_L193F26T30_Expr;
+		u_ram_coef2_CE <= FIRModule_L156F13L167T14_2_FIRModule_L160F26T30_Expr;
 		u_ram_coef2_WR <= State_coeff_coef_ram_wr(2);
 		u_ram_coef2_WR_ADDR <= State_coeff_coef_ram_wr_addr(2);
 		u_ram_coef2_DIN <= State_coeff_coef_ram_wr_data(2);
 		u_ram_coef2_RD <= ib_iq_v;
 		u_ram_coef2_RD_ADDR <= State_main_main_c_rd_addr(2);
-		u_ram_coef3_CE <= FIRModule_L189F13L200T14_3_FIRModule_L193F26T30_Expr;
+		u_ram_coef3_CE <= FIRModule_L156F13L167T14_3_FIRModule_L160F26T30_Expr;
 		u_ram_coef3_WR <= State_coeff_coef_ram_wr(3);
 		u_ram_coef3_WR_ADDR <= State_coeff_coef_ram_wr_addr(3);
 		u_ram_coef3_DIN <= State_coeff_coef_ram_wr_data(3);
@@ -2107,71 +2228,152 @@ begin
 		ramd_dout(3)(31 downto 16) <= u_ram_srls_q3_DOUT;
 		ramd_din(0)(31 downto 16) <= ib_iq_q;
 		ramd_din(0)(15 downto 0) <= ib_iq_i;
-		ramd_din(1) <= FIRModule_L211F13L214T14_1_FIRModule_L213F31T47_Index;
-		ramd_din(2) <= FIRModule_L211F13L214T14_2_FIRModule_L213F31T47_Index;
-		ramd_din(3) <= FIRModule_L211F13L214T14_3_FIRModule_L213F31T47_Index;
-		u_ram_srls_i0_CE <= FIRModule_L216F13L227T14_0_FIRModule_L220F26T30_Expr;
+		ramd_din(1) <= FIRModule_L178F13L181T14_1_FIRModule_L180F31T47_Index;
+		ramd_din(2) <= FIRModule_L178F13L181T14_2_FIRModule_L180F31T47_Index;
+		ramd_din(3) <= FIRModule_L178F13L181T14_3_FIRModule_L180F31T47_Index;
+		u_ram_srls_i0_CE <= FIRModule_L183F13L194T14_0_FIRModule_L187F26T30_Expr;
 		u_ram_srls_i0_WR <= ib_iq_v;
 		u_ram_srls_i0_WR_ADDR <= State_main_main_d_addr(0);
 		u_ram_srls_i0_DIN <= ramd_din(0)(15 downto 0);
 		u_ram_srls_i0_RD <= ib_iq_v;
 		u_ram_srls_i0_RD_ADDR <= State_main_main_d_addr(0);
-		u_ram_srls_i1_CE <= FIRModule_L216F13L227T14_1_FIRModule_L220F26T30_Expr;
+		u_ram_srls_i1_CE <= FIRModule_L183F13L194T14_1_FIRModule_L187F26T30_Expr;
 		u_ram_srls_i1_WR <= ib_iq_v;
 		u_ram_srls_i1_WR_ADDR <= State_main_main_d_addr(1);
 		u_ram_srls_i1_DIN <= ramd_din(1)(15 downto 0);
 		u_ram_srls_i1_RD <= ib_iq_v;
 		u_ram_srls_i1_RD_ADDR <= State_main_main_d_addr(1);
-		u_ram_srls_i2_CE <= FIRModule_L216F13L227T14_2_FIRModule_L220F26T30_Expr;
+		u_ram_srls_i2_CE <= FIRModule_L183F13L194T14_2_FIRModule_L187F26T30_Expr;
 		u_ram_srls_i2_WR <= ib_iq_v;
 		u_ram_srls_i2_WR_ADDR <= State_main_main_d_addr(2);
 		u_ram_srls_i2_DIN <= ramd_din(2)(15 downto 0);
 		u_ram_srls_i2_RD <= ib_iq_v;
 		u_ram_srls_i2_RD_ADDR <= State_main_main_d_addr(2);
-		u_ram_srls_i3_CE <= FIRModule_L216F13L227T14_3_FIRModule_L220F26T30_Expr;
+		u_ram_srls_i3_CE <= FIRModule_L183F13L194T14_3_FIRModule_L187F26T30_Expr;
 		u_ram_srls_i3_WR <= ib_iq_v;
 		u_ram_srls_i3_WR_ADDR <= State_main_main_d_addr(3);
 		u_ram_srls_i3_DIN <= ramd_din(3)(15 downto 0);
 		u_ram_srls_i3_RD <= ib_iq_v;
 		u_ram_srls_i3_RD_ADDR <= State_main_main_d_addr(3);
-		u_ram_srls_q0_CE <= FIRModule_L229F13L240T14_0_FIRModule_L233F26T30_Expr;
+		u_ram_srls_q0_CE <= FIRModule_L196F13L207T14_0_FIRModule_L200F26T30_Expr;
 		u_ram_srls_q0_WR <= ib_iq_v;
 		u_ram_srls_q0_WR_ADDR <= State_main_main_d_addr(0);
 		u_ram_srls_q0_DIN <= ramd_din(0)(31 downto 16);
 		u_ram_srls_q0_RD <= ib_iq_v;
 		u_ram_srls_q0_RD_ADDR <= State_main_main_d_addr(0);
-		u_ram_srls_q1_CE <= FIRModule_L229F13L240T14_1_FIRModule_L233F26T30_Expr;
+		u_ram_srls_q1_CE <= FIRModule_L196F13L207T14_1_FIRModule_L200F26T30_Expr;
 		u_ram_srls_q1_WR <= ib_iq_v;
 		u_ram_srls_q1_WR_ADDR <= State_main_main_d_addr(1);
 		u_ram_srls_q1_DIN <= ramd_din(1)(31 downto 16);
 		u_ram_srls_q1_RD <= ib_iq_v;
 		u_ram_srls_q1_RD_ADDR <= State_main_main_d_addr(1);
-		u_ram_srls_q2_CE <= FIRModule_L229F13L240T14_2_FIRModule_L233F26T30_Expr;
+		u_ram_srls_q2_CE <= FIRModule_L196F13L207T14_2_FIRModule_L200F26T30_Expr;
 		u_ram_srls_q2_WR <= ib_iq_v;
 		u_ram_srls_q2_WR_ADDR <= State_main_main_d_addr(2);
 		u_ram_srls_q2_DIN <= ramd_din(2)(31 downto 16);
 		u_ram_srls_q2_RD <= ib_iq_v;
 		u_ram_srls_q2_RD_ADDR <= State_main_main_d_addr(2);
-		u_ram_srls_q3_CE <= FIRModule_L229F13L240T14_3_FIRModule_L233F26T30_Expr;
+		u_ram_srls_q3_CE <= FIRModule_L196F13L207T14_3_FIRModule_L200F26T30_Expr;
 		u_ram_srls_q3_WR <= ib_iq_v;
 		u_ram_srls_q3_WR_ADDR <= State_main_main_d_addr(3);
 		u_ram_srls_q3_DIN <= ramd_din(3)(31 downto 16);
 		u_ram_srls_q3_RD <= ib_iq_v;
 		u_ram_srls_q3_RD_ADDR <= State_main_main_d_addr(3);
-		u_ram_filo_i_CE <= FIRModule_L246F22T26_Expr;
+		u_ram_filo_i_CE <= FIRModule_L213F22T26_Expr;
 		u_ram_filo_i_WR <= ib_iq_v;
 		u_ram_filo_i_WR_ADDR <= State_filo_filo_addr_p;
 		u_ram_filo_i_DIN <= ramf_din_i;
 		u_ram_filo_i_RD <= ib_iq_v;
 		u_ram_filo_i_RD_ADDR <= State_filo_filo_addr_p;
-		u_ram_filo_q_CE <= FIRModule_L256F22T26_Expr;
+		u_ram_filo_q_CE <= FIRModule_L223F22T26_Expr;
 		u_ram_filo_q_WR <= ib_iq_v;
 		u_ram_filo_q_WR_ADDR <= State_filo_filo_addr_p;
 		u_ram_filo_q_DIN <= ramf_din_q;
 		u_ram_filo_q_RD <= ib_iq_v;
 		u_ram_filo_q_RD_ADDR <= State_filo_filo_addr_p;
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F52T91_Resize(15 downto 2) <= (others => '0');
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L326F13L344T14_FIRModule_L328F17L339T18_FIRModule_L330F52T91_Resize(1 downto 0) <= State_coeff_coef_wr_cnt_ram;
+		u_dsp48_i0_CE <= ib_iq_v;
+		u_dsp48_i0_RST <= FIRModule_L232F13L255T14_0_FIRModule_L237F27T32_Expr;
+		u_dsp48_i0_A <= State_dsp48_dsp48_a(0)(29 downto 0);
+		u_dsp48_i0_B <= State_dsp48_dsp48_b(0)(17 downto 0);
+		u_dsp48_i0_D <= State_dsp48_dsp48_d(0)(24 downto 0);
+		u_dsp48_i0_PCIN <= State_dsp48_dsp48_pcin(0)(47 downto 0);
+		u_dsp48_i0_OPMODE <= State_dsp48_dsp48_opmode(0)(6 downto 0)(6 downto 4);
+		u_dsp48_q0_CE <= ib_iq_v;
+		u_dsp48_q0_RST <= FIRModule_L232F13L255T14_0_FIRModule_L248F27T32_Expr;
+		u_dsp48_q0_A <= State_dsp48_dsp48_a(0)(59 downto 30);
+		u_dsp48_q0_B <= State_dsp48_dsp48_b(0)(35 downto 18);
+		u_dsp48_q0_D <= State_dsp48_dsp48_d(0)(49 downto 25);
+		u_dsp48_q0_PCIN <= State_dsp48_dsp48_pcin(0)(95 downto 48);
+		u_dsp48_q0_OPMODE <= State_dsp48_dsp48_opmode(0)(13 downto 7)(6 downto 4);
+		u_dsp48_i1_CE <= ib_iq_v;
+		u_dsp48_i1_RST <= FIRModule_L232F13L255T14_1_FIRModule_L237F27T32_Expr;
+		u_dsp48_i1_A <= State_dsp48_dsp48_a(1)(29 downto 0);
+		u_dsp48_i1_B <= State_dsp48_dsp48_b(1)(17 downto 0);
+		u_dsp48_i1_D <= State_dsp48_dsp48_d(1)(24 downto 0);
+		u_dsp48_i1_PCIN <= State_dsp48_dsp48_pcin(1)(47 downto 0);
+		u_dsp48_i1_OPMODE <= State_dsp48_dsp48_opmode(1)(6 downto 0)(6 downto 4);
+		u_dsp48_q1_CE <= ib_iq_v;
+		u_dsp48_q1_RST <= FIRModule_L232F13L255T14_1_FIRModule_L248F27T32_Expr;
+		u_dsp48_q1_A <= State_dsp48_dsp48_a(1)(59 downto 30);
+		u_dsp48_q1_B <= State_dsp48_dsp48_b(1)(35 downto 18);
+		u_dsp48_q1_D <= State_dsp48_dsp48_d(1)(49 downto 25);
+		u_dsp48_q1_PCIN <= State_dsp48_dsp48_pcin(1)(95 downto 48);
+		u_dsp48_q1_OPMODE <= State_dsp48_dsp48_opmode(1)(13 downto 7)(6 downto 4);
+		u_dsp48_i2_CE <= ib_iq_v;
+		u_dsp48_i2_RST <= FIRModule_L232F13L255T14_2_FIRModule_L237F27T32_Expr;
+		u_dsp48_i2_A <= State_dsp48_dsp48_a(2)(29 downto 0);
+		u_dsp48_i2_B <= State_dsp48_dsp48_b(2)(17 downto 0);
+		u_dsp48_i2_D <= State_dsp48_dsp48_d(2)(24 downto 0);
+		u_dsp48_i2_PCIN <= State_dsp48_dsp48_pcin(2)(47 downto 0);
+		u_dsp48_i2_OPMODE <= State_dsp48_dsp48_opmode(2)(6 downto 0)(6 downto 4);
+		u_dsp48_q2_CE <= ib_iq_v;
+		u_dsp48_q2_RST <= FIRModule_L232F13L255T14_2_FIRModule_L248F27T32_Expr;
+		u_dsp48_q2_A <= State_dsp48_dsp48_a(2)(59 downto 30);
+		u_dsp48_q2_B <= State_dsp48_dsp48_b(2)(35 downto 18);
+		u_dsp48_q2_D <= State_dsp48_dsp48_d(2)(49 downto 25);
+		u_dsp48_q2_PCIN <= State_dsp48_dsp48_pcin(2)(95 downto 48);
+		u_dsp48_q2_OPMODE <= State_dsp48_dsp48_opmode(2)(13 downto 7)(6 downto 4);
+		u_dsp48_i3_CE <= ib_iq_v;
+		u_dsp48_i3_RST <= FIRModule_L232F13L255T14_3_FIRModule_L237F27T32_Expr;
+		u_dsp48_i3_A <= State_dsp48_dsp48_a(3)(29 downto 0);
+		u_dsp48_i3_B <= State_dsp48_dsp48_b(3)(17 downto 0);
+		u_dsp48_i3_D <= State_dsp48_dsp48_d(3)(24 downto 0);
+		u_dsp48_i3_PCIN <= State_dsp48_dsp48_pcin(3)(47 downto 0);
+		u_dsp48_i3_OPMODE <= State_dsp48_dsp48_opmode(3)(6 downto 0)(6 downto 4);
+		u_dsp48_q3_CE <= ib_iq_v;
+		u_dsp48_q3_RST <= FIRModule_L232F13L255T14_3_FIRModule_L248F27T32_Expr;
+		u_dsp48_q3_A <= State_dsp48_dsp48_a(3)(59 downto 30);
+		u_dsp48_q3_B <= State_dsp48_dsp48_b(3)(35 downto 18);
+		u_dsp48_q3_D <= State_dsp48_dsp48_d(3)(49 downto 25);
+		u_dsp48_q3_PCIN <= State_dsp48_dsp48_pcin(3)(95 downto 48);
+		u_dsp48_q3_OPMODE <= State_dsp48_dsp48_opmode(3)(13 downto 7)(6 downto 4);
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F52T91_Resize(15 downto 2) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L280F13L298T14_FIRModule_L282F17L293T18_FIRModule_L284F52T91_Resize(1 downto 0) <= State_coeff_coef_wr_cnt_ram;
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L500F44T60_FIRModule_L149F58T73_SignChange <= signed(ib_iq_i);
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L500F44T60_FIRModule_L149F58T87_Resize(29 downto 16) <= (others => FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L500F44T60_FIRModule_L149F58T73_SignChange(15));
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L500F44T60_FIRModule_L149F58T87_Resize(15 downto 0) <= FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L500F44T60_FIRModule_L149F58T73_SignChange;
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L502F44T77_FIRModule_L149F58T73_SignChange <= signed(State_filo_fir_dreg(0)(15 downto 0));
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L502F44T77_FIRModule_L149F58T87_Resize(24 downto 16) <= (others => FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L502F44T77_FIRModule_L149F58T73_SignChange(15));
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L502F44T77_FIRModule_L149F58T87_Resize(15 downto 0) <= FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L502F44T77_FIRModule_L149F58T73_SignChange;
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L503F44T65_FIRModule_L149F58T73_SignChange <= signed(FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L503F44T65_FIRModule_L503F48T60_Index);
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L503F44T65_FIRModule_L149F58T87_Resize(17 downto 16) <= (others => FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L503F44T65_FIRModule_L149F58T73_SignChange(15));
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L503F44T65_FIRModule_L149F58T87_Resize(15 downto 0) <= FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L503F44T65_FIRModule_L149F58T73_SignChange;
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L515F44T60_FIRModule_L149F58T73_SignChange <= signed(ib_iq_q);
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L515F44T60_FIRModule_L149F58T87_Resize(29 downto 16) <= (others => FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L515F44T60_FIRModule_L149F58T73_SignChange(15));
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L515F44T60_FIRModule_L149F58T87_Resize(15 downto 0) <= FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L515F44T60_FIRModule_L149F58T73_SignChange;
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L517F44T77_FIRModule_L149F58T73_SignChange <= signed(State_filo_fir_dreg(0)(31 downto 16));
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L517F44T77_FIRModule_L149F58T87_Resize(24 downto 16) <= (others => FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L517F44T77_FIRModule_L149F58T73_SignChange(15));
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L517F44T77_FIRModule_L149F58T87_Resize(15 downto 0) <= FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L517F44T77_FIRModule_L149F58T73_SignChange;
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L518F44T65_FIRModule_L149F58T73_SignChange <= signed(FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L518F44T65_FIRModule_L518F48T60_Index);
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L518F44T65_FIRModule_L149F58T87_Resize(17 downto 16) <= (others => FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L518F44T65_FIRModule_L149F58T73_SignChange(15));
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L518F44T65_FIRModule_L149F58T87_Resize(15 downto 0) <= FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L518F44T65_FIRModule_L149F58T73_SignChange;
+		FIRModule_L143F41T93_Resize <= FIRModule_L143F57T80_Expr(15 downto 0);
+		oCOEF_NUM <= FIRModule_L143F41T93_Resize;
+		oCOEF_CNT <= State_coeff_coef_ram_cnt;
+		oCOEF_RDY <= State_ob_coef_rdy;
+		oIQ_V <= State_ob_iq_v;
+		oIQ_i <= State_ob_iq_i;
+		oIQ_q <= State_ob_iq_q;
 		u_ram_coef0CEu_ram_coef0_CEHardLink <= u_ram_coef0_CE;
 		u_ram_coef0WRu_ram_coef0_WRHardLink <= u_ram_coef0_WR;
 		u_ram_coef0WR_ADDRu_ram_coef0_WR_ADDRHardLink <= u_ram_coef0_WR_ADDR;
@@ -2271,6 +2473,7 @@ begin
 		u_ram_filo_qRD_ADDRu_ram_filo_q_RD_ADDRHardLink <= u_ram_filo_q_RD_ADDR;
 		u_ram_filo_q_DOUT <= u_ram_filo_qDOUTu_ram_filo_q_DOUTHardLink;
 		u_dsp48_i0CEu_dsp48_i0_CEHardLink <= u_dsp48_i0_CE;
+		u_dsp48_i0RSTu_dsp48_i0_RSTHardLink <= u_dsp48_i0_RST;
 		u_dsp48_i0Au_dsp48_i0_AHardLink <= u_dsp48_i0_A;
 		u_dsp48_i0Bu_dsp48_i0_BHardLink <= u_dsp48_i0_B;
 		u_dsp48_i0Du_dsp48_i0_DHardLink <= u_dsp48_i0_D;
@@ -2279,6 +2482,7 @@ begin
 		u_dsp48_i0_PCOUT <= u_dsp48_i0PCOUTu_dsp48_i0_PCOUTHardLink;
 		u_dsp48_i0_P <= u_dsp48_i0Pu_dsp48_i0_PHardLink;
 		u_dsp48_i1CEu_dsp48_i1_CEHardLink <= u_dsp48_i1_CE;
+		u_dsp48_i1RSTu_dsp48_i1_RSTHardLink <= u_dsp48_i1_RST;
 		u_dsp48_i1Au_dsp48_i1_AHardLink <= u_dsp48_i1_A;
 		u_dsp48_i1Bu_dsp48_i1_BHardLink <= u_dsp48_i1_B;
 		u_dsp48_i1Du_dsp48_i1_DHardLink <= u_dsp48_i1_D;
@@ -2287,6 +2491,7 @@ begin
 		u_dsp48_i1_PCOUT <= u_dsp48_i1PCOUTu_dsp48_i1_PCOUTHardLink;
 		u_dsp48_i1_P <= u_dsp48_i1Pu_dsp48_i1_PHardLink;
 		u_dsp48_i2CEu_dsp48_i2_CEHardLink <= u_dsp48_i2_CE;
+		u_dsp48_i2RSTu_dsp48_i2_RSTHardLink <= u_dsp48_i2_RST;
 		u_dsp48_i2Au_dsp48_i2_AHardLink <= u_dsp48_i2_A;
 		u_dsp48_i2Bu_dsp48_i2_BHardLink <= u_dsp48_i2_B;
 		u_dsp48_i2Du_dsp48_i2_DHardLink <= u_dsp48_i2_D;
@@ -2295,6 +2500,7 @@ begin
 		u_dsp48_i2_PCOUT <= u_dsp48_i2PCOUTu_dsp48_i2_PCOUTHardLink;
 		u_dsp48_i2_P <= u_dsp48_i2Pu_dsp48_i2_PHardLink;
 		u_dsp48_i3CEu_dsp48_i3_CEHardLink <= u_dsp48_i3_CE;
+		u_dsp48_i3RSTu_dsp48_i3_RSTHardLink <= u_dsp48_i3_RST;
 		u_dsp48_i3Au_dsp48_i3_AHardLink <= u_dsp48_i3_A;
 		u_dsp48_i3Bu_dsp48_i3_BHardLink <= u_dsp48_i3_B;
 		u_dsp48_i3Du_dsp48_i3_DHardLink <= u_dsp48_i3_D;
@@ -2303,6 +2509,7 @@ begin
 		u_dsp48_i3_PCOUT <= u_dsp48_i3PCOUTu_dsp48_i3_PCOUTHardLink;
 		u_dsp48_i3_P <= u_dsp48_i3Pu_dsp48_i3_PHardLink;
 		u_dsp48_q0CEu_dsp48_q0_CEHardLink <= u_dsp48_q0_CE;
+		u_dsp48_q0RSTu_dsp48_q0_RSTHardLink <= u_dsp48_q0_RST;
 		u_dsp48_q0Au_dsp48_q0_AHardLink <= u_dsp48_q0_A;
 		u_dsp48_q0Bu_dsp48_q0_BHardLink <= u_dsp48_q0_B;
 		u_dsp48_q0Du_dsp48_q0_DHardLink <= u_dsp48_q0_D;
@@ -2311,6 +2518,7 @@ begin
 		u_dsp48_q0_PCOUT <= u_dsp48_q0PCOUTu_dsp48_q0_PCOUTHardLink;
 		u_dsp48_q0_P <= u_dsp48_q0Pu_dsp48_q0_PHardLink;
 		u_dsp48_q1CEu_dsp48_q1_CEHardLink <= u_dsp48_q1_CE;
+		u_dsp48_q1RSTu_dsp48_q1_RSTHardLink <= u_dsp48_q1_RST;
 		u_dsp48_q1Au_dsp48_q1_AHardLink <= u_dsp48_q1_A;
 		u_dsp48_q1Bu_dsp48_q1_BHardLink <= u_dsp48_q1_B;
 		u_dsp48_q1Du_dsp48_q1_DHardLink <= u_dsp48_q1_D;
@@ -2319,6 +2527,7 @@ begin
 		u_dsp48_q1_PCOUT <= u_dsp48_q1PCOUTu_dsp48_q1_PCOUTHardLink;
 		u_dsp48_q1_P <= u_dsp48_q1Pu_dsp48_q1_PHardLink;
 		u_dsp48_q2CEu_dsp48_q2_CEHardLink <= u_dsp48_q2_CE;
+		u_dsp48_q2RSTu_dsp48_q2_RSTHardLink <= u_dsp48_q2_RST;
 		u_dsp48_q2Au_dsp48_q2_AHardLink <= u_dsp48_q2_A;
 		u_dsp48_q2Bu_dsp48_q2_BHardLink <= u_dsp48_q2_B;
 		u_dsp48_q2Du_dsp48_q2_DHardLink <= u_dsp48_q2_D;
@@ -2327,6 +2536,7 @@ begin
 		u_dsp48_q2_PCOUT <= u_dsp48_q2PCOUTu_dsp48_q2_PCOUTHardLink;
 		u_dsp48_q2_P <= u_dsp48_q2Pu_dsp48_q2_PHardLink;
 		u_dsp48_q3CEu_dsp48_q3_CEHardLink <= u_dsp48_q3_CE;
+		u_dsp48_q3RSTu_dsp48_q3_RSTHardLink <= u_dsp48_q3_RST;
 		u_dsp48_q3Au_dsp48_q3_AHardLink <= u_dsp48_q3_A;
 		u_dsp48_q3Bu_dsp48_q3_BHardLink <= u_dsp48_q3_B;
 		u_dsp48_q3Du_dsp48_q3_DHardLink <= u_dsp48_q3_D;
@@ -2334,12 +2544,26 @@ begin
 		u_dsp48_q3OPMODEu_dsp48_q3_OPMODEHardLink <= u_dsp48_q3_OPMODE;
 		u_dsp48_q3_PCOUT <= u_dsp48_q3PCOUTu_dsp48_q3_PCOUTHardLink;
 		u_dsp48_q3_P <= u_dsp48_q3Pu_dsp48_q3_PHardLink;
-		FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F49T68_Index <= c_coef_num_array(bit_to_integer(FIRModule_L544F9L551T10_FIRModule_L546F13T27_FIRModule_L324F9L370T10_FIRModule_L362F66T67_Expr));
-		FIRModule_L544F9L551T10_FIRModule_L545F13T29_FIRModule_L308F9L318T10_FIRModule_L311F39T69_Index <= c_coef_mask_array(TO_INTEGER(FIRModule_L544F9L551T10_FIRModule_L545F13T29_FIRModule_L308F9L318T10_next_set_do));
-		FIRModule_L544F9L551T10_FIRModule_L545F13T29_FIRModule_L308F9L318T10_FIRModule_L312F39T69_Index <= c_data_mask_array(TO_INTEGER(FIRModule_L544F9L551T10_FIRModule_L545F13T29_FIRModule_L308F9L318T10_next_set_do));
-		FIRModule_L211F13L214T14_1_FIRModule_L213F31T47_Index <= ramd_dout(bit_to_integer(FIRModule_L211F13L214T14_1_FIRModule_L213F41T46_Expr));
-		FIRModule_L211F13L214T14_2_FIRModule_L213F31T47_Index <= ramd_dout(bit_to_integer(FIRModule_L211F13L214T14_2_FIRModule_L213F41T46_Expr));
-		FIRModule_L211F13L214T14_3_FIRModule_L213F31T47_Index <= ramd_dout(TO_INTEGER(FIRModule_L211F13L214T14_3_FIRModule_L213F41T46_Expr));
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F49T141_Lookup1(8 downto 7) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F49T141_Lookup1(6 downto 0) <= FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F131T140_Expr;
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F49T141_Lookup2(8 downto 7) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F49T141_Lookup2(6 downto 0) <= FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F102T111_Expr;
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L501F49T141_LookupMultiplexerAddress <= State_mult_reset_mult_reset_dsp(0);
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F49T141_Lookup1(8 downto 7) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F49T141_Lookup1(6 downto 0) <= FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F131T140_Expr;
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F49T141_Lookup2(8 downto 7) <= (others => '0');
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F49T141_Lookup2(6 downto 0) <= FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F102T111_Expr;
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L516F49T141_LookupMultiplexerAddress <= State_mult_reset_mult_reset_dsp(0);
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L503F44T65_FIRModule_L503F48T60_Index <= ramc_dout(bit_to_integer(FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L503F44T65_FIRModule_L503F58T59_Expr));
+		FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L518F44T65_FIRModule_L518F48T60_Index <= ramc_dout(bit_to_integer(FIRModule_L531F9L539T10_FIRModule_L537F13T23_FIRModule_L498F9L528T10_FIRModule_L518F44T65_FIRModule_L518F58T59_Expr));
+		FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F49T68_Index <= c_coef_num_array(bit_to_integer(FIRModule_L531F9L539T10_FIRModule_L533F13T27_FIRModule_L278F9L324T10_FIRModule_L316F66T67_Expr));
+		FIRModule_L143F61T80_Index <= c_coef_num_array(bit_to_integer(FIRModule_L143F78T79_Expr));
+		FIRModule_L531F9L539T10_FIRModule_L532F13T29_FIRModule_L262F9L272T10_FIRModule_L265F39T69_Index <= c_coef_mask_array(TO_INTEGER(FIRModule_L531F9L539T10_FIRModule_L532F13T29_FIRModule_L262F9L272T10_next_set_do));
+		FIRModule_L531F9L539T10_FIRModule_L532F13T29_FIRModule_L262F9L272T10_FIRModule_L266F39T69_Index <= c_data_mask_array(TO_INTEGER(FIRModule_L531F9L539T10_FIRModule_L532F13T29_FIRModule_L262F9L272T10_next_set_do));
+		FIRModule_L136F15T45_Index <= ramd_dout(TO_INTEGER(FIRModule_L136F25T44_Expr));
+		FIRModule_L178F13L181T14_1_FIRModule_L180F31T47_Index <= ramd_dout(bit_to_integer(FIRModule_L178F13L181T14_1_FIRModule_L180F41T46_Expr));
+		FIRModule_L178F13L181T14_2_FIRModule_L180F31T47_Index <= ramd_dout(bit_to_integer(FIRModule_L178F13L181T14_2_FIRModule_L180F41T46_Expr));
+		FIRModule_L178F13L181T14_3_FIRModule_L180F31T47_Index <= ramd_dout(TO_INTEGER(FIRModule_L178F13L181T14_3_FIRModule_L180F41T46_Expr));
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

@@ -19,6 +19,7 @@ namespace fir.modules
         }
         */
         public bool CE;
+        public bool RST;
         public RTLBitArray A = new RTLBitArray().Resized(30);
         public RTLBitArray B = new RTLBitArray().Resized(18);
         public RTLBitArray D = new RTLBitArray().Resized(25);

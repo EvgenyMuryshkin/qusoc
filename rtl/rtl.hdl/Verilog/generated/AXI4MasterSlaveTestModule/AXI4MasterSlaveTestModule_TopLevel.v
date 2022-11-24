@@ -475,6 +475,7 @@ module AXI4MasterSlaveTestModule_TopLevel
 	);
 	always @ (*)
 	begin
+		NextState_ReadData_Iterator = 0;
 		for (NextState_ReadData_Iterator = 0; (NextState_ReadData_Iterator < 4); NextState_ReadData_Iterator = (NextState_ReadData_Iterator + 1))
 		begin
 			NextState_ReadData[NextState_ReadData_Iterator] = State_ReadData[NextState_ReadData_Iterator];

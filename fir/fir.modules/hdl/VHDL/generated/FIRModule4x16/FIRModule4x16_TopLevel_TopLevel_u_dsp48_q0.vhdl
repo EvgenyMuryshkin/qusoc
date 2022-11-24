@@ -26,6 +26,7 @@ entity FIRModule4x16_TopLevel_TopLevel_u_dsp48_q0 is
 		-- [END USER PORTS]
 		BoardSignals : in BoardSignalsType;
 		CE : in std_logic;
+		RST : in std_logic;
 		A : in unsigned (29 downto 0);
 		B : in unsigned (17 downto 0);
 		D : in unsigned (24 downto 0);
@@ -47,6 +48,7 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel_u_dsp48_q0 is
 	constant true : std_logic := '1';
 	constant false : std_logic := '0';
 	signal Inputs_CE : std_logic := '0';
+	signal Inputs_RST : std_logic := '0';
 	signal Inputs_A : unsigned(29 downto 0) := (others => '0');
 	signal Inputs_B : unsigned(17 downto 0) := (others => '0');
 	signal Inputs_D : unsigned(24 downto 0) := (others => '0');

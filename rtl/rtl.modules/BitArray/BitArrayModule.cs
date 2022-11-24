@@ -23,5 +23,9 @@ namespace RTL.Modules
         public RTLBitArray Picks => new RTLBitArray(Bits[6,5], Bits[0,1]);
         public RTLBitArray FromBits1 => new RTLBitArray(true, true, false, true);
         public RTLBitArray FromBits2 => new RTLBitArray(false, true, true, true);
+        public RTLBitArray ZeroString => new RTLBitArray("00000000");
+        public RTLBitArray ValueString => new RTLBitArray("01000000");
+        //public bool CtorMuxCondition => Inputs.Bit == 0;
+        public RTLBitArray CtorMux => Inputs.Bit == 0 ? new RTLBitArray("00000000") : new RTLBitArray("01000000");
     }
 }

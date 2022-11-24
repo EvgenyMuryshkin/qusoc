@@ -138,6 +138,8 @@ module IOTestModule_TopLevel
 	end
 	always @ (*)
 	begin
+		NextState_IteratorArray_Iterator = 0;
+		NextState_Array_Iterator = 0;
 		for (NextState_IteratorArray_Iterator = 0; (NextState_IteratorArray_Iterator < 2); NextState_IteratorArray_Iterator = (NextState_IteratorArray_Iterator + 1))
 		begin
 			NextState_IteratorArray[NextState_IteratorArray_Iterator] = State_IteratorArray[NextState_IteratorArray_Iterator];

@@ -626,6 +626,7 @@ module AXI4MemoryModuleB4_TopLevel
 	end
 	always @ (*)
 	begin
+		NextState_wdata_Iterator = 0;
 		for (NextState_wdata_Iterator = 0; (NextState_wdata_Iterator < 4); NextState_wdata_Iterator = (NextState_wdata_Iterator + 1))
 		begin
 			NextState_wdata[NextState_wdata_Iterator] = State_wdata[NextState_wdata_Iterator];

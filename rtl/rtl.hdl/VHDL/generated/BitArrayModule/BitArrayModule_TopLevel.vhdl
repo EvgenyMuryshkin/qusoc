@@ -36,7 +36,10 @@ entity BitArrayModule_TopLevel is
 		ReversedLow : out unsigned (3 downto 0);
 		Picks : out unsigned (3 downto 0);
 		FromBits1 : out unsigned (3 downto 0);
-		FromBits2 : out unsigned (3 downto 0)
+		FromBits2 : out unsigned (3 downto 0);
+		ZeroString : out unsigned (7 downto 0);
+		ValueString : out unsigned (7 downto 0);
+		CtorMux : out unsigned (7 downto 0)
 	);
 end entity;
 -- FSM summary
@@ -58,6 +61,11 @@ architecture rtl of BitArrayModule_TopLevel is
 	constant BitArrayModule_L25F64T68_Expr : std_logic := '1';
 	constant BitArrayModule_L25F70T74_Expr : std_logic := '1';
 	constant BitArrayModule_L25F76T80_Expr : std_logic := '1';
+	constant BitArrayModule_L26F58T68_Expr : unsigned(7 downto 0) := "00000000";
+	constant BitArrayModule_L27F59T69_Expr : unsigned(7 downto 0) := "01000000";
+	constant BitArrayModule_L29F53T54_Expr : std_logic := '0';
+	constant BitArrayModule_L29F73T83_Expr : unsigned(7 downto 0) := "00000000";
+	constant BitArrayModule_L29F103T113_Expr : unsigned(7 downto 0) := "01000000";
 	signal Inputs_Value : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_Bit : unsigned(2 downto 0) := (others => '0');
 	signal Bits : unsigned(7 downto 0) := (others => '0');
@@ -74,15 +82,38 @@ architecture rtl of BitArrayModule_TopLevel is
 	signal BitArrayModule_L25F41T81_Source : unsigned(3 downto 0) := (others => '0');
 	signal BitArrayModule_L17F46T61_Expr : unsigned(7 downto 0) := "00000000";
 	signal BitArrayModule_L17F46T61_Expr_1 : unsigned(7 downto 0) := "00000000";
+	signal BitArrayModule_L29F39T54_Expr : std_logic := '0';
+	signal BitArrayModule_L29F39T54_ExprLhs : signed(3 downto 0) := "0000";
+	signal BitArrayModule_L29F39T54_ExprRhs : signed(3 downto 0) := "0000";
+	signal BitArrayModule_L29F39T114_Lookup : unsigned(7 downto 0) := "00000000";
+	signal BitArrayModule_L29F39T114_LookupMultiplexerAddress : std_logic := '0';
+	signal BitArrayModule_L29F39T114_Lookup1 : unsigned(7 downto 0) := "00000000";
+	signal BitArrayModule_L29F39T114_Lookup2 : unsigned(7 downto 0) := "00000000";
 begin
+	BitArrayModule_L29F39T54_Expr <= '1' when (signed(resize(BitArrayModule_L29F39T54_ExprLhs, BitArrayModule_L29F39T54_ExprLhs'length + 1)) = signed(resize(BitArrayModule_L29F39T54_ExprRhs, BitArrayModule_L29F39T54_ExprRhs'length + 1))) else '0';
 	process (BitArrayModule_L17F46T61_Expr_1)
 	begin
 		for i in 7 downto 0 loop
 			BitArrayModule_L17F46T61_Expr(i) <= BitArrayModule_L17F46T61_Expr_1(7 - i);
 		end loop;
 	end process;
-	process (Bit, BitArrayModule_L15F33T49_Index, BitArrayModule_L17F46T61_Expr, BitArrayModule_L18F36T46_Index, BitArrayModule_L19F35T45_Index, BitArrayModule_L20F40T50_Index, BitArrayModule_L21F44T54_Index, BitArrayModule_L22F43T53_Index, BitArrayModule_L23F37T74_Source, BitArrayModule_L23F53T62_Index, BitArrayModule_L23F64T73_Index, BitArrayModule_L24F41T81_Source, BitArrayModule_L25F41T81_Source, Bits, Inputs_Value, Value)
+	process (BitArrayModule_L29F39T114_Lookup1, BitArrayModule_L29F39T114_Lookup2, BitArrayModule_L29F39T114_LookupMultiplexerAddress)
 	begin
+		case BitArrayModule_L29F39T114_LookupMultiplexerAddress is
+			when '0' =>
+				BitArrayModule_L29F39T114_Lookup <= BitArrayModule_L29F39T114_Lookup1;
+			when '1' =>
+				BitArrayModule_L29F39T114_Lookup <= BitArrayModule_L29F39T114_Lookup2;
+			when others =>
+				BitArrayModule_L29F39T114_Lookup <= "00000000";
+		end case;
+	end process;
+	process (Bit, BitArrayModule_L15F33T49_Index, BitArrayModule_L17F46T61_Expr, BitArrayModule_L18F36T46_Index, BitArrayModule_L19F35T45_Index, BitArrayModule_L20F40T50_Index, BitArrayModule_L21F44T54_Index, BitArrayModule_L22F43T53_Index, BitArrayModule_L23F37T74_Source, BitArrayModule_L23F53T62_Index, BitArrayModule_L23F64T73_Index, BitArrayModule_L24F41T81_Source, BitArrayModule_L25F41T81_Source, BitArrayModule_L29F39T114_Lookup, BitArrayModule_L29F39T54_Expr, Bits, Inputs_Bit, Inputs_Value, Value)
+	begin
+		BitArrayModule_L29F39T54_ExprLhs(3) <= '0';
+		BitArrayModule_L29F39T54_ExprLhs(2 downto 0) <= signed(Inputs_Bit);
+		BitArrayModule_L29F39T54_ExprRhs(3 downto 1) <= (others => '0');
+		BitArrayModule_L29F39T54_ExprRhs(0) <= BitArrayModule_L29F53T54_Expr;
 		BitArrayModule_L17F46T61_Expr_1 <= Bits;
 		Inputs_Value <= Value;
 		Inputs_Bit <= Bit;
@@ -130,6 +161,12 @@ begin
 		BitArrayModule_L25F41T81_Source(1) <= BitArrayModule_L25F70T74_Expr;
 		BitArrayModule_L25F41T81_Source(0) <= BitArrayModule_L25F76T80_Expr;
 		FromBits2 <= BitArrayModule_L25F41T81_Source;
+		ZeroString <= BitArrayModule_L26F58T68_Expr;
+		ValueString <= BitArrayModule_L27F59T69_Expr;
+		CtorMux <= BitArrayModule_L29F39T114_Lookup;
+		BitArrayModule_L29F39T114_Lookup1 <= BitArrayModule_L29F103T113_Expr;
+		BitArrayModule_L29F39T114_Lookup2 <= BitArrayModule_L29F73T83_Expr;
+		BitArrayModule_L29F39T114_LookupMultiplexerAddress <= BitArrayModule_L29F39T54_Expr;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]
