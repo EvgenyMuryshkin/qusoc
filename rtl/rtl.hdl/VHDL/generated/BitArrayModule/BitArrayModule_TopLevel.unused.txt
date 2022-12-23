@@ -1,0 +1,4 @@
+No reads:
+	BitArrayModule_L17F46T61_Expr_1
+No writes:
+	BitArrayModule_L17F46T61_Expr

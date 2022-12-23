@@ -38,8 +38,8 @@ architecture rtl of OverridesComposition_TopLevel_L1Override is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	constant CombinationalOverridesBase_L16F50T51_Expr : std_logic := '1';
 	constant CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F44T45_Expr : unsigned(1 downto 0) := "10";
 	constant CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F44T45_Expr : unsigned(1 downto 0) := "10";

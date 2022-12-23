@@ -51,9 +51,9 @@ architecture rtl of ArrayToBitArrayModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
-	signal State_ReadDataDefault : unsigned(7 downto 0) := "00000000";
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
+	constant State_ReadDataDefault : unsigned(7 downto 0) := "00000000";
 	type Inputs_InArrayArray is array (0 to 3) of unsigned (7 downto 0);
 	signal Inputs_InArray : Inputs_InArrayArray := (others => (others => '0'));
 	type State_ReadDataArray is array (0 to 3) of unsigned (7 downto 0);
@@ -61,7 +61,7 @@ architecture rtl of ArrayToBitArrayModule_TopLevel is
 	type NextState_ReadDataArray is array (0 to 3) of unsigned (7 downto 0);
 	signal NextState_ReadData : NextState_ReadDataArray := (others => (others => '0'));
 begin
-	process (Clock, NextState_ReadData, Reset, State_ReadDataDefault)
+	process (Clock, NextState_ReadData, Reset)
 	begin
 		if rising_edge(Clock) then
 			if Reset = '1' then

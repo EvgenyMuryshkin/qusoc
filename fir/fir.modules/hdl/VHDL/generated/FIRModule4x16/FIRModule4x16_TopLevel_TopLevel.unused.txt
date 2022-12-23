@@ -1,0 +1,14 @@
+No reads:
+	c_nofc
+	c_out_lsb
+	c_srls_length
+	firParams_AccumSize
+	firParams_CoeffRamAddrBits
+	firParams_CoeffSize
+	firParams_DataRamAddrBits
+	firParams_DOSize
+	firParams_IQSizeIn
+	firParams_IQSizeOut
+	firParams_MultSize
+	firParams_Order
+	firParams_SumSize

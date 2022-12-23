@@ -37,8 +37,8 @@ architecture rtl of BitArrayGetterModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	constant BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L17F46T59_Expr : unsigned(7 downto 0) := "11111111";
 	constant BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F36T38_Expr : unsigned(5 downto 0) := "110010";
 	constant BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F41T44_Expr : unsigned(6 downto 0) := "1100100";

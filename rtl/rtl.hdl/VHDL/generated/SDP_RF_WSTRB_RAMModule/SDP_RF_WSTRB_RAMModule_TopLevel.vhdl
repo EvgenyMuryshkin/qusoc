@@ -49,12 +49,8 @@ architecture rtl of SDP_RF_WSTRB_RAMModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
-	constant SDP_RF_WSTRB_RAMModule_L31F9L39T10_SDP_RF_WSTRB_RAMModule_L32F13L36T14_0_w : std_logic := '0';
-	constant SDP_RF_WSTRB_RAMModule_L31F9L39T10_SDP_RF_WSTRB_RAMModule_L32F13L36T14_1_w : std_logic := '1';
-	constant SDP_RF_WSTRB_RAMModule_L31F9L39T10_SDP_RF_WSTRB_RAMModule_L32F13L36T14_2_w : unsigned(1 downto 0) := "10";
-	constant SDP_RF_WSTRB_RAMModule_L31F9L39T10_SDP_RF_WSTRB_RAMModule_L32F13L36T14_3_w : unsigned(1 downto 0) := "11";
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	signal Inputs_ReadAddress : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_WriteAddress : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_WE : std_logic := '0';

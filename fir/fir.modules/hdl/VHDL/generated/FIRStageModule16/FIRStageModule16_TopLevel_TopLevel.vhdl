@@ -53,8 +53,8 @@ architecture rtl of FIRStageModule16_TopLevel_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	constant firParams_Order : unsigned(2 downto 0) := "100";
 	constant firParams_DOSize : unsigned(2 downto 0) := "100";
 	constant firParams_IQSizeIn : unsigned(4 downto 0) := "10000";
@@ -88,12 +88,12 @@ architecture rtl of FIRStageModule16_TopLevel_TopLevel is
 	signal dsp_iAccum : unsigned(32 downto 0) := (others => '0');
 	signal dsp_iInternalFeedbackSelector : std_logic := '0';
 	signal dsp_oAccum : unsigned(32 downto 0) := (others => '0');
-	signal dspiIQdsp_iIQHardLink : unsigned(15 downto 0) := "0000000000000000";
-	signal dspiFILOdsp_iFILOHardLink : unsigned(15 downto 0) := "0000000000000000";
-	signal dspiCoeffdsp_iCoeffHardLink : unsigned(15 downto 0) := "0000000000000000";
-	signal dspiAccumdsp_iAccumHardLink : unsigned(32 downto 0) := "000000000000000000000000000000000";
-	signal dspiInternalFeedbackSelectordsp_iInternalFeedbackSelectorHardLink : std_logic := '0';
-	signal dspoAccumdsp_oAccumHardLink : unsigned(32 downto 0) := "000000000000000000000000000000000";
+	signal dsp_iIQ_dsp_iIQ_HardLink : unsigned(15 downto 0) := "0000000000000000";
+	signal dsp_iFILO_dsp_iFILO_HardLink : unsigned(15 downto 0) := "0000000000000000";
+	signal dsp_iCoeff_dsp_iCoeff_HardLink : unsigned(15 downto 0) := "0000000000000000";
+	signal dsp_iAccum_dsp_iAccum_HardLink : unsigned(32 downto 0) := "000000000000000000000000000000000";
+	signal dsp_iInternalFeedbackSelector_dsp_iInternalFeedbackSelector_HardLink : std_logic := '0';
+	signal dsp_oAccum_dsp_oAccum_HardLink : unsigned(32 downto 0) := "000000000000000000000000000000000";
 	signal State_IQ1 : unsigned(15 downto 0) := "0000000000000000";
 	constant State_IQ1Default : unsigned(15 downto 0) := "0000000000000000";
 	signal State_IQ2 : unsigned(15 downto 0) := "0000000000000000";
@@ -134,12 +134,12 @@ begin
 		-- [BEGIN USER MAP FOR dsp]
 		-- [END USER MAP FOR dsp]
 		BoardSignals => BoardSignals,
-		iIQ => dspiIQdsp_iIQHardLink,
-		iFILO => dspiFILOdsp_iFILOHardLink,
-		iCoeff => dspiCoeffdsp_iCoeffHardLink,
-		iAccum => dspiAccumdsp_iAccumHardLink,
-		iInternalFeedbackSelector => dspiInternalFeedbackSelectordsp_iInternalFeedbackSelectorHardLink,
-		oAccum => dspoAccumdsp_oAccumHardLink
+		iIQ => dsp_iIQ_dsp_iIQ_HardLink,
+		iFILO => dsp_iFILO_dsp_iFILO_HardLink,
+		iCoeff => dsp_iCoeff_dsp_iCoeff_HardLink,
+		iAccum => dsp_iAccum_dsp_iAccum_HardLink,
+		iInternalFeedbackSelector => dsp_iInternalFeedbackSelector_dsp_iInternalFeedbackSelector_HardLink,
+		oAccum => dsp_oAccum_dsp_oAccum_HardLink
 	)
 	;
 	process (FIRStageModule_L104F35L106T27_Lookup1, FIRStageModule_L104F35L106T27_Lookup2, FIRStageModule_L104F35L106T27_LookupMultiplexerAddress)
@@ -160,7 +160,7 @@ begin
 		NextState_IQ1 <= Inputs_iIQ;
 		NextState_IQ2 <= State_IQ1;
 	end process;
-	process (dsp_iAccum, dsp_iCoeff, dsp_iFILO, dsp_iInternalFeedbackSelector, dsp_iIQ, dsp_oAccum, dspoAccumdsp_oAccumHardLink, FIRStageModule_L104F35L106T27_Lookup, FIRStageModule_L104F35T50_Expr, iAccum, iCoeffData, iCoeffReadAddr, iCoeffWE, iCoeffWriteAddr, iData, iDataReadAddr, iDataWE, iDataWriteAddr, iDO, iFILO, iInternalFeedbackSelector, iIQ, Inputs_iAccum, Inputs_iData, Inputs_iDO, Inputs_iFILO, Inputs_iInternalFeedbackSelector, Inputs_iIQ, internalIQ, State_coeff, State_data, State_IQ2)
+	process (dsp_iAccum, dsp_iCoeff, dsp_iFILO, dsp_iInternalFeedbackSelector, dsp_iIQ, dsp_oAccum, dsp_oAccum_dsp_oAccum_HardLink, FIRStageModule_L104F35L106T27_Lookup, FIRStageModule_L104F35T50_Expr, iAccum, iCoeffData, iCoeffReadAddr, iCoeffWE, iCoeffWriteAddr, iData, iDataReadAddr, iDataWE, iDataWriteAddr, iDO, iFILO, iInternalFeedbackSelector, iIQ, Inputs_iAccum, Inputs_iData, Inputs_iDO, Inputs_iFILO, Inputs_iInternalFeedbackSelector, Inputs_iIQ, internalIQ, State_coeff, State_data, State_IQ2)
 	begin
 		FIRStageModule_L104F35T50_ExprLhs(4) <= '0';
 		FIRStageModule_L104F35T50_ExprLhs(3 downto 0) <= signed(Inputs_iDO);
@@ -188,12 +188,12 @@ begin
 		oIQ <= State_IQ2;
 		oData <= State_data;
 		oAccum <= dsp_oAccum;
-		dspiIQdsp_iIQHardLink <= dsp_iIQ;
-		dspiFILOdsp_iFILOHardLink <= dsp_iFILO;
-		dspiCoeffdsp_iCoeffHardLink <= dsp_iCoeff;
-		dspiAccumdsp_iAccumHardLink <= dsp_iAccum;
-		dspiInternalFeedbackSelectordsp_iInternalFeedbackSelectorHardLink <= dsp_iInternalFeedbackSelector;
-		dsp_oAccum <= dspoAccumdsp_oAccumHardLink;
+		dsp_iIQ_dsp_iIQ_HardLink <= dsp_iIQ;
+		dsp_iFILO_dsp_iFILO_HardLink <= dsp_iFILO;
+		dsp_iCoeff_dsp_iCoeff_HardLink <= dsp_iCoeff;
+		dsp_iAccum_dsp_iAccum_HardLink <= dsp_iAccum;
+		dsp_iInternalFeedbackSelector_dsp_iInternalFeedbackSelector_HardLink <= dsp_iInternalFeedbackSelector;
+		dsp_oAccum <= dsp_oAccum_dsp_oAccum_HardLink;
 		FIRStageModule_L104F35L106T27_Lookup1 <= Inputs_iData;
 		FIRStageModule_L104F35L106T27_Lookup2 <= Inputs_iIQ;
 		FIRStageModule_L104F35L106T27_LookupMultiplexerAddress <= FIRStageModule_L104F35T50_Expr;

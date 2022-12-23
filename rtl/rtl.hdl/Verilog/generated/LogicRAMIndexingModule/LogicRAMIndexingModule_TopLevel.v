@@ -46,12 +46,12 @@ module LogicRAMIndexingModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
+	wire [7: 0] State_BuffDefault = 8'b00000000;
 	wire Inputs_WE;
 	wire [1: 0] Inputs_WriteAddr;
 	wire [7: 0] Inputs_WriteData;
 	wire [1: 0] Inputs_ReadAddr;
 	wire [7: 0] Inputs_OpData;
-	reg [7: 0] State_BuffDefault = 8'b00000000;
 	wire [7: 0] LogicRAMIndexingModule_L26F34T85_Cast;
 	wire [7: 0] LogicRAMIndexingModule_L27F35T86_Cast;
 	wire [7: 0] LogicRAMIndexingModule_L28F35T86_Cast;

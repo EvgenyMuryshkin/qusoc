@@ -43,10 +43,10 @@ module BoardTimerModule_TopLevel
 	wire timerModule10_OutActive;
 	wire timerModule20_Restart;
 	wire timerModule20_OutActive;
-	wire timerModule10RestarttimerModule10_RestartHardLink;
-	wire timerModule10OutActivetimerModule10_OutActiveHardLink;
-	wire timerModule20RestarttimerModule20_RestartHardLink;
-	wire timerModule20OutActivetimerModule20_OutActiveHardLink;
+	wire timerModule10_Restart_timerModule10_Restart_HardLink;
+	wire timerModule10_OutActive_timerModule10_OutActive_HardLink;
+	wire timerModule20_Restart_timerModule20_Restart_HardLink;
+	wire timerModule20_OutActive_timerModule20_OutActive_HardLink;
 	wire BoardSignals_Clock;
 	wire BoardSignals_Reset;
 	wire BoardSignals_Running;
@@ -64,8 +64,8 @@ module BoardTimerModule_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.Restart (timerModule10RestarttimerModule10_RestartHardLink),
-		.OutActive (timerModule10OutActivetimerModule10_OutActiveHardLink)
+		.Restart (timerModule10_Restart_timerModule10_Restart_HardLink),
+		.OutActive (timerModule10_OutActive_timerModule10_OutActive_HardLink)
 	);
 	BoardTimerModule_TopLevel_timerModule20
 	BoardTimerModule_TopLevel_timerModule20
@@ -77,8 +77,8 @@ module BoardTimerModule_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.Restart (timerModule20RestarttimerModule20_RestartHardLink),
-		.OutActive (timerModule20OutActivetimerModule20_OutActiveHardLink)
+		.Restart (timerModule20_Restart_timerModule20_Restart_HardLink),
+		.OutActive (timerModule20_OutActive_timerModule20_OutActive_HardLink)
 	);
 	assign Inputs_Restart = Restart;
 	assign nestedTimerInputs_Restart = Inputs_Restart;
@@ -86,10 +86,10 @@ module BoardTimerModule_TopLevel
 	assign timerModule20_Restart = nestedTimerInputs_Restart;
 	assign OutActive10 = timerModule10_OutActive;
 	assign OutActive20 = timerModule20_OutActive;
-	assign timerModule10RestarttimerModule10_RestartHardLink = timerModule10_Restart;
-	assign timerModule10_OutActive = timerModule10OutActivetimerModule10_OutActiveHardLink;
-	assign timerModule20RestarttimerModule20_RestartHardLink = timerModule20_Restart;
-	assign timerModule20_OutActive = timerModule20OutActivetimerModule20_OutActiveHardLink;
+	assign timerModule10_Restart_timerModule10_Restart_HardLink = timerModule10_Restart;
+	assign timerModule10_OutActive = timerModule10_OutActive_timerModule10_OutActive_HardLink;
+	assign timerModule20_Restart_timerModule20_Restart_HardLink = timerModule20_Restart;
+	assign timerModule20_OutActive = timerModule20_OutActive_timerModule20_OutActive_HardLink;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

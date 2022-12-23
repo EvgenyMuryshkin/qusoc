@@ -39,8 +39,8 @@ architecture rtl of TuplesModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	signal Inputs_Value1 : std_logic := '0';
 	signal Inputs_Value2 : std_logic := '0';
 	signal Logic_Item1 : std_logic := '0';

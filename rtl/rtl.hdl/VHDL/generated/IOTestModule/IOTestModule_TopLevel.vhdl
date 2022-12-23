@@ -56,15 +56,13 @@ architecture rtl of IOTestModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	constant size : unsigned(1 downto 0) := "10";
-	constant IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_0_idx : std_logic := '0';
-	constant IOTestModule_L72F9L80T10_IOTestModule_L78F13L79T68_1_idx : std_logic := '1';
+	constant State_ArrayDefault : unsigned(7 downto 0) := "00000000";
+	constant State_IteratorArrayDefault : unsigned(7 downto 0) := "00000000";
 	signal Inputs_InFlag : std_logic := '0';
 	signal NextState_Flag : std_logic := '0';
-	signal State_ArrayDefault : unsigned(7 downto 0) := "00000000";
-	signal State_IteratorArrayDefault : unsigned(7 downto 0) := "00000000";
 	signal State_Flag : std_logic := '0';
 	constant State_FlagDefault : std_logic := '0';
 	type Inputs_InArrayArray is array (0 to 1) of unsigned (7 downto 0);
@@ -88,7 +86,7 @@ begin
 			end if;
 		end if;
 	end process;
-	process (Clock, NextState_Array, Reset, State_ArrayDefault)
+	process (Clock, NextState_Array, Reset)
 	begin
 		if rising_edge(Clock) then
 			if Reset = '1' then
@@ -102,7 +100,7 @@ begin
 			end if;
 		end if;
 	end process;
-	process (Clock, NextState_IteratorArray, Reset, State_IteratorArrayDefault)
+	process (Clock, NextState_IteratorArray, Reset)
 	begin
 		if rising_edge(Clock) then
 			if Reset = '1' then

@@ -70,6 +70,11 @@ module StructsCombinationalIteratorModule_TopLevel
 	wire false = 1'b0;
 	wire [3: 0] StructsCombinationalIteratorModule_L75F9L101T10_StructsCombinationalIteratorModule_L90F13L94T14_StructsCombinationalIteratorModule_L92F71T73_Expr = 4'b1010;
 	wire [3: 0] StructsCombinationalIteratorModule_L75F9L101T10_StructsCombinationalIteratorModule_L90F13L94T14_StructsCombinationalIteratorModule_L93F71T73_Expr = 4'b1011;
+	wire [7: 0] State_i1Default = 8'b00000000;
+	wire [7: 0] State_i2Default = 8'b00000000;
+	wire [23: 0] State_oDefault = 24'b000000000000000000000000;
+	wire [7: 0] State_cDefault = 8'b00000000;
+	wire [7: 0] State_fDefault = 8'b00000000;
 	wire [3: 0] Inputs_i1_a;
 	wire [3: 0] Inputs_i1_b;
 	wire [3: 0] Inputs_i2_a;
@@ -81,11 +86,6 @@ module StructsCombinationalIteratorModule_TopLevel
 	integer i;
 	integer i1;
 	integer i2;
-	reg [7: 0] State_i1Default = 8'b00000000;
-	reg [7: 0] State_i2Default = 8'b00000000;
-	reg [23: 0] State_oDefault = 24'b000000000000000000000000;
-	reg [7: 0] State_cDefault = 8'b00000000;
-	reg [7: 0] State_fDefault = 8'b00000000;
 	wire signed [15: 0] StructsCombinationalIteratorModule_L68F30T60_Cast;
 	wire signed [7: 0] StructsCombinationalIteratorModule_L69F31T61_Cast;
 	wire signed [15: 0] StructsCombinationalIteratorModule_L68F38T59_Expr;

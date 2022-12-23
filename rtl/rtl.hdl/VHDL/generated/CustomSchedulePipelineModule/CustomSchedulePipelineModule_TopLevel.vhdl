@@ -50,8 +50,8 @@ architecture rtl of CustomSchedulePipelineModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	constant Pipeline1_PipelineConfigurations_L38F60T61_Expr : unsigned(3 downto 0) := "1000";
 	constant Pipeline2_PipelineConfigurations_L38F60T61_Expr : unsigned(3 downto 0) := "1000";
 	constant CustomSchedulePipelineModule_L37F47T48_Expr : std_logic := '1';

@@ -43,8 +43,8 @@ architecture rtl of AXIConfirmModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	constant AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L32F13L34T14_AXIConfirmModule_L33F33T58_Expr : std_logic := '0';
 	constant AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F26T51_Expr : std_logic := '0';
 	constant AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L41F45T74_Expr : std_logic := '1';

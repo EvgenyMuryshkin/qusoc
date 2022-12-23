@@ -3,6 +3,7 @@ using Quokka.Core.Bootstrap;
 using Quokka.Extension.Interop;
 using Quokka.RTL.Simulator;
 using Quokka.TCL.Vivado;
+using System;
 using System.IO;
 
 namespace fir.extension
@@ -17,6 +18,12 @@ namespace fir.extension
         }
 
         [ExtensionMethod(icon: TopLevelIcon.Translate)]
+        public static void FIRRAMDSPModuleTranslate()
+        {
+            QuokkaRunner.FromConfig(Env.VHDL.RTLConfig, new[] { nameof(FIRRAMDSPModule) });
+        }
+
+        [ExtensionMethod(icon: TopLevelIcon.Translate)]
         public static void CreateVivadoProject()
         {
             var env = Env.VHDL;
@@ -24,9 +31,13 @@ namespace fir.extension
             if (Directory.Exists(env.VivadoProjectLocation))
                 Directory.Delete(env.VivadoProjectLocation, true);
 
+            var modules = new[]
+            {
+                nameof(FIRModule4x16),
+                nameof(FIRRAMDSPModule)
+            };
+
             var config = env.RC;
-            var hdlPath = Path.Combine(config.Config.ProjectLocation, nameof(FIRModule4x16));
-            var manualAssetsPath = Path.Combine(Env.AssetsLocation, nameof(FIRModule4x16));
 
             var tcl = new VivadoTCL();
             tcl
@@ -35,9 +46,21 @@ namespace fir.extension
                 .SetProperty("target_language", "Verilog", tcl.CurrentProject)
                 .SetProperty("board_part", "digilentinc.com:arty-z7-20:part0:1.0", tcl.CurrentProject)
                 .SetProperty("platform.board_id", "arty-z7-20", tcl.CurrentProject)
-                .AddSources(hdlPath, "*.v", "*.vhdl")
-                .AddSources(manualAssetsPath)
-                .update_compile_order(fileset: "sources_1")
+                ;
+
+            foreach (var m in modules)
+            {
+                var hdlPath = Path.Combine(config.Config.ProjectLocation, m);
+                var manualAssetsPath = Path.Combine(Env.AssetsLocation, m);
+
+                if (Directory.Exists(hdlPath))
+                    tcl.AddSources(hdlPath, "*.v", "*.vhdl");
+                
+                if (Directory.Exists(manualAssetsPath))
+                    tcl.AddSources(manualAssetsPath);
+            }
+
+            tcl.update_compile_order(fileset: "sources_1")
                 .SetProperty("top", "top", tcl.CurrentFileSet)
                 .SetProperty("SOURCE_SET", "sources_1", tcl.Sim1)
                 //.launch_runs("impl_1", to_step: "write_bitstream", jobs: 4)
@@ -48,6 +71,7 @@ namespace fir.extension
             va.CleanupVivado();
             va.SaveTCL(tcl);
             va.RunScript();
+            Console.WriteLine($"Project: {env.VivadoProjectLocation}");
         }
     }
 }

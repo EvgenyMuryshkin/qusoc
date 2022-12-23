@@ -45,12 +45,12 @@ module TypedPipelineModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
+	wire [15: 0] Pipeline_stage0_State_sumsDefault = 16'b0000000000000000;
+	wire [15: 0] Pipeline_stage1_State_s0SumsDefault = 16'b0000000000000000;
+	wire [15: 0] Pipeline_stage1_State_sumsDefault = 16'b0000000000000000;
 	wire [5: 0] Pipeline_TypedPipelineModule_L86F29T43_TypedPipelineModule_L53F9L67T10_TypedPipelineModule_L64F21T23_Expr = 6'b101010;
 	wire Inputs_inReady;
-	reg [15: 0] Pipeline_stage0_State_sumsDefault = 16'b0000000000000000;
 	reg Pipeline_stage0_NextState_ready;
-	reg [15: 0] Pipeline_stage1_State_s0SumsDefault = 16'b0000000000000000;
-	reg [15: 0] Pipeline_stage1_State_sumsDefault = 16'b0000000000000000;
 	reg Pipeline_stage1_NextState_ready;
 	reg [15: 0] Pipeline_stage2_NextState_result;
 	reg Pipeline_stage2_NextState_ready;

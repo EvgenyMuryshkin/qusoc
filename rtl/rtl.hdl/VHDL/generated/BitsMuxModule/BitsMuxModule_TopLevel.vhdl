@@ -38,8 +38,8 @@ architecture rtl of BitsMuxModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	constant BitsMuxModule_L14F76T77_Expr : unsigned(1 downto 0) := "10";
 	signal Inputs_Addr : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_Value : unsigned(7 downto 0) := (others => '0');

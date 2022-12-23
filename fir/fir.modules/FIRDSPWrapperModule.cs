@@ -29,25 +29,10 @@ namespace fir.modules
 
     public class FIRDSPWrapperModuleState
     {
-        public FIRDSPWrapperModuleState() { }
-
-        public FIRDSPWrapperModuleState(FIRParams firParams)
-        {
-        }
     }
 
     public class FIRDSPWrapperModule : RTLSynchronousModule<FIRDSPWrapperModuleInputs, FIRDSPWrapperModuleState>, IRTLModuleTranslator
     {
-        private readonly FIRParams firParams;
-
-        public FIRDSPWrapperModule(FIRParams firParams)
-        {
-            this.firParams = firParams;
-
-            //InitInputs(new FIRDSPWrapperModuleInputs(firParams));
-            InitState(new FIRDSPWrapperModuleState(firParams));
-        }
-
         public RTLBitArray PCOUT => new RTLBitArray().Resized(48);
         public RTLBitArray P => new RTLBitArray().Resized(48);
 
@@ -59,13 +44,20 @@ namespace fir.modules
         public ModuleTranslatorResult ToRTL(IRTLModuleTranslatorDeps deps)
         {
             var result = new ModuleTranslatorResult();
+            var file = new vhdFile()
+                .WithLibraryReference("unisim")
+                .WithUse("unisim.vcomponents.all");
+
+            result.Add(deps.ControllerName, file);
+
             var implementation = new vhdArchitectureImplementation()
             {
                 Block = new vhdArchitectureImplementationBlock()
-                .WithEntityInstance(
-                    new vhdEntityInstance("u_dsp48e1", "DSP48E1")
+                .WithComponentInstance(
+                    new vhdComponentInstance("u_dsp48e1", "DSP48E1")
                     {
                         GenericMappings = new vhdEntityInstanceGenericMappings()
+                            .WithEntityInstanceNamedGenericMapping("A_INPUT", "\"DIRECT\"")
                             .WithEntityInstanceNamedGenericMapping("B_INPUT", "\"DIRECT\"")
                             .WithEntityInstanceNamedGenericMapping("USE_DPORT", "TRUE")
                             .WithEntityInstanceNamedGenericMapping("USE_MULT", "\"MULTIPLY\"")
@@ -91,55 +83,56 @@ namespace fir.modules
                             .WithEntityInstanceNamedGenericMapping("PREG", "1")
                             .WithEntityInstanceNamedGenericMapping("USE_SIMD", "\"ONE48\""),
                         PortMappings = new vhdEntityInstancePortMappings()
-                            .WithEntityInstanceNamedPortMapping("BCOUT", "open")
-                            .WithEntityInstanceNamedPortMapping("CARRYCASCOUT", "open")
-                            .WithEntityInstanceNamedPortMapping("MULTSIGNOUT", "open")
-                            .WithEntityInstanceNamedPortMapping("PCOUT", "PCOUT")
-                            .WithEntityInstanceNamedPortMapping("OVERFLOW", "open")
-                            .WithEntityInstanceNamedPortMapping("PATTERNBDETECT", "open")
-                            .WithEntityInstanceNamedPortMapping("PATTERNDETECT", "open")
-                            .WithEntityInstanceNamedPortMapping("UNDERFLOW", "open")
-                            .WithEntityInstanceNamedPortMapping("CARRYOUT", "open")
-                            .WithEntityInstanceNamedPortMapping("P", "P")
-                            .WithEntityInstanceNamedPortMapping("ACIN", "(others =>'0')")
-                            .WithEntityInstanceNamedPortMapping("BCIN", "(others =>'0')")
-                            .WithEntityInstanceNamedPortMapping("CARRYCASCIN", "'0'")
-                            .WithEntityInstanceNamedPortMapping("MULTSIGNIN", "'0'")
-                            .WithEntityInstanceNamedPortMapping("PCIN", "PCIN")
-                            .WithEntityInstanceNamedPortMapping("ALUMODE", "(others =>'0')")
-                            .WithEntityInstanceNamedPortMapping("CARRYINSEL", "(others =>'0')")
-                            .WithEntityInstanceNamedPortMapping("CEINMODE", "CE")
-                            .WithEntityInstanceNamedPortMapping("CLK", "CLK")
-                            .WithEntityInstanceNamedPortMapping("INMODE", "\"10100\"")
-                            .WithEntityInstanceNamedPortMapping(new vhdIdentifier("OPMODE", new vhdRange("3", "0")), "\"0101\"")
-                            .WithEntityInstanceNamedPortMapping(new vhdIdentifier("OPMODE", new vhdRange("6", "4")), "OPMODE")
-                            .WithEntityInstanceNamedPortMapping("RSTINMODE", "RST")
-                            .WithEntityInstanceNamedPortMapping("A", "A")
-                            .WithEntityInstanceNamedPortMapping("B", "B")
-                            .WithEntityInstanceNamedPortMapping("C", "(others =>'0')")
-                            .WithEntityInstanceNamedPortMapping("CARRYIN", "'0'")
-                            .WithEntityInstanceNamedPortMapping("D", "D")
-                            .WithEntityInstanceNamedPortMapping("CEA1", "CE")
-                            .WithEntityInstanceNamedPortMapping("CEA2", "CE")
-                            .WithEntityInstanceNamedPortMapping("CEAD", "CE")
-                            .WithEntityInstanceNamedPortMapping("CEALUMODE", "'0'")
-                            .WithEntityInstanceNamedPortMapping("CEB1", "CE")
-                            .WithEntityInstanceNamedPortMapping("CEB2", "'0'")
-                            .WithEntityInstanceNamedPortMapping("CEC", "'0'")
-                            .WithEntityInstanceNamedPortMapping("CECARRYIN", "'0'")
-                            .WithEntityInstanceNamedPortMapping("CECTRL", "CE")
-                            .WithEntityInstanceNamedPortMapping("CED", "CE")
-                            .WithEntityInstanceNamedPortMapping("CEM", "CE")
-                            .WithEntityInstanceNamedPortMapping("CEP", "CE")
-                            .WithEntityInstanceNamedPortMapping("RSTA", "RST")
-                            .WithEntityInstanceNamedPortMapping("RSTALLCARRYIN", "RST")
-                            .WithEntityInstanceNamedPortMapping("RSTALUMODE", "RST")
-                            .WithEntityInstanceNamedPortMapping("RSTB", "RST")
-                            .WithEntityInstanceNamedPortMapping("RSTC", "RST")
-                            .WithEntityInstanceNamedPortMapping("RSTCTRL", "RST")
-                            .WithEntityInstanceNamedPortMapping("RSTD", "RST")
-                            .WithEntityInstanceNamedPortMapping("RSTM", "RST")
-                            .WithEntityInstanceNamedPortMapping("RSTP", "RST")
+                            .WithEntityInstanceNamedPortMapping("ACOUT", "open", vhdPortDirection.Output)
+                            .WithEntityInstanceNamedPortMapping("BCOUT", "open", vhdPortDirection.Output)
+                            .WithEntityInstanceNamedPortMapping("CARRYCASCOUT", "open", vhdPortDirection.Output)
+                            .WithEntityInstanceNamedPortMapping("MULTSIGNOUT", "open", vhdPortDirection.Output)
+                            .WithEntityInstanceNamedPortMapping("std_logic_vector(PCOUT)", "PCOUT", vhdPortDirection.Output)
+                            .WithEntityInstanceNamedPortMapping("OVERFLOW", "open", vhdPortDirection.Output)
+                            .WithEntityInstanceNamedPortMapping("PATTERNBDETECT", "open", vhdPortDirection.Output)
+                            .WithEntityInstanceNamedPortMapping("PATTERNDETECT", "open", vhdPortDirection.Output)
+                            .WithEntityInstanceNamedPortMapping("UNDERFLOW", "open", vhdPortDirection.Output)
+                            .WithEntityInstanceNamedPortMapping("CARRYOUT", "open", vhdPortDirection.Output)
+                            .WithEntityInstanceNamedPortMapping("std_logic_vector(P)", "P", vhdPortDirection.Output)
+                            .WithEntityInstanceNamedPortMapping("ACIN", "(others =>'0')", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("BCIN", "(others =>'0')", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("CARRYCASCIN", "'0'", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("MULTSIGNIN", "'0'", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("PCIN", "std_logic_vector(PCIN)", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("ALUMODE", "(others =>'0')", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("CARRYINSEL", "(others =>'0')", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("CEINMODE", "CE", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("CLK", "BoardSignals.Clock", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("INMODE", "\"10100\"", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping(new vhdIdentifier("OPMODE", new vhdRange("3", "0")), "\"0101\"", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping(new vhdIdentifier("OPMODE", new vhdRange("6", "4")), "std_logic_vector(OPMODE)", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("RSTINMODE", "RST", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("A", "std_logic_vector(A)", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("B", "std_logic_vector(B)", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("C", "(others =>'0')", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("CARRYIN", "'0'", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("D", "std_logic_vector(D)", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("CEA1", "CE", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("CEA2", "CE", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("CEAD", "CE", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("CEALUMODE", "'0'", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("CEB1", "CE", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("CEB2", "'0'", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("CEC", "'0'", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("CECARRYIN", "'0'", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("CECTRL", "CE", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("CED", "CE", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("CEM", "CE", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("CEP", "CE", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("RSTA", "RST", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("RSTALLCARRYIN", "RST", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("RSTALUMODE", "RST", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("RSTB", "RST", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("RSTC", "RST", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("RSTCTRL", "RST", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("RSTD", "RST", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("RSTM", "RST", vhdPortDirection.Input)
+                            .WithEntityInstanceNamedPortMapping("RSTP", "RST", vhdPortDirection.Input)
                     })
             };
 

@@ -50,15 +50,15 @@ module ModuleSignalsMuxModule_TopLevel
 	wire XorGate_I2;
 	wire XorGate_O;
 	wire [2: 0] ModuleSignalsMuxModule_L29F41T80_Source;
-	wire AndGateI1AndGate_I1HardLink;
-	wire AndGateI2AndGate_I2HardLink;
-	wire AndGateOAndGate_OHardLink;
-	wire OrGateI1OrGate_I1HardLink;
-	wire OrGateI2OrGate_I2HardLink;
-	wire OrGateOOrGate_OHardLink;
-	wire XorGateI1XorGate_I1HardLink;
-	wire XorGateI2XorGate_I2HardLink;
-	wire XorGateOXorGate_OHardLink;
+	wire AndGate_I1_AndGate_I1_HardLink;
+	wire AndGate_I2_AndGate_I2_HardLink;
+	wire AndGate_O_AndGate_O_HardLink;
+	wire OrGate_I1_OrGate_I1_HardLink;
+	wire OrGate_I2_OrGate_I2_HardLink;
+	wire OrGate_O_OrGate_O_HardLink;
+	wire XorGate_I1_XorGate_I1_HardLink;
+	wire XorGate_I2_XorGate_I2_HardLink;
+	wire XorGate_O_XorGate_O_HardLink;
 	reg ModuleSignalsMuxModule_L27F26T46_Mux;
 	wire [1: 0] ModuleSignalsMuxModule_L27F26T46_MuxMultiplexerAddress;
 	wire ModuleSignalsMuxModule_L27F26T46_Mux1;
@@ -69,27 +69,27 @@ module ModuleSignalsMuxModule_TopLevel
 	(
 		// [BEGIN USER MAP FOR AndGate]
 		// [END USER MAP FOR AndGate]
-		.I1 (AndGateI1AndGate_I1HardLink),
-		.I2 (AndGateI2AndGate_I2HardLink),
-		.O (AndGateOAndGate_OHardLink)
+		.I1 (AndGate_I1_AndGate_I1_HardLink),
+		.I2 (AndGate_I2_AndGate_I2_HardLink),
+		.O (AndGate_O_AndGate_O_HardLink)
 	);
 	ModuleSignalsMuxModule_TopLevel_OrGate
 	ModuleSignalsMuxModule_TopLevel_OrGate
 	(
 		// [BEGIN USER MAP FOR OrGate]
 		// [END USER MAP FOR OrGate]
-		.I1 (OrGateI1OrGate_I1HardLink),
-		.I2 (OrGateI2OrGate_I2HardLink),
-		.O (OrGateOOrGate_OHardLink)
+		.I1 (OrGate_I1_OrGate_I1_HardLink),
+		.I2 (OrGate_I2_OrGate_I2_HardLink),
+		.O (OrGate_O_OrGate_O_HardLink)
 	);
 	ModuleSignalsMuxModule_TopLevel_XorGate
 	ModuleSignalsMuxModule_TopLevel_XorGate
 	(
 		// [BEGIN USER MAP FOR XorGate]
 		// [END USER MAP FOR XorGate]
-		.I1 (XorGateI1XorGate_I1HardLink),
-		.I2 (XorGateI2XorGate_I2HardLink),
-		.O (XorGateOXorGate_OHardLink)
+		.I1 (XorGate_I1_XorGate_I1_HardLink),
+		.I2 (XorGate_I2_XorGate_I2_HardLink),
+		.O (XorGate_O_XorGate_O_HardLink)
 	);
 	always @ (*)
 	begin
@@ -124,15 +124,15 @@ module ModuleSignalsMuxModule_TopLevel
 	assign O = ModuleSignalsMuxModule_L27F26T46_Mux;
 	assign ModuleSignalsMuxModule_L29F41T80_Source = { AndGate_O, OrGate_O, XorGate_O };
 	assign CombinedO = ModuleSignalsMuxModule_L29F41T80_Source;
-	assign AndGateI1AndGate_I1HardLink = AndGate_I1;
-	assign AndGateI2AndGate_I2HardLink = AndGate_I2;
-	assign AndGate_O = AndGateOAndGate_OHardLink;
-	assign OrGateI1OrGate_I1HardLink = OrGate_I1;
-	assign OrGateI2OrGate_I2HardLink = OrGate_I2;
-	assign OrGate_O = OrGateOOrGate_OHardLink;
-	assign XorGateI1XorGate_I1HardLink = XorGate_I1;
-	assign XorGateI2XorGate_I2HardLink = XorGate_I2;
-	assign XorGate_O = XorGateOXorGate_OHardLink;
+	assign AndGate_I1_AndGate_I1_HardLink = AndGate_I1;
+	assign AndGate_I2_AndGate_I2_HardLink = AndGate_I2;
+	assign AndGate_O = AndGate_O_AndGate_O_HardLink;
+	assign OrGate_I1_OrGate_I1_HardLink = OrGate_I1;
+	assign OrGate_I2_OrGate_I2_HardLink = OrGate_I2;
+	assign OrGate_O = OrGate_O_OrGate_O_HardLink;
+	assign XorGate_I1_XorGate_I1_HardLink = XorGate_I1;
+	assign XorGate_I2_XorGate_I2_HardLink = XorGate_I2;
+	assign XorGate_O = XorGate_O_XorGate_O_HardLink;
 	assign ModuleSignalsMuxModule_L27F26T46_Mux1 = AndGate_O;
 	assign ModuleSignalsMuxModule_L27F26T46_Mux2 = OrGate_O;
 	assign ModuleSignalsMuxModule_L27F26T46_Mux3 = XorGate_O;

@@ -1,0 +1,5 @@
+No reads:
+	YandexTestModule_L127F35T50_Expr_1
+	YandexTestModule_L127F49T50_Expr
+No writes:
+	YandexTestModule_L127F35T50_Expr

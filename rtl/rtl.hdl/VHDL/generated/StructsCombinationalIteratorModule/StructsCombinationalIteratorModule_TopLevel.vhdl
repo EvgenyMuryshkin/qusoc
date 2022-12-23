@@ -71,10 +71,15 @@ architecture rtl of StructsCombinationalIteratorModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	constant StructsCombinationalIteratorModule_L75F9L101T10_StructsCombinationalIteratorModule_L90F13L94T14_StructsCombinationalIteratorModule_L92F71T73_Expr : unsigned(3 downto 0) := "1010";
 	constant StructsCombinationalIteratorModule_L75F9L101T10_StructsCombinationalIteratorModule_L90F13L94T14_StructsCombinationalIteratorModule_L93F71T73_Expr : unsigned(3 downto 0) := "1011";
+	constant State_i1Default : unsigned(7 downto 0) := "00000000";
+	constant State_i2Default : unsigned(7 downto 0) := "00000000";
+	constant State_oDefault : unsigned(23 downto 0) := "000000000000000000000000";
+	constant State_cDefault : unsigned(7 downto 0) := "00000000";
+	constant State_fDefault : unsigned(7 downto 0) := "00000000";
 	signal Inputs_i1_a : unsigned(3 downto 0) := (others => '0');
 	signal Inputs_i1_b : unsigned(3 downto 0) := (others => '0');
 	signal Inputs_i2_a : unsigned(3 downto 0) := (others => '0');
@@ -83,11 +88,6 @@ architecture rtl of StructsCombinationalIteratorModule_TopLevel is
 	signal Inputs_addr : unsigned(1 downto 0) := (others => '0');
 	signal Inputs_s1 : signed(7 downto 0) := (others => '0');
 	signal Inputs_s2 : signed(7 downto 0) := (others => '0');
-	signal State_i1Default : unsigned(7 downto 0) := "00000000";
-	signal State_i2Default : unsigned(7 downto 0) := "00000000";
-	signal State_oDefault : unsigned(23 downto 0) := "000000000000000000000000";
-	signal State_cDefault : unsigned(7 downto 0) := "00000000";
-	signal State_fDefault : unsigned(7 downto 0) := "00000000";
 	signal StructsCombinationalIteratorModule_L68F30T60_Cast : signed(15 downto 0) := (others => '0');
 	signal StructsCombinationalIteratorModule_L69F31T61_Cast : signed(7 downto 0) := (others => '0');
 	signal StructsCombinationalIteratorModule_L68F38T59_Expr : signed(15 downto 0) := "0000000000000000";
@@ -130,7 +130,7 @@ architecture rtl of StructsCombinationalIteratorModule_TopLevel is
 		return source /= '0';
 	end function;
 begin
-	process (Clock, NextState_i1, Reset, State_i1Default)
+	process (Clock, NextState_i1, Reset)
 	begin
 		if rising_edge(Clock) then
 			if Reset = '1' then
@@ -144,7 +144,7 @@ begin
 			end if;
 		end if;
 	end process;
-	process (Clock, NextState_i2, Reset, State_i2Default)
+	process (Clock, NextState_i2, Reset)
 	begin
 		if rising_edge(Clock) then
 			if Reset = '1' then
@@ -158,7 +158,7 @@ begin
 			end if;
 		end if;
 	end process;
-	process (Clock, NextState_o, Reset, State_oDefault)
+	process (Clock, NextState_o, Reset)
 	begin
 		if rising_edge(Clock) then
 			if Reset = '1' then
@@ -172,7 +172,7 @@ begin
 			end if;
 		end if;
 	end process;
-	process (Clock, NextState_c, Reset, State_cDefault)
+	process (Clock, NextState_c, Reset)
 	begin
 		if rising_edge(Clock) then
 			if Reset = '1' then
@@ -186,7 +186,7 @@ begin
 			end if;
 		end if;
 	end process;
-	process (Clock, NextState_f, Reset, State_fDefault)
+	process (Clock, NextState_f, Reset)
 	begin
 		if rising_edge(Clock) then
 			if Reset = '1' then

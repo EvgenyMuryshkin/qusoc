@@ -51,16 +51,16 @@ architecture rtl of StageStatePipelineModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
+	constant Pipeline_stage0_State_sumsDefault : unsigned(15 downto 0) := "0000000000000000";
+	constant Pipeline_stage1_State_sumsDefault : unsigned(15 downto 0) := "0000000000000000";
 	constant Pipeline_StageStatePipelineModule_L92F60T61_Expr : std_logic := '1';
 	constant Pipeline_StageStatePipelineModule_L97F64T65_Expr : std_logic := '1';
 	constant Pipeline_StageStatePipelineModule_L108F59T60_Expr : std_logic := '1';
 	signal Inputs_inReady : std_logic := '0';
-	signal Pipeline_stage0_State_sumsDefault : unsigned(15 downto 0) := "0000000000000000";
 	signal Pipeline_stage0_NextState_S0Counter : unsigned(15 downto 0) := (others => '0');
 	signal Pipeline_stage0_NextState_IsReady : std_logic := '0';
-	signal Pipeline_stage1_State_sumsDefault : unsigned(15 downto 0) := "0000000000000000";
 	signal Pipeline_stage1_NextState_S0Counter : unsigned(15 downto 0) := (others => '0');
 	signal Pipeline_stage1_NextState_S1Counter : unsigned(15 downto 0) := (others => '0');
 	signal Pipeline_stage1_NextState_IsReady : std_logic := '0';
@@ -182,7 +182,7 @@ begin
 			end if;
 		end if;
 	end process;
-	process (Clock, Pipeline_stage0_NextState_sums, Pipeline_stage0_State_sumsDefault, Reset)
+	process (Clock, Pipeline_stage0_NextState_sums, Reset)
 	begin
 		if rising_edge(Clock) then
 			if Reset = '1' then
@@ -196,7 +196,7 @@ begin
 			end if;
 		end if;
 	end process;
-	process (Clock, Pipeline_stage1_NextState_sums, Pipeline_stage1_State_sumsDefault, Reset)
+	process (Clock, Pipeline_stage1_NextState_sums, Reset)
 	begin
 		if rising_edge(Clock) then
 			if Reset = '1' then

@@ -43,8 +43,8 @@ architecture rtl of CompositionModule_TopLevel_Transmitter is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	constant TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L16F22T41_Expr : std_logic := '0';
 	constant TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L18F21L22T22_TransmitterModule_L19F45T46_Expr : std_logic := '0';
 	constant TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L18F21L22T22_TransmitterModule_L21F41T68_Expr : std_logic := '1';

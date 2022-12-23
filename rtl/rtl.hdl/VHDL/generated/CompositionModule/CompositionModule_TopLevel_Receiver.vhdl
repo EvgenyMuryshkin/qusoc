@@ -41,8 +41,8 @@ architecture rtl of CompositionModule_TopLevel_Receiver is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	constant ReceiverModule_L10F49T53_Expr : unsigned(7 downto 0) := "10000000";
 	constant ReceiverModule_L10F56T57_Expr : std_logic := '0';
 	constant ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L16F22T38_Expr : std_logic := '0';

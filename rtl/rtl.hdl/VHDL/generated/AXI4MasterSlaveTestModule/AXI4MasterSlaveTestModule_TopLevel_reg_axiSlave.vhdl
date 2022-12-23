@@ -111,8 +111,8 @@ architecture rtl of AXI4MasterSlaveTestModule_TopLevel_reg_axiSlave is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	constant size : unsigned(1 downto 0) := "10";
 	constant AXI4NonBufferedSlaveModule_L81F50T70_Expr : std_logic := '1';
 	constant AXI4NonBufferedSlaveModule_L82F49T68_Expr : unsigned(1 downto 0) := "10";

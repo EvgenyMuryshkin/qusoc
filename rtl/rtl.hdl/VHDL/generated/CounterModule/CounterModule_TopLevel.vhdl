@@ -39,8 +39,8 @@ architecture rtl of CounterModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	constant CounterModule_L19F65T66_Expr : std_logic := '1';
 	signal Inputs_Enabled : std_logic := '0';
 	signal NextState_Value : unsigned(7 downto 0) := (others => '0');

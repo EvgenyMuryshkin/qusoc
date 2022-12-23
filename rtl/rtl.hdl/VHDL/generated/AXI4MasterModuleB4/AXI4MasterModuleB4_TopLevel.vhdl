@@ -103,8 +103,8 @@ architecture rtl of AXI4MasterModuleB4_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	constant size : unsigned(1 downto 0) := "10";
 	constant AXI4MasterModule_L107F9L164T10_AXI4MasterModule_L108F13L132T14_AXI4MasterModule_L110F22T44_Expr : std_logic := '0';
 	constant AXI4MasterModule_L107F9L164T10_AXI4MasterModule_L108F13L132T14_AXI4MasterModule_L111F21T32_AXI4MasterModule_L94F9L97T10_AXI4MasterModule_L95F33T54_Expr : std_logic := '1';

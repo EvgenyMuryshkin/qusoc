@@ -43,8 +43,8 @@ architecture rtl of LoopModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	constant LoopModule_L85F13L96T14_LoopModule_L86F32T37_Expr : std_logic := '0';
 	constant LoopModule_L85F13L96T14_LoopModule_L87F31T32_Expr : std_logic := '0';
 	constant LoopModule_L85F13L96T14_LoopModule_L88F17L93T18_Inputs_InData_Size : unsigned(3 downto 0) := "1000";

@@ -41,20 +41,13 @@ architecture rtl of StructsMemoryModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
-	constant StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L34F28T29_Expr : std_logic := '0';
-	constant StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_0_idx : std_logic := '0';
-	constant StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_0_StructsMemoryModule_L36F13L38T14_StructsMemoryModule_L37F32T39_Expr : std_logic := '1';
-	constant StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_1_idx : std_logic := '1';
-	constant StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_1_StructsMemoryModule_L36F13L38T14_StructsMemoryModule_L37F32T39_Expr : unsigned(1 downto 0) := "10";
-	constant StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_2_idx : unsigned(1 downto 0) := "10";
-	constant StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_2_StructsMemoryModule_L36F13L38T14_StructsMemoryModule_L37F32T39_Expr : unsigned(1 downto 0) := "11";
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
+	constant State_BuffDefault : unsigned(15 downto 0) := "0000000000000000";
 	signal Inputs_In_Op1 : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_In_Op2 : unsigned(7 downto 0) := (others => '0');
 	signal NextState_Out_Op1 : unsigned(7 downto 0) := (others => '0');
 	signal NextState_Out_Op2 : unsigned(7 downto 0) := (others => '0');
-	signal State_BuffDefault : unsigned(15 downto 0) := "0000000000000000";
 	signal State_Out_Op1 : unsigned(7 downto 0) := "00000000";
 	constant State_Out_Op1Default : unsigned(7 downto 0) := "00001010";
 	signal State_Out_Op2 : unsigned(7 downto 0) := "00000000";

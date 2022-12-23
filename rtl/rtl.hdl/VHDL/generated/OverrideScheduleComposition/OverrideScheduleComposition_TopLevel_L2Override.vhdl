@@ -38,8 +38,8 @@ architecture rtl of OverrideScheduleComposition_TopLevel_L2Override is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	constant CombinationalOverridesBase_L16F50T51_Expr : std_logic := '1';
 	constant CombinationalOverridesBase_L14F61T77_CombinationalOverridesBase_L24F9L26T10_CombinationalOverridesBase_L25F20T50_CombinationalL2Override_L19F9L25T10_CombinationalL2Override_L20F41T42_Expr : unsigned(1 downto 0) := "11";
 	constant CombinationalOverridesBase_L14F61T77_CombinationalOverridesBase_L24F9L26T10_CombinationalOverridesBase_L25F20T50_CombinationalL2Override_L19F9L25T10_CombinationalL2Override_L21F25T29_Expr : unsigned(7 downto 0) := "11110000";

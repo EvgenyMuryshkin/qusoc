@@ -37,8 +37,8 @@ architecture rtl of NotGateModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	signal Inputs_Input : std_logic := '0';
 	signal NotGateModule_L17F31T44_Expr : std_logic := '0';
 	signal NotGateModule_L17F31T44_Expr_1 : std_logic := '0';

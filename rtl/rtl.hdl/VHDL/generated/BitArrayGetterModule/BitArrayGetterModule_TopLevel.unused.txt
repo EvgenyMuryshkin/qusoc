@@ -1,0 +1,2 @@
+No writes:
+	BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L20F30T38_Cast

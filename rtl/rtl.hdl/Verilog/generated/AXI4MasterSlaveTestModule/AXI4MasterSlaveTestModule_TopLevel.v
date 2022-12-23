@@ -47,6 +47,7 @@ module AXI4MasterSlaveTestModule_TopLevel
 	wire false = 1'b0;
 	wire AXI4MasterSlaveTestModule_L56F26T27_Expr = 1'b0;
 	wire AXI4MasterSlaveTestModule_L57F26T27_Expr = 1'b0;
+	wire [7: 0] State_ReadDataDefault = 8'b00000000;
 	wire [31: 0] Inputs_InData;
 	wire Inputs_MWE;
 	wire [3: 0] Inputs_WSTRB;
@@ -148,135 +149,134 @@ module AXI4MasterSlaveTestModule_TopLevel
 	wire [7: 0] master_M2S_W_WUSER;
 	wire master_M2S_W_WVALID;
 	wire master_M2S_B_BREADY;
-	reg [7: 0] State_ReadDataDefault = 8'b00000000;
-	wire [7: 0] regM2S_AR_ARIDreg_M2S_AR_ARIDHardLink;
-	wire [31: 0] regM2S_AR_ARADDRreg_M2S_AR_ARADDRHardLink;
-	wire [7: 0] regM2S_AR_ARLENreg_M2S_AR_ARLENHardLink;
-	wire [2: 0] regM2S_AR_ARSIZEreg_M2S_AR_ARSIZEHardLink;
-	wire [1: 0] regM2S_AR_ARBURSTreg_M2S_AR_ARBURSTHardLink;
-	wire [1: 0] regM2S_AR_ARLOCKreg_M2S_AR_ARLOCKHardLink;
-	wire [3: 0] regM2S_AR_ARCACHEreg_M2S_AR_ARCACHEHardLink;
-	wire [2: 0] regM2S_AR_ARPROTreg_M2S_AR_ARPROTHardLink;
-	wire [3: 0] regM2S_AR_ARQOSreg_M2S_AR_ARQOSHardLink;
-	wire [7: 0] regM2S_AR_ARREGIONreg_M2S_AR_ARREGIONHardLink;
-	wire [7: 0] regM2S_AR_ARUSERreg_M2S_AR_ARUSERHardLink;
-	wire regM2S_AR_ARVALIDreg_M2S_AR_ARVALIDHardLink;
-	wire regM2S_R_RREADYreg_M2S_R_RREADYHardLink;
-	wire [7: 0] regM2S_AW_AWIDreg_M2S_AW_AWIDHardLink;
-	wire [31: 0] regM2S_AW_AWADDRreg_M2S_AW_AWADDRHardLink;
-	wire [7: 0] regM2S_AW_AWLENreg_M2S_AW_AWLENHardLink;
-	wire [2: 0] regM2S_AW_AWSIZEreg_M2S_AW_AWSIZEHardLink;
-	wire [1: 0] regM2S_AW_AWBURSTreg_M2S_AW_AWBURSTHardLink;
-	wire [1: 0] regM2S_AW_AWLOCKreg_M2S_AW_AWLOCKHardLink;
-	wire [3: 0] regM2S_AW_AWCACHEreg_M2S_AW_AWCACHEHardLink;
-	wire [2: 0] regM2S_AW_AWPROTreg_M2S_AW_AWPROTHardLink;
-	wire [3: 0] regM2S_AW_AWQOSreg_M2S_AW_AWQOSHardLink;
-	wire [7: 0] regM2S_AW_AWREGIONreg_M2S_AW_AWREGIONHardLink;
-	wire [7: 0] regM2S_AW_AWUSERreg_M2S_AW_AWUSERHardLink;
-	wire regM2S_AW_AWVALIDreg_M2S_AW_AWVALIDHardLink;
-	wire [7: 0] regM2S_W_WIDreg_M2S_W_WIDHardLink;
-	wire [7: 0] regM2S_W_WDATA0reg_M2S_W_WDATAHardLink;
-	wire [7: 0] regM2S_W_WDATA1reg_M2S_W_WDATAHardLink;
-	wire [7: 0] regM2S_W_WDATA2reg_M2S_W_WDATAHardLink;
-	wire [7: 0] regM2S_W_WDATA3reg_M2S_W_WDATAHardLink;
-	wire [3: 0] regM2S_W_WSTRBreg_M2S_W_WSTRBHardLink;
-	wire regM2S_W_WLASTreg_M2S_W_WLASTHardLink;
-	wire [7: 0] regM2S_W_WUSERreg_M2S_W_WUSERHardLink;
-	wire regM2S_W_WVALIDreg_M2S_W_WVALIDHardLink;
-	wire regM2S_B_BREADYreg_M2S_B_BREADYHardLink;
-	wire reginWEreg_inWEHardLink;
-	wire [7: 0] reginWDATA0reg_inWDATAHardLink;
-	wire [7: 0] reginWDATA1reg_inWDATAHardLink;
-	wire [7: 0] reginWDATA2reg_inWDATAHardLink;
-	wire [7: 0] reginWDATA3reg_inWDATAHardLink;
-	wire [7: 0] regoutData0reg_outDataHardLink;
-	wire [7: 0] regoutData1reg_outDataHardLink;
-	wire [7: 0] regoutData2reg_outDataHardLink;
-	wire [7: 0] regoutData3reg_outDataHardLink;
-	wire regoutACKreg_outACKHardLink;
-	wire regS2M_AR_ARREADYreg_S2M_AR_ARREADYHardLink;
-	wire regS2M_AW_AWREADYreg_S2M_AW_AWREADYHardLink;
-	wire [7: 0] regS2M_B_BIDreg_S2M_B_BIDHardLink;
-	wire [1: 0] regS2M_B_BRESPreg_S2M_B_BRESPHardLink;
-	wire [7: 0] regS2M_B_BUSERreg_S2M_B_BUSERHardLink;
-	wire regS2M_B_BVALIDreg_S2M_B_BVALIDHardLink;
-	wire [7: 0] regS2M_R_RIDreg_S2M_R_RIDHardLink;
-	wire [7: 0] regS2M_R_RDATA0reg_S2M_R_RDATAHardLink;
-	wire [7: 0] regS2M_R_RDATA1reg_S2M_R_RDATAHardLink;
-	wire [7: 0] regS2M_R_RDATA2reg_S2M_R_RDATAHardLink;
-	wire [7: 0] regS2M_R_RDATA3reg_S2M_R_RDATAHardLink;
-	wire [1: 0] regS2M_R_RRESPreg_S2M_R_RRESPHardLink;
-	wire regS2M_R_RLASTreg_S2M_R_RLASTHardLink;
-	wire [7: 0] regS2M_R_RUSERreg_S2M_R_RUSERHardLink;
-	wire regS2M_R_RVALIDreg_S2M_R_RVALIDHardLink;
-	wire regS2M_W_WREADYreg_S2M_W_WREADYHardLink;
-	wire regoutWrittenreg_outWrittenHardLink;
-	wire masterS2M_AR_ARREADYmaster_S2M_AR_ARREADYHardLink;
-	wire masterS2M_AW_AWREADYmaster_S2M_AW_AWREADYHardLink;
-	wire [7: 0] masterS2M_B_BIDmaster_S2M_B_BIDHardLink;
-	wire [1: 0] masterS2M_B_BRESPmaster_S2M_B_BRESPHardLink;
-	wire [7: 0] masterS2M_B_BUSERmaster_S2M_B_BUSERHardLink;
-	wire masterS2M_B_BVALIDmaster_S2M_B_BVALIDHardLink;
-	wire [7: 0] masterS2M_R_RIDmaster_S2M_R_RIDHardLink;
-	wire [7: 0] masterS2M_R_RDATA0master_S2M_R_RDATAHardLink;
-	wire [7: 0] masterS2M_R_RDATA1master_S2M_R_RDATAHardLink;
-	wire [7: 0] masterS2M_R_RDATA2master_S2M_R_RDATAHardLink;
-	wire [7: 0] masterS2M_R_RDATA3master_S2M_R_RDATAHardLink;
-	wire [1: 0] masterS2M_R_RRESPmaster_S2M_R_RRESPHardLink;
-	wire masterS2M_R_RLASTmaster_S2M_R_RLASTHardLink;
-	wire [7: 0] masterS2M_R_RUSERmaster_S2M_R_RUSERHardLink;
-	wire masterS2M_R_RVALIDmaster_S2M_R_RVALIDHardLink;
-	wire masterS2M_W_WREADYmaster_S2M_W_WREADYHardLink;
-	wire [31: 0] masterARADDRmaster_ARADDRHardLink;
-	wire masterREmaster_REHardLink;
-	wire [31: 0] masterAWADDRmaster_AWADDRHardLink;
-	wire masterWEmaster_WEHardLink;
-	wire [3: 0] masterWSTRBmaster_WSTRBHardLink;
-	wire [7: 0] masterWDATA0master_WDATAHardLink;
-	wire [7: 0] masterWDATA1master_WDATAHardLink;
-	wire [7: 0] masterWDATA2master_WDATAHardLink;
-	wire [7: 0] masterWDATA3master_WDATAHardLink;
-	wire masterRACKmaster_RACKHardLink;
-	wire [7: 0] masterRDATA0master_RDATAHardLink;
-	wire [7: 0] masterRDATA1master_RDATAHardLink;
-	wire [7: 0] masterRDATA2master_RDATAHardLink;
-	wire [7: 0] masterRDATA3master_RDATAHardLink;
-	wire masterWACKmaster_WACKHardLink;
-	wire [7: 0] masterM2S_AR_ARIDmaster_M2S_AR_ARIDHardLink;
-	wire [31: 0] masterM2S_AR_ARADDRmaster_M2S_AR_ARADDRHardLink;
-	wire [7: 0] masterM2S_AR_ARLENmaster_M2S_AR_ARLENHardLink;
-	wire [2: 0] masterM2S_AR_ARSIZEmaster_M2S_AR_ARSIZEHardLink;
-	wire [1: 0] masterM2S_AR_ARBURSTmaster_M2S_AR_ARBURSTHardLink;
-	wire [1: 0] masterM2S_AR_ARLOCKmaster_M2S_AR_ARLOCKHardLink;
-	wire [3: 0] masterM2S_AR_ARCACHEmaster_M2S_AR_ARCACHEHardLink;
-	wire [2: 0] masterM2S_AR_ARPROTmaster_M2S_AR_ARPROTHardLink;
-	wire [3: 0] masterM2S_AR_ARQOSmaster_M2S_AR_ARQOSHardLink;
-	wire [7: 0] masterM2S_AR_ARREGIONmaster_M2S_AR_ARREGIONHardLink;
-	wire [7: 0] masterM2S_AR_ARUSERmaster_M2S_AR_ARUSERHardLink;
-	wire masterM2S_AR_ARVALIDmaster_M2S_AR_ARVALIDHardLink;
-	wire masterM2S_R_RREADYmaster_M2S_R_RREADYHardLink;
-	wire [7: 0] masterM2S_AW_AWIDmaster_M2S_AW_AWIDHardLink;
-	wire [31: 0] masterM2S_AW_AWADDRmaster_M2S_AW_AWADDRHardLink;
-	wire [7: 0] masterM2S_AW_AWLENmaster_M2S_AW_AWLENHardLink;
-	wire [2: 0] masterM2S_AW_AWSIZEmaster_M2S_AW_AWSIZEHardLink;
-	wire [1: 0] masterM2S_AW_AWBURSTmaster_M2S_AW_AWBURSTHardLink;
-	wire [1: 0] masterM2S_AW_AWLOCKmaster_M2S_AW_AWLOCKHardLink;
-	wire [3: 0] masterM2S_AW_AWCACHEmaster_M2S_AW_AWCACHEHardLink;
-	wire [2: 0] masterM2S_AW_AWPROTmaster_M2S_AW_AWPROTHardLink;
-	wire [3: 0] masterM2S_AW_AWQOSmaster_M2S_AW_AWQOSHardLink;
-	wire [7: 0] masterM2S_AW_AWREGIONmaster_M2S_AW_AWREGIONHardLink;
-	wire [7: 0] masterM2S_AW_AWUSERmaster_M2S_AW_AWUSERHardLink;
-	wire masterM2S_AW_AWVALIDmaster_M2S_AW_AWVALIDHardLink;
-	wire [7: 0] masterM2S_W_WIDmaster_M2S_W_WIDHardLink;
-	wire [7: 0] masterM2S_W_WDATA0master_M2S_W_WDATAHardLink;
-	wire [7: 0] masterM2S_W_WDATA1master_M2S_W_WDATAHardLink;
-	wire [7: 0] masterM2S_W_WDATA2master_M2S_W_WDATAHardLink;
-	wire [7: 0] masterM2S_W_WDATA3master_M2S_W_WDATAHardLink;
-	wire [3: 0] masterM2S_W_WSTRBmaster_M2S_W_WSTRBHardLink;
-	wire masterM2S_W_WLASTmaster_M2S_W_WLASTHardLink;
-	wire [7: 0] masterM2S_W_WUSERmaster_M2S_W_WUSERHardLink;
-	wire masterM2S_W_WVALIDmaster_M2S_W_WVALIDHardLink;
-	wire masterM2S_B_BREADYmaster_M2S_B_BREADYHardLink;
+	wire [7: 0] reg_M2S_AR_ARID_reg_M2S_AR_ARID_HardLink;
+	wire [31: 0] reg_M2S_AR_ARADDR_reg_M2S_AR_ARADDR_HardLink;
+	wire [7: 0] reg_M2S_AR_ARLEN_reg_M2S_AR_ARLEN_HardLink;
+	wire [2: 0] reg_M2S_AR_ARSIZE_reg_M2S_AR_ARSIZE_HardLink;
+	wire [1: 0] reg_M2S_AR_ARBURST_reg_M2S_AR_ARBURST_HardLink;
+	wire [1: 0] reg_M2S_AR_ARLOCK_reg_M2S_AR_ARLOCK_HardLink;
+	wire [3: 0] reg_M2S_AR_ARCACHE_reg_M2S_AR_ARCACHE_HardLink;
+	wire [2: 0] reg_M2S_AR_ARPROT_reg_M2S_AR_ARPROT_HardLink;
+	wire [3: 0] reg_M2S_AR_ARQOS_reg_M2S_AR_ARQOS_HardLink;
+	wire [7: 0] reg_M2S_AR_ARREGION_reg_M2S_AR_ARREGION_HardLink;
+	wire [7: 0] reg_M2S_AR_ARUSER_reg_M2S_AR_ARUSER_HardLink;
+	wire reg_M2S_AR_ARVALID_reg_M2S_AR_ARVALID_HardLink;
+	wire reg_M2S_R_RREADY_reg_M2S_R_RREADY_HardLink;
+	wire [7: 0] reg_M2S_AW_AWID_reg_M2S_AW_AWID_HardLink;
+	wire [31: 0] reg_M2S_AW_AWADDR_reg_M2S_AW_AWADDR_HardLink;
+	wire [7: 0] reg_M2S_AW_AWLEN_reg_M2S_AW_AWLEN_HardLink;
+	wire [2: 0] reg_M2S_AW_AWSIZE_reg_M2S_AW_AWSIZE_HardLink;
+	wire [1: 0] reg_M2S_AW_AWBURST_reg_M2S_AW_AWBURST_HardLink;
+	wire [1: 0] reg_M2S_AW_AWLOCK_reg_M2S_AW_AWLOCK_HardLink;
+	wire [3: 0] reg_M2S_AW_AWCACHE_reg_M2S_AW_AWCACHE_HardLink;
+	wire [2: 0] reg_M2S_AW_AWPROT_reg_M2S_AW_AWPROT_HardLink;
+	wire [3: 0] reg_M2S_AW_AWQOS_reg_M2S_AW_AWQOS_HardLink;
+	wire [7: 0] reg_M2S_AW_AWREGION_reg_M2S_AW_AWREGION_HardLink;
+	wire [7: 0] reg_M2S_AW_AWUSER_reg_M2S_AW_AWUSER_HardLink;
+	wire reg_M2S_AW_AWVALID_reg_M2S_AW_AWVALID_HardLink;
+	wire [7: 0] reg_M2S_W_WID_reg_M2S_W_WID_HardLink;
+	wire [7: 0] reg_M2S_W_WDATA0_reg_M2S_W_WDATA_HardLink;
+	wire [7: 0] reg_M2S_W_WDATA1_reg_M2S_W_WDATA_HardLink;
+	wire [7: 0] reg_M2S_W_WDATA2_reg_M2S_W_WDATA_HardLink;
+	wire [7: 0] reg_M2S_W_WDATA3_reg_M2S_W_WDATA_HardLink;
+	wire [3: 0] reg_M2S_W_WSTRB_reg_M2S_W_WSTRB_HardLink;
+	wire reg_M2S_W_WLAST_reg_M2S_W_WLAST_HardLink;
+	wire [7: 0] reg_M2S_W_WUSER_reg_M2S_W_WUSER_HardLink;
+	wire reg_M2S_W_WVALID_reg_M2S_W_WVALID_HardLink;
+	wire reg_M2S_B_BREADY_reg_M2S_B_BREADY_HardLink;
+	wire reg_inWE_reg_inWE_HardLink;
+	wire [7: 0] reg_inWDATA0_reg_inWDATA_HardLink;
+	wire [7: 0] reg_inWDATA1_reg_inWDATA_HardLink;
+	wire [7: 0] reg_inWDATA2_reg_inWDATA_HardLink;
+	wire [7: 0] reg_inWDATA3_reg_inWDATA_HardLink;
+	wire [7: 0] reg_outData0_reg_outData_HardLink;
+	wire [7: 0] reg_outData1_reg_outData_HardLink;
+	wire [7: 0] reg_outData2_reg_outData_HardLink;
+	wire [7: 0] reg_outData3_reg_outData_HardLink;
+	wire reg_outACK_reg_outACK_HardLink;
+	wire reg_S2M_AR_ARREADY_reg_S2M_AR_ARREADY_HardLink;
+	wire reg_S2M_AW_AWREADY_reg_S2M_AW_AWREADY_HardLink;
+	wire [7: 0] reg_S2M_B_BID_reg_S2M_B_BID_HardLink;
+	wire [1: 0] reg_S2M_B_BRESP_reg_S2M_B_BRESP_HardLink;
+	wire [7: 0] reg_S2M_B_BUSER_reg_S2M_B_BUSER_HardLink;
+	wire reg_S2M_B_BVALID_reg_S2M_B_BVALID_HardLink;
+	wire [7: 0] reg_S2M_R_RID_reg_S2M_R_RID_HardLink;
+	wire [7: 0] reg_S2M_R_RDATA0_reg_S2M_R_RDATA_HardLink;
+	wire [7: 0] reg_S2M_R_RDATA1_reg_S2M_R_RDATA_HardLink;
+	wire [7: 0] reg_S2M_R_RDATA2_reg_S2M_R_RDATA_HardLink;
+	wire [7: 0] reg_S2M_R_RDATA3_reg_S2M_R_RDATA_HardLink;
+	wire [1: 0] reg_S2M_R_RRESP_reg_S2M_R_RRESP_HardLink;
+	wire reg_S2M_R_RLAST_reg_S2M_R_RLAST_HardLink;
+	wire [7: 0] reg_S2M_R_RUSER_reg_S2M_R_RUSER_HardLink;
+	wire reg_S2M_R_RVALID_reg_S2M_R_RVALID_HardLink;
+	wire reg_S2M_W_WREADY_reg_S2M_W_WREADY_HardLink;
+	wire reg_outWritten_reg_outWritten_HardLink;
+	wire master_S2M_AR_ARREADY_master_S2M_AR_ARREADY_HardLink;
+	wire master_S2M_AW_AWREADY_master_S2M_AW_AWREADY_HardLink;
+	wire [7: 0] master_S2M_B_BID_master_S2M_B_BID_HardLink;
+	wire [1: 0] master_S2M_B_BRESP_master_S2M_B_BRESP_HardLink;
+	wire [7: 0] master_S2M_B_BUSER_master_S2M_B_BUSER_HardLink;
+	wire master_S2M_B_BVALID_master_S2M_B_BVALID_HardLink;
+	wire [7: 0] master_S2M_R_RID_master_S2M_R_RID_HardLink;
+	wire [7: 0] master_S2M_R_RDATA0_master_S2M_R_RDATA_HardLink;
+	wire [7: 0] master_S2M_R_RDATA1_master_S2M_R_RDATA_HardLink;
+	wire [7: 0] master_S2M_R_RDATA2_master_S2M_R_RDATA_HardLink;
+	wire [7: 0] master_S2M_R_RDATA3_master_S2M_R_RDATA_HardLink;
+	wire [1: 0] master_S2M_R_RRESP_master_S2M_R_RRESP_HardLink;
+	wire master_S2M_R_RLAST_master_S2M_R_RLAST_HardLink;
+	wire [7: 0] master_S2M_R_RUSER_master_S2M_R_RUSER_HardLink;
+	wire master_S2M_R_RVALID_master_S2M_R_RVALID_HardLink;
+	wire master_S2M_W_WREADY_master_S2M_W_WREADY_HardLink;
+	wire [31: 0] master_ARADDR_master_ARADDR_HardLink;
+	wire master_RE_master_RE_HardLink;
+	wire [31: 0] master_AWADDR_master_AWADDR_HardLink;
+	wire master_WE_master_WE_HardLink;
+	wire [3: 0] master_WSTRB_master_WSTRB_HardLink;
+	wire [7: 0] master_WDATA0_master_WDATA_HardLink;
+	wire [7: 0] master_WDATA1_master_WDATA_HardLink;
+	wire [7: 0] master_WDATA2_master_WDATA_HardLink;
+	wire [7: 0] master_WDATA3_master_WDATA_HardLink;
+	wire master_RACK_master_RACK_HardLink;
+	wire [7: 0] master_RDATA0_master_RDATA_HardLink;
+	wire [7: 0] master_RDATA1_master_RDATA_HardLink;
+	wire [7: 0] master_RDATA2_master_RDATA_HardLink;
+	wire [7: 0] master_RDATA3_master_RDATA_HardLink;
+	wire master_WACK_master_WACK_HardLink;
+	wire [7: 0] master_M2S_AR_ARID_master_M2S_AR_ARID_HardLink;
+	wire [31: 0] master_M2S_AR_ARADDR_master_M2S_AR_ARADDR_HardLink;
+	wire [7: 0] master_M2S_AR_ARLEN_master_M2S_AR_ARLEN_HardLink;
+	wire [2: 0] master_M2S_AR_ARSIZE_master_M2S_AR_ARSIZE_HardLink;
+	wire [1: 0] master_M2S_AR_ARBURST_master_M2S_AR_ARBURST_HardLink;
+	wire [1: 0] master_M2S_AR_ARLOCK_master_M2S_AR_ARLOCK_HardLink;
+	wire [3: 0] master_M2S_AR_ARCACHE_master_M2S_AR_ARCACHE_HardLink;
+	wire [2: 0] master_M2S_AR_ARPROT_master_M2S_AR_ARPROT_HardLink;
+	wire [3: 0] master_M2S_AR_ARQOS_master_M2S_AR_ARQOS_HardLink;
+	wire [7: 0] master_M2S_AR_ARREGION_master_M2S_AR_ARREGION_HardLink;
+	wire [7: 0] master_M2S_AR_ARUSER_master_M2S_AR_ARUSER_HardLink;
+	wire master_M2S_AR_ARVALID_master_M2S_AR_ARVALID_HardLink;
+	wire master_M2S_R_RREADY_master_M2S_R_RREADY_HardLink;
+	wire [7: 0] master_M2S_AW_AWID_master_M2S_AW_AWID_HardLink;
+	wire [31: 0] master_M2S_AW_AWADDR_master_M2S_AW_AWADDR_HardLink;
+	wire [7: 0] master_M2S_AW_AWLEN_master_M2S_AW_AWLEN_HardLink;
+	wire [2: 0] master_M2S_AW_AWSIZE_master_M2S_AW_AWSIZE_HardLink;
+	wire [1: 0] master_M2S_AW_AWBURST_master_M2S_AW_AWBURST_HardLink;
+	wire [1: 0] master_M2S_AW_AWLOCK_master_M2S_AW_AWLOCK_HardLink;
+	wire [3: 0] master_M2S_AW_AWCACHE_master_M2S_AW_AWCACHE_HardLink;
+	wire [2: 0] master_M2S_AW_AWPROT_master_M2S_AW_AWPROT_HardLink;
+	wire [3: 0] master_M2S_AW_AWQOS_master_M2S_AW_AWQOS_HardLink;
+	wire [7: 0] master_M2S_AW_AWREGION_master_M2S_AW_AWREGION_HardLink;
+	wire [7: 0] master_M2S_AW_AWUSER_master_M2S_AW_AWUSER_HardLink;
+	wire master_M2S_AW_AWVALID_master_M2S_AW_AWVALID_HardLink;
+	wire [7: 0] master_M2S_W_WID_master_M2S_W_WID_HardLink;
+	wire [7: 0] master_M2S_W_WDATA0_master_M2S_W_WDATA_HardLink;
+	wire [7: 0] master_M2S_W_WDATA1_master_M2S_W_WDATA_HardLink;
+	wire [7: 0] master_M2S_W_WDATA2_master_M2S_W_WDATA_HardLink;
+	wire [7: 0] master_M2S_W_WDATA3_master_M2S_W_WDATA_HardLink;
+	wire [3: 0] master_M2S_W_WSTRB_master_M2S_W_WSTRB_HardLink;
+	wire master_M2S_W_WLAST_master_M2S_W_WLAST_HardLink;
+	wire [7: 0] master_M2S_W_WUSER_master_M2S_W_WUSER_HardLink;
+	wire master_M2S_W_WVALID_master_M2S_W_WVALID_HardLink;
+	wire master_M2S_B_BREADY_master_M2S_B_BREADY_HardLink;
 	integer State_ReadData_Iterator;
 	reg [7 : 0] State_ReadData [0 : 3];
 	initial
@@ -333,68 +333,68 @@ module AXI4MasterSlaveTestModule_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.M2S_AR_ARID (regM2S_AR_ARIDreg_M2S_AR_ARIDHardLink),
-		.M2S_AR_ARADDR (regM2S_AR_ARADDRreg_M2S_AR_ARADDRHardLink),
-		.M2S_AR_ARLEN (regM2S_AR_ARLENreg_M2S_AR_ARLENHardLink),
-		.M2S_AR_ARSIZE (regM2S_AR_ARSIZEreg_M2S_AR_ARSIZEHardLink),
-		.M2S_AR_ARBURST (regM2S_AR_ARBURSTreg_M2S_AR_ARBURSTHardLink),
-		.M2S_AR_ARLOCK (regM2S_AR_ARLOCKreg_M2S_AR_ARLOCKHardLink),
-		.M2S_AR_ARCACHE (regM2S_AR_ARCACHEreg_M2S_AR_ARCACHEHardLink),
-		.M2S_AR_ARPROT (regM2S_AR_ARPROTreg_M2S_AR_ARPROTHardLink),
-		.M2S_AR_ARQOS (regM2S_AR_ARQOSreg_M2S_AR_ARQOSHardLink),
-		.M2S_AR_ARREGION (regM2S_AR_ARREGIONreg_M2S_AR_ARREGIONHardLink),
-		.M2S_AR_ARUSER (regM2S_AR_ARUSERreg_M2S_AR_ARUSERHardLink),
-		.M2S_AR_ARVALID (regM2S_AR_ARVALIDreg_M2S_AR_ARVALIDHardLink),
-		.M2S_R_RREADY (regM2S_R_RREADYreg_M2S_R_RREADYHardLink),
-		.M2S_AW_AWID (regM2S_AW_AWIDreg_M2S_AW_AWIDHardLink),
-		.M2S_AW_AWADDR (regM2S_AW_AWADDRreg_M2S_AW_AWADDRHardLink),
-		.M2S_AW_AWLEN (regM2S_AW_AWLENreg_M2S_AW_AWLENHardLink),
-		.M2S_AW_AWSIZE (regM2S_AW_AWSIZEreg_M2S_AW_AWSIZEHardLink),
-		.M2S_AW_AWBURST (regM2S_AW_AWBURSTreg_M2S_AW_AWBURSTHardLink),
-		.M2S_AW_AWLOCK (regM2S_AW_AWLOCKreg_M2S_AW_AWLOCKHardLink),
-		.M2S_AW_AWCACHE (regM2S_AW_AWCACHEreg_M2S_AW_AWCACHEHardLink),
-		.M2S_AW_AWPROT (regM2S_AW_AWPROTreg_M2S_AW_AWPROTHardLink),
-		.M2S_AW_AWQOS (regM2S_AW_AWQOSreg_M2S_AW_AWQOSHardLink),
-		.M2S_AW_AWREGION (regM2S_AW_AWREGIONreg_M2S_AW_AWREGIONHardLink),
-		.M2S_AW_AWUSER (regM2S_AW_AWUSERreg_M2S_AW_AWUSERHardLink),
-		.M2S_AW_AWVALID (regM2S_AW_AWVALIDreg_M2S_AW_AWVALIDHardLink),
-		.M2S_W_WID (regM2S_W_WIDreg_M2S_W_WIDHardLink),
-		.M2S_W_WDATA0 (regM2S_W_WDATA0reg_M2S_W_WDATAHardLink),
-		.M2S_W_WDATA1 (regM2S_W_WDATA1reg_M2S_W_WDATAHardLink),
-		.M2S_W_WDATA2 (regM2S_W_WDATA2reg_M2S_W_WDATAHardLink),
-		.M2S_W_WDATA3 (regM2S_W_WDATA3reg_M2S_W_WDATAHardLink),
-		.M2S_W_WSTRB (regM2S_W_WSTRBreg_M2S_W_WSTRBHardLink),
-		.M2S_W_WLAST (regM2S_W_WLASTreg_M2S_W_WLASTHardLink),
-		.M2S_W_WUSER (regM2S_W_WUSERreg_M2S_W_WUSERHardLink),
-		.M2S_W_WVALID (regM2S_W_WVALIDreg_M2S_W_WVALIDHardLink),
-		.M2S_B_BREADY (regM2S_B_BREADYreg_M2S_B_BREADYHardLink),
-		.inWE (reginWEreg_inWEHardLink),
-		.inWDATA0 (reginWDATA0reg_inWDATAHardLink),
-		.inWDATA1 (reginWDATA1reg_inWDATAHardLink),
-		.inWDATA2 (reginWDATA2reg_inWDATAHardLink),
-		.inWDATA3 (reginWDATA3reg_inWDATAHardLink),
-		.outData0 (regoutData0reg_outDataHardLink),
-		.outData1 (regoutData1reg_outDataHardLink),
-		.outData2 (regoutData2reg_outDataHardLink),
-		.outData3 (regoutData3reg_outDataHardLink),
-		.outACK (regoutACKreg_outACKHardLink),
-		.S2M_AR_ARREADY (regS2M_AR_ARREADYreg_S2M_AR_ARREADYHardLink),
-		.S2M_AW_AWREADY (regS2M_AW_AWREADYreg_S2M_AW_AWREADYHardLink),
-		.S2M_B_BID (regS2M_B_BIDreg_S2M_B_BIDHardLink),
-		.S2M_B_BRESP (regS2M_B_BRESPreg_S2M_B_BRESPHardLink),
-		.S2M_B_BUSER (regS2M_B_BUSERreg_S2M_B_BUSERHardLink),
-		.S2M_B_BVALID (regS2M_B_BVALIDreg_S2M_B_BVALIDHardLink),
-		.S2M_R_RID (regS2M_R_RIDreg_S2M_R_RIDHardLink),
-		.S2M_R_RDATA0 (regS2M_R_RDATA0reg_S2M_R_RDATAHardLink),
-		.S2M_R_RDATA1 (regS2M_R_RDATA1reg_S2M_R_RDATAHardLink),
-		.S2M_R_RDATA2 (regS2M_R_RDATA2reg_S2M_R_RDATAHardLink),
-		.S2M_R_RDATA3 (regS2M_R_RDATA3reg_S2M_R_RDATAHardLink),
-		.S2M_R_RRESP (regS2M_R_RRESPreg_S2M_R_RRESPHardLink),
-		.S2M_R_RLAST (regS2M_R_RLASTreg_S2M_R_RLASTHardLink),
-		.S2M_R_RUSER (regS2M_R_RUSERreg_S2M_R_RUSERHardLink),
-		.S2M_R_RVALID (regS2M_R_RVALIDreg_S2M_R_RVALIDHardLink),
-		.S2M_W_WREADY (regS2M_W_WREADYreg_S2M_W_WREADYHardLink),
-		.outWritten (regoutWrittenreg_outWrittenHardLink)
+		.M2S_AR_ARID (reg_M2S_AR_ARID_reg_M2S_AR_ARID_HardLink),
+		.M2S_AR_ARADDR (reg_M2S_AR_ARADDR_reg_M2S_AR_ARADDR_HardLink),
+		.M2S_AR_ARLEN (reg_M2S_AR_ARLEN_reg_M2S_AR_ARLEN_HardLink),
+		.M2S_AR_ARSIZE (reg_M2S_AR_ARSIZE_reg_M2S_AR_ARSIZE_HardLink),
+		.M2S_AR_ARBURST (reg_M2S_AR_ARBURST_reg_M2S_AR_ARBURST_HardLink),
+		.M2S_AR_ARLOCK (reg_M2S_AR_ARLOCK_reg_M2S_AR_ARLOCK_HardLink),
+		.M2S_AR_ARCACHE (reg_M2S_AR_ARCACHE_reg_M2S_AR_ARCACHE_HardLink),
+		.M2S_AR_ARPROT (reg_M2S_AR_ARPROT_reg_M2S_AR_ARPROT_HardLink),
+		.M2S_AR_ARQOS (reg_M2S_AR_ARQOS_reg_M2S_AR_ARQOS_HardLink),
+		.M2S_AR_ARREGION (reg_M2S_AR_ARREGION_reg_M2S_AR_ARREGION_HardLink),
+		.M2S_AR_ARUSER (reg_M2S_AR_ARUSER_reg_M2S_AR_ARUSER_HardLink),
+		.M2S_AR_ARVALID (reg_M2S_AR_ARVALID_reg_M2S_AR_ARVALID_HardLink),
+		.M2S_R_RREADY (reg_M2S_R_RREADY_reg_M2S_R_RREADY_HardLink),
+		.M2S_AW_AWID (reg_M2S_AW_AWID_reg_M2S_AW_AWID_HardLink),
+		.M2S_AW_AWADDR (reg_M2S_AW_AWADDR_reg_M2S_AW_AWADDR_HardLink),
+		.M2S_AW_AWLEN (reg_M2S_AW_AWLEN_reg_M2S_AW_AWLEN_HardLink),
+		.M2S_AW_AWSIZE (reg_M2S_AW_AWSIZE_reg_M2S_AW_AWSIZE_HardLink),
+		.M2S_AW_AWBURST (reg_M2S_AW_AWBURST_reg_M2S_AW_AWBURST_HardLink),
+		.M2S_AW_AWLOCK (reg_M2S_AW_AWLOCK_reg_M2S_AW_AWLOCK_HardLink),
+		.M2S_AW_AWCACHE (reg_M2S_AW_AWCACHE_reg_M2S_AW_AWCACHE_HardLink),
+		.M2S_AW_AWPROT (reg_M2S_AW_AWPROT_reg_M2S_AW_AWPROT_HardLink),
+		.M2S_AW_AWQOS (reg_M2S_AW_AWQOS_reg_M2S_AW_AWQOS_HardLink),
+		.M2S_AW_AWREGION (reg_M2S_AW_AWREGION_reg_M2S_AW_AWREGION_HardLink),
+		.M2S_AW_AWUSER (reg_M2S_AW_AWUSER_reg_M2S_AW_AWUSER_HardLink),
+		.M2S_AW_AWVALID (reg_M2S_AW_AWVALID_reg_M2S_AW_AWVALID_HardLink),
+		.M2S_W_WID (reg_M2S_W_WID_reg_M2S_W_WID_HardLink),
+		.M2S_W_WDATA0 (reg_M2S_W_WDATA0_reg_M2S_W_WDATA_HardLink),
+		.M2S_W_WDATA1 (reg_M2S_W_WDATA1_reg_M2S_W_WDATA_HardLink),
+		.M2S_W_WDATA2 (reg_M2S_W_WDATA2_reg_M2S_W_WDATA_HardLink),
+		.M2S_W_WDATA3 (reg_M2S_W_WDATA3_reg_M2S_W_WDATA_HardLink),
+		.M2S_W_WSTRB (reg_M2S_W_WSTRB_reg_M2S_W_WSTRB_HardLink),
+		.M2S_W_WLAST (reg_M2S_W_WLAST_reg_M2S_W_WLAST_HardLink),
+		.M2S_W_WUSER (reg_M2S_W_WUSER_reg_M2S_W_WUSER_HardLink),
+		.M2S_W_WVALID (reg_M2S_W_WVALID_reg_M2S_W_WVALID_HardLink),
+		.M2S_B_BREADY (reg_M2S_B_BREADY_reg_M2S_B_BREADY_HardLink),
+		.inWE (reg_inWE_reg_inWE_HardLink),
+		.inWDATA0 (reg_inWDATA0_reg_inWDATA_HardLink),
+		.inWDATA1 (reg_inWDATA1_reg_inWDATA_HardLink),
+		.inWDATA2 (reg_inWDATA2_reg_inWDATA_HardLink),
+		.inWDATA3 (reg_inWDATA3_reg_inWDATA_HardLink),
+		.outData0 (reg_outData0_reg_outData_HardLink),
+		.outData1 (reg_outData1_reg_outData_HardLink),
+		.outData2 (reg_outData2_reg_outData_HardLink),
+		.outData3 (reg_outData3_reg_outData_HardLink),
+		.outACK (reg_outACK_reg_outACK_HardLink),
+		.S2M_AR_ARREADY (reg_S2M_AR_ARREADY_reg_S2M_AR_ARREADY_HardLink),
+		.S2M_AW_AWREADY (reg_S2M_AW_AWREADY_reg_S2M_AW_AWREADY_HardLink),
+		.S2M_B_BID (reg_S2M_B_BID_reg_S2M_B_BID_HardLink),
+		.S2M_B_BRESP (reg_S2M_B_BRESP_reg_S2M_B_BRESP_HardLink),
+		.S2M_B_BUSER (reg_S2M_B_BUSER_reg_S2M_B_BUSER_HardLink),
+		.S2M_B_BVALID (reg_S2M_B_BVALID_reg_S2M_B_BVALID_HardLink),
+		.S2M_R_RID (reg_S2M_R_RID_reg_S2M_R_RID_HardLink),
+		.S2M_R_RDATA0 (reg_S2M_R_RDATA0_reg_S2M_R_RDATA_HardLink),
+		.S2M_R_RDATA1 (reg_S2M_R_RDATA1_reg_S2M_R_RDATA_HardLink),
+		.S2M_R_RDATA2 (reg_S2M_R_RDATA2_reg_S2M_R_RDATA_HardLink),
+		.S2M_R_RDATA3 (reg_S2M_R_RDATA3_reg_S2M_R_RDATA_HardLink),
+		.S2M_R_RRESP (reg_S2M_R_RRESP_reg_S2M_R_RRESP_HardLink),
+		.S2M_R_RLAST (reg_S2M_R_RLAST_reg_S2M_R_RLAST_HardLink),
+		.S2M_R_RUSER (reg_S2M_R_RUSER_reg_S2M_R_RUSER_HardLink),
+		.S2M_R_RVALID (reg_S2M_R_RVALID_reg_S2M_R_RVALID_HardLink),
+		.S2M_W_WREADY (reg_S2M_W_WREADY_reg_S2M_W_WREADY_HardLink),
+		.outWritten (reg_outWritten_reg_outWritten_HardLink)
 	);
 	AXI4MasterSlaveTestModule_TopLevel_master
 	AXI4MasterSlaveTestModule_TopLevel_master
@@ -406,72 +406,72 @@ module AXI4MasterSlaveTestModule_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.S2M_AR_ARREADY (masterS2M_AR_ARREADYmaster_S2M_AR_ARREADYHardLink),
-		.S2M_AW_AWREADY (masterS2M_AW_AWREADYmaster_S2M_AW_AWREADYHardLink),
-		.S2M_B_BID (masterS2M_B_BIDmaster_S2M_B_BIDHardLink),
-		.S2M_B_BRESP (masterS2M_B_BRESPmaster_S2M_B_BRESPHardLink),
-		.S2M_B_BUSER (masterS2M_B_BUSERmaster_S2M_B_BUSERHardLink),
-		.S2M_B_BVALID (masterS2M_B_BVALIDmaster_S2M_B_BVALIDHardLink),
-		.S2M_R_RID (masterS2M_R_RIDmaster_S2M_R_RIDHardLink),
-		.S2M_R_RDATA0 (masterS2M_R_RDATA0master_S2M_R_RDATAHardLink),
-		.S2M_R_RDATA1 (masterS2M_R_RDATA1master_S2M_R_RDATAHardLink),
-		.S2M_R_RDATA2 (masterS2M_R_RDATA2master_S2M_R_RDATAHardLink),
-		.S2M_R_RDATA3 (masterS2M_R_RDATA3master_S2M_R_RDATAHardLink),
-		.S2M_R_RRESP (masterS2M_R_RRESPmaster_S2M_R_RRESPHardLink),
-		.S2M_R_RLAST (masterS2M_R_RLASTmaster_S2M_R_RLASTHardLink),
-		.S2M_R_RUSER (masterS2M_R_RUSERmaster_S2M_R_RUSERHardLink),
-		.S2M_R_RVALID (masterS2M_R_RVALIDmaster_S2M_R_RVALIDHardLink),
-		.S2M_W_WREADY (masterS2M_W_WREADYmaster_S2M_W_WREADYHardLink),
-		.ARADDR (masterARADDRmaster_ARADDRHardLink),
-		.RE (masterREmaster_REHardLink),
-		.AWADDR (masterAWADDRmaster_AWADDRHardLink),
-		.WE (masterWEmaster_WEHardLink),
-		.WSTRB (masterWSTRBmaster_WSTRBHardLink),
-		.WDATA0 (masterWDATA0master_WDATAHardLink),
-		.WDATA1 (masterWDATA1master_WDATAHardLink),
-		.WDATA2 (masterWDATA2master_WDATAHardLink),
-		.WDATA3 (masterWDATA3master_WDATAHardLink),
-		.RACK (masterRACKmaster_RACKHardLink),
-		.RDATA0 (masterRDATA0master_RDATAHardLink),
-		.RDATA1 (masterRDATA1master_RDATAHardLink),
-		.RDATA2 (masterRDATA2master_RDATAHardLink),
-		.RDATA3 (masterRDATA3master_RDATAHardLink),
-		.WACK (masterWACKmaster_WACKHardLink),
-		.M2S_AR_ARID (masterM2S_AR_ARIDmaster_M2S_AR_ARIDHardLink),
-		.M2S_AR_ARADDR (masterM2S_AR_ARADDRmaster_M2S_AR_ARADDRHardLink),
-		.M2S_AR_ARLEN (masterM2S_AR_ARLENmaster_M2S_AR_ARLENHardLink),
-		.M2S_AR_ARSIZE (masterM2S_AR_ARSIZEmaster_M2S_AR_ARSIZEHardLink),
-		.M2S_AR_ARBURST (masterM2S_AR_ARBURSTmaster_M2S_AR_ARBURSTHardLink),
-		.M2S_AR_ARLOCK (masterM2S_AR_ARLOCKmaster_M2S_AR_ARLOCKHardLink),
-		.M2S_AR_ARCACHE (masterM2S_AR_ARCACHEmaster_M2S_AR_ARCACHEHardLink),
-		.M2S_AR_ARPROT (masterM2S_AR_ARPROTmaster_M2S_AR_ARPROTHardLink),
-		.M2S_AR_ARQOS (masterM2S_AR_ARQOSmaster_M2S_AR_ARQOSHardLink),
-		.M2S_AR_ARREGION (masterM2S_AR_ARREGIONmaster_M2S_AR_ARREGIONHardLink),
-		.M2S_AR_ARUSER (masterM2S_AR_ARUSERmaster_M2S_AR_ARUSERHardLink),
-		.M2S_AR_ARVALID (masterM2S_AR_ARVALIDmaster_M2S_AR_ARVALIDHardLink),
-		.M2S_R_RREADY (masterM2S_R_RREADYmaster_M2S_R_RREADYHardLink),
-		.M2S_AW_AWID (masterM2S_AW_AWIDmaster_M2S_AW_AWIDHardLink),
-		.M2S_AW_AWADDR (masterM2S_AW_AWADDRmaster_M2S_AW_AWADDRHardLink),
-		.M2S_AW_AWLEN (masterM2S_AW_AWLENmaster_M2S_AW_AWLENHardLink),
-		.M2S_AW_AWSIZE (masterM2S_AW_AWSIZEmaster_M2S_AW_AWSIZEHardLink),
-		.M2S_AW_AWBURST (masterM2S_AW_AWBURSTmaster_M2S_AW_AWBURSTHardLink),
-		.M2S_AW_AWLOCK (masterM2S_AW_AWLOCKmaster_M2S_AW_AWLOCKHardLink),
-		.M2S_AW_AWCACHE (masterM2S_AW_AWCACHEmaster_M2S_AW_AWCACHEHardLink),
-		.M2S_AW_AWPROT (masterM2S_AW_AWPROTmaster_M2S_AW_AWPROTHardLink),
-		.M2S_AW_AWQOS (masterM2S_AW_AWQOSmaster_M2S_AW_AWQOSHardLink),
-		.M2S_AW_AWREGION (masterM2S_AW_AWREGIONmaster_M2S_AW_AWREGIONHardLink),
-		.M2S_AW_AWUSER (masterM2S_AW_AWUSERmaster_M2S_AW_AWUSERHardLink),
-		.M2S_AW_AWVALID (masterM2S_AW_AWVALIDmaster_M2S_AW_AWVALIDHardLink),
-		.M2S_W_WID (masterM2S_W_WIDmaster_M2S_W_WIDHardLink),
-		.M2S_W_WDATA0 (masterM2S_W_WDATA0master_M2S_W_WDATAHardLink),
-		.M2S_W_WDATA1 (masterM2S_W_WDATA1master_M2S_W_WDATAHardLink),
-		.M2S_W_WDATA2 (masterM2S_W_WDATA2master_M2S_W_WDATAHardLink),
-		.M2S_W_WDATA3 (masterM2S_W_WDATA3master_M2S_W_WDATAHardLink),
-		.M2S_W_WSTRB (masterM2S_W_WSTRBmaster_M2S_W_WSTRBHardLink),
-		.M2S_W_WLAST (masterM2S_W_WLASTmaster_M2S_W_WLASTHardLink),
-		.M2S_W_WUSER (masterM2S_W_WUSERmaster_M2S_W_WUSERHardLink),
-		.M2S_W_WVALID (masterM2S_W_WVALIDmaster_M2S_W_WVALIDHardLink),
-		.M2S_B_BREADY (masterM2S_B_BREADYmaster_M2S_B_BREADYHardLink)
+		.S2M_AR_ARREADY (master_S2M_AR_ARREADY_master_S2M_AR_ARREADY_HardLink),
+		.S2M_AW_AWREADY (master_S2M_AW_AWREADY_master_S2M_AW_AWREADY_HardLink),
+		.S2M_B_BID (master_S2M_B_BID_master_S2M_B_BID_HardLink),
+		.S2M_B_BRESP (master_S2M_B_BRESP_master_S2M_B_BRESP_HardLink),
+		.S2M_B_BUSER (master_S2M_B_BUSER_master_S2M_B_BUSER_HardLink),
+		.S2M_B_BVALID (master_S2M_B_BVALID_master_S2M_B_BVALID_HardLink),
+		.S2M_R_RID (master_S2M_R_RID_master_S2M_R_RID_HardLink),
+		.S2M_R_RDATA0 (master_S2M_R_RDATA0_master_S2M_R_RDATA_HardLink),
+		.S2M_R_RDATA1 (master_S2M_R_RDATA1_master_S2M_R_RDATA_HardLink),
+		.S2M_R_RDATA2 (master_S2M_R_RDATA2_master_S2M_R_RDATA_HardLink),
+		.S2M_R_RDATA3 (master_S2M_R_RDATA3_master_S2M_R_RDATA_HardLink),
+		.S2M_R_RRESP (master_S2M_R_RRESP_master_S2M_R_RRESP_HardLink),
+		.S2M_R_RLAST (master_S2M_R_RLAST_master_S2M_R_RLAST_HardLink),
+		.S2M_R_RUSER (master_S2M_R_RUSER_master_S2M_R_RUSER_HardLink),
+		.S2M_R_RVALID (master_S2M_R_RVALID_master_S2M_R_RVALID_HardLink),
+		.S2M_W_WREADY (master_S2M_W_WREADY_master_S2M_W_WREADY_HardLink),
+		.ARADDR (master_ARADDR_master_ARADDR_HardLink),
+		.RE (master_RE_master_RE_HardLink),
+		.AWADDR (master_AWADDR_master_AWADDR_HardLink),
+		.WE (master_WE_master_WE_HardLink),
+		.WSTRB (master_WSTRB_master_WSTRB_HardLink),
+		.WDATA0 (master_WDATA0_master_WDATA_HardLink),
+		.WDATA1 (master_WDATA1_master_WDATA_HardLink),
+		.WDATA2 (master_WDATA2_master_WDATA_HardLink),
+		.WDATA3 (master_WDATA3_master_WDATA_HardLink),
+		.RACK (master_RACK_master_RACK_HardLink),
+		.RDATA0 (master_RDATA0_master_RDATA_HardLink),
+		.RDATA1 (master_RDATA1_master_RDATA_HardLink),
+		.RDATA2 (master_RDATA2_master_RDATA_HardLink),
+		.RDATA3 (master_RDATA3_master_RDATA_HardLink),
+		.WACK (master_WACK_master_WACK_HardLink),
+		.M2S_AR_ARID (master_M2S_AR_ARID_master_M2S_AR_ARID_HardLink),
+		.M2S_AR_ARADDR (master_M2S_AR_ARADDR_master_M2S_AR_ARADDR_HardLink),
+		.M2S_AR_ARLEN (master_M2S_AR_ARLEN_master_M2S_AR_ARLEN_HardLink),
+		.M2S_AR_ARSIZE (master_M2S_AR_ARSIZE_master_M2S_AR_ARSIZE_HardLink),
+		.M2S_AR_ARBURST (master_M2S_AR_ARBURST_master_M2S_AR_ARBURST_HardLink),
+		.M2S_AR_ARLOCK (master_M2S_AR_ARLOCK_master_M2S_AR_ARLOCK_HardLink),
+		.M2S_AR_ARCACHE (master_M2S_AR_ARCACHE_master_M2S_AR_ARCACHE_HardLink),
+		.M2S_AR_ARPROT (master_M2S_AR_ARPROT_master_M2S_AR_ARPROT_HardLink),
+		.M2S_AR_ARQOS (master_M2S_AR_ARQOS_master_M2S_AR_ARQOS_HardLink),
+		.M2S_AR_ARREGION (master_M2S_AR_ARREGION_master_M2S_AR_ARREGION_HardLink),
+		.M2S_AR_ARUSER (master_M2S_AR_ARUSER_master_M2S_AR_ARUSER_HardLink),
+		.M2S_AR_ARVALID (master_M2S_AR_ARVALID_master_M2S_AR_ARVALID_HardLink),
+		.M2S_R_RREADY (master_M2S_R_RREADY_master_M2S_R_RREADY_HardLink),
+		.M2S_AW_AWID (master_M2S_AW_AWID_master_M2S_AW_AWID_HardLink),
+		.M2S_AW_AWADDR (master_M2S_AW_AWADDR_master_M2S_AW_AWADDR_HardLink),
+		.M2S_AW_AWLEN (master_M2S_AW_AWLEN_master_M2S_AW_AWLEN_HardLink),
+		.M2S_AW_AWSIZE (master_M2S_AW_AWSIZE_master_M2S_AW_AWSIZE_HardLink),
+		.M2S_AW_AWBURST (master_M2S_AW_AWBURST_master_M2S_AW_AWBURST_HardLink),
+		.M2S_AW_AWLOCK (master_M2S_AW_AWLOCK_master_M2S_AW_AWLOCK_HardLink),
+		.M2S_AW_AWCACHE (master_M2S_AW_AWCACHE_master_M2S_AW_AWCACHE_HardLink),
+		.M2S_AW_AWPROT (master_M2S_AW_AWPROT_master_M2S_AW_AWPROT_HardLink),
+		.M2S_AW_AWQOS (master_M2S_AW_AWQOS_master_M2S_AW_AWQOS_HardLink),
+		.M2S_AW_AWREGION (master_M2S_AW_AWREGION_master_M2S_AW_AWREGION_HardLink),
+		.M2S_AW_AWUSER (master_M2S_AW_AWUSER_master_M2S_AW_AWUSER_HardLink),
+		.M2S_AW_AWVALID (master_M2S_AW_AWVALID_master_M2S_AW_AWVALID_HardLink),
+		.M2S_W_WID (master_M2S_W_WID_master_M2S_W_WID_HardLink),
+		.M2S_W_WDATA0 (master_M2S_W_WDATA0_master_M2S_W_WDATA_HardLink),
+		.M2S_W_WDATA1 (master_M2S_W_WDATA1_master_M2S_W_WDATA_HardLink),
+		.M2S_W_WDATA2 (master_M2S_W_WDATA2_master_M2S_W_WDATA_HardLink),
+		.M2S_W_WDATA3 (master_M2S_W_WDATA3_master_M2S_W_WDATA_HardLink),
+		.M2S_W_WSTRB (master_M2S_W_WSTRB_master_M2S_W_WSTRB_HardLink),
+		.M2S_W_WLAST (master_M2S_W_WLAST_master_M2S_W_WLAST_HardLink),
+		.M2S_W_WUSER (master_M2S_W_WUSER_master_M2S_W_WUSER_HardLink),
+		.M2S_W_WVALID (master_M2S_W_WVALID_master_M2S_W_WVALID_HardLink),
+		.M2S_B_BREADY (master_M2S_B_BREADY_master_M2S_B_BREADY_HardLink)
 	);
 	always @ (*)
 	begin
@@ -564,134 +564,134 @@ module AXI4MasterSlaveTestModule_TopLevel
 	assign BVALID = reg_S2M_B_BVALID;
 	assign RACK = master_RACK;
 	assign WACK = master_WACK;
-	assign regM2S_AR_ARIDreg_M2S_AR_ARIDHardLink = reg_M2S_AR_ARID;
-	assign regM2S_AR_ARADDRreg_M2S_AR_ARADDRHardLink = reg_M2S_AR_ARADDR;
-	assign regM2S_AR_ARLENreg_M2S_AR_ARLENHardLink = reg_M2S_AR_ARLEN;
-	assign regM2S_AR_ARSIZEreg_M2S_AR_ARSIZEHardLink = reg_M2S_AR_ARSIZE;
-	assign regM2S_AR_ARBURSTreg_M2S_AR_ARBURSTHardLink = reg_M2S_AR_ARBURST;
-	assign regM2S_AR_ARLOCKreg_M2S_AR_ARLOCKHardLink = reg_M2S_AR_ARLOCK;
-	assign regM2S_AR_ARCACHEreg_M2S_AR_ARCACHEHardLink = reg_M2S_AR_ARCACHE;
-	assign regM2S_AR_ARPROTreg_M2S_AR_ARPROTHardLink = reg_M2S_AR_ARPROT;
-	assign regM2S_AR_ARQOSreg_M2S_AR_ARQOSHardLink = reg_M2S_AR_ARQOS;
-	assign regM2S_AR_ARREGIONreg_M2S_AR_ARREGIONHardLink = reg_M2S_AR_ARREGION;
-	assign regM2S_AR_ARUSERreg_M2S_AR_ARUSERHardLink = reg_M2S_AR_ARUSER;
-	assign regM2S_AR_ARVALIDreg_M2S_AR_ARVALIDHardLink = reg_M2S_AR_ARVALID;
-	assign regM2S_R_RREADYreg_M2S_R_RREADYHardLink = reg_M2S_R_RREADY;
-	assign regM2S_AW_AWIDreg_M2S_AW_AWIDHardLink = reg_M2S_AW_AWID;
-	assign regM2S_AW_AWADDRreg_M2S_AW_AWADDRHardLink = reg_M2S_AW_AWADDR;
-	assign regM2S_AW_AWLENreg_M2S_AW_AWLENHardLink = reg_M2S_AW_AWLEN;
-	assign regM2S_AW_AWSIZEreg_M2S_AW_AWSIZEHardLink = reg_M2S_AW_AWSIZE;
-	assign regM2S_AW_AWBURSTreg_M2S_AW_AWBURSTHardLink = reg_M2S_AW_AWBURST;
-	assign regM2S_AW_AWLOCKreg_M2S_AW_AWLOCKHardLink = reg_M2S_AW_AWLOCK;
-	assign regM2S_AW_AWCACHEreg_M2S_AW_AWCACHEHardLink = reg_M2S_AW_AWCACHE;
-	assign regM2S_AW_AWPROTreg_M2S_AW_AWPROTHardLink = reg_M2S_AW_AWPROT;
-	assign regM2S_AW_AWQOSreg_M2S_AW_AWQOSHardLink = reg_M2S_AW_AWQOS;
-	assign regM2S_AW_AWREGIONreg_M2S_AW_AWREGIONHardLink = reg_M2S_AW_AWREGION;
-	assign regM2S_AW_AWUSERreg_M2S_AW_AWUSERHardLink = reg_M2S_AW_AWUSER;
-	assign regM2S_AW_AWVALIDreg_M2S_AW_AWVALIDHardLink = reg_M2S_AW_AWVALID;
-	assign regM2S_W_WIDreg_M2S_W_WIDHardLink = reg_M2S_W_WID;
-	assign regM2S_W_WDATA0reg_M2S_W_WDATAHardLink = reg_M2S_W_WDATA[0];
-	assign regM2S_W_WDATA1reg_M2S_W_WDATAHardLink = reg_M2S_W_WDATA[1];
-	assign regM2S_W_WDATA2reg_M2S_W_WDATAHardLink = reg_M2S_W_WDATA[2];
-	assign regM2S_W_WDATA3reg_M2S_W_WDATAHardLink = reg_M2S_W_WDATA[3];
-	assign regM2S_W_WSTRBreg_M2S_W_WSTRBHardLink = reg_M2S_W_WSTRB;
-	assign regM2S_W_WLASTreg_M2S_W_WLASTHardLink = reg_M2S_W_WLAST;
-	assign regM2S_W_WUSERreg_M2S_W_WUSERHardLink = reg_M2S_W_WUSER;
-	assign regM2S_W_WVALIDreg_M2S_W_WVALIDHardLink = reg_M2S_W_WVALID;
-	assign regM2S_B_BREADYreg_M2S_B_BREADYHardLink = reg_M2S_B_BREADY;
-	assign reginWEreg_inWEHardLink = reg_inWE;
-	assign reginWDATA0reg_inWDATAHardLink = reg_inWDATA[0];
-	assign reginWDATA1reg_inWDATAHardLink = reg_inWDATA[1];
-	assign reginWDATA2reg_inWDATAHardLink = reg_inWDATA[2];
-	assign reginWDATA3reg_inWDATAHardLink = reg_inWDATA[3];
-	assign reg_outData[0] = regoutData0reg_outDataHardLink;
-	assign reg_outData[1] = regoutData1reg_outDataHardLink;
-	assign reg_outData[2] = regoutData2reg_outDataHardLink;
-	assign reg_outData[3] = regoutData3reg_outDataHardLink;
-	assign reg_outACK = regoutACKreg_outACKHardLink;
-	assign reg_S2M_AR_ARREADY = regS2M_AR_ARREADYreg_S2M_AR_ARREADYHardLink;
-	assign reg_S2M_AW_AWREADY = regS2M_AW_AWREADYreg_S2M_AW_AWREADYHardLink;
-	assign reg_S2M_B_BID = regS2M_B_BIDreg_S2M_B_BIDHardLink;
-	assign reg_S2M_B_BRESP = regS2M_B_BRESPreg_S2M_B_BRESPHardLink;
-	assign reg_S2M_B_BUSER = regS2M_B_BUSERreg_S2M_B_BUSERHardLink;
-	assign reg_S2M_B_BVALID = regS2M_B_BVALIDreg_S2M_B_BVALIDHardLink;
-	assign reg_S2M_R_RID = regS2M_R_RIDreg_S2M_R_RIDHardLink;
-	assign reg_S2M_R_RDATA[0] = regS2M_R_RDATA0reg_S2M_R_RDATAHardLink;
-	assign reg_S2M_R_RDATA[1] = regS2M_R_RDATA1reg_S2M_R_RDATAHardLink;
-	assign reg_S2M_R_RDATA[2] = regS2M_R_RDATA2reg_S2M_R_RDATAHardLink;
-	assign reg_S2M_R_RDATA[3] = regS2M_R_RDATA3reg_S2M_R_RDATAHardLink;
-	assign reg_S2M_R_RRESP = regS2M_R_RRESPreg_S2M_R_RRESPHardLink;
-	assign reg_S2M_R_RLAST = regS2M_R_RLASTreg_S2M_R_RLASTHardLink;
-	assign reg_S2M_R_RUSER = regS2M_R_RUSERreg_S2M_R_RUSERHardLink;
-	assign reg_S2M_R_RVALID = regS2M_R_RVALIDreg_S2M_R_RVALIDHardLink;
-	assign reg_S2M_W_WREADY = regS2M_W_WREADYreg_S2M_W_WREADYHardLink;
-	assign reg_outWritten = regoutWrittenreg_outWrittenHardLink;
-	assign masterS2M_AR_ARREADYmaster_S2M_AR_ARREADYHardLink = master_S2M_AR_ARREADY;
-	assign masterS2M_AW_AWREADYmaster_S2M_AW_AWREADYHardLink = master_S2M_AW_AWREADY;
-	assign masterS2M_B_BIDmaster_S2M_B_BIDHardLink = master_S2M_B_BID;
-	assign masterS2M_B_BRESPmaster_S2M_B_BRESPHardLink = master_S2M_B_BRESP;
-	assign masterS2M_B_BUSERmaster_S2M_B_BUSERHardLink = master_S2M_B_BUSER;
-	assign masterS2M_B_BVALIDmaster_S2M_B_BVALIDHardLink = master_S2M_B_BVALID;
-	assign masterS2M_R_RIDmaster_S2M_R_RIDHardLink = master_S2M_R_RID;
-	assign masterS2M_R_RDATA0master_S2M_R_RDATAHardLink = master_S2M_R_RDATA[0];
-	assign masterS2M_R_RDATA1master_S2M_R_RDATAHardLink = master_S2M_R_RDATA[1];
-	assign masterS2M_R_RDATA2master_S2M_R_RDATAHardLink = master_S2M_R_RDATA[2];
-	assign masterS2M_R_RDATA3master_S2M_R_RDATAHardLink = master_S2M_R_RDATA[3];
-	assign masterS2M_R_RRESPmaster_S2M_R_RRESPHardLink = master_S2M_R_RRESP;
-	assign masterS2M_R_RLASTmaster_S2M_R_RLASTHardLink = master_S2M_R_RLAST;
-	assign masterS2M_R_RUSERmaster_S2M_R_RUSERHardLink = master_S2M_R_RUSER;
-	assign masterS2M_R_RVALIDmaster_S2M_R_RVALIDHardLink = master_S2M_R_RVALID;
-	assign masterS2M_W_WREADYmaster_S2M_W_WREADYHardLink = master_S2M_W_WREADY;
-	assign masterARADDRmaster_ARADDRHardLink = master_ARADDR;
-	assign masterREmaster_REHardLink = master_RE;
-	assign masterAWADDRmaster_AWADDRHardLink = master_AWADDR;
-	assign masterWEmaster_WEHardLink = master_WE;
-	assign masterWSTRBmaster_WSTRBHardLink = master_WSTRB;
-	assign masterWDATA0master_WDATAHardLink = master_WDATA[0];
-	assign masterWDATA1master_WDATAHardLink = master_WDATA[1];
-	assign masterWDATA2master_WDATAHardLink = master_WDATA[2];
-	assign masterWDATA3master_WDATAHardLink = master_WDATA[3];
-	assign master_RACK = masterRACKmaster_RACKHardLink;
-	assign master_RDATA[0] = masterRDATA0master_RDATAHardLink;
-	assign master_RDATA[1] = masterRDATA1master_RDATAHardLink;
-	assign master_RDATA[2] = masterRDATA2master_RDATAHardLink;
-	assign master_RDATA[3] = masterRDATA3master_RDATAHardLink;
-	assign master_WACK = masterWACKmaster_WACKHardLink;
-	assign master_M2S_AR_ARID = masterM2S_AR_ARIDmaster_M2S_AR_ARIDHardLink;
-	assign master_M2S_AR_ARADDR = masterM2S_AR_ARADDRmaster_M2S_AR_ARADDRHardLink;
-	assign master_M2S_AR_ARLEN = masterM2S_AR_ARLENmaster_M2S_AR_ARLENHardLink;
-	assign master_M2S_AR_ARSIZE = masterM2S_AR_ARSIZEmaster_M2S_AR_ARSIZEHardLink;
-	assign master_M2S_AR_ARBURST = masterM2S_AR_ARBURSTmaster_M2S_AR_ARBURSTHardLink;
-	assign master_M2S_AR_ARLOCK = masterM2S_AR_ARLOCKmaster_M2S_AR_ARLOCKHardLink;
-	assign master_M2S_AR_ARCACHE = masterM2S_AR_ARCACHEmaster_M2S_AR_ARCACHEHardLink;
-	assign master_M2S_AR_ARPROT = masterM2S_AR_ARPROTmaster_M2S_AR_ARPROTHardLink;
-	assign master_M2S_AR_ARQOS = masterM2S_AR_ARQOSmaster_M2S_AR_ARQOSHardLink;
-	assign master_M2S_AR_ARREGION = masterM2S_AR_ARREGIONmaster_M2S_AR_ARREGIONHardLink;
-	assign master_M2S_AR_ARUSER = masterM2S_AR_ARUSERmaster_M2S_AR_ARUSERHardLink;
-	assign master_M2S_AR_ARVALID = masterM2S_AR_ARVALIDmaster_M2S_AR_ARVALIDHardLink;
-	assign master_M2S_R_RREADY = masterM2S_R_RREADYmaster_M2S_R_RREADYHardLink;
-	assign master_M2S_AW_AWID = masterM2S_AW_AWIDmaster_M2S_AW_AWIDHardLink;
-	assign master_M2S_AW_AWADDR = masterM2S_AW_AWADDRmaster_M2S_AW_AWADDRHardLink;
-	assign master_M2S_AW_AWLEN = masterM2S_AW_AWLENmaster_M2S_AW_AWLENHardLink;
-	assign master_M2S_AW_AWSIZE = masterM2S_AW_AWSIZEmaster_M2S_AW_AWSIZEHardLink;
-	assign master_M2S_AW_AWBURST = masterM2S_AW_AWBURSTmaster_M2S_AW_AWBURSTHardLink;
-	assign master_M2S_AW_AWLOCK = masterM2S_AW_AWLOCKmaster_M2S_AW_AWLOCKHardLink;
-	assign master_M2S_AW_AWCACHE = masterM2S_AW_AWCACHEmaster_M2S_AW_AWCACHEHardLink;
-	assign master_M2S_AW_AWPROT = masterM2S_AW_AWPROTmaster_M2S_AW_AWPROTHardLink;
-	assign master_M2S_AW_AWQOS = masterM2S_AW_AWQOSmaster_M2S_AW_AWQOSHardLink;
-	assign master_M2S_AW_AWREGION = masterM2S_AW_AWREGIONmaster_M2S_AW_AWREGIONHardLink;
-	assign master_M2S_AW_AWUSER = masterM2S_AW_AWUSERmaster_M2S_AW_AWUSERHardLink;
-	assign master_M2S_AW_AWVALID = masterM2S_AW_AWVALIDmaster_M2S_AW_AWVALIDHardLink;
-	assign master_M2S_W_WID = masterM2S_W_WIDmaster_M2S_W_WIDHardLink;
-	assign master_M2S_W_WDATA[0] = masterM2S_W_WDATA0master_M2S_W_WDATAHardLink;
-	assign master_M2S_W_WDATA[1] = masterM2S_W_WDATA1master_M2S_W_WDATAHardLink;
-	assign master_M2S_W_WDATA[2] = masterM2S_W_WDATA2master_M2S_W_WDATAHardLink;
-	assign master_M2S_W_WDATA[3] = masterM2S_W_WDATA3master_M2S_W_WDATAHardLink;
-	assign master_M2S_W_WSTRB = masterM2S_W_WSTRBmaster_M2S_W_WSTRBHardLink;
-	assign master_M2S_W_WLAST = masterM2S_W_WLASTmaster_M2S_W_WLASTHardLink;
-	assign master_M2S_W_WUSER = masterM2S_W_WUSERmaster_M2S_W_WUSERHardLink;
-	assign master_M2S_W_WVALID = masterM2S_W_WVALIDmaster_M2S_W_WVALIDHardLink;
-	assign master_M2S_B_BREADY = masterM2S_B_BREADYmaster_M2S_B_BREADYHardLink;
+	assign reg_M2S_AR_ARID_reg_M2S_AR_ARID_HardLink = reg_M2S_AR_ARID;
+	assign reg_M2S_AR_ARADDR_reg_M2S_AR_ARADDR_HardLink = reg_M2S_AR_ARADDR;
+	assign reg_M2S_AR_ARLEN_reg_M2S_AR_ARLEN_HardLink = reg_M2S_AR_ARLEN;
+	assign reg_M2S_AR_ARSIZE_reg_M2S_AR_ARSIZE_HardLink = reg_M2S_AR_ARSIZE;
+	assign reg_M2S_AR_ARBURST_reg_M2S_AR_ARBURST_HardLink = reg_M2S_AR_ARBURST;
+	assign reg_M2S_AR_ARLOCK_reg_M2S_AR_ARLOCK_HardLink = reg_M2S_AR_ARLOCK;
+	assign reg_M2S_AR_ARCACHE_reg_M2S_AR_ARCACHE_HardLink = reg_M2S_AR_ARCACHE;
+	assign reg_M2S_AR_ARPROT_reg_M2S_AR_ARPROT_HardLink = reg_M2S_AR_ARPROT;
+	assign reg_M2S_AR_ARQOS_reg_M2S_AR_ARQOS_HardLink = reg_M2S_AR_ARQOS;
+	assign reg_M2S_AR_ARREGION_reg_M2S_AR_ARREGION_HardLink = reg_M2S_AR_ARREGION;
+	assign reg_M2S_AR_ARUSER_reg_M2S_AR_ARUSER_HardLink = reg_M2S_AR_ARUSER;
+	assign reg_M2S_AR_ARVALID_reg_M2S_AR_ARVALID_HardLink = reg_M2S_AR_ARVALID;
+	assign reg_M2S_R_RREADY_reg_M2S_R_RREADY_HardLink = reg_M2S_R_RREADY;
+	assign reg_M2S_AW_AWID_reg_M2S_AW_AWID_HardLink = reg_M2S_AW_AWID;
+	assign reg_M2S_AW_AWADDR_reg_M2S_AW_AWADDR_HardLink = reg_M2S_AW_AWADDR;
+	assign reg_M2S_AW_AWLEN_reg_M2S_AW_AWLEN_HardLink = reg_M2S_AW_AWLEN;
+	assign reg_M2S_AW_AWSIZE_reg_M2S_AW_AWSIZE_HardLink = reg_M2S_AW_AWSIZE;
+	assign reg_M2S_AW_AWBURST_reg_M2S_AW_AWBURST_HardLink = reg_M2S_AW_AWBURST;
+	assign reg_M2S_AW_AWLOCK_reg_M2S_AW_AWLOCK_HardLink = reg_M2S_AW_AWLOCK;
+	assign reg_M2S_AW_AWCACHE_reg_M2S_AW_AWCACHE_HardLink = reg_M2S_AW_AWCACHE;
+	assign reg_M2S_AW_AWPROT_reg_M2S_AW_AWPROT_HardLink = reg_M2S_AW_AWPROT;
+	assign reg_M2S_AW_AWQOS_reg_M2S_AW_AWQOS_HardLink = reg_M2S_AW_AWQOS;
+	assign reg_M2S_AW_AWREGION_reg_M2S_AW_AWREGION_HardLink = reg_M2S_AW_AWREGION;
+	assign reg_M2S_AW_AWUSER_reg_M2S_AW_AWUSER_HardLink = reg_M2S_AW_AWUSER;
+	assign reg_M2S_AW_AWVALID_reg_M2S_AW_AWVALID_HardLink = reg_M2S_AW_AWVALID;
+	assign reg_M2S_W_WID_reg_M2S_W_WID_HardLink = reg_M2S_W_WID;
+	assign reg_M2S_W_WDATA0_reg_M2S_W_WDATA_HardLink = reg_M2S_W_WDATA[0];
+	assign reg_M2S_W_WDATA1_reg_M2S_W_WDATA_HardLink = reg_M2S_W_WDATA[1];
+	assign reg_M2S_W_WDATA2_reg_M2S_W_WDATA_HardLink = reg_M2S_W_WDATA[2];
+	assign reg_M2S_W_WDATA3_reg_M2S_W_WDATA_HardLink = reg_M2S_W_WDATA[3];
+	assign reg_M2S_W_WSTRB_reg_M2S_W_WSTRB_HardLink = reg_M2S_W_WSTRB;
+	assign reg_M2S_W_WLAST_reg_M2S_W_WLAST_HardLink = reg_M2S_W_WLAST;
+	assign reg_M2S_W_WUSER_reg_M2S_W_WUSER_HardLink = reg_M2S_W_WUSER;
+	assign reg_M2S_W_WVALID_reg_M2S_W_WVALID_HardLink = reg_M2S_W_WVALID;
+	assign reg_M2S_B_BREADY_reg_M2S_B_BREADY_HardLink = reg_M2S_B_BREADY;
+	assign reg_inWE_reg_inWE_HardLink = reg_inWE;
+	assign reg_inWDATA0_reg_inWDATA_HardLink = reg_inWDATA[0];
+	assign reg_inWDATA1_reg_inWDATA_HardLink = reg_inWDATA[1];
+	assign reg_inWDATA2_reg_inWDATA_HardLink = reg_inWDATA[2];
+	assign reg_inWDATA3_reg_inWDATA_HardLink = reg_inWDATA[3];
+	assign reg_outData[0] = reg_outData0_reg_outData_HardLink;
+	assign reg_outData[1] = reg_outData1_reg_outData_HardLink;
+	assign reg_outData[2] = reg_outData2_reg_outData_HardLink;
+	assign reg_outData[3] = reg_outData3_reg_outData_HardLink;
+	assign reg_outACK = reg_outACK_reg_outACK_HardLink;
+	assign reg_S2M_AR_ARREADY = reg_S2M_AR_ARREADY_reg_S2M_AR_ARREADY_HardLink;
+	assign reg_S2M_AW_AWREADY = reg_S2M_AW_AWREADY_reg_S2M_AW_AWREADY_HardLink;
+	assign reg_S2M_B_BID = reg_S2M_B_BID_reg_S2M_B_BID_HardLink;
+	assign reg_S2M_B_BRESP = reg_S2M_B_BRESP_reg_S2M_B_BRESP_HardLink;
+	assign reg_S2M_B_BUSER = reg_S2M_B_BUSER_reg_S2M_B_BUSER_HardLink;
+	assign reg_S2M_B_BVALID = reg_S2M_B_BVALID_reg_S2M_B_BVALID_HardLink;
+	assign reg_S2M_R_RID = reg_S2M_R_RID_reg_S2M_R_RID_HardLink;
+	assign reg_S2M_R_RDATA[0] = reg_S2M_R_RDATA0_reg_S2M_R_RDATA_HardLink;
+	assign reg_S2M_R_RDATA[1] = reg_S2M_R_RDATA1_reg_S2M_R_RDATA_HardLink;
+	assign reg_S2M_R_RDATA[2] = reg_S2M_R_RDATA2_reg_S2M_R_RDATA_HardLink;
+	assign reg_S2M_R_RDATA[3] = reg_S2M_R_RDATA3_reg_S2M_R_RDATA_HardLink;
+	assign reg_S2M_R_RRESP = reg_S2M_R_RRESP_reg_S2M_R_RRESP_HardLink;
+	assign reg_S2M_R_RLAST = reg_S2M_R_RLAST_reg_S2M_R_RLAST_HardLink;
+	assign reg_S2M_R_RUSER = reg_S2M_R_RUSER_reg_S2M_R_RUSER_HardLink;
+	assign reg_S2M_R_RVALID = reg_S2M_R_RVALID_reg_S2M_R_RVALID_HardLink;
+	assign reg_S2M_W_WREADY = reg_S2M_W_WREADY_reg_S2M_W_WREADY_HardLink;
+	assign reg_outWritten = reg_outWritten_reg_outWritten_HardLink;
+	assign master_S2M_AR_ARREADY_master_S2M_AR_ARREADY_HardLink = master_S2M_AR_ARREADY;
+	assign master_S2M_AW_AWREADY_master_S2M_AW_AWREADY_HardLink = master_S2M_AW_AWREADY;
+	assign master_S2M_B_BID_master_S2M_B_BID_HardLink = master_S2M_B_BID;
+	assign master_S2M_B_BRESP_master_S2M_B_BRESP_HardLink = master_S2M_B_BRESP;
+	assign master_S2M_B_BUSER_master_S2M_B_BUSER_HardLink = master_S2M_B_BUSER;
+	assign master_S2M_B_BVALID_master_S2M_B_BVALID_HardLink = master_S2M_B_BVALID;
+	assign master_S2M_R_RID_master_S2M_R_RID_HardLink = master_S2M_R_RID;
+	assign master_S2M_R_RDATA0_master_S2M_R_RDATA_HardLink = master_S2M_R_RDATA[0];
+	assign master_S2M_R_RDATA1_master_S2M_R_RDATA_HardLink = master_S2M_R_RDATA[1];
+	assign master_S2M_R_RDATA2_master_S2M_R_RDATA_HardLink = master_S2M_R_RDATA[2];
+	assign master_S2M_R_RDATA3_master_S2M_R_RDATA_HardLink = master_S2M_R_RDATA[3];
+	assign master_S2M_R_RRESP_master_S2M_R_RRESP_HardLink = master_S2M_R_RRESP;
+	assign master_S2M_R_RLAST_master_S2M_R_RLAST_HardLink = master_S2M_R_RLAST;
+	assign master_S2M_R_RUSER_master_S2M_R_RUSER_HardLink = master_S2M_R_RUSER;
+	assign master_S2M_R_RVALID_master_S2M_R_RVALID_HardLink = master_S2M_R_RVALID;
+	assign master_S2M_W_WREADY_master_S2M_W_WREADY_HardLink = master_S2M_W_WREADY;
+	assign master_ARADDR_master_ARADDR_HardLink = master_ARADDR;
+	assign master_RE_master_RE_HardLink = master_RE;
+	assign master_AWADDR_master_AWADDR_HardLink = master_AWADDR;
+	assign master_WE_master_WE_HardLink = master_WE;
+	assign master_WSTRB_master_WSTRB_HardLink = master_WSTRB;
+	assign master_WDATA0_master_WDATA_HardLink = master_WDATA[0];
+	assign master_WDATA1_master_WDATA_HardLink = master_WDATA[1];
+	assign master_WDATA2_master_WDATA_HardLink = master_WDATA[2];
+	assign master_WDATA3_master_WDATA_HardLink = master_WDATA[3];
+	assign master_RACK = master_RACK_master_RACK_HardLink;
+	assign master_RDATA[0] = master_RDATA0_master_RDATA_HardLink;
+	assign master_RDATA[1] = master_RDATA1_master_RDATA_HardLink;
+	assign master_RDATA[2] = master_RDATA2_master_RDATA_HardLink;
+	assign master_RDATA[3] = master_RDATA3_master_RDATA_HardLink;
+	assign master_WACK = master_WACK_master_WACK_HardLink;
+	assign master_M2S_AR_ARID = master_M2S_AR_ARID_master_M2S_AR_ARID_HardLink;
+	assign master_M2S_AR_ARADDR = master_M2S_AR_ARADDR_master_M2S_AR_ARADDR_HardLink;
+	assign master_M2S_AR_ARLEN = master_M2S_AR_ARLEN_master_M2S_AR_ARLEN_HardLink;
+	assign master_M2S_AR_ARSIZE = master_M2S_AR_ARSIZE_master_M2S_AR_ARSIZE_HardLink;
+	assign master_M2S_AR_ARBURST = master_M2S_AR_ARBURST_master_M2S_AR_ARBURST_HardLink;
+	assign master_M2S_AR_ARLOCK = master_M2S_AR_ARLOCK_master_M2S_AR_ARLOCK_HardLink;
+	assign master_M2S_AR_ARCACHE = master_M2S_AR_ARCACHE_master_M2S_AR_ARCACHE_HardLink;
+	assign master_M2S_AR_ARPROT = master_M2S_AR_ARPROT_master_M2S_AR_ARPROT_HardLink;
+	assign master_M2S_AR_ARQOS = master_M2S_AR_ARQOS_master_M2S_AR_ARQOS_HardLink;
+	assign master_M2S_AR_ARREGION = master_M2S_AR_ARREGION_master_M2S_AR_ARREGION_HardLink;
+	assign master_M2S_AR_ARUSER = master_M2S_AR_ARUSER_master_M2S_AR_ARUSER_HardLink;
+	assign master_M2S_AR_ARVALID = master_M2S_AR_ARVALID_master_M2S_AR_ARVALID_HardLink;
+	assign master_M2S_R_RREADY = master_M2S_R_RREADY_master_M2S_R_RREADY_HardLink;
+	assign master_M2S_AW_AWID = master_M2S_AW_AWID_master_M2S_AW_AWID_HardLink;
+	assign master_M2S_AW_AWADDR = master_M2S_AW_AWADDR_master_M2S_AW_AWADDR_HardLink;
+	assign master_M2S_AW_AWLEN = master_M2S_AW_AWLEN_master_M2S_AW_AWLEN_HardLink;
+	assign master_M2S_AW_AWSIZE = master_M2S_AW_AWSIZE_master_M2S_AW_AWSIZE_HardLink;
+	assign master_M2S_AW_AWBURST = master_M2S_AW_AWBURST_master_M2S_AW_AWBURST_HardLink;
+	assign master_M2S_AW_AWLOCK = master_M2S_AW_AWLOCK_master_M2S_AW_AWLOCK_HardLink;
+	assign master_M2S_AW_AWCACHE = master_M2S_AW_AWCACHE_master_M2S_AW_AWCACHE_HardLink;
+	assign master_M2S_AW_AWPROT = master_M2S_AW_AWPROT_master_M2S_AW_AWPROT_HardLink;
+	assign master_M2S_AW_AWQOS = master_M2S_AW_AWQOS_master_M2S_AW_AWQOS_HardLink;
+	assign master_M2S_AW_AWREGION = master_M2S_AW_AWREGION_master_M2S_AW_AWREGION_HardLink;
+	assign master_M2S_AW_AWUSER = master_M2S_AW_AWUSER_master_M2S_AW_AWUSER_HardLink;
+	assign master_M2S_AW_AWVALID = master_M2S_AW_AWVALID_master_M2S_AW_AWVALID_HardLink;
+	assign master_M2S_W_WID = master_M2S_W_WID_master_M2S_W_WID_HardLink;
+	assign master_M2S_W_WDATA[0] = master_M2S_W_WDATA0_master_M2S_W_WDATA_HardLink;
+	assign master_M2S_W_WDATA[1] = master_M2S_W_WDATA1_master_M2S_W_WDATA_HardLink;
+	assign master_M2S_W_WDATA[2] = master_M2S_W_WDATA2_master_M2S_W_WDATA_HardLink;
+	assign master_M2S_W_WDATA[3] = master_M2S_W_WDATA3_master_M2S_W_WDATA_HardLink;
+	assign master_M2S_W_WSTRB = master_M2S_W_WSTRB_master_M2S_W_WSTRB_HardLink;
+	assign master_M2S_W_WLAST = master_M2S_W_WLAST_master_M2S_W_WLAST_HardLink;
+	assign master_M2S_W_WUSER = master_M2S_W_WUSER_master_M2S_W_WUSER_HardLink;
+	assign master_M2S_W_WVALID = master_M2S_W_WVALID_master_M2S_W_WVALID_HardLink;
+	assign master_M2S_B_BREADY = master_M2S_B_BREADY_master_M2S_B_BREADY_HardLink;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

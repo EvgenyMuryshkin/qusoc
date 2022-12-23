@@ -23,6 +23,7 @@ namespace Quokka.RTL
     public abstract class RTLCombinationalModule<TInput> : IRTLCombinationalModule<TInput>
         where TInput : new()
     {
+        public virtual RTLModuleAnalizers Analizers => null;
         public Type InputsType { get; } = typeof(TInput);
         public virtual string ModuleName => GetType().Name;
         public virtual IEnumerable<MemberInfo> InputProps { get; private set; }

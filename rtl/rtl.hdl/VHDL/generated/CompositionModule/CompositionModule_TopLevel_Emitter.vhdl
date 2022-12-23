@@ -40,8 +40,8 @@ architecture rtl of CompositionModule_TopLevel_Emitter is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	constant EmitterModule_L22F9L25T10_EmitterModule_L24F54T55_Expr : std_logic := '1';
 	signal Inputs_IsEnabled : std_logic := '0';
 	signal Inputs_Ack : std_logic := '0';

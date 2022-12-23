@@ -43,8 +43,8 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel_u_ram_filo_q is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	signal Inputs_CE : std_logic := '0';
 	signal Inputs_WR : std_logic := '0';
 	signal Inputs_WR_ADDR : unsigned(8 downto 0) := (others => '0');

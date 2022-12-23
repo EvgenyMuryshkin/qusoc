@@ -45,10 +45,6 @@ module SP_RF_WSTRB_RAMModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_0_w = 1'b0;
-	wire SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_1_w = 1'b1;
-	wire [1: 0] SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_2_w = 2'b10;
-	wire [1: 0] SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_3_w = 2'b11;
 	wire [7: 0] Inputs_Address;
 	wire Inputs_WE;
 	wire [3: 0] Inputs_WSTRB;

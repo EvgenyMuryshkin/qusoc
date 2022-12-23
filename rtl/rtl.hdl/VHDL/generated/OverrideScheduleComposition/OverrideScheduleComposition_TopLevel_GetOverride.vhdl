@@ -38,8 +38,8 @@ architecture rtl of OverrideScheduleComposition_TopLevel_GetOverride is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	constant CombinationalOverridesBase_L16F50T51_Expr : std_logic := '1';
 	constant CombinationalGetValueOverride_L12F13L19T14_CombinationalGetValueOverride_L16F54T55_Expr : unsigned(1 downto 0) := "11";
 	signal Inputs_InOverride : std_logic := '0';

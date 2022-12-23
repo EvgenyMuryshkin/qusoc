@@ -48,8 +48,8 @@ architecture rtl of FromConfigurationPipelineModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	constant Pipeline_PipelineConfigurations_L38F60T61_Expr : unsigned(3 downto 0) := "1000";
 	signal Inputs_inReady : std_logic := '0';
 	signal Pipeline_stage0_NextState_IsS0Ready : std_logic := '0';

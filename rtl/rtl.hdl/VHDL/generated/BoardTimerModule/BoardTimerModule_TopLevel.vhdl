@@ -40,18 +40,18 @@ architecture rtl of BoardTimerModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	signal Inputs_Restart : std_logic := '0';
 	signal nestedTimerInputs_Restart : std_logic := '0';
 	signal timerModule10_Restart : std_logic := '0';
 	signal timerModule10_OutActive : std_logic := '0';
 	signal timerModule20_Restart : std_logic := '0';
 	signal timerModule20_OutActive : std_logic := '0';
-	signal timerModule10RestarttimerModule10_RestartHardLink : std_logic := '0';
-	signal timerModule10OutActivetimerModule10_OutActiveHardLink : std_logic := '0';
-	signal timerModule20RestarttimerModule20_RestartHardLink : std_logic := '0';
-	signal timerModule20OutActivetimerModule20_OutActiveHardLink : std_logic := '0';
+	signal timerModule10_Restart_timerModule10_Restart_HardLink : std_logic := '0';
+	signal timerModule10_OutActive_timerModule10_OutActive_HardLink : std_logic := '0';
+	signal timerModule20_Restart_timerModule20_Restart_HardLink : std_logic := '0';
+	signal timerModule20_OutActive_timerModule20_OutActive_HardLink : std_logic := '0';
 	signal BoardSignals : BoardSignalsType;
 	signal InternalReset : std_logic := '0';
 begin
@@ -62,8 +62,8 @@ begin
 		-- [BEGIN USER MAP FOR timerModule10]
 		-- [END USER MAP FOR timerModule10]
 		BoardSignals => BoardSignals,
-		Restart => timerModule10RestarttimerModule10_RestartHardLink,
-		OutActive => timerModule10OutActivetimerModule10_OutActiveHardLink
+		Restart => timerModule10_Restart_timerModule10_Restart_HardLink,
+		OutActive => timerModule10_OutActive_timerModule10_OutActive_HardLink
 	)
 	;
 	BoardTimerModule_TopLevel_timerModule20 : entity work.BoardTimerModule_TopLevel_timerModule20
@@ -72,11 +72,11 @@ begin
 		-- [BEGIN USER MAP FOR timerModule20]
 		-- [END USER MAP FOR timerModule20]
 		BoardSignals => BoardSignals,
-		Restart => timerModule20RestarttimerModule20_RestartHardLink,
-		OutActive => timerModule20OutActivetimerModule20_OutActiveHardLink
+		Restart => timerModule20_Restart_timerModule20_Restart_HardLink,
+		OutActive => timerModule20_OutActive_timerModule20_OutActive_HardLink
 	)
 	;
-	process (Inputs_Restart, nestedTimerInputs_Restart, Restart, timerModule10_OutActive, timerModule10_Restart, timerModule10OutActivetimerModule10_OutActiveHardLink, timerModule20_OutActive, timerModule20_Restart, timerModule20OutActivetimerModule20_OutActiveHardLink)
+	process (Inputs_Restart, nestedTimerInputs_Restart, Restart, timerModule10_OutActive, timerModule10_OutActive_timerModule10_OutActive_HardLink, timerModule10_Restart, timerModule20_OutActive, timerModule20_OutActive_timerModule20_OutActive_HardLink, timerModule20_Restart)
 	begin
 		Inputs_Restart <= Restart;
 		nestedTimerInputs_Restart <= Inputs_Restart;
@@ -84,10 +84,10 @@ begin
 		timerModule20_Restart <= nestedTimerInputs_Restart;
 		OutActive10 <= timerModule10_OutActive;
 		OutActive20 <= timerModule20_OutActive;
-		timerModule10RestarttimerModule10_RestartHardLink <= timerModule10_Restart;
-		timerModule10_OutActive <= timerModule10OutActivetimerModule10_OutActiveHardLink;
-		timerModule20RestarttimerModule20_RestartHardLink <= timerModule20_Restart;
-		timerModule20_OutActive <= timerModule20OutActivetimerModule20_OutActiveHardLink;
+		timerModule10_Restart_timerModule10_Restart_HardLink <= timerModule10_Restart;
+		timerModule10_OutActive <= timerModule10_OutActive_timerModule10_OutActive_HardLink;
+		timerModule20_Restart_timerModule20_Restart_HardLink <= timerModule20_Restart;
+		timerModule20_OutActive <= timerModule20_OutActive_timerModule20_OutActive_HardLink;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

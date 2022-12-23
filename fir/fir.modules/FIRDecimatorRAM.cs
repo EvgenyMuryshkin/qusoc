@@ -93,14 +93,14 @@ namespace fir.modules
                                 .WithEntityInstanceNamedGenericMapping("g_ram_size", $"{g_ram_size}")
                                 .WithEntityInstanceNamedGenericMapping("g_ram_size_log2", $"{FIRTools.log2(g_ram_size)}"),
                             PortMappings = new vhdEntityInstancePortMappings()
-                                .WithEntityInstanceNamedPortMapping("CLK", "BoardSignals.Clock")
-                                .WithEntityInstanceNamedPortMapping("CE", "CE")
-                                .WithEntityInstanceNamedPortMapping("WR", "WR")
-                                .WithEntityInstanceNamedPortMapping("WR_ADDR", "std_logic_vector(WR_ADDR)")
-                                .WithEntityInstanceNamedPortMapping("DIN", "std_logic_vector(DIN)")
-                                .WithEntityInstanceNamedPortMapping("RD", "RD")
-                                .WithEntityInstanceNamedPortMapping("RD_ADDR", "std_logic_vector(RD_ADDR)")
-                                .WithEntityInstanceNamedPortMapping("DOUT", "tmp")
+                                .WithEntityInstanceNamedPortMapping("CLK", "BoardSignals.Clock", vhdPortDirection.Input)
+                                .WithEntityInstanceNamedPortMapping("CE", "CE", vhdPortDirection.Input)
+                                .WithEntityInstanceNamedPortMapping("WR", "WR", vhdPortDirection.Input)
+                                .WithEntityInstanceNamedPortMapping("WR_ADDR", "std_logic_vector(WR_ADDR)", vhdPortDirection.Input)
+                                .WithEntityInstanceNamedPortMapping("DIN", "std_logic_vector(DIN)", vhdPortDirection.Input)
+                                .WithEntityInstanceNamedPortMapping("RD", "RD", vhdPortDirection.Input)
+                                .WithEntityInstanceNamedPortMapping("RD_ADDR", "std_logic_vector(RD_ADDR)", vhdPortDirection.Input)
+                                .WithEntityInstanceNamedPortMapping("DOUT", "tmp", vhdPortDirection.Output)
                         }
                     )
                     // TODO: add fluent for base types to return parent

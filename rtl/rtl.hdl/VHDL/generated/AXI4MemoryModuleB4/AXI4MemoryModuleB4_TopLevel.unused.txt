@@ -1,0 +1,6 @@
+No reads:
+	axiSlave_outARVALID
+	axiSlave_outAWVALID
+	axiSlave_outReadTXCompleting
+	axiSlave_outWVALID
+	size

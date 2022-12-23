@@ -62,77 +62,77 @@ module OverridesComposition_TopLevel
 	wire L3Override_InOverride;
 	wire [7: 0] L3Override_InValue;
 	wire [7: 0] L3Override_OutValue;
-	wire NoOverrideInOverrideNoOverride_InOverrideHardLink;
-	wire [7: 0] NoOverrideInValueNoOverride_InValueHardLink;
-	wire [7: 0] NoOverrideOutValueNoOverride_OutValueHardLink;
-	wire AutoOverrideInOverrideAutoOverride_InOverrideHardLink;
-	wire [7: 0] AutoOverrideInValueAutoOverride_InValueHardLink;
-	wire [7: 0] AutoOverrideOutValueAutoOverride_OutValueHardLink;
-	wire GetOverrideInOverrideGetOverride_InOverrideHardLink;
-	wire [7: 0] GetOverrideInValueGetOverride_InValueHardLink;
-	wire [7: 0] GetOverrideOutValueGetOverride_OutValueHardLink;
-	wire L1OverrideInOverrideL1Override_InOverrideHardLink;
-	wire [7: 0] L1OverrideInValueL1Override_InValueHardLink;
-	wire [7: 0] L1OverrideOutValueL1Override_OutValueHardLink;
-	wire L2OverrideInOverrideL2Override_InOverrideHardLink;
-	wire [7: 0] L2OverrideInValueL2Override_InValueHardLink;
-	wire [7: 0] L2OverrideOutValueL2Override_OutValueHardLink;
-	wire L3OverrideInOverrideL3Override_InOverrideHardLink;
-	wire [7: 0] L3OverrideInValueL3Override_InValueHardLink;
-	wire [7: 0] L3OverrideOutValueL3Override_OutValueHardLink;
+	wire NoOverride_InOverride_NoOverride_InOverride_HardLink;
+	wire [7: 0] NoOverride_InValue_NoOverride_InValue_HardLink;
+	wire [7: 0] NoOverride_OutValue_NoOverride_OutValue_HardLink;
+	wire AutoOverride_InOverride_AutoOverride_InOverride_HardLink;
+	wire [7: 0] AutoOverride_InValue_AutoOverride_InValue_HardLink;
+	wire [7: 0] AutoOverride_OutValue_AutoOverride_OutValue_HardLink;
+	wire GetOverride_InOverride_GetOverride_InOverride_HardLink;
+	wire [7: 0] GetOverride_InValue_GetOverride_InValue_HardLink;
+	wire [7: 0] GetOverride_OutValue_GetOverride_OutValue_HardLink;
+	wire L1Override_InOverride_L1Override_InOverride_HardLink;
+	wire [7: 0] L1Override_InValue_L1Override_InValue_HardLink;
+	wire [7: 0] L1Override_OutValue_L1Override_OutValue_HardLink;
+	wire L2Override_InOverride_L2Override_InOverride_HardLink;
+	wire [7: 0] L2Override_InValue_L2Override_InValue_HardLink;
+	wire [7: 0] L2Override_OutValue_L2Override_OutValue_HardLink;
+	wire L3Override_InOverride_L3Override_InOverride_HardLink;
+	wire [7: 0] L3Override_InValue_L3Override_InValue_HardLink;
+	wire [7: 0] L3Override_OutValue_L3Override_OutValue_HardLink;
 	OverridesComposition_TopLevel_NoOverride
 	OverridesComposition_TopLevel_NoOverride
 	(
 		// [BEGIN USER MAP FOR NoOverride]
 		// [END USER MAP FOR NoOverride]
-		.InOverride (NoOverrideInOverrideNoOverride_InOverrideHardLink),
-		.InValue (NoOverrideInValueNoOverride_InValueHardLink),
-		.OutValue (NoOverrideOutValueNoOverride_OutValueHardLink)
+		.InOverride (NoOverride_InOverride_NoOverride_InOverride_HardLink),
+		.InValue (NoOverride_InValue_NoOverride_InValue_HardLink),
+		.OutValue (NoOverride_OutValue_NoOverride_OutValue_HardLink)
 	);
 	OverridesComposition_TopLevel_AutoOverride
 	OverridesComposition_TopLevel_AutoOverride
 	(
 		// [BEGIN USER MAP FOR AutoOverride]
 		// [END USER MAP FOR AutoOverride]
-		.InOverride (AutoOverrideInOverrideAutoOverride_InOverrideHardLink),
-		.InValue (AutoOverrideInValueAutoOverride_InValueHardLink),
-		.OutValue (AutoOverrideOutValueAutoOverride_OutValueHardLink)
+		.InOverride (AutoOverride_InOverride_AutoOverride_InOverride_HardLink),
+		.InValue (AutoOverride_InValue_AutoOverride_InValue_HardLink),
+		.OutValue (AutoOverride_OutValue_AutoOverride_OutValue_HardLink)
 	);
 	OverridesComposition_TopLevel_GetOverride
 	OverridesComposition_TopLevel_GetOverride
 	(
 		// [BEGIN USER MAP FOR GetOverride]
 		// [END USER MAP FOR GetOverride]
-		.InOverride (GetOverrideInOverrideGetOverride_InOverrideHardLink),
-		.InValue (GetOverrideInValueGetOverride_InValueHardLink),
-		.OutValue (GetOverrideOutValueGetOverride_OutValueHardLink)
+		.InOverride (GetOverride_InOverride_GetOverride_InOverride_HardLink),
+		.InValue (GetOverride_InValue_GetOverride_InValue_HardLink),
+		.OutValue (GetOverride_OutValue_GetOverride_OutValue_HardLink)
 	);
 	OverridesComposition_TopLevel_L1Override
 	OverridesComposition_TopLevel_L1Override
 	(
 		// [BEGIN USER MAP FOR L1Override]
 		// [END USER MAP FOR L1Override]
-		.InOverride (L1OverrideInOverrideL1Override_InOverrideHardLink),
-		.InValue (L1OverrideInValueL1Override_InValueHardLink),
-		.OutValue (L1OverrideOutValueL1Override_OutValueHardLink)
+		.InOverride (L1Override_InOverride_L1Override_InOverride_HardLink),
+		.InValue (L1Override_InValue_L1Override_InValue_HardLink),
+		.OutValue (L1Override_OutValue_L1Override_OutValue_HardLink)
 	);
 	OverridesComposition_TopLevel_L2Override
 	OverridesComposition_TopLevel_L2Override
 	(
 		// [BEGIN USER MAP FOR L2Override]
 		// [END USER MAP FOR L2Override]
-		.InOverride (L2OverrideInOverrideL2Override_InOverrideHardLink),
-		.InValue (L2OverrideInValueL2Override_InValueHardLink),
-		.OutValue (L2OverrideOutValueL2Override_OutValueHardLink)
+		.InOverride (L2Override_InOverride_L2Override_InOverride_HardLink),
+		.InValue (L2Override_InValue_L2Override_InValue_HardLink),
+		.OutValue (L2Override_OutValue_L2Override_OutValue_HardLink)
 	);
 	OverridesComposition_TopLevel_L3Override
 	OverridesComposition_TopLevel_L3Override
 	(
 		// [BEGIN USER MAP FOR L3Override]
 		// [END USER MAP FOR L3Override]
-		.InOverride (L3OverrideInOverrideL3Override_InOverrideHardLink),
-		.InValue (L3OverrideInValueL3Override_InValueHardLink),
-		.OutValue (L3OverrideOutValueL3Override_OutValueHardLink)
+		.InOverride (L3Override_InOverride_L3Override_InOverride_HardLink),
+		.InValue (L3Override_InValue_L3Override_InValue_HardLink),
+		.OutValue (L3Override_OutValue_L3Override_OutValue_HardLink)
 	);
 	assign Inputs_InOverride = InOverride;
 	assign Inputs_InValue = InValue;
@@ -156,24 +156,24 @@ module OverridesComposition_TopLevel
 	assign L2Value = L2Override_OutValue;
 	assign L3Value = L3Override_OutValue;
 	assign GetValue = GetOverride_OutValue;
-	assign NoOverrideInOverrideNoOverride_InOverrideHardLink = NoOverride_InOverride;
-	assign NoOverrideInValueNoOverride_InValueHardLink = NoOverride_InValue;
-	assign NoOverride_OutValue = NoOverrideOutValueNoOverride_OutValueHardLink;
-	assign AutoOverrideInOverrideAutoOverride_InOverrideHardLink = AutoOverride_InOverride;
-	assign AutoOverrideInValueAutoOverride_InValueHardLink = AutoOverride_InValue;
-	assign AutoOverride_OutValue = AutoOverrideOutValueAutoOverride_OutValueHardLink;
-	assign GetOverrideInOverrideGetOverride_InOverrideHardLink = GetOverride_InOverride;
-	assign GetOverrideInValueGetOverride_InValueHardLink = GetOverride_InValue;
-	assign GetOverride_OutValue = GetOverrideOutValueGetOverride_OutValueHardLink;
-	assign L1OverrideInOverrideL1Override_InOverrideHardLink = L1Override_InOverride;
-	assign L1OverrideInValueL1Override_InValueHardLink = L1Override_InValue;
-	assign L1Override_OutValue = L1OverrideOutValueL1Override_OutValueHardLink;
-	assign L2OverrideInOverrideL2Override_InOverrideHardLink = L2Override_InOverride;
-	assign L2OverrideInValueL2Override_InValueHardLink = L2Override_InValue;
-	assign L2Override_OutValue = L2OverrideOutValueL2Override_OutValueHardLink;
-	assign L3OverrideInOverrideL3Override_InOverrideHardLink = L3Override_InOverride;
-	assign L3OverrideInValueL3Override_InValueHardLink = L3Override_InValue;
-	assign L3Override_OutValue = L3OverrideOutValueL3Override_OutValueHardLink;
+	assign NoOverride_InOverride_NoOverride_InOverride_HardLink = NoOverride_InOverride;
+	assign NoOverride_InValue_NoOverride_InValue_HardLink = NoOverride_InValue;
+	assign NoOverride_OutValue = NoOverride_OutValue_NoOverride_OutValue_HardLink;
+	assign AutoOverride_InOverride_AutoOverride_InOverride_HardLink = AutoOverride_InOverride;
+	assign AutoOverride_InValue_AutoOverride_InValue_HardLink = AutoOverride_InValue;
+	assign AutoOverride_OutValue = AutoOverride_OutValue_AutoOverride_OutValue_HardLink;
+	assign GetOverride_InOverride_GetOverride_InOverride_HardLink = GetOverride_InOverride;
+	assign GetOverride_InValue_GetOverride_InValue_HardLink = GetOverride_InValue;
+	assign GetOverride_OutValue = GetOverride_OutValue_GetOverride_OutValue_HardLink;
+	assign L1Override_InOverride_L1Override_InOverride_HardLink = L1Override_InOverride;
+	assign L1Override_InValue_L1Override_InValue_HardLink = L1Override_InValue;
+	assign L1Override_OutValue = L1Override_OutValue_L1Override_OutValue_HardLink;
+	assign L2Override_InOverride_L2Override_InOverride_HardLink = L2Override_InOverride;
+	assign L2Override_InValue_L2Override_InValue_HardLink = L2Override_InValue;
+	assign L2Override_OutValue = L2Override_OutValue_L2Override_OutValue_HardLink;
+	assign L3Override_InOverride_L3Override_InOverride_HardLink = L3Override_InOverride;
+	assign L3Override_InValue_L3Override_InValue_HardLink = L3Override_InValue;
+	assign L3Override_OutValue = L3Override_OutValue_L3Override_OutValue_HardLink;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

@@ -41,8 +41,8 @@ architecture rtl of UnsignedCastModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	signal Inputs_UShortValue : unsigned(15 downto 0) := (others => '0');
 	signal UnsignedCastModule_L13F34T58_Cast : unsigned(7 downto 0) := (others => '0');
 	signal UnsignedCastModule_L14F36T61_Cast : signed(7 downto 0) := (others => '0');

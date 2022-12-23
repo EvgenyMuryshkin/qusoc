@@ -1,0 +1,6 @@
+No reads:
+	Pipeline_NextState_IsReady
+	Pipeline_NextState_result
+	Pipeline_NextState_S0Counter
+	Pipeline_NextState_S1Counter
+	Pipeline_NextState_S2Counter

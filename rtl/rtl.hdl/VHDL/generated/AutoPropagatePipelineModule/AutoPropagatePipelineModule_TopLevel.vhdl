@@ -48,14 +48,14 @@ architecture rtl of AutoPropagatePipelineModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
+	constant Pipeline_stage0_State_sumsDefault : unsigned(15 downto 0) := "0000000000000000";
+	constant Pipeline_stage1_State_s0SumsDefault : unsigned(15 downto 0) := "0000000000000000";
+	constant Pipeline_stage1_State_sumsDefault : unsigned(15 downto 0) := "0000000000000000";
 	constant Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L54F21T23_Expr : unsigned(5 downto 0) := "101010";
 	signal Inputs_inReady : std_logic := '0';
-	signal Pipeline_stage0_State_sumsDefault : unsigned(15 downto 0) := "0000000000000000";
 	signal Pipeline_stage0_NextState_ready : std_logic := '0';
-	signal Pipeline_stage1_State_s0SumsDefault : unsigned(15 downto 0) := "0000000000000000";
-	signal Pipeline_stage1_State_sumsDefault : unsigned(15 downto 0) := "0000000000000000";
 	signal Pipeline_stage1_NextState_ready : std_logic := '0';
 	signal Pipeline_stage2_NextState_result : unsigned(15 downto 0) := (others => '0');
 	signal Pipeline_stage2_NextState_ready : std_logic := '0';
@@ -138,7 +138,7 @@ begin
 			end if;
 		end if;
 	end process;
-	process (Clock, Pipeline_stage0_NextState_sums, Pipeline_stage0_State_sumsDefault, Reset)
+	process (Clock, Pipeline_stage0_NextState_sums, Reset)
 	begin
 		if rising_edge(Clock) then
 			if Reset = '1' then
@@ -152,7 +152,7 @@ begin
 			end if;
 		end if;
 	end process;
-	process (Clock, Pipeline_stage1_NextState_s0Sums, Pipeline_stage1_State_s0SumsDefault, Reset)
+	process (Clock, Pipeline_stage1_NextState_s0Sums, Reset)
 	begin
 		if rising_edge(Clock) then
 			if Reset = '1' then
@@ -166,7 +166,7 @@ begin
 			end if;
 		end if;
 	end process;
-	process (Clock, Pipeline_stage1_NextState_sums, Pipeline_stage1_State_sumsDefault, Reset)
+	process (Clock, Pipeline_stage1_NextState_sums, Reset)
 	begin
 		if rising_edge(Clock) then
 			if Reset = '1' then

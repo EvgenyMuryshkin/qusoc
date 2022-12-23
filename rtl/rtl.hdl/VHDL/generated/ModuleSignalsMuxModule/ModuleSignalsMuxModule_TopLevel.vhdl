@@ -40,8 +40,8 @@ architecture rtl of ModuleSignalsMuxModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	signal Inputs_Addr : unsigned(1 downto 0) := (others => '0');
 	signal Inputs_I1 : std_logic := '0';
 	signal Inputs_I2 : std_logic := '0';
@@ -55,15 +55,15 @@ architecture rtl of ModuleSignalsMuxModule_TopLevel is
 	signal XorGate_I2 : std_logic := '0';
 	signal XorGate_O : std_logic := '0';
 	signal ModuleSignalsMuxModule_L29F41T80_Source : unsigned(2 downto 0) := (others => '0');
-	signal AndGateI1AndGate_I1HardLink : std_logic := '0';
-	signal AndGateI2AndGate_I2HardLink : std_logic := '0';
-	signal AndGateOAndGate_OHardLink : std_logic := '0';
-	signal OrGateI1OrGate_I1HardLink : std_logic := '0';
-	signal OrGateI2OrGate_I2HardLink : std_logic := '0';
-	signal OrGateOOrGate_OHardLink : std_logic := '0';
-	signal XorGateI1XorGate_I1HardLink : std_logic := '0';
-	signal XorGateI2XorGate_I2HardLink : std_logic := '0';
-	signal XorGateOXorGate_OHardLink : std_logic := '0';
+	signal AndGate_I1_AndGate_I1_HardLink : std_logic := '0';
+	signal AndGate_I2_AndGate_I2_HardLink : std_logic := '0';
+	signal AndGate_O_AndGate_O_HardLink : std_logic := '0';
+	signal OrGate_I1_OrGate_I1_HardLink : std_logic := '0';
+	signal OrGate_I2_OrGate_I2_HardLink : std_logic := '0';
+	signal OrGate_O_OrGate_O_HardLink : std_logic := '0';
+	signal XorGate_I1_XorGate_I1_HardLink : std_logic := '0';
+	signal XorGate_I2_XorGate_I2_HardLink : std_logic := '0';
+	signal XorGate_O_XorGate_O_HardLink : std_logic := '0';
 	signal ModuleSignalsMuxModule_L27F26T46_Mux : std_logic := '0';
 	signal ModuleSignalsMuxModule_L27F26T46_MuxMultiplexerAddress : unsigned(1 downto 0) := "00";
 	signal ModuleSignalsMuxModule_L27F26T46_Mux1 : std_logic := '0';
@@ -75,9 +75,9 @@ begin
 	(
 		-- [BEGIN USER MAP FOR AndGate]
 		-- [END USER MAP FOR AndGate]
-		I1 => AndGateI1AndGate_I1HardLink,
-		I2 => AndGateI2AndGate_I2HardLink,
-		O => AndGateOAndGate_OHardLink
+		I1 => AndGate_I1_AndGate_I1_HardLink,
+		I2 => AndGate_I2_AndGate_I2_HardLink,
+		O => AndGate_O_AndGate_O_HardLink
 	)
 	;
 	ModuleSignalsMuxModule_TopLevel_OrGate : entity work.ModuleSignalsMuxModule_TopLevel_OrGate
@@ -85,9 +85,9 @@ begin
 	(
 		-- [BEGIN USER MAP FOR OrGate]
 		-- [END USER MAP FOR OrGate]
-		I1 => OrGateI1OrGate_I1HardLink,
-		I2 => OrGateI2OrGate_I2HardLink,
-		O => OrGateOOrGate_OHardLink
+		I1 => OrGate_I1_OrGate_I1_HardLink,
+		I2 => OrGate_I2_OrGate_I2_HardLink,
+		O => OrGate_O_OrGate_O_HardLink
 	)
 	;
 	ModuleSignalsMuxModule_TopLevel_XorGate : entity work.ModuleSignalsMuxModule_TopLevel_XorGate
@@ -95,9 +95,9 @@ begin
 	(
 		-- [BEGIN USER MAP FOR XorGate]
 		-- [END USER MAP FOR XorGate]
-		I1 => XorGateI1XorGate_I1HardLink,
-		I2 => XorGateI2XorGate_I2HardLink,
-		O => XorGateOXorGate_OHardLink
+		I1 => XorGate_I1_XorGate_I1_HardLink,
+		I2 => XorGate_I2_XorGate_I2_HardLink,
+		O => XorGate_O_XorGate_O_HardLink
 	)
 	;
 	process (ModuleSignalsMuxModule_L27F26T46_Mux1, ModuleSignalsMuxModule_L27F26T46_Mux2, ModuleSignalsMuxModule_L27F26T46_Mux3, ModuleSignalsMuxModule_L27F26T46_MuxMultiplexerAddress)
@@ -113,7 +113,7 @@ begin
 				ModuleSignalsMuxModule_L27F26T46_Mux <= '0';
 		end case;
 	end process;
-	process (Addr, AndGate_I1, AndGate_I2, AndGate_O, AndGateOAndGate_OHardLink, I1, I2, Inputs_Addr, Inputs_I1, Inputs_I2, ModuleSignalsMuxModule_L27F26T46_Mux, ModuleSignalsMuxModule_L29F41T80_Source, OrGate_I1, OrGate_I2, OrGate_O, OrGateOOrGate_OHardLink, XorGate_I1, XorGate_I2, XorGate_O, XorGateOXorGate_OHardLink)
+	process (Addr, AndGate_I1, AndGate_I2, AndGate_O, AndGate_O_AndGate_O_HardLink, I1, I2, Inputs_Addr, Inputs_I1, Inputs_I2, ModuleSignalsMuxModule_L27F26T46_Mux, ModuleSignalsMuxModule_L29F41T80_Source, OrGate_I1, OrGate_I2, OrGate_O, OrGate_O_OrGate_O_HardLink, XorGate_I1, XorGate_I2, XorGate_O, XorGate_O_XorGate_O_HardLink)
 	begin
 		Inputs_Addr <= Addr;
 		Inputs_I1 <= I1;
@@ -129,15 +129,15 @@ begin
 		ModuleSignalsMuxModule_L29F41T80_Source(1) <= OrGate_O;
 		ModuleSignalsMuxModule_L29F41T80_Source(0) <= XorGate_O;
 		CombinedO <= ModuleSignalsMuxModule_L29F41T80_Source;
-		AndGateI1AndGate_I1HardLink <= AndGate_I1;
-		AndGateI2AndGate_I2HardLink <= AndGate_I2;
-		AndGate_O <= AndGateOAndGate_OHardLink;
-		OrGateI1OrGate_I1HardLink <= OrGate_I1;
-		OrGateI2OrGate_I2HardLink <= OrGate_I2;
-		OrGate_O <= OrGateOOrGate_OHardLink;
-		XorGateI1XorGate_I1HardLink <= XorGate_I1;
-		XorGateI2XorGate_I2HardLink <= XorGate_I2;
-		XorGate_O <= XorGateOXorGate_OHardLink;
+		AndGate_I1_AndGate_I1_HardLink <= AndGate_I1;
+		AndGate_I2_AndGate_I2_HardLink <= AndGate_I2;
+		AndGate_O <= AndGate_O_AndGate_O_HardLink;
+		OrGate_I1_OrGate_I1_HardLink <= OrGate_I1;
+		OrGate_I2_OrGate_I2_HardLink <= OrGate_I2;
+		OrGate_O <= OrGate_O_OrGate_O_HardLink;
+		XorGate_I1_XorGate_I1_HardLink <= XorGate_I1;
+		XorGate_I2_XorGate_I2_HardLink <= XorGate_I2;
+		XorGate_O <= XorGate_O_XorGate_O_HardLink;
 		ModuleSignalsMuxModule_L27F26T46_Mux1 <= AndGate_O;
 		ModuleSignalsMuxModule_L27F26T46_Mux2 <= OrGate_O;
 		ModuleSignalsMuxModule_L27F26T46_Mux3 <= XorGate_O;

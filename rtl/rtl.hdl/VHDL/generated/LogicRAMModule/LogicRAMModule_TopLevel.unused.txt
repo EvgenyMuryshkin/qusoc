@@ -1,0 +1,5 @@
+No reads:
+	LogicRAMModule_L25F102T103_Expr
+	LogicRAMModule_L25F35T103_Expr_1
+No writes:
+	LogicRAMModule_L25F35T103_Expr

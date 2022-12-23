@@ -48,7 +48,7 @@ module ArrayToBitArrayModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	reg [7: 0] State_ReadDataDefault = 8'b00000000;
+	wire [7: 0] State_ReadDataDefault = 8'b00000000;
 	wire [7 : 0] Inputs_InArray [0 : 3];
 	integer State_ReadData_Iterator;
 	reg [7 : 0] State_ReadData [0 : 3];

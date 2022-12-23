@@ -1,4 +1,5 @@
 ﻿using Quokka.RTL;
+using Quokka.RTL.Tools;
 using System;
 using System.Linq;
 
@@ -10,14 +11,12 @@ namespace fir.modules
         public FIRModuleInputs(FIRParams firParams)
         {
             iCOEFF = new RTLBitArray().Resized(firParams.CoeffSize);
-
             iDO = new RTLBitArray().Resized(firParams.DOSize);
             iIQ = new t_iq16();
         }
 
         public bool iCOEF_V;
         public RTLBitArray iCOEFF;
-
         public RTLBitArray iDO;
         public bool iIQ_V;
         public t_iq16 iIQ;
@@ -38,7 +37,7 @@ namespace fir.modules
             filo = new t_filo(config.Order);
             dsp48 = new t_dsp48(config.Order);
             fir = new t_fir(config.Order);
-            tr = new t_tr(config.Order);
+            //tr = new t_tr(config.Order);
             ob_iq = new t_iq24();
         }
 
@@ -60,7 +59,7 @@ namespace fir.modules
         // fir
         public t_fir fir;
         // transparent
-        public t_tr tr;
+        //public t_tr tr;
 
         // output buffers
         public bool ob_coef_rdy;
@@ -72,7 +71,7 @@ namespace fir.modules
     public class FIRModule : RTLSynchronousModule<FIRModuleInputs, FIRModuleState>
     {
         public FIRModule() { }
-
+        //public override RTLModuleAnalizers Analizers => new RTLModuleAnalizers() { SignalsUsage = true };
         public FIRModule(FIRParams firParams)
         {
             this.firParams = firParams;
@@ -86,18 +85,21 @@ namespace fir.modules
             u_ram_srls_q = Enumerable.Range(0, firParams.Order).Select(_ => new FIRDecimatorRAM(2, c_srls_length)).ToArray();
             u_ram_filo_i = new FIRDecimatorRAM(1, 512);
             u_ram_filo_q = new FIRDecimatorRAM(1, 512);
-
+            
             c_coef_num_array = FIRTools.f_get_coef_num_array(firParams.Order);
             c_coef_mask_array = FIRTools.f_get_coef_mask();
             c_data_mask_array = FIRTools.f_get_data_mask();
-            c_ram_addr_hight_msb = FIRTools.log2(firParams.Order);
+            //c_ram_addr_hight_msb = FIRTools.log2(firParams.Order);
             c_out_lsb = FIRTools.log2(firParams.Order) + 2;
-
+            
             ramd_din = Enumerable.Range(0, firParams.Order).Select(_ => new t_iq16()).ToArray();
             ramd_dout = Enumerable.Range(0, firParams.Order).Select(_ => new t_iq16()).ToArray();
+            
+            u_dsp48_i = Enumerable.Range(0, firParams.Order).Select(_ => new FIRDSPWrapperModule()).ToArray();
+            u_dsp48_q = Enumerable.Range(0, firParams.Order).Select(_ => new FIRDSPWrapperModule()).ToArray();
 
-            u_dsp48_i = Enumerable.Range(0, firParams.Order).Select(_ => new FIRDSPWrapperModule(firParams)).ToArray();
-            u_dsp48_q = Enumerable.Range(0, firParams.Order).Select(_ => new FIRDSPWrapperModule(firParams)).ToArray();
+            dsp48_p = Enumerable.Range(0, firParams.Order).Select(_ => new t_iq48()).ToArray();
+            dsp48_pcout = Enumerable.Range(0, firParams.Order).Select(_ => new t_iq48()).ToArray();
         }
 
         // constants declaration
@@ -107,8 +109,8 @@ namespace fir.modules
         private readonly RTLBitArray[] c_data_mask_array;
         private readonly int c_nofc = 512;
         private readonly int c_srls_length = 1024;
-        private readonly int c_ram_addr_hight_msb;
-        private readonly int c_dl_accum = 9;
+        //private readonly int c_ram_addr_hight_msb;
+        //private readonly int c_dl_accum = 9;
         private readonly int c_out_lsb;
         
         // input buffers
@@ -126,25 +128,26 @@ namespace fir.modules
         FIRDecimatorRAM[] u_ram_srls_q;
         FIRDecimatorRAM u_ram_filo_i;
         FIRDecimatorRAM u_ram_filo_q;
-        
+
+        //public RTLBitArray o_u_ram_coef_DOUT => ramc_dout[Inputs.iCOEFF_RD_IDX];  
         RTLBitArray[] ramc_dout => u_ram_coef.Select(r => r.DOUT).ToArray();
         t_iq16[] ramd_din;
         t_iq16[] ramd_dout;
-
+        //public RTLBitArray o_dsp_result => u_ram_coef[3].DOUT;// State.dsp48.dsp48_result[9];// u_ram_srls_i.Select(i => i.DOUT).ToArray();
         t_iq16 ramf_din => State.set_do == false
             ? State.dsp48.dsp48_srl[firParams.Order * 2 - 3]
             : ramd_dout[firParams.Order - 2];
-       
+        //t_iq18[] i_dsp => State.dsp48.dsp48_b;*/
         t_iq16 ramf_dout => new t_iq16 { i = u_ram_filo_i.DOUT, q = u_ram_filo_q.DOUT };
         FIRDSPWrapperModule[] u_dsp48_i;
         FIRDSPWrapperModule[] u_dsp48_q;
 
         // output
-        public RTLBitArray oCOEF_NUM => new RTLBitArray(2 * c_coef_num_array[0]).Resized(16);//oCOEF_NUM                       <= conv_std_logic_vector(2 * c_coef_num_array(0), 16);
-        public RTLBitArray oCOEF_CNT => State.coeff.coef_ram_cnt; //oCOEF_CNT                       <= ob_coef_cnt;
-        public bool oCOEF_RDY => State.ob_coef_rdy;//oCOEF_RDY                       <= ob_coef_rdy;
-        public bool oIQ_V => State.ob_iq_v;//oIQ_V                           <= ob_iq_v;
-        public t_iq oIQ => State.ob_iq;//oIQ                             <= ob_iq;
+        public RTLBitArray oCOEF_NUM => new RTLBitArray(2 * c_coef_num_array[0]).Resized(16);
+        public RTLBitArray oCOEF_CNT => State.coeff.coef_ram_cnt;
+        public bool oCOEF_RDY => State.ob_coef_rdy;
+        public bool oIQ_V => State.ob_iq_v;
+        public t_iq oIQ => State.ob_iq;
 
         RTLBitArray sxt(RTLBitArray source, int size) => source.Signed().Resized(size);
 
@@ -167,7 +170,6 @@ namespace fir.modules
             }
 
             // GEN_ramd
-
             for (var a = 0; a < firParams.Order; a++)
             {
                 ramd_dout[a].i = u_ram_srls_i[a].DOUT;
@@ -239,7 +241,7 @@ namespace fir.modules
                     B = State.dsp48.dsp48_b[i].i,
                     D = State.dsp48.dsp48_d[i].i,
                     PCIN = State.dsp48.dsp48_pcin[i].i,
-                    OPMODE = State.dsp48.dsp48_opmode[i].i[6, 4]
+                    OPMODE = State.dsp48.dsp48_opmode[i].i[6, 4]                    
                 });
 
                 u_dsp48_q[i].Schedule(() => new FIRDSPWrapperModuleInputs()
@@ -253,21 +255,36 @@ namespace fir.modules
                     OPMODE = State.dsp48.dsp48_opmode[i].q[6, 4]
                 });
             }
+
+            // P, PCOUT
+            for (var a = 0; a < firParams.Order; a++)
+            {
+                dsp48_p[a].i = u_dsp48_i[a].P;
+                dsp48_pcout[a].i = u_dsp48_i[a].PCOUT;
+                dsp48_p[a].q = u_dsp48_q[a].P;
+                dsp48_pcout[a].q = u_dsp48_q[a].PCOUT;
+            }
         }
+
+        t_iq48[] dsp48_p;
+        t_iq48[] dsp48_pcout;
+        //RTLBitArray[] dsp48_p_i => u_dsp48_i.Select(d => d.P).ToArray();
+        //RTLBitArray[] dsp48_p_q => u_dsp48_q.Select(d => d.P).ToArray();
+        //RTLBitArray[] dsp48_pcout_i => u_dsp48_i.Select(d => d.PCOUT).ToArray();
+        //RTLBitArray[] dsp48_pcout_q => u_dsp48_q.Select(d => d.PCOUT).ToArray();
 
         /// <summary>
         /// process, current settings
         /// </summary>
         void CurrentSetting()
         {
-            var next_set_do = ib_do;
-            NextState.set_do = next_set_do;
-            NextState.set_coef_mask = c_coef_mask_array[next_set_do];
-            NextState.set_data_mask = c_data_mask_array[next_set_do];
+            NextState.set_do = ib_do;
+            NextState.set_coef_mask = c_coef_mask_array[ib_do];
+            NextState.set_data_mask = c_data_mask_array[ib_do];
             
             for (var a = 0; a < firParams.Order; a++)
             {
-                NextState.set_do_mux[a] = next_set_do;
+                NextState.set_do_mux[a] = ib_do;
             }
         }
 
@@ -375,17 +392,17 @@ namespace fir.modules
 
                 if (State.main.main_d_cnt_rst)
                 {
-                    NextState.main.main_c_cnt = 0;
+                    NextState.main.main_d_cnt = 0;
                 }
                 else
                 {
-                    NextState.main.main_c_cnt = State.main.main_c_cnt + 1;
+                    NextState.main.main_d_cnt = State.main.main_d_cnt + 1;
                 }
 
-                NextState.main.main_c_cnt_masked = State.main.main_c_cnt ^ State.set_data_mask;
+                NextState.main.main_d_cnt_masked = State.main.main_d_cnt ^ State.set_data_mask;
                 for (var a = 0; a < firParams.Order - 1; a++)
                 {
-                    NextState.main.main_d_addr[a] = State.main.main_c_cnt;
+                    NextState.main.main_d_addr[a] = State.main.main_d_cnt;
                 }
             }
         }
@@ -428,7 +445,7 @@ namespace fir.modules
                 {
                     NextState.dsp48.dsp48_srl[idx + 1] = State.dsp48.dsp48_srl[idx];
                 }
-                NextState.dsp48.dsp48_srl_out = State.dsp48.dsp48_srl[firParams.Order * 2 - 2];
+                //NextState.dsp48.dsp48_srl_out = State.dsp48.dsp48_srl[firParams.Order * 2 - 2];
 
                 for (var a = 0; a < firParams.Order; a++)
                 {
@@ -461,36 +478,38 @@ namespace fir.modules
                         }
                         else
                         {
-                            NextState.fir.fir_preg[a].i = State.fir.fir_preg[a].i + State.fir.fir_mreg[a].i.Signed().Resized(48);
-                            NextState.fir.fir_preg[a].q = State.fir.fir_preg[a].q + State.fir.fir_mreg[a].q.Signed().Resized(48);
+                            NextState.fir.fir_preg[a].i = State.fir.fir_preg[a].i.Signed() + State.fir.fir_mreg[a].i.Signed().Resized(48);
+                            NextState.fir.fir_preg[a].q = State.fir.fir_preg[a].q.Signed() + State.fir.fir_mreg[a].q.Signed().Resized(48);
                         }
                     }
                     else
                     {
                         if (State.mult_reset.mult_reset[a])
                         {
-                            NextState.fir.fir_preg[a].i = State.fir.fir_preg[a - 1].i + State.fir.fir_mreg[a].i.Signed().Resized(48);
-                            NextState.fir.fir_preg[a].q = State.fir.fir_preg[a - 1].q + State.fir.fir_mreg[a].q.Signed().Resized(48);
+                            NextState.fir.fir_preg[a].i = State.fir.fir_preg[a - 1].i.Signed() + State.fir.fir_mreg[a].i.Signed().Resized(48);
+                            NextState.fir.fir_preg[a].q = State.fir.fir_preg[a - 1].q.Signed() + State.fir.fir_mreg[a].q.Signed().Resized(48);
                         }
                         else
                         {
-                            NextState.fir.fir_preg[a].i = State.fir.fir_preg[a].i + State.fir.fir_mreg[a].i.Signed().Resized(48);
-                            NextState.fir.fir_preg[a].q = State.fir.fir_preg[a].q + State.fir.fir_mreg[a].q.Signed().Resized(48);
+                            NextState.fir.fir_preg[a].i = State.fir.fir_preg[a].i.Signed() + State.fir.fir_mreg[a].i.Signed().Resized(48);
+                            NextState.fir.fir_preg[a].q = State.fir.fir_preg[a].q.Signed() + State.fir.fir_mreg[a].q.Signed().Resized(48);
                         }
                     }
                 }
+                /*
                 for (var a = 0; a < 10; a++)
                 {
                     NextState.fir.fir_result[a].i = State.fir.fir_preg[firParams.Order - 1].i[c_out_lsb + a + 23, c_out_lsb + a];
                     NextState.fir.fir_result[a].q = State.fir.fir_preg[firParams.Order - 1].q[c_out_lsb + a + 23, c_out_lsb + a];
                 }
-
+                */
+                /*
                 // transparent mode
                 NextState.tr.tr_fir_mreg.i = State.fir.fir_adreg[firParams.Order - 1].i;
                 NextState.tr.tr_fir_mreg.q = State.fir.fir_adreg[firParams.Order - 1].q;
                 NextState.tr.tr_fir_preg = State.tr.tr_fir_mreg;
                 NextState.tr.tr_fir_result = State.tr.tr_fir_preg;
-
+                */
             }
         }
 
@@ -501,14 +520,14 @@ namespace fir.modules
             NextState.dsp48.dsp48_opmode[0].i = State.mult_reset.mult_reset_dsp[0] ? new RTLBitArray("0000000") : new RTLBitArray("0100000");
             NextState.dsp48.dsp48_d[0].i = sxt(State.filo.fir_dreg[0].i, 25);
             NextState.dsp48.dsp48_b[0].i = sxt(ramc_dout[0], 18);
-            
+
             for (var a = 1; a < firParams.Order; a++)
             {
-                NextState.dsp48.dsp48_a[a].i = State.set_do_mux[a] != 0 ? sxt(ramd_dout[a - 1].i, 30) : sxt(State.dsp48.dsp48_srl[a * 2 - 1].i, 30);//dbg
+                NextState.dsp48.dsp48_a[a].i = State.set_do_mux[a] != 0 ? sxt(ramd_dout[a - 1].i, 30) : sxt(State.dsp48.dsp48_srl[a * 2 - 1].i, 30);
                 NextState.dsp48.dsp48_opmode[a].i = State.mult_reset.mult_reset_dsp[a] ? new RTLBitArray("0010000") : new RTLBitArray("0100000");
                 NextState.dsp48.dsp48_d[a].i = sxt(State.filo.fir_dreg[a].i, 25);
                 NextState.dsp48.dsp48_b[a].i = sxt(ramc_dout[a], 18);
-                NextState.dsp48.dsp48_pcin[a].i = State.dsp48.dsp48_pcout[a - 1].i;
+                NextState.dsp48.dsp48_pcin[a].i = dsp48_pcout[a - 1].i;
             }
 
             // Q channel
@@ -519,14 +538,44 @@ namespace fir.modules
 
             for (var a = 1; a < firParams.Order; a++)
             {
-                NextState.dsp48.dsp48_a[a].q = State.set_do_mux[a] != 0 ? sxt(ramd_dout[a - 1].q, 30) : sxt(State.dsp48.dsp48_srl[a * 2 - 1].q, 30);//dbg
+                NextState.dsp48.dsp48_a[a].q = State.set_do_mux[a] != 0 ? sxt(ramd_dout[a - 1].q, 30) : sxt(State.dsp48.dsp48_srl[a * 2 - 1].q, 30);
                 NextState.dsp48.dsp48_opmode[a].q = State.mult_reset.mult_reset_dsp[a] ? new RTLBitArray("0010000") : new RTLBitArray("0100000");
                 NextState.dsp48.dsp48_d[a].q = sxt(State.filo.fir_dreg[a].q, 25);
                 NextState.dsp48.dsp48_b[a].q = sxt(ramc_dout[a], 18);
-                NextState.dsp48.dsp48_pcin[a].q = State.dsp48.dsp48_pcout[a - 1].q;
+                NextState.dsp48.dsp48_pcin[a].q = dsp48_pcout[a - 1].q;
             }
         }
 
+        void ProcessOutputs()
+        {
+            if (ib_iq_v)
+            {
+                for (var a = 0; a < 10; a++)
+                {
+                    NextState.dsp48.dsp48_result[a].i = dsp48_p[firParams.Order - 1].i[c_out_lsb + a + 23, c_out_lsb + a];
+                    NextState.dsp48.dsp48_result[a].q = dsp48_p[firParams.Order - 1].q[c_out_lsb + a + 23, c_out_lsb + a];
+                }
+
+                if (State.mult_reset.mult_reset_common_p3)
+                {
+                    NextState.ob_iq_v = true;
+                }
+                else
+                {
+                    NextState.ob_iq_v = false;
+                }
+            }
+            else
+            {
+                NextState.ob_iq_v = false;
+            }
+
+            if (State.ob_iq_v)
+            {
+                NextState.ob_iq = State.dsp48.dsp48_result[State.set_do];
+            }
+        }
+        
         protected override void OnStage()
         {
             CurrentSetting();
@@ -536,6 +585,7 @@ namespace fir.modules
             ReadWriteFILO();
             DSPLogic();
             AlternativeCalculations();
+            ProcessOutputs();
         }
     }
 }

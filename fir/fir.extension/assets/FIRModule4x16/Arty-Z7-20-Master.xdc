@@ -4,8 +4,11 @@
 ## - rename the used ports (in each line, after get_ports) according to the top level signal names in the project
 
 ## Clock Signal
-set_property -dict {PACKAGE_PIN H16 IOSTANDARD LVCMOS33} [get_ports clk]
-create_clock -period 8.000 -name sys_clk_pin -waveform {0.000 4.000} -add [get_ports clk]
+#set_property -dict {PACKAGE_PIN H16 IOSTANDARD LVCMOS33} [get_ports clk]
+#create_clock -period 8.000 -name sys_clk_pin -waveform {0.000 4.000} -add [get_ports clk]
+
+set_property -dict {PACKAGE_PIN H16 IOSTANDARD LVCMOS33} [get_ports Clock]
+create_clock -period 8.000 -name sys_clk_pin -waveform {0.000 4.000} -add [get_ports Clock]
 
 ## Switches
 #set_property -dict { PACKAGE_PIN M20    IOSTANDARD LVCMOS33 } [get_ports { sw[0] }]; #IO_L7N_T1_AD2N_35 Sch=SW0
@@ -20,10 +23,10 @@ create_clock -period 8.000 -name sys_clk_pin -waveform {0.000 4.000} -add [get_p
 #set_property -dict { PACKAGE_PIN M15    IOSTANDARD LVCMOS33 } [get_ports { led5_r }]; #IO_L23N_T3_35 Sch=LED5_R
 
 ## LEDs
-set_property -dict {PACKAGE_PIN R14 IOSTANDARD LVCMOS33} [get_ports {led[0]}]
-set_property -dict {PACKAGE_PIN P14 IOSTANDARD LVCMOS33} [get_ports {led[1]}]
-set_property -dict {PACKAGE_PIN N16 IOSTANDARD LVCMOS33} [get_ports {led[2]}]
-set_property -dict {PACKAGE_PIN M14 IOSTANDARD LVCMOS33} [get_ports {led[3]}]
+#set_property -dict {PACKAGE_PIN R14 IOSTANDARD LVCMOS33} [get_ports {led[0]}]
+#set_property -dict {PACKAGE_PIN P14 IOSTANDARD LVCMOS33} [get_ports {led[1]}]
+#set_property -dict {PACKAGE_PIN N16 IOSTANDARD LVCMOS33} [get_ports {led[2]}]
+#set_property -dict {PACKAGE_PIN M14 IOSTANDARD LVCMOS33} [get_ports {led[3]}]
 
 ## Buttons
 #set_property -dict { PACKAGE_PIN D19    IOSTANDARD LVCMOS33 } [get_ports { btn[0] }]; #IO_L4P_T0_35 Sch=BTN0
@@ -184,7 +187,7 @@ set_property -dict {PACKAGE_PIN M14 IOSTANDARD LVCMOS33} [get_ports {led[3]}]
 #set_property PACKAGE_PIN T9 [get_ports {netic20_t9}]; #IO_L12P_T1_MRCC_13
 #set_property PACKAGE_PIN U9 [get_ports {netic20_u9}]; #IO_L17P_T2_13
 
-set_false_path -from * -to [get_ports led[*]]
+#set_false_path -from * -to [get_ports led[*]]
 
 # create_clock -period 10.000 -name VIRTUAL_clk100 -waveform {0.000 5.000}
 #set_output_delay -clock [get_clocks clk100] -min -add_delay 0.000 [get_ports {led[*]}]

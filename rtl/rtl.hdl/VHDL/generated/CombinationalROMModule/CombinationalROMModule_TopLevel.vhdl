@@ -39,8 +39,8 @@ architecture rtl of CombinationalROMModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	signal Inputs_ReadAddress1 : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_ReadAddress2 : unsigned(7 downto 0) := (others => '0');
 	signal CombinationalROMModule_L22F31T56_Index : unsigned(7 downto 0) := (others => '0');

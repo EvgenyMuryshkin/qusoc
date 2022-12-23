@@ -46,8 +46,8 @@ architecture rtl of YandexTestModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	constant YandexTestModule_L127F49T50_Expr : unsigned(1 downto 0) := "10";
 	constant YandexTestModule_L127F71T72_Expr : std_logic := '1';
 	constant YandexTestModule_L127F75T76_Expr : std_logic := '0';

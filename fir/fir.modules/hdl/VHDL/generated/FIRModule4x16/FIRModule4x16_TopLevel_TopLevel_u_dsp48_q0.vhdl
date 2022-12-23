@@ -19,6 +19,8 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use work.Quokka.all;
+library unisim;
+use unisim.vcomponents.all;
 entity FIRModule4x16_TopLevel_TopLevel_u_dsp48_q0 is
 	port
 	(
@@ -45,8 +47,8 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel_u_dsp48_q0 is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	signal Inputs_CE : std_logic := '0';
 	signal Inputs_RST : std_logic := '0';
 	signal Inputs_A : unsigned(29 downto 0) := (others => '0');
@@ -55,9 +57,10 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel_u_dsp48_q0 is
 	signal Inputs_PCIN : unsigned(47 downto 0) := (others => '0');
 	signal Inputs_OPMODE : unsigned(2 downto 0) := (others => '0');
 begin
-	u_dsp48e1 : entity DSP48E1
+	u_dsp48e1 : DSP48E1
 	generic map
 	(
+		A_INPUT => "DIRECT",
 		B_INPUT => "DIRECT",
 		USE_DPORT => TRUE,
 		USE_MULT => "MULTIPLY",
@@ -85,34 +88,35 @@ begin
 	)
 	port map
 	(
+		ACOUT => open,
 		BCOUT => open,
 		CARRYCASCOUT => open,
 		MULTSIGNOUT => open,
-		PCOUT => PCOUT,
+		std_logic_vector(PCOUT) => PCOUT,
 		OVERFLOW => open,
 		PATTERNBDETECT => open,
 		PATTERNDETECT => open,
 		UNDERFLOW => open,
 		CARRYOUT => open,
-		P => P,
+		std_logic_vector(P) => P,
 		ACIN => (others =>'0'),
 		BCIN => (others =>'0'),
 		CARRYCASCIN => '0',
 		MULTSIGNIN => '0',
-		PCIN => PCIN,
+		PCIN => std_logic_vector(PCIN),
 		ALUMODE => (others =>'0'),
 		CARRYINSEL => (others =>'0'),
 		CEINMODE => CE,
-		CLK => CLK,
+		CLK => BoardSignals.Clock,
 		INMODE => "10100",
 		OPMODE(3 downto 0) => "0101",
-		OPMODE(6 downto 4) => OPMODE,
+		OPMODE(6 downto 4) => std_logic_vector(OPMODE),
 		RSTINMODE => RST,
-		A => A,
-		B => B,
+		A => std_logic_vector(A),
+		B => std_logic_vector(B),
 		C => (others =>'0'),
 		CARRYIN => '0',
-		D => D,
+		D => std_logic_vector(D),
 		CEA1 => CE,
 		CEA2 => CE,
 		CEAD => CE,

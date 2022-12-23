@@ -38,8 +38,8 @@ architecture rtl of BoardTimerModule_TopLevel_timerModule10 is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	constant countTo : unsigned(3 downto 0) := "1001";
 	constant CapacityBits : unsigned(2 downto 0) := "100";
 	constant TimerModule_L51F9L53T10_TimerModule_L52F79T80_Expr : std_logic := '0';

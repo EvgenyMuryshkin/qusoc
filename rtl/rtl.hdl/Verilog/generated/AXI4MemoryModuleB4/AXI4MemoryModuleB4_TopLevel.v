@@ -95,10 +95,7 @@ module AXI4MemoryModuleB4_TopLevel
 	wire AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L112F13L116T14_AXI4MemoryModule_L115F38T42_Expr = 1'b1;
 	wire AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L119F13L122T14_AXI4MemoryModule_L120F38T43_Expr = 1'b0;
 	wire AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L119F13L122T14_AXI4MemoryModule_L121F38T43_Expr = 1'b0;
-	wire AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_0_w = 1'b0;
-	wire AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_1_w = 1'b1;
-	wire [1: 0] AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_2_w = 2'b10;
-	wire [1: 0] AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_3_w = 2'b11;
+	wire [7: 0] State_wdataDefault = 8'b00000000;
 	wire [7: 0] Inputs_M2S_AR_ARID;
 	wire [31: 0] Inputs_M2S_AR_ARADDR;
 	wire [7: 0] Inputs_M2S_AR_ARLEN;
@@ -204,82 +201,81 @@ module AXI4MemoryModuleB4_TopLevel
 	wire AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_1_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index;
 	wire AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_2_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index;
 	wire AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_3_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index;
-	reg [7: 0] State_wdataDefault = 8'b00000000;
-	wire [7: 0] axiSlaveM2S_AR_ARIDaxiSlave_M2S_AR_ARIDHardLink;
-	wire [31: 0] axiSlaveM2S_AR_ARADDRaxiSlave_M2S_AR_ARADDRHardLink;
-	wire [7: 0] axiSlaveM2S_AR_ARLENaxiSlave_M2S_AR_ARLENHardLink;
-	wire [2: 0] axiSlaveM2S_AR_ARSIZEaxiSlave_M2S_AR_ARSIZEHardLink;
-	wire [1: 0] axiSlaveM2S_AR_ARBURSTaxiSlave_M2S_AR_ARBURSTHardLink;
-	wire [1: 0] axiSlaveM2S_AR_ARLOCKaxiSlave_M2S_AR_ARLOCKHardLink;
-	wire [3: 0] axiSlaveM2S_AR_ARCACHEaxiSlave_M2S_AR_ARCACHEHardLink;
-	wire [2: 0] axiSlaveM2S_AR_ARPROTaxiSlave_M2S_AR_ARPROTHardLink;
-	wire [3: 0] axiSlaveM2S_AR_ARQOSaxiSlave_M2S_AR_ARQOSHardLink;
-	wire [7: 0] axiSlaveM2S_AR_ARREGIONaxiSlave_M2S_AR_ARREGIONHardLink;
-	wire [7: 0] axiSlaveM2S_AR_ARUSERaxiSlave_M2S_AR_ARUSERHardLink;
-	wire axiSlaveM2S_AR_ARVALIDaxiSlave_M2S_AR_ARVALIDHardLink;
-	wire axiSlaveM2S_R_RREADYaxiSlave_M2S_R_RREADYHardLink;
-	wire [7: 0] axiSlaveM2S_AW_AWIDaxiSlave_M2S_AW_AWIDHardLink;
-	wire [31: 0] axiSlaveM2S_AW_AWADDRaxiSlave_M2S_AW_AWADDRHardLink;
-	wire [7: 0] axiSlaveM2S_AW_AWLENaxiSlave_M2S_AW_AWLENHardLink;
-	wire [2: 0] axiSlaveM2S_AW_AWSIZEaxiSlave_M2S_AW_AWSIZEHardLink;
-	wire [1: 0] axiSlaveM2S_AW_AWBURSTaxiSlave_M2S_AW_AWBURSTHardLink;
-	wire [1: 0] axiSlaveM2S_AW_AWLOCKaxiSlave_M2S_AW_AWLOCKHardLink;
-	wire [3: 0] axiSlaveM2S_AW_AWCACHEaxiSlave_M2S_AW_AWCACHEHardLink;
-	wire [2: 0] axiSlaveM2S_AW_AWPROTaxiSlave_M2S_AW_AWPROTHardLink;
-	wire [3: 0] axiSlaveM2S_AW_AWQOSaxiSlave_M2S_AW_AWQOSHardLink;
-	wire [7: 0] axiSlaveM2S_AW_AWREGIONaxiSlave_M2S_AW_AWREGIONHardLink;
-	wire [7: 0] axiSlaveM2S_AW_AWUSERaxiSlave_M2S_AW_AWUSERHardLink;
-	wire axiSlaveM2S_AW_AWVALIDaxiSlave_M2S_AW_AWVALIDHardLink;
-	wire [7: 0] axiSlaveM2S_W_WIDaxiSlave_M2S_W_WIDHardLink;
-	wire [7: 0] axiSlaveM2S_W_WDATA0axiSlave_M2S_W_WDATAHardLink;
-	wire [7: 0] axiSlaveM2S_W_WDATA1axiSlave_M2S_W_WDATAHardLink;
-	wire [7: 0] axiSlaveM2S_W_WDATA2axiSlave_M2S_W_WDATAHardLink;
-	wire [7: 0] axiSlaveM2S_W_WDATA3axiSlave_M2S_W_WDATAHardLink;
-	wire [3: 0] axiSlaveM2S_W_WSTRBaxiSlave_M2S_W_WSTRBHardLink;
-	wire axiSlaveM2S_W_WLASTaxiSlave_M2S_W_WLASTHardLink;
-	wire [7: 0] axiSlaveM2S_W_WUSERaxiSlave_M2S_W_WUSERHardLink;
-	wire axiSlaveM2S_W_WVALIDaxiSlave_M2S_W_WVALIDHardLink;
-	wire axiSlaveM2S_B_BREADYaxiSlave_M2S_B_BREADYHardLink;
-	wire [7: 0] axiSlaveinRDATA0axiSlave_inRDATAHardLink;
-	wire [7: 0] axiSlaveinRDATA1axiSlave_inRDATAHardLink;
-	wire [7: 0] axiSlaveinRDATA2axiSlave_inRDATAHardLink;
-	wire [7: 0] axiSlaveinRDATA3axiSlave_inRDATAHardLink;
-	wire axiSlaveinARREADYaxiSlave_inARREADYHardLink;
-	wire axiSlaveinRVALIDaxiSlave_inRVALIDHardLink;
-	wire axiSlaveinAWREADYaxiSlave_inAWREADYHardLink;
-	wire axiSlaveinWREADYaxiSlave_inWREADYHardLink;
-	wire axiSlaveinBVALIDaxiSlave_inBVALIDHardLink;
-	wire axiSlaveS2M_AR_ARREADYaxiSlave_S2M_AR_ARREADYHardLink;
-	wire axiSlaveS2M_AW_AWREADYaxiSlave_S2M_AW_AWREADYHardLink;
-	wire [7: 0] axiSlaveS2M_B_BIDaxiSlave_S2M_B_BIDHardLink;
-	wire [1: 0] axiSlaveS2M_B_BRESPaxiSlave_S2M_B_BRESPHardLink;
-	wire [7: 0] axiSlaveS2M_B_BUSERaxiSlave_S2M_B_BUSERHardLink;
-	wire axiSlaveS2M_B_BVALIDaxiSlave_S2M_B_BVALIDHardLink;
-	wire [7: 0] axiSlaveS2M_R_RIDaxiSlave_S2M_R_RIDHardLink;
-	wire [7: 0] axiSlaveS2M_R_RDATA0axiSlave_S2M_R_RDATAHardLink;
-	wire [7: 0] axiSlaveS2M_R_RDATA1axiSlave_S2M_R_RDATAHardLink;
-	wire [7: 0] axiSlaveS2M_R_RDATA2axiSlave_S2M_R_RDATAHardLink;
-	wire [7: 0] axiSlaveS2M_R_RDATA3axiSlave_S2M_R_RDATAHardLink;
-	wire [1: 0] axiSlaveS2M_R_RRESPaxiSlave_S2M_R_RRESPHardLink;
-	wire axiSlaveS2M_R_RLASTaxiSlave_S2M_R_RLASTHardLink;
-	wire [7: 0] axiSlaveS2M_R_RUSERaxiSlave_S2M_R_RUSERHardLink;
-	wire axiSlaveS2M_R_RVALIDaxiSlave_S2M_R_RVALIDHardLink;
-	wire axiSlaveS2M_W_WREADYaxiSlave_S2M_W_WREADYHardLink;
-	wire axiSlaveoutReadTXCompletingaxiSlave_outReadTXCompletingHardLink;
-	wire axiSlaveoutWriteTXCompletingaxiSlave_outWriteTXCompletingHardLink;
-	wire axiSlaveoutARREADYConfirmingaxiSlave_outARREADYConfirmingHardLink;
-	wire axiSlaveoutARVALIDaxiSlave_outARVALIDHardLink;
-	wire [31: 0] axiSlaveoutARADDRaxiSlave_outARADDRHardLink;
-	wire axiSlaveoutAWREADYConfirmingaxiSlave_outAWREADYConfirmingHardLink;
-	wire axiSlaveoutAWVALIDaxiSlave_outAWVALIDHardLink;
-	wire [31: 0] axiSlaveoutAWADDRaxiSlave_outAWADDRHardLink;
-	wire axiSlaveoutWREADYConfirmingaxiSlave_outWREADYConfirmingHardLink;
-	wire axiSlaveoutWVALIDaxiSlave_outWVALIDHardLink;
-	wire [7: 0] axiSlaveoutWDATA0axiSlave_outWDATAHardLink;
-	wire [7: 0] axiSlaveoutWDATA1axiSlave_outWDATAHardLink;
-	wire [7: 0] axiSlaveoutWDATA2axiSlave_outWDATAHardLink;
-	wire [7: 0] axiSlaveoutWDATA3axiSlave_outWDATAHardLink;
-	wire [3: 0] axiSlaveoutWSTRBaxiSlave_outWSTRBHardLink;
+	wire [7: 0] axiSlave_M2S_AR_ARID_axiSlave_M2S_AR_ARID_HardLink;
+	wire [31: 0] axiSlave_M2S_AR_ARADDR_axiSlave_M2S_AR_ARADDR_HardLink;
+	wire [7: 0] axiSlave_M2S_AR_ARLEN_axiSlave_M2S_AR_ARLEN_HardLink;
+	wire [2: 0] axiSlave_M2S_AR_ARSIZE_axiSlave_M2S_AR_ARSIZE_HardLink;
+	wire [1: 0] axiSlave_M2S_AR_ARBURST_axiSlave_M2S_AR_ARBURST_HardLink;
+	wire [1: 0] axiSlave_M2S_AR_ARLOCK_axiSlave_M2S_AR_ARLOCK_HardLink;
+	wire [3: 0] axiSlave_M2S_AR_ARCACHE_axiSlave_M2S_AR_ARCACHE_HardLink;
+	wire [2: 0] axiSlave_M2S_AR_ARPROT_axiSlave_M2S_AR_ARPROT_HardLink;
+	wire [3: 0] axiSlave_M2S_AR_ARQOS_axiSlave_M2S_AR_ARQOS_HardLink;
+	wire [7: 0] axiSlave_M2S_AR_ARREGION_axiSlave_M2S_AR_ARREGION_HardLink;
+	wire [7: 0] axiSlave_M2S_AR_ARUSER_axiSlave_M2S_AR_ARUSER_HardLink;
+	wire axiSlave_M2S_AR_ARVALID_axiSlave_M2S_AR_ARVALID_HardLink;
+	wire axiSlave_M2S_R_RREADY_axiSlave_M2S_R_RREADY_HardLink;
+	wire [7: 0] axiSlave_M2S_AW_AWID_axiSlave_M2S_AW_AWID_HardLink;
+	wire [31: 0] axiSlave_M2S_AW_AWADDR_axiSlave_M2S_AW_AWADDR_HardLink;
+	wire [7: 0] axiSlave_M2S_AW_AWLEN_axiSlave_M2S_AW_AWLEN_HardLink;
+	wire [2: 0] axiSlave_M2S_AW_AWSIZE_axiSlave_M2S_AW_AWSIZE_HardLink;
+	wire [1: 0] axiSlave_M2S_AW_AWBURST_axiSlave_M2S_AW_AWBURST_HardLink;
+	wire [1: 0] axiSlave_M2S_AW_AWLOCK_axiSlave_M2S_AW_AWLOCK_HardLink;
+	wire [3: 0] axiSlave_M2S_AW_AWCACHE_axiSlave_M2S_AW_AWCACHE_HardLink;
+	wire [2: 0] axiSlave_M2S_AW_AWPROT_axiSlave_M2S_AW_AWPROT_HardLink;
+	wire [3: 0] axiSlave_M2S_AW_AWQOS_axiSlave_M2S_AW_AWQOS_HardLink;
+	wire [7: 0] axiSlave_M2S_AW_AWREGION_axiSlave_M2S_AW_AWREGION_HardLink;
+	wire [7: 0] axiSlave_M2S_AW_AWUSER_axiSlave_M2S_AW_AWUSER_HardLink;
+	wire axiSlave_M2S_AW_AWVALID_axiSlave_M2S_AW_AWVALID_HardLink;
+	wire [7: 0] axiSlave_M2S_W_WID_axiSlave_M2S_W_WID_HardLink;
+	wire [7: 0] axiSlave_M2S_W_WDATA0_axiSlave_M2S_W_WDATA_HardLink;
+	wire [7: 0] axiSlave_M2S_W_WDATA1_axiSlave_M2S_W_WDATA_HardLink;
+	wire [7: 0] axiSlave_M2S_W_WDATA2_axiSlave_M2S_W_WDATA_HardLink;
+	wire [7: 0] axiSlave_M2S_W_WDATA3_axiSlave_M2S_W_WDATA_HardLink;
+	wire [3: 0] axiSlave_M2S_W_WSTRB_axiSlave_M2S_W_WSTRB_HardLink;
+	wire axiSlave_M2S_W_WLAST_axiSlave_M2S_W_WLAST_HardLink;
+	wire [7: 0] axiSlave_M2S_W_WUSER_axiSlave_M2S_W_WUSER_HardLink;
+	wire axiSlave_M2S_W_WVALID_axiSlave_M2S_W_WVALID_HardLink;
+	wire axiSlave_M2S_B_BREADY_axiSlave_M2S_B_BREADY_HardLink;
+	wire [7: 0] axiSlave_inRDATA0_axiSlave_inRDATA_HardLink;
+	wire [7: 0] axiSlave_inRDATA1_axiSlave_inRDATA_HardLink;
+	wire [7: 0] axiSlave_inRDATA2_axiSlave_inRDATA_HardLink;
+	wire [7: 0] axiSlave_inRDATA3_axiSlave_inRDATA_HardLink;
+	wire axiSlave_inARREADY_axiSlave_inARREADY_HardLink;
+	wire axiSlave_inRVALID_axiSlave_inRVALID_HardLink;
+	wire axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink;
+	wire axiSlave_inWREADY_axiSlave_inWREADY_HardLink;
+	wire axiSlave_inBVALID_axiSlave_inBVALID_HardLink;
+	wire axiSlave_S2M_AR_ARREADY_axiSlave_S2M_AR_ARREADY_HardLink;
+	wire axiSlave_S2M_AW_AWREADY_axiSlave_S2M_AW_AWREADY_HardLink;
+	wire [7: 0] axiSlave_S2M_B_BID_axiSlave_S2M_B_BID_HardLink;
+	wire [1: 0] axiSlave_S2M_B_BRESP_axiSlave_S2M_B_BRESP_HardLink;
+	wire [7: 0] axiSlave_S2M_B_BUSER_axiSlave_S2M_B_BUSER_HardLink;
+	wire axiSlave_S2M_B_BVALID_axiSlave_S2M_B_BVALID_HardLink;
+	wire [7: 0] axiSlave_S2M_R_RID_axiSlave_S2M_R_RID_HardLink;
+	wire [7: 0] axiSlave_S2M_R_RDATA0_axiSlave_S2M_R_RDATA_HardLink;
+	wire [7: 0] axiSlave_S2M_R_RDATA1_axiSlave_S2M_R_RDATA_HardLink;
+	wire [7: 0] axiSlave_S2M_R_RDATA2_axiSlave_S2M_R_RDATA_HardLink;
+	wire [7: 0] axiSlave_S2M_R_RDATA3_axiSlave_S2M_R_RDATA_HardLink;
+	wire [1: 0] axiSlave_S2M_R_RRESP_axiSlave_S2M_R_RRESP_HardLink;
+	wire axiSlave_S2M_R_RLAST_axiSlave_S2M_R_RLAST_HardLink;
+	wire [7: 0] axiSlave_S2M_R_RUSER_axiSlave_S2M_R_RUSER_HardLink;
+	wire axiSlave_S2M_R_RVALID_axiSlave_S2M_R_RVALID_HardLink;
+	wire axiSlave_S2M_W_WREADY_axiSlave_S2M_W_WREADY_HardLink;
+	wire axiSlave_outReadTXCompleting_axiSlave_outReadTXCompleting_HardLink;
+	wire axiSlave_outWriteTXCompleting_axiSlave_outWriteTXCompleting_HardLink;
+	wire axiSlave_outARREADYConfirming_axiSlave_outARREADYConfirming_HardLink;
+	wire axiSlave_outARVALID_axiSlave_outARVALID_HardLink;
+	wire [31: 0] axiSlave_outARADDR_axiSlave_outARADDR_HardLink;
+	wire axiSlave_outAWREADYConfirming_axiSlave_outAWREADYConfirming_HardLink;
+	wire axiSlave_outAWVALID_axiSlave_outAWVALID_HardLink;
+	wire [31: 0] axiSlave_outAWADDR_axiSlave_outAWADDR_HardLink;
+	wire axiSlave_outWREADYConfirming_axiSlave_outWREADYConfirming_HardLink;
+	wire axiSlave_outWVALID_axiSlave_outWVALID_HardLink;
+	wire [7: 0] axiSlave_outWDATA0_axiSlave_outWDATA_HardLink;
+	wire [7: 0] axiSlave_outWDATA1_axiSlave_outWDATA_HardLink;
+	wire [7: 0] axiSlave_outWDATA2_axiSlave_outWDATA_HardLink;
+	wire [7: 0] axiSlave_outWDATA3_axiSlave_outWDATA_HardLink;
+	wire [3: 0] axiSlave_outWSTRB_axiSlave_outWSTRB_HardLink;
 	reg [31: 0] State_raddr = 32'b00000000000000000000000000000000;
 	wire [31: 0] State_raddrDefault = 32'b00000000000000000000000000000000;
 	reg State_waddrSet = 1'b0;
@@ -480,81 +476,81 @@ module AXI4MemoryModuleB4_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.M2S_AR_ARID (axiSlaveM2S_AR_ARIDaxiSlave_M2S_AR_ARIDHardLink),
-		.M2S_AR_ARADDR (axiSlaveM2S_AR_ARADDRaxiSlave_M2S_AR_ARADDRHardLink),
-		.M2S_AR_ARLEN (axiSlaveM2S_AR_ARLENaxiSlave_M2S_AR_ARLENHardLink),
-		.M2S_AR_ARSIZE (axiSlaveM2S_AR_ARSIZEaxiSlave_M2S_AR_ARSIZEHardLink),
-		.M2S_AR_ARBURST (axiSlaveM2S_AR_ARBURSTaxiSlave_M2S_AR_ARBURSTHardLink),
-		.M2S_AR_ARLOCK (axiSlaveM2S_AR_ARLOCKaxiSlave_M2S_AR_ARLOCKHardLink),
-		.M2S_AR_ARCACHE (axiSlaveM2S_AR_ARCACHEaxiSlave_M2S_AR_ARCACHEHardLink),
-		.M2S_AR_ARPROT (axiSlaveM2S_AR_ARPROTaxiSlave_M2S_AR_ARPROTHardLink),
-		.M2S_AR_ARQOS (axiSlaveM2S_AR_ARQOSaxiSlave_M2S_AR_ARQOSHardLink),
-		.M2S_AR_ARREGION (axiSlaveM2S_AR_ARREGIONaxiSlave_M2S_AR_ARREGIONHardLink),
-		.M2S_AR_ARUSER (axiSlaveM2S_AR_ARUSERaxiSlave_M2S_AR_ARUSERHardLink),
-		.M2S_AR_ARVALID (axiSlaveM2S_AR_ARVALIDaxiSlave_M2S_AR_ARVALIDHardLink),
-		.M2S_R_RREADY (axiSlaveM2S_R_RREADYaxiSlave_M2S_R_RREADYHardLink),
-		.M2S_AW_AWID (axiSlaveM2S_AW_AWIDaxiSlave_M2S_AW_AWIDHardLink),
-		.M2S_AW_AWADDR (axiSlaveM2S_AW_AWADDRaxiSlave_M2S_AW_AWADDRHardLink),
-		.M2S_AW_AWLEN (axiSlaveM2S_AW_AWLENaxiSlave_M2S_AW_AWLENHardLink),
-		.M2S_AW_AWSIZE (axiSlaveM2S_AW_AWSIZEaxiSlave_M2S_AW_AWSIZEHardLink),
-		.M2S_AW_AWBURST (axiSlaveM2S_AW_AWBURSTaxiSlave_M2S_AW_AWBURSTHardLink),
-		.M2S_AW_AWLOCK (axiSlaveM2S_AW_AWLOCKaxiSlave_M2S_AW_AWLOCKHardLink),
-		.M2S_AW_AWCACHE (axiSlaveM2S_AW_AWCACHEaxiSlave_M2S_AW_AWCACHEHardLink),
-		.M2S_AW_AWPROT (axiSlaveM2S_AW_AWPROTaxiSlave_M2S_AW_AWPROTHardLink),
-		.M2S_AW_AWQOS (axiSlaveM2S_AW_AWQOSaxiSlave_M2S_AW_AWQOSHardLink),
-		.M2S_AW_AWREGION (axiSlaveM2S_AW_AWREGIONaxiSlave_M2S_AW_AWREGIONHardLink),
-		.M2S_AW_AWUSER (axiSlaveM2S_AW_AWUSERaxiSlave_M2S_AW_AWUSERHardLink),
-		.M2S_AW_AWVALID (axiSlaveM2S_AW_AWVALIDaxiSlave_M2S_AW_AWVALIDHardLink),
-		.M2S_W_WID (axiSlaveM2S_W_WIDaxiSlave_M2S_W_WIDHardLink),
-		.M2S_W_WDATA0 (axiSlaveM2S_W_WDATA0axiSlave_M2S_W_WDATAHardLink),
-		.M2S_W_WDATA1 (axiSlaveM2S_W_WDATA1axiSlave_M2S_W_WDATAHardLink),
-		.M2S_W_WDATA2 (axiSlaveM2S_W_WDATA2axiSlave_M2S_W_WDATAHardLink),
-		.M2S_W_WDATA3 (axiSlaveM2S_W_WDATA3axiSlave_M2S_W_WDATAHardLink),
-		.M2S_W_WSTRB (axiSlaveM2S_W_WSTRBaxiSlave_M2S_W_WSTRBHardLink),
-		.M2S_W_WLAST (axiSlaveM2S_W_WLASTaxiSlave_M2S_W_WLASTHardLink),
-		.M2S_W_WUSER (axiSlaveM2S_W_WUSERaxiSlave_M2S_W_WUSERHardLink),
-		.M2S_W_WVALID (axiSlaveM2S_W_WVALIDaxiSlave_M2S_W_WVALIDHardLink),
-		.M2S_B_BREADY (axiSlaveM2S_B_BREADYaxiSlave_M2S_B_BREADYHardLink),
-		.inRDATA0 (axiSlaveinRDATA0axiSlave_inRDATAHardLink),
-		.inRDATA1 (axiSlaveinRDATA1axiSlave_inRDATAHardLink),
-		.inRDATA2 (axiSlaveinRDATA2axiSlave_inRDATAHardLink),
-		.inRDATA3 (axiSlaveinRDATA3axiSlave_inRDATAHardLink),
-		.inARREADY (axiSlaveinARREADYaxiSlave_inARREADYHardLink),
-		.inRVALID (axiSlaveinRVALIDaxiSlave_inRVALIDHardLink),
-		.inAWREADY (axiSlaveinAWREADYaxiSlave_inAWREADYHardLink),
-		.inWREADY (axiSlaveinWREADYaxiSlave_inWREADYHardLink),
-		.inBVALID (axiSlaveinBVALIDaxiSlave_inBVALIDHardLink),
-		.S2M_AR_ARREADY (axiSlaveS2M_AR_ARREADYaxiSlave_S2M_AR_ARREADYHardLink),
-		.S2M_AW_AWREADY (axiSlaveS2M_AW_AWREADYaxiSlave_S2M_AW_AWREADYHardLink),
-		.S2M_B_BID (axiSlaveS2M_B_BIDaxiSlave_S2M_B_BIDHardLink),
-		.S2M_B_BRESP (axiSlaveS2M_B_BRESPaxiSlave_S2M_B_BRESPHardLink),
-		.S2M_B_BUSER (axiSlaveS2M_B_BUSERaxiSlave_S2M_B_BUSERHardLink),
-		.S2M_B_BVALID (axiSlaveS2M_B_BVALIDaxiSlave_S2M_B_BVALIDHardLink),
-		.S2M_R_RID (axiSlaveS2M_R_RIDaxiSlave_S2M_R_RIDHardLink),
-		.S2M_R_RDATA0 (axiSlaveS2M_R_RDATA0axiSlave_S2M_R_RDATAHardLink),
-		.S2M_R_RDATA1 (axiSlaveS2M_R_RDATA1axiSlave_S2M_R_RDATAHardLink),
-		.S2M_R_RDATA2 (axiSlaveS2M_R_RDATA2axiSlave_S2M_R_RDATAHardLink),
-		.S2M_R_RDATA3 (axiSlaveS2M_R_RDATA3axiSlave_S2M_R_RDATAHardLink),
-		.S2M_R_RRESP (axiSlaveS2M_R_RRESPaxiSlave_S2M_R_RRESPHardLink),
-		.S2M_R_RLAST (axiSlaveS2M_R_RLASTaxiSlave_S2M_R_RLASTHardLink),
-		.S2M_R_RUSER (axiSlaveS2M_R_RUSERaxiSlave_S2M_R_RUSERHardLink),
-		.S2M_R_RVALID (axiSlaveS2M_R_RVALIDaxiSlave_S2M_R_RVALIDHardLink),
-		.S2M_W_WREADY (axiSlaveS2M_W_WREADYaxiSlave_S2M_W_WREADYHardLink),
-		.outReadTXCompleting (axiSlaveoutReadTXCompletingaxiSlave_outReadTXCompletingHardLink),
-		.outWriteTXCompleting (axiSlaveoutWriteTXCompletingaxiSlave_outWriteTXCompletingHardLink),
-		.outARREADYConfirming (axiSlaveoutARREADYConfirmingaxiSlave_outARREADYConfirmingHardLink),
-		.outARVALID (axiSlaveoutARVALIDaxiSlave_outARVALIDHardLink),
-		.outARADDR (axiSlaveoutARADDRaxiSlave_outARADDRHardLink),
-		.outAWREADYConfirming (axiSlaveoutAWREADYConfirmingaxiSlave_outAWREADYConfirmingHardLink),
-		.outAWVALID (axiSlaveoutAWVALIDaxiSlave_outAWVALIDHardLink),
-		.outAWADDR (axiSlaveoutAWADDRaxiSlave_outAWADDRHardLink),
-		.outWREADYConfirming (axiSlaveoutWREADYConfirmingaxiSlave_outWREADYConfirmingHardLink),
-		.outWVALID (axiSlaveoutWVALIDaxiSlave_outWVALIDHardLink),
-		.outWDATA0 (axiSlaveoutWDATA0axiSlave_outWDATAHardLink),
-		.outWDATA1 (axiSlaveoutWDATA1axiSlave_outWDATAHardLink),
-		.outWDATA2 (axiSlaveoutWDATA2axiSlave_outWDATAHardLink),
-		.outWDATA3 (axiSlaveoutWDATA3axiSlave_outWDATAHardLink),
-		.outWSTRB (axiSlaveoutWSTRBaxiSlave_outWSTRBHardLink)
+		.M2S_AR_ARID (axiSlave_M2S_AR_ARID_axiSlave_M2S_AR_ARID_HardLink),
+		.M2S_AR_ARADDR (axiSlave_M2S_AR_ARADDR_axiSlave_M2S_AR_ARADDR_HardLink),
+		.M2S_AR_ARLEN (axiSlave_M2S_AR_ARLEN_axiSlave_M2S_AR_ARLEN_HardLink),
+		.M2S_AR_ARSIZE (axiSlave_M2S_AR_ARSIZE_axiSlave_M2S_AR_ARSIZE_HardLink),
+		.M2S_AR_ARBURST (axiSlave_M2S_AR_ARBURST_axiSlave_M2S_AR_ARBURST_HardLink),
+		.M2S_AR_ARLOCK (axiSlave_M2S_AR_ARLOCK_axiSlave_M2S_AR_ARLOCK_HardLink),
+		.M2S_AR_ARCACHE (axiSlave_M2S_AR_ARCACHE_axiSlave_M2S_AR_ARCACHE_HardLink),
+		.M2S_AR_ARPROT (axiSlave_M2S_AR_ARPROT_axiSlave_M2S_AR_ARPROT_HardLink),
+		.M2S_AR_ARQOS (axiSlave_M2S_AR_ARQOS_axiSlave_M2S_AR_ARQOS_HardLink),
+		.M2S_AR_ARREGION (axiSlave_M2S_AR_ARREGION_axiSlave_M2S_AR_ARREGION_HardLink),
+		.M2S_AR_ARUSER (axiSlave_M2S_AR_ARUSER_axiSlave_M2S_AR_ARUSER_HardLink),
+		.M2S_AR_ARVALID (axiSlave_M2S_AR_ARVALID_axiSlave_M2S_AR_ARVALID_HardLink),
+		.M2S_R_RREADY (axiSlave_M2S_R_RREADY_axiSlave_M2S_R_RREADY_HardLink),
+		.M2S_AW_AWID (axiSlave_M2S_AW_AWID_axiSlave_M2S_AW_AWID_HardLink),
+		.M2S_AW_AWADDR (axiSlave_M2S_AW_AWADDR_axiSlave_M2S_AW_AWADDR_HardLink),
+		.M2S_AW_AWLEN (axiSlave_M2S_AW_AWLEN_axiSlave_M2S_AW_AWLEN_HardLink),
+		.M2S_AW_AWSIZE (axiSlave_M2S_AW_AWSIZE_axiSlave_M2S_AW_AWSIZE_HardLink),
+		.M2S_AW_AWBURST (axiSlave_M2S_AW_AWBURST_axiSlave_M2S_AW_AWBURST_HardLink),
+		.M2S_AW_AWLOCK (axiSlave_M2S_AW_AWLOCK_axiSlave_M2S_AW_AWLOCK_HardLink),
+		.M2S_AW_AWCACHE (axiSlave_M2S_AW_AWCACHE_axiSlave_M2S_AW_AWCACHE_HardLink),
+		.M2S_AW_AWPROT (axiSlave_M2S_AW_AWPROT_axiSlave_M2S_AW_AWPROT_HardLink),
+		.M2S_AW_AWQOS (axiSlave_M2S_AW_AWQOS_axiSlave_M2S_AW_AWQOS_HardLink),
+		.M2S_AW_AWREGION (axiSlave_M2S_AW_AWREGION_axiSlave_M2S_AW_AWREGION_HardLink),
+		.M2S_AW_AWUSER (axiSlave_M2S_AW_AWUSER_axiSlave_M2S_AW_AWUSER_HardLink),
+		.M2S_AW_AWVALID (axiSlave_M2S_AW_AWVALID_axiSlave_M2S_AW_AWVALID_HardLink),
+		.M2S_W_WID (axiSlave_M2S_W_WID_axiSlave_M2S_W_WID_HardLink),
+		.M2S_W_WDATA0 (axiSlave_M2S_W_WDATA0_axiSlave_M2S_W_WDATA_HardLink),
+		.M2S_W_WDATA1 (axiSlave_M2S_W_WDATA1_axiSlave_M2S_W_WDATA_HardLink),
+		.M2S_W_WDATA2 (axiSlave_M2S_W_WDATA2_axiSlave_M2S_W_WDATA_HardLink),
+		.M2S_W_WDATA3 (axiSlave_M2S_W_WDATA3_axiSlave_M2S_W_WDATA_HardLink),
+		.M2S_W_WSTRB (axiSlave_M2S_W_WSTRB_axiSlave_M2S_W_WSTRB_HardLink),
+		.M2S_W_WLAST (axiSlave_M2S_W_WLAST_axiSlave_M2S_W_WLAST_HardLink),
+		.M2S_W_WUSER (axiSlave_M2S_W_WUSER_axiSlave_M2S_W_WUSER_HardLink),
+		.M2S_W_WVALID (axiSlave_M2S_W_WVALID_axiSlave_M2S_W_WVALID_HardLink),
+		.M2S_B_BREADY (axiSlave_M2S_B_BREADY_axiSlave_M2S_B_BREADY_HardLink),
+		.inRDATA0 (axiSlave_inRDATA0_axiSlave_inRDATA_HardLink),
+		.inRDATA1 (axiSlave_inRDATA1_axiSlave_inRDATA_HardLink),
+		.inRDATA2 (axiSlave_inRDATA2_axiSlave_inRDATA_HardLink),
+		.inRDATA3 (axiSlave_inRDATA3_axiSlave_inRDATA_HardLink),
+		.inARREADY (axiSlave_inARREADY_axiSlave_inARREADY_HardLink),
+		.inRVALID (axiSlave_inRVALID_axiSlave_inRVALID_HardLink),
+		.inAWREADY (axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink),
+		.inWREADY (axiSlave_inWREADY_axiSlave_inWREADY_HardLink),
+		.inBVALID (axiSlave_inBVALID_axiSlave_inBVALID_HardLink),
+		.S2M_AR_ARREADY (axiSlave_S2M_AR_ARREADY_axiSlave_S2M_AR_ARREADY_HardLink),
+		.S2M_AW_AWREADY (axiSlave_S2M_AW_AWREADY_axiSlave_S2M_AW_AWREADY_HardLink),
+		.S2M_B_BID (axiSlave_S2M_B_BID_axiSlave_S2M_B_BID_HardLink),
+		.S2M_B_BRESP (axiSlave_S2M_B_BRESP_axiSlave_S2M_B_BRESP_HardLink),
+		.S2M_B_BUSER (axiSlave_S2M_B_BUSER_axiSlave_S2M_B_BUSER_HardLink),
+		.S2M_B_BVALID (axiSlave_S2M_B_BVALID_axiSlave_S2M_B_BVALID_HardLink),
+		.S2M_R_RID (axiSlave_S2M_R_RID_axiSlave_S2M_R_RID_HardLink),
+		.S2M_R_RDATA0 (axiSlave_S2M_R_RDATA0_axiSlave_S2M_R_RDATA_HardLink),
+		.S2M_R_RDATA1 (axiSlave_S2M_R_RDATA1_axiSlave_S2M_R_RDATA_HardLink),
+		.S2M_R_RDATA2 (axiSlave_S2M_R_RDATA2_axiSlave_S2M_R_RDATA_HardLink),
+		.S2M_R_RDATA3 (axiSlave_S2M_R_RDATA3_axiSlave_S2M_R_RDATA_HardLink),
+		.S2M_R_RRESP (axiSlave_S2M_R_RRESP_axiSlave_S2M_R_RRESP_HardLink),
+		.S2M_R_RLAST (axiSlave_S2M_R_RLAST_axiSlave_S2M_R_RLAST_HardLink),
+		.S2M_R_RUSER (axiSlave_S2M_R_RUSER_axiSlave_S2M_R_RUSER_HardLink),
+		.S2M_R_RVALID (axiSlave_S2M_R_RVALID_axiSlave_S2M_R_RVALID_HardLink),
+		.S2M_W_WREADY (axiSlave_S2M_W_WREADY_axiSlave_S2M_W_WREADY_HardLink),
+		.outReadTXCompleting (axiSlave_outReadTXCompleting_axiSlave_outReadTXCompleting_HardLink),
+		.outWriteTXCompleting (axiSlave_outWriteTXCompleting_axiSlave_outWriteTXCompleting_HardLink),
+		.outARREADYConfirming (axiSlave_outARREADYConfirming_axiSlave_outARREADYConfirming_HardLink),
+		.outARVALID (axiSlave_outARVALID_axiSlave_outARVALID_HardLink),
+		.outARADDR (axiSlave_outARADDR_axiSlave_outARADDR_HardLink),
+		.outAWREADYConfirming (axiSlave_outAWREADYConfirming_axiSlave_outAWREADYConfirming_HardLink),
+		.outAWVALID (axiSlave_outAWVALID_axiSlave_outAWVALID_HardLink),
+		.outAWADDR (axiSlave_outAWADDR_axiSlave_outAWADDR_HardLink),
+		.outWREADYConfirming (axiSlave_outWREADYConfirming_axiSlave_outWREADYConfirming_HardLink),
+		.outWVALID (axiSlave_outWVALID_axiSlave_outWVALID_HardLink),
+		.outWDATA0 (axiSlave_outWDATA0_axiSlave_outWDATA_HardLink),
+		.outWDATA1 (axiSlave_outWDATA1_axiSlave_outWDATA_HardLink),
+		.outWDATA2 (axiSlave_outWDATA2_axiSlave_outWDATA_HardLink),
+		.outWDATA3 (axiSlave_outWDATA3_axiSlave_outWDATA_HardLink),
+		.outWSTRB (axiSlave_outWSTRB_axiSlave_outWSTRB_HardLink)
 	);
 	always @ (*)
 	begin
@@ -763,10 +759,10 @@ module AXI4MemoryModuleB4_TopLevel
 	assign axiSlave_inAWREADY = AXI4MemoryModule_L97F29T33_Expr;
 	assign axiSlave_inWREADY = AXI4MemoryModule_L98F28T32_Expr;
 	assign axiSlave_inBVALID = AXI4MemoryModule_L99F28T32_Expr;
-	assign AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_0_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index = internalWSTRB[AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_0_w];
-	assign AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_1_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index = internalWSTRB[AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_1_w];
-	assign AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_2_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index = internalWSTRB[AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_2_w];
-	assign AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_3_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index = internalWSTRB[AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_3_w];
+	assign AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_0_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index = internalWSTRB[0];
+	assign AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_1_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index = internalWSTRB[1];
+	assign AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_2_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index = internalWSTRB[2];
+	assign AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_3_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index = internalWSTRB[3];
 	assign S2M_AR_ARREADY = axiSlave_S2M_AR_ARREADY;
 	assign S2M_AW_AWREADY = axiSlave_S2M_AW_AWREADY;
 	assign S2M_B_BID = axiSlave_S2M_B_BID;
@@ -783,81 +779,81 @@ module AXI4MemoryModuleB4_TopLevel
 	assign S2M_R_RUSER = axiSlave_S2M_R_RUSER;
 	assign S2M_R_RVALID = axiSlave_S2M_R_RVALID;
 	assign S2M_W_WREADY = axiSlave_S2M_W_WREADY;
-	assign axiSlaveM2S_AR_ARIDaxiSlave_M2S_AR_ARIDHardLink = axiSlave_M2S_AR_ARID;
-	assign axiSlaveM2S_AR_ARADDRaxiSlave_M2S_AR_ARADDRHardLink = axiSlave_M2S_AR_ARADDR;
-	assign axiSlaveM2S_AR_ARLENaxiSlave_M2S_AR_ARLENHardLink = axiSlave_M2S_AR_ARLEN;
-	assign axiSlaveM2S_AR_ARSIZEaxiSlave_M2S_AR_ARSIZEHardLink = axiSlave_M2S_AR_ARSIZE;
-	assign axiSlaveM2S_AR_ARBURSTaxiSlave_M2S_AR_ARBURSTHardLink = axiSlave_M2S_AR_ARBURST;
-	assign axiSlaveM2S_AR_ARLOCKaxiSlave_M2S_AR_ARLOCKHardLink = axiSlave_M2S_AR_ARLOCK;
-	assign axiSlaveM2S_AR_ARCACHEaxiSlave_M2S_AR_ARCACHEHardLink = axiSlave_M2S_AR_ARCACHE;
-	assign axiSlaveM2S_AR_ARPROTaxiSlave_M2S_AR_ARPROTHardLink = axiSlave_M2S_AR_ARPROT;
-	assign axiSlaveM2S_AR_ARQOSaxiSlave_M2S_AR_ARQOSHardLink = axiSlave_M2S_AR_ARQOS;
-	assign axiSlaveM2S_AR_ARREGIONaxiSlave_M2S_AR_ARREGIONHardLink = axiSlave_M2S_AR_ARREGION;
-	assign axiSlaveM2S_AR_ARUSERaxiSlave_M2S_AR_ARUSERHardLink = axiSlave_M2S_AR_ARUSER;
-	assign axiSlaveM2S_AR_ARVALIDaxiSlave_M2S_AR_ARVALIDHardLink = axiSlave_M2S_AR_ARVALID;
-	assign axiSlaveM2S_R_RREADYaxiSlave_M2S_R_RREADYHardLink = axiSlave_M2S_R_RREADY;
-	assign axiSlaveM2S_AW_AWIDaxiSlave_M2S_AW_AWIDHardLink = axiSlave_M2S_AW_AWID;
-	assign axiSlaveM2S_AW_AWADDRaxiSlave_M2S_AW_AWADDRHardLink = axiSlave_M2S_AW_AWADDR;
-	assign axiSlaveM2S_AW_AWLENaxiSlave_M2S_AW_AWLENHardLink = axiSlave_M2S_AW_AWLEN;
-	assign axiSlaveM2S_AW_AWSIZEaxiSlave_M2S_AW_AWSIZEHardLink = axiSlave_M2S_AW_AWSIZE;
-	assign axiSlaveM2S_AW_AWBURSTaxiSlave_M2S_AW_AWBURSTHardLink = axiSlave_M2S_AW_AWBURST;
-	assign axiSlaveM2S_AW_AWLOCKaxiSlave_M2S_AW_AWLOCKHardLink = axiSlave_M2S_AW_AWLOCK;
-	assign axiSlaveM2S_AW_AWCACHEaxiSlave_M2S_AW_AWCACHEHardLink = axiSlave_M2S_AW_AWCACHE;
-	assign axiSlaveM2S_AW_AWPROTaxiSlave_M2S_AW_AWPROTHardLink = axiSlave_M2S_AW_AWPROT;
-	assign axiSlaveM2S_AW_AWQOSaxiSlave_M2S_AW_AWQOSHardLink = axiSlave_M2S_AW_AWQOS;
-	assign axiSlaveM2S_AW_AWREGIONaxiSlave_M2S_AW_AWREGIONHardLink = axiSlave_M2S_AW_AWREGION;
-	assign axiSlaveM2S_AW_AWUSERaxiSlave_M2S_AW_AWUSERHardLink = axiSlave_M2S_AW_AWUSER;
-	assign axiSlaveM2S_AW_AWVALIDaxiSlave_M2S_AW_AWVALIDHardLink = axiSlave_M2S_AW_AWVALID;
-	assign axiSlaveM2S_W_WIDaxiSlave_M2S_W_WIDHardLink = axiSlave_M2S_W_WID;
-	assign axiSlaveM2S_W_WDATA0axiSlave_M2S_W_WDATAHardLink = axiSlave_M2S_W_WDATA[0];
-	assign axiSlaveM2S_W_WDATA1axiSlave_M2S_W_WDATAHardLink = axiSlave_M2S_W_WDATA[1];
-	assign axiSlaveM2S_W_WDATA2axiSlave_M2S_W_WDATAHardLink = axiSlave_M2S_W_WDATA[2];
-	assign axiSlaveM2S_W_WDATA3axiSlave_M2S_W_WDATAHardLink = axiSlave_M2S_W_WDATA[3];
-	assign axiSlaveM2S_W_WSTRBaxiSlave_M2S_W_WSTRBHardLink = axiSlave_M2S_W_WSTRB;
-	assign axiSlaveM2S_W_WLASTaxiSlave_M2S_W_WLASTHardLink = axiSlave_M2S_W_WLAST;
-	assign axiSlaveM2S_W_WUSERaxiSlave_M2S_W_WUSERHardLink = axiSlave_M2S_W_WUSER;
-	assign axiSlaveM2S_W_WVALIDaxiSlave_M2S_W_WVALIDHardLink = axiSlave_M2S_W_WVALID;
-	assign axiSlaveM2S_B_BREADYaxiSlave_M2S_B_BREADYHardLink = axiSlave_M2S_B_BREADY;
-	assign axiSlaveinRDATA0axiSlave_inRDATAHardLink = axiSlave_inRDATA[0];
-	assign axiSlaveinRDATA1axiSlave_inRDATAHardLink = axiSlave_inRDATA[1];
-	assign axiSlaveinRDATA2axiSlave_inRDATAHardLink = axiSlave_inRDATA[2];
-	assign axiSlaveinRDATA3axiSlave_inRDATAHardLink = axiSlave_inRDATA[3];
-	assign axiSlaveinARREADYaxiSlave_inARREADYHardLink = axiSlave_inARREADY;
-	assign axiSlaveinRVALIDaxiSlave_inRVALIDHardLink = axiSlave_inRVALID;
-	assign axiSlaveinAWREADYaxiSlave_inAWREADYHardLink = axiSlave_inAWREADY;
-	assign axiSlaveinWREADYaxiSlave_inWREADYHardLink = axiSlave_inWREADY;
-	assign axiSlaveinBVALIDaxiSlave_inBVALIDHardLink = axiSlave_inBVALID;
-	assign axiSlave_S2M_AR_ARREADY = axiSlaveS2M_AR_ARREADYaxiSlave_S2M_AR_ARREADYHardLink;
-	assign axiSlave_S2M_AW_AWREADY = axiSlaveS2M_AW_AWREADYaxiSlave_S2M_AW_AWREADYHardLink;
-	assign axiSlave_S2M_B_BID = axiSlaveS2M_B_BIDaxiSlave_S2M_B_BIDHardLink;
-	assign axiSlave_S2M_B_BRESP = axiSlaveS2M_B_BRESPaxiSlave_S2M_B_BRESPHardLink;
-	assign axiSlave_S2M_B_BUSER = axiSlaveS2M_B_BUSERaxiSlave_S2M_B_BUSERHardLink;
-	assign axiSlave_S2M_B_BVALID = axiSlaveS2M_B_BVALIDaxiSlave_S2M_B_BVALIDHardLink;
-	assign axiSlave_S2M_R_RID = axiSlaveS2M_R_RIDaxiSlave_S2M_R_RIDHardLink;
-	assign axiSlave_S2M_R_RDATA[0] = axiSlaveS2M_R_RDATA0axiSlave_S2M_R_RDATAHardLink;
-	assign axiSlave_S2M_R_RDATA[1] = axiSlaveS2M_R_RDATA1axiSlave_S2M_R_RDATAHardLink;
-	assign axiSlave_S2M_R_RDATA[2] = axiSlaveS2M_R_RDATA2axiSlave_S2M_R_RDATAHardLink;
-	assign axiSlave_S2M_R_RDATA[3] = axiSlaveS2M_R_RDATA3axiSlave_S2M_R_RDATAHardLink;
-	assign axiSlave_S2M_R_RRESP = axiSlaveS2M_R_RRESPaxiSlave_S2M_R_RRESPHardLink;
-	assign axiSlave_S2M_R_RLAST = axiSlaveS2M_R_RLASTaxiSlave_S2M_R_RLASTHardLink;
-	assign axiSlave_S2M_R_RUSER = axiSlaveS2M_R_RUSERaxiSlave_S2M_R_RUSERHardLink;
-	assign axiSlave_S2M_R_RVALID = axiSlaveS2M_R_RVALIDaxiSlave_S2M_R_RVALIDHardLink;
-	assign axiSlave_S2M_W_WREADY = axiSlaveS2M_W_WREADYaxiSlave_S2M_W_WREADYHardLink;
-	assign axiSlave_outReadTXCompleting = axiSlaveoutReadTXCompletingaxiSlave_outReadTXCompletingHardLink;
-	assign axiSlave_outWriteTXCompleting = axiSlaveoutWriteTXCompletingaxiSlave_outWriteTXCompletingHardLink;
-	assign axiSlave_outARREADYConfirming = axiSlaveoutARREADYConfirmingaxiSlave_outARREADYConfirmingHardLink;
-	assign axiSlave_outARVALID = axiSlaveoutARVALIDaxiSlave_outARVALIDHardLink;
-	assign axiSlave_outARADDR = axiSlaveoutARADDRaxiSlave_outARADDRHardLink;
-	assign axiSlave_outAWREADYConfirming = axiSlaveoutAWREADYConfirmingaxiSlave_outAWREADYConfirmingHardLink;
-	assign axiSlave_outAWVALID = axiSlaveoutAWVALIDaxiSlave_outAWVALIDHardLink;
-	assign axiSlave_outAWADDR = axiSlaveoutAWADDRaxiSlave_outAWADDRHardLink;
-	assign axiSlave_outWREADYConfirming = axiSlaveoutWREADYConfirmingaxiSlave_outWREADYConfirmingHardLink;
-	assign axiSlave_outWVALID = axiSlaveoutWVALIDaxiSlave_outWVALIDHardLink;
-	assign axiSlave_outWDATA[0] = axiSlaveoutWDATA0axiSlave_outWDATAHardLink;
-	assign axiSlave_outWDATA[1] = axiSlaveoutWDATA1axiSlave_outWDATAHardLink;
-	assign axiSlave_outWDATA[2] = axiSlaveoutWDATA2axiSlave_outWDATAHardLink;
-	assign axiSlave_outWDATA[3] = axiSlaveoutWDATA3axiSlave_outWDATAHardLink;
-	assign axiSlave_outWSTRB = axiSlaveoutWSTRBaxiSlave_outWSTRBHardLink;
+	assign axiSlave_M2S_AR_ARID_axiSlave_M2S_AR_ARID_HardLink = axiSlave_M2S_AR_ARID;
+	assign axiSlave_M2S_AR_ARADDR_axiSlave_M2S_AR_ARADDR_HardLink = axiSlave_M2S_AR_ARADDR;
+	assign axiSlave_M2S_AR_ARLEN_axiSlave_M2S_AR_ARLEN_HardLink = axiSlave_M2S_AR_ARLEN;
+	assign axiSlave_M2S_AR_ARSIZE_axiSlave_M2S_AR_ARSIZE_HardLink = axiSlave_M2S_AR_ARSIZE;
+	assign axiSlave_M2S_AR_ARBURST_axiSlave_M2S_AR_ARBURST_HardLink = axiSlave_M2S_AR_ARBURST;
+	assign axiSlave_M2S_AR_ARLOCK_axiSlave_M2S_AR_ARLOCK_HardLink = axiSlave_M2S_AR_ARLOCK;
+	assign axiSlave_M2S_AR_ARCACHE_axiSlave_M2S_AR_ARCACHE_HardLink = axiSlave_M2S_AR_ARCACHE;
+	assign axiSlave_M2S_AR_ARPROT_axiSlave_M2S_AR_ARPROT_HardLink = axiSlave_M2S_AR_ARPROT;
+	assign axiSlave_M2S_AR_ARQOS_axiSlave_M2S_AR_ARQOS_HardLink = axiSlave_M2S_AR_ARQOS;
+	assign axiSlave_M2S_AR_ARREGION_axiSlave_M2S_AR_ARREGION_HardLink = axiSlave_M2S_AR_ARREGION;
+	assign axiSlave_M2S_AR_ARUSER_axiSlave_M2S_AR_ARUSER_HardLink = axiSlave_M2S_AR_ARUSER;
+	assign axiSlave_M2S_AR_ARVALID_axiSlave_M2S_AR_ARVALID_HardLink = axiSlave_M2S_AR_ARVALID;
+	assign axiSlave_M2S_R_RREADY_axiSlave_M2S_R_RREADY_HardLink = axiSlave_M2S_R_RREADY;
+	assign axiSlave_M2S_AW_AWID_axiSlave_M2S_AW_AWID_HardLink = axiSlave_M2S_AW_AWID;
+	assign axiSlave_M2S_AW_AWADDR_axiSlave_M2S_AW_AWADDR_HardLink = axiSlave_M2S_AW_AWADDR;
+	assign axiSlave_M2S_AW_AWLEN_axiSlave_M2S_AW_AWLEN_HardLink = axiSlave_M2S_AW_AWLEN;
+	assign axiSlave_M2S_AW_AWSIZE_axiSlave_M2S_AW_AWSIZE_HardLink = axiSlave_M2S_AW_AWSIZE;
+	assign axiSlave_M2S_AW_AWBURST_axiSlave_M2S_AW_AWBURST_HardLink = axiSlave_M2S_AW_AWBURST;
+	assign axiSlave_M2S_AW_AWLOCK_axiSlave_M2S_AW_AWLOCK_HardLink = axiSlave_M2S_AW_AWLOCK;
+	assign axiSlave_M2S_AW_AWCACHE_axiSlave_M2S_AW_AWCACHE_HardLink = axiSlave_M2S_AW_AWCACHE;
+	assign axiSlave_M2S_AW_AWPROT_axiSlave_M2S_AW_AWPROT_HardLink = axiSlave_M2S_AW_AWPROT;
+	assign axiSlave_M2S_AW_AWQOS_axiSlave_M2S_AW_AWQOS_HardLink = axiSlave_M2S_AW_AWQOS;
+	assign axiSlave_M2S_AW_AWREGION_axiSlave_M2S_AW_AWREGION_HardLink = axiSlave_M2S_AW_AWREGION;
+	assign axiSlave_M2S_AW_AWUSER_axiSlave_M2S_AW_AWUSER_HardLink = axiSlave_M2S_AW_AWUSER;
+	assign axiSlave_M2S_AW_AWVALID_axiSlave_M2S_AW_AWVALID_HardLink = axiSlave_M2S_AW_AWVALID;
+	assign axiSlave_M2S_W_WID_axiSlave_M2S_W_WID_HardLink = axiSlave_M2S_W_WID;
+	assign axiSlave_M2S_W_WDATA0_axiSlave_M2S_W_WDATA_HardLink = axiSlave_M2S_W_WDATA[0];
+	assign axiSlave_M2S_W_WDATA1_axiSlave_M2S_W_WDATA_HardLink = axiSlave_M2S_W_WDATA[1];
+	assign axiSlave_M2S_W_WDATA2_axiSlave_M2S_W_WDATA_HardLink = axiSlave_M2S_W_WDATA[2];
+	assign axiSlave_M2S_W_WDATA3_axiSlave_M2S_W_WDATA_HardLink = axiSlave_M2S_W_WDATA[3];
+	assign axiSlave_M2S_W_WSTRB_axiSlave_M2S_W_WSTRB_HardLink = axiSlave_M2S_W_WSTRB;
+	assign axiSlave_M2S_W_WLAST_axiSlave_M2S_W_WLAST_HardLink = axiSlave_M2S_W_WLAST;
+	assign axiSlave_M2S_W_WUSER_axiSlave_M2S_W_WUSER_HardLink = axiSlave_M2S_W_WUSER;
+	assign axiSlave_M2S_W_WVALID_axiSlave_M2S_W_WVALID_HardLink = axiSlave_M2S_W_WVALID;
+	assign axiSlave_M2S_B_BREADY_axiSlave_M2S_B_BREADY_HardLink = axiSlave_M2S_B_BREADY;
+	assign axiSlave_inRDATA0_axiSlave_inRDATA_HardLink = axiSlave_inRDATA[0];
+	assign axiSlave_inRDATA1_axiSlave_inRDATA_HardLink = axiSlave_inRDATA[1];
+	assign axiSlave_inRDATA2_axiSlave_inRDATA_HardLink = axiSlave_inRDATA[2];
+	assign axiSlave_inRDATA3_axiSlave_inRDATA_HardLink = axiSlave_inRDATA[3];
+	assign axiSlave_inARREADY_axiSlave_inARREADY_HardLink = axiSlave_inARREADY;
+	assign axiSlave_inRVALID_axiSlave_inRVALID_HardLink = axiSlave_inRVALID;
+	assign axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink = axiSlave_inAWREADY;
+	assign axiSlave_inWREADY_axiSlave_inWREADY_HardLink = axiSlave_inWREADY;
+	assign axiSlave_inBVALID_axiSlave_inBVALID_HardLink = axiSlave_inBVALID;
+	assign axiSlave_S2M_AR_ARREADY = axiSlave_S2M_AR_ARREADY_axiSlave_S2M_AR_ARREADY_HardLink;
+	assign axiSlave_S2M_AW_AWREADY = axiSlave_S2M_AW_AWREADY_axiSlave_S2M_AW_AWREADY_HardLink;
+	assign axiSlave_S2M_B_BID = axiSlave_S2M_B_BID_axiSlave_S2M_B_BID_HardLink;
+	assign axiSlave_S2M_B_BRESP = axiSlave_S2M_B_BRESP_axiSlave_S2M_B_BRESP_HardLink;
+	assign axiSlave_S2M_B_BUSER = axiSlave_S2M_B_BUSER_axiSlave_S2M_B_BUSER_HardLink;
+	assign axiSlave_S2M_B_BVALID = axiSlave_S2M_B_BVALID_axiSlave_S2M_B_BVALID_HardLink;
+	assign axiSlave_S2M_R_RID = axiSlave_S2M_R_RID_axiSlave_S2M_R_RID_HardLink;
+	assign axiSlave_S2M_R_RDATA[0] = axiSlave_S2M_R_RDATA0_axiSlave_S2M_R_RDATA_HardLink;
+	assign axiSlave_S2M_R_RDATA[1] = axiSlave_S2M_R_RDATA1_axiSlave_S2M_R_RDATA_HardLink;
+	assign axiSlave_S2M_R_RDATA[2] = axiSlave_S2M_R_RDATA2_axiSlave_S2M_R_RDATA_HardLink;
+	assign axiSlave_S2M_R_RDATA[3] = axiSlave_S2M_R_RDATA3_axiSlave_S2M_R_RDATA_HardLink;
+	assign axiSlave_S2M_R_RRESP = axiSlave_S2M_R_RRESP_axiSlave_S2M_R_RRESP_HardLink;
+	assign axiSlave_S2M_R_RLAST = axiSlave_S2M_R_RLAST_axiSlave_S2M_R_RLAST_HardLink;
+	assign axiSlave_S2M_R_RUSER = axiSlave_S2M_R_RUSER_axiSlave_S2M_R_RUSER_HardLink;
+	assign axiSlave_S2M_R_RVALID = axiSlave_S2M_R_RVALID_axiSlave_S2M_R_RVALID_HardLink;
+	assign axiSlave_S2M_W_WREADY = axiSlave_S2M_W_WREADY_axiSlave_S2M_W_WREADY_HardLink;
+	assign axiSlave_outReadTXCompleting = axiSlave_outReadTXCompleting_axiSlave_outReadTXCompleting_HardLink;
+	assign axiSlave_outWriteTXCompleting = axiSlave_outWriteTXCompleting_axiSlave_outWriteTXCompleting_HardLink;
+	assign axiSlave_outARREADYConfirming = axiSlave_outARREADYConfirming_axiSlave_outARREADYConfirming_HardLink;
+	assign axiSlave_outARVALID = axiSlave_outARVALID_axiSlave_outARVALID_HardLink;
+	assign axiSlave_outARADDR = axiSlave_outARADDR_axiSlave_outARADDR_HardLink;
+	assign axiSlave_outAWREADYConfirming = axiSlave_outAWREADYConfirming_axiSlave_outAWREADYConfirming_HardLink;
+	assign axiSlave_outAWVALID = axiSlave_outAWVALID_axiSlave_outAWVALID_HardLink;
+	assign axiSlave_outAWADDR = axiSlave_outAWADDR_axiSlave_outAWADDR_HardLink;
+	assign axiSlave_outWREADYConfirming = axiSlave_outWREADYConfirming_axiSlave_outWREADYConfirming_HardLink;
+	assign axiSlave_outWVALID = axiSlave_outWVALID_axiSlave_outWVALID_HardLink;
+	assign axiSlave_outWDATA[0] = axiSlave_outWDATA0_axiSlave_outWDATA_HardLink;
+	assign axiSlave_outWDATA[1] = axiSlave_outWDATA1_axiSlave_outWDATA_HardLink;
+	assign axiSlave_outWDATA[2] = axiSlave_outWDATA2_axiSlave_outWDATA_HardLink;
+	assign axiSlave_outWDATA[3] = axiSlave_outWDATA3_axiSlave_outWDATA_HardLink;
+	assign axiSlave_outWSTRB = axiSlave_outWSTRB_axiSlave_outWSTRB_HardLink;
 	assign AXI4MemoryModule_L69F13L71T26_Lookup1 = State_wstrb;
 	assign AXI4MemoryModule_L69F13L71T26_Lookup2 = axiSlave_outWSTRB;
 	assign AXI4MemoryModule_L69F13L71T26_LookupMultiplexerAddress = internalSameTxWrite;

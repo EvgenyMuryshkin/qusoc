@@ -43,8 +43,8 @@ architecture rtl of FIRStageDSPModule16_TopLevel_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	signal Inputs_iIQ : unsigned(15 downto 0) := (others => '0');
 	signal Inputs_iFILO : unsigned(15 downto 0) := (others => '0');
 	signal Inputs_iCoeff : unsigned(15 downto 0) := (others => '0');

@@ -51,8 +51,8 @@ architecture rtl of StructsCombinationalModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	constant StructsModule_L38F52T54_Expr : unsigned(5 downto 0) := "101010";
 	constant StructsModule_L14F27T29_Expr : unsigned(4 downto 0) := "10100";
 	constant StructsModule_L11F27T29_Expr : unsigned(3 downto 0) := "1010";

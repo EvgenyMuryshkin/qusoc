@@ -51,8 +51,8 @@ architecture rtl of BitArrayModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	constant BitArrayModule_L24F57T61_Expr : std_logic := '1';
 	constant BitArrayModule_L24F63T67_Expr : std_logic := '1';
 	constant BitArrayModule_L24F69T74_Expr : std_logic := '0';

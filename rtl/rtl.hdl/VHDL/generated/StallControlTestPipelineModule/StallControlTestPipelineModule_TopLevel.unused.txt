@@ -1,0 +1,12 @@
+No reads:
+	Pipeline_Inputs_stallPipeline
+	Pipeline_Inputs_stallPrev
+	Pipeline_Inputs_stallStage0
+	Pipeline_Inputs_stallStage1
+	Pipeline_Inputs_stallStage2
+	Pipeline_Inputs_stallStage3
+	Pipeline_NextState_stage0Counter
+	Pipeline_NextState_stage1Counter
+	Pipeline_NextState_stage2Counter
+	Pipeline_NextState_stage3Counter
+	Pipeline_stage0_Request_StallPrev

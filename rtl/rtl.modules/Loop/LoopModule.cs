@@ -57,7 +57,7 @@ namespace RTL.Modules
                 for (byte idx = 0; idx < Inputs.InData.Size; idx++)
                 {
                     if (Inputs.InData[idx])
-                        result = idx;
+                        result = idx;//dbg
                 }
                 
                 return result;

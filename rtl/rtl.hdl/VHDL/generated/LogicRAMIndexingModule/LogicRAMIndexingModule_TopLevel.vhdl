@@ -49,14 +49,14 @@ architecture rtl of LogicRAMIndexingModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
+	constant State_BuffDefault : unsigned(7 downto 0) := "00000000";
 	signal Inputs_WE : std_logic := '0';
 	signal Inputs_WriteAddr : unsigned(1 downto 0) := (others => '0');
 	signal Inputs_WriteData : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_ReadAddr : unsigned(1 downto 0) := (others => '0');
 	signal Inputs_OpData : unsigned(7 downto 0) := (others => '0');
-	signal State_BuffDefault : unsigned(7 downto 0) := "00000000";
 	signal LogicRAMIndexingModule_L26F34T85_Cast : unsigned(7 downto 0) := (others => '0');
 	signal LogicRAMIndexingModule_L27F35T86_Cast : unsigned(7 downto 0) := (others => '0');
 	signal LogicRAMIndexingModule_L28F35T86_Cast : unsigned(7 downto 0) := (others => '0');
@@ -88,7 +88,7 @@ architecture rtl of LogicRAMIndexingModule_TopLevel is
 	type NextState_BuffArray is array (0 to 3) of unsigned (7 downto 0);
 	signal NextState_Buff : NextState_BuffArray := (others => (others => '0'));
 begin
-	process (Clock, NextState_Buff, Reset, State_BuffDefault)
+	process (Clock, NextState_Buff, Reset)
 	begin
 		if rising_edge(Clock) then
 			if Reset = '1' then

@@ -57,8 +57,8 @@ architecture rtl of StallControlTestPipelineModule_TopLevel is
 	constant LoSignal : std_logic := '0';
 	constant Zero : std_logic := '0';
 	constant One : std_logic := '1';
-	constant true : std_logic := '1';
-	constant false : std_logic := '0';
+	-- true is a reserved name, declaration skipped
+	-- false is a reserved name, declaration skipped
 	constant Pipeline_StallControlTestPipelineModule_L96F17L105T18_StallControlTestPipelineModule_L103F70T71_Expr : std_logic := '1';
 	constant Pipeline_StallControlTestPipelineModule_L107F17L117T18_StallControlTestPipelineModule_L115F70T71_Expr : std_logic := '1';
 	constant Pipeline_StallControlTestPipelineModule_L119F17L130T18_StallControlTestPipelineModule_L128F70T71_Expr : std_logic := '1';
