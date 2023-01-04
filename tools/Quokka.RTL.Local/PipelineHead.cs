@@ -123,7 +123,7 @@ namespace Quokka.RTL.Local
             FirstStage.StageCommit();
         }
 
-        public void Reset() => FirstStage.StageReset();
+        public void Reset(RTLModuleResetOptions resetOptions = null) => FirstStage.StageReset();
         #endregion
     }
 }

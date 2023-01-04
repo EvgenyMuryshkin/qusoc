@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace Quokka.RTL
 {
@@ -217,30 +218,28 @@ namespace Quokka.RTL
             return RTLModuleStageResult.Unstable;
         }
 
-        public override void Reset()
+        static void ResetObject(
+            List<MemberInfo> members, 
+            object target, 
+            object source, 
+            RTLModuleResetOptions resetOptions = null)
         {
-            base.Reset();
+            if (source == null || target == null)
+                return;
 
-            foreach (var pl in Pipelines)
-                pl.Diag.Head.Reset();
-
-            if (Equals(DefaultState, default(TState)))
-            {
-                ThrowNotSetup();
-            }
-
-            foreach (var prop in StateProps)
+            var targetType = target.GetType();
+            foreach (var prop in members)
             {
                 var memberType = prop.GetMemberType();
-                var defaultValue = prop.GetValue(DefaultState);
+                var defaultValue = prop.GetValue(source);
                 var clonable = defaultValue as ICloneable;
 
                 if (memberType.IsArray && clonable != null)
                 {
-                    var resetTypeAttribute = prop.GetCustomAttribute<MemoryBlockResetTypeAttribute>();
+                    var resetTypeAttribute = prop.GetCustomAttribute<MemoryBlockResetTypeAttribute>() ?? resetOptions?.MemoryBlockResetType;
                     if (resetTypeAttribute == null)
                     {
-                        throw new Exception($"No reset type is defined for {StateType.Name}.{prop.Name}. Use [MemoryBlockResetType] on property to declare behavious");
+                        throw new Exception($"No reset type is defined for {targetType.Name}.{prop.Name}. Use [MemoryBlockResetType] on property to declare behavious");
                     }
 
                     switch (resetTypeAttribute.ResetType)
@@ -248,23 +247,47 @@ namespace Quokka.RTL
                         case rtlMemoryBlockResetType.Keep:
                             break;
                         case rtlMemoryBlockResetType.Reset:
-                            prop.SetValue(State, clonable.Clone());
+                            prop.SetValue(target, clonable.Clone());
                             break;
                     }
                 }
                 else if (clonable != null)
                 {
-                    prop.SetValue(State, clonable.Clone());
+                    prop.SetValue(target, clonable.Clone());
                 }
                 else if (memberType.IsValueType)
                 {
-                    prop.SetValue(State, defaultValue);
+                    prop.SetValue(target, defaultValue);
+                }
+                else if (RTLTypeCheck.IsSynthesizableObject(memberType))
+                {
+                    ResetObject(
+                        RTLReflectionTools.SerializableMembers(memberType),
+                        prop.GetValue(target),
+                        defaultValue,
+                        resetOptions
+                    );
                 }
                 else
                 {
-                    throw new Exception($"Reference types note supported in reset logic: {StateType.Name}.{prop.Name}");
+                    throw new Exception($"Reference types note supported in reset logic: {targetType.Name}.{prop.Name}");
                 }
             }
+        }
+
+        public override void Reset(RTLModuleResetOptions resetOptions = null)
+        {
+            base.Reset(resetOptions);
+
+            foreach (var pl in Pipelines)
+                pl.Diag.Head.Reset(resetOptions);
+
+            if (Equals(DefaultState, default(TState)))
+            {
+                ThrowNotSetup();
+            }
+
+            ResetObject(StateProps, State, DefaultState, resetOptions);
         }
 
         public override void Commit()

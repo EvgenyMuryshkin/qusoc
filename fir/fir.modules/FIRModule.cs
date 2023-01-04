@@ -5,69 +5,6 @@ using System.Linq;
 
 namespace fir.modules
 {
-    public class FIRModuleInputs
-    {
-        public FIRModuleInputs() { }
-        public FIRModuleInputs(FIRParams firParams)
-        {
-            iCOEFF = new RTLBitArray().Resized(firParams.CoeffSize);
-            iDO = new RTLBitArray().Resized(firParams.DOSize);
-            iIQ = new t_iq16();
-        }
-
-        public bool iCOEF_V;
-        public RTLBitArray iCOEFF;
-        public RTLBitArray iDO;
-        public bool iIQ_V;
-        public t_iq16 iIQ;
-    }
-
-    public class FIRModuleState
-    {
-        public FIRModuleState() { }
-        public FIRModuleState(FIRParams config)
-        {
-            set_do = new RTLBitArray().Resized(4);
-            set_coef_mask = new RTLBitArray().Resized(9);
-            set_data_mask = new RTLBitArray().Resized(10);
-            set_do_mux = Enumerable.Range(0, config.Order).Select(_ => new RTLBitArray().Resized(4)).ToArray();
-            coeff = new t_coeff(config.Order);
-            main = new t_main(config.Order);
-            mult_reset = new t_mult_reset(config.Order);
-            filo = new t_filo(config.Order);
-            dsp48 = new t_dsp48(config.Order);
-            fir = new t_fir(config.Order);
-            //tr = new t_tr(config.Order);
-            ob_iq = new t_iq24();
-        }
-
-        public RTLBitArray set_do;
-        public RTLBitArray[] set_do_mux;
-        public RTLBitArray set_coef_mask;
-        public RTLBitArray set_data_mask;
-
-        // coefficients write logic
-        public t_coeff coeff;
-        // main logic
-        public t_main main;
-        // mult logic
-        public t_mult_reset mult_reset;
-        // filo logic
-        public t_filo filo;
-        // dsp48
-        public t_dsp48 dsp48;
-        // fir
-        public t_fir fir;
-        // transparent
-        //public t_tr tr;
-
-        // output buffers
-        public bool ob_coef_rdy;
-        public bool ob_iq_v;
-        public t_iq24 ob_iq;
-    }
-
-
     public class FIRModule : RTLSynchronousModule<FIRModuleInputs, FIRModuleState>
     {
         public FIRModule() { }
@@ -76,7 +13,7 @@ namespace fir.modules
         {
             this.firParams = firParams;
 
-            InitInputs(new FIRModuleInputs(firParams));
+            //InitInputs(new FIRModuleInputs(firParams));
             InitState(new FIRModuleState(firParams));
             //stages = Enumerable.Range(0, firParams.Order).Select(_ => new FIRStageModule(firParams)).ToArray();
 
@@ -87,8 +24,8 @@ namespace fir.modules
             u_ram_filo_q = new FIRDecimatorRAM(1, 512);
             
             c_coef_num_array = FIRTools.f_get_coef_num_array(firParams.Order);
-            c_coef_mask_array = FIRTools.f_get_coef_mask();
-            c_data_mask_array = FIRTools.f_get_data_mask();
+            //c_coef_mask_array = FIRTools.f_get_coef_mask();
+            //c_data_mask_array = FIRTools.f_get_data_mask();
             //c_ram_addr_hight_msb = FIRTools.log2(firParams.Order);
             c_out_lsb = FIRTools.log2(firParams.Order) + 2;
             
@@ -100,13 +37,18 @@ namespace fir.modules
 
             dsp48_p = Enumerable.Range(0, firParams.Order).Select(_ => new t_iq48()).ToArray();
             dsp48_pcout = Enumerable.Range(0, firParams.Order).Select(_ => new t_iq48()).ToArray();
+            dsp48_opmode = Enumerable.Range(0, firParams.Order).Select(_ => new t_iq7()).ToArray();
+            dsp48_b = Enumerable.Range(0, firParams.Order).Select(_ => new t_iq18()).ToArray();
+            dsp48_d = Enumerable.Range(0, firParams.Order).Select(_ => new t_iq25()).ToArray();
+            dsp48_a = Enumerable.Range(0, firParams.Order).Select(_ => new t_iq30()).ToArray();
+            dsp48_pcin = Enumerable.Range(0, firParams.Order).Select(_ => new t_iq48()).ToArray();
         }
 
         // constants declaration
-        private readonly FIRParams firParams;
+        internal readonly FIRParams firParams;
         private readonly int[] c_coef_num_array;
-        private readonly RTLBitArray[] c_coef_mask_array;
-        private readonly RTLBitArray[] c_data_mask_array;
+        private readonly RTLBitArray[] c_coef_mask_array = FIRTools.f_get_coef_mask();
+        private readonly RTLBitArray[] c_data_mask_array = FIRTools.f_get_data_mask();
         private readonly int c_nofc = 512;
         private readonly int c_srls_length = 1024;
         //private readonly int c_ram_addr_hight_msb;
@@ -130,33 +72,36 @@ namespace fir.modules
         FIRDecimatorRAM u_ram_filo_q;
 
         //public RTLBitArray o_u_ram_coef_DOUT => ramc_dout[Inputs.iCOEFF_RD_IDX];  
-        RTLBitArray[] ramc_dout => u_ram_coef.Select(r => r.DOUT).ToArray();
-        t_iq16[] ramd_din;
-        t_iq16[] ramd_dout;
+        internal RTLBitArray[] ramc_dout => u_ram_coef.Select(r => r.DOUT).ToArray();
+        internal t_iq16[] ramd_din;
+        internal t_iq16[] ramd_dout;
         //public RTLBitArray o_dsp_result => u_ram_coef[3].DOUT;// State.dsp48.dsp48_result[9];// u_ram_srls_i.Select(i => i.DOUT).ToArray();
-        t_iq16 ramf_din => State.set_do == false
+        internal t_iq16 ramf_din => State.set_do == false
             ? State.dsp48.dsp48_srl[firParams.Order * 2 - 3]
             : ramd_dout[firParams.Order - 2];
         //t_iq18[] i_dsp => State.dsp48.dsp48_b;*/
-        t_iq16 ramf_dout => new t_iq16 { i = u_ram_filo_i.DOUT, q = u_ram_filo_q.DOUT };
+        internal t_iq16 ramf_dout => new t_iq16 { i = u_ram_filo_i.DOUT, q = u_ram_filo_q.DOUT };
         FIRDSPWrapperModule[] u_dsp48_i;
         FIRDSPWrapperModule[] u_dsp48_q;
 
         // output
-        public RTLBitArray oCOEF_NUM => new RTLBitArray(2 * c_coef_num_array[0]).Resized(16);
-        public RTLBitArray oCOEF_CNT => State.coeff.coef_ram_cnt;
+        //public RTLBitArray oCOEF_NUM => new RTLBitArray(2 * c_coef_num_array[0]).Resized(16);
+        //public RTLBitArray oCOEF_CNT => State.coeff.coef_ram_cnt;
         public bool oCOEF_RDY => State.ob_coef_rdy;
         public bool oIQ_V => State.ob_iq_v;
         public t_iq oIQ => State.ob_iq;
+        //public bool oIQi => State.ob_iq.i[Inputs.iIQAddr];
+        //public bool oIQq => State.ob_iq.q[Inputs.iIQAddr];
+        //public RTLBitArray[] oDSP_Q => State.dsp48.dsp48_result.Select(d => d.q).ToArray();
 
-        RTLBitArray sxt(RTLBitArray source, int size) => source.Signed().Resized(size);
+        RTLBitArray sxt(RTLBitArray source, int size) => source.Signed().Resized(size).Unsigned();
 
         protected override void OnSchedule(Func<FIRModuleInputs> inputsFactory)
         {
             base.OnSchedule(inputsFactory);
 
             // GEN_ramc
-            for (var a = 0; a < firParams.Order; a++)
+            foreach (var a in range(firParams.Order))
             {
                 u_ram_coef[a].Schedule(() => new FIRDecimatorRAMInputs()
                 {
@@ -170,7 +115,7 @@ namespace fir.modules
             }
 
             // GEN_ramd
-            for (var a = 0; a < firParams.Order; a++)
+            foreach (var a in range(firParams.Order))
             {
                 ramd_dout[a].i = u_ram_srls_i[a].DOUT;
                 ramd_dout[a].q = u_ram_srls_q[a].DOUT;
@@ -182,7 +127,7 @@ namespace fir.modules
                 ramd_din[a] = ramd_dout[a - 1];
             }
 
-            for (var a = 0; a < firParams.Order; a++)
+            foreach (var a in range(firParams.Order))
             {
                 u_ram_srls_i[a].Schedule(() => new FIRDecimatorRAMInputs()
                 {
@@ -195,7 +140,7 @@ namespace fir.modules
                 });
             }
 
-            for (var a = 0; a < firParams.Order; a++)
+            foreach (var a in range(firParams.Order))
             {
                 u_ram_srls_q[a].Schedule(() => new FIRDecimatorRAMInputs()
                 {
@@ -231,29 +176,59 @@ namespace fir.modules
             });
 
             // DSP
-            for (var i = 0; i < firParams.Order; i++)
+            foreach (var i in range(firParams.Order))
             {
                 u_dsp48_i[i].Schedule(() => new FIRDSPWrapperModuleInputs()
                 {
                     CE = ib_iq_v,
                     RST = false,
-                    A = State.dsp48.dsp48_a[i].i,
-                    B = State.dsp48.dsp48_b[i].i,
-                    D = State.dsp48.dsp48_d[i].i,
-                    PCIN = State.dsp48.dsp48_pcin[i].i,
-                    OPMODE = State.dsp48.dsp48_opmode[i].i[6, 4]                    
+                    A = dsp48_a[i].i,
+                    B = dsp48_b[i].i,
+                    D = dsp48_d[i].i,
+                    PCIN = dsp48_pcin[i].i,
+                    OPMODE = dsp48_opmode[i].i[6, 4]                    
                 });
 
                 u_dsp48_q[i].Schedule(() => new FIRDSPWrapperModuleInputs()
                 {
                     CE = ib_iq_v,
                     RST = false,
-                    A = State.dsp48.dsp48_a[i].q,
-                    B = State.dsp48.dsp48_b[i].q,
-                    D = State.dsp48.dsp48_d[i].q,
-                    PCIN = State.dsp48.dsp48_pcin[i].q,
-                    OPMODE = State.dsp48.dsp48_opmode[i].q[6, 4]
+                    A = dsp48_a[i].q,
+                    B = dsp48_b[i].q,
+                    D = dsp48_d[i].q,
+                    PCIN = dsp48_pcin[i].q,
+                    OPMODE = dsp48_opmode[i].q[6, 4]
                 });
+            }
+
+            // I channel
+            dsp48_a[0].i = sxt(ib_iq.i, 30);
+            dsp48_opmode[0].i = State.mult_reset.mult_reset_dsp[0] ? new RTLBitArray("0000000") : new RTLBitArray("0100000");
+            dsp48_d[0].i = sxt(State.filo.fir_dreg[0].i, 25);
+            dsp48_b[0].i = sxt(ramc_dout[0], 18);
+
+            for (var a = 1; a < firParams.Order; a++)
+            {
+                dsp48_a[a].i = State.set_do_mux[a] != 0 ? sxt(ramd_dout[a - 1].i, 30) : sxt(State.dsp48.dsp48_srl[a * 2 - 1].i, 30);
+                dsp48_opmode[a].i = State.mult_reset.mult_reset_dsp[a] ? new RTLBitArray("0010000") : new RTLBitArray("0100000");
+                dsp48_d[a].i = sxt(State.filo.fir_dreg[a].i, 25);
+                dsp48_b[a].i = sxt(ramc_dout[a], 18);
+                dsp48_pcin[a].i = dsp48_pcout[a - 1].i;
+            }
+
+            // Q channel
+            dsp48_a[0].q = sxt(ib_iq.q, 30);
+            dsp48_opmode[0].q = State.mult_reset.mult_reset_dsp[0] ? new RTLBitArray("0000000") : new RTLBitArray("0100000");
+            dsp48_d[0].q = sxt(State.filo.fir_dreg[0].q, 25);
+            dsp48_b[0].q = sxt(ramc_dout[0], 18);
+
+            for (var a = 1; a < firParams.Order; a++)
+            {
+                dsp48_a[a].q = State.set_do_mux[a] != 0 ? sxt(ramd_dout[a - 1].q, 30) : sxt(State.dsp48.dsp48_srl[a * 2 - 1].q, 30);
+                dsp48_opmode[a].q = State.mult_reset.mult_reset_dsp[a] ? new RTLBitArray("0010000") : new RTLBitArray("0100000");
+                dsp48_d[a].q = sxt(State.filo.fir_dreg[a].q, 25);
+                dsp48_b[a].q = sxt(ramc_dout[a], 18);
+                dsp48_pcin[a].q = dsp48_pcout[a - 1].q;
             }
 
             // P, PCOUT
@@ -266,13 +241,13 @@ namespace fir.modules
             }
         }
 
-        t_iq48[] dsp48_p;
-        t_iq48[] dsp48_pcout;
-        //RTLBitArray[] dsp48_p_i => u_dsp48_i.Select(d => d.P).ToArray();
-        //RTLBitArray[] dsp48_p_q => u_dsp48_q.Select(d => d.P).ToArray();
-        //RTLBitArray[] dsp48_pcout_i => u_dsp48_i.Select(d => d.PCOUT).ToArray();
-        //RTLBitArray[] dsp48_pcout_q => u_dsp48_q.Select(d => d.PCOUT).ToArray();
-
+        internal t_iq48[] dsp48_p;
+        internal t_iq48[] dsp48_pcout;
+        internal t_iq7[] dsp48_opmode;
+        internal t_iq18[] dsp48_b;
+        internal t_iq25[] dsp48_d;
+        internal t_iq30[] dsp48_a;
+        internal t_iq48[] dsp48_pcin;
         /// <summary>
         /// process, current settings
         /// </summary>
@@ -460,12 +435,12 @@ namespace fir.modules
             {
                 for (var a = 0; a < firParams.Order; a++)
                 {
-                    NextState.fir.fir_areg1[a].i = State.dsp48.dsp48_a[a].i[24, 0];
-                    NextState.fir.fir_areg1[a].q = State.dsp48.dsp48_a[a].q[24, 0];
+                    NextState.fir.fir_areg1[a].i = dsp48_a[a].i[24, 0];
+                    NextState.fir.fir_areg1[a].q = dsp48_a[a].q[24, 0];
                     NextState.fir.fir_areg2[a] = State.fir.fir_areg1[a];
-                    NextState.fir.fir_breg[a] = State.dsp48.dsp48_b[a];
-                    NextState.fir.fir_adreg[a].i = State.fir.fir_areg2[a].i + State.dsp48.dsp48_d[a].i;
-                    NextState.fir.fir_adreg[a].q = State.fir.fir_areg2[a].q + State.dsp48.dsp48_d[a].q;
+                    NextState.fir.fir_breg[a] = dsp48_b[a];
+                    NextState.fir.fir_adreg[a].i = State.fir.fir_areg2[a].i + dsp48_d[a].i;
+                    NextState.fir.fir_adreg[a].q = State.fir.fir_areg2[a].q + dsp48_d[a].q;
                     NextState.fir.fir_mreg[a].i = State.fir.fir_adreg[a].i.Signed() * State.fir.fir_breg[a].i.Signed();
                     NextState.fir.fir_mreg[a].q = State.fir.fir_adreg[a].q.Signed() * State.fir.fir_breg[a].q.Signed();
                     NextState.mult_reset.mult_reset[a] = State.mult_reset.mult_reset_dsp[a];
@@ -513,46 +488,13 @@ namespace fir.modules
             }
         }
 
-        void DSPLogic()
-        {
-            // I channel
-            NextState.dsp48.dsp48_a[0].i = sxt(ib_iq.i, 30);
-            NextState.dsp48.dsp48_opmode[0].i = State.mult_reset.mult_reset_dsp[0] ? new RTLBitArray("0000000") : new RTLBitArray("0100000");
-            NextState.dsp48.dsp48_d[0].i = sxt(State.filo.fir_dreg[0].i, 25);
-            NextState.dsp48.dsp48_b[0].i = sxt(ramc_dout[0], 18);
-
-            for (var a = 1; a < firParams.Order; a++)
-            {
-                NextState.dsp48.dsp48_a[a].i = State.set_do_mux[a] != 0 ? sxt(ramd_dout[a - 1].i, 30) : sxt(State.dsp48.dsp48_srl[a * 2 - 1].i, 30);
-                NextState.dsp48.dsp48_opmode[a].i = State.mult_reset.mult_reset_dsp[a] ? new RTLBitArray("0010000") : new RTLBitArray("0100000");
-                NextState.dsp48.dsp48_d[a].i = sxt(State.filo.fir_dreg[a].i, 25);
-                NextState.dsp48.dsp48_b[a].i = sxt(ramc_dout[a], 18);
-                NextState.dsp48.dsp48_pcin[a].i = dsp48_pcout[a - 1].i;
-            }
-
-            // Q channel
-            NextState.dsp48.dsp48_a[0].q = sxt(ib_iq.q, 30);
-            NextState.dsp48.dsp48_opmode[0].q = State.mult_reset.mult_reset_dsp[0] ? new RTLBitArray("0000000") : new RTLBitArray("0100000");
-            NextState.dsp48.dsp48_d[0].q = sxt(State.filo.fir_dreg[0].q, 25);
-            NextState.dsp48.dsp48_b[0].q = sxt(ramc_dout[0], 18);
-
-            for (var a = 1; a < firParams.Order; a++)
-            {
-                NextState.dsp48.dsp48_a[a].q = State.set_do_mux[a] != 0 ? sxt(ramd_dout[a - 1].q, 30) : sxt(State.dsp48.dsp48_srl[a * 2 - 1].q, 30);
-                NextState.dsp48.dsp48_opmode[a].q = State.mult_reset.mult_reset_dsp[a] ? new RTLBitArray("0010000") : new RTLBitArray("0100000");
-                NextState.dsp48.dsp48_d[a].q = sxt(State.filo.fir_dreg[a].q, 25);
-                NextState.dsp48.dsp48_b[a].q = sxt(ramc_dout[a], 18);
-                NextState.dsp48.dsp48_pcin[a].q = dsp48_pcout[a - 1].q;
-            }
-        }
-
         void ProcessOutputs()
         {
             if (ib_iq_v)
             {
                 for (var a = 0; a < 10; a++)
                 {
-                    NextState.dsp48.dsp48_result[a].i = dsp48_p[firParams.Order - 1].i[c_out_lsb + a + 23, c_out_lsb + a];
+                    NextState.dsp48.dsp48_result[a].i = dsp48_p[firParams.Order - 1].i[c_out_lsb + a + 23, c_out_lsb + a];//dbg
                     NextState.dsp48.dsp48_result[a].q = dsp48_p[firParams.Order - 1].q[c_out_lsb + a + 23, c_out_lsb + a];
                 }
 
@@ -583,7 +525,6 @@ namespace fir.modules
             MainLogic();
             FiloLogic();
             ReadWriteFILO();
-            DSPLogic();
             AlternativeCalculations();
             ProcessOutputs();
         }

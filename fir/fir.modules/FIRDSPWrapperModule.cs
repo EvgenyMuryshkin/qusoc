@@ -29,15 +29,23 @@ namespace fir.modules
 
     public class FIRDSPWrapperModuleState
     {
+        public RTLBitArray PCOUT = new RTLBitArray().Resized(48);
+        public RTLBitArray P = new RTLBitArray().Resized(48);
     }
 
     public class FIRDSPWrapperModule : RTLSynchronousModule<FIRDSPWrapperModuleInputs, FIRDSPWrapperModuleState>, IRTLModuleTranslator
     {
-        public RTLBitArray PCOUT => new RTLBitArray().Resized(48);
-        public RTLBitArray P => new RTLBitArray().Resized(48);
+        public RTLBitArray PCOUT => State.PCOUT;
+        public RTLBitArray P => State.P;
 
         protected override void OnStage()
         {
+            if (Inputs.CE)
+            {
+                var result = (Inputs.A + Inputs.D) * Inputs.B + Inputs.PCIN;
+                NextState.P = result[47, 0];
+                NextState.PCOUT = result[47, 0];
+            }
         }
 
         public override IRTLModuleTranslator InstanceTranslator(IRTLModuleTranslatorDeps deps) => this;

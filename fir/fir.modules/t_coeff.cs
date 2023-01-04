@@ -7,8 +7,8 @@ namespace fir.modules
     {
         public t_coeff(int order)
         {
-            coef_wr_cnt_cell = new RTLBitArray().Resized(8);
-            coef_wr_cnt_ram = new RTLBitArray().Resized(FIRTools.log2(order));
+            coef_wr_cnt_cell = new RTLBitArray().Resized(9);
+            coef_wr_cnt_ram = new RTLBitArray().Resized(FIRTools.log2(order) + 1);
             coef_ram_wr = new RTLBitArray().Resized(order);
             coef_ram_wr_addr = Enumerable.Range(0, order).Select(_ => new RTLBitArray().Resized(9)).ToArray();
             coef_ram_wr_data = Enumerable.Range(0, order).Select(_ => new RTLBitArray().Resized(16)).ToArray();

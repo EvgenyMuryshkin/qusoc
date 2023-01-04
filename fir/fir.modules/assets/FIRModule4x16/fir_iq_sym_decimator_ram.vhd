@@ -19,7 +19,7 @@ use ieee.numeric_std.all;
 --    use common_hdl.general_types.all;
 --library demodulators;
 --    use demodulators.pkg_demodulators_types.all;
-use work.pkg_demodulators_types.all;
+--use work.pkg_demodulators_types.all;
 ----------------------------------------------------------------------------------------------------------------------------------
 -- entity declaration
 ----------------------------------------------------------------------------------------------------------------------------------

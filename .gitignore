@@ -300,3 +300,4 @@ __pycache__/
 /qusoc/qusoc.hdl/Verilog/generated/Vivado/**
 /fir/fir.modules/hdl/VHDL/generated/Vivado/*
 /fir/fir.modules/hdl/Verilog/generated/Vivado/**
+/fir/fir.modules/hdl/VHDL/generated/VivadoTestbench/**

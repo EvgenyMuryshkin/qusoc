@@ -190,11 +190,11 @@ namespace Quokka.RTL
             }
         }
 
-        public virtual void Reset()
+        public virtual void Reset(RTLModuleResetOptions resetOptions = null)
         {
             foreach (var child in Modules)
             {
-                child.Reset();
+                child.Reset(resetOptions);
             }
         }
 
@@ -236,7 +236,7 @@ namespace Quokka.RTL
                         return result;
                     }
 
-                    if (valueType.IsClass)
+                    if (RTLTypeCheck.IsSynthesizableObject(valueType))
                     {
                         var result = new List<VCDVariable>();
 

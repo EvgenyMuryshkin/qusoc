@@ -30,7 +30,6 @@ namespace fir.modules
         }
 
         public RTLBitArray[] Buff;
-        public RTLBitArray DOUT = new RTLBitArray().Resized(16);
         public RTLBitArray ram_out_r1 = new RTLBitArray().Resized(16);
         public RTLBitArray ram_out_r2 = new RTLBitArray().Resized(16);
     }
@@ -48,7 +47,7 @@ namespace fir.modules
             InitState(new FIRDecimatorRAMState(g_outreg, g_ram_size));
         }
 
-        public RTLBitArray DOUT => State.DOUT;
+        public RTLBitArray DOUT => State.ram_out_r2;
 
         protected override void OnStage()
         {

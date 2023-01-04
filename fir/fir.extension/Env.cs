@@ -4,7 +4,7 @@ using System.IO;
 
 namespace fir.extension
 {
-    abstract class HDLEnv
+    public abstract class HDLEnv
     {
         private readonly string _modulesLocation;
         public HDLEnv(string modulesLocation)
@@ -19,7 +19,7 @@ namespace fir.extension
         public string VivadoProjectLocation => Path.Combine(RC.Config.ProjectLocation, "Vivado");
     }
 
-    class VerilogEnv : HDLEnv
+    public class VerilogEnv : HDLEnv
     {
         public VerilogEnv(string modulesLocation) : base(modulesLocation) { }
 
@@ -27,19 +27,19 @@ namespace fir.extension
     }
 
 
-    class VHDLEnv : HDLEnv
+    public class VHDLEnv : HDLEnv
     {
         public VHDLEnv(string modulesLocation) : base(modulesLocation) { }
         protected override string HDLConfig => "rtl.vhdl.json";
     }
 
-    static class Env
+    public static class Env
     {
         public static string ModulesLocation = @"C:\code\qusoc\fir\fir.modules";
         public static HDLEnv Verilog = new VerilogEnv(ModulesLocation);
         public static HDLEnv VHDL = new VHDLEnv(ModulesLocation);
 
-        public static string AssetsLocation => Path.Combine(TestPathTools.ProjectLocation(), "assets");
+        public static string AssetsLocation => Path.Combine(ModulesLocation, "assets");
         public static string ScriptsLocation => Path.Combine(TestPathTools.ProjectLocation(), "scripts");
     }
 }

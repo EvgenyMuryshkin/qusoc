@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Quokka.RTL.Tools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -63,34 +64,79 @@ namespace Quokka.RTL.Simulator
             AppendTestbenchLines($"reg reset;");
 
             AppendSeparator();
-            foreach (var i in _topLevel.InputProps)
-            {
-                var value = i.GetValue(_topLevel.RawInputs);
-                var info = _topLevel.SizeOfValue(value);
 
-                if (info.Size == 1)
+
+            Action<string, RTLSignalInfo> declareInput = (name, size) =>
+            {
+                if (size.Size == 1)
                 {
-                    AppendTestbenchLines($"reg {i.Name};");
+                    AppendTestbenchLines($"reg {name};");
                 }
                 else
                 {
-                    AppendTestbenchLines($"reg [{info.Size - 1}:0] {i.Name};");
+                    AppendTestbenchLines($"reg [{size.Size - 1}:0] {name};");
+                }
+            };
+
+            foreach (var i in _topLevel.InputProps)
+            {
+                var memberType = i.GetMemberType();
+                var value = i.GetValue(_topLevel.RawInputs);
+                var info = _topLevel.SizeOfValue(value);
+
+                if (RTLTypeCheck.IsSynthesizableObject(memberType))
+                {
+                    var props = RTLReflectionTools.SynthesizableMembers(memberType);
+                    foreach (var m in props)
+                    {
+                        var memberName = $"{i.Name}_{m.Name}";
+                        var memberValue = m.GetValue(value) ?? RTLModuleHelper.Activate(m.GetMemberType());
+                        var memberSize = _topLevel.SizeOfValue(value);
+
+                        declareInput(memberName, memberSize);
+                    }
+                }
+                else
+                {
+                    declareInput(i.Name, info);
                 }
             }
 
             AppendSeparator();
-            foreach (var o in _topLevel.OutputProps)
-            {
-                var value = o.GetValue(_topLevel);
-                var info = _topLevel.SizeOfValue(value);
 
-                if (info.Size == 1)
+            Action<string, RTLSignalInfo> declareOutput = (name, size) =>
+            {
+                if (size.Size == 1)
                 {
-                    AppendTestbenchLines($"wire {o.Name};");
+                    AppendTestbenchLines($"wire {name};");
                 }
                 else
                 {
-                    AppendTestbenchLines($"wire [{info.Size - 1}:0] {o.Name};");
+                    AppendTestbenchLines($"wire [{size.Size - 1}:0] {name};");
+                }
+            };
+
+            foreach (var o in _topLevel.OutputProps)
+            {
+                var memberType = o.GetMemberType();
+                var value = o.GetValue(_topLevel);
+                var info = _topLevel.SizeOfValue(value);
+
+                if (RTLTypeCheck.IsSynthesizableObject(memberType))
+                {
+                    var props = RTLReflectionTools.SynthesizableMembers(memberType);
+                    foreach (var m in props)
+                    {
+                        var memberName = $"{o.Name}_{m.Name}";
+                        var memberValue = m.GetValue(value) ?? RTLModuleHelper.Activate(m.GetMemberType());
+                        var memberSize = _topLevel.SizeOfValue(value);
+
+                        declareOutput(memberName, memberSize);
+                    }
+                }
+                else
+                {
+                    declareOutput(o.Name, info);
                 }
             }
 
@@ -122,43 +168,90 @@ namespace Quokka.RTL.Simulator
         public void SetTestbenchInputs<TInputs>(TInputs inputs)
         {
             AppendSeparator();
-            foreach (var i in _topLevel.InputProps)
+
+            Action<MemberInfo, string, object> addValue = null;
+            addValue = (i, name, value) =>
             {
-                var value = i.GetValue(inputs);
+                var memberType = i.GetMemberType();
+
                 switch (value)
                 {
                     case bool v:
-                        AppendTestbenchLines($"{i.Name} = {(v ? "1'b1" : "1'b0")};");
+                        AppendTestbenchLines($"{name} = {(v ? "1'b1" : "1'b0")};");
                         break;
                     case RTLBitArray b:
-                        AppendTestbenchLines($"{i.Name} = {b.Size}'b{b.AsBinaryString()};");
+                        AppendTestbenchLines($"{name} = {b.Size}'b{b.AsBinaryString()};");
                         break;
                     default:
-                        AppendTestbenchLines($"{i.Name} = {value};");
+                        if (RTLTypeCheck.IsSynthesizableObject(memberType))
+                        {
+                            var props = RTLReflectionTools.SynthesizableMembers(memberType);
+                            foreach (var m in props)
+                            {
+                                var memberName = $"{name}_{m.Name}";
+                                var memberValue = m.GetValue(value) ?? RTLModuleHelper.Activate(m.GetMemberType());
+                                var memberSize = _topLevel.SizeOfValue(value);
+
+                                addValue(m, memberName, memberValue);
+                            }
+                        }
+                        else
+                        {
+                            AppendTestbenchLines($"{name} = {value};");
+                        }
                         break;
                 }
+            };
+
+            foreach (var i in _topLevel.InputProps)
+            {
+                var value = i.GetValue(inputs);
+                addValue(i, i.Name, value);
             }
         }
 
         public void AssertOutputs()
         {
             AppendTestbenchLines($"@(negedge clk);");
-            foreach (var o in _topLevel.OutputProps)
+
+            Action<MemberInfo, string, object> assertValue = null;
+            assertValue = (i, name, value) =>
             {
-                var message = $"{o.Name}: value does not match at clock {_simulatorContext.Clock}";
-                var value = o.GetValue(_topLevel);
+                var memberType = i.GetMemberType();
+                var message = $"{name}: value does not match at clock {_simulatorContext.Clock}";
                 switch (value)
                 {
                     case bool v:
-                        AppendTestbenchLines($"`Assert({(v ? "1'b1" : "1'b0")}, {o.Name}, \"{message}\");");
+                        AppendTestbenchLines($"`Assert({(v ? "1'b1" : "1'b0")}, {name}, \"{message}\");");
                         break;
                     case RTLBitArray b:
-                        AppendTestbenchLines($"`Assert({b.Size}'b{b.AsBinaryString()}, {o.Name}, \"{message}\");");
+                        AppendTestbenchLines($"`Assert({b.Size}'b{b.AsBinaryString()}, {name}, \"{message}\");");
                         break;
                     default:
-                        AppendTestbenchLines($"`Assert({value}, {o.Name}, \"{message}\");");
+                        if (RTLTypeCheck.IsSynthesizableObject(memberType))
+                        {
+                            var props = RTLReflectionTools.SynthesizableMembers(memberType);
+                            foreach (var m in props)
+                            {
+                                var memberName = $"{name}_{m.Name}";
+                                var memberValue = m.GetValue(value) ?? RTLModuleHelper.Activate(m.GetMemberType());
+                                var memberSize = _topLevel.SizeOfValue(value);
+
+                                assertValue(m, memberName, memberValue);
+                            }
+                        }
+                        else
+                        {
+                            AppendTestbenchLines($"`Assert({value}, {name}, \"{message}\");");
+                        }
                         break;
                 }
+            };
+
+            foreach (var o in _topLevel.OutputProps)
+            {
+                var value = o.GetValue(_topLevel);
+                assertValue(o, o.Name, value);
             }
         }
 
@@ -169,7 +262,7 @@ namespace Quokka.RTL.Simulator
             AppendSeparator();
 
             AppendTestbenchLines($"// DUT instantiation");
-            AppendTestbenchLines($"{ModuleName}_TopLevel dut (");
+            AppendTestbenchLines($"{ModuleName}_TopLevel_TopLevel dut (");
             indent++;
 
             AppendTestbenchLines(".Clock (clk),");
@@ -177,15 +270,36 @@ namespace Quokka.RTL.Simulator
 
             var map = new List<string>();
 
+            Action<MemberInfo, string> addMapping = null;
+            addMapping = (i, name) =>
+            {
+                var memberType = i.GetMemberType();
+
+                if (RTLTypeCheck.IsSynthesizableObject(memberType))
+                {
+                    var props = RTLReflectionTools.SynthesizableMembers(memberType);
+                    foreach (var m in props)
+                    {
+                        var memberName = $"{name}_{m.Name}";
+                        addMapping(m, memberName);
+                    }
+                }
+                else
+                {
+                    map.Add($".{name} ({name})");
+                }
+            };
+
             foreach (var i in _topLevel.InputProps)
             {
-                map.Add($".{i.Name} ({i.Name})");
+                addMapping(i, i.Name);
             }
 
             foreach (var o in _topLevel.OutputProps)
             {
-                map.Add($".{o.Name} ({o.Name})");
+                addMapping(o, o.Name);
             }
+
             AppendTestbenchLines(string.Join($",{Environment.NewLine}", map.Select(t => $"{t}")));
 
             indent--;

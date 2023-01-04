@@ -50,7 +50,7 @@ namespace RTL.Modules
             Assert.AreEqual(0x10, tl.MemLhsRhs);
 
             var tb = sim.TBAdapter(RTLVerilogConfig);
-            tb.PostSynthTimingSimulation();
+            tb.Run(new TestbenchAdapterConfig());
         }
 
         [TestMethod]
@@ -140,7 +140,7 @@ namespace RTL.Modules
             }
 
             var tb = sim.TBAdapter(RTLVerilogConfig);
-            tb.PostSynthTimingSimulation();
+            tb.Run(new TestbenchAdapterConfig());
         }
 
         [TestMethod]
@@ -176,7 +176,7 @@ namespace RTL.Modules
             var tb = sim.TBAdapter(RTLVerilogConfig);
             //tb.TranslateModule();
             //tb.SaveTestbench();
-            tb.PostSynthTimingSimulation();
+            tb.Run(new TestbenchAdapterConfig());
 
             //Assert.AreEqual(480, hSyncCounter, "HSync is wrong");
             //Assert.AreEqual(640, hSyncCounter, "VSync is wrong");
