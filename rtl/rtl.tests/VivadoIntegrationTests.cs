@@ -80,7 +80,7 @@ namespace RTL.Modules
             }
 
             var tb = sim.TBAdapter(RTLVerilogConfig);
-            tb.TranslateInstance();
+            tb.TranslateInstance(new TestbenchAdapterConfig());
             //tb.PostSynthTimingSimulation();
         }
 
@@ -94,7 +94,7 @@ namespace RTL.Modules
 
             var sim = new RTLInstanceSimulator<VGAStaticQRModule, VGAStaticQRModuleInputs>(module, withTestbench: true);
             var tb = sim.TBAdapter(RTLVerilogConfig);
-            tb.TranslateInstance();
+            tb.TranslateInstance(new TestbenchAdapterConfig());
 
 
             var tl = sim.TopLevel;

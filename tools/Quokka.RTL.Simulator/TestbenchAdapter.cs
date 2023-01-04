@@ -50,7 +50,7 @@ namespace Quokka.RTL.Simulator
             _config = RuntimeConfigurationLoader.FromCommandLineArguments(new[] { _configPath });
         }
 
-        void TranslateInstance(TestbenchAdapterConfig config)
+        public void TranslateInstance(TestbenchAdapterConfig config)
         {
             if (!config.TranslateInstance)
                 return;
