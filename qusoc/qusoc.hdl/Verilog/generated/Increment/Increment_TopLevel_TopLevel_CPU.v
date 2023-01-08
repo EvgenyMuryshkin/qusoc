@@ -301,6 +301,7 @@ module Increment_TopLevel_TopLevel_CPU
 	wire [3: 0] RISCVModule_Stage_L8F9L33T10_RISCVModule_Stage_L9F13L32T14_RISCVModule_Stage_L27F21T37_WB_L52F9L80T10_WB_L62F13L79T14_WB_L71F17L74T18_WB_L73F21T39_WB_L23F9L25T10_WB_L24F105T108_Expr = 4'b1000;
 	wire [2: 0] RISCVModule_Stage_L8F9L33T10_RISCVModule_Stage_L9F13L32T14_RISCVModule_Stage_L29F22T32_Expr = 3'b110;
 	wire [2: 0] RISCVModule_Stage_L8F9L33T10_RISCVModule_Stage_L9F13L32T14_RISCVModule_Stage_L30F21T29_E1_L10F9L12T10_E1_L11F31T42_Expr = 3'b101;
+	wire [31: 0] State_CSRDefault = 32'b00000000000000000000000000000000;
 	wire [2: 0] RISCVModule_Debug_L11F48T61_Expr = 3'b111;
 	wire [1: 0] Mem_L13F31T32_Expr = 2'b10;
 	wire [2: 0] Mem_L20F56T68_Expr = 3'b100;
@@ -481,63 +482,62 @@ module Increment_TopLevel_TopLevel_CPU
 	wire [7: 0] RISCVModule_Stage_L8F9L33T10_RISCVModule_Stage_L9F13L32T14_RISCVModule_Stage_L27F21T37_WB_L52F9L80T10_WB_L62F13L79T14_WB_L71F17L74T18_WB_L73F21T39_WB_L23F9L25T10_WB_L24F27T57_Cast;
 	wire [7: 0] RISCVModule_Stage_L8F9L33T10_RISCVModule_Stage_L9F13L32T14_RISCVModule_Stage_L27F21T37_WB_L52F9L80T10_WB_L62F13L79T14_WB_L71F17L74T18_WB_L73F21T39_WB_L23F9L25T10_WB_L24F71T101_Cast;
 	wire [31: 0] RISCVModule_Stage_L8F9L33T10_RISCVModule_Stage_L9F13L32T14_RISCVModule_Stage_L27F21T37_WB_L52F9L80T10_WB_L62F13L79T14_WB_L71F17L74T18_WB_L73F21T39_WB_L23F9L25T10_WB_L24F61T102_Index;
-	reg [31: 0] State_CSRDefault = 32'b00000000000000000000000000000000;
 	wire [2: 0] Mem_L13F15T44_Resize;
-	wire [31: 0] IDInstructionID_InstructionHardLink;
-	wire [6: 0] IDOpCodeID_OpCodeHardLink;
-	wire [4: 0] IDRDID_RDHardLink;
-	wire [4: 0] IDRS1ID_RS1HardLink;
-	wire [4: 0] IDRS2ID_RS2HardLink;
-	wire [2: 0] IDFunct3ID_Funct3HardLink;
-	wire [6: 0] IDFunct7ID_Funct7HardLink;
-	wire [31: 0] IDRTypeImmID_RTypeImmHardLink;
-	wire [31: 0] IDITypeImmID_ITypeImmHardLink;
-	wire [31: 0] IDSTypeImmID_STypeImmHardLink;
-	wire [31: 0] IDBTypeImmID_BTypeImmHardLink;
-	wire [31: 0] IDUTypeImmID_UTypeImmHardLink;
-	wire [31: 0] IDJTypeImmID_JTypeImmHardLink;
-	wire [4: 0] IDSHAMTID_SHAMTHardLink;
-	wire IDSHARITHID_SHARITHHardLink;
-	wire IDSUBID_SUBHardLink;
-	wire [6: 0] IDOpTypeCodeID_OpTypeCodeHardLink;
-	wire [2: 0] IDOPIMMCodeID_OPIMMCodeHardLink;
-	wire [2: 0] IDOPCodeID_OPCodeHardLink;
-	wire [2: 0] IDBranchTypeCodeID_BranchTypeCodeHardLink;
-	wire [2: 0] IDLoadTypeCodeID_LoadTypeCodeHardLink;
-	wire [2: 0] IDSysTypeCodeID_SysTypeCodeHardLink;
-	wire [4: 0] IDRetTypeCodeID_RetTypeCodeHardLink;
-	wire [3: 0] IDIRQTypeCodeID_IRQTypeCodeHardLink;
-	wire [2: 0] IDSystemCodeID_SystemCodeHardLink;
-	wire [11: 0] IDCSRAddressID_CSRAddressHardLink;
-	wire IDCSRWEID_CSRWEHardLink;
-	wire RegsReadRegs_ReadHardLink;
-	wire [4: 0] RegsRS1AddrRegs_RS1AddrHardLink;
-	wire [4: 0] RegsRS2AddrRegs_RS2AddrHardLink;
-	wire [4: 0] RegsRDRegs_RDHardLink;
-	wire RegsWERegs_WEHardLink;
-	wire [31: 0] RegsWriteDataRegs_WriteDataHardLink;
-	wire [31: 0] RegsRS1Regs_RS1HardLink;
-	wire [31: 0] RegsRS2Regs_RS2HardLink;
-	wire RegsReadyRegs_ReadyHardLink;
-	wire [31: 0] ALUOp1ALU_Op1HardLink;
-	wire [31: 0] ALUOp2ALU_Op2HardLink;
-	wire [4: 0] ALUSHAMTALU_SHAMTHardLink;
-	wire [31: 0] ALUADDALU_ADDHardLink;
-	wire [31: 0] ALUSUBALU_SUBHardLink;
-	wire [31: 0] ALUresANDALU_resANDHardLink;
-	wire [31: 0] ALUresORALU_resORHardLink;
-	wire [31: 0] ALUresXORALU_resXORHardLink;
-	wire [31: 0] ALUSHLLALU_SHLLHardLink;
-	wire [31: 0] ALUSHRLALU_SHRLHardLink;
-	wire [31: 0] ALUSHRAALU_SHRAHardLink;
-	wire [31: 0] CMPLhsCMP_LhsHardLink;
-	wire [31: 0] CMPRhsCMP_RhsHardLink;
-	wire CMPEQCMP_EQHardLink;
-	wire CMPNECMP_NEHardLink;
-	wire CMPGTUCMP_GTUHardLink;
-	wire CMPLTUCMP_LTUHardLink;
-	wire CMPGTSCMP_GTSHardLink;
-	wire CMPLTSCMP_LTSHardLink;
+	wire [31: 0] ID_Instruction_ID_Instruction_HardLink;
+	wire [6: 0] ID_OpCode_ID_OpCode_HardLink;
+	wire [4: 0] ID_RD_ID_RD_HardLink;
+	wire [4: 0] ID_RS1_ID_RS1_HardLink;
+	wire [4: 0] ID_RS2_ID_RS2_HardLink;
+	wire [2: 0] ID_Funct3_ID_Funct3_HardLink;
+	wire [6: 0] ID_Funct7_ID_Funct7_HardLink;
+	wire [31: 0] ID_RTypeImm_ID_RTypeImm_HardLink;
+	wire [31: 0] ID_ITypeImm_ID_ITypeImm_HardLink;
+	wire [31: 0] ID_STypeImm_ID_STypeImm_HardLink;
+	wire [31: 0] ID_BTypeImm_ID_BTypeImm_HardLink;
+	wire [31: 0] ID_UTypeImm_ID_UTypeImm_HardLink;
+	wire [31: 0] ID_JTypeImm_ID_JTypeImm_HardLink;
+	wire [4: 0] ID_SHAMT_ID_SHAMT_HardLink;
+	wire ID_SHARITH_ID_SHARITH_HardLink;
+	wire ID_SUB_ID_SUB_HardLink;
+	wire [6: 0] ID_OpTypeCode_ID_OpTypeCode_HardLink;
+	wire [2: 0] ID_OPIMMCode_ID_OPIMMCode_HardLink;
+	wire [2: 0] ID_OPCode_ID_OPCode_HardLink;
+	wire [2: 0] ID_BranchTypeCode_ID_BranchTypeCode_HardLink;
+	wire [2: 0] ID_LoadTypeCode_ID_LoadTypeCode_HardLink;
+	wire [2: 0] ID_SysTypeCode_ID_SysTypeCode_HardLink;
+	wire [4: 0] ID_RetTypeCode_ID_RetTypeCode_HardLink;
+	wire [3: 0] ID_IRQTypeCode_ID_IRQTypeCode_HardLink;
+	wire [2: 0] ID_SystemCode_ID_SystemCode_HardLink;
+	wire [11: 0] ID_CSRAddress_ID_CSRAddress_HardLink;
+	wire ID_CSRWE_ID_CSRWE_HardLink;
+	wire Regs_Read_Regs_Read_HardLink;
+	wire [4: 0] Regs_RS1Addr_Regs_RS1Addr_HardLink;
+	wire [4: 0] Regs_RS2Addr_Regs_RS2Addr_HardLink;
+	wire [4: 0] Regs_RD_Regs_RD_HardLink;
+	wire Regs_WE_Regs_WE_HardLink;
+	wire [31: 0] Regs_WriteData_Regs_WriteData_HardLink;
+	wire [31: 0] Regs_RS1_Regs_RS1_HardLink;
+	wire [31: 0] Regs_RS2_Regs_RS2_HardLink;
+	wire Regs_Ready_Regs_Ready_HardLink;
+	wire [31: 0] ALU_Op1_ALU_Op1_HardLink;
+	wire [31: 0] ALU_Op2_ALU_Op2_HardLink;
+	wire [4: 0] ALU_SHAMT_ALU_SHAMT_HardLink;
+	wire [31: 0] ALU_ADD_ALU_ADD_HardLink;
+	wire [31: 0] ALU_SUB_ALU_SUB_HardLink;
+	wire [31: 0] ALU_resAND_ALU_resAND_HardLink;
+	wire [31: 0] ALU_resOR_ALU_resOR_HardLink;
+	wire [31: 0] ALU_resXOR_ALU_resXOR_HardLink;
+	wire [31: 0] ALU_SHLL_ALU_SHLL_HardLink;
+	wire [31: 0] ALU_SHRL_ALU_SHRL_HardLink;
+	wire [31: 0] ALU_SHRA_ALU_SHRA_HardLink;
+	wire [31: 0] CMP_Lhs_CMP_Lhs_HardLink;
+	wire [31: 0] CMP_Rhs_CMP_Rhs_HardLink;
+	wire CMP_EQ_CMP_EQ_HardLink;
+	wire CMP_NE_CMP_NE_HardLink;
+	wire CMP_GTU_CMP_GTU_HardLink;
+	wire CMP_LTU_CMP_LTU_HardLink;
+	wire CMP_GTS_CMP_GTS_HardLink;
+	wire CMP_LTS_CMP_LTS_HardLink;
 	reg [2: 0] State_State = 3'b000;
 	wire [2: 0] State_StateDefault = 3'b000;
 	reg [3: 0] State_HaltCode = 4'b0000;
@@ -1044,10 +1044,6 @@ $readmemh("Increment_TopLevel_TopLevel_CPU_State_CSR.hex", State_CSR);
 	begin
 		if ((BoardSignals_Reset == 1))
 		begin
-			for (State_CSR_Iterator = 0; (State_CSR_Iterator < 13); State_CSR_Iterator = (State_CSR_Iterator + 1))
-			begin
-				State_CSR[State_CSR_Iterator] <= State_CSRDefault;
-			end
 		end
 		else
 		begin
@@ -1203,33 +1199,33 @@ $readmemh("Increment_TopLevel_TopLevel_CPU_State_CSR.hex", State_CSR);
 	(
 		// [BEGIN USER MAP FOR ID]
 		// [END USER MAP FOR ID]
-		.Instruction (IDInstructionID_InstructionHardLink),
-		.OpCode (IDOpCodeID_OpCodeHardLink),
-		.RD (IDRDID_RDHardLink),
-		.RS1 (IDRS1ID_RS1HardLink),
-		.RS2 (IDRS2ID_RS2HardLink),
-		.Funct3 (IDFunct3ID_Funct3HardLink),
-		.Funct7 (IDFunct7ID_Funct7HardLink),
-		.RTypeImm (IDRTypeImmID_RTypeImmHardLink),
-		.ITypeImm (IDITypeImmID_ITypeImmHardLink),
-		.STypeImm (IDSTypeImmID_STypeImmHardLink),
-		.BTypeImm (IDBTypeImmID_BTypeImmHardLink),
-		.UTypeImm (IDUTypeImmID_UTypeImmHardLink),
-		.JTypeImm (IDJTypeImmID_JTypeImmHardLink),
-		.SHAMT (IDSHAMTID_SHAMTHardLink),
-		.SHARITH (IDSHARITHID_SHARITHHardLink),
-		.SUB (IDSUBID_SUBHardLink),
-		.OpTypeCode (IDOpTypeCodeID_OpTypeCodeHardLink),
-		.OPIMMCode (IDOPIMMCodeID_OPIMMCodeHardLink),
-		.OPCode (IDOPCodeID_OPCodeHardLink),
-		.BranchTypeCode (IDBranchTypeCodeID_BranchTypeCodeHardLink),
-		.LoadTypeCode (IDLoadTypeCodeID_LoadTypeCodeHardLink),
-		.SysTypeCode (IDSysTypeCodeID_SysTypeCodeHardLink),
-		.RetTypeCode (IDRetTypeCodeID_RetTypeCodeHardLink),
-		.IRQTypeCode (IDIRQTypeCodeID_IRQTypeCodeHardLink),
-		.SystemCode (IDSystemCodeID_SystemCodeHardLink),
-		.CSRAddress (IDCSRAddressID_CSRAddressHardLink),
-		.CSRWE (IDCSRWEID_CSRWEHardLink)
+		.Instruction (ID_Instruction_ID_Instruction_HardLink),
+		.OpCode (ID_OpCode_ID_OpCode_HardLink),
+		.RD (ID_RD_ID_RD_HardLink),
+		.RS1 (ID_RS1_ID_RS1_HardLink),
+		.RS2 (ID_RS2_ID_RS2_HardLink),
+		.Funct3 (ID_Funct3_ID_Funct3_HardLink),
+		.Funct7 (ID_Funct7_ID_Funct7_HardLink),
+		.RTypeImm (ID_RTypeImm_ID_RTypeImm_HardLink),
+		.ITypeImm (ID_ITypeImm_ID_ITypeImm_HardLink),
+		.STypeImm (ID_STypeImm_ID_STypeImm_HardLink),
+		.BTypeImm (ID_BTypeImm_ID_BTypeImm_HardLink),
+		.UTypeImm (ID_UTypeImm_ID_UTypeImm_HardLink),
+		.JTypeImm (ID_JTypeImm_ID_JTypeImm_HardLink),
+		.SHAMT (ID_SHAMT_ID_SHAMT_HardLink),
+		.SHARITH (ID_SHARITH_ID_SHARITH_HardLink),
+		.SUB (ID_SUB_ID_SUB_HardLink),
+		.OpTypeCode (ID_OpTypeCode_ID_OpTypeCode_HardLink),
+		.OPIMMCode (ID_OPIMMCode_ID_OPIMMCode_HardLink),
+		.OPCode (ID_OPCode_ID_OPCode_HardLink),
+		.BranchTypeCode (ID_BranchTypeCode_ID_BranchTypeCode_HardLink),
+		.LoadTypeCode (ID_LoadTypeCode_ID_LoadTypeCode_HardLink),
+		.SysTypeCode (ID_SysTypeCode_ID_SysTypeCode_HardLink),
+		.RetTypeCode (ID_RetTypeCode_ID_RetTypeCode_HardLink),
+		.IRQTypeCode (ID_IRQTypeCode_ID_IRQTypeCode_HardLink),
+		.SystemCode (ID_SystemCode_ID_SystemCode_HardLink),
+		.CSRAddress (ID_CSRAddress_ID_CSRAddress_HardLink),
+		.CSRWE (ID_CSRWE_ID_CSRWE_HardLink)
 	);
 	Increment_TopLevel_TopLevel_CPU_Regs
 	Increment_TopLevel_TopLevel_CPU_Regs
@@ -1241,46 +1237,46 @@ $readmemh("Increment_TopLevel_TopLevel_CPU_State_CSR.hex", State_CSR);
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.Read (RegsReadRegs_ReadHardLink),
-		.RS1Addr (RegsRS1AddrRegs_RS1AddrHardLink),
-		.RS2Addr (RegsRS2AddrRegs_RS2AddrHardLink),
-		.RD (RegsRDRegs_RDHardLink),
-		.WE (RegsWERegs_WEHardLink),
-		.WriteData (RegsWriteDataRegs_WriteDataHardLink),
-		.RS1 (RegsRS1Regs_RS1HardLink),
-		.RS2 (RegsRS2Regs_RS2HardLink),
-		.Ready (RegsReadyRegs_ReadyHardLink)
+		.Read (Regs_Read_Regs_Read_HardLink),
+		.RS1Addr (Regs_RS1Addr_Regs_RS1Addr_HardLink),
+		.RS2Addr (Regs_RS2Addr_Regs_RS2Addr_HardLink),
+		.RD (Regs_RD_Regs_RD_HardLink),
+		.WE (Regs_WE_Regs_WE_HardLink),
+		.WriteData (Regs_WriteData_Regs_WriteData_HardLink),
+		.RS1 (Regs_RS1_Regs_RS1_HardLink),
+		.RS2 (Regs_RS2_Regs_RS2_HardLink),
+		.Ready (Regs_Ready_Regs_Ready_HardLink)
 	);
 	Increment_TopLevel_TopLevel_CPU_ALU
 	Increment_TopLevel_TopLevel_CPU_ALU
 	(
 		// [BEGIN USER MAP FOR ALU]
 		// [END USER MAP FOR ALU]
-		.Op1 (ALUOp1ALU_Op1HardLink),
-		.Op2 (ALUOp2ALU_Op2HardLink),
-		.SHAMT (ALUSHAMTALU_SHAMTHardLink),
-		.ADD (ALUADDALU_ADDHardLink),
-		.SUB (ALUSUBALU_SUBHardLink),
-		.resAND (ALUresANDALU_resANDHardLink),
-		.resOR (ALUresORALU_resORHardLink),
-		.resXOR (ALUresXORALU_resXORHardLink),
-		.SHLL (ALUSHLLALU_SHLLHardLink),
-		.SHRL (ALUSHRLALU_SHRLHardLink),
-		.SHRA (ALUSHRAALU_SHRAHardLink)
+		.Op1 (ALU_Op1_ALU_Op1_HardLink),
+		.Op2 (ALU_Op2_ALU_Op2_HardLink),
+		.SHAMT (ALU_SHAMT_ALU_SHAMT_HardLink),
+		.ADD (ALU_ADD_ALU_ADD_HardLink),
+		.SUB (ALU_SUB_ALU_SUB_HardLink),
+		.resAND (ALU_resAND_ALU_resAND_HardLink),
+		.resOR (ALU_resOR_ALU_resOR_HardLink),
+		.resXOR (ALU_resXOR_ALU_resXOR_HardLink),
+		.SHLL (ALU_SHLL_ALU_SHLL_HardLink),
+		.SHRL (ALU_SHRL_ALU_SHRL_HardLink),
+		.SHRA (ALU_SHRA_ALU_SHRA_HardLink)
 	);
 	Increment_TopLevel_TopLevel_CPU_CMP
 	Increment_TopLevel_TopLevel_CPU_CMP
 	(
 		// [BEGIN USER MAP FOR CMP]
 		// [END USER MAP FOR CMP]
-		.Lhs (CMPLhsCMP_LhsHardLink),
-		.Rhs (CMPRhsCMP_RhsHardLink),
-		.EQ (CMPEQCMP_EQHardLink),
-		.NE (CMPNECMP_NEHardLink),
-		.GTU (CMPGTUCMP_GTUHardLink),
-		.LTU (CMPLTUCMP_LTUHardLink),
-		.GTS (CMPGTSCMP_GTSHardLink),
-		.LTS (CMPLTSCMP_LTSHardLink)
+		.Lhs (CMP_Lhs_CMP_Lhs_HardLink),
+		.Rhs (CMP_Rhs_CMP_Rhs_HardLink),
+		.EQ (CMP_EQ_CMP_EQ_HardLink),
+		.NE (CMP_NE_CMP_NE_HardLink),
+		.GTU (CMP_GTU_CMP_GTU_HardLink),
+		.LTU (CMP_LTU_CMP_LTU_HardLink),
+		.GTS (CMP_GTS_CMP_GTS_HardLink),
+		.LTS (CMP_LTS_CMP_LTS_HardLink)
 	);
 	always @ (*)
 	begin
@@ -1595,6 +1591,7 @@ $readmemh("Increment_TopLevel_TopLevel_CPU_State_CSR.hex", State_CSR);
 	end
 	always @ (*)
 	begin
+		NextState_CSR_Iterator = 0;
 		for (NextState_CSR_Iterator = 0; (NextState_CSR_Iterator < 13); NextState_CSR_Iterator = (NextState_CSR_Iterator + 1))
 		begin
 			NextState_CSR[NextState_CSR_Iterator] = State_CSR[NextState_CSR_Iterator];
@@ -2461,61 +2458,61 @@ $readmemh("Increment_TopLevel_TopLevel_CPU_State_CSR.hex", State_CSR);
 	assign MemRead = Mem_L20F32T81_Expr;
 	assign MemWrite = Mem_L21F33T73_Expr;
 	assign MemAddress = internalMemAddress;
-	assign IDInstructionID_InstructionHardLink = ID_Instruction;
-	assign ID_OpCode = IDOpCodeID_OpCodeHardLink;
-	assign ID_RD = IDRDID_RDHardLink;
-	assign ID_RS1 = IDRS1ID_RS1HardLink;
-	assign ID_RS2 = IDRS2ID_RS2HardLink;
-	assign ID_Funct3 = IDFunct3ID_Funct3HardLink;
-	assign ID_Funct7 = IDFunct7ID_Funct7HardLink;
-	assign ID_RTypeImm = IDRTypeImmID_RTypeImmHardLink;
-	assign ID_ITypeImm = IDITypeImmID_ITypeImmHardLink;
-	assign ID_STypeImm = IDSTypeImmID_STypeImmHardLink;
-	assign ID_BTypeImm = IDBTypeImmID_BTypeImmHardLink;
-	assign ID_UTypeImm = IDUTypeImmID_UTypeImmHardLink;
-	assign ID_JTypeImm = IDJTypeImmID_JTypeImmHardLink;
-	assign ID_SHAMT = IDSHAMTID_SHAMTHardLink;
-	assign ID_SHARITH = IDSHARITHID_SHARITHHardLink;
-	assign ID_SUB = IDSUBID_SUBHardLink;
-	assign ID_OpTypeCode = IDOpTypeCodeID_OpTypeCodeHardLink;
-	assign ID_OPIMMCode = IDOPIMMCodeID_OPIMMCodeHardLink;
-	assign ID_OPCode = IDOPCodeID_OPCodeHardLink;
-	assign ID_BranchTypeCode = IDBranchTypeCodeID_BranchTypeCodeHardLink;
-	assign ID_LoadTypeCode = IDLoadTypeCodeID_LoadTypeCodeHardLink;
-	assign ID_SysTypeCode = IDSysTypeCodeID_SysTypeCodeHardLink;
-	assign ID_RetTypeCode = IDRetTypeCodeID_RetTypeCodeHardLink;
-	assign ID_IRQTypeCode = IDIRQTypeCodeID_IRQTypeCodeHardLink;
-	assign ID_SystemCode = IDSystemCodeID_SystemCodeHardLink;
-	assign ID_CSRAddress = IDCSRAddressID_CSRAddressHardLink;
-	assign ID_CSRWE = IDCSRWEID_CSRWEHardLink;
-	assign RegsReadRegs_ReadHardLink = Regs_Read;
-	assign RegsRS1AddrRegs_RS1AddrHardLink = Regs_RS1Addr;
-	assign RegsRS2AddrRegs_RS2AddrHardLink = Regs_RS2Addr;
-	assign RegsRDRegs_RDHardLink = Regs_RD;
-	assign RegsWERegs_WEHardLink = Regs_WE;
-	assign RegsWriteDataRegs_WriteDataHardLink = Regs_WriteData;
-	assign Regs_RS1 = RegsRS1Regs_RS1HardLink;
-	assign Regs_RS2 = RegsRS2Regs_RS2HardLink;
-	assign Regs_Ready = RegsReadyRegs_ReadyHardLink;
-	assign ALUOp1ALU_Op1HardLink = ALU_Op1;
-	assign ALUOp2ALU_Op2HardLink = ALU_Op2;
-	assign ALUSHAMTALU_SHAMTHardLink = ALU_SHAMT;
-	assign ALU_ADD = ALUADDALU_ADDHardLink;
-	assign ALU_SUB = ALUSUBALU_SUBHardLink;
-	assign ALU_resAND = ALUresANDALU_resANDHardLink;
-	assign ALU_resOR = ALUresORALU_resORHardLink;
-	assign ALU_resXOR = ALUresXORALU_resXORHardLink;
-	assign ALU_SHLL = ALUSHLLALU_SHLLHardLink;
-	assign ALU_SHRL = ALUSHRLALU_SHRLHardLink;
-	assign ALU_SHRA = ALUSHRAALU_SHRAHardLink;
-	assign CMPLhsCMP_LhsHardLink = CMP_Lhs;
-	assign CMPRhsCMP_RhsHardLink = CMP_Rhs;
-	assign CMP_EQ = CMPEQCMP_EQHardLink;
-	assign CMP_NE = CMPNECMP_NEHardLink;
-	assign CMP_GTU = CMPGTUCMP_GTUHardLink;
-	assign CMP_LTU = CMPLTUCMP_LTUHardLink;
-	assign CMP_GTS = CMPGTSCMP_GTSHardLink;
-	assign CMP_LTS = CMPLTSCMP_LTSHardLink;
+	assign ID_Instruction_ID_Instruction_HardLink = ID_Instruction;
+	assign ID_OpCode = ID_OpCode_ID_OpCode_HardLink;
+	assign ID_RD = ID_RD_ID_RD_HardLink;
+	assign ID_RS1 = ID_RS1_ID_RS1_HardLink;
+	assign ID_RS2 = ID_RS2_ID_RS2_HardLink;
+	assign ID_Funct3 = ID_Funct3_ID_Funct3_HardLink;
+	assign ID_Funct7 = ID_Funct7_ID_Funct7_HardLink;
+	assign ID_RTypeImm = ID_RTypeImm_ID_RTypeImm_HardLink;
+	assign ID_ITypeImm = ID_ITypeImm_ID_ITypeImm_HardLink;
+	assign ID_STypeImm = ID_STypeImm_ID_STypeImm_HardLink;
+	assign ID_BTypeImm = ID_BTypeImm_ID_BTypeImm_HardLink;
+	assign ID_UTypeImm = ID_UTypeImm_ID_UTypeImm_HardLink;
+	assign ID_JTypeImm = ID_JTypeImm_ID_JTypeImm_HardLink;
+	assign ID_SHAMT = ID_SHAMT_ID_SHAMT_HardLink;
+	assign ID_SHARITH = ID_SHARITH_ID_SHARITH_HardLink;
+	assign ID_SUB = ID_SUB_ID_SUB_HardLink;
+	assign ID_OpTypeCode = ID_OpTypeCode_ID_OpTypeCode_HardLink;
+	assign ID_OPIMMCode = ID_OPIMMCode_ID_OPIMMCode_HardLink;
+	assign ID_OPCode = ID_OPCode_ID_OPCode_HardLink;
+	assign ID_BranchTypeCode = ID_BranchTypeCode_ID_BranchTypeCode_HardLink;
+	assign ID_LoadTypeCode = ID_LoadTypeCode_ID_LoadTypeCode_HardLink;
+	assign ID_SysTypeCode = ID_SysTypeCode_ID_SysTypeCode_HardLink;
+	assign ID_RetTypeCode = ID_RetTypeCode_ID_RetTypeCode_HardLink;
+	assign ID_IRQTypeCode = ID_IRQTypeCode_ID_IRQTypeCode_HardLink;
+	assign ID_SystemCode = ID_SystemCode_ID_SystemCode_HardLink;
+	assign ID_CSRAddress = ID_CSRAddress_ID_CSRAddress_HardLink;
+	assign ID_CSRWE = ID_CSRWE_ID_CSRWE_HardLink;
+	assign Regs_Read_Regs_Read_HardLink = Regs_Read;
+	assign Regs_RS1Addr_Regs_RS1Addr_HardLink = Regs_RS1Addr;
+	assign Regs_RS2Addr_Regs_RS2Addr_HardLink = Regs_RS2Addr;
+	assign Regs_RD_Regs_RD_HardLink = Regs_RD;
+	assign Regs_WE_Regs_WE_HardLink = Regs_WE;
+	assign Regs_WriteData_Regs_WriteData_HardLink = Regs_WriteData;
+	assign Regs_RS1 = Regs_RS1_Regs_RS1_HardLink;
+	assign Regs_RS2 = Regs_RS2_Regs_RS2_HardLink;
+	assign Regs_Ready = Regs_Ready_Regs_Ready_HardLink;
+	assign ALU_Op1_ALU_Op1_HardLink = ALU_Op1;
+	assign ALU_Op2_ALU_Op2_HardLink = ALU_Op2;
+	assign ALU_SHAMT_ALU_SHAMT_HardLink = ALU_SHAMT;
+	assign ALU_ADD = ALU_ADD_ALU_ADD_HardLink;
+	assign ALU_SUB = ALU_SUB_ALU_SUB_HardLink;
+	assign ALU_resAND = ALU_resAND_ALU_resAND_HardLink;
+	assign ALU_resOR = ALU_resOR_ALU_resOR_HardLink;
+	assign ALU_resXOR = ALU_resXOR_ALU_resXOR_HardLink;
+	assign ALU_SHLL = ALU_SHLL_ALU_SHLL_HardLink;
+	assign ALU_SHRL = ALU_SHRL_ALU_SHRL_HardLink;
+	assign ALU_SHRA = ALU_SHRA_ALU_SHRA_HardLink;
+	assign CMP_Lhs_CMP_Lhs_HardLink = CMP_Lhs;
+	assign CMP_Rhs_CMP_Rhs_HardLink = CMP_Rhs;
+	assign CMP_EQ = CMP_EQ_CMP_EQ_HardLink;
+	assign CMP_NE = CMP_NE_CMP_NE_HardLink;
+	assign CMP_GTU = CMP_GTU_CMP_GTU_HardLink;
+	assign CMP_LTU = CMP_LTU_CMP_LTU_HardLink;
+	assign CMP_GTS = CMP_GTS_CMP_GTS_HardLink;
+	assign CMP_LTS = CMP_LTS_CMP_LTS_HardLink;
 	assign RISCVModule_Components_L17F31T90_Lookup1 = Regs_RS2;
 	assign RISCVModule_Components_L17F31T90_Lookup2 = ID_ITypeImm;
 	assign RISCVModule_Components_L17F31T90_LookupMultiplexerAddress = RISCVModule_Components_L17F31T65_Expr;
