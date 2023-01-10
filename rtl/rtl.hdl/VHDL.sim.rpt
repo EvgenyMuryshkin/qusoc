@@ -1,5 +1,5 @@
 Simulator report for VHDL
-Sat Dec 24 20:32:59 2022
+Tue Jan 10 21:31:05 2023
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -10,13 +10,12 @@ Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
   2. Simulator Summary
   3. Simulator Settings
   4. Simulation Waveforms
-  5. |ram_test|altsyncram:ram_rtl_0|altsyncram_m5c1:auto_generated|ALTSYNCRAM
-  6. Coverage Summary
-  7. Complete 1/0-Value Coverage
-  8. Missing 1-Value Coverage
-  9. Missing 0-Value Coverage
- 10. Simulator INI Usage
- 11. Simulator Messages
+  5. Coverage Summary
+  6. Complete 1/0-Value Coverage
+  7. Missing 1-Value Coverage
+  8. Missing 0-Value Coverage
+  9. Simulator INI Usage
+ 10. Simulator Messages
 
 
 
@@ -45,43 +44,43 @@ applicable agreement for further details.
 ; Type                        ; Value        ;
 +-----------------------------+--------------+
 ; Simulation Start Time       ; 0 ps         ;
-; Simulation End Time         ; 1.0 ms       ;
-; Simulation Netlist Size     ; 82 nodes     ;
-; Simulation Coverage         ;      29.21 % ;
-; Total Number of Transitions ; 329          ;
+; Simulation End Time         ; 1.0 us       ;
+; Simulation Netlist Size     ; 31 nodes     ;
+; Simulation Coverage         ;     100.00 % ;
+; Total Number of Transitions ; 155          ;
 ; Simulation Breakpoints      ; 0            ;
 ; Family                      ; Cyclone II   ;
 ; Device                      ; EP2C70F896C6 ;
 +-----------------------------+--------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------+
-; Simulator Settings                                                                                                                  ;
-+--------------------------------------------------------------------------------------------+------------------------+---------------+
-; Option                                                                                     ; Setting                ; Default Value ;
-+--------------------------------------------------------------------------------------------+------------------------+---------------+
-; Simulation mode                                                                            ; Timing                 ; Timing        ;
-; Start time                                                                                 ; 0 ns                   ; 0 ns          ;
-; Simulation results format                                                                  ; CVWF                   ;               ;
-; Vector input source                                                                        ; Waveforms/ram_test.vwf ;               ;
-; Add pins automatically to simulation output waveforms                                      ; On                     ; On            ;
-; Check outputs                                                                              ; Off                    ; Off           ;
-; Report simulation coverage                                                                 ; On                     ; On            ;
-; Display complete 1/0 value coverage report                                                 ; On                     ; On            ;
-; Display missing 1-value coverage report                                                    ; On                     ; On            ;
-; Display missing 0-value coverage report                                                    ; On                     ; On            ;
-; Detect setup and hold time violations                                                      ; Off                    ; Off           ;
-; Detect glitches                                                                            ; Off                    ; Off           ;
-; Disable timing delays in Timing Simulation                                                 ; Off                    ; Off           ;
-; Generate Signal Activity File                                                              ; Off                    ; Off           ;
-; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                    ; Off           ;
-; Group bus channels in simulation results                                                   ; Off                    ; Off           ;
-; Preserve fewer signal transitions to reduce memory requirements                            ; On                     ; On            ;
-; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE             ; INPUT_EDGE    ;
-; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                    ; Off           ;
-; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                     ;               ;
-; Perform Glitch Filtering in Timing Simulation                                              ; Auto                   ; Auto          ;
-+--------------------------------------------------------------------------------------------+------------------------+---------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                                            ;
++--------------------------------------------------------------------------------------------+----------------------------------+---------------+
+; Option                                                                                     ; Setting                          ; Default Value ;
++--------------------------------------------------------------------------------------------+----------------------------------+---------------+
+; Simulation mode                                                                            ; Timing                           ; Timing        ;
+; Start time                                                                                 ; 0 ns                             ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF                             ;               ;
+; Vector input source                                                                        ; Waveforms/AXI4Encoder7Module.vwf ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On                               ; On            ;
+; Check outputs                                                                              ; Off                              ; Off           ;
+; Report simulation coverage                                                                 ; On                               ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On                               ; On            ;
+; Display missing 1-value coverage report                                                    ; On                               ; On            ;
+; Display missing 0-value coverage report                                                    ; On                               ; On            ;
+; Detect setup and hold time violations                                                      ; Off                              ; Off           ;
+; Detect glitches                                                                            ; Off                              ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off                              ; Off           ;
+; Generate Signal Activity File                                                              ; Off                              ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                              ; Off           ;
+; Group bus channels in simulation results                                                   ; Off                              ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On                               ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                       ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                              ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                               ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto                             ; Auto          ;
++--------------------------------------------------------------------------------------------+----------------------------------+---------------+
 
 
 +----------------------+
@@ -91,174 +90,75 @@ Waveform report data cannot be output to ASCII.
 Please use Quartus II to view the waveform report data.
 
 
-+--------------------------------------------------------------------------+
-; |ram_test|altsyncram:ram_rtl_0|altsyncram_m5c1:auto_generated|ALTSYNCRAM ;
-+--------------------------------------------------------------------------+
-Please refer to fitter text-based report (*.fit.rpt) to view logical memory report content in ASCII.
-
-
 +--------------------------------------------------------------------+
 ; Coverage Summary                                                   ;
 +-----------------------------------------------------+--------------+
 ; Type                                                ; Value        ;
 +-----------------------------------------------------+--------------+
-; Total coverage as a percentage                      ;      29.21 % ;
-; Total nodes checked                                 ; 82           ;
-; Total output ports checked                          ; 89           ;
-; Total output ports with complete 1/0-value coverage ; 26           ;
-; Total output ports with no 1/0-value coverage       ; 33           ;
-; Total output ports with no 1-value coverage         ; 37           ;
-; Total output ports with no 0-value coverage         ; 59           ;
+; Total coverage as a percentage                      ;     100.00 % ;
+; Total nodes checked                                 ; 31           ;
+; Total output ports checked                          ; 31           ;
+; Total output ports with complete 1/0-value coverage ; 31           ;
+; Total output ports with no 1/0-value coverage       ; 0            ;
+; Total output ports with no 1-value coverage         ; 0            ;
+; Total output ports with no 0-value coverage         ; 0            ;
 +-----------------------------------------------------+--------------+
 
 
 The following table displays output ports that toggle between 1 and 0 during simulation.
-+------------------------------------------------------------------------------------------+
-; Complete 1/0-Value Coverage                                                              ;
-+-----------------------------------+-----------------------------------+------------------+
-; Node Name                         ; Output Port Name                  ; Output Port Type ;
-+-----------------------------------+-----------------------------------+------------------+
-; |ram_test|ram_15_bypass[1]        ; |ram_test|ram_15_bypass[1]        ; regout           ;
-; |ram_test|ram_15_bypass[3]        ; |ram_test|ram_15_bypass[3]        ; regout           ;
-; |ram_test|ram~16                  ; |ram_test|ram~16                  ; combout          ;
-; |ram_test|ram_15_bypass[0]        ; |ram_test|ram_15_bypass[0]        ; regout           ;
-; |ram_test|ram~19                  ; |ram_test|ram~19                  ; combout          ;
-; |ram_test|ram~20                  ; |ram_test|ram~20                  ; combout          ;
-; |ram_test|ram~21                  ; |ram_test|ram~21                  ; combout          ;
-; |ram_test|ram~22                  ; |ram_test|ram~22                  ; combout          ;
-; |ram_test|ram~23                  ; |ram_test|ram~23                  ; combout          ;
-; |ram_test|ram~24                  ; |ram_test|ram~24                  ; combout          ;
-; |ram_test|ram~25                  ; |ram_test|ram~25                  ; combout          ;
-; |ram_test|ram~26                  ; |ram_test|ram~26                  ; combout          ;
-; |ram_test|ram~27                  ; |ram_test|ram~27                  ; combout          ;
-; |ram_test|w_addr_reg[0]           ; |ram_test|w_addr_reg[0]           ; regout           ;
-; |ram_test|w_addr_reg[1]           ; |ram_test|w_addr_reg[1]           ; regout           ;
-; |ram_test|q[0]                    ; |ram_test|q[0]                    ; padio            ;
-; |ram_test|q[1]                    ; |ram_test|q[1]                    ; padio            ;
-; |ram_test|q[2]                    ; |ram_test|q[2]                    ; padio            ;
-; |ram_test|q[3]                    ; |ram_test|q[3]                    ; padio            ;
-; |ram_test|q[4]                    ; |ram_test|q[4]                    ; padio            ;
-; |ram_test|q[5]                    ; |ram_test|q[5]                    ; padio            ;
-; |ram_test|q[6]                    ; |ram_test|q[6]                    ; padio            ;
-; |ram_test|q[7]                    ; |ram_test|q[7]                    ; padio            ;
-; |ram_test|clk                     ; |ram_test|clk~corein              ; combout          ;
-; |ram_test|clk~clkctrl             ; |ram_test|clk~clkctrl             ; outclk           ;
-; |ram_test|ram_15_bypass[3]~feeder ; |ram_test|ram_15_bypass[3]~feeder ; combout          ;
-+-----------------------------------+-----------------------------------+------------------+
++-------------------------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                                 ;
++-------------------------------------------+----------------------------------------------+------------------+
+; Node Name                                 ; Output Port Name                             ; Output Port Type ;
++-------------------------------------------+----------------------------------------------+------------------+
+; |AXI4Encoder7Module_TopLevel|tmp0~0       ; |AXI4Encoder7Module_TopLevel|tmp0~0          ; combout          ;
+; |AXI4Encoder7Module_TopLevel|tmp0~1       ; |AXI4Encoder7Module_TopLevel|tmp0~1          ; combout          ;
+; |AXI4Encoder7Module_TopLevel|tmp0~2       ; |AXI4Encoder7Module_TopLevel|tmp0~2          ; combout          ;
+; |AXI4Encoder7Module_TopLevel|tmp0~3       ; |AXI4Encoder7Module_TopLevel|tmp0~3          ; combout          ;
+; |AXI4Encoder7Module_TopLevel|tmp0~4       ; |AXI4Encoder7Module_TopLevel|tmp0~4          ; combout          ;
+; |AXI4Encoder7Module_TopLevel|tmp0~5       ; |AXI4Encoder7Module_TopLevel|tmp0~5          ; combout          ;
+; |AXI4Encoder7Module_TopLevel|tmp0~6       ; |AXI4Encoder7Module_TopLevel|tmp0~6          ; combout          ;
+; |AXI4Encoder7Module_TopLevel|ShiftLeft0~0 ; |AXI4Encoder7Module_TopLevel|ShiftLeft0~0    ; combout          ;
+; |AXI4Encoder7Module_TopLevel|ShiftLeft0~1 ; |AXI4Encoder7Module_TopLevel|ShiftLeft0~1    ; combout          ;
+; |AXI4Encoder7Module_TopLevel|ShiftLeft0~2 ; |AXI4Encoder7Module_TopLevel|ShiftLeft0~2    ; combout          ;
+; |AXI4Encoder7Module_TopLevel|ShiftLeft0~3 ; |AXI4Encoder7Module_TopLevel|ShiftLeft0~3    ; combout          ;
+; |AXI4Encoder7Module_TopLevel|ShiftLeft0~4 ; |AXI4Encoder7Module_TopLevel|ShiftLeft0~4    ; combout          ;
+; |AXI4Encoder7Module_TopLevel|ShiftLeft0~5 ; |AXI4Encoder7Module_TopLevel|ShiftLeft0~5    ; combout          ;
+; |AXI4Encoder7Module_TopLevel|HasActive    ; |AXI4Encoder7Module_TopLevel|HasActive       ; padio            ;
+; |AXI4Encoder7Module_TopLevel|MSBIndex[0]  ; |AXI4Encoder7Module_TopLevel|MSBIndex[0]     ; padio            ;
+; |AXI4Encoder7Module_TopLevel|MSBIndex[1]  ; |AXI4Encoder7Module_TopLevel|MSBIndex[1]     ; padio            ;
+; |AXI4Encoder7Module_TopLevel|MSBIndex[2]  ; |AXI4Encoder7Module_TopLevel|MSBIndex[2]     ; padio            ;
+; |AXI4Encoder7Module_TopLevel|MSBValue[0]  ; |AXI4Encoder7Module_TopLevel|MSBValue[0]     ; padio            ;
+; |AXI4Encoder7Module_TopLevel|MSBValue[1]  ; |AXI4Encoder7Module_TopLevel|MSBValue[1]     ; padio            ;
+; |AXI4Encoder7Module_TopLevel|MSBValue[2]  ; |AXI4Encoder7Module_TopLevel|MSBValue[2]     ; padio            ;
+; |AXI4Encoder7Module_TopLevel|MSBValue[3]  ; |AXI4Encoder7Module_TopLevel|MSBValue[3]     ; padio            ;
+; |AXI4Encoder7Module_TopLevel|MSBValue[4]  ; |AXI4Encoder7Module_TopLevel|MSBValue[4]     ; padio            ;
+; |AXI4Encoder7Module_TopLevel|MSBValue[5]  ; |AXI4Encoder7Module_TopLevel|MSBValue[5]     ; padio            ;
+; |AXI4Encoder7Module_TopLevel|MSBValue[6]  ; |AXI4Encoder7Module_TopLevel|MSBValue[6]     ; padio            ;
+; |AXI4Encoder7Module_TopLevel|iValues6     ; |AXI4Encoder7Module_TopLevel|iValues6~corein ; combout          ;
+; |AXI4Encoder7Module_TopLevel|iValues4     ; |AXI4Encoder7Module_TopLevel|iValues4~corein ; combout          ;
+; |AXI4Encoder7Module_TopLevel|iValues5     ; |AXI4Encoder7Module_TopLevel|iValues5~corein ; combout          ;
+; |AXI4Encoder7Module_TopLevel|iValues3     ; |AXI4Encoder7Module_TopLevel|iValues3~corein ; combout          ;
+; |AXI4Encoder7Module_TopLevel|iValues2     ; |AXI4Encoder7Module_TopLevel|iValues2~corein ; combout          ;
+; |AXI4Encoder7Module_TopLevel|iValues0     ; |AXI4Encoder7Module_TopLevel|iValues0~corein ; combout          ;
+; |AXI4Encoder7Module_TopLevel|iValues1     ; |AXI4Encoder7Module_TopLevel|iValues1~corein ; combout          ;
++-------------------------------------------+----------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 1 during simulation.
-+--------------------------------------------------------------------------------------------+
-; Missing 1-Value Coverage                                                                   ;
-+------------------------------------+------------------------------------+------------------+
-; Node Name                          ; Output Port Name                   ; Output Port Type ;
-+------------------------------------+------------------------------------+------------------+
-; |ram_test|ram_15_bypass[5]         ; |ram_test|ram_15_bypass[5]         ; regout           ;
-; |ram_test|ram_15_bypass[7]         ; |ram_test|ram_15_bypass[7]         ; regout           ;
-; |ram_test|ram_15_bypass[8]         ; |ram_test|ram_15_bypass[8]         ; regout           ;
-; |ram_test|ram_15_bypass[6]         ; |ram_test|ram_15_bypass[6]         ; regout           ;
-; |ram_test|ram~17                   ; |ram_test|ram~17                   ; combout          ;
-; |ram_test|ram_15_bypass[9]         ; |ram_test|ram_15_bypass[9]         ; regout           ;
-; |ram_test|ram_15_bypass[11]        ; |ram_test|ram_15_bypass[11]        ; regout           ;
-; |ram_test|ram_15_bypass[12]        ; |ram_test|ram_15_bypass[12]        ; regout           ;
-; |ram_test|ram_15_bypass[10]        ; |ram_test|ram_15_bypass[10]        ; regout           ;
-; |ram_test|ram~18                   ; |ram_test|ram~18                   ; combout          ;
-; |ram_test|w_addr_reg[2]            ; |ram_test|w_addr_reg[2]            ; regout           ;
-; |ram_test|w_addr_reg[3]            ; |ram_test|w_addr_reg[3]            ; regout           ;
-; |ram_test|w_addr_reg[4]            ; |ram_test|w_addr_reg[4]            ; regout           ;
-; |ram_test|w_addr_reg[5]            ; |ram_test|w_addr_reg[5]            ; regout           ;
-; |ram_test|data[0]                  ; |ram_test|data[0]~corein           ; combout          ;
-; |ram_test|we                       ; |ram_test|we~corein                ; combout          ;
-; |ram_test|r_addr[2]                ; |ram_test|r_addr[2]~corein         ; combout          ;
-; |ram_test|r_addr[3]                ; |ram_test|r_addr[3]~corein         ; combout          ;
-; |ram_test|r_addr[4]                ; |ram_test|r_addr[4]~corein         ; combout          ;
-; |ram_test|r_addr[5]                ; |ram_test|r_addr[5]~corein         ; combout          ;
-; |ram_test|data[1]                  ; |ram_test|data[1]~corein           ; combout          ;
-; |ram_test|data[2]                  ; |ram_test|data[2]~corein           ; combout          ;
-; |ram_test|data[3]                  ; |ram_test|data[3]~corein           ; combout          ;
-; |ram_test|w_addr[0]                ; |ram_test|w_addr[0]~corein         ; combout          ;
-; |ram_test|w_addr[1]                ; |ram_test|w_addr[1]~corein         ; combout          ;
-; |ram_test|w_addr[2]                ; |ram_test|w_addr[2]~corein         ; combout          ;
-; |ram_test|w_addr[3]                ; |ram_test|w_addr[3]~corein         ; combout          ;
-; |ram_test|w_addr[4]                ; |ram_test|w_addr[4]~corein         ; combout          ;
-; |ram_test|w_addr[5]                ; |ram_test|w_addr[5]~corein         ; combout          ;
-; |ram_test|ram_15_bypass[7]~feeder  ; |ram_test|ram_15_bypass[7]~feeder  ; combout          ;
-; |ram_test|ram_15_bypass[11]~feeder ; |ram_test|ram_15_bypass[11]~feeder ; combout          ;
-; |ram_test|ram_15_bypass[6]~feeder  ; |ram_test|ram_15_bypass[6]~feeder  ; combout          ;
-; |ram_test|ram_15_bypass[8]~feeder  ; |ram_test|ram_15_bypass[8]~feeder  ; combout          ;
-; |ram_test|ram_15_bypass[12]~feeder ; |ram_test|ram_15_bypass[12]~feeder ; combout          ;
-; |ram_test|w_addr_reg[0]~feeder     ; |ram_test|w_addr_reg[0]~feeder     ; combout          ;
-; |ram_test|w_addr_reg[3]~feeder     ; |ram_test|w_addr_reg[3]~feeder     ; combout          ;
-; |ram_test|w_addr_reg[5]~feeder     ; |ram_test|w_addr_reg[5]~feeder     ; combout          ;
-+------------------------------------+------------------------------------+------------------+
++-------------------------------------------------+
+; Missing 1-Value Coverage                        ;
++-----------+------------------+------------------+
+; Node Name ; Output Port Name ; Output Port Type ;
++-----------+------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 0 during simulation.
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Missing 0-Value Coverage                                                                                                                                                   ;
-+----------------------------------------------------------------------------+----------------------------------------------------------------------------+------------------+
-; Node Name                                                                  ; Output Port Name                                                           ; Output Port Type ;
-+----------------------------------------------------------------------------+----------------------------------------------------------------------------+------------------+
-; |ram_test|altsyncram:ram_rtl_0|altsyncram_m5c1:auto_generated|ram_block1a0 ; |ram_test|altsyncram:ram_rtl_0|altsyncram_m5c1:auto_generated|ram_block1a0 ; portbdataout0    ;
-; |ram_test|altsyncram:ram_rtl_0|altsyncram_m5c1:auto_generated|ram_block1a0 ; |ram_test|altsyncram:ram_rtl_0|altsyncram_m5c1:auto_generated|ram_block1a1 ; portbdataout1    ;
-; |ram_test|altsyncram:ram_rtl_0|altsyncram_m5c1:auto_generated|ram_block1a0 ; |ram_test|altsyncram:ram_rtl_0|altsyncram_m5c1:auto_generated|ram_block1a2 ; portbdataout2    ;
-; |ram_test|altsyncram:ram_rtl_0|altsyncram_m5c1:auto_generated|ram_block1a0 ; |ram_test|altsyncram:ram_rtl_0|altsyncram_m5c1:auto_generated|ram_block1a3 ; portbdataout3    ;
-; |ram_test|altsyncram:ram_rtl_0|altsyncram_m5c1:auto_generated|ram_block1a0 ; |ram_test|altsyncram:ram_rtl_0|altsyncram_m5c1:auto_generated|ram_block1a4 ; portbdataout4    ;
-; |ram_test|altsyncram:ram_rtl_0|altsyncram_m5c1:auto_generated|ram_block1a0 ; |ram_test|altsyncram:ram_rtl_0|altsyncram_m5c1:auto_generated|ram_block1a5 ; portbdataout5    ;
-; |ram_test|altsyncram:ram_rtl_0|altsyncram_m5c1:auto_generated|ram_block1a0 ; |ram_test|altsyncram:ram_rtl_0|altsyncram_m5c1:auto_generated|ram_block1a6 ; portbdataout6    ;
-; |ram_test|altsyncram:ram_rtl_0|altsyncram_m5c1:auto_generated|ram_block1a0 ; |ram_test|altsyncram:ram_rtl_0|altsyncram_m5c1:auto_generated|ram_block1a7 ; portbdataout7    ;
-; |ram_test|ram_15_bypass[13]                                                ; |ram_test|ram_15_bypass[13]                                                ; regout           ;
-; |ram_test|ram_15_bypass[4]                                                 ; |ram_test|ram_15_bypass[4]                                                 ; regout           ;
-; |ram_test|ram_15_bypass[2]                                                 ; |ram_test|ram_15_bypass[2]                                                 ; regout           ;
-; |ram_test|ram_15_bypass[5]                                                 ; |ram_test|ram_15_bypass[5]                                                 ; regout           ;
-; |ram_test|ram_15_bypass[7]                                                 ; |ram_test|ram_15_bypass[7]                                                 ; regout           ;
-; |ram_test|ram_15_bypass[8]                                                 ; |ram_test|ram_15_bypass[8]                                                 ; regout           ;
-; |ram_test|ram_15_bypass[6]                                                 ; |ram_test|ram_15_bypass[6]                                                 ; regout           ;
-; |ram_test|ram~17                                                           ; |ram_test|ram~17                                                           ; combout          ;
-; |ram_test|ram_15_bypass[9]                                                 ; |ram_test|ram_15_bypass[9]                                                 ; regout           ;
-; |ram_test|ram_15_bypass[11]                                                ; |ram_test|ram_15_bypass[11]                                                ; regout           ;
-; |ram_test|ram_15_bypass[12]                                                ; |ram_test|ram_15_bypass[12]                                                ; regout           ;
-; |ram_test|ram_15_bypass[10]                                                ; |ram_test|ram_15_bypass[10]                                                ; regout           ;
-; |ram_test|ram~18                                                           ; |ram_test|ram~18                                                           ; combout          ;
-; |ram_test|ram_15_bypass[14]                                                ; |ram_test|ram_15_bypass[14]                                                ; regout           ;
-; |ram_test|ram_15_bypass[15]                                                ; |ram_test|ram_15_bypass[15]                                                ; regout           ;
-; |ram_test|ram_15_bypass[16]                                                ; |ram_test|ram_15_bypass[16]                                                ; regout           ;
-; |ram_test|ram_15_bypass[17]                                                ; |ram_test|ram_15_bypass[17]                                                ; regout           ;
-; |ram_test|ram_15_bypass[18]                                                ; |ram_test|ram_15_bypass[18]                                                ; regout           ;
-; |ram_test|ram_15_bypass[19]                                                ; |ram_test|ram_15_bypass[19]                                                ; regout           ;
-; |ram_test|ram_15_bypass[20]                                                ; |ram_test|ram_15_bypass[20]                                                ; regout           ;
-; |ram_test|w_addr_reg[2]                                                    ; |ram_test|w_addr_reg[2]                                                    ; regout           ;
-; |ram_test|w_addr_reg[3]                                                    ; |ram_test|w_addr_reg[3]                                                    ; regout           ;
-; |ram_test|w_addr_reg[4]                                                    ; |ram_test|w_addr_reg[4]                                                    ; regout           ;
-; |ram_test|w_addr_reg[5]                                                    ; |ram_test|w_addr_reg[5]                                                    ; regout           ;
-; |ram_test|data[0]                                                          ; |ram_test|data[0]~corein                                                   ; combout          ;
-; |ram_test|r_addr[0]                                                        ; |ram_test|r_addr[0]~corein                                                 ; combout          ;
-; |ram_test|r_addr[1]                                                        ; |ram_test|r_addr[1]~corein                                                 ; combout          ;
-; |ram_test|r_addr[2]                                                        ; |ram_test|r_addr[2]~corein                                                 ; combout          ;
-; |ram_test|r_addr[3]                                                        ; |ram_test|r_addr[3]~corein                                                 ; combout          ;
-; |ram_test|r_addr[4]                                                        ; |ram_test|r_addr[4]~corein                                                 ; combout          ;
-; |ram_test|r_addr[5]                                                        ; |ram_test|r_addr[5]~corein                                                 ; combout          ;
-; |ram_test|data[1]                                                          ; |ram_test|data[1]~corein                                                   ; combout          ;
-; |ram_test|data[2]                                                          ; |ram_test|data[2]~corein                                                   ; combout          ;
-; |ram_test|data[3]                                                          ; |ram_test|data[3]~corein                                                   ; combout          ;
-; |ram_test|data[4]                                                          ; |ram_test|data[4]~corein                                                   ; combout          ;
-; |ram_test|data[5]                                                          ; |ram_test|data[5]~corein                                                   ; combout          ;
-; |ram_test|data[6]                                                          ; |ram_test|data[6]~corein                                                   ; combout          ;
-; |ram_test|data[7]                                                          ; |ram_test|data[7]~corein                                                   ; combout          ;
-; |ram_test|w_addr[2]                                                        ; |ram_test|w_addr[2]~corein                                                 ; combout          ;
-; |ram_test|w_addr[3]                                                        ; |ram_test|w_addr[3]~corein                                                 ; combout          ;
-; |ram_test|w_addr[4]                                                        ; |ram_test|w_addr[4]~corein                                                 ; combout          ;
-; |ram_test|w_addr[5]                                                        ; |ram_test|w_addr[5]~corein                                                 ; combout          ;
-; |ram_test|ram_15_bypass[7]~feeder                                          ; |ram_test|ram_15_bypass[7]~feeder                                          ; combout          ;
-; |ram_test|ram_15_bypass[11]~feeder                                         ; |ram_test|ram_15_bypass[11]~feeder                                         ; combout          ;
-; |ram_test|ram_15_bypass[2]~feeder                                          ; |ram_test|ram_15_bypass[2]~feeder                                          ; combout          ;
-; |ram_test|ram_15_bypass[4]~feeder                                          ; |ram_test|ram_15_bypass[4]~feeder                                          ; combout          ;
-; |ram_test|ram_15_bypass[6]~feeder                                          ; |ram_test|ram_15_bypass[6]~feeder                                          ; combout          ;
-; |ram_test|ram_15_bypass[8]~feeder                                          ; |ram_test|ram_15_bypass[8]~feeder                                          ; combout          ;
-; |ram_test|ram_15_bypass[12]~feeder                                         ; |ram_test|ram_15_bypass[12]~feeder                                         ; combout          ;
-; |ram_test|w_addr_reg[3]~feeder                                             ; |ram_test|w_addr_reg[3]~feeder                                             ; combout          ;
-; |ram_test|w_addr_reg[5]~feeder                                             ; |ram_test|w_addr_reg[5]~feeder                                             ; combout          ;
-+----------------------------------------------------------------------------+----------------------------------------------------------------------------+------------------+
++-------------------------------------------------+
+; Missing 0-Value Coverage                        ;
++-----------+------------------+------------------+
+; Node Name ; Output Port Name ; Output Port Type ;
++-----------+------------------+------------------+
 
 
 +---------------------+
@@ -274,21 +174,34 @@ The following table displays output ports that do not toggle to 0 during simulat
 Info: *******************************************************************
 Info: Running Quartus II Simulator
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Sat Dec 24 20:32:58 2022
-Info: Command: quartus_sim --read_settings_files=on --write_settings_files=off VHDL -c VHDL
-Info: Using vector source file "Waveforms/ram_test.vwf"
+    Info: Copyright (C) 1991-2010 Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and its AMPP partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, Altera MegaCore Function License 
+    Info: Agreement, or other applicable license agreement, including, 
+    Info: without limitation, that your use is for the sole purpose of 
+    Info: programming logic devices manufactured by Altera and sold by 
+    Info: Altera or its authorized distributors.  Please refer to the 
+    Info: applicable agreement for further details.
+    Info: Processing started: Tue Jan 10 21:31:02 2023
+Info: Command: quartus_sim C:\code\qusoc\rtl\rtl.hdl\VHDL.qpf --read_settings_files=on --write_settings_files=off -c VHDL
+Info: Using vector source file "Waveforms/AXI4Encoder7Module.vwf"
 Info: Overwriting simulation input file with simulation results
-    Info: A backup of ram_test.vwf called VHDL.sim_ori.vwf has been created in the db folder
+    Info: A backup of AXI4Encoder7Module.vwf called VHDL.sim_ori.vwf has been created in the db folder
 Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
     Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
 Info: Simulation partitioned into 1 sub-simulations
-Info: Simulation coverage is      29.21 %
-Info: Number of transitions in simulation is 329
-Info: Vector file ram_test.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
+Info: Simulation coverage is     100.00 %
+Info: Number of transitions in simulation is 155
+Info: Vector file AXI4Encoder7Module.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
 Info: Quartus II Simulator was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 163 megabytes
-    Info: Processing ended: Sat Dec 24 20:32:59 2022
-    Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:00
+    Info: Peak virtual memory: 161 megabytes
+    Info: Processing ended: Tue Jan 10 21:31:05 2023
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:21
 
 

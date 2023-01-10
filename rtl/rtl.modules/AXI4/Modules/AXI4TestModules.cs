@@ -35,4 +35,9 @@ namespace rtl.modules
 
         }
     }
+
+    public class AXI4Encoder7Module : AXI4EncoderModule
+    {
+        public AXI4Encoder7Module() : base(7) { }
+    }
 }
