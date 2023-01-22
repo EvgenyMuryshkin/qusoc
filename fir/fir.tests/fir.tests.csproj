@@ -10,7 +10,7 @@
     <PackageReference Include="MSTest.TestFramework" Version="2.1.0" />
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
     <PackageReference Include="Quokka.FPGA" Version="0.1.4.203" />
-    <PackageReference Include="Quokka.RTL" Version="0.1.4.477" />
+    <PackageReference Include="Quokka.RTL" Version="0.1.4.488" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Tools\Quokka.RTL.Simulator\Quokka.RTL.Simulator.csproj" />

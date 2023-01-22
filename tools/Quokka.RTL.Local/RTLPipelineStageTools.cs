@@ -63,7 +63,7 @@ namespace Quokka.RTL.Local
                     continue;
                 }
 
-                if (RTLModuleHelper.IsSynthesizableSignalType(memberType))
+                if (RTLTypeCheck.IsSynthesizableSignalType(memberType))
                 {
                     if (RTLReflectionTools.TryGetNullableType(memberType, out var actualType))
                     {
@@ -76,7 +76,7 @@ namespace Quokka.RTL.Local
                     continue;
                 }
 
-                if (RTLModuleHelper.IsSynthesizableObject(memberType))
+                if (RTLTypeCheck.IsSynthesizableObject(memberType))
                 {
                     RecurviseResetToDefaults(memberValue);
                     continue;
