@@ -63,6 +63,18 @@ namespace Quokka.RTL.Local
                     continue;
                 }
 
+                if (memberType.IsNative())
+                {
+                    backingField.SetValue(value, Activator.CreateInstance(memberType));
+                    continue;
+                }
+
+                if (RTLTypeCheck.IsSynthesizableObject(memberType))
+                {
+                    RecurviseResetToDefaults(memberValue);
+                    continue;
+                }
+
                 if (RTLTypeCheck.IsSynthesizableSignalType(memberType))
                 {
                     if (RTLReflectionTools.TryGetNullableType(memberType, out var actualType))
@@ -73,12 +85,6 @@ namespace Quokka.RTL.Local
                     {
                         backingField.SetValue(value, Activator.CreateInstance(memberType));
                     }
-                    continue;
-                }
-
-                if (RTLTypeCheck.IsSynthesizableObject(memberType))
-                {
-                    RecurviseResetToDefaults(memberValue);
                     continue;
                 }
 
