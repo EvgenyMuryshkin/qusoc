@@ -14,8 +14,8 @@ namespace RTL.Modules
     public class IOTestModuleState
     {
         public IOTestModuleState() { }
-        public IOTestModuleState(int size) 
-        { 
+        public IOTestModuleState(int size)
+        {
             Array = new byte[size];
             IteratorArray = new byte[size];
         }

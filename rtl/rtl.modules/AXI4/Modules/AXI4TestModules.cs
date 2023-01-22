@@ -40,4 +40,9 @@ namespace rtl.modules
     {
         public AXI4Encoder7Module() : base(7) { }
     }
+
+    public class AXI4Interconnect2x4Module : AXI4InterconnectModule
+    {
+        public AXI4Interconnect2x4Module() : base(axiSize.B4, 2, 4) { }
+    }
 }

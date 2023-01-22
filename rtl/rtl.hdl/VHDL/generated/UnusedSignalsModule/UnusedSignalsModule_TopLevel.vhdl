@@ -52,7 +52,6 @@ entity UnusedSignalsModule_TopLevel is
 		iObject_UnusedValueArray3 : in std_logic;
 		iObject_Tuple_Item1 : in std_logic;
 		iObject_Tuple_Item2 : in std_logic;
-		Analizers_SignalsUsage : out std_logic;
 		oInputValue : out std_logic;
 		oInputArray0 : out std_logic;
 		oInputArray1 : out std_logic;
@@ -76,7 +75,6 @@ architecture rtl of UnusedSignalsModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant UnusedSignalsModule_L37F99T103_Expr : std_logic := '1';
 	signal Inputs_iUsedValue : std_logic := '0';
 	signal Inputs_iUnusedValue : std_logic := '0';
 	signal Inputs_iUsedTuple_Item1 : std_logic := '0';
@@ -151,7 +149,6 @@ begin
 		Inputs_iObject_Tuple_Item2 <= iObject_Tuple_Item2;
 		usedInternal <= Inputs_iUsedValue;
 		unusedInternal <= Inputs_iUsedValue;
-		Analizers_SignalsUsage <= UnusedSignalsModule_L37F99T103_Expr;
 		oInputValue <= Inputs_iUsedValue;
 		oInputArray0 <= Inputs_iUsedValueArray(0);
 		oInputArray1 <= Inputs_iUsedValueArray(1);

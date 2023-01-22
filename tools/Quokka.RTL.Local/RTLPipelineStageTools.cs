@@ -63,6 +63,15 @@ namespace Quokka.RTL.Local
                     continue;
                 }
 
+                // TODO: WIP RTL library cleanup
+                /*
+                if (RTLTypeCheck.IsSynthesizableObject(memberType))
+                {
+                    RecurviseResetToDefaults(memberValue);
+                    continue;
+                }
+                */
+                //if (RTLTypeCheck.IsTypeSerializable(memberType))
                 if (RTLModuleHelper.IsSynthesizableSignalType(memberType))
                 {
                     if (RTLReflectionTools.TryGetNullableType(memberType, out var actualType))
@@ -76,7 +85,7 @@ namespace Quokka.RTL.Local
                     continue;
                 }
 
-                if (RTLModuleHelper.IsSynthesizableObject(memberType))
+                if (RTLTypeCheck.IsSynthesizableObject(memberType))
                 {
                     RecurviseResetToDefaults(memberValue);
                     continue;

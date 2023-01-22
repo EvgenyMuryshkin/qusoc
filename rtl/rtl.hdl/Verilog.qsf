@@ -163,8 +163,10 @@ set_global_assignment -name VERILOG_FILE Verilog/generated/GenerateModule4/Gener
 set_global_assignment -name VERILOG_FILE Verilog/generated/GenerateModule4/GenerateModule4_TopLevel_nested4_inverter.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IntDividerPipelineModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/IntDividerPipelineModule/IntDividerPipelineModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/IONativeModule/IONativeModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IOTestModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/IOTestModule/IOTestModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/IOTupleModule/IOTupleModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicRAMIndexingModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/LogicRAMIndexingModule/LogicRAMIndexingModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicRAMModule.vwf
@@ -250,6 +252,7 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StructsCombinationalM
 set_global_assignment -name VERILOG_FILE Verilog/generated/StructsCombinationalModule/StructsCombinationalModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StructsMemoryModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/StructsMemoryModule/StructsMemoryModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/StructsNestedIOModule/StructsNestedIOModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/SynchronousROMModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/SynchronousROMModule/SynchronousROMModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/TDP_RAMModule.vwf

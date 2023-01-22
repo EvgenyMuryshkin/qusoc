@@ -162,8 +162,10 @@ set_global_assignment -name VHDL_FILE VHDL/generated/GenerateModule4/GenerateMod
 set_global_assignment -name VHDL_FILE VHDL/generated/GenerateModule4/GenerateModule4_TopLevel_nested4.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/GenerateModule4/GenerateModule4_TopLevel_nested4_inverter.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/IntDividerPipelineModule/IntDividerPipelineModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/IONativeModule/IONativeModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IOTestModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/IOTestModule/IOTestModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleModule/IOTupleModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicRAMIndexingModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/LogicRAMIndexingModule/LogicRAMIndexingModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicRAMModule.vwf
@@ -251,6 +253,7 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StructsCombinationalM
 set_global_assignment -name VHDL_FILE VHDL/generated/StructsCombinationalModule/StructsCombinationalModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StructsMemoryModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/StructsMemoryModule/StructsMemoryModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/StructsNestedIOModule/StructsNestedIOModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/SynchronousROMModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/SynchronousROMModule/SynchronousROMModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/TDP_RAMModule.vwf

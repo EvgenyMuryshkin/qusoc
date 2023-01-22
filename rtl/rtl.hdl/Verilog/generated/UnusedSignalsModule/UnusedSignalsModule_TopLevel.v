@@ -51,7 +51,6 @@ module UnusedSignalsModule_TopLevel
 	input wire iObject_UnusedValueArray3,
 	input wire iObject_Tuple_Item1,
 	input wire iObject_Tuple_Item2,
-	output wire Analizers_SignalsUsage,
 	output wire oInputValue,
 	output wire oInputArray0,
 	output wire oInputArray1,
@@ -71,7 +70,6 @@ module UnusedSignalsModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire UnusedSignalsModule_L37F99T103_Expr = 1'b1;
 	wire Inputs_iUsedValue;
 	wire Inputs_iUnusedValue;
 	wire Inputs_iUsedTuple_Item1;
@@ -140,7 +138,6 @@ module UnusedSignalsModule_TopLevel
 	assign Inputs_iObject_Tuple_Item2 = iObject_Tuple_Item2;
 	assign usedInternal = Inputs_iUsedValue;
 	assign unusedInternal = Inputs_iUsedValue;
-	assign Analizers_SignalsUsage = UnusedSignalsModule_L37F99T103_Expr;
 	assign oInputValue = Inputs_iUsedValue;
 	assign oInputArray0 = Inputs_iUsedValueArray[0];
 	assign oInputArray1 = Inputs_iUsedValueArray[1];
