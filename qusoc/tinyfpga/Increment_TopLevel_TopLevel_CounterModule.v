@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is Increment_TopLevel_Increment_CounterModule, clock frequency is 1Hz, Embedded
+// System configuration name is Increment_TopLevel_TopLevel_CounterModule, clock frequency is 1Hz, Embedded
 // FSM summary
 // -- Packages
-module Increment_TopLevel_Increment_CounterModule
+module Increment_TopLevel_TopLevel_CounterModule
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
@@ -61,7 +61,6 @@ module Increment_TopLevel_Increment_CounterModule
 	wire [31: 0] internalAddressBits;
 	wire [4: 0] internalByteAddress;
 	wire internalIsActive;
-	wire [31: 0] SoCComponentModule_L51F54T92_Source;
 	wire [1: 0] SoCComponentModule_L52F54T79_Index;
 	reg [31: 0] State_Value = 32'b00000000000000000000000000000000;
 	wire [31: 0] State_ValueDefault = 32'b00000000000000000000000000000000;
@@ -136,8 +135,7 @@ module Increment_TopLevel_Increment_CounterModule
 	assign Inputs_Common_MemAccessMode = Common_MemAccessMode;
 	assign Inputs_DeviceAddress = DeviceAddress;
 	assign addressMatch = SoCComponentModule_L50F48T157_Expr;
-	assign SoCComponentModule_L51F54T92_Source = Inputs_Common_Address;
-	assign internalAddressBits = SoCComponentModule_L51F54T92_Source;
+	assign internalAddressBits = Inputs_Common_Address;
 	assign SoCComponentModule_L52F54T79_Index = internalAddressBits[1:0];
 	assign internalByteAddress = SoCComponentModule_L52F54T84_Expr[4:0];
 	assign internalIsActive = addressMatch;

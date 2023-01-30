@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is Increment_TopLevel, clock frequency is 1Hz, Top-level
+// System configuration name is Increment_TopLevel_TopLevel, clock frequency is 1Hz, Top-level
 // FSM summary
 // -- Packages
-module Increment_TopLevel
+module Increment_TopLevel_TopLevel
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
@@ -37,7 +37,7 @@ module Increment_TopLevel
 	wire false = 1'b0;
 	wire QuSoCModule_L108F13L121T14_QuSoCModule_L109F34T39_Expr = 1'b0;
 	wire QuSoCModule_L108F13L121T14_QuSoCModule_L110F32T33_Expr = 1'b0;
-	wire [1: 0] QuSoCModule_L108F13L121T14_CombinedModuleIsActive_Size = 2'b10;
+	wire [1: 0] QuSoCModule_L108F13L121T14_QuSoCModule_L112F17L118T18_CombinedModuleIsActive_Size = 2'b10;
 	wire QuSoCModule_L79F31T33_Expr = 1'b0;
 	wire RISCVModule_Types_L11F30T35_Expr = 1'b0;
 	wire QuSoCModule_L87F33T43_Expr = 1'b0;
@@ -88,39 +88,38 @@ module Increment_TopLevel
 	wire CounterModule_IsActive;
 	wire [31: 0] CounterModule_Value;
 	wire [1: 0] QuSoCModule_L46F47T98_Source;
-	wire [1: 0] QuSoCModule_L47F46T69_Index;
 	reg QuSoCModule_L108F13L121T14_hasActive;
 	reg [7: 0] QuSoCModule_L108F13L121T14_address;
-	integer QuSoCModule_L108F13L121T14_idx;
-	wire [31: 0] CPUBaseAddressCPU_BaseAddressHardLink;
-	wire [31: 0] CPUMemReadDataCPU_MemReadDataHardLink;
-	wire CPUMemReadyCPU_MemReadyHardLink;
-	wire CPUExtIRQCPU_ExtIRQHardLink;
-	wire CPUIsHaltedCPU_IsHaltedHardLink;
-	wire [31: 0] CPUMemWriteDataCPU_MemWriteDataHardLink;
-	wire [2: 0] CPUMemAccessModeCPU_MemAccessModeHardLink;
-	wire CPUMemReadCPU_MemReadHardLink;
-	wire CPUMemWriteCPU_MemWriteHardLink;
-	wire [31: 0] CPUMemAddressCPU_MemAddressHardLink;
-	wire [31: 0] InstructionsRAMCommon_AddressInstructionsRAM_Common_AddressHardLink;
-	wire [31: 0] InstructionsRAMCommon_WriteValueInstructionsRAM_Common_WriteValueHardLink;
-	wire InstructionsRAMCommon_WEInstructionsRAM_Common_WEHardLink;
-	wire InstructionsRAMCommon_REInstructionsRAM_Common_REHardLink;
-	wire [1: 0] InstructionsRAMCommon_MemAccessModeInstructionsRAM_Common_MemAccessModeHardLink;
-	wire [31: 0] InstructionsRAMDeviceAddressInstructionsRAM_DeviceAddressHardLink;
-	wire [31: 0] InstructionsRAMReadValueInstructionsRAM_ReadValueHardLink;
-	wire InstructionsRAMIsReadyInstructionsRAM_IsReadyHardLink;
-	wire InstructionsRAMIsActiveInstructionsRAM_IsActiveHardLink;
-	wire [31: 0] CounterModuleCommon_AddressCounterModule_Common_AddressHardLink;
-	wire [31: 0] CounterModuleCommon_WriteValueCounterModule_Common_WriteValueHardLink;
-	wire CounterModuleCommon_WECounterModule_Common_WEHardLink;
-	wire CounterModuleCommon_RECounterModule_Common_REHardLink;
-	wire [1: 0] CounterModuleCommon_MemAccessModeCounterModule_Common_MemAccessModeHardLink;
-	wire [31: 0] CounterModuleDeviceAddressCounterModule_DeviceAddressHardLink;
-	wire [31: 0] CounterModuleReadValueCounterModule_ReadValueHardLink;
-	wire CounterModuleIsReadyCounterModule_IsReadyHardLink;
-	wire CounterModuleIsActiveCounterModule_IsActiveHardLink;
-	wire [31: 0] CounterModuleValueCounterModule_ValueHardLink;
+	integer idx;
+	wire [31: 0] CPU_BaseAddress_CPU_BaseAddress_HardLink;
+	wire [31: 0] CPU_MemReadData_CPU_MemReadData_HardLink;
+	wire CPU_MemReady_CPU_MemReady_HardLink;
+	wire CPU_ExtIRQ_CPU_ExtIRQ_HardLink;
+	wire CPU_IsHalted_CPU_IsHalted_HardLink;
+	wire [31: 0] CPU_MemWriteData_CPU_MemWriteData_HardLink;
+	wire [2: 0] CPU_MemAccessMode_CPU_MemAccessMode_HardLink;
+	wire CPU_MemRead_CPU_MemRead_HardLink;
+	wire CPU_MemWrite_CPU_MemWrite_HardLink;
+	wire [31: 0] CPU_MemAddress_CPU_MemAddress_HardLink;
+	wire [31: 0] InstructionsRAM_Common_Address_InstructionsRAM_Common_Address_HardLink;
+	wire [31: 0] InstructionsRAM_Common_WriteValue_InstructionsRAM_Common_WriteValue_HardLink;
+	wire InstructionsRAM_Common_WE_InstructionsRAM_Common_WE_HardLink;
+	wire InstructionsRAM_Common_RE_InstructionsRAM_Common_RE_HardLink;
+	wire [1: 0] InstructionsRAM_Common_MemAccessMode_InstructionsRAM_Common_MemAccessMode_HardLink;
+	wire [31: 0] InstructionsRAM_DeviceAddress_InstructionsRAM_DeviceAddress_HardLink;
+	wire [31: 0] InstructionsRAM_ReadValue_InstructionsRAM_ReadValue_HardLink;
+	wire InstructionsRAM_IsReady_InstructionsRAM_IsReady_HardLink;
+	wire InstructionsRAM_IsActive_InstructionsRAM_IsActive_HardLink;
+	wire [31: 0] CounterModule_Common_Address_CounterModule_Common_Address_HardLink;
+	wire [31: 0] CounterModule_Common_WriteValue_CounterModule_Common_WriteValue_HardLink;
+	wire CounterModule_Common_WE_CounterModule_Common_WE_HardLink;
+	wire CounterModule_Common_RE_CounterModule_Common_RE_HardLink;
+	wire [1: 0] CounterModule_Common_MemAccessMode_CounterModule_Common_MemAccessMode_HardLink;
+	wire [31: 0] CounterModule_DeviceAddress_CounterModule_DeviceAddress_HardLink;
+	wire [31: 0] CounterModule_ReadValue_CounterModule_ReadValue_HardLink;
+	wire CounterModule_IsReady_CounterModule_IsReady_HardLink;
+	wire CounterModule_IsActive_CounterModule_IsActive_HardLink;
+	wire [31: 0] CounterModule_Value_CounterModule_Value_HardLink;
 	reg State_MemReady = 1'b0;
 	wire State_MemReadyDefault = 1'b0;
 	wire [1: 0] QuSoCModule_L46F47T109_Expr;
@@ -158,8 +157,8 @@ module Increment_TopLevel
 			assign QuSoCModule_L46F47T109_Expr[LogicalFunctionLogicalFunction1_idx] = QuSoCModule_L46F47T109_Expr_1[1 - LogicalFunctionLogicalFunction1_idx];
 		end
 	endgenerate
-	Increment_TopLevel_Increment_CPU
-	Increment_TopLevel_Increment_CPU
+	Increment_TopLevel_TopLevel_CPU
+	Increment_TopLevel_TopLevel_CPU
 	(
 		// [BEGIN USER MAP FOR CPU]
 		// [END USER MAP FOR CPU]
@@ -168,19 +167,19 @@ module Increment_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.BaseAddress (CPUBaseAddressCPU_BaseAddressHardLink),
-		.MemReadData (CPUMemReadDataCPU_MemReadDataHardLink),
-		.MemReady (CPUMemReadyCPU_MemReadyHardLink),
-		.ExtIRQ (CPUExtIRQCPU_ExtIRQHardLink),
-		.IsHalted (CPUIsHaltedCPU_IsHaltedHardLink),
-		.MemWriteData (CPUMemWriteDataCPU_MemWriteDataHardLink),
-		.MemAccessMode (CPUMemAccessModeCPU_MemAccessModeHardLink),
-		.MemRead (CPUMemReadCPU_MemReadHardLink),
-		.MemWrite (CPUMemWriteCPU_MemWriteHardLink),
-		.MemAddress (CPUMemAddressCPU_MemAddressHardLink)
+		.BaseAddress (CPU_BaseAddress_CPU_BaseAddress_HardLink),
+		.MemReadData (CPU_MemReadData_CPU_MemReadData_HardLink),
+		.MemReady (CPU_MemReady_CPU_MemReady_HardLink),
+		.ExtIRQ (CPU_ExtIRQ_CPU_ExtIRQ_HardLink),
+		.IsHalted (CPU_IsHalted_CPU_IsHalted_HardLink),
+		.MemWriteData (CPU_MemWriteData_CPU_MemWriteData_HardLink),
+		.MemAccessMode (CPU_MemAccessMode_CPU_MemAccessMode_HardLink),
+		.MemRead (CPU_MemRead_CPU_MemRead_HardLink),
+		.MemWrite (CPU_MemWrite_CPU_MemWrite_HardLink),
+		.MemAddress (CPU_MemAddress_CPU_MemAddress_HardLink)
 	);
-	Increment_TopLevel_Increment_InstructionsRAM
-	Increment_TopLevel_Increment_InstructionsRAM
+	Increment_TopLevel_TopLevel_InstructionsRAM
+	Increment_TopLevel_TopLevel_InstructionsRAM
 	(
 		// [BEGIN USER MAP FOR InstructionsRAM]
 		// [END USER MAP FOR InstructionsRAM]
@@ -189,18 +188,18 @@ module Increment_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.Common_Address (InstructionsRAMCommon_AddressInstructionsRAM_Common_AddressHardLink),
-		.Common_WriteValue (InstructionsRAMCommon_WriteValueInstructionsRAM_Common_WriteValueHardLink),
-		.Common_WE (InstructionsRAMCommon_WEInstructionsRAM_Common_WEHardLink),
-		.Common_RE (InstructionsRAMCommon_REInstructionsRAM_Common_REHardLink),
-		.Common_MemAccessMode (InstructionsRAMCommon_MemAccessModeInstructionsRAM_Common_MemAccessModeHardLink),
-		.DeviceAddress (InstructionsRAMDeviceAddressInstructionsRAM_DeviceAddressHardLink),
-		.ReadValue (InstructionsRAMReadValueInstructionsRAM_ReadValueHardLink),
-		.IsReady (InstructionsRAMIsReadyInstructionsRAM_IsReadyHardLink),
-		.IsActive (InstructionsRAMIsActiveInstructionsRAM_IsActiveHardLink)
+		.Common_Address (InstructionsRAM_Common_Address_InstructionsRAM_Common_Address_HardLink),
+		.Common_WriteValue (InstructionsRAM_Common_WriteValue_InstructionsRAM_Common_WriteValue_HardLink),
+		.Common_WE (InstructionsRAM_Common_WE_InstructionsRAM_Common_WE_HardLink),
+		.Common_RE (InstructionsRAM_Common_RE_InstructionsRAM_Common_RE_HardLink),
+		.Common_MemAccessMode (InstructionsRAM_Common_MemAccessMode_InstructionsRAM_Common_MemAccessMode_HardLink),
+		.DeviceAddress (InstructionsRAM_DeviceAddress_InstructionsRAM_DeviceAddress_HardLink),
+		.ReadValue (InstructionsRAM_ReadValue_InstructionsRAM_ReadValue_HardLink),
+		.IsReady (InstructionsRAM_IsReady_InstructionsRAM_IsReady_HardLink),
+		.IsActive (InstructionsRAM_IsActive_InstructionsRAM_IsActive_HardLink)
 	);
-	Increment_TopLevel_Increment_CounterModule
-	Increment_TopLevel_Increment_CounterModule
+	Increment_TopLevel_TopLevel_CounterModule
+	Increment_TopLevel_TopLevel_CounterModule
 	(
 		// [BEGIN USER MAP FOR CounterModule]
 		// [END USER MAP FOR CounterModule]
@@ -209,16 +208,16 @@ module Increment_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.Common_Address (CounterModuleCommon_AddressCounterModule_Common_AddressHardLink),
-		.Common_WriteValue (CounterModuleCommon_WriteValueCounterModule_Common_WriteValueHardLink),
-		.Common_WE (CounterModuleCommon_WECounterModule_Common_WEHardLink),
-		.Common_RE (CounterModuleCommon_RECounterModule_Common_REHardLink),
-		.Common_MemAccessMode (CounterModuleCommon_MemAccessModeCounterModule_Common_MemAccessModeHardLink),
-		.DeviceAddress (CounterModuleDeviceAddressCounterModule_DeviceAddressHardLink),
-		.ReadValue (CounterModuleReadValueCounterModule_ReadValueHardLink),
-		.IsReady (CounterModuleIsReadyCounterModule_IsReadyHardLink),
-		.IsActive (CounterModuleIsActiveCounterModule_IsActiveHardLink),
-		.Value (CounterModuleValueCounterModule_ValueHardLink)
+		.Common_Address (CounterModule_Common_Address_CounterModule_Common_Address_HardLink),
+		.Common_WriteValue (CounterModule_Common_WriteValue_CounterModule_Common_WriteValue_HardLink),
+		.Common_WE (CounterModule_Common_WE_CounterModule_Common_WE_HardLink),
+		.Common_RE (CounterModule_Common_RE_CounterModule_Common_RE_HardLink),
+		.Common_MemAccessMode (CounterModule_Common_MemAccessMode_CounterModule_Common_MemAccessMode_HardLink),
+		.DeviceAddress (CounterModule_DeviceAddress_CounterModule_DeviceAddress_HardLink),
+		.ReadValue (CounterModule_ReadValue_CounterModule_ReadValue_HardLink),
+		.IsReady (CounterModule_IsReady_CounterModule_IsReady_HardLink),
+		.IsActive (CounterModule_IsActive_CounterModule_IsActive_HardLink),
+		.Value (CounterModule_Value_CounterModule_Value_HardLink)
 	);
 	always @ (*)
 	begin
@@ -256,14 +255,15 @@ module Increment_TopLevel
 	end
 	always @ (*)
 	begin
+		idx = 0;
 		QuSoCModule_L108F13L121T14_hasActive = QuSoCModule_L108F13L121T14_QuSoCModule_L109F34T39_Expr;
 		QuSoCModule_L108F13L121T14_address = { {7{1'b0}}, QuSoCModule_L108F13L121T14_QuSoCModule_L110F32T33_Expr };
-		for (QuSoCModule_L108F13L121T14_idx = 0; (QuSoCModule_L108F13L121T14_idx < 2); QuSoCModule_L108F13L121T14_idx = (QuSoCModule_L108F13L121T14_idx + 1))
+		for (idx = 0; (idx < 2); idx = (idx + 1))
 		begin
-			QuSoCModule_L108F13L121T14_hasActive = (QuSoCModule_L108F13L121T14_hasActive | CombinedModuleIsActive[QuSoCModule_L108F13L121T14_idx]);
-			if (CombinedModuleIsActive[QuSoCModule_L108F13L121T14_idx])
+			QuSoCModule_L108F13L121T14_hasActive = (QuSoCModule_L108F13L121T14_hasActive | CombinedModuleIsActive[idx]);
+			if (CombinedModuleIsActive[idx])
 			begin
-				QuSoCModule_L108F13L121T14_address = QuSoCModule_L108F13L121T14_idx;
+				QuSoCModule_L108F13L121T14_address = idx;
 			end
 		end
 	end
@@ -286,8 +286,7 @@ module Increment_TopLevel
 	assign QuSoCModule_L46F47T109_Expr_1 = QuSoCModule_L46F47T98_Source;
 	assign QuSoCModule_L46F47T98_Source = { InstructionsRAM_IsActive, CounterModule_IsActive };
 	assign CombinedModuleIsActive = QuSoCModule_L46F47T109_Expr;
-	assign QuSoCModule_L47F46T69_Index = CPU_MemAccessMode[1:0];
-	assign internalMemAccessMode = QuSoCModule_L47F46T69_Index;
+	assign internalMemAccessMode = CPU_MemAccessMode[1:0];
 	assign ModuleCommon_Address = CPU_MemAddress;
 	assign ModuleCommon_WriteValue = CPU_MemWriteData;
 	assign ModuleCommon_WE = CPU_MemWrite;
@@ -317,35 +316,35 @@ module Increment_TopLevel
 	assign CounterModule_Common_MemAccessMode = ModuleCommon_MemAccessMode;
 	assign CounterModule_DeviceAddress = Increment_generated_L15F104T114_Expr;
 	assign Counter = CounterModule_Value;
-	assign CPUBaseAddressCPU_BaseAddressHardLink = CPU_BaseAddress;
-	assign CPUMemReadDataCPU_MemReadDataHardLink = CPU_MemReadData;
-	assign CPUMemReadyCPU_MemReadyHardLink = CPU_MemReady;
-	assign CPUExtIRQCPU_ExtIRQHardLink = CPU_ExtIRQ;
-	assign CPU_IsHalted = CPUIsHaltedCPU_IsHaltedHardLink;
-	assign CPU_MemWriteData = CPUMemWriteDataCPU_MemWriteDataHardLink;
-	assign CPU_MemAccessMode = CPUMemAccessModeCPU_MemAccessModeHardLink;
-	assign CPU_MemRead = CPUMemReadCPU_MemReadHardLink;
-	assign CPU_MemWrite = CPUMemWriteCPU_MemWriteHardLink;
-	assign CPU_MemAddress = CPUMemAddressCPU_MemAddressHardLink;
-	assign InstructionsRAMCommon_AddressInstructionsRAM_Common_AddressHardLink = InstructionsRAM_Common_Address;
-	assign InstructionsRAMCommon_WriteValueInstructionsRAM_Common_WriteValueHardLink = InstructionsRAM_Common_WriteValue;
-	assign InstructionsRAMCommon_WEInstructionsRAM_Common_WEHardLink = InstructionsRAM_Common_WE;
-	assign InstructionsRAMCommon_REInstructionsRAM_Common_REHardLink = InstructionsRAM_Common_RE;
-	assign InstructionsRAMCommon_MemAccessModeInstructionsRAM_Common_MemAccessModeHardLink = InstructionsRAM_Common_MemAccessMode;
-	assign InstructionsRAMDeviceAddressInstructionsRAM_DeviceAddressHardLink = InstructionsRAM_DeviceAddress;
-	assign InstructionsRAM_ReadValue = InstructionsRAMReadValueInstructionsRAM_ReadValueHardLink;
-	assign InstructionsRAM_IsReady = InstructionsRAMIsReadyInstructionsRAM_IsReadyHardLink;
-	assign InstructionsRAM_IsActive = InstructionsRAMIsActiveInstructionsRAM_IsActiveHardLink;
-	assign CounterModuleCommon_AddressCounterModule_Common_AddressHardLink = CounterModule_Common_Address;
-	assign CounterModuleCommon_WriteValueCounterModule_Common_WriteValueHardLink = CounterModule_Common_WriteValue;
-	assign CounterModuleCommon_WECounterModule_Common_WEHardLink = CounterModule_Common_WE;
-	assign CounterModuleCommon_RECounterModule_Common_REHardLink = CounterModule_Common_RE;
-	assign CounterModuleCommon_MemAccessModeCounterModule_Common_MemAccessModeHardLink = CounterModule_Common_MemAccessMode;
-	assign CounterModuleDeviceAddressCounterModule_DeviceAddressHardLink = CounterModule_DeviceAddress;
-	assign CounterModule_ReadValue = CounterModuleReadValueCounterModule_ReadValueHardLink;
-	assign CounterModule_IsReady = CounterModuleIsReadyCounterModule_IsReadyHardLink;
-	assign CounterModule_IsActive = CounterModuleIsActiveCounterModule_IsActiveHardLink;
-	assign CounterModule_Value = CounterModuleValueCounterModule_ValueHardLink;
+	assign CPU_BaseAddress_CPU_BaseAddress_HardLink = CPU_BaseAddress;
+	assign CPU_MemReadData_CPU_MemReadData_HardLink = CPU_MemReadData;
+	assign CPU_MemReady_CPU_MemReady_HardLink = CPU_MemReady;
+	assign CPU_ExtIRQ_CPU_ExtIRQ_HardLink = CPU_ExtIRQ;
+	assign CPU_IsHalted = CPU_IsHalted_CPU_IsHalted_HardLink;
+	assign CPU_MemWriteData = CPU_MemWriteData_CPU_MemWriteData_HardLink;
+	assign CPU_MemAccessMode = CPU_MemAccessMode_CPU_MemAccessMode_HardLink;
+	assign CPU_MemRead = CPU_MemRead_CPU_MemRead_HardLink;
+	assign CPU_MemWrite = CPU_MemWrite_CPU_MemWrite_HardLink;
+	assign CPU_MemAddress = CPU_MemAddress_CPU_MemAddress_HardLink;
+	assign InstructionsRAM_Common_Address_InstructionsRAM_Common_Address_HardLink = InstructionsRAM_Common_Address;
+	assign InstructionsRAM_Common_WriteValue_InstructionsRAM_Common_WriteValue_HardLink = InstructionsRAM_Common_WriteValue;
+	assign InstructionsRAM_Common_WE_InstructionsRAM_Common_WE_HardLink = InstructionsRAM_Common_WE;
+	assign InstructionsRAM_Common_RE_InstructionsRAM_Common_RE_HardLink = InstructionsRAM_Common_RE;
+	assign InstructionsRAM_Common_MemAccessMode_InstructionsRAM_Common_MemAccessMode_HardLink = InstructionsRAM_Common_MemAccessMode;
+	assign InstructionsRAM_DeviceAddress_InstructionsRAM_DeviceAddress_HardLink = InstructionsRAM_DeviceAddress;
+	assign InstructionsRAM_ReadValue = InstructionsRAM_ReadValue_InstructionsRAM_ReadValue_HardLink;
+	assign InstructionsRAM_IsReady = InstructionsRAM_IsReady_InstructionsRAM_IsReady_HardLink;
+	assign InstructionsRAM_IsActive = InstructionsRAM_IsActive_InstructionsRAM_IsActive_HardLink;
+	assign CounterModule_Common_Address_CounterModule_Common_Address_HardLink = CounterModule_Common_Address;
+	assign CounterModule_Common_WriteValue_CounterModule_Common_WriteValue_HardLink = CounterModule_Common_WriteValue;
+	assign CounterModule_Common_WE_CounterModule_Common_WE_HardLink = CounterModule_Common_WE;
+	assign CounterModule_Common_RE_CounterModule_Common_RE_HardLink = CounterModule_Common_RE;
+	assign CounterModule_Common_MemAccessMode_CounterModule_Common_MemAccessMode_HardLink = CounterModule_Common_MemAccessMode;
+	assign CounterModule_DeviceAddress_CounterModule_DeviceAddress_HardLink = CounterModule_DeviceAddress;
+	assign CounterModule_ReadValue = CounterModule_ReadValue_CounterModule_ReadValue_HardLink;
+	assign CounterModule_IsReady = CounterModule_IsReady_CounterModule_IsReady_HardLink;
+	assign CounterModule_IsActive = CounterModule_IsActive_CounterModule_IsActive_HardLink;
+	assign CounterModule_Value = CounterModule_Value_CounterModule_Value_HardLink;
 	assign QuSoCModule_L127F40T73_Mux1 = InstructionsRAM_ReadValue;
 	assign QuSoCModule_L127F40T73_Mux2 = CounterModule_ReadValue;
 	assign QuSoCModule_L127F40T73_MuxMultiplexerAddress = ModuleIndex[0];

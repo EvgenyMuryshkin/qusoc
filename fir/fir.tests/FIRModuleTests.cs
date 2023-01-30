@@ -72,7 +72,7 @@ namespace fir.tests
 
             var tb = sim.TBAdapter(Env.VHDL.RTLConfig);
             tb.Run(
-                new TestbenchAdapterConfig()
+                new ArtyZ7AdapterConfig()
                 {
                     synth_design_mode = synth_design_mode.out_of_context, // too many pins to fit into device
                     launch_simulation_mode = launch_simulation_mode.post_synthesis,

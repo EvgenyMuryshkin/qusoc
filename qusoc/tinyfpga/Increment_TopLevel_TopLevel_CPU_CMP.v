@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is Increment_TopLevel_Increment_CPU_RISCVModule_CMP, clock frequency is 1Hz, Embedded
+// System configuration name is Increment_TopLevel_TopLevel_CPU_CMP, clock frequency is 1Hz, Embedded
 // FSM summary
 // -- Packages
-module Increment_TopLevel_Increment_CPU_RISCVModule_CMP
+module Increment_TopLevel_TopLevel_CPU_CMP
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]

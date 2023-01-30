@@ -1,4 +1,4 @@
-set_global_assignment -name TOP_LEVEL_ENTITY ram_test
+set_global_assignment -name TOP_LEVEL_ENTITY AXI4Encoder7Module_TopLevel
 # -------------------------------------------------------------------------- #
 #
 # Copyright (C) 1991-2010 Altera Corporation
@@ -60,13 +60,15 @@ set_global_assignment -name SDC_FILE rtl.sdc
 set_global_assignment -name VHDL_INPUT_VERSION VHDL_1993
 set_global_assignment -name VHDL_SHOW_LMF_MAPPING_MESSAGES OFF
 
+set_instance_assignment -name CLOCK_SETTINGS Clock -to Clock
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
-set_instance_assignment -name CLOCK_SETTINGS Clock -to Clock
+
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/AXI4Encoder7Module.vwf
+
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/ram_test.vwf
 
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AndGateModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/AndGateModule/AndGateModule_TopLevel.vhdl
@@ -76,6 +78,8 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/ArrayToBitArrayModule
 set_global_assignment -name VHDL_FILE VHDL/generated/ArrayToBitArrayModule/ArrayToBitArrayModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AutoPropagatePipelineModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/AutoPropagatePipelineModule/AutoPropagatePipelineModule_TopLevel.vhdl
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4Encoder7Module.vwf
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4Encoder7Module/AXI4Encoder7Module_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4MasterModuleB4.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/AXI4MasterModuleB4/AXI4MasterModuleB4_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4MasterSlaveTestModule.vwf
@@ -158,8 +162,10 @@ set_global_assignment -name VHDL_FILE VHDL/generated/GenerateModule4/GenerateMod
 set_global_assignment -name VHDL_FILE VHDL/generated/GenerateModule4/GenerateModule4_TopLevel_nested4.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/GenerateModule4/GenerateModule4_TopLevel_nested4_inverter.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/IntDividerPipelineModule/IntDividerPipelineModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/IONativeModule/IONativeModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IOTestModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/IOTestModule/IOTestModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleModule/IOTupleModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicRAMIndexingModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/LogicRAMIndexingModule/LogicRAMIndexingModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicRAMModule.vwf
@@ -247,6 +253,7 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StructsCombinationalM
 set_global_assignment -name VHDL_FILE VHDL/generated/StructsCombinationalModule/StructsCombinationalModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StructsMemoryModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/StructsMemoryModule/StructsMemoryModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/StructsNestedIOModule/StructsNestedIOModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/SynchronousROMModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/SynchronousROMModule/SynchronousROMModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/TDP_RAMModule.vwf

@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is Increment_TopLevel_Increment_InstructionsRAM, clock frequency is 1Hz, Embedded
+// System configuration name is Increment_TopLevel_TopLevel_InstructionsRAM, clock frequency is 1Hz, Embedded
 // FSM summary
 // -- Packages
-module Increment_TopLevel_Increment_InstructionsRAM
+module Increment_TopLevel_TopLevel_InstructionsRAM
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
@@ -74,15 +74,11 @@ module Increment_TopLevel_Increment_InstructionsRAM
 	wire readBeforeWrite;
 	wire internalWE;
 	wire [31: 0] memAccessMask;
-	wire [31: 0] SoCComponentModule_L51F54T92_Source;
 	wire [1: 0] SoCComponentModule_L52F54T79_Index;
 	wire [9: 0] SoCBlockRAMModule_L26F44T70_Index;
 	wire [31: 0] SoCBlockRAMModule_L34F34T84_Resize;
-	wire [31: 0] SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L48F28T58_Source;
 	reg [31: 0] SoCBlockRAMModule_L47F13L56T14_mask;
-	wire [7: 0] SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L51F28T58_Source;
 	wire [31: 0] SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L51F28T70_Resize;
-	wire [15: 0] SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L53F28T60_Source;
 	wire [31: 0] SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L53F28T72_Resize;
 	reg [31: 0] State_ReadValue;
 	reg State_Ready = 1'b0;
@@ -170,7 +166,16 @@ module Increment_TopLevel_Increment_InstructionsRAM
 	reg [31 : 0] State_BlockRAM [0 : 1023];
 	initial
 	begin : Init_State_BlockRAM
-$readmemh("Increment_TopLevel_Increment_InstructionsRAM_State_BlockRAM.hex", State_BlockRAM);
+$readmemh("Increment_TopLevel_TopLevel_InstructionsRAM_State_BlockRAM.hex", State_BlockRAM);
+	end
+	// inferred single port RAM with read-first behaviour
+	always @ (posedge BoardSignals_Clock)
+	begin
+		if (SoCBlockRAMModule_L60F9L70T10_SoCBlockRAMModule_L64F17T67_Expr)
+		begin
+			State_BlockRAM[internalWordAddress] <= internalWriteData;
+		end
+		State_ReadValue <= State_BlockRAM[internalWordAddress];
 	end
 	always @ (posedge BoardSignals_Clock)
 	begin
@@ -238,7 +243,7 @@ $readmemh("Increment_TopLevel_Increment_InstructionsRAM_State_BlockRAM.hex", Sta
 	end
 	always @ (*)
 	begin
-		SoCBlockRAMModule_L47F13L56T14_mask = SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L48F28T58_Source;
+		SoCBlockRAMModule_L47F13L56T14_mask = SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L48F44T57_Expr;
 		if ((SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L50F21T53_Expr == 1))
 		begin
 			SoCBlockRAMModule_L47F13L56T14_mask = SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L51F28T70_Resize;
@@ -254,20 +259,7 @@ $readmemh("Increment_TopLevel_Increment_InstructionsRAM_State_BlockRAM.hex", Sta
 		NextState_ReadBeforeWrite = State_ReadBeforeWrite;
 		NextState_Ready = SoCBlockRAMModule_L60F9L70T10_SoCBlockRAMModule_L61F31T83_Expr;
 		NextState_ReadBeforeWrite = SoCBlockRAMModule_L60F9L70T10_SoCBlockRAMModule_L62F41T82_Expr;
-		if ((SoCBlockRAMModule_L60F9L70T10_SoCBlockRAMModule_L64F17T67_Expr == 1))
-		begin
-		end
 	end
-// inferred simple dual port RAM with read-first behaviour
-always @(posedge BoardSignals_Clock) begin
-	if (SoCBlockRAMModule_L60F9L70T10_SoCBlockRAMModule_L64F17T67_Expr)
-		State_BlockRAM[internalWordAddress] <= internalWriteData;
-end
-
-always @(posedge BoardSignals_Clock) begin
-	State_ReadValue <= State_BlockRAM[internalWordAddress];
-end
-
 	assign SoCComponentModule_L50F48T93_ExprLhs = { 1'b0, Inputs_Common_Address };
 	assign SoCComponentModule_L50F48T93_ExprRhs = { 1'b0, Inputs_DeviceAddress };
 	assign SoCComponentModule_L50F97T157_ExprLhs = { {3{1'b0}}, Inputs_Common_Address };
@@ -322,8 +314,7 @@ end
 	assign Inputs_Common_MemAccessMode = Common_MemAccessMode;
 	assign Inputs_DeviceAddress = DeviceAddress;
 	assign addressMatch = SoCComponentModule_L50F48T157_Expr;
-	assign SoCComponentModule_L51F54T92_Source = Inputs_Common_Address;
-	assign internalAddressBits = SoCComponentModule_L51F54T92_Source;
+	assign internalAddressBits = Inputs_Common_Address;
 	assign SoCComponentModule_L52F54T79_Index = internalAddressBits[1:0];
 	assign internalByteAddress = SoCComponentModule_L52F54T84_Expr[4:0];
 	assign SoCBlockRAMModule_L26F44T70_Index = internalAddressBits[11:2];
@@ -335,11 +326,8 @@ end
 	assign internalWriteData = SoCBlockRAMModule_L36F13L38T109_Lookup;
 	assign readBeforeWrite = SoCBlockRAMModule_L40F33T65_Expr;
 	assign internalWE = SoCBlockRAMModule_L42F28T69_Expr;
-	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L48F28T58_Source = SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L48F44T57_Expr;
-	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L51F28T58_Source = SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L51F44T57_Expr;
-	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L51F28T70_Resize = { {24{1'b0}}, SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L51F28T58_Source };
-	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L53F28T60_Source = SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L53F44T59_Expr;
-	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L53F28T72_Resize = { {16{1'b0}}, SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L53F28T60_Source };
+	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L51F28T70_Resize = { {24{1'b0}}, SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L51F44T57_Expr };
+	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L53F28T72_Resize = { {16{1'b0}}, SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L53F44T59_Expr };
 	assign memAccessMask = SoCBlockRAMModule_L47F13L56T14_mask;
 	assign ReadValue = SoCBlockRAMModule_L29F43T99_Expr;
 	assign IsReady = State_Ready;

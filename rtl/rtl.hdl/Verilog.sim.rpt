@@ -1,5 +1,5 @@
 Simulator report for Verilog
-Wed Dec 21 21:42:59 2022
+Tue Jan 10 21:32:20 2023
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -45,42 +45,42 @@ applicable agreement for further details.
 +-----------------------------+--------------+
 ; Simulation Start Time       ; 0 ps         ;
 ; Simulation End Time         ; 1.0 us       ;
-; Simulation Netlist Size     ; 94 nodes     ;
-; Simulation Coverage         ;      11.70 % ;
-; Total Number of Transitions ; 129          ;
+; Simulation Netlist Size     ; 31 nodes     ;
+; Simulation Coverage         ;     100.00 % ;
+; Total Number of Transitions ; 155          ;
 ; Simulation Breakpoints      ; 0            ;
 ; Family                      ; Cyclone II   ;
 ; Device                      ; EP2C70F896C6 ;
 +-----------------------------+--------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-; Simulator Settings                                                                                                                        ;
-+--------------------------------------------------------------------------------------------+------------------------------+---------------+
-; Option                                                                                     ; Setting                      ; Default Value ;
-+--------------------------------------------------------------------------------------------+------------------------------+---------------+
-; Simulation mode                                                                            ; Timing                       ; Timing        ;
-; Start time                                                                                 ; 0 ns                         ; 0 ns          ;
-; Simulation results format                                                                  ; CVWF                         ;               ;
-; Vector input source                                                                        ; Waveforms/BitArrayModule.vwf ;               ;
-; Add pins automatically to simulation output waveforms                                      ; On                           ; On            ;
-; Check outputs                                                                              ; Off                          ; Off           ;
-; Report simulation coverage                                                                 ; On                           ; On            ;
-; Display complete 1/0 value coverage report                                                 ; On                           ; On            ;
-; Display missing 1-value coverage report                                                    ; On                           ; On            ;
-; Display missing 0-value coverage report                                                    ; On                           ; On            ;
-; Detect setup and hold time violations                                                      ; Off                          ; Off           ;
-; Detect glitches                                                                            ; Off                          ; Off           ;
-; Disable timing delays in Timing Simulation                                                 ; Off                          ; Off           ;
-; Generate Signal Activity File                                                              ; Off                          ; Off           ;
-; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                          ; Off           ;
-; Group bus channels in simulation results                                                   ; Off                          ; Off           ;
-; Preserve fewer signal transitions to reduce memory requirements                            ; On                           ; On            ;
-; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                   ; INPUT_EDGE    ;
-; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                          ; Off           ;
-; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                           ;               ;
-; Perform Glitch Filtering in Timing Simulation                                              ; Auto                         ; Auto          ;
-+--------------------------------------------------------------------------------------------+------------------------------+---------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                                            ;
++--------------------------------------------------------------------------------------------+----------------------------------+---------------+
+; Option                                                                                     ; Setting                          ; Default Value ;
++--------------------------------------------------------------------------------------------+----------------------------------+---------------+
+; Simulation mode                                                                            ; Timing                           ; Timing        ;
+; Start time                                                                                 ; 0 ns                             ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF                             ;               ;
+; Vector input source                                                                        ; Waveforms/AXI4Encoder7Module.vwf ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On                               ; On            ;
+; Check outputs                                                                              ; Off                              ; Off           ;
+; Report simulation coverage                                                                 ; On                               ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On                               ; On            ;
+; Display missing 1-value coverage report                                                    ; On                               ; On            ;
+; Display missing 0-value coverage report                                                    ; On                               ; On            ;
+; Detect setup and hold time violations                                                      ; Off                              ; Off           ;
+; Detect glitches                                                                            ; Off                              ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off                              ; Off           ;
+; Generate Signal Activity File                                                              ; Off                              ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                              ; Off           ;
+; Group bus channels in simulation results                                                   ; Off                              ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On                               ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                       ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                              ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                               ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto                             ; Auto          ;
++--------------------------------------------------------------------------------------------+----------------------------------+---------------+
 
 
 +----------------------+
@@ -95,218 +95,70 @@ Please use Quartus II to view the waveform report data.
 +-----------------------------------------------------+--------------+
 ; Type                                                ; Value        ;
 +-----------------------------------------------------+--------------+
-; Total coverage as a percentage                      ;      11.70 % ;
-; Total nodes checked                                 ; 94           ;
-; Total output ports checked                          ; 94           ;
-; Total output ports with complete 1/0-value coverage ; 11           ;
-; Total output ports with no 1/0-value coverage       ; 83           ;
-; Total output ports with no 1-value coverage         ; 83           ;
-; Total output ports with no 0-value coverage         ; 83           ;
+; Total coverage as a percentage                      ;     100.00 % ;
+; Total nodes checked                                 ; 31           ;
+; Total output ports checked                          ; 31           ;
+; Total output ports with complete 1/0-value coverage ; 31           ;
+; Total output ports with no 1/0-value coverage       ; 0            ;
+; Total output ports with no 1-value coverage         ; 0            ;
+; Total output ports with no 0-value coverage         ; 0            ;
 +-----------------------------------------------------+--------------+
 
 
 The following table displays output ports that toggle between 1 and 0 during simulation.
-+-------------------------------------------------------------------------------------------------+
-; Complete 1/0-Value Coverage                                                                     ;
-+-------------------------------------+----------------------------------------+------------------+
-; Node Name                           ; Output Port Name                       ; Output Port Type ;
-+-------------------------------------+----------------------------------------+------------------+
-; |BitArrayModule_TopLevel|Mux0~0     ; |BitArrayModule_TopLevel|Mux0~0        ; combout          ;
-; |BitArrayModule_TopLevel|Mux0~1     ; |BitArrayModule_TopLevel|Mux0~1        ; combout          ;
-; |BitArrayModule_TopLevel|Mux0~2     ; |BitArrayModule_TopLevel|Mux0~2        ; combout          ;
-; |BitArrayModule_TopLevel|Mux0~3     ; |BitArrayModule_TopLevel|Mux0~3        ; combout          ;
-; |BitArrayModule_TopLevel|Mux0~4     ; |BitArrayModule_TopLevel|Mux0~4        ; combout          ;
-; |BitArrayModule_TopLevel|Equal0~0   ; |BitArrayModule_TopLevel|Equal0~0      ; combout          ;
-; |BitArrayModule_TopLevel|ValueBit   ; |BitArrayModule_TopLevel|ValueBit      ; padio            ;
-; |BitArrayModule_TopLevel|CtorMux[6] ; |BitArrayModule_TopLevel|CtorMux[6]    ; padio            ;
-; |BitArrayModule_TopLevel|Bit[0]     ; |BitArrayModule_TopLevel|Bit[0]~corein ; combout          ;
-; |BitArrayModule_TopLevel|Bit[1]     ; |BitArrayModule_TopLevel|Bit[1]~corein ; combout          ;
-; |BitArrayModule_TopLevel|Bit[2]     ; |BitArrayModule_TopLevel|Bit[2]~corein ; combout          ;
-+-------------------------------------+----------------------------------------+------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                                                                                    ;
++----------------------------------------------------------------------+----------------------------------------------------------------------+------------------+
+; Node Name                                                            ; Output Port Name                                                     ; Output Port Type ;
++----------------------------------------------------------------------+----------------------------------------------------------------------+------------------+
+; |AXI4Encoder7Module_TopLevel|AXI4EncoderModule_L30F13L39T14_result~0 ; |AXI4Encoder7Module_TopLevel|AXI4EncoderModule_L30F13L39T14_result~0 ; combout          ;
+; |AXI4Encoder7Module_TopLevel|AXI4EncoderModule_L45F13L54T14_result~0 ; |AXI4Encoder7Module_TopLevel|AXI4EncoderModule_L45F13L54T14_result~0 ; combout          ;
+; |AXI4Encoder7Module_TopLevel|AXI4EncoderModule_L30F13L39T14_result~1 ; |AXI4Encoder7Module_TopLevel|AXI4EncoderModule_L30F13L39T14_result~1 ; combout          ;
+; |AXI4Encoder7Module_TopLevel|AXI4EncoderModule_L30F13L39T14_result~2 ; |AXI4Encoder7Module_TopLevel|AXI4EncoderModule_L30F13L39T14_result~2 ; combout          ;
+; |AXI4Encoder7Module_TopLevel|AXI4EncoderModule_L30F13L39T14_result~3 ; |AXI4Encoder7Module_TopLevel|AXI4EncoderModule_L30F13L39T14_result~3 ; combout          ;
+; |AXI4Encoder7Module_TopLevel|AXI4EncoderModule_L30F13L39T14_result~4 ; |AXI4Encoder7Module_TopLevel|AXI4EncoderModule_L30F13L39T14_result~4 ; combout          ;
+; |AXI4Encoder7Module_TopLevel|AXI4EncoderModule_L30F13L39T14_result~5 ; |AXI4Encoder7Module_TopLevel|AXI4EncoderModule_L30F13L39T14_result~5 ; combout          ;
+; |AXI4Encoder7Module_TopLevel|ShiftLeft0~0                            ; |AXI4Encoder7Module_TopLevel|ShiftLeft0~0                            ; combout          ;
+; |AXI4Encoder7Module_TopLevel|ShiftLeft0~1                            ; |AXI4Encoder7Module_TopLevel|ShiftLeft0~1                            ; combout          ;
+; |AXI4Encoder7Module_TopLevel|ShiftLeft0~2                            ; |AXI4Encoder7Module_TopLevel|ShiftLeft0~2                            ; combout          ;
+; |AXI4Encoder7Module_TopLevel|ShiftLeft0~3                            ; |AXI4Encoder7Module_TopLevel|ShiftLeft0~3                            ; combout          ;
+; |AXI4Encoder7Module_TopLevel|ShiftLeft0~4                            ; |AXI4Encoder7Module_TopLevel|ShiftLeft0~4                            ; combout          ;
+; |AXI4Encoder7Module_TopLevel|ShiftLeft0~5                            ; |AXI4Encoder7Module_TopLevel|ShiftLeft0~5                            ; combout          ;
+; |AXI4Encoder7Module_TopLevel|HasActive                               ; |AXI4Encoder7Module_TopLevel|HasActive                               ; padio            ;
+; |AXI4Encoder7Module_TopLevel|MSBIndex[0]                             ; |AXI4Encoder7Module_TopLevel|MSBIndex[0]                             ; padio            ;
+; |AXI4Encoder7Module_TopLevel|MSBIndex[1]                             ; |AXI4Encoder7Module_TopLevel|MSBIndex[1]                             ; padio            ;
+; |AXI4Encoder7Module_TopLevel|MSBIndex[2]                             ; |AXI4Encoder7Module_TopLevel|MSBIndex[2]                             ; padio            ;
+; |AXI4Encoder7Module_TopLevel|MSBValue[0]                             ; |AXI4Encoder7Module_TopLevel|MSBValue[0]                             ; padio            ;
+; |AXI4Encoder7Module_TopLevel|MSBValue[1]                             ; |AXI4Encoder7Module_TopLevel|MSBValue[1]                             ; padio            ;
+; |AXI4Encoder7Module_TopLevel|MSBValue[2]                             ; |AXI4Encoder7Module_TopLevel|MSBValue[2]                             ; padio            ;
+; |AXI4Encoder7Module_TopLevel|MSBValue[3]                             ; |AXI4Encoder7Module_TopLevel|MSBValue[3]                             ; padio            ;
+; |AXI4Encoder7Module_TopLevel|MSBValue[4]                             ; |AXI4Encoder7Module_TopLevel|MSBValue[4]                             ; padio            ;
+; |AXI4Encoder7Module_TopLevel|MSBValue[5]                             ; |AXI4Encoder7Module_TopLevel|MSBValue[5]                             ; padio            ;
+; |AXI4Encoder7Module_TopLevel|MSBValue[6]                             ; |AXI4Encoder7Module_TopLevel|MSBValue[6]                             ; padio            ;
+; |AXI4Encoder7Module_TopLevel|iValues6                                ; |AXI4Encoder7Module_TopLevel|iValues6~corein                         ; combout          ;
+; |AXI4Encoder7Module_TopLevel|iValues4                                ; |AXI4Encoder7Module_TopLevel|iValues4~corein                         ; combout          ;
+; |AXI4Encoder7Module_TopLevel|iValues5                                ; |AXI4Encoder7Module_TopLevel|iValues5~corein                         ; combout          ;
+; |AXI4Encoder7Module_TopLevel|iValues3                                ; |AXI4Encoder7Module_TopLevel|iValues3~corein                         ; combout          ;
+; |AXI4Encoder7Module_TopLevel|iValues2                                ; |AXI4Encoder7Module_TopLevel|iValues2~corein                         ; combout          ;
+; |AXI4Encoder7Module_TopLevel|iValues0                                ; |AXI4Encoder7Module_TopLevel|iValues0~corein                         ; combout          ;
+; |AXI4Encoder7Module_TopLevel|iValues1                                ; |AXI4Encoder7Module_TopLevel|iValues1~corein                         ; combout          ;
++----------------------------------------------------------------------+----------------------------------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 1 during simulation.
-+------------------------------------------------------------------------------------------------------------+
-; Missing 1-Value Coverage                                                                                   ;
-+--------------------------------------------+--------------------------------------------+------------------+
-; Node Name                                  ; Output Port Name                           ; Output Port Type ;
-+--------------------------------------------+--------------------------------------------+------------------+
-; |BitArrayModule_TopLevel|Direct[0]         ; |BitArrayModule_TopLevel|Direct[0]         ; padio            ;
-; |BitArrayModule_TopLevel|Direct[1]         ; |BitArrayModule_TopLevel|Direct[1]         ; padio            ;
-; |BitArrayModule_TopLevel|Direct[2]         ; |BitArrayModule_TopLevel|Direct[2]         ; padio            ;
-; |BitArrayModule_TopLevel|Direct[3]         ; |BitArrayModule_TopLevel|Direct[3]         ; padio            ;
-; |BitArrayModule_TopLevel|Direct[4]         ; |BitArrayModule_TopLevel|Direct[4]         ; padio            ;
-; |BitArrayModule_TopLevel|Direct[5]         ; |BitArrayModule_TopLevel|Direct[5]         ; padio            ;
-; |BitArrayModule_TopLevel|Direct[6]         ; |BitArrayModule_TopLevel|Direct[6]         ; padio            ;
-; |BitArrayModule_TopLevel|Direct[7]         ; |BitArrayModule_TopLevel|Direct[7]         ; padio            ;
-; |BitArrayModule_TopLevel|ReversedByCall[0] ; |BitArrayModule_TopLevel|ReversedByCall[0] ; padio            ;
-; |BitArrayModule_TopLevel|ReversedByCall[1] ; |BitArrayModule_TopLevel|ReversedByCall[1] ; padio            ;
-; |BitArrayModule_TopLevel|ReversedByCall[2] ; |BitArrayModule_TopLevel|ReversedByCall[2] ; padio            ;
-; |BitArrayModule_TopLevel|ReversedByCall[3] ; |BitArrayModule_TopLevel|ReversedByCall[3] ; padio            ;
-; |BitArrayModule_TopLevel|ReversedByCall[4] ; |BitArrayModule_TopLevel|ReversedByCall[4] ; padio            ;
-; |BitArrayModule_TopLevel|ReversedByCall[5] ; |BitArrayModule_TopLevel|ReversedByCall[5] ; padio            ;
-; |BitArrayModule_TopLevel|ReversedByCall[6] ; |BitArrayModule_TopLevel|ReversedByCall[6] ; padio            ;
-; |BitArrayModule_TopLevel|ReversedByCall[7] ; |BitArrayModule_TopLevel|ReversedByCall[7] ; padio            ;
-; |BitArrayModule_TopLevel|High[0]           ; |BitArrayModule_TopLevel|High[0]           ; padio            ;
-; |BitArrayModule_TopLevel|High[1]           ; |BitArrayModule_TopLevel|High[1]           ; padio            ;
-; |BitArrayModule_TopLevel|High[2]           ; |BitArrayModule_TopLevel|High[2]           ; padio            ;
-; |BitArrayModule_TopLevel|High[3]           ; |BitArrayModule_TopLevel|High[3]           ; padio            ;
-; |BitArrayModule_TopLevel|Low[0]            ; |BitArrayModule_TopLevel|Low[0]            ; padio            ;
-; |BitArrayModule_TopLevel|Low[1]            ; |BitArrayModule_TopLevel|Low[1]            ; padio            ;
-; |BitArrayModule_TopLevel|Low[2]            ; |BitArrayModule_TopLevel|Low[2]            ; padio            ;
-; |BitArrayModule_TopLevel|Low[3]            ; |BitArrayModule_TopLevel|Low[3]            ; padio            ;
-; |BitArrayModule_TopLevel|Reversed[0]       ; |BitArrayModule_TopLevel|Reversed[0]       ; padio            ;
-; |BitArrayModule_TopLevel|Reversed[1]       ; |BitArrayModule_TopLevel|Reversed[1]       ; padio            ;
-; |BitArrayModule_TopLevel|Reversed[2]       ; |BitArrayModule_TopLevel|Reversed[2]       ; padio            ;
-; |BitArrayModule_TopLevel|Reversed[3]       ; |BitArrayModule_TopLevel|Reversed[3]       ; padio            ;
-; |BitArrayModule_TopLevel|Reversed[4]       ; |BitArrayModule_TopLevel|Reversed[4]       ; padio            ;
-; |BitArrayModule_TopLevel|Reversed[5]       ; |BitArrayModule_TopLevel|Reversed[5]       ; padio            ;
-; |BitArrayModule_TopLevel|Reversed[6]       ; |BitArrayModule_TopLevel|Reversed[6]       ; padio            ;
-; |BitArrayModule_TopLevel|Reversed[7]       ; |BitArrayModule_TopLevel|Reversed[7]       ; padio            ;
-; |BitArrayModule_TopLevel|ReversedHigh[0]   ; |BitArrayModule_TopLevel|ReversedHigh[0]   ; padio            ;
-; |BitArrayModule_TopLevel|ReversedHigh[1]   ; |BitArrayModule_TopLevel|ReversedHigh[1]   ; padio            ;
-; |BitArrayModule_TopLevel|ReversedHigh[2]   ; |BitArrayModule_TopLevel|ReversedHigh[2]   ; padio            ;
-; |BitArrayModule_TopLevel|ReversedHigh[3]   ; |BitArrayModule_TopLevel|ReversedHigh[3]   ; padio            ;
-; |BitArrayModule_TopLevel|ReversedLow[0]    ; |BitArrayModule_TopLevel|ReversedLow[0]    ; padio            ;
-; |BitArrayModule_TopLevel|ReversedLow[1]    ; |BitArrayModule_TopLevel|ReversedLow[1]    ; padio            ;
-; |BitArrayModule_TopLevel|ReversedLow[2]    ; |BitArrayModule_TopLevel|ReversedLow[2]    ; padio            ;
-; |BitArrayModule_TopLevel|ReversedLow[3]    ; |BitArrayModule_TopLevel|ReversedLow[3]    ; padio            ;
-; |BitArrayModule_TopLevel|Picks[0]          ; |BitArrayModule_TopLevel|Picks[0]          ; padio            ;
-; |BitArrayModule_TopLevel|Picks[1]          ; |BitArrayModule_TopLevel|Picks[1]          ; padio            ;
-; |BitArrayModule_TopLevel|Picks[2]          ; |BitArrayModule_TopLevel|Picks[2]          ; padio            ;
-; |BitArrayModule_TopLevel|Picks[3]          ; |BitArrayModule_TopLevel|Picks[3]          ; padio            ;
-; |BitArrayModule_TopLevel|FromBits1[0]      ; |BitArrayModule_TopLevel|FromBits1[0]      ; padio            ;
-; |BitArrayModule_TopLevel|FromBits1[1]      ; |BitArrayModule_TopLevel|FromBits1[1]      ; padio            ;
-; |BitArrayModule_TopLevel|FromBits1[2]      ; |BitArrayModule_TopLevel|FromBits1[2]      ; padio            ;
-; |BitArrayModule_TopLevel|FromBits1[3]      ; |BitArrayModule_TopLevel|FromBits1[3]      ; padio            ;
-; |BitArrayModule_TopLevel|FromBits2[0]      ; |BitArrayModule_TopLevel|FromBits2[0]      ; padio            ;
-; |BitArrayModule_TopLevel|FromBits2[1]      ; |BitArrayModule_TopLevel|FromBits2[1]      ; padio            ;
-; |BitArrayModule_TopLevel|FromBits2[2]      ; |BitArrayModule_TopLevel|FromBits2[2]      ; padio            ;
-; |BitArrayModule_TopLevel|FromBits2[3]      ; |BitArrayModule_TopLevel|FromBits2[3]      ; padio            ;
-; |BitArrayModule_TopLevel|ZeroString[0]     ; |BitArrayModule_TopLevel|ZeroString[0]     ; padio            ;
-; |BitArrayModule_TopLevel|ZeroString[1]     ; |BitArrayModule_TopLevel|ZeroString[1]     ; padio            ;
-; |BitArrayModule_TopLevel|ZeroString[2]     ; |BitArrayModule_TopLevel|ZeroString[2]     ; padio            ;
-; |BitArrayModule_TopLevel|ZeroString[3]     ; |BitArrayModule_TopLevel|ZeroString[3]     ; padio            ;
-; |BitArrayModule_TopLevel|ZeroString[4]     ; |BitArrayModule_TopLevel|ZeroString[4]     ; padio            ;
-; |BitArrayModule_TopLevel|ZeroString[5]     ; |BitArrayModule_TopLevel|ZeroString[5]     ; padio            ;
-; |BitArrayModule_TopLevel|ZeroString[6]     ; |BitArrayModule_TopLevel|ZeroString[6]     ; padio            ;
-; |BitArrayModule_TopLevel|ZeroString[7]     ; |BitArrayModule_TopLevel|ZeroString[7]     ; padio            ;
-; |BitArrayModule_TopLevel|ValueString[0]    ; |BitArrayModule_TopLevel|ValueString[0]    ; padio            ;
-; |BitArrayModule_TopLevel|ValueString[1]    ; |BitArrayModule_TopLevel|ValueString[1]    ; padio            ;
-; |BitArrayModule_TopLevel|ValueString[2]    ; |BitArrayModule_TopLevel|ValueString[2]    ; padio            ;
-; |BitArrayModule_TopLevel|ValueString[3]    ; |BitArrayModule_TopLevel|ValueString[3]    ; padio            ;
-; |BitArrayModule_TopLevel|ValueString[4]    ; |BitArrayModule_TopLevel|ValueString[4]    ; padio            ;
-; |BitArrayModule_TopLevel|ValueString[5]    ; |BitArrayModule_TopLevel|ValueString[5]    ; padio            ;
-; |BitArrayModule_TopLevel|ValueString[6]    ; |BitArrayModule_TopLevel|ValueString[6]    ; padio            ;
-; |BitArrayModule_TopLevel|ValueString[7]    ; |BitArrayModule_TopLevel|ValueString[7]    ; padio            ;
-; |BitArrayModule_TopLevel|CtorMux[0]        ; |BitArrayModule_TopLevel|CtorMux[0]        ; padio            ;
-; |BitArrayModule_TopLevel|CtorMux[1]        ; |BitArrayModule_TopLevel|CtorMux[1]        ; padio            ;
-; |BitArrayModule_TopLevel|CtorMux[2]        ; |BitArrayModule_TopLevel|CtorMux[2]        ; padio            ;
-; |BitArrayModule_TopLevel|CtorMux[3]        ; |BitArrayModule_TopLevel|CtorMux[3]        ; padio            ;
-; |BitArrayModule_TopLevel|CtorMux[4]        ; |BitArrayModule_TopLevel|CtorMux[4]        ; padio            ;
-; |BitArrayModule_TopLevel|CtorMux[5]        ; |BitArrayModule_TopLevel|CtorMux[5]        ; padio            ;
-; |BitArrayModule_TopLevel|CtorMux[7]        ; |BitArrayModule_TopLevel|CtorMux[7]        ; padio            ;
-; |BitArrayModule_TopLevel|Value[5]          ; |BitArrayModule_TopLevel|Value[5]~corein   ; combout          ;
-; |BitArrayModule_TopLevel|Value[6]          ; |BitArrayModule_TopLevel|Value[6]~corein   ; combout          ;
-; |BitArrayModule_TopLevel|Value[4]          ; |BitArrayModule_TopLevel|Value[4]~corein   ; combout          ;
-; |BitArrayModule_TopLevel|Value[7]          ; |BitArrayModule_TopLevel|Value[7]~corein   ; combout          ;
-; |BitArrayModule_TopLevel|Value[2]          ; |BitArrayModule_TopLevel|Value[2]~corein   ; combout          ;
-; |BitArrayModule_TopLevel|Value[1]          ; |BitArrayModule_TopLevel|Value[1]~corein   ; combout          ;
-; |BitArrayModule_TopLevel|Value[0]          ; |BitArrayModule_TopLevel|Value[0]~corein   ; combout          ;
-; |BitArrayModule_TopLevel|Value[3]          ; |BitArrayModule_TopLevel|Value[3]~corein   ; combout          ;
-+--------------------------------------------+--------------------------------------------+------------------+
++-------------------------------------------------+
+; Missing 1-Value Coverage                        ;
++-----------+------------------+------------------+
+; Node Name ; Output Port Name ; Output Port Type ;
++-----------+------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 0 during simulation.
-+------------------------------------------------------------------------------------------------------------+
-; Missing 0-Value Coverage                                                                                   ;
-+--------------------------------------------+--------------------------------------------+------------------+
-; Node Name                                  ; Output Port Name                           ; Output Port Type ;
-+--------------------------------------------+--------------------------------------------+------------------+
-; |BitArrayModule_TopLevel|Direct[0]         ; |BitArrayModule_TopLevel|Direct[0]         ; padio            ;
-; |BitArrayModule_TopLevel|Direct[1]         ; |BitArrayModule_TopLevel|Direct[1]         ; padio            ;
-; |BitArrayModule_TopLevel|Direct[2]         ; |BitArrayModule_TopLevel|Direct[2]         ; padio            ;
-; |BitArrayModule_TopLevel|Direct[3]         ; |BitArrayModule_TopLevel|Direct[3]         ; padio            ;
-; |BitArrayModule_TopLevel|Direct[4]         ; |BitArrayModule_TopLevel|Direct[4]         ; padio            ;
-; |BitArrayModule_TopLevel|Direct[5]         ; |BitArrayModule_TopLevel|Direct[5]         ; padio            ;
-; |BitArrayModule_TopLevel|Direct[6]         ; |BitArrayModule_TopLevel|Direct[6]         ; padio            ;
-; |BitArrayModule_TopLevel|Direct[7]         ; |BitArrayModule_TopLevel|Direct[7]         ; padio            ;
-; |BitArrayModule_TopLevel|ReversedByCall[0] ; |BitArrayModule_TopLevel|ReversedByCall[0] ; padio            ;
-; |BitArrayModule_TopLevel|ReversedByCall[1] ; |BitArrayModule_TopLevel|ReversedByCall[1] ; padio            ;
-; |BitArrayModule_TopLevel|ReversedByCall[2] ; |BitArrayModule_TopLevel|ReversedByCall[2] ; padio            ;
-; |BitArrayModule_TopLevel|ReversedByCall[3] ; |BitArrayModule_TopLevel|ReversedByCall[3] ; padio            ;
-; |BitArrayModule_TopLevel|ReversedByCall[4] ; |BitArrayModule_TopLevel|ReversedByCall[4] ; padio            ;
-; |BitArrayModule_TopLevel|ReversedByCall[5] ; |BitArrayModule_TopLevel|ReversedByCall[5] ; padio            ;
-; |BitArrayModule_TopLevel|ReversedByCall[6] ; |BitArrayModule_TopLevel|ReversedByCall[6] ; padio            ;
-; |BitArrayModule_TopLevel|ReversedByCall[7] ; |BitArrayModule_TopLevel|ReversedByCall[7] ; padio            ;
-; |BitArrayModule_TopLevel|High[0]           ; |BitArrayModule_TopLevel|High[0]           ; padio            ;
-; |BitArrayModule_TopLevel|High[1]           ; |BitArrayModule_TopLevel|High[1]           ; padio            ;
-; |BitArrayModule_TopLevel|High[2]           ; |BitArrayModule_TopLevel|High[2]           ; padio            ;
-; |BitArrayModule_TopLevel|High[3]           ; |BitArrayModule_TopLevel|High[3]           ; padio            ;
-; |BitArrayModule_TopLevel|Low[0]            ; |BitArrayModule_TopLevel|Low[0]            ; padio            ;
-; |BitArrayModule_TopLevel|Low[1]            ; |BitArrayModule_TopLevel|Low[1]            ; padio            ;
-; |BitArrayModule_TopLevel|Low[2]            ; |BitArrayModule_TopLevel|Low[2]            ; padio            ;
-; |BitArrayModule_TopLevel|Low[3]            ; |BitArrayModule_TopLevel|Low[3]            ; padio            ;
-; |BitArrayModule_TopLevel|Reversed[0]       ; |BitArrayModule_TopLevel|Reversed[0]       ; padio            ;
-; |BitArrayModule_TopLevel|Reversed[1]       ; |BitArrayModule_TopLevel|Reversed[1]       ; padio            ;
-; |BitArrayModule_TopLevel|Reversed[2]       ; |BitArrayModule_TopLevel|Reversed[2]       ; padio            ;
-; |BitArrayModule_TopLevel|Reversed[3]       ; |BitArrayModule_TopLevel|Reversed[3]       ; padio            ;
-; |BitArrayModule_TopLevel|Reversed[4]       ; |BitArrayModule_TopLevel|Reversed[4]       ; padio            ;
-; |BitArrayModule_TopLevel|Reversed[5]       ; |BitArrayModule_TopLevel|Reversed[5]       ; padio            ;
-; |BitArrayModule_TopLevel|Reversed[6]       ; |BitArrayModule_TopLevel|Reversed[6]       ; padio            ;
-; |BitArrayModule_TopLevel|Reversed[7]       ; |BitArrayModule_TopLevel|Reversed[7]       ; padio            ;
-; |BitArrayModule_TopLevel|ReversedHigh[0]   ; |BitArrayModule_TopLevel|ReversedHigh[0]   ; padio            ;
-; |BitArrayModule_TopLevel|ReversedHigh[1]   ; |BitArrayModule_TopLevel|ReversedHigh[1]   ; padio            ;
-; |BitArrayModule_TopLevel|ReversedHigh[2]   ; |BitArrayModule_TopLevel|ReversedHigh[2]   ; padio            ;
-; |BitArrayModule_TopLevel|ReversedHigh[3]   ; |BitArrayModule_TopLevel|ReversedHigh[3]   ; padio            ;
-; |BitArrayModule_TopLevel|ReversedLow[0]    ; |BitArrayModule_TopLevel|ReversedLow[0]    ; padio            ;
-; |BitArrayModule_TopLevel|ReversedLow[1]    ; |BitArrayModule_TopLevel|ReversedLow[1]    ; padio            ;
-; |BitArrayModule_TopLevel|ReversedLow[2]    ; |BitArrayModule_TopLevel|ReversedLow[2]    ; padio            ;
-; |BitArrayModule_TopLevel|ReversedLow[3]    ; |BitArrayModule_TopLevel|ReversedLow[3]    ; padio            ;
-; |BitArrayModule_TopLevel|Picks[0]          ; |BitArrayModule_TopLevel|Picks[0]          ; padio            ;
-; |BitArrayModule_TopLevel|Picks[1]          ; |BitArrayModule_TopLevel|Picks[1]          ; padio            ;
-; |BitArrayModule_TopLevel|Picks[2]          ; |BitArrayModule_TopLevel|Picks[2]          ; padio            ;
-; |BitArrayModule_TopLevel|Picks[3]          ; |BitArrayModule_TopLevel|Picks[3]          ; padio            ;
-; |BitArrayModule_TopLevel|FromBits1[0]      ; |BitArrayModule_TopLevel|FromBits1[0]      ; padio            ;
-; |BitArrayModule_TopLevel|FromBits1[1]      ; |BitArrayModule_TopLevel|FromBits1[1]      ; padio            ;
-; |BitArrayModule_TopLevel|FromBits1[2]      ; |BitArrayModule_TopLevel|FromBits1[2]      ; padio            ;
-; |BitArrayModule_TopLevel|FromBits1[3]      ; |BitArrayModule_TopLevel|FromBits1[3]      ; padio            ;
-; |BitArrayModule_TopLevel|FromBits2[0]      ; |BitArrayModule_TopLevel|FromBits2[0]      ; padio            ;
-; |BitArrayModule_TopLevel|FromBits2[1]      ; |BitArrayModule_TopLevel|FromBits2[1]      ; padio            ;
-; |BitArrayModule_TopLevel|FromBits2[2]      ; |BitArrayModule_TopLevel|FromBits2[2]      ; padio            ;
-; |BitArrayModule_TopLevel|FromBits2[3]      ; |BitArrayModule_TopLevel|FromBits2[3]      ; padio            ;
-; |BitArrayModule_TopLevel|ZeroString[0]     ; |BitArrayModule_TopLevel|ZeroString[0]     ; padio            ;
-; |BitArrayModule_TopLevel|ZeroString[1]     ; |BitArrayModule_TopLevel|ZeroString[1]     ; padio            ;
-; |BitArrayModule_TopLevel|ZeroString[2]     ; |BitArrayModule_TopLevel|ZeroString[2]     ; padio            ;
-; |BitArrayModule_TopLevel|ZeroString[3]     ; |BitArrayModule_TopLevel|ZeroString[3]     ; padio            ;
-; |BitArrayModule_TopLevel|ZeroString[4]     ; |BitArrayModule_TopLevel|ZeroString[4]     ; padio            ;
-; |BitArrayModule_TopLevel|ZeroString[5]     ; |BitArrayModule_TopLevel|ZeroString[5]     ; padio            ;
-; |BitArrayModule_TopLevel|ZeroString[6]     ; |BitArrayModule_TopLevel|ZeroString[6]     ; padio            ;
-; |BitArrayModule_TopLevel|ZeroString[7]     ; |BitArrayModule_TopLevel|ZeroString[7]     ; padio            ;
-; |BitArrayModule_TopLevel|ValueString[0]    ; |BitArrayModule_TopLevel|ValueString[0]    ; padio            ;
-; |BitArrayModule_TopLevel|ValueString[1]    ; |BitArrayModule_TopLevel|ValueString[1]    ; padio            ;
-; |BitArrayModule_TopLevel|ValueString[2]    ; |BitArrayModule_TopLevel|ValueString[2]    ; padio            ;
-; |BitArrayModule_TopLevel|ValueString[3]    ; |BitArrayModule_TopLevel|ValueString[3]    ; padio            ;
-; |BitArrayModule_TopLevel|ValueString[4]    ; |BitArrayModule_TopLevel|ValueString[4]    ; padio            ;
-; |BitArrayModule_TopLevel|ValueString[5]    ; |BitArrayModule_TopLevel|ValueString[5]    ; padio            ;
-; |BitArrayModule_TopLevel|ValueString[6]    ; |BitArrayModule_TopLevel|ValueString[6]    ; padio            ;
-; |BitArrayModule_TopLevel|ValueString[7]    ; |BitArrayModule_TopLevel|ValueString[7]    ; padio            ;
-; |BitArrayModule_TopLevel|CtorMux[0]        ; |BitArrayModule_TopLevel|CtorMux[0]        ; padio            ;
-; |BitArrayModule_TopLevel|CtorMux[1]        ; |BitArrayModule_TopLevel|CtorMux[1]        ; padio            ;
-; |BitArrayModule_TopLevel|CtorMux[2]        ; |BitArrayModule_TopLevel|CtorMux[2]        ; padio            ;
-; |BitArrayModule_TopLevel|CtorMux[3]        ; |BitArrayModule_TopLevel|CtorMux[3]        ; padio            ;
-; |BitArrayModule_TopLevel|CtorMux[4]        ; |BitArrayModule_TopLevel|CtorMux[4]        ; padio            ;
-; |BitArrayModule_TopLevel|CtorMux[5]        ; |BitArrayModule_TopLevel|CtorMux[5]        ; padio            ;
-; |BitArrayModule_TopLevel|CtorMux[7]        ; |BitArrayModule_TopLevel|CtorMux[7]        ; padio            ;
-; |BitArrayModule_TopLevel|Value[5]          ; |BitArrayModule_TopLevel|Value[5]~corein   ; combout          ;
-; |BitArrayModule_TopLevel|Value[6]          ; |BitArrayModule_TopLevel|Value[6]~corein   ; combout          ;
-; |BitArrayModule_TopLevel|Value[4]          ; |BitArrayModule_TopLevel|Value[4]~corein   ; combout          ;
-; |BitArrayModule_TopLevel|Value[7]          ; |BitArrayModule_TopLevel|Value[7]~corein   ; combout          ;
-; |BitArrayModule_TopLevel|Value[2]          ; |BitArrayModule_TopLevel|Value[2]~corein   ; combout          ;
-; |BitArrayModule_TopLevel|Value[1]          ; |BitArrayModule_TopLevel|Value[1]~corein   ; combout          ;
-; |BitArrayModule_TopLevel|Value[0]          ; |BitArrayModule_TopLevel|Value[0]~corein   ; combout          ;
-; |BitArrayModule_TopLevel|Value[3]          ; |BitArrayModule_TopLevel|Value[3]~corein   ; combout          ;
-+--------------------------------------------+--------------------------------------------+------------------+
++-------------------------------------------------+
+; Missing 0-Value Coverage                        ;
++-----------+------------------+------------------+
+; Node Name ; Output Port Name ; Output Port Type ;
++-----------+------------------+------------------+
 
 
 +---------------------+
@@ -335,21 +187,21 @@ Info: Running Quartus II Simulator
     Info: programming logic devices manufactured by Altera and sold by 
     Info: Altera or its authorized distributors.  Please refer to the 
     Info: applicable agreement for further details.
-    Info: Processing started: Wed Dec 21 21:42:58 2022
+    Info: Processing started: Tue Jan 10 21:32:17 2023
 Info: Command: quartus_sim C:\code\qusoc\rtl\rtl.hdl\Verilog.qpf --read_settings_files=on --write_settings_files=off -c Verilog
-Info: Using vector source file "Waveforms/BitArrayModule.vwf"
+Info: Using vector source file "Waveforms/AXI4Encoder7Module.vwf"
 Info: Overwriting simulation input file with simulation results
-    Info: A backup of BitArrayModule.vwf called Verilog.sim_ori.vwf has been created in the db folder
+    Info: A backup of AXI4Encoder7Module.vwf called Verilog.sim_ori.vwf has been created in the db folder
 Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
     Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
 Info: Simulation partitioned into 1 sub-simulations
-Info: Simulation coverage is      11.70 %
-Info: Number of transitions in simulation is 129
-Info: Vector file BitArrayModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
+Info: Simulation coverage is     100.00 %
+Info: Number of transitions in simulation is 155
+Info: Vector file AXI4Encoder7Module.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
 Info: Quartus II Simulator was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 161 megabytes
-    Info: Processing ended: Wed Dec 21 21:42:59 2022
-    Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Peak virtual memory: 160 megabytes
+    Info: Processing ended: Tue Jan 10 21:32:20 2023
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:16
 
 

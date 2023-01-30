@@ -37,7 +37,7 @@
 
 set_global_assignment -name FAMILY "Cyclone II"
 set_global_assignment -name DEVICE EP2C70F896C6
-set_global_assignment -name TOP_LEVEL_ENTITY BitArrayModule_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY AXI4Encoder7Module_TopLevel
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "20:45:17  JUNE 07, 2019"
 set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
@@ -66,7 +66,7 @@ set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
 set_instance_assignment -name CLOCK_SETTINGS Clock -to Clock
 
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/BitArrayModule.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/AXI4Encoder7Module.vwf
 
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 
@@ -78,6 +78,8 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/ArrayToBitArrayModule
 set_global_assignment -name VERILOG_FILE Verilog/generated/ArrayToBitArrayModule/ArrayToBitArrayModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AutoPropagatePipelineModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/AutoPropagatePipelineModule/AutoPropagatePipelineModule_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4Encoder7Module.vwf
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4Encoder7Module/AXI4Encoder7Module_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4MasterModuleB4.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4MasterModuleB4/AXI4MasterModuleB4_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4MasterSlaveTestModule.vwf
@@ -161,8 +163,10 @@ set_global_assignment -name VERILOG_FILE Verilog/generated/GenerateModule4/Gener
 set_global_assignment -name VERILOG_FILE Verilog/generated/GenerateModule4/GenerateModule4_TopLevel_nested4_inverter.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IntDividerPipelineModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/IntDividerPipelineModule/IntDividerPipelineModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/IONativeModule/IONativeModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IOTestModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/IOTestModule/IOTestModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/IOTupleModule/IOTupleModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicRAMIndexingModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/LogicRAMIndexingModule/LogicRAMIndexingModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicRAMModule.vwf
@@ -248,6 +252,7 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StructsCombinationalM
 set_global_assignment -name VERILOG_FILE Verilog/generated/StructsCombinationalModule/StructsCombinationalModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StructsMemoryModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/StructsMemoryModule/StructsMemoryModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/StructsNestedIOModule/StructsNestedIOModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/SynchronousROMModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/SynchronousROMModule/SynchronousROMModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/TDP_RAMModule.vwf

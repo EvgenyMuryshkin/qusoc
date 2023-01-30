@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is Increment_TopLevel_Increment_CPU_RISCVModule_ID, clock frequency is 1Hz, Embedded
+// System configuration name is Increment_TopLevel_TopLevel_CPU_ID, clock frequency is 1Hz, Embedded
 // FSM summary
 // -- Packages
-module Increment_TopLevel_Increment_CPU_RISCVModule_ID
+module Increment_TopLevel_TopLevel_CPU_ID
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
@@ -71,7 +71,6 @@ module Increment_TopLevel_Increment_CPU_RISCVModule_ID
 	wire [6: 0] internalFunct7;
 	wire [4: 0] internalRS2;
 	wire signed [31: 0] ZeroU32;
-	wire [11: 0] InstructionDecoders_L14F51T88_Source;
 	wire [11: 0] InstructionDecoders_L14F67T87_Index;
 	wire signed [11: 0] InstructionDecoders_L14F51T97_SignChange;
 	wire signed [31: 0] InstructionDecoders_L14F51T109_Resize;
@@ -81,36 +80,34 @@ module Increment_TopLevel_Increment_CPU_RISCVModule_ID
 	wire [4: 0] InstructionDecoders_L18F46T66_Index;
 	wire [4: 0] InstructionDecoders_L22F34T53_Index;
 	wire [4: 0] InstructionDecoders_L23F35T55_Index;
-	wire [11: 0] InstructionDecoders_L27F40T77_Source;
 	wire [11: 0] InstructionDecoders_L27F56T76_Index;
 	wire signed [11: 0] InstructionDecoders_L27F40T86_SignChange;
 	wire signed [31: 0] InstructionDecoders_L27F40T98_Resize;
-	wire [11: 0] InstructionDecoders_L28F40T77_Source;
 	wire [11: 0] InstructionDecoders_L28F56T76_Index;
 	wire signed [11: 0] InstructionDecoders_L28F40T86_SignChange;
 	wire signed [31: 0] InstructionDecoders_L28F40T98_Resize;
-	wire [11: 0] InstructionDecoders_L29F40T98_Source;
 	wire [6: 0] InstructionDecoders_L29F56T76_Index;
 	wire [4: 0] InstructionDecoders_L29F78T97_Index;
+	wire [11: 0] InstructionDecoders_L29F40T98_Source;
 	wire signed [11: 0] InstructionDecoders_L29F40T107_SignChange;
 	wire signed [31: 0] InstructionDecoders_L29F40T119_Resize;
-	wire [12: 0] InstructionDecoders_L30F40T140_Source;
 	wire InstructionDecoders_L30F56T72_Index;
 	wire InstructionDecoders_L30F74T89_Index;
 	wire [5: 0] InstructionDecoders_L30F91T111_Index;
 	wire [3: 0] InstructionDecoders_L30F113T132_Index;
+	wire [12: 0] InstructionDecoders_L30F40T140_Source;
 	wire signed [12: 0] InstructionDecoders_L30F40T149_SignChange;
 	wire signed [31: 0] InstructionDecoders_L30F40T161_Resize;
-	wire [31: 0] InstructionDecoders_L31F40T93_Source;
 	wire [19: 0] InstructionDecoders_L31F56T76_Index;
 	wire [11: 0] InstructionDecoders_L31F78T92_Index;
+	wire [31: 0] InstructionDecoders_L31F40T93_Source;
 	wire signed [31: 0] InstructionDecoders_L31F40T102_SignChange;
 	wire signed [31: 0] InstructionDecoders_L31F40T114_Resize;
-	wire [20: 0] InstructionDecoders_L32F40T142_Source;
 	wire InstructionDecoders_L32F56T72_Index;
 	wire [7: 0] InstructionDecoders_L32F74T94_Index;
 	wire InstructionDecoders_L32F96T112_Index;
 	wire [9: 0] InstructionDecoders_L32F114T134_Index;
+	wire [20: 0] InstructionDecoders_L32F40T142_Source;
 	wire signed [20: 0] InstructionDecoders_L32F40T151_SignChange;
 	wire signed [31: 0] InstructionDecoders_L32F40T163_Resize;
 	wire [4: 0] InstructionDecoders_L34F37T59_Index;
@@ -147,8 +144,7 @@ module Increment_TopLevel_Increment_CPU_RISCVModule_ID
 	assign Inputs_Instruction = Instruction;
 	assign internalBits = Inputs_Instruction;
 	assign InstructionDecoders_L14F67T87_Index = internalBits[31:20];
-	assign InstructionDecoders_L14F51T88_Source = InstructionDecoders_L14F67T87_Index;
-	assign InstructionDecoders_L14F51T97_SignChange = InstructionDecoders_L14F51T88_Source;
+	assign InstructionDecoders_L14F51T97_SignChange = InstructionDecoders_L14F67T87_Index;
 	assign InstructionDecoders_L14F51T109_Resize = { {20{InstructionDecoders_L14F51T97_SignChange[11]}}, InstructionDecoders_L14F51T97_SignChange };
 	assign internalITypeImm = InstructionDecoders_L14F51T109_Resize;
 	assign InstructionDecoders_L15F49T67_Index = internalBits[6:0];
@@ -169,13 +165,11 @@ module Increment_TopLevel_Increment_CPU_RISCVModule_ID
 	assign Funct3 = internalFunct3;
 	assign Funct7 = internalFunct7;
 	assign InstructionDecoders_L27F56T76_Index = internalBits[31:20];
-	assign InstructionDecoders_L27F40T77_Source = InstructionDecoders_L27F56T76_Index;
-	assign InstructionDecoders_L27F40T86_SignChange = InstructionDecoders_L27F40T77_Source;
+	assign InstructionDecoders_L27F40T86_SignChange = InstructionDecoders_L27F56T76_Index;
 	assign InstructionDecoders_L27F40T98_Resize = { {20{InstructionDecoders_L27F40T86_SignChange[11]}}, InstructionDecoders_L27F40T86_SignChange };
 	assign RTypeImm = InstructionDecoders_L27F40T98_Resize;
 	assign InstructionDecoders_L28F56T76_Index = internalBits[31:20];
-	assign InstructionDecoders_L28F40T77_Source = InstructionDecoders_L28F56T76_Index;
-	assign InstructionDecoders_L28F40T86_SignChange = InstructionDecoders_L28F40T77_Source;
+	assign InstructionDecoders_L28F40T86_SignChange = InstructionDecoders_L28F56T76_Index;
 	assign InstructionDecoders_L28F40T98_Resize = { {20{InstructionDecoders_L28F40T86_SignChange[11]}}, InstructionDecoders_L28F40T86_SignChange };
 	assign ITypeImm = InstructionDecoders_L28F40T98_Resize;
 	assign InstructionDecoders_L29F56T76_Index = internalBits[31:25];

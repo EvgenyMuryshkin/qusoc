@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is Increment_TopLevel_Increment_CPU_RISCVModule_Regs, clock frequency is 1Hz, Embedded
+// System configuration name is Increment_TopLevel_TopLevel_CPU_Regs, clock frequency is 1Hz, Embedded
 // FSM summary
 // -- Packages
-module Increment_TopLevel_Increment_CPU_RISCVModule_Regs
+module Increment_TopLevel_TopLevel_CPU_Regs
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
@@ -109,6 +109,15 @@ module Increment_TopLevel_Increment_CPU_RISCVModule_Regs
 		for (State_x_i = 0; State_x_i < 32; State_x_i = State_x_i + 1)
 			State_x[State_x_i] = 0;
 	end
+	// inferred simple dual port RAM with read-first behaviour
+	always @ (posedge BoardSignals_Clock)
+	begin
+		if (RegistersRAMModule_L25F9L53T10_we)
+		begin
+			State_x[Inputs_RD] <= Inputs_WriteData;
+		end
+		State_ReadData <= State_x[RegistersRAMModule_L25F9L53T10_readAddress];
+	end
 	always @ (posedge BoardSignals_Clock)
 	begin
 		if ((BoardSignals_Reset == 1))
@@ -160,9 +169,6 @@ module Increment_TopLevel_Increment_CPU_RISCVModule_Regs
 		RegistersRAMModule_L25F9L53T10_we = Zero;
 		RegistersRAMModule_L25F9L53T10_readAddress = RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T80_Lookup;
 		RegistersRAMModule_L25F9L53T10_we = RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F22T49_Expr;
-		if ((RegistersRAMModule_L25F9L53T10_we == 1))
-		begin
-		end
 		NextState_Ready = RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L34F31T36_Expr;
 		if ((RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F17T47_Expr == 1))
 		begin
@@ -180,16 +186,6 @@ module Increment_TopLevel_Increment_CPU_RISCVModule_Regs
 			NextState_RS2 = State_ReadData;
 		end
 	end
-// inferred simple dual port RAM with read-first behaviour
-always @(posedge BoardSignals_Clock) begin
-	if (RegistersRAMModule_L25F9L53T10_we)
-		State_x[Inputs_RD] <= Inputs_WriteData;
-end
-
-always @(posedge BoardSignals_Clock) begin
-	State_ReadData <= State_x[RegistersRAMModule_L25F9L53T10_readAddress];
-end
-
 	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T46_ExprLhs = { 1'b0, State_Mode };
 	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T46_ExprRhs = { {8{1'b0}}, RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F45T46_Expr };
 	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F35T49_ExprLhs = { 1'b0, Inputs_RD };

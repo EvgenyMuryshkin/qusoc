@@ -50,7 +50,7 @@ namespace RTL.Modules
             Assert.AreEqual(0x10, tl.MemLhsRhs);
 
             var tb = sim.TBAdapter(RTLVerilogConfig);
-            tb.Run(new TestbenchAdapterConfig());
+            tb.Run(new ArtyZ7AdapterConfig());
         }
 
         [TestMethod]
@@ -80,7 +80,7 @@ namespace RTL.Modules
             }
 
             var tb = sim.TBAdapter(RTLVerilogConfig);
-            tb.TranslateInstance(new TestbenchAdapterConfig());
+            tb.TranslateInstance(new ArtyZ7AdapterConfig());
             //tb.PostSynthTimingSimulation();
         }
 
@@ -94,7 +94,7 @@ namespace RTL.Modules
 
             var sim = new RTLInstanceSimulator<VGAStaticQRModule, VGAStaticQRModuleInputs>(module, withTestbench: true);
             var tb = sim.TBAdapter(RTLVerilogConfig);
-            tb.TranslateInstance(new TestbenchAdapterConfig());
+            tb.TranslateInstance(new ArtyZ7AdapterConfig());
 
 
             var tl = sim.TopLevel;
@@ -140,7 +140,7 @@ namespace RTL.Modules
             }
 
             var tb = sim.TBAdapter(RTLVerilogConfig);
-            tb.Run(new TestbenchAdapterConfig());
+            tb.Run(new ArtyZ7AdapterConfig());
         }
 
         [TestMethod]
@@ -176,7 +176,7 @@ namespace RTL.Modules
             var tb = sim.TBAdapter(RTLVerilogConfig);
             //tb.TranslateModule();
             //tb.SaveTestbench();
-            tb.Run(new TestbenchAdapterConfig());
+            tb.Run(new ArtyZ7AdapterConfig());
 
             //Assert.AreEqual(480, hSyncCounter, "HSync is wrong");
             //Assert.AreEqual(640, hSyncCounter, "VSync is wrong");
