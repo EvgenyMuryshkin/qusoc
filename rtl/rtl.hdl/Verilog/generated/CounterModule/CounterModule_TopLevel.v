@@ -40,16 +40,15 @@ module CounterModule_TopLevel
 	wire Inputs_Enabled;
 	reg [7: 0] NextState_Value;
 	wire [7: 0] NextValue;
+	wire [7: 0] CounterModule_L19F34T80_WhenTrue;
+	wire [7: 0] CounterModule_L19F34T80_WhenFalse;
+	wire [7: 0] CounterModule_L19F34T80_Ternary;
 	wire [7: 0] CounterModule_L19F27T81_Cast;
 	reg [7: 0] State_Value = 8'b00000000;
 	wire [7: 0] State_ValueDefault = 8'b00000000;
 	wire [9: 0] CounterModule_L19F51T66_Expr;
 	wire signed [9: 0] CounterModule_L19F51T66_Expr_1;
 	wire signed [9: 0] CounterModule_L19F51T66_Expr_2;
-	reg [7: 0] CounterModule_L19F34T80_Lookup;
-	wire CounterModule_L19F34T80_LookupMultiplexerAddress;
-	wire [7: 0] CounterModule_L19F34T80_Lookup1;
-	wire [7: 0] CounterModule_L19F34T80_Lookup2;
 	always @ (posedge Clock)
 	begin
 		if ((Reset == 1))
@@ -62,23 +61,7 @@ module CounterModule_TopLevel
 		end
 	end
 	assign CounterModule_L19F51T66_Expr = CounterModule_L19F51T66_Expr_1 + CounterModule_L19F51T66_Expr_2;
-	always @ (*)
-	begin
-		case (CounterModule_L19F34T80_LookupMultiplexerAddress)
-			'b0:
-			begin
-				CounterModule_L19F34T80_Lookup = CounterModule_L19F34T80_Lookup1;
-			end
-			'b1:
-			begin
-				CounterModule_L19F34T80_Lookup = CounterModule_L19F34T80_Lookup2;
-			end
-			default:
-			begin
-				CounterModule_L19F34T80_Lookup = 'b00000000;
-			end
-		endcase
-	end
+	assign CounterModule_L19F34T80_Ternary = (Inputs_Enabled ? CounterModule_L19F34T80_WhenTrue : CounterModule_L19F34T80_WhenFalse);
 	always @ (*)
 	begin
 		NextState_Value = State_Value;
@@ -87,12 +70,11 @@ module CounterModule_TopLevel
 	assign CounterModule_L19F51T66_Expr_1 = { {2{1'b0}}, State_Value };
 	assign CounterModule_L19F51T66_Expr_2 = { {9{1'b0}}, CounterModule_L19F65T66_Expr };
 	assign Inputs_Enabled = Enabled;
-	assign CounterModule_L19F27T81_Cast = CounterModule_L19F34T80_Lookup;
+	assign CounterModule_L19F34T80_WhenTrue = CounterModule_L19F51T66_Expr[7:0];
+	assign CounterModule_L19F34T80_WhenFalse = State_Value;
+	assign CounterModule_L19F27T81_Cast = CounterModule_L19F34T80_Ternary;
 	assign NextValue = CounterModule_L19F27T81_Cast;
 	assign Value = State_Value;
-	assign CounterModule_L19F34T80_Lookup1 = State_Value;
-	assign CounterModule_L19F34T80_Lookup2 = CounterModule_L19F51T66_Expr[7:0];
-	assign CounterModule_L19F34T80_LookupMultiplexerAddress = Inputs_Enabled;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

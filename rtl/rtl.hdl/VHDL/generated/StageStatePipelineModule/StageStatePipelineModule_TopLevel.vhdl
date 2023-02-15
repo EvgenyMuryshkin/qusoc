@@ -59,11 +59,11 @@ architecture rtl of StageStatePipelineModule_TopLevel is
 	constant Pipeline_StageStatePipelineModule_L97F64T65_Expr : std_logic := '1';
 	constant Pipeline_StageStatePipelineModule_L108F59T60_Expr : std_logic := '1';
 	signal Inputs_inReady : std_logic := '0';
-	signal Pipeline_stage0_NextState_S0Counter : unsigned(15 downto 0) := (others => '0');
 	signal Pipeline_stage0_NextState_IsReady : std_logic := '0';
+	signal Pipeline_stage0_NextState_S0Counter : unsigned(15 downto 0) := (others => '0');
+	signal Pipeline_stage1_NextState_IsReady : std_logic := '0';
 	signal Pipeline_stage1_NextState_S0Counter : unsigned(15 downto 0) := (others => '0');
 	signal Pipeline_stage1_NextState_S1Counter : unsigned(15 downto 0) := (others => '0');
-	signal Pipeline_stage1_NextState_IsReady : std_logic := '0';
 	signal Pipeline_stage2_NextState_IsReady : std_logic := '0';
 	signal Pipeline_stage2_NextState_result : unsigned(15 downto 0) := (others => '0');
 	signal Pipeline_stage2_NextState_S0Counter : unsigned(15 downto 0) := (others => '0');
@@ -91,16 +91,16 @@ architecture rtl of StageStatePipelineModule_TopLevel is
 	signal Pipeline_StageStatePipelineModule_L105F30T63_Cast : unsigned(15 downto 0) := (others => '0');
 	signal Pipeline_StageStatePipelineModule_L108F33T61_Cast : unsigned(15 downto 0) := (others => '0');
 	signal StageStatePipelineModule_L39F33T61_Cast : std_logic := '0';
-	signal Pipeline_stage0_State_S0Counter : unsigned(15 downto 0) := "0000000000000000";
-	constant Pipeline_stage0_State_S0CounterDefault : unsigned(15 downto 0) := "0000000000000000";
 	signal Pipeline_stage0_State_IsReady : std_logic := '0';
 	constant Pipeline_stage0_State_IsReadyDefault : std_logic := '0';
+	signal Pipeline_stage0_State_S0Counter : unsigned(15 downto 0) := "0000000000000000";
+	constant Pipeline_stage0_State_S0CounterDefault : unsigned(15 downto 0) := "0000000000000000";
+	signal Pipeline_stage1_State_IsReady : std_logic := '0';
+	constant Pipeline_stage1_State_IsReadyDefault : std_logic := '0';
 	signal Pipeline_stage1_State_S0Counter : unsigned(15 downto 0) := "0000000000000000";
 	constant Pipeline_stage1_State_S0CounterDefault : unsigned(15 downto 0) := "0000000000000000";
 	signal Pipeline_stage1_State_S1Counter : unsigned(15 downto 0) := "0000000000000000";
 	constant Pipeline_stage1_State_S1CounterDefault : unsigned(15 downto 0) := "0000000000000000";
-	signal Pipeline_stage1_State_IsReady : std_logic := '0';
-	constant Pipeline_stage1_State_IsReadyDefault : std_logic := '0';
 	signal Pipeline_stage2_State_IsReady : std_logic := '0';
 	constant Pipeline_stage2_State_IsReadyDefault : std_logic := '0';
 	signal Pipeline_stage2_State_result : unsigned(15 downto 0) := "0000000000000000";
@@ -158,22 +158,22 @@ begin
 	begin
 		if rising_edge(Clock) then
 			if Reset = '1' then
-				Pipeline_stage0_State_S0Counter <= Pipeline_stage0_State_S0CounterDefault;
 				Pipeline_stage0_State_IsReady <= Pipeline_stage0_State_IsReadyDefault;
+				Pipeline_stage0_State_S0Counter <= Pipeline_stage0_State_S0CounterDefault;
+				Pipeline_stage1_State_IsReady <= Pipeline_stage1_State_IsReadyDefault;
 				Pipeline_stage1_State_S0Counter <= Pipeline_stage1_State_S0CounterDefault;
 				Pipeline_stage1_State_S1Counter <= Pipeline_stage1_State_S1CounterDefault;
-				Pipeline_stage1_State_IsReady <= Pipeline_stage1_State_IsReadyDefault;
 				Pipeline_stage2_State_IsReady <= Pipeline_stage2_State_IsReadyDefault;
 				Pipeline_stage2_State_result <= Pipeline_stage2_State_resultDefault;
 				Pipeline_stage2_State_S0Counter <= Pipeline_stage2_State_S0CounterDefault;
 				Pipeline_stage2_State_S1Counter <= Pipeline_stage2_State_S1CounterDefault;
 				Pipeline_stage2_State_S2Counter <= Pipeline_stage2_State_S2CounterDefault;
 			else
-				Pipeline_stage0_State_S0Counter <= Pipeline_stage0_NextState_S0Counter;
 				Pipeline_stage0_State_IsReady <= Pipeline_stage0_NextState_IsReady;
+				Pipeline_stage0_State_S0Counter <= Pipeline_stage0_NextState_S0Counter;
+				Pipeline_stage1_State_IsReady <= Pipeline_stage1_NextState_IsReady;
 				Pipeline_stage1_State_S0Counter <= Pipeline_stage1_NextState_S0Counter;
 				Pipeline_stage1_State_S1Counter <= Pipeline_stage1_NextState_S1Counter;
-				Pipeline_stage1_State_IsReady <= Pipeline_stage1_NextState_IsReady;
 				Pipeline_stage2_State_IsReady <= Pipeline_stage2_NextState_IsReady;
 				Pipeline_stage2_State_result <= Pipeline_stage2_NextState_result;
 				Pipeline_stage2_State_S0Counter <= Pipeline_stage2_NextState_S0Counter;
@@ -252,33 +252,33 @@ begin
 	end process;
 	process (Pipeline_Inputs_inReady, Pipeline_stage0_State_IsReady, Pipeline_stage0_State_S0Counter, Pipeline_stage0_State_sums, Pipeline_stage1_State_IsReady, Pipeline_stage1_State_S0Counter, Pipeline_stage1_State_S1Counter, Pipeline_stage1_State_sums, Pipeline_stage2_State_IsReady, Pipeline_stage2_State_result, Pipeline_stage2_State_S0Counter, Pipeline_stage2_State_S1Counter, Pipeline_stage2_State_S2Counter, Pipeline_StageStatePipelineModule_L100F25T58_Cast, Pipeline_StageStatePipelineModule_L101F25T58_Cast, Pipeline_StageStatePipelineModule_L105F30T63_Cast, Pipeline_StageStatePipelineModule_L108F33T61_Cast, Pipeline_StageStatePipelineModule_L87F25T60_Cast, Pipeline_StageStatePipelineModule_L88F25T60_Cast, Pipeline_StageStatePipelineModule_L89F25T60_Cast, Pipeline_StageStatePipelineModule_L90F25T60_Cast, Pipeline_StageStatePipelineModule_L92F33T62_Cast, Pipeline_StageStatePipelineModule_L97F33T66_Cast)
 	begin
+		Pipeline_stage0_NextState_IsReady <= Pipeline_stage0_State_IsReady;
 		Pipeline_stage0_NextState_sums(0) <= Pipeline_stage0_State_sums(0);
 		Pipeline_stage0_NextState_sums(1) <= Pipeline_stage0_State_sums(1);
 		Pipeline_stage0_NextState_sums(2) <= Pipeline_stage0_State_sums(2);
 		Pipeline_stage0_NextState_sums(3) <= Pipeline_stage0_State_sums(3);
 		Pipeline_stage0_NextState_S0Counter <= Pipeline_stage0_State_S0Counter;
-		Pipeline_stage0_NextState_IsReady <= Pipeline_stage0_State_IsReady;
+		Pipeline_stage1_NextState_IsReady <= Pipeline_stage1_State_IsReady;
 		Pipeline_stage1_NextState_sums(0) <= Pipeline_stage1_State_sums(0);
 		Pipeline_stage1_NextState_sums(1) <= Pipeline_stage1_State_sums(1);
 		Pipeline_stage1_NextState_S0Counter <= Pipeline_stage1_State_S0Counter;
 		Pipeline_stage1_NextState_S1Counter <= Pipeline_stage1_State_S1Counter;
-		Pipeline_stage1_NextState_IsReady <= Pipeline_stage1_State_IsReady;
 		Pipeline_stage2_NextState_IsReady <= Pipeline_stage2_State_IsReady;
 		Pipeline_stage2_NextState_result <= Pipeline_stage2_State_result;
 		Pipeline_stage2_NextState_S0Counter <= Pipeline_stage2_State_S0Counter;
 		Pipeline_stage2_NextState_S1Counter <= Pipeline_stage2_State_S1Counter;
 		Pipeline_stage2_NextState_S2Counter <= Pipeline_stage2_State_S2Counter;
+		Pipeline_stage0_NextState_IsReady <= Pipeline_Inputs_inReady;
 		Pipeline_stage0_NextState_sums(0) <= Pipeline_StageStatePipelineModule_L87F25T60_Cast;
 		Pipeline_stage0_NextState_sums(1) <= Pipeline_StageStatePipelineModule_L88F25T60_Cast;
 		Pipeline_stage0_NextState_sums(2) <= Pipeline_StageStatePipelineModule_L89F25T60_Cast;
 		Pipeline_stage0_NextState_sums(3) <= Pipeline_StageStatePipelineModule_L90F25T60_Cast;
 		Pipeline_stage0_NextState_S0Counter <= Pipeline_StageStatePipelineModule_L92F33T62_Cast;
-		Pipeline_stage0_NextState_IsReady <= Pipeline_Inputs_inReady;
+		Pipeline_stage1_NextState_IsReady <= Pipeline_stage0_State_IsReady;
 		Pipeline_stage1_NextState_sums(0) <= Pipeline_StageStatePipelineModule_L100F25T58_Cast;
 		Pipeline_stage1_NextState_sums(1) <= Pipeline_StageStatePipelineModule_L101F25T58_Cast;
 		Pipeline_stage1_NextState_S0Counter <= Pipeline_stage0_State_S0Counter;
 		Pipeline_stage1_NextState_S1Counter <= Pipeline_StageStatePipelineModule_L97F33T66_Cast;
-		Pipeline_stage1_NextState_IsReady <= Pipeline_stage0_State_IsReady;
 		Pipeline_stage2_NextState_IsReady <= Pipeline_stage1_State_IsReady;
 		Pipeline_stage2_NextState_result <= Pipeline_StageStatePipelineModule_L105F30T63_Cast;
 		Pipeline_stage2_NextState_S0Counter <= Pipeline_stage1_State_S0Counter;

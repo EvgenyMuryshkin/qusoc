@@ -197,6 +197,18 @@ module AXI4MemoryModuleB4_TopLevel
 	wire axiSlave_outWREADYConfirming;
 	wire axiSlave_outWVALID;
 	wire [3: 0] axiSlave_outWSTRB;
+	wire [3: 0] AXI4MemoryModule_L69F13L71T26_WhenTrue;
+	wire [3: 0] AXI4MemoryModule_L69F13L71T26_WhenFalse;
+	wire [3: 0] AXI4MemoryModule_L69F13L71T26_Ternary;
+	wire [31: 0] AXI4MemoryModule_L74F13L76T26_WhenTrue;
+	wire [31: 0] AXI4MemoryModule_L74F13L76T26_WhenFalse;
+	wire [31: 0] AXI4MemoryModule_L74F13L76T26_Ternary;
+	wire [31: 0] AXI4MemoryModule_L79F13L81T26_WhenTrue;
+	wire [31: 0] AXI4MemoryModule_L79F13L81T26_WhenFalse;
+	wire [31: 0] AXI4MemoryModule_L79F13L81T26_Ternary;
+	wire [31: 0] AXI4MemoryModule_L84F13L86T26_WhenTrue;
+	wire [31: 0] AXI4MemoryModule_L84F13L86T26_WhenFalse;
+	wire [31: 0] AXI4MemoryModule_L84F13L86T26_Ternary;
 	wire AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_0_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index;
 	wire AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_1_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index;
 	wire AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_2_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index;
@@ -307,22 +319,6 @@ module AXI4MemoryModuleB4_TopLevel
 	wire AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_3_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F21T51_Expr;
 	wire AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_3_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F21T51_Expr_1;
 	wire AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_3_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F21T51_Expr_2;
-	reg [3: 0] AXI4MemoryModule_L69F13L71T26_Lookup;
-	reg [31: 0] AXI4MemoryModule_L74F13L76T26_Lookup;
-	reg [31: 0] AXI4MemoryModule_L79F13L81T26_Lookup;
-	reg [31: 0] AXI4MemoryModule_L84F13L86T26_Lookup;
-	wire AXI4MemoryModule_L69F13L71T26_LookupMultiplexerAddress;
-	wire [3: 0] AXI4MemoryModule_L69F13L71T26_Lookup1;
-	wire [3: 0] AXI4MemoryModule_L69F13L71T26_Lookup2;
-	wire AXI4MemoryModule_L74F13L76T26_LookupMultiplexerAddress;
-	wire [31: 0] AXI4MemoryModule_L74F13L76T26_Lookup1;
-	wire [31: 0] AXI4MemoryModule_L74F13L76T26_Lookup2;
-	wire AXI4MemoryModule_L79F13L81T26_LookupMultiplexerAddress;
-	wire [31: 0] AXI4MemoryModule_L79F13L81T26_Lookup1;
-	wire [31: 0] AXI4MemoryModule_L79F13L81T26_Lookup2;
-	wire AXI4MemoryModule_L84F13L86T26_LookupMultiplexerAddress;
-	wire [31: 0] AXI4MemoryModule_L84F13L86T26_Lookup1;
-	wire [31: 0] AXI4MemoryModule_L84F13L86T26_Lookup2;
 	wire [7 : 0] Inputs_M2S_W_WDATA [0 : 3];
 	wire [7 : 0] State_rdata [0 : 3];
 	integer State_wdata_Iterator;
@@ -552,74 +548,10 @@ module AXI4MemoryModuleB4_TopLevel
 		.outWDATA3 (axiSlave_outWDATA3_axiSlave_outWDATA_HardLink),
 		.outWSTRB (axiSlave_outWSTRB_axiSlave_outWSTRB_HardLink)
 	);
-	always @ (*)
-	begin
-		case (AXI4MemoryModule_L69F13L71T26_LookupMultiplexerAddress)
-			'b0:
-			begin
-				AXI4MemoryModule_L69F13L71T26_Lookup = AXI4MemoryModule_L69F13L71T26_Lookup1;
-			end
-			'b1:
-			begin
-				AXI4MemoryModule_L69F13L71T26_Lookup = AXI4MemoryModule_L69F13L71T26_Lookup2;
-			end
-			default:
-			begin
-				AXI4MemoryModule_L69F13L71T26_Lookup = 'b0000;
-			end
-		endcase
-	end
-	always @ (*)
-	begin
-		case (AXI4MemoryModule_L74F13L76T26_LookupMultiplexerAddress)
-			'b0:
-			begin
-				AXI4MemoryModule_L74F13L76T26_Lookup = AXI4MemoryModule_L74F13L76T26_Lookup1;
-			end
-			'b1:
-			begin
-				AXI4MemoryModule_L74F13L76T26_Lookup = AXI4MemoryModule_L74F13L76T26_Lookup2;
-			end
-			default:
-			begin
-				AXI4MemoryModule_L74F13L76T26_Lookup = 'b00000000000000000000000000000000;
-			end
-		endcase
-	end
-	always @ (*)
-	begin
-		case (AXI4MemoryModule_L79F13L81T26_LookupMultiplexerAddress)
-			'b0:
-			begin
-				AXI4MemoryModule_L79F13L81T26_Lookup = AXI4MemoryModule_L79F13L81T26_Lookup1;
-			end
-			'b1:
-			begin
-				AXI4MemoryModule_L79F13L81T26_Lookup = AXI4MemoryModule_L79F13L81T26_Lookup2;
-			end
-			default:
-			begin
-				AXI4MemoryModule_L79F13L81T26_Lookup = 'b00000000000000000000000000000000;
-			end
-		endcase
-	end
-	always @ (*)
-	begin
-		case (AXI4MemoryModule_L84F13L86T26_LookupMultiplexerAddress)
-			'b0:
-			begin
-				AXI4MemoryModule_L84F13L86T26_Lookup = AXI4MemoryModule_L84F13L86T26_Lookup1;
-			end
-			'b1:
-			begin
-				AXI4MemoryModule_L84F13L86T26_Lookup = AXI4MemoryModule_L84F13L86T26_Lookup2;
-			end
-			default:
-			begin
-				AXI4MemoryModule_L84F13L86T26_Lookup = 'b00000000000000000000000000000000;
-			end
-		endcase
-	end
+	assign AXI4MemoryModule_L69F13L71T26_Ternary = (internalSameTxWrite ? AXI4MemoryModule_L69F13L71T26_WhenTrue : AXI4MemoryModule_L69F13L71T26_WhenFalse);
+	assign AXI4MemoryModule_L74F13L76T26_Ternary = (internalSameTxWrite ? AXI4MemoryModule_L74F13L76T26_WhenTrue : AXI4MemoryModule_L74F13L76T26_WhenFalse);
+	assign AXI4MemoryModule_L79F13L81T26_Ternary = (internalSameTxWrite ? AXI4MemoryModule_L79F13L81T26_WhenTrue : AXI4MemoryModule_L79F13L81T26_WhenFalse);
+	assign AXI4MemoryModule_L84F13L86T26_Ternary = (axiSlave_outARREADYConfirming ? AXI4MemoryModule_L84F13L86T26_WhenTrue : AXI4MemoryModule_L84F13L86T26_WhenFalse);
 	always @ (*)
 	begin
 		NextState_wdata_Iterator = 0;
@@ -708,13 +640,21 @@ module AXI4MemoryModuleB4_TopLevel
 	assign internalSameTxWrite = AXI4MemoryModule_L64F37T81_Expr;
 	assign internalDelayedTxWrite = AXI4MemoryModule_L65F40T72_Expr;
 	assign internalWE = AXI4MemoryModule_L66F28T73_Expr;
-	assign internalWSTRB = AXI4MemoryModule_L69F13L71T26_Lookup;
-	assign internalWADDR = AXI4MemoryModule_L74F13L76T26_Lookup;
-	assign internalWDATA[0] = AXI4MemoryModule_L79F13L81T26_Lookup[7:0];
-	assign internalWDATA[1] = AXI4MemoryModule_L79F13L81T26_Lookup[15:8];
-	assign internalWDATA[2] = AXI4MemoryModule_L79F13L81T26_Lookup[23:16];
-	assign internalWDATA[3] = AXI4MemoryModule_L79F13L81T26_Lookup[31:24];
-	assign internalRADDR = AXI4MemoryModule_L84F13L86T26_Lookup;
+	assign AXI4MemoryModule_L69F13L71T26_WhenTrue = axiSlave_outWSTRB;
+	assign AXI4MemoryModule_L69F13L71T26_WhenFalse = State_wstrb;
+	assign internalWSTRB = AXI4MemoryModule_L69F13L71T26_Ternary;
+	assign AXI4MemoryModule_L74F13L76T26_WhenTrue = axiSlave_outAWADDR;
+	assign AXI4MemoryModule_L74F13L76T26_WhenFalse = State_waddr;
+	assign internalWADDR = AXI4MemoryModule_L74F13L76T26_Ternary;
+	assign AXI4MemoryModule_L79F13L81T26_WhenTrue = { axiSlave_outWDATA[3], axiSlave_outWDATA[2], axiSlave_outWDATA[1], axiSlave_outWDATA[0] };
+	assign AXI4MemoryModule_L79F13L81T26_WhenFalse = { State_wdata[3], State_wdata[2], State_wdata[1], State_wdata[0] };
+	assign internalWDATA[0] = AXI4MemoryModule_L79F13L81T26_Ternary[7:0];
+	assign internalWDATA[1] = AXI4MemoryModule_L79F13L81T26_Ternary[15:8];
+	assign internalWDATA[2] = AXI4MemoryModule_L79F13L81T26_Ternary[23:16];
+	assign internalWDATA[3] = AXI4MemoryModule_L79F13L81T26_Ternary[31:24];
+	assign AXI4MemoryModule_L84F13L86T26_WhenTrue = axiSlave_outARADDR;
+	assign AXI4MemoryModule_L84F13L86T26_WhenFalse = State_raddr;
+	assign internalRADDR = AXI4MemoryModule_L84F13L86T26_Ternary;
 	assign axiSlave_M2S_AR_ARID = Inputs_M2S_AR_ARID;
 	assign axiSlave_M2S_AR_ARADDR = Inputs_M2S_AR_ARADDR;
 	assign axiSlave_M2S_AR_ARLEN = Inputs_M2S_AR_ARLEN;
@@ -854,18 +794,6 @@ module AXI4MemoryModuleB4_TopLevel
 	assign axiSlave_outWDATA[2] = axiSlave_outWDATA2_axiSlave_outWDATA_HardLink;
 	assign axiSlave_outWDATA[3] = axiSlave_outWDATA3_axiSlave_outWDATA_HardLink;
 	assign axiSlave_outWSTRB = axiSlave_outWSTRB_axiSlave_outWSTRB_HardLink;
-	assign AXI4MemoryModule_L69F13L71T26_Lookup1 = State_wstrb;
-	assign AXI4MemoryModule_L69F13L71T26_Lookup2 = axiSlave_outWSTRB;
-	assign AXI4MemoryModule_L69F13L71T26_LookupMultiplexerAddress = internalSameTxWrite;
-	assign AXI4MemoryModule_L74F13L76T26_Lookup1 = State_waddr;
-	assign AXI4MemoryModule_L74F13L76T26_Lookup2 = axiSlave_outAWADDR;
-	assign AXI4MemoryModule_L74F13L76T26_LookupMultiplexerAddress = internalSameTxWrite;
-	assign AXI4MemoryModule_L79F13L81T26_Lookup1 = { State_wdata[3], State_wdata[2], State_wdata[1], State_wdata[0] };
-	assign AXI4MemoryModule_L79F13L81T26_Lookup2 = { axiSlave_outWDATA[3], axiSlave_outWDATA[2], axiSlave_outWDATA[1], axiSlave_outWDATA[0] };
-	assign AXI4MemoryModule_L79F13L81T26_LookupMultiplexerAddress = internalSameTxWrite;
-	assign AXI4MemoryModule_L84F13L86T26_Lookup1 = State_raddr;
-	assign AXI4MemoryModule_L84F13L86T26_Lookup2 = axiSlave_outARADDR;
-	assign AXI4MemoryModule_L84F13L86T26_LookupMultiplexerAddress = axiSlave_outARREADYConfirming;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

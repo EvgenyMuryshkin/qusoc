@@ -32,7 +32,14 @@ entity IOTupleModule_TopLevel is
 		iTuple_Item4_L1Flag : in std_logic;
 		iTuple_Item4_L2_L2Flag : in std_logic;
 		iTuple_Item4_L2Tuple_Item1 : in unsigned (7 downto 0);
-		iTuple_Item4_L2Tuple_Item2_L2Flag : in std_logic
+		iTuple_Item4_L2Tuple_Item2_L2Flag : in std_logic;
+		oiTuple_Item1 : out std_logic;
+		oiTuple_Item2 : out unsigned (7 downto 0);
+		oiTuple_Item3 : out unsigned (3 downto 0);
+		oiTuple_Item4_L1Flag : out std_logic;
+		oiTuple_Item4_L2_L2Flag : out std_logic;
+		oiTuple_Item4_L2Tuple_Item1 : out unsigned (7 downto 0);
+		oiTuple_Item4_L2Tuple_Item2_L2Flag : out std_logic
 	);
 end entity;
 -- FSM summary
@@ -53,8 +60,103 @@ architecture rtl of IOTupleModule_TopLevel is
 	signal Inputs_iTuple_Item4_L2_L2Flag : std_logic := '0';
 	signal Inputs_iTuple_Item4_L2Tuple_Item1 : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag : std_logic := '0';
+	signal NextState_sTuple_Item1 : std_logic := '0';
+	signal NextState_sTuple_Item2 : unsigned(7 downto 0) := (others => '0');
+	signal NextState_sTuple_Item3 : unsigned(3 downto 0) := (others => '0');
+	signal NextState_sTuple_Item4_L1Flag : std_logic := '0';
+	signal NextState_sTuple_Item4_L2_L2Flag : std_logic := '0';
+	signal NextState_sTuple_Item4_L2Tuple_Item1 : unsigned(7 downto 0) := (others => '0');
+	signal NextState_sTuple_Item4_L2Tuple_Item2_L2Flag : std_logic := '0';
+	signal NextState_sahTuple_Item1 : std_logic := '0';
+	signal NextState_sahTuple_Item2 : unsigned(7 downto 0) := (others => '0');
+	signal NextState_sahTuple_Item3 : unsigned(3 downto 0) := (others => '0');
+	signal NextState_sahTuple_Item4_L1Flag : std_logic := '0';
+	signal NextState_sahTuple_Item4_L2_L2Flag : std_logic := '0';
+	signal NextState_sahTuple_Item4_L2Tuple_Item1 : unsigned(7 downto 0) := (others => '0');
+	signal NextState_sahTuple_Item4_L2Tuple_Item2_L2Flag : std_logic := '0';
+	signal State_sTuple_Item1 : std_logic := '0';
+	constant State_sTuple_Item1Default : std_logic := '0';
+	signal State_sTuple_Item2 : unsigned(7 downto 0) := "00000000";
+	constant State_sTuple_Item2Default : unsigned(7 downto 0) := "00000000";
+	signal State_sTuple_Item3 : unsigned(3 downto 0) := "0000";
+	constant State_sTuple_Item3Default : unsigned(3 downto 0) := "0000";
+	signal State_sTuple_Item4_L1Flag : std_logic := '0';
+	constant State_sTuple_Item4_L1FlagDefault : std_logic := '0';
+	signal State_sTuple_Item4_L2_L2Flag : std_logic := '0';
+	constant State_sTuple_Item4_L2_L2FlagDefault : std_logic := '0';
+	signal State_sTuple_Item4_L2Tuple_Item1 : unsigned(7 downto 0) := "00000000";
+	constant State_sTuple_Item4_L2Tuple_Item1Default : unsigned(7 downto 0) := "00101010";
+	signal State_sTuple_Item4_L2Tuple_Item2_L2Flag : std_logic := '0';
+	constant State_sTuple_Item4_L2Tuple_Item2_L2FlagDefault : std_logic := '0';
+	signal State_sahTuple_Item1 : std_logic := '0';
+	constant State_sahTuple_Item1Default : std_logic := '0';
+	signal State_sahTuple_Item2 : unsigned(7 downto 0) := "00000000";
+	constant State_sahTuple_Item2Default : unsigned(7 downto 0) := "00000000";
+	signal State_sahTuple_Item3 : unsigned(3 downto 0) := "0000";
+	constant State_sahTuple_Item3Default : unsigned(3 downto 0) := "0000";
+	signal State_sahTuple_Item4_L1Flag : std_logic := '0';
+	constant State_sahTuple_Item4_L1FlagDefault : std_logic := '0';
+	signal State_sahTuple_Item4_L2_L2Flag : std_logic := '0';
+	constant State_sahTuple_Item4_L2_L2FlagDefault : std_logic := '0';
+	signal State_sahTuple_Item4_L2Tuple_Item1 : unsigned(7 downto 0) := "00000000";
+	constant State_sahTuple_Item4_L2Tuple_Item1Default : unsigned(7 downto 0) := "00101010";
+	signal State_sahTuple_Item4_L2Tuple_Item2_L2Flag : std_logic := '0';
+	constant State_sahTuple_Item4_L2Tuple_Item2_L2FlagDefault : std_logic := '0';
 begin
-	process (iTuple_Item1, iTuple_Item2, iTuple_Item3, iTuple_Item4_L1Flag, iTuple_Item4_L2_L2Flag, iTuple_Item4_L2Tuple_Item1, iTuple_Item4_L2Tuple_Item2_L2Flag)
+	process (Clock, NextState_sahTuple_Item1, NextState_sahTuple_Item2, NextState_sahTuple_Item3, NextState_sahTuple_Item4_L1Flag, NextState_sahTuple_Item4_L2_L2Flag, NextState_sahTuple_Item4_L2Tuple_Item1, NextState_sahTuple_Item4_L2Tuple_Item2_L2Flag, NextState_sTuple_Item1, NextState_sTuple_Item2, NextState_sTuple_Item3, NextState_sTuple_Item4_L1Flag, NextState_sTuple_Item4_L2_L2Flag, NextState_sTuple_Item4_L2Tuple_Item1, NextState_sTuple_Item4_L2Tuple_Item2_L2Flag, Reset)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				State_sTuple_Item1 <= State_sTuple_Item1Default;
+				State_sTuple_Item2 <= State_sTuple_Item2Default;
+				State_sTuple_Item3 <= State_sTuple_Item3Default;
+				State_sTuple_Item4_L1Flag <= State_sTuple_Item4_L1FlagDefault;
+				State_sTuple_Item4_L2_L2Flag <= State_sTuple_Item4_L2_L2FlagDefault;
+				State_sTuple_Item4_L2Tuple_Item1 <= State_sTuple_Item4_L2Tuple_Item1Default;
+				State_sTuple_Item4_L2Tuple_Item2_L2Flag <= State_sTuple_Item4_L2Tuple_Item2_L2FlagDefault;
+				State_sahTuple_Item1 <= State_sahTuple_Item1Default;
+				State_sahTuple_Item2 <= State_sahTuple_Item2Default;
+				State_sahTuple_Item3 <= State_sahTuple_Item3Default;
+				State_sahTuple_Item4_L1Flag <= State_sahTuple_Item4_L1FlagDefault;
+				State_sahTuple_Item4_L2_L2Flag <= State_sahTuple_Item4_L2_L2FlagDefault;
+				State_sahTuple_Item4_L2Tuple_Item1 <= State_sahTuple_Item4_L2Tuple_Item1Default;
+				State_sahTuple_Item4_L2Tuple_Item2_L2Flag <= State_sahTuple_Item4_L2Tuple_Item2_L2FlagDefault;
+			else
+				State_sTuple_Item1 <= NextState_sTuple_Item1;
+				State_sTuple_Item2 <= NextState_sTuple_Item2;
+				State_sTuple_Item3 <= NextState_sTuple_Item3;
+				State_sTuple_Item4_L1Flag <= NextState_sTuple_Item4_L1Flag;
+				State_sTuple_Item4_L2_L2Flag <= NextState_sTuple_Item4_L2_L2Flag;
+				State_sTuple_Item4_L2Tuple_Item1 <= NextState_sTuple_Item4_L2Tuple_Item1;
+				State_sTuple_Item4_L2Tuple_Item2_L2Flag <= NextState_sTuple_Item4_L2Tuple_Item2_L2Flag;
+				State_sahTuple_Item1 <= NextState_sahTuple_Item1;
+				State_sahTuple_Item2 <= NextState_sahTuple_Item2;
+				State_sahTuple_Item3 <= NextState_sahTuple_Item3;
+				State_sahTuple_Item4_L1Flag <= NextState_sahTuple_Item4_L1Flag;
+				State_sahTuple_Item4_L2_L2Flag <= NextState_sahTuple_Item4_L2_L2Flag;
+				State_sahTuple_Item4_L2Tuple_Item1 <= NextState_sahTuple_Item4_L2Tuple_Item1;
+				State_sahTuple_Item4_L2Tuple_Item2_L2Flag <= NextState_sahTuple_Item4_L2Tuple_Item2_L2Flag;
+			end if;
+		end if;
+	end process;
+	process (State_sahTuple_Item1, State_sahTuple_Item2, State_sahTuple_Item3, State_sahTuple_Item4_L1Flag, State_sahTuple_Item4_L2_L2Flag, State_sahTuple_Item4_L2Tuple_Item1, State_sahTuple_Item4_L2Tuple_Item2_L2Flag, State_sTuple_Item1, State_sTuple_Item2, State_sTuple_Item3, State_sTuple_Item4_L1Flag, State_sTuple_Item4_L2_L2Flag, State_sTuple_Item4_L2Tuple_Item1, State_sTuple_Item4_L2Tuple_Item2_L2Flag)
+	begin
+		NextState_sTuple_Item1 <= State_sTuple_Item1;
+		NextState_sTuple_Item2 <= State_sTuple_Item2;
+		NextState_sTuple_Item3 <= State_sTuple_Item3;
+		NextState_sTuple_Item4_L1Flag <= State_sTuple_Item4_L1Flag;
+		NextState_sTuple_Item4_L2_L2Flag <= State_sTuple_Item4_L2_L2Flag;
+		NextState_sTuple_Item4_L2Tuple_Item1 <= State_sTuple_Item4_L2Tuple_Item1;
+		NextState_sTuple_Item4_L2Tuple_Item2_L2Flag <= State_sTuple_Item4_L2Tuple_Item2_L2Flag;
+		NextState_sahTuple_Item1 <= State_sahTuple_Item1;
+		NextState_sahTuple_Item2 <= State_sahTuple_Item2;
+		NextState_sahTuple_Item3 <= State_sahTuple_Item3;
+		NextState_sahTuple_Item4_L1Flag <= State_sahTuple_Item4_L1Flag;
+		NextState_sahTuple_Item4_L2_L2Flag <= State_sahTuple_Item4_L2_L2Flag;
+		NextState_sahTuple_Item4_L2Tuple_Item1 <= State_sahTuple_Item4_L2Tuple_Item1;
+		NextState_sahTuple_Item4_L2Tuple_Item2_L2Flag <= State_sahTuple_Item4_L2Tuple_Item2_L2Flag;
+	end process;
+	process (Inputs_iTuple_Item1, Inputs_iTuple_Item2, Inputs_iTuple_Item3, Inputs_iTuple_Item4_L1Flag, Inputs_iTuple_Item4_L2_L2Flag, Inputs_iTuple_Item4_L2Tuple_Item1, Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag, iTuple_Item1, iTuple_Item2, iTuple_Item3, iTuple_Item4_L1Flag, iTuple_Item4_L2_L2Flag, iTuple_Item4_L2Tuple_Item1, iTuple_Item4_L2Tuple_Item2_L2Flag)
 	begin
 		Inputs_iTuple_Item1 <= iTuple_Item1;
 		Inputs_iTuple_Item2 <= iTuple_Item2;
@@ -63,6 +165,13 @@ begin
 		Inputs_iTuple_Item4_L2_L2Flag <= iTuple_Item4_L2_L2Flag;
 		Inputs_iTuple_Item4_L2Tuple_Item1 <= iTuple_Item4_L2Tuple_Item1;
 		Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag <= iTuple_Item4_L2Tuple_Item2_L2Flag;
+		oiTuple_Item1 <= Inputs_iTuple_Item1;
+		oiTuple_Item2 <= Inputs_iTuple_Item2;
+		oiTuple_Item3 <= Inputs_iTuple_Item3;
+		oiTuple_Item4_L1Flag <= Inputs_iTuple_Item4_L1Flag;
+		oiTuple_Item4_L2_L2Flag <= Inputs_iTuple_Item4_L2_L2Flag;
+		oiTuple_Item4_L2Tuple_Item1 <= Inputs_iTuple_Item4_L2Tuple_Item1;
+		oiTuple_Item4_L2Tuple_Item2_L2Flag <= Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

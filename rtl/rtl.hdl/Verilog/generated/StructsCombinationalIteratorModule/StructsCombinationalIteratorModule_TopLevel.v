@@ -251,34 +251,6 @@ module StructsCombinationalIteratorModule_TopLevel
 	end
 	assign StructsCombinationalIteratorModule_L68F38T59_Expr = StructsCombinationalIteratorModule_L68F38T59_Expr_1 * StructsCombinationalIteratorModule_L68F38T59_Expr_2;
 	assign StructsCombinationalIteratorModule_L69F39T60_Expr = StructsCombinationalIteratorModule_L69F39T60_Expr_1 * StructsCombinationalIteratorModule_L69F39T60_Expr_2;
-	function
-	[5: 0] resize_signed_4_6;
-		input wire signed [3:0] source;
-		begin
-			resize_signed_4_6 = { {2{source[3]}}, source };
-		end
-	endfunction
-	function
-	[11: 0] resize_signed_6_12;
-		input wire signed [5:0] source;
-		begin
-			resize_signed_6_12 = { {6{source[5]}}, source };
-		end
-	endfunction
-	function
-	[5: 0] resize_unsigned_4_6;
-		input wire [3:0] source;
-		begin
-			resize_unsigned_4_6 = { {2{1'b0}}, source };
-		end
-	endfunction
-	function
-	[11: 0] resize_unsigned_6_12;
-		input wire [5:0] source;
-		begin
-			resize_unsigned_6_12 = { {6{1'b0}}, source };
-		end
-	endfunction
 	always @ (*)
 	begin
 		NextState_f_Iterator = 0;
@@ -373,6 +345,34 @@ module StructsCombinationalIteratorModule_TopLevel
 	assign fStruct2_b = State_f[2][7:4];
 	assign fStruct3_a = State_f[3][3:0];
 	assign fStruct3_b = State_f[3][7:4];
+	function
+	[5: 0] resize_signed_4_6;
+		input wire signed [3:0] source;
+		begin
+			resize_signed_4_6 = { {2{source[3]}}, source };
+		end
+	endfunction
+	function
+	[11: 0] resize_signed_6_12;
+		input wire signed [5:0] source;
+		begin
+			resize_signed_6_12 = { {6{source[5]}}, source };
+		end
+	endfunction
+	function
+	[5: 0] resize_unsigned_4_6;
+		input wire [3:0] source;
+		begin
+			resize_unsigned_4_6 = { {2{1'b0}}, source };
+		end
+	endfunction
+	function
+	[11: 0] resize_unsigned_6_12;
+		input wire [5:0] source;
+		begin
+			resize_unsigned_6_12 = { {6{1'b0}}, source };
+		end
+	endfunction
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

@@ -54,11 +54,11 @@ module StageStatePipelineModule_TopLevel
 	wire Pipeline_StageStatePipelineModule_L97F64T65_Expr = 1'b1;
 	wire Pipeline_StageStatePipelineModule_L108F59T60_Expr = 1'b1;
 	wire Inputs_inReady;
-	reg [15: 0] Pipeline_stage0_NextState_S0Counter;
 	reg Pipeline_stage0_NextState_IsReady;
+	reg [15: 0] Pipeline_stage0_NextState_S0Counter;
+	reg Pipeline_stage1_NextState_IsReady;
 	reg [15: 0] Pipeline_stage1_NextState_S0Counter;
 	reg [15: 0] Pipeline_stage1_NextState_S1Counter;
-	reg Pipeline_stage1_NextState_IsReady;
 	reg Pipeline_stage2_NextState_IsReady;
 	reg [15: 0] Pipeline_stage2_NextState_result;
 	reg [15: 0] Pipeline_stage2_NextState_S0Counter;
@@ -86,16 +86,16 @@ module StageStatePipelineModule_TopLevel
 	wire [15: 0] Pipeline_StageStatePipelineModule_L105F30T63_Cast;
 	wire [15: 0] Pipeline_StageStatePipelineModule_L108F33T61_Cast;
 	wire StageStatePipelineModule_L39F33T61_Cast;
-	reg [15: 0] Pipeline_stage0_State_S0Counter = 16'b0000000000000000;
-	wire [15: 0] Pipeline_stage0_State_S0CounterDefault = 16'b0000000000000000;
 	reg Pipeline_stage0_State_IsReady = 1'b0;
 	wire Pipeline_stage0_State_IsReadyDefault = 1'b0;
+	reg [15: 0] Pipeline_stage0_State_S0Counter = 16'b0000000000000000;
+	wire [15: 0] Pipeline_stage0_State_S0CounterDefault = 16'b0000000000000000;
+	reg Pipeline_stage1_State_IsReady = 1'b0;
+	wire Pipeline_stage1_State_IsReadyDefault = 1'b0;
 	reg [15: 0] Pipeline_stage1_State_S0Counter = 16'b0000000000000000;
 	wire [15: 0] Pipeline_stage1_State_S0CounterDefault = 16'b0000000000000000;
 	reg [15: 0] Pipeline_stage1_State_S1Counter = 16'b0000000000000000;
 	wire [15: 0] Pipeline_stage1_State_S1CounterDefault = 16'b0000000000000000;
-	reg Pipeline_stage1_State_IsReady = 1'b0;
-	wire Pipeline_stage1_State_IsReadyDefault = 1'b0;
 	reg Pipeline_stage2_State_IsReady = 1'b0;
 	wire Pipeline_stage2_State_IsReadyDefault = 1'b0;
 	reg [15: 0] Pipeline_stage2_State_result = 16'b0000000000000000;
@@ -160,11 +160,11 @@ module StageStatePipelineModule_TopLevel
 	begin
 		if ((Reset == 1))
 		begin
-			Pipeline_stage0_State_S0Counter <= Pipeline_stage0_State_S0CounterDefault;
 			Pipeline_stage0_State_IsReady <= Pipeline_stage0_State_IsReadyDefault;
+			Pipeline_stage0_State_S0Counter <= Pipeline_stage0_State_S0CounterDefault;
+			Pipeline_stage1_State_IsReady <= Pipeline_stage1_State_IsReadyDefault;
 			Pipeline_stage1_State_S0Counter <= Pipeline_stage1_State_S0CounterDefault;
 			Pipeline_stage1_State_S1Counter <= Pipeline_stage1_State_S1CounterDefault;
-			Pipeline_stage1_State_IsReady <= Pipeline_stage1_State_IsReadyDefault;
 			Pipeline_stage2_State_IsReady <= Pipeline_stage2_State_IsReadyDefault;
 			Pipeline_stage2_State_result <= Pipeline_stage2_State_resultDefault;
 			Pipeline_stage2_State_S0Counter <= Pipeline_stage2_State_S0CounterDefault;
@@ -173,11 +173,11 @@ module StageStatePipelineModule_TopLevel
 		end
 		else
 		begin
-			Pipeline_stage0_State_S0Counter <= Pipeline_stage0_NextState_S0Counter;
 			Pipeline_stage0_State_IsReady <= Pipeline_stage0_NextState_IsReady;
+			Pipeline_stage0_State_S0Counter <= Pipeline_stage0_NextState_S0Counter;
+			Pipeline_stage1_State_IsReady <= Pipeline_stage1_NextState_IsReady;
 			Pipeline_stage1_State_S0Counter <= Pipeline_stage1_NextState_S0Counter;
 			Pipeline_stage1_State_S1Counter <= Pipeline_stage1_NextState_S1Counter;
-			Pipeline_stage1_State_IsReady <= Pipeline_stage1_NextState_IsReady;
 			Pipeline_stage2_State_IsReady <= Pipeline_stage2_NextState_IsReady;
 			Pipeline_stage2_State_result <= Pipeline_stage2_NextState_result;
 			Pipeline_stage2_State_S0Counter <= Pipeline_stage2_NextState_S0Counter;
@@ -231,33 +231,33 @@ module StageStatePipelineModule_TopLevel
 	assign Pipeline_StageStatePipelineModule_L108F42T60_Expr = Pipeline_StageStatePipelineModule_L108F42T60_Expr_1 + Pipeline_StageStatePipelineModule_L108F42T60_Expr_2;
 	always @ (*)
 	begin
+		Pipeline_stage0_NextState_IsReady = Pipeline_stage0_State_IsReady;
 		Pipeline_stage0_NextState_sums[0] = Pipeline_stage0_State_sums[0];
 		Pipeline_stage0_NextState_sums[1] = Pipeline_stage0_State_sums[1];
 		Pipeline_stage0_NextState_sums[2] = Pipeline_stage0_State_sums[2];
 		Pipeline_stage0_NextState_sums[3] = Pipeline_stage0_State_sums[3];
 		Pipeline_stage0_NextState_S0Counter = Pipeline_stage0_State_S0Counter;
-		Pipeline_stage0_NextState_IsReady = Pipeline_stage0_State_IsReady;
+		Pipeline_stage1_NextState_IsReady = Pipeline_stage1_State_IsReady;
 		Pipeline_stage1_NextState_sums[0] = Pipeline_stage1_State_sums[0];
 		Pipeline_stage1_NextState_sums[1] = Pipeline_stage1_State_sums[1];
 		Pipeline_stage1_NextState_S0Counter = Pipeline_stage1_State_S0Counter;
 		Pipeline_stage1_NextState_S1Counter = Pipeline_stage1_State_S1Counter;
-		Pipeline_stage1_NextState_IsReady = Pipeline_stage1_State_IsReady;
 		Pipeline_stage2_NextState_IsReady = Pipeline_stage2_State_IsReady;
 		Pipeline_stage2_NextState_result = Pipeline_stage2_State_result;
 		Pipeline_stage2_NextState_S0Counter = Pipeline_stage2_State_S0Counter;
 		Pipeline_stage2_NextState_S1Counter = Pipeline_stage2_State_S1Counter;
 		Pipeline_stage2_NextState_S2Counter = Pipeline_stage2_State_S2Counter;
+		Pipeline_stage0_NextState_IsReady = Pipeline_Inputs_inReady;
 		Pipeline_stage0_NextState_sums[0] = Pipeline_StageStatePipelineModule_L87F25T60_Cast;
 		Pipeline_stage0_NextState_sums[1] = Pipeline_StageStatePipelineModule_L88F25T60_Cast;
 		Pipeline_stage0_NextState_sums[2] = Pipeline_StageStatePipelineModule_L89F25T60_Cast;
 		Pipeline_stage0_NextState_sums[3] = Pipeline_StageStatePipelineModule_L90F25T60_Cast;
 		Pipeline_stage0_NextState_S0Counter = Pipeline_StageStatePipelineModule_L92F33T62_Cast;
-		Pipeline_stage0_NextState_IsReady = Pipeline_Inputs_inReady;
+		Pipeline_stage1_NextState_IsReady = Pipeline_stage0_State_IsReady;
 		Pipeline_stage1_NextState_sums[0] = Pipeline_StageStatePipelineModule_L100F25T58_Cast;
 		Pipeline_stage1_NextState_sums[1] = Pipeline_StageStatePipelineModule_L101F25T58_Cast;
 		Pipeline_stage1_NextState_S0Counter = Pipeline_stage0_State_S0Counter;
 		Pipeline_stage1_NextState_S1Counter = Pipeline_StageStatePipelineModule_L97F33T66_Cast;
-		Pipeline_stage1_NextState_IsReady = Pipeline_stage0_State_IsReady;
 		Pipeline_stage2_NextState_IsReady = Pipeline_stage1_State_IsReady;
 		Pipeline_stage2_NextState_result = Pipeline_StageStatePipelineModule_L105F30T63_Cast;
 		Pipeline_stage2_NextState_S0Counter = Pipeline_stage1_State_S0Counter;

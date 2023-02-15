@@ -52,13 +52,13 @@ module AutoPropagatePipelineModule_TopLevel
 	wire Inputs_inReady;
 	reg Pipeline_stage0_NextState_ready;
 	reg Pipeline_stage1_NextState_ready;
-	reg [15: 0] Pipeline_stage2_NextState_result;
 	reg Pipeline_stage2_NextState_ready;
+	reg [15: 0] Pipeline_stage2_NextState_result;
 	wire Pipeline_Inputs_inReady;
-	wire [15: 0] Pipeline_State_result;
 	wire Pipeline_State_ready;
-	wire [15: 0] Pipeline_NextState_result;
+	wire [15: 0] Pipeline_State_result;
 	wire Pipeline_NextState_ready;
+	wire [15: 0] Pipeline_NextState_result;
 	reg [15: 0] Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_sum0;
 	wire [15: 0] Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F24T69_Cast;
 	wire [15: 0] Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F21T66_Cast;
@@ -72,10 +72,10 @@ module AutoPropagatePipelineModule_TopLevel
 	wire Pipeline_stage0_State_readyDefault = 1'b0;
 	reg Pipeline_stage1_State_ready = 1'b0;
 	wire Pipeline_stage1_State_readyDefault = 1'b0;
-	reg [15: 0] Pipeline_stage2_State_result = 16'b0000000000000000;
-	wire [15: 0] Pipeline_stage2_State_resultDefault = 16'b0000000000000000;
 	reg Pipeline_stage2_State_ready = 1'b0;
 	wire Pipeline_stage2_State_readyDefault = 1'b0;
+	reg [15: 0] Pipeline_stage2_State_result = 16'b0000000000000000;
+	wire [15: 0] Pipeline_stage2_State_resultDefault = 16'b0000000000000000;
 	wire [9: 0] Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr;
 	wire signed [9: 0] Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr_1;
 	wire signed [9: 0] Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr_2;
@@ -135,15 +135,15 @@ module AutoPropagatePipelineModule_TopLevel
 		begin
 			Pipeline_stage0_State_ready <= Pipeline_stage0_State_readyDefault;
 			Pipeline_stage1_State_ready <= Pipeline_stage1_State_readyDefault;
-			Pipeline_stage2_State_result <= Pipeline_stage2_State_resultDefault;
 			Pipeline_stage2_State_ready <= Pipeline_stage2_State_readyDefault;
+			Pipeline_stage2_State_result <= Pipeline_stage2_State_resultDefault;
 		end
 		else
 		begin
 			Pipeline_stage0_State_ready <= Pipeline_stage0_NextState_ready;
 			Pipeline_stage1_State_ready <= Pipeline_stage1_NextState_ready;
-			Pipeline_stage2_State_result <= Pipeline_stage2_NextState_result;
 			Pipeline_stage2_State_ready <= Pipeline_stage2_NextState_ready;
+			Pipeline_stage2_State_result <= Pipeline_stage2_NextState_result;
 		end
 	end
 	always @ (posedge Clock)
@@ -211,12 +211,13 @@ module AutoPropagatePipelineModule_TopLevel
 	end
 	always @ (*)
 	begin
+		Pipeline_stage0_NextState_ready = Pipeline_stage0_State_ready;
 		Pipeline_stage0_NextState_sums[0] = Pipeline_stage0_State_sums[0];
 		Pipeline_stage0_NextState_sums[1] = Pipeline_stage0_State_sums[1];
 		Pipeline_stage0_NextState_sums[2] = Pipeline_stage0_State_sums[2];
 		Pipeline_stage0_NextState_sums[3] = Pipeline_stage0_State_sums[3];
 		Pipeline_stage0_NextState_sums[4] = Pipeline_stage0_State_sums[4];
-		Pipeline_stage0_NextState_ready = Pipeline_stage0_State_ready;
+		Pipeline_stage1_NextState_ready = Pipeline_stage1_State_ready;
 		Pipeline_stage1_NextState_s0Sums[0] = Pipeline_stage1_State_s0Sums[0];
 		Pipeline_stage1_NextState_s0Sums[1] = Pipeline_stage1_State_s0Sums[1];
 		Pipeline_stage1_NextState_s0Sums[2] = Pipeline_stage1_State_s0Sums[2];
@@ -224,15 +225,15 @@ module AutoPropagatePipelineModule_TopLevel
 		Pipeline_stage1_NextState_s0Sums[4] = Pipeline_stage1_State_s0Sums[4];
 		Pipeline_stage1_NextState_sums[0] = Pipeline_stage1_State_sums[0];
 		Pipeline_stage1_NextState_sums[1] = Pipeline_stage1_State_sums[1];
-		Pipeline_stage1_NextState_ready = Pipeline_stage1_State_ready;
-		Pipeline_stage2_NextState_result = Pipeline_stage2_State_result;
 		Pipeline_stage2_NextState_ready = Pipeline_stage2_State_ready;
+		Pipeline_stage2_NextState_result = Pipeline_stage2_State_result;
+		Pipeline_stage0_NextState_ready = Pipeline_Inputs_inReady;
 		Pipeline_stage0_NextState_sums[0] = Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_sum0;
 		Pipeline_stage0_NextState_sums[1] = Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F21T66_Cast;
 		Pipeline_stage0_NextState_sums[2] = Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F21T66_Cast;
 		Pipeline_stage0_NextState_sums[3] = Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F21T66_Cast;
 		Pipeline_stage0_NextState_sums[4] = { {10{1'b0}}, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L54F21T23_Expr };
-		Pipeline_stage0_NextState_ready = Pipeline_Inputs_inReady;
+		Pipeline_stage1_NextState_ready = Pipeline_stage0_State_ready;
 		Pipeline_stage1_NextState_s0Sums[0] = Pipeline_stage0_State_sums[0];
 		Pipeline_stage1_NextState_s0Sums[1] = Pipeline_stage0_State_sums[1];
 		Pipeline_stage1_NextState_s0Sums[2] = Pipeline_stage0_State_sums[2];
@@ -240,9 +241,8 @@ module AutoPropagatePipelineModule_TopLevel
 		Pipeline_stage1_NextState_s0Sums[4] = Pipeline_stage0_State_sums[4];
 		Pipeline_stage1_NextState_sums[0] = Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F21T62_Cast;
 		Pipeline_stage1_NextState_sums[1] = Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F21T62_Cast;
-		Pipeline_stage1_NextState_ready = Pipeline_stage0_State_ready;
-		Pipeline_stage2_NextState_result = Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F26T86_Cast;
 		Pipeline_stage2_NextState_ready = Pipeline_stage1_State_ready;
+		Pipeline_stage2_NextState_result = Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F26T86_Cast;
 	end
 	assign Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr_1 = { {2{1'b0}}, Pipeline_Inputs_inData[0] };
 	assign Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr_2 = { {2{1'b0}}, Pipeline_Inputs_inData[1] };
@@ -269,10 +269,10 @@ module AutoPropagatePipelineModule_TopLevel
 	assign Inputs_inData[5] = inData5;
 	assign Inputs_inData[6] = inData6;
 	assign Inputs_inData[7] = inData7;
-	assign Pipeline_State_result = Pipeline_stage2_State_result;
 	assign Pipeline_State_ready = Pipeline_stage2_State_ready;
-	assign Pipeline_NextState_result = Pipeline_stage2_NextState_result;
+	assign Pipeline_State_result = Pipeline_stage2_State_result;
 	assign Pipeline_NextState_ready = Pipeline_stage2_NextState_ready;
+	assign Pipeline_NextState_result = Pipeline_stage2_NextState_result;
 	assign Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F24T69_Cast = { {6{1'b0}}, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr };
 	assign Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F21T66_Cast = { {6{1'b0}}, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F30T65_Expr };
 	assign Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F21T66_Cast = { {6{1'b0}}, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F30T65_Expr };

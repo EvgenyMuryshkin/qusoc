@@ -56,13 +56,13 @@ module StagePeekPipelineModule_TopLevel
 	wire Inputs_inReady;
 	reg Pipeline_stage0_NextState_ready;
 	reg Pipeline_stage1_NextState_ready;
-	reg [15: 0] Pipeline_stage2_NextState_result;
 	reg Pipeline_stage2_NextState_ready;
+	reg [15: 0] Pipeline_stage2_NextState_result;
 	wire Pipeline_Inputs_inReady;
-	wire [15: 0] Pipeline_State_result;
 	wire Pipeline_State_ready;
-	wire [15: 0] Pipeline_NextState_result;
+	wire [15: 0] Pipeline_State_result;
 	wire Pipeline_NextState_ready;
+	wire [15: 0] Pipeline_NextState_result;
 	reg [15: 0] Pipeline_PipelineConfigurations_L45F17L59T18_sum0;
 	wire [15: 0] Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L46F32T77_Cast;
 	wire [15: 0] Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L53F29T74_Cast;
@@ -75,10 +75,10 @@ module StagePeekPipelineModule_TopLevel
 	wire Pipeline_stage0_State_readyDefault = 1'b0;
 	reg Pipeline_stage1_State_ready = 1'b0;
 	wire Pipeline_stage1_State_readyDefault = 1'b0;
-	reg [15: 0] Pipeline_stage2_State_result = 16'b0000000000000000;
-	wire [15: 0] Pipeline_stage2_State_resultDefault = 16'b0000000000000000;
 	reg Pipeline_stage2_State_ready = 1'b0;
 	wire Pipeline_stage2_State_readyDefault = 1'b0;
+	reg [15: 0] Pipeline_stage2_State_result = 16'b0000000000000000;
+	wire [15: 0] Pipeline_stage2_State_resultDefault = 16'b0000000000000000;
 	wire [9: 0] Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L46F41T76_Expr;
 	wire signed [9: 0] Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L46F41T76_Expr_1;
 	wire signed [9: 0] Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L46F41T76_Expr_2;
@@ -138,15 +138,15 @@ module StagePeekPipelineModule_TopLevel
 		begin
 			Pipeline_stage0_State_ready <= Pipeline_stage0_State_readyDefault;
 			Pipeline_stage1_State_ready <= Pipeline_stage1_State_readyDefault;
-			Pipeline_stage2_State_result <= Pipeline_stage2_State_resultDefault;
 			Pipeline_stage2_State_ready <= Pipeline_stage2_State_readyDefault;
+			Pipeline_stage2_State_result <= Pipeline_stage2_State_resultDefault;
 		end
 		else
 		begin
 			Pipeline_stage0_State_ready <= Pipeline_stage0_NextState_ready;
 			Pipeline_stage1_State_ready <= Pipeline_stage1_NextState_ready;
-			Pipeline_stage2_State_result <= Pipeline_stage2_NextState_result;
 			Pipeline_stage2_State_ready <= Pipeline_stage2_NextState_ready;
+			Pipeline_stage2_State_result <= Pipeline_stage2_NextState_result;
 		end
 	end
 	always @ (posedge Clock)
@@ -210,12 +210,13 @@ module StagePeekPipelineModule_TopLevel
 	assign Pipeline_PipelineConfigurations_L70F30T70_TypedPipelineModule_L31F9L37T10_TypedPipelineModule_L35F35T66_Expr = Pipeline_PipelineConfigurations_L70F30T70_TypedPipelineModule_L31F9L37T10_TypedPipelineModule_L35F35T66_Expr_1 + Pipeline_PipelineConfigurations_L70F30T70_TypedPipelineModule_L31F9L37T10_TypedPipelineModule_L35F35T66_Expr_2;
 	always @ (*)
 	begin
+		Pipeline_stage0_NextState_ready = Pipeline_stage0_State_ready;
 		Pipeline_stage0_NextState_sums[0] = Pipeline_stage0_State_sums[0];
 		Pipeline_stage0_NextState_sums[1] = Pipeline_stage0_State_sums[1];
 		Pipeline_stage0_NextState_sums[2] = Pipeline_stage0_State_sums[2];
 		Pipeline_stage0_NextState_sums[3] = Pipeline_stage0_State_sums[3];
 		Pipeline_stage0_NextState_sums[4] = Pipeline_stage0_State_sums[4];
-		Pipeline_stage0_NextState_ready = Pipeline_stage0_State_ready;
+		Pipeline_stage1_NextState_ready = Pipeline_stage1_State_ready;
 		Pipeline_stage1_NextState_s0Sums[0] = Pipeline_stage1_State_s0Sums[0];
 		Pipeline_stage1_NextState_s0Sums[1] = Pipeline_stage1_State_s0Sums[1];
 		Pipeline_stage1_NextState_s0Sums[2] = Pipeline_stage1_State_s0Sums[2];
@@ -223,16 +224,16 @@ module StagePeekPipelineModule_TopLevel
 		Pipeline_stage1_NextState_s0Sums[4] = Pipeline_stage1_State_s0Sums[4];
 		Pipeline_stage1_NextState_sums[0] = Pipeline_stage1_State_sums[0];
 		Pipeline_stage1_NextState_sums[1] = Pipeline_stage1_State_sums[1];
-		Pipeline_stage1_NextState_ready = Pipeline_stage1_State_ready;
-		Pipeline_stage2_NextState_result = Pipeline_stage2_State_result;
 		Pipeline_stage2_NextState_ready = Pipeline_stage2_State_ready;
+		Pipeline_stage2_NextState_result = Pipeline_stage2_State_result;
 		Pipeline_PipelineConfigurations_L45F17L59T18_sum0 = Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L46F32T77_Cast;
+		Pipeline_stage0_NextState_ready = Pipeline_Inputs_inReady;
 		Pipeline_stage0_NextState_sums[0] = Pipeline_PipelineConfigurations_L45F17L59T18_sum0;
 		Pipeline_stage0_NextState_sums[1] = Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L53F29T74_Cast;
 		Pipeline_stage0_NextState_sums[2] = Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L54F29T74_Cast;
 		Pipeline_stage0_NextState_sums[3] = Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L55F29T74_Cast;
 		Pipeline_stage0_NextState_sums[4] = { {10{1'b0}}, Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L56F29T31_Expr };
-		Pipeline_stage0_NextState_ready = Pipeline_Inputs_inReady;
+		Pipeline_stage1_NextState_ready = Pipeline_stage0_State_ready;
 		Pipeline_stage1_NextState_s0Sums[0] = Pipeline_stage0_State_sums[0];
 		Pipeline_stage1_NextState_s0Sums[1] = Pipeline_stage0_State_sums[1];
 		Pipeline_stage1_NextState_s0Sums[2] = Pipeline_stage0_State_sums[2];
@@ -240,9 +241,8 @@ module StagePeekPipelineModule_TopLevel
 		Pipeline_stage1_NextState_s0Sums[4] = Pipeline_stage0_State_sums[4];
 		Pipeline_stage1_NextState_sums[0] = Pipeline_PipelineConfigurations_L66F25T66_Cast;
 		Pipeline_stage1_NextState_sums[1] = Pipeline_PipelineConfigurations_L67F25T66_Cast;
-		Pipeline_stage1_NextState_ready = Pipeline_stage0_State_ready;
-		Pipeline_stage2_NextState_result = Pipeline_PipelineConfigurations_L70F30T70_TypedPipelineModule_L31F9L37T10_TypedPipelineModule_L35F26T86_Cast;
 		Pipeline_stage2_NextState_ready = Pipeline_stage1_State_ready;
+		Pipeline_stage2_NextState_result = Pipeline_PipelineConfigurations_L70F30T70_TypedPipelineModule_L31F9L37T10_TypedPipelineModule_L35F26T86_Cast;
 	end
 	assign Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L46F41T76_Expr_1 = { {2{1'b0}}, Pipeline_Inputs_inData[0] };
 	assign Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L46F41T76_Expr_2 = { {2{1'b0}}, Pipeline_Inputs_inData[1] };
@@ -269,10 +269,10 @@ module StagePeekPipelineModule_TopLevel
 	assign Inputs_inData[5] = inData5;
 	assign Inputs_inData[6] = inData6;
 	assign Inputs_inData[7] = inData7;
-	assign Pipeline_State_result = Pipeline_stage2_State_result;
 	assign Pipeline_State_ready = Pipeline_stage2_State_ready;
-	assign Pipeline_NextState_result = Pipeline_stage2_NextState_result;
+	assign Pipeline_State_result = Pipeline_stage2_State_result;
 	assign Pipeline_NextState_ready = Pipeline_stage2_NextState_ready;
+	assign Pipeline_NextState_result = Pipeline_stage2_NextState_result;
 	assign Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L46F32T77_Cast = { {6{1'b0}}, Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L46F41T76_Expr };
 	assign Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L53F29T74_Cast = { {6{1'b0}}, Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L53F38T73_Expr };
 	assign Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L54F29T74_Cast = { {6{1'b0}}, Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L54F38T73_Expr };

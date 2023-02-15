@@ -117,7 +117,7 @@ namespace fir.modules
             // GEN_ramd
             foreach (var a in range(firParams.Order))
             {
-                ramd_dout[a].i = u_ram_srls_i[a].DOUT;
+                ramd_dout[a].i = u_ram_srls_i[a].DOUT;//dbg
                 ramd_dout[a].q = u_ram_srls_q[a].DOUT;
             }
 
@@ -494,7 +494,7 @@ namespace fir.modules
             {
                 for (var a = 0; a < 10; a++)
                 {
-                    NextState.dsp48.dsp48_result[a].i = dsp48_p[firParams.Order - 1].i[c_out_lsb + a + 23, c_out_lsb + a];//dbg
+                    NextState.dsp48.dsp48_result[a].i = dsp48_p[firParams.Order - 1].i[c_out_lsb + a + 23, c_out_lsb + a];
                     NextState.dsp48.dsp48_result[a].q = dsp48_p[firParams.Order - 1].q[c_out_lsb + a + 23, c_out_lsb + a];
                 }
 

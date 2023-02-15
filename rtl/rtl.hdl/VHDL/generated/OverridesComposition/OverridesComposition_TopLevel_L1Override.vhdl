@@ -48,16 +48,15 @@ architecture rtl of OverridesComposition_TopLevel_L1Override is
 	signal InternalOffset : unsigned(7 downto 0) := (others => '0');
 	signal CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F20T46_Cast : unsigned(7 downto 0) := (others => '0');
 	signal CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F20T46_Cast : unsigned(7 downto 0) := (others => '0');
+	signal CombinationalOverridesBase_L14F41T96_WhenTrue : unsigned(7 downto 0) := "00000000";
+	signal CombinationalOverridesBase_L14F41T96_WhenFalse : unsigned(7 downto 0) := "00000000";
+	signal CombinationalOverridesBase_L14F41T96_Ternary : unsigned(7 downto 0) := "00000000";
 	signal CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr : unsigned(9 downto 0) := "0000000000";
 	signal CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr_1 : signed(9 downto 0) := "0000000000";
 	signal CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr_2 : signed(9 downto 0) := "0000000000";
 	signal CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr : signed(9 downto 0) := "0000000000";
 	signal CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr_1 : signed(9 downto 0) := "0000000000";
 	signal CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr_2 : signed(9 downto 0) := "0000000000";
-	signal CombinationalOverridesBase_L14F41T96_Lookup : unsigned(7 downto 0) := "00000000";
-	signal CombinationalOverridesBase_L14F41T96_LookupMultiplexerAddress : std_logic := '0';
-	signal CombinationalOverridesBase_L14F41T96_Lookup1 : unsigned(7 downto 0) := "00000000";
-	signal CombinationalOverridesBase_L14F41T96_Lookup2 : unsigned(7 downto 0) := "00000000";
 begin
 	process (CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr_1, CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr_2)
 	begin
@@ -67,18 +66,8 @@ begin
 	begin
 		CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr <= resize(signed(signed(resize(CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr_1, CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr_1'length + 1)) - signed(resize(CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr_2, CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr_2'length + 1))), CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr'length);
 	end process;
-	process (CombinationalOverridesBase_L14F41T96_Lookup1, CombinationalOverridesBase_L14F41T96_Lookup2, CombinationalOverridesBase_L14F41T96_LookupMultiplexerAddress)
-	begin
-		case CombinationalOverridesBase_L14F41T96_LookupMultiplexerAddress is
-			when '0' =>
-				CombinationalOverridesBase_L14F41T96_Lookup <= CombinationalOverridesBase_L14F41T96_Lookup1;
-			when '1' =>
-				CombinationalOverridesBase_L14F41T96_Lookup <= CombinationalOverridesBase_L14F41T96_Lookup2;
-			when others =>
-				CombinationalOverridesBase_L14F41T96_Lookup <= "00000000";
-		end case;
-	end process;
-	process (CombinationalOverridesBase_L14F41T96_Lookup, CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F20T46_Cast, CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr, CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F20T46_Cast, CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr, InOverride, Inputs_InOverride, Inputs_InValue, InValue)
+	CombinationalOverridesBase_L14F41T96_Ternary <= CombinationalOverridesBase_L14F41T96_WhenTrue when (Inputs_InOverride = '1') else CombinationalOverridesBase_L14F41T96_WhenFalse;
+	process (CombinationalOverridesBase_L14F41T96_Ternary, CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F20T46_Cast, CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr, CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F20T46_Cast, CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr, InOverride, Inputs_InValue, InValue)
 	begin
 		CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr_1(9 downto 8) <= (others => '0');
 		CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr_1(7 downto 0) <= signed(Inputs_InValue);
@@ -94,10 +83,9 @@ begin
 		InternalOffset(0) <= CombinationalOverridesBase_L16F50T51_Expr;
 		CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F20T46_Cast <= CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr(7 downto 0);
 		CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F20T46_Cast <= unsigned(CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr(7 downto 0));
-		OutValue <= CombinationalOverridesBase_L14F41T96_Lookup;
-		CombinationalOverridesBase_L14F41T96_Lookup1 <= CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F20T46_Cast;
-		CombinationalOverridesBase_L14F41T96_Lookup2 <= CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F20T46_Cast;
-		CombinationalOverridesBase_L14F41T96_LookupMultiplexerAddress <= Inputs_InOverride;
+		CombinationalOverridesBase_L14F41T96_WhenTrue <= CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F20T46_Cast;
+		CombinationalOverridesBase_L14F41T96_WhenFalse <= CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F20T46_Cast;
+		OutValue <= CombinationalOverridesBase_L14F41T96_Ternary;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

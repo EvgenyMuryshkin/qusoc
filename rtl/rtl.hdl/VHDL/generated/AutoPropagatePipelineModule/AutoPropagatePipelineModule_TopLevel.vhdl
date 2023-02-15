@@ -57,13 +57,13 @@ architecture rtl of AutoPropagatePipelineModule_TopLevel is
 	signal Inputs_inReady : std_logic := '0';
 	signal Pipeline_stage0_NextState_ready : std_logic := '0';
 	signal Pipeline_stage1_NextState_ready : std_logic := '0';
-	signal Pipeline_stage2_NextState_result : unsigned(15 downto 0) := (others => '0');
 	signal Pipeline_stage2_NextState_ready : std_logic := '0';
+	signal Pipeline_stage2_NextState_result : unsigned(15 downto 0) := (others => '0');
 	signal Pipeline_Inputs_inReady : std_logic := '0';
-	signal Pipeline_State_result : unsigned(15 downto 0) := (others => '0');
 	signal Pipeline_State_ready : std_logic := '0';
-	signal Pipeline_NextState_result : unsigned(15 downto 0) := (others => '0');
+	signal Pipeline_State_result : unsigned(15 downto 0) := (others => '0');
 	signal Pipeline_NextState_ready : std_logic := '0';
+	signal Pipeline_NextState_result : unsigned(15 downto 0) := (others => '0');
 	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_sum0 : unsigned(15 downto 0) := "0000000000000000";
 	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F24T69_Cast : unsigned(15 downto 0) := (others => '0');
 	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F21T66_Cast : unsigned(15 downto 0) := (others => '0');
@@ -77,10 +77,10 @@ architecture rtl of AutoPropagatePipelineModule_TopLevel is
 	constant Pipeline_stage0_State_readyDefault : std_logic := '0';
 	signal Pipeline_stage1_State_ready : std_logic := '0';
 	constant Pipeline_stage1_State_readyDefault : std_logic := '0';
-	signal Pipeline_stage2_State_result : unsigned(15 downto 0) := "0000000000000000";
-	constant Pipeline_stage2_State_resultDefault : unsigned(15 downto 0) := "0000000000000000";
 	signal Pipeline_stage2_State_ready : std_logic := '0';
 	constant Pipeline_stage2_State_readyDefault : std_logic := '0';
+	signal Pipeline_stage2_State_result : unsigned(15 downto 0) := "0000000000000000";
+	constant Pipeline_stage2_State_resultDefault : unsigned(15 downto 0) := "0000000000000000";
 	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr : unsigned(9 downto 0) := "0000000000";
 	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr_1 : signed(9 downto 0) := "0000000000";
 	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr_2 : signed(9 downto 0) := "0000000000";
@@ -128,13 +128,13 @@ begin
 			if Reset = '1' then
 				Pipeline_stage0_State_ready <= Pipeline_stage0_State_readyDefault;
 				Pipeline_stage1_State_ready <= Pipeline_stage1_State_readyDefault;
-				Pipeline_stage2_State_result <= Pipeline_stage2_State_resultDefault;
 				Pipeline_stage2_State_ready <= Pipeline_stage2_State_readyDefault;
+				Pipeline_stage2_State_result <= Pipeline_stage2_State_resultDefault;
 			else
 				Pipeline_stage0_State_ready <= Pipeline_stage0_NextState_ready;
 				Pipeline_stage1_State_ready <= Pipeline_stage1_NextState_ready;
-				Pipeline_stage2_State_result <= Pipeline_stage2_NextState_result;
 				Pipeline_stage2_State_ready <= Pipeline_stage2_NextState_ready;
+				Pipeline_stage2_State_result <= Pipeline_stage2_NextState_result;
 			end if;
 		end if;
 	end process;
@@ -218,12 +218,13 @@ begin
 	end process;
 	process (Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F21T66_Cast, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F21T66_Cast, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F21T66_Cast, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_sum0, Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F21T62_Cast, Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F21T62_Cast, Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F26T86_Cast, Pipeline_Inputs_inReady, Pipeline_stage0_State_ready, Pipeline_stage0_State_sums, Pipeline_stage1_State_ready, Pipeline_stage1_State_s0Sums, Pipeline_stage1_State_sums, Pipeline_stage2_State_ready, Pipeline_stage2_State_result)
 	begin
+		Pipeline_stage0_NextState_ready <= Pipeline_stage0_State_ready;
 		Pipeline_stage0_NextState_sums(0) <= Pipeline_stage0_State_sums(0);
 		Pipeline_stage0_NextState_sums(1) <= Pipeline_stage0_State_sums(1);
 		Pipeline_stage0_NextState_sums(2) <= Pipeline_stage0_State_sums(2);
 		Pipeline_stage0_NextState_sums(3) <= Pipeline_stage0_State_sums(3);
 		Pipeline_stage0_NextState_sums(4) <= Pipeline_stage0_State_sums(4);
-		Pipeline_stage0_NextState_ready <= Pipeline_stage0_State_ready;
+		Pipeline_stage1_NextState_ready <= Pipeline_stage1_State_ready;
 		Pipeline_stage1_NextState_s0Sums(0) <= Pipeline_stage1_State_s0Sums(0);
 		Pipeline_stage1_NextState_s0Sums(1) <= Pipeline_stage1_State_s0Sums(1);
 		Pipeline_stage1_NextState_s0Sums(2) <= Pipeline_stage1_State_s0Sums(2);
@@ -231,16 +232,16 @@ begin
 		Pipeline_stage1_NextState_s0Sums(4) <= Pipeline_stage1_State_s0Sums(4);
 		Pipeline_stage1_NextState_sums(0) <= Pipeline_stage1_State_sums(0);
 		Pipeline_stage1_NextState_sums(1) <= Pipeline_stage1_State_sums(1);
-		Pipeline_stage1_NextState_ready <= Pipeline_stage1_State_ready;
-		Pipeline_stage2_NextState_result <= Pipeline_stage2_State_result;
 		Pipeline_stage2_NextState_ready <= Pipeline_stage2_State_ready;
+		Pipeline_stage2_NextState_result <= Pipeline_stage2_State_result;
+		Pipeline_stage0_NextState_ready <= Pipeline_Inputs_inReady;
 		Pipeline_stage0_NextState_sums(0) <= Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_sum0;
 		Pipeline_stage0_NextState_sums(1) <= Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F21T66_Cast;
 		Pipeline_stage0_NextState_sums(2) <= Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F21T66_Cast;
 		Pipeline_stage0_NextState_sums(3) <= Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F21T66_Cast;
 		Pipeline_stage0_NextState_sums(4)(15 downto 6) <= (others => '0');
 		Pipeline_stage0_NextState_sums(4)(5 downto 0) <= Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L54F21T23_Expr;
-		Pipeline_stage0_NextState_ready <= Pipeline_Inputs_inReady;
+		Pipeline_stage1_NextState_ready <= Pipeline_stage0_State_ready;
 		Pipeline_stage1_NextState_s0Sums(0) <= Pipeline_stage0_State_sums(0);
 		Pipeline_stage1_NextState_s0Sums(1) <= Pipeline_stage0_State_sums(1);
 		Pipeline_stage1_NextState_s0Sums(2) <= Pipeline_stage0_State_sums(2);
@@ -248,9 +249,8 @@ begin
 		Pipeline_stage1_NextState_s0Sums(4) <= Pipeline_stage0_State_sums(4);
 		Pipeline_stage1_NextState_sums(0) <= Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F21T62_Cast;
 		Pipeline_stage1_NextState_sums(1) <= Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F21T62_Cast;
-		Pipeline_stage1_NextState_ready <= Pipeline_stage0_State_ready;
-		Pipeline_stage2_NextState_result <= Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F26T86_Cast;
 		Pipeline_stage2_NextState_ready <= Pipeline_stage1_State_ready;
+		Pipeline_stage2_NextState_result <= Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F26T86_Cast;
 	end process;
 	process (AutoPropagatePipelineModule_L33F33T59_Cast, inData0, inData1, inData2, inData3, inData4, inData5, inData6, inData7, Inputs_inData, Inputs_inReady, inReady, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F30T65_Expr, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F30T65_Expr, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F30T65_Expr, Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F30T61_Expr, Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F30T61_Expr, Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T66_Expr, Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T85_Expr, Pipeline_Inputs_inData, Pipeline_stage0_State_sums, Pipeline_stage1_State_s0Sums, Pipeline_stage1_State_sums, Pipeline_stage2_NextState_ready, Pipeline_stage2_NextState_result, Pipeline_stage2_State_ready, Pipeline_stage2_State_result, Pipeline_State_ready, Pipeline_State_result)
 	begin
@@ -295,10 +295,10 @@ begin
 		Inputs_inData(5) <= inData5;
 		Inputs_inData(6) <= inData6;
 		Inputs_inData(7) <= inData7;
-		Pipeline_State_result <= Pipeline_stage2_State_result;
 		Pipeline_State_ready <= Pipeline_stage2_State_ready;
-		Pipeline_NextState_result <= Pipeline_stage2_NextState_result;
+		Pipeline_State_result <= Pipeline_stage2_State_result;
 		Pipeline_NextState_ready <= Pipeline_stage2_NextState_ready;
+		Pipeline_NextState_result <= Pipeline_stage2_NextState_result;
 		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F24T69_Cast(15 downto 10) <= (others => '0');
 		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F24T69_Cast(9 downto 0) <= Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr;
 		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F21T66_Cast(15 downto 10) <= (others => '0');

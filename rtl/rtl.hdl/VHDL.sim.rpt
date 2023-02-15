@@ -1,5 +1,5 @@
 Simulator report for VHDL
-Tue Jan 10 21:31:05 2023
+Fri Feb 03 21:48:09 2023
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -44,43 +44,43 @@ applicable agreement for further details.
 ; Type                        ; Value        ;
 +-----------------------------+--------------+
 ; Simulation Start Time       ; 0 ps         ;
-; Simulation End Time         ; 1.0 us       ;
-; Simulation Netlist Size     ; 31 nodes     ;
+; Simulation End Time         ; 1.0 ms       ;
+; Simulation Netlist Size     ; 13 nodes     ;
 ; Simulation Coverage         ;     100.00 % ;
-; Total Number of Transitions ; 155          ;
+; Total Number of Transitions ; 202          ;
 ; Simulation Breakpoints      ; 0            ;
 ; Family                      ; Cyclone II   ;
 ; Device                      ; EP2C70F896C6 ;
 +-----------------------------+--------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------+
-; Simulator Settings                                                                                                                            ;
-+--------------------------------------------------------------------------------------------+----------------------------------+---------------+
-; Option                                                                                     ; Setting                          ; Default Value ;
-+--------------------------------------------------------------------------------------------+----------------------------------+---------------+
-; Simulation mode                                                                            ; Timing                           ; Timing        ;
-; Start time                                                                                 ; 0 ns                             ; 0 ns          ;
-; Simulation results format                                                                  ; CVWF                             ;               ;
-; Vector input source                                                                        ; Waveforms/AXI4Encoder7Module.vwf ;               ;
-; Add pins automatically to simulation output waveforms                                      ; On                               ; On            ;
-; Check outputs                                                                              ; Off                              ; Off           ;
-; Report simulation coverage                                                                 ; On                               ; On            ;
-; Display complete 1/0 value coverage report                                                 ; On                               ; On            ;
-; Display missing 1-value coverage report                                                    ; On                               ; On            ;
-; Display missing 0-value coverage report                                                    ; On                               ; On            ;
-; Detect setup and hold time violations                                                      ; Off                              ; Off           ;
-; Detect glitches                                                                            ; Off                              ; Off           ;
-; Disable timing delays in Timing Simulation                                                 ; Off                              ; Off           ;
-; Generate Signal Activity File                                                              ; Off                              ; Off           ;
-; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                              ; Off           ;
-; Group bus channels in simulation results                                                   ; Off                              ; Off           ;
-; Preserve fewer signal transitions to reduce memory requirements                            ; On                               ; On            ;
-; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                       ; INPUT_EDGE    ;
-; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                              ; Off           ;
-; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                               ;               ;
-; Perform Glitch Filtering in Timing Simulation                                              ; Auto                             ; Auto          ;
-+--------------------------------------------------------------------------------------------+----------------------------------+---------------+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                                          ;
++--------------------------------------------------------------------------------------------+--------------------------------+---------------+
+; Option                                                                                     ; Setting                        ; Default Value ;
++--------------------------------------------------------------------------------------------+--------------------------------+---------------+
+; Simulation mode                                                                            ; Timing                         ; Timing        ;
+; Start time                                                                                 ; 0 ns                           ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF                           ;               ;
+; Vector input source                                                                        ; Waveforms/AXIConfirmModule.vwf ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On                             ; On            ;
+; Check outputs                                                                              ; Off                            ; Off           ;
+; Report simulation coverage                                                                 ; On                             ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On                             ; On            ;
+; Display missing 1-value coverage report                                                    ; On                             ; On            ;
+; Display missing 0-value coverage report                                                    ; On                             ; On            ;
+; Detect setup and hold time violations                                                      ; Off                            ; Off           ;
+; Detect glitches                                                                            ; Off                            ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off                            ; Off           ;
+; Generate Signal Activity File                                                              ; Off                            ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                            ; Off           ;
+; Group bus channels in simulation results                                                   ; Off                            ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On                             ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                     ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                            ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                             ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto                           ; Auto          ;
++--------------------------------------------------------------------------------------------+--------------------------------+---------------+
 
 
 +----------------------+
@@ -96,9 +96,9 @@ Please use Quartus II to view the waveform report data.
 ; Type                                                ; Value        ;
 +-----------------------------------------------------+--------------+
 ; Total coverage as a percentage                      ;     100.00 % ;
-; Total nodes checked                                 ; 31           ;
-; Total output ports checked                          ; 31           ;
-; Total output ports with complete 1/0-value coverage ; 31           ;
+; Total nodes checked                                 ; 13           ;
+; Total output ports checked                          ; 13           ;
+; Total output ports with complete 1/0-value coverage ; 13           ;
 ; Total output ports with no 1/0-value coverage       ; 0            ;
 ; Total output ports with no 1-value coverage         ; 0            ;
 ; Total output ports with no 0-value coverage         ; 0            ;
@@ -106,43 +106,25 @@ Please use Quartus II to view the waveform report data.
 
 
 The following table displays output ports that toggle between 1 and 0 during simulation.
-+-------------------------------------------------------------------------------------------------------------+
-; Complete 1/0-Value Coverage                                                                                 ;
-+-------------------------------------------+----------------------------------------------+------------------+
-; Node Name                                 ; Output Port Name                             ; Output Port Type ;
-+-------------------------------------------+----------------------------------------------+------------------+
-; |AXI4Encoder7Module_TopLevel|tmp0~0       ; |AXI4Encoder7Module_TopLevel|tmp0~0          ; combout          ;
-; |AXI4Encoder7Module_TopLevel|tmp0~1       ; |AXI4Encoder7Module_TopLevel|tmp0~1          ; combout          ;
-; |AXI4Encoder7Module_TopLevel|tmp0~2       ; |AXI4Encoder7Module_TopLevel|tmp0~2          ; combout          ;
-; |AXI4Encoder7Module_TopLevel|tmp0~3       ; |AXI4Encoder7Module_TopLevel|tmp0~3          ; combout          ;
-; |AXI4Encoder7Module_TopLevel|tmp0~4       ; |AXI4Encoder7Module_TopLevel|tmp0~4          ; combout          ;
-; |AXI4Encoder7Module_TopLevel|tmp0~5       ; |AXI4Encoder7Module_TopLevel|tmp0~5          ; combout          ;
-; |AXI4Encoder7Module_TopLevel|tmp0~6       ; |AXI4Encoder7Module_TopLevel|tmp0~6          ; combout          ;
-; |AXI4Encoder7Module_TopLevel|ShiftLeft0~0 ; |AXI4Encoder7Module_TopLevel|ShiftLeft0~0    ; combout          ;
-; |AXI4Encoder7Module_TopLevel|ShiftLeft0~1 ; |AXI4Encoder7Module_TopLevel|ShiftLeft0~1    ; combout          ;
-; |AXI4Encoder7Module_TopLevel|ShiftLeft0~2 ; |AXI4Encoder7Module_TopLevel|ShiftLeft0~2    ; combout          ;
-; |AXI4Encoder7Module_TopLevel|ShiftLeft0~3 ; |AXI4Encoder7Module_TopLevel|ShiftLeft0~3    ; combout          ;
-; |AXI4Encoder7Module_TopLevel|ShiftLeft0~4 ; |AXI4Encoder7Module_TopLevel|ShiftLeft0~4    ; combout          ;
-; |AXI4Encoder7Module_TopLevel|ShiftLeft0~5 ; |AXI4Encoder7Module_TopLevel|ShiftLeft0~5    ; combout          ;
-; |AXI4Encoder7Module_TopLevel|HasActive    ; |AXI4Encoder7Module_TopLevel|HasActive       ; padio            ;
-; |AXI4Encoder7Module_TopLevel|MSBIndex[0]  ; |AXI4Encoder7Module_TopLevel|MSBIndex[0]     ; padio            ;
-; |AXI4Encoder7Module_TopLevel|MSBIndex[1]  ; |AXI4Encoder7Module_TopLevel|MSBIndex[1]     ; padio            ;
-; |AXI4Encoder7Module_TopLevel|MSBIndex[2]  ; |AXI4Encoder7Module_TopLevel|MSBIndex[2]     ; padio            ;
-; |AXI4Encoder7Module_TopLevel|MSBValue[0]  ; |AXI4Encoder7Module_TopLevel|MSBValue[0]     ; padio            ;
-; |AXI4Encoder7Module_TopLevel|MSBValue[1]  ; |AXI4Encoder7Module_TopLevel|MSBValue[1]     ; padio            ;
-; |AXI4Encoder7Module_TopLevel|MSBValue[2]  ; |AXI4Encoder7Module_TopLevel|MSBValue[2]     ; padio            ;
-; |AXI4Encoder7Module_TopLevel|MSBValue[3]  ; |AXI4Encoder7Module_TopLevel|MSBValue[3]     ; padio            ;
-; |AXI4Encoder7Module_TopLevel|MSBValue[4]  ; |AXI4Encoder7Module_TopLevel|MSBValue[4]     ; padio            ;
-; |AXI4Encoder7Module_TopLevel|MSBValue[5]  ; |AXI4Encoder7Module_TopLevel|MSBValue[5]     ; padio            ;
-; |AXI4Encoder7Module_TopLevel|MSBValue[6]  ; |AXI4Encoder7Module_TopLevel|MSBValue[6]     ; padio            ;
-; |AXI4Encoder7Module_TopLevel|iValues6     ; |AXI4Encoder7Module_TopLevel|iValues6~corein ; combout          ;
-; |AXI4Encoder7Module_TopLevel|iValues4     ; |AXI4Encoder7Module_TopLevel|iValues4~corein ; combout          ;
-; |AXI4Encoder7Module_TopLevel|iValues5     ; |AXI4Encoder7Module_TopLevel|iValues5~corein ; combout          ;
-; |AXI4Encoder7Module_TopLevel|iValues3     ; |AXI4Encoder7Module_TopLevel|iValues3~corein ; combout          ;
-; |AXI4Encoder7Module_TopLevel|iValues2     ; |AXI4Encoder7Module_TopLevel|iValues2~corein ; combout          ;
-; |AXI4Encoder7Module_TopLevel|iValues0     ; |AXI4Encoder7Module_TopLevel|iValues0~corein ; combout          ;
-; |AXI4Encoder7Module_TopLevel|iValues1     ; |AXI4Encoder7Module_TopLevel|iValues1~corein ; combout          ;
-+-------------------------------------------+----------------------------------------------+------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                                                                      ;
++---------------------------------------------------------------+---------------------------------------------------------------+------------------+
+; Node Name                                                     ; Output Port Name                                              ; Output Port Type ;
++---------------------------------------------------------------+---------------------------------------------------------------+------------------+
+; |AXIConfirmModule_TopLevel|State_fsm                          ; |AXIConfirmModule_TopLevel|State_fsm                          ; regout           ;
+; |AXIConfirmModule_TopLevel|AXIConfirmModule_L26F38T126_Expr~0 ; |AXIConfirmModule_TopLevel|AXIConfirmModule_L26F38T126_Expr~0 ; combout          ;
+; |AXIConfirmModule_TopLevel|AXIConfirmModule_L27F33T89_Expr~0  ; |AXIConfirmModule_TopLevel|AXIConfirmModule_L27F33T89_Expr~0  ; combout          ;
+; |AXIConfirmModule_TopLevel|State_fsm~0                        ; |AXIConfirmModule_TopLevel|State_fsm~0                        ; combout          ;
+; |AXIConfirmModule_TopLevel|State_fsm~1                        ; |AXIConfirmModule_TopLevel|State_fsm~1                        ; combout          ;
+; |AXIConfirmModule_TopLevel|outConfirmed                       ; |AXIConfirmModule_TopLevel|outConfirmed                       ; padio            ;
+; |AXIConfirmModule_TopLevel|outConfirming                      ; |AXIConfirmModule_TopLevel|outConfirming                      ; padio            ;
+; |AXIConfirmModule_TopLevel|outReady                           ; |AXIConfirmModule_TopLevel|outReady                           ; padio            ;
+; |AXIConfirmModule_TopLevel|inReady                            ; |AXIConfirmModule_TopLevel|inReady~corein                     ; combout          ;
+; |AXIConfirmModule_TopLevel|inValid                            ; |AXIConfirmModule_TopLevel|inValid~corein                     ; combout          ;
+; |AXIConfirmModule_TopLevel|inRestart                          ; |AXIConfirmModule_TopLevel|inRestart~corein                   ; combout          ;
+; |AXIConfirmModule_TopLevel|Reset                              ; |AXIConfirmModule_TopLevel|Reset~corein                       ; combout          ;
+; |AXIConfirmModule_TopLevel|Clock                              ; |AXIConfirmModule_TopLevel|Clock~corein                       ; combout          ;
++---------------------------------------------------------------+---------------------------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 1 during simulation.
@@ -187,21 +169,21 @@ Info: Running Quartus II Simulator
     Info: programming logic devices manufactured by Altera and sold by 
     Info: Altera or its authorized distributors.  Please refer to the 
     Info: applicable agreement for further details.
-    Info: Processing started: Tue Jan 10 21:31:02 2023
+    Info: Processing started: Fri Feb 03 21:48:08 2023
 Info: Command: quartus_sim C:\code\qusoc\rtl\rtl.hdl\VHDL.qpf --read_settings_files=on --write_settings_files=off -c VHDL
-Info: Using vector source file "Waveforms/AXI4Encoder7Module.vwf"
+Info: Using vector source file "Waveforms/AXIConfirmModule.vwf"
 Info: Overwriting simulation input file with simulation results
-    Info: A backup of AXI4Encoder7Module.vwf called VHDL.sim_ori.vwf has been created in the db folder
+    Info: A backup of AXIConfirmModule.vwf called VHDL.sim_ori.vwf has been created in the db folder
 Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
     Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
 Info: Simulation partitioned into 1 sub-simulations
 Info: Simulation coverage is     100.00 %
-Info: Number of transitions in simulation is 155
-Info: Vector file AXI4Encoder7Module.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
+Info: Number of transitions in simulation is 202
+Info: Vector file AXIConfirmModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
 Info: Quartus II Simulator was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 161 megabytes
-    Info: Processing ended: Tue Jan 10 21:31:05 2023
-    Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:21
+    Info: Peak virtual memory: 160 megabytes
+    Info: Processing ended: Fri Feb 03 21:48:09 2023
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
 
 

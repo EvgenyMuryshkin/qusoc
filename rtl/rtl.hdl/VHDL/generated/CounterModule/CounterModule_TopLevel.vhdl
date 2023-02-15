@@ -45,16 +45,15 @@ architecture rtl of CounterModule_TopLevel is
 	signal Inputs_Enabled : std_logic := '0';
 	signal NextState_Value : unsigned(7 downto 0) := (others => '0');
 	signal NextValue : unsigned(7 downto 0) := (others => '0');
+	signal CounterModule_L19F34T80_WhenTrue : unsigned(7 downto 0) := "00000000";
+	signal CounterModule_L19F34T80_WhenFalse : unsigned(7 downto 0) := "00000000";
+	signal CounterModule_L19F34T80_Ternary : unsigned(7 downto 0) := "00000000";
 	signal CounterModule_L19F27T81_Cast : unsigned(7 downto 0) := (others => '0');
 	signal State_Value : unsigned(7 downto 0) := "00000000";
 	constant State_ValueDefault : unsigned(7 downto 0) := "00000000";
 	signal CounterModule_L19F51T66_Expr : unsigned(9 downto 0) := "0000000000";
 	signal CounterModule_L19F51T66_Expr_1 : signed(9 downto 0) := "0000000000";
 	signal CounterModule_L19F51T66_Expr_2 : signed(9 downto 0) := "0000000000";
-	signal CounterModule_L19F34T80_Lookup : unsigned(7 downto 0) := "00000000";
-	signal CounterModule_L19F34T80_LookupMultiplexerAddress : std_logic := '0';
-	signal CounterModule_L19F34T80_Lookup1 : unsigned(7 downto 0) := "00000000";
-	signal CounterModule_L19F34T80_Lookup2 : unsigned(7 downto 0) := "00000000";
 begin
 	process (Clock, NextState_Value, Reset)
 	begin
@@ -70,35 +69,24 @@ begin
 	begin
 		CounterModule_L19F51T66_Expr <= resize(unsigned(signed(resize(CounterModule_L19F51T66_Expr_1, CounterModule_L19F51T66_Expr_1'length + 1)) + signed(resize(CounterModule_L19F51T66_Expr_2, CounterModule_L19F51T66_Expr_2'length + 1))), CounterModule_L19F51T66_Expr'length);
 	end process;
-	process (CounterModule_L19F34T80_Lookup1, CounterModule_L19F34T80_Lookup2, CounterModule_L19F34T80_LookupMultiplexerAddress)
-	begin
-		case CounterModule_L19F34T80_LookupMultiplexerAddress is
-			when '0' =>
-				CounterModule_L19F34T80_Lookup <= CounterModule_L19F34T80_Lookup1;
-			when '1' =>
-				CounterModule_L19F34T80_Lookup <= CounterModule_L19F34T80_Lookup2;
-			when others =>
-				CounterModule_L19F34T80_Lookup <= "00000000";
-		end case;
-	end process;
+	CounterModule_L19F34T80_Ternary <= CounterModule_L19F34T80_WhenTrue when (Inputs_Enabled = '1') else CounterModule_L19F34T80_WhenFalse;
 	process (NextValue, State_Value)
 	begin
 		NextState_Value <= State_Value;
 		NextState_Value <= NextValue;
 	end process;
-	process (CounterModule_L19F27T81_Cast, CounterModule_L19F34T80_Lookup, CounterModule_L19F51T66_Expr, Enabled, Inputs_Enabled, State_Value)
+	process (CounterModule_L19F27T81_Cast, CounterModule_L19F34T80_Ternary, CounterModule_L19F51T66_Expr, Enabled, State_Value)
 	begin
 		CounterModule_L19F51T66_Expr_1(9 downto 8) <= (others => '0');
 		CounterModule_L19F51T66_Expr_1(7 downto 0) <= signed(State_Value);
 		CounterModule_L19F51T66_Expr_2(9 downto 1) <= (others => '0');
 		CounterModule_L19F51T66_Expr_2(0) <= CounterModule_L19F65T66_Expr;
 		Inputs_Enabled <= Enabled;
-		CounterModule_L19F27T81_Cast <= CounterModule_L19F34T80_Lookup;
+		CounterModule_L19F34T80_WhenTrue <= CounterModule_L19F51T66_Expr(7 downto 0);
+		CounterModule_L19F34T80_WhenFalse <= State_Value;
+		CounterModule_L19F27T81_Cast <= CounterModule_L19F34T80_Ternary;
 		NextValue <= CounterModule_L19F27T81_Cast;
 		Value <= State_Value;
-		CounterModule_L19F34T80_Lookup1 <= State_Value;
-		CounterModule_L19F34T80_Lookup2 <= CounterModule_L19F51T66_Expr(7 downto 0);
-		CounterModule_L19F34T80_LookupMultiplexerAddress <= Inputs_Enabled;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

@@ -202,6 +202,18 @@ architecture rtl of AXI4MemoryModuleB4_TopLevel is
 	signal axiSlave_outWREADYConfirming : std_logic := '0';
 	signal axiSlave_outWVALID : std_logic := '0';
 	signal axiSlave_outWSTRB : unsigned(3 downto 0) := (others => '0');
+	signal AXI4MemoryModule_L69F13L71T26_WhenTrue : unsigned(3 downto 0) := "0000";
+	signal AXI4MemoryModule_L69F13L71T26_WhenFalse : unsigned(3 downto 0) := "0000";
+	signal AXI4MemoryModule_L69F13L71T26_Ternary : unsigned(3 downto 0) := "0000";
+	signal AXI4MemoryModule_L74F13L76T26_WhenTrue : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal AXI4MemoryModule_L74F13L76T26_WhenFalse : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal AXI4MemoryModule_L74F13L76T26_Ternary : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal AXI4MemoryModule_L79F13L81T26_WhenTrue : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal AXI4MemoryModule_L79F13L81T26_WhenFalse : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal AXI4MemoryModule_L79F13L81T26_Ternary : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal AXI4MemoryModule_L84F13L86T26_WhenTrue : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal AXI4MemoryModule_L84F13L86T26_WhenFalse : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal AXI4MemoryModule_L84F13L86T26_Ternary : unsigned(31 downto 0) := "00000000000000000000000000000000";
 	signal AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_0_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index : std_logic := '0';
 	signal AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_1_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index : std_logic := '0';
 	signal AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_2_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index : std_logic := '0';
@@ -312,22 +324,6 @@ architecture rtl of AXI4MemoryModuleB4_TopLevel is
 	signal AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_3_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F21T51_Expr : std_logic := '0';
 	signal AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_3_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F21T51_Expr_1 : std_logic := '0';
 	signal AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_3_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F21T51_Expr_2 : std_logic := '0';
-	signal AXI4MemoryModule_L69F13L71T26_Lookup : unsigned(3 downto 0) := "0000";
-	signal AXI4MemoryModule_L74F13L76T26_Lookup : unsigned(31 downto 0) := "00000000000000000000000000000000";
-	signal AXI4MemoryModule_L79F13L81T26_Lookup : unsigned(31 downto 0) := "00000000000000000000000000000000";
-	signal AXI4MemoryModule_L84F13L86T26_Lookup : unsigned(31 downto 0) := "00000000000000000000000000000000";
-	signal AXI4MemoryModule_L69F13L71T26_LookupMultiplexerAddress : std_logic := '0';
-	signal AXI4MemoryModule_L69F13L71T26_Lookup1 : unsigned(3 downto 0) := "0000";
-	signal AXI4MemoryModule_L69F13L71T26_Lookup2 : unsigned(3 downto 0) := "0000";
-	signal AXI4MemoryModule_L74F13L76T26_LookupMultiplexerAddress : std_logic := '0';
-	signal AXI4MemoryModule_L74F13L76T26_Lookup1 : unsigned(31 downto 0) := "00000000000000000000000000000000";
-	signal AXI4MemoryModule_L74F13L76T26_Lookup2 : unsigned(31 downto 0) := "00000000000000000000000000000000";
-	signal AXI4MemoryModule_L79F13L81T26_LookupMultiplexerAddress : std_logic := '0';
-	signal AXI4MemoryModule_L79F13L81T26_Lookup1 : unsigned(31 downto 0) := "00000000000000000000000000000000";
-	signal AXI4MemoryModule_L79F13L81T26_Lookup2 : unsigned(31 downto 0) := "00000000000000000000000000000000";
-	signal AXI4MemoryModule_L84F13L86T26_LookupMultiplexerAddress : std_logic := '0';
-	signal AXI4MemoryModule_L84F13L86T26_Lookup1 : unsigned(31 downto 0) := "00000000000000000000000000000000";
-	signal AXI4MemoryModule_L84F13L86T26_Lookup2 : unsigned(31 downto 0) := "00000000000000000000000000000000";
 	type Inputs_M2S_W_WDATAArray is array (0 to 3) of unsigned (7 downto 0);
 	signal Inputs_M2S_W_WDATA : Inputs_M2S_W_WDATAArray := (others => (others => '0'));
 	type State_rdataArray is array (0 to 3) of unsigned (7 downto 0);
@@ -505,50 +501,10 @@ begin
 		outWSTRB => axiSlave_outWSTRB_axiSlave_outWSTRB_HardLink
 	)
 	;
-	process (AXI4MemoryModule_L69F13L71T26_Lookup1, AXI4MemoryModule_L69F13L71T26_Lookup2, AXI4MemoryModule_L69F13L71T26_LookupMultiplexerAddress)
-	begin
-		case AXI4MemoryModule_L69F13L71T26_LookupMultiplexerAddress is
-			when '0' =>
-				AXI4MemoryModule_L69F13L71T26_Lookup <= AXI4MemoryModule_L69F13L71T26_Lookup1;
-			when '1' =>
-				AXI4MemoryModule_L69F13L71T26_Lookup <= AXI4MemoryModule_L69F13L71T26_Lookup2;
-			when others =>
-				AXI4MemoryModule_L69F13L71T26_Lookup <= "0000";
-		end case;
-	end process;
-	process (AXI4MemoryModule_L74F13L76T26_Lookup1, AXI4MemoryModule_L74F13L76T26_Lookup2, AXI4MemoryModule_L74F13L76T26_LookupMultiplexerAddress)
-	begin
-		case AXI4MemoryModule_L74F13L76T26_LookupMultiplexerAddress is
-			when '0' =>
-				AXI4MemoryModule_L74F13L76T26_Lookup <= AXI4MemoryModule_L74F13L76T26_Lookup1;
-			when '1' =>
-				AXI4MemoryModule_L74F13L76T26_Lookup <= AXI4MemoryModule_L74F13L76T26_Lookup2;
-			when others =>
-				AXI4MemoryModule_L74F13L76T26_Lookup <= "00000000000000000000000000000000";
-		end case;
-	end process;
-	process (AXI4MemoryModule_L79F13L81T26_Lookup1, AXI4MemoryModule_L79F13L81T26_Lookup2, AXI4MemoryModule_L79F13L81T26_LookupMultiplexerAddress)
-	begin
-		case AXI4MemoryModule_L79F13L81T26_LookupMultiplexerAddress is
-			when '0' =>
-				AXI4MemoryModule_L79F13L81T26_Lookup <= AXI4MemoryModule_L79F13L81T26_Lookup1;
-			when '1' =>
-				AXI4MemoryModule_L79F13L81T26_Lookup <= AXI4MemoryModule_L79F13L81T26_Lookup2;
-			when others =>
-				AXI4MemoryModule_L79F13L81T26_Lookup <= "00000000000000000000000000000000";
-		end case;
-	end process;
-	process (AXI4MemoryModule_L84F13L86T26_Lookup1, AXI4MemoryModule_L84F13L86T26_Lookup2, AXI4MemoryModule_L84F13L86T26_LookupMultiplexerAddress)
-	begin
-		case AXI4MemoryModule_L84F13L86T26_LookupMultiplexerAddress is
-			when '0' =>
-				AXI4MemoryModule_L84F13L86T26_Lookup <= AXI4MemoryModule_L84F13L86T26_Lookup1;
-			when '1' =>
-				AXI4MemoryModule_L84F13L86T26_Lookup <= AXI4MemoryModule_L84F13L86T26_Lookup2;
-			when others =>
-				AXI4MemoryModule_L84F13L86T26_Lookup <= "00000000000000000000000000000000";
-		end case;
-	end process;
+	AXI4MemoryModule_L69F13L71T26_Ternary <= AXI4MemoryModule_L69F13L71T26_WhenTrue when (internalSameTxWrite = '1') else AXI4MemoryModule_L69F13L71T26_WhenFalse;
+	AXI4MemoryModule_L74F13L76T26_Ternary <= AXI4MemoryModule_L74F13L76T26_WhenTrue when (internalSameTxWrite = '1') else AXI4MemoryModule_L74F13L76T26_WhenFalse;
+	AXI4MemoryModule_L79F13L81T26_Ternary <= AXI4MemoryModule_L79F13L81T26_WhenTrue when (internalSameTxWrite = '1') else AXI4MemoryModule_L79F13L81T26_WhenFalse;
+	AXI4MemoryModule_L84F13L86T26_Ternary <= AXI4MemoryModule_L84F13L86T26_WhenTrue when (axiSlave_outARREADYConfirming = '1') else AXI4MemoryModule_L84F13L86T26_WhenFalse;
 	process (axiSlave_outARADDR, axiSlave_outARREADYConfirming, axiSlave_outAWADDR, axiSlave_outAWREADYConfirming, axiSlave_outWDATA, axiSlave_outWREADYConfirming, axiSlave_outWriteTXCompleting, axiSlave_outWSTRB, State_raddr, State_waddr, State_waddrSet, State_wdata, State_wdataSet, State_wstrb)
 	begin
 		for NextState_wdata_Iterator in 0 to 3 loop
@@ -579,7 +535,7 @@ begin
 			NextState_raddr <= axiSlave_outARADDR;
 		end if;
 	end process;
-	process (AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_0_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index, AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_1_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index, AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_2_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index, AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_3_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index, AXI4MemoryModule_L64F37T81_Expr, AXI4MemoryModule_L65F40T72_Expr, AXI4MemoryModule_L66F28T73_Expr, AXI4MemoryModule_L69F13L71T26_Lookup, AXI4MemoryModule_L74F13L76T26_Lookup, AXI4MemoryModule_L79F13L81T26_Lookup, AXI4MemoryModule_L84F13L86T26_Lookup, axiSlave_inARREADY, axiSlave_inAWREADY, axiSlave_inBVALID, axiSlave_inRDATA, axiSlave_inRVALID, axiSlave_inWREADY, axiSlave_M2S_AR_ARADDR, axiSlave_M2S_AR_ARBURST, axiSlave_M2S_AR_ARCACHE, axiSlave_M2S_AR_ARID, axiSlave_M2S_AR_ARLEN, axiSlave_M2S_AR_ARLOCK, axiSlave_M2S_AR_ARPROT, axiSlave_M2S_AR_ARQOS, axiSlave_M2S_AR_ARREGION, axiSlave_M2S_AR_ARSIZE, axiSlave_M2S_AR_ARUSER, axiSlave_M2S_AR_ARVALID, axiSlave_M2S_AW_AWADDR, axiSlave_M2S_AW_AWBURST, axiSlave_M2S_AW_AWCACHE, axiSlave_M2S_AW_AWID, axiSlave_M2S_AW_AWLEN, axiSlave_M2S_AW_AWLOCK, axiSlave_M2S_AW_AWPROT, axiSlave_M2S_AW_AWQOS, axiSlave_M2S_AW_AWREGION, axiSlave_M2S_AW_AWSIZE, axiSlave_M2S_AW_AWUSER, axiSlave_M2S_AW_AWVALID, axiSlave_M2S_B_BREADY, axiSlave_M2S_R_RREADY, axiSlave_M2S_W_WDATA, axiSlave_M2S_W_WID, axiSlave_M2S_W_WLAST, axiSlave_M2S_W_WSTRB, axiSlave_M2S_W_WUSER, axiSlave_M2S_W_WVALID, axiSlave_outARADDR, axiSlave_outARADDR_axiSlave_outARADDR_HardLink, axiSlave_outARREADYConfirming, axiSlave_outARREADYConfirming_axiSlave_outARREADYConfirming_HardLink, axiSlave_outARVALID_axiSlave_outARVALID_HardLink, axiSlave_outAWADDR, axiSlave_outAWADDR_axiSlave_outAWADDR_HardLink, axiSlave_outAWREADYConfirming_axiSlave_outAWREADYConfirming_HardLink, axiSlave_outAWVALID_axiSlave_outAWVALID_HardLink, axiSlave_outReadTXCompleting_axiSlave_outReadTXCompleting_HardLink, axiSlave_outWDATA, axiSlave_outWDATA0_axiSlave_outWDATA_HardLink, axiSlave_outWDATA1_axiSlave_outWDATA_HardLink, axiSlave_outWDATA2_axiSlave_outWDATA_HardLink, axiSlave_outWDATA3_axiSlave_outWDATA_HardLink, axiSlave_outWREADYConfirming_axiSlave_outWREADYConfirming_HardLink, axiSlave_outWriteTXCompleting_axiSlave_outWriteTXCompleting_HardLink, axiSlave_outWSTRB, axiSlave_outWSTRB_axiSlave_outWSTRB_HardLink, axiSlave_outWVALID_axiSlave_outWVALID_HardLink, axiSlave_S2M_AR_ARREADY, axiSlave_S2M_AR_ARREADY_axiSlave_S2M_AR_ARREADY_HardLink, axiSlave_S2M_AW_AWREADY, axiSlave_S2M_AW_AWREADY_axiSlave_S2M_AW_AWREADY_HardLink, axiSlave_S2M_B_BID, axiSlave_S2M_B_BID_axiSlave_S2M_B_BID_HardLink, axiSlave_S2M_B_BRESP, axiSlave_S2M_B_BRESP_axiSlave_S2M_B_BRESP_HardLink, axiSlave_S2M_B_BUSER, axiSlave_S2M_B_BUSER_axiSlave_S2M_B_BUSER_HardLink, axiSlave_S2M_B_BVALID, axiSlave_S2M_B_BVALID_axiSlave_S2M_B_BVALID_HardLink, axiSlave_S2M_R_RDATA, axiSlave_S2M_R_RDATA0_axiSlave_S2M_R_RDATA_HardLink, axiSlave_S2M_R_RDATA1_axiSlave_S2M_R_RDATA_HardLink, axiSlave_S2M_R_RDATA2_axiSlave_S2M_R_RDATA_HardLink, axiSlave_S2M_R_RDATA3_axiSlave_S2M_R_RDATA_HardLink, axiSlave_S2M_R_RID, axiSlave_S2M_R_RID_axiSlave_S2M_R_RID_HardLink, axiSlave_S2M_R_RLAST, axiSlave_S2M_R_RLAST_axiSlave_S2M_R_RLAST_HardLink, axiSlave_S2M_R_RRESP, axiSlave_S2M_R_RRESP_axiSlave_S2M_R_RRESP_HardLink, axiSlave_S2M_R_RUSER, axiSlave_S2M_R_RUSER_axiSlave_S2M_R_RUSER_HardLink, axiSlave_S2M_R_RVALID, axiSlave_S2M_R_RVALID_axiSlave_S2M_R_RVALID_HardLink, axiSlave_S2M_W_WREADY, axiSlave_S2M_W_WREADY_axiSlave_S2M_W_WREADY_HardLink, Inputs_M2S_AR_ARADDR, Inputs_M2S_AR_ARBURST, Inputs_M2S_AR_ARCACHE, Inputs_M2S_AR_ARID, Inputs_M2S_AR_ARLEN, Inputs_M2S_AR_ARLOCK, Inputs_M2S_AR_ARPROT, Inputs_M2S_AR_ARQOS, Inputs_M2S_AR_ARREGION, Inputs_M2S_AR_ARSIZE, Inputs_M2S_AR_ARUSER, Inputs_M2S_AR_ARVALID, Inputs_M2S_AW_AWADDR, Inputs_M2S_AW_AWBURST, Inputs_M2S_AW_AWCACHE, Inputs_M2S_AW_AWID, Inputs_M2S_AW_AWLEN, Inputs_M2S_AW_AWLOCK, Inputs_M2S_AW_AWPROT, Inputs_M2S_AW_AWQOS, Inputs_M2S_AW_AWREGION, Inputs_M2S_AW_AWSIZE, Inputs_M2S_AW_AWUSER, Inputs_M2S_AW_AWVALID, Inputs_M2S_B_BREADY, Inputs_M2S_R_RREADY, Inputs_M2S_W_WDATA, Inputs_M2S_W_WID, Inputs_M2S_W_WLAST, Inputs_M2S_W_WSTRB, Inputs_M2S_W_WUSER, Inputs_M2S_W_WVALID, internalDelayedTxWrite, internalSameTxWrite, internalWE, internalWSTRB, M2S_AR_ARADDR, M2S_AR_ARBURST, M2S_AR_ARCACHE, M2S_AR_ARID, M2S_AR_ARLEN, M2S_AR_ARLOCK, M2S_AR_ARPROT, M2S_AR_ARQOS, M2S_AR_ARREGION, M2S_AR_ARSIZE, M2S_AR_ARUSER, M2S_AR_ARVALID, M2S_AW_AWADDR, M2S_AW_AWBURST, M2S_AW_AWCACHE, M2S_AW_AWID, M2S_AW_AWLEN, M2S_AW_AWLOCK, M2S_AW_AWPROT, M2S_AW_AWQOS, M2S_AW_AWREGION, M2S_AW_AWSIZE, M2S_AW_AWUSER, M2S_AW_AWVALID, M2S_B_BREADY, M2S_R_RREADY, M2S_W_WDATA0, M2S_W_WDATA1, M2S_W_WDATA2, M2S_W_WDATA3, M2S_W_WID, M2S_W_WLAST, M2S_W_WSTRB, M2S_W_WUSER, M2S_W_WVALID, State_raddr, State_rdata, State_waddr, State_waddrSet, State_wdata, State_wdataSet, State_wstrb)
+	process (AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_0_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index, AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_1_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index, AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_2_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index, AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_3_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index, AXI4MemoryModule_L64F37T81_Expr, AXI4MemoryModule_L65F40T72_Expr, AXI4MemoryModule_L66F28T73_Expr, AXI4MemoryModule_L69F13L71T26_Ternary, AXI4MemoryModule_L74F13L76T26_Ternary, AXI4MemoryModule_L79F13L81T26_Ternary, AXI4MemoryModule_L84F13L86T26_Ternary, axiSlave_inARREADY, axiSlave_inAWREADY, axiSlave_inBVALID, axiSlave_inRDATA, axiSlave_inRVALID, axiSlave_inWREADY, axiSlave_M2S_AR_ARADDR, axiSlave_M2S_AR_ARBURST, axiSlave_M2S_AR_ARCACHE, axiSlave_M2S_AR_ARID, axiSlave_M2S_AR_ARLEN, axiSlave_M2S_AR_ARLOCK, axiSlave_M2S_AR_ARPROT, axiSlave_M2S_AR_ARQOS, axiSlave_M2S_AR_ARREGION, axiSlave_M2S_AR_ARSIZE, axiSlave_M2S_AR_ARUSER, axiSlave_M2S_AR_ARVALID, axiSlave_M2S_AW_AWADDR, axiSlave_M2S_AW_AWBURST, axiSlave_M2S_AW_AWCACHE, axiSlave_M2S_AW_AWID, axiSlave_M2S_AW_AWLEN, axiSlave_M2S_AW_AWLOCK, axiSlave_M2S_AW_AWPROT, axiSlave_M2S_AW_AWQOS, axiSlave_M2S_AW_AWREGION, axiSlave_M2S_AW_AWSIZE, axiSlave_M2S_AW_AWUSER, axiSlave_M2S_AW_AWVALID, axiSlave_M2S_B_BREADY, axiSlave_M2S_R_RREADY, axiSlave_M2S_W_WDATA, axiSlave_M2S_W_WID, axiSlave_M2S_W_WLAST, axiSlave_M2S_W_WSTRB, axiSlave_M2S_W_WUSER, axiSlave_M2S_W_WVALID, axiSlave_outARADDR, axiSlave_outARADDR_axiSlave_outARADDR_HardLink, axiSlave_outARREADYConfirming_axiSlave_outARREADYConfirming_HardLink, axiSlave_outARVALID_axiSlave_outARVALID_HardLink, axiSlave_outAWADDR, axiSlave_outAWADDR_axiSlave_outAWADDR_HardLink, axiSlave_outAWREADYConfirming_axiSlave_outAWREADYConfirming_HardLink, axiSlave_outAWVALID_axiSlave_outAWVALID_HardLink, axiSlave_outReadTXCompleting_axiSlave_outReadTXCompleting_HardLink, axiSlave_outWDATA, axiSlave_outWDATA0_axiSlave_outWDATA_HardLink, axiSlave_outWDATA1_axiSlave_outWDATA_HardLink, axiSlave_outWDATA2_axiSlave_outWDATA_HardLink, axiSlave_outWDATA3_axiSlave_outWDATA_HardLink, axiSlave_outWREADYConfirming_axiSlave_outWREADYConfirming_HardLink, axiSlave_outWriteTXCompleting_axiSlave_outWriteTXCompleting_HardLink, axiSlave_outWSTRB, axiSlave_outWSTRB_axiSlave_outWSTRB_HardLink, axiSlave_outWVALID_axiSlave_outWVALID_HardLink, axiSlave_S2M_AR_ARREADY, axiSlave_S2M_AR_ARREADY_axiSlave_S2M_AR_ARREADY_HardLink, axiSlave_S2M_AW_AWREADY, axiSlave_S2M_AW_AWREADY_axiSlave_S2M_AW_AWREADY_HardLink, axiSlave_S2M_B_BID, axiSlave_S2M_B_BID_axiSlave_S2M_B_BID_HardLink, axiSlave_S2M_B_BRESP, axiSlave_S2M_B_BRESP_axiSlave_S2M_B_BRESP_HardLink, axiSlave_S2M_B_BUSER, axiSlave_S2M_B_BUSER_axiSlave_S2M_B_BUSER_HardLink, axiSlave_S2M_B_BVALID, axiSlave_S2M_B_BVALID_axiSlave_S2M_B_BVALID_HardLink, axiSlave_S2M_R_RDATA, axiSlave_S2M_R_RDATA0_axiSlave_S2M_R_RDATA_HardLink, axiSlave_S2M_R_RDATA1_axiSlave_S2M_R_RDATA_HardLink, axiSlave_S2M_R_RDATA2_axiSlave_S2M_R_RDATA_HardLink, axiSlave_S2M_R_RDATA3_axiSlave_S2M_R_RDATA_HardLink, axiSlave_S2M_R_RID, axiSlave_S2M_R_RID_axiSlave_S2M_R_RID_HardLink, axiSlave_S2M_R_RLAST, axiSlave_S2M_R_RLAST_axiSlave_S2M_R_RLAST_HardLink, axiSlave_S2M_R_RRESP, axiSlave_S2M_R_RRESP_axiSlave_S2M_R_RRESP_HardLink, axiSlave_S2M_R_RUSER, axiSlave_S2M_R_RUSER_axiSlave_S2M_R_RUSER_HardLink, axiSlave_S2M_R_RVALID, axiSlave_S2M_R_RVALID_axiSlave_S2M_R_RVALID_HardLink, axiSlave_S2M_W_WREADY, axiSlave_S2M_W_WREADY_axiSlave_S2M_W_WREADY_HardLink, Inputs_M2S_AR_ARADDR, Inputs_M2S_AR_ARBURST, Inputs_M2S_AR_ARCACHE, Inputs_M2S_AR_ARID, Inputs_M2S_AR_ARLEN, Inputs_M2S_AR_ARLOCK, Inputs_M2S_AR_ARPROT, Inputs_M2S_AR_ARQOS, Inputs_M2S_AR_ARREGION, Inputs_M2S_AR_ARSIZE, Inputs_M2S_AR_ARUSER, Inputs_M2S_AR_ARVALID, Inputs_M2S_AW_AWADDR, Inputs_M2S_AW_AWBURST, Inputs_M2S_AW_AWCACHE, Inputs_M2S_AW_AWID, Inputs_M2S_AW_AWLEN, Inputs_M2S_AW_AWLOCK, Inputs_M2S_AW_AWPROT, Inputs_M2S_AW_AWQOS, Inputs_M2S_AW_AWREGION, Inputs_M2S_AW_AWSIZE, Inputs_M2S_AW_AWUSER, Inputs_M2S_AW_AWVALID, Inputs_M2S_B_BREADY, Inputs_M2S_R_RREADY, Inputs_M2S_W_WDATA, Inputs_M2S_W_WID, Inputs_M2S_W_WLAST, Inputs_M2S_W_WSTRB, Inputs_M2S_W_WUSER, Inputs_M2S_W_WVALID, internalDelayedTxWrite, internalSameTxWrite, internalWE, internalWSTRB, M2S_AR_ARADDR, M2S_AR_ARBURST, M2S_AR_ARCACHE, M2S_AR_ARID, M2S_AR_ARLEN, M2S_AR_ARLOCK, M2S_AR_ARPROT, M2S_AR_ARQOS, M2S_AR_ARREGION, M2S_AR_ARSIZE, M2S_AR_ARUSER, M2S_AR_ARVALID, M2S_AW_AWADDR, M2S_AW_AWBURST, M2S_AW_AWCACHE, M2S_AW_AWID, M2S_AW_AWLEN, M2S_AW_AWLOCK, M2S_AW_AWPROT, M2S_AW_AWQOS, M2S_AW_AWREGION, M2S_AW_AWSIZE, M2S_AW_AWUSER, M2S_AW_AWVALID, M2S_B_BREADY, M2S_R_RREADY, M2S_W_WDATA0, M2S_W_WDATA1, M2S_W_WDATA2, M2S_W_WDATA3, M2S_W_WID, M2S_W_WLAST, M2S_W_WSTRB, M2S_W_WUSER, M2S_W_WVALID, State_raddr, State_rdata, State_waddr, State_waddrSet, State_wdata, State_wdataSet, State_wstrb)
 	begin
 		AXI4MemoryModule_L64F37T81_Expr_1 <= Inputs_M2S_AW_AWVALID;
 		AXI4MemoryModule_L64F37T81_Expr_2 <= Inputs_M2S_W_WVALID;
@@ -633,13 +589,27 @@ begin
 		internalSameTxWrite <= AXI4MemoryModule_L64F37T81_Expr;
 		internalDelayedTxWrite <= AXI4MemoryModule_L65F40T72_Expr;
 		internalWE <= AXI4MemoryModule_L66F28T73_Expr;
-		internalWSTRB <= AXI4MemoryModule_L69F13L71T26_Lookup;
-		internalWADDR <= AXI4MemoryModule_L74F13L76T26_Lookup;
-		internalWDATA(0) <= AXI4MemoryModule_L79F13L81T26_Lookup(7 downto 0);
-		internalWDATA(1) <= AXI4MemoryModule_L79F13L81T26_Lookup(15 downto 8);
-		internalWDATA(2) <= AXI4MemoryModule_L79F13L81T26_Lookup(23 downto 16);
-		internalWDATA(3) <= AXI4MemoryModule_L79F13L81T26_Lookup(31 downto 24);
-		internalRADDR <= AXI4MemoryModule_L84F13L86T26_Lookup;
+		AXI4MemoryModule_L69F13L71T26_WhenTrue <= axiSlave_outWSTRB;
+		AXI4MemoryModule_L69F13L71T26_WhenFalse <= State_wstrb;
+		internalWSTRB <= AXI4MemoryModule_L69F13L71T26_Ternary;
+		AXI4MemoryModule_L74F13L76T26_WhenTrue <= axiSlave_outAWADDR;
+		AXI4MemoryModule_L74F13L76T26_WhenFalse <= State_waddr;
+		internalWADDR <= AXI4MemoryModule_L74F13L76T26_Ternary;
+		AXI4MemoryModule_L79F13L81T26_WhenTrue(31 downto 24) <= axiSlave_outWDATA(3);
+		AXI4MemoryModule_L79F13L81T26_WhenTrue(23 downto 16) <= axiSlave_outWDATA(2);
+		AXI4MemoryModule_L79F13L81T26_WhenTrue(15 downto 8) <= axiSlave_outWDATA(1);
+		AXI4MemoryModule_L79F13L81T26_WhenTrue(7 downto 0) <= axiSlave_outWDATA(0);
+		AXI4MemoryModule_L79F13L81T26_WhenFalse(31 downto 24) <= State_wdata(3);
+		AXI4MemoryModule_L79F13L81T26_WhenFalse(23 downto 16) <= State_wdata(2);
+		AXI4MemoryModule_L79F13L81T26_WhenFalse(15 downto 8) <= State_wdata(1);
+		AXI4MemoryModule_L79F13L81T26_WhenFalse(7 downto 0) <= State_wdata(0);
+		internalWDATA(0) <= AXI4MemoryModule_L79F13L81T26_Ternary(7 downto 0);
+		internalWDATA(1) <= AXI4MemoryModule_L79F13L81T26_Ternary(15 downto 8);
+		internalWDATA(2) <= AXI4MemoryModule_L79F13L81T26_Ternary(23 downto 16);
+		internalWDATA(3) <= AXI4MemoryModule_L79F13L81T26_Ternary(31 downto 24);
+		AXI4MemoryModule_L84F13L86T26_WhenTrue <= axiSlave_outARADDR;
+		AXI4MemoryModule_L84F13L86T26_WhenFalse <= State_raddr;
+		internalRADDR <= AXI4MemoryModule_L84F13L86T26_Ternary;
 		axiSlave_M2S_AR_ARID <= Inputs_M2S_AR_ARID;
 		axiSlave_M2S_AR_ARADDR <= Inputs_M2S_AR_ARADDR;
 		axiSlave_M2S_AR_ARLEN <= Inputs_M2S_AR_ARLEN;
@@ -779,24 +749,6 @@ begin
 		axiSlave_outWDATA(2) <= axiSlave_outWDATA2_axiSlave_outWDATA_HardLink;
 		axiSlave_outWDATA(3) <= axiSlave_outWDATA3_axiSlave_outWDATA_HardLink;
 		axiSlave_outWSTRB <= axiSlave_outWSTRB_axiSlave_outWSTRB_HardLink;
-		AXI4MemoryModule_L69F13L71T26_Lookup1 <= State_wstrb;
-		AXI4MemoryModule_L69F13L71T26_Lookup2 <= axiSlave_outWSTRB;
-		AXI4MemoryModule_L69F13L71T26_LookupMultiplexerAddress <= internalSameTxWrite;
-		AXI4MemoryModule_L74F13L76T26_Lookup1 <= State_waddr;
-		AXI4MemoryModule_L74F13L76T26_Lookup2 <= axiSlave_outAWADDR;
-		AXI4MemoryModule_L74F13L76T26_LookupMultiplexerAddress <= internalSameTxWrite;
-		AXI4MemoryModule_L79F13L81T26_Lookup1(31 downto 24) <= State_wdata(3);
-		AXI4MemoryModule_L79F13L81T26_Lookup1(23 downto 16) <= State_wdata(2);
-		AXI4MemoryModule_L79F13L81T26_Lookup1(15 downto 8) <= State_wdata(1);
-		AXI4MemoryModule_L79F13L81T26_Lookup1(7 downto 0) <= State_wdata(0);
-		AXI4MemoryModule_L79F13L81T26_Lookup2(31 downto 24) <= axiSlave_outWDATA(3);
-		AXI4MemoryModule_L79F13L81T26_Lookup2(23 downto 16) <= axiSlave_outWDATA(2);
-		AXI4MemoryModule_L79F13L81T26_Lookup2(15 downto 8) <= axiSlave_outWDATA(1);
-		AXI4MemoryModule_L79F13L81T26_Lookup2(7 downto 0) <= axiSlave_outWDATA(0);
-		AXI4MemoryModule_L79F13L81T26_LookupMultiplexerAddress <= internalSameTxWrite;
-		AXI4MemoryModule_L84F13L86T26_Lookup1 <= State_raddr;
-		AXI4MemoryModule_L84F13L86T26_Lookup2 <= axiSlave_outARADDR;
-		AXI4MemoryModule_L84F13L86T26_LookupMultiplexerAddress <= axiSlave_outARREADYConfirming;
 	end process;
 	-- inferred simple dual port RAM with write-first behaviour
 	process (Clock, AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_0_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F21T51_Expr, internalWADDR, internalWDATA, internalRADDR_reg0, State_buff0, internalRADDR)

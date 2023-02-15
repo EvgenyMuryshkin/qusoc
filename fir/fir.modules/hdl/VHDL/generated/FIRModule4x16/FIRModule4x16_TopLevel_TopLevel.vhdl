@@ -49,19 +49,6 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant State_coeff_coef_ram_wr_addrDefault : unsigned(8 downto 0) := "000000000";
-	constant State_coeff_coef_ram_wr_dataDefault : unsigned(15 downto 0) := "0000000000000000";
-	constant State_main_main_c_rd_addrDefault : unsigned(8 downto 0) := "000000000";
-	constant State_main_main_d_addrDefault : unsigned(9 downto 0) := "0000000000";
-	constant State_filo_fir_dregDefault : unsigned(31 downto 0) := "00000000000000000000000000000000";
-	constant State_dsp48_dsp48_resultDefault : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	constant State_dsp48_dsp48_srlDefault : unsigned(31 downto 0) := "00000000000000000000000000000000";
-	constant State_fir_fir_areg1Default : unsigned(49 downto 0) := "00000000000000000000000000000000000000000000000000";
-	constant State_fir_fir_areg2Default : unsigned(49 downto 0) := "00000000000000000000000000000000000000000000000000";
-	constant State_fir_fir_adregDefault : unsigned(49 downto 0) := "00000000000000000000000000000000000000000000000000";
-	constant State_fir_fir_bregDefault : unsigned(35 downto 0) := "000000000000000000000000000000000000";
-	constant State_fir_fir_mregDefault : unsigned(85 downto 0) := "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
-	constant State_fir_fir_pregDefault : unsigned(95 downto 0) := "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
 	constant firParams_Order : unsigned(2 downto 0) := "100";
 	constant firParams_DOSize : unsigned(2 downto 0) := "100";
 	constant firParams_IQSizeIn : unsigned(4 downto 0) := "10000";
@@ -378,6 +365,9 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal FIRModule_L205F28T44_FIRModule_L97F58T73_SignChange : signed(15 downto 0) := (others => '0');
 	signal FIRModule_L205F28T44_FIRModule_L97F58T87_Resize : signed(29 downto 0) := (others => '0');
 	signal FIRModule_L205F28T44_FIRModule_L97F58T98_SignChange : unsigned(29 downto 0) := (others => '0');
+	signal FIRModule_L206F33T125_WhenTrue : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L206F33T125_WhenFalse : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L206F33T125_Ternary : unsigned(8 downto 0) := "000000000";
 	signal FIRModule_L207F28T61_FIRModule_L97F58T73_SignChange : signed(15 downto 0) := (others => '0');
 	signal FIRModule_L207F28T61_FIRModule_L97F58T87_Resize : signed(24 downto 0) := (others => '0');
 	signal FIRModule_L207F28T61_FIRModule_L97F58T98_SignChange : unsigned(24 downto 0) := (others => '0');
@@ -391,6 +381,12 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal FIRModule_L210F13L217T14_1_FIRModule_L212F89T132_FIRModule_L97F58T73_SignChange : signed(15 downto 0) := (others => '0');
 	signal FIRModule_L210F13L217T14_1_FIRModule_L212F89T132_FIRModule_L97F58T87_Resize : signed(29 downto 0) := (others => '0');
 	signal FIRModule_L210F13L217T14_1_FIRModule_L212F89T132_FIRModule_L97F58T98_SignChange : unsigned(29 downto 0) := (others => '0');
+	signal FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_WhenTrue : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_WhenFalse : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_Ternary : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_WhenTrue : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_WhenFalse : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_Ternary : unsigned(8 downto 0) := "000000000";
 	signal FIRModule_L210F13L217T14_1_FIRModule_L214F32T65_FIRModule_L97F58T73_SignChange : signed(15 downto 0) := (others => '0');
 	signal FIRModule_L210F13L217T14_1_FIRModule_L214F32T65_FIRModule_L97F58T87_Resize : signed(24 downto 0) := (others => '0');
 	signal FIRModule_L210F13L217T14_1_FIRModule_L214F32T65_FIRModule_L97F58T98_SignChange : unsigned(24 downto 0) := (others => '0');
@@ -404,6 +400,12 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal FIRModule_L210F13L217T14_2_FIRModule_L212F89T132_FIRModule_L97F58T73_SignChange : signed(15 downto 0) := (others => '0');
 	signal FIRModule_L210F13L217T14_2_FIRModule_L212F89T132_FIRModule_L97F58T87_Resize : signed(29 downto 0) := (others => '0');
 	signal FIRModule_L210F13L217T14_2_FIRModule_L212F89T132_FIRModule_L97F58T98_SignChange : unsigned(29 downto 0) := (others => '0');
+	signal FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_WhenTrue : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_WhenFalse : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_Ternary : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_WhenTrue : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_WhenFalse : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_Ternary : unsigned(8 downto 0) := "000000000";
 	signal FIRModule_L210F13L217T14_2_FIRModule_L214F32T65_FIRModule_L97F58T73_SignChange : signed(15 downto 0) := (others => '0');
 	signal FIRModule_L210F13L217T14_2_FIRModule_L214F32T65_FIRModule_L97F58T87_Resize : signed(24 downto 0) := (others => '0');
 	signal FIRModule_L210F13L217T14_2_FIRModule_L214F32T65_FIRModule_L97F58T98_SignChange : unsigned(24 downto 0) := (others => '0');
@@ -417,6 +419,12 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal FIRModule_L210F13L217T14_3_FIRModule_L212F89T132_FIRModule_L97F58T73_SignChange : signed(15 downto 0) := (others => '0');
 	signal FIRModule_L210F13L217T14_3_FIRModule_L212F89T132_FIRModule_L97F58T87_Resize : signed(29 downto 0) := (others => '0');
 	signal FIRModule_L210F13L217T14_3_FIRModule_L212F89T132_FIRModule_L97F58T98_SignChange : unsigned(29 downto 0) := (others => '0');
+	signal FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_WhenTrue : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_WhenFalse : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_Ternary : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_WhenTrue : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_WhenFalse : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_Ternary : unsigned(8 downto 0) := "000000000";
 	signal FIRModule_L210F13L217T14_3_FIRModule_L214F32T65_FIRModule_L97F58T73_SignChange : signed(15 downto 0) := (others => '0');
 	signal FIRModule_L210F13L217T14_3_FIRModule_L214F32T65_FIRModule_L97F58T87_Resize : signed(24 downto 0) := (others => '0');
 	signal FIRModule_L210F13L217T14_3_FIRModule_L214F32T65_FIRModule_L97F58T98_SignChange : unsigned(24 downto 0) := (others => '0');
@@ -427,6 +435,9 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal FIRModule_L220F28T44_FIRModule_L97F58T73_SignChange : signed(15 downto 0) := (others => '0');
 	signal FIRModule_L220F28T44_FIRModule_L97F58T87_Resize : signed(29 downto 0) := (others => '0');
 	signal FIRModule_L220F28T44_FIRModule_L97F58T98_SignChange : unsigned(29 downto 0) := (others => '0');
+	signal FIRModule_L221F33T125_WhenTrue : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L221F33T125_WhenFalse : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L221F33T125_Ternary : unsigned(8 downto 0) := "000000000";
 	signal FIRModule_L222F28T61_FIRModule_L97F58T73_SignChange : signed(15 downto 0) := (others => '0');
 	signal FIRModule_L222F28T61_FIRModule_L97F58T87_Resize : signed(24 downto 0) := (others => '0');
 	signal FIRModule_L222F28T61_FIRModule_L97F58T98_SignChange : unsigned(24 downto 0) := (others => '0');
@@ -440,6 +451,12 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal FIRModule_L225F13L232T14_1_FIRModule_L227F89T132_FIRModule_L97F58T73_SignChange : signed(15 downto 0) := (others => '0');
 	signal FIRModule_L225F13L232T14_1_FIRModule_L227F89T132_FIRModule_L97F58T87_Resize : signed(29 downto 0) := (others => '0');
 	signal FIRModule_L225F13L232T14_1_FIRModule_L227F89T132_FIRModule_L97F58T98_SignChange : unsigned(29 downto 0) := (others => '0');
+	signal FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_WhenTrue : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_WhenFalse : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_Ternary : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_WhenTrue : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_WhenFalse : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_Ternary : unsigned(8 downto 0) := "000000000";
 	signal FIRModule_L225F13L232T14_1_FIRModule_L229F32T65_FIRModule_L97F58T73_SignChange : signed(15 downto 0) := (others => '0');
 	signal FIRModule_L225F13L232T14_1_FIRModule_L229F32T65_FIRModule_L97F58T87_Resize : signed(24 downto 0) := (others => '0');
 	signal FIRModule_L225F13L232T14_1_FIRModule_L229F32T65_FIRModule_L97F58T98_SignChange : unsigned(24 downto 0) := (others => '0');
@@ -453,6 +470,12 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal FIRModule_L225F13L232T14_2_FIRModule_L227F89T132_FIRModule_L97F58T73_SignChange : signed(15 downto 0) := (others => '0');
 	signal FIRModule_L225F13L232T14_2_FIRModule_L227F89T132_FIRModule_L97F58T87_Resize : signed(29 downto 0) := (others => '0');
 	signal FIRModule_L225F13L232T14_2_FIRModule_L227F89T132_FIRModule_L97F58T98_SignChange : unsigned(29 downto 0) := (others => '0');
+	signal FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_WhenTrue : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_WhenFalse : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_Ternary : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_WhenTrue : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_WhenFalse : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_Ternary : unsigned(8 downto 0) := "000000000";
 	signal FIRModule_L225F13L232T14_2_FIRModule_L229F32T65_FIRModule_L97F58T73_SignChange : signed(15 downto 0) := (others => '0');
 	signal FIRModule_L225F13L232T14_2_FIRModule_L229F32T65_FIRModule_L97F58T87_Resize : signed(24 downto 0) := (others => '0');
 	signal FIRModule_L225F13L232T14_2_FIRModule_L229F32T65_FIRModule_L97F58T98_SignChange : unsigned(24 downto 0) := (others => '0');
@@ -466,6 +489,12 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal FIRModule_L225F13L232T14_3_FIRModule_L227F89T132_FIRModule_L97F58T73_SignChange : signed(15 downto 0) := (others => '0');
 	signal FIRModule_L225F13L232T14_3_FIRModule_L227F89T132_FIRModule_L97F58T87_Resize : signed(29 downto 0) := (others => '0');
 	signal FIRModule_L225F13L232T14_3_FIRModule_L227F89T132_FIRModule_L97F58T98_SignChange : unsigned(29 downto 0) := (others => '0');
+	signal FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_WhenTrue : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_WhenFalse : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_Ternary : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_WhenTrue : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_WhenFalse : unsigned(8 downto 0) := "000000000";
+	signal FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_Ternary : unsigned(8 downto 0) := "000000000";
 	signal FIRModule_L225F13L232T14_3_FIRModule_L229F32T65_FIRModule_L97F58T73_SignChange : signed(15 downto 0) := (others => '0');
 	signal FIRModule_L225F13L232T14_3_FIRModule_L229F32T65_FIRModule_L97F58T87_Resize : signed(24 downto 0) := (others => '0');
 	signal FIRModule_L225F13L232T14_3_FIRModule_L229F32T65_FIRModule_L97F58T98_SignChange : unsigned(24 downto 0) := (others => '0');
@@ -802,62 +831,6 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L407F21T38_Expr : std_logic := '0';
 	signal FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L407F21T38_ExprLhs : signed(4 downto 0) := "00000";
 	signal FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L407F21T38_ExprRhs : signed(4 downto 0) := "00000";
-	signal FIRModule_L206F33T125_Lookup : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_Lookup : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_Lookup : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_Lookup : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_Lookup : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_Lookup : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_Lookup : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L221F33T125_Lookup : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_Lookup : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_Lookup : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_Lookup : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_Lookup : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_Lookup : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_Lookup : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L206F33T125_LookupMultiplexerAddress : std_logic := '0';
-	signal FIRModule_L206F33T125_Lookup1 : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L206F33T125_Lookup2 : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_LookupMultiplexerAddress : std_logic := '0';
-	signal FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_Lookup1 : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_Lookup2 : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_LookupMultiplexerAddress : std_logic := '0';
-	signal FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_Lookup1 : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_Lookup2 : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_LookupMultiplexerAddress : std_logic := '0';
-	signal FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_Lookup1 : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_Lookup2 : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_LookupMultiplexerAddress : std_logic := '0';
-	signal FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_Lookup1 : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_Lookup2 : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_LookupMultiplexerAddress : std_logic := '0';
-	signal FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_Lookup1 : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_Lookup2 : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_LookupMultiplexerAddress : std_logic := '0';
-	signal FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_Lookup1 : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_Lookup2 : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L221F33T125_LookupMultiplexerAddress : std_logic := '0';
-	signal FIRModule_L221F33T125_Lookup1 : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L221F33T125_Lookup2 : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_LookupMultiplexerAddress : std_logic := '0';
-	signal FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_Lookup1 : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_Lookup2 : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_LookupMultiplexerAddress : std_logic := '0';
-	signal FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_Lookup1 : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_Lookup2 : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_LookupMultiplexerAddress : std_logic := '0';
-	signal FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_Lookup1 : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_Lookup2 : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_LookupMultiplexerAddress : std_logic := '0';
-	signal FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_Lookup1 : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_Lookup2 : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_LookupMultiplexerAddress : std_logic := '0';
-	signal FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_Lookup1 : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_Lookup2 : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_LookupMultiplexerAddress : std_logic := '0';
-	signal FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_Lookup1 : unsigned(8 downto 0) := "000000000";
-	signal FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_Lookup2 : unsigned(8 downto 0) := "000000000";
 	type State_set_do_muxArray is array (0 to 3) of unsigned (3 downto 0);
 	signal State_set_do_mux : State_set_do_muxArray := (others => (others => '0'));
 	type NextState_set_do_muxArray is array (0 to 3) of unsigned (3 downto 0);
@@ -1060,188 +1033,6 @@ begin
 			else
 				for State_set_do_mux_Iterator in 0 to 3 loop
 					State_set_do_mux(State_set_do_mux_Iterator) <= NextState_set_do_mux(State_set_do_mux_Iterator);
-				end loop;
-			end if;
-		end if;
-	end process;
-	process (Clock, NextState_coeff_coef_ram_wr_addr, Reset)
-	begin
-		if rising_edge(Clock) then
-			if Reset = '1' then
-				for State_coeff_coef_ram_wr_addr_Iterator in 0 to 3 loop
-					State_coeff_coef_ram_wr_addr(State_coeff_coef_ram_wr_addr_Iterator) <= State_coeff_coef_ram_wr_addrDefault;
-				end loop;
-			else
-				for State_coeff_coef_ram_wr_addr_Iterator in 0 to 3 loop
-					State_coeff_coef_ram_wr_addr(State_coeff_coef_ram_wr_addr_Iterator) <= NextState_coeff_coef_ram_wr_addr(State_coeff_coef_ram_wr_addr_Iterator);
-				end loop;
-			end if;
-		end if;
-	end process;
-	process (Clock, NextState_coeff_coef_ram_wr_data, Reset)
-	begin
-		if rising_edge(Clock) then
-			if Reset = '1' then
-				for State_coeff_coef_ram_wr_data_Iterator in 0 to 3 loop
-					State_coeff_coef_ram_wr_data(State_coeff_coef_ram_wr_data_Iterator) <= State_coeff_coef_ram_wr_dataDefault;
-				end loop;
-			else
-				for State_coeff_coef_ram_wr_data_Iterator in 0 to 3 loop
-					State_coeff_coef_ram_wr_data(State_coeff_coef_ram_wr_data_Iterator) <= NextState_coeff_coef_ram_wr_data(State_coeff_coef_ram_wr_data_Iterator);
-				end loop;
-			end if;
-		end if;
-	end process;
-	process (Clock, NextState_main_main_c_rd_addr, Reset)
-	begin
-		if rising_edge(Clock) then
-			if Reset = '1' then
-				for State_main_main_c_rd_addr_Iterator in 0 to 3 loop
-					State_main_main_c_rd_addr(State_main_main_c_rd_addr_Iterator) <= State_main_main_c_rd_addrDefault;
-				end loop;
-			else
-				for State_main_main_c_rd_addr_Iterator in 0 to 3 loop
-					State_main_main_c_rd_addr(State_main_main_c_rd_addr_Iterator) <= NextState_main_main_c_rd_addr(State_main_main_c_rd_addr_Iterator);
-				end loop;
-			end if;
-		end if;
-	end process;
-	process (Clock, NextState_main_main_d_addr, Reset)
-	begin
-		if rising_edge(Clock) then
-			if Reset = '1' then
-				for State_main_main_d_addr_Iterator in 0 to 3 loop
-					State_main_main_d_addr(State_main_main_d_addr_Iterator) <= State_main_main_d_addrDefault;
-				end loop;
-			else
-				for State_main_main_d_addr_Iterator in 0 to 3 loop
-					State_main_main_d_addr(State_main_main_d_addr_Iterator) <= NextState_main_main_d_addr(State_main_main_d_addr_Iterator);
-				end loop;
-			end if;
-		end if;
-	end process;
-	process (Clock, NextState_filo_fir_dreg, Reset)
-	begin
-		if rising_edge(Clock) then
-			if Reset = '1' then
-				for State_filo_fir_dreg_Iterator in 0 to 3 loop
-					State_filo_fir_dreg(State_filo_fir_dreg_Iterator) <= State_filo_fir_dregDefault;
-				end loop;
-			else
-				for State_filo_fir_dreg_Iterator in 0 to 3 loop
-					State_filo_fir_dreg(State_filo_fir_dreg_Iterator) <= NextState_filo_fir_dreg(State_filo_fir_dreg_Iterator);
-				end loop;
-			end if;
-		end if;
-	end process;
-	process (Clock, NextState_dsp48_dsp48_result, Reset)
-	begin
-		if rising_edge(Clock) then
-			if Reset = '1' then
-				for State_dsp48_dsp48_result_Iterator in 0 to 9 loop
-					State_dsp48_dsp48_result(State_dsp48_dsp48_result_Iterator) <= State_dsp48_dsp48_resultDefault;
-				end loop;
-			else
-				for State_dsp48_dsp48_result_Iterator in 0 to 9 loop
-					State_dsp48_dsp48_result(State_dsp48_dsp48_result_Iterator) <= NextState_dsp48_dsp48_result(State_dsp48_dsp48_result_Iterator);
-				end loop;
-			end if;
-		end if;
-	end process;
-	process (Clock, NextState_dsp48_dsp48_srl, Reset)
-	begin
-		if rising_edge(Clock) then
-			if Reset = '1' then
-				for State_dsp48_dsp48_srl_Iterator in 0 to 6 loop
-					State_dsp48_dsp48_srl(State_dsp48_dsp48_srl_Iterator) <= State_dsp48_dsp48_srlDefault;
-				end loop;
-			else
-				for State_dsp48_dsp48_srl_Iterator in 0 to 6 loop
-					State_dsp48_dsp48_srl(State_dsp48_dsp48_srl_Iterator) <= NextState_dsp48_dsp48_srl(State_dsp48_dsp48_srl_Iterator);
-				end loop;
-			end if;
-		end if;
-	end process;
-	process (Clock, NextState_fir_fir_areg1, Reset)
-	begin
-		if rising_edge(Clock) then
-			if Reset = '1' then
-				for State_fir_fir_areg1_Iterator in 0 to 3 loop
-					State_fir_fir_areg1(State_fir_fir_areg1_Iterator) <= State_fir_fir_areg1Default;
-				end loop;
-			else
-				for State_fir_fir_areg1_Iterator in 0 to 3 loop
-					State_fir_fir_areg1(State_fir_fir_areg1_Iterator) <= NextState_fir_fir_areg1(State_fir_fir_areg1_Iterator);
-				end loop;
-			end if;
-		end if;
-	end process;
-	process (Clock, NextState_fir_fir_areg2, Reset)
-	begin
-		if rising_edge(Clock) then
-			if Reset = '1' then
-				for State_fir_fir_areg2_Iterator in 0 to 3 loop
-					State_fir_fir_areg2(State_fir_fir_areg2_Iterator) <= State_fir_fir_areg2Default;
-				end loop;
-			else
-				for State_fir_fir_areg2_Iterator in 0 to 3 loop
-					State_fir_fir_areg2(State_fir_fir_areg2_Iterator) <= NextState_fir_fir_areg2(State_fir_fir_areg2_Iterator);
-				end loop;
-			end if;
-		end if;
-	end process;
-	process (Clock, NextState_fir_fir_adreg, Reset)
-	begin
-		if rising_edge(Clock) then
-			if Reset = '1' then
-				for State_fir_fir_adreg_Iterator in 0 to 3 loop
-					State_fir_fir_adreg(State_fir_fir_adreg_Iterator) <= State_fir_fir_adregDefault;
-				end loop;
-			else
-				for State_fir_fir_adreg_Iterator in 0 to 3 loop
-					State_fir_fir_adreg(State_fir_fir_adreg_Iterator) <= NextState_fir_fir_adreg(State_fir_fir_adreg_Iterator);
-				end loop;
-			end if;
-		end if;
-	end process;
-	process (Clock, NextState_fir_fir_breg, Reset)
-	begin
-		if rising_edge(Clock) then
-			if Reset = '1' then
-				for State_fir_fir_breg_Iterator in 0 to 3 loop
-					State_fir_fir_breg(State_fir_fir_breg_Iterator) <= State_fir_fir_bregDefault;
-				end loop;
-			else
-				for State_fir_fir_breg_Iterator in 0 to 3 loop
-					State_fir_fir_breg(State_fir_fir_breg_Iterator) <= NextState_fir_fir_breg(State_fir_fir_breg_Iterator);
-				end loop;
-			end if;
-		end if;
-	end process;
-	process (Clock, NextState_fir_fir_mreg, Reset)
-	begin
-		if rising_edge(Clock) then
-			if Reset = '1' then
-				for State_fir_fir_mreg_Iterator in 0 to 3 loop
-					State_fir_fir_mreg(State_fir_fir_mreg_Iterator) <= State_fir_fir_mregDefault;
-				end loop;
-			else
-				for State_fir_fir_mreg_Iterator in 0 to 3 loop
-					State_fir_fir_mreg(State_fir_fir_mreg_Iterator) <= NextState_fir_fir_mreg(State_fir_fir_mreg_Iterator);
-				end loop;
-			end if;
-		end if;
-	end process;
-	process (Clock, NextState_fir_fir_preg, Reset)
-	begin
-		if rising_edge(Clock) then
-			if Reset = '1' then
-				for State_fir_fir_preg_Iterator in 0 to 3 loop
-					State_fir_fir_preg(State_fir_fir_preg_Iterator) <= State_fir_fir_pregDefault;
-				end loop;
-			else
-				for State_fir_fir_preg_Iterator in 0 to 3 loop
-					State_fir_fir_preg(State_fir_fir_preg_Iterator) <= NextState_fir_fir_preg(State_fir_fir_preg_Iterator);
 				end loop;
 			end if;
 		end if;
@@ -1671,161 +1462,21 @@ begin
 	;
 	FIRModule_L79F37L81T45_Ternary_i <= FIRModule_L80F15T61_WhenTrue_i when (FIRModule_L79F37T58_Expr = '1') else FIRModule_L81F15T45_WhenFalse_i;
 	FIRModule_L79F37L81T45_Ternary_q <= FIRModule_L80F15T61_WhenTrue_q when (FIRModule_L79F37T58_Expr = '1') else FIRModule_L81F15T45_WhenFalse_q;
-	process (FIRModule_L206F33T125_Lookup1, FIRModule_L206F33T125_Lookup2, FIRModule_L206F33T125_LookupMultiplexerAddress)
-	begin
-		case FIRModule_L206F33T125_LookupMultiplexerAddress is
-			when '0' =>
-				FIRModule_L206F33T125_Lookup <= FIRModule_L206F33T125_Lookup1;
-			when '1' =>
-				FIRModule_L206F33T125_Lookup <= FIRModule_L206F33T125_Lookup2;
-			when others =>
-				FIRModule_L206F33T125_Lookup <= "000000000";
-		end case;
-	end process;
-	process (FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_Lookup1, FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_Lookup2, FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_LookupMultiplexerAddress)
-	begin
-		case FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_LookupMultiplexerAddress is
-			when '0' =>
-				FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_Lookup <= FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_Lookup1;
-			when '1' =>
-				FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_Lookup <= FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_Lookup2;
-			when others =>
-				FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_Lookup <= "000000000000000000000000000000";
-		end case;
-	end process;
-	process (FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_Lookup1, FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_Lookup2, FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_LookupMultiplexerAddress)
-	begin
-		case FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_LookupMultiplexerAddress is
-			when '0' =>
-				FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_Lookup <= FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_Lookup1;
-			when '1' =>
-				FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_Lookup <= FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_Lookup2;
-			when others =>
-				FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_Lookup <= "000000000";
-		end case;
-	end process;
-	process (FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_Lookup1, FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_Lookup2, FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_LookupMultiplexerAddress)
-	begin
-		case FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_LookupMultiplexerAddress is
-			when '0' =>
-				FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_Lookup <= FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_Lookup1;
-			when '1' =>
-				FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_Lookup <= FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_Lookup2;
-			when others =>
-				FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_Lookup <= "000000000000000000000000000000";
-		end case;
-	end process;
-	process (FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_Lookup1, FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_Lookup2, FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_LookupMultiplexerAddress)
-	begin
-		case FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_LookupMultiplexerAddress is
-			when '0' =>
-				FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_Lookup <= FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_Lookup1;
-			when '1' =>
-				FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_Lookup <= FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_Lookup2;
-			when others =>
-				FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_Lookup <= "000000000";
-		end case;
-	end process;
-	process (FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_Lookup1, FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_Lookup2, FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_LookupMultiplexerAddress)
-	begin
-		case FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_LookupMultiplexerAddress is
-			when '0' =>
-				FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_Lookup <= FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_Lookup1;
-			when '1' =>
-				FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_Lookup <= FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_Lookup2;
-			when others =>
-				FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_Lookup <= "000000000000000000000000000000";
-		end case;
-	end process;
-	process (FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_Lookup1, FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_Lookup2, FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_LookupMultiplexerAddress)
-	begin
-		case FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_LookupMultiplexerAddress is
-			when '0' =>
-				FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_Lookup <= FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_Lookup1;
-			when '1' =>
-				FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_Lookup <= FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_Lookup2;
-			when others =>
-				FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_Lookup <= "000000000";
-		end case;
-	end process;
-	process (FIRModule_L221F33T125_Lookup1, FIRModule_L221F33T125_Lookup2, FIRModule_L221F33T125_LookupMultiplexerAddress)
-	begin
-		case FIRModule_L221F33T125_LookupMultiplexerAddress is
-			when '0' =>
-				FIRModule_L221F33T125_Lookup <= FIRModule_L221F33T125_Lookup1;
-			when '1' =>
-				FIRModule_L221F33T125_Lookup <= FIRModule_L221F33T125_Lookup2;
-			when others =>
-				FIRModule_L221F33T125_Lookup <= "000000000";
-		end case;
-	end process;
-	process (FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_Lookup1, FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_Lookup2, FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_LookupMultiplexerAddress)
-	begin
-		case FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_LookupMultiplexerAddress is
-			when '0' =>
-				FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_Lookup <= FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_Lookup1;
-			when '1' =>
-				FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_Lookup <= FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_Lookup2;
-			when others =>
-				FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_Lookup <= "000000000000000000000000000000";
-		end case;
-	end process;
-	process (FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_Lookup1, FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_Lookup2, FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_LookupMultiplexerAddress)
-	begin
-		case FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_LookupMultiplexerAddress is
-			when '0' =>
-				FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_Lookup <= FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_Lookup1;
-			when '1' =>
-				FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_Lookup <= FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_Lookup2;
-			when others =>
-				FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_Lookup <= "000000000";
-		end case;
-	end process;
-	process (FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_Lookup1, FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_Lookup2, FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_LookupMultiplexerAddress)
-	begin
-		case FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_LookupMultiplexerAddress is
-			when '0' =>
-				FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_Lookup <= FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_Lookup1;
-			when '1' =>
-				FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_Lookup <= FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_Lookup2;
-			when others =>
-				FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_Lookup <= "000000000000000000000000000000";
-		end case;
-	end process;
-	process (FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_Lookup1, FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_Lookup2, FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_LookupMultiplexerAddress)
-	begin
-		case FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_LookupMultiplexerAddress is
-			when '0' =>
-				FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_Lookup <= FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_Lookup1;
-			when '1' =>
-				FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_Lookup <= FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_Lookup2;
-			when others =>
-				FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_Lookup <= "000000000";
-		end case;
-	end process;
-	process (FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_Lookup1, FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_Lookup2, FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_LookupMultiplexerAddress)
-	begin
-		case FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_LookupMultiplexerAddress is
-			when '0' =>
-				FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_Lookup <= FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_Lookup1;
-			when '1' =>
-				FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_Lookup <= FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_Lookup2;
-			when others =>
-				FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_Lookup <= "000000000000000000000000000000";
-		end case;
-	end process;
-	process (FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_Lookup1, FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_Lookup2, FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_LookupMultiplexerAddress)
-	begin
-		case FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_LookupMultiplexerAddress is
-			when '0' =>
-				FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_Lookup <= FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_Lookup1;
-			when '1' =>
-				FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_Lookup <= FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_Lookup2;
-			when others =>
-				FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_Lookup <= "000000000";
-		end case;
-	end process;
-	process (dsp48_a, dsp48_b, dsp48_d, dsp48_p, FIRModule_L522F9L530T10_FIRModule_L523F13T29_FIRModule_L255F9L264T10_FIRModule_L257F39T63_Index, FIRModule_L522F9L530T10_FIRModule_L523F13T29_FIRModule_L255F9L264T10_FIRModule_L258F39T63_Index, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L273F21T72_Expr, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L274F17L285T18_FIRModule_L276F52T95_Expr, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L274F17L285T18_FIRModule_L277F25T79_Expr, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L274F17L285T18_FIRModule_L282F21L284T22_FIRModule_L283F59T90_Expr, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L287F17L289T18_FIRModule_L288F56T88_Expr, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L308F17T68_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L323F45T70_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L324F52T95_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L332F21T73_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L352F21T38_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L353F17L355T18_FIRModule_L354F53T79_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L357F17L366T18_FIRModule_L358F25T58_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L373F17L375T18_FIRModule_L374F49T74_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L377F52T95_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L389F51T82_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L390F51T82_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L391F48T97_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L392F48T97_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L394F21T49_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L395F17L399T18_FIRModule_L397F25T54_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L395F17L399T18_FIRModule_L398F51T71_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L401F17L405T18_FIRModule_L403F25T72_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L401F17L405T18_FIRModule_L404F51T71_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L407F21T38_Expr, ib_coef, ib_coef_v, ib_do, ib_iq_i, ib_iq_q, ib_iq_v, ramf_dout_i, ramf_dout_q, State_coeff_coef_ram_cnt, State_coeff_coef_ram_wr, State_coeff_coef_ram_wr_addr, State_coeff_coef_ram_wr_data, State_coeff_coef_wr_cnt_cell, State_coeff_coef_wr_cnt_ram, State_dsp48_dsp48_result, State_dsp48_dsp48_srl, State_filo_filo_addr_dec, State_filo_filo_addr_inc, State_filo_filo_addr_p, State_filo_filo_addr_p1, State_filo_filo_counter_dec, State_filo_filo_counter_inc, State_filo_filo_way, State_filo_fir_dreg, State_fir_fir_adreg, State_fir_fir_areg1, State_fir_fir_areg2, State_fir_fir_breg, State_fir_fir_mreg, State_fir_fir_preg, State_main_main_c_cnt, State_main_main_c_cnt_masked, State_main_main_c_rd_addr, State_main_main_c_rd_addr_cmn, State_main_main_d_addr, State_main_main_d_cnt, State_main_main_d_cnt_masked, State_main_main_d_cnt_rst, State_mult_reset_mult_reset, State_mult_reset_mult_reset_common, State_mult_reset_mult_reset_common_p, State_mult_reset_mult_reset_common_p1, State_mult_reset_mult_reset_common_p2, State_mult_reset_mult_reset_common_p3, State_mult_reset_mult_reset_dsp, State_ob_coef_rdy, State_ob_iq_i, State_ob_iq_q, State_ob_iq_v, State_set_coef_mask, State_set_data_mask, State_set_do, State_set_do_mux)
+	FIRModule_L206F33T125_Ternary <= FIRModule_L206F33T125_WhenTrue when (State_mult_reset_mult_reset_dsp(0) = '1') else FIRModule_L206F33T125_WhenFalse;
+	FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_Ternary <= FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_WhenTrue when (FIRModule_L210F13L217T14_1_FIRModule_L212F32T56_Expr = '1') else FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_WhenFalse;
+	FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_Ternary <= FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_WhenTrue when (State_mult_reset_mult_reset_dsp(1) = '1') else FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_WhenFalse;
+	FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_Ternary <= FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_WhenTrue when (FIRModule_L210F13L217T14_2_FIRModule_L212F32T56_Expr = '1') else FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_WhenFalse;
+	FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_Ternary <= FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_WhenTrue when (State_mult_reset_mult_reset_dsp(2) = '1') else FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_WhenFalse;
+	FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_Ternary <= FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_WhenTrue when (FIRModule_L210F13L217T14_3_FIRModule_L212F32T56_Expr = '1') else FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_WhenFalse;
+	FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_Ternary <= FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_WhenTrue when (State_mult_reset_mult_reset_dsp(3) = '1') else FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_WhenFalse;
+	FIRModule_L221F33T125_Ternary <= FIRModule_L221F33T125_WhenTrue when (State_mult_reset_mult_reset_dsp(0) = '1') else FIRModule_L221F33T125_WhenFalse;
+	FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_Ternary <= FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_WhenTrue when (FIRModule_L225F13L232T14_1_FIRModule_L227F32T56_Expr = '1') else FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_WhenFalse;
+	FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_Ternary <= FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_WhenTrue when (State_mult_reset_mult_reset_dsp(1) = '1') else FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_WhenFalse;
+	FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_Ternary <= FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_WhenTrue when (FIRModule_L225F13L232T14_2_FIRModule_L227F32T56_Expr = '1') else FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_WhenFalse;
+	FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_Ternary <= FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_WhenTrue when (State_mult_reset_mult_reset_dsp(2) = '1') else FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_WhenFalse;
+	FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_Ternary <= FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_WhenTrue when (FIRModule_L225F13L232T14_3_FIRModule_L227F32T56_Expr = '1') else FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_WhenFalse;
+	FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_Ternary <= FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_WhenTrue when (State_mult_reset_mult_reset_dsp(3) = '1') else FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_WhenFalse;
+	process (dsp48_a, dsp48_b, dsp48_d, dsp48_p, FIRModule_L522F9L530T10_FIRModule_L523F13T29_FIRModule_L255F9L264T10_FIRModule_L257F39T63_Index, FIRModule_L522F9L530T10_FIRModule_L523F13T29_FIRModule_L255F9L264T10_FIRModule_L258F39T63_Index, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L273F21T72_Expr, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L274F17L285T18_FIRModule_L276F52T95_Expr, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L274F17L285T18_FIRModule_L277F25T79_Expr, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L274F17L285T18_FIRModule_L282F21L284T22_FIRModule_L283F59T90_Expr, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L287F17L289T18_FIRModule_L288F56T88_Expr, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L308F17T68_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L323F45T70_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L324F52T95_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L332F21T73_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L352F21T38_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L353F17L355T18_FIRModule_L354F53T79_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L357F17L366T18_FIRModule_L358F25T58_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L373F17L375T18_FIRModule_L374F49T74_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L377F52T95_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L389F51T82_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L390F51T82_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L391F48T97_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L392F48T97_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L394F21T49_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L395F17L399T18_FIRModule_L397F25T54_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L395F17L399T18_FIRModule_L398F51T71_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L401F17L405T18_FIRModule_L403F25T72_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L401F17L405T18_FIRModule_L404F51T71_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L407F21T38_Expr, ib_coef, ib_coef_v, ib_do, ib_iq_i, ib_iq_q, ib_iq_v, ramf_dout_i, ramf_dout_q, State_coeff_coef_ram_cnt, State_coeff_coef_ram_wr, State_coeff_coef_wr_cnt_cell, State_coeff_coef_wr_cnt_ram, State_dsp48_dsp48_result, State_dsp48_dsp48_srl, State_filo_filo_addr_dec, State_filo_filo_addr_inc, State_filo_filo_addr_p, State_filo_filo_addr_p1, State_filo_filo_counter_dec, State_filo_filo_counter_inc, State_filo_filo_way, State_fir_fir_areg1, State_fir_fir_breg, State_fir_fir_mreg, State_main_main_c_cnt, State_main_main_c_cnt_masked, State_main_main_c_rd_addr_cmn, State_main_main_d_cnt, State_main_main_d_cnt_masked, State_main_main_d_cnt_rst, State_mult_reset_mult_reset, State_mult_reset_mult_reset_common, State_mult_reset_mult_reset_common_p, State_mult_reset_mult_reset_common_p1, State_mult_reset_mult_reset_common_p2, State_mult_reset_mult_reset_common_p3, State_mult_reset_mult_reset_dsp, State_ob_coef_rdy, State_ob_iq_i, State_ob_iq_q, State_ob_iq_v, State_set_coef_mask, State_set_data_mask, State_set_do, State_set_do_mux)
 	begin
 		for NextState_set_do_mux_Iterator in 0 to 3 loop
 			NextState_set_do_mux(NextState_set_do_mux_Iterator) <= State_set_do_mux(NextState_set_do_mux_Iterator);
@@ -1836,29 +1487,13 @@ begin
 		NextState_coeff_coef_wr_cnt_cell <= State_coeff_coef_wr_cnt_cell;
 		NextState_coeff_coef_wr_cnt_ram <= State_coeff_coef_wr_cnt_ram;
 		NextState_coeff_coef_ram_wr <= State_coeff_coef_ram_wr;
-		NextState_coeff_coef_ram_wr_addr(0) <= State_coeff_coef_ram_wr_addr(0);
-		NextState_coeff_coef_ram_wr_addr(1) <= State_coeff_coef_ram_wr_addr(1);
-		NextState_coeff_coef_ram_wr_addr(2) <= State_coeff_coef_ram_wr_addr(2);
-		NextState_coeff_coef_ram_wr_addr(3) <= State_coeff_coef_ram_wr_addr(3);
-		NextState_coeff_coef_ram_wr_data(0) <= State_coeff_coef_ram_wr_data(0);
-		NextState_coeff_coef_ram_wr_data(1) <= State_coeff_coef_ram_wr_data(1);
-		NextState_coeff_coef_ram_wr_data(2) <= State_coeff_coef_ram_wr_data(2);
-		NextState_coeff_coef_ram_wr_data(3) <= State_coeff_coef_ram_wr_data(3);
 		NextState_coeff_coef_ram_cnt <= State_coeff_coef_ram_cnt;
 		NextState_main_main_c_cnt <= State_main_main_c_cnt;
 		NextState_main_main_c_cnt_masked <= State_main_main_c_cnt_masked;
 		NextState_main_main_c_rd_addr_cmn <= State_main_main_c_rd_addr_cmn;
-		NextState_main_main_c_rd_addr(0) <= State_main_main_c_rd_addr(0);
-		NextState_main_main_c_rd_addr(1) <= State_main_main_c_rd_addr(1);
-		NextState_main_main_c_rd_addr(2) <= State_main_main_c_rd_addr(2);
-		NextState_main_main_c_rd_addr(3) <= State_main_main_c_rd_addr(3);
 		NextState_main_main_d_cnt <= State_main_main_d_cnt;
 		NextState_main_main_d_cnt_masked <= State_main_main_d_cnt_masked;
 		NextState_main_main_d_cnt_rst <= State_main_main_d_cnt_rst;
-		NextState_main_main_d_addr(0) <= State_main_main_d_addr(0);
-		NextState_main_main_d_addr(1) <= State_main_main_d_addr(1);
-		NextState_main_main_d_addr(2) <= State_main_main_d_addr(2);
-		NextState_main_main_d_addr(3) <= State_main_main_d_addr(3);
 		NextState_mult_reset_mult_reset <= State_mult_reset_mult_reset;
 		NextState_mult_reset_mult_reset_dsp <= State_mult_reset_mult_reset_dsp;
 		NextState_mult_reset_mult_reset_common <= State_mult_reset_mult_reset_common;
@@ -1873,51 +1508,6 @@ begin
 		NextState_filo_filo_addr_dec <= State_filo_filo_addr_dec;
 		NextState_filo_filo_addr_p <= State_filo_filo_addr_p;
 		NextState_filo_filo_addr_p1 <= State_filo_filo_addr_p1;
-		NextState_filo_fir_dreg(0) <= State_filo_fir_dreg(0);
-		NextState_filo_fir_dreg(1) <= State_filo_fir_dreg(1);
-		NextState_filo_fir_dreg(2) <= State_filo_fir_dreg(2);
-		NextState_filo_fir_dreg(3) <= State_filo_fir_dreg(3);
-		NextState_dsp48_dsp48_result(0) <= State_dsp48_dsp48_result(0);
-		NextState_dsp48_dsp48_result(1) <= State_dsp48_dsp48_result(1);
-		NextState_dsp48_dsp48_result(2) <= State_dsp48_dsp48_result(2);
-		NextState_dsp48_dsp48_result(3) <= State_dsp48_dsp48_result(3);
-		NextState_dsp48_dsp48_result(4) <= State_dsp48_dsp48_result(4);
-		NextState_dsp48_dsp48_result(5) <= State_dsp48_dsp48_result(5);
-		NextState_dsp48_dsp48_result(6) <= State_dsp48_dsp48_result(6);
-		NextState_dsp48_dsp48_result(7) <= State_dsp48_dsp48_result(7);
-		NextState_dsp48_dsp48_result(8) <= State_dsp48_dsp48_result(8);
-		NextState_dsp48_dsp48_result(9) <= State_dsp48_dsp48_result(9);
-		NextState_dsp48_dsp48_srl(0) <= State_dsp48_dsp48_srl(0);
-		NextState_dsp48_dsp48_srl(1) <= State_dsp48_dsp48_srl(1);
-		NextState_dsp48_dsp48_srl(2) <= State_dsp48_dsp48_srl(2);
-		NextState_dsp48_dsp48_srl(3) <= State_dsp48_dsp48_srl(3);
-		NextState_dsp48_dsp48_srl(4) <= State_dsp48_dsp48_srl(4);
-		NextState_dsp48_dsp48_srl(5) <= State_dsp48_dsp48_srl(5);
-		NextState_dsp48_dsp48_srl(6) <= State_dsp48_dsp48_srl(6);
-		NextState_fir_fir_areg1(0) <= State_fir_fir_areg1(0);
-		NextState_fir_fir_areg1(1) <= State_fir_fir_areg1(1);
-		NextState_fir_fir_areg1(2) <= State_fir_fir_areg1(2);
-		NextState_fir_fir_areg1(3) <= State_fir_fir_areg1(3);
-		NextState_fir_fir_areg2(0) <= State_fir_fir_areg2(0);
-		NextState_fir_fir_areg2(1) <= State_fir_fir_areg2(1);
-		NextState_fir_fir_areg2(2) <= State_fir_fir_areg2(2);
-		NextState_fir_fir_areg2(3) <= State_fir_fir_areg2(3);
-		NextState_fir_fir_adreg(0) <= State_fir_fir_adreg(0);
-		NextState_fir_fir_adreg(1) <= State_fir_fir_adreg(1);
-		NextState_fir_fir_adreg(2) <= State_fir_fir_adreg(2);
-		NextState_fir_fir_adreg(3) <= State_fir_fir_adreg(3);
-		NextState_fir_fir_breg(0) <= State_fir_fir_breg(0);
-		NextState_fir_fir_breg(1) <= State_fir_fir_breg(1);
-		NextState_fir_fir_breg(2) <= State_fir_fir_breg(2);
-		NextState_fir_fir_breg(3) <= State_fir_fir_breg(3);
-		NextState_fir_fir_mreg(0) <= State_fir_fir_mreg(0);
-		NextState_fir_fir_mreg(1) <= State_fir_fir_mreg(1);
-		NextState_fir_fir_mreg(2) <= State_fir_fir_mreg(2);
-		NextState_fir_fir_mreg(3) <= State_fir_fir_mreg(3);
-		NextState_fir_fir_preg(0) <= State_fir_fir_preg(0);
-		NextState_fir_fir_preg(1) <= State_fir_fir_preg(1);
-		NextState_fir_fir_preg(2) <= State_fir_fir_preg(2);
-		NextState_fir_fir_preg(3) <= State_fir_fir_preg(3);
 		NextState_ob_coef_rdy <= State_ob_coef_rdy;
 		NextState_ob_iq_v <= State_ob_iq_v;
 		NextState_ob_iq_i <= State_ob_iq_i;
@@ -2083,7 +1673,7 @@ begin
 			NextState_ob_iq_q <= State_dsp48_dsp48_result(TO_INTEGER(State_set_do))(47 downto 24);
 		end if;
 	end process;
-	process (dsp48_a, dsp48_b, dsp48_d, dsp48_opmode, dsp48_pcin, dsp48_pcout, FIRModule_L125F13L128T14_1_FIRModule_L127F31T47_Index, FIRModule_L125F13L128T14_2_FIRModule_L127F31T47_Index, FIRModule_L125F13L128T14_3_FIRModule_L127F31T47_Index, FIRModule_L205F28T44_FIRModule_L97F58T73_SignChange, FIRModule_L205F28T44_FIRModule_L97F58T87_Resize, FIRModule_L205F28T44_FIRModule_L97F58T98_SignChange, FIRModule_L206F33T125_Lookup, FIRModule_L207F28T61_FIRModule_L97F58T73_SignChange, FIRModule_L207F28T61_FIRModule_L97F58T87_Resize, FIRModule_L207F28T61_FIRModule_L97F58T98_SignChange, FIRModule_L208F28T49_FIRModule_L208F32T44_Index, FIRModule_L208F28T49_FIRModule_L97F58T73_SignChange, FIRModule_L208F28T49_FIRModule_L97F58T87_Resize, FIRModule_L208F28T49_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_Lookup, FIRModule_L210F13L217T14_1_FIRModule_L212F32T56_Expr, FIRModule_L210F13L217T14_1_FIRModule_L212F59T86_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_1_FIRModule_L212F59T86_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_1_FIRModule_L212F59T86_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_1_FIRModule_L212F89T132_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_1_FIRModule_L212F89T132_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_1_FIRModule_L212F89T132_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_Lookup, FIRModule_L210F13L217T14_1_FIRModule_L214F32T65_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_1_FIRModule_L214F32T65_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_1_FIRModule_L214F32T65_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_1_FIRModule_L215F32T53_FIRModule_L215F36T48_Index, FIRModule_L210F13L217T14_1_FIRModule_L215F32T53_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_1_FIRModule_L215F32T53_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_1_FIRModule_L215F32T53_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_Lookup, FIRModule_L210F13L217T14_2_FIRModule_L212F32T56_Expr, FIRModule_L210F13L217T14_2_FIRModule_L212F59T86_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_2_FIRModule_L212F59T86_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_2_FIRModule_L212F59T86_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_2_FIRModule_L212F89T132_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_2_FIRModule_L212F89T132_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_2_FIRModule_L212F89T132_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_Lookup, FIRModule_L210F13L217T14_2_FIRModule_L214F32T65_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_2_FIRModule_L214F32T65_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_2_FIRModule_L214F32T65_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_2_FIRModule_L215F32T53_FIRModule_L215F36T48_Index, FIRModule_L210F13L217T14_2_FIRModule_L215F32T53_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_2_FIRModule_L215F32T53_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_2_FIRModule_L215F32T53_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_Lookup, FIRModule_L210F13L217T14_3_FIRModule_L212F32T56_Expr, FIRModule_L210F13L217T14_3_FIRModule_L212F59T86_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_3_FIRModule_L212F59T86_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_3_FIRModule_L212F59T86_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_3_FIRModule_L212F89T132_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_3_FIRModule_L212F89T132_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_3_FIRModule_L212F89T132_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_Lookup, FIRModule_L210F13L217T14_3_FIRModule_L214F32T65_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_3_FIRModule_L214F32T65_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_3_FIRModule_L214F32T65_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_3_FIRModule_L215F32T53_FIRModule_L215F36T48_Index, FIRModule_L210F13L217T14_3_FIRModule_L215F32T53_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_3_FIRModule_L215F32T53_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_3_FIRModule_L215F32T53_FIRModule_L97F58T98_SignChange, FIRModule_L220F28T44_FIRModule_L97F58T73_SignChange, FIRModule_L220F28T44_FIRModule_L97F58T87_Resize, FIRModule_L220F28T44_FIRModule_L97F58T98_SignChange, FIRModule_L221F33T125_Lookup, FIRModule_L222F28T61_FIRModule_L97F58T73_SignChange, FIRModule_L222F28T61_FIRModule_L97F58T87_Resize, FIRModule_L222F28T61_FIRModule_L97F58T98_SignChange, FIRModule_L223F28T49_FIRModule_L223F32T44_Index, FIRModule_L223F28T49_FIRModule_L97F58T73_SignChange, FIRModule_L223F28T49_FIRModule_L97F58T87_Resize, FIRModule_L223F28T49_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_Lookup, FIRModule_L225F13L232T14_1_FIRModule_L227F32T56_Expr, FIRModule_L225F13L232T14_1_FIRModule_L227F59T86_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_1_FIRModule_L227F59T86_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_1_FIRModule_L227F59T86_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_1_FIRModule_L227F89T132_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_1_FIRModule_L227F89T132_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_1_FIRModule_L227F89T132_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_Lookup, FIRModule_L225F13L232T14_1_FIRModule_L229F32T65_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_1_FIRModule_L229F32T65_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_1_FIRModule_L229F32T65_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_1_FIRModule_L230F32T53_FIRModule_L230F36T48_Index, FIRModule_L225F13L232T14_1_FIRModule_L230F32T53_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_1_FIRModule_L230F32T53_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_1_FIRModule_L230F32T53_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_Lookup, FIRModule_L225F13L232T14_2_FIRModule_L227F32T56_Expr, FIRModule_L225F13L232T14_2_FIRModule_L227F59T86_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_2_FIRModule_L227F59T86_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_2_FIRModule_L227F59T86_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_2_FIRModule_L227F89T132_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_2_FIRModule_L227F89T132_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_2_FIRModule_L227F89T132_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_Lookup, FIRModule_L225F13L232T14_2_FIRModule_L229F32T65_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_2_FIRModule_L229F32T65_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_2_FIRModule_L229F32T65_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_2_FIRModule_L230F32T53_FIRModule_L230F36T48_Index, FIRModule_L225F13L232T14_2_FIRModule_L230F32T53_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_2_FIRModule_L230F32T53_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_2_FIRModule_L230F32T53_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_Lookup, FIRModule_L225F13L232T14_3_FIRModule_L227F32T56_Expr, FIRModule_L225F13L232T14_3_FIRModule_L227F59T86_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_3_FIRModule_L227F59T86_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_3_FIRModule_L227F59T86_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_3_FIRModule_L227F89T132_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_3_FIRModule_L227F89T132_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_3_FIRModule_L227F89T132_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_Lookup, FIRModule_L225F13L232T14_3_FIRModule_L229F32T65_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_3_FIRModule_L229F32T65_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_3_FIRModule_L229F32T65_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_3_FIRModule_L230F32T53_FIRModule_L230F36T48_Index, FIRModule_L225F13L232T14_3_FIRModule_L230F32T53_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_3_FIRModule_L230F32T53_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_3_FIRModule_L230F32T53_FIRModule_L97F58T98_SignChange, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L274F17L285T18_FIRModule_L276F52T91_Resize, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L308F45T68_Expr, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L308F49T68_Index, FIRModule_L79F37L81T45_Ternary_i, FIRModule_L79F37L81T45_Ternary_q, FIRModule_L81F15T45_Index, ib_iq_i, ib_iq_q, ib_iq_v, iCOEF_V, iCOEFF, iDO, iIQ_i, iIQ_q, iIQ_V, Inputs_iCOEF_V, Inputs_iCOEFF, Inputs_iDO, Inputs_iIQ_i, Inputs_iIQ_q, Inputs_iIQ_V, ramc_dout, ramd_din, ramd_dout, ramf_din_i, ramf_din_q, State_coeff_coef_ram_cnt, State_coeff_coef_ram_wr, State_coeff_coef_ram_wr_addr, State_coeff_coef_ram_wr_data, State_coeff_coef_wr_cnt_cell, State_coeff_coef_wr_cnt_ram, State_dsp48_dsp48_srl, State_filo_filo_addr_dec, State_filo_filo_addr_inc, State_filo_filo_addr_p, State_filo_filo_counter_dec, State_filo_filo_counter_inc, State_filo_filo_way, State_filo_fir_dreg, State_main_main_c_cnt, State_main_main_c_rd_addr, State_main_main_c_rd_addr_cmn, State_main_main_d_addr, State_main_main_d_cnt, State_main_main_d_cnt_masked, State_main_main_d_cnt_rst, State_mult_reset_mult_reset_dsp, State_ob_coef_rdy, State_ob_iq_i, State_ob_iq_q, State_ob_iq_v, State_set_coef_mask, State_set_data_mask, State_set_do, State_set_do_mux, u_dsp48_i0_A, u_dsp48_i0_B, u_dsp48_i0_CE, u_dsp48_i0_D, u_dsp48_i0_OPMODE, u_dsp48_i0_P, u_dsp48_i0_P_u_dsp48_i0_P_HardLink, u_dsp48_i0_PCIN, u_dsp48_i0_PCOUT, u_dsp48_i0_PCOUT_u_dsp48_i0_PCOUT_HardLink, u_dsp48_i0_RST, u_dsp48_i1_A, u_dsp48_i1_B, u_dsp48_i1_CE, u_dsp48_i1_D, u_dsp48_i1_OPMODE, u_dsp48_i1_P, u_dsp48_i1_P_u_dsp48_i1_P_HardLink, u_dsp48_i1_PCIN, u_dsp48_i1_PCOUT, u_dsp48_i1_PCOUT_u_dsp48_i1_PCOUT_HardLink, u_dsp48_i1_RST, u_dsp48_i2_A, u_dsp48_i2_B, u_dsp48_i2_CE, u_dsp48_i2_D, u_dsp48_i2_OPMODE, u_dsp48_i2_P, u_dsp48_i2_P_u_dsp48_i2_P_HardLink, u_dsp48_i2_PCIN, u_dsp48_i2_PCOUT, u_dsp48_i2_PCOUT_u_dsp48_i2_PCOUT_HardLink, u_dsp48_i2_RST, u_dsp48_i3_A, u_dsp48_i3_B, u_dsp48_i3_CE, u_dsp48_i3_D, u_dsp48_i3_OPMODE, u_dsp48_i3_P, u_dsp48_i3_P_u_dsp48_i3_P_HardLink, u_dsp48_i3_PCIN, u_dsp48_i3_PCOUT, u_dsp48_i3_PCOUT_u_dsp48_i3_PCOUT_HardLink, u_dsp48_i3_RST, u_dsp48_q0_A, u_dsp48_q0_B, u_dsp48_q0_CE, u_dsp48_q0_D, u_dsp48_q0_OPMODE, u_dsp48_q0_P, u_dsp48_q0_P_u_dsp48_q0_P_HardLink, u_dsp48_q0_PCIN, u_dsp48_q0_PCOUT, u_dsp48_q0_PCOUT_u_dsp48_q0_PCOUT_HardLink, u_dsp48_q0_RST, u_dsp48_q1_A, u_dsp48_q1_B, u_dsp48_q1_CE, u_dsp48_q1_D, u_dsp48_q1_OPMODE, u_dsp48_q1_P, u_dsp48_q1_P_u_dsp48_q1_P_HardLink, u_dsp48_q1_PCIN, u_dsp48_q1_PCOUT, u_dsp48_q1_PCOUT_u_dsp48_q1_PCOUT_HardLink, u_dsp48_q1_RST, u_dsp48_q2_A, u_dsp48_q2_B, u_dsp48_q2_CE, u_dsp48_q2_D, u_dsp48_q2_OPMODE, u_dsp48_q2_P, u_dsp48_q2_P_u_dsp48_q2_P_HardLink, u_dsp48_q2_PCIN, u_dsp48_q2_PCOUT, u_dsp48_q2_PCOUT_u_dsp48_q2_PCOUT_HardLink, u_dsp48_q2_RST, u_dsp48_q3_A, u_dsp48_q3_B, u_dsp48_q3_CE, u_dsp48_q3_D, u_dsp48_q3_OPMODE, u_dsp48_q3_P, u_dsp48_q3_P_u_dsp48_q3_P_HardLink, u_dsp48_q3_PCIN, u_dsp48_q3_PCOUT, u_dsp48_q3_PCOUT_u_dsp48_q3_PCOUT_HardLink, u_dsp48_q3_RST, u_ram_coef0_CE, u_ram_coef0_DIN, u_ram_coef0_DOUT, u_ram_coef0_DOUT_u_ram_coef0_DOUT_HardLink, u_ram_coef0_RD, u_ram_coef0_RD_ADDR, u_ram_coef0_WR, u_ram_coef0_WR_ADDR, u_ram_coef1_CE, u_ram_coef1_DIN, u_ram_coef1_DOUT, u_ram_coef1_DOUT_u_ram_coef1_DOUT_HardLink, u_ram_coef1_RD, u_ram_coef1_RD_ADDR, u_ram_coef1_WR, u_ram_coef1_WR_ADDR, u_ram_coef2_CE, u_ram_coef2_DIN, u_ram_coef2_DOUT, u_ram_coef2_DOUT_u_ram_coef2_DOUT_HardLink, u_ram_coef2_RD, u_ram_coef2_RD_ADDR, u_ram_coef2_WR, u_ram_coef2_WR_ADDR, u_ram_coef3_CE, u_ram_coef3_DIN, u_ram_coef3_DOUT, u_ram_coef3_DOUT_u_ram_coef3_DOUT_HardLink, u_ram_coef3_RD, u_ram_coef3_RD_ADDR, u_ram_coef3_WR, u_ram_coef3_WR_ADDR, u_ram_filo_i_CE, u_ram_filo_i_DIN, u_ram_filo_i_DOUT, u_ram_filo_i_DOUT_u_ram_filo_i_DOUT_HardLink, u_ram_filo_i_RD, u_ram_filo_i_RD_ADDR, u_ram_filo_i_WR, u_ram_filo_i_WR_ADDR, u_ram_filo_q_CE, u_ram_filo_q_DIN, u_ram_filo_q_DOUT, u_ram_filo_q_DOUT_u_ram_filo_q_DOUT_HardLink, u_ram_filo_q_RD, u_ram_filo_q_RD_ADDR, u_ram_filo_q_WR, u_ram_filo_q_WR_ADDR, u_ram_srls_i0_CE, u_ram_srls_i0_DIN, u_ram_srls_i0_DOUT, u_ram_srls_i0_DOUT_u_ram_srls_i0_DOUT_HardLink, u_ram_srls_i0_RD, u_ram_srls_i0_RD_ADDR, u_ram_srls_i0_WR, u_ram_srls_i0_WR_ADDR, u_ram_srls_i1_CE, u_ram_srls_i1_DIN, u_ram_srls_i1_DOUT, u_ram_srls_i1_DOUT_u_ram_srls_i1_DOUT_HardLink, u_ram_srls_i1_RD, u_ram_srls_i1_RD_ADDR, u_ram_srls_i1_WR, u_ram_srls_i1_WR_ADDR, u_ram_srls_i2_CE, u_ram_srls_i2_DIN, u_ram_srls_i2_DOUT, u_ram_srls_i2_DOUT_u_ram_srls_i2_DOUT_HardLink, u_ram_srls_i2_RD, u_ram_srls_i2_RD_ADDR, u_ram_srls_i2_WR, u_ram_srls_i2_WR_ADDR, u_ram_srls_i3_CE, u_ram_srls_i3_DIN, u_ram_srls_i3_DOUT, u_ram_srls_i3_DOUT_u_ram_srls_i3_DOUT_HardLink, u_ram_srls_i3_RD, u_ram_srls_i3_RD_ADDR, u_ram_srls_i3_WR, u_ram_srls_i3_WR_ADDR, u_ram_srls_q0_CE, u_ram_srls_q0_DIN, u_ram_srls_q0_DOUT, u_ram_srls_q0_DOUT_u_ram_srls_q0_DOUT_HardLink, u_ram_srls_q0_RD, u_ram_srls_q0_RD_ADDR, u_ram_srls_q0_WR, u_ram_srls_q0_WR_ADDR, u_ram_srls_q1_CE, u_ram_srls_q1_DIN, u_ram_srls_q1_DOUT, u_ram_srls_q1_DOUT_u_ram_srls_q1_DOUT_HardLink, u_ram_srls_q1_RD, u_ram_srls_q1_RD_ADDR, u_ram_srls_q1_WR, u_ram_srls_q1_WR_ADDR, u_ram_srls_q2_CE, u_ram_srls_q2_DIN, u_ram_srls_q2_DOUT, u_ram_srls_q2_DOUT_u_ram_srls_q2_DOUT_HardLink, u_ram_srls_q2_RD, u_ram_srls_q2_RD_ADDR, u_ram_srls_q2_WR, u_ram_srls_q2_WR_ADDR, u_ram_srls_q3_CE, u_ram_srls_q3_DIN, u_ram_srls_q3_DOUT, u_ram_srls_q3_DOUT_u_ram_srls_q3_DOUT_HardLink, u_ram_srls_q3_RD, u_ram_srls_q3_RD_ADDR, u_ram_srls_q3_WR, u_ram_srls_q3_WR_ADDR)
+	process (dsp48_a, dsp48_b, dsp48_d, dsp48_opmode, dsp48_pcin, dsp48_pcout, FIRModule_L125F13L128T14_1_FIRModule_L127F31T47_Index, FIRModule_L125F13L128T14_2_FIRModule_L127F31T47_Index, FIRModule_L125F13L128T14_3_FIRModule_L127F31T47_Index, FIRModule_L205F28T44_FIRModule_L97F58T73_SignChange, FIRModule_L205F28T44_FIRModule_L97F58T87_Resize, FIRModule_L205F28T44_FIRModule_L97F58T98_SignChange, FIRModule_L206F33T125_Ternary, FIRModule_L207F28T61_FIRModule_L97F58T73_SignChange, FIRModule_L207F28T61_FIRModule_L97F58T87_Resize, FIRModule_L207F28T61_FIRModule_L97F58T98_SignChange, FIRModule_L208F28T49_FIRModule_L208F32T44_Index, FIRModule_L208F28T49_FIRModule_L97F58T73_SignChange, FIRModule_L208F28T49_FIRModule_L97F58T87_Resize, FIRModule_L208F28T49_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_Ternary, FIRModule_L210F13L217T14_1_FIRModule_L212F59T86_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_1_FIRModule_L212F59T86_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_1_FIRModule_L212F59T86_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_1_FIRModule_L212F89T132_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_1_FIRModule_L212F89T132_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_1_FIRModule_L212F89T132_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_Ternary, FIRModule_L210F13L217T14_1_FIRModule_L214F32T65_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_1_FIRModule_L214F32T65_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_1_FIRModule_L214F32T65_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_1_FIRModule_L215F32T53_FIRModule_L215F36T48_Index, FIRModule_L210F13L217T14_1_FIRModule_L215F32T53_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_1_FIRModule_L215F32T53_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_1_FIRModule_L215F32T53_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_Ternary, FIRModule_L210F13L217T14_2_FIRModule_L212F59T86_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_2_FIRModule_L212F59T86_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_2_FIRModule_L212F59T86_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_2_FIRModule_L212F89T132_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_2_FIRModule_L212F89T132_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_2_FIRModule_L212F89T132_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_Ternary, FIRModule_L210F13L217T14_2_FIRModule_L214F32T65_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_2_FIRModule_L214F32T65_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_2_FIRModule_L214F32T65_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_2_FIRModule_L215F32T53_FIRModule_L215F36T48_Index, FIRModule_L210F13L217T14_2_FIRModule_L215F32T53_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_2_FIRModule_L215F32T53_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_2_FIRModule_L215F32T53_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_Ternary, FIRModule_L210F13L217T14_3_FIRModule_L212F59T86_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_3_FIRModule_L212F59T86_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_3_FIRModule_L212F59T86_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_3_FIRModule_L212F89T132_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_3_FIRModule_L212F89T132_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_3_FIRModule_L212F89T132_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_Ternary, FIRModule_L210F13L217T14_3_FIRModule_L214F32T65_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_3_FIRModule_L214F32T65_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_3_FIRModule_L214F32T65_FIRModule_L97F58T98_SignChange, FIRModule_L210F13L217T14_3_FIRModule_L215F32T53_FIRModule_L215F36T48_Index, FIRModule_L210F13L217T14_3_FIRModule_L215F32T53_FIRModule_L97F58T73_SignChange, FIRModule_L210F13L217T14_3_FIRModule_L215F32T53_FIRModule_L97F58T87_Resize, FIRModule_L210F13L217T14_3_FIRModule_L215F32T53_FIRModule_L97F58T98_SignChange, FIRModule_L220F28T44_FIRModule_L97F58T73_SignChange, FIRModule_L220F28T44_FIRModule_L97F58T87_Resize, FIRModule_L220F28T44_FIRModule_L97F58T98_SignChange, FIRModule_L221F33T125_Ternary, FIRModule_L222F28T61_FIRModule_L97F58T73_SignChange, FIRModule_L222F28T61_FIRModule_L97F58T87_Resize, FIRModule_L222F28T61_FIRModule_L97F58T98_SignChange, FIRModule_L223F28T49_FIRModule_L223F32T44_Index, FIRModule_L223F28T49_FIRModule_L97F58T73_SignChange, FIRModule_L223F28T49_FIRModule_L97F58T87_Resize, FIRModule_L223F28T49_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_Ternary, FIRModule_L225F13L232T14_1_FIRModule_L227F59T86_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_1_FIRModule_L227F59T86_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_1_FIRModule_L227F59T86_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_1_FIRModule_L227F89T132_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_1_FIRModule_L227F89T132_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_1_FIRModule_L227F89T132_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_Ternary, FIRModule_L225F13L232T14_1_FIRModule_L229F32T65_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_1_FIRModule_L229F32T65_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_1_FIRModule_L229F32T65_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_1_FIRModule_L230F32T53_FIRModule_L230F36T48_Index, FIRModule_L225F13L232T14_1_FIRModule_L230F32T53_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_1_FIRModule_L230F32T53_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_1_FIRModule_L230F32T53_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_Ternary, FIRModule_L225F13L232T14_2_FIRModule_L227F59T86_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_2_FIRModule_L227F59T86_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_2_FIRModule_L227F59T86_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_2_FIRModule_L227F89T132_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_2_FIRModule_L227F89T132_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_2_FIRModule_L227F89T132_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_Ternary, FIRModule_L225F13L232T14_2_FIRModule_L229F32T65_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_2_FIRModule_L229F32T65_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_2_FIRModule_L229F32T65_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_2_FIRModule_L230F32T53_FIRModule_L230F36T48_Index, FIRModule_L225F13L232T14_2_FIRModule_L230F32T53_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_2_FIRModule_L230F32T53_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_2_FIRModule_L230F32T53_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_Ternary, FIRModule_L225F13L232T14_3_FIRModule_L227F59T86_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_3_FIRModule_L227F59T86_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_3_FIRModule_L227F59T86_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_3_FIRModule_L227F89T132_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_3_FIRModule_L227F89T132_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_3_FIRModule_L227F89T132_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_Ternary, FIRModule_L225F13L232T14_3_FIRModule_L229F32T65_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_3_FIRModule_L229F32T65_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_3_FIRModule_L229F32T65_FIRModule_L97F58T98_SignChange, FIRModule_L225F13L232T14_3_FIRModule_L230F32T53_FIRModule_L230F36T48_Index, FIRModule_L225F13L232T14_3_FIRModule_L230F32T53_FIRModule_L97F58T73_SignChange, FIRModule_L225F13L232T14_3_FIRModule_L230F32T53_FIRModule_L97F58T87_Resize, FIRModule_L225F13L232T14_3_FIRModule_L230F32T53_FIRModule_L97F58T98_SignChange, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L274F17L285T18_FIRModule_L276F52T91_Resize, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L308F45T68_Expr, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L308F49T68_Index, FIRModule_L79F37L81T45_Ternary_i, FIRModule_L79F37L81T45_Ternary_q, FIRModule_L81F15T45_Index, ib_iq_i, ib_iq_q, ib_iq_v, iCOEF_V, iCOEFF, iDO, iIQ_i, iIQ_q, iIQ_V, Inputs_iCOEF_V, Inputs_iCOEFF, Inputs_iDO, Inputs_iIQ_i, Inputs_iIQ_q, Inputs_iIQ_V, ramc_dout, ramd_din, ramd_dout, ramf_din_i, ramf_din_q, State_coeff_coef_ram_cnt, State_coeff_coef_ram_wr, State_coeff_coef_ram_wr_addr, State_coeff_coef_ram_wr_data, State_coeff_coef_wr_cnt_cell, State_coeff_coef_wr_cnt_ram, State_dsp48_dsp48_srl, State_filo_filo_addr_dec, State_filo_filo_addr_inc, State_filo_filo_addr_p, State_filo_filo_counter_dec, State_filo_filo_counter_inc, State_filo_filo_way, State_filo_fir_dreg, State_main_main_c_cnt, State_main_main_c_rd_addr, State_main_main_c_rd_addr_cmn, State_main_main_d_addr, State_main_main_d_cnt, State_main_main_d_cnt_masked, State_main_main_d_cnt_rst, State_ob_coef_rdy, State_ob_iq_i, State_ob_iq_q, State_ob_iq_v, State_set_coef_mask, State_set_data_mask, State_set_do, State_set_do_mux, u_dsp48_i0_A, u_dsp48_i0_B, u_dsp48_i0_CE, u_dsp48_i0_D, u_dsp48_i0_OPMODE, u_dsp48_i0_P, u_dsp48_i0_P_u_dsp48_i0_P_HardLink, u_dsp48_i0_PCIN, u_dsp48_i0_PCOUT, u_dsp48_i0_PCOUT_u_dsp48_i0_PCOUT_HardLink, u_dsp48_i0_RST, u_dsp48_i1_A, u_dsp48_i1_B, u_dsp48_i1_CE, u_dsp48_i1_D, u_dsp48_i1_OPMODE, u_dsp48_i1_P, u_dsp48_i1_P_u_dsp48_i1_P_HardLink, u_dsp48_i1_PCIN, u_dsp48_i1_PCOUT, u_dsp48_i1_PCOUT_u_dsp48_i1_PCOUT_HardLink, u_dsp48_i1_RST, u_dsp48_i2_A, u_dsp48_i2_B, u_dsp48_i2_CE, u_dsp48_i2_D, u_dsp48_i2_OPMODE, u_dsp48_i2_P, u_dsp48_i2_P_u_dsp48_i2_P_HardLink, u_dsp48_i2_PCIN, u_dsp48_i2_PCOUT, u_dsp48_i2_PCOUT_u_dsp48_i2_PCOUT_HardLink, u_dsp48_i2_RST, u_dsp48_i3_A, u_dsp48_i3_B, u_dsp48_i3_CE, u_dsp48_i3_D, u_dsp48_i3_OPMODE, u_dsp48_i3_P, u_dsp48_i3_P_u_dsp48_i3_P_HardLink, u_dsp48_i3_PCIN, u_dsp48_i3_PCOUT, u_dsp48_i3_PCOUT_u_dsp48_i3_PCOUT_HardLink, u_dsp48_i3_RST, u_dsp48_q0_A, u_dsp48_q0_B, u_dsp48_q0_CE, u_dsp48_q0_D, u_dsp48_q0_OPMODE, u_dsp48_q0_P, u_dsp48_q0_P_u_dsp48_q0_P_HardLink, u_dsp48_q0_PCIN, u_dsp48_q0_PCOUT, u_dsp48_q0_PCOUT_u_dsp48_q0_PCOUT_HardLink, u_dsp48_q0_RST, u_dsp48_q1_A, u_dsp48_q1_B, u_dsp48_q1_CE, u_dsp48_q1_D, u_dsp48_q1_OPMODE, u_dsp48_q1_P, u_dsp48_q1_P_u_dsp48_q1_P_HardLink, u_dsp48_q1_PCIN, u_dsp48_q1_PCOUT, u_dsp48_q1_PCOUT_u_dsp48_q1_PCOUT_HardLink, u_dsp48_q1_RST, u_dsp48_q2_A, u_dsp48_q2_B, u_dsp48_q2_CE, u_dsp48_q2_D, u_dsp48_q2_OPMODE, u_dsp48_q2_P, u_dsp48_q2_P_u_dsp48_q2_P_HardLink, u_dsp48_q2_PCIN, u_dsp48_q2_PCOUT, u_dsp48_q2_PCOUT_u_dsp48_q2_PCOUT_HardLink, u_dsp48_q2_RST, u_dsp48_q3_A, u_dsp48_q3_B, u_dsp48_q3_CE, u_dsp48_q3_D, u_dsp48_q3_OPMODE, u_dsp48_q3_P, u_dsp48_q3_P_u_dsp48_q3_P_HardLink, u_dsp48_q3_PCIN, u_dsp48_q3_PCOUT, u_dsp48_q3_PCOUT_u_dsp48_q3_PCOUT_HardLink, u_dsp48_q3_RST, u_ram_coef0_CE, u_ram_coef0_DIN, u_ram_coef0_DOUT, u_ram_coef0_DOUT_u_ram_coef0_DOUT_HardLink, u_ram_coef0_RD, u_ram_coef0_RD_ADDR, u_ram_coef0_WR, u_ram_coef0_WR_ADDR, u_ram_coef1_CE, u_ram_coef1_DIN, u_ram_coef1_DOUT, u_ram_coef1_DOUT_u_ram_coef1_DOUT_HardLink, u_ram_coef1_RD, u_ram_coef1_RD_ADDR, u_ram_coef1_WR, u_ram_coef1_WR_ADDR, u_ram_coef2_CE, u_ram_coef2_DIN, u_ram_coef2_DOUT, u_ram_coef2_DOUT_u_ram_coef2_DOUT_HardLink, u_ram_coef2_RD, u_ram_coef2_RD_ADDR, u_ram_coef2_WR, u_ram_coef2_WR_ADDR, u_ram_coef3_CE, u_ram_coef3_DIN, u_ram_coef3_DOUT, u_ram_coef3_DOUT_u_ram_coef3_DOUT_HardLink, u_ram_coef3_RD, u_ram_coef3_RD_ADDR, u_ram_coef3_WR, u_ram_coef3_WR_ADDR, u_ram_filo_i_CE, u_ram_filo_i_DIN, u_ram_filo_i_DOUT, u_ram_filo_i_DOUT_u_ram_filo_i_DOUT_HardLink, u_ram_filo_i_RD, u_ram_filo_i_RD_ADDR, u_ram_filo_i_WR, u_ram_filo_i_WR_ADDR, u_ram_filo_q_CE, u_ram_filo_q_DIN, u_ram_filo_q_DOUT, u_ram_filo_q_DOUT_u_ram_filo_q_DOUT_HardLink, u_ram_filo_q_RD, u_ram_filo_q_RD_ADDR, u_ram_filo_q_WR, u_ram_filo_q_WR_ADDR, u_ram_srls_i0_CE, u_ram_srls_i0_DIN, u_ram_srls_i0_DOUT, u_ram_srls_i0_DOUT_u_ram_srls_i0_DOUT_HardLink, u_ram_srls_i0_RD, u_ram_srls_i0_RD_ADDR, u_ram_srls_i0_WR, u_ram_srls_i0_WR_ADDR, u_ram_srls_i1_CE, u_ram_srls_i1_DIN, u_ram_srls_i1_DOUT, u_ram_srls_i1_DOUT_u_ram_srls_i1_DOUT_HardLink, u_ram_srls_i1_RD, u_ram_srls_i1_RD_ADDR, u_ram_srls_i1_WR, u_ram_srls_i1_WR_ADDR, u_ram_srls_i2_CE, u_ram_srls_i2_DIN, u_ram_srls_i2_DOUT, u_ram_srls_i2_DOUT_u_ram_srls_i2_DOUT_HardLink, u_ram_srls_i2_RD, u_ram_srls_i2_RD_ADDR, u_ram_srls_i2_WR, u_ram_srls_i2_WR_ADDR, u_ram_srls_i3_CE, u_ram_srls_i3_DIN, u_ram_srls_i3_DOUT, u_ram_srls_i3_DOUT_u_ram_srls_i3_DOUT_HardLink, u_ram_srls_i3_RD, u_ram_srls_i3_RD_ADDR, u_ram_srls_i3_WR, u_ram_srls_i3_WR_ADDR, u_ram_srls_q0_CE, u_ram_srls_q0_DIN, u_ram_srls_q0_DOUT, u_ram_srls_q0_DOUT_u_ram_srls_q0_DOUT_HardLink, u_ram_srls_q0_RD, u_ram_srls_q0_RD_ADDR, u_ram_srls_q0_WR, u_ram_srls_q0_WR_ADDR, u_ram_srls_q1_CE, u_ram_srls_q1_DIN, u_ram_srls_q1_DOUT, u_ram_srls_q1_DOUT_u_ram_srls_q1_DOUT_HardLink, u_ram_srls_q1_RD, u_ram_srls_q1_RD_ADDR, u_ram_srls_q1_WR, u_ram_srls_q1_WR_ADDR, u_ram_srls_q2_CE, u_ram_srls_q2_DIN, u_ram_srls_q2_DOUT, u_ram_srls_q2_DOUT_u_ram_srls_q2_DOUT_HardLink, u_ram_srls_q2_RD, u_ram_srls_q2_RD_ADDR, u_ram_srls_q2_WR, u_ram_srls_q2_WR_ADDR, u_ram_srls_q3_CE, u_ram_srls_q3_DIN, u_ram_srls_q3_DOUT, u_ram_srls_q3_DOUT_u_ram_srls_q3_DOUT_HardLink, u_ram_srls_q3_RD, u_ram_srls_q3_RD_ADDR, u_ram_srls_q3_WR, u_ram_srls_q3_WR_ADDR)
 	begin
 		FIRModule_L79F37T58_ExprLhs(4) <= '0';
 		FIRModule_L79F37T58_ExprLhs(3 downto 0) <= signed(State_set_do);
@@ -2378,7 +1968,11 @@ begin
 		FIRModule_L205F28T44_FIRModule_L97F58T87_Resize(15 downto 0) <= FIRModule_L205F28T44_FIRModule_L97F58T73_SignChange;
 		FIRModule_L205F28T44_FIRModule_L97F58T98_SignChange <= unsigned(FIRModule_L205F28T44_FIRModule_L97F58T87_Resize);
 		dsp48_a(0)(29 downto 0) <= FIRModule_L205F28T44_FIRModule_L97F58T98_SignChange;
-		dsp48_opmode(0)(6 downto 0) <= FIRModule_L206F33T125_Lookup(6 downto 0);
+		FIRModule_L206F33T125_WhenTrue(8 downto 7) <= (others => '0');
+		FIRModule_L206F33T125_WhenTrue(6 downto 0) <= FIRModule_L206F86T95_Expr;
+		FIRModule_L206F33T125_WhenFalse(8 downto 7) <= (others => '0');
+		FIRModule_L206F33T125_WhenFalse(6 downto 0) <= FIRModule_L206F115T124_Expr;
+		dsp48_opmode(0)(6 downto 0) <= FIRModule_L206F33T125_Ternary(6 downto 0);
 		FIRModule_L207F28T61_FIRModule_L97F58T73_SignChange <= signed(State_filo_fir_dreg(0)(15 downto 0));
 		FIRModule_L207F28T61_FIRModule_L97F58T87_Resize(24 downto 16) <= (others => FIRModule_L207F28T61_FIRModule_L97F58T73_SignChange(15));
 		FIRModule_L207F28T61_FIRModule_L97F58T87_Resize(15 downto 0) <= FIRModule_L207F28T61_FIRModule_L97F58T73_SignChange;
@@ -2397,8 +1991,14 @@ begin
 		FIRModule_L210F13L217T14_1_FIRModule_L212F89T132_FIRModule_L97F58T87_Resize(29 downto 16) <= (others => FIRModule_L210F13L217T14_1_FIRModule_L212F89T132_FIRModule_L97F58T73_SignChange(15));
 		FIRModule_L210F13L217T14_1_FIRModule_L212F89T132_FIRModule_L97F58T87_Resize(15 downto 0) <= FIRModule_L210F13L217T14_1_FIRModule_L212F89T132_FIRModule_L97F58T73_SignChange;
 		FIRModule_L210F13L217T14_1_FIRModule_L212F89T132_FIRModule_L97F58T98_SignChange <= unsigned(FIRModule_L210F13L217T14_1_FIRModule_L212F89T132_FIRModule_L97F58T87_Resize);
-		dsp48_a(1)(29 downto 0) <= FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_Lookup;
-		dsp48_opmode(1)(6 downto 0) <= FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_Lookup(6 downto 0);
+		FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_WhenTrue <= FIRModule_L210F13L217T14_1_FIRModule_L212F59T86_FIRModule_L97F58T98_SignChange;
+		FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_WhenFalse <= FIRModule_L210F13L217T14_1_FIRModule_L212F89T132_FIRModule_L97F58T98_SignChange;
+		dsp48_a(1)(29 downto 0) <= FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_Ternary;
+		FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_WhenTrue(8 downto 7) <= (others => '0');
+		FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_WhenTrue(6 downto 0) <= FIRModule_L210F13L217T14_1_FIRModule_L213F90T99_Expr;
+		FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_WhenFalse(8 downto 7) <= (others => '0');
+		FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_WhenFalse(6 downto 0) <= FIRModule_L210F13L217T14_1_FIRModule_L213F119T128_Expr;
+		dsp48_opmode(1)(6 downto 0) <= FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_Ternary(6 downto 0);
 		FIRModule_L210F13L217T14_1_FIRModule_L214F32T65_FIRModule_L97F58T73_SignChange <= signed(State_filo_fir_dreg(1)(15 downto 0));
 		FIRModule_L210F13L217T14_1_FIRModule_L214F32T65_FIRModule_L97F58T87_Resize(24 downto 16) <= (others => FIRModule_L210F13L217T14_1_FIRModule_L214F32T65_FIRModule_L97F58T73_SignChange(15));
 		FIRModule_L210F13L217T14_1_FIRModule_L214F32T65_FIRModule_L97F58T87_Resize(15 downto 0) <= FIRModule_L210F13L217T14_1_FIRModule_L214F32T65_FIRModule_L97F58T73_SignChange;
@@ -2418,8 +2018,14 @@ begin
 		FIRModule_L210F13L217T14_2_FIRModule_L212F89T132_FIRModule_L97F58T87_Resize(29 downto 16) <= (others => FIRModule_L210F13L217T14_2_FIRModule_L212F89T132_FIRModule_L97F58T73_SignChange(15));
 		FIRModule_L210F13L217T14_2_FIRModule_L212F89T132_FIRModule_L97F58T87_Resize(15 downto 0) <= FIRModule_L210F13L217T14_2_FIRModule_L212F89T132_FIRModule_L97F58T73_SignChange;
 		FIRModule_L210F13L217T14_2_FIRModule_L212F89T132_FIRModule_L97F58T98_SignChange <= unsigned(FIRModule_L210F13L217T14_2_FIRModule_L212F89T132_FIRModule_L97F58T87_Resize);
-		dsp48_a(2)(29 downto 0) <= FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_Lookup;
-		dsp48_opmode(2)(6 downto 0) <= FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_Lookup(6 downto 0);
+		FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_WhenTrue <= FIRModule_L210F13L217T14_2_FIRModule_L212F59T86_FIRModule_L97F58T98_SignChange;
+		FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_WhenFalse <= FIRModule_L210F13L217T14_2_FIRModule_L212F89T132_FIRModule_L97F58T98_SignChange;
+		dsp48_a(2)(29 downto 0) <= FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_Ternary;
+		FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_WhenTrue(8 downto 7) <= (others => '0');
+		FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_WhenTrue(6 downto 0) <= FIRModule_L210F13L217T14_2_FIRModule_L213F90T99_Expr;
+		FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_WhenFalse(8 downto 7) <= (others => '0');
+		FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_WhenFalse(6 downto 0) <= FIRModule_L210F13L217T14_2_FIRModule_L213F119T128_Expr;
+		dsp48_opmode(2)(6 downto 0) <= FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_Ternary(6 downto 0);
 		FIRModule_L210F13L217T14_2_FIRModule_L214F32T65_FIRModule_L97F58T73_SignChange <= signed(State_filo_fir_dreg(2)(15 downto 0));
 		FIRModule_L210F13L217T14_2_FIRModule_L214F32T65_FIRModule_L97F58T87_Resize(24 downto 16) <= (others => FIRModule_L210F13L217T14_2_FIRModule_L214F32T65_FIRModule_L97F58T73_SignChange(15));
 		FIRModule_L210F13L217T14_2_FIRModule_L214F32T65_FIRModule_L97F58T87_Resize(15 downto 0) <= FIRModule_L210F13L217T14_2_FIRModule_L214F32T65_FIRModule_L97F58T73_SignChange;
@@ -2439,8 +2045,14 @@ begin
 		FIRModule_L210F13L217T14_3_FIRModule_L212F89T132_FIRModule_L97F58T87_Resize(29 downto 16) <= (others => FIRModule_L210F13L217T14_3_FIRModule_L212F89T132_FIRModule_L97F58T73_SignChange(15));
 		FIRModule_L210F13L217T14_3_FIRModule_L212F89T132_FIRModule_L97F58T87_Resize(15 downto 0) <= FIRModule_L210F13L217T14_3_FIRModule_L212F89T132_FIRModule_L97F58T73_SignChange;
 		FIRModule_L210F13L217T14_3_FIRModule_L212F89T132_FIRModule_L97F58T98_SignChange <= unsigned(FIRModule_L210F13L217T14_3_FIRModule_L212F89T132_FIRModule_L97F58T87_Resize);
-		dsp48_a(3)(29 downto 0) <= FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_Lookup;
-		dsp48_opmode(3)(6 downto 0) <= FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_Lookup(6 downto 0);
+		FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_WhenTrue <= FIRModule_L210F13L217T14_3_FIRModule_L212F59T86_FIRModule_L97F58T98_SignChange;
+		FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_WhenFalse <= FIRModule_L210F13L217T14_3_FIRModule_L212F89T132_FIRModule_L97F58T98_SignChange;
+		dsp48_a(3)(29 downto 0) <= FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_Ternary;
+		FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_WhenTrue(8 downto 7) <= (others => '0');
+		FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_WhenTrue(6 downto 0) <= FIRModule_L210F13L217T14_3_FIRModule_L213F90T99_Expr;
+		FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_WhenFalse(8 downto 7) <= (others => '0');
+		FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_WhenFalse(6 downto 0) <= FIRModule_L210F13L217T14_3_FIRModule_L213F119T128_Expr;
+		dsp48_opmode(3)(6 downto 0) <= FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_Ternary(6 downto 0);
 		FIRModule_L210F13L217T14_3_FIRModule_L214F32T65_FIRModule_L97F58T73_SignChange <= signed(State_filo_fir_dreg(3)(15 downto 0));
 		FIRModule_L210F13L217T14_3_FIRModule_L214F32T65_FIRModule_L97F58T87_Resize(24 downto 16) <= (others => FIRModule_L210F13L217T14_3_FIRModule_L214F32T65_FIRModule_L97F58T73_SignChange(15));
 		FIRModule_L210F13L217T14_3_FIRModule_L214F32T65_FIRModule_L97F58T87_Resize(15 downto 0) <= FIRModule_L210F13L217T14_3_FIRModule_L214F32T65_FIRModule_L97F58T73_SignChange;
@@ -2457,7 +2069,11 @@ begin
 		FIRModule_L220F28T44_FIRModule_L97F58T87_Resize(15 downto 0) <= FIRModule_L220F28T44_FIRModule_L97F58T73_SignChange;
 		FIRModule_L220F28T44_FIRModule_L97F58T98_SignChange <= unsigned(FIRModule_L220F28T44_FIRModule_L97F58T87_Resize);
 		dsp48_a(0)(59 downto 30) <= FIRModule_L220F28T44_FIRModule_L97F58T98_SignChange;
-		dsp48_opmode(0)(13 downto 7) <= FIRModule_L221F33T125_Lookup(6 downto 0);
+		FIRModule_L221F33T125_WhenTrue(8 downto 7) <= (others => '0');
+		FIRModule_L221F33T125_WhenTrue(6 downto 0) <= FIRModule_L221F86T95_Expr;
+		FIRModule_L221F33T125_WhenFalse(8 downto 7) <= (others => '0');
+		FIRModule_L221F33T125_WhenFalse(6 downto 0) <= FIRModule_L221F115T124_Expr;
+		dsp48_opmode(0)(13 downto 7) <= FIRModule_L221F33T125_Ternary(6 downto 0);
 		FIRModule_L222F28T61_FIRModule_L97F58T73_SignChange <= signed(State_filo_fir_dreg(0)(31 downto 16));
 		FIRModule_L222F28T61_FIRModule_L97F58T87_Resize(24 downto 16) <= (others => FIRModule_L222F28T61_FIRModule_L97F58T73_SignChange(15));
 		FIRModule_L222F28T61_FIRModule_L97F58T87_Resize(15 downto 0) <= FIRModule_L222F28T61_FIRModule_L97F58T73_SignChange;
@@ -2476,8 +2092,14 @@ begin
 		FIRModule_L225F13L232T14_1_FIRModule_L227F89T132_FIRModule_L97F58T87_Resize(29 downto 16) <= (others => FIRModule_L225F13L232T14_1_FIRModule_L227F89T132_FIRModule_L97F58T73_SignChange(15));
 		FIRModule_L225F13L232T14_1_FIRModule_L227F89T132_FIRModule_L97F58T87_Resize(15 downto 0) <= FIRModule_L225F13L232T14_1_FIRModule_L227F89T132_FIRModule_L97F58T73_SignChange;
 		FIRModule_L225F13L232T14_1_FIRModule_L227F89T132_FIRModule_L97F58T98_SignChange <= unsigned(FIRModule_L225F13L232T14_1_FIRModule_L227F89T132_FIRModule_L97F58T87_Resize);
-		dsp48_a(1)(59 downto 30) <= FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_Lookup;
-		dsp48_opmode(1)(13 downto 7) <= FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_Lookup(6 downto 0);
+		FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_WhenTrue <= FIRModule_L225F13L232T14_1_FIRModule_L227F59T86_FIRModule_L97F58T98_SignChange;
+		FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_WhenFalse <= FIRModule_L225F13L232T14_1_FIRModule_L227F89T132_FIRModule_L97F58T98_SignChange;
+		dsp48_a(1)(59 downto 30) <= FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_Ternary;
+		FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_WhenTrue(8 downto 7) <= (others => '0');
+		FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_WhenTrue(6 downto 0) <= FIRModule_L225F13L232T14_1_FIRModule_L228F90T99_Expr;
+		FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_WhenFalse(8 downto 7) <= (others => '0');
+		FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_WhenFalse(6 downto 0) <= FIRModule_L225F13L232T14_1_FIRModule_L228F119T128_Expr;
+		dsp48_opmode(1)(13 downto 7) <= FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_Ternary(6 downto 0);
 		FIRModule_L225F13L232T14_1_FIRModule_L229F32T65_FIRModule_L97F58T73_SignChange <= signed(State_filo_fir_dreg(1)(31 downto 16));
 		FIRModule_L225F13L232T14_1_FIRModule_L229F32T65_FIRModule_L97F58T87_Resize(24 downto 16) <= (others => FIRModule_L225F13L232T14_1_FIRModule_L229F32T65_FIRModule_L97F58T73_SignChange(15));
 		FIRModule_L225F13L232T14_1_FIRModule_L229F32T65_FIRModule_L97F58T87_Resize(15 downto 0) <= FIRModule_L225F13L232T14_1_FIRModule_L229F32T65_FIRModule_L97F58T73_SignChange;
@@ -2497,8 +2119,14 @@ begin
 		FIRModule_L225F13L232T14_2_FIRModule_L227F89T132_FIRModule_L97F58T87_Resize(29 downto 16) <= (others => FIRModule_L225F13L232T14_2_FIRModule_L227F89T132_FIRModule_L97F58T73_SignChange(15));
 		FIRModule_L225F13L232T14_2_FIRModule_L227F89T132_FIRModule_L97F58T87_Resize(15 downto 0) <= FIRModule_L225F13L232T14_2_FIRModule_L227F89T132_FIRModule_L97F58T73_SignChange;
 		FIRModule_L225F13L232T14_2_FIRModule_L227F89T132_FIRModule_L97F58T98_SignChange <= unsigned(FIRModule_L225F13L232T14_2_FIRModule_L227F89T132_FIRModule_L97F58T87_Resize);
-		dsp48_a(2)(59 downto 30) <= FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_Lookup;
-		dsp48_opmode(2)(13 downto 7) <= FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_Lookup(6 downto 0);
+		FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_WhenTrue <= FIRModule_L225F13L232T14_2_FIRModule_L227F59T86_FIRModule_L97F58T98_SignChange;
+		FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_WhenFalse <= FIRModule_L225F13L232T14_2_FIRModule_L227F89T132_FIRModule_L97F58T98_SignChange;
+		dsp48_a(2)(59 downto 30) <= FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_Ternary;
+		FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_WhenTrue(8 downto 7) <= (others => '0');
+		FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_WhenTrue(6 downto 0) <= FIRModule_L225F13L232T14_2_FIRModule_L228F90T99_Expr;
+		FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_WhenFalse(8 downto 7) <= (others => '0');
+		FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_WhenFalse(6 downto 0) <= FIRModule_L225F13L232T14_2_FIRModule_L228F119T128_Expr;
+		dsp48_opmode(2)(13 downto 7) <= FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_Ternary(6 downto 0);
 		FIRModule_L225F13L232T14_2_FIRModule_L229F32T65_FIRModule_L97F58T73_SignChange <= signed(State_filo_fir_dreg(2)(31 downto 16));
 		FIRModule_L225F13L232T14_2_FIRModule_L229F32T65_FIRModule_L97F58T87_Resize(24 downto 16) <= (others => FIRModule_L225F13L232T14_2_FIRModule_L229F32T65_FIRModule_L97F58T73_SignChange(15));
 		FIRModule_L225F13L232T14_2_FIRModule_L229F32T65_FIRModule_L97F58T87_Resize(15 downto 0) <= FIRModule_L225F13L232T14_2_FIRModule_L229F32T65_FIRModule_L97F58T73_SignChange;
@@ -2518,8 +2146,14 @@ begin
 		FIRModule_L225F13L232T14_3_FIRModule_L227F89T132_FIRModule_L97F58T87_Resize(29 downto 16) <= (others => FIRModule_L225F13L232T14_3_FIRModule_L227F89T132_FIRModule_L97F58T73_SignChange(15));
 		FIRModule_L225F13L232T14_3_FIRModule_L227F89T132_FIRModule_L97F58T87_Resize(15 downto 0) <= FIRModule_L225F13L232T14_3_FIRModule_L227F89T132_FIRModule_L97F58T73_SignChange;
 		FIRModule_L225F13L232T14_3_FIRModule_L227F89T132_FIRModule_L97F58T98_SignChange <= unsigned(FIRModule_L225F13L232T14_3_FIRModule_L227F89T132_FIRModule_L97F58T87_Resize);
-		dsp48_a(3)(59 downto 30) <= FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_Lookup;
-		dsp48_opmode(3)(13 downto 7) <= FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_Lookup(6 downto 0);
+		FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_WhenTrue <= FIRModule_L225F13L232T14_3_FIRModule_L227F59T86_FIRModule_L97F58T98_SignChange;
+		FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_WhenFalse <= FIRModule_L225F13L232T14_3_FIRModule_L227F89T132_FIRModule_L97F58T98_SignChange;
+		dsp48_a(3)(59 downto 30) <= FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_Ternary;
+		FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_WhenTrue(8 downto 7) <= (others => '0');
+		FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_WhenTrue(6 downto 0) <= FIRModule_L225F13L232T14_3_FIRModule_L228F90T99_Expr;
+		FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_WhenFalse(8 downto 7) <= (others => '0');
+		FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_WhenFalse(6 downto 0) <= FIRModule_L225F13L232T14_3_FIRModule_L228F119T128_Expr;
+		dsp48_opmode(3)(13 downto 7) <= FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_Ternary(6 downto 0);
 		FIRModule_L225F13L232T14_3_FIRModule_L229F32T65_FIRModule_L97F58T73_SignChange <= signed(State_filo_fir_dreg(3)(31 downto 16));
 		FIRModule_L225F13L232T14_3_FIRModule_L229F32T65_FIRModule_L97F58T87_Resize(24 downto 16) <= (others => FIRModule_L225F13L232T14_3_FIRModule_L229F32T65_FIRModule_L97F58T73_SignChange(15));
 		FIRModule_L225F13L232T14_3_FIRModule_L229F32T65_FIRModule_L97F58T87_Resize(15 downto 0) <= FIRModule_L225F13L232T14_3_FIRModule_L229F32T65_FIRModule_L97F58T73_SignChange;
@@ -2723,64 +2357,6 @@ begin
 		u_dsp48_q3_OPMODE_u_dsp48_q3_OPMODE_HardLink <= u_dsp48_q3_OPMODE;
 		u_dsp48_q3_PCOUT <= u_dsp48_q3_PCOUT_u_dsp48_q3_PCOUT_HardLink;
 		u_dsp48_q3_P <= u_dsp48_q3_P_u_dsp48_q3_P_HardLink;
-		FIRModule_L206F33T125_Lookup1(8 downto 7) <= (others => '0');
-		FIRModule_L206F33T125_Lookup1(6 downto 0) <= FIRModule_L206F115T124_Expr;
-		FIRModule_L206F33T125_Lookup2(8 downto 7) <= (others => '0');
-		FIRModule_L206F33T125_Lookup2(6 downto 0) <= FIRModule_L206F86T95_Expr;
-		FIRModule_L206F33T125_LookupMultiplexerAddress <= State_mult_reset_mult_reset_dsp(0);
-		FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_Lookup1 <= FIRModule_L210F13L217T14_1_FIRModule_L212F89T132_FIRModule_L97F58T98_SignChange;
-		FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_Lookup2 <= FIRModule_L210F13L217T14_1_FIRModule_L212F59T86_FIRModule_L97F58T98_SignChange;
-		FIRModule_L210F13L217T14_1_FIRModule_L212F32T132_LookupMultiplexerAddress <= FIRModule_L210F13L217T14_1_FIRModule_L212F32T56_Expr;
-		FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_Lookup1(8 downto 7) <= (others => '0');
-		FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_Lookup1(6 downto 0) <= FIRModule_L210F13L217T14_1_FIRModule_L213F119T128_Expr;
-		FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_Lookup2(8 downto 7) <= (others => '0');
-		FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_Lookup2(6 downto 0) <= FIRModule_L210F13L217T14_1_FIRModule_L213F90T99_Expr;
-		FIRModule_L210F13L217T14_1_FIRModule_L213F37T129_LookupMultiplexerAddress <= State_mult_reset_mult_reset_dsp(0);
-		FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_Lookup1 <= FIRModule_L210F13L217T14_2_FIRModule_L212F89T132_FIRModule_L97F58T98_SignChange;
-		FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_Lookup2 <= FIRModule_L210F13L217T14_2_FIRModule_L212F59T86_FIRModule_L97F58T98_SignChange;
-		FIRModule_L210F13L217T14_2_FIRModule_L212F32T132_LookupMultiplexerAddress <= FIRModule_L210F13L217T14_2_FIRModule_L212F32T56_Expr;
-		FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_Lookup1(8 downto 7) <= (others => '0');
-		FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_Lookup1(6 downto 0) <= FIRModule_L210F13L217T14_2_FIRModule_L213F119T128_Expr;
-		FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_Lookup2(8 downto 7) <= (others => '0');
-		FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_Lookup2(6 downto 0) <= FIRModule_L210F13L217T14_2_FIRModule_L213F90T99_Expr;
-		FIRModule_L210F13L217T14_2_FIRModule_L213F37T129_LookupMultiplexerAddress <= State_mult_reset_mult_reset_dsp(0);
-		FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_Lookup1 <= FIRModule_L210F13L217T14_3_FIRModule_L212F89T132_FIRModule_L97F58T98_SignChange;
-		FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_Lookup2 <= FIRModule_L210F13L217T14_3_FIRModule_L212F59T86_FIRModule_L97F58T98_SignChange;
-		FIRModule_L210F13L217T14_3_FIRModule_L212F32T132_LookupMultiplexerAddress <= FIRModule_L210F13L217T14_3_FIRModule_L212F32T56_Expr;
-		FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_Lookup1(8 downto 7) <= (others => '0');
-		FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_Lookup1(6 downto 0) <= FIRModule_L210F13L217T14_3_FIRModule_L213F119T128_Expr;
-		FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_Lookup2(8 downto 7) <= (others => '0');
-		FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_Lookup2(6 downto 0) <= FIRModule_L210F13L217T14_3_FIRModule_L213F90T99_Expr;
-		FIRModule_L210F13L217T14_3_FIRModule_L213F37T129_LookupMultiplexerAddress <= State_mult_reset_mult_reset_dsp(0);
-		FIRModule_L221F33T125_Lookup1(8 downto 7) <= (others => '0');
-		FIRModule_L221F33T125_Lookup1(6 downto 0) <= FIRModule_L221F115T124_Expr;
-		FIRModule_L221F33T125_Lookup2(8 downto 7) <= (others => '0');
-		FIRModule_L221F33T125_Lookup2(6 downto 0) <= FIRModule_L221F86T95_Expr;
-		FIRModule_L221F33T125_LookupMultiplexerAddress <= State_mult_reset_mult_reset_dsp(0);
-		FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_Lookup1 <= FIRModule_L225F13L232T14_1_FIRModule_L227F89T132_FIRModule_L97F58T98_SignChange;
-		FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_Lookup2 <= FIRModule_L225F13L232T14_1_FIRModule_L227F59T86_FIRModule_L97F58T98_SignChange;
-		FIRModule_L225F13L232T14_1_FIRModule_L227F32T132_LookupMultiplexerAddress <= FIRModule_L225F13L232T14_1_FIRModule_L227F32T56_Expr;
-		FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_Lookup1(8 downto 7) <= (others => '0');
-		FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_Lookup1(6 downto 0) <= FIRModule_L225F13L232T14_1_FIRModule_L228F119T128_Expr;
-		FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_Lookup2(8 downto 7) <= (others => '0');
-		FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_Lookup2(6 downto 0) <= FIRModule_L225F13L232T14_1_FIRModule_L228F90T99_Expr;
-		FIRModule_L225F13L232T14_1_FIRModule_L228F37T129_LookupMultiplexerAddress <= State_mult_reset_mult_reset_dsp(0);
-		FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_Lookup1 <= FIRModule_L225F13L232T14_2_FIRModule_L227F89T132_FIRModule_L97F58T98_SignChange;
-		FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_Lookup2 <= FIRModule_L225F13L232T14_2_FIRModule_L227F59T86_FIRModule_L97F58T98_SignChange;
-		FIRModule_L225F13L232T14_2_FIRModule_L227F32T132_LookupMultiplexerAddress <= FIRModule_L225F13L232T14_2_FIRModule_L227F32T56_Expr;
-		FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_Lookup1(8 downto 7) <= (others => '0');
-		FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_Lookup1(6 downto 0) <= FIRModule_L225F13L232T14_2_FIRModule_L228F119T128_Expr;
-		FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_Lookup2(8 downto 7) <= (others => '0');
-		FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_Lookup2(6 downto 0) <= FIRModule_L225F13L232T14_2_FIRModule_L228F90T99_Expr;
-		FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_LookupMultiplexerAddress <= State_mult_reset_mult_reset_dsp(0);
-		FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_Lookup1 <= FIRModule_L225F13L232T14_3_FIRModule_L227F89T132_FIRModule_L97F58T98_SignChange;
-		FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_Lookup2 <= FIRModule_L225F13L232T14_3_FIRModule_L227F59T86_FIRModule_L97F58T98_SignChange;
-		FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_LookupMultiplexerAddress <= FIRModule_L225F13L232T14_3_FIRModule_L227F32T56_Expr;
-		FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_Lookup1(8 downto 7) <= (others => '0');
-		FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_Lookup1(6 downto 0) <= FIRModule_L225F13L232T14_3_FIRModule_L228F119T128_Expr;
-		FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_Lookup2(8 downto 7) <= (others => '0');
-		FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_Lookup2(6 downto 0) <= FIRModule_L225F13L232T14_3_FIRModule_L228F90T99_Expr;
-		FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_LookupMultiplexerAddress <= State_mult_reset_mult_reset_dsp(0);
 		FIRModule_L208F28T49_FIRModule_L208F32T44_Index <= ramc_dout(0);
 		FIRModule_L210F13L217T14_1_FIRModule_L215F32T53_FIRModule_L215F36T48_Index <= ramc_dout(1);
 		FIRModule_L210F13L217T14_2_FIRModule_L215F32T53_FIRModule_L215F36T48_Index <= ramc_dout(2);

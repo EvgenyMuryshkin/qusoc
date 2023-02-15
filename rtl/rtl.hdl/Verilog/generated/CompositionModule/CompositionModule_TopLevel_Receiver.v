@@ -59,6 +59,9 @@ module CompositionModule_TopLevel_Receiver
 	reg [1: 0] NextState_FSM;
 	reg [7: 0] NextState_Data;
 	wire [7: 0] PartialData;
+	wire [7: 0] ReceiverModule_L10F36T57_WhenTrue;
+	wire [7: 0] ReceiverModule_L10F36T57_WhenFalse;
+	wire [7: 0] ReceiverModule_L10F36T57_Ternary;
 	wire [7: 0] ReceiverModule_L10F29T58_Cast;
 	wire [7: 0] ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F42T81_Cast;
 	reg [1: 0] State_FSM = 2'b00;
@@ -82,10 +85,6 @@ module CompositionModule_TopLevel_Receiver
 	wire ReceiverModule_L8F32T71_Expr;
 	wire signed [2: 0] ReceiverModule_L8F32T71_ExprLhs;
 	wire signed [2: 0] ReceiverModule_L8F32T71_ExprRhs;
-	reg [7: 0] ReceiverModule_L10F36T57_Lookup;
-	wire ReceiverModule_L10F36T57_LookupMultiplexerAddress;
-	wire [7: 0] ReceiverModule_L10F36T57_Lookup1;
-	wire [7: 0] ReceiverModule_L10F36T57_Lookup2;
 	always @ (posedge BoardSignals_Clock)
 	begin
 		if ((BoardSignals_Reset == 1))
@@ -113,23 +112,7 @@ module CompositionModule_TopLevel_Receiver
 	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F50T65_Expr[5] = ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F50T65_Expr_1[6];
 	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F50T65_Expr[6] = ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F50T65_Expr_1[7];
 	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F50T65_Expr[7] = 0;
-	always @ (*)
-	begin
-		case (ReceiverModule_L10F36T57_LookupMultiplexerAddress)
-			'b0:
-			begin
-				ReceiverModule_L10F36T57_Lookup = ReceiverModule_L10F36T57_Lookup1;
-			end
-			'b1:
-			begin
-				ReceiverModule_L10F36T57_Lookup = ReceiverModule_L10F36T57_Lookup2;
-			end
-			default:
-			begin
-				ReceiverModule_L10F36T57_Lookup = 'b00000000;
-			end
-		endcase
-	end
+	assign ReceiverModule_L10F36T57_Ternary = (Inputs_Bit ? ReceiverModule_L10F36T57_WhenTrue : ReceiverModule_L10F36T57_WhenFalse);
 	always @ (*)
 	begin
 		NextState_FSM = State_FSM;
@@ -176,14 +159,13 @@ module CompositionModule_TopLevel_Receiver
 	assign Inputs_IsValid = IsValid;
 	assign Inputs_Ack = Ack;
 	assign Inputs_Bit = Bit;
-	assign ReceiverModule_L10F29T58_Cast = ReceiverModule_L10F36T57_Lookup;
+	assign ReceiverModule_L10F36T57_WhenTrue = ReceiverModule_L10F49T53_Expr;
+	assign ReceiverModule_L10F36T57_WhenFalse = { {7{1'b0}}, ReceiverModule_L10F56T57_Expr };
+	assign ReceiverModule_L10F29T58_Cast = ReceiverModule_L10F36T57_Ternary;
 	assign PartialData = ReceiverModule_L10F29T58_Cast;
 	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F42T81_Cast = ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F49T80_Expr;
 	assign HasData = ReceiverModule_L8F32T71_Expr;
 	assign Data = State_Data;
-	assign ReceiverModule_L10F36T57_Lookup1 = { {7{1'b0}}, ReceiverModule_L10F56T57_Expr };
-	assign ReceiverModule_L10F36T57_Lookup2 = ReceiverModule_L10F49T53_Expr;
-	assign ReceiverModule_L10F36T57_LookupMultiplexerAddress = Inputs_Bit;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule
