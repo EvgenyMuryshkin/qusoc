@@ -29,14 +29,14 @@ module Increment_TopLevel_TopLevel_CounterModule
 	input wire BoardSignals_Starting,
 	input wire BoardSignals_Started,
 	input wire [31:0] Common_Address,
-	input wire [31:0] Common_WriteValue,
-	input wire Common_WE,
-	input wire Common_RE,
 	input wire [1:0] Common_MemAccessMode,
+	input wire Common_RE,
+	input wire Common_WE,
+	input wire [31:0] Common_WriteValue,
 	input wire [31:0] DeviceAddress,
-	output wire [31:0] ReadValue,
-	output wire IsReady,
 	output wire IsActive,
+	output wire IsReady,
+	output wire [31:0] ReadValue,
 	output wire [31:0] Value
 );
 	// [BEGIN USER SIGNALS]
@@ -51,10 +51,10 @@ module Increment_TopLevel_TopLevel_CounterModule
 	wire [1: 0] SoCComponentModule_L52F83T84_Expr = 2'b11;
 	wire SoCRegisterModule_L27F41T45_Expr = 1'b1;
 	wire [31: 0] Inputs_Common_Address;
-	wire [31: 0] Inputs_Common_WriteValue;
-	wire Inputs_Common_WE;
-	wire Inputs_Common_RE;
 	wire [1: 0] Inputs_Common_MemAccessMode;
+	wire Inputs_Common_RE;
+	wire Inputs_Common_WE;
+	wire [31: 0] Inputs_Common_WriteValue;
 	wire [31: 0] Inputs_DeviceAddress;
 	reg [31: 0] NextState_Value;
 	wire addressMatch;
@@ -129,19 +129,19 @@ module Increment_TopLevel_TopLevel_CounterModule
 	assign SoCComponentModule_L50F122T156_Expr_1 = { {2{1'b0}}, Inputs_DeviceAddress };
 	assign SoCComponentModule_L50F122T156_Expr_2 = { {31{1'b0}}, addressSpan };
 	assign Inputs_Common_Address = Common_Address;
-	assign Inputs_Common_WriteValue = Common_WriteValue;
-	assign Inputs_Common_WE = Common_WE;
-	assign Inputs_Common_RE = Common_RE;
 	assign Inputs_Common_MemAccessMode = Common_MemAccessMode;
+	assign Inputs_Common_RE = Common_RE;
+	assign Inputs_Common_WE = Common_WE;
+	assign Inputs_Common_WriteValue = Common_WriteValue;
 	assign Inputs_DeviceAddress = DeviceAddress;
 	assign addressMatch = SoCComponentModule_L50F48T157_Expr;
 	assign internalAddressBits = Inputs_Common_Address;
 	assign SoCComponentModule_L52F54T79_Index = internalAddressBits[1:0];
 	assign internalByteAddress = SoCComponentModule_L52F54T84_Expr[4:0];
 	assign internalIsActive = addressMatch;
-	assign ReadValue = SoCRegisterModule_L26F43T77_Expr;
-	assign IsReady = SoCRegisterModule_L27F41T45_Expr;
 	assign IsActive = internalIsActive;
+	assign IsReady = SoCRegisterModule_L27F41T45_Expr;
+	assign ReadValue = SoCRegisterModule_L26F43T77_Expr;
 	assign Value = State_Value;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]

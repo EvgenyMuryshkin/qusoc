@@ -26,7 +26,6 @@ entity StageStatePipelineModule_TopLevel is
 		-- [END USER PORTS]
 		Clock : in std_logic;
 		Reset : in std_logic;
-		inReady : in std_logic;
 		inData0 : in unsigned (7 downto 0);
 		inData1 : in unsigned (7 downto 0);
 		inData2 : in unsigned (7 downto 0);
@@ -35,6 +34,7 @@ entity StageStatePipelineModule_TopLevel is
 		inData5 : in unsigned (7 downto 0);
 		inData6 : in unsigned (7 downto 0);
 		inData7 : in unsigned (7 downto 0);
+		inReady : in std_logic;
 		outReady : out std_logic;
 		outResult : out unsigned (15 downto 0);
 		outS0Counter : out unsigned (15 downto 0);
@@ -253,32 +253,32 @@ begin
 	process (Pipeline_Inputs_inReady, Pipeline_stage0_State_IsReady, Pipeline_stage0_State_S0Counter, Pipeline_stage0_State_sums, Pipeline_stage1_State_IsReady, Pipeline_stage1_State_S0Counter, Pipeline_stage1_State_S1Counter, Pipeline_stage1_State_sums, Pipeline_stage2_State_IsReady, Pipeline_stage2_State_result, Pipeline_stage2_State_S0Counter, Pipeline_stage2_State_S1Counter, Pipeline_stage2_State_S2Counter, Pipeline_StageStatePipelineModule_L100F25T58_Cast, Pipeline_StageStatePipelineModule_L101F25T58_Cast, Pipeline_StageStatePipelineModule_L105F30T63_Cast, Pipeline_StageStatePipelineModule_L108F33T61_Cast, Pipeline_StageStatePipelineModule_L87F25T60_Cast, Pipeline_StageStatePipelineModule_L88F25T60_Cast, Pipeline_StageStatePipelineModule_L89F25T60_Cast, Pipeline_StageStatePipelineModule_L90F25T60_Cast, Pipeline_StageStatePipelineModule_L92F33T62_Cast, Pipeline_StageStatePipelineModule_L97F33T66_Cast)
 	begin
 		Pipeline_stage0_NextState_IsReady <= Pipeline_stage0_State_IsReady;
+		Pipeline_stage0_NextState_S0Counter <= Pipeline_stage0_State_S0Counter;
 		Pipeline_stage0_NextState_sums(0) <= Pipeline_stage0_State_sums(0);
 		Pipeline_stage0_NextState_sums(1) <= Pipeline_stage0_State_sums(1);
 		Pipeline_stage0_NextState_sums(2) <= Pipeline_stage0_State_sums(2);
 		Pipeline_stage0_NextState_sums(3) <= Pipeline_stage0_State_sums(3);
-		Pipeline_stage0_NextState_S0Counter <= Pipeline_stage0_State_S0Counter;
 		Pipeline_stage1_NextState_IsReady <= Pipeline_stage1_State_IsReady;
-		Pipeline_stage1_NextState_sums(0) <= Pipeline_stage1_State_sums(0);
-		Pipeline_stage1_NextState_sums(1) <= Pipeline_stage1_State_sums(1);
 		Pipeline_stage1_NextState_S0Counter <= Pipeline_stage1_State_S0Counter;
 		Pipeline_stage1_NextState_S1Counter <= Pipeline_stage1_State_S1Counter;
+		Pipeline_stage1_NextState_sums(0) <= Pipeline_stage1_State_sums(0);
+		Pipeline_stage1_NextState_sums(1) <= Pipeline_stage1_State_sums(1);
 		Pipeline_stage2_NextState_IsReady <= Pipeline_stage2_State_IsReady;
 		Pipeline_stage2_NextState_result <= Pipeline_stage2_State_result;
 		Pipeline_stage2_NextState_S0Counter <= Pipeline_stage2_State_S0Counter;
 		Pipeline_stage2_NextState_S1Counter <= Pipeline_stage2_State_S1Counter;
 		Pipeline_stage2_NextState_S2Counter <= Pipeline_stage2_State_S2Counter;
 		Pipeline_stage0_NextState_IsReady <= Pipeline_Inputs_inReady;
+		Pipeline_stage0_NextState_S0Counter <= Pipeline_StageStatePipelineModule_L92F33T62_Cast;
 		Pipeline_stage0_NextState_sums(0) <= Pipeline_StageStatePipelineModule_L87F25T60_Cast;
 		Pipeline_stage0_NextState_sums(1) <= Pipeline_StageStatePipelineModule_L88F25T60_Cast;
 		Pipeline_stage0_NextState_sums(2) <= Pipeline_StageStatePipelineModule_L89F25T60_Cast;
 		Pipeline_stage0_NextState_sums(3) <= Pipeline_StageStatePipelineModule_L90F25T60_Cast;
-		Pipeline_stage0_NextState_S0Counter <= Pipeline_StageStatePipelineModule_L92F33T62_Cast;
 		Pipeline_stage1_NextState_IsReady <= Pipeline_stage0_State_IsReady;
-		Pipeline_stage1_NextState_sums(0) <= Pipeline_StageStatePipelineModule_L100F25T58_Cast;
-		Pipeline_stage1_NextState_sums(1) <= Pipeline_StageStatePipelineModule_L101F25T58_Cast;
 		Pipeline_stage1_NextState_S0Counter <= Pipeline_stage0_State_S0Counter;
 		Pipeline_stage1_NextState_S1Counter <= Pipeline_StageStatePipelineModule_L97F33T66_Cast;
+		Pipeline_stage1_NextState_sums(0) <= Pipeline_StageStatePipelineModule_L100F25T58_Cast;
+		Pipeline_stage1_NextState_sums(1) <= Pipeline_StageStatePipelineModule_L101F25T58_Cast;
 		Pipeline_stage2_NextState_IsReady <= Pipeline_stage1_State_IsReady;
 		Pipeline_stage2_NextState_result <= Pipeline_StageStatePipelineModule_L105F30T63_Cast;
 		Pipeline_stage2_NextState_S0Counter <= Pipeline_stage1_State_S0Counter;
@@ -327,7 +327,6 @@ begin
 		Pipeline_StageStatePipelineModule_L108F42T60_Expr_1(15 downto 0) <= signed(Pipeline_stage2_State_S2Counter);
 		Pipeline_StageStatePipelineModule_L108F42T60_Expr_2(17 downto 1) <= (others => '0');
 		Pipeline_StageStatePipelineModule_L108F42T60_Expr_2(0) <= Pipeline_StageStatePipelineModule_L108F59T60_Expr;
-		Inputs_inReady <= inReady;
 		Inputs_inData(0) <= inData0;
 		Inputs_inData(1) <= inData1;
 		Inputs_inData(2) <= inData2;
@@ -336,6 +335,7 @@ begin
 		Inputs_inData(5) <= inData5;
 		Inputs_inData(6) <= inData6;
 		Inputs_inData(7) <= inData7;
+		Inputs_inReady <= inReady;
 		Pipeline_State_IsReady <= Pipeline_stage2_State_IsReady;
 		Pipeline_State_result <= Pipeline_stage2_State_result;
 		Pipeline_State_S0Counter <= Pipeline_stage2_State_S0Counter;
@@ -366,7 +366,6 @@ begin
 		outS0Counter <= Pipeline_State_S0Counter;
 		outS1Counter <= Pipeline_State_S1Counter;
 		outS2Counter <= Pipeline_State_S2Counter;
-		Pipeline_Inputs_inReady <= Inputs_inReady;
 		Pipeline_Inputs_inData(0) <= Inputs_inData(0);
 		Pipeline_Inputs_inData(1) <= Inputs_inData(1);
 		Pipeline_Inputs_inData(2) <= Inputs_inData(2);
@@ -375,6 +374,7 @@ begin
 		Pipeline_Inputs_inData(5) <= Inputs_inData(5);
 		Pipeline_Inputs_inData(6) <= Inputs_inData(6);
 		Pipeline_Inputs_inData(7) <= Inputs_inData(7);
+		Pipeline_Inputs_inReady <= Inputs_inReady;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

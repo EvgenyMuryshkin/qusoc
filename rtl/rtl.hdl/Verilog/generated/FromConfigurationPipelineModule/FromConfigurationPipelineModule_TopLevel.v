@@ -25,7 +25,6 @@ module FromConfigurationPipelineModule_TopLevel
 	// [END USER PORTS]
 	input wire Clock,
 	input wire Reset,
-	input wire inReady,
 	input wire [7:0] inData0,
 	input wire [7:0] inData1,
 	input wire [7:0] inData2,
@@ -34,6 +33,7 @@ module FromConfigurationPipelineModule_TopLevel
 	input wire [7:0] inData5,
 	input wire [7:0] inData6,
 	input wire [7:0] inData7,
+	input wire inReady,
 	output wire outReady,
 	output wire [15:0] outResult
 );
@@ -208,7 +208,6 @@ module FromConfigurationPipelineModule_TopLevel
 	assign Pipeline_PipelineConfigurations_L32F31T50_Expr_2 = { Pipeline_stage0_State_sum23[31], Pipeline_stage0_State_sum23 };
 	assign Pipeline_PipelineConfigurations_L33F31T50_Expr_1 = { Pipeline_stage0_State_sum45[31], Pipeline_stage0_State_sum45 };
 	assign Pipeline_PipelineConfigurations_L33F31T50_Expr_2 = { Pipeline_stage0_State_sum67[31], Pipeline_stage0_State_sum67 };
-	assign Inputs_inReady = inReady;
 	assign Inputs_inData[0] = inData0;
 	assign Inputs_inData[1] = inData1;
 	assign Inputs_inData[2] = inData2;
@@ -217,6 +216,7 @@ module FromConfigurationPipelineModule_TopLevel
 	assign Inputs_inData[5] = inData5;
 	assign Inputs_inData[6] = inData6;
 	assign Inputs_inData[7] = inData7;
+	assign Inputs_inReady = inReady;
 	assign Pipeline_State_ready = Pipeline_stage2_State_ready;
 	assign Pipeline_State_result = Pipeline_stage2_State_result;
 	assign Pipeline_NextState_ready = Pipeline_stage2_NextState_ready;
@@ -226,7 +226,6 @@ module FromConfigurationPipelineModule_TopLevel
 	assign Pipeline_PipelineConfigurations_L38F30T82_Cast = Pipeline_PipelineConfigurations_L38F39T81_Expr[15:0];
 	assign outReady = Pipeline_State_ready;
 	assign outResult = Pipeline_State_result;
-	assign Pipeline_Inputs_inReady = Inputs_inReady;
 	assign Pipeline_Inputs_inData[0] = Inputs_inData[0];
 	assign Pipeline_Inputs_inData[1] = Inputs_inData[1];
 	assign Pipeline_Inputs_inData[2] = Inputs_inData[2];
@@ -235,6 +234,7 @@ module FromConfigurationPipelineModule_TopLevel
 	assign Pipeline_Inputs_inData[5] = Inputs_inData[5];
 	assign Pipeline_Inputs_inData[6] = Inputs_inData[6];
 	assign Pipeline_Inputs_inData[7] = Inputs_inData[7];
+	assign Pipeline_Inputs_inReady = Inputs_inReady;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

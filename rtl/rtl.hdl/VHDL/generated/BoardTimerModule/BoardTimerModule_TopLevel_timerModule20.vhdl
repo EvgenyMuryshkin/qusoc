@@ -40,8 +40,8 @@ architecture rtl of BoardTimerModule_TopLevel_timerModule20 is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant countTo : unsigned(7 downto 0) := "00010011";
 	constant CapacityBits : unsigned(2 downto 0) := "101";
+	constant countTo : unsigned(7 downto 0) := "00010011";
 	constant TimerModule_L51F9L53T10_TimerModule_L52F79T80_Expr : std_logic := '0';
 	constant TimerModule_L51F9L53T10_TimerModule_L52F100T101_Expr : std_logic := '1';
 	signal Inputs_Restart : std_logic := '0';

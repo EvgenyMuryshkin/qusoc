@@ -37,7 +37,7 @@
 
 set_global_assignment -name FAMILY "Cyclone II"
 set_global_assignment -name DEVICE EP2C70F896C6
-set_global_assignment -name TOP_LEVEL_ENTITY IOTupleModule_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY Nested_SDP_WF_WSTRB_RAMModule_TopLevel
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "20:45:17  JUNE 07, 2019"
 set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
@@ -61,13 +61,12 @@ set_global_assignment -name AUTO_SHIFT_REGISTER_RECOGNITION OFF
 
 set_global_assignment -name SDC_FILE rtl.sdc
 
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/AXIConfirmModule.vwf
-
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
 set_instance_assignment -name CLOCK_SETTINGS Clock -to Clock
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/Nested_SDP_WF_WSTRB_RAMModule.vwf
 
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 
@@ -165,6 +164,7 @@ set_global_assignment -name VERILOG_FILE Verilog/generated/GenerateModule4/Gener
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IntDividerPipelineModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/IntDividerPipelineModule/IntDividerPipelineModule_TopLevel.v
 set_global_assignment -name VERILOG_FILE Verilog/generated/IONativeModule/IONativeModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/IOObjectModule/IOObjectModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IOTestModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/IOTestModule/IOTestModule_TopLevel.v
 set_global_assignment -name VERILOG_FILE Verilog/generated/IOTupleModule/IOTupleModule_TopLevel.v
@@ -181,8 +181,15 @@ set_global_assignment -name VERILOG_FILE Verilog/generated/ModuleSignalsMuxModul
 set_global_assignment -name VERILOG_FILE Verilog/generated/ModuleSignalsMuxModule/ModuleSignalsMuxModule_TopLevel_XorGate.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/NativeGetterModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/NativeGetterModule/NativeGetterModule_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/Nested_SDP_RF_RAMModule.vwf
+set_global_assignment -name VERILOG_FILE Verilog/generated/Nested_SDP_RF_RAMModule/Nested_SDP_RF_RAMModule_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/Nested_SDP_WF_WSTRB_RAMModule.vwf
+set_global_assignment -name VERILOG_FILE Verilog/generated/Nested_SDP_WF_WSTRB_RAMModule/Nested_SDP_WF_WSTRB_RAMModule_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/NestedLogicRAMIndexingModule.vwf
+set_global_assignment -name VERILOG_FILE Verilog/generated/NestedLogicRAMIndexingModule/NestedLogicRAMIndexingModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/NotGateModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/NotGateModule/NotGateModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/NoWE_SP_WF_RAMModule/NoWE_SP_WF_RAMModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/OrGateModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/OrGateModule/OrGateModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/OverrideInputsComposition.vwf

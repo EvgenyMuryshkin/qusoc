@@ -27,9 +27,9 @@ entity SDP_WF_RAMModule_TopLevel is
 		Clock : in std_logic;
 		Reset : in std_logic;
 		ReadAddress : in unsigned (7 downto 0);
+		WE : in std_logic;
 		WriteAddress : in unsigned (7 downto 0);
 		WriteData : in unsigned (7 downto 0);
-		WE : in std_logic;
 		Data : out unsigned (7 downto 0)
 	);
 end entity;
@@ -45,9 +45,9 @@ architecture rtl of SDP_WF_RAMModule_TopLevel is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	signal Inputs_ReadAddress : unsigned(7 downto 0) := (others => '0');
+	signal Inputs_WE : std_logic := '0';
 	signal Inputs_WriteAddress : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_WriteData : unsigned(7 downto 0) := (others => '0');
-	signal Inputs_WE : std_logic := '0';
 	signal State_ReadData : unsigned(7 downto 0) := (others => '0');
 	type State_BuffArray is array (0 to 255) of unsigned (7 downto 0);
 	signal State_Buff : State_BuffArray := (others => (others => '0'));
@@ -56,9 +56,9 @@ begin
 	process (ReadAddress, State_ReadData, WE, WriteAddress, WriteData)
 	begin
 		Inputs_ReadAddress <= ReadAddress;
+		Inputs_WE <= WE;
 		Inputs_WriteAddress <= WriteAddress;
 		Inputs_WriteData <= WriteData;
-		Inputs_WE <= WE;
 		Data <= State_ReadData;
 	end process;
 	-- inferred simple dual port RAM with write-first behaviour

@@ -27,11 +27,11 @@ entity SP_RF_WSTRB_RAMModule_TopLevel is
 		Clock : in std_logic;
 		Reset : in std_logic;
 		Address : in unsigned (7 downto 0);
+		WE : in std_logic;
 		WriteData0 : in unsigned (7 downto 0);
 		WriteData1 : in unsigned (7 downto 0);
 		WriteData2 : in unsigned (7 downto 0);
 		WriteData3 : in unsigned (7 downto 0);
-		WE : in std_logic;
 		WSTRB : in unsigned (3 downto 0);
 		Data0 : out unsigned (7 downto 0);
 		Data1 : out unsigned (7 downto 0);
@@ -69,11 +69,11 @@ begin
 	process (Address, State_ReadData, WE, WriteData0, WriteData1, WriteData2, WriteData3, WSTRB)
 	begin
 		Inputs_Address <= Address;
+		Inputs_WE <= WE;
 		Inputs_WriteData(0) <= WriteData0;
 		Inputs_WriteData(1) <= WriteData1;
 		Inputs_WriteData(2) <= WriteData2;
 		Inputs_WriteData(3) <= WriteData3;
-		Inputs_WE <= WE;
 		Inputs_WSTRB <= WSTRB;
 		Data0 <= State_ReadData(0);
 		Data1 <= State_ReadData(1);

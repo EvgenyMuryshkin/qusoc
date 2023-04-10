@@ -26,11 +26,11 @@ entity FIRModule4x16_TopLevel_TopLevel_u_ram_coef3 is
 		-- [END USER PORTS]
 		BoardSignals : in BoardSignalsType;
 		CE : in std_logic;
-		WR : in std_logic;
-		WR_ADDR : in unsigned (8 downto 0);
 		DIN : in unsigned (15 downto 0);
 		RD : in std_logic;
 		RD_ADDR : in unsigned (8 downto 0);
+		WR : in std_logic;
+		WR_ADDR : in unsigned (8 downto 0);
 		DOUT : out unsigned (15 downto 0)
 	);
 end entity;
@@ -46,11 +46,11 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel_u_ram_coef3 is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	signal Inputs_CE : std_logic := '0';
-	signal Inputs_WR : std_logic := '0';
-	signal Inputs_WR_ADDR : unsigned(8 downto 0) := (others => '0');
 	signal Inputs_DIN : unsigned(15 downto 0) := (others => '0');
 	signal Inputs_RD : std_logic := '0';
 	signal Inputs_RD_ADDR : unsigned(8 downto 0) := (others => '0');
+	signal Inputs_WR : std_logic := '0';
+	signal Inputs_WR_ADDR : unsigned(8 downto 0) := (others => '0');
 	signal tmp : std_logic_vector(15 downto 0) := (others => '0');
 begin
 	u_ram : entity work.fir_iq_sym_decimator_ram

@@ -27,14 +27,14 @@ entity TDP_RAMModule_TopLevel is
 		Clock : in std_logic;
 		Reset : in std_logic;
 		Addr_A : in unsigned (7 downto 0);
-		WriteData_A : in unsigned (7 downto 0);
-		WE_A : in std_logic;
 		Addr_B : in unsigned (7 downto 0);
-		WriteData_B : in unsigned (7 downto 0);
+		WE_A : in std_logic;
 		WE_B : in std_logic;
+		WriteData_A : in unsigned (7 downto 0);
+		WriteData_B : in unsigned (7 downto 0);
+		OutCorrupted : out std_logic;
 		OutDataA : out unsigned (7 downto 0);
-		OutDataB : out unsigned (7 downto 0);
-		OutCorrupted : out std_logic
+		OutDataB : out unsigned (7 downto 0)
 	);
 end entity;
 -- FSM summary
@@ -49,16 +49,16 @@ architecture rtl of TDP_RAMModule_TopLevel is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	signal Inputs_Addr_A : unsigned(7 downto 0) := (others => '0');
-	signal Inputs_WriteData_A : unsigned(7 downto 0) := (others => '0');
-	signal Inputs_WE_A : std_logic := '0';
 	signal Inputs_Addr_B : unsigned(7 downto 0) := (others => '0');
-	signal Inputs_WriteData_B : unsigned(7 downto 0) := (others => '0');
+	signal Inputs_WE_A : std_logic := '0';
 	signal Inputs_WE_B : std_logic := '0';
+	signal Inputs_WriteData_A : unsigned(7 downto 0) := (others => '0');
+	signal Inputs_WriteData_B : unsigned(7 downto 0) := (others => '0');
 	signal NextState_SameAddressWrite : std_logic := '0';
-	signal State_SameAddressWrite : std_logic := '0';
-	constant State_SameAddressWriteDefault : std_logic := '0';
 	signal State_DataA : unsigned(7 downto 0) := (others => '0');
 	signal State_DataB : unsigned(7 downto 0) := (others => '0');
+	signal State_SameAddressWrite : std_logic := '0';
+	constant State_SameAddressWriteDefault : std_logic := '0';
 	signal TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr : std_logic := '0';
 	signal TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr_1 : std_logic := '0';
 	signal TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr_2 : std_logic := '0';
@@ -115,14 +115,14 @@ begin
 		TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr_1 <= Inputs_WE_A;
 		TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr_2 <= Inputs_WE_B;
 		Inputs_Addr_A <= Addr_A;
-		Inputs_WriteData_A <= WriteData_A;
-		Inputs_WE_A <= WE_A;
 		Inputs_Addr_B <= Addr_B;
-		Inputs_WriteData_B <= WriteData_B;
+		Inputs_WE_A <= WE_A;
 		Inputs_WE_B <= WE_B;
+		Inputs_WriteData_A <= WriteData_A;
+		Inputs_WriteData_B <= WriteData_B;
+		OutCorrupted <= State_SameAddressWrite;
 		OutDataA <= State_DataA;
 		OutDataB <= State_DataB;
-		OutCorrupted <= State_SameAddressWrite;
 	end process;
 	-- Port A
 	process (Clock, Inputs_WE_A, Inputs_Addr_A)

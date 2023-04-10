@@ -28,15 +28,15 @@ entity FIRDSPWrapperModule_TopLevel_TopLevel is
 		-- [END USER PORTS]
 		Clock : in std_logic;
 		Reset : in std_logic;
-		CE : in std_logic;
-		RST : in std_logic;
 		A : in unsigned (29 downto 0);
 		B : in unsigned (17 downto 0);
+		CE : in std_logic;
 		D : in unsigned (24 downto 0);
-		PCIN : in unsigned (47 downto 0);
 		OPMODE : in unsigned (2 downto 0);
-		PCOUT : out unsigned (47 downto 0);
-		P : out unsigned (47 downto 0)
+		PCIN : in unsigned (47 downto 0);
+		RST : in std_logic;
+		P : out unsigned (47 downto 0);
+		PCOUT : out unsigned (47 downto 0)
 	);
 end entity;
 -- FSM summary
@@ -50,13 +50,13 @@ architecture rtl of FIRDSPWrapperModule_TopLevel_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_CE : std_logic := '0';
-	signal Inputs_RST : std_logic := '0';
 	signal Inputs_A : unsigned(29 downto 0) := (others => '0');
 	signal Inputs_B : unsigned(17 downto 0) := (others => '0');
+	signal Inputs_CE : std_logic := '0';
 	signal Inputs_D : unsigned(24 downto 0) := (others => '0');
-	signal Inputs_PCIN : unsigned(47 downto 0) := (others => '0');
 	signal Inputs_OPMODE : unsigned(2 downto 0) := (others => '0');
+	signal Inputs_PCIN : unsigned(47 downto 0) := (others => '0');
+	signal Inputs_RST : std_logic := '0';
 begin
 	u_dsp48e1 : DSP48E1
 	generic map

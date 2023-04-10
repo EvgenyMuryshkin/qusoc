@@ -24,13 +24,13 @@ module LoopModule_TopLevel
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
 	input wire [7:0] InData,
-	output wire OutOr,
-	output wire OutAnd,
-	output wire OutXor,
 	output wire [7:0] Encode,
 	output wire [7:0] EncodeInv,
+	output wire OutAnd,
+	output wire OutOr,
 	output wire [7:0] OutTupleAddress,
-	output wire OutTupleIsValid
+	output wire OutTupleIsValid,
+	output wire OutXor
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -43,31 +43,31 @@ module LoopModule_TopLevel
 	wire LoopModule_L85F13L96T14_LoopModule_L86F32T37_Expr = 1'b0;
 	wire LoopModule_L85F13L96T14_LoopModule_L87F31T32_Expr = 1'b0;
 	wire [3: 0] LoopModule_L85F13L96T14_LoopModule_L88F17L93T18_Inputs_InData_Size = 4'b1000;
-	wire [3: 0] LoopModule_L16F13L23T14_LoopModule_L18F17L21T18_Inputs_InData_Size = 4'b1000;
-	wire LoopModule_L29F13L36T14_LoopModule_L30F31T35_Expr = 1'b1;
-	wire [3: 0] LoopModule_L29F13L36T14_LoopModule_L31F17L34T18_Inputs_InData_Size = 4'b1000;
-	wire [3: 0] LoopModule_L42F13L49T14_LoopModule_L44F17L47T18_Inputs_InData_Size = 4'b1000;
 	wire LoopModule_L55F13L64T14_LoopModule_L56F31T32_Expr = 1'b0;
 	wire [3: 0] LoopModule_L55F13L64T14_LoopModule_L57F17L61T18_Inputs_InData_Size = 4'b1000;
 	wire LoopModule_L70F13L79T14_LoopModule_L71F30T31_Expr = 1'b0;
 	wire [3: 0] LoopModule_L70F13L79T14_LoopModule_L72F17L76T18_Inputs_InData_Size = 4'b1000;
+	wire LoopModule_L29F13L36T14_LoopModule_L30F31T35_Expr = 1'b1;
+	wire [3: 0] LoopModule_L29F13L36T14_LoopModule_L31F17L34T18_Inputs_InData_Size = 4'b1000;
+	wire [3: 0] LoopModule_L16F13L23T14_LoopModule_L18F17L21T18_Inputs_InData_Size = 4'b1000;
+	wire [3: 0] LoopModule_L42F13L49T14_LoopModule_L44F17L47T18_Inputs_InData_Size = 4'b1000;
 	wire [7: 0] Inputs_InData;
 	wire [7: 0] Tuple_Item1;
 	wire Tuple_Item2;
 	reg LoopModule_L85F13L96T14_isValid;
 	reg [7: 0] LoopModule_L85F13L96T14_result;
 	integer idx;
-	reg LoopModule_L16F13L23T14_result;
-	integer idx1;
-	reg LoopModule_L29F13L36T14_result;
-	integer idx2;
-	reg LoopModule_L42F13L49T14_result;
-	integer idx3;
 	reg [7: 0] LoopModule_L55F13L64T14_result;
-	integer idx4;
+	integer idx1;
 	reg signed [31: 0] LoopModule_L70F13L79T14_result;
-	integer idx5;
+	integer idx2;
 	wire [7: 0] LoopModule_L70F13L79T14_LoopModule_L78F24T36_Cast;
+	reg LoopModule_L29F13L36T14_result;
+	integer idx3;
+	reg LoopModule_L16F13L23T14_result;
+	integer idx4;
+	reg LoopModule_L42F13L49T14_result;
+	integer idx5;
 	always @ (*)
 	begin
 		idx = 0;
@@ -84,66 +84,66 @@ module LoopModule_TopLevel
 	end
 	always @ (*)
 	begin
-		idx1 = 1;
-		LoopModule_L16F13L23T14_result = Inputs_InData[0];
-		for (idx1 = 1; (idx1 < 8); idx1 = (idx1 + 1))
-		begin
-			LoopModule_L16F13L23T14_result = (LoopModule_L16F13L23T14_result | Inputs_InData[idx1]);
-		end
-	end
-	always @ (*)
-	begin
-		idx2 = 0;
-		LoopModule_L29F13L36T14_result = LoopModule_L29F13L36T14_LoopModule_L30F31T35_Expr;
-		for (idx2 = 0; (idx2 < 8); idx2 = (idx2 + 1))
-		begin
-			LoopModule_L29F13L36T14_result = (LoopModule_L29F13L36T14_result & Inputs_InData[idx2]);
-		end
-	end
-	always @ (*)
-	begin
-		idx3 = 1;
-		LoopModule_L42F13L49T14_result = Inputs_InData[0];
-		for (idx3 = 1; (idx3 < 8); idx3 = (idx3 + 1))
-		begin
-			LoopModule_L42F13L49T14_result = (LoopModule_L42F13L49T14_result ^ Inputs_InData[idx3]);
-		end
-	end
-	always @ (*)
-	begin
-		idx4 = 0;
+		idx1 = 0;
 		LoopModule_L55F13L64T14_result = { {7{1'b0}}, LoopModule_L55F13L64T14_LoopModule_L56F31T32_Expr };
-		for (idx4 = 0; (idx4 < 8); idx4 = (idx4 + 1))
+		for (idx1 = 0; (idx1 < 8); idx1 = (idx1 + 1))
 		begin
-			if (Inputs_InData[idx4])
+			if (Inputs_InData[idx1])
 			begin
-				LoopModule_L55F13L64T14_result = idx4;
+				LoopModule_L55F13L64T14_result = idx1;
 			end
 		end
 	end
 	always @ (*)
 	begin
-		idx5 = 8;
+		idx2 = 8;
 		LoopModule_L70F13L79T14_result = { {31{1'b0}}, LoopModule_L70F13L79T14_LoopModule_L71F30T31_Expr };
-		for (idx5 = 8; (idx5 > 0); idx5 = (idx5 - 1))
+		for (idx2 = 8; (idx2 > 0); idx2 = (idx2 - 1))
 		begin
-			if (Inputs_InData[(idx5 - 1)])
+			if (Inputs_InData[(idx2 - 1)])
 			begin
-				LoopModule_L70F13L79T14_result = (idx5 - 1);
+				LoopModule_L70F13L79T14_result = (idx2 - 1);
 			end
+		end
+	end
+	always @ (*)
+	begin
+		idx3 = 0;
+		LoopModule_L29F13L36T14_result = LoopModule_L29F13L36T14_LoopModule_L30F31T35_Expr;
+		for (idx3 = 0; (idx3 < 8); idx3 = (idx3 + 1))
+		begin
+			LoopModule_L29F13L36T14_result = (LoopModule_L29F13L36T14_result & Inputs_InData[idx3]);
+		end
+	end
+	always @ (*)
+	begin
+		idx4 = 1;
+		LoopModule_L16F13L23T14_result = Inputs_InData[0];
+		for (idx4 = 1; (idx4 < 8); idx4 = (idx4 + 1))
+		begin
+			LoopModule_L16F13L23T14_result = (LoopModule_L16F13L23T14_result | Inputs_InData[idx4]);
+		end
+	end
+	always @ (*)
+	begin
+		idx5 = 1;
+		LoopModule_L42F13L49T14_result = Inputs_InData[0];
+		for (idx5 = 1; (idx5 < 8); idx5 = (idx5 + 1))
+		begin
+			LoopModule_L42F13L49T14_result = (LoopModule_L42F13L49T14_result ^ Inputs_InData[idx5]);
 		end
 	end
 	assign Inputs_InData = InData;
 	assign Tuple_Item1 = LoopModule_L85F13L96T14_result;
 	assign Tuple_Item2 = LoopModule_L85F13L96T14_isValid;
-	assign OutOr = LoopModule_L16F13L23T14_result;
-	assign OutAnd = LoopModule_L29F13L36T14_result;
-	assign OutXor = LoopModule_L42F13L49T14_result;
 	assign Encode = LoopModule_L55F13L64T14_result;
 	assign LoopModule_L70F13L79T14_LoopModule_L78F24T36_Cast = LoopModule_L70F13L79T14_result[7:0];
 	assign EncodeInv = LoopModule_L70F13L79T14_LoopModule_L78F24T36_Cast;
+	assign OutAnd = LoopModule_L29F13L36T14_result;
+	assign OutOr = LoopModule_L16F13L23T14_result;
 	assign OutTupleAddress = Tuple_Item1;
 	assign OutTupleIsValid = Tuple_Item2;
+	assign OutXor = LoopModule_L42F13L49T14_result;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

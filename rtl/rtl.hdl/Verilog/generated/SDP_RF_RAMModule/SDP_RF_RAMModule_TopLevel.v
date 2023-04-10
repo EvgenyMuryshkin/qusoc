@@ -26,9 +26,9 @@ module SDP_RF_RAMModule_TopLevel
 	input wire Clock,
 	input wire Reset,
 	input wire [7:0] ReadAddress,
+	input wire WE,
 	input wire [7:0] WriteAddress,
 	input wire [7:0] WriteData,
-	input wire WE,
 	output wire [7:0] Data
 );
 	// [BEGIN USER SIGNALS]
@@ -40,16 +40,16 @@ module SDP_RF_RAMModule_TopLevel
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire [7: 0] Inputs_ReadAddress;
+	wire Inputs_WE;
 	wire [7: 0] Inputs_WriteAddress;
 	wire [7: 0] Inputs_WriteData;
-	wire Inputs_WE;
 	reg [7: 0] State_ReadData;
+	integer State_Buff_Iterator;
 	reg [7 : 0] State_Buff [0 : 255];
-	integer State_Buff_i;
 	initial
 	begin : Init_State_Buff
-		for (State_Buff_i = 0; State_Buff_i < 256; State_Buff_i = State_Buff_i + 1)
-			State_Buff[State_Buff_i] = 0;
+		for (State_Buff_Iterator = 0; State_Buff_Iterator < 256; State_Buff_Iterator = State_Buff_Iterator + 1)
+			State_Buff[State_Buff_Iterator] = 0;
 	end
 	// inferred simple dual port RAM with read-first behaviour
 	always @ (posedge Clock)
@@ -61,9 +61,9 @@ module SDP_RF_RAMModule_TopLevel
 		State_ReadData <= State_Buff[Inputs_ReadAddress];
 	end
 	assign Inputs_ReadAddress = ReadAddress;
+	assign Inputs_WE = WE;
 	assign Inputs_WriteAddress = WriteAddress;
 	assign Inputs_WriteData = WriteData;
-	assign Inputs_WE = WE;
 	assign Data = State_ReadData;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]

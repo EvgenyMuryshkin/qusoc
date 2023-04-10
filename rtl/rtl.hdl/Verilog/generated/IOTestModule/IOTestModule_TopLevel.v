@@ -25,25 +25,25 @@ module IOTestModule_TopLevel
 	// [END USER PORTS]
 	input wire Clock,
 	input wire Reset,
-	input wire InFlag,
 	input wire [7:0] InArray0,
 	input wire [7:0] InArray1,
-	output wire ClassOut_Flag,
+	input wire InFlag,
 	output wire [7:0] ClassOut_Array0,
 	output wire [7:0] ClassOut_Array1,
-	output wire ClassOut_Nested_Flag,
+	output wire ClassOut_Flag,
 	output wire [7:0] ClassOut_Nested_Array0,
 	output wire [7:0] ClassOut_Nested_Array1,
-	output wire NestedClassOut_Flag,
+	output wire ClassOut_Nested_Flag,
 	output wire [7:0] NestedClassOut_Array0,
 	output wire [7:0] NestedClassOut_Array1,
+	output wire NestedClassOut_Flag,
+	output wire [7:0] OutDirectArray0,
+	output wire [7:0] OutDirectArray1,
+	output wire OutFlag,
 	output wire [7:0] OutIteratorArray0,
 	output wire [7:0] OutIteratorArray1,
 	output wire [7:0] OutStateArray0,
-	output wire [7:0] OutStateArray1,
-	output wire [7:0] OutDirectArray0,
-	output wire [7:0] OutDirectArray1,
-	output wire OutFlag
+	output wire [7:0] OutStateArray1
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -53,9 +53,9 @@ module IOTestModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [1: 0] size = 2'b10;
 	wire [7: 0] State_ArrayDefault = 8'b00000000;
 	wire [7: 0] State_IteratorArrayDefault = 8'b00000000;
+	wire [1: 0] size = 2'b10;
 	wire Inputs_InFlag;
 	reg NextState_Flag;
 	reg State_Flag = 1'b0;
@@ -136,15 +136,15 @@ module IOTestModule_TopLevel
 	end
 	always @ (*)
 	begin
-		NextState_IteratorArray_Iterator = 0;
 		NextState_Array_Iterator = 0;
-		for (NextState_IteratorArray_Iterator = 0; (NextState_IteratorArray_Iterator < 2); NextState_IteratorArray_Iterator = (NextState_IteratorArray_Iterator + 1))
-		begin
-			NextState_IteratorArray[NextState_IteratorArray_Iterator] = State_IteratorArray[NextState_IteratorArray_Iterator];
-		end
+		NextState_IteratorArray_Iterator = 0;
 		for (NextState_Array_Iterator = 0; (NextState_Array_Iterator < 2); NextState_Array_Iterator = (NextState_Array_Iterator + 1))
 		begin
 			NextState_Array[NextState_Array_Iterator] = State_Array[NextState_Array_Iterator];
+		end
+		for (NextState_IteratorArray_Iterator = 0; (NextState_IteratorArray_Iterator < 2); NextState_IteratorArray_Iterator = (NextState_IteratorArray_Iterator + 1))
+		begin
+			NextState_IteratorArray[NextState_IteratorArray_Iterator] = State_IteratorArray[NextState_IteratorArray_Iterator];
 		end
 		NextState_Flag = State_Flag;
 		NextState_Flag = Inputs_InFlag;
@@ -156,25 +156,25 @@ module IOTestModule_TopLevel
 		NextState_IteratorArray[0] = Inputs_InArray[0];
 		NextState_IteratorArray[1] = Inputs_InArray[1];
 	end
-	assign Inputs_InFlag = InFlag;
 	assign Inputs_InArray[0] = InArray0;
 	assign Inputs_InArray[1] = InArray1;
-	assign ClassOut_Flag = State_Flag;
+	assign Inputs_InFlag = InFlag;
 	assign ClassOut_Array0 = State_Array[0];
 	assign ClassOut_Array1 = State_Array[1];
-	assign ClassOut_Nested_Flag = State_Flag;
+	assign ClassOut_Flag = State_Flag;
 	assign ClassOut_Nested_Array0 = State_IteratorArray[0];
 	assign ClassOut_Nested_Array1 = State_IteratorArray[1];
-	assign NestedClassOut_Flag = State_Flag;
+	assign ClassOut_Nested_Flag = State_Flag;
 	assign NestedClassOut_Array0 = State_Array[0];
 	assign NestedClassOut_Array1 = State_Array[1];
+	assign NestedClassOut_Flag = State_Flag;
+	assign OutDirectArray0 = Inputs_InArray[0];
+	assign OutDirectArray1 = Inputs_InArray[1];
+	assign OutFlag = State_Flag;
 	assign OutIteratorArray0 = State_IteratorArray[0];
 	assign OutIteratorArray1 = State_IteratorArray[1];
 	assign OutStateArray0 = State_Array[0];
 	assign OutStateArray1 = State_Array[1];
-	assign OutDirectArray0 = Inputs_InArray[0];
-	assign OutDirectArray1 = Inputs_InArray[1];
-	assign OutFlag = State_Flag;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

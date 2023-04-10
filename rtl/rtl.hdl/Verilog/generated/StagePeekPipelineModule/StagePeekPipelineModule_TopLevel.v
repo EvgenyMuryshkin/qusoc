@@ -25,7 +25,6 @@ module StagePeekPipelineModule_TopLevel
 	// [END USER PORTS]
 	input wire Clock,
 	input wire Reset,
-	input wire inReady,
 	input wire [7:0] inData0,
 	input wire [7:0] inData1,
 	input wire [7:0] inData2,
@@ -34,11 +33,12 @@ module StagePeekPipelineModule_TopLevel
 	input wire [7:0] inData5,
 	input wire [7:0] inData6,
 	input wire [7:0] inData7,
+	input wire inReady,
 	output wire outReady,
 	output wire [15:0] outResult,
+	output wire [15:0] stage1NextSum0,
 	output wire stage1Ready,
 	output wire [15:0] stage1Sum0,
-	output wire [15:0] stage1NextSum0,
 	output wire [15:0] stage1Sum1
 );
 	// [BEGIN USER SIGNALS]
@@ -113,6 +113,11 @@ module StagePeekPipelineModule_TopLevel
 	end
 	integer Pipeline_stage0_NextState_sums_Iterator;
 	reg [15 : 0] Pipeline_stage0_NextState_sums [0 : 4];
+	initial
+	begin : Init_Pipeline_stage0_NextState_sums
+		for (Pipeline_stage0_NextState_sums_Iterator = 0; Pipeline_stage0_NextState_sums_Iterator < 5; Pipeline_stage0_NextState_sums_Iterator = Pipeline_stage0_NextState_sums_Iterator + 1)
+			Pipeline_stage0_NextState_sums[Pipeline_stage0_NextState_sums_Iterator] = 0;
+	end
 	integer Pipeline_stage1_State_s0Sums_Iterator;
 	reg [15 : 0] Pipeline_stage1_State_s0Sums [0 : 4];
 	initial
@@ -122,6 +127,11 @@ module StagePeekPipelineModule_TopLevel
 	end
 	integer Pipeline_stage1_NextState_s0Sums_Iterator;
 	reg [15 : 0] Pipeline_stage1_NextState_s0Sums [0 : 4];
+	initial
+	begin : Init_Pipeline_stage1_NextState_s0Sums
+		for (Pipeline_stage1_NextState_s0Sums_Iterator = 0; Pipeline_stage1_NextState_s0Sums_Iterator < 5; Pipeline_stage1_NextState_s0Sums_Iterator = Pipeline_stage1_NextState_s0Sums_Iterator + 1)
+			Pipeline_stage1_NextState_s0Sums[Pipeline_stage1_NextState_s0Sums_Iterator] = 0;
+	end
 	integer Pipeline_stage1_State_sums_Iterator;
 	reg [15 : 0] Pipeline_stage1_State_sums [0 : 1];
 	initial
@@ -131,6 +141,11 @@ module StagePeekPipelineModule_TopLevel
 	end
 	integer Pipeline_stage1_NextState_sums_Iterator;
 	reg [15 : 0] Pipeline_stage1_NextState_sums [0 : 1];
+	initial
+	begin : Init_Pipeline_stage1_NextState_sums
+		for (Pipeline_stage1_NextState_sums_Iterator = 0; Pipeline_stage1_NextState_sums_Iterator < 2; Pipeline_stage1_NextState_sums_Iterator = Pipeline_stage1_NextState_sums_Iterator + 1)
+			Pipeline_stage1_NextState_sums[Pipeline_stage1_NextState_sums_Iterator] = 0;
+	end
 	wire [7 : 0] Pipeline_Inputs_inData [0 : 7];
 	always @ (posedge Clock)
 	begin
@@ -260,7 +275,6 @@ module StagePeekPipelineModule_TopLevel
 	assign Pipeline_PipelineConfigurations_L70F30T70_TypedPipelineModule_L31F9L37T10_TypedPipelineModule_L35F35T85_Expr_2 = { {4{1'b0}}, Pipeline_stage1_State_s0Sums[4] };
 	assign Pipeline_PipelineConfigurations_L70F30T70_TypedPipelineModule_L31F9L37T10_TypedPipelineModule_L35F35T66_Expr_1 = { {2{1'b0}}, Pipeline_stage1_State_sums[0] };
 	assign Pipeline_PipelineConfigurations_L70F30T70_TypedPipelineModule_L31F9L37T10_TypedPipelineModule_L35F35T66_Expr_2 = { {2{1'b0}}, Pipeline_stage1_State_sums[0] };
-	assign Inputs_inReady = inReady;
 	assign Inputs_inData[0] = inData0;
 	assign Inputs_inData[1] = inData1;
 	assign Inputs_inData[2] = inData2;
@@ -269,6 +283,7 @@ module StagePeekPipelineModule_TopLevel
 	assign Inputs_inData[5] = inData5;
 	assign Inputs_inData[6] = inData6;
 	assign Inputs_inData[7] = inData7;
+	assign Inputs_inReady = inReady;
 	assign Pipeline_State_ready = Pipeline_stage2_State_ready;
 	assign Pipeline_State_result = Pipeline_stage2_State_result;
 	assign Pipeline_NextState_ready = Pipeline_stage2_NextState_ready;
@@ -282,11 +297,10 @@ module StagePeekPipelineModule_TopLevel
 	assign Pipeline_PipelineConfigurations_L70F30T70_TypedPipelineModule_L31F9L37T10_TypedPipelineModule_L35F26T86_Cast = Pipeline_PipelineConfigurations_L70F30T70_TypedPipelineModule_L31F9L37T10_TypedPipelineModule_L35F35T85_Expr[15:0];
 	assign outReady = Pipeline_State_ready;
 	assign outResult = Pipeline_State_result;
+	assign stage1NextSum0 = Pipeline_stage1_NextState_sums[0];
 	assign stage1Ready = Pipeline_stage1_State_ready;
 	assign stage1Sum0 = Pipeline_stage1_State_sums[0];
-	assign stage1NextSum0 = Pipeline_stage1_NextState_sums[0];
 	assign stage1Sum1 = Pipeline_stage1_State_sums[1];
-	assign Pipeline_Inputs_inReady = Inputs_inReady;
 	assign Pipeline_Inputs_inData[0] = Inputs_inData[0];
 	assign Pipeline_Inputs_inData[1] = Inputs_inData[1];
 	assign Pipeline_Inputs_inData[2] = Inputs_inData[2];
@@ -295,6 +309,7 @@ module StagePeekPipelineModule_TopLevel
 	assign Pipeline_Inputs_inData[5] = Inputs_inData[5];
 	assign Pipeline_Inputs_inData[6] = Inputs_inData[6];
 	assign Pipeline_Inputs_inData[7] = Inputs_inData[7];
+	assign Pipeline_Inputs_inReady = Inputs_inReady;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

@@ -26,14 +26,14 @@ module TDP_RAMModule_TopLevel
 	input wire Clock,
 	input wire Reset,
 	input wire [7:0] Addr_A,
-	input wire [7:0] WriteData_A,
-	input wire WE_A,
 	input wire [7:0] Addr_B,
-	input wire [7:0] WriteData_B,
+	input wire WE_A,
 	input wire WE_B,
+	input wire [7:0] WriteData_A,
+	input wire [7:0] WriteData_B,
+	output wire OutCorrupted,
 	output wire [7:0] OutDataA,
-	output wire [7:0] OutDataB,
-	output wire OutCorrupted
+	output wire [7:0] OutDataB
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -44,16 +44,16 @@ module TDP_RAMModule_TopLevel
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire [7: 0] Inputs_Addr_A;
-	wire [7: 0] Inputs_WriteData_A;
-	wire Inputs_WE_A;
 	wire [7: 0] Inputs_Addr_B;
-	wire [7: 0] Inputs_WriteData_B;
+	wire Inputs_WE_A;
 	wire Inputs_WE_B;
+	wire [7: 0] Inputs_WriteData_A;
+	wire [7: 0] Inputs_WriteData_B;
 	reg NextState_SameAddressWrite;
-	reg State_SameAddressWrite = 1'b0;
-	wire State_SameAddressWriteDefault = 1'b0;
 	reg [7: 0] State_DataA;
 	reg [7: 0] State_DataB;
+	reg State_SameAddressWrite = 1'b0;
+	wire State_SameAddressWriteDefault = 1'b0;
 	wire TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr;
 	wire TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr_1;
 	wire TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr_2;
@@ -66,12 +66,12 @@ module TDP_RAMModule_TopLevel
 	wire TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_Expr;
 	wire signed [8: 0] TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_ExprLhs;
 	wire signed [8: 0] TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_ExprRhs;
+	integer State_Buff_Iterator;
 	reg [7 : 0] State_Buff [0 : 255];
-	integer State_Buff_i;
 	initial
 	begin : Init_State_Buff
-		for (State_Buff_i = 0; State_Buff_i < 256; State_Buff_i = State_Buff_i + 1)
-			State_Buff[State_Buff_i] = 0;
+		for (State_Buff_Iterator = 0; State_Buff_Iterator < 256; State_Buff_Iterator = State_Buff_Iterator + 1)
+			State_Buff[State_Buff_Iterator] = 0;
 	end
 	// Port A
 	always @ (posedge Clock)
@@ -128,14 +128,14 @@ module TDP_RAMModule_TopLevel
 	assign TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr_1 = Inputs_WE_A;
 	assign TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr_2 = Inputs_WE_B;
 	assign Inputs_Addr_A = Addr_A;
-	assign Inputs_WriteData_A = WriteData_A;
-	assign Inputs_WE_A = WE_A;
 	assign Inputs_Addr_B = Addr_B;
-	assign Inputs_WriteData_B = WriteData_B;
+	assign Inputs_WE_A = WE_A;
 	assign Inputs_WE_B = WE_B;
+	assign Inputs_WriteData_A = WriteData_A;
+	assign Inputs_WriteData_B = WriteData_B;
+	assign OutCorrupted = State_SameAddressWrite;
 	assign OutDataA = State_DataA;
 	assign OutDataB = State_DataB;
-	assign OutCorrupted = State_SameAddressWrite;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

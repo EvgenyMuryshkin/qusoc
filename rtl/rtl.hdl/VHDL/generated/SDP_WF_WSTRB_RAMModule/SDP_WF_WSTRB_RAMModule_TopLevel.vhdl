@@ -27,12 +27,12 @@ entity SDP_WF_WSTRB_RAMModule_TopLevel is
 		Clock : in std_logic;
 		Reset : in std_logic;
 		ReadAddress : in unsigned (7 downto 0);
+		WE : in std_logic;
 		WriteAddress : in unsigned (7 downto 0);
 		WriteData0 : in unsigned (7 downto 0);
 		WriteData1 : in unsigned (7 downto 0);
 		WriteData2 : in unsigned (7 downto 0);
 		WriteData3 : in unsigned (7 downto 0);
-		WE : in std_logic;
 		WSTRB : in unsigned (3 downto 0);
 		Data0 : out unsigned (7 downto 0);
 		Data1 : out unsigned (7 downto 0);
@@ -52,8 +52,8 @@ architecture rtl of SDP_WF_WSTRB_RAMModule_TopLevel is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	signal Inputs_ReadAddress : unsigned(7 downto 0) := (others => '0');
-	signal Inputs_WriteAddress : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_WE : std_logic := '0';
+	signal Inputs_WriteAddress : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_WSTRB : unsigned(3 downto 0) := (others => '0');
 	type Inputs_WriteDataArray is array (0 to 3) of unsigned (7 downto 0);
 	signal Inputs_WriteData : Inputs_WriteDataArray := (others => (others => '0'));
@@ -75,12 +75,12 @@ begin
 	process (ReadAddress, State_ReadData, WE, WriteAddress, WriteData0, WriteData1, WriteData2, WriteData3, WSTRB)
 	begin
 		Inputs_ReadAddress <= ReadAddress;
+		Inputs_WE <= WE;
 		Inputs_WriteAddress <= WriteAddress;
 		Inputs_WriteData(0) <= WriteData0;
 		Inputs_WriteData(1) <= WriteData1;
 		Inputs_WriteData(2) <= WriteData2;
 		Inputs_WriteData(3) <= WriteData3;
-		Inputs_WE <= WE;
 		Inputs_WSTRB <= WSTRB;
 		Data0 <= State_ReadData(0);
 		Data1 <= State_ReadData(1);

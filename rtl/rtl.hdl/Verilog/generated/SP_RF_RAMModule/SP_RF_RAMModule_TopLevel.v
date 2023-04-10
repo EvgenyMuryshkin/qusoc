@@ -26,8 +26,8 @@ module SP_RF_RAMModule_TopLevel
 	input wire Clock,
 	input wire Reset,
 	input wire [7:0] Address,
-	input wire [7:0] WriteData,
 	input wire WE,
+	input wire [7:0] WriteData,
 	output wire [7:0] Data
 );
 	// [BEGIN USER SIGNALS]
@@ -39,15 +39,15 @@ module SP_RF_RAMModule_TopLevel
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire [7: 0] Inputs_Address;
-	wire [7: 0] Inputs_WriteData;
 	wire Inputs_WE;
+	wire [7: 0] Inputs_WriteData;
 	reg [7: 0] State_ReadData;
+	integer State_Buff_Iterator;
 	reg [7 : 0] State_Buff [0 : 255];
-	integer State_Buff_i;
 	initial
 	begin : Init_State_Buff
-		for (State_Buff_i = 0; State_Buff_i < 256; State_Buff_i = State_Buff_i + 1)
-			State_Buff[State_Buff_i] = 0;
+		for (State_Buff_Iterator = 0; State_Buff_Iterator < 256; State_Buff_Iterator = State_Buff_Iterator + 1)
+			State_Buff[State_Buff_Iterator] = 0;
 	end
 	// inferred single port RAM with read-first behaviour
 	always @ (posedge Clock)
@@ -59,8 +59,8 @@ module SP_RF_RAMModule_TopLevel
 		State_ReadData <= State_Buff[Inputs_Address];
 	end
 	assign Inputs_Address = Address;
-	assign Inputs_WriteData = WriteData;
 	assign Inputs_WE = WE;
+	assign Inputs_WriteData = WriteData;
 	assign Data = State_ReadData;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]

@@ -26,11 +26,11 @@ module SP_WF_WSTRB_RAMModule_TopLevel
 	input wire Clock,
 	input wire Reset,
 	input wire [7:0] Address,
+	input wire WE,
 	input wire [7:0] WriteData0,
 	input wire [7:0] WriteData1,
 	input wire [7:0] WriteData2,
 	input wire [7:0] WriteData3,
-	input wire WE,
 	input wire [3:0] WSTRB,
 	output wire [31:0] Data
 );
@@ -121,11 +121,11 @@ module SP_WF_WSTRB_RAMModule_TopLevel
 	end
 	assign State_ReadData[3] = State_Buff3[Inputs_Address_reg3];
 	assign Inputs_Address = Address;
+	assign Inputs_WE = WE;
 	assign Inputs_WriteData[0] = WriteData0;
 	assign Inputs_WriteData[1] = WriteData1;
 	assign Inputs_WriteData[2] = WriteData2;
 	assign Inputs_WriteData[3] = WriteData3;
-	assign Inputs_WE = WE;
 	assign Inputs_WSTRB = WSTRB;
 	assign Data = { State_ReadData[3], State_ReadData[2], State_ReadData[1], State_ReadData[0] };
 	// [BEGIN USER ARCHITECTURE]

@@ -25,7 +25,6 @@ module CustomSchedulePipelineModule_TopLevel
 	// [END USER PORTS]
 	input wire Clock,
 	input wire Reset,
-	input wire inReady,
 	input wire [7:0] inData0,
 	input wire [7:0] inData1,
 	input wire [7:0] inData2,
@@ -34,9 +33,10 @@ module CustomSchedulePipelineModule_TopLevel
 	input wire [7:0] inData5,
 	input wire [7:0] inData6,
 	input wire [7:0] inData7,
+	input wire inReady,
 	output wire outReady1,
-	output wire [15:0] outResult1,
 	output wire outReady2,
+	output wire [15:0] outResult1,
 	output wire [15:0] outResult2
 );
 	// [BEGIN USER SIGNALS]
@@ -467,7 +467,6 @@ module CustomSchedulePipelineModule_TopLevel
 	assign CustomSchedulePipelineModule_L38F28T48_Expr_2 = { {9{1'b0}}, CustomSchedulePipelineModule_L38F47T48_Expr };
 	assign CustomSchedulePipelineModule_L40F28T48_Expr_1 = { {2{1'b0}}, Inputs_inData[3] };
 	assign CustomSchedulePipelineModule_L40F28T48_Expr_2 = { {8{1'b0}}, CustomSchedulePipelineModule_L40F47T48_Expr };
-	assign Inputs_inReady = inReady;
 	assign Inputs_inData[0] = inData0;
 	assign Inputs_inData[1] = inData1;
 	assign Inputs_inData[2] = inData2;
@@ -476,6 +475,7 @@ module CustomSchedulePipelineModule_TopLevel
 	assign Inputs_inData[5] = inData5;
 	assign Inputs_inData[6] = inData6;
 	assign Inputs_inData[7] = inData7;
+	assign Inputs_inReady = inReady;
 	assign Pipeline1_State_ready = Pipeline1_stage2_State_ready;
 	assign Pipeline1_State_result = Pipeline1_stage2_State_result;
 	assign Pipeline1_NextState_ready = Pipeline1_stage2_NextState_ready;
@@ -491,10 +491,9 @@ module CustomSchedulePipelineModule_TopLevel
 	assign Pipeline2_PipelineConfigurations_L38F65T81_Cast = Pipeline2_stage1_State_sum4567[7:0];
 	assign Pipeline2_PipelineConfigurations_L38F30T82_Cast = Pipeline2_PipelineConfigurations_L38F39T81_Expr[15:0];
 	assign outReady1 = Pipeline1_State_ready;
-	assign outResult1 = Pipeline1_State_result;
 	assign outReady2 = Pipeline2_State_ready;
+	assign outResult1 = Pipeline1_State_result;
 	assign outResult2 = Pipeline2_State_result;
-	assign Pipeline1_Inputs_inReady = Inputs_inReady;
 	assign Pipeline1_Inputs_inData[0] = Inputs_inData[0];
 	assign Pipeline1_Inputs_inData[1] = Inputs_inData[1];
 	assign Pipeline1_Inputs_inData[2] = Inputs_inData[2];
@@ -503,12 +502,12 @@ module CustomSchedulePipelineModule_TopLevel
 	assign Pipeline1_Inputs_inData[5] = Inputs_inData[5];
 	assign Pipeline1_Inputs_inData[6] = Inputs_inData[6];
 	assign Pipeline1_Inputs_inData[7] = Inputs_inData[7];
+	assign Pipeline1_Inputs_inReady = Inputs_inReady;
 	assign CustomSchedulePipelineModule_L37F21T49_Cast = CustomSchedulePipelineModule_L37F28T48_Expr[7:0];
 	assign CustomSchedulePipelineModule_L38F21T49_Cast = CustomSchedulePipelineModule_L38F28T48_Expr[7:0];
 	assign CustomSchedulePipelineModule_L39F21T50_Cast = CustomSchedulePipelineModule_L39F28T49_Expr[7:0];
 	assign CustomSchedulePipelineModule_L40F21T49_Cast = CustomSchedulePipelineModule_L40F28T48_Expr[7:0];
 	assign CustomSchedulePipelineModule_L43F21T50_Cast = CustomSchedulePipelineModule_L43F28T49_Expr[7:0];
-	assign Pipeline2_Inputs_inReady = Inputs_inReady;
 	assign Pipeline2_Inputs_inData[0] = CustomSchedulePipelineModule_L37F21T49_Cast;
 	assign Pipeline2_Inputs_inData[1] = CustomSchedulePipelineModule_L38F21T49_Cast;
 	assign Pipeline2_Inputs_inData[2] = CustomSchedulePipelineModule_L39F21T50_Cast;
@@ -517,6 +516,7 @@ module CustomSchedulePipelineModule_TopLevel
 	assign Pipeline2_Inputs_inData[5] = Inputs_inData[1];
 	assign Pipeline2_Inputs_inData[6] = CustomSchedulePipelineModule_L43F21T50_Cast;
 	assign Pipeline2_Inputs_inData[7] = Inputs_inData[0];
+	assign Pipeline2_Inputs_inReady = Inputs_inReady;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

@@ -25,9 +25,9 @@ module AXIConfirmModule_TopLevel
 	// [END USER PORTS]
 	input wire Clock,
 	input wire Reset,
-	input wire inValid,
 	input wire inReady,
 	input wire inRestart,
+	input wire inValid,
 	output wire outConfirmed,
 	output wire outConfirming,
 	output wire outReady
@@ -47,9 +47,9 @@ module AXIConfirmModule_TopLevel
 	wire AXIConfirmModule_L26F51T76_Expr = 1'b0;
 	wire AXIConfirmModule_L26F97T126_Expr = 1'b1;
 	wire AXIConfirmModule_L27F64T89_Expr = 1'b0;
-	wire Inputs_inValid;
 	wire Inputs_inReady;
 	wire Inputs_inRestart;
+	wire Inputs_inValid;
 	reg NextState_fsm;
 	reg State_fsm = 1'b0;
 	wire State_fsmDefault = 1'b0;
@@ -130,9 +130,9 @@ module AXIConfirmModule_TopLevel
 	assign AXIConfirmModule_L26F38T126_Expr_2 = AXIConfirmModule_L26F80T126_Expr;
 	assign AXIConfirmModule_L27F33T89_Expr_1 = Inputs_inReady;
 	assign AXIConfirmModule_L27F33T89_Expr_2 = AXIConfirmModule_L27F51T89_Expr;
-	assign Inputs_inValid = inValid;
 	assign Inputs_inReady = inReady;
 	assign Inputs_inRestart = inRestart;
+	assign Inputs_inValid = inValid;
 	assign outConfirmed = AXIConfirmModule_L25F37T79_Expr;
 	assign outConfirming = AXIConfirmModule_L26F38T126_Expr;
 	assign outReady = AXIConfirmModule_L27F33T89_Expr;

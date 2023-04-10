@@ -26,25 +26,25 @@ entity IOTestModule_TopLevel is
 		-- [END USER PORTS]
 		Clock : in std_logic;
 		Reset : in std_logic;
-		InFlag : in std_logic;
 		InArray0 : in unsigned (7 downto 0);
 		InArray1 : in unsigned (7 downto 0);
-		ClassOut_Flag : out std_logic;
+		InFlag : in std_logic;
 		ClassOut_Array0 : out unsigned (7 downto 0);
 		ClassOut_Array1 : out unsigned (7 downto 0);
-		ClassOut_Nested_Flag : out std_logic;
+		ClassOut_Flag : out std_logic;
 		ClassOut_Nested_Array0 : out unsigned (7 downto 0);
 		ClassOut_Nested_Array1 : out unsigned (7 downto 0);
-		NestedClassOut_Flag : out std_logic;
+		ClassOut_Nested_Flag : out std_logic;
 		NestedClassOut_Array0 : out unsigned (7 downto 0);
 		NestedClassOut_Array1 : out unsigned (7 downto 0);
+		NestedClassOut_Flag : out std_logic;
+		OutDirectArray0 : out unsigned (7 downto 0);
+		OutDirectArray1 : out unsigned (7 downto 0);
+		OutFlag : out std_logic;
 		OutIteratorArray0 : out unsigned (7 downto 0);
 		OutIteratorArray1 : out unsigned (7 downto 0);
 		OutStateArray0 : out unsigned (7 downto 0);
-		OutStateArray1 : out unsigned (7 downto 0);
-		OutDirectArray0 : out unsigned (7 downto 0);
-		OutDirectArray1 : out unsigned (7 downto 0);
-		OutFlag : out std_logic
+		OutStateArray1 : out unsigned (7 downto 0)
 	);
 end entity;
 -- FSM summary
@@ -58,9 +58,9 @@ architecture rtl of IOTestModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant size : unsigned(1 downto 0) := "10";
 	constant State_ArrayDefault : unsigned(7 downto 0) := "00000000";
 	constant State_IteratorArrayDefault : unsigned(7 downto 0) := "00000000";
+	constant size : unsigned(1 downto 0) := "10";
 	signal Inputs_InFlag : std_logic := '0';
 	signal NextState_Flag : std_logic := '0';
 	signal State_Flag : std_logic := '0';
@@ -116,11 +116,11 @@ begin
 	end process;
 	process (Inputs_InArray, Inputs_InFlag, State_Array, State_Flag, State_IteratorArray)
 	begin
-		for NextState_IteratorArray_Iterator in 0 to 1 loop
-			NextState_IteratorArray(NextState_IteratorArray_Iterator) <= State_IteratorArray(NextState_IteratorArray_Iterator);
-		end loop;
 		for NextState_Array_Iterator in 0 to 1 loop
 			NextState_Array(NextState_Array_Iterator) <= State_Array(NextState_Array_Iterator);
+		end loop;
+		for NextState_IteratorArray_Iterator in 0 to 1 loop
+			NextState_IteratorArray(NextState_IteratorArray_Iterator) <= State_IteratorArray(NextState_IteratorArray_Iterator);
 		end loop;
 		NextState_Flag <= State_Flag;
 		NextState_Flag <= Inputs_InFlag;
@@ -133,25 +133,25 @@ begin
 	end process;
 	process (InArray0, InArray1, InFlag, Inputs_InArray, State_Array, State_Flag, State_IteratorArray)
 	begin
-		Inputs_InFlag <= InFlag;
 		Inputs_InArray(0) <= InArray0;
 		Inputs_InArray(1) <= InArray1;
-		ClassOut_Flag <= State_Flag;
+		Inputs_InFlag <= InFlag;
 		ClassOut_Array0 <= State_Array(0);
 		ClassOut_Array1 <= State_Array(1);
-		ClassOut_Nested_Flag <= State_Flag;
+		ClassOut_Flag <= State_Flag;
 		ClassOut_Nested_Array0 <= State_IteratorArray(0);
 		ClassOut_Nested_Array1 <= State_IteratorArray(1);
-		NestedClassOut_Flag <= State_Flag;
+		ClassOut_Nested_Flag <= State_Flag;
 		NestedClassOut_Array0 <= State_Array(0);
 		NestedClassOut_Array1 <= State_Array(1);
+		NestedClassOut_Flag <= State_Flag;
+		OutDirectArray0 <= Inputs_InArray(0);
+		OutDirectArray1 <= Inputs_InArray(1);
+		OutFlag <= State_Flag;
 		OutIteratorArray0 <= State_IteratorArray(0);
 		OutIteratorArray1 <= State_IteratorArray(1);
 		OutStateArray0 <= State_Array(0);
 		OutStateArray1 <= State_Array(1);
-		OutDirectArray0 <= Inputs_InArray(0);
-		OutDirectArray1 <= Inputs_InArray(1);
-		OutFlag <= State_Flag;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

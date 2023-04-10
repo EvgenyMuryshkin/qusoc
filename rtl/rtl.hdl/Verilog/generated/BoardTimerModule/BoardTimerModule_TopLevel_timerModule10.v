@@ -39,8 +39,8 @@ module BoardTimerModule_TopLevel_timerModule10
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [3: 0] countTo = 4'b1001;
 	wire [2: 0] CapacityBits = 3'b100;
+	wire [3: 0] countTo = 4'b1001;
 	wire TimerModule_L51F9L53T10_TimerModule_L52F79T80_Expr = 1'b0;
 	wire TimerModule_L51F9L53T10_TimerModule_L52F100T101_Expr = 1'b1;
 	wire Inputs_Restart;

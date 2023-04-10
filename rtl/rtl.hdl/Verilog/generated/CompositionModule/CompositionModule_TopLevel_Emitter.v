@@ -28,8 +28,8 @@ module CompositionModule_TopLevel_Emitter
 	input wire BoardSignals_Running,
 	input wire BoardSignals_Starting,
 	input wire BoardSignals_Started,
-	input wire IsEnabled,
 	input wire Ack,
+	input wire IsEnabled,
 	output wire [7:0] Data,
 	output wire HasData
 );
@@ -42,8 +42,8 @@ module CompositionModule_TopLevel_Emitter
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire EmitterModule_L22F9L25T10_EmitterModule_L24F54T55_Expr = 1'b1;
-	wire Inputs_IsEnabled;
 	wire Inputs_Ack;
+	wire Inputs_IsEnabled;
 	reg [7: 0] NextState_Data;
 	wire [7: 0] EmitterModule_L22F9L25T10_EmitterModule_L24F34T56_Cast;
 	reg [7: 0] State_Data = 8'b00000000;
@@ -79,8 +79,8 @@ module CompositionModule_TopLevel_Emitter
 	assign EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr_2 = Inputs_Ack;
 	assign EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_1 = { {2{1'b0}}, State_Data };
 	assign EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_2 = { {9{1'b0}}, EmitterModule_L22F9L25T10_EmitterModule_L24F54T55_Expr };
-	assign Inputs_IsEnabled = IsEnabled;
 	assign Inputs_Ack = Ack;
+	assign Inputs_IsEnabled = IsEnabled;
 	assign EmitterModule_L22F9L25T10_EmitterModule_L24F34T56_Cast = EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr[7:0];
 	assign Data = State_Data;
 	assign HasData = Inputs_IsEnabled;

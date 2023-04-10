@@ -23,11 +23,11 @@ module StructMuxModule_TopLevel
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
-	input wire selector,
 	input wire [7:0] s1_i1,
 	input wire [7:0] s1_i2,
 	input wire [7:0] s2_i1,
 	input wire [7:0] s2_i2,
+	input wire selector,
 	output wire [7:0] os1_i1,
 	output wire [7:0] os1_i2,
 	output wire [7:0] os2_i1,
@@ -45,11 +45,11 @@ module StructMuxModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire Inputs_selector;
 	wire [7: 0] Inputs_s1_i1;
 	wire [7: 0] Inputs_s1_i2;
 	wire [7: 0] Inputs_s2_i1;
 	wire [7: 0] Inputs_s2_i2;
+	wire Inputs_selector;
 	wire [7: 0] ii1_i1;
 	wire [7: 0] ii1_i2;
 	wire [7: 0] is2_i1;
@@ -88,11 +88,11 @@ module StructMuxModule_TopLevel
 	assign StructMuxModule_L21F37T76_Ternary_i2 = (Inputs_selector ? StructMuxModule_L21F55T64_WhenTrue_i2 : StructMuxModule_L21F67T76_WhenFalse_i2);
 	assign StructMuxModule_L38F37L48T14_Ternary_i1 = (Inputs_selector ? StructMuxModule_L39F15L43T14_WhenTrue_i1 : StructMuxModule_L44F15L48T14_WhenFalse_i1);
 	assign StructMuxModule_L38F37L48T14_Ternary_i2 = (Inputs_selector ? StructMuxModule_L39F15L43T14_WhenTrue_i2 : StructMuxModule_L44F15L48T14_WhenFalse_i2);
-	assign Inputs_selector = selector;
 	assign Inputs_s1_i1 = s1_i1;
 	assign Inputs_s1_i2 = s1_i2;
 	assign Inputs_s2_i1 = s2_i1;
 	assign Inputs_s2_i2 = s2_i2;
+	assign Inputs_selector = selector;
 	assign ii1_i1 = Inputs_s1_i1;
 	assign ii1_i2 = Inputs_s1_i2;
 	assign StructMuxModule_L24F48T51_WhenTrue_i1 = ii1_i1;

@@ -25,8 +25,8 @@ entity CompositionModule_TopLevel_Emitter is
 		-- [BEGIN USER PORTS]
 		-- [END USER PORTS]
 		BoardSignals : in BoardSignalsType;
-		IsEnabled : in std_logic;
 		Ack : in std_logic;
+		IsEnabled : in std_logic;
 		Data : out unsigned (7 downto 0);
 		HasData : out std_logic
 	);
@@ -43,8 +43,8 @@ architecture rtl of CompositionModule_TopLevel_Emitter is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	constant EmitterModule_L22F9L25T10_EmitterModule_L24F54T55_Expr : std_logic := '1';
-	signal Inputs_IsEnabled : std_logic := '0';
 	signal Inputs_Ack : std_logic := '0';
+	signal Inputs_IsEnabled : std_logic := '0';
 	signal NextState_Data : unsigned(7 downto 0) := (others => '0');
 	signal EmitterModule_L22F9L25T10_EmitterModule_L24F34T56_Cast : unsigned(7 downto 0) := (others => '0');
 	signal State_Data : unsigned(7 downto 0) := "00000000";
@@ -89,8 +89,8 @@ begin
 		EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_1(7 downto 0) <= signed(State_Data);
 		EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_2(9 downto 1) <= (others => '0');
 		EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_2(0) <= EmitterModule_L22F9L25T10_EmitterModule_L24F54T55_Expr;
-		Inputs_IsEnabled <= IsEnabled;
 		Inputs_Ack <= Ack;
+		Inputs_IsEnabled <= IsEnabled;
 		EmitterModule_L22F9L25T10_EmitterModule_L24F34T56_Cast <= EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr(7 downto 0);
 		Data <= State_Data;
 		HasData <= Inputs_IsEnabled;

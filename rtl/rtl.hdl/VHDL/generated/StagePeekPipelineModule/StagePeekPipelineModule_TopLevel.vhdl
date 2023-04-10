@@ -26,7 +26,6 @@ entity StagePeekPipelineModule_TopLevel is
 		-- [END USER PORTS]
 		Clock : in std_logic;
 		Reset : in std_logic;
-		inReady : in std_logic;
 		inData0 : in unsigned (7 downto 0);
 		inData1 : in unsigned (7 downto 0);
 		inData2 : in unsigned (7 downto 0);
@@ -35,11 +34,12 @@ entity StagePeekPipelineModule_TopLevel is
 		inData5 : in unsigned (7 downto 0);
 		inData6 : in unsigned (7 downto 0);
 		inData7 : in unsigned (7 downto 0);
+		inReady : in std_logic;
 		outReady : out std_logic;
 		outResult : out unsigned (15 downto 0);
+		stage1NextSum0 : out unsigned (15 downto 0);
 		stage1Ready : out std_logic;
 		stage1Sum0 : out unsigned (15 downto 0);
-		stage1NextSum0 : out unsigned (15 downto 0);
 		stage1Sum1 : out unsigned (15 downto 0)
 	);
 end entity;
@@ -286,7 +286,6 @@ begin
 		Pipeline_PipelineConfigurations_L70F30T70_TypedPipelineModule_L31F9L37T10_TypedPipelineModule_L35F35T66_Expr_1(15 downto 0) <= signed(Pipeline_stage1_State_sums(0));
 		Pipeline_PipelineConfigurations_L70F30T70_TypedPipelineModule_L31F9L37T10_TypedPipelineModule_L35F35T66_Expr_2(17 downto 16) <= (others => '0');
 		Pipeline_PipelineConfigurations_L70F30T70_TypedPipelineModule_L31F9L37T10_TypedPipelineModule_L35F35T66_Expr_2(15 downto 0) <= signed(Pipeline_stage1_State_sums(0));
-		Inputs_inReady <= inReady;
 		Inputs_inData(0) <= inData0;
 		Inputs_inData(1) <= inData1;
 		Inputs_inData(2) <= inData2;
@@ -295,6 +294,7 @@ begin
 		Inputs_inData(5) <= inData5;
 		Inputs_inData(6) <= inData6;
 		Inputs_inData(7) <= inData7;
+		Inputs_inReady <= inReady;
 		Pipeline_State_ready <= Pipeline_stage2_State_ready;
 		Pipeline_State_result <= Pipeline_stage2_State_result;
 		Pipeline_NextState_ready <= Pipeline_stage2_NextState_ready;
@@ -312,11 +312,10 @@ begin
 		Pipeline_PipelineConfigurations_L70F30T70_TypedPipelineModule_L31F9L37T10_TypedPipelineModule_L35F26T86_Cast <= Pipeline_PipelineConfigurations_L70F30T70_TypedPipelineModule_L31F9L37T10_TypedPipelineModule_L35F35T85_Expr(15 downto 0);
 		outReady <= Pipeline_State_ready;
 		outResult <= Pipeline_State_result;
+		stage1NextSum0 <= Pipeline_stage1_NextState_sums(0);
 		stage1Ready <= Pipeline_stage1_State_ready;
 		stage1Sum0 <= Pipeline_stage1_State_sums(0);
-		stage1NextSum0 <= Pipeline_stage1_NextState_sums(0);
 		stage1Sum1 <= Pipeline_stage1_State_sums(1);
-		Pipeline_Inputs_inReady <= Inputs_inReady;
 		Pipeline_Inputs_inData(0) <= Inputs_inData(0);
 		Pipeline_Inputs_inData(1) <= Inputs_inData(1);
 		Pipeline_Inputs_inData(2) <= Inputs_inData(2);
@@ -325,6 +324,7 @@ begin
 		Pipeline_Inputs_inData(5) <= Inputs_inData(5);
 		Pipeline_Inputs_inData(6) <= Inputs_inData(6);
 		Pipeline_Inputs_inData(7) <= Inputs_inData(7);
+		Pipeline_Inputs_inReady <= Inputs_inReady;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

@@ -25,8 +25,8 @@ module TuplesModule_TopLevel
 	// [END USER PORTS]
 	input wire Value1,
 	input wire Value2,
-	output wire Same,
-	output wire Diff
+	output wire Diff,
+	output wire Same
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -63,8 +63,8 @@ module TuplesModule_TopLevel
 	assign Inputs_Value2 = Value2;
 	assign Logic_Item1 = TuplesModule_L16F13L21T14_same;
 	assign Logic_Item2 = TuplesModule_L16F13L21T14_diff;
-	assign Same = Logic_Item1;
 	assign Diff = Logic_Item2;
+	assign Same = Logic_Item1;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

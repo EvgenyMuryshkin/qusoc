@@ -25,11 +25,11 @@ entity CompositionModule_TopLevel_Receiver is
 		-- [BEGIN USER PORTS]
 		-- [END USER PORTS]
 		BoardSignals : in BoardSignalsType;
-		IsValid : in std_logic;
 		Ack : in std_logic;
 		Bit : in std_logic;
-		HasData : out std_logic;
-		Data : out unsigned (7 downto 0)
+		IsValid : in std_logic;
+		Data : out unsigned (7 downto 0);
+		HasData : out std_logic
 	);
 end entity;
 -- FSM summary
@@ -54,21 +54,21 @@ architecture rtl of CompositionModule_TopLevel_Receiver is
 	constant ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L35F21L38T22_ReceiverModule_L36F41T57_Expr : std_logic := '0';
 	constant ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L35F21L38T22_ReceiverModule_L37F42T43_Expr : std_logic := '0';
 	constant ReceiverModule_L8F46T71_Expr : unsigned(1 downto 0) := "10";
-	signal Inputs_IsValid : std_logic := '0';
 	signal Inputs_Ack : std_logic := '0';
 	signal Inputs_Bit : std_logic := '0';
-	signal NextState_FSM : unsigned(1 downto 0) := (others => '0');
+	signal Inputs_IsValid : std_logic := '0';
 	signal NextState_Data : unsigned(7 downto 0) := (others => '0');
+	signal NextState_FSM : unsigned(1 downto 0) := (others => '0');
 	signal PartialData : unsigned(7 downto 0) := (others => '0');
 	signal ReceiverModule_L10F36T57_WhenTrue : unsigned(7 downto 0) := "00000000";
 	signal ReceiverModule_L10F36T57_WhenFalse : unsigned(7 downto 0) := "00000000";
 	signal ReceiverModule_L10F36T57_Ternary : unsigned(7 downto 0) := "00000000";
 	signal ReceiverModule_L10F29T58_Cast : unsigned(7 downto 0) := (others => '0');
 	signal ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F42T81_Cast : unsigned(7 downto 0) := (others => '0');
-	signal State_FSM : unsigned(1 downto 0) := "00";
-	constant State_FSMDefault : unsigned(1 downto 0) := "00";
 	signal State_Data : unsigned(7 downto 0) := "00000000";
 	constant State_DataDefault : unsigned(7 downto 0) := "00000000";
+	signal State_FSM : unsigned(1 downto 0) := "00";
+	constant State_FSMDefault : unsigned(1 downto 0) := "00";
 	signal ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F49T80_Expr : unsigned(7 downto 0) := "00000000";
 	signal ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F49T80_Expr_1 : unsigned(7 downto 0) := "00000000";
 	signal ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F49T80_Expr_2 : unsigned(7 downto 0) := "00000000";
@@ -91,11 +91,11 @@ begin
 	begin
 		if rising_edge(BoardSignals.Clock) then
 			if BoardSignals.Reset = '1' then
-				State_FSM <= State_FSMDefault;
 				State_Data <= State_DataDefault;
+				State_FSM <= State_FSMDefault;
 			else
-				State_FSM <= NextState_FSM;
 				State_Data <= NextState_Data;
+				State_FSM <= NextState_FSM;
 			end if;
 		end if;
 	end process;
@@ -124,8 +124,8 @@ begin
 	ReceiverModule_L10F36T57_Ternary <= ReceiverModule_L10F36T57_WhenTrue when (Inputs_Bit = '1') else ReceiverModule_L10F36T57_WhenFalse;
 	process (Inputs_Ack, Inputs_IsValid, PartialData, ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L16F17L22T27_Case, ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L23F17L32T27_Case, ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F42T81_Cast, ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L33F17L39T27_Case, State_Data, State_FSM)
 	begin
-		NextState_FSM <= State_FSM;
 		NextState_Data <= State_Data;
+		NextState_FSM <= State_FSM;
 		if ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L16F17L22T27_Case = '1' then
 			if Inputs_IsValid = '1' then
 				NextState_Data <= PartialData;
@@ -168,17 +168,17 @@ begin
 		ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F49T80_Expr_1 <= ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F50T65_Expr;
 		ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F49T80_Expr_2 <= PartialData;
 		ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F50T65_Expr_1 <= State_Data;
-		Inputs_IsValid <= IsValid;
 		Inputs_Ack <= Ack;
 		Inputs_Bit <= Bit;
+		Inputs_IsValid <= IsValid;
 		ReceiverModule_L10F36T57_WhenTrue <= ReceiverModule_L10F49T53_Expr;
 		ReceiverModule_L10F36T57_WhenFalse(7 downto 1) <= (others => '0');
 		ReceiverModule_L10F36T57_WhenFalse(0) <= ReceiverModule_L10F56T57_Expr;
 		ReceiverModule_L10F29T58_Cast <= ReceiverModule_L10F36T57_Ternary;
 		PartialData <= ReceiverModule_L10F29T58_Cast;
 		ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F42T81_Cast <= ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F49T80_Expr;
-		HasData <= ReceiverModule_L8F32T71_Expr;
 		Data <= State_Data;
+		HasData <= ReceiverModule_L8F32T71_Expr;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

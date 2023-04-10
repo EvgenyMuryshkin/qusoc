@@ -36,8 +36,8 @@ module LogicRAMModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F46T47_Expr = 1'b1;
 	wire [7: 0] State_BuffDefault = 8'b00000000;
+	wire LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F46T47_Expr = 1'b1;
 	wire [1: 0] LogicRAMModule_L25F102T103_Expr = 2'b10;
 	wire [7: 0] Inputs_Value;
 	reg [1: 0] NextState_Index;

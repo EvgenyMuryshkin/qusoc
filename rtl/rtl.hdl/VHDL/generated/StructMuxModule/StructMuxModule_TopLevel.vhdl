@@ -24,11 +24,11 @@ entity StructMuxModule_TopLevel is
 	(
 		-- [BEGIN USER PORTS]
 		-- [END USER PORTS]
-		selector : in std_logic;
 		s1_i1 : in unsigned (7 downto 0);
 		s1_i2 : in unsigned (7 downto 0);
 		s2_i1 : in unsigned (7 downto 0);
 		s2_i2 : in unsigned (7 downto 0);
+		selector : in std_logic;
 		os1_i1 : out unsigned (7 downto 0);
 		os1_i2 : out unsigned (7 downto 0);
 		os2_i1 : out unsigned (7 downto 0);
@@ -50,11 +50,11 @@ architecture rtl of StructMuxModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_selector : std_logic := '0';
 	signal Inputs_s1_i1 : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_s1_i2 : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_s2_i1 : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_s2_i2 : unsigned(7 downto 0) := (others => '0');
+	signal Inputs_selector : std_logic := '0';
 	signal ii1_i1 : unsigned(7 downto 0) := (others => '0');
 	signal ii1_i2 : unsigned(7 downto 0) := (others => '0');
 	signal is2_i1 : unsigned(7 downto 0) := (others => '0');
@@ -96,11 +96,11 @@ begin
 	StructMuxModule_L38F37L48T14_Ternary_i2 <= StructMuxModule_L39F15L43T14_WhenTrue_i2 when (Inputs_selector = '1') else StructMuxModule_L44F15L48T14_WhenFalse_i2;
 	process (ii1_i1, ii1_i2, Inputs_s1_i1, Inputs_s1_i2, Inputs_s2_i1, Inputs_s2_i2, is2_i1, is2_i2, is3_i1, is3_i2, s1_i1, s1_i2, s2_i1, s2_i2, selector, StructMuxModule_L21F37T76_Ternary_i1, StructMuxModule_L21F37T76_Ternary_i2, StructMuxModule_L24F30T63_Ternary_i1, StructMuxModule_L24F30T63_Ternary_i2, StructMuxModule_L26F30L36T14_Ternary_i1, StructMuxModule_L26F30L36T14_Ternary_i2, StructMuxModule_L38F37L48T14_Ternary_i1, StructMuxModule_L38F37L48T14_Ternary_i2)
 	begin
-		Inputs_selector <= selector;
 		Inputs_s1_i1 <= s1_i1;
 		Inputs_s1_i2 <= s1_i2;
 		Inputs_s2_i1 <= s2_i1;
 		Inputs_s2_i2 <= s2_i2;
+		Inputs_selector <= selector;
 		ii1_i1 <= Inputs_s1_i1;
 		ii1_i2 <= Inputs_s1_i2;
 		StructMuxModule_L24F48T51_WhenTrue_i1 <= ii1_i1;

@@ -12,30 +12,3 @@ No reads:
 	firParams_MultSize
 	firParams_Order
 	firParams_SumSize
-	NextState_coeff_coef_ram_wr_addr
-	NextState_coeff_coef_ram_wr_data
-	NextState_dsp48_dsp48_result
-	NextState_dsp48_dsp48_srl
-	NextState_filo_fir_dreg
-	NextState_fir_fir_adreg
-	NextState_fir_fir_areg1
-	NextState_fir_fir_areg2
-	NextState_fir_fir_breg
-	NextState_fir_fir_mreg
-	NextState_fir_fir_preg
-	NextState_main_main_c_rd_addr
-	NextState_main_main_d_addr
-No writes:
-	State_coeff_coef_ram_wr_addr
-	State_coeff_coef_ram_wr_data
-	State_dsp48_dsp48_result
-	State_dsp48_dsp48_srl
-	State_filo_fir_dreg
-	State_fir_fir_adreg
-	State_fir_fir_areg1
-	State_fir_fir_areg2
-	State_fir_fir_breg
-	State_fir_fir_mreg
-	State_fir_fir_preg
-	State_main_main_c_rd_addr
-	State_main_main_d_addr

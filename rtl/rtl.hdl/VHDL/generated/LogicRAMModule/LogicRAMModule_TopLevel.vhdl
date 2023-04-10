@@ -41,8 +41,8 @@ architecture rtl of LogicRAMModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F46T47_Expr : std_logic := '1';
 	constant State_BuffDefault : unsigned(7 downto 0) := "00000000";
+	constant LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F46T47_Expr : std_logic := '1';
 	constant LogicRAMModule_L25F102T103_Expr : unsigned(1 downto 0) := "10";
 	signal Inputs_Value : unsigned(7 downto 0) := (others => '0');
 	signal NextState_Index : unsigned(1 downto 0) := (others => '0');

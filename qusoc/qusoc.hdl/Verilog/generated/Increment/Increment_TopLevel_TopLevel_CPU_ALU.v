@@ -27,13 +27,13 @@ module Increment_TopLevel_TopLevel_CPU_ALU
 	input wire [31:0] Op2,
 	input wire [4:0] SHAMT,
 	output wire [31:0] ADD,
-	output wire [31:0] SUB,
 	output wire [31:0] resAND,
 	output wire [31:0] resOR,
 	output wire [31:0] resXOR,
 	output wire [31:0] SHLL,
+	output wire [31:0] SHRA,
 	output wire [31:0] SHRL,
-	output wire [31:0] SHRA
+	output wire [31:0] SUB
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -55,12 +55,12 @@ module Increment_TopLevel_TopLevel_CPU_ALU
 	wire signed [31: 0] ALUModule_L16F80T99_SignChange;
 	wire signed [32: 0] ALUModule_L16F80T111_Resize;
 	wire [31: 0] ALUModule_L18F35T53_Index;
-	wire [31: 0] ALUModule_L19F35T53_Index;
 	wire [31: 0] ALUModule_L23F36T71_Index;
-	wire [31: 0] ALUModule_L24F37T58_SignChange;
-	wire [31: 0] ALUModule_L24F36T82_Index;
 	wire signed [31: 0] ALUModule_L25F37T56_SignChange;
 	wire [31: 0] ALUModule_L25F36T80_Index;
+	wire [31: 0] ALUModule_L24F37T58_SignChange;
+	wire [31: 0] ALUModule_L24F36T82_Index;
+	wire [31: 0] ALUModule_L19F35T53_Index;
 	wire [31: 0] ALUModule_L20F38T61_Expr;
 	wire [31: 0] ALUModule_L20F38T61_Expr_1;
 	wire [31: 0] ALUModule_L20F38T61_Expr_2;
@@ -72,10 +72,10 @@ module Increment_TopLevel_TopLevel_CPU_ALU
 	wire [31: 0] ALUModule_L22F38T61_Expr_2;
 	wire [31: 0] ALUModule_L23F37T63_Expr;
 	wire [31: 0] ALUModule_L23F37T63_Expr_1;
-	wire [31: 0] ALUModule_L24F37T74_Expr;
-	wire [31: 0] ALUModule_L24F37T74_Expr_1;
 	wire signed [31: 0] ALUModule_L25F37T72_Expr;
 	wire signed [31: 0] ALUModule_L25F37T72_Expr_1;
+	wire [31: 0] ALUModule_L24F37T74_Expr;
+	wire [31: 0] ALUModule_L24F37T74_Expr_1;
 	wire signed [32: 0] ALUModule_L15F46T87_Expr;
 	wire signed [32: 0] ALUModule_L15F46T87_Expr_1;
 	wire signed [32: 0] ALUModule_L15F46T87_Expr_2;
@@ -86,8 +86,8 @@ module Increment_TopLevel_TopLevel_CPU_ALU
 	assign ALUModule_L21F37T60_Expr = ALUModule_L21F37T60_Expr_1 | ALUModule_L21F37T60_Expr_2;
 	assign ALUModule_L22F38T61_Expr = ALUModule_L22F38T61_Expr_1 ^ ALUModule_L22F38T61_Expr_2;
 	assign ALUModule_L23F37T63_Expr = (ALUModule_L23F37T63_Expr_1 << Inputs_SHAMT);
-	assign ALUModule_L24F37T74_Expr = (ALUModule_L24F37T74_Expr_1 >> Inputs_SHAMT);
 	assign ALUModule_L25F37T72_Expr = (ALUModule_L25F37T72_Expr_1 >> Inputs_SHAMT);
+	assign ALUModule_L24F37T74_Expr = (ALUModule_L24F37T74_Expr_1 >> Inputs_SHAMT);
 	assign ALUModule_L15F46T87_Expr = ALUModule_L15F46T87_Expr_1 + ALUModule_L15F46T87_Expr_2;
 	assign ALUModule_L16F46T111_Expr = ALUModule_L16F46T111_Expr_1 - ALUModule_L16F46T111_Expr_2;
 	assign ALUModule_L20F38T61_Expr_1 = Inputs_Op1;
@@ -97,8 +97,8 @@ module Increment_TopLevel_TopLevel_CPU_ALU
 	assign ALUModule_L22F38T61_Expr_1 = Inputs_Op1;
 	assign ALUModule_L22F38T61_Expr_2 = Inputs_Op2;
 	assign ALUModule_L23F37T63_Expr_1 = Inputs_Op1;
-	assign ALUModule_L24F37T74_Expr_1 = ALUModule_L24F37T58_SignChange;
 	assign ALUModule_L25F37T72_Expr_1 = ALUModule_L25F37T56_SignChange;
+	assign ALUModule_L24F37T74_Expr_1 = ALUModule_L24F37T58_SignChange;
 	assign ALUModule_L15F46T87_Expr_1 = { ALUModule_L15F46T65_SignChange[31], ALUModule_L15F46T65_SignChange };
 	assign ALUModule_L15F46T87_Expr_2 = { ALUModule_L15F68T87_SignChange[31], ALUModule_L15F68T87_SignChange };
 	assign ALUModule_L16F46T111_Expr_1 = { ALUModule_L16F46T77_Resize[32], ALUModule_L16F46T77_Resize };
@@ -116,19 +116,19 @@ module Increment_TopLevel_TopLevel_CPU_ALU
 	assign internalSub = { ALUModule_L16F46T111_Expr[33], ALUModule_L16F46T111_Expr };
 	assign ALUModule_L18F35T53_Index = internalAdd[31:0];
 	assign ADD = ALUModule_L18F35T53_Index;
-	assign ALUModule_L19F35T53_Index = internalSub[31:0];
-	assign SUB = ALUModule_L19F35T53_Index;
 	assign resAND = ALUModule_L20F38T61_Expr;
 	assign resOR = ALUModule_L21F37T60_Expr;
 	assign resXOR = ALUModule_L22F38T61_Expr;
 	assign ALUModule_L23F36T71_Index = ALUModule_L23F37T63_Expr[31:0];
 	assign SHLL = ALUModule_L23F36T71_Index;
-	assign ALUModule_L24F37T58_SignChange = Inputs_Op1;
-	assign ALUModule_L24F36T82_Index = ALUModule_L24F37T74_Expr[31:0];
-	assign SHRL = ALUModule_L24F36T82_Index;
 	assign ALUModule_L25F37T56_SignChange = Inputs_Op1;
 	assign ALUModule_L25F36T80_Index = ALUModule_L25F37T72_Expr[31:0];
 	assign SHRA = ALUModule_L25F36T80_Index;
+	assign ALUModule_L24F37T58_SignChange = Inputs_Op1;
+	assign ALUModule_L24F36T82_Index = ALUModule_L24F37T74_Expr[31:0];
+	assign SHRL = ALUModule_L24F36T82_Index;
+	assign ALUModule_L19F35T53_Index = internalSub[31:0];
+	assign SUB = ALUModule_L19F35T53_Index;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

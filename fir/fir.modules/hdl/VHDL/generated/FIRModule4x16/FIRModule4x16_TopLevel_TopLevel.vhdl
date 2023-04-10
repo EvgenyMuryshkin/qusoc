@@ -29,13 +29,13 @@ entity FIRModule4x16_TopLevel_TopLevel is
 		iCOEF_V : in std_logic;
 		iCOEFF : in unsigned (15 downto 0);
 		iDO : in unsigned (3 downto 0);
-		iIQ_V : in std_logic;
 		iIQ_i : in unsigned (15 downto 0);
 		iIQ_q : in unsigned (15 downto 0);
+		iIQ_V : in std_logic;
 		oCOEF_RDY : out std_logic;
-		oIQ_V : out std_logic;
 		oIQ_i : out unsigned (23 downto 0);
-		oIQ_q : out unsigned (23 downto 0)
+		oIQ_q : out unsigned (23 downto 0);
+		oIQ_V : out std_logic
 	);
 end entity;
 -- FSM summary
@@ -49,19 +49,33 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant firParams_Order : unsigned(2 downto 0) := "100";
+	constant State_coeff_coef_ram_wr_addrDefault : unsigned(8 downto 0) := "000000000";
+	constant State_coeff_coef_ram_wr_dataDefault : unsigned(15 downto 0) := "0000000000000000";
+	constant State_dsp48_dsp48_resultDefault : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	constant State_dsp48_dsp48_srlDefault : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	constant State_filo_fir_dregDefault : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	constant State_fir_fir_adregDefault : unsigned(49 downto 0) := "00000000000000000000000000000000000000000000000000";
+	constant State_fir_fir_areg1Default : unsigned(49 downto 0) := "00000000000000000000000000000000000000000000000000";
+	constant State_fir_fir_areg2Default : unsigned(49 downto 0) := "00000000000000000000000000000000000000000000000000";
+	constant State_fir_fir_bregDefault : unsigned(35 downto 0) := "000000000000000000000000000000000000";
+	constant State_fir_fir_mregDefault : unsigned(85 downto 0) := "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+	constant State_fir_fir_pregDefault : unsigned(95 downto 0) := "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+	constant State_main_main_c_rd_addrDefault : unsigned(8 downto 0) := "000000000";
+	constant State_main_main_d_addrDefault : unsigned(9 downto 0) := "0000000000";
+	constant State_set_do_muxDefault : unsigned(3 downto 0) := "0000";
+	constant c_nofc : unsigned(9 downto 0) := "1000000000";
+	constant c_out_lsb : unsigned(2 downto 0) := "100";
+	constant c_srls_length : unsigned(10 downto 0) := "10000000000";
+	constant firParams_AccumSize : unsigned(5 downto 0) := "100001";
+	constant firParams_CoeffRamAddrBits : unsigned(1 downto 0) := "10";
+	constant firParams_CoeffSize : unsigned(4 downto 0) := "10000";
+	constant firParams_DataRamAddrBits : unsigned(3 downto 0) := "1000";
 	constant firParams_DOSize : unsigned(2 downto 0) := "100";
 	constant firParams_IQSizeIn : unsigned(4 downto 0) := "10000";
 	constant firParams_IQSizeOut : unsigned(4 downto 0) := "11000";
-	constant firParams_CoeffSize : unsigned(4 downto 0) := "10000";
-	constant firParams_SumSize : unsigned(4 downto 0) := "10001";
 	constant firParams_MultSize : unsigned(5 downto 0) := "100001";
-	constant firParams_AccumSize : unsigned(5 downto 0) := "100001";
-	constant firParams_CoeffRamAddrBits : unsigned(1 downto 0) := "10";
-	constant firParams_DataRamAddrBits : unsigned(3 downto 0) := "1000";
-	constant c_nofc : unsigned(9 downto 0) := "1000000000";
-	constant c_srls_length : unsigned(10 downto 0) := "10000000000";
-	constant c_out_lsb : unsigned(2 downto 0) := "100";
+	constant firParams_Order : unsigned(2 downto 0) := "100";
+	constant firParams_SumSize : unsigned(4 downto 0) := "10001";
 	constant FIRModule_L79F53T58_Expr : std_logic := '0';
 	constant FIRModule_L104F13L115T14_0_FIRModule_L108F26T30_Expr : std_logic := '1';
 	constant FIRModule_L104F13L115T14_1_FIRModule_L108F26T30_Expr : std_logic := '1';
@@ -134,20 +148,23 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	constant FIRModule_L522F9L530T10_FIRModule_L529F13T29_FIRModule_L492F9L519T10_FIRModule_L494F13L509T14_FIRModule_L502F17L504T18_FIRModule_L503F41T45_Expr : std_logic := '1';
 	constant FIRModule_L522F9L530T10_FIRModule_L529F13T29_FIRModule_L492F9L519T10_FIRModule_L494F13L509T14_FIRModule_L506F17L508T18_FIRModule_L507F41T46_Expr : std_logic := '0';
 	constant FIRModule_L522F9L530T10_FIRModule_L529F13T29_FIRModule_L492F9L519T10_FIRModule_L511F13L513T14_FIRModule_L512F37T42_Expr : std_logic := '0';
-	constant State_set_do_muxDefault : unsigned(3 downto 0) := "0000";
 	signal Inputs_iCOEF_V : std_logic := '0';
 	signal Inputs_iCOEFF : unsigned(15 downto 0) := (others => '0');
 	signal Inputs_iDO : unsigned(3 downto 0) := (others => '0');
-	signal Inputs_iIQ_V : std_logic := '0';
 	signal Inputs_iIQ_i : unsigned(15 downto 0) := (others => '0');
 	signal Inputs_iIQ_q : unsigned(15 downto 0) := (others => '0');
-	signal NextState_set_do : unsigned(3 downto 0) := (others => '0');
-	signal NextState_set_coef_mask : unsigned(8 downto 0) := (others => '0');
-	signal NextState_set_data_mask : unsigned(9 downto 0) := (others => '0');
+	signal Inputs_iIQ_V : std_logic := '0';
+	signal NextState_coeff_coef_ram_cnt : unsigned(15 downto 0) := (others => '0');
+	signal NextState_coeff_coef_ram_wr : unsigned(3 downto 0) := (others => '0');
 	signal NextState_coeff_coef_wr_cnt_cell : unsigned(8 downto 0) := (others => '0');
 	signal NextState_coeff_coef_wr_cnt_ram : unsigned(2 downto 0) := (others => '0');
-	signal NextState_coeff_coef_ram_wr : unsigned(3 downto 0) := (others => '0');
-	signal NextState_coeff_coef_ram_cnt : unsigned(15 downto 0) := (others => '0');
+	signal NextState_filo_filo_addr_dec : unsigned(8 downto 0) := (others => '0');
+	signal NextState_filo_filo_addr_inc : unsigned(8 downto 0) := (others => '0');
+	signal NextState_filo_filo_addr_p : unsigned(8 downto 0) := (others => '0');
+	signal NextState_filo_filo_addr_p1 : unsigned(8 downto 0) := (others => '0');
+	signal NextState_filo_filo_counter_dec : unsigned(8 downto 0) := (others => '0');
+	signal NextState_filo_filo_counter_inc : unsigned(8 downto 0) := (others => '0');
+	signal NextState_filo_filo_way : std_logic := '0';
 	signal NextState_main_main_c_cnt : unsigned(8 downto 0) := (others => '0');
 	signal NextState_main_main_c_cnt_masked : unsigned(8 downto 0) := (others => '0');
 	signal NextState_main_main_c_rd_addr_cmn : unsigned(8 downto 0) := (others => '0');
@@ -155,203 +172,199 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal NextState_main_main_d_cnt_masked : unsigned(9 downto 0) := (others => '0');
 	signal NextState_main_main_d_cnt_rst : std_logic := '0';
 	signal NextState_mult_reset_mult_reset : unsigned(3 downto 0) := (others => '0');
-	signal NextState_mult_reset_mult_reset_dsp : unsigned(3 downto 0) := (others => '0');
 	signal NextState_mult_reset_mult_reset_common : std_logic := '0';
 	signal NextState_mult_reset_mult_reset_common_p : std_logic := '0';
 	signal NextState_mult_reset_mult_reset_common_p1 : std_logic := '0';
 	signal NextState_mult_reset_mult_reset_common_p2 : std_logic := '0';
 	signal NextState_mult_reset_mult_reset_common_p3 : std_logic := '0';
-	signal NextState_filo_filo_way : std_logic := '0';
-	signal NextState_filo_filo_counter_inc : unsigned(8 downto 0) := (others => '0');
-	signal NextState_filo_filo_counter_dec : unsigned(8 downto 0) := (others => '0');
-	signal NextState_filo_filo_addr_inc : unsigned(8 downto 0) := (others => '0');
-	signal NextState_filo_filo_addr_dec : unsigned(8 downto 0) := (others => '0');
-	signal NextState_filo_filo_addr_p : unsigned(8 downto 0) := (others => '0');
-	signal NextState_filo_filo_addr_p1 : unsigned(8 downto 0) := (others => '0');
+	signal NextState_mult_reset_mult_reset_dsp : unsigned(3 downto 0) := (others => '0');
 	signal NextState_ob_coef_rdy : std_logic := '0';
-	signal NextState_ob_iq_v : std_logic := '0';
 	signal NextState_ob_iq_i : unsigned(23 downto 0) := (others => '0');
 	signal NextState_ob_iq_q : unsigned(23 downto 0) := (others => '0');
-	signal ib_coef_v : std_logic := '0';
+	signal NextState_ob_iq_v : std_logic := '0';
+	signal NextState_set_coef_mask : unsigned(8 downto 0) := (others => '0');
+	signal NextState_set_data_mask : unsigned(9 downto 0) := (others => '0');
+	signal NextState_set_do : unsigned(3 downto 0) := (others => '0');
 	signal ib_coef : unsigned(15 downto 0) := (others => '0');
+	signal ib_coef_v : std_logic := '0';
 	signal ib_do : unsigned(3 downto 0) := (others => '0');
-	signal ib_iq_v : std_logic := '0';
 	signal ib_iq_i : unsigned(15 downto 0) := (others => '0');
 	signal ib_iq_q : unsigned(15 downto 0) := (others => '0');
+	signal ib_iq_v : std_logic := '0';
 	signal ramf_din_i : unsigned(15 downto 0) := (others => '0');
 	signal ramf_din_q : unsigned(15 downto 0) := (others => '0');
 	signal ramf_dout_i : unsigned(15 downto 0) := (others => '0');
 	signal ramf_dout_q : unsigned(15 downto 0) := (others => '0');
+	signal u_dsp48_i0_A : unsigned(29 downto 0) := (others => '0');
+	signal u_dsp48_i0_B : unsigned(17 downto 0) := (others => '0');
+	signal u_dsp48_i0_CE : std_logic := '0';
+	signal u_dsp48_i0_D : unsigned(24 downto 0) := (others => '0');
+	signal u_dsp48_i0_OPMODE : unsigned(2 downto 0) := (others => '0');
+	signal u_dsp48_i0_PCIN : unsigned(47 downto 0) := (others => '0');
+	signal u_dsp48_i0_RST : std_logic := '0';
+	signal u_dsp48_i0_P : unsigned(47 downto 0) := (others => '0');
+	signal u_dsp48_i0_PCOUT : unsigned(47 downto 0) := (others => '0');
+	signal u_dsp48_i1_A : unsigned(29 downto 0) := (others => '0');
+	signal u_dsp48_i1_B : unsigned(17 downto 0) := (others => '0');
+	signal u_dsp48_i1_CE : std_logic := '0';
+	signal u_dsp48_i1_D : unsigned(24 downto 0) := (others => '0');
+	signal u_dsp48_i1_OPMODE : unsigned(2 downto 0) := (others => '0');
+	signal u_dsp48_i1_PCIN : unsigned(47 downto 0) := (others => '0');
+	signal u_dsp48_i1_RST : std_logic := '0';
+	signal u_dsp48_i1_P : unsigned(47 downto 0) := (others => '0');
+	signal u_dsp48_i1_PCOUT : unsigned(47 downto 0) := (others => '0');
+	signal u_dsp48_i2_A : unsigned(29 downto 0) := (others => '0');
+	signal u_dsp48_i2_B : unsigned(17 downto 0) := (others => '0');
+	signal u_dsp48_i2_CE : std_logic := '0';
+	signal u_dsp48_i2_D : unsigned(24 downto 0) := (others => '0');
+	signal u_dsp48_i2_OPMODE : unsigned(2 downto 0) := (others => '0');
+	signal u_dsp48_i2_PCIN : unsigned(47 downto 0) := (others => '0');
+	signal u_dsp48_i2_RST : std_logic := '0';
+	signal u_dsp48_i2_P : unsigned(47 downto 0) := (others => '0');
+	signal u_dsp48_i2_PCOUT : unsigned(47 downto 0) := (others => '0');
+	signal u_dsp48_i3_A : unsigned(29 downto 0) := (others => '0');
+	signal u_dsp48_i3_B : unsigned(17 downto 0) := (others => '0');
+	signal u_dsp48_i3_CE : std_logic := '0';
+	signal u_dsp48_i3_D : unsigned(24 downto 0) := (others => '0');
+	signal u_dsp48_i3_OPMODE : unsigned(2 downto 0) := (others => '0');
+	signal u_dsp48_i3_PCIN : unsigned(47 downto 0) := (others => '0');
+	signal u_dsp48_i3_RST : std_logic := '0';
+	signal u_dsp48_i3_P : unsigned(47 downto 0) := (others => '0');
+	signal u_dsp48_i3_PCOUT : unsigned(47 downto 0) := (others => '0');
+	signal u_dsp48_q0_A : unsigned(29 downto 0) := (others => '0');
+	signal u_dsp48_q0_B : unsigned(17 downto 0) := (others => '0');
+	signal u_dsp48_q0_CE : std_logic := '0';
+	signal u_dsp48_q0_D : unsigned(24 downto 0) := (others => '0');
+	signal u_dsp48_q0_OPMODE : unsigned(2 downto 0) := (others => '0');
+	signal u_dsp48_q0_PCIN : unsigned(47 downto 0) := (others => '0');
+	signal u_dsp48_q0_RST : std_logic := '0';
+	signal u_dsp48_q0_P : unsigned(47 downto 0) := (others => '0');
+	signal u_dsp48_q0_PCOUT : unsigned(47 downto 0) := (others => '0');
+	signal u_dsp48_q1_A : unsigned(29 downto 0) := (others => '0');
+	signal u_dsp48_q1_B : unsigned(17 downto 0) := (others => '0');
+	signal u_dsp48_q1_CE : std_logic := '0';
+	signal u_dsp48_q1_D : unsigned(24 downto 0) := (others => '0');
+	signal u_dsp48_q1_OPMODE : unsigned(2 downto 0) := (others => '0');
+	signal u_dsp48_q1_PCIN : unsigned(47 downto 0) := (others => '0');
+	signal u_dsp48_q1_RST : std_logic := '0';
+	signal u_dsp48_q1_P : unsigned(47 downto 0) := (others => '0');
+	signal u_dsp48_q1_PCOUT : unsigned(47 downto 0) := (others => '0');
+	signal u_dsp48_q2_A : unsigned(29 downto 0) := (others => '0');
+	signal u_dsp48_q2_B : unsigned(17 downto 0) := (others => '0');
+	signal u_dsp48_q2_CE : std_logic := '0';
+	signal u_dsp48_q2_D : unsigned(24 downto 0) := (others => '0');
+	signal u_dsp48_q2_OPMODE : unsigned(2 downto 0) := (others => '0');
+	signal u_dsp48_q2_PCIN : unsigned(47 downto 0) := (others => '0');
+	signal u_dsp48_q2_RST : std_logic := '0';
+	signal u_dsp48_q2_P : unsigned(47 downto 0) := (others => '0');
+	signal u_dsp48_q2_PCOUT : unsigned(47 downto 0) := (others => '0');
+	signal u_dsp48_q3_A : unsigned(29 downto 0) := (others => '0');
+	signal u_dsp48_q3_B : unsigned(17 downto 0) := (others => '0');
+	signal u_dsp48_q3_CE : std_logic := '0';
+	signal u_dsp48_q3_D : unsigned(24 downto 0) := (others => '0');
+	signal u_dsp48_q3_OPMODE : unsigned(2 downto 0) := (others => '0');
+	signal u_dsp48_q3_PCIN : unsigned(47 downto 0) := (others => '0');
+	signal u_dsp48_q3_RST : std_logic := '0';
+	signal u_dsp48_q3_P : unsigned(47 downto 0) := (others => '0');
+	signal u_dsp48_q3_PCOUT : unsigned(47 downto 0) := (others => '0');
 	signal u_ram_coef0_CE : std_logic := '0';
-	signal u_ram_coef0_WR : std_logic := '0';
-	signal u_ram_coef0_WR_ADDR : unsigned(8 downto 0) := (others => '0');
 	signal u_ram_coef0_DIN : unsigned(15 downto 0) := (others => '0');
 	signal u_ram_coef0_RD : std_logic := '0';
 	signal u_ram_coef0_RD_ADDR : unsigned(8 downto 0) := (others => '0');
+	signal u_ram_coef0_WR : std_logic := '0';
+	signal u_ram_coef0_WR_ADDR : unsigned(8 downto 0) := (others => '0');
 	signal u_ram_coef0_DOUT : unsigned(15 downto 0) := (others => '0');
 	signal u_ram_coef1_CE : std_logic := '0';
-	signal u_ram_coef1_WR : std_logic := '0';
-	signal u_ram_coef1_WR_ADDR : unsigned(8 downto 0) := (others => '0');
 	signal u_ram_coef1_DIN : unsigned(15 downto 0) := (others => '0');
 	signal u_ram_coef1_RD : std_logic := '0';
 	signal u_ram_coef1_RD_ADDR : unsigned(8 downto 0) := (others => '0');
+	signal u_ram_coef1_WR : std_logic := '0';
+	signal u_ram_coef1_WR_ADDR : unsigned(8 downto 0) := (others => '0');
 	signal u_ram_coef1_DOUT : unsigned(15 downto 0) := (others => '0');
 	signal u_ram_coef2_CE : std_logic := '0';
-	signal u_ram_coef2_WR : std_logic := '0';
-	signal u_ram_coef2_WR_ADDR : unsigned(8 downto 0) := (others => '0');
 	signal u_ram_coef2_DIN : unsigned(15 downto 0) := (others => '0');
 	signal u_ram_coef2_RD : std_logic := '0';
 	signal u_ram_coef2_RD_ADDR : unsigned(8 downto 0) := (others => '0');
+	signal u_ram_coef2_WR : std_logic := '0';
+	signal u_ram_coef2_WR_ADDR : unsigned(8 downto 0) := (others => '0');
 	signal u_ram_coef2_DOUT : unsigned(15 downto 0) := (others => '0');
 	signal u_ram_coef3_CE : std_logic := '0';
-	signal u_ram_coef3_WR : std_logic := '0';
-	signal u_ram_coef3_WR_ADDR : unsigned(8 downto 0) := (others => '0');
 	signal u_ram_coef3_DIN : unsigned(15 downto 0) := (others => '0');
 	signal u_ram_coef3_RD : std_logic := '0';
 	signal u_ram_coef3_RD_ADDR : unsigned(8 downto 0) := (others => '0');
+	signal u_ram_coef3_WR : std_logic := '0';
+	signal u_ram_coef3_WR_ADDR : unsigned(8 downto 0) := (others => '0');
 	signal u_ram_coef3_DOUT : unsigned(15 downto 0) := (others => '0');
-	signal u_ram_srls_i0_CE : std_logic := '0';
-	signal u_ram_srls_i0_WR : std_logic := '0';
-	signal u_ram_srls_i0_WR_ADDR : unsigned(9 downto 0) := (others => '0');
-	signal u_ram_srls_i0_DIN : unsigned(15 downto 0) := (others => '0');
-	signal u_ram_srls_i0_RD : std_logic := '0';
-	signal u_ram_srls_i0_RD_ADDR : unsigned(9 downto 0) := (others => '0');
-	signal u_ram_srls_i0_DOUT : unsigned(15 downto 0) := (others => '0');
-	signal u_ram_srls_i1_CE : std_logic := '0';
-	signal u_ram_srls_i1_WR : std_logic := '0';
-	signal u_ram_srls_i1_WR_ADDR : unsigned(9 downto 0) := (others => '0');
-	signal u_ram_srls_i1_DIN : unsigned(15 downto 0) := (others => '0');
-	signal u_ram_srls_i1_RD : std_logic := '0';
-	signal u_ram_srls_i1_RD_ADDR : unsigned(9 downto 0) := (others => '0');
-	signal u_ram_srls_i1_DOUT : unsigned(15 downto 0) := (others => '0');
-	signal u_ram_srls_i2_CE : std_logic := '0';
-	signal u_ram_srls_i2_WR : std_logic := '0';
-	signal u_ram_srls_i2_WR_ADDR : unsigned(9 downto 0) := (others => '0');
-	signal u_ram_srls_i2_DIN : unsigned(15 downto 0) := (others => '0');
-	signal u_ram_srls_i2_RD : std_logic := '0';
-	signal u_ram_srls_i2_RD_ADDR : unsigned(9 downto 0) := (others => '0');
-	signal u_ram_srls_i2_DOUT : unsigned(15 downto 0) := (others => '0');
-	signal u_ram_srls_i3_CE : std_logic := '0';
-	signal u_ram_srls_i3_WR : std_logic := '0';
-	signal u_ram_srls_i3_WR_ADDR : unsigned(9 downto 0) := (others => '0');
-	signal u_ram_srls_i3_DIN : unsigned(15 downto 0) := (others => '0');
-	signal u_ram_srls_i3_RD : std_logic := '0';
-	signal u_ram_srls_i3_RD_ADDR : unsigned(9 downto 0) := (others => '0');
-	signal u_ram_srls_i3_DOUT : unsigned(15 downto 0) := (others => '0');
-	signal u_ram_srls_q0_CE : std_logic := '0';
-	signal u_ram_srls_q0_WR : std_logic := '0';
-	signal u_ram_srls_q0_WR_ADDR : unsigned(9 downto 0) := (others => '0');
-	signal u_ram_srls_q0_DIN : unsigned(15 downto 0) := (others => '0');
-	signal u_ram_srls_q0_RD : std_logic := '0';
-	signal u_ram_srls_q0_RD_ADDR : unsigned(9 downto 0) := (others => '0');
-	signal u_ram_srls_q0_DOUT : unsigned(15 downto 0) := (others => '0');
-	signal u_ram_srls_q1_CE : std_logic := '0';
-	signal u_ram_srls_q1_WR : std_logic := '0';
-	signal u_ram_srls_q1_WR_ADDR : unsigned(9 downto 0) := (others => '0');
-	signal u_ram_srls_q1_DIN : unsigned(15 downto 0) := (others => '0');
-	signal u_ram_srls_q1_RD : std_logic := '0';
-	signal u_ram_srls_q1_RD_ADDR : unsigned(9 downto 0) := (others => '0');
-	signal u_ram_srls_q1_DOUT : unsigned(15 downto 0) := (others => '0');
-	signal u_ram_srls_q2_CE : std_logic := '0';
-	signal u_ram_srls_q2_WR : std_logic := '0';
-	signal u_ram_srls_q2_WR_ADDR : unsigned(9 downto 0) := (others => '0');
-	signal u_ram_srls_q2_DIN : unsigned(15 downto 0) := (others => '0');
-	signal u_ram_srls_q2_RD : std_logic := '0';
-	signal u_ram_srls_q2_RD_ADDR : unsigned(9 downto 0) := (others => '0');
-	signal u_ram_srls_q2_DOUT : unsigned(15 downto 0) := (others => '0');
-	signal u_ram_srls_q3_CE : std_logic := '0';
-	signal u_ram_srls_q3_WR : std_logic := '0';
-	signal u_ram_srls_q3_WR_ADDR : unsigned(9 downto 0) := (others => '0');
-	signal u_ram_srls_q3_DIN : unsigned(15 downto 0) := (others => '0');
-	signal u_ram_srls_q3_RD : std_logic := '0';
-	signal u_ram_srls_q3_RD_ADDR : unsigned(9 downto 0) := (others => '0');
-	signal u_ram_srls_q3_DOUT : unsigned(15 downto 0) := (others => '0');
 	signal u_ram_filo_i_CE : std_logic := '0';
-	signal u_ram_filo_i_WR : std_logic := '0';
-	signal u_ram_filo_i_WR_ADDR : unsigned(8 downto 0) := (others => '0');
 	signal u_ram_filo_i_DIN : unsigned(15 downto 0) := (others => '0');
 	signal u_ram_filo_i_RD : std_logic := '0';
 	signal u_ram_filo_i_RD_ADDR : unsigned(8 downto 0) := (others => '0');
+	signal u_ram_filo_i_WR : std_logic := '0';
+	signal u_ram_filo_i_WR_ADDR : unsigned(8 downto 0) := (others => '0');
 	signal u_ram_filo_i_DOUT : unsigned(15 downto 0) := (others => '0');
 	signal u_ram_filo_q_CE : std_logic := '0';
-	signal u_ram_filo_q_WR : std_logic := '0';
-	signal u_ram_filo_q_WR_ADDR : unsigned(8 downto 0) := (others => '0');
 	signal u_ram_filo_q_DIN : unsigned(15 downto 0) := (others => '0');
 	signal u_ram_filo_q_RD : std_logic := '0';
 	signal u_ram_filo_q_RD_ADDR : unsigned(8 downto 0) := (others => '0');
+	signal u_ram_filo_q_WR : std_logic := '0';
+	signal u_ram_filo_q_WR_ADDR : unsigned(8 downto 0) := (others => '0');
 	signal u_ram_filo_q_DOUT : unsigned(15 downto 0) := (others => '0');
-	signal u_dsp48_i0_CE : std_logic := '0';
-	signal u_dsp48_i0_RST : std_logic := '0';
-	signal u_dsp48_i0_A : unsigned(29 downto 0) := (others => '0');
-	signal u_dsp48_i0_B : unsigned(17 downto 0) := (others => '0');
-	signal u_dsp48_i0_D : unsigned(24 downto 0) := (others => '0');
-	signal u_dsp48_i0_PCIN : unsigned(47 downto 0) := (others => '0');
-	signal u_dsp48_i0_OPMODE : unsigned(2 downto 0) := (others => '0');
-	signal u_dsp48_i0_PCOUT : unsigned(47 downto 0) := (others => '0');
-	signal u_dsp48_i0_P : unsigned(47 downto 0) := (others => '0');
-	signal u_dsp48_i1_CE : std_logic := '0';
-	signal u_dsp48_i1_RST : std_logic := '0';
-	signal u_dsp48_i1_A : unsigned(29 downto 0) := (others => '0');
-	signal u_dsp48_i1_B : unsigned(17 downto 0) := (others => '0');
-	signal u_dsp48_i1_D : unsigned(24 downto 0) := (others => '0');
-	signal u_dsp48_i1_PCIN : unsigned(47 downto 0) := (others => '0');
-	signal u_dsp48_i1_OPMODE : unsigned(2 downto 0) := (others => '0');
-	signal u_dsp48_i1_PCOUT : unsigned(47 downto 0) := (others => '0');
-	signal u_dsp48_i1_P : unsigned(47 downto 0) := (others => '0');
-	signal u_dsp48_i2_CE : std_logic := '0';
-	signal u_dsp48_i2_RST : std_logic := '0';
-	signal u_dsp48_i2_A : unsigned(29 downto 0) := (others => '0');
-	signal u_dsp48_i2_B : unsigned(17 downto 0) := (others => '0');
-	signal u_dsp48_i2_D : unsigned(24 downto 0) := (others => '0');
-	signal u_dsp48_i2_PCIN : unsigned(47 downto 0) := (others => '0');
-	signal u_dsp48_i2_OPMODE : unsigned(2 downto 0) := (others => '0');
-	signal u_dsp48_i2_PCOUT : unsigned(47 downto 0) := (others => '0');
-	signal u_dsp48_i2_P : unsigned(47 downto 0) := (others => '0');
-	signal u_dsp48_i3_CE : std_logic := '0';
-	signal u_dsp48_i3_RST : std_logic := '0';
-	signal u_dsp48_i3_A : unsigned(29 downto 0) := (others => '0');
-	signal u_dsp48_i3_B : unsigned(17 downto 0) := (others => '0');
-	signal u_dsp48_i3_D : unsigned(24 downto 0) := (others => '0');
-	signal u_dsp48_i3_PCIN : unsigned(47 downto 0) := (others => '0');
-	signal u_dsp48_i3_OPMODE : unsigned(2 downto 0) := (others => '0');
-	signal u_dsp48_i3_PCOUT : unsigned(47 downto 0) := (others => '0');
-	signal u_dsp48_i3_P : unsigned(47 downto 0) := (others => '0');
-	signal u_dsp48_q0_CE : std_logic := '0';
-	signal u_dsp48_q0_RST : std_logic := '0';
-	signal u_dsp48_q0_A : unsigned(29 downto 0) := (others => '0');
-	signal u_dsp48_q0_B : unsigned(17 downto 0) := (others => '0');
-	signal u_dsp48_q0_D : unsigned(24 downto 0) := (others => '0');
-	signal u_dsp48_q0_PCIN : unsigned(47 downto 0) := (others => '0');
-	signal u_dsp48_q0_OPMODE : unsigned(2 downto 0) := (others => '0');
-	signal u_dsp48_q0_PCOUT : unsigned(47 downto 0) := (others => '0');
-	signal u_dsp48_q0_P : unsigned(47 downto 0) := (others => '0');
-	signal u_dsp48_q1_CE : std_logic := '0';
-	signal u_dsp48_q1_RST : std_logic := '0';
-	signal u_dsp48_q1_A : unsigned(29 downto 0) := (others => '0');
-	signal u_dsp48_q1_B : unsigned(17 downto 0) := (others => '0');
-	signal u_dsp48_q1_D : unsigned(24 downto 0) := (others => '0');
-	signal u_dsp48_q1_PCIN : unsigned(47 downto 0) := (others => '0');
-	signal u_dsp48_q1_OPMODE : unsigned(2 downto 0) := (others => '0');
-	signal u_dsp48_q1_PCOUT : unsigned(47 downto 0) := (others => '0');
-	signal u_dsp48_q1_P : unsigned(47 downto 0) := (others => '0');
-	signal u_dsp48_q2_CE : std_logic := '0';
-	signal u_dsp48_q2_RST : std_logic := '0';
-	signal u_dsp48_q2_A : unsigned(29 downto 0) := (others => '0');
-	signal u_dsp48_q2_B : unsigned(17 downto 0) := (others => '0');
-	signal u_dsp48_q2_D : unsigned(24 downto 0) := (others => '0');
-	signal u_dsp48_q2_PCIN : unsigned(47 downto 0) := (others => '0');
-	signal u_dsp48_q2_OPMODE : unsigned(2 downto 0) := (others => '0');
-	signal u_dsp48_q2_PCOUT : unsigned(47 downto 0) := (others => '0');
-	signal u_dsp48_q2_P : unsigned(47 downto 0) := (others => '0');
-	signal u_dsp48_q3_CE : std_logic := '0';
-	signal u_dsp48_q3_RST : std_logic := '0';
-	signal u_dsp48_q3_A : unsigned(29 downto 0) := (others => '0');
-	signal u_dsp48_q3_B : unsigned(17 downto 0) := (others => '0');
-	signal u_dsp48_q3_D : unsigned(24 downto 0) := (others => '0');
-	signal u_dsp48_q3_PCIN : unsigned(47 downto 0) := (others => '0');
-	signal u_dsp48_q3_OPMODE : unsigned(2 downto 0) := (others => '0');
-	signal u_dsp48_q3_PCOUT : unsigned(47 downto 0) := (others => '0');
-	signal u_dsp48_q3_P : unsigned(47 downto 0) := (others => '0');
+	signal u_ram_srls_i0_CE : std_logic := '0';
+	signal u_ram_srls_i0_DIN : unsigned(15 downto 0) := (others => '0');
+	signal u_ram_srls_i0_RD : std_logic := '0';
+	signal u_ram_srls_i0_RD_ADDR : unsigned(9 downto 0) := (others => '0');
+	signal u_ram_srls_i0_WR : std_logic := '0';
+	signal u_ram_srls_i0_WR_ADDR : unsigned(9 downto 0) := (others => '0');
+	signal u_ram_srls_i0_DOUT : unsigned(15 downto 0) := (others => '0');
+	signal u_ram_srls_i1_CE : std_logic := '0';
+	signal u_ram_srls_i1_DIN : unsigned(15 downto 0) := (others => '0');
+	signal u_ram_srls_i1_RD : std_logic := '0';
+	signal u_ram_srls_i1_RD_ADDR : unsigned(9 downto 0) := (others => '0');
+	signal u_ram_srls_i1_WR : std_logic := '0';
+	signal u_ram_srls_i1_WR_ADDR : unsigned(9 downto 0) := (others => '0');
+	signal u_ram_srls_i1_DOUT : unsigned(15 downto 0) := (others => '0');
+	signal u_ram_srls_i2_CE : std_logic := '0';
+	signal u_ram_srls_i2_DIN : unsigned(15 downto 0) := (others => '0');
+	signal u_ram_srls_i2_RD : std_logic := '0';
+	signal u_ram_srls_i2_RD_ADDR : unsigned(9 downto 0) := (others => '0');
+	signal u_ram_srls_i2_WR : std_logic := '0';
+	signal u_ram_srls_i2_WR_ADDR : unsigned(9 downto 0) := (others => '0');
+	signal u_ram_srls_i2_DOUT : unsigned(15 downto 0) := (others => '0');
+	signal u_ram_srls_i3_CE : std_logic := '0';
+	signal u_ram_srls_i3_DIN : unsigned(15 downto 0) := (others => '0');
+	signal u_ram_srls_i3_RD : std_logic := '0';
+	signal u_ram_srls_i3_RD_ADDR : unsigned(9 downto 0) := (others => '0');
+	signal u_ram_srls_i3_WR : std_logic := '0';
+	signal u_ram_srls_i3_WR_ADDR : unsigned(9 downto 0) := (others => '0');
+	signal u_ram_srls_i3_DOUT : unsigned(15 downto 0) := (others => '0');
+	signal u_ram_srls_q0_CE : std_logic := '0';
+	signal u_ram_srls_q0_DIN : unsigned(15 downto 0) := (others => '0');
+	signal u_ram_srls_q0_RD : std_logic := '0';
+	signal u_ram_srls_q0_RD_ADDR : unsigned(9 downto 0) := (others => '0');
+	signal u_ram_srls_q0_WR : std_logic := '0';
+	signal u_ram_srls_q0_WR_ADDR : unsigned(9 downto 0) := (others => '0');
+	signal u_ram_srls_q0_DOUT : unsigned(15 downto 0) := (others => '0');
+	signal u_ram_srls_q1_CE : std_logic := '0';
+	signal u_ram_srls_q1_DIN : unsigned(15 downto 0) := (others => '0');
+	signal u_ram_srls_q1_RD : std_logic := '0';
+	signal u_ram_srls_q1_RD_ADDR : unsigned(9 downto 0) := (others => '0');
+	signal u_ram_srls_q1_WR : std_logic := '0';
+	signal u_ram_srls_q1_WR_ADDR : unsigned(9 downto 0) := (others => '0');
+	signal u_ram_srls_q1_DOUT : unsigned(15 downto 0) := (others => '0');
+	signal u_ram_srls_q2_CE : std_logic := '0';
+	signal u_ram_srls_q2_DIN : unsigned(15 downto 0) := (others => '0');
+	signal u_ram_srls_q2_RD : std_logic := '0';
+	signal u_ram_srls_q2_RD_ADDR : unsigned(9 downto 0) := (others => '0');
+	signal u_ram_srls_q2_WR : std_logic := '0';
+	signal u_ram_srls_q2_WR_ADDR : unsigned(9 downto 0) := (others => '0');
+	signal u_ram_srls_q2_DOUT : unsigned(15 downto 0) := (others => '0');
+	signal u_ram_srls_q3_CE : std_logic := '0';
+	signal u_ram_srls_q3_DIN : unsigned(15 downto 0) := (others => '0');
+	signal u_ram_srls_q3_RD : std_logic := '0';
+	signal u_ram_srls_q3_RD_ADDR : unsigned(9 downto 0) := (others => '0');
+	signal u_ram_srls_q3_WR : std_logic := '0';
+	signal u_ram_srls_q3_WR_ADDR : unsigned(9 downto 0) := (others => '0');
+	signal u_ram_srls_q3_DOUT : unsigned(15 downto 0) := (others => '0');
 	signal FIRModule_L79F37L81T45_Ternary_i : unsigned(15 downto 0) := (others => '0');
 	signal FIRModule_L79F37L81T45_Ternary_q : unsigned(15 downto 0) := (others => '0');
 	signal FIRModule_L80F15T61_WhenTrue_i : unsigned(15 downto 0) := (others => '0');
@@ -506,190 +519,198 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal FIRModule_L522F9L530T10_FIRModule_L523F13T29_FIRModule_L255F9L264T10_FIRModule_L258F39T63_Index : unsigned(9 downto 0) := (others => '0');
 	signal FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L274F17L285T18_FIRModule_L276F52T91_Resize : unsigned(15 downto 0) := (others => '0');
 	signal FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L308F49T68_Index : signed(31 downto 0) := (others => '0');
+	signal u_dsp48_i0_A_u_dsp48_i0_A_HardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal u_dsp48_i0_B_u_dsp48_i0_B_HardLink : unsigned(17 downto 0) := "000000000000000000";
+	signal u_dsp48_i0_CE_u_dsp48_i0_CE_HardLink : std_logic := '0';
+	signal u_dsp48_i0_D_u_dsp48_i0_D_HardLink : unsigned(24 downto 0) := "0000000000000000000000000";
+	signal u_dsp48_i0_OPMODE_u_dsp48_i0_OPMODE_HardLink : unsigned(2 downto 0) := "000";
+	signal u_dsp48_i0_PCIN_u_dsp48_i0_PCIN_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	signal u_dsp48_i0_RST_u_dsp48_i0_RST_HardLink : std_logic := '0';
+	signal u_dsp48_i0_P_u_dsp48_i0_P_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	signal u_dsp48_i0_PCOUT_u_dsp48_i0_PCOUT_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	signal u_dsp48_i1_A_u_dsp48_i1_A_HardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal u_dsp48_i1_B_u_dsp48_i1_B_HardLink : unsigned(17 downto 0) := "000000000000000000";
+	signal u_dsp48_i1_CE_u_dsp48_i1_CE_HardLink : std_logic := '0';
+	signal u_dsp48_i1_D_u_dsp48_i1_D_HardLink : unsigned(24 downto 0) := "0000000000000000000000000";
+	signal u_dsp48_i1_OPMODE_u_dsp48_i1_OPMODE_HardLink : unsigned(2 downto 0) := "000";
+	signal u_dsp48_i1_PCIN_u_dsp48_i1_PCIN_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	signal u_dsp48_i1_RST_u_dsp48_i1_RST_HardLink : std_logic := '0';
+	signal u_dsp48_i1_P_u_dsp48_i1_P_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	signal u_dsp48_i1_PCOUT_u_dsp48_i1_PCOUT_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	signal u_dsp48_i2_A_u_dsp48_i2_A_HardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal u_dsp48_i2_B_u_dsp48_i2_B_HardLink : unsigned(17 downto 0) := "000000000000000000";
+	signal u_dsp48_i2_CE_u_dsp48_i2_CE_HardLink : std_logic := '0';
+	signal u_dsp48_i2_D_u_dsp48_i2_D_HardLink : unsigned(24 downto 0) := "0000000000000000000000000";
+	signal u_dsp48_i2_OPMODE_u_dsp48_i2_OPMODE_HardLink : unsigned(2 downto 0) := "000";
+	signal u_dsp48_i2_PCIN_u_dsp48_i2_PCIN_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	signal u_dsp48_i2_RST_u_dsp48_i2_RST_HardLink : std_logic := '0';
+	signal u_dsp48_i2_P_u_dsp48_i2_P_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	signal u_dsp48_i2_PCOUT_u_dsp48_i2_PCOUT_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	signal u_dsp48_i3_A_u_dsp48_i3_A_HardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal u_dsp48_i3_B_u_dsp48_i3_B_HardLink : unsigned(17 downto 0) := "000000000000000000";
+	signal u_dsp48_i3_CE_u_dsp48_i3_CE_HardLink : std_logic := '0';
+	signal u_dsp48_i3_D_u_dsp48_i3_D_HardLink : unsigned(24 downto 0) := "0000000000000000000000000";
+	signal u_dsp48_i3_OPMODE_u_dsp48_i3_OPMODE_HardLink : unsigned(2 downto 0) := "000";
+	signal u_dsp48_i3_PCIN_u_dsp48_i3_PCIN_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	signal u_dsp48_i3_RST_u_dsp48_i3_RST_HardLink : std_logic := '0';
+	signal u_dsp48_i3_P_u_dsp48_i3_P_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	signal u_dsp48_i3_PCOUT_u_dsp48_i3_PCOUT_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	signal u_dsp48_q0_A_u_dsp48_q0_A_HardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal u_dsp48_q0_B_u_dsp48_q0_B_HardLink : unsigned(17 downto 0) := "000000000000000000";
+	signal u_dsp48_q0_CE_u_dsp48_q0_CE_HardLink : std_logic := '0';
+	signal u_dsp48_q0_D_u_dsp48_q0_D_HardLink : unsigned(24 downto 0) := "0000000000000000000000000";
+	signal u_dsp48_q0_OPMODE_u_dsp48_q0_OPMODE_HardLink : unsigned(2 downto 0) := "000";
+	signal u_dsp48_q0_PCIN_u_dsp48_q0_PCIN_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	signal u_dsp48_q0_RST_u_dsp48_q0_RST_HardLink : std_logic := '0';
+	signal u_dsp48_q0_P_u_dsp48_q0_P_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	signal u_dsp48_q0_PCOUT_u_dsp48_q0_PCOUT_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	signal u_dsp48_q1_A_u_dsp48_q1_A_HardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal u_dsp48_q1_B_u_dsp48_q1_B_HardLink : unsigned(17 downto 0) := "000000000000000000";
+	signal u_dsp48_q1_CE_u_dsp48_q1_CE_HardLink : std_logic := '0';
+	signal u_dsp48_q1_D_u_dsp48_q1_D_HardLink : unsigned(24 downto 0) := "0000000000000000000000000";
+	signal u_dsp48_q1_OPMODE_u_dsp48_q1_OPMODE_HardLink : unsigned(2 downto 0) := "000";
+	signal u_dsp48_q1_PCIN_u_dsp48_q1_PCIN_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	signal u_dsp48_q1_RST_u_dsp48_q1_RST_HardLink : std_logic := '0';
+	signal u_dsp48_q1_P_u_dsp48_q1_P_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	signal u_dsp48_q1_PCOUT_u_dsp48_q1_PCOUT_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	signal u_dsp48_q2_A_u_dsp48_q2_A_HardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal u_dsp48_q2_B_u_dsp48_q2_B_HardLink : unsigned(17 downto 0) := "000000000000000000";
+	signal u_dsp48_q2_CE_u_dsp48_q2_CE_HardLink : std_logic := '0';
+	signal u_dsp48_q2_D_u_dsp48_q2_D_HardLink : unsigned(24 downto 0) := "0000000000000000000000000";
+	signal u_dsp48_q2_OPMODE_u_dsp48_q2_OPMODE_HardLink : unsigned(2 downto 0) := "000";
+	signal u_dsp48_q2_PCIN_u_dsp48_q2_PCIN_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	signal u_dsp48_q2_RST_u_dsp48_q2_RST_HardLink : std_logic := '0';
+	signal u_dsp48_q2_P_u_dsp48_q2_P_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	signal u_dsp48_q2_PCOUT_u_dsp48_q2_PCOUT_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	signal u_dsp48_q3_A_u_dsp48_q3_A_HardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
+	signal u_dsp48_q3_B_u_dsp48_q3_B_HardLink : unsigned(17 downto 0) := "000000000000000000";
+	signal u_dsp48_q3_CE_u_dsp48_q3_CE_HardLink : std_logic := '0';
+	signal u_dsp48_q3_D_u_dsp48_q3_D_HardLink : unsigned(24 downto 0) := "0000000000000000000000000";
+	signal u_dsp48_q3_OPMODE_u_dsp48_q3_OPMODE_HardLink : unsigned(2 downto 0) := "000";
+	signal u_dsp48_q3_PCIN_u_dsp48_q3_PCIN_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	signal u_dsp48_q3_RST_u_dsp48_q3_RST_HardLink : std_logic := '0';
+	signal u_dsp48_q3_P_u_dsp48_q3_P_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
+	signal u_dsp48_q3_PCOUT_u_dsp48_q3_PCOUT_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
 	signal u_ram_coef0_CE_u_ram_coef0_CE_HardLink : std_logic := '0';
-	signal u_ram_coef0_WR_u_ram_coef0_WR_HardLink : std_logic := '0';
-	signal u_ram_coef0_WR_ADDR_u_ram_coef0_WR_ADDR_HardLink : unsigned(8 downto 0) := "000000000";
 	signal u_ram_coef0_DIN_u_ram_coef0_DIN_HardLink : unsigned(15 downto 0) := "0000000000000000";
 	signal u_ram_coef0_RD_u_ram_coef0_RD_HardLink : std_logic := '0';
 	signal u_ram_coef0_RD_ADDR_u_ram_coef0_RD_ADDR_HardLink : unsigned(8 downto 0) := "000000000";
+	signal u_ram_coef0_WR_u_ram_coef0_WR_HardLink : std_logic := '0';
+	signal u_ram_coef0_WR_ADDR_u_ram_coef0_WR_ADDR_HardLink : unsigned(8 downto 0) := "000000000";
 	signal u_ram_coef0_DOUT_u_ram_coef0_DOUT_HardLink : unsigned(15 downto 0) := "0000000000000000";
 	signal u_ram_coef1_CE_u_ram_coef1_CE_HardLink : std_logic := '0';
-	signal u_ram_coef1_WR_u_ram_coef1_WR_HardLink : std_logic := '0';
-	signal u_ram_coef1_WR_ADDR_u_ram_coef1_WR_ADDR_HardLink : unsigned(8 downto 0) := "000000000";
 	signal u_ram_coef1_DIN_u_ram_coef1_DIN_HardLink : unsigned(15 downto 0) := "0000000000000000";
 	signal u_ram_coef1_RD_u_ram_coef1_RD_HardLink : std_logic := '0';
 	signal u_ram_coef1_RD_ADDR_u_ram_coef1_RD_ADDR_HardLink : unsigned(8 downto 0) := "000000000";
+	signal u_ram_coef1_WR_u_ram_coef1_WR_HardLink : std_logic := '0';
+	signal u_ram_coef1_WR_ADDR_u_ram_coef1_WR_ADDR_HardLink : unsigned(8 downto 0) := "000000000";
 	signal u_ram_coef1_DOUT_u_ram_coef1_DOUT_HardLink : unsigned(15 downto 0) := "0000000000000000";
 	signal u_ram_coef2_CE_u_ram_coef2_CE_HardLink : std_logic := '0';
-	signal u_ram_coef2_WR_u_ram_coef2_WR_HardLink : std_logic := '0';
-	signal u_ram_coef2_WR_ADDR_u_ram_coef2_WR_ADDR_HardLink : unsigned(8 downto 0) := "000000000";
 	signal u_ram_coef2_DIN_u_ram_coef2_DIN_HardLink : unsigned(15 downto 0) := "0000000000000000";
 	signal u_ram_coef2_RD_u_ram_coef2_RD_HardLink : std_logic := '0';
 	signal u_ram_coef2_RD_ADDR_u_ram_coef2_RD_ADDR_HardLink : unsigned(8 downto 0) := "000000000";
+	signal u_ram_coef2_WR_u_ram_coef2_WR_HardLink : std_logic := '0';
+	signal u_ram_coef2_WR_ADDR_u_ram_coef2_WR_ADDR_HardLink : unsigned(8 downto 0) := "000000000";
 	signal u_ram_coef2_DOUT_u_ram_coef2_DOUT_HardLink : unsigned(15 downto 0) := "0000000000000000";
 	signal u_ram_coef3_CE_u_ram_coef3_CE_HardLink : std_logic := '0';
-	signal u_ram_coef3_WR_u_ram_coef3_WR_HardLink : std_logic := '0';
-	signal u_ram_coef3_WR_ADDR_u_ram_coef3_WR_ADDR_HardLink : unsigned(8 downto 0) := "000000000";
 	signal u_ram_coef3_DIN_u_ram_coef3_DIN_HardLink : unsigned(15 downto 0) := "0000000000000000";
 	signal u_ram_coef3_RD_u_ram_coef3_RD_HardLink : std_logic := '0';
 	signal u_ram_coef3_RD_ADDR_u_ram_coef3_RD_ADDR_HardLink : unsigned(8 downto 0) := "000000000";
+	signal u_ram_coef3_WR_u_ram_coef3_WR_HardLink : std_logic := '0';
+	signal u_ram_coef3_WR_ADDR_u_ram_coef3_WR_ADDR_HardLink : unsigned(8 downto 0) := "000000000";
 	signal u_ram_coef3_DOUT_u_ram_coef3_DOUT_HardLink : unsigned(15 downto 0) := "0000000000000000";
-	signal u_ram_srls_i0_CE_u_ram_srls_i0_CE_HardLink : std_logic := '0';
-	signal u_ram_srls_i0_WR_u_ram_srls_i0_WR_HardLink : std_logic := '0';
-	signal u_ram_srls_i0_WR_ADDR_u_ram_srls_i0_WR_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
-	signal u_ram_srls_i0_DIN_u_ram_srls_i0_DIN_HardLink : unsigned(15 downto 0) := "0000000000000000";
-	signal u_ram_srls_i0_RD_u_ram_srls_i0_RD_HardLink : std_logic := '0';
-	signal u_ram_srls_i0_RD_ADDR_u_ram_srls_i0_RD_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
-	signal u_ram_srls_i0_DOUT_u_ram_srls_i0_DOUT_HardLink : unsigned(15 downto 0) := "0000000000000000";
-	signal u_ram_srls_i1_CE_u_ram_srls_i1_CE_HardLink : std_logic := '0';
-	signal u_ram_srls_i1_WR_u_ram_srls_i1_WR_HardLink : std_logic := '0';
-	signal u_ram_srls_i1_WR_ADDR_u_ram_srls_i1_WR_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
-	signal u_ram_srls_i1_DIN_u_ram_srls_i1_DIN_HardLink : unsigned(15 downto 0) := "0000000000000000";
-	signal u_ram_srls_i1_RD_u_ram_srls_i1_RD_HardLink : std_logic := '0';
-	signal u_ram_srls_i1_RD_ADDR_u_ram_srls_i1_RD_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
-	signal u_ram_srls_i1_DOUT_u_ram_srls_i1_DOUT_HardLink : unsigned(15 downto 0) := "0000000000000000";
-	signal u_ram_srls_i2_CE_u_ram_srls_i2_CE_HardLink : std_logic := '0';
-	signal u_ram_srls_i2_WR_u_ram_srls_i2_WR_HardLink : std_logic := '0';
-	signal u_ram_srls_i2_WR_ADDR_u_ram_srls_i2_WR_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
-	signal u_ram_srls_i2_DIN_u_ram_srls_i2_DIN_HardLink : unsigned(15 downto 0) := "0000000000000000";
-	signal u_ram_srls_i2_RD_u_ram_srls_i2_RD_HardLink : std_logic := '0';
-	signal u_ram_srls_i2_RD_ADDR_u_ram_srls_i2_RD_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
-	signal u_ram_srls_i2_DOUT_u_ram_srls_i2_DOUT_HardLink : unsigned(15 downto 0) := "0000000000000000";
-	signal u_ram_srls_i3_CE_u_ram_srls_i3_CE_HardLink : std_logic := '0';
-	signal u_ram_srls_i3_WR_u_ram_srls_i3_WR_HardLink : std_logic := '0';
-	signal u_ram_srls_i3_WR_ADDR_u_ram_srls_i3_WR_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
-	signal u_ram_srls_i3_DIN_u_ram_srls_i3_DIN_HardLink : unsigned(15 downto 0) := "0000000000000000";
-	signal u_ram_srls_i3_RD_u_ram_srls_i3_RD_HardLink : std_logic := '0';
-	signal u_ram_srls_i3_RD_ADDR_u_ram_srls_i3_RD_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
-	signal u_ram_srls_i3_DOUT_u_ram_srls_i3_DOUT_HardLink : unsigned(15 downto 0) := "0000000000000000";
-	signal u_ram_srls_q0_CE_u_ram_srls_q0_CE_HardLink : std_logic := '0';
-	signal u_ram_srls_q0_WR_u_ram_srls_q0_WR_HardLink : std_logic := '0';
-	signal u_ram_srls_q0_WR_ADDR_u_ram_srls_q0_WR_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
-	signal u_ram_srls_q0_DIN_u_ram_srls_q0_DIN_HardLink : unsigned(15 downto 0) := "0000000000000000";
-	signal u_ram_srls_q0_RD_u_ram_srls_q0_RD_HardLink : std_logic := '0';
-	signal u_ram_srls_q0_RD_ADDR_u_ram_srls_q0_RD_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
-	signal u_ram_srls_q0_DOUT_u_ram_srls_q0_DOUT_HardLink : unsigned(15 downto 0) := "0000000000000000";
-	signal u_ram_srls_q1_CE_u_ram_srls_q1_CE_HardLink : std_logic := '0';
-	signal u_ram_srls_q1_WR_u_ram_srls_q1_WR_HardLink : std_logic := '0';
-	signal u_ram_srls_q1_WR_ADDR_u_ram_srls_q1_WR_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
-	signal u_ram_srls_q1_DIN_u_ram_srls_q1_DIN_HardLink : unsigned(15 downto 0) := "0000000000000000";
-	signal u_ram_srls_q1_RD_u_ram_srls_q1_RD_HardLink : std_logic := '0';
-	signal u_ram_srls_q1_RD_ADDR_u_ram_srls_q1_RD_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
-	signal u_ram_srls_q1_DOUT_u_ram_srls_q1_DOUT_HardLink : unsigned(15 downto 0) := "0000000000000000";
-	signal u_ram_srls_q2_CE_u_ram_srls_q2_CE_HardLink : std_logic := '0';
-	signal u_ram_srls_q2_WR_u_ram_srls_q2_WR_HardLink : std_logic := '0';
-	signal u_ram_srls_q2_WR_ADDR_u_ram_srls_q2_WR_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
-	signal u_ram_srls_q2_DIN_u_ram_srls_q2_DIN_HardLink : unsigned(15 downto 0) := "0000000000000000";
-	signal u_ram_srls_q2_RD_u_ram_srls_q2_RD_HardLink : std_logic := '0';
-	signal u_ram_srls_q2_RD_ADDR_u_ram_srls_q2_RD_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
-	signal u_ram_srls_q2_DOUT_u_ram_srls_q2_DOUT_HardLink : unsigned(15 downto 0) := "0000000000000000";
-	signal u_ram_srls_q3_CE_u_ram_srls_q3_CE_HardLink : std_logic := '0';
-	signal u_ram_srls_q3_WR_u_ram_srls_q3_WR_HardLink : std_logic := '0';
-	signal u_ram_srls_q3_WR_ADDR_u_ram_srls_q3_WR_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
-	signal u_ram_srls_q3_DIN_u_ram_srls_q3_DIN_HardLink : unsigned(15 downto 0) := "0000000000000000";
-	signal u_ram_srls_q3_RD_u_ram_srls_q3_RD_HardLink : std_logic := '0';
-	signal u_ram_srls_q3_RD_ADDR_u_ram_srls_q3_RD_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
-	signal u_ram_srls_q3_DOUT_u_ram_srls_q3_DOUT_HardLink : unsigned(15 downto 0) := "0000000000000000";
 	signal u_ram_filo_i_CE_u_ram_filo_i_CE_HardLink : std_logic := '0';
-	signal u_ram_filo_i_WR_u_ram_filo_i_WR_HardLink : std_logic := '0';
-	signal u_ram_filo_i_WR_ADDR_u_ram_filo_i_WR_ADDR_HardLink : unsigned(8 downto 0) := "000000000";
 	signal u_ram_filo_i_DIN_u_ram_filo_i_DIN_HardLink : unsigned(15 downto 0) := "0000000000000000";
 	signal u_ram_filo_i_RD_u_ram_filo_i_RD_HardLink : std_logic := '0';
 	signal u_ram_filo_i_RD_ADDR_u_ram_filo_i_RD_ADDR_HardLink : unsigned(8 downto 0) := "000000000";
+	signal u_ram_filo_i_WR_u_ram_filo_i_WR_HardLink : std_logic := '0';
+	signal u_ram_filo_i_WR_ADDR_u_ram_filo_i_WR_ADDR_HardLink : unsigned(8 downto 0) := "000000000";
 	signal u_ram_filo_i_DOUT_u_ram_filo_i_DOUT_HardLink : unsigned(15 downto 0) := "0000000000000000";
 	signal u_ram_filo_q_CE_u_ram_filo_q_CE_HardLink : std_logic := '0';
-	signal u_ram_filo_q_WR_u_ram_filo_q_WR_HardLink : std_logic := '0';
-	signal u_ram_filo_q_WR_ADDR_u_ram_filo_q_WR_ADDR_HardLink : unsigned(8 downto 0) := "000000000";
 	signal u_ram_filo_q_DIN_u_ram_filo_q_DIN_HardLink : unsigned(15 downto 0) := "0000000000000000";
 	signal u_ram_filo_q_RD_u_ram_filo_q_RD_HardLink : std_logic := '0';
 	signal u_ram_filo_q_RD_ADDR_u_ram_filo_q_RD_ADDR_HardLink : unsigned(8 downto 0) := "000000000";
+	signal u_ram_filo_q_WR_u_ram_filo_q_WR_HardLink : std_logic := '0';
+	signal u_ram_filo_q_WR_ADDR_u_ram_filo_q_WR_ADDR_HardLink : unsigned(8 downto 0) := "000000000";
 	signal u_ram_filo_q_DOUT_u_ram_filo_q_DOUT_HardLink : unsigned(15 downto 0) := "0000000000000000";
-	signal u_dsp48_i0_CE_u_dsp48_i0_CE_HardLink : std_logic := '0';
-	signal u_dsp48_i0_RST_u_dsp48_i0_RST_HardLink : std_logic := '0';
-	signal u_dsp48_i0_A_u_dsp48_i0_A_HardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal u_dsp48_i0_B_u_dsp48_i0_B_HardLink : unsigned(17 downto 0) := "000000000000000000";
-	signal u_dsp48_i0_D_u_dsp48_i0_D_HardLink : unsigned(24 downto 0) := "0000000000000000000000000";
-	signal u_dsp48_i0_PCIN_u_dsp48_i0_PCIN_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal u_dsp48_i0_OPMODE_u_dsp48_i0_OPMODE_HardLink : unsigned(2 downto 0) := "000";
-	signal u_dsp48_i0_PCOUT_u_dsp48_i0_PCOUT_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal u_dsp48_i0_P_u_dsp48_i0_P_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal u_dsp48_i1_CE_u_dsp48_i1_CE_HardLink : std_logic := '0';
-	signal u_dsp48_i1_RST_u_dsp48_i1_RST_HardLink : std_logic := '0';
-	signal u_dsp48_i1_A_u_dsp48_i1_A_HardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal u_dsp48_i1_B_u_dsp48_i1_B_HardLink : unsigned(17 downto 0) := "000000000000000000";
-	signal u_dsp48_i1_D_u_dsp48_i1_D_HardLink : unsigned(24 downto 0) := "0000000000000000000000000";
-	signal u_dsp48_i1_PCIN_u_dsp48_i1_PCIN_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal u_dsp48_i1_OPMODE_u_dsp48_i1_OPMODE_HardLink : unsigned(2 downto 0) := "000";
-	signal u_dsp48_i1_PCOUT_u_dsp48_i1_PCOUT_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal u_dsp48_i1_P_u_dsp48_i1_P_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal u_dsp48_i2_CE_u_dsp48_i2_CE_HardLink : std_logic := '0';
-	signal u_dsp48_i2_RST_u_dsp48_i2_RST_HardLink : std_logic := '0';
-	signal u_dsp48_i2_A_u_dsp48_i2_A_HardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal u_dsp48_i2_B_u_dsp48_i2_B_HardLink : unsigned(17 downto 0) := "000000000000000000";
-	signal u_dsp48_i2_D_u_dsp48_i2_D_HardLink : unsigned(24 downto 0) := "0000000000000000000000000";
-	signal u_dsp48_i2_PCIN_u_dsp48_i2_PCIN_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal u_dsp48_i2_OPMODE_u_dsp48_i2_OPMODE_HardLink : unsigned(2 downto 0) := "000";
-	signal u_dsp48_i2_PCOUT_u_dsp48_i2_PCOUT_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal u_dsp48_i2_P_u_dsp48_i2_P_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal u_dsp48_i3_CE_u_dsp48_i3_CE_HardLink : std_logic := '0';
-	signal u_dsp48_i3_RST_u_dsp48_i3_RST_HardLink : std_logic := '0';
-	signal u_dsp48_i3_A_u_dsp48_i3_A_HardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal u_dsp48_i3_B_u_dsp48_i3_B_HardLink : unsigned(17 downto 0) := "000000000000000000";
-	signal u_dsp48_i3_D_u_dsp48_i3_D_HardLink : unsigned(24 downto 0) := "0000000000000000000000000";
-	signal u_dsp48_i3_PCIN_u_dsp48_i3_PCIN_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal u_dsp48_i3_OPMODE_u_dsp48_i3_OPMODE_HardLink : unsigned(2 downto 0) := "000";
-	signal u_dsp48_i3_PCOUT_u_dsp48_i3_PCOUT_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal u_dsp48_i3_P_u_dsp48_i3_P_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal u_dsp48_q0_CE_u_dsp48_q0_CE_HardLink : std_logic := '0';
-	signal u_dsp48_q0_RST_u_dsp48_q0_RST_HardLink : std_logic := '0';
-	signal u_dsp48_q0_A_u_dsp48_q0_A_HardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal u_dsp48_q0_B_u_dsp48_q0_B_HardLink : unsigned(17 downto 0) := "000000000000000000";
-	signal u_dsp48_q0_D_u_dsp48_q0_D_HardLink : unsigned(24 downto 0) := "0000000000000000000000000";
-	signal u_dsp48_q0_PCIN_u_dsp48_q0_PCIN_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal u_dsp48_q0_OPMODE_u_dsp48_q0_OPMODE_HardLink : unsigned(2 downto 0) := "000";
-	signal u_dsp48_q0_PCOUT_u_dsp48_q0_PCOUT_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal u_dsp48_q0_P_u_dsp48_q0_P_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal u_dsp48_q1_CE_u_dsp48_q1_CE_HardLink : std_logic := '0';
-	signal u_dsp48_q1_RST_u_dsp48_q1_RST_HardLink : std_logic := '0';
-	signal u_dsp48_q1_A_u_dsp48_q1_A_HardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal u_dsp48_q1_B_u_dsp48_q1_B_HardLink : unsigned(17 downto 0) := "000000000000000000";
-	signal u_dsp48_q1_D_u_dsp48_q1_D_HardLink : unsigned(24 downto 0) := "0000000000000000000000000";
-	signal u_dsp48_q1_PCIN_u_dsp48_q1_PCIN_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal u_dsp48_q1_OPMODE_u_dsp48_q1_OPMODE_HardLink : unsigned(2 downto 0) := "000";
-	signal u_dsp48_q1_PCOUT_u_dsp48_q1_PCOUT_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal u_dsp48_q1_P_u_dsp48_q1_P_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal u_dsp48_q2_CE_u_dsp48_q2_CE_HardLink : std_logic := '0';
-	signal u_dsp48_q2_RST_u_dsp48_q2_RST_HardLink : std_logic := '0';
-	signal u_dsp48_q2_A_u_dsp48_q2_A_HardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal u_dsp48_q2_B_u_dsp48_q2_B_HardLink : unsigned(17 downto 0) := "000000000000000000";
-	signal u_dsp48_q2_D_u_dsp48_q2_D_HardLink : unsigned(24 downto 0) := "0000000000000000000000000";
-	signal u_dsp48_q2_PCIN_u_dsp48_q2_PCIN_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal u_dsp48_q2_OPMODE_u_dsp48_q2_OPMODE_HardLink : unsigned(2 downto 0) := "000";
-	signal u_dsp48_q2_PCOUT_u_dsp48_q2_PCOUT_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal u_dsp48_q2_P_u_dsp48_q2_P_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal u_dsp48_q3_CE_u_dsp48_q3_CE_HardLink : std_logic := '0';
-	signal u_dsp48_q3_RST_u_dsp48_q3_RST_HardLink : std_logic := '0';
-	signal u_dsp48_q3_A_u_dsp48_q3_A_HardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
-	signal u_dsp48_q3_B_u_dsp48_q3_B_HardLink : unsigned(17 downto 0) := "000000000000000000";
-	signal u_dsp48_q3_D_u_dsp48_q3_D_HardLink : unsigned(24 downto 0) := "0000000000000000000000000";
-	signal u_dsp48_q3_PCIN_u_dsp48_q3_PCIN_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal u_dsp48_q3_OPMODE_u_dsp48_q3_OPMODE_HardLink : unsigned(2 downto 0) := "000";
-	signal u_dsp48_q3_PCOUT_u_dsp48_q3_PCOUT_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal u_dsp48_q3_P_u_dsp48_q3_P_HardLink : unsigned(47 downto 0) := "000000000000000000000000000000000000000000000000";
-	signal State_set_do : unsigned(3 downto 0) := "0000";
-	constant State_set_doDefault : unsigned(3 downto 0) := "0000";
-	signal State_set_coef_mask : unsigned(8 downto 0) := "000000000";
-	constant State_set_coef_maskDefault : unsigned(8 downto 0) := "000000000";
-	signal State_set_data_mask : unsigned(9 downto 0) := "0000000000";
-	constant State_set_data_maskDefault : unsigned(9 downto 0) := "0000000000";
+	signal u_ram_srls_i0_CE_u_ram_srls_i0_CE_HardLink : std_logic := '0';
+	signal u_ram_srls_i0_DIN_u_ram_srls_i0_DIN_HardLink : unsigned(15 downto 0) := "0000000000000000";
+	signal u_ram_srls_i0_RD_u_ram_srls_i0_RD_HardLink : std_logic := '0';
+	signal u_ram_srls_i0_RD_ADDR_u_ram_srls_i0_RD_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
+	signal u_ram_srls_i0_WR_u_ram_srls_i0_WR_HardLink : std_logic := '0';
+	signal u_ram_srls_i0_WR_ADDR_u_ram_srls_i0_WR_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
+	signal u_ram_srls_i0_DOUT_u_ram_srls_i0_DOUT_HardLink : unsigned(15 downto 0) := "0000000000000000";
+	signal u_ram_srls_i1_CE_u_ram_srls_i1_CE_HardLink : std_logic := '0';
+	signal u_ram_srls_i1_DIN_u_ram_srls_i1_DIN_HardLink : unsigned(15 downto 0) := "0000000000000000";
+	signal u_ram_srls_i1_RD_u_ram_srls_i1_RD_HardLink : std_logic := '0';
+	signal u_ram_srls_i1_RD_ADDR_u_ram_srls_i1_RD_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
+	signal u_ram_srls_i1_WR_u_ram_srls_i1_WR_HardLink : std_logic := '0';
+	signal u_ram_srls_i1_WR_ADDR_u_ram_srls_i1_WR_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
+	signal u_ram_srls_i1_DOUT_u_ram_srls_i1_DOUT_HardLink : unsigned(15 downto 0) := "0000000000000000";
+	signal u_ram_srls_i2_CE_u_ram_srls_i2_CE_HardLink : std_logic := '0';
+	signal u_ram_srls_i2_DIN_u_ram_srls_i2_DIN_HardLink : unsigned(15 downto 0) := "0000000000000000";
+	signal u_ram_srls_i2_RD_u_ram_srls_i2_RD_HardLink : std_logic := '0';
+	signal u_ram_srls_i2_RD_ADDR_u_ram_srls_i2_RD_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
+	signal u_ram_srls_i2_WR_u_ram_srls_i2_WR_HardLink : std_logic := '0';
+	signal u_ram_srls_i2_WR_ADDR_u_ram_srls_i2_WR_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
+	signal u_ram_srls_i2_DOUT_u_ram_srls_i2_DOUT_HardLink : unsigned(15 downto 0) := "0000000000000000";
+	signal u_ram_srls_i3_CE_u_ram_srls_i3_CE_HardLink : std_logic := '0';
+	signal u_ram_srls_i3_DIN_u_ram_srls_i3_DIN_HardLink : unsigned(15 downto 0) := "0000000000000000";
+	signal u_ram_srls_i3_RD_u_ram_srls_i3_RD_HardLink : std_logic := '0';
+	signal u_ram_srls_i3_RD_ADDR_u_ram_srls_i3_RD_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
+	signal u_ram_srls_i3_WR_u_ram_srls_i3_WR_HardLink : std_logic := '0';
+	signal u_ram_srls_i3_WR_ADDR_u_ram_srls_i3_WR_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
+	signal u_ram_srls_i3_DOUT_u_ram_srls_i3_DOUT_HardLink : unsigned(15 downto 0) := "0000000000000000";
+	signal u_ram_srls_q0_CE_u_ram_srls_q0_CE_HardLink : std_logic := '0';
+	signal u_ram_srls_q0_DIN_u_ram_srls_q0_DIN_HardLink : unsigned(15 downto 0) := "0000000000000000";
+	signal u_ram_srls_q0_RD_u_ram_srls_q0_RD_HardLink : std_logic := '0';
+	signal u_ram_srls_q0_RD_ADDR_u_ram_srls_q0_RD_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
+	signal u_ram_srls_q0_WR_u_ram_srls_q0_WR_HardLink : std_logic := '0';
+	signal u_ram_srls_q0_WR_ADDR_u_ram_srls_q0_WR_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
+	signal u_ram_srls_q0_DOUT_u_ram_srls_q0_DOUT_HardLink : unsigned(15 downto 0) := "0000000000000000";
+	signal u_ram_srls_q1_CE_u_ram_srls_q1_CE_HardLink : std_logic := '0';
+	signal u_ram_srls_q1_DIN_u_ram_srls_q1_DIN_HardLink : unsigned(15 downto 0) := "0000000000000000";
+	signal u_ram_srls_q1_RD_u_ram_srls_q1_RD_HardLink : std_logic := '0';
+	signal u_ram_srls_q1_RD_ADDR_u_ram_srls_q1_RD_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
+	signal u_ram_srls_q1_WR_u_ram_srls_q1_WR_HardLink : std_logic := '0';
+	signal u_ram_srls_q1_WR_ADDR_u_ram_srls_q1_WR_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
+	signal u_ram_srls_q1_DOUT_u_ram_srls_q1_DOUT_HardLink : unsigned(15 downto 0) := "0000000000000000";
+	signal u_ram_srls_q2_CE_u_ram_srls_q2_CE_HardLink : std_logic := '0';
+	signal u_ram_srls_q2_DIN_u_ram_srls_q2_DIN_HardLink : unsigned(15 downto 0) := "0000000000000000";
+	signal u_ram_srls_q2_RD_u_ram_srls_q2_RD_HardLink : std_logic := '0';
+	signal u_ram_srls_q2_RD_ADDR_u_ram_srls_q2_RD_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
+	signal u_ram_srls_q2_WR_u_ram_srls_q2_WR_HardLink : std_logic := '0';
+	signal u_ram_srls_q2_WR_ADDR_u_ram_srls_q2_WR_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
+	signal u_ram_srls_q2_DOUT_u_ram_srls_q2_DOUT_HardLink : unsigned(15 downto 0) := "0000000000000000";
+	signal u_ram_srls_q3_CE_u_ram_srls_q3_CE_HardLink : std_logic := '0';
+	signal u_ram_srls_q3_DIN_u_ram_srls_q3_DIN_HardLink : unsigned(15 downto 0) := "0000000000000000";
+	signal u_ram_srls_q3_RD_u_ram_srls_q3_RD_HardLink : std_logic := '0';
+	signal u_ram_srls_q3_RD_ADDR_u_ram_srls_q3_RD_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
+	signal u_ram_srls_q3_WR_u_ram_srls_q3_WR_HardLink : std_logic := '0';
+	signal u_ram_srls_q3_WR_ADDR_u_ram_srls_q3_WR_ADDR_HardLink : unsigned(9 downto 0) := "0000000000";
+	signal u_ram_srls_q3_DOUT_u_ram_srls_q3_DOUT_HardLink : unsigned(15 downto 0) := "0000000000000000";
+	signal State_coeff_coef_ram_cnt : unsigned(15 downto 0) := "0000000000000000";
+	constant State_coeff_coef_ram_cntDefault : unsigned(15 downto 0) := "0000000000000000";
+	signal State_coeff_coef_ram_wr : unsigned(3 downto 0) := "0000";
+	constant State_coeff_coef_ram_wrDefault : unsigned(3 downto 0) := "0000";
 	signal State_coeff_coef_wr_cnt_cell : unsigned(8 downto 0) := "000000000";
 	constant State_coeff_coef_wr_cnt_cellDefault : unsigned(8 downto 0) := "000000000";
 	signal State_coeff_coef_wr_cnt_ram : unsigned(2 downto 0) := "000";
 	constant State_coeff_coef_wr_cnt_ramDefault : unsigned(2 downto 0) := "000";
-	signal State_coeff_coef_ram_wr : unsigned(3 downto 0) := "0000";
-	constant State_coeff_coef_ram_wrDefault : unsigned(3 downto 0) := "0000";
-	signal State_coeff_coef_ram_cnt : unsigned(15 downto 0) := "0000000000000000";
-	constant State_coeff_coef_ram_cntDefault : unsigned(15 downto 0) := "0000000000000000";
+	signal State_filo_filo_addr_dec : unsigned(8 downto 0) := "000000000";
+	constant State_filo_filo_addr_decDefault : unsigned(8 downto 0) := "000000000";
+	signal State_filo_filo_addr_inc : unsigned(8 downto 0) := "000000000";
+	constant State_filo_filo_addr_incDefault : unsigned(8 downto 0) := "000000000";
+	signal State_filo_filo_addr_p : unsigned(8 downto 0) := "000000000";
+	constant State_filo_filo_addr_pDefault : unsigned(8 downto 0) := "000000000";
+	signal State_filo_filo_addr_p1 : unsigned(8 downto 0) := "000000000";
+	constant State_filo_filo_addr_p1Default : unsigned(8 downto 0) := "000000000";
+	signal State_filo_filo_counter_dec : unsigned(8 downto 0) := "000000000";
+	constant State_filo_filo_counter_decDefault : unsigned(8 downto 0) := "000000000";
+	signal State_filo_filo_counter_inc : unsigned(8 downto 0) := "000000000";
+	constant State_filo_filo_counter_incDefault : unsigned(8 downto 0) := "111111111";
+	signal State_filo_filo_way : std_logic := '0';
+	constant State_filo_filo_wayDefault : std_logic := '0';
 	signal State_main_main_c_cnt : unsigned(8 downto 0) := "000000000";
 	constant State_main_main_c_cntDefault : unsigned(8 downto 0) := "000000000";
 	signal State_main_main_c_cnt_masked : unsigned(8 downto 0) := "000000000";
@@ -704,8 +725,6 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	constant State_main_main_d_cnt_rstDefault : std_logic := '0';
 	signal State_mult_reset_mult_reset : unsigned(3 downto 0) := "0000";
 	constant State_mult_reset_mult_resetDefault : unsigned(3 downto 0) := "0000";
-	signal State_mult_reset_mult_reset_dsp : unsigned(3 downto 0) := "0000";
-	constant State_mult_reset_mult_reset_dspDefault : unsigned(3 downto 0) := "0000";
 	signal State_mult_reset_mult_reset_common : std_logic := '0';
 	constant State_mult_reset_mult_reset_commonDefault : std_logic := '0';
 	signal State_mult_reset_mult_reset_common_p : std_logic := '0';
@@ -716,28 +735,22 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	constant State_mult_reset_mult_reset_common_p2Default : std_logic := '0';
 	signal State_mult_reset_mult_reset_common_p3 : std_logic := '0';
 	constant State_mult_reset_mult_reset_common_p3Default : std_logic := '0';
-	signal State_filo_filo_way : std_logic := '0';
-	constant State_filo_filo_wayDefault : std_logic := '0';
-	signal State_filo_filo_counter_inc : unsigned(8 downto 0) := "000000000";
-	constant State_filo_filo_counter_incDefault : unsigned(8 downto 0) := "111111111";
-	signal State_filo_filo_counter_dec : unsigned(8 downto 0) := "000000000";
-	constant State_filo_filo_counter_decDefault : unsigned(8 downto 0) := "000000000";
-	signal State_filo_filo_addr_inc : unsigned(8 downto 0) := "000000000";
-	constant State_filo_filo_addr_incDefault : unsigned(8 downto 0) := "000000000";
-	signal State_filo_filo_addr_dec : unsigned(8 downto 0) := "000000000";
-	constant State_filo_filo_addr_decDefault : unsigned(8 downto 0) := "000000000";
-	signal State_filo_filo_addr_p : unsigned(8 downto 0) := "000000000";
-	constant State_filo_filo_addr_pDefault : unsigned(8 downto 0) := "000000000";
-	signal State_filo_filo_addr_p1 : unsigned(8 downto 0) := "000000000";
-	constant State_filo_filo_addr_p1Default : unsigned(8 downto 0) := "000000000";
+	signal State_mult_reset_mult_reset_dsp : unsigned(3 downto 0) := "0000";
+	constant State_mult_reset_mult_reset_dspDefault : unsigned(3 downto 0) := "0000";
 	signal State_ob_coef_rdy : std_logic := '0';
 	constant State_ob_coef_rdyDefault : std_logic := '0';
-	signal State_ob_iq_v : std_logic := '0';
-	constant State_ob_iq_vDefault : std_logic := '0';
 	signal State_ob_iq_i : unsigned(23 downto 0) := "000000000000000000000000";
 	constant State_ob_iq_iDefault : unsigned(23 downto 0) := "000000000000000000000000";
 	signal State_ob_iq_q : unsigned(23 downto 0) := "000000000000000000000000";
 	constant State_ob_iq_qDefault : unsigned(23 downto 0) := "000000000000000000000000";
+	signal State_ob_iq_v : std_logic := '0';
+	constant State_ob_iq_vDefault : std_logic := '0';
+	signal State_set_coef_mask : unsigned(8 downto 0) := "000000000";
+	constant State_set_coef_maskDefault : unsigned(8 downto 0) := "000000000";
+	signal State_set_data_mask : unsigned(9 downto 0) := "0000000000";
+	constant State_set_data_maskDefault : unsigned(9 downto 0) := "0000000000";
+	signal State_set_do : unsigned(3 downto 0) := "0000";
+	constant State_set_doDefault : unsigned(3 downto 0) := "0000";
 	signal FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L324F52T95_Expr : unsigned(8 downto 0) := "000000000";
 	signal FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L324F52T95_Expr_1 : unsigned(8 downto 0) := "000000000";
 	signal FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L324F52T95_Expr_2 : unsigned(8 downto 0) := "000000000";
@@ -831,10 +844,6 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L407F21T38_Expr : std_logic := '0';
 	signal FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L407F21T38_ExprLhs : signed(4 downto 0) := "00000";
 	signal FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L407F21T38_ExprRhs : signed(4 downto 0) := "00000";
-	type State_set_do_muxArray is array (0 to 3) of unsigned (3 downto 0);
-	signal State_set_do_mux : State_set_do_muxArray := (others => (others => '0'));
-	type NextState_set_do_muxArray is array (0 to 3) of unsigned (3 downto 0);
-	signal NextState_set_do_mux : NextState_set_do_muxArray := (others => (others => '0'));
 	type State_coeff_coef_ram_wr_addrArray is array (0 to 3) of unsigned (8 downto 0);
 	signal State_coeff_coef_ram_wr_addr : State_coeff_coef_ram_wr_addrArray := (others => (others => '0'));
 	type NextState_coeff_coef_ram_wr_addrArray is array (0 to 3) of unsigned (8 downto 0);
@@ -843,18 +852,6 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal State_coeff_coef_ram_wr_data : State_coeff_coef_ram_wr_dataArray := (others => (others => '0'));
 	type NextState_coeff_coef_ram_wr_dataArray is array (0 to 3) of unsigned (15 downto 0);
 	signal NextState_coeff_coef_ram_wr_data : NextState_coeff_coef_ram_wr_dataArray := (others => (others => '0'));
-	type State_main_main_c_rd_addrArray is array (0 to 3) of unsigned (8 downto 0);
-	signal State_main_main_c_rd_addr : State_main_main_c_rd_addrArray := (others => (others => '0'));
-	type NextState_main_main_c_rd_addrArray is array (0 to 3) of unsigned (8 downto 0);
-	signal NextState_main_main_c_rd_addr : NextState_main_main_c_rd_addrArray := (others => (others => '0'));
-	type State_main_main_d_addrArray is array (0 to 3) of unsigned (9 downto 0);
-	signal State_main_main_d_addr : State_main_main_d_addrArray := (others => (others => '0'));
-	type NextState_main_main_d_addrArray is array (0 to 3) of unsigned (9 downto 0);
-	signal NextState_main_main_d_addr : NextState_main_main_d_addrArray := (others => (others => '0'));
-	type State_filo_fir_dregArray is array (0 to 3) of unsigned (31 downto 0);
-	signal State_filo_fir_dreg : State_filo_fir_dregArray := (others => (others => '0'));
-	type NextState_filo_fir_dregArray is array (0 to 3) of unsigned (31 downto 0);
-	signal NextState_filo_fir_dreg : NextState_filo_fir_dregArray := (others => (others => '0'));
 	type State_dsp48_dsp48_resultArray is array (0 to 9) of unsigned (47 downto 0);
 	signal State_dsp48_dsp48_result : State_dsp48_dsp48_resultArray := (others => (others => '0'));
 	type NextState_dsp48_dsp48_resultArray is array (0 to 9) of unsigned (47 downto 0);
@@ -863,6 +860,14 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal State_dsp48_dsp48_srl : State_dsp48_dsp48_srlArray := (others => (others => '0'));
 	type NextState_dsp48_dsp48_srlArray is array (0 to 6) of unsigned (31 downto 0);
 	signal NextState_dsp48_dsp48_srl : NextState_dsp48_dsp48_srlArray := (others => (others => '0'));
+	type State_filo_fir_dregArray is array (0 to 3) of unsigned (31 downto 0);
+	signal State_filo_fir_dreg : State_filo_fir_dregArray := (others => (others => '0'));
+	type NextState_filo_fir_dregArray is array (0 to 3) of unsigned (31 downto 0);
+	signal NextState_filo_fir_dreg : NextState_filo_fir_dregArray := (others => (others => '0'));
+	type State_fir_fir_adregArray is array (0 to 3) of unsigned (49 downto 0);
+	signal State_fir_fir_adreg : State_fir_fir_adregArray := (others => (others => '0'));
+	type NextState_fir_fir_adregArray is array (0 to 3) of unsigned (49 downto 0);
+	signal NextState_fir_fir_adreg : NextState_fir_fir_adregArray := (others => (others => '0'));
 	type State_fir_fir_areg1Array is array (0 to 3) of unsigned (49 downto 0);
 	signal State_fir_fir_areg1 : State_fir_fir_areg1Array := (others => (others => '0'));
 	type NextState_fir_fir_areg1Array is array (0 to 3) of unsigned (49 downto 0);
@@ -871,10 +876,6 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal State_fir_fir_areg2 : State_fir_fir_areg2Array := (others => (others => '0'));
 	type NextState_fir_fir_areg2Array is array (0 to 3) of unsigned (49 downto 0);
 	signal NextState_fir_fir_areg2 : NextState_fir_fir_areg2Array := (others => (others => '0'));
-	type State_fir_fir_adregArray is array (0 to 3) of unsigned (49 downto 0);
-	signal State_fir_fir_adreg : State_fir_fir_adregArray := (others => (others => '0'));
-	type NextState_fir_fir_adregArray is array (0 to 3) of unsigned (49 downto 0);
-	signal NextState_fir_fir_adreg : NextState_fir_fir_adregArray := (others => (others => '0'));
 	type State_fir_fir_bregArray is array (0 to 3) of unsigned (35 downto 0);
 	signal State_fir_fir_breg : State_fir_fir_bregArray := (others => (others => '0'));
 	type NextState_fir_fir_bregArray is array (0 to 3) of unsigned (35 downto 0);
@@ -887,22 +888,18 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 	signal State_fir_fir_preg : State_fir_fir_pregArray := (others => (others => '0'));
 	type NextState_fir_fir_pregArray is array (0 to 3) of unsigned (95 downto 0);
 	signal NextState_fir_fir_preg : NextState_fir_fir_pregArray := (others => (others => '0'));
-	type ramc_doutArray is array (0 to 3) of unsigned (15 downto 0);
-	signal ramc_dout : ramc_doutArray := (others => (others => '0'));
-	type c_coef_num_arrayArray is array (0 to 9) of signed (31 downto 0);
-	constant c_coef_num_arrayArrayInit : c_coef_num_arrayArray := (
-		"00000000000000000000000000000100",
-		"00000000000000000000000000001000",
-		"00000000000000000000000000010000",
-		"00000000000000000000000000100000",
-		"00000000000000000000000001000000",
-		"00000000000000000000000010000000",
-		"00000000000000000000000100000000",
-		"00000000000000000000001000000000",
-		"00000000000000000000010000000000",
-		"00000000000000000000100000000000"
-	);
-	constant c_coef_num_array : c_coef_num_arrayArray := c_coef_num_arrayArrayInit;
+	type State_main_main_c_rd_addrArray is array (0 to 3) of unsigned (8 downto 0);
+	signal State_main_main_c_rd_addr : State_main_main_c_rd_addrArray := (others => (others => '0'));
+	type NextState_main_main_c_rd_addrArray is array (0 to 3) of unsigned (8 downto 0);
+	signal NextState_main_main_c_rd_addr : NextState_main_main_c_rd_addrArray := (others => (others => '0'));
+	type State_main_main_d_addrArray is array (0 to 3) of unsigned (9 downto 0);
+	signal State_main_main_d_addr : State_main_main_d_addrArray := (others => (others => '0'));
+	type NextState_main_main_d_addrArray is array (0 to 3) of unsigned (9 downto 0);
+	signal NextState_main_main_d_addr : NextState_main_main_d_addrArray := (others => (others => '0'));
+	type State_set_do_muxArray is array (0 to 3) of unsigned (3 downto 0);
+	signal State_set_do_mux : State_set_do_muxArray := (others => (others => '0'));
+	type NextState_set_do_muxArray is array (0 to 3) of unsigned (3 downto 0);
+	signal NextState_set_do_mux : NextState_set_do_muxArray := (others => (others => '0'));
 	type c_coef_mask_arrayArray is array (0 to 9) of unsigned (8 downto 0);
 	constant c_coef_mask_arrayArrayInit : c_coef_mask_arrayArray := (
 		"000000000",
@@ -917,6 +914,20 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 		"111111111"
 	);
 	constant c_coef_mask_array : c_coef_mask_arrayArray := c_coef_mask_arrayArrayInit;
+	type c_coef_num_arrayArray is array (0 to 9) of signed (31 downto 0);
+	constant c_coef_num_arrayArrayInit : c_coef_num_arrayArray := (
+		"00000000000000000000000000000100",
+		"00000000000000000000000000001000",
+		"00000000000000000000000000010000",
+		"00000000000000000000000000100000",
+		"00000000000000000000000001000000",
+		"00000000000000000000000010000000",
+		"00000000000000000000000100000000",
+		"00000000000000000000001000000000",
+		"00000000000000000000010000000000",
+		"00000000000000000000100000000000"
+	);
+	constant c_coef_num_array : c_coef_num_arrayArray := c_coef_num_arrayArrayInit;
 	type c_data_mask_arrayArray is array (0 to 9) of unsigned (9 downto 0);
 	constant c_data_mask_arrayArrayInit : c_data_mask_arrayArray := (
 		"0000000000",
@@ -931,24 +942,26 @@ architecture rtl of FIRModule4x16_TopLevel_TopLevel is
 		"1111111011"
 	);
 	constant c_data_mask_array : c_data_mask_arrayArray := c_data_mask_arrayArrayInit;
-	type ramd_dinArray is array (0 to 3) of unsigned (31 downto 0);
-	signal ramd_din : ramd_dinArray := (others => (others => '0'));
-	type ramd_doutArray is array (0 to 3) of unsigned (31 downto 0);
-	signal ramd_dout : ramd_doutArray := (others => (others => '0'));
-	type dsp48_pArray is array (0 to 3) of unsigned (95 downto 0);
-	signal dsp48_p : dsp48_pArray := (others => (others => '0'));
-	type dsp48_pcoutArray is array (0 to 3) of unsigned (95 downto 0);
-	signal dsp48_pcout : dsp48_pcoutArray := (others => (others => '0'));
-	type dsp48_opmodeArray is array (0 to 3) of unsigned (13 downto 0);
-	signal dsp48_opmode : dsp48_opmodeArray := (others => (others => '0'));
+	type dsp48_aArray is array (0 to 3) of unsigned (59 downto 0);
+	signal dsp48_a : dsp48_aArray := (others => (others => '0'));
 	type dsp48_bArray is array (0 to 3) of unsigned (35 downto 0);
 	signal dsp48_b : dsp48_bArray := (others => (others => '0'));
 	type dsp48_dArray is array (0 to 3) of unsigned (49 downto 0);
 	signal dsp48_d : dsp48_dArray := (others => (others => '0'));
-	type dsp48_aArray is array (0 to 3) of unsigned (59 downto 0);
-	signal dsp48_a : dsp48_aArray := (others => (others => '0'));
+	type dsp48_opmodeArray is array (0 to 3) of unsigned (13 downto 0);
+	signal dsp48_opmode : dsp48_opmodeArray := (others => (others => '0'));
+	type dsp48_pArray is array (0 to 3) of unsigned (95 downto 0);
+	signal dsp48_p : dsp48_pArray := (others => (others => '0'));
 	type dsp48_pcinArray is array (0 to 3) of unsigned (95 downto 0);
 	signal dsp48_pcin : dsp48_pcinArray := (others => (others => '0'));
+	type dsp48_pcoutArray is array (0 to 3) of unsigned (95 downto 0);
+	signal dsp48_pcout : dsp48_pcoutArray := (others => (others => '0'));
+	type ramc_doutArray is array (0 to 3) of unsigned (15 downto 0);
+	signal ramc_dout : ramc_doutArray := (others => (others => '0'));
+	type ramd_dinArray is array (0 to 3) of unsigned (31 downto 0);
+	signal ramd_din : ramd_dinArray := (others => (others => '0'));
+	type ramd_doutArray is array (0 to 3) of unsigned (31 downto 0);
+	signal ramd_dout : ramd_doutArray := (others => (others => '0'));
 	signal BoardSignals : BoardSignalsType;
 	signal InternalReset : std_logic := '0';
 begin
@@ -957,13 +970,17 @@ begin
 	begin
 		if rising_edge(Clock) then
 			if Reset = '1' then
-				State_set_do <= State_set_doDefault;
-				State_set_coef_mask <= State_set_coef_maskDefault;
-				State_set_data_mask <= State_set_data_maskDefault;
+				State_coeff_coef_ram_cnt <= State_coeff_coef_ram_cntDefault;
+				State_coeff_coef_ram_wr <= State_coeff_coef_ram_wrDefault;
 				State_coeff_coef_wr_cnt_cell <= State_coeff_coef_wr_cnt_cellDefault;
 				State_coeff_coef_wr_cnt_ram <= State_coeff_coef_wr_cnt_ramDefault;
-				State_coeff_coef_ram_wr <= State_coeff_coef_ram_wrDefault;
-				State_coeff_coef_ram_cnt <= State_coeff_coef_ram_cntDefault;
+				State_filo_filo_addr_dec <= State_filo_filo_addr_decDefault;
+				State_filo_filo_addr_inc <= State_filo_filo_addr_incDefault;
+				State_filo_filo_addr_p <= State_filo_filo_addr_pDefault;
+				State_filo_filo_addr_p1 <= State_filo_filo_addr_p1Default;
+				State_filo_filo_counter_dec <= State_filo_filo_counter_decDefault;
+				State_filo_filo_counter_inc <= State_filo_filo_counter_incDefault;
+				State_filo_filo_way <= State_filo_filo_wayDefault;
 				State_main_main_c_cnt <= State_main_main_c_cntDefault;
 				State_main_main_c_cnt_masked <= State_main_main_c_cnt_maskedDefault;
 				State_main_main_c_rd_addr_cmn <= State_main_main_c_rd_addr_cmnDefault;
@@ -971,31 +988,31 @@ begin
 				State_main_main_d_cnt_masked <= State_main_main_d_cnt_maskedDefault;
 				State_main_main_d_cnt_rst <= State_main_main_d_cnt_rstDefault;
 				State_mult_reset_mult_reset <= State_mult_reset_mult_resetDefault;
-				State_mult_reset_mult_reset_dsp <= State_mult_reset_mult_reset_dspDefault;
 				State_mult_reset_mult_reset_common <= State_mult_reset_mult_reset_commonDefault;
 				State_mult_reset_mult_reset_common_p <= State_mult_reset_mult_reset_common_pDefault;
 				State_mult_reset_mult_reset_common_p1 <= State_mult_reset_mult_reset_common_p1Default;
 				State_mult_reset_mult_reset_common_p2 <= State_mult_reset_mult_reset_common_p2Default;
 				State_mult_reset_mult_reset_common_p3 <= State_mult_reset_mult_reset_common_p3Default;
-				State_filo_filo_way <= State_filo_filo_wayDefault;
-				State_filo_filo_counter_inc <= State_filo_filo_counter_incDefault;
-				State_filo_filo_counter_dec <= State_filo_filo_counter_decDefault;
-				State_filo_filo_addr_inc <= State_filo_filo_addr_incDefault;
-				State_filo_filo_addr_dec <= State_filo_filo_addr_decDefault;
-				State_filo_filo_addr_p <= State_filo_filo_addr_pDefault;
-				State_filo_filo_addr_p1 <= State_filo_filo_addr_p1Default;
+				State_mult_reset_mult_reset_dsp <= State_mult_reset_mult_reset_dspDefault;
 				State_ob_coef_rdy <= State_ob_coef_rdyDefault;
-				State_ob_iq_v <= State_ob_iq_vDefault;
 				State_ob_iq_i <= State_ob_iq_iDefault;
 				State_ob_iq_q <= State_ob_iq_qDefault;
+				State_ob_iq_v <= State_ob_iq_vDefault;
+				State_set_coef_mask <= State_set_coef_maskDefault;
+				State_set_data_mask <= State_set_data_maskDefault;
+				State_set_do <= State_set_doDefault;
 			else
-				State_set_do <= NextState_set_do;
-				State_set_coef_mask <= NextState_set_coef_mask;
-				State_set_data_mask <= NextState_set_data_mask;
+				State_coeff_coef_ram_cnt <= NextState_coeff_coef_ram_cnt;
+				State_coeff_coef_ram_wr <= NextState_coeff_coef_ram_wr;
 				State_coeff_coef_wr_cnt_cell <= NextState_coeff_coef_wr_cnt_cell;
 				State_coeff_coef_wr_cnt_ram <= NextState_coeff_coef_wr_cnt_ram;
-				State_coeff_coef_ram_wr <= NextState_coeff_coef_ram_wr;
-				State_coeff_coef_ram_cnt <= NextState_coeff_coef_ram_cnt;
+				State_filo_filo_addr_dec <= NextState_filo_filo_addr_dec;
+				State_filo_filo_addr_inc <= NextState_filo_filo_addr_inc;
+				State_filo_filo_addr_p <= NextState_filo_filo_addr_p;
+				State_filo_filo_addr_p1 <= NextState_filo_filo_addr_p1;
+				State_filo_filo_counter_dec <= NextState_filo_filo_counter_dec;
+				State_filo_filo_counter_inc <= NextState_filo_filo_counter_inc;
+				State_filo_filo_way <= NextState_filo_filo_way;
 				State_main_main_c_cnt <= NextState_main_main_c_cnt;
 				State_main_main_c_cnt_masked <= NextState_main_main_c_cnt_masked;
 				State_main_main_c_rd_addr_cmn <= NextState_main_main_c_rd_addr_cmn;
@@ -1003,23 +1020,201 @@ begin
 				State_main_main_d_cnt_masked <= NextState_main_main_d_cnt_masked;
 				State_main_main_d_cnt_rst <= NextState_main_main_d_cnt_rst;
 				State_mult_reset_mult_reset <= NextState_mult_reset_mult_reset;
-				State_mult_reset_mult_reset_dsp <= NextState_mult_reset_mult_reset_dsp;
 				State_mult_reset_mult_reset_common <= NextState_mult_reset_mult_reset_common;
 				State_mult_reset_mult_reset_common_p <= NextState_mult_reset_mult_reset_common_p;
 				State_mult_reset_mult_reset_common_p1 <= NextState_mult_reset_mult_reset_common_p1;
 				State_mult_reset_mult_reset_common_p2 <= NextState_mult_reset_mult_reset_common_p2;
 				State_mult_reset_mult_reset_common_p3 <= NextState_mult_reset_mult_reset_common_p3;
-				State_filo_filo_way <= NextState_filo_filo_way;
-				State_filo_filo_counter_inc <= NextState_filo_filo_counter_inc;
-				State_filo_filo_counter_dec <= NextState_filo_filo_counter_dec;
-				State_filo_filo_addr_inc <= NextState_filo_filo_addr_inc;
-				State_filo_filo_addr_dec <= NextState_filo_filo_addr_dec;
-				State_filo_filo_addr_p <= NextState_filo_filo_addr_p;
-				State_filo_filo_addr_p1 <= NextState_filo_filo_addr_p1;
+				State_mult_reset_mult_reset_dsp <= NextState_mult_reset_mult_reset_dsp;
 				State_ob_coef_rdy <= NextState_ob_coef_rdy;
-				State_ob_iq_v <= NextState_ob_iq_v;
 				State_ob_iq_i <= NextState_ob_iq_i;
 				State_ob_iq_q <= NextState_ob_iq_q;
+				State_ob_iq_v <= NextState_ob_iq_v;
+				State_set_coef_mask <= NextState_set_coef_mask;
+				State_set_data_mask <= NextState_set_data_mask;
+				State_set_do <= NextState_set_do;
+			end if;
+		end if;
+	end process;
+	process (Clock, NextState_coeff_coef_ram_wr_addr, Reset)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				for State_coeff_coef_ram_wr_addr_Iterator in 0 to 3 loop
+					State_coeff_coef_ram_wr_addr(State_coeff_coef_ram_wr_addr_Iterator) <= State_coeff_coef_ram_wr_addrDefault;
+				end loop;
+			else
+				for State_coeff_coef_ram_wr_addr_Iterator in 0 to 3 loop
+					State_coeff_coef_ram_wr_addr(State_coeff_coef_ram_wr_addr_Iterator) <= NextState_coeff_coef_ram_wr_addr(State_coeff_coef_ram_wr_addr_Iterator);
+				end loop;
+			end if;
+		end if;
+	end process;
+	process (Clock, NextState_coeff_coef_ram_wr_data, Reset)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				for State_coeff_coef_ram_wr_data_Iterator in 0 to 3 loop
+					State_coeff_coef_ram_wr_data(State_coeff_coef_ram_wr_data_Iterator) <= State_coeff_coef_ram_wr_dataDefault;
+				end loop;
+			else
+				for State_coeff_coef_ram_wr_data_Iterator in 0 to 3 loop
+					State_coeff_coef_ram_wr_data(State_coeff_coef_ram_wr_data_Iterator) <= NextState_coeff_coef_ram_wr_data(State_coeff_coef_ram_wr_data_Iterator);
+				end loop;
+			end if;
+		end if;
+	end process;
+	process (Clock, NextState_dsp48_dsp48_result, Reset)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				for State_dsp48_dsp48_result_Iterator in 0 to 9 loop
+					State_dsp48_dsp48_result(State_dsp48_dsp48_result_Iterator) <= State_dsp48_dsp48_resultDefault;
+				end loop;
+			else
+				for State_dsp48_dsp48_result_Iterator in 0 to 9 loop
+					State_dsp48_dsp48_result(State_dsp48_dsp48_result_Iterator) <= NextState_dsp48_dsp48_result(State_dsp48_dsp48_result_Iterator);
+				end loop;
+			end if;
+		end if;
+	end process;
+	process (Clock, NextState_dsp48_dsp48_srl, Reset)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				for State_dsp48_dsp48_srl_Iterator in 0 to 6 loop
+					State_dsp48_dsp48_srl(State_dsp48_dsp48_srl_Iterator) <= State_dsp48_dsp48_srlDefault;
+				end loop;
+			else
+				for State_dsp48_dsp48_srl_Iterator in 0 to 6 loop
+					State_dsp48_dsp48_srl(State_dsp48_dsp48_srl_Iterator) <= NextState_dsp48_dsp48_srl(State_dsp48_dsp48_srl_Iterator);
+				end loop;
+			end if;
+		end if;
+	end process;
+	process (Clock, NextState_filo_fir_dreg, Reset)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				for State_filo_fir_dreg_Iterator in 0 to 3 loop
+					State_filo_fir_dreg(State_filo_fir_dreg_Iterator) <= State_filo_fir_dregDefault;
+				end loop;
+			else
+				for State_filo_fir_dreg_Iterator in 0 to 3 loop
+					State_filo_fir_dreg(State_filo_fir_dreg_Iterator) <= NextState_filo_fir_dreg(State_filo_fir_dreg_Iterator);
+				end loop;
+			end if;
+		end if;
+	end process;
+	process (Clock, NextState_fir_fir_adreg, Reset)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				for State_fir_fir_adreg_Iterator in 0 to 3 loop
+					State_fir_fir_adreg(State_fir_fir_adreg_Iterator) <= State_fir_fir_adregDefault;
+				end loop;
+			else
+				for State_fir_fir_adreg_Iterator in 0 to 3 loop
+					State_fir_fir_adreg(State_fir_fir_adreg_Iterator) <= NextState_fir_fir_adreg(State_fir_fir_adreg_Iterator);
+				end loop;
+			end if;
+		end if;
+	end process;
+	process (Clock, NextState_fir_fir_areg1, Reset)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				for State_fir_fir_areg1_Iterator in 0 to 3 loop
+					State_fir_fir_areg1(State_fir_fir_areg1_Iterator) <= State_fir_fir_areg1Default;
+				end loop;
+			else
+				for State_fir_fir_areg1_Iterator in 0 to 3 loop
+					State_fir_fir_areg1(State_fir_fir_areg1_Iterator) <= NextState_fir_fir_areg1(State_fir_fir_areg1_Iterator);
+				end loop;
+			end if;
+		end if;
+	end process;
+	process (Clock, NextState_fir_fir_areg2, Reset)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				for State_fir_fir_areg2_Iterator in 0 to 3 loop
+					State_fir_fir_areg2(State_fir_fir_areg2_Iterator) <= State_fir_fir_areg2Default;
+				end loop;
+			else
+				for State_fir_fir_areg2_Iterator in 0 to 3 loop
+					State_fir_fir_areg2(State_fir_fir_areg2_Iterator) <= NextState_fir_fir_areg2(State_fir_fir_areg2_Iterator);
+				end loop;
+			end if;
+		end if;
+	end process;
+	process (Clock, NextState_fir_fir_breg, Reset)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				for State_fir_fir_breg_Iterator in 0 to 3 loop
+					State_fir_fir_breg(State_fir_fir_breg_Iterator) <= State_fir_fir_bregDefault;
+				end loop;
+			else
+				for State_fir_fir_breg_Iterator in 0 to 3 loop
+					State_fir_fir_breg(State_fir_fir_breg_Iterator) <= NextState_fir_fir_breg(State_fir_fir_breg_Iterator);
+				end loop;
+			end if;
+		end if;
+	end process;
+	process (Clock, NextState_fir_fir_mreg, Reset)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				for State_fir_fir_mreg_Iterator in 0 to 3 loop
+					State_fir_fir_mreg(State_fir_fir_mreg_Iterator) <= State_fir_fir_mregDefault;
+				end loop;
+			else
+				for State_fir_fir_mreg_Iterator in 0 to 3 loop
+					State_fir_fir_mreg(State_fir_fir_mreg_Iterator) <= NextState_fir_fir_mreg(State_fir_fir_mreg_Iterator);
+				end loop;
+			end if;
+		end if;
+	end process;
+	process (Clock, NextState_fir_fir_preg, Reset)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				for State_fir_fir_preg_Iterator in 0 to 3 loop
+					State_fir_fir_preg(State_fir_fir_preg_Iterator) <= State_fir_fir_pregDefault;
+				end loop;
+			else
+				for State_fir_fir_preg_Iterator in 0 to 3 loop
+					State_fir_fir_preg(State_fir_fir_preg_Iterator) <= NextState_fir_fir_preg(State_fir_fir_preg_Iterator);
+				end loop;
+			end if;
+		end if;
+	end process;
+	process (Clock, NextState_main_main_c_rd_addr, Reset)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				for State_main_main_c_rd_addr_Iterator in 0 to 3 loop
+					State_main_main_c_rd_addr(State_main_main_c_rd_addr_Iterator) <= State_main_main_c_rd_addrDefault;
+				end loop;
+			else
+				for State_main_main_c_rd_addr_Iterator in 0 to 3 loop
+					State_main_main_c_rd_addr(State_main_main_c_rd_addr_Iterator) <= NextState_main_main_c_rd_addr(State_main_main_c_rd_addr_Iterator);
+				end loop;
+			end if;
+		end if;
+	end process;
+	process (Clock, NextState_main_main_d_addr, Reset)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				for State_main_main_d_addr_Iterator in 0 to 3 loop
+					State_main_main_d_addr(State_main_main_d_addr_Iterator) <= State_main_main_d_addrDefault;
+				end loop;
+			else
+				for State_main_main_d_addr_Iterator in 0 to 3 loop
+					State_main_main_d_addr(State_main_main_d_addr_Iterator) <= NextState_main_main_d_addr(State_main_main_d_addr_Iterator);
+				end loop;
 			end if;
 		end if;
 	end process;
@@ -1114,6 +1309,142 @@ begin
 	begin
 		FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L390F51T82_Expr <= resize(unsigned(signed(resize(FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L390F51T82_Expr_1, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L390F51T82_Expr_1'length + 1)) + signed(resize(FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L390F51T82_Expr_2, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L390F51T82_Expr_2'length + 1))), FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L390F51T82_Expr'length);
 	end process;
+	FIRModule4x16_TopLevel_TopLevel_u_dsp48_i0 : entity work.FIRModule4x16_TopLevel_TopLevel_u_dsp48_i0
+	port map
+	(
+		-- [BEGIN USER MAP FOR u_dsp48_i0]
+		-- [END USER MAP FOR u_dsp48_i0]
+		BoardSignals => BoardSignals,
+		A => u_dsp48_i0_A_u_dsp48_i0_A_HardLink,
+		B => u_dsp48_i0_B_u_dsp48_i0_B_HardLink,
+		CE => u_dsp48_i0_CE_u_dsp48_i0_CE_HardLink,
+		D => u_dsp48_i0_D_u_dsp48_i0_D_HardLink,
+		OPMODE => u_dsp48_i0_OPMODE_u_dsp48_i0_OPMODE_HardLink,
+		PCIN => u_dsp48_i0_PCIN_u_dsp48_i0_PCIN_HardLink,
+		RST => u_dsp48_i0_RST_u_dsp48_i0_RST_HardLink,
+		P => u_dsp48_i0_P_u_dsp48_i0_P_HardLink,
+		PCOUT => u_dsp48_i0_PCOUT_u_dsp48_i0_PCOUT_HardLink
+	)
+	;
+	FIRModule4x16_TopLevel_TopLevel_u_dsp48_i1 : entity work.FIRModule4x16_TopLevel_TopLevel_u_dsp48_i1
+	port map
+	(
+		-- [BEGIN USER MAP FOR u_dsp48_i1]
+		-- [END USER MAP FOR u_dsp48_i1]
+		BoardSignals => BoardSignals,
+		A => u_dsp48_i1_A_u_dsp48_i1_A_HardLink,
+		B => u_dsp48_i1_B_u_dsp48_i1_B_HardLink,
+		CE => u_dsp48_i1_CE_u_dsp48_i1_CE_HardLink,
+		D => u_dsp48_i1_D_u_dsp48_i1_D_HardLink,
+		OPMODE => u_dsp48_i1_OPMODE_u_dsp48_i1_OPMODE_HardLink,
+		PCIN => u_dsp48_i1_PCIN_u_dsp48_i1_PCIN_HardLink,
+		RST => u_dsp48_i1_RST_u_dsp48_i1_RST_HardLink,
+		P => u_dsp48_i1_P_u_dsp48_i1_P_HardLink,
+		PCOUT => u_dsp48_i1_PCOUT_u_dsp48_i1_PCOUT_HardLink
+	)
+	;
+	FIRModule4x16_TopLevel_TopLevel_u_dsp48_i2 : entity work.FIRModule4x16_TopLevel_TopLevel_u_dsp48_i2
+	port map
+	(
+		-- [BEGIN USER MAP FOR u_dsp48_i2]
+		-- [END USER MAP FOR u_dsp48_i2]
+		BoardSignals => BoardSignals,
+		A => u_dsp48_i2_A_u_dsp48_i2_A_HardLink,
+		B => u_dsp48_i2_B_u_dsp48_i2_B_HardLink,
+		CE => u_dsp48_i2_CE_u_dsp48_i2_CE_HardLink,
+		D => u_dsp48_i2_D_u_dsp48_i2_D_HardLink,
+		OPMODE => u_dsp48_i2_OPMODE_u_dsp48_i2_OPMODE_HardLink,
+		PCIN => u_dsp48_i2_PCIN_u_dsp48_i2_PCIN_HardLink,
+		RST => u_dsp48_i2_RST_u_dsp48_i2_RST_HardLink,
+		P => u_dsp48_i2_P_u_dsp48_i2_P_HardLink,
+		PCOUT => u_dsp48_i2_PCOUT_u_dsp48_i2_PCOUT_HardLink
+	)
+	;
+	FIRModule4x16_TopLevel_TopLevel_u_dsp48_i3 : entity work.FIRModule4x16_TopLevel_TopLevel_u_dsp48_i3
+	port map
+	(
+		-- [BEGIN USER MAP FOR u_dsp48_i3]
+		-- [END USER MAP FOR u_dsp48_i3]
+		BoardSignals => BoardSignals,
+		A => u_dsp48_i3_A_u_dsp48_i3_A_HardLink,
+		B => u_dsp48_i3_B_u_dsp48_i3_B_HardLink,
+		CE => u_dsp48_i3_CE_u_dsp48_i3_CE_HardLink,
+		D => u_dsp48_i3_D_u_dsp48_i3_D_HardLink,
+		OPMODE => u_dsp48_i3_OPMODE_u_dsp48_i3_OPMODE_HardLink,
+		PCIN => u_dsp48_i3_PCIN_u_dsp48_i3_PCIN_HardLink,
+		RST => u_dsp48_i3_RST_u_dsp48_i3_RST_HardLink,
+		P => u_dsp48_i3_P_u_dsp48_i3_P_HardLink,
+		PCOUT => u_dsp48_i3_PCOUT_u_dsp48_i3_PCOUT_HardLink
+	)
+	;
+	FIRModule4x16_TopLevel_TopLevel_u_dsp48_q0 : entity work.FIRModule4x16_TopLevel_TopLevel_u_dsp48_q0
+	port map
+	(
+		-- [BEGIN USER MAP FOR u_dsp48_q0]
+		-- [END USER MAP FOR u_dsp48_q0]
+		BoardSignals => BoardSignals,
+		A => u_dsp48_q0_A_u_dsp48_q0_A_HardLink,
+		B => u_dsp48_q0_B_u_dsp48_q0_B_HardLink,
+		CE => u_dsp48_q0_CE_u_dsp48_q0_CE_HardLink,
+		D => u_dsp48_q0_D_u_dsp48_q0_D_HardLink,
+		OPMODE => u_dsp48_q0_OPMODE_u_dsp48_q0_OPMODE_HardLink,
+		PCIN => u_dsp48_q0_PCIN_u_dsp48_q0_PCIN_HardLink,
+		RST => u_dsp48_q0_RST_u_dsp48_q0_RST_HardLink,
+		P => u_dsp48_q0_P_u_dsp48_q0_P_HardLink,
+		PCOUT => u_dsp48_q0_PCOUT_u_dsp48_q0_PCOUT_HardLink
+	)
+	;
+	FIRModule4x16_TopLevel_TopLevel_u_dsp48_q1 : entity work.FIRModule4x16_TopLevel_TopLevel_u_dsp48_q1
+	port map
+	(
+		-- [BEGIN USER MAP FOR u_dsp48_q1]
+		-- [END USER MAP FOR u_dsp48_q1]
+		BoardSignals => BoardSignals,
+		A => u_dsp48_q1_A_u_dsp48_q1_A_HardLink,
+		B => u_dsp48_q1_B_u_dsp48_q1_B_HardLink,
+		CE => u_dsp48_q1_CE_u_dsp48_q1_CE_HardLink,
+		D => u_dsp48_q1_D_u_dsp48_q1_D_HardLink,
+		OPMODE => u_dsp48_q1_OPMODE_u_dsp48_q1_OPMODE_HardLink,
+		PCIN => u_dsp48_q1_PCIN_u_dsp48_q1_PCIN_HardLink,
+		RST => u_dsp48_q1_RST_u_dsp48_q1_RST_HardLink,
+		P => u_dsp48_q1_P_u_dsp48_q1_P_HardLink,
+		PCOUT => u_dsp48_q1_PCOUT_u_dsp48_q1_PCOUT_HardLink
+	)
+	;
+	FIRModule4x16_TopLevel_TopLevel_u_dsp48_q2 : entity work.FIRModule4x16_TopLevel_TopLevel_u_dsp48_q2
+	port map
+	(
+		-- [BEGIN USER MAP FOR u_dsp48_q2]
+		-- [END USER MAP FOR u_dsp48_q2]
+		BoardSignals => BoardSignals,
+		A => u_dsp48_q2_A_u_dsp48_q2_A_HardLink,
+		B => u_dsp48_q2_B_u_dsp48_q2_B_HardLink,
+		CE => u_dsp48_q2_CE_u_dsp48_q2_CE_HardLink,
+		D => u_dsp48_q2_D_u_dsp48_q2_D_HardLink,
+		OPMODE => u_dsp48_q2_OPMODE_u_dsp48_q2_OPMODE_HardLink,
+		PCIN => u_dsp48_q2_PCIN_u_dsp48_q2_PCIN_HardLink,
+		RST => u_dsp48_q2_RST_u_dsp48_q2_RST_HardLink,
+		P => u_dsp48_q2_P_u_dsp48_q2_P_HardLink,
+		PCOUT => u_dsp48_q2_PCOUT_u_dsp48_q2_PCOUT_HardLink
+	)
+	;
+	FIRModule4x16_TopLevel_TopLevel_u_dsp48_q3 : entity work.FIRModule4x16_TopLevel_TopLevel_u_dsp48_q3
+	port map
+	(
+		-- [BEGIN USER MAP FOR u_dsp48_q3]
+		-- [END USER MAP FOR u_dsp48_q3]
+		BoardSignals => BoardSignals,
+		A => u_dsp48_q3_A_u_dsp48_q3_A_HardLink,
+		B => u_dsp48_q3_B_u_dsp48_q3_B_HardLink,
+		CE => u_dsp48_q3_CE_u_dsp48_q3_CE_HardLink,
+		D => u_dsp48_q3_D_u_dsp48_q3_D_HardLink,
+		OPMODE => u_dsp48_q3_OPMODE_u_dsp48_q3_OPMODE_HardLink,
+		PCIN => u_dsp48_q3_PCIN_u_dsp48_q3_PCIN_HardLink,
+		RST => u_dsp48_q3_RST_u_dsp48_q3_RST_HardLink,
+		P => u_dsp48_q3_P_u_dsp48_q3_P_HardLink,
+		PCOUT => u_dsp48_q3_PCOUT_u_dsp48_q3_PCOUT_HardLink
+	)
+	;
 	FIRModule4x16_TopLevel_TopLevel_u_ram_coef0 : entity work.FIRModule4x16_TopLevel_TopLevel_u_ram_coef0
 	port map
 	(
@@ -1121,11 +1452,11 @@ begin
 		-- [END USER MAP FOR u_ram_coef0]
 		BoardSignals => BoardSignals,
 		CE => u_ram_coef0_CE_u_ram_coef0_CE_HardLink,
-		WR => u_ram_coef0_WR_u_ram_coef0_WR_HardLink,
-		WR_ADDR => u_ram_coef0_WR_ADDR_u_ram_coef0_WR_ADDR_HardLink,
 		DIN => u_ram_coef0_DIN_u_ram_coef0_DIN_HardLink,
 		RD => u_ram_coef0_RD_u_ram_coef0_RD_HardLink,
 		RD_ADDR => u_ram_coef0_RD_ADDR_u_ram_coef0_RD_ADDR_HardLink,
+		WR => u_ram_coef0_WR_u_ram_coef0_WR_HardLink,
+		WR_ADDR => u_ram_coef0_WR_ADDR_u_ram_coef0_WR_ADDR_HardLink,
 		DOUT => u_ram_coef0_DOUT_u_ram_coef0_DOUT_HardLink
 	)
 	;
@@ -1136,11 +1467,11 @@ begin
 		-- [END USER MAP FOR u_ram_coef1]
 		BoardSignals => BoardSignals,
 		CE => u_ram_coef1_CE_u_ram_coef1_CE_HardLink,
-		WR => u_ram_coef1_WR_u_ram_coef1_WR_HardLink,
-		WR_ADDR => u_ram_coef1_WR_ADDR_u_ram_coef1_WR_ADDR_HardLink,
 		DIN => u_ram_coef1_DIN_u_ram_coef1_DIN_HardLink,
 		RD => u_ram_coef1_RD_u_ram_coef1_RD_HardLink,
 		RD_ADDR => u_ram_coef1_RD_ADDR_u_ram_coef1_RD_ADDR_HardLink,
+		WR => u_ram_coef1_WR_u_ram_coef1_WR_HardLink,
+		WR_ADDR => u_ram_coef1_WR_ADDR_u_ram_coef1_WR_ADDR_HardLink,
 		DOUT => u_ram_coef1_DOUT_u_ram_coef1_DOUT_HardLink
 	)
 	;
@@ -1151,11 +1482,11 @@ begin
 		-- [END USER MAP FOR u_ram_coef2]
 		BoardSignals => BoardSignals,
 		CE => u_ram_coef2_CE_u_ram_coef2_CE_HardLink,
-		WR => u_ram_coef2_WR_u_ram_coef2_WR_HardLink,
-		WR_ADDR => u_ram_coef2_WR_ADDR_u_ram_coef2_WR_ADDR_HardLink,
 		DIN => u_ram_coef2_DIN_u_ram_coef2_DIN_HardLink,
 		RD => u_ram_coef2_RD_u_ram_coef2_RD_HardLink,
 		RD_ADDR => u_ram_coef2_RD_ADDR_u_ram_coef2_RD_ADDR_HardLink,
+		WR => u_ram_coef2_WR_u_ram_coef2_WR_HardLink,
+		WR_ADDR => u_ram_coef2_WR_ADDR_u_ram_coef2_WR_ADDR_HardLink,
 		DOUT => u_ram_coef2_DOUT_u_ram_coef2_DOUT_HardLink
 	)
 	;
@@ -1166,132 +1497,12 @@ begin
 		-- [END USER MAP FOR u_ram_coef3]
 		BoardSignals => BoardSignals,
 		CE => u_ram_coef3_CE_u_ram_coef3_CE_HardLink,
-		WR => u_ram_coef3_WR_u_ram_coef3_WR_HardLink,
-		WR_ADDR => u_ram_coef3_WR_ADDR_u_ram_coef3_WR_ADDR_HardLink,
 		DIN => u_ram_coef3_DIN_u_ram_coef3_DIN_HardLink,
 		RD => u_ram_coef3_RD_u_ram_coef3_RD_HardLink,
 		RD_ADDR => u_ram_coef3_RD_ADDR_u_ram_coef3_RD_ADDR_HardLink,
+		WR => u_ram_coef3_WR_u_ram_coef3_WR_HardLink,
+		WR_ADDR => u_ram_coef3_WR_ADDR_u_ram_coef3_WR_ADDR_HardLink,
 		DOUT => u_ram_coef3_DOUT_u_ram_coef3_DOUT_HardLink
-	)
-	;
-	FIRModule4x16_TopLevel_TopLevel_u_ram_srls_i0 : entity work.FIRModule4x16_TopLevel_TopLevel_u_ram_srls_i0
-	port map
-	(
-		-- [BEGIN USER MAP FOR u_ram_srls_i0]
-		-- [END USER MAP FOR u_ram_srls_i0]
-		BoardSignals => BoardSignals,
-		CE => u_ram_srls_i0_CE_u_ram_srls_i0_CE_HardLink,
-		WR => u_ram_srls_i0_WR_u_ram_srls_i0_WR_HardLink,
-		WR_ADDR => u_ram_srls_i0_WR_ADDR_u_ram_srls_i0_WR_ADDR_HardLink,
-		DIN => u_ram_srls_i0_DIN_u_ram_srls_i0_DIN_HardLink,
-		RD => u_ram_srls_i0_RD_u_ram_srls_i0_RD_HardLink,
-		RD_ADDR => u_ram_srls_i0_RD_ADDR_u_ram_srls_i0_RD_ADDR_HardLink,
-		DOUT => u_ram_srls_i0_DOUT_u_ram_srls_i0_DOUT_HardLink
-	)
-	;
-	FIRModule4x16_TopLevel_TopLevel_u_ram_srls_i1 : entity work.FIRModule4x16_TopLevel_TopLevel_u_ram_srls_i1
-	port map
-	(
-		-- [BEGIN USER MAP FOR u_ram_srls_i1]
-		-- [END USER MAP FOR u_ram_srls_i1]
-		BoardSignals => BoardSignals,
-		CE => u_ram_srls_i1_CE_u_ram_srls_i1_CE_HardLink,
-		WR => u_ram_srls_i1_WR_u_ram_srls_i1_WR_HardLink,
-		WR_ADDR => u_ram_srls_i1_WR_ADDR_u_ram_srls_i1_WR_ADDR_HardLink,
-		DIN => u_ram_srls_i1_DIN_u_ram_srls_i1_DIN_HardLink,
-		RD => u_ram_srls_i1_RD_u_ram_srls_i1_RD_HardLink,
-		RD_ADDR => u_ram_srls_i1_RD_ADDR_u_ram_srls_i1_RD_ADDR_HardLink,
-		DOUT => u_ram_srls_i1_DOUT_u_ram_srls_i1_DOUT_HardLink
-	)
-	;
-	FIRModule4x16_TopLevel_TopLevel_u_ram_srls_i2 : entity work.FIRModule4x16_TopLevel_TopLevel_u_ram_srls_i2
-	port map
-	(
-		-- [BEGIN USER MAP FOR u_ram_srls_i2]
-		-- [END USER MAP FOR u_ram_srls_i2]
-		BoardSignals => BoardSignals,
-		CE => u_ram_srls_i2_CE_u_ram_srls_i2_CE_HardLink,
-		WR => u_ram_srls_i2_WR_u_ram_srls_i2_WR_HardLink,
-		WR_ADDR => u_ram_srls_i2_WR_ADDR_u_ram_srls_i2_WR_ADDR_HardLink,
-		DIN => u_ram_srls_i2_DIN_u_ram_srls_i2_DIN_HardLink,
-		RD => u_ram_srls_i2_RD_u_ram_srls_i2_RD_HardLink,
-		RD_ADDR => u_ram_srls_i2_RD_ADDR_u_ram_srls_i2_RD_ADDR_HardLink,
-		DOUT => u_ram_srls_i2_DOUT_u_ram_srls_i2_DOUT_HardLink
-	)
-	;
-	FIRModule4x16_TopLevel_TopLevel_u_ram_srls_i3 : entity work.FIRModule4x16_TopLevel_TopLevel_u_ram_srls_i3
-	port map
-	(
-		-- [BEGIN USER MAP FOR u_ram_srls_i3]
-		-- [END USER MAP FOR u_ram_srls_i3]
-		BoardSignals => BoardSignals,
-		CE => u_ram_srls_i3_CE_u_ram_srls_i3_CE_HardLink,
-		WR => u_ram_srls_i3_WR_u_ram_srls_i3_WR_HardLink,
-		WR_ADDR => u_ram_srls_i3_WR_ADDR_u_ram_srls_i3_WR_ADDR_HardLink,
-		DIN => u_ram_srls_i3_DIN_u_ram_srls_i3_DIN_HardLink,
-		RD => u_ram_srls_i3_RD_u_ram_srls_i3_RD_HardLink,
-		RD_ADDR => u_ram_srls_i3_RD_ADDR_u_ram_srls_i3_RD_ADDR_HardLink,
-		DOUT => u_ram_srls_i3_DOUT_u_ram_srls_i3_DOUT_HardLink
-	)
-	;
-	FIRModule4x16_TopLevel_TopLevel_u_ram_srls_q0 : entity work.FIRModule4x16_TopLevel_TopLevel_u_ram_srls_q0
-	port map
-	(
-		-- [BEGIN USER MAP FOR u_ram_srls_q0]
-		-- [END USER MAP FOR u_ram_srls_q0]
-		BoardSignals => BoardSignals,
-		CE => u_ram_srls_q0_CE_u_ram_srls_q0_CE_HardLink,
-		WR => u_ram_srls_q0_WR_u_ram_srls_q0_WR_HardLink,
-		WR_ADDR => u_ram_srls_q0_WR_ADDR_u_ram_srls_q0_WR_ADDR_HardLink,
-		DIN => u_ram_srls_q0_DIN_u_ram_srls_q0_DIN_HardLink,
-		RD => u_ram_srls_q0_RD_u_ram_srls_q0_RD_HardLink,
-		RD_ADDR => u_ram_srls_q0_RD_ADDR_u_ram_srls_q0_RD_ADDR_HardLink,
-		DOUT => u_ram_srls_q0_DOUT_u_ram_srls_q0_DOUT_HardLink
-	)
-	;
-	FIRModule4x16_TopLevel_TopLevel_u_ram_srls_q1 : entity work.FIRModule4x16_TopLevel_TopLevel_u_ram_srls_q1
-	port map
-	(
-		-- [BEGIN USER MAP FOR u_ram_srls_q1]
-		-- [END USER MAP FOR u_ram_srls_q1]
-		BoardSignals => BoardSignals,
-		CE => u_ram_srls_q1_CE_u_ram_srls_q1_CE_HardLink,
-		WR => u_ram_srls_q1_WR_u_ram_srls_q1_WR_HardLink,
-		WR_ADDR => u_ram_srls_q1_WR_ADDR_u_ram_srls_q1_WR_ADDR_HardLink,
-		DIN => u_ram_srls_q1_DIN_u_ram_srls_q1_DIN_HardLink,
-		RD => u_ram_srls_q1_RD_u_ram_srls_q1_RD_HardLink,
-		RD_ADDR => u_ram_srls_q1_RD_ADDR_u_ram_srls_q1_RD_ADDR_HardLink,
-		DOUT => u_ram_srls_q1_DOUT_u_ram_srls_q1_DOUT_HardLink
-	)
-	;
-	FIRModule4x16_TopLevel_TopLevel_u_ram_srls_q2 : entity work.FIRModule4x16_TopLevel_TopLevel_u_ram_srls_q2
-	port map
-	(
-		-- [BEGIN USER MAP FOR u_ram_srls_q2]
-		-- [END USER MAP FOR u_ram_srls_q2]
-		BoardSignals => BoardSignals,
-		CE => u_ram_srls_q2_CE_u_ram_srls_q2_CE_HardLink,
-		WR => u_ram_srls_q2_WR_u_ram_srls_q2_WR_HardLink,
-		WR_ADDR => u_ram_srls_q2_WR_ADDR_u_ram_srls_q2_WR_ADDR_HardLink,
-		DIN => u_ram_srls_q2_DIN_u_ram_srls_q2_DIN_HardLink,
-		RD => u_ram_srls_q2_RD_u_ram_srls_q2_RD_HardLink,
-		RD_ADDR => u_ram_srls_q2_RD_ADDR_u_ram_srls_q2_RD_ADDR_HardLink,
-		DOUT => u_ram_srls_q2_DOUT_u_ram_srls_q2_DOUT_HardLink
-	)
-	;
-	FIRModule4x16_TopLevel_TopLevel_u_ram_srls_q3 : entity work.FIRModule4x16_TopLevel_TopLevel_u_ram_srls_q3
-	port map
-	(
-		-- [BEGIN USER MAP FOR u_ram_srls_q3]
-		-- [END USER MAP FOR u_ram_srls_q3]
-		BoardSignals => BoardSignals,
-		CE => u_ram_srls_q3_CE_u_ram_srls_q3_CE_HardLink,
-		WR => u_ram_srls_q3_WR_u_ram_srls_q3_WR_HardLink,
-		WR_ADDR => u_ram_srls_q3_WR_ADDR_u_ram_srls_q3_WR_ADDR_HardLink,
-		DIN => u_ram_srls_q3_DIN_u_ram_srls_q3_DIN_HardLink,
-		RD => u_ram_srls_q3_RD_u_ram_srls_q3_RD_HardLink,
-		RD_ADDR => u_ram_srls_q3_RD_ADDR_u_ram_srls_q3_RD_ADDR_HardLink,
-		DOUT => u_ram_srls_q3_DOUT_u_ram_srls_q3_DOUT_HardLink
 	)
 	;
 	FIRModule4x16_TopLevel_TopLevel_u_ram_filo_i : entity work.FIRModule4x16_TopLevel_TopLevel_u_ram_filo_i
@@ -1301,11 +1512,11 @@ begin
 		-- [END USER MAP FOR u_ram_filo_i]
 		BoardSignals => BoardSignals,
 		CE => u_ram_filo_i_CE_u_ram_filo_i_CE_HardLink,
-		WR => u_ram_filo_i_WR_u_ram_filo_i_WR_HardLink,
-		WR_ADDR => u_ram_filo_i_WR_ADDR_u_ram_filo_i_WR_ADDR_HardLink,
 		DIN => u_ram_filo_i_DIN_u_ram_filo_i_DIN_HardLink,
 		RD => u_ram_filo_i_RD_u_ram_filo_i_RD_HardLink,
 		RD_ADDR => u_ram_filo_i_RD_ADDR_u_ram_filo_i_RD_ADDR_HardLink,
+		WR => u_ram_filo_i_WR_u_ram_filo_i_WR_HardLink,
+		WR_ADDR => u_ram_filo_i_WR_ADDR_u_ram_filo_i_WR_ADDR_HardLink,
 		DOUT => u_ram_filo_i_DOUT_u_ram_filo_i_DOUT_HardLink
 	)
 	;
@@ -1316,148 +1527,132 @@ begin
 		-- [END USER MAP FOR u_ram_filo_q]
 		BoardSignals => BoardSignals,
 		CE => u_ram_filo_q_CE_u_ram_filo_q_CE_HardLink,
-		WR => u_ram_filo_q_WR_u_ram_filo_q_WR_HardLink,
-		WR_ADDR => u_ram_filo_q_WR_ADDR_u_ram_filo_q_WR_ADDR_HardLink,
 		DIN => u_ram_filo_q_DIN_u_ram_filo_q_DIN_HardLink,
 		RD => u_ram_filo_q_RD_u_ram_filo_q_RD_HardLink,
 		RD_ADDR => u_ram_filo_q_RD_ADDR_u_ram_filo_q_RD_ADDR_HardLink,
+		WR => u_ram_filo_q_WR_u_ram_filo_q_WR_HardLink,
+		WR_ADDR => u_ram_filo_q_WR_ADDR_u_ram_filo_q_WR_ADDR_HardLink,
 		DOUT => u_ram_filo_q_DOUT_u_ram_filo_q_DOUT_HardLink
 	)
 	;
-	FIRModule4x16_TopLevel_TopLevel_u_dsp48_i0 : entity work.FIRModule4x16_TopLevel_TopLevel_u_dsp48_i0
+	FIRModule4x16_TopLevel_TopLevel_u_ram_srls_i0 : entity work.FIRModule4x16_TopLevel_TopLevel_u_ram_srls_i0
 	port map
 	(
-		-- [BEGIN USER MAP FOR u_dsp48_i0]
-		-- [END USER MAP FOR u_dsp48_i0]
+		-- [BEGIN USER MAP FOR u_ram_srls_i0]
+		-- [END USER MAP FOR u_ram_srls_i0]
 		BoardSignals => BoardSignals,
-		CE => u_dsp48_i0_CE_u_dsp48_i0_CE_HardLink,
-		RST => u_dsp48_i0_RST_u_dsp48_i0_RST_HardLink,
-		A => u_dsp48_i0_A_u_dsp48_i0_A_HardLink,
-		B => u_dsp48_i0_B_u_dsp48_i0_B_HardLink,
-		D => u_dsp48_i0_D_u_dsp48_i0_D_HardLink,
-		PCIN => u_dsp48_i0_PCIN_u_dsp48_i0_PCIN_HardLink,
-		OPMODE => u_dsp48_i0_OPMODE_u_dsp48_i0_OPMODE_HardLink,
-		PCOUT => u_dsp48_i0_PCOUT_u_dsp48_i0_PCOUT_HardLink,
-		P => u_dsp48_i0_P_u_dsp48_i0_P_HardLink
+		CE => u_ram_srls_i0_CE_u_ram_srls_i0_CE_HardLink,
+		DIN => u_ram_srls_i0_DIN_u_ram_srls_i0_DIN_HardLink,
+		RD => u_ram_srls_i0_RD_u_ram_srls_i0_RD_HardLink,
+		RD_ADDR => u_ram_srls_i0_RD_ADDR_u_ram_srls_i0_RD_ADDR_HardLink,
+		WR => u_ram_srls_i0_WR_u_ram_srls_i0_WR_HardLink,
+		WR_ADDR => u_ram_srls_i0_WR_ADDR_u_ram_srls_i0_WR_ADDR_HardLink,
+		DOUT => u_ram_srls_i0_DOUT_u_ram_srls_i0_DOUT_HardLink
 	)
 	;
-	FIRModule4x16_TopLevel_TopLevel_u_dsp48_i1 : entity work.FIRModule4x16_TopLevel_TopLevel_u_dsp48_i1
+	FIRModule4x16_TopLevel_TopLevel_u_ram_srls_i1 : entity work.FIRModule4x16_TopLevel_TopLevel_u_ram_srls_i1
 	port map
 	(
-		-- [BEGIN USER MAP FOR u_dsp48_i1]
-		-- [END USER MAP FOR u_dsp48_i1]
+		-- [BEGIN USER MAP FOR u_ram_srls_i1]
+		-- [END USER MAP FOR u_ram_srls_i1]
 		BoardSignals => BoardSignals,
-		CE => u_dsp48_i1_CE_u_dsp48_i1_CE_HardLink,
-		RST => u_dsp48_i1_RST_u_dsp48_i1_RST_HardLink,
-		A => u_dsp48_i1_A_u_dsp48_i1_A_HardLink,
-		B => u_dsp48_i1_B_u_dsp48_i1_B_HardLink,
-		D => u_dsp48_i1_D_u_dsp48_i1_D_HardLink,
-		PCIN => u_dsp48_i1_PCIN_u_dsp48_i1_PCIN_HardLink,
-		OPMODE => u_dsp48_i1_OPMODE_u_dsp48_i1_OPMODE_HardLink,
-		PCOUT => u_dsp48_i1_PCOUT_u_dsp48_i1_PCOUT_HardLink,
-		P => u_dsp48_i1_P_u_dsp48_i1_P_HardLink
+		CE => u_ram_srls_i1_CE_u_ram_srls_i1_CE_HardLink,
+		DIN => u_ram_srls_i1_DIN_u_ram_srls_i1_DIN_HardLink,
+		RD => u_ram_srls_i1_RD_u_ram_srls_i1_RD_HardLink,
+		RD_ADDR => u_ram_srls_i1_RD_ADDR_u_ram_srls_i1_RD_ADDR_HardLink,
+		WR => u_ram_srls_i1_WR_u_ram_srls_i1_WR_HardLink,
+		WR_ADDR => u_ram_srls_i1_WR_ADDR_u_ram_srls_i1_WR_ADDR_HardLink,
+		DOUT => u_ram_srls_i1_DOUT_u_ram_srls_i1_DOUT_HardLink
 	)
 	;
-	FIRModule4x16_TopLevel_TopLevel_u_dsp48_i2 : entity work.FIRModule4x16_TopLevel_TopLevel_u_dsp48_i2
+	FIRModule4x16_TopLevel_TopLevel_u_ram_srls_i2 : entity work.FIRModule4x16_TopLevel_TopLevel_u_ram_srls_i2
 	port map
 	(
-		-- [BEGIN USER MAP FOR u_dsp48_i2]
-		-- [END USER MAP FOR u_dsp48_i2]
+		-- [BEGIN USER MAP FOR u_ram_srls_i2]
+		-- [END USER MAP FOR u_ram_srls_i2]
 		BoardSignals => BoardSignals,
-		CE => u_dsp48_i2_CE_u_dsp48_i2_CE_HardLink,
-		RST => u_dsp48_i2_RST_u_dsp48_i2_RST_HardLink,
-		A => u_dsp48_i2_A_u_dsp48_i2_A_HardLink,
-		B => u_dsp48_i2_B_u_dsp48_i2_B_HardLink,
-		D => u_dsp48_i2_D_u_dsp48_i2_D_HardLink,
-		PCIN => u_dsp48_i2_PCIN_u_dsp48_i2_PCIN_HardLink,
-		OPMODE => u_dsp48_i2_OPMODE_u_dsp48_i2_OPMODE_HardLink,
-		PCOUT => u_dsp48_i2_PCOUT_u_dsp48_i2_PCOUT_HardLink,
-		P => u_dsp48_i2_P_u_dsp48_i2_P_HardLink
+		CE => u_ram_srls_i2_CE_u_ram_srls_i2_CE_HardLink,
+		DIN => u_ram_srls_i2_DIN_u_ram_srls_i2_DIN_HardLink,
+		RD => u_ram_srls_i2_RD_u_ram_srls_i2_RD_HardLink,
+		RD_ADDR => u_ram_srls_i2_RD_ADDR_u_ram_srls_i2_RD_ADDR_HardLink,
+		WR => u_ram_srls_i2_WR_u_ram_srls_i2_WR_HardLink,
+		WR_ADDR => u_ram_srls_i2_WR_ADDR_u_ram_srls_i2_WR_ADDR_HardLink,
+		DOUT => u_ram_srls_i2_DOUT_u_ram_srls_i2_DOUT_HardLink
 	)
 	;
-	FIRModule4x16_TopLevel_TopLevel_u_dsp48_i3 : entity work.FIRModule4x16_TopLevel_TopLevel_u_dsp48_i3
+	FIRModule4x16_TopLevel_TopLevel_u_ram_srls_i3 : entity work.FIRModule4x16_TopLevel_TopLevel_u_ram_srls_i3
 	port map
 	(
-		-- [BEGIN USER MAP FOR u_dsp48_i3]
-		-- [END USER MAP FOR u_dsp48_i3]
+		-- [BEGIN USER MAP FOR u_ram_srls_i3]
+		-- [END USER MAP FOR u_ram_srls_i3]
 		BoardSignals => BoardSignals,
-		CE => u_dsp48_i3_CE_u_dsp48_i3_CE_HardLink,
-		RST => u_dsp48_i3_RST_u_dsp48_i3_RST_HardLink,
-		A => u_dsp48_i3_A_u_dsp48_i3_A_HardLink,
-		B => u_dsp48_i3_B_u_dsp48_i3_B_HardLink,
-		D => u_dsp48_i3_D_u_dsp48_i3_D_HardLink,
-		PCIN => u_dsp48_i3_PCIN_u_dsp48_i3_PCIN_HardLink,
-		OPMODE => u_dsp48_i3_OPMODE_u_dsp48_i3_OPMODE_HardLink,
-		PCOUT => u_dsp48_i3_PCOUT_u_dsp48_i3_PCOUT_HardLink,
-		P => u_dsp48_i3_P_u_dsp48_i3_P_HardLink
+		CE => u_ram_srls_i3_CE_u_ram_srls_i3_CE_HardLink,
+		DIN => u_ram_srls_i3_DIN_u_ram_srls_i3_DIN_HardLink,
+		RD => u_ram_srls_i3_RD_u_ram_srls_i3_RD_HardLink,
+		RD_ADDR => u_ram_srls_i3_RD_ADDR_u_ram_srls_i3_RD_ADDR_HardLink,
+		WR => u_ram_srls_i3_WR_u_ram_srls_i3_WR_HardLink,
+		WR_ADDR => u_ram_srls_i3_WR_ADDR_u_ram_srls_i3_WR_ADDR_HardLink,
+		DOUT => u_ram_srls_i3_DOUT_u_ram_srls_i3_DOUT_HardLink
 	)
 	;
-	FIRModule4x16_TopLevel_TopLevel_u_dsp48_q0 : entity work.FIRModule4x16_TopLevel_TopLevel_u_dsp48_q0
+	FIRModule4x16_TopLevel_TopLevel_u_ram_srls_q0 : entity work.FIRModule4x16_TopLevel_TopLevel_u_ram_srls_q0
 	port map
 	(
-		-- [BEGIN USER MAP FOR u_dsp48_q0]
-		-- [END USER MAP FOR u_dsp48_q0]
+		-- [BEGIN USER MAP FOR u_ram_srls_q0]
+		-- [END USER MAP FOR u_ram_srls_q0]
 		BoardSignals => BoardSignals,
-		CE => u_dsp48_q0_CE_u_dsp48_q0_CE_HardLink,
-		RST => u_dsp48_q0_RST_u_dsp48_q0_RST_HardLink,
-		A => u_dsp48_q0_A_u_dsp48_q0_A_HardLink,
-		B => u_dsp48_q0_B_u_dsp48_q0_B_HardLink,
-		D => u_dsp48_q0_D_u_dsp48_q0_D_HardLink,
-		PCIN => u_dsp48_q0_PCIN_u_dsp48_q0_PCIN_HardLink,
-		OPMODE => u_dsp48_q0_OPMODE_u_dsp48_q0_OPMODE_HardLink,
-		PCOUT => u_dsp48_q0_PCOUT_u_dsp48_q0_PCOUT_HardLink,
-		P => u_dsp48_q0_P_u_dsp48_q0_P_HardLink
+		CE => u_ram_srls_q0_CE_u_ram_srls_q0_CE_HardLink,
+		DIN => u_ram_srls_q0_DIN_u_ram_srls_q0_DIN_HardLink,
+		RD => u_ram_srls_q0_RD_u_ram_srls_q0_RD_HardLink,
+		RD_ADDR => u_ram_srls_q0_RD_ADDR_u_ram_srls_q0_RD_ADDR_HardLink,
+		WR => u_ram_srls_q0_WR_u_ram_srls_q0_WR_HardLink,
+		WR_ADDR => u_ram_srls_q0_WR_ADDR_u_ram_srls_q0_WR_ADDR_HardLink,
+		DOUT => u_ram_srls_q0_DOUT_u_ram_srls_q0_DOUT_HardLink
 	)
 	;
-	FIRModule4x16_TopLevel_TopLevel_u_dsp48_q1 : entity work.FIRModule4x16_TopLevel_TopLevel_u_dsp48_q1
+	FIRModule4x16_TopLevel_TopLevel_u_ram_srls_q1 : entity work.FIRModule4x16_TopLevel_TopLevel_u_ram_srls_q1
 	port map
 	(
-		-- [BEGIN USER MAP FOR u_dsp48_q1]
-		-- [END USER MAP FOR u_dsp48_q1]
+		-- [BEGIN USER MAP FOR u_ram_srls_q1]
+		-- [END USER MAP FOR u_ram_srls_q1]
 		BoardSignals => BoardSignals,
-		CE => u_dsp48_q1_CE_u_dsp48_q1_CE_HardLink,
-		RST => u_dsp48_q1_RST_u_dsp48_q1_RST_HardLink,
-		A => u_dsp48_q1_A_u_dsp48_q1_A_HardLink,
-		B => u_dsp48_q1_B_u_dsp48_q1_B_HardLink,
-		D => u_dsp48_q1_D_u_dsp48_q1_D_HardLink,
-		PCIN => u_dsp48_q1_PCIN_u_dsp48_q1_PCIN_HardLink,
-		OPMODE => u_dsp48_q1_OPMODE_u_dsp48_q1_OPMODE_HardLink,
-		PCOUT => u_dsp48_q1_PCOUT_u_dsp48_q1_PCOUT_HardLink,
-		P => u_dsp48_q1_P_u_dsp48_q1_P_HardLink
+		CE => u_ram_srls_q1_CE_u_ram_srls_q1_CE_HardLink,
+		DIN => u_ram_srls_q1_DIN_u_ram_srls_q1_DIN_HardLink,
+		RD => u_ram_srls_q1_RD_u_ram_srls_q1_RD_HardLink,
+		RD_ADDR => u_ram_srls_q1_RD_ADDR_u_ram_srls_q1_RD_ADDR_HardLink,
+		WR => u_ram_srls_q1_WR_u_ram_srls_q1_WR_HardLink,
+		WR_ADDR => u_ram_srls_q1_WR_ADDR_u_ram_srls_q1_WR_ADDR_HardLink,
+		DOUT => u_ram_srls_q1_DOUT_u_ram_srls_q1_DOUT_HardLink
 	)
 	;
-	FIRModule4x16_TopLevel_TopLevel_u_dsp48_q2 : entity work.FIRModule4x16_TopLevel_TopLevel_u_dsp48_q2
+	FIRModule4x16_TopLevel_TopLevel_u_ram_srls_q2 : entity work.FIRModule4x16_TopLevel_TopLevel_u_ram_srls_q2
 	port map
 	(
-		-- [BEGIN USER MAP FOR u_dsp48_q2]
-		-- [END USER MAP FOR u_dsp48_q2]
+		-- [BEGIN USER MAP FOR u_ram_srls_q2]
+		-- [END USER MAP FOR u_ram_srls_q2]
 		BoardSignals => BoardSignals,
-		CE => u_dsp48_q2_CE_u_dsp48_q2_CE_HardLink,
-		RST => u_dsp48_q2_RST_u_dsp48_q2_RST_HardLink,
-		A => u_dsp48_q2_A_u_dsp48_q2_A_HardLink,
-		B => u_dsp48_q2_B_u_dsp48_q2_B_HardLink,
-		D => u_dsp48_q2_D_u_dsp48_q2_D_HardLink,
-		PCIN => u_dsp48_q2_PCIN_u_dsp48_q2_PCIN_HardLink,
-		OPMODE => u_dsp48_q2_OPMODE_u_dsp48_q2_OPMODE_HardLink,
-		PCOUT => u_dsp48_q2_PCOUT_u_dsp48_q2_PCOUT_HardLink,
-		P => u_dsp48_q2_P_u_dsp48_q2_P_HardLink
+		CE => u_ram_srls_q2_CE_u_ram_srls_q2_CE_HardLink,
+		DIN => u_ram_srls_q2_DIN_u_ram_srls_q2_DIN_HardLink,
+		RD => u_ram_srls_q2_RD_u_ram_srls_q2_RD_HardLink,
+		RD_ADDR => u_ram_srls_q2_RD_ADDR_u_ram_srls_q2_RD_ADDR_HardLink,
+		WR => u_ram_srls_q2_WR_u_ram_srls_q2_WR_HardLink,
+		WR_ADDR => u_ram_srls_q2_WR_ADDR_u_ram_srls_q2_WR_ADDR_HardLink,
+		DOUT => u_ram_srls_q2_DOUT_u_ram_srls_q2_DOUT_HardLink
 	)
 	;
-	FIRModule4x16_TopLevel_TopLevel_u_dsp48_q3 : entity work.FIRModule4x16_TopLevel_TopLevel_u_dsp48_q3
+	FIRModule4x16_TopLevel_TopLevel_u_ram_srls_q3 : entity work.FIRModule4x16_TopLevel_TopLevel_u_ram_srls_q3
 	port map
 	(
-		-- [BEGIN USER MAP FOR u_dsp48_q3]
-		-- [END USER MAP FOR u_dsp48_q3]
+		-- [BEGIN USER MAP FOR u_ram_srls_q3]
+		-- [END USER MAP FOR u_ram_srls_q3]
 		BoardSignals => BoardSignals,
-		CE => u_dsp48_q3_CE_u_dsp48_q3_CE_HardLink,
-		RST => u_dsp48_q3_RST_u_dsp48_q3_RST_HardLink,
-		A => u_dsp48_q3_A_u_dsp48_q3_A_HardLink,
-		B => u_dsp48_q3_B_u_dsp48_q3_B_HardLink,
-		D => u_dsp48_q3_D_u_dsp48_q3_D_HardLink,
-		PCIN => u_dsp48_q3_PCIN_u_dsp48_q3_PCIN_HardLink,
-		OPMODE => u_dsp48_q3_OPMODE_u_dsp48_q3_OPMODE_HardLink,
-		PCOUT => u_dsp48_q3_PCOUT_u_dsp48_q3_PCOUT_HardLink,
-		P => u_dsp48_q3_P_u_dsp48_q3_P_HardLink
+		CE => u_ram_srls_q3_CE_u_ram_srls_q3_CE_HardLink,
+		DIN => u_ram_srls_q3_DIN_u_ram_srls_q3_DIN_HardLink,
+		RD => u_ram_srls_q3_RD_u_ram_srls_q3_RD_HardLink,
+		RD_ADDR => u_ram_srls_q3_RD_ADDR_u_ram_srls_q3_RD_ADDR_HardLink,
+		WR => u_ram_srls_q3_WR_u_ram_srls_q3_WR_HardLink,
+		WR_ADDR => u_ram_srls_q3_WR_ADDR_u_ram_srls_q3_WR_ADDR_HardLink,
+		DOUT => u_ram_srls_q3_DOUT_u_ram_srls_q3_DOUT_HardLink
 	)
 	;
 	FIRModule_L79F37L81T45_Ternary_i <= FIRModule_L80F15T61_WhenTrue_i when (FIRModule_L79F37T58_Expr = '1') else FIRModule_L81F15T45_WhenFalse_i;
@@ -1476,18 +1671,61 @@ begin
 	FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_Ternary <= FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_WhenTrue when (State_mult_reset_mult_reset_dsp(2) = '1') else FIRModule_L225F13L232T14_2_FIRModule_L228F37T129_WhenFalse;
 	FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_Ternary <= FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_WhenTrue when (FIRModule_L225F13L232T14_3_FIRModule_L227F32T56_Expr = '1') else FIRModule_L225F13L232T14_3_FIRModule_L227F32T132_WhenFalse;
 	FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_Ternary <= FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_WhenTrue when (State_mult_reset_mult_reset_dsp(3) = '1') else FIRModule_L225F13L232T14_3_FIRModule_L228F37T129_WhenFalse;
-	process (dsp48_a, dsp48_b, dsp48_d, dsp48_p, FIRModule_L522F9L530T10_FIRModule_L523F13T29_FIRModule_L255F9L264T10_FIRModule_L257F39T63_Index, FIRModule_L522F9L530T10_FIRModule_L523F13T29_FIRModule_L255F9L264T10_FIRModule_L258F39T63_Index, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L273F21T72_Expr, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L274F17L285T18_FIRModule_L276F52T95_Expr, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L274F17L285T18_FIRModule_L277F25T79_Expr, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L274F17L285T18_FIRModule_L282F21L284T22_FIRModule_L283F59T90_Expr, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L287F17L289T18_FIRModule_L288F56T88_Expr, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L308F17T68_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L323F45T70_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L324F52T95_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L332F21T73_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L352F21T38_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L353F17L355T18_FIRModule_L354F53T79_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L357F17L366T18_FIRModule_L358F25T58_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L373F17L375T18_FIRModule_L374F49T74_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L377F52T95_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L389F51T82_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L390F51T82_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L391F48T97_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L392F48T97_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L394F21T49_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L395F17L399T18_FIRModule_L397F25T54_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L395F17L399T18_FIRModule_L398F51T71_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L401F17L405T18_FIRModule_L403F25T72_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L401F17L405T18_FIRModule_L404F51T71_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L407F21T38_Expr, ib_coef, ib_coef_v, ib_do, ib_iq_i, ib_iq_q, ib_iq_v, ramf_dout_i, ramf_dout_q, State_coeff_coef_ram_cnt, State_coeff_coef_ram_wr, State_coeff_coef_wr_cnt_cell, State_coeff_coef_wr_cnt_ram, State_dsp48_dsp48_result, State_dsp48_dsp48_srl, State_filo_filo_addr_dec, State_filo_filo_addr_inc, State_filo_filo_addr_p, State_filo_filo_addr_p1, State_filo_filo_counter_dec, State_filo_filo_counter_inc, State_filo_filo_way, State_fir_fir_areg1, State_fir_fir_breg, State_fir_fir_mreg, State_main_main_c_cnt, State_main_main_c_cnt_masked, State_main_main_c_rd_addr_cmn, State_main_main_d_cnt, State_main_main_d_cnt_masked, State_main_main_d_cnt_rst, State_mult_reset_mult_reset, State_mult_reset_mult_reset_common, State_mult_reset_mult_reset_common_p, State_mult_reset_mult_reset_common_p1, State_mult_reset_mult_reset_common_p2, State_mult_reset_mult_reset_common_p3, State_mult_reset_mult_reset_dsp, State_ob_coef_rdy, State_ob_iq_i, State_ob_iq_q, State_ob_iq_v, State_set_coef_mask, State_set_data_mask, State_set_do, State_set_do_mux)
+	process (dsp48_a, dsp48_b, dsp48_d, dsp48_p, FIRModule_L522F9L530T10_FIRModule_L523F13T29_FIRModule_L255F9L264T10_FIRModule_L257F39T63_Index, FIRModule_L522F9L530T10_FIRModule_L523F13T29_FIRModule_L255F9L264T10_FIRModule_L258F39T63_Index, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L273F21T72_Expr, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L274F17L285T18_FIRModule_L276F52T95_Expr, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L274F17L285T18_FIRModule_L277F25T79_Expr, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L274F17L285T18_FIRModule_L282F21L284T22_FIRModule_L283F59T90_Expr, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L287F17L289T18_FIRModule_L288F56T88_Expr, FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L308F17T68_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L323F45T70_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L324F52T95_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L332F21T73_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L352F21T38_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L353F17L355T18_FIRModule_L354F53T79_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L357F17L366T18_FIRModule_L358F25T58_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L373F17L375T18_FIRModule_L374F49T74_Expr, FIRModule_L522F9L530T10_FIRModule_L525F13T24_FIRModule_L320F9L383T10_FIRModule_L322F13L382T14_FIRModule_L377F52T95_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L389F51T82_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L390F51T82_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L391F48T97_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L392F48T97_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L394F21T49_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L395F17L399T18_FIRModule_L397F25T54_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L395F17L399T18_FIRModule_L398F51T71_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L401F17L405T18_FIRModule_L403F25T72_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L401F17L405T18_FIRModule_L404F51T71_Expr, FIRModule_L522F9L530T10_FIRModule_L526F13T24_FIRModule_L386F9L412T10_FIRModule_L388F13L411T14_FIRModule_L407F21T38_Expr, ib_coef, ib_coef_v, ib_do, ib_iq_i, ib_iq_q, ib_iq_v, ramf_dout_i, ramf_dout_q, State_coeff_coef_ram_cnt, State_coeff_coef_ram_wr, State_coeff_coef_ram_wr_addr, State_coeff_coef_ram_wr_data, State_coeff_coef_wr_cnt_cell, State_coeff_coef_wr_cnt_ram, State_dsp48_dsp48_result, State_dsp48_dsp48_srl, State_filo_filo_addr_dec, State_filo_filo_addr_inc, State_filo_filo_addr_p, State_filo_filo_addr_p1, State_filo_filo_counter_dec, State_filo_filo_counter_inc, State_filo_filo_way, State_filo_fir_dreg, State_fir_fir_adreg, State_fir_fir_areg1, State_fir_fir_areg2, State_fir_fir_breg, State_fir_fir_mreg, State_fir_fir_preg, State_main_main_c_cnt, State_main_main_c_cnt_masked, State_main_main_c_rd_addr, State_main_main_c_rd_addr_cmn, State_main_main_d_addr, State_main_main_d_cnt, State_main_main_d_cnt_masked, State_main_main_d_cnt_rst, State_mult_reset_mult_reset, State_mult_reset_mult_reset_common, State_mult_reset_mult_reset_common_p, State_mult_reset_mult_reset_common_p1, State_mult_reset_mult_reset_common_p2, State_mult_reset_mult_reset_common_p3, State_mult_reset_mult_reset_dsp, State_ob_coef_rdy, State_ob_iq_i, State_ob_iq_q, State_ob_iq_v, State_set_coef_mask, State_set_data_mask, State_set_do, State_set_do_mux)
 	begin
+		for NextState_coeff_coef_ram_wr_addr_Iterator in 0 to 3 loop
+			NextState_coeff_coef_ram_wr_addr(NextState_coeff_coef_ram_wr_addr_Iterator) <= State_coeff_coef_ram_wr_addr(NextState_coeff_coef_ram_wr_addr_Iterator);
+		end loop;
+		for NextState_coeff_coef_ram_wr_data_Iterator in 0 to 3 loop
+			NextState_coeff_coef_ram_wr_data(NextState_coeff_coef_ram_wr_data_Iterator) <= State_coeff_coef_ram_wr_data(NextState_coeff_coef_ram_wr_data_Iterator);
+		end loop;
+		for NextState_dsp48_dsp48_result_Iterator in 0 to 9 loop
+			NextState_dsp48_dsp48_result(NextState_dsp48_dsp48_result_Iterator) <= State_dsp48_dsp48_result(NextState_dsp48_dsp48_result_Iterator);
+		end loop;
+		for NextState_dsp48_dsp48_srl_Iterator in 0 to 6 loop
+			NextState_dsp48_dsp48_srl(NextState_dsp48_dsp48_srl_Iterator) <= State_dsp48_dsp48_srl(NextState_dsp48_dsp48_srl_Iterator);
+		end loop;
+		for NextState_filo_fir_dreg_Iterator in 0 to 3 loop
+			NextState_filo_fir_dreg(NextState_filo_fir_dreg_Iterator) <= State_filo_fir_dreg(NextState_filo_fir_dreg_Iterator);
+		end loop;
+		for NextState_fir_fir_adreg_Iterator in 0 to 3 loop
+			NextState_fir_fir_adreg(NextState_fir_fir_adreg_Iterator) <= State_fir_fir_adreg(NextState_fir_fir_adreg_Iterator);
+		end loop;
+		for NextState_fir_fir_areg1_Iterator in 0 to 3 loop
+			NextState_fir_fir_areg1(NextState_fir_fir_areg1_Iterator) <= State_fir_fir_areg1(NextState_fir_fir_areg1_Iterator);
+		end loop;
+		for NextState_fir_fir_areg2_Iterator in 0 to 3 loop
+			NextState_fir_fir_areg2(NextState_fir_fir_areg2_Iterator) <= State_fir_fir_areg2(NextState_fir_fir_areg2_Iterator);
+		end loop;
+		for NextState_fir_fir_breg_Iterator in 0 to 3 loop
+			NextState_fir_fir_breg(NextState_fir_fir_breg_Iterator) <= State_fir_fir_breg(NextState_fir_fir_breg_Iterator);
+		end loop;
+		for NextState_fir_fir_mreg_Iterator in 0 to 3 loop
+			NextState_fir_fir_mreg(NextState_fir_fir_mreg_Iterator) <= State_fir_fir_mreg(NextState_fir_fir_mreg_Iterator);
+		end loop;
+		for NextState_fir_fir_preg_Iterator in 0 to 3 loop
+			NextState_fir_fir_preg(NextState_fir_fir_preg_Iterator) <= State_fir_fir_preg(NextState_fir_fir_preg_Iterator);
+		end loop;
+		for NextState_main_main_c_rd_addr_Iterator in 0 to 3 loop
+			NextState_main_main_c_rd_addr(NextState_main_main_c_rd_addr_Iterator) <= State_main_main_c_rd_addr(NextState_main_main_c_rd_addr_Iterator);
+		end loop;
+		for NextState_main_main_d_addr_Iterator in 0 to 3 loop
+			NextState_main_main_d_addr(NextState_main_main_d_addr_Iterator) <= State_main_main_d_addr(NextState_main_main_d_addr_Iterator);
+		end loop;
 		for NextState_set_do_mux_Iterator in 0 to 3 loop
 			NextState_set_do_mux(NextState_set_do_mux_Iterator) <= State_set_do_mux(NextState_set_do_mux_Iterator);
 		end loop;
-		NextState_set_do <= State_set_do;
-		NextState_set_coef_mask <= State_set_coef_mask;
-		NextState_set_data_mask <= State_set_data_mask;
+		NextState_coeff_coef_ram_cnt <= State_coeff_coef_ram_cnt;
+		NextState_coeff_coef_ram_wr <= State_coeff_coef_ram_wr;
 		NextState_coeff_coef_wr_cnt_cell <= State_coeff_coef_wr_cnt_cell;
 		NextState_coeff_coef_wr_cnt_ram <= State_coeff_coef_wr_cnt_ram;
-		NextState_coeff_coef_ram_wr <= State_coeff_coef_ram_wr;
-		NextState_coeff_coef_ram_cnt <= State_coeff_coef_ram_cnt;
+		NextState_filo_filo_addr_dec <= State_filo_filo_addr_dec;
+		NextState_filo_filo_addr_inc <= State_filo_filo_addr_inc;
+		NextState_filo_filo_addr_p <= State_filo_filo_addr_p;
+		NextState_filo_filo_addr_p1 <= State_filo_filo_addr_p1;
+		NextState_filo_filo_counter_dec <= State_filo_filo_counter_dec;
+		NextState_filo_filo_counter_inc <= State_filo_filo_counter_inc;
+		NextState_filo_filo_way <= State_filo_filo_way;
 		NextState_main_main_c_cnt <= State_main_main_c_cnt;
 		NextState_main_main_c_cnt_masked <= State_main_main_c_cnt_masked;
 		NextState_main_main_c_rd_addr_cmn <= State_main_main_c_rd_addr_cmn;
@@ -1495,23 +1733,19 @@ begin
 		NextState_main_main_d_cnt_masked <= State_main_main_d_cnt_masked;
 		NextState_main_main_d_cnt_rst <= State_main_main_d_cnt_rst;
 		NextState_mult_reset_mult_reset <= State_mult_reset_mult_reset;
-		NextState_mult_reset_mult_reset_dsp <= State_mult_reset_mult_reset_dsp;
 		NextState_mult_reset_mult_reset_common <= State_mult_reset_mult_reset_common;
 		NextState_mult_reset_mult_reset_common_p <= State_mult_reset_mult_reset_common_p;
 		NextState_mult_reset_mult_reset_common_p1 <= State_mult_reset_mult_reset_common_p1;
 		NextState_mult_reset_mult_reset_common_p2 <= State_mult_reset_mult_reset_common_p2;
 		NextState_mult_reset_mult_reset_common_p3 <= State_mult_reset_mult_reset_common_p3;
-		NextState_filo_filo_way <= State_filo_filo_way;
-		NextState_filo_filo_counter_inc <= State_filo_filo_counter_inc;
-		NextState_filo_filo_counter_dec <= State_filo_filo_counter_dec;
-		NextState_filo_filo_addr_inc <= State_filo_filo_addr_inc;
-		NextState_filo_filo_addr_dec <= State_filo_filo_addr_dec;
-		NextState_filo_filo_addr_p <= State_filo_filo_addr_p;
-		NextState_filo_filo_addr_p1 <= State_filo_filo_addr_p1;
+		NextState_mult_reset_mult_reset_dsp <= State_mult_reset_mult_reset_dsp;
 		NextState_ob_coef_rdy <= State_ob_coef_rdy;
-		NextState_ob_iq_v <= State_ob_iq_v;
 		NextState_ob_iq_i <= State_ob_iq_i;
 		NextState_ob_iq_q <= State_ob_iq_q;
+		NextState_ob_iq_v <= State_ob_iq_v;
+		NextState_set_coef_mask <= State_set_coef_mask;
+		NextState_set_data_mask <= State_set_data_mask;
+		NextState_set_do <= State_set_do;
 		NextState_set_do <= ib_do;
 		NextState_set_coef_mask <= FIRModule_L522F9L530T10_FIRModule_L523F13T29_FIRModule_L255F9L264T10_FIRModule_L257F39T63_Index;
 		NextState_set_data_mask <= FIRModule_L522F9L530T10_FIRModule_L523F13T29_FIRModule_L255F9L264T10_FIRModule_L258F39T63_Index;
@@ -1789,15 +2023,15 @@ begin
 		Inputs_iCOEF_V <= iCOEF_V;
 		Inputs_iCOEFF <= iCOEFF;
 		Inputs_iDO <= iDO;
-		Inputs_iIQ_V <= iIQ_V;
 		Inputs_iIQ_i <= iIQ_i;
 		Inputs_iIQ_q <= iIQ_q;
-		ib_coef_v <= Inputs_iCOEF_V;
+		Inputs_iIQ_V <= iIQ_V;
 		ib_coef <= Inputs_iCOEFF;
+		ib_coef_v <= Inputs_iCOEF_V;
 		ib_do <= Inputs_iDO;
-		ib_iq_v <= Inputs_iIQ_V;
 		ib_iq_i <= Inputs_iIQ_i;
 		ib_iq_q <= Inputs_iIQ_q;
+		ib_iq_v <= Inputs_iIQ_V;
 		ramc_dout(0) <= u_ram_coef0_DOUT;
 		ramc_dout(1) <= u_ram_coef1_DOUT;
 		ramc_dout(2) <= u_ram_coef2_DOUT;
@@ -1811,29 +2045,29 @@ begin
 		ramf_dout_i <= u_ram_filo_i_DOUT;
 		ramf_dout_q <= u_ram_filo_q_DOUT;
 		u_ram_coef0_CE <= FIRModule_L104F13L115T14_0_FIRModule_L108F26T30_Expr;
-		u_ram_coef0_WR <= State_coeff_coef_ram_wr(0);
-		u_ram_coef0_WR_ADDR <= State_coeff_coef_ram_wr_addr(0);
 		u_ram_coef0_DIN <= State_coeff_coef_ram_wr_data(0);
 		u_ram_coef0_RD <= ib_iq_v;
 		u_ram_coef0_RD_ADDR <= State_main_main_c_rd_addr(0);
+		u_ram_coef0_WR <= State_coeff_coef_ram_wr(0);
+		u_ram_coef0_WR_ADDR <= State_coeff_coef_ram_wr_addr(0);
 		u_ram_coef1_CE <= FIRModule_L104F13L115T14_1_FIRModule_L108F26T30_Expr;
-		u_ram_coef1_WR <= State_coeff_coef_ram_wr(1);
-		u_ram_coef1_WR_ADDR <= State_coeff_coef_ram_wr_addr(1);
 		u_ram_coef1_DIN <= State_coeff_coef_ram_wr_data(1);
 		u_ram_coef1_RD <= ib_iq_v;
 		u_ram_coef1_RD_ADDR <= State_main_main_c_rd_addr(1);
+		u_ram_coef1_WR <= State_coeff_coef_ram_wr(1);
+		u_ram_coef1_WR_ADDR <= State_coeff_coef_ram_wr_addr(1);
 		u_ram_coef2_CE <= FIRModule_L104F13L115T14_2_FIRModule_L108F26T30_Expr;
-		u_ram_coef2_WR <= State_coeff_coef_ram_wr(2);
-		u_ram_coef2_WR_ADDR <= State_coeff_coef_ram_wr_addr(2);
 		u_ram_coef2_DIN <= State_coeff_coef_ram_wr_data(2);
 		u_ram_coef2_RD <= ib_iq_v;
 		u_ram_coef2_RD_ADDR <= State_main_main_c_rd_addr(2);
+		u_ram_coef2_WR <= State_coeff_coef_ram_wr(2);
+		u_ram_coef2_WR_ADDR <= State_coeff_coef_ram_wr_addr(2);
 		u_ram_coef3_CE <= FIRModule_L104F13L115T14_3_FIRModule_L108F26T30_Expr;
-		u_ram_coef3_WR <= State_coeff_coef_ram_wr(3);
-		u_ram_coef3_WR_ADDR <= State_coeff_coef_ram_wr_addr(3);
 		u_ram_coef3_DIN <= State_coeff_coef_ram_wr_data(3);
 		u_ram_coef3_RD <= ib_iq_v;
 		u_ram_coef3_RD_ADDR <= State_main_main_c_rd_addr(3);
+		u_ram_coef3_WR <= State_coeff_coef_ram_wr(3);
+		u_ram_coef3_WR_ADDR <= State_coeff_coef_ram_wr_addr(3);
 		ramd_dout(0)(15 downto 0) <= u_ram_srls_i0_DOUT;
 		ramd_dout(0)(31 downto 16) <= u_ram_srls_q0_DOUT;
 		ramd_dout(1)(15 downto 0) <= u_ram_srls_i1_DOUT;
@@ -1848,121 +2082,121 @@ begin
 		ramd_din(2) <= FIRModule_L125F13L128T14_2_FIRModule_L127F31T47_Index;
 		ramd_din(3) <= FIRModule_L125F13L128T14_3_FIRModule_L127F31T47_Index;
 		u_ram_srls_i0_CE <= FIRModule_L130F13L141T14_0_FIRModule_L134F26T30_Expr;
-		u_ram_srls_i0_WR <= ib_iq_v;
-		u_ram_srls_i0_WR_ADDR <= State_main_main_d_addr(0);
 		u_ram_srls_i0_DIN <= ramd_din(0)(15 downto 0);
 		u_ram_srls_i0_RD <= ib_iq_v;
 		u_ram_srls_i0_RD_ADDR <= State_main_main_d_addr(0);
+		u_ram_srls_i0_WR <= ib_iq_v;
+		u_ram_srls_i0_WR_ADDR <= State_main_main_d_addr(0);
 		u_ram_srls_i1_CE <= FIRModule_L130F13L141T14_1_FIRModule_L134F26T30_Expr;
-		u_ram_srls_i1_WR <= ib_iq_v;
-		u_ram_srls_i1_WR_ADDR <= State_main_main_d_addr(1);
 		u_ram_srls_i1_DIN <= ramd_din(1)(15 downto 0);
 		u_ram_srls_i1_RD <= ib_iq_v;
 		u_ram_srls_i1_RD_ADDR <= State_main_main_d_addr(1);
+		u_ram_srls_i1_WR <= ib_iq_v;
+		u_ram_srls_i1_WR_ADDR <= State_main_main_d_addr(1);
 		u_ram_srls_i2_CE <= FIRModule_L130F13L141T14_2_FIRModule_L134F26T30_Expr;
-		u_ram_srls_i2_WR <= ib_iq_v;
-		u_ram_srls_i2_WR_ADDR <= State_main_main_d_addr(2);
 		u_ram_srls_i2_DIN <= ramd_din(2)(15 downto 0);
 		u_ram_srls_i2_RD <= ib_iq_v;
 		u_ram_srls_i2_RD_ADDR <= State_main_main_d_addr(2);
+		u_ram_srls_i2_WR <= ib_iq_v;
+		u_ram_srls_i2_WR_ADDR <= State_main_main_d_addr(2);
 		u_ram_srls_i3_CE <= FIRModule_L130F13L141T14_3_FIRModule_L134F26T30_Expr;
-		u_ram_srls_i3_WR <= ib_iq_v;
-		u_ram_srls_i3_WR_ADDR <= State_main_main_d_addr(3);
 		u_ram_srls_i3_DIN <= ramd_din(3)(15 downto 0);
 		u_ram_srls_i3_RD <= ib_iq_v;
 		u_ram_srls_i3_RD_ADDR <= State_main_main_d_addr(3);
+		u_ram_srls_i3_WR <= ib_iq_v;
+		u_ram_srls_i3_WR_ADDR <= State_main_main_d_addr(3);
 		u_ram_srls_q0_CE <= FIRModule_L143F13L154T14_0_FIRModule_L147F26T30_Expr;
-		u_ram_srls_q0_WR <= ib_iq_v;
-		u_ram_srls_q0_WR_ADDR <= State_main_main_d_addr(0);
 		u_ram_srls_q0_DIN <= ramd_din(0)(31 downto 16);
 		u_ram_srls_q0_RD <= ib_iq_v;
 		u_ram_srls_q0_RD_ADDR <= State_main_main_d_addr(0);
+		u_ram_srls_q0_WR <= ib_iq_v;
+		u_ram_srls_q0_WR_ADDR <= State_main_main_d_addr(0);
 		u_ram_srls_q1_CE <= FIRModule_L143F13L154T14_1_FIRModule_L147F26T30_Expr;
-		u_ram_srls_q1_WR <= ib_iq_v;
-		u_ram_srls_q1_WR_ADDR <= State_main_main_d_addr(1);
 		u_ram_srls_q1_DIN <= ramd_din(1)(31 downto 16);
 		u_ram_srls_q1_RD <= ib_iq_v;
 		u_ram_srls_q1_RD_ADDR <= State_main_main_d_addr(1);
+		u_ram_srls_q1_WR <= ib_iq_v;
+		u_ram_srls_q1_WR_ADDR <= State_main_main_d_addr(1);
 		u_ram_srls_q2_CE <= FIRModule_L143F13L154T14_2_FIRModule_L147F26T30_Expr;
-		u_ram_srls_q2_WR <= ib_iq_v;
-		u_ram_srls_q2_WR_ADDR <= State_main_main_d_addr(2);
 		u_ram_srls_q2_DIN <= ramd_din(2)(31 downto 16);
 		u_ram_srls_q2_RD <= ib_iq_v;
 		u_ram_srls_q2_RD_ADDR <= State_main_main_d_addr(2);
+		u_ram_srls_q2_WR <= ib_iq_v;
+		u_ram_srls_q2_WR_ADDR <= State_main_main_d_addr(2);
 		u_ram_srls_q3_CE <= FIRModule_L143F13L154T14_3_FIRModule_L147F26T30_Expr;
-		u_ram_srls_q3_WR <= ib_iq_v;
-		u_ram_srls_q3_WR_ADDR <= State_main_main_d_addr(3);
 		u_ram_srls_q3_DIN <= ramd_din(3)(31 downto 16);
 		u_ram_srls_q3_RD <= ib_iq_v;
 		u_ram_srls_q3_RD_ADDR <= State_main_main_d_addr(3);
+		u_ram_srls_q3_WR <= ib_iq_v;
+		u_ram_srls_q3_WR_ADDR <= State_main_main_d_addr(3);
 		u_ram_filo_i_CE <= FIRModule_L160F22T26_Expr;
-		u_ram_filo_i_WR <= ib_iq_v;
-		u_ram_filo_i_WR_ADDR <= State_filo_filo_addr_p;
 		u_ram_filo_i_DIN <= ramf_din_i;
 		u_ram_filo_i_RD <= ib_iq_v;
 		u_ram_filo_i_RD_ADDR <= State_filo_filo_addr_p;
+		u_ram_filo_i_WR <= ib_iq_v;
+		u_ram_filo_i_WR_ADDR <= State_filo_filo_addr_p;
 		u_ram_filo_q_CE <= FIRModule_L170F22T26_Expr;
-		u_ram_filo_q_WR <= ib_iq_v;
-		u_ram_filo_q_WR_ADDR <= State_filo_filo_addr_p;
 		u_ram_filo_q_DIN <= ramf_din_q;
 		u_ram_filo_q_RD <= ib_iq_v;
 		u_ram_filo_q_RD_ADDR <= State_filo_filo_addr_p;
-		u_dsp48_i0_CE <= ib_iq_v;
-		u_dsp48_i0_RST <= FIRModule_L179F13L202T14_0_FIRModule_L184F27T32_Expr;
+		u_ram_filo_q_WR <= ib_iq_v;
+		u_ram_filo_q_WR_ADDR <= State_filo_filo_addr_p;
 		u_dsp48_i0_A <= dsp48_a(0)(29 downto 0);
 		u_dsp48_i0_B <= dsp48_b(0)(17 downto 0);
+		u_dsp48_i0_CE <= ib_iq_v;
 		u_dsp48_i0_D <= dsp48_d(0)(24 downto 0);
+		u_dsp48_i0_OPMODE <= dsp48_opmode(0)(6 downto 4);
 		u_dsp48_i0_PCIN <= dsp48_pcin(0)(47 downto 0);
-		u_dsp48_i0_OPMODE <= dsp48_opmode(0)(6 downto 0)(6 downto 4);
-		u_dsp48_q0_CE <= ib_iq_v;
-		u_dsp48_q0_RST <= FIRModule_L179F13L202T14_0_FIRModule_L195F27T32_Expr;
+		u_dsp48_i0_RST <= FIRModule_L179F13L202T14_0_FIRModule_L184F27T32_Expr;
 		u_dsp48_q0_A <= dsp48_a(0)(59 downto 30);
 		u_dsp48_q0_B <= dsp48_b(0)(35 downto 18);
+		u_dsp48_q0_CE <= ib_iq_v;
 		u_dsp48_q0_D <= dsp48_d(0)(49 downto 25);
+		u_dsp48_q0_OPMODE <= dsp48_opmode(0)(13 downto 11);
 		u_dsp48_q0_PCIN <= dsp48_pcin(0)(95 downto 48);
-		u_dsp48_q0_OPMODE <= dsp48_opmode(0)(13 downto 7)(6 downto 4);
-		u_dsp48_i1_CE <= ib_iq_v;
-		u_dsp48_i1_RST <= FIRModule_L179F13L202T14_1_FIRModule_L184F27T32_Expr;
+		u_dsp48_q0_RST <= FIRModule_L179F13L202T14_0_FIRModule_L195F27T32_Expr;
 		u_dsp48_i1_A <= dsp48_a(1)(29 downto 0);
 		u_dsp48_i1_B <= dsp48_b(1)(17 downto 0);
+		u_dsp48_i1_CE <= ib_iq_v;
 		u_dsp48_i1_D <= dsp48_d(1)(24 downto 0);
+		u_dsp48_i1_OPMODE <= dsp48_opmode(1)(6 downto 4);
 		u_dsp48_i1_PCIN <= dsp48_pcin(1)(47 downto 0);
-		u_dsp48_i1_OPMODE <= dsp48_opmode(1)(6 downto 0)(6 downto 4);
-		u_dsp48_q1_CE <= ib_iq_v;
-		u_dsp48_q1_RST <= FIRModule_L179F13L202T14_1_FIRModule_L195F27T32_Expr;
+		u_dsp48_i1_RST <= FIRModule_L179F13L202T14_1_FIRModule_L184F27T32_Expr;
 		u_dsp48_q1_A <= dsp48_a(1)(59 downto 30);
 		u_dsp48_q1_B <= dsp48_b(1)(35 downto 18);
+		u_dsp48_q1_CE <= ib_iq_v;
 		u_dsp48_q1_D <= dsp48_d(1)(49 downto 25);
+		u_dsp48_q1_OPMODE <= dsp48_opmode(1)(13 downto 11);
 		u_dsp48_q1_PCIN <= dsp48_pcin(1)(95 downto 48);
-		u_dsp48_q1_OPMODE <= dsp48_opmode(1)(13 downto 7)(6 downto 4);
-		u_dsp48_i2_CE <= ib_iq_v;
-		u_dsp48_i2_RST <= FIRModule_L179F13L202T14_2_FIRModule_L184F27T32_Expr;
+		u_dsp48_q1_RST <= FIRModule_L179F13L202T14_1_FIRModule_L195F27T32_Expr;
 		u_dsp48_i2_A <= dsp48_a(2)(29 downto 0);
 		u_dsp48_i2_B <= dsp48_b(2)(17 downto 0);
+		u_dsp48_i2_CE <= ib_iq_v;
 		u_dsp48_i2_D <= dsp48_d(2)(24 downto 0);
+		u_dsp48_i2_OPMODE <= dsp48_opmode(2)(6 downto 4);
 		u_dsp48_i2_PCIN <= dsp48_pcin(2)(47 downto 0);
-		u_dsp48_i2_OPMODE <= dsp48_opmode(2)(6 downto 0)(6 downto 4);
-		u_dsp48_q2_CE <= ib_iq_v;
-		u_dsp48_q2_RST <= FIRModule_L179F13L202T14_2_FIRModule_L195F27T32_Expr;
+		u_dsp48_i2_RST <= FIRModule_L179F13L202T14_2_FIRModule_L184F27T32_Expr;
 		u_dsp48_q2_A <= dsp48_a(2)(59 downto 30);
 		u_dsp48_q2_B <= dsp48_b(2)(35 downto 18);
+		u_dsp48_q2_CE <= ib_iq_v;
 		u_dsp48_q2_D <= dsp48_d(2)(49 downto 25);
+		u_dsp48_q2_OPMODE <= dsp48_opmode(2)(13 downto 11);
 		u_dsp48_q2_PCIN <= dsp48_pcin(2)(95 downto 48);
-		u_dsp48_q2_OPMODE <= dsp48_opmode(2)(13 downto 7)(6 downto 4);
-		u_dsp48_i3_CE <= ib_iq_v;
-		u_dsp48_i3_RST <= FIRModule_L179F13L202T14_3_FIRModule_L184F27T32_Expr;
+		u_dsp48_q2_RST <= FIRModule_L179F13L202T14_2_FIRModule_L195F27T32_Expr;
 		u_dsp48_i3_A <= dsp48_a(3)(29 downto 0);
 		u_dsp48_i3_B <= dsp48_b(3)(17 downto 0);
+		u_dsp48_i3_CE <= ib_iq_v;
 		u_dsp48_i3_D <= dsp48_d(3)(24 downto 0);
+		u_dsp48_i3_OPMODE <= dsp48_opmode(3)(6 downto 4);
 		u_dsp48_i3_PCIN <= dsp48_pcin(3)(47 downto 0);
-		u_dsp48_i3_OPMODE <= dsp48_opmode(3)(6 downto 0)(6 downto 4);
-		u_dsp48_q3_CE <= ib_iq_v;
-		u_dsp48_q3_RST <= FIRModule_L179F13L202T14_3_FIRModule_L195F27T32_Expr;
+		u_dsp48_i3_RST <= FIRModule_L179F13L202T14_3_FIRModule_L184F27T32_Expr;
 		u_dsp48_q3_A <= dsp48_a(3)(59 downto 30);
 		u_dsp48_q3_B <= dsp48_b(3)(35 downto 18);
+		u_dsp48_q3_CE <= ib_iq_v;
 		u_dsp48_q3_D <= dsp48_d(3)(49 downto 25);
+		u_dsp48_q3_OPMODE <= dsp48_opmode(3)(13 downto 11);
 		u_dsp48_q3_PCIN <= dsp48_pcin(3)(95 downto 48);
-		u_dsp48_q3_OPMODE <= dsp48_opmode(3)(13 downto 7)(6 downto 4);
+		u_dsp48_q3_RST <= FIRModule_L179F13L202T14_3_FIRModule_L195F27T32_Expr;
 		FIRModule_L205F28T44_FIRModule_L97F58T73_SignChange <= signed(ib_iq_i);
 		FIRModule_L205F28T44_FIRModule_L97F58T87_Resize(29 downto 16) <= (others => FIRModule_L205F28T44_FIRModule_L97F58T73_SignChange(15));
 		FIRModule_L205F28T44_FIRModule_L97F58T87_Resize(15 downto 0) <= FIRModule_L205F28T44_FIRModule_L97F58T73_SignChange;
@@ -2184,179 +2418,182 @@ begin
 		FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L274F17L285T18_FIRModule_L276F52T91_Resize(15 downto 3) <= (others => '0');
 		FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L272F13L290T14_FIRModule_L274F17L285T18_FIRModule_L276F52T91_Resize(2 downto 0) <= State_coeff_coef_wr_cnt_ram;
 		oCOEF_RDY <= State_ob_coef_rdy;
-		oIQ_V <= State_ob_iq_v;
 		oIQ_i <= State_ob_iq_i;
 		oIQ_q <= State_ob_iq_q;
+		oIQ_V <= State_ob_iq_v;
+		u_dsp48_i0_A_u_dsp48_i0_A_HardLink <= u_dsp48_i0_A;
+		u_dsp48_i0_B_u_dsp48_i0_B_HardLink <= u_dsp48_i0_B;
+		u_dsp48_i0_CE_u_dsp48_i0_CE_HardLink <= u_dsp48_i0_CE;
+		u_dsp48_i0_D_u_dsp48_i0_D_HardLink <= u_dsp48_i0_D;
+		u_dsp48_i0_OPMODE_u_dsp48_i0_OPMODE_HardLink <= u_dsp48_i0_OPMODE;
+		u_dsp48_i0_PCIN_u_dsp48_i0_PCIN_HardLink <= u_dsp48_i0_PCIN;
+		u_dsp48_i0_RST_u_dsp48_i0_RST_HardLink <= u_dsp48_i0_RST;
+		u_dsp48_i0_P <= u_dsp48_i0_P_u_dsp48_i0_P_HardLink;
+		u_dsp48_i0_PCOUT <= u_dsp48_i0_PCOUT_u_dsp48_i0_PCOUT_HardLink;
+		u_dsp48_i1_A_u_dsp48_i1_A_HardLink <= u_dsp48_i1_A;
+		u_dsp48_i1_B_u_dsp48_i1_B_HardLink <= u_dsp48_i1_B;
+		u_dsp48_i1_CE_u_dsp48_i1_CE_HardLink <= u_dsp48_i1_CE;
+		u_dsp48_i1_D_u_dsp48_i1_D_HardLink <= u_dsp48_i1_D;
+		u_dsp48_i1_OPMODE_u_dsp48_i1_OPMODE_HardLink <= u_dsp48_i1_OPMODE;
+		u_dsp48_i1_PCIN_u_dsp48_i1_PCIN_HardLink <= u_dsp48_i1_PCIN;
+		u_dsp48_i1_RST_u_dsp48_i1_RST_HardLink <= u_dsp48_i1_RST;
+		u_dsp48_i1_P <= u_dsp48_i1_P_u_dsp48_i1_P_HardLink;
+		u_dsp48_i1_PCOUT <= u_dsp48_i1_PCOUT_u_dsp48_i1_PCOUT_HardLink;
+		u_dsp48_i2_A_u_dsp48_i2_A_HardLink <= u_dsp48_i2_A;
+		u_dsp48_i2_B_u_dsp48_i2_B_HardLink <= u_dsp48_i2_B;
+		u_dsp48_i2_CE_u_dsp48_i2_CE_HardLink <= u_dsp48_i2_CE;
+		u_dsp48_i2_D_u_dsp48_i2_D_HardLink <= u_dsp48_i2_D;
+		u_dsp48_i2_OPMODE_u_dsp48_i2_OPMODE_HardLink <= u_dsp48_i2_OPMODE;
+		u_dsp48_i2_PCIN_u_dsp48_i2_PCIN_HardLink <= u_dsp48_i2_PCIN;
+		u_dsp48_i2_RST_u_dsp48_i2_RST_HardLink <= u_dsp48_i2_RST;
+		u_dsp48_i2_P <= u_dsp48_i2_P_u_dsp48_i2_P_HardLink;
+		u_dsp48_i2_PCOUT <= u_dsp48_i2_PCOUT_u_dsp48_i2_PCOUT_HardLink;
+		u_dsp48_i3_A_u_dsp48_i3_A_HardLink <= u_dsp48_i3_A;
+		u_dsp48_i3_B_u_dsp48_i3_B_HardLink <= u_dsp48_i3_B;
+		u_dsp48_i3_CE_u_dsp48_i3_CE_HardLink <= u_dsp48_i3_CE;
+		u_dsp48_i3_D_u_dsp48_i3_D_HardLink <= u_dsp48_i3_D;
+		u_dsp48_i3_OPMODE_u_dsp48_i3_OPMODE_HardLink <= u_dsp48_i3_OPMODE;
+		u_dsp48_i3_PCIN_u_dsp48_i3_PCIN_HardLink <= u_dsp48_i3_PCIN;
+		u_dsp48_i3_RST_u_dsp48_i3_RST_HardLink <= u_dsp48_i3_RST;
+		u_dsp48_i3_P <= u_dsp48_i3_P_u_dsp48_i3_P_HardLink;
+		u_dsp48_i3_PCOUT <= u_dsp48_i3_PCOUT_u_dsp48_i3_PCOUT_HardLink;
+		u_dsp48_q0_A_u_dsp48_q0_A_HardLink <= u_dsp48_q0_A;
+		u_dsp48_q0_B_u_dsp48_q0_B_HardLink <= u_dsp48_q0_B;
+		u_dsp48_q0_CE_u_dsp48_q0_CE_HardLink <= u_dsp48_q0_CE;
+		u_dsp48_q0_D_u_dsp48_q0_D_HardLink <= u_dsp48_q0_D;
+		u_dsp48_q0_OPMODE_u_dsp48_q0_OPMODE_HardLink <= u_dsp48_q0_OPMODE;
+		u_dsp48_q0_PCIN_u_dsp48_q0_PCIN_HardLink <= u_dsp48_q0_PCIN;
+		u_dsp48_q0_RST_u_dsp48_q0_RST_HardLink <= u_dsp48_q0_RST;
+		u_dsp48_q0_P <= u_dsp48_q0_P_u_dsp48_q0_P_HardLink;
+		u_dsp48_q0_PCOUT <= u_dsp48_q0_PCOUT_u_dsp48_q0_PCOUT_HardLink;
+		u_dsp48_q1_A_u_dsp48_q1_A_HardLink <= u_dsp48_q1_A;
+		u_dsp48_q1_B_u_dsp48_q1_B_HardLink <= u_dsp48_q1_B;
+		u_dsp48_q1_CE_u_dsp48_q1_CE_HardLink <= u_dsp48_q1_CE;
+		u_dsp48_q1_D_u_dsp48_q1_D_HardLink <= u_dsp48_q1_D;
+		u_dsp48_q1_OPMODE_u_dsp48_q1_OPMODE_HardLink <= u_dsp48_q1_OPMODE;
+		u_dsp48_q1_PCIN_u_dsp48_q1_PCIN_HardLink <= u_dsp48_q1_PCIN;
+		u_dsp48_q1_RST_u_dsp48_q1_RST_HardLink <= u_dsp48_q1_RST;
+		u_dsp48_q1_P <= u_dsp48_q1_P_u_dsp48_q1_P_HardLink;
+		u_dsp48_q1_PCOUT <= u_dsp48_q1_PCOUT_u_dsp48_q1_PCOUT_HardLink;
+		u_dsp48_q2_A_u_dsp48_q2_A_HardLink <= u_dsp48_q2_A;
+		u_dsp48_q2_B_u_dsp48_q2_B_HardLink <= u_dsp48_q2_B;
+		u_dsp48_q2_CE_u_dsp48_q2_CE_HardLink <= u_dsp48_q2_CE;
+		u_dsp48_q2_D_u_dsp48_q2_D_HardLink <= u_dsp48_q2_D;
+		u_dsp48_q2_OPMODE_u_dsp48_q2_OPMODE_HardLink <= u_dsp48_q2_OPMODE;
+		u_dsp48_q2_PCIN_u_dsp48_q2_PCIN_HardLink <= u_dsp48_q2_PCIN;
+		u_dsp48_q2_RST_u_dsp48_q2_RST_HardLink <= u_dsp48_q2_RST;
+		u_dsp48_q2_P <= u_dsp48_q2_P_u_dsp48_q2_P_HardLink;
+		u_dsp48_q2_PCOUT <= u_dsp48_q2_PCOUT_u_dsp48_q2_PCOUT_HardLink;
+		u_dsp48_q3_A_u_dsp48_q3_A_HardLink <= u_dsp48_q3_A;
+		u_dsp48_q3_B_u_dsp48_q3_B_HardLink <= u_dsp48_q3_B;
+		u_dsp48_q3_CE_u_dsp48_q3_CE_HardLink <= u_dsp48_q3_CE;
+		u_dsp48_q3_D_u_dsp48_q3_D_HardLink <= u_dsp48_q3_D;
+		u_dsp48_q3_OPMODE_u_dsp48_q3_OPMODE_HardLink <= u_dsp48_q3_OPMODE;
+		u_dsp48_q3_PCIN_u_dsp48_q3_PCIN_HardLink <= u_dsp48_q3_PCIN;
+		u_dsp48_q3_RST_u_dsp48_q3_RST_HardLink <= u_dsp48_q3_RST;
+		u_dsp48_q3_P <= u_dsp48_q3_P_u_dsp48_q3_P_HardLink;
+		u_dsp48_q3_PCOUT <= u_dsp48_q3_PCOUT_u_dsp48_q3_PCOUT_HardLink;
 		u_ram_coef0_CE_u_ram_coef0_CE_HardLink <= u_ram_coef0_CE;
-		u_ram_coef0_WR_u_ram_coef0_WR_HardLink <= u_ram_coef0_WR;
-		u_ram_coef0_WR_ADDR_u_ram_coef0_WR_ADDR_HardLink <= u_ram_coef0_WR_ADDR;
 		u_ram_coef0_DIN_u_ram_coef0_DIN_HardLink <= u_ram_coef0_DIN;
 		u_ram_coef0_RD_u_ram_coef0_RD_HardLink <= u_ram_coef0_RD;
 		u_ram_coef0_RD_ADDR_u_ram_coef0_RD_ADDR_HardLink <= u_ram_coef0_RD_ADDR;
+		u_ram_coef0_WR_u_ram_coef0_WR_HardLink <= u_ram_coef0_WR;
+		u_ram_coef0_WR_ADDR_u_ram_coef0_WR_ADDR_HardLink <= u_ram_coef0_WR_ADDR;
 		u_ram_coef0_DOUT <= u_ram_coef0_DOUT_u_ram_coef0_DOUT_HardLink;
 		u_ram_coef1_CE_u_ram_coef1_CE_HardLink <= u_ram_coef1_CE;
-		u_ram_coef1_WR_u_ram_coef1_WR_HardLink <= u_ram_coef1_WR;
-		u_ram_coef1_WR_ADDR_u_ram_coef1_WR_ADDR_HardLink <= u_ram_coef1_WR_ADDR;
 		u_ram_coef1_DIN_u_ram_coef1_DIN_HardLink <= u_ram_coef1_DIN;
 		u_ram_coef1_RD_u_ram_coef1_RD_HardLink <= u_ram_coef1_RD;
 		u_ram_coef1_RD_ADDR_u_ram_coef1_RD_ADDR_HardLink <= u_ram_coef1_RD_ADDR;
+		u_ram_coef1_WR_u_ram_coef1_WR_HardLink <= u_ram_coef1_WR;
+		u_ram_coef1_WR_ADDR_u_ram_coef1_WR_ADDR_HardLink <= u_ram_coef1_WR_ADDR;
 		u_ram_coef1_DOUT <= u_ram_coef1_DOUT_u_ram_coef1_DOUT_HardLink;
 		u_ram_coef2_CE_u_ram_coef2_CE_HardLink <= u_ram_coef2_CE;
-		u_ram_coef2_WR_u_ram_coef2_WR_HardLink <= u_ram_coef2_WR;
-		u_ram_coef2_WR_ADDR_u_ram_coef2_WR_ADDR_HardLink <= u_ram_coef2_WR_ADDR;
 		u_ram_coef2_DIN_u_ram_coef2_DIN_HardLink <= u_ram_coef2_DIN;
 		u_ram_coef2_RD_u_ram_coef2_RD_HardLink <= u_ram_coef2_RD;
 		u_ram_coef2_RD_ADDR_u_ram_coef2_RD_ADDR_HardLink <= u_ram_coef2_RD_ADDR;
+		u_ram_coef2_WR_u_ram_coef2_WR_HardLink <= u_ram_coef2_WR;
+		u_ram_coef2_WR_ADDR_u_ram_coef2_WR_ADDR_HardLink <= u_ram_coef2_WR_ADDR;
 		u_ram_coef2_DOUT <= u_ram_coef2_DOUT_u_ram_coef2_DOUT_HardLink;
 		u_ram_coef3_CE_u_ram_coef3_CE_HardLink <= u_ram_coef3_CE;
-		u_ram_coef3_WR_u_ram_coef3_WR_HardLink <= u_ram_coef3_WR;
-		u_ram_coef3_WR_ADDR_u_ram_coef3_WR_ADDR_HardLink <= u_ram_coef3_WR_ADDR;
 		u_ram_coef3_DIN_u_ram_coef3_DIN_HardLink <= u_ram_coef3_DIN;
 		u_ram_coef3_RD_u_ram_coef3_RD_HardLink <= u_ram_coef3_RD;
 		u_ram_coef3_RD_ADDR_u_ram_coef3_RD_ADDR_HardLink <= u_ram_coef3_RD_ADDR;
+		u_ram_coef3_WR_u_ram_coef3_WR_HardLink <= u_ram_coef3_WR;
+		u_ram_coef3_WR_ADDR_u_ram_coef3_WR_ADDR_HardLink <= u_ram_coef3_WR_ADDR;
 		u_ram_coef3_DOUT <= u_ram_coef3_DOUT_u_ram_coef3_DOUT_HardLink;
-		u_ram_srls_i0_CE_u_ram_srls_i0_CE_HardLink <= u_ram_srls_i0_CE;
-		u_ram_srls_i0_WR_u_ram_srls_i0_WR_HardLink <= u_ram_srls_i0_WR;
-		u_ram_srls_i0_WR_ADDR_u_ram_srls_i0_WR_ADDR_HardLink <= u_ram_srls_i0_WR_ADDR;
-		u_ram_srls_i0_DIN_u_ram_srls_i0_DIN_HardLink <= u_ram_srls_i0_DIN;
-		u_ram_srls_i0_RD_u_ram_srls_i0_RD_HardLink <= u_ram_srls_i0_RD;
-		u_ram_srls_i0_RD_ADDR_u_ram_srls_i0_RD_ADDR_HardLink <= u_ram_srls_i0_RD_ADDR;
-		u_ram_srls_i0_DOUT <= u_ram_srls_i0_DOUT_u_ram_srls_i0_DOUT_HardLink;
-		u_ram_srls_i1_CE_u_ram_srls_i1_CE_HardLink <= u_ram_srls_i1_CE;
-		u_ram_srls_i1_WR_u_ram_srls_i1_WR_HardLink <= u_ram_srls_i1_WR;
-		u_ram_srls_i1_WR_ADDR_u_ram_srls_i1_WR_ADDR_HardLink <= u_ram_srls_i1_WR_ADDR;
-		u_ram_srls_i1_DIN_u_ram_srls_i1_DIN_HardLink <= u_ram_srls_i1_DIN;
-		u_ram_srls_i1_RD_u_ram_srls_i1_RD_HardLink <= u_ram_srls_i1_RD;
-		u_ram_srls_i1_RD_ADDR_u_ram_srls_i1_RD_ADDR_HardLink <= u_ram_srls_i1_RD_ADDR;
-		u_ram_srls_i1_DOUT <= u_ram_srls_i1_DOUT_u_ram_srls_i1_DOUT_HardLink;
-		u_ram_srls_i2_CE_u_ram_srls_i2_CE_HardLink <= u_ram_srls_i2_CE;
-		u_ram_srls_i2_WR_u_ram_srls_i2_WR_HardLink <= u_ram_srls_i2_WR;
-		u_ram_srls_i2_WR_ADDR_u_ram_srls_i2_WR_ADDR_HardLink <= u_ram_srls_i2_WR_ADDR;
-		u_ram_srls_i2_DIN_u_ram_srls_i2_DIN_HardLink <= u_ram_srls_i2_DIN;
-		u_ram_srls_i2_RD_u_ram_srls_i2_RD_HardLink <= u_ram_srls_i2_RD;
-		u_ram_srls_i2_RD_ADDR_u_ram_srls_i2_RD_ADDR_HardLink <= u_ram_srls_i2_RD_ADDR;
-		u_ram_srls_i2_DOUT <= u_ram_srls_i2_DOUT_u_ram_srls_i2_DOUT_HardLink;
-		u_ram_srls_i3_CE_u_ram_srls_i3_CE_HardLink <= u_ram_srls_i3_CE;
-		u_ram_srls_i3_WR_u_ram_srls_i3_WR_HardLink <= u_ram_srls_i3_WR;
-		u_ram_srls_i3_WR_ADDR_u_ram_srls_i3_WR_ADDR_HardLink <= u_ram_srls_i3_WR_ADDR;
-		u_ram_srls_i3_DIN_u_ram_srls_i3_DIN_HardLink <= u_ram_srls_i3_DIN;
-		u_ram_srls_i3_RD_u_ram_srls_i3_RD_HardLink <= u_ram_srls_i3_RD;
-		u_ram_srls_i3_RD_ADDR_u_ram_srls_i3_RD_ADDR_HardLink <= u_ram_srls_i3_RD_ADDR;
-		u_ram_srls_i3_DOUT <= u_ram_srls_i3_DOUT_u_ram_srls_i3_DOUT_HardLink;
-		u_ram_srls_q0_CE_u_ram_srls_q0_CE_HardLink <= u_ram_srls_q0_CE;
-		u_ram_srls_q0_WR_u_ram_srls_q0_WR_HardLink <= u_ram_srls_q0_WR;
-		u_ram_srls_q0_WR_ADDR_u_ram_srls_q0_WR_ADDR_HardLink <= u_ram_srls_q0_WR_ADDR;
-		u_ram_srls_q0_DIN_u_ram_srls_q0_DIN_HardLink <= u_ram_srls_q0_DIN;
-		u_ram_srls_q0_RD_u_ram_srls_q0_RD_HardLink <= u_ram_srls_q0_RD;
-		u_ram_srls_q0_RD_ADDR_u_ram_srls_q0_RD_ADDR_HardLink <= u_ram_srls_q0_RD_ADDR;
-		u_ram_srls_q0_DOUT <= u_ram_srls_q0_DOUT_u_ram_srls_q0_DOUT_HardLink;
-		u_ram_srls_q1_CE_u_ram_srls_q1_CE_HardLink <= u_ram_srls_q1_CE;
-		u_ram_srls_q1_WR_u_ram_srls_q1_WR_HardLink <= u_ram_srls_q1_WR;
-		u_ram_srls_q1_WR_ADDR_u_ram_srls_q1_WR_ADDR_HardLink <= u_ram_srls_q1_WR_ADDR;
-		u_ram_srls_q1_DIN_u_ram_srls_q1_DIN_HardLink <= u_ram_srls_q1_DIN;
-		u_ram_srls_q1_RD_u_ram_srls_q1_RD_HardLink <= u_ram_srls_q1_RD;
-		u_ram_srls_q1_RD_ADDR_u_ram_srls_q1_RD_ADDR_HardLink <= u_ram_srls_q1_RD_ADDR;
-		u_ram_srls_q1_DOUT <= u_ram_srls_q1_DOUT_u_ram_srls_q1_DOUT_HardLink;
-		u_ram_srls_q2_CE_u_ram_srls_q2_CE_HardLink <= u_ram_srls_q2_CE;
-		u_ram_srls_q2_WR_u_ram_srls_q2_WR_HardLink <= u_ram_srls_q2_WR;
-		u_ram_srls_q2_WR_ADDR_u_ram_srls_q2_WR_ADDR_HardLink <= u_ram_srls_q2_WR_ADDR;
-		u_ram_srls_q2_DIN_u_ram_srls_q2_DIN_HardLink <= u_ram_srls_q2_DIN;
-		u_ram_srls_q2_RD_u_ram_srls_q2_RD_HardLink <= u_ram_srls_q2_RD;
-		u_ram_srls_q2_RD_ADDR_u_ram_srls_q2_RD_ADDR_HardLink <= u_ram_srls_q2_RD_ADDR;
-		u_ram_srls_q2_DOUT <= u_ram_srls_q2_DOUT_u_ram_srls_q2_DOUT_HardLink;
-		u_ram_srls_q3_CE_u_ram_srls_q3_CE_HardLink <= u_ram_srls_q3_CE;
-		u_ram_srls_q3_WR_u_ram_srls_q3_WR_HardLink <= u_ram_srls_q3_WR;
-		u_ram_srls_q3_WR_ADDR_u_ram_srls_q3_WR_ADDR_HardLink <= u_ram_srls_q3_WR_ADDR;
-		u_ram_srls_q3_DIN_u_ram_srls_q3_DIN_HardLink <= u_ram_srls_q3_DIN;
-		u_ram_srls_q3_RD_u_ram_srls_q3_RD_HardLink <= u_ram_srls_q3_RD;
-		u_ram_srls_q3_RD_ADDR_u_ram_srls_q3_RD_ADDR_HardLink <= u_ram_srls_q3_RD_ADDR;
-		u_ram_srls_q3_DOUT <= u_ram_srls_q3_DOUT_u_ram_srls_q3_DOUT_HardLink;
 		u_ram_filo_i_CE_u_ram_filo_i_CE_HardLink <= u_ram_filo_i_CE;
-		u_ram_filo_i_WR_u_ram_filo_i_WR_HardLink <= u_ram_filo_i_WR;
-		u_ram_filo_i_WR_ADDR_u_ram_filo_i_WR_ADDR_HardLink <= u_ram_filo_i_WR_ADDR;
 		u_ram_filo_i_DIN_u_ram_filo_i_DIN_HardLink <= u_ram_filo_i_DIN;
 		u_ram_filo_i_RD_u_ram_filo_i_RD_HardLink <= u_ram_filo_i_RD;
 		u_ram_filo_i_RD_ADDR_u_ram_filo_i_RD_ADDR_HardLink <= u_ram_filo_i_RD_ADDR;
+		u_ram_filo_i_WR_u_ram_filo_i_WR_HardLink <= u_ram_filo_i_WR;
+		u_ram_filo_i_WR_ADDR_u_ram_filo_i_WR_ADDR_HardLink <= u_ram_filo_i_WR_ADDR;
 		u_ram_filo_i_DOUT <= u_ram_filo_i_DOUT_u_ram_filo_i_DOUT_HardLink;
 		u_ram_filo_q_CE_u_ram_filo_q_CE_HardLink <= u_ram_filo_q_CE;
-		u_ram_filo_q_WR_u_ram_filo_q_WR_HardLink <= u_ram_filo_q_WR;
-		u_ram_filo_q_WR_ADDR_u_ram_filo_q_WR_ADDR_HardLink <= u_ram_filo_q_WR_ADDR;
 		u_ram_filo_q_DIN_u_ram_filo_q_DIN_HardLink <= u_ram_filo_q_DIN;
 		u_ram_filo_q_RD_u_ram_filo_q_RD_HardLink <= u_ram_filo_q_RD;
 		u_ram_filo_q_RD_ADDR_u_ram_filo_q_RD_ADDR_HardLink <= u_ram_filo_q_RD_ADDR;
+		u_ram_filo_q_WR_u_ram_filo_q_WR_HardLink <= u_ram_filo_q_WR;
+		u_ram_filo_q_WR_ADDR_u_ram_filo_q_WR_ADDR_HardLink <= u_ram_filo_q_WR_ADDR;
 		u_ram_filo_q_DOUT <= u_ram_filo_q_DOUT_u_ram_filo_q_DOUT_HardLink;
-		u_dsp48_i0_CE_u_dsp48_i0_CE_HardLink <= u_dsp48_i0_CE;
-		u_dsp48_i0_RST_u_dsp48_i0_RST_HardLink <= u_dsp48_i0_RST;
-		u_dsp48_i0_A_u_dsp48_i0_A_HardLink <= u_dsp48_i0_A;
-		u_dsp48_i0_B_u_dsp48_i0_B_HardLink <= u_dsp48_i0_B;
-		u_dsp48_i0_D_u_dsp48_i0_D_HardLink <= u_dsp48_i0_D;
-		u_dsp48_i0_PCIN_u_dsp48_i0_PCIN_HardLink <= u_dsp48_i0_PCIN;
-		u_dsp48_i0_OPMODE_u_dsp48_i0_OPMODE_HardLink <= u_dsp48_i0_OPMODE;
-		u_dsp48_i0_PCOUT <= u_dsp48_i0_PCOUT_u_dsp48_i0_PCOUT_HardLink;
-		u_dsp48_i0_P <= u_dsp48_i0_P_u_dsp48_i0_P_HardLink;
-		u_dsp48_i1_CE_u_dsp48_i1_CE_HardLink <= u_dsp48_i1_CE;
-		u_dsp48_i1_RST_u_dsp48_i1_RST_HardLink <= u_dsp48_i1_RST;
-		u_dsp48_i1_A_u_dsp48_i1_A_HardLink <= u_dsp48_i1_A;
-		u_dsp48_i1_B_u_dsp48_i1_B_HardLink <= u_dsp48_i1_B;
-		u_dsp48_i1_D_u_dsp48_i1_D_HardLink <= u_dsp48_i1_D;
-		u_dsp48_i1_PCIN_u_dsp48_i1_PCIN_HardLink <= u_dsp48_i1_PCIN;
-		u_dsp48_i1_OPMODE_u_dsp48_i1_OPMODE_HardLink <= u_dsp48_i1_OPMODE;
-		u_dsp48_i1_PCOUT <= u_dsp48_i1_PCOUT_u_dsp48_i1_PCOUT_HardLink;
-		u_dsp48_i1_P <= u_dsp48_i1_P_u_dsp48_i1_P_HardLink;
-		u_dsp48_i2_CE_u_dsp48_i2_CE_HardLink <= u_dsp48_i2_CE;
-		u_dsp48_i2_RST_u_dsp48_i2_RST_HardLink <= u_dsp48_i2_RST;
-		u_dsp48_i2_A_u_dsp48_i2_A_HardLink <= u_dsp48_i2_A;
-		u_dsp48_i2_B_u_dsp48_i2_B_HardLink <= u_dsp48_i2_B;
-		u_dsp48_i2_D_u_dsp48_i2_D_HardLink <= u_dsp48_i2_D;
-		u_dsp48_i2_PCIN_u_dsp48_i2_PCIN_HardLink <= u_dsp48_i2_PCIN;
-		u_dsp48_i2_OPMODE_u_dsp48_i2_OPMODE_HardLink <= u_dsp48_i2_OPMODE;
-		u_dsp48_i2_PCOUT <= u_dsp48_i2_PCOUT_u_dsp48_i2_PCOUT_HardLink;
-		u_dsp48_i2_P <= u_dsp48_i2_P_u_dsp48_i2_P_HardLink;
-		u_dsp48_i3_CE_u_dsp48_i3_CE_HardLink <= u_dsp48_i3_CE;
-		u_dsp48_i3_RST_u_dsp48_i3_RST_HardLink <= u_dsp48_i3_RST;
-		u_dsp48_i3_A_u_dsp48_i3_A_HardLink <= u_dsp48_i3_A;
-		u_dsp48_i3_B_u_dsp48_i3_B_HardLink <= u_dsp48_i3_B;
-		u_dsp48_i3_D_u_dsp48_i3_D_HardLink <= u_dsp48_i3_D;
-		u_dsp48_i3_PCIN_u_dsp48_i3_PCIN_HardLink <= u_dsp48_i3_PCIN;
-		u_dsp48_i3_OPMODE_u_dsp48_i3_OPMODE_HardLink <= u_dsp48_i3_OPMODE;
-		u_dsp48_i3_PCOUT <= u_dsp48_i3_PCOUT_u_dsp48_i3_PCOUT_HardLink;
-		u_dsp48_i3_P <= u_dsp48_i3_P_u_dsp48_i3_P_HardLink;
-		u_dsp48_q0_CE_u_dsp48_q0_CE_HardLink <= u_dsp48_q0_CE;
-		u_dsp48_q0_RST_u_dsp48_q0_RST_HardLink <= u_dsp48_q0_RST;
-		u_dsp48_q0_A_u_dsp48_q0_A_HardLink <= u_dsp48_q0_A;
-		u_dsp48_q0_B_u_dsp48_q0_B_HardLink <= u_dsp48_q0_B;
-		u_dsp48_q0_D_u_dsp48_q0_D_HardLink <= u_dsp48_q0_D;
-		u_dsp48_q0_PCIN_u_dsp48_q0_PCIN_HardLink <= u_dsp48_q0_PCIN;
-		u_dsp48_q0_OPMODE_u_dsp48_q0_OPMODE_HardLink <= u_dsp48_q0_OPMODE;
-		u_dsp48_q0_PCOUT <= u_dsp48_q0_PCOUT_u_dsp48_q0_PCOUT_HardLink;
-		u_dsp48_q0_P <= u_dsp48_q0_P_u_dsp48_q0_P_HardLink;
-		u_dsp48_q1_CE_u_dsp48_q1_CE_HardLink <= u_dsp48_q1_CE;
-		u_dsp48_q1_RST_u_dsp48_q1_RST_HardLink <= u_dsp48_q1_RST;
-		u_dsp48_q1_A_u_dsp48_q1_A_HardLink <= u_dsp48_q1_A;
-		u_dsp48_q1_B_u_dsp48_q1_B_HardLink <= u_dsp48_q1_B;
-		u_dsp48_q1_D_u_dsp48_q1_D_HardLink <= u_dsp48_q1_D;
-		u_dsp48_q1_PCIN_u_dsp48_q1_PCIN_HardLink <= u_dsp48_q1_PCIN;
-		u_dsp48_q1_OPMODE_u_dsp48_q1_OPMODE_HardLink <= u_dsp48_q1_OPMODE;
-		u_dsp48_q1_PCOUT <= u_dsp48_q1_PCOUT_u_dsp48_q1_PCOUT_HardLink;
-		u_dsp48_q1_P <= u_dsp48_q1_P_u_dsp48_q1_P_HardLink;
-		u_dsp48_q2_CE_u_dsp48_q2_CE_HardLink <= u_dsp48_q2_CE;
-		u_dsp48_q2_RST_u_dsp48_q2_RST_HardLink <= u_dsp48_q2_RST;
-		u_dsp48_q2_A_u_dsp48_q2_A_HardLink <= u_dsp48_q2_A;
-		u_dsp48_q2_B_u_dsp48_q2_B_HardLink <= u_dsp48_q2_B;
-		u_dsp48_q2_D_u_dsp48_q2_D_HardLink <= u_dsp48_q2_D;
-		u_dsp48_q2_PCIN_u_dsp48_q2_PCIN_HardLink <= u_dsp48_q2_PCIN;
-		u_dsp48_q2_OPMODE_u_dsp48_q2_OPMODE_HardLink <= u_dsp48_q2_OPMODE;
-		u_dsp48_q2_PCOUT <= u_dsp48_q2_PCOUT_u_dsp48_q2_PCOUT_HardLink;
-		u_dsp48_q2_P <= u_dsp48_q2_P_u_dsp48_q2_P_HardLink;
-		u_dsp48_q3_CE_u_dsp48_q3_CE_HardLink <= u_dsp48_q3_CE;
-		u_dsp48_q3_RST_u_dsp48_q3_RST_HardLink <= u_dsp48_q3_RST;
-		u_dsp48_q3_A_u_dsp48_q3_A_HardLink <= u_dsp48_q3_A;
-		u_dsp48_q3_B_u_dsp48_q3_B_HardLink <= u_dsp48_q3_B;
-		u_dsp48_q3_D_u_dsp48_q3_D_HardLink <= u_dsp48_q3_D;
-		u_dsp48_q3_PCIN_u_dsp48_q3_PCIN_HardLink <= u_dsp48_q3_PCIN;
-		u_dsp48_q3_OPMODE_u_dsp48_q3_OPMODE_HardLink <= u_dsp48_q3_OPMODE;
-		u_dsp48_q3_PCOUT <= u_dsp48_q3_PCOUT_u_dsp48_q3_PCOUT_HardLink;
-		u_dsp48_q3_P <= u_dsp48_q3_P_u_dsp48_q3_P_HardLink;
+		u_ram_srls_i0_CE_u_ram_srls_i0_CE_HardLink <= u_ram_srls_i0_CE;
+		u_ram_srls_i0_DIN_u_ram_srls_i0_DIN_HardLink <= u_ram_srls_i0_DIN;
+		u_ram_srls_i0_RD_u_ram_srls_i0_RD_HardLink <= u_ram_srls_i0_RD;
+		u_ram_srls_i0_RD_ADDR_u_ram_srls_i0_RD_ADDR_HardLink <= u_ram_srls_i0_RD_ADDR;
+		u_ram_srls_i0_WR_u_ram_srls_i0_WR_HardLink <= u_ram_srls_i0_WR;
+		u_ram_srls_i0_WR_ADDR_u_ram_srls_i0_WR_ADDR_HardLink <= u_ram_srls_i0_WR_ADDR;
+		u_ram_srls_i0_DOUT <= u_ram_srls_i0_DOUT_u_ram_srls_i0_DOUT_HardLink;
+		u_ram_srls_i1_CE_u_ram_srls_i1_CE_HardLink <= u_ram_srls_i1_CE;
+		u_ram_srls_i1_DIN_u_ram_srls_i1_DIN_HardLink <= u_ram_srls_i1_DIN;
+		u_ram_srls_i1_RD_u_ram_srls_i1_RD_HardLink <= u_ram_srls_i1_RD;
+		u_ram_srls_i1_RD_ADDR_u_ram_srls_i1_RD_ADDR_HardLink <= u_ram_srls_i1_RD_ADDR;
+		u_ram_srls_i1_WR_u_ram_srls_i1_WR_HardLink <= u_ram_srls_i1_WR;
+		u_ram_srls_i1_WR_ADDR_u_ram_srls_i1_WR_ADDR_HardLink <= u_ram_srls_i1_WR_ADDR;
+		u_ram_srls_i1_DOUT <= u_ram_srls_i1_DOUT_u_ram_srls_i1_DOUT_HardLink;
+		u_ram_srls_i2_CE_u_ram_srls_i2_CE_HardLink <= u_ram_srls_i2_CE;
+		u_ram_srls_i2_DIN_u_ram_srls_i2_DIN_HardLink <= u_ram_srls_i2_DIN;
+		u_ram_srls_i2_RD_u_ram_srls_i2_RD_HardLink <= u_ram_srls_i2_RD;
+		u_ram_srls_i2_RD_ADDR_u_ram_srls_i2_RD_ADDR_HardLink <= u_ram_srls_i2_RD_ADDR;
+		u_ram_srls_i2_WR_u_ram_srls_i2_WR_HardLink <= u_ram_srls_i2_WR;
+		u_ram_srls_i2_WR_ADDR_u_ram_srls_i2_WR_ADDR_HardLink <= u_ram_srls_i2_WR_ADDR;
+		u_ram_srls_i2_DOUT <= u_ram_srls_i2_DOUT_u_ram_srls_i2_DOUT_HardLink;
+		u_ram_srls_i3_CE_u_ram_srls_i3_CE_HardLink <= u_ram_srls_i3_CE;
+		u_ram_srls_i3_DIN_u_ram_srls_i3_DIN_HardLink <= u_ram_srls_i3_DIN;
+		u_ram_srls_i3_RD_u_ram_srls_i3_RD_HardLink <= u_ram_srls_i3_RD;
+		u_ram_srls_i3_RD_ADDR_u_ram_srls_i3_RD_ADDR_HardLink <= u_ram_srls_i3_RD_ADDR;
+		u_ram_srls_i3_WR_u_ram_srls_i3_WR_HardLink <= u_ram_srls_i3_WR;
+		u_ram_srls_i3_WR_ADDR_u_ram_srls_i3_WR_ADDR_HardLink <= u_ram_srls_i3_WR_ADDR;
+		u_ram_srls_i3_DOUT <= u_ram_srls_i3_DOUT_u_ram_srls_i3_DOUT_HardLink;
+		u_ram_srls_q0_CE_u_ram_srls_q0_CE_HardLink <= u_ram_srls_q0_CE;
+		u_ram_srls_q0_DIN_u_ram_srls_q0_DIN_HardLink <= u_ram_srls_q0_DIN;
+		u_ram_srls_q0_RD_u_ram_srls_q0_RD_HardLink <= u_ram_srls_q0_RD;
+		u_ram_srls_q0_RD_ADDR_u_ram_srls_q0_RD_ADDR_HardLink <= u_ram_srls_q0_RD_ADDR;
+		u_ram_srls_q0_WR_u_ram_srls_q0_WR_HardLink <= u_ram_srls_q0_WR;
+		u_ram_srls_q0_WR_ADDR_u_ram_srls_q0_WR_ADDR_HardLink <= u_ram_srls_q0_WR_ADDR;
+		u_ram_srls_q0_DOUT <= u_ram_srls_q0_DOUT_u_ram_srls_q0_DOUT_HardLink;
+		u_ram_srls_q1_CE_u_ram_srls_q1_CE_HardLink <= u_ram_srls_q1_CE;
+		u_ram_srls_q1_DIN_u_ram_srls_q1_DIN_HardLink <= u_ram_srls_q1_DIN;
+		u_ram_srls_q1_RD_u_ram_srls_q1_RD_HardLink <= u_ram_srls_q1_RD;
+		u_ram_srls_q1_RD_ADDR_u_ram_srls_q1_RD_ADDR_HardLink <= u_ram_srls_q1_RD_ADDR;
+		u_ram_srls_q1_WR_u_ram_srls_q1_WR_HardLink <= u_ram_srls_q1_WR;
+		u_ram_srls_q1_WR_ADDR_u_ram_srls_q1_WR_ADDR_HardLink <= u_ram_srls_q1_WR_ADDR;
+		u_ram_srls_q1_DOUT <= u_ram_srls_q1_DOUT_u_ram_srls_q1_DOUT_HardLink;
+		u_ram_srls_q2_CE_u_ram_srls_q2_CE_HardLink <= u_ram_srls_q2_CE;
+		u_ram_srls_q2_DIN_u_ram_srls_q2_DIN_HardLink <= u_ram_srls_q2_DIN;
+		u_ram_srls_q2_RD_u_ram_srls_q2_RD_HardLink <= u_ram_srls_q2_RD;
+		u_ram_srls_q2_RD_ADDR_u_ram_srls_q2_RD_ADDR_HardLink <= u_ram_srls_q2_RD_ADDR;
+		u_ram_srls_q2_WR_u_ram_srls_q2_WR_HardLink <= u_ram_srls_q2_WR;
+		u_ram_srls_q2_WR_ADDR_u_ram_srls_q2_WR_ADDR_HardLink <= u_ram_srls_q2_WR_ADDR;
+		u_ram_srls_q2_DOUT <= u_ram_srls_q2_DOUT_u_ram_srls_q2_DOUT_HardLink;
+		u_ram_srls_q3_CE_u_ram_srls_q3_CE_HardLink <= u_ram_srls_q3_CE;
+		u_ram_srls_q3_DIN_u_ram_srls_q3_DIN_HardLink <= u_ram_srls_q3_DIN;
+		u_ram_srls_q3_RD_u_ram_srls_q3_RD_HardLink <= u_ram_srls_q3_RD;
+		u_ram_srls_q3_RD_ADDR_u_ram_srls_q3_RD_ADDR_HardLink <= u_ram_srls_q3_RD_ADDR;
+		u_ram_srls_q3_WR_u_ram_srls_q3_WR_HardLink <= u_ram_srls_q3_WR;
+		u_ram_srls_q3_WR_ADDR_u_ram_srls_q3_WR_ADDR_HardLink <= u_ram_srls_q3_WR_ADDR;
+		u_ram_srls_q3_DOUT <= u_ram_srls_q3_DOUT_u_ram_srls_q3_DOUT_HardLink;
+		FIRModule_L522F9L530T10_FIRModule_L523F13T29_FIRModule_L255F9L264T10_FIRModule_L257F39T63_Index <= c_coef_mask_array(TO_INTEGER(ib_do));
+		FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L308F49T68_Index <= c_coef_num_array(0);
+		FIRModule_L522F9L530T10_FIRModule_L523F13T29_FIRModule_L255F9L264T10_FIRModule_L258F39T63_Index <= c_data_mask_array(TO_INTEGER(ib_do));
 		FIRModule_L208F28T49_FIRModule_L208F32T44_Index <= ramc_dout(0);
 		FIRModule_L210F13L217T14_1_FIRModule_L215F32T53_FIRModule_L215F36T48_Index <= ramc_dout(1);
 		FIRModule_L210F13L217T14_2_FIRModule_L215F32T53_FIRModule_L215F36T48_Index <= ramc_dout(2);
@@ -2365,9 +2602,6 @@ begin
 		FIRModule_L225F13L232T14_1_FIRModule_L230F32T53_FIRModule_L230F36T48_Index <= ramc_dout(1);
 		FIRModule_L225F13L232T14_2_FIRModule_L230F32T53_FIRModule_L230F36T48_Index <= ramc_dout(2);
 		FIRModule_L225F13L232T14_3_FIRModule_L230F32T53_FIRModule_L230F36T48_Index <= ramc_dout(3);
-		FIRModule_L522F9L530T10_FIRModule_L524F13T27_FIRModule_L270F9L316T10_FIRModule_L308F49T68_Index <= c_coef_num_array(0);
-		FIRModule_L522F9L530T10_FIRModule_L523F13T29_FIRModule_L255F9L264T10_FIRModule_L257F39T63_Index <= c_coef_mask_array(TO_INTEGER(ib_do));
-		FIRModule_L522F9L530T10_FIRModule_L523F13T29_FIRModule_L255F9L264T10_FIRModule_L258F39T63_Index <= c_data_mask_array(TO_INTEGER(ib_do));
 		FIRModule_L81F15T45_Index <= ramd_dout(2);
 		FIRModule_L125F13L128T14_1_FIRModule_L127F31T47_Index <= ramd_dout(0);
 		FIRModule_L125F13L128T14_2_FIRModule_L127F31T47_Index <= ramd_dout(1);

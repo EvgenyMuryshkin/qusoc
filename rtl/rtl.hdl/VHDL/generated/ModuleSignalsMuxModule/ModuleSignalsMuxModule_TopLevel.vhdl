@@ -27,8 +27,8 @@ entity ModuleSignalsMuxModule_TopLevel is
 		Addr : in unsigned (1 downto 0);
 		I1 : in std_logic;
 		I2 : in std_logic;
-		O : out std_logic;
-		CombinedO : out unsigned (2 downto 0)
+		CombinedO : out unsigned (2 downto 0);
+		O : out std_logic
 	);
 end entity;
 -- FSM summary
@@ -124,11 +124,11 @@ begin
 		OrGate_I2 <= Inputs_I2;
 		XorGate_I1 <= Inputs_I1;
 		XorGate_I2 <= Inputs_I2;
-		O <= ModuleSignalsMuxModule_L27F26T46_Mux;
 		ModuleSignalsMuxModule_L29F41T80_Source(2) <= AndGate_O;
 		ModuleSignalsMuxModule_L29F41T80_Source(1) <= OrGate_O;
 		ModuleSignalsMuxModule_L29F41T80_Source(0) <= XorGate_O;
 		CombinedO <= ModuleSignalsMuxModule_L29F41T80_Source;
+		O <= ModuleSignalsMuxModule_L27F26T46_Mux;
 		AndGate_I1_AndGate_I1_HardLink <= AndGate_I1;
 		AndGate_I2_AndGate_I2_HardLink <= AndGate_I2;
 		AndGate_O <= AndGate_O_AndGate_O_HardLink;

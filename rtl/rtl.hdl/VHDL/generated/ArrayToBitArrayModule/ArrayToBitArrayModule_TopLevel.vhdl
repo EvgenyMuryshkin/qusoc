@@ -30,16 +30,16 @@ entity ArrayToBitArrayModule_TopLevel is
 		InArray1 : in unsigned (7 downto 0);
 		InArray2 : in unsigned (7 downto 0);
 		InArray3 : in unsigned (7 downto 0);
-		OutInputsArray0 : out unsigned (7 downto 0);
-		OutInputsArray1 : out unsigned (7 downto 0);
-		OutInputsArray2 : out unsigned (7 downto 0);
-		OutInputsArray3 : out unsigned (7 downto 0);
 		OutDataArray0 : out unsigned (7 downto 0);
 		OutDataArray1 : out unsigned (7 downto 0);
 		OutDataArray2 : out unsigned (7 downto 0);
 		OutDataArray3 : out unsigned (7 downto 0);
-		OutInputsBitArray : out unsigned (31 downto 0);
-		OutDataBitArray : out unsigned (31 downto 0)
+		OutDataBitArray : out unsigned (31 downto 0);
+		OutInputsArray0 : out unsigned (7 downto 0);
+		OutInputsArray1 : out unsigned (7 downto 0);
+		OutInputsArray2 : out unsigned (7 downto 0);
+		OutInputsArray3 : out unsigned (7 downto 0);
+		OutInputsBitArray : out unsigned (31 downto 0)
 	);
 end entity;
 -- FSM summary
@@ -91,22 +91,22 @@ begin
 		Inputs_InArray(1) <= InArray1;
 		Inputs_InArray(2) <= InArray2;
 		Inputs_InArray(3) <= InArray3;
-		OutInputsArray0 <= Inputs_InArray(0);
-		OutInputsArray1 <= Inputs_InArray(1);
-		OutInputsArray2 <= Inputs_InArray(2);
-		OutInputsArray3 <= Inputs_InArray(3);
 		OutDataArray0 <= State_ReadData(0);
 		OutDataArray1 <= State_ReadData(1);
 		OutDataArray2 <= State_ReadData(2);
 		OutDataArray3 <= State_ReadData(3);
-		OutInputsBitArray(31 downto 24) <= Inputs_InArray(3);
-		OutInputsBitArray(23 downto 16) <= Inputs_InArray(2);
-		OutInputsBitArray(15 downto 8) <= Inputs_InArray(1);
-		OutInputsBitArray(7 downto 0) <= Inputs_InArray(0);
 		OutDataBitArray(31 downto 24) <= State_ReadData(3);
 		OutDataBitArray(23 downto 16) <= State_ReadData(2);
 		OutDataBitArray(15 downto 8) <= State_ReadData(1);
 		OutDataBitArray(7 downto 0) <= State_ReadData(0);
+		OutInputsArray0 <= Inputs_InArray(0);
+		OutInputsArray1 <= Inputs_InArray(1);
+		OutInputsArray2 <= Inputs_InArray(2);
+		OutInputsArray3 <= Inputs_InArray(3);
+		OutInputsBitArray(31 downto 24) <= Inputs_InArray(3);
+		OutInputsBitArray(23 downto 16) <= Inputs_InArray(2);
+		OutInputsBitArray(15 downto 8) <= Inputs_InArray(1);
+		OutInputsBitArray(7 downto 0) <= Inputs_InArray(0);
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

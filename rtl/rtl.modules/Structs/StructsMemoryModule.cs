@@ -11,7 +11,7 @@ namespace RTL.Modules
             Buff = Enumerable.Range(0, order).Select(idx => new Data()).ToArray();
         }
 
-        [MemoryTemplateType(rtlMemoryTemplateType.Logic)]
+        //[MemoryTemplateType(rtlMemoryTemplateType.Logic)]
         public Data[] Buff;
         public Data Out = new Data();
     }
@@ -31,7 +31,7 @@ namespace RTL.Modules
 
         protected override void OnStage()
         {
-            NextState.Buff[0] = Inputs.In;//dbg
+            NextState.Buff[0] = Inputs.In;
             foreach (var idx in range(0, 3))
             {
                 NextState.Buff[idx + 1] = State.Buff[idx];

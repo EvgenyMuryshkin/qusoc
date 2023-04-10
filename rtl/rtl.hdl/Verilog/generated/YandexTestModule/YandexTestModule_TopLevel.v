@@ -25,13 +25,13 @@ module YandexTestModule_TopLevel
 	// [END USER PORTS]
 	input wire Clock,
 	input wire Reset,
-	input wire inReady,
 	input wire [7:0] inData0,
 	input wire [7:0] inData1,
 	input wire [7:0] inData2,
 	input wire [7:0] inData3,
 	input wire [7:0] inData4,
 	input wire [7:0] inData5,
+	input wire inReady,
 	output wire outReady,
 	output wire [7:0] outResult
 );
@@ -47,55 +47,55 @@ module YandexTestModule_TopLevel
 	wire YandexTestModule_L127F71T72_Expr = 1'b1;
 	wire YandexTestModule_L127F75T76_Expr = 1'b0;
 	wire Inputs_inReady;
-	reg NextState_stage0_ready;
 	reg [7: 0] NextState_stage0_max01;
 	reg [7: 0] NextState_stage0_max23;
 	reg [7: 0] NextState_stage0_max45;
 	reg [7: 0] NextState_stage0_min01;
 	reg [7: 0] NextState_stage0_min23;
 	reg [7: 0] NextState_stage0_min45;
+	reg NextState_stage0_ready;
 	reg [15: 0] NextState_stage0_sum01;
 	reg [15: 0] NextState_stage0_sum23;
 	reg [15: 0] NextState_stage0_sum45;
-	reg NextState_stage1_ready;
 	reg [7: 0] NextState_stage1_max0123;
 	reg [7: 0] NextState_stage1_max45;
 	reg [7: 0] NextState_stage1_min0123;
 	reg [7: 0] NextState_stage1_min45;
+	reg NextState_stage1_ready;
 	reg [15: 0] NextState_stage1_sum0123;
 	reg [15: 0] NextState_stage1_sum45;
-	reg NextState_stage2_ready;
 	reg [7: 0] NextState_stage2_max;
 	reg [7: 0] NextState_stage2_min;
+	reg NextState_stage2_ready;
 	reg [15: 0] NextState_stage2_sum;
-	reg NextState_stage3_ready;
 	reg [15: 0] NextState_stage3_max_min;
+	reg NextState_stage3_ready;
 	reg [15: 0] NextState_stage3_sum;
 	reg NextState_stage4_ready;
 	reg [15: 0] NextState_stage4_sum_ave;
-	wire nextStage0_ready;
 	wire [7: 0] nextStage0_max01;
 	wire [7: 0] nextStage0_max23;
 	wire [7: 0] nextStage0_max45;
 	wire [7: 0] nextStage0_min01;
 	wire [7: 0] nextStage0_min23;
 	wire [7: 0] nextStage0_min45;
+	wire nextStage0_ready;
 	wire [15: 0] nextStage0_sum01;
 	wire [15: 0] nextStage0_sum23;
 	wire [15: 0] nextStage0_sum45;
-	wire nextStage1_ready;
 	wire [7: 0] nextStage1_max0123;
 	wire [7: 0] nextStage1_max45;
 	wire [7: 0] nextStage1_min0123;
 	wire [7: 0] nextStage1_min45;
+	wire nextStage1_ready;
 	wire [15: 0] nextStage1_sum0123;
 	wire [15: 0] nextStage1_sum45;
-	wire nextStage2_ready;
 	wire [7: 0] nextStage2_max;
 	wire [7: 0] nextStage2_min;
+	wire nextStage2_ready;
 	wire [15: 0] nextStage2_sum;
-	wire nextStage3_ready;
 	wire [15: 0] nextStage3_max_min;
+	wire nextStage3_ready;
 	wire [15: 0] nextStage3_sum;
 	wire nextStage4_ready;
 	wire [15: 0] nextStage4_sum_ave;
@@ -141,8 +141,6 @@ module YandexTestModule_TopLevel
 	wire [7: 0] YandexTestModule_L127F55T76_WhenTrue;
 	wire [7: 0] YandexTestModule_L127F55T76_WhenFalse;
 	wire [7: 0] YandexTestModule_L127F55T76_Ternary;
-	reg State_stage0_ready = 1'b0;
-	wire State_stage0_readyDefault = 1'b0;
 	reg [7: 0] State_stage0_max01 = 8'b00000000;
 	wire [7: 0] State_stage0_max01Default = 8'b00000000;
 	reg [7: 0] State_stage0_max23 = 8'b00000000;
@@ -155,14 +153,14 @@ module YandexTestModule_TopLevel
 	wire [7: 0] State_stage0_min23Default = 8'b00000000;
 	reg [7: 0] State_stage0_min45 = 8'b00000000;
 	wire [7: 0] State_stage0_min45Default = 8'b00000000;
+	reg State_stage0_ready = 1'b0;
+	wire State_stage0_readyDefault = 1'b0;
 	reg [15: 0] State_stage0_sum01 = 16'b0000000000000000;
 	wire [15: 0] State_stage0_sum01Default = 16'b0000000000000000;
 	reg [15: 0] State_stage0_sum23 = 16'b0000000000000000;
 	wire [15: 0] State_stage0_sum23Default = 16'b0000000000000000;
 	reg [15: 0] State_stage0_sum45 = 16'b0000000000000000;
 	wire [15: 0] State_stage0_sum45Default = 16'b0000000000000000;
-	reg State_stage1_ready = 1'b0;
-	wire State_stage1_readyDefault = 1'b0;
 	reg [7: 0] State_stage1_max0123 = 8'b00000000;
 	wire [7: 0] State_stage1_max0123Default = 8'b00000000;
 	reg [7: 0] State_stage1_max45 = 8'b00000000;
@@ -171,22 +169,24 @@ module YandexTestModule_TopLevel
 	wire [7: 0] State_stage1_min0123Default = 8'b00000000;
 	reg [7: 0] State_stage1_min45 = 8'b00000000;
 	wire [7: 0] State_stage1_min45Default = 8'b00000000;
+	reg State_stage1_ready = 1'b0;
+	wire State_stage1_readyDefault = 1'b0;
 	reg [15: 0] State_stage1_sum0123 = 16'b0000000000000000;
 	wire [15: 0] State_stage1_sum0123Default = 16'b0000000000000000;
 	reg [15: 0] State_stage1_sum45 = 16'b0000000000000000;
 	wire [15: 0] State_stage1_sum45Default = 16'b0000000000000000;
-	reg State_stage2_ready = 1'b0;
-	wire State_stage2_readyDefault = 1'b0;
 	reg [7: 0] State_stage2_max = 8'b00000000;
 	wire [7: 0] State_stage2_maxDefault = 8'b00000000;
 	reg [7: 0] State_stage2_min = 8'b00000000;
 	wire [7: 0] State_stage2_minDefault = 8'b00000000;
+	reg State_stage2_ready = 1'b0;
+	wire State_stage2_readyDefault = 1'b0;
 	reg [15: 0] State_stage2_sum = 16'b0000000000000000;
 	wire [15: 0] State_stage2_sumDefault = 16'b0000000000000000;
-	reg State_stage3_ready = 1'b0;
-	wire State_stage3_readyDefault = 1'b0;
 	reg [15: 0] State_stage3_max_min = 16'b0000000000000000;
 	wire [15: 0] State_stage3_max_minDefault = 16'b0000000000000000;
+	reg State_stage3_ready = 1'b0;
+	wire State_stage3_readyDefault = 1'b0;
 	reg [15: 0] State_stage3_sum = 16'b0000000000000000;
 	wire [15: 0] State_stage3_sumDefault = 16'b0000000000000000;
 	reg State_stage4_ready = 1'b0;
@@ -254,58 +254,58 @@ module YandexTestModule_TopLevel
 	begin
 		if ((Reset == 1))
 		begin
-			State_stage0_ready <= State_stage0_readyDefault;
 			State_stage0_max01 <= State_stage0_max01Default;
 			State_stage0_max23 <= State_stage0_max23Default;
 			State_stage0_max45 <= State_stage0_max45Default;
 			State_stage0_min01 <= State_stage0_min01Default;
 			State_stage0_min23 <= State_stage0_min23Default;
 			State_stage0_min45 <= State_stage0_min45Default;
+			State_stage0_ready <= State_stage0_readyDefault;
 			State_stage0_sum01 <= State_stage0_sum01Default;
 			State_stage0_sum23 <= State_stage0_sum23Default;
 			State_stage0_sum45 <= State_stage0_sum45Default;
-			State_stage1_ready <= State_stage1_readyDefault;
 			State_stage1_max0123 <= State_stage1_max0123Default;
 			State_stage1_max45 <= State_stage1_max45Default;
 			State_stage1_min0123 <= State_stage1_min0123Default;
 			State_stage1_min45 <= State_stage1_min45Default;
+			State_stage1_ready <= State_stage1_readyDefault;
 			State_stage1_sum0123 <= State_stage1_sum0123Default;
 			State_stage1_sum45 <= State_stage1_sum45Default;
-			State_stage2_ready <= State_stage2_readyDefault;
 			State_stage2_max <= State_stage2_maxDefault;
 			State_stage2_min <= State_stage2_minDefault;
+			State_stage2_ready <= State_stage2_readyDefault;
 			State_stage2_sum <= State_stage2_sumDefault;
-			State_stage3_ready <= State_stage3_readyDefault;
 			State_stage3_max_min <= State_stage3_max_minDefault;
+			State_stage3_ready <= State_stage3_readyDefault;
 			State_stage3_sum <= State_stage3_sumDefault;
 			State_stage4_ready <= State_stage4_readyDefault;
 			State_stage4_sum_ave <= State_stage4_sum_aveDefault;
 		end
 		else
 		begin
-			State_stage0_ready <= NextState_stage0_ready;
 			State_stage0_max01 <= NextState_stage0_max01;
 			State_stage0_max23 <= NextState_stage0_max23;
 			State_stage0_max45 <= NextState_stage0_max45;
 			State_stage0_min01 <= NextState_stage0_min01;
 			State_stage0_min23 <= NextState_stage0_min23;
 			State_stage0_min45 <= NextState_stage0_min45;
+			State_stage0_ready <= NextState_stage0_ready;
 			State_stage0_sum01 <= NextState_stage0_sum01;
 			State_stage0_sum23 <= NextState_stage0_sum23;
 			State_stage0_sum45 <= NextState_stage0_sum45;
-			State_stage1_ready <= NextState_stage1_ready;
 			State_stage1_max0123 <= NextState_stage1_max0123;
 			State_stage1_max45 <= NextState_stage1_max45;
 			State_stage1_min0123 <= NextState_stage1_min0123;
 			State_stage1_min45 <= NextState_stage1_min45;
+			State_stage1_ready <= NextState_stage1_ready;
 			State_stage1_sum0123 <= NextState_stage1_sum0123;
 			State_stage1_sum45 <= NextState_stage1_sum45;
-			State_stage2_ready <= NextState_stage2_ready;
 			State_stage2_max <= NextState_stage2_max;
 			State_stage2_min <= NextState_stage2_min;
+			State_stage2_ready <= NextState_stage2_ready;
 			State_stage2_sum <= NextState_stage2_sum;
-			State_stage3_ready <= NextState_stage3_ready;
 			State_stage3_max_min <= NextState_stage3_max_min;
+			State_stage3_ready <= NextState_stage3_ready;
 			State_stage3_sum <= NextState_stage3_sum;
 			State_stage4_ready <= NextState_stage4_ready;
 			State_stage4_sum_ave <= NextState_stage4_sum_ave;
@@ -359,55 +359,55 @@ module YandexTestModule_TopLevel
 	assign YandexTestModule_L127F55T76_Ternary = (YandexTestModule_L127F55T68_Index ? YandexTestModule_L127F55T76_WhenTrue : YandexTestModule_L127F55T76_WhenFalse);
 	always @ (*)
 	begin
-		NextState_stage0_ready = State_stage0_ready;
 		NextState_stage0_max01 = State_stage0_max01;
 		NextState_stage0_max23 = State_stage0_max23;
 		NextState_stage0_max45 = State_stage0_max45;
 		NextState_stage0_min01 = State_stage0_min01;
 		NextState_stage0_min23 = State_stage0_min23;
 		NextState_stage0_min45 = State_stage0_min45;
+		NextState_stage0_ready = State_stage0_ready;
 		NextState_stage0_sum01 = State_stage0_sum01;
 		NextState_stage0_sum23 = State_stage0_sum23;
 		NextState_stage0_sum45 = State_stage0_sum45;
-		NextState_stage1_ready = State_stage1_ready;
 		NextState_stage1_max0123 = State_stage1_max0123;
 		NextState_stage1_max45 = State_stage1_max45;
 		NextState_stage1_min0123 = State_stage1_min0123;
 		NextState_stage1_min45 = State_stage1_min45;
+		NextState_stage1_ready = State_stage1_ready;
 		NextState_stage1_sum0123 = State_stage1_sum0123;
 		NextState_stage1_sum45 = State_stage1_sum45;
-		NextState_stage2_ready = State_stage2_ready;
 		NextState_stage2_max = State_stage2_max;
 		NextState_stage2_min = State_stage2_min;
+		NextState_stage2_ready = State_stage2_ready;
 		NextState_stage2_sum = State_stage2_sum;
-		NextState_stage3_ready = State_stage3_ready;
 		NextState_stage3_max_min = State_stage3_max_min;
+		NextState_stage3_ready = State_stage3_ready;
 		NextState_stage3_sum = State_stage3_sum;
 		NextState_stage4_ready = State_stage4_ready;
 		NextState_stage4_sum_ave = State_stage4_sum_ave;
-		NextState_stage0_ready = nextStage0_ready;
 		NextState_stage0_max01 = nextStage0_max01;
 		NextState_stage0_max23 = nextStage0_max23;
 		NextState_stage0_max45 = nextStage0_max45;
 		NextState_stage0_min01 = nextStage0_min01;
 		NextState_stage0_min23 = nextStage0_min23;
 		NextState_stage0_min45 = nextStage0_min45;
+		NextState_stage0_ready = nextStage0_ready;
 		NextState_stage0_sum01 = nextStage0_sum01;
 		NextState_stage0_sum23 = nextStage0_sum23;
 		NextState_stage0_sum45 = nextStage0_sum45;
-		NextState_stage1_ready = nextStage1_ready;
 		NextState_stage1_max0123 = nextStage1_max0123;
 		NextState_stage1_max45 = nextStage1_max45;
 		NextState_stage1_min0123 = nextStage1_min0123;
 		NextState_stage1_min45 = nextStage1_min45;
+		NextState_stage1_ready = nextStage1_ready;
 		NextState_stage1_sum0123 = nextStage1_sum0123;
 		NextState_stage1_sum45 = nextStage1_sum45;
-		NextState_stage2_ready = nextStage2_ready;
 		NextState_stage2_max = nextStage2_max;
 		NextState_stage2_min = nextStage2_min;
+		NextState_stage2_ready = nextStage2_ready;
 		NextState_stage2_sum = nextStage2_sum;
-		NextState_stage3_ready = nextStage3_ready;
 		NextState_stage3_max_min = nextStage3_max_min;
+		NextState_stage3_ready = nextStage3_ready;
 		NextState_stage3_sum = nextStage3_sum;
 		NextState_stage4_ready = nextStage4_ready;
 		NextState_stage4_sum_ave = nextStage4_sum_ave;
@@ -449,13 +449,13 @@ module YandexTestModule_TopLevel
 	assign YandexTestModule_L121F32T71_Expr_2 = { {2{1'b0}}, State_stage3_max_min };
 	assign YandexTestModule_L127F34T77_Expr_1 = { {2{1'b0}}, YandexTestModule_L127F35T50_Expr };
 	assign YandexTestModule_L127F34T77_Expr_2 = { {10{1'b0}}, YandexTestModule_L127F55T76_Ternary };
-	assign Inputs_inReady = inReady;
 	assign Inputs_inData[0] = inData0;
 	assign Inputs_inData[1] = inData1;
 	assign Inputs_inData[2] = inData2;
 	assign Inputs_inData[3] = inData3;
 	assign Inputs_inData[4] = inData4;
 	assign Inputs_inData[5] = inData5;
+	assign Inputs_inReady = inReady;
 	assign YandexTestModule_L81F21T66_Cast = { {6{1'b0}}, YandexTestModule_L81F30T65_Expr };
 	assign YandexTestModule_L82F21T66_Cast = { {6{1'b0}}, YandexTestModule_L82F30T65_Expr };
 	assign YandexTestModule_L83F21T66_Cast = { {6{1'b0}}, YandexTestModule_L83F30T65_Expr };
@@ -471,13 +471,13 @@ module YandexTestModule_TopLevel
 	assign YandexTestModule_L88F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenFalse = Inputs_inData[3];
 	assign YandexTestModule_L89F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenTrue = Inputs_inData[4];
 	assign YandexTestModule_L89F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenFalse = Inputs_inData[5];
-	assign nextStage0_ready = Inputs_inReady;
 	assign nextStage0_max01 = YandexTestModule_L84F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_Ternary;
 	assign nextStage0_max23 = YandexTestModule_L85F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_Ternary;
 	assign nextStage0_max45 = YandexTestModule_L86F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_Ternary;
 	assign nextStage0_min01 = YandexTestModule_L87F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_Ternary;
 	assign nextStage0_min23 = YandexTestModule_L88F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_Ternary;
 	assign nextStage0_min45 = YandexTestModule_L89F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_Ternary;
+	assign nextStage0_ready = Inputs_inReady;
 	assign nextStage0_sum01 = YandexTestModule_L81F21T66_Cast;
 	assign nextStage0_sum23 = YandexTestModule_L82F21T66_Cast;
 	assign nextStage0_sum45 = YandexTestModule_L83F21T66_Cast;
@@ -486,11 +486,11 @@ module YandexTestModule_TopLevel
 	assign YandexTestModule_L97F23T66_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenTrue = State_stage0_min01;
 	assign YandexTestModule_L97F23T66_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenFalse = State_stage0_min23;
 	assign YandexTestModule_L99F23T72_Cast = YandexTestModule_L99F32T71_Expr[15:0];
-	assign nextStage1_ready = State_stage0_ready;
 	assign nextStage1_max0123 = YandexTestModule_L95F23T66_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_Ternary;
 	assign nextStage1_max45 = State_stage0_max45;
 	assign nextStage1_min0123 = YandexTestModule_L97F23T66_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_Ternary;
 	assign nextStage1_min45 = State_stage0_min45;
+	assign nextStage1_ready = State_stage0_ready;
 	assign nextStage1_sum0123 = YandexTestModule_L99F23T72_Cast;
 	assign nextStage1_sum45 = State_stage0_sum45;
 	assign YandexTestModule_L106F19T64_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenTrue = State_stage1_max0123;
@@ -498,13 +498,13 @@ module YandexTestModule_TopLevel
 	assign YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenTrue = State_stage1_min0123;
 	assign YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenFalse = State_stage1_min45;
 	assign YandexTestModule_L108F19T70_Cast = YandexTestModule_L108F28T69_Expr[15:0];
-	assign nextStage2_ready = State_stage1_ready;
 	assign nextStage2_max = YandexTestModule_L106F19T64_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_Ternary;
 	assign nextStage2_min = YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_Ternary;
+	assign nextStage2_ready = State_stage1_ready;
 	assign nextStage2_sum = YandexTestModule_L108F19T70_Cast;
 	assign YandexTestModule_L114F23T68_Cast = { {6{1'b0}}, YandexTestModule_L114F32T67_Expr };
-	assign nextStage3_ready = State_stage2_ready;
 	assign nextStage3_max_min = YandexTestModule_L114F23T68_Cast;
+	assign nextStage3_ready = State_stage2_ready;
 	assign nextStage3_sum = State_stage2_sum;
 	assign YandexTestModule_L121F23T72_Cast = YandexTestModule_L121F32T71_Expr[15:0];
 	assign nextStage4_ready = State_stage3_ready;

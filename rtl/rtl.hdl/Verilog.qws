@@ -10,7 +10,7 @@ ptn_Child4=Document-3
 [ProjectWorkspace.Frames.ChildFrames.Document-1]
 ptn_Child1=ViewFrame-0
 [ProjectWorkspace.Frames.ChildFrames.Document-1.ViewFrame-0]
-DocPathName=Verilog/generated/StructsCombinationalIteratorModule/StructsCombinationalIteratorModule_TopLevel.v
+DocPathName=Verilog/generated/AnonymousPipelineModule/AnonymousPipelineModule_TopLevel.v
 DocumentCLSID={84678d98-dc76-11d0-a0d8-0020affa5bde}
 IsChildFrameDetached=False
 IsActiveChildFrame=False
@@ -20,8 +20,8 @@ AFC_IN_REPORT=False
 [ProjectWorkspace.Frames.ChildFrames.Document-2]
 ptn_Child1=ViewFrame-0
 [ProjectWorkspace.Frames.ChildFrames.Document-2.ViewFrame-0]
-DocPathName=Verilog/generated/IOTupleModule/IOTupleModule_TopLevel_State_sahTuple_Item4_L2Tuple_Item2_L2Values.hex
-DocumentCLSID={0b720e69-67da-11d0-bf4f-0000c08cb0c0}
+DocPathName=Verilog/generated/IOObjectModule/IOObjectModule_TopLevel.v
+DocumentCLSID={84678d98-dc76-11d0-a0d8-0020affa5bde}
 IsChildFrameDetached=False
 IsActiveChildFrame=False
 ptn_Child1=StateMap

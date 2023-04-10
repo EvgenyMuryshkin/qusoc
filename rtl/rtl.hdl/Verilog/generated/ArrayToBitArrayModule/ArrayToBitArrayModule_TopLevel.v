@@ -29,16 +29,16 @@ module ArrayToBitArrayModule_TopLevel
 	input wire [7:0] InArray1,
 	input wire [7:0] InArray2,
 	input wire [7:0] InArray3,
-	output wire [7:0] OutInputsArray0,
-	output wire [7:0] OutInputsArray1,
-	output wire [7:0] OutInputsArray2,
-	output wire [7:0] OutInputsArray3,
 	output wire [7:0] OutDataArray0,
 	output wire [7:0] OutDataArray1,
 	output wire [7:0] OutDataArray2,
 	output wire [7:0] OutDataArray3,
-	output wire [31:0] OutInputsBitArray,
-	output wire [31:0] OutDataBitArray
+	output wire [31:0] OutDataBitArray,
+	output wire [7:0] OutInputsArray0,
+	output wire [7:0] OutInputsArray1,
+	output wire [7:0] OutInputsArray2,
+	output wire [7:0] OutInputsArray3,
+	output wire [31:0] OutInputsBitArray
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -97,16 +97,16 @@ module ArrayToBitArrayModule_TopLevel
 	assign Inputs_InArray[1] = InArray1;
 	assign Inputs_InArray[2] = InArray2;
 	assign Inputs_InArray[3] = InArray3;
-	assign OutInputsArray0 = Inputs_InArray[0];
-	assign OutInputsArray1 = Inputs_InArray[1];
-	assign OutInputsArray2 = Inputs_InArray[2];
-	assign OutInputsArray3 = Inputs_InArray[3];
 	assign OutDataArray0 = State_ReadData[0];
 	assign OutDataArray1 = State_ReadData[1];
 	assign OutDataArray2 = State_ReadData[2];
 	assign OutDataArray3 = State_ReadData[3];
-	assign OutInputsBitArray = { Inputs_InArray[3], Inputs_InArray[2], Inputs_InArray[1], Inputs_InArray[0] };
 	assign OutDataBitArray = { State_ReadData[3], State_ReadData[2], State_ReadData[1], State_ReadData[0] };
+	assign OutInputsArray0 = Inputs_InArray[0];
+	assign OutInputsArray1 = Inputs_InArray[1];
+	assign OutInputsArray2 = Inputs_InArray[2];
+	assign OutInputsArray3 = Inputs_InArray[3];
+	assign OutInputsBitArray = { Inputs_InArray[3], Inputs_InArray[2], Inputs_InArray[1], Inputs_InArray[0] };
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

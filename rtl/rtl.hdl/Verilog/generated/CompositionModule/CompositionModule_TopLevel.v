@@ -26,8 +26,8 @@ module CompositionModule_TopLevel
 	input wire Clock,
 	input wire Reset,
 	input wire IsEnabled,
-	output wire HasData,
-	output wire [7:0] Data
+	output wire [7:0] Data,
+	output wire HasData
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -39,38 +39,38 @@ module CompositionModule_TopLevel
 	wire false = 1'b0;
 	wire CompositionModule_L41F27T31_Expr = 1'b1;
 	wire Inputs_IsEnabled;
-	wire Emitter_IsEnabled;
 	wire Emitter_Ack;
+	wire Emitter_IsEnabled;
 	wire [7: 0] Emitter_Data;
 	wire Emitter_HasData;
-	wire Transmitter_Trigger;
-	wire Transmitter_Ack;
-	wire [7: 0] Transmitter_Data;
-	wire Transmitter_Bit;
-	wire Transmitter_IsReady;
-	wire Transmitter_IsTransmitting;
-	wire Transmitter_IsTransmissionStarted;
-	wire Receiver_IsValid;
 	wire Receiver_Ack;
 	wire Receiver_Bit;
-	wire Receiver_HasData;
+	wire Receiver_IsValid;
 	wire [7: 0] Receiver_Data;
-	wire Emitter_IsEnabled_Emitter_IsEnabled_HardLink;
+	wire Receiver_HasData;
+	wire Transmitter_Ack;
+	wire [7: 0] Transmitter_Data;
+	wire Transmitter_Trigger;
+	wire Transmitter_Bit;
+	wire Transmitter_IsReady;
+	wire Transmitter_IsTransmissionStarted;
+	wire Transmitter_IsTransmitting;
 	wire Emitter_Ack_Emitter_Ack_HardLink;
+	wire Emitter_IsEnabled_Emitter_IsEnabled_HardLink;
 	wire [7: 0] Emitter_Data_Emitter_Data_HardLink;
 	wire Emitter_HasData_Emitter_HasData_HardLink;
-	wire Transmitter_Trigger_Transmitter_Trigger_HardLink;
-	wire Transmitter_Ack_Transmitter_Ack_HardLink;
-	wire [7: 0] Transmitter_Data_Transmitter_Data_HardLink;
-	wire Transmitter_Bit_Transmitter_Bit_HardLink;
-	wire Transmitter_IsReady_Transmitter_IsReady_HardLink;
-	wire Transmitter_IsTransmitting_Transmitter_IsTransmitting_HardLink;
-	wire Transmitter_IsTransmissionStarted_Transmitter_IsTransmissionStarted_HardLink;
-	wire Receiver_IsValid_Receiver_IsValid_HardLink;
 	wire Receiver_Ack_Receiver_Ack_HardLink;
 	wire Receiver_Bit_Receiver_Bit_HardLink;
-	wire Receiver_HasData_Receiver_HasData_HardLink;
+	wire Receiver_IsValid_Receiver_IsValid_HardLink;
 	wire [7: 0] Receiver_Data_Receiver_Data_HardLink;
+	wire Receiver_HasData_Receiver_HasData_HardLink;
+	wire Transmitter_Ack_Transmitter_Ack_HardLink;
+	wire [7: 0] Transmitter_Data_Transmitter_Data_HardLink;
+	wire Transmitter_Trigger_Transmitter_Trigger_HardLink;
+	wire Transmitter_Bit_Transmitter_Bit_HardLink;
+	wire Transmitter_IsReady_Transmitter_IsReady_HardLink;
+	wire Transmitter_IsTransmissionStarted_Transmitter_IsTransmissionStarted_HardLink;
+	wire Transmitter_IsTransmitting_Transmitter_IsTransmitting_HardLink;
 	wire BoardSignals_Clock;
 	wire BoardSignals_Reset;
 	wire BoardSignals_Running;
@@ -88,28 +88,10 @@ module CompositionModule_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.IsEnabled (Emitter_IsEnabled_Emitter_IsEnabled_HardLink),
 		.Ack (Emitter_Ack_Emitter_Ack_HardLink),
+		.IsEnabled (Emitter_IsEnabled_Emitter_IsEnabled_HardLink),
 		.Data (Emitter_Data_Emitter_Data_HardLink),
 		.HasData (Emitter_HasData_Emitter_HasData_HardLink)
-	);
-	CompositionModule_TopLevel_Transmitter
-	CompositionModule_TopLevel_Transmitter
-	(
-		// [BEGIN USER MAP FOR Transmitter]
-		// [END USER MAP FOR Transmitter]
-		.BoardSignals_Clock (BoardSignals_Clock),
-		.BoardSignals_Reset (BoardSignals_Reset),
-		.BoardSignals_Running (BoardSignals_Running),
-		.BoardSignals_Starting (BoardSignals_Starting),
-		.BoardSignals_Started (BoardSignals_Started),
-		.Trigger (Transmitter_Trigger_Transmitter_Trigger_HardLink),
-		.Ack (Transmitter_Ack_Transmitter_Ack_HardLink),
-		.Data (Transmitter_Data_Transmitter_Data_HardLink),
-		.Bit (Transmitter_Bit_Transmitter_Bit_HardLink),
-		.IsReady (Transmitter_IsReady_Transmitter_IsReady_HardLink),
-		.IsTransmitting (Transmitter_IsTransmitting_Transmitter_IsTransmitting_HardLink),
-		.IsTransmissionStarted (Transmitter_IsTransmissionStarted_Transmitter_IsTransmissionStarted_HardLink)
 	);
 	CompositionModule_TopLevel_Receiver
 	CompositionModule_TopLevel_Receiver
@@ -121,39 +103,57 @@ module CompositionModule_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.IsValid (Receiver_IsValid_Receiver_IsValid_HardLink),
 		.Ack (Receiver_Ack_Receiver_Ack_HardLink),
 		.Bit (Receiver_Bit_Receiver_Bit_HardLink),
-		.HasData (Receiver_HasData_Receiver_HasData_HardLink),
-		.Data (Receiver_Data_Receiver_Data_HardLink)
+		.IsValid (Receiver_IsValid_Receiver_IsValid_HardLink),
+		.Data (Receiver_Data_Receiver_Data_HardLink),
+		.HasData (Receiver_HasData_Receiver_HasData_HardLink)
+	);
+	CompositionModule_TopLevel_Transmitter
+	CompositionModule_TopLevel_Transmitter
+	(
+		// [BEGIN USER MAP FOR Transmitter]
+		// [END USER MAP FOR Transmitter]
+		.BoardSignals_Clock (BoardSignals_Clock),
+		.BoardSignals_Reset (BoardSignals_Reset),
+		.BoardSignals_Running (BoardSignals_Running),
+		.BoardSignals_Starting (BoardSignals_Starting),
+		.BoardSignals_Started (BoardSignals_Started),
+		.Ack (Transmitter_Ack_Transmitter_Ack_HardLink),
+		.Data (Transmitter_Data_Transmitter_Data_HardLink),
+		.Trigger (Transmitter_Trigger_Transmitter_Trigger_HardLink),
+		.Bit (Transmitter_Bit_Transmitter_Bit_HardLink),
+		.IsReady (Transmitter_IsReady_Transmitter_IsReady_HardLink),
+		.IsTransmissionStarted (Transmitter_IsTransmissionStarted_Transmitter_IsTransmissionStarted_HardLink),
+		.IsTransmitting (Transmitter_IsTransmitting_Transmitter_IsTransmitting_HardLink)
 	);
 	assign Inputs_IsEnabled = IsEnabled;
-	assign Emitter_IsEnabled = Inputs_IsEnabled;
 	assign Emitter_Ack = Transmitter_IsReady;
-	assign Transmitter_Trigger = Emitter_HasData;
+	assign Emitter_IsEnabled = Inputs_IsEnabled;
 	assign Transmitter_Ack = Receiver_HasData;
 	assign Transmitter_Data = Emitter_Data;
-	assign Receiver_IsValid = Transmitter_IsTransmitting;
+	assign Transmitter_Trigger = Emitter_HasData;
 	assign Receiver_Ack = CompositionModule_L41F27T31_Expr;
 	assign Receiver_Bit = Transmitter_Bit;
-	assign HasData = Receiver_HasData;
+	assign Receiver_IsValid = Transmitter_IsTransmitting;
 	assign Data = Receiver_Data;
-	assign Emitter_IsEnabled_Emitter_IsEnabled_HardLink = Emitter_IsEnabled;
+	assign HasData = Receiver_HasData;
 	assign Emitter_Ack_Emitter_Ack_HardLink = Emitter_Ack;
+	assign Emitter_IsEnabled_Emitter_IsEnabled_HardLink = Emitter_IsEnabled;
 	assign Emitter_Data = Emitter_Data_Emitter_Data_HardLink;
 	assign Emitter_HasData = Emitter_HasData_Emitter_HasData_HardLink;
-	assign Transmitter_Trigger_Transmitter_Trigger_HardLink = Transmitter_Trigger;
-	assign Transmitter_Ack_Transmitter_Ack_HardLink = Transmitter_Ack;
-	assign Transmitter_Data_Transmitter_Data_HardLink = Transmitter_Data;
-	assign Transmitter_Bit = Transmitter_Bit_Transmitter_Bit_HardLink;
-	assign Transmitter_IsReady = Transmitter_IsReady_Transmitter_IsReady_HardLink;
-	assign Transmitter_IsTransmitting = Transmitter_IsTransmitting_Transmitter_IsTransmitting_HardLink;
-	assign Transmitter_IsTransmissionStarted = Transmitter_IsTransmissionStarted_Transmitter_IsTransmissionStarted_HardLink;
-	assign Receiver_IsValid_Receiver_IsValid_HardLink = Receiver_IsValid;
 	assign Receiver_Ack_Receiver_Ack_HardLink = Receiver_Ack;
 	assign Receiver_Bit_Receiver_Bit_HardLink = Receiver_Bit;
-	assign Receiver_HasData = Receiver_HasData_Receiver_HasData_HardLink;
+	assign Receiver_IsValid_Receiver_IsValid_HardLink = Receiver_IsValid;
 	assign Receiver_Data = Receiver_Data_Receiver_Data_HardLink;
+	assign Receiver_HasData = Receiver_HasData_Receiver_HasData_HardLink;
+	assign Transmitter_Ack_Transmitter_Ack_HardLink = Transmitter_Ack;
+	assign Transmitter_Data_Transmitter_Data_HardLink = Transmitter_Data;
+	assign Transmitter_Trigger_Transmitter_Trigger_HardLink = Transmitter_Trigger;
+	assign Transmitter_Bit = Transmitter_Bit_Transmitter_Bit_HardLink;
+	assign Transmitter_IsReady = Transmitter_IsReady_Transmitter_IsReady_HardLink;
+	assign Transmitter_IsTransmissionStarted = Transmitter_IsTransmissionStarted_Transmitter_IsTransmissionStarted_HardLink;
+	assign Transmitter_IsTransmitting = Transmitter_IsTransmitting_Transmitter_IsTransmitting_HardLink;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

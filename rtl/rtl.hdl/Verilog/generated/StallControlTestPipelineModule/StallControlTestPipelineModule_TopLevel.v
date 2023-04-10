@@ -25,26 +25,26 @@ module StallControlTestPipelineModule_TopLevel
 	// [END USER PORTS]
 	input wire Clock,
 	input wire Reset,
+	input wire stallPipeline,
+	input wire stallPrev,
 	input wire stallStage0,
 	input wire stallStage1,
 	input wire stallStage2,
 	input wire stallStage3,
-	input wire stallPipeline,
-	input wire stallPrev,
-	output wire outResult_pipelineWillStall,
 	output wire outResult_pipelineStalled,
-	output wire outResult_stage0WillStall,
-	output wire outResult_stage0Stalled,
-	output wire outResult_stage1WillStall,
-	output wire outResult_stage1Stalled,
-	output wire outResult_stage2WillStall,
-	output wire outResult_stage2Stalled,
-	output wire outResult_stage3WillStall,
-	output wire outResult_stage3Stalled,
+	output wire outResult_pipelineWillStall,
 	output wire [7:0] outResult_stage0Counter,
+	output wire outResult_stage0Stalled,
+	output wire outResult_stage0WillStall,
 	output wire [7:0] outResult_stage1Counter,
+	output wire outResult_stage1Stalled,
+	output wire outResult_stage1WillStall,
 	output wire [7:0] outResult_stage2Counter,
-	output wire [7:0] outResult_stage3Counter
+	output wire outResult_stage2Stalled,
+	output wire outResult_stage2WillStall,
+	output wire [7:0] outResult_stage3Counter,
+	output wire outResult_stage3Stalled,
+	output wire outResult_stage3WillStall
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -58,45 +58,45 @@ module StallControlTestPipelineModule_TopLevel
 	wire Pipeline_StallControlTestPipelineModule_L107F17L117T18_StallControlTestPipelineModule_L115F70T71_Expr = 1'b1;
 	wire Pipeline_StallControlTestPipelineModule_L119F17L130T18_StallControlTestPipelineModule_L128F70T71_Expr = 1'b1;
 	wire Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L142F70T71_Expr = 1'b1;
+	wire Inputs_stallPipeline;
+	wire Inputs_stallPrev;
 	wire Inputs_stallStage0;
 	wire Inputs_stallStage1;
 	wire Inputs_stallStage2;
 	wire Inputs_stallStage3;
-	wire Inputs_stallPipeline;
-	wire Inputs_stallPrev;
 	wire Pipeline_PipelinePreview_PipelineWillStall;
 	reg [7: 0] Pipeline_stage0_NextState_stage0Counter;
 	wire Pipeline_stage0_Preview_StageWillStall;
 	reg Pipeline_stage0_Request_StallPipeline = 1'b0;
-	reg Pipeline_stage0_Request_StallSelf = 1'b0;
 	reg Pipeline_stage0_Request_StallPrev = 1'b0;
+	reg Pipeline_stage0_Request_StallSelf = 1'b0;
 	reg [7: 0] Pipeline_stage1_NextState_stage0Counter;
 	reg [7: 0] Pipeline_stage1_NextState_stage1Counter;
 	wire Pipeline_stage1_Preview_StageWillStall;
 	reg Pipeline_stage1_Request_StallPipeline = 1'b0;
-	reg Pipeline_stage1_Request_StallSelf = 1'b0;
 	reg Pipeline_stage1_Request_StallPrev = 1'b0;
+	reg Pipeline_stage1_Request_StallSelf = 1'b0;
 	reg [7: 0] Pipeline_stage2_NextState_stage0Counter;
 	reg [7: 0] Pipeline_stage2_NextState_stage1Counter;
 	reg [7: 0] Pipeline_stage2_NextState_stage2Counter;
 	wire Pipeline_stage2_Preview_StageWillStall;
 	reg Pipeline_stage2_Request_StallPipeline = 1'b0;
-	reg Pipeline_stage2_Request_StallSelf = 1'b0;
 	reg Pipeline_stage2_Request_StallPrev = 1'b0;
+	reg Pipeline_stage2_Request_StallSelf = 1'b0;
 	reg [7: 0] Pipeline_stage3_NextState_stage0Counter;
 	reg [7: 0] Pipeline_stage3_NextState_stage1Counter;
 	reg [7: 0] Pipeline_stage3_NextState_stage2Counter;
 	reg [7: 0] Pipeline_stage3_NextState_stage3Counter;
 	wire Pipeline_stage3_Preview_StageWillStall;
 	reg Pipeline_stage3_Request_StallPipeline = 1'b0;
-	reg Pipeline_stage3_Request_StallSelf = 1'b0;
 	reg Pipeline_stage3_Request_StallPrev = 1'b0;
+	reg Pipeline_stage3_Request_StallSelf = 1'b0;
+	wire Pipeline_Inputs_stallPipeline;
+	wire Pipeline_Inputs_stallPrev;
 	wire Pipeline_Inputs_stallStage0;
 	wire Pipeline_Inputs_stallStage1;
 	wire Pipeline_Inputs_stallStage2;
 	wire Pipeline_Inputs_stallStage3;
-	wire Pipeline_Inputs_stallPipeline;
-	wire Pipeline_Inputs_stallPrev;
 	wire [7: 0] Pipeline_State_stage0Counter;
 	wire [7: 0] Pipeline_State_stage1Counter;
 	wire [7: 0] Pipeline_State_stage2Counter;
@@ -505,12 +505,12 @@ module StallControlTestPipelineModule_TopLevel
 	assign Pipeline_StallControlTestPipelineModule_L119F17L130T18_StallControlTestPipelineModule_L128F48T71_Expr_2 = { {9{1'b0}}, Pipeline_StallControlTestPipelineModule_L119F17L130T18_StallControlTestPipelineModule_L128F70T71_Expr };
 	assign Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L142F48T71_Expr_1 = { {2{1'b0}}, Pipeline_stage3_State_stage3Counter };
 	assign Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L142F48T71_Expr_2 = { {9{1'b0}}, Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L142F70T71_Expr };
+	assign Inputs_stallPipeline = stallPipeline;
+	assign Inputs_stallPrev = stallPrev;
 	assign Inputs_stallStage0 = stallStage0;
 	assign Inputs_stallStage1 = stallStage1;
 	assign Inputs_stallStage2 = stallStage2;
 	assign Inputs_stallStage3 = stallStage3;
-	assign Inputs_stallPipeline = stallPipeline;
-	assign Inputs_stallPrev = stallPrev;
 	assign Pipeline_PipelinePreview_PipelineWillStall = Pipeline_PipelinePreview_PipelineWillStall_Source;
 	assign Pipeline_stage0_Preview_StageWillStall = Pipeline_stage0_Preview_StageWillStall_Source;
 	assign Pipeline_stage1_Preview_StageWillStall = Pipeline_stage1_Preview_StageWillStall_Source;
@@ -528,26 +528,26 @@ module StallControlTestPipelineModule_TopLevel
 	assign Pipeline_StallControlTestPipelineModule_L107F17L117T18_StallControlTestPipelineModule_L115F41T72_Cast = Pipeline_StallControlTestPipelineModule_L107F17L117T18_StallControlTestPipelineModule_L115F48T71_Expr[7:0];
 	assign Pipeline_StallControlTestPipelineModule_L119F17L130T18_StallControlTestPipelineModule_L128F41T72_Cast = Pipeline_StallControlTestPipelineModule_L119F17L130T18_StallControlTestPipelineModule_L128F48T71_Expr[7:0];
 	assign Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L142F41T72_Cast = Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L142F48T71_Expr[7:0];
-	assign outResult_pipelineWillStall = Pipeline_PipelinePreview_PipelineWillStall;
 	assign outResult_pipelineStalled = Pipeline_PipelineControl_PipelineStalled;
-	assign outResult_stage0WillStall = Pipeline_stage0_Preview_StageWillStall;
-	assign outResult_stage0Stalled = Pipeline_stage0_Control_StageStalled;
-	assign outResult_stage1WillStall = Pipeline_stage1_Preview_StageWillStall;
-	assign outResult_stage1Stalled = Pipeline_stage1_Control_StageStalled;
-	assign outResult_stage2WillStall = Pipeline_stage2_Preview_StageWillStall;
-	assign outResult_stage2Stalled = Pipeline_stage2_Control_StageStalled;
-	assign outResult_stage3WillStall = Pipeline_stage3_Preview_StageWillStall;
-	assign outResult_stage3Stalled = Pipeline_stage3_Control_StageStalled;
+	assign outResult_pipelineWillStall = Pipeline_PipelinePreview_PipelineWillStall;
 	assign outResult_stage0Counter = Pipeline_State_stage0Counter;
+	assign outResult_stage0Stalled = Pipeline_stage0_Control_StageStalled;
+	assign outResult_stage0WillStall = Pipeline_stage0_Preview_StageWillStall;
 	assign outResult_stage1Counter = Pipeline_State_stage1Counter;
+	assign outResult_stage1Stalled = Pipeline_stage1_Control_StageStalled;
+	assign outResult_stage1WillStall = Pipeline_stage1_Preview_StageWillStall;
 	assign outResult_stage2Counter = Pipeline_State_stage2Counter;
+	assign outResult_stage2Stalled = Pipeline_stage2_Control_StageStalled;
+	assign outResult_stage2WillStall = Pipeline_stage2_Preview_StageWillStall;
 	assign outResult_stage3Counter = Pipeline_State_stage3Counter;
+	assign outResult_stage3Stalled = Pipeline_stage3_Control_StageStalled;
+	assign outResult_stage3WillStall = Pipeline_stage3_Preview_StageWillStall;
+	assign Pipeline_Inputs_stallPipeline = Inputs_stallPipeline;
+	assign Pipeline_Inputs_stallPrev = Inputs_stallPrev;
 	assign Pipeline_Inputs_stallStage0 = Inputs_stallStage0;
 	assign Pipeline_Inputs_stallStage1 = Inputs_stallStage1;
 	assign Pipeline_Inputs_stallStage2 = Inputs_stallStage2;
 	assign Pipeline_Inputs_stallStage3 = Inputs_stallStage3;
-	assign Pipeline_Inputs_stallPipeline = Inputs_stallPipeline;
-	assign Pipeline_Inputs_stallPrev = Inputs_stallPrev;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

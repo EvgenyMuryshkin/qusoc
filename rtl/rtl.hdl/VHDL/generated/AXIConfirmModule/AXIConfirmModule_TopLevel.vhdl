@@ -26,9 +26,9 @@ entity AXIConfirmModule_TopLevel is
 		-- [END USER PORTS]
 		Clock : in std_logic;
 		Reset : in std_logic;
-		inValid : in std_logic;
 		inReady : in std_logic;
 		inRestart : in std_logic;
+		inValid : in std_logic;
 		outConfirmed : out std_logic;
 		outConfirming : out std_logic;
 		outReady : out std_logic
@@ -52,9 +52,9 @@ architecture rtl of AXIConfirmModule_TopLevel is
 	constant AXIConfirmModule_L26F51T76_Expr : std_logic := '0';
 	constant AXIConfirmModule_L26F97T126_Expr : std_logic := '1';
 	constant AXIConfirmModule_L27F64T89_Expr : std_logic := '0';
-	signal Inputs_inValid : std_logic := '0';
 	signal Inputs_inReady : std_logic := '0';
 	signal Inputs_inRestart : std_logic := '0';
+	signal Inputs_inValid : std_logic := '0';
 	signal NextState_fsm : std_logic := '0';
 	signal State_fsm : std_logic := '0';
 	constant State_fsmDefault : std_logic := '0';
@@ -151,9 +151,9 @@ begin
 		AXIConfirmModule_L26F38T126_Expr_2 <= AXIConfirmModule_L26F80T126_Expr;
 		AXIConfirmModule_L27F33T89_Expr_1 <= Inputs_inReady;
 		AXIConfirmModule_L27F33T89_Expr_2 <= AXIConfirmModule_L27F51T89_Expr;
-		Inputs_inValid <= inValid;
 		Inputs_inReady <= inReady;
 		Inputs_inRestart <= inRestart;
+		Inputs_inValid <= inValid;
 		outConfirmed <= AXIConfirmModule_L25F37T79_Expr;
 		outConfirming <= AXIConfirmModule_L26F38T126_Expr;
 		outReady <= AXIConfirmModule_L27F33T89_Expr;

@@ -117,7 +117,7 @@ namespace fir.modules
             // GEN_ramd
             foreach (var a in range(firParams.Order))
             {
-                ramd_dout[a].i = u_ram_srls_i[a].DOUT;//dbg
+                ramd_dout[a].i = u_ram_srls_i[a].DOUT;
                 ramd_dout[a].q = u_ram_srls_q[a].DOUT;
             }
 

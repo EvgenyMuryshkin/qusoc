@@ -25,16 +25,16 @@ module OverrideScheduleComposition_TopLevel
 	// [END USER PORTS]
 	input wire InOverride,
 	input wire [7:0] InValue,
-	output wire [7:0] NoOverrideValue,
 	output wire [7:0] AutoOverrideValue,
+	output wire [7:0] GetValue,
 	output wire [7:0] L1Value,
 	output wire [7:0] L2Value,
 	output wire [7:0] L3Value,
-	output wire [7:0] GetValue,
-	output wire RawInputs_InOverride,
-	output wire [7:0] RawInputs_InValue,
+	output wire [7:0] NoOverrideValue,
 	output wire OverrideInputs_InOverride,
-	output wire [7:0] OverrideInputs_InValue
+	output wire [7:0] OverrideInputs_InValue,
+	output wire RawInputs_InOverride,
+	output wire [7:0] RawInputs_InValue
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -49,9 +49,6 @@ module OverrideScheduleComposition_TopLevel
 	wire ModulesInputs_InOverride;
 	wire [7: 0] ModulesInputs_InValue;
 	wire [7: 0] InvertedInput;
-	wire NoOverride_InOverride;
-	wire [7: 0] NoOverride_InValue;
-	wire [7: 0] NoOverride_OutValue;
 	wire AutoOverride_InOverride;
 	wire [7: 0] AutoOverride_InValue;
 	wire [7: 0] AutoOverride_OutValue;
@@ -67,9 +64,9 @@ module OverrideScheduleComposition_TopLevel
 	wire L3Override_InOverride;
 	wire [7: 0] L3Override_InValue;
 	wire [7: 0] L3Override_OutValue;
-	wire NoOverride_InOverride_NoOverride_InOverride_HardLink;
-	wire [7: 0] NoOverride_InValue_NoOverride_InValue_HardLink;
-	wire [7: 0] NoOverride_OutValue_NoOverride_OutValue_HardLink;
+	wire NoOverride_InOverride;
+	wire [7: 0] NoOverride_InValue;
+	wire [7: 0] NoOverride_OutValue;
 	wire AutoOverride_InOverride_AutoOverride_InOverride_HardLink;
 	wire [7: 0] AutoOverride_InValue_AutoOverride_InValue_HardLink;
 	wire [7: 0] AutoOverride_OutValue_AutoOverride_OutValue_HardLink;
@@ -85,21 +82,15 @@ module OverrideScheduleComposition_TopLevel
 	wire L3Override_InOverride_L3Override_InOverride_HardLink;
 	wire [7: 0] L3Override_InValue_L3Override_InValue_HardLink;
 	wire [7: 0] L3Override_OutValue_L3Override_OutValue_HardLink;
+	wire NoOverride_InOverride_NoOverride_InOverride_HardLink;
+	wire [7: 0] NoOverride_InValue_NoOverride_InValue_HardLink;
+	wire [7: 0] NoOverride_OutValue_NoOverride_OutValue_HardLink;
 	wire OverrideInputsComposition_L14F30T48_Expr;
 	wire OverrideInputsComposition_L14F30T48_Expr_1;
 	wire [7: 0] OverrideInputsComposition_L7F38T72_Expr;
 	wire [7: 0] OverrideInputsComposition_L7F38T72_Expr_1;
 	assign OverrideInputsComposition_L14F30T48_Expr = ~OverrideInputsComposition_L14F30T48_Expr_1;
 	assign OverrideInputsComposition_L7F38T72_Expr = ~OverrideInputsComposition_L7F38T72_Expr_1;
-	OverrideScheduleComposition_TopLevel_NoOverride
-	OverrideScheduleComposition_TopLevel_NoOverride
-	(
-		// [BEGIN USER MAP FOR NoOverride]
-		// [END USER MAP FOR NoOverride]
-		.InOverride (NoOverride_InOverride_NoOverride_InOverride_HardLink),
-		.InValue (NoOverride_InValue_NoOverride_InValue_HardLink),
-		.OutValue (NoOverride_OutValue_NoOverride_OutValue_HardLink)
-	);
 	OverrideScheduleComposition_TopLevel_AutoOverride
 	OverrideScheduleComposition_TopLevel_AutoOverride
 	(
@@ -145,6 +136,15 @@ module OverrideScheduleComposition_TopLevel
 		.InValue (L3Override_InValue_L3Override_InValue_HardLink),
 		.OutValue (L3Override_OutValue_L3Override_OutValue_HardLink)
 	);
+	OverrideScheduleComposition_TopLevel_NoOverride
+	OverrideScheduleComposition_TopLevel_NoOverride
+	(
+		// [BEGIN USER MAP FOR NoOverride]
+		// [END USER MAP FOR NoOverride]
+		.InOverride (NoOverride_InOverride_NoOverride_InOverride_HardLink),
+		.InValue (NoOverride_InValue_NoOverride_InValue_HardLink),
+		.OutValue (NoOverride_OutValue_NoOverride_OutValue_HardLink)
+	);
 	assign OverrideInputsComposition_L14F30T48_Expr_1 = Inputs_InOverride;
 	assign OverrideInputsComposition_L7F38T72_Expr_1 = Inputs_InValue;
 	assign Inputs_InOverride = InOverride;
@@ -164,19 +164,16 @@ module OverrideScheduleComposition_TopLevel
 	assign NoOverride_InValue = Inputs_InValue;
 	assign AutoOverride_InOverride = Inputs_InOverride;
 	assign AutoOverride_InValue = Inputs_InValue;
-	assign NoOverrideValue = NoOverride_OutValue;
 	assign AutoOverrideValue = AutoOverride_OutValue;
+	assign GetValue = GetOverride_OutValue;
 	assign L1Value = L1Override_OutValue;
 	assign L2Value = L2Override_OutValue;
 	assign L3Value = L3Override_OutValue;
-	assign GetValue = GetOverride_OutValue;
-	assign RawInputs_InOverride = Inputs_InOverride;
-	assign RawInputs_InValue = Inputs_InValue;
+	assign NoOverrideValue = NoOverride_OutValue;
 	assign OverrideInputs_InOverride = ModulesInputs_InOverride;
 	assign OverrideInputs_InValue = ModulesInputs_InValue;
-	assign NoOverride_InOverride_NoOverride_InOverride_HardLink = NoOverride_InOverride;
-	assign NoOverride_InValue_NoOverride_InValue_HardLink = NoOverride_InValue;
-	assign NoOverride_OutValue = NoOverride_OutValue_NoOverride_OutValue_HardLink;
+	assign RawInputs_InOverride = Inputs_InOverride;
+	assign RawInputs_InValue = Inputs_InValue;
 	assign AutoOverride_InOverride_AutoOverride_InOverride_HardLink = AutoOverride_InOverride;
 	assign AutoOverride_InValue_AutoOverride_InValue_HardLink = AutoOverride_InValue;
 	assign AutoOverride_OutValue = AutoOverride_OutValue_AutoOverride_OutValue_HardLink;
@@ -192,6 +189,9 @@ module OverrideScheduleComposition_TopLevel
 	assign L3Override_InOverride_L3Override_InOverride_HardLink = L3Override_InOverride;
 	assign L3Override_InValue_L3Override_InValue_HardLink = L3Override_InValue;
 	assign L3Override_OutValue = L3Override_OutValue_L3Override_OutValue_HardLink;
+	assign NoOverride_InOverride_NoOverride_InOverride_HardLink = NoOverride_InOverride;
+	assign NoOverride_InValue_NoOverride_InValue_HardLink = NoOverride_InValue;
+	assign NoOverride_OutValue = NoOverride_OutValue_NoOverride_OutValue_HardLink;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

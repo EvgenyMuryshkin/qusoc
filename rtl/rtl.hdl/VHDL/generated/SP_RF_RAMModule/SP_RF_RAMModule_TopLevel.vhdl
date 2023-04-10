@@ -27,8 +27,8 @@ entity SP_RF_RAMModule_TopLevel is
 		Clock : in std_logic;
 		Reset : in std_logic;
 		Address : in unsigned (7 downto 0);
-		WriteData : in unsigned (7 downto 0);
 		WE : in std_logic;
+		WriteData : in unsigned (7 downto 0);
 		Data : out unsigned (7 downto 0)
 	);
 end entity;
@@ -44,8 +44,8 @@ architecture rtl of SP_RF_RAMModule_TopLevel is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	signal Inputs_Address : unsigned(7 downto 0) := (others => '0');
-	signal Inputs_WriteData : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_WE : std_logic := '0';
+	signal Inputs_WriteData : unsigned(7 downto 0) := (others => '0');
 	signal State_ReadData : unsigned(7 downto 0) := (others => '0');
 	type State_BuffArray is array (0 to 255) of unsigned (7 downto 0);
 	signal State_Buff : State_BuffArray := (others => (others => '0'));
@@ -53,8 +53,8 @@ begin
 	process (Address, State_ReadData, WE, WriteData)
 	begin
 		Inputs_Address <= Address;
-		Inputs_WriteData <= WriteData;
 		Inputs_WE <= WE;
+		Inputs_WriteData <= WriteData;
 		Data <= State_ReadData;
 	end process;
 	-- inferred single port RAM with read-first behaviour

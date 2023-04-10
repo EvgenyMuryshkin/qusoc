@@ -25,11 +25,11 @@ entity FIRStageModule16_TopLevel_TopLevel_dsp is
 		-- [BEGIN USER PORTS]
 		-- [END USER PORTS]
 		BoardSignals : in BoardSignalsType;
-		iIQ : in unsigned (15 downto 0);
-		iFILO : in unsigned (15 downto 0);
-		iCoeff : in unsigned (15 downto 0);
 		iAccum : in unsigned (32 downto 0);
+		iCoeff : in unsigned (15 downto 0);
+		iFILO : in unsigned (15 downto 0);
 		iInternalFeedbackSelector : in std_logic;
+		iIQ : in unsigned (15 downto 0);
 		oAccum : out unsigned (32 downto 0)
 	);
 end entity;
@@ -44,11 +44,11 @@ architecture rtl of FIRStageModule16_TopLevel_TopLevel_dsp is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_iIQ : unsigned(15 downto 0) := (others => '0');
-	signal Inputs_iFILO : unsigned(15 downto 0) := (others => '0');
-	signal Inputs_iCoeff : unsigned(15 downto 0) := (others => '0');
 	signal Inputs_iAccum : unsigned(32 downto 0) := (others => '0');
+	signal Inputs_iCoeff : unsigned(15 downto 0) := (others => '0');
+	signal Inputs_iFILO : unsigned(15 downto 0) := (others => '0');
 	signal Inputs_iInternalFeedbackSelector : std_logic := '0';
+	signal Inputs_iIQ : unsigned(15 downto 0) := (others => '0');
 begin
 	u_dsp48e1 : entity DSP48E1
 	generic map

@@ -6,7 +6,7 @@ namespace RTL.Modules
     public class IOTupleModuleInputsObjectL2
     {
         public bool L2Flag;
-        //public bool[] L2Values = new bool[2] { true, true };
+        public bool[] L2Values = new bool[2] { true, true };
     }
 
     public class IOTupleModuleInputsObjectL1
@@ -19,19 +19,29 @@ namespace RTL.Modules
     public class IOTupleModuleInputs
     {
         public Tuple<bool, byte, RTLBitArray, IOTupleModuleInputsObjectL1> iTuple = new Tuple<bool, byte, RTLBitArray, IOTupleModuleInputsObjectL1>(false, byte.MinValue, new RTLBitArray().Resized(4), new IOTupleModuleInputsObjectL1());
+        public (bool, (bool, RTLBitArray, bool))[] iTupleArray = new[] 
+        { 
+            (false, (false, new RTLBitArray(byte.MinValue), false)), 
+            (false, (false, new RTLBitArray(byte.MinValue), false)) 
+        };  
     }
 
     public class IOTupleModuleState
     {
         public Tuple<bool, byte, RTLBitArray, IOTupleModuleInputsObjectL1> sTuple = new Tuple<bool, byte, RTLBitArray, IOTupleModuleInputsObjectL1>(false, byte.MinValue, new RTLBitArray().Resized(4), new IOTupleModuleInputsObjectL1());
         public (bool, byte, RTLBitArray, IOTupleModuleInputsObjectL1) sahTuple = (false, byte.MinValue, new RTLBitArray().Resized(4), new IOTupleModuleInputsObjectL1());
+        public (bool, byte, RTLBitArray, IOTupleModuleInputsObjectL1)[] buffTuple = new (bool, byte, RTLBitArray, IOTupleModuleInputsObjectL1)[] 
+        { 
+            (false, byte.MinValue, new RTLBitArray().Resized(4), new IOTupleModuleInputsObjectL1()),
+            (false, byte.MinValue, new RTLBitArray().Resized(4), new IOTupleModuleInputsObjectL1())
+        };
     }
 
     public class IOTupleModule : RTLSynchronousModule<IOTupleModuleInputs, IOTupleModuleState>
     {
         public Tuple<bool, byte, RTLBitArray, IOTupleModuleInputsObjectL1> oiTuple 
             => Inputs.iTuple;
-        /*public Tuple<bool, byte, RTLBitArray, IOTupleModuleInputsObjectL1> osTuple 
+        public Tuple<bool, byte, RTLBitArray, IOTupleModuleInputsObjectL1> osTuple 
             => State.sTuple;
         public (bool, byte, RTLBitArray, IOTupleModuleInputsObjectL1) ocTuple 
             => (Inputs.iTuple.Item1, Inputs.iTuple.Item2, State.sTuple.Item3, State.sTuple.Item4);
@@ -57,11 +67,25 @@ namespace RTL.Modules
 
         public Tuple<bool, byte, RTLBitArray, IOTupleModuleInputsObjectL1> otTuple 
             => Inputs.iTuple.Item1 ? Inputs.iTuple : State.sTuple;
-        */
+
+
+        public (bool, byte, RTLBitArray, IOTupleModuleInputsObjectL1) oBuffTuple
+            => State.buffTuple[1];
+
+        public (bool, (bool, RTLBitArray, bool))[] oTupleArray => Inputs.iTupleArray;
+        public bool oTupleArrayItem => Inputs.iTupleArray[1].Item1;
+        public (bool, (bool, RTLBitArray, bool)) oTupleArrayElement => Inputs.iTupleArray[1];
+        public bool oTupleArrayItem1 => Inputs.iTupleArray[1].Item1;
+        public bool oTupleArraySubItem1 => Inputs.iTupleArray[1].Item2.Item1;
+        public RTLBitArray oTupleArraySubItem2 => Inputs.iTupleArray[1].Item2.Item2;
+        public RTLBitArray oTupleArraySubItemRange => Inputs.iTupleArray[1].Item2.Item2[4, 1];
+
         protected override void OnStage()
         {
-            //NextState.sTuple = Inputs.iTuple;
-            //NextState.sahTuple = (Inputs.iTuple.Item1, Inputs.iTuple.Item2, Inputs.iTuple.Item3, Inputs.iTuple.Item4);
+            NextState.sTuple = Inputs.iTuple;
+            NextState.sahTuple = (Inputs.iTuple.Item1, Inputs.iTuple.Item2, Inputs.iTuple.Item3, Inputs.iTuple.Item4);
+            NextState.buffTuple[0] = (Inputs.iTuple.Item1, Inputs.iTuple.Item2, Inputs.iTuple.Item3, Inputs.iTuple.Item4);
+            NextState.buffTuple[1] = State.buffTuple[0];
         }
     }
 }

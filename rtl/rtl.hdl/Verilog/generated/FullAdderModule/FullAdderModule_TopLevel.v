@@ -26,8 +26,8 @@ module FullAdderModule_TopLevel
 	input wire A,
 	input wire B,
 	input wire CIn,
-	output wire O,
-	output wire COut
+	output wire COut,
+	output wire O
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -44,9 +44,6 @@ module FullAdderModule_TopLevel
 	wire FullAdder_L14F27T46_Expr;
 	wire FullAdder_L14F27T46_Expr_1;
 	wire FullAdder_L14F27T46_Expr_2;
-	wire FullAdder_L16F26T40_Expr;
-	wire FullAdder_L16F26T40_Expr_1;
-	wire FullAdder_L16F26T40_Expr_2;
 	wire FullAdder_L17F29T70_Expr;
 	wire FullAdder_L17F29T70_Expr_1;
 	wire FullAdder_L17F29T70_Expr_2;
@@ -56,27 +53,30 @@ module FullAdderModule_TopLevel
 	wire FullAdder_L17F55T69_Expr;
 	wire FullAdder_L17F55T69_Expr_1;
 	wire FullAdder_L17F55T69_Expr_2;
+	wire FullAdder_L16F26T40_Expr;
+	wire FullAdder_L16F26T40_Expr_1;
+	wire FullAdder_L16F26T40_Expr_2;
 	assign FullAdder_L14F27T46_Expr = FullAdder_L14F27T46_Expr_1 ^ FullAdder_L14F27T46_Expr_2;
-	assign FullAdder_L16F26T40_Expr = FullAdder_L16F26T40_Expr_1 ^ FullAdder_L16F26T40_Expr_2;
 	assign FullAdder_L17F29T70_Expr = FullAdder_L17F29T70_Expr_1 | FullAdder_L17F29T70_Expr_2;
 	assign FullAdder_L17F30T49_Expr = FullAdder_L17F30T49_Expr_1 & FullAdder_L17F30T49_Expr_2;
 	assign FullAdder_L17F55T69_Expr = FullAdder_L17F55T69_Expr_1 & FullAdder_L17F55T69_Expr_2;
+	assign FullAdder_L16F26T40_Expr = FullAdder_L16F26T40_Expr_1 ^ FullAdder_L16F26T40_Expr_2;
 	assign FullAdder_L14F27T46_Expr_1 = Inputs_A;
 	assign FullAdder_L14F27T46_Expr_2 = Inputs_B;
-	assign FullAdder_L16F26T40_Expr_1 = P;
-	assign FullAdder_L16F26T40_Expr_2 = Inputs_CIn;
 	assign FullAdder_L17F29T70_Expr_1 = FullAdder_L17F30T49_Expr;
 	assign FullAdder_L17F29T70_Expr_2 = FullAdder_L17F55T69_Expr;
 	assign FullAdder_L17F30T49_Expr_1 = Inputs_A;
 	assign FullAdder_L17F30T49_Expr_2 = Inputs_B;
 	assign FullAdder_L17F55T69_Expr_1 = P;
 	assign FullAdder_L17F55T69_Expr_2 = Inputs_CIn;
+	assign FullAdder_L16F26T40_Expr_1 = P;
+	assign FullAdder_L16F26T40_Expr_2 = Inputs_CIn;
 	assign Inputs_A = A;
 	assign Inputs_B = B;
 	assign Inputs_CIn = CIn;
 	assign P = FullAdder_L14F27T46_Expr;
-	assign O = FullAdder_L16F26T40_Expr;
 	assign COut = FullAdder_L17F29T70_Expr;
+	assign O = FullAdder_L16F26T40_Expr;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

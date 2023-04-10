@@ -26,8 +26,8 @@ entity TuplesModule_TopLevel is
 		-- [END USER PORTS]
 		Value1 : in std_logic;
 		Value2 : in std_logic;
-		Same : out std_logic;
-		Diff : out std_logic
+		Diff : out std_logic;
+		Same : out std_logic
 	);
 end entity;
 -- FSM summary
@@ -75,8 +75,8 @@ begin
 		Inputs_Value2 <= Value2;
 		Logic_Item1 <= TuplesModule_L16F13L21T14_same;
 		Logic_Item2 <= TuplesModule_L16F13L21T14_diff;
-		Same <= Logic_Item1;
 		Diff <= Logic_Item2;
+		Same <= Logic_Item1;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

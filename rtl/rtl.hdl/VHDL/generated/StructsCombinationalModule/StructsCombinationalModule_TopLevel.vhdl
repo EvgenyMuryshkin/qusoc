@@ -26,20 +26,20 @@ entity StructsCombinationalModule_TopLevel is
 		-- [END USER PORTS]
 		In_Op1 : in unsigned (7 downto 0);
 		In_Op2 : in unsigned (7 downto 0);
+		Default1_Op1 : out unsigned (7 downto 0);
+		Default1_Op2 : out unsigned (7 downto 0);
+		Default2_Op1 : out unsigned (7 downto 0);
+		Default2_Op2 : out unsigned (7 downto 0);
 		Op1 : out unsigned (7 downto 0);
-		Sum : out unsigned (7 downto 0);
 		OutDirect_Op1 : out unsigned (7 downto 0);
 		OutDirect_Op2 : out unsigned (7 downto 0);
 		OutInternal_Op1 : out unsigned (7 downto 0);
 		OutInternal_Op2 : out unsigned (7 downto 0);
-		OutSwapped_Op1 : out unsigned (7 downto 0);
-		OutSwapped_Op2 : out unsigned (7 downto 0);
 		OutMath_Op1 : out unsigned (7 downto 0);
 		OutMath_Op2 : out unsigned (7 downto 0);
-		Default1_Op1 : out unsigned (7 downto 0);
-		Default1_Op2 : out unsigned (7 downto 0);
-		Default2_Op1 : out unsigned (7 downto 0);
-		Default2_Op2 : out unsigned (7 downto 0)
+		OutSwapped_Op1 : out unsigned (7 downto 0);
+		OutSwapped_Op2 : out unsigned (7 downto 0);
+		Sum : out unsigned (7 downto 0)
 	);
 end entity;
 -- FSM summary
@@ -106,18 +106,6 @@ begin
 		internalDirect_Op2 <= Inputs_In_Op2;
 		StructsModule_L25F29T66_Cast <= StructsModule_L25F36T65_Expr(7 downto 0);
 		internalSum <= StructsModule_L25F29T66_Cast;
-		Op1 <= Inputs_In_Op1;
-		Sum <= internalSum;
-		OutDirect_Op1 <= Inputs_In_Op1;
-		OutDirect_Op2 <= Inputs_In_Op2;
-		OutInternal_Op1 <= internalDirect_Op1;
-		OutInternal_Op2 <= internalDirect_Op2;
-		OutSwapped_Op1 <= Inputs_In_Op2;
-		OutSwapped_Op2 <= Inputs_In_Op1;
-		StructsModule_L34F19T56_Cast <= StructsModule_L34F26T55_Expr(7 downto 0);
-		StructsModule_L35F19T56_Cast <= unsigned(StructsModule_L35F26T55_Expr(7 downto 0));
-		OutMath_Op1 <= StructsModule_L34F19T56_Cast;
-		OutMath_Op2 <= StructsModule_L35F19T56_Cast;
 		Default1_Op1(7 downto 6) <= (others => '0');
 		Default1_Op1(5 downto 0) <= StructsModule_L38F52T54_Expr;
 		Default1_Op2(7 downto 5) <= (others => '0');
@@ -126,6 +114,18 @@ begin
 		Default2_Op1(3 downto 0) <= StructsModule_L11F27T29_Expr;
 		Default2_Op2(7 downto 5) <= (others => '0');
 		Default2_Op2(4 downto 0) <= StructsModule_L14F27T29_Expr;
+		Op1 <= Inputs_In_Op1;
+		OutDirect_Op1 <= Inputs_In_Op1;
+		OutDirect_Op2 <= Inputs_In_Op2;
+		OutInternal_Op1 <= internalDirect_Op1;
+		OutInternal_Op2 <= internalDirect_Op2;
+		StructsModule_L34F19T56_Cast <= StructsModule_L34F26T55_Expr(7 downto 0);
+		StructsModule_L35F19T56_Cast <= unsigned(StructsModule_L35F26T55_Expr(7 downto 0));
+		OutMath_Op1 <= StructsModule_L34F19T56_Cast;
+		OutMath_Op2 <= StructsModule_L35F19T56_Cast;
+		OutSwapped_Op1 <= Inputs_In_Op2;
+		OutSwapped_Op2 <= Inputs_In_Op1;
+		Sum <= internalSum;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

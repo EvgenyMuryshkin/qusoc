@@ -26,22 +26,22 @@ entity FIRStageModule16_TopLevel_TopLevel is
 		-- [END USER PORTS]
 		Clock : in std_logic;
 		Reset : in std_logic;
-		iIQ : in unsigned (15 downto 0);
-		iDO : in unsigned (3 downto 0);
-		iFILO : in unsigned (15 downto 0);
 		iAccum : in unsigned (32 downto 0);
-		iInternalFeedbackSelector : in std_logic;
+		iCoeffData : in unsigned (15 downto 0);
 		iCoeffReadAddr : in unsigned (1 downto 0);
 		iCoeffWE : in std_logic;
 		iCoeffWriteAddr : in unsigned (1 downto 0);
-		iCoeffData : in unsigned (15 downto 0);
+		iData : in unsigned (15 downto 0);
 		iDataReadAddr : in unsigned (7 downto 0);
 		iDataWE : in std_logic;
-		iData : in unsigned (15 downto 0);
 		iDataWriteAddr : in unsigned (7 downto 0);
-		oIQ : out unsigned (15 downto 0);
+		iDO : in unsigned (3 downto 0);
+		iFILO : in unsigned (15 downto 0);
+		iInternalFeedbackSelector : in std_logic;
+		iIQ : in unsigned (15 downto 0);
+		oAccum : out unsigned (32 downto 0);
 		oData : out unsigned (15 downto 0);
-		oAccum : out unsigned (32 downto 0)
+		oIQ : out unsigned (15 downto 0)
 	);
 end entity;
 -- FSM summary
@@ -55,54 +55,54 @@ architecture rtl of FIRStageModule16_TopLevel_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant firParams_Order : unsigned(2 downto 0) := "100";
+	constant firParams_AccumSize : unsigned(5 downto 0) := "100001";
+	constant firParams_CoeffRamAddrBits : unsigned(1 downto 0) := "10";
+	constant firParams_CoeffSize : unsigned(4 downto 0) := "10000";
+	constant firParams_DataRamAddrBits : unsigned(3 downto 0) := "1000";
 	constant firParams_DOSize : unsigned(2 downto 0) := "100";
 	constant firParams_IQSizeIn : unsigned(4 downto 0) := "10000";
 	constant firParams_IQSizeOut : unsigned(4 downto 0) := "10000";
-	constant firParams_CoeffSize : unsigned(4 downto 0) := "10000";
-	constant firParams_SumSize : unsigned(4 downto 0) := "10001";
 	constant firParams_MultSize : unsigned(5 downto 0) := "100001";
-	constant firParams_AccumSize : unsigned(5 downto 0) := "100001";
-	constant firParams_CoeffRamAddrBits : unsigned(1 downto 0) := "10";
-	constant firParams_DataRamAddrBits : unsigned(3 downto 0) := "1000";
+	constant firParams_Order : unsigned(2 downto 0) := "100";
+	constant firParams_SumSize : unsigned(4 downto 0) := "10001";
 	constant FIRStageModule_L104F49T50_Expr : std_logic := '0';
-	signal Inputs_iIQ : unsigned(15 downto 0) := (others => '0');
-	signal Inputs_iDO : unsigned(3 downto 0) := (others => '0');
-	signal Inputs_iFILO : unsigned(15 downto 0) := (others => '0');
 	signal Inputs_iAccum : unsigned(32 downto 0) := (others => '0');
-	signal Inputs_iInternalFeedbackSelector : std_logic := '0';
+	signal Inputs_iCoeffData : unsigned(15 downto 0) := (others => '0');
 	signal Inputs_iCoeffReadAddr : unsigned(1 downto 0) := (others => '0');
 	signal Inputs_iCoeffWE : std_logic := '0';
 	signal Inputs_iCoeffWriteAddr : unsigned(1 downto 0) := (others => '0');
-	signal Inputs_iCoeffData : unsigned(15 downto 0) := (others => '0');
+	signal Inputs_iData : unsigned(15 downto 0) := (others => '0');
 	signal Inputs_iDataReadAddr : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_iDataWE : std_logic := '0';
-	signal Inputs_iData : unsigned(15 downto 0) := (others => '0');
 	signal Inputs_iDataWriteAddr : unsigned(7 downto 0) := (others => '0');
+	signal Inputs_iDO : unsigned(3 downto 0) := (others => '0');
+	signal Inputs_iFILO : unsigned(15 downto 0) := (others => '0');
+	signal Inputs_iInternalFeedbackSelector : std_logic := '0';
+	signal Inputs_iIQ : unsigned(15 downto 0) := (others => '0');
 	signal NextState_IQ1 : unsigned(15 downto 0) := (others => '0');
 	signal NextState_IQ2 : unsigned(15 downto 0) := (others => '0');
 	signal internalIQ : unsigned(15 downto 0) := (others => '0');
-	signal dsp_iIQ : unsigned(15 downto 0) := (others => '0');
-	signal dsp_iFILO : unsigned(15 downto 0) := (others => '0');
-	signal dsp_iCoeff : unsigned(15 downto 0) := (others => '0');
 	signal dsp_iAccum : unsigned(32 downto 0) := (others => '0');
+	signal dsp_iCoeff : unsigned(15 downto 0) := (others => '0');
+	signal dsp_iFILO : unsigned(15 downto 0) := (others => '0');
 	signal dsp_iInternalFeedbackSelector : std_logic := '0';
+	signal dsp_iIQ : unsigned(15 downto 0) := (others => '0');
 	signal dsp_oAccum : unsigned(32 downto 0) := (others => '0');
 	signal FIRStageModule_L104F35L106T27_WhenTrue : unsigned(15 downto 0) := "0000000000000000";
 	signal FIRStageModule_L104F35L106T27_WhenFalse : unsigned(15 downto 0) := "0000000000000000";
 	signal FIRStageModule_L104F35L106T27_Ternary : unsigned(15 downto 0) := "0000000000000000";
-	signal dsp_iIQ_dsp_iIQ_HardLink : unsigned(15 downto 0) := "0000000000000000";
-	signal dsp_iFILO_dsp_iFILO_HardLink : unsigned(15 downto 0) := "0000000000000000";
-	signal dsp_iCoeff_dsp_iCoeff_HardLink : unsigned(15 downto 0) := "0000000000000000";
 	signal dsp_iAccum_dsp_iAccum_HardLink : unsigned(32 downto 0) := "000000000000000000000000000000000";
+	signal dsp_iCoeff_dsp_iCoeff_HardLink : unsigned(15 downto 0) := "0000000000000000";
+	signal dsp_iFILO_dsp_iFILO_HardLink : unsigned(15 downto 0) := "0000000000000000";
 	signal dsp_iInternalFeedbackSelector_dsp_iInternalFeedbackSelector_HardLink : std_logic := '0';
+	signal dsp_iIQ_dsp_iIQ_HardLink : unsigned(15 downto 0) := "0000000000000000";
 	signal dsp_oAccum_dsp_oAccum_HardLink : unsigned(32 downto 0) := "000000000000000000000000000000000";
+	signal State_coeff : unsigned(15 downto 0) := (others => '0');
+	signal State_data : unsigned(15 downto 0) := (others => '0');
 	signal State_IQ1 : unsigned(15 downto 0) := "0000000000000000";
 	constant State_IQ1Default : unsigned(15 downto 0) := "0000000000000000";
 	signal State_IQ2 : unsigned(15 downto 0) := "0000000000000000";
 	constant State_IQ2Default : unsigned(15 downto 0) := "0000000000000000";
-	signal State_coeff : unsigned(15 downto 0) := (others => '0');
-	signal State_data : unsigned(15 downto 0) := (others => '0');
 	signal FIRStageModule_L104F35T50_Expr : std_logic := '0';
 	signal FIRStageModule_L104F35T50_ExprLhs : signed(4 downto 0) := "00000";
 	signal FIRStageModule_L104F35T50_ExprRhs : signed(4 downto 0) := "00000";
@@ -133,11 +133,11 @@ begin
 		-- [BEGIN USER MAP FOR dsp]
 		-- [END USER MAP FOR dsp]
 		BoardSignals => BoardSignals,
-		iIQ => dsp_iIQ_dsp_iIQ_HardLink,
-		iFILO => dsp_iFILO_dsp_iFILO_HardLink,
-		iCoeff => dsp_iCoeff_dsp_iCoeff_HardLink,
 		iAccum => dsp_iAccum_dsp_iAccum_HardLink,
+		iCoeff => dsp_iCoeff_dsp_iCoeff_HardLink,
+		iFILO => dsp_iFILO_dsp_iFILO_HardLink,
 		iInternalFeedbackSelector => dsp_iInternalFeedbackSelector_dsp_iInternalFeedbackSelector_HardLink,
+		iIQ => dsp_iIQ_dsp_iIQ_HardLink,
 		oAccum => dsp_oAccum_dsp_oAccum_HardLink
 	)
 	;
@@ -155,35 +155,35 @@ begin
 		FIRStageModule_L104F35T50_ExprLhs(3 downto 0) <= signed(Inputs_iDO);
 		FIRStageModule_L104F35T50_ExprRhs(4 downto 1) <= (others => '0');
 		FIRStageModule_L104F35T50_ExprRhs(0) <= FIRStageModule_L104F49T50_Expr;
-		Inputs_iIQ <= iIQ;
-		Inputs_iDO <= iDO;
-		Inputs_iFILO <= iFILO;
 		Inputs_iAccum <= iAccum;
-		Inputs_iInternalFeedbackSelector <= iInternalFeedbackSelector;
+		Inputs_iCoeffData <= iCoeffData;
 		Inputs_iCoeffReadAddr <= iCoeffReadAddr;
 		Inputs_iCoeffWE <= iCoeffWE;
 		Inputs_iCoeffWriteAddr <= iCoeffWriteAddr;
-		Inputs_iCoeffData <= iCoeffData;
+		Inputs_iData <= iData;
 		Inputs_iDataReadAddr <= iDataReadAddr;
 		Inputs_iDataWE <= iDataWE;
-		Inputs_iData <= iData;
 		Inputs_iDataWriteAddr <= iDataWriteAddr;
+		Inputs_iDO <= iDO;
+		Inputs_iFILO <= iFILO;
+		Inputs_iInternalFeedbackSelector <= iInternalFeedbackSelector;
+		Inputs_iIQ <= iIQ;
 		FIRStageModule_L104F35L106T27_WhenTrue <= Inputs_iIQ;
 		FIRStageModule_L104F35L106T27_WhenFalse <= Inputs_iData;
 		internalIQ <= FIRStageModule_L104F35L106T27_Ternary;
-		dsp_iIQ <= internalIQ;
-		dsp_iFILO <= Inputs_iFILO;
-		dsp_iCoeff <= State_coeff;
 		dsp_iAccum <= Inputs_iAccum;
+		dsp_iCoeff <= State_coeff;
+		dsp_iFILO <= Inputs_iFILO;
 		dsp_iInternalFeedbackSelector <= Inputs_iInternalFeedbackSelector;
-		oIQ <= State_IQ2;
-		oData <= State_data;
+		dsp_iIQ <= internalIQ;
 		oAccum <= dsp_oAccum;
-		dsp_iIQ_dsp_iIQ_HardLink <= dsp_iIQ;
-		dsp_iFILO_dsp_iFILO_HardLink <= dsp_iFILO;
-		dsp_iCoeff_dsp_iCoeff_HardLink <= dsp_iCoeff;
+		oData <= State_data;
+		oIQ <= State_IQ2;
 		dsp_iAccum_dsp_iAccum_HardLink <= dsp_iAccum;
+		dsp_iCoeff_dsp_iCoeff_HardLink <= dsp_iCoeff;
+		dsp_iFILO_dsp_iFILO_HardLink <= dsp_iFILO;
 		dsp_iInternalFeedbackSelector_dsp_iInternalFeedbackSelector_HardLink <= dsp_iInternalFeedbackSelector;
+		dsp_iIQ_dsp_iIQ_HardLink <= dsp_iIQ;
 		dsp_oAccum <= dsp_oAccum_dsp_oAccum_HardLink;
 	end process;
 	-- inferred simple dual port RAM with read-first behaviour

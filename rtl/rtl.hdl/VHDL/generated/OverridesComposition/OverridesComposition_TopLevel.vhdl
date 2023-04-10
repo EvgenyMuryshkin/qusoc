@@ -26,12 +26,12 @@ entity OverridesComposition_TopLevel is
 		-- [END USER PORTS]
 		InOverride : in std_logic;
 		InValue : in unsigned (7 downto 0);
-		NoOverrideValue : out unsigned (7 downto 0);
 		AutoOverrideValue : out unsigned (7 downto 0);
+		GetValue : out unsigned (7 downto 0);
 		L1Value : out unsigned (7 downto 0);
 		L2Value : out unsigned (7 downto 0);
 		L3Value : out unsigned (7 downto 0);
-		GetValue : out unsigned (7 downto 0)
+		NoOverrideValue : out unsigned (7 downto 0)
 	);
 end entity;
 -- FSM summary
@@ -49,9 +49,6 @@ architecture rtl of OverridesComposition_TopLevel is
 	signal Inputs_InValue : unsigned(7 downto 0) := (others => '0');
 	signal ModulesInputs_InOverride : std_logic := '0';
 	signal ModulesInputs_InValue : unsigned(7 downto 0) := (others => '0');
-	signal NoOverride_InOverride : std_logic := '0';
-	signal NoOverride_InValue : unsigned(7 downto 0) := (others => '0');
-	signal NoOverride_OutValue : unsigned(7 downto 0) := (others => '0');
 	signal AutoOverride_InOverride : std_logic := '0';
 	signal AutoOverride_InValue : unsigned(7 downto 0) := (others => '0');
 	signal AutoOverride_OutValue : unsigned(7 downto 0) := (others => '0');
@@ -67,9 +64,9 @@ architecture rtl of OverridesComposition_TopLevel is
 	signal L3Override_InOverride : std_logic := '0';
 	signal L3Override_InValue : unsigned(7 downto 0) := (others => '0');
 	signal L3Override_OutValue : unsigned(7 downto 0) := (others => '0');
-	signal NoOverride_InOverride_NoOverride_InOverride_HardLink : std_logic := '0';
-	signal NoOverride_InValue_NoOverride_InValue_HardLink : unsigned(7 downto 0) := "00000000";
-	signal NoOverride_OutValue_NoOverride_OutValue_HardLink : unsigned(7 downto 0) := "00000000";
+	signal NoOverride_InOverride : std_logic := '0';
+	signal NoOverride_InValue : unsigned(7 downto 0) := (others => '0');
+	signal NoOverride_OutValue : unsigned(7 downto 0) := (others => '0');
 	signal AutoOverride_InOverride_AutoOverride_InOverride_HardLink : std_logic := '0';
 	signal AutoOverride_InValue_AutoOverride_InValue_HardLink : unsigned(7 downto 0) := "00000000";
 	signal AutoOverride_OutValue_AutoOverride_OutValue_HardLink : unsigned(7 downto 0) := "00000000";
@@ -85,17 +82,10 @@ architecture rtl of OverridesComposition_TopLevel is
 	signal L3Override_InOverride_L3Override_InOverride_HardLink : std_logic := '0';
 	signal L3Override_InValue_L3Override_InValue_HardLink : unsigned(7 downto 0) := "00000000";
 	signal L3Override_OutValue_L3Override_OutValue_HardLink : unsigned(7 downto 0) := "00000000";
+	signal NoOverride_InOverride_NoOverride_InOverride_HardLink : std_logic := '0';
+	signal NoOverride_InValue_NoOverride_InValue_HardLink : unsigned(7 downto 0) := "00000000";
+	signal NoOverride_OutValue_NoOverride_OutValue_HardLink : unsigned(7 downto 0) := "00000000";
 begin
-	OverridesComposition_TopLevel_NoOverride : entity work.OverridesComposition_TopLevel_NoOverride
-	port map
-	(
-		-- [BEGIN USER MAP FOR NoOverride]
-		-- [END USER MAP FOR NoOverride]
-		InOverride => NoOverride_InOverride_NoOverride_InOverride_HardLink,
-		InValue => NoOverride_InValue_NoOverride_InValue_HardLink,
-		OutValue => NoOverride_OutValue_NoOverride_OutValue_HardLink
-	)
-	;
 	OverridesComposition_TopLevel_AutoOverride : entity work.OverridesComposition_TopLevel_AutoOverride
 	port map
 	(
@@ -146,6 +136,16 @@ begin
 		OutValue => L3Override_OutValue_L3Override_OutValue_HardLink
 	)
 	;
+	OverridesComposition_TopLevel_NoOverride : entity work.OverridesComposition_TopLevel_NoOverride
+	port map
+	(
+		-- [BEGIN USER MAP FOR NoOverride]
+		-- [END USER MAP FOR NoOverride]
+		InOverride => NoOverride_InOverride_NoOverride_InOverride_HardLink,
+		InValue => NoOverride_InValue_NoOverride_InValue_HardLink,
+		OutValue => NoOverride_OutValue_NoOverride_OutValue_HardLink
+	)
+	;
 	process (AutoOverride_InOverride, AutoOverride_InValue, AutoOverride_OutValue, AutoOverride_OutValue_AutoOverride_OutValue_HardLink, GetOverride_InOverride, GetOverride_InValue, GetOverride_OutValue, GetOverride_OutValue_GetOverride_OutValue_HardLink, InOverride, Inputs_InOverride, Inputs_InValue, InValue, L1Override_InOverride, L1Override_InValue, L1Override_OutValue, L1Override_OutValue_L1Override_OutValue_HardLink, L2Override_InOverride, L2Override_InValue, L2Override_OutValue, L2Override_OutValue_L2Override_OutValue_HardLink, L3Override_InOverride, L3Override_InValue, L3Override_OutValue, L3Override_OutValue_L3Override_OutValue_HardLink, ModulesInputs_InOverride, ModulesInputs_InValue, NoOverride_InOverride, NoOverride_InValue, NoOverride_OutValue, NoOverride_OutValue_NoOverride_OutValue_HardLink)
 	begin
 		Inputs_InOverride <= InOverride;
@@ -164,15 +164,12 @@ begin
 		L3Override_InValue <= ModulesInputs_InValue;
 		GetOverride_InOverride <= ModulesInputs_InOverride;
 		GetOverride_InValue <= ModulesInputs_InValue;
-		NoOverrideValue <= NoOverride_OutValue;
 		AutoOverrideValue <= AutoOverride_OutValue;
+		GetValue <= GetOverride_OutValue;
 		L1Value <= L1Override_OutValue;
 		L2Value <= L2Override_OutValue;
 		L3Value <= L3Override_OutValue;
-		GetValue <= GetOverride_OutValue;
-		NoOverride_InOverride_NoOverride_InOverride_HardLink <= NoOverride_InOverride;
-		NoOverride_InValue_NoOverride_InValue_HardLink <= NoOverride_InValue;
-		NoOverride_OutValue <= NoOverride_OutValue_NoOverride_OutValue_HardLink;
+		NoOverrideValue <= NoOverride_OutValue;
 		AutoOverride_InOverride_AutoOverride_InOverride_HardLink <= AutoOverride_InOverride;
 		AutoOverride_InValue_AutoOverride_InValue_HardLink <= AutoOverride_InValue;
 		AutoOverride_OutValue <= AutoOverride_OutValue_AutoOverride_OutValue_HardLink;
@@ -188,6 +185,9 @@ begin
 		L3Override_InOverride_L3Override_InOverride_HardLink <= L3Override_InOverride;
 		L3Override_InValue_L3Override_InValue_HardLink <= L3Override_InValue;
 		L3Override_OutValue <= L3Override_OutValue_L3Override_OutValue_HardLink;
+		NoOverride_InOverride_NoOverride_InOverride_HardLink <= NoOverride_InOverride;
+		NoOverride_InValue_NoOverride_InValue_HardLink <= NoOverride_InValue;
+		NoOverride_OutValue <= NoOverride_OutValue_NoOverride_OutValue_HardLink;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]
