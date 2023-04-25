@@ -148,6 +148,9 @@ architecture rtl of IOObjectModule_TopLevel is
 	signal NextState_Object_L1Byte : unsigned(7 downto 0) := (others => '0');
 	signal NextState_Object_L1Tuple_Item1 : std_logic := '0';
 	signal NextState_Object_L1Tuple_Item2 : unsigned(2 downto 0) := (others => '0');
+	signal iInput_L1Byte : unsigned(7 downto 0) := (others => '0');
+	signal iInput_L1Tuple_Item1 : std_logic := '0';
+	signal iInput_L1Tuple_Item2 : unsigned(2 downto 0) := (others => '0');
 	signal State_Object_L1Byte : unsigned(7 downto 0) := "00000000";
 	constant State_Object_L1ByteDefault : unsigned(7 downto 0) := "00000000";
 	signal State_Object_L1Tuple_Item1 : std_logic := '0';
@@ -204,6 +207,10 @@ architecture rtl of IOObjectModule_TopLevel is
 	signal State_Objects : State_ObjectsArray := State_ObjectsArrayInit;
 	type NextState_ObjectsArray is array (0 to 1) of unsigned (41 downto 0);
 	signal NextState_Objects : NextState_ObjectsArray := (others => (others => '0'));
+	type iInput_L1Object_L2BooleanArrayArray is array (0 to 1) of std_logic;
+	signal iInput_L1Object_L2BooleanArray : iInput_L1Object_L2BooleanArrayArray := (others => '0');
+	type iInput_L1Object_L2ObjectArrayArray is array (0 to 1) of unsigned (13 downto 0);
+	signal iInput_L1Object_L2ObjectArray : iInput_L1Object_L2ObjectArrayArray := (others => (others => '0'));
 begin
 	process (Clock, NextState_Object_L1Byte, NextState_Object_L1Tuple_Item1, NextState_Object_L1Tuple_Item2, Reset)
 	begin

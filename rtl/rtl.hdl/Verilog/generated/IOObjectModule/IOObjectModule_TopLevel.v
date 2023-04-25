@@ -143,6 +143,9 @@ module IOObjectModule_TopLevel
 	reg [7: 0] NextState_Object_L1Byte;
 	reg NextState_Object_L1Tuple_Item1;
 	reg [2: 0] NextState_Object_L1Tuple_Item2;
+	reg [7: 0] iInput_L1Byte;
+	reg iInput_L1Tuple_Item1;
+	reg [2: 0] iInput_L1Tuple_Item2;
 	reg [7: 0] State_Object_L1Byte = 8'b00000000;
 	wire [7: 0] State_Object_L1ByteDefault = 8'b00000000;
 	reg State_Object_L1Tuple_Item1 = 1'b0;
@@ -203,6 +206,20 @@ $readmemh("IOObjectModule_TopLevel_State_Objects.hex", State_Objects);
 	begin : Init_NextState_Objects
 		for (NextState_Objects_Iterator = 0; NextState_Objects_Iterator < 2; NextState_Objects_Iterator = NextState_Objects_Iterator + 1)
 			NextState_Objects[NextState_Objects_Iterator] = 0;
+	end
+	reg iInput_L1Object_L2BooleanArray [0 : 1];
+	integer iInput_L1Object_L2BooleanArray_i;
+	initial
+	begin : Init_iInput_L1Object_L2BooleanArray
+		for (iInput_L1Object_L2BooleanArray_i = 0; iInput_L1Object_L2BooleanArray_i < 2; iInput_L1Object_L2BooleanArray_i = iInput_L1Object_L2BooleanArray_i + 1)
+			iInput_L1Object_L2BooleanArray[iInput_L1Object_L2BooleanArray_i] = 0;
+	end
+	reg [13 : 0] iInput_L1Object_L2ObjectArray [0 : 1];
+	integer iInput_L1Object_L2ObjectArray_i;
+	initial
+	begin : Init_iInput_L1Object_L2ObjectArray
+		for (iInput_L1Object_L2ObjectArray_i = 0; iInput_L1Object_L2ObjectArray_i < 2; iInput_L1Object_L2ObjectArray_i = iInput_L1Object_L2ObjectArray_i + 1)
+			iInput_L1Object_L2ObjectArray[iInput_L1Object_L2ObjectArray_i] = 0;
 	end
 	always @ (posedge Clock)
 	begin

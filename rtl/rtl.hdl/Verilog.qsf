@@ -37,7 +37,7 @@
 
 set_global_assignment -name FAMILY "Cyclone II"
 set_global_assignment -name DEVICE EP2C70F896C6
-set_global_assignment -name TOP_LEVEL_ENTITY Nested_SDP_WF_WSTRB_RAMModule_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY IOTupleDirectInputOutputModule_TopLevel
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "20:45:17  JUNE 07, 2019"
 set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
@@ -66,7 +66,8 @@ set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
 set_instance_assignment -name CLOCK_SETTINGS Clock -to Clock
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/Nested_SDP_WF_WSTRB_RAMModule.vwf
+
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/IOTupleSameClock.vwf
 
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 
@@ -167,7 +168,14 @@ set_global_assignment -name VERILOG_FILE Verilog/generated/IONativeModule/IONati
 set_global_assignment -name VERILOG_FILE Verilog/generated/IOObjectModule/IOObjectModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IOTestModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/IOTestModule/IOTestModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/IOTupleDirectInputComponentsOutputModule/IOTupleDirectInputComponentsOutputModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/IOTupleDirectInputL2ComponentsOutputModule/IOTupleDirectInputL2ComponentsOutputModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/IOTupleDirectInputL3ComponentsOutputModule/IOTupleDirectInputL3ComponentsOutputModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/IOTupleDirectInputL4ComponentsOutputModule/IOTupleDirectInputL4ComponentsOutputModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/IOTupleDirectInputOutputModule/IOTupleDirectInputOutputModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/IOTupleInternalOutputModule/IOTupleInternalOutputModule_TopLevel.v
 set_global_assignment -name VERILOG_FILE Verilog/generated/IOTupleModule/IOTupleModule_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IOTupleSameClock.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicRAMIndexingModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/LogicRAMIndexingModule/LogicRAMIndexingModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicRAMModule.vwf
