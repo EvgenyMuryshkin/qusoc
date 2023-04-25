@@ -5,8 +5,6 @@ namespace rtl.modules
 {
     public class IOTupleDirectInputL4ComponentsOutputModule : RTLCombinationalModule<IOTupleModuleInputs>
     {
-        public IOTupleModuleInputs Output => Inputs;
-        /*
         public bool Output_iTuple_Item1 => Inputs.iTuple.Item1;
         public byte Output_iTuple_Item2 => Inputs.iTuple.Item2;
         public RTLBitArray Output_iTuple_Item30 => Inputs.iTuple.Item3[0];
@@ -36,6 +34,5 @@ namespace rtl.modules
             => Inputs.iTupleArray[1].Item3;
         public IOTupleModuleInputsObjectL21[] Output_iTupleArray1_Item4
             => Inputs.iTupleArray[1].Item4;
-        */
     }
 }

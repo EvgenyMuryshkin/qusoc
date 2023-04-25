@@ -306,9 +306,9 @@ begin
 		Output_iTuple_Item4_L2_L2Flag <= Inputs_iTuple_Item4_L2_L2Flag;
 		Output_iTuple_Item4_L2_L2Values0 <= Inputs_iTuple_Item4_L2_L2Values(0);
 		Output_iTuple_Item4_L2_L2Values1 <= Inputs_iTuple_Item4_L2_L2Values(1);
-		Output_iTuple_Item4_L2Array0_L2Values1 <= Inputs_iTuple_Item4_L2Array(0)(6 downto 4);
-		Output_iTuple_Item4_L2Array0_L2Values0 <= Inputs_iTuple_Item4_L2Array(0)(3 downto 1);
 		Output_iTuple_Item4_L2Array0_L2Flag <= Inputs_iTuple_Item4_L2Array(0)(0);
+		Output_iTuple_Item4_L2Array0_L2Values0 <= Inputs_iTuple_Item4_L2Array(0)(3 downto 1);
+		Output_iTuple_Item4_L2Array0_L2Values1 <= Inputs_iTuple_Item4_L2Array(0)(6 downto 4);
 		Output_iTuple_Item4_L2Array1_L2Values1 <= Inputs_iTuple_Item4_L2Array(1)(6 downto 4);
 		Output_iTuple_Item4_L2Array1_L2Values0 <= Inputs_iTuple_Item4_L2Array(1)(3 downto 1);
 		Output_iTuple_Item4_L2Array1_L2Flag <= Inputs_iTuple_Item4_L2Array(1)(0);

@@ -292,9 +292,9 @@ module IOTupleDirectInputL4ComponentsOutputModule_TopLevel
 	assign Output_iTuple_Item4_L2_L2Flag = Inputs_iTuple_Item4_L2_L2Flag;
 	assign Output_iTuple_Item4_L2_L2Values0 = Inputs_iTuple_Item4_L2_L2Values[0];
 	assign Output_iTuple_Item4_L2_L2Values1 = Inputs_iTuple_Item4_L2_L2Values[1];
-	assign Output_iTuple_Item4_L2Array0_L2Values1 = Inputs_iTuple_Item4_L2Array[0][6:4];
-	assign Output_iTuple_Item4_L2Array0_L2Values0 = Inputs_iTuple_Item4_L2Array[0][3:1];
 	assign Output_iTuple_Item4_L2Array0_L2Flag = Inputs_iTuple_Item4_L2Array[0][0];
+	assign Output_iTuple_Item4_L2Array0_L2Values0 = Inputs_iTuple_Item4_L2Array[0][3:1];
+	assign Output_iTuple_Item4_L2Array0_L2Values1 = Inputs_iTuple_Item4_L2Array[0][6:4];
 	assign Output_iTuple_Item4_L2Array1_L2Values1 = Inputs_iTuple_Item4_L2Array[1][6:4];
 	assign Output_iTuple_Item4_L2Array1_L2Values0 = Inputs_iTuple_Item4_L2Array[1][3:1];
 	assign Output_iTuple_Item4_L2Array1_L2Flag = Inputs_iTuple_Item4_L2Array[1][0];
