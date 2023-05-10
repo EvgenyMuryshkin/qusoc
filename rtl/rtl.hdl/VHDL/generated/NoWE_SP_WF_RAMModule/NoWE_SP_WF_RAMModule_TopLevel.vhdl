@@ -56,12 +56,10 @@ begin
 		Data <= State_ReadData;
 	end process;
 	-- inferred single port RAM with write-first behaviour
-	process (Clock, HiSignal, Inputs_Address, Inputs_WriteData, Inputs_Address_reg, State_Buff)
+	process (Clock, Inputs_Address, Inputs_WriteData, Inputs_Address_reg, State_Buff)
 	begin
 		if rising_edge(Clock) then
-			if HiSignal = '1' then
-				State_Buff(TO_INTEGER(Inputs_Address)) <= Inputs_WriteData;
-			end if;
+			State_Buff(TO_INTEGER(Inputs_Address)) <= Inputs_WriteData;
 			Inputs_Address_reg <= Inputs_Address(7 downto 0);
 		end if;
 		State_ReadData <= State_Buff(TO_INTEGER(Inputs_Address_reg));

@@ -197,30 +197,18 @@ architecture rtl of IOTupleInternalOutputModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Internal_iTuple_Item1 : std_logic := '0';
-	signal Internal_iTuple_Item2 : unsigned(7 downto 0) := (others => '0');
-	signal Internal_iTuple_Item4_L1Flag : std_logic := '0';
-	signal Internal_iTuple_Item4_L2_L2Flag : std_logic := '0';
-	signal Internal_iTuple_Item4_L2Tuple_Item1 : unsigned(7 downto 0) := (others => '0');
-	signal Internal_iTuple_Item4_L2Tuple_Item2_L2Flag : std_logic := '0';
 	signal Inputs_iTuple_Item1 : std_logic := '0';
 	signal Inputs_iTuple_Item2 : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_iTuple_Item4_L1Flag : std_logic := '0';
 	signal Inputs_iTuple_Item4_L2_L2Flag : std_logic := '0';
 	signal Inputs_iTuple_Item4_L2Tuple_Item1 : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag : std_logic := '0';
-	type Internal_iTuple_Item3Array is array (0 to 1) of unsigned (3 downto 0);
-	signal Internal_iTuple_Item3 : Internal_iTuple_Item3Array := (others => (others => '0'));
-	type Internal_iTuple_Item4_L2_L2ValuesArray is array (0 to 1) of std_logic;
-	signal Internal_iTuple_Item4_L2_L2Values : Internal_iTuple_Item4_L2_L2ValuesArray := (others => '0');
-	type Internal_iTuple_Item4_L2ArrayArray is array (0 to 1) of unsigned (6 downto 0);
-	signal Internal_iTuple_Item4_L2Array : Internal_iTuple_Item4_L2ArrayArray := (others => (others => '0'));
-	type Internal_iTuple_Item4_L2Tuple_Item2_L2ValuesArray is array (0 to 1) of std_logic;
-	signal Internal_iTuple_Item4_L2Tuple_Item2_L2Values : Internal_iTuple_Item4_L2Tuple_Item2_L2ValuesArray := (others => '0');
-	type Internal_iTuple_Item4_L2Tuple_Item3Array is array (0 to 1) of unsigned (6 downto 0);
-	signal Internal_iTuple_Item4_L2Tuple_Item3 : Internal_iTuple_Item4_L2Tuple_Item3Array := (others => (others => '0'));
-	type Internal_iTupleArrayArray is array (0 to 1) of unsigned (53 downto 0);
-	signal Internal_iTupleArray : Internal_iTupleArrayArray := (others => (others => '0'));
+	signal Internal_iTuple_Item1 : std_logic := '0';
+	signal Internal_iTuple_Item2 : unsigned(7 downto 0) := (others => '0');
+	signal Internal_iTuple_Item4_L1Flag : std_logic := '0';
+	signal Internal_iTuple_Item4_L2_L2Flag : std_logic := '0';
+	signal Internal_iTuple_Item4_L2Tuple_Item1 : unsigned(7 downto 0) := (others => '0');
+	signal Internal_iTuple_Item4_L2Tuple_Item2_L2Flag : std_logic := '0';
 	type Inputs_iTuple_Item3Array is array (0 to 1) of unsigned (3 downto 0);
 	signal Inputs_iTuple_Item3 : Inputs_iTuple_Item3Array := (others => (others => '0'));
 	type Inputs_iTuple_Item4_L2_L2ValuesArray is array (0 to 1) of std_logic;
@@ -233,6 +221,18 @@ architecture rtl of IOTupleInternalOutputModule_TopLevel is
 	signal Inputs_iTuple_Item4_L2Tuple_Item3 : Inputs_iTuple_Item4_L2Tuple_Item3Array := (others => (others => '0'));
 	type Inputs_iTupleArrayArray is array (0 to 1) of unsigned (53 downto 0);
 	signal Inputs_iTupleArray : Inputs_iTupleArrayArray := (others => (others => '0'));
+	type Internal_iTuple_Item3Array is array (0 to 1) of unsigned (3 downto 0);
+	signal Internal_iTuple_Item3 : Internal_iTuple_Item3Array := (others => (others => '0'));
+	type Internal_iTuple_Item4_L2_L2ValuesArray is array (0 to 1) of std_logic;
+	signal Internal_iTuple_Item4_L2_L2Values : Internal_iTuple_Item4_L2_L2ValuesArray := (others => '0');
+	type Internal_iTuple_Item4_L2ArrayArray is array (0 to 1) of unsigned (6 downto 0);
+	signal Internal_iTuple_Item4_L2Array : Internal_iTuple_Item4_L2ArrayArray := (others => (others => '0'));
+	type Internal_iTuple_Item4_L2Tuple_Item2_L2ValuesArray is array (0 to 1) of std_logic;
+	signal Internal_iTuple_Item4_L2Tuple_Item2_L2Values : Internal_iTuple_Item4_L2Tuple_Item2_L2ValuesArray := (others => '0');
+	type Internal_iTuple_Item4_L2Tuple_Item3Array is array (0 to 1) of unsigned (6 downto 0);
+	signal Internal_iTuple_Item4_L2Tuple_Item3 : Internal_iTuple_Item4_L2Tuple_Item3Array := (others => (others => '0'));
+	type Internal_iTupleArrayArray is array (0 to 1) of unsigned (53 downto 0);
+	signal Internal_iTupleArray : Internal_iTupleArrayArray := (others => (others => '0'));
 begin
 	process (Inputs_iTuple_Item1, Inputs_iTuple_Item2, Inputs_iTuple_Item3, Inputs_iTuple_Item4_L1Flag, Inputs_iTuple_Item4_L2_L2Flag, Inputs_iTuple_Item4_L2_L2Values, Inputs_iTuple_Item4_L2Array, Inputs_iTuple_Item4_L2Tuple_Item1, Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag, Inputs_iTuple_Item4_L2Tuple_Item2_L2Values, Inputs_iTuple_Item4_L2Tuple_Item3, Inputs_iTupleArray, Internal_iTuple_Item1, Internal_iTuple_Item2, Internal_iTuple_Item3, Internal_iTuple_Item4_L1Flag, Internal_iTuple_Item4_L2_L2Flag, Internal_iTuple_Item4_L2_L2Values, Internal_iTuple_Item4_L2Array, Internal_iTuple_Item4_L2Tuple_Item1, Internal_iTuple_Item4_L2Tuple_Item2_L2Flag, Internal_iTuple_Item4_L2Tuple_Item2_L2Values, Internal_iTuple_Item4_L2Tuple_Item3, Internal_iTupleArray, iTuple_Item1, iTuple_Item2, iTuple_Item30, iTuple_Item31, iTuple_Item4_L1Flag, iTuple_Item4_L2_L2Flag, iTuple_Item4_L2_L2Values0, iTuple_Item4_L2_L2Values1, iTuple_Item4_L2Array0_L2Flag, iTuple_Item4_L2Array0_L2Values0, iTuple_Item4_L2Array0_L2Values1, iTuple_Item4_L2Array1_L2Flag, iTuple_Item4_L2Array1_L2Values0, iTuple_Item4_L2Array1_L2Values1, iTuple_Item4_L2Tuple_Item1, iTuple_Item4_L2Tuple_Item2_L2Flag, iTuple_Item4_L2Tuple_Item2_L2Values0, iTuple_Item4_L2Tuple_Item2_L2Values1, iTuple_Item4_L2Tuple_Item30_L2Flag, iTuple_Item4_L2Tuple_Item30_L2Values0, iTuple_Item4_L2Tuple_Item30_L2Values1, iTuple_Item4_L2Tuple_Item31_L2Flag, iTuple_Item4_L2Tuple_Item31_L2Values0, iTuple_Item4_L2Tuple_Item31_L2Values1, iTupleArray0_Item1, iTupleArray0_Item2, iTupleArray0_Item3_L1Flag, iTupleArray0_Item3_L2_L2Flag, iTupleArray0_Item3_L2_L2Values0, iTupleArray0_Item3_L2_L2Values1, iTupleArray0_Item3_L2Array0_L2Flag, iTupleArray0_Item3_L2Array0_L2Values0, iTupleArray0_Item3_L2Array0_L2Values1, iTupleArray0_Item3_L2Array1_L2Flag, iTupleArray0_Item3_L2Array1_L2Values0, iTupleArray0_Item3_L2Array1_L2Values1, iTupleArray0_Item3_L2Tuple_Item1, iTupleArray0_Item3_L2Tuple_Item2_L2Flag, iTupleArray0_Item3_L2Tuple_Item2_L2Values0, iTupleArray0_Item3_L2Tuple_Item2_L2Values1, iTupleArray0_Item3_L2Tuple_Item30_L2Flag, iTupleArray0_Item3_L2Tuple_Item30_L2Values0, iTupleArray0_Item3_L2Tuple_Item30_L2Values1, iTupleArray0_Item3_L2Tuple_Item31_L2Flag, iTupleArray0_Item3_L2Tuple_Item31_L2Values0, iTupleArray0_Item3_L2Tuple_Item31_L2Values1, iTupleArray0_Item40_L2Flag, iTupleArray0_Item40_L2Values0, iTupleArray0_Item40_L2Values1, iTupleArray0_Item41_L2Flag, iTupleArray0_Item41_L2Values0, iTupleArray0_Item41_L2Values1, iTupleArray1_Item1, iTupleArray1_Item2, iTupleArray1_Item3_L1Flag, iTupleArray1_Item3_L2_L2Flag, iTupleArray1_Item3_L2_L2Values0, iTupleArray1_Item3_L2_L2Values1, iTupleArray1_Item3_L2Array0_L2Flag, iTupleArray1_Item3_L2Array0_L2Values0, iTupleArray1_Item3_L2Array0_L2Values1, iTupleArray1_Item3_L2Array1_L2Flag, iTupleArray1_Item3_L2Array1_L2Values0, iTupleArray1_Item3_L2Array1_L2Values1, iTupleArray1_Item3_L2Tuple_Item1, iTupleArray1_Item3_L2Tuple_Item2_L2Flag, iTupleArray1_Item3_L2Tuple_Item2_L2Values0, iTupleArray1_Item3_L2Tuple_Item2_L2Values1, iTupleArray1_Item3_L2Tuple_Item30_L2Flag, iTupleArray1_Item3_L2Tuple_Item30_L2Values0, iTupleArray1_Item3_L2Tuple_Item30_L2Values1, iTupleArray1_Item3_L2Tuple_Item31_L2Flag, iTupleArray1_Item3_L2Tuple_Item31_L2Values0, iTupleArray1_Item3_L2Tuple_Item31_L2Values1, iTupleArray1_Item40_L2Flag, iTupleArray1_Item40_L2Values0, iTupleArray1_Item40_L2Values1, iTupleArray1_Item41_L2Flag, iTupleArray1_Item41_L2Values0, iTupleArray1_Item41_L2Values1)
 	begin

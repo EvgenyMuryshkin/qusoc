@@ -42,8 +42,8 @@ architecture rtl of IONativeModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_iByteValue : unsigned(7 downto 0) := (others => '0');
 	signal NextState_sByteValue : unsigned(7 downto 0) := (others => '0');
+	signal Inputs_iByteValue : unsigned(7 downto 0) := (others => '0');
 	signal State_sByteValue : unsigned(7 downto 0) := "00000000";
 	constant State_sByteValueDefault : unsigned(7 downto 0) := "00000000";
 begin

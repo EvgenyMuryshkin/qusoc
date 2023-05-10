@@ -36,7 +36,7 @@ namespace RTL.Modules
             {
                 NextState.Buff[idx + 1] = State.Buff[idx];
             }
-            NextState.Out = State.Buff[3];
+            NextState.Out = State.Buff[3];//dbg
         }
     }
 }

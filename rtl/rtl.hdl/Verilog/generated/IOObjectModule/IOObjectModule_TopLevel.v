@@ -33,15 +33,19 @@ module IOObjectModule_TopLevel
 	input wire [1:0] Object_L1Object_L2ObjectArray0_L3RTLBitArray1,
 	input wire Object_L1Object_L2ObjectArray0_L3Tuple_Item1,
 	input wire [1:0] Object_L1Object_L2ObjectArray0_L3Tuple_Item2,
-	input wire [2:0] Object_L1Object_L2ObjectArray0_L3TupleArray0,
-	input wire [2:0] Object_L1Object_L2ObjectArray0_L3TupleArray1,
+	input wire Object_L1Object_L2ObjectArray0_L3TupleArray0_Item1,
+	input wire [1:0] Object_L1Object_L2ObjectArray0_L3TupleArray0_Item2,
+	input wire Object_L1Object_L2ObjectArray0_L3TupleArray1_Item1,
+	input wire [1:0] Object_L1Object_L2ObjectArray0_L3TupleArray1_Item2,
 	input wire Object_L1Object_L2ObjectArray1_L3Boolean,
 	input wire [1:0] Object_L1Object_L2ObjectArray1_L3RTLBitArray0,
 	input wire [1:0] Object_L1Object_L2ObjectArray1_L3RTLBitArray1,
 	input wire Object_L1Object_L2ObjectArray1_L3Tuple_Item1,
 	input wire [1:0] Object_L1Object_L2ObjectArray1_L3Tuple_Item2,
-	input wire [2:0] Object_L1Object_L2ObjectArray1_L3TupleArray0,
-	input wire [2:0] Object_L1Object_L2ObjectArray1_L3TupleArray1,
+	input wire Object_L1Object_L2ObjectArray1_L3TupleArray0_Item1,
+	input wire [1:0] Object_L1Object_L2ObjectArray1_L3TupleArray0_Item2,
+	input wire Object_L1Object_L2ObjectArray1_L3TupleArray1_Item1,
+	input wire [1:0] Object_L1Object_L2ObjectArray1_L3TupleArray1_Item2,
 	input wire Object_L1Tuple_Item1,
 	input wire [2:0] Object_L1Tuple_Item2,
 	input wire [7:0] Objects0_L1Byte,
@@ -52,15 +56,19 @@ module IOObjectModule_TopLevel
 	input wire [1:0] Objects0_L1Object_L2ObjectArray0_L3RTLBitArray1,
 	input wire Objects0_L1Object_L2ObjectArray0_L3Tuple_Item1,
 	input wire [1:0] Objects0_L1Object_L2ObjectArray0_L3Tuple_Item2,
-	input wire [2:0] Objects0_L1Object_L2ObjectArray0_L3TupleArray0,
-	input wire [2:0] Objects0_L1Object_L2ObjectArray0_L3TupleArray1,
+	input wire Objects0_L1Object_L2ObjectArray0_L3TupleArray0_Item1,
+	input wire [1:0] Objects0_L1Object_L2ObjectArray0_L3TupleArray0_Item2,
+	input wire Objects0_L1Object_L2ObjectArray0_L3TupleArray1_Item1,
+	input wire [1:0] Objects0_L1Object_L2ObjectArray0_L3TupleArray1_Item2,
 	input wire Objects0_L1Object_L2ObjectArray1_L3Boolean,
 	input wire [1:0] Objects0_L1Object_L2ObjectArray1_L3RTLBitArray0,
 	input wire [1:0] Objects0_L1Object_L2ObjectArray1_L3RTLBitArray1,
 	input wire Objects0_L1Object_L2ObjectArray1_L3Tuple_Item1,
 	input wire [1:0] Objects0_L1Object_L2ObjectArray1_L3Tuple_Item2,
-	input wire [2:0] Objects0_L1Object_L2ObjectArray1_L3TupleArray0,
-	input wire [2:0] Objects0_L1Object_L2ObjectArray1_L3TupleArray1,
+	input wire Objects0_L1Object_L2ObjectArray1_L3TupleArray0_Item1,
+	input wire [1:0] Objects0_L1Object_L2ObjectArray1_L3TupleArray0_Item2,
+	input wire Objects0_L1Object_L2ObjectArray1_L3TupleArray1_Item1,
+	input wire [1:0] Objects0_L1Object_L2ObjectArray1_L3TupleArray1_Item2,
 	input wire Objects0_L1Tuple_Item1,
 	input wire [2:0] Objects0_L1Tuple_Item2,
 	input wire [7:0] Objects1_L1Byte,
@@ -71,15 +79,19 @@ module IOObjectModule_TopLevel
 	input wire [1:0] Objects1_L1Object_L2ObjectArray0_L3RTLBitArray1,
 	input wire Objects1_L1Object_L2ObjectArray0_L3Tuple_Item1,
 	input wire [1:0] Objects1_L1Object_L2ObjectArray0_L3Tuple_Item2,
-	input wire [2:0] Objects1_L1Object_L2ObjectArray0_L3TupleArray0,
-	input wire [2:0] Objects1_L1Object_L2ObjectArray0_L3TupleArray1,
+	input wire Objects1_L1Object_L2ObjectArray0_L3TupleArray0_Item1,
+	input wire [1:0] Objects1_L1Object_L2ObjectArray0_L3TupleArray0_Item2,
+	input wire Objects1_L1Object_L2ObjectArray0_L3TupleArray1_Item1,
+	input wire [1:0] Objects1_L1Object_L2ObjectArray0_L3TupleArray1_Item2,
 	input wire Objects1_L1Object_L2ObjectArray1_L3Boolean,
 	input wire [1:0] Objects1_L1Object_L2ObjectArray1_L3RTLBitArray0,
 	input wire [1:0] Objects1_L1Object_L2ObjectArray1_L3RTLBitArray1,
 	input wire Objects1_L1Object_L2ObjectArray1_L3Tuple_Item1,
 	input wire [1:0] Objects1_L1Object_L2ObjectArray1_L3Tuple_Item2,
-	input wire [2:0] Objects1_L1Object_L2ObjectArray1_L3TupleArray0,
-	input wire [2:0] Objects1_L1Object_L2ObjectArray1_L3TupleArray1,
+	input wire Objects1_L1Object_L2ObjectArray1_L3TupleArray0_Item1,
+	input wire [1:0] Objects1_L1Object_L2ObjectArray1_L3TupleArray0_Item2,
+	input wire Objects1_L1Object_L2ObjectArray1_L3TupleArray1_Item1,
+	input wire [1:0] Objects1_L1Object_L2ObjectArray1_L3TupleArray1_Item2,
 	input wire Objects1_L1Tuple_Item1,
 	input wire [2:0] Objects1_L1Tuple_Item2,
 	output wire [7:0] oInput_L1Byte,
@@ -90,15 +102,19 @@ module IOObjectModule_TopLevel
 	output wire [1:0] oInput_L1Object_L2ObjectArray0_L3RTLBitArray1,
 	output wire oInput_L1Object_L2ObjectArray0_L3Tuple_Item1,
 	output wire [1:0] oInput_L1Object_L2ObjectArray0_L3Tuple_Item2,
-	output wire [2:0] oInput_L1Object_L2ObjectArray0_L3TupleArray0,
-	output wire [2:0] oInput_L1Object_L2ObjectArray0_L3TupleArray1,
+	output wire oInput_L1Object_L2ObjectArray0_L3TupleArray0_Item1,
+	output wire [1:0] oInput_L1Object_L2ObjectArray0_L3TupleArray0_Item2,
+	output wire oInput_L1Object_L2ObjectArray0_L3TupleArray1_Item1,
+	output wire [1:0] oInput_L1Object_L2ObjectArray0_L3TupleArray1_Item2,
 	output wire oInput_L1Object_L2ObjectArray1_L3Boolean,
 	output wire [1:0] oInput_L1Object_L2ObjectArray1_L3RTLBitArray0,
 	output wire [1:0] oInput_L1Object_L2ObjectArray1_L3RTLBitArray1,
 	output wire oInput_L1Object_L2ObjectArray1_L3Tuple_Item1,
 	output wire [1:0] oInput_L1Object_L2ObjectArray1_L3Tuple_Item2,
-	output wire [2:0] oInput_L1Object_L2ObjectArray1_L3TupleArray0,
-	output wire [2:0] oInput_L1Object_L2ObjectArray1_L3TupleArray1,
+	output wire oInput_L1Object_L2ObjectArray1_L3TupleArray0_Item1,
+	output wire [1:0] oInput_L1Object_L2ObjectArray1_L3TupleArray0_Item2,
+	output wire oInput_L1Object_L2ObjectArray1_L3TupleArray1_Item1,
+	output wire [1:0] oInput_L1Object_L2ObjectArray1_L3TupleArray1_Item2,
 	output wire oInput_L1Tuple_Item1,
 	output wire [2:0] oInput_L1Tuple_Item2
 );
@@ -114,38 +130,14 @@ module IOObjectModule_TopLevel
 	wire [13: 0] State_Object_L1Object_L2ObjectArrayDefault = 14'b00000000000000;
 	wire [41: 0] State_ObjectsDefault = 42'b000000000000000000000000000000000000000000;
 	wire [7: 0] Inputs_Object_L1Byte;
-	wire Inputs_Object_L1Object_L2ObjectArray0_L3Boolean;
-	wire Inputs_Object_L1Object_L2ObjectArray0_L3Tuple_Item1;
-	wire [1: 0] Inputs_Object_L1Object_L2ObjectArray0_L3Tuple_Item2;
-	wire Inputs_Object_L1Object_L2ObjectArray1_L3Boolean;
-	wire Inputs_Object_L1Object_L2ObjectArray1_L3Tuple_Item1;
-	wire [1: 0] Inputs_Object_L1Object_L2ObjectArray1_L3Tuple_Item2;
 	wire Inputs_Object_L1Tuple_Item1;
 	wire [2: 0] Inputs_Object_L1Tuple_Item2;
-	wire [7: 0] Inputs_Objects0_L1Byte;
-	wire Inputs_Objects0_L1Object_L2ObjectArray0_L3Boolean;
-	wire Inputs_Objects0_L1Object_L2ObjectArray0_L3Tuple_Item1;
-	wire [1: 0] Inputs_Objects0_L1Object_L2ObjectArray0_L3Tuple_Item2;
-	wire Inputs_Objects0_L1Object_L2ObjectArray1_L3Boolean;
-	wire Inputs_Objects0_L1Object_L2ObjectArray1_L3Tuple_Item1;
-	wire [1: 0] Inputs_Objects0_L1Object_L2ObjectArray1_L3Tuple_Item2;
-	wire Inputs_Objects0_L1Tuple_Item1;
-	wire [2: 0] Inputs_Objects0_L1Tuple_Item2;
-	wire [7: 0] Inputs_Objects1_L1Byte;
-	wire Inputs_Objects1_L1Object_L2ObjectArray0_L3Boolean;
-	wire Inputs_Objects1_L1Object_L2ObjectArray0_L3Tuple_Item1;
-	wire [1: 0] Inputs_Objects1_L1Object_L2ObjectArray0_L3Tuple_Item2;
-	wire Inputs_Objects1_L1Object_L2ObjectArray1_L3Boolean;
-	wire Inputs_Objects1_L1Object_L2ObjectArray1_L3Tuple_Item1;
-	wire [1: 0] Inputs_Objects1_L1Object_L2ObjectArray1_L3Tuple_Item2;
-	wire Inputs_Objects1_L1Tuple_Item1;
-	wire [2: 0] Inputs_Objects1_L1Tuple_Item2;
 	reg [7: 0] NextState_Object_L1Byte;
 	reg NextState_Object_L1Tuple_Item1;
 	reg [2: 0] NextState_Object_L1Tuple_Item2;
-	reg [7: 0] iInput_L1Byte;
-	reg iInput_L1Tuple_Item1;
-	reg [2: 0] iInput_L1Tuple_Item2;
+	wire [7: 0] iInput_L1Byte;
+	wire iInput_L1Tuple_Item1;
+	wire [2: 0] iInput_L1Tuple_Item2;
 	reg [7: 0] State_Object_L1Byte = 8'b00000000;
 	wire [7: 0] State_Object_L1ByteDefault = 8'b00000000;
 	reg State_Object_L1Tuple_Item1 = 1'b0;
@@ -153,20 +145,8 @@ module IOObjectModule_TopLevel
 	reg [2: 0] State_Object_L1Tuple_Item2 = 3'b000;
 	wire [2: 0] State_Object_L1Tuple_Item2Default = 3'b000;
 	wire Inputs_Object_L1Object_L2BooleanArray [0 : 1];
-	wire [1 : 0] Inputs_Object_L1Object_L2ObjectArray0_L3RTLBitArray [0 : 1];
-	wire [2 : 0] Inputs_Object_L1Object_L2ObjectArray0_L3TupleArray [0 : 1];
-	wire [1 : 0] Inputs_Object_L1Object_L2ObjectArray1_L3RTLBitArray [0 : 1];
-	wire [2 : 0] Inputs_Object_L1Object_L2ObjectArray1_L3TupleArray [0 : 1];
-	wire Inputs_Objects0_L1Object_L2BooleanArray [0 : 1];
-	wire [1 : 0] Inputs_Objects0_L1Object_L2ObjectArray0_L3RTLBitArray [0 : 1];
-	wire [2 : 0] Inputs_Objects0_L1Object_L2ObjectArray0_L3TupleArray [0 : 1];
-	wire [1 : 0] Inputs_Objects0_L1Object_L2ObjectArray1_L3RTLBitArray [0 : 1];
-	wire [2 : 0] Inputs_Objects0_L1Object_L2ObjectArray1_L3TupleArray [0 : 1];
-	wire Inputs_Objects1_L1Object_L2BooleanArray [0 : 1];
-	wire [1 : 0] Inputs_Objects1_L1Object_L2ObjectArray0_L3RTLBitArray [0 : 1];
-	wire [2 : 0] Inputs_Objects1_L1Object_L2ObjectArray0_L3TupleArray [0 : 1];
-	wire [1 : 0] Inputs_Objects1_L1Object_L2ObjectArray1_L3RTLBitArray [0 : 1];
-	wire [2 : 0] Inputs_Objects1_L1Object_L2ObjectArray1_L3TupleArray [0 : 1];
+	wire [13 : 0] Inputs_Object_L1Object_L2ObjectArray [0 : 1];
+	wire [41 : 0] Inputs_Objects [0 : 1];
 	integer State_Object_L1Object_L2BooleanArray_Iterator;
 	reg State_Object_L1Object_L2BooleanArray [0 : 1];
 	initial
@@ -207,20 +187,8 @@ $readmemh("IOObjectModule_TopLevel_State_Objects.hex", State_Objects);
 		for (NextState_Objects_Iterator = 0; NextState_Objects_Iterator < 2; NextState_Objects_Iterator = NextState_Objects_Iterator + 1)
 			NextState_Objects[NextState_Objects_Iterator] = 0;
 	end
-	reg iInput_L1Object_L2BooleanArray [0 : 1];
-	integer iInput_L1Object_L2BooleanArray_i;
-	initial
-	begin : Init_iInput_L1Object_L2BooleanArray
-		for (iInput_L1Object_L2BooleanArray_i = 0; iInput_L1Object_L2BooleanArray_i < 2; iInput_L1Object_L2BooleanArray_i = iInput_L1Object_L2BooleanArray_i + 1)
-			iInput_L1Object_L2BooleanArray[iInput_L1Object_L2BooleanArray_i] = 0;
-	end
-	reg [13 : 0] iInput_L1Object_L2ObjectArray [0 : 1];
-	integer iInput_L1Object_L2ObjectArray_i;
-	initial
-	begin : Init_iInput_L1Object_L2ObjectArray
-		for (iInput_L1Object_L2ObjectArray_i = 0; iInput_L1Object_L2ObjectArray_i < 2; iInput_L1Object_L2ObjectArray_i = iInput_L1Object_L2ObjectArray_i + 1)
-			iInput_L1Object_L2ObjectArray[iInput_L1Object_L2ObjectArray_i] = 0;
-	end
+	wire iInput_L1Object_L2BooleanArray [0 : 1];
+	wire [13 : 0] iInput_L1Object_L2ObjectArray [0 : 1];
 	always @ (posedge Clock)
 	begin
 		if ((Reset == 1))
@@ -303,77 +271,100 @@ $readmemh("IOObjectModule_TopLevel_State_Objects.hex", State_Objects);
 	assign Inputs_Object_L1Byte = Object_L1Byte;
 	assign Inputs_Object_L1Object_L2BooleanArray[0] = Object_L1Object_L2BooleanArray0;
 	assign Inputs_Object_L1Object_L2BooleanArray[1] = Object_L1Object_L2BooleanArray1;
-	assign Inputs_Object_L1Object_L2ObjectArray0_L3Boolean = Object_L1Object_L2ObjectArray0_L3Boolean;
-	assign Inputs_Object_L1Object_L2ObjectArray0_L3RTLBitArray[0] = Object_L1Object_L2ObjectArray0_L3RTLBitArray0;
-	assign Inputs_Object_L1Object_L2ObjectArray0_L3RTLBitArray[1] = Object_L1Object_L2ObjectArray0_L3RTLBitArray1;
-	assign Inputs_Object_L1Object_L2ObjectArray0_L3Tuple_Item1 = Object_L1Object_L2ObjectArray0_L3Tuple_Item1;
-	assign Inputs_Object_L1Object_L2ObjectArray0_L3Tuple_Item2 = Object_L1Object_L2ObjectArray0_L3Tuple_Item2;
-	assign Inputs_Object_L1Object_L2ObjectArray0_L3TupleArray[0] = Object_L1Object_L2ObjectArray0_L3TupleArray0;
-	assign Inputs_Object_L1Object_L2ObjectArray0_L3TupleArray[1] = Object_L1Object_L2ObjectArray0_L3TupleArray1;
-	assign Inputs_Object_L1Object_L2ObjectArray1_L3Boolean = Object_L1Object_L2ObjectArray1_L3Boolean;
-	assign Inputs_Object_L1Object_L2ObjectArray1_L3RTLBitArray[0] = Object_L1Object_L2ObjectArray1_L3RTLBitArray0;
-	assign Inputs_Object_L1Object_L2ObjectArray1_L3RTLBitArray[1] = Object_L1Object_L2ObjectArray1_L3RTLBitArray1;
-	assign Inputs_Object_L1Object_L2ObjectArray1_L3Tuple_Item1 = Object_L1Object_L2ObjectArray1_L3Tuple_Item1;
-	assign Inputs_Object_L1Object_L2ObjectArray1_L3Tuple_Item2 = Object_L1Object_L2ObjectArray1_L3Tuple_Item2;
-	assign Inputs_Object_L1Object_L2ObjectArray1_L3TupleArray[0] = Object_L1Object_L2ObjectArray1_L3TupleArray0;
-	assign Inputs_Object_L1Object_L2ObjectArray1_L3TupleArray[1] = Object_L1Object_L2ObjectArray1_L3TupleArray1;
+	assign Inputs_Object_L1Object_L2ObjectArray[0][13] = Object_L1Object_L2ObjectArray0_L3TupleArray1_Item1;
+	assign Inputs_Object_L1Object_L2ObjectArray[0][12:11] = Object_L1Object_L2ObjectArray0_L3TupleArray1_Item2;
+	assign Inputs_Object_L1Object_L2ObjectArray[0][10] = Object_L1Object_L2ObjectArray0_L3TupleArray0_Item1;
+	assign Inputs_Object_L1Object_L2ObjectArray[0][9:8] = Object_L1Object_L2ObjectArray0_L3TupleArray0_Item2;
+	assign Inputs_Object_L1Object_L2ObjectArray[0][7] = Object_L1Object_L2ObjectArray0_L3Tuple_Item1;
+	assign Inputs_Object_L1Object_L2ObjectArray[0][6:5] = Object_L1Object_L2ObjectArray0_L3Tuple_Item2;
+	assign Inputs_Object_L1Object_L2ObjectArray[0][4:3] = Object_L1Object_L2ObjectArray0_L3RTLBitArray1;
+	assign Inputs_Object_L1Object_L2ObjectArray[0][2:1] = Object_L1Object_L2ObjectArray0_L3RTLBitArray0;
+	assign Inputs_Object_L1Object_L2ObjectArray[0][0] = Object_L1Object_L2ObjectArray0_L3Boolean;
+	assign Inputs_Object_L1Object_L2ObjectArray[1][13] = Object_L1Object_L2ObjectArray1_L3TupleArray1_Item1;
+	assign Inputs_Object_L1Object_L2ObjectArray[1][12:11] = Object_L1Object_L2ObjectArray1_L3TupleArray1_Item2;
+	assign Inputs_Object_L1Object_L2ObjectArray[1][10] = Object_L1Object_L2ObjectArray1_L3TupleArray0_Item1;
+	assign Inputs_Object_L1Object_L2ObjectArray[1][9:8] = Object_L1Object_L2ObjectArray1_L3TupleArray0_Item2;
+	assign Inputs_Object_L1Object_L2ObjectArray[1][7] = Object_L1Object_L2ObjectArray1_L3Tuple_Item1;
+	assign Inputs_Object_L1Object_L2ObjectArray[1][6:5] = Object_L1Object_L2ObjectArray1_L3Tuple_Item2;
+	assign Inputs_Object_L1Object_L2ObjectArray[1][4:3] = Object_L1Object_L2ObjectArray1_L3RTLBitArray1;
+	assign Inputs_Object_L1Object_L2ObjectArray[1][2:1] = Object_L1Object_L2ObjectArray1_L3RTLBitArray0;
+	assign Inputs_Object_L1Object_L2ObjectArray[1][0] = Object_L1Object_L2ObjectArray1_L3Boolean;
 	assign Inputs_Object_L1Tuple_Item1 = Object_L1Tuple_Item1;
 	assign Inputs_Object_L1Tuple_Item2 = Object_L1Tuple_Item2;
-	assign Inputs_Objects0_L1Byte = Objects0_L1Byte;
-	assign Inputs_Objects0_L1Object_L2BooleanArray[0] = Objects0_L1Object_L2BooleanArray0;
-	assign Inputs_Objects0_L1Object_L2BooleanArray[1] = Objects0_L1Object_L2BooleanArray1;
-	assign Inputs_Objects0_L1Object_L2ObjectArray0_L3Boolean = Objects0_L1Object_L2ObjectArray0_L3Boolean;
-	assign Inputs_Objects0_L1Object_L2ObjectArray0_L3RTLBitArray[0] = Objects0_L1Object_L2ObjectArray0_L3RTLBitArray0;
-	assign Inputs_Objects0_L1Object_L2ObjectArray0_L3RTLBitArray[1] = Objects0_L1Object_L2ObjectArray0_L3RTLBitArray1;
-	assign Inputs_Objects0_L1Object_L2ObjectArray0_L3Tuple_Item1 = Objects0_L1Object_L2ObjectArray0_L3Tuple_Item1;
-	assign Inputs_Objects0_L1Object_L2ObjectArray0_L3Tuple_Item2 = Objects0_L1Object_L2ObjectArray0_L3Tuple_Item2;
-	assign Inputs_Objects0_L1Object_L2ObjectArray0_L3TupleArray[0] = Objects0_L1Object_L2ObjectArray0_L3TupleArray0;
-	assign Inputs_Objects0_L1Object_L2ObjectArray0_L3TupleArray[1] = Objects0_L1Object_L2ObjectArray0_L3TupleArray1;
-	assign Inputs_Objects0_L1Object_L2ObjectArray1_L3Boolean = Objects0_L1Object_L2ObjectArray1_L3Boolean;
-	assign Inputs_Objects0_L1Object_L2ObjectArray1_L3RTLBitArray[0] = Objects0_L1Object_L2ObjectArray1_L3RTLBitArray0;
-	assign Inputs_Objects0_L1Object_L2ObjectArray1_L3RTLBitArray[1] = Objects0_L1Object_L2ObjectArray1_L3RTLBitArray1;
-	assign Inputs_Objects0_L1Object_L2ObjectArray1_L3Tuple_Item1 = Objects0_L1Object_L2ObjectArray1_L3Tuple_Item1;
-	assign Inputs_Objects0_L1Object_L2ObjectArray1_L3Tuple_Item2 = Objects0_L1Object_L2ObjectArray1_L3Tuple_Item2;
-	assign Inputs_Objects0_L1Object_L2ObjectArray1_L3TupleArray[0] = Objects0_L1Object_L2ObjectArray1_L3TupleArray0;
-	assign Inputs_Objects0_L1Object_L2ObjectArray1_L3TupleArray[1] = Objects0_L1Object_L2ObjectArray1_L3TupleArray1;
-	assign Inputs_Objects0_L1Tuple_Item1 = Objects0_L1Tuple_Item1;
-	assign Inputs_Objects0_L1Tuple_Item2 = Objects0_L1Tuple_Item2;
-	assign Inputs_Objects1_L1Byte = Objects1_L1Byte;
-	assign Inputs_Objects1_L1Object_L2BooleanArray[0] = Objects1_L1Object_L2BooleanArray0;
-	assign Inputs_Objects1_L1Object_L2BooleanArray[1] = Objects1_L1Object_L2BooleanArray1;
-	assign Inputs_Objects1_L1Object_L2ObjectArray0_L3Boolean = Objects1_L1Object_L2ObjectArray0_L3Boolean;
-	assign Inputs_Objects1_L1Object_L2ObjectArray0_L3RTLBitArray[0] = Objects1_L1Object_L2ObjectArray0_L3RTLBitArray0;
-	assign Inputs_Objects1_L1Object_L2ObjectArray0_L3RTLBitArray[1] = Objects1_L1Object_L2ObjectArray0_L3RTLBitArray1;
-	assign Inputs_Objects1_L1Object_L2ObjectArray0_L3Tuple_Item1 = Objects1_L1Object_L2ObjectArray0_L3Tuple_Item1;
-	assign Inputs_Objects1_L1Object_L2ObjectArray0_L3Tuple_Item2 = Objects1_L1Object_L2ObjectArray0_L3Tuple_Item2;
-	assign Inputs_Objects1_L1Object_L2ObjectArray0_L3TupleArray[0] = Objects1_L1Object_L2ObjectArray0_L3TupleArray0;
-	assign Inputs_Objects1_L1Object_L2ObjectArray0_L3TupleArray[1] = Objects1_L1Object_L2ObjectArray0_L3TupleArray1;
-	assign Inputs_Objects1_L1Object_L2ObjectArray1_L3Boolean = Objects1_L1Object_L2ObjectArray1_L3Boolean;
-	assign Inputs_Objects1_L1Object_L2ObjectArray1_L3RTLBitArray[0] = Objects1_L1Object_L2ObjectArray1_L3RTLBitArray0;
-	assign Inputs_Objects1_L1Object_L2ObjectArray1_L3RTLBitArray[1] = Objects1_L1Object_L2ObjectArray1_L3RTLBitArray1;
-	assign Inputs_Objects1_L1Object_L2ObjectArray1_L3Tuple_Item1 = Objects1_L1Object_L2ObjectArray1_L3Tuple_Item1;
-	assign Inputs_Objects1_L1Object_L2ObjectArray1_L3Tuple_Item2 = Objects1_L1Object_L2ObjectArray1_L3Tuple_Item2;
-	assign Inputs_Objects1_L1Object_L2ObjectArray1_L3TupleArray[0] = Objects1_L1Object_L2ObjectArray1_L3TupleArray0;
-	assign Inputs_Objects1_L1Object_L2ObjectArray1_L3TupleArray[1] = Objects1_L1Object_L2ObjectArray1_L3TupleArray1;
-	assign Inputs_Objects1_L1Tuple_Item1 = Objects1_L1Tuple_Item1;
-	assign Inputs_Objects1_L1Tuple_Item2 = Objects1_L1Tuple_Item2;
+	assign Inputs_Objects[0][41] = Objects0_L1Tuple_Item1;
+	assign Inputs_Objects[0][40:38] = Objects0_L1Tuple_Item2;
+	assign Inputs_Objects[0][37] = Objects0_L1Object_L2ObjectArray1_L3TupleArray1_Item1;
+	assign Inputs_Objects[0][36:35] = Objects0_L1Object_L2ObjectArray1_L3TupleArray1_Item2;
+	assign Inputs_Objects[0][34] = Objects0_L1Object_L2ObjectArray1_L3TupleArray0_Item1;
+	assign Inputs_Objects[0][33:32] = Objects0_L1Object_L2ObjectArray1_L3TupleArray0_Item2;
+	assign Inputs_Objects[0][31] = Objects0_L1Object_L2ObjectArray1_L3Tuple_Item1;
+	assign Inputs_Objects[0][30:29] = Objects0_L1Object_L2ObjectArray1_L3Tuple_Item2;
+	assign Inputs_Objects[0][28:27] = Objects0_L1Object_L2ObjectArray1_L3RTLBitArray1;
+	assign Inputs_Objects[0][26:25] = Objects0_L1Object_L2ObjectArray1_L3RTLBitArray0;
+	assign Inputs_Objects[0][24] = Objects0_L1Object_L2ObjectArray1_L3Boolean;
+	assign Inputs_Objects[0][23] = Objects0_L1Object_L2ObjectArray0_L3TupleArray1_Item1;
+	assign Inputs_Objects[0][22:21] = Objects0_L1Object_L2ObjectArray0_L3TupleArray1_Item2;
+	assign Inputs_Objects[0][20] = Objects0_L1Object_L2ObjectArray0_L3TupleArray0_Item1;
+	assign Inputs_Objects[0][19:18] = Objects0_L1Object_L2ObjectArray0_L3TupleArray0_Item2;
+	assign Inputs_Objects[0][17] = Objects0_L1Object_L2ObjectArray0_L3Tuple_Item1;
+	assign Inputs_Objects[0][16:15] = Objects0_L1Object_L2ObjectArray0_L3Tuple_Item2;
+	assign Inputs_Objects[0][14:13] = Objects0_L1Object_L2ObjectArray0_L3RTLBitArray1;
+	assign Inputs_Objects[0][12:11] = Objects0_L1Object_L2ObjectArray0_L3RTLBitArray0;
+	assign Inputs_Objects[0][10] = Objects0_L1Object_L2ObjectArray0_L3Boolean;
+	assign Inputs_Objects[0][9] = Objects0_L1Object_L2BooleanArray1;
+	assign Inputs_Objects[0][8] = Objects0_L1Object_L2BooleanArray0;
+	assign Inputs_Objects[0][7:0] = Objects0_L1Byte;
+	assign Inputs_Objects[1][41] = Objects1_L1Tuple_Item1;
+	assign Inputs_Objects[1][40:38] = Objects1_L1Tuple_Item2;
+	assign Inputs_Objects[1][37] = Objects1_L1Object_L2ObjectArray1_L3TupleArray1_Item1;
+	assign Inputs_Objects[1][36:35] = Objects1_L1Object_L2ObjectArray1_L3TupleArray1_Item2;
+	assign Inputs_Objects[1][34] = Objects1_L1Object_L2ObjectArray1_L3TupleArray0_Item1;
+	assign Inputs_Objects[1][33:32] = Objects1_L1Object_L2ObjectArray1_L3TupleArray0_Item2;
+	assign Inputs_Objects[1][31] = Objects1_L1Object_L2ObjectArray1_L3Tuple_Item1;
+	assign Inputs_Objects[1][30:29] = Objects1_L1Object_L2ObjectArray1_L3Tuple_Item2;
+	assign Inputs_Objects[1][28:27] = Objects1_L1Object_L2ObjectArray1_L3RTLBitArray1;
+	assign Inputs_Objects[1][26:25] = Objects1_L1Object_L2ObjectArray1_L3RTLBitArray0;
+	assign Inputs_Objects[1][24] = Objects1_L1Object_L2ObjectArray1_L3Boolean;
+	assign Inputs_Objects[1][23] = Objects1_L1Object_L2ObjectArray0_L3TupleArray1_Item1;
+	assign Inputs_Objects[1][22:21] = Objects1_L1Object_L2ObjectArray0_L3TupleArray1_Item2;
+	assign Inputs_Objects[1][20] = Objects1_L1Object_L2ObjectArray0_L3TupleArray0_Item1;
+	assign Inputs_Objects[1][19:18] = Objects1_L1Object_L2ObjectArray0_L3TupleArray0_Item2;
+	assign Inputs_Objects[1][17] = Objects1_L1Object_L2ObjectArray0_L3Tuple_Item1;
+	assign Inputs_Objects[1][16:15] = Objects1_L1Object_L2ObjectArray0_L3Tuple_Item2;
+	assign Inputs_Objects[1][14:13] = Objects1_L1Object_L2ObjectArray0_L3RTLBitArray1;
+	assign Inputs_Objects[1][12:11] = Objects1_L1Object_L2ObjectArray0_L3RTLBitArray0;
+	assign Inputs_Objects[1][10] = Objects1_L1Object_L2ObjectArray0_L3Boolean;
+	assign Inputs_Objects[1][9] = Objects1_L1Object_L2BooleanArray1;
+	assign Inputs_Objects[1][8] = Objects1_L1Object_L2BooleanArray0;
+	assign Inputs_Objects[1][7:0] = Objects1_L1Byte;
+	assign iInput_L1Byte = Inputs_Object_L1Byte;
+	assign iInput_L1Object_L2BooleanArray[0] = Inputs_Object_L1Object_L2BooleanArray[0];
+	assign iInput_L1Object_L2BooleanArray[1] = Inputs_Object_L1Object_L2BooleanArray[1];
+	assign iInput_L1Object_L2ObjectArray[0] = Inputs_Object_L1Object_L2ObjectArray[0];
+	assign iInput_L1Object_L2ObjectArray[1] = Inputs_Object_L1Object_L2ObjectArray[1];
+	assign iInput_L1Tuple_Item1 = Inputs_Object_L1Tuple_Item1;
+	assign iInput_L1Tuple_Item2 = Inputs_Object_L1Tuple_Item2;
 	assign oInput_L1Byte = Inputs_Object_L1Byte;
 	assign oInput_L1Object_L2BooleanArray0 = Inputs_Object_L1Object_L2BooleanArray[0];
 	assign oInput_L1Object_L2BooleanArray1 = Inputs_Object_L1Object_L2BooleanArray[1];
-	assign oInput_L1Object_L2ObjectArray0_L3Boolean = Inputs_Object_L1Object_L2ObjectArray0_L3Boolean;
-	assign oInput_L1Object_L2ObjectArray0_L3RTLBitArray0 = Inputs_Object_L1Object_L2ObjectArray0_L3RTLBitArray[0];
-	assign oInput_L1Object_L2ObjectArray0_L3RTLBitArray1 = Inputs_Object_L1Object_L2ObjectArray0_L3RTLBitArray[1];
-	assign oInput_L1Object_L2ObjectArray0_L3Tuple_Item1 = Inputs_Object_L1Object_L2ObjectArray0_L3Tuple_Item1;
-	assign oInput_L1Object_L2ObjectArray0_L3Tuple_Item2 = Inputs_Object_L1Object_L2ObjectArray0_L3Tuple_Item2;
-	assign oInput_L1Object_L2ObjectArray0_L3TupleArray0 = Inputs_Object_L1Object_L2ObjectArray0_L3TupleArray[0];
-	assign oInput_L1Object_L2ObjectArray0_L3TupleArray1 = Inputs_Object_L1Object_L2ObjectArray0_L3TupleArray[1];
-	assign oInput_L1Object_L2ObjectArray1_L3Boolean = Inputs_Object_L1Object_L2ObjectArray1_L3Boolean;
-	assign oInput_L1Object_L2ObjectArray1_L3RTLBitArray0 = Inputs_Object_L1Object_L2ObjectArray1_L3RTLBitArray[0];
-	assign oInput_L1Object_L2ObjectArray1_L3RTLBitArray1 = Inputs_Object_L1Object_L2ObjectArray1_L3RTLBitArray[1];
-	assign oInput_L1Object_L2ObjectArray1_L3Tuple_Item1 = Inputs_Object_L1Object_L2ObjectArray1_L3Tuple_Item1;
-	assign oInput_L1Object_L2ObjectArray1_L3Tuple_Item2 = Inputs_Object_L1Object_L2ObjectArray1_L3Tuple_Item2;
-	assign oInput_L1Object_L2ObjectArray1_L3TupleArray0 = Inputs_Object_L1Object_L2ObjectArray1_L3TupleArray[0];
-	assign oInput_L1Object_L2ObjectArray1_L3TupleArray1 = Inputs_Object_L1Object_L2ObjectArray1_L3TupleArray[1];
+	assign oInput_L1Object_L2ObjectArray0_L3TupleArray1_Item1 = Inputs_Object_L1Object_L2ObjectArray[0][13];
+	assign oInput_L1Object_L2ObjectArray0_L3TupleArray1_Item2 = Inputs_Object_L1Object_L2ObjectArray[0][12:11];
+	assign oInput_L1Object_L2ObjectArray0_L3TupleArray0_Item1 = Inputs_Object_L1Object_L2ObjectArray[0][10];
+	assign oInput_L1Object_L2ObjectArray0_L3TupleArray0_Item2 = Inputs_Object_L1Object_L2ObjectArray[0][9:8];
+	assign oInput_L1Object_L2ObjectArray0_L3Tuple_Item1 = Inputs_Object_L1Object_L2ObjectArray[0][7];
+	assign oInput_L1Object_L2ObjectArray0_L3Tuple_Item2 = Inputs_Object_L1Object_L2ObjectArray[0][6:5];
+	assign oInput_L1Object_L2ObjectArray0_L3RTLBitArray1 = Inputs_Object_L1Object_L2ObjectArray[0][4:3];
+	assign oInput_L1Object_L2ObjectArray0_L3RTLBitArray0 = Inputs_Object_L1Object_L2ObjectArray[0][2:1];
+	assign oInput_L1Object_L2ObjectArray0_L3Boolean = Inputs_Object_L1Object_L2ObjectArray[0][0];
+	assign oInput_L1Object_L2ObjectArray1_L3TupleArray1_Item1 = Inputs_Object_L1Object_L2ObjectArray[1][13];
+	assign oInput_L1Object_L2ObjectArray1_L3TupleArray1_Item2 = Inputs_Object_L1Object_L2ObjectArray[1][12:11];
+	assign oInput_L1Object_L2ObjectArray1_L3TupleArray0_Item1 = Inputs_Object_L1Object_L2ObjectArray[1][10];
+	assign oInput_L1Object_L2ObjectArray1_L3TupleArray0_Item2 = Inputs_Object_L1Object_L2ObjectArray[1][9:8];
+	assign oInput_L1Object_L2ObjectArray1_L3Tuple_Item1 = Inputs_Object_L1Object_L2ObjectArray[1][7];
+	assign oInput_L1Object_L2ObjectArray1_L3Tuple_Item2 = Inputs_Object_L1Object_L2ObjectArray[1][6:5];
+	assign oInput_L1Object_L2ObjectArray1_L3RTLBitArray1 = Inputs_Object_L1Object_L2ObjectArray[1][4:3];
+	assign oInput_L1Object_L2ObjectArray1_L3RTLBitArray0 = Inputs_Object_L1Object_L2ObjectArray[1][2:1];
+	assign oInput_L1Object_L2ObjectArray1_L3Boolean = Inputs_Object_L1Object_L2ObjectArray[1][0];
 	assign oInput_L1Tuple_Item1 = Inputs_Object_L1Tuple_Item1;
 	assign oInput_L1Tuple_Item2 = Inputs_Object_L1Tuple_Item2;
 	// [BEGIN USER ARCHITECTURE]

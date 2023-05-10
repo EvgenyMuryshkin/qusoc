@@ -51,10 +51,7 @@ module NoWE_SP_WF_RAMModule_TopLevel
 	reg [7: 0] Inputs_Address_reg;
 	always @ (posedge Clock)
 	begin
-		if (HiSignal)
-		begin
-			State_Buff[Inputs_Address] <= Inputs_WriteData;
-		end
+		State_Buff[Inputs_Address] <= Inputs_WriteData;
 		Inputs_Address_reg <= Inputs_Address[7:0];
 	end
 	assign State_ReadData = State_Buff[Inputs_Address_reg];

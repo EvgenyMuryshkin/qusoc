@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\code\\qusoc\\rtl\\rtl.hdl\\rtl.hdl.csproj": {}
+    "C:\\code\\qusoc\\rtl\\rtl.hdl\\rtl.hdl.csproj": {}
   },
   "projects": {
-    "c:\\code\\qusoc\\rtl\\rtl.hdl\\rtl.hdl.csproj": {
+    "C:\\code\\qusoc\\rtl\\rtl.hdl\\rtl.hdl.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\code\\qusoc\\rtl\\rtl.hdl\\rtl.hdl.csproj",
+        "projectUniqueName": "C:\\code\\qusoc\\rtl\\rtl.hdl\\rtl.hdl.csproj",
         "projectName": "rtl.hdl",
-        "projectPath": "c:\\code\\qusoc\\rtl\\rtl.hdl\\rtl.hdl.csproj",
+        "projectPath": "C:\\code\\qusoc\\rtl\\rtl.hdl\\rtl.hdl.csproj",
         "packagesPath": "C:\\Users\\evmur\\.nuget\\packages\\",
-        "outputPath": "c:\\code\\qusoc\\rtl\\rtl.hdl\\obj\\",
+        "outputPath": "C:\\code\\qusoc\\rtl\\rtl.hdl\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -67,7 +67,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

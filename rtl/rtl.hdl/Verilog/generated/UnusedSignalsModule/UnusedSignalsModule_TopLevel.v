@@ -70,6 +70,10 @@ module UnusedSignalsModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
+	reg NextState_UnusedState;
+	reg NextState_UsedState;
+	wire unusedInternal;
+	wire usedInternal;
 	wire Inputs_iObject_Tuple_Item1;
 	wire Inputs_iObject_Tuple_Item2;
 	wire Inputs_iObject_UnusedValue;
@@ -80,10 +84,6 @@ module UnusedSignalsModule_TopLevel
 	wire Inputs_iUsedTuple_Item1;
 	wire Inputs_iUsedTuple_Item2;
 	wire Inputs_iUsedValue;
-	reg NextState_UnusedState;
-	reg NextState_UsedState;
-	wire unusedInternal;
-	wire usedInternal;
 	reg State_UnusedState = 1'b0;
 	wire State_UnusedStateDefault = 1'b0;
 	reg State_UsedState = 1'b0;

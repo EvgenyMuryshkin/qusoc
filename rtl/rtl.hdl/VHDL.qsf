@@ -1,4 +1,4 @@
-set_global_assignment -name TOP_LEVEL_ENTITY IOTupleDirectInputL4ComponentsOutputModule_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY OverrideInputsComposition_TopLevel
 # -------------------------------------------------------------------------- #
 #
 # Copyright (C) 1991-2010 Altera Corporation
@@ -170,11 +170,17 @@ set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleDirectInputComponent
 set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleDirectInputL2ComponentsOutputModule/IOTupleDirectInputL2ComponentsOutputModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleDirectInputL3ComponentsOutputModule/IOTupleDirectInputL3ComponentsOutputModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleDirectInputL4ComponentsOutputModule/IOTupleDirectInputL4ComponentsOutputModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleDirectInputL5ComponentsOutputModule/IOTupleDirectInputL5ComponentsOutputModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleDirectInputL6ComponentsOutputModule/IOTupleDirectInputL6ComponentsOutputModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleDirectInputL7ComponentsOutputModule/IOTupleDirectInputL7ComponentsOutputModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleDirectInputL8ComponentsOutputModule/IOTupleDirectInputL8ComponentsOutputModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleDirectInputL9ComponentsOutputModule/IOTupleDirectInputL9ComponentsOutputModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleDirectInputOutputModule/IOTupleDirectInputOutputModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IOTupleInternalOutputModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleInternalOutputModule/IOTupleInternalOutputModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleModule/IOTupleModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IOTupleSameClock.vwf
+set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleStateInputOutputModule/IOTupleStateInputOutputModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicRAMIndexingModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/LogicRAMIndexingModule/LogicRAMIndexingModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicRAMModule.vwf
@@ -196,6 +202,7 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/NestedLogicRAMIndexin
 set_global_assignment -name VHDL_FILE VHDL/generated/NestedLogicRAMIndexingModule/NestedLogicRAMIndexingModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/NotGateModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/NotGateModule/NotGateModule_TopLevel.vhdl
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/NoWE_SP_WF_RAMModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/NoWE_SP_WF_RAMModule/NoWE_SP_WF_RAMModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/OrGateModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/OrGateModule/OrGateModule_TopLevel.vhdl
