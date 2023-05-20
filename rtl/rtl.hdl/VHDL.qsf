@@ -1,4 +1,4 @@
-set_global_assignment -name TOP_LEVEL_ENTITY IOTupleStateInternalOutputModule_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY IOTupleMuxStateArrayOutputModule_TopLevel
 # -------------------------------------------------------------------------- #
 #
 # Copyright (C) 1991-2010 Altera Corporation
@@ -60,7 +60,7 @@ set_global_assignment -name SDC_FILE rtl.sdc
 set_global_assignment -name VHDL_INPUT_VERSION VHDL_1993
 set_global_assignment -name VHDL_SHOW_LMF_MAPPING_MESSAGES OFF
 
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/IOTupleDelay1Clock.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/IOTupleMuxClock.vwf
 
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
@@ -180,7 +180,14 @@ set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleDirectInputOutputMod
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IOTupleInternalOutputModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleInternalOutputModule/IOTupleInternalOutputModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleModule/IOTupleModule_TopLevel.vhdl
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IOTupleMuxClock.vwf
+set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleMuxInputArrayOutputModule/IOTupleMuxInputArrayOutputModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleMuxInputOutputModule/IOTupleMuxInputOutputModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleMuxStateArrayOutputModule/IOTupleMuxStateArrayOutputModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleMuxStateOutputModule/IOTupleMuxStateOutputModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IOTupleSameClock.vwf
+set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleStateArrayInputOutputModule/IOTupleStateArrayInputOutputModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleStateArrayLoopInputOutputModule/IOTupleStateArrayLoopInputOutputModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleStateInputL1ComponentsOutputModule/IOTupleStateInputL1ComponentsOutputModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleStateInputL2ComponentsOutputModule/IOTupleStateInputL2ComponentsOutputModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleStateInputL3ComponentsOutputModule/IOTupleStateInputL3ComponentsOutputModule_TopLevel.vhdl
