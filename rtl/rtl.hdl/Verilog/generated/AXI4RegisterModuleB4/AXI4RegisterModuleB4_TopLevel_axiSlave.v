@@ -37,41 +37,7 @@ module AXI4RegisterModuleB4_TopLevel_axiSlave
 	input wire [7:0] inRDATA3,
 	input wire inRVALID,
 	input wire inWREADY,
-	input wire [31:0] M2S_AR_ARADDR,
-	input wire [1:0] M2S_AR_ARBURST,
-	input wire [3:0] M2S_AR_ARCACHE,
-	input wire [7:0] M2S_AR_ARID,
-	input wire [7:0] M2S_AR_ARLEN,
-	input wire [1:0] M2S_AR_ARLOCK,
-	input wire [2:0] M2S_AR_ARPROT,
-	input wire [3:0] M2S_AR_ARQOS,
-	input wire [7:0] M2S_AR_ARREGION,
-	input wire [2:0] M2S_AR_ARSIZE,
-	input wire [7:0] M2S_AR_ARUSER,
-	input wire M2S_AR_ARVALID,
-	input wire [31:0] M2S_AW_AWADDR,
-	input wire [1:0] M2S_AW_AWBURST,
-	input wire [3:0] M2S_AW_AWCACHE,
-	input wire [7:0] M2S_AW_AWID,
-	input wire [7:0] M2S_AW_AWLEN,
-	input wire [1:0] M2S_AW_AWLOCK,
-	input wire [2:0] M2S_AW_AWPROT,
-	input wire [3:0] M2S_AW_AWQOS,
-	input wire [7:0] M2S_AW_AWREGION,
-	input wire [2:0] M2S_AW_AWSIZE,
-	input wire [7:0] M2S_AW_AWUSER,
-	input wire M2S_AW_AWVALID,
-	input wire M2S_B_BREADY,
-	input wire M2S_R_RREADY,
-	input wire [7:0] M2S_W_WDATA0,
-	input wire [7:0] M2S_W_WDATA1,
-	input wire [7:0] M2S_W_WDATA2,
-	input wire [7:0] M2S_W_WDATA3,
-	input wire [7:0] M2S_W_WID,
-	input wire M2S_W_WLAST,
-	input wire [3:0] M2S_W_WSTRB,
-	input wire [7:0] M2S_W_WUSER,
-	input wire M2S_W_WVALID,
+	input wire [221:0] M2S,
 	output wire [31:0] outARADDR,
 	output wire outARREADYConfirming,
 	output wire outARVALID,
@@ -87,22 +53,7 @@ module AXI4RegisterModuleB4_TopLevel_axiSlave
 	output wire outWriteTXCompleting,
 	output wire [3:0] outWSTRB,
 	output wire outWVALID,
-	output wire S2M_AR_ARREADY,
-	output wire S2M_AW_AWREADY,
-	output wire [7:0] S2M_B_BID,
-	output wire [1:0] S2M_B_BRESP,
-	output wire [7:0] S2M_B_BUSER,
-	output wire S2M_B_BVALID,
-	output wire [7:0] S2M_R_RDATA0,
-	output wire [7:0] S2M_R_RDATA1,
-	output wire [7:0] S2M_R_RDATA2,
-	output wire [7:0] S2M_R_RDATA3,
-	output wire [7:0] S2M_R_RID,
-	output wire S2M_R_RLAST,
-	output wire [1:0] S2M_R_RRESP,
-	output wire [7:0] S2M_R_RUSER,
-	output wire S2M_R_RVALID,
-	output wire S2M_W_WREADY
+	output wire [73:0] S2M
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -144,44 +95,44 @@ module AXI4RegisterModuleB4_TopLevel_axiSlave
 	wire AXI4NonBufferedSlaveModule_L103F63T84_Expr = 1'b1;
 	wire [1: 0] AXI4NonBufferedSlaveModule_L103F111T131_Expr = 2'b10;
 	wire AXI4NonBufferedSlaveModule_L58F25T37_Expr = 1'b0;
-	wire AXI4_S_R_L18F29T33_Expr = 1'b1;
+	wire AXI4_S_R_L26F29T33_Expr = 1'b1;
 	wire AXI4NonBufferedSlaveModule_L71F25T37_Expr = 1'b0;
 	wire Inputs_inARREADY;
 	wire Inputs_inAWREADY;
 	wire Inputs_inBVALID;
 	wire Inputs_inRVALID;
 	wire Inputs_inWREADY;
-	wire [31: 0] Inputs_M2S_AR_ARADDR;
-	wire [1: 0] Inputs_M2S_AR_ARBURST;
-	wire [3: 0] Inputs_M2S_AR_ARCACHE;
 	wire [7: 0] Inputs_M2S_AR_ARID;
+	wire [31: 0] Inputs_M2S_AR_ARADDR;
 	wire [7: 0] Inputs_M2S_AR_ARLEN;
+	wire [2: 0] Inputs_M2S_AR_ARSIZE;
+	wire [1: 0] Inputs_M2S_AR_ARBURST;
 	wire [1: 0] Inputs_M2S_AR_ARLOCK;
+	wire [3: 0] Inputs_M2S_AR_ARCACHE;
 	wire [2: 0] Inputs_M2S_AR_ARPROT;
 	wire [3: 0] Inputs_M2S_AR_ARQOS;
 	wire [7: 0] Inputs_M2S_AR_ARREGION;
-	wire [2: 0] Inputs_M2S_AR_ARSIZE;
 	wire [7: 0] Inputs_M2S_AR_ARUSER;
 	wire Inputs_M2S_AR_ARVALID;
-	wire [31: 0] Inputs_M2S_AW_AWADDR;
-	wire [1: 0] Inputs_M2S_AW_AWBURST;
-	wire [3: 0] Inputs_M2S_AW_AWCACHE;
+	wire Inputs_M2S_R_RREADY;
 	wire [7: 0] Inputs_M2S_AW_AWID;
+	wire [31: 0] Inputs_M2S_AW_AWADDR;
 	wire [7: 0] Inputs_M2S_AW_AWLEN;
+	wire [2: 0] Inputs_M2S_AW_AWSIZE;
+	wire [1: 0] Inputs_M2S_AW_AWBURST;
 	wire [1: 0] Inputs_M2S_AW_AWLOCK;
+	wire [3: 0] Inputs_M2S_AW_AWCACHE;
 	wire [2: 0] Inputs_M2S_AW_AWPROT;
 	wire [3: 0] Inputs_M2S_AW_AWQOS;
 	wire [7: 0] Inputs_M2S_AW_AWREGION;
-	wire [2: 0] Inputs_M2S_AW_AWSIZE;
 	wire [7: 0] Inputs_M2S_AW_AWUSER;
 	wire Inputs_M2S_AW_AWVALID;
-	wire Inputs_M2S_B_BREADY;
-	wire Inputs_M2S_R_RREADY;
 	wire [7: 0] Inputs_M2S_W_WID;
-	wire Inputs_M2S_W_WLAST;
 	wire [3: 0] Inputs_M2S_W_WSTRB;
+	wire Inputs_M2S_W_WLAST;
 	wire [7: 0] Inputs_M2S_W_WUSER;
 	wire Inputs_M2S_W_WVALID;
+	wire Inputs_M2S_B_BREADY;
 	reg [1: 0] NextState_readFSM;
 	reg [1: 0] NextState_writeAWFSM;
 	reg [1: 0] NextState_writeWFSM;
@@ -494,41 +445,41 @@ module AXI4RegisterModuleB4_TopLevel_axiSlave
 	assign Inputs_inRDATA[3] = inRDATA3;
 	assign Inputs_inRVALID = inRVALID;
 	assign Inputs_inWREADY = inWREADY;
-	assign Inputs_M2S_AR_ARADDR = M2S_AR_ARADDR;
-	assign Inputs_M2S_AR_ARBURST = M2S_AR_ARBURST;
-	assign Inputs_M2S_AR_ARCACHE = M2S_AR_ARCACHE;
-	assign Inputs_M2S_AR_ARID = M2S_AR_ARID;
-	assign Inputs_M2S_AR_ARLEN = M2S_AR_ARLEN;
-	assign Inputs_M2S_AR_ARLOCK = M2S_AR_ARLOCK;
-	assign Inputs_M2S_AR_ARPROT = M2S_AR_ARPROT;
-	assign Inputs_M2S_AR_ARQOS = M2S_AR_ARQOS;
-	assign Inputs_M2S_AR_ARREGION = M2S_AR_ARREGION;
-	assign Inputs_M2S_AR_ARSIZE = M2S_AR_ARSIZE;
-	assign Inputs_M2S_AR_ARUSER = M2S_AR_ARUSER;
-	assign Inputs_M2S_AR_ARVALID = M2S_AR_ARVALID;
-	assign Inputs_M2S_AW_AWADDR = M2S_AW_AWADDR;
-	assign Inputs_M2S_AW_AWBURST = M2S_AW_AWBURST;
-	assign Inputs_M2S_AW_AWCACHE = M2S_AW_AWCACHE;
-	assign Inputs_M2S_AW_AWID = M2S_AW_AWID;
-	assign Inputs_M2S_AW_AWLEN = M2S_AW_AWLEN;
-	assign Inputs_M2S_AW_AWLOCK = M2S_AW_AWLOCK;
-	assign Inputs_M2S_AW_AWPROT = M2S_AW_AWPROT;
-	assign Inputs_M2S_AW_AWQOS = M2S_AW_AWQOS;
-	assign Inputs_M2S_AW_AWREGION = M2S_AW_AWREGION;
-	assign Inputs_M2S_AW_AWSIZE = M2S_AW_AWSIZE;
-	assign Inputs_M2S_AW_AWUSER = M2S_AW_AWUSER;
-	assign Inputs_M2S_AW_AWVALID = M2S_AW_AWVALID;
-	assign Inputs_M2S_B_BREADY = M2S_B_BREADY;
-	assign Inputs_M2S_R_RREADY = M2S_R_RREADY;
-	assign Inputs_M2S_W_WDATA[0] = M2S_W_WDATA0;
-	assign Inputs_M2S_W_WDATA[1] = M2S_W_WDATA1;
-	assign Inputs_M2S_W_WDATA[2] = M2S_W_WDATA2;
-	assign Inputs_M2S_W_WDATA[3] = M2S_W_WDATA3;
-	assign Inputs_M2S_W_WID = M2S_W_WID;
-	assign Inputs_M2S_W_WLAST = M2S_W_WLAST;
-	assign Inputs_M2S_W_WSTRB = M2S_W_WSTRB;
-	assign Inputs_M2S_W_WUSER = M2S_W_WUSER;
-	assign Inputs_M2S_W_WVALID = M2S_W_WVALID;
+	assign Inputs_M2S_B_BREADY = M2S[221];
+	assign Inputs_M2S_W_WVALID = M2S[220];
+	assign Inputs_M2S_W_WUSER = M2S[219:212];
+	assign Inputs_M2S_W_WLAST = M2S[211];
+	assign Inputs_M2S_W_WSTRB = M2S[210:207];
+	assign Inputs_M2S_W_WDATA[3] = M2S[206:199];
+	assign Inputs_M2S_W_WDATA[2] = M2S[198:191];
+	assign Inputs_M2S_W_WDATA[1] = M2S[190:183];
+	assign Inputs_M2S_W_WDATA[0] = M2S[182:175];
+	assign Inputs_M2S_W_WID = M2S[174:167];
+	assign Inputs_M2S_AW_AWVALID = M2S[166];
+	assign Inputs_M2S_AW_AWUSER = M2S[165:158];
+	assign Inputs_M2S_AW_AWREGION = M2S[157:150];
+	assign Inputs_M2S_AW_AWQOS = M2S[149:146];
+	assign Inputs_M2S_AW_AWPROT = M2S[145:143];
+	assign Inputs_M2S_AW_AWCACHE = M2S[142:139];
+	assign Inputs_M2S_AW_AWLOCK = M2S[138:137];
+	assign Inputs_M2S_AW_AWBURST = M2S[136:135];
+	assign Inputs_M2S_AW_AWSIZE = M2S[134:132];
+	assign Inputs_M2S_AW_AWLEN = M2S[131:124];
+	assign Inputs_M2S_AW_AWADDR = M2S[123:92];
+	assign Inputs_M2S_AW_AWID = M2S[91:84];
+	assign Inputs_M2S_R_RREADY = M2S[83];
+	assign Inputs_M2S_AR_ARVALID = M2S[82];
+	assign Inputs_M2S_AR_ARUSER = M2S[81:74];
+	assign Inputs_M2S_AR_ARREGION = M2S[73:66];
+	assign Inputs_M2S_AR_ARQOS = M2S[65:62];
+	assign Inputs_M2S_AR_ARPROT = M2S[61:59];
+	assign Inputs_M2S_AR_ARCACHE = M2S[58:55];
+	assign Inputs_M2S_AR_ARLOCK = M2S[54:53];
+	assign Inputs_M2S_AR_ARBURST = M2S[52:51];
+	assign Inputs_M2S_AR_ARSIZE = M2S[50:48];
+	assign Inputs_M2S_AR_ARLEN = M2S[47:40];
+	assign Inputs_M2S_AR_ARADDR = M2S[39:8];
+	assign Inputs_M2S_AR_ARID = M2S[7:0];
 	assign internalARREADY = AXI4NonBufferedSlaveModule_L81F33T90_Expr;
 	assign internalAWREADY = AXI4NonBufferedSlaveModule_L85F33T94_Expr;
 	assign internalBVALID = AXI4NonBufferedSlaveModule_L87F32T134_Expr;
@@ -551,22 +502,22 @@ module AXI4RegisterModuleB4_TopLevel_axiSlave
 	assign outWriteTXCompleting = writeTXCompleting;
 	assign outWSTRB = Inputs_M2S_W_WSTRB;
 	assign outWVALID = Inputs_M2S_W_WVALID;
-	assign S2M_AR_ARREADY = internalARREADY;
-	assign S2M_AW_AWREADY = internalAWREADY;
-	assign S2M_B_BID = Inputs_M2S_W_WID;
-	assign S2M_B_BRESP = { 1'b0, AXI4NonBufferedSlaveModule_L71F25T37_Expr };
-	assign S2M_B_BUSER = Inputs_M2S_W_WUSER;
-	assign S2M_B_BVALID = internalBVALID;
-	assign S2M_R_RDATA0 = Inputs_inRDATA[0];
-	assign S2M_R_RDATA1 = Inputs_inRDATA[1];
-	assign S2M_R_RDATA2 = Inputs_inRDATA[2];
-	assign S2M_R_RDATA3 = Inputs_inRDATA[3];
-	assign S2M_R_RID = Inputs_M2S_AR_ARID;
-	assign S2M_R_RLAST = AXI4_S_R_L18F29T33_Expr;
-	assign S2M_R_RRESP = { 1'b0, AXI4NonBufferedSlaveModule_L58F25T37_Expr };
-	assign S2M_R_RUSER = Inputs_M2S_AR_ARUSER;
-	assign S2M_R_RVALID = internalRVALID;
-	assign S2M_W_WREADY = internalWREADY;
+	assign S2M[73] = internalWREADY;
+	assign S2M[72] = internalRVALID;
+	assign S2M[71:64] = Inputs_M2S_AR_ARUSER;
+	assign S2M[63] = AXI4_S_R_L26F29T33_Expr;
+	assign S2M[62:61] = { 1'b0, AXI4NonBufferedSlaveModule_L58F25T37_Expr };
+	assign S2M[60:53] = Inputs_inRDATA[3];
+	assign S2M[52:45] = Inputs_inRDATA[2];
+	assign S2M[44:37] = Inputs_inRDATA[1];
+	assign S2M[36:29] = Inputs_inRDATA[0];
+	assign S2M[28:21] = Inputs_M2S_AR_ARID;
+	assign S2M[20] = internalBVALID;
+	assign S2M[19:12] = Inputs_M2S_W_WUSER;
+	assign S2M[11:10] = { 1'b0, AXI4NonBufferedSlaveModule_L71F25T37_Expr };
+	assign S2M[9:2] = Inputs_M2S_W_WID;
+	assign S2M[1] = internalAWREADY;
+	assign S2M[0] = internalARREADY;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

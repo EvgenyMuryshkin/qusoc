@@ -133,11 +133,16 @@ namespace QuSoC.Demos
                 var dir = _virtualFS.Root.CreateDirectory(folderName);
 
                 var tinyFPGAPath = Path.Combine(PathTools.SolutionPath, "qusoc", "tinyfpga", name);
-                var stream = dir.GetStream(name);
+                var file = dir.GetFile(name);
+                if (file.StringStream != null)
+                {
+                    //var stream = dir.GetStream(name);
+                    var stream = file.StringStream;
 
-                var content = stream.ToString();
-                File.WriteAllText(tinyFPGAPath, content);
-                _logStream.WriteLine(DirectoryLogging.Summary, $"TinyFPGA file: {tinyFPGAPath}");
+                    var content = stream.ToString();
+                    File.WriteAllText(tinyFPGAPath, content);
+                    _logStream.WriteLine(DirectoryLogging.Summary, $"TinyFPGA file: {tinyFPGAPath}");
+                }
             }
 
             _logStream.WriteLine(DirectoryLogging.Summary, $"====================================== {DateTime.Now}");

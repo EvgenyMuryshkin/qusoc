@@ -1,0 +1,4 @@
+└Root       | SP_RF_RAMModule_Inputs | [16:0] | 17 | [16:0]
+ ├WriteData | Byte                   | [16:9] | 8  | [16:0][16:9]
+ ├WE        | Boolean                | [8]    | 1  | [16:0][8:8]
+ └Address   | Byte                   | [7:0]  | 8  | [16:0][7:0]

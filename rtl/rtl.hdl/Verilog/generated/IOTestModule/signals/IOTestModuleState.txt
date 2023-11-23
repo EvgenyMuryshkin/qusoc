@@ -1,0 +1,8 @@
+└Root             | IOTestModuleState | [32:0]  | 33 | [32:0] 
+ ├IteratorArray   | Byte[]            | [32:17] | 16 | [32:0][32:17]
+ │├IteratorArray1 | Byte              | [32:25] | 8  | [32:0][32:17][15:8]
+ │└IteratorArray0 | Byte              | [24:17] | 8  | [32:0][32:17][7:0]
+ ├Flag            | Boolean           | [16]    | 1  | [32:0][16:16]
+ └Array           | Byte[]            | [15:0]  | 16 | [32:0][15:0]
+  ├Array1         | Byte              | [15:8]  | 8  | [32:0][15:0][15:8]
+  └Array0         | Byte              | [7:0]   | 8  | [32:0][15:0][7:0]

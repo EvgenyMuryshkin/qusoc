@@ -1,0 +1,5 @@
+└Root          | Nested_SDP_RF_RAMModule_Inputs | [24:0]  | 25 | [24:0] 
+ ├WriteData    | Byte                           | [24:17] | 8  | [24:0][24:17]
+ ├WriteAddress | Byte                           | [16:9]  | 8  | [24:0][16:9]
+ ├WE           | Boolean                        | [8]     | 1  | [24:0][8:8]
+ └ReadAddress  | Byte                           | [7:0]   | 8  | [24:0][7:0]

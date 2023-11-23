@@ -1,0 +1,3 @@
+└Root | TStruct4    | [7:0] | 8 | [7:0]
+ ├b   | RTLBitArray | [7:4] | 4 | [7:0][7:4]
+ └a   | RTLBitArray | [3:0] | 4 | [7:0][3:0]

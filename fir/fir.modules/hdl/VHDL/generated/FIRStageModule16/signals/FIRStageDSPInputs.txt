@@ -1,0 +1,6 @@
+└Root                       | FIRStageDSPInputs | [81:0]  | 82 | [81:0] 
+ ├iIQ                       | RTLBitArray       | [81:66] | 16 | [81:0][81:66]
+ ├iInternalFeedbackSelector | Boolean           | [65]    | 1  | [81:0][65:65]
+ ├iFILO                     | RTLBitArray       | [64:49] | 16 | [81:0][64:49]
+ ├iCoeff                    | RTLBitArray       | [48:33] | 16 | [81:0][48:33]
+ └iAccum                    | RTLBitArray       | [32:0]  | 33 | [81:0][32:0]

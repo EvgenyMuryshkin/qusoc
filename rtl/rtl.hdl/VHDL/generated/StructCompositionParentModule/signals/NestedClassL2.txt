@@ -1,0 +1,5 @@
+└Root         | NestedClassL2 | [3:0] | 4 | [3:0]
+ ├boolValue   | Boolean[]     | [3:2] | 2 | [3:0][3:2]
+ │├boolValue1 | Boolean       | [3]   | 1 | [3:0][3:2][1:1]
+ │└boolValue0 | Boolean       | [2]   | 1 | [3:0][3:2][0:0]
+ └bitArray    | RTLBitArray   | [1:0] | 2 | [3:0][1:0]

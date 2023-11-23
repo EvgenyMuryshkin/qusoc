@@ -1,0 +1,6 @@
+└Root           | SoCComponentModuleCommon | [67:0]  | 68 | [67:0] 
+ ├WriteValue    | UInt32                   | [67:36] | 32 | [67:0][67:36]
+ ├WE            | Boolean                  | [35]    | 1  | [67:0][35:35]
+ ├RE            | Boolean                  | [34]    | 1  | [67:0][34:34]
+ ├MemAccessMode | RTLBitArray              | [33:32] | 2  | [67:0][33:32]
+ └Address       | UInt32                   | [31:0]  | 32 | [67:0][31:0]

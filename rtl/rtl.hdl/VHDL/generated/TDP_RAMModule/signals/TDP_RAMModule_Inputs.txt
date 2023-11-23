@@ -1,0 +1,7 @@
+└Root         | TDP_RAMModule_Inputs | [33:0]  | 34 | [33:0] 
+ ├WriteData_B | Byte                 | [33:26] | 8  | [33:0][33:26]
+ ├WriteData_A | Byte                 | [25:18] | 8  | [33:0][25:18]
+ ├WE_B        | Boolean              | [17]    | 1  | [33:0][17:17]
+ ├WE_A        | Boolean              | [16]    | 1  | [33:0][16:16]
+ ├Addr_B      | Byte                 | [15:8]  | 8  | [33:0][15:8]
+ └Addr_A      | Byte                 | [7:0]   | 8  | [33:0][7:0]

@@ -1,0 +1,4 @@
+└Root     | StructsCombinationalModuleInputs | [15:0] | 16 | [15:0]
+ └In      | Data                             | [15:0] | 16 | [15:0][15:0]
+  ├In_Op2 | Byte                             | [15:8] | 8  | [15:0][15:0][15:8]
+  └In_Op1 | Byte                             | [7:0]  | 8  | [15:0][15:0][7:0]

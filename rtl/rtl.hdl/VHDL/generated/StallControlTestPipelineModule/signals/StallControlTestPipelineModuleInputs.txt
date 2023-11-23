@@ -1,0 +1,7 @@
+└Root           | StallControlTestPipelineModuleInputs | [5:0] | 6 | [5:0]
+ ├stallStage3   | Boolean                              | [5]   | 1 | [5:0][5:5]
+ ├stallStage2   | Boolean                              | [4]   | 1 | [5:0][4:4]
+ ├stallStage1   | Boolean                              | [3]   | 1 | [5:0][3:3]
+ ├stallStage0   | Boolean                              | [2]   | 1 | [5:0][2:2]
+ ├stallPrev     | Boolean                              | [1]   | 1 | [5:0][1:1]
+ └stallPipeline | Boolean                              | [0]   | 1 | [5:0][0:0]

@@ -1,0 +1,3 @@
+└Root       | EmitterInputs | [1:0] | 2 | [1:0]
+ ├IsEnabled | Boolean       | [1]   | 1 | [1:0][1:1]
+ └Ack       | Boolean       | [0]   | 1 | [1:0][0:0]

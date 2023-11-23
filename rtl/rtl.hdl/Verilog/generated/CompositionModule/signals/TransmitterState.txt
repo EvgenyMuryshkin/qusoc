@@ -1,0 +1,4 @@
+└Root     | TransmitterState | [17:0]  | 18 | [17:0] 
+ ├FSM     | TransmitterFSM   | [17:16] | 2  | [17:0][17:16]
+ ├Data    | RTLBitArray      | [15:8]  | 8  | [17:0][15:8]
+ └Counter | Byte             | [7:0]   | 8  | [17:0][7:0]

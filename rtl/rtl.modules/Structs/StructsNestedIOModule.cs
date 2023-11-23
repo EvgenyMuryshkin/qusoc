@@ -1,4 +1,5 @@
 ﻿using Quokka.RTL;
+using System;
 using System.Linq;
 
 namespace RTL.Modules
@@ -60,4 +61,29 @@ namespace RTL.Modules
         {
         }
     }
+
+    public class StructCompositionModuleInput
+    {
+        public TopLevelClass iValue = new TopLevelClass(2, 2, 2);
+    }
+
+    public class StructCompositionChildModule : RTLCombinationalModule<StructCompositionModuleInput>
+    {
+        public StructCompositionModuleInput Output => Inputs;
+    }
+
+    public class StructCompositionParentModule : RTLCombinationalModule<StructCompositionModuleInput>
+    {
+        StructCompositionChildModule child = new StructCompositionChildModule();
+        public StructCompositionModuleInput oOutput => child.Output;
+
+        protected override void OnSchedule(Func<StructCompositionModuleInput> inputsFactory)
+        {
+            child.Schedule(() => new StructCompositionModuleInput()
+            {
+                iValue = Inputs.iValue
+            });
+        }
+    }
+
 }

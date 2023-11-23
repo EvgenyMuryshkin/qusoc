@@ -1,0 +1,3 @@
+└Root     | ShifterInputs | [10:0] | 11 | [10:0]
+ ├Value   | RTLBitArray   | [10:3] | 8  | [10:0][10:3]
+ └ShiftBy | RTLBitArray   | [2:0]  | 3  | [10:0][2:0]

@@ -1,0 +1,8 @@
+└Root                   | SoCBlockRAMModuleInputs  | [99:0]  | 100 | [99:0] 
+ ├DeviceAddress         | UInt32                   | [99:68] | 32  | [99:0][99:68]
+ └Common                | SoCComponentModuleCommon | [67:0]  | 68  | [99:0][67:0]
+  ├Common_WriteValue    | UInt32                   | [67:36] | 32  | [99:0][67:0][67:36]
+  ├Common_WE            | Boolean                  | [35]    | 1   | [99:0][67:0][35:35]
+  ├Common_RE            | Boolean                  | [34]    | 1   | [99:0][67:0][34:34]
+  ├Common_MemAccessMode | RTLBitArray              | [33:32] | 2   | [99:0][67:0][33:32]
+  └Common_Address       | UInt32                   | [31:0]  | 32  | [99:0][67:0][31:0]

@@ -1,0 +1,4 @@
+└Root | FullAdderInputs | [2:0] | 3 | [2:0]
+ ├CIn | Boolean         | [2]   | 1 | [2:0][2:2]
+ ├B   | Boolean         | [1]   | 1 | [2:0][1:1]
+ └A   | Boolean         | [0]   | 1 | [2:0][0:0]

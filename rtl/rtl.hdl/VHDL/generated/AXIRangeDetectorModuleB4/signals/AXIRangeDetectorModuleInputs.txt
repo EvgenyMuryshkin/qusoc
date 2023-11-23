@@ -1,0 +1,4 @@
+└Root       | AXIRangeDetectorModuleInputs | [95:0]  | 96 | [95:0] 
+ ├Value     | RTLBitArray                  | [95:64] | 32 | [95:0][95:64]
+ ├RangeTo   | RTLBitArray                  | [63:32] | 32 | [95:0][63:32]
+ └RangeFrom | RTLBitArray                  | [31:0]  | 32 | [95:0][31:0]

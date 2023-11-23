@@ -28,11 +28,7 @@ module Increment_TopLevel_TopLevel_CounterModule
 	input wire BoardSignals_Running,
 	input wire BoardSignals_Starting,
 	input wire BoardSignals_Started,
-	input wire [31:0] Common_Address,
-	input wire [1:0] Common_MemAccessMode,
-	input wire Common_RE,
-	input wire Common_WE,
-	input wire [31:0] Common_WriteValue,
+	input wire [67:0] Common,
 	input wire [31:0] DeviceAddress,
 	output wire IsActive,
 	output wire IsReady,
@@ -128,11 +124,11 @@ module Increment_TopLevel_TopLevel_CounterModule
 	assign SoCRegisterModule_L26F43T77_Expr_1 = State_Value;
 	assign SoCComponentModule_L50F122T156_Expr_1 = { {2{1'b0}}, Inputs_DeviceAddress };
 	assign SoCComponentModule_L50F122T156_Expr_2 = { {31{1'b0}}, addressSpan };
-	assign Inputs_Common_Address = Common_Address;
-	assign Inputs_Common_MemAccessMode = Common_MemAccessMode;
-	assign Inputs_Common_RE = Common_RE;
-	assign Inputs_Common_WE = Common_WE;
-	assign Inputs_Common_WriteValue = Common_WriteValue;
+	assign Inputs_Common_WriteValue = Common[67:36];
+	assign Inputs_Common_WE = Common[35];
+	assign Inputs_Common_RE = Common[34];
+	assign Inputs_Common_MemAccessMode = Common[33:32];
+	assign Inputs_Common_Address = Common[31:0];
 	assign Inputs_DeviceAddress = DeviceAddress;
 	assign addressMatch = SoCComponentModule_L50F48T157_Expr;
 	assign internalAddressBits = Inputs_Common_Address;

@@ -2,12 +2,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Quokka.FPGA" Version="0.1.4.205" />
+    <PackageReference Include="Quokka.FPGA" Version="0.1.4.211" />
     <PackageReference Include="Quokka.RISCV.CS2CPP" Version="1.0.0.10" />
-    <PackageReference Include="Quokka.RTL" Version="0.1.4.513" />
+    <PackageReference Include="Quokka.RTL" Version="0.1.4.520" />
     <PackageReference Include="Quokka.RISCV.Integration" Version="1.0.0.15" />
   </ItemGroup>
 </Project>

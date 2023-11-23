@@ -37,8 +37,8 @@ module IONativeModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	reg [7: 0] NextState_sByteValue;
 	wire [7: 0] Inputs_iByteValue;
+	reg [7: 0] NextState_sByteValue;
 	reg [7: 0] State_sByteValue = 8'b00000000;
 	wire [7: 0] State_sByteValueDefault = 8'b00000000;
 	always @ (posedge Clock)

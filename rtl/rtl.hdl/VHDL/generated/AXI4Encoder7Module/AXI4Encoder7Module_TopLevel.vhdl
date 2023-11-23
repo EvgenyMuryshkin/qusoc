@@ -87,7 +87,7 @@ begin
 		tmp0 := AXI4EncoderModule_L45F13L54T14_AXI4EncoderModule_L46F31T36_Expr;
 		for idx1 in 0 to 6 loop
 			if Inputs_iValues(idx1) = '1' then
-				tmp0 := Inputs_iValues(idx1);
+				tmp0 := tmp0 OR Inputs_iValues(idx1);
 			end if;
 		end loop;
 		AXI4EncoderModule_L45F13L54T14_result <= tmp0;

@@ -23,7 +23,7 @@ namespace rtl.modules
         public AXI4InterconnectModuleInputs(axiSize size, int mCount, int sCount)
         {
             M2S = Enumerable.Range(0, mCount).Select(i => new AXI4_M2S(size)).ToArray();
-            S2M = Enumerable.Range(0, mCount).Select(i => new AXI4InterconnectS2M(size)).ToArray();
+            S2M = Enumerable.Range(0, sCount).Select(i => new AXI4InterconnectS2M(size)).ToArray();
         }
 
         public AXI4_M2S[] M2S = new AXI4_M2S[0];

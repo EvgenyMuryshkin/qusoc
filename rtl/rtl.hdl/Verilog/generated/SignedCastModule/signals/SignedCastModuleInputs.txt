@@ -1,0 +1,2 @@
+└Root        | SignedCastModuleInputs | [15:0] | 16 | [15:0]
+ └ShortValue | Int16                  | [15:0] | 16 | [15:0][15:0]

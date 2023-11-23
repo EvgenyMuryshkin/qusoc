@@ -75,10 +75,6 @@ architecture rtl of UnusedSignalsModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal NextState_UnusedState : std_logic := '0';
-	signal NextState_UsedState : std_logic := '0';
-	signal unusedInternal : std_logic := '0';
-	signal usedInternal : std_logic := '0';
 	signal Inputs_iObject_Tuple_Item1 : std_logic := '0';
 	signal Inputs_iObject_Tuple_Item2 : std_logic := '0';
 	signal Inputs_iObject_UnusedValue : std_logic := '0';
@@ -89,6 +85,10 @@ architecture rtl of UnusedSignalsModule_TopLevel is
 	signal Inputs_iUsedTuple_Item1 : std_logic := '0';
 	signal Inputs_iUsedTuple_Item2 : std_logic := '0';
 	signal Inputs_iUsedValue : std_logic := '0';
+	signal NextState_UnusedState : std_logic := '0';
+	signal NextState_UsedState : std_logic := '0';
+	signal unusedInternal : std_logic := '0';
+	signal usedInternal : std_logic := '0';
 	signal State_UnusedState : std_logic := '0';
 	constant State_UnusedStateDefault : std_logic := '0';
 	signal State_UsedState : std_logic := '0';

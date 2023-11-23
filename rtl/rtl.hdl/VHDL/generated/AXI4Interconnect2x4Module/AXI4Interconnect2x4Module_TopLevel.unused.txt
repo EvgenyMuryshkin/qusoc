@@ -1,0 +1,8 @@
+No reads:
+	Inputs_S2M
+	masterReadEncoderModule_MSBIndex
+	masterReadEncoderModule_MSBValue
+	masterWriteEncoderModule_MSBIndex
+	masterWriteEncoderModule_MSBValue
+	mCount
+	sCount

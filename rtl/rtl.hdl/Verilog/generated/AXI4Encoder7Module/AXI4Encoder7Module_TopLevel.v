@@ -80,7 +80,7 @@ module AXI4Encoder7Module_TopLevel
 		begin
 			if (Inputs_iValues[idx1])
 			begin
-				AXI4EncoderModule_L45F13L54T14_result = Inputs_iValues[idx1];
+				AXI4EncoderModule_L45F13L54T14_result = (AXI4EncoderModule_L45F13L54T14_result | Inputs_iValues[idx1]);
 			end
 		end
 	end

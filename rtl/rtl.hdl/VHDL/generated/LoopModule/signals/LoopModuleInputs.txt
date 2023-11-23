@@ -1,0 +1,2 @@
+└Root    | LoopModuleInputs | [7:0] | 8 | [7:0]
+ └InData | RTLBitArray      | [7:0] | 8 | [7:0][7:0]

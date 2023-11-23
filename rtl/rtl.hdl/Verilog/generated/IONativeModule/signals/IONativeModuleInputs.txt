@@ -1,0 +1,2 @@
+└Root        | IONativeModuleInputs | [7:0] | 8 | [7:0]
+ └iByteValue | Byte                 | [7:0] | 8 | [7:0][7:0]

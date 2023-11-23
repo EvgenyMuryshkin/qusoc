@@ -1,0 +1,2 @@
+└Root     | TimerState  | [4:0] | 5 | [4:0]
+ └counter | RTLBitArray | [4:0] | 5 | [4:0][4:0]

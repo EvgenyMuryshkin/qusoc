@@ -4,6 +4,9 @@ using Quokka.RTL.Simulator;
 using QuokkaIntegrationTests;
 using rtl.modules;
 using System;
+using System.Drawing;
+using System.Linq;
+using System.Reflection;
 
 namespace RTL.Modules
 {
@@ -21,6 +24,8 @@ namespace RTL.Modules
         [TestMethod]
         public void AXI4MasterSlaveMemoryTestModuleTest()
         {
+            var l = typeof(Color).Assembly;
+
             var (sim, topLevel) = Setup(VCDOutputPath());
             var data = 0x81C0DE18;
 

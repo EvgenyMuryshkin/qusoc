@@ -1,0 +1,3 @@
+└Root   | FIRDSPWrapperModuleState | [95:0]  | 96 | [95:0] 
+ ├PCOUT | RTLBitArray              | [95:48] | 48 | [95:0][95:48]
+ └P     | RTLBitArray              | [47:0]  | 48 | [95:0][47:0]

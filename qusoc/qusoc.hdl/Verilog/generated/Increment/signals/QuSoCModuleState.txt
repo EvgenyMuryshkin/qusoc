@@ -1,0 +1,2 @@
+└Root      | QuSoCModuleState | [0] | 1 | [0:0]
+ └MemReady | Boolean          | [0] | 1 | [0:0][0:0]

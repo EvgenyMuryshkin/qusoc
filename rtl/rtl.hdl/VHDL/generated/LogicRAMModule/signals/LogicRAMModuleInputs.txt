@@ -1,0 +1,2 @@
+└Root   | LogicRAMModuleInputs | [7:0] | 8 | [7:0]
+ └Value | Byte                 | [7:0] | 8 | [7:0][7:0]

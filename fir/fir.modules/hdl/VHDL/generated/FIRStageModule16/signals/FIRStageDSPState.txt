@@ -1,0 +1,7 @@
+└Root   | FIRStageDSPState | [130:0]   | 131 | [130:0]  
+ ├sum   | RTLBitArray      | [130:114] | 17  | [130:0][130:114]
+ ├mult  | RTLBitArray      | [113:81]  | 33  | [130:0][113:81]
+ ├IQ2   | RTLBitArray      | [80:65]   | 16  | [130:0][80:65]
+ ├IQ1   | RTLBitArray      | [64:49]   | 16  | [130:0][64:49]
+ ├coeff | RTLBitArray      | [48:33]   | 16  | [130:0][48:33]
+ └accum | RTLBitArray      | [32:0]    | 33  | [130:0][32:0]

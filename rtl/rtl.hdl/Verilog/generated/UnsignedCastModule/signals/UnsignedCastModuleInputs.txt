@@ -1,0 +1,2 @@
+└Root         | UnsignedCastModuleInputs | [15:0] | 16 | [15:0]
+ └UShortValue | UInt16                   | [15:0] | 16 | [15:0][15:0]

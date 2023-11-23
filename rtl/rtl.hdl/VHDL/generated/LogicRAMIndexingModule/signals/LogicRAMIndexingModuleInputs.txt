@@ -1,0 +1,6 @@
+└Root       | LogicRAMIndexingModuleInputs | [20:0]  | 21 | [20:0] 
+ ├WriteData | Byte                         | [20:13] | 8  | [20:0][20:13]
+ ├WriteAddr | RTLBitArray                  | [12:11] | 2  | [20:0][12:11]
+ ├WE        | Boolean                      | [10]    | 1  | [20:0][10:10]
+ ├ReadAddr  | RTLBitArray                  | [9:8]   | 2  | [20:0][9:8]
+ └OpData    | Byte                         | [7:0]   | 8  | [20:0][7:0]

@@ -1,4 +1,6 @@
-﻿namespace RTL.Modules
+﻿using Quokka.RTL;
+
+namespace RTL.Modules
 {
     public class AXI4_S2M
     {
@@ -12,10 +14,19 @@
             B = new AXI4_S_B();
         }
 
+        [MemberIndex]
         public AXI4_S_AR AR;
+
+        [MemberIndex]
         public AXI4_S_AW AW;
+
+        [MemberIndex]
         public AXI4_S_B B;
+
+        [MemberIndex]
         public AXI4_S_R R;
+
+        [MemberIndex]
         public AXI4_S_W W;
     }
 }

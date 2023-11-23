@@ -32,7 +32,7 @@ namespace rtl.modules
                 for (var idx = Inputs.iValues.Length; idx > 0; idx--)
                 {
                     if (Inputs.iValues[idx - 1])
-                        result = idx - 1;//dbg
+                        result = idx - 1;
                 }
 
                 return result.Resized(resultWidth);
@@ -47,7 +47,7 @@ namespace rtl.modules
                 for (var idx = 0; idx < Inputs.iValues.Length; idx++)
                 {
                     if (Inputs.iValues[idx])
-                        result |= Inputs.iValues[idx];// true;
+                        result = result | Inputs.iValues[idx];
                 }
 
                 return result;

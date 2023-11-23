@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Quokka.Extension.Interop" Version="1.0.3.31" />
-    <PackageReference Include="Quokka.FPGA" Version="0.1.4.205" />
-    <PackageReference Include="Quokka.RTL" Version="0.1.4.513" />
+    <PackageReference Include="Quokka.FPGA" Version="0.1.4.211" />
+    <PackageReference Include="Quokka.RTL" Version="0.1.4.520" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\tools\Quokka.RTL.Local\Quokka.RTL.Local.csproj" />

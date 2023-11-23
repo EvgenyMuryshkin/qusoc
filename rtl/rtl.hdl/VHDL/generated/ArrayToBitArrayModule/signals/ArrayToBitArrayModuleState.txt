@@ -1,0 +1,6 @@
+└Root        | ArrayToBitArrayModuleState | [31:0]  | 32 | [31:0] 
+ └ReadData   | Byte[]                     | [31:0]  | 32 | [31:0][31:0]
+  ├ReadData3 | Byte                       | [31:24] | 8  | [31:0][31:0][31:24]
+  ├ReadData2 | Byte                       | [23:16] | 8  | [31:0][31:0][23:16]
+  ├ReadData1 | Byte                       | [15:8]  | 8  | [31:0][31:0][15:8]
+  └ReadData0 | Byte                       | [7:0]   | 8  | [31:0][31:0][7:0]

@@ -1,0 +1,6 @@
+└Root       | ArrayToBitArrayModuleInputs | [31:0]  | 32 | [31:0] 
+ └InArray   | Byte[]                      | [31:0]  | 32 | [31:0][31:0]
+  ├InArray3 | Byte                        | [31:24] | 8  | [31:0][31:0][31:24]
+  ├InArray2 | Byte                        | [23:16] | 8  | [31:0][31:0][23:16]
+  ├InArray1 | Byte                        | [15:8]  | 8  | [31:0][31:0][15:8]
+  └InArray0 | Byte                        | [7:0]   | 8  | [31:0][31:0][7:0]

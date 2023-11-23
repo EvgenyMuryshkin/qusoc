@@ -1,0 +1,8 @@
+└Root            | NestedLogicRAMIndexingModuleState     | [39:0]  | 40 | [39:0] 
+ ├Nested         | NestedLogicRAMIndexingModuleStateBuff | [39:8]  | 32 | [39:0][39:8]
+ │└Nested_Buff   | Byte[]                                | [39:8]  | 32 | [39:0][39:8][31:0]
+ │ ├Nested_Buff3 | Byte                                  | [39:32] | 8  | [39:0][39:8][31:0][31:24]
+ │ ├Nested_Buff2 | Byte                                  | [31:24] | 8  | [39:0][39:8][31:0][23:16]
+ │ ├Nested_Buff1 | Byte                                  | [23:16] | 8  | [39:0][39:8][31:0][15:8]
+ │ └Nested_Buff0 | Byte                                  | [15:8]  | 8  | [39:0][39:8][31:0][7:0]
+ └Counter        | Byte                                  | [7:0]   | 8  | [39:0][7:0]

@@ -1,0 +1,4 @@
+└Root       | AXIConfirmModuleInputs | [2:0] | 3 | [2:0]
+ ├inValid   | Boolean                | [2]   | 1 | [2:0][2:2]
+ ├inRestart | Boolean                | [1]   | 1 | [2:0][1:1]
+ └inReady   | Boolean                | [0]   | 1 | [2:0][0:0]

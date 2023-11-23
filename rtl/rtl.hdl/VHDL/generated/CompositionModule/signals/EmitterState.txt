@@ -1,0 +1,2 @@
+└Root  | EmitterState | [7:0] | 8 | [7:0]
+ └Data | Byte         | [7:0] | 8 | [7:0][7:0]
