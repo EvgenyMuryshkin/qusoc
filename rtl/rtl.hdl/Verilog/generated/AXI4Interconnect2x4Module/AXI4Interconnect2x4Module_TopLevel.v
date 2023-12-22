@@ -98,11 +98,6 @@ module AXI4Interconnect2x4Module_TopLevel
 	input wire [31:0] S2M0_ADDR_HIGH,
 	input wire [31:0] S2M0_ADDR_LOW,
 	input wire S2M0_S2M_AR_ARREADY,
-	input wire S2M0_S2M_AW_AWREADY,
-	input wire [7:0] S2M0_S2M_B_BID,
-	input wire [1:0] S2M0_S2M_B_BRESP,
-	input wire [7:0] S2M0_S2M_B_BUSER,
-	input wire S2M0_S2M_B_BVALID,
 	input wire [7:0] S2M0_S2M_R_RID,
 	input wire [7:0] S2M0_S2M_R_RDATA0,
 	input wire [7:0] S2M0_S2M_R_RDATA1,
@@ -112,15 +107,15 @@ module AXI4Interconnect2x4Module_TopLevel
 	input wire S2M0_S2M_R_RLAST,
 	input wire [7:0] S2M0_S2M_R_RUSER,
 	input wire S2M0_S2M_R_RVALID,
+	input wire S2M0_S2M_AW_AWREADY,
+	input wire [7:0] S2M0_S2M_B_BID,
+	input wire [1:0] S2M0_S2M_B_BRESP,
+	input wire [7:0] S2M0_S2M_B_BUSER,
+	input wire S2M0_S2M_B_BVALID,
 	input wire S2M0_S2M_W_WREADY,
 	input wire [31:0] S2M1_ADDR_HIGH,
 	input wire [31:0] S2M1_ADDR_LOW,
 	input wire S2M1_S2M_AR_ARREADY,
-	input wire S2M1_S2M_AW_AWREADY,
-	input wire [7:0] S2M1_S2M_B_BID,
-	input wire [1:0] S2M1_S2M_B_BRESP,
-	input wire [7:0] S2M1_S2M_B_BUSER,
-	input wire S2M1_S2M_B_BVALID,
 	input wire [7:0] S2M1_S2M_R_RID,
 	input wire [7:0] S2M1_S2M_R_RDATA0,
 	input wire [7:0] S2M1_S2M_R_RDATA1,
@@ -130,15 +125,15 @@ module AXI4Interconnect2x4Module_TopLevel
 	input wire S2M1_S2M_R_RLAST,
 	input wire [7:0] S2M1_S2M_R_RUSER,
 	input wire S2M1_S2M_R_RVALID,
+	input wire S2M1_S2M_AW_AWREADY,
+	input wire [7:0] S2M1_S2M_B_BID,
+	input wire [1:0] S2M1_S2M_B_BRESP,
+	input wire [7:0] S2M1_S2M_B_BUSER,
+	input wire S2M1_S2M_B_BVALID,
 	input wire S2M1_S2M_W_WREADY,
 	input wire [31:0] S2M2_ADDR_HIGH,
 	input wire [31:0] S2M2_ADDR_LOW,
 	input wire S2M2_S2M_AR_ARREADY,
-	input wire S2M2_S2M_AW_AWREADY,
-	input wire [7:0] S2M2_S2M_B_BID,
-	input wire [1:0] S2M2_S2M_B_BRESP,
-	input wire [7:0] S2M2_S2M_B_BUSER,
-	input wire S2M2_S2M_B_BVALID,
 	input wire [7:0] S2M2_S2M_R_RID,
 	input wire [7:0] S2M2_S2M_R_RDATA0,
 	input wire [7:0] S2M2_S2M_R_RDATA1,
@@ -148,15 +143,15 @@ module AXI4Interconnect2x4Module_TopLevel
 	input wire S2M2_S2M_R_RLAST,
 	input wire [7:0] S2M2_S2M_R_RUSER,
 	input wire S2M2_S2M_R_RVALID,
+	input wire S2M2_S2M_AW_AWREADY,
+	input wire [7:0] S2M2_S2M_B_BID,
+	input wire [1:0] S2M2_S2M_B_BRESP,
+	input wire [7:0] S2M2_S2M_B_BUSER,
+	input wire S2M2_S2M_B_BVALID,
 	input wire S2M2_S2M_W_WREADY,
 	input wire [31:0] S2M3_ADDR_HIGH,
 	input wire [31:0] S2M3_ADDR_LOW,
 	input wire S2M3_S2M_AR_ARREADY,
-	input wire S2M3_S2M_AW_AWREADY,
-	input wire [7:0] S2M3_S2M_B_BID,
-	input wire [1:0] S2M3_S2M_B_BRESP,
-	input wire [7:0] S2M3_S2M_B_BUSER,
-	input wire S2M3_S2M_B_BVALID,
 	input wire [7:0] S2M3_S2M_R_RID,
 	input wire [7:0] S2M3_S2M_R_RDATA0,
 	input wire [7:0] S2M3_S2M_R_RDATA1,
@@ -166,6 +161,11 @@ module AXI4Interconnect2x4Module_TopLevel
 	input wire S2M3_S2M_R_RLAST,
 	input wire [7:0] S2M3_S2M_R_RUSER,
 	input wire S2M3_S2M_R_RVALID,
+	input wire S2M3_S2M_AW_AWREADY,
+	input wire [7:0] S2M3_S2M_B_BID,
+	input wire [1:0] S2M3_S2M_B_BRESP,
+	input wire [7:0] S2M3_S2M_B_BUSER,
+	input wire S2M3_S2M_B_BVALID,
 	input wire S2M3_S2M_W_WREADY,
 	output wire HasActiveRead,
 	output wire HasActiveWrite
@@ -302,74 +302,74 @@ module AXI4Interconnect2x4Module_TopLevel
 	assign Inputs_M2S[1][39:8] = M2S1_AR_ARADDR;
 	assign Inputs_M2S[1][7:0] = M2S1_AR_ARID;
 	assign Inputs_S2M[0][137] = S2M0_S2M_W_WREADY;
-	assign Inputs_S2M[0][136] = S2M0_S2M_R_RVALID;
-	assign Inputs_S2M[0][135:128] = S2M0_S2M_R_RUSER;
-	assign Inputs_S2M[0][127] = S2M0_S2M_R_RLAST;
-	assign Inputs_S2M[0][126:125] = S2M0_S2M_R_RRESP;
-	assign Inputs_S2M[0][124:117] = S2M0_S2M_R_RDATA3;
-	assign Inputs_S2M[0][116:109] = S2M0_S2M_R_RDATA2;
-	assign Inputs_S2M[0][108:101] = S2M0_S2M_R_RDATA1;
-	assign Inputs_S2M[0][100:93] = S2M0_S2M_R_RDATA0;
-	assign Inputs_S2M[0][92:85] = S2M0_S2M_R_RID;
-	assign Inputs_S2M[0][84] = S2M0_S2M_B_BVALID;
-	assign Inputs_S2M[0][83:76] = S2M0_S2M_B_BUSER;
-	assign Inputs_S2M[0][75:74] = S2M0_S2M_B_BRESP;
-	assign Inputs_S2M[0][73:66] = S2M0_S2M_B_BID;
-	assign Inputs_S2M[0][65] = S2M0_S2M_AW_AWREADY;
+	assign Inputs_S2M[0][136] = S2M0_S2M_B_BVALID;
+	assign Inputs_S2M[0][135:128] = S2M0_S2M_B_BUSER;
+	assign Inputs_S2M[0][127:126] = S2M0_S2M_B_BRESP;
+	assign Inputs_S2M[0][125:118] = S2M0_S2M_B_BID;
+	assign Inputs_S2M[0][117] = S2M0_S2M_AW_AWREADY;
+	assign Inputs_S2M[0][116] = S2M0_S2M_R_RVALID;
+	assign Inputs_S2M[0][115:108] = S2M0_S2M_R_RUSER;
+	assign Inputs_S2M[0][107] = S2M0_S2M_R_RLAST;
+	assign Inputs_S2M[0][106:105] = S2M0_S2M_R_RRESP;
+	assign Inputs_S2M[0][104:97] = S2M0_S2M_R_RDATA3;
+	assign Inputs_S2M[0][96:89] = S2M0_S2M_R_RDATA2;
+	assign Inputs_S2M[0][88:81] = S2M0_S2M_R_RDATA1;
+	assign Inputs_S2M[0][80:73] = S2M0_S2M_R_RDATA0;
+	assign Inputs_S2M[0][72:65] = S2M0_S2M_R_RID;
 	assign Inputs_S2M[0][64] = S2M0_S2M_AR_ARREADY;
 	assign Inputs_S2M[0][63:32] = S2M0_ADDR_LOW;
 	assign Inputs_S2M[0][31:0] = S2M0_ADDR_HIGH;
 	assign Inputs_S2M[1][137] = S2M1_S2M_W_WREADY;
-	assign Inputs_S2M[1][136] = S2M1_S2M_R_RVALID;
-	assign Inputs_S2M[1][135:128] = S2M1_S2M_R_RUSER;
-	assign Inputs_S2M[1][127] = S2M1_S2M_R_RLAST;
-	assign Inputs_S2M[1][126:125] = S2M1_S2M_R_RRESP;
-	assign Inputs_S2M[1][124:117] = S2M1_S2M_R_RDATA3;
-	assign Inputs_S2M[1][116:109] = S2M1_S2M_R_RDATA2;
-	assign Inputs_S2M[1][108:101] = S2M1_S2M_R_RDATA1;
-	assign Inputs_S2M[1][100:93] = S2M1_S2M_R_RDATA0;
-	assign Inputs_S2M[1][92:85] = S2M1_S2M_R_RID;
-	assign Inputs_S2M[1][84] = S2M1_S2M_B_BVALID;
-	assign Inputs_S2M[1][83:76] = S2M1_S2M_B_BUSER;
-	assign Inputs_S2M[1][75:74] = S2M1_S2M_B_BRESP;
-	assign Inputs_S2M[1][73:66] = S2M1_S2M_B_BID;
-	assign Inputs_S2M[1][65] = S2M1_S2M_AW_AWREADY;
+	assign Inputs_S2M[1][136] = S2M1_S2M_B_BVALID;
+	assign Inputs_S2M[1][135:128] = S2M1_S2M_B_BUSER;
+	assign Inputs_S2M[1][127:126] = S2M1_S2M_B_BRESP;
+	assign Inputs_S2M[1][125:118] = S2M1_S2M_B_BID;
+	assign Inputs_S2M[1][117] = S2M1_S2M_AW_AWREADY;
+	assign Inputs_S2M[1][116] = S2M1_S2M_R_RVALID;
+	assign Inputs_S2M[1][115:108] = S2M1_S2M_R_RUSER;
+	assign Inputs_S2M[1][107] = S2M1_S2M_R_RLAST;
+	assign Inputs_S2M[1][106:105] = S2M1_S2M_R_RRESP;
+	assign Inputs_S2M[1][104:97] = S2M1_S2M_R_RDATA3;
+	assign Inputs_S2M[1][96:89] = S2M1_S2M_R_RDATA2;
+	assign Inputs_S2M[1][88:81] = S2M1_S2M_R_RDATA1;
+	assign Inputs_S2M[1][80:73] = S2M1_S2M_R_RDATA0;
+	assign Inputs_S2M[1][72:65] = S2M1_S2M_R_RID;
 	assign Inputs_S2M[1][64] = S2M1_S2M_AR_ARREADY;
 	assign Inputs_S2M[1][63:32] = S2M1_ADDR_LOW;
 	assign Inputs_S2M[1][31:0] = S2M1_ADDR_HIGH;
 	assign Inputs_S2M[2][137] = S2M2_S2M_W_WREADY;
-	assign Inputs_S2M[2][136] = S2M2_S2M_R_RVALID;
-	assign Inputs_S2M[2][135:128] = S2M2_S2M_R_RUSER;
-	assign Inputs_S2M[2][127] = S2M2_S2M_R_RLAST;
-	assign Inputs_S2M[2][126:125] = S2M2_S2M_R_RRESP;
-	assign Inputs_S2M[2][124:117] = S2M2_S2M_R_RDATA3;
-	assign Inputs_S2M[2][116:109] = S2M2_S2M_R_RDATA2;
-	assign Inputs_S2M[2][108:101] = S2M2_S2M_R_RDATA1;
-	assign Inputs_S2M[2][100:93] = S2M2_S2M_R_RDATA0;
-	assign Inputs_S2M[2][92:85] = S2M2_S2M_R_RID;
-	assign Inputs_S2M[2][84] = S2M2_S2M_B_BVALID;
-	assign Inputs_S2M[2][83:76] = S2M2_S2M_B_BUSER;
-	assign Inputs_S2M[2][75:74] = S2M2_S2M_B_BRESP;
-	assign Inputs_S2M[2][73:66] = S2M2_S2M_B_BID;
-	assign Inputs_S2M[2][65] = S2M2_S2M_AW_AWREADY;
+	assign Inputs_S2M[2][136] = S2M2_S2M_B_BVALID;
+	assign Inputs_S2M[2][135:128] = S2M2_S2M_B_BUSER;
+	assign Inputs_S2M[2][127:126] = S2M2_S2M_B_BRESP;
+	assign Inputs_S2M[2][125:118] = S2M2_S2M_B_BID;
+	assign Inputs_S2M[2][117] = S2M2_S2M_AW_AWREADY;
+	assign Inputs_S2M[2][116] = S2M2_S2M_R_RVALID;
+	assign Inputs_S2M[2][115:108] = S2M2_S2M_R_RUSER;
+	assign Inputs_S2M[2][107] = S2M2_S2M_R_RLAST;
+	assign Inputs_S2M[2][106:105] = S2M2_S2M_R_RRESP;
+	assign Inputs_S2M[2][104:97] = S2M2_S2M_R_RDATA3;
+	assign Inputs_S2M[2][96:89] = S2M2_S2M_R_RDATA2;
+	assign Inputs_S2M[2][88:81] = S2M2_S2M_R_RDATA1;
+	assign Inputs_S2M[2][80:73] = S2M2_S2M_R_RDATA0;
+	assign Inputs_S2M[2][72:65] = S2M2_S2M_R_RID;
 	assign Inputs_S2M[2][64] = S2M2_S2M_AR_ARREADY;
 	assign Inputs_S2M[2][63:32] = S2M2_ADDR_LOW;
 	assign Inputs_S2M[2][31:0] = S2M2_ADDR_HIGH;
 	assign Inputs_S2M[3][137] = S2M3_S2M_W_WREADY;
-	assign Inputs_S2M[3][136] = S2M3_S2M_R_RVALID;
-	assign Inputs_S2M[3][135:128] = S2M3_S2M_R_RUSER;
-	assign Inputs_S2M[3][127] = S2M3_S2M_R_RLAST;
-	assign Inputs_S2M[3][126:125] = S2M3_S2M_R_RRESP;
-	assign Inputs_S2M[3][124:117] = S2M3_S2M_R_RDATA3;
-	assign Inputs_S2M[3][116:109] = S2M3_S2M_R_RDATA2;
-	assign Inputs_S2M[3][108:101] = S2M3_S2M_R_RDATA1;
-	assign Inputs_S2M[3][100:93] = S2M3_S2M_R_RDATA0;
-	assign Inputs_S2M[3][92:85] = S2M3_S2M_R_RID;
-	assign Inputs_S2M[3][84] = S2M3_S2M_B_BVALID;
-	assign Inputs_S2M[3][83:76] = S2M3_S2M_B_BUSER;
-	assign Inputs_S2M[3][75:74] = S2M3_S2M_B_BRESP;
-	assign Inputs_S2M[3][73:66] = S2M3_S2M_B_BID;
-	assign Inputs_S2M[3][65] = S2M3_S2M_AW_AWREADY;
+	assign Inputs_S2M[3][136] = S2M3_S2M_B_BVALID;
+	assign Inputs_S2M[3][135:128] = S2M3_S2M_B_BUSER;
+	assign Inputs_S2M[3][127:126] = S2M3_S2M_B_BRESP;
+	assign Inputs_S2M[3][125:118] = S2M3_S2M_B_BID;
+	assign Inputs_S2M[3][117] = S2M3_S2M_AW_AWREADY;
+	assign Inputs_S2M[3][116] = S2M3_S2M_R_RVALID;
+	assign Inputs_S2M[3][115:108] = S2M3_S2M_R_RUSER;
+	assign Inputs_S2M[3][107] = S2M3_S2M_R_RLAST;
+	assign Inputs_S2M[3][106:105] = S2M3_S2M_R_RRESP;
+	assign Inputs_S2M[3][104:97] = S2M3_S2M_R_RDATA3;
+	assign Inputs_S2M[3][96:89] = S2M3_S2M_R_RDATA2;
+	assign Inputs_S2M[3][88:81] = S2M3_S2M_R_RDATA1;
+	assign Inputs_S2M[3][80:73] = S2M3_S2M_R_RDATA0;
+	assign Inputs_S2M[3][72:65] = S2M3_S2M_R_RID;
 	assign Inputs_S2M[3][64] = S2M3_S2M_AR_ARREADY;
 	assign Inputs_S2M[3][63:32] = S2M3_ADDR_LOW;
 	assign Inputs_S2M[3][31:0] = S2M3_ADDR_HIGH;

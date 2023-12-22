@@ -1,0 +1,7 @@
+No reads:
+	leftCount
+	muxRightData_IsActive
+	muxRightData_Payload_Data
+	muxRightData_Payload_DataFlag
+	restartTransactions
+	rightCount

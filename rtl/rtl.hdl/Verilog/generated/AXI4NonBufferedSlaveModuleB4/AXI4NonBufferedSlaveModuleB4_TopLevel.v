@@ -85,11 +85,6 @@ module AXI4NonBufferedSlaveModuleB4_TopLevel
 	output wire [3:0] outWSTRB,
 	output wire outWVALID,
 	output wire S2M_AR_ARREADY,
-	output wire S2M_AW_AWREADY,
-	output wire [7:0] S2M_B_BID,
-	output wire [1:0] S2M_B_BRESP,
-	output wire [7:0] S2M_B_BUSER,
-	output wire S2M_B_BVALID,
 	output wire [7:0] S2M_R_RID,
 	output wire [7:0] S2M_R_RDATA0,
 	output wire [7:0] S2M_R_RDATA1,
@@ -99,6 +94,11 @@ module AXI4NonBufferedSlaveModuleB4_TopLevel
 	output wire S2M_R_RLAST,
 	output wire [7:0] S2M_R_RUSER,
 	output wire S2M_R_RVALID,
+	output wire S2M_AW_AWREADY,
+	output wire [7:0] S2M_B_BID,
+	output wire [1:0] S2M_B_BRESP,
+	output wire [7:0] S2M_B_BUSER,
+	output wire S2M_B_BVALID,
 	output wire S2M_W_WREADY
 );
 	// [BEGIN USER SIGNALS]
@@ -549,11 +549,6 @@ module AXI4NonBufferedSlaveModuleB4_TopLevel
 	assign outWSTRB = Inputs_M2S_W_WSTRB;
 	assign outWVALID = Inputs_M2S_W_WVALID;
 	assign S2M_AR_ARREADY = internalARREADY;
-	assign S2M_AW_AWREADY = internalAWREADY;
-	assign S2M_B_BID = Inputs_M2S_W_WID;
-	assign S2M_B_BRESP = { 1'b0, AXI4NonBufferedSlaveModule_L71F25T37_Expr };
-	assign S2M_B_BUSER = Inputs_M2S_W_WUSER;
-	assign S2M_B_BVALID = internalBVALID;
 	assign S2M_R_RID = Inputs_M2S_AR_ARID;
 	assign S2M_R_RDATA0 = Inputs_inRDATA[0];
 	assign S2M_R_RDATA1 = Inputs_inRDATA[1];
@@ -563,6 +558,11 @@ module AXI4NonBufferedSlaveModuleB4_TopLevel
 	assign S2M_R_RLAST = AXI4_S_R_L26F29T33_Expr;
 	assign S2M_R_RUSER = Inputs_M2S_AR_ARUSER;
 	assign S2M_R_RVALID = internalRVALID;
+	assign S2M_AW_AWREADY = internalAWREADY;
+	assign S2M_B_BID = Inputs_M2S_W_WID;
+	assign S2M_B_BRESP = { 1'b0, AXI4NonBufferedSlaveModule_L71F25T37_Expr };
+	assign S2M_B_BUSER = Inputs_M2S_W_WUSER;
+	assign S2M_B_BVALID = internalBVALID;
 	assign S2M_W_WREADY = internalWREADY;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]

@@ -1864,24 +1864,24 @@ begin
 				NextState_fir_fir_breg(a6) <= dsp48_b(a6);
 				NextState_fir_fir_adreg(a6)(24 downto 0) <= State_fir_fir_areg2(a6)(24 downto 0) + dsp48_d(a6)(24 downto 0);
 				NextState_fir_fir_adreg(a6)(49 downto 25) <= State_fir_fir_areg2(a6)(49 downto 25) + dsp48_d(a6)(49 downto 25);
-				NextState_fir_fir_mreg(a6)(42 downto 0) <= unsigned(signed(State_fir_fir_adreg(a6)(24 downto 0)) * signed(State_fir_fir_breg(a6)(17 downto 0)));
-				NextState_fir_fir_mreg(a6)(85 downto 43) <= unsigned(signed(State_fir_fir_adreg(a6)(49 downto 25)) * signed(State_fir_fir_breg(a6)(35 downto 18)));
+				NextState_fir_fir_mreg(a6)(42 downto 0) <= unsigned((signed(State_fir_fir_adreg(a6)(24 downto 0)) * signed(State_fir_fir_breg(a6)(17 downto 0))));
+				NextState_fir_fir_mreg(a6)(85 downto 43) <= unsigned((signed(State_fir_fir_adreg(a6)(49 downto 25)) * signed(State_fir_fir_breg(a6)(35 downto 18))));
 				NextState_mult_reset_mult_reset(a6) <= State_mult_reset_mult_reset_dsp(a6);
 				if a6 = 0 then
 					if State_mult_reset_mult_reset(a6) = '1' then
-						NextState_fir_fir_preg(a6)(47 downto 0) <= unsigned(resize(signed(State_fir_fir_mreg(a6)(42 downto 0)), 48));
-						NextState_fir_fir_preg(a6)(95 downto 48) <= unsigned(resize(signed(State_fir_fir_mreg(a6)(85 downto 43)), 48));
+						NextState_fir_fir_preg(a6)(47 downto 0) <= unsigned((resize(signed(State_fir_fir_mreg(a6)(42 downto 0)), 48)));
+						NextState_fir_fir_preg(a6)(95 downto 48) <= unsigned((resize(signed(State_fir_fir_mreg(a6)(85 downto 43)), 48)));
 					else
-						NextState_fir_fir_preg(a6)(47 downto 0) <= unsigned(signed(State_fir_fir_preg(a6)(47 downto 0)) + (resize(signed(State_fir_fir_mreg(a6)(42 downto 0)), 48)));
-						NextState_fir_fir_preg(a6)(95 downto 48) <= unsigned(signed(State_fir_fir_preg(a6)(95 downto 48)) + (resize(signed(State_fir_fir_mreg(a6)(85 downto 43)), 48)));
+						NextState_fir_fir_preg(a6)(47 downto 0) <= unsigned((signed(State_fir_fir_preg(a6)(47 downto 0)) + (resize(signed(State_fir_fir_mreg(a6)(42 downto 0)), 48))));
+						NextState_fir_fir_preg(a6)(95 downto 48) <= unsigned((signed(State_fir_fir_preg(a6)(95 downto 48)) + (resize(signed(State_fir_fir_mreg(a6)(85 downto 43)), 48))));
 					end if;
 				else
 					if State_mult_reset_mult_reset(a6) = '1' then
-						NextState_fir_fir_preg(a6)(47 downto 0) <= unsigned(signed(State_fir_fir_preg(a6 - 1)(47 downto 0)) + (resize(signed(State_fir_fir_mreg(a6)(42 downto 0)), 48)));
-						NextState_fir_fir_preg(a6)(95 downto 48) <= unsigned(signed(State_fir_fir_preg(a6 - 1)(95 downto 48)) + (resize(signed(State_fir_fir_mreg(a6)(85 downto 43)), 48)));
+						NextState_fir_fir_preg(a6)(47 downto 0) <= unsigned((signed(State_fir_fir_preg(a6 - 1)(47 downto 0)) + (resize(signed(State_fir_fir_mreg(a6)(42 downto 0)), 48))));
+						NextState_fir_fir_preg(a6)(95 downto 48) <= unsigned((signed(State_fir_fir_preg(a6 - 1)(95 downto 48)) + (resize(signed(State_fir_fir_mreg(a6)(85 downto 43)), 48))));
 					else
-						NextState_fir_fir_preg(a6)(47 downto 0) <= unsigned(signed(State_fir_fir_preg(a6)(47 downto 0)) + (resize(signed(State_fir_fir_mreg(a6)(42 downto 0)), 48)));
-						NextState_fir_fir_preg(a6)(95 downto 48) <= unsigned(signed(State_fir_fir_preg(a6)(95 downto 48)) + (resize(signed(State_fir_fir_mreg(a6)(85 downto 43)), 48)));
+						NextState_fir_fir_preg(a6)(47 downto 0) <= unsigned((signed(State_fir_fir_preg(a6)(47 downto 0)) + (resize(signed(State_fir_fir_mreg(a6)(42 downto 0)), 48))));
+						NextState_fir_fir_preg(a6)(95 downto 48) <= unsigned((signed(State_fir_fir_preg(a6)(95 downto 48)) + (resize(signed(State_fir_fir_mreg(a6)(85 downto 43)), 48))));
 					end if;
 				end if;
 			end loop;

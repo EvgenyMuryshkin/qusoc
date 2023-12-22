@@ -1,3 +1,5 @@
 No reads:
+	fullDuplexMux_oMuxLeftData
+	fullDuplexMux_oMuxRightData
 	mastersCount
 	slavesCount

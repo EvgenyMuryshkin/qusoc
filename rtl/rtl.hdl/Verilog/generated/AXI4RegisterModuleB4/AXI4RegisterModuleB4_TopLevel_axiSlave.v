@@ -503,20 +503,20 @@ module AXI4RegisterModuleB4_TopLevel_axiSlave
 	assign outWSTRB = Inputs_M2S_W_WSTRB;
 	assign outWVALID = Inputs_M2S_W_WVALID;
 	assign S2M[73] = internalWREADY;
-	assign S2M[72] = internalRVALID;
-	assign S2M[71:64] = Inputs_M2S_AR_ARUSER;
-	assign S2M[63] = AXI4_S_R_L26F29T33_Expr;
-	assign S2M[62:61] = { 1'b0, AXI4NonBufferedSlaveModule_L58F25T37_Expr };
-	assign S2M[60:53] = Inputs_inRDATA[3];
-	assign S2M[52:45] = Inputs_inRDATA[2];
-	assign S2M[44:37] = Inputs_inRDATA[1];
-	assign S2M[36:29] = Inputs_inRDATA[0];
-	assign S2M[28:21] = Inputs_M2S_AR_ARID;
-	assign S2M[20] = internalBVALID;
-	assign S2M[19:12] = Inputs_M2S_W_WUSER;
-	assign S2M[11:10] = { 1'b0, AXI4NonBufferedSlaveModule_L71F25T37_Expr };
-	assign S2M[9:2] = Inputs_M2S_W_WID;
-	assign S2M[1] = internalAWREADY;
+	assign S2M[72] = internalBVALID;
+	assign S2M[71:64] = Inputs_M2S_W_WUSER;
+	assign S2M[63:62] = { 1'b0, AXI4NonBufferedSlaveModule_L71F25T37_Expr };
+	assign S2M[61:54] = Inputs_M2S_W_WID;
+	assign S2M[53] = internalAWREADY;
+	assign S2M[52] = internalRVALID;
+	assign S2M[51:44] = Inputs_M2S_AR_ARUSER;
+	assign S2M[43] = AXI4_S_R_L26F29T33_Expr;
+	assign S2M[42:41] = { 1'b0, AXI4NonBufferedSlaveModule_L58F25T37_Expr };
+	assign S2M[40:33] = Inputs_inRDATA[3];
+	assign S2M[32:25] = Inputs_inRDATA[2];
+	assign S2M[24:17] = Inputs_inRDATA[1];
+	assign S2M[16:9] = Inputs_inRDATA[0];
+	assign S2M[8:1] = Inputs_M2S_AR_ARID;
 	assign S2M[0] = internalARREADY;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]

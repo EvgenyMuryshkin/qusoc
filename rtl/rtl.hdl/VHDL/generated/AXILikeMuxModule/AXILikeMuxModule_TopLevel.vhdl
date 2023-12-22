@@ -123,6 +123,8 @@ architecture rtl of AXILikeMuxModule_TopLevel is
 	signal fullDuplexMux_iLeftAddrValid : std_logic := '0';
 	signal fullDuplexMux_iRightAddr : unsigned(1 downto 0) := (others => '0');
 	signal fullDuplexMux_iRightAddrValid : std_logic := '0';
+	signal fullDuplexMux_oMuxLeftData : unsigned(9 downto 0) := (others => '0');
+	signal fullDuplexMux_oMuxRightData : unsigned(9 downto 0) := (others => '0');
 	signal fullDuplexMux_iLeft0_fullDuplexMux_iLeft_HardLink : unsigned(9 downto 0) := "0000000000";
 	signal fullDuplexMux_iLeft1_fullDuplexMux_iLeft_HardLink : unsigned(9 downto 0) := "0000000000";
 	signal fullDuplexMux_iLeft2_fullDuplexMux_iLeft_HardLink : unsigned(9 downto 0) := "0000000000";
@@ -143,6 +145,8 @@ architecture rtl of AXILikeMuxModule_TopLevel is
 	signal fullDuplexMux_oLeft1_fullDuplexMux_oLeft_HardLink : unsigned(9 downto 0) := "0000000000";
 	signal fullDuplexMux_oLeft2_fullDuplexMux_oLeft_HardLink : unsigned(9 downto 0) := "0000000000";
 	signal fullDuplexMux_oLeft3_fullDuplexMux_oLeft_HardLink : unsigned(9 downto 0) := "0000000000";
+	signal fullDuplexMux_oMuxLeftData_fullDuplexMux_oMuxLeftData_HardLink : unsigned(9 downto 0) := "0000000000";
+	signal fullDuplexMux_oMuxRightData_fullDuplexMux_oMuxRightData_HardLink : unsigned(9 downto 0) := "0000000000";
 	signal fullDuplexMux_oRight0_fullDuplexMux_oRight_HardLink : unsigned(9 downto 0) := "0000000000";
 	signal fullDuplexMux_oRight1_fullDuplexMux_oRight_HardLink : unsigned(9 downto 0) := "0000000000";
 	signal fullDuplexMux_oRight2_fullDuplexMux_oRight_HardLink : unsigned(9 downto 0) := "0000000000";
@@ -189,6 +193,8 @@ begin
 		oLeft1 => fullDuplexMux_oLeft1_fullDuplexMux_oLeft_HardLink,
 		oLeft2 => fullDuplexMux_oLeft2_fullDuplexMux_oLeft_HardLink,
 		oLeft3 => fullDuplexMux_oLeft3_fullDuplexMux_oLeft_HardLink,
+		oMuxLeftData => fullDuplexMux_oMuxLeftData_fullDuplexMux_oMuxLeftData_HardLink,
+		oMuxRightData => fullDuplexMux_oMuxRightData_fullDuplexMux_oMuxRightData_HardLink,
 		oRight0 => fullDuplexMux_oRight0_fullDuplexMux_oRight_HardLink,
 		oRight1 => fullDuplexMux_oRight1_fullDuplexMux_oRight_HardLink,
 		oRight2 => fullDuplexMux_oRight2_fullDuplexMux_oRight_HardLink,
@@ -199,7 +205,7 @@ begin
 		oRight7 => fullDuplexMux_oRight7_fullDuplexMux_oRight_HardLink
 	)
 	;
-	process (fullDuplexMux_iLeft, fullDuplexMux_iLeftAddr, fullDuplexMux_iLeftAddrValid, fullDuplexMux_iRight, fullDuplexMux_iRightAddr, fullDuplexMux_iRightAddrValid, fullDuplexMux_oLeft, fullDuplexMux_oLeft0_fullDuplexMux_oLeft_HardLink, fullDuplexMux_oLeft1_fullDuplexMux_oLeft_HardLink, fullDuplexMux_oLeft2_fullDuplexMux_oLeft_HardLink, fullDuplexMux_oLeft3_fullDuplexMux_oLeft_HardLink, fullDuplexMux_oRight, fullDuplexMux_oRight0_fullDuplexMux_oRight_HardLink, fullDuplexMux_oRight1_fullDuplexMux_oRight_HardLink, fullDuplexMux_oRight2_fullDuplexMux_oRight_HardLink, fullDuplexMux_oRight3_fullDuplexMux_oRight_HardLink, fullDuplexMux_oRight4_fullDuplexMux_oRight_HardLink, fullDuplexMux_oRight5_fullDuplexMux_oRight_HardLink, fullDuplexMux_oRight6_fullDuplexMux_oRight_HardLink, fullDuplexMux_oRight7_fullDuplexMux_oRight_HardLink, Inputs_MAddr, Inputs_MAddrValid, Inputs_MArr, Inputs_SAddr, Inputs_SAddrValid, Inputs_SArr, MAddr, MAddrValid, MArr0_IsActive, MArr0_Payload_Data, MArr0_Payload_DataFlag, MArr1_IsActive, MArr1_Payload_Data, MArr1_Payload_DataFlag, MArr2_IsActive, MArr2_Payload_Data, MArr2_Payload_DataFlag, MArr3_IsActive, MArr3_Payload_Data, MArr3_Payload_DataFlag, MArr4_IsActive, MArr4_Payload_Data, MArr4_Payload_DataFlag, MArr5_IsActive, MArr5_Payload_Data, MArr5_Payload_DataFlag, MArr6_IsActive, MArr6_Payload_Data, MArr6_Payload_DataFlag, MArr7_IsActive, MArr7_Payload_Data, MArr7_Payload_DataFlag, SAddr, SAddrValid, SArr0_IsActive, SArr0_Payload_Data, SArr0_Payload_DataFlag, SArr1_IsActive, SArr1_Payload_Data, SArr1_Payload_DataFlag, SArr2_IsActive, SArr2_Payload_Data, SArr2_Payload_DataFlag, SArr3_IsActive, SArr3_Payload_Data, SArr3_Payload_DataFlag)
+	process (fullDuplexMux_iLeft, fullDuplexMux_iLeftAddr, fullDuplexMux_iLeftAddrValid, fullDuplexMux_iRight, fullDuplexMux_iRightAddr, fullDuplexMux_iRightAddrValid, fullDuplexMux_oLeft, fullDuplexMux_oLeft0_fullDuplexMux_oLeft_HardLink, fullDuplexMux_oLeft1_fullDuplexMux_oLeft_HardLink, fullDuplexMux_oLeft2_fullDuplexMux_oLeft_HardLink, fullDuplexMux_oLeft3_fullDuplexMux_oLeft_HardLink, fullDuplexMux_oMuxLeftData_fullDuplexMux_oMuxLeftData_HardLink, fullDuplexMux_oMuxRightData_fullDuplexMux_oMuxRightData_HardLink, fullDuplexMux_oRight, fullDuplexMux_oRight0_fullDuplexMux_oRight_HardLink, fullDuplexMux_oRight1_fullDuplexMux_oRight_HardLink, fullDuplexMux_oRight2_fullDuplexMux_oRight_HardLink, fullDuplexMux_oRight3_fullDuplexMux_oRight_HardLink, fullDuplexMux_oRight4_fullDuplexMux_oRight_HardLink, fullDuplexMux_oRight5_fullDuplexMux_oRight_HardLink, fullDuplexMux_oRight6_fullDuplexMux_oRight_HardLink, fullDuplexMux_oRight7_fullDuplexMux_oRight_HardLink, Inputs_MAddr, Inputs_MAddrValid, Inputs_MArr, Inputs_SAddr, Inputs_SAddrValid, Inputs_SArr, MAddr, MAddrValid, MArr0_IsActive, MArr0_Payload_Data, MArr0_Payload_DataFlag, MArr1_IsActive, MArr1_Payload_Data, MArr1_Payload_DataFlag, MArr2_IsActive, MArr2_Payload_Data, MArr2_Payload_DataFlag, MArr3_IsActive, MArr3_Payload_Data, MArr3_Payload_DataFlag, MArr4_IsActive, MArr4_Payload_Data, MArr4_Payload_DataFlag, MArr5_IsActive, MArr5_Payload_Data, MArr5_Payload_DataFlag, MArr6_IsActive, MArr6_Payload_Data, MArr6_Payload_DataFlag, MArr7_IsActive, MArr7_Payload_Data, MArr7_Payload_DataFlag, SAddr, SAddrValid, SArr0_IsActive, SArr0_Payload_Data, SArr0_Payload_DataFlag, SArr1_IsActive, SArr1_Payload_Data, SArr1_Payload_DataFlag, SArr2_IsActive, SArr2_Payload_Data, SArr2_Payload_DataFlag, SArr3_IsActive, SArr3_Payload_Data, SArr3_Payload_DataFlag)
 	begin
 		Inputs_MAddr <= MAddr;
 		Inputs_MAddrValid <= MAddrValid;
@@ -313,6 +319,8 @@ begin
 		fullDuplexMux_oLeft(1) <= fullDuplexMux_oLeft1_fullDuplexMux_oLeft_HardLink;
 		fullDuplexMux_oLeft(2) <= fullDuplexMux_oLeft2_fullDuplexMux_oLeft_HardLink;
 		fullDuplexMux_oLeft(3) <= fullDuplexMux_oLeft3_fullDuplexMux_oLeft_HardLink;
+		fullDuplexMux_oMuxLeftData <= fullDuplexMux_oMuxLeftData_fullDuplexMux_oMuxLeftData_HardLink;
+		fullDuplexMux_oMuxRightData <= fullDuplexMux_oMuxRightData_fullDuplexMux_oMuxRightData_HardLink;
 		fullDuplexMux_oRight(0) <= fullDuplexMux_oRight0_fullDuplexMux_oRight_HardLink;
 		fullDuplexMux_oRight(1) <= fullDuplexMux_oRight1_fullDuplexMux_oRight_HardLink;
 		fullDuplexMux_oRight(2) <= fullDuplexMux_oRight2_fullDuplexMux_oRight_HardLink;

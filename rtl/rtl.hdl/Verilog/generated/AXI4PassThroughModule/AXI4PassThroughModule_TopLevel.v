@@ -59,11 +59,6 @@ module AXI4PassThroughModule_TopLevel
 	input wire iM2S_W_WVALID,
 	input wire iM2S_B_BREADY,
 	input wire iS2M_AR_ARREADY,
-	input wire iS2M_AW_AWREADY,
-	input wire [7:0] iS2M_B_BID,
-	input wire [1:0] iS2M_B_BRESP,
-	input wire [7:0] iS2M_B_BUSER,
-	input wire iS2M_B_BVALID,
 	input wire [7:0] iS2M_R_RID,
 	input wire [7:0] iS2M_R_RDATA0,
 	input wire [7:0] iS2M_R_RDATA1,
@@ -73,6 +68,11 @@ module AXI4PassThroughModule_TopLevel
 	input wire iS2M_R_RLAST,
 	input wire [7:0] iS2M_R_RUSER,
 	input wire iS2M_R_RVALID,
+	input wire iS2M_AW_AWREADY,
+	input wire [7:0] iS2M_B_BID,
+	input wire [1:0] iS2M_B_BRESP,
+	input wire [7:0] iS2M_B_BUSER,
+	input wire iS2M_B_BVALID,
 	input wire iS2M_W_WREADY,
 	output wire [7:0] oM2S_AR_ARID,
 	output wire [31:0] oM2S_AR_ARADDR,
@@ -110,11 +110,6 @@ module AXI4PassThroughModule_TopLevel
 	output wire oM2S_W_WVALID,
 	output wire oM2S_B_BREADY,
 	output wire oS2M_AR_ARREADY,
-	output wire oS2M_AW_AWREADY,
-	output wire [7:0] oS2M_B_BID,
-	output wire [1:0] oS2M_B_BRESP,
-	output wire [7:0] oS2M_B_BUSER,
-	output wire oS2M_B_BVALID,
 	output wire [7:0] oS2M_R_RID,
 	output wire [7:0] oS2M_R_RDATA0,
 	output wire [7:0] oS2M_R_RDATA1,
@@ -124,6 +119,11 @@ module AXI4PassThroughModule_TopLevel
 	output wire oS2M_R_RLAST,
 	output wire [7:0] oS2M_R_RUSER,
 	output wire oS2M_R_RVALID,
+	output wire oS2M_AW_AWREADY,
+	output wire [7:0] oS2M_B_BID,
+	output wire [1:0] oS2M_B_BRESP,
+	output wire [7:0] oS2M_B_BUSER,
+	output wire oS2M_B_BVALID,
 	output wire oS2M_W_WREADY
 );
 	// [BEGIN USER SIGNALS]
@@ -166,16 +166,16 @@ module AXI4PassThroughModule_TopLevel
 	wire Inputs_iM2S_W_WVALID;
 	wire Inputs_iM2S_B_BREADY;
 	wire Inputs_iS2M_AR_ARREADY;
-	wire Inputs_iS2M_AW_AWREADY;
-	wire [7: 0] Inputs_iS2M_B_BID;
-	wire [1: 0] Inputs_iS2M_B_BRESP;
-	wire [7: 0] Inputs_iS2M_B_BUSER;
-	wire Inputs_iS2M_B_BVALID;
 	wire [7: 0] Inputs_iS2M_R_RID;
 	wire [1: 0] Inputs_iS2M_R_RRESP;
 	wire Inputs_iS2M_R_RLAST;
 	wire [7: 0] Inputs_iS2M_R_RUSER;
 	wire Inputs_iS2M_R_RVALID;
+	wire Inputs_iS2M_AW_AWREADY;
+	wire [7: 0] Inputs_iS2M_B_BID;
+	wire [1: 0] Inputs_iS2M_B_BRESP;
+	wire [7: 0] Inputs_iS2M_B_BUSER;
+	wire Inputs_iS2M_B_BVALID;
 	wire Inputs_iS2M_W_WREADY;
 	wire [7 : 0] Inputs_iM2S_W_WDATA [0 : 3];
 	wire [7 : 0] Inputs_iS2M_R_RDATA [0 : 3];
@@ -217,11 +217,6 @@ module AXI4PassThroughModule_TopLevel
 	assign Inputs_iM2S_W_WVALID = iM2S_W_WVALID;
 	assign Inputs_iM2S_B_BREADY = iM2S_B_BREADY;
 	assign Inputs_iS2M_AR_ARREADY = iS2M_AR_ARREADY;
-	assign Inputs_iS2M_AW_AWREADY = iS2M_AW_AWREADY;
-	assign Inputs_iS2M_B_BID = iS2M_B_BID;
-	assign Inputs_iS2M_B_BRESP = iS2M_B_BRESP;
-	assign Inputs_iS2M_B_BUSER = iS2M_B_BUSER;
-	assign Inputs_iS2M_B_BVALID = iS2M_B_BVALID;
 	assign Inputs_iS2M_R_RID = iS2M_R_RID;
 	assign Inputs_iS2M_R_RDATA[0] = iS2M_R_RDATA0;
 	assign Inputs_iS2M_R_RDATA[1] = iS2M_R_RDATA1;
@@ -231,9 +226,14 @@ module AXI4PassThroughModule_TopLevel
 	assign Inputs_iS2M_R_RLAST = iS2M_R_RLAST;
 	assign Inputs_iS2M_R_RUSER = iS2M_R_RUSER;
 	assign Inputs_iS2M_R_RVALID = iS2M_R_RVALID;
+	assign Inputs_iS2M_AW_AWREADY = iS2M_AW_AWREADY;
+	assign Inputs_iS2M_B_BID = iS2M_B_BID;
+	assign Inputs_iS2M_B_BRESP = iS2M_B_BRESP;
+	assign Inputs_iS2M_B_BUSER = iS2M_B_BUSER;
+	assign Inputs_iS2M_B_BVALID = iS2M_B_BVALID;
 	assign Inputs_iS2M_W_WREADY = iS2M_W_WREADY;
 	assign m2s[0] = { Inputs_iM2S_B_BREADY, Inputs_iM2S_W_WVALID, Inputs_iM2S_W_WUSER, Inputs_iM2S_W_WLAST, Inputs_iM2S_W_WSTRB, Inputs_iM2S_W_WDATA[3], Inputs_iM2S_W_WDATA[2], Inputs_iM2S_W_WDATA[1], Inputs_iM2S_W_WDATA[0], Inputs_iM2S_W_WID, Inputs_iM2S_AW_AWVALID, Inputs_iM2S_AW_AWUSER, Inputs_iM2S_AW_AWREGION, Inputs_iM2S_AW_AWQOS, Inputs_iM2S_AW_AWPROT, Inputs_iM2S_AW_AWCACHE, Inputs_iM2S_AW_AWLOCK, Inputs_iM2S_AW_AWBURST, Inputs_iM2S_AW_AWSIZE, Inputs_iM2S_AW_AWLEN, Inputs_iM2S_AW_AWADDR, Inputs_iM2S_AW_AWID, Inputs_iM2S_R_RREADY, Inputs_iM2S_AR_ARVALID, Inputs_iM2S_AR_ARUSER, Inputs_iM2S_AR_ARREGION, Inputs_iM2S_AR_ARQOS, Inputs_iM2S_AR_ARPROT, Inputs_iM2S_AR_ARCACHE, Inputs_iM2S_AR_ARLOCK, Inputs_iM2S_AR_ARBURST, Inputs_iM2S_AR_ARSIZE, Inputs_iM2S_AR_ARLEN, Inputs_iM2S_AR_ARADDR, Inputs_iM2S_AR_ARID };
-	assign s2m[0] = { Inputs_iS2M_W_WREADY, Inputs_iS2M_R_RVALID, Inputs_iS2M_R_RUSER, Inputs_iS2M_R_RLAST, Inputs_iS2M_R_RRESP, Inputs_iS2M_R_RDATA[3], Inputs_iS2M_R_RDATA[2], Inputs_iS2M_R_RDATA[1], Inputs_iS2M_R_RDATA[0], Inputs_iS2M_R_RID, Inputs_iS2M_B_BVALID, Inputs_iS2M_B_BUSER, Inputs_iS2M_B_BRESP, Inputs_iS2M_B_BID, Inputs_iS2M_AW_AWREADY, Inputs_iS2M_AR_ARREADY };
+	assign s2m[0] = { Inputs_iS2M_W_WREADY, Inputs_iS2M_B_BVALID, Inputs_iS2M_B_BUSER, Inputs_iS2M_B_BRESP, Inputs_iS2M_B_BID, Inputs_iS2M_AW_AWREADY, Inputs_iS2M_R_RVALID, Inputs_iS2M_R_RUSER, Inputs_iS2M_R_RLAST, Inputs_iS2M_R_RRESP, Inputs_iS2M_R_RDATA[3], Inputs_iS2M_R_RDATA[2], Inputs_iS2M_R_RDATA[1], Inputs_iS2M_R_RDATA[0], Inputs_iS2M_R_RID, Inputs_iS2M_AR_ARREADY };
 	assign oM2S_B_BREADY = m2s[0][221];
 	assign oM2S_W_WVALID = m2s[0][220];
 	assign oM2S_W_WUSER = m2s[0][219:212];
@@ -270,20 +270,20 @@ module AXI4PassThroughModule_TopLevel
 	assign oM2S_AR_ARADDR = m2s[0][39:8];
 	assign oM2S_AR_ARID = m2s[0][7:0];
 	assign oS2M_W_WREADY = s2m[0][73];
-	assign oS2M_R_RVALID = s2m[0][72];
-	assign oS2M_R_RUSER = s2m[0][71:64];
-	assign oS2M_R_RLAST = s2m[0][63];
-	assign oS2M_R_RRESP = s2m[0][62:61];
-	assign oS2M_R_RDATA3 = s2m[0][60:53];
-	assign oS2M_R_RDATA2 = s2m[0][52:45];
-	assign oS2M_R_RDATA1 = s2m[0][44:37];
-	assign oS2M_R_RDATA0 = s2m[0][36:29];
-	assign oS2M_R_RID = s2m[0][28:21];
-	assign oS2M_B_BVALID = s2m[0][20];
-	assign oS2M_B_BUSER = s2m[0][19:12];
-	assign oS2M_B_BRESP = s2m[0][11:10];
-	assign oS2M_B_BID = s2m[0][9:2];
-	assign oS2M_AW_AWREADY = s2m[0][1];
+	assign oS2M_B_BVALID = s2m[0][72];
+	assign oS2M_B_BUSER = s2m[0][71:64];
+	assign oS2M_B_BRESP = s2m[0][63:62];
+	assign oS2M_B_BID = s2m[0][61:54];
+	assign oS2M_AW_AWREADY = s2m[0][53];
+	assign oS2M_R_RVALID = s2m[0][52];
+	assign oS2M_R_RUSER = s2m[0][51:44];
+	assign oS2M_R_RLAST = s2m[0][43];
+	assign oS2M_R_RRESP = s2m[0][42:41];
+	assign oS2M_R_RDATA3 = s2m[0][40:33];
+	assign oS2M_R_RDATA2 = s2m[0][32:25];
+	assign oS2M_R_RDATA1 = s2m[0][24:17];
+	assign oS2M_R_RDATA0 = s2m[0][16:9];
+	assign oS2M_R_RID = s2m[0][8:1];
 	assign oS2M_AR_ARREADY = s2m[0][0];
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]

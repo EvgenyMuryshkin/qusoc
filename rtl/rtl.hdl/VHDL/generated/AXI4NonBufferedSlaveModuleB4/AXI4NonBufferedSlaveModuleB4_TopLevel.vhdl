@@ -86,11 +86,6 @@ entity AXI4NonBufferedSlaveModuleB4_TopLevel is
 		outWSTRB : out unsigned (3 downto 0);
 		outWVALID : out std_logic;
 		S2M_AR_ARREADY : out std_logic;
-		S2M_AW_AWREADY : out std_logic;
-		S2M_B_BID : out unsigned (7 downto 0);
-		S2M_B_BRESP : out unsigned (1 downto 0);
-		S2M_B_BUSER : out unsigned (7 downto 0);
-		S2M_B_BVALID : out std_logic;
 		S2M_R_RID : out unsigned (7 downto 0);
 		S2M_R_RDATA0 : out unsigned (7 downto 0);
 		S2M_R_RDATA1 : out unsigned (7 downto 0);
@@ -100,6 +95,11 @@ entity AXI4NonBufferedSlaveModuleB4_TopLevel is
 		S2M_R_RLAST : out std_logic;
 		S2M_R_RUSER : out unsigned (7 downto 0);
 		S2M_R_RVALID : out std_logic;
+		S2M_AW_AWREADY : out std_logic;
+		S2M_B_BID : out unsigned (7 downto 0);
+		S2M_B_BRESP : out unsigned (1 downto 0);
+		S2M_B_BUSER : out unsigned (7 downto 0);
+		S2M_B_BVALID : out std_logic;
 		S2M_W_WREADY : out std_logic
 	);
 end entity;
@@ -627,12 +627,6 @@ begin
 		outWSTRB <= Inputs_M2S_W_WSTRB;
 		outWVALID <= Inputs_M2S_W_WVALID;
 		S2M_AR_ARREADY <= internalARREADY;
-		S2M_AW_AWREADY <= internalAWREADY;
-		S2M_B_BID <= Inputs_M2S_W_WID;
-		S2M_B_BRESP(1) <= '0';
-		S2M_B_BRESP(0) <= AXI4NonBufferedSlaveModule_L71F25T37_Expr;
-		S2M_B_BUSER <= Inputs_M2S_W_WUSER;
-		S2M_B_BVALID <= internalBVALID;
 		S2M_R_RID <= Inputs_M2S_AR_ARID;
 		S2M_R_RDATA0 <= Inputs_inRDATA(0);
 		S2M_R_RDATA1 <= Inputs_inRDATA(1);
@@ -643,6 +637,12 @@ begin
 		S2M_R_RLAST <= AXI4_S_R_L26F29T33_Expr;
 		S2M_R_RUSER <= Inputs_M2S_AR_ARUSER;
 		S2M_R_RVALID <= internalRVALID;
+		S2M_AW_AWREADY <= internalAWREADY;
+		S2M_B_BID <= Inputs_M2S_W_WID;
+		S2M_B_BRESP(1) <= '0';
+		S2M_B_BRESP(0) <= AXI4NonBufferedSlaveModule_L71F25T37_Expr;
+		S2M_B_BUSER <= Inputs_M2S_W_WUSER;
+		S2M_B_BVALID <= internalBVALID;
 		S2M_W_WREADY <= internalWREADY;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]

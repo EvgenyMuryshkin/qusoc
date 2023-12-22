@@ -5,18 +5,23 @@ using System.Linq;
 namespace rtl.modules
 {
     public class FullDuplexMuxModuleInputs<TLeft, TRight>
-        where TLeft: class, new()
-        where TRight: class, new()
+        where TLeft: class
+        where TRight: class
     {
         public FullDuplexMuxModuleInputs() { }
 
-        public FullDuplexMuxModuleInputs(int mCount, int sCount)
+        public FullDuplexMuxModuleInputs(
+            int leftCount,
+            Func<TLeft> leftFactory,
+            int rightCount,
+            Func<TRight> rightFactory
+        )
         {
-            iLeftAddr = new RTLBitArray().Resized(AXITools.log2(mCount));
-            iLeft = Enumerable.Range(0, mCount).Select(i => new TLeft()).ToArray();
+            iLeftAddr = new RTLBitArray().Resized(AXITools.log2(leftCount));
+            iLeft = Enumerable.Range(0, leftCount).Select(i => leftFactory()).ToArray();
 
-            iRightAddr = new RTLBitArray().Resized(AXITools.log2(sCount));
-            iRight = Enumerable.Range(0, sCount).Select(i => new TRight()).ToArray();
+            iRightAddr = new RTLBitArray().Resized(AXITools.log2(rightCount));
+            iRight = Enumerable.Range(0, rightCount).Select(i => rightFactory()).ToArray();
         }
 
         public TLeft[] iLeft;
@@ -30,54 +35,67 @@ namespace rtl.modules
     }
 
     public class FullDuplexMuxModule<TLeft, TRight> : RTLCombinationalModule<FullDuplexMuxModuleInputs<TLeft, TRight>>
-        where TLeft : class, new()
-        where TRight : class, new()
+        where TLeft : class
+        where TRight : class
     {
         private readonly int leftCount;
         private readonly int rightCount;
 
         // internal signals
-        TLeft[] mInLeftData;
         TLeft[] mOutLeftData;
-
-        TRight[] mInRightData;
         TRight[] mOutRightData;
 
-        TLeft mEmptyLeftData = new TLeft();
-        TRight mEmptyRightData = new TRight();
+        TLeft mEmptyLeftData;
+        TLeft mMuxLeftData;
 
-        bool validAddresses => Inputs.iLeftAddrValid && Inputs.iRightAddrValid;
+        TRight mEmptyRightData;
+        TRight mMuxRightData;
 
         // outputs
         public TLeft[] oLeft => mOutLeftData;
         public TRight[] oRight => mOutRightData;
 
-        public FullDuplexMuxModule(int leftCount, int rightCount)
+        public TLeft oMuxLeftData => mMuxLeftData;
+        public TRight oMuxRightData => mMuxRightData;
+
+        public FullDuplexMuxModule(
+            int leftCount, 
+            Func<TLeft> leftFactory,
+            int rightCount,
+            Func<TRight> rightFactory
+        )
         {
             this.leftCount = leftCount;
             this.rightCount = rightCount;
 
-            InitInputs(new FullDuplexMuxModuleInputs<TLeft, TRight>(leftCount, rightCount));
+            mEmptyLeftData = leftFactory();
+            mMuxLeftData = leftFactory();
 
-            mInLeftData = range(leftCount).Select(i => new TLeft()).ToArray();
-            mOutLeftData = range(rightCount).Select(i => new TLeft()).ToArray();
+            mEmptyRightData = rightFactory();
+            mMuxRightData = rightFactory();
 
-            mInRightData = range(rightCount).Select(i => new TRight()).ToArray();
-            mOutRightData = range(leftCount).Select(i => new TRight()).ToArray();
+            InitInputs(new FullDuplexMuxModuleInputs<TLeft, TRight>(leftCount, leftFactory, rightCount, rightFactory));
+
+            mOutLeftData = range(rightCount).Select(i => leftFactory()).ToArray();
+            mOutRightData = range(leftCount).Select(i => rightFactory()).ToArray();
         }
 
         void OnScheduleLeftToRight()
         {
-            for (var leftIndex = 0; leftIndex < leftCount; leftIndex++)
+            if (Inputs.iLeftAddrValid)
             {
-                mInLeftData[leftIndex] = Inputs.iLeft[leftIndex];
+                mMuxLeftData = Inputs.iLeft[Inputs.iLeftAddr];
+            }
+            else
+            {
+                mMuxLeftData = mEmptyLeftData;
             }
 
             for (var rightIndex = 0; rightIndex < rightCount; rightIndex++)
             {
-                if (validAddresses && Inputs.iRightAddr == rightIndex)
+                if (Inputs.iRightAddrValid && Inputs.iRightAddr == rightIndex)
                 {
-                    mOutLeftData[rightIndex] = mInLeftData[Inputs.iLeftAddr];
+                    mOutLeftData[rightIndex] = mMuxLeftData;
                 }
                 else
                 {
@@ -88,16 +106,20 @@ namespace rtl.modules
 
         void OnScheduleRightToLeft()
         {
-            for (var rightIndex = 0; rightIndex < rightCount; rightIndex++)
+            if (Inputs.iRightAddrValid)
             {
-                mInRightData[rightIndex] = Inputs.iRight[rightIndex];
+                mMuxRightData = Inputs.iRight[Inputs.iRightAddr];
+            }
+            else
+            {
+                mMuxRightData = mEmptyRightData;
             }
 
             for (var leftIndex = 0; leftIndex < leftCount; leftIndex++)
             {
-                if (validAddresses && Inputs.iLeftAddr == leftIndex)
+                if (Inputs.iLeftAddrValid && Inputs.iLeftAddr == leftIndex)
                 {
-                    mOutRightData[leftIndex] = mInRightData[Inputs.iRightAddr];
+                    mOutRightData[leftIndex] = mMuxRightData;
                 }
                 else
                 {

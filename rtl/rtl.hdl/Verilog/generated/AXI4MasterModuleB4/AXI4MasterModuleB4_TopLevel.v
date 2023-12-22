@@ -29,11 +29,6 @@ module AXI4MasterModuleB4_TopLevel
 	input wire [31:0] AWADDR,
 	input wire RE,
 	input wire S2M_AR_ARREADY,
-	input wire S2M_AW_AWREADY,
-	input wire [7:0] S2M_B_BID,
-	input wire [1:0] S2M_B_BRESP,
-	input wire [7:0] S2M_B_BUSER,
-	input wire S2M_B_BVALID,
 	input wire [7:0] S2M_R_RID,
 	input wire [7:0] S2M_R_RDATA0,
 	input wire [7:0] S2M_R_RDATA1,
@@ -43,6 +38,11 @@ module AXI4MasterModuleB4_TopLevel
 	input wire S2M_R_RLAST,
 	input wire [7:0] S2M_R_RUSER,
 	input wire S2M_R_RVALID,
+	input wire S2M_AW_AWREADY,
+	input wire [7:0] S2M_B_BID,
+	input wire [1:0] S2M_B_BRESP,
+	input wire [7:0] S2M_B_BUSER,
+	input wire S2M_B_BVALID,
 	input wire S2M_W_WREADY,
 	input wire [7:0] WDATA0,
 	input wire [7:0] WDATA1,
@@ -153,16 +153,16 @@ module AXI4MasterModuleB4_TopLevel
 	wire [31: 0] Inputs_AWADDR;
 	wire Inputs_RE;
 	wire Inputs_S2M_AR_ARREADY;
-	wire Inputs_S2M_AW_AWREADY;
-	wire [7: 0] Inputs_S2M_B_BID;
-	wire [1: 0] Inputs_S2M_B_BRESP;
-	wire [7: 0] Inputs_S2M_B_BUSER;
-	wire Inputs_S2M_B_BVALID;
 	wire [7: 0] Inputs_S2M_R_RID;
 	wire [1: 0] Inputs_S2M_R_RRESP;
 	wire Inputs_S2M_R_RLAST;
 	wire [7: 0] Inputs_S2M_R_RUSER;
 	wire Inputs_S2M_R_RVALID;
+	wire Inputs_S2M_AW_AWREADY;
+	wire [7: 0] Inputs_S2M_B_BID;
+	wire [1: 0] Inputs_S2M_B_BRESP;
+	wire [7: 0] Inputs_S2M_B_BUSER;
+	wire Inputs_S2M_B_BVALID;
 	wire Inputs_S2M_W_WREADY;
 	wire Inputs_WE;
 	wire [3: 0] Inputs_WSTRB;
@@ -351,11 +351,6 @@ module AXI4MasterModuleB4_TopLevel
 	assign Inputs_AWADDR = AWADDR;
 	assign Inputs_RE = RE;
 	assign Inputs_S2M_AR_ARREADY = S2M_AR_ARREADY;
-	assign Inputs_S2M_AW_AWREADY = S2M_AW_AWREADY;
-	assign Inputs_S2M_B_BID = S2M_B_BID;
-	assign Inputs_S2M_B_BRESP = S2M_B_BRESP;
-	assign Inputs_S2M_B_BUSER = S2M_B_BUSER;
-	assign Inputs_S2M_B_BVALID = S2M_B_BVALID;
 	assign Inputs_S2M_R_RID = S2M_R_RID;
 	assign Inputs_S2M_R_RDATA[0] = S2M_R_RDATA0;
 	assign Inputs_S2M_R_RDATA[1] = S2M_R_RDATA1;
@@ -365,6 +360,11 @@ module AXI4MasterModuleB4_TopLevel
 	assign Inputs_S2M_R_RLAST = S2M_R_RLAST;
 	assign Inputs_S2M_R_RUSER = S2M_R_RUSER;
 	assign Inputs_S2M_R_RVALID = S2M_R_RVALID;
+	assign Inputs_S2M_AW_AWREADY = S2M_AW_AWREADY;
+	assign Inputs_S2M_B_BID = S2M_B_BID;
+	assign Inputs_S2M_B_BRESP = S2M_B_BRESP;
+	assign Inputs_S2M_B_BUSER = S2M_B_BUSER;
+	assign Inputs_S2M_B_BVALID = S2M_B_BVALID;
 	assign Inputs_S2M_W_WREADY = S2M_W_WREADY;
 	assign Inputs_WDATA[0] = WDATA0;
 	assign Inputs_WDATA[1] = WDATA1;

@@ -1,0 +1,2 @@
+└Root     | GenerateInverterInputs | [0] | 1 | [0:0]
+ └inValue | Boolean                | [0] | 1 | [0:0][0:0]

@@ -183,11 +183,11 @@ begin
 		for NextState_ReadData_Iterator in 0 to 3 loop
 			NextState_ReadData(NextState_ReadData_Iterator) <= State_ReadData(NextState_ReadData_Iterator);
 		end loop;
-		if reg_S2M(72) = '1' then
-			NextState_ReadData(0) <= reg_S2M(36 downto 29);
-			NextState_ReadData(1) <= reg_S2M(44 downto 37);
-			NextState_ReadData(2) <= reg_S2M(52 downto 45);
-			NextState_ReadData(3) <= reg_S2M(60 downto 53);
+		if reg_S2M(52) = '1' then
+			NextState_ReadData(0) <= reg_S2M(16 downto 9);
+			NextState_ReadData(1) <= reg_S2M(24 downto 17);
+			NextState_ReadData(2) <= reg_S2M(32 downto 25);
+			NextState_ReadData(3) <= reg_S2M(40 downto 33);
 		end if;
 	end process;
 	process (InData, Inputs_InData, Inputs_MRE, Inputs_MWE, Inputs_SWE, Inputs_WSTRB, master_ARADDR, master_AWADDR, master_M2S, master_M2S_master_M2S_HardLink, master_RACK, master_RACK_master_RACK_HardLink, master_RDATA0_master_RDATA_HardLink, master_RDATA1_master_RDATA_HardLink, master_RDATA2_master_RDATA_HardLink, master_RDATA3_master_RDATA_HardLink, master_RE, master_S2M, master_WACK, master_WACK_master_WACK_HardLink, master_WDATA, master_WE, master_WSTRB, MRE, MWE, reg_inWDATA, reg_inWE, reg_M2S, reg_outACK_reg_outACK_HardLink, reg_outData, reg_outData0_reg_outData_HardLink, reg_outData1_reg_outData_HardLink, reg_outData2_reg_outData_HardLink, reg_outData3_reg_outData_HardLink, reg_outWritten_reg_outWritten_HardLink, reg_S2M, reg_S2M_reg_S2M_HardLink, State_ReadData, SWE, WSTRB)
@@ -213,9 +213,9 @@ begin
 		master_AWADDR(0) <= AXI4MasterSlaveTestModule_L57F26T27_Expr;
 		master_RE <= Inputs_MRE;
 		master_S2M(73) <= reg_S2M(73);
-		master_S2M(72 downto 21) <= reg_S2M(72 downto 21);
-		master_S2M(20 downto 2) <= reg_S2M(20 downto 2);
-		master_S2M(1) <= reg_S2M(1);
+		master_S2M(72 downto 54) <= reg_S2M(72 downto 54);
+		master_S2M(53) <= reg_S2M(53);
+		master_S2M(52 downto 1) <= reg_S2M(52 downto 1);
 		master_S2M(0) <= reg_S2M(0);
 		master_WDATA(3) <= Inputs_InData(31 downto 24);
 		master_WDATA(2) <= Inputs_InData(23 downto 16);
@@ -223,7 +223,7 @@ begin
 		master_WDATA(0) <= Inputs_InData(7 downto 0);
 		master_WE <= Inputs_MWE;
 		master_WSTRB <= Inputs_WSTRB;
-		BVALID <= reg_S2M(20);
+		BVALID <= reg_S2M(72);
 		RACK <= master_RACK;
 		ReadData(31 downto 24) <= State_ReadData(3);
 		ReadData(23 downto 16) <= State_ReadData(2);
@@ -233,7 +233,7 @@ begin
 		RegisterData(23 downto 16) <= reg_outData(2);
 		RegisterData(15 downto 8) <= reg_outData(1);
 		RegisterData(7 downto 0) <= reg_outData(0);
-		RVALID <= reg_S2M(72);
+		RVALID <= reg_S2M(52);
 		WACK <= master_WACK;
 		master_ARADDR_master_ARADDR_HardLink <= master_ARADDR;
 		master_AWADDR_master_AWADDR_HardLink <= master_AWADDR;

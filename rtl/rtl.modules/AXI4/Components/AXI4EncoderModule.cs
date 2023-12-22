@@ -47,7 +47,7 @@ namespace rtl.modules
                 for (var idx = 0; idx < Inputs.iValues.Length; idx++)
                 {
                     if (Inputs.iValues[idx])
-                        result = result | Inputs.iValues[idx];
+                        result = result | Inputs.iValues[idx];//dbg
                 }
 
                 return result;

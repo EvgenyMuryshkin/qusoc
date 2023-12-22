@@ -198,12 +198,12 @@ module AXI4MasterSlaveTestModule_TopLevel
 		begin
 			NextState_ReadData[NextState_ReadData_Iterator] = State_ReadData[NextState_ReadData_Iterator];
 		end
-		if ((reg_S2M[72] == 1))
+		if ((reg_S2M[52] == 1))
 		begin
-			NextState_ReadData[0] = reg_S2M[36:29];
-			NextState_ReadData[1] = reg_S2M[44:37];
-			NextState_ReadData[2] = reg_S2M[52:45];
-			NextState_ReadData[3] = reg_S2M[60:53];
+			NextState_ReadData[0] = reg_S2M[16:9];
+			NextState_ReadData[1] = reg_S2M[24:17];
+			NextState_ReadData[2] = reg_S2M[32:25];
+			NextState_ReadData[3] = reg_S2M[40:33];
 		end
 	end
 	assign Inputs_InData = InData;
@@ -225,9 +225,9 @@ module AXI4MasterSlaveTestModule_TopLevel
 	assign master_AWADDR = { {31{1'b0}}, AXI4MasterSlaveTestModule_L57F26T27_Expr };
 	assign master_RE = Inputs_MRE;
 	assign master_S2M[73] = reg_S2M[73];
-	assign master_S2M[72:21] = reg_S2M[72:21];
-	assign master_S2M[20:2] = reg_S2M[20:2];
-	assign master_S2M[1] = reg_S2M[1];
+	assign master_S2M[72:54] = reg_S2M[72:54];
+	assign master_S2M[53] = reg_S2M[53];
+	assign master_S2M[52:1] = reg_S2M[52:1];
 	assign master_S2M[0] = reg_S2M[0];
 	assign master_WDATA[3] = Inputs_InData[31:24];
 	assign master_WDATA[2] = Inputs_InData[23:16];
@@ -235,11 +235,11 @@ module AXI4MasterSlaveTestModule_TopLevel
 	assign master_WDATA[0] = Inputs_InData[7:0];
 	assign master_WE = Inputs_MWE;
 	assign master_WSTRB = Inputs_WSTRB;
-	assign BVALID = reg_S2M[20];
+	assign BVALID = reg_S2M[72];
 	assign RACK = master_RACK;
 	assign ReadData = { State_ReadData[3], State_ReadData[2], State_ReadData[1], State_ReadData[0] };
 	assign RegisterData = { reg_outData[3], reg_outData[2], reg_outData[1], reg_outData[0] };
-	assign RVALID = reg_S2M[72];
+	assign RVALID = reg_S2M[52];
 	assign WACK = master_WACK;
 	assign master_ARADDR_master_ARADDR_HardLink = master_ARADDR;
 	assign master_AWADDR_master_AWADDR_HardLink = master_AWADDR;

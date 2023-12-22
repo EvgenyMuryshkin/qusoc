@@ -118,6 +118,8 @@ module AXILikeMuxModule_TopLevel
 	wire fullDuplexMux_iLeftAddrValid;
 	wire [1: 0] fullDuplexMux_iRightAddr;
 	wire fullDuplexMux_iRightAddrValid;
+	wire [9: 0] fullDuplexMux_oMuxLeftData;
+	wire [9: 0] fullDuplexMux_oMuxRightData;
 	wire [9: 0] fullDuplexMux_iLeft0_fullDuplexMux_iLeft_HardLink;
 	wire [9: 0] fullDuplexMux_iLeft1_fullDuplexMux_iLeft_HardLink;
 	wire [9: 0] fullDuplexMux_iLeft2_fullDuplexMux_iLeft_HardLink;
@@ -138,6 +140,8 @@ module AXILikeMuxModule_TopLevel
 	wire [9: 0] fullDuplexMux_oLeft1_fullDuplexMux_oLeft_HardLink;
 	wire [9: 0] fullDuplexMux_oLeft2_fullDuplexMux_oLeft_HardLink;
 	wire [9: 0] fullDuplexMux_oLeft3_fullDuplexMux_oLeft_HardLink;
+	wire [9: 0] fullDuplexMux_oMuxLeftData_fullDuplexMux_oMuxLeftData_HardLink;
+	wire [9: 0] fullDuplexMux_oMuxRightData_fullDuplexMux_oMuxRightData_HardLink;
 	wire [9: 0] fullDuplexMux_oRight0_fullDuplexMux_oRight_HardLink;
 	wire [9: 0] fullDuplexMux_oRight1_fullDuplexMux_oRight_HardLink;
 	wire [9: 0] fullDuplexMux_oRight2_fullDuplexMux_oRight_HardLink;
@@ -177,6 +181,8 @@ module AXILikeMuxModule_TopLevel
 		.oLeft1 (fullDuplexMux_oLeft1_fullDuplexMux_oLeft_HardLink),
 		.oLeft2 (fullDuplexMux_oLeft2_fullDuplexMux_oLeft_HardLink),
 		.oLeft3 (fullDuplexMux_oLeft3_fullDuplexMux_oLeft_HardLink),
+		.oMuxLeftData (fullDuplexMux_oMuxLeftData_fullDuplexMux_oMuxLeftData_HardLink),
+		.oMuxRightData (fullDuplexMux_oMuxRightData_fullDuplexMux_oMuxRightData_HardLink),
 		.oRight0 (fullDuplexMux_oRight0_fullDuplexMux_oRight_HardLink),
 		.oRight1 (fullDuplexMux_oRight1_fullDuplexMux_oRight_HardLink),
 		.oRight2 (fullDuplexMux_oRight2_fullDuplexMux_oRight_HardLink),
@@ -298,6 +304,8 @@ module AXILikeMuxModule_TopLevel
 	assign fullDuplexMux_oLeft[1] = fullDuplexMux_oLeft1_fullDuplexMux_oLeft_HardLink;
 	assign fullDuplexMux_oLeft[2] = fullDuplexMux_oLeft2_fullDuplexMux_oLeft_HardLink;
 	assign fullDuplexMux_oLeft[3] = fullDuplexMux_oLeft3_fullDuplexMux_oLeft_HardLink;
+	assign fullDuplexMux_oMuxLeftData = fullDuplexMux_oMuxLeftData_fullDuplexMux_oMuxLeftData_HardLink;
+	assign fullDuplexMux_oMuxRightData = fullDuplexMux_oMuxRightData_fullDuplexMux_oMuxRightData_HardLink;
 	assign fullDuplexMux_oRight[0] = fullDuplexMux_oRight0_fullDuplexMux_oRight_HardLink;
 	assign fullDuplexMux_oRight[1] = fullDuplexMux_oRight1_fullDuplexMux_oRight_HardLink;
 	assign fullDuplexMux_oRight[2] = fullDuplexMux_oRight2_fullDuplexMux_oRight_HardLink;

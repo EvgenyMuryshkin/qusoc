@@ -441,33 +441,33 @@ namespace fir.modules
                     NextState.fir.fir_breg[a] = dsp48_b[a];
                     NextState.fir.fir_adreg[a].i = State.fir.fir_areg2[a].i + dsp48_d[a].i;
                     NextState.fir.fir_adreg[a].q = State.fir.fir_areg2[a].q + dsp48_d[a].q;
-                    NextState.fir.fir_mreg[a].i = State.fir.fir_adreg[a].i.Signed() * State.fir.fir_breg[a].i.Signed();
-                    NextState.fir.fir_mreg[a].q = State.fir.fir_adreg[a].q.Signed() * State.fir.fir_breg[a].q.Signed();
+                    NextState.fir.fir_mreg[a].i = (State.fir.fir_adreg[a].i.Signed() * State.fir.fir_breg[a].i.Signed()).Unsigned();
+                    NextState.fir.fir_mreg[a].q = (State.fir.fir_adreg[a].q.Signed() * State.fir.fir_breg[a].q.Signed()).Unsigned();
                     NextState.mult_reset.mult_reset[a] = State.mult_reset.mult_reset_dsp[a];
                     if (a == 0)
                     {
                         if (State.mult_reset.mult_reset[a])
                         {
-                            NextState.fir.fir_preg[a].i = State.fir.fir_mreg[a].i.Signed().Resized(48);
-                            NextState.fir.fir_preg[a].q = State.fir.fir_mreg[a].q.Signed().Resized(48);
+                            NextState.fir.fir_preg[a].i = (State.fir.fir_mreg[a].i.Signed().Resized(48)).Unsigned();
+                            NextState.fir.fir_preg[a].q = (State.fir.fir_mreg[a].q.Signed().Resized(48)).Unsigned();
                         }
                         else
                         {
-                            NextState.fir.fir_preg[a].i = State.fir.fir_preg[a].i.Signed() + State.fir.fir_mreg[a].i.Signed().Resized(48);
-                            NextState.fir.fir_preg[a].q = State.fir.fir_preg[a].q.Signed() + State.fir.fir_mreg[a].q.Signed().Resized(48);
+                            NextState.fir.fir_preg[a].i = (State.fir.fir_preg[a].i.Signed() + State.fir.fir_mreg[a].i.Signed().Resized(48)).Unsigned();
+                            NextState.fir.fir_preg[a].q = (State.fir.fir_preg[a].q.Signed() + State.fir.fir_mreg[a].q.Signed().Resized(48)).Unsigned();
                         }
                     }
                     else
                     {
                         if (State.mult_reset.mult_reset[a])
                         {
-                            NextState.fir.fir_preg[a].i = State.fir.fir_preg[a - 1].i.Signed() + State.fir.fir_mreg[a].i.Signed().Resized(48);
-                            NextState.fir.fir_preg[a].q = State.fir.fir_preg[a - 1].q.Signed() + State.fir.fir_mreg[a].q.Signed().Resized(48);
+                            NextState.fir.fir_preg[a].i = (State.fir.fir_preg[a - 1].i.Signed() + State.fir.fir_mreg[a].i.Signed().Resized(48)).Unsigned();
+                            NextState.fir.fir_preg[a].q = (State.fir.fir_preg[a - 1].q.Signed() + State.fir.fir_mreg[a].q.Signed().Resized(48)).Unsigned();
                         }
                         else
                         {
-                            NextState.fir.fir_preg[a].i = State.fir.fir_preg[a].i.Signed() + State.fir.fir_mreg[a].i.Signed().Resized(48);
-                            NextState.fir.fir_preg[a].q = State.fir.fir_preg[a].q.Signed() + State.fir.fir_mreg[a].q.Signed().Resized(48);
+                            NextState.fir.fir_preg[a].i = (State.fir.fir_preg[a].i.Signed() + State.fir.fir_mreg[a].i.Signed().Resized(48)).Unsigned();
+                            NextState.fir.fir_preg[a].q = (State.fir.fir_preg[a].q.Signed() + State.fir.fir_mreg[a].q.Signed().Resized(48)).Unsigned();
                         }
                     }
                 }

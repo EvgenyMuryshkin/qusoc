@@ -61,11 +61,6 @@ module AXI4MemoryModuleB4_TopLevel
 	input wire M2S_W_WVALID,
 	input wire M2S_B_BREADY,
 	output wire S2M_AR_ARREADY,
-	output wire S2M_AW_AWREADY,
-	output wire [7:0] S2M_B_BID,
-	output wire [1:0] S2M_B_BRESP,
-	output wire [7:0] S2M_B_BUSER,
-	output wire S2M_B_BVALID,
 	output wire [7:0] S2M_R_RID,
 	output wire [7:0] S2M_R_RDATA0,
 	output wire [7:0] S2M_R_RDATA1,
@@ -75,6 +70,11 @@ module AXI4MemoryModuleB4_TopLevel
 	output wire S2M_R_RLAST,
 	output wire [7:0] S2M_R_RUSER,
 	output wire S2M_R_RVALID,
+	output wire S2M_AW_AWREADY,
+	output wire [7:0] S2M_B_BID,
+	output wire [1:0] S2M_B_BRESP,
+	output wire [7:0] S2M_B_BUSER,
+	output wire S2M_B_BVALID,
 	output wire S2M_W_WREADY
 );
 	// [BEGIN USER SIGNALS]
@@ -564,20 +564,20 @@ module AXI4MemoryModuleB4_TopLevel
 	assign AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_2_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index = internalWSTRB[2];
 	assign AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_3_AXI4MemoryModule_L125F13L128T14_AXI4MemoryModule_L126F35T51_Index = internalWSTRB[3];
 	assign S2M_W_WREADY = axiSlave_S2M[73];
-	assign S2M_R_RVALID = axiSlave_S2M[72];
-	assign S2M_R_RUSER = axiSlave_S2M[71:64];
-	assign S2M_R_RLAST = axiSlave_S2M[63];
-	assign S2M_R_RRESP = axiSlave_S2M[62:61];
-	assign S2M_R_RDATA3 = axiSlave_S2M[60:53];
-	assign S2M_R_RDATA2 = axiSlave_S2M[52:45];
-	assign S2M_R_RDATA1 = axiSlave_S2M[44:37];
-	assign S2M_R_RDATA0 = axiSlave_S2M[36:29];
-	assign S2M_R_RID = axiSlave_S2M[28:21];
-	assign S2M_B_BVALID = axiSlave_S2M[20];
-	assign S2M_B_BUSER = axiSlave_S2M[19:12];
-	assign S2M_B_BRESP = axiSlave_S2M[11:10];
-	assign S2M_B_BID = axiSlave_S2M[9:2];
-	assign S2M_AW_AWREADY = axiSlave_S2M[1];
+	assign S2M_B_BVALID = axiSlave_S2M[72];
+	assign S2M_B_BUSER = axiSlave_S2M[71:64];
+	assign S2M_B_BRESP = axiSlave_S2M[63:62];
+	assign S2M_B_BID = axiSlave_S2M[61:54];
+	assign S2M_AW_AWREADY = axiSlave_S2M[53];
+	assign S2M_R_RVALID = axiSlave_S2M[52];
+	assign S2M_R_RUSER = axiSlave_S2M[51:44];
+	assign S2M_R_RLAST = axiSlave_S2M[43];
+	assign S2M_R_RRESP = axiSlave_S2M[42:41];
+	assign S2M_R_RDATA3 = axiSlave_S2M[40:33];
+	assign S2M_R_RDATA2 = axiSlave_S2M[32:25];
+	assign S2M_R_RDATA1 = axiSlave_S2M[24:17];
+	assign S2M_R_RDATA0 = axiSlave_S2M[16:9];
+	assign S2M_R_RID = axiSlave_S2M[8:1];
 	assign S2M_AR_ARREADY = axiSlave_S2M[0];
 	assign axiSlave_inARREADY_axiSlave_inARREADY_HardLink = axiSlave_inARREADY;
 	assign axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink = axiSlave_inAWREADY;

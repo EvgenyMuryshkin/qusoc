@@ -1,0 +1,2 @@
+└Root  | IOSingleBitMemoryInputs | [0] | 1 | [0:0]
+ └iBit | RTLBitArray             | [0] | 1 | [0:0][0:0]

@@ -78,7 +78,14 @@ namespace fir.modules
         {
             var result = new ModuleTranslatorResult();
             var declarations = new vhdArchitectureDeclarations();
-            declarations.WithDefaultSignal(vhdNetType.Signal, "tmp", vhdDataType.StdLogic, 16, "(others => '0')");
+            declarations.WithDefaultSignal(
+                vhdNetType.Signal, 
+                "tmp", 
+                new vhdDefaultDataType(vhdDataType.StdLogic, vhdSignalType.Auto),
+                16, 
+                "(others => '0')"
+            );
+
             result.Add(deps.ControllerName, declarations);
 
             var implementation = new vhdArchitectureImplementation()

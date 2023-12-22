@@ -44,6 +44,8 @@ entity AXILikeMuxModule_TopLevel_fullDuplexMux is
 		oLeft1 : out unsigned (9 downto 0);
 		oLeft2 : out unsigned (9 downto 0);
 		oLeft3 : out unsigned (9 downto 0);
+		oMuxLeftData : out unsigned (9 downto 0);
+		oMuxRightData : out unsigned (9 downto 0);
 		oRight0 : out unsigned (9 downto 0);
 		oRight1 : out unsigned (9 downto 0);
 		oRight2 : out unsigned (9 downto 0);
@@ -67,10 +69,6 @@ architecture rtl of AXILikeMuxModule_TopLevel_fullDuplexMux is
 	-- false is a reserved name, declaration skipped
 	constant leftCount : unsigned(3 downto 0) := "1000";
 	constant rightCount : unsigned(2 downto 0) := "100";
-	constant AXILikeMuxModule_L18F32T37_Expr : std_logic := '0';
-	constant AXILikeMuxModule_L13F28T41_Expr : std_logic := '0';
-	constant AXILikeMuxModule_L12F32T37_Expr : std_logic := '0';
-	constant AXILikeMuxModule_L24F32T37_Expr : std_logic := '0';
 	constant Prefilled0 : std_logic := '0';
 	constant Prefilled1 : std_logic := '1';
 	constant Prefilled2 : unsigned(1 downto 0) := "10";
@@ -89,355 +87,395 @@ architecture rtl of AXILikeMuxModule_TopLevel_fullDuplexMux is
 	signal mEmptyRightData_IsActive : std_logic := '0';
 	signal mEmptyRightData_Payload_Data : unsigned(7 downto 0) := (others => '0');
 	signal mEmptyRightData_Payload_DataFlag : std_logic := '0';
-	signal validAddresses : std_logic := '0';
-	signal FullDuplexMuxModule_L49F32T79_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L49F32T79_Expr_1 : std_logic := '0';
-	signal FullDuplexMuxModule_L49F32T79_Expr_2 : std_logic := '0';
-	signal FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F21T70_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F21T70_Expr_1 : std_logic := '0';
-	signal FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F21T70_Expr_2 : std_logic := '0';
-	signal FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F21T70_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F21T70_Expr_1 : std_logic := '0';
-	signal FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F21T70_Expr_2 : std_logic := '0';
-	signal FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F21T70_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F21T70_Expr_1 : std_logic := '0';
-	signal FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F21T70_Expr_2 : std_logic := '0';
-	signal FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F21T70_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F21T70_Expr_1 : std_logic := '0';
-	signal FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F21T70_Expr_2 : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F21T68_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F21T68_Expr_1 : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F21T68_Expr_2 : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F21T68_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F21T68_Expr_1 : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F21T68_Expr_2 : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F21T68_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F21T68_Expr_1 : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F21T68_Expr_2 : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F21T68_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F21T68_Expr_1 : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F21T68_Expr_2 : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F21T68_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F21T68_Expr_1 : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F21T68_Expr_2 : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F21T68_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F21T68_Expr_1 : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F21T68_Expr_2 : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F21T68_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F21T68_Expr_1 : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F21T68_Expr_2 : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F21T68_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F21T68_Expr_1 : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F21T68_Expr_2 : std_logic := '0';
-	signal FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F39T70_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F39T70_ExprLhs : signed(2 downto 0) := "000";
-	signal FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F39T70_ExprRhs : signed(2 downto 0) := "000";
-	signal FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F39T70_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F39T70_ExprLhs : signed(2 downto 0) := "000";
-	signal FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F39T70_ExprRhs : signed(2 downto 0) := "000";
-	signal FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F39T70_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F39T70_ExprLhs : signed(2 downto 0) := "000";
-	signal FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F39T70_ExprRhs : signed(2 downto 0) := "000";
-	signal FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F39T70_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F39T70_ExprLhs : signed(2 downto 0) := "000";
-	signal FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F39T70_ExprRhs : signed(2 downto 0) := "000";
-	signal FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F39T68_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F39T68_ExprLhs : signed(3 downto 0) := "0000";
-	signal FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F39T68_ExprRhs : signed(3 downto 0) := "0000";
-	signal FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F39T68_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F39T68_ExprLhs : signed(3 downto 0) := "0000";
-	signal FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F39T68_ExprRhs : signed(3 downto 0) := "0000";
-	signal FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F39T68_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F39T68_ExprLhs : signed(3 downto 0) := "0000";
-	signal FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F39T68_ExprRhs : signed(3 downto 0) := "0000";
-	signal FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F39T68_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F39T68_ExprLhs : signed(3 downto 0) := "0000";
-	signal FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F39T68_ExprRhs : signed(3 downto 0) := "0000";
-	signal FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F39T68_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F39T68_ExprLhs : signed(3 downto 0) := "0000";
-	signal FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F39T68_ExprRhs : signed(3 downto 0) := "0000";
-	signal FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F39T68_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F39T68_ExprLhs : signed(3 downto 0) := "0000";
-	signal FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F39T68_ExprRhs : signed(3 downto 0) := "0000";
-	signal FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F39T68_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F39T68_ExprLhs : signed(3 downto 0) := "0000";
-	signal FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F39T68_ExprRhs : signed(3 downto 0) := "0000";
-	signal FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F39T68_Expr : std_logic := '0';
-	signal FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F39T68_ExprLhs : signed(3 downto 0) := "0000";
-	signal FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F39T68_ExprRhs : signed(3 downto 0) := "0000";
+	signal mMuxLeftData_IsActive : std_logic := '0';
+	signal mMuxLeftData_Payload_Data : unsigned(7 downto 0) := (others => '0');
+	signal mMuxLeftData_Payload_DataFlag : std_logic := '0';
+	signal mMuxRightData_IsActive : std_logic := '0';
+	signal mMuxRightData_Payload_Data : unsigned(7 downto 0) := (others => '0');
+	signal mMuxRightData_Payload_DataFlag : std_logic := '0';
+	signal FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr_1 : std_logic := '0';
+	signal FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr_2 : std_logic := '0';
+	signal FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F21T78_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F21T78_Expr_1 : std_logic := '0';
+	signal FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F21T78_Expr_2 : std_logic := '0';
+	signal FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F21T78_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F21T78_Expr_1 : std_logic := '0';
+	signal FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F21T78_Expr_2 : std_logic := '0';
+	signal FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F21T78_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F21T78_Expr_1 : std_logic := '0';
+	signal FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F21T78_Expr_2 : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F21T75_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F21T75_Expr_1 : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F21T75_Expr_2 : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F21T75_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F21T75_Expr_1 : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F21T75_Expr_2 : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F21T75_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F21T75_Expr_1 : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F21T75_Expr_2 : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F21T75_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F21T75_Expr_1 : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F21T75_Expr_2 : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F21T75_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F21T75_Expr_1 : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F21T75_Expr_2 : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F21T75_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F21T75_Expr_1 : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F21T75_Expr_2 : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F21T75_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F21T75_Expr_1 : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F21T75_Expr_2 : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F21T75_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F21T75_Expr_1 : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F21T75_Expr_2 : std_logic := '0';
+	signal FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprLhs : signed(2 downto 0) := "000";
+	signal FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprRhs : signed(2 downto 0) := "000";
+	signal FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprLhs : signed(2 downto 0) := "000";
+	signal FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprRhs : signed(2 downto 0) := "000";
+	signal FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F47T78_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F47T78_ExprLhs : signed(2 downto 0) := "000";
+	signal FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F47T78_ExprRhs : signed(2 downto 0) := "000";
+	signal FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F47T78_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F47T78_ExprLhs : signed(2 downto 0) := "000";
+	signal FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F47T78_ExprRhs : signed(2 downto 0) := "000";
+	signal FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprLhs : signed(3 downto 0) := "0000";
+	signal FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprRhs : signed(3 downto 0) := "0000";
+	signal FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprLhs : signed(3 downto 0) := "0000";
+	signal FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprRhs : signed(3 downto 0) := "0000";
+	signal FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F46T75_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F46T75_ExprLhs : signed(3 downto 0) := "0000";
+	signal FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F46T75_ExprRhs : signed(3 downto 0) := "0000";
+	signal FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F46T75_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F46T75_ExprLhs : signed(3 downto 0) := "0000";
+	signal FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F46T75_ExprRhs : signed(3 downto 0) := "0000";
+	signal FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F46T75_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F46T75_ExprLhs : signed(3 downto 0) := "0000";
+	signal FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F46T75_ExprRhs : signed(3 downto 0) := "0000";
+	signal FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F46T75_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F46T75_ExprLhs : signed(3 downto 0) := "0000";
+	signal FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F46T75_ExprRhs : signed(3 downto 0) := "0000";
+	signal FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F46T75_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F46T75_ExprLhs : signed(3 downto 0) := "0000";
+	signal FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F46T75_ExprRhs : signed(3 downto 0) := "0000";
+	signal FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_Expr : std_logic := '0';
+	signal FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_ExprLhs : signed(3 downto 0) := "0000";
+	signal FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_ExprRhs : signed(3 downto 0) := "0000";
 	type Inputs_iLeftArray is array (0 to 7) of unsigned (9 downto 0);
 	signal Inputs_iLeft : Inputs_iLeftArray := (others => (others => '0'));
 	type Inputs_iRightArray is array (0 to 3) of unsigned (9 downto 0);
 	signal Inputs_iRight : Inputs_iRightArray := (others => (others => '0'));
-	type mInLeftDataArray is array (0 to 7) of unsigned (9 downto 0);
-	signal mInLeftData : mInLeftDataArray := (others => (others => '0'));
-	type mInRightDataArray is array (0 to 3) of unsigned (9 downto 0);
-	signal mInRightData : mInRightDataArray := (others => (others => '0'));
 	type mOutLeftDataArray is array (0 to 3) of unsigned (9 downto 0);
 	signal mOutLeftData : mOutLeftDataArray := (others => (others => '0'));
 	type mOutRightDataArray is array (0 to 7) of unsigned (9 downto 0);
 	signal mOutRightData : mOutRightDataArray := (others => (others => '0'));
 begin
-	FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F39T70_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F39T70_ExprLhs, FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F39T70_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F39T70_ExprRhs, FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F39T70_ExprRhs'length + 1))) else '0';
-	FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F39T70_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F39T70_ExprLhs, FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F39T70_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F39T70_ExprRhs, FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F39T70_ExprRhs'length + 1))) else '0';
-	FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F39T70_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F39T70_ExprLhs, FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F39T70_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F39T70_ExprRhs, FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F39T70_ExprRhs'length + 1))) else '0';
-	FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F39T70_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F39T70_ExprLhs, FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F39T70_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F39T70_ExprRhs, FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F39T70_ExprRhs'length + 1))) else '0';
-	FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F39T68_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F39T68_ExprLhs, FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F39T68_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F39T68_ExprRhs, FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F39T68_ExprRhs'length + 1))) else '0';
-	FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F39T68_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F39T68_ExprLhs, FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F39T68_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F39T68_ExprRhs, FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F39T68_ExprRhs'length + 1))) else '0';
-	FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F39T68_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F39T68_ExprLhs, FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F39T68_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F39T68_ExprRhs, FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F39T68_ExprRhs'length + 1))) else '0';
-	FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F39T68_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F39T68_ExprLhs, FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F39T68_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F39T68_ExprRhs, FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F39T68_ExprRhs'length + 1))) else '0';
-	FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F39T68_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F39T68_ExprLhs, FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F39T68_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F39T68_ExprRhs, FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F39T68_ExprRhs'length + 1))) else '0';
-	FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F39T68_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F39T68_ExprLhs, FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F39T68_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F39T68_ExprRhs, FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F39T68_ExprRhs'length + 1))) else '0';
-	FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F39T68_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F39T68_ExprLhs, FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F39T68_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F39T68_ExprRhs, FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F39T68_ExprRhs'length + 1))) else '0';
-	FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F39T68_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F39T68_ExprLhs, FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F39T68_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F39T68_ExprRhs, FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F39T68_ExprRhs'length + 1))) else '0';
-	process (FullDuplexMuxModule_L49F32T79_Expr_1, FullDuplexMuxModule_L49F32T79_Expr_2)
+	FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprLhs, FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprRhs, FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprRhs'length + 1))) else '0';
+	FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprLhs, FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprRhs, FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprRhs'length + 1))) else '0';
+	FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F47T78_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F47T78_ExprLhs, FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F47T78_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F47T78_ExprRhs, FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F47T78_ExprRhs'length + 1))) else '0';
+	FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F47T78_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F47T78_ExprLhs, FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F47T78_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F47T78_ExprRhs, FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F47T78_ExprRhs'length + 1))) else '0';
+	FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprLhs, FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprRhs, FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprRhs'length + 1))) else '0';
+	FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprLhs, FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprRhs, FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprRhs'length + 1))) else '0';
+	FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F46T75_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F46T75_ExprLhs, FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F46T75_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F46T75_ExprRhs, FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F46T75_ExprRhs'length + 1))) else '0';
+	FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F46T75_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F46T75_ExprLhs, FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F46T75_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F46T75_ExprRhs, FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F46T75_ExprRhs'length + 1))) else '0';
+	FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F46T75_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F46T75_ExprLhs, FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F46T75_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F46T75_ExprRhs, FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F46T75_ExprRhs'length + 1))) else '0';
+	FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F46T75_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F46T75_ExprLhs, FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F46T75_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F46T75_ExprRhs, FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F46T75_ExprRhs'length + 1))) else '0';
+	FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F46T75_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F46T75_ExprLhs, FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F46T75_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F46T75_ExprRhs, FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F46T75_ExprRhs'length + 1))) else '0';
+	FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_Expr <= '1' when (signed(resize(FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_ExprLhs, FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_ExprLhs'length + 1)) = signed(resize(FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_ExprRhs, FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_ExprRhs'length + 1))) else '0';
+	process (FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr_1, FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr_2)
 	begin
-		FullDuplexMuxModule_L49F32T79_Expr <= FullDuplexMuxModule_L49F32T79_Expr_1 AND FullDuplexMuxModule_L49F32T79_Expr_2;
+		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr <= FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr_1 AND FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr_2;
 	end process;
-	process (FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F21T70_Expr_1, FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F21T70_Expr_2)
+	process (FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F21T78_Expr_1, FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F21T78_Expr_2)
 	begin
-		FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F21T70_Expr <= FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F21T70_Expr_1 AND FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F21T70_Expr_2;
+		FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F21T78_Expr <= FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F21T78_Expr_1 AND FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F21T78_Expr_2;
 	end process;
-	process (FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F21T70_Expr_1, FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F21T70_Expr_2)
+	process (FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F21T78_Expr_1, FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F21T78_Expr_2)
 	begin
-		FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F21T70_Expr <= FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F21T70_Expr_1 AND FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F21T70_Expr_2;
+		FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F21T78_Expr <= FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F21T78_Expr_1 AND FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F21T78_Expr_2;
 	end process;
-	process (FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F21T70_Expr_1, FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F21T70_Expr_2)
+	process (FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F21T78_Expr_1, FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F21T78_Expr_2)
 	begin
-		FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F21T70_Expr <= FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F21T70_Expr_1 AND FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F21T70_Expr_2;
+		FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F21T78_Expr <= FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F21T78_Expr_1 AND FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F21T78_Expr_2;
 	end process;
-	process (FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F21T70_Expr_1, FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F21T70_Expr_2)
+	process (FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F21T75_Expr_1, FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F21T75_Expr_2)
 	begin
-		FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F21T70_Expr <= FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F21T70_Expr_1 AND FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F21T70_Expr_2;
+		FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F21T75_Expr <= FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F21T75_Expr_1 AND FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F21T75_Expr_2;
 	end process;
-	process (FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F21T68_Expr_1, FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F21T68_Expr_2)
+	process (FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F21T75_Expr_1, FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F21T75_Expr_2)
 	begin
-		FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F21T68_Expr <= FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F21T68_Expr_1 AND FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F21T68_Expr_2;
+		FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F21T75_Expr <= FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F21T75_Expr_1 AND FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F21T75_Expr_2;
 	end process;
-	process (FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F21T68_Expr_1, FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F21T68_Expr_2)
+	process (FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F21T75_Expr_1, FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F21T75_Expr_2)
 	begin
-		FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F21T68_Expr <= FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F21T68_Expr_1 AND FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F21T68_Expr_2;
+		FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F21T75_Expr <= FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F21T75_Expr_1 AND FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F21T75_Expr_2;
 	end process;
-	process (FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F21T68_Expr_1, FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F21T68_Expr_2)
+	process (FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F21T75_Expr_1, FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F21T75_Expr_2)
 	begin
-		FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F21T68_Expr <= FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F21T68_Expr_1 AND FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F21T68_Expr_2;
+		FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F21T75_Expr <= FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F21T75_Expr_1 AND FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F21T75_Expr_2;
 	end process;
-	process (FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F21T68_Expr_1, FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F21T68_Expr_2)
+	process (FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F21T75_Expr_1, FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F21T75_Expr_2)
 	begin
-		FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F21T68_Expr <= FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F21T68_Expr_1 AND FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F21T68_Expr_2;
+		FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F21T75_Expr <= FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F21T75_Expr_1 AND FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F21T75_Expr_2;
 	end process;
-	process (FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F21T68_Expr_1, FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F21T68_Expr_2)
+	process (FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F21T75_Expr_1, FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F21T75_Expr_2)
 	begin
-		FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F21T68_Expr <= FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F21T68_Expr_1 AND FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F21T68_Expr_2;
+		FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F21T75_Expr <= FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F21T75_Expr_1 AND FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F21T75_Expr_2;
 	end process;
-	process (FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F21T68_Expr_1, FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F21T68_Expr_2)
+	process (FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F21T75_Expr_1, FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F21T75_Expr_2)
 	begin
-		FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F21T68_Expr <= FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F21T68_Expr_1 AND FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F21T68_Expr_2;
+		FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F21T75_Expr <= FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F21T75_Expr_1 AND FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F21T75_Expr_2;
 	end process;
-	process (FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F21T68_Expr_1, FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F21T68_Expr_2)
+	process (FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F21T75_Expr_1, FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F21T75_Expr_2)
 	begin
-		FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F21T68_Expr <= FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F21T68_Expr_1 AND FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F21T68_Expr_2;
+		FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F21T75_Expr <= FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F21T75_Expr_1 AND FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F21T75_Expr_2;
 	end process;
-	process (FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F21T68_Expr_1, FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F21T68_Expr_2)
+	process (Inputs_iLeft, Inputs_iLeftAddrValid, mEmptyLeftData_IsActive, mEmptyLeftData_Payload_Data, mEmptyLeftData_Payload_DataFlag)
 	begin
-		FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F21T68_Expr <= FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F21T68_Expr_1 AND FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F21T68_Expr_2;
+		if Inputs_iLeftAddrValid = '1' then
+			mMuxLeftData_Payload_DataFlag <= Inputs_iLeft(TO_INTEGER(Inputs_iLeftAddr))(9);
+			mMuxLeftData_Payload_Data <= Inputs_iLeft(TO_INTEGER(Inputs_iLeftAddr))(8 downto 1);
+			mMuxLeftData_IsActive <= Inputs_iLeft(TO_INTEGER(Inputs_iLeftAddr))(0);
+		else
+			mMuxLeftData_IsActive <= mEmptyLeftData_IsActive;
+			mMuxLeftData_Payload_Data <= mEmptyLeftData_Payload_Data;
+			mMuxLeftData_Payload_DataFlag <= mEmptyLeftData_Payload_DataFlag;
+		end if;
 	end process;
-	process (FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F21T70_Expr, mEmptyLeftData_IsActive, mEmptyLeftData_Payload_Data, mEmptyLeftData_Payload_DataFlag, mInLeftData)
+	process (FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr, mEmptyLeftData_IsActive, mEmptyLeftData_Payload_Data, mEmptyLeftData_Payload_DataFlag, mMuxLeftData_IsActive, mMuxLeftData_Payload_Data, mMuxLeftData_Payload_DataFlag)
 	begin
-		if FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F21T70_Expr = '1' then
-			mOutLeftData(0) <= mInLeftData(TO_INTEGER(Inputs_iLeftAddr));
+		if FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr = '1' then
+			mOutLeftData(0)(9) <= mMuxLeftData_Payload_DataFlag;
+			mOutLeftData(0)(8 downto 1) <= mMuxLeftData_Payload_Data;
+			mOutLeftData(0)(0) <= mMuxLeftData_IsActive;
 		else
 			mOutLeftData(0)(9) <= mEmptyLeftData_Payload_DataFlag;
 			mOutLeftData(0)(8 downto 1) <= mEmptyLeftData_Payload_Data;
 			mOutLeftData(0)(0) <= mEmptyLeftData_IsActive;
 		end if;
 	end process;
-	process (FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F21T70_Expr, mEmptyLeftData_IsActive, mEmptyLeftData_Payload_Data, mEmptyLeftData_Payload_DataFlag, mInLeftData)
+	process (FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F21T78_Expr, mEmptyLeftData_IsActive, mEmptyLeftData_Payload_Data, mEmptyLeftData_Payload_DataFlag, mMuxLeftData_IsActive, mMuxLeftData_Payload_Data, mMuxLeftData_Payload_DataFlag)
 	begin
-		if FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F21T70_Expr = '1' then
-			mOutLeftData(1) <= mInLeftData(TO_INTEGER(Inputs_iLeftAddr));
+		if FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F21T78_Expr = '1' then
+			mOutLeftData(1)(9) <= mMuxLeftData_Payload_DataFlag;
+			mOutLeftData(1)(8 downto 1) <= mMuxLeftData_Payload_Data;
+			mOutLeftData(1)(0) <= mMuxLeftData_IsActive;
 		else
 			mOutLeftData(1)(9) <= mEmptyLeftData_Payload_DataFlag;
 			mOutLeftData(1)(8 downto 1) <= mEmptyLeftData_Payload_Data;
 			mOutLeftData(1)(0) <= mEmptyLeftData_IsActive;
 		end if;
 	end process;
-	process (FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F21T70_Expr, mEmptyLeftData_IsActive, mEmptyLeftData_Payload_Data, mEmptyLeftData_Payload_DataFlag, mInLeftData)
+	process (FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F21T78_Expr, mEmptyLeftData_IsActive, mEmptyLeftData_Payload_Data, mEmptyLeftData_Payload_DataFlag, mMuxLeftData_IsActive, mMuxLeftData_Payload_Data, mMuxLeftData_Payload_DataFlag)
 	begin
-		if FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F21T70_Expr = '1' then
-			mOutLeftData(2) <= mInLeftData(TO_INTEGER(Inputs_iLeftAddr));
+		if FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F21T78_Expr = '1' then
+			mOutLeftData(2)(9) <= mMuxLeftData_Payload_DataFlag;
+			mOutLeftData(2)(8 downto 1) <= mMuxLeftData_Payload_Data;
+			mOutLeftData(2)(0) <= mMuxLeftData_IsActive;
 		else
 			mOutLeftData(2)(9) <= mEmptyLeftData_Payload_DataFlag;
 			mOutLeftData(2)(8 downto 1) <= mEmptyLeftData_Payload_Data;
 			mOutLeftData(2)(0) <= mEmptyLeftData_IsActive;
 		end if;
 	end process;
-	process (FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F21T70_Expr, mEmptyLeftData_IsActive, mEmptyLeftData_Payload_Data, mEmptyLeftData_Payload_DataFlag, mInLeftData)
+	process (FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F21T78_Expr, mEmptyLeftData_IsActive, mEmptyLeftData_Payload_Data, mEmptyLeftData_Payload_DataFlag, mMuxLeftData_IsActive, mMuxLeftData_Payload_Data, mMuxLeftData_Payload_DataFlag)
 	begin
-		if FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F21T70_Expr = '1' then
-			mOutLeftData(3) <= mInLeftData(TO_INTEGER(Inputs_iLeftAddr));
+		if FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F21T78_Expr = '1' then
+			mOutLeftData(3)(9) <= mMuxLeftData_Payload_DataFlag;
+			mOutLeftData(3)(8 downto 1) <= mMuxLeftData_Payload_Data;
+			mOutLeftData(3)(0) <= mMuxLeftData_IsActive;
 		else
 			mOutLeftData(3)(9) <= mEmptyLeftData_Payload_DataFlag;
 			mOutLeftData(3)(8 downto 1) <= mEmptyLeftData_Payload_Data;
 			mOutLeftData(3)(0) <= mEmptyLeftData_IsActive;
 		end if;
 	end process;
-	process (FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F21T68_Expr, mEmptyRightData_IsActive, mEmptyRightData_Payload_Data, mEmptyRightData_Payload_DataFlag, mInRightData)
+	process (Inputs_iRight, Inputs_iRightAddrValid, mEmptyRightData_IsActive, mEmptyRightData_Payload_Data, mEmptyRightData_Payload_DataFlag)
 	begin
-		if FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F21T68_Expr = '1' then
-			mOutRightData(0) <= mInRightData(TO_INTEGER(Inputs_iRightAddr));
+		if Inputs_iRightAddrValid = '1' then
+			mMuxRightData_Payload_DataFlag <= Inputs_iRight(TO_INTEGER(Inputs_iRightAddr))(9);
+			mMuxRightData_Payload_Data <= Inputs_iRight(TO_INTEGER(Inputs_iRightAddr))(8 downto 1);
+			mMuxRightData_IsActive <= Inputs_iRight(TO_INTEGER(Inputs_iRightAddr))(0);
+		else
+			mMuxRightData_IsActive <= mEmptyRightData_IsActive;
+			mMuxRightData_Payload_Data <= mEmptyRightData_Payload_Data;
+			mMuxRightData_Payload_DataFlag <= mEmptyRightData_Payload_DataFlag;
+		end if;
+	end process;
+	process (FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F21T75_Expr, mEmptyRightData_IsActive, mEmptyRightData_Payload_Data, mEmptyRightData_Payload_DataFlag, mMuxRightData_IsActive, mMuxRightData_Payload_Data, mMuxRightData_Payload_DataFlag)
+	begin
+		if FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F21T75_Expr = '1' then
+			mOutRightData(0)(9) <= mMuxRightData_Payload_DataFlag;
+			mOutRightData(0)(8 downto 1) <= mMuxRightData_Payload_Data;
+			mOutRightData(0)(0) <= mMuxRightData_IsActive;
 		else
 			mOutRightData(0)(9) <= mEmptyRightData_Payload_DataFlag;
 			mOutRightData(0)(8 downto 1) <= mEmptyRightData_Payload_Data;
 			mOutRightData(0)(0) <= mEmptyRightData_IsActive;
 		end if;
 	end process;
-	process (FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F21T68_Expr, mEmptyRightData_IsActive, mEmptyRightData_Payload_Data, mEmptyRightData_Payload_DataFlag, mInRightData)
+	process (FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F21T75_Expr, mEmptyRightData_IsActive, mEmptyRightData_Payload_Data, mEmptyRightData_Payload_DataFlag, mMuxRightData_IsActive, mMuxRightData_Payload_Data, mMuxRightData_Payload_DataFlag)
 	begin
-		if FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F21T68_Expr = '1' then
-			mOutRightData(1) <= mInRightData(TO_INTEGER(Inputs_iRightAddr));
+		if FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F21T75_Expr = '1' then
+			mOutRightData(1)(9) <= mMuxRightData_Payload_DataFlag;
+			mOutRightData(1)(8 downto 1) <= mMuxRightData_Payload_Data;
+			mOutRightData(1)(0) <= mMuxRightData_IsActive;
 		else
 			mOutRightData(1)(9) <= mEmptyRightData_Payload_DataFlag;
 			mOutRightData(1)(8 downto 1) <= mEmptyRightData_Payload_Data;
 			mOutRightData(1)(0) <= mEmptyRightData_IsActive;
 		end if;
 	end process;
-	process (FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F21T68_Expr, mEmptyRightData_IsActive, mEmptyRightData_Payload_Data, mEmptyRightData_Payload_DataFlag, mInRightData)
+	process (FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F21T75_Expr, mEmptyRightData_IsActive, mEmptyRightData_Payload_Data, mEmptyRightData_Payload_DataFlag, mMuxRightData_IsActive, mMuxRightData_Payload_Data, mMuxRightData_Payload_DataFlag)
 	begin
-		if FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F21T68_Expr = '1' then
-			mOutRightData(2) <= mInRightData(TO_INTEGER(Inputs_iRightAddr));
+		if FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F21T75_Expr = '1' then
+			mOutRightData(2)(9) <= mMuxRightData_Payload_DataFlag;
+			mOutRightData(2)(8 downto 1) <= mMuxRightData_Payload_Data;
+			mOutRightData(2)(0) <= mMuxRightData_IsActive;
 		else
 			mOutRightData(2)(9) <= mEmptyRightData_Payload_DataFlag;
 			mOutRightData(2)(8 downto 1) <= mEmptyRightData_Payload_Data;
 			mOutRightData(2)(0) <= mEmptyRightData_IsActive;
 		end if;
 	end process;
-	process (FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F21T68_Expr, mEmptyRightData_IsActive, mEmptyRightData_Payload_Data, mEmptyRightData_Payload_DataFlag, mInRightData)
+	process (FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F21T75_Expr, mEmptyRightData_IsActive, mEmptyRightData_Payload_Data, mEmptyRightData_Payload_DataFlag, mMuxRightData_IsActive, mMuxRightData_Payload_Data, mMuxRightData_Payload_DataFlag)
 	begin
-		if FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F21T68_Expr = '1' then
-			mOutRightData(3) <= mInRightData(TO_INTEGER(Inputs_iRightAddr));
+		if FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F21T75_Expr = '1' then
+			mOutRightData(3)(9) <= mMuxRightData_Payload_DataFlag;
+			mOutRightData(3)(8 downto 1) <= mMuxRightData_Payload_Data;
+			mOutRightData(3)(0) <= mMuxRightData_IsActive;
 		else
 			mOutRightData(3)(9) <= mEmptyRightData_Payload_DataFlag;
 			mOutRightData(3)(8 downto 1) <= mEmptyRightData_Payload_Data;
 			mOutRightData(3)(0) <= mEmptyRightData_IsActive;
 		end if;
 	end process;
-	process (FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F21T68_Expr, mEmptyRightData_IsActive, mEmptyRightData_Payload_Data, mEmptyRightData_Payload_DataFlag, mInRightData)
+	process (FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F21T75_Expr, mEmptyRightData_IsActive, mEmptyRightData_Payload_Data, mEmptyRightData_Payload_DataFlag, mMuxRightData_IsActive, mMuxRightData_Payload_Data, mMuxRightData_Payload_DataFlag)
 	begin
-		if FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F21T68_Expr = '1' then
-			mOutRightData(4) <= mInRightData(TO_INTEGER(Inputs_iRightAddr));
+		if FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F21T75_Expr = '1' then
+			mOutRightData(4)(9) <= mMuxRightData_Payload_DataFlag;
+			mOutRightData(4)(8 downto 1) <= mMuxRightData_Payload_Data;
+			mOutRightData(4)(0) <= mMuxRightData_IsActive;
 		else
 			mOutRightData(4)(9) <= mEmptyRightData_Payload_DataFlag;
 			mOutRightData(4)(8 downto 1) <= mEmptyRightData_Payload_Data;
 			mOutRightData(4)(0) <= mEmptyRightData_IsActive;
 		end if;
 	end process;
-	process (FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F21T68_Expr, mEmptyRightData_IsActive, mEmptyRightData_Payload_Data, mEmptyRightData_Payload_DataFlag, mInRightData)
+	process (FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F21T75_Expr, mEmptyRightData_IsActive, mEmptyRightData_Payload_Data, mEmptyRightData_Payload_DataFlag, mMuxRightData_IsActive, mMuxRightData_Payload_Data, mMuxRightData_Payload_DataFlag)
 	begin
-		if FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F21T68_Expr = '1' then
-			mOutRightData(5) <= mInRightData(TO_INTEGER(Inputs_iRightAddr));
+		if FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F21T75_Expr = '1' then
+			mOutRightData(5)(9) <= mMuxRightData_Payload_DataFlag;
+			mOutRightData(5)(8 downto 1) <= mMuxRightData_Payload_Data;
+			mOutRightData(5)(0) <= mMuxRightData_IsActive;
 		else
 			mOutRightData(5)(9) <= mEmptyRightData_Payload_DataFlag;
 			mOutRightData(5)(8 downto 1) <= mEmptyRightData_Payload_Data;
 			mOutRightData(5)(0) <= mEmptyRightData_IsActive;
 		end if;
 	end process;
-	process (FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F21T68_Expr, mEmptyRightData_IsActive, mEmptyRightData_Payload_Data, mEmptyRightData_Payload_DataFlag, mInRightData)
+	process (FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F21T75_Expr, mEmptyRightData_IsActive, mEmptyRightData_Payload_Data, mEmptyRightData_Payload_DataFlag, mMuxRightData_IsActive, mMuxRightData_Payload_Data, mMuxRightData_Payload_DataFlag)
 	begin
-		if FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F21T68_Expr = '1' then
-			mOutRightData(6) <= mInRightData(TO_INTEGER(Inputs_iRightAddr));
+		if FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F21T75_Expr = '1' then
+			mOutRightData(6)(9) <= mMuxRightData_Payload_DataFlag;
+			mOutRightData(6)(8 downto 1) <= mMuxRightData_Payload_Data;
+			mOutRightData(6)(0) <= mMuxRightData_IsActive;
 		else
 			mOutRightData(6)(9) <= mEmptyRightData_Payload_DataFlag;
 			mOutRightData(6)(8 downto 1) <= mEmptyRightData_Payload_Data;
 			mOutRightData(6)(0) <= mEmptyRightData_IsActive;
 		end if;
 	end process;
-	process (FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F21T68_Expr, mEmptyRightData_IsActive, mEmptyRightData_Payload_Data, mEmptyRightData_Payload_DataFlag, mInRightData)
+	process (FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F21T75_Expr, mEmptyRightData_IsActive, mEmptyRightData_Payload_Data, mEmptyRightData_Payload_DataFlag, mMuxRightData_IsActive, mMuxRightData_Payload_Data, mMuxRightData_Payload_DataFlag)
 	begin
-		if FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F21T68_Expr = '1' then
-			mOutRightData(7) <= mInRightData(TO_INTEGER(Inputs_iRightAddr));
+		if FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F21T75_Expr = '1' then
+			mOutRightData(7)(9) <= mMuxRightData_Payload_DataFlag;
+			mOutRightData(7)(8 downto 1) <= mMuxRightData_Payload_Data;
+			mOutRightData(7)(0) <= mMuxRightData_IsActive;
 		else
 			mOutRightData(7)(9) <= mEmptyRightData_Payload_DataFlag;
 			mOutRightData(7)(8 downto 1) <= mEmptyRightData_Payload_Data;
 			mOutRightData(7)(0) <= mEmptyRightData_IsActive;
 		end if;
 	end process;
-	process (FullDuplexMuxModule_L49F32T79_Expr, FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F39T70_Expr, FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F39T70_Expr, FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F39T70_Expr, FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F39T70_Expr, FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F39T68_Expr, FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F39T68_Expr, FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F39T68_Expr, FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F39T68_Expr, FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F39T68_Expr, FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F39T68_Expr, FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F39T68_Expr, FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F39T68_Expr, iLeft0, iLeft1, iLeft2, iLeft3, iLeft4, iLeft5, iLeft6, iLeft7, iLeftAddr, iLeftAddrValid, Inputs_iLeft, Inputs_iLeftAddr, Inputs_iLeftAddrValid, Inputs_iRight, Inputs_iRightAddr, Inputs_iRightAddrValid, iRight0, iRight1, iRight2, iRight3, iRightAddr, iRightAddrValid, mOutLeftData, mOutRightData, validAddresses)
+	process (FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_Expr, FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_Expr, FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F47T78_Expr, FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F47T78_Expr, iLeft0, iLeft1, iLeft2, iLeft3, iLeft4, iLeft5, iLeft6, iLeft7, iLeftAddr, iLeftAddrValid, Inputs_iLeftAddr, Inputs_iLeftAddrValid, Inputs_iRightAddr, Inputs_iRightAddrValid, iRight0, iRight1, iRight2, iRight3, iRightAddr, iRightAddrValid, mMuxLeftData_IsActive, mMuxLeftData_Payload_Data, mMuxLeftData_Payload_DataFlag, mMuxRightData_IsActive, mMuxRightData_Payload_Data, mMuxRightData_Payload_DataFlag, mOutLeftData, mOutRightData)
 	begin
-		FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F39T70_ExprLhs(2) <= '0';
-		FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F39T70_ExprLhs(1 downto 0) <= signed(Inputs_iRightAddr);
-		FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F39T70_ExprRhs(2 downto 1) <= (others => '0');
-		FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F39T70_ExprRhs(0) <= Prefilled0;
-		FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F39T70_ExprLhs(2) <= '0';
-		FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F39T70_ExprLhs(1 downto 0) <= signed(Inputs_iRightAddr);
-		FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F39T70_ExprRhs(2 downto 1) <= (others => '0');
-		FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F39T70_ExprRhs(0) <= Prefilled1;
-		FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F39T70_ExprLhs(2) <= '0';
-		FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F39T70_ExprLhs(1 downto 0) <= signed(Inputs_iRightAddr);
-		FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F39T70_ExprRhs(2) <= '0';
-		FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F39T70_ExprRhs(1 downto 0) <= signed(Prefilled2);
-		FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F39T70_ExprLhs(2) <= '0';
-		FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F39T70_ExprLhs(1 downto 0) <= signed(Inputs_iRightAddr);
-		FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F39T70_ExprRhs(2) <= '0';
-		FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F39T70_ExprRhs(1 downto 0) <= signed(Prefilled3);
-		FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F39T68_ExprLhs(3) <= '0';
-		FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F39T68_ExprLhs(2 downto 0) <= signed(Inputs_iLeftAddr);
-		FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F39T68_ExprRhs(3 downto 1) <= (others => '0');
-		FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F39T68_ExprRhs(0) <= Prefilled0;
-		FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F39T68_ExprLhs(3) <= '0';
-		FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F39T68_ExprLhs(2 downto 0) <= signed(Inputs_iLeftAddr);
-		FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F39T68_ExprRhs(3 downto 1) <= (others => '0');
-		FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F39T68_ExprRhs(0) <= Prefilled1;
-		FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F39T68_ExprLhs(3) <= '0';
-		FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F39T68_ExprLhs(2 downto 0) <= signed(Inputs_iLeftAddr);
-		FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F39T68_ExprRhs(3 downto 2) <= (others => '0');
-		FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F39T68_ExprRhs(1 downto 0) <= signed(Prefilled2);
-		FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F39T68_ExprLhs(3) <= '0';
-		FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F39T68_ExprLhs(2 downto 0) <= signed(Inputs_iLeftAddr);
-		FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F39T68_ExprRhs(3 downto 2) <= (others => '0');
-		FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F39T68_ExprRhs(1 downto 0) <= signed(Prefilled3);
-		FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F39T68_ExprLhs(3) <= '0';
-		FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F39T68_ExprLhs(2 downto 0) <= signed(Inputs_iLeftAddr);
-		FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F39T68_ExprRhs(3) <= '0';
-		FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F39T68_ExprRhs(2 downto 0) <= signed(Prefilled4);
-		FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F39T68_ExprLhs(3) <= '0';
-		FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F39T68_ExprLhs(2 downto 0) <= signed(Inputs_iLeftAddr);
-		FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F39T68_ExprRhs(3) <= '0';
-		FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F39T68_ExprRhs(2 downto 0) <= signed(Prefilled5);
-		FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F39T68_ExprLhs(3) <= '0';
-		FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F39T68_ExprLhs(2 downto 0) <= signed(Inputs_iLeftAddr);
-		FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F39T68_ExprRhs(3) <= '0';
-		FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F39T68_ExprRhs(2 downto 0) <= signed(Prefilled6);
-		FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F39T68_ExprLhs(3) <= '0';
-		FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F39T68_ExprLhs(2 downto 0) <= signed(Inputs_iLeftAddr);
-		FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F39T68_ExprRhs(3) <= '0';
-		FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F39T68_ExprRhs(2 downto 0) <= signed(Prefilled7);
-		FullDuplexMuxModule_L49F32T79_Expr_1 <= Inputs_iLeftAddrValid;
-		FullDuplexMuxModule_L49F32T79_Expr_2 <= Inputs_iRightAddrValid;
-		FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F21T70_Expr_1 <= validAddresses;
-		FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F21T70_Expr_2 <= FullDuplexMuxModule_L76F13L86T14_0_FullDuplexMuxModule_L78F39T70_Expr;
-		FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F21T70_Expr_1 <= validAddresses;
-		FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F21T70_Expr_2 <= FullDuplexMuxModule_L76F13L86T14_1_FullDuplexMuxModule_L78F39T70_Expr;
-		FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F21T70_Expr_1 <= validAddresses;
-		FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F21T70_Expr_2 <= FullDuplexMuxModule_L76F13L86T14_2_FullDuplexMuxModule_L78F39T70_Expr;
-		FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F21T70_Expr_1 <= validAddresses;
-		FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F21T70_Expr_2 <= FullDuplexMuxModule_L76F13L86T14_3_FullDuplexMuxModule_L78F39T70_Expr;
-		FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F21T68_Expr_1 <= validAddresses;
-		FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F21T68_Expr_2 <= FullDuplexMuxModule_L96F13L106T14_0_FullDuplexMuxModule_L98F39T68_Expr;
-		FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F21T68_Expr_1 <= validAddresses;
-		FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F21T68_Expr_2 <= FullDuplexMuxModule_L96F13L106T14_1_FullDuplexMuxModule_L98F39T68_Expr;
-		FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F21T68_Expr_1 <= validAddresses;
-		FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F21T68_Expr_2 <= FullDuplexMuxModule_L96F13L106T14_2_FullDuplexMuxModule_L98F39T68_Expr;
-		FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F21T68_Expr_1 <= validAddresses;
-		FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F21T68_Expr_2 <= FullDuplexMuxModule_L96F13L106T14_3_FullDuplexMuxModule_L98F39T68_Expr;
-		FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F21T68_Expr_1 <= validAddresses;
-		FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F21T68_Expr_2 <= FullDuplexMuxModule_L96F13L106T14_4_FullDuplexMuxModule_L98F39T68_Expr;
-		FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F21T68_Expr_1 <= validAddresses;
-		FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F21T68_Expr_2 <= FullDuplexMuxModule_L96F13L106T14_5_FullDuplexMuxModule_L98F39T68_Expr;
-		FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F21T68_Expr_1 <= validAddresses;
-		FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F21T68_Expr_2 <= FullDuplexMuxModule_L96F13L106T14_6_FullDuplexMuxModule_L98F39T68_Expr;
-		FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F21T68_Expr_1 <= validAddresses;
-		FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F21T68_Expr_2 <= FullDuplexMuxModule_L96F13L106T14_7_FullDuplexMuxModule_L98F39T68_Expr;
+		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprLhs(2) <= '0';
+		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprLhs(1 downto 0) <= signed(Inputs_iRightAddr);
+		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprRhs(2 downto 1) <= (others => '0');
+		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprRhs(0) <= Prefilled0;
+		FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprLhs(2) <= '0';
+		FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprLhs(1 downto 0) <= signed(Inputs_iRightAddr);
+		FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprRhs(2 downto 1) <= (others => '0');
+		FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprRhs(0) <= Prefilled1;
+		FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F47T78_ExprLhs(2) <= '0';
+		FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F47T78_ExprLhs(1 downto 0) <= signed(Inputs_iRightAddr);
+		FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F47T78_ExprRhs(2) <= '0';
+		FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F47T78_ExprRhs(1 downto 0) <= signed(Prefilled2);
+		FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F47T78_ExprLhs(2) <= '0';
+		FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F47T78_ExprLhs(1 downto 0) <= signed(Inputs_iRightAddr);
+		FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F47T78_ExprRhs(2) <= '0';
+		FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F47T78_ExprRhs(1 downto 0) <= signed(Prefilled3);
+		FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprLhs(3) <= '0';
+		FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprLhs(2 downto 0) <= signed(Inputs_iLeftAddr);
+		FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprRhs(3 downto 1) <= (others => '0');
+		FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprRhs(0) <= Prefilled0;
+		FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprLhs(3) <= '0';
+		FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprLhs(2 downto 0) <= signed(Inputs_iLeftAddr);
+		FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprRhs(3 downto 1) <= (others => '0');
+		FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprRhs(0) <= Prefilled1;
+		FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F46T75_ExprLhs(3) <= '0';
+		FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F46T75_ExprLhs(2 downto 0) <= signed(Inputs_iLeftAddr);
+		FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F46T75_ExprRhs(3 downto 2) <= (others => '0');
+		FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F46T75_ExprRhs(1 downto 0) <= signed(Prefilled2);
+		FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F46T75_ExprLhs(3) <= '0';
+		FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F46T75_ExprLhs(2 downto 0) <= signed(Inputs_iLeftAddr);
+		FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F46T75_ExprRhs(3 downto 2) <= (others => '0');
+		FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F46T75_ExprRhs(1 downto 0) <= signed(Prefilled3);
+		FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F46T75_ExprLhs(3) <= '0';
+		FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F46T75_ExprLhs(2 downto 0) <= signed(Inputs_iLeftAddr);
+		FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F46T75_ExprRhs(3) <= '0';
+		FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F46T75_ExprRhs(2 downto 0) <= signed(Prefilled4);
+		FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F46T75_ExprLhs(3) <= '0';
+		FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F46T75_ExprLhs(2 downto 0) <= signed(Inputs_iLeftAddr);
+		FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F46T75_ExprRhs(3) <= '0';
+		FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F46T75_ExprRhs(2 downto 0) <= signed(Prefilled5);
+		FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F46T75_ExprLhs(3) <= '0';
+		FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F46T75_ExprLhs(2 downto 0) <= signed(Inputs_iLeftAddr);
+		FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F46T75_ExprRhs(3) <= '0';
+		FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F46T75_ExprRhs(2 downto 0) <= signed(Prefilled6);
+		FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_ExprLhs(3) <= '0';
+		FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_ExprLhs(2 downto 0) <= signed(Inputs_iLeftAddr);
+		FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_ExprRhs(3) <= '0';
+		FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_ExprRhs(2 downto 0) <= signed(Prefilled7);
+		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr_1 <= Inputs_iRightAddrValid;
+		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr_2 <= FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_Expr;
+		FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F21T78_Expr_1 <= Inputs_iRightAddrValid;
+		FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F21T78_Expr_2 <= FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_Expr;
+		FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F21T78_Expr_1 <= Inputs_iRightAddrValid;
+		FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F21T78_Expr_2 <= FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F47T78_Expr;
+		FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F21T78_Expr_1 <= Inputs_iRightAddrValid;
+		FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F21T78_Expr_2 <= FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F47T78_Expr;
+		FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F21T75_Expr_1 <= Inputs_iLeftAddrValid;
+		FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F21T75_Expr_2 <= FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_Expr;
+		FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F21T75_Expr_1 <= Inputs_iLeftAddrValid;
+		FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F21T75_Expr_2 <= FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_Expr;
+		FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F21T75_Expr_1 <= Inputs_iLeftAddrValid;
+		FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F21T75_Expr_2 <= FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F46T75_Expr;
+		FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F21T75_Expr_1 <= Inputs_iLeftAddrValid;
+		FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F21T75_Expr_2 <= FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F46T75_Expr;
+		FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F21T75_Expr_1 <= Inputs_iLeftAddrValid;
+		FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F21T75_Expr_2 <= FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F46T75_Expr;
+		FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F21T75_Expr_1 <= Inputs_iLeftAddrValid;
+		FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F21T75_Expr_2 <= FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F46T75_Expr;
+		FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F21T75_Expr_1 <= Inputs_iLeftAddrValid;
+		FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F21T75_Expr_2 <= FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F46T75_Expr;
+		FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F21T75_Expr_1 <= Inputs_iLeftAddrValid;
+		FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F21T75_Expr_2 <= FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_Expr;
 		Inputs_iLeft(0) <= iLeft0;
 		Inputs_iLeft(1) <= iLeft1;
 		Inputs_iLeft(2) <= iLeft2;
@@ -454,31 +492,16 @@ begin
 		Inputs_iRight(3) <= iRight3;
 		Inputs_iRightAddr <= iRightAddr;
 		Inputs_iRightAddrValid <= iRightAddrValid;
-		mEmptyLeftData_IsActive <= AXILikeMuxModule_L18F32T37_Expr;
-		mEmptyLeftData_Payload_Data(7 downto 1) <= (others => '0');
-		mEmptyLeftData_Payload_Data(0) <= AXILikeMuxModule_L13F28T41_Expr;
-		mEmptyLeftData_Payload_DataFlag <= AXILikeMuxModule_L12F32T37_Expr;
-		mEmptyRightData_IsActive <= AXILikeMuxModule_L24F32T37_Expr;
-		mEmptyRightData_Payload_Data(7 downto 1) <= (others => '0');
-		mEmptyRightData_Payload_Data(0) <= AXILikeMuxModule_L13F28T41_Expr;
-		mEmptyRightData_Payload_DataFlag <= AXILikeMuxModule_L12F32T37_Expr;
-		validAddresses <= FullDuplexMuxModule_L49F32T79_Expr;
-		mInLeftData(0) <= Inputs_iLeft(0);
-		mInLeftData(1) <= Inputs_iLeft(1);
-		mInLeftData(2) <= Inputs_iLeft(2);
-		mInLeftData(3) <= Inputs_iLeft(3);
-		mInLeftData(4) <= Inputs_iLeft(4);
-		mInLeftData(5) <= Inputs_iLeft(5);
-		mInLeftData(6) <= Inputs_iLeft(6);
-		mInLeftData(7) <= Inputs_iLeft(7);
-		mInRightData(0) <= Inputs_iRight(0);
-		mInRightData(1) <= Inputs_iRight(1);
-		mInRightData(2) <= Inputs_iRight(2);
-		mInRightData(3) <= Inputs_iRight(3);
 		oLeft0 <= mOutLeftData(0);
 		oLeft1 <= mOutLeftData(1);
 		oLeft2 <= mOutLeftData(2);
 		oLeft3 <= mOutLeftData(3);
+		oMuxLeftData(9) <= mMuxLeftData_Payload_DataFlag;
+		oMuxLeftData(8 downto 1) <= mMuxLeftData_Payload_Data;
+		oMuxLeftData(0) <= mMuxLeftData_IsActive;
+		oMuxRightData(9) <= mMuxRightData_Payload_DataFlag;
+		oMuxRightData(8 downto 1) <= mMuxRightData_Payload_Data;
+		oMuxRightData(0) <= mMuxRightData_IsActive;
 		oRight0 <= mOutRightData(0);
 		oRight1 <= mOutRightData(1);
 		oRight2 <= mOutRightData(2);

@@ -10,7 +10,7 @@ namespace rtl.modules.AXI4.Modules
     public class Payload
     {
         public bool DataFlag = false;
-        public byte Data = byte.MinValue;
+        public RTLBitArray Data = new RTLBitArray(byte.MinValue);
     }
 
     public class MData
@@ -62,7 +62,7 @@ namespace rtl.modules.AXI4.Modules
         {
             InitInputs(new AXILikeMuxModuleInputs(mastersCount, slavesCount));
 
-            fullDuplexMux = new FullDuplexMuxModule<MData, SData>(mastersCount, slavesCount);
+            fullDuplexMux = new FullDuplexMuxModule<MData, SData>(mastersCount, () => new MData(), slavesCount, () => new SData());
         }
 
         protected override void OnSchedule(Func<AXILikeMuxModuleInputs> inputsFactory)
@@ -165,9 +165,31 @@ namespace rtl.modules.AXI4.Modules
 
     public class AXI4FullDuplexMuxModule : FullDuplexMuxModule<AXI4_M2S, AXI4_S2M>
     { 
-        public AXI4FullDuplexMuxModule() : base(8, 4)
+        public AXI4FullDuplexMuxModule() 
+            : base(8, () => new AXI4_M2S(axiSize.B4), 4, () => new AXI4_S2M(axiSize.B4))
+        {
+        }
+    }
+
+    public class AXILikeInteconnectModule : InterconnectModule<MData, SData>
+    {
+        public AXILikeInteconnectModule()
+            : base(8, () => new MData(), 4, () => new SData())
         {
 
         }
+
+        protected override bool TXStart(MData source)
+        {
+            return source.IsActive;
+        }
+        protected override bool TXEnd(MData source) => source.Payload.DataFlag;
+        protected override RTLBitArray RightAddr() => muxLeftData.Payload.Data[1, 0];
+        public bool[] oTransactions => Transactions;
+        public bool[] oWaitForRestarts => WaitForRestarts;
+        public MData oMuxLeftData => muxLeftData;
+        public RTLBitArray oRightAddr => RightAddr();
+        public MData[] oLeft => muxLeft;
+        public SData[] oRight => muxRight;
     }
 }
