@@ -1,4 +1,4 @@
-set_global_assignment -name TOP_LEVEL_ENTITY RangeDetectorArrayModule4_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY IOSingleBitMemoryModule_TopLevel
 # -------------------------------------------------------------------------- #
 #
 # Copyright (C) 1991-2010 Altera Corporation
@@ -65,10 +65,8 @@ set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
 set_instance_assignment -name CLOCK_SETTINGS Clock -to Clock
-
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/RangeDetectorArrayModule4.vwf
-
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/IOSingleBitMemoryModule.vwf
 
 set_global_assignment -name VHDL_FILE VHDL/generated/AndGateModule/AndGateModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AndGateModule.vwf
@@ -109,14 +107,6 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4MemoryModuleB4.vw
 set_global_assignment -name VHDL_FILE VHDL/generated/AXI4NonBufferedSlaveModuleB4/AXI4NonBufferedSlaveModuleB4_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4NonBufferedSlaveModuleB4.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/AXI4PassThroughModule/AXI4PassThroughModule_TopLevel.vhdl
-set_global_assignment -name VHDL_FILE VHDL/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel_DuplexMux.vhdl
-set_global_assignment -name VHDL_FILE VHDL/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel_Encoder.vhdl
-set_global_assignment -name VHDL_FILE VHDL/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_encoder.vhdl
-set_global_assignment -name VHDL_FILE VHDL/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_rangeDetectors0.vhdl
-set_global_assignment -name VHDL_FILE VHDL/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_rangeDetectors1.vhdl
-set_global_assignment -name VHDL_FILE VHDL/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray.vhdl
-set_global_assignment -name VHDL_FILE VHDL/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel_TransactionDetectors0.vhdl
-set_global_assignment -name VHDL_FILE VHDL/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4RegisterModuleB4_ConcurrentWrite.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4RegisterModuleB4_Read.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/AXI4RegisterModuleB4/AXI4RegisterModuleB4_TopLevel_axiSlave.vhdl
@@ -208,6 +198,7 @@ set_global_assignment -name VHDL_FILE VHDL/generated/IntDividerPipelineModule/In
 set_global_assignment -name VHDL_FILE VHDL/generated/IONativeModule/IONativeModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/IOObjectModule/IOObjectModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/IOSingleBitMemoryModule/IOSingleBitMemoryModule_TopLevel.vhdl
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IOSingleBitMemoryModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/IOTestModule/IOTestModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IOTestModule.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IOTupleDelay1Clock.vwf

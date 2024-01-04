@@ -25,11 +25,11 @@ entity AXI4ReadInteconnectModule_1x2_TopLevel_DuplexMux is
 		-- [BEGIN USER PORTS]
 		-- [END USER PORTS]
 		iLeft0 : in unsigned (83 downto 0);
-		iLeftAddr : in std_logic;
+		iLeftAddr : in unsigned (0 downto 0);
 		iLeftAddrValid : in std_logic;
 		iRight0 : in unsigned (52 downto 0);
 		iRight1 : in unsigned (52 downto 0);
-		iRightAddr : in std_logic;
+		iRightAddr : in unsigned (0 downto 0);
 		iRightAddrValid : in std_logic;
 		oLeft0 : out unsigned (83 downto 0);
 		oLeft1 : out unsigned (83 downto 0);
@@ -53,9 +53,9 @@ architecture rtl of AXI4ReadInteconnectModule_1x2_TopLevel_DuplexMux is
 	constant rightCount : unsigned(1 downto 0) := "10";
 	constant Prefilled0 : std_logic := '0';
 	constant Prefilled1 : std_logic := '1';
-	signal Inputs_iLeftAddr : std_logic := '0';
+	signal Inputs_iLeftAddr : unsigned(0 downto 0) := (others => '0');
 	signal Inputs_iLeftAddrValid : std_logic := '0';
-	signal Inputs_iRightAddr : std_logic := '0';
+	signal Inputs_iRightAddr : unsigned(0 downto 0) := (others => '0');
 	signal Inputs_iRightAddrValid : std_logic := '0';
 	signal mEmptyLeftData_AR_ARID : unsigned(7 downto 0) := (others => '0');
 	signal mEmptyLeftData_AR_ARADDR : unsigned(31 downto 0) := (others => '0');
@@ -144,19 +144,19 @@ begin
 	process (Inputs_iLeft, Inputs_iLeftAddrValid, mEmptyLeftData_AR_ARADDR, mEmptyLeftData_AR_ARBURST, mEmptyLeftData_AR_ARCACHE, mEmptyLeftData_AR_ARID, mEmptyLeftData_AR_ARLEN, mEmptyLeftData_AR_ARLOCK, mEmptyLeftData_AR_ARPROT, mEmptyLeftData_AR_ARQOS, mEmptyLeftData_AR_ARREGION, mEmptyLeftData_AR_ARSIZE, mEmptyLeftData_AR_ARUSER, mEmptyLeftData_AR_ARVALID, mEmptyLeftData_R_RREADY)
 	begin
 		if Inputs_iLeftAddrValid = '1' then
-			mMuxLeftData_R_RREADY <= Inputs_iLeft(bit_to_integer(Inputs_iLeftAddr))(83);
-			mMuxLeftData_AR_ARVALID <= Inputs_iLeft(bit_to_integer(Inputs_iLeftAddr))(82);
-			mMuxLeftData_AR_ARUSER <= Inputs_iLeft(bit_to_integer(Inputs_iLeftAddr))(81 downto 74);
-			mMuxLeftData_AR_ARREGION <= Inputs_iLeft(bit_to_integer(Inputs_iLeftAddr))(73 downto 66);
-			mMuxLeftData_AR_ARQOS <= Inputs_iLeft(bit_to_integer(Inputs_iLeftAddr))(65 downto 62);
-			mMuxLeftData_AR_ARPROT <= Inputs_iLeft(bit_to_integer(Inputs_iLeftAddr))(61 downto 59);
-			mMuxLeftData_AR_ARCACHE <= Inputs_iLeft(bit_to_integer(Inputs_iLeftAddr))(58 downto 55);
-			mMuxLeftData_AR_ARLOCK <= Inputs_iLeft(bit_to_integer(Inputs_iLeftAddr))(54 downto 53);
-			mMuxLeftData_AR_ARBURST <= Inputs_iLeft(bit_to_integer(Inputs_iLeftAddr))(52 downto 51);
-			mMuxLeftData_AR_ARSIZE <= Inputs_iLeft(bit_to_integer(Inputs_iLeftAddr))(50 downto 48);
-			mMuxLeftData_AR_ARLEN <= Inputs_iLeft(bit_to_integer(Inputs_iLeftAddr))(47 downto 40);
-			mMuxLeftData_AR_ARADDR <= Inputs_iLeft(bit_to_integer(Inputs_iLeftAddr))(39 downto 8);
-			mMuxLeftData_AR_ARID <= Inputs_iLeft(bit_to_integer(Inputs_iLeftAddr))(7 downto 0);
+			mMuxLeftData_R_RREADY <= Inputs_iLeft(TO_INTEGER(Inputs_iLeftAddr))(83);
+			mMuxLeftData_AR_ARVALID <= Inputs_iLeft(TO_INTEGER(Inputs_iLeftAddr))(82);
+			mMuxLeftData_AR_ARUSER <= Inputs_iLeft(TO_INTEGER(Inputs_iLeftAddr))(81 downto 74);
+			mMuxLeftData_AR_ARREGION <= Inputs_iLeft(TO_INTEGER(Inputs_iLeftAddr))(73 downto 66);
+			mMuxLeftData_AR_ARQOS <= Inputs_iLeft(TO_INTEGER(Inputs_iLeftAddr))(65 downto 62);
+			mMuxLeftData_AR_ARPROT <= Inputs_iLeft(TO_INTEGER(Inputs_iLeftAddr))(61 downto 59);
+			mMuxLeftData_AR_ARCACHE <= Inputs_iLeft(TO_INTEGER(Inputs_iLeftAddr))(58 downto 55);
+			mMuxLeftData_AR_ARLOCK <= Inputs_iLeft(TO_INTEGER(Inputs_iLeftAddr))(54 downto 53);
+			mMuxLeftData_AR_ARBURST <= Inputs_iLeft(TO_INTEGER(Inputs_iLeftAddr))(52 downto 51);
+			mMuxLeftData_AR_ARSIZE <= Inputs_iLeft(TO_INTEGER(Inputs_iLeftAddr))(50 downto 48);
+			mMuxLeftData_AR_ARLEN <= Inputs_iLeft(TO_INTEGER(Inputs_iLeftAddr))(47 downto 40);
+			mMuxLeftData_AR_ARADDR <= Inputs_iLeft(TO_INTEGER(Inputs_iLeftAddr))(39 downto 8);
+			mMuxLeftData_AR_ARID <= Inputs_iLeft(TO_INTEGER(Inputs_iLeftAddr))(7 downto 0);
 		else
 			mMuxLeftData_AR_ARID <= mEmptyLeftData_AR_ARID;
 			mMuxLeftData_AR_ARADDR <= mEmptyLeftData_AR_ARADDR;
@@ -240,16 +240,16 @@ begin
 	process (Inputs_iRight, Inputs_iRightAddrValid, mEmptyRightData_AR_ARREADY, mEmptyRightData_R_RDATA, mEmptyRightData_R_RID, mEmptyRightData_R_RLAST, mEmptyRightData_R_RRESP, mEmptyRightData_R_RUSER, mEmptyRightData_R_RVALID)
 	begin
 		if Inputs_iRightAddrValid = '1' then
-			mMuxRightData_R_RVALID <= Inputs_iRight(bit_to_integer(Inputs_iRightAddr))(52);
-			mMuxRightData_R_RUSER <= Inputs_iRight(bit_to_integer(Inputs_iRightAddr))(51 downto 44);
-			mMuxRightData_R_RLAST <= Inputs_iRight(bit_to_integer(Inputs_iRightAddr))(43);
-			mMuxRightData_R_RRESP <= Inputs_iRight(bit_to_integer(Inputs_iRightAddr))(42 downto 41);
-			mMuxRightData_R_RDATA(3) <= Inputs_iRight(bit_to_integer(Inputs_iRightAddr))(40 downto 33);
-			mMuxRightData_R_RDATA(2) <= Inputs_iRight(bit_to_integer(Inputs_iRightAddr))(32 downto 25);
-			mMuxRightData_R_RDATA(1) <= Inputs_iRight(bit_to_integer(Inputs_iRightAddr))(24 downto 17);
-			mMuxRightData_R_RDATA(0) <= Inputs_iRight(bit_to_integer(Inputs_iRightAddr))(16 downto 9);
-			mMuxRightData_R_RID <= Inputs_iRight(bit_to_integer(Inputs_iRightAddr))(8 downto 1);
-			mMuxRightData_AR_ARREADY <= Inputs_iRight(bit_to_integer(Inputs_iRightAddr))(0);
+			mMuxRightData_R_RVALID <= Inputs_iRight(TO_INTEGER(Inputs_iRightAddr))(52);
+			mMuxRightData_R_RUSER <= Inputs_iRight(TO_INTEGER(Inputs_iRightAddr))(51 downto 44);
+			mMuxRightData_R_RLAST <= Inputs_iRight(TO_INTEGER(Inputs_iRightAddr))(43);
+			mMuxRightData_R_RRESP <= Inputs_iRight(TO_INTEGER(Inputs_iRightAddr))(42 downto 41);
+			mMuxRightData_R_RDATA(3) <= Inputs_iRight(TO_INTEGER(Inputs_iRightAddr))(40 downto 33);
+			mMuxRightData_R_RDATA(2) <= Inputs_iRight(TO_INTEGER(Inputs_iRightAddr))(32 downto 25);
+			mMuxRightData_R_RDATA(1) <= Inputs_iRight(TO_INTEGER(Inputs_iRightAddr))(24 downto 17);
+			mMuxRightData_R_RDATA(0) <= Inputs_iRight(TO_INTEGER(Inputs_iRightAddr))(16 downto 9);
+			mMuxRightData_R_RID <= Inputs_iRight(TO_INTEGER(Inputs_iRightAddr))(8 downto 1);
+			mMuxRightData_AR_ARREADY <= Inputs_iRight(TO_INTEGER(Inputs_iRightAddr))(0);
 		else
 			mMuxRightData_AR_ARREADY <= mEmptyRightData_AR_ARREADY;
 			mMuxRightData_R_RID <= mEmptyRightData_R_RID;
@@ -292,15 +292,15 @@ begin
 	process (FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_Expr, FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_Expr, iLeft0, iLeftAddr, iLeftAddrValid, Inputs_iLeftAddr, Inputs_iLeftAddrValid, Inputs_iRightAddr, Inputs_iRightAddrValid, iRight0, iRight1, iRightAddr, iRightAddrValid, mMuxLeftData_AR_ARADDR, mMuxLeftData_AR_ARBURST, mMuxLeftData_AR_ARCACHE, mMuxLeftData_AR_ARID, mMuxLeftData_AR_ARLEN, mMuxLeftData_AR_ARLOCK, mMuxLeftData_AR_ARPROT, mMuxLeftData_AR_ARQOS, mMuxLeftData_AR_ARREGION, mMuxLeftData_AR_ARSIZE, mMuxLeftData_AR_ARUSER, mMuxLeftData_AR_ARVALID, mMuxLeftData_R_RREADY, mMuxRightData_AR_ARREADY, mMuxRightData_R_RDATA, mMuxRightData_R_RID, mMuxRightData_R_RLAST, mMuxRightData_R_RRESP, mMuxRightData_R_RUSER, mMuxRightData_R_RVALID, mOutLeftData, mOutRightData)
 	begin
 		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprLhs(1) <= '0';
-		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprLhs(0) <= Inputs_iRightAddr;
+		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprLhs(0) <= Inputs_iRightAddr(0);
 		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprRhs(1) <= '0';
 		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprRhs(0) <= Prefilled0;
 		FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprLhs(1) <= '0';
-		FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprLhs(0) <= Inputs_iRightAddr;
+		FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprLhs(0) <= Inputs_iRightAddr(0);
 		FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprRhs(1) <= '0';
 		FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprRhs(0) <= Prefilled1;
 		FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprLhs(1) <= '0';
-		FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprLhs(0) <= Inputs_iLeftAddr;
+		FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprLhs(0) <= Inputs_iLeftAddr(0);
 		FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprRhs(1) <= '0';
 		FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprRhs(0) <= Prefilled0;
 		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr_1 <= Inputs_iRightAddrValid;

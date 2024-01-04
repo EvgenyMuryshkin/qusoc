@@ -25,7 +25,7 @@ module AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray
 	// [END USER PORTS]
 	input wire [31:0] iAddress,
 	output wire oActive,
-	output wire oIndex
+	output wire [0:0] oIndex
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -38,7 +38,7 @@ module AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray
 	wire [1: 0] rangeDetectorsCount = 2'b10;
 	wire [31: 0] Inputs_iAddress;
 	wire encoder_HasActive;
-	wire encoder_MSBIndex;
+	wire [0: 0] encoder_MSBIndex;
 	wire [1: 0] encoder_MSBValue;
 	wire [31: 0] rangeDetectors0_Value;
 	wire rangeDetectors0_IsActive;

@@ -380,7 +380,10 @@ namespace Quokka.RTL
 
             Commit();
         }
-
+        protected int[] range(uint length)
+        {
+            return Enumerable.Range(0, (int)length).ToArray();
+        }
         protected int[] range(int length)
         {
             return Enumerable.Range(0, length).ToArray();

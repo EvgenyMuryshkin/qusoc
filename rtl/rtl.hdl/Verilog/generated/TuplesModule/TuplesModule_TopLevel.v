@@ -43,11 +43,11 @@ module TuplesModule_TopLevel
 	reg TuplesModule_L16F13L21T14_same;
 	reg TuplesModule_L16F13L21T14_diff;
 	wire TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_Expr;
-	wire signed [1: 0] TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprLhs;
-	wire signed [1: 0] TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprRhs;
+	wire TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprLhs;
+	wire TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprRhs;
 	wire TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_Expr;
-	wire signed [1: 0] TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprLhs;
-	wire signed [1: 0] TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprRhs;
+	wire TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprLhs;
+	wire TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprRhs;
 	assign TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_Expr = TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprLhs == TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprRhs ? 1'b1 : 1'b0;
 	assign TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_Expr = TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprLhs != TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprRhs ? 1'b1 : 1'b0;
 	always @ (*)
@@ -55,10 +55,10 @@ module TuplesModule_TopLevel
 		TuplesModule_L16F13L21T14_same = TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_Expr;
 		TuplesModule_L16F13L21T14_diff = TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_Expr;
 	end
-	assign TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprLhs = { 1'b0, Inputs_Value1 };
-	assign TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprRhs = { 1'b0, Inputs_Value2 };
-	assign TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprLhs = { 1'b0, Inputs_Value1 };
-	assign TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprRhs = { 1'b0, Inputs_Value2 };
+	assign TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprLhs = Inputs_Value1;
+	assign TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprRhs = Inputs_Value2;
+	assign TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprLhs = Inputs_Value1;
+	assign TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprRhs = Inputs_Value2;
 	assign Inputs_Value1 = Value1;
 	assign Inputs_Value2 = Value2;
 	assign Logic_Item1 = TuplesModule_L16F13L21T14_same;

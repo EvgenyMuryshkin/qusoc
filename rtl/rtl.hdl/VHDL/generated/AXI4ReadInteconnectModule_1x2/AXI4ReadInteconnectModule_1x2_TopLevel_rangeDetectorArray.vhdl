@@ -26,7 +26,7 @@ entity AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray is
 		-- [END USER PORTS]
 		iAddress : in unsigned (31 downto 0);
 		oActive : out std_logic;
-		oIndex : out std_logic
+		oIndex : out unsigned (0 downto 0)
 	);
 end entity;
 -- FSM summary
@@ -43,7 +43,7 @@ architecture rtl of AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray is
 	constant rangeDetectorsCount : unsigned(1 downto 0) := "10";
 	signal Inputs_iAddress : unsigned(31 downto 0) := (others => '0');
 	signal encoder_HasActive : std_logic := '0';
-	signal encoder_MSBIndex : std_logic := '0';
+	signal encoder_MSBIndex : unsigned(0 downto 0) := (others => '0');
 	signal encoder_MSBValue : unsigned(1 downto 0) := (others => '0');
 	signal rangeDetectors0_Value : unsigned(31 downto 0) := (others => '0');
 	signal rangeDetectors0_IsActive : std_logic := '0';

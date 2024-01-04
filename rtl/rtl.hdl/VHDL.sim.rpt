@@ -1,5 +1,5 @@
 Simulator report for VHDL
-Sat Dec 09 18:11:49 2023
+Thu Jan 04 20:31:49 2024
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -45,42 +45,42 @@ applicable agreement for further details.
 +-----------------------------+--------------+
 ; Simulation Start Time       ; 0 ps         ;
 ; Simulation End Time         ; 1.0 ms       ;
-; Simulation Netlist Size     ; 72 nodes     ;
-; Simulation Coverage         ;      40.28 % ;
-; Total Number of Transitions ; 203          ;
+; Simulation Netlist Size     ; 13 nodes     ;
+; Simulation Coverage         ;      61.54 % ;
+; Total Number of Transitions ; 215          ;
 ; Simulation Breakpoints      ; 0            ;
 ; Family                      ; Cyclone II   ;
 ; Device                      ; EP2C70F896C6 ;
 +-----------------------------+--------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Simulator Settings                                                                                                                                   ;
-+--------------------------------------------------------------------------------------------+-----------------------------------------+---------------+
-; Option                                                                                     ; Setting                                 ; Default Value ;
-+--------------------------------------------------------------------------------------------+-----------------------------------------+---------------+
-; Simulation mode                                                                            ; Timing                                  ; Timing        ;
-; Start time                                                                                 ; 0 ns                                    ; 0 ns          ;
-; Simulation results format                                                                  ; CVWF                                    ;               ;
-; Vector input source                                                                        ; Waveforms/RangeDetectorArrayModule4.vwf ;               ;
-; Add pins automatically to simulation output waveforms                                      ; On                                      ; On            ;
-; Check outputs                                                                              ; Off                                     ; Off           ;
-; Report simulation coverage                                                                 ; On                                      ; On            ;
-; Display complete 1/0 value coverage report                                                 ; On                                      ; On            ;
-; Display missing 1-value coverage report                                                    ; On                                      ; On            ;
-; Display missing 0-value coverage report                                                    ; On                                      ; On            ;
-; Detect setup and hold time violations                                                      ; Off                                     ; Off           ;
-; Detect glitches                                                                            ; Off                                     ; Off           ;
-; Disable timing delays in Timing Simulation                                                 ; Off                                     ; Off           ;
-; Generate Signal Activity File                                                              ; Off                                     ; Off           ;
-; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                                     ; Off           ;
-; Group bus channels in simulation results                                                   ; Off                                     ; Off           ;
-; Preserve fewer signal transitions to reduce memory requirements                            ; On                                      ; On            ;
-; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                              ; INPUT_EDGE    ;
-; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                                     ; Off           ;
-; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                                      ;               ;
-; Perform Glitch Filtering in Timing Simulation                                              ; Auto                                    ; Auto          ;
-+--------------------------------------------------------------------------------------------+-----------------------------------------+---------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                                                 ;
++--------------------------------------------------------------------------------------------+---------------------------------------+---------------+
+; Option                                                                                     ; Setting                               ; Default Value ;
++--------------------------------------------------------------------------------------------+---------------------------------------+---------------+
+; Simulation mode                                                                            ; Timing                                ; Timing        ;
+; Start time                                                                                 ; 0 ns                                  ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF                                  ;               ;
+; Vector input source                                                                        ; Waveforms/IOSingleBitMemoryModule.vwf ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On                                    ; On            ;
+; Check outputs                                                                              ; Off                                   ; Off           ;
+; Report simulation coverage                                                                 ; On                                    ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On                                    ; On            ;
+; Display missing 1-value coverage report                                                    ; On                                    ; On            ;
+; Display missing 0-value coverage report                                                    ; On                                    ; On            ;
+; Detect setup and hold time violations                                                      ; Off                                   ; Off           ;
+; Detect glitches                                                                            ; Off                                   ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off                                   ; Off           ;
+; Generate Signal Activity File                                                              ; Off                                   ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                                   ; Off           ;
+; Group bus channels in simulation results                                                   ; Off                                   ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On                                    ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                            ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                                   ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                                    ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto                                  ; Auto          ;
++--------------------------------------------------------------------------------------------+---------------------------------------+---------------+
 
 
 +----------------------+
@@ -95,113 +95,53 @@ Please use Quartus II to view the waveform report data.
 +-----------------------------------------------------+--------------+
 ; Type                                                ; Value        ;
 +-----------------------------------------------------+--------------+
-; Total coverage as a percentage                      ;      40.28 % ;
-; Total nodes checked                                 ; 72           ;
-; Total output ports checked                          ; 72           ;
-; Total output ports with complete 1/0-value coverage ; 29           ;
+; Total coverage as a percentage                      ;      61.54 % ;
+; Total nodes checked                                 ; 13           ;
+; Total output ports checked                          ; 13           ;
+; Total output ports with complete 1/0-value coverage ; 8            ;
 ; Total output ports with no 1/0-value coverage       ; 0            ;
-; Total output ports with no 1-value coverage         ; 7            ;
-; Total output ports with no 0-value coverage         ; 36           ;
+; Total output ports with no 1-value coverage         ; 5            ;
+; Total output ports with no 0-value coverage         ; 0            ;
 +-----------------------------------------------------+--------------+
 
 
 The following table displays output ports that toggle between 1 and 0 during simulation.
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Complete 1/0-Value Coverage                                                                                                                                                                                                                                                                                                      ;
-+-------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
-; Node Name                                                                                                                                             ; Output Port Name                                                                                                                                      ; Output Port Type ;
-+-------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|MSBIndex[0]~0               ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|MSBIndex[0]~0               ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_rangeDetectors4:RangeDetectorArrayModule4_TopLevel_rangeDetectors4|LessThan1~0 ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_rangeDetectors4:RangeDetectorArrayModule4_TopLevel_rangeDetectors4|LessThan1~0 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_rangeDetectors4:RangeDetectorArrayModule4_TopLevel_rangeDetectors4|LessThan1~4 ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_rangeDetectors4:RangeDetectorArrayModule4_TopLevel_rangeDetectors4|LessThan1~4 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_rangeDetectors4:RangeDetectorArrayModule4_TopLevel_rangeDetectors4|LessThan1~5 ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_rangeDetectors4:RangeDetectorArrayModule4_TopLevel_rangeDetectors4|LessThan1~5 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|MSBIndex[1]~1               ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|MSBIndex[1]~1               ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|MSBIndex[1]~2               ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|MSBIndex[1]~2               ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~2                 ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~2                 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~12                ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~12                ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_rangeDetectors3:RangeDetectorArrayModule4_TopLevel_rangeDetectors3|LessThan1~0 ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_rangeDetectors3:RangeDetectorArrayModule4_TopLevel_rangeDetectors3|LessThan1~0 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~13                ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~13                ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~14                ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~14                ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~15                ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~15                ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~16                ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~16                ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|MSBIndex[0]~4               ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|MSBIndex[0]~4               ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|MSBIndex[1]~5               ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|MSBIndex[1]~5               ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|MSBIndex[1]~6               ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|MSBIndex[1]~6               ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|MSBIndex[1]~7               ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|MSBIndex[1]~7               ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|MSBIndex[1]~8               ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|MSBIndex[1]~8               ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|MSBIndex[2]~9               ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|MSBIndex[2]~9               ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|oActive                                                                                                           ; |RangeDetectorArrayModule4_TopLevel|oActive                                                                                                           ; padio            ;
-; |RangeDetectorArrayModule4_TopLevel|oIndex[0]                                                                                                         ; |RangeDetectorArrayModule4_TopLevel|oIndex[0]                                                                                                         ; padio            ;
-; |RangeDetectorArrayModule4_TopLevel|oIndex[1]                                                                                                         ; |RangeDetectorArrayModule4_TopLevel|oIndex[1]                                                                                                         ; padio            ;
-; |RangeDetectorArrayModule4_TopLevel|oIndex[2]                                                                                                         ; |RangeDetectorArrayModule4_TopLevel|oIndex[2]                                                                                                         ; padio            ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[28]                                                                                                      ; |RangeDetectorArrayModule4_TopLevel|iAddress[28]~corein                                                                                               ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[29]                                                                                                      ; |RangeDetectorArrayModule4_TopLevel|iAddress[29]~corein                                                                                               ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[30]                                                                                                      ; |RangeDetectorArrayModule4_TopLevel|iAddress[30]~corein                                                                                               ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[4]                                                                                                       ; |RangeDetectorArrayModule4_TopLevel|iAddress[4]~corein                                                                                                ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[1]                                                                                                       ; |RangeDetectorArrayModule4_TopLevel|iAddress[1]~corein                                                                                                ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[0]                                                                                                       ; |RangeDetectorArrayModule4_TopLevel|iAddress[0]~corein                                                                                                ; combout          ;
-+-------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                                                                      ;
++---------------------------------------------------------------+---------------------------------------------------------------+------------------+
+; Node Name                                                     ; Output Port Name                                              ; Output Port Type ;
++---------------------------------------------------------------+---------------------------------------------------------------+------------------+
+; |IOSingleBitMemoryModule_TopLevel|State_bit[0]                ; |IOSingleBitMemoryModule_TopLevel|State_bit[0]                ; regout           ;
+; |IOSingleBitMemoryModule_TopLevel|State_bitInternal[0]        ; |IOSingleBitMemoryModule_TopLevel|State_bitInternal[0]        ; regout           ;
+; |IOSingleBitMemoryModule_TopLevel|State_bit~0                 ; |IOSingleBitMemoryModule_TopLevel|State_bit~0                 ; combout          ;
+; |IOSingleBitMemoryModule_TopLevel|oBitState[0]                ; |IOSingleBitMemoryModule_TopLevel|oBitState[0]                ; padio            ;
+; |IOSingleBitMemoryModule_TopLevel|oBitStateInternal[0]        ; |IOSingleBitMemoryModule_TopLevel|oBitStateInternal[0]        ; padio            ;
+; |IOSingleBitMemoryModule_TopLevel|Clock                       ; |IOSingleBitMemoryModule_TopLevel|Clock~corein                ; combout          ;
+; |IOSingleBitMemoryModule_TopLevel|Clock~clkctrl               ; |IOSingleBitMemoryModule_TopLevel|Clock~clkctrl               ; outclk           ;
+; |IOSingleBitMemoryModule_TopLevel|State_bitInternal[0]~feeder ; |IOSingleBitMemoryModule_TopLevel|State_bitInternal[0]~feeder ; combout          ;
++---------------------------------------------------------------+---------------------------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 1 during simulation.
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Missing 1-Value Coverage                                                                                                                                                                                                                                                                                                         ;
-+-------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
-; Node Name                                                                                                                                             ; Output Port Name                                                                                                                                      ; Output Port Type ;
-+-------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_rangeDetectors6:RangeDetectorArrayModule4_TopLevel_rangeDetectors6|LessThan0~0 ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_rangeDetectors6:RangeDetectorArrayModule4_TopLevel_rangeDetectors6|LessThan0~0 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_rangeDetectors4:RangeDetectorArrayModule4_TopLevel_rangeDetectors4|LessThan1~1 ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_rangeDetectors4:RangeDetectorArrayModule4_TopLevel_rangeDetectors4|LessThan1~1 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_rangeDetectors4:RangeDetectorArrayModule4_TopLevel_rangeDetectors4|LessThan1~2 ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_rangeDetectors4:RangeDetectorArrayModule4_TopLevel_rangeDetectors4|LessThan1~2 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_rangeDetectors4:RangeDetectorArrayModule4_TopLevel_rangeDetectors4|LessThan1~3 ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_rangeDetectors4:RangeDetectorArrayModule4_TopLevel_rangeDetectors4|LessThan1~3 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_rangeDetectors4:RangeDetectorArrayModule4_TopLevel_rangeDetectors4|LessThan1~6 ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_rangeDetectors4:RangeDetectorArrayModule4_TopLevel_rangeDetectors4|LessThan1~6 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~0                 ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~0                 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~1                 ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~1                 ; combout          ;
-+-------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
++--------------------------------------------------------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                                                                 ;
++---------------------------------------------------+---------------------------------------------------+------------------+
+; Node Name                                         ; Output Port Name                                  ; Output Port Type ;
++---------------------------------------------------+---------------------------------------------------+------------------+
+; |IOSingleBitMemoryModule_TopLevel|oBit[0]         ; |IOSingleBitMemoryModule_TopLevel|oBit[0]         ; padio            ;
+; |IOSingleBitMemoryModule_TopLevel|oBit0           ; |IOSingleBitMemoryModule_TopLevel|oBit0           ; padio            ;
+; |IOSingleBitMemoryModule_TopLevel|oBitInternal[0] ; |IOSingleBitMemoryModule_TopLevel|oBitInternal[0] ; padio            ;
+; |IOSingleBitMemoryModule_TopLevel|iBit[0]         ; |IOSingleBitMemoryModule_TopLevel|iBit[0]~corein  ; combout          ;
+; |IOSingleBitMemoryModule_TopLevel|Reset           ; |IOSingleBitMemoryModule_TopLevel|Reset~corein    ; combout          ;
++---------------------------------------------------+---------------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 0 during simulation.
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Missing 0-Value Coverage                                                                                                                                                                                                                                                                             ;
-+-----------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+------------------+
-; Node Name                                                                                                                               ; Output Port Name                                                                                                                        ; Output Port Type ;
-+-----------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+------------------+
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~3   ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~3   ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~4   ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~4   ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~5   ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~5   ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~6   ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~6   ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~7   ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~7   ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~8   ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~8   ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~9   ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~9   ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~10  ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~10  ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~11  ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|HasActive~11  ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|MSBIndex[2]~3 ; |RangeDetectorArrayModule4_TopLevel|RangeDetectorArrayModule4_TopLevel_encoder:RangeDetectorArrayModule4_TopLevel_encoder|MSBIndex[2]~3 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[24]                                                                                        ; |RangeDetectorArrayModule4_TopLevel|iAddress[24]~corein                                                                                 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[25]                                                                                        ; |RangeDetectorArrayModule4_TopLevel|iAddress[25]~corein                                                                                 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[26]                                                                                        ; |RangeDetectorArrayModule4_TopLevel|iAddress[26]~corein                                                                                 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[27]                                                                                        ; |RangeDetectorArrayModule4_TopLevel|iAddress[27]~corein                                                                                 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[31]                                                                                        ; |RangeDetectorArrayModule4_TopLevel|iAddress[31]~corein                                                                                 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[5]                                                                                         ; |RangeDetectorArrayModule4_TopLevel|iAddress[5]~corein                                                                                  ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[6]                                                                                         ; |RangeDetectorArrayModule4_TopLevel|iAddress[6]~corein                                                                                  ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[7]                                                                                         ; |RangeDetectorArrayModule4_TopLevel|iAddress[7]~corein                                                                                  ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[8]                                                                                         ; |RangeDetectorArrayModule4_TopLevel|iAddress[8]~corein                                                                                  ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[9]                                                                                         ; |RangeDetectorArrayModule4_TopLevel|iAddress[9]~corein                                                                                  ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[10]                                                                                        ; |RangeDetectorArrayModule4_TopLevel|iAddress[10]~corein                                                                                 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[11]                                                                                        ; |RangeDetectorArrayModule4_TopLevel|iAddress[11]~corein                                                                                 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[12]                                                                                        ; |RangeDetectorArrayModule4_TopLevel|iAddress[12]~corein                                                                                 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[13]                                                                                        ; |RangeDetectorArrayModule4_TopLevel|iAddress[13]~corein                                                                                 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[14]                                                                                        ; |RangeDetectorArrayModule4_TopLevel|iAddress[14]~corein                                                                                 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[15]                                                                                        ; |RangeDetectorArrayModule4_TopLevel|iAddress[15]~corein                                                                                 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[16]                                                                                        ; |RangeDetectorArrayModule4_TopLevel|iAddress[16]~corein                                                                                 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[17]                                                                                        ; |RangeDetectorArrayModule4_TopLevel|iAddress[17]~corein                                                                                 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[18]                                                                                        ; |RangeDetectorArrayModule4_TopLevel|iAddress[18]~corein                                                                                 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[19]                                                                                        ; |RangeDetectorArrayModule4_TopLevel|iAddress[19]~corein                                                                                 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[2]                                                                                         ; |RangeDetectorArrayModule4_TopLevel|iAddress[2]~corein                                                                                  ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[3]                                                                                         ; |RangeDetectorArrayModule4_TopLevel|iAddress[3]~corein                                                                                  ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[20]                                                                                        ; |RangeDetectorArrayModule4_TopLevel|iAddress[20]~corein                                                                                 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[21]                                                                                        ; |RangeDetectorArrayModule4_TopLevel|iAddress[21]~corein                                                                                 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[22]                                                                                        ; |RangeDetectorArrayModule4_TopLevel|iAddress[22]~corein                                                                                 ; combout          ;
-; |RangeDetectorArrayModule4_TopLevel|iAddress[23]                                                                                        ; |RangeDetectorArrayModule4_TopLevel|iAddress[23]~corein                                                                                 ; combout          ;
-+-----------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+------------------+
++-------------------------------------------------+
+; Missing 0-Value Coverage                        ;
++-----------+------------------+------------------+
+; Node Name ; Output Port Name ; Output Port Type ;
++-----------+------------------+------------------+
 
 
 +---------------------+
@@ -230,21 +170,21 @@ Info: Running Quartus II Simulator
     Info: programming logic devices manufactured by Altera and sold by 
     Info: Altera or its authorized distributors.  Please refer to the 
     Info: applicable agreement for further details.
-    Info: Processing started: Sat Dec 09 18:11:46 2023
+    Info: Processing started: Thu Jan 04 20:31:47 2024
 Info: Command: quartus_sim C:\code\qusoc\rtl\rtl.hdl\VHDL.qpf --read_settings_files=on --write_settings_files=off -c VHDL
-Info: Using vector source file "Waveforms/RangeDetectorArrayModule4.vwf"
+Info: Using vector source file "Waveforms/IOSingleBitMemoryModule.vwf"
 Info: Overwriting simulation input file with simulation results
-    Info: A backup of RangeDetectorArrayModule4.vwf called VHDL.sim_ori.vwf has been created in the db folder
+    Info: A backup of IOSingleBitMemoryModule.vwf called VHDL.sim_ori.vwf has been created in the db folder
 Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
     Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
 Info: Simulation partitioned into 1 sub-simulations
-Info: Simulation coverage is      40.28 %
-Info: Number of transitions in simulation is 203
-Info: Vector file RangeDetectorArrayModule4.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
+Info: Simulation coverage is      61.54 %
+Info: Number of transitions in simulation is 215
+Info: Vector file IOSingleBitMemoryModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
 Info: Quartus II Simulator was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 161 megabytes
-    Info: Processing ended: Sat Dec 09 18:11:49 2023
-    Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:11
+    Info: Processing ended: Thu Jan 04 20:31:49 2024
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:04
 
 

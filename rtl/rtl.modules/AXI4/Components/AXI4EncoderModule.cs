@@ -56,6 +56,6 @@ namespace rtl.modules
 
         public bool HasActive => internalHasActive;
         public RTLBitArray MSBIndex => internalEncoded;
-        public RTLBitArray MSBValue => new RTLBitArray(internalHasActive).ShiftLeft(internalEncoded).Resized(inputWidth);
+        public RTLBitArray MSBValue => new RTLBitArray(internalHasActive).ShiftLeft(internalEncoded).Resized(inputWidth);//dbg
     }
 }

@@ -91,15 +91,15 @@ module AXI4ReadInteconnectModule_1x2_TopLevel
 	wire [7: 0] muxRightData_R_RUSER;
 	wire muxRightData_R_RVALID;
 	wire restartTransactions;
-	wire DuplexMux_iLeftAddr;
+	wire [0: 0] DuplexMux_iLeftAddr;
 	wire DuplexMux_iLeftAddrValid;
-	wire DuplexMux_iRightAddr;
+	wire [0: 0] DuplexMux_iRightAddr;
 	wire DuplexMux_iRightAddrValid;
 	wire [83: 0] DuplexMux_oMuxLeftData;
 	wire [52: 0] DuplexMux_oMuxRightData;
 	wire Encoder_HasActive;
-	wire Encoder_MSBIndex;
-	wire Encoder_MSBValue;
+	wire [0: 0] Encoder_MSBIndex;
+	wire [0: 0] Encoder_MSBValue;
 	wire TransactionDetectors0_iRestart;
 	wire TransactionDetectors0_iTXBegin;
 	wire TransactionDetectors0_iTXEnd;
@@ -107,7 +107,7 @@ module AXI4ReadInteconnectModule_1x2_TopLevel
 	wire TransactionDetectors0_oWaitForRestart;
 	wire [31: 0] rangeDetectorArray_iAddress;
 	wire rangeDetectorArray_oActive;
-	wire rangeDetectorArray_oIndex;
+	wire [0: 0] rangeDetectorArray_oIndex;
 	reg InterconnectModule_L76F13L85T14_hasTransaction;
 	integer idx;
 	wire InterconnectModule_L93F13L96T14_0_InterconnectModule_L95F75T101_Index;
@@ -232,7 +232,7 @@ module AXI4ReadInteconnectModule_1x2_TopLevel
 		InterconnectModule_L76F13L85T14_hasTransaction = InterconnectModule_L76F13L85T14_InterconnectModule_L77F39T44_Expr;
 		for (idx = 0; (idx < 1); idx = (idx + 1))
 		begin
-			InterconnectModule_L76F13L85T14_hasTransaction = (InterconnectModule_L76F13L85T14_hasTransaction | ActiveTransactions[0]);
+			//InterconnectModule_L76F13L85T14_hasTransaction = (InterconnectModule_L76F13L85T14_hasTransaction | ActiveTransactions);
 		end
 	end
 	assign InterconnectModule_L76F13L85T14_InterconnectModule_L84F24T39_Expr_1 = InterconnectModule_L76F13L85T14_hasTransaction;
@@ -307,7 +307,7 @@ module AXI4ReadInteconnectModule_1x2_TopLevel
 	assign WaitForRestarts[0] = TransactionDetectors0_oWaitForRestart;
 	assign TXBegin[0] = InterconnectModule_L93F13L96T14_0_InterconnectModule_L95F38T101_Expr[0];
 	assign TransactionDetectors0_iRestart = InterconnectModule_L98F13L108T14_0_InterconnectModule_L105F36T54_Expr;
-	assign TransactionDetectors0_iTXBegin = Encoder_MSBValue;
+	assign TransactionDetectors0_iTXBegin = Encoder_MSBValue[0];
 	assign TransactionDetectors0_iTXEnd = InterconnectModule_L98F13L108T14_0_InterconnectModule_L104F34T64_AXI4ReadInteconnectModule_L33F61T101_Expr[0];
 	assign Encoder_iValues[0] = TXBegin[0];
 	assign DuplexMux_iLeft[0] = Inputs_iLeft[0];

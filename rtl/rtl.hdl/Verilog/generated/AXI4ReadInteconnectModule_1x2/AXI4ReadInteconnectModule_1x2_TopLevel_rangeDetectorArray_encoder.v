@@ -26,7 +26,7 @@ module AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_encoder
 	input wire iValues0,
 	input wire iValues1,
 	output wire HasActive,
-	output wire MSBIndex,
+	output wire [0:0] MSBIndex,
 	output wire [1:0] MSBValue
 );
 	// [BEGIN USER SIGNALS]
@@ -41,12 +41,12 @@ module AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_encoder
 	wire resultWidth = 1'b1;
 	wire AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F46T51_Expr = 1'b0;
 	wire AXI4EncoderModule_L45F13L54T14_AXI4EncoderModule_L46F31T36_Expr = 1'b0;
-	wire internalEncoded;
+	wire [0: 0] internalEncoded;
 	wire internalHasActive;
-	wire AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize;
+	wire [0: 0] AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize;
 	reg AXI4EncoderModule_L30F13L39T14_result;
 	integer idx;
-	wire AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize;
+	wire [0: 0] AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize;
 	reg AXI4EncoderModule_L45F13L54T14_result;
 	integer idx1;
 	wire [1: 0] AXI4EncoderModule_L59F40T101_ShiftLeft;

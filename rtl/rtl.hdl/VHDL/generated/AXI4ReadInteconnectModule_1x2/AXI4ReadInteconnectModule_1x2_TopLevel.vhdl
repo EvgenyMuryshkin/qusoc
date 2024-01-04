@@ -96,15 +96,15 @@ architecture rtl of AXI4ReadInteconnectModule_1x2_TopLevel is
 	signal muxRightData_R_RUSER : unsigned(7 downto 0) := (others => '0');
 	signal muxRightData_R_RVALID : std_logic := '0';
 	signal restartTransactions : std_logic := '0';
-	signal DuplexMux_iLeftAddr : std_logic := '0';
+	signal DuplexMux_iLeftAddr : unsigned(0 downto 0) := (others => '0');
 	signal DuplexMux_iLeftAddrValid : std_logic := '0';
-	signal DuplexMux_iRightAddr : std_logic := '0';
+	signal DuplexMux_iRightAddr : unsigned(0 downto 0) := (others => '0');
 	signal DuplexMux_iRightAddrValid : std_logic := '0';
 	signal DuplexMux_oMuxLeftData : unsigned(83 downto 0) := (others => '0');
 	signal DuplexMux_oMuxRightData : unsigned(52 downto 0) := (others => '0');
 	signal Encoder_HasActive : std_logic := '0';
-	signal Encoder_MSBIndex : std_logic := '0';
-	signal Encoder_MSBValue : std_logic := '0';
+	signal Encoder_MSBIndex : unsigned(0 downto 0) := (others => '0');
+	signal Encoder_MSBValue : unsigned(0 downto 0) := (others => '0');
 	signal TransactionDetectors0_iRestart : std_logic := '0';
 	signal TransactionDetectors0_iTXBegin : std_logic := '0';
 	signal TransactionDetectors0_iTXEnd : std_logic := '0';
@@ -112,7 +112,7 @@ architecture rtl of AXI4ReadInteconnectModule_1x2_TopLevel is
 	signal TransactionDetectors0_oWaitForRestart : std_logic := '0';
 	signal rangeDetectorArray_iAddress : unsigned(31 downto 0) := (others => '0');
 	signal rangeDetectorArray_oActive : std_logic := '0';
-	signal rangeDetectorArray_oIndex : std_logic := '0';
+	signal rangeDetectorArray_oIndex : unsigned(0 downto 0) := (others => '0');
 	signal InterconnectModule_L76F13L85T14_hasTransaction : std_logic := '0';
 	signal InterconnectModule_L93F13L96T14_0_InterconnectModule_L95F75T101_Index : std_logic := '0';
 	signal DuplexMux_iLeft0_DuplexMux_iLeft_HardLink : unsigned(83 downto 0) := "000000000000000000000000000000000000000000000000000000000000000000000000000000000000";

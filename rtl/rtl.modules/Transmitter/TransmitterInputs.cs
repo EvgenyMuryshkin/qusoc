@@ -11,8 +11,8 @@ namespace RTL.Modules
     {
         public TransmitterInputs() { }
 
-        public RTLBitArray Trigger = false;
-        public RTLBitArray Ack = false;
+        public bool Trigger = false;
+        public bool Ack = false;
         public RTLBitArray Data = byte.MinValue;
     }
 }

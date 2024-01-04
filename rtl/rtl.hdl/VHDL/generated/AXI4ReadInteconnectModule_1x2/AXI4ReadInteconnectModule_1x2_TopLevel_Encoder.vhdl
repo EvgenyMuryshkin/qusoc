@@ -26,8 +26,8 @@ entity AXI4ReadInteconnectModule_1x2_TopLevel_Encoder is
 		-- [END USER PORTS]
 		iValues0 : in std_logic;
 		HasActive : out std_logic;
-		MSBIndex : out std_logic;
-		MSBValue : out std_logic
+		MSBIndex : out unsigned (0 downto 0);
+		MSBValue : out unsigned (0 downto 0)
 	);
 end entity;
 -- FSM summary
@@ -45,22 +45,22 @@ architecture rtl of AXI4ReadInteconnectModule_1x2_TopLevel_Encoder is
 	constant resultWidth : std_logic := '1';
 	constant AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F46T51_Expr : std_logic := '0';
 	constant AXI4EncoderModule_L45F13L54T14_AXI4EncoderModule_L46F31T36_Expr : std_logic := '0';
-	signal internalEncoded : std_logic := '0';
+	signal internalEncoded : unsigned(0 downto 0) := (others => '0');
 	signal internalHasActive : std_logic := '0';
-	signal AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize : std_logic := '0';
+	signal AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize : unsigned(0 downto 0) := (others => '0');
 	signal AXI4EncoderModule_L30F13L39T14_result : std_logic := '0';
-	signal AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize : std_logic := '0';
+	signal AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize : unsigned(0 downto 0) := (others => '0');
 	signal AXI4EncoderModule_L45F13L54T14_result : std_logic := '0';
-	signal AXI4EncoderModule_L59F40T101_ShiftLeft : std_logic := '0';
-	signal AXI4EncoderModule_L59F40T121_Resize : std_logic := '0';
-	signal AXI4EncoderModule_L59F40T101_Expr : std_logic := '0';
-	signal AXI4EncoderModule_L59F40T101_Expr_1 : std_logic := '0';
+	signal AXI4EncoderModule_L59F40T101_ShiftLeft : unsigned(0 downto 0) := (others => '0');
+	signal AXI4EncoderModule_L59F40T121_Resize : unsigned(0 downto 0) := (others => '0');
+	signal AXI4EncoderModule_L59F40T101_Expr : unsigned(0 downto 0) := "0";
+	signal AXI4EncoderModule_L59F40T101_Expr_1 : unsigned(0 downto 0) := "0";
 	type Inputs_iValuesArray is array (0 to 0) of std_logic;
 	signal Inputs_iValues : Inputs_iValuesArray := (others => '0');
 begin
 	process (AXI4EncoderModule_L59F40T101_Expr_1, internalEncoded)
 	begin
-		AXI4EncoderModule_L59F40T101_Expr <= shift_left(AXI4EncoderModule_L59F40T101_Expr_1, bit_to_integer(internalEncoded));
+		AXI4EncoderModule_L59F40T101_Expr <= shift_left(AXI4EncoderModule_L59F40T101_Expr_1, TO_INTEGER(internalEncoded));
 	end process;
 	process (AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize, Inputs_iValues)
 		variable tmp0 : std_logic;

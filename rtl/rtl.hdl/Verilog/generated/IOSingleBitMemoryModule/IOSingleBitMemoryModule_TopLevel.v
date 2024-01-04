@@ -25,11 +25,12 @@ module IOSingleBitMemoryModule_TopLevel
 	// [END USER PORTS]
 	input wire Clock,
 	input wire Reset,
-	input wire [0: 0] iBit,
-	output wire [0: 0] oBit,
-	output wire [0: 0] oBitInternal,
-	output wire [0: 0] oBitState,
-	output wire [0: 0] oBitStateInternal
+	input wire [0:0] iBit,
+	output wire [0:0] oBit,
+	output wire oBit0,
+	output wire [0:0] oBitInternal,
+	output wire [0:0] oBitState,
+	output wire [0:0] oBitStateInternal
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -39,14 +40,14 @@ module IOSingleBitMemoryModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire Inputs_iBit;
-	reg NextState_bit;
-	reg NextState_bitInternal;
-	wire bit;
-	reg State_bit = 1'b0;
-	wire State_bitDefault = 1'b0;
-	reg State_bitInternal = 1'b0;
-	wire State_bitInternalDefault = 1'b0;
+	wire [0: 0] Inputs_iBit;
+	reg [0: 0] NextState_bit;
+	reg [0: 0] NextState_bitInternal;
+	wire [0: 0] bit;
+	reg [0: 0] State_bit = 1'b0;
+	wire [0: 0] State_bitDefault = 1'b0;
+	reg [0: 0] State_bitInternal = 1'b0;
+	wire [0: 0] State_bitInternalDefault = 1'b0;
 	always @ (posedge Clock)
 	begin
 		if ((Reset == 1))
@@ -70,6 +71,7 @@ module IOSingleBitMemoryModule_TopLevel
 	assign Inputs_iBit = iBit;
 	assign bit = Inputs_iBit;
 	assign oBit = Inputs_iBit;
+	assign oBit0 = Inputs_iBit[0];
 	assign oBitInternal = bit;
 	assign oBitState = State_bit;
 	assign oBitStateInternal = State_bitInternal;

@@ -61,7 +61,7 @@ set_global_assignment -name AUTO_SHIFT_REGISTER_RECOGNITION OFF
 
 set_global_assignment -name SDC_FILE rtl.sdc
 
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/RangeDetectorArrayModule4.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/IOSingleBitMemoryModule.vwf
 
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
@@ -69,6 +69,7 @@ set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
 set_instance_assignment -name CLOCK_SETTINGS Clock -to Clock
 
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 
 set_global_assignment -name VERILOG_FILE Verilog/generated/AndGateModule/AndGateModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AndGateModule.vwf
@@ -110,14 +111,6 @@ set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4NonBufferedSlaveM
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4NonBufferedSlaveModuleB4.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4PassThroughModule/AXI4PassThroughModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4RangeDetectorModuleB4.vwf
-set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel_DuplexMux.v
-set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel_Encoder.v
-set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_encoder.v
-set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_rangeDetectors0.v
-set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_rangeDetectors1.v
-set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray.v
-set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel_TransactionDetectors0.v
-set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4RegisterModuleB4_ConcurrentWrite.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4RegisterModuleB4_Read.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4RegisterModuleB4/AXI4RegisterModuleB4_TopLevel_axiSlave.v
@@ -211,6 +204,7 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IntDividerPipelineMod
 set_global_assignment -name VERILOG_FILE Verilog/generated/IONativeModule/IONativeModule_TopLevel.v
 set_global_assignment -name VERILOG_FILE Verilog/generated/IOObjectModule/IOObjectModule_TopLevel.v
 set_global_assignment -name VERILOG_FILE Verilog/generated/IOSingleBitMemoryModule/IOSingleBitMemoryModule_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IOSingleBitMemoryModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/IOTestModule/IOTestModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IOTestModule.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IOTupleDelay1Clock.vwf
@@ -398,5 +392,3 @@ set_global_assignment -name VERILOG_FILE Verilog/generated/XorGateModule/XorGate
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/XorGateModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/YandexTestModule/YandexTestModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/YandexTestModule.vwf
-
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

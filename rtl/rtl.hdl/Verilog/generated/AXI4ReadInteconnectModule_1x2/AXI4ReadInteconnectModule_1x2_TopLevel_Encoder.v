@@ -25,8 +25,8 @@ module AXI4ReadInteconnectModule_1x2_TopLevel_Encoder
 	// [END USER PORTS]
 	input wire iValues0,
 	output wire HasActive,
-	output wire MSBIndex,
-	output wire MSBValue
+	output wire [0:0] MSBIndex,
+	output wire [0:0] MSBValue
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -40,18 +40,18 @@ module AXI4ReadInteconnectModule_1x2_TopLevel_Encoder
 	wire resultWidth = 1'b1;
 	wire AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F46T51_Expr = 1'b0;
 	wire AXI4EncoderModule_L45F13L54T14_AXI4EncoderModule_L46F31T36_Expr = 1'b0;
-	wire internalEncoded;
+	wire [0: 0] internalEncoded;
 	wire internalHasActive;
-	wire AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize;
+	wire [0: 0] AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize;
 	reg AXI4EncoderModule_L30F13L39T14_result;
 	integer idx;
-	wire AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize;
+	wire [0: 0] AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize;
 	reg AXI4EncoderModule_L45F13L54T14_result;
 	integer idx1;
-	wire AXI4EncoderModule_L59F40T101_ShiftLeft;
-	wire AXI4EncoderModule_L59F40T121_Resize;
-	wire AXI4EncoderModule_L59F40T101_Expr;
-	wire AXI4EncoderModule_L59F40T101_Expr_1;
+	wire [0: 0] AXI4EncoderModule_L59F40T101_ShiftLeft;
+	wire [0: 0] AXI4EncoderModule_L59F40T121_Resize;
+	wire [0: 0] AXI4EncoderModule_L59F40T101_Expr;
+	wire [0: 0] AXI4EncoderModule_L59F40T101_Expr_1;
 	wire Inputs_iValues [0 : 0];
 	assign AXI4EncoderModule_L59F40T101_Expr = (AXI4EncoderModule_L59F40T101_Expr_1 << internalEncoded);
 	always @ (*)

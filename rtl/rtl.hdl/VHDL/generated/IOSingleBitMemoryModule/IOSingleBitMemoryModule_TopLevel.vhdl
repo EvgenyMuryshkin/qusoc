@@ -26,11 +26,12 @@ entity IOSingleBitMemoryModule_TopLevel is
 		-- [END USER PORTS]
 		Clock : in std_logic;
 		Reset : in std_logic;
-		iBit : in std_logic_vector (0 downto 0);
-		oBit : out std_logic_vector (0 downto 0);
-		oBitInternal : out std_logic_vector (0 downto 0);
-		oBitState : out std_logic_vector (0 downto 0);
-		oBitStateInternal : out std_logic_vector (0 downto 0)
+		iBit : in unsigned (0 downto 0);
+		oBit : out unsigned (0 downto 0);
+		oBit0 : out std_logic;
+		oBitInternal : out unsigned (0 downto 0);
+		oBitState : out unsigned (0 downto 0);
+		oBitStateInternal : out unsigned (0 downto 0)
 	);
 end entity;
 -- FSM summary
@@ -44,14 +45,14 @@ architecture rtl of IOSingleBitMemoryModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_iBit : std_logic := '0';
-	signal NextState_bit : std_logic := '0';
-	signal NextState_bitInternal : std_logic := '0';
-	signal bit : std_logic := '0';
-	signal State_bit : std_logic := '0';
-	constant State_bitDefault : std_logic := '0';
-	signal State_bitInternal : std_logic := '0';
-	constant State_bitInternalDefault : std_logic := '0';
+	signal Inputs_iBit : unsigned(0 downto 0) := (others => '0');
+	signal NextState_bit : unsigned(0 downto 0) := (others => '0');
+	signal NextState_bitInternal : unsigned(0 downto 0) := (others => '0');
+	signal bit : unsigned(0 downto 0) := (others => '0');
+	signal State_bit : unsigned(0 downto 0) := "0";
+	constant State_bitDefault : unsigned(0 downto 0) := "0";
+	signal State_bitInternal : unsigned(0 downto 0) := "0";
+	constant State_bitInternalDefault : unsigned(0 downto 0) := "0";
 begin
 	process (Clock, NextState_bit, NextState_bitInternal, Reset)
 	begin
@@ -77,6 +78,7 @@ begin
 		Inputs_iBit <= iBit;
 		bit <= Inputs_iBit;
 		oBit <= Inputs_iBit;
+		oBit0 <= Inputs_iBit(0);
 		oBitInternal <= bit;
 		oBitState <= State_bit;
 		oBitStateInternal <= State_bitInternal;

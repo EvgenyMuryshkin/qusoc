@@ -45,20 +45,20 @@ architecture rtl of CompositionModule_TopLevel_Transmitter is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L16F22T41_Expr : std_logic := '0';
+	constant TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L16F22T41_Expr : unsigned(1 downto 0) := "00";
 	constant TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L18F21L22T22_TransmitterModule_L19F45T46_Expr : std_logic := '0';
-	constant TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L18F21L22T22_TransmitterModule_L21F41T68_Expr : std_logic := '1';
-	constant TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L24F22T49_Expr : std_logic := '1';
+	constant TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L18F21L22T22_TransmitterModule_L21F41T68_Expr : unsigned(1 downto 0) := "01";
+	constant TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L24F22T49_Expr : unsigned(1 downto 0) := "01";
 	constant TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L25F42T43_Expr : unsigned(2 downto 0) := "111";
 	constant TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L26F21L28T22_TransmitterModule_L27F41T69_Expr : unsigned(1 downto 0) := "10";
 	constant TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F68T69_Expr : std_logic := '1';
 	constant TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L33F52T53_Expr : std_logic := '1';
 	constant TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L35F22T50_Expr : unsigned(1 downto 0) := "10";
-	constant TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L37F41T60_Expr : std_logic := '0';
-	constant TransmitterModule_L9F46T65_Expr : std_logic := '0';
-	constant TransmitterModule_L11F59T78_Expr : std_logic := '0';
-	constant TransmitterModule_L11F99T126_Expr : std_logic := '1';
-	constant TransmitterModule_L10F52T79_Expr : std_logic := '1';
+	constant TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L37F41T60_Expr : unsigned(1 downto 0) := "00";
+	constant TransmitterModule_L9F46T65_Expr : unsigned(1 downto 0) := "00";
+	constant TransmitterModule_L11F59T78_Expr : unsigned(1 downto 0) := "00";
+	constant TransmitterModule_L11F99T126_Expr : unsigned(1 downto 0) := "01";
+	constant TransmitterModule_L10F52T79_Expr : unsigned(1 downto 0) := "01";
 	signal Inputs_Ack : std_logic := '0';
 	signal Inputs_Data : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_Trigger : std_logic := '0';
@@ -159,8 +159,7 @@ begin
 				NextState_Counter(7 downto 1) <= (others => '0');
 				NextState_Counter(0) <= TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L18F21L22T22_TransmitterModule_L19F45T46_Expr;
 				NextState_Data <= Inputs_Data;
-				NextState_FSM(1) <= '0';
-				NextState_FSM(0) <= TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L18F21L22T22_TransmitterModule_L21F41T68_Expr;
+				NextState_FSM <= TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L18F21L22T22_TransmitterModule_L21F41T68_Expr;
 			end if;
 		elsif TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L24F17L34T27_Case = '1' then
 			if TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L25F25T43_Expr = '1' then
@@ -171,8 +170,7 @@ begin
 			NextState_Data <= TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L33F38T53_Expr;
 		elsif TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L35F17L38T27_Case = '1' then
 			if Inputs_Ack = '1' then
-				NextState_FSM(1) <= '0';
-				NextState_FSM(0) <= TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L37F41T60_Expr;
+				NextState_FSM <= TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L37F41T60_Expr;
 			end if;
 		end if;
 	end process;
@@ -180,12 +178,12 @@ begin
 	begin
 		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L16F17L23T27_CaseLhs(2) <= '0';
 		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L16F17L23T27_CaseLhs(1 downto 0) <= signed(State_FSM);
-		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L16F17L23T27_CaseRhs(2 downto 1) <= (others => '0');
-		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L16F17L23T27_CaseRhs(0) <= TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L16F22T41_Expr;
+		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L16F17L23T27_CaseRhs(2) <= '0';
+		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L16F17L23T27_CaseRhs(1 downto 0) <= signed(TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L16F22T41_Expr);
 		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L24F17L34T27_CaseLhs(2) <= '0';
 		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L24F17L34T27_CaseLhs(1 downto 0) <= signed(State_FSM);
-		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L24F17L34T27_CaseRhs(2 downto 1) <= (others => '0');
-		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L24F17L34T27_CaseRhs(0) <= TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L24F22T49_Expr;
+		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L24F17L34T27_CaseRhs(2) <= '0';
+		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L24F17L34T27_CaseRhs(1 downto 0) <= signed(TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L24F22T49_Expr);
 		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L25F25T43_ExprLhs(8) <= '0';
 		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L25F25T43_ExprLhs(7 downto 0) <= signed(State_Counter);
 		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L25F25T43_ExprRhs(8 downto 3) <= (others => '0');
@@ -196,20 +194,20 @@ begin
 		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L35F17L38T27_CaseRhs(1 downto 0) <= signed(TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L35F22T50_Expr);
 		TransmitterModule_L9F32T65_ExprLhs(2) <= '0';
 		TransmitterModule_L9F32T65_ExprLhs(1 downto 0) <= signed(State_FSM);
-		TransmitterModule_L9F32T65_ExprRhs(2 downto 1) <= (others => '0');
-		TransmitterModule_L9F32T65_ExprRhs(0) <= TransmitterModule_L9F46T65_Expr;
+		TransmitterModule_L9F32T65_ExprRhs(2) <= '0';
+		TransmitterModule_L9F32T65_ExprRhs(1 downto 0) <= signed(TransmitterModule_L9F46T65_Expr);
 		TransmitterModule_L11F46T78_ExprLhs(2) <= '0';
 		TransmitterModule_L11F46T78_ExprLhs(1 downto 0) <= signed(State_FSM);
-		TransmitterModule_L11F46T78_ExprRhs(2 downto 1) <= (others => '0');
-		TransmitterModule_L11F46T78_ExprRhs(0) <= TransmitterModule_L11F59T78_Expr;
+		TransmitterModule_L11F46T78_ExprRhs(2) <= '0';
+		TransmitterModule_L11F46T78_ExprRhs(1 downto 0) <= signed(TransmitterModule_L11F59T78_Expr);
 		TransmitterModule_L11F82T126_ExprLhs(2) <= '0';
 		TransmitterModule_L11F82T126_ExprLhs(1 downto 0) <= signed(NextState_FSM);
-		TransmitterModule_L11F82T126_ExprRhs(2 downto 1) <= (others => '0');
-		TransmitterModule_L11F82T126_ExprRhs(0) <= TransmitterModule_L11F99T126_Expr;
+		TransmitterModule_L11F82T126_ExprRhs(2) <= '0';
+		TransmitterModule_L11F82T126_ExprRhs(1 downto 0) <= signed(TransmitterModule_L11F99T126_Expr);
 		TransmitterModule_L10F39T79_ExprLhs(2) <= '0';
 		TransmitterModule_L10F39T79_ExprLhs(1 downto 0) <= signed(State_FSM);
-		TransmitterModule_L10F39T79_ExprRhs(2 downto 1) <= (others => '0');
-		TransmitterModule_L10F39T79_ExprRhs(0) <= TransmitterModule_L10F52T79_Expr;
+		TransmitterModule_L10F39T79_ExprRhs(2) <= '0';
+		TransmitterModule_L10F39T79_ExprRhs(1 downto 0) <= signed(TransmitterModule_L10F52T79_Expr);
 		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L33F38T53_Expr_1 <= State_Data;
 		TransmitterModule_L11F46T126_Expr_1 <= TransmitterModule_L11F46T78_Expr;
 		TransmitterModule_L11F46T126_Expr_2 <= TransmitterModule_L11F82T126_Expr;

@@ -81,7 +81,7 @@ namespace fir.modules
             declarations.WithDefaultSignal(
                 vhdNetType.Signal, 
                 "tmp", 
-                new vhdDefaultDataType(vhdDataType.StdLogic, vhdSignalType.Auto),
+                vhdDataType.StdLogicVector,
                 16, 
                 "(others => '0')"
             );

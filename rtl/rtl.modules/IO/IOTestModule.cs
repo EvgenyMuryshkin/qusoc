@@ -6,7 +6,7 @@ namespace RTL.Modules
     public class IOTestModuleInputs
     {
         public IOTestModuleInputs() { }
-        public IOTestModuleInputs(int size) { InArray = new byte[size]; }
+        public IOTestModuleInputs(uint size) { InArray = new byte[size]; }
 
         public bool InFlag { get; set; }
         public byte[] InArray { get; set; } = null;
@@ -15,7 +15,7 @@ namespace RTL.Modules
     public class IOTestModuleState
     {
         public IOTestModuleState() { }
-        public IOTestModuleState(int size)
+        public IOTestModuleState(uint size)
         {
             Array = new byte[size];
             IteratorArray = new byte[size];
@@ -41,7 +41,7 @@ namespace RTL.Modules
 
     public class IOTestModule : RTLSynchronousModule<IOTestModuleInputs, IOTestModuleState>
     {
-        readonly int size;
+        readonly uint size;
         public IOTestModule()
         {
             size = 2;
@@ -106,6 +106,7 @@ namespace RTL.Modules
 
         public RTLBitArray oBitInternal => bit;
         public RTLBitArray oBit => Inputs.iBit;
+        public bool oBit0 => Inputs.iBit[0];
 
         public RTLBitArray oBitState => State.bit;
         public RTLBitArray oBitStateInternal => State.bitInternal;

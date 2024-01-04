@@ -48,14 +48,14 @@ architecture rtl of TuplesModule_TopLevel is
 	signal TuplesModule_L16F13L21T14_same : std_logic := '0';
 	signal TuplesModule_L16F13L21T14_diff : std_logic := '0';
 	signal TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_Expr : std_logic := '0';
-	signal TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprLhs : signed(1 downto 0) := "00";
-	signal TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprRhs : signed(1 downto 0) := "00";
+	signal TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprLhs : std_logic := '0';
+	signal TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprRhs : std_logic := '0';
 	signal TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_Expr : std_logic := '0';
-	signal TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprLhs : signed(1 downto 0) := "00";
-	signal TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprRhs : signed(1 downto 0) := "00";
+	signal TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprLhs : std_logic := '0';
+	signal TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprRhs : std_logic := '0';
 begin
-	TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_Expr <= '1' when (signed(resize(TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprLhs, TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprLhs'length + 1)) = signed(resize(TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprRhs, TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprRhs'length + 1))) else '0';
-	TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_Expr <= '1' when (signed(resize(TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprLhs, TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprLhs'length + 1)) /= signed(resize(TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprRhs, TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprRhs'length + 1))) else '0';
+	TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_Expr <= '1' when (TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprLhs = TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprRhs) else '0';
+	TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_Expr <= '1' when (TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprLhs /= TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprRhs) else '0';
 	process (TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_Expr, TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_Expr)
 	begin
 		TuplesModule_L16F13L21T14_same <= TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_Expr;
@@ -63,14 +63,10 @@ begin
 	end process;
 	process (Inputs_Value1, Inputs_Value2, Logic_Item1, Logic_Item2, TuplesModule_L16F13L21T14_diff, TuplesModule_L16F13L21T14_same, Value1, Value2)
 	begin
-		TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprLhs(1) <= '0';
-		TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprLhs(0) <= Inputs_Value1;
-		TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprRhs(1) <= '0';
-		TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprRhs(0) <= Inputs_Value2;
-		TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprLhs(1) <= '0';
-		TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprLhs(0) <= Inputs_Value1;
-		TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprRhs(1) <= '0';
-		TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprRhs(0) <= Inputs_Value2;
+		TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprLhs <= Inputs_Value1;
+		TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprRhs <= Inputs_Value2;
+		TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprLhs <= Inputs_Value1;
+		TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprRhs <= Inputs_Value2;
 		Inputs_Value1 <= Value1;
 		Inputs_Value2 <= Value2;
 		Logic_Item1 <= TuplesModule_L16F13L21T14_same;

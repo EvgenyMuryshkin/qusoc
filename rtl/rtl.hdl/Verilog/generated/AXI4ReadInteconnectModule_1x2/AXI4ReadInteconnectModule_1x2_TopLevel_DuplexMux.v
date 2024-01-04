@@ -24,11 +24,11 @@ module AXI4ReadInteconnectModule_1x2_TopLevel_DuplexMux
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
 	input wire [83:0] iLeft0,
-	input wire iLeftAddr,
+	input wire [0:0] iLeftAddr,
 	input wire iLeftAddrValid,
 	input wire [52:0] iRight0,
 	input wire [52:0] iRight1,
-	input wire iRightAddr,
+	input wire [0:0] iRightAddr,
 	input wire iRightAddrValid,
 	output wire [83:0] oLeft0,
 	output wire [83:0] oLeft1,
@@ -48,9 +48,9 @@ module AXI4ReadInteconnectModule_1x2_TopLevel_DuplexMux
 	wire [1: 0] rightCount = 2'b10;
 	wire Prefilled0 = 1'b0;
 	wire Prefilled1 = 1'b1;
-	wire Inputs_iLeftAddr;
+	wire [0: 0] Inputs_iLeftAddr;
 	wire Inputs_iLeftAddrValid;
-	wire Inputs_iRightAddr;
+	wire [0: 0] Inputs_iRightAddr;
 	wire Inputs_iRightAddrValid;
 	reg [7: 0] mEmptyLeftData_AR_ARID;
 	reg [31: 0] mEmptyLeftData_AR_ARADDR;
