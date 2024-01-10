@@ -6,7 +6,7 @@ namespace rtl.extension
 {
     static class Env
     {
-        public static string RTLVerilogConfig = @"C:\code\qusoc\RTL\RTL.Modules\rtl.verilog.json";
+        public static string RTLVerilogConfig = Path.Combine(TestPathTools.SolutionLocation(), @"RTL/RTL.Modules/rtl.verilog.json");
         public static RuntimeConfiguration RC => RuntimeConfigurationLoader.FromConfigFile(RTLVerilogConfig);
 
         public static string AssetsLocation => Path.Combine(TestPathTools.ProjectLocation(), "assets");

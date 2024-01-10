@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+	  <PackageReference Include="Quokka.Extension.Interop" Version="1.0.3.31" />
+	  <PackageReference Include="Quokka.FPGA" Version="0.1.5.216" />
+	  <PackageReference Include="Quokka.RTL" Version="0.1.5.545" />
+	  <PackageReference Include="Quokka.TCL" Version="1.0.7.23" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Tools\Quokka.RTL.Simulator\Quokka.RTL.Simulator.csproj" />
+    <ProjectReference Include="..\..\Tools\TestTools\TestTools.csproj" />
+    <ProjectReference Include="..\QRV32.CPU\qrv32.cpu.csproj" />
+  </ItemGroup>
+</Project>
