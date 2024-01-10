@@ -35,7 +35,7 @@ module AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [1: 0] rangeDetectorsCount = 2'b10;
+	wire signed [2: 0] rangeDetectorsCount = 3'b010;
 	wire [31: 0] Inputs_iAddress;
 	wire encoder_HasActive;
 	wire [0: 0] encoder_MSBIndex;
@@ -47,7 +47,7 @@ module AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray
 	wire encoder_iValues0_encoder_iValues_HardLink;
 	wire encoder_iValues1_encoder_iValues_HardLink;
 	wire encoder_HasActive_encoder_HasActive_HardLink;
-	wire encoder_MSBIndex_encoder_MSBIndex_HardLink;
+	wire [0: 0] encoder_MSBIndex_encoder_MSBIndex_HardLink;
 	wire [1: 0] encoder_MSBValue_encoder_MSBValue_HardLink;
 	wire [31: 0] rangeDetectors0_Value_rangeDetectors0_Value_HardLink;
 	wire rangeDetectors0_IsActive_rangeDetectors0_IsActive_HardLink;

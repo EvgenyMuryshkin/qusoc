@@ -41,14 +41,14 @@ architecture rtl of AXI4ReadInteconnectModule_1x2_TopLevel_Encoder is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant inputWidth : std_logic := '1';
-	constant resultWidth : std_logic := '1';
+	constant inputWidth : signed(1 downto 0) := "01";
+	constant resultWidth : signed(1 downto 0) := "01";
 	constant AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F46T51_Expr : std_logic := '0';
 	constant AXI4EncoderModule_L45F13L54T14_AXI4EncoderModule_L46F31T36_Expr : std_logic := '0';
 	signal internalEncoded : unsigned(0 downto 0) := (others => '0');
 	signal internalHasActive : std_logic := '0';
 	signal AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize : unsigned(0 downto 0) := (others => '0');
-	signal AXI4EncoderModule_L30F13L39T14_result : std_logic := '0';
+	signal AXI4EncoderModule_L30F13L39T14_result : unsigned(0 downto 0) := (others => '0');
 	signal AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize : unsigned(0 downto 0) := (others => '0');
 	signal AXI4EncoderModule_L45F13L54T14_result : std_logic := '0';
 	signal AXI4EncoderModule_L59F40T101_ShiftLeft : unsigned(0 downto 0) := (others => '0');
@@ -60,16 +60,16 @@ architecture rtl of AXI4ReadInteconnectModule_1x2_TopLevel_Encoder is
 begin
 	process (AXI4EncoderModule_L59F40T101_Expr_1, internalEncoded)
 	begin
-		AXI4EncoderModule_L59F40T101_Expr <= shift_left(AXI4EncoderModule_L59F40T101_Expr_1, TO_INTEGER(internalEncoded));
+		AXI4EncoderModule_L59F40T101_Expr <= shift_left(AXI4EncoderModule_L59F40T101_Expr_1, to_integer(internalEncoded));
 	end process;
 	process (AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize, Inputs_iValues)
-		variable tmp0 : std_logic;
+		variable tmp0 : unsigned(0 downto 0);
 	begin
 		AXI4EncoderModule_L30F13L39T14_result <= AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize;
 		tmp0 := AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize;
 		for idx in 1 to 1 loop
 			if Inputs_iValues(idx - 1) = '1' then
-				tmp0 := to_unsigned(idx - 1, 1)(0);
+				tmp0 := to_unsigned(idx - 1, 1);
 			end if;
 		end loop;
 		AXI4EncoderModule_L30F13L39T14_result <= tmp0;
@@ -88,9 +88,9 @@ begin
 	end process;
 	process (AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize, AXI4EncoderModule_L30F13L39T14_result, AXI4EncoderModule_L45F13L54T14_result, AXI4EncoderModule_L59F40T101_Expr, AXI4EncoderModule_L59F40T101_ShiftLeft, AXI4EncoderModule_L59F40T121_Resize, internalEncoded, internalHasActive, iValues0)
 	begin
-		AXI4EncoderModule_L59F40T101_Expr_1 <= internalHasActive;
+		AXI4EncoderModule_L59F40T101_Expr_1(0) <= internalHasActive;
 		Inputs_iValues(0) <= iValues0;
-		AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize <= AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F46T51_Expr;
+		AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize(0) <= AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F46T51_Expr;
 		AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize <= AXI4EncoderModule_L30F13L39T14_result;
 		internalEncoded <= AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize;
 		internalHasActive <= AXI4EncoderModule_L45F13L54T14_result;

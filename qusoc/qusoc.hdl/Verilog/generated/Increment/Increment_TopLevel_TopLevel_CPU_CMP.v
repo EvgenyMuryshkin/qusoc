@@ -57,14 +57,14 @@ module Increment_TopLevel_TopLevel_CPU_CMP
 	wire signed [32: 0] CompareModule_L13F28T52_ExprLhs;
 	wire signed [32: 0] CompareModule_L13F28T52_ExprRhs;
 	wire CompareModule_L19F28T69_Expr;
-	wire signed [31: 0] CompareModule_L19F28T69_ExprLhs;
-	wire signed [31: 0] CompareModule_L19F28T69_ExprRhs;
+	wire [31: 0] CompareModule_L19F28T69_ExprLhs;
+	wire [31: 0] CompareModule_L19F28T69_ExprRhs;
 	wire CompareModule_L16F28T73_Expr;
 	wire signed [32: 0] CompareModule_L16F28T73_ExprLhs;
 	wire signed [32: 0] CompareModule_L16F28T73_ExprRhs;
 	wire CompareModule_L20F28T69_Expr;
-	wire signed [31: 0] CompareModule_L20F28T69_ExprLhs;
-	wire signed [31: 0] CompareModule_L20F28T69_ExprRhs;
+	wire [31: 0] CompareModule_L20F28T69_ExprLhs;
+	wire [31: 0] CompareModule_L20F28T69_ExprRhs;
 	wire CompareModule_L17F28T73_Expr;
 	wire signed [32: 0] CompareModule_L17F28T73_ExprLhs;
 	wire signed [32: 0] CompareModule_L17F28T73_ExprRhs;

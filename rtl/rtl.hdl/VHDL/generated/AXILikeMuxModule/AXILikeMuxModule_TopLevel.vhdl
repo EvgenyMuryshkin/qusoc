@@ -113,8 +113,8 @@ architecture rtl of AXILikeMuxModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant mastersCount : unsigned(3 downto 0) := "1000";
-	constant slavesCount : unsigned(2 downto 0) := "100";
+	constant mastersCount : signed(4 downto 0) := "01000";
+	constant slavesCount : signed(3 downto 0) := "0100";
 	signal Inputs_MAddr : unsigned(2 downto 0) := (others => '0');
 	signal Inputs_MAddrValid : std_logic := '0';
 	signal Inputs_SAddr : unsigned(1 downto 0) := (others => '0');

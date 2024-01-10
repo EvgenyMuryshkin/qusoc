@@ -47,7 +47,7 @@ namespace rtl.modules
                 for (var idx = 0; idx < Inputs.iValues.Length; idx++)
                 {
                     if (Inputs.iValues[idx])
-                        result = result | Inputs.iValues[idx];//dbg
+                        result = result | Inputs.iValues[idx];
                 }
 
                 return result;
@@ -56,6 +56,6 @@ namespace rtl.modules
 
         public bool HasActive => internalHasActive;
         public RTLBitArray MSBIndex => internalEncoded;
-        public RTLBitArray MSBValue => new RTLBitArray(internalHasActive).ShiftLeft(internalEncoded).Resized(inputWidth);//dbg
+        public RTLBitArray MSBValue => new RTLBitArray(internalHasActive).ShiftLeft(internalEncoded).Resized(inputWidth);
     }
 }

@@ -39,7 +39,7 @@ architecture rtl of AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_ra
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant rangeFrom : std_logic := '0';
+	constant rangeFrom : unsigned(0 downto 0) := "0";
 	constant rangeTo : unsigned(27 downto 0) := "1111111111111111111111111111";
 	signal Inputs_Value : unsigned(31 downto 0) := (others => '0');
 	signal RangeDetectorModule_L34F33T85_Expr : std_logic := '0';
@@ -63,7 +63,7 @@ begin
 		RangeDetectorModule_L34F33T58_ExprLhs(32) <= '0';
 		RangeDetectorModule_L34F33T58_ExprLhs(31 downto 0) <= signed(Inputs_Value);
 		RangeDetectorModule_L34F33T58_ExprRhs(32 downto 1) <= (others => '0');
-		RangeDetectorModule_L34F33T58_ExprRhs(0) <= rangeFrom;
+		RangeDetectorModule_L34F33T58_ExprRhs(0) <= rangeFrom(0);
 		RangeDetectorModule_L34F62T85_ExprLhs(32) <= '0';
 		RangeDetectorModule_L34F62T85_ExprLhs(31 downto 0) <= signed(Inputs_Value);
 		RangeDetectorModule_L34F62T85_ExprRhs(32 downto 28) <= (others => '0');

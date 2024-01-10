@@ -35,7 +35,7 @@ module RangeDetectorArrayModule4_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [2: 0] rangeDetectorsCount = 3'b111;
+	wire signed [3: 0] rangeDetectorsCount = 4'b0111;
 	wire [31: 0] Inputs_iAddress;
 	wire encoder_HasActive;
 	wire [2: 0] encoder_MSBIndex;

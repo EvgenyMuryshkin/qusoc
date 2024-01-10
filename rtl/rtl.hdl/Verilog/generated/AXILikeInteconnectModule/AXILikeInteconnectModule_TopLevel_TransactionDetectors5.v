@@ -42,13 +42,13 @@ module AXILikeInteconnectModule_TopLevel_TransactionDetectors5
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L38F22T46_Expr = 1'b0;
-	wire TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L40F44T69_Expr = 1'b1;
-	wire TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L42F22T47_Expr = 1'b1;
+	wire [1: 0] TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L38F22T46_Expr = 2'b00;
+	wire [1: 0] TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L40F44T69_Expr = 2'b01;
+	wire [1: 0] TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L42F22T47_Expr = 2'b01;
 	wire [1: 0] TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L44F44T77_Expr = 2'b10;
 	wire [1: 0] TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L46F22T55_Expr = 2'b10;
-	wire TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L48F44T68_Expr = 1'b0;
-	wire TransactionDetectorModule_L31F53T78_Expr = 1'b1;
+	wire [1: 0] TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L48F44T68_Expr = 2'b00;
+	wire [1: 0] TransactionDetectorModule_L31F53T78_Expr = 2'b01;
 	wire [1: 0] TransactionDetectorModule_L32F56T89_Expr = 2'b10;
 	wire Inputs_iRestart;
 	wire Inputs_iTXBegin;
@@ -94,7 +94,7 @@ module AXILikeInteconnectModule_TopLevel_TransactionDetectors5
 		begin
 			if ((Inputs_iTXBegin == 1))
 			begin
-				NextState_Status = { 1'b0, TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L40F44T69_Expr };
+				NextState_Status = TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L40F44T69_Expr;
 			end
 		end
 		else if ((TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L42F17L45T27_Case == 1))
@@ -108,18 +108,18 @@ module AXILikeInteconnectModule_TopLevel_TransactionDetectors5
 		begin
 			if ((Inputs_iRestart == 1))
 			begin
-				NextState_Status = { 1'b0, TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L48F44T68_Expr };
+				NextState_Status = TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L48F44T68_Expr;
 			end
 		end
 	end
 	assign TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L38F17L41T27_CaseLhs = { 1'b0, State_Status };
-	assign TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L38F17L41T27_CaseRhs = { {2{1'b0}}, TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L38F22T46_Expr };
+	assign TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L38F17L41T27_CaseRhs = { 1'b0, TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L38F22T46_Expr };
 	assign TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L42F17L45T27_CaseLhs = { 1'b0, State_Status };
-	assign TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L42F17L45T27_CaseRhs = { {2{1'b0}}, TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L42F22T47_Expr };
+	assign TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L42F17L45T27_CaseRhs = { 1'b0, TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L42F22T47_Expr };
 	assign TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L46F17L49T27_CaseLhs = { 1'b0, State_Status };
 	assign TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L46F17L49T27_CaseRhs = { 1'b0, TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L46F22T55_Expr };
 	assign TransactionDetectorModule_L31F37T78_ExprLhs = { 1'b0, State_Status };
-	assign TransactionDetectorModule_L31F37T78_ExprRhs = { {2{1'b0}}, TransactionDetectorModule_L31F53T78_Expr };
+	assign TransactionDetectorModule_L31F37T78_ExprRhs = { 1'b0, TransactionDetectorModule_L31F53T78_Expr };
 	assign TransactionDetectorModule_L32F40T89_ExprLhs = { 1'b0, State_Status };
 	assign TransactionDetectorModule_L32F40T89_ExprRhs = { 1'b0, TransactionDetectorModule_L32F56T89_Expr };
 	assign Inputs_iRestart = iRestart;

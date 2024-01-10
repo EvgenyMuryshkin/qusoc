@@ -131,8 +131,8 @@ architecture rtl of AXILikeInteconnectModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant leftCount : unsigned(3 downto 0) := "1000";
-	constant rightCount : unsigned(2 downto 0) := "100";
+	constant leftCount : signed(4 downto 0) := "01000";
+	constant rightCount : signed(3 downto 0) := "0100";
 	constant InterconnectModule_L76F13L85T14_InterconnectModule_L77F39T44_Expr : std_logic := '0';
 	constant InterconnectModule_L125F39T43_Expr : std_logic := '1';
 	signal muxLeftData_IsActive : std_logic := '0';

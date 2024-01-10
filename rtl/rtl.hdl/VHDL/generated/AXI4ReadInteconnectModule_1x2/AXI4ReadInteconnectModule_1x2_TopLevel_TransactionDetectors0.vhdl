@@ -43,13 +43,13 @@ architecture rtl of AXI4ReadInteconnectModule_1x2_TopLevel_TransactionDetectors0
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L38F22T46_Expr : std_logic := '0';
-	constant TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L40F44T69_Expr : std_logic := '1';
-	constant TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L42F22T47_Expr : std_logic := '1';
+	constant TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L38F22T46_Expr : unsigned(1 downto 0) := "00";
+	constant TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L40F44T69_Expr : unsigned(1 downto 0) := "01";
+	constant TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L42F22T47_Expr : unsigned(1 downto 0) := "01";
 	constant TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L44F44T77_Expr : unsigned(1 downto 0) := "10";
 	constant TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L46F22T55_Expr : unsigned(1 downto 0) := "10";
-	constant TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L48F44T68_Expr : std_logic := '0';
-	constant TransactionDetectorModule_L31F53T78_Expr : std_logic := '1';
+	constant TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L48F44T68_Expr : unsigned(1 downto 0) := "00";
+	constant TransactionDetectorModule_L31F53T78_Expr : unsigned(1 downto 0) := "01";
 	constant TransactionDetectorModule_L32F56T89_Expr : unsigned(1 downto 0) := "10";
 	signal Inputs_iRestart : std_logic := '0';
 	signal Inputs_iTXBegin : std_logic := '0';
@@ -93,8 +93,7 @@ begin
 		NextState_Status <= State_Status;
 		if TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L38F17L41T27_Case = '1' then
 			if Inputs_iTXBegin = '1' then
-				NextState_Status(1) <= '0';
-				NextState_Status(0) <= TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L40F44T69_Expr;
+				NextState_Status <= TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L40F44T69_Expr;
 			end if;
 		elsif TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L42F17L45T27_Case = '1' then
 			if Inputs_iTXEnd = '1' then
@@ -102,8 +101,7 @@ begin
 			end if;
 		elsif TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L46F17L49T27_Case = '1' then
 			if Inputs_iRestart = '1' then
-				NextState_Status(1) <= '0';
-				NextState_Status(0) <= TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L48F44T68_Expr;
+				NextState_Status <= TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L48F44T68_Expr;
 			end if;
 		end if;
 	end process;
@@ -111,20 +109,20 @@ begin
 	begin
 		TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L38F17L41T27_CaseLhs(2) <= '0';
 		TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L38F17L41T27_CaseLhs(1 downto 0) <= signed(State_Status);
-		TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L38F17L41T27_CaseRhs(2 downto 1) <= (others => '0');
-		TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L38F17L41T27_CaseRhs(0) <= TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L38F22T46_Expr;
+		TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L38F17L41T27_CaseRhs(2) <= '0';
+		TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L38F17L41T27_CaseRhs(1 downto 0) <= signed(TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L38F22T46_Expr);
 		TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L42F17L45T27_CaseLhs(2) <= '0';
 		TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L42F17L45T27_CaseLhs(1 downto 0) <= signed(State_Status);
-		TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L42F17L45T27_CaseRhs(2 downto 1) <= (others => '0');
-		TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L42F17L45T27_CaseRhs(0) <= TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L42F22T47_Expr;
+		TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L42F17L45T27_CaseRhs(2) <= '0';
+		TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L42F17L45T27_CaseRhs(1 downto 0) <= signed(TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L42F22T47_Expr);
 		TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L46F17L49T27_CaseLhs(2) <= '0';
 		TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L46F17L49T27_CaseLhs(1 downto 0) <= signed(State_Status);
 		TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L46F17L49T27_CaseRhs(2) <= '0';
 		TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L46F17L49T27_CaseRhs(1 downto 0) <= signed(TransactionDetectorModule_L35F9L51T10_TransactionDetectorModule_L36F13L50T14_TransactionDetectorModule_L46F22T55_Expr);
 		TransactionDetectorModule_L31F37T78_ExprLhs(2) <= '0';
 		TransactionDetectorModule_L31F37T78_ExprLhs(1 downto 0) <= signed(State_Status);
-		TransactionDetectorModule_L31F37T78_ExprRhs(2 downto 1) <= (others => '0');
-		TransactionDetectorModule_L31F37T78_ExprRhs(0) <= TransactionDetectorModule_L31F53T78_Expr;
+		TransactionDetectorModule_L31F37T78_ExprRhs(2) <= '0';
+		TransactionDetectorModule_L31F37T78_ExprRhs(1 downto 0) <= signed(TransactionDetectorModule_L31F53T78_Expr);
 		TransactionDetectorModule_L32F40T89_ExprLhs(2) <= '0';
 		TransactionDetectorModule_L32F40T89_ExprLhs(1 downto 0) <= signed(State_Status);
 		TransactionDetectorModule_L32F40T89_ExprRhs(2) <= '0';

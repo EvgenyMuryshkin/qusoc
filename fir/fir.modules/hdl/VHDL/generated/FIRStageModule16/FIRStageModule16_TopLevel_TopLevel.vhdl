@@ -55,16 +55,16 @@ architecture rtl of FIRStageModule16_TopLevel_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant firParams_AccumSize : unsigned(5 downto 0) := "100001";
-	constant firParams_CoeffRamAddrBits : unsigned(1 downto 0) := "10";
-	constant firParams_CoeffSize : unsigned(4 downto 0) := "10000";
-	constant firParams_DataRamAddrBits : unsigned(3 downto 0) := "1000";
-	constant firParams_DOSize : unsigned(2 downto 0) := "100";
-	constant firParams_IQSizeIn : unsigned(4 downto 0) := "10000";
-	constant firParams_IQSizeOut : unsigned(4 downto 0) := "10000";
-	constant firParams_MultSize : unsigned(5 downto 0) := "100001";
-	constant firParams_Order : unsigned(2 downto 0) := "100";
-	constant firParams_SumSize : unsigned(4 downto 0) := "10001";
+	constant firParams_AccumSize : signed(6 downto 0) := "0100001";
+	constant firParams_CoeffRamAddrBits : signed(2 downto 0) := "010";
+	constant firParams_CoeffSize : signed(5 downto 0) := "010000";
+	constant firParams_DataRamAddrBits : signed(4 downto 0) := "01000";
+	constant firParams_DOSize : signed(3 downto 0) := "0100";
+	constant firParams_IQSizeIn : signed(5 downto 0) := "010000";
+	constant firParams_IQSizeOut : signed(5 downto 0) := "010000";
+	constant firParams_MultSize : signed(6 downto 0) := "0100001";
+	constant firParams_Order : signed(3 downto 0) := "0100";
+	constant firParams_SumSize : signed(5 downto 0) := "010001";
 	constant FIRStageModule_L104F49T50_Expr : std_logic := '0';
 	signal Inputs_iAccum : unsigned(32 downto 0) := (others => '0');
 	signal Inputs_iCoeffData : unsigned(15 downto 0) := (others => '0');

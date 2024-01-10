@@ -34,7 +34,7 @@ module RangeDetectorArrayModule4_TopLevel_rangeDetectors0
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire rangeFrom = 1'b0;
+	wire [0: 0] rangeFrom = 1'b0;
 	wire [27: 0] rangeTo = 28'b1111111111111111111111111111;
 	wire [31: 0] Inputs_Value;
 	wire RangeDetectorModule_L34F33T85_Expr;

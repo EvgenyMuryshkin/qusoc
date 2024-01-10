@@ -42,8 +42,8 @@ module RangeDetectorArrayModule4_TopLevel_encoder
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [2: 0] inputWidth = 3'b111;
-	wire [1: 0] resultWidth = 2'b11;
+	wire signed [3: 0] inputWidth = 4'b0111;
+	wire signed [2: 0] resultWidth = 3'b011;
 	wire AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F46T51_Expr = 1'b0;
 	wire AXI4EncoderModule_L45F13L54T14_AXI4EncoderModule_L46F31T36_Expr = 1'b0;
 	wire [2: 0] internalEncoded;

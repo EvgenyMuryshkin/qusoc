@@ -40,7 +40,7 @@ architecture rtl of AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant rangeDetectorsCount : unsigned(1 downto 0) := "10";
+	constant rangeDetectorsCount : signed(2 downto 0) := "010";
 	signal Inputs_iAddress : unsigned(31 downto 0) := (others => '0');
 	signal encoder_HasActive : std_logic := '0';
 	signal encoder_MSBIndex : unsigned(0 downto 0) := (others => '0');
@@ -52,7 +52,7 @@ architecture rtl of AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray is
 	signal encoder_iValues0_encoder_iValues_HardLink : std_logic := '0';
 	signal encoder_iValues1_encoder_iValues_HardLink : std_logic := '0';
 	signal encoder_HasActive_encoder_HasActive_HardLink : std_logic := '0';
-	signal encoder_MSBIndex_encoder_MSBIndex_HardLink : std_logic := '0';
+	signal encoder_MSBIndex_encoder_MSBIndex_HardLink : unsigned(0 downto 0) := "0";
 	signal encoder_MSBValue_encoder_MSBValue_HardLink : unsigned(1 downto 0) := "00";
 	signal rangeDetectors0_Value_rangeDetectors0_Value_HardLink : unsigned(31 downto 0) := "00000000000000000000000000000000";
 	signal rangeDetectors0_IsActive_rangeDetectors0_IsActive_HardLink : std_logic := '0';

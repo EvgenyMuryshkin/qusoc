@@ -299,7 +299,7 @@ namespace fir.modules
                 }
                 else
                 {
-                    NextState.coeff.coef_ram_wr[a] = false;
+                    NextState.coeff.coef_ram_wr[a] = false;//dbg
                     NextState.coeff.coef_ram_wr_addr[a] = 0;
                     NextState.coeff.coef_ram_wr_data[a] = 0;
                 }

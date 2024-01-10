@@ -110,39 +110,39 @@ module AXI4NonBufferedSlaveModuleB4_TopLevel
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire [1: 0] size = 2'b10;
-	wire AXI4NonBufferedSlaveModule_L81F50T70_Expr = 1'b1;
-	wire AXI4NonBufferedSlaveModule_L85F53T74_Expr = 1'b1;
+	wire [1: 0] AXI4NonBufferedSlaveModule_L81F50T70_Expr = 2'b01;
+	wire [1: 0] AXI4NonBufferedSlaveModule_L85F53T74_Expr = 2'b01;
 	wire [1: 0] AXI4NonBufferedSlaveModule_L87F52T72_Expr = 2'b10;
 	wire [1: 0] AXI4NonBufferedSlaveModule_L87F95T115_Expr = 2'b10;
 	wire [1: 0] AXI4NonBufferedSlaveModule_L82F49T68_Expr = 2'b10;
-	wire AXI4NonBufferedSlaveModule_L86F51T72_Expr = 1'b1;
-	wire AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L114F22T43_Expr = 1'b0;
-	wire AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L115F41T61_Expr = 1'b1;
-	wire AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L117F22T42_Expr = 1'b1;
+	wire [1: 0] AXI4NonBufferedSlaveModule_L86F51T72_Expr = 2'b01;
+	wire [1: 0] AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L114F22T43_Expr = 2'b00;
+	wire [1: 0] AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L115F41T61_Expr = 2'b01;
+	wire [1: 0] AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L117F22T42_Expr = 2'b01;
 	wire [1: 0] AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L119F45T64_Expr = 2'b10;
 	wire [1: 0] AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L121F22T41_Expr = 2'b10;
-	wire AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L123F45T65_Expr = 1'b1;
-	wire AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L129F22T44_Expr = 1'b0;
-	wire AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L130F44T65_Expr = 1'b1;
-	wire AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L132F22T43_Expr = 1'b1;
+	wire [1: 0] AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L123F45T65_Expr = 2'b01;
+	wire [1: 0] AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L129F22T44_Expr = 2'b00;
+	wire [1: 0] AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L130F44T65_Expr = 2'b01;
+	wire [1: 0] AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L132F22T43_Expr = 2'b01;
 	wire [1: 0] AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L134F48T68_Expr = 2'b10;
 	wire [1: 0] AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L136F22T42_Expr = 2'b10;
-	wire AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L138F48T69_Expr = 1'b1;
-	wire AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L144F22T44_Expr = 1'b0;
-	wire AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L145F43T64_Expr = 1'b1;
-	wire AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L147F22T43_Expr = 1'b1;
+	wire [1: 0] AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L138F48T69_Expr = 2'b01;
+	wire [1: 0] AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L144F22T44_Expr = 2'b00;
+	wire [1: 0] AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L145F43T64_Expr = 2'b01;
+	wire [1: 0] AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L147F22T43_Expr = 2'b01;
 	wire [1: 0] AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L149F47T67_Expr = 2'b10;
 	wire [1: 0] AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L151F22T42_Expr = 2'b10;
-	wire AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L153F47T68_Expr = 1'b1;
-	wire AXI4NonBufferedSlaveModule_L94F62T82_Expr = 1'b1;
+	wire [1: 0] AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L153F47T68_Expr = 2'b01;
+	wire [1: 0] AXI4NonBufferedSlaveModule_L94F62T82_Expr = 2'b01;
 	wire [1: 0] AXI4NonBufferedSlaveModule_L94F107T126_Expr = 2'b10;
-	wire AXI4NonBufferedSlaveModule_L99F65T86_Expr = 1'b1;
+	wire [1: 0] AXI4NonBufferedSlaveModule_L99F65T86_Expr = 2'b01;
 	wire [1: 0] AXI4NonBufferedSlaveModule_L99F114T134_Expr = 2'b10;
-	wire AXI4NonBufferedSlaveModule_L103F63T84_Expr = 1'b1;
+	wire [1: 0] AXI4NonBufferedSlaveModule_L103F63T84_Expr = 2'b01;
 	wire [1: 0] AXI4NonBufferedSlaveModule_L103F111T131_Expr = 2'b10;
-	wire AXI4NonBufferedSlaveModule_L58F25T37_Expr = 1'b0;
+	wire [1: 0] AXI4NonBufferedSlaveModule_L58F25T37_Expr = 2'b00;
 	wire AXI4_S_R_L26F29T33_Expr = 1'b1;
-	wire AXI4NonBufferedSlaveModule_L71F25T37_Expr = 1'b0;
+	wire [1: 0] AXI4NonBufferedSlaveModule_L71F25T37_Expr = 2'b00;
 	wire Inputs_inARREADY;
 	wire Inputs_inAWREADY;
 	wire Inputs_inBVALID;
@@ -359,7 +359,7 @@ module AXI4NonBufferedSlaveModuleB4_TopLevel
 		NextState_writeWFSM = State_writeWFSM;
 		if ((AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L114F17L116T27_Case == 1))
 		begin
-			NextState_readFSM = { 1'b0, AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L115F41T61_Expr };
+			NextState_readFSM = AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L115F41T61_Expr;
 		end
 		else if ((AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L117F17L120T27_Case == 1))
 		begin
@@ -372,12 +372,12 @@ module AXI4NonBufferedSlaveModuleB4_TopLevel
 		begin
 			if ((readTXCompleting == 1))
 			begin
-				NextState_readFSM = { 1'b0, AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L123F45T65_Expr };
+				NextState_readFSM = AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L123F45T65_Expr;
 			end
 		end
 		if ((AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L129F17L131T27_Case == 1))
 		begin
-			NextState_writeAWFSM = { 1'b0, AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L130F44T65_Expr };
+			NextState_writeAWFSM = AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L130F44T65_Expr;
 		end
 		else if ((AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L132F17L135T27_Case == 1))
 		begin
@@ -390,12 +390,12 @@ module AXI4NonBufferedSlaveModuleB4_TopLevel
 		begin
 			if ((writeTXCompleting == 1))
 			begin
-				NextState_writeAWFSM = { 1'b0, AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L138F48T69_Expr };
+				NextState_writeAWFSM = AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L138F48T69_Expr;
 			end
 		end
 		if ((AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L144F17L146T27_Case == 1))
 		begin
-			NextState_writeWFSM = { 1'b0, AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L145F43T64_Expr };
+			NextState_writeWFSM = AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L145F43T64_Expr;
 		end
 		else if ((AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L147F17L150T27_Case == 1))
 		begin
@@ -408,14 +408,14 @@ module AXI4NonBufferedSlaveModuleB4_TopLevel
 		begin
 			if ((writeTXCompleting == 1))
 			begin
-				NextState_writeWFSM = { 1'b0, AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L153F47T68_Expr };
+				NextState_writeWFSM = AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L153F47T68_Expr;
 			end
 		end
 	end
 	assign AXI4NonBufferedSlaveModule_L81F33T70_ExprLhs = { 1'b0, State_readFSM };
-	assign AXI4NonBufferedSlaveModule_L81F33T70_ExprRhs = { {2{1'b0}}, AXI4NonBufferedSlaveModule_L81F50T70_Expr };
+	assign AXI4NonBufferedSlaveModule_L81F33T70_ExprRhs = { 1'b0, AXI4NonBufferedSlaveModule_L81F50T70_Expr };
 	assign AXI4NonBufferedSlaveModule_L85F33T74_ExprLhs = { 1'b0, State_writeAWFSM };
-	assign AXI4NonBufferedSlaveModule_L85F33T74_ExprRhs = { {2{1'b0}}, AXI4NonBufferedSlaveModule_L85F53T74_Expr };
+	assign AXI4NonBufferedSlaveModule_L85F33T74_ExprRhs = { 1'b0, AXI4NonBufferedSlaveModule_L85F53T74_Expr };
 	assign AXI4NonBufferedSlaveModule_L87F32T72_ExprLhs = { 1'b0, State_writeAWFSM };
 	assign AXI4NonBufferedSlaveModule_L87F32T72_ExprRhs = { 1'b0, AXI4NonBufferedSlaveModule_L87F52T72_Expr };
 	assign AXI4NonBufferedSlaveModule_L87F76T115_ExprLhs = { 1'b0, State_writeWFSM };
@@ -423,35 +423,35 @@ module AXI4NonBufferedSlaveModuleB4_TopLevel
 	assign AXI4NonBufferedSlaveModule_L82F32T68_ExprLhs = { 1'b0, State_readFSM };
 	assign AXI4NonBufferedSlaveModule_L82F32T68_ExprRhs = { 1'b0, AXI4NonBufferedSlaveModule_L82F49T68_Expr };
 	assign AXI4NonBufferedSlaveModule_L86F32T72_ExprLhs = { 1'b0, State_writeWFSM };
-	assign AXI4NonBufferedSlaveModule_L86F32T72_ExprRhs = { {2{1'b0}}, AXI4NonBufferedSlaveModule_L86F51T72_Expr };
+	assign AXI4NonBufferedSlaveModule_L86F32T72_ExprRhs = { 1'b0, AXI4NonBufferedSlaveModule_L86F51T72_Expr };
 	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L114F17L116T27_CaseLhs = { 1'b0, State_readFSM };
-	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L114F17L116T27_CaseRhs = { {2{1'b0}}, AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L114F22T43_Expr };
+	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L114F17L116T27_CaseRhs = { 1'b0, AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L114F22T43_Expr };
 	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L117F17L120T27_CaseLhs = { 1'b0, State_readFSM };
-	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L117F17L120T27_CaseRhs = { {2{1'b0}}, AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L117F22T42_Expr };
+	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L117F17L120T27_CaseRhs = { 1'b0, AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L117F22T42_Expr };
 	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L121F17L124T27_CaseLhs = { 1'b0, State_readFSM };
 	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L121F17L124T27_CaseRhs = { 1'b0, AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L112F13L125T14_AXI4NonBufferedSlaveModule_L121F22T41_Expr };
 	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L129F17L131T27_CaseLhs = { 1'b0, State_writeAWFSM };
-	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L129F17L131T27_CaseRhs = { {2{1'b0}}, AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L129F22T44_Expr };
+	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L129F17L131T27_CaseRhs = { 1'b0, AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L129F22T44_Expr };
 	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L132F17L135T27_CaseLhs = { 1'b0, State_writeAWFSM };
-	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L132F17L135T27_CaseRhs = { {2{1'b0}}, AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L132F22T43_Expr };
+	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L132F17L135T27_CaseRhs = { 1'b0, AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L132F22T43_Expr };
 	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L136F17L139T27_CaseLhs = { 1'b0, State_writeAWFSM };
 	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L136F17L139T27_CaseRhs = { 1'b0, AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L127F13L140T14_AXI4NonBufferedSlaveModule_L136F22T42_Expr };
 	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L144F17L146T27_CaseLhs = { 1'b0, State_writeWFSM };
-	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L144F17L146T27_CaseRhs = { {2{1'b0}}, AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L144F22T44_Expr };
+	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L144F17L146T27_CaseRhs = { 1'b0, AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L144F22T44_Expr };
 	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L147F17L150T27_CaseLhs = { 1'b0, State_writeWFSM };
-	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L147F17L150T27_CaseRhs = { {2{1'b0}}, AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L147F22T43_Expr };
+	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L147F17L150T27_CaseRhs = { 1'b0, AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L147F22T43_Expr };
 	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L151F17L154T27_CaseLhs = { 1'b0, State_writeWFSM };
 	assign AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L151F17L154T27_CaseRhs = { 1'b0, AXI4NonBufferedSlaveModule_L109F9L156T10_AXI4NonBufferedSlaveModule_L142F13L155T14_AXI4NonBufferedSlaveModule_L151F22T42_Expr };
 	assign AXI4NonBufferedSlaveModule_L94F45T82_ExprLhs = { 1'b0, State_readFSM };
-	assign AXI4NonBufferedSlaveModule_L94F45T82_ExprRhs = { {2{1'b0}}, AXI4NonBufferedSlaveModule_L94F62T82_Expr };
+	assign AXI4NonBufferedSlaveModule_L94F45T82_ExprRhs = { 1'b0, AXI4NonBufferedSlaveModule_L94F62T82_Expr };
 	assign AXI4NonBufferedSlaveModule_L94F86T126_ExprLhs = { 1'b0, NextState_readFSM };
 	assign AXI4NonBufferedSlaveModule_L94F86T126_ExprRhs = { 1'b0, AXI4NonBufferedSlaveModule_L94F107T126_Expr };
 	assign AXI4NonBufferedSlaveModule_L99F45T86_ExprLhs = { 1'b0, State_writeAWFSM };
-	assign AXI4NonBufferedSlaveModule_L99F45T86_ExprRhs = { {2{1'b0}}, AXI4NonBufferedSlaveModule_L99F65T86_Expr };
+	assign AXI4NonBufferedSlaveModule_L99F45T86_ExprRhs = { 1'b0, AXI4NonBufferedSlaveModule_L99F65T86_Expr };
 	assign AXI4NonBufferedSlaveModule_L99F90T134_ExprLhs = { 1'b0, NextState_writeAWFSM };
 	assign AXI4NonBufferedSlaveModule_L99F90T134_ExprRhs = { 1'b0, AXI4NonBufferedSlaveModule_L99F114T134_Expr };
 	assign AXI4NonBufferedSlaveModule_L103F44T84_ExprLhs = { 1'b0, State_writeWFSM };
-	assign AXI4NonBufferedSlaveModule_L103F44T84_ExprRhs = { {2{1'b0}}, AXI4NonBufferedSlaveModule_L103F63T84_Expr };
+	assign AXI4NonBufferedSlaveModule_L103F44T84_ExprRhs = { 1'b0, AXI4NonBufferedSlaveModule_L103F63T84_Expr };
 	assign AXI4NonBufferedSlaveModule_L103F88T131_ExprLhs = { 1'b0, NextState_writeWFSM };
 	assign AXI4NonBufferedSlaveModule_L103F88T131_ExprRhs = { 1'b0, AXI4NonBufferedSlaveModule_L103F111T131_Expr };
 	assign AXI4NonBufferedSlaveModule_L81F33T90_Expr_1 = AXI4NonBufferedSlaveModule_L81F33T70_Expr;
@@ -554,13 +554,13 @@ module AXI4NonBufferedSlaveModuleB4_TopLevel
 	assign S2M_R_RDATA1 = Inputs_inRDATA[1];
 	assign S2M_R_RDATA2 = Inputs_inRDATA[2];
 	assign S2M_R_RDATA3 = Inputs_inRDATA[3];
-	assign S2M_R_RRESP = { 1'b0, AXI4NonBufferedSlaveModule_L58F25T37_Expr };
+	assign S2M_R_RRESP = AXI4NonBufferedSlaveModule_L58F25T37_Expr;
 	assign S2M_R_RLAST = AXI4_S_R_L26F29T33_Expr;
 	assign S2M_R_RUSER = Inputs_M2S_AR_ARUSER;
 	assign S2M_R_RVALID = internalRVALID;
 	assign S2M_AW_AWREADY = internalAWREADY;
 	assign S2M_B_BID = Inputs_M2S_W_WID;
-	assign S2M_B_BRESP = { 1'b0, AXI4NonBufferedSlaveModule_L71F25T37_Expr };
+	assign S2M_B_BRESP = AXI4NonBufferedSlaveModule_L71F25T37_Expr;
 	assign S2M_B_BUSER = Inputs_M2S_W_WUSER;
 	assign S2M_B_BVALID = internalBVALID;
 	assign S2M_W_WREADY = internalWREADY;

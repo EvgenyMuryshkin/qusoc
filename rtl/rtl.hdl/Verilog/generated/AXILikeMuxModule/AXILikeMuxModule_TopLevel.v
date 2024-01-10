@@ -108,8 +108,8 @@ module AXILikeMuxModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [3: 0] mastersCount = 4'b1000;
-	wire [2: 0] slavesCount = 3'b100;
+	wire signed [4: 0] mastersCount = 5'b01000;
+	wire signed [3: 0] slavesCount = 4'b0100;
 	wire [2: 0] Inputs_MAddr;
 	wire Inputs_MAddrValid;
 	wire [1: 0] Inputs_SAddr;

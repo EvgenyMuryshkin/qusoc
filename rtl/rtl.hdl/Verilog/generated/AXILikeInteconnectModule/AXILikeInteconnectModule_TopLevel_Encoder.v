@@ -43,8 +43,8 @@ module AXILikeInteconnectModule_TopLevel_Encoder
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [3: 0] inputWidth = 4'b1000;
-	wire [1: 0] resultWidth = 2'b11;
+	wire signed [4: 0] inputWidth = 5'b01000;
+	wire signed [2: 0] resultWidth = 3'b011;
 	wire AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F46T51_Expr = 1'b0;
 	wire AXI4EncoderModule_L45F13L54T14_AXI4EncoderModule_L46F31T36_Expr = 1'b0;
 	wire [2: 0] internalEncoded;

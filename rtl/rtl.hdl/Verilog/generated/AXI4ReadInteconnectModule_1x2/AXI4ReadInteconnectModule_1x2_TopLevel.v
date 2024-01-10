@@ -67,8 +67,8 @@ module AXI4ReadInteconnectModule_1x2_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire leftCount = 1'b1;
-	wire [1: 0] rightCount = 2'b10;
+	wire signed [1: 0] leftCount = 2'b01;
+	wire signed [2: 0] rightCount = 3'b010;
 	wire InterconnectModule_L76F13L85T14_InterconnectModule_L77F39T44_Expr = 1'b0;
 	wire InterconnectModule_L125F39T43_Expr = 1'b1;
 	wire [7: 0] muxLeftData_AR_ARID;
@@ -112,11 +112,11 @@ module AXI4ReadInteconnectModule_1x2_TopLevel
 	integer idx;
 	wire InterconnectModule_L93F13L96T14_0_InterconnectModule_L95F75T101_Index;
 	wire [83: 0] DuplexMux_iLeft0_DuplexMux_iLeft_HardLink;
-	wire DuplexMux_iLeftAddr_DuplexMux_iLeftAddr_HardLink;
+	wire [0: 0] DuplexMux_iLeftAddr_DuplexMux_iLeftAddr_HardLink;
 	wire DuplexMux_iLeftAddrValid_DuplexMux_iLeftAddrValid_HardLink;
 	wire [52: 0] DuplexMux_iRight0_DuplexMux_iRight_HardLink;
 	wire [52: 0] DuplexMux_iRight1_DuplexMux_iRight_HardLink;
-	wire DuplexMux_iRightAddr_DuplexMux_iRightAddr_HardLink;
+	wire [0: 0] DuplexMux_iRightAddr_DuplexMux_iRightAddr_HardLink;
 	wire DuplexMux_iRightAddrValid_DuplexMux_iRightAddrValid_HardLink;
 	wire [83: 0] DuplexMux_oLeft0_DuplexMux_oLeft_HardLink;
 	wire [83: 0] DuplexMux_oLeft1_DuplexMux_oLeft_HardLink;
@@ -125,8 +125,8 @@ module AXI4ReadInteconnectModule_1x2_TopLevel
 	wire [52: 0] DuplexMux_oRight0_DuplexMux_oRight_HardLink;
 	wire Encoder_iValues0_Encoder_iValues_HardLink;
 	wire Encoder_HasActive_Encoder_HasActive_HardLink;
-	wire Encoder_MSBIndex_Encoder_MSBIndex_HardLink;
-	wire Encoder_MSBValue_Encoder_MSBValue_HardLink;
+	wire [0: 0] Encoder_MSBIndex_Encoder_MSBIndex_HardLink;
+	wire [0: 0] Encoder_MSBValue_Encoder_MSBValue_HardLink;
 	wire TransactionDetectors0_iRestart_TransactionDetectors0_iRestart_HardLink;
 	wire TransactionDetectors0_iTXBegin_TransactionDetectors0_iTXBegin_HardLink;
 	wire TransactionDetectors0_iTXEnd_TransactionDetectors0_iTXEnd_HardLink;
@@ -134,7 +134,7 @@ module AXI4ReadInteconnectModule_1x2_TopLevel
 	wire TransactionDetectors0_oWaitForRestart_TransactionDetectors0_oWaitForRestart_HardLink;
 	wire [31: 0] rangeDetectorArray_iAddress_rangeDetectorArray_iAddress_HardLink;
 	wire rangeDetectorArray_oActive_rangeDetectorArray_oActive_HardLink;
-	wire rangeDetectorArray_oIndex_rangeDetectorArray_oIndex_HardLink;
+	wire [0: 0] rangeDetectorArray_oIndex_rangeDetectorArray_oIndex_HardLink;
 	wire InterconnectModule_L76F13L85T14_InterconnectModule_L84F24T39_Expr;
 	wire InterconnectModule_L76F13L85T14_InterconnectModule_L84F24T39_Expr_1;
 	wire [83: 0] InterconnectModule_L93F13L96T14_0_InterconnectModule_L95F38T101_Expr;
@@ -232,7 +232,7 @@ module AXI4ReadInteconnectModule_1x2_TopLevel
 		InterconnectModule_L76F13L85T14_hasTransaction = InterconnectModule_L76F13L85T14_InterconnectModule_L77F39T44_Expr;
 		for (idx = 0; (idx < 1); idx = (idx + 1))
 		begin
-			//InterconnectModule_L76F13L85T14_hasTransaction = (InterconnectModule_L76F13L85T14_hasTransaction | ActiveTransactions);
+			InterconnectModule_L76F13L85T14_hasTransaction = (InterconnectModule_L76F13L85T14_hasTransaction | ActiveTransactions[idx]);
 		end
 	end
 	assign InterconnectModule_L76F13L85T14_InterconnectModule_L84F24T39_Expr_1 = InterconnectModule_L76F13L85T14_hasTransaction;

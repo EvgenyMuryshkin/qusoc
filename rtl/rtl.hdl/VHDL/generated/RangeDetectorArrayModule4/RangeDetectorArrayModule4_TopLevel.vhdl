@@ -40,7 +40,7 @@ architecture rtl of RangeDetectorArrayModule4_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant rangeDetectorsCount : unsigned(2 downto 0) := "111";
+	constant rangeDetectorsCount : signed(3 downto 0) := "0111";
 	signal Inputs_iAddress : unsigned(31 downto 0) := (others => '0');
 	signal encoder_HasActive : std_logic := '0';
 	signal encoder_MSBIndex : unsigned(2 downto 0) := (others => '0');

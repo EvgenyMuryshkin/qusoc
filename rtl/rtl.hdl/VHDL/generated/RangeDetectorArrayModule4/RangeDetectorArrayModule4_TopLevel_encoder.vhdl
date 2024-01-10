@@ -47,8 +47,8 @@ architecture rtl of RangeDetectorArrayModule4_TopLevel_encoder is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant inputWidth : unsigned(2 downto 0) := "111";
-	constant resultWidth : unsigned(1 downto 0) := "11";
+	constant inputWidth : signed(3 downto 0) := "0111";
+	constant resultWidth : signed(2 downto 0) := "011";
 	constant AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F46T51_Expr : std_logic := '0';
 	constant AXI4EncoderModule_L45F13L54T14_AXI4EncoderModule_L46F31T36_Expr : std_logic := '0';
 	signal internalEncoded : unsigned(2 downto 0) := (others => '0');

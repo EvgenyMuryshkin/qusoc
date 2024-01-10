@@ -72,8 +72,8 @@ architecture rtl of AXI4ReadInteconnectModule_1x2_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant leftCount : std_logic := '1';
-	constant rightCount : unsigned(1 downto 0) := "10";
+	constant leftCount : signed(1 downto 0) := "01";
+	constant rightCount : signed(2 downto 0) := "010";
 	constant InterconnectModule_L76F13L85T14_InterconnectModule_L77F39T44_Expr : std_logic := '0';
 	constant InterconnectModule_L125F39T43_Expr : std_logic := '1';
 	signal muxLeftData_AR_ARID : unsigned(7 downto 0) := (others => '0');
@@ -116,11 +116,11 @@ architecture rtl of AXI4ReadInteconnectModule_1x2_TopLevel is
 	signal InterconnectModule_L76F13L85T14_hasTransaction : std_logic := '0';
 	signal InterconnectModule_L93F13L96T14_0_InterconnectModule_L95F75T101_Index : std_logic := '0';
 	signal DuplexMux_iLeft0_DuplexMux_iLeft_HardLink : unsigned(83 downto 0) := "000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
-	signal DuplexMux_iLeftAddr_DuplexMux_iLeftAddr_HardLink : std_logic := '0';
+	signal DuplexMux_iLeftAddr_DuplexMux_iLeftAddr_HardLink : unsigned(0 downto 0) := "0";
 	signal DuplexMux_iLeftAddrValid_DuplexMux_iLeftAddrValid_HardLink : std_logic := '0';
 	signal DuplexMux_iRight0_DuplexMux_iRight_HardLink : unsigned(52 downto 0) := "00000000000000000000000000000000000000000000000000000";
 	signal DuplexMux_iRight1_DuplexMux_iRight_HardLink : unsigned(52 downto 0) := "00000000000000000000000000000000000000000000000000000";
-	signal DuplexMux_iRightAddr_DuplexMux_iRightAddr_HardLink : std_logic := '0';
+	signal DuplexMux_iRightAddr_DuplexMux_iRightAddr_HardLink : unsigned(0 downto 0) := "0";
 	signal DuplexMux_iRightAddrValid_DuplexMux_iRightAddrValid_HardLink : std_logic := '0';
 	signal DuplexMux_oLeft0_DuplexMux_oLeft_HardLink : unsigned(83 downto 0) := "000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
 	signal DuplexMux_oLeft1_DuplexMux_oLeft_HardLink : unsigned(83 downto 0) := "000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
@@ -129,8 +129,8 @@ architecture rtl of AXI4ReadInteconnectModule_1x2_TopLevel is
 	signal DuplexMux_oRight0_DuplexMux_oRight_HardLink : unsigned(52 downto 0) := "00000000000000000000000000000000000000000000000000000";
 	signal Encoder_iValues0_Encoder_iValues_HardLink : std_logic := '0';
 	signal Encoder_HasActive_Encoder_HasActive_HardLink : std_logic := '0';
-	signal Encoder_MSBIndex_Encoder_MSBIndex_HardLink : std_logic := '0';
-	signal Encoder_MSBValue_Encoder_MSBValue_HardLink : std_logic := '0';
+	signal Encoder_MSBIndex_Encoder_MSBIndex_HardLink : unsigned(0 downto 0) := "0";
+	signal Encoder_MSBValue_Encoder_MSBValue_HardLink : unsigned(0 downto 0) := "0";
 	signal TransactionDetectors0_iRestart_TransactionDetectors0_iRestart_HardLink : std_logic := '0';
 	signal TransactionDetectors0_iTXBegin_TransactionDetectors0_iTXBegin_HardLink : std_logic := '0';
 	signal TransactionDetectors0_iTXEnd_TransactionDetectors0_iTXEnd_HardLink : std_logic := '0';
@@ -138,7 +138,7 @@ architecture rtl of AXI4ReadInteconnectModule_1x2_TopLevel is
 	signal TransactionDetectors0_oWaitForRestart_TransactionDetectors0_oWaitForRestart_HardLink : std_logic := '0';
 	signal rangeDetectorArray_iAddress_rangeDetectorArray_iAddress_HardLink : unsigned(31 downto 0) := "00000000000000000000000000000000";
 	signal rangeDetectorArray_oActive_rangeDetectorArray_oActive_HardLink : std_logic := '0';
-	signal rangeDetectorArray_oIndex_rangeDetectorArray_oIndex_HardLink : std_logic := '0';
+	signal rangeDetectorArray_oIndex_rangeDetectorArray_oIndex_HardLink : unsigned(0 downto 0) := "0";
 	signal InterconnectModule_L76F13L85T14_InterconnectModule_L84F24T39_Expr : std_logic := '0';
 	signal InterconnectModule_L76F13L85T14_InterconnectModule_L84F24T39_Expr_1 : std_logic := '0';
 	signal InterconnectModule_L93F13L96T14_0_InterconnectModule_L95F38T101_Expr : unsigned(83 downto 0) := "000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
@@ -262,7 +262,7 @@ begin
 		InterconnectModule_L76F13L85T14_hasTransaction <= InterconnectModule_L76F13L85T14_InterconnectModule_L77F39T44_Expr;
 		tmp0 := InterconnectModule_L76F13L85T14_InterconnectModule_L77F39T44_Expr;
 		for idx in 0 to 0 loop
-			tmp0 := tmp0 OR ActiveTransactions;
+			tmp0 := tmp0 OR ActiveTransactions(idx);
 		end loop;
 		InterconnectModule_L76F13L85T14_hasTransaction <= tmp0;
 	end process;

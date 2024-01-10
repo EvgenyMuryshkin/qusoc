@@ -62,10 +62,10 @@ module AXILikeMuxModule_TopLevel_fullDuplexMux
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [3: 0] leftCount = 4'b1000;
-	wire [2: 0] rightCount = 3'b100;
-	wire Prefilled0 = 1'b0;
-	wire Prefilled1 = 1'b1;
+	wire signed [4: 0] leftCount = 5'b01000;
+	wire signed [3: 0] rightCount = 4'b0100;
+	wire [0: 0] Prefilled0 = 1'b0;
+	wire [0: 0] Prefilled1 = 1'b1;
 	wire [1: 0] Prefilled2 = 2'b10;
 	wire [1: 0] Prefilled3 = 2'b11;
 	wire [2: 0] Prefilled4 = 3'b100;

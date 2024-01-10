@@ -67,10 +67,10 @@ architecture rtl of AXILikeInteconnectModule_TopLevel_DuplexMux is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant leftCount : unsigned(3 downto 0) := "1000";
-	constant rightCount : unsigned(2 downto 0) := "100";
-	constant Prefilled0 : std_logic := '0';
-	constant Prefilled1 : std_logic := '1';
+	constant leftCount : signed(4 downto 0) := "01000";
+	constant rightCount : signed(3 downto 0) := "0100";
+	constant Prefilled0 : unsigned(0 downto 0) := "0";
+	constant Prefilled1 : unsigned(0 downto 0) := "1";
 	constant Prefilled2 : unsigned(1 downto 0) := "10";
 	constant Prefilled3 : unsigned(1 downto 0) := "11";
 	constant Prefilled4 : unsigned(2 downto 0) := "100";
@@ -407,11 +407,11 @@ begin
 		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprLhs(2) <= '0';
 		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprLhs(1 downto 0) <= signed(Inputs_iRightAddr);
 		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprRhs(2 downto 1) <= (others => '0');
-		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprRhs(0) <= Prefilled0;
+		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprRhs(0) <= Prefilled0(0);
 		FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprLhs(2) <= '0';
 		FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprLhs(1 downto 0) <= signed(Inputs_iRightAddr);
 		FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprRhs(2 downto 1) <= (others => '0');
-		FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprRhs(0) <= Prefilled1;
+		FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprRhs(0) <= Prefilled1(0);
 		FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F47T78_ExprLhs(2) <= '0';
 		FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F47T78_ExprLhs(1 downto 0) <= signed(Inputs_iRightAddr);
 		FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F47T78_ExprRhs(2) <= '0';
@@ -423,11 +423,11 @@ begin
 		FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprLhs(3) <= '0';
 		FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprLhs(2 downto 0) <= signed(Inputs_iLeftAddr);
 		FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprRhs(3 downto 1) <= (others => '0');
-		FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprRhs(0) <= Prefilled0;
+		FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprRhs(0) <= Prefilled0(0);
 		FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprLhs(3) <= '0';
 		FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprLhs(2 downto 0) <= signed(Inputs_iLeftAddr);
 		FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprRhs(3 downto 1) <= (others => '0');
-		FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprRhs(0) <= Prefilled1;
+		FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprRhs(0) <= Prefilled1(0);
 		FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F46T75_ExprLhs(3) <= '0';
 		FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F46T75_ExprLhs(2 downto 0) <= signed(Inputs_iLeftAddr);
 		FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F46T75_ExprRhs(3 downto 2) <= (others => '0');

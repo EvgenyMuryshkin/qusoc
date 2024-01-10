@@ -50,8 +50,8 @@ architecture rtl of AXI4Interconnect2x4TestModule_TopLevel is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	constant axiSize : unsigned(1 downto 0) := "10";
-	constant mCount : unsigned(1 downto 0) := "10";
-	constant sCount : unsigned(2 downto 0) := "100";
+	constant mCount : signed(2 downto 0) := "010";
+	constant sCount : signed(3 downto 0) := "0100";
 	constant AXI4Interconnect2x4TestModule_L62F13L74T14_0_AXI4Interconnect2x4TestModule_L69F30T31_Expr : std_logic := '0';
 	constant AXI4Interconnect2x4TestModule_L62F13L74T14_0_AXI4Interconnect2x4TestModule_L70F30T31_Expr : std_logic := '0';
 	constant AXI4Interconnect2x4TestModule_L62F13L74T14_1_AXI4Interconnect2x4TestModule_L69F30T31_Expr : std_logic := '0';

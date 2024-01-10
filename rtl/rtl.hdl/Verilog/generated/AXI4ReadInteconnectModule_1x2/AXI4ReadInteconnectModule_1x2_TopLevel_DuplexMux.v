@@ -44,10 +44,10 @@ module AXI4ReadInteconnectModule_1x2_TopLevel_DuplexMux
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire leftCount = 1'b1;
-	wire [1: 0] rightCount = 2'b10;
-	wire Prefilled0 = 1'b0;
-	wire Prefilled1 = 1'b1;
+	wire signed [1: 0] leftCount = 2'b01;
+	wire signed [2: 0] rightCount = 3'b010;
+	wire [0: 0] Prefilled0 = 1'b0;
+	wire [0: 0] Prefilled1 = 1'b1;
 	wire [0: 0] Inputs_iLeftAddr;
 	wire Inputs_iLeftAddrValid;
 	wire [0: 0] Inputs_iRightAddr;

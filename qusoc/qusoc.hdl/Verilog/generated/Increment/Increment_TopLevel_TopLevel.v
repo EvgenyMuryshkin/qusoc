@@ -110,10 +110,10 @@ module Increment_TopLevel_TopLevel
 	wire [1: 0] QuSoCModule_L46F47T109_Expr_1;
 	reg QuSoCModule_L128F39T70_Mux;
 	reg [31: 0] QuSoCModule_L127F40T73_Mux;
-	wire QuSoCModule_L128F39T70_MuxMultiplexerAddress;
+	wire [0: 0] QuSoCModule_L128F39T70_MuxMultiplexerAddress;
 	wire QuSoCModule_L128F39T70_Mux1;
 	wire QuSoCModule_L128F39T70_Mux2;
-	wire QuSoCModule_L127F40T73_MuxMultiplexerAddress;
+	wire [0: 0] QuSoCModule_L127F40T73_MuxMultiplexerAddress;
 	wire [31: 0] QuSoCModule_L127F40T73_Mux1;
 	wire [31: 0] QuSoCModule_L127F40T73_Mux2;
 	wire BoardSignals_Clock;

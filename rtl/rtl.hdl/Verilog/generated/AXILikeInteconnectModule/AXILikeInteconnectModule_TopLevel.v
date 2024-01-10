@@ -126,8 +126,8 @@ module AXILikeInteconnectModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [3: 0] leftCount = 4'b1000;
-	wire [2: 0] rightCount = 3'b100;
+	wire signed [4: 0] leftCount = 5'b01000;
+	wire signed [3: 0] rightCount = 4'b0100;
 	wire InterconnectModule_L76F13L85T14_InterconnectModule_L77F39T44_Expr = 1'b0;
 	wire InterconnectModule_L125F39T43_Expr = 1'b1;
 	wire muxLeftData_IsActive;

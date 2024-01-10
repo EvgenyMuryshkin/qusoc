@@ -26,7 +26,7 @@ module AXI4Interconnect2x4Module_TopLevel_masterReadEncoderModule
 	input wire iValues0,
 	input wire iValues1,
 	output wire HasActive,
-	output wire MSBIndex,
+	output wire [0:0] MSBIndex,
 	output wire [1:0] MSBValue
 );
 	// [BEGIN USER SIGNALS]
@@ -37,16 +37,16 @@ module AXI4Interconnect2x4Module_TopLevel_masterReadEncoderModule
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [1: 0] inputWidth = 2'b10;
-	wire resultWidth = 1'b1;
+	wire signed [2: 0] inputWidth = 3'b010;
+	wire signed [1: 0] resultWidth = 2'b01;
 	wire AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F46T51_Expr = 1'b0;
 	wire AXI4EncoderModule_L45F13L54T14_AXI4EncoderModule_L46F31T36_Expr = 1'b0;
-	wire internalEncoded;
+	wire [0: 0] internalEncoded;
 	wire internalHasActive;
-	wire AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize;
-	reg AXI4EncoderModule_L30F13L39T14_result;
+	wire [0: 0] AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize;
+	reg [0: 0] AXI4EncoderModule_L30F13L39T14_result;
 	integer idx;
-	wire AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize;
+	wire [0: 0] AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize;
 	reg AXI4EncoderModule_L45F13L54T14_result;
 	integer idx1;
 	wire [1: 0] AXI4EncoderModule_L59F40T101_ShiftLeft;
@@ -82,7 +82,7 @@ module AXI4Interconnect2x4Module_TopLevel_masterReadEncoderModule
 	assign AXI4EncoderModule_L59F40T101_Expr_1 = { 1'b0, internalHasActive };
 	assign Inputs_iValues[0] = iValues0;
 	assign Inputs_iValues[1] = iValues1;
-	assign AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize = AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F46T51_Expr;
+	assign AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize[0] = AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F46T51_Expr;
 	assign AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize = AXI4EncoderModule_L30F13L39T14_result;
 	assign internalEncoded = AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize;
 	assign internalHasActive = AXI4EncoderModule_L45F13L54T14_result;

@@ -78,7 +78,7 @@ namespace rtl.modules
 
                 for (var idx = 0; idx < leftCount; idx++)
                 {
-                    hasTransaction = hasTransaction | ActiveTransactions[idx];
+                    hasTransaction = hasTransaction | ActiveTransactions[idx];//dbg
                 }
 
                 return !hasTransaction;

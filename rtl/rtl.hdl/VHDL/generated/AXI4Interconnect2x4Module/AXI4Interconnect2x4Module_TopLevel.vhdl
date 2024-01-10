@@ -183,23 +183,23 @@ architecture rtl of AXI4Interconnect2x4Module_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant mCount : unsigned(1 downto 0) := "10";
-	constant sCount : unsigned(2 downto 0) := "100";
+	constant mCount : signed(2 downto 0) := "010";
+	constant sCount : signed(3 downto 0) := "0100";
 	signal masterReadEncoderModule_HasActive : std_logic := '0';
-	signal masterReadEncoderModule_MSBIndex : std_logic := '0';
+	signal masterReadEncoderModule_MSBIndex : unsigned(0 downto 0) := (others => '0');
 	signal masterReadEncoderModule_MSBValue : unsigned(1 downto 0) := (others => '0');
 	signal masterWriteEncoderModule_HasActive : std_logic := '0';
-	signal masterWriteEncoderModule_MSBIndex : std_logic := '0';
+	signal masterWriteEncoderModule_MSBIndex : unsigned(0 downto 0) := (others => '0');
 	signal masterWriteEncoderModule_MSBValue : unsigned(1 downto 0) := (others => '0');
 	signal masterReadEncoderModule_iValues0_masterReadEncoderModule_iValues_HardLink : std_logic := '0';
 	signal masterReadEncoderModule_iValues1_masterReadEncoderModule_iValues_HardLink : std_logic := '0';
 	signal masterReadEncoderModule_HasActive_masterReadEncoderModule_HasActive_HardLink : std_logic := '0';
-	signal masterReadEncoderModule_MSBIndex_masterReadEncoderModule_MSBIndex_HardLink : std_logic := '0';
+	signal masterReadEncoderModule_MSBIndex_masterReadEncoderModule_MSBIndex_HardLink : unsigned(0 downto 0) := "0";
 	signal masterReadEncoderModule_MSBValue_masterReadEncoderModule_MSBValue_HardLink : unsigned(1 downto 0) := "00";
 	signal masterWriteEncoderModule_iValues0_masterWriteEncoderModule_iValues_HardLink : std_logic := '0';
 	signal masterWriteEncoderModule_iValues1_masterWriteEncoderModule_iValues_HardLink : std_logic := '0';
 	signal masterWriteEncoderModule_HasActive_masterWriteEncoderModule_HasActive_HardLink : std_logic := '0';
-	signal masterWriteEncoderModule_MSBIndex_masterWriteEncoderModule_MSBIndex_HardLink : std_logic := '0';
+	signal masterWriteEncoderModule_MSBIndex_masterWriteEncoderModule_MSBIndex_HardLink : unsigned(0 downto 0) := "0";
 	signal masterWriteEncoderModule_MSBValue_masterWriteEncoderModule_MSBValue_HardLink : unsigned(1 downto 0) := "00";
 	type Inputs_M2SArray is array (0 to 1) of unsigned (221 downto 0);
 	signal Inputs_M2S : Inputs_M2SArray := (others => (others => '0'));

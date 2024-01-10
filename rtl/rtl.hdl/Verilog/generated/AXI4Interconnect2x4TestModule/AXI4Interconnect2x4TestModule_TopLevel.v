@@ -45,8 +45,8 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire [1: 0] axiSize = 2'b10;
-	wire [1: 0] mCount = 2'b10;
-	wire [2: 0] sCount = 3'b100;
+	wire signed [2: 0] mCount = 3'b010;
+	wire signed [3: 0] sCount = 4'b0100;
 	wire AXI4Interconnect2x4TestModule_L62F13L74T14_0_AXI4Interconnect2x4TestModule_L69F30T31_Expr = 1'b0;
 	wire AXI4Interconnect2x4TestModule_L62F13L74T14_0_AXI4Interconnect2x4TestModule_L70F30T31_Expr = 1'b0;
 	wire AXI4Interconnect2x4TestModule_L62F13L74T14_1_AXI4Interconnect2x4TestModule_L69F30T31_Expr = 1'b0;

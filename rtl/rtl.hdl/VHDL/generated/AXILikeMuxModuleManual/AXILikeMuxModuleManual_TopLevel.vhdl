@@ -113,14 +113,14 @@ architecture rtl of AXILikeMuxModuleManual_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant mastersCount : unsigned(3 downto 0) := "1000";
-	constant slavesCount : unsigned(2 downto 0) := "100";
+	constant mastersCount : signed(4 downto 0) := "01000";
+	constant slavesCount : signed(3 downto 0) := "0100";
 	constant AXILikeMuxModule_L18F32T37_Expr : std_logic := '0';
 	constant AXILikeMuxModule_L13F51T64_Expr : std_logic := '0';
 	constant AXILikeMuxModule_L12F32T37_Expr : std_logic := '0';
 	constant AXILikeMuxModule_L24F32T37_Expr : std_logic := '0';
-	constant Prefilled0 : std_logic := '0';
-	constant Prefilled1 : std_logic := '1';
+	constant Prefilled0 : unsigned(0 downto 0) := "0";
+	constant Prefilled1 : unsigned(0 downto 0) := "1";
 	constant Prefilled2 : unsigned(1 downto 0) := "10";
 	constant Prefilled3 : unsigned(1 downto 0) := "11";
 	constant Prefilled4 : unsigned(2 downto 0) := "100";
@@ -491,11 +491,11 @@ begin
 		AXILikeMuxModule_L137F13L147T14_0_AXILikeMuxModule_L139F63T80_ExprLhs(2) <= '0';
 		AXILikeMuxModule_L137F13L147T14_0_AXILikeMuxModule_L139F63T80_ExprLhs(1 downto 0) <= signed(Inputs_SAddr);
 		AXILikeMuxModule_L137F13L147T14_0_AXILikeMuxModule_L139F63T80_ExprRhs(2 downto 1) <= (others => '0');
-		AXILikeMuxModule_L137F13L147T14_0_AXILikeMuxModule_L139F63T80_ExprRhs(0) <= Prefilled0;
+		AXILikeMuxModule_L137F13L147T14_0_AXILikeMuxModule_L139F63T80_ExprRhs(0) <= Prefilled0(0);
 		AXILikeMuxModule_L137F13L147T14_1_AXILikeMuxModule_L139F63T80_ExprLhs(2) <= '0';
 		AXILikeMuxModule_L137F13L147T14_1_AXILikeMuxModule_L139F63T80_ExprLhs(1 downto 0) <= signed(Inputs_SAddr);
 		AXILikeMuxModule_L137F13L147T14_1_AXILikeMuxModule_L139F63T80_ExprRhs(2 downto 1) <= (others => '0');
-		AXILikeMuxModule_L137F13L147T14_1_AXILikeMuxModule_L139F63T80_ExprRhs(0) <= Prefilled1;
+		AXILikeMuxModule_L137F13L147T14_1_AXILikeMuxModule_L139F63T80_ExprRhs(0) <= Prefilled1(0);
 		AXILikeMuxModule_L137F13L147T14_2_AXILikeMuxModule_L139F63T80_ExprLhs(2) <= '0';
 		AXILikeMuxModule_L137F13L147T14_2_AXILikeMuxModule_L139F63T80_ExprLhs(1 downto 0) <= signed(Inputs_SAddr);
 		AXILikeMuxModule_L137F13L147T14_2_AXILikeMuxModule_L139F63T80_ExprRhs(2) <= '0';
@@ -507,11 +507,11 @@ begin
 		AXILikeMuxModule_L149F13L159T14_0_AXILikeMuxModule_L151F63T80_ExprLhs(3) <= '0';
 		AXILikeMuxModule_L149F13L159T14_0_AXILikeMuxModule_L151F63T80_ExprLhs(2 downto 0) <= signed(Inputs_MAddr);
 		AXILikeMuxModule_L149F13L159T14_0_AXILikeMuxModule_L151F63T80_ExprRhs(3 downto 1) <= (others => '0');
-		AXILikeMuxModule_L149F13L159T14_0_AXILikeMuxModule_L151F63T80_ExprRhs(0) <= Prefilled0;
+		AXILikeMuxModule_L149F13L159T14_0_AXILikeMuxModule_L151F63T80_ExprRhs(0) <= Prefilled0(0);
 		AXILikeMuxModule_L149F13L159T14_1_AXILikeMuxModule_L151F63T80_ExprLhs(3) <= '0';
 		AXILikeMuxModule_L149F13L159T14_1_AXILikeMuxModule_L151F63T80_ExprLhs(2 downto 0) <= signed(Inputs_MAddr);
 		AXILikeMuxModule_L149F13L159T14_1_AXILikeMuxModule_L151F63T80_ExprRhs(3 downto 1) <= (others => '0');
-		AXILikeMuxModule_L149F13L159T14_1_AXILikeMuxModule_L151F63T80_ExprRhs(0) <= Prefilled1;
+		AXILikeMuxModule_L149F13L159T14_1_AXILikeMuxModule_L151F63T80_ExprRhs(0) <= Prefilled1(0);
 		AXILikeMuxModule_L149F13L159T14_2_AXILikeMuxModule_L151F63T80_ExprLhs(3) <= '0';
 		AXILikeMuxModule_L149F13L159T14_2_AXILikeMuxModule_L151F63T80_ExprLhs(2 downto 0) <= signed(Inputs_MAddr);
 		AXILikeMuxModule_L149F13L159T14_2_AXILikeMuxModule_L151F63T80_ExprRhs(3 downto 2) <= (others => '0');
