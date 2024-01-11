@@ -12,7 +12,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Quokka.FPGA" Version="0.1.5.216" />
+    <PackageReference Include="Quokka.FPGA" Version="0.1.6.217" />
     <PackageReference Include="Quokka.RTL" Version="0.1.5.545" />
   </ItemGroup>
   <ItemGroup>

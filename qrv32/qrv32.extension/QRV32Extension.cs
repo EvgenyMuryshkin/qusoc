@@ -10,7 +10,7 @@ namespace qrv32.extension
         [ExtensionMethod(icon: TopLevelIcon.Translate)]
         public static void Translate()
         {
-            QuokkaRunner.FromConfig(Env.RTLVerilogConfig, new[] { nameof(RISCVModule) });
+            QuokkaRunner.FromConfig(Env.RTLVerilogConfig, new[] { nameof(DefaultRISCVModule) });
         }
     }
 }

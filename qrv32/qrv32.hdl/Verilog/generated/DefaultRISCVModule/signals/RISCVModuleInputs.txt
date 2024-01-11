@@ -1,0 +1,5 @@
+└Root         | RISCVModuleInputs | [65:0]  | 66 | [65:0] 
+ ├MemReady    | Boolean           | [65]    | 1  | [65:0][65:65]
+ ├MemReadData | RTLBitArray       | [64:33] | 32 | [65:0][64:33]
+ ├ExtIRQ      | Boolean           | [32]    | 1  | [65:0][32:32]
+ └BaseAddress | RTLBitArray       | [31:0]  | 32 | [65:0][31:0]
