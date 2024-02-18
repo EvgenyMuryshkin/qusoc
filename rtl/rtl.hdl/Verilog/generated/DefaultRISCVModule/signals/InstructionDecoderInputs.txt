@@ -1,0 +1,2 @@
+└Root         | InstructionDecoderInputs | [31:0] | 32 | [31:0]
+ └Instruction | UInt32                   | [31:0] | 32 | [31:0][31:0]

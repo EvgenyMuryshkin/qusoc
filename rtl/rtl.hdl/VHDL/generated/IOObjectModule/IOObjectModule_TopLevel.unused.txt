@@ -14,3 +14,5 @@ No writes:
 	NextState_Object_L1Byte
 	NextState_Object_L1Tuple_Item1
 	NextState_Object_L1Tuple_Item2
+	State_Object_L1Object_L2ObjectArrayArrayInit
+	State_ObjectsArrayInit

@@ -1,0 +1,33 @@
+{
+  "$type": "soc.SoC, soc",
+  "Components": [
+    {
+      "$type": "soc.Interconnect, soc",
+      "ComponentIds": [
+        "cf792626-236e-4f18-8129-1d42a2d63483",
+        "2fb14784-21a8-47c6-a2f4-d212e714764d",
+        "183a7fba-50cf-407d-b46a-dac7520adc20"
+      ],
+      "Id": "d6232ad8-9d05-4678-a81c-b377712757a4",
+      "Name": "Interconnect1"
+    },
+    {
+      "$type": "soc.RISCV, soc",
+      "Id": "cf792626-236e-4f18-8129-1d42a2d63483",
+      "Name": "CPU1"
+    },
+    {
+      "$type": "soc.Register, soc",
+      "Address": 0,
+      "Id": "2fb14784-21a8-47c6-a2f4-d212e714764d",
+      "Name": "Register1"
+    },
+    {
+      "$type": "soc.MemoryBlock, soc",
+      "Address": 4,
+      "Depth": 4,
+      "Id": "183a7fba-50cf-407d-b46a-dac7520adc20",
+      "Name": "MemoryBlock1"
+    }
+  ]
+}

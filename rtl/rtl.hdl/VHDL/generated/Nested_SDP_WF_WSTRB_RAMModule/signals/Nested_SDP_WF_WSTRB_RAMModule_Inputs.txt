@@ -6,5 +6,5 @@
  │├WriteData1  | Byte                                 | [32:25] | 8  | [52:0][48:17][15:8]
  │└WriteData0  | Byte                                 | [24:17] | 8  | [52:0][48:17][7:0]
  ├WriteAddress | Byte                                 | [16:9]  | 8  | [52:0][16:9]
- ├WE           | Boolean                              | [8]     | 1  | [52:0][8:8]
+ ├WE           | Boolean                              | [8]     | 1  | [52:0][8]
  └ReadAddress  | Byte                                 | [7:0]   | 8  | [52:0][7:0]

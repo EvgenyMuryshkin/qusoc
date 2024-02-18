@@ -2,6 +2,7 @@ No reads:
 	leftCount
 	rightCount
 No writes:
+	mEmptyLeftData_Addr
 	mEmptyLeftData_IsActive
 	mEmptyLeftData_Payload_Data
 	mEmptyLeftData_Payload_DataFlag

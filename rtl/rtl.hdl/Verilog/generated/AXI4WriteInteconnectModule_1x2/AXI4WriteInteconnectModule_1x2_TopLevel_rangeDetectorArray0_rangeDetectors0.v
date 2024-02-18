@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_rangeDetectors1, clock frequency is 1Hz, Embedded
+// System configuration name is AXI4WriteInteconnectModule_1x2_TopLevel_rangeDetectorArray0_rangeDetectors0, clock frequency is 1Hz, Embedded
 // FSM summary
 // -- Packages
-module AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_rangeDetectors1
+module AXI4WriteInteconnectModule_1x2_TopLevel_rangeDetectorArray0_rangeDetectors0
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
@@ -34,8 +34,8 @@ module AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_rangeDetectors1
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [28: 0] rangeFrom = 29'b10000000000000000000000000000;
-	wire [28: 0] rangeTo = 29'b10000000000000000000000000000;
+	wire [0: 0] rangeFrom = 1'b0;
+	wire [27: 0] rangeTo = 28'b1111111111111111111111111111;
 	wire [31: 0] Inputs_Value;
 	wire RangeDetectorModule_L34F33T85_Expr;
 	wire RangeDetectorModule_L34F33T85_Expr_1;
@@ -50,9 +50,9 @@ module AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_rangeDetectors1
 	assign RangeDetectorModule_L34F62T85_Expr = RangeDetectorModule_L34F62T85_ExprLhs <= RangeDetectorModule_L34F62T85_ExprRhs ? 1'b1 : 1'b0;
 	assign RangeDetectorModule_L34F33T85_Expr = RangeDetectorModule_L34F33T85_Expr_1 & RangeDetectorModule_L34F33T85_Expr_2;
 	assign RangeDetectorModule_L34F33T58_ExprLhs = { 1'b0, Inputs_Value };
-	assign RangeDetectorModule_L34F33T58_ExprRhs = { {4{1'b0}}, rangeFrom };
+	assign RangeDetectorModule_L34F33T58_ExprRhs = { {32{1'b0}}, rangeFrom };
 	assign RangeDetectorModule_L34F62T85_ExprLhs = { 1'b0, Inputs_Value };
-	assign RangeDetectorModule_L34F62T85_ExprRhs = { {4{1'b0}}, rangeTo };
+	assign RangeDetectorModule_L34F62T85_ExprRhs = { {5{1'b0}}, rangeTo };
 	assign RangeDetectorModule_L34F33T85_Expr_1 = RangeDetectorModule_L34F33T58_Expr;
 	assign RangeDetectorModule_L34F33T85_Expr_2 = RangeDetectorModule_L34F62T85_Expr;
 	assign Inputs_Value = Value;

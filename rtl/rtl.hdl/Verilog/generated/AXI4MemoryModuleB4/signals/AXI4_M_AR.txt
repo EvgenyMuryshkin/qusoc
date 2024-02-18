@@ -1,5 +1,5 @@
 └Root      | AXI4_M_AR | [82:0]  | 83 | [82:0] 
- ├ARVALID  | Boolean   | [82]    | 1  | [82:0][82:82]
+ ├ARVALID  | Boolean   | [82]    | 1  | [82:0][82]
  ├ARUSER   | Byte      | [81:74] | 8  | [82:0][81:74]
  ├ARREGION | Byte      | [73:66] | 8  | [82:0][73:66]
  ├ARQOS    | axiQOS    | [65:62] | 4  | [82:0][65:62]

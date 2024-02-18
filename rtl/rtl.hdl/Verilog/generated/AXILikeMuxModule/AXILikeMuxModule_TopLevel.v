@@ -25,27 +25,35 @@ module AXILikeMuxModule_TopLevel
 	// [END USER PORTS]
 	input wire [2:0] MAddr,
 	input wire MAddrValid,
+	input wire [1:0] MArr0_Addr,
 	input wire MArr0_IsActive,
 	input wire [7:0] MArr0_Payload_Data,
 	input wire MArr0_Payload_DataFlag,
+	input wire [1:0] MArr1_Addr,
 	input wire MArr1_IsActive,
 	input wire [7:0] MArr1_Payload_Data,
 	input wire MArr1_Payload_DataFlag,
+	input wire [1:0] MArr2_Addr,
 	input wire MArr2_IsActive,
 	input wire [7:0] MArr2_Payload_Data,
 	input wire MArr2_Payload_DataFlag,
+	input wire [1:0] MArr3_Addr,
 	input wire MArr3_IsActive,
 	input wire [7:0] MArr3_Payload_Data,
 	input wire MArr3_Payload_DataFlag,
+	input wire [1:0] MArr4_Addr,
 	input wire MArr4_IsActive,
 	input wire [7:0] MArr4_Payload_Data,
 	input wire MArr4_Payload_DataFlag,
+	input wire [1:0] MArr5_Addr,
 	input wire MArr5_IsActive,
 	input wire [7:0] MArr5_Payload_Data,
 	input wire MArr5_Payload_DataFlag,
+	input wire [1:0] MArr6_Addr,
 	input wire MArr6_IsActive,
 	input wire [7:0] MArr6_Payload_Data,
 	input wire MArr6_Payload_DataFlag,
+	input wire [1:0] MArr7_Addr,
 	input wire MArr7_IsActive,
 	input wire [7:0] MArr7_Payload_Data,
 	input wire MArr7_Payload_DataFlag,
@@ -63,15 +71,19 @@ module AXILikeMuxModule_TopLevel
 	input wire SArr3_IsActive,
 	input wire [7:0] SArr3_Payload_Data,
 	input wire SArr3_Payload_DataFlag,
+	output wire [1:0] OutMData0_Addr,
 	output wire OutMData0_IsActive,
 	output wire [7:0] OutMData0_Payload_Data,
 	output wire OutMData0_Payload_DataFlag,
+	output wire [1:0] OutMData1_Addr,
 	output wire OutMData1_IsActive,
 	output wire [7:0] OutMData1_Payload_Data,
 	output wire OutMData1_Payload_DataFlag,
+	output wire [1:0] OutMData2_Addr,
 	output wire OutMData2_IsActive,
 	output wire [7:0] OutMData2_Payload_Data,
 	output wire OutMData2_Payload_DataFlag,
+	output wire [1:0] OutMData3_Addr,
 	output wire OutMData3_IsActive,
 	output wire [7:0] OutMData3_Payload_Data,
 	output wire OutMData3_Payload_DataFlag,
@@ -118,16 +130,16 @@ module AXILikeMuxModule_TopLevel
 	wire fullDuplexMux_iLeftAddrValid;
 	wire [1: 0] fullDuplexMux_iRightAddr;
 	wire fullDuplexMux_iRightAddrValid;
-	wire [9: 0] fullDuplexMux_oMuxLeftData;
+	wire [11: 0] fullDuplexMux_oMuxLeftData;
 	wire [9: 0] fullDuplexMux_oMuxRightData;
-	wire [9: 0] fullDuplexMux_iLeft0_fullDuplexMux_iLeft_HardLink;
-	wire [9: 0] fullDuplexMux_iLeft1_fullDuplexMux_iLeft_HardLink;
-	wire [9: 0] fullDuplexMux_iLeft2_fullDuplexMux_iLeft_HardLink;
-	wire [9: 0] fullDuplexMux_iLeft3_fullDuplexMux_iLeft_HardLink;
-	wire [9: 0] fullDuplexMux_iLeft4_fullDuplexMux_iLeft_HardLink;
-	wire [9: 0] fullDuplexMux_iLeft5_fullDuplexMux_iLeft_HardLink;
-	wire [9: 0] fullDuplexMux_iLeft6_fullDuplexMux_iLeft_HardLink;
-	wire [9: 0] fullDuplexMux_iLeft7_fullDuplexMux_iLeft_HardLink;
+	wire [11: 0] fullDuplexMux_iLeft0_fullDuplexMux_iLeft_HardLink;
+	wire [11: 0] fullDuplexMux_iLeft1_fullDuplexMux_iLeft_HardLink;
+	wire [11: 0] fullDuplexMux_iLeft2_fullDuplexMux_iLeft_HardLink;
+	wire [11: 0] fullDuplexMux_iLeft3_fullDuplexMux_iLeft_HardLink;
+	wire [11: 0] fullDuplexMux_iLeft4_fullDuplexMux_iLeft_HardLink;
+	wire [11: 0] fullDuplexMux_iLeft5_fullDuplexMux_iLeft_HardLink;
+	wire [11: 0] fullDuplexMux_iLeft6_fullDuplexMux_iLeft_HardLink;
+	wire [11: 0] fullDuplexMux_iLeft7_fullDuplexMux_iLeft_HardLink;
 	wire [2: 0] fullDuplexMux_iLeftAddr_fullDuplexMux_iLeftAddr_HardLink;
 	wire fullDuplexMux_iLeftAddrValid_fullDuplexMux_iLeftAddrValid_HardLink;
 	wire [9: 0] fullDuplexMux_iRight0_fullDuplexMux_iRight_HardLink;
@@ -136,11 +148,11 @@ module AXILikeMuxModule_TopLevel
 	wire [9: 0] fullDuplexMux_iRight3_fullDuplexMux_iRight_HardLink;
 	wire [1: 0] fullDuplexMux_iRightAddr_fullDuplexMux_iRightAddr_HardLink;
 	wire fullDuplexMux_iRightAddrValid_fullDuplexMux_iRightAddrValid_HardLink;
-	wire [9: 0] fullDuplexMux_oLeft0_fullDuplexMux_oLeft_HardLink;
-	wire [9: 0] fullDuplexMux_oLeft1_fullDuplexMux_oLeft_HardLink;
-	wire [9: 0] fullDuplexMux_oLeft2_fullDuplexMux_oLeft_HardLink;
-	wire [9: 0] fullDuplexMux_oLeft3_fullDuplexMux_oLeft_HardLink;
-	wire [9: 0] fullDuplexMux_oMuxLeftData_fullDuplexMux_oMuxLeftData_HardLink;
+	wire [11: 0] fullDuplexMux_oLeft0_fullDuplexMux_oLeft_HardLink;
+	wire [11: 0] fullDuplexMux_oLeft1_fullDuplexMux_oLeft_HardLink;
+	wire [11: 0] fullDuplexMux_oLeft2_fullDuplexMux_oLeft_HardLink;
+	wire [11: 0] fullDuplexMux_oLeft3_fullDuplexMux_oLeft_HardLink;
+	wire [11: 0] fullDuplexMux_oMuxLeftData_fullDuplexMux_oMuxLeftData_HardLink;
 	wire [9: 0] fullDuplexMux_oMuxRightData_fullDuplexMux_oMuxRightData_HardLink;
 	wire [9: 0] fullDuplexMux_oRight0_fullDuplexMux_oRight_HardLink;
 	wire [9: 0] fullDuplexMux_oRight1_fullDuplexMux_oRight_HardLink;
@@ -150,11 +162,11 @@ module AXILikeMuxModule_TopLevel
 	wire [9: 0] fullDuplexMux_oRight5_fullDuplexMux_oRight_HardLink;
 	wire [9: 0] fullDuplexMux_oRight6_fullDuplexMux_oRight_HardLink;
 	wire [9: 0] fullDuplexMux_oRight7_fullDuplexMux_oRight_HardLink;
-	wire [9 : 0] Inputs_MArr [0 : 7];
+	wire [11 : 0] Inputs_MArr [0 : 7];
 	wire [9 : 0] Inputs_SArr [0 : 3];
-	wire [9 : 0] fullDuplexMux_iLeft [0 : 7];
+	wire [11 : 0] fullDuplexMux_iLeft [0 : 7];
 	wire [9 : 0] fullDuplexMux_iRight [0 : 3];
-	wire [9 : 0] fullDuplexMux_oLeft [0 : 3];
+	wire [11 : 0] fullDuplexMux_oLeft [0 : 3];
 	wire [9 : 0] fullDuplexMux_oRight [0 : 7];
 	AXILikeMuxModule_TopLevel_fullDuplexMux
 	AXILikeMuxModule_TopLevel_fullDuplexMux
@@ -194,30 +206,38 @@ module AXILikeMuxModule_TopLevel
 	);
 	assign Inputs_MAddr = MAddr;
 	assign Inputs_MAddrValid = MAddrValid;
-	assign Inputs_MArr[0][9] = MArr0_Payload_DataFlag;
-	assign Inputs_MArr[0][8:1] = MArr0_Payload_Data;
-	assign Inputs_MArr[0][0] = MArr0_IsActive;
-	assign Inputs_MArr[1][9] = MArr1_Payload_DataFlag;
-	assign Inputs_MArr[1][8:1] = MArr1_Payload_Data;
-	assign Inputs_MArr[1][0] = MArr1_IsActive;
-	assign Inputs_MArr[2][9] = MArr2_Payload_DataFlag;
-	assign Inputs_MArr[2][8:1] = MArr2_Payload_Data;
-	assign Inputs_MArr[2][0] = MArr2_IsActive;
-	assign Inputs_MArr[3][9] = MArr3_Payload_DataFlag;
-	assign Inputs_MArr[3][8:1] = MArr3_Payload_Data;
-	assign Inputs_MArr[3][0] = MArr3_IsActive;
-	assign Inputs_MArr[4][9] = MArr4_Payload_DataFlag;
-	assign Inputs_MArr[4][8:1] = MArr4_Payload_Data;
-	assign Inputs_MArr[4][0] = MArr4_IsActive;
-	assign Inputs_MArr[5][9] = MArr5_Payload_DataFlag;
-	assign Inputs_MArr[5][8:1] = MArr5_Payload_Data;
-	assign Inputs_MArr[5][0] = MArr5_IsActive;
-	assign Inputs_MArr[6][9] = MArr6_Payload_DataFlag;
-	assign Inputs_MArr[6][8:1] = MArr6_Payload_Data;
-	assign Inputs_MArr[6][0] = MArr6_IsActive;
-	assign Inputs_MArr[7][9] = MArr7_Payload_DataFlag;
-	assign Inputs_MArr[7][8:1] = MArr7_Payload_Data;
-	assign Inputs_MArr[7][0] = MArr7_IsActive;
+	assign Inputs_MArr[0][11] = MArr0_Payload_DataFlag;
+	assign Inputs_MArr[0][10:3] = MArr0_Payload_Data;
+	assign Inputs_MArr[0][2] = MArr0_IsActive;
+	assign Inputs_MArr[0][1:0] = MArr0_Addr;
+	assign Inputs_MArr[1][11] = MArr1_Payload_DataFlag;
+	assign Inputs_MArr[1][10:3] = MArr1_Payload_Data;
+	assign Inputs_MArr[1][2] = MArr1_IsActive;
+	assign Inputs_MArr[1][1:0] = MArr1_Addr;
+	assign Inputs_MArr[2][11] = MArr2_Payload_DataFlag;
+	assign Inputs_MArr[2][10:3] = MArr2_Payload_Data;
+	assign Inputs_MArr[2][2] = MArr2_IsActive;
+	assign Inputs_MArr[2][1:0] = MArr2_Addr;
+	assign Inputs_MArr[3][11] = MArr3_Payload_DataFlag;
+	assign Inputs_MArr[3][10:3] = MArr3_Payload_Data;
+	assign Inputs_MArr[3][2] = MArr3_IsActive;
+	assign Inputs_MArr[3][1:0] = MArr3_Addr;
+	assign Inputs_MArr[4][11] = MArr4_Payload_DataFlag;
+	assign Inputs_MArr[4][10:3] = MArr4_Payload_Data;
+	assign Inputs_MArr[4][2] = MArr4_IsActive;
+	assign Inputs_MArr[4][1:0] = MArr4_Addr;
+	assign Inputs_MArr[5][11] = MArr5_Payload_DataFlag;
+	assign Inputs_MArr[5][10:3] = MArr5_Payload_Data;
+	assign Inputs_MArr[5][2] = MArr5_IsActive;
+	assign Inputs_MArr[5][1:0] = MArr5_Addr;
+	assign Inputs_MArr[6][11] = MArr6_Payload_DataFlag;
+	assign Inputs_MArr[6][10:3] = MArr6_Payload_Data;
+	assign Inputs_MArr[6][2] = MArr6_IsActive;
+	assign Inputs_MArr[6][1:0] = MArr6_Addr;
+	assign Inputs_MArr[7][11] = MArr7_Payload_DataFlag;
+	assign Inputs_MArr[7][10:3] = MArr7_Payload_Data;
+	assign Inputs_MArr[7][2] = MArr7_IsActive;
+	assign Inputs_MArr[7][1:0] = MArr7_Addr;
 	assign Inputs_SAddr = SAddr;
 	assign Inputs_SAddrValid = SAddrValid;
 	assign Inputs_SArr[0][9] = SArr0_Payload_DataFlag;
@@ -248,18 +268,22 @@ module AXILikeMuxModule_TopLevel
 	assign fullDuplexMux_iRight[3] = Inputs_SArr[3];
 	assign fullDuplexMux_iRightAddr = Inputs_SAddr;
 	assign fullDuplexMux_iRightAddrValid = Inputs_SAddrValid;
-	assign OutMData0_Payload_DataFlag = fullDuplexMux_oLeft[0][9];
-	assign OutMData0_Payload_Data = fullDuplexMux_oLeft[0][8:1];
-	assign OutMData0_IsActive = fullDuplexMux_oLeft[0][0];
-	assign OutMData1_Payload_DataFlag = fullDuplexMux_oLeft[1][9];
-	assign OutMData1_Payload_Data = fullDuplexMux_oLeft[1][8:1];
-	assign OutMData1_IsActive = fullDuplexMux_oLeft[1][0];
-	assign OutMData2_Payload_DataFlag = fullDuplexMux_oLeft[2][9];
-	assign OutMData2_Payload_Data = fullDuplexMux_oLeft[2][8:1];
-	assign OutMData2_IsActive = fullDuplexMux_oLeft[2][0];
-	assign OutMData3_Payload_DataFlag = fullDuplexMux_oLeft[3][9];
-	assign OutMData3_Payload_Data = fullDuplexMux_oLeft[3][8:1];
-	assign OutMData3_IsActive = fullDuplexMux_oLeft[3][0];
+	assign OutMData0_Payload_DataFlag = fullDuplexMux_oLeft[0][11];
+	assign OutMData0_Payload_Data = fullDuplexMux_oLeft[0][10:3];
+	assign OutMData0_IsActive = fullDuplexMux_oLeft[0][2];
+	assign OutMData0_Addr = fullDuplexMux_oLeft[0][1:0];
+	assign OutMData1_Payload_DataFlag = fullDuplexMux_oLeft[1][11];
+	assign OutMData1_Payload_Data = fullDuplexMux_oLeft[1][10:3];
+	assign OutMData1_IsActive = fullDuplexMux_oLeft[1][2];
+	assign OutMData1_Addr = fullDuplexMux_oLeft[1][1:0];
+	assign OutMData2_Payload_DataFlag = fullDuplexMux_oLeft[2][11];
+	assign OutMData2_Payload_Data = fullDuplexMux_oLeft[2][10:3];
+	assign OutMData2_IsActive = fullDuplexMux_oLeft[2][2];
+	assign OutMData2_Addr = fullDuplexMux_oLeft[2][1:0];
+	assign OutMData3_Payload_DataFlag = fullDuplexMux_oLeft[3][11];
+	assign OutMData3_Payload_Data = fullDuplexMux_oLeft[3][10:3];
+	assign OutMData3_IsActive = fullDuplexMux_oLeft[3][2];
+	assign OutMData3_Addr = fullDuplexMux_oLeft[3][1:0];
 	assign OutSData0_Payload_DataFlag = fullDuplexMux_oRight[0][9];
 	assign OutSData0_Payload_Data = fullDuplexMux_oRight[0][8:1];
 	assign OutSData0_IsActive = fullDuplexMux_oRight[0][0];

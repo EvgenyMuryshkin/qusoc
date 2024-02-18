@@ -1,2 +1,4 @@
 No reads:
 	State_BuffDefault
+No writes:
+	State_BuffArrayInit

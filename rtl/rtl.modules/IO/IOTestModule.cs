@@ -80,48 +80,5 @@ namespace RTL.Modules
                 NextState.IteratorArray[idx] = Inputs.InArray[idx];
         }
     }
-
-
-    public class IOSingleBitMemoryInputs
-    {
-        public RTLBitArray iBit = new RTLBitArray(false);
-        //public RTLBitArray[] iBitArrayBlock = new RTLBitArray[] { new RTLBitArray(false) };
-        //public bool[] iBoolBlock = new bool[] { false };
-    }
-
-    public class IOSingleBitMemoryState
-    {
-        public RTLBitArray bit = new RTLBitArray(false);
-        public RTLBitArray bitInternal = new RTLBitArray(false);
-        //public RTLBitArray[] bitArrayBlock = new RTLBitArray[] { new RTLBitArray(false) };
-        //public bool[] boolBlock = new bool[] { false };
-    }
-
-
-    public class IOSingleBitMemoryModule : RTLSynchronousModule<IOSingleBitMemoryInputs, IOSingleBitMemoryState>
-    {
-        //RTLBitArray[] bitArrayBlock => Inputs.iBitArrayBlock;
-        //bool[] boolBlock => Inputs.iBoolBlock;
-        RTLBitArray bit => Inputs.iBit;
-
-        public RTLBitArray oBitInternal => bit;
-        public RTLBitArray oBit => Inputs.iBit;
-        public bool oBit0 => Inputs.iBit[0];
-
-        public RTLBitArray oBitState => State.bit;
-        public RTLBitArray oBitStateInternal => State.bitInternal;
-
-        //public RTLBitArray[] oBitArrayBlock => State.bitArrayBlock;
-        //public bool[] oBoolBlock => State.boolBlock;
-
-        protected override void OnStage()
-        {
-            NextState.bit = Inputs.iBit;
-            NextState.bitInternal = bit;
-
-            //NextState.bitArrayBlock = bitArrayBlock;
-            //NextState.boolBlock = boolBlock;
-        }
-    }
 }
 

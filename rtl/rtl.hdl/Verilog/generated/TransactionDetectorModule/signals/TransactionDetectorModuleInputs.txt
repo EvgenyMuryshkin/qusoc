@@ -1,4 +1,4 @@
 └Root      | TransactionDetectorModuleInputs | [2:0] | 3 | [2:0]
- ├iTXEnd   | Boolean                         | [2]   | 1 | [2:0][2:2]
- ├iTXBegin | Boolean                         | [1]   | 1 | [2:0][1:1]
- └iRestart | Boolean                         | [0]   | 1 | [2:0][0:0]
+ ├iTXEnd   | Boolean                         | [2]   | 1 | [2:0][2]
+ ├iTXBegin | Boolean                         | [1]   | 1 | [2:0][1]
+ └iRestart | Boolean                         | [0]   | 1 | [2:0][0]

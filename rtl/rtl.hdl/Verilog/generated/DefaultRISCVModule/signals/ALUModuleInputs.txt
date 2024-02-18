@@ -1,0 +1,4 @@
+└Root   | ALUModuleInputs | [68:0]  | 69 | [68:0] 
+ ├SHAMT | RTLBitArray     | [68:64] | 5  | [68:0][68:64]
+ ├Op2   | RTLBitArray     | [63:32] | 32 | [68:0][63:32]
+ └Op1   | RTLBitArray     | [31:0]  | 32 | [68:0][31:0]

@@ -1,1 +1,3 @@
-Warning (10268): Verilog HDL information at SP_WF_WSTRB_RAMModule_TopLevel.v(61): always construct contains both blocking and non-blocking assignments
+Info (10281): Verilog HDL Declaration information at DefaultRISCVModule_TopLevel_ID.v(37): object "OpCode" differs only in case from object "OPCode" in the same scope
+Info (10281): Verilog HDL Declaration information at DefaultRISCVModule_TopLevel.v(370): object "ID_OpCode" differs only in case from object "ID_OPCode" in the same scope
+Info (10281): Verilog HDL Declaration information at DefaultRISCVModule_TopLevel.v(546): object "ID_OpCode_ID_OpCode_HardLink" differs only in case from object "ID_OPCode_ID_OPCode_HardLink" in the same scope

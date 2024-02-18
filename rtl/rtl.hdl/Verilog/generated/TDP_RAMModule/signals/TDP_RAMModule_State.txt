@@ -1,5 +1,5 @@
 └Root              | TDP_RAMModule_State | [2064:0]    | 2065 | [2064:0]   
- ├SameAddressWrite | Boolean             | [2064]      | 1    | [2064:0][2064:2064]
+ ├SameAddressWrite | Boolean             | [2064]      | 1    | [2064:0][2064]
  ├DataB            | Byte                | [2063:2056] | 8    | [2064:0][2063:2056]
  ├DataA            | Byte                | [2055:2048] | 8    | [2064:0][2055:2048]
  └Buff             | Byte[]              | [2047:0]    | 2048 | [2064:0][2047:0]

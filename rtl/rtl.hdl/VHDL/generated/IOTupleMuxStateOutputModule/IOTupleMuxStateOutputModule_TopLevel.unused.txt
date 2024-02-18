@@ -5,3 +5,10 @@ No reads:
 	State_Sel1_iTuple_Item4_L2_L2ValuesDefault
 	State_Sel1_iTuple_Item4_L2Tuple_Item2_L2ValuesDefault
 	State_Sel1_iTupleArrayDefault
+No writes:
+	State_Sel0_iTuple_Item4_L2_L2ValuesArrayInit
+	State_Sel0_iTuple_Item4_L2Tuple_Item2_L2ValuesArrayInit
+	State_Sel0_iTupleArrayArrayInit
+	State_Sel1_iTuple_Item4_L2_L2ValuesArrayInit
+	State_Sel1_iTuple_Item4_L2Tuple_Item2_L2ValuesArrayInit
+	State_Sel1_iTupleArrayArrayInit

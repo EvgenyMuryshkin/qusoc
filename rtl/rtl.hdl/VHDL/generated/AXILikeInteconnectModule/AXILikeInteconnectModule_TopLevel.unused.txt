@@ -1,4 +1,5 @@
 No reads:
+	Encoder_MSBValue
 	leftCount
 	muxRightData_IsActive
 	muxRightData_Payload_Data

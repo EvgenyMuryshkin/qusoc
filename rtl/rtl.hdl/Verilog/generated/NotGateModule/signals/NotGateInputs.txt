@@ -1,2 +1,2 @@
 └Root   | NotGateInputs | [0] | 1 | [0:0]
- └Input | Boolean       | [0] | 1 | [0:0][0:0]
+ └Input | Boolean       | [0] | 1 | [0:0][0]

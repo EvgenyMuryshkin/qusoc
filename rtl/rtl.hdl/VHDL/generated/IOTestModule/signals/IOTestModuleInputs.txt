@@ -1,5 +1,5 @@
 └Root       | IOTestModuleInputs | [16:0] | 17 | [16:0]
- ├InFlag    | Boolean            | [16]   | 1  | [16:0][16:16]
+ ├InFlag    | Boolean            | [16]   | 1  | [16:0][16]
  └InArray   | Byte[]             | [15:0] | 16 | [16:0][15:0]
   ├InArray1 | Byte               | [15:8] | 8  | [16:0][15:0][15:8]
   └InArray0 | Byte               | [7:0]  | 8  | [16:0][15:0][7:0]

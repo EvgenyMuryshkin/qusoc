@@ -1,5 +1,5 @@
 └Root      | AnonymousPipelineModuleInputs | [64:0]  | 65 | [64:0] 
- ├inReady  | Boolean                       | [64]    | 1  | [64:0][64:64]
+ ├inReady  | Boolean                       | [64]    | 1  | [64:0][64]
  └inData   | Byte[]                        | [63:0]  | 64 | [64:0][63:0]
   ├inData7 | Byte                          | [63:56] | 8  | [64:0][63:0][63:56]
   ├inData6 | Byte                          | [55:48] | 8  | [64:0][63:0][55:48]

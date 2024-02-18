@@ -1,6 +1,8 @@
 No reads:
+	ActiveTransactions
+	Encoder_MSBValue
 	leftCount
-	muxLeft
+	muxLeftData_AR_ARADDR
 	muxLeftData_AR_ARBURST
 	muxLeftData_AR_ARCACHE
 	muxLeftData_AR_ARID
@@ -13,14 +15,10 @@ No reads:
 	muxLeftData_AR_ARUSER
 	muxLeftData_AR_ARVALID
 	muxLeftData_R_RREADY
-	muxRight
 	muxRightData_AR_ARREADY
 	muxRightData_R_RDATA
 	muxRightData_R_RID
 	muxRightData_R_RLAST
 	muxRightData_R_RRESP
 	muxRightData_R_RUSER
-	rangeDetectorArray_oActive
-	restartTransactions
 	rightCount
-	Transactions

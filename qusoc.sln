@@ -53,6 +53,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fir.modules", "fir\fir.modu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "qrv32.extension", "qrv32\qrv32.extension\qrv32.extension.csproj", "{0EED64B9-8DA4-455F-8CF8-E18C4C1CA9EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "soc", "rtl\soc\soc.csproj", "{6B287865-C51E-4A94-A98F-084CEB610FD1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -139,6 +141,10 @@ Global
 		{0EED64B9-8DA4-455F-8CF8-E18C4C1CA9EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EED64B9-8DA4-455F-8CF8-E18C4C1CA9EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EED64B9-8DA4-455F-8CF8-E18C4C1CA9EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B287865-C51E-4A94-A98F-084CEB610FD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B287865-C51E-4A94-A98F-084CEB610FD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B287865-C51E-4A94-A98F-084CEB610FD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B287865-C51E-4A94-A98F-084CEB610FD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -163,6 +169,7 @@ Global
 		{B96F7FEE-AC92-4541-B0CD-86077FFA0657} = {20548544-2610-4DF6-A818-B0D5961CC588}
 		{259EEBED-194D-4523-BCA1-EE985D591626} = {20548544-2610-4DF6-A818-B0D5961CC588}
 		{0EED64B9-8DA4-455F-8CF8-E18C4C1CA9EC} = {EC11E090-86D0-44A3-9D28-23EE6E7C31F1}
+		{6B287865-C51E-4A94-A98F-084CEB610FD1} = {49F137C7-01F3-4899-A365-F5E93A128425}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0BE3F9BA-A23D-459E-8A7D-2D9F1612D011}

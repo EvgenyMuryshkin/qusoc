@@ -1,0 +1,4 @@
+No reads:
+	State_bitArrayBlockDefault
+No writes:
+	State_bitArrayBlockArrayInit

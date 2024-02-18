@@ -1,2 +1,4 @@
 No reads:
 	State_ValueDefault
+No writes:
+	State_ValueArrayInit

@@ -14,12 +14,12 @@
 --   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 --   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 --
--- System configuration name is AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray, clock frequency is 1Hz, Embedded
+-- System configuration name is AXI4WriteInteconnectModule_1x2_TopLevel_rangeDetectorArray0, clock frequency is 1Hz, Embedded
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use work.Quokka.all;
-entity AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray is
+entity AXI4WriteInteconnectModule_1x2_TopLevel_rangeDetectorArray0 is
 	port
 	(
 		-- [BEGIN USER PORTS]
@@ -31,7 +31,7 @@ entity AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray is
 end entity;
 -- FSM summary
 -- Packages
-architecture rtl of AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray is
+architecture rtl of AXI4WriteInteconnectModule_1x2_TopLevel_rangeDetectorArray0 is
 	-- [BEGIN USER SIGNALS]
 	-- [END USER SIGNALS]
 	constant HiSignal : std_logic := '1';
@@ -63,7 +63,7 @@ architecture rtl of AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray is
 	type encoder_iValuesArray is array (0 to 1) of std_logic;
 	signal encoder_iValues : encoder_iValuesArray := (others => '0');
 begin
-	AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_encoder : entity work.AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_encoder
+	AXI4WriteInteconnectModule_1x2_TopLevel_rangeDetectorArray0_encoder : entity work.AXI4WriteInteconnectModule_1x2_TopLevel_rangeDetectorArray0_encoder
 	port map
 	(
 		-- [BEGIN USER MAP FOR encoder]
@@ -75,7 +75,7 @@ begin
 		MSBValue => encoder_MSBValue_encoder_MSBValue_HardLink
 	)
 	;
-	AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_rangeDetectors0 : entity work.AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_rangeDetectors0
+	AXI4WriteInteconnectModule_1x2_TopLevel_rangeDetectorArray0_rangeDetectors0 : entity work.AXI4WriteInteconnectModule_1x2_TopLevel_rangeDetectorArray0_rangeDetectors0
 	port map
 	(
 		-- [BEGIN USER MAP FOR rangeDetectors0]
@@ -84,7 +84,7 @@ begin
 		IsActive => rangeDetectors0_IsActive_rangeDetectors0_IsActive_HardLink
 	)
 	;
-	AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_rangeDetectors1 : entity work.AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_rangeDetectors1
+	AXI4WriteInteconnectModule_1x2_TopLevel_rangeDetectorArray0_rangeDetectors1 : entity work.AXI4WriteInteconnectModule_1x2_TopLevel_rangeDetectorArray0_rangeDetectors1
 	port map
 	(
 		-- [BEGIN USER MAP FOR rangeDetectors1]

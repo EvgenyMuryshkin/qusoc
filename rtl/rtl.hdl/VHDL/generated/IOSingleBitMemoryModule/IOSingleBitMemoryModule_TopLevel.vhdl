@@ -27,11 +27,17 @@ entity IOSingleBitMemoryModule_TopLevel is
 		Clock : in std_logic;
 		Reset : in std_logic;
 		iBit : in unsigned (0 downto 0);
+		iBitArrayBlock0 : in unsigned (0 downto 0);
+		iBoolBlock0 : in std_logic;
 		oBit : out unsigned (0 downto 0);
 		oBit0 : out std_logic;
 		oBitInternal : out unsigned (0 downto 0);
 		oBitState : out unsigned (0 downto 0);
-		oBitStateInternal : out unsigned (0 downto 0)
+		oBitStateInternal : out unsigned (0 downto 0);
+		oInputBoolBlock0 : out std_logic;
+		oInternalBoolBlock0 : out std_logic;
+		oStateBitArrayBlock0 : out unsigned (0 downto 0);
+		oStateBoolBlock0 : out std_logic
 	);
 end entity;
 -- FSM summary
@@ -45,14 +51,33 @@ architecture rtl of IOSingleBitMemoryModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
+	constant State_bitArrayBlockDefault : unsigned(0 downto 0) := "0";
+	constant State_boolBlockDefault : std_logic := '0';
 	signal Inputs_iBit : unsigned(0 downto 0) := (others => '0');
 	signal NextState_bit : unsigned(0 downto 0) := (others => '0');
 	signal NextState_bitInternal : unsigned(0 downto 0) := (others => '0');
-	signal bit : unsigned(0 downto 0) := (others => '0');
+	signal intBit : unsigned(0 downto 0) := (others => '0');
 	signal State_bit : unsigned(0 downto 0) := "0";
 	constant State_bitDefault : unsigned(0 downto 0) := "0";
 	signal State_bitInternal : unsigned(0 downto 0) := "0";
 	constant State_bitInternalDefault : unsigned(0 downto 0) := "0";
+	type Inputs_iBitArrayBlockArray is array (0 to 0) of unsigned (0 downto 0);
+	signal Inputs_iBitArrayBlock : Inputs_iBitArrayBlockArray := (others => (others => '0'));
+	type Inputs_iBoolBlockArray is array (0 to 0) of std_logic;
+	signal Inputs_iBoolBlock : Inputs_iBoolBlockArray := (others => '0');
+	type State_bitArrayBlockArray is array (0 to 0) of unsigned (0 downto 0);
+	constant State_bitArrayBlockArrayInit : State_bitArrayBlockArray := (0 => "1");
+	signal State_bitArrayBlock : State_bitArrayBlockArray := State_bitArrayBlockArrayInit;
+	type NextState_bitArrayBlockArray is array (0 to 0) of unsigned (0 downto 0);
+	signal NextState_bitArrayBlock : NextState_bitArrayBlockArray := (others => (others => '0'));
+	type State_boolBlockArray is array (0 to 0) of std_logic;
+	signal State_boolBlock : State_boolBlockArray := (others => '0');
+	type NextState_boolBlockArray is array (0 to 0) of std_logic;
+	signal NextState_boolBlock : NextState_boolBlockArray := (others => '0');
+	type bitArrayBlockArray is array (0 to 0) of unsigned (0 downto 0);
+	signal bitArrayBlock : bitArrayBlockArray := (others => (others => '0'));
+	type boolBlockArray is array (0 to 0) of std_logic;
+	signal boolBlock : boolBlockArray := (others => '0');
 begin
 	process (Clock, NextState_bit, NextState_bitInternal, Reset)
 	begin
@@ -66,22 +91,64 @@ begin
 			end if;
 		end if;
 	end process;
-	process (bit, Inputs_iBit, State_bit, State_bitInternal)
+	process (Clock, NextState_bitArrayBlock, Reset)
 	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				null;
+			else
+				for State_bitArrayBlock_Iterator in 0 to 0 loop
+					State_bitArrayBlock(State_bitArrayBlock_Iterator) <= NextState_bitArrayBlock(State_bitArrayBlock_Iterator);
+				end loop;
+			end if;
+		end if;
+	end process;
+	process (Clock, NextState_boolBlock, Reset)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				for State_boolBlock_Iterator in 0 to 0 loop
+					State_boolBlock(State_boolBlock_Iterator) <= State_boolBlockDefault;
+				end loop;
+			else
+				for State_boolBlock_Iterator in 0 to 0 loop
+					State_boolBlock(State_boolBlock_Iterator) <= NextState_boolBlock(State_boolBlock_Iterator);
+				end loop;
+			end if;
+		end if;
+	end process;
+	process (bitArrayBlock, boolBlock, Inputs_iBit, intBit, State_bit, State_bitArrayBlock, State_bitInternal, State_boolBlock)
+	begin
+		for NextState_bitArrayBlock_Iterator in 0 to 0 loop
+			NextState_bitArrayBlock(NextState_bitArrayBlock_Iterator) <= State_bitArrayBlock(NextState_bitArrayBlock_Iterator);
+		end loop;
+		for NextState_boolBlock_Iterator in 0 to 0 loop
+			NextState_boolBlock(NextState_boolBlock_Iterator) <= State_boolBlock(NextState_boolBlock_Iterator);
+		end loop;
 		NextState_bit <= State_bit;
 		NextState_bitInternal <= State_bitInternal;
 		NextState_bit <= Inputs_iBit;
-		NextState_bitInternal <= bit;
+		NextState_bitInternal <= intBit;
+		NextState_bitArrayBlock(0) <= bitArrayBlock(0);
+		NextState_boolBlock(0) <= boolBlock(0);
 	end process;
-	process (bit, iBit, Inputs_iBit, State_bit, State_bitInternal)
+	process (boolBlock, iBit, iBitArrayBlock0, iBoolBlock0, Inputs_iBit, Inputs_iBitArrayBlock, Inputs_iBoolBlock, intBit, State_bit, State_bitArrayBlock, State_bitInternal, State_boolBlock)
 	begin
 		Inputs_iBit <= iBit;
-		bit <= Inputs_iBit;
+		Inputs_iBitArrayBlock(0) <= iBitArrayBlock0;
+		Inputs_iBoolBlock(0) <= iBoolBlock0;
+		bitArrayBlock(0) <= Inputs_iBitArrayBlock(0);
+		boolBlock(0) <= Inputs_iBoolBlock(0);
+		intBit <= Inputs_iBit;
 		oBit <= Inputs_iBit;
 		oBit0 <= Inputs_iBit(0);
-		oBitInternal <= bit;
+		oBitInternal <= intBit;
 		oBitState <= State_bit;
 		oBitStateInternal <= State_bitInternal;
+		oInputBoolBlock0 <= Inputs_iBoolBlock(0);
+		oInternalBoolBlock0 <= boolBlock(0);
+		oStateBitArrayBlock0 <= State_bitArrayBlock(0);
+		oStateBoolBlock0 <= State_boolBlock(0);
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

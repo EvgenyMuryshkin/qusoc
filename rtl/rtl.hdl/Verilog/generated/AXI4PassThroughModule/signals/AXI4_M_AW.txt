@@ -1,5 +1,5 @@
 └Root      | AXI4_M_AW | [82:0]  | 83 | [82:0] 
- ├AWVALID  | Boolean   | [82]    | 1  | [82:0][82:82]
+ ├AWVALID  | Boolean   | [82]    | 1  | [82:0][82]
  ├AWUSER   | Byte      | [81:74] | 8  | [82:0][81:74]
  ├AWREGION | Byte      | [73:66] | 8  | [82:0][73:66]
  ├AWQOS    | axiQOS    | [65:62] | 4  | [82:0][65:62]

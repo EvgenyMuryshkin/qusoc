@@ -1,5 +1,6 @@
 ﻿using Quokka.RTL;
 using System;
+using System.Drawing;
 using System.Linq;
 
 namespace rtl.modules
@@ -25,7 +26,19 @@ namespace rtl.modules
 
     public class InterconnectModuleState
     {
+        public InterconnectModuleState() { }
 
+        public InterconnectModuleState(int liftCount, int rightCount)
+        {
+            leftAddr = new RTLBitArray().Resized(AXITools.log2(liftCount));
+            rightAddr = new RTLBitArray().Resized(AXITools.log2(rightCount));
+        }
+
+        public RTLBitArray leftAddr;
+        public bool leftAddrValid;
+
+        public RTLBitArray rightAddr;
+        public bool rightAddrValid;
     }
 
     public abstract class InterconnectModule<TLeft, TRight> : RTLSynchronousModule<InterconnectModuleInputs<TLeft, TRight>, InterconnectModuleState>
@@ -48,16 +61,16 @@ namespace rtl.modules
             TXBegin = new bool[leftCount];
 
             InitInputs(new InterconnectModuleInputs<TLeft, TRight>(leftCount, leftFactory, rightCount, rightFactory));
+            InitState(new InterconnectModuleState(leftCount, rightCount));
+
             TransactionDetectors = range(leftCount).Select((_) => new TransactionDetectorModule()).ToArray();
             Encoder = new AXI4EncoderModule(leftCount);
             DuplexMux = new FullDuplexMuxModule<TLeft, TRight>(leftCount, leftFactory, rightCount, rightFactory);
-
-            //rightAddr = new RTLBitArray().Resized(AXITools.log2(rightCount));
         }
 
-        TransactionDetectorModule[] TransactionDetectors;
-        AXI4EncoderModule Encoder;
-        FullDuplexMuxModule<TLeft, TRight> DuplexMux;
+        protected TransactionDetectorModule[] TransactionDetectors;
+        protected AXI4EncoderModule Encoder;
+        protected FullDuplexMuxModule<TLeft, TRight> DuplexMux;
 
         protected abstract bool TXStart(TLeft source);
         protected abstract bool TXEnd(TLeft source);
@@ -69,22 +82,10 @@ namespace rtl.modules
         protected TRight muxRightData => DuplexMux.oMuxRightData;
         protected TLeft[] muxLeft => DuplexMux.oLeft;
         protected TRight[] muxRight => DuplexMux.oRight;
+        protected RTLBitArray rightAddr => RightAddr();
+        protected bool currentTXEnd => TXEnd(Inputs.iLeft[State.leftAddr]);
 
-        protected bool restartTransactions // TODO: use LINQ Any(), All()
-        {
-            get
-            {
-                bool hasTransaction = false;
-
-                for (var idx = 0; idx < leftCount; idx++)
-                {
-                    hasTransaction = hasTransaction | ActiveTransactions[idx];//dbg
-                }
-
-                return !hasTransaction;
-            }
-        }
-        bool[] TXBegin;
+        protected bool[] TXBegin;
 
         protected override void OnSchedule(Func<InterconnectModuleInputs<TLeft, TRight>> inputsFactory)
         {
@@ -100,9 +101,9 @@ namespace rtl.modules
                 TransactionDetectors[leftIndex].Schedule(() => 
                     new TransactionDetectorModuleInputs()
                     {
-                        iTXBegin = Encoder.MSBValue[leftIndex],//TXBegin[leftIndex],
+                        iTXBegin = TXBegin[leftIndex],//Encoder.MSBValue[leftIndex],//TXBegin[leftIndex],
                         iTXEnd = TXEnd(Inputs.iLeft[leftIndex]),
-                        iRestart = !Encoder.HasActive,// restartTransactions
+                        iRestart = !Encoder.HasActive,
                     }
                 );
             }
@@ -118,17 +119,33 @@ namespace rtl.modules
                 new FullDuplexMuxModuleInputs<TLeft, TRight>()
                 {
                     iLeft = Inputs.iLeft,
-                    iLeftAddr = Encoder.MSBIndex,
-                    iLeftAddrValid = Encoder.HasActive,
+                    iLeftAddr = State.leftAddr,
+                    iLeftAddrValid = State.leftAddrValid,
                     iRight = Inputs.iRight,
-                    iRightAddr = RightAddr(),//rightAddr,
-                    iRightAddrValid = true
+                    iRightAddr = State.rightAddr,
+                    iRightAddrValid = State.rightAddrValid
                 }
             );
         }
 
         protected override void OnStage()
         {
+            if (State.rightAddrValid)
+            {
+                if (currentTXEnd)
+                {
+                    NextState.leftAddrValid = false;
+                    NextState.rightAddrValid = false;
+                }
+            }
+            else if (Encoder.HasActive)
+            {
+                NextState.leftAddr = Encoder.MSBIndex;
+                NextState.leftAddrValid = true;
+
+                NextState.rightAddr = rightAddr;
+                NextState.rightAddrValid = true;
+            }
         }
     }
 }

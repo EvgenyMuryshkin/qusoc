@@ -1,5 +1,5 @@
 └Root   | StructsCombinationalIteratorModuleInputs | [34:0]  | 35 | [34:0] 
- ├store | Boolean                                  | [34]    | 1  | [34:0][34:34]
+ ├store | Boolean                                  | [34]    | 1  | [34:0][34]
  ├s2    | SByte                                    | [33:26] | 8  | [34:0][33:26]
  ├s1    | SByte                                    | [25:18] | 8  | [34:0][25:18]
  ├i2    | TStruct4                                 | [17:10] | 8  | [34:0][17:10]

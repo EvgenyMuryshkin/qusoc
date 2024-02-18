@@ -1,2 +1,6 @@
-└Root  | IOSingleBitMemoryInputs | [0] | 1 | [0:0]
- └iBit | RTLBitArray             | [0] | 1 | [0:0][0:0]
+└Root              | IOSingleBitMemoryInputs | [2:0] | 3 | [2:0]
+ ├iBoolBlock       | Boolean[]               | [2]   | 1 | [2:0][2:2]
+ │└iBoolBlock0     | Boolean                 | [2]   | 1 | [2:0][2:2][0]
+ ├iBitArrayBlock   | RTLBitArray[]           | [1]   | 1 | [2:0][1:1]
+ │└iBitArrayBlock0 | RTLBitArray             | [1]   | 1 | [2:0][1:1][0:0]
+ └iBit             | RTLBitArray             | [0]   | 1 | [2:0][0:0]

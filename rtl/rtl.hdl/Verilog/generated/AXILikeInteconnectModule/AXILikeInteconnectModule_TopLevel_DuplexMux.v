@@ -23,14 +23,14 @@ module AXILikeInteconnectModule_TopLevel_DuplexMux
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
-	input wire [9:0] iLeft0,
-	input wire [9:0] iLeft1,
-	input wire [9:0] iLeft2,
-	input wire [9:0] iLeft3,
-	input wire [9:0] iLeft4,
-	input wire [9:0] iLeft5,
-	input wire [9:0] iLeft6,
-	input wire [9:0] iLeft7,
+	input wire [11:0] iLeft0,
+	input wire [11:0] iLeft1,
+	input wire [11:0] iLeft2,
+	input wire [11:0] iLeft3,
+	input wire [11:0] iLeft4,
+	input wire [11:0] iLeft5,
+	input wire [11:0] iLeft6,
+	input wire [11:0] iLeft7,
 	input wire [2:0] iLeftAddr,
 	input wire iLeftAddrValid,
 	input wire [9:0] iRight0,
@@ -39,11 +39,11 @@ module AXILikeInteconnectModule_TopLevel_DuplexMux
 	input wire [9:0] iRight3,
 	input wire [1:0] iRightAddr,
 	input wire iRightAddrValid,
-	output wire [9:0] oLeft0,
-	output wire [9:0] oLeft1,
-	output wire [9:0] oLeft2,
-	output wire [9:0] oLeft3,
-	output wire [9:0] oMuxLeftData,
+	output wire [11:0] oLeft0,
+	output wire [11:0] oLeft1,
+	output wire [11:0] oLeft2,
+	output wire [11:0] oLeft3,
+	output wire [11:0] oMuxLeftData,
 	output wire [9:0] oMuxRightData,
 	output wire [9:0] oRight0,
 	output wire [9:0] oRight1,
@@ -76,12 +76,14 @@ module AXILikeInteconnectModule_TopLevel_DuplexMux
 	wire Inputs_iLeftAddrValid;
 	wire [1: 0] Inputs_iRightAddr;
 	wire Inputs_iRightAddrValid;
+	reg [1: 0] mEmptyLeftData_Addr;
 	reg mEmptyLeftData_IsActive;
 	reg [7: 0] mEmptyLeftData_Payload_Data;
 	reg mEmptyLeftData_Payload_DataFlag;
 	reg mEmptyRightData_IsActive;
 	reg [7: 0] mEmptyRightData_Payload_Data;
 	reg mEmptyRightData_Payload_DataFlag;
+	reg [1: 0] mMuxLeftData_Addr;
 	reg mMuxLeftData_IsActive;
 	reg [7: 0] mMuxLeftData_Payload_Data;
 	reg mMuxLeftData_Payload_DataFlag;
@@ -160,9 +162,9 @@ module AXILikeInteconnectModule_TopLevel_DuplexMux
 	wire FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_Expr;
 	wire signed [3: 0] FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_ExprLhs;
 	wire signed [3: 0] FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_ExprRhs;
-	wire [9 : 0] Inputs_iLeft [0 : 7];
+	wire [11 : 0] Inputs_iLeft [0 : 7];
 	wire [9 : 0] Inputs_iRight [0 : 3];
-	reg [9 : 0] mOutLeftData [0 : 3];
+	reg [11 : 0] mOutLeftData [0 : 3];
 	integer mOutLeftData_i;
 	initial
 	begin : Init_mOutLeftData
@@ -204,12 +206,14 @@ module AXILikeInteconnectModule_TopLevel_DuplexMux
 	begin
 		if ((Inputs_iLeftAddrValid == 1))
 		begin
-			mMuxLeftData_Payload_DataFlag = Inputs_iLeft[Inputs_iLeftAddr][9];
-			mMuxLeftData_Payload_Data = Inputs_iLeft[Inputs_iLeftAddr][8:1];
-			mMuxLeftData_IsActive = Inputs_iLeft[Inputs_iLeftAddr][0];
+			mMuxLeftData_Payload_DataFlag = Inputs_iLeft[Inputs_iLeftAddr][11];
+			mMuxLeftData_Payload_Data = Inputs_iLeft[Inputs_iLeftAddr][10:3];
+			mMuxLeftData_IsActive = Inputs_iLeft[Inputs_iLeftAddr][2];
+			mMuxLeftData_Addr = Inputs_iLeft[Inputs_iLeftAddr][1:0];
 		end
 		else
 		begin
+			mMuxLeftData_Addr = mEmptyLeftData_Addr;
 			mMuxLeftData_IsActive = mEmptyLeftData_IsActive;
 			mMuxLeftData_Payload_Data = mEmptyLeftData_Payload_Data;
 			mMuxLeftData_Payload_DataFlag = mEmptyLeftData_Payload_DataFlag;
@@ -219,60 +223,68 @@ module AXILikeInteconnectModule_TopLevel_DuplexMux
 	begin
 		if ((FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr == 1))
 		begin
-			mOutLeftData[0][9] = mMuxLeftData_Payload_DataFlag;
-			mOutLeftData[0][8:1] = mMuxLeftData_Payload_Data;
-			mOutLeftData[0][0] = mMuxLeftData_IsActive;
+			mOutLeftData[0][11] = mMuxLeftData_Payload_DataFlag;
+			mOutLeftData[0][10:3] = mMuxLeftData_Payload_Data;
+			mOutLeftData[0][2] = mMuxLeftData_IsActive;
+			mOutLeftData[0][1:0] = mMuxLeftData_Addr;
 		end
 		else
 		begin
-			mOutLeftData[0][9] = mEmptyLeftData_Payload_DataFlag;
-			mOutLeftData[0][8:1] = mEmptyLeftData_Payload_Data;
-			mOutLeftData[0][0] = mEmptyLeftData_IsActive;
+			mOutLeftData[0][11] = mEmptyLeftData_Payload_DataFlag;
+			mOutLeftData[0][10:3] = mEmptyLeftData_Payload_Data;
+			mOutLeftData[0][2] = mEmptyLeftData_IsActive;
+			mOutLeftData[0][1:0] = mEmptyLeftData_Addr;
 		end
 	end
 	always @ (*)
 	begin
 		if ((FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F21T78_Expr == 1))
 		begin
-			mOutLeftData[1][9] = mMuxLeftData_Payload_DataFlag;
-			mOutLeftData[1][8:1] = mMuxLeftData_Payload_Data;
-			mOutLeftData[1][0] = mMuxLeftData_IsActive;
+			mOutLeftData[1][11] = mMuxLeftData_Payload_DataFlag;
+			mOutLeftData[1][10:3] = mMuxLeftData_Payload_Data;
+			mOutLeftData[1][2] = mMuxLeftData_IsActive;
+			mOutLeftData[1][1:0] = mMuxLeftData_Addr;
 		end
 		else
 		begin
-			mOutLeftData[1][9] = mEmptyLeftData_Payload_DataFlag;
-			mOutLeftData[1][8:1] = mEmptyLeftData_Payload_Data;
-			mOutLeftData[1][0] = mEmptyLeftData_IsActive;
+			mOutLeftData[1][11] = mEmptyLeftData_Payload_DataFlag;
+			mOutLeftData[1][10:3] = mEmptyLeftData_Payload_Data;
+			mOutLeftData[1][2] = mEmptyLeftData_IsActive;
+			mOutLeftData[1][1:0] = mEmptyLeftData_Addr;
 		end
 	end
 	always @ (*)
 	begin
 		if ((FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F21T78_Expr == 1))
 		begin
-			mOutLeftData[2][9] = mMuxLeftData_Payload_DataFlag;
-			mOutLeftData[2][8:1] = mMuxLeftData_Payload_Data;
-			mOutLeftData[2][0] = mMuxLeftData_IsActive;
+			mOutLeftData[2][11] = mMuxLeftData_Payload_DataFlag;
+			mOutLeftData[2][10:3] = mMuxLeftData_Payload_Data;
+			mOutLeftData[2][2] = mMuxLeftData_IsActive;
+			mOutLeftData[2][1:0] = mMuxLeftData_Addr;
 		end
 		else
 		begin
-			mOutLeftData[2][9] = mEmptyLeftData_Payload_DataFlag;
-			mOutLeftData[2][8:1] = mEmptyLeftData_Payload_Data;
-			mOutLeftData[2][0] = mEmptyLeftData_IsActive;
+			mOutLeftData[2][11] = mEmptyLeftData_Payload_DataFlag;
+			mOutLeftData[2][10:3] = mEmptyLeftData_Payload_Data;
+			mOutLeftData[2][2] = mEmptyLeftData_IsActive;
+			mOutLeftData[2][1:0] = mEmptyLeftData_Addr;
 		end
 	end
 	always @ (*)
 	begin
 		if ((FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F21T78_Expr == 1))
 		begin
-			mOutLeftData[3][9] = mMuxLeftData_Payload_DataFlag;
-			mOutLeftData[3][8:1] = mMuxLeftData_Payload_Data;
-			mOutLeftData[3][0] = mMuxLeftData_IsActive;
+			mOutLeftData[3][11] = mMuxLeftData_Payload_DataFlag;
+			mOutLeftData[3][10:3] = mMuxLeftData_Payload_Data;
+			mOutLeftData[3][2] = mMuxLeftData_IsActive;
+			mOutLeftData[3][1:0] = mMuxLeftData_Addr;
 		end
 		else
 		begin
-			mOutLeftData[3][9] = mEmptyLeftData_Payload_DataFlag;
-			mOutLeftData[3][8:1] = mEmptyLeftData_Payload_Data;
-			mOutLeftData[3][0] = mEmptyLeftData_IsActive;
+			mOutLeftData[3][11] = mEmptyLeftData_Payload_DataFlag;
+			mOutLeftData[3][10:3] = mEmptyLeftData_Payload_Data;
+			mOutLeftData[3][2] = mEmptyLeftData_IsActive;
+			mOutLeftData[3][1:0] = mEmptyLeftData_Addr;
 		end
 	end
 	always @ (*)
@@ -478,9 +490,10 @@ module AXILikeInteconnectModule_TopLevel_DuplexMux
 	assign oLeft1 = mOutLeftData[1];
 	assign oLeft2 = mOutLeftData[2];
 	assign oLeft3 = mOutLeftData[3];
-	assign oMuxLeftData[9] = mMuxLeftData_Payload_DataFlag;
-	assign oMuxLeftData[8:1] = mMuxLeftData_Payload_Data;
-	assign oMuxLeftData[0] = mMuxLeftData_IsActive;
+	assign oMuxLeftData[11] = mMuxLeftData_Payload_DataFlag;
+	assign oMuxLeftData[10:3] = mMuxLeftData_Payload_Data;
+	assign oMuxLeftData[2] = mMuxLeftData_IsActive;
+	assign oMuxLeftData[1:0] = mMuxLeftData_Addr;
 	assign oMuxRightData[9] = mMuxRightData_Payload_DataFlag;
 	assign oMuxRightData[8:1] = mMuxRightData_Payload_Data;
 	assign oMuxRightData[0] = mMuxRightData_IsActive;

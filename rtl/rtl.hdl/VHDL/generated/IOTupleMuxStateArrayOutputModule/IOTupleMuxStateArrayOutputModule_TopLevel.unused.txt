@@ -1,2 +1,4 @@
 No reads:
 	State_SelDefault
+No writes:
+	State_SelArrayInit

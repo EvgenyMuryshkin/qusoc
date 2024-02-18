@@ -24,14 +24,14 @@ entity AXILikeInteconnectModule_TopLevel_DuplexMux is
 	(
 		-- [BEGIN USER PORTS]
 		-- [END USER PORTS]
-		iLeft0 : in unsigned (9 downto 0);
-		iLeft1 : in unsigned (9 downto 0);
-		iLeft2 : in unsigned (9 downto 0);
-		iLeft3 : in unsigned (9 downto 0);
-		iLeft4 : in unsigned (9 downto 0);
-		iLeft5 : in unsigned (9 downto 0);
-		iLeft6 : in unsigned (9 downto 0);
-		iLeft7 : in unsigned (9 downto 0);
+		iLeft0 : in unsigned (11 downto 0);
+		iLeft1 : in unsigned (11 downto 0);
+		iLeft2 : in unsigned (11 downto 0);
+		iLeft3 : in unsigned (11 downto 0);
+		iLeft4 : in unsigned (11 downto 0);
+		iLeft5 : in unsigned (11 downto 0);
+		iLeft6 : in unsigned (11 downto 0);
+		iLeft7 : in unsigned (11 downto 0);
 		iLeftAddr : in unsigned (2 downto 0);
 		iLeftAddrValid : in std_logic;
 		iRight0 : in unsigned (9 downto 0);
@@ -40,11 +40,11 @@ entity AXILikeInteconnectModule_TopLevel_DuplexMux is
 		iRight3 : in unsigned (9 downto 0);
 		iRightAddr : in unsigned (1 downto 0);
 		iRightAddrValid : in std_logic;
-		oLeft0 : out unsigned (9 downto 0);
-		oLeft1 : out unsigned (9 downto 0);
-		oLeft2 : out unsigned (9 downto 0);
-		oLeft3 : out unsigned (9 downto 0);
-		oMuxLeftData : out unsigned (9 downto 0);
+		oLeft0 : out unsigned (11 downto 0);
+		oLeft1 : out unsigned (11 downto 0);
+		oLeft2 : out unsigned (11 downto 0);
+		oLeft3 : out unsigned (11 downto 0);
+		oMuxLeftData : out unsigned (11 downto 0);
 		oMuxRightData : out unsigned (9 downto 0);
 		oRight0 : out unsigned (9 downto 0);
 		oRight1 : out unsigned (9 downto 0);
@@ -81,12 +81,14 @@ architecture rtl of AXILikeInteconnectModule_TopLevel_DuplexMux is
 	signal Inputs_iLeftAddrValid : std_logic := '0';
 	signal Inputs_iRightAddr : unsigned(1 downto 0) := (others => '0');
 	signal Inputs_iRightAddrValid : std_logic := '0';
+	signal mEmptyLeftData_Addr : unsigned(1 downto 0) := (others => '0');
 	signal mEmptyLeftData_IsActive : std_logic := '0';
 	signal mEmptyLeftData_Payload_Data : unsigned(7 downto 0) := (others => '0');
 	signal mEmptyLeftData_Payload_DataFlag : std_logic := '0';
 	signal mEmptyRightData_IsActive : std_logic := '0';
 	signal mEmptyRightData_Payload_Data : unsigned(7 downto 0) := (others => '0');
 	signal mEmptyRightData_Payload_DataFlag : std_logic := '0';
+	signal mMuxLeftData_Addr : unsigned(1 downto 0) := (others => '0');
 	signal mMuxLeftData_IsActive : std_logic := '0';
 	signal mMuxLeftData_Payload_Data : unsigned(7 downto 0) := (others => '0');
 	signal mMuxLeftData_Payload_DataFlag : std_logic := '0';
@@ -165,11 +167,11 @@ architecture rtl of AXILikeInteconnectModule_TopLevel_DuplexMux is
 	signal FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_Expr : std_logic := '0';
 	signal FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_ExprLhs : signed(3 downto 0) := "0000";
 	signal FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_ExprRhs : signed(3 downto 0) := "0000";
-	type Inputs_iLeftArray is array (0 to 7) of unsigned (9 downto 0);
+	type Inputs_iLeftArray is array (0 to 7) of unsigned (11 downto 0);
 	signal Inputs_iLeft : Inputs_iLeftArray := (others => (others => '0'));
 	type Inputs_iRightArray is array (0 to 3) of unsigned (9 downto 0);
 	signal Inputs_iRight : Inputs_iRightArray := (others => (others => '0'));
-	type mOutLeftDataArray is array (0 to 3) of unsigned (9 downto 0);
+	type mOutLeftDataArray is array (0 to 3) of unsigned (11 downto 0);
 	signal mOutLeftData : mOutLeftDataArray := (others => (others => '0'));
 	type mOutRightDataArray is array (0 to 7) of unsigned (9 downto 0);
 	signal mOutRightData : mOutRightDataArray := (others => (others => '0'));
@@ -234,64 +236,74 @@ begin
 	begin
 		FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F21T75_Expr <= FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F21T75_Expr_1 AND FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F21T75_Expr_2;
 	end process;
-	process (Inputs_iLeft, Inputs_iLeftAddrValid, mEmptyLeftData_IsActive, mEmptyLeftData_Payload_Data, mEmptyLeftData_Payload_DataFlag)
+	process (Inputs_iLeft, Inputs_iLeftAddrValid, mEmptyLeftData_Addr, mEmptyLeftData_IsActive, mEmptyLeftData_Payload_Data, mEmptyLeftData_Payload_DataFlag)
 	begin
 		if Inputs_iLeftAddrValid = '1' then
-			mMuxLeftData_Payload_DataFlag <= Inputs_iLeft(TO_INTEGER(Inputs_iLeftAddr))(9);
-			mMuxLeftData_Payload_Data <= Inputs_iLeft(TO_INTEGER(Inputs_iLeftAddr))(8 downto 1);
-			mMuxLeftData_IsActive <= Inputs_iLeft(TO_INTEGER(Inputs_iLeftAddr))(0);
+			mMuxLeftData_Payload_DataFlag <= Inputs_iLeft(TO_INTEGER(Inputs_iLeftAddr))(11);
+			mMuxLeftData_Payload_Data <= Inputs_iLeft(TO_INTEGER(Inputs_iLeftAddr))(10 downto 3);
+			mMuxLeftData_IsActive <= Inputs_iLeft(TO_INTEGER(Inputs_iLeftAddr))(2);
+			mMuxLeftData_Addr <= Inputs_iLeft(TO_INTEGER(Inputs_iLeftAddr))(1 downto 0);
 		else
+			mMuxLeftData_Addr <= mEmptyLeftData_Addr;
 			mMuxLeftData_IsActive <= mEmptyLeftData_IsActive;
 			mMuxLeftData_Payload_Data <= mEmptyLeftData_Payload_Data;
 			mMuxLeftData_Payload_DataFlag <= mEmptyLeftData_Payload_DataFlag;
 		end if;
 	end process;
-	process (FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr, mEmptyLeftData_IsActive, mEmptyLeftData_Payload_Data, mEmptyLeftData_Payload_DataFlag, mMuxLeftData_IsActive, mMuxLeftData_Payload_Data, mMuxLeftData_Payload_DataFlag)
+	process (FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr, mEmptyLeftData_Addr, mEmptyLeftData_IsActive, mEmptyLeftData_Payload_Data, mEmptyLeftData_Payload_DataFlag, mMuxLeftData_Addr, mMuxLeftData_IsActive, mMuxLeftData_Payload_Data, mMuxLeftData_Payload_DataFlag)
 	begin
 		if FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr = '1' then
-			mOutLeftData(0)(9) <= mMuxLeftData_Payload_DataFlag;
-			mOutLeftData(0)(8 downto 1) <= mMuxLeftData_Payload_Data;
-			mOutLeftData(0)(0) <= mMuxLeftData_IsActive;
+			mOutLeftData(0)(11) <= mMuxLeftData_Payload_DataFlag;
+			mOutLeftData(0)(10 downto 3) <= mMuxLeftData_Payload_Data;
+			mOutLeftData(0)(2) <= mMuxLeftData_IsActive;
+			mOutLeftData(0)(1 downto 0) <= mMuxLeftData_Addr;
 		else
-			mOutLeftData(0)(9) <= mEmptyLeftData_Payload_DataFlag;
-			mOutLeftData(0)(8 downto 1) <= mEmptyLeftData_Payload_Data;
-			mOutLeftData(0)(0) <= mEmptyLeftData_IsActive;
+			mOutLeftData(0)(11) <= mEmptyLeftData_Payload_DataFlag;
+			mOutLeftData(0)(10 downto 3) <= mEmptyLeftData_Payload_Data;
+			mOutLeftData(0)(2) <= mEmptyLeftData_IsActive;
+			mOutLeftData(0)(1 downto 0) <= mEmptyLeftData_Addr;
 		end if;
 	end process;
-	process (FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F21T78_Expr, mEmptyLeftData_IsActive, mEmptyLeftData_Payload_Data, mEmptyLeftData_Payload_DataFlag, mMuxLeftData_IsActive, mMuxLeftData_Payload_Data, mMuxLeftData_Payload_DataFlag)
+	process (FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F21T78_Expr, mEmptyLeftData_Addr, mEmptyLeftData_IsActive, mEmptyLeftData_Payload_Data, mEmptyLeftData_Payload_DataFlag, mMuxLeftData_Addr, mMuxLeftData_IsActive, mMuxLeftData_Payload_Data, mMuxLeftData_Payload_DataFlag)
 	begin
 		if FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F21T78_Expr = '1' then
-			mOutLeftData(1)(9) <= mMuxLeftData_Payload_DataFlag;
-			mOutLeftData(1)(8 downto 1) <= mMuxLeftData_Payload_Data;
-			mOutLeftData(1)(0) <= mMuxLeftData_IsActive;
+			mOutLeftData(1)(11) <= mMuxLeftData_Payload_DataFlag;
+			mOutLeftData(1)(10 downto 3) <= mMuxLeftData_Payload_Data;
+			mOutLeftData(1)(2) <= mMuxLeftData_IsActive;
+			mOutLeftData(1)(1 downto 0) <= mMuxLeftData_Addr;
 		else
-			mOutLeftData(1)(9) <= mEmptyLeftData_Payload_DataFlag;
-			mOutLeftData(1)(8 downto 1) <= mEmptyLeftData_Payload_Data;
-			mOutLeftData(1)(0) <= mEmptyLeftData_IsActive;
+			mOutLeftData(1)(11) <= mEmptyLeftData_Payload_DataFlag;
+			mOutLeftData(1)(10 downto 3) <= mEmptyLeftData_Payload_Data;
+			mOutLeftData(1)(2) <= mEmptyLeftData_IsActive;
+			mOutLeftData(1)(1 downto 0) <= mEmptyLeftData_Addr;
 		end if;
 	end process;
-	process (FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F21T78_Expr, mEmptyLeftData_IsActive, mEmptyLeftData_Payload_Data, mEmptyLeftData_Payload_DataFlag, mMuxLeftData_IsActive, mMuxLeftData_Payload_Data, mMuxLeftData_Payload_DataFlag)
+	process (FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F21T78_Expr, mEmptyLeftData_Addr, mEmptyLeftData_IsActive, mEmptyLeftData_Payload_Data, mEmptyLeftData_Payload_DataFlag, mMuxLeftData_Addr, mMuxLeftData_IsActive, mMuxLeftData_Payload_Data, mMuxLeftData_Payload_DataFlag)
 	begin
 		if FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F21T78_Expr = '1' then
-			mOutLeftData(2)(9) <= mMuxLeftData_Payload_DataFlag;
-			mOutLeftData(2)(8 downto 1) <= mMuxLeftData_Payload_Data;
-			mOutLeftData(2)(0) <= mMuxLeftData_IsActive;
+			mOutLeftData(2)(11) <= mMuxLeftData_Payload_DataFlag;
+			mOutLeftData(2)(10 downto 3) <= mMuxLeftData_Payload_Data;
+			mOutLeftData(2)(2) <= mMuxLeftData_IsActive;
+			mOutLeftData(2)(1 downto 0) <= mMuxLeftData_Addr;
 		else
-			mOutLeftData(2)(9) <= mEmptyLeftData_Payload_DataFlag;
-			mOutLeftData(2)(8 downto 1) <= mEmptyLeftData_Payload_Data;
-			mOutLeftData(2)(0) <= mEmptyLeftData_IsActive;
+			mOutLeftData(2)(11) <= mEmptyLeftData_Payload_DataFlag;
+			mOutLeftData(2)(10 downto 3) <= mEmptyLeftData_Payload_Data;
+			mOutLeftData(2)(2) <= mEmptyLeftData_IsActive;
+			mOutLeftData(2)(1 downto 0) <= mEmptyLeftData_Addr;
 		end if;
 	end process;
-	process (FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F21T78_Expr, mEmptyLeftData_IsActive, mEmptyLeftData_Payload_Data, mEmptyLeftData_Payload_DataFlag, mMuxLeftData_IsActive, mMuxLeftData_Payload_Data, mMuxLeftData_Payload_DataFlag)
+	process (FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F21T78_Expr, mEmptyLeftData_Addr, mEmptyLeftData_IsActive, mEmptyLeftData_Payload_Data, mEmptyLeftData_Payload_DataFlag, mMuxLeftData_Addr, mMuxLeftData_IsActive, mMuxLeftData_Payload_Data, mMuxLeftData_Payload_DataFlag)
 	begin
 		if FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F21T78_Expr = '1' then
-			mOutLeftData(3)(9) <= mMuxLeftData_Payload_DataFlag;
-			mOutLeftData(3)(8 downto 1) <= mMuxLeftData_Payload_Data;
-			mOutLeftData(3)(0) <= mMuxLeftData_IsActive;
+			mOutLeftData(3)(11) <= mMuxLeftData_Payload_DataFlag;
+			mOutLeftData(3)(10 downto 3) <= mMuxLeftData_Payload_Data;
+			mOutLeftData(3)(2) <= mMuxLeftData_IsActive;
+			mOutLeftData(3)(1 downto 0) <= mMuxLeftData_Addr;
 		else
-			mOutLeftData(3)(9) <= mEmptyLeftData_Payload_DataFlag;
-			mOutLeftData(3)(8 downto 1) <= mEmptyLeftData_Payload_Data;
-			mOutLeftData(3)(0) <= mEmptyLeftData_IsActive;
+			mOutLeftData(3)(11) <= mEmptyLeftData_Payload_DataFlag;
+			mOutLeftData(3)(10 downto 3) <= mEmptyLeftData_Payload_Data;
+			mOutLeftData(3)(2) <= mEmptyLeftData_IsActive;
+			mOutLeftData(3)(1 downto 0) <= mEmptyLeftData_Addr;
 		end if;
 	end process;
 	process (Inputs_iRight, Inputs_iRightAddrValid, mEmptyRightData_IsActive, mEmptyRightData_Payload_Data, mEmptyRightData_Payload_DataFlag)
@@ -402,7 +414,7 @@ begin
 			mOutRightData(7)(0) <= mEmptyRightData_IsActive;
 		end if;
 	end process;
-	process (FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_Expr, FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_Expr, FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F47T78_Expr, FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F47T78_Expr, iLeft0, iLeft1, iLeft2, iLeft3, iLeft4, iLeft5, iLeft6, iLeft7, iLeftAddr, iLeftAddrValid, Inputs_iLeftAddr, Inputs_iLeftAddrValid, Inputs_iRightAddr, Inputs_iRightAddrValid, iRight0, iRight1, iRight2, iRight3, iRightAddr, iRightAddrValid, mMuxLeftData_IsActive, mMuxLeftData_Payload_Data, mMuxLeftData_Payload_DataFlag, mMuxRightData_IsActive, mMuxRightData_Payload_Data, mMuxRightData_Payload_DataFlag, mOutLeftData, mOutRightData)
+	process (FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_Expr, FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_Expr, FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_Expr, FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F47T78_Expr, FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F47T78_Expr, iLeft0, iLeft1, iLeft2, iLeft3, iLeft4, iLeft5, iLeft6, iLeft7, iLeftAddr, iLeftAddrValid, Inputs_iLeftAddr, Inputs_iLeftAddrValid, Inputs_iRightAddr, Inputs_iRightAddrValid, iRight0, iRight1, iRight2, iRight3, iRightAddr, iRightAddrValid, mMuxLeftData_Addr, mMuxLeftData_IsActive, mMuxLeftData_Payload_Data, mMuxLeftData_Payload_DataFlag, mMuxRightData_IsActive, mMuxRightData_Payload_Data, mMuxRightData_Payload_DataFlag, mOutLeftData, mOutRightData)
 	begin
 		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprLhs(2) <= '0';
 		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprLhs(1 downto 0) <= signed(Inputs_iRightAddr);
@@ -496,9 +508,10 @@ begin
 		oLeft1 <= mOutLeftData(1);
 		oLeft2 <= mOutLeftData(2);
 		oLeft3 <= mOutLeftData(3);
-		oMuxLeftData(9) <= mMuxLeftData_Payload_DataFlag;
-		oMuxLeftData(8 downto 1) <= mMuxLeftData_Payload_Data;
-		oMuxLeftData(0) <= mMuxLeftData_IsActive;
+		oMuxLeftData(11) <= mMuxLeftData_Payload_DataFlag;
+		oMuxLeftData(10 downto 3) <= mMuxLeftData_Payload_Data;
+		oMuxLeftData(2) <= mMuxLeftData_IsActive;
+		oMuxLeftData(1 downto 0) <= mMuxLeftData_Addr;
 		oMuxRightData(9) <= mMuxRightData_Payload_DataFlag;
 		oMuxRightData(8 downto 1) <= mMuxRightData_Payload_Data;
 		oMuxRightData(0) <= mMuxRightData_IsActive;

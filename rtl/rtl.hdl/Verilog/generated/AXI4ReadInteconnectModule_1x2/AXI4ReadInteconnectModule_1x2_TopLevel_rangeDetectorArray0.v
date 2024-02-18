@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray, clock frequency is 1Hz, Embedded
+// System configuration name is AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray0, clock frequency is 1Hz, Embedded
 // FSM summary
 // -- Packages
-module AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray
+module AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray0
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
@@ -55,8 +55,8 @@ module AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray
 	wire rangeDetectors1_IsActive_rangeDetectors1_IsActive_HardLink;
 	wire rangeActive [0 : 1];
 	wire encoder_iValues [0 : 1];
-	AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_encoder
-	AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_encoder
+	AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray0_encoder
+	AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray0_encoder
 	(
 		// [BEGIN USER MAP FOR encoder]
 		// [END USER MAP FOR encoder]
@@ -66,16 +66,16 @@ module AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray
 		.MSBIndex (encoder_MSBIndex_encoder_MSBIndex_HardLink),
 		.MSBValue (encoder_MSBValue_encoder_MSBValue_HardLink)
 	);
-	AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_rangeDetectors0
-	AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_rangeDetectors0
+	AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray0_rangeDetectors0
+	AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray0_rangeDetectors0
 	(
 		// [BEGIN USER MAP FOR rangeDetectors0]
 		// [END USER MAP FOR rangeDetectors0]
 		.Value (rangeDetectors0_Value_rangeDetectors0_Value_HardLink),
 		.IsActive (rangeDetectors0_IsActive_rangeDetectors0_IsActive_HardLink)
 	);
-	AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_rangeDetectors1
-	AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_rangeDetectors1
+	AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray0_rangeDetectors1
+	AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray0_rangeDetectors1
 	(
 		// [BEGIN USER MAP FOR rangeDetectors1]
 		// [END USER MAP FOR rangeDetectors1]

@@ -14,12 +14,12 @@
 --   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 --   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 --
--- System configuration name is AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_rangeDetectors1, clock frequency is 1Hz, Embedded
+-- System configuration name is AXI4WriteInteconnectModule_1x2_TopLevel_rangeDetectorArray0_rangeDetectors1, clock frequency is 1Hz, Embedded
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use work.Quokka.all;
-entity AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_rangeDetectors1 is
+entity AXI4WriteInteconnectModule_1x2_TopLevel_rangeDetectorArray0_rangeDetectors1 is
 	port
 	(
 		-- [BEGIN USER PORTS]
@@ -30,7 +30,7 @@ entity AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_rangeDetectors1
 end entity;
 -- FSM summary
 -- Packages
-architecture rtl of AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_rangeDetectors1 is
+architecture rtl of AXI4WriteInteconnectModule_1x2_TopLevel_rangeDetectorArray0_rangeDetectors1 is
 	-- [BEGIN USER SIGNALS]
 	-- [END USER SIGNALS]
 	constant HiSignal : std_logic := '1';

@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_rangeDetectors0, clock frequency is 1Hz, Embedded
+// System configuration name is AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray0_rangeDetectors0, clock frequency is 1Hz, Embedded
 // FSM summary
 // -- Packages
-module AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray_rangeDetectors0
+module AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray0_rangeDetectors0
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]

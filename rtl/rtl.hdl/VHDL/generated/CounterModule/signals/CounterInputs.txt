@@ -1,2 +1,2 @@
 └Root     | CounterInputs | [0] | 1 | [0:0]
- └Enabled | Boolean       | [0] | 1 | [0:0][0:0]
+ └Enabled | Boolean       | [0] | 1 | [0:0][0]
