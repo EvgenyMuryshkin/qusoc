@@ -53,8 +53,8 @@ namespace rtl.modules
             masterWriteEncoderModule = new AXI4EncoderModule(mCount);
         }
 
-        bool[] mARVALID => Inputs.M2S.Select(m => m.AR.ARVALID).ToArray();
-        bool[] mAWVALID => Inputs.M2S.Select(m => m.AW.AWVALID).ToArray();
+        bool[] mARVALID => Inputs.M2S.Select(m => m.R.AR.ARVALID).ToArray();
+        bool[] mAWVALID => Inputs.M2S.Select(m => m.W.AW.AWVALID).ToArray();
 
         protected override void OnSchedule(Func<AXI4InterconnectModuleInputs> inputsFactory)
         {

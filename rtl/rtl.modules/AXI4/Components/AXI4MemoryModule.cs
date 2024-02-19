@@ -61,7 +61,7 @@ namespace rtl.modules
         */
         public AXI4_S2M S2M => axiSlave.S2M;
 
-        bool internalSameTxWrite => Inputs.M2S.AW.AWVALID && Inputs.M2S.W.WVALID;
+        bool internalSameTxWrite => Inputs.M2S.W.AW.AWVALID && Inputs.M2S.W.W.WVALID;
         bool internalDelayedTxWrite => State.waddrSet && State.wdataSet;
         bool internalWE => internalSameTxWrite || internalDelayedTxWrite;
 

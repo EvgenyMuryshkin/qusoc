@@ -31,8 +31,8 @@ namespace rtl.modules
 
         public RTLBitArray ReadData => new RTLBitArray(State.ReadData);
 
-        public bool RVALID => mem.S2M.R.RVALID;
-        public bool BVALID => mem.S2M.B.BVALID;
+        public bool RVALID => mem.S2M.R.R.RVALID;
+        public bool BVALID => mem.S2M.W.B.BVALID;
 
         public bool RACK => State.RACK;
         public bool WACK => master.WACK;
@@ -63,9 +63,9 @@ namespace rtl.modules
         {
             NextState.RACK = master.RACK;
 
-            if (mem.S2M.R.RVALID)
+            if (mem.S2M.R.R.RVALID)
             {
-                NextState.ReadData = mem.S2M.R.RDATA;
+                NextState.ReadData = mem.S2M.R.R.RDATA;
             }
         }
     }

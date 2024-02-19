@@ -53,40 +53,46 @@ namespace rtl.modules
             InitState(new AXI4MasterModuleState());
         }
 
-        bool readAck => State.ARREADYACK && Inputs.S2M.R.RVALID;
-        bool writeAck => State.AWREADYACK && State.WREADYACK && Inputs.S2M.B.BVALID;
+        bool readAck => State.ARREADYACK && Inputs.S2M.R.R.RVALID;
+        bool writeAck => State.AWREADYACK && State.WREADYACK && Inputs.S2M.W.B.BVALID;
 
         public bool RACK => State.readFSM == axiMasterReadFSM.OK && readAck;
-        public byte[] RDATA => Inputs.S2M.R.RDATA;
+        public byte[] RDATA => Inputs.S2M.R.R.RDATA;
 
         public bool WACK => State.writeFSM == axiMasterWriteFSM.OK && writeAck;
 
         public AXI4_M2S M2S => new AXI4_M2S(size)
         {
-            AR =
-            {
-                ARADDR = Inputs.ARADDR,                
-                ARVALID = Inputs.RE           
-            },
             R =
             {
-                RREADY = true
-            },
-            AW =
-            {
-                AWADDR = Inputs.AWADDR,
-                AWVALID = Inputs.WE
+                AR =
+                {
+                    ARADDR = Inputs.ARADDR,
+                    ARVALID = Inputs.RE
+                },
+                R =
+                {
+                    RREADY = true
+                }
             },
             W =
             {
-                WID = 0,
-                WDATA = Inputs.WDATA,
-                WSTRB = Inputs.WSTRB,
-                WVALID = Inputs.WE
-            },
-            B =
-            {
-                BREADY = true
+                AW =
+                {
+                    AWADDR = Inputs.AWADDR,
+                    AWVALID = Inputs.WE
+                },
+                W =
+                {
+                    WID = 0,
+                    WDATA = Inputs.WDATA,
+                    WSTRB = Inputs.WSTRB,
+                    WVALID = Inputs.WE
+                },
+                B =
+                {
+                    BREADY = true
+                }
             }
         };
 
@@ -114,11 +120,11 @@ namespace rtl.modules
                     if (Inputs.RE)
                     {
                         NextState.readFSM = axiMasterReadFSM.OK;
-                        NextState.ARREADYACK = Inputs.S2M.AR.ARREADY;
+                        NextState.ARREADYACK = Inputs.S2M.R.AR.ARREADY;
                     }
                     break;
                 case axiMasterReadFSM.OK:
-                    if (Inputs.S2M.AR.ARREADY)
+                    if (Inputs.S2M.R.AR.ARREADY)
                     {
                         NextState.ARREADYACK = true;
                     }
@@ -140,17 +146,17 @@ namespace rtl.modules
                     if (Inputs.WE)
                     {
                         NextState.writeFSM = axiMasterWriteFSM.OK;
-                        NextState.AWREADYACK = Inputs.S2M.AW.AWREADY;
-                        NextState.WREADYACK = Inputs.S2M.W.WREADY;
+                        NextState.AWREADYACK = Inputs.S2M.W.AW.AWREADY;
+                        NextState.WREADYACK = Inputs.S2M.W.W.WREADY;
                     }
                     break;
                 case axiMasterWriteFSM.OK:
-                    if (Inputs.S2M.AW.AWREADY)
+                    if (Inputs.S2M.W.AW.AWREADY)
                     {
                         NextState.AWREADYACK = true;
                     }
 
-                    if (Inputs.S2M.W.WREADY)
+                    if (Inputs.S2M.W.W.WREADY)
                     {
                         NextState.WREADYACK = true;
                     }

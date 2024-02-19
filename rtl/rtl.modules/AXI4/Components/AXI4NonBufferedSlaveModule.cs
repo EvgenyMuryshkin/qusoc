@@ -45,38 +45,44 @@ namespace rtl.modules
 
         public AXI4_S2M S2M => new AXI4_S2M()
         {
-            AR =
-            { 
-                ARREADY = internalARREADY
-            },
             R =
             {
-                RID = Inputs.M2S.AR.ARID,
-                RUSER = Inputs.M2S.AR.ARUSER,
-                RVALID = internalRVALID,
-                RDATA = Inputs.inRDATA,
-                RRESP = axiResp.OKAY
-            },
-            AW =
-            {
-                AWREADY = internalAWREADY
+                AR =
+                {
+                    ARREADY = internalARREADY
+                },
+                R =
+                {
+                    RID = Inputs.M2S.R.AR.ARID,
+                    RUSER = Inputs.M2S.R.AR.ARUSER,
+                    RVALID = internalRVALID,
+                    RDATA = Inputs.inRDATA,
+                    RRESP = axiResp.OKAY
+                }
             },
             W =
             {
-                WREADY = internalWREADY
-            },
-            B =
-            {
-                BID = Inputs.M2S.W.WID,
-                BRESP = axiResp.OKAY,
-                BUSER = Inputs.M2S.W.WUSER,
-                BVALID = internalBVALID
+                AW =
+                {
+                    AWREADY = internalAWREADY
+                },
+                W =
+                {
+                    WREADY = internalWREADY
+                },
+                B =
+                {
+                    BID = Inputs.M2S.W.W.WID,
+                    BRESP = axiResp.OKAY,
+                    BUSER = Inputs.M2S.W.W.WUSER,
+                    BVALID = internalBVALID
+                }
             }
-        };
+,        };
 
         // tx
-        bool readTXCompleting => internalRVALID && Inputs.M2S.R.RREADY;
-        bool writeTXCompleting => internalBVALID && Inputs.M2S.B.BREADY;
+        bool readTXCompleting => internalRVALID && Inputs.M2S.R.R.RREADY;
+        bool writeTXCompleting => internalBVALID && Inputs.M2S.W.B.BREADY;
         // read channel
         bool internalARREADY => State.readFSM == axiSlaveReadFSM.Idle && Inputs.inARREADY;
         bool internalRVALID => State.readFSM == axiSlaveReadFSM.Ack && Inputs.inRVALID;
@@ -92,18 +98,18 @@ namespace rtl.modules
 
         // read channel
         public bool outARREADYConfirming => State.readFSM == axiSlaveReadFSM.Idle && NextState.readFSM == axiSlaveReadFSM.Ack;
-        public bool outARVALID => Inputs.M2S.AR.ARVALID;
-        public uint outARADDR => Inputs.M2S.AR.ARADDR;
+        public bool outARVALID => Inputs.M2S.R.AR.ARVALID;
+        public uint outARADDR => Inputs.M2S.R.AR.ARADDR;
 
         // write channel
         public bool outAWREADYConfirming => State.writeAWFSM == axiSlaveWriteFSM.Idle && NextState.writeAWFSM == axiSlaveWriteFSM.Ack;
-        public bool outAWVALID => Inputs.M2S.AW.AWVALID;
-        public uint outAWADDR => Inputs.M2S.AW.AWADDR;
+        public bool outAWVALID => Inputs.M2S.W.AW.AWVALID;
+        public uint outAWADDR => Inputs.M2S.W.AW.AWADDR;
 
         public bool outWREADYConfirming => State.writeWFSM == axiSlaveWriteFSM.Idle && NextState.writeWFSM == axiSlaveWriteFSM.Ack;
-        public bool outWVALID => Inputs.M2S.W.WVALID;
-        public byte[] outWDATA => Inputs.M2S.W.WDATA;
-        public RTLBitArray outWSTRB => Inputs.M2S.W.WSTRB;
+        public bool outWVALID => Inputs.M2S.W.W.WVALID;
+        public byte[] outWDATA => Inputs.M2S.W.W.WDATA;
+        public RTLBitArray outWSTRB => Inputs.M2S.W.W.WSTRB;
 
         protected override void OnStage()
         {
@@ -115,7 +121,7 @@ namespace rtl.modules
                     NextState.readFSM = axiSlaveReadFSM.Idle;
                     break;
                 case axiSlaveReadFSM.Idle:
-                    if (internalARREADY && Inputs.M2S.AR.ARVALID)
+                    if (internalARREADY && Inputs.M2S.R.AR.ARVALID)
                         NextState.readFSM = axiSlaveReadFSM.Ack;
                     break;
                 case axiSlaveReadFSM.Ack:
@@ -130,7 +136,7 @@ namespace rtl.modules
                     NextState.writeAWFSM = axiSlaveWriteFSM.Idle;
                     break;
                 case axiSlaveWriteFSM.Idle:
-                    if (internalAWREADY && Inputs.M2S.AW.AWVALID)
+                    if (internalAWREADY && Inputs.M2S.W.AW.AWVALID)
                         NextState.writeAWFSM = axiSlaveWriteFSM.Ack;
                     break;
                 case axiSlaveWriteFSM.Ack:
@@ -145,7 +151,7 @@ namespace rtl.modules
                     NextState.writeWFSM = axiSlaveWriteFSM.Idle;
                     break;
                 case axiSlaveWriteFSM.Idle:
-                    if (internalWREADY && Inputs.M2S.W.WVALID)
+                    if (internalWREADY && Inputs.M2S.W.W.WVALID)
                         NextState.writeWFSM = axiSlaveWriteFSM.Ack;
                     break;
                 case axiSlaveWriteFSM.Ack:
@@ -158,10 +164,10 @@ namespace rtl.modules
         [RTLNonSynthesizable]
         void AssertData()
         {
-            Assert(Inputs.M2S.W.WDATA != null, "WDATA should not be null");
-            Assert(Inputs.M2S.W.WSTRB != null, "WSTRB should not be null");
-            Assert(Inputs.M2S.W.WDATA.Length == AXI4Tools.Bytes(size), $"WDATA size should be {AXI4Tools.Bytes(size)}");
-            Assert(Inputs.M2S.W.WSTRB.Size == AXI4Tools.Bytes(size), $"WSTRB size should be {AXI4Tools.Bytes(size)}");
+            Assert(Inputs.M2S.W.W.WDATA != null, "WDATA should not be null");
+            Assert(Inputs.M2S.W.W.WSTRB != null, "WSTRB should not be null");
+            Assert(Inputs.M2S.W.W.WDATA.Length == AXI4Tools.Bytes(size), $"WDATA size should be {AXI4Tools.Bytes(size)}");
+            Assert(Inputs.M2S.W.W.WSTRB.Size == AXI4Tools.Bytes(size), $"WSTRB size should be {AXI4Tools.Bytes(size)}");
         }
     }
 }

@@ -31,8 +31,8 @@ namespace rtl.modules
         public RTLBitArray ReadData => new RTLBitArray(State.ReadData);
         public RTLBitArray RegisterData => new RTLBitArray(reg.outData);
 
-        public bool RVALID => reg.S2M.R.RVALID;
-        public bool BVALID => reg.S2M.B.BVALID;
+        public bool RVALID => reg.S2M.R.R.RVALID;
+        public bool BVALID => reg.S2M.W.B.BVALID;
 
         public bool RACK => master.RACK;
         public bool WACK => master.WACK;
@@ -62,9 +62,9 @@ namespace rtl.modules
 
         protected override void OnStage()
         {
-            if (reg.S2M.R.RVALID)
+            if (reg.S2M.R.R.RVALID)
             {
-                NextState.ReadData = reg.S2M.R.RDATA;
+                NextState.ReadData = reg.S2M.R.R.RDATA;
             }
         }
     }

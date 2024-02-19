@@ -43,26 +43,14 @@ namespace RTL.Modules
         public AXI4_M2S() : this(axiSize.B4) { }
         public AXI4_M2S(axiSize size)
         {
-            AR = new AXI4_M_AR(size);
-            R = new AXI4_M_R();
-            AW = new AXI4_M_AW(size);
-            W = new AXI4_M_W(size);
-            B = new AXI4_M_B();
+            R = new AXI4_M2S_R(size);
+            W = new AXI4_M2S_W(size);
         }
 
         [MemberIndex]
-        public AXI4_M_AR AR;
+        public AXI4_M2S_R R;
 
         [MemberIndex]
-        public AXI4_M_R R;
-
-        [MemberIndex]
-        public AXI4_M_AW AW;
-
-        [MemberIndex]
-        public AXI4_M_W W;
-
-        [MemberIndex]
-        public AXI4_M_B B;
+        public AXI4_M2S_W W;
     }
 }
