@@ -5,6 +5,7 @@ using System.Linq;
 
 namespace rtl.modules.AXI4.Modules
 {
+
     public class AXI4ReadInteconnectModule_1x2 : AXI4ReadInteconnectModule
     {
         public AXI4ReadInteconnectModule_1x2() : base(

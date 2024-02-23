@@ -1,4 +1,5 @@
 ﻿using Quokka.RTL;
+using rtl.modules.AXI4.Modules;
 using RTL.Modules;
 using System;
 using System.Collections.Generic;
@@ -90,6 +91,19 @@ namespace rtl.modules
 
             m2s[0] = Inputs.iM2S;
             s2m[0] = Inputs.iS2M;
+        }
+    }
+
+    public class AXI4InteconnectModule_2x2 : AXI4InteconnectModule
+    {
+        public AXI4InteconnectModule_2x2() 
+            : base(2, new List<RangeInfo>()
+            {
+                new RangeInfo(0x00000000, 0x0FFFFFFF),
+                new RangeInfo(0x10000000, 0x10000000)
+            })
+        {
+
         }
     }
 }
