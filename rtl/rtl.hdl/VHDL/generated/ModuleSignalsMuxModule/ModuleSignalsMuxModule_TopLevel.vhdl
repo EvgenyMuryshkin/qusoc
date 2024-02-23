@@ -69,6 +69,8 @@ architecture rtl of ModuleSignalsMuxModule_TopLevel is
 	signal ModuleSignalsMuxModule_L27F26T46_Mux1 : std_logic := '0';
 	signal ModuleSignalsMuxModule_L27F26T46_Mux2 : std_logic := '0';
 	signal ModuleSignalsMuxModule_L27F26T46_Mux3 : std_logic := '0';
+	type ModuleSignalsMuxModule_L29F57T79_EnumerableArray is array (0 to 2) of std_logic;
+	signal ModuleSignalsMuxModule_L29F57T79_Enumerable : ModuleSignalsMuxModule_L29F57T79_EnumerableArray := (others => '0');
 begin
 	ModuleSignalsMuxModule_TopLevel_AndGate : entity work.ModuleSignalsMuxModule_TopLevel_AndGate
 	port map
@@ -113,7 +115,7 @@ begin
 				ModuleSignalsMuxModule_L27F26T46_Mux <= '0';
 		end case;
 	end process;
-	process (Addr, AndGate_I1, AndGate_I2, AndGate_O, AndGate_O_AndGate_O_HardLink, I1, I2, Inputs_Addr, Inputs_I1, Inputs_I2, ModuleSignalsMuxModule_L27F26T46_Mux, ModuleSignalsMuxModule_L29F41T80_Source, OrGate_I1, OrGate_I2, OrGate_O, OrGate_O_OrGate_O_HardLink, XorGate_I1, XorGate_I2, XorGate_O, XorGate_O_XorGate_O_HardLink)
+	process (Addr, AndGate_I1, AndGate_I2, AndGate_O, AndGate_O_AndGate_O_HardLink, I1, I2, Inputs_Addr, Inputs_I1, Inputs_I2, ModuleSignalsMuxModule_L27F26T46_Mux, ModuleSignalsMuxModule_L29F41T80_Source, ModuleSignalsMuxModule_L29F57T79_Enumerable, OrGate_I1, OrGate_I2, OrGate_O, OrGate_O_OrGate_O_HardLink, XorGate_I1, XorGate_I2, XorGate_O, XorGate_O_XorGate_O_HardLink)
 	begin
 		Inputs_Addr <= Addr;
 		Inputs_I1 <= I1;
@@ -124,9 +126,12 @@ begin
 		OrGate_I2 <= Inputs_I2;
 		XorGate_I1 <= Inputs_I1;
 		XorGate_I2 <= Inputs_I2;
-		ModuleSignalsMuxModule_L29F41T80_Source(2) <= AndGate_O;
-		ModuleSignalsMuxModule_L29F41T80_Source(1) <= OrGate_O;
-		ModuleSignalsMuxModule_L29F41T80_Source(0) <= XorGate_O;
+		ModuleSignalsMuxModule_L29F57T79_Enumerable(0) <= AndGate_O;
+		ModuleSignalsMuxModule_L29F57T79_Enumerable(1) <= OrGate_O;
+		ModuleSignalsMuxModule_L29F57T79_Enumerable(2) <= XorGate_O;
+		ModuleSignalsMuxModule_L29F41T80_Source(2) <= ModuleSignalsMuxModule_L29F57T79_Enumerable(2);
+		ModuleSignalsMuxModule_L29F41T80_Source(1) <= ModuleSignalsMuxModule_L29F57T79_Enumerable(1);
+		ModuleSignalsMuxModule_L29F41T80_Source(0) <= ModuleSignalsMuxModule_L29F57T79_Enumerable(0);
 		CombinedO <= ModuleSignalsMuxModule_L29F41T80_Source;
 		O <= ModuleSignalsMuxModule_L27F26T46_Mux;
 		AndGate_I1_AndGate_I1_HardLink <= AndGate_I1;

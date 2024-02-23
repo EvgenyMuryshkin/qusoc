@@ -1,5 +1,5 @@
 Simulator report for VHDL
-Wed Feb 21 21:10:33 2024
+Fri Feb 23 21:04:07 2024
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -10,12 +10,16 @@ Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
   2. Simulator Summary
   3. Simulator Settings
   4. Simulation Waveforms
-  5. Coverage Summary
-  6. Complete 1/0-Value Coverage
-  7. Missing 1-Value Coverage
-  8. Missing 0-Value Coverage
-  9. Simulator INI Usage
- 10. Simulator Messages
+  5. |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff0_rtl_0|altsyncram_j0b1:auto_generated|ALTSYNCRAM
+  6. |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff1_rtl_1|altsyncram_k0b1:auto_generated|ALTSYNCRAM
+  7. |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff2_rtl_2|altsyncram_l0b1:auto_generated|ALTSYNCRAM
+  8. |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff3_rtl_3|altsyncram_m0b1:auto_generated|ALTSYNCRAM
+  9. Coverage Summary
+ 10. Complete 1/0-Value Coverage
+ 11. Missing 1-Value Coverage
+ 12. Missing 0-Value Coverage
+ 13. Simulator INI Usage
+ 14. Simulator Messages
 
 
 
@@ -44,43 +48,43 @@ applicable agreement for further details.
 ; Type                        ; Value        ;
 +-----------------------------+--------------+
 ; Simulation Start Time       ; 0 ps         ;
-; Simulation End Time         ; 1.0 us       ;
-; Simulation Netlist Size     ; 12 nodes     ;
-; Simulation Coverage         ;     100.00 % ;
-; Total Number of Transitions ; 144          ;
+; Simulation End Time         ; 1.0 ms       ;
+; Simulation Netlist Size     ; 84 nodes     ;
+; Simulation Coverage         ;      91.59 % ;
+; Total Number of Transitions ; 466          ;
 ; Simulation Breakpoints      ; 0            ;
 ; Family                      ; Cyclone II   ;
 ; Device                      ; EP2C70F896C6 ;
 +-----------------------------+--------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Simulator Settings                                                                                                                                ;
-+--------------------------------------------------------------------------------------------+--------------------------------------+---------------+
-; Option                                                                                     ; Setting                              ; Default Value ;
-+--------------------------------------------------------------------------------------------+--------------------------------------+---------------+
-; Simulation mode                                                                            ; Timing                               ; Timing        ;
-; Start time                                                                                 ; 0 ns                                 ; 0 ns          ;
-; Simulation results format                                                                  ; CVWF                                 ;               ;
-; Vector input source                                                                        ; Waveforms/ModuleSignalsMuxModule.vwf ;               ;
-; Add pins automatically to simulation output waveforms                                      ; On                                   ; On            ;
-; Check outputs                                                                              ; Off                                  ; Off           ;
-; Report simulation coverage                                                                 ; On                                   ; On            ;
-; Display complete 1/0 value coverage report                                                 ; On                                   ; On            ;
-; Display missing 1-value coverage report                                                    ; On                                   ; On            ;
-; Display missing 0-value coverage report                                                    ; On                                   ; On            ;
-; Detect setup and hold time violations                                                      ; Off                                  ; Off           ;
-; Detect glitches                                                                            ; Off                                  ; Off           ;
-; Disable timing delays in Timing Simulation                                                 ; Off                                  ; Off           ;
-; Generate Signal Activity File                                                              ; Off                                  ; Off           ;
-; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                                  ; Off           ;
-; Group bus channels in simulation results                                                   ; Off                                  ; Off           ;
-; Preserve fewer signal transitions to reduce memory requirements                            ; On                                   ; On            ;
-; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                           ; INPUT_EDGE    ;
-; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                                  ; Off           ;
-; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                                   ;               ;
-; Perform Glitch Filtering in Timing Simulation                                              ; Auto                                 ; Auto          ;
-+--------------------------------------------------------------------------------------------+--------------------------------------+---------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                                               ;
++--------------------------------------------------------------------------------------------+-------------------------------------+---------------+
+; Option                                                                                     ; Setting                             ; Default Value ;
++--------------------------------------------------------------------------------------------+-------------------------------------+---------------+
+; Simulation mode                                                                            ; Timing                              ; Timing        ;
+; Start time                                                                                 ; 0 ns                                ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF                                ;               ;
+; Vector input source                                                                        ; Waveforms/SP_WF_WSTRB_RAMModule.vwf ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On                                  ; On            ;
+; Check outputs                                                                              ; Off                                 ; Off           ;
+; Report simulation coverage                                                                 ; On                                  ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On                                  ; On            ;
+; Display missing 1-value coverage report                                                    ; On                                  ; On            ;
+; Display missing 0-value coverage report                                                    ; On                                  ; On            ;
+; Detect setup and hold time violations                                                      ; Off                                 ; Off           ;
+; Detect glitches                                                                            ; Off                                 ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off                                 ; Off           ;
+; Generate Signal Activity File                                                              ; Off                                 ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                                 ; Off           ;
+; Group bus channels in simulation results                                                   ; Off                                 ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On                                  ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                          ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                                 ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                                  ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto                                ; Auto          ;
++--------------------------------------------------------------------------------------------+-------------------------------------+---------------+
 
 
 +----------------------+
@@ -90,56 +94,186 @@ Waveform report data cannot be output to ASCII.
 Please use Quartus II to view the waveform report data.
 
 
++--------------------------------------------------------------------------------------------------------+
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff0_rtl_0|altsyncram_j0b1:auto_generated|ALTSYNCRAM ;
++--------------------------------------------------------------------------------------------------------+
+Please refer to fitter text-based report (*.fit.rpt) to view logical memory report content in ASCII.
+
+
++--------------------------------------------------------------------------------------------------------+
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff1_rtl_1|altsyncram_k0b1:auto_generated|ALTSYNCRAM ;
++--------------------------------------------------------------------------------------------------------+
+Please refer to fitter text-based report (*.fit.rpt) to view logical memory report content in ASCII.
+
+
++--------------------------------------------------------------------------------------------------------+
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff2_rtl_2|altsyncram_l0b1:auto_generated|ALTSYNCRAM ;
++--------------------------------------------------------------------------------------------------------+
+Please refer to fitter text-based report (*.fit.rpt) to view logical memory report content in ASCII.
+
+
++--------------------------------------------------------------------------------------------------------+
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff3_rtl_3|altsyncram_m0b1:auto_generated|ALTSYNCRAM ;
++--------------------------------------------------------------------------------------------------------+
+Please refer to fitter text-based report (*.fit.rpt) to view logical memory report content in ASCII.
+
+
 +--------------------------------------------------------------------+
 ; Coverage Summary                                                   ;
 +-----------------------------------------------------+--------------+
 ; Type                                                ; Value        ;
 +-----------------------------------------------------+--------------+
-; Total coverage as a percentage                      ;     100.00 % ;
-; Total nodes checked                                 ; 12           ;
-; Total output ports checked                          ; 12           ;
-; Total output ports with complete 1/0-value coverage ; 12           ;
-; Total output ports with no 1/0-value coverage       ; 0            ;
-; Total output ports with no 1-value coverage         ; 0            ;
-; Total output ports with no 0-value coverage         ; 0            ;
+; Total coverage as a percentage                      ;      91.59 % ;
+; Total nodes checked                                 ; 84           ;
+; Total output ports checked                          ; 107          ;
+; Total output ports with complete 1/0-value coverage ; 98           ;
+; Total output ports with no 1/0-value coverage       ; 9            ;
+; Total output ports with no 1-value coverage         ; 9            ;
+; Total output ports with no 0-value coverage         ; 9            ;
 +-----------------------------------------------------+--------------+
 
 
 The following table displays output ports that toggle between 1 and 0 during simulation.
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Complete 1/0-Value Coverage                                                                                                                                                                                                                                ;
-+--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+------------------+
-; Node Name                                                                                                          ; Output Port Name                                                                                                   ; Output Port Type ;
-+--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+------------------+
-; |ModuleSignalsMuxModule_TopLevel|ModuleSignalsMuxModule_TopLevel_XorGate:ModuleSignalsMuxModule_TopLevel_XorGate|O ; |ModuleSignalsMuxModule_TopLevel|ModuleSignalsMuxModule_TopLevel_XorGate:ModuleSignalsMuxModule_TopLevel_XorGate|O ; combout          ;
-; |ModuleSignalsMuxModule_TopLevel|ModuleSignalsMuxModule_TopLevel_OrGate:ModuleSignalsMuxModule_TopLevel_OrGate|O   ; |ModuleSignalsMuxModule_TopLevel|ModuleSignalsMuxModule_TopLevel_OrGate:ModuleSignalsMuxModule_TopLevel_OrGate|O   ; combout          ;
-; |ModuleSignalsMuxModule_TopLevel|ModuleSignalsMuxModule_TopLevel_AndGate:ModuleSignalsMuxModule_TopLevel_AndGate|O ; |ModuleSignalsMuxModule_TopLevel|ModuleSignalsMuxModule_TopLevel_AndGate:ModuleSignalsMuxModule_TopLevel_AndGate|O ; combout          ;
-; |ModuleSignalsMuxModule_TopLevel|Mux0~0                                                                            ; |ModuleSignalsMuxModule_TopLevel|Mux0~0                                                                            ; combout          ;
-; |ModuleSignalsMuxModule_TopLevel|CombinedO[0]                                                                      ; |ModuleSignalsMuxModule_TopLevel|CombinedO[0]                                                                      ; padio            ;
-; |ModuleSignalsMuxModule_TopLevel|CombinedO[1]                                                                      ; |ModuleSignalsMuxModule_TopLevel|CombinedO[1]                                                                      ; padio            ;
-; |ModuleSignalsMuxModule_TopLevel|CombinedO[2]                                                                      ; |ModuleSignalsMuxModule_TopLevel|CombinedO[2]                                                                      ; padio            ;
-; |ModuleSignalsMuxModule_TopLevel|O                                                                                 ; |ModuleSignalsMuxModule_TopLevel|O                                                                                 ; padio            ;
-; |ModuleSignalsMuxModule_TopLevel|I1                                                                                ; |ModuleSignalsMuxModule_TopLevel|I1~corein                                                                         ; combout          ;
-; |ModuleSignalsMuxModule_TopLevel|I2                                                                                ; |ModuleSignalsMuxModule_TopLevel|I2~corein                                                                         ; combout          ;
-; |ModuleSignalsMuxModule_TopLevel|Addr[0]                                                                           ; |ModuleSignalsMuxModule_TopLevel|Addr[0]~corein                                                                    ; combout          ;
-; |ModuleSignalsMuxModule_TopLevel|Addr[1]                                                                           ; |ModuleSignalsMuxModule_TopLevel|Addr[1]~corein                                                                    ; combout          ;
-+--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                                                                                                                                                            ;
++----------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------+
+; Node Name                                                                                                ; Output Port Name                                                                                         ; Output Port Type ;
++----------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------+
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff0_rtl_0|altsyncram_j0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff0_rtl_0|altsyncram_j0b1:auto_generated|ram_block1a0 ; portadataout0    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff0_rtl_0|altsyncram_j0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff0_rtl_0|altsyncram_j0b1:auto_generated|ram_block1a1 ; portadataout1    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff0_rtl_0|altsyncram_j0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff0_rtl_0|altsyncram_j0b1:auto_generated|ram_block1a2 ; portadataout2    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff0_rtl_0|altsyncram_j0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff0_rtl_0|altsyncram_j0b1:auto_generated|ram_block1a3 ; portadataout3    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff0_rtl_0|altsyncram_j0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff0_rtl_0|altsyncram_j0b1:auto_generated|ram_block1a4 ; portadataout4    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff0_rtl_0|altsyncram_j0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff0_rtl_0|altsyncram_j0b1:auto_generated|ram_block1a5 ; portadataout5    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff0_rtl_0|altsyncram_j0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff0_rtl_0|altsyncram_j0b1:auto_generated|ram_block1a6 ; portadataout6    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff0_rtl_0|altsyncram_j0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff0_rtl_0|altsyncram_j0b1:auto_generated|ram_block1a7 ; portadataout7    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff1_rtl_1|altsyncram_k0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff1_rtl_1|altsyncram_k0b1:auto_generated|ram_block1a0 ; portadataout0    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff1_rtl_1|altsyncram_k0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff1_rtl_1|altsyncram_k0b1:auto_generated|ram_block1a1 ; portadataout1    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff1_rtl_1|altsyncram_k0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff1_rtl_1|altsyncram_k0b1:auto_generated|ram_block1a2 ; portadataout2    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff1_rtl_1|altsyncram_k0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff1_rtl_1|altsyncram_k0b1:auto_generated|ram_block1a3 ; portadataout3    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff1_rtl_1|altsyncram_k0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff1_rtl_1|altsyncram_k0b1:auto_generated|ram_block1a4 ; portadataout4    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff1_rtl_1|altsyncram_k0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff1_rtl_1|altsyncram_k0b1:auto_generated|ram_block1a5 ; portadataout5    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff1_rtl_1|altsyncram_k0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff1_rtl_1|altsyncram_k0b1:auto_generated|ram_block1a6 ; portadataout6    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff1_rtl_1|altsyncram_k0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff1_rtl_1|altsyncram_k0b1:auto_generated|ram_block1a7 ; portadataout7    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff2_rtl_2|altsyncram_l0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff2_rtl_2|altsyncram_l0b1:auto_generated|ram_block1a0 ; portadataout0    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff2_rtl_2|altsyncram_l0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff2_rtl_2|altsyncram_l0b1:auto_generated|ram_block1a1 ; portadataout1    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff2_rtl_2|altsyncram_l0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff2_rtl_2|altsyncram_l0b1:auto_generated|ram_block1a2 ; portadataout2    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff2_rtl_2|altsyncram_l0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff2_rtl_2|altsyncram_l0b1:auto_generated|ram_block1a3 ; portadataout3    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff2_rtl_2|altsyncram_l0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff2_rtl_2|altsyncram_l0b1:auto_generated|ram_block1a4 ; portadataout4    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff2_rtl_2|altsyncram_l0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff2_rtl_2|altsyncram_l0b1:auto_generated|ram_block1a5 ; portadataout5    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff2_rtl_2|altsyncram_l0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff2_rtl_2|altsyncram_l0b1:auto_generated|ram_block1a6 ; portadataout6    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff2_rtl_2|altsyncram_l0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff2_rtl_2|altsyncram_l0b1:auto_generated|ram_block1a7 ; portadataout7    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff3_rtl_3|altsyncram_m0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff3_rtl_3|altsyncram_m0b1:auto_generated|ram_block1a2 ; portadataout2    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff3_rtl_3|altsyncram_m0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff3_rtl_3|altsyncram_m0b1:auto_generated|ram_block1a3 ; portadataout3    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff3_rtl_3|altsyncram_m0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff3_rtl_3|altsyncram_m0b1:auto_generated|ram_block1a4 ; portadataout4    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff3_rtl_3|altsyncram_m0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff3_rtl_3|altsyncram_m0b1:auto_generated|ram_block1a5 ; portadataout5    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff3_rtl_3|altsyncram_m0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff3_rtl_3|altsyncram_m0b1:auto_generated|ram_block1a6 ; portadataout6    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff3_rtl_3|altsyncram_m0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff3_rtl_3|altsyncram_m0b1:auto_generated|ram_block1a7 ; portadataout7    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[0]                                                                  ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[0]                                                                  ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[1]                                                                  ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[1]                                                                  ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[2]                                                                  ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[2]                                                                  ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[3]                                                                  ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[3]                                                                  ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[4]                                                                  ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[4]                                                                  ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[5]                                                                  ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[5]                                                                  ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[6]                                                                  ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[6]                                                                  ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[7]                                                                  ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[7]                                                                  ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[8]                                                                  ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[8]                                                                  ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[9]                                                                  ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[9]                                                                  ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[10]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[10]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[11]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[11]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[12]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[12]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[13]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[13]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[14]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[14]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[15]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[15]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[16]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[16]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[17]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[17]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[18]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[18]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[19]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[19]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[20]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[20]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[21]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[21]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[22]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[22]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[23]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[23]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[26]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[26]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[27]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[27]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[28]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[28]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[29]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[29]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[30]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[30]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[31]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[31]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WSTRB[0]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|WSTRB[0]~corein                                                          ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Clock                                                                    ; |SP_WF_WSTRB_RAMModule_TopLevel|Clock~corein                                                             ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData0[0]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData0[0]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Address[0]                                                               ; |SP_WF_WSTRB_RAMModule_TopLevel|Address[0]~corein                                                        ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Address[1]                                                               ; |SP_WF_WSTRB_RAMModule_TopLevel|Address[1]~corein                                                        ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData0[1]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData0[1]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData0[2]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData0[2]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData0[3]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData0[3]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData0[4]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData0[4]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData0[5]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData0[5]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData0[6]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData0[6]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData0[7]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData0[7]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WSTRB[1]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|WSTRB[1]~corein                                                          ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData1[0]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData1[0]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData1[1]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData1[1]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData1[2]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData1[2]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData1[3]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData1[3]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData1[4]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData1[4]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData1[5]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData1[5]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData1[6]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData1[6]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData1[7]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData1[7]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WSTRB[2]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|WSTRB[2]~corein                                                          ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData2[0]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData2[0]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData2[1]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData2[1]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData2[2]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData2[2]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData2[3]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData2[3]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData2[4]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData2[4]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData2[5]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData2[5]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData2[6]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData2[6]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData2[7]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData2[7]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WSTRB[3]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|WSTRB[3]~corein                                                          ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData3[2]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData3[2]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData3[3]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData3[3]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData3[4]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData3[4]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData3[5]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData3[5]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData3[6]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData3[6]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData3[7]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData3[7]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Clock~clkctrl                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|Clock~clkctrl                                                            ; outclk           ;
++----------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 1 during simulation.
-+-------------------------------------------------+
-; Missing 1-Value Coverage                        ;
-+-----------+------------------+------------------+
-; Node Name ; Output Port Name ; Output Port Type ;
-+-----------+------------------+------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                                                                                                                                                                               ;
++----------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------+
+; Node Name                                                                                                ; Output Port Name                                                                                         ; Output Port Type ;
++----------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------+
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff3_rtl_3|altsyncram_m0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff3_rtl_3|altsyncram_m0b1:auto_generated|ram_block1a0 ; portadataout0    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff3_rtl_3|altsyncram_m0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff3_rtl_3|altsyncram_m0b1:auto_generated|ram_block1a1 ; portadataout1    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[24]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[24]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[25]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[25]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Address[2]                                                               ; |SP_WF_WSTRB_RAMModule_TopLevel|Address[2]~corein                                                        ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Address[3]                                                               ; |SP_WF_WSTRB_RAMModule_TopLevel|Address[3]~corein                                                        ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Address[4]                                                               ; |SP_WF_WSTRB_RAMModule_TopLevel|Address[4]~corein                                                        ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData3[0]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData3[0]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData3[1]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData3[1]~corein                                                     ; combout          ;
++----------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 0 during simulation.
-+-------------------------------------------------+
-; Missing 0-Value Coverage                        ;
-+-----------+------------------+------------------+
-; Node Name ; Output Port Name ; Output Port Type ;
-+-----------+------------------+------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                                                                                                                                                                               ;
++----------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------+
+; Node Name                                                                                                ; Output Port Name                                                                                         ; Output Port Type ;
++----------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------+
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff3_rtl_3|altsyncram_m0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff3_rtl_3|altsyncram_m0b1:auto_generated|ram_block1a0 ; portadataout0    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff3_rtl_3|altsyncram_m0b1:auto_generated|ram_block1a0 ; |SP_WF_WSTRB_RAMModule_TopLevel|altsyncram:State_Buff3_rtl_3|altsyncram_m0b1:auto_generated|ram_block1a1 ; portadataout1    ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[24]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[24]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Data[25]                                                                 ; |SP_WF_WSTRB_RAMModule_TopLevel|Data[25]                                                                 ; padio            ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Address[2]                                                               ; |SP_WF_WSTRB_RAMModule_TopLevel|Address[2]~corein                                                        ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Address[3]                                                               ; |SP_WF_WSTRB_RAMModule_TopLevel|Address[3]~corein                                                        ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|Address[4]                                                               ; |SP_WF_WSTRB_RAMModule_TopLevel|Address[4]~corein                                                        ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData3[0]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData3[0]~corein                                                     ; combout          ;
+; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData3[1]                                                            ; |SP_WF_WSTRB_RAMModule_TopLevel|WriteData3[1]~corein                                                     ; combout          ;
++----------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------+
 
 
 +---------------------+
@@ -168,21 +302,21 @@ Info: Running Quartus II Simulator
     Info: programming logic devices manufactured by Altera and sold by 
     Info: Altera or its authorized distributors.  Please refer to the 
     Info: applicable agreement for further details.
-    Info: Processing started: Wed Feb 21 21:10:31 2024
+    Info: Processing started: Fri Feb 23 21:04:06 2024
 Info: Command: quartus_sim C:\code\qusoc\rtl\rtl.hdl\VHDL.qpf --read_settings_files=on --write_settings_files=off -c VHDL
-Info: Using vector source file "Waveforms/ModuleSignalsMuxModule.vwf"
+Info: Using vector source file "Waveforms/SP_WF_WSTRB_RAMModule.vwf"
 Info: Overwriting simulation input file with simulation results
-    Info: A backup of ModuleSignalsMuxModule.vwf called VHDL.sim_ori.vwf has been created in the db folder
+    Info: A backup of SP_WF_WSTRB_RAMModule.vwf called VHDL.sim_ori.vwf has been created in the db folder
 Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
     Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
 Info: Simulation partitioned into 1 sub-simulations
-Info: Simulation coverage is     100.00 %
-Info: Number of transitions in simulation is 144
-Info: Vector file ModuleSignalsMuxModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
+Info: Simulation coverage is      91.59 %
+Info: Number of transitions in simulation is 466
+Info: Vector file SP_WF_WSTRB_RAMModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
 Info: Quartus II Simulator was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 161 megabytes
-    Info: Processing ended: Wed Feb 21 21:10:33 2024
-    Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:04
+    Info: Peak virtual memory: 162 megabytes
+    Info: Processing ended: Fri Feb 23 21:04:07 2024
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:05
 
 

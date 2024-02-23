@@ -67,6 +67,8 @@ module AXI4MasterSlaveTestModule_TopLevel
 	wire reg_outACK;
 	wire reg_outWritten;
 	wire [73: 0] reg_S2M;
+	wire [31: 0] AXI4MasterSlaveTestModule_L31F40T71_Source;
+	wire [31: 0] AXI4MasterSlaveTestModule_L32F44T72_Source;
 	wire [31: 0] master_ARADDR_master_ARADDR_HardLink;
 	wire [31: 0] master_AWADDR_master_AWADDR_HardLink;
 	wire master_RE_master_RE_HardLink;
@@ -231,8 +233,10 @@ module AXI4MasterSlaveTestModule_TopLevel
 	assign master_WSTRB = Inputs_WSTRB;
 	assign BVALID = reg_S2M[72];
 	assign RACK = master_RACK;
-	assign ReadData = { State_ReadData[3], State_ReadData[2], State_ReadData[1], State_ReadData[0] };
-	assign RegisterData = { reg_outData[3], reg_outData[2], reg_outData[1], reg_outData[0] };
+	assign AXI4MasterSlaveTestModule_L31F40T71_Source = { State_ReadData[3], State_ReadData[2], State_ReadData[1], State_ReadData[0] };
+	assign ReadData = AXI4MasterSlaveTestModule_L31F40T71_Source;
+	assign AXI4MasterSlaveTestModule_L32F44T72_Source = { reg_outData[3], reg_outData[2], reg_outData[1], reg_outData[0] };
+	assign RegisterData = AXI4MasterSlaveTestModule_L32F44T72_Source;
 	assign RVALID = reg_S2M[52];
 	assign WACK = master_WACK;
 	assign master_ARADDR_master_ARADDR_HardLink = master_ARADDR;

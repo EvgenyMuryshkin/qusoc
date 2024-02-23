@@ -41,6 +41,7 @@ module IOSingleBitMemoryCompositionModule_TopLevel
 	wire children0_iValue_children0_iValue_HardLink;
 	wire children0_oValue_children0_oValue_HardLink;
 	wire Inputs_iValues [0 : 1];
+	wire IOSingleBitMemoryCompositionModule_L43F34T74_Enumerable [0 : 0];
 	IOSingleBitMemoryCompositionModule_TopLevel_children0
 	IOSingleBitMemoryCompositionModule_TopLevel_children0
 	(
@@ -52,7 +53,8 @@ module IOSingleBitMemoryCompositionModule_TopLevel
 	assign Inputs_iValues[0] = iValues0;
 	assign Inputs_iValues[1] = iValues1;
 	assign children0_iValue = Inputs_iValues[0];
-	assign oValues0 = children0_oValue;
+	assign IOSingleBitMemoryCompositionModule_L43F34T74_Enumerable[0] = children0_oValue;
+	assign oValues0 = IOSingleBitMemoryCompositionModule_L43F34T74_Enumerable[0];
 	assign children0_iValue_children0_iValue_HardLink = children0_iValue;
 	assign children0_oValue = children0_oValue_children0_oValue_HardLink;
 	// [BEGIN USER ARCHITECTURE]

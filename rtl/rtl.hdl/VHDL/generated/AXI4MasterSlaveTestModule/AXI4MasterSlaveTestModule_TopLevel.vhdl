@@ -72,6 +72,8 @@ architecture rtl of AXI4MasterSlaveTestModule_TopLevel is
 	signal reg_outACK : std_logic := '0';
 	signal reg_outWritten : std_logic := '0';
 	signal reg_S2M : unsigned(73 downto 0) := (others => '0');
+	signal AXI4MasterSlaveTestModule_L31F40T71_Source : unsigned(31 downto 0) := (others => '0');
+	signal AXI4MasterSlaveTestModule_L32F44T72_Source : unsigned(31 downto 0) := (others => '0');
 	signal master_ARADDR_master_ARADDR_HardLink : unsigned(31 downto 0) := "00000000000000000000000000000000";
 	signal master_AWADDR_master_AWADDR_HardLink : unsigned(31 downto 0) := "00000000000000000000000000000000";
 	signal master_RE_master_RE_HardLink : std_logic := '0';
@@ -190,7 +192,7 @@ begin
 			NextState_ReadData(3) <= reg_S2M(40 downto 33);
 		end if;
 	end process;
-	process (InData, Inputs_InData, Inputs_MRE, Inputs_MWE, Inputs_SWE, Inputs_WSTRB, master_ARADDR, master_AWADDR, master_M2S, master_M2S_master_M2S_HardLink, master_RACK, master_RACK_master_RACK_HardLink, master_RDATA0_master_RDATA_HardLink, master_RDATA1_master_RDATA_HardLink, master_RDATA2_master_RDATA_HardLink, master_RDATA3_master_RDATA_HardLink, master_RE, master_S2M, master_WACK, master_WACK_master_WACK_HardLink, master_WDATA, master_WE, master_WSTRB, MRE, MWE, reg_inWDATA, reg_inWE, reg_M2S, reg_outACK_reg_outACK_HardLink, reg_outData, reg_outData0_reg_outData_HardLink, reg_outData1_reg_outData_HardLink, reg_outData2_reg_outData_HardLink, reg_outData3_reg_outData_HardLink, reg_outWritten_reg_outWritten_HardLink, reg_S2M, reg_S2M_reg_S2M_HardLink, State_ReadData, SWE, WSTRB)
+	process (AXI4MasterSlaveTestModule_L31F40T71_Source, AXI4MasterSlaveTestModule_L32F44T72_Source, InData, Inputs_InData, Inputs_MRE, Inputs_MWE, Inputs_SWE, Inputs_WSTRB, master_ARADDR, master_AWADDR, master_M2S, master_M2S_master_M2S_HardLink, master_RACK, master_RACK_master_RACK_HardLink, master_RDATA0_master_RDATA_HardLink, master_RDATA1_master_RDATA_HardLink, master_RDATA2_master_RDATA_HardLink, master_RDATA3_master_RDATA_HardLink, master_RE, master_S2M, master_WACK, master_WACK_master_WACK_HardLink, master_WDATA, master_WE, master_WSTRB, MRE, MWE, reg_inWDATA, reg_inWE, reg_M2S, reg_outACK_reg_outACK_HardLink, reg_outData, reg_outData0_reg_outData_HardLink, reg_outData1_reg_outData_HardLink, reg_outData2_reg_outData_HardLink, reg_outData3_reg_outData_HardLink, reg_outWritten_reg_outWritten_HardLink, reg_S2M, reg_S2M_reg_S2M_HardLink, State_ReadData, SWE, WSTRB)
 	begin
 		Inputs_InData <= InData;
 		Inputs_MRE <= MRE;
@@ -219,14 +221,16 @@ begin
 		master_WSTRB <= Inputs_WSTRB;
 		BVALID <= reg_S2M(72);
 		RACK <= master_RACK;
-		ReadData(31 downto 24) <= State_ReadData(3);
-		ReadData(23 downto 16) <= State_ReadData(2);
-		ReadData(15 downto 8) <= State_ReadData(1);
-		ReadData(7 downto 0) <= State_ReadData(0);
-		RegisterData(31 downto 24) <= reg_outData(3);
-		RegisterData(23 downto 16) <= reg_outData(2);
-		RegisterData(15 downto 8) <= reg_outData(1);
-		RegisterData(7 downto 0) <= reg_outData(0);
+		AXI4MasterSlaveTestModule_L31F40T71_Source(31 downto 24) <= State_ReadData(3);
+		AXI4MasterSlaveTestModule_L31F40T71_Source(23 downto 16) <= State_ReadData(2);
+		AXI4MasterSlaveTestModule_L31F40T71_Source(15 downto 8) <= State_ReadData(1);
+		AXI4MasterSlaveTestModule_L31F40T71_Source(7 downto 0) <= State_ReadData(0);
+		ReadData <= AXI4MasterSlaveTestModule_L31F40T71_Source;
+		AXI4MasterSlaveTestModule_L32F44T72_Source(31 downto 24) <= reg_outData(3);
+		AXI4MasterSlaveTestModule_L32F44T72_Source(23 downto 16) <= reg_outData(2);
+		AXI4MasterSlaveTestModule_L32F44T72_Source(15 downto 8) <= reg_outData(1);
+		AXI4MasterSlaveTestModule_L32F44T72_Source(7 downto 0) <= reg_outData(0);
+		RegisterData <= AXI4MasterSlaveTestModule_L32F44T72_Source;
 		RVALID <= reg_S2M(52);
 		WACK <= master_WACK;
 		master_ARADDR_master_ARADDR_HardLink <= master_ARADDR;

@@ -257,6 +257,7 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	wire [7 : 0] registers2_outData [0 : 3];
 	wire [7 : 0] registers3_inWDATA [0 : 3];
 	wire [7 : 0] registers3_outData [0 : 3];
+	wire [221 : 0] AXI4Interconnect2x4TestModule_L46F39T75_Enumerable [0 : 1];
 	wire BoardSignals_Clock;
 	wire BoardSignals_Reset;
 	wire BoardSignals_Running;
@@ -426,8 +427,9 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	assign Inputs_SWE[2] = SWE2;
 	assign Inputs_SWE[3] = SWE3;
 	assign Inputs_WSTRB = WSTRB;
-	assign interconnectM2S[0] = masters0_M2S;
-	assign interconnectM2S[1] = masters1_M2S;
+	assign AXI4Interconnect2x4TestModule_L46F39T75_Enumerable[0] = masters0_M2S;
+	assign AXI4Interconnect2x4TestModule_L46F39T75_Enumerable[1] = masters1_M2S;
+	assign interconnectM2S[0] = AXI4Interconnect2x4TestModule_L46F39T75_Enumerable[0];
 	assign masters0_ARADDR = { {31{1'b0}}, AXI4Interconnect2x4TestModule_L62F13L74T14_0_AXI4Interconnect2x4TestModule_L69F30T31_Expr };
 	assign masters0_AWADDR = { {31{1'b0}}, AXI4Interconnect2x4TestModule_L62F13L74T14_0_AXI4Interconnect2x4TestModule_L70F30T31_Expr };
 	assign masters0_RE = Inputs_MRE[0];
