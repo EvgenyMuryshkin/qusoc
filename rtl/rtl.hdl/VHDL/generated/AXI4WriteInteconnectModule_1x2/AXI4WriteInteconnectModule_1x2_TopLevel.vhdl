@@ -270,6 +270,20 @@ architecture rtl of AXI4WriteInteconnectModule_1x2_TopLevel is
 	signal DuplexMux_oRight : DuplexMux_oRightArray := (others => (others => '0'));
 	type Encoder_iValuesArray is array (0 to 0) of std_logic;
 	signal Encoder_iValues : Encoder_iValuesArray := (others => '0');
+	type InterconnectModule_L78F48T106_EnumerableArray is array (0 to 0) of std_logic;
+	signal InterconnectModule_L78F48T106_Enumerable : InterconnectModule_L78F48T106_EnumerableArray := (others => '0');
+	type InterconnectModule_L80F42T100_EnumerableArray is array (0 to 0) of std_logic;
+	signal InterconnectModule_L80F42T100_Enumerable : InterconnectModule_L80F42T100_EnumerableArray := (others => '0');
+	type InterconnectModule_L79F45T106_EnumerableArray is array (0 to 0) of std_logic;
+	signal InterconnectModule_L79F45T106_Enumerable : InterconnectModule_L79F45T106_EnumerableArray := (others => '0');
+	type AXI4WriteInteconnectModule_L35F44T95_EnumerableArray is array (0 to 0) of std_logic;
+	signal AXI4WriteInteconnectModule_L35F44T95_Enumerable : AXI4WriteInteconnectModule_L35F44T95_EnumerableArray := (others => '0');
+	type AXI4WriteInteconnectModule_L32F47T97_EnumerableArray is array (0 to 0) of unsigned (0 downto 0);
+	signal AXI4WriteInteconnectModule_L32F47T97_Enumerable : AXI4WriteInteconnectModule_L32F47T97_EnumerableArray := (others => (others => '0'));
+	type AXI4WriteInteconnectModule_1x2_L22F47T98_EnumerableArray is array (0 to 0) of std_logic;
+	signal AXI4WriteInteconnectModule_1x2_L22F47T98_Enumerable : AXI4WriteInteconnectModule_1x2_L22F47T98_EnumerableArray := (others => '0');
+	type AXI4WriteInteconnectModule_1x2_L21F53T103_EnumerableArray is array (0 to 0) of unsigned (0 downto 0);
+	signal AXI4WriteInteconnectModule_1x2_L21F53T103_Enumerable : AXI4WriteInteconnectModule_1x2_L21F53T103_EnumerableArray := (others => (others => '0'));
 	signal BoardSignals : BoardSignalsType;
 	signal InternalReset : std_logic := '0';
 begin
@@ -385,7 +399,7 @@ begin
 			NextState_rightAddrValid <= InterconnectModule_L132F9L149T10_InterconnectModule_L142F13L148T14_InterconnectModule_L147F44T48_Expr;
 		end if;
 	end process;
-	process (AXI4WriteInteconnectModule_L33F37T75_Index, AXI4WriteInteconnectModule_L36F37T79_Index, axiRightAddr, DuplexMux_iLeft, DuplexMux_iLeftAddr, DuplexMux_iLeftAddrValid, DuplexMux_iRight, DuplexMux_iRightAddr, DuplexMux_iRightAddrValid, DuplexMux_oLeft, DuplexMux_oLeft0_DuplexMux_oLeft_HardLink, DuplexMux_oLeft1_DuplexMux_oLeft_HardLink, DuplexMux_oMuxLeftData, DuplexMux_oMuxLeftData_DuplexMux_oMuxLeftData_HardLink, DuplexMux_oMuxRightData, DuplexMux_oMuxRightData_DuplexMux_oMuxRightData_HardLink, DuplexMux_oRight, DuplexMux_oRight0_DuplexMux_oRight_HardLink, Encoder_HasActive, Encoder_HasActive_Encoder_HasActive_HardLink, Encoder_iValues, Encoder_MSBIndex_Encoder_MSBIndex_HardLink, Encoder_MSBValue_Encoder_MSBValue_HardLink, iLeft0_AW_AWADDR, iLeft0_AW_AWBURST, iLeft0_AW_AWCACHE, iLeft0_AW_AWID, iLeft0_AW_AWLEN, iLeft0_AW_AWLOCK, iLeft0_AW_AWPROT, iLeft0_AW_AWQOS, iLeft0_AW_AWREGION, iLeft0_AW_AWSIZE, iLeft0_AW_AWUSER, iLeft0_AW_AWVALID, iLeft0_B_BREADY, iLeft0_W_WDATA0, iLeft0_W_WDATA1, iLeft0_W_WDATA2, iLeft0_W_WDATA3, iLeft0_W_WID, iLeft0_W_WLAST, iLeft0_W_WSTRB, iLeft0_W_WUSER, iLeft0_W_WVALID, Inputs_iLeft, Inputs_iRight, InterconnectModule_L86F40T75_AXI4WriteInteconnectModule_L44F61T101_Expr, InterconnectModule_L94F13L97T14_0_InterconnectModule_L96F38T101_Expr, InterconnectModule_L94F13L97T14_0_InterconnectModule_L96F38T70_AXI4WriteInteconnectModule_L45F63T103_Expr, InterconnectModule_L94F13L97T14_0_InterconnectModule_L96F74T101_Expr, InterconnectModule_L94F13L97T14_0_InterconnectModule_L96F75T101_Index, InterconnectModule_L99F13L109T14_0_InterconnectModule_L104F36T54_Index, InterconnectModule_L99F13L109T14_0_InterconnectModule_L105F34T64_AXI4WriteInteconnectModule_L44F61T101_Expr, InterconnectModule_L99F13L109T14_0_InterconnectModule_L106F36T54_Expr, iRight0_AW_AWREADY, iRight0_B_BID, iRight0_B_BRESP, iRight0_B_BUSER, iRight0_B_BVALID, iRight0_W_WREADY, iRight1_AW_AWREADY, iRight1_B_BID, iRight1_B_BRESP, iRight1_B_BUSER, iRight1_B_BVALID, iRight1_W_WREADY, muxLeft, muxRight, muxRightData_B_BVALID, rangeDetectorActive, rangeDetectorActiveFlags, rangeDetectorArray0_iAddress, rangeDetectorArray0_oActive, rangeDetectorArray0_oActive_rangeDetectorArray0_oActive_HardLink, rangeDetectorArray0_oIndex, rangeDetectorArray0_oIndex_rangeDetectorArray0_oIndex_HardLink, rangeDetectorIndexes, rightAddr, State_leftAddr, State_leftAddrValid, State_rightAddr, State_rightAddrValid, TransactionDetectors0_iRestart, TransactionDetectors0_iTXBegin, TransactionDetectors0_iTXEnd, TransactionDetectors0_oTransaction, TransactionDetectors0_oTransaction_TransactionDetectors0_oTransaction_HardLink, TransactionDetectors0_oWaitForRestart, TransactionDetectors0_oWaitForRestart_TransactionDetectors0_oWaitForRestart_HardLink, Transactions, TXBegin, WaitForRestarts)
+	process (AXI4WriteInteconnectModule_1x2_L21F53T103_Enumerable, AXI4WriteInteconnectModule_1x2_L22F47T98_Enumerable, AXI4WriteInteconnectModule_L32F47T97_Enumerable, AXI4WriteInteconnectModule_L33F37T75_Index, AXI4WriteInteconnectModule_L35F44T95_Enumerable, AXI4WriteInteconnectModule_L36F37T79_Index, axiRightAddr, DuplexMux_iLeft, DuplexMux_iLeftAddr, DuplexMux_iLeftAddrValid, DuplexMux_iRight, DuplexMux_iRightAddr, DuplexMux_iRightAddrValid, DuplexMux_oLeft, DuplexMux_oLeft0_DuplexMux_oLeft_HardLink, DuplexMux_oLeft1_DuplexMux_oLeft_HardLink, DuplexMux_oMuxLeftData, DuplexMux_oMuxLeftData_DuplexMux_oMuxLeftData_HardLink, DuplexMux_oMuxRightData, DuplexMux_oMuxRightData_DuplexMux_oMuxRightData_HardLink, DuplexMux_oRight, DuplexMux_oRight0_DuplexMux_oRight_HardLink, Encoder_HasActive, Encoder_HasActive_Encoder_HasActive_HardLink, Encoder_iValues, Encoder_MSBIndex_Encoder_MSBIndex_HardLink, Encoder_MSBValue_Encoder_MSBValue_HardLink, iLeft0_AW_AWADDR, iLeft0_AW_AWBURST, iLeft0_AW_AWCACHE, iLeft0_AW_AWID, iLeft0_AW_AWLEN, iLeft0_AW_AWLOCK, iLeft0_AW_AWPROT, iLeft0_AW_AWQOS, iLeft0_AW_AWREGION, iLeft0_AW_AWSIZE, iLeft0_AW_AWUSER, iLeft0_AW_AWVALID, iLeft0_B_BREADY, iLeft0_W_WDATA0, iLeft0_W_WDATA1, iLeft0_W_WDATA2, iLeft0_W_WDATA3, iLeft0_W_WID, iLeft0_W_WLAST, iLeft0_W_WSTRB, iLeft0_W_WUSER, iLeft0_W_WVALID, Inputs_iLeft, Inputs_iRight, InterconnectModule_L78F48T106_Enumerable, InterconnectModule_L79F45T106_Enumerable, InterconnectModule_L80F42T100_Enumerable, InterconnectModule_L86F40T75_AXI4WriteInteconnectModule_L44F61T101_Expr, InterconnectModule_L94F13L97T14_0_InterconnectModule_L96F38T101_Expr, InterconnectModule_L94F13L97T14_0_InterconnectModule_L96F38T70_AXI4WriteInteconnectModule_L45F63T103_Expr, InterconnectModule_L94F13L97T14_0_InterconnectModule_L96F74T101_Expr, InterconnectModule_L94F13L97T14_0_InterconnectModule_L96F75T101_Index, InterconnectModule_L99F13L109T14_0_InterconnectModule_L104F36T54_Index, InterconnectModule_L99F13L109T14_0_InterconnectModule_L105F34T64_AXI4WriteInteconnectModule_L44F61T101_Expr, InterconnectModule_L99F13L109T14_0_InterconnectModule_L106F36T54_Expr, iRight0_AW_AWREADY, iRight0_B_BID, iRight0_B_BRESP, iRight0_B_BUSER, iRight0_B_BVALID, iRight0_W_WREADY, iRight1_AW_AWREADY, iRight1_B_BID, iRight1_B_BRESP, iRight1_B_BUSER, iRight1_B_BVALID, iRight1_W_WREADY, muxLeft, muxRight, muxRightData_B_BVALID, rangeDetectorActive, rangeDetectorActiveFlags, rangeDetectorArray0_iAddress, rangeDetectorArray0_oActive, rangeDetectorArray0_oActive_rangeDetectorArray0_oActive_HardLink, rangeDetectorArray0_oIndex, rangeDetectorArray0_oIndex_rangeDetectorArray0_oIndex_HardLink, rangeDetectorIndexes, rightAddr, State_leftAddr, State_leftAddrValid, State_rightAddr, State_rightAddrValid, TransactionDetectors0_iRestart, TransactionDetectors0_iTXBegin, TransactionDetectors0_iTXEnd, TransactionDetectors0_oTransaction, TransactionDetectors0_oTransaction_TransactionDetectors0_oTransaction_HardLink, TransactionDetectors0_oWaitForRestart, TransactionDetectors0_oWaitForRestart_TransactionDetectors0_oWaitForRestart_HardLink, Transactions, TXBegin, WaitForRestarts)
 	begin
 		InterconnectModule_L86F40T75_AXI4WriteInteconnectModule_L44F61T101_Expr_1 <= Inputs_iLeft(TO_INTEGER(State_leftAddr))(137);
 		InterconnectModule_L86F40T75_AXI4WriteInteconnectModule_L44F61T101_Expr_2 <= muxRightData_B_BVALID;
@@ -431,7 +445,8 @@ begin
 		Inputs_iRight(1)(10 downto 9) <= iRight1_B_BRESP;
 		Inputs_iRight(1)(8 downto 1) <= iRight1_B_BID;
 		Inputs_iRight(1)(0) <= iRight1_AW_AWREADY;
-		ActiveTransactions(0) <= TransactionDetectors0_oTransaction;
+		InterconnectModule_L78F48T106_Enumerable(0) <= TransactionDetectors0_oTransaction;
+		ActiveTransactions(0) <= InterconnectModule_L78F48T106_Enumerable(0);
 		currentTXEnd <= InterconnectModule_L86F40T75_AXI4WriteInteconnectModule_L44F61T101_Expr;
 		muxLeft(0) <= DuplexMux_oLeft(0);
 		muxLeft(1) <= DuplexMux_oLeft(1);
@@ -465,12 +480,16 @@ begin
 		muxRightData_B_BVALID <= DuplexMux_oMuxRightData(19);
 		muxRightData_W_WREADY <= DuplexMux_oMuxRightData(20);
 		rightAddr <= axiRightAddr;
-		Transactions(0) <= TransactionDetectors0_oTransaction;
-		WaitForRestarts(0) <= TransactionDetectors0_oWaitForRestart;
+		InterconnectModule_L80F42T100_Enumerable(0) <= TransactionDetectors0_oTransaction;
+		Transactions(0) <= InterconnectModule_L80F42T100_Enumerable(0);
+		InterconnectModule_L79F45T106_Enumerable(0) <= TransactionDetectors0_oWaitForRestart;
+		WaitForRestarts(0) <= InterconnectModule_L79F45T106_Enumerable(0);
 		axiRightAddr <= AXI4WriteInteconnectModule_L33F37T75_Index;
 		rangeDetectorActive <= AXI4WriteInteconnectModule_L36F37T79_Index;
-		rangeDetectorActiveFlags(0) <= rangeDetectorArray0_oActive;
-		rangeDetectorIndexes(0) <= rangeDetectorArray0_oIndex;
+		AXI4WriteInteconnectModule_L35F44T95_Enumerable(0) <= rangeDetectorArray0_oActive;
+		rangeDetectorActiveFlags(0) <= AXI4WriteInteconnectModule_L35F44T95_Enumerable(0);
+		AXI4WriteInteconnectModule_L32F47T97_Enumerable(0) <= rangeDetectorArray0_oIndex;
+		rangeDetectorIndexes(0) <= AXI4WriteInteconnectModule_L32F47T97_Enumerable(0);
 		TXBegin(0) <= InterconnectModule_L94F13L97T14_0_InterconnectModule_L96F38T101_Expr;
 		TransactionDetectors0_iRestart <= InterconnectModule_L99F13L109T14_0_InterconnectModule_L106F36T54_Expr;
 		TransactionDetectors0_iTXBegin <= InterconnectModule_L99F13L109T14_0_InterconnectModule_L104F36T54_Index;
@@ -530,8 +549,10 @@ begin
 		oLeft1_AW_AWADDR <= muxLeft(1)(39 downto 8);
 		oLeft1_AW_AWID <= muxLeft(1)(7 downto 0);
 		oNextRightAddr <= rightAddr;
-		oRangeDetectorActive0 <= rangeDetectorArray0_oActive;
-		oRangeDetectorIndex0 <= rangeDetectorArray0_oIndex;
+		AXI4WriteInteconnectModule_1x2_L22F47T98_Enumerable(0) <= rangeDetectorArray0_oActive;
+		oRangeDetectorActive0 <= AXI4WriteInteconnectModule_1x2_L22F47T98_Enumerable(0);
+		AXI4WriteInteconnectModule_1x2_L21F53T103_Enumerable(0) <= rangeDetectorArray0_oIndex;
+		oRangeDetectorIndex0 <= AXI4WriteInteconnectModule_1x2_L21F53T103_Enumerable(0);
 		oRight0_W_WREADY <= muxRight(0)(20);
 		oRight0_B_BVALID <= muxRight(0)(19);
 		oRight0_B_BUSER <= muxRight(0)(18 downto 11);
