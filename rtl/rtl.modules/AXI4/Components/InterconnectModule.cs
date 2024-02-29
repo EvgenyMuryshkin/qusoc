@@ -77,7 +77,7 @@ namespace rtl.modules
         protected abstract RTLBitArray RightAddr();
         protected bool[] ActiveTransactions => TransactionDetectors.Select(t => t.oTransaction).ToArray();
         protected bool[] WaitForRestarts => TransactionDetectors.Select(t => t.oWaitForRestart).ToArray();
-        protected bool[] Transactions => TransactionDetectors.Select(t => t.oTransaction).ToArray();
+        protected bool[] Transactions => TransactionDetectors.Select(t => t.oTransaction).ToArray();//dbg
         protected TLeft muxLeftData => DuplexMux.oMuxLeftData;
         protected TRight muxRightData => DuplexMux.oMuxRightData;
         protected TLeft[] muxLeft => DuplexMux.oLeft;
@@ -91,12 +91,12 @@ namespace rtl.modules
         {
             base.OnSchedule(inputsFactory);
 
-            for (var leftIndex = 0; leftIndex < leftCount; leftIndex++)
+            foreach (var leftIndex in range(leftCount))
             {
                 TXBegin[leftIndex] = TXStart(Inputs.iLeft[leftIndex]) && !WaitForRestarts[leftIndex];
             }
 
-            for (var leftIndex = 0; leftIndex < leftCount; leftIndex++)
+            foreach (var leftIndex in range(leftCount))
             {
                 TransactionDetectors[leftIndex].Schedule(() => 
                     new TransactionDetectorModuleInputs()
