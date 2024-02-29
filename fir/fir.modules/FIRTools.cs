@@ -43,7 +43,7 @@ namespace fir.modules
         /// <returns></returns>
         public static RTLBitArray[] f_get_coef_mask()
         {
-            return Enumerable.Range(0, 10).Select(idx => new RTLBitArray("".PadLeft(9 - idx, '0').PadRight(9, '1'))).ToArray();
+            return Enumerable.Range(0, 10).Select(idx => new RTLBitArray(RTLBitArrayInitType.MSB, "".PadLeft(9 - idx, '0').PadRight(9, '1'))).ToArray();
         }
 
         /// <summary>

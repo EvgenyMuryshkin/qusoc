@@ -52,9 +52,9 @@ namespace RTL.Modules
         public static IntDividerPipelineGeneratedState<T> DividerStage<T>(int idx, IntDividerPipelineGeneratedState<T> i)
             where T : struct
         {
-            var denominator = new RTLBitArray(i.denominator, new RTLBitArray(0).Unsigned().Resized(31 - idx));
+            var denominator = new RTLBitArray(RTLBitArrayInitType.MSB, i.denominator, new RTLBitArray(0).Unsigned().Resized(31 - idx));
             var flag = i.numerator >= denominator;
-            var result = new RTLBitArray(i.result[30, 0], flag);
+            var result = new RTLBitArray(RTLBitArrayInitType.MSB, i.result[30, 0], flag);
             var nextNumerator = flag ? (i.numerator - denominator)[31, 0] : i.numerator;
 
             return new IntDividerPipelineGeneratedState<T>()

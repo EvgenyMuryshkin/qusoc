@@ -1,10 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-	  <TargetFramework>net8.0</TargetFramework>
-	  <IsPackable>false</IsPackable>
+    <TargetFramework>net8.0</TargetFramework>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.1.1" />
@@ -13,13 +12,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Quokka.RISCV.Integration" Version="1.0.0.15" />
+    <PackageReference Include="Quokka.RISCV.Integration" Version="1.0.0.16" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\tools\Quokka.RTL.Simulator\Quokka.RTL.Simulator.csproj" />
     <ProjectReference Include="..\qusoc.demos\qusoc.demos.csproj" />
     <ProjectReference Include="..\qusoc\qusoc.csproj" />
   </ItemGroup>
-
 </Project>

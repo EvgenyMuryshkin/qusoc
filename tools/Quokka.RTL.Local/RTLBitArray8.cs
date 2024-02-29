@@ -2,7 +2,7 @@
 {
     public class RTLBitArray4 : RTLBitArray
     {
-        public RTLBitArray4() : base("".PadLeft(4, '0'))
+        public RTLBitArray4() : base(RTLBitArrayInitType.MSB, "".PadLeft(4, '0'))
         {
 
         }

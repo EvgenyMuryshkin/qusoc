@@ -17,35 +17,35 @@ namespace RTL.Modules
 
         public AXI4MemoryModuleInputsBuilder WADDR(uint addr)
         {
-            M2S.AW.AWADDR = addr;
-            M2S.AW.AWVALID = true;
+            M2S.W.AW.AWADDR = addr;
+            M2S.W.AW.AWVALID = true;
             return this;
         }
 
         public AXI4MemoryModuleInputsBuilder WDATA(byte[] data, byte wstrb = 0xF)
         {
-            M2S.W.WDATA = data;
-            M2S.W.WSTRB = new RTLBitArray(wstrb).Resized(4);
-            M2S.W.WVALID = true;
+            M2S.W.W.WDATA = data;
+            M2S.W.W.WSTRB = new RTLBitArray(wstrb).Resized(4);
+            M2S.W.W.WVALID = true;
             return this;
         }
 
         public AXI4MemoryModuleInputsBuilder BREADY()
         {
-            M2S.B.BREADY = true;
+            M2S.W.B.BREADY = true;
             return this;
         }
 
         public AXI4MemoryModuleInputsBuilder RADDR(uint addr)
         {
-            M2S.AR.ARADDR = addr;
-            M2S.AR.ARVALID = true;
+            M2S.R.AR.ARADDR = addr;
+            M2S.R.AR.ARVALID = true;
             return this;
         }
 
         public AXI4MemoryModuleInputsBuilder RREADY()
         {
-            M2S.R.RREADY = true;
+            M2S.R.R.RREADY = true;
             return this;
         }
     }
@@ -61,7 +61,7 @@ namespace RTL.Modules
             return (sim, topLevel);
         }
 
-        RTLBitArray WSTRB_ALL => new RTLBitArray(true, true, true, true);
+        RTLBitArray WSTRB_ALL => new RTLBitArray(RTLBitArrayInitType.MSB, true, true, true, true);
 
         [TestMethod]
         // TODO: sim fix - update outputs after commit
@@ -77,17 +77,20 @@ namespace RTL.Modules
                 {
                     M2S =
                     {
-                        AR =
+                        R =
                         {
-                            ARADDR = 0,
-                            ARVALID = true
+                            AR =
+                            {
+                                ARADDR = 0,
+                                ARVALID = true
+                            }
                         }
                     }
                 },
-                () => topLevel.S2M.R.RVALID
+                () => topLevel.S2M.R.R.RVALID
             );
 
-            Assert.AreEqual(BitConverter.ToInt32(topLevel.State.buff[0]), BitConverter.ToInt32(topLevel.S2M.R.RDATA));
+            Assert.AreEqual(BitConverter.ToInt32(topLevel.State.buff[0]), BitConverter.ToInt32(topLevel.S2M.R.R.RDATA));
 
             sim.ClockCycle(new AXI4MemoryModuleInputs(axiSize.B4)
             {
@@ -95,11 +98,14 @@ namespace RTL.Modules
                 {
                     R =
                     {
-                        RREADY = true
+                        R =
+                        {
+                            RREADY = true
+                        }
                     }
                 }
             });
-            Assert.IsFalse(topLevel.S2M.R.RVALID);
+            Assert.IsFalse(topLevel.S2M.R.R.RVALID);
 
             sim.ClockCycles(
                 null,
@@ -107,31 +113,37 @@ namespace RTL.Modules
                 {
                     M2S =
                     {
-                        AR =
+                        R =
                         {
-                            ARADDR = 1023,
-                            ARVALID = true
+                            AR =
+                            {
+                                ARADDR = 1023,
+                                ARVALID = true
+                            }
                         }
                     }
                 },
-                () => topLevel.S2M.R.RVALID
+                () => topLevel.S2M.R.R.RVALID
             );
 
             sim.ClockCycle();
             sim.ClockCycle();
 
-            Assert.AreEqual(BitConverter.ToInt32(topLevel.State.buff[1023]), BitConverter.ToInt32(topLevel.S2M.R.RDATA));
+            Assert.AreEqual(BitConverter.ToInt32(topLevel.State.buff[1023]), BitConverter.ToInt32(topLevel.S2M.R.R.RDATA));
             sim.ClockCycle(new AXI4MemoryModuleInputs(axiSize.B4)
             {
                 M2S =
                 {
                     R =
                     {
-                        RREADY = true
+                        R =
+                        {
+                            RREADY = true
+                        }
                     }
                 }
             });
-            Assert.IsFalse(topLevel.S2M.R.RVALID);
+            Assert.IsFalse(topLevel.S2M.R.R.RVALID);
         }
 
         [TestMethod]
@@ -143,28 +155,7 @@ namespace RTL.Modules
             {
                 var data = new byte[] { addr, 1, 1, 1 };
 
-                sim.ClockCycles(null, () => new AXI4MemoryModuleInputs(axiSize.B4), () => topLevel.S2M.AW.AWREADY);
-
-                sim.ClockCycles(
-                    null,
-                    () => new AXI4MemoryModuleInputs(axiSize.B4)
-                    {
-                        M2S =
-                        {
-                        AW =
-                        {
-                            AWADDR = addr,
-                            AWVALID = true
-                        }
-                        }
-                    },
-                    () => !topLevel.S2M.AW.AWREADY
-                );
-
-                sim.ClockCycle(new AXI4MemoryModuleInputs(axiSize.B4));
-                sim.ClockCycle(new AXI4MemoryModuleInputs(axiSize.B4));
-
-                sim.ClockCycles(null, () => new AXI4MemoryModuleInputs(axiSize.B4), () => topLevel.S2M.W.WREADY);
+                sim.ClockCycles(null, () => new AXI4MemoryModuleInputs(axiSize.B4), () => topLevel.S2M.W.AW.AWREADY);
 
                 sim.ClockCycles(
                     null,
@@ -174,19 +165,22 @@ namespace RTL.Modules
                         {
                             W =
                             {
-                                WDATA = data,
-                                WSTRB = new RTLBitArray(true, true, true, true),
-                                WVALID = true
+                                AW =
+                                {
+                                    AWADDR = addr,
+                                    AWVALID = true
+                                }
                             }
+
                         }
                     },
-                    () => !topLevel.S2M.W.WREADY
+                    () => !topLevel.S2M.W.AW.AWREADY
                 );
 
                 sim.ClockCycle(new AXI4MemoryModuleInputs(axiSize.B4));
                 sim.ClockCycle(new AXI4MemoryModuleInputs(axiSize.B4));
 
-                Assert.IsTrue(topLevel.S2M.B.BVALID);
+                sim.ClockCycles(null, () => new AXI4MemoryModuleInputs(axiSize.B4), () => topLevel.S2M.W.W.WREADY);
 
                 sim.ClockCycles(
                     null,
@@ -194,13 +188,42 @@ namespace RTL.Modules
                     {
                         M2S =
                         {
-                        B =
-                        {
-                            BREADY = true
-                        }
+                            W =
+                            {
+                                W =
+                                {
+                                    WDATA = data,
+                                    WSTRB = new RTLBitArray(RTLBitArrayInitType.MSB, true, true, true, true),
+                                    WVALID = true
+                                }
+                            }
+
                         }
                     },
-                    () => !topLevel.S2M.B.BVALID
+                    () => !topLevel.S2M.W.W.WREADY
+                );
+
+                sim.ClockCycle(new AXI4MemoryModuleInputs(axiSize.B4));
+                sim.ClockCycle(new AXI4MemoryModuleInputs(axiSize.B4));
+
+                Assert.IsTrue(topLevel.S2M.W.B.BVALID);
+
+                sim.ClockCycles(
+                    null,
+                    () => new AXI4MemoryModuleInputs(axiSize.B4)
+                    {
+                        M2S =
+                        {
+                            W =
+                            {
+                                B =
+                                {
+                                    BREADY = true
+                                }
+                            }
+                        }
+                    },
+                    () => !topLevel.S2M.W.B.BVALID
                 );
 
                 sim.ClockCycle(new AXI4MemoryModuleInputs(axiSize.B4));
@@ -221,20 +244,23 @@ namespace RTL.Modules
                 {
                     M2S =
                     {
-                        AW =
-                        {
-                            AWADDR = 0,
-                            AWVALID = true
-                        },
                         W =
                         {
-                            WDATA = new byte [] { 1, 1, 1, 1 },
-                            WSTRB = new RTLBitArray(true, true, true, true),
-                            WVALID = true
+                            AW =
+                            {
+                                AWADDR = 0,
+                                AWVALID = true
+                            },
+                            W =
+                            {
+                                WDATA = new byte [] { 1, 1, 1, 1 },
+                                WSTRB = new RTLBitArray(RTLBitArrayInitType.MSB, true, true, true, true),
+                                WVALID = true
+                            }
                         }
                     }
                 }, 
-                () => topLevel.S2M.B.BVALID
+                () => topLevel.S2M.W.B.BVALID
             );
             Assert.AreEqual(0x01010101, BitConverter.ToInt32(topLevel.State.buff[0]));
 
@@ -244,13 +270,16 @@ namespace RTL.Modules
                 {
                     M2S =
                     {
-                        B =
+                        W =
                         {
-                            BREADY = true
+                            B =
+                            {
+                                BREADY = true
+                            }
                         }
                     }
                 }, 
-                () => !topLevel.S2M.B.BVALID
+                () => !topLevel.S2M.W.B.BVALID
             );
 
             sim.ClockCycle();
@@ -261,20 +290,24 @@ namespace RTL.Modules
                 {
                     M2S =
                     {
-                        AW =
-                        {
-                            AWADDR = 10,
-                            AWVALID = true
-                        },
                         W =
                         {
-                            WDATA = new byte [] { 0xFF, 0xFF, 0xFF, 0xFF },
-                            WSTRB = new RTLBitArray(false, true, false, true),
-                            WVALID = true
+                            AW =
+                            {
+                                AWADDR = 10,
+                                AWVALID = true
+                            },
+                            W =
+                            {
+                                WDATA = new byte [] { 0xFF, 0xFF, 0xFF, 0xFF },
+                                WSTRB = new RTLBitArray(RTLBitArrayInitType.MSB, false, true, false, true),
+                                WVALID = true
+                            }
                         }
+
                     }
                 }, 
-                () => topLevel.S2M.B.BVALID
+                () => topLevel.S2M.W.B.BVALID
             );
             Assert.AreEqual(0x00FF00FF, BitConverter.ToInt32(topLevel.State.buff[10]));
         }

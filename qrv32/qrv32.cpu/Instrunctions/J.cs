@@ -17,7 +17,7 @@ namespace QRV32.CPU
         {
             NextState.WBDataReady = true;
             NextState.WBData = NextSequentialPC;
-            NextState.PCOffset = new RTLBitArray(new RTLBitArray(Regs.RS1 + ID.ITypeImm)[31, 1], false);
+            NextState.PCOffset = new RTLBitArray(RTLBitArrayInitType.MSB, new RTLBitArray(Regs.RS1 + ID.ITypeImm)[31, 1], false);
         }
     }
 }

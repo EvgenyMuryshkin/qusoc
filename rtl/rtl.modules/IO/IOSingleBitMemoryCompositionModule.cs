@@ -17,16 +17,25 @@ namespace RTL.Modules
 
     public class IOSingleBitMemoryCompositionModuleInputs
     {
-        public bool[] iValues = new bool[2];
+        public IOSingleBitMemoryCompositionModuleInputs() { }
+        public IOSingleBitMemoryCompositionModuleInputs(int size)
+        {
+            iValues = new bool[size];
+        }
+    
+        public bool[] iValues;
     }
 
     public class IOSingleBitMemoryCompositionModule : RTLCombinationalModule<IOSingleBitMemoryCompositionModuleInputs>
     {
-        readonly int size = 1; // TODO: support const int size = 2;
+        readonly int size; // TODO: support const int size = 2;
         IOSingleBitMemoryCompositionChildModule[] children;
 
-        public IOSingleBitMemoryCompositionModule()
+        public IOSingleBitMemoryCompositionModule(int size)
         {
+            this.size = size;
+            InitInputs(new IOSingleBitMemoryCompositionModuleInputs(size));
+
             children = Enumerable.Range(0, size).Select(i => new IOSingleBitMemoryCompositionChildModule()).ToArray();
         }
 
@@ -42,5 +51,16 @@ namespace RTL.Modules
 
         public bool[] oValues => children.Select(x => x.oValue).ToArray();
     }
+
+    public class IOSingleBitMemoryCompositionModule_1 : IOSingleBitMemoryCompositionModule
+    {
+        public IOSingleBitMemoryCompositionModule_1() : base(1) { }
+    }
+
+    public class IOSingleBitMemoryCompositionModule_2 : IOSingleBitMemoryCompositionModule
+    {
+        public IOSingleBitMemoryCompositionModule_2() : base(2) { }
+    }
+
 }
 

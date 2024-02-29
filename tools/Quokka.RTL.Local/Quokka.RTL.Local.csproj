@@ -4,6 +4,6 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Quokka.RTL" Version="0.1.5.551" />
+    <PackageReference Include="Quokka.RTL" Version="0.1.5.553" />
   </ItemGroup>
 </Project>

@@ -47,6 +47,8 @@ architecture rtl of IOSingleBitMemoryCompositionModule_TopLevel is
 	signal children0_oValue_children0_oValue_HardLink : std_logic := '0';
 	type Inputs_iValuesArray is array (0 to 1) of std_logic;
 	signal Inputs_iValues : Inputs_iValuesArray := (others => '0');
+	type IOSingleBitMemoryCompositionModule_L43F34T74_EnumerableArray is array (0 to 0) of std_logic;
+	signal IOSingleBitMemoryCompositionModule_L43F34T74_Enumerable : IOSingleBitMemoryCompositionModule_L43F34T74_EnumerableArray := (others => '0');
 begin
 	IOSingleBitMemoryCompositionModule_TopLevel_children0 : entity work.IOSingleBitMemoryCompositionModule_TopLevel_children0
 	port map
@@ -57,12 +59,13 @@ begin
 		oValue => children0_oValue_children0_oValue_HardLink
 	)
 	;
-	process (children0_iValue, children0_oValue, children0_oValue_children0_oValue_HardLink, Inputs_iValues, iValues0, iValues1)
+	process (children0_iValue, children0_oValue, children0_oValue_children0_oValue_HardLink, Inputs_iValues, IOSingleBitMemoryCompositionModule_L43F34T74_Enumerable, iValues0, iValues1)
 	begin
 		Inputs_iValues(0) <= iValues0;
 		Inputs_iValues(1) <= iValues1;
 		children0_iValue <= Inputs_iValues(0);
-		oValues0 <= children0_oValue;
+		IOSingleBitMemoryCompositionModule_L43F34T74_Enumerable(0) <= children0_oValue;
+		oValues0 <= IOSingleBitMemoryCompositionModule_L43F34T74_Enumerable(0);
 		children0_iValue_children0_iValue_HardLink <= children0_iValue;
 		children0_oValue <= children0_oValue_children0_oValue_HardLink;
 	end process;

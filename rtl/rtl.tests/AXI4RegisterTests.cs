@@ -55,14 +55,19 @@ namespace RTL.Modules
             var axiData = 0x01020304;
             sim.ClockCycle(new AXI4RegisterModuleInputs(axiSize.B4) 
             { 
-                M2S = {
-                    W = {
-                        WDATA = BitConverter.GetBytes(axiData),
-                        WSTRB = new RTLBitArray(0xF)[3,0],
-                        WVALID = true
-                    },
-                    AW = {
-                        AWVALID = true
+                M2S = 
+                {
+                    W =
+                    {
+                        W = 
+                        {
+                            WDATA = BitConverter.GetBytes(axiData),
+                            WSTRB = new RTLBitArray(0xF)[3,0],
+                            WVALID = true
+                        },
+                        AW = {
+                            AWVALID = true
+                        }
                     }
                 }
             });
@@ -78,10 +83,14 @@ namespace RTL.Modules
 
             sim.ClockCycle(new AXI4RegisterModuleInputs(axiSize.B4)
             {
-                M2S = {
-                    B =
+                M2S = 
+                {
+                    W =
                     {
-                        BREADY = true
+                        B =
+                        {
+                            BREADY = true
+                        }
                     }
                 }
             });
@@ -99,42 +108,48 @@ namespace RTL.Modules
             var extData = 0x01020304;
             sim.ClockCycle(new AXI4RegisterModuleInputs(axiSize.B4) { inWE = true, inWDATA = BitConverter.GetBytes(extData) });
             Assert.AreEqual(extData, BitConverter.ToInt32(topLevel.outData));
-            Assert.IsFalse(topLevel.S2M.R.RVALID);
+            Assert.IsFalse(topLevel.S2M.R.R.RVALID);
 
             sim.ClockCycle(new AXI4RegisterModuleInputs(axiSize.B4)
             {
                 M2S =
                 {
-                    AR =
+                    R =
                     {
-                        ARVALID = true
+                        AR =
+                        {
+                            ARVALID = true
+                        }
                     }
                 }
             });
             Assert.AreEqual(topLevel.axiSlave.State.readFSM, axiSlaveReadFSM.Ack);
-            Assert.IsTrue(topLevel.S2M.R.RVALID);
-            Assert.AreEqual(extData, BitConverter.ToInt32(topLevel.S2M.R.RDATA));
+            Assert.IsTrue(topLevel.S2M.R.R.RVALID);
+            Assert.AreEqual(extData, BitConverter.ToInt32(topLevel.S2M.R.R.RDATA));
 
             // make sure that slave waits for master ack
             sim.ClockCycle();
 
             Assert.AreEqual(topLevel.axiSlave.State.readFSM, axiSlaveReadFSM.Ack);
-            Assert.IsTrue(topLevel.S2M.R.RVALID);
-            Assert.AreEqual(extData, BitConverter.ToInt32(topLevel.S2M.R.RDATA));
+            Assert.IsTrue(topLevel.S2M.R.R.RVALID);
+            Assert.AreEqual(extData, BitConverter.ToInt32(topLevel.S2M.R.R.RDATA));
 
             // ack
             sim.ClockCycle(new AXI4RegisterModuleInputs(axiSize.B4)
             {
                 M2S =
                 {
-                    R = 
+                    R =
                     {
-                        RREADY = true
+                        R =
+                        {
+                            RREADY = true
+                        }
                     }
                 }
             });
             Assert.AreEqual(topLevel.axiSlave.State.readFSM, axiSlaveReadFSM.Idle);
-            Assert.IsFalse(topLevel.S2M.R.RVALID);
+            Assert.IsFalse(topLevel.S2M.R.R.RVALID);
         }
     }
 }

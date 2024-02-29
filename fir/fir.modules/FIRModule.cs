@@ -203,14 +203,14 @@ namespace fir.modules
 
             // I channel
             dsp48_a[0].i = sxt(ib_iq.i, 30);
-            dsp48_opmode[0].i = State.mult_reset.mult_reset_dsp[0] ? new RTLBitArray("0000000") : new RTLBitArray("0100000");
+            dsp48_opmode[0].i = State.mult_reset.mult_reset_dsp[0] ? new RTLBitArray(RTLBitArrayInitType.MSB, "0000000") : new RTLBitArray(RTLBitArrayInitType.MSB, "0100000");
             dsp48_d[0].i = sxt(State.filo.fir_dreg[0].i, 25);
             dsp48_b[0].i = sxt(ramc_dout[0], 18);
 
             for (var a = 1; a < firParams.Order; a++)
             {
                 dsp48_a[a].i = State.set_do_mux[a] != 0 ? sxt(ramd_dout[a - 1].i, 30) : sxt(State.dsp48.dsp48_srl[a * 2 - 1].i, 30);
-                dsp48_opmode[a].i = State.mult_reset.mult_reset_dsp[a] ? new RTLBitArray("0010000") : new RTLBitArray("0100000");
+                dsp48_opmode[a].i = State.mult_reset.mult_reset_dsp[a] ? new RTLBitArray(RTLBitArrayInitType.MSB, "0010000") : new RTLBitArray(RTLBitArrayInitType.MSB, "0100000");
                 dsp48_d[a].i = sxt(State.filo.fir_dreg[a].i, 25);
                 dsp48_b[a].i = sxt(ramc_dout[a], 18);
                 dsp48_pcin[a].i = dsp48_pcout[a - 1].i;
@@ -218,14 +218,14 @@ namespace fir.modules
 
             // Q channel
             dsp48_a[0].q = sxt(ib_iq.q, 30);
-            dsp48_opmode[0].q = State.mult_reset.mult_reset_dsp[0] ? new RTLBitArray("0000000") : new RTLBitArray("0100000");
+            dsp48_opmode[0].q = State.mult_reset.mult_reset_dsp[0] ? new RTLBitArray(RTLBitArrayInitType.MSB, "0000000") : new RTLBitArray(RTLBitArrayInitType.MSB, "0100000");
             dsp48_d[0].q = sxt(State.filo.fir_dreg[0].q, 25);
             dsp48_b[0].q = sxt(ramc_dout[0], 18);
 
             for (var a = 1; a < firParams.Order; a++)
             {
                 dsp48_a[a].q = State.set_do_mux[a] != 0 ? sxt(ramd_dout[a - 1].q, 30) : sxt(State.dsp48.dsp48_srl[a * 2 - 1].q, 30);
-                dsp48_opmode[a].q = State.mult_reset.mult_reset_dsp[a] ? new RTLBitArray("0010000") : new RTLBitArray("0100000");
+                dsp48_opmode[a].q = State.mult_reset.mult_reset_dsp[a] ? new RTLBitArray(RTLBitArrayInitType.MSB, "0010000") : new RTLBitArray(RTLBitArrayInitType.MSB, "0100000");
                 dsp48_d[a].q = sxt(State.filo.fir_dreg[a].q, 25);
                 dsp48_b[a].q = sxt(ramc_dout[a], 18);
                 dsp48_pcin[a].q = dsp48_pcout[a - 1].q;

@@ -16,7 +16,7 @@ namespace rtl.modules.AXI4.Modules
     {
         public bool IsActive = false;
         public Payload Payload = new Payload();
-        public RTLBitArray Addr = new RTLBitArray().Resized(2);
+        public RTLBitArray Addr = new RTLBitArray(false).Resized(2);
 
     }
 

@@ -50,6 +50,7 @@ architecture rtl of SP_WF_WSTRB_RAMModule_TopLevel is
 	signal Inputs_Address : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_WE : std_logic := '0';
 	signal Inputs_WSTRB : unsigned(3 downto 0) := (others => '0');
+	signal SP_WF_WSTRB_RAMModule_L27F29T60_Source : unsigned(31 downto 0) := (others => '0');
 	type Inputs_WriteDataArray is array (0 to 3) of unsigned (7 downto 0);
 	signal Inputs_WriteData : Inputs_WriteDataArray := (others => (others => '0'));
 	type State_ReadDataArray is array (0 to 3) of unsigned (7 downto 0);
@@ -67,7 +68,7 @@ architecture rtl of SP_WF_WSTRB_RAMModule_TopLevel is
 	signal Inputs_Address_reg2 : unsigned(4 downto 0);
 	signal Inputs_Address_reg3 : unsigned(4 downto 0);
 begin
-	process (Address, State_ReadData, WE, WriteData0, WriteData1, WriteData2, WriteData3, WSTRB)
+	process (Address, SP_WF_WSTRB_RAMModule_L27F29T60_Source, State_ReadData, WE, WriteData0, WriteData1, WriteData2, WriteData3, WSTRB)
 	begin
 		Inputs_Address <= Address;
 		Inputs_WE <= WE;
@@ -76,10 +77,11 @@ begin
 		Inputs_WriteData(2) <= WriteData2;
 		Inputs_WriteData(3) <= WriteData3;
 		Inputs_WSTRB <= WSTRB;
-		Data(31 downto 24) <= State_ReadData(3);
-		Data(23 downto 16) <= State_ReadData(2);
-		Data(15 downto 8) <= State_ReadData(1);
-		Data(7 downto 0) <= State_ReadData(0);
+		SP_WF_WSTRB_RAMModule_L27F29T60_Source(31 downto 24) <= State_ReadData(3);
+		SP_WF_WSTRB_RAMModule_L27F29T60_Source(23 downto 16) <= State_ReadData(2);
+		SP_WF_WSTRB_RAMModule_L27F29T60_Source(15 downto 8) <= State_ReadData(1);
+		SP_WF_WSTRB_RAMModule_L27F29T60_Source(7 downto 0) <= State_ReadData(0);
+		Data <= SP_WF_WSTRB_RAMModule_L27F29T60_Source;
 	end process;
 	-- inferred single port RAM with write-first behaviour
 	process (Clock, Inputs_WSTRB(0), Inputs_Address, Inputs_WriteData, Inputs_Address_reg0, State_Buff0)

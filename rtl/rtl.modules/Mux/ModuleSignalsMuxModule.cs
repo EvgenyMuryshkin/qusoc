@@ -26,7 +26,7 @@ namespace RTL.Modules
 
         public bool O => gates[Inputs.Addr].O;
 
-        public RTLBitArray CombinedO => new RTLBitArray(gates.Select(g => g.O));
+        public RTLBitArray CombinedO => new RTLBitArray(RTLBitArrayInitType.MSB, gates.Select(g => g.O));
 
         protected override void OnSchedule(Func<ModuleSignalsMuxModuleInputs> inputsFactory)
         {

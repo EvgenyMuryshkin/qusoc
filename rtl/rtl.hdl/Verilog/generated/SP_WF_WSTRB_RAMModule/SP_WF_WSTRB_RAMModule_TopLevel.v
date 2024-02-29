@@ -45,6 +45,7 @@ module SP_WF_WSTRB_RAMModule_TopLevel
 	wire [7: 0] Inputs_Address;
 	wire Inputs_WE;
 	wire [3: 0] Inputs_WSTRB;
+	wire [31: 0] SP_WF_WSTRB_RAMModule_L27F29T60_Source;
 	wire [7 : 0] Inputs_WriteData [0 : 3];
 	integer State_ReadData_Iterator;
 	wire [7 : 0] State_ReadData [0 : 3];
@@ -127,7 +128,8 @@ module SP_WF_WSTRB_RAMModule_TopLevel
 	assign Inputs_WriteData[2] = WriteData2;
 	assign Inputs_WriteData[3] = WriteData3;
 	assign Inputs_WSTRB = WSTRB;
-	assign Data = { State_ReadData[3], State_ReadData[2], State_ReadData[1], State_ReadData[0] };
+	assign SP_WF_WSTRB_RAMModule_L27F29T60_Source = { State_ReadData[3], State_ReadData[2], State_ReadData[1], State_ReadData[0] };
+	assign Data = SP_WF_WSTRB_RAMModule_L27F29T60_Source;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

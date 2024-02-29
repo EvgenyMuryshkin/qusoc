@@ -1,0 +1,2 @@
+└Root    | IOSingleBitMemoryCompositionModuleChildInputs | [0] | 1 | [0:0]
+ └iValue | Boolean                                       | [0] | 1 | [0:0][0]

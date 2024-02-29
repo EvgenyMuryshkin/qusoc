@@ -1,5 +1,5 @@
 $date
-Sunday, 28 August 2022 8:10:50 PM
+Monday, 26 February 2024 8:41:06 PM
 $end
 $version
 Quokka VCD Generator
@@ -17,22 +17,22 @@ $var wire 1 TOP_Inputs_Enabled TOP_Inputs_Enabled $end
 $upscope
 $end
 $scope module Outputs $end
-$var wire 1 TOP_Outputs_OutVisible TOP_Outputs_OutVisible $end
-$var wire 1 TOP_Outputs_OutFP TOP_Outputs_OutFP $end
-$var wire 1 TOP_Outputs_OutSP TOP_Outputs_OutSP $end
 $var wire 1 TOP_Outputs_OutBP TOP_Outputs_OutBP $end
-$var wire 1 TOP_Outputs_OutMax TOP_Outputs_OutMax $end
 $var wire 10 TOP_Outputs_OutCounter TOP_Outputs_OutCounter[9:0] $end
+$var wire 1 TOP_Outputs_OutFP TOP_Outputs_OutFP $end
+$var wire 1 TOP_Outputs_OutMax TOP_Outputs_OutMax $end
+$var wire 1 TOP_Outputs_OutSP TOP_Outputs_OutSP $end
+$var wire 1 TOP_Outputs_OutVisible TOP_Outputs_OutVisible $end
 $upscope
 $end
 $scope module Internals $end
-$var wire 1 TOP_Internals_internalIsMax TOP_Internals_internalIsMax $end
-$var wire 32 TOP_Internals_visible TOP_Internals_visible[31:0] $end
-$var wire 32 TOP_Internals_fp TOP_Internals_fp[31:0] $end
-$var wire 32 TOP_Internals_sp TOP_Internals_sp[31:0] $end
 $var wire 32 TOP_Internals_bp TOP_Internals_bp[31:0] $end
-$var wire 32 TOP_Internals_max TOP_Internals_max[31:0] $end
 $var wire 32 TOP_Internals_capacity TOP_Internals_capacity[31:0] $end
+$var wire 32 TOP_Internals_fp TOP_Internals_fp[31:0] $end
+$var wire 1 TOP_Internals_internalIsMax TOP_Internals_internalIsMax $end
+$var wire 32 TOP_Internals_max TOP_Internals_max[31:0] $end
+$var wire 32 TOP_Internals_sp TOP_Internals_sp[31:0] $end
+$var wire 32 TOP_Internals_visible TOP_Internals_visible[31:0] $end
 $upscope
 $end
 $scope module State $end
@@ -53,19 +53,19 @@ $end
 #0
 0TOP_Control_Clock
 0TOP_Inputs_Enabled
-1TOP_Outputs_OutVisible
-0TOP_Outputs_OutFP
-0TOP_Outputs_OutSP
 0TOP_Outputs_OutBP
-0TOP_Outputs_OutMax
 b0000000000 TOP_Outputs_OutCounter
-0TOP_Internals_internalIsMax
-b00000000000000000000000111100000 TOP_Internals_visible
-b00000000000000000000000111101010 TOP_Internals_fp
-b00000000000000000000000111101100 TOP_Internals_sp
+0TOP_Outputs_OutFP
+0TOP_Outputs_OutMax
+0TOP_Outputs_OutSP
+1TOP_Outputs_OutVisible
 b00000000000000000000001000001101 TOP_Internals_bp
-b00000000000000000000001000001100 TOP_Internals_max
 b00000000000000000000000000001010 TOP_Internals_capacity
+b00000000000000000000000111101010 TOP_Internals_fp
+0TOP_Internals_internalIsMax
+b00000000000000000000001000001100 TOP_Internals_max
+b00000000000000000000000111101100 TOP_Internals_sp
+b00000000000000000000000111100000 TOP_Internals_visible
 b0000000000 TOP_State_counter
 b0000000000 TOP_NextState_counter
 #1001
@@ -3905,9 +3905,9 @@ b0111100000 TOP_NextState_counter
 0TOP_Control_Clock
 #960000
 1TOP_Control_Clock
-0TOP_Outputs_OutVisible
-1TOP_Outputs_OutFP
 b0111100000 TOP_Outputs_OutCounter
+1TOP_Outputs_OutFP
+0TOP_Outputs_OutVisible
 b0111100000 TOP_State_counter
 #960001
 b0111100001 TOP_NextState_counter
@@ -3987,9 +3987,9 @@ b0111101010 TOP_NextState_counter
 0TOP_Control_Clock
 #980000
 1TOP_Control_Clock
+b0111101010 TOP_Outputs_OutCounter
 0TOP_Outputs_OutFP
 1TOP_Outputs_OutSP
-b0111101010 TOP_Outputs_OutCounter
 b0111101010 TOP_State_counter
 #980001
 b0111101011 TOP_NextState_counter
@@ -4005,9 +4005,9 @@ b0111101100 TOP_NextState_counter
 0TOP_Control_Clock
 #984000
 1TOP_Control_Clock
-0TOP_Outputs_OutSP
 1TOP_Outputs_OutBP
 b0111101100 TOP_Outputs_OutCounter
+0TOP_Outputs_OutSP
 b0111101100 TOP_State_counter
 #984001
 b0111101101 TOP_NextState_counter
@@ -4263,8 +4263,8 @@ b1000001100 TOP_NextState_counter
 0TOP_Control_Clock
 #1048000
 1TOP_Control_Clock
-1TOP_Outputs_OutMax
 b1000001100 TOP_Outputs_OutCounter
+1TOP_Outputs_OutMax
 1TOP_Internals_internalIsMax
 b1000001100 TOP_State_counter
 #1048001
@@ -4273,10 +4273,10 @@ b0000000000 TOP_NextState_counter
 0TOP_Control_Clock
 #1050000
 1TOP_Control_Clock
-1TOP_Outputs_OutVisible
 0TOP_Outputs_OutBP
-0TOP_Outputs_OutMax
 b0000000000 TOP_Outputs_OutCounter
+0TOP_Outputs_OutMax
+1TOP_Outputs_OutVisible
 0TOP_Internals_internalIsMax
 b0000000000 TOP_State_counter
 #1050001

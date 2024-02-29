@@ -49,7 +49,7 @@ module ModuleSignalsMuxModule_TopLevel
 	wire XorGate_I1;
 	wire XorGate_I2;
 	wire XorGate_O;
-	wire [2: 0] ModuleSignalsMuxModule_L29F41T80_Source;
+	wire [2: 0] ModuleSignalsMuxModule_L29F41T105_Source;
 	wire AndGate_I1_AndGate_I1_HardLink;
 	wire AndGate_I2_AndGate_I2_HardLink;
 	wire AndGate_O_AndGate_O_HardLink;
@@ -64,6 +64,7 @@ module ModuleSignalsMuxModule_TopLevel
 	wire ModuleSignalsMuxModule_L27F26T46_Mux1;
 	wire ModuleSignalsMuxModule_L27F26T46_Mux2;
 	wire ModuleSignalsMuxModule_L27F26T46_Mux3;
+	wire ModuleSignalsMuxModule_L29F82T104_Enumerable [0 : 2];
 	ModuleSignalsMuxModule_TopLevel_AndGate
 	ModuleSignalsMuxModule_TopLevel_AndGate
 	(
@@ -121,8 +122,11 @@ module ModuleSignalsMuxModule_TopLevel
 	assign OrGate_I2 = Inputs_I2;
 	assign XorGate_I1 = Inputs_I1;
 	assign XorGate_I2 = Inputs_I2;
-	assign ModuleSignalsMuxModule_L29F41T80_Source = { AndGate_O, OrGate_O, XorGate_O };
-	assign CombinedO = ModuleSignalsMuxModule_L29F41T80_Source;
+	assign ModuleSignalsMuxModule_L29F82T104_Enumerable[0] = AndGate_O;
+	assign ModuleSignalsMuxModule_L29F82T104_Enumerable[1] = OrGate_O;
+	assign ModuleSignalsMuxModule_L29F82T104_Enumerable[2] = XorGate_O;
+	assign ModuleSignalsMuxModule_L29F41T105_Source = { ModuleSignalsMuxModule_L29F82T104_Enumerable[0], ModuleSignalsMuxModule_L29F82T104_Enumerable[1], ModuleSignalsMuxModule_L29F82T104_Enumerable[2] };
+	assign CombinedO = ModuleSignalsMuxModule_L29F41T105_Source;
 	assign O = ModuleSignalsMuxModule_L27F26T46_Mux;
 	assign AndGate_I1_AndGate_I1_HardLink = AndGate_I1;
 	assign AndGate_I2_AndGate_I2_HardLink = AndGate_I2;
