@@ -202,6 +202,8 @@ module AXI4Interconnect2x4Module_TopLevel
 	wire mAWVALID [0 : 1];
 	wire masterReadEncoderModule_iValues [0 : 1];
 	wire masterWriteEncoderModule_iValues [0 : 1];
+	wire AXI4InterconnectModule_L56F28T76_Enumerable [0 : 1];
+	wire AXI4InterconnectModule_L57F28T76_Enumerable [0 : 1];
 	wire BoardSignals_Clock;
 	wire BoardSignals_Reset;
 	wire BoardSignals_Running;
@@ -373,10 +375,12 @@ module AXI4Interconnect2x4Module_TopLevel
 	assign Inputs_S2M[3][64] = S2M3_S2M_R_AR_ARREADY;
 	assign Inputs_S2M[3][63:32] = S2M3_ADDR_LOW;
 	assign Inputs_S2M[3][31:0] = S2M3_ADDR_HIGH;
-	assign mARVALID[0] = Inputs_M2S[0][82];
-	assign mARVALID[1] = Inputs_M2S[1][82];
-	assign mAWVALID[0] = Inputs_M2S[0][166];
-	assign mAWVALID[1] = Inputs_M2S[1][166];
+	assign AXI4InterconnectModule_L56F28T76_Enumerable[0] = Inputs_M2S[0][82];
+	assign AXI4InterconnectModule_L56F28T76_Enumerable[1] = Inputs_M2S[1][82];
+	assign mARVALID[0] = AXI4InterconnectModule_L56F28T76_Enumerable[0];
+	assign AXI4InterconnectModule_L57F28T76_Enumerable[0] = Inputs_M2S[0][166];
+	assign AXI4InterconnectModule_L57F28T76_Enumerable[1] = Inputs_M2S[1][166];
+	assign mAWVALID[0] = AXI4InterconnectModule_L57F28T76_Enumerable[0];
 	assign masterReadEncoderModule_iValues[0] = mARVALID[0];
 	assign masterReadEncoderModule_iValues[1] = mARVALID[1];
 	assign masterWriteEncoderModule_iValues[0] = mAWVALID[0];
