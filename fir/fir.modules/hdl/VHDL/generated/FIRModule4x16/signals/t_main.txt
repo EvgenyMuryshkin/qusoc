@@ -1,5 +1,5 @@
 └Root                | t_main        | [123:0]   | 124 | [123:0]  
- ├main_d_cnt_rst     | Boolean       | [123]     | 1   | [123:0][123:123]
+ ├main_d_cnt_rst     | Boolean       | [123]     | 1   | [123:0][123]
  ├main_d_cnt_masked  | RTLBitArray   | [122:113] | 10  | [123:0][122:113]
  ├main_d_cnt         | RTLBitArray   | [112:103] | 10  | [123:0][112:103]
  ├main_d_addr        | RTLBitArray[] | [102:63]  | 40  | [123:0][102:63]

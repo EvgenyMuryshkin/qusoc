@@ -1,2 +1,2 @@
 └Root          | FIRRAMDSPModuleState | [0] | 1 | [0:0]
- └UnusedSignal | Boolean              | [0] | 1 | [0:0][0:0]
+ └UnusedSignal | Boolean              | [0] | 1 | [0:0][0]

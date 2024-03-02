@@ -418,6 +418,7 @@ begin
 		AXI4Interconnect2x4TestModule_L46F39T75_Enumerable(0) <= masters0_M2S;
 		AXI4Interconnect2x4TestModule_L46F39T75_Enumerable(1) <= masters1_M2S;
 		interconnectM2S(0) <= AXI4Interconnect2x4TestModule_L46F39T75_Enumerable(0);
+		interconnectM2S(1) <= AXI4Interconnect2x4TestModule_L46F39T75_Enumerable(1);
 		masters0_ARADDR(31 downto 1) <= (others => '0');
 		masters0_ARADDR(0) <= AXI4Interconnect2x4TestModule_L62F13L74T14_0_AXI4Interconnect2x4TestModule_L69F30T31_Expr;
 		masters0_AWADDR(31 downto 1) <= (others => '0');

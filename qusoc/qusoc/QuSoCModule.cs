@@ -41,9 +41,7 @@ namespace QuSoC
         .SelectMany(m => m)
         .ToArray();
 
-        // NOTE: reverse is needed because RTLBitArray constructor is MSB ordered
-        // Please get in touch if you are interested in rationale (dirty hacks) behind this.
-        RTLBitArray CombinedModuleIsActive => new RTLBitArray(AllModules.Select(g => g.IsActive)).Reversed();
+        RTLBitArray CombinedModuleIsActive => new RTLBitArray(AllModules.Select(g => g.IsActive));
         RTLBitArray internalMemAccessMode => CPU.MemAccessMode[1, 0];
          
         protected QuSoCModule()

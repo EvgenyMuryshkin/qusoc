@@ -378,9 +378,11 @@ module AXI4Interconnect2x4Module_TopLevel
 	assign AXI4InterconnectModule_L56F28T76_Enumerable[0] = Inputs_M2S[0][82];
 	assign AXI4InterconnectModule_L56F28T76_Enumerable[1] = Inputs_M2S[1][82];
 	assign mARVALID[0] = AXI4InterconnectModule_L56F28T76_Enumerable[0];
+	assign mARVALID[1] = AXI4InterconnectModule_L56F28T76_Enumerable[1];
 	assign AXI4InterconnectModule_L57F28T76_Enumerable[0] = Inputs_M2S[0][166];
 	assign AXI4InterconnectModule_L57F28T76_Enumerable[1] = Inputs_M2S[1][166];
 	assign mAWVALID[0] = AXI4InterconnectModule_L57F28T76_Enumerable[0];
+	assign mAWVALID[1] = AXI4InterconnectModule_L57F28T76_Enumerable[1];
 	assign masterReadEncoderModule_iValues[0] = mARVALID[0];
 	assign masterReadEncoderModule_iValues[1] = mARVALID[1];
 	assign masterWriteEncoderModule_iValues[0] = mAWVALID[0];

@@ -25,6 +25,9 @@ namespace RTL.Modules
         };
 
         public bool O => gates[Inputs.Addr].O;
+        public bool oAnd => AndGate.O;
+        public bool oOr => OrGate.O;
+        public bool oXor => XorGate.O;
 
         public RTLBitArray CombinedO => new RTLBitArray(RTLBitArrayInitType.MSB, gates.Select(g => g.O));
 

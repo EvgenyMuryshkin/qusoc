@@ -45,15 +45,20 @@ module SignalsMuxModule_TopLevel
 	wire [7: 0] Inputs_Sig3;
 	wire [7: 0] SignalsMuxModule_L24F30T50_Index;
 	wire [7 : 0] signals [0 : 3];
+	wire [7 : 0] SignalsMuxModule_L16F27L22T10_Enumerable [0 : 3];
 	assign Inputs_Addr = Addr;
 	assign Inputs_Sig0 = Sig0;
 	assign Inputs_Sig1 = Sig1;
 	assign Inputs_Sig2 = Sig2;
 	assign Inputs_Sig3 = Sig3;
-	assign signals[0] = Inputs_Sig0;
-	assign signals[1] = Inputs_Sig1;
-	assign signals[2] = Inputs_Sig2;
-	assign signals[3] = Inputs_Sig3;
+	assign SignalsMuxModule_L16F27L22T10_Enumerable[0] = Inputs_Sig0;
+	assign SignalsMuxModule_L16F27L22T10_Enumerable[1] = Inputs_Sig1;
+	assign SignalsMuxModule_L16F27L22T10_Enumerable[2] = Inputs_Sig2;
+	assign SignalsMuxModule_L16F27L22T10_Enumerable[3] = Inputs_Sig3;
+	assign signals[0] = SignalsMuxModule_L16F27L22T10_Enumerable[0];
+	assign signals[1] = SignalsMuxModule_L16F27L22T10_Enumerable[1];
+	assign signals[2] = SignalsMuxModule_L16F27L22T10_Enumerable[2];
+	assign signals[3] = SignalsMuxModule_L16F27L22T10_Enumerable[3];
 	assign Value = SignalsMuxModule_L24F30T50_Index;
 	assign SignalsMuxModule_L24F30T50_Index = signals[Inputs_Addr];
 	// [BEGIN USER ARCHITECTURE]

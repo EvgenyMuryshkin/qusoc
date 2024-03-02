@@ -1,5 +1,5 @@
 └Root         | CPUModuleState | [551:0]   | 552 | [551:0]  
- ├WBDataReady | Boolean        | [551]     | 1   | [551:0][551:551]
+ ├WBDataReady | Boolean        | [551]     | 1   | [551:0][551]
  ├WBData      | UInt32         | [550:519] | 32  | [551:0][550:519]
  ├State       | CPUState       | [518:516] | 3   | [551:0][518:516]
  ├PCOffset    | RTLBitArray    | [515:484] | 32  | [551:0][515:484]

@@ -12,7 +12,7 @@
  │└fir_dreg0       | t_iq16      | [86:55]   | 32  | [182:0][182:55][31:0]
  │ ├fir_dreg0_q    | RTLBitArray | [86:71]   | 16  | [182:0][182:55][31:0][31:16]
  │ └fir_dreg0_i    | RTLBitArray | [70:55]   | 16  | [182:0][182:55][31:0][15:0]
- ├filo_way         | Boolean     | [54]      | 1   | [182:0][54:54]
+ ├filo_way         | Boolean     | [54]      | 1   | [182:0][54]
  ├filo_counter_inc | RTLBitArray | [53:45]   | 9   | [182:0][53:45]
  ├filo_counter_dec | RTLBitArray | [44:36]   | 9   | [182:0][44:36]
  ├filo_addr_p1     | RTLBitArray | [35:27]   | 9   | [182:0][35:27]

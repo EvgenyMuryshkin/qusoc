@@ -28,7 +28,7 @@ namespace QuSoC.Demos
 
         public override bool IsActive => internalIsActive;
         public override bool IsReady => internalIsReady;
-        public override uint ReadValue => new RTLBitArray(
+        public override uint ReadValue => new RTLBitArray(RTLBitArrayInitType.MSB,
             State.UART[3], State.UART[2], State.UART[1], State.UART[0]) >> internalByteAddress;
 
         protected override void OnStage()

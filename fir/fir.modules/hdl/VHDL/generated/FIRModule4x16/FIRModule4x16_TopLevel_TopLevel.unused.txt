@@ -12,3 +12,10 @@ No reads:
 	firParams_MultSize
 	firParams_Order
 	firParams_SumSize
+No writes:
+	c_coef_mask_array
+	c_coef_mask_arrayArrayInit
+	c_coef_num_array
+	c_coef_num_arrayArrayInit
+	c_data_mask_array
+	c_data_mask_arrayArrayInit

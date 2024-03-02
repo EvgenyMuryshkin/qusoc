@@ -430,6 +430,7 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	assign AXI4Interconnect2x4TestModule_L46F39T75_Enumerable[0] = masters0_M2S;
 	assign AXI4Interconnect2x4TestModule_L46F39T75_Enumerable[1] = masters1_M2S;
 	assign interconnectM2S[0] = AXI4Interconnect2x4TestModule_L46F39T75_Enumerable[0];
+	assign interconnectM2S[1] = AXI4Interconnect2x4TestModule_L46F39T75_Enumerable[1];
 	assign masters0_ARADDR = { {31{1'b0}}, AXI4Interconnect2x4TestModule_L62F13L74T14_0_AXI4Interconnect2x4TestModule_L69F30T31_Expr };
 	assign masters0_AWADDR = { {31{1'b0}}, AXI4Interconnect2x4TestModule_L62F13L74T14_0_AXI4Interconnect2x4TestModule_L70F30T31_Expr };
 	assign masters0_RE = Inputs_MRE[0];
