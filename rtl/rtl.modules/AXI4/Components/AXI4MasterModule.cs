@@ -3,19 +3,16 @@ using RTL.Modules;
 
 namespace rtl.modules
 {
-    public class AXI4MasterModuleInputs
+    public class AXI4MasterModuleInput
     {
-        public AXI4MasterModuleInputs() : this(axiSize.B4) { }
-        public AXI4MasterModuleInputs(axiSize size)
+        public AXI4MasterModuleInput() { }
+        public AXI4MasterModuleInput(axiSize size)
         {
-            S2M = new AXI4_S2M(size);
             WDATA = new byte[AXI4Tools.Bytes(size)];
             WSTRB = new RTLBitArray().Resized(AXI4Tools.Bytes(size));
             ARADDR = new RTLBitArray().Resized(AXI4Tools.Bits(size));
             AWADDR = new RTLBitArray().Resized(AXI4Tools.Bits(size));
         }
-
-        public AXI4_S2M S2M;
 
         public RTLBitArray ARADDR;
         public bool RE = false;
@@ -25,6 +22,20 @@ namespace rtl.modules
         public RTLBitArray WSTRB;
 
         public byte[] WDATA;
+    }
+
+    public class AXI4MasterModuleInputs
+    {
+        public AXI4MasterModuleInputs() : this(axiSize.B4) { }
+        public AXI4MasterModuleInputs(axiSize size)
+        {
+            S2M = new AXI4_S2M(size);
+            Master = new AXI4MasterModuleInput(size);
+        }
+
+        public AXI4_S2M S2M;
+
+        public AXI4MasterModuleInput Master;
     }
 
     public class AXI4MasterModuleState
@@ -67,8 +78,8 @@ namespace rtl.modules
             {
                 AR =
                 {
-                    ARADDR = Inputs.ARADDR,
-                    ARVALID = Inputs.RE
+                    ARADDR = Inputs.Master.ARADDR,
+                    ARVALID = Inputs.Master.RE
                 },
                 R =
                 {
@@ -79,15 +90,15 @@ namespace rtl.modules
             {
                 AW =
                 {
-                    AWADDR = Inputs.AWADDR,
-                    AWVALID = Inputs.WE
+                    AWADDR = Inputs.Master.AWADDR,
+                    AWVALID = Inputs.Master.WE
                 },
                 W =
                 {
                     WID = 0,
-                    WDATA = Inputs.WDATA,
-                    WSTRB = Inputs.WSTRB,
-                    WVALID = Inputs.WE
+                    WDATA = Inputs.Master.WDATA,
+                    WSTRB = Inputs.Master.WSTRB,
+                    WVALID = Inputs.Master.WE
                 },
                 B =
                 {
@@ -117,7 +128,7 @@ namespace rtl.modules
                     ResetRead();
                     break;
                 case axiMasterReadFSM.Idle:
-                    if (Inputs.RE)
+                    if (Inputs.Master.RE)
                     {
                         NextState.readFSM = axiMasterReadFSM.OK;
                         NextState.ARREADYACK = Inputs.S2M.R.AR.ARREADY;
@@ -143,7 +154,7 @@ namespace rtl.modules
                     ResetWrite();
                     break;
                 case axiMasterWriteFSM.Idle:
-                    if (Inputs.WE)
+                    if (Inputs.Master.WE)
                     {
                         NextState.writeFSM = axiMasterWriteFSM.OK;
                         NextState.AWREADYACK = Inputs.S2M.W.AW.AWREADY;
