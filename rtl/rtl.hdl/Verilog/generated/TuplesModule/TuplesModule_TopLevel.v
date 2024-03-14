@@ -42,6 +42,7 @@ module TuplesModule_TopLevel
 	wire Logic_Item2;
 	reg TuplesModule_L16F13L21T14_same;
 	reg TuplesModule_L16F13L21T14_diff;
+	wire [1: 0] TuplesModule_L16F13L21T14_TuplesModule_L20F24T36_Tuple;
 	wire TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_Expr;
 	wire TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprLhs;
 	wire TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprRhs;
@@ -61,8 +62,10 @@ module TuplesModule_TopLevel
 	assign TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprRhs = Inputs_Value2;
 	assign Inputs_Value1 = Value1;
 	assign Inputs_Value2 = Value2;
-	assign Logic_Item1 = TuplesModule_L16F13L21T14_same;
-	assign Logic_Item2 = TuplesModule_L16F13L21T14_diff;
+	assign TuplesModule_L16F13L21T14_TuplesModule_L20F24T36_Tuple[1] = TuplesModule_L16F13L21T14_same;
+	assign TuplesModule_L16F13L21T14_TuplesModule_L20F24T36_Tuple[0] = TuplesModule_L16F13L21T14_diff;
+	assign Logic_Item1 = TuplesModule_L16F13L21T14_TuplesModule_L20F24T36_Tuple[1];
+	assign Logic_Item2 = TuplesModule_L16F13L21T14_TuplesModule_L20F24T36_Tuple[0];
 	assign Diff = Logic_Item2;
 	assign Same = Logic_Item1;
 	// [BEGIN USER ARCHITECTURE]

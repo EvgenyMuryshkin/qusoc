@@ -82,6 +82,7 @@ module Increment_TopLevel_TopLevel
 	reg QuSoCModule_L106F13L119T14_hasActive;
 	reg [7: 0] QuSoCModule_L106F13L119T14_address;
 	integer idx;
+	wire [8: 0] QuSoCModule_L106F13L119T14_QuSoCModule_L118F24T44_Tuple;
 	wire [1: 0] QuSoCModule_L44F47T98_Source;
 	wire [31: 0] CPU_BaseAddress_CPU_BaseAddress_HardLink;
 	wire CPU_ExtIRQ_CPU_ExtIRQ_HardLink;
@@ -251,8 +252,10 @@ module Increment_TopLevel_TopLevel
 			end
 		end
 	end
-	assign BusCS_Item1 = QuSoCModule_L106F13L119T14_address;
-	assign BusCS_Item2 = QuSoCModule_L106F13L119T14_hasActive;
+	assign QuSoCModule_L106F13L119T14_QuSoCModule_L118F24T44_Tuple[8:1] = QuSoCModule_L106F13L119T14_address;
+	assign QuSoCModule_L106F13L119T14_QuSoCModule_L118F24T44_Tuple[0] = QuSoCModule_L106F13L119T14_hasActive;
+	assign BusCS_Item1 = QuSoCModule_L106F13L119T14_QuSoCModule_L118F24T44_Tuple[8:1];
+	assign BusCS_Item2 = QuSoCModule_L106F13L119T14_QuSoCModule_L118F24T44_Tuple[0];
 	assign QuSoCModule_L44F63T97_Enumerable[0] = InstructionsRAM_IsActive;
 	assign QuSoCModule_L44F63T97_Enumerable[1] = CounterModule_IsActive;
 	assign QuSoCModule_L44F47T98_Source = { QuSoCModule_L44F63T97_Enumerable[1], QuSoCModule_L44F63T97_Enumerable[0] };

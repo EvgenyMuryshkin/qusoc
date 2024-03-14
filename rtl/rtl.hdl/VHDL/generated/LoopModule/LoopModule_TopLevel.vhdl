@@ -61,6 +61,7 @@ architecture rtl of LoopModule_TopLevel is
 	signal Tuple_Item2 : std_logic := '0';
 	signal LoopModule_L85F13L96T14_isValid : std_logic := '0';
 	signal LoopModule_L85F13L96T14_result : unsigned(7 downto 0) := "00000000";
+	signal LoopModule_L85F13L96T14_LoopModule_L95F24T41_Tuple : unsigned(8 downto 0) := (others => '0');
 	signal LoopModule_L55F13L64T14_result : unsigned(7 downto 0) := "00000000";
 	signal LoopModule_L70F13L79T14_result : signed(31 downto 0) := "00000000000000000000000000000000";
 	signal LoopModule_L70F13L79T14_LoopModule_L78F24T36_Cast : unsigned(7 downto 0) := (others => '0');
@@ -142,11 +143,13 @@ begin
 		end loop;
 		LoopModule_L42F13L49T14_result <= tmp0;
 	end process;
-	process (InData, LoopModule_L16F13L23T14_result, LoopModule_L29F13L36T14_result, LoopModule_L42F13L49T14_result, LoopModule_L55F13L64T14_result, LoopModule_L70F13L79T14_LoopModule_L78F24T36_Cast, LoopModule_L70F13L79T14_result, LoopModule_L85F13L96T14_isValid, LoopModule_L85F13L96T14_result, Tuple_Item1, Tuple_Item2)
+	process (InData, LoopModule_L16F13L23T14_result, LoopModule_L29F13L36T14_result, LoopModule_L42F13L49T14_result, LoopModule_L55F13L64T14_result, LoopModule_L70F13L79T14_LoopModule_L78F24T36_Cast, LoopModule_L70F13L79T14_result, LoopModule_L85F13L96T14_isValid, LoopModule_L85F13L96T14_LoopModule_L95F24T41_Tuple, LoopModule_L85F13L96T14_result, Tuple_Item1, Tuple_Item2)
 	begin
 		Inputs_InData <= InData;
-		Tuple_Item1 <= LoopModule_L85F13L96T14_result;
-		Tuple_Item2 <= LoopModule_L85F13L96T14_isValid;
+		LoopModule_L85F13L96T14_LoopModule_L95F24T41_Tuple(8 downto 1) <= LoopModule_L85F13L96T14_result;
+		LoopModule_L85F13L96T14_LoopModule_L95F24T41_Tuple(0) <= LoopModule_L85F13L96T14_isValid;
+		Tuple_Item1 <= LoopModule_L85F13L96T14_LoopModule_L95F24T41_Tuple(8 downto 1);
+		Tuple_Item2 <= LoopModule_L85F13L96T14_LoopModule_L95F24T41_Tuple(0);
 		Encode <= LoopModule_L55F13L64T14_result;
 		LoopModule_L70F13L79T14_LoopModule_L78F24T36_Cast <= unsigned(LoopModule_L70F13L79T14_result(7 downto 0));
 		EncodeInv <= LoopModule_L70F13L79T14_LoopModule_L78F24T36_Cast;

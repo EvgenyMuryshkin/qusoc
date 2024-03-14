@@ -57,6 +57,7 @@ module LoopModule_TopLevel
 	reg LoopModule_L85F13L96T14_isValid;
 	reg [7: 0] LoopModule_L85F13L96T14_result;
 	integer idx;
+	wire [8: 0] LoopModule_L85F13L96T14_LoopModule_L95F24T41_Tuple;
 	reg [7: 0] LoopModule_L55F13L64T14_result;
 	integer idx1;
 	reg signed [31: 0] LoopModule_L70F13L79T14_result;
@@ -134,8 +135,10 @@ module LoopModule_TopLevel
 		end
 	end
 	assign Inputs_InData = InData;
-	assign Tuple_Item1 = LoopModule_L85F13L96T14_result;
-	assign Tuple_Item2 = LoopModule_L85F13L96T14_isValid;
+	assign LoopModule_L85F13L96T14_LoopModule_L95F24T41_Tuple[8:1] = LoopModule_L85F13L96T14_result;
+	assign LoopModule_L85F13L96T14_LoopModule_L95F24T41_Tuple[0] = LoopModule_L85F13L96T14_isValid;
+	assign Tuple_Item1 = LoopModule_L85F13L96T14_LoopModule_L95F24T41_Tuple[8:1];
+	assign Tuple_Item2 = LoopModule_L85F13L96T14_LoopModule_L95F24T41_Tuple[0];
 	assign Encode = LoopModule_L55F13L64T14_result;
 	assign LoopModule_L70F13L79T14_LoopModule_L78F24T36_Cast = LoopModule_L70F13L79T14_result[7:0];
 	assign EncodeInv = LoopModule_L70F13L79T14_LoopModule_L78F24T36_Cast;
