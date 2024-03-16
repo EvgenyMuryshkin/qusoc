@@ -51,12 +51,15 @@ namespace rtl.modules
             master.Schedule(() => new AXI4MasterModuleInputs(axiSize.B4)
             {
                 S2M = reg.S2M,
-                WE = Inputs.MWE,
-                RE = Inputs.MRE,
-                ARADDR = 0,
-                AWADDR = 0,
-                WDATA = Inputs.InData,
-                WSTRB = Inputs.WSTRB
+                Master = new AXI4MasterModuleInput()
+                {
+                    WE = Inputs.MWE,
+                    RE = Inputs.MRE,
+                    ARADDR = 0,
+                    AWADDR = 0,
+                    WDATA = Inputs.InData,
+                    WSTRB = Inputs.WSTRB
+                }
             });
         }
 

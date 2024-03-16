@@ -64,12 +64,15 @@ namespace rtl.modules
                 masters[i].Schedule(() => new AXI4MasterModuleInputs()
                 {
                     S2M = notActiveS2M,
-                    WE = Inputs.MWE[i],
-                    RE = Inputs.MRE[i],
-                    ARADDR = 0,
-                    AWADDR = 0,
-                    WDATA = Inputs.InData,
-                    WSTRB = Inputs.WSTRB
+                    Master = new AXI4MasterModuleInput()
+                    {
+                        WE = Inputs.MWE[i],
+                        RE = Inputs.MRE[i],
+                        ARADDR = 0,
+                        AWADDR = 0,
+                        WDATA = Inputs.InData,
+                        WSTRB = Inputs.WSTRB
+                    }
                 });
             }
 

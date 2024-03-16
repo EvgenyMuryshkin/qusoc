@@ -43,5 +43,7 @@ namespace rtl.modules.AXI4.Modules
 
         protected override bool TXEnd(AXI4_M2S_W source) => source.B.BREADY && muxRightData.B.BVALID;
         protected override bool TXStart(AXI4_M2S_W source) => source.AW.AWVALID && rangeDetectorActive;
+
+        public AXI4_S2M_W[] S2M => muxRight;
     }
 }
