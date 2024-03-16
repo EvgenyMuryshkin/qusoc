@@ -46,19 +46,15 @@ module AXI4MasterSlaveTestModule_TopLevel
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire [7: 0] State_ReadDataDefault = 8'b00000000;
-	wire AXI4MasterSlaveTestModule_L56F26T27_Expr = 1'b0;
-	wire AXI4MasterSlaveTestModule_L57F26T27_Expr = 1'b0;
+	wire AXI4MasterSlaveTestModule_L58F30T31_Expr = 1'b0;
+	wire AXI4MasterSlaveTestModule_L59F30T31_Expr = 1'b0;
 	wire [31: 0] Inputs_InData;
 	wire Inputs_MRE;
 	wire Inputs_MWE;
 	wire Inputs_SWE;
 	wire [3: 0] Inputs_WSTRB;
-	wire [31: 0] master_ARADDR;
-	wire [31: 0] master_AWADDR;
-	wire master_RE;
+	wire [101: 0] master_Master;
 	wire [73: 0] master_S2M;
-	wire master_WE;
-	wire [3: 0] master_WSTRB;
 	wire [221: 0] master_M2S;
 	wire master_RACK;
 	wire master_WACK;
@@ -69,16 +65,8 @@ module AXI4MasterSlaveTestModule_TopLevel
 	wire [73: 0] reg_S2M;
 	wire [31: 0] AXI4MasterSlaveTestModule_L31F40T71_Source;
 	wire [31: 0] AXI4MasterSlaveTestModule_L32F44T72_Source;
-	wire [31: 0] master_ARADDR_master_ARADDR_HardLink;
-	wire [31: 0] master_AWADDR_master_AWADDR_HardLink;
-	wire master_RE_master_RE_HardLink;
+	wire [101: 0] master_Master_master_Master_HardLink;
 	wire [73: 0] master_S2M_master_S2M_HardLink;
-	wire [7: 0] master_WDATA0_master_WDATA_HardLink;
-	wire [7: 0] master_WDATA1_master_WDATA_HardLink;
-	wire [7: 0] master_WDATA2_master_WDATA_HardLink;
-	wire [7: 0] master_WDATA3_master_WDATA_HardLink;
-	wire master_WE_master_WE_HardLink;
-	wire [3: 0] master_WSTRB_master_WSTRB_HardLink;
 	wire [221: 0] master_M2S_master_M2S_HardLink;
 	wire master_RACK_master_RACK_HardLink;
 	wire [7: 0] master_RDATA0_master_RDATA_HardLink;
@@ -113,7 +101,6 @@ module AXI4MasterSlaveTestModule_TopLevel
 		for (NextState_ReadData_Iterator = 0; NextState_ReadData_Iterator < 4; NextState_ReadData_Iterator = NextState_ReadData_Iterator + 1)
 			NextState_ReadData[NextState_ReadData_Iterator] = 0;
 	end
-	wire [7 : 0] master_WDATA [0 : 3];
 	wire [7 : 0] master_RDATA [0 : 3];
 	wire [7 : 0] reg_inWDATA [0 : 3];
 	wire [7 : 0] reg_outData [0 : 3];
@@ -151,16 +138,8 @@ module AXI4MasterSlaveTestModule_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.ARADDR (master_ARADDR_master_ARADDR_HardLink),
-		.AWADDR (master_AWADDR_master_AWADDR_HardLink),
-		.RE (master_RE_master_RE_HardLink),
+		.Master (master_Master_master_Master_HardLink),
 		.S2M (master_S2M_master_S2M_HardLink),
-		.WDATA0 (master_WDATA0_master_WDATA_HardLink),
-		.WDATA1 (master_WDATA1_master_WDATA_HardLink),
-		.WDATA2 (master_WDATA2_master_WDATA_HardLink),
-		.WDATA3 (master_WDATA3_master_WDATA_HardLink),
-		.WE (master_WE_master_WE_HardLink),
-		.WSTRB (master_WSTRB_master_WSTRB_HardLink),
 		.M2S (master_M2S_master_M2S_HardLink),
 		.RACK (master_RACK_master_RACK_HardLink),
 		.RDATA0 (master_RDATA0_master_RDATA_HardLink),
@@ -220,17 +199,14 @@ module AXI4MasterSlaveTestModule_TopLevel
 	assign reg_inWE = Inputs_SWE;
 	assign reg_M2S[221:84] = master_M2S[221:84];
 	assign reg_M2S[83:0] = master_M2S[83:0];
-	assign master_ARADDR = { {31{1'b0}}, AXI4MasterSlaveTestModule_L56F26T27_Expr };
-	assign master_AWADDR = { {31{1'b0}}, AXI4MasterSlaveTestModule_L57F26T27_Expr };
-	assign master_RE = Inputs_MRE;
+	assign master_Master[101:98] = Inputs_WSTRB;
+	assign master_Master[97] = Inputs_MWE;
+	assign master_Master[96:65] = Inputs_InData;
+	assign master_Master[64] = Inputs_MRE;
+	assign master_Master[63:32] = { {31{1'b0}}, AXI4MasterSlaveTestModule_L59F30T31_Expr };
+	assign master_Master[31:0] = { {31{1'b0}}, AXI4MasterSlaveTestModule_L58F30T31_Expr };
 	assign master_S2M[73:53] = reg_S2M[73:53];
 	assign master_S2M[52:0] = reg_S2M[52:0];
-	assign master_WDATA[3] = Inputs_InData[31:24];
-	assign master_WDATA[2] = Inputs_InData[23:16];
-	assign master_WDATA[1] = Inputs_InData[15:8];
-	assign master_WDATA[0] = Inputs_InData[7:0];
-	assign master_WE = Inputs_MWE;
-	assign master_WSTRB = Inputs_WSTRB;
 	assign BVALID = reg_S2M[72];
 	assign RACK = master_RACK;
 	assign AXI4MasterSlaveTestModule_L31F40T71_Source = { State_ReadData[3], State_ReadData[2], State_ReadData[1], State_ReadData[0] };
@@ -239,16 +215,8 @@ module AXI4MasterSlaveTestModule_TopLevel
 	assign RegisterData = AXI4MasterSlaveTestModule_L32F44T72_Source;
 	assign RVALID = reg_S2M[52];
 	assign WACK = master_WACK;
-	assign master_ARADDR_master_ARADDR_HardLink = master_ARADDR;
-	assign master_AWADDR_master_AWADDR_HardLink = master_AWADDR;
-	assign master_RE_master_RE_HardLink = master_RE;
+	assign master_Master_master_Master_HardLink = master_Master;
 	assign master_S2M_master_S2M_HardLink = master_S2M;
-	assign master_WDATA0_master_WDATA_HardLink = master_WDATA[0];
-	assign master_WDATA1_master_WDATA_HardLink = master_WDATA[1];
-	assign master_WDATA2_master_WDATA_HardLink = master_WDATA[2];
-	assign master_WDATA3_master_WDATA_HardLink = master_WDATA[3];
-	assign master_WE_master_WE_HardLink = master_WE;
-	assign master_WSTRB_master_WSTRB_HardLink = master_WSTRB;
 	assign master_M2S = master_M2S_master_M2S_HardLink;
 	assign master_RACK = master_RACK_master_RACK_HardLink;
 	assign master_RDATA[0] = master_RDATA0_master_RDATA_HardLink;

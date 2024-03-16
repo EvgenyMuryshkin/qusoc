@@ -51,19 +51,15 @@ architecture rtl of AXI4MasterSlaveTestModule_TopLevel is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	constant State_ReadDataDefault : unsigned(7 downto 0) := "00000000";
-	constant AXI4MasterSlaveTestModule_L56F26T27_Expr : std_logic := '0';
-	constant AXI4MasterSlaveTestModule_L57F26T27_Expr : std_logic := '0';
+	constant AXI4MasterSlaveTestModule_L58F30T31_Expr : std_logic := '0';
+	constant AXI4MasterSlaveTestModule_L59F30T31_Expr : std_logic := '0';
 	signal Inputs_InData : unsigned(31 downto 0) := (others => '0');
 	signal Inputs_MRE : std_logic := '0';
 	signal Inputs_MWE : std_logic := '0';
 	signal Inputs_SWE : std_logic := '0';
 	signal Inputs_WSTRB : unsigned(3 downto 0) := (others => '0');
-	signal master_ARADDR : unsigned(31 downto 0) := (others => '0');
-	signal master_AWADDR : unsigned(31 downto 0) := (others => '0');
-	signal master_RE : std_logic := '0';
+	signal master_Master : unsigned(101 downto 0) := (others => '0');
 	signal master_S2M : unsigned(73 downto 0) := (others => '0');
-	signal master_WE : std_logic := '0';
-	signal master_WSTRB : unsigned(3 downto 0) := (others => '0');
 	signal master_M2S : unsigned(221 downto 0) := (others => '0');
 	signal master_RACK : std_logic := '0';
 	signal master_WACK : std_logic := '0';
@@ -74,16 +70,8 @@ architecture rtl of AXI4MasterSlaveTestModule_TopLevel is
 	signal reg_S2M : unsigned(73 downto 0) := (others => '0');
 	signal AXI4MasterSlaveTestModule_L31F40T71_Source : unsigned(31 downto 0) := (others => '0');
 	signal AXI4MasterSlaveTestModule_L32F44T72_Source : unsigned(31 downto 0) := (others => '0');
-	signal master_ARADDR_master_ARADDR_HardLink : unsigned(31 downto 0) := "00000000000000000000000000000000";
-	signal master_AWADDR_master_AWADDR_HardLink : unsigned(31 downto 0) := "00000000000000000000000000000000";
-	signal master_RE_master_RE_HardLink : std_logic := '0';
+	signal master_Master_master_Master_HardLink : unsigned(101 downto 0) := "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
 	signal master_S2M_master_S2M_HardLink : unsigned(73 downto 0) := "00000000000000000000000000000000000000000000000000000000000000000000000000";
-	signal master_WDATA0_master_WDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal master_WDATA1_master_WDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal master_WDATA2_master_WDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal master_WDATA3_master_WDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal master_WE_master_WE_HardLink : std_logic := '0';
-	signal master_WSTRB_master_WSTRB_HardLink : unsigned(3 downto 0) := "0000";
 	signal master_M2S_master_M2S_HardLink : unsigned(221 downto 0) := "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
 	signal master_RACK_master_RACK_HardLink : std_logic := '0';
 	signal master_RDATA0_master_RDATA_HardLink : unsigned(7 downto 0) := "00000000";
@@ -108,8 +96,6 @@ architecture rtl of AXI4MasterSlaveTestModule_TopLevel is
 	signal State_ReadData : State_ReadDataArray := (others => (others => '0'));
 	type NextState_ReadDataArray is array (0 to 3) of unsigned (7 downto 0);
 	signal NextState_ReadData : NextState_ReadDataArray := (others => (others => '0'));
-	type master_WDATAArray is array (0 to 3) of unsigned (7 downto 0);
-	signal master_WDATA : master_WDATAArray := (others => (others => '0'));
 	type master_RDATAArray is array (0 to 3) of unsigned (7 downto 0);
 	signal master_RDATA : master_RDATAArray := (others => (others => '0'));
 	type reg_inWDATAArray is array (0 to 3) of unsigned (7 downto 0);
@@ -140,16 +126,8 @@ begin
 		-- [BEGIN USER MAP FOR master]
 		-- [END USER MAP FOR master]
 		BoardSignals => BoardSignals,
-		ARADDR => master_ARADDR_master_ARADDR_HardLink,
-		AWADDR => master_AWADDR_master_AWADDR_HardLink,
-		RE => master_RE_master_RE_HardLink,
+		Master => master_Master_master_Master_HardLink,
 		S2M => master_S2M_master_S2M_HardLink,
-		WDATA0 => master_WDATA0_master_WDATA_HardLink,
-		WDATA1 => master_WDATA1_master_WDATA_HardLink,
-		WDATA2 => master_WDATA2_master_WDATA_HardLink,
-		WDATA3 => master_WDATA3_master_WDATA_HardLink,
-		WE => master_WE_master_WE_HardLink,
-		WSTRB => master_WSTRB_master_WSTRB_HardLink,
 		M2S => master_M2S_master_M2S_HardLink,
 		RACK => master_RACK_master_RACK_HardLink,
 		RDATA0 => master_RDATA0_master_RDATA_HardLink,
@@ -192,7 +170,7 @@ begin
 			NextState_ReadData(3) <= reg_S2M(40 downto 33);
 		end if;
 	end process;
-	process (AXI4MasterSlaveTestModule_L31F40T71_Source, AXI4MasterSlaveTestModule_L32F44T72_Source, InData, Inputs_InData, Inputs_MRE, Inputs_MWE, Inputs_SWE, Inputs_WSTRB, master_ARADDR, master_AWADDR, master_M2S, master_M2S_master_M2S_HardLink, master_RACK, master_RACK_master_RACK_HardLink, master_RDATA0_master_RDATA_HardLink, master_RDATA1_master_RDATA_HardLink, master_RDATA2_master_RDATA_HardLink, master_RDATA3_master_RDATA_HardLink, master_RE, master_S2M, master_WACK, master_WACK_master_WACK_HardLink, master_WDATA, master_WE, master_WSTRB, MRE, MWE, reg_inWDATA, reg_inWE, reg_M2S, reg_outACK_reg_outACK_HardLink, reg_outData, reg_outData0_reg_outData_HardLink, reg_outData1_reg_outData_HardLink, reg_outData2_reg_outData_HardLink, reg_outData3_reg_outData_HardLink, reg_outWritten_reg_outWritten_HardLink, reg_S2M, reg_S2M_reg_S2M_HardLink, State_ReadData, SWE, WSTRB)
+	process (AXI4MasterSlaveTestModule_L31F40T71_Source, AXI4MasterSlaveTestModule_L32F44T72_Source, InData, Inputs_InData, Inputs_MRE, Inputs_MWE, Inputs_SWE, Inputs_WSTRB, master_M2S, master_M2S_master_M2S_HardLink, master_Master, master_RACK, master_RACK_master_RACK_HardLink, master_RDATA0_master_RDATA_HardLink, master_RDATA1_master_RDATA_HardLink, master_RDATA2_master_RDATA_HardLink, master_RDATA3_master_RDATA_HardLink, master_S2M, master_WACK, master_WACK_master_WACK_HardLink, MRE, MWE, reg_inWDATA, reg_inWE, reg_M2S, reg_outACK_reg_outACK_HardLink, reg_outData, reg_outData0_reg_outData_HardLink, reg_outData1_reg_outData_HardLink, reg_outData2_reg_outData_HardLink, reg_outData3_reg_outData_HardLink, reg_outWritten_reg_outWritten_HardLink, reg_S2M, reg_S2M_reg_S2M_HardLink, State_ReadData, SWE, WSTRB)
 	begin
 		Inputs_InData <= InData;
 		Inputs_MRE <= MRE;
@@ -206,19 +184,16 @@ begin
 		reg_inWE <= Inputs_SWE;
 		reg_M2S(221 downto 84) <= master_M2S(221 downto 84);
 		reg_M2S(83 downto 0) <= master_M2S(83 downto 0);
-		master_ARADDR(31 downto 1) <= (others => '0');
-		master_ARADDR(0) <= AXI4MasterSlaveTestModule_L56F26T27_Expr;
-		master_AWADDR(31 downto 1) <= (others => '0');
-		master_AWADDR(0) <= AXI4MasterSlaveTestModule_L57F26T27_Expr;
-		master_RE <= Inputs_MRE;
+		master_Master(101 downto 98) <= Inputs_WSTRB;
+		master_Master(97) <= Inputs_MWE;
+		master_Master(96 downto 65) <= Inputs_InData;
+		master_Master(64) <= Inputs_MRE;
+		master_Master(63 downto 33) <= (others => '0');
+		master_Master(32) <= AXI4MasterSlaveTestModule_L59F30T31_Expr;
+		master_Master(31 downto 1) <= (others => '0');
+		master_Master(0) <= AXI4MasterSlaveTestModule_L58F30T31_Expr;
 		master_S2M(73 downto 53) <= reg_S2M(73 downto 53);
 		master_S2M(52 downto 0) <= reg_S2M(52 downto 0);
-		master_WDATA(3) <= Inputs_InData(31 downto 24);
-		master_WDATA(2) <= Inputs_InData(23 downto 16);
-		master_WDATA(1) <= Inputs_InData(15 downto 8);
-		master_WDATA(0) <= Inputs_InData(7 downto 0);
-		master_WE <= Inputs_MWE;
-		master_WSTRB <= Inputs_WSTRB;
 		BVALID <= reg_S2M(72);
 		RACK <= master_RACK;
 		AXI4MasterSlaveTestModule_L31F40T71_Source(31 downto 24) <= State_ReadData(3);
@@ -233,16 +208,8 @@ begin
 		RegisterData <= AXI4MasterSlaveTestModule_L32F44T72_Source;
 		RVALID <= reg_S2M(52);
 		WACK <= master_WACK;
-		master_ARADDR_master_ARADDR_HardLink <= master_ARADDR;
-		master_AWADDR_master_AWADDR_HardLink <= master_AWADDR;
-		master_RE_master_RE_HardLink <= master_RE;
+		master_Master_master_Master_HardLink <= master_Master;
 		master_S2M_master_S2M_HardLink <= master_S2M;
-		master_WDATA0_master_WDATA_HardLink <= master_WDATA(0);
-		master_WDATA1_master_WDATA_HardLink <= master_WDATA(1);
-		master_WDATA2_master_WDATA_HardLink <= master_WDATA(2);
-		master_WDATA3_master_WDATA_HardLink <= master_WDATA(3);
-		master_WE_master_WE_HardLink <= master_WE;
-		master_WSTRB_master_WSTRB_HardLink <= master_WSTRB;
 		master_M2S <= master_M2S_master_M2S_HardLink;
 		master_RACK <= master_RACK_master_RACK_HardLink;
 		master_RDATA(0) <= master_RDATA0_master_RDATA_HardLink;

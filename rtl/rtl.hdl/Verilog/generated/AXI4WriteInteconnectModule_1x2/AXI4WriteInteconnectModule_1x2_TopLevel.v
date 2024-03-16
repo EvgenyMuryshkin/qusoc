@@ -59,6 +59,12 @@ module AXI4WriteInteconnectModule_1x2_TopLevel
 	input wire [7:0] iRight1_B_BUSER,
 	input wire iRight1_B_BVALID,
 	input wire iRight1_W_WREADY,
+	output wire S2M0_AW_AWREADY,
+	output wire [7:0] S2M0_B_BID,
+	output wire [1:0] S2M0_B_BRESP,
+	output wire [7:0] S2M0_B_BUSER,
+	output wire S2M0_B_BVALID,
+	output wire S2M0_W_WREADY,
 	output wire oEncoderHasActive,
 	output wire [7:0] oLeft0_AW_AWID,
 	output wire [31:0] oLeft0_AW_AWADDR,
@@ -463,6 +469,12 @@ module AXI4WriteInteconnectModule_1x2_TopLevel
 	assign DuplexMux_iRightAddr = State_rightAddr;
 	assign DuplexMux_iRightAddrValid = State_rightAddrValid;
 	assign rangeDetectorArray0_iAddress = Inputs_iLeft[0][39:8];
+	assign S2M0_W_WREADY = muxRight[0][20];
+	assign S2M0_B_BVALID = muxRight[0][19];
+	assign S2M0_B_BUSER = muxRight[0][18:11];
+	assign S2M0_B_BRESP = muxRight[0][10:9];
+	assign S2M0_B_BID = muxRight[0][8:1];
+	assign S2M0_AW_AWREADY = muxRight[0][0];
 	assign oEncoderHasActive = Encoder_HasActive;
 	assign oLeft0_B_BREADY = muxLeft[0][137];
 	assign oLeft0_W_WVALID = muxLeft[0][136];

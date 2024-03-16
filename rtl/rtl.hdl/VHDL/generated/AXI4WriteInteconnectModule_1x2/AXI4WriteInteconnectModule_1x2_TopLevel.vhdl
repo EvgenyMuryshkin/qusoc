@@ -60,6 +60,12 @@ entity AXI4WriteInteconnectModule_1x2_TopLevel is
 		iRight1_B_BUSER : in unsigned (7 downto 0);
 		iRight1_B_BVALID : in std_logic;
 		iRight1_W_WREADY : in std_logic;
+		S2M0_AW_AWREADY : out std_logic;
+		S2M0_B_BID : out unsigned (7 downto 0);
+		S2M0_B_BRESP : out unsigned (1 downto 0);
+		S2M0_B_BUSER : out unsigned (7 downto 0);
+		S2M0_B_BVALID : out std_logic;
+		S2M0_W_WREADY : out std_logic;
 		oEncoderHasActive : out std_logic;
 		oLeft0_AW_AWID : out unsigned (7 downto 0);
 		oLeft0_AW_AWADDR : out unsigned (31 downto 0);
@@ -503,6 +509,12 @@ begin
 		DuplexMux_iRightAddr <= State_rightAddr;
 		DuplexMux_iRightAddrValid <= State_rightAddrValid;
 		rangeDetectorArray0_iAddress <= Inputs_iLeft(0)(39 downto 8);
+		S2M0_W_WREADY <= muxRight(0)(20);
+		S2M0_B_BVALID <= muxRight(0)(19);
+		S2M0_B_BUSER <= muxRight(0)(18 downto 11);
+		S2M0_B_BRESP <= muxRight(0)(10 downto 9);
+		S2M0_B_BID <= muxRight(0)(8 downto 1);
+		S2M0_AW_AWREADY <= muxRight(0)(0);
 		oEncoderHasActive <= Encoder_HasActive;
 		oLeft0_B_BREADY <= muxLeft(0)(137);
 		oLeft0_W_WVALID <= muxLeft(0)(136);

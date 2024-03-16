@@ -58,6 +58,16 @@ module AXI4ReadInteconnectModule_1x2_TopLevel
 	input wire iRight1_R_RLAST,
 	input wire [7:0] iRight1_R_RUSER,
 	input wire iRight1_R_RVALID,
+	output wire S2M0_AR_ARREADY,
+	output wire [7:0] S2M0_R_RID,
+	output wire [7:0] S2M0_R_RDATA0,
+	output wire [7:0] S2M0_R_RDATA1,
+	output wire [7:0] S2M0_R_RDATA2,
+	output wire [7:0] S2M0_R_RDATA3,
+	output wire [1:0] S2M0_R_RRESP,
+	output wire S2M0_R_RLAST,
+	output wire [7:0] S2M0_R_RUSER,
+	output wire S2M0_R_RVALID,
 	output wire [7:0] oLeft0_AR_ARID,
 	output wire [31:0] oLeft0_AR_ARADDR,
 	output wire [7:0] oLeft0_AR_ARLEN,
@@ -433,6 +443,16 @@ module AXI4ReadInteconnectModule_1x2_TopLevel
 	assign DuplexMux_iRightAddr = State_rightAddr;
 	assign DuplexMux_iRightAddrValid = State_rightAddrValid;
 	assign rangeDetectorArray0_iAddress = Inputs_iLeft[0][39:8];
+	assign S2M0_R_RVALID = muxRight[0][52];
+	assign S2M0_R_RUSER = muxRight[0][51:44];
+	assign S2M0_R_RLAST = muxRight[0][43];
+	assign S2M0_R_RRESP = muxRight[0][42:41];
+	assign S2M0_R_RDATA3 = muxRight[0][40:33];
+	assign S2M0_R_RDATA2 = muxRight[0][32:25];
+	assign S2M0_R_RDATA1 = muxRight[0][24:17];
+	assign S2M0_R_RDATA0 = muxRight[0][16:9];
+	assign S2M0_R_RID = muxRight[0][8:1];
+	assign S2M0_AR_ARREADY = muxRight[0][0];
 	assign oLeft0_R_RREADY = muxLeft[0][83];
 	assign oLeft0_AR_ARVALID = muxLeft[0][82];
 	assign oLeft0_AR_ARUSER = muxLeft[0][81:74];
