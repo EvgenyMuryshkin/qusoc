@@ -37,7 +37,7 @@
 
 set_global_assignment -name FAMILY "Cyclone II"
 set_global_assignment -name DEVICE EP2C70F896C6
-set_global_assignment -name TOP_LEVEL_ENTITY AXI4WriteInteconnectModule_1x2_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY IOTupleStateInternalL4ComponentsOutputModule_TopLevel
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "20:45:17  JUNE 07, 2019"
 set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
@@ -59,14 +59,15 @@ set_global_assignment -name VECTOR_COMPARE_TRIGGER_MODE INPUT_EDGE
 
 set_global_assignment -name AUTO_SHIFT_REGISTER_RECOGNITION OFF
 
+set_global_assignment -name SDC_FILE rtl.sdc
+
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
 set_instance_assignment -name CLOCK_SETTINGS Clock -to Clock
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/AXI4WriteInteconnectModule_1x2.vwf
-set_global_assignment -name SDC_FILE rtl.sdc
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/IOTupleDelay1Clock.vwf
 
 set_global_assignment -name VERILOG_FILE Verilog/generated/AndGateModule/AndGateModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AndGateModule.vwf
@@ -256,6 +257,8 @@ set_global_assignment -name VERILOG_FILE Verilog/generated/IntDividerPipelineMod
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IntDividerPipelineModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/IONativeModule/IONativeModule_TopLevel.v
 set_global_assignment -name VERILOG_FILE Verilog/generated/IOObjectModule/IOObjectModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/IOSimpleTupleModule/IOSimpleTupleModule_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IOSimpleTupleModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/IOSingleBitMemoryCompositionModule_1/IOSingleBitMemoryCompositionModule_1_TopLevel_children0.v
 set_global_assignment -name VERILOG_FILE Verilog/generated/IOSingleBitMemoryCompositionModule_1/IOSingleBitMemoryCompositionModule_1_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IOSingleBitMemoryCompositionModule_1.vwf

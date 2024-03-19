@@ -25,108 +25,140 @@ module AXI4InteconnectModule_2x2_TopLevel
 	// [END USER PORTS]
 	input wire Clock,
 	input wire Reset,
-	input wire [7:0] M2S0_R_AR_ARID,
-	input wire [31:0] M2S0_R_AR_ARADDR,
-	input wire [7:0] M2S0_R_AR_ARLEN,
-	input wire [2:0] M2S0_R_AR_ARSIZE,
-	input wire [1:0] M2S0_R_AR_ARBURST,
-	input wire [1:0] M2S0_R_AR_ARLOCK,
-	input wire [3:0] M2S0_R_AR_ARCACHE,
-	input wire [2:0] M2S0_R_AR_ARPROT,
-	input wire [3:0] M2S0_R_AR_ARQOS,
-	input wire [7:0] M2S0_R_AR_ARREGION,
-	input wire [7:0] M2S0_R_AR_ARUSER,
-	input wire M2S0_R_AR_ARVALID,
-	input wire M2S0_R_R_RREADY,
-	input wire [7:0] M2S0_W_AW_AWID,
-	input wire [31:0] M2S0_W_AW_AWADDR,
-	input wire [7:0] M2S0_W_AW_AWLEN,
-	input wire [2:0] M2S0_W_AW_AWSIZE,
-	input wire [1:0] M2S0_W_AW_AWBURST,
-	input wire [1:0] M2S0_W_AW_AWLOCK,
-	input wire [3:0] M2S0_W_AW_AWCACHE,
-	input wire [2:0] M2S0_W_AW_AWPROT,
-	input wire [3:0] M2S0_W_AW_AWQOS,
-	input wire [7:0] M2S0_W_AW_AWREGION,
-	input wire [7:0] M2S0_W_AW_AWUSER,
-	input wire M2S0_W_AW_AWVALID,
-	input wire [7:0] M2S0_W_W_WID,
-	input wire [7:0] M2S0_W_W_WDATA0,
-	input wire [7:0] M2S0_W_W_WDATA1,
-	input wire [7:0] M2S0_W_W_WDATA2,
-	input wire [7:0] M2S0_W_W_WDATA3,
-	input wire [3:0] M2S0_W_W_WSTRB,
-	input wire M2S0_W_W_WLAST,
-	input wire [7:0] M2S0_W_W_WUSER,
-	input wire M2S0_W_W_WVALID,
-	input wire M2S0_W_B_BREADY,
-	input wire [7:0] M2S1_R_AR_ARID,
-	input wire [31:0] M2S1_R_AR_ARADDR,
-	input wire [7:0] M2S1_R_AR_ARLEN,
-	input wire [2:0] M2S1_R_AR_ARSIZE,
-	input wire [1:0] M2S1_R_AR_ARBURST,
-	input wire [1:0] M2S1_R_AR_ARLOCK,
-	input wire [3:0] M2S1_R_AR_ARCACHE,
-	input wire [2:0] M2S1_R_AR_ARPROT,
-	input wire [3:0] M2S1_R_AR_ARQOS,
-	input wire [7:0] M2S1_R_AR_ARREGION,
-	input wire [7:0] M2S1_R_AR_ARUSER,
-	input wire M2S1_R_AR_ARVALID,
-	input wire M2S1_R_R_RREADY,
-	input wire [7:0] M2S1_W_AW_AWID,
-	input wire [31:0] M2S1_W_AW_AWADDR,
-	input wire [7:0] M2S1_W_AW_AWLEN,
-	input wire [2:0] M2S1_W_AW_AWSIZE,
-	input wire [1:0] M2S1_W_AW_AWBURST,
-	input wire [1:0] M2S1_W_AW_AWLOCK,
-	input wire [3:0] M2S1_W_AW_AWCACHE,
-	input wire [2:0] M2S1_W_AW_AWPROT,
-	input wire [3:0] M2S1_W_AW_AWQOS,
-	input wire [7:0] M2S1_W_AW_AWREGION,
-	input wire [7:0] M2S1_W_AW_AWUSER,
-	input wire M2S1_W_AW_AWVALID,
-	input wire [7:0] M2S1_W_W_WID,
-	input wire [7:0] M2S1_W_W_WDATA0,
-	input wire [7:0] M2S1_W_W_WDATA1,
-	input wire [7:0] M2S1_W_W_WDATA2,
-	input wire [7:0] M2S1_W_W_WDATA3,
-	input wire [3:0] M2S1_W_W_WSTRB,
-	input wire M2S1_W_W_WLAST,
-	input wire [7:0] M2S1_W_W_WUSER,
-	input wire M2S1_W_W_WVALID,
-	input wire M2S1_W_B_BREADY,
-	input wire S2M0_R_AR_ARREADY,
-	input wire [7:0] S2M0_R_R_RID,
-	input wire [7:0] S2M0_R_R_RDATA0,
-	input wire [7:0] S2M0_R_R_RDATA1,
-	input wire [7:0] S2M0_R_R_RDATA2,
-	input wire [7:0] S2M0_R_R_RDATA3,
-	input wire [1:0] S2M0_R_R_RRESP,
-	input wire S2M0_R_R_RLAST,
-	input wire [7:0] S2M0_R_R_RUSER,
-	input wire S2M0_R_R_RVALID,
-	input wire S2M0_W_AW_AWREADY,
-	input wire [7:0] S2M0_W_B_BID,
-	input wire [1:0] S2M0_W_B_BRESP,
-	input wire [7:0] S2M0_W_B_BUSER,
-	input wire S2M0_W_B_BVALID,
-	input wire S2M0_W_W_WREADY,
-	input wire S2M1_R_AR_ARREADY,
-	input wire [7:0] S2M1_R_R_RID,
-	input wire [7:0] S2M1_R_R_RDATA0,
-	input wire [7:0] S2M1_R_R_RDATA1,
-	input wire [7:0] S2M1_R_R_RDATA2,
-	input wire [7:0] S2M1_R_R_RDATA3,
-	input wire [1:0] S2M1_R_R_RRESP,
-	input wire S2M1_R_R_RLAST,
-	input wire [7:0] S2M1_R_R_RUSER,
-	input wire S2M1_R_R_RVALID,
-	input wire S2M1_W_AW_AWREADY,
-	input wire [7:0] S2M1_W_B_BID,
-	input wire [1:0] S2M1_W_B_BRESP,
-	input wire [7:0] S2M1_W_B_BUSER,
-	input wire S2M1_W_B_BVALID,
-	input wire S2M1_W_W_WREADY
+	input wire [7:0] iM2S0_R_AR_ARID,
+	input wire [31:0] iM2S0_R_AR_ARADDR,
+	input wire [7:0] iM2S0_R_AR_ARLEN,
+	input wire [2:0] iM2S0_R_AR_ARSIZE,
+	input wire [1:0] iM2S0_R_AR_ARBURST,
+	input wire [1:0] iM2S0_R_AR_ARLOCK,
+	input wire [3:0] iM2S0_R_AR_ARCACHE,
+	input wire [2:0] iM2S0_R_AR_ARPROT,
+	input wire [3:0] iM2S0_R_AR_ARQOS,
+	input wire [7:0] iM2S0_R_AR_ARREGION,
+	input wire [7:0] iM2S0_R_AR_ARUSER,
+	input wire iM2S0_R_AR_ARVALID,
+	input wire iM2S0_R_R_RREADY,
+	input wire [7:0] iM2S0_W_AW_AWID,
+	input wire [31:0] iM2S0_W_AW_AWADDR,
+	input wire [7:0] iM2S0_W_AW_AWLEN,
+	input wire [2:0] iM2S0_W_AW_AWSIZE,
+	input wire [1:0] iM2S0_W_AW_AWBURST,
+	input wire [1:0] iM2S0_W_AW_AWLOCK,
+	input wire [3:0] iM2S0_W_AW_AWCACHE,
+	input wire [2:0] iM2S0_W_AW_AWPROT,
+	input wire [3:0] iM2S0_W_AW_AWQOS,
+	input wire [7:0] iM2S0_W_AW_AWREGION,
+	input wire [7:0] iM2S0_W_AW_AWUSER,
+	input wire iM2S0_W_AW_AWVALID,
+	input wire [7:0] iM2S0_W_W_WID,
+	input wire [7:0] iM2S0_W_W_WDATA0,
+	input wire [7:0] iM2S0_W_W_WDATA1,
+	input wire [7:0] iM2S0_W_W_WDATA2,
+	input wire [7:0] iM2S0_W_W_WDATA3,
+	input wire [3:0] iM2S0_W_W_WSTRB,
+	input wire iM2S0_W_W_WLAST,
+	input wire [7:0] iM2S0_W_W_WUSER,
+	input wire iM2S0_W_W_WVALID,
+	input wire iM2S0_W_B_BREADY,
+	input wire [7:0] iM2S1_R_AR_ARID,
+	input wire [31:0] iM2S1_R_AR_ARADDR,
+	input wire [7:0] iM2S1_R_AR_ARLEN,
+	input wire [2:0] iM2S1_R_AR_ARSIZE,
+	input wire [1:0] iM2S1_R_AR_ARBURST,
+	input wire [1:0] iM2S1_R_AR_ARLOCK,
+	input wire [3:0] iM2S1_R_AR_ARCACHE,
+	input wire [2:0] iM2S1_R_AR_ARPROT,
+	input wire [3:0] iM2S1_R_AR_ARQOS,
+	input wire [7:0] iM2S1_R_AR_ARREGION,
+	input wire [7:0] iM2S1_R_AR_ARUSER,
+	input wire iM2S1_R_AR_ARVALID,
+	input wire iM2S1_R_R_RREADY,
+	input wire [7:0] iM2S1_W_AW_AWID,
+	input wire [31:0] iM2S1_W_AW_AWADDR,
+	input wire [7:0] iM2S1_W_AW_AWLEN,
+	input wire [2:0] iM2S1_W_AW_AWSIZE,
+	input wire [1:0] iM2S1_W_AW_AWBURST,
+	input wire [1:0] iM2S1_W_AW_AWLOCK,
+	input wire [3:0] iM2S1_W_AW_AWCACHE,
+	input wire [2:0] iM2S1_W_AW_AWPROT,
+	input wire [3:0] iM2S1_W_AW_AWQOS,
+	input wire [7:0] iM2S1_W_AW_AWREGION,
+	input wire [7:0] iM2S1_W_AW_AWUSER,
+	input wire iM2S1_W_AW_AWVALID,
+	input wire [7:0] iM2S1_W_W_WID,
+	input wire [7:0] iM2S1_W_W_WDATA0,
+	input wire [7:0] iM2S1_W_W_WDATA1,
+	input wire [7:0] iM2S1_W_W_WDATA2,
+	input wire [7:0] iM2S1_W_W_WDATA3,
+	input wire [3:0] iM2S1_W_W_WSTRB,
+	input wire iM2S1_W_W_WLAST,
+	input wire [7:0] iM2S1_W_W_WUSER,
+	input wire iM2S1_W_W_WVALID,
+	input wire iM2S1_W_B_BREADY,
+	input wire iS2M0_R_AR_ARREADY,
+	input wire [7:0] iS2M0_R_R_RID,
+	input wire [7:0] iS2M0_R_R_RDATA0,
+	input wire [7:0] iS2M0_R_R_RDATA1,
+	input wire [7:0] iS2M0_R_R_RDATA2,
+	input wire [7:0] iS2M0_R_R_RDATA3,
+	input wire [1:0] iS2M0_R_R_RRESP,
+	input wire iS2M0_R_R_RLAST,
+	input wire [7:0] iS2M0_R_R_RUSER,
+	input wire iS2M0_R_R_RVALID,
+	input wire iS2M0_W_AW_AWREADY,
+	input wire [7:0] iS2M0_W_B_BID,
+	input wire [1:0] iS2M0_W_B_BRESP,
+	input wire [7:0] iS2M0_W_B_BUSER,
+	input wire iS2M0_W_B_BVALID,
+	input wire iS2M0_W_W_WREADY,
+	input wire iS2M1_R_AR_ARREADY,
+	input wire [7:0] iS2M1_R_R_RID,
+	input wire [7:0] iS2M1_R_R_RDATA0,
+	input wire [7:0] iS2M1_R_R_RDATA1,
+	input wire [7:0] iS2M1_R_R_RDATA2,
+	input wire [7:0] iS2M1_R_R_RDATA3,
+	input wire [1:0] iS2M1_R_R_RRESP,
+	input wire iS2M1_R_R_RLAST,
+	input wire [7:0] iS2M1_R_R_RUSER,
+	input wire iS2M1_R_R_RVALID,
+	input wire iS2M1_W_AW_AWREADY,
+	input wire [7:0] iS2M1_W_B_BID,
+	input wire [1:0] iS2M1_W_B_BRESP,
+	input wire [7:0] iS2M1_W_B_BUSER,
+	input wire iS2M1_W_B_BVALID,
+	input wire iS2M1_W_W_WREADY,
+	output wire oS2M0_R_AR_ARREADY,
+	output wire [7:0] oS2M0_R_R_RID,
+	output wire [7:0] oS2M0_R_R_RDATA0,
+	output wire [7:0] oS2M0_R_R_RDATA1,
+	output wire [7:0] oS2M0_R_R_RDATA2,
+	output wire [7:0] oS2M0_R_R_RDATA3,
+	output wire [1:0] oS2M0_R_R_RRESP,
+	output wire oS2M0_R_R_RLAST,
+	output wire [7:0] oS2M0_R_R_RUSER,
+	output wire oS2M0_R_R_RVALID,
+	output wire oS2M0_W_AW_AWREADY,
+	output wire [7:0] oS2M0_W_B_BID,
+	output wire [1:0] oS2M0_W_B_BRESP,
+	output wire [7:0] oS2M0_W_B_BUSER,
+	output wire oS2M0_W_B_BVALID,
+	output wire oS2M0_W_W_WREADY,
+	output wire oS2M1_R_AR_ARREADY,
+	output wire [7:0] oS2M1_R_R_RID,
+	output wire [7:0] oS2M1_R_R_RDATA0,
+	output wire [7:0] oS2M1_R_R_RDATA1,
+	output wire [7:0] oS2M1_R_R_RDATA2,
+	output wire [7:0] oS2M1_R_R_RDATA3,
+	output wire [1:0] oS2M1_R_R_RRESP,
+	output wire oS2M1_R_R_RLAST,
+	output wire [7:0] oS2M1_R_R_RUSER,
+	output wire oS2M1_R_R_RVALID,
+	output wire oS2M1_W_AW_AWREADY,
+	output wire [7:0] oS2M1_W_B_BID,
+	output wire [1:0] oS2M1_W_B_BRESP,
+	output wire [7:0] oS2M1_W_B_BUSER,
+	output wire oS2M1_W_B_BVALID,
+	output wire oS2M1_W_W_WREADY
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -136,24 +168,34 @@ module AXI4InteconnectModule_2x2_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
+	wire signed [2: 0] sCount = 3'b010;
+	wire [73: 0] AXI4InteconnectModule_L57F35L64T24_0_AXI4InteconnectModule_L59F17L63T18_Object;
+	wire [73: 0] AXI4InteconnectModule_L57F35L64T24_1_AXI4InteconnectModule_L59F17L63T18_Object;
 	wire [83: 0] readInterconnect_iLeft0_readInterconnect_iLeft_HardLink;
 	wire [83: 0] readInterconnect_iLeft1_readInterconnect_iLeft_HardLink;
 	wire [52: 0] readInterconnect_iRight0_readInterconnect_iRight_HardLink;
 	wire [52: 0] readInterconnect_iRight1_readInterconnect_iRight_HardLink;
+	wire [52: 0] readInterconnect_S2M0_readInterconnect_S2M_HardLink;
+	wire [52: 0] readInterconnect_S2M1_readInterconnect_S2M_HardLink;
 	wire [137: 0] writeInterconnect_iLeft0_writeInterconnect_iLeft_HardLink;
 	wire [137: 0] writeInterconnect_iLeft1_writeInterconnect_iLeft_HardLink;
 	wire [20: 0] writeInterconnect_iRight0_writeInterconnect_iRight_HardLink;
 	wire [20: 0] writeInterconnect_iRight1_writeInterconnect_iRight_HardLink;
-	wire [221 : 0] Inputs_M2S [0 : 1];
-	wire [73 : 0] Inputs_S2M [0 : 1];
+	wire [20: 0] writeInterconnect_S2M0_writeInterconnect_S2M_HardLink;
+	wire [20: 0] writeInterconnect_S2M1_writeInterconnect_S2M_HardLink;
+	wire [221 : 0] Inputs_iM2S [0 : 1];
+	wire [73 : 0] Inputs_iS2M [0 : 1];
 	wire [83 : 0] readInterconnect_iLeft [0 : 1];
 	wire [52 : 0] readInterconnect_iRight [0 : 1];
+	wire [52 : 0] readInterconnect_S2M [0 : 1];
 	wire [137 : 0] writeInterconnect_iLeft [0 : 1];
 	wire [20 : 0] writeInterconnect_iRight [0 : 1];
-	wire [83 : 0] AXI4InteconnectModule_L40F29T66_Enumerable [0 : 1];
-	wire [52 : 0] AXI4InteconnectModule_L41F30T67_Enumerable [0 : 1];
-	wire [137 : 0] AXI4InteconnectModule_L48F29T66_Enumerable [0 : 1];
-	wire [20 : 0] AXI4InteconnectModule_L49F30T67_Enumerable [0 : 1];
+	wire [20 : 0] writeInterconnect_S2M [0 : 1];
+	wire [83 : 0] AXI4InteconnectModule_L43F29T67_Enumerable [0 : 1];
+	wire [52 : 0] AXI4InteconnectModule_L44F30T68_Enumerable [0 : 1];
+	wire [137 : 0] AXI4InteconnectModule_L51F29T67_Enumerable [0 : 1];
+	wire [20 : 0] AXI4InteconnectModule_L52F30T68_Enumerable [0 : 1];
+	wire [73 : 0] AXI4InteconnectModule_L57F35L64T24_Enumerable [0 : 1];
 	wire BoardSignals_Clock;
 	wire BoardSignals_Reset;
 	wire BoardSignals_Running;
@@ -174,7 +216,9 @@ module AXI4InteconnectModule_2x2_TopLevel
 		.iLeft0 (readInterconnect_iLeft0_readInterconnect_iLeft_HardLink),
 		.iLeft1 (readInterconnect_iLeft1_readInterconnect_iLeft_HardLink),
 		.iRight0 (readInterconnect_iRight0_readInterconnect_iRight_HardLink),
-		.iRight1 (readInterconnect_iRight1_readInterconnect_iRight_HardLink)
+		.iRight1 (readInterconnect_iRight1_readInterconnect_iRight_HardLink),
+		.S2M0 (readInterconnect_S2M0_readInterconnect_S2M_HardLink),
+		.S2M1 (readInterconnect_S2M1_readInterconnect_S2M_HardLink)
 	);
 	AXI4InteconnectModule_2x2_TopLevel_writeInterconnect
 	AXI4InteconnectModule_2x2_TopLevel_writeInterconnect
@@ -189,134 +233,178 @@ module AXI4InteconnectModule_2x2_TopLevel
 		.iLeft0 (writeInterconnect_iLeft0_writeInterconnect_iLeft_HardLink),
 		.iLeft1 (writeInterconnect_iLeft1_writeInterconnect_iLeft_HardLink),
 		.iRight0 (writeInterconnect_iRight0_writeInterconnect_iRight_HardLink),
-		.iRight1 (writeInterconnect_iRight1_writeInterconnect_iRight_HardLink)
+		.iRight1 (writeInterconnect_iRight1_writeInterconnect_iRight_HardLink),
+		.S2M0 (writeInterconnect_S2M0_writeInterconnect_S2M_HardLink),
+		.S2M1 (writeInterconnect_S2M1_writeInterconnect_S2M_HardLink)
 	);
-	assign Inputs_M2S[0][221] = M2S0_W_B_BREADY;
-	assign Inputs_M2S[0][220] = M2S0_W_W_WVALID;
-	assign Inputs_M2S[0][219:212] = M2S0_W_W_WUSER;
-	assign Inputs_M2S[0][211] = M2S0_W_W_WLAST;
-	assign Inputs_M2S[0][210:207] = M2S0_W_W_WSTRB;
-	assign Inputs_M2S[0][206:199] = M2S0_W_W_WDATA3;
-	assign Inputs_M2S[0][198:191] = M2S0_W_W_WDATA2;
-	assign Inputs_M2S[0][190:183] = M2S0_W_W_WDATA1;
-	assign Inputs_M2S[0][182:175] = M2S0_W_W_WDATA0;
-	assign Inputs_M2S[0][174:167] = M2S0_W_W_WID;
-	assign Inputs_M2S[0][166] = M2S0_W_AW_AWVALID;
-	assign Inputs_M2S[0][165:158] = M2S0_W_AW_AWUSER;
-	assign Inputs_M2S[0][157:150] = M2S0_W_AW_AWREGION;
-	assign Inputs_M2S[0][149:146] = M2S0_W_AW_AWQOS;
-	assign Inputs_M2S[0][145:143] = M2S0_W_AW_AWPROT;
-	assign Inputs_M2S[0][142:139] = M2S0_W_AW_AWCACHE;
-	assign Inputs_M2S[0][138:137] = M2S0_W_AW_AWLOCK;
-	assign Inputs_M2S[0][136:135] = M2S0_W_AW_AWBURST;
-	assign Inputs_M2S[0][134:132] = M2S0_W_AW_AWSIZE;
-	assign Inputs_M2S[0][131:124] = M2S0_W_AW_AWLEN;
-	assign Inputs_M2S[0][123:92] = M2S0_W_AW_AWADDR;
-	assign Inputs_M2S[0][91:84] = M2S0_W_AW_AWID;
-	assign Inputs_M2S[0][83] = M2S0_R_R_RREADY;
-	assign Inputs_M2S[0][82] = M2S0_R_AR_ARVALID;
-	assign Inputs_M2S[0][81:74] = M2S0_R_AR_ARUSER;
-	assign Inputs_M2S[0][73:66] = M2S0_R_AR_ARREGION;
-	assign Inputs_M2S[0][65:62] = M2S0_R_AR_ARQOS;
-	assign Inputs_M2S[0][61:59] = M2S0_R_AR_ARPROT;
-	assign Inputs_M2S[0][58:55] = M2S0_R_AR_ARCACHE;
-	assign Inputs_M2S[0][54:53] = M2S0_R_AR_ARLOCK;
-	assign Inputs_M2S[0][52:51] = M2S0_R_AR_ARBURST;
-	assign Inputs_M2S[0][50:48] = M2S0_R_AR_ARSIZE;
-	assign Inputs_M2S[0][47:40] = M2S0_R_AR_ARLEN;
-	assign Inputs_M2S[0][39:8] = M2S0_R_AR_ARADDR;
-	assign Inputs_M2S[0][7:0] = M2S0_R_AR_ARID;
-	assign Inputs_M2S[1][221] = M2S1_W_B_BREADY;
-	assign Inputs_M2S[1][220] = M2S1_W_W_WVALID;
-	assign Inputs_M2S[1][219:212] = M2S1_W_W_WUSER;
-	assign Inputs_M2S[1][211] = M2S1_W_W_WLAST;
-	assign Inputs_M2S[1][210:207] = M2S1_W_W_WSTRB;
-	assign Inputs_M2S[1][206:199] = M2S1_W_W_WDATA3;
-	assign Inputs_M2S[1][198:191] = M2S1_W_W_WDATA2;
-	assign Inputs_M2S[1][190:183] = M2S1_W_W_WDATA1;
-	assign Inputs_M2S[1][182:175] = M2S1_W_W_WDATA0;
-	assign Inputs_M2S[1][174:167] = M2S1_W_W_WID;
-	assign Inputs_M2S[1][166] = M2S1_W_AW_AWVALID;
-	assign Inputs_M2S[1][165:158] = M2S1_W_AW_AWUSER;
-	assign Inputs_M2S[1][157:150] = M2S1_W_AW_AWREGION;
-	assign Inputs_M2S[1][149:146] = M2S1_W_AW_AWQOS;
-	assign Inputs_M2S[1][145:143] = M2S1_W_AW_AWPROT;
-	assign Inputs_M2S[1][142:139] = M2S1_W_AW_AWCACHE;
-	assign Inputs_M2S[1][138:137] = M2S1_W_AW_AWLOCK;
-	assign Inputs_M2S[1][136:135] = M2S1_W_AW_AWBURST;
-	assign Inputs_M2S[1][134:132] = M2S1_W_AW_AWSIZE;
-	assign Inputs_M2S[1][131:124] = M2S1_W_AW_AWLEN;
-	assign Inputs_M2S[1][123:92] = M2S1_W_AW_AWADDR;
-	assign Inputs_M2S[1][91:84] = M2S1_W_AW_AWID;
-	assign Inputs_M2S[1][83] = M2S1_R_R_RREADY;
-	assign Inputs_M2S[1][82] = M2S1_R_AR_ARVALID;
-	assign Inputs_M2S[1][81:74] = M2S1_R_AR_ARUSER;
-	assign Inputs_M2S[1][73:66] = M2S1_R_AR_ARREGION;
-	assign Inputs_M2S[1][65:62] = M2S1_R_AR_ARQOS;
-	assign Inputs_M2S[1][61:59] = M2S1_R_AR_ARPROT;
-	assign Inputs_M2S[1][58:55] = M2S1_R_AR_ARCACHE;
-	assign Inputs_M2S[1][54:53] = M2S1_R_AR_ARLOCK;
-	assign Inputs_M2S[1][52:51] = M2S1_R_AR_ARBURST;
-	assign Inputs_M2S[1][50:48] = M2S1_R_AR_ARSIZE;
-	assign Inputs_M2S[1][47:40] = M2S1_R_AR_ARLEN;
-	assign Inputs_M2S[1][39:8] = M2S1_R_AR_ARADDR;
-	assign Inputs_M2S[1][7:0] = M2S1_R_AR_ARID;
-	assign Inputs_S2M[0][73] = S2M0_W_W_WREADY;
-	assign Inputs_S2M[0][72] = S2M0_W_B_BVALID;
-	assign Inputs_S2M[0][71:64] = S2M0_W_B_BUSER;
-	assign Inputs_S2M[0][63:62] = S2M0_W_B_BRESP;
-	assign Inputs_S2M[0][61:54] = S2M0_W_B_BID;
-	assign Inputs_S2M[0][53] = S2M0_W_AW_AWREADY;
-	assign Inputs_S2M[0][52] = S2M0_R_R_RVALID;
-	assign Inputs_S2M[0][51:44] = S2M0_R_R_RUSER;
-	assign Inputs_S2M[0][43] = S2M0_R_R_RLAST;
-	assign Inputs_S2M[0][42:41] = S2M0_R_R_RRESP;
-	assign Inputs_S2M[0][40:33] = S2M0_R_R_RDATA3;
-	assign Inputs_S2M[0][32:25] = S2M0_R_R_RDATA2;
-	assign Inputs_S2M[0][24:17] = S2M0_R_R_RDATA1;
-	assign Inputs_S2M[0][16:9] = S2M0_R_R_RDATA0;
-	assign Inputs_S2M[0][8:1] = S2M0_R_R_RID;
-	assign Inputs_S2M[0][0] = S2M0_R_AR_ARREADY;
-	assign Inputs_S2M[1][73] = S2M1_W_W_WREADY;
-	assign Inputs_S2M[1][72] = S2M1_W_B_BVALID;
-	assign Inputs_S2M[1][71:64] = S2M1_W_B_BUSER;
-	assign Inputs_S2M[1][63:62] = S2M1_W_B_BRESP;
-	assign Inputs_S2M[1][61:54] = S2M1_W_B_BID;
-	assign Inputs_S2M[1][53] = S2M1_W_AW_AWREADY;
-	assign Inputs_S2M[1][52] = S2M1_R_R_RVALID;
-	assign Inputs_S2M[1][51:44] = S2M1_R_R_RUSER;
-	assign Inputs_S2M[1][43] = S2M1_R_R_RLAST;
-	assign Inputs_S2M[1][42:41] = S2M1_R_R_RRESP;
-	assign Inputs_S2M[1][40:33] = S2M1_R_R_RDATA3;
-	assign Inputs_S2M[1][32:25] = S2M1_R_R_RDATA2;
-	assign Inputs_S2M[1][24:17] = S2M1_R_R_RDATA1;
-	assign Inputs_S2M[1][16:9] = S2M1_R_R_RDATA0;
-	assign Inputs_S2M[1][8:1] = S2M1_R_R_RID;
-	assign Inputs_S2M[1][0] = S2M1_R_AR_ARREADY;
-	assign AXI4InteconnectModule_L40F29T66_Enumerable[0] = Inputs_M2S[0][83:0];
-	assign AXI4InteconnectModule_L40F29T66_Enumerable[1] = Inputs_M2S[1][83:0];
-	assign AXI4InteconnectModule_L41F30T67_Enumerable[0] = Inputs_S2M[0][52:0];
-	assign AXI4InteconnectModule_L41F30T67_Enumerable[1] = Inputs_S2M[1][52:0];
-	assign readInterconnect_iLeft[0] = AXI4InteconnectModule_L40F29T66_Enumerable[0];
-	assign readInterconnect_iLeft[1] = AXI4InteconnectModule_L40F29T66_Enumerable[1];
-	assign readInterconnect_iRight[0] = AXI4InteconnectModule_L41F30T67_Enumerable[0];
-	assign readInterconnect_iRight[1] = AXI4InteconnectModule_L41F30T67_Enumerable[1];
-	assign AXI4InteconnectModule_L48F29T66_Enumerable[0] = Inputs_M2S[0][221:84];
-	assign AXI4InteconnectModule_L48F29T66_Enumerable[1] = Inputs_M2S[1][221:84];
-	assign AXI4InteconnectModule_L49F30T67_Enumerable[0] = Inputs_S2M[0][73:53];
-	assign AXI4InteconnectModule_L49F30T67_Enumerable[1] = Inputs_S2M[1][73:53];
-	assign writeInterconnect_iLeft[0] = AXI4InteconnectModule_L48F29T66_Enumerable[0];
-	assign writeInterconnect_iLeft[1] = AXI4InteconnectModule_L48F29T66_Enumerable[1];
-	assign writeInterconnect_iRight[0] = AXI4InteconnectModule_L49F30T67_Enumerable[0];
-	assign writeInterconnect_iRight[1] = AXI4InteconnectModule_L49F30T67_Enumerable[1];
+	assign Inputs_iM2S[0][221] = iM2S0_W_B_BREADY;
+	assign Inputs_iM2S[0][220] = iM2S0_W_W_WVALID;
+	assign Inputs_iM2S[0][219:212] = iM2S0_W_W_WUSER;
+	assign Inputs_iM2S[0][211] = iM2S0_W_W_WLAST;
+	assign Inputs_iM2S[0][210:207] = iM2S0_W_W_WSTRB;
+	assign Inputs_iM2S[0][206:199] = iM2S0_W_W_WDATA3;
+	assign Inputs_iM2S[0][198:191] = iM2S0_W_W_WDATA2;
+	assign Inputs_iM2S[0][190:183] = iM2S0_W_W_WDATA1;
+	assign Inputs_iM2S[0][182:175] = iM2S0_W_W_WDATA0;
+	assign Inputs_iM2S[0][174:167] = iM2S0_W_W_WID;
+	assign Inputs_iM2S[0][166] = iM2S0_W_AW_AWVALID;
+	assign Inputs_iM2S[0][165:158] = iM2S0_W_AW_AWUSER;
+	assign Inputs_iM2S[0][157:150] = iM2S0_W_AW_AWREGION;
+	assign Inputs_iM2S[0][149:146] = iM2S0_W_AW_AWQOS;
+	assign Inputs_iM2S[0][145:143] = iM2S0_W_AW_AWPROT;
+	assign Inputs_iM2S[0][142:139] = iM2S0_W_AW_AWCACHE;
+	assign Inputs_iM2S[0][138:137] = iM2S0_W_AW_AWLOCK;
+	assign Inputs_iM2S[0][136:135] = iM2S0_W_AW_AWBURST;
+	assign Inputs_iM2S[0][134:132] = iM2S0_W_AW_AWSIZE;
+	assign Inputs_iM2S[0][131:124] = iM2S0_W_AW_AWLEN;
+	assign Inputs_iM2S[0][123:92] = iM2S0_W_AW_AWADDR;
+	assign Inputs_iM2S[0][91:84] = iM2S0_W_AW_AWID;
+	assign Inputs_iM2S[0][83] = iM2S0_R_R_RREADY;
+	assign Inputs_iM2S[0][82] = iM2S0_R_AR_ARVALID;
+	assign Inputs_iM2S[0][81:74] = iM2S0_R_AR_ARUSER;
+	assign Inputs_iM2S[0][73:66] = iM2S0_R_AR_ARREGION;
+	assign Inputs_iM2S[0][65:62] = iM2S0_R_AR_ARQOS;
+	assign Inputs_iM2S[0][61:59] = iM2S0_R_AR_ARPROT;
+	assign Inputs_iM2S[0][58:55] = iM2S0_R_AR_ARCACHE;
+	assign Inputs_iM2S[0][54:53] = iM2S0_R_AR_ARLOCK;
+	assign Inputs_iM2S[0][52:51] = iM2S0_R_AR_ARBURST;
+	assign Inputs_iM2S[0][50:48] = iM2S0_R_AR_ARSIZE;
+	assign Inputs_iM2S[0][47:40] = iM2S0_R_AR_ARLEN;
+	assign Inputs_iM2S[0][39:8] = iM2S0_R_AR_ARADDR;
+	assign Inputs_iM2S[0][7:0] = iM2S0_R_AR_ARID;
+	assign Inputs_iM2S[1][221] = iM2S1_W_B_BREADY;
+	assign Inputs_iM2S[1][220] = iM2S1_W_W_WVALID;
+	assign Inputs_iM2S[1][219:212] = iM2S1_W_W_WUSER;
+	assign Inputs_iM2S[1][211] = iM2S1_W_W_WLAST;
+	assign Inputs_iM2S[1][210:207] = iM2S1_W_W_WSTRB;
+	assign Inputs_iM2S[1][206:199] = iM2S1_W_W_WDATA3;
+	assign Inputs_iM2S[1][198:191] = iM2S1_W_W_WDATA2;
+	assign Inputs_iM2S[1][190:183] = iM2S1_W_W_WDATA1;
+	assign Inputs_iM2S[1][182:175] = iM2S1_W_W_WDATA0;
+	assign Inputs_iM2S[1][174:167] = iM2S1_W_W_WID;
+	assign Inputs_iM2S[1][166] = iM2S1_W_AW_AWVALID;
+	assign Inputs_iM2S[1][165:158] = iM2S1_W_AW_AWUSER;
+	assign Inputs_iM2S[1][157:150] = iM2S1_W_AW_AWREGION;
+	assign Inputs_iM2S[1][149:146] = iM2S1_W_AW_AWQOS;
+	assign Inputs_iM2S[1][145:143] = iM2S1_W_AW_AWPROT;
+	assign Inputs_iM2S[1][142:139] = iM2S1_W_AW_AWCACHE;
+	assign Inputs_iM2S[1][138:137] = iM2S1_W_AW_AWLOCK;
+	assign Inputs_iM2S[1][136:135] = iM2S1_W_AW_AWBURST;
+	assign Inputs_iM2S[1][134:132] = iM2S1_W_AW_AWSIZE;
+	assign Inputs_iM2S[1][131:124] = iM2S1_W_AW_AWLEN;
+	assign Inputs_iM2S[1][123:92] = iM2S1_W_AW_AWADDR;
+	assign Inputs_iM2S[1][91:84] = iM2S1_W_AW_AWID;
+	assign Inputs_iM2S[1][83] = iM2S1_R_R_RREADY;
+	assign Inputs_iM2S[1][82] = iM2S1_R_AR_ARVALID;
+	assign Inputs_iM2S[1][81:74] = iM2S1_R_AR_ARUSER;
+	assign Inputs_iM2S[1][73:66] = iM2S1_R_AR_ARREGION;
+	assign Inputs_iM2S[1][65:62] = iM2S1_R_AR_ARQOS;
+	assign Inputs_iM2S[1][61:59] = iM2S1_R_AR_ARPROT;
+	assign Inputs_iM2S[1][58:55] = iM2S1_R_AR_ARCACHE;
+	assign Inputs_iM2S[1][54:53] = iM2S1_R_AR_ARLOCK;
+	assign Inputs_iM2S[1][52:51] = iM2S1_R_AR_ARBURST;
+	assign Inputs_iM2S[1][50:48] = iM2S1_R_AR_ARSIZE;
+	assign Inputs_iM2S[1][47:40] = iM2S1_R_AR_ARLEN;
+	assign Inputs_iM2S[1][39:8] = iM2S1_R_AR_ARADDR;
+	assign Inputs_iM2S[1][7:0] = iM2S1_R_AR_ARID;
+	assign Inputs_iS2M[0][73] = iS2M0_W_W_WREADY;
+	assign Inputs_iS2M[0][72] = iS2M0_W_B_BVALID;
+	assign Inputs_iS2M[0][71:64] = iS2M0_W_B_BUSER;
+	assign Inputs_iS2M[0][63:62] = iS2M0_W_B_BRESP;
+	assign Inputs_iS2M[0][61:54] = iS2M0_W_B_BID;
+	assign Inputs_iS2M[0][53] = iS2M0_W_AW_AWREADY;
+	assign Inputs_iS2M[0][52] = iS2M0_R_R_RVALID;
+	assign Inputs_iS2M[0][51:44] = iS2M0_R_R_RUSER;
+	assign Inputs_iS2M[0][43] = iS2M0_R_R_RLAST;
+	assign Inputs_iS2M[0][42:41] = iS2M0_R_R_RRESP;
+	assign Inputs_iS2M[0][40:33] = iS2M0_R_R_RDATA3;
+	assign Inputs_iS2M[0][32:25] = iS2M0_R_R_RDATA2;
+	assign Inputs_iS2M[0][24:17] = iS2M0_R_R_RDATA1;
+	assign Inputs_iS2M[0][16:9] = iS2M0_R_R_RDATA0;
+	assign Inputs_iS2M[0][8:1] = iS2M0_R_R_RID;
+	assign Inputs_iS2M[0][0] = iS2M0_R_AR_ARREADY;
+	assign Inputs_iS2M[1][73] = iS2M1_W_W_WREADY;
+	assign Inputs_iS2M[1][72] = iS2M1_W_B_BVALID;
+	assign Inputs_iS2M[1][71:64] = iS2M1_W_B_BUSER;
+	assign Inputs_iS2M[1][63:62] = iS2M1_W_B_BRESP;
+	assign Inputs_iS2M[1][61:54] = iS2M1_W_B_BID;
+	assign Inputs_iS2M[1][53] = iS2M1_W_AW_AWREADY;
+	assign Inputs_iS2M[1][52] = iS2M1_R_R_RVALID;
+	assign Inputs_iS2M[1][51:44] = iS2M1_R_R_RUSER;
+	assign Inputs_iS2M[1][43] = iS2M1_R_R_RLAST;
+	assign Inputs_iS2M[1][42:41] = iS2M1_R_R_RRESP;
+	assign Inputs_iS2M[1][40:33] = iS2M1_R_R_RDATA3;
+	assign Inputs_iS2M[1][32:25] = iS2M1_R_R_RDATA2;
+	assign Inputs_iS2M[1][24:17] = iS2M1_R_R_RDATA1;
+	assign Inputs_iS2M[1][16:9] = iS2M1_R_R_RDATA0;
+	assign Inputs_iS2M[1][8:1] = iS2M1_R_R_RID;
+	assign Inputs_iS2M[1][0] = iS2M1_R_AR_ARREADY;
+	assign AXI4InteconnectModule_L43F29T67_Enumerable[0] = Inputs_iM2S[0][83:0];
+	assign AXI4InteconnectModule_L43F29T67_Enumerable[1] = Inputs_iM2S[1][83:0];
+	assign AXI4InteconnectModule_L44F30T68_Enumerable[0] = Inputs_iS2M[0][52:0];
+	assign AXI4InteconnectModule_L44F30T68_Enumerable[1] = Inputs_iS2M[1][52:0];
+	assign readInterconnect_iLeft[0] = AXI4InteconnectModule_L43F29T67_Enumerable[0];
+	assign readInterconnect_iLeft[1] = AXI4InteconnectModule_L43F29T67_Enumerable[1];
+	assign readInterconnect_iRight[0] = AXI4InteconnectModule_L44F30T68_Enumerable[0];
+	assign readInterconnect_iRight[1] = AXI4InteconnectModule_L44F30T68_Enumerable[1];
+	assign AXI4InteconnectModule_L51F29T67_Enumerable[0] = Inputs_iM2S[0][221:84];
+	assign AXI4InteconnectModule_L51F29T67_Enumerable[1] = Inputs_iM2S[1][221:84];
+	assign AXI4InteconnectModule_L52F30T68_Enumerable[0] = Inputs_iS2M[0][73:53];
+	assign AXI4InteconnectModule_L52F30T68_Enumerable[1] = Inputs_iS2M[1][73:53];
+	assign writeInterconnect_iLeft[0] = AXI4InteconnectModule_L51F29T67_Enumerable[0];
+	assign writeInterconnect_iLeft[1] = AXI4InteconnectModule_L51F29T67_Enumerable[1];
+	assign writeInterconnect_iRight[0] = AXI4InteconnectModule_L52F30T68_Enumerable[0];
+	assign writeInterconnect_iRight[1] = AXI4InteconnectModule_L52F30T68_Enumerable[1];
+	assign AXI4InteconnectModule_L57F35L64T24_0_AXI4InteconnectModule_L59F17L63T18_Object[52:0] = readInterconnect_S2M[0];
+	assign AXI4InteconnectModule_L57F35L64T24_0_AXI4InteconnectModule_L59F17L63T18_Object[73:53] = writeInterconnect_S2M[0];
+	assign AXI4InteconnectModule_L57F35L64T24_1_AXI4InteconnectModule_L59F17L63T18_Object[52:0] = readInterconnect_S2M[1];
+	assign AXI4InteconnectModule_L57F35L64T24_1_AXI4InteconnectModule_L59F17L63T18_Object[73:53] = writeInterconnect_S2M[1];
+	assign AXI4InteconnectModule_L57F35L64T24_Enumerable[0] = AXI4InteconnectModule_L57F35L64T24_0_AXI4InteconnectModule_L59F17L63T18_Object;
+	assign AXI4InteconnectModule_L57F35L64T24_Enumerable[1] = AXI4InteconnectModule_L57F35L64T24_1_AXI4InteconnectModule_L59F17L63T18_Object;
+	assign oS2M0_W_W_WREADY = AXI4InteconnectModule_L57F35L64T24_Enumerable[0][73];
+	assign oS2M0_W_B_BVALID = AXI4InteconnectModule_L57F35L64T24_Enumerable[0][72];
+	assign oS2M0_W_B_BUSER = AXI4InteconnectModule_L57F35L64T24_Enumerable[0][71:64];
+	assign oS2M0_W_B_BRESP = AXI4InteconnectModule_L57F35L64T24_Enumerable[0][63:62];
+	assign oS2M0_W_B_BID = AXI4InteconnectModule_L57F35L64T24_Enumerable[0][61:54];
+	assign oS2M0_W_AW_AWREADY = AXI4InteconnectModule_L57F35L64T24_Enumerable[0][53];
+	assign oS2M0_R_R_RVALID = AXI4InteconnectModule_L57F35L64T24_Enumerable[0][52];
+	assign oS2M0_R_R_RUSER = AXI4InteconnectModule_L57F35L64T24_Enumerable[0][51:44];
+	assign oS2M0_R_R_RLAST = AXI4InteconnectModule_L57F35L64T24_Enumerable[0][43];
+	assign oS2M0_R_R_RRESP = AXI4InteconnectModule_L57F35L64T24_Enumerable[0][42:41];
+	assign oS2M0_R_R_RDATA3 = AXI4InteconnectModule_L57F35L64T24_Enumerable[0][40:33];
+	assign oS2M0_R_R_RDATA2 = AXI4InteconnectModule_L57F35L64T24_Enumerable[0][32:25];
+	assign oS2M0_R_R_RDATA1 = AXI4InteconnectModule_L57F35L64T24_Enumerable[0][24:17];
+	assign oS2M0_R_R_RDATA0 = AXI4InteconnectModule_L57F35L64T24_Enumerable[0][16:9];
+	assign oS2M0_R_R_RID = AXI4InteconnectModule_L57F35L64T24_Enumerable[0][8:1];
+	assign oS2M0_R_AR_ARREADY = AXI4InteconnectModule_L57F35L64T24_Enumerable[0][0];
+	assign oS2M1_W_W_WREADY = AXI4InteconnectModule_L57F35L64T24_Enumerable[1][73];
+	assign oS2M1_W_B_BVALID = AXI4InteconnectModule_L57F35L64T24_Enumerable[1][72];
+	assign oS2M1_W_B_BUSER = AXI4InteconnectModule_L57F35L64T24_Enumerable[1][71:64];
+	assign oS2M1_W_B_BRESP = AXI4InteconnectModule_L57F35L64T24_Enumerable[1][63:62];
+	assign oS2M1_W_B_BID = AXI4InteconnectModule_L57F35L64T24_Enumerable[1][61:54];
+	assign oS2M1_W_AW_AWREADY = AXI4InteconnectModule_L57F35L64T24_Enumerable[1][53];
+	assign oS2M1_R_R_RVALID = AXI4InteconnectModule_L57F35L64T24_Enumerable[1][52];
+	assign oS2M1_R_R_RUSER = AXI4InteconnectModule_L57F35L64T24_Enumerable[1][51:44];
+	assign oS2M1_R_R_RLAST = AXI4InteconnectModule_L57F35L64T24_Enumerable[1][43];
+	assign oS2M1_R_R_RRESP = AXI4InteconnectModule_L57F35L64T24_Enumerable[1][42:41];
+	assign oS2M1_R_R_RDATA3 = AXI4InteconnectModule_L57F35L64T24_Enumerable[1][40:33];
+	assign oS2M1_R_R_RDATA2 = AXI4InteconnectModule_L57F35L64T24_Enumerable[1][32:25];
+	assign oS2M1_R_R_RDATA1 = AXI4InteconnectModule_L57F35L64T24_Enumerable[1][24:17];
+	assign oS2M1_R_R_RDATA0 = AXI4InteconnectModule_L57F35L64T24_Enumerable[1][16:9];
+	assign oS2M1_R_R_RID = AXI4InteconnectModule_L57F35L64T24_Enumerable[1][8:1];
+	assign oS2M1_R_AR_ARREADY = AXI4InteconnectModule_L57F35L64T24_Enumerable[1][0];
 	assign readInterconnect_iLeft0_readInterconnect_iLeft_HardLink = readInterconnect_iLeft[0];
 	assign readInterconnect_iLeft1_readInterconnect_iLeft_HardLink = readInterconnect_iLeft[1];
 	assign readInterconnect_iRight0_readInterconnect_iRight_HardLink = readInterconnect_iRight[0];
 	assign readInterconnect_iRight1_readInterconnect_iRight_HardLink = readInterconnect_iRight[1];
+	assign readInterconnect_S2M[0] = readInterconnect_S2M0_readInterconnect_S2M_HardLink;
+	assign readInterconnect_S2M[1] = readInterconnect_S2M1_readInterconnect_S2M_HardLink;
 	assign writeInterconnect_iLeft0_writeInterconnect_iLeft_HardLink = writeInterconnect_iLeft[0];
 	assign writeInterconnect_iLeft1_writeInterconnect_iLeft_HardLink = writeInterconnect_iLeft[1];
 	assign writeInterconnect_iRight0_writeInterconnect_iRight_HardLink = writeInterconnect_iRight[0];
 	assign writeInterconnect_iRight1_writeInterconnect_iRight_HardLink = writeInterconnect_iRight[1];
+	assign writeInterconnect_S2M[0] = writeInterconnect_S2M0_writeInterconnect_S2M_HardLink;
+	assign writeInterconnect_S2M[1] = writeInterconnect_S2M1_writeInterconnect_S2M_HardLink;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

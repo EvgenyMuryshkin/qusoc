@@ -49,6 +49,7 @@ architecture rtl of IOTupleDirectInputComponentsOutputParentModule_TopLevel_chil
 	signal Inputs_iTuple_Item4_L2_L2Flag : std_logic := '0';
 	signal Inputs_iTuple_Item4_L2Tuple_Item1 : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag : std_logic := '0';
+	signal IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple : unsigned(59 downto 0) := (others => '0');
 	type Inputs_iTuple_Item3Array is array (0 to 1) of unsigned (3 downto 0);
 	signal Inputs_iTuple_Item3 : Inputs_iTuple_Item3Array := (others => (others => '0'));
 	type Inputs_iTuple_Item4_L2_L2ValuesArray is array (0 to 1) of std_logic;
@@ -62,7 +63,7 @@ architecture rtl of IOTupleDirectInputComponentsOutputParentModule_TopLevel_chil
 	type Inputs_iTupleArrayArray is array (0 to 1) of unsigned (53 downto 0);
 	signal Inputs_iTupleArray : Inputs_iTupleArrayArray := (others => (others => '0'));
 begin
-	process (Inputs_iTuple_Item1, Inputs_iTuple_Item2, Inputs_iTuple_Item3, Inputs_iTuple_Item4_L1Flag, Inputs_iTuple_Item4_L2_L2Flag, Inputs_iTuple_Item4_L2_L2Values, Inputs_iTuple_Item4_L2Array, Inputs_iTuple_Item4_L2Tuple_Item1, Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag, Inputs_iTuple_Item4_L2Tuple_Item2_L2Values, Inputs_iTuple_Item4_L2Tuple_Item3, Inputs_iTupleArray, iTuple, iTupleArray0, iTupleArray1)
+	process (Inputs_iTuple_Item1, Inputs_iTuple_Item2, Inputs_iTuple_Item3, Inputs_iTuple_Item4_L1Flag, Inputs_iTuple_Item4_L2_L2Flag, Inputs_iTuple_Item4_L2_L2Values, Inputs_iTuple_Item4_L2Array, Inputs_iTuple_Item4_L2Tuple_Item1, Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag, Inputs_iTuple_Item4_L2Tuple_Item2_L2Values, Inputs_iTuple_Item4_L2Tuple_Item3, Inputs_iTupleArray, IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple, iTuple, iTupleArray0, iTupleArray1)
 	begin
 		Inputs_iTuple_Item1 <= iTuple(59);
 		Inputs_iTuple_Item2 <= iTuple(58 downto 51);
@@ -82,22 +83,23 @@ begin
 		Inputs_iTuple_Item4_L1Flag <= iTuple(0);
 		Inputs_iTupleArray(0) <= iTupleArray0;
 		Inputs_iTupleArray(1) <= iTupleArray1;
-		Output_iTuple(59) <= Inputs_iTuple_Item1;
-		Output_iTuple(58 downto 51) <= Inputs_iTuple_Item2;
-		Output_iTuple(50 downto 47) <= Inputs_iTuple_Item3(1);
-		Output_iTuple(46 downto 43) <= Inputs_iTuple_Item3(0);
-		Output_iTuple(42 downto 35) <= Inputs_iTuple_Item4_L2Tuple_Item1;
-		Output_iTuple(34) <= Inputs_iTuple_Item4_L2Tuple_Item2_L2Values(1);
-		Output_iTuple(33) <= Inputs_iTuple_Item4_L2Tuple_Item2_L2Values(0);
-		Output_iTuple(32) <= Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag;
-		Output_iTuple(31 downto 25) <= Inputs_iTuple_Item4_L2Tuple_Item3(1);
-		Output_iTuple(24 downto 18) <= Inputs_iTuple_Item4_L2Tuple_Item3(0);
-		Output_iTuple(17 downto 11) <= Inputs_iTuple_Item4_L2Array(1);
-		Output_iTuple(10 downto 4) <= Inputs_iTuple_Item4_L2Array(0);
-		Output_iTuple(3) <= Inputs_iTuple_Item4_L2_L2Values(1);
-		Output_iTuple(2) <= Inputs_iTuple_Item4_L2_L2Values(0);
-		Output_iTuple(1) <= Inputs_iTuple_Item4_L2_L2Flag;
-		Output_iTuple(0) <= Inputs_iTuple_Item4_L1Flag;
+		IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple(59) <= Inputs_iTuple_Item1;
+		IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple(58 downto 51) <= Inputs_iTuple_Item2;
+		IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple(50 downto 47) <= Inputs_iTuple_Item3(1);
+		IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple(46 downto 43) <= Inputs_iTuple_Item3(0);
+		IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple(42 downto 35) <= Inputs_iTuple_Item4_L2Tuple_Item1;
+		IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple(34) <= Inputs_iTuple_Item4_L2Tuple_Item2_L2Values(1);
+		IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple(33) <= Inputs_iTuple_Item4_L2Tuple_Item2_L2Values(0);
+		IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple(32) <= Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag;
+		IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple(31 downto 25) <= Inputs_iTuple_Item4_L2Tuple_Item3(1);
+		IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple(24 downto 18) <= Inputs_iTuple_Item4_L2Tuple_Item3(0);
+		IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple(17 downto 11) <= Inputs_iTuple_Item4_L2Array(1);
+		IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple(10 downto 4) <= Inputs_iTuple_Item4_L2Array(0);
+		IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple(3) <= Inputs_iTuple_Item4_L2_L2Values(1);
+		IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple(2) <= Inputs_iTuple_Item4_L2_L2Values(0);
+		IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple(1) <= Inputs_iTuple_Item4_L2_L2Flag;
+		IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple(0) <= Inputs_iTuple_Item4_L1Flag;
+		Output_iTuple <= IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple;
 		Output_iTupleArray0 <= Inputs_iTupleArray(0);
 		Output_iTupleArray1 <= Inputs_iTupleArray(1);
 	end process;

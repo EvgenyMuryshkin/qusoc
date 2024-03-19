@@ -44,6 +44,7 @@ module IOTupleDirectInputComponentsOutputParentModule_TopLevel_child
 	wire Inputs_iTuple_Item4_L2_L2Flag;
 	wire [7: 0] Inputs_iTuple_Item4_L2Tuple_Item1;
 	wire Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag;
+	wire [59: 0] IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple;
 	wire [3 : 0] Inputs_iTuple_Item3 [0 : 1];
 	wire Inputs_iTuple_Item4_L2_L2Values [0 : 1];
 	wire [6 : 0] Inputs_iTuple_Item4_L2Array [0 : 1];
@@ -68,22 +69,8 @@ module IOTupleDirectInputComponentsOutputParentModule_TopLevel_child
 	assign Inputs_iTuple_Item4_L1Flag = iTuple[0];
 	assign Inputs_iTupleArray[0] = iTupleArray0;
 	assign Inputs_iTupleArray[1] = iTupleArray1;
-	assign Output_iTuple[59] = Inputs_iTuple_Item1;
-	assign Output_iTuple[58:51] = Inputs_iTuple_Item2;
-	assign Output_iTuple[50:47] = Inputs_iTuple_Item3[1];
-	assign Output_iTuple[46:43] = Inputs_iTuple_Item3[0];
-	assign Output_iTuple[42:35] = Inputs_iTuple_Item4_L2Tuple_Item1;
-	assign Output_iTuple[34] = Inputs_iTuple_Item4_L2Tuple_Item2_L2Values[1];
-	assign Output_iTuple[33] = Inputs_iTuple_Item4_L2Tuple_Item2_L2Values[0];
-	assign Output_iTuple[32] = Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag;
-	assign Output_iTuple[31:25] = Inputs_iTuple_Item4_L2Tuple_Item3[1];
-	assign Output_iTuple[24:18] = Inputs_iTuple_Item4_L2Tuple_Item3[0];
-	assign Output_iTuple[17:11] = Inputs_iTuple_Item4_L2Array[1];
-	assign Output_iTuple[10:4] = Inputs_iTuple_Item4_L2Array[0];
-	assign Output_iTuple[3] = Inputs_iTuple_Item4_L2_L2Values[1];
-	assign Output_iTuple[2] = Inputs_iTuple_Item4_L2_L2Values[0];
-	assign Output_iTuple[1] = Inputs_iTuple_Item4_L2_L2Flag;
-	assign Output_iTuple[0] = Inputs_iTuple_Item4_L1Flag;
+	assign IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple = { Inputs_iTuple_Item1, Inputs_iTuple_Item2, Inputs_iTuple_Item3[1], Inputs_iTuple_Item3[0], Inputs_iTuple_Item4_L2Tuple_Item1, Inputs_iTuple_Item4_L2Tuple_Item2_L2Values[1], Inputs_iTuple_Item4_L2Tuple_Item2_L2Values[0], Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag, Inputs_iTuple_Item4_L2Tuple_Item3[1], Inputs_iTuple_Item4_L2Tuple_Item3[0], Inputs_iTuple_Item4_L2Array[1], Inputs_iTuple_Item4_L2Array[0], Inputs_iTuple_Item4_L2_L2Values[1], Inputs_iTuple_Item4_L2_L2Values[0], Inputs_iTuple_Item4_L2_L2Flag, Inputs_iTuple_Item4_L1Flag };
+	assign Output_iTuple = IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple;
 	assign Output_iTupleArray0 = Inputs_iTupleArray[0];
 	assign Output_iTupleArray1 = Inputs_iTupleArray[1];
 	// [BEGIN USER ARCHITECTURE]

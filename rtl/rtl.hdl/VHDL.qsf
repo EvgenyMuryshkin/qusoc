@@ -1,4 +1,4 @@
-set_global_assignment -name TOP_LEVEL_ENTITY AXI4WriteInteconnectModule_1x2_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY IOTupleStateInternalL4ComponentsOutputModule_TopLevel
 # -------------------------------------------------------------------------- #
 #
 # Copyright (C) 1991-2010 Altera Corporation
@@ -65,7 +65,7 @@ set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
 set_instance_assignment -name CLOCK_SETTINGS Clock -to Clock
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/AXI4WriteInteconnectModule_1x2.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/IOTupleDelay1Clock.vwf
 
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 
@@ -250,6 +250,8 @@ set_global_assignment -name VHDL_FILE VHDL/generated/GenerateModule4/GenerateMod
 set_global_assignment -name VHDL_FILE VHDL/generated/IntDividerPipelineModule/IntDividerPipelineModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/IONativeModule/IONativeModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/IOObjectModule/IOObjectModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/IOSimpleTupleModule/IOSimpleTupleModule_TopLevel.vhdl
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IOSimpleTupleModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/IOSingleBitMemoryCompositionModule_1/IOSingleBitMemoryCompositionModule_1_TopLevel_children0.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/IOSingleBitMemoryCompositionModule_1/IOSingleBitMemoryCompositionModule_1_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/IOSingleBitMemoryCompositionModule_1.vwf

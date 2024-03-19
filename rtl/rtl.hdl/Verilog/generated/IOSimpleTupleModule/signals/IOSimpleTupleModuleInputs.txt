@@ -1,0 +1,4 @@
+└Root           | IOSimpleTupleModuleInputs | [8:0] | 9 | [8:0]
+ └iValue        | ValueTuple`2              | [8:0] | 9 | [8:0][8:0]
+  ├iValue_Item1 | Boolean                   | [8]   | 1 | [8:0][8:0][8]
+  └iValue_Item2 | Byte                      | [7:0] | 8 | [8:0][8:0][7:0]

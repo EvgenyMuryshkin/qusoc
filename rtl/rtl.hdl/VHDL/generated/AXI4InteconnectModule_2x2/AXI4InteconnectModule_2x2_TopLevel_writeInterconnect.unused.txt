@@ -22,7 +22,6 @@ No reads:
 	muxLeftData_W_WSTRB
 	muxLeftData_W_WUSER
 	muxLeftData_W_WVALID
-	muxRight
 	muxRightData_AW_AWREADY
 	muxRightData_B_BID
 	muxRightData_B_BRESP

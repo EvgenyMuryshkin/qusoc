@@ -31,7 +31,9 @@ module AXI4InteconnectModule_2x2_TopLevel_readInterconnect
 	input wire [83:0] iLeft0,
 	input wire [83:0] iLeft1,
 	input wire [52:0] iRight0,
-	input wire [52:0] iRight1
+	input wire [52:0] iRight1,
+	output wire [52:0] S2M0,
+	output wire [52:0] S2M1
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -422,6 +424,8 @@ module AXI4InteconnectModule_2x2_TopLevel_readInterconnect
 	assign DuplexMux_iRightAddrValid = State_rightAddrValid;
 	assign rangeDetectorArray0_iAddress = Inputs_iLeft[0][39:8];
 	assign rangeDetectorArray1_iAddress = Inputs_iLeft[1][39:8];
+	assign S2M0 = muxRight[0];
+	assign S2M1 = muxRight[1];
 	assign DuplexMux_iLeft0_DuplexMux_iLeft_HardLink = DuplexMux_iLeft[0];
 	assign DuplexMux_iLeft1_DuplexMux_iLeft_HardLink = DuplexMux_iLeft[1];
 	assign DuplexMux_iLeftAddr_DuplexMux_iLeftAddr_HardLink = DuplexMux_iLeftAddr;

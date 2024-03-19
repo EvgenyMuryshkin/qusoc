@@ -16,7 +16,6 @@ No reads:
 	muxLeftData_AR_ARUSER
 	muxLeftData_AR_ARVALID
 	muxLeftData_R_RREADY
-	muxRight
 	muxRightData_AR_ARREADY
 	muxRightData_R_RDATA
 	muxRightData_R_RID

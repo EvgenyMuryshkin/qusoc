@@ -47,10 +47,10 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	wire [1: 0] axiSize = 2'b10;
 	wire signed [2: 0] mCount = 3'b010;
 	wire signed [3: 0] sCount = 4'b0100;
-	wire AXI4Interconnect2x4TestModule_L62F13L74T14_0_AXI4Interconnect2x4TestModule_L69F30T31_Expr = 1'b0;
-	wire AXI4Interconnect2x4TestModule_L62F13L74T14_0_AXI4Interconnect2x4TestModule_L70F30T31_Expr = 1'b0;
-	wire AXI4Interconnect2x4TestModule_L62F13L74T14_1_AXI4Interconnect2x4TestModule_L69F30T31_Expr = 1'b0;
-	wire AXI4Interconnect2x4TestModule_L62F13L74T14_1_AXI4Interconnect2x4TestModule_L70F30T31_Expr = 1'b0;
+	wire AXI4Interconnect2x4TestModule_L62F13L77T14_0_AXI4Interconnect2x4TestModule_L71F34T35_Expr = 1'b0;
+	wire AXI4Interconnect2x4TestModule_L62F13L77T14_0_AXI4Interconnect2x4TestModule_L72F34T35_Expr = 1'b0;
+	wire AXI4Interconnect2x4TestModule_L62F13L77T14_1_AXI4Interconnect2x4TestModule_L71F34T35_Expr = 1'b0;
+	wire AXI4Interconnect2x4TestModule_L62F13L77T14_1_AXI4Interconnect2x4TestModule_L72F34T35_Expr = 1'b0;
 	wire [31: 0] Inputs_InData;
 	wire [3: 0] Inputs_WSTRB;
 	reg [7: 0] notActiveM2S_R_AR_ARID;
@@ -96,21 +96,13 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	reg [7: 0] notActiveS2M_W_B_BUSER;
 	reg notActiveS2M_W_B_BVALID;
 	reg notActiveS2M_W_W_WREADY;
-	wire [31: 0] masters0_ARADDR;
-	wire [31: 0] masters0_AWADDR;
-	wire masters0_RE;
+	wire [101: 0] masters0_Master;
 	wire [73: 0] masters0_S2M;
-	wire masters0_WE;
-	wire [3: 0] masters0_WSTRB;
 	wire [221: 0] masters0_M2S;
 	wire masters0_RACK;
 	wire masters0_WACK;
-	wire [31: 0] masters1_ARADDR;
-	wire [31: 0] masters1_AWADDR;
-	wire masters1_RE;
+	wire [101: 0] masters1_Master;
 	wire [73: 0] masters1_S2M;
-	wire masters1_WE;
-	wire [3: 0] masters1_WSTRB;
 	wire [221: 0] masters1_M2S;
 	wire masters1_RACK;
 	wire masters1_WACK;
@@ -134,16 +126,8 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	wire registers3_outACK;
 	wire registers3_outWritten;
 	wire [73: 0] registers3_S2M;
-	wire [31: 0] masters0_ARADDR_masters0_ARADDR_HardLink;
-	wire [31: 0] masters0_AWADDR_masters0_AWADDR_HardLink;
-	wire masters0_RE_masters0_RE_HardLink;
+	wire [101: 0] masters0_Master_masters0_Master_HardLink;
 	wire [73: 0] masters0_S2M_masters0_S2M_HardLink;
-	wire [7: 0] masters0_WDATA0_masters0_WDATA_HardLink;
-	wire [7: 0] masters0_WDATA1_masters0_WDATA_HardLink;
-	wire [7: 0] masters0_WDATA2_masters0_WDATA_HardLink;
-	wire [7: 0] masters0_WDATA3_masters0_WDATA_HardLink;
-	wire masters0_WE_masters0_WE_HardLink;
-	wire [3: 0] masters0_WSTRB_masters0_WSTRB_HardLink;
 	wire [221: 0] masters0_M2S_masters0_M2S_HardLink;
 	wire masters0_RACK_masters0_RACK_HardLink;
 	wire [7: 0] masters0_RDATA0_masters0_RDATA_HardLink;
@@ -151,16 +135,8 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	wire [7: 0] masters0_RDATA2_masters0_RDATA_HardLink;
 	wire [7: 0] masters0_RDATA3_masters0_RDATA_HardLink;
 	wire masters0_WACK_masters0_WACK_HardLink;
-	wire [31: 0] masters1_ARADDR_masters1_ARADDR_HardLink;
-	wire [31: 0] masters1_AWADDR_masters1_AWADDR_HardLink;
-	wire masters1_RE_masters1_RE_HardLink;
+	wire [101: 0] masters1_Master_masters1_Master_HardLink;
 	wire [73: 0] masters1_S2M_masters1_S2M_HardLink;
-	wire [7: 0] masters1_WDATA0_masters1_WDATA_HardLink;
-	wire [7: 0] masters1_WDATA1_masters1_WDATA_HardLink;
-	wire [7: 0] masters1_WDATA2_masters1_WDATA_HardLink;
-	wire [7: 0] masters1_WDATA3_masters1_WDATA_HardLink;
-	wire masters1_WE_masters1_WE_HardLink;
-	wire [3: 0] masters1_WSTRB_masters1_WSTRB_HardLink;
 	wire [221: 0] masters1_M2S_masters1_M2S_HardLink;
 	wire masters1_RACK_masters1_RACK_HardLink;
 	wire [7: 0] masters1_RDATA0_masters1_RDATA_HardLink;
@@ -245,9 +221,7 @@ module AXI4Interconnect2x4TestModule_TopLevel
 		for (notActiveS2M_R_R_RDATA_i = 0; notActiveS2M_R_R_RDATA_i < 4; notActiveS2M_R_R_RDATA_i = notActiveS2M_R_R_RDATA_i + 1)
 			notActiveS2M_R_R_RDATA[notActiveS2M_R_R_RDATA_i] = 0;
 	end
-	wire [7 : 0] masters0_WDATA [0 : 3];
 	wire [7 : 0] masters0_RDATA [0 : 3];
-	wire [7 : 0] masters1_WDATA [0 : 3];
 	wire [7 : 0] masters1_RDATA [0 : 3];
 	wire [7 : 0] registers0_inWDATA [0 : 3];
 	wire [7 : 0] registers0_outData [0 : 3];
@@ -275,16 +249,8 @@ module AXI4Interconnect2x4TestModule_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.ARADDR (masters0_ARADDR_masters0_ARADDR_HardLink),
-		.AWADDR (masters0_AWADDR_masters0_AWADDR_HardLink),
-		.RE (masters0_RE_masters0_RE_HardLink),
+		.Master (masters0_Master_masters0_Master_HardLink),
 		.S2M (masters0_S2M_masters0_S2M_HardLink),
-		.WDATA0 (masters0_WDATA0_masters0_WDATA_HardLink),
-		.WDATA1 (masters0_WDATA1_masters0_WDATA_HardLink),
-		.WDATA2 (masters0_WDATA2_masters0_WDATA_HardLink),
-		.WDATA3 (masters0_WDATA3_masters0_WDATA_HardLink),
-		.WE (masters0_WE_masters0_WE_HardLink),
-		.WSTRB (masters0_WSTRB_masters0_WSTRB_HardLink),
 		.M2S (masters0_M2S_masters0_M2S_HardLink),
 		.RACK (masters0_RACK_masters0_RACK_HardLink),
 		.RDATA0 (masters0_RDATA0_masters0_RDATA_HardLink),
@@ -303,16 +269,8 @@ module AXI4Interconnect2x4TestModule_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.ARADDR (masters1_ARADDR_masters1_ARADDR_HardLink),
-		.AWADDR (masters1_AWADDR_masters1_AWADDR_HardLink),
-		.RE (masters1_RE_masters1_RE_HardLink),
+		.Master (masters1_Master_masters1_Master_HardLink),
 		.S2M (masters1_S2M_masters1_S2M_HardLink),
-		.WDATA0 (masters1_WDATA0_masters1_WDATA_HardLink),
-		.WDATA1 (masters1_WDATA1_masters1_WDATA_HardLink),
-		.WDATA2 (masters1_WDATA2_masters1_WDATA_HardLink),
-		.WDATA3 (masters1_WDATA3_masters1_WDATA_HardLink),
-		.WE (masters1_WE_masters1_WE_HardLink),
-		.WSTRB (masters1_WSTRB_masters1_WSTRB_HardLink),
 		.M2S (masters1_M2S_masters1_M2S_HardLink),
 		.RACK (masters1_RACK_masters1_RACK_HardLink),
 		.RDATA0 (masters1_RDATA0_masters1_RDATA_HardLink),
@@ -431,9 +389,12 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	assign AXI4Interconnect2x4TestModule_L46F39T75_Enumerable[1] = masters1_M2S;
 	assign interconnectM2S[0] = AXI4Interconnect2x4TestModule_L46F39T75_Enumerable[0];
 	assign interconnectM2S[1] = AXI4Interconnect2x4TestModule_L46F39T75_Enumerable[1];
-	assign masters0_ARADDR = { {31{1'b0}}, AXI4Interconnect2x4TestModule_L62F13L74T14_0_AXI4Interconnect2x4TestModule_L69F30T31_Expr };
-	assign masters0_AWADDR = { {31{1'b0}}, AXI4Interconnect2x4TestModule_L62F13L74T14_0_AXI4Interconnect2x4TestModule_L70F30T31_Expr };
-	assign masters0_RE = Inputs_MRE[0];
+	assign masters0_Master[101:98] = Inputs_WSTRB;
+	assign masters0_Master[97] = Inputs_MWE[0];
+	assign masters0_Master[96:65] = Inputs_InData;
+	assign masters0_Master[64] = Inputs_MRE[0];
+	assign masters0_Master[63:32] = { {31{1'b0}}, AXI4Interconnect2x4TestModule_L62F13L77T14_0_AXI4Interconnect2x4TestModule_L72F34T35_Expr };
+	assign masters0_Master[31:0] = { {31{1'b0}}, AXI4Interconnect2x4TestModule_L62F13L77T14_0_AXI4Interconnect2x4TestModule_L71F34T35_Expr };
 	assign masters0_S2M[73] = notActiveS2M_W_W_WREADY;
 	assign masters0_S2M[72] = notActiveS2M_W_B_BVALID;
 	assign masters0_S2M[71:64] = notActiveS2M_W_B_BUSER;
@@ -450,15 +411,12 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	assign masters0_S2M[16:9] = notActiveS2M_R_R_RDATA[0];
 	assign masters0_S2M[8:1] = notActiveS2M_R_R_RID;
 	assign masters0_S2M[0] = notActiveS2M_R_AR_ARREADY;
-	assign masters0_WDATA[3] = Inputs_InData[31:24];
-	assign masters0_WDATA[2] = Inputs_InData[23:16];
-	assign masters0_WDATA[1] = Inputs_InData[15:8];
-	assign masters0_WDATA[0] = Inputs_InData[7:0];
-	assign masters0_WE = Inputs_MWE[0];
-	assign masters0_WSTRB = Inputs_WSTRB;
-	assign masters1_ARADDR = { {31{1'b0}}, AXI4Interconnect2x4TestModule_L62F13L74T14_1_AXI4Interconnect2x4TestModule_L69F30T31_Expr };
-	assign masters1_AWADDR = { {31{1'b0}}, AXI4Interconnect2x4TestModule_L62F13L74T14_1_AXI4Interconnect2x4TestModule_L70F30T31_Expr };
-	assign masters1_RE = Inputs_MRE[1];
+	assign masters1_Master[101:98] = Inputs_WSTRB;
+	assign masters1_Master[97] = Inputs_MWE[1];
+	assign masters1_Master[96:65] = Inputs_InData;
+	assign masters1_Master[64] = Inputs_MRE[1];
+	assign masters1_Master[63:32] = { {31{1'b0}}, AXI4Interconnect2x4TestModule_L62F13L77T14_1_AXI4Interconnect2x4TestModule_L72F34T35_Expr };
+	assign masters1_Master[31:0] = { {31{1'b0}}, AXI4Interconnect2x4TestModule_L62F13L77T14_1_AXI4Interconnect2x4TestModule_L71F34T35_Expr };
 	assign masters1_S2M[73] = notActiveS2M_W_W_WREADY;
 	assign masters1_S2M[72] = notActiveS2M_W_B_BVALID;
 	assign masters1_S2M[71:64] = notActiveS2M_W_B_BUSER;
@@ -475,12 +433,6 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	assign masters1_S2M[16:9] = notActiveS2M_R_R_RDATA[0];
 	assign masters1_S2M[8:1] = notActiveS2M_R_R_RID;
 	assign masters1_S2M[0] = notActiveS2M_R_AR_ARREADY;
-	assign masters1_WDATA[3] = Inputs_InData[31:24];
-	assign masters1_WDATA[2] = Inputs_InData[23:16];
-	assign masters1_WDATA[1] = Inputs_InData[15:8];
-	assign masters1_WDATA[0] = Inputs_InData[7:0];
-	assign masters1_WE = Inputs_MWE[1];
-	assign masters1_WSTRB = Inputs_WSTRB;
 	assign registers0_inWDATA[3] = Inputs_InData[31:24];
 	assign registers0_inWDATA[2] = Inputs_InData[23:16];
 	assign registers0_inWDATA[1] = Inputs_InData[15:8];
@@ -641,16 +593,8 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	assign registers3_M2S[47:40] = notActiveM2S_R_AR_ARLEN;
 	assign registers3_M2S[39:8] = notActiveM2S_R_AR_ARADDR;
 	assign registers3_M2S[7:0] = notActiveM2S_R_AR_ARID;
-	assign masters0_ARADDR_masters0_ARADDR_HardLink = masters0_ARADDR;
-	assign masters0_AWADDR_masters0_AWADDR_HardLink = masters0_AWADDR;
-	assign masters0_RE_masters0_RE_HardLink = masters0_RE;
+	assign masters0_Master_masters0_Master_HardLink = masters0_Master;
 	assign masters0_S2M_masters0_S2M_HardLink = masters0_S2M;
-	assign masters0_WDATA0_masters0_WDATA_HardLink = masters0_WDATA[0];
-	assign masters0_WDATA1_masters0_WDATA_HardLink = masters0_WDATA[1];
-	assign masters0_WDATA2_masters0_WDATA_HardLink = masters0_WDATA[2];
-	assign masters0_WDATA3_masters0_WDATA_HardLink = masters0_WDATA[3];
-	assign masters0_WE_masters0_WE_HardLink = masters0_WE;
-	assign masters0_WSTRB_masters0_WSTRB_HardLink = masters0_WSTRB;
 	assign masters0_M2S = masters0_M2S_masters0_M2S_HardLink;
 	assign masters0_RACK = masters0_RACK_masters0_RACK_HardLink;
 	assign masters0_RDATA[0] = masters0_RDATA0_masters0_RDATA_HardLink;
@@ -658,16 +602,8 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	assign masters0_RDATA[2] = masters0_RDATA2_masters0_RDATA_HardLink;
 	assign masters0_RDATA[3] = masters0_RDATA3_masters0_RDATA_HardLink;
 	assign masters0_WACK = masters0_WACK_masters0_WACK_HardLink;
-	assign masters1_ARADDR_masters1_ARADDR_HardLink = masters1_ARADDR;
-	assign masters1_AWADDR_masters1_AWADDR_HardLink = masters1_AWADDR;
-	assign masters1_RE_masters1_RE_HardLink = masters1_RE;
+	assign masters1_Master_masters1_Master_HardLink = masters1_Master;
 	assign masters1_S2M_masters1_S2M_HardLink = masters1_S2M;
-	assign masters1_WDATA0_masters1_WDATA_HardLink = masters1_WDATA[0];
-	assign masters1_WDATA1_masters1_WDATA_HardLink = masters1_WDATA[1];
-	assign masters1_WDATA2_masters1_WDATA_HardLink = masters1_WDATA[2];
-	assign masters1_WDATA3_masters1_WDATA_HardLink = masters1_WDATA[3];
-	assign masters1_WE_masters1_WE_HardLink = masters1_WE;
-	assign masters1_WSTRB_masters1_WSTRB_HardLink = masters1_WSTRB;
 	assign masters1_M2S = masters1_M2S_masters1_M2S_HardLink;
 	assign masters1_RACK = masters1_RACK_masters1_RACK_HardLink;
 	assign masters1_RDATA[0] = masters1_RDATA0_masters1_RDATA_HardLink;

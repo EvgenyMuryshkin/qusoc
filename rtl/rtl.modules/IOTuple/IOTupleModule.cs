@@ -1,4 +1,5 @@
-﻿using Quokka.RTL;
+﻿using Newtonsoft.Json.Serialization;
+using Quokka.RTL;
 using System;
 
 namespace rtl.modules
