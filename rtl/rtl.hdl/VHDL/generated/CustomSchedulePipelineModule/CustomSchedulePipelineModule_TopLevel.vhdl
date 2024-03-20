@@ -206,6 +206,8 @@ architecture rtl of CustomSchedulePipelineModule_TopLevel is
 	signal Pipeline1_Inputs_inData : Pipeline1_Inputs_inDataArray := (others => (others => '0'));
 	type Pipeline2_Inputs_inDataArray is array (0 to 7) of unsigned (7 downto 0);
 	signal Pipeline2_Inputs_inData : Pipeline2_Inputs_inDataArray := (others => (others => '0'));
+	type CustomSchedulePipelineModule_L35F26L45T18_EnumerableArray is array (0 to 7) of unsigned (7 downto 0);
+	signal CustomSchedulePipelineModule_L35F26L45T18_Enumerable : CustomSchedulePipelineModule_L35F26L45T18_EnumerableArray := (others => (others => '0'));
 begin
 	process (Clock, Pipeline1_stage0_NextState_IsS0Ready, Pipeline1_stage0_NextState_sum01, Pipeline1_stage0_NextState_sum23, Pipeline1_stage0_NextState_sum45, Pipeline1_stage0_NextState_sum67, Pipeline1_stage1_NextState_IsS1Ready, Pipeline1_stage1_NextState_sum0123, Pipeline1_stage1_NextState_sum4567, Pipeline1_stage2_NextState_ready, Pipeline1_stage2_NextState_result, Pipeline2_stage0_NextState_IsS0Ready, Pipeline2_stage0_NextState_sum01, Pipeline2_stage0_NextState_sum23, Pipeline2_stage0_NextState_sum45, Pipeline2_stage0_NextState_sum67, Pipeline2_stage1_NextState_IsS1Ready, Pipeline2_stage1_NextState_sum0123, Pipeline2_stage1_NextState_sum4567, Pipeline2_stage2_NextState_ready, Pipeline2_stage2_NextState_result, Reset)
 	begin
@@ -516,7 +518,7 @@ begin
 		Pipeline2_stage2_NextState_ready <= Pipeline2_stage1_State_IsS1Ready;
 		Pipeline2_stage2_NextState_result <= Pipeline2_PipelineConfigurations_L38F30T82_Cast;
 	end process;
-	process (CustomSchedulePipelineModule_L37F21T49_Cast, CustomSchedulePipelineModule_L37F28T48_Expr, CustomSchedulePipelineModule_L38F21T49_Cast, CustomSchedulePipelineModule_L38F28T48_Expr, CustomSchedulePipelineModule_L39F21T50_Cast, CustomSchedulePipelineModule_L39F28T49_Expr, CustomSchedulePipelineModule_L40F21T49_Cast, CustomSchedulePipelineModule_L40F28T48_Expr, CustomSchedulePipelineModule_L43F21T50_Cast, CustomSchedulePipelineModule_L43F28T49_Expr, inData0, inData1, inData2, inData3, inData4, inData5, inData6, inData7, Inputs_inData, Inputs_inReady, inReady, Pipeline1_Inputs_inData, Pipeline1_PipelineConfigurations_L38F39T81_Expr, Pipeline1_PipelineConfigurations_L38F40T56_Cast, Pipeline1_PipelineConfigurations_L38F40T61_Expr, Pipeline1_PipelineConfigurations_L38F65T81_Cast, Pipeline1_stage0_State_sum01, Pipeline1_stage0_State_sum23, Pipeline1_stage0_State_sum45, Pipeline1_stage0_State_sum67, Pipeline1_stage1_State_sum0123, Pipeline1_stage1_State_sum4567, Pipeline1_stage2_NextState_ready, Pipeline1_stage2_NextState_result, Pipeline1_stage2_State_ready, Pipeline1_stage2_State_result, Pipeline1_State_ready, Pipeline1_State_result, Pipeline2_Inputs_inData, Pipeline2_PipelineConfigurations_L38F39T81_Expr, Pipeline2_PipelineConfigurations_L38F40T56_Cast, Pipeline2_PipelineConfigurations_L38F40T61_Expr, Pipeline2_PipelineConfigurations_L38F65T81_Cast, Pipeline2_stage0_State_sum01, Pipeline2_stage0_State_sum23, Pipeline2_stage0_State_sum45, Pipeline2_stage0_State_sum67, Pipeline2_stage1_State_sum0123, Pipeline2_stage1_State_sum4567, Pipeline2_stage2_NextState_ready, Pipeline2_stage2_NextState_result, Pipeline2_stage2_State_ready, Pipeline2_stage2_State_result, Pipeline2_State_ready, Pipeline2_State_result)
+	process (CustomSchedulePipelineModule_L35F26L45T18_Enumerable, CustomSchedulePipelineModule_L37F21T49_Cast, CustomSchedulePipelineModule_L37F28T48_Expr, CustomSchedulePipelineModule_L38F21T49_Cast, CustomSchedulePipelineModule_L38F28T48_Expr, CustomSchedulePipelineModule_L39F21T50_Cast, CustomSchedulePipelineModule_L39F28T49_Expr, CustomSchedulePipelineModule_L40F21T49_Cast, CustomSchedulePipelineModule_L40F28T48_Expr, CustomSchedulePipelineModule_L43F21T50_Cast, CustomSchedulePipelineModule_L43F28T49_Expr, inData0, inData1, inData2, inData3, inData4, inData5, inData6, inData7, Inputs_inData, Inputs_inReady, inReady, Pipeline1_Inputs_inData, Pipeline1_PipelineConfigurations_L38F39T81_Expr, Pipeline1_PipelineConfigurations_L38F40T56_Cast, Pipeline1_PipelineConfigurations_L38F40T61_Expr, Pipeline1_PipelineConfigurations_L38F65T81_Cast, Pipeline1_stage0_State_sum01, Pipeline1_stage0_State_sum23, Pipeline1_stage0_State_sum45, Pipeline1_stage0_State_sum67, Pipeline1_stage1_State_sum0123, Pipeline1_stage1_State_sum4567, Pipeline1_stage2_NextState_ready, Pipeline1_stage2_NextState_result, Pipeline1_stage2_State_ready, Pipeline1_stage2_State_result, Pipeline1_State_ready, Pipeline1_State_result, Pipeline2_Inputs_inData, Pipeline2_PipelineConfigurations_L38F39T81_Expr, Pipeline2_PipelineConfigurations_L38F40T56_Cast, Pipeline2_PipelineConfigurations_L38F40T61_Expr, Pipeline2_PipelineConfigurations_L38F65T81_Cast, Pipeline2_stage0_State_sum01, Pipeline2_stage0_State_sum23, Pipeline2_stage0_State_sum45, Pipeline2_stage0_State_sum67, Pipeline2_stage1_State_sum0123, Pipeline2_stage1_State_sum4567, Pipeline2_stage2_NextState_ready, Pipeline2_stage2_NextState_result, Pipeline2_stage2_State_ready, Pipeline2_stage2_State_result, Pipeline2_State_ready, Pipeline2_State_result)
 	begin
 		Pipeline1_PipelineConfigurations_L38F39T81_Expr_1 <= Pipeline1_PipelineConfigurations_L38F40T61_Expr;
 		Pipeline1_PipelineConfigurations_L38F39T81_Expr_2(23 downto 8) <= (others => '0');
@@ -633,14 +635,22 @@ begin
 		CustomSchedulePipelineModule_L39F21T50_Cast <= CustomSchedulePipelineModule_L39F28T49_Expr(7 downto 0);
 		CustomSchedulePipelineModule_L40F21T49_Cast <= unsigned(CustomSchedulePipelineModule_L40F28T48_Expr(7 downto 0));
 		CustomSchedulePipelineModule_L43F21T50_Cast <= CustomSchedulePipelineModule_L43F28T49_Expr(7 downto 0);
-		Pipeline2_Inputs_inData(0) <= CustomSchedulePipelineModule_L37F21T49_Cast;
-		Pipeline2_Inputs_inData(1) <= CustomSchedulePipelineModule_L38F21T49_Cast;
-		Pipeline2_Inputs_inData(2) <= CustomSchedulePipelineModule_L39F21T50_Cast;
-		Pipeline2_Inputs_inData(3) <= CustomSchedulePipelineModule_L40F21T49_Cast;
-		Pipeline2_Inputs_inData(4) <= Inputs_inData(2);
-		Pipeline2_Inputs_inData(5) <= Inputs_inData(1);
-		Pipeline2_Inputs_inData(6) <= CustomSchedulePipelineModule_L43F21T50_Cast;
-		Pipeline2_Inputs_inData(7) <= Inputs_inData(0);
+		CustomSchedulePipelineModule_L35F26L45T18_Enumerable(0) <= CustomSchedulePipelineModule_L37F21T49_Cast;
+		CustomSchedulePipelineModule_L35F26L45T18_Enumerable(1) <= CustomSchedulePipelineModule_L38F21T49_Cast;
+		CustomSchedulePipelineModule_L35F26L45T18_Enumerable(2) <= CustomSchedulePipelineModule_L39F21T50_Cast;
+		CustomSchedulePipelineModule_L35F26L45T18_Enumerable(3) <= CustomSchedulePipelineModule_L40F21T49_Cast;
+		CustomSchedulePipelineModule_L35F26L45T18_Enumerable(4) <= Inputs_inData(2);
+		CustomSchedulePipelineModule_L35F26L45T18_Enumerable(5) <= Inputs_inData(1);
+		CustomSchedulePipelineModule_L35F26L45T18_Enumerable(6) <= CustomSchedulePipelineModule_L43F21T50_Cast;
+		CustomSchedulePipelineModule_L35F26L45T18_Enumerable(7) <= Inputs_inData(0);
+		Pipeline2_Inputs_inData(0) <= CustomSchedulePipelineModule_L35F26L45T18_Enumerable(0);
+		Pipeline2_Inputs_inData(1) <= CustomSchedulePipelineModule_L35F26L45T18_Enumerable(1);
+		Pipeline2_Inputs_inData(2) <= CustomSchedulePipelineModule_L35F26L45T18_Enumerable(2);
+		Pipeline2_Inputs_inData(3) <= CustomSchedulePipelineModule_L35F26L45T18_Enumerable(3);
+		Pipeline2_Inputs_inData(4) <= CustomSchedulePipelineModule_L35F26L45T18_Enumerable(4);
+		Pipeline2_Inputs_inData(5) <= CustomSchedulePipelineModule_L35F26L45T18_Enumerable(5);
+		Pipeline2_Inputs_inData(6) <= CustomSchedulePipelineModule_L35F26L45T18_Enumerable(6);
+		Pipeline2_Inputs_inData(7) <= CustomSchedulePipelineModule_L35F26L45T18_Enumerable(7);
 		Pipeline2_Inputs_inReady <= Inputs_inReady;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]

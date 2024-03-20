@@ -198,6 +198,7 @@ module CustomSchedulePipelineModule_TopLevel
 	wire [7 : 0] Inputs_inData [0 : 7];
 	wire [7 : 0] Pipeline1_Inputs_inData [0 : 7];
 	wire [7 : 0] Pipeline2_Inputs_inData [0 : 7];
+	wire [7 : 0] CustomSchedulePipelineModule_L35F26L45T18_Enumerable [0 : 7];
 	always @ (posedge Clock)
 	begin
 		if ((Reset == 1))
@@ -508,14 +509,22 @@ module CustomSchedulePipelineModule_TopLevel
 	assign CustomSchedulePipelineModule_L39F21T50_Cast = CustomSchedulePipelineModule_L39F28T49_Expr[7:0];
 	assign CustomSchedulePipelineModule_L40F21T49_Cast = CustomSchedulePipelineModule_L40F28T48_Expr[7:0];
 	assign CustomSchedulePipelineModule_L43F21T50_Cast = CustomSchedulePipelineModule_L43F28T49_Expr[7:0];
-	assign Pipeline2_Inputs_inData[0] = CustomSchedulePipelineModule_L37F21T49_Cast;
-	assign Pipeline2_Inputs_inData[1] = CustomSchedulePipelineModule_L38F21T49_Cast;
-	assign Pipeline2_Inputs_inData[2] = CustomSchedulePipelineModule_L39F21T50_Cast;
-	assign Pipeline2_Inputs_inData[3] = CustomSchedulePipelineModule_L40F21T49_Cast;
-	assign Pipeline2_Inputs_inData[4] = Inputs_inData[2];
-	assign Pipeline2_Inputs_inData[5] = Inputs_inData[1];
-	assign Pipeline2_Inputs_inData[6] = CustomSchedulePipelineModule_L43F21T50_Cast;
-	assign Pipeline2_Inputs_inData[7] = Inputs_inData[0];
+	assign CustomSchedulePipelineModule_L35F26L45T18_Enumerable[0] = CustomSchedulePipelineModule_L37F21T49_Cast;
+	assign CustomSchedulePipelineModule_L35F26L45T18_Enumerable[1] = CustomSchedulePipelineModule_L38F21T49_Cast;
+	assign CustomSchedulePipelineModule_L35F26L45T18_Enumerable[2] = CustomSchedulePipelineModule_L39F21T50_Cast;
+	assign CustomSchedulePipelineModule_L35F26L45T18_Enumerable[3] = CustomSchedulePipelineModule_L40F21T49_Cast;
+	assign CustomSchedulePipelineModule_L35F26L45T18_Enumerable[4] = Inputs_inData[2];
+	assign CustomSchedulePipelineModule_L35F26L45T18_Enumerable[5] = Inputs_inData[1];
+	assign CustomSchedulePipelineModule_L35F26L45T18_Enumerable[6] = CustomSchedulePipelineModule_L43F21T50_Cast;
+	assign CustomSchedulePipelineModule_L35F26L45T18_Enumerable[7] = Inputs_inData[0];
+	assign Pipeline2_Inputs_inData[0] = CustomSchedulePipelineModule_L35F26L45T18_Enumerable[0];
+	assign Pipeline2_Inputs_inData[1] = CustomSchedulePipelineModule_L35F26L45T18_Enumerable[1];
+	assign Pipeline2_Inputs_inData[2] = CustomSchedulePipelineModule_L35F26L45T18_Enumerable[2];
+	assign Pipeline2_Inputs_inData[3] = CustomSchedulePipelineModule_L35F26L45T18_Enumerable[3];
+	assign Pipeline2_Inputs_inData[4] = CustomSchedulePipelineModule_L35F26L45T18_Enumerable[4];
+	assign Pipeline2_Inputs_inData[5] = CustomSchedulePipelineModule_L35F26L45T18_Enumerable[5];
+	assign Pipeline2_Inputs_inData[6] = CustomSchedulePipelineModule_L35F26L45T18_Enumerable[6];
+	assign Pipeline2_Inputs_inData[7] = CustomSchedulePipelineModule_L35F26L45T18_Enumerable[7];
 	assign Pipeline2_Inputs_inReady = Inputs_inReady;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]

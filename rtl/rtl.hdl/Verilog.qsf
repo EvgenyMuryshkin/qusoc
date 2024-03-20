@@ -37,7 +37,7 @@
 
 set_global_assignment -name FAMILY "Cyclone II"
 set_global_assignment -name DEVICE EP2C70F896C6
-set_global_assignment -name TOP_LEVEL_ENTITY IOTupleStateInternalL4ComponentsOutputModule_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY StageStatePipelineModule_TopLevel
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "20:45:17  JUNE 07, 2019"
 set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
@@ -67,7 +67,8 @@ set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
 set_instance_assignment -name CLOCK_SETTINGS Clock -to Clock
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/IOTupleDelay1Clock.vwf
+
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/StageStatePipelineModule.vwf
 
 set_global_assignment -name VERILOG_FILE Verilog/generated/AndGateModule/AndGateModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AndGateModule.vwf
@@ -413,6 +414,9 @@ set_global_assignment -name VERILOG_FILE Verilog/generated/StallControlPipelineM
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StallControlPipelineModule.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/StallControlTestPipelineModule/StallControlTestPipelineModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StallControlTestPipelineModule.vwf
+set_global_assignment -name VERILOG_FILE Verilog/generated/StructByMemberDirectModule/StructByMemberDirectModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/StructByMemberL1MembersModule/StructByMemberL1MembersModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/StructByMemberL2MembersModule/StructByMemberL2MembersModule_TopLevel.v
 set_global_assignment -name VERILOG_FILE Verilog/generated/StructCompositionParentModule/StructCompositionParentModule_TopLevel_child.v
 set_global_assignment -name VERILOG_FILE Verilog/generated/StructCompositionParentModule/StructCompositionParentModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StructCompositionParentModule.vwf

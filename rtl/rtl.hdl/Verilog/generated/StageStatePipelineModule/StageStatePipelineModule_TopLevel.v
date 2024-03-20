@@ -166,6 +166,8 @@ module StageStatePipelineModule_TopLevel
 			Pipeline_stage1_NextState_sums[Pipeline_stage1_NextState_sums_Iterator] = 0;
 	end
 	wire [7 : 0] Pipeline_Inputs_inData [0 : 7];
+	wire [15 : 0] Pipeline_StageStatePipelineModule_L85F28L91T22_Enumerable [0 : 3];
+	wire [15 : 0] Pipeline_StageStatePipelineModule_L98F28L102T22_Enumerable [0 : 1];
 	always @ (posedge Clock)
 	begin
 		if ((Reset == 1))
@@ -259,15 +261,15 @@ module StageStatePipelineModule_TopLevel
 		Pipeline_stage2_NextState_S2Counter = Pipeline_stage2_State_S2Counter;
 		Pipeline_stage0_NextState_IsReady = Pipeline_Inputs_inReady;
 		Pipeline_stage0_NextState_S0Counter = Pipeline_StageStatePipelineModule_L92F33T62_Cast;
-		Pipeline_stage0_NextState_sums[0] = Pipeline_StageStatePipelineModule_L87F25T60_Cast;
-		Pipeline_stage0_NextState_sums[1] = Pipeline_StageStatePipelineModule_L88F25T60_Cast;
-		Pipeline_stage0_NextState_sums[2] = Pipeline_StageStatePipelineModule_L89F25T60_Cast;
-		Pipeline_stage0_NextState_sums[3] = Pipeline_StageStatePipelineModule_L90F25T60_Cast;
+		Pipeline_stage0_NextState_sums[0] = Pipeline_StageStatePipelineModule_L85F28L91T22_Enumerable[0];
+		Pipeline_stage0_NextState_sums[1] = Pipeline_StageStatePipelineModule_L85F28L91T22_Enumerable[1];
+		Pipeline_stage0_NextState_sums[2] = Pipeline_StageStatePipelineModule_L85F28L91T22_Enumerable[2];
+		Pipeline_stage0_NextState_sums[3] = Pipeline_StageStatePipelineModule_L85F28L91T22_Enumerable[3];
 		Pipeline_stage1_NextState_IsReady = Pipeline_stage0_State_IsReady;
 		Pipeline_stage1_NextState_S0Counter = Pipeline_stage0_State_S0Counter;
 		Pipeline_stage1_NextState_S1Counter = Pipeline_StageStatePipelineModule_L97F33T66_Cast;
-		Pipeline_stage1_NextState_sums[0] = Pipeline_StageStatePipelineModule_L100F25T58_Cast;
-		Pipeline_stage1_NextState_sums[1] = Pipeline_StageStatePipelineModule_L101F25T58_Cast;
+		Pipeline_stage1_NextState_sums[0] = Pipeline_StageStatePipelineModule_L98F28L102T22_Enumerable[0];
+		Pipeline_stage1_NextState_sums[1] = Pipeline_StageStatePipelineModule_L98F28L102T22_Enumerable[1];
 		Pipeline_stage2_NextState_IsReady = Pipeline_stage1_State_IsReady;
 		Pipeline_stage2_NextState_result = Pipeline_StageStatePipelineModule_L105F30T63_Cast;
 		Pipeline_stage2_NextState_S0Counter = Pipeline_stage1_State_S0Counter;
@@ -317,10 +319,16 @@ module StageStatePipelineModule_TopLevel
 	assign Pipeline_StageStatePipelineModule_L88F25T60_Cast = { {6{1'b0}}, Pipeline_StageStatePipelineModule_L88F34T59_Expr };
 	assign Pipeline_StageStatePipelineModule_L89F25T60_Cast = { {6{1'b0}}, Pipeline_StageStatePipelineModule_L89F34T59_Expr };
 	assign Pipeline_StageStatePipelineModule_L90F25T60_Cast = { {6{1'b0}}, Pipeline_StageStatePipelineModule_L90F34T59_Expr };
+	assign Pipeline_StageStatePipelineModule_L85F28L91T22_Enumerable[0] = Pipeline_StageStatePipelineModule_L87F25T60_Cast;
+	assign Pipeline_StageStatePipelineModule_L85F28L91T22_Enumerable[1] = Pipeline_StageStatePipelineModule_L88F25T60_Cast;
+	assign Pipeline_StageStatePipelineModule_L85F28L91T22_Enumerable[2] = Pipeline_StageStatePipelineModule_L89F25T60_Cast;
+	assign Pipeline_StageStatePipelineModule_L85F28L91T22_Enumerable[3] = Pipeline_StageStatePipelineModule_L90F25T60_Cast;
 	assign Pipeline_StageStatePipelineModule_L92F33T62_Cast = Pipeline_StageStatePipelineModule_L92F42T61_Expr[15:0];
 	assign Pipeline_StageStatePipelineModule_L97F33T66_Cast = Pipeline_StageStatePipelineModule_L97F42T65_Expr[15:0];
 	assign Pipeline_StageStatePipelineModule_L100F25T58_Cast = Pipeline_StageStatePipelineModule_L100F34T57_Expr[15:0];
 	assign Pipeline_StageStatePipelineModule_L101F25T58_Cast = Pipeline_StageStatePipelineModule_L101F34T57_Expr[15:0];
+	assign Pipeline_StageStatePipelineModule_L98F28L102T22_Enumerable[0] = Pipeline_StageStatePipelineModule_L100F25T58_Cast;
+	assign Pipeline_StageStatePipelineModule_L98F28L102T22_Enumerable[1] = Pipeline_StageStatePipelineModule_L101F25T58_Cast;
 	assign Pipeline_StageStatePipelineModule_L105F30T63_Cast = Pipeline_StageStatePipelineModule_L105F39T62_Expr[15:0];
 	assign Pipeline_StageStatePipelineModule_L108F33T61_Cast = Pipeline_StageStatePipelineModule_L108F42T60_Expr[15:0];
 	assign StageStatePipelineModule_L39F33T61_Cast = Pipeline_State_IsReady;
