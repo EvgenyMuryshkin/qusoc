@@ -1,4 +1,4 @@
-set_global_assignment -name TOP_LEVEL_ENTITY IOTupleStateInternalL4ComponentsOutputModule_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY StructByMemberL2MembersModule_TopLevel
 # -------------------------------------------------------------------------- #
 #
 # Copyright (C) 1991-2010 Altera Corporation
@@ -65,7 +65,7 @@ set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
 set_instance_assignment -name CLOCK_SETTINGS Clock -to Clock
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/IOTupleDelay1Clock.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/StructByMember.vwf
 
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 
@@ -409,6 +409,10 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StageStatePipelineMod
 set_global_assignment -name VHDL_FILE VHDL/generated/StallControlPipelineModule/StallControlPipelineModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/StallControlTestPipelineModule/StallControlTestPipelineModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StallControlTestPipelineModule.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StructByMember.vwf
+set_global_assignment -name VHDL_FILE VHDL/generated/StructByMemberDirectModule/StructByMemberDirectModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/StructByMemberL1MembersModule/StructByMemberL1MembersModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/StructByMemberL2MembersModule/StructByMemberL2MembersModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/StructCompositionParentModule/StructCompositionParentModule_TopLevel_child.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/StructCompositionParentModule/StructCompositionParentModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StructCompositionParentModule.vwf
