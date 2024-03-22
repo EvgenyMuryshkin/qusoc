@@ -1,4 +1,4 @@
-set_global_assignment -name TOP_LEVEL_ENTITY StructByMemberL2MembersModule_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY StructByMemberL3MembersModule_TopLevel
 # -------------------------------------------------------------------------- #
 #
 # Copyright (C) 1991-2010 Altera Corporation
@@ -413,6 +413,8 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StructByMember.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/StructByMemberDirectModule/StructByMemberDirectModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/StructByMemberL1MembersModule/StructByMemberL1MembersModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/StructByMemberL2MembersModule/StructByMemberL2MembersModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/StructByMemberL3MembersModule/StructByMemberL3MembersModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/StructByMemberL3TupleMembersModule/StructByMemberL3TupleMembersModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/StructCompositionParentModule/StructCompositionParentModule_TopLevel_child.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/StructCompositionParentModule/StructCompositionParentModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StructCompositionParentModule.vwf

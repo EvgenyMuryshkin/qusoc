@@ -37,7 +37,7 @@
 
 set_global_assignment -name FAMILY "Cyclone II"
 set_global_assignment -name DEVICE EP2C70F896C6
-set_global_assignment -name TOP_LEVEL_ENTITY StructByMemberL2MembersModule_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY StructByMemberL3MembersModule_TopLevel
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "20:45:17  JUNE 07, 2019"
 set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
@@ -417,6 +417,8 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StructByMember.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/StructByMemberDirectModule/StructByMemberDirectModule_TopLevel.v
 set_global_assignment -name VERILOG_FILE Verilog/generated/StructByMemberL1MembersModule/StructByMemberL1MembersModule_TopLevel.v
 set_global_assignment -name VERILOG_FILE Verilog/generated/StructByMemberL2MembersModule/StructByMemberL2MembersModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/StructByMemberL3MembersModule/StructByMemberL3MembersModule_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/StructByMemberL3TupleMembersModule/StructByMemberL3TupleMembersModule_TopLevel.v
 set_global_assignment -name VERILOG_FILE Verilog/generated/StructCompositionParentModule/StructCompositionParentModule_TopLevel_child.v
 set_global_assignment -name VERILOG_FILE Verilog/generated/StructCompositionParentModule/StructCompositionParentModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StructCompositionParentModule.vwf

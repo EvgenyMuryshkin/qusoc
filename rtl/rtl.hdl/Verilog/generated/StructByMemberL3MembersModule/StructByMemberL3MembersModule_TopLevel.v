@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is StructByMemberL2MembersModule_TopLevel, clock frequency is 1Hz, Top-level
+// System configuration name is StructByMemberL3MembersModule_TopLevel, clock frequency is 1Hz, Top-level
 // FSM summary
 // -- Packages
-module StructByMemberL2MembersModule_TopLevel
+module StructByMemberL3MembersModule_TopLevel
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
@@ -62,9 +62,11 @@ module StructByMemberL2MembersModule_TopLevel
 	wire false = 1'b0;
 	wire [0: 0] Inputs_iL1_L1OptionalValue;
 	wire Inputs_iL1_L1RequiredValue;
-	wire [36: 0] StructByMemberModule_L59F17L64T18_Object;
+	wire [36: 0] StructByMemberModule_L101F17L118T18_Object;
+	wire [16: 0] StructByMemberModule_L112F25L116T26_Object;
+	wire [17: 0] StructByMemberModule_L110F21L117T22_Tuple;
 	wire [36 : 0] Inputs_iL1_L2 [0 : 1];
-	wire [36 : 0] StructByMemberModule_L56F18L65T14_Enumerable [0 : 1];
+	wire [36 : 0] StructByMemberModule_L98F18L119T14_Enumerable [0 : 1];
 	assign Inputs_iL1_L1OptionalValue = iL1_L1OptionalValue;
 	assign Inputs_iL1_L1RequiredValue = iL1_L1RequiredValue;
 	assign Inputs_iL1_L2[0][36] = iL1_L20_L3Tuple_Item1;
@@ -79,25 +81,29 @@ module StructByMemberL2MembersModule_TopLevel
 	assign Inputs_iL1_L2[1][18:3] = iL1_L21_L3_L3RequiredValue;
 	assign Inputs_iL1_L2[1][2] = iL1_L21_L3_L3OptionalValue;
 	assign Inputs_iL1_L2[1][1:0] = iL1_L21_L2OptionalValue;
-	assign StructByMemberModule_L59F17L64T18_Object[1:0] = Inputs_iL1_L2[1][1:0];
-	assign StructByMemberModule_L59F17L64T18_Object[18:2] = Inputs_iL1_L2[1][18:2];
-	assign StructByMemberModule_L59F17L64T18_Object[36:19] = Inputs_iL1_L2[1][36:19];
-	assign StructByMemberModule_L56F18L65T14_Enumerable[0] = Inputs_iL1_L2[0];
-	assign StructByMemberModule_L56F18L65T14_Enumerable[1] = StructByMemberModule_L59F17L64T18_Object;
+	assign StructByMemberModule_L101F17L118T18_Object[1:0] = Inputs_iL1_L2[1][1:0];
+	assign StructByMemberModule_L101F17L118T18_Object[18:2] = { Inputs_iL1_L2[1][18:3], Inputs_iL1_L2[1][2] };
+	assign StructByMemberModule_L112F25L116T26_Object[0] = Inputs_iL1_L2[1][19];
+	assign StructByMemberModule_L112F25L116T26_Object[16:1] = Inputs_iL1_L2[1][35:20];
+	assign StructByMemberModule_L110F21L117T22_Tuple[17] = Inputs_iL1_L2[1][36];
+	assign StructByMemberModule_L110F21L117T22_Tuple[16:0] = StructByMemberModule_L112F25L116T26_Object;
+	assign StructByMemberModule_L101F17L118T18_Object[36:19] = StructByMemberModule_L110F21L117T22_Tuple;
+	assign StructByMemberModule_L98F18L119T14_Enumerable[0] = Inputs_iL1_L2[0];
+	assign StructByMemberModule_L98F18L119T14_Enumerable[1] = StructByMemberModule_L101F17L118T18_Object;
 	assign oL1_L1OptionalValue = Inputs_iL1_L1OptionalValue;
 	assign oL1_L1RequiredValue = Inputs_iL1_L1RequiredValue;
-	assign oL1_L20_L3Tuple_Item1 = StructByMemberModule_L56F18L65T14_Enumerable[0][36];
-	assign oL1_L20_L3Tuple_Item2_L3RequiredValue = StructByMemberModule_L56F18L65T14_Enumerable[0][35:20];
-	assign oL1_L20_L3Tuple_Item2_L3OptionalValue = StructByMemberModule_L56F18L65T14_Enumerable[0][19];
-	assign oL1_L20_L3_L3RequiredValue = StructByMemberModule_L56F18L65T14_Enumerable[0][18:3];
-	assign oL1_L20_L3_L3OptionalValue = StructByMemberModule_L56F18L65T14_Enumerable[0][2];
-	assign oL1_L20_L2OptionalValue = StructByMemberModule_L56F18L65T14_Enumerable[0][1:0];
-	assign oL1_L21_L3Tuple_Item1 = StructByMemberModule_L56F18L65T14_Enumerable[1][36];
-	assign oL1_L21_L3Tuple_Item2_L3RequiredValue = StructByMemberModule_L56F18L65T14_Enumerable[1][35:20];
-	assign oL1_L21_L3Tuple_Item2_L3OptionalValue = StructByMemberModule_L56F18L65T14_Enumerable[1][19];
-	assign oL1_L21_L3_L3RequiredValue = StructByMemberModule_L56F18L65T14_Enumerable[1][18:3];
-	assign oL1_L21_L3_L3OptionalValue = StructByMemberModule_L56F18L65T14_Enumerable[1][2];
-	assign oL1_L21_L2OptionalValue = StructByMemberModule_L56F18L65T14_Enumerable[1][1:0];
+	assign oL1_L20_L3Tuple_Item1 = StructByMemberModule_L98F18L119T14_Enumerable[0][36];
+	assign oL1_L20_L3Tuple_Item2_L3RequiredValue = StructByMemberModule_L98F18L119T14_Enumerable[0][35:20];
+	assign oL1_L20_L3Tuple_Item2_L3OptionalValue = StructByMemberModule_L98F18L119T14_Enumerable[0][19];
+	assign oL1_L20_L3_L3RequiredValue = StructByMemberModule_L98F18L119T14_Enumerable[0][18:3];
+	assign oL1_L20_L3_L3OptionalValue = StructByMemberModule_L98F18L119T14_Enumerable[0][2];
+	assign oL1_L20_L2OptionalValue = StructByMemberModule_L98F18L119T14_Enumerable[0][1:0];
+	assign oL1_L21_L3Tuple_Item1 = StructByMemberModule_L98F18L119T14_Enumerable[1][36];
+	assign oL1_L21_L3Tuple_Item2_L3RequiredValue = StructByMemberModule_L98F18L119T14_Enumerable[1][35:20];
+	assign oL1_L21_L3Tuple_Item2_L3OptionalValue = StructByMemberModule_L98F18L119T14_Enumerable[1][19];
+	assign oL1_L21_L3_L3RequiredValue = StructByMemberModule_L98F18L119T14_Enumerable[1][18:3];
+	assign oL1_L21_L3_L3OptionalValue = StructByMemberModule_L98F18L119T14_Enumerable[1][2];
+	assign oL1_L21_L2OptionalValue = StructByMemberModule_L98F18L119T14_Enumerable[1][1:0];
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

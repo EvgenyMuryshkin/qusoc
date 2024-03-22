@@ -60,7 +60,61 @@ namespace RTL.Modules
                 {
                     L2OptionalValue = Inputs.iL1.L2[1].L2OptionalValue,
                     L3 = Inputs.iL1.L2[1].L3,
+                    L3Tuple = Inputs.iL1.L2[1].L3Tuple
+                }
+            }
+        };
+    }
+
+    public class StructByMemberL3TupleMembersModule : RTLCombinationalModule<StructByMemberModuleInputs>
+    {
+        public StructByMemberL1 oL1 => new StructByMemberL1()
+        {
+            L1OptionalValue = Inputs.iL1.L1OptionalValue,
+            L1RequiredValue = Inputs.iL1.L1RequiredValue,
+            L2 = new[]
+            {
+                Inputs.iL1.L2[0],
+                new StructByMemberL2()
+                {
+                    L2OptionalValue = Inputs.iL1.L2[1].L2OptionalValue,
+                    L3 =
+                    {
+                        L3OptionalValue = Inputs.iL1.L2[1].L3.L3OptionalValue,
+                        L3RequiredValue = Inputs.iL1.L2[1].L3.L3RequiredValue
+                    },
                     L3Tuple = (Inputs.iL1.L2[1].L3Tuple.Item1, Inputs.iL1.L2[1].L3Tuple.Item2)
+                }
+            }
+        };
+    }
+
+    public class StructByMemberL3MembersModule : RTLCombinationalModule<StructByMemberModuleInputs>
+    {
+        public StructByMemberL1 oL1 => new StructByMemberL1()
+        {
+            L1OptionalValue = Inputs.iL1.L1OptionalValue,
+            L1RequiredValue = Inputs.iL1.L1RequiredValue,
+            L2 = new[]
+            {
+                Inputs.iL1.L2[0],
+                new StructByMemberL2()
+                {
+                    L2OptionalValue = Inputs.iL1.L2[1].L2OptionalValue,
+                    L3 =
+                    {
+                        L3OptionalValue = Inputs.iL1.L2[1].L3.L3OptionalValue,
+                        L3RequiredValue = Inputs.iL1.L2[1].L3.L3RequiredValue
+                    },
+                    L3Tuple = 
+                    (
+                        Inputs.iL1.L2[1].L3Tuple.Item1, 
+                        new StructByMemberL3()
+                        {
+                            L3OptionalValue = Inputs.iL1.L2[1].L3Tuple.Item2.L3OptionalValue,
+                            L3RequiredValue = Inputs.iL1.L2[1].L3Tuple.Item2.L3RequiredValue
+                        }
+                    )
                 }
             }
         };
