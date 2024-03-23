@@ -67,14 +67,14 @@ architecture rtl of StructByMemberL3TupleMembersModule_TopLevel is
 	-- false is a reserved name, declaration skipped
 	signal Inputs_iL1_L1OptionalValue : unsigned(0 downto 0) := (others => '0');
 	signal Inputs_iL1_L1RequiredValue : std_logic := '0';
-	signal StructByMemberModule_L78F17L87T18_Object : unsigned(36 downto 0) := (others => '0');
-	signal StructByMemberModule_L86F31T95_Tuple : unsigned(17 downto 0) := (others => '0');
+	signal StructByMemberModule_L73F17L82T18_Object : unsigned(36 downto 0) := (others => '0');
+	signal StructByMemberModule_L81F31T95_Tuple : unsigned(17 downto 0) := (others => '0');
 	type Inputs_iL1_L2Array is array (0 to 1) of unsigned (36 downto 0);
 	signal Inputs_iL1_L2 : Inputs_iL1_L2Array := (others => (others => '0'));
-	type StructByMemberModule_L75F18L88T14_EnumerableArray is array (0 to 1) of unsigned (36 downto 0);
-	signal StructByMemberModule_L75F18L88T14_Enumerable : StructByMemberModule_L75F18L88T14_EnumerableArray := (others => (others => '0'));
+	type StructByMemberModule_L70F18L83T14_EnumerableArray is array (0 to 1) of unsigned (36 downto 0);
+	signal StructByMemberModule_L70F18L83T14_Enumerable : StructByMemberModule_L70F18L83T14_EnumerableArray := (others => (others => '0'));
 begin
-	process (iL1_L1OptionalValue, iL1_L1RequiredValue, iL1_L20_L2OptionalValue, iL1_L20_L3_L3OptionalValue, iL1_L20_L3_L3RequiredValue, iL1_L20_L3Tuple_Item1, iL1_L20_L3Tuple_Item2_L3OptionalValue, iL1_L20_L3Tuple_Item2_L3RequiredValue, iL1_L21_L2OptionalValue, iL1_L21_L3_L3OptionalValue, iL1_L21_L3_L3RequiredValue, iL1_L21_L3Tuple_Item1, iL1_L21_L3Tuple_Item2_L3OptionalValue, iL1_L21_L3Tuple_Item2_L3RequiredValue, Inputs_iL1_L1OptionalValue, Inputs_iL1_L1RequiredValue, Inputs_iL1_L2, StructByMemberModule_L75F18L88T14_Enumerable, StructByMemberModule_L78F17L87T18_Object, StructByMemberModule_L86F31T95_Tuple)
+	process (iL1_L1OptionalValue, iL1_L1RequiredValue, iL1_L20_L2OptionalValue, iL1_L20_L3_L3OptionalValue, iL1_L20_L3_L3RequiredValue, iL1_L20_L3Tuple_Item1, iL1_L20_L3Tuple_Item2_L3OptionalValue, iL1_L20_L3Tuple_Item2_L3RequiredValue, iL1_L21_L2OptionalValue, iL1_L21_L3_L3OptionalValue, iL1_L21_L3_L3RequiredValue, iL1_L21_L3Tuple_Item1, iL1_L21_L3Tuple_Item2_L3OptionalValue, iL1_L21_L3Tuple_Item2_L3RequiredValue, Inputs_iL1_L1OptionalValue, Inputs_iL1_L1RequiredValue, Inputs_iL1_L2, StructByMemberModule_L70F18L83T14_Enumerable, StructByMemberModule_L73F17L82T18_Object, StructByMemberModule_L81F31T95_Tuple)
 	begin
 		Inputs_iL1_L1OptionalValue <= iL1_L1OptionalValue;
 		Inputs_iL1_L1RequiredValue <= iL1_L1RequiredValue;
@@ -90,28 +90,28 @@ begin
 		Inputs_iL1_L2(1)(18 downto 3) <= unsigned(iL1_L21_L3_L3RequiredValue);
 		Inputs_iL1_L2(1)(2) <= iL1_L21_L3_L3OptionalValue;
 		Inputs_iL1_L2(1)(1 downto 0) <= iL1_L21_L2OptionalValue;
-		StructByMemberModule_L78F17L87T18_Object(1 downto 0) <= Inputs_iL1_L2(1)(1 downto 0);
-		StructByMemberModule_L78F17L87T18_Object(18 downto 3) <= Inputs_iL1_L2(1)(18 downto 3);
-		StructByMemberModule_L78F17L87T18_Object(2) <= Inputs_iL1_L2(1)(2);
-		StructByMemberModule_L86F31T95_Tuple(17) <= Inputs_iL1_L2(1)(36);
-		StructByMemberModule_L86F31T95_Tuple(16 downto 0) <= Inputs_iL1_L2(1)(35 downto 19);
-		StructByMemberModule_L78F17L87T18_Object(36 downto 19) <= StructByMemberModule_L86F31T95_Tuple;
-		StructByMemberModule_L75F18L88T14_Enumerable(0) <= Inputs_iL1_L2(0);
-		StructByMemberModule_L75F18L88T14_Enumerable(1) <= StructByMemberModule_L78F17L87T18_Object;
+		StructByMemberModule_L73F17L82T18_Object(1 downto 0) <= Inputs_iL1_L2(1)(1 downto 0);
+		StructByMemberModule_L73F17L82T18_Object(18 downto 3) <= Inputs_iL1_L2(1)(18 downto 3);
+		StructByMemberModule_L73F17L82T18_Object(2) <= Inputs_iL1_L2(1)(2);
+		StructByMemberModule_L81F31T95_Tuple(17) <= Inputs_iL1_L2(1)(36);
+		StructByMemberModule_L81F31T95_Tuple(16 downto 0) <= Inputs_iL1_L2(1)(35 downto 19);
+		StructByMemberModule_L73F17L82T18_Object(36 downto 19) <= StructByMemberModule_L81F31T95_Tuple;
+		StructByMemberModule_L70F18L83T14_Enumerable(0) <= Inputs_iL1_L2(0);
+		StructByMemberModule_L70F18L83T14_Enumerable(1) <= StructByMemberModule_L73F17L82T18_Object;
 		oL1_L1OptionalValue <= Inputs_iL1_L1OptionalValue;
 		oL1_L1RequiredValue <= Inputs_iL1_L1RequiredValue;
-		oL1_L20_L3Tuple_Item1 <= StructByMemberModule_L75F18L88T14_Enumerable(0)(36);
-		oL1_L20_L3Tuple_Item2_L3RequiredValue <= signed(StructByMemberModule_L75F18L88T14_Enumerable(0)(35 downto 20));
-		oL1_L20_L3Tuple_Item2_L3OptionalValue <= StructByMemberModule_L75F18L88T14_Enumerable(0)(19);
-		oL1_L20_L3_L3RequiredValue <= signed(StructByMemberModule_L75F18L88T14_Enumerable(0)(18 downto 3));
-		oL1_L20_L3_L3OptionalValue <= StructByMemberModule_L75F18L88T14_Enumerable(0)(2);
-		oL1_L20_L2OptionalValue <= StructByMemberModule_L75F18L88T14_Enumerable(0)(1 downto 0);
-		oL1_L21_L3Tuple_Item1 <= StructByMemberModule_L75F18L88T14_Enumerable(1)(36);
-		oL1_L21_L3Tuple_Item2_L3RequiredValue <= signed(StructByMemberModule_L75F18L88T14_Enumerable(1)(35 downto 20));
-		oL1_L21_L3Tuple_Item2_L3OptionalValue <= StructByMemberModule_L75F18L88T14_Enumerable(1)(19);
-		oL1_L21_L3_L3RequiredValue <= signed(StructByMemberModule_L75F18L88T14_Enumerable(1)(18 downto 3));
-		oL1_L21_L3_L3OptionalValue <= StructByMemberModule_L75F18L88T14_Enumerable(1)(2);
-		oL1_L21_L2OptionalValue <= StructByMemberModule_L75F18L88T14_Enumerable(1)(1 downto 0);
+		oL1_L20_L3Tuple_Item1 <= StructByMemberModule_L70F18L83T14_Enumerable(0)(36);
+		oL1_L20_L3Tuple_Item2_L3RequiredValue <= signed(StructByMemberModule_L70F18L83T14_Enumerable(0)(35 downto 20));
+		oL1_L20_L3Tuple_Item2_L3OptionalValue <= StructByMemberModule_L70F18L83T14_Enumerable(0)(19);
+		oL1_L20_L3_L3RequiredValue <= signed(StructByMemberModule_L70F18L83T14_Enumerable(0)(18 downto 3));
+		oL1_L20_L3_L3OptionalValue <= StructByMemberModule_L70F18L83T14_Enumerable(0)(2);
+		oL1_L20_L2OptionalValue <= StructByMemberModule_L70F18L83T14_Enumerable(0)(1 downto 0);
+		oL1_L21_L3Tuple_Item1 <= StructByMemberModule_L70F18L83T14_Enumerable(1)(36);
+		oL1_L21_L3Tuple_Item2_L3RequiredValue <= signed(StructByMemberModule_L70F18L83T14_Enumerable(1)(35 downto 20));
+		oL1_L21_L3Tuple_Item2_L3OptionalValue <= StructByMemberModule_L70F18L83T14_Enumerable(1)(19);
+		oL1_L21_L3_L3RequiredValue <= signed(StructByMemberModule_L70F18L83T14_Enumerable(1)(18 downto 3));
+		oL1_L21_L3_L3OptionalValue <= StructByMemberModule_L70F18L83T14_Enumerable(1)(2);
+		oL1_L21_L2OptionalValue <= StructByMemberModule_L70F18L83T14_Enumerable(1)(1 downto 0);
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

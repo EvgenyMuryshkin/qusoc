@@ -1,4 +1,4 @@
-set_global_assignment -name TOP_LEVEL_ENTITY StructByMemberL3MembersModule_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY StructByMemberStateL3TupleMembersModule_TopLevel
 # -------------------------------------------------------------------------- #
 #
 # Copyright (C) 1991-2010 Altera Corporation
@@ -65,7 +65,7 @@ set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
 set_instance_assignment -name CLOCK_SETTINGS Clock -to Clock
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/StructByMember.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/StructByMemberState.vwf
 
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 
@@ -411,10 +411,21 @@ set_global_assignment -name VHDL_FILE VHDL/generated/StallControlTestPipelineMod
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StallControlTestPipelineModule.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StructByMember.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/StructByMemberDirectModule/StructByMemberDirectModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/StructByMemberInternalDirectModule/StructByMemberInternalDirectModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/StructByMemberInternalL1MembersModule/StructByMemberInternalL1MembersModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/StructByMemberInternalL2MembersModule/StructByMemberInternalL2MembersModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/StructByMemberInternalL3MembersModule/StructByMemberInternalL3MembersModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/StructByMemberInternalL3TupleMembersModule/StructByMemberInternalL3TupleMembersModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/StructByMemberL1MembersModule/StructByMemberL1MembersModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/StructByMemberL2MembersModule/StructByMemberL2MembersModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/StructByMemberL3MembersModule/StructByMemberL3MembersModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/StructByMemberL3TupleMembersModule/StructByMemberL3TupleMembersModule_TopLevel.vhdl
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StructByMemberState.vwf
+set_global_assignment -name VHDL_FILE VHDL/generated/StructByMemberStateDirectModule/StructByMemberStateDirectModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/StructByMemberStateL1MembersModule/StructByMemberStateL1MembersModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/StructByMemberStateL2MembersModule/StructByMemberStateL2MembersModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/StructByMemberStateL3MembersModule/StructByMemberStateL3MembersModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/StructByMemberStateL3TupleMembersModule/StructByMemberStateL3TupleMembersModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/StructCompositionParentModule/StructCompositionParentModule_TopLevel_child.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/StructCompositionParentModule/StructCompositionParentModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/StructCompositionParentModule.vwf

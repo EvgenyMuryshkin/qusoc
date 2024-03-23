@@ -27,11 +27,6 @@ namespace RTL.Modules
         public StructByMemberL1 iL1 = new StructByMemberL1();
     }
 
-    public class StructByMemberModuleState
-    {
-        public StructByMemberL1 sL1 = new StructByMemberL1();
-    }
-
     public class StructByMemberDirectModule : RTLCombinationalModule<StructByMemberModuleInputs>
     {
         public StructByMemberL1 oL1 => Inputs.iL1;
@@ -118,12 +113,5 @@ namespace RTL.Modules
                 }
             }
         };
-    }
-
-    public class StructByMemberModule : RTLSynchronousModule<StructByMemberModuleInputs, StructByMemberModuleState>
-    {
-        protected override void OnStage()
-        {
-        }
     }
 }
