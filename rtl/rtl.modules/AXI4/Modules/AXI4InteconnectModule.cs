@@ -21,12 +21,14 @@ namespace rtl.modules.AXI4.Modules
 
     public class AXI4InteconnectModule : RTLCombinationalModule<AXI4InteconnectModuleInputs>
     {
+        private readonly int mCount;
         private readonly int sCount;
         AXI4ReadInteconnectModule readInterconnect;
         AXI4WriteInteconnectModule writeInterconnect;
 
         public AXI4InteconnectModule(axiSize size, int mCount, List<RangeInfo> slaveRange)
         {
+            this.mCount = mCount;
             sCount = slaveRange.Count;
 
             InitInputs(new AXI4InteconnectModuleInputs(size, mCount, slaveRange.Count));
@@ -60,6 +62,15 @@ namespace rtl.modules.AXI4.Modules
                 {
                     R = readInterconnect.S2M[slaveIndex],
                     W = writeInterconnect.S2M[slaveIndex]
+                }
+            ).ToArray();
+
+        public AXI4_M2S[] oM2S => range(mCount)
+            .Select(masterIndex =>
+                new AXI4_M2S()
+                {
+                    R = readInterconnect.M2S[masterIndex],
+                    W = writeInterconnect.M2S[masterIndex]
                 }
             ).ToArray();
     }

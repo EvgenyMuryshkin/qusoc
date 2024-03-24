@@ -2,7 +2,6 @@ No reads:
 	ActiveTransactions
 	Encoder_MSBValue
 	leftCount
-	muxLeft
 	muxLeftData_AW_AWADDR
 	muxLeftData_AW_AWBURST
 	muxLeftData_AW_AWCACHE

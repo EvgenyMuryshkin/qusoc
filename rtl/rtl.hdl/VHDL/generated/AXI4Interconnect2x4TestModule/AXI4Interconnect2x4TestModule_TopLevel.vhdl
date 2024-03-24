@@ -111,23 +111,23 @@ architecture rtl of AXI4Interconnect2x4TestModule_TopLevel is
 	signal masters1_M2S : unsigned(221 downto 0) := (others => '0');
 	signal masters1_RACK : std_logic := '0';
 	signal masters1_WACK : std_logic := '0';
-	signal registers0_inWE : std_logic := '0';
 	signal registers0_M2S : unsigned(221 downto 0) := (others => '0');
+	signal registers0_Reg : unsigned(32 downto 0) := (others => '0');
 	signal registers0_outACK : std_logic := '0';
 	signal registers0_outWritten : std_logic := '0';
 	signal registers0_S2M : unsigned(73 downto 0) := (others => '0');
-	signal registers1_inWE : std_logic := '0';
 	signal registers1_M2S : unsigned(221 downto 0) := (others => '0');
+	signal registers1_Reg : unsigned(32 downto 0) := (others => '0');
 	signal registers1_outACK : std_logic := '0';
 	signal registers1_outWritten : std_logic := '0';
 	signal registers1_S2M : unsigned(73 downto 0) := (others => '0');
-	signal registers2_inWE : std_logic := '0';
 	signal registers2_M2S : unsigned(221 downto 0) := (others => '0');
+	signal registers2_Reg : unsigned(32 downto 0) := (others => '0');
 	signal registers2_outACK : std_logic := '0';
 	signal registers2_outWritten : std_logic := '0';
 	signal registers2_S2M : unsigned(73 downto 0) := (others => '0');
-	signal registers3_inWE : std_logic := '0';
 	signal registers3_M2S : unsigned(221 downto 0) := (others => '0');
+	signal registers3_Reg : unsigned(32 downto 0) := (others => '0');
 	signal registers3_outACK : std_logic := '0';
 	signal registers3_outWritten : std_logic := '0';
 	signal registers3_S2M : unsigned(73 downto 0) := (others => '0');
@@ -149,12 +149,8 @@ architecture rtl of AXI4Interconnect2x4TestModule_TopLevel is
 	signal masters1_RDATA2_masters1_RDATA_HardLink : unsigned(7 downto 0) := "00000000";
 	signal masters1_RDATA3_masters1_RDATA_HardLink : unsigned(7 downto 0) := "00000000";
 	signal masters1_WACK_masters1_WACK_HardLink : std_logic := '0';
-	signal registers0_inWDATA0_registers0_inWDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal registers0_inWDATA1_registers0_inWDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal registers0_inWDATA2_registers0_inWDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal registers0_inWDATA3_registers0_inWDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal registers0_inWE_registers0_inWE_HardLink : std_logic := '0';
 	signal registers0_M2S_registers0_M2S_HardLink : unsigned(221 downto 0) := "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+	signal registers0_Reg_registers0_Reg_HardLink : unsigned(32 downto 0) := "000000000000000000000000000000000";
 	signal registers0_outACK_registers0_outACK_HardLink : std_logic := '0';
 	signal registers0_outData0_registers0_outData_HardLink : unsigned(7 downto 0) := "00000000";
 	signal registers0_outData1_registers0_outData_HardLink : unsigned(7 downto 0) := "00000000";
@@ -162,12 +158,8 @@ architecture rtl of AXI4Interconnect2x4TestModule_TopLevel is
 	signal registers0_outData3_registers0_outData_HardLink : unsigned(7 downto 0) := "00000000";
 	signal registers0_outWritten_registers0_outWritten_HardLink : std_logic := '0';
 	signal registers0_S2M_registers0_S2M_HardLink : unsigned(73 downto 0) := "00000000000000000000000000000000000000000000000000000000000000000000000000";
-	signal registers1_inWDATA0_registers1_inWDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal registers1_inWDATA1_registers1_inWDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal registers1_inWDATA2_registers1_inWDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal registers1_inWDATA3_registers1_inWDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal registers1_inWE_registers1_inWE_HardLink : std_logic := '0';
 	signal registers1_M2S_registers1_M2S_HardLink : unsigned(221 downto 0) := "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+	signal registers1_Reg_registers1_Reg_HardLink : unsigned(32 downto 0) := "000000000000000000000000000000000";
 	signal registers1_outACK_registers1_outACK_HardLink : std_logic := '0';
 	signal registers1_outData0_registers1_outData_HardLink : unsigned(7 downto 0) := "00000000";
 	signal registers1_outData1_registers1_outData_HardLink : unsigned(7 downto 0) := "00000000";
@@ -175,12 +167,8 @@ architecture rtl of AXI4Interconnect2x4TestModule_TopLevel is
 	signal registers1_outData3_registers1_outData_HardLink : unsigned(7 downto 0) := "00000000";
 	signal registers1_outWritten_registers1_outWritten_HardLink : std_logic := '0';
 	signal registers1_S2M_registers1_S2M_HardLink : unsigned(73 downto 0) := "00000000000000000000000000000000000000000000000000000000000000000000000000";
-	signal registers2_inWDATA0_registers2_inWDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal registers2_inWDATA1_registers2_inWDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal registers2_inWDATA2_registers2_inWDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal registers2_inWDATA3_registers2_inWDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal registers2_inWE_registers2_inWE_HardLink : std_logic := '0';
 	signal registers2_M2S_registers2_M2S_HardLink : unsigned(221 downto 0) := "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+	signal registers2_Reg_registers2_Reg_HardLink : unsigned(32 downto 0) := "000000000000000000000000000000000";
 	signal registers2_outACK_registers2_outACK_HardLink : std_logic := '0';
 	signal registers2_outData0_registers2_outData_HardLink : unsigned(7 downto 0) := "00000000";
 	signal registers2_outData1_registers2_outData_HardLink : unsigned(7 downto 0) := "00000000";
@@ -188,12 +176,8 @@ architecture rtl of AXI4Interconnect2x4TestModule_TopLevel is
 	signal registers2_outData3_registers2_outData_HardLink : unsigned(7 downto 0) := "00000000";
 	signal registers2_outWritten_registers2_outWritten_HardLink : std_logic := '0';
 	signal registers2_S2M_registers2_S2M_HardLink : unsigned(73 downto 0) := "00000000000000000000000000000000000000000000000000000000000000000000000000";
-	signal registers3_inWDATA0_registers3_inWDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal registers3_inWDATA1_registers3_inWDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal registers3_inWDATA2_registers3_inWDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal registers3_inWDATA3_registers3_inWDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal registers3_inWE_registers3_inWE_HardLink : std_logic := '0';
 	signal registers3_M2S_registers3_M2S_HardLink : unsigned(221 downto 0) := "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+	signal registers3_Reg_registers3_Reg_HardLink : unsigned(32 downto 0) := "000000000000000000000000000000000";
 	signal registers3_outACK_registers3_outACK_HardLink : std_logic := '0';
 	signal registers3_outData0_registers3_outData_HardLink : unsigned(7 downto 0) := "00000000";
 	signal registers3_outData1_registers3_outData_HardLink : unsigned(7 downto 0) := "00000000";
@@ -219,20 +203,12 @@ architecture rtl of AXI4Interconnect2x4TestModule_TopLevel is
 	signal masters0_RDATA : masters0_RDATAArray := (others => (others => '0'));
 	type masters1_RDATAArray is array (0 to 3) of unsigned (7 downto 0);
 	signal masters1_RDATA : masters1_RDATAArray := (others => (others => '0'));
-	type registers0_inWDATAArray is array (0 to 3) of unsigned (7 downto 0);
-	signal registers0_inWDATA : registers0_inWDATAArray := (others => (others => '0'));
 	type registers0_outDataArray is array (0 to 3) of unsigned (7 downto 0);
 	signal registers0_outData : registers0_outDataArray := (others => (others => '0'));
-	type registers1_inWDATAArray is array (0 to 3) of unsigned (7 downto 0);
-	signal registers1_inWDATA : registers1_inWDATAArray := (others => (others => '0'));
 	type registers1_outDataArray is array (0 to 3) of unsigned (7 downto 0);
 	signal registers1_outData : registers1_outDataArray := (others => (others => '0'));
-	type registers2_inWDATAArray is array (0 to 3) of unsigned (7 downto 0);
-	signal registers2_inWDATA : registers2_inWDATAArray := (others => (others => '0'));
 	type registers2_outDataArray is array (0 to 3) of unsigned (7 downto 0);
 	signal registers2_outData : registers2_outDataArray := (others => (others => '0'));
-	type registers3_inWDATAArray is array (0 to 3) of unsigned (7 downto 0);
-	signal registers3_inWDATA : registers3_inWDATAArray := (others => (others => '0'));
 	type registers3_outDataArray is array (0 to 3) of unsigned (7 downto 0);
 	signal registers3_outData : registers3_outDataArray := (others => (others => '0'));
 	type AXI4Interconnect2x4TestModule_L46F39T75_EnumerableArray is array (0 to 1) of unsigned (221 downto 0);
@@ -281,12 +257,8 @@ begin
 		-- [BEGIN USER MAP FOR registers0]
 		-- [END USER MAP FOR registers0]
 		BoardSignals => BoardSignals,
-		inWDATA0 => registers0_inWDATA0_registers0_inWDATA_HardLink,
-		inWDATA1 => registers0_inWDATA1_registers0_inWDATA_HardLink,
-		inWDATA2 => registers0_inWDATA2_registers0_inWDATA_HardLink,
-		inWDATA3 => registers0_inWDATA3_registers0_inWDATA_HardLink,
-		inWE => registers0_inWE_registers0_inWE_HardLink,
 		M2S => registers0_M2S_registers0_M2S_HardLink,
+		Reg => registers0_Reg_registers0_Reg_HardLink,
 		outACK => registers0_outACK_registers0_outACK_HardLink,
 		outData0 => registers0_outData0_registers0_outData_HardLink,
 		outData1 => registers0_outData1_registers0_outData_HardLink,
@@ -302,12 +274,8 @@ begin
 		-- [BEGIN USER MAP FOR registers1]
 		-- [END USER MAP FOR registers1]
 		BoardSignals => BoardSignals,
-		inWDATA0 => registers1_inWDATA0_registers1_inWDATA_HardLink,
-		inWDATA1 => registers1_inWDATA1_registers1_inWDATA_HardLink,
-		inWDATA2 => registers1_inWDATA2_registers1_inWDATA_HardLink,
-		inWDATA3 => registers1_inWDATA3_registers1_inWDATA_HardLink,
-		inWE => registers1_inWE_registers1_inWE_HardLink,
 		M2S => registers1_M2S_registers1_M2S_HardLink,
+		Reg => registers1_Reg_registers1_Reg_HardLink,
 		outACK => registers1_outACK_registers1_outACK_HardLink,
 		outData0 => registers1_outData0_registers1_outData_HardLink,
 		outData1 => registers1_outData1_registers1_outData_HardLink,
@@ -323,12 +291,8 @@ begin
 		-- [BEGIN USER MAP FOR registers2]
 		-- [END USER MAP FOR registers2]
 		BoardSignals => BoardSignals,
-		inWDATA0 => registers2_inWDATA0_registers2_inWDATA_HardLink,
-		inWDATA1 => registers2_inWDATA1_registers2_inWDATA_HardLink,
-		inWDATA2 => registers2_inWDATA2_registers2_inWDATA_HardLink,
-		inWDATA3 => registers2_inWDATA3_registers2_inWDATA_HardLink,
-		inWE => registers2_inWE_registers2_inWE_HardLink,
 		M2S => registers2_M2S_registers2_M2S_HardLink,
+		Reg => registers2_Reg_registers2_Reg_HardLink,
 		outACK => registers2_outACK_registers2_outACK_HardLink,
 		outData0 => registers2_outData0_registers2_outData_HardLink,
 		outData1 => registers2_outData1_registers2_outData_HardLink,
@@ -344,12 +308,8 @@ begin
 		-- [BEGIN USER MAP FOR registers3]
 		-- [END USER MAP FOR registers3]
 		BoardSignals => BoardSignals,
-		inWDATA0 => registers3_inWDATA0_registers3_inWDATA_HardLink,
-		inWDATA1 => registers3_inWDATA1_registers3_inWDATA_HardLink,
-		inWDATA2 => registers3_inWDATA2_registers3_inWDATA_HardLink,
-		inWDATA3 => registers3_inWDATA3_registers3_inWDATA_HardLink,
-		inWE => registers3_inWE_registers3_inWE_HardLink,
 		M2S => registers3_M2S_registers3_M2S_HardLink,
+		Reg => registers3_Reg_registers3_Reg_HardLink,
 		outACK => registers3_outACK_registers3_outACK_HardLink,
 		outData0 => registers3_outData0_registers3_outData_HardLink,
 		outData1 => registers3_outData1_registers3_outData_HardLink,
@@ -359,7 +319,7 @@ begin
 		S2M => registers3_S2M_registers3_S2M_HardLink
 	)
 	;
-	process (AXI4Interconnect2x4TestModule_L46F39T75_Enumerable, InData, Inputs_InData, Inputs_MRE, Inputs_MWE, Inputs_SWE, Inputs_WSTRB, masters0_M2S, masters0_M2S_masters0_M2S_HardLink, masters0_Master, masters0_RACK_masters0_RACK_HardLink, masters0_RDATA0_masters0_RDATA_HardLink, masters0_RDATA1_masters0_RDATA_HardLink, masters0_RDATA2_masters0_RDATA_HardLink, masters0_RDATA3_masters0_RDATA_HardLink, masters0_S2M, masters0_WACK_masters0_WACK_HardLink, masters1_M2S, masters1_M2S_masters1_M2S_HardLink, masters1_Master, masters1_RACK_masters1_RACK_HardLink, masters1_RDATA0_masters1_RDATA_HardLink, masters1_RDATA1_masters1_RDATA_HardLink, masters1_RDATA2_masters1_RDATA_HardLink, masters1_RDATA3_masters1_RDATA_HardLink, masters1_S2M, masters1_WACK_masters1_WACK_HardLink, MRE0, MRE1, MWE0, MWE1, notActiveM2S_R_AR_ARADDR, notActiveM2S_R_AR_ARBURST, notActiveM2S_R_AR_ARCACHE, notActiveM2S_R_AR_ARID, notActiveM2S_R_AR_ARLEN, notActiveM2S_R_AR_ARLOCK, notActiveM2S_R_AR_ARPROT, notActiveM2S_R_AR_ARQOS, notActiveM2S_R_AR_ARREGION, notActiveM2S_R_AR_ARSIZE, notActiveM2S_R_AR_ARUSER, notActiveM2S_R_AR_ARVALID, notActiveM2S_R_R_RREADY, notActiveM2S_W_AW_AWADDR, notActiveM2S_W_AW_AWBURST, notActiveM2S_W_AW_AWCACHE, notActiveM2S_W_AW_AWID, notActiveM2S_W_AW_AWLEN, notActiveM2S_W_AW_AWLOCK, notActiveM2S_W_AW_AWPROT, notActiveM2S_W_AW_AWQOS, notActiveM2S_W_AW_AWREGION, notActiveM2S_W_AW_AWSIZE, notActiveM2S_W_AW_AWUSER, notActiveM2S_W_AW_AWVALID, notActiveM2S_W_B_BREADY, notActiveM2S_W_W_WDATA, notActiveM2S_W_W_WID, notActiveM2S_W_W_WLAST, notActiveM2S_W_W_WSTRB, notActiveM2S_W_W_WUSER, notActiveM2S_W_W_WVALID, notActiveS2M_R_AR_ARREADY, notActiveS2M_R_R_RDATA, notActiveS2M_R_R_RID, notActiveS2M_R_R_RLAST, notActiveS2M_R_R_RRESP, notActiveS2M_R_R_RUSER, notActiveS2M_R_R_RVALID, notActiveS2M_W_AW_AWREADY, notActiveS2M_W_B_BID, notActiveS2M_W_B_BRESP, notActiveS2M_W_B_BUSER, notActiveS2M_W_B_BVALID, notActiveS2M_W_W_WREADY, registers0_inWDATA, registers0_inWE, registers0_M2S, registers0_outACK_registers0_outACK_HardLink, registers0_outData0_registers0_outData_HardLink, registers0_outData1_registers0_outData_HardLink, registers0_outData2_registers0_outData_HardLink, registers0_outData3_registers0_outData_HardLink, registers0_outWritten_registers0_outWritten_HardLink, registers0_S2M_registers0_S2M_HardLink, registers1_inWDATA, registers1_inWE, registers1_M2S, registers1_outACK_registers1_outACK_HardLink, registers1_outData0_registers1_outData_HardLink, registers1_outData1_registers1_outData_HardLink, registers1_outData2_registers1_outData_HardLink, registers1_outData3_registers1_outData_HardLink, registers1_outWritten_registers1_outWritten_HardLink, registers1_S2M_registers1_S2M_HardLink, registers2_inWDATA, registers2_inWE, registers2_M2S, registers2_outACK_registers2_outACK_HardLink, registers2_outData0_registers2_outData_HardLink, registers2_outData1_registers2_outData_HardLink, registers2_outData2_registers2_outData_HardLink, registers2_outData3_registers2_outData_HardLink, registers2_outWritten_registers2_outWritten_HardLink, registers2_S2M_registers2_S2M_HardLink, registers3_inWDATA, registers3_inWE, registers3_M2S, registers3_outACK_registers3_outACK_HardLink, registers3_outData0_registers3_outData_HardLink, registers3_outData1_registers3_outData_HardLink, registers3_outData2_registers3_outData_HardLink, registers3_outData3_registers3_outData_HardLink, registers3_outWritten_registers3_outWritten_HardLink, registers3_S2M_registers3_S2M_HardLink, SWE0, SWE1, SWE2, SWE3, WSTRB)
+	process (AXI4Interconnect2x4TestModule_L46F39T75_Enumerable, InData, Inputs_InData, Inputs_MRE, Inputs_MWE, Inputs_SWE, Inputs_WSTRB, masters0_M2S, masters0_M2S_masters0_M2S_HardLink, masters0_Master, masters0_RACK_masters0_RACK_HardLink, masters0_RDATA0_masters0_RDATA_HardLink, masters0_RDATA1_masters0_RDATA_HardLink, masters0_RDATA2_masters0_RDATA_HardLink, masters0_RDATA3_masters0_RDATA_HardLink, masters0_S2M, masters0_WACK_masters0_WACK_HardLink, masters1_M2S, masters1_M2S_masters1_M2S_HardLink, masters1_Master, masters1_RACK_masters1_RACK_HardLink, masters1_RDATA0_masters1_RDATA_HardLink, masters1_RDATA1_masters1_RDATA_HardLink, masters1_RDATA2_masters1_RDATA_HardLink, masters1_RDATA3_masters1_RDATA_HardLink, masters1_S2M, masters1_WACK_masters1_WACK_HardLink, MRE0, MRE1, MWE0, MWE1, notActiveM2S_R_AR_ARADDR, notActiveM2S_R_AR_ARBURST, notActiveM2S_R_AR_ARCACHE, notActiveM2S_R_AR_ARID, notActiveM2S_R_AR_ARLEN, notActiveM2S_R_AR_ARLOCK, notActiveM2S_R_AR_ARPROT, notActiveM2S_R_AR_ARQOS, notActiveM2S_R_AR_ARREGION, notActiveM2S_R_AR_ARSIZE, notActiveM2S_R_AR_ARUSER, notActiveM2S_R_AR_ARVALID, notActiveM2S_R_R_RREADY, notActiveM2S_W_AW_AWADDR, notActiveM2S_W_AW_AWBURST, notActiveM2S_W_AW_AWCACHE, notActiveM2S_W_AW_AWID, notActiveM2S_W_AW_AWLEN, notActiveM2S_W_AW_AWLOCK, notActiveM2S_W_AW_AWPROT, notActiveM2S_W_AW_AWQOS, notActiveM2S_W_AW_AWREGION, notActiveM2S_W_AW_AWSIZE, notActiveM2S_W_AW_AWUSER, notActiveM2S_W_AW_AWVALID, notActiveM2S_W_B_BREADY, notActiveM2S_W_W_WDATA, notActiveM2S_W_W_WID, notActiveM2S_W_W_WLAST, notActiveM2S_W_W_WSTRB, notActiveM2S_W_W_WUSER, notActiveM2S_W_W_WVALID, notActiveS2M_R_AR_ARREADY, notActiveS2M_R_R_RDATA, notActiveS2M_R_R_RID, notActiveS2M_R_R_RLAST, notActiveS2M_R_R_RRESP, notActiveS2M_R_R_RUSER, notActiveS2M_R_R_RVALID, notActiveS2M_W_AW_AWREADY, notActiveS2M_W_B_BID, notActiveS2M_W_B_BRESP, notActiveS2M_W_B_BUSER, notActiveS2M_W_B_BVALID, notActiveS2M_W_W_WREADY, registers0_M2S, registers0_outACK_registers0_outACK_HardLink, registers0_outData0_registers0_outData_HardLink, registers0_outData1_registers0_outData_HardLink, registers0_outData2_registers0_outData_HardLink, registers0_outData3_registers0_outData_HardLink, registers0_outWritten_registers0_outWritten_HardLink, registers0_Reg, registers0_S2M_registers0_S2M_HardLink, registers1_M2S, registers1_outACK_registers1_outACK_HardLink, registers1_outData0_registers1_outData_HardLink, registers1_outData1_registers1_outData_HardLink, registers1_outData2_registers1_outData_HardLink, registers1_outData3_registers1_outData_HardLink, registers1_outWritten_registers1_outWritten_HardLink, registers1_Reg, registers1_S2M_registers1_S2M_HardLink, registers2_M2S, registers2_outACK_registers2_outACK_HardLink, registers2_outData0_registers2_outData_HardLink, registers2_outData1_registers2_outData_HardLink, registers2_outData2_registers2_outData_HardLink, registers2_outData3_registers2_outData_HardLink, registers2_outWritten_registers2_outWritten_HardLink, registers2_Reg, registers2_S2M_registers2_S2M_HardLink, registers3_M2S, registers3_outACK_registers3_outACK_HardLink, registers3_outData0_registers3_outData_HardLink, registers3_outData1_registers3_outData_HardLink, registers3_outData2_registers3_outData_HardLink, registers3_outData3_registers3_outData_HardLink, registers3_outWritten_registers3_outWritten_HardLink, registers3_Reg, registers3_S2M_registers3_S2M_HardLink, SWE0, SWE1, SWE2, SWE3, WSTRB)
 	begin
 		Inputs_InData <= InData;
 		Inputs_MRE(0) <= MRE0;
@@ -423,11 +383,6 @@ begin
 		masters1_S2M(16 downto 9) <= notActiveS2M_R_R_RDATA(0);
 		masters1_S2M(8 downto 1) <= notActiveS2M_R_R_RID;
 		masters1_S2M(0) <= notActiveS2M_R_AR_ARREADY;
-		registers0_inWDATA(3) <= Inputs_InData(31 downto 24);
-		registers0_inWDATA(2) <= Inputs_InData(23 downto 16);
-		registers0_inWDATA(1) <= Inputs_InData(15 downto 8);
-		registers0_inWDATA(0) <= Inputs_InData(7 downto 0);
-		registers0_inWE <= Inputs_SWE(0);
 		registers0_M2S(221) <= notActiveM2S_W_B_BREADY;
 		registers0_M2S(220) <= notActiveM2S_W_W_WVALID;
 		registers0_M2S(219 downto 212) <= notActiveM2S_W_W_WUSER;
@@ -463,11 +418,8 @@ begin
 		registers0_M2S(47 downto 40) <= notActiveM2S_R_AR_ARLEN;
 		registers0_M2S(39 downto 8) <= notActiveM2S_R_AR_ARADDR;
 		registers0_M2S(7 downto 0) <= notActiveM2S_R_AR_ARID;
-		registers1_inWDATA(3) <= Inputs_InData(31 downto 24);
-		registers1_inWDATA(2) <= Inputs_InData(23 downto 16);
-		registers1_inWDATA(1) <= Inputs_InData(15 downto 8);
-		registers1_inWDATA(0) <= Inputs_InData(7 downto 0);
-		registers1_inWE <= Inputs_SWE(1);
+		registers0_Reg(32) <= Inputs_SWE(0);
+		registers0_Reg(31 downto 0) <= Inputs_InData;
 		registers1_M2S(221) <= notActiveM2S_W_B_BREADY;
 		registers1_M2S(220) <= notActiveM2S_W_W_WVALID;
 		registers1_M2S(219 downto 212) <= notActiveM2S_W_W_WUSER;
@@ -503,11 +455,8 @@ begin
 		registers1_M2S(47 downto 40) <= notActiveM2S_R_AR_ARLEN;
 		registers1_M2S(39 downto 8) <= notActiveM2S_R_AR_ARADDR;
 		registers1_M2S(7 downto 0) <= notActiveM2S_R_AR_ARID;
-		registers2_inWDATA(3) <= Inputs_InData(31 downto 24);
-		registers2_inWDATA(2) <= Inputs_InData(23 downto 16);
-		registers2_inWDATA(1) <= Inputs_InData(15 downto 8);
-		registers2_inWDATA(0) <= Inputs_InData(7 downto 0);
-		registers2_inWE <= Inputs_SWE(2);
+		registers1_Reg(32) <= Inputs_SWE(1);
+		registers1_Reg(31 downto 0) <= Inputs_InData;
 		registers2_M2S(221) <= notActiveM2S_W_B_BREADY;
 		registers2_M2S(220) <= notActiveM2S_W_W_WVALID;
 		registers2_M2S(219 downto 212) <= notActiveM2S_W_W_WUSER;
@@ -543,11 +492,8 @@ begin
 		registers2_M2S(47 downto 40) <= notActiveM2S_R_AR_ARLEN;
 		registers2_M2S(39 downto 8) <= notActiveM2S_R_AR_ARADDR;
 		registers2_M2S(7 downto 0) <= notActiveM2S_R_AR_ARID;
-		registers3_inWDATA(3) <= Inputs_InData(31 downto 24);
-		registers3_inWDATA(2) <= Inputs_InData(23 downto 16);
-		registers3_inWDATA(1) <= Inputs_InData(15 downto 8);
-		registers3_inWDATA(0) <= Inputs_InData(7 downto 0);
-		registers3_inWE <= Inputs_SWE(3);
+		registers2_Reg(32) <= Inputs_SWE(2);
+		registers2_Reg(31 downto 0) <= Inputs_InData;
 		registers3_M2S(221) <= notActiveM2S_W_B_BREADY;
 		registers3_M2S(220) <= notActiveM2S_W_W_WVALID;
 		registers3_M2S(219 downto 212) <= notActiveM2S_W_W_WUSER;
@@ -583,6 +529,8 @@ begin
 		registers3_M2S(47 downto 40) <= notActiveM2S_R_AR_ARLEN;
 		registers3_M2S(39 downto 8) <= notActiveM2S_R_AR_ARADDR;
 		registers3_M2S(7 downto 0) <= notActiveM2S_R_AR_ARID;
+		registers3_Reg(32) <= Inputs_SWE(3);
+		registers3_Reg(31 downto 0) <= Inputs_InData;
 		masters0_Master_masters0_Master_HardLink <= masters0_Master;
 		masters0_S2M_masters0_S2M_HardLink <= masters0_S2M;
 		masters0_M2S <= masters0_M2S_masters0_M2S_HardLink;
@@ -601,12 +549,8 @@ begin
 		masters1_RDATA(2) <= masters1_RDATA2_masters1_RDATA_HardLink;
 		masters1_RDATA(3) <= masters1_RDATA3_masters1_RDATA_HardLink;
 		masters1_WACK <= masters1_WACK_masters1_WACK_HardLink;
-		registers0_inWDATA0_registers0_inWDATA_HardLink <= registers0_inWDATA(0);
-		registers0_inWDATA1_registers0_inWDATA_HardLink <= registers0_inWDATA(1);
-		registers0_inWDATA2_registers0_inWDATA_HardLink <= registers0_inWDATA(2);
-		registers0_inWDATA3_registers0_inWDATA_HardLink <= registers0_inWDATA(3);
-		registers0_inWE_registers0_inWE_HardLink <= registers0_inWE;
 		registers0_M2S_registers0_M2S_HardLink <= registers0_M2S;
+		registers0_Reg_registers0_Reg_HardLink <= registers0_Reg;
 		registers0_outACK <= registers0_outACK_registers0_outACK_HardLink;
 		registers0_outData(0) <= registers0_outData0_registers0_outData_HardLink;
 		registers0_outData(1) <= registers0_outData1_registers0_outData_HardLink;
@@ -614,12 +558,8 @@ begin
 		registers0_outData(3) <= registers0_outData3_registers0_outData_HardLink;
 		registers0_outWritten <= registers0_outWritten_registers0_outWritten_HardLink;
 		registers0_S2M <= registers0_S2M_registers0_S2M_HardLink;
-		registers1_inWDATA0_registers1_inWDATA_HardLink <= registers1_inWDATA(0);
-		registers1_inWDATA1_registers1_inWDATA_HardLink <= registers1_inWDATA(1);
-		registers1_inWDATA2_registers1_inWDATA_HardLink <= registers1_inWDATA(2);
-		registers1_inWDATA3_registers1_inWDATA_HardLink <= registers1_inWDATA(3);
-		registers1_inWE_registers1_inWE_HardLink <= registers1_inWE;
 		registers1_M2S_registers1_M2S_HardLink <= registers1_M2S;
+		registers1_Reg_registers1_Reg_HardLink <= registers1_Reg;
 		registers1_outACK <= registers1_outACK_registers1_outACK_HardLink;
 		registers1_outData(0) <= registers1_outData0_registers1_outData_HardLink;
 		registers1_outData(1) <= registers1_outData1_registers1_outData_HardLink;
@@ -627,12 +567,8 @@ begin
 		registers1_outData(3) <= registers1_outData3_registers1_outData_HardLink;
 		registers1_outWritten <= registers1_outWritten_registers1_outWritten_HardLink;
 		registers1_S2M <= registers1_S2M_registers1_S2M_HardLink;
-		registers2_inWDATA0_registers2_inWDATA_HardLink <= registers2_inWDATA(0);
-		registers2_inWDATA1_registers2_inWDATA_HardLink <= registers2_inWDATA(1);
-		registers2_inWDATA2_registers2_inWDATA_HardLink <= registers2_inWDATA(2);
-		registers2_inWDATA3_registers2_inWDATA_HardLink <= registers2_inWDATA(3);
-		registers2_inWE_registers2_inWE_HardLink <= registers2_inWE;
 		registers2_M2S_registers2_M2S_HardLink <= registers2_M2S;
+		registers2_Reg_registers2_Reg_HardLink <= registers2_Reg;
 		registers2_outACK <= registers2_outACK_registers2_outACK_HardLink;
 		registers2_outData(0) <= registers2_outData0_registers2_outData_HardLink;
 		registers2_outData(1) <= registers2_outData1_registers2_outData_HardLink;
@@ -640,12 +576,8 @@ begin
 		registers2_outData(3) <= registers2_outData3_registers2_outData_HardLink;
 		registers2_outWritten <= registers2_outWritten_registers2_outWritten_HardLink;
 		registers2_S2M <= registers2_S2M_registers2_S2M_HardLink;
-		registers3_inWDATA0_registers3_inWDATA_HardLink <= registers3_inWDATA(0);
-		registers3_inWDATA1_registers3_inWDATA_HardLink <= registers3_inWDATA(1);
-		registers3_inWDATA2_registers3_inWDATA_HardLink <= registers3_inWDATA(2);
-		registers3_inWDATA3_registers3_inWDATA_HardLink <= registers3_inWDATA(3);
-		registers3_inWE_registers3_inWE_HardLink <= registers3_inWE;
 		registers3_M2S_registers3_M2S_HardLink <= registers3_M2S;
+		registers3_Reg_registers3_Reg_HardLink <= registers3_Reg;
 		registers3_outACK <= registers3_outACK_registers3_outACK_HardLink;
 		registers3_outData(0) <= registers3_outData0_registers3_outData_HardLink;
 		registers3_outData(1) <= registers3_outData1_registers3_outData_HardLink;

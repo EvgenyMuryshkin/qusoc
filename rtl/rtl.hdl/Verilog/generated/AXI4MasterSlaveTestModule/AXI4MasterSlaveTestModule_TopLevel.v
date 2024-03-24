@@ -46,8 +46,8 @@ module AXI4MasterSlaveTestModule_TopLevel
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire [7: 0] State_ReadDataDefault = 8'b00000000;
-	wire AXI4MasterSlaveTestModule_L58F30T31_Expr = 1'b0;
-	wire AXI4MasterSlaveTestModule_L59F30T31_Expr = 1'b0;
+	wire AXI4MasterSlaveTestModule_L61F30T31_Expr = 1'b0;
+	wire AXI4MasterSlaveTestModule_L62F30T31_Expr = 1'b0;
 	wire [31: 0] Inputs_InData;
 	wire Inputs_MRE;
 	wire Inputs_MWE;
@@ -58,8 +58,8 @@ module AXI4MasterSlaveTestModule_TopLevel
 	wire [221: 0] master_M2S;
 	wire master_RACK;
 	wire master_WACK;
-	wire reg_inWE;
 	wire [221: 0] reg_M2S;
+	wire [32: 0] reg_Reg;
 	wire reg_outACK;
 	wire reg_outWritten;
 	wire [73: 0] reg_S2M;
@@ -74,12 +74,8 @@ module AXI4MasterSlaveTestModule_TopLevel
 	wire [7: 0] master_RDATA2_master_RDATA_HardLink;
 	wire [7: 0] master_RDATA3_master_RDATA_HardLink;
 	wire master_WACK_master_WACK_HardLink;
-	wire [7: 0] reg_inWDATA0_reg_inWDATA_HardLink;
-	wire [7: 0] reg_inWDATA1_reg_inWDATA_HardLink;
-	wire [7: 0] reg_inWDATA2_reg_inWDATA_HardLink;
-	wire [7: 0] reg_inWDATA3_reg_inWDATA_HardLink;
-	wire reg_inWE_reg_inWE_HardLink;
 	wire [221: 0] reg_M2S_reg_M2S_HardLink;
+	wire [32: 0] reg_Reg_reg_Reg_HardLink;
 	wire reg_outACK_reg_outACK_HardLink;
 	wire [7: 0] reg_outData0_reg_outData_HardLink;
 	wire [7: 0] reg_outData1_reg_outData_HardLink;
@@ -102,7 +98,6 @@ module AXI4MasterSlaveTestModule_TopLevel
 			NextState_ReadData[NextState_ReadData_Iterator] = 0;
 	end
 	wire [7 : 0] master_RDATA [0 : 3];
-	wire [7 : 0] reg_inWDATA [0 : 3];
 	wire [7 : 0] reg_outData [0 : 3];
 	wire BoardSignals_Clock;
 	wire BoardSignals_Reset;
@@ -158,12 +153,8 @@ module AXI4MasterSlaveTestModule_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.inWDATA0 (reg_inWDATA0_reg_inWDATA_HardLink),
-		.inWDATA1 (reg_inWDATA1_reg_inWDATA_HardLink),
-		.inWDATA2 (reg_inWDATA2_reg_inWDATA_HardLink),
-		.inWDATA3 (reg_inWDATA3_reg_inWDATA_HardLink),
-		.inWE (reg_inWE_reg_inWE_HardLink),
 		.M2S (reg_M2S_reg_M2S_HardLink),
+		.Reg (reg_Reg_reg_Reg_HardLink),
 		.outACK (reg_outACK_reg_outACK_HardLink),
 		.outData0 (reg_outData0_reg_outData_HardLink),
 		.outData1 (reg_outData1_reg_outData_HardLink),
@@ -192,19 +183,16 @@ module AXI4MasterSlaveTestModule_TopLevel
 	assign Inputs_MWE = MWE;
 	assign Inputs_SWE = SWE;
 	assign Inputs_WSTRB = WSTRB;
-	assign reg_inWDATA[3] = Inputs_InData[31:24];
-	assign reg_inWDATA[2] = Inputs_InData[23:16];
-	assign reg_inWDATA[1] = Inputs_InData[15:8];
-	assign reg_inWDATA[0] = Inputs_InData[7:0];
-	assign reg_inWE = Inputs_SWE;
 	assign reg_M2S[221:84] = master_M2S[221:84];
 	assign reg_M2S[83:0] = master_M2S[83:0];
+	assign reg_Reg[32] = Inputs_SWE;
+	assign reg_Reg[31:0] = Inputs_InData;
 	assign master_Master[101:98] = Inputs_WSTRB;
 	assign master_Master[97] = Inputs_MWE;
 	assign master_Master[96:65] = Inputs_InData;
 	assign master_Master[64] = Inputs_MRE;
-	assign master_Master[63:32] = { {31{1'b0}}, AXI4MasterSlaveTestModule_L59F30T31_Expr };
-	assign master_Master[31:0] = { {31{1'b0}}, AXI4MasterSlaveTestModule_L58F30T31_Expr };
+	assign master_Master[63:32] = { {31{1'b0}}, AXI4MasterSlaveTestModule_L62F30T31_Expr };
+	assign master_Master[31:0] = { {31{1'b0}}, AXI4MasterSlaveTestModule_L61F30T31_Expr };
 	assign master_S2M[73:53] = reg_S2M[73:53];
 	assign master_S2M[52:0] = reg_S2M[52:0];
 	assign BVALID = reg_S2M[72];
@@ -224,12 +212,8 @@ module AXI4MasterSlaveTestModule_TopLevel
 	assign master_RDATA[2] = master_RDATA2_master_RDATA_HardLink;
 	assign master_RDATA[3] = master_RDATA3_master_RDATA_HardLink;
 	assign master_WACK = master_WACK_master_WACK_HardLink;
-	assign reg_inWDATA0_reg_inWDATA_HardLink = reg_inWDATA[0];
-	assign reg_inWDATA1_reg_inWDATA_HardLink = reg_inWDATA[1];
-	assign reg_inWDATA2_reg_inWDATA_HardLink = reg_inWDATA[2];
-	assign reg_inWDATA3_reg_inWDATA_HardLink = reg_inWDATA[3];
-	assign reg_inWE_reg_inWE_HardLink = reg_inWE;
 	assign reg_M2S_reg_M2S_HardLink = reg_M2S;
+	assign reg_Reg_reg_Reg_HardLink = reg_Reg;
 	assign reg_outACK = reg_outACK_reg_outACK_HardLink;
 	assign reg_outData[0] = reg_outData0_reg_outData_HardLink;
 	assign reg_outData[1] = reg_outData1_reg_outData_HardLink;

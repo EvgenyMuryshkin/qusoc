@@ -4,6 +4,18 @@ using System;
 
 namespace rtl.modules
 {
+    public class AXI4RegisterModuleInput
+    {
+        public AXI4RegisterModuleInput() : this(axiSize.B4) { }
+        public AXI4RegisterModuleInput(axiSize size)
+        {
+            inWDATA = new byte[AXI4Tools.Bytes(size)];
+        }
+
+        public bool inWE = false;
+        public byte[] inWDATA = null;
+    }
+
     public class AXI4RegisterModuleInputs
     {
         public AXI4RegisterModuleInputs() : this(axiSize.B4) { }
@@ -11,12 +23,11 @@ namespace rtl.modules
         public AXI4RegisterModuleInputs(axiSize size)
         {
             M2S = new AXI4_M2S(size);
-            inWDATA = new byte[AXI4Tools.Bytes(size)];
+            Reg = new AXI4RegisterModuleInput(size);
         }
 
         public AXI4_M2S M2S;
-        public bool inWE = false;
-        public byte[] inWDATA = null;
+        public AXI4RegisterModuleInput Reg;
     }
 
     public class AXI4RegisterModuleState
@@ -44,7 +55,7 @@ namespace rtl.modules
         }
 
         public byte[] outData => State.bytes;
-        public bool outACK => Inputs.inWE;
+        public bool outACK => Inputs.Reg.inWE;
 
         public AXI4_S2M S2M => axiSlave.S2M;
         public bool outWritten => State.Written;
@@ -58,18 +69,18 @@ namespace rtl.modules
                 inARREADY = true,
                 inRVALID = true,
                 inAWREADY = true,
-                inWREADY = !Inputs.inWE,
+                inWREADY = !Inputs.Reg.inWE,
                 inBVALID = true,
                 inRDATA = State.bytes,
             });
         }
         protected override void OnStage()
         {
-            NextState.Written = Inputs.inWE || axiSlave.outWREADYConfirming;
+            NextState.Written = Inputs.Reg.inWE || axiSlave.outWREADYConfirming;
 
-            if (Inputs.inWE)
+            if (Inputs.Reg.inWE)
             {
-                NextState.bytes = Inputs.inWDATA;
+                NextState.bytes = Inputs.Reg.inWDATA;
             }
             else if (axiSlave.outWREADYConfirming)
             {

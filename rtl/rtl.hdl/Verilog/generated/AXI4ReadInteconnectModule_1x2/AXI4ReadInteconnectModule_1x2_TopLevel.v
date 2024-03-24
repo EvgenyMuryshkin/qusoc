@@ -58,6 +58,32 @@ module AXI4ReadInteconnectModule_1x2_TopLevel
 	input wire iRight1_R_RLAST,
 	input wire [7:0] iRight1_R_RUSER,
 	input wire iRight1_R_RVALID,
+	output wire [7:0] M2S0_AR_ARID,
+	output wire [31:0] M2S0_AR_ARADDR,
+	output wire [7:0] M2S0_AR_ARLEN,
+	output wire [2:0] M2S0_AR_ARSIZE,
+	output wire [1:0] M2S0_AR_ARBURST,
+	output wire [1:0] M2S0_AR_ARLOCK,
+	output wire [3:0] M2S0_AR_ARCACHE,
+	output wire [2:0] M2S0_AR_ARPROT,
+	output wire [3:0] M2S0_AR_ARQOS,
+	output wire [7:0] M2S0_AR_ARREGION,
+	output wire [7:0] M2S0_AR_ARUSER,
+	output wire M2S0_AR_ARVALID,
+	output wire M2S0_R_RREADY,
+	output wire [7:0] M2S1_AR_ARID,
+	output wire [31:0] M2S1_AR_ARADDR,
+	output wire [7:0] M2S1_AR_ARLEN,
+	output wire [2:0] M2S1_AR_ARSIZE,
+	output wire [1:0] M2S1_AR_ARBURST,
+	output wire [1:0] M2S1_AR_ARLOCK,
+	output wire [3:0] M2S1_AR_ARCACHE,
+	output wire [2:0] M2S1_AR_ARPROT,
+	output wire [3:0] M2S1_AR_ARQOS,
+	output wire [7:0] M2S1_AR_ARREGION,
+	output wire [7:0] M2S1_AR_ARUSER,
+	output wire M2S1_AR_ARVALID,
+	output wire M2S1_R_RREADY,
 	output wire S2M0_AR_ARREADY,
 	output wire [7:0] S2M0_R_RID,
 	output wire [7:0] S2M0_R_RDATA0,
@@ -443,6 +469,32 @@ module AXI4ReadInteconnectModule_1x2_TopLevel
 	assign DuplexMux_iRightAddr = State_rightAddr;
 	assign DuplexMux_iRightAddrValid = State_rightAddrValid;
 	assign rangeDetectorArray0_iAddress = Inputs_iLeft[0][39:8];
+	assign M2S0_R_RREADY = muxLeft[0][83];
+	assign M2S0_AR_ARVALID = muxLeft[0][82];
+	assign M2S0_AR_ARUSER = muxLeft[0][81:74];
+	assign M2S0_AR_ARREGION = muxLeft[0][73:66];
+	assign M2S0_AR_ARQOS = muxLeft[0][65:62];
+	assign M2S0_AR_ARPROT = muxLeft[0][61:59];
+	assign M2S0_AR_ARCACHE = muxLeft[0][58:55];
+	assign M2S0_AR_ARLOCK = muxLeft[0][54:53];
+	assign M2S0_AR_ARBURST = muxLeft[0][52:51];
+	assign M2S0_AR_ARSIZE = muxLeft[0][50:48];
+	assign M2S0_AR_ARLEN = muxLeft[0][47:40];
+	assign M2S0_AR_ARADDR = muxLeft[0][39:8];
+	assign M2S0_AR_ARID = muxLeft[0][7:0];
+	assign M2S1_R_RREADY = muxLeft[1][83];
+	assign M2S1_AR_ARVALID = muxLeft[1][82];
+	assign M2S1_AR_ARUSER = muxLeft[1][81:74];
+	assign M2S1_AR_ARREGION = muxLeft[1][73:66];
+	assign M2S1_AR_ARQOS = muxLeft[1][65:62];
+	assign M2S1_AR_ARPROT = muxLeft[1][61:59];
+	assign M2S1_AR_ARCACHE = muxLeft[1][58:55];
+	assign M2S1_AR_ARLOCK = muxLeft[1][54:53];
+	assign M2S1_AR_ARBURST = muxLeft[1][52:51];
+	assign M2S1_AR_ARSIZE = muxLeft[1][50:48];
+	assign M2S1_AR_ARLEN = muxLeft[1][47:40];
+	assign M2S1_AR_ARADDR = muxLeft[1][39:8];
+	assign M2S1_AR_ARID = muxLeft[1][7:0];
 	assign S2M0_R_RVALID = muxRight[0][52];
 	assign S2M0_R_RUSER = muxRight[0][51:44];
 	assign S2M0_R_RLAST = muxRight[0][43];

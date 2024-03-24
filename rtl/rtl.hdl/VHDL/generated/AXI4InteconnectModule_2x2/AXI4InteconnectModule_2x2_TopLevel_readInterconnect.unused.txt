@@ -2,7 +2,6 @@ No reads:
 	ActiveTransactions
 	Encoder_MSBValue
 	leftCount
-	muxLeft
 	muxLeftData_AR_ARADDR
 	muxLeftData_AR_ARBURST
 	muxLeftData_AR_ARCACHE

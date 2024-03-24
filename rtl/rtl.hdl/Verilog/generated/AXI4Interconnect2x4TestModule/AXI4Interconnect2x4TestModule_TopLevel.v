@@ -106,23 +106,23 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	wire [221: 0] masters1_M2S;
 	wire masters1_RACK;
 	wire masters1_WACK;
-	wire registers0_inWE;
 	wire [221: 0] registers0_M2S;
+	wire [32: 0] registers0_Reg;
 	wire registers0_outACK;
 	wire registers0_outWritten;
 	wire [73: 0] registers0_S2M;
-	wire registers1_inWE;
 	wire [221: 0] registers1_M2S;
+	wire [32: 0] registers1_Reg;
 	wire registers1_outACK;
 	wire registers1_outWritten;
 	wire [73: 0] registers1_S2M;
-	wire registers2_inWE;
 	wire [221: 0] registers2_M2S;
+	wire [32: 0] registers2_Reg;
 	wire registers2_outACK;
 	wire registers2_outWritten;
 	wire [73: 0] registers2_S2M;
-	wire registers3_inWE;
 	wire [221: 0] registers3_M2S;
+	wire [32: 0] registers3_Reg;
 	wire registers3_outACK;
 	wire registers3_outWritten;
 	wire [73: 0] registers3_S2M;
@@ -144,12 +144,8 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	wire [7: 0] masters1_RDATA2_masters1_RDATA_HardLink;
 	wire [7: 0] masters1_RDATA3_masters1_RDATA_HardLink;
 	wire masters1_WACK_masters1_WACK_HardLink;
-	wire [7: 0] registers0_inWDATA0_registers0_inWDATA_HardLink;
-	wire [7: 0] registers0_inWDATA1_registers0_inWDATA_HardLink;
-	wire [7: 0] registers0_inWDATA2_registers0_inWDATA_HardLink;
-	wire [7: 0] registers0_inWDATA3_registers0_inWDATA_HardLink;
-	wire registers0_inWE_registers0_inWE_HardLink;
 	wire [221: 0] registers0_M2S_registers0_M2S_HardLink;
+	wire [32: 0] registers0_Reg_registers0_Reg_HardLink;
 	wire registers0_outACK_registers0_outACK_HardLink;
 	wire [7: 0] registers0_outData0_registers0_outData_HardLink;
 	wire [7: 0] registers0_outData1_registers0_outData_HardLink;
@@ -157,12 +153,8 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	wire [7: 0] registers0_outData3_registers0_outData_HardLink;
 	wire registers0_outWritten_registers0_outWritten_HardLink;
 	wire [73: 0] registers0_S2M_registers0_S2M_HardLink;
-	wire [7: 0] registers1_inWDATA0_registers1_inWDATA_HardLink;
-	wire [7: 0] registers1_inWDATA1_registers1_inWDATA_HardLink;
-	wire [7: 0] registers1_inWDATA2_registers1_inWDATA_HardLink;
-	wire [7: 0] registers1_inWDATA3_registers1_inWDATA_HardLink;
-	wire registers1_inWE_registers1_inWE_HardLink;
 	wire [221: 0] registers1_M2S_registers1_M2S_HardLink;
+	wire [32: 0] registers1_Reg_registers1_Reg_HardLink;
 	wire registers1_outACK_registers1_outACK_HardLink;
 	wire [7: 0] registers1_outData0_registers1_outData_HardLink;
 	wire [7: 0] registers1_outData1_registers1_outData_HardLink;
@@ -170,12 +162,8 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	wire [7: 0] registers1_outData3_registers1_outData_HardLink;
 	wire registers1_outWritten_registers1_outWritten_HardLink;
 	wire [73: 0] registers1_S2M_registers1_S2M_HardLink;
-	wire [7: 0] registers2_inWDATA0_registers2_inWDATA_HardLink;
-	wire [7: 0] registers2_inWDATA1_registers2_inWDATA_HardLink;
-	wire [7: 0] registers2_inWDATA2_registers2_inWDATA_HardLink;
-	wire [7: 0] registers2_inWDATA3_registers2_inWDATA_HardLink;
-	wire registers2_inWE_registers2_inWE_HardLink;
 	wire [221: 0] registers2_M2S_registers2_M2S_HardLink;
+	wire [32: 0] registers2_Reg_registers2_Reg_HardLink;
 	wire registers2_outACK_registers2_outACK_HardLink;
 	wire [7: 0] registers2_outData0_registers2_outData_HardLink;
 	wire [7: 0] registers2_outData1_registers2_outData_HardLink;
@@ -183,12 +171,8 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	wire [7: 0] registers2_outData3_registers2_outData_HardLink;
 	wire registers2_outWritten_registers2_outWritten_HardLink;
 	wire [73: 0] registers2_S2M_registers2_S2M_HardLink;
-	wire [7: 0] registers3_inWDATA0_registers3_inWDATA_HardLink;
-	wire [7: 0] registers3_inWDATA1_registers3_inWDATA_HardLink;
-	wire [7: 0] registers3_inWDATA2_registers3_inWDATA_HardLink;
-	wire [7: 0] registers3_inWDATA3_registers3_inWDATA_HardLink;
-	wire registers3_inWE_registers3_inWE_HardLink;
 	wire [221: 0] registers3_M2S_registers3_M2S_HardLink;
+	wire [32: 0] registers3_Reg_registers3_Reg_HardLink;
 	wire registers3_outACK_registers3_outACK_HardLink;
 	wire [7: 0] registers3_outData0_registers3_outData_HardLink;
 	wire [7: 0] registers3_outData1_registers3_outData_HardLink;
@@ -223,13 +207,9 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	end
 	wire [7 : 0] masters0_RDATA [0 : 3];
 	wire [7 : 0] masters1_RDATA [0 : 3];
-	wire [7 : 0] registers0_inWDATA [0 : 3];
 	wire [7 : 0] registers0_outData [0 : 3];
-	wire [7 : 0] registers1_inWDATA [0 : 3];
 	wire [7 : 0] registers1_outData [0 : 3];
-	wire [7 : 0] registers2_inWDATA [0 : 3];
 	wire [7 : 0] registers2_outData [0 : 3];
-	wire [7 : 0] registers3_inWDATA [0 : 3];
 	wire [7 : 0] registers3_outData [0 : 3];
 	wire [221 : 0] AXI4Interconnect2x4TestModule_L46F39T75_Enumerable [0 : 1];
 	wire BoardSignals_Clock;
@@ -289,12 +269,8 @@ module AXI4Interconnect2x4TestModule_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.inWDATA0 (registers0_inWDATA0_registers0_inWDATA_HardLink),
-		.inWDATA1 (registers0_inWDATA1_registers0_inWDATA_HardLink),
-		.inWDATA2 (registers0_inWDATA2_registers0_inWDATA_HardLink),
-		.inWDATA3 (registers0_inWDATA3_registers0_inWDATA_HardLink),
-		.inWE (registers0_inWE_registers0_inWE_HardLink),
 		.M2S (registers0_M2S_registers0_M2S_HardLink),
+		.Reg (registers0_Reg_registers0_Reg_HardLink),
 		.outACK (registers0_outACK_registers0_outACK_HardLink),
 		.outData0 (registers0_outData0_registers0_outData_HardLink),
 		.outData1 (registers0_outData1_registers0_outData_HardLink),
@@ -313,12 +289,8 @@ module AXI4Interconnect2x4TestModule_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.inWDATA0 (registers1_inWDATA0_registers1_inWDATA_HardLink),
-		.inWDATA1 (registers1_inWDATA1_registers1_inWDATA_HardLink),
-		.inWDATA2 (registers1_inWDATA2_registers1_inWDATA_HardLink),
-		.inWDATA3 (registers1_inWDATA3_registers1_inWDATA_HardLink),
-		.inWE (registers1_inWE_registers1_inWE_HardLink),
 		.M2S (registers1_M2S_registers1_M2S_HardLink),
+		.Reg (registers1_Reg_registers1_Reg_HardLink),
 		.outACK (registers1_outACK_registers1_outACK_HardLink),
 		.outData0 (registers1_outData0_registers1_outData_HardLink),
 		.outData1 (registers1_outData1_registers1_outData_HardLink),
@@ -337,12 +309,8 @@ module AXI4Interconnect2x4TestModule_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.inWDATA0 (registers2_inWDATA0_registers2_inWDATA_HardLink),
-		.inWDATA1 (registers2_inWDATA1_registers2_inWDATA_HardLink),
-		.inWDATA2 (registers2_inWDATA2_registers2_inWDATA_HardLink),
-		.inWDATA3 (registers2_inWDATA3_registers2_inWDATA_HardLink),
-		.inWE (registers2_inWE_registers2_inWE_HardLink),
 		.M2S (registers2_M2S_registers2_M2S_HardLink),
+		.Reg (registers2_Reg_registers2_Reg_HardLink),
 		.outACK (registers2_outACK_registers2_outACK_HardLink),
 		.outData0 (registers2_outData0_registers2_outData_HardLink),
 		.outData1 (registers2_outData1_registers2_outData_HardLink),
@@ -361,12 +329,8 @@ module AXI4Interconnect2x4TestModule_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.inWDATA0 (registers3_inWDATA0_registers3_inWDATA_HardLink),
-		.inWDATA1 (registers3_inWDATA1_registers3_inWDATA_HardLink),
-		.inWDATA2 (registers3_inWDATA2_registers3_inWDATA_HardLink),
-		.inWDATA3 (registers3_inWDATA3_registers3_inWDATA_HardLink),
-		.inWE (registers3_inWE_registers3_inWE_HardLink),
 		.M2S (registers3_M2S_registers3_M2S_HardLink),
+		.Reg (registers3_Reg_registers3_Reg_HardLink),
 		.outACK (registers3_outACK_registers3_outACK_HardLink),
 		.outData0 (registers3_outData0_registers3_outData_HardLink),
 		.outData1 (registers3_outData1_registers3_outData_HardLink),
@@ -433,11 +397,6 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	assign masters1_S2M[16:9] = notActiveS2M_R_R_RDATA[0];
 	assign masters1_S2M[8:1] = notActiveS2M_R_R_RID;
 	assign masters1_S2M[0] = notActiveS2M_R_AR_ARREADY;
-	assign registers0_inWDATA[3] = Inputs_InData[31:24];
-	assign registers0_inWDATA[2] = Inputs_InData[23:16];
-	assign registers0_inWDATA[1] = Inputs_InData[15:8];
-	assign registers0_inWDATA[0] = Inputs_InData[7:0];
-	assign registers0_inWE = Inputs_SWE[0];
 	assign registers0_M2S[221] = notActiveM2S_W_B_BREADY;
 	assign registers0_M2S[220] = notActiveM2S_W_W_WVALID;
 	assign registers0_M2S[219:212] = notActiveM2S_W_W_WUSER;
@@ -473,11 +432,8 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	assign registers0_M2S[47:40] = notActiveM2S_R_AR_ARLEN;
 	assign registers0_M2S[39:8] = notActiveM2S_R_AR_ARADDR;
 	assign registers0_M2S[7:0] = notActiveM2S_R_AR_ARID;
-	assign registers1_inWDATA[3] = Inputs_InData[31:24];
-	assign registers1_inWDATA[2] = Inputs_InData[23:16];
-	assign registers1_inWDATA[1] = Inputs_InData[15:8];
-	assign registers1_inWDATA[0] = Inputs_InData[7:0];
-	assign registers1_inWE = Inputs_SWE[1];
+	assign registers0_Reg[32] = Inputs_SWE[0];
+	assign registers0_Reg[31:0] = Inputs_InData;
 	assign registers1_M2S[221] = notActiveM2S_W_B_BREADY;
 	assign registers1_M2S[220] = notActiveM2S_W_W_WVALID;
 	assign registers1_M2S[219:212] = notActiveM2S_W_W_WUSER;
@@ -513,11 +469,8 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	assign registers1_M2S[47:40] = notActiveM2S_R_AR_ARLEN;
 	assign registers1_M2S[39:8] = notActiveM2S_R_AR_ARADDR;
 	assign registers1_M2S[7:0] = notActiveM2S_R_AR_ARID;
-	assign registers2_inWDATA[3] = Inputs_InData[31:24];
-	assign registers2_inWDATA[2] = Inputs_InData[23:16];
-	assign registers2_inWDATA[1] = Inputs_InData[15:8];
-	assign registers2_inWDATA[0] = Inputs_InData[7:0];
-	assign registers2_inWE = Inputs_SWE[2];
+	assign registers1_Reg[32] = Inputs_SWE[1];
+	assign registers1_Reg[31:0] = Inputs_InData;
 	assign registers2_M2S[221] = notActiveM2S_W_B_BREADY;
 	assign registers2_M2S[220] = notActiveM2S_W_W_WVALID;
 	assign registers2_M2S[219:212] = notActiveM2S_W_W_WUSER;
@@ -553,11 +506,8 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	assign registers2_M2S[47:40] = notActiveM2S_R_AR_ARLEN;
 	assign registers2_M2S[39:8] = notActiveM2S_R_AR_ARADDR;
 	assign registers2_M2S[7:0] = notActiveM2S_R_AR_ARID;
-	assign registers3_inWDATA[3] = Inputs_InData[31:24];
-	assign registers3_inWDATA[2] = Inputs_InData[23:16];
-	assign registers3_inWDATA[1] = Inputs_InData[15:8];
-	assign registers3_inWDATA[0] = Inputs_InData[7:0];
-	assign registers3_inWE = Inputs_SWE[3];
+	assign registers2_Reg[32] = Inputs_SWE[2];
+	assign registers2_Reg[31:0] = Inputs_InData;
 	assign registers3_M2S[221] = notActiveM2S_W_B_BREADY;
 	assign registers3_M2S[220] = notActiveM2S_W_W_WVALID;
 	assign registers3_M2S[219:212] = notActiveM2S_W_W_WUSER;
@@ -593,6 +543,8 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	assign registers3_M2S[47:40] = notActiveM2S_R_AR_ARLEN;
 	assign registers3_M2S[39:8] = notActiveM2S_R_AR_ARADDR;
 	assign registers3_M2S[7:0] = notActiveM2S_R_AR_ARID;
+	assign registers3_Reg[32] = Inputs_SWE[3];
+	assign registers3_Reg[31:0] = Inputs_InData;
 	assign masters0_Master_masters0_Master_HardLink = masters0_Master;
 	assign masters0_S2M_masters0_S2M_HardLink = masters0_S2M;
 	assign masters0_M2S = masters0_M2S_masters0_M2S_HardLink;
@@ -611,12 +563,8 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	assign masters1_RDATA[2] = masters1_RDATA2_masters1_RDATA_HardLink;
 	assign masters1_RDATA[3] = masters1_RDATA3_masters1_RDATA_HardLink;
 	assign masters1_WACK = masters1_WACK_masters1_WACK_HardLink;
-	assign registers0_inWDATA0_registers0_inWDATA_HardLink = registers0_inWDATA[0];
-	assign registers0_inWDATA1_registers0_inWDATA_HardLink = registers0_inWDATA[1];
-	assign registers0_inWDATA2_registers0_inWDATA_HardLink = registers0_inWDATA[2];
-	assign registers0_inWDATA3_registers0_inWDATA_HardLink = registers0_inWDATA[3];
-	assign registers0_inWE_registers0_inWE_HardLink = registers0_inWE;
 	assign registers0_M2S_registers0_M2S_HardLink = registers0_M2S;
+	assign registers0_Reg_registers0_Reg_HardLink = registers0_Reg;
 	assign registers0_outACK = registers0_outACK_registers0_outACK_HardLink;
 	assign registers0_outData[0] = registers0_outData0_registers0_outData_HardLink;
 	assign registers0_outData[1] = registers0_outData1_registers0_outData_HardLink;
@@ -624,12 +572,8 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	assign registers0_outData[3] = registers0_outData3_registers0_outData_HardLink;
 	assign registers0_outWritten = registers0_outWritten_registers0_outWritten_HardLink;
 	assign registers0_S2M = registers0_S2M_registers0_S2M_HardLink;
-	assign registers1_inWDATA0_registers1_inWDATA_HardLink = registers1_inWDATA[0];
-	assign registers1_inWDATA1_registers1_inWDATA_HardLink = registers1_inWDATA[1];
-	assign registers1_inWDATA2_registers1_inWDATA_HardLink = registers1_inWDATA[2];
-	assign registers1_inWDATA3_registers1_inWDATA_HardLink = registers1_inWDATA[3];
-	assign registers1_inWE_registers1_inWE_HardLink = registers1_inWE;
 	assign registers1_M2S_registers1_M2S_HardLink = registers1_M2S;
+	assign registers1_Reg_registers1_Reg_HardLink = registers1_Reg;
 	assign registers1_outACK = registers1_outACK_registers1_outACK_HardLink;
 	assign registers1_outData[0] = registers1_outData0_registers1_outData_HardLink;
 	assign registers1_outData[1] = registers1_outData1_registers1_outData_HardLink;
@@ -637,12 +581,8 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	assign registers1_outData[3] = registers1_outData3_registers1_outData_HardLink;
 	assign registers1_outWritten = registers1_outWritten_registers1_outWritten_HardLink;
 	assign registers1_S2M = registers1_S2M_registers1_S2M_HardLink;
-	assign registers2_inWDATA0_registers2_inWDATA_HardLink = registers2_inWDATA[0];
-	assign registers2_inWDATA1_registers2_inWDATA_HardLink = registers2_inWDATA[1];
-	assign registers2_inWDATA2_registers2_inWDATA_HardLink = registers2_inWDATA[2];
-	assign registers2_inWDATA3_registers2_inWDATA_HardLink = registers2_inWDATA[3];
-	assign registers2_inWE_registers2_inWE_HardLink = registers2_inWE;
 	assign registers2_M2S_registers2_M2S_HardLink = registers2_M2S;
+	assign registers2_Reg_registers2_Reg_HardLink = registers2_Reg;
 	assign registers2_outACK = registers2_outACK_registers2_outACK_HardLink;
 	assign registers2_outData[0] = registers2_outData0_registers2_outData_HardLink;
 	assign registers2_outData[1] = registers2_outData1_registers2_outData_HardLink;
@@ -650,12 +590,8 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	assign registers2_outData[3] = registers2_outData3_registers2_outData_HardLink;
 	assign registers2_outWritten = registers2_outWritten_registers2_outWritten_HardLink;
 	assign registers2_S2M = registers2_S2M_registers2_S2M_HardLink;
-	assign registers3_inWDATA0_registers3_inWDATA_HardLink = registers3_inWDATA[0];
-	assign registers3_inWDATA1_registers3_inWDATA_HardLink = registers3_inWDATA[1];
-	assign registers3_inWDATA2_registers3_inWDATA_HardLink = registers3_inWDATA[2];
-	assign registers3_inWDATA3_registers3_inWDATA_HardLink = registers3_inWDATA[3];
-	assign registers3_inWE_registers3_inWE_HardLink = registers3_inWE;
 	assign registers3_M2S_registers3_M2S_HardLink = registers3_M2S;
+	assign registers3_Reg_registers3_Reg_HardLink = registers3_Reg;
 	assign registers3_outACK = registers3_outACK_registers3_outACK_HardLink;
 	assign registers3_outData[0] = registers3_outData0_registers3_outData_HardLink;
 	assign registers3_outData[1] = registers3_outData1_registers3_outData_HardLink;

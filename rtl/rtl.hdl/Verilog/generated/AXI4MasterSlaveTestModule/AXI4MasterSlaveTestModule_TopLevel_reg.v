@@ -28,12 +28,8 @@ module AXI4MasterSlaveTestModule_TopLevel_reg
 	input wire BoardSignals_Running,
 	input wire BoardSignals_Starting,
 	input wire BoardSignals_Started,
-	input wire [7:0] inWDATA0,
-	input wire [7:0] inWDATA1,
-	input wire [7:0] inWDATA2,
-	input wire [7:0] inWDATA3,
-	input wire inWE,
 	input wire [221:0] M2S,
+	input wire [32:0] Reg,
 	output wire outACK,
 	output wire [7:0] outData0,
 	output wire [7:0] outData1,
@@ -52,11 +48,10 @@ module AXI4MasterSlaveTestModule_TopLevel_reg
 	wire false = 1'b0;
 	wire [7: 0] State_bytesDefault = 8'b00000000;
 	wire [1: 0] size = 2'b10;
-	wire AXI4RegisterModule_L58F29T33_Expr = 1'b1;
-	wire AXI4RegisterModule_L59F28T32_Expr = 1'b1;
-	wire AXI4RegisterModule_L60F29T33_Expr = 1'b1;
-	wire AXI4RegisterModule_L62F28T32_Expr = 1'b1;
-	wire Inputs_inWE;
+	wire AXI4RegisterModule_L69F29T33_Expr = 1'b1;
+	wire AXI4RegisterModule_L70F28T32_Expr = 1'b1;
+	wire AXI4RegisterModule_L71F29T33_Expr = 1'b1;
+	wire AXI4RegisterModule_L73F28T32_Expr = 1'b1;
 	wire [7: 0] Inputs_M2S_R_AR_ARID;
 	wire [31: 0] Inputs_M2S_R_AR_ARADDR;
 	wire [7: 0] Inputs_M2S_R_AR_ARLEN;
@@ -88,6 +83,7 @@ module AXI4MasterSlaveTestModule_TopLevel_reg
 	wire [7: 0] Inputs_M2S_W_W_WUSER;
 	wire Inputs_M2S_W_W_WVALID;
 	wire Inputs_M2S_W_B_BREADY;
+	wire Inputs_Reg_inWE;
 	reg NextState_Written;
 	wire axiSlave_inARREADY;
 	wire axiSlave_inAWREADY;
@@ -135,13 +131,13 @@ module AXI4MasterSlaveTestModule_TopLevel_reg
 	wire [73: 0] axiSlave_S2M_axiSlave_S2M_HardLink;
 	reg State_Written = 1'b0;
 	wire State_WrittenDefault = 1'b0;
-	wire AXI4RegisterModule_L61F28T40_Expr;
-	wire AXI4RegisterModule_L61F28T40_Expr_1;
-	wire AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr;
-	wire AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr_1;
-	wire AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr_2;
-	wire [7 : 0] Inputs_inWDATA [0 : 3];
+	wire AXI4RegisterModule_L72F28T44_Expr;
+	wire AXI4RegisterModule_L72F28T44_Expr_1;
+	wire AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr;
+	wire AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_1;
+	wire AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_2;
 	wire [7 : 0] Inputs_M2S_W_W_WDATA [0 : 3];
+	wire [7 : 0] Inputs_Reg_inWDATA [0 : 3];
 	integer State_bytes_Iterator;
 	reg [7 : 0] State_bytes [0 : 3];
 	initial
@@ -186,8 +182,8 @@ module AXI4MasterSlaveTestModule_TopLevel_reg
 			end
 		end
 	end
-	assign AXI4RegisterModule_L61F28T40_Expr = ~AXI4RegisterModule_L61F28T40_Expr_1;
-	assign AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr = AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr_1 | AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr_2;
+	assign AXI4RegisterModule_L72F28T44_Expr = ~AXI4RegisterModule_L72F28T44_Expr_1;
+	assign AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr = AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_1 | AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_2;
 	AXI4MasterSlaveTestModule_TopLevel_reg_axiSlave
 	AXI4MasterSlaveTestModule_TopLevel_reg_axiSlave
 	(
@@ -233,13 +229,13 @@ module AXI4MasterSlaveTestModule_TopLevel_reg
 			NextState_bytes[NextState_bytes_Iterator] = State_bytes[NextState_bytes_Iterator];
 		end
 		NextState_Written = State_Written;
-		NextState_Written = AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr;
-		if ((Inputs_inWE == 1))
+		NextState_Written = AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr;
+		if ((Inputs_Reg_inWE == 1))
 		begin
-			NextState_bytes[0] = Inputs_inWDATA[0];
-			NextState_bytes[1] = Inputs_inWDATA[1];
-			NextState_bytes[2] = Inputs_inWDATA[2];
-			NextState_bytes[3] = Inputs_inWDATA[3];
+			NextState_bytes[0] = Inputs_Reg_inWDATA[0];
+			NextState_bytes[1] = Inputs_Reg_inWDATA[1];
+			NextState_bytes[2] = Inputs_Reg_inWDATA[2];
+			NextState_bytes[3] = Inputs_Reg_inWDATA[3];
 		end
 		else if ((axiSlave_outWREADYConfirming == 1))
 		begin
@@ -261,14 +257,9 @@ module AXI4MasterSlaveTestModule_TopLevel_reg
 			end
 		end
 	end
-	assign AXI4RegisterModule_L61F28T40_Expr_1 = Inputs_inWE;
-	assign AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr_1 = Inputs_inWE;
-	assign AXI4RegisterModule_L67F9L82T10_AXI4RegisterModule_L68F33T76_Expr_2 = axiSlave_outWREADYConfirming;
-	assign Inputs_inWDATA[0] = inWDATA0;
-	assign Inputs_inWDATA[1] = inWDATA1;
-	assign Inputs_inWDATA[2] = inWDATA2;
-	assign Inputs_inWDATA[3] = inWDATA3;
-	assign Inputs_inWE = inWE;
+	assign AXI4RegisterModule_L72F28T44_Expr_1 = Inputs_Reg_inWE;
+	assign AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_1 = Inputs_Reg_inWE;
+	assign AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_2 = axiSlave_outWREADYConfirming;
 	assign Inputs_M2S_W_B_BREADY = M2S[221];
 	assign Inputs_M2S_W_W_WVALID = M2S[220];
 	assign Inputs_M2S_W_W_WUSER = M2S[219:212];
@@ -304,17 +295,22 @@ module AXI4MasterSlaveTestModule_TopLevel_reg
 	assign Inputs_M2S_R_AR_ARLEN = M2S[47:40];
 	assign Inputs_M2S_R_AR_ARADDR = M2S[39:8];
 	assign Inputs_M2S_R_AR_ARID = M2S[7:0];
-	assign axiSlave_inARREADY = AXI4RegisterModule_L58F29T33_Expr;
-	assign axiSlave_inAWREADY = AXI4RegisterModule_L60F29T33_Expr;
-	assign axiSlave_inBVALID = AXI4RegisterModule_L62F28T32_Expr;
+	assign Inputs_Reg_inWE = Reg[32];
+	assign Inputs_Reg_inWDATA[3] = Reg[31:24];
+	assign Inputs_Reg_inWDATA[2] = Reg[23:16];
+	assign Inputs_Reg_inWDATA[1] = Reg[15:8];
+	assign Inputs_Reg_inWDATA[0] = Reg[7:0];
+	assign axiSlave_inARREADY = AXI4RegisterModule_L69F29T33_Expr;
+	assign axiSlave_inAWREADY = AXI4RegisterModule_L71F29T33_Expr;
+	assign axiSlave_inBVALID = AXI4RegisterModule_L73F28T32_Expr;
 	assign axiSlave_inRDATA[0] = State_bytes[0];
 	assign axiSlave_inRDATA[1] = State_bytes[1];
 	assign axiSlave_inRDATA[2] = State_bytes[2];
 	assign axiSlave_inRDATA[3] = State_bytes[3];
-	assign axiSlave_inRVALID = AXI4RegisterModule_L59F28T32_Expr;
-	assign axiSlave_inWREADY = AXI4RegisterModule_L61F28T40_Expr;
+	assign axiSlave_inRVALID = AXI4RegisterModule_L70F28T32_Expr;
+	assign axiSlave_inWREADY = AXI4RegisterModule_L72F28T44_Expr;
 	assign axiSlave_M2S = M2S;
-	assign outACK = Inputs_inWE;
+	assign outACK = Inputs_Reg_inWE;
 	assign outData0 = State_bytes[0];
 	assign outData1 = State_bytes[1];
 	assign outData2 = State_bytes[2];

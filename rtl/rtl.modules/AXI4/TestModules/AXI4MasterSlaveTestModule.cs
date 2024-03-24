@@ -44,8 +44,11 @@ namespace rtl.modules
             reg.Schedule(() => new AXI4RegisterModuleInputs(axiSize.B4)
             {
                 M2S = master.M2S,
-                inWE = Inputs.SWE,
-                inWDATA = Inputs.InData,
+                Reg =
+                {
+                    inWE = Inputs.SWE,
+                    inWDATA = Inputs.InData,
+                }
             });
 
             master.Schedule(() => new AXI4MasterModuleInputs(axiSize.B4)

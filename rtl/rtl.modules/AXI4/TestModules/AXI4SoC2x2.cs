@@ -10,11 +10,14 @@ namespace rtl.modules
     public class AXI4SoC2x2Inputs
     {
         public AXI4SoC2x2Inputs() { }
-        public AXI4SoC2x2Inputs(axiSize size, int mCount)
+        public AXI4SoC2x2Inputs(axiSize size, int mCount, int sCount)
         {
             MasterInputs = Enumerable.Range(0, mCount).Select(_ => new AXI4MasterModuleInput(size)).ToArray();
+            Registerinputs = Enumerable.Range(0, sCount).Select(_ => new AXI4RegisterModuleInput(size)).ToArray();
         }
+
         public AXI4MasterModuleInput[] MasterInputs;
+        public AXI4RegisterModuleInput[] Registerinputs;
     }
 
     public class AXI4SoC2x2 : RTLCombinationalModule<AXI4SoC2x2Inputs>
@@ -28,7 +31,7 @@ namespace rtl.modules
 
         public AXI4SoC2x2()
         {
-            InitInputs(new AXI4SoC2x2Inputs(axiSize.B4, mCount));
+            InitInputs(new AXI4SoC2x2Inputs(axiSize.B4, mCount, sCount));
 
             masters = range(mCount).Select(_ => new AXI4MasterModule(axiSize.B4)).ToArray();
             registers = range(sCount).Select(_ => new AXI4RegisterModule(axiSize.B4)).ToArray();
@@ -53,8 +56,18 @@ namespace rtl.modules
                 masters[masterIndex].Schedule(() =>
                     new AXI4MasterModuleInputs()
                     {
-                        Master = Inputs.MasterInputs[masterIndex],
-                        //S2M = interconnect.
+                        Master = Inputs.MasterInputs[masterIndex],                        
+                        S2M = interconnect.oS2M[masterIndex]
+                    }
+                );
+            }
+
+            foreach (var registerIndex in range(sCount))
+            {
+                registers[registerIndex].Schedule(() => 
+                    new AXI4RegisterModuleInputs()
+                    {
+                        M2S = interconnect.oM2S[registerIndex]
                     }
                 );
             }

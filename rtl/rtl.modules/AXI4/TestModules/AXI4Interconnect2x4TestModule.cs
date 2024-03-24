@@ -80,8 +80,11 @@ namespace rtl.modules
             {
                 registers[i].Schedule(() => new AXI4RegisterModuleInputs()
                 {
-                    inWDATA = Inputs.InData,
-                    inWE = Inputs.SWE[i],
+                    Reg =
+                    {
+                        inWDATA = Inputs.InData,
+                        inWE = Inputs.SWE[i],
+                    },
                     M2S = notActiveM2S
                 });
             }

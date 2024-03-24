@@ -59,6 +59,50 @@ module AXI4WriteInteconnectModule_1x2_TopLevel
 	input wire [7:0] iRight1_B_BUSER,
 	input wire iRight1_B_BVALID,
 	input wire iRight1_W_WREADY,
+	output wire [7:0] M2S0_AW_AWID,
+	output wire [31:0] M2S0_AW_AWADDR,
+	output wire [7:0] M2S0_AW_AWLEN,
+	output wire [2:0] M2S0_AW_AWSIZE,
+	output wire [1:0] M2S0_AW_AWBURST,
+	output wire [1:0] M2S0_AW_AWLOCK,
+	output wire [3:0] M2S0_AW_AWCACHE,
+	output wire [2:0] M2S0_AW_AWPROT,
+	output wire [3:0] M2S0_AW_AWQOS,
+	output wire [7:0] M2S0_AW_AWREGION,
+	output wire [7:0] M2S0_AW_AWUSER,
+	output wire M2S0_AW_AWVALID,
+	output wire [7:0] M2S0_W_WID,
+	output wire [7:0] M2S0_W_WDATA0,
+	output wire [7:0] M2S0_W_WDATA1,
+	output wire [7:0] M2S0_W_WDATA2,
+	output wire [7:0] M2S0_W_WDATA3,
+	output wire [3:0] M2S0_W_WSTRB,
+	output wire M2S0_W_WLAST,
+	output wire [7:0] M2S0_W_WUSER,
+	output wire M2S0_W_WVALID,
+	output wire M2S0_B_BREADY,
+	output wire [7:0] M2S1_AW_AWID,
+	output wire [31:0] M2S1_AW_AWADDR,
+	output wire [7:0] M2S1_AW_AWLEN,
+	output wire [2:0] M2S1_AW_AWSIZE,
+	output wire [1:0] M2S1_AW_AWBURST,
+	output wire [1:0] M2S1_AW_AWLOCK,
+	output wire [3:0] M2S1_AW_AWCACHE,
+	output wire [2:0] M2S1_AW_AWPROT,
+	output wire [3:0] M2S1_AW_AWQOS,
+	output wire [7:0] M2S1_AW_AWREGION,
+	output wire [7:0] M2S1_AW_AWUSER,
+	output wire M2S1_AW_AWVALID,
+	output wire [7:0] M2S1_W_WID,
+	output wire [7:0] M2S1_W_WDATA0,
+	output wire [7:0] M2S1_W_WDATA1,
+	output wire [7:0] M2S1_W_WDATA2,
+	output wire [7:0] M2S1_W_WDATA3,
+	output wire [3:0] M2S1_W_WSTRB,
+	output wire M2S1_W_WLAST,
+	output wire [7:0] M2S1_W_WUSER,
+	output wire M2S1_W_WVALID,
+	output wire M2S1_B_BREADY,
 	output wire S2M0_AW_AWREADY,
 	output wire [7:0] S2M0_B_BID,
 	output wire [1:0] S2M0_B_BRESP,
@@ -469,6 +513,50 @@ module AXI4WriteInteconnectModule_1x2_TopLevel
 	assign DuplexMux_iRightAddr = State_rightAddr;
 	assign DuplexMux_iRightAddrValid = State_rightAddrValid;
 	assign rangeDetectorArray0_iAddress = Inputs_iLeft[0][39:8];
+	assign M2S0_B_BREADY = muxLeft[0][137];
+	assign M2S0_W_WVALID = muxLeft[0][136];
+	assign M2S0_W_WUSER = muxLeft[0][135:128];
+	assign M2S0_W_WLAST = muxLeft[0][127];
+	assign M2S0_W_WSTRB = muxLeft[0][126:123];
+	assign M2S0_W_WDATA3 = muxLeft[0][122:115];
+	assign M2S0_W_WDATA2 = muxLeft[0][114:107];
+	assign M2S0_W_WDATA1 = muxLeft[0][106:99];
+	assign M2S0_W_WDATA0 = muxLeft[0][98:91];
+	assign M2S0_W_WID = muxLeft[0][90:83];
+	assign M2S0_AW_AWVALID = muxLeft[0][82];
+	assign M2S0_AW_AWUSER = muxLeft[0][81:74];
+	assign M2S0_AW_AWREGION = muxLeft[0][73:66];
+	assign M2S0_AW_AWQOS = muxLeft[0][65:62];
+	assign M2S0_AW_AWPROT = muxLeft[0][61:59];
+	assign M2S0_AW_AWCACHE = muxLeft[0][58:55];
+	assign M2S0_AW_AWLOCK = muxLeft[0][54:53];
+	assign M2S0_AW_AWBURST = muxLeft[0][52:51];
+	assign M2S0_AW_AWSIZE = muxLeft[0][50:48];
+	assign M2S0_AW_AWLEN = muxLeft[0][47:40];
+	assign M2S0_AW_AWADDR = muxLeft[0][39:8];
+	assign M2S0_AW_AWID = muxLeft[0][7:0];
+	assign M2S1_B_BREADY = muxLeft[1][137];
+	assign M2S1_W_WVALID = muxLeft[1][136];
+	assign M2S1_W_WUSER = muxLeft[1][135:128];
+	assign M2S1_W_WLAST = muxLeft[1][127];
+	assign M2S1_W_WSTRB = muxLeft[1][126:123];
+	assign M2S1_W_WDATA3 = muxLeft[1][122:115];
+	assign M2S1_W_WDATA2 = muxLeft[1][114:107];
+	assign M2S1_W_WDATA1 = muxLeft[1][106:99];
+	assign M2S1_W_WDATA0 = muxLeft[1][98:91];
+	assign M2S1_W_WID = muxLeft[1][90:83];
+	assign M2S1_AW_AWVALID = muxLeft[1][82];
+	assign M2S1_AW_AWUSER = muxLeft[1][81:74];
+	assign M2S1_AW_AWREGION = muxLeft[1][73:66];
+	assign M2S1_AW_AWQOS = muxLeft[1][65:62];
+	assign M2S1_AW_AWPROT = muxLeft[1][61:59];
+	assign M2S1_AW_AWCACHE = muxLeft[1][58:55];
+	assign M2S1_AW_AWLOCK = muxLeft[1][54:53];
+	assign M2S1_AW_AWBURST = muxLeft[1][52:51];
+	assign M2S1_AW_AWSIZE = muxLeft[1][50:48];
+	assign M2S1_AW_AWLEN = muxLeft[1][47:40];
+	assign M2S1_AW_AWADDR = muxLeft[1][39:8];
+	assign M2S1_AW_AWID = muxLeft[1][7:0];
 	assign S2M0_W_WREADY = muxRight[0][20];
 	assign S2M0_B_BVALID = muxRight[0][19];
 	assign S2M0_B_BUSER = muxRight[0][18:11];

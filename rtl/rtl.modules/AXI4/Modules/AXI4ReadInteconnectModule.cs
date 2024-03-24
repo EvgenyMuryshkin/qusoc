@@ -45,5 +45,6 @@ namespace rtl.modules.AXI4.Modules
         protected override bool TXStart(AXI4_M2S_R source) => source.AR.ARVALID && rangeDetectorActive;// TODO: rangeDetectorActive[Encoder.MSBIndex];
 
         public AXI4_S2M_R[] S2M => muxRight;
+        public AXI4_M2S_R[] M2S => muxLeft;
     }
 }

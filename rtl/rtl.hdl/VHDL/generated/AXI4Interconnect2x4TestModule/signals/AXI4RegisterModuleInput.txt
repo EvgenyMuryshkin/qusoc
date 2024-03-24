@@ -1,0 +1,7 @@
+└Root       | AXI4RegisterModuleInput | [32:0]  | 33 | [32:0] 
+ ├inWE      | Boolean                 | [32]    | 1  | [32:0][32]
+ └inWDATA   | Byte[]                  | [31:0]  | 32 | [32:0][31:0]
+  ├inWDATA3 | Byte                    | [31:24] | 8  | [32:0][31:0][31:24]
+  ├inWDATA2 | Byte                    | [23:16] | 8  | [32:0][31:0][23:16]
+  ├inWDATA1 | Byte                    | [15:8]  | 8  | [32:0][31:0][15:8]
+  └inWDATA0 | Byte                    | [7:0]   | 8  | [32:0][31:0][7:0]
