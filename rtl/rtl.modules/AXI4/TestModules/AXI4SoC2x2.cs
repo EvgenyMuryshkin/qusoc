@@ -13,11 +13,11 @@ namespace rtl.modules
         public AXI4SoC2x2Inputs(axiSize size, int mCount, int sCount)
         {
             MasterInputs = Enumerable.Range(0, mCount).Select(_ => new AXI4MasterModuleInput(size)).ToArray();
-            Registerinputs = Enumerable.Range(0, sCount).Select(_ => new AXI4RegisterModuleInput(size)).ToArray();
+            RegInputs = Enumerable.Range(0, sCount).Select(_ => new AXI4RegisterModuleInput(size)).ToArray();
         }
 
         public AXI4MasterModuleInput[] MasterInputs;
-        public AXI4RegisterModuleInput[] Registerinputs;
+        public AXI4RegisterModuleInput[] RegInputs;
     }
 
     public class AXI4SoC2x2 : RTLCombinationalModule<AXI4SoC2x2Inputs>
@@ -67,7 +67,8 @@ namespace rtl.modules
                 registers[registerIndex].Schedule(() => 
                     new AXI4RegisterModuleInputs()
                     {
-                        M2S = interconnect.oM2S[registerIndex]
+                        M2S = interconnect.oM2S[registerIndex],
+                        Reg = Inputs.RegInputs[registerIndex]
                     }
                 );
             }

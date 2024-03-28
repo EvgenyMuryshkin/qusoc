@@ -60,6 +60,9 @@ architecture rtl of CompositionModule_TopLevel is
 	signal Transmitter_IsReady : std_logic := '0';
 	signal Transmitter_IsTransmissionStarted : std_logic := '0';
 	signal Transmitter_IsTransmitting : std_logic := '0';
+	signal CompositionModule_L24F36L28T18_Object : unsigned(1 downto 0) := (others => '0');
+	signal CompositionModule_L30F40L35T17_Object : unsigned(9 downto 0) := (others => '0');
+	signal CompositionModule_L37F37L42T18_Object : unsigned(2 downto 0) := (others => '0');
 	signal Emitter_Ack_Emitter_Ack_HardLink : std_logic := '0';
 	signal Emitter_IsEnabled_Emitter_IsEnabled_HardLink : std_logic := '0';
 	signal Emitter_Data_Emitter_Data_HardLink : unsigned(7 downto 0) := "00000000";
@@ -120,17 +123,25 @@ begin
 		IsTransmitting => Transmitter_IsTransmitting_Transmitter_IsTransmitting_HardLink
 	)
 	;
-	process (Emitter_Ack, Emitter_Data, Emitter_Data_Emitter_Data_HardLink, Emitter_HasData, Emitter_HasData_Emitter_HasData_HardLink, Emitter_IsEnabled, Inputs_IsEnabled, IsEnabled, Receiver_Ack, Receiver_Bit, Receiver_Data, Receiver_Data_Receiver_Data_HardLink, Receiver_HasData, Receiver_HasData_Receiver_HasData_HardLink, Receiver_IsValid, Transmitter_Ack, Transmitter_Bit, Transmitter_Bit_Transmitter_Bit_HardLink, Transmitter_Data, Transmitter_IsReady, Transmitter_IsReady_Transmitter_IsReady_HardLink, Transmitter_IsTransmissionStarted_Transmitter_IsTransmissionStarted_HardLink, Transmitter_IsTransmitting, Transmitter_IsTransmitting_Transmitter_IsTransmitting_HardLink, Transmitter_Trigger)
+	process (CompositionModule_L24F36L28T18_Object, CompositionModule_L30F40L35T17_Object, CompositionModule_L37F37L42T18_Object, Emitter_Ack, Emitter_Data, Emitter_Data_Emitter_Data_HardLink, Emitter_HasData, Emitter_HasData_Emitter_HasData_HardLink, Emitter_IsEnabled, Inputs_IsEnabled, IsEnabled, Receiver_Ack, Receiver_Bit, Receiver_Data, Receiver_Data_Receiver_Data_HardLink, Receiver_HasData, Receiver_HasData_Receiver_HasData_HardLink, Receiver_IsValid, Transmitter_Ack, Transmitter_Bit, Transmitter_Bit_Transmitter_Bit_HardLink, Transmitter_Data, Transmitter_IsReady, Transmitter_IsReady_Transmitter_IsReady_HardLink, Transmitter_IsTransmissionStarted_Transmitter_IsTransmissionStarted_HardLink, Transmitter_IsTransmitting, Transmitter_IsTransmitting_Transmitter_IsTransmitting_HardLink, Transmitter_Trigger)
 	begin
 		Inputs_IsEnabled <= IsEnabled;
-		Emitter_Ack <= Transmitter_IsReady;
-		Emitter_IsEnabled <= Inputs_IsEnabled;
-		Transmitter_Ack <= Receiver_HasData;
-		Transmitter_Data <= Emitter_Data;
-		Transmitter_Trigger <= Emitter_HasData;
-		Receiver_Ack <= CompositionModule_L41F27T31_Expr;
-		Receiver_Bit <= Transmitter_Bit;
-		Receiver_IsValid <= Transmitter_IsTransmitting;
+		CompositionModule_L24F36L28T18_Object(0) <= Transmitter_IsReady;
+		CompositionModule_L24F36L28T18_Object(1) <= Inputs_IsEnabled;
+		Emitter_IsEnabled <= CompositionModule_L24F36L28T18_Object(1);
+		Emitter_Ack <= CompositionModule_L24F36L28T18_Object(0);
+		CompositionModule_L30F40L35T17_Object(0) <= Receiver_HasData;
+		CompositionModule_L30F40L35T17_Object(8 downto 1) <= Emitter_Data;
+		CompositionModule_L30F40L35T17_Object(9) <= Emitter_HasData;
+		Transmitter_Trigger <= CompositionModule_L30F40L35T17_Object(9);
+		Transmitter_Data <= CompositionModule_L30F40L35T17_Object(8 downto 1);
+		Transmitter_Ack <= CompositionModule_L30F40L35T17_Object(0);
+		CompositionModule_L37F37L42T18_Object(0) <= CompositionModule_L41F27T31_Expr;
+		CompositionModule_L37F37L42T18_Object(1) <= Transmitter_Bit;
+		CompositionModule_L37F37L42T18_Object(2) <= Transmitter_IsTransmitting;
+		Receiver_IsValid <= CompositionModule_L37F37L42T18_Object(2);
+		Receiver_Bit <= CompositionModule_L37F37L42T18_Object(1);
+		Receiver_Ack <= CompositionModule_L37F37L42T18_Object(0);
 		Data <= Receiver_Data;
 		HasData <= Receiver_HasData;
 		Emitter_Ack_Emitter_Ack_HardLink <= Emitter_Ack;

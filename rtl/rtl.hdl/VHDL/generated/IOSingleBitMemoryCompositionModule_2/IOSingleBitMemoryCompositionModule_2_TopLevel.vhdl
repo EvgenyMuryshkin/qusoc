@@ -46,6 +46,8 @@ architecture rtl of IOSingleBitMemoryCompositionModule_2_TopLevel is
 	signal children0_oValue : std_logic := '0';
 	signal children1_iValue : std_logic := '0';
 	signal children1_oValue : std_logic := '0';
+	signal IOSingleBitMemoryCompositionModule_L46F13L49T14_0_IOSingleBitMemoryCompositionModule_L48F44T126_Object : unsigned(0 downto 0) := (others => '0');
+	signal IOSingleBitMemoryCompositionModule_L46F13L49T14_1_IOSingleBitMemoryCompositionModule_L48F44T126_Object : unsigned(0 downto 0) := (others => '0');
 	signal children0_iValue_children0_iValue_HardLink : std_logic := '0';
 	signal children0_oValue_children0_oValue_HardLink : std_logic := '0';
 	signal children1_iValue_children1_iValue_HardLink : std_logic := '0';
@@ -73,12 +75,14 @@ begin
 		oValue => children1_oValue_children1_oValue_HardLink
 	)
 	;
-	process (children0_iValue, children0_oValue, children0_oValue_children0_oValue_HardLink, children1_iValue, children1_oValue, children1_oValue_children1_oValue_HardLink, Inputs_iValues, IOSingleBitMemoryCompositionModule_L52F34T74_Enumerable, iValues0, iValues1)
+	process (children0_iValue, children0_oValue, children0_oValue_children0_oValue_HardLink, children1_iValue, children1_oValue, children1_oValue_children1_oValue_HardLink, Inputs_iValues, IOSingleBitMemoryCompositionModule_L46F13L49T14_0_IOSingleBitMemoryCompositionModule_L48F44T126_Object, IOSingleBitMemoryCompositionModule_L46F13L49T14_1_IOSingleBitMemoryCompositionModule_L48F44T126_Object, IOSingleBitMemoryCompositionModule_L52F34T74_Enumerable, iValues0, iValues1)
 	begin
 		Inputs_iValues(0) <= iValues0;
 		Inputs_iValues(1) <= iValues1;
-		children0_iValue <= Inputs_iValues(0);
-		children1_iValue <= Inputs_iValues(1);
+		IOSingleBitMemoryCompositionModule_L46F13L49T14_0_IOSingleBitMemoryCompositionModule_L48F44T126_Object(0) <= Inputs_iValues(0);
+		children0_iValue <= IOSingleBitMemoryCompositionModule_L46F13L49T14_0_IOSingleBitMemoryCompositionModule_L48F44T126_Object(0);
+		IOSingleBitMemoryCompositionModule_L46F13L49T14_1_IOSingleBitMemoryCompositionModule_L48F44T126_Object(0) <= Inputs_iValues(1);
+		children1_iValue <= IOSingleBitMemoryCompositionModule_L46F13L49T14_1_IOSingleBitMemoryCompositionModule_L48F44T126_Object(0);
 		IOSingleBitMemoryCompositionModule_L52F34T74_Enumerable(0) <= children0_oValue;
 		IOSingleBitMemoryCompositionModule_L52F34T74_Enumerable(1) <= children1_oValue;
 		oValues0 <= IOSingleBitMemoryCompositionModule_L52F34T74_Enumerable(0);

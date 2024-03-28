@@ -104,6 +104,7 @@ architecture rtl of StructCompositionParentModule_TopLevel is
 	signal Inputs_iValue_l1_l2_bitArray : unsigned(1 downto 0) := (others => '0');
 	signal child_iValue : unsigned(75 downto 0) := (others => '0');
 	signal child_Output : unsigned(75 downto 0) := (others => '0');
+	signal StructsNestedIOModule_L82F34L85T14_Object : unsigned(75 downto 0) := (others => '0');
 	signal child_iValue_child_iValue_HardLink : unsigned(75 downto 0) := "0000000000000000000000000000000000000000000000000000000000000000000000000000";
 	signal child_Output_child_Output_HardLink : unsigned(75 downto 0) := "0000000000000000000000000000000000000000000000000000000000000000000000000000";
 	type Inputs_iValue_l1_l2_boolValueArray is array (0 to 1) of std_logic;
@@ -122,7 +123,7 @@ begin
 		Output => child_Output_child_Output_HardLink
 	)
 	;
-	process (child_iValue, child_Output, child_Output_child_Output_HardLink, Inputs_iValue_intValue, Inputs_iValue_l1_byteValue, Inputs_iValue_l1_l2_bitArray, Inputs_iValue_l1_l2_boolValue, Inputs_iValue_l1_l2Array, Inputs_iValue_l1Array, iValue_intValue, iValue_l1_byteValue, iValue_l1_l2_bitArray, iValue_l1_l2_boolValue0, iValue_l1_l2_boolValue1, iValue_l1_l2Array0_bitArray, iValue_l1_l2Array0_boolValue0, iValue_l1_l2Array0_boolValue1, iValue_l1_l2Array1_bitArray, iValue_l1_l2Array1_boolValue0, iValue_l1_l2Array1_boolValue1, iValue_l1Array0_byteValue, iValue_l1Array0_l2_bitArray, iValue_l1Array0_l2_boolValue0, iValue_l1Array0_l2_boolValue1, iValue_l1Array0_l2Array0_bitArray, iValue_l1Array0_l2Array0_boolValue0, iValue_l1Array0_l2Array0_boolValue1, iValue_l1Array0_l2Array1_bitArray, iValue_l1Array0_l2Array1_boolValue0, iValue_l1Array0_l2Array1_boolValue1, iValue_l1Array1_byteValue, iValue_l1Array1_l2_bitArray, iValue_l1Array1_l2_boolValue0, iValue_l1Array1_l2_boolValue1, iValue_l1Array1_l2Array0_bitArray, iValue_l1Array1_l2Array0_boolValue0, iValue_l1Array1_l2Array0_boolValue1, iValue_l1Array1_l2Array1_bitArray, iValue_l1Array1_l2Array1_boolValue0, iValue_l1Array1_l2Array1_boolValue1)
+	process (child_iValue, child_Output, child_Output_child_Output_HardLink, Inputs_iValue_intValue, Inputs_iValue_l1_byteValue, Inputs_iValue_l1_l2_bitArray, Inputs_iValue_l1_l2_boolValue, Inputs_iValue_l1_l2Array, Inputs_iValue_l1Array, iValue_intValue, iValue_l1_byteValue, iValue_l1_l2_bitArray, iValue_l1_l2_boolValue0, iValue_l1_l2_boolValue1, iValue_l1_l2Array0_bitArray, iValue_l1_l2Array0_boolValue0, iValue_l1_l2Array0_boolValue1, iValue_l1_l2Array1_bitArray, iValue_l1_l2Array1_boolValue0, iValue_l1_l2Array1_boolValue1, iValue_l1Array0_byteValue, iValue_l1Array0_l2_bitArray, iValue_l1Array0_l2_boolValue0, iValue_l1Array0_l2_boolValue1, iValue_l1Array0_l2Array0_bitArray, iValue_l1Array0_l2Array0_boolValue0, iValue_l1Array0_l2Array0_boolValue1, iValue_l1Array0_l2Array1_bitArray, iValue_l1Array0_l2Array1_boolValue0, iValue_l1Array0_l2Array1_boolValue1, iValue_l1Array1_byteValue, iValue_l1Array1_l2_bitArray, iValue_l1Array1_l2_boolValue0, iValue_l1Array1_l2_boolValue1, iValue_l1Array1_l2Array0_bitArray, iValue_l1Array1_l2Array0_boolValue0, iValue_l1Array1_l2Array0_boolValue1, iValue_l1Array1_l2Array1_bitArray, iValue_l1Array1_l2Array1_boolValue0, iValue_l1Array1_l2Array1_boolValue1, StructsNestedIOModule_L82F34L85T14_Object)
 	begin
 		Inputs_iValue_intValue <= iValue_intValue;
 		Inputs_iValue_l1_byteValue <= iValue_l1_byteValue;
@@ -155,15 +156,16 @@ begin
 		Inputs_iValue_l1Array(1)(10) <= iValue_l1Array1_l2_boolValue0;
 		Inputs_iValue_l1Array(1)(9 downto 8) <= iValue_l1Array1_l2_bitArray;
 		Inputs_iValue_l1Array(1)(7 downto 0) <= iValue_l1Array1_byteValue;
-		child_iValue(75 downto 56) <= Inputs_iValue_l1Array(1);
-		child_iValue(55 downto 36) <= Inputs_iValue_l1Array(0);
-		child_iValue(35 downto 32) <= Inputs_iValue_l1_l2Array(1);
-		child_iValue(31 downto 28) <= Inputs_iValue_l1_l2Array(0);
-		child_iValue(27) <= Inputs_iValue_l1_l2_boolValue(1);
-		child_iValue(26) <= Inputs_iValue_l1_l2_boolValue(0);
-		child_iValue(25 downto 24) <= Inputs_iValue_l1_l2_bitArray;
-		child_iValue(23 downto 16) <= Inputs_iValue_l1_byteValue;
-		child_iValue(15 downto 0) <= Inputs_iValue_intValue;
+		StructsNestedIOModule_L82F34L85T14_Object(75 downto 56) <= Inputs_iValue_l1Array(1);
+		StructsNestedIOModule_L82F34L85T14_Object(55 downto 36) <= Inputs_iValue_l1Array(0);
+		StructsNestedIOModule_L82F34L85T14_Object(35 downto 32) <= Inputs_iValue_l1_l2Array(1);
+		StructsNestedIOModule_L82F34L85T14_Object(31 downto 28) <= Inputs_iValue_l1_l2Array(0);
+		StructsNestedIOModule_L82F34L85T14_Object(27) <= Inputs_iValue_l1_l2_boolValue(1);
+		StructsNestedIOModule_L82F34L85T14_Object(26) <= Inputs_iValue_l1_l2_boolValue(0);
+		StructsNestedIOModule_L82F34L85T14_Object(25 downto 24) <= Inputs_iValue_l1_l2_bitArray;
+		StructsNestedIOModule_L82F34L85T14_Object(23 downto 16) <= Inputs_iValue_l1_byteValue;
+		StructsNestedIOModule_L82F34L85T14_Object(15 downto 0) <= Inputs_iValue_intValue;
+		child_iValue <= StructsNestedIOModule_L82F34L85T14_Object;
 		oOutput_iValue_l1Array1_l2Array1_boolValue1 <= child_Output(75);
 		oOutput_iValue_l1Array1_l2Array1_boolValue0 <= child_Output(74);
 		oOutput_iValue_l1Array1_l2Array1_bitArray <= child_Output(73 downto 72);

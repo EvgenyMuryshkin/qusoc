@@ -59,6 +59,14 @@ architecture rtl of RangeDetectorArrayModule4_TopLevel is
 	signal rangeDetectors5_IsActive : std_logic := '0';
 	signal rangeDetectors6_Value : unsigned(31 downto 0) := (others => '0');
 	signal rangeDetectors6_IsActive : std_logic := '0';
+	signal RangeDetectorArrayModule_L39F13L45T14_0_RangeDetectorArrayModule_L41F52L44T18_Object : unsigned(31 downto 0) := (others => '0');
+	signal RangeDetectorArrayModule_L39F13L45T14_1_RangeDetectorArrayModule_L41F52L44T18_Object : unsigned(31 downto 0) := (others => '0');
+	signal RangeDetectorArrayModule_L39F13L45T14_2_RangeDetectorArrayModule_L41F52L44T18_Object : unsigned(31 downto 0) := (others => '0');
+	signal RangeDetectorArrayModule_L39F13L45T14_3_RangeDetectorArrayModule_L41F52L44T18_Object : unsigned(31 downto 0) := (others => '0');
+	signal RangeDetectorArrayModule_L39F13L45T14_4_RangeDetectorArrayModule_L41F52L44T18_Object : unsigned(31 downto 0) := (others => '0');
+	signal RangeDetectorArrayModule_L39F13L45T14_5_RangeDetectorArrayModule_L41F52L44T18_Object : unsigned(31 downto 0) := (others => '0');
+	signal RangeDetectorArrayModule_L39F13L45T14_6_RangeDetectorArrayModule_L41F52L44T18_Object : unsigned(31 downto 0) := (others => '0');
+	signal RangeDetectorArrayModule_L52F36L56T14_Object : unsigned(6 downto 0) := (others => '0');
 	signal encoder_iValues0_encoder_iValues_HardLink : std_logic := '0';
 	signal encoder_iValues1_encoder_iValues_HardLink : std_logic := '0';
 	signal encoder_iValues2_encoder_iValues_HardLink : std_logic := '0';
@@ -168,16 +176,23 @@ begin
 		IsActive => rangeDetectors6_IsActive_rangeDetectors6_IsActive_HardLink
 	)
 	;
-	process (encoder_HasActive, encoder_HasActive_encoder_HasActive_HardLink, encoder_iValues, encoder_MSBIndex, encoder_MSBIndex_encoder_MSBIndex_HardLink, encoder_MSBValue_encoder_MSBValue_HardLink, iAddress, Inputs_iAddress, rangeActive, rangeDetectors0_IsActive, rangeDetectors0_IsActive_rangeDetectors0_IsActive_HardLink, rangeDetectors0_Value, rangeDetectors1_IsActive, rangeDetectors1_IsActive_rangeDetectors1_IsActive_HardLink, rangeDetectors1_Value, rangeDetectors2_IsActive, rangeDetectors2_IsActive_rangeDetectors2_IsActive_HardLink, rangeDetectors2_Value, rangeDetectors3_IsActive, rangeDetectors3_IsActive_rangeDetectors3_IsActive_HardLink, rangeDetectors3_Value, rangeDetectors4_IsActive, rangeDetectors4_IsActive_rangeDetectors4_IsActive_HardLink, rangeDetectors4_Value, rangeDetectors5_IsActive, rangeDetectors5_IsActive_rangeDetectors5_IsActive_HardLink, rangeDetectors5_Value, rangeDetectors6_IsActive, rangeDetectors6_IsActive_rangeDetectors6_IsActive_HardLink, rangeDetectors6_Value)
+	process (encoder_HasActive, encoder_HasActive_encoder_HasActive_HardLink, encoder_iValues, encoder_MSBIndex, encoder_MSBIndex_encoder_MSBIndex_HardLink, encoder_MSBValue_encoder_MSBValue_HardLink, iAddress, Inputs_iAddress, rangeActive, RangeDetectorArrayModule_L39F13L45T14_0_RangeDetectorArrayModule_L41F52L44T18_Object, RangeDetectorArrayModule_L39F13L45T14_1_RangeDetectorArrayModule_L41F52L44T18_Object, RangeDetectorArrayModule_L39F13L45T14_2_RangeDetectorArrayModule_L41F52L44T18_Object, RangeDetectorArrayModule_L39F13L45T14_3_RangeDetectorArrayModule_L41F52L44T18_Object, RangeDetectorArrayModule_L39F13L45T14_4_RangeDetectorArrayModule_L41F52L44T18_Object, RangeDetectorArrayModule_L39F13L45T14_5_RangeDetectorArrayModule_L41F52L44T18_Object, RangeDetectorArrayModule_L39F13L45T14_6_RangeDetectorArrayModule_L41F52L44T18_Object, RangeDetectorArrayModule_L52F36L56T14_Object, rangeDetectors0_IsActive, rangeDetectors0_IsActive_rangeDetectors0_IsActive_HardLink, rangeDetectors0_Value, rangeDetectors1_IsActive, rangeDetectors1_IsActive_rangeDetectors1_IsActive_HardLink, rangeDetectors1_Value, rangeDetectors2_IsActive, rangeDetectors2_IsActive_rangeDetectors2_IsActive_HardLink, rangeDetectors2_Value, rangeDetectors3_IsActive, rangeDetectors3_IsActive_rangeDetectors3_IsActive_HardLink, rangeDetectors3_Value, rangeDetectors4_IsActive, rangeDetectors4_IsActive_rangeDetectors4_IsActive_HardLink, rangeDetectors4_Value, rangeDetectors5_IsActive, rangeDetectors5_IsActive_rangeDetectors5_IsActive_HardLink, rangeDetectors5_Value, rangeDetectors6_IsActive, rangeDetectors6_IsActive_rangeDetectors6_IsActive_HardLink, rangeDetectors6_Value)
 	begin
 		Inputs_iAddress <= iAddress;
-		rangeDetectors0_Value <= Inputs_iAddress;
-		rangeDetectors1_Value <= Inputs_iAddress;
-		rangeDetectors2_Value <= Inputs_iAddress;
-		rangeDetectors3_Value <= Inputs_iAddress;
-		rangeDetectors4_Value <= Inputs_iAddress;
-		rangeDetectors5_Value <= Inputs_iAddress;
-		rangeDetectors6_Value <= Inputs_iAddress;
+		RangeDetectorArrayModule_L39F13L45T14_0_RangeDetectorArrayModule_L41F52L44T18_Object <= Inputs_iAddress;
+		rangeDetectors0_Value <= RangeDetectorArrayModule_L39F13L45T14_0_RangeDetectorArrayModule_L41F52L44T18_Object;
+		RangeDetectorArrayModule_L39F13L45T14_1_RangeDetectorArrayModule_L41F52L44T18_Object <= Inputs_iAddress;
+		rangeDetectors1_Value <= RangeDetectorArrayModule_L39F13L45T14_1_RangeDetectorArrayModule_L41F52L44T18_Object;
+		RangeDetectorArrayModule_L39F13L45T14_2_RangeDetectorArrayModule_L41F52L44T18_Object <= Inputs_iAddress;
+		rangeDetectors2_Value <= RangeDetectorArrayModule_L39F13L45T14_2_RangeDetectorArrayModule_L41F52L44T18_Object;
+		RangeDetectorArrayModule_L39F13L45T14_3_RangeDetectorArrayModule_L41F52L44T18_Object <= Inputs_iAddress;
+		rangeDetectors3_Value <= RangeDetectorArrayModule_L39F13L45T14_3_RangeDetectorArrayModule_L41F52L44T18_Object;
+		RangeDetectorArrayModule_L39F13L45T14_4_RangeDetectorArrayModule_L41F52L44T18_Object <= Inputs_iAddress;
+		rangeDetectors4_Value <= RangeDetectorArrayModule_L39F13L45T14_4_RangeDetectorArrayModule_L41F52L44T18_Object;
+		RangeDetectorArrayModule_L39F13L45T14_5_RangeDetectorArrayModule_L41F52L44T18_Object <= Inputs_iAddress;
+		rangeDetectors5_Value <= RangeDetectorArrayModule_L39F13L45T14_5_RangeDetectorArrayModule_L41F52L44T18_Object;
+		RangeDetectorArrayModule_L39F13L45T14_6_RangeDetectorArrayModule_L41F52L44T18_Object <= Inputs_iAddress;
+		rangeDetectors6_Value <= RangeDetectorArrayModule_L39F13L45T14_6_RangeDetectorArrayModule_L41F52L44T18_Object;
 		rangeActive(0) <= rangeDetectors0_IsActive;
 		rangeActive(1) <= rangeDetectors1_IsActive;
 		rangeActive(2) <= rangeDetectors2_IsActive;
@@ -185,13 +200,20 @@ begin
 		rangeActive(4) <= rangeDetectors4_IsActive;
 		rangeActive(5) <= rangeDetectors5_IsActive;
 		rangeActive(6) <= rangeDetectors6_IsActive;
-		encoder_iValues(0) <= rangeActive(0);
-		encoder_iValues(1) <= rangeActive(1);
-		encoder_iValues(2) <= rangeActive(2);
-		encoder_iValues(3) <= rangeActive(3);
-		encoder_iValues(4) <= rangeActive(4);
-		encoder_iValues(5) <= rangeActive(5);
-		encoder_iValues(6) <= rangeActive(6);
+		RangeDetectorArrayModule_L52F36L56T14_Object(6) <= rangeActive(6);
+		RangeDetectorArrayModule_L52F36L56T14_Object(5) <= rangeActive(5);
+		RangeDetectorArrayModule_L52F36L56T14_Object(4) <= rangeActive(4);
+		RangeDetectorArrayModule_L52F36L56T14_Object(3) <= rangeActive(3);
+		RangeDetectorArrayModule_L52F36L56T14_Object(2) <= rangeActive(2);
+		RangeDetectorArrayModule_L52F36L56T14_Object(1) <= rangeActive(1);
+		RangeDetectorArrayModule_L52F36L56T14_Object(0) <= rangeActive(0);
+		encoder_iValues(6) <= RangeDetectorArrayModule_L52F36L56T14_Object(6);
+		encoder_iValues(5) <= RangeDetectorArrayModule_L52F36L56T14_Object(5);
+		encoder_iValues(4) <= RangeDetectorArrayModule_L52F36L56T14_Object(4);
+		encoder_iValues(3) <= RangeDetectorArrayModule_L52F36L56T14_Object(3);
+		encoder_iValues(2) <= RangeDetectorArrayModule_L52F36L56T14_Object(2);
+		encoder_iValues(1) <= RangeDetectorArrayModule_L52F36L56T14_Object(1);
+		encoder_iValues(0) <= RangeDetectorArrayModule_L52F36L56T14_Object(0);
 		oActive <= encoder_HasActive;
 		oIndex <= encoder_MSBIndex;
 		encoder_iValues0_encoder_iValues_HardLink <= encoder_iValues(0);
