@@ -140,7 +140,10 @@ begin
 		elsif ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L33F17L39T27_Case = '1' then
 			if Inputs_Ack = '1' then
 				NextState_FSM <= ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L35F21L38T22_ReceiverModule_L36F41T57_Expr;
-				NextState_Data(7 downto 1) <= (others => '0');
+				NextState_Data(7 downto 1) <= (
+					others => '0'
+				)
+				;
 				NextState_Data(0) <= ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L35F21L38T22_ReceiverModule_L37F42T43_Expr;
 			end if;
 		end if;
@@ -170,7 +173,10 @@ begin
 		Inputs_Bit <= Bit;
 		Inputs_IsValid <= IsValid;
 		ReceiverModule_L10F36T57_WhenTrue <= ReceiverModule_L10F49T53_Expr;
-		ReceiverModule_L10F36T57_WhenFalse(7 downto 1) <= (others => '0');
+		ReceiverModule_L10F36T57_WhenFalse(7 downto 1) <= (
+			others => '0'
+		)
+		;
 		ReceiverModule_L10F36T57_WhenFalse(0) <= ReceiverModule_L10F56T57_Expr;
 		ReceiverModule_L10F29T58_Cast <= ReceiverModule_L10F36T57_Ternary;
 		PartialData <= ReceiverModule_L10F29T58_Cast;

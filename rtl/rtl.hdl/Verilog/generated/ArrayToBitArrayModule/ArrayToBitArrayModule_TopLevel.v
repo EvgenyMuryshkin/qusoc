@@ -103,13 +103,25 @@ module ArrayToBitArrayModule_TopLevel
 	assign OutDataArray1 = State_ReadData[1];
 	assign OutDataArray2 = State_ReadData[2];
 	assign OutDataArray3 = State_ReadData[3];
-	assign ArrayToBitArrayModule_L21F47T78_Source = { State_ReadData[3], State_ReadData[2], State_ReadData[1], State_ReadData[0] };
+	assign ArrayToBitArrayModule_L21F47T78_Source = {
+		State_ReadData[3],
+		State_ReadData[2],
+		State_ReadData[1],
+		State_ReadData[0]
+	}
+	;
 	assign OutDataBitArray = ArrayToBitArrayModule_L21F47T78_Source;
 	assign OutInputsArray0 = Inputs_InArray[0];
 	assign OutInputsArray1 = Inputs_InArray[1];
 	assign OutInputsArray2 = Inputs_InArray[2];
 	assign OutInputsArray3 = Inputs_InArray[3];
-	assign ArrayToBitArrayModule_L20F49T80_Source = { Inputs_InArray[3], Inputs_InArray[2], Inputs_InArray[1], Inputs_InArray[0] };
+	assign ArrayToBitArrayModule_L20F49T80_Source = {
+		Inputs_InArray[3],
+		Inputs_InArray[2],
+		Inputs_InArray[1],
+		Inputs_InArray[0]
+	}
+	;
 	assign OutInputsBitArray = ArrayToBitArrayModule_L20F49T80_Source;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]

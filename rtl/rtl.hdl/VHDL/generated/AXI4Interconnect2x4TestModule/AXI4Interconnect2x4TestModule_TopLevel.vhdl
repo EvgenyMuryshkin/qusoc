@@ -339,9 +339,15 @@ begin
 		masters0_Master(97) <= Inputs_MWE(0);
 		masters0_Master(96 downto 65) <= Inputs_InData;
 		masters0_Master(64) <= Inputs_MRE(0);
-		masters0_Master(63 downto 33) <= (others => '0');
+		masters0_Master(63 downto 33) <= (
+			others => '0'
+		)
+		;
 		masters0_Master(32) <= AXI4Interconnect2x4TestModule_L62F13L77T14_0_AXI4Interconnect2x4TestModule_L72F34T35_Expr;
-		masters0_Master(31 downto 1) <= (others => '0');
+		masters0_Master(31 downto 1) <= (
+			others => '0'
+		)
+		;
 		masters0_Master(0) <= AXI4Interconnect2x4TestModule_L62F13L77T14_0_AXI4Interconnect2x4TestModule_L71F34T35_Expr;
 		masters0_S2M(73) <= notActiveS2M_W_W_WREADY;
 		masters0_S2M(72) <= notActiveS2M_W_B_BVALID;
@@ -363,9 +369,15 @@ begin
 		masters1_Master(97) <= Inputs_MWE(1);
 		masters1_Master(96 downto 65) <= Inputs_InData;
 		masters1_Master(64) <= Inputs_MRE(1);
-		masters1_Master(63 downto 33) <= (others => '0');
+		masters1_Master(63 downto 33) <= (
+			others => '0'
+		)
+		;
 		masters1_Master(32) <= AXI4Interconnect2x4TestModule_L62F13L77T14_1_AXI4Interconnect2x4TestModule_L72F34T35_Expr;
-		masters1_Master(31 downto 1) <= (others => '0');
+		masters1_Master(31 downto 1) <= (
+			others => '0'
+		)
+		;
 		masters1_Master(0) <= AXI4Interconnect2x4TestModule_L62F13L77T14_1_AXI4Interconnect2x4TestModule_L71F34T35_Expr;
 		masters1_S2M(73) <= notActiveS2M_W_W_WREADY;
 		masters1_S2M(72) <= notActiveS2M_W_B_BVALID;

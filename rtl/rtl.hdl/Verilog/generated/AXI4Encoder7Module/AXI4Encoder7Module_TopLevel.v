@@ -84,7 +84,11 @@ module AXI4Encoder7Module_TopLevel
 			end
 		end
 	end
-	assign AXI4EncoderModule_L59F40T101_Expr_1 = { {6{1'b0}}, internalHasActive };
+	assign AXI4EncoderModule_L59F40T101_Expr_1 = {
+		{6{1'b0}},
+		internalHasActive
+	}
+	;
 	assign Inputs_iValues[0] = iValues0;
 	assign Inputs_iValues[1] = iValues1;
 	assign Inputs_iValues[2] = iValues2;
@@ -92,7 +96,11 @@ module AXI4Encoder7Module_TopLevel
 	assign Inputs_iValues[4] = iValues4;
 	assign Inputs_iValues[5] = iValues5;
 	assign Inputs_iValues[6] = iValues6;
-	assign AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize = { {2{1'b0}}, AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F46T51_Expr };
+	assign AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize = {
+		{2{1'b0}},
+		AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F46T51_Expr
+	}
+	;
 	assign AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize = AXI4EncoderModule_L30F13L39T14_result;
 	assign internalEncoded = AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize;
 	assign internalHasActive = AXI4EncoderModule_L45F13L54T14_result;

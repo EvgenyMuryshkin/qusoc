@@ -255,22 +255,86 @@ module StageArraysPipelineModule_TopLevel
 		Pipeline_stage2_NextState_ready = Pipeline_stage1_State_IsS1Ready;
 		Pipeline_stage2_NextState_result = Pipeline_StageArraysPipelineModule_L44F30T78_Cast;
 	end
-	assign Pipeline_StageArraysPipelineModule_L26F34T59_Expr_1 = { {2{1'b0}}, Pipeline_Inputs_inData[0] };
-	assign Pipeline_StageArraysPipelineModule_L26F34T59_Expr_2 = { {2{1'b0}}, Pipeline_Inputs_inData[1] };
-	assign Pipeline_StageArraysPipelineModule_L27F34T59_Expr_1 = { {2{1'b0}}, Pipeline_Inputs_inData[2] };
-	assign Pipeline_StageArraysPipelineModule_L27F34T59_Expr_2 = { {2{1'b0}}, Pipeline_Inputs_inData[3] };
-	assign Pipeline_StageArraysPipelineModule_L28F34T59_Expr_1 = { {2{1'b0}}, Pipeline_Inputs_inData[4] };
-	assign Pipeline_StageArraysPipelineModule_L28F34T59_Expr_2 = { {2{1'b0}}, Pipeline_Inputs_inData[5] };
-	assign Pipeline_StageArraysPipelineModule_L29F34T59_Expr_1 = { {2{1'b0}}, Pipeline_Inputs_inData[6] };
-	assign Pipeline_StageArraysPipelineModule_L29F34T59_Expr_2 = { {2{1'b0}}, Pipeline_Inputs_inData[7] };
-	assign Pipeline_StageArraysPipelineModule_L38F34T57_Expr_1 = { {2{1'b0}}, Pipeline_stage0_State_sums[0] };
-	assign Pipeline_StageArraysPipelineModule_L38F34T57_Expr_2 = { {2{1'b0}}, Pipeline_stage0_State_sums[1] };
-	assign Pipeline_StageArraysPipelineModule_L39F34T57_Expr_1 = { {2{1'b0}}, Pipeline_stage0_State_sums[2] };
-	assign Pipeline_StageArraysPipelineModule_L39F34T57_Expr_2 = { {2{1'b0}}, Pipeline_stage0_State_sums[3] };
-	assign Pipeline_StageArraysPipelineModule_L44F39T77_Expr_1 = { {2{1'b0}}, Pipeline_StageArraysPipelineModule_L44F39T62_Expr };
-	assign Pipeline_StageArraysPipelineModule_L44F39T77_Expr_2 = { {4{1'b0}}, Pipeline_stage1_State_s0Sums[4] };
-	assign Pipeline_StageArraysPipelineModule_L44F39T62_Expr_1 = { {2{1'b0}}, Pipeline_stage1_State_sums[0] };
-	assign Pipeline_StageArraysPipelineModule_L44F39T62_Expr_2 = { {2{1'b0}}, Pipeline_stage1_State_sums[0] };
+	assign Pipeline_StageArraysPipelineModule_L26F34T59_Expr_1 = {
+		{2{1'b0}},
+		Pipeline_Inputs_inData[0]
+	}
+	;
+	assign Pipeline_StageArraysPipelineModule_L26F34T59_Expr_2 = {
+		{2{1'b0}},
+		Pipeline_Inputs_inData[1]
+	}
+	;
+	assign Pipeline_StageArraysPipelineModule_L27F34T59_Expr_1 = {
+		{2{1'b0}},
+		Pipeline_Inputs_inData[2]
+	}
+	;
+	assign Pipeline_StageArraysPipelineModule_L27F34T59_Expr_2 = {
+		{2{1'b0}},
+		Pipeline_Inputs_inData[3]
+	}
+	;
+	assign Pipeline_StageArraysPipelineModule_L28F34T59_Expr_1 = {
+		{2{1'b0}},
+		Pipeline_Inputs_inData[4]
+	}
+	;
+	assign Pipeline_StageArraysPipelineModule_L28F34T59_Expr_2 = {
+		{2{1'b0}},
+		Pipeline_Inputs_inData[5]
+	}
+	;
+	assign Pipeline_StageArraysPipelineModule_L29F34T59_Expr_1 = {
+		{2{1'b0}},
+		Pipeline_Inputs_inData[6]
+	}
+	;
+	assign Pipeline_StageArraysPipelineModule_L29F34T59_Expr_2 = {
+		{2{1'b0}},
+		Pipeline_Inputs_inData[7]
+	}
+	;
+	assign Pipeline_StageArraysPipelineModule_L38F34T57_Expr_1 = {
+		{2{1'b0}},
+		Pipeline_stage0_State_sums[0]
+	}
+	;
+	assign Pipeline_StageArraysPipelineModule_L38F34T57_Expr_2 = {
+		{2{1'b0}},
+		Pipeline_stage0_State_sums[1]
+	}
+	;
+	assign Pipeline_StageArraysPipelineModule_L39F34T57_Expr_1 = {
+		{2{1'b0}},
+		Pipeline_stage0_State_sums[2]
+	}
+	;
+	assign Pipeline_StageArraysPipelineModule_L39F34T57_Expr_2 = {
+		{2{1'b0}},
+		Pipeline_stage0_State_sums[3]
+	}
+	;
+	assign Pipeline_StageArraysPipelineModule_L44F39T77_Expr_1 = {
+		{2{1'b0}},
+		Pipeline_StageArraysPipelineModule_L44F39T62_Expr
+	}
+	;
+	assign Pipeline_StageArraysPipelineModule_L44F39T77_Expr_2 = {
+		{4{1'b0}},
+		Pipeline_stage1_State_s0Sums[4]
+	}
+	;
+	assign Pipeline_StageArraysPipelineModule_L44F39T62_Expr_1 = {
+		{2{1'b0}},
+		Pipeline_stage1_State_sums[0]
+	}
+	;
+	assign Pipeline_StageArraysPipelineModule_L44F39T62_Expr_2 = {
+		{2{1'b0}},
+		Pipeline_stage1_State_sums[0]
+	}
+	;
 	assign Inputs_inData[0] = inData0;
 	assign Inputs_inData[1] = inData1;
 	assign Inputs_inData[2] = inData2;
@@ -284,15 +348,35 @@ module StageArraysPipelineModule_TopLevel
 	assign Pipeline_State_result = Pipeline_stage2_State_result;
 	assign Pipeline_NextState_ready = Pipeline_stage2_NextState_ready;
 	assign Pipeline_NextState_result = Pipeline_stage2_NextState_result;
-	assign Pipeline_StageArraysPipelineModule_L26F25T60_Cast = { {6{1'b0}}, Pipeline_StageArraysPipelineModule_L26F34T59_Expr };
-	assign Pipeline_StageArraysPipelineModule_L27F25T60_Cast = { {6{1'b0}}, Pipeline_StageArraysPipelineModule_L27F34T59_Expr };
-	assign Pipeline_StageArraysPipelineModule_L28F25T60_Cast = { {6{1'b0}}, Pipeline_StageArraysPipelineModule_L28F34T59_Expr };
-	assign Pipeline_StageArraysPipelineModule_L29F25T60_Cast = { {6{1'b0}}, Pipeline_StageArraysPipelineModule_L29F34T59_Expr };
+	assign Pipeline_StageArraysPipelineModule_L26F25T60_Cast = {
+		{6{1'b0}},
+		Pipeline_StageArraysPipelineModule_L26F34T59_Expr
+	}
+	;
+	assign Pipeline_StageArraysPipelineModule_L27F25T60_Cast = {
+		{6{1'b0}},
+		Pipeline_StageArraysPipelineModule_L27F34T59_Expr
+	}
+	;
+	assign Pipeline_StageArraysPipelineModule_L28F25T60_Cast = {
+		{6{1'b0}},
+		Pipeline_StageArraysPipelineModule_L28F34T59_Expr
+	}
+	;
+	assign Pipeline_StageArraysPipelineModule_L29F25T60_Cast = {
+		{6{1'b0}},
+		Pipeline_StageArraysPipelineModule_L29F34T59_Expr
+	}
+	;
 	assign Pipeline_StageArraysPipelineModule_L24F28L31T22_Enumerable[0] = Pipeline_StageArraysPipelineModule_L26F25T60_Cast;
 	assign Pipeline_StageArraysPipelineModule_L24F28L31T22_Enumerable[1] = Pipeline_StageArraysPipelineModule_L27F25T60_Cast;
 	assign Pipeline_StageArraysPipelineModule_L24F28L31T22_Enumerable[2] = Pipeline_StageArraysPipelineModule_L28F25T60_Cast;
 	assign Pipeline_StageArraysPipelineModule_L24F28L31T22_Enumerable[3] = Pipeline_StageArraysPipelineModule_L29F25T60_Cast;
-	assign Pipeline_StageArraysPipelineModule_L24F28L31T22_Enumerable[4] = { {10{1'b0}}, Pipeline_StageArraysPipelineModule_L30F25T27_Expr };
+	assign Pipeline_StageArraysPipelineModule_L24F28L31T22_Enumerable[4] = {
+		{10{1'b0}},
+		Pipeline_StageArraysPipelineModule_L30F25T27_Expr
+	}
+	;
 	assign Pipeline_StageArraysPipelineModule_L38F25T58_Cast = Pipeline_StageArraysPipelineModule_L38F34T57_Expr[15:0];
 	assign Pipeline_StageArraysPipelineModule_L39F25T58_Cast = Pipeline_StageArraysPipelineModule_L39F34T57_Expr[15:0];
 	assign Pipeline_StageArraysPipelineModule_L36F28L40T22_Enumerable[0] = Pipeline_StageArraysPipelineModule_L38F25T58_Cast;

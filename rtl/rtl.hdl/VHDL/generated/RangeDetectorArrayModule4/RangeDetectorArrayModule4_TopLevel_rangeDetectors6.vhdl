@@ -62,7 +62,10 @@ begin
 	begin
 		RangeDetectorModule_L34F33T58_ExprLhs(32) <= '0';
 		RangeDetectorModule_L34F33T58_ExprLhs(31 downto 0) <= signed(Inputs_Value);
-		RangeDetectorModule_L34F33T58_ExprRhs(32 downto 31) <= (others => '0');
+		RangeDetectorModule_L34F33T58_ExprRhs(32 downto 31) <= (
+			others => '0'
+		)
+		;
 		RangeDetectorModule_L34F33T58_ExprRhs(30 downto 0) <= signed(rangeFrom);
 		RangeDetectorModule_L34F62T85_ExprLhs(32) <= '0';
 		RangeDetectorModule_L34F62T85_ExprLhs(31 downto 0) <= signed(Inputs_Value);

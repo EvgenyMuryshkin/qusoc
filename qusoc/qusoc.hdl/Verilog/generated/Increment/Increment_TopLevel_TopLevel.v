@@ -226,7 +226,11 @@ module Increment_TopLevel_TopLevel
 	begin
 		idx = 0;
 		QuSoCModule_L106F13L119T14_hasActive = QuSoCModule_L106F13L119T14_QuSoCModule_L107F34T39_Expr;
-		QuSoCModule_L106F13L119T14_address = { {7{1'b0}}, QuSoCModule_L106F13L119T14_QuSoCModule_L108F32T33_Expr };
+		QuSoCModule_L106F13L119T14_address = {
+			{7{1'b0}},
+			QuSoCModule_L106F13L119T14_QuSoCModule_L108F32T33_Expr
+		}
+		;
 		for (idx = 0; (idx < 2); idx = (idx + 1))
 		begin
 			QuSoCModule_L106F13L119T14_hasActive = (QuSoCModule_L106F13L119T14_hasActive | CombinedModuleIsActive[idx]);
@@ -258,7 +262,11 @@ module Increment_TopLevel_TopLevel
 	assign BusCS_Item2 = QuSoCModule_L106F13L119T14_QuSoCModule_L118F24T44_Tuple[0];
 	assign QuSoCModule_L44F63T97_Enumerable[0] = InstructionsRAM_IsActive;
 	assign QuSoCModule_L44F63T97_Enumerable[1] = CounterModule_IsActive;
-	assign QuSoCModule_L44F47T98_Source = { QuSoCModule_L44F63T97_Enumerable[1], QuSoCModule_L44F63T97_Enumerable[0] };
+	assign QuSoCModule_L44F47T98_Source = {
+		QuSoCModule_L44F63T97_Enumerable[1],
+		QuSoCModule_L44F63T97_Enumerable[0]
+	}
+	;
 	assign CombinedModuleIsActive = QuSoCModule_L44F47T98_Source;
 	assign HasActiveModule = BusCS_Item2;
 	assign internalMemAccessMode = CPU_MemAccessMode[1:0];
@@ -271,7 +279,11 @@ module Increment_TopLevel_TopLevel
 	assign ModuleCommon_WE = CPU_MemWrite;
 	assign ModuleCommon_WriteValue = CPU_MemWriteData;
 	assign ModuleIndex = BusCS_Item1;
-	assign CPU_BaseAddress = { {31{1'b0}}, QuSoCModule_L77F31T33_Expr };
+	assign CPU_BaseAddress = {
+		{31{1'b0}},
+		QuSoCModule_L77F31T33_Expr
+	}
+	;
 	assign CPU_ExtIRQ = RISCVModule_Types_L11F30T35_Expr;
 	assign CPU_MemReadData = internalModuleReadData;
 	assign CPU_MemReady = internalMemReady;
@@ -280,7 +292,11 @@ module Increment_TopLevel_TopLevel
 	assign InstructionsRAM_Common[34] = ModuleCommon_RE;
 	assign InstructionsRAM_Common[33:32] = ModuleCommon_MemAccessMode;
 	assign InstructionsRAM_Common[31:0] = ModuleCommon_Address;
-	assign InstructionsRAM_DeviceAddress = { {31{1'b0}}, QuSoCModule_L85F33T43_Expr };
+	assign InstructionsRAM_DeviceAddress = {
+		{31{1'b0}},
+		QuSoCModule_L85F33T43_Expr
+	}
+	;
 	assign CounterModule_Common[67:36] = ModuleCommon_WriteValue;
 	assign CounterModule_Common[35] = ModuleCommon_WE;
 	assign CounterModule_Common[34] = ModuleCommon_RE;

@@ -101,7 +101,10 @@ begin
 	begin
 		BitArrayModule_L29F39T54_ExprLhs(3) <= '0';
 		BitArrayModule_L29F39T54_ExprLhs(2 downto 0) <= signed(Inputs_Bit);
-		BitArrayModule_L29F39T54_ExprRhs(3 downto 1) <= (others => '0');
+		BitArrayModule_L29F39T54_ExprRhs(3 downto 1) <= (
+			others => '0'
+		)
+		;
 		BitArrayModule_L29F39T54_ExprRhs(0) <= BitArrayModule_L29F53T54_Expr;
 		BitArrayModule_L17F46T61_Expr_1 <= Bits;
 		Inputs_Bit <= Bit;

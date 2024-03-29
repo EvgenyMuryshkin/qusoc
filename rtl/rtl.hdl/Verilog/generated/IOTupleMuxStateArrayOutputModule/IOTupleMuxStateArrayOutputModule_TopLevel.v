@@ -350,8 +350,48 @@ $readmemh("IOTupleMuxStateArrayOutputModule_TopLevel_State_Sel.hex", State_Sel);
 		begin
 			NextState_Sel[NextState_Sel_Iterator] = State_Sel[NextState_Sel_Iterator];
 		end
-		NextState_Sel[0] = { Inputs_Sel0_iTupleArray[1], Inputs_Sel0_iTupleArray[0], Inputs_Sel0_iTuple_Item1, Inputs_Sel0_iTuple_Item2, Inputs_Sel0_iTuple_Item3[1], Inputs_Sel0_iTuple_Item3[0], Inputs_Sel0_iTuple_Item4_L2Tuple_Item1, Inputs_Sel0_iTuple_Item4_L2Tuple_Item2_L2Values[1], Inputs_Sel0_iTuple_Item4_L2Tuple_Item2_L2Values[0], Inputs_Sel0_iTuple_Item4_L2Tuple_Item2_L2Flag, Inputs_Sel0_iTuple_Item4_L2Tuple_Item3[1], Inputs_Sel0_iTuple_Item4_L2Tuple_Item3[0], Inputs_Sel0_iTuple_Item4_L2Array[1], Inputs_Sel0_iTuple_Item4_L2Array[0], Inputs_Sel0_iTuple_Item4_L2_L2Values[1], Inputs_Sel0_iTuple_Item4_L2_L2Values[0], Inputs_Sel0_iTuple_Item4_L2_L2Flag, Inputs_Sel0_iTuple_Item4_L1Flag };
-		NextState_Sel[1] = { Inputs_Sel1_iTupleArray[1], Inputs_Sel1_iTupleArray[0], Inputs_Sel1_iTuple_Item1, Inputs_Sel1_iTuple_Item2, Inputs_Sel1_iTuple_Item3[1], Inputs_Sel1_iTuple_Item3[0], Inputs_Sel1_iTuple_Item4_L2Tuple_Item1, Inputs_Sel1_iTuple_Item4_L2Tuple_Item2_L2Values[1], Inputs_Sel1_iTuple_Item4_L2Tuple_Item2_L2Values[0], Inputs_Sel1_iTuple_Item4_L2Tuple_Item2_L2Flag, Inputs_Sel1_iTuple_Item4_L2Tuple_Item3[1], Inputs_Sel1_iTuple_Item4_L2Tuple_Item3[0], Inputs_Sel1_iTuple_Item4_L2Array[1], Inputs_Sel1_iTuple_Item4_L2Array[0], Inputs_Sel1_iTuple_Item4_L2_L2Values[1], Inputs_Sel1_iTuple_Item4_L2_L2Values[0], Inputs_Sel1_iTuple_Item4_L2_L2Flag, Inputs_Sel1_iTuple_Item4_L1Flag };
+		NextState_Sel[0] = {
+			Inputs_Sel0_iTupleArray[1],
+			Inputs_Sel0_iTupleArray[0],
+			Inputs_Sel0_iTuple_Item1,
+			Inputs_Sel0_iTuple_Item2,
+			Inputs_Sel0_iTuple_Item3[1],
+			Inputs_Sel0_iTuple_Item3[0],
+			Inputs_Sel0_iTuple_Item4_L2Tuple_Item1,
+			Inputs_Sel0_iTuple_Item4_L2Tuple_Item2_L2Values[1],
+			Inputs_Sel0_iTuple_Item4_L2Tuple_Item2_L2Values[0],
+			Inputs_Sel0_iTuple_Item4_L2Tuple_Item2_L2Flag,
+			Inputs_Sel0_iTuple_Item4_L2Tuple_Item3[1],
+			Inputs_Sel0_iTuple_Item4_L2Tuple_Item3[0],
+			Inputs_Sel0_iTuple_Item4_L2Array[1],
+			Inputs_Sel0_iTuple_Item4_L2Array[0],
+			Inputs_Sel0_iTuple_Item4_L2_L2Values[1],
+			Inputs_Sel0_iTuple_Item4_L2_L2Values[0],
+			Inputs_Sel0_iTuple_Item4_L2_L2Flag,
+			Inputs_Sel0_iTuple_Item4_L1Flag
+		}
+		;
+		NextState_Sel[1] = {
+			Inputs_Sel1_iTupleArray[1],
+			Inputs_Sel1_iTupleArray[0],
+			Inputs_Sel1_iTuple_Item1,
+			Inputs_Sel1_iTuple_Item2,
+			Inputs_Sel1_iTuple_Item3[1],
+			Inputs_Sel1_iTuple_Item3[0],
+			Inputs_Sel1_iTuple_Item4_L2Tuple_Item1,
+			Inputs_Sel1_iTuple_Item4_L2Tuple_Item2_L2Values[1],
+			Inputs_Sel1_iTuple_Item4_L2Tuple_Item2_L2Values[0],
+			Inputs_Sel1_iTuple_Item4_L2Tuple_Item2_L2Flag,
+			Inputs_Sel1_iTuple_Item4_L2Tuple_Item3[1],
+			Inputs_Sel1_iTuple_Item4_L2Tuple_Item3[0],
+			Inputs_Sel1_iTuple_Item4_L2Array[1],
+			Inputs_Sel1_iTuple_Item4_L2Array[0],
+			Inputs_Sel1_iTuple_Item4_L2_L2Values[1],
+			Inputs_Sel1_iTuple_Item4_L2_L2Values[0],
+			Inputs_Sel1_iTuple_Item4_L2_L2Flag,
+			Inputs_Sel1_iTuple_Item4_L1Flag
+		}
+		;
 	end
 	assign Inputs_Sel0_iTuple_Item1 = Sel0_iTuple_Item1;
 	assign Inputs_Sel0_iTuple_Item2 = Sel0_iTuple_Item2;

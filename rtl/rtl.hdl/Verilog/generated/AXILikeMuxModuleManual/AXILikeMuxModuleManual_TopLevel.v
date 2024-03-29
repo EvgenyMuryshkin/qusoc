@@ -469,30 +469,126 @@ module AXILikeMuxModuleManual_TopLevel
 			mOutSData[7][0] = mEmptySData_IsActive;
 		end
 	end
-	assign AXILikeMuxModuleManual_L57F13L67T14_0_AXILikeMuxModuleManual_L59F63T80_ExprLhs = { 1'b0, Inputs_SAddr };
-	assign AXILikeMuxModuleManual_L57F13L67T14_0_AXILikeMuxModuleManual_L59F63T80_ExprRhs = { {2{1'b0}}, Prefilled0 };
-	assign AXILikeMuxModuleManual_L57F13L67T14_1_AXILikeMuxModuleManual_L59F63T80_ExprLhs = { 1'b0, Inputs_SAddr };
-	assign AXILikeMuxModuleManual_L57F13L67T14_1_AXILikeMuxModuleManual_L59F63T80_ExprRhs = { {2{1'b0}}, Prefilled1 };
-	assign AXILikeMuxModuleManual_L57F13L67T14_2_AXILikeMuxModuleManual_L59F63T80_ExprLhs = { 1'b0, Inputs_SAddr };
-	assign AXILikeMuxModuleManual_L57F13L67T14_2_AXILikeMuxModuleManual_L59F63T80_ExprRhs = { 1'b0, Prefilled2 };
-	assign AXILikeMuxModuleManual_L57F13L67T14_3_AXILikeMuxModuleManual_L59F63T80_ExprLhs = { 1'b0, Inputs_SAddr };
-	assign AXILikeMuxModuleManual_L57F13L67T14_3_AXILikeMuxModuleManual_L59F63T80_ExprRhs = { 1'b0, Prefilled3 };
-	assign AXILikeMuxModuleManual_L69F13L79T14_0_AXILikeMuxModuleManual_L71F63T80_ExprLhs = { 1'b0, Inputs_MAddr };
-	assign AXILikeMuxModuleManual_L69F13L79T14_0_AXILikeMuxModuleManual_L71F63T80_ExprRhs = { {3{1'b0}}, Prefilled0 };
-	assign AXILikeMuxModuleManual_L69F13L79T14_1_AXILikeMuxModuleManual_L71F63T80_ExprLhs = { 1'b0, Inputs_MAddr };
-	assign AXILikeMuxModuleManual_L69F13L79T14_1_AXILikeMuxModuleManual_L71F63T80_ExprRhs = { {3{1'b0}}, Prefilled1 };
-	assign AXILikeMuxModuleManual_L69F13L79T14_2_AXILikeMuxModuleManual_L71F63T80_ExprLhs = { 1'b0, Inputs_MAddr };
-	assign AXILikeMuxModuleManual_L69F13L79T14_2_AXILikeMuxModuleManual_L71F63T80_ExprRhs = { {2{1'b0}}, Prefilled2 };
-	assign AXILikeMuxModuleManual_L69F13L79T14_3_AXILikeMuxModuleManual_L71F63T80_ExprLhs = { 1'b0, Inputs_MAddr };
-	assign AXILikeMuxModuleManual_L69F13L79T14_3_AXILikeMuxModuleManual_L71F63T80_ExprRhs = { {2{1'b0}}, Prefilled3 };
-	assign AXILikeMuxModuleManual_L69F13L79T14_4_AXILikeMuxModuleManual_L71F63T80_ExprLhs = { 1'b0, Inputs_MAddr };
-	assign AXILikeMuxModuleManual_L69F13L79T14_4_AXILikeMuxModuleManual_L71F63T80_ExprRhs = { 1'b0, Prefilled4 };
-	assign AXILikeMuxModuleManual_L69F13L79T14_5_AXILikeMuxModuleManual_L71F63T80_ExprLhs = { 1'b0, Inputs_MAddr };
-	assign AXILikeMuxModuleManual_L69F13L79T14_5_AXILikeMuxModuleManual_L71F63T80_ExprRhs = { 1'b0, Prefilled5 };
-	assign AXILikeMuxModuleManual_L69F13L79T14_6_AXILikeMuxModuleManual_L71F63T80_ExprLhs = { 1'b0, Inputs_MAddr };
-	assign AXILikeMuxModuleManual_L69F13L79T14_6_AXILikeMuxModuleManual_L71F63T80_ExprRhs = { 1'b0, Prefilled6 };
-	assign AXILikeMuxModuleManual_L69F13L79T14_7_AXILikeMuxModuleManual_L71F63T80_ExprLhs = { 1'b0, Inputs_MAddr };
-	assign AXILikeMuxModuleManual_L69F13L79T14_7_AXILikeMuxModuleManual_L71F63T80_ExprRhs = { 1'b0, Prefilled7 };
+	assign AXILikeMuxModuleManual_L57F13L67T14_0_AXILikeMuxModuleManual_L59F63T80_ExprLhs = {
+		1'b0,
+		Inputs_SAddr
+	}
+	;
+	assign AXILikeMuxModuleManual_L57F13L67T14_0_AXILikeMuxModuleManual_L59F63T80_ExprRhs = {
+		{2{1'b0}},
+		Prefilled0
+	}
+	;
+	assign AXILikeMuxModuleManual_L57F13L67T14_1_AXILikeMuxModuleManual_L59F63T80_ExprLhs = {
+		1'b0,
+		Inputs_SAddr
+	}
+	;
+	assign AXILikeMuxModuleManual_L57F13L67T14_1_AXILikeMuxModuleManual_L59F63T80_ExprRhs = {
+		{2{1'b0}},
+		Prefilled1
+	}
+	;
+	assign AXILikeMuxModuleManual_L57F13L67T14_2_AXILikeMuxModuleManual_L59F63T80_ExprLhs = {
+		1'b0,
+		Inputs_SAddr
+	}
+	;
+	assign AXILikeMuxModuleManual_L57F13L67T14_2_AXILikeMuxModuleManual_L59F63T80_ExprRhs = {
+		1'b0,
+		Prefilled2
+	}
+	;
+	assign AXILikeMuxModuleManual_L57F13L67T14_3_AXILikeMuxModuleManual_L59F63T80_ExprLhs = {
+		1'b0,
+		Inputs_SAddr
+	}
+	;
+	assign AXILikeMuxModuleManual_L57F13L67T14_3_AXILikeMuxModuleManual_L59F63T80_ExprRhs = {
+		1'b0,
+		Prefilled3
+	}
+	;
+	assign AXILikeMuxModuleManual_L69F13L79T14_0_AXILikeMuxModuleManual_L71F63T80_ExprLhs = {
+		1'b0,
+		Inputs_MAddr
+	}
+	;
+	assign AXILikeMuxModuleManual_L69F13L79T14_0_AXILikeMuxModuleManual_L71F63T80_ExprRhs = {
+		{3{1'b0}},
+		Prefilled0
+	}
+	;
+	assign AXILikeMuxModuleManual_L69F13L79T14_1_AXILikeMuxModuleManual_L71F63T80_ExprLhs = {
+		1'b0,
+		Inputs_MAddr
+	}
+	;
+	assign AXILikeMuxModuleManual_L69F13L79T14_1_AXILikeMuxModuleManual_L71F63T80_ExprRhs = {
+		{3{1'b0}},
+		Prefilled1
+	}
+	;
+	assign AXILikeMuxModuleManual_L69F13L79T14_2_AXILikeMuxModuleManual_L71F63T80_ExprLhs = {
+		1'b0,
+		Inputs_MAddr
+	}
+	;
+	assign AXILikeMuxModuleManual_L69F13L79T14_2_AXILikeMuxModuleManual_L71F63T80_ExprRhs = {
+		{2{1'b0}},
+		Prefilled2
+	}
+	;
+	assign AXILikeMuxModuleManual_L69F13L79T14_3_AXILikeMuxModuleManual_L71F63T80_ExprLhs = {
+		1'b0,
+		Inputs_MAddr
+	}
+	;
+	assign AXILikeMuxModuleManual_L69F13L79T14_3_AXILikeMuxModuleManual_L71F63T80_ExprRhs = {
+		{2{1'b0}},
+		Prefilled3
+	}
+	;
+	assign AXILikeMuxModuleManual_L69F13L79T14_4_AXILikeMuxModuleManual_L71F63T80_ExprLhs = {
+		1'b0,
+		Inputs_MAddr
+	}
+	;
+	assign AXILikeMuxModuleManual_L69F13L79T14_4_AXILikeMuxModuleManual_L71F63T80_ExprRhs = {
+		1'b0,
+		Prefilled4
+	}
+	;
+	assign AXILikeMuxModuleManual_L69F13L79T14_5_AXILikeMuxModuleManual_L71F63T80_ExprLhs = {
+		1'b0,
+		Inputs_MAddr
+	}
+	;
+	assign AXILikeMuxModuleManual_L69F13L79T14_5_AXILikeMuxModuleManual_L71F63T80_ExprRhs = {
+		1'b0,
+		Prefilled5
+	}
+	;
+	assign AXILikeMuxModuleManual_L69F13L79T14_6_AXILikeMuxModuleManual_L71F63T80_ExprLhs = {
+		1'b0,
+		Inputs_MAddr
+	}
+	;
+	assign AXILikeMuxModuleManual_L69F13L79T14_6_AXILikeMuxModuleManual_L71F63T80_ExprRhs = {
+		1'b0,
+		Prefilled6
+	}
+	;
+	assign AXILikeMuxModuleManual_L69F13L79T14_7_AXILikeMuxModuleManual_L71F63T80_ExprLhs = {
+		1'b0,
+		Inputs_MAddr
+	}
+	;
+	assign AXILikeMuxModuleManual_L69F13L79T14_7_AXILikeMuxModuleManual_L71F63T80_ExprRhs = {
+		1'b0,
+		Prefilled7
+	}
+	;
 	assign AXILikeMuxModuleManual_L57F13L67T14_0_AXILikeMuxModuleManual_L59F21T80_Expr_1 = AXILikeMuxModuleManual_L57F13L67T14_0_AXILikeMuxModuleManual_L59F21T59_Expr;
 	assign AXILikeMuxModuleManual_L57F13L67T14_0_AXILikeMuxModuleManual_L59F21T80_Expr_2 = AXILikeMuxModuleManual_L57F13L67T14_0_AXILikeMuxModuleManual_L59F63T80_Expr;
 	assign AXILikeMuxModuleManual_L57F13L67T14_0_AXILikeMuxModuleManual_L59F21T59_Expr_1 = Inputs_MAddrValid;
@@ -589,13 +685,25 @@ module AXILikeMuxModuleManual_TopLevel
 	assign Inputs_SArr[3][9] = SArr3_Payload_DataFlag;
 	assign Inputs_SArr[3][8:1] = SArr3_Payload_Data;
 	assign Inputs_SArr[3][0] = SArr3_IsActive;
-	assign AXILikeMuxModule_L19F35T68_Resize = { 1'b0, AXILikeMuxModule_L19F51T56_Expr };
+	assign AXILikeMuxModule_L19F35T68_Resize = {
+		1'b0,
+		AXILikeMuxModule_L19F51T56_Expr
+	}
+	;
 	assign mEmptyMData_Addr = AXILikeMuxModule_L19F35T68_Resize;
 	assign mEmptyMData_IsActive = AXILikeMuxModule_L17F32T37_Expr;
-	assign mEmptyMData_Payload_Data = { {7{1'b0}}, AXILikeMuxModule_L12F51T64_Expr };
+	assign mEmptyMData_Payload_Data = {
+		{7{1'b0}},
+		AXILikeMuxModule_L12F51T64_Expr
+	}
+	;
 	assign mEmptyMData_Payload_DataFlag = AXILikeMuxModule_L11F32T37_Expr;
 	assign mEmptySData_IsActive = AXILikeMuxModule_L25F32T37_Expr;
-	assign mEmptySData_Payload_Data = { {7{1'b0}}, AXILikeMuxModule_L12F51T64_Expr };
+	assign mEmptySData_Payload_Data = {
+		{7{1'b0}},
+		AXILikeMuxModule_L12F51T64_Expr
+	}
+	;
 	assign mEmptySData_Payload_DataFlag = AXILikeMuxModule_L11F32T37_Expr;
 	assign mInMData[0] = Inputs_MArr[0];
 	assign mInMData[1] = Inputs_MArr[1];

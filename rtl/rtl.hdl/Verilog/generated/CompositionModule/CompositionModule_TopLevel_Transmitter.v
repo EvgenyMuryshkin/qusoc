@@ -146,7 +146,11 @@ module CompositionModule_TopLevel_Transmitter
 		begin
 			if ((Inputs_Trigger == 1))
 			begin
-				NextState_Counter = { {7{1'b0}}, TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L18F21L22T22_TransmitterModule_L19F45T46_Expr };
+				NextState_Counter = {
+					{7{1'b0}},
+					TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L18F21L22T22_TransmitterModule_L19F45T46_Expr
+				}
+				;
 				NextState_Data = Inputs_Data;
 				NextState_FSM = TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L18F21L22T22_TransmitterModule_L21F41T68_Expr;
 			end
@@ -171,27 +175,99 @@ module CompositionModule_TopLevel_Transmitter
 			end
 		end
 	end
-	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L16F17L23T27_CaseLhs = { 1'b0, State_FSM };
-	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L16F17L23T27_CaseRhs = { 1'b0, TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L16F22T41_Expr };
-	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L24F17L34T27_CaseLhs = { 1'b0, State_FSM };
-	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L24F17L34T27_CaseRhs = { 1'b0, TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L24F22T49_Expr };
-	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L25F25T43_ExprLhs = { 1'b0, State_Counter };
-	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L25F25T43_ExprRhs = { {6{1'b0}}, TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L25F42T43_Expr };
-	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L35F17L38T27_CaseLhs = { 1'b0, State_FSM };
-	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L35F17L38T27_CaseRhs = { 1'b0, TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L35F22T50_Expr };
-	assign TransmitterModule_L9F32T65_ExprLhs = { 1'b0, State_FSM };
-	assign TransmitterModule_L9F32T65_ExprRhs = { 1'b0, TransmitterModule_L9F46T65_Expr };
-	assign TransmitterModule_L11F46T78_ExprLhs = { 1'b0, State_FSM };
-	assign TransmitterModule_L11F46T78_ExprRhs = { 1'b0, TransmitterModule_L11F59T78_Expr };
-	assign TransmitterModule_L11F82T126_ExprLhs = { 1'b0, NextState_FSM };
-	assign TransmitterModule_L11F82T126_ExprRhs = { 1'b0, TransmitterModule_L11F99T126_Expr };
-	assign TransmitterModule_L10F39T79_ExprLhs = { 1'b0, State_FSM };
-	assign TransmitterModule_L10F39T79_ExprRhs = { 1'b0, TransmitterModule_L10F52T79_Expr };
+	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L16F17L23T27_CaseLhs = {
+		1'b0,
+		State_FSM
+	}
+	;
+	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L16F17L23T27_CaseRhs = {
+		1'b0,
+		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L16F22T41_Expr
+	}
+	;
+	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L24F17L34T27_CaseLhs = {
+		1'b0,
+		State_FSM
+	}
+	;
+	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L24F17L34T27_CaseRhs = {
+		1'b0,
+		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L24F22T49_Expr
+	}
+	;
+	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L25F25T43_ExprLhs = {
+		1'b0,
+		State_Counter
+	}
+	;
+	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L25F25T43_ExprRhs = {
+		{6{1'b0}},
+		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L25F42T43_Expr
+	}
+	;
+	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L35F17L38T27_CaseLhs = {
+		1'b0,
+		State_FSM
+	}
+	;
+	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L35F17L38T27_CaseRhs = {
+		1'b0,
+		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L35F22T50_Expr
+	}
+	;
+	assign TransmitterModule_L9F32T65_ExprLhs = {
+		1'b0,
+		State_FSM
+	}
+	;
+	assign TransmitterModule_L9F32T65_ExprRhs = {
+		1'b0,
+		TransmitterModule_L9F46T65_Expr
+	}
+	;
+	assign TransmitterModule_L11F46T78_ExprLhs = {
+		1'b0,
+		State_FSM
+	}
+	;
+	assign TransmitterModule_L11F46T78_ExprRhs = {
+		1'b0,
+		TransmitterModule_L11F59T78_Expr
+	}
+	;
+	assign TransmitterModule_L11F82T126_ExprLhs = {
+		1'b0,
+		NextState_FSM
+	}
+	;
+	assign TransmitterModule_L11F82T126_ExprRhs = {
+		1'b0,
+		TransmitterModule_L11F99T126_Expr
+	}
+	;
+	assign TransmitterModule_L10F39T79_ExprLhs = {
+		1'b0,
+		State_FSM
+	}
+	;
+	assign TransmitterModule_L10F39T79_ExprRhs = {
+		1'b0,
+		TransmitterModule_L10F52T79_Expr
+	}
+	;
 	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L33F38T53_Expr_1 = State_Data;
 	assign TransmitterModule_L11F46T126_Expr_1 = TransmitterModule_L11F46T78_Expr;
 	assign TransmitterModule_L11F46T126_Expr_2 = TransmitterModule_L11F82T126_Expr;
-	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F52T69_Expr_1 = { {2{1'b0}}, State_Counter };
-	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F52T69_Expr_2 = { {9{1'b0}}, TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F68T69_Expr };
+	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F52T69_Expr_1 = {
+		{2{1'b0}},
+		State_Counter
+	}
+	;
+	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F52T69_Expr_2 = {
+		{9{1'b0}},
+		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F68T69_Expr
+	}
+	;
 	assign Inputs_Ack = Ack;
 	assign Inputs_Data = Data;
 	assign Inputs_Trigger = Trigger;

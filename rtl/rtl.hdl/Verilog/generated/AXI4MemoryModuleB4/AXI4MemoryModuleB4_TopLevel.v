@@ -505,8 +505,20 @@ module AXI4MemoryModuleB4_TopLevel
 	assign AXI4MemoryModule_L74F13L76T26_WhenTrue = axiSlave_outAWADDR;
 	assign AXI4MemoryModule_L74F13L76T26_WhenFalse = State_waddr;
 	assign internalWADDR = AXI4MemoryModule_L74F13L76T26_Ternary;
-	assign AXI4MemoryModule_L79F13L81T26_WhenTrue = { axiSlave_outWDATA[3], axiSlave_outWDATA[2], axiSlave_outWDATA[1], axiSlave_outWDATA[0] };
-	assign AXI4MemoryModule_L79F13L81T26_WhenFalse = { State_wdata[3], State_wdata[2], State_wdata[1], State_wdata[0] };
+	assign AXI4MemoryModule_L79F13L81T26_WhenTrue = {
+		axiSlave_outWDATA[3],
+		axiSlave_outWDATA[2],
+		axiSlave_outWDATA[1],
+		axiSlave_outWDATA[0]
+	}
+	;
+	assign AXI4MemoryModule_L79F13L81T26_WhenFalse = {
+		State_wdata[3],
+		State_wdata[2],
+		State_wdata[1],
+		State_wdata[0]
+	}
+	;
 	assign internalWDATA[0] = AXI4MemoryModule_L79F13L81T26_Ternary[7:0];
 	assign internalWDATA[1] = AXI4MemoryModule_L79F13L81T26_Ternary[15:8];
 	assign internalWDATA[2] = AXI4MemoryModule_L79F13L81T26_Ternary[23:16];

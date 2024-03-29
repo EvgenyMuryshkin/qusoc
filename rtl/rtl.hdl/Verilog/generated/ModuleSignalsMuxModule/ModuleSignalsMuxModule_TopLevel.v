@@ -128,7 +128,12 @@ module ModuleSignalsMuxModule_TopLevel
 	assign ModuleSignalsMuxModule_L32F82T104_Enumerable[0] = AndGate_O;
 	assign ModuleSignalsMuxModule_L32F82T104_Enumerable[1] = OrGate_O;
 	assign ModuleSignalsMuxModule_L32F82T104_Enumerable[2] = XorGate_O;
-	assign ModuleSignalsMuxModule_L32F41T105_Source = { ModuleSignalsMuxModule_L32F82T104_Enumerable[0], ModuleSignalsMuxModule_L32F82T104_Enumerable[1], ModuleSignalsMuxModule_L32F82T104_Enumerable[2] };
+	assign ModuleSignalsMuxModule_L32F41T105_Source = {
+		ModuleSignalsMuxModule_L32F82T104_Enumerable[0],
+		ModuleSignalsMuxModule_L32F82T104_Enumerable[1],
+		ModuleSignalsMuxModule_L32F82T104_Enumerable[2]
+	}
+	;
 	assign CombinedO = ModuleSignalsMuxModule_L32F41T105_Source;
 	assign O = ModuleSignalsMuxModule_L27F26T46_Mux;
 	assign oAnd = AndGate_O;

@@ -357,8 +357,16 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	assign masters0_Master[97] = Inputs_MWE[0];
 	assign masters0_Master[96:65] = Inputs_InData;
 	assign masters0_Master[64] = Inputs_MRE[0];
-	assign masters0_Master[63:32] = { {31{1'b0}}, AXI4Interconnect2x4TestModule_L62F13L77T14_0_AXI4Interconnect2x4TestModule_L72F34T35_Expr };
-	assign masters0_Master[31:0] = { {31{1'b0}}, AXI4Interconnect2x4TestModule_L62F13L77T14_0_AXI4Interconnect2x4TestModule_L71F34T35_Expr };
+	assign masters0_Master[63:32] = {
+		{31{1'b0}},
+		AXI4Interconnect2x4TestModule_L62F13L77T14_0_AXI4Interconnect2x4TestModule_L72F34T35_Expr
+	}
+	;
+	assign masters0_Master[31:0] = {
+		{31{1'b0}},
+		AXI4Interconnect2x4TestModule_L62F13L77T14_0_AXI4Interconnect2x4TestModule_L71F34T35_Expr
+	}
+	;
 	assign masters0_S2M[73] = notActiveS2M_W_W_WREADY;
 	assign masters0_S2M[72] = notActiveS2M_W_B_BVALID;
 	assign masters0_S2M[71:64] = notActiveS2M_W_B_BUSER;
@@ -379,8 +387,16 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	assign masters1_Master[97] = Inputs_MWE[1];
 	assign masters1_Master[96:65] = Inputs_InData;
 	assign masters1_Master[64] = Inputs_MRE[1];
-	assign masters1_Master[63:32] = { {31{1'b0}}, AXI4Interconnect2x4TestModule_L62F13L77T14_1_AXI4Interconnect2x4TestModule_L72F34T35_Expr };
-	assign masters1_Master[31:0] = { {31{1'b0}}, AXI4Interconnect2x4TestModule_L62F13L77T14_1_AXI4Interconnect2x4TestModule_L71F34T35_Expr };
+	assign masters1_Master[63:32] = {
+		{31{1'b0}},
+		AXI4Interconnect2x4TestModule_L62F13L77T14_1_AXI4Interconnect2x4TestModule_L72F34T35_Expr
+	}
+	;
+	assign masters1_Master[31:0] = {
+		{31{1'b0}},
+		AXI4Interconnect2x4TestModule_L62F13L77T14_1_AXI4Interconnect2x4TestModule_L71F34T35_Expr
+	}
+	;
 	assign masters1_S2M[73] = notActiveS2M_W_W_WREADY;
 	assign masters1_S2M[72] = notActiveS2M_W_B_BVALID;
 	assign masters1_S2M[71:64] = notActiveS2M_W_B_BUSER;

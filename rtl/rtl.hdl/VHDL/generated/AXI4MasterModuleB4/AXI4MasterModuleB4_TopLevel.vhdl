@@ -397,10 +397,16 @@ begin
 		Inputs_S2M_W_W_WREADY <= S2M_W_W_WREADY;
 		readAck <= AXI4MasterModule_L67F25T66_Expr;
 		writeAck <= AXI4MasterModule_L68F26T86_Expr;
-		M2S_R_AR_ARID(7 downto 1) <= (others => '0');
+		M2S_R_AR_ARID(7 downto 1) <= (
+			others => '0'
+		)
+		;
 		M2S_R_AR_ARID(0) <= AXI4_M_AR_L18F28T29_Expr;
 		M2S_R_AR_ARADDR <= Inputs_Master_ARADDR;
-		M2S_R_AR_ARLEN(7 downto 1) <= (others => '0');
+		M2S_R_AR_ARLEN(7 downto 1) <= (
+			others => '0'
+		)
+		;
 		M2S_R_AR_ARLEN(0) <= AXI4_M_AR_L24F29T30_Expr;
 		M2S_R_AR_ARSIZE <= AXI4_M_AR_L27F33T43_Expr;
 		M2S_R_AR_ARBURST <= AXI4_M_AR_L30F35T48_Expr;
@@ -408,16 +414,28 @@ begin
 		M2S_R_AR_ARCACHE <= AXI4_M_AR_L36F35T63_Expr;
 		M2S_R_AR_ARPROT <= AXI4_M_AR_L39F33T66_Expr;
 		M2S_R_AR_ARQOS <= AXI4_M_AR_L42F31T44_Expr;
-		M2S_R_AR_ARREGION(7 downto 1) <= (others => '0');
+		M2S_R_AR_ARREGION(7 downto 1) <= (
+			others => '0'
+		)
+		;
 		M2S_R_AR_ARREGION(0) <= AXI4_M_AR_L45F32T33_Expr;
-		M2S_R_AR_ARUSER(7 downto 1) <= (others => '0');
+		M2S_R_AR_ARUSER(7 downto 1) <= (
+			others => '0'
+		)
+		;
 		M2S_R_AR_ARUSER(0) <= AXI4_M_AR_L48F30T31_Expr;
 		M2S_R_AR_ARVALID <= Inputs_Master_RE;
 		M2S_R_R_RREADY <= AXI4MasterModule_L86F30T34_Expr;
-		M2S_W_AW_AWID(7 downto 1) <= (others => '0');
+		M2S_W_AW_AWID(7 downto 1) <= (
+			others => '0'
+		)
+		;
 		M2S_W_AW_AWID(0) <= AXI4_M_AW_L17F28T29_Expr;
 		M2S_W_AW_AWADDR <= Inputs_Master_AWADDR;
-		M2S_W_AW_AWLEN(7 downto 1) <= (others => '0');
+		M2S_W_AW_AWLEN(7 downto 1) <= (
+			others => '0'
+		)
+		;
 		M2S_W_AW_AWLEN(0) <= AXI4_M_AW_L23F29T30_Expr;
 		M2S_W_AW_AWSIZE <= AXI4_M_AW_L26F33T43_Expr;
 		M2S_W_AW_AWBURST <= AXI4_M_AW_L29F35T48_Expr;
@@ -425,12 +443,21 @@ begin
 		M2S_W_AW_AWCACHE <= AXI4_M_AW_L35F35T63_Expr;
 		M2S_W_AW_AWPROT <= AXI4_M_AW_L38F33T66_Expr;
 		M2S_W_AW_AWQOS <= AXI4_M_AW_L41F31T44_Expr;
-		M2S_W_AW_AWREGION(7 downto 1) <= (others => '0');
+		M2S_W_AW_AWREGION(7 downto 1) <= (
+			others => '0'
+		)
+		;
 		M2S_W_AW_AWREGION(0) <= AXI4_M_AW_L44F32T33_Expr;
-		M2S_W_AW_AWUSER(7 downto 1) <= (others => '0');
+		M2S_W_AW_AWUSER(7 downto 1) <= (
+			others => '0'
+		)
+		;
 		M2S_W_AW_AWUSER(0) <= AXI4_M_AW_L47F30T31_Expr;
 		M2S_W_AW_AWVALID <= Inputs_Master_WE;
-		M2S_W_W_WID(7 downto 1) <= (others => '0');
+		M2S_W_W_WID(7 downto 1) <= (
+			others => '0'
+		)
+		;
 		M2S_W_W_WID(0) <= AXI4MasterModule_L98F27T28_Expr;
 		M2S_W_W_WDATA0 <= Inputs_Master_WDATA(0);
 		M2S_W_W_WDATA1 <= Inputs_Master_WDATA(1);
@@ -438,7 +465,10 @@ begin
 		M2S_W_W_WDATA3 <= Inputs_Master_WDATA(3);
 		M2S_W_W_WSTRB <= Inputs_Master_WSTRB;
 		M2S_W_W_WLAST <= AXI4_M_W_L24F29T33_Expr;
-		M2S_W_W_WUSER(7 downto 1) <= (others => '0');
+		M2S_W_W_WUSER(7 downto 1) <= (
+			others => '0'
+		)
+		;
 		M2S_W_W_WUSER(0) <= AXI4_M_W_L27F29T30_Expr;
 		M2S_W_W_WVALID <= Inputs_Master_WE;
 		M2S_W_B_BREADY <= AXI4MasterModule_L105F30T34_Expr;

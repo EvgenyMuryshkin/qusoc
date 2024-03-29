@@ -109,8 +109,16 @@ module NestedLogicRAMIndexingModule_TopLevel
 			NextState_Nested_Buff[Inputs_WriteAddr] = Inputs_WriteData;
 		end
 	end
-	assign NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_1 = { {2{1'b0}}, State_Counter };
-	assign NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_2 = { {9{1'b0}}, NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F60T61_Expr };
+	assign NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_1 = {
+		{2{1'b0}},
+		State_Counter
+	}
+	;
+	assign NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_2 = {
+		{9{1'b0}},
+		NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F60T61_Expr
+	}
+	;
 	assign Inputs_ReadAddr = ReadAddr;
 	assign Inputs_WE = WE;
 	assign Inputs_WriteAddr = WriteAddr;

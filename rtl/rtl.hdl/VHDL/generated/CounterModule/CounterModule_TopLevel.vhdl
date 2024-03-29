@@ -77,9 +77,15 @@ begin
 	end process;
 	process (CounterModule_L19F27T81_Cast, CounterModule_L19F34T80_Ternary, CounterModule_L19F51T66_Expr, Enabled, State_Value)
 	begin
-		CounterModule_L19F51T66_Expr_1(9 downto 8) <= (others => '0');
+		CounterModule_L19F51T66_Expr_1(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		CounterModule_L19F51T66_Expr_1(7 downto 0) <= signed(State_Value);
-		CounterModule_L19F51T66_Expr_2(9 downto 1) <= (others => '0');
+		CounterModule_L19F51T66_Expr_2(9 downto 1) <= (
+			others => '0'
+		)
+		;
 		CounterModule_L19F51T66_Expr_2(0) <= CounterModule_L19F65T66_Expr;
 		Inputs_Enabled <= Enabled;
 		CounterModule_L19F34T80_WhenTrue <= CounterModule_L19F51T66_Expr(7 downto 0);

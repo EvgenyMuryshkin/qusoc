@@ -86,9 +86,15 @@ begin
 	begin
 		EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr_1 <= Inputs_IsEnabled;
 		EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr_2 <= Inputs_Ack;
-		EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_1(9 downto 8) <= (others => '0');
+		EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_1(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_1(7 downto 0) <= signed(State_Data);
-		EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_2(9 downto 1) <= (others => '0');
+		EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_2(9 downto 1) <= (
+			others => '0'
+		)
+		;
 		EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_2(0) <= EmitterModule_L22F9L25T10_EmitterModule_L24F54T55_Expr;
 		Inputs_Ack <= Ack;
 		Inputs_IsEnabled <= IsEnabled;

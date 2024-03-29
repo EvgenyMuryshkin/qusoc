@@ -94,7 +94,10 @@ begin
 	end process;
 	process (AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize, AXI4EncoderModule_L30F13L39T14_result, AXI4EncoderModule_L45F13L54T14_result, AXI4EncoderModule_L59F40T101_Expr, AXI4EncoderModule_L59F40T101_ShiftLeft, AXI4EncoderModule_L59F40T121_Resize, internalEncoded, internalHasActive, iValues0, iValues1, iValues2, iValues3, iValues4, iValues5, iValues6)
 	begin
-		AXI4EncoderModule_L59F40T101_Expr_1(6 downto 1) <= (others => '0');
+		AXI4EncoderModule_L59F40T101_Expr_1(6 downto 1) <= (
+			others => '0'
+		)
+		;
 		AXI4EncoderModule_L59F40T101_Expr_1(0) <= internalHasActive;
 		Inputs_iValues(0) <= iValues0;
 		Inputs_iValues(1) <= iValues1;
@@ -103,7 +106,10 @@ begin
 		Inputs_iValues(4) <= iValues4;
 		Inputs_iValues(5) <= iValues5;
 		Inputs_iValues(6) <= iValues6;
-		AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize(2 downto 1) <= (others => '0');
+		AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize(2 downto 1) <= (
+			others => '0'
+		)
+		;
 		AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize(0) <= AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F46T51_Expr;
 		AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize <= AXI4EncoderModule_L30F13L39T14_result;
 		internalEncoded <= AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize;

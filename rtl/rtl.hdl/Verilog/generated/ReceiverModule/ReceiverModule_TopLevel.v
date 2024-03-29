@@ -138,18 +138,54 @@ module ReceiverModule_TopLevel
 			if ((Inputs_Ack == 1))
 			begin
 				NextState_FSM = ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L35F21L38T22_ReceiverModule_L36F41T57_Expr;
-				NextState_Data = { {7{1'b0}}, ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L35F21L38T22_ReceiverModule_L37F42T43_Expr };
+				NextState_Data = {
+					{7{1'b0}},
+					ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L35F21L38T22_ReceiverModule_L37F42T43_Expr
+				}
+				;
 			end
 		end
 	end
-	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L16F17L22T27_CaseLhs = { 1'b0, State_FSM };
-	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L16F17L22T27_CaseRhs = { 1'b0, ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L16F22T38_Expr };
-	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L23F17L32T27_CaseLhs = { 1'b0, State_FSM };
-	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L23F17L32T27_CaseRhs = { 1'b0, ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L23F22T43_Expr };
-	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L33F17L39T27_CaseLhs = { 1'b0, State_FSM };
-	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L33F17L39T27_CaseRhs = { 1'b0, ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L33F22T47_Expr };
-	assign ReceiverModule_L8F32T71_ExprLhs = { 1'b0, State_FSM };
-	assign ReceiverModule_L8F32T71_ExprRhs = { 1'b0, ReceiverModule_L8F46T71_Expr };
+	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L16F17L22T27_CaseLhs = {
+		1'b0,
+		State_FSM
+	}
+	;
+	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L16F17L22T27_CaseRhs = {
+		1'b0,
+		ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L16F22T38_Expr
+	}
+	;
+	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L23F17L32T27_CaseLhs = {
+		1'b0,
+		State_FSM
+	}
+	;
+	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L23F17L32T27_CaseRhs = {
+		1'b0,
+		ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L23F22T43_Expr
+	}
+	;
+	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L33F17L39T27_CaseLhs = {
+		1'b0,
+		State_FSM
+	}
+	;
+	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L33F17L39T27_CaseRhs = {
+		1'b0,
+		ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L33F22T47_Expr
+	}
+	;
+	assign ReceiverModule_L8F32T71_ExprLhs = {
+		1'b0,
+		State_FSM
+	}
+	;
+	assign ReceiverModule_L8F32T71_ExprRhs = {
+		1'b0,
+		ReceiverModule_L8F46T71_Expr
+	}
+	;
 	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F49T80_Expr_1 = ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F50T65_Expr;
 	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F49T80_Expr_2 = PartialData;
 	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F50T65_Expr_1 = State_Data;
@@ -157,7 +193,11 @@ module ReceiverModule_TopLevel
 	assign Inputs_Bit = Bit;
 	assign Inputs_IsValid = IsValid;
 	assign ReceiverModule_L10F36T57_WhenTrue = ReceiverModule_L10F49T53_Expr;
-	assign ReceiverModule_L10F36T57_WhenFalse = { {7{1'b0}}, ReceiverModule_L10F56T57_Expr };
+	assign ReceiverModule_L10F36T57_WhenFalse = {
+		{7{1'b0}},
+		ReceiverModule_L10F56T57_Expr
+	}
+	;
 	assign ReceiverModule_L10F29T58_Cast = ReceiverModule_L10F36T57_Ternary;
 	assign PartialData = ReceiverModule_L10F29T58_Cast;
 	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F42T81_Cast = ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F49T80_Expr;

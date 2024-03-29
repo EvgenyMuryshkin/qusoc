@@ -574,7 +574,15 @@ $readmemh("IOTupleStateInputL4ComponentsOutputModule_TopLevel_State_Value_iTuple
 	assign Output_iTuple_Item4_L2Array1_L2Values1 = State_Value_iTuple_Item4_L2Array[1][6:4];
 	assign Output_iTuple_Item4_L2Array1_L2Values0 = State_Value_iTuple_Item4_L2Array[1][3:1];
 	assign Output_iTuple_Item4_L2Array1_L2Flag = State_Value_iTuple_Item4_L2Array[1][0];
-	assign IOTupleStateInputL4ComponentsOutputModule_L19F121T153_Tuple = { State_Value_iTuple_Item4_L2Tuple_Item1, State_Value_iTuple_Item4_L2Tuple_Item2_L2Values[1], State_Value_iTuple_Item4_L2Tuple_Item2_L2Values[0], State_Value_iTuple_Item4_L2Tuple_Item2_L2Flag, State_Value_iTuple_Item4_L2Tuple_Item3[1], State_Value_iTuple_Item4_L2Tuple_Item3[0] };
+	assign IOTupleStateInputL4ComponentsOutputModule_L19F121T153_Tuple = {
+		State_Value_iTuple_Item4_L2Tuple_Item1,
+		State_Value_iTuple_Item4_L2Tuple_Item2_L2Values[1],
+		State_Value_iTuple_Item4_L2Tuple_Item2_L2Values[0],
+		State_Value_iTuple_Item4_L2Tuple_Item2_L2Flag,
+		State_Value_iTuple_Item4_L2Tuple_Item3[1],
+		State_Value_iTuple_Item4_L2Tuple_Item3[0]
+	}
+	;
 	assign Output_iTuple_Item4_L2Tuple_Item1 = IOTupleStateInputL4ComponentsOutputModule_L19F121T153_Tuple[24:17];
 	assign Output_iTuple_Item4_L2Tuple_Item2_L2Values1 = IOTupleStateInputL4ComponentsOutputModule_L19F121T153_Tuple[16];
 	assign Output_iTuple_Item4_L2Tuple_Item2_L2Values0 = IOTupleStateInputL4ComponentsOutputModule_L19F121T153_Tuple[15];

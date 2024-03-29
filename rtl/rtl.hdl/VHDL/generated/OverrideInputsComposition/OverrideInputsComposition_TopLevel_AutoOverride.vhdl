@@ -80,21 +80,42 @@ begin
 	CombinationalAutoValueOverride_L9F49T103_Ternary <= CombinationalAutoValueOverride_L9F49T103_WhenTrue when (Inputs_InOverride = '1') else CombinationalAutoValueOverride_L9F49T103_WhenFalse;
 	process (CombinationalAutoValueOverride_L9F42T104_Cast, CombinationalAutoValueOverride_L9F49T103_Ternary, CombinationalAutoValueOverride_L9F69T87_Expr, CombinationalOverridesBase_L14F41T96_Ternary, CombinationalOverridesBase_L14F61T77_CombinationalOverridesBase_L24F9L26T10_CombinationalOverridesBase_L25F20T50_CombinationalOverridesBase_L34F9L36T10_CombinationalOverridesBase_L35F20T50_Cast, CombinationalOverridesBase_L14F61T77_CombinationalOverridesBase_L24F9L26T10_CombinationalOverridesBase_L25F20T50_CombinationalOverridesBase_L34F9L36T10_CombinationalOverridesBase_L35F27T49_Expr, CombinationalOverridesBase_L14F80T96_CombinationalOverridesBase_L19F9L21T10_CombinationalOverridesBase_L20F20T50_CombinationalOverridesBase_L29F9L31T10_CombinationalOverridesBase_L30F20T50_Cast, CombinationalOverridesBase_L14F80T96_CombinationalOverridesBase_L19F9L21T10_CombinationalOverridesBase_L20F20T50_CombinationalOverridesBase_L29F9L31T10_CombinationalOverridesBase_L30F27T49_Expr, InOverride, Inputs_InValue, InternalOffset, InValue)
 	begin
-		CombinationalAutoValueOverride_L9F69T87_Expr_1(9 downto 8) <= (others => '0');
+		CombinationalAutoValueOverride_L9F69T87_Expr_1(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		CombinationalAutoValueOverride_L9F69T87_Expr_1(7 downto 0) <= signed(Inputs_InValue);
-		CombinationalAutoValueOverride_L9F69T87_Expr_2(9 downto 2) <= (others => '0');
+		CombinationalAutoValueOverride_L9F69T87_Expr_2(9 downto 2) <= (
+			others => '0'
+		)
+		;
 		CombinationalAutoValueOverride_L9F69T87_Expr_2(1 downto 0) <= signed(CombinationalAutoValueOverride_L9F86T87_Expr);
-		CombinationalOverridesBase_L14F61T77_CombinationalOverridesBase_L24F9L26T10_CombinationalOverridesBase_L25F20T50_CombinationalOverridesBase_L34F9L36T10_CombinationalOverridesBase_L35F27T49_Expr_1(9 downto 8) <= (others => '0');
+		CombinationalOverridesBase_L14F61T77_CombinationalOverridesBase_L24F9L26T10_CombinationalOverridesBase_L25F20T50_CombinationalOverridesBase_L34F9L36T10_CombinationalOverridesBase_L35F27T49_Expr_1(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		CombinationalOverridesBase_L14F61T77_CombinationalOverridesBase_L24F9L26T10_CombinationalOverridesBase_L25F20T50_CombinationalOverridesBase_L34F9L36T10_CombinationalOverridesBase_L35F27T49_Expr_1(7 downto 0) <= signed(Inputs_InValue);
-		CombinationalOverridesBase_L14F61T77_CombinationalOverridesBase_L24F9L26T10_CombinationalOverridesBase_L25F20T50_CombinationalOverridesBase_L34F9L36T10_CombinationalOverridesBase_L35F27T49_Expr_2(9 downto 8) <= (others => '0');
+		CombinationalOverridesBase_L14F61T77_CombinationalOverridesBase_L24F9L26T10_CombinationalOverridesBase_L25F20T50_CombinationalOverridesBase_L34F9L36T10_CombinationalOverridesBase_L35F27T49_Expr_2(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		CombinationalOverridesBase_L14F61T77_CombinationalOverridesBase_L24F9L26T10_CombinationalOverridesBase_L25F20T50_CombinationalOverridesBase_L34F9L36T10_CombinationalOverridesBase_L35F27T49_Expr_2(7 downto 0) <= signed(InternalOffset);
-		CombinationalOverridesBase_L14F80T96_CombinationalOverridesBase_L19F9L21T10_CombinationalOverridesBase_L20F20T50_CombinationalOverridesBase_L29F9L31T10_CombinationalOverridesBase_L30F27T49_Expr_1(9 downto 8) <= (others => '0');
+		CombinationalOverridesBase_L14F80T96_CombinationalOverridesBase_L19F9L21T10_CombinationalOverridesBase_L20F20T50_CombinationalOverridesBase_L29F9L31T10_CombinationalOverridesBase_L30F27T49_Expr_1(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		CombinationalOverridesBase_L14F80T96_CombinationalOverridesBase_L19F9L21T10_CombinationalOverridesBase_L20F20T50_CombinationalOverridesBase_L29F9L31T10_CombinationalOverridesBase_L30F27T49_Expr_1(7 downto 0) <= signed(Inputs_InValue);
-		CombinationalOverridesBase_L14F80T96_CombinationalOverridesBase_L19F9L21T10_CombinationalOverridesBase_L20F20T50_CombinationalOverridesBase_L29F9L31T10_CombinationalOverridesBase_L30F27T49_Expr_2(9 downto 8) <= (others => '0');
+		CombinationalOverridesBase_L14F80T96_CombinationalOverridesBase_L19F9L21T10_CombinationalOverridesBase_L20F20T50_CombinationalOverridesBase_L29F9L31T10_CombinationalOverridesBase_L30F27T49_Expr_2(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		CombinationalOverridesBase_L14F80T96_CombinationalOverridesBase_L19F9L21T10_CombinationalOverridesBase_L20F20T50_CombinationalOverridesBase_L29F9L31T10_CombinationalOverridesBase_L30F27T49_Expr_2(7 downto 0) <= signed(InternalOffset);
 		Inputs_InOverride <= InOverride;
 		Inputs_InValue <= InValue;
-		InternalOffset(7 downto 1) <= (others => '0');
+		InternalOffset(7 downto 1) <= (
+			others => '0'
+		)
+		;
 		InternalOffset(0) <= CombinationalOverridesBase_L16F50T51_Expr;
 		CombinationalOverridesBase_L14F61T77_CombinationalOverridesBase_L24F9L26T10_CombinationalOverridesBase_L25F20T50_CombinationalOverridesBase_L34F9L36T10_CombinationalOverridesBase_L35F20T50_Cast <= CombinationalOverridesBase_L14F61T77_CombinationalOverridesBase_L24F9L26T10_CombinationalOverridesBase_L25F20T50_CombinationalOverridesBase_L34F9L36T10_CombinationalOverridesBase_L35F27T49_Expr(7 downto 0);
 		CombinationalOverridesBase_L14F80T96_CombinationalOverridesBase_L19F9L21T10_CombinationalOverridesBase_L20F20T50_CombinationalOverridesBase_L29F9L31T10_CombinationalOverridesBase_L30F20T50_Cast <= unsigned(CombinationalOverridesBase_L14F80T96_CombinationalOverridesBase_L19F9L21T10_CombinationalOverridesBase_L20F20T50_CombinationalOverridesBase_L29F9L31T10_CombinationalOverridesBase_L30F27T49_Expr(7 downto 0));

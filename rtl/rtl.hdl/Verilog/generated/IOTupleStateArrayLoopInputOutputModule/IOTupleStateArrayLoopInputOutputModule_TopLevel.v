@@ -242,7 +242,27 @@ $readmemh("IOTupleStateArrayLoopInputOutputModule_TopLevel_State_Value.hex", Sta
 		begin
 			NextState_Value[NextState_Value_Iterator] = State_Value[NextState_Value_Iterator];
 		end
-		NextState_Value[0] = { Inputs_iTupleArray[1], Inputs_iTupleArray[0], Inputs_iTuple_Item1, Inputs_iTuple_Item2, Inputs_iTuple_Item3[1], Inputs_iTuple_Item3[0], Inputs_iTuple_Item4_L2Tuple_Item1, Inputs_iTuple_Item4_L2Tuple_Item2_L2Values[1], Inputs_iTuple_Item4_L2Tuple_Item2_L2Values[0], Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag, Inputs_iTuple_Item4_L2Tuple_Item3[1], Inputs_iTuple_Item4_L2Tuple_Item3[0], Inputs_iTuple_Item4_L2Array[1], Inputs_iTuple_Item4_L2Array[0], Inputs_iTuple_Item4_L2_L2Values[1], Inputs_iTuple_Item4_L2_L2Values[0], Inputs_iTuple_Item4_L2_L2Flag, Inputs_iTuple_Item4_L1Flag };
+		NextState_Value[0] = {
+			Inputs_iTupleArray[1],
+			Inputs_iTupleArray[0],
+			Inputs_iTuple_Item1,
+			Inputs_iTuple_Item2,
+			Inputs_iTuple_Item3[1],
+			Inputs_iTuple_Item3[0],
+			Inputs_iTuple_Item4_L2Tuple_Item1,
+			Inputs_iTuple_Item4_L2Tuple_Item2_L2Values[1],
+			Inputs_iTuple_Item4_L2Tuple_Item2_L2Values[0],
+			Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag,
+			Inputs_iTuple_Item4_L2Tuple_Item3[1],
+			Inputs_iTuple_Item4_L2Tuple_Item3[0],
+			Inputs_iTuple_Item4_L2Array[1],
+			Inputs_iTuple_Item4_L2Array[0],
+			Inputs_iTuple_Item4_L2_L2Values[1],
+			Inputs_iTuple_Item4_L2_L2Values[0],
+			Inputs_iTuple_Item4_L2_L2Flag,
+			Inputs_iTuple_Item4_L1Flag
+		}
+		;
 		for (idx = 0; (idx < 3); idx = (idx + 1))
 		begin
 			NextState_Value[(idx + 1)] = State_Value[idx];

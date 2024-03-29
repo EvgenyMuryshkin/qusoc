@@ -175,9 +175,15 @@ begin
 		master_Master(97) <= Inputs_MWE;
 		master_Master(96 downto 65) <= Inputs_InData;
 		master_Master(64) <= Inputs_MRE;
-		master_Master(63 downto 33) <= (others => '0');
+		master_Master(63 downto 33) <= (
+			others => '0'
+		)
+		;
 		master_Master(32) <= AXI4MasterSlaveTestModule_L62F30T31_Expr;
-		master_Master(31 downto 1) <= (others => '0');
+		master_Master(31 downto 1) <= (
+			others => '0'
+		)
+		;
 		master_Master(0) <= AXI4MasterSlaveTestModule_L61F30T31_Expr;
 		master_S2M(73 downto 53) <= reg_S2M(73 downto 53);
 		master_S2M(52 downto 0) <= reg_S2M(52 downto 0);

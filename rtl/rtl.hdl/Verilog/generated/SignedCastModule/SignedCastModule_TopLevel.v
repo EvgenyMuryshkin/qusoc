@@ -46,10 +46,18 @@ module SignedCastModule_TopLevel
 	assign Inputs_ShortValue = ShortValue;
 	assign SignedCastModule_L13F34T57_Cast = Inputs_ShortValue[7:0];
 	assign ByteValue = SignedCastModule_L13F34T57_Cast;
-	assign IntValue = { {16{Inputs_ShortValue[15]}}, Inputs_ShortValue };
+	assign IntValue = {
+		{16{Inputs_ShortValue[15]}},
+		Inputs_ShortValue
+	}
+	;
 	assign SignedCastModule_L14F36T60_Cast = Inputs_ShortValue[7:0];
 	assign SByteValue = SignedCastModule_L14F36T60_Cast;
-	assign SignedCastModule_L17F34T57_Cast = { {16{Inputs_ShortValue[15]}}, Inputs_ShortValue };
+	assign SignedCastModule_L17F34T57_Cast = {
+		{16{Inputs_ShortValue[15]}},
+		Inputs_ShortValue
+	}
+	;
 	assign UIntValue = SignedCastModule_L17F34T57_Cast;
 	assign SignedCastModule_L15F38T63_Cast = Inputs_ShortValue;
 	assign UShortValue = SignedCastModule_L15F38T63_Cast;

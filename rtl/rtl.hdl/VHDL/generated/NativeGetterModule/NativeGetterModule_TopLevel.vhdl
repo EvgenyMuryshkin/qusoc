@@ -59,7 +59,10 @@ begin
 	begin
 		BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprLhs(8) <= '0';
 		BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprLhs(7 downto 0) <= signed(Inputs_Value);
-		BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprRhs(8 downto 7) <= (others => '0');
+		BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprRhs(8 downto 7) <= (
+			others => '0'
+		)
+		;
 		BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprRhs(6 downto 0) <= signed(BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F36T39_Expr);
 		Inputs_Value <= Value;
 		Getter <= BitArrayGetterModule_L34F13L41T14_result;

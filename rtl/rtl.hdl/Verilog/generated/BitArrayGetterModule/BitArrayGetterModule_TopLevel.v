@@ -61,10 +61,26 @@ module BitArrayGetterModule_TopLevel
 			BitArrayGetterModule_L16F13L25T14_result = BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L22F30T70_Resize;
 		end
 	end
-	assign BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_ExprLhs = { 1'b0, Inputs_Value };
-	assign BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_ExprRhs = { {3{1'b0}}, BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F36T38_Expr };
-	assign BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_ExprLhs = { 1'b0, Inputs_Value };
-	assign BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_ExprRhs = { {2{1'b0}}, BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F41T44_Expr };
+	assign BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_ExprLhs = {
+		1'b0,
+		Inputs_Value
+	}
+	;
+	assign BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_ExprRhs = {
+		{3{1'b0}},
+		BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F36T38_Expr
+	}
+	;
+	assign BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_ExprLhs = {
+		1'b0,
+		Inputs_Value
+	}
+	;
+	assign BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_ExprRhs = {
+		{2{1'b0}},
+		BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F41T44_Expr
+	}
+	;
 	assign Inputs_Value = Value;
 	assign BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L22F30T70_Resize = Inputs_Value;
 	assign Getter = BitArrayGetterModule_L16F13L25T14_result;

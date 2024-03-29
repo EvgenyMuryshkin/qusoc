@@ -1027,7 +1027,13 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutLeftData[0][219:212] = mMuxLeftData_W_W_WUSER;
 			mOutLeftData[0][211] = mMuxLeftData_W_W_WLAST;
 			mOutLeftData[0][210:207] = mMuxLeftData_W_W_WSTRB;
-			mOutLeftData[0][206:175] = { mMuxLeftData_W_W_WDATA[3], mMuxLeftData_W_W_WDATA[2], mMuxLeftData_W_W_WDATA[1], mMuxLeftData_W_W_WDATA[0] };
+			mOutLeftData[0][206:175] = {
+				mMuxLeftData_W_W_WDATA[3],
+				mMuxLeftData_W_W_WDATA[2],
+				mMuxLeftData_W_W_WDATA[1],
+				mMuxLeftData_W_W_WDATA[0]
+			}
+			;
 			mOutLeftData[0][174:167] = mMuxLeftData_W_W_WID;
 			mOutLeftData[0][166] = mMuxLeftData_W_AW_AWVALID;
 			mOutLeftData[0][165:158] = mMuxLeftData_W_AW_AWUSER;
@@ -1062,7 +1068,13 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutLeftData[0][219:212] = mEmptyLeftData_W_W_WUSER;
 			mOutLeftData[0][211] = mEmptyLeftData_W_W_WLAST;
 			mOutLeftData[0][210:207] = mEmptyLeftData_W_W_WSTRB;
-			mOutLeftData[0][206:175] = { mEmptyLeftData_W_W_WDATA[3], mEmptyLeftData_W_W_WDATA[2], mEmptyLeftData_W_W_WDATA[1], mEmptyLeftData_W_W_WDATA[0] };
+			mOutLeftData[0][206:175] = {
+				mEmptyLeftData_W_W_WDATA[3],
+				mEmptyLeftData_W_W_WDATA[2],
+				mEmptyLeftData_W_W_WDATA[1],
+				mEmptyLeftData_W_W_WDATA[0]
+			}
+			;
 			mOutLeftData[0][174:167] = mEmptyLeftData_W_W_WID;
 			mOutLeftData[0][166] = mEmptyLeftData_W_AW_AWVALID;
 			mOutLeftData[0][165:158] = mEmptyLeftData_W_AW_AWUSER;
@@ -1100,7 +1112,13 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutLeftData[1][219:212] = mMuxLeftData_W_W_WUSER;
 			mOutLeftData[1][211] = mMuxLeftData_W_W_WLAST;
 			mOutLeftData[1][210:207] = mMuxLeftData_W_W_WSTRB;
-			mOutLeftData[1][206:175] = { mMuxLeftData_W_W_WDATA[3], mMuxLeftData_W_W_WDATA[2], mMuxLeftData_W_W_WDATA[1], mMuxLeftData_W_W_WDATA[0] };
+			mOutLeftData[1][206:175] = {
+				mMuxLeftData_W_W_WDATA[3],
+				mMuxLeftData_W_W_WDATA[2],
+				mMuxLeftData_W_W_WDATA[1],
+				mMuxLeftData_W_W_WDATA[0]
+			}
+			;
 			mOutLeftData[1][174:167] = mMuxLeftData_W_W_WID;
 			mOutLeftData[1][166] = mMuxLeftData_W_AW_AWVALID;
 			mOutLeftData[1][165:158] = mMuxLeftData_W_AW_AWUSER;
@@ -1135,7 +1153,13 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutLeftData[1][219:212] = mEmptyLeftData_W_W_WUSER;
 			mOutLeftData[1][211] = mEmptyLeftData_W_W_WLAST;
 			mOutLeftData[1][210:207] = mEmptyLeftData_W_W_WSTRB;
-			mOutLeftData[1][206:175] = { mEmptyLeftData_W_W_WDATA[3], mEmptyLeftData_W_W_WDATA[2], mEmptyLeftData_W_W_WDATA[1], mEmptyLeftData_W_W_WDATA[0] };
+			mOutLeftData[1][206:175] = {
+				mEmptyLeftData_W_W_WDATA[3],
+				mEmptyLeftData_W_W_WDATA[2],
+				mEmptyLeftData_W_W_WDATA[1],
+				mEmptyLeftData_W_W_WDATA[0]
+			}
+			;
 			mOutLeftData[1][174:167] = mEmptyLeftData_W_W_WID;
 			mOutLeftData[1][166] = mEmptyLeftData_W_AW_AWVALID;
 			mOutLeftData[1][165:158] = mEmptyLeftData_W_AW_AWUSER;
@@ -1173,7 +1197,13 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutLeftData[2][219:212] = mMuxLeftData_W_W_WUSER;
 			mOutLeftData[2][211] = mMuxLeftData_W_W_WLAST;
 			mOutLeftData[2][210:207] = mMuxLeftData_W_W_WSTRB;
-			mOutLeftData[2][206:175] = { mMuxLeftData_W_W_WDATA[3], mMuxLeftData_W_W_WDATA[2], mMuxLeftData_W_W_WDATA[1], mMuxLeftData_W_W_WDATA[0] };
+			mOutLeftData[2][206:175] = {
+				mMuxLeftData_W_W_WDATA[3],
+				mMuxLeftData_W_W_WDATA[2],
+				mMuxLeftData_W_W_WDATA[1],
+				mMuxLeftData_W_W_WDATA[0]
+			}
+			;
 			mOutLeftData[2][174:167] = mMuxLeftData_W_W_WID;
 			mOutLeftData[2][166] = mMuxLeftData_W_AW_AWVALID;
 			mOutLeftData[2][165:158] = mMuxLeftData_W_AW_AWUSER;
@@ -1208,7 +1238,13 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutLeftData[2][219:212] = mEmptyLeftData_W_W_WUSER;
 			mOutLeftData[2][211] = mEmptyLeftData_W_W_WLAST;
 			mOutLeftData[2][210:207] = mEmptyLeftData_W_W_WSTRB;
-			mOutLeftData[2][206:175] = { mEmptyLeftData_W_W_WDATA[3], mEmptyLeftData_W_W_WDATA[2], mEmptyLeftData_W_W_WDATA[1], mEmptyLeftData_W_W_WDATA[0] };
+			mOutLeftData[2][206:175] = {
+				mEmptyLeftData_W_W_WDATA[3],
+				mEmptyLeftData_W_W_WDATA[2],
+				mEmptyLeftData_W_W_WDATA[1],
+				mEmptyLeftData_W_W_WDATA[0]
+			}
+			;
 			mOutLeftData[2][174:167] = mEmptyLeftData_W_W_WID;
 			mOutLeftData[2][166] = mEmptyLeftData_W_AW_AWVALID;
 			mOutLeftData[2][165:158] = mEmptyLeftData_W_AW_AWUSER;
@@ -1246,7 +1282,13 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutLeftData[3][219:212] = mMuxLeftData_W_W_WUSER;
 			mOutLeftData[3][211] = mMuxLeftData_W_W_WLAST;
 			mOutLeftData[3][210:207] = mMuxLeftData_W_W_WSTRB;
-			mOutLeftData[3][206:175] = { mMuxLeftData_W_W_WDATA[3], mMuxLeftData_W_W_WDATA[2], mMuxLeftData_W_W_WDATA[1], mMuxLeftData_W_W_WDATA[0] };
+			mOutLeftData[3][206:175] = {
+				mMuxLeftData_W_W_WDATA[3],
+				mMuxLeftData_W_W_WDATA[2],
+				mMuxLeftData_W_W_WDATA[1],
+				mMuxLeftData_W_W_WDATA[0]
+			}
+			;
 			mOutLeftData[3][174:167] = mMuxLeftData_W_W_WID;
 			mOutLeftData[3][166] = mMuxLeftData_W_AW_AWVALID;
 			mOutLeftData[3][165:158] = mMuxLeftData_W_AW_AWUSER;
@@ -1281,7 +1323,13 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutLeftData[3][219:212] = mEmptyLeftData_W_W_WUSER;
 			mOutLeftData[3][211] = mEmptyLeftData_W_W_WLAST;
 			mOutLeftData[3][210:207] = mEmptyLeftData_W_W_WSTRB;
-			mOutLeftData[3][206:175] = { mEmptyLeftData_W_W_WDATA[3], mEmptyLeftData_W_W_WDATA[2], mEmptyLeftData_W_W_WDATA[1], mEmptyLeftData_W_W_WDATA[0] };
+			mOutLeftData[3][206:175] = {
+				mEmptyLeftData_W_W_WDATA[3],
+				mEmptyLeftData_W_W_WDATA[2],
+				mEmptyLeftData_W_W_WDATA[1],
+				mEmptyLeftData_W_W_WDATA[0]
+			}
+			;
 			mOutLeftData[3][174:167] = mEmptyLeftData_W_W_WID;
 			mOutLeftData[3][166] = mEmptyLeftData_W_AW_AWVALID;
 			mOutLeftData[3][165:158] = mEmptyLeftData_W_AW_AWUSER;
@@ -1365,7 +1413,13 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutRightData[0][51:44] = mMuxRightData_R_R_RUSER;
 			mOutRightData[0][43] = mMuxRightData_R_R_RLAST;
 			mOutRightData[0][42:41] = mMuxRightData_R_R_RRESP;
-			mOutRightData[0][40:9] = { mMuxRightData_R_R_RDATA[3], mMuxRightData_R_R_RDATA[2], mMuxRightData_R_R_RDATA[1], mMuxRightData_R_R_RDATA[0] };
+			mOutRightData[0][40:9] = {
+				mMuxRightData_R_R_RDATA[3],
+				mMuxRightData_R_R_RDATA[2],
+				mMuxRightData_R_R_RDATA[1],
+				mMuxRightData_R_R_RDATA[0]
+			}
+			;
 			mOutRightData[0][8:1] = mMuxRightData_R_R_RID;
 			mOutRightData[0][0] = mMuxRightData_R_AR_ARREADY;
 		end
@@ -1381,7 +1435,13 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutRightData[0][51:44] = mEmptyRightData_R_R_RUSER;
 			mOutRightData[0][43] = mEmptyRightData_R_R_RLAST;
 			mOutRightData[0][42:41] = mEmptyRightData_R_R_RRESP;
-			mOutRightData[0][40:9] = { mEmptyRightData_R_R_RDATA[3], mEmptyRightData_R_R_RDATA[2], mEmptyRightData_R_R_RDATA[1], mEmptyRightData_R_R_RDATA[0] };
+			mOutRightData[0][40:9] = {
+				mEmptyRightData_R_R_RDATA[3],
+				mEmptyRightData_R_R_RDATA[2],
+				mEmptyRightData_R_R_RDATA[1],
+				mEmptyRightData_R_R_RDATA[0]
+			}
+			;
 			mOutRightData[0][8:1] = mEmptyRightData_R_R_RID;
 			mOutRightData[0][0] = mEmptyRightData_R_AR_ARREADY;
 		end
@@ -1400,7 +1460,13 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutRightData[1][51:44] = mMuxRightData_R_R_RUSER;
 			mOutRightData[1][43] = mMuxRightData_R_R_RLAST;
 			mOutRightData[1][42:41] = mMuxRightData_R_R_RRESP;
-			mOutRightData[1][40:9] = { mMuxRightData_R_R_RDATA[3], mMuxRightData_R_R_RDATA[2], mMuxRightData_R_R_RDATA[1], mMuxRightData_R_R_RDATA[0] };
+			mOutRightData[1][40:9] = {
+				mMuxRightData_R_R_RDATA[3],
+				mMuxRightData_R_R_RDATA[2],
+				mMuxRightData_R_R_RDATA[1],
+				mMuxRightData_R_R_RDATA[0]
+			}
+			;
 			mOutRightData[1][8:1] = mMuxRightData_R_R_RID;
 			mOutRightData[1][0] = mMuxRightData_R_AR_ARREADY;
 		end
@@ -1416,7 +1482,13 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutRightData[1][51:44] = mEmptyRightData_R_R_RUSER;
 			mOutRightData[1][43] = mEmptyRightData_R_R_RLAST;
 			mOutRightData[1][42:41] = mEmptyRightData_R_R_RRESP;
-			mOutRightData[1][40:9] = { mEmptyRightData_R_R_RDATA[3], mEmptyRightData_R_R_RDATA[2], mEmptyRightData_R_R_RDATA[1], mEmptyRightData_R_R_RDATA[0] };
+			mOutRightData[1][40:9] = {
+				mEmptyRightData_R_R_RDATA[3],
+				mEmptyRightData_R_R_RDATA[2],
+				mEmptyRightData_R_R_RDATA[1],
+				mEmptyRightData_R_R_RDATA[0]
+			}
+			;
 			mOutRightData[1][8:1] = mEmptyRightData_R_R_RID;
 			mOutRightData[1][0] = mEmptyRightData_R_AR_ARREADY;
 		end
@@ -1435,7 +1507,13 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutRightData[2][51:44] = mMuxRightData_R_R_RUSER;
 			mOutRightData[2][43] = mMuxRightData_R_R_RLAST;
 			mOutRightData[2][42:41] = mMuxRightData_R_R_RRESP;
-			mOutRightData[2][40:9] = { mMuxRightData_R_R_RDATA[3], mMuxRightData_R_R_RDATA[2], mMuxRightData_R_R_RDATA[1], mMuxRightData_R_R_RDATA[0] };
+			mOutRightData[2][40:9] = {
+				mMuxRightData_R_R_RDATA[3],
+				mMuxRightData_R_R_RDATA[2],
+				mMuxRightData_R_R_RDATA[1],
+				mMuxRightData_R_R_RDATA[0]
+			}
+			;
 			mOutRightData[2][8:1] = mMuxRightData_R_R_RID;
 			mOutRightData[2][0] = mMuxRightData_R_AR_ARREADY;
 		end
@@ -1451,7 +1529,13 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutRightData[2][51:44] = mEmptyRightData_R_R_RUSER;
 			mOutRightData[2][43] = mEmptyRightData_R_R_RLAST;
 			mOutRightData[2][42:41] = mEmptyRightData_R_R_RRESP;
-			mOutRightData[2][40:9] = { mEmptyRightData_R_R_RDATA[3], mEmptyRightData_R_R_RDATA[2], mEmptyRightData_R_R_RDATA[1], mEmptyRightData_R_R_RDATA[0] };
+			mOutRightData[2][40:9] = {
+				mEmptyRightData_R_R_RDATA[3],
+				mEmptyRightData_R_R_RDATA[2],
+				mEmptyRightData_R_R_RDATA[1],
+				mEmptyRightData_R_R_RDATA[0]
+			}
+			;
 			mOutRightData[2][8:1] = mEmptyRightData_R_R_RID;
 			mOutRightData[2][0] = mEmptyRightData_R_AR_ARREADY;
 		end
@@ -1470,7 +1554,13 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutRightData[3][51:44] = mMuxRightData_R_R_RUSER;
 			mOutRightData[3][43] = mMuxRightData_R_R_RLAST;
 			mOutRightData[3][42:41] = mMuxRightData_R_R_RRESP;
-			mOutRightData[3][40:9] = { mMuxRightData_R_R_RDATA[3], mMuxRightData_R_R_RDATA[2], mMuxRightData_R_R_RDATA[1], mMuxRightData_R_R_RDATA[0] };
+			mOutRightData[3][40:9] = {
+				mMuxRightData_R_R_RDATA[3],
+				mMuxRightData_R_R_RDATA[2],
+				mMuxRightData_R_R_RDATA[1],
+				mMuxRightData_R_R_RDATA[0]
+			}
+			;
 			mOutRightData[3][8:1] = mMuxRightData_R_R_RID;
 			mOutRightData[3][0] = mMuxRightData_R_AR_ARREADY;
 		end
@@ -1486,7 +1576,13 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutRightData[3][51:44] = mEmptyRightData_R_R_RUSER;
 			mOutRightData[3][43] = mEmptyRightData_R_R_RLAST;
 			mOutRightData[3][42:41] = mEmptyRightData_R_R_RRESP;
-			mOutRightData[3][40:9] = { mEmptyRightData_R_R_RDATA[3], mEmptyRightData_R_R_RDATA[2], mEmptyRightData_R_R_RDATA[1], mEmptyRightData_R_R_RDATA[0] };
+			mOutRightData[3][40:9] = {
+				mEmptyRightData_R_R_RDATA[3],
+				mEmptyRightData_R_R_RDATA[2],
+				mEmptyRightData_R_R_RDATA[1],
+				mEmptyRightData_R_R_RDATA[0]
+			}
+			;
 			mOutRightData[3][8:1] = mEmptyRightData_R_R_RID;
 			mOutRightData[3][0] = mEmptyRightData_R_AR_ARREADY;
 		end
@@ -1505,7 +1601,13 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutRightData[4][51:44] = mMuxRightData_R_R_RUSER;
 			mOutRightData[4][43] = mMuxRightData_R_R_RLAST;
 			mOutRightData[4][42:41] = mMuxRightData_R_R_RRESP;
-			mOutRightData[4][40:9] = { mMuxRightData_R_R_RDATA[3], mMuxRightData_R_R_RDATA[2], mMuxRightData_R_R_RDATA[1], mMuxRightData_R_R_RDATA[0] };
+			mOutRightData[4][40:9] = {
+				mMuxRightData_R_R_RDATA[3],
+				mMuxRightData_R_R_RDATA[2],
+				mMuxRightData_R_R_RDATA[1],
+				mMuxRightData_R_R_RDATA[0]
+			}
+			;
 			mOutRightData[4][8:1] = mMuxRightData_R_R_RID;
 			mOutRightData[4][0] = mMuxRightData_R_AR_ARREADY;
 		end
@@ -1521,7 +1623,13 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutRightData[4][51:44] = mEmptyRightData_R_R_RUSER;
 			mOutRightData[4][43] = mEmptyRightData_R_R_RLAST;
 			mOutRightData[4][42:41] = mEmptyRightData_R_R_RRESP;
-			mOutRightData[4][40:9] = { mEmptyRightData_R_R_RDATA[3], mEmptyRightData_R_R_RDATA[2], mEmptyRightData_R_R_RDATA[1], mEmptyRightData_R_R_RDATA[0] };
+			mOutRightData[4][40:9] = {
+				mEmptyRightData_R_R_RDATA[3],
+				mEmptyRightData_R_R_RDATA[2],
+				mEmptyRightData_R_R_RDATA[1],
+				mEmptyRightData_R_R_RDATA[0]
+			}
+			;
 			mOutRightData[4][8:1] = mEmptyRightData_R_R_RID;
 			mOutRightData[4][0] = mEmptyRightData_R_AR_ARREADY;
 		end
@@ -1540,7 +1648,13 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutRightData[5][51:44] = mMuxRightData_R_R_RUSER;
 			mOutRightData[5][43] = mMuxRightData_R_R_RLAST;
 			mOutRightData[5][42:41] = mMuxRightData_R_R_RRESP;
-			mOutRightData[5][40:9] = { mMuxRightData_R_R_RDATA[3], mMuxRightData_R_R_RDATA[2], mMuxRightData_R_R_RDATA[1], mMuxRightData_R_R_RDATA[0] };
+			mOutRightData[5][40:9] = {
+				mMuxRightData_R_R_RDATA[3],
+				mMuxRightData_R_R_RDATA[2],
+				mMuxRightData_R_R_RDATA[1],
+				mMuxRightData_R_R_RDATA[0]
+			}
+			;
 			mOutRightData[5][8:1] = mMuxRightData_R_R_RID;
 			mOutRightData[5][0] = mMuxRightData_R_AR_ARREADY;
 		end
@@ -1556,7 +1670,13 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutRightData[5][51:44] = mEmptyRightData_R_R_RUSER;
 			mOutRightData[5][43] = mEmptyRightData_R_R_RLAST;
 			mOutRightData[5][42:41] = mEmptyRightData_R_R_RRESP;
-			mOutRightData[5][40:9] = { mEmptyRightData_R_R_RDATA[3], mEmptyRightData_R_R_RDATA[2], mEmptyRightData_R_R_RDATA[1], mEmptyRightData_R_R_RDATA[0] };
+			mOutRightData[5][40:9] = {
+				mEmptyRightData_R_R_RDATA[3],
+				mEmptyRightData_R_R_RDATA[2],
+				mEmptyRightData_R_R_RDATA[1],
+				mEmptyRightData_R_R_RDATA[0]
+			}
+			;
 			mOutRightData[5][8:1] = mEmptyRightData_R_R_RID;
 			mOutRightData[5][0] = mEmptyRightData_R_AR_ARREADY;
 		end
@@ -1575,7 +1695,13 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutRightData[6][51:44] = mMuxRightData_R_R_RUSER;
 			mOutRightData[6][43] = mMuxRightData_R_R_RLAST;
 			mOutRightData[6][42:41] = mMuxRightData_R_R_RRESP;
-			mOutRightData[6][40:9] = { mMuxRightData_R_R_RDATA[3], mMuxRightData_R_R_RDATA[2], mMuxRightData_R_R_RDATA[1], mMuxRightData_R_R_RDATA[0] };
+			mOutRightData[6][40:9] = {
+				mMuxRightData_R_R_RDATA[3],
+				mMuxRightData_R_R_RDATA[2],
+				mMuxRightData_R_R_RDATA[1],
+				mMuxRightData_R_R_RDATA[0]
+			}
+			;
 			mOutRightData[6][8:1] = mMuxRightData_R_R_RID;
 			mOutRightData[6][0] = mMuxRightData_R_AR_ARREADY;
 		end
@@ -1591,7 +1717,13 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutRightData[6][51:44] = mEmptyRightData_R_R_RUSER;
 			mOutRightData[6][43] = mEmptyRightData_R_R_RLAST;
 			mOutRightData[6][42:41] = mEmptyRightData_R_R_RRESP;
-			mOutRightData[6][40:9] = { mEmptyRightData_R_R_RDATA[3], mEmptyRightData_R_R_RDATA[2], mEmptyRightData_R_R_RDATA[1], mEmptyRightData_R_R_RDATA[0] };
+			mOutRightData[6][40:9] = {
+				mEmptyRightData_R_R_RDATA[3],
+				mEmptyRightData_R_R_RDATA[2],
+				mEmptyRightData_R_R_RDATA[1],
+				mEmptyRightData_R_R_RDATA[0]
+			}
+			;
 			mOutRightData[6][8:1] = mEmptyRightData_R_R_RID;
 			mOutRightData[6][0] = mEmptyRightData_R_AR_ARREADY;
 		end
@@ -1610,7 +1742,13 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutRightData[7][51:44] = mMuxRightData_R_R_RUSER;
 			mOutRightData[7][43] = mMuxRightData_R_R_RLAST;
 			mOutRightData[7][42:41] = mMuxRightData_R_R_RRESP;
-			mOutRightData[7][40:9] = { mMuxRightData_R_R_RDATA[3], mMuxRightData_R_R_RDATA[2], mMuxRightData_R_R_RDATA[1], mMuxRightData_R_R_RDATA[0] };
+			mOutRightData[7][40:9] = {
+				mMuxRightData_R_R_RDATA[3],
+				mMuxRightData_R_R_RDATA[2],
+				mMuxRightData_R_R_RDATA[1],
+				mMuxRightData_R_R_RDATA[0]
+			}
+			;
 			mOutRightData[7][8:1] = mMuxRightData_R_R_RID;
 			mOutRightData[7][0] = mMuxRightData_R_AR_ARREADY;
 		end
@@ -1626,35 +1764,137 @@ module AXI4FullDuplexMuxModule_TopLevel
 			mOutRightData[7][51:44] = mEmptyRightData_R_R_RUSER;
 			mOutRightData[7][43] = mEmptyRightData_R_R_RLAST;
 			mOutRightData[7][42:41] = mEmptyRightData_R_R_RRESP;
-			mOutRightData[7][40:9] = { mEmptyRightData_R_R_RDATA[3], mEmptyRightData_R_R_RDATA[2], mEmptyRightData_R_R_RDATA[1], mEmptyRightData_R_R_RDATA[0] };
+			mOutRightData[7][40:9] = {
+				mEmptyRightData_R_R_RDATA[3],
+				mEmptyRightData_R_R_RDATA[2],
+				mEmptyRightData_R_R_RDATA[1],
+				mEmptyRightData_R_R_RDATA[0]
+			}
+			;
 			mOutRightData[7][8:1] = mEmptyRightData_R_R_RID;
 			mOutRightData[7][0] = mEmptyRightData_R_AR_ARREADY;
 		end
 	end
-	assign FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprLhs = { 1'b0, Inputs_iRightAddr };
-	assign FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprRhs = { {2{1'b0}}, Prefilled0 };
-	assign FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprLhs = { 1'b0, Inputs_iRightAddr };
-	assign FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprRhs = { {2{1'b0}}, Prefilled1 };
-	assign FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F47T78_ExprLhs = { 1'b0, Inputs_iRightAddr };
-	assign FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F47T78_ExprRhs = { 1'b0, Prefilled2 };
-	assign FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F47T78_ExprLhs = { 1'b0, Inputs_iRightAddr };
-	assign FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F47T78_ExprRhs = { 1'b0, Prefilled3 };
-	assign FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprLhs = { 1'b0, Inputs_iLeftAddr };
-	assign FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprRhs = { {3{1'b0}}, Prefilled0 };
-	assign FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprLhs = { 1'b0, Inputs_iLeftAddr };
-	assign FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprRhs = { {3{1'b0}}, Prefilled1 };
-	assign FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F46T75_ExprLhs = { 1'b0, Inputs_iLeftAddr };
-	assign FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F46T75_ExprRhs = { {2{1'b0}}, Prefilled2 };
-	assign FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F46T75_ExprLhs = { 1'b0, Inputs_iLeftAddr };
-	assign FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F46T75_ExprRhs = { {2{1'b0}}, Prefilled3 };
-	assign FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F46T75_ExprLhs = { 1'b0, Inputs_iLeftAddr };
-	assign FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F46T75_ExprRhs = { 1'b0, Prefilled4 };
-	assign FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F46T75_ExprLhs = { 1'b0, Inputs_iLeftAddr };
-	assign FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F46T75_ExprRhs = { 1'b0, Prefilled5 };
-	assign FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F46T75_ExprLhs = { 1'b0, Inputs_iLeftAddr };
-	assign FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F46T75_ExprRhs = { 1'b0, Prefilled6 };
-	assign FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_ExprLhs = { 1'b0, Inputs_iLeftAddr };
-	assign FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_ExprRhs = { 1'b0, Prefilled7 };
+	assign FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprLhs = {
+		1'b0,
+		Inputs_iRightAddr
+	}
+	;
+	assign FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprRhs = {
+		{2{1'b0}},
+		Prefilled0
+	}
+	;
+	assign FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprLhs = {
+		1'b0,
+		Inputs_iRightAddr
+	}
+	;
+	assign FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprRhs = {
+		{2{1'b0}},
+		Prefilled1
+	}
+	;
+	assign FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F47T78_ExprLhs = {
+		1'b0,
+		Inputs_iRightAddr
+	}
+	;
+	assign FullDuplexMuxModule_L94F13L104T14_2_FullDuplexMuxModule_L96F47T78_ExprRhs = {
+		1'b0,
+		Prefilled2
+	}
+	;
+	assign FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F47T78_ExprLhs = {
+		1'b0,
+		Inputs_iRightAddr
+	}
+	;
+	assign FullDuplexMuxModule_L94F13L104T14_3_FullDuplexMuxModule_L96F47T78_ExprRhs = {
+		1'b0,
+		Prefilled3
+	}
+	;
+	assign FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprLhs = {
+		1'b0,
+		Inputs_iLeftAddr
+	}
+	;
+	assign FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprRhs = {
+		{3{1'b0}},
+		Prefilled0
+	}
+	;
+	assign FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprLhs = {
+		1'b0,
+		Inputs_iLeftAddr
+	}
+	;
+	assign FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprRhs = {
+		{3{1'b0}},
+		Prefilled1
+	}
+	;
+	assign FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F46T75_ExprLhs = {
+		1'b0,
+		Inputs_iLeftAddr
+	}
+	;
+	assign FullDuplexMuxModule_L118F13L128T14_2_FullDuplexMuxModule_L120F46T75_ExprRhs = {
+		{2{1'b0}},
+		Prefilled2
+	}
+	;
+	assign FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F46T75_ExprLhs = {
+		1'b0,
+		Inputs_iLeftAddr
+	}
+	;
+	assign FullDuplexMuxModule_L118F13L128T14_3_FullDuplexMuxModule_L120F46T75_ExprRhs = {
+		{2{1'b0}},
+		Prefilled3
+	}
+	;
+	assign FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F46T75_ExprLhs = {
+		1'b0,
+		Inputs_iLeftAddr
+	}
+	;
+	assign FullDuplexMuxModule_L118F13L128T14_4_FullDuplexMuxModule_L120F46T75_ExprRhs = {
+		1'b0,
+		Prefilled4
+	}
+	;
+	assign FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F46T75_ExprLhs = {
+		1'b0,
+		Inputs_iLeftAddr
+	}
+	;
+	assign FullDuplexMuxModule_L118F13L128T14_5_FullDuplexMuxModule_L120F46T75_ExprRhs = {
+		1'b0,
+		Prefilled5
+	}
+	;
+	assign FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F46T75_ExprLhs = {
+		1'b0,
+		Inputs_iLeftAddr
+	}
+	;
+	assign FullDuplexMuxModule_L118F13L128T14_6_FullDuplexMuxModule_L120F46T75_ExprRhs = {
+		1'b0,
+		Prefilled6
+	}
+	;
+	assign FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_ExprLhs = {
+		1'b0,
+		Inputs_iLeftAddr
+	}
+	;
+	assign FullDuplexMuxModule_L118F13L128T14_7_FullDuplexMuxModule_L120F46T75_ExprRhs = {
+		1'b0,
+		Prefilled7
+	}
+	;
 	assign FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr_1 = Inputs_iRightAddrValid;
 	assign FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr_2 = FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_Expr;
 	assign FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F21T78_Expr_1 = Inputs_iRightAddrValid;

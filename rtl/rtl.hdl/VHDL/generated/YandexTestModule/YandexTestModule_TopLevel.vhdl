@@ -490,37 +490,85 @@ begin
 		YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprRhs(8) <= '0';
 		YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprRhs(7 downto 0) <= signed(State_stage1_min45);
 		YandexTestModule_L127F35T50_Expr_1 <= sumAveBits;
-		YandexTestModule_L81F30T65_Expr_1(9 downto 8) <= (others => '0');
+		YandexTestModule_L81F30T65_Expr_1(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		YandexTestModule_L81F30T65_Expr_1(7 downto 0) <= signed(Inputs_inData(0));
-		YandexTestModule_L81F30T65_Expr_2(9 downto 8) <= (others => '0');
+		YandexTestModule_L81F30T65_Expr_2(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		YandexTestModule_L81F30T65_Expr_2(7 downto 0) <= signed(Inputs_inData(1));
-		YandexTestModule_L82F30T65_Expr_1(9 downto 8) <= (others => '0');
+		YandexTestModule_L82F30T65_Expr_1(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		YandexTestModule_L82F30T65_Expr_1(7 downto 0) <= signed(Inputs_inData(2));
-		YandexTestModule_L82F30T65_Expr_2(9 downto 8) <= (others => '0');
+		YandexTestModule_L82F30T65_Expr_2(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		YandexTestModule_L82F30T65_Expr_2(7 downto 0) <= signed(Inputs_inData(3));
-		YandexTestModule_L83F30T65_Expr_1(9 downto 8) <= (others => '0');
+		YandexTestModule_L83F30T65_Expr_1(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		YandexTestModule_L83F30T65_Expr_1(7 downto 0) <= signed(Inputs_inData(4));
-		YandexTestModule_L83F30T65_Expr_2(9 downto 8) <= (others => '0');
+		YandexTestModule_L83F30T65_Expr_2(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		YandexTestModule_L83F30T65_Expr_2(7 downto 0) <= signed(Inputs_inData(5));
-		YandexTestModule_L99F32T71_Expr_1(17 downto 16) <= (others => '0');
+		YandexTestModule_L99F32T71_Expr_1(17 downto 16) <= (
+			others => '0'
+		)
+		;
 		YandexTestModule_L99F32T71_Expr_1(15 downto 0) <= signed(State_stage0_sum01);
-		YandexTestModule_L99F32T71_Expr_2(17 downto 16) <= (others => '0');
+		YandexTestModule_L99F32T71_Expr_2(17 downto 16) <= (
+			others => '0'
+		)
+		;
 		YandexTestModule_L99F32T71_Expr_2(15 downto 0) <= signed(State_stage0_sum23);
-		YandexTestModule_L108F28T69_Expr_1(17 downto 16) <= (others => '0');
+		YandexTestModule_L108F28T69_Expr_1(17 downto 16) <= (
+			others => '0'
+		)
+		;
 		YandexTestModule_L108F28T69_Expr_1(15 downto 0) <= signed(State_stage1_sum0123);
-		YandexTestModule_L108F28T69_Expr_2(17 downto 16) <= (others => '0');
+		YandexTestModule_L108F28T69_Expr_2(17 downto 16) <= (
+			others => '0'
+		)
+		;
 		YandexTestModule_L108F28T69_Expr_2(15 downto 0) <= signed(State_stage1_sum45);
-		YandexTestModule_L114F32T67_Expr_1(9 downto 8) <= (others => '0');
+		YandexTestModule_L114F32T67_Expr_1(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		YandexTestModule_L114F32T67_Expr_1(7 downto 0) <= signed(State_stage2_min);
-		YandexTestModule_L114F32T67_Expr_2(9 downto 8) <= (others => '0');
+		YandexTestModule_L114F32T67_Expr_2(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		YandexTestModule_L114F32T67_Expr_2(7 downto 0) <= signed(State_stage2_max);
-		YandexTestModule_L121F32T71_Expr_1(17 downto 16) <= (others => '0');
+		YandexTestModule_L121F32T71_Expr_1(17 downto 16) <= (
+			others => '0'
+		)
+		;
 		YandexTestModule_L121F32T71_Expr_1(15 downto 0) <= signed(State_stage3_sum);
-		YandexTestModule_L121F32T71_Expr_2(17 downto 16) <= (others => '0');
+		YandexTestModule_L121F32T71_Expr_2(17 downto 16) <= (
+			others => '0'
+		)
+		;
 		YandexTestModule_L121F32T71_Expr_2(15 downto 0) <= signed(State_stage3_max_min);
-		YandexTestModule_L127F34T77_Expr_1(17 downto 16) <= (others => '0');
+		YandexTestModule_L127F34T77_Expr_1(17 downto 16) <= (
+			others => '0'
+		)
+		;
 		YandexTestModule_L127F34T77_Expr_1(15 downto 0) <= signed(YandexTestModule_L127F35T50_Expr);
-		YandexTestModule_L127F34T77_Expr_2(17 downto 8) <= (others => '0');
+		YandexTestModule_L127F34T77_Expr_2(17 downto 8) <= (
+			others => '0'
+		)
+		;
 		YandexTestModule_L127F34T77_Expr_2(7 downto 0) <= signed(YandexTestModule_L127F55T76_Ternary);
 		Inputs_inData(0) <= inData0;
 		Inputs_inData(1) <= inData1;
@@ -529,11 +577,20 @@ begin
 		Inputs_inData(4) <= inData4;
 		Inputs_inData(5) <= inData5;
 		Inputs_inReady <= inReady;
-		YandexTestModule_L81F21T66_Cast(15 downto 10) <= (others => '0');
+		YandexTestModule_L81F21T66_Cast(15 downto 10) <= (
+			others => '0'
+		)
+		;
 		YandexTestModule_L81F21T66_Cast(9 downto 0) <= YandexTestModule_L81F30T65_Expr;
-		YandexTestModule_L82F21T66_Cast(15 downto 10) <= (others => '0');
+		YandexTestModule_L82F21T66_Cast(15 downto 10) <= (
+			others => '0'
+		)
+		;
 		YandexTestModule_L82F21T66_Cast(9 downto 0) <= YandexTestModule_L82F30T65_Expr;
-		YandexTestModule_L83F21T66_Cast(15 downto 10) <= (others => '0');
+		YandexTestModule_L83F21T66_Cast(15 downto 10) <= (
+			others => '0'
+		)
+		;
 		YandexTestModule_L83F21T66_Cast(9 downto 0) <= YandexTestModule_L83F30T65_Expr;
 		YandexTestModule_L84F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenTrue <= Inputs_inData(0);
 		YandexTestModule_L84F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenFalse <= Inputs_inData(1);
@@ -578,7 +635,10 @@ begin
 		nextStage2_min <= YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_Ternary;
 		nextStage2_ready <= State_stage1_ready;
 		nextStage2_sum <= YandexTestModule_L108F19T70_Cast;
-		YandexTestModule_L114F23T68_Cast(15 downto 10) <= (others => '0');
+		YandexTestModule_L114F23T68_Cast(15 downto 10) <= (
+			others => '0'
+		)
+		;
 		YandexTestModule_L114F23T68_Cast(9 downto 0) <= YandexTestModule_L114F32T67_Expr;
 		nextStage3_max_min <= YandexTestModule_L114F23T68_Cast;
 		nextStage3_ready <= State_stage2_ready;
@@ -589,9 +649,15 @@ begin
 		sumAveBits <= State_stage4_sum_ave;
 		outReady <= State_stage4_ready;
 		YandexTestModule_L127F55T68_Index <= sumAveBits(1);
-		YandexTestModule_L127F55T76_WhenTrue(7 downto 1) <= (others => '0');
+		YandexTestModule_L127F55T76_WhenTrue(7 downto 1) <= (
+			others => '0'
+		)
+		;
 		YandexTestModule_L127F55T76_WhenTrue(0) <= YandexTestModule_L127F71T72_Expr;
-		YandexTestModule_L127F55T76_WhenFalse(7 downto 1) <= (others => '0');
+		YandexTestModule_L127F55T76_WhenFalse(7 downto 1) <= (
+			others => '0'
+		)
+		;
 		YandexTestModule_L127F55T76_WhenFalse(0) <= YandexTestModule_L127F75T76_Expr;
 		outResult <= YandexTestModule_L127F34T77_Expr(7 downto 0);
 	end process;

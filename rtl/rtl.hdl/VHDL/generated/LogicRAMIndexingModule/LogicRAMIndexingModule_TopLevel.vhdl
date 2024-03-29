@@ -147,17 +147,35 @@ begin
 		LogicRAMIndexingModule_L30F43T86_Expr_2 <= Inputs_OpData;
 		LogicRAMIndexingModule_L31F43T86_Expr_1 <= Inputs_OpData;
 		LogicRAMIndexingModule_L31F43T86_Expr_2 <= State_Buff(TO_INTEGER(Inputs_ReadAddr));
-		LogicRAMIndexingModule_L27F42T85_Expr_1(9 downto 8) <= (others => '0');
+		LogicRAMIndexingModule_L27F42T85_Expr_1(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		LogicRAMIndexingModule_L27F42T85_Expr_1(7 downto 0) <= signed(State_Buff(TO_INTEGER(Inputs_ReadAddr)));
-		LogicRAMIndexingModule_L27F42T85_Expr_2(9 downto 8) <= (others => '0');
+		LogicRAMIndexingModule_L27F42T85_Expr_2(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		LogicRAMIndexingModule_L27F42T85_Expr_2(7 downto 0) <= signed(Inputs_OpData);
-		LogicRAMIndexingModule_L28F42T85_Expr_1(9 downto 8) <= (others => '0');
+		LogicRAMIndexingModule_L28F42T85_Expr_1(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		LogicRAMIndexingModule_L28F42T85_Expr_1(7 downto 0) <= signed(Inputs_OpData);
-		LogicRAMIndexingModule_L28F42T85_Expr_2(9 downto 8) <= (others => '0');
+		LogicRAMIndexingModule_L28F42T85_Expr_2(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		LogicRAMIndexingModule_L28F42T85_Expr_2(7 downto 0) <= signed(State_Buff(TO_INTEGER(Inputs_ReadAddr)));
-		LogicRAMIndexingModule_L26F41T84_Expr_1(9 downto 8) <= (others => '0');
+		LogicRAMIndexingModule_L26F41T84_Expr_1(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		LogicRAMIndexingModule_L26F41T84_Expr_1(7 downto 0) <= signed(State_Buff(1));
-		LogicRAMIndexingModule_L26F41T84_Expr_2(9 downto 8) <= (others => '0');
+		LogicRAMIndexingModule_L26F41T84_Expr_2(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		LogicRAMIndexingModule_L26F41T84_Expr_2(7 downto 0) <= signed(State_Buff(TO_INTEGER(Inputs_ReadAddr)));
 		Inputs_OpData <= OpData;
 		Inputs_ReadAddr <= ReadAddr;

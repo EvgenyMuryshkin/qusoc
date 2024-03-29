@@ -71,22 +71,62 @@ module StructsCombinationalModule_TopLevel
 	assign StructsModule_L25F36T65_Expr = StructsModule_L25F36T65_Expr_1 + StructsModule_L25F36T65_Expr_2;
 	assign StructsModule_L34F26T55_Expr = StructsModule_L34F26T55_Expr_1 + StructsModule_L34F26T55_Expr_2;
 	assign StructsModule_L35F26T55_Expr = StructsModule_L35F26T55_Expr_1 - StructsModule_L35F26T55_Expr_2;
-	assign StructsModule_L25F36T65_Expr_1 = { {2{1'b0}}, Inputs_In_Op1 };
-	assign StructsModule_L25F36T65_Expr_2 = { {2{1'b0}}, Inputs_In_Op2 };
-	assign StructsModule_L34F26T55_Expr_1 = { {2{1'b0}}, Inputs_In_Op1 };
-	assign StructsModule_L34F26T55_Expr_2 = { {2{1'b0}}, Inputs_In_Op2 };
-	assign StructsModule_L35F26T55_Expr_1 = { {2{1'b0}}, Inputs_In_Op1 };
-	assign StructsModule_L35F26T55_Expr_2 = { {2{1'b0}}, Inputs_In_Op2 };
+	assign StructsModule_L25F36T65_Expr_1 = {
+		{2{1'b0}},
+		Inputs_In_Op1
+	}
+	;
+	assign StructsModule_L25F36T65_Expr_2 = {
+		{2{1'b0}},
+		Inputs_In_Op2
+	}
+	;
+	assign StructsModule_L34F26T55_Expr_1 = {
+		{2{1'b0}},
+		Inputs_In_Op1
+	}
+	;
+	assign StructsModule_L34F26T55_Expr_2 = {
+		{2{1'b0}},
+		Inputs_In_Op2
+	}
+	;
+	assign StructsModule_L35F26T55_Expr_1 = {
+		{2{1'b0}},
+		Inputs_In_Op1
+	}
+	;
+	assign StructsModule_L35F26T55_Expr_2 = {
+		{2{1'b0}},
+		Inputs_In_Op2
+	}
+	;
 	assign Inputs_In_Op1 = In_Op1;
 	assign Inputs_In_Op2 = In_Op2;
 	assign internalDirect_Op1 = Inputs_In_Op1;
 	assign internalDirect_Op2 = Inputs_In_Op2;
 	assign StructsModule_L25F29T66_Cast = StructsModule_L25F36T65_Expr[7:0];
 	assign internalSum = StructsModule_L25F29T66_Cast;
-	assign Default1_Op1 = { {2{1'b0}}, StructsModule_L38F52T54_Expr };
-	assign Default1_Op2 = { {3{1'b0}}, StructsModule_L14F27T29_Expr };
-	assign Default2_Op1 = { {4{1'b0}}, StructsModule_L11F27T29_Expr };
-	assign Default2_Op2 = { {3{1'b0}}, StructsModule_L14F27T29_Expr };
+	assign Default1_Op1 = {
+		{2{1'b0}},
+		StructsModule_L38F52T54_Expr
+	}
+	;
+	assign Default1_Op2 = {
+		{3{1'b0}},
+		StructsModule_L14F27T29_Expr
+	}
+	;
+	assign Default2_Op1 = {
+		{4{1'b0}},
+		StructsModule_L11F27T29_Expr
+	}
+	;
+	assign Default2_Op2 = {
+		{3{1'b0}},
+		StructsModule_L14F27T29_Expr
+	}
+	;
 	assign Op1 = Inputs_In_Op1;
 	assign OutDirect_Op1 = Inputs_In_Op1;
 	assign OutDirect_Op2 = Inputs_In_Op2;

@@ -240,21 +240,73 @@ $readmemh("Increment_TopLevel_TopLevel_InstructionsRAM_State_BlockRAM.hex", Stat
 		NextState_Ready = SoCBlockRAMModule_L60F9L70T10_SoCBlockRAMModule_L61F31T83_Expr;
 		NextState_ReadBeforeWrite = SoCBlockRAMModule_L60F9L70T10_SoCBlockRAMModule_L62F41T82_Expr;
 	end
-	assign SoCComponentModule_L50F48T93_ExprLhs = { 1'b0, Inputs_Common_Address };
-	assign SoCComponentModule_L50F48T93_ExprRhs = { 1'b0, Inputs_DeviceAddress };
-	assign SoCComponentModule_L50F97T157_ExprLhs = { {3{1'b0}}, Inputs_Common_Address };
-	assign SoCComponentModule_L50F97T157_ExprRhs = { 1'b0, SoCComponentModule_L50F122T156_Expr };
-	assign SoCBlockRAMModule_L36F13T45_ExprLhs = { 1'b0, Inputs_Common_MemAccessMode };
-	assign SoCBlockRAMModule_L36F13T45_ExprRhs = { 1'b0, SoCBlockRAMModule_L36F44T45_Expr };
-	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L50F21T53_ExprLhs = { 1'b0, Inputs_Common_MemAccessMode };
-	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L50F21T53_ExprRhs = { {2{1'b0}}, SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L50F52T53_Expr };
-	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L52F26T58_ExprLhs = { 1'b0, Inputs_Common_MemAccessMode };
-	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L52F26T58_ExprRhs = { {2{1'b0}}, SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L52F57T58_Expr };
-	assign SoCBlockRAMModule_L40F33T65_ExprLhs = { 1'b0, Inputs_Common_MemAccessMode };
-	assign SoCBlockRAMModule_L40F33T65_ExprRhs = { 1'b0, SoCBlockRAMModule_L40F64T65_Expr };
+	assign SoCComponentModule_L50F48T93_ExprLhs = {
+		1'b0,
+		Inputs_Common_Address
+	}
+	;
+	assign SoCComponentModule_L50F48T93_ExprRhs = {
+		1'b0,
+		Inputs_DeviceAddress
+	}
+	;
+	assign SoCComponentModule_L50F97T157_ExprLhs = {
+		{3{1'b0}},
+		Inputs_Common_Address
+	}
+	;
+	assign SoCComponentModule_L50F97T157_ExprRhs = {
+		1'b0,
+		SoCComponentModule_L50F122T156_Expr
+	}
+	;
+	assign SoCBlockRAMModule_L36F13T45_ExprLhs = {
+		1'b0,
+		Inputs_Common_MemAccessMode
+	}
+	;
+	assign SoCBlockRAMModule_L36F13T45_ExprRhs = {
+		1'b0,
+		SoCBlockRAMModule_L36F44T45_Expr
+	}
+	;
+	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L50F21T53_ExprLhs = {
+		1'b0,
+		Inputs_Common_MemAccessMode
+	}
+	;
+	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L50F21T53_ExprRhs = {
+		{2{1'b0}},
+		SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L50F52T53_Expr
+	}
+	;
+	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L52F26T58_ExprLhs = {
+		1'b0,
+		Inputs_Common_MemAccessMode
+	}
+	;
+	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L52F26T58_ExprRhs = {
+		{2{1'b0}},
+		SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L52F57T58_Expr
+	}
+	;
+	assign SoCBlockRAMModule_L40F33T65_ExprLhs = {
+		1'b0,
+		Inputs_Common_MemAccessMode
+	}
+	;
+	assign SoCBlockRAMModule_L40F33T65_ExprRhs = {
+		1'b0,
+		SoCBlockRAMModule_L40F64T65_Expr
+	}
+	;
 	assign SoCComponentModule_L50F48T157_Expr_1 = SoCComponentModule_L50F48T93_Expr;
 	assign SoCComponentModule_L50F48T157_Expr_2 = SoCComponentModule_L50F97T157_Expr;
-	assign SoCComponentModule_L52F54T84_Expr_1 = { {6{1'b0}}, SoCComponentModule_L52F54T79_Index };
+	assign SoCComponentModule_L52F54T84_Expr_1 = {
+		{6{1'b0}},
+		SoCComponentModule_L52F54T79_Index
+	}
+	;
 	assign SoCBlockRAMModule_L27F34T88_Expr_1 = SoCBlockRAMModule_L27F35T71_Expr;
 	assign SoCBlockRAMModule_L27F34T88_Expr_2 = addressMatch;
 	assign SoCBlockRAMModule_L27F35T71_Expr_1 = Inputs_Common_RE;
@@ -285,8 +337,16 @@ $readmemh("Increment_TopLevel_TopLevel_InstructionsRAM_State_BlockRAM.hex", Stat
 	assign SoCBlockRAMModule_L29F43T99_Expr_1 = SoCBlockRAMModule_L29F44T82_Expr;
 	assign SoCBlockRAMModule_L29F43T99_Expr_2 = memAccessMask;
 	assign SoCBlockRAMModule_L29F44T82_Expr_1 = State_ReadValue;
-	assign SoCComponentModule_L50F122T156_Expr_1 = { {2{1'b0}}, Inputs_DeviceAddress };
-	assign SoCComponentModule_L50F122T156_Expr_2 = { {21{1'b0}}, addressSpan };
+	assign SoCComponentModule_L50F122T156_Expr_1 = {
+		{2{1'b0}},
+		Inputs_DeviceAddress
+	}
+	;
+	assign SoCComponentModule_L50F122T156_Expr_2 = {
+		{21{1'b0}},
+		addressSpan
+	}
+	;
 	assign Inputs_Common_WriteValue = Common[67:36];
 	assign Inputs_Common_WE = Common[35];
 	assign Inputs_Common_RE = Common[34];
@@ -305,8 +365,16 @@ $readmemh("Increment_TopLevel_TopLevel_InstructionsRAM_State_BlockRAM.hex", Stat
 	assign SoCBlockRAMModule_L36F13L38T109_WhenFalse = SoCBlockRAMModule_L38F15T109_Expr;
 	assign internalWriteData = SoCBlockRAMModule_L36F13L38T109_Ternary;
 	assign internalWriteValueBits = Inputs_Common_WriteValue;
-	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L51F28T70_Resize = { {24{1'b0}}, SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L51F44T57_Expr };
-	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L53F28T72_Resize = { {16{1'b0}}, SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L53F44T59_Expr };
+	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L51F28T70_Resize = {
+		{24{1'b0}},
+		SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L51F44T57_Expr
+	}
+	;
+	assign SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L53F28T72_Resize = {
+		{16{1'b0}},
+		SoCBlockRAMModule_L47F13L56T14_SoCBlockRAMModule_L53F44T59_Expr
+	}
+	;
 	assign memAccessMask = SoCBlockRAMModule_L47F13L56T14_mask;
 	assign readBeforeWrite = SoCBlockRAMModule_L40F33T65_Expr;
 	assign SoCBlockRAMModule_L34F34T84_Resize = SoCBlockRAMModule_L34F35T71_Expr;

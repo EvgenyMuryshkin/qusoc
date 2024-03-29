@@ -183,10 +183,26 @@ module FromConfigurationPipelineModule_TopLevel
 		Pipeline_stage2_NextState_ready = Pipeline_stage2_State_ready;
 		Pipeline_stage2_NextState_result = Pipeline_stage2_State_result;
 		Pipeline_stage0_NextState_IsS0Ready = Pipeline_Inputs_inReady;
-		Pipeline_stage0_NextState_sum01 = { {22{1'b0}}, Pipeline_PipelineConfigurations_L25F29T54_Expr };
-		Pipeline_stage0_NextState_sum23 = { {22{1'b0}}, Pipeline_PipelineConfigurations_L26F29T54_Expr };
-		Pipeline_stage0_NextState_sum45 = { {22{1'b0}}, Pipeline_PipelineConfigurations_L27F29T54_Expr };
-		Pipeline_stage0_NextState_sum67 = { {22{1'b0}}, Pipeline_PipelineConfigurations_L28F29T54_Expr };
+		Pipeline_stage0_NextState_sum01 = {
+			{22{1'b0}},
+			Pipeline_PipelineConfigurations_L25F29T54_Expr
+		}
+		;
+		Pipeline_stage0_NextState_sum23 = {
+			{22{1'b0}},
+			Pipeline_PipelineConfigurations_L26F29T54_Expr
+		}
+		;
+		Pipeline_stage0_NextState_sum45 = {
+			{22{1'b0}},
+			Pipeline_PipelineConfigurations_L27F29T54_Expr
+		}
+		;
+		Pipeline_stage0_NextState_sum67 = {
+			{22{1'b0}},
+			Pipeline_PipelineConfigurations_L28F29T54_Expr
+		}
+		;
 		Pipeline_stage1_NextState_IsS1Ready = Pipeline_stage0_State_IsS0Ready;
 		Pipeline_stage1_NextState_sum0123 = Pipeline_PipelineConfigurations_L32F31T50_Expr[31:0];
 		Pipeline_stage1_NextState_sum4567 = Pipeline_PipelineConfigurations_L33F31T50_Expr[31:0];
@@ -194,20 +210,76 @@ module FromConfigurationPipelineModule_TopLevel
 		Pipeline_stage2_NextState_result = Pipeline_PipelineConfigurations_L38F30T82_Cast;
 	end
 	assign Pipeline_PipelineConfigurations_L38F39T81_Expr_1 = Pipeline_PipelineConfigurations_L38F40T61_Expr;
-	assign Pipeline_PipelineConfigurations_L38F39T81_Expr_2 = { {16{1'b0}}, Pipeline_PipelineConfigurations_L38F65T81_Cast };
-	assign Pipeline_PipelineConfigurations_L38F40T61_Expr_1 = { {16{1'b0}}, Pipeline_PipelineConfigurations_L38F40T56_Cast };
-	assign Pipeline_PipelineConfigurations_L25F29T54_Expr_1 = { {2{1'b0}}, Pipeline_Inputs_inData[0] };
-	assign Pipeline_PipelineConfigurations_L25F29T54_Expr_2 = { {2{1'b0}}, Pipeline_Inputs_inData[1] };
-	assign Pipeline_PipelineConfigurations_L26F29T54_Expr_1 = { {2{1'b0}}, Pipeline_Inputs_inData[2] };
-	assign Pipeline_PipelineConfigurations_L26F29T54_Expr_2 = { {2{1'b0}}, Pipeline_Inputs_inData[3] };
-	assign Pipeline_PipelineConfigurations_L27F29T54_Expr_1 = { {2{1'b0}}, Pipeline_Inputs_inData[4] };
-	assign Pipeline_PipelineConfigurations_L27F29T54_Expr_2 = { {2{1'b0}}, Pipeline_Inputs_inData[5] };
-	assign Pipeline_PipelineConfigurations_L28F29T54_Expr_1 = { {2{1'b0}}, Pipeline_Inputs_inData[6] };
-	assign Pipeline_PipelineConfigurations_L28F29T54_Expr_2 = { {2{1'b0}}, Pipeline_Inputs_inData[7] };
-	assign Pipeline_PipelineConfigurations_L32F31T50_Expr_1 = { Pipeline_stage0_State_sum01[31], Pipeline_stage0_State_sum01 };
-	assign Pipeline_PipelineConfigurations_L32F31T50_Expr_2 = { Pipeline_stage0_State_sum23[31], Pipeline_stage0_State_sum23 };
-	assign Pipeline_PipelineConfigurations_L33F31T50_Expr_1 = { Pipeline_stage0_State_sum45[31], Pipeline_stage0_State_sum45 };
-	assign Pipeline_PipelineConfigurations_L33F31T50_Expr_2 = { Pipeline_stage0_State_sum67[31], Pipeline_stage0_State_sum67 };
+	assign Pipeline_PipelineConfigurations_L38F39T81_Expr_2 = {
+		{16{1'b0}},
+		Pipeline_PipelineConfigurations_L38F65T81_Cast
+	}
+	;
+	assign Pipeline_PipelineConfigurations_L38F40T61_Expr_1 = {
+		{16{1'b0}},
+		Pipeline_PipelineConfigurations_L38F40T56_Cast
+	}
+	;
+	assign Pipeline_PipelineConfigurations_L25F29T54_Expr_1 = {
+		{2{1'b0}},
+		Pipeline_Inputs_inData[0]
+	}
+	;
+	assign Pipeline_PipelineConfigurations_L25F29T54_Expr_2 = {
+		{2{1'b0}},
+		Pipeline_Inputs_inData[1]
+	}
+	;
+	assign Pipeline_PipelineConfigurations_L26F29T54_Expr_1 = {
+		{2{1'b0}},
+		Pipeline_Inputs_inData[2]
+	}
+	;
+	assign Pipeline_PipelineConfigurations_L26F29T54_Expr_2 = {
+		{2{1'b0}},
+		Pipeline_Inputs_inData[3]
+	}
+	;
+	assign Pipeline_PipelineConfigurations_L27F29T54_Expr_1 = {
+		{2{1'b0}},
+		Pipeline_Inputs_inData[4]
+	}
+	;
+	assign Pipeline_PipelineConfigurations_L27F29T54_Expr_2 = {
+		{2{1'b0}},
+		Pipeline_Inputs_inData[5]
+	}
+	;
+	assign Pipeline_PipelineConfigurations_L28F29T54_Expr_1 = {
+		{2{1'b0}},
+		Pipeline_Inputs_inData[6]
+	}
+	;
+	assign Pipeline_PipelineConfigurations_L28F29T54_Expr_2 = {
+		{2{1'b0}},
+		Pipeline_Inputs_inData[7]
+	}
+	;
+	assign Pipeline_PipelineConfigurations_L32F31T50_Expr_1 = {
+		Pipeline_stage0_State_sum01[31],
+		Pipeline_stage0_State_sum01
+	}
+	;
+	assign Pipeline_PipelineConfigurations_L32F31T50_Expr_2 = {
+		Pipeline_stage0_State_sum23[31],
+		Pipeline_stage0_State_sum23
+	}
+	;
+	assign Pipeline_PipelineConfigurations_L33F31T50_Expr_1 = {
+		Pipeline_stage0_State_sum45[31],
+		Pipeline_stage0_State_sum45
+	}
+	;
+	assign Pipeline_PipelineConfigurations_L33F31T50_Expr_2 = {
+		Pipeline_stage0_State_sum67[31],
+		Pipeline_stage0_State_sum67
+	}
+	;
 	assign Inputs_inData[0] = inData0;
 	assign Inputs_inData[1] = inData1;
 	assign Inputs_inData[2] = inData2;

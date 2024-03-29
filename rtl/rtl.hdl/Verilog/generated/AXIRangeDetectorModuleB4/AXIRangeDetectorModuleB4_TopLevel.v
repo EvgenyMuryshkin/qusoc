@@ -51,10 +51,26 @@ module AXIRangeDetectorModuleB4_TopLevel
 	assign AXIRangeDetectorModule_L28F33T65_Expr = AXIRangeDetectorModule_L28F33T65_ExprLhs >= AXIRangeDetectorModule_L28F33T65_ExprRhs ? 1'b1 : 1'b0;
 	assign AXIRangeDetectorModule_L28F69T99_Expr = AXIRangeDetectorModule_L28F69T99_ExprLhs <= AXIRangeDetectorModule_L28F69T99_ExprRhs ? 1'b1 : 1'b0;
 	assign AXIRangeDetectorModule_L28F33T99_Expr = AXIRangeDetectorModule_L28F33T99_Expr_1 & AXIRangeDetectorModule_L28F33T99_Expr_2;
-	assign AXIRangeDetectorModule_L28F33T65_ExprLhs = { 1'b0, Inputs_Value };
-	assign AXIRangeDetectorModule_L28F33T65_ExprRhs = { 1'b0, Inputs_RangeFrom };
-	assign AXIRangeDetectorModule_L28F69T99_ExprLhs = { 1'b0, Inputs_Value };
-	assign AXIRangeDetectorModule_L28F69T99_ExprRhs = { 1'b0, Inputs_RangeTo };
+	assign AXIRangeDetectorModule_L28F33T65_ExprLhs = {
+		1'b0,
+		Inputs_Value
+	}
+	;
+	assign AXIRangeDetectorModule_L28F33T65_ExprRhs = {
+		1'b0,
+		Inputs_RangeFrom
+	}
+	;
+	assign AXIRangeDetectorModule_L28F69T99_ExprLhs = {
+		1'b0,
+		Inputs_Value
+	}
+	;
+	assign AXIRangeDetectorModule_L28F69T99_ExprRhs = {
+		1'b0,
+		Inputs_RangeTo
+	}
+	;
 	assign AXIRangeDetectorModule_L28F33T99_Expr_1 = AXIRangeDetectorModule_L28F33T65_Expr;
 	assign AXIRangeDetectorModule_L28F33T99_Expr_2 = AXIRangeDetectorModule_L28F69T99_Expr;
 	assign Inputs_RangeFrom = RangeFrom;

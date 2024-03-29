@@ -69,7 +69,25 @@ module IOTupleDirectInputComponentsOutputParentModule_TopLevel_child
 	assign Inputs_iTuple_Item4_L1Flag = iTuple[0];
 	assign Inputs_iTupleArray[0] = iTupleArray0;
 	assign Inputs_iTupleArray[1] = iTupleArray1;
-	assign IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple = { Inputs_iTuple_Item1, Inputs_iTuple_Item2, Inputs_iTuple_Item3[1], Inputs_iTuple_Item3[0], Inputs_iTuple_Item4_L2Tuple_Item1, Inputs_iTuple_Item4_L2Tuple_Item2_L2Values[1], Inputs_iTuple_Item4_L2Tuple_Item2_L2Values[0], Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag, Inputs_iTuple_Item4_L2Tuple_Item3[1], Inputs_iTuple_Item4_L2Tuple_Item3[0], Inputs_iTuple_Item4_L2Array[1], Inputs_iTuple_Item4_L2Array[0], Inputs_iTuple_Item4_L2_L2Values[1], Inputs_iTuple_Item4_L2_L2Values[0], Inputs_iTuple_Item4_L2_L2Flag, Inputs_iTuple_Item4_L1Flag };
+	assign IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple = {
+		Inputs_iTuple_Item1,
+		Inputs_iTuple_Item2,
+		Inputs_iTuple_Item3[1],
+		Inputs_iTuple_Item3[0],
+		Inputs_iTuple_Item4_L2Tuple_Item1,
+		Inputs_iTuple_Item4_L2Tuple_Item2_L2Values[1],
+		Inputs_iTuple_Item4_L2Tuple_Item2_L2Values[0],
+		Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag,
+		Inputs_iTuple_Item4_L2Tuple_Item3[1],
+		Inputs_iTuple_Item4_L2Tuple_Item3[0],
+		Inputs_iTuple_Item4_L2Array[1],
+		Inputs_iTuple_Item4_L2Array[0],
+		Inputs_iTuple_Item4_L2_L2Values[1],
+		Inputs_iTuple_Item4_L2_L2Values[0],
+		Inputs_iTuple_Item4_L2_L2Flag,
+		Inputs_iTuple_Item4_L1Flag
+	}
+	;
 	assign Output_iTuple = IOTupleDirectInputComponentsOutputModule_L18F30T43_Tuple;
 	assign Output_iTupleArray0 = Inputs_iTupleArray[0];
 	assign Output_iTupleArray1 = Inputs_iTupleArray[1];

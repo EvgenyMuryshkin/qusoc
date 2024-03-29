@@ -59,18 +59,58 @@ module LiteralsModule_TopLevel
 	wire [63: 0] LiteralsModule_L19F34T55_Expr = 64'b1000000000000000111111111111111111111111111111111111111111111111;
 	wire [5: 0] LiteralsModule_L13F33T35_Expr = 6'b101100;
 	assign BinaryByte = LiteralsModule_L20F35T47_Expr;
-	assign BinaryInt = { {12{1'b0}}, LiteralsModule_L22F33T60_Expr };
-	assign BinaryShort = { {4{1'b0}}, LiteralsModule_L21F37T54_Expr };
-	assign Byte = { {2{1'b0}}, LiteralsModule_L10F29T31_Expr };
-	assign Int = { {30{LiteralsModule_L14F27T29_Expr[1]}}, LiteralsModule_L14F27T29_Expr };
+	assign BinaryInt = {
+		{12{1'b0}},
+		LiteralsModule_L22F33T60_Expr
+	}
+	;
+	assign BinaryShort = {
+		{4{1'b0}},
+		LiteralsModule_L21F37T54_Expr
+	}
+	;
+	assign Byte = {
+		{2{1'b0}},
+		LiteralsModule_L10F29T31_Expr
+	}
+	;
+	assign Int = {
+		{30{LiteralsModule_L14F27T29_Expr[1]}},
+		LiteralsModule_L14F27T29_Expr
+	}
+	;
 	assign Long = LiteralsModule_L16F29T50_Expr;
-	assign LongHex = { 1'b0, LiteralsModule_L18F32T53_Expr };
-	assign SByte = { {6{LiteralsModule_L11F31T33_Expr[1]}}, LiteralsModule_L11F31T33_Expr };
-	assign Short = { {14{LiteralsModule_L12F31T33_Expr[1]}}, LiteralsModule_L12F31T33_Expr };
-	assign UInt = { {26{1'b0}}, LiteralsModule_L15F29T31_Expr };
-	assign ULong = { {58{1'b0}}, LiteralsModule_L17F31T35_Expr };
+	assign LongHex = {
+		1'b0,
+		LiteralsModule_L18F32T53_Expr
+	}
+	;
+	assign SByte = {
+		{6{LiteralsModule_L11F31T33_Expr[1]}},
+		LiteralsModule_L11F31T33_Expr
+	}
+	;
+	assign Short = {
+		{14{LiteralsModule_L12F31T33_Expr[1]}},
+		LiteralsModule_L12F31T33_Expr
+	}
+	;
+	assign UInt = {
+		{26{1'b0}},
+		LiteralsModule_L15F29T31_Expr
+	}
+	;
+	assign ULong = {
+		{58{1'b0}},
+		LiteralsModule_L17F31T35_Expr
+	}
+	;
 	assign ULongHex = LiteralsModule_L19F34T55_Expr;
-	assign UShort = { {10{1'b0}}, LiteralsModule_L13F33T35_Expr };
+	assign UShort = {
+		{10{1'b0}},
+		LiteralsModule_L13F33T35_Expr
+	}
+	;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

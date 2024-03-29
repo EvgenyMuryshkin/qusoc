@@ -48,8 +48,16 @@ module BitsMuxModule_TopLevel
 	assign BitsMuxModule_L14F42T93_Expr = (BitsMuxModule_L14F42T93_Expr_1 >> BitsMuxModule_L14F76T92_Expr);
 	assign BitsMuxModule_L14F76T92_Expr = BitsMuxModule_L14F76T92_Expr_1 * BitsMuxModule_L14F76T92_Expr_2;
 	assign BitsMuxModule_L14F42T93_Expr_1 = Inputs_Value;
-	assign BitsMuxModule_L14F76T92_Expr_1 = { {3{1'b0}}, BitsMuxModule_L14F76T77_Expr };
-	assign BitsMuxModule_L14F76T92_Expr_2 = { {3{1'b0}}, pixelAddress };
+	assign BitsMuxModule_L14F76T92_Expr_1 = {
+		{3{1'b0}},
+		BitsMuxModule_L14F76T77_Expr
+	}
+	;
+	assign BitsMuxModule_L14F76T92_Expr_2 = {
+		{3{1'b0}},
+		pixelAddress
+	}
+	;
 	assign Inputs_Addr = Addr;
 	assign Inputs_Value = Value;
 	assign pixelAddress = Inputs_Addr[1:0];

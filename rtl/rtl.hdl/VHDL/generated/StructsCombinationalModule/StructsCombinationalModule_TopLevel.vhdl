@@ -88,17 +88,35 @@ begin
 	end process;
 	process (In_Op1, In_Op2, Inputs_In_Op1, Inputs_In_Op2, internalDirect_Op1, internalDirect_Op2, internalSum, StructsModule_L25F29T66_Cast, StructsModule_L25F36T65_Expr, StructsModule_L34F19T56_Cast, StructsModule_L34F26T55_Expr, StructsModule_L35F19T56_Cast, StructsModule_L35F26T55_Expr)
 	begin
-		StructsModule_L25F36T65_Expr_1(9 downto 8) <= (others => '0');
+		StructsModule_L25F36T65_Expr_1(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		StructsModule_L25F36T65_Expr_1(7 downto 0) <= signed(Inputs_In_Op1);
-		StructsModule_L25F36T65_Expr_2(9 downto 8) <= (others => '0');
+		StructsModule_L25F36T65_Expr_2(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		StructsModule_L25F36T65_Expr_2(7 downto 0) <= signed(Inputs_In_Op2);
-		StructsModule_L34F26T55_Expr_1(9 downto 8) <= (others => '0');
+		StructsModule_L34F26T55_Expr_1(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		StructsModule_L34F26T55_Expr_1(7 downto 0) <= signed(Inputs_In_Op1);
-		StructsModule_L34F26T55_Expr_2(9 downto 8) <= (others => '0');
+		StructsModule_L34F26T55_Expr_2(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		StructsModule_L34F26T55_Expr_2(7 downto 0) <= signed(Inputs_In_Op2);
-		StructsModule_L35F26T55_Expr_1(9 downto 8) <= (others => '0');
+		StructsModule_L35F26T55_Expr_1(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		StructsModule_L35F26T55_Expr_1(7 downto 0) <= signed(Inputs_In_Op1);
-		StructsModule_L35F26T55_Expr_2(9 downto 8) <= (others => '0');
+		StructsModule_L35F26T55_Expr_2(9 downto 8) <= (
+			others => '0'
+		)
+		;
 		StructsModule_L35F26T55_Expr_2(7 downto 0) <= signed(Inputs_In_Op2);
 		Inputs_In_Op1 <= In_Op1;
 		Inputs_In_Op2 <= In_Op2;
@@ -106,13 +124,25 @@ begin
 		internalDirect_Op2 <= Inputs_In_Op2;
 		StructsModule_L25F29T66_Cast <= StructsModule_L25F36T65_Expr(7 downto 0);
 		internalSum <= StructsModule_L25F29T66_Cast;
-		Default1_Op1(7 downto 6) <= (others => '0');
+		Default1_Op1(7 downto 6) <= (
+			others => '0'
+		)
+		;
 		Default1_Op1(5 downto 0) <= StructsModule_L38F52T54_Expr;
-		Default1_Op2(7 downto 5) <= (others => '0');
+		Default1_Op2(7 downto 5) <= (
+			others => '0'
+		)
+		;
 		Default1_Op2(4 downto 0) <= StructsModule_L14F27T29_Expr;
-		Default2_Op1(7 downto 4) <= (others => '0');
+		Default2_Op1(7 downto 4) <= (
+			others => '0'
+		)
+		;
 		Default2_Op1(3 downto 0) <= StructsModule_L11F27T29_Expr;
-		Default2_Op2(7 downto 5) <= (others => '0');
+		Default2_Op2(7 downto 5) <= (
+			others => '0'
+		)
+		;
 		Default2_Op2(4 downto 0) <= StructsModule_L14F27T29_Expr;
 		Op1 <= Inputs_In_Op1;
 		OutDirect_Op1 <= Inputs_In_Op1;

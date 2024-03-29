@@ -95,7 +95,11 @@ $readmemh("StructsMemoryModule_TopLevel_State_Buff.hex", State_Buff);
 		end
 		NextState_Out_Op1 = State_Out_Op1;
 		NextState_Out_Op2 = State_Out_Op2;
-		NextState_Buff[0] = { Inputs_In_Op2, Inputs_In_Op1 };
+		NextState_Buff[0] = {
+			Inputs_In_Op2,
+			Inputs_In_Op1
+		}
+		;
 		NextState_Buff[1] = State_Buff[0];
 		NextState_Buff[2] = State_Buff[1];
 		NextState_Buff[3] = State_Buff[2];

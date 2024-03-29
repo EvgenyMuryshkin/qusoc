@@ -191,15 +191,35 @@ module AXI4MasterSlaveTestModule_TopLevel
 	assign master_Master[97] = Inputs_MWE;
 	assign master_Master[96:65] = Inputs_InData;
 	assign master_Master[64] = Inputs_MRE;
-	assign master_Master[63:32] = { {31{1'b0}}, AXI4MasterSlaveTestModule_L62F30T31_Expr };
-	assign master_Master[31:0] = { {31{1'b0}}, AXI4MasterSlaveTestModule_L61F30T31_Expr };
+	assign master_Master[63:32] = {
+		{31{1'b0}},
+		AXI4MasterSlaveTestModule_L62F30T31_Expr
+	}
+	;
+	assign master_Master[31:0] = {
+		{31{1'b0}},
+		AXI4MasterSlaveTestModule_L61F30T31_Expr
+	}
+	;
 	assign master_S2M[73:53] = reg_S2M[73:53];
 	assign master_S2M[52:0] = reg_S2M[52:0];
 	assign BVALID = reg_S2M[72];
 	assign RACK = master_RACK;
-	assign AXI4MasterSlaveTestModule_L31F40T71_Source = { State_ReadData[3], State_ReadData[2], State_ReadData[1], State_ReadData[0] };
+	assign AXI4MasterSlaveTestModule_L31F40T71_Source = {
+		State_ReadData[3],
+		State_ReadData[2],
+		State_ReadData[1],
+		State_ReadData[0]
+	}
+	;
 	assign ReadData = AXI4MasterSlaveTestModule_L31F40T71_Source;
-	assign AXI4MasterSlaveTestModule_L32F44T72_Source = { reg_outData[3], reg_outData[2], reg_outData[1], reg_outData[0] };
+	assign AXI4MasterSlaveTestModule_L32F44T72_Source = {
+		reg_outData[3],
+		reg_outData[2],
+		reg_outData[1],
+		reg_outData[0]
+	}
+	;
 	assign RegisterData = AXI4MasterSlaveTestModule_L32F44T72_Source;
 	assign RVALID = reg_S2M[52];
 	assign WACK = master_WACK;

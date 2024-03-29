@@ -283,8 +283,16 @@ module StructsCombinationalIteratorModule_TopLevel
 		end
 		if ((Inputs_store == 1))
 		begin
-			NextState_i1[Inputs_addr] = { Inputs_i1_b, Inputs_i1_a };
-			NextState_i2[Inputs_addr] = { Inputs_i2_b, Inputs_i2_a };
+			NextState_i1[Inputs_addr] = {
+				Inputs_i1_b,
+				Inputs_i1_a
+			}
+			;
+			NextState_i2[Inputs_addr] = {
+				Inputs_i2_b,
+				Inputs_i2_a
+			}
+			;
 		end
 		else
 		begin
@@ -305,10 +313,26 @@ module StructsCombinationalIteratorModule_TopLevel
 			NextState_f[i2][7:4] = (((~Inputs_store)) ? Inputs_i1_a : Inputs_i1_b);
 		end
 	end
-	assign StructsCombinationalIteratorModule_L69F39T60_Expr_1 = { {8{Inputs_s1[7]}}, Inputs_s1 };
-	assign StructsCombinationalIteratorModule_L69F39T60_Expr_2 = { {8{Inputs_s2[7]}}, Inputs_s2 };
-	assign StructsCombinationalIteratorModule_L68F38T59_Expr_1 = { {8{Inputs_s1[7]}}, Inputs_s1 };
-	assign StructsCombinationalIteratorModule_L68F38T59_Expr_2 = { {8{Inputs_s2[7]}}, Inputs_s2 };
+	assign StructsCombinationalIteratorModule_L69F39T60_Expr_1 = {
+		{8{Inputs_s1[7]}},
+		Inputs_s1
+	}
+	;
+	assign StructsCombinationalIteratorModule_L69F39T60_Expr_2 = {
+		{8{Inputs_s2[7]}},
+		Inputs_s2
+	}
+	;
+	assign StructsCombinationalIteratorModule_L68F38T59_Expr_1 = {
+		{8{Inputs_s1[7]}},
+		Inputs_s1
+	}
+	;
+	assign StructsCombinationalIteratorModule_L68F38T59_Expr_2 = {
+		{8{Inputs_s2[7]}},
+		Inputs_s2
+	}
+	;
 	assign Inputs_addr = addr;
 	assign Inputs_i1_a = i1_a;
 	assign Inputs_i1_b = i1_b;
@@ -349,28 +373,44 @@ module StructsCombinationalIteratorModule_TopLevel
 	[5: 0] resize_signed_4_6;
 		input wire signed [3:0] source;
 		begin
-			resize_signed_4_6 = { {2{source[3]}}, source };
+			resize_signed_4_6 = {
+				{2{source[3]}},
+				source
+			}
+			;
 		end
 	endfunction
 	function
 	[11: 0] resize_signed_6_12;
 		input wire signed [5:0] source;
 		begin
-			resize_signed_6_12 = { {6{source[5]}}, source };
+			resize_signed_6_12 = {
+				{6{source[5]}},
+				source
+			}
+			;
 		end
 	endfunction
 	function
 	[5: 0] resize_unsigned_4_6;
 		input wire [3:0] source;
 		begin
-			resize_unsigned_4_6 = { {2{1'b0}}, source };
+			resize_unsigned_4_6 = {
+				{2{1'b0}},
+				source
+			}
+			;
 		end
 	endfunction
 	function
 	[11: 0] resize_unsigned_6_12;
 		input wire [5:0] source;
 		begin
-			resize_unsigned_6_12 = { {6{1'b0}}, source };
+			resize_unsigned_6_12 = {
+				{6{1'b0}},
+				source
+			}
+			;
 		end
 	endfunction
 	// [BEGIN USER ARCHITECTURE]

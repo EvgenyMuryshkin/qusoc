@@ -50,8 +50,16 @@ module NativeGetterModule_TopLevel
 			BitArrayGetterModule_L34F13L41T14_result = Inputs_Value;
 		end
 	end
-	assign BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprLhs = { 1'b0, Inputs_Value };
-	assign BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprRhs = { {2{1'b0}}, BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F36T39_Expr };
+	assign BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprLhs = {
+		1'b0,
+		Inputs_Value
+	}
+	;
+	assign BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprRhs = {
+		{2{1'b0}},
+		BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F36T39_Expr
+	}
+	;
 	assign Inputs_Value = Value;
 	assign Getter = BitArrayGetterModule_L34F13L41T14_result;
 	// [BEGIN USER ARCHITECTURE]

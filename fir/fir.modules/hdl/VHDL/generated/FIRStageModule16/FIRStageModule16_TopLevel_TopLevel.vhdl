@@ -153,7 +153,10 @@ begin
 	begin
 		FIRStageModule_L104F35T50_ExprLhs(4) <= '0';
 		FIRStageModule_L104F35T50_ExprLhs(3 downto 0) <= signed(Inputs_iDO);
-		FIRStageModule_L104F35T50_ExprRhs(4 downto 1) <= (others => '0');
+		FIRStageModule_L104F35T50_ExprRhs(4 downto 1) <= (
+			others => '0'
+		)
+		;
 		FIRStageModule_L104F35T50_ExprRhs(0) <= FIRStageModule_L104F49T50_Expr;
 		Inputs_iAccum <= iAccum;
 		Inputs_iCoeffData <= iCoeffData;

@@ -92,8 +92,16 @@ module BitArrayModule_TopLevel
 		end
 	endgenerate
 	assign BitArrayModule_L29F39T164_Ternary = (BitArrayModule_L29F39T54_Expr ? BitArrayModule_L29F39T164_WhenTrue : BitArrayModule_L29F39T164_WhenFalse);
-	assign BitArrayModule_L29F39T54_ExprLhs = { 1'b0, Inputs_Bit };
-	assign BitArrayModule_L29F39T54_ExprRhs = { {3{1'b0}}, BitArrayModule_L29F53T54_Expr };
+	assign BitArrayModule_L29F39T54_ExprLhs = {
+		1'b0,
+		Inputs_Bit
+	}
+	;
+	assign BitArrayModule_L29F39T54_ExprRhs = {
+		{3{1'b0}},
+		BitArrayModule_L29F53T54_Expr
+	}
+	;
 	assign BitArrayModule_L17F46T61_Expr_1 = Bits;
 	assign Inputs_Bit = Bit;
 	assign Inputs_Value = Value;
@@ -102,9 +110,21 @@ module BitArrayModule_TopLevel
 	assign BitArrayModule_L29F39T164_WhenFalse = BitArrayModule_L29F153T163_Expr;
 	assign CtorMux = BitArrayModule_L29F39T164_Ternary;
 	assign Direct = Bits;
-	assign BitArrayModule_L24F41T106_Source = { BitArrayModule_L24F82T86_Expr, BitArrayModule_L24F88T92_Expr, BitArrayModule_L24F94T99_Expr, BitArrayModule_L24F101T105_Expr };
+	assign BitArrayModule_L24F41T106_Source = {
+		BitArrayModule_L24F82T86_Expr,
+		BitArrayModule_L24F88T92_Expr,
+		BitArrayModule_L24F94T99_Expr,
+		BitArrayModule_L24F101T105_Expr
+	}
+	;
 	assign FromBits1 = BitArrayModule_L24F41T106_Source;
-	assign BitArrayModule_L25F41T106_Source = { BitArrayModule_L25F82T87_Expr, BitArrayModule_L25F89T93_Expr, BitArrayModule_L25F95T99_Expr, BitArrayModule_L25F101T105_Expr };
+	assign BitArrayModule_L25F41T106_Source = {
+		BitArrayModule_L25F82T87_Expr,
+		BitArrayModule_L25F89T93_Expr,
+		BitArrayModule_L25F95T99_Expr,
+		BitArrayModule_L25F101T105_Expr
+	}
+	;
 	assign FromBits2 = BitArrayModule_L25F41T106_Source;
 	assign BitArrayModule_L18F36T46_Index = Bits[7:4];
 	assign High = BitArrayModule_L18F36T46_Index;
@@ -113,7 +133,11 @@ module BitArrayModule_TopLevel
 	assign BitArrayModule_L23F78T87_Index = Bits[6:5];
 	assign BitArrayModule_L23F89T98_Index[0] = Bits[1];
 	assign BitArrayModule_L23F89T98_Index[1] = Bits[0];
-	assign BitArrayModule_L23F37T99_Source = { BitArrayModule_L23F78T87_Index, BitArrayModule_L23F89T98_Index };
+	assign BitArrayModule_L23F37T99_Source = {
+		BitArrayModule_L23F78T87_Index,
+		BitArrayModule_L23F89T98_Index
+	}
+	;
 	assign Picks = BitArrayModule_L23F37T99_Source;
 	assign BitArrayModule_L20F40T50_Index[0] = Bits[7];
 	assign BitArrayModule_L20F40T50_Index[1] = Bits[6];

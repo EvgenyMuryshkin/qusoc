@@ -286,7 +286,13 @@ module AXI4ReadInteconnectModule_1x2_TopLevel_DuplexMux
 			mOutRightData[0][51:44] = mMuxRightData_R_RUSER;
 			mOutRightData[0][43] = mMuxRightData_R_RLAST;
 			mOutRightData[0][42:41] = mMuxRightData_R_RRESP;
-			mOutRightData[0][40:9] = { mMuxRightData_R_RDATA[3], mMuxRightData_R_RDATA[2], mMuxRightData_R_RDATA[1], mMuxRightData_R_RDATA[0] };
+			mOutRightData[0][40:9] = {
+				mMuxRightData_R_RDATA[3],
+				mMuxRightData_R_RDATA[2],
+				mMuxRightData_R_RDATA[1],
+				mMuxRightData_R_RDATA[0]
+			}
+			;
 			mOutRightData[0][8:1] = mMuxRightData_R_RID;
 			mOutRightData[0][0] = mMuxRightData_AR_ARREADY;
 		end
@@ -296,17 +302,47 @@ module AXI4ReadInteconnectModule_1x2_TopLevel_DuplexMux
 			mOutRightData[0][51:44] = mEmptyRightData_R_RUSER;
 			mOutRightData[0][43] = mEmptyRightData_R_RLAST;
 			mOutRightData[0][42:41] = mEmptyRightData_R_RRESP;
-			mOutRightData[0][40:9] = { mEmptyRightData_R_RDATA[3], mEmptyRightData_R_RDATA[2], mEmptyRightData_R_RDATA[1], mEmptyRightData_R_RDATA[0] };
+			mOutRightData[0][40:9] = {
+				mEmptyRightData_R_RDATA[3],
+				mEmptyRightData_R_RDATA[2],
+				mEmptyRightData_R_RDATA[1],
+				mEmptyRightData_R_RDATA[0]
+			}
+			;
 			mOutRightData[0][8:1] = mEmptyRightData_R_RID;
 			mOutRightData[0][0] = mEmptyRightData_AR_ARREADY;
 		end
 	end
-	assign FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprLhs = { 1'b0, Inputs_iRightAddr };
-	assign FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprRhs = { 1'b0, Prefilled0 };
-	assign FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprLhs = { 1'b0, Inputs_iRightAddr };
-	assign FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprRhs = { 1'b0, Prefilled1 };
-	assign FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprLhs = { 1'b0, Inputs_iLeftAddr };
-	assign FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprRhs = { 1'b0, Prefilled0 };
+	assign FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprLhs = {
+		1'b0,
+		Inputs_iRightAddr
+	}
+	;
+	assign FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprRhs = {
+		1'b0,
+		Prefilled0
+	}
+	;
+	assign FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprLhs = {
+		1'b0,
+		Inputs_iRightAddr
+	}
+	;
+	assign FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprRhs = {
+		1'b0,
+		Prefilled1
+	}
+	;
+	assign FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprLhs = {
+		1'b0,
+		Inputs_iLeftAddr
+	}
+	;
+	assign FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprRhs = {
+		1'b0,
+		Prefilled0
+	}
+	;
 	assign FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr_1 = Inputs_iRightAddrValid;
 	assign FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr_2 = FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_Expr;
 	assign FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F21T78_Expr_1 = Inputs_iRightAddrValid;

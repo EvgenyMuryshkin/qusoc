@@ -67,27 +67,54 @@ begin
 	process (all)
 	begin
 		BinaryByte <= LiteralsModule_L20F35T47_Expr;
-		BinaryInt(31 downto 20) <= (others => '0');
+		BinaryInt(31 downto 20) <= (
+			others => '0'
+		)
+		;
 		BinaryInt(19 downto 0) <= signed(LiteralsModule_L22F33T60_Expr);
-		BinaryShort(15 downto 12) <= (others => '0');
+		BinaryShort(15 downto 12) <= (
+			others => '0'
+		)
+		;
 		BinaryShort(11 downto 0) <= signed(LiteralsModule_L21F37T54_Expr);
-		Byte(7 downto 6) <= (others => '0');
+		Byte(7 downto 6) <= (
+			others => '0'
+		)
+		;
 		Byte(5 downto 0) <= LiteralsModule_L10F29T31_Expr;
-		Int(31 downto 2) <= (others => LiteralsModule_L14F27T29_Expr(1));
+		Int(31 downto 2) <= (
+			others => LiteralsModule_L14F27T29_Expr(1)
+		)
+		;
 		Int(1 downto 0) <= LiteralsModule_L14F27T29_Expr;
 		Long <= LiteralsModule_L16F29T50_Expr;
 		LongHex(63) <= '0';
 		LongHex(62 downto 0) <= signed(LiteralsModule_L18F32T53_Expr);
-		SByte(7 downto 2) <= (others => LiteralsModule_L11F31T33_Expr(1));
+		SByte(7 downto 2) <= (
+			others => LiteralsModule_L11F31T33_Expr(1)
+		)
+		;
 		SByte(1 downto 0) <= LiteralsModule_L11F31T33_Expr;
-		Short(15 downto 2) <= (others => LiteralsModule_L12F31T33_Expr(1));
+		Short(15 downto 2) <= (
+			others => LiteralsModule_L12F31T33_Expr(1)
+		)
+		;
 		Short(1 downto 0) <= LiteralsModule_L12F31T33_Expr;
-		UInt(31 downto 6) <= (others => '0');
+		UInt(31 downto 6) <= (
+			others => '0'
+		)
+		;
 		UInt(5 downto 0) <= LiteralsModule_L15F29T31_Expr;
-		ULong(63 downto 6) <= (others => '0');
+		ULong(63 downto 6) <= (
+			others => '0'
+		)
+		;
 		ULong(5 downto 0) <= LiteralsModule_L17F31T35_Expr;
 		ULongHex <= LiteralsModule_L19F34T55_Expr;
-		UShort(15 downto 6) <= (others => '0');
+		UShort(15 downto 6) <= (
+			others => '0'
+		)
+		;
 		UShort(5 downto 0) <= LiteralsModule_L13F33T35_Expr;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]

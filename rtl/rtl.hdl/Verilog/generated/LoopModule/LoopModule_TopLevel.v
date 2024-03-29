@@ -73,7 +73,11 @@ module LoopModule_TopLevel
 	begin
 		idx = 0;
 		LoopModule_L85F13L96T14_isValid = LoopModule_L85F13L96T14_LoopModule_L86F32T37_Expr;
-		LoopModule_L85F13L96T14_result = { {7{1'b0}}, LoopModule_L85F13L96T14_LoopModule_L87F31T32_Expr };
+		LoopModule_L85F13L96T14_result = {
+			{7{1'b0}},
+			LoopModule_L85F13L96T14_LoopModule_L87F31T32_Expr
+		}
+		;
 		for (idx = 0; (idx < 8); idx = (idx + 1))
 		begin
 			LoopModule_L85F13L96T14_isValid = (LoopModule_L85F13L96T14_isValid | Inputs_InData[idx]);
@@ -86,7 +90,11 @@ module LoopModule_TopLevel
 	always @ (*)
 	begin
 		idx1 = 0;
-		LoopModule_L55F13L64T14_result = { {7{1'b0}}, LoopModule_L55F13L64T14_LoopModule_L56F31T32_Expr };
+		LoopModule_L55F13L64T14_result = {
+			{7{1'b0}},
+			LoopModule_L55F13L64T14_LoopModule_L56F31T32_Expr
+		}
+		;
 		for (idx1 = 0; (idx1 < 8); idx1 = (idx1 + 1))
 		begin
 			if (Inputs_InData[idx1])
@@ -98,7 +106,11 @@ module LoopModule_TopLevel
 	always @ (*)
 	begin
 		idx2 = 8;
-		LoopModule_L70F13L79T14_result = { {31{1'b0}}, LoopModule_L70F13L79T14_LoopModule_L71F30T31_Expr };
+		LoopModule_L70F13L79T14_result = {
+			{31{1'b0}},
+			LoopModule_L70F13L79T14_LoopModule_L71F30T31_Expr
+		}
+		;
 		for (idx2 = 8; (idx2 > 0); idx2 = (idx2 - 1))
 		begin
 			if (Inputs_InData[(idx2 - 1)])

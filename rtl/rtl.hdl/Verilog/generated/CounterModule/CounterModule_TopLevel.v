@@ -67,8 +67,16 @@ module CounterModule_TopLevel
 		NextState_Value = State_Value;
 		NextState_Value = NextValue;
 	end
-	assign CounterModule_L19F51T66_Expr_1 = { {2{1'b0}}, State_Value };
-	assign CounterModule_L19F51T66_Expr_2 = { {9{1'b0}}, CounterModule_L19F65T66_Expr };
+	assign CounterModule_L19F51T66_Expr_1 = {
+		{2{1'b0}},
+		State_Value
+	}
+	;
+	assign CounterModule_L19F51T66_Expr_2 = {
+		{9{1'b0}},
+		CounterModule_L19F65T66_Expr
+	}
+	;
 	assign Inputs_Enabled = Enabled;
 	assign CounterModule_L19F34T80_WhenTrue = CounterModule_L19F51T66_Expr[7:0];
 	assign CounterModule_L19F34T80_WhenFalse = State_Value;

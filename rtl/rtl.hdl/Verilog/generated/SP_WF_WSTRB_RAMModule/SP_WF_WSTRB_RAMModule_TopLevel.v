@@ -128,7 +128,13 @@ module SP_WF_WSTRB_RAMModule_TopLevel
 	assign Inputs_WriteData[2] = WriteData2;
 	assign Inputs_WriteData[3] = WriteData3;
 	assign Inputs_WSTRB = WSTRB;
-	assign SP_WF_WSTRB_RAMModule_L27F29T60_Source = { State_ReadData[3], State_ReadData[2], State_ReadData[1], State_ReadData[0] };
+	assign SP_WF_WSTRB_RAMModule_L27F29T60_Source = {
+		State_ReadData[3],
+		State_ReadData[2],
+		State_ReadData[1],
+		State_ReadData[0]
+	}
+	;
 	assign Data = SP_WF_WSTRB_RAMModule_L27F29T60_Source;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]

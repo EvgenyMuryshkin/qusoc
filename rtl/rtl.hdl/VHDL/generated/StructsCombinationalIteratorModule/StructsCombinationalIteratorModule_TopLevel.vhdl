@@ -247,13 +247,25 @@ begin
 	end process;
 	process (addr, i1_a, i1_b, i2_a, i2_b, Inputs_s1, Inputs_s2, s1, s2, State_c, State_f, State_o, store, StructsCombinationalIteratorModule_L68F30T60_Cast, StructsCombinationalIteratorModule_L68F38T59_Expr, StructsCombinationalIteratorModule_L69F31T61_Cast, StructsCombinationalIteratorModule_L69F39T60_Expr)
 	begin
-		StructsCombinationalIteratorModule_L69F39T60_Expr_1(15 downto 8) <= (others => Inputs_s1(7));
+		StructsCombinationalIteratorModule_L69F39T60_Expr_1(15 downto 8) <= (
+			others => Inputs_s1(7)
+		)
+		;
 		StructsCombinationalIteratorModule_L69F39T60_Expr_1(7 downto 0) <= Inputs_s1;
-		StructsCombinationalIteratorModule_L69F39T60_Expr_2(15 downto 8) <= (others => Inputs_s2(7));
+		StructsCombinationalIteratorModule_L69F39T60_Expr_2(15 downto 8) <= (
+			others => Inputs_s2(7)
+		)
+		;
 		StructsCombinationalIteratorModule_L69F39T60_Expr_2(7 downto 0) <= Inputs_s2;
-		StructsCombinationalIteratorModule_L68F38T59_Expr_1(15 downto 8) <= (others => Inputs_s1(7));
+		StructsCombinationalIteratorModule_L68F38T59_Expr_1(15 downto 8) <= (
+			others => Inputs_s1(7)
+		)
+		;
 		StructsCombinationalIteratorModule_L68F38T59_Expr_1(7 downto 0) <= Inputs_s1;
-		StructsCombinationalIteratorModule_L68F38T59_Expr_2(15 downto 8) <= (others => Inputs_s2(7));
+		StructsCombinationalIteratorModule_L68F38T59_Expr_2(15 downto 8) <= (
+			others => Inputs_s2(7)
+		)
+		;
 		StructsCombinationalIteratorModule_L68F38T59_Expr_2(7 downto 0) <= Inputs_s2;
 		Inputs_addr <= addr;
 		Inputs_i1_a <= i1_a;

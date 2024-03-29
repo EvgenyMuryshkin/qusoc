@@ -129,14 +129,46 @@ module LogicRAMModule_TopLevel
 		NextState_Index = LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F31T54_Index;
 	end
 	assign LogicRAMModule_L25F35T103_Expr_1 = LogicRAMModule_L25F36T97_Expr[10:0];
-	assign LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F32T47_Expr_1 = { {2{1'b0}}, State_Index };
-	assign LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F32T47_Expr_2 = { {3{1'b0}}, LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F46T47_Expr };
-	assign LogicRAMModule_L25F36T97_Expr_1 = { {2{1'b0}}, LogicRAMModule_L25F36T81_Expr };
-	assign LogicRAMModule_L25F36T97_Expr_2 = { {6{1'b0}}, State_Buff[3] };
-	assign LogicRAMModule_L25F36T81_Expr_1 = { {2{1'b0}}, LogicRAMModule_L25F36T65_Expr };
-	assign LogicRAMModule_L25F36T81_Expr_2 = { {4{1'b0}}, State_Buff[2] };
-	assign LogicRAMModule_L25F36T65_Expr_1 = { {2{1'b0}}, State_Buff[0] };
-	assign LogicRAMModule_L25F36T65_Expr_2 = { {2{1'b0}}, State_Buff[1] };
+	assign LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F32T47_Expr_1 = {
+		{2{1'b0}},
+		State_Index
+	}
+	;
+	assign LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F32T47_Expr_2 = {
+		{3{1'b0}},
+		LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F46T47_Expr
+	}
+	;
+	assign LogicRAMModule_L25F36T97_Expr_1 = {
+		{2{1'b0}},
+		LogicRAMModule_L25F36T81_Expr
+	}
+	;
+	assign LogicRAMModule_L25F36T97_Expr_2 = {
+		{6{1'b0}},
+		State_Buff[3]
+	}
+	;
+	assign LogicRAMModule_L25F36T81_Expr_1 = {
+		{2{1'b0}},
+		LogicRAMModule_L25F36T65_Expr
+	}
+	;
+	assign LogicRAMModule_L25F36T81_Expr_2 = {
+		{4{1'b0}},
+		State_Buff[2]
+	}
+	;
+	assign LogicRAMModule_L25F36T65_Expr_1 = {
+		{2{1'b0}},
+		State_Buff[0]
+	}
+	;
+	assign LogicRAMModule_L25F36T65_Expr_2 = {
+		{2{1'b0}},
+		State_Buff[1]
+	}
+	;
 	assign Inputs_Value = Value;
 	assign LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F31T54_Index = LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F32T47_Expr[1:0];
 	assign LogicRAMModule_L25F28T104_Cast = LogicRAMModule_L25F35T103_Expr[7:0];

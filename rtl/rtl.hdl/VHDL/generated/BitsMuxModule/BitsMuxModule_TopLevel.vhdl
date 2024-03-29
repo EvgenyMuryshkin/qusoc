@@ -62,9 +62,15 @@ begin
 	process (Addr, BitsMuxModule_L14F41T100_Index, BitsMuxModule_L14F42T93_Expr, Inputs_Addr, Inputs_Value, pixelAddress, Value)
 	begin
 		BitsMuxModule_L14F42T93_Expr_1 <= Inputs_Value;
-		BitsMuxModule_L14F76T92_Expr_1(4 downto 2) <= (others => '0');
+		BitsMuxModule_L14F76T92_Expr_1(4 downto 2) <= (
+			others => '0'
+		)
+		;
 		BitsMuxModule_L14F76T92_Expr_1(1 downto 0) <= signed(BitsMuxModule_L14F76T77_Expr);
-		BitsMuxModule_L14F76T92_Expr_2(4 downto 2) <= (others => '0');
+		BitsMuxModule_L14F76T92_Expr_2(4 downto 2) <= (
+			others => '0'
+		)
+		;
 		BitsMuxModule_L14F76T92_Expr_2(1 downto 0) <= signed(pixelAddress);
 		Inputs_Addr <= Addr;
 		Inputs_Value <= Value;

@@ -232,8 +232,63 @@ module AXI4PassThroughModule_TopLevel
 	assign Inputs_iS2M_W_B_BUSER = iS2M_W_B_BUSER;
 	assign Inputs_iS2M_W_B_BVALID = iS2M_W_B_BVALID;
 	assign Inputs_iS2M_W_W_WREADY = iS2M_W_W_WREADY;
-	assign m2s[0] = { Inputs_iM2S_W_B_BREADY, Inputs_iM2S_W_W_WVALID, Inputs_iM2S_W_W_WUSER, Inputs_iM2S_W_W_WLAST, Inputs_iM2S_W_W_WSTRB, Inputs_iM2S_W_W_WDATA[3], Inputs_iM2S_W_W_WDATA[2], Inputs_iM2S_W_W_WDATA[1], Inputs_iM2S_W_W_WDATA[0], Inputs_iM2S_W_W_WID, Inputs_iM2S_W_AW_AWVALID, Inputs_iM2S_W_AW_AWUSER, Inputs_iM2S_W_AW_AWREGION, Inputs_iM2S_W_AW_AWQOS, Inputs_iM2S_W_AW_AWPROT, Inputs_iM2S_W_AW_AWCACHE, Inputs_iM2S_W_AW_AWLOCK, Inputs_iM2S_W_AW_AWBURST, Inputs_iM2S_W_AW_AWSIZE, Inputs_iM2S_W_AW_AWLEN, Inputs_iM2S_W_AW_AWADDR, Inputs_iM2S_W_AW_AWID, Inputs_iM2S_R_R_RREADY, Inputs_iM2S_R_AR_ARVALID, Inputs_iM2S_R_AR_ARUSER, Inputs_iM2S_R_AR_ARREGION, Inputs_iM2S_R_AR_ARQOS, Inputs_iM2S_R_AR_ARPROT, Inputs_iM2S_R_AR_ARCACHE, Inputs_iM2S_R_AR_ARLOCK, Inputs_iM2S_R_AR_ARBURST, Inputs_iM2S_R_AR_ARSIZE, Inputs_iM2S_R_AR_ARLEN, Inputs_iM2S_R_AR_ARADDR, Inputs_iM2S_R_AR_ARID };
-	assign s2m[0] = { Inputs_iS2M_W_W_WREADY, Inputs_iS2M_W_B_BVALID, Inputs_iS2M_W_B_BUSER, Inputs_iS2M_W_B_BRESP, Inputs_iS2M_W_B_BID, Inputs_iS2M_W_AW_AWREADY, Inputs_iS2M_R_R_RVALID, Inputs_iS2M_R_R_RUSER, Inputs_iS2M_R_R_RLAST, Inputs_iS2M_R_R_RRESP, Inputs_iS2M_R_R_RDATA[3], Inputs_iS2M_R_R_RDATA[2], Inputs_iS2M_R_R_RDATA[1], Inputs_iS2M_R_R_RDATA[0], Inputs_iS2M_R_R_RID, Inputs_iS2M_R_AR_ARREADY };
+	assign m2s[0] = {
+		Inputs_iM2S_W_B_BREADY,
+		Inputs_iM2S_W_W_WVALID,
+		Inputs_iM2S_W_W_WUSER,
+		Inputs_iM2S_W_W_WLAST,
+		Inputs_iM2S_W_W_WSTRB,
+		Inputs_iM2S_W_W_WDATA[3],
+		Inputs_iM2S_W_W_WDATA[2],
+		Inputs_iM2S_W_W_WDATA[1],
+		Inputs_iM2S_W_W_WDATA[0],
+		Inputs_iM2S_W_W_WID,
+		Inputs_iM2S_W_AW_AWVALID,
+		Inputs_iM2S_W_AW_AWUSER,
+		Inputs_iM2S_W_AW_AWREGION,
+		Inputs_iM2S_W_AW_AWQOS,
+		Inputs_iM2S_W_AW_AWPROT,
+		Inputs_iM2S_W_AW_AWCACHE,
+		Inputs_iM2S_W_AW_AWLOCK,
+		Inputs_iM2S_W_AW_AWBURST,
+		Inputs_iM2S_W_AW_AWSIZE,
+		Inputs_iM2S_W_AW_AWLEN,
+		Inputs_iM2S_W_AW_AWADDR,
+		Inputs_iM2S_W_AW_AWID,
+		Inputs_iM2S_R_R_RREADY,
+		Inputs_iM2S_R_AR_ARVALID,
+		Inputs_iM2S_R_AR_ARUSER,
+		Inputs_iM2S_R_AR_ARREGION,
+		Inputs_iM2S_R_AR_ARQOS,
+		Inputs_iM2S_R_AR_ARPROT,
+		Inputs_iM2S_R_AR_ARCACHE,
+		Inputs_iM2S_R_AR_ARLOCK,
+		Inputs_iM2S_R_AR_ARBURST,
+		Inputs_iM2S_R_AR_ARSIZE,
+		Inputs_iM2S_R_AR_ARLEN,
+		Inputs_iM2S_R_AR_ARADDR,
+		Inputs_iM2S_R_AR_ARID
+	}
+	;
+	assign s2m[0] = {
+		Inputs_iS2M_W_W_WREADY,
+		Inputs_iS2M_W_B_BVALID,
+		Inputs_iS2M_W_B_BUSER,
+		Inputs_iS2M_W_B_BRESP,
+		Inputs_iS2M_W_B_BID,
+		Inputs_iS2M_W_AW_AWREADY,
+		Inputs_iS2M_R_R_RVALID,
+		Inputs_iS2M_R_R_RUSER,
+		Inputs_iS2M_R_R_RLAST,
+		Inputs_iS2M_R_R_RRESP,
+		Inputs_iS2M_R_R_RDATA[3],
+		Inputs_iS2M_R_R_RDATA[2],
+		Inputs_iS2M_R_R_RDATA[1],
+		Inputs_iS2M_R_R_RDATA[0],
+		Inputs_iS2M_R_R_RID,
+		Inputs_iS2M_R_AR_ARREADY
+	}
+	;
 	assign oM2S_W_B_BREADY = m2s[0][221];
 	assign oM2S_W_W_WVALID = m2s[0][220];
 	assign oM2S_W_W_WUSER = m2s[0][219:212];

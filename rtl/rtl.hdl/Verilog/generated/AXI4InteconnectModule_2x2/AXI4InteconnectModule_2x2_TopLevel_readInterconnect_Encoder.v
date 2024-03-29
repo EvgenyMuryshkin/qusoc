@@ -79,7 +79,11 @@ module AXI4InteconnectModule_2x2_TopLevel_readInterconnect_Encoder
 			end
 		end
 	end
-	assign AXI4EncoderModule_L59F40T101_Expr_1 = { 1'b0, internalHasActive };
+	assign AXI4EncoderModule_L59F40T101_Expr_1 = {
+		1'b0,
+		internalHasActive
+	}
+	;
 	assign Inputs_iValues[0] = iValues0;
 	assign Inputs_iValues[1] = iValues1;
 	assign AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize[0] = AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F46T51_Expr;

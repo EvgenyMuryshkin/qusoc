@@ -82,7 +82,11 @@ module StructByMemberL3MembersModule_TopLevel
 	assign Inputs_iL1_L2[1][2] = iL1_L21_L3_L3OptionalValue;
 	assign Inputs_iL1_L2[1][1:0] = iL1_L21_L2OptionalValue;
 	assign StructByMemberModule_L96F17L113T18_Object[1:0] = Inputs_iL1_L2[1][1:0];
-	assign StructByMemberModule_L96F17L113T18_Object[18:2] = { Inputs_iL1_L2[1][18:3], Inputs_iL1_L2[1][2] };
+	assign StructByMemberModule_L96F17L113T18_Object[18:2] = {
+		Inputs_iL1_L2[1][18:3],
+		Inputs_iL1_L2[1][2]
+	}
+	;
 	assign StructByMemberModule_L107F25L111T26_Object[0] = Inputs_iL1_L2[1][19];
 	assign StructByMemberModule_L107F25L111T26_Object[16:1] = Inputs_iL1_L2[1][35:20];
 	assign StructByMemberModule_L105F21L112T22_Tuple[17] = Inputs_iL1_L2[1][36];

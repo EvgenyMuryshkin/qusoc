@@ -7,7 +7,7 @@
   <ItemGroup>
     <PackageReference Include="Quokka.Extension.Interop" Version="1.0.3.31" />
     <PackageReference Include="Quokka.FPGA" Version="0.1.7.221" />
-    <PackageReference Include="Quokka.RTL" Version="0.1.6.555" />
+    <PackageReference Include="Quokka.RTL" Version="0.1.6.560" />
     <PackageReference Include="Quokka.TCL" Version="1.0.7.23" />
   </ItemGroup>
   <ItemGroup>

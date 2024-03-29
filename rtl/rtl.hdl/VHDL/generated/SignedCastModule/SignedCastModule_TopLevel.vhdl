@@ -54,11 +54,17 @@ begin
 		Inputs_ShortValue <= ShortValue;
 		SignedCastModule_L13F34T57_Cast <= unsigned(Inputs_ShortValue(7 downto 0));
 		ByteValue <= SignedCastModule_L13F34T57_Cast;
-		IntValue(31 downto 16) <= (others => Inputs_ShortValue(15));
+		IntValue(31 downto 16) <= (
+			others => Inputs_ShortValue(15)
+		)
+		;
 		IntValue(15 downto 0) <= Inputs_ShortValue;
 		SignedCastModule_L14F36T60_Cast <= Inputs_ShortValue(7 downto 0);
 		SByteValue <= SignedCastModule_L14F36T60_Cast;
-		SignedCastModule_L17F34T57_Cast(31 downto 16) <= (others => Inputs_ShortValue(15));
+		SignedCastModule_L17F34T57_Cast(31 downto 16) <= (
+			others => Inputs_ShortValue(15)
+		)
+		;
 		SignedCastModule_L17F34T57_Cast(15 downto 0) <= unsigned(Inputs_ShortValue);
 		UIntValue <= SignedCastModule_L17F34T57_Cast;
 		SignedCastModule_L15F38T63_Cast <= unsigned(Inputs_ShortValue);

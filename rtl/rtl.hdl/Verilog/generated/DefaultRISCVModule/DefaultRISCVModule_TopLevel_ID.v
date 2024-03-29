@@ -139,8 +139,16 @@ module DefaultRISCVModule_TopLevel_ID
 	wire signed [2: 0] InstructionDecoders_L48F30T55_ExprLhs;
 	wire signed [2: 0] InstructionDecoders_L48F30T55_ExprRhs;
 	assign InstructionDecoders_L48F30T55_Expr = InstructionDecoders_L48F30T55_ExprLhs != InstructionDecoders_L48F30T55_ExprRhs ? 1'b1 : 1'b0;
-	assign InstructionDecoders_L48F30T55_ExprLhs = { 1'b0, InstructionDecoders_L48F30T50_Index };
-	assign InstructionDecoders_L48F30T55_ExprRhs = { 1'b0, InstructionDecoders_L48F54T55_Expr };
+	assign InstructionDecoders_L48F30T55_ExprLhs = {
+		1'b0,
+		InstructionDecoders_L48F30T50_Index
+	}
+	;
+	assign InstructionDecoders_L48F30T55_ExprRhs = {
+		1'b0,
+		InstructionDecoders_L48F54T55_Expr
+	}
+	;
 	assign Inputs_Instruction = Instruction;
 	assign internalBits = Inputs_Instruction;
 	assign InstructionDecoders_L16F49T69_Index = internalBits[14:12];
@@ -149,63 +157,129 @@ module DefaultRISCVModule_TopLevel_ID
 	assign internalFunct7 = InstructionDecoders_L17F49T69_Index;
 	assign InstructionDecoders_L14F67T87_Index = internalBits[31:20];
 	assign InstructionDecoders_L14F51T97_SignChange = InstructionDecoders_L14F67T87_Index;
-	assign InstructionDecoders_L14F51T109_Resize = { {20{InstructionDecoders_L14F51T97_SignChange[11]}}, InstructionDecoders_L14F51T97_SignChange };
+	assign InstructionDecoders_L14F51T109_Resize = {
+		{20{InstructionDecoders_L14F51T97_SignChange[11]}},
+		InstructionDecoders_L14F51T97_SignChange
+	}
+	;
 	assign internalITypeImm = InstructionDecoders_L14F51T109_Resize;
 	assign InstructionDecoders_L15F49T67_Index = internalBits[6:0];
 	assign internalOpCode = InstructionDecoders_L15F49T67_Index;
 	assign InstructionDecoders_L18F46T66_Index = internalBits[24:20];
 	assign internalRS2 = InstructionDecoders_L18F46T66_Index;
-	assign ZeroU32 = { {31{1'b0}}, InstructionDecoders_L20F42T43_Expr };
-	assign InstructionDecoders_L41F67T87_Cast = { {5{1'b0}}, internalFunct3 };
+	assign ZeroU32 = {
+		{31{1'b0}},
+		InstructionDecoders_L20F42T43_Expr
+	}
+	;
+	assign InstructionDecoders_L41F67T87_Cast = {
+		{5{1'b0}},
+		internalFunct3
+	}
+	;
 	assign InstructionDecoders_L41F50T87_Cast = InstructionDecoders_L41F67T87_Cast[2:0];
 	assign BranchTypeCode = InstructionDecoders_L41F50T87_Cast;
 	assign InstructionDecoders_L30F81T97_Index = internalBits[31];
 	assign InstructionDecoders_L30F99T114_Index = internalBits[7];
 	assign InstructionDecoders_L30F116T136_Index = internalBits[30:25];
 	assign InstructionDecoders_L30F138T157_Index = internalBits[11:8];
-	assign InstructionDecoders_L30F40T165_Source = { InstructionDecoders_L30F81T97_Index, InstructionDecoders_L30F99T114_Index, InstructionDecoders_L30F116T136_Index, InstructionDecoders_L30F138T157_Index, InstructionDecoders_L30F159T164_Expr };
+	assign InstructionDecoders_L30F40T165_Source = {
+		InstructionDecoders_L30F81T97_Index,
+		InstructionDecoders_L30F99T114_Index,
+		InstructionDecoders_L30F116T136_Index,
+		InstructionDecoders_L30F138T157_Index,
+		InstructionDecoders_L30F159T164_Expr
+	}
+	;
 	assign InstructionDecoders_L30F40T174_SignChange = InstructionDecoders_L30F40T165_Source;
-	assign InstructionDecoders_L30F40T186_Resize = { {19{InstructionDecoders_L30F40T174_SignChange[12]}}, InstructionDecoders_L30F40T174_SignChange };
+	assign InstructionDecoders_L30F40T186_Resize = {
+		{19{InstructionDecoders_L30F40T174_SignChange[12]}},
+		InstructionDecoders_L30F40T174_SignChange
+	}
+	;
 	assign BTypeImm = InstructionDecoders_L30F40T186_Resize;
 	assign InstructionDecoders_L47F57T77_Index = internalBits[31:20];
-	assign InstructionDecoders_L47F49T77_Cast = { {4{1'b0}}, InstructionDecoders_L47F57T77_Index };
+	assign InstructionDecoders_L47F49T77_Cast = {
+		{4{1'b0}},
+		InstructionDecoders_L47F57T77_Index
+	}
+	;
 	assign InstructionDecoders_L47F39T77_Cast = InstructionDecoders_L47F49T77_Cast[11:0];
 	assign CSRAddress = InstructionDecoders_L47F39T77_Cast;
 	assign InstructionDecoders_L48F30T50_Index = internalBits[31:30];
 	assign CSRWE = InstructionDecoders_L48F30T55_Expr;
 	assign Funct3 = internalFunct3;
 	assign Funct7 = internalFunct7;
-	assign InstructionDecoders_L45F58T78_Cast = { 1'b0, internalFunct7 };
+	assign InstructionDecoders_L45F58T78_Cast = {
+		1'b0,
+		internalFunct7
+	}
+	;
 	assign InstructionDecoders_L45F44T78_Cast = InstructionDecoders_L45F58T78_Cast[3:0];
 	assign IRQTypeCode = InstructionDecoders_L45F44T78_Cast;
 	assign InstructionDecoders_L28F56T76_Index = internalBits[31:20];
 	assign InstructionDecoders_L28F40T86_SignChange = InstructionDecoders_L28F56T76_Index;
-	assign InstructionDecoders_L28F40T98_Resize = { {20{InstructionDecoders_L28F40T86_SignChange[11]}}, InstructionDecoders_L28F40T86_SignChange };
+	assign InstructionDecoders_L28F40T98_Resize = {
+		{20{InstructionDecoders_L28F40T86_SignChange[11]}},
+		InstructionDecoders_L28F40T86_SignChange
+	}
+	;
 	assign ITypeImm = InstructionDecoders_L28F40T98_Resize;
 	assign InstructionDecoders_L32F81T97_Index = internalBits[31];
 	assign InstructionDecoders_L32F99T119_Index = internalBits[19:12];
 	assign InstructionDecoders_L32F121T137_Index = internalBits[20];
 	assign InstructionDecoders_L32F139T159_Index = internalBits[30:21];
-	assign InstructionDecoders_L32F40T167_Source = { InstructionDecoders_L32F81T97_Index, InstructionDecoders_L32F99T119_Index, InstructionDecoders_L32F121T137_Index, InstructionDecoders_L32F139T159_Index, InstructionDecoders_L32F161T166_Expr };
+	assign InstructionDecoders_L32F40T167_Source = {
+		InstructionDecoders_L32F81T97_Index,
+		InstructionDecoders_L32F99T119_Index,
+		InstructionDecoders_L32F121T137_Index,
+		InstructionDecoders_L32F139T159_Index,
+		InstructionDecoders_L32F161T166_Expr
+	}
+	;
 	assign InstructionDecoders_L32F40T176_SignChange = InstructionDecoders_L32F40T167_Source;
-	assign InstructionDecoders_L32F40T188_Resize = { {11{InstructionDecoders_L32F40T176_SignChange[20]}}, InstructionDecoders_L32F40T176_SignChange };
+	assign InstructionDecoders_L32F40T188_Resize = {
+		{11{InstructionDecoders_L32F40T176_SignChange[20]}},
+		InstructionDecoders_L32F40T176_SignChange
+	}
+	;
 	assign JTypeImm = InstructionDecoders_L32F40T188_Resize;
-	assign InstructionDecoders_L42F61T81_Cast = { {5{1'b0}}, internalFunct3 };
+	assign InstructionDecoders_L42F61T81_Cast = {
+		{5{1'b0}},
+		internalFunct3
+	}
+	;
 	assign InstructionDecoders_L42F46T81_Cast = InstructionDecoders_L42F61T81_Cast[2:0];
 	assign LoadTypeCode = InstructionDecoders_L42F46T81_Cast;
 	assign OpCode = internalOpCode;
-	assign InstructionDecoders_L40F43T63_Cast = { {5{1'b0}}, internalFunct3 };
+	assign InstructionDecoders_L40F43T63_Cast = {
+		{5{1'b0}},
+		internalFunct3
+	}
+	;
 	assign InstructionDecoders_L40F34T63_Cast = InstructionDecoders_L40F43T63_Cast[2:0];
 	assign OPCode = InstructionDecoders_L40F34T63_Cast;
-	assign InstructionDecoders_L39F52T72_Cast = { {5{1'b0}}, internalFunct3 };
+	assign InstructionDecoders_L39F52T72_Cast = {
+		{5{1'b0}},
+		internalFunct3
+	}
+	;
 	assign InstructionDecoders_L39F40T72_Cast = InstructionDecoders_L39F52T72_Cast[2:0];
 	assign OPIMMCode = InstructionDecoders_L39F40T72_Cast;
-	assign InstructionDecoders_L38F55T75_Cast = { 1'b0, internalOpCode };
+	assign InstructionDecoders_L38F55T75_Cast = {
+		1'b0,
+		internalOpCode
+	}
+	;
 	assign InstructionDecoders_L38F42T75_Cast = InstructionDecoders_L38F55T75_Cast[6:0];
 	assign OpTypeCode = InstructionDecoders_L38F42T75_Cast;
 	assign InstructionDecoders_L22F34T53_Index = internalBits[11:7];
 	assign RD = InstructionDecoders_L22F34T53_Index;
-	assign InstructionDecoders_L44F58T78_Cast = { 1'b0, internalFunct7 };
+	assign InstructionDecoders_L44F58T78_Cast = {
+		1'b0,
+		internalFunct7
+	}
+	;
 	assign InstructionDecoders_L44F44T78_Cast = InstructionDecoders_L44F58T78_Cast[4:0];
 	assign RetTypeCode = InstructionDecoders_L44F44T78_Cast;
 	assign InstructionDecoders_L23F35T55_Index = internalBits[19:15];
@@ -213,7 +287,11 @@ module DefaultRISCVModule_TopLevel_ID
 	assign RS2 = internalRS2;
 	assign InstructionDecoders_L27F56T76_Index = internalBits[31:20];
 	assign InstructionDecoders_L27F40T86_SignChange = InstructionDecoders_L27F56T76_Index;
-	assign InstructionDecoders_L27F40T98_Resize = { {20{InstructionDecoders_L27F40T86_SignChange[11]}}, InstructionDecoders_L27F40T86_SignChange };
+	assign InstructionDecoders_L27F40T98_Resize = {
+		{20{InstructionDecoders_L27F40T86_SignChange[11]}},
+		InstructionDecoders_L27F40T86_SignChange
+	}
+	;
 	assign RTypeImm = InstructionDecoders_L27F40T98_Resize;
 	assign InstructionDecoders_L34F37T59_Index = internalITypeImm[4:0];
 	assign SHAMT = InstructionDecoders_L34F37T59_Index;
@@ -221,21 +299,41 @@ module DefaultRISCVModule_TopLevel_ID
 	assign SHARITH = InstructionDecoders_L35F32T52_Index;
 	assign InstructionDecoders_L29F81T101_Index = internalBits[31:25];
 	assign InstructionDecoders_L29F103T122_Index = internalBits[11:7];
-	assign InstructionDecoders_L29F40T123_Source = { InstructionDecoders_L29F81T101_Index, InstructionDecoders_L29F103T122_Index };
+	assign InstructionDecoders_L29F40T123_Source = {
+		InstructionDecoders_L29F81T101_Index,
+		InstructionDecoders_L29F103T122_Index
+	}
+	;
 	assign InstructionDecoders_L29F40T132_SignChange = InstructionDecoders_L29F40T123_Source;
-	assign InstructionDecoders_L29F40T144_Resize = { {20{InstructionDecoders_L29F40T132_SignChange[11]}}, InstructionDecoders_L29F40T132_SignChange };
+	assign InstructionDecoders_L29F40T144_Resize = {
+		{20{InstructionDecoders_L29F40T132_SignChange[11]}},
+		InstructionDecoders_L29F40T132_SignChange
+	}
+	;
 	assign STypeImm = InstructionDecoders_L29F40T144_Resize;
 	assign InstructionDecoders_L36F28T48_Index = internalITypeImm[10];
 	assign SUB = InstructionDecoders_L36F28T48_Index;
-	assign InstructionDecoders_L46F55T75_Cast = { {5{1'b0}}, internalFunct3 };
+	assign InstructionDecoders_L46F55T75_Cast = {
+		{5{1'b0}},
+		internalFunct3
+	}
+	;
 	assign InstructionDecoders_L46F42T75_Cast = InstructionDecoders_L46F55T75_Cast[2:0];
 	assign SystemCode = InstructionDecoders_L46F42T75_Cast;
-	assign InstructionDecoders_L43F58T75_Cast = { {3{1'b0}}, internalRS2 };
+	assign InstructionDecoders_L43F58T75_Cast = {
+		{3{1'b0}},
+		internalRS2
+	}
+	;
 	assign InstructionDecoders_L43F44T75_Cast = InstructionDecoders_L43F58T75_Cast[2:0];
 	assign SysTypeCode = InstructionDecoders_L43F44T75_Cast;
 	assign InstructionDecoders_L31F81T101_Index = internalBits[31:12];
 	assign InstructionDecoders_L31F103T117_Index = ZeroU32[11:0];
-	assign InstructionDecoders_L31F40T118_Source = { InstructionDecoders_L31F81T101_Index, InstructionDecoders_L31F103T117_Index };
+	assign InstructionDecoders_L31F40T118_Source = {
+		InstructionDecoders_L31F81T101_Index,
+		InstructionDecoders_L31F103T117_Index
+	}
+	;
 	assign InstructionDecoders_L31F40T127_SignChange = InstructionDecoders_L31F40T118_Source;
 	assign InstructionDecoders_L31F40T139_Resize = InstructionDecoders_L31F40T127_SignChange;
 	assign UTypeImm = InstructionDecoders_L31F40T139_Resize;

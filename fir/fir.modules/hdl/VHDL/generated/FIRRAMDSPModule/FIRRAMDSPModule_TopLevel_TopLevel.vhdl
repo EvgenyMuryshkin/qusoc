@@ -167,7 +167,10 @@ begin
 		u_ram_RD_ADDR <= Inputs_iRAM_RD_ADDR;
 		u_ram_WR <= Inputs_iRAM_WR;
 		u_ram_WR_ADDR <= Inputs_iRAM_WR_ADDR;
-		FIRRAMDSPModule_L60F21T43_Resize(17 downto 16) <= (others => '0');
+		FIRRAMDSPModule_L60F21T43_Resize(17 downto 16) <= (
+			others => '0'
+		)
+		;
 		FIRRAMDSPModule_L60F21T43_Resize(15 downto 0) <= u_ram_DOUT;
 		u_dsp_A <= Inputs_iDSP_A;
 		u_dsp_B <= FIRRAMDSPModule_L60F21T43_Resize;
