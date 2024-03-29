@@ -1,0 +1,9 @@
+No reads:
+	Inputs_S2M_R_R_RID
+	Inputs_S2M_R_R_RLAST
+	Inputs_S2M_R_R_RRESP
+	Inputs_S2M_R_R_RUSER
+	Inputs_S2M_W_B_BID
+	Inputs_S2M_W_B_BRESP
+	Inputs_S2M_W_B_BUSER
+	size

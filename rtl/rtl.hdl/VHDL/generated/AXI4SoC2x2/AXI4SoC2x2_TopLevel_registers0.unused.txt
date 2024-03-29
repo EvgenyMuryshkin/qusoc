@@ -1,0 +1,11 @@
+No reads:
+	axiSlave_outARADDR
+	axiSlave_outARREADYConfirming
+	axiSlave_outARVALID
+	axiSlave_outAWADDR
+	axiSlave_outAWREADYConfirming
+	axiSlave_outAWVALID
+	axiSlave_outReadTXCompleting
+	axiSlave_outWriteTXCompleting
+	axiSlave_outWVALID
+	size

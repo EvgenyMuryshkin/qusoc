@@ -1,0 +1,15 @@
+No reads:
+	masters0_RACK
+	masters0_RDATA
+	masters0_WACK
+	masters1_RACK
+	masters1_RDATA
+	masters1_WACK
+	mCount
+	registers0_outACK
+	registers0_outData
+	registers0_outWritten
+	registers1_outACK
+	registers1_outData
+	registers1_outWritten
+	sCount
