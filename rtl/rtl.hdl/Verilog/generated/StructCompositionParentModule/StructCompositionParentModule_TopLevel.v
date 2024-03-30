@@ -99,6 +99,7 @@ module StructCompositionParentModule_TopLevel
 	wire [1: 0] Inputs_iValue_l1_l2_bitArray;
 	wire [75: 0] child_iValue;
 	wire [75: 0] child_Output;
+	wire [75: 0] StructsNestedIOModule_L82F34L85T14_Object;
 	wire [75: 0] child_iValue_child_iValue_HardLink;
 	wire [75: 0] child_Output_child_Output_HardLink;
 	wire Inputs_iValue_l1_l2_boolValue [0 : 1];
@@ -143,15 +144,25 @@ module StructCompositionParentModule_TopLevel
 	assign Inputs_iValue_l1Array[1][10] = iValue_l1Array1_l2_boolValue0;
 	assign Inputs_iValue_l1Array[1][9:8] = iValue_l1Array1_l2_bitArray;
 	assign Inputs_iValue_l1Array[1][7:0] = iValue_l1Array1_byteValue;
-	assign child_iValue[75:56] = Inputs_iValue_l1Array[1];
-	assign child_iValue[55:36] = Inputs_iValue_l1Array[0];
-	assign child_iValue[35:32] = Inputs_iValue_l1_l2Array[1];
-	assign child_iValue[31:28] = Inputs_iValue_l1_l2Array[0];
-	assign child_iValue[27] = Inputs_iValue_l1_l2_boolValue[1];
-	assign child_iValue[26] = Inputs_iValue_l1_l2_boolValue[0];
-	assign child_iValue[25:24] = Inputs_iValue_l1_l2_bitArray;
-	assign child_iValue[23:16] = Inputs_iValue_l1_byteValue;
-	assign child_iValue[15:0] = Inputs_iValue_intValue;
+	assign StructsNestedIOModule_L82F34L85T14_Object[15:0] = Inputs_iValue_intValue;
+	assign StructsNestedIOModule_L82F34L85T14_Object[23:16] = Inputs_iValue_l1_byteValue;
+	assign StructsNestedIOModule_L82F34L85T14_Object[25:24] = Inputs_iValue_l1_l2_bitArray;
+	assign StructsNestedIOModule_L82F34L85T14_Object[27:26] = {
+		Inputs_iValue_l1_l2_boolValue[1],
+		Inputs_iValue_l1_l2_boolValue[0]
+	}
+	;
+	assign StructsNestedIOModule_L82F34L85T14_Object[35:28] = {
+		Inputs_iValue_l1_l2Array[1],
+		Inputs_iValue_l1_l2Array[0]
+	}
+	;
+	assign StructsNestedIOModule_L82F34L85T14_Object[75:36] = {
+		Inputs_iValue_l1Array[1],
+		Inputs_iValue_l1Array[0]
+	}
+	;
+	assign child_iValue = StructsNestedIOModule_L82F34L85T14_Object[75:0];
 	assign oOutput_iValue_l1Array1_l2Array1_boolValue1 = child_Output[75];
 	assign oOutput_iValue_l1Array1_l2Array1_boolValue0 = child_Output[74];
 	assign oOutput_iValue_l1Array1_l2Array1_bitArray = child_Output[73:72];

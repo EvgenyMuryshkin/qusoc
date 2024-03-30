@@ -37,6 +37,7 @@ module IOSingleBitMemoryCompositionModule_1_TopLevel
 	wire signed [1: 0] size = 2'b01;
 	wire children0_iValue;
 	wire children0_oValue;
+	wire [0: 0] IOSingleBitMemoryCompositionModule_L46F13L49T14_0_IOSingleBitMemoryCompositionModule_L48F44T126_Object;
 	wire children0_iValue_children0_iValue_HardLink;
 	wire children0_oValue_children0_oValue_HardLink;
 	wire Inputs_iValues [0 : 0];
@@ -50,7 +51,8 @@ module IOSingleBitMemoryCompositionModule_1_TopLevel
 		.oValue (children0_oValue_children0_oValue_HardLink)
 	);
 	assign Inputs_iValues[0] = iValues0;
-	assign children0_iValue = Inputs_iValues[0];
+	assign IOSingleBitMemoryCompositionModule_L46F13L49T14_0_IOSingleBitMemoryCompositionModule_L48F44T126_Object[0] = Inputs_iValues[0];
+	assign children0_iValue = IOSingleBitMemoryCompositionModule_L46F13L49T14_0_IOSingleBitMemoryCompositionModule_L48F44T126_Object[0];
 	assign IOSingleBitMemoryCompositionModule_L52F34T74_Enumerable[0] = children0_oValue;
 	assign oValues0 = IOSingleBitMemoryCompositionModule_L52F34T74_Enumerable[0];
 	assign children0_iValue_children0_iValue_HardLink = children0_iValue;

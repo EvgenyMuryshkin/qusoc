@@ -57,6 +57,9 @@ architecture rtl of ModuleSignalsMuxModule_TopLevel is
 	signal XorGate_I1 : std_logic := '0';
 	signal XorGate_I2 : std_logic := '0';
 	signal XorGate_O : std_logic := '0';
+	signal ModuleSignalsMuxModule_L38F36T87_Object : unsigned(1 downto 0) := (others => '0');
+	signal ModuleSignalsMuxModule_L39F35T86_Object : unsigned(1 downto 0) := (others => '0');
+	signal ModuleSignalsMuxModule_L40F36T87_Object : unsigned(1 downto 0) := (others => '0');
 	signal ModuleSignalsMuxModule_L32F41T105_Source : unsigned(2 downto 0) := (others => '0');
 	signal AndGate_I1_AndGate_I1_HardLink : std_logic := '0';
 	signal AndGate_I2_AndGate_I2_HardLink : std_logic := '0';
@@ -118,17 +121,23 @@ begin
 				ModuleSignalsMuxModule_L27F26T46_Mux <= '0';
 		end case;
 	end process;
-	process (Addr, AndGate_I1, AndGate_I2, AndGate_O, AndGate_O_AndGate_O_HardLink, I1, I2, Inputs_Addr, Inputs_I1, Inputs_I2, ModuleSignalsMuxModule_L27F26T46_Mux, ModuleSignalsMuxModule_L32F41T105_Source, ModuleSignalsMuxModule_L32F82T104_Enumerable, OrGate_I1, OrGate_I2, OrGate_O, OrGate_O_OrGate_O_HardLink, XorGate_I1, XorGate_I2, XorGate_O, XorGate_O_XorGate_O_HardLink)
+	process (Addr, AndGate_I1, AndGate_I2, AndGate_O, AndGate_O_AndGate_O_HardLink, I1, I2, Inputs_Addr, Inputs_I1, Inputs_I2, ModuleSignalsMuxModule_L27F26T46_Mux, ModuleSignalsMuxModule_L32F41T105_Source, ModuleSignalsMuxModule_L32F82T104_Enumerable, ModuleSignalsMuxModule_L38F36T87_Object, ModuleSignalsMuxModule_L39F35T86_Object, ModuleSignalsMuxModule_L40F36T87_Object, OrGate_I1, OrGate_I2, OrGate_O, OrGate_O_OrGate_O_HardLink, XorGate_I1, XorGate_I2, XorGate_O, XorGate_O_XorGate_O_HardLink)
 	begin
 		Inputs_Addr <= Addr;
 		Inputs_I1 <= I1;
 		Inputs_I2 <= I2;
-		AndGate_I1 <= Inputs_I1;
-		AndGate_I2 <= Inputs_I2;
-		OrGate_I1 <= Inputs_I1;
-		OrGate_I2 <= Inputs_I2;
-		XorGate_I1 <= Inputs_I1;
-		XorGate_I2 <= Inputs_I2;
+		ModuleSignalsMuxModule_L38F36T87_Object(0) <= Inputs_I1;
+		ModuleSignalsMuxModule_L38F36T87_Object(1) <= Inputs_I2;
+		AndGate_I2 <= ModuleSignalsMuxModule_L38F36T87_Object(1);
+		AndGate_I1 <= ModuleSignalsMuxModule_L38F36T87_Object(0);
+		ModuleSignalsMuxModule_L39F35T86_Object(0) <= Inputs_I1;
+		ModuleSignalsMuxModule_L39F35T86_Object(1) <= Inputs_I2;
+		OrGate_I2 <= ModuleSignalsMuxModule_L39F35T86_Object(1);
+		OrGate_I1 <= ModuleSignalsMuxModule_L39F35T86_Object(0);
+		ModuleSignalsMuxModule_L40F36T87_Object(0) <= Inputs_I1;
+		ModuleSignalsMuxModule_L40F36T87_Object(1) <= Inputs_I2;
+		XorGate_I2 <= ModuleSignalsMuxModule_L40F36T87_Object(1);
+		XorGate_I1 <= ModuleSignalsMuxModule_L40F36T87_Object(0);
 		ModuleSignalsMuxModule_L32F82T104_Enumerable(0) <= AndGate_O;
 		ModuleSignalsMuxModule_L32F82T104_Enumerable(1) <= OrGate_O;
 		ModuleSignalsMuxModule_L32F82T104_Enumerable(2) <= XorGate_O;
