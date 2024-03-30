@@ -149,7 +149,8 @@ module StructByMemberStateL3MembersModule_TopLevel
 	assign Inputs_iL1_L2[1][2] = iL1_L21_L3_L3OptionalValue;
 	assign Inputs_iL1_L2[1][1:0] = iL1_L21_L2OptionalValue;
 	assign StructByMemberStateModule_L89F17L106T18_Object[1:0] = State_sL1_L2[1][1:0];
-	assign StructByMemberStateModule_L89F17L106T18_Object[18:2] = { State_sL1_L2[1][18:3], State_sL1_L2[1][2] };
+	assign StructByMemberStateModule_L89F17L106T18_Object[2] = State_sL1_L2[1][2];
+	assign StructByMemberStateModule_L89F17L106T18_Object[18:3] = State_sL1_L2[1][18:3];
 	assign StructByMemberStateModule_L100F25L104T26_Object[0] = State_sL1_L2[1][19];
 	assign StructByMemberStateModule_L100F25L104T26_Object[16:1] = State_sL1_L2[1][35:20];
 	assign StructByMemberStateModule_L98F21L105T22_Tuple[17] = State_sL1_L2[1][36];

@@ -99,8 +99,8 @@ begin
 		internalL1_L2(0) <= Inputs_iL1_L2(0);
 		internalL1_L2(1) <= Inputs_iL1_L2(1);
 		StructByMemberInternalModule_L53F17L62T18_Object(1 downto 0) <= internalL1_L2(1)(1 downto 0);
-		StructByMemberInternalModule_L53F17L62T18_Object(18 downto 3) <= internalL1_L2(1)(18 downto 3);
 		StructByMemberInternalModule_L53F17L62T18_Object(2) <= internalL1_L2(1)(2);
+		StructByMemberInternalModule_L53F17L62T18_Object(18 downto 3) <= internalL1_L2(1)(18 downto 3);
 		StructByMemberInternalModule_L61F31T95_Tuple(17) <= internalL1_L2(1)(36);
 		StructByMemberInternalModule_L61F31T95_Tuple(16 downto 0) <= internalL1_L2(1)(35 downto 19);
 		StructByMemberInternalModule_L53F17L62T18_Object(36 downto 19) <= StructByMemberInternalModule_L61F31T95_Tuple;

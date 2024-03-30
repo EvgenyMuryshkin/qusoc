@@ -142,8 +142,8 @@ begin
 		Inputs_iL1_L2(1)(2) <= iL1_L21_L3_L3OptionalValue;
 		Inputs_iL1_L2(1)(1 downto 0) <= iL1_L21_L2OptionalValue;
 		StructByMemberStateModule_L66F17L75T18_Object(1 downto 0) <= State_sL1_L2(1)(1 downto 0);
-		StructByMemberStateModule_L66F17L75T18_Object(18 downto 3) <= State_sL1_L2(1)(18 downto 3);
 		StructByMemberStateModule_L66F17L75T18_Object(2) <= State_sL1_L2(1)(2);
+		StructByMemberStateModule_L66F17L75T18_Object(18 downto 3) <= State_sL1_L2(1)(18 downto 3);
 		StructByMemberStateModule_L74F31T93_Tuple(17) <= State_sL1_L2(1)(36);
 		StructByMemberStateModule_L74F31T93_Tuple(16 downto 0) <= State_sL1_L2(1)(35 downto 19);
 		StructByMemberStateModule_L66F17L75T18_Object(36 downto 19) <= StructByMemberStateModule_L74F31T93_Tuple;

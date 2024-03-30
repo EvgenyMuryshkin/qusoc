@@ -89,7 +89,8 @@ module StructByMemberInternalL3MembersModule_TopLevel
 	assign internalL1_L2[0] = Inputs_iL1_L2[0];
 	assign internalL1_L2[1] = Inputs_iL1_L2[1];
 	assign StructByMemberInternalModule_L76F17L93T18_Object[1:0] = internalL1_L2[1][1:0];
-	assign StructByMemberInternalModule_L76F17L93T18_Object[18:2] = { internalL1_L2[1][18:3], internalL1_L2[1][2] };
+	assign StructByMemberInternalModule_L76F17L93T18_Object[2] = internalL1_L2[1][2];
+	assign StructByMemberInternalModule_L76F17L93T18_Object[18:3] = internalL1_L2[1][18:3];
 	assign StructByMemberInternalModule_L87F25L91T26_Object[0] = internalL1_L2[1][19];
 	assign StructByMemberInternalModule_L87F25L91T26_Object[16:1] = internalL1_L2[1][35:20];
 	assign StructByMemberInternalModule_L85F21L92T22_Tuple[17] = internalL1_L2[1][36];
