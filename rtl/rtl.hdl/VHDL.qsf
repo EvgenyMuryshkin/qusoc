@@ -1,4 +1,4 @@
-set_global_assignment -name TOP_LEVEL_ENTITY StructByMemberStateL3MembersModule_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY AXI4WriteInteconnectModule_1x2_TopLevel
 # -------------------------------------------------------------------------- #
 #
 # Copyright (C) 1991-2010 Altera Corporation
@@ -65,7 +65,7 @@ set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
 set_instance_assignment -name CLOCK_SETTINGS Clock -to Clock
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/StructByMemberState.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/AXI4WriteInteconnectModule_1x2.vwf
 
 set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_AR_ARADDR
 set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_AW_ARADDR
