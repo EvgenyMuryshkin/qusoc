@@ -49,6 +49,9 @@ architecture rtl of AXI4InteconnectModule_2x2_TopLevel_readInterconnect_rangeDet
 	signal rangeDetectors0_IsActive : std_logic := '0';
 	signal rangeDetectors1_Value : unsigned(31 downto 0) := (others => '0');
 	signal rangeDetectors1_IsActive : std_logic := '0';
+	signal RangeDetectorArrayModule_L39F13L45T14_0_RangeDetectorArrayModule_L41F52L44T18_Object : unsigned(31 downto 0) := (others => '0');
+	signal RangeDetectorArrayModule_L39F13L45T14_1_RangeDetectorArrayModule_L41F52L44T18_Object : unsigned(31 downto 0) := (others => '0');
+	signal RangeDetectorArrayModule_L52F36L56T14_Object : unsigned(1 downto 0) := (others => '0');
 	signal encoder_iValues0_encoder_iValues_HardLink : std_logic := '0';
 	signal encoder_iValues1_encoder_iValues_HardLink : std_logic := '0';
 	signal encoder_HasActive_encoder_HasActive_HardLink : std_logic := '0';
@@ -93,15 +96,19 @@ begin
 		IsActive => rangeDetectors1_IsActive_rangeDetectors1_IsActive_HardLink
 	)
 	;
-	process (encoder_HasActive, encoder_HasActive_encoder_HasActive_HardLink, encoder_iValues, encoder_MSBIndex, encoder_MSBIndex_encoder_MSBIndex_HardLink, encoder_MSBValue_encoder_MSBValue_HardLink, iAddress, Inputs_iAddress, rangeActive, rangeDetectors0_IsActive, rangeDetectors0_IsActive_rangeDetectors0_IsActive_HardLink, rangeDetectors0_Value, rangeDetectors1_IsActive, rangeDetectors1_IsActive_rangeDetectors1_IsActive_HardLink, rangeDetectors1_Value)
+	process (encoder_HasActive, encoder_HasActive_encoder_HasActive_HardLink, encoder_iValues, encoder_MSBIndex, encoder_MSBIndex_encoder_MSBIndex_HardLink, encoder_MSBValue_encoder_MSBValue_HardLink, iAddress, Inputs_iAddress, rangeActive, RangeDetectorArrayModule_L39F13L45T14_0_RangeDetectorArrayModule_L41F52L44T18_Object, RangeDetectorArrayModule_L39F13L45T14_1_RangeDetectorArrayModule_L41F52L44T18_Object, RangeDetectorArrayModule_L52F36L56T14_Object, rangeDetectors0_IsActive, rangeDetectors0_IsActive_rangeDetectors0_IsActive_HardLink, rangeDetectors0_Value, rangeDetectors1_IsActive, rangeDetectors1_IsActive_rangeDetectors1_IsActive_HardLink, rangeDetectors1_Value)
 	begin
 		Inputs_iAddress <= iAddress;
-		rangeDetectors0_Value <= Inputs_iAddress;
-		rangeDetectors1_Value <= Inputs_iAddress;
+		RangeDetectorArrayModule_L39F13L45T14_0_RangeDetectorArrayModule_L41F52L44T18_Object <= Inputs_iAddress;
+		rangeDetectors0_Value <= RangeDetectorArrayModule_L39F13L45T14_0_RangeDetectorArrayModule_L41F52L44T18_Object;
+		RangeDetectorArrayModule_L39F13L45T14_1_RangeDetectorArrayModule_L41F52L44T18_Object <= Inputs_iAddress;
+		rangeDetectors1_Value <= RangeDetectorArrayModule_L39F13L45T14_1_RangeDetectorArrayModule_L41F52L44T18_Object;
 		rangeActive(0) <= rangeDetectors0_IsActive;
 		rangeActive(1) <= rangeDetectors1_IsActive;
-		encoder_iValues(0) <= rangeActive(0);
-		encoder_iValues(1) <= rangeActive(1);
+		RangeDetectorArrayModule_L52F36L56T14_Object(1) <= rangeActive(1);
+		RangeDetectorArrayModule_L52F36L56T14_Object(0) <= rangeActive(0);
+		encoder_iValues(1) <= RangeDetectorArrayModule_L52F36L56T14_Object(1);
+		encoder_iValues(0) <= RangeDetectorArrayModule_L52F36L56T14_Object(0);
 		oActive <= encoder_HasActive;
 		oIndex <= encoder_MSBIndex;
 		encoder_iValues0_encoder_iValues_HardLink <= encoder_iValues(0);

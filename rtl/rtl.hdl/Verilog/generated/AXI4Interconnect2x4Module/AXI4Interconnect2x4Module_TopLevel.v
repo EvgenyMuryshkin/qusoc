@@ -186,6 +186,8 @@ module AXI4Interconnect2x4Module_TopLevel
 	wire masterWriteEncoderModule_HasActive;
 	wire [0: 0] masterWriteEncoderModule_MSBIndex;
 	wire [1: 0] masterWriteEncoderModule_MSBValue;
+	wire [1: 0] AXI4InterconnectModule_L63F23L66T18_Object;
+	wire [1: 0] AXI4InterconnectModule_L70F23L73T18_Object;
 	wire masterReadEncoderModule_iValues0_masterReadEncoderModule_iValues_HardLink;
 	wire masterReadEncoderModule_iValues1_masterReadEncoderModule_iValues_HardLink;
 	wire masterReadEncoderModule_HasActive_masterReadEncoderModule_HasActive_HardLink;
@@ -383,10 +385,20 @@ module AXI4Interconnect2x4Module_TopLevel
 	assign AXI4InterconnectModule_L57F28T76_Enumerable[1] = Inputs_M2S[1][166];
 	assign mAWVALID[0] = AXI4InterconnectModule_L57F28T76_Enumerable[0];
 	assign mAWVALID[1] = AXI4InterconnectModule_L57F28T76_Enumerable[1];
-	assign masterReadEncoderModule_iValues[0] = mARVALID[0];
-	assign masterReadEncoderModule_iValues[1] = mARVALID[1];
-	assign masterWriteEncoderModule_iValues[0] = mAWVALID[0];
-	assign masterWriteEncoderModule_iValues[1] = mAWVALID[1];
+	assign AXI4InterconnectModule_L63F23L66T18_Object[1:0] = {
+		mARVALID[1],
+		mARVALID[0]
+	}
+	;
+	assign masterReadEncoderModule_iValues[1] = AXI4InterconnectModule_L63F23L66T18_Object[1];
+	assign masterReadEncoderModule_iValues[0] = AXI4InterconnectModule_L63F23L66T18_Object[0];
+	assign AXI4InterconnectModule_L70F23L73T18_Object[1:0] = {
+		mAWVALID[1],
+		mAWVALID[0]
+	}
+	;
+	assign masterWriteEncoderModule_iValues[1] = AXI4InterconnectModule_L70F23L73T18_Object[1];
+	assign masterWriteEncoderModule_iValues[0] = AXI4InterconnectModule_L70F23L73T18_Object[0];
 	assign HasActiveRead = masterReadEncoderModule_HasActive;
 	assign HasActiveWrite = masterWriteEncoderModule_HasActive;
 	assign masterReadEncoderModule_iValues0_masterReadEncoderModule_iValues_HardLink = masterReadEncoderModule_iValues[0];

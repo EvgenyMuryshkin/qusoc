@@ -448,21 +448,21 @@ module AXI4SoC2x2_TopLevel_interconnect_writeInterconnect
 		Inputs_iLeft[0]
 	}
 	;
-	assign InterconnectModule_L119F17L127T18_Object[276] = State_leftAddr;
+	assign InterconnectModule_L119F17L127T18_Object[276:276] = State_leftAddr;
 	assign InterconnectModule_L119F17L127T18_Object[277] = State_leftAddrValid;
 	assign InterconnectModule_L119F17L127T18_Object[319:278] = {
 		Inputs_iRight[1],
 		Inputs_iRight[0]
 	}
 	;
-	assign InterconnectModule_L119F17L127T18_Object[320] = State_rightAddr;
+	assign InterconnectModule_L119F17L127T18_Object[320:320] = State_rightAddr;
 	assign InterconnectModule_L119F17L127T18_Object[321] = State_rightAddrValid;
 	assign DuplexMux_iRightAddrValid = InterconnectModule_L119F17L127T18_Object[321];
-	assign DuplexMux_iRightAddr = InterconnectModule_L119F17L127T18_Object[320];
+	assign DuplexMux_iRightAddr = InterconnectModule_L119F17L127T18_Object[320:320];
 	assign DuplexMux_iRight[1] = InterconnectModule_L119F17L127T18_Object[319:299];
 	assign DuplexMux_iRight[0] = InterconnectModule_L119F17L127T18_Object[298:278];
 	assign DuplexMux_iLeftAddrValid = InterconnectModule_L119F17L127T18_Object[277];
-	assign DuplexMux_iLeftAddr = InterconnectModule_L119F17L127T18_Object[276];
+	assign DuplexMux_iLeftAddr = InterconnectModule_L119F17L127T18_Object[276:276];
 	assign DuplexMux_iLeft[1] = InterconnectModule_L119F17L127T18_Object[275:138];
 	assign DuplexMux_iLeft[0] = InterconnectModule_L119F17L127T18_Object[137:0];
 	assign AXI4WriteInteconnectModule_L23F13L29T14_0_AXI4WriteInteconnectModule_L25F54L28T18_Object[31:0] = Inputs_iLeft[0][39:8];
