@@ -1,4 +1,4 @@
-set_global_assignment -name TOP_LEVEL_ENTITY AXI4WriteInteconnectModule_1x2_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY AXI4SoC2x2_TopLevel
 # -------------------------------------------------------------------------- #
 #
 # Copyright (C) 1991-2010 Altera Corporation
@@ -65,8 +65,6 @@ set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
 set_instance_assignment -name CLOCK_SETTINGS Clock -to Clock
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/AXI4WriteInteconnectModule_1x2.vwf
-
 set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_AR_ARADDR
 set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_AW_ARADDR
 set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_AW_AWID
@@ -80,7 +78,6 @@ set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_WDATA2
 set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_WDATA3
 set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_WSTRB
 set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_WUSER
-
 set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_AR_ARADDR
 set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_AW_ARADDR
 set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_AW_AWID
@@ -95,6 +92,8 @@ set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_WDATA3
 set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_WSTRB
 set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_WUSER
 
+
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/AXI4SoC2x2_SequentialRead.vwf
 
 set_global_assignment -name VHDL_FILE VHDL/generated/AndGateModule/AndGateModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AndGateModule.vwf
@@ -216,6 +215,10 @@ set_global_assignment -name VHDL_FILE VHDL/generated/AXI4SoC2x2/AXI4SoC2x2_TopLe
 set_global_assignment -name VHDL_FILE VHDL/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_registers1_axiSlave.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_registers1.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel.vhdl
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4SoC2x2_SequentialRead.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4SoC2x2_SeqientialWrite.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4SoC2x2_ParallelRead.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4SoC2x2_ParallelWrite.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/AXI4WriteInteconnectModule_1x2/AXI4WriteInteconnectModule_1x2_TopLevel_DuplexMux.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/AXI4WriteInteconnectModule_1x2/AXI4WriteInteconnectModule_1x2_TopLevel_Encoder.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/AXI4WriteInteconnectModule_1x2/AXI4WriteInteconnectModule_1x2_TopLevel_rangeDetectorArray0_encoder.vhdl

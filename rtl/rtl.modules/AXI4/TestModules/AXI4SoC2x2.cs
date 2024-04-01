@@ -7,6 +7,20 @@ using System.Linq;
 
 namespace rtl.modules
 {
+    public class AXI4SoCRegisterOutput
+    {
+        public bool outACK;
+        public byte[] outData;
+        public bool outWritten;
+    }
+
+    public class AXI4SoCMasterOutput
+    {
+        public bool outRACK;
+        public byte[] outRData;
+        public bool outWACK;
+    }
+    
     public class AXI4SoC2x2Inputs
     {
         public AXI4SoC2x2Inputs() { }
@@ -46,6 +60,25 @@ namespace rtl.modules
                 }
             );
         }
+
+        // TODO: named tuple items.
+        //public (bool outACK, byte[] outData, bool outWritten)[] outRegs => registers.Select(r => (r.outACK, r.outData, r.outWritten)).ToArray();
+        public AXI4SoCRegisterOutput[] outRegs => registers
+            .Select(r => new AXI4SoCRegisterOutput()
+            {
+                outACK = r.outACK,
+                outData = r.outData,
+                outWritten = r.outWritten
+            }).ToArray();
+
+        public AXI4SoCMasterOutput[] outMasters => masters
+            .Select(m => new AXI4SoCMasterOutput()
+            {
+                outRData = m.RDATA,
+                outRACK = m.RACK,
+                outWACK = m.WACK
+            })
+            .ToArray();
 
         protected override void OnSchedule(Func<AXI4SoC2x2Inputs> inputsFactory)
         {
