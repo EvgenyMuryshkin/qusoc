@@ -1,4 +1,10 @@
 No reads:
+	AXI4Interconnect2x4TestModule_L62F13L77T14_0_i
+	AXI4Interconnect2x4TestModule_L62F13L77T14_1_i
+	AXI4Interconnect2x4TestModule_L79F13L90T14_0_i
+	AXI4Interconnect2x4TestModule_L79F13L90T14_1_i
+	AXI4Interconnect2x4TestModule_L79F13L90T14_2_i
+	AXI4Interconnect2x4TestModule_L79F13L90T14_3_i
 	axiSize
 	interconnectM2S
 	interconnectS2M

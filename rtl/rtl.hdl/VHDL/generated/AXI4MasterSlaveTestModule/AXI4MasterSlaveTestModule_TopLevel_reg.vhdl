@@ -53,6 +53,10 @@ architecture rtl of AXI4MasterSlaveTestModule_TopLevel_reg is
 	constant AXI4RegisterModule_L71F29T33_Expr : std_logic := '1';
 	constant AXI4RegisterModule_L73F28T32_Expr : std_logic := '1';
 	constant AXI4RegisterModule_L70F28T32_Expr : std_logic := '1';
+	constant AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_0_w : std_logic := '0';
+	constant AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_1_w : std_logic := '1';
+	constant AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_2_w : unsigned(1 downto 0) := "10";
+	constant AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_3_w : unsigned(1 downto 0) := "11";
 	signal Inputs_M2S_R_AR_ARID : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_M2S_R_AR_ARADDR : unsigned(31 downto 0) := (others => '0');
 	signal Inputs_M2S_R_AR_ARLEN : unsigned(7 downto 0) := (others => '0');

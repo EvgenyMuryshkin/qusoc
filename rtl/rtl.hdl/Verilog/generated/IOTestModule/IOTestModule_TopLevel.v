@@ -56,6 +56,8 @@ module IOTestModule_TopLevel
 	wire [7: 0] State_ArrayDefault = 8'b00000000;
 	wire [7: 0] State_IteratorArrayDefault = 8'b00000000;
 	wire [1: 0] size = 2'b10;
+	wire IOTestModule_L73F9L81T10_IOTestModule_L79F13L80T68_0_idx = 1'b0;
+	wire IOTestModule_L73F9L81T10_IOTestModule_L79F13L80T68_1_idx = 1'b1;
 	wire Inputs_InFlag;
 	reg NextState_Flag;
 	reg State_Flag = 1'b0;

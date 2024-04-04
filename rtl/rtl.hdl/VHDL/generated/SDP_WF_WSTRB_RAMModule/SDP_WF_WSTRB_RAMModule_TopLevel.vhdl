@@ -51,6 +51,10 @@ architecture rtl of SDP_WF_WSTRB_RAMModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
+	constant SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_0_w : std_logic := '0';
+	constant SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_1_w : std_logic := '1';
+	constant SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_2_w : unsigned(1 downto 0) := "10";
+	constant SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_3_w : unsigned(1 downto 0) := "11";
 	signal Inputs_ReadAddress : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_WE : std_logic := '0';
 	signal Inputs_WriteAddress : unsigned(7 downto 0) := (others => '0');

@@ -35,7 +35,7 @@ namespace rtl.modules
                         result = idx - 1;
                 }
 
-                return result.Resized(resultWidth);
+                return result.Unsigned().Resized(resultWidth);
             }
         }
 

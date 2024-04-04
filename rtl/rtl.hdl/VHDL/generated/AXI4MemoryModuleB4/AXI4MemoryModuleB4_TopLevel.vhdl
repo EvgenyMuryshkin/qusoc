@@ -101,6 +101,10 @@ architecture rtl of AXI4MemoryModuleB4_TopLevel is
 	constant AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L112F13L116T14_AXI4MemoryModule_L115F38T42_Expr : std_logic := '1';
 	constant AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L119F13L122T14_AXI4MemoryModule_L120F38T43_Expr : std_logic := '0';
 	constant AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L119F13L122T14_AXI4MemoryModule_L121F38T43_Expr : std_logic := '0';
+	constant AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_0_w : std_logic := '0';
+	constant AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_1_w : std_logic := '1';
+	constant AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_2_w : unsigned(1 downto 0) := "10";
+	constant AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_3_w : unsigned(1 downto 0) := "11";
 	signal Inputs_M2S_R_AR_ARID : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_M2S_R_AR_ARADDR : unsigned(31 downto 0) := (others => '0');
 	signal Inputs_M2S_R_AR_ARLEN : unsigned(7 downto 0) := (others => '0');

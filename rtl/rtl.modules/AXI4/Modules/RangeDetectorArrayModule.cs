@@ -34,9 +34,19 @@ namespace rtl.modules.AXI4.Modules
         {
             base.OnSchedule(inputsFactory);
 
-            // TODO: support foreach
+            encoder.Schedule(() => new AXI4EncoderModuleInputs()
+            {
+                // TODO: support rangeDetectors.Select(r => r.IsActive).ToArray()
+                iValues = rangeActive
+            });
+        }
+
+        protected override void OnDeltaCycle()
+        {
+            base.OnDeltaCycle();
+
             // TODO: support idx < rangeDetectors.Length
-            for (var idx = 0; idx < rangeDetectorsCount; idx++)
+            foreach (var idx in range(rangeDetectorsCount))
             {
                 rangeDetectors[idx].Schedule(() => new RangeDetectorModuleInputs()
                 {
@@ -44,16 +54,10 @@ namespace rtl.modules.AXI4.Modules
                 });
             }
 
-            for (var idx = 0; idx < rangeDetectorsCount; idx++)
+            foreach (var idx in range(rangeDetectorsCount))
             {
                 rangeActive[idx] = rangeDetectors[idx].IsActive;
             }
-
-            encoder.Schedule(() => new AXI4EncoderModuleInputs()
-            {
-                // TODO: support rangeDetectors.Select(r => r.IsActive).ToArray()
-                iValues = rangeActive
-            });
         }
     }
 

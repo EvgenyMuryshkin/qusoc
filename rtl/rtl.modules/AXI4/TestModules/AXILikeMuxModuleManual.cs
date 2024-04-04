@@ -43,18 +43,23 @@ namespace rtl.modules.AXI4.Modules
                 iValues = Inputs.MArr.Select(a => a.SData.IsActive).ToArray()//dbg
             });
             */
-            
-            for (var i = 0; i < mastersCount; i++)
+        }
+
+        protected override void OnDeltaCycle()
+        {
+            base.OnDeltaCycle();
+
+            foreach (var i in range(mastersCount))
             {
                 mInMData[i] = Inputs.MArr[i];
             }
 
-            for (var i = 0; i < slavesCount; i++)
+            foreach (var i in range(slavesCount))
             {
                 mInSData[i] = Inputs.SArr[i];
             }
 
-            for (var j = 0; j < slavesCount; j++)
+            foreach (var j in range(slavesCount))
             {
                 if (Inputs.MAddrValid && Inputs.SAddrValid && Inputs.SAddr == j)
                 {
@@ -66,7 +71,7 @@ namespace rtl.modules.AXI4.Modules
                 }
             }
 
-            for (var j = 0; j < mastersCount; j++)
+            foreach (var j in range(mastersCount))
             {
                 if (Inputs.MAddrValid && Inputs.SAddrValid && Inputs.MAddr == j)
                 {

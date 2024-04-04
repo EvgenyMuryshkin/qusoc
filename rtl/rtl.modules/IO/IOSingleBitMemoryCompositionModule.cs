@@ -43,7 +43,7 @@ namespace RTL.Modules
         {
             base.OnSchedule(inputsFactory);
 
-            for (var i = 0; i < size; i++)
+            foreach (var i in range(size))
             {
                 children[i].Schedule(() => new IOSingleBitMemoryCompositionModuleChildInputs() { iValue = Inputs.iValues[i] });
             }

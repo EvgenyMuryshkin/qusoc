@@ -1,2 +1,3 @@
 No reads:
+	IOSingleBitMemoryCompositionModule_L46F13L49T14_0_i
 	size

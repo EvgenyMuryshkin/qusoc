@@ -52,6 +52,10 @@ module AXI4Interconnect2x4TestModule_TopLevel_registers0
 	wire AXI4RegisterModule_L71F29T33_Expr = 1'b1;
 	wire AXI4RegisterModule_L73F28T32_Expr = 1'b1;
 	wire AXI4RegisterModule_L70F28T32_Expr = 1'b1;
+	wire AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_0_w = 1'b0;
+	wire AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_1_w = 1'b1;
+	wire [1: 0] AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_2_w = 2'b10;
+	wire [1: 0] AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_3_w = 2'b11;
 	wire [7: 0] Inputs_M2S_R_AR_ARID;
 	wire [31: 0] Inputs_M2S_R_AR_ARADDR;
 	wire [7: 0] Inputs_M2S_R_AR_ARLEN;

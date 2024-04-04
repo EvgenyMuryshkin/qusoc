@@ -39,9 +39,9 @@ namespace rtl.modules
         private readonly int mCount = 2;
         private readonly int sCount = 2;
 
-        AXI4InteconnectModule interconnect;
-        AXI4MasterModule[] masters;
-        AXI4RegisterModule[] registers;
+        internal AXI4InteconnectModule interconnect;
+        internal AXI4MasterModule[] masters;
+        internal AXI4RegisterModule[] registers;
 
         public AXI4SoC2x2()
         {

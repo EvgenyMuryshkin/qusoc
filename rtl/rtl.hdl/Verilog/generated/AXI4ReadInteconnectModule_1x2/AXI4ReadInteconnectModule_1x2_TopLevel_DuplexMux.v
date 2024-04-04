@@ -46,8 +46,9 @@ module AXI4ReadInteconnectModule_1x2_TopLevel_DuplexMux
 	wire false = 1'b0;
 	wire signed [1: 0] leftCount = 2'b01;
 	wire signed [2: 0] rightCount = 3'b010;
-	wire [0: 0] Prefilled0 = 1'b0;
-	wire [0: 0] Prefilled1 = 1'b1;
+	wire FullDuplexMuxModule_L94F13L104T14_0_rightIndex = 1'b0;
+	wire FullDuplexMuxModule_L94F13L104T14_1_rightIndex = 1'b1;
+	wire FullDuplexMuxModule_L118F13L128T14_0_leftIndex = 1'b0;
 	wire [0: 0] Inputs_iLeftAddr;
 	wire Inputs_iLeftAddrValid;
 	wire [0: 0] Inputs_iRightAddr;
@@ -320,7 +321,7 @@ module AXI4ReadInteconnectModule_1x2_TopLevel_DuplexMux
 	;
 	assign FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprRhs = {
 		1'b0,
-		Prefilled0
+		FullDuplexMuxModule_L94F13L104T14_0_rightIndex
 	}
 	;
 	assign FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprLhs = {
@@ -330,7 +331,7 @@ module AXI4ReadInteconnectModule_1x2_TopLevel_DuplexMux
 	;
 	assign FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprRhs = {
 		1'b0,
-		Prefilled1
+		FullDuplexMuxModule_L94F13L104T14_1_rightIndex
 	}
 	;
 	assign FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprLhs = {
@@ -340,7 +341,7 @@ module AXI4ReadInteconnectModule_1x2_TopLevel_DuplexMux
 	;
 	assign FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprRhs = {
 		1'b0,
-		Prefilled0
+		FullDuplexMuxModule_L118F13L128T14_0_leftIndex
 	}
 	;
 	assign FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr_1 = Inputs_iRightAddrValid;

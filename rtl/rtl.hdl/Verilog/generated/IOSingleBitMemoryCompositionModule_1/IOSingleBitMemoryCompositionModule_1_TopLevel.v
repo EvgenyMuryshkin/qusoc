@@ -35,6 +35,7 @@ module IOSingleBitMemoryCompositionModule_1_TopLevel
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire signed [1: 0] size = 2'b01;
+	wire IOSingleBitMemoryCompositionModule_L46F13L49T14_0_i = 1'b0;
 	wire children0_iValue;
 	wire children0_oValue;
 	wire [0: 0] IOSingleBitMemoryCompositionModule_L46F13L49T14_0_IOSingleBitMemoryCompositionModule_L48F44T126_Object;

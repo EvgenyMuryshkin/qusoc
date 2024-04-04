@@ -40,6 +40,7 @@ architecture rtl of IOSingleBitMemoryCompositionModule_1_TopLevel is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	constant size : signed(1 downto 0) := "01";
+	constant IOSingleBitMemoryCompositionModule_L46F13L49T14_0_i : std_logic := '0';
 	signal children0_iValue : std_logic := '0';
 	signal children0_oValue : std_logic := '0';
 	signal IOSingleBitMemoryCompositionModule_L46F13L49T14_0_IOSingleBitMemoryCompositionModule_L48F44T126_Object : unsigned(0 downto 0) := (others => '0');

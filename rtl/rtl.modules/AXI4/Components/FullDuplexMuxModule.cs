@@ -91,7 +91,7 @@ namespace rtl.modules
                 mMuxLeftData = mEmptyLeftData;
             }
 
-            for (var rightIndex = 0; rightIndex < rightCount; rightIndex++)
+            foreach (var rightIndex in range(rightCount))
             {
                 if (Inputs.iRightAddrValid && Inputs.iRightAddr == rightIndex)
                 {
@@ -115,7 +115,7 @@ namespace rtl.modules
                 mMuxRightData = mEmptyRightData;
             }
 
-            for (var leftIndex = 0; leftIndex < leftCount; leftIndex++)
+            foreach (var leftIndex in range(leftCount))
             {
                 if (Inputs.iLeftAddrValid && Inputs.iLeftAddr == leftIndex)
                 {
@@ -131,6 +131,10 @@ namespace rtl.modules
         protected override void OnSchedule(Func<FullDuplexMuxModuleInputs<TLeft, TRight>> inputsFactory)
         {
             base.OnSchedule(inputsFactory);
+        }
+
+        protected override void OnDeltaCycle()
+        {
             OnScheduleLeftToRight();
             OnScheduleRightToLeft();
         }

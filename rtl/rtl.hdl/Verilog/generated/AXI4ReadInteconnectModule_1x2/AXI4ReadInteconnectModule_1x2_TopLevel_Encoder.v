@@ -45,7 +45,8 @@ module AXI4ReadInteconnectModule_1x2_TopLevel_Encoder
 	wire [0: 0] AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize;
 	reg [0: 0] AXI4EncoderModule_L30F13L39T14_result;
 	integer idx;
-	wire [0: 0] AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize;
+	wire [0: 0] AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T41_SignChange;
+	wire [0: 0] AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T62_Resize;
 	reg AXI4EncoderModule_L45F13L54T14_result;
 	integer idx1;
 	wire [0: 0] AXI4EncoderModule_L59F40T101_ShiftLeft;
@@ -81,8 +82,9 @@ module AXI4ReadInteconnectModule_1x2_TopLevel_Encoder
 	assign AXI4EncoderModule_L59F40T101_Expr_1[0] = internalHasActive;
 	assign Inputs_iValues[0] = iValues0;
 	assign AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize[0] = AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F46T51_Expr;
-	assign AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize = AXI4EncoderModule_L30F13L39T14_result;
-	assign internalEncoded = AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize;
+	assign AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T41_SignChange = AXI4EncoderModule_L30F13L39T14_result;
+	assign AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T62_Resize = AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T41_SignChange;
+	assign internalEncoded = AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T62_Resize;
 	assign internalHasActive = AXI4EncoderModule_L45F13L54T14_result;
 	assign HasActive = internalHasActive;
 	assign MSBIndex = internalEncoded;

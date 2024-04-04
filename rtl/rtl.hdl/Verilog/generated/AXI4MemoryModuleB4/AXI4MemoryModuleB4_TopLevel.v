@@ -96,6 +96,10 @@ module AXI4MemoryModuleB4_TopLevel
 	wire AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L112F13L116T14_AXI4MemoryModule_L115F38T42_Expr = 1'b1;
 	wire AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L119F13L122T14_AXI4MemoryModule_L120F38T43_Expr = 1'b0;
 	wire AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L119F13L122T14_AXI4MemoryModule_L121F38T43_Expr = 1'b0;
+	wire AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_0_w = 1'b0;
+	wire AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_1_w = 1'b1;
+	wire [1: 0] AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_2_w = 2'b10;
+	wire [1: 0] AXI4MemoryModule_L104F9L136T10_AXI4MemoryModule_L124F13L128T14_3_w = 2'b11;
 	wire [7: 0] Inputs_M2S_R_AR_ARID;
 	wire [31: 0] Inputs_M2S_R_AR_ARADDR;
 	wire [7: 0] Inputs_M2S_R_AR_ARLEN;

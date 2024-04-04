@@ -20,7 +20,7 @@ namespace rtl.modules.AXI4.Modules
         {
             base.OnSchedule(inputsFactory);
 
-            for (var i = 0; i < leftCount; i++)
+            foreach (var i in range(leftCount))
             {
                 rangeDetectorArray[i].Schedule(() => new RangeDetectorArrayModuleInputs()
                 {

@@ -37,7 +37,7 @@ namespace RTL.Modules
             var (sim, topLevel) = Setup;
 
             var extData = 0x01020304;
-            topLevel.Schedule(() => new AXI4RegisterModuleInputs(axiSize.B4) { inWE = true, inWDATA = BitConverter.GetBytes(extData) });
+            topLevel.Schedule(() => new AXI4RegisterModuleInputs(axiSize.B4) { Reg = { inWE = true, inWDATA = BitConverter.GetBytes(extData) } });
             topLevel.DeltaCycle(0);
             Assert.IsTrue(topLevel.outACK);
             sim.ClockCycle();
@@ -106,7 +106,7 @@ namespace RTL.Modules
             var (sim, topLevel) = Setup;
 
             var extData = 0x01020304;
-            sim.ClockCycle(new AXI4RegisterModuleInputs(axiSize.B4) { inWE = true, inWDATA = BitConverter.GetBytes(extData) });
+            sim.ClockCycle(new AXI4RegisterModuleInputs(axiSize.B4) { Reg = { inWE = true, inWDATA = BitConverter.GetBytes(extData) } });
             Assert.AreEqual(extData, BitConverter.ToInt32(topLevel.outData));
             Assert.IsFalse(topLevel.S2M.R.R.RVALID);
 

@@ -1,4 +1,7 @@
 No reads:
 	State_BuffDefault
+	StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_0_idx
+	StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_1_idx
+	StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_2_idx
 No writes:
 	State_BuffArrayInit

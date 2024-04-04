@@ -86,6 +86,11 @@ namespace rtl.modules
         protected override void OnSchedule(Func<AXI4PassThroughModuleInputs> inputsFactory)
         {
             base.OnSchedule(inputsFactory);
+        }
+
+        protected override void OnDeltaCycle()
+        {
+            base.OnDeltaCycle();
 
             m2s[0] = Inputs.iM2S;
             s2m[0] = Inputs.iS2M;

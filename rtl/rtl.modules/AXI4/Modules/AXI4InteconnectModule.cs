@@ -23,8 +23,8 @@ namespace rtl.modules.AXI4.Modules
     {
         private readonly int mCount;
         private readonly int sCount;
-        AXI4ReadInteconnectModule readInterconnect;
-        AXI4WriteInteconnectModule writeInterconnect;
+        internal AXI4ReadInteconnectModule readInterconnect;
+        internal AXI4WriteInteconnectModule writeInterconnect;
 
         public AXI4InteconnectModule(axiSize size, int mCount, List<RangeInfo> slaveRange)
         {
@@ -39,6 +39,8 @@ namespace rtl.modules.AXI4.Modules
 
         protected override void OnSchedule(Func<AXI4InteconnectModuleInputs> inputsFactory)
         {
+            base.OnSchedule(inputsFactory);
+
             readInterconnect.Schedule(() =>
                 new InterconnectModuleInputs<AXI4_M2S_R, AXI4_S2M_R>()
                 {

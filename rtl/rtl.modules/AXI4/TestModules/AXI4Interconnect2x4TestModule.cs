@@ -59,7 +59,7 @@ namespace rtl.modules
 
         protected override void OnSchedule(Func<AXI4Interconnect2x4TestModuleInputs> inputsFactory)
         {
-            for (var i = 0; i < mCount; i++)
+            foreach (var i in range(mCount))
             {
                 masters[i].Schedule(() => new AXI4MasterModuleInputs()
                 {
@@ -76,7 +76,7 @@ namespace rtl.modules
                 });
             }
 
-            for (var i = 0; i < sCount; i++)
+            foreach (var i in range(sCount))
             {
                 registers[i].Schedule(() => new AXI4RegisterModuleInputs()
                 {

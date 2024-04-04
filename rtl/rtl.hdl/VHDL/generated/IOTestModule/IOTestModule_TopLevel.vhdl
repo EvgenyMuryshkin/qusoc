@@ -61,6 +61,8 @@ architecture rtl of IOTestModule_TopLevel is
 	constant State_ArrayDefault : unsigned(7 downto 0) := "00000000";
 	constant State_IteratorArrayDefault : unsigned(7 downto 0) := "00000000";
 	constant size : unsigned(1 downto 0) := "10";
+	constant IOTestModule_L73F9L81T10_IOTestModule_L79F13L80T68_0_idx : std_logic := '0';
+	constant IOTestModule_L73F9L81T10_IOTestModule_L79F13L80T68_1_idx : std_logic := '1';
 	signal Inputs_InFlag : std_logic := '0';
 	signal NextState_Flag : std_logic := '0';
 	signal State_Flag : std_logic := '0';

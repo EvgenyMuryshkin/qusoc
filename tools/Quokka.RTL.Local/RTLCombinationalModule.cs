@@ -140,6 +140,11 @@ namespace Quokka.RTL
         object IRTLCombinationalModule.RawInputs => Inputs;
         protected Func<TInput> InputsFactory;
 
+        protected virtual void OnDeltaCycle()
+        {
+
+        }
+
         protected virtual void OnSchedule(Func<TInput> inputsFactory)
         {
             InputsFactory = inputsFactory;
@@ -173,6 +178,8 @@ namespace Quokka.RTL
             bool childrenModified = false;
 
             Inputs = nextInputs;
+
+            OnDeltaCycle();
 
             foreach (var child in Modules)
             {

@@ -52,10 +52,16 @@ architecture rtl of AXI4Interconnect2x4TestModule_TopLevel is
 	constant axiSize : unsigned(1 downto 0) := "10";
 	constant mCount : signed(2 downto 0) := "010";
 	constant sCount : signed(3 downto 0) := "0100";
+	constant AXI4Interconnect2x4TestModule_L62F13L77T14_0_i : std_logic := '0';
 	constant AXI4Interconnect2x4TestModule_L62F13L77T14_0_AXI4Interconnect2x4TestModule_L71F34T35_Expr : std_logic := '0';
 	constant AXI4Interconnect2x4TestModule_L62F13L77T14_0_AXI4Interconnect2x4TestModule_L72F34T35_Expr : std_logic := '0';
+	constant AXI4Interconnect2x4TestModule_L62F13L77T14_1_i : std_logic := '1';
 	constant AXI4Interconnect2x4TestModule_L62F13L77T14_1_AXI4Interconnect2x4TestModule_L71F34T35_Expr : std_logic := '0';
 	constant AXI4Interconnect2x4TestModule_L62F13L77T14_1_AXI4Interconnect2x4TestModule_L72F34T35_Expr : std_logic := '0';
+	constant AXI4Interconnect2x4TestModule_L79F13L90T14_0_i : std_logic := '0';
+	constant AXI4Interconnect2x4TestModule_L79F13L90T14_1_i : std_logic := '1';
+	constant AXI4Interconnect2x4TestModule_L79F13L90T14_2_i : unsigned(1 downto 0) := "10";
+	constant AXI4Interconnect2x4TestModule_L79F13L90T14_3_i : unsigned(1 downto 0) := "11";
 	signal Inputs_InData : unsigned(31 downto 0) := (others => '0');
 	signal Inputs_WSTRB : unsigned(3 downto 0) := (others => '0');
 	signal notActiveM2S_R_AR_ARID : unsigned(7 downto 0) := (others => '0');

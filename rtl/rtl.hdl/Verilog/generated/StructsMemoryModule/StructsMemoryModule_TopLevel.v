@@ -39,6 +39,9 @@ module StructsMemoryModule_TopLevel
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire [15: 0] State_BuffDefault = 16'b0000000000000000;
+	wire StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_0_idx = 1'b0;
+	wire StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_1_idx = 1'b1;
+	wire [1: 0] StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_2_idx = 2'b10;
 	wire [7: 0] Inputs_In_Op1;
 	wire [7: 0] Inputs_In_Op2;
 	reg [7: 0] NextState_Out_Op1;

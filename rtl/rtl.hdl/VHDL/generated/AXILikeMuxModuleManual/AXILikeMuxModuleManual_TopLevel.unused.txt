@@ -1,3 +1,15 @@
 No reads:
+	AXILikeMuxModuleManual_L52F13L55T14_0_i
+	AXILikeMuxModuleManual_L52F13L55T14_1_i
+	AXILikeMuxModuleManual_L52F13L55T14_2_i
+	AXILikeMuxModuleManual_L52F13L55T14_3_i
+	AXILikeMuxModuleManual_L52F13L55T14_4_i
+	AXILikeMuxModuleManual_L52F13L55T14_5_i
+	AXILikeMuxModuleManual_L52F13L55T14_6_i
+	AXILikeMuxModuleManual_L52F13L55T14_7_i
+	AXILikeMuxModuleManual_L57F13L60T14_0_i
+	AXILikeMuxModuleManual_L57F13L60T14_1_i
+	AXILikeMuxModuleManual_L57F13L60T14_2_i
+	AXILikeMuxModuleManual_L57F13L60T14_3_i
 	mastersCount
 	slavesCount

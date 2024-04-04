@@ -58,7 +58,7 @@ namespace rtl.modules
             this.leftCount = leftCount;
             this.rightCount = rightCount;
 
-            TXBegin = new bool[leftCount];
+            //TXBegin = new bool[leftCount];
 
             InitInputs(new InterconnectModuleInputs<TLeft, TRight>(leftCount, leftFactory, rightCount, rightFactory));
             InitState(new InterconnectModuleState(leftCount, rightCount));
@@ -85,17 +85,17 @@ namespace rtl.modules
         protected RTLBitArray rightAddr => RightAddr();
         protected bool currentTXEnd => TXEnd(Inputs.iLeft[State.leftAddr]);
 
-        protected bool[] TXBegin;
-
+        //protected bool[] TXBegin;
+        protected bool[] TXBegin => range(leftCount).Select(leftIndex => TXStart(Inputs.iLeft[leftIndex]) && !WaitForRestarts[leftIndex]).ToArray();
         protected override void OnSchedule(Func<InterconnectModuleInputs<TLeft, TRight>> inputsFactory)
         {
             base.OnSchedule(inputsFactory);
 
-            foreach (var leftIndex in range(leftCount))
-            {
-                TXBegin[leftIndex] = TXStart(Inputs.iLeft[leftIndex]) && !WaitForRestarts[leftIndex];
-            }
-
+            //foreach (var leftIndex in range(leftCount))
+            //{
+            //    TXBegin[leftIndex] = TXStart(Inputs.iLeft[leftIndex]) && !WaitForRestarts[leftIndex];
+            //}
+            
             foreach (var leftIndex in range(leftCount))
             {
                 TransactionDetectors[leftIndex].Schedule(() => 

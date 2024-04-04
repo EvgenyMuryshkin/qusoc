@@ -47,10 +47,16 @@ module AXI4Interconnect2x4TestModule_TopLevel
 	wire [1: 0] axiSize = 2'b10;
 	wire signed [2: 0] mCount = 3'b010;
 	wire signed [3: 0] sCount = 4'b0100;
+	wire AXI4Interconnect2x4TestModule_L62F13L77T14_0_i = 1'b0;
 	wire AXI4Interconnect2x4TestModule_L62F13L77T14_0_AXI4Interconnect2x4TestModule_L71F34T35_Expr = 1'b0;
 	wire AXI4Interconnect2x4TestModule_L62F13L77T14_0_AXI4Interconnect2x4TestModule_L72F34T35_Expr = 1'b0;
+	wire AXI4Interconnect2x4TestModule_L62F13L77T14_1_i = 1'b1;
 	wire AXI4Interconnect2x4TestModule_L62F13L77T14_1_AXI4Interconnect2x4TestModule_L71F34T35_Expr = 1'b0;
 	wire AXI4Interconnect2x4TestModule_L62F13L77T14_1_AXI4Interconnect2x4TestModule_L72F34T35_Expr = 1'b0;
+	wire AXI4Interconnect2x4TestModule_L79F13L90T14_0_i = 1'b0;
+	wire AXI4Interconnect2x4TestModule_L79F13L90T14_1_i = 1'b1;
+	wire [1: 0] AXI4Interconnect2x4TestModule_L79F13L90T14_2_i = 2'b10;
+	wire [1: 0] AXI4Interconnect2x4TestModule_L79F13L90T14_3_i = 2'b11;
 	wire [31: 0] Inputs_InData;
 	wire [3: 0] Inputs_WSTRB;
 	reg [7: 0] notActiveM2S_R_AR_ARID;

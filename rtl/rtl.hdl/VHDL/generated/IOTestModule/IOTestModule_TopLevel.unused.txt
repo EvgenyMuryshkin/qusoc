@@ -1,2 +1,4 @@
 No reads:
+	IOTestModule_L73F9L81T10_IOTestModule_L79F13L80T68_0_idx
+	IOTestModule_L73F9L81T10_IOTestModule_L79F13L80T68_1_idx
 	size

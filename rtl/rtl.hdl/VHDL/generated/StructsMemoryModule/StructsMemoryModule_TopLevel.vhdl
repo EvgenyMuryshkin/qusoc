@@ -44,6 +44,9 @@ architecture rtl of StructsMemoryModule_TopLevel is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	constant State_BuffDefault : unsigned(15 downto 0) := "0000000000000000";
+	constant StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_0_idx : std_logic := '0';
+	constant StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_1_idx : std_logic := '1';
+	constant StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_2_idx : unsigned(1 downto 0) := "10";
 	signal Inputs_In_Op1 : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_In_Op2 : unsigned(7 downto 0) := (others => '0');
 	signal NextState_Out_Op1 : unsigned(7 downto 0) := (others => '0');

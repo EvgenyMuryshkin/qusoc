@@ -8,7 +8,7 @@ namespace rtl.modules.AXI4.Modules
 {
     public class AXI4ReadInteconnectModule : InterconnectModule<AXI4_M2S_R, AXI4_S2M_R>
     {
-        protected RangeDetectorArrayModule[] rangeDetectorArray;
+        internal RangeDetectorArrayModule[] rangeDetectorArray;
 
         public AXI4ReadInteconnectModule(int mCount, List<RangeInfo> slaveRange)
             : base(mCount, () => new AXI4_M2S_R(axiSize.B4), slaveRange.Count, () => new AXI4_S2M_R(axiSize.B4))
@@ -20,7 +20,7 @@ namespace rtl.modules.AXI4.Modules
         {
             base.OnSchedule(inputsFactory);
 
-            for (var i = 0; i < leftCount; i++)
+            foreach (var i in range(leftCount))
             {
                 rangeDetectorArray[i].Schedule(() => new RangeDetectorArrayModuleInputs()
                 {
@@ -32,8 +32,8 @@ namespace rtl.modules.AXI4.Modules
         RTLBitArray[] rangeDetectorIndexes => rangeDetectorArray.Select(r => r.oIndex).ToArray();
         RTLBitArray axiRightAddr => rangeDetectorIndexes[Encoder.MSBIndex];// rangeDetectorArray[Encoder.MSBIndex].oIndex;
 
-        bool[] rangeDetectorActiveFlags => rangeDetectorArray.Select(r => r.oActive).ToArray();
-        bool rangeDetectorActive => rangeDetectorActiveFlags[Encoder.MSBIndex];
+        internal bool[] rangeDetectorActiveFlags => rangeDetectorArray.Select(r => r.oActive).ToArray();
+        internal bool rangeDetectorActive => rangeDetectorActiveFlags[Encoder.MSBIndex];
 
         protected override RTLBitArray RightAddr()
         {
