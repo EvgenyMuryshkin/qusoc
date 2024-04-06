@@ -1,3 +1,7 @@
 No reads:
+	AXI4SoC2x2_L87F13L96T14_0_masterIndex
+	AXI4SoC2x2_L87F13L96T14_1_masterIndex
+	AXI4SoC2x2_L98F13L107T14_0_registerIndex
+	AXI4SoC2x2_L98F13L107T14_1_registerIndex
 	mCount
 	sCount

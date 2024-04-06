@@ -32,8 +32,14 @@ module AXI4MasterSlaveTestModule_TopLevel
 	input wire [3:0] WSTRB,
 	output wire BVALID,
 	output wire RACK,
+	output wire [7:0] RDATA0,
+	output wire [7:0] RDATA1,
+	output wire [7:0] RDATA2,
+	output wire [7:0] RDATA3,
 	output wire [31:0] ReadData,
 	output wire [31:0] RegisterData,
+	output wire RegisterOutACK,
+	output wire RegisterOutWritten,
 	output wire RVALID,
 	output wire WACK
 );
@@ -46,8 +52,8 @@ module AXI4MasterSlaveTestModule_TopLevel
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire [7: 0] State_ReadDataDefault = 8'b00000000;
-	wire AXI4MasterSlaveTestModule_L61F30T31_Expr = 1'b0;
-	wire AXI4MasterSlaveTestModule_L62F30T31_Expr = 1'b0;
+	wire AXI4MasterSlaveTestModule_L64F30T31_Expr = 1'b0;
+	wire AXI4MasterSlaveTestModule_L65F30T31_Expr = 1'b0;
 	wire [31: 0] Inputs_InData;
 	wire Inputs_MRE;
 	wire Inputs_MWE;
@@ -63,8 +69,8 @@ module AXI4MasterSlaveTestModule_TopLevel
 	wire reg_outACK;
 	wire reg_outWritten;
 	wire [73: 0] reg_S2M;
-	wire [254: 0] AXI4MasterSlaveTestModule_L44F32L52T14_Object;
-	wire [175: 0] AXI4MasterSlaveTestModule_L54F35L66T14_Object;
+	wire [254: 0] AXI4MasterSlaveTestModule_L47F32L55T14_Object;
+	wire [175: 0] AXI4MasterSlaveTestModule_L57F35L69T14_Object;
 	wire [31: 0] AXI4MasterSlaveTestModule_L31F40T71_Source;
 	wire [31: 0] AXI4MasterSlaveTestModule_L32F44T72_Source;
 	wire [101: 0] master_Master_master_Master_HardLink;
@@ -185,73 +191,77 @@ module AXI4MasterSlaveTestModule_TopLevel
 	assign Inputs_MWE = MWE;
 	assign Inputs_SWE = SWE;
 	assign Inputs_WSTRB = WSTRB;
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[7:0] = master_M2S[7:0];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[39:8] = master_M2S[39:8];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[47:40] = master_M2S[47:40];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[50:48] = master_M2S[50:48];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[52:51] = master_M2S[52:51];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[54:53] = master_M2S[54:53];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[58:55] = master_M2S[58:55];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[61:59] = master_M2S[61:59];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[65:62] = master_M2S[65:62];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[73:66] = master_M2S[73:66];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[81:74] = master_M2S[81:74];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[82] = master_M2S[82];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[83] = master_M2S[83];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[91:84] = master_M2S[91:84];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[123:92] = master_M2S[123:92];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[131:124] = master_M2S[131:124];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[134:132] = master_M2S[134:132];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[136:135] = master_M2S[136:135];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[138:137] = master_M2S[138:137];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[142:139] = master_M2S[142:139];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[145:143] = master_M2S[145:143];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[149:146] = master_M2S[149:146];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[157:150] = master_M2S[157:150];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[165:158] = master_M2S[165:158];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[166] = master_M2S[166];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[174:167] = master_M2S[174:167];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[206:175] = master_M2S[206:175];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[210:207] = master_M2S[210:207];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[211] = master_M2S[211];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[219:212] = master_M2S[219:212];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[220] = master_M2S[220];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[221] = master_M2S[221];
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[253:222] = Inputs_InData;
-	assign AXI4MasterSlaveTestModule_L44F32L52T14_Object[254] = Inputs_SWE;
-	assign reg_Reg = AXI4MasterSlaveTestModule_L44F32L52T14_Object[254:222];
-	assign reg_M2S = AXI4MasterSlaveTestModule_L44F32L52T14_Object[221:0];
-	assign AXI4MasterSlaveTestModule_L54F35L66T14_Object[31:0] = {
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[7:0] = master_M2S[7:0];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[39:8] = master_M2S[39:8];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[47:40] = master_M2S[47:40];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[50:48] = master_M2S[50:48];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[52:51] = master_M2S[52:51];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[54:53] = master_M2S[54:53];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[58:55] = master_M2S[58:55];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[61:59] = master_M2S[61:59];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[65:62] = master_M2S[65:62];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[73:66] = master_M2S[73:66];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[81:74] = master_M2S[81:74];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[82] = master_M2S[82];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[83] = master_M2S[83];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[91:84] = master_M2S[91:84];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[123:92] = master_M2S[123:92];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[131:124] = master_M2S[131:124];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[134:132] = master_M2S[134:132];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[136:135] = master_M2S[136:135];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[138:137] = master_M2S[138:137];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[142:139] = master_M2S[142:139];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[145:143] = master_M2S[145:143];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[149:146] = master_M2S[149:146];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[157:150] = master_M2S[157:150];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[165:158] = master_M2S[165:158];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[166] = master_M2S[166];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[174:167] = master_M2S[174:167];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[206:175] = master_M2S[206:175];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[210:207] = master_M2S[210:207];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[211] = master_M2S[211];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[219:212] = master_M2S[219:212];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[220] = master_M2S[220];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[221] = master_M2S[221];
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[253:222] = Inputs_InData;
+	assign AXI4MasterSlaveTestModule_L47F32L55T14_Object[254] = Inputs_SWE;
+	assign reg_Reg = AXI4MasterSlaveTestModule_L47F32L55T14_Object[254:222];
+	assign reg_M2S = AXI4MasterSlaveTestModule_L47F32L55T14_Object[221:0];
+	assign AXI4MasterSlaveTestModule_L57F35L69T14_Object[31:0] = {
 		{31{1'b0}},
-		AXI4MasterSlaveTestModule_L61F30T31_Expr
+		AXI4MasterSlaveTestModule_L64F30T31_Expr
 	}
 	;
-	assign AXI4MasterSlaveTestModule_L54F35L66T14_Object[63:32] = {
+	assign AXI4MasterSlaveTestModule_L57F35L69T14_Object[63:32] = {
 		{31{1'b0}},
-		AXI4MasterSlaveTestModule_L62F30T31_Expr
+		AXI4MasterSlaveTestModule_L65F30T31_Expr
 	}
 	;
-	assign AXI4MasterSlaveTestModule_L54F35L66T14_Object[64] = Inputs_MRE;
-	assign AXI4MasterSlaveTestModule_L54F35L66T14_Object[96:65] = Inputs_InData;
-	assign AXI4MasterSlaveTestModule_L54F35L66T14_Object[97] = Inputs_MWE;
-	assign AXI4MasterSlaveTestModule_L54F35L66T14_Object[101:98] = Inputs_WSTRB;
-	assign AXI4MasterSlaveTestModule_L54F35L66T14_Object[102] = reg_S2M[0];
-	assign AXI4MasterSlaveTestModule_L54F35L66T14_Object[110:103] = reg_S2M[8:1];
-	assign AXI4MasterSlaveTestModule_L54F35L66T14_Object[142:111] = reg_S2M[40:9];
-	assign AXI4MasterSlaveTestModule_L54F35L66T14_Object[144:143] = reg_S2M[42:41];
-	assign AXI4MasterSlaveTestModule_L54F35L66T14_Object[145] = reg_S2M[43];
-	assign AXI4MasterSlaveTestModule_L54F35L66T14_Object[153:146] = reg_S2M[51:44];
-	assign AXI4MasterSlaveTestModule_L54F35L66T14_Object[154] = reg_S2M[52];
-	assign AXI4MasterSlaveTestModule_L54F35L66T14_Object[155] = reg_S2M[53];
-	assign AXI4MasterSlaveTestModule_L54F35L66T14_Object[163:156] = reg_S2M[61:54];
-	assign AXI4MasterSlaveTestModule_L54F35L66T14_Object[165:164] = reg_S2M[63:62];
-	assign AXI4MasterSlaveTestModule_L54F35L66T14_Object[173:166] = reg_S2M[71:64];
-	assign AXI4MasterSlaveTestModule_L54F35L66T14_Object[174] = reg_S2M[72];
-	assign AXI4MasterSlaveTestModule_L54F35L66T14_Object[175] = reg_S2M[73];
-	assign master_S2M = AXI4MasterSlaveTestModule_L54F35L66T14_Object[175:102];
-	assign master_Master = AXI4MasterSlaveTestModule_L54F35L66T14_Object[101:0];
+	assign AXI4MasterSlaveTestModule_L57F35L69T14_Object[64] = Inputs_MRE;
+	assign AXI4MasterSlaveTestModule_L57F35L69T14_Object[96:65] = Inputs_InData;
+	assign AXI4MasterSlaveTestModule_L57F35L69T14_Object[97] = Inputs_MWE;
+	assign AXI4MasterSlaveTestModule_L57F35L69T14_Object[101:98] = Inputs_WSTRB;
+	assign AXI4MasterSlaveTestModule_L57F35L69T14_Object[102] = reg_S2M[0];
+	assign AXI4MasterSlaveTestModule_L57F35L69T14_Object[110:103] = reg_S2M[8:1];
+	assign AXI4MasterSlaveTestModule_L57F35L69T14_Object[142:111] = reg_S2M[40:9];
+	assign AXI4MasterSlaveTestModule_L57F35L69T14_Object[144:143] = reg_S2M[42:41];
+	assign AXI4MasterSlaveTestModule_L57F35L69T14_Object[145] = reg_S2M[43];
+	assign AXI4MasterSlaveTestModule_L57F35L69T14_Object[153:146] = reg_S2M[51:44];
+	assign AXI4MasterSlaveTestModule_L57F35L69T14_Object[154] = reg_S2M[52];
+	assign AXI4MasterSlaveTestModule_L57F35L69T14_Object[155] = reg_S2M[53];
+	assign AXI4MasterSlaveTestModule_L57F35L69T14_Object[163:156] = reg_S2M[61:54];
+	assign AXI4MasterSlaveTestModule_L57F35L69T14_Object[165:164] = reg_S2M[63:62];
+	assign AXI4MasterSlaveTestModule_L57F35L69T14_Object[173:166] = reg_S2M[71:64];
+	assign AXI4MasterSlaveTestModule_L57F35L69T14_Object[174] = reg_S2M[72];
+	assign AXI4MasterSlaveTestModule_L57F35L69T14_Object[175] = reg_S2M[73];
+	assign master_S2M = AXI4MasterSlaveTestModule_L57F35L69T14_Object[175:102];
+	assign master_Master = AXI4MasterSlaveTestModule_L57F35L69T14_Object[101:0];
 	assign BVALID = reg_S2M[72];
 	assign RACK = master_RACK;
+	assign RDATA0 = master_RDATA[0];
+	assign RDATA1 = master_RDATA[1];
+	assign RDATA2 = master_RDATA[2];
+	assign RDATA3 = master_RDATA[3];
 	assign AXI4MasterSlaveTestModule_L31F40T71_Source = {
 		State_ReadData[3],
 		State_ReadData[2],
@@ -268,6 +278,8 @@ module AXI4MasterSlaveTestModule_TopLevel
 	}
 	;
 	assign RegisterData = AXI4MasterSlaveTestModule_L32F44T72_Source;
+	assign RegisterOutACK = reg_outACK;
+	assign RegisterOutWritten = reg_outWritten;
 	assign RVALID = reg_S2M[52];
 	assign WACK = master_WACK;
 	assign master_Master_master_Master_HardLink = master_Master;

@@ -28,10 +28,10 @@ module CompositionModule_TopLevel_Emitter
 	input wire BoardSignals_Running,
 	input wire BoardSignals_Starting,
 	input wire BoardSignals_Started,
-	input wire Ack,
-	input wire IsEnabled,
-	output wire [7:0] Data,
-	output wire HasData
+	input wire iAck,
+	input wire iIsEnabled,
+	output wire [7:0] oData,
+	output wire oHasData
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -42,15 +42,15 @@ module CompositionModule_TopLevel_Emitter
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire EmitterModule_L22F9L25T10_EmitterModule_L24F54T55_Expr = 1'b1;
-	wire Inputs_Ack;
-	wire Inputs_IsEnabled;
+	wire Inputs_iAck;
+	wire Inputs_iIsEnabled;
 	reg [7: 0] NextState_Data;
 	wire [7: 0] EmitterModule_L22F9L25T10_EmitterModule_L24F34T56_Cast;
 	reg [7: 0] State_Data = 8'b00000000;
 	wire [7: 0] State_DataDefault = 8'b00000000;
-	wire EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr;
-	wire EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr_1;
-	wire EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr_2;
+	wire EmitterModule_L22F9L25T10_EmitterModule_L23F17T49_Expr;
+	wire EmitterModule_L22F9L25T10_EmitterModule_L23F17T49_Expr_1;
+	wire EmitterModule_L22F9L25T10_EmitterModule_L23F17T49_Expr_2;
 	wire [9: 0] EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr;
 	wire signed [9: 0] EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_1;
 	wire signed [9: 0] EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_2;
@@ -65,18 +65,18 @@ module CompositionModule_TopLevel_Emitter
 			State_Data <= NextState_Data;
 		end
 	end
-	assign EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr = EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr_1 & EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr_2;
+	assign EmitterModule_L22F9L25T10_EmitterModule_L23F17T49_Expr = EmitterModule_L22F9L25T10_EmitterModule_L23F17T49_Expr_1 & EmitterModule_L22F9L25T10_EmitterModule_L23F17T49_Expr_2;
 	assign EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr = EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_1 + EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_2;
 	always @ (*)
 	begin
 		NextState_Data = State_Data;
-		if ((EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr == 1))
+		if ((EmitterModule_L22F9L25T10_EmitterModule_L23F17T49_Expr == 1))
 		begin
 			NextState_Data = EmitterModule_L22F9L25T10_EmitterModule_L24F34T56_Cast;
 		end
 	end
-	assign EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr_1 = Inputs_IsEnabled;
-	assign EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr_2 = Inputs_Ack;
+	assign EmitterModule_L22F9L25T10_EmitterModule_L23F17T49_Expr_1 = Inputs_iIsEnabled;
+	assign EmitterModule_L22F9L25T10_EmitterModule_L23F17T49_Expr_2 = Inputs_iAck;
 	assign EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_1 = {
 		{2{1'b0}},
 		State_Data
@@ -87,11 +87,11 @@ module CompositionModule_TopLevel_Emitter
 		EmitterModule_L22F9L25T10_EmitterModule_L24F54T55_Expr
 	}
 	;
-	assign Inputs_Ack = Ack;
-	assign Inputs_IsEnabled = IsEnabled;
+	assign Inputs_iAck = iAck;
+	assign Inputs_iIsEnabled = iIsEnabled;
 	assign EmitterModule_L22F9L25T10_EmitterModule_L24F34T56_Cast = EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr[7:0];
-	assign Data = State_Data;
-	assign HasData = Inputs_IsEnabled;
+	assign oData = State_Data;
+	assign oHasData = Inputs_iIsEnabled;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

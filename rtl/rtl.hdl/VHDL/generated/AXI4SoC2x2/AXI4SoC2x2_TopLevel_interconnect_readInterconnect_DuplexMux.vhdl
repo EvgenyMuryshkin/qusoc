@@ -53,8 +53,10 @@ architecture rtl of AXI4SoC2x2_TopLevel_interconnect_readInterconnect_DuplexMux 
 	-- false is a reserved name, declaration skipped
 	constant leftCount : signed(2 downto 0) := "010";
 	constant rightCount : signed(2 downto 0) := "010";
-	constant Prefilled0 : unsigned(0 downto 0) := "0";
-	constant Prefilled1 : unsigned(0 downto 0) := "1";
+	constant FullDuplexMuxModule_L94F13L104T14_0_rightIndex : std_logic := '0';
+	constant FullDuplexMuxModule_L94F13L104T14_1_rightIndex : std_logic := '1';
+	constant FullDuplexMuxModule_L118F13L128T14_0_leftIndex : std_logic := '0';
+	constant FullDuplexMuxModule_L118F13L128T14_1_leftIndex : std_logic := '1';
 	signal Inputs_iLeftAddr : unsigned(0 downto 0) := (others => '0');
 	signal Inputs_iLeftAddrValid : std_logic := '0';
 	signal Inputs_iRightAddr : unsigned(0 downto 0) := (others => '0');
@@ -333,19 +335,19 @@ begin
 		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprLhs(1) <= '0';
 		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprLhs(0) <= Inputs_iRightAddr(0);
 		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprRhs(1) <= '0';
-		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprRhs(0) <= Prefilled0(0);
+		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_ExprRhs(0) <= FullDuplexMuxModule_L94F13L104T14_0_rightIndex;
 		FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprLhs(1) <= '0';
 		FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprLhs(0) <= Inputs_iRightAddr(0);
 		FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprRhs(1) <= '0';
-		FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprRhs(0) <= Prefilled1(0);
+		FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F47T78_ExprRhs(0) <= FullDuplexMuxModule_L94F13L104T14_1_rightIndex;
 		FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprLhs(1) <= '0';
 		FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprLhs(0) <= Inputs_iLeftAddr(0);
 		FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprRhs(1) <= '0';
-		FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprRhs(0) <= Prefilled0(0);
+		FullDuplexMuxModule_L118F13L128T14_0_FullDuplexMuxModule_L120F46T75_ExprRhs(0) <= FullDuplexMuxModule_L118F13L128T14_0_leftIndex;
 		FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprLhs(1) <= '0';
 		FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprLhs(0) <= Inputs_iLeftAddr(0);
 		FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprRhs(1) <= '0';
-		FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprRhs(0) <= Prefilled1(0);
+		FullDuplexMuxModule_L118F13L128T14_1_FullDuplexMuxModule_L120F46T75_ExprRhs(0) <= FullDuplexMuxModule_L118F13L128T14_1_leftIndex;
 		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr_1 <= Inputs_iRightAddrValid;
 		FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F21T78_Expr_2 <= FullDuplexMuxModule_L94F13L104T14_0_FullDuplexMuxModule_L96F47T78_Expr;
 		FullDuplexMuxModule_L94F13L104T14_1_FullDuplexMuxModule_L96F21T78_Expr_1 <= Inputs_iRightAddrValid;

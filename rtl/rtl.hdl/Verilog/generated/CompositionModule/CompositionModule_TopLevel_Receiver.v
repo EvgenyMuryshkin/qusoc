@@ -28,11 +28,11 @@ module CompositionModule_TopLevel_Receiver
 	input wire BoardSignals_Running,
 	input wire BoardSignals_Starting,
 	input wire BoardSignals_Started,
-	input wire Ack,
-	input wire Bit,
-	input wire IsValid,
-	output wire [7:0] Data,
-	output wire HasData
+	input wire iAck,
+	input wire iBit,
+	input wire iIsValid,
+	output wire [7:0] oData,
+	output wire oHasData
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -42,8 +42,8 @@ module CompositionModule_TopLevel_Receiver
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [7: 0] ReceiverModule_L10F49T53_Expr = 8'b10000000;
-	wire ReceiverModule_L10F56T57_Expr = 1'b0;
+	wire [7: 0] ReceiverModule_L10F50T54_Expr = 8'b10000000;
+	wire ReceiverModule_L10F57T58_Expr = 1'b0;
 	wire [1: 0] ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L16F22T38_Expr = 2'b00;
 	wire [1: 0] ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L18F21L21T22_ReceiverModule_L20F41T62_Expr = 2'b01;
 	wire [1: 0] ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L23F22T43_Expr = 2'b01;
@@ -52,17 +52,17 @@ module CompositionModule_TopLevel_Receiver
 	wire [1: 0] ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L33F22T47_Expr = 2'b10;
 	wire [1: 0] ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L35F21L38T22_ReceiverModule_L36F41T57_Expr = 2'b00;
 	wire ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L35F21L38T22_ReceiverModule_L37F42T43_Expr = 1'b0;
-	wire [1: 0] ReceiverModule_L8F46T71_Expr = 2'b10;
-	wire Inputs_Ack;
-	wire Inputs_Bit;
-	wire Inputs_IsValid;
+	wire [1: 0] ReceiverModule_L8F47T72_Expr = 2'b10;
+	wire Inputs_iAck;
+	wire Inputs_iBit;
+	wire Inputs_iIsValid;
 	reg [7: 0] NextState_Data;
 	reg [1: 0] NextState_FSM;
 	wire [7: 0] PartialData;
-	wire [7: 0] ReceiverModule_L10F36T57_WhenTrue;
-	wire [7: 0] ReceiverModule_L10F36T57_WhenFalse;
-	wire [7: 0] ReceiverModule_L10F36T57_Ternary;
-	wire [7: 0] ReceiverModule_L10F29T58_Cast;
+	wire [7: 0] ReceiverModule_L10F36T58_WhenTrue;
+	wire [7: 0] ReceiverModule_L10F36T58_WhenFalse;
+	wire [7: 0] ReceiverModule_L10F36T58_Ternary;
+	wire [7: 0] ReceiverModule_L10F29T59_Cast;
 	wire [7: 0] ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F42T81_Cast;
 	reg [7: 0] State_Data = 8'b00000000;
 	wire [7: 0] State_DataDefault = 8'b00000000;
@@ -82,9 +82,9 @@ module CompositionModule_TopLevel_Receiver
 	wire ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L33F17L39T27_Case;
 	wire signed [2: 0] ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L33F17L39T27_CaseLhs;
 	wire signed [2: 0] ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L33F17L39T27_CaseRhs;
-	wire ReceiverModule_L8F32T71_Expr;
-	wire signed [2: 0] ReceiverModule_L8F32T71_ExprLhs;
-	wire signed [2: 0] ReceiverModule_L8F32T71_ExprRhs;
+	wire ReceiverModule_L8F33T72_Expr;
+	wire signed [2: 0] ReceiverModule_L8F33T72_ExprLhs;
+	wire signed [2: 0] ReceiverModule_L8F33T72_ExprRhs;
 	always @ (posedge BoardSignals_Clock)
 	begin
 		if ((BoardSignals_Reset == 1))
@@ -101,7 +101,7 @@ module CompositionModule_TopLevel_Receiver
 	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L16F17L22T27_Case = ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L16F17L22T27_CaseLhs == ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L16F17L22T27_CaseRhs ? 1'b1 : 1'b0;
 	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L23F17L32T27_Case = ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L23F17L32T27_CaseLhs == ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L23F17L32T27_CaseRhs ? 1'b1 : 1'b0;
 	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L33F17L39T27_Case = ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L33F17L39T27_CaseLhs == ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L33F17L39T27_CaseRhs ? 1'b1 : 1'b0;
-	assign ReceiverModule_L8F32T71_Expr = ReceiverModule_L8F32T71_ExprLhs == ReceiverModule_L8F32T71_ExprRhs ? 1'b1 : 1'b0;
+	assign ReceiverModule_L8F33T72_Expr = ReceiverModule_L8F33T72_ExprLhs == ReceiverModule_L8F33T72_ExprRhs ? 1'b1 : 1'b0;
 	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F49T80_Expr = ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F49T80_Expr_1 | ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F49T80_Expr_2;
 	// Output: ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F50T65_Expr, Width: 8, ShiftBy: 1, Sources: 1
 	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F50T65_Expr[0] = ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F50T65_Expr_1[1];
@@ -112,14 +112,14 @@ module CompositionModule_TopLevel_Receiver
 	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F50T65_Expr[5] = ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F50T65_Expr_1[6];
 	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F50T65_Expr[6] = ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F50T65_Expr_1[7];
 	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F50T65_Expr[7] = 0;
-	assign ReceiverModule_L10F36T57_Ternary = (Inputs_Bit ? ReceiverModule_L10F36T57_WhenTrue : ReceiverModule_L10F36T57_WhenFalse);
+	assign ReceiverModule_L10F36T58_Ternary = (Inputs_iBit ? ReceiverModule_L10F36T58_WhenTrue : ReceiverModule_L10F36T58_WhenFalse);
 	always @ (*)
 	begin
 		NextState_Data = State_Data;
 		NextState_FSM = State_FSM;
 		if ((ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L16F17L22T27_Case == 1))
 		begin
-			if ((Inputs_IsValid == 1))
+			if ((Inputs_iIsValid == 1))
 			begin
 				NextState_Data = PartialData;
 				NextState_FSM = ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L18F21L21T22_ReceiverModule_L20F41T62_Expr;
@@ -127,7 +127,7 @@ module CompositionModule_TopLevel_Receiver
 		end
 		else if ((ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L23F17L32T27_Case == 1))
 		begin
-			if ((Inputs_IsValid == 1))
+			if ((Inputs_iIsValid == 1))
 			begin
 				NextState_Data = ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F42T81_Cast;
 			end
@@ -138,7 +138,7 @@ module CompositionModule_TopLevel_Receiver
 		end
 		else if ((ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L33F17L39T27_Case == 1))
 		begin
-			if ((Inputs_Ack == 1))
+			if ((Inputs_iAck == 1))
 			begin
 				NextState_FSM = ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L35F21L38T22_ReceiverModule_L36F41T57_Expr;
 				NextState_Data = {
@@ -179,33 +179,33 @@ module CompositionModule_TopLevel_Receiver
 		ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L33F22T47_Expr
 	}
 	;
-	assign ReceiverModule_L8F32T71_ExprLhs = {
+	assign ReceiverModule_L8F33T72_ExprLhs = {
 		1'b0,
 		State_FSM
 	}
 	;
-	assign ReceiverModule_L8F32T71_ExprRhs = {
+	assign ReceiverModule_L8F33T72_ExprRhs = {
 		1'b0,
-		ReceiverModule_L8F46T71_Expr
+		ReceiverModule_L8F47T72_Expr
 	}
 	;
 	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F49T80_Expr_1 = ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F50T65_Expr;
 	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F49T80_Expr_2 = PartialData;
 	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F50T65_Expr_1 = State_Data;
-	assign Inputs_Ack = Ack;
-	assign Inputs_Bit = Bit;
-	assign Inputs_IsValid = IsValid;
-	assign ReceiverModule_L10F36T57_WhenTrue = ReceiverModule_L10F49T53_Expr;
-	assign ReceiverModule_L10F36T57_WhenFalse = {
+	assign Inputs_iAck = iAck;
+	assign Inputs_iBit = iBit;
+	assign Inputs_iIsValid = iIsValid;
+	assign ReceiverModule_L10F36T58_WhenTrue = ReceiverModule_L10F50T54_Expr;
+	assign ReceiverModule_L10F36T58_WhenFalse = {
 		{7{1'b0}},
-		ReceiverModule_L10F56T57_Expr
+		ReceiverModule_L10F57T58_Expr
 	}
 	;
-	assign ReceiverModule_L10F29T58_Cast = ReceiverModule_L10F36T57_Ternary;
-	assign PartialData = ReceiverModule_L10F29T58_Cast;
+	assign ReceiverModule_L10F29T59_Cast = ReceiverModule_L10F36T58_Ternary;
+	assign PartialData = ReceiverModule_L10F29T59_Cast;
 	assign ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F42T81_Cast = ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F49T80_Expr;
-	assign Data = State_Data;
-	assign HasData = ReceiverModule_L8F32T71_Expr;
+	assign oData = State_Data;
+	assign oHasData = ReceiverModule_L8F33T72_Expr;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

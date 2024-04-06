@@ -1,4 +1,4 @@
-└Root     | ReceiverInputs | [2:0] | 3 | [2:0]
- ├IsValid | Boolean        | [2]   | 1 | [2:0][2]
- ├Bit     | Boolean        | [1]   | 1 | [2:0][1]
- └Ack     | Boolean        | [0]   | 1 | [2:0][0]
+└Root      | ReceiverInputs | [2:0] | 3 | [2:0]
+ ├iIsValid | Boolean        | [2]   | 1 | [2:0][2]
+ ├iBit     | Boolean        | [1]   | 1 | [2:0][1]
+ └iAck     | Boolean        | [0]   | 1 | [2:0][0]

@@ -1,2 +1,2 @@
-└Root       | CompositionInputs | [0] | 1 | [0:0]
- └IsEnabled | Boolean           | [0] | 1 | [0:0][0]
+└Root        | CompositionInputs | [0] | 1 | [0:0]
+ └iIsEnabled | Boolean           | [0] | 1 | [0:0][0]

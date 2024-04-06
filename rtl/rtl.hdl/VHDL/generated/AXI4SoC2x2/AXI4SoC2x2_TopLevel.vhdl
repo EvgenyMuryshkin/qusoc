@@ -93,6 +93,10 @@ architecture rtl of AXI4SoC2x2_TopLevel is
 	-- false is a reserved name, declaration skipped
 	constant mCount : signed(2 downto 0) := "010";
 	constant sCount : signed(2 downto 0) := "010";
+	constant AXI4SoC2x2_L87F13L96T14_0_masterIndex : std_logic := '0';
+	constant AXI4SoC2x2_L87F13L96T14_1_masterIndex : std_logic := '1';
+	constant AXI4SoC2x2_L98F13L107T14_0_registerIndex : std_logic := '0';
+	constant AXI4SoC2x2_L98F13L107T14_1_registerIndex : std_logic := '1';
 	signal masters0_Master : unsigned(101 downto 0) := (others => '0');
 	signal masters0_S2M : unsigned(73 downto 0) := (others => '0');
 	signal masters0_M2S : unsigned(221 downto 0) := (others => '0');

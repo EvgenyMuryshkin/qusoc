@@ -25,9 +25,9 @@ module CompositionModule_TopLevel
 	// [END USER PORTS]
 	input wire Clock,
 	input wire Reset,
-	input wire IsEnabled,
-	output wire [7:0] Data,
-	output wire HasData
+	input wire iIsEnabled,
+	output wire [7:0] oData,
+	output wire oHasData
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -37,43 +37,43 @@ module CompositionModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire CompositionModule_L41F27T31_Expr = 1'b1;
-	wire Inputs_IsEnabled;
-	wire Emitter_Ack;
-	wire Emitter_IsEnabled;
-	wire [7: 0] Emitter_Data;
-	wire Emitter_HasData;
-	wire Receiver_Ack;
-	wire Receiver_Bit;
-	wire Receiver_IsValid;
-	wire [7: 0] Receiver_Data;
-	wire Receiver_HasData;
-	wire Transmitter_Ack;
-	wire [7: 0] Transmitter_Data;
-	wire Transmitter_Trigger;
-	wire Transmitter_Bit;
-	wire Transmitter_IsReady;
-	wire Transmitter_IsTransmissionStarted;
-	wire Transmitter_IsTransmitting;
-	wire [1: 0] CompositionModule_L24F36L28T18_Object;
-	wire [9: 0] CompositionModule_L30F40L35T17_Object;
-	wire [2: 0] CompositionModule_L37F37L42T18_Object;
-	wire Emitter_Ack_Emitter_Ack_HardLink;
-	wire Emitter_IsEnabled_Emitter_IsEnabled_HardLink;
-	wire [7: 0] Emitter_Data_Emitter_Data_HardLink;
-	wire Emitter_HasData_Emitter_HasData_HardLink;
-	wire Receiver_Ack_Receiver_Ack_HardLink;
-	wire Receiver_Bit_Receiver_Bit_HardLink;
-	wire Receiver_IsValid_Receiver_IsValid_HardLink;
-	wire [7: 0] Receiver_Data_Receiver_Data_HardLink;
-	wire Receiver_HasData_Receiver_HasData_HardLink;
-	wire Transmitter_Ack_Transmitter_Ack_HardLink;
-	wire [7: 0] Transmitter_Data_Transmitter_Data_HardLink;
-	wire Transmitter_Trigger_Transmitter_Trigger_HardLink;
-	wire Transmitter_Bit_Transmitter_Bit_HardLink;
-	wire Transmitter_IsReady_Transmitter_IsReady_HardLink;
-	wire Transmitter_IsTransmissionStarted_Transmitter_IsTransmissionStarted_HardLink;
-	wire Transmitter_IsTransmitting_Transmitter_IsTransmitting_HardLink;
+	wire CompositionModule_L42F28T32_Expr = 1'b1;
+	wire Inputs_iIsEnabled;
+	wire Emitter_iAck;
+	wire Emitter_iIsEnabled;
+	wire [7: 0] Emitter_oData;
+	wire Emitter_oHasData;
+	wire Receiver_iAck;
+	wire Receiver_iBit;
+	wire Receiver_iIsValid;
+	wire [7: 0] Receiver_oData;
+	wire Receiver_oHasData;
+	wire Transmitter_iAck;
+	wire [7: 0] Transmitter_iData;
+	wire Transmitter_iTrigger;
+	wire Transmitter_oBit;
+	wire Transmitter_oIsReady;
+	wire Transmitter_oIsTransmissionStarted;
+	wire Transmitter_oIsTransmitting;
+	wire [1: 0] CompositionModule_L25F36L29T18_Object;
+	wire [9: 0] CompositionModule_L31F40L36T17_Object;
+	wire [2: 0] CompositionModule_L38F37L43T18_Object;
+	wire Emitter_iAck_Emitter_iAck_HardLink;
+	wire Emitter_iIsEnabled_Emitter_iIsEnabled_HardLink;
+	wire [7: 0] Emitter_oData_Emitter_oData_HardLink;
+	wire Emitter_oHasData_Emitter_oHasData_HardLink;
+	wire Receiver_iAck_Receiver_iAck_HardLink;
+	wire Receiver_iBit_Receiver_iBit_HardLink;
+	wire Receiver_iIsValid_Receiver_iIsValid_HardLink;
+	wire [7: 0] Receiver_oData_Receiver_oData_HardLink;
+	wire Receiver_oHasData_Receiver_oHasData_HardLink;
+	wire Transmitter_iAck_Transmitter_iAck_HardLink;
+	wire [7: 0] Transmitter_iData_Transmitter_iData_HardLink;
+	wire Transmitter_iTrigger_Transmitter_iTrigger_HardLink;
+	wire Transmitter_oBit_Transmitter_oBit_HardLink;
+	wire Transmitter_oIsReady_Transmitter_oIsReady_HardLink;
+	wire Transmitter_oIsTransmissionStarted_Transmitter_oIsTransmissionStarted_HardLink;
+	wire Transmitter_oIsTransmitting_Transmitter_oIsTransmitting_HardLink;
 	wire BoardSignals_Clock;
 	wire BoardSignals_Reset;
 	wire BoardSignals_Running;
@@ -91,10 +91,10 @@ module CompositionModule_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.Ack (Emitter_Ack_Emitter_Ack_HardLink),
-		.IsEnabled (Emitter_IsEnabled_Emitter_IsEnabled_HardLink),
-		.Data (Emitter_Data_Emitter_Data_HardLink),
-		.HasData (Emitter_HasData_Emitter_HasData_HardLink)
+		.iAck (Emitter_iAck_Emitter_iAck_HardLink),
+		.iIsEnabled (Emitter_iIsEnabled_Emitter_iIsEnabled_HardLink),
+		.oData (Emitter_oData_Emitter_oData_HardLink),
+		.oHasData (Emitter_oHasData_Emitter_oHasData_HardLink)
 	);
 	CompositionModule_TopLevel_Receiver
 	CompositionModule_TopLevel_Receiver
@@ -106,11 +106,11 @@ module CompositionModule_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.Ack (Receiver_Ack_Receiver_Ack_HardLink),
-		.Bit (Receiver_Bit_Receiver_Bit_HardLink),
-		.IsValid (Receiver_IsValid_Receiver_IsValid_HardLink),
-		.Data (Receiver_Data_Receiver_Data_HardLink),
-		.HasData (Receiver_HasData_Receiver_HasData_HardLink)
+		.iAck (Receiver_iAck_Receiver_iAck_HardLink),
+		.iBit (Receiver_iBit_Receiver_iBit_HardLink),
+		.iIsValid (Receiver_iIsValid_Receiver_iIsValid_HardLink),
+		.oData (Receiver_oData_Receiver_oData_HardLink),
+		.oHasData (Receiver_oHasData_Receiver_oHasData_HardLink)
 	);
 	CompositionModule_TopLevel_Transmitter
 	CompositionModule_TopLevel_Transmitter
@@ -122,49 +122,49 @@ module CompositionModule_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.Ack (Transmitter_Ack_Transmitter_Ack_HardLink),
-		.Data (Transmitter_Data_Transmitter_Data_HardLink),
-		.Trigger (Transmitter_Trigger_Transmitter_Trigger_HardLink),
-		.Bit (Transmitter_Bit_Transmitter_Bit_HardLink),
-		.IsReady (Transmitter_IsReady_Transmitter_IsReady_HardLink),
-		.IsTransmissionStarted (Transmitter_IsTransmissionStarted_Transmitter_IsTransmissionStarted_HardLink),
-		.IsTransmitting (Transmitter_IsTransmitting_Transmitter_IsTransmitting_HardLink)
+		.iAck (Transmitter_iAck_Transmitter_iAck_HardLink),
+		.iData (Transmitter_iData_Transmitter_iData_HardLink),
+		.iTrigger (Transmitter_iTrigger_Transmitter_iTrigger_HardLink),
+		.oBit (Transmitter_oBit_Transmitter_oBit_HardLink),
+		.oIsReady (Transmitter_oIsReady_Transmitter_oIsReady_HardLink),
+		.oIsTransmissionStarted (Transmitter_oIsTransmissionStarted_Transmitter_oIsTransmissionStarted_HardLink),
+		.oIsTransmitting (Transmitter_oIsTransmitting_Transmitter_oIsTransmitting_HardLink)
 	);
-	assign Inputs_IsEnabled = IsEnabled;
-	assign CompositionModule_L24F36L28T18_Object[0] = Transmitter_IsReady;
-	assign CompositionModule_L24F36L28T18_Object[1] = Inputs_IsEnabled;
-	assign Emitter_IsEnabled = CompositionModule_L24F36L28T18_Object[1];
-	assign Emitter_Ack = CompositionModule_L24F36L28T18_Object[0];
-	assign CompositionModule_L30F40L35T17_Object[0] = Receiver_HasData;
-	assign CompositionModule_L30F40L35T17_Object[8:1] = Emitter_Data;
-	assign CompositionModule_L30F40L35T17_Object[9] = Emitter_HasData;
-	assign Transmitter_Trigger = CompositionModule_L30F40L35T17_Object[9];
-	assign Transmitter_Data = CompositionModule_L30F40L35T17_Object[8:1];
-	assign Transmitter_Ack = CompositionModule_L30F40L35T17_Object[0];
-	assign CompositionModule_L37F37L42T18_Object[0] = CompositionModule_L41F27T31_Expr;
-	assign CompositionModule_L37F37L42T18_Object[1] = Transmitter_Bit;
-	assign CompositionModule_L37F37L42T18_Object[2] = Transmitter_IsTransmitting;
-	assign Receiver_IsValid = CompositionModule_L37F37L42T18_Object[2];
-	assign Receiver_Bit = CompositionModule_L37F37L42T18_Object[1];
-	assign Receiver_Ack = CompositionModule_L37F37L42T18_Object[0];
-	assign Data = Receiver_Data;
-	assign HasData = Receiver_HasData;
-	assign Emitter_Ack_Emitter_Ack_HardLink = Emitter_Ack;
-	assign Emitter_IsEnabled_Emitter_IsEnabled_HardLink = Emitter_IsEnabled;
-	assign Emitter_Data = Emitter_Data_Emitter_Data_HardLink;
-	assign Emitter_HasData = Emitter_HasData_Emitter_HasData_HardLink;
-	assign Receiver_Ack_Receiver_Ack_HardLink = Receiver_Ack;
-	assign Receiver_Bit_Receiver_Bit_HardLink = Receiver_Bit;
-	assign Receiver_IsValid_Receiver_IsValid_HardLink = Receiver_IsValid;
-	assign Receiver_Data = Receiver_Data_Receiver_Data_HardLink;
-	assign Receiver_HasData = Receiver_HasData_Receiver_HasData_HardLink;
-	assign Transmitter_Ack_Transmitter_Ack_HardLink = Transmitter_Ack;
-	assign Transmitter_Data_Transmitter_Data_HardLink = Transmitter_Data;
-	assign Transmitter_Trigger_Transmitter_Trigger_HardLink = Transmitter_Trigger;
-	assign Transmitter_Bit = Transmitter_Bit_Transmitter_Bit_HardLink;
-	assign Transmitter_IsReady = Transmitter_IsReady_Transmitter_IsReady_HardLink;
-	assign Transmitter_IsTransmissionStarted = Transmitter_IsTransmissionStarted_Transmitter_IsTransmissionStarted_HardLink;
-	assign Transmitter_IsTransmitting = Transmitter_IsTransmitting_Transmitter_IsTransmitting_HardLink;
+	assign Inputs_iIsEnabled = iIsEnabled;
+	assign CompositionModule_L25F36L29T18_Object[0] = Transmitter_oIsReady;
+	assign CompositionModule_L25F36L29T18_Object[1] = Inputs_iIsEnabled;
+	assign Emitter_iIsEnabled = CompositionModule_L25F36L29T18_Object[1];
+	assign Emitter_iAck = CompositionModule_L25F36L29T18_Object[0];
+	assign CompositionModule_L31F40L36T17_Object[0] = Receiver_oHasData;
+	assign CompositionModule_L31F40L36T17_Object[8:1] = Emitter_oData;
+	assign CompositionModule_L31F40L36T17_Object[9] = Emitter_oHasData;
+	assign Transmitter_iTrigger = CompositionModule_L31F40L36T17_Object[9];
+	assign Transmitter_iData = CompositionModule_L31F40L36T17_Object[8:1];
+	assign Transmitter_iAck = CompositionModule_L31F40L36T17_Object[0];
+	assign CompositionModule_L38F37L43T18_Object[0] = CompositionModule_L42F28T32_Expr;
+	assign CompositionModule_L38F37L43T18_Object[1] = Transmitter_oBit;
+	assign CompositionModule_L38F37L43T18_Object[2] = Transmitter_oIsTransmitting;
+	assign Receiver_iIsValid = CompositionModule_L38F37L43T18_Object[2];
+	assign Receiver_iBit = CompositionModule_L38F37L43T18_Object[1];
+	assign Receiver_iAck = CompositionModule_L38F37L43T18_Object[0];
+	assign oData = Receiver_oData;
+	assign oHasData = Receiver_oHasData;
+	assign Emitter_iAck_Emitter_iAck_HardLink = Emitter_iAck;
+	assign Emitter_iIsEnabled_Emitter_iIsEnabled_HardLink = Emitter_iIsEnabled;
+	assign Emitter_oData = Emitter_oData_Emitter_oData_HardLink;
+	assign Emitter_oHasData = Emitter_oHasData_Emitter_oHasData_HardLink;
+	assign Receiver_iAck_Receiver_iAck_HardLink = Receiver_iAck;
+	assign Receiver_iBit_Receiver_iBit_HardLink = Receiver_iBit;
+	assign Receiver_iIsValid_Receiver_iIsValid_HardLink = Receiver_iIsValid;
+	assign Receiver_oData = Receiver_oData_Receiver_oData_HardLink;
+	assign Receiver_oHasData = Receiver_oHasData_Receiver_oHasData_HardLink;
+	assign Transmitter_iAck_Transmitter_iAck_HardLink = Transmitter_iAck;
+	assign Transmitter_iData_Transmitter_iData_HardLink = Transmitter_iData;
+	assign Transmitter_iTrigger_Transmitter_iTrigger_HardLink = Transmitter_iTrigger;
+	assign Transmitter_oBit = Transmitter_oBit_Transmitter_oBit_HardLink;
+	assign Transmitter_oIsReady = Transmitter_oIsReady_Transmitter_oIsReady_HardLink;
+	assign Transmitter_oIsTransmissionStarted = Transmitter_oIsTransmissionStarted_Transmitter_oIsTransmissionStarted_HardLink;
+	assign Transmitter_oIsTransmitting = Transmitter_oIsTransmitting_Transmitter_oIsTransmitting_HardLink;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

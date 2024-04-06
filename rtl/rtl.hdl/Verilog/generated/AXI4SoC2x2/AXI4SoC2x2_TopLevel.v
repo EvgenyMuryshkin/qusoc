@@ -88,6 +88,10 @@ module AXI4SoC2x2_TopLevel
 	wire false = 1'b0;
 	wire signed [2: 0] mCount = 3'b010;
 	wire signed [2: 0] sCount = 3'b010;
+	wire AXI4SoC2x2_L87F13L96T14_0_masterIndex = 1'b0;
+	wire AXI4SoC2x2_L87F13L96T14_1_masterIndex = 1'b1;
+	wire AXI4SoC2x2_L98F13L107T14_0_registerIndex = 1'b0;
+	wire AXI4SoC2x2_L98F13L107T14_1_registerIndex = 1'b1;
 	wire [101: 0] masters0_Master;
 	wire [73: 0] masters0_S2M;
 	wire [221: 0] masters0_M2S;

@@ -50,7 +50,8 @@ architecture rtl of AXI4Interconnect2x4Module_TopLevel_masterReadEncoderModule i
 	signal internalHasActive : std_logic := '0';
 	signal AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize : unsigned(0 downto 0) := (others => '0');
 	signal AXI4EncoderModule_L30F13L39T14_result : unsigned(0 downto 0) := (others => '0');
-	signal AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize : unsigned(0 downto 0) := (others => '0');
+	signal AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T41_SignChange : unsigned(0 downto 0) := (others => '0');
+	signal AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T62_Resize : unsigned(0 downto 0) := (others => '0');
 	signal AXI4EncoderModule_L45F13L54T14_result : std_logic := '0';
 	signal AXI4EncoderModule_L59F40T101_ShiftLeft : unsigned(1 downto 0) := (others => '0');
 	signal AXI4EncoderModule_L59F40T121_Resize : unsigned(1 downto 0) := (others => '0');
@@ -87,15 +88,16 @@ begin
 		end loop;
 		AXI4EncoderModule_L45F13L54T14_result <= tmp0;
 	end process;
-	process (AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize, AXI4EncoderModule_L30F13L39T14_result, AXI4EncoderModule_L45F13L54T14_result, AXI4EncoderModule_L59F40T101_Expr, AXI4EncoderModule_L59F40T101_ShiftLeft, AXI4EncoderModule_L59F40T121_Resize, internalEncoded, internalHasActive, iValues0, iValues1)
+	process (AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T41_SignChange, AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T62_Resize, AXI4EncoderModule_L30F13L39T14_result, AXI4EncoderModule_L45F13L54T14_result, AXI4EncoderModule_L59F40T101_Expr, AXI4EncoderModule_L59F40T101_ShiftLeft, AXI4EncoderModule_L59F40T121_Resize, internalEncoded, internalHasActive, iValues0, iValues1)
 	begin
 		AXI4EncoderModule_L59F40T101_Expr_1(1) <= '0';
 		AXI4EncoderModule_L59F40T101_Expr_1(0) <= internalHasActive;
 		Inputs_iValues(0) <= iValues0;
 		Inputs_iValues(1) <= iValues1;
 		AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize(0) <= AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F46T51_Expr;
-		AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize <= AXI4EncoderModule_L30F13L39T14_result;
-		internalEncoded <= AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T51_Resize;
+		AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T41_SignChange <= AXI4EncoderModule_L30F13L39T14_result;
+		AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T62_Resize <= AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T41_SignChange;
+		internalEncoded <= AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T62_Resize;
 		internalHasActive <= AXI4EncoderModule_L45F13L54T14_result;
 		HasActive <= internalHasActive;
 		MSBIndex <= internalEncoded;

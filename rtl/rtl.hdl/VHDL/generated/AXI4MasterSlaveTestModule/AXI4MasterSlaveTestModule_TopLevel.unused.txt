@@ -1,4 +1,0 @@
-No reads:
-	master_RDATA
-	reg_outACK
-	reg_outWritten

@@ -30,12 +30,15 @@ namespace rtl.modules
 
         public RTLBitArray ReadData => new RTLBitArray(State.ReadData);
         public RTLBitArray RegisterData => new RTLBitArray(reg.outData);
+        public bool RegisterOutACK => reg.outACK;
+        public bool RegisterOutWritten => reg.outWritten;
 
         public bool RVALID => reg.S2M.R.R.RVALID;
         public bool BVALID => reg.S2M.W.B.BVALID;
 
         public bool RACK => master.RACK;
         public bool WACK => master.WACK;
+        public byte[] RDATA => master.RDATA;
 
         protected override void OnSchedule(Func<AXI4MasterSlaveTestModuleInputs> inputsFactory)
         {
