@@ -28,13 +28,13 @@ module CompositionModule_TopLevel_Transmitter
 	input wire BoardSignals_Running,
 	input wire BoardSignals_Starting,
 	input wire BoardSignals_Started,
-	input wire iAck,
-	input wire [7:0] iData,
-	input wire iTrigger,
-	output wire oBit,
-	output wire oIsReady,
-	output wire oIsTransmissionStarted,
-	output wire oIsTransmitting
+	input wire Ack,
+	input wire [7:0] Data,
+	input wire Trigger,
+	output wire Bit,
+	output wire IsReady,
+	output wire IsTransmissionStarted,
+	output wire IsTransmitting
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -54,13 +54,13 @@ module CompositionModule_TopLevel_Transmitter
 	wire TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L33F52T53_Expr = 1'b1;
 	wire [1: 0] TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L35F22T50_Expr = 2'b10;
 	wire [1: 0] TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L37F41T60_Expr = 2'b00;
-	wire [1: 0] TransmitterModule_L9F47T66_Expr = 2'b00;
-	wire [1: 0] TransmitterModule_L11F60T79_Expr = 2'b00;
-	wire [1: 0] TransmitterModule_L11F100T127_Expr = 2'b01;
-	wire [1: 0] TransmitterModule_L10F53T80_Expr = 2'b01;
-	wire Inputs_iAck;
-	wire [7: 0] Inputs_iData;
-	wire Inputs_iTrigger;
+	wire [1: 0] TransmitterModule_L9F46T65_Expr = 2'b00;
+	wire [1: 0] TransmitterModule_L11F59T78_Expr = 2'b00;
+	wire [1: 0] TransmitterModule_L11F99T126_Expr = 2'b01;
+	wire [1: 0] TransmitterModule_L10F52T79_Expr = 2'b01;
+	wire Inputs_Ack;
+	wire [7: 0] Inputs_Data;
+	wire Inputs_Trigger;
 	reg [7: 0] NextState_Counter;
 	reg [7: 0] NextState_Data;
 	reg [1: 0] NextState_FSM;
@@ -73,9 +73,9 @@ module CompositionModule_TopLevel_Transmitter
 	wire [1: 0] State_FSMDefault = 2'b00;
 	wire [7: 0] TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L33F38T53_Expr;
 	wire [7: 0] TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L33F38T53_Expr_1;
-	wire TransmitterModule_L11F47T127_Expr;
-	wire TransmitterModule_L11F47T127_Expr_1;
-	wire TransmitterModule_L11F47T127_Expr_2;
+	wire TransmitterModule_L11F46T126_Expr;
+	wire TransmitterModule_L11F46T126_Expr_1;
+	wire TransmitterModule_L11F46T126_Expr_2;
 	wire [9: 0] TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F52T69_Expr;
 	wire signed [9: 0] TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F52T69_Expr_1;
 	wire signed [9: 0] TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F52T69_Expr_2;
@@ -91,18 +91,18 @@ module CompositionModule_TopLevel_Transmitter
 	wire TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L35F17L38T27_Case;
 	wire signed [2: 0] TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L35F17L38T27_CaseLhs;
 	wire signed [2: 0] TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L35F17L38T27_CaseRhs;
-	wire TransmitterModule_L9F33T66_Expr;
-	wire signed [2: 0] TransmitterModule_L9F33T66_ExprLhs;
-	wire signed [2: 0] TransmitterModule_L9F33T66_ExprRhs;
-	wire TransmitterModule_L11F47T79_Expr;
-	wire signed [2: 0] TransmitterModule_L11F47T79_ExprLhs;
-	wire signed [2: 0] TransmitterModule_L11F47T79_ExprRhs;
-	wire TransmitterModule_L11F83T127_Expr;
-	wire signed [2: 0] TransmitterModule_L11F83T127_ExprLhs;
-	wire signed [2: 0] TransmitterModule_L11F83T127_ExprRhs;
-	wire TransmitterModule_L10F40T80_Expr;
-	wire signed [2: 0] TransmitterModule_L10F40T80_ExprLhs;
-	wire signed [2: 0] TransmitterModule_L10F40T80_ExprRhs;
+	wire TransmitterModule_L9F32T65_Expr;
+	wire signed [2: 0] TransmitterModule_L9F32T65_ExprLhs;
+	wire signed [2: 0] TransmitterModule_L9F32T65_ExprRhs;
+	wire TransmitterModule_L11F46T78_Expr;
+	wire signed [2: 0] TransmitterModule_L11F46T78_ExprLhs;
+	wire signed [2: 0] TransmitterModule_L11F46T78_ExprRhs;
+	wire TransmitterModule_L11F82T126_Expr;
+	wire signed [2: 0] TransmitterModule_L11F82T126_ExprLhs;
+	wire signed [2: 0] TransmitterModule_L11F82T126_ExprRhs;
+	wire TransmitterModule_L10F39T79_Expr;
+	wire signed [2: 0] TransmitterModule_L10F39T79_ExprLhs;
+	wire signed [2: 0] TransmitterModule_L10F39T79_ExprRhs;
 	always @ (posedge BoardSignals_Clock)
 	begin
 		if ((BoardSignals_Reset == 1))
@@ -122,10 +122,10 @@ module CompositionModule_TopLevel_Transmitter
 	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L24F17L34T27_Case = TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L24F17L34T27_CaseLhs == TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L24F17L34T27_CaseRhs ? 1'b1 : 1'b0;
 	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L25F25T43_Expr = TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L25F25T43_ExprLhs == TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L25F25T43_ExprRhs ? 1'b1 : 1'b0;
 	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L35F17L38T27_Case = TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L35F17L38T27_CaseLhs == TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L35F17L38T27_CaseRhs ? 1'b1 : 1'b0;
-	assign TransmitterModule_L9F33T66_Expr = TransmitterModule_L9F33T66_ExprLhs == TransmitterModule_L9F33T66_ExprRhs ? 1'b1 : 1'b0;
-	assign TransmitterModule_L11F47T79_Expr = TransmitterModule_L11F47T79_ExprLhs == TransmitterModule_L11F47T79_ExprRhs ? 1'b1 : 1'b0;
-	assign TransmitterModule_L11F83T127_Expr = TransmitterModule_L11F83T127_ExprLhs == TransmitterModule_L11F83T127_ExprRhs ? 1'b1 : 1'b0;
-	assign TransmitterModule_L10F40T80_Expr = TransmitterModule_L10F40T80_ExprLhs == TransmitterModule_L10F40T80_ExprRhs ? 1'b1 : 1'b0;
+	assign TransmitterModule_L9F32T65_Expr = TransmitterModule_L9F32T65_ExprLhs == TransmitterModule_L9F32T65_ExprRhs ? 1'b1 : 1'b0;
+	assign TransmitterModule_L11F46T78_Expr = TransmitterModule_L11F46T78_ExprLhs == TransmitterModule_L11F46T78_ExprRhs ? 1'b1 : 1'b0;
+	assign TransmitterModule_L11F82T126_Expr = TransmitterModule_L11F82T126_ExprLhs == TransmitterModule_L11F82T126_ExprRhs ? 1'b1 : 1'b0;
+	assign TransmitterModule_L10F39T79_Expr = TransmitterModule_L10F39T79_ExprLhs == TransmitterModule_L10F39T79_ExprRhs ? 1'b1 : 1'b0;
 	// Output: TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L33F38T53_Expr, Width: 8, ShiftBy: 1, Sources: 1
 	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L33F38T53_Expr[0] = TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L33F38T53_Expr_1[1];
 	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L33F38T53_Expr[1] = TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L33F38T53_Expr_1[2];
@@ -135,7 +135,7 @@ module CompositionModule_TopLevel_Transmitter
 	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L33F38T53_Expr[5] = TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L33F38T53_Expr_1[6];
 	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L33F38T53_Expr[6] = TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L33F38T53_Expr_1[7];
 	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L33F38T53_Expr[7] = 0;
-	assign TransmitterModule_L11F47T127_Expr = TransmitterModule_L11F47T127_Expr_1 & TransmitterModule_L11F47T127_Expr_2;
+	assign TransmitterModule_L11F46T126_Expr = TransmitterModule_L11F46T126_Expr_1 & TransmitterModule_L11F46T126_Expr_2;
 	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F52T69_Expr = TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F52T69_Expr_1 + TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F52T69_Expr_2;
 	always @ (*)
 	begin
@@ -144,14 +144,14 @@ module CompositionModule_TopLevel_Transmitter
 		NextState_FSM = State_FSM;
 		if ((TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L16F17L23T27_Case == 1))
 		begin
-			if ((Inputs_iTrigger == 1))
+			if ((Inputs_Trigger == 1))
 			begin
 				NextState_Counter = {
 					{7{1'b0}},
 					TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L18F21L22T22_TransmitterModule_L19F45T46_Expr
 				}
 				;
-				NextState_Data = Inputs_iData;
+				NextState_Data = Inputs_Data;
 				NextState_FSM = TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L18F21L22T22_TransmitterModule_L21F41T68_Expr;
 			end
 		end
@@ -169,7 +169,7 @@ module CompositionModule_TopLevel_Transmitter
 		end
 		else if ((TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L35F17L38T27_Case == 1))
 		begin
-			if ((Inputs_iAck == 1))
+			if ((Inputs_Ack == 1))
 			begin
 				NextState_FSM = TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L37F41T60_Expr;
 			end
@@ -215,49 +215,49 @@ module CompositionModule_TopLevel_Transmitter
 		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L35F22T50_Expr
 	}
 	;
-	assign TransmitterModule_L9F33T66_ExprLhs = {
+	assign TransmitterModule_L9F32T65_ExprLhs = {
 		1'b0,
 		State_FSM
 	}
 	;
-	assign TransmitterModule_L9F33T66_ExprRhs = {
+	assign TransmitterModule_L9F32T65_ExprRhs = {
 		1'b0,
-		TransmitterModule_L9F47T66_Expr
+		TransmitterModule_L9F46T65_Expr
 	}
 	;
-	assign TransmitterModule_L11F47T79_ExprLhs = {
+	assign TransmitterModule_L11F46T78_ExprLhs = {
 		1'b0,
 		State_FSM
 	}
 	;
-	assign TransmitterModule_L11F47T79_ExprRhs = {
+	assign TransmitterModule_L11F46T78_ExprRhs = {
 		1'b0,
-		TransmitterModule_L11F60T79_Expr
+		TransmitterModule_L11F59T78_Expr
 	}
 	;
-	assign TransmitterModule_L11F83T127_ExprLhs = {
+	assign TransmitterModule_L11F82T126_ExprLhs = {
 		1'b0,
 		NextState_FSM
 	}
 	;
-	assign TransmitterModule_L11F83T127_ExprRhs = {
+	assign TransmitterModule_L11F82T126_ExprRhs = {
 		1'b0,
-		TransmitterModule_L11F100T127_Expr
+		TransmitterModule_L11F99T126_Expr
 	}
 	;
-	assign TransmitterModule_L10F40T80_ExprLhs = {
+	assign TransmitterModule_L10F39T79_ExprLhs = {
 		1'b0,
 		State_FSM
 	}
 	;
-	assign TransmitterModule_L10F40T80_ExprRhs = {
+	assign TransmitterModule_L10F39T79_ExprRhs = {
 		1'b0,
-		TransmitterModule_L10F53T80_Expr
+		TransmitterModule_L10F52T79_Expr
 	}
 	;
 	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L33F38T53_Expr_1 = State_Data;
-	assign TransmitterModule_L11F47T127_Expr_1 = TransmitterModule_L11F47T79_Expr;
-	assign TransmitterModule_L11F47T127_Expr_2 = TransmitterModule_L11F83T127_Expr;
+	assign TransmitterModule_L11F46T126_Expr_1 = TransmitterModule_L11F46T78_Expr;
+	assign TransmitterModule_L11F46T126_Expr_2 = TransmitterModule_L11F82T126_Expr;
 	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F52T69_Expr_1 = {
 		{2{1'b0}},
 		State_Counter
@@ -268,14 +268,14 @@ module CompositionModule_TopLevel_Transmitter
 		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F68T69_Expr
 	}
 	;
-	assign Inputs_iAck = iAck;
-	assign Inputs_iData = iData;
-	assign Inputs_iTrigger = iTrigger;
+	assign Inputs_Ack = Ack;
+	assign Inputs_Data = Data;
+	assign Inputs_Trigger = Trigger;
 	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F45T70_Cast = TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F52T69_Expr[7:0];
-	assign oBit = State_Data[0];
-	assign oIsReady = TransmitterModule_L9F33T66_Expr;
-	assign oIsTransmissionStarted = TransmitterModule_L11F47T127_Expr;
-	assign oIsTransmitting = TransmitterModule_L10F40T80_Expr;
+	assign Bit = State_Data[0];
+	assign IsReady = TransmitterModule_L9F32T65_Expr;
+	assign IsTransmissionStarted = TransmitterModule_L11F46T126_Expr;
+	assign IsTransmitting = TransmitterModule_L10F39T79_Expr;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

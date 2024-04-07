@@ -1,2 +1,2 @@
 No reads:
-	Transmitter_oIsTransmissionStarted
+	Transmitter_IsTransmissionStarted

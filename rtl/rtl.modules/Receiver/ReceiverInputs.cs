@@ -9,8 +9,8 @@ namespace RTL.Modules
     /// </summary>
     public class ReceiverInputs
     {
-        public bool iIsValid = false;
-        public bool iAck = false;
-        public bool iBit = false;
+        public bool IsValid = false;
+        public bool Ack = false;
+        public bool Bit = false;
     }
 }

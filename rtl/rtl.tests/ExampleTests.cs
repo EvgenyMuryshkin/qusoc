@@ -271,9 +271,9 @@ namespace RTL.Modules
 
             sim.OnPostStage = (topLevel) =>
             {
-                if (topLevel.oHasData)
+                if (topLevel.HasData)
                 {
-                    receivedData.Add(topLevel.oData);
+                    receivedData.Add(topLevel.Data);
                 }
             };
 
@@ -300,11 +300,11 @@ namespace RTL.Modules
 
             foreach (var idx in Enumerable.Range(0, 256))
             {
-                actual.Add(module.oData);
+                actual.Add(module.Data);
                 module.Cycle(new EmitterInputs()
                 {
-                    iIsEnabled = true,
-                    iAck = true
+                    IsEnabled = true,
+                    Ack = true
                 });
             }
 
@@ -428,16 +428,16 @@ namespace RTL.Modules
 
             foreach (var idx in Enumerable.Range(0, 8))
             {
-                module.Cycle(new ReceiverInputs() { iIsValid = true, iBit = (idx % 2 == 1 ? true : false) });
+                module.Cycle(new ReceiverInputs() { IsValid = true, Bit = (idx % 2 == 1 ? true : false) });
             }
             Assert.AreEqual(ReceiverFSM.Receiving, module.State.FSM);
 
-            module.Cycle(new ReceiverInputs() { iIsValid = false });
+            module.Cycle(new ReceiverInputs() { IsValid = false });
             Assert.AreEqual(ReceiverFSM.WaitingForAck, module.State.FSM);
 
-            Assert.AreEqual((byte)0xAA, module.oData);
+            Assert.AreEqual((byte)0xAA, module.Data);
 
-            module.Cycle(new ReceiverInputs() { iAck = true });
+            module.Cycle(new ReceiverInputs() { Ack = true });
             Assert.AreEqual(ReceiverFSM.Idle, module.State.FSM);
         }
 
@@ -455,35 +455,35 @@ namespace RTL.Modules
             var module = Module<TransmitterModule>();
             RTLBitArray sourceData = (byte)0xAA;
 
-            Assert.IsTrue(module.oIsReady);
+            Assert.IsTrue(module.IsReady);
 
-            module.Schedule(() => new TransmitterInputs() { iTrigger = true, iData = sourceData });
+            module.Schedule(() => new TransmitterInputs() { Trigger = true, Data = sourceData });
             module.DeltaCycle(0);
 
             // property depends on state change
-            Assert.IsTrue(module.oIsTransmissionStarted);
+            Assert.IsTrue(module.IsTransmissionStarted);
 
             module.Commit();
-            Assert.IsTrue(module.oIsTransmitting);
-            Assert.IsFalse(module.oIsTransmissionStarted);
+            Assert.IsTrue(module.IsTransmitting);
+            Assert.IsFalse(module.IsTransmissionStarted);
 
             var result = new RTLBitArray(byte.MinValue);
             foreach (var idx in Enumerable.Range(0, 8))
             {
                 Assert.AreEqual(TransmitterFSM.Transmitting, module.State.FSM);
-                result[idx] = module.oBit;
+                result[idx] = module.Bit;
                 module.Cycle(new TransmitterInputs());
             }
 
             Assert.AreEqual(TransmitterFSM.WaitingForAck, module.State.FSM);
 
             // retrigger should be ignored
-            module.Cycle(new TransmitterInputs() { iTrigger = true });
+            module.Cycle(new TransmitterInputs() { Trigger = true });
             Assert.AreEqual(TransmitterFSM.WaitingForAck, module.State.FSM);
 
-            module.Cycle(new TransmitterInputs() { iAck = true });
+            module.Cycle(new TransmitterInputs() { Ack = true });
             Assert.AreEqual(TransmitterFSM.Idle, module.State.FSM);
-            Assert.IsTrue(module.oIsReady);
+            Assert.IsTrue(module.IsReady);
 
             Assert.AreEqual((byte)sourceData, (byte)result);
         }

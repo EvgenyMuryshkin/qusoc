@@ -10,7 +10,7 @@ namespace rtl.modules.AXI4.Modules
 
         }
 
-        protected override bool TXStart(MData source)
+        protected override bool TXStart(int sourceIndex, MData source)
         {
             return source.IsActive;
         }

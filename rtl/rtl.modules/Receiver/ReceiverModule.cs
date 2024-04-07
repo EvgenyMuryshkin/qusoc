@@ -5,23 +5,23 @@ namespace RTL.Modules
     public class ReceiverModule : RTLSynchronousModule<ReceiverInputs, ReceiverState>
     {
         // public data points
-        public bool oHasData => State.FSM  == ReceiverFSM.WaitingForAck;
-        public byte oData => State.Data;
-        byte PartialData => (byte)(Inputs.iBit ? 0x80 : 0);
+        public bool HasData => State.FSM  == ReceiverFSM.WaitingForAck;
+        public byte Data => State.Data;
+        byte PartialData => (byte)(Inputs.Bit ? 0x80 : 0);
 
         protected override void OnStage()
         {
             switch(State.FSM)
             {
                 case ReceiverFSM.Idle:
-                    if (Inputs.iIsValid)
+                    if (Inputs.IsValid)
                     {
                         NextState.Data = PartialData;
                         NextState.FSM = ReceiverFSM.Receiving;
                     }
                     break;
                 case ReceiverFSM.Receiving:
-                    if (Inputs.iIsValid)
+                    if (Inputs.IsValid)
                     {
                         NextState.Data = (byte)((State.Data >> 1) | PartialData);
                     }
@@ -31,7 +31,7 @@ namespace RTL.Modules
                     }
                     break;
                 case ReceiverFSM.WaitingForAck:
-                    if (Inputs.iAck)
+                    if (Inputs.Ack)
                     {
                         NextState.FSM = ReceiverFSM.Idle;
                         NextState.Data = 0;

@@ -4,8 +4,8 @@ namespace RTL.Modules
 {
     public class EmitterInputs
     {
-        public bool iIsEnabled = false;
-        public bool iAck = false;
+        public bool IsEnabled = false;
+        public bool Ack = false;
     }
 
     public class EmitterState
@@ -15,12 +15,12 @@ namespace RTL.Modules
 
     public class EmitterModule : RTLSynchronousModule<EmitterInputs, EmitterState>
     {
-        public byte oData => State.Data;
-        public bool oHasData => Inputs.iIsEnabled;
+        public byte Data => State.Data;
+        public bool HasData => Inputs.IsEnabled;
         
         protected override void OnStage()
         {
-            if (Inputs.iIsEnabled && Inputs.iAck)
+            if (Inputs.IsEnabled && Inputs.Ack)
                 NextState.Data = (byte)(State.Data + 1);
         }
     }

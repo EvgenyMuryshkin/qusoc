@@ -5,19 +5,19 @@ namespace RTL.Modules
     public class TransmitterModule : RTLSynchronousModule<TransmitterInputs, TransmitterState>
     {
         // public data points
-        public bool oBit => State.Data[0];
-        public bool oIsReady => State.FSM  == TransmitterFSM.Idle;
-        public bool oIsTransmitting => State.FSM == TransmitterFSM.Transmitting;
-        public bool oIsTransmissionStarted => State.FSM == TransmitterFSM.Idle && NextState.FSM == TransmitterFSM.Transmitting;
+        public bool Bit => State.Data[0];
+        public bool IsReady => State.FSM  == TransmitterFSM.Idle;
+        public bool IsTransmitting => State.FSM == TransmitterFSM.Transmitting;
+        public bool IsTransmissionStarted => State.FSM == TransmitterFSM.Idle && NextState.FSM == TransmitterFSM.Transmitting;
         protected override void OnStage()
         {
             switch(State.FSM)
             {
                 case TransmitterFSM.Idle:
-                    if (Inputs.iTrigger)
+                    if (Inputs.Trigger)
                     {
                         NextState.Counter = 0;
-                        NextState.Data = Inputs.iData;
+                        NextState.Data = Inputs.Data;
                         NextState.FSM = TransmitterFSM.Transmitting;
                     }
                     break;
@@ -33,7 +33,7 @@ namespace RTL.Modules
                     NextState.Data = State.Data >> 1;
                     break;
                 case TransmitterFSM.WaitingForAck:
-                    if (Inputs.iAck)
+                    if (Inputs.Ack)
                         NextState.FSM = TransmitterFSM.Idle;
                     break;
             }

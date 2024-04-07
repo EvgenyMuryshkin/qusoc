@@ -28,4 +28,5 @@ No reads:
 	muxRightData_B_BRESP
 	muxRightData_B_BUSER
 	muxRightData_W_WREADY
+	rangeDetectorActive
 	rightCount

@@ -72,7 +72,7 @@ namespace rtl.modules
         protected AXI4EncoderModule Encoder;
         protected FullDuplexMuxModule<TLeft, TRight> DuplexMux;
 
-        protected abstract bool TXStart(TLeft source);
+        protected abstract bool TXStart(int leftIndex, TLeft source);
         protected abstract bool TXEnd(TLeft source);
         protected abstract RTLBitArray RightAddr();
         protected bool[] ActiveTransactions => TransactionDetectors.Select(t => t.oTransaction).ToArray();
@@ -86,7 +86,7 @@ namespace rtl.modules
         protected bool currentTXEnd => TXEnd(Inputs.iLeft[State.leftAddr]);
 
         //protected bool[] TXBegin;
-        protected bool[] TXBegin => range(leftCount).Select(leftIndex => TXStart(Inputs.iLeft[leftIndex]) && !WaitForRestarts[leftIndex]).ToArray();
+        protected bool[] TXBegin => range(leftCount).Select(leftIndex => TXStart(leftIndex, Inputs.iLeft[leftIndex]) && !WaitForRestarts[leftIndex]).ToArray();
         protected override void OnSchedule(Func<InterconnectModuleInputs<TLeft, TRight>> inputsFactory)
         {
             base.OnSchedule(inputsFactory);
@@ -132,7 +132,7 @@ namespace rtl.modules
         {
             if (State.rightAddrValid)
             {
-                if (currentTXEnd)
+                if (currentTXEnd) // TODO: direct function call
                 {
                     NextState.leftAddrValid = false;
                     NextState.rightAddrValid = false;

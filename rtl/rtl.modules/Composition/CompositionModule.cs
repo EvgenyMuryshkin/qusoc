@@ -5,7 +5,7 @@ namespace RTL.Modules
 {
     public class CompositionInputs
     {
-        public bool iIsEnabled = true;
+        public bool IsEnabled = true;
     }
 
     public class CompositionModule : RTLCombinationalModule<CompositionInputs>
@@ -14,9 +14,8 @@ namespace RTL.Modules
         public TransmitterModule Transmitter = new TransmitterModule();
         public ReceiverModule Receiver = new ReceiverModule();
 
-        public bool oHasData => Receiver.oHasData;
-        public byte oData => Receiver.oData;
-        //public bool oIsTransmissionStarted => Transmitter.oIsTransmissionStarted;
+        public bool HasData => Receiver.HasData;
+        public byte Data => Receiver.Data;
 
         protected override void OnSchedule(Func<CompositionInputs> inputsFactory)
         {
@@ -24,22 +23,22 @@ namespace RTL.Modules
 
             Emitter.Schedule(() => new EmitterInputs()
                 {
-                    iIsEnabled = Inputs.iIsEnabled,
-                    iAck = Transmitter.oIsReady
+                    IsEnabled = Inputs.IsEnabled,
+                    Ack = Transmitter.IsReady
                 });
 
             Transmitter.Schedule(() => new TransmitterInputs()
                 {
-                    iTrigger = Emitter.oHasData,
-                    iData = Emitter.oData,
-                    iAck = Receiver.oHasData
+                    Trigger = Emitter.HasData,
+                    Data = Emitter.Data,
+                    Ack = Receiver.HasData
                });
 
             Receiver.Schedule(() => new ReceiverInputs()
                 {
-                    iIsValid = Transmitter.oIsTransmitting,
-                    iBit = Transmitter.oBit,
-                    iAck = true
+                    IsValid = Transmitter.IsTransmitting,
+                    Bit = Transmitter.Bit,
+                    Ack = true
                 });
         }
     }

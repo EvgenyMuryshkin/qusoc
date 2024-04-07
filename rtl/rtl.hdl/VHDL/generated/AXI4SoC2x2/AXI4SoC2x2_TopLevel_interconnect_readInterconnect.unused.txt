@@ -25,5 +25,6 @@ No reads:
 	muxRightData_R_RLAST
 	muxRightData_R_RRESP
 	muxRightData_R_RUSER
+	rangeDetectorActive
 	rightCount
 	Transactions
