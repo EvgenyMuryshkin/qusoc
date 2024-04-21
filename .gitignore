@@ -301,3 +301,4 @@ __pycache__/
 /fir/fir.modules/hdl/VHDL/generated/Vivado/*
 /fir/fir.modules/hdl/Verilog/generated/Vivado/**
 /fir/fir.modules/hdl/VHDL/generated/VivadoTestbench/**
+/axi/axi.hdl/db/*

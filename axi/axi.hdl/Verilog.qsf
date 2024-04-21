@@ -1,0 +1,1165 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2010 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II
+# Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+# Date created = 20:45:17  June 07, 2019
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		Test_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+set_global_assignment -name FAMILY "Cyclone II"
+set_global_assignment -name DEVICE EP2C70F896C6
+set_global_assignment -name TOP_LEVEL_ENTITY AXI4SoC2x2_TopLevel
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "20:45:17  JUNE 07, 2019"
+set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
+set_global_assignment -name USE_GENERATED_PHYSICAL_CONSTRAINTS OFF -section_id eda_blast_fpga
+set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
+
+set_global_assignment -name FMAX_REQUIREMENT "50 MHz" -section_id Clock
+
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 6
+
+set_global_assignment -name MISC_FILE Verilog.dpf
+
+set_global_assignment -name SIMULATION_WITH_AUTO_GLITCH_FILTERING AUTO
+set_global_assignment -name VECTOR_COMPARE_TRIGGER_MODE INPUT_EDGE
+set_global_assignment -name AUTO_SHIFT_REGISTER_RECOGNITION OFF
+
+set_global_assignment -name SDC_FILE axi.sdc
+
+set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
+set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_instance_assignment -name CLOCK_SETTINGS Clock -to Clock
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_AR_ARADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_AW_ARADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_AW_AWID
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_AW_AWLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_AW_AWREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_AW_AWUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_WID
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_WDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_WDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_WDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_WDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_WSTRB
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_WUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_AR_ARADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_AW_ARADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_AW_AWID
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_AW_AWLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_AW_AWREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_AW_AWUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_WID
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_WDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_WDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_WDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_WDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_WSTRB
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_WUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_R_AR_ARID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_R_AR_ARADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_R_AR_ARLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_R_AR_ARSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_R_AR_ARBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_R_AR_ARLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_R_AR_ARCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_R_AR_ARPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_R_AR_ARQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_R_AR_ARREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_R_AR_ARUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_R_AR_ARVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_R_R_RREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_W_AW_AWID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_W_AW_AWADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_W_AW_AWLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_W_AW_AWSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_W_AW_AWBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_W_AW_AWLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_W_AW_AWCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_W_AW_AWPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_W_AW_AWQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_W_AW_AWREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_W_AW_AWUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_W_AW_AWVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_W_W_WID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_W_W_WDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_W_W_WDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_W_W_WDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_W_W_WDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_W_W_WSTRB
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_W_W_WLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_W_W_WUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_W_W_WVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft0_W_B_BREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_R_AR_ARID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_R_AR_ARADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_R_AR_ARLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_R_AR_ARSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_R_AR_ARBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_R_AR_ARLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_R_AR_ARCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_R_AR_ARPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_R_AR_ARQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_R_AR_ARREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_R_AR_ARUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_R_AR_ARVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_R_R_RREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_W_AW_AWID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_W_AW_AWADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_W_AW_AWLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_W_AW_AWSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_W_AW_AWBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_W_AW_AWLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_W_AW_AWCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_W_AW_AWPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_W_AW_AWQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_W_AW_AWREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_W_AW_AWUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_W_AW_AWVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_W_W_WID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_W_W_WDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_W_W_WDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_W_W_WDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_W_W_WDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_W_W_WSTRB
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_W_W_WLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_W_W_WUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_W_W_WVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft1_W_B_BREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_R_AR_ARID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_R_AR_ARADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_R_AR_ARLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_R_AR_ARSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_R_AR_ARBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_R_AR_ARLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_R_AR_ARCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_R_AR_ARPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_R_AR_ARQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_R_AR_ARREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_R_AR_ARUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_R_AR_ARVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_R_R_RREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_W_AW_AWID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_W_AW_AWADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_W_AW_AWLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_W_AW_AWSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_W_AW_AWBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_W_AW_AWLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_W_AW_AWCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_W_AW_AWPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_W_AW_AWQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_W_AW_AWREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_W_AW_AWUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_W_AW_AWVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_W_W_WID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_W_W_WDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_W_W_WDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_W_W_WDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_W_W_WDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_W_W_WSTRB
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_W_W_WLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_W_W_WUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_W_W_WVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft2_W_B_BREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_R_AR_ARID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_R_AR_ARADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_R_AR_ARLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_R_AR_ARSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_R_AR_ARBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_R_AR_ARLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_R_AR_ARCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_R_AR_ARPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_R_AR_ARQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_R_AR_ARREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_R_AR_ARUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_R_AR_ARVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_R_R_RREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_W_AW_AWID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_W_AW_AWADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_W_AW_AWLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_W_AW_AWSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_W_AW_AWBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_W_AW_AWLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_W_AW_AWCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_W_AW_AWPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_W_AW_AWQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_W_AW_AWREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_W_AW_AWUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_W_AW_AWVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_W_W_WID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_W_W_WDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_W_W_WDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_W_W_WDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_W_W_WDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_W_W_WSTRB
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_W_W_WLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_W_W_WUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_W_W_WVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft3_W_B_BREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_R_AR_ARID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_R_AR_ARADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_R_AR_ARLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_R_AR_ARSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_R_AR_ARBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_R_AR_ARLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_R_AR_ARCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_R_AR_ARPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_R_AR_ARQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_R_AR_ARREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_R_AR_ARUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_R_AR_ARVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_R_R_RREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_W_AW_AWID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_W_AW_AWADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_W_AW_AWLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_W_AW_AWSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_W_AW_AWBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_W_AW_AWLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_W_AW_AWCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_W_AW_AWPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_W_AW_AWQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_W_AW_AWREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_W_AW_AWUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_W_AW_AWVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_W_W_WID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_W_W_WDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_W_W_WDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_W_W_WDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_W_W_WDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_W_W_WSTRB
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_W_W_WLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_W_W_WUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_W_W_WVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft4_W_B_BREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_R_AR_ARID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_R_AR_ARADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_R_AR_ARLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_R_AR_ARSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_R_AR_ARBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_R_AR_ARLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_R_AR_ARCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_R_AR_ARPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_R_AR_ARQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_R_AR_ARREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_R_AR_ARUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_R_AR_ARVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_R_R_RREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_W_AW_AWID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_W_AW_AWADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_W_AW_AWLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_W_AW_AWSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_W_AW_AWBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_W_AW_AWLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_W_AW_AWCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_W_AW_AWPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_W_AW_AWQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_W_AW_AWREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_W_AW_AWUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_W_AW_AWVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_W_W_WID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_W_W_WDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_W_W_WDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_W_W_WDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_W_W_WDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_W_W_WSTRB
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_W_W_WLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_W_W_WUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_W_W_WVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft5_W_B_BREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_R_AR_ARID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_R_AR_ARADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_R_AR_ARLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_R_AR_ARSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_R_AR_ARBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_R_AR_ARLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_R_AR_ARCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_R_AR_ARPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_R_AR_ARQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_R_AR_ARREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_R_AR_ARUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_R_AR_ARVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_R_R_RREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_W_AW_AWID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_W_AW_AWADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_W_AW_AWLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_W_AW_AWSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_W_AW_AWBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_W_AW_AWLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_W_AW_AWCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_W_AW_AWPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_W_AW_AWQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_W_AW_AWREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_W_AW_AWUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_W_AW_AWVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_W_W_WID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_W_W_WDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_W_W_WDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_W_W_WDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_W_W_WDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_W_W_WSTRB
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_W_W_WLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_W_W_WUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_W_W_WVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft6_W_B_BREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_R_AR_ARID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_R_AR_ARADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_R_AR_ARLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_R_AR_ARSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_R_AR_ARBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_R_AR_ARLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_R_AR_ARCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_R_AR_ARPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_R_AR_ARQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_R_AR_ARREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_R_AR_ARUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_R_AR_ARVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_R_R_RREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_W_AW_AWID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_W_AW_AWADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_W_AW_AWLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_W_AW_AWSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_W_AW_AWBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_W_AW_AWLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_W_AW_AWCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_W_AW_AWPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_W_AW_AWQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_W_AW_AWREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_W_AW_AWUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_W_AW_AWVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_W_W_WID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_W_W_WDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_W_W_WDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_W_W_WDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_W_W_WDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_W_W_WSTRB
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_W_W_WLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_W_W_WUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_W_W_WVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeft7_W_B_BREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeftAddr
+set_instance_assignment -name VIRTUAL_PIN ON -to iLeftAddrValid
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight0_R_AR_ARREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight0_R_R_RID
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight0_R_R_RDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight0_R_R_RDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight0_R_R_RDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight0_R_R_RDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight0_R_R_RRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight0_R_R_RLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight0_R_R_RUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight0_R_R_RVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight0_W_AW_AWREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight0_W_B_BID
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight0_W_B_BRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight0_W_B_BUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight0_W_B_BVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight0_W_W_WREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight1_R_AR_ARREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight1_R_R_RID
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight1_R_R_RDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight1_R_R_RDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight1_R_R_RDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight1_R_R_RDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight1_R_R_RRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight1_R_R_RLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight1_R_R_RUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight1_R_R_RVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight1_W_AW_AWREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight1_W_B_BID
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight1_W_B_BRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight1_W_B_BUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight1_W_B_BVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight1_W_W_WREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight2_R_AR_ARREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight2_R_R_RID
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight2_R_R_RDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight2_R_R_RDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight2_R_R_RDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight2_R_R_RDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight2_R_R_RRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight2_R_R_RLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight2_R_R_RUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight2_R_R_RVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight2_W_AW_AWREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight2_W_B_BID
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight2_W_B_BRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight2_W_B_BUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight2_W_B_BVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight2_W_W_WREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight3_R_AR_ARREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight3_R_R_RID
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight3_R_R_RDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight3_R_R_RDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight3_R_R_RDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight3_R_R_RDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight3_R_R_RRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight3_R_R_RLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight3_R_R_RUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight3_R_R_RVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight3_W_AW_AWREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight3_W_B_BID
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight3_W_B_BRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight3_W_B_BUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight3_W_B_BVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iRight3_W_W_WREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iRightAddr
+set_instance_assignment -name VIRTUAL_PIN ON -to iRightAddrValid
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_R_AR_ARID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_R_AR_ARADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_R_AR_ARLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_R_AR_ARSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_R_AR_ARBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_R_AR_ARLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_R_AR_ARCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_R_AR_ARPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_R_AR_ARQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_R_AR_ARREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_R_AR_ARUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_R_AR_ARVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_R_R_RREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_W_AW_AWID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_W_AW_AWADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_W_AW_AWLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_W_AW_AWSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_W_AW_AWBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_W_AW_AWLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_W_AW_AWCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_W_AW_AWPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_W_AW_AWQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_W_AW_AWREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_W_AW_AWUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_W_AW_AWVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_W_W_WID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_W_W_WDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_W_W_WDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_W_W_WDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_W_W_WDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_W_W_WSTRB
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_W_W_WLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_W_W_WUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_W_W_WVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft0_W_B_BREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_R_AR_ARID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_R_AR_ARADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_R_AR_ARLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_R_AR_ARSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_R_AR_ARBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_R_AR_ARLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_R_AR_ARCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_R_AR_ARPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_R_AR_ARQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_R_AR_ARREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_R_AR_ARUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_R_AR_ARVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_R_R_RREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_W_AW_AWID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_W_AW_AWADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_W_AW_AWLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_W_AW_AWSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_W_AW_AWBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_W_AW_AWLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_W_AW_AWCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_W_AW_AWPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_W_AW_AWQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_W_AW_AWREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_W_AW_AWUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_W_AW_AWVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_W_W_WID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_W_W_WDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_W_W_WDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_W_W_WDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_W_W_WDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_W_W_WSTRB
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_W_W_WLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_W_W_WUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_W_W_WVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft1_W_B_BREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_R_AR_ARID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_R_AR_ARADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_R_AR_ARLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_R_AR_ARSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_R_AR_ARBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_R_AR_ARLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_R_AR_ARCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_R_AR_ARPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_R_AR_ARQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_R_AR_ARREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_R_AR_ARUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_R_AR_ARVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_R_R_RREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_W_AW_AWID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_W_AW_AWADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_W_AW_AWLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_W_AW_AWSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_W_AW_AWBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_W_AW_AWLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_W_AW_AWCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_W_AW_AWPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_W_AW_AWQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_W_AW_AWREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_W_AW_AWUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_W_AW_AWVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_W_W_WID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_W_W_WDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_W_W_WDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_W_W_WDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_W_W_WDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_W_W_WSTRB
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_W_W_WLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_W_W_WUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_W_W_WVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft2_W_B_BREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_R_AR_ARID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_R_AR_ARADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_R_AR_ARLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_R_AR_ARSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_R_AR_ARBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_R_AR_ARLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_R_AR_ARCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_R_AR_ARPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_R_AR_ARQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_R_AR_ARREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_R_AR_ARUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_R_AR_ARVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_R_R_RREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_W_AW_AWID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_W_AW_AWADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_W_AW_AWLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_W_AW_AWSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_W_AW_AWBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_W_AW_AWLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_W_AW_AWCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_W_AW_AWPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_W_AW_AWQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_W_AW_AWREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_W_AW_AWUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_W_AW_AWVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_W_W_WID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_W_W_WDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_W_W_WDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_W_W_WDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_W_W_WDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_W_W_WSTRB
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_W_W_WLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_W_W_WUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_W_W_WVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oLeft3_W_B_BREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight0_R_AR_ARREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight0_R_R_RID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight0_R_R_RDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight0_R_R_RDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight0_R_R_RDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight0_R_R_RDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight0_R_R_RRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight0_R_R_RLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight0_R_R_RUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight0_R_R_RVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight0_W_AW_AWREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight0_W_B_BID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight0_W_B_BRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight0_W_B_BUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight0_W_B_BVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight0_W_W_WREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight1_R_AR_ARREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight1_R_R_RID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight1_R_R_RDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight1_R_R_RDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight1_R_R_RDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight1_R_R_RDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight1_R_R_RRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight1_R_R_RLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight1_R_R_RUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight1_R_R_RVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight1_W_AW_AWREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight1_W_B_BID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight1_W_B_BRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight1_W_B_BUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight1_W_B_BVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight1_W_W_WREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight2_R_AR_ARREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight2_R_R_RID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight2_R_R_RDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight2_R_R_RDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight2_R_R_RDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight2_R_R_RDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight2_R_R_RRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight2_R_R_RLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight2_R_R_RUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight2_R_R_RVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight2_W_AW_AWREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight2_W_B_BID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight2_W_B_BRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight2_W_B_BUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight2_W_B_BVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight2_W_W_WREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight3_R_AR_ARREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight3_R_R_RID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight3_R_R_RDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight3_R_R_RDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight3_R_R_RDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight3_R_R_RDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight3_R_R_RRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight3_R_R_RLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight3_R_R_RUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight3_R_R_RVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight3_W_AW_AWREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight3_W_B_BID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight3_W_B_BRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight3_W_B_BUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight3_W_B_BVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight3_W_W_WREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight4_R_AR_ARREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight4_R_R_RID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight4_R_R_RDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight4_R_R_RDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight4_R_R_RDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight4_R_R_RDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight4_R_R_RRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight4_R_R_RLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight4_R_R_RUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight4_R_R_RVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight4_W_AW_AWREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight4_W_B_BID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight4_W_B_BRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight4_W_B_BUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight4_W_B_BVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight4_W_W_WREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight5_R_AR_ARREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight5_R_R_RID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight5_R_R_RDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight5_R_R_RDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight5_R_R_RDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight5_R_R_RDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight5_R_R_RRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight5_R_R_RLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight5_R_R_RUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight5_R_R_RVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight5_W_AW_AWREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight5_W_B_BID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight5_W_B_BRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight5_W_B_BUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight5_W_B_BVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight5_W_W_WREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight6_R_AR_ARREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight6_R_R_RID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight6_R_R_RDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight6_R_R_RDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight6_R_R_RDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight6_R_R_RDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight6_R_R_RRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight6_R_R_RLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight6_R_R_RUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight6_R_R_RVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight6_W_AW_AWREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight6_W_B_BID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight6_W_B_BRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight6_W_B_BUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight6_W_B_BVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight6_W_W_WREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight7_R_AR_ARREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight7_R_R_RID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight7_R_R_RDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight7_R_R_RDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight7_R_R_RDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight7_R_R_RDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight7_R_R_RRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight7_R_R_RLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight7_R_R_RUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight7_R_R_RVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight7_W_AW_AWREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight7_W_B_BID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight7_W_B_BRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight7_W_B_BUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight7_W_B_BVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oRight7_W_W_WREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_R_AR_ARID
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_R_AR_ARADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_R_AR_ARLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_R_AR_ARSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_R_AR_ARBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_R_AR_ARLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_R_AR_ARCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_R_AR_ARPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_R_AR_ARQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_R_AR_ARREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_R_AR_ARUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_R_AR_ARVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_R_R_RREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_AW_AWID
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_AW_AWADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_AW_AWLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_AW_AWSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_AW_AWBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_AW_AWLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_AW_AWCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_AW_AWPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_AW_AWQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_AW_AWREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_AW_AWUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_AW_AWVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_W_WID
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_W_WDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_W_WDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_W_WDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_W_WDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_W_WSTRB
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_W_WLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_W_WUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_W_WVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S0_W_B_BREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_R_AR_ARID
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_R_AR_ARADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_R_AR_ARLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_R_AR_ARSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_R_AR_ARBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_R_AR_ARLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_R_AR_ARCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_R_AR_ARPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_R_AR_ARQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_R_AR_ARREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_R_AR_ARUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_R_AR_ARVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_R_R_RREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_AW_AWID
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_AW_AWADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_AW_AWLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_AW_AWSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_AW_AWBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_AW_AWLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_AW_AWCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_AW_AWPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_AW_AWQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_AW_AWREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_AW_AWUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_AW_AWVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_W_WID
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_W_WDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_W_WDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_W_WDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_W_WDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_W_WSTRB
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_W_WLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_W_WUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_W_WVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to M2S1_W_B_BREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M0_ADDR_HIGH
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M0_ADDR_LOW
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M0_S2M_R_AR_ARREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M0_S2M_R_R_RID
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M0_S2M_R_R_RDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M0_S2M_R_R_RDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M0_S2M_R_R_RDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M0_S2M_R_R_RDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M0_S2M_R_R_RRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M0_S2M_R_R_RLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M0_S2M_R_R_RUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M0_S2M_R_R_RVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M0_S2M_W_AW_AWREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M0_S2M_W_B_BID
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M0_S2M_W_B_BRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M0_S2M_W_B_BUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M0_S2M_W_B_BVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M0_S2M_W_W_WREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M1_ADDR_HIGH
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M1_ADDR_LOW
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M1_S2M_R_AR_ARREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M1_S2M_R_R_RID
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M1_S2M_R_R_RDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M1_S2M_R_R_RDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M1_S2M_R_R_RDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M1_S2M_R_R_RDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M1_S2M_R_R_RRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M1_S2M_R_R_RLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M1_S2M_R_R_RUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M1_S2M_R_R_RVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M1_S2M_W_AW_AWREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M1_S2M_W_B_BID
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M1_S2M_W_B_BRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M1_S2M_W_B_BUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M1_S2M_W_B_BVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M1_S2M_W_W_WREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M2_ADDR_HIGH
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M2_ADDR_LOW
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M2_S2M_R_AR_ARREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M2_S2M_R_R_RID
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M2_S2M_R_R_RDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M2_S2M_R_R_RDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M2_S2M_R_R_RDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M2_S2M_R_R_RDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M2_S2M_R_R_RRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M2_S2M_R_R_RLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M2_S2M_R_R_RUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M2_S2M_R_R_RVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M2_S2M_W_AW_AWREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M2_S2M_W_B_BID
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M2_S2M_W_B_BRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M2_S2M_W_B_BUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M2_S2M_W_B_BVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M2_S2M_W_W_WREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M3_ADDR_HIGH
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M3_ADDR_LOW
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M3_S2M_R_AR_ARREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M3_S2M_R_R_RID
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M3_S2M_R_R_RDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M3_S2M_R_R_RDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M3_S2M_R_R_RDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M3_S2M_R_R_RDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M3_S2M_R_R_RRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M3_S2M_R_R_RLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M3_S2M_R_R_RUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M3_S2M_R_R_RVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M3_S2M_W_AW_AWREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M3_S2M_W_B_BID
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M3_S2M_W_B_BRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M3_S2M_W_B_BUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M3_S2M_W_B_BVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to S2M3_S2M_W_W_WREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_R_AR_ARID
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_R_AR_ARADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_R_AR_ARLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_R_AR_ARSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_R_AR_ARBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_R_AR_ARLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_R_AR_ARCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_R_AR_ARPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_R_AR_ARQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_R_AR_ARREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_R_AR_ARUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_R_AR_ARVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_R_R_RREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_W_AW_AWID
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_W_AW_AWADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_W_AW_AWLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_W_AW_AWSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_W_AW_AWBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_W_AW_AWLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_W_AW_AWCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_W_AW_AWPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_W_AW_AWQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_W_AW_AWREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_W_AW_AWUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_W_AW_AWVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_W_W_WID
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_W_W_WDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_W_W_WDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_W_W_WDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_W_W_WDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_W_W_WSTRB
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_W_W_WLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_W_W_WUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_W_W_WVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S0_W_B_BREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_R_AR_ARID
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_R_AR_ARADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_R_AR_ARLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_R_AR_ARSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_R_AR_ARBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_R_AR_ARLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_R_AR_ARCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_R_AR_ARPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_R_AR_ARQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_R_AR_ARREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_R_AR_ARUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_R_AR_ARVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_R_R_RREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_W_AW_AWID
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_W_AW_AWADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_W_AW_AWLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_W_AW_AWSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_W_AW_AWBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_W_AW_AWLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_W_AW_AWCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_W_AW_AWPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_W_AW_AWQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_W_AW_AWREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_W_AW_AWUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_W_AW_AWVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_W_W_WID
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_W_W_WDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_W_W_WDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_W_W_WDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_W_W_WDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_W_W_WSTRB
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_W_W_WLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_W_W_WUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_W_W_WVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iM2S1_W_B_BREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M0_R_AR_ARREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M0_R_R_RID
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M0_R_R_RDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M0_R_R_RDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M0_R_R_RDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M0_R_R_RDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M0_R_R_RRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M0_R_R_RLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M0_R_R_RUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M0_R_R_RVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M0_W_AW_AWREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M0_W_B_BID
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M0_W_B_BRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M0_W_B_BUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M0_W_B_BVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M0_W_W_WREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M1_R_AR_ARREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M1_R_R_RID
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M1_R_R_RDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M1_R_R_RDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M1_R_R_RDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M1_R_R_RDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M1_R_R_RRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M1_R_R_RLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M1_R_R_RUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M1_R_R_RVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M1_W_AW_AWREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M1_W_B_BID
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M1_W_B_BRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M1_W_B_BUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M1_W_B_BVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to iS2M1_W_W_WREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_R_AR_ARID
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_R_AR_ARADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_R_AR_ARLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_R_AR_ARSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_R_AR_ARBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_R_AR_ARLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_R_AR_ARCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_R_AR_ARPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_R_AR_ARQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_R_AR_ARREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_R_AR_ARUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_R_AR_ARVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_R_R_RREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_W_AW_AWID
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_W_AW_AWADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_W_AW_AWLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_W_AW_AWSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_W_AW_AWBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_W_AW_AWLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_W_AW_AWCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_W_AW_AWPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_W_AW_AWQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_W_AW_AWREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_W_AW_AWUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_W_AW_AWVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_W_W_WID
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_W_W_WDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_W_W_WDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_W_W_WDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_W_W_WDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_W_W_WSTRB
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_W_W_WLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_W_W_WUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_W_W_WVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S0_W_B_BREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_R_AR_ARID
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_R_AR_ARADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_R_AR_ARLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_R_AR_ARSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_R_AR_ARBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_R_AR_ARLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_R_AR_ARCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_R_AR_ARPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_R_AR_ARQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_R_AR_ARREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_R_AR_ARUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_R_AR_ARVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_R_R_RREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_W_AW_AWID
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_W_AW_AWADDR
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_W_AW_AWLEN
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_W_AW_AWSIZE
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_W_AW_AWBURST
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_W_AW_AWLOCK
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_W_AW_AWCACHE
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_W_AW_AWPROT
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_W_AW_AWQOS
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_W_AW_AWREGION
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_W_AW_AWUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_W_AW_AWVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_W_W_WID
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_W_W_WDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_W_W_WDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_W_W_WDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_W_W_WDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_W_W_WSTRB
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_W_W_WLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_W_W_WUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_W_W_WVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oM2S1_W_B_BREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M0_R_AR_ARREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M0_R_R_RID
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M0_R_R_RDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M0_R_R_RDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M0_R_R_RDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M0_R_R_RDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M0_R_R_RRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M0_R_R_RLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M0_R_R_RUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M0_R_R_RVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M0_W_AW_AWREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M0_W_B_BID
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M0_W_B_BRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M0_W_B_BUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M0_W_B_BVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M0_W_W_WREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_R_AR_ARREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_R_R_RID
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_R_R_RDATA0
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_R_R_RDATA1
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_R_R_RDATA2
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_R_R_RDATA3
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_R_R_RRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_R_R_RLAST
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_R_R_RUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_R_R_RVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_W_AW_AWREADY
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_W_B_BID
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_W_B_BRESP
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_W_B_BUSER
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_W_B_BVALID
+set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_W_W_WREADY
+
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/AXI4SoC2x2_ParallelRead.vwf
+
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4Encoder2Module/AXI4Encoder2Module_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4Encoder2Module.vwf
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4Encoder7Module/AXI4Encoder7Module_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4Encoder7Module.vwf
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4MasterModuleB4/AXI4MasterModuleB4_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4MasterModuleB4.vwf
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4MasterSlaveTestModule/AXI4MasterSlaveTestModule_TopLevel_master.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4MasterSlaveTestModule/AXI4MasterSlaveTestModule_TopLevel_reg_axiSlave.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4MasterSlaveTestModule/AXI4MasterSlaveTestModule_TopLevel_reg.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4MasterSlaveTestModule/AXI4MasterSlaveTestModule_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4MasterSlaveTestModule.vwf
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4MemoryModuleB4/AXI4MemoryModuleB4_TopLevel_axiSlave.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4MemoryModuleB4/AXI4MemoryModuleB4_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4MemoryModuleB4.vwf
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel_DuplexMux.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel_Encoder.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray0_encoder.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray0_rangeDetectors0.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray0_rangeDetectors1.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel_rangeDetectorArray0.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel_TransactionDetectors0.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4ReadInteconnectModule_1x2/AXI4ReadInteconnectModule_1x2_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4ReadInteconnectModule_1x2.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4RegisterModuleB4_ConcurrentWrite.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4RegisterModuleB4_Read.vwf
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4RegisterModuleB4/AXI4RegisterModuleB4_TopLevel_axiSlave.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4RegisterModuleB4/AXI4RegisterModuleB4_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4RegisterModuleB4_Write.vwf
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_readInterconnect_DuplexMux.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_readInterconnect_Encoder.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_readInterconnect_rangeDetectorArray0_encoder.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_readInterconnect_rangeDetectorArray0_rangeDetectors0.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_readInterconnect_rangeDetectorArray0_rangeDetectors1.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_readInterconnect_rangeDetectorArray0.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_readInterconnect_rangeDetectorArray1_encoder.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_readInterconnect_rangeDetectorArray1_rangeDetectors0.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_readInterconnect_rangeDetectorArray1_rangeDetectors1.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_readInterconnect_rangeDetectorArray1.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_readInterconnect_TransactionDetectors0.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_readInterconnect_TransactionDetectors1.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_readInterconnect.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_writeInterconnect_DuplexMux.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_writeInterconnect_Encoder.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_writeInterconnect_rangeDetectorArray0_encoder.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors0.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors1.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_writeInterconnect_rangeDetectorArray0.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_writeInterconnect_rangeDetectorArray1_encoder.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_writeInterconnect_rangeDetectorArray1_rangeDetectors0.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_writeInterconnect_rangeDetectorArray1_rangeDetectors1.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_writeInterconnect_rangeDetectorArray1.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_writeInterconnect_TransactionDetectors0.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_writeInterconnect_TransactionDetectors1.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_writeInterconnect.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_masters0.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_masters1.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_registers0_axiSlave.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_registers0.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_registers1_axiSlave.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_registers1.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4WriteInteconnectModule_1x2/AXI4WriteInteconnectModule_1x2_TopLevel_DuplexMux.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4WriteInteconnectModule_1x2/AXI4WriteInteconnectModule_1x2_TopLevel_Encoder.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4WriteInteconnectModule_1x2/AXI4WriteInteconnectModule_1x2_TopLevel_rangeDetectorArray0_encoder.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4WriteInteconnectModule_1x2/AXI4WriteInteconnectModule_1x2_TopLevel_rangeDetectorArray0_rangeDetectors0.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4WriteInteconnectModule_1x2/AXI4WriteInteconnectModule_1x2_TopLevel_rangeDetectorArray0_rangeDetectors1.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4WriteInteconnectModule_1x2/AXI4WriteInteconnectModule_1x2_TopLevel_rangeDetectorArray0.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4WriteInteconnectModule_1x2/AXI4WriteInteconnectModule_1x2_TopLevel_TransactionDetectors0.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4WriteInteconnectModule_1x2/AXI4WriteInteconnectModule_1x2_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4WriteInteconnectModule_1x2.vwf
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXIConfirmModule/AXIConfirmModule_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXIConfirmModule.vwf
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXILikeInteconnectModule/AXILikeInteconnectModule_TopLevel_DuplexMux.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXILikeInteconnectModule/AXILikeInteconnectModule_TopLevel_Encoder.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXILikeInteconnectModule/AXILikeInteconnectModule_TopLevel_TransactionDetectors0.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXILikeInteconnectModule/AXILikeInteconnectModule_TopLevel_TransactionDetectors1.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXILikeInteconnectModule/AXILikeInteconnectModule_TopLevel_TransactionDetectors2.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXILikeInteconnectModule/AXILikeInteconnectModule_TopLevel_TransactionDetectors3.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXILikeInteconnectModule/AXILikeInteconnectModule_TopLevel_TransactionDetectors4.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXILikeInteconnectModule/AXILikeInteconnectModule_TopLevel_TransactionDetectors5.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXILikeInteconnectModule/AXILikeInteconnectModule_TopLevel_TransactionDetectors6.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXILikeInteconnectModule/AXILikeInteconnectModule_TopLevel_TransactionDetectors7.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXILikeInteconnectModule/AXILikeInteconnectModule_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXILikeInteconnectModule.vwf
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXILikeMuxModule/AXILikeMuxModule_TopLevel_fullDuplexMux.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXILikeMuxModule/AXILikeMuxModule_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXILikeMuxModule.vwf
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXILikeMuxModuleManual/AXILikeMuxModuleManual_TopLevel.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXIRangeDetectorModuleB4/AXIRangeDetectorModuleB4_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXIRangeDetectorModuleB4.vwf
+set_global_assignment -name VERILOG_FILE Verilog/generated/RangeDetectorArrayModule4/RangeDetectorArrayModule4_TopLevel_encoder.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/RangeDetectorArrayModule4/RangeDetectorArrayModule4_TopLevel_rangeDetectors0.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/RangeDetectorArrayModule4/RangeDetectorArrayModule4_TopLevel_rangeDetectors1.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/RangeDetectorArrayModule4/RangeDetectorArrayModule4_TopLevel_rangeDetectors2.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/RangeDetectorArrayModule4/RangeDetectorArrayModule4_TopLevel_rangeDetectors3.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/RangeDetectorArrayModule4/RangeDetectorArrayModule4_TopLevel_rangeDetectors4.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/RangeDetectorArrayModule4/RangeDetectorArrayModule4_TopLevel_rangeDetectors5.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/RangeDetectorArrayModule4/RangeDetectorArrayModule4_TopLevel_rangeDetectors6.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/RangeDetectorArrayModule4/RangeDetectorArrayModule4_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/RangeDetectorArrayModule4.vwf
+set_global_assignment -name VERILOG_FILE Quokka.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/TransactionDetectorModule/TransactionDetectorModule_TopLevel.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/TransactionDetectorModule.vwf
+
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4SoC2x2_ParallelRead.vwf
