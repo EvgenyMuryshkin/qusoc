@@ -48,13 +48,22 @@ namespace rtl.modules
     {
         internal AXI4NonBufferedSlaveModule axiSlave;
         private readonly axiSize size;
+        private readonly int addressLSB;
         public AXI4MemoryModule(axiSize size, int depth)
         {
             this.size = size;
+            this.addressLSB = AXI4Tools.AddressLSB(size);
+
             axiSlave = new AXI4NonBufferedSlaveModule(size);
             InitInputs(new AXI4MemoryModuleInputs(size));
             InitState(new AXI4MemoryModuleState(size, depth));
         }
+
+        public void Initialize(byte[][] data)
+        {
+            data.CopyTo(State.buff, 0);
+        }
+
         /*
         public byte[] OutData => State.bytes;
         public bool OutACK => Inputs.WE;
@@ -71,9 +80,9 @@ namespace rtl.modules
             : State.wstrb;
 
         uint internalWADDR =>
-            internalSameTxWrite
+            (internalSameTxWrite
             ? axiSlave.outAWADDR
-            : State.waddr;
+            : State.waddr);// >> addressLSB;
 
         byte[] internalWDATA =>
             internalSameTxWrite
@@ -81,9 +90,9 @@ namespace rtl.modules
             : State.wdata;
 
         uint internalRADDR =>
-            axiSlave.outARREADYConfirming
+            (axiSlave.outARREADYConfirming
             ? axiSlave.outARADDR
-            : State.raddr;
+            : State.raddr);// >> addressLSB;
 
         protected override void OnSchedule(Func<AXI4MemoryModuleInputs> inputsFactory)
         {

@@ -16,12 +16,14 @@ namespace rtl.modules
 
         public RTLBitArray ARADDR;
         public bool RE = false;
+        //public bool RREADY;
 
         public RTLBitArray AWADDR;
         public bool WE = false;
         public RTLBitArray WSTRB;
 
         public byte[] WDATA;
+        //public bool BREADY;
     }
 
     public class AXI4MasterModuleInputs
@@ -83,7 +85,7 @@ namespace rtl.modules
                 },
                 R =
                 {
-                    RREADY = true
+                    RREADY = true//Inputs.Master.RREADY
                 }
             },
             W =
@@ -102,7 +104,7 @@ namespace rtl.modules
                 },
                 B =
                 {
-                    BREADY = true
+                    BREADY = true//Inputs.Master.BREADY
                 }
             }
         };

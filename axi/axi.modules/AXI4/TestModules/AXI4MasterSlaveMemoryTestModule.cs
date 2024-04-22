@@ -54,6 +54,8 @@ namespace rtl.modules
                 {
                     WE = Inputs.MWE,
                     RE = Inputs.MRE,
+                    //BREADY = true,
+                    //RREADY = true,
                     ARADDR = Inputs.AXADDR,
                     AWADDR = Inputs.AXADDR,
                     WDATA = Inputs.InData,
