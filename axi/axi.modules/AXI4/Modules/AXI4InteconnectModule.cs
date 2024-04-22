@@ -58,7 +58,7 @@ namespace rtl.modules.AXI4.Modules
             );
         }
 
-        public AXI4_S2M[] oS2M => range(sCount)
+        public AXI4_S2M[] oS2M => range(mCount)
             .Select(slaveIndex =>
                 new AXI4_S2M()
                 {
@@ -67,7 +67,7 @@ namespace rtl.modules.AXI4.Modules
                 }
             ).ToArray();
 
-        public AXI4_M2S[] oM2S => range(mCount)
+        public AXI4_M2S[] oM2S => range(sCount)
             .Select(masterIndex =>
                 new AXI4_M2S()
                 {
