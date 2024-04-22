@@ -5,7 +5,7 @@ using QuokkaIntegrationTests;
 using rtl.modules;
 using System;
 
-namespace RTL.Modules
+namespace axi.tests
 {
     [TestClass]
     public class AXI4MasterSlaveTests : BaseRTLModuleTests

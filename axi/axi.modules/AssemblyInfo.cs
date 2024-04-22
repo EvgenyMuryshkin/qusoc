@@ -1,3 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using Quokka.Public.Tools;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("rtl.tests")]
+[assembly: InternalsVisibleTo("axi.tests")]

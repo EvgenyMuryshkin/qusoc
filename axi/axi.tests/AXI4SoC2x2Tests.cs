@@ -2,8 +2,9 @@
 using Quokka.RTL.Simulator;
 using QuokkaIntegrationTests;
 using rtl.modules;
+using RTL.Modules;
 
-namespace RTL.Modules
+namespace axi.tests
 {
     [TestClass]
     public class AXI4SoC2x2Tests : BaseRTLModuleTests

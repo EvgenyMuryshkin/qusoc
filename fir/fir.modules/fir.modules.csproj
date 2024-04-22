@@ -5,8 +5,8 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Quokka.Extension.Interop" Version="1.0.3.31" />
-    <PackageReference Include="Quokka.FPGA" Version="0.1.7.225" />
-    <PackageReference Include="Quokka.RTL" Version="0.1.6.562" />
+    <PackageReference Include="Quokka.FPGA" Version="0.1.7.226" />
+    <PackageReference Include="Quokka.RTL" Version="0.1.6.563" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\tools\Quokka.RTL.Local\Quokka.RTL.Local.csproj" />

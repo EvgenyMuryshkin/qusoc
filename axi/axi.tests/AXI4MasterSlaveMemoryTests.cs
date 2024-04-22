@@ -8,7 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 
-namespace RTL.Modules
+namespace axi.tests
 {
     [TestClass]
     public class AXI4MasterSlaveMemoryTests : BaseRTLModuleTests

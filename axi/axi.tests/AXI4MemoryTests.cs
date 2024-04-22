@@ -3,10 +3,11 @@ using Quokka.RTL;
 using Quokka.RTL.Simulator;
 using QuokkaIntegrationTests;
 using rtl.modules;
+using RTL.Modules;
 using System;
 using System.Linq;
 
-namespace RTL.Modules
+namespace axi.tests
 {
     class AXI4MemoryModuleInputsBuilder : AXI4MemoryModuleInputs
     {

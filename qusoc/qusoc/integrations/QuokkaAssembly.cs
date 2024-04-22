@@ -197,7 +197,12 @@ namespace QuSoC
                     foreach (var app in apps)
                     {
                         var module = new QuSoCModule(FirmwareTools.FromApp(app));
-                        yield return new RTLModuleConfig() { Instance = module, Name = app };
+                        //var module = new QuSoCModule(FirmwareTools.FromApp(app));
+                        yield return new RTLModuleConfig()
+                        {
+                            InstanceFactory = () => new QuSoCModule(FirmwareTools.FromApp(app)),
+                            Name = app
+                        };
                     }
                 }
                 else
@@ -205,8 +210,12 @@ namespace QuSoC
                     // add default creatable modules, declared in this assembly only
                     foreach (var moduleType in _rtlModulesDiscovery.ModuleTypes.Where(t => typeof(QuSoCModule).IsAssignableFrom(t)))
                     {
-                        var instance = _classFactory.Create< IRTLCombinationalModule>(moduleType);
-                        yield return new RTLModuleConfig() { Instance = instance, Name = instance.ModuleName };
+                        //var instance = _classFactory.Create< IRTLCombinationalModule>(moduleType);
+                        yield return new RTLModuleConfig()
+                        {
+                            InstanceFactory = () => _classFactory.Create<IRTLCombinationalModule>(moduleType),
+                            Name = moduleType.Name//instance.ModuleName 
+                        };
                     }
                 }
             }

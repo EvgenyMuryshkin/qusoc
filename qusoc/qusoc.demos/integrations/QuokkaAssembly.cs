@@ -43,7 +43,11 @@ namespace QuSoC.Demos
                     foreach (var moduleType in _rtlModulesDiscovery.ModuleTypes.Where(m => modules.Contains(m.Name)))
                     {
                         var instance = _classFactory.Create<IRTLCombinationalModule>(moduleType);
-                        yield return new RTLModuleConfig() { Instance = instance, Name = instance.ModuleName };
+                        yield return new RTLModuleConfig()
+                        {
+                            InstanceFactory = () => _classFactory.Create<IRTLCombinationalModule>(moduleType),
+                            Name = moduleType.Name// instance.ModuleName 
+                        };
                     }
                 }
                 else

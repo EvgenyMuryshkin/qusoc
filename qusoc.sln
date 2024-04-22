@@ -61,6 +61,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "axi.modules", "axi\axi.modu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "axi.hdl", "axi\axi.hdl\axi.hdl.csproj", "{1B64F7E5-2941-4BC9-A4DC-9BA8F3714605}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "axi.tests", "axi\axi.tests\axi.tests.csproj", "{720C16D6-1641-4CC5-8411-5A2D27289F11}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -159,6 +161,10 @@ Global
 		{1B64F7E5-2941-4BC9-A4DC-9BA8F3714605}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B64F7E5-2941-4BC9-A4DC-9BA8F3714605}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B64F7E5-2941-4BC9-A4DC-9BA8F3714605}.Release|Any CPU.Build.0 = Release|Any CPU
+		{720C16D6-1641-4CC5-8411-5A2D27289F11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{720C16D6-1641-4CC5-8411-5A2D27289F11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{720C16D6-1641-4CC5-8411-5A2D27289F11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{720C16D6-1641-4CC5-8411-5A2D27289F11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -186,6 +192,7 @@ Global
 		{6B287865-C51E-4A94-A98F-084CEB610FD1} = {49F137C7-01F3-4899-A365-F5E93A128425}
 		{9DEFF5A3-7F05-41FE-BFE9-B58AB6E37BA3} = {F1A46BA1-DE9B-474E-8477-B3CAB84FCB02}
 		{1B64F7E5-2941-4BC9-A4DC-9BA8F3714605} = {F1A46BA1-DE9B-474E-8477-B3CAB84FCB02}
+		{720C16D6-1641-4CC5-8411-5A2D27289F11} = {F1A46BA1-DE9B-474E-8477-B3CAB84FCB02}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0BE3F9BA-A23D-459E-8A7D-2D9F1612D011}

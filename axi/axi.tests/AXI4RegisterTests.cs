@@ -3,9 +3,10 @@ using Quokka.RTL;
 using Quokka.RTL.Simulator;
 using QuokkaIntegrationTests;
 using rtl.modules;
+using RTL.Modules;
 using System;
 
-namespace RTL.Modules
+namespace axi.tests
 {
     [TestClass]
     public class AXI4RegisterTests : BaseRTLModuleTests
