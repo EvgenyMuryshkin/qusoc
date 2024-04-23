@@ -25,7 +25,7 @@ entity AXI4SoC2x2_TopLevel_masters1 is
 		-- [BEGIN USER PORTS]
 		-- [END USER PORTS]
 		BoardSignals : in BoardSignalsType;
-		Master : in unsigned (101 downto 0);
+		Master : in unsigned (103 downto 0);
 		S2M : in unsigned (73 downto 0);
 		M2S : out unsigned (221 downto 0);
 		RACK : out std_logic;
@@ -79,7 +79,6 @@ architecture rtl of AXI4SoC2x2_TopLevel_masters1 is
 	constant AXI4_M_AR_L42F31T44_Expr : unsigned(3 downto 0) := "0000";
 	constant AXI4_M_AR_L45F32T33_Expr : std_logic := '0';
 	constant AXI4_M_AR_L48F30T31_Expr : std_logic := '0';
-	constant AXI4MasterModule_L88F30T34_Expr : std_logic := '1';
 	constant AXI4_M_AW_L17F28T29_Expr : std_logic := '0';
 	constant AXI4_M_AW_L23F29T30_Expr : std_logic := '1';
 	constant AXI4_M_AW_L26F33T43_Expr : unsigned(2 downto 0) := "010";
@@ -93,12 +92,13 @@ architecture rtl of AXI4SoC2x2_TopLevel_masters1 is
 	constant AXI4MasterModule_L100F27T28_Expr : std_logic := '0';
 	constant AXI4_M_W_L24F29T33_Expr : std_logic := '1';
 	constant AXI4_M_W_L27F29T30_Expr : std_logic := '0';
-	constant AXI4MasterModule_L107F30T34_Expr : std_logic := '1';
 	constant AXI4MasterModule_L72F46T65_Expr : unsigned(1 downto 0) := "10";
 	constant AXI4MasterModule_L75F47T67_Expr : unsigned(1 downto 0) := "10";
 	signal Inputs_Master_ARADDR : unsigned(31 downto 0) := (others => '0');
 	signal Inputs_Master_AWADDR : unsigned(31 downto 0) := (others => '0');
+	signal Inputs_Master_BREADY : std_logic := '0';
 	signal Inputs_Master_RE : std_logic := '0';
+	signal Inputs_Master_RREADY : std_logic := '0';
 	signal Inputs_Master_WE : std_logic := '0';
 	signal Inputs_Master_WSTRB : unsigned(3 downto 0) := (others => '0');
 	signal Inputs_S2M_R_AR_ARREADY : std_logic := '0';
@@ -268,7 +268,7 @@ begin
 			end if;
 		end if;
 	end process;
-	process (AXI4MasterModule_L69F25T66_Expr, AXI4MasterModule_L70F26T61_Expr, AXI4MasterModule_L70F26T86_Expr, AXI4MasterModule_L72F29T65_Expr, AXI4MasterModule_L72F29T76_Expr, AXI4MasterModule_L75F29T67_Expr, AXI4MasterModule_L75F29T79_Expr, Inputs_Master_ARADDR, Inputs_Master_AWADDR, Inputs_Master_RE, Inputs_Master_WDATA, Inputs_Master_WE, Inputs_Master_WSTRB, Inputs_S2M_R_R_RDATA, Inputs_S2M_R_R_RVALID, Inputs_S2M_W_B_BVALID, Master, readAck, S2M, State_ARREADYACK, State_AWREADYACK, State_readFSM, State_WREADYACK, State_writeFSM, writeAck)
+	process (AXI4MasterModule_L69F25T66_Expr, AXI4MasterModule_L70F26T61_Expr, AXI4MasterModule_L70F26T86_Expr, AXI4MasterModule_L72F29T65_Expr, AXI4MasterModule_L72F29T76_Expr, AXI4MasterModule_L75F29T67_Expr, AXI4MasterModule_L75F29T79_Expr, Inputs_Master_ARADDR, Inputs_Master_AWADDR, Inputs_Master_BREADY, Inputs_Master_RE, Inputs_Master_RREADY, Inputs_Master_WDATA, Inputs_Master_WE, Inputs_Master_WSTRB, Inputs_S2M_R_R_RDATA, Inputs_S2M_R_R_RVALID, Inputs_S2M_W_B_BVALID, Master, readAck, S2M, State_ARREADYACK, State_AWREADYACK, State_readFSM, State_WREADYACK, State_writeFSM, writeAck)
 	begin
 		AXI4MasterModule_L126F9L183T10_AXI4MasterModule_L127F13L151T14_AXI4MasterModule_L129F17L131T27_CaseLhs(2) <= '0';
 		AXI4MasterModule_L126F9L183T10_AXI4MasterModule_L127F13L151T14_AXI4MasterModule_L129F17L131T27_CaseLhs(1 downto 0) <= signed(State_readFSM);
@@ -312,13 +312,15 @@ begin
 		AXI4MasterModule_L72F29T76_Expr_2 <= readAck;
 		AXI4MasterModule_L75F29T79_Expr_1 <= AXI4MasterModule_L75F29T67_Expr;
 		AXI4MasterModule_L75F29T79_Expr_2 <= writeAck;
-		Inputs_Master_WSTRB <= Master(101 downto 98);
-		Inputs_Master_WE <= Master(97);
-		Inputs_Master_WDATA(3) <= Master(96 downto 89);
-		Inputs_Master_WDATA(2) <= Master(88 downto 81);
-		Inputs_Master_WDATA(1) <= Master(80 downto 73);
-		Inputs_Master_WDATA(0) <= Master(72 downto 65);
-		Inputs_Master_RE <= Master(64);
+		Inputs_Master_WSTRB <= Master(103 downto 100);
+		Inputs_Master_WE <= Master(99);
+		Inputs_Master_WDATA(3) <= Master(98 downto 91);
+		Inputs_Master_WDATA(2) <= Master(90 downto 83);
+		Inputs_Master_WDATA(1) <= Master(82 downto 75);
+		Inputs_Master_WDATA(0) <= Master(74 downto 67);
+		Inputs_Master_RREADY <= Master(66);
+		Inputs_Master_RE <= Master(65);
+		Inputs_Master_BREADY <= Master(64);
 		Inputs_Master_AWADDR <= Master(63 downto 32);
 		Inputs_Master_ARADDR <= Master(31 downto 0);
 		Inputs_S2M_W_W_WREADY <= S2M(73);
@@ -339,7 +341,7 @@ begin
 		Inputs_S2M_R_AR_ARREADY <= S2M(0);
 		readAck <= AXI4MasterModule_L69F25T66_Expr;
 		writeAck <= AXI4MasterModule_L70F26T86_Expr;
-		M2S(221) <= AXI4MasterModule_L107F30T34_Expr;
+		M2S(221) <= Inputs_Master_BREADY;
 		M2S(220) <= Inputs_Master_WE;
 		M2S(219 downto 213) <= (
 			others => '0'
@@ -385,7 +387,7 @@ begin
 		)
 		;
 		M2S(84) <= AXI4_M_AW_L17F28T29_Expr;
-		M2S(83) <= AXI4MasterModule_L88F30T34_Expr;
+		M2S(83) <= Inputs_Master_RREADY;
 		M2S(82) <= Inputs_Master_RE;
 		M2S(81 downto 75) <= (
 			others => '0'

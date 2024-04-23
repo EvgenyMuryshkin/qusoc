@@ -1053,7 +1053,7 @@ set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_W_B_BUSER
 set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_W_B_BVALID
 set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_W_W_WREADY
 
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/AXI4SoC2x2_ParallelRead.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/AXI4SoC2x2_SequentialWrite.vwf
 
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 
@@ -1086,6 +1086,8 @@ set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4RegisterModuleB4/
 set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4RegisterModuleB4/AXI4RegisterModuleB4_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4RegisterModuleB4_Write.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4SoC2x2_ParallelRead.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4SoC2x2_ParallelWrite.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4SoC2x2_SequentialRead.vwf
 set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_readInterconnect_DuplexMux.v
 set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_readInterconnect_Encoder.v
 set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4SoC2x2/AXI4SoC2x2_TopLevel_interconnect_readInterconnect_rangeDetectorArray0_encoder.v
@@ -1162,3 +1164,5 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/RangeDetectorArrayMod
 set_global_assignment -name VERILOG_FILE Quokka.v
 set_global_assignment -name VERILOG_FILE Verilog/generated/TransactionDetectorModule/TransactionDetectorModule_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/TransactionDetectorModule.vwf
+
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4SoC2x2_SequentialWrite.vwf

@@ -27,7 +27,9 @@ module AXI4SoC2x2_TopLevel
 	input wire Reset,
 	input wire [31:0] MasterInputs0_ARADDR,
 	input wire [31:0] MasterInputs0_AWADDR,
+	input wire MasterInputs0_BREADY,
 	input wire MasterInputs0_RE,
+	input wire MasterInputs0_RREADY,
 	input wire [7:0] MasterInputs0_WDATA0,
 	input wire [7:0] MasterInputs0_WDATA1,
 	input wire [7:0] MasterInputs0_WDATA2,
@@ -36,7 +38,9 @@ module AXI4SoC2x2_TopLevel
 	input wire [3:0] MasterInputs0_WSTRB,
 	input wire [31:0] MasterInputs1_ARADDR,
 	input wire [31:0] MasterInputs1_AWADDR,
+	input wire MasterInputs1_BREADY,
 	input wire MasterInputs1_RE,
+	input wire MasterInputs1_RREADY,
 	input wire [7:0] MasterInputs1_WDATA0,
 	input wire [7:0] MasterInputs1_WDATA1,
 	input wire [7:0] MasterInputs1_WDATA2,
@@ -92,12 +96,12 @@ module AXI4SoC2x2_TopLevel
 	wire AXI4SoC2x2_L87F13L96T14_1_masterIndex = 1'b1;
 	wire AXI4SoC2x2_L98F13L107T14_0_registerIndex = 1'b0;
 	wire AXI4SoC2x2_L98F13L107T14_1_registerIndex = 1'b1;
-	wire [101: 0] masters0_Master;
+	wire [103: 0] masters0_Master;
 	wire [73: 0] masters0_S2M;
 	wire [221: 0] masters0_M2S;
 	wire masters0_RACK;
 	wire masters0_WACK;
-	wire [101: 0] masters1_Master;
+	wire [103: 0] masters1_Master;
 	wire [73: 0] masters1_S2M;
 	wire [221: 0] masters1_M2S;
 	wire masters1_RACK;
@@ -112,8 +116,8 @@ module AXI4SoC2x2_TopLevel
 	wire registers1_outACK;
 	wire registers1_outWritten;
 	wire [73: 0] registers1_S2M;
-	wire [175: 0] AXI4SoC2x2_L87F13L96T14_0_AXI4SoC2x2_L90F21L94T22_Object;
-	wire [175: 0] AXI4SoC2x2_L87F13L96T14_1_AXI4SoC2x2_L90F21L94T22_Object;
+	wire [177: 0] AXI4SoC2x2_L87F13L96T14_0_AXI4SoC2x2_L90F21L94T22_Object;
+	wire [177: 0] AXI4SoC2x2_L87F13L96T14_1_AXI4SoC2x2_L90F21L94T22_Object;
 	wire [254: 0] AXI4SoC2x2_L98F13L107T14_0_AXI4SoC2x2_L101F21L105T22_Object;
 	wire [254: 0] AXI4SoC2x2_L98F13L107T14_1_AXI4SoC2x2_L101F21L105T22_Object;
 	wire [591: 0] AXI4SoC2x2_L110F17L114T18_Object;
@@ -129,7 +133,7 @@ module AXI4SoC2x2_TopLevel
 	wire [221: 0] interconnect_oM2S1_interconnect_oM2S_HardLink;
 	wire [73: 0] interconnect_oS2M0_interconnect_oS2M_HardLink;
 	wire [73: 0] interconnect_oS2M1_interconnect_oS2M_HardLink;
-	wire [101: 0] masters0_Master_masters0_Master_HardLink;
+	wire [103: 0] masters0_Master_masters0_Master_HardLink;
 	wire [73: 0] masters0_S2M_masters0_S2M_HardLink;
 	wire [221: 0] masters0_M2S_masters0_M2S_HardLink;
 	wire masters0_RACK_masters0_RACK_HardLink;
@@ -138,7 +142,7 @@ module AXI4SoC2x2_TopLevel
 	wire [7: 0] masters0_RDATA2_masters0_RDATA_HardLink;
 	wire [7: 0] masters0_RDATA3_masters0_RDATA_HardLink;
 	wire masters0_WACK_masters0_WACK_HardLink;
-	wire [101: 0] masters1_Master_masters1_Master_HardLink;
+	wire [103: 0] masters1_Master_masters1_Master_HardLink;
 	wire [73: 0] masters1_S2M_masters1_S2M_HardLink;
 	wire [221: 0] masters1_M2S_masters1_M2S_HardLink;
 	wire masters1_RACK_masters1_RACK_HardLink;
@@ -165,7 +169,7 @@ module AXI4SoC2x2_TopLevel
 	wire [7: 0] registers1_outData3_registers1_outData_HardLink;
 	wire registers1_outWritten_registers1_outWritten_HardLink;
 	wire [73: 0] registers1_S2M_registers1_S2M_HardLink;
-	wire [101 : 0] Inputs_MasterInputs [0 : 1];
+	wire [103 : 0] Inputs_MasterInputs [0 : 1];
 	wire [32 : 0] Inputs_RegInputs [0 : 1];
 	wire [221 : 0] interconnect_iM2S [0 : 1];
 	wire [73 : 0] interconnect_iS2M [0 : 1];
@@ -285,22 +289,26 @@ module AXI4SoC2x2_TopLevel
 		.outWritten (registers1_outWritten_registers1_outWritten_HardLink),
 		.S2M (registers1_S2M_registers1_S2M_HardLink)
 	);
-	assign Inputs_MasterInputs[0][101:98] = MasterInputs0_WSTRB;
-	assign Inputs_MasterInputs[0][97] = MasterInputs0_WE;
-	assign Inputs_MasterInputs[0][96:89] = MasterInputs0_WDATA3;
-	assign Inputs_MasterInputs[0][88:81] = MasterInputs0_WDATA2;
-	assign Inputs_MasterInputs[0][80:73] = MasterInputs0_WDATA1;
-	assign Inputs_MasterInputs[0][72:65] = MasterInputs0_WDATA0;
-	assign Inputs_MasterInputs[0][64] = MasterInputs0_RE;
+	assign Inputs_MasterInputs[0][103:100] = MasterInputs0_WSTRB;
+	assign Inputs_MasterInputs[0][99] = MasterInputs0_WE;
+	assign Inputs_MasterInputs[0][98:91] = MasterInputs0_WDATA3;
+	assign Inputs_MasterInputs[0][90:83] = MasterInputs0_WDATA2;
+	assign Inputs_MasterInputs[0][82:75] = MasterInputs0_WDATA1;
+	assign Inputs_MasterInputs[0][74:67] = MasterInputs0_WDATA0;
+	assign Inputs_MasterInputs[0][66] = MasterInputs0_RREADY;
+	assign Inputs_MasterInputs[0][65] = MasterInputs0_RE;
+	assign Inputs_MasterInputs[0][64] = MasterInputs0_BREADY;
 	assign Inputs_MasterInputs[0][63:32] = MasterInputs0_AWADDR;
 	assign Inputs_MasterInputs[0][31:0] = MasterInputs0_ARADDR;
-	assign Inputs_MasterInputs[1][101:98] = MasterInputs1_WSTRB;
-	assign Inputs_MasterInputs[1][97] = MasterInputs1_WE;
-	assign Inputs_MasterInputs[1][96:89] = MasterInputs1_WDATA3;
-	assign Inputs_MasterInputs[1][88:81] = MasterInputs1_WDATA2;
-	assign Inputs_MasterInputs[1][80:73] = MasterInputs1_WDATA1;
-	assign Inputs_MasterInputs[1][72:65] = MasterInputs1_WDATA0;
-	assign Inputs_MasterInputs[1][64] = MasterInputs1_RE;
+	assign Inputs_MasterInputs[1][103:100] = MasterInputs1_WSTRB;
+	assign Inputs_MasterInputs[1][99] = MasterInputs1_WE;
+	assign Inputs_MasterInputs[1][98:91] = MasterInputs1_WDATA3;
+	assign Inputs_MasterInputs[1][90:83] = MasterInputs1_WDATA2;
+	assign Inputs_MasterInputs[1][82:75] = MasterInputs1_WDATA1;
+	assign Inputs_MasterInputs[1][74:67] = MasterInputs1_WDATA0;
+	assign Inputs_MasterInputs[1][66] = MasterInputs1_RREADY;
+	assign Inputs_MasterInputs[1][65] = MasterInputs1_RE;
+	assign Inputs_MasterInputs[1][64] = MasterInputs1_BREADY;
 	assign Inputs_MasterInputs[1][63:32] = MasterInputs1_AWADDR;
 	assign Inputs_MasterInputs[1][31:0] = MasterInputs1_ARADDR;
 	assign Inputs_RegInputs[0][32] = RegInputs0_inWE;
@@ -313,14 +321,14 @@ module AXI4SoC2x2_TopLevel
 	assign Inputs_RegInputs[1][23:16] = RegInputs1_inWDATA2;
 	assign Inputs_RegInputs[1][15:8] = RegInputs1_inWDATA1;
 	assign Inputs_RegInputs[1][7:0] = RegInputs1_inWDATA0;
-	assign AXI4SoC2x2_L87F13L96T14_0_AXI4SoC2x2_L90F21L94T22_Object[101:0] = Inputs_MasterInputs[0];
-	assign AXI4SoC2x2_L87F13L96T14_0_AXI4SoC2x2_L90F21L94T22_Object[175:102] = interconnect_oS2M[0];
-	assign masters0_S2M = AXI4SoC2x2_L87F13L96T14_0_AXI4SoC2x2_L90F21L94T22_Object[175:102];
-	assign masters0_Master = AXI4SoC2x2_L87F13L96T14_0_AXI4SoC2x2_L90F21L94T22_Object[101:0];
-	assign AXI4SoC2x2_L87F13L96T14_1_AXI4SoC2x2_L90F21L94T22_Object[101:0] = Inputs_MasterInputs[1];
-	assign AXI4SoC2x2_L87F13L96T14_1_AXI4SoC2x2_L90F21L94T22_Object[175:102] = interconnect_oS2M[1];
-	assign masters1_S2M = AXI4SoC2x2_L87F13L96T14_1_AXI4SoC2x2_L90F21L94T22_Object[175:102];
-	assign masters1_Master = AXI4SoC2x2_L87F13L96T14_1_AXI4SoC2x2_L90F21L94T22_Object[101:0];
+	assign AXI4SoC2x2_L87F13L96T14_0_AXI4SoC2x2_L90F21L94T22_Object[103:0] = Inputs_MasterInputs[0];
+	assign AXI4SoC2x2_L87F13L96T14_0_AXI4SoC2x2_L90F21L94T22_Object[177:104] = interconnect_oS2M[0];
+	assign masters0_S2M = AXI4SoC2x2_L87F13L96T14_0_AXI4SoC2x2_L90F21L94T22_Object[177:104];
+	assign masters0_Master = AXI4SoC2x2_L87F13L96T14_0_AXI4SoC2x2_L90F21L94T22_Object[103:0];
+	assign AXI4SoC2x2_L87F13L96T14_1_AXI4SoC2x2_L90F21L94T22_Object[103:0] = Inputs_MasterInputs[1];
+	assign AXI4SoC2x2_L87F13L96T14_1_AXI4SoC2x2_L90F21L94T22_Object[177:104] = interconnect_oS2M[1];
+	assign masters1_S2M = AXI4SoC2x2_L87F13L96T14_1_AXI4SoC2x2_L90F21L94T22_Object[177:104];
+	assign masters1_Master = AXI4SoC2x2_L87F13L96T14_1_AXI4SoC2x2_L90F21L94T22_Object[103:0];
 	assign AXI4SoC2x2_L98F13L107T14_0_AXI4SoC2x2_L101F21L105T22_Object[221:0] = interconnect_oM2S[0];
 	assign AXI4SoC2x2_L98F13L107T14_0_AXI4SoC2x2_L101F21L105T22_Object[254:222] = Inputs_RegInputs[0];
 	assign registers0_Reg = AXI4SoC2x2_L98F13L107T14_0_AXI4SoC2x2_L101F21L105T22_Object[254:222];

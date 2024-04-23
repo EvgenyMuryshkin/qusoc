@@ -28,7 +28,9 @@ entity AXI4SoC2x2_TopLevel is
 		Reset : in std_logic;
 		MasterInputs0_ARADDR : in unsigned (31 downto 0);
 		MasterInputs0_AWADDR : in unsigned (31 downto 0);
+		MasterInputs0_BREADY : in std_logic;
 		MasterInputs0_RE : in std_logic;
+		MasterInputs0_RREADY : in std_logic;
 		MasterInputs0_WDATA0 : in unsigned (7 downto 0);
 		MasterInputs0_WDATA1 : in unsigned (7 downto 0);
 		MasterInputs0_WDATA2 : in unsigned (7 downto 0);
@@ -37,7 +39,9 @@ entity AXI4SoC2x2_TopLevel is
 		MasterInputs0_WSTRB : in unsigned (3 downto 0);
 		MasterInputs1_ARADDR : in unsigned (31 downto 0);
 		MasterInputs1_AWADDR : in unsigned (31 downto 0);
+		MasterInputs1_BREADY : in std_logic;
 		MasterInputs1_RE : in std_logic;
+		MasterInputs1_RREADY : in std_logic;
 		MasterInputs1_WDATA0 : in unsigned (7 downto 0);
 		MasterInputs1_WDATA1 : in unsigned (7 downto 0);
 		MasterInputs1_WDATA2 : in unsigned (7 downto 0);
@@ -97,12 +101,12 @@ architecture rtl of AXI4SoC2x2_TopLevel is
 	constant AXI4SoC2x2_L87F13L96T14_1_masterIndex : std_logic := '1';
 	constant AXI4SoC2x2_L98F13L107T14_0_registerIndex : std_logic := '0';
 	constant AXI4SoC2x2_L98F13L107T14_1_registerIndex : std_logic := '1';
-	signal masters0_Master : unsigned(101 downto 0) := (others => '0');
+	signal masters0_Master : unsigned(103 downto 0) := (others => '0');
 	signal masters0_S2M : unsigned(73 downto 0) := (others => '0');
 	signal masters0_M2S : unsigned(221 downto 0) := (others => '0');
 	signal masters0_RACK : std_logic := '0';
 	signal masters0_WACK : std_logic := '0';
-	signal masters1_Master : unsigned(101 downto 0) := (others => '0');
+	signal masters1_Master : unsigned(103 downto 0) := (others => '0');
 	signal masters1_S2M : unsigned(73 downto 0) := (others => '0');
 	signal masters1_M2S : unsigned(221 downto 0) := (others => '0');
 	signal masters1_RACK : std_logic := '0';
@@ -117,8 +121,8 @@ architecture rtl of AXI4SoC2x2_TopLevel is
 	signal registers1_outACK : std_logic := '0';
 	signal registers1_outWritten : std_logic := '0';
 	signal registers1_S2M : unsigned(73 downto 0) := (others => '0');
-	signal AXI4SoC2x2_L87F13L96T14_0_AXI4SoC2x2_L90F21L94T22_Object : unsigned(175 downto 0) := (others => '0');
-	signal AXI4SoC2x2_L87F13L96T14_1_AXI4SoC2x2_L90F21L94T22_Object : unsigned(175 downto 0) := (others => '0');
+	signal AXI4SoC2x2_L87F13L96T14_0_AXI4SoC2x2_L90F21L94T22_Object : unsigned(177 downto 0) := (others => '0');
+	signal AXI4SoC2x2_L87F13L96T14_1_AXI4SoC2x2_L90F21L94T22_Object : unsigned(177 downto 0) := (others => '0');
 	signal AXI4SoC2x2_L98F13L107T14_0_AXI4SoC2x2_L101F21L105T22_Object : unsigned(254 downto 0) := (others => '0');
 	signal AXI4SoC2x2_L98F13L107T14_1_AXI4SoC2x2_L101F21L105T22_Object : unsigned(254 downto 0) := (others => '0');
 	signal AXI4SoC2x2_L110F17L114T18_Object : unsigned(591 downto 0) := (others => '0');
@@ -134,7 +138,7 @@ architecture rtl of AXI4SoC2x2_TopLevel is
 	signal interconnect_oM2S1_interconnect_oM2S_HardLink : unsigned(221 downto 0) := "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
 	signal interconnect_oS2M0_interconnect_oS2M_HardLink : unsigned(73 downto 0) := "00000000000000000000000000000000000000000000000000000000000000000000000000";
 	signal interconnect_oS2M1_interconnect_oS2M_HardLink : unsigned(73 downto 0) := "00000000000000000000000000000000000000000000000000000000000000000000000000";
-	signal masters0_Master_masters0_Master_HardLink : unsigned(101 downto 0) := "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+	signal masters0_Master_masters0_Master_HardLink : unsigned(103 downto 0) := "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
 	signal masters0_S2M_masters0_S2M_HardLink : unsigned(73 downto 0) := "00000000000000000000000000000000000000000000000000000000000000000000000000";
 	signal masters0_M2S_masters0_M2S_HardLink : unsigned(221 downto 0) := "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
 	signal masters0_RACK_masters0_RACK_HardLink : std_logic := '0';
@@ -143,7 +147,7 @@ architecture rtl of AXI4SoC2x2_TopLevel is
 	signal masters0_RDATA2_masters0_RDATA_HardLink : unsigned(7 downto 0) := "00000000";
 	signal masters0_RDATA3_masters0_RDATA_HardLink : unsigned(7 downto 0) := "00000000";
 	signal masters0_WACK_masters0_WACK_HardLink : std_logic := '0';
-	signal masters1_Master_masters1_Master_HardLink : unsigned(101 downto 0) := "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+	signal masters1_Master_masters1_Master_HardLink : unsigned(103 downto 0) := "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
 	signal masters1_S2M_masters1_S2M_HardLink : unsigned(73 downto 0) := "00000000000000000000000000000000000000000000000000000000000000000000000000";
 	signal masters1_M2S_masters1_M2S_HardLink : unsigned(221 downto 0) := "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
 	signal masters1_RACK_masters1_RACK_HardLink : std_logic := '0';
@@ -170,7 +174,7 @@ architecture rtl of AXI4SoC2x2_TopLevel is
 	signal registers1_outData3_registers1_outData_HardLink : unsigned(7 downto 0) := "00000000";
 	signal registers1_outWritten_registers1_outWritten_HardLink : std_logic := '0';
 	signal registers1_S2M_registers1_S2M_HardLink : unsigned(73 downto 0) := "00000000000000000000000000000000000000000000000000000000000000000000000000";
-	type Inputs_MasterInputsArray is array (0 to 1) of unsigned (101 downto 0);
+	type Inputs_MasterInputsArray is array (0 to 1) of unsigned (103 downto 0);
 	signal Inputs_MasterInputs : Inputs_MasterInputsArray := (others => (others => '0'));
 	type Inputs_RegInputsArray is array (0 to 1) of unsigned (32 downto 0);
 	signal Inputs_RegInputs : Inputs_RegInputsArray := (others => (others => '0'));
@@ -286,24 +290,28 @@ begin
 		S2M => registers1_S2M_registers1_S2M_HardLink
 	)
 	;
-	process (AXI4SoC2x2_L110F17L114T18_Object, AXI4SoC2x2_L112F28T64_Enumerable, AXI4SoC2x2_L113F28T66_Enumerable, AXI4SoC2x2_L66F51L72T25_Enumerable, AXI4SoC2x2_L66F51L72T25_registers0_AXI4SoC2x2_L67F26L72T14_Object, AXI4SoC2x2_L66F51L72T25_registers1_AXI4SoC2x2_L67F26L72T14_Object, AXI4SoC2x2_L74F52L81T23_Enumerable, AXI4SoC2x2_L74F52L81T23_masters0_AXI4SoC2x2_L75F26L80T14_Object, AXI4SoC2x2_L74F52L81T23_masters1_AXI4SoC2x2_L75F26L80T14_Object, AXI4SoC2x2_L87F13L96T14_0_AXI4SoC2x2_L90F21L94T22_Object, AXI4SoC2x2_L87F13L96T14_1_AXI4SoC2x2_L90F21L94T22_Object, AXI4SoC2x2_L98F13L107T14_0_AXI4SoC2x2_L101F21L105T22_Object, AXI4SoC2x2_L98F13L107T14_1_AXI4SoC2x2_L101F21L105T22_Object, Inputs_MasterInputs, Inputs_RegInputs, interconnect_iM2S, interconnect_iS2M, interconnect_oM2S, interconnect_oM2S0_interconnect_oM2S_HardLink, interconnect_oM2S1_interconnect_oM2S_HardLink, interconnect_oS2M, interconnect_oS2M0_interconnect_oS2M_HardLink, interconnect_oS2M1_interconnect_oS2M_HardLink, MasterInputs0_ARADDR, MasterInputs0_AWADDR, MasterInputs0_RE, MasterInputs0_WDATA0, MasterInputs0_WDATA1, MasterInputs0_WDATA2, MasterInputs0_WDATA3, MasterInputs0_WE, MasterInputs0_WSTRB, MasterInputs1_ARADDR, MasterInputs1_AWADDR, MasterInputs1_RE, MasterInputs1_WDATA0, MasterInputs1_WDATA1, MasterInputs1_WDATA2, MasterInputs1_WDATA3, MasterInputs1_WE, MasterInputs1_WSTRB, masters0_M2S, masters0_M2S_masters0_M2S_HardLink, masters0_Master, masters0_RACK, masters0_RACK_masters0_RACK_HardLink, masters0_RDATA, masters0_RDATA0_masters0_RDATA_HardLink, masters0_RDATA1_masters0_RDATA_HardLink, masters0_RDATA2_masters0_RDATA_HardLink, masters0_RDATA3_masters0_RDATA_HardLink, masters0_S2M, masters0_WACK, masters0_WACK_masters0_WACK_HardLink, masters1_M2S, masters1_M2S_masters1_M2S_HardLink, masters1_Master, masters1_RACK, masters1_RACK_masters1_RACK_HardLink, masters1_RDATA, masters1_RDATA0_masters1_RDATA_HardLink, masters1_RDATA1_masters1_RDATA_HardLink, masters1_RDATA2_masters1_RDATA_HardLink, masters1_RDATA3_masters1_RDATA_HardLink, masters1_S2M, masters1_WACK, masters1_WACK_masters1_WACK_HardLink, RegInputs0_inWDATA0, RegInputs0_inWDATA1, RegInputs0_inWDATA2, RegInputs0_inWDATA3, RegInputs0_inWE, RegInputs1_inWDATA0, RegInputs1_inWDATA1, RegInputs1_inWDATA2, RegInputs1_inWDATA3, RegInputs1_inWE, registers0_M2S, registers0_outACK, registers0_outACK_registers0_outACK_HardLink, registers0_outData, registers0_outData0_registers0_outData_HardLink, registers0_outData1_registers0_outData_HardLink, registers0_outData2_registers0_outData_HardLink, registers0_outData3_registers0_outData_HardLink, registers0_outWritten, registers0_outWritten_registers0_outWritten_HardLink, registers0_Reg, registers0_S2M, registers0_S2M_registers0_S2M_HardLink, registers1_M2S, registers1_outACK, registers1_outACK_registers1_outACK_HardLink, registers1_outData, registers1_outData0_registers1_outData_HardLink, registers1_outData1_registers1_outData_HardLink, registers1_outData2_registers1_outData_HardLink, registers1_outData3_registers1_outData_HardLink, registers1_outWritten, registers1_outWritten_registers1_outWritten_HardLink, registers1_Reg, registers1_S2M, registers1_S2M_registers1_S2M_HardLink)
+	process (AXI4SoC2x2_L110F17L114T18_Object, AXI4SoC2x2_L112F28T64_Enumerable, AXI4SoC2x2_L113F28T66_Enumerable, AXI4SoC2x2_L66F51L72T25_Enumerable, AXI4SoC2x2_L66F51L72T25_registers0_AXI4SoC2x2_L67F26L72T14_Object, AXI4SoC2x2_L66F51L72T25_registers1_AXI4SoC2x2_L67F26L72T14_Object, AXI4SoC2x2_L74F52L81T23_Enumerable, AXI4SoC2x2_L74F52L81T23_masters0_AXI4SoC2x2_L75F26L80T14_Object, AXI4SoC2x2_L74F52L81T23_masters1_AXI4SoC2x2_L75F26L80T14_Object, AXI4SoC2x2_L87F13L96T14_0_AXI4SoC2x2_L90F21L94T22_Object, AXI4SoC2x2_L87F13L96T14_1_AXI4SoC2x2_L90F21L94T22_Object, AXI4SoC2x2_L98F13L107T14_0_AXI4SoC2x2_L101F21L105T22_Object, AXI4SoC2x2_L98F13L107T14_1_AXI4SoC2x2_L101F21L105T22_Object, Inputs_MasterInputs, Inputs_RegInputs, interconnect_iM2S, interconnect_iS2M, interconnect_oM2S, interconnect_oM2S0_interconnect_oM2S_HardLink, interconnect_oM2S1_interconnect_oM2S_HardLink, interconnect_oS2M, interconnect_oS2M0_interconnect_oS2M_HardLink, interconnect_oS2M1_interconnect_oS2M_HardLink, MasterInputs0_ARADDR, MasterInputs0_AWADDR, MasterInputs0_BREADY, MasterInputs0_RE, MasterInputs0_RREADY, MasterInputs0_WDATA0, MasterInputs0_WDATA1, MasterInputs0_WDATA2, MasterInputs0_WDATA3, MasterInputs0_WE, MasterInputs0_WSTRB, MasterInputs1_ARADDR, MasterInputs1_AWADDR, MasterInputs1_BREADY, MasterInputs1_RE, MasterInputs1_RREADY, MasterInputs1_WDATA0, MasterInputs1_WDATA1, MasterInputs1_WDATA2, MasterInputs1_WDATA3, MasterInputs1_WE, MasterInputs1_WSTRB, masters0_M2S, masters0_M2S_masters0_M2S_HardLink, masters0_Master, masters0_RACK, masters0_RACK_masters0_RACK_HardLink, masters0_RDATA, masters0_RDATA0_masters0_RDATA_HardLink, masters0_RDATA1_masters0_RDATA_HardLink, masters0_RDATA2_masters0_RDATA_HardLink, masters0_RDATA3_masters0_RDATA_HardLink, masters0_S2M, masters0_WACK, masters0_WACK_masters0_WACK_HardLink, masters1_M2S, masters1_M2S_masters1_M2S_HardLink, masters1_Master, masters1_RACK, masters1_RACK_masters1_RACK_HardLink, masters1_RDATA, masters1_RDATA0_masters1_RDATA_HardLink, masters1_RDATA1_masters1_RDATA_HardLink, masters1_RDATA2_masters1_RDATA_HardLink, masters1_RDATA3_masters1_RDATA_HardLink, masters1_S2M, masters1_WACK, masters1_WACK_masters1_WACK_HardLink, RegInputs0_inWDATA0, RegInputs0_inWDATA1, RegInputs0_inWDATA2, RegInputs0_inWDATA3, RegInputs0_inWE, RegInputs1_inWDATA0, RegInputs1_inWDATA1, RegInputs1_inWDATA2, RegInputs1_inWDATA3, RegInputs1_inWE, registers0_M2S, registers0_outACK, registers0_outACK_registers0_outACK_HardLink, registers0_outData, registers0_outData0_registers0_outData_HardLink, registers0_outData1_registers0_outData_HardLink, registers0_outData2_registers0_outData_HardLink, registers0_outData3_registers0_outData_HardLink, registers0_outWritten, registers0_outWritten_registers0_outWritten_HardLink, registers0_Reg, registers0_S2M, registers0_S2M_registers0_S2M_HardLink, registers1_M2S, registers1_outACK, registers1_outACK_registers1_outACK_HardLink, registers1_outData, registers1_outData0_registers1_outData_HardLink, registers1_outData1_registers1_outData_HardLink, registers1_outData2_registers1_outData_HardLink, registers1_outData3_registers1_outData_HardLink, registers1_outWritten, registers1_outWritten_registers1_outWritten_HardLink, registers1_Reg, registers1_S2M, registers1_S2M_registers1_S2M_HardLink)
 	begin
-		Inputs_MasterInputs(0)(101 downto 98) <= MasterInputs0_WSTRB;
-		Inputs_MasterInputs(0)(97) <= MasterInputs0_WE;
-		Inputs_MasterInputs(0)(96 downto 89) <= MasterInputs0_WDATA3;
-		Inputs_MasterInputs(0)(88 downto 81) <= MasterInputs0_WDATA2;
-		Inputs_MasterInputs(0)(80 downto 73) <= MasterInputs0_WDATA1;
-		Inputs_MasterInputs(0)(72 downto 65) <= MasterInputs0_WDATA0;
-		Inputs_MasterInputs(0)(64) <= MasterInputs0_RE;
+		Inputs_MasterInputs(0)(103 downto 100) <= MasterInputs0_WSTRB;
+		Inputs_MasterInputs(0)(99) <= MasterInputs0_WE;
+		Inputs_MasterInputs(0)(98 downto 91) <= MasterInputs0_WDATA3;
+		Inputs_MasterInputs(0)(90 downto 83) <= MasterInputs0_WDATA2;
+		Inputs_MasterInputs(0)(82 downto 75) <= MasterInputs0_WDATA1;
+		Inputs_MasterInputs(0)(74 downto 67) <= MasterInputs0_WDATA0;
+		Inputs_MasterInputs(0)(66) <= MasterInputs0_RREADY;
+		Inputs_MasterInputs(0)(65) <= MasterInputs0_RE;
+		Inputs_MasterInputs(0)(64) <= MasterInputs0_BREADY;
 		Inputs_MasterInputs(0)(63 downto 32) <= MasterInputs0_AWADDR;
 		Inputs_MasterInputs(0)(31 downto 0) <= MasterInputs0_ARADDR;
-		Inputs_MasterInputs(1)(101 downto 98) <= MasterInputs1_WSTRB;
-		Inputs_MasterInputs(1)(97) <= MasterInputs1_WE;
-		Inputs_MasterInputs(1)(96 downto 89) <= MasterInputs1_WDATA3;
-		Inputs_MasterInputs(1)(88 downto 81) <= MasterInputs1_WDATA2;
-		Inputs_MasterInputs(1)(80 downto 73) <= MasterInputs1_WDATA1;
-		Inputs_MasterInputs(1)(72 downto 65) <= MasterInputs1_WDATA0;
-		Inputs_MasterInputs(1)(64) <= MasterInputs1_RE;
+		Inputs_MasterInputs(1)(103 downto 100) <= MasterInputs1_WSTRB;
+		Inputs_MasterInputs(1)(99) <= MasterInputs1_WE;
+		Inputs_MasterInputs(1)(98 downto 91) <= MasterInputs1_WDATA3;
+		Inputs_MasterInputs(1)(90 downto 83) <= MasterInputs1_WDATA2;
+		Inputs_MasterInputs(1)(82 downto 75) <= MasterInputs1_WDATA1;
+		Inputs_MasterInputs(1)(74 downto 67) <= MasterInputs1_WDATA0;
+		Inputs_MasterInputs(1)(66) <= MasterInputs1_RREADY;
+		Inputs_MasterInputs(1)(65) <= MasterInputs1_RE;
+		Inputs_MasterInputs(1)(64) <= MasterInputs1_BREADY;
 		Inputs_MasterInputs(1)(63 downto 32) <= MasterInputs1_AWADDR;
 		Inputs_MasterInputs(1)(31 downto 0) <= MasterInputs1_ARADDR;
 		Inputs_RegInputs(0)(32) <= RegInputs0_inWE;
@@ -316,14 +324,14 @@ begin
 		Inputs_RegInputs(1)(23 downto 16) <= RegInputs1_inWDATA2;
 		Inputs_RegInputs(1)(15 downto 8) <= RegInputs1_inWDATA1;
 		Inputs_RegInputs(1)(7 downto 0) <= RegInputs1_inWDATA0;
-		AXI4SoC2x2_L87F13L96T14_0_AXI4SoC2x2_L90F21L94T22_Object(101 downto 0) <= Inputs_MasterInputs(0);
-		AXI4SoC2x2_L87F13L96T14_0_AXI4SoC2x2_L90F21L94T22_Object(175 downto 102) <= interconnect_oS2M(0);
-		masters0_S2M <= AXI4SoC2x2_L87F13L96T14_0_AXI4SoC2x2_L90F21L94T22_Object(175 downto 102);
-		masters0_Master <= AXI4SoC2x2_L87F13L96T14_0_AXI4SoC2x2_L90F21L94T22_Object(101 downto 0);
-		AXI4SoC2x2_L87F13L96T14_1_AXI4SoC2x2_L90F21L94T22_Object(101 downto 0) <= Inputs_MasterInputs(1);
-		AXI4SoC2x2_L87F13L96T14_1_AXI4SoC2x2_L90F21L94T22_Object(175 downto 102) <= interconnect_oS2M(1);
-		masters1_S2M <= AXI4SoC2x2_L87F13L96T14_1_AXI4SoC2x2_L90F21L94T22_Object(175 downto 102);
-		masters1_Master <= AXI4SoC2x2_L87F13L96T14_1_AXI4SoC2x2_L90F21L94T22_Object(101 downto 0);
+		AXI4SoC2x2_L87F13L96T14_0_AXI4SoC2x2_L90F21L94T22_Object(103 downto 0) <= Inputs_MasterInputs(0);
+		AXI4SoC2x2_L87F13L96T14_0_AXI4SoC2x2_L90F21L94T22_Object(177 downto 104) <= interconnect_oS2M(0);
+		masters0_S2M <= AXI4SoC2x2_L87F13L96T14_0_AXI4SoC2x2_L90F21L94T22_Object(177 downto 104);
+		masters0_Master <= AXI4SoC2x2_L87F13L96T14_0_AXI4SoC2x2_L90F21L94T22_Object(103 downto 0);
+		AXI4SoC2x2_L87F13L96T14_1_AXI4SoC2x2_L90F21L94T22_Object(103 downto 0) <= Inputs_MasterInputs(1);
+		AXI4SoC2x2_L87F13L96T14_1_AXI4SoC2x2_L90F21L94T22_Object(177 downto 104) <= interconnect_oS2M(1);
+		masters1_S2M <= AXI4SoC2x2_L87F13L96T14_1_AXI4SoC2x2_L90F21L94T22_Object(177 downto 104);
+		masters1_Master <= AXI4SoC2x2_L87F13L96T14_1_AXI4SoC2x2_L90F21L94T22_Object(103 downto 0);
 		AXI4SoC2x2_L98F13L107T14_0_AXI4SoC2x2_L101F21L105T22_Object(221 downto 0) <= interconnect_oM2S(0);
 		AXI4SoC2x2_L98F13L107T14_0_AXI4SoC2x2_L101F21L105T22_Object(254 downto 222) <= Inputs_RegInputs(0);
 		registers0_Reg <= AXI4SoC2x2_L98F13L107T14_0_AXI4SoC2x2_L101F21L105T22_Object(254 downto 222);
