@@ -4,8 +4,13 @@ No reads:
 	AXI4MemoryModule_L113F9L145T10_AXI4MemoryModule_L133F13L137T14_1_w
 	AXI4MemoryModule_L113F9L145T10_AXI4MemoryModule_L133F13L137T14_2_w
 	AXI4MemoryModule_L113F9L145T10_AXI4MemoryModule_L133F13L137T14_3_w
+	AXI4MemoryModule_L83F13L85T41_Expr_1
+	AXI4MemoryModule_L93F13L95T41_Expr_1
 	axiSlave_outARVALID
 	axiSlave_outAWVALID
 	axiSlave_outReadTXCompleting
 	axiSlave_outWVALID
 	size
+No writes:
+	AXI4MemoryModule_L83F13L85T41_Expr
+	AXI4MemoryModule_L93F13L95T41_Expr

@@ -28,7 +28,7 @@ module AXI4MasterSlaveTestModule_TopLevel_master
 	input wire BoardSignals_Running,
 	input wire BoardSignals_Starting,
 	input wire BoardSignals_Started,
-	input wire [101:0] Master,
+	input wire [103:0] Master,
 	input wire [73:0] S2M,
 	output wire [221:0] M2S,
 	output wire RACK,
@@ -78,7 +78,6 @@ module AXI4MasterSlaveTestModule_TopLevel_master
 	wire [3: 0] AXI4_M_AR_L42F31T44_Expr = 4'b0000;
 	wire AXI4_M_AR_L45F32T33_Expr = 1'b0;
 	wire AXI4_M_AR_L48F30T31_Expr = 1'b0;
-	wire AXI4MasterModule_L88F30T34_Expr = 1'b1;
 	wire AXI4_M_AW_L17F28T29_Expr = 1'b0;
 	wire AXI4_M_AW_L23F29T30_Expr = 1'b1;
 	wire [2: 0] AXI4_M_AW_L26F33T43_Expr = 3'b010;
@@ -92,12 +91,13 @@ module AXI4MasterSlaveTestModule_TopLevel_master
 	wire AXI4MasterModule_L100F27T28_Expr = 1'b0;
 	wire AXI4_M_W_L24F29T33_Expr = 1'b1;
 	wire AXI4_M_W_L27F29T30_Expr = 1'b0;
-	wire AXI4MasterModule_L107F30T34_Expr = 1'b1;
 	wire [1: 0] AXI4MasterModule_L72F46T65_Expr = 2'b10;
 	wire [1: 0] AXI4MasterModule_L75F47T67_Expr = 2'b10;
 	wire [31: 0] Inputs_Master_ARADDR;
 	wire [31: 0] Inputs_Master_AWADDR;
+	wire Inputs_Master_BREADY;
 	wire Inputs_Master_RE;
+	wire Inputs_Master_RREADY;
 	wire Inputs_Master_WE;
 	wire [3: 0] Inputs_Master_WSTRB;
 	wire Inputs_S2M_R_AR_ARREADY;
@@ -357,13 +357,15 @@ module AXI4MasterSlaveTestModule_TopLevel_master
 	assign AXI4MasterModule_L72F29T76_Expr_2 = readAck;
 	assign AXI4MasterModule_L75F29T79_Expr_1 = AXI4MasterModule_L75F29T67_Expr;
 	assign AXI4MasterModule_L75F29T79_Expr_2 = writeAck;
-	assign Inputs_Master_WSTRB = Master[101:98];
-	assign Inputs_Master_WE = Master[97];
-	assign Inputs_Master_WDATA[3] = Master[96:89];
-	assign Inputs_Master_WDATA[2] = Master[88:81];
-	assign Inputs_Master_WDATA[1] = Master[80:73];
-	assign Inputs_Master_WDATA[0] = Master[72:65];
-	assign Inputs_Master_RE = Master[64];
+	assign Inputs_Master_WSTRB = Master[103:100];
+	assign Inputs_Master_WE = Master[99];
+	assign Inputs_Master_WDATA[3] = Master[98:91];
+	assign Inputs_Master_WDATA[2] = Master[90:83];
+	assign Inputs_Master_WDATA[1] = Master[82:75];
+	assign Inputs_Master_WDATA[0] = Master[74:67];
+	assign Inputs_Master_RREADY = Master[66];
+	assign Inputs_Master_RE = Master[65];
+	assign Inputs_Master_BREADY = Master[64];
 	assign Inputs_Master_AWADDR = Master[63:32];
 	assign Inputs_Master_ARADDR = Master[31:0];
 	assign Inputs_S2M_W_W_WREADY = S2M[73];
@@ -384,7 +386,7 @@ module AXI4MasterSlaveTestModule_TopLevel_master
 	assign Inputs_S2M_R_AR_ARREADY = S2M[0];
 	assign readAck = AXI4MasterModule_L69F25T66_Expr;
 	assign writeAck = AXI4MasterModule_L70F26T86_Expr;
-	assign M2S[221] = AXI4MasterModule_L107F30T34_Expr;
+	assign M2S[221] = Inputs_Master_BREADY;
 	assign M2S[220] = Inputs_Master_WE;
 	assign M2S[219:212] = {
 		{7{1'b0}},
@@ -430,7 +432,7 @@ module AXI4MasterSlaveTestModule_TopLevel_master
 		AXI4_M_AW_L17F28T29_Expr
 	}
 	;
-	assign M2S[83] = AXI4MasterModule_L88F30T34_Expr;
+	assign M2S[83] = Inputs_Master_RREADY;
 	assign M2S[82] = Inputs_Master_RE;
 	assign M2S[81:74] = {
 		{7{1'b0}},

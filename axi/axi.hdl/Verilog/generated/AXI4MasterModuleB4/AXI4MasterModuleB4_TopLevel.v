@@ -27,7 +27,9 @@ module AXI4MasterModuleB4_TopLevel
 	input wire Reset,
 	input wire [31:0] Master_ARADDR,
 	input wire [31:0] Master_AWADDR,
+	input wire Master_BREADY,
 	input wire Master_RE,
+	input wire Master_RREADY,
 	input wire [7:0] Master_WDATA0,
 	input wire [7:0] Master_WDATA1,
 	input wire [7:0] Master_WDATA2,
@@ -132,7 +134,6 @@ module AXI4MasterModuleB4_TopLevel
 	wire [3: 0] AXI4_M_AR_L42F31T44_Expr = 4'b0000;
 	wire AXI4_M_AR_L45F32T33_Expr = 1'b0;
 	wire AXI4_M_AR_L48F30T31_Expr = 1'b0;
-	wire AXI4MasterModule_L88F30T34_Expr = 1'b1;
 	wire AXI4_M_AW_L17F28T29_Expr = 1'b0;
 	wire AXI4_M_AW_L23F29T30_Expr = 1'b1;
 	wire [2: 0] AXI4_M_AW_L26F33T43_Expr = 3'b010;
@@ -146,12 +147,13 @@ module AXI4MasterModuleB4_TopLevel
 	wire AXI4MasterModule_L100F27T28_Expr = 1'b0;
 	wire AXI4_M_W_L24F29T33_Expr = 1'b1;
 	wire AXI4_M_W_L27F29T30_Expr = 1'b0;
-	wire AXI4MasterModule_L107F30T34_Expr = 1'b1;
 	wire [1: 0] AXI4MasterModule_L72F46T65_Expr = 2'b10;
 	wire [1: 0] AXI4MasterModule_L75F47T67_Expr = 2'b10;
 	wire [31: 0] Inputs_Master_ARADDR;
 	wire [31: 0] Inputs_Master_AWADDR;
+	wire Inputs_Master_BREADY;
 	wire Inputs_Master_RE;
+	wire Inputs_Master_RREADY;
 	wire Inputs_Master_WE;
 	wire [3: 0] Inputs_Master_WSTRB;
 	wire Inputs_S2M_R_AR_ARREADY;
@@ -413,7 +415,9 @@ module AXI4MasterModuleB4_TopLevel
 	assign AXI4MasterModule_L75F29T79_Expr_2 = writeAck;
 	assign Inputs_Master_ARADDR = Master_ARADDR;
 	assign Inputs_Master_AWADDR = Master_AWADDR;
+	assign Inputs_Master_BREADY = Master_BREADY;
 	assign Inputs_Master_RE = Master_RE;
+	assign Inputs_Master_RREADY = Master_RREADY;
 	assign Inputs_Master_WDATA[0] = Master_WDATA0;
 	assign Inputs_Master_WDATA[1] = Master_WDATA1;
 	assign Inputs_Master_WDATA[2] = Master_WDATA2;
@@ -466,7 +470,7 @@ module AXI4MasterModuleB4_TopLevel
 	}
 	;
 	assign M2S_R_AR_ARVALID = Inputs_Master_RE;
-	assign M2S_R_R_RREADY = AXI4MasterModule_L88F30T34_Expr;
+	assign M2S_R_R_RREADY = Inputs_Master_RREADY;
 	assign M2S_W_AW_AWID = {
 		{7{1'b0}},
 		AXI4_M_AW_L17F28T29_Expr
@@ -512,7 +516,7 @@ module AXI4MasterModuleB4_TopLevel
 	}
 	;
 	assign M2S_W_W_WVALID = Inputs_Master_WE;
-	assign M2S_W_B_BREADY = AXI4MasterModule_L107F30T34_Expr;
+	assign M2S_W_B_BREADY = Inputs_Master_BREADY;
 	assign RACK = AXI4MasterModule_L72F29T76_Expr;
 	assign RDATA0 = Inputs_S2M_R_R_RDATA[0];
 	assign RDATA1 = Inputs_S2M_R_R_RDATA[1];

@@ -82,7 +82,7 @@ namespace rtl.modules
         uint internalWADDR =>
             (internalSameTxWrite
             ? axiSlave.outAWADDR
-            : State.waddr);// >> addressLSB;
+            : State.waddr) >> addressLSB;
 
         byte[] internalWDATA =>
             internalSameTxWrite
@@ -92,7 +92,7 @@ namespace rtl.modules
         uint internalRADDR =>
             (axiSlave.outARREADYConfirming
             ? axiSlave.outARADDR
-            : State.raddr);// >> addressLSB;
+            : State.raddr) >> addressLSB;
 
         protected override void OnSchedule(Func<AXI4MemoryModuleInputs> inputsFactory)
         {
