@@ -1,7 +1,6 @@
 ﻿using Quokka.RTL;
-using RTL.Modules;
 
-namespace rtl.modules
+namespace axi.modules
 {
     public class TransactionDetectorModuleInputs
     {

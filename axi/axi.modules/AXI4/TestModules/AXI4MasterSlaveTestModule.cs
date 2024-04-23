@@ -1,8 +1,7 @@
 ﻿using Quokka.RTL;
-using RTL.Modules;
 using System;
 
-namespace rtl.modules
+namespace axi.modules
 {
     public class AXI4MasterSlaveTestModuleInputs
     {

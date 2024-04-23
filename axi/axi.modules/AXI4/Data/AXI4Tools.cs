@@ -1,6 +1,4 @@
-﻿using rtl.modules;
-
-namespace RTL.Modules
+﻿namespace axi.modules
 {
     public static class AXI4Tools
     {

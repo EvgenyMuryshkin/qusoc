@@ -1,8 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Quokka.RTL.Simulator;
 using QuokkaIntegrationTests;
-using rtl.modules;
-using RTL.Modules;
+using axi.modules;
 
 namespace axi.tests
 {

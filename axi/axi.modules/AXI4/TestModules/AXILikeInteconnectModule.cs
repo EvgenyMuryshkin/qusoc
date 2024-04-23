@@ -1,6 +1,6 @@
 ﻿using Quokka.RTL;
 
-namespace rtl.modules.AXI4.Modules
+namespace axi.modules
 {
     public class AXILikeInteconnectModule : InterconnectModule<MData, SData>
     {

@@ -1,7 +1,6 @@
 ﻿using QRV32.CPU;
 using Quokka.RTL;
-using rtl.modules;
-using RTL.Modules;
+using axi.modules;
 using System;
 
 namespace AXISoC

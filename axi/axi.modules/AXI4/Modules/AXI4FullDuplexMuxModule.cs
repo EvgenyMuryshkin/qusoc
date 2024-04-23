@@ -1,6 +1,4 @@
-﻿using RTL.Modules;
-
-namespace rtl.modules.AXI4.Modules
+﻿namespace axi.modules
 {
     public class AXI4FullDuplexMuxModule : FullDuplexMuxModule<AXI4_M2S, AXI4_S2M>
     { 

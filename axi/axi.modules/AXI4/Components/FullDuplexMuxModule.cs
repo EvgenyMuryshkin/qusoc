@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 
-namespace rtl.modules
+namespace axi.modules
 {
     public class FullDuplexMuxModuleInputs<TLeft, TRight>
         where TLeft: class

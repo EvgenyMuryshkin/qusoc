@@ -1,8 +1,6 @@
 ﻿using QRV32.CPU;
 using Quokka.RTL;
-using rtl.modules;
-using rtl.modules.AXI4.Modules;
-using RTL.Modules;
+using axi.modules;
 using System;
 using System.Collections.Generic;
 

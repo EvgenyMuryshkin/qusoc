@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace rtl.modules
+namespace axi.modules
 {
     public static class AXITools
     {

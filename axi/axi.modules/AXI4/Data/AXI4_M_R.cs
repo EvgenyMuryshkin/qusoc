@@ -1,4 +1,4 @@
-﻿namespace RTL.Modules
+﻿namespace axi.modules
 {
     /// <summary>
     /// Read data

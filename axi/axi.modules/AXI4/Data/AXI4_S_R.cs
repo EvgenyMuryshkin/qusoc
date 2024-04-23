@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RTL.Modules
+namespace axi.modules
 {
     public class AXI4_S_R
     {

@@ -1,9 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using axi.modules;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Quokka.RTL;
 using Quokka.RTL.Simulator;
 using QuokkaIntegrationTests;
-using rtl.modules;
-using RTL.Modules;
 using System;
 using System.Linq;
 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace rtl.modules.AXI4.Modules
+namespace axi.modules
 {
     public class Payload
     {

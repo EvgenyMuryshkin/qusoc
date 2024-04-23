@@ -1,10 +1,9 @@
 ﻿using Quokka.RTL;
-using RTL.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace rtl.modules.AXI4.Modules
+namespace axi.modules
 {
     public class AXI4WriteInteconnectModule : InterconnectModule<AXI4_M2S_W, AXI4_S2M_W>
     {

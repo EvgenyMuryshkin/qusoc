@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 
-namespace rtl.modules.AXI4.Modules
+namespace axi.modules
 {
     public class AXILikeMuxModuleManual :  RTLCombinationalModule<AXILikeMuxModuleInputs>
     {

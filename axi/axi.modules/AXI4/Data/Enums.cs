@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RTL.Modules
+namespace axi.modules
 {
     public enum axiResp : byte
     {

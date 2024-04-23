@@ -1,6 +1,6 @@
 ﻿using Quokka.RTL;
 
-namespace rtl.modules
+namespace axi.modules
 {
     public class AXIConfirmModuleInputs
     {

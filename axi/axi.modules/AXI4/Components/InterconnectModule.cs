@@ -3,7 +3,7 @@ using System;
 using System.Drawing;
 using System.Linq;
 
-namespace rtl.modules
+namespace axi.modules
 {
     public class InterconnectModuleInputs<TLeft, TRight>
     {

@@ -1,9 +1,8 @@
 ﻿using Quokka.RTL;
-using RTL.Modules;
 using System;
 using System.Text;
 
-namespace rtl.modules
+namespace axi.modules
 {
     public class AXI4RegisterModuleB4 : AXI4RegisterModule
     {

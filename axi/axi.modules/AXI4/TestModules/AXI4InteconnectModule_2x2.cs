@@ -1,8 +1,6 @@
-﻿using rtl.modules.AXI4.Modules;
-using RTL.Modules;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace rtl.modules
+namespace axi.modules
 {
     public class AXI4InteconnectModule_2x2 : AXI4InteconnectModule
     {

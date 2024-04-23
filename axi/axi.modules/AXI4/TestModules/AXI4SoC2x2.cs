@@ -1,11 +1,9 @@
 ﻿using Quokka.RTL;
-using rtl.modules.AXI4.Modules;
-using RTL.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace rtl.modules
+namespace axi.modules
 {
     public class AXI4SoCRegisterOutput
     {

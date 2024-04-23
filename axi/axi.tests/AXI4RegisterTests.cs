@@ -2,8 +2,7 @@
 using Quokka.RTL;
 using Quokka.RTL.Simulator;
 using QuokkaIntegrationTests;
-using rtl.modules;
-using RTL.Modules;
+using axi.modules;
 using System;
 
 namespace axi.tests

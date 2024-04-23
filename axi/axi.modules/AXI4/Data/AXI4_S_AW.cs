@@ -1,4 +1,4 @@
-﻿namespace RTL.Modules
+﻿namespace axi.modules
 {
     public class AXI4_S_AW
     {

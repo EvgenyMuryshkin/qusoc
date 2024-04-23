@@ -1,6 +1,6 @@
 ﻿using Quokka.RTL;
 
-namespace RTL.Modules
+namespace axi.modules
 {
     public class AXI4_M_W
     {

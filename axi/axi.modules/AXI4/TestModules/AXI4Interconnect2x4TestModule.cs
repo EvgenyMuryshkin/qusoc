@@ -1,9 +1,8 @@
 ﻿using Quokka.RTL;
-using RTL.Modules;
 using System;
 using System.Linq;
 
-namespace rtl.modules
+namespace axi.modules
 {
     public class AXI4Interconnect2x4TestModuleInputs
     {
