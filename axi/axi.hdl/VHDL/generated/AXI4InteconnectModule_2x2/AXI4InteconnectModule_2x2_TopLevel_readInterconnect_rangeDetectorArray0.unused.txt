@@ -1,7 +1,7 @@
 No reads:
 	encoder_MSBValue
-	RangeDetectorArrayModule_L49F13L55T14_0_idx
-	RangeDetectorArrayModule_L49F13L55T14_1_idx
-	RangeDetectorArrayModule_L57F13L60T14_0_idx
-	RangeDetectorArrayModule_L57F13L60T14_1_idx
+	RangeDetectorArrayModule_L48F13L54T14_0_idx
+	RangeDetectorArrayModule_L48F13L54T14_1_idx
+	RangeDetectorArrayModule_L56F13L59T14_0_idx
+	RangeDetectorArrayModule_L56F13L59T14_1_idx
 	rangeDetectorsCount

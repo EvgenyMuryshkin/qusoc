@@ -67,6 +67,8 @@ namespace axi.modules
                     {
                         WE = Inputs.MWE[i],
                         RE = Inputs.MRE[i],
+                        BREADY = true,
+                        RREADY = true,
                         ARADDR = 0,
                         AWADDR = 0,
                         WDATA = Inputs.InData,

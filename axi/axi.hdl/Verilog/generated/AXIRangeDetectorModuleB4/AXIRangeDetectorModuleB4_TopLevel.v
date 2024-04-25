@@ -39,44 +39,44 @@ module AXIRangeDetectorModuleB4_TopLevel
 	wire [31: 0] Inputs_RangeFrom;
 	wire [31: 0] Inputs_RangeTo;
 	wire [31: 0] Inputs_Value;
-	wire AXIRangeDetectorModule_L28F33T99_Expr;
-	wire AXIRangeDetectorModule_L28F33T99_Expr_1;
-	wire AXIRangeDetectorModule_L28F33T99_Expr_2;
-	wire AXIRangeDetectorModule_L28F33T65_Expr;
-	wire signed [32: 0] AXIRangeDetectorModule_L28F33T65_ExprLhs;
-	wire signed [32: 0] AXIRangeDetectorModule_L28F33T65_ExprRhs;
-	wire AXIRangeDetectorModule_L28F69T99_Expr;
-	wire signed [32: 0] AXIRangeDetectorModule_L28F69T99_ExprLhs;
-	wire signed [32: 0] AXIRangeDetectorModule_L28F69T99_ExprRhs;
-	assign AXIRangeDetectorModule_L28F33T65_Expr = AXIRangeDetectorModule_L28F33T65_ExprLhs >= AXIRangeDetectorModule_L28F33T65_ExprRhs ? 1'b1 : 1'b0;
-	assign AXIRangeDetectorModule_L28F69T99_Expr = AXIRangeDetectorModule_L28F69T99_ExprLhs <= AXIRangeDetectorModule_L28F69T99_ExprRhs ? 1'b1 : 1'b0;
-	assign AXIRangeDetectorModule_L28F33T99_Expr = AXIRangeDetectorModule_L28F33T99_Expr_1 & AXIRangeDetectorModule_L28F33T99_Expr_2;
-	assign AXIRangeDetectorModule_L28F33T65_ExprLhs = {
+	wire AXIRangeDetectorModule_L27F33T99_Expr;
+	wire AXIRangeDetectorModule_L27F33T99_Expr_1;
+	wire AXIRangeDetectorModule_L27F33T99_Expr_2;
+	wire AXIRangeDetectorModule_L27F33T65_Expr;
+	wire signed [32: 0] AXIRangeDetectorModule_L27F33T65_ExprLhs;
+	wire signed [32: 0] AXIRangeDetectorModule_L27F33T65_ExprRhs;
+	wire AXIRangeDetectorModule_L27F69T99_Expr;
+	wire signed [32: 0] AXIRangeDetectorModule_L27F69T99_ExprLhs;
+	wire signed [32: 0] AXIRangeDetectorModule_L27F69T99_ExprRhs;
+	assign AXIRangeDetectorModule_L27F33T65_Expr = AXIRangeDetectorModule_L27F33T65_ExprLhs >= AXIRangeDetectorModule_L27F33T65_ExprRhs ? 1'b1 : 1'b0;
+	assign AXIRangeDetectorModule_L27F69T99_Expr = AXIRangeDetectorModule_L27F69T99_ExprLhs <= AXIRangeDetectorModule_L27F69T99_ExprRhs ? 1'b1 : 1'b0;
+	assign AXIRangeDetectorModule_L27F33T99_Expr = AXIRangeDetectorModule_L27F33T99_Expr_1 & AXIRangeDetectorModule_L27F33T99_Expr_2;
+	assign AXIRangeDetectorModule_L27F33T65_ExprLhs = {
 		1'b0,
 		Inputs_Value
 	}
 	;
-	assign AXIRangeDetectorModule_L28F33T65_ExprRhs = {
+	assign AXIRangeDetectorModule_L27F33T65_ExprRhs = {
 		1'b0,
 		Inputs_RangeFrom
 	}
 	;
-	assign AXIRangeDetectorModule_L28F69T99_ExprLhs = {
+	assign AXIRangeDetectorModule_L27F69T99_ExprLhs = {
 		1'b0,
 		Inputs_Value
 	}
 	;
-	assign AXIRangeDetectorModule_L28F69T99_ExprRhs = {
+	assign AXIRangeDetectorModule_L27F69T99_ExprRhs = {
 		1'b0,
 		Inputs_RangeTo
 	}
 	;
-	assign AXIRangeDetectorModule_L28F33T99_Expr_1 = AXIRangeDetectorModule_L28F33T65_Expr;
-	assign AXIRangeDetectorModule_L28F33T99_Expr_2 = AXIRangeDetectorModule_L28F69T99_Expr;
+	assign AXIRangeDetectorModule_L27F33T99_Expr_1 = AXIRangeDetectorModule_L27F33T65_Expr;
+	assign AXIRangeDetectorModule_L27F33T99_Expr_2 = AXIRangeDetectorModule_L27F69T99_Expr;
 	assign Inputs_RangeFrom = RangeFrom;
 	assign Inputs_RangeTo = RangeTo;
 	assign Inputs_Value = Value;
-	assign IsActive = AXIRangeDetectorModule_L28F33T99_Expr;
+	assign IsActive = AXIRangeDetectorModule_L27F33T99_Expr;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

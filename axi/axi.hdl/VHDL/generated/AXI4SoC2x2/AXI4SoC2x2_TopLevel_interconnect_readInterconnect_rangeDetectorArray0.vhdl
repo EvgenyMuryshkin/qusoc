@@ -41,10 +41,10 @@ architecture rtl of AXI4SoC2x2_TopLevel_interconnect_readInterconnect_rangeDetec
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	constant rangeDetectorsCount : signed(2 downto 0) := "010";
-	constant RangeDetectorArrayModule_L49F13L55T14_0_idx : std_logic := '0';
-	constant RangeDetectorArrayModule_L49F13L55T14_1_idx : std_logic := '1';
-	constant RangeDetectorArrayModule_L57F13L60T14_0_idx : std_logic := '0';
-	constant RangeDetectorArrayModule_L57F13L60T14_1_idx : std_logic := '1';
+	constant RangeDetectorArrayModule_L48F13L54T14_0_idx : std_logic := '0';
+	constant RangeDetectorArrayModule_L48F13L54T14_1_idx : std_logic := '1';
+	constant RangeDetectorArrayModule_L56F13L59T14_0_idx : std_logic := '0';
+	constant RangeDetectorArrayModule_L56F13L59T14_1_idx : std_logic := '1';
 	signal Inputs_iAddress : unsigned(31 downto 0) := (others => '0');
 	signal encoder_HasActive : std_logic := '0';
 	signal encoder_MSBIndex : unsigned(0 downto 0) := (others => '0');
@@ -53,9 +53,9 @@ architecture rtl of AXI4SoC2x2_TopLevel_interconnect_readInterconnect_rangeDetec
 	signal rangeDetectors0_IsActive : std_logic := '0';
 	signal rangeDetectors1_Value : unsigned(31 downto 0) := (others => '0');
 	signal rangeDetectors1_IsActive : std_logic := '0';
-	signal RangeDetectorArrayModule_L49F13L55T14_0_RangeDetectorArrayModule_L51F52L54T18_Object : unsigned(31 downto 0) := (others => '0');
-	signal RangeDetectorArrayModule_L49F13L55T14_1_RangeDetectorArrayModule_L51F52L54T18_Object : unsigned(31 downto 0) := (others => '0');
-	signal RangeDetectorArrayModule_L37F36L41T14_Object : unsigned(1 downto 0) := (others => '0');
+	signal RangeDetectorArrayModule_L48F13L54T14_0_RangeDetectorArrayModule_L50F52L53T18_Object : unsigned(31 downto 0) := (others => '0');
+	signal RangeDetectorArrayModule_L48F13L54T14_1_RangeDetectorArrayModule_L50F52L53T18_Object : unsigned(31 downto 0) := (others => '0');
+	signal RangeDetectorArrayModule_L36F36L40T14_Object : unsigned(1 downto 0) := (others => '0');
 	signal encoder_iValues0_encoder_iValues_HardLink : std_logic := '0';
 	signal encoder_iValues1_encoder_iValues_HardLink : std_logic := '0';
 	signal encoder_HasActive_encoder_HasActive_HardLink : std_logic := '0';
@@ -100,19 +100,19 @@ begin
 		IsActive => rangeDetectors1_IsActive_rangeDetectors1_IsActive_HardLink
 	)
 	;
-	process (encoder_HasActive, encoder_HasActive_encoder_HasActive_HardLink, encoder_iValues, encoder_MSBIndex, encoder_MSBIndex_encoder_MSBIndex_HardLink, encoder_MSBValue_encoder_MSBValue_HardLink, iAddress, Inputs_iAddress, rangeActive, RangeDetectorArrayModule_L37F36L41T14_Object, RangeDetectorArrayModule_L49F13L55T14_0_RangeDetectorArrayModule_L51F52L54T18_Object, RangeDetectorArrayModule_L49F13L55T14_1_RangeDetectorArrayModule_L51F52L54T18_Object, rangeDetectors0_IsActive, rangeDetectors0_IsActive_rangeDetectors0_IsActive_HardLink, rangeDetectors0_Value, rangeDetectors1_IsActive, rangeDetectors1_IsActive_rangeDetectors1_IsActive_HardLink, rangeDetectors1_Value)
+	process (encoder_HasActive, encoder_HasActive_encoder_HasActive_HardLink, encoder_iValues, encoder_MSBIndex, encoder_MSBIndex_encoder_MSBIndex_HardLink, encoder_MSBValue_encoder_MSBValue_HardLink, iAddress, Inputs_iAddress, rangeActive, RangeDetectorArrayModule_L36F36L40T14_Object, RangeDetectorArrayModule_L48F13L54T14_0_RangeDetectorArrayModule_L50F52L53T18_Object, RangeDetectorArrayModule_L48F13L54T14_1_RangeDetectorArrayModule_L50F52L53T18_Object, rangeDetectors0_IsActive, rangeDetectors0_IsActive_rangeDetectors0_IsActive_HardLink, rangeDetectors0_Value, rangeDetectors1_IsActive, rangeDetectors1_IsActive_rangeDetectors1_IsActive_HardLink, rangeDetectors1_Value)
 	begin
 		Inputs_iAddress <= iAddress;
-		RangeDetectorArrayModule_L49F13L55T14_0_RangeDetectorArrayModule_L51F52L54T18_Object <= Inputs_iAddress;
-		rangeDetectors0_Value <= RangeDetectorArrayModule_L49F13L55T14_0_RangeDetectorArrayModule_L51F52L54T18_Object;
-		RangeDetectorArrayModule_L49F13L55T14_1_RangeDetectorArrayModule_L51F52L54T18_Object <= Inputs_iAddress;
-		rangeDetectors1_Value <= RangeDetectorArrayModule_L49F13L55T14_1_RangeDetectorArrayModule_L51F52L54T18_Object;
+		RangeDetectorArrayModule_L48F13L54T14_0_RangeDetectorArrayModule_L50F52L53T18_Object <= Inputs_iAddress;
+		rangeDetectors0_Value <= RangeDetectorArrayModule_L48F13L54T14_0_RangeDetectorArrayModule_L50F52L53T18_Object;
+		RangeDetectorArrayModule_L48F13L54T14_1_RangeDetectorArrayModule_L50F52L53T18_Object <= Inputs_iAddress;
+		rangeDetectors1_Value <= RangeDetectorArrayModule_L48F13L54T14_1_RangeDetectorArrayModule_L50F52L53T18_Object;
 		rangeActive(0) <= rangeDetectors0_IsActive;
 		rangeActive(1) <= rangeDetectors1_IsActive;
-		RangeDetectorArrayModule_L37F36L41T14_Object(1) <= rangeActive(1);
-		RangeDetectorArrayModule_L37F36L41T14_Object(0) <= rangeActive(0);
-		encoder_iValues(1) <= RangeDetectorArrayModule_L37F36L41T14_Object(1);
-		encoder_iValues(0) <= RangeDetectorArrayModule_L37F36L41T14_Object(0);
+		RangeDetectorArrayModule_L36F36L40T14_Object(1) <= rangeActive(1);
+		RangeDetectorArrayModule_L36F36L40T14_Object(0) <= rangeActive(0);
+		encoder_iValues(1) <= RangeDetectorArrayModule_L36F36L40T14_Object(1);
+		encoder_iValues(0) <= RangeDetectorArrayModule_L36F36L40T14_Object(0);
 		oActive <= encoder_HasActive;
 		oIndex <= encoder_MSBIndex;
 		encoder_iValues0_encoder_iValues_HardLink <= encoder_iValues(0);

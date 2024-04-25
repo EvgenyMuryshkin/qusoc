@@ -37,42 +37,42 @@ module RangeDetectorArrayModule4_TopLevel_rangeDetectors0
 	wire [0: 0] rangeFrom = 1'b0;
 	wire [27: 0] rangeTo = 28'b1111111111111111111111111111;
 	wire [31: 0] Inputs_Value;
-	wire RangeDetectorModule_L34F33T85_Expr;
-	wire RangeDetectorModule_L34F33T85_Expr_1;
-	wire RangeDetectorModule_L34F33T85_Expr_2;
-	wire RangeDetectorModule_L34F33T58_Expr;
-	wire signed [32: 0] RangeDetectorModule_L34F33T58_ExprLhs;
-	wire signed [32: 0] RangeDetectorModule_L34F33T58_ExprRhs;
-	wire RangeDetectorModule_L34F62T85_Expr;
-	wire signed [32: 0] RangeDetectorModule_L34F62T85_ExprLhs;
-	wire signed [32: 0] RangeDetectorModule_L34F62T85_ExprRhs;
-	assign RangeDetectorModule_L34F33T58_Expr = RangeDetectorModule_L34F33T58_ExprLhs >= RangeDetectorModule_L34F33T58_ExprRhs ? 1'b1 : 1'b0;
-	assign RangeDetectorModule_L34F62T85_Expr = RangeDetectorModule_L34F62T85_ExprLhs <= RangeDetectorModule_L34F62T85_ExprRhs ? 1'b1 : 1'b0;
-	assign RangeDetectorModule_L34F33T85_Expr = RangeDetectorModule_L34F33T85_Expr_1 & RangeDetectorModule_L34F33T85_Expr_2;
-	assign RangeDetectorModule_L34F33T58_ExprLhs = {
+	wire RangeDetectorModule_L33F33T85_Expr;
+	wire RangeDetectorModule_L33F33T85_Expr_1;
+	wire RangeDetectorModule_L33F33T85_Expr_2;
+	wire RangeDetectorModule_L33F33T58_Expr;
+	wire signed [32: 0] RangeDetectorModule_L33F33T58_ExprLhs;
+	wire signed [32: 0] RangeDetectorModule_L33F33T58_ExprRhs;
+	wire RangeDetectorModule_L33F62T85_Expr;
+	wire signed [32: 0] RangeDetectorModule_L33F62T85_ExprLhs;
+	wire signed [32: 0] RangeDetectorModule_L33F62T85_ExprRhs;
+	assign RangeDetectorModule_L33F33T58_Expr = RangeDetectorModule_L33F33T58_ExprLhs >= RangeDetectorModule_L33F33T58_ExprRhs ? 1'b1 : 1'b0;
+	assign RangeDetectorModule_L33F62T85_Expr = RangeDetectorModule_L33F62T85_ExprLhs <= RangeDetectorModule_L33F62T85_ExprRhs ? 1'b1 : 1'b0;
+	assign RangeDetectorModule_L33F33T85_Expr = RangeDetectorModule_L33F33T85_Expr_1 & RangeDetectorModule_L33F33T85_Expr_2;
+	assign RangeDetectorModule_L33F33T58_ExprLhs = {
 		1'b0,
 		Inputs_Value
 	}
 	;
-	assign RangeDetectorModule_L34F33T58_ExprRhs = {
+	assign RangeDetectorModule_L33F33T58_ExprRhs = {
 		{32{1'b0}},
 		rangeFrom
 	}
 	;
-	assign RangeDetectorModule_L34F62T85_ExprLhs = {
+	assign RangeDetectorModule_L33F62T85_ExprLhs = {
 		1'b0,
 		Inputs_Value
 	}
 	;
-	assign RangeDetectorModule_L34F62T85_ExprRhs = {
+	assign RangeDetectorModule_L33F62T85_ExprRhs = {
 		{5{1'b0}},
 		rangeTo
 	}
 	;
-	assign RangeDetectorModule_L34F33T85_Expr_1 = RangeDetectorModule_L34F33T58_Expr;
-	assign RangeDetectorModule_L34F33T85_Expr_2 = RangeDetectorModule_L34F62T85_Expr;
+	assign RangeDetectorModule_L33F33T85_Expr_1 = RangeDetectorModule_L33F33T58_Expr;
+	assign RangeDetectorModule_L33F33T85_Expr_2 = RangeDetectorModule_L33F62T85_Expr;
 	assign Inputs_Value = Value;
-	assign IsActive = RangeDetectorModule_L34F33T85_Expr;
+	assign IsActive = RangeDetectorModule_L33F33T85_Expr;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

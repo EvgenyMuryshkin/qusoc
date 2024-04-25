@@ -44,38 +44,38 @@ architecture rtl of AXIRangeDetectorModuleB4_TopLevel is
 	signal Inputs_RangeFrom : unsigned(31 downto 0) := (others => '0');
 	signal Inputs_RangeTo : unsigned(31 downto 0) := (others => '0');
 	signal Inputs_Value : unsigned(31 downto 0) := (others => '0');
-	signal AXIRangeDetectorModule_L28F33T99_Expr : std_logic := '0';
-	signal AXIRangeDetectorModule_L28F33T99_Expr_1 : std_logic := '0';
-	signal AXIRangeDetectorModule_L28F33T99_Expr_2 : std_logic := '0';
-	signal AXIRangeDetectorModule_L28F33T65_Expr : std_logic := '0';
-	signal AXIRangeDetectorModule_L28F33T65_ExprLhs : signed(32 downto 0) := "000000000000000000000000000000000";
-	signal AXIRangeDetectorModule_L28F33T65_ExprRhs : signed(32 downto 0) := "000000000000000000000000000000000";
-	signal AXIRangeDetectorModule_L28F69T99_Expr : std_logic := '0';
-	signal AXIRangeDetectorModule_L28F69T99_ExprLhs : signed(32 downto 0) := "000000000000000000000000000000000";
-	signal AXIRangeDetectorModule_L28F69T99_ExprRhs : signed(32 downto 0) := "000000000000000000000000000000000";
+	signal AXIRangeDetectorModule_L27F33T99_Expr : std_logic := '0';
+	signal AXIRangeDetectorModule_L27F33T99_Expr_1 : std_logic := '0';
+	signal AXIRangeDetectorModule_L27F33T99_Expr_2 : std_logic := '0';
+	signal AXIRangeDetectorModule_L27F33T65_Expr : std_logic := '0';
+	signal AXIRangeDetectorModule_L27F33T65_ExprLhs : signed(32 downto 0) := "000000000000000000000000000000000";
+	signal AXIRangeDetectorModule_L27F33T65_ExprRhs : signed(32 downto 0) := "000000000000000000000000000000000";
+	signal AXIRangeDetectorModule_L27F69T99_Expr : std_logic := '0';
+	signal AXIRangeDetectorModule_L27F69T99_ExprLhs : signed(32 downto 0) := "000000000000000000000000000000000";
+	signal AXIRangeDetectorModule_L27F69T99_ExprRhs : signed(32 downto 0) := "000000000000000000000000000000000";
 begin
-	AXIRangeDetectorModule_L28F33T65_Expr <= '1' when (signed(resize(AXIRangeDetectorModule_L28F33T65_ExprLhs, AXIRangeDetectorModule_L28F33T65_ExprLhs'length + 1)) >= signed(resize(AXIRangeDetectorModule_L28F33T65_ExprRhs, AXIRangeDetectorModule_L28F33T65_ExprRhs'length + 1))) else '0';
-	AXIRangeDetectorModule_L28F69T99_Expr <= '1' when (signed(resize(AXIRangeDetectorModule_L28F69T99_ExprLhs, AXIRangeDetectorModule_L28F69T99_ExprLhs'length + 1)) <= signed(resize(AXIRangeDetectorModule_L28F69T99_ExprRhs, AXIRangeDetectorModule_L28F69T99_ExprRhs'length + 1))) else '0';
-	process (AXIRangeDetectorModule_L28F33T99_Expr_1, AXIRangeDetectorModule_L28F33T99_Expr_2)
+	AXIRangeDetectorModule_L27F33T65_Expr <= '1' when (signed(resize(AXIRangeDetectorModule_L27F33T65_ExprLhs, AXIRangeDetectorModule_L27F33T65_ExprLhs'length + 1)) >= signed(resize(AXIRangeDetectorModule_L27F33T65_ExprRhs, AXIRangeDetectorModule_L27F33T65_ExprRhs'length + 1))) else '0';
+	AXIRangeDetectorModule_L27F69T99_Expr <= '1' when (signed(resize(AXIRangeDetectorModule_L27F69T99_ExprLhs, AXIRangeDetectorModule_L27F69T99_ExprLhs'length + 1)) <= signed(resize(AXIRangeDetectorModule_L27F69T99_ExprRhs, AXIRangeDetectorModule_L27F69T99_ExprRhs'length + 1))) else '0';
+	process (AXIRangeDetectorModule_L27F33T99_Expr_1, AXIRangeDetectorModule_L27F33T99_Expr_2)
 	begin
-		AXIRangeDetectorModule_L28F33T99_Expr <= AXIRangeDetectorModule_L28F33T99_Expr_1 AND AXIRangeDetectorModule_L28F33T99_Expr_2;
+		AXIRangeDetectorModule_L27F33T99_Expr <= AXIRangeDetectorModule_L27F33T99_Expr_1 AND AXIRangeDetectorModule_L27F33T99_Expr_2;
 	end process;
-	process (AXIRangeDetectorModule_L28F33T65_Expr, AXIRangeDetectorModule_L28F33T99_Expr, AXIRangeDetectorModule_L28F69T99_Expr, Inputs_RangeFrom, Inputs_RangeTo, Inputs_Value, RangeFrom, RangeTo, Value)
+	process (AXIRangeDetectorModule_L27F33T65_Expr, AXIRangeDetectorModule_L27F33T99_Expr, AXIRangeDetectorModule_L27F69T99_Expr, Inputs_RangeFrom, Inputs_RangeTo, Inputs_Value, RangeFrom, RangeTo, Value)
 	begin
-		AXIRangeDetectorModule_L28F33T65_ExprLhs(32) <= '0';
-		AXIRangeDetectorModule_L28F33T65_ExprLhs(31 downto 0) <= signed(Inputs_Value);
-		AXIRangeDetectorModule_L28F33T65_ExprRhs(32) <= '0';
-		AXIRangeDetectorModule_L28F33T65_ExprRhs(31 downto 0) <= signed(Inputs_RangeFrom);
-		AXIRangeDetectorModule_L28F69T99_ExprLhs(32) <= '0';
-		AXIRangeDetectorModule_L28F69T99_ExprLhs(31 downto 0) <= signed(Inputs_Value);
-		AXIRangeDetectorModule_L28F69T99_ExprRhs(32) <= '0';
-		AXIRangeDetectorModule_L28F69T99_ExprRhs(31 downto 0) <= signed(Inputs_RangeTo);
-		AXIRangeDetectorModule_L28F33T99_Expr_1 <= AXIRangeDetectorModule_L28F33T65_Expr;
-		AXIRangeDetectorModule_L28F33T99_Expr_2 <= AXIRangeDetectorModule_L28F69T99_Expr;
+		AXIRangeDetectorModule_L27F33T65_ExprLhs(32) <= '0';
+		AXIRangeDetectorModule_L27F33T65_ExprLhs(31 downto 0) <= signed(Inputs_Value);
+		AXIRangeDetectorModule_L27F33T65_ExprRhs(32) <= '0';
+		AXIRangeDetectorModule_L27F33T65_ExprRhs(31 downto 0) <= signed(Inputs_RangeFrom);
+		AXIRangeDetectorModule_L27F69T99_ExprLhs(32) <= '0';
+		AXIRangeDetectorModule_L27F69T99_ExprLhs(31 downto 0) <= signed(Inputs_Value);
+		AXIRangeDetectorModule_L27F69T99_ExprRhs(32) <= '0';
+		AXIRangeDetectorModule_L27F69T99_ExprRhs(31 downto 0) <= signed(Inputs_RangeTo);
+		AXIRangeDetectorModule_L27F33T99_Expr_1 <= AXIRangeDetectorModule_L27F33T65_Expr;
+		AXIRangeDetectorModule_L27F33T99_Expr_2 <= AXIRangeDetectorModule_L27F69T99_Expr;
 		Inputs_RangeFrom <= RangeFrom;
 		Inputs_RangeTo <= RangeTo;
 		Inputs_Value <= Value;
-		IsActive <= AXIRangeDetectorModule_L28F33T99_Expr;
+		IsActive <= AXIRangeDetectorModule_L27F33T99_Expr;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]
