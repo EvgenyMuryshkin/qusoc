@@ -4,25 +4,17 @@ using Quokka.Public.Tools;
 using Quokka.RISCV.Integration.Client;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace QuSoC.Tests
 {
-    public class QuSoCModuleBaseTest
+    public class QuSoCModuleBaseTest : RISCVModuleBaseTest
     {
-        protected AsmInstructionsProvider Inst = new AsmInstructionsProvider();
-
         protected string AppPath(string app)
             => Path.Combine(
                 Inst.SolutionLocation,
                 "qusoc",
                 "qusoc.demos",
                 "apps", app);
-
-        protected string VCDOutputPath([CallerMemberName] string testName = "")
-        {
-            return Path.Combine(PathTools.ProjectPath, "SimResults", $"{testName}.vcd");
-        }
 
         protected QuSoCModuleSimulator FromApp(string appName)
         {
