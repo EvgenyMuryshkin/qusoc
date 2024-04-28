@@ -1,23 +1,10 @@
-﻿using Quokka.Core.Builders.LowLevel;
-using Quokka.HLS.TypeLibrary;
-using Quokka.Public.Logging;
-using Quokka.Public.Tools;
-using Quokka.RISCV.CS2CPP.Tools;
-using Quokka.RISCV.CS2CPP.Translator;
-using Quokka.RISCV.Integration.Client;
-using Quokka.RISCV.Integration.DTO;
-using Quokka.RISCV.Integration.Engine;
-using Quokka.RISCV.Integration.Generator.SOC;
+﻿using Quokka.Public.Tools;
 using Quokka.RTL;
-using Quokka.Schema.HLS;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Text;
 
 namespace QuSoC.Demos
 {
@@ -42,11 +29,10 @@ namespace QuSoC.Demos
                 {
                     foreach (var moduleType in _rtlModulesDiscovery.ModuleTypes.Where(m => modules.Contains(m.Name)))
                     {
-                        var instance = _classFactory.Create<IRTLCombinationalModule>(moduleType);
                         yield return new RTLModuleConfig()
                         {
-                            InstanceFactory = () => _classFactory.Create<IRTLCombinationalModule>(moduleType),
-                            Name = moduleType.Name// instance.ModuleName 
+                            InstanceFactory = (classFactory) => classFactory.Create<IRTLCombinationalModule>(moduleType),
+                            Name = moduleType.Name
                         };
                     }
                 }

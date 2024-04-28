@@ -11,7 +11,7 @@ namespace QuSoC.Tests
     {
         protected string AppPath(string app)
             => Path.Combine(
-                Inst.SolutionLocation,
+                PathTools.SolutionPath,
                 "qusoc",
                 "qusoc.demos",
                 "apps", app);

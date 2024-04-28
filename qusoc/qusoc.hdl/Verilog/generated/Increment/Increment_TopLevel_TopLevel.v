@@ -62,12 +62,14 @@ module Increment_TopLevel_TopLevel
 	wire CPU_ExtIRQ;
 	wire [31: 0] CPU_MemReadData;
 	wire CPU_MemReady;
+	wire CPU_BREADY;
 	wire CPU_IsHalted;
 	wire [2: 0] CPU_MemAccessMode;
 	wire [31: 0] CPU_MemAddress;
 	wire CPU_MemRead;
 	wire CPU_MemWrite;
 	wire [31: 0] CPU_MemWriteData;
+	wire CPU_RREADY;
 	wire [67: 0] InstructionsRAM_Common;
 	wire [31: 0] InstructionsRAM_DeviceAddress;
 	wire InstructionsRAM_IsActive;
@@ -84,16 +86,21 @@ module Increment_TopLevel_TopLevel
 	integer idx;
 	wire [8: 0] QuSoCModule_L106F13L119T14_QuSoCModule_L118F24T44_Tuple;
 	wire [1: 0] QuSoCModule_L44F47T98_Source;
+	wire [65: 0] QuSoCModule_L75F32L80T14_Object;
+	wire [99: 0] QuSoCModule_L82F44L86T14_Object;
+	wire [99: 0] Increment_generated_L15F33T116_Object;
 	wire [31: 0] CPU_BaseAddress_CPU_BaseAddress_HardLink;
 	wire CPU_ExtIRQ_CPU_ExtIRQ_HardLink;
 	wire [31: 0] CPU_MemReadData_CPU_MemReadData_HardLink;
 	wire CPU_MemReady_CPU_MemReady_HardLink;
+	wire CPU_BREADY_CPU_BREADY_HardLink;
 	wire CPU_IsHalted_CPU_IsHalted_HardLink;
 	wire [2: 0] CPU_MemAccessMode_CPU_MemAccessMode_HardLink;
 	wire [31: 0] CPU_MemAddress_CPU_MemAddress_HardLink;
 	wire CPU_MemRead_CPU_MemRead_HardLink;
 	wire CPU_MemWrite_CPU_MemWrite_HardLink;
 	wire [31: 0] CPU_MemWriteData_CPU_MemWriteData_HardLink;
+	wire CPU_RREADY_CPU_RREADY_HardLink;
 	wire [67: 0] InstructionsRAM_Common_InstructionsRAM_Common_HardLink;
 	wire [31: 0] InstructionsRAM_DeviceAddress_InstructionsRAM_DeviceAddress_HardLink;
 	wire InstructionsRAM_IsActive_InstructionsRAM_IsActive_HardLink;
@@ -148,12 +155,14 @@ module Increment_TopLevel_TopLevel
 		.ExtIRQ (CPU_ExtIRQ_CPU_ExtIRQ_HardLink),
 		.MemReadData (CPU_MemReadData_CPU_MemReadData_HardLink),
 		.MemReady (CPU_MemReady_CPU_MemReady_HardLink),
+		.BREADY (CPU_BREADY_CPU_BREADY_HardLink),
 		.IsHalted (CPU_IsHalted_CPU_IsHalted_HardLink),
 		.MemAccessMode (CPU_MemAccessMode_CPU_MemAccessMode_HardLink),
 		.MemAddress (CPU_MemAddress_CPU_MemAddress_HardLink),
 		.MemRead (CPU_MemRead_CPU_MemRead_HardLink),
 		.MemWrite (CPU_MemWrite_CPU_MemWrite_HardLink),
-		.MemWriteData (CPU_MemWriteData_CPU_MemWriteData_HardLink)
+		.MemWriteData (CPU_MemWriteData_CPU_MemWriteData_HardLink),
+		.RREADY (CPU_RREADY_CPU_RREADY_HardLink)
 	);
 	Increment_TopLevel_TopLevel_InstructionsRAM
 	Increment_TopLevel_TopLevel_InstructionsRAM
@@ -279,41 +288,51 @@ module Increment_TopLevel_TopLevel
 	assign ModuleCommon_WE = CPU_MemWrite;
 	assign ModuleCommon_WriteValue = CPU_MemWriteData;
 	assign ModuleIndex = BusCS_Item1;
-	assign CPU_BaseAddress = {
+	assign QuSoCModule_L75F32L80T14_Object[31:0] = {
 		{31{1'b0}},
 		QuSoCModule_L77F31T33_Expr
 	}
 	;
-	assign CPU_ExtIRQ = RISCVModule_Types_L11F30T35_Expr;
-	assign CPU_MemReadData = internalModuleReadData;
-	assign CPU_MemReady = internalMemReady;
-	assign InstructionsRAM_Common[67:36] = ModuleCommon_WriteValue;
-	assign InstructionsRAM_Common[35] = ModuleCommon_WE;
-	assign InstructionsRAM_Common[34] = ModuleCommon_RE;
-	assign InstructionsRAM_Common[33:32] = ModuleCommon_MemAccessMode;
-	assign InstructionsRAM_Common[31:0] = ModuleCommon_Address;
-	assign InstructionsRAM_DeviceAddress = {
+	assign QuSoCModule_L75F32L80T14_Object[32] = RISCVModule_Types_L11F30T35_Expr;
+	assign QuSoCModule_L75F32L80T14_Object[64:33] = internalModuleReadData;
+	assign QuSoCModule_L75F32L80T14_Object[65] = internalMemReady;
+	assign CPU_MemReady = QuSoCModule_L75F32L80T14_Object[65];
+	assign CPU_MemReadData = QuSoCModule_L75F32L80T14_Object[64:33];
+	assign CPU_ExtIRQ = QuSoCModule_L75F32L80T14_Object[32];
+	assign CPU_BaseAddress = QuSoCModule_L75F32L80T14_Object[31:0];
+	assign QuSoCModule_L82F44L86T14_Object[31:0] = ModuleCommon_Address;
+	assign QuSoCModule_L82F44L86T14_Object[33:32] = ModuleCommon_MemAccessMode;
+	assign QuSoCModule_L82F44L86T14_Object[34] = ModuleCommon_RE;
+	assign QuSoCModule_L82F44L86T14_Object[35] = ModuleCommon_WE;
+	assign QuSoCModule_L82F44L86T14_Object[67:36] = ModuleCommon_WriteValue;
+	assign QuSoCModule_L82F44L86T14_Object[99:68] = {
 		{31{1'b0}},
 		QuSoCModule_L85F33T43_Expr
 	}
 	;
-	assign CounterModule_Common[67:36] = ModuleCommon_WriteValue;
-	assign CounterModule_Common[35] = ModuleCommon_WE;
-	assign CounterModule_Common[34] = ModuleCommon_RE;
-	assign CounterModule_Common[33:32] = ModuleCommon_MemAccessMode;
-	assign CounterModule_Common[31:0] = ModuleCommon_Address;
-	assign CounterModule_DeviceAddress = Increment_generated_L15F104T114_Expr;
+	assign InstructionsRAM_DeviceAddress = QuSoCModule_L82F44L86T14_Object[99:68];
+	assign InstructionsRAM_Common = QuSoCModule_L82F44L86T14_Object[67:0];
+	assign Increment_generated_L15F33T116_Object[31:0] = ModuleCommon_Address;
+	assign Increment_generated_L15F33T116_Object[33:32] = ModuleCommon_MemAccessMode;
+	assign Increment_generated_L15F33T116_Object[34] = ModuleCommon_RE;
+	assign Increment_generated_L15F33T116_Object[35] = ModuleCommon_WE;
+	assign Increment_generated_L15F33T116_Object[67:36] = ModuleCommon_WriteValue;
+	assign Increment_generated_L15F33T116_Object[99:68] = Increment_generated_L15F104T114_Expr;
+	assign CounterModule_DeviceAddress = Increment_generated_L15F33T116_Object[99:68];
+	assign CounterModule_Common = Increment_generated_L15F33T116_Object[67:0];
 	assign Counter = CounterModule_Value;
 	assign CPU_BaseAddress_CPU_BaseAddress_HardLink = CPU_BaseAddress;
 	assign CPU_ExtIRQ_CPU_ExtIRQ_HardLink = CPU_ExtIRQ;
 	assign CPU_MemReadData_CPU_MemReadData_HardLink = CPU_MemReadData;
 	assign CPU_MemReady_CPU_MemReady_HardLink = CPU_MemReady;
+	assign CPU_BREADY = CPU_BREADY_CPU_BREADY_HardLink;
 	assign CPU_IsHalted = CPU_IsHalted_CPU_IsHalted_HardLink;
 	assign CPU_MemAccessMode = CPU_MemAccessMode_CPU_MemAccessMode_HardLink;
 	assign CPU_MemAddress = CPU_MemAddress_CPU_MemAddress_HardLink;
 	assign CPU_MemRead = CPU_MemRead_CPU_MemRead_HardLink;
 	assign CPU_MemWrite = CPU_MemWrite_CPU_MemWrite_HardLink;
 	assign CPU_MemWriteData = CPU_MemWriteData_CPU_MemWriteData_HardLink;
+	assign CPU_RREADY = CPU_RREADY_CPU_RREADY_HardLink;
 	assign InstructionsRAM_Common_InstructionsRAM_Common_HardLink = InstructionsRAM_Common;
 	assign InstructionsRAM_DeviceAddress_InstructionsRAM_DeviceAddress_HardLink = InstructionsRAM_DeviceAddress;
 	assign InstructionsRAM_IsActive = InstructionsRAM_IsActive_InstructionsRAM_IsActive_HardLink;
@@ -327,10 +346,10 @@ module Increment_TopLevel_TopLevel
 	assign CounterModule_Value = CounterModule_Value_CounterModule_Value_HardLink;
 	assign QuSoCModule_L126F39T70_Mux1 = InstructionsRAM_IsReady;
 	assign QuSoCModule_L126F39T70_Mux2 = CounterModule_IsReady;
-	assign QuSoCModule_L126F39T70_MuxMultiplexerAddress = ModuleIndex[0];
+	assign QuSoCModule_L126F39T70_MuxMultiplexerAddress = ModuleIndex[0:0];
 	assign QuSoCModule_L125F40T73_Mux1 = InstructionsRAM_ReadValue;
 	assign QuSoCModule_L125F40T73_Mux2 = CounterModule_ReadValue;
-	assign QuSoCModule_L125F40T73_MuxMultiplexerAddress = ModuleIndex[0];
+	assign QuSoCModule_L125F40T73_MuxMultiplexerAddress = ModuleIndex[0:0];
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

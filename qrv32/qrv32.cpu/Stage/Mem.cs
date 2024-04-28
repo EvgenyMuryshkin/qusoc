@@ -41,6 +41,8 @@ namespace QRV32.CPU
             }
         }
         public uint MemAddress => internalMemAddress;
+        public bool RREADY => State.State == CPUState.MEM || State.State == CPUState.IF;
+        public bool BREADY => State.State == CPUState.MEM;
 
         void MemStage()
         {

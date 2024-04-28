@@ -53,7 +53,7 @@ namespace Quokka.RTL.Simulator
                 { 
                     new RTLModuleConfig() 
                     {
-                        InstanceFactory = () => _simulator.TopLevel, 
+                        InstanceFactory = (classFactory) => _simulator.TopLevel, 
                         Name = moduleType 
                     } 
                 }

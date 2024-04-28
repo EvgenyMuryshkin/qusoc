@@ -74,9 +74,9 @@ namespace AXISoC
                         AWADDR = CPU.MemAddress,
                         WDATA = internalWriteData,
                         WSTRB = wstrb,
-                        //BREADY = CPU.BREADY,
+                        BREADY = CPU.BREADY,
                         RE = CPU.MemRead,
-                        //RREADY = CPU.RREADY,
+                        RREADY = CPU.RREADY,
                         ARADDR = CPU.MemAddress,
                     }
                 }

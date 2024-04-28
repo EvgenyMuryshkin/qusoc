@@ -69,12 +69,4 @@ namespace AXISoC
         }
         public RTLBitArray oData => new RTLBitArray(Reg.outData);
     }
-
-    public class AXISoCBlinker : AXISoCTestModule
-    {
-        public AXISoCBlinker()
-        {
-
-        }
-    }
 }
