@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is AXISoCBlinker_TopLevel_TopLevel_Memory, clock frequency is 1Hz, Embedded
+// System configuration name is AXISoCBlinker_TopLevel_Memory, clock frequency is 1Hz, Embedded
 // FSM summary
 // -- Packages
-module AXISoCBlinker_TopLevel_TopLevel_Memory
+module AXISoCBlinker_TopLevel_Memory
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
@@ -216,22 +216,22 @@ module AXISoCBlinker_TopLevel_TopLevel_Memory
 	reg [7 : 0] State_buff0 [0 : 4095];
 	initial
 	begin : Init_State_buff0
-$readmemh("AXISoCBlinker_TopLevel_TopLevel_Memory_State_buff0.hex", State_buff0);
+$readmemh("AXISoCBlinker_TopLevel_Memory_State_buff0.hex", State_buff0);
 	end
 	reg [7 : 0] State_buff1 [0 : 4095];
 	initial
 	begin : Init_State_buff1
-$readmemh("AXISoCBlinker_TopLevel_TopLevel_Memory_State_buff1.hex", State_buff1);
+$readmemh("AXISoCBlinker_TopLevel_Memory_State_buff1.hex", State_buff1);
 	end
 	reg [7 : 0] State_buff2 [0 : 4095];
 	initial
 	begin : Init_State_buff2
-$readmemh("AXISoCBlinker_TopLevel_TopLevel_Memory_State_buff2.hex", State_buff2);
+$readmemh("AXISoCBlinker_TopLevel_Memory_State_buff2.hex", State_buff2);
 	end
 	reg [7 : 0] State_buff3 [0 : 4095];
 	initial
 	begin : Init_State_buff3
-$readmemh("AXISoCBlinker_TopLevel_TopLevel_Memory_State_buff3.hex", State_buff3);
+$readmemh("AXISoCBlinker_TopLevel_Memory_State_buff3.hex", State_buff3);
 	end
 	// inferred simple dual port RAM with write-first behaviour
 	reg [11: 0] internalRADDR_reg0;
@@ -386,8 +386,8 @@ $readmemh("AXISoCBlinker_TopLevel_TopLevel_Memory_State_buff3.hex", State_buff3)
 	assign AXI4MemoryModule_L112F9L144T10_AXI4MemoryModule_L132F13L136T14_1_AXI4MemoryModule_L133F13L136T14_AXI4MemoryModule_L134F21T51_Expr = AXI4MemoryModule_L112F9L144T10_AXI4MemoryModule_L132F13L136T14_1_AXI4MemoryModule_L133F13L136T14_AXI4MemoryModule_L134F21T51_Expr_1 & AXI4MemoryModule_L112F9L144T10_AXI4MemoryModule_L132F13L136T14_1_AXI4MemoryModule_L133F13L136T14_AXI4MemoryModule_L134F21T51_Expr_2;
 	assign AXI4MemoryModule_L112F9L144T10_AXI4MemoryModule_L132F13L136T14_2_AXI4MemoryModule_L133F13L136T14_AXI4MemoryModule_L134F21T51_Expr = AXI4MemoryModule_L112F9L144T10_AXI4MemoryModule_L132F13L136T14_2_AXI4MemoryModule_L133F13L136T14_AXI4MemoryModule_L134F21T51_Expr_1 & AXI4MemoryModule_L112F9L144T10_AXI4MemoryModule_L132F13L136T14_2_AXI4MemoryModule_L133F13L136T14_AXI4MemoryModule_L134F21T51_Expr_2;
 	assign AXI4MemoryModule_L112F9L144T10_AXI4MemoryModule_L132F13L136T14_3_AXI4MemoryModule_L133F13L136T14_AXI4MemoryModule_L134F21T51_Expr = AXI4MemoryModule_L112F9L144T10_AXI4MemoryModule_L132F13L136T14_3_AXI4MemoryModule_L133F13L136T14_AXI4MemoryModule_L134F21T51_Expr_1 & AXI4MemoryModule_L112F9L144T10_AXI4MemoryModule_L132F13L136T14_3_AXI4MemoryModule_L133F13L136T14_AXI4MemoryModule_L134F21T51_Expr_2;
-	AXISoCBlinker_TopLevel_TopLevel_Memory_axiSlave
-	AXISoCBlinker_TopLevel_TopLevel_Memory_axiSlave
+	AXISoCBlinker_TopLevel_Memory_axiSlave
+	AXISoCBlinker_TopLevel_Memory_axiSlave
 	(
 		// [BEGIN USER MAP FOR axiSlave]
 		// [END USER MAP FOR axiSlave]

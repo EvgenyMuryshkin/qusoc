@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is AXISoCBlinker_TopLevel_TopLevel_Interconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors0, clock frequency is 1Hz, Embedded
+// System configuration name is AXISoCBlinker_TopLevel_Interconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors1, clock frequency is 1Hz, Embedded
 // FSM summary
 // -- Packages
-module AXISoCBlinker_TopLevel_TopLevel_Interconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors0
+module AXISoCBlinker_TopLevel_Interconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors1
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
@@ -34,8 +34,8 @@ module AXISoCBlinker_TopLevel_TopLevel_Interconnect_writeInterconnect_rangeDetec
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [0: 0] rangeFrom = 1'b0;
-	wire [12: 0] rangeTo = 13'b1000000000000;
+	wire [31: 0] rangeFrom = 32'b10000000000000000000000000000000;
+	wire [31: 0] rangeTo = 32'b10000000000000000000000000000000;
 	wire [31: 0] Inputs_Value;
 	wire RangeDetectorModule_L33F33T85_Expr;
 	wire RangeDetectorModule_L33F33T85_Expr_1;
@@ -55,7 +55,7 @@ module AXISoCBlinker_TopLevel_TopLevel_Interconnect_writeInterconnect_rangeDetec
 	}
 	;
 	assign RangeDetectorModule_L33F33T58_ExprRhs = {
-		{32{1'b0}},
+		1'b0,
 		rangeFrom
 	}
 	;
@@ -65,7 +65,7 @@ module AXISoCBlinker_TopLevel_TopLevel_Interconnect_writeInterconnect_rangeDetec
 	}
 	;
 	assign RangeDetectorModule_L33F62T85_ExprRhs = {
-		{20{1'b0}},
+		1'b0,
 		rangeTo
 	}
 	;

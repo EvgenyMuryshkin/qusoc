@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is AXISoCBlinker_TopLevel_TopLevel_CPU_CPU, clock frequency is 1Hz, Embedded
+// System configuration name is AXISoCBlinker_TopLevel_CPU_CPU, clock frequency is 1Hz, Embedded
 // FSM summary
 // -- Packages
-module AXISoCBlinker_TopLevel_TopLevel_CPU_CPU
+module AXISoCBlinker_TopLevel_CPU_CPU
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
@@ -1019,7 +1019,7 @@ module AXISoCBlinker_TopLevel_TopLevel_CPU_CPU
 	reg [31 : 0] State_CSR [0 : 12];
 	initial
 	begin : Init_State_CSR
-$readmemh("AXISoCBlinker_TopLevel_TopLevel_CPU_CPU_State_CSR.hex", State_CSR);
+$readmemh("AXISoCBlinker_TopLevel_CPU_CPU_State_CSR.hex", State_CSR);
 	end
 	integer NextState_CSR_Iterator;
 	reg [31 : 0] NextState_CSR [0 : 12];
@@ -1209,8 +1209,8 @@ $readmemh("AXISoCBlinker_TopLevel_TopLevel_CPU_CPU_State_CSR.hex", State_CSR);
 	assign J_L7F41T69_Expr = J_L7F41T69_Expr_1 + J_L7F41T69_Expr_2;
 	assign RISCVModule_Stage_L8F9L33T10_RISCVModule_Stage_L9F13L32T14_RISCVModule_Stage_L21F21T35_EX_L12F9L53T10_EX_L17F13L52T14_EX_L32F21T30_AUIPC_L10F9L13T10_AUIPC_L12F32T54_Expr = RISCVModule_Stage_L8F9L33T10_RISCVModule_Stage_L9F13L32T14_RISCVModule_Stage_L21F21T35_EX_L12F9L53T10_EX_L17F13L52T14_EX_L32F21T30_AUIPC_L10F9L13T10_AUIPC_L12F32T54_Expr_1 + RISCVModule_Stage_L8F9L33T10_RISCVModule_Stage_L9F13L32T14_RISCVModule_Stage_L21F21T35_EX_L12F9L53T10_EX_L17F13L52T14_EX_L32F21T30_AUIPC_L10F9L13T10_AUIPC_L12F32T54_Expr_2;
 	assign RISCVModule_Stage_L8F9L33T10_RISCVModule_Stage_L9F13L32T14_RISCVModule_Stage_L21F21T35_EX_L12F9L53T10_EX_L17F13L52T14_EX_L38F21T29_J_L17F9L21T10_J_L20F91T113_Expr = RISCVModule_Stage_L8F9L33T10_RISCVModule_Stage_L9F13L32T14_RISCVModule_Stage_L21F21T35_EX_L12F9L53T10_EX_L17F13L52T14_EX_L38F21T29_J_L17F9L21T10_J_L20F91T113_Expr_1 + RISCVModule_Stage_L8F9L33T10_RISCVModule_Stage_L9F13L32T14_RISCVModule_Stage_L21F21T35_EX_L12F9L53T10_EX_L17F13L52T14_EX_L38F21T29_J_L17F9L21T10_J_L20F91T113_Expr_2;
-	AXISoCBlinker_TopLevel_TopLevel_CPU_CPU_ALU
-	AXISoCBlinker_TopLevel_TopLevel_CPU_CPU_ALU
+	AXISoCBlinker_TopLevel_CPU_CPU_ALU
+	AXISoCBlinker_TopLevel_CPU_CPU_ALU
 	(
 		// [BEGIN USER MAP FOR ALU]
 		// [END USER MAP FOR ALU]
@@ -1226,8 +1226,8 @@ $readmemh("AXISoCBlinker_TopLevel_TopLevel_CPU_CPU_State_CSR.hex", State_CSR);
 		.SHRL (ALU_SHRL_ALU_SHRL_HardLink),
 		.SUB (ALU_SUB_ALU_SUB_HardLink)
 	);
-	AXISoCBlinker_TopLevel_TopLevel_CPU_CPU_CMP
-	AXISoCBlinker_TopLevel_TopLevel_CPU_CPU_CMP
+	AXISoCBlinker_TopLevel_CPU_CPU_CMP
+	AXISoCBlinker_TopLevel_CPU_CPU_CMP
 	(
 		// [BEGIN USER MAP FOR CMP]
 		// [END USER MAP FOR CMP]
@@ -1240,8 +1240,8 @@ $readmemh("AXISoCBlinker_TopLevel_TopLevel_CPU_CPU_State_CSR.hex", State_CSR);
 		.LTU (CMP_LTU_CMP_LTU_HardLink),
 		.NE (CMP_NE_CMP_NE_HardLink)
 	);
-	AXISoCBlinker_TopLevel_TopLevel_CPU_CPU_ID
-	AXISoCBlinker_TopLevel_TopLevel_CPU_CPU_ID
+	AXISoCBlinker_TopLevel_CPU_CPU_ID
+	AXISoCBlinker_TopLevel_CPU_CPU_ID
 	(
 		// [BEGIN USER MAP FOR ID]
 		// [END USER MAP FOR ID]
@@ -1273,8 +1273,8 @@ $readmemh("AXISoCBlinker_TopLevel_TopLevel_CPU_CPU_State_CSR.hex", State_CSR);
 		.SysTypeCode (ID_SysTypeCode_ID_SysTypeCode_HardLink),
 		.UTypeImm (ID_UTypeImm_ID_UTypeImm_HardLink)
 	);
-	AXISoCBlinker_TopLevel_TopLevel_CPU_CPU_Regs
-	AXISoCBlinker_TopLevel_TopLevel_CPU_CPU_Regs
+	AXISoCBlinker_TopLevel_CPU_CPU_Regs
+	AXISoCBlinker_TopLevel_CPU_CPU_Regs
 	(
 		// [BEGIN USER MAP FOR Regs]
 		// [END USER MAP FOR Regs]

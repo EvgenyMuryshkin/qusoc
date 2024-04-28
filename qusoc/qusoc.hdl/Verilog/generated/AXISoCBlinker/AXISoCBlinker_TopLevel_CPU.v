@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is AXISoCBlinker_TopLevel_TopLevel_CPU, clock frequency is 1Hz, Embedded
+// System configuration name is AXISoCBlinker_TopLevel_CPU, clock frequency is 1Hz, Embedded
 // FSM summary
 // -- Packages
-module AXISoCBlinker_TopLevel_TopLevel_CPU
+module AXISoCBlinker_TopLevel_CPU
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
@@ -139,8 +139,8 @@ module AXISoCBlinker_TopLevel_TopLevel_CPU
 	assign AXI4RISCVModule_L50F43T75_Expr = (AXI4RISCVModule_L50F43T75_Expr_1 << internalByte);
 	assign AXI4RISCVModule_L49F31T60_Expr = (AXI4RISCVModule_L49F31T60_Expr_1 << addressBits);
 	assign AXI4RISCVModule_L62F32T58_Expr = AXI4RISCVModule_L62F32T58_Expr_1 | AXI4RISCVModule_L62F32T58_Expr_2;
-	AXISoCBlinker_TopLevel_TopLevel_CPU_CPU
-	AXISoCBlinker_TopLevel_TopLevel_CPU_CPU
+	AXISoCBlinker_TopLevel_CPU_CPU
+	AXISoCBlinker_TopLevel_CPU_CPU
 	(
 		// [BEGIN USER MAP FOR CPU]
 		// [END USER MAP FOR CPU]
@@ -162,8 +162,8 @@ module AXISoCBlinker_TopLevel_TopLevel_CPU
 		.MemWriteData (CPU_MemWriteData_CPU_MemWriteData_HardLink),
 		.RREADY (CPU_RREADY_CPU_RREADY_HardLink)
 	);
-	AXISoCBlinker_TopLevel_TopLevel_CPU_Master
-	AXISoCBlinker_TopLevel_TopLevel_CPU_Master
+	AXISoCBlinker_TopLevel_CPU_Master
+	AXISoCBlinker_TopLevel_CPU_Master
 	(
 		// [BEGIN USER MAP FOR Master]
 		// [END USER MAP FOR Master]

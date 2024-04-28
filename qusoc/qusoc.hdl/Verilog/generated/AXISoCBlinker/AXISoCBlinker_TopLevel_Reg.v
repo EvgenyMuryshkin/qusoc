@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is AXISoCBlinker_TopLevel_TopLevel_Reg, clock frequency is 1Hz, Embedded
+// System configuration name is AXISoCBlinker_TopLevel_Reg, clock frequency is 1Hz, Embedded
 // FSM summary
 // -- Packages
-module AXISoCBlinker_TopLevel_TopLevel_Reg
+module AXISoCBlinker_TopLevel_Reg
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
@@ -189,8 +189,8 @@ module AXISoCBlinker_TopLevel_TopLevel_Reg
 	end
 	assign AXI4RegisterModule_L71F28T44_Expr = ~AXI4RegisterModule_L71F28T44_Expr_1;
 	assign AXI4RegisterModule_L77F9L92T10_AXI4RegisterModule_L78F33T80_Expr = AXI4RegisterModule_L77F9L92T10_AXI4RegisterModule_L78F33T80_Expr_1 | AXI4RegisterModule_L77F9L92T10_AXI4RegisterModule_L78F33T80_Expr_2;
-	AXISoCBlinker_TopLevel_TopLevel_Reg_axiSlave
-	AXISoCBlinker_TopLevel_TopLevel_Reg_axiSlave
+	AXISoCBlinker_TopLevel_Reg_axiSlave
+	AXISoCBlinker_TopLevel_Reg_axiSlave
 	(
 		// [BEGIN USER MAP FOR axiSlave]
 		// [END USER MAP FOR axiSlave]

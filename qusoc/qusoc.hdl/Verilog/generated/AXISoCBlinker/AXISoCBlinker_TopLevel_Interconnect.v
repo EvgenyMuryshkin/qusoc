@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is AXISoCBlinker_TopLevel_TopLevel_Interconnect, clock frequency is 1Hz, Embedded
+// System configuration name is AXISoCBlinker_TopLevel_Interconnect, clock frequency is 1Hz, Embedded
 // FSM summary
 // -- Packages
-module AXISoCBlinker_TopLevel_TopLevel_Interconnect
+module AXISoCBlinker_TopLevel_Interconnect
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
@@ -78,8 +78,8 @@ module AXISoCBlinker_TopLevel_TopLevel_Interconnect
 	wire [20 : 0] AXI4InteconnectModule_L55F30T68_Enumerable [0 : 1];
 	wire [221 : 0] AXI4InteconnectModule_L69F35L76T24_Enumerable [0 : 1];
 	wire [73 : 0] AXI4InteconnectModule_L60F35L67T24_Enumerable [0 : 0];
-	AXISoCBlinker_TopLevel_TopLevel_Interconnect_readInterconnect
-	AXISoCBlinker_TopLevel_TopLevel_Interconnect_readInterconnect
+	AXISoCBlinker_TopLevel_Interconnect_readInterconnect
+	AXISoCBlinker_TopLevel_Interconnect_readInterconnect
 	(
 		// [BEGIN USER MAP FOR readInterconnect]
 		// [END USER MAP FOR readInterconnect]
@@ -95,8 +95,8 @@ module AXISoCBlinker_TopLevel_TopLevel_Interconnect
 		.M2S1 (readInterconnect_M2S1_readInterconnect_M2S_HardLink),
 		.S2M0 (readInterconnect_S2M0_readInterconnect_S2M_HardLink)
 	);
-	AXISoCBlinker_TopLevel_TopLevel_Interconnect_writeInterconnect
-	AXISoCBlinker_TopLevel_TopLevel_Interconnect_writeInterconnect
+	AXISoCBlinker_TopLevel_Interconnect_writeInterconnect
+	AXISoCBlinker_TopLevel_Interconnect_writeInterconnect
 	(
 		// [BEGIN USER MAP FOR writeInterconnect]
 		// [END USER MAP FOR writeInterconnect]

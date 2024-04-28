@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is AXISoCBlinker_TopLevel_TopLevel, clock frequency is 1Hz, Top-level
+// System configuration name is AXISoCBlinker_TopLevel, clock frequency is 1Hz, Top-level
 // FSM summary
 // -- Packages
-module AXISoCBlinker_TopLevel_TopLevel
+module AXISoCBlinker_TopLevel
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
@@ -86,8 +86,8 @@ module AXISoCBlinker_TopLevel_TopLevel
 	wire BoardSignals_Started;
 	reg InternalReset = 1'b0;
 	work_Quokka_BoardSignalsProc BoardSignalsConnection(BoardSignals_Clock, BoardSignals_Reset, BoardSignals_Running, BoardSignals_Starting, BoardSignals_Started, Clock, Reset, InternalReset);
-	AXISoCBlinker_TopLevel_TopLevel_CPU
-	AXISoCBlinker_TopLevel_TopLevel_CPU
+	AXISoCBlinker_TopLevel_CPU
+	AXISoCBlinker_TopLevel_CPU
 	(
 		// [BEGIN USER MAP FOR CPU]
 		// [END USER MAP FOR CPU]
@@ -99,8 +99,8 @@ module AXISoCBlinker_TopLevel_TopLevel
 		.S2M (CPU_S2M_CPU_S2M_HardLink),
 		.M2S (CPU_M2S_CPU_M2S_HardLink)
 	);
-	AXISoCBlinker_TopLevel_TopLevel_Interconnect
-	AXISoCBlinker_TopLevel_TopLevel_Interconnect
+	AXISoCBlinker_TopLevel_Interconnect
+	AXISoCBlinker_TopLevel_Interconnect
 	(
 		// [BEGIN USER MAP FOR Interconnect]
 		// [END USER MAP FOR Interconnect]
@@ -116,8 +116,8 @@ module AXISoCBlinker_TopLevel_TopLevel
 		.oM2S1 (Interconnect_oM2S1_Interconnect_oM2S_HardLink),
 		.oS2M0 (Interconnect_oS2M0_Interconnect_oS2M_HardLink)
 	);
-	AXISoCBlinker_TopLevel_TopLevel_Memory
-	AXISoCBlinker_TopLevel_TopLevel_Memory
+	AXISoCBlinker_TopLevel_Memory
+	AXISoCBlinker_TopLevel_Memory
 	(
 		// [BEGIN USER MAP FOR Memory]
 		// [END USER MAP FOR Memory]
@@ -129,8 +129,8 @@ module AXISoCBlinker_TopLevel_TopLevel
 		.M2S (Memory_M2S_Memory_M2S_HardLink),
 		.S2M (Memory_S2M_Memory_S2M_HardLink)
 	);
-	AXISoCBlinker_TopLevel_TopLevel_Reg
-	AXISoCBlinker_TopLevel_TopLevel_Reg
+	AXISoCBlinker_TopLevel_Reg
+	AXISoCBlinker_TopLevel_Reg
 	(
 		// [BEGIN USER MAP FOR Reg]
 		// [END USER MAP FOR Reg]

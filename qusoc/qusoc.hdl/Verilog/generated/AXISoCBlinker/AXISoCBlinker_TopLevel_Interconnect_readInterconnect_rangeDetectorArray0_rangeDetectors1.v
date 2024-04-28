@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is AXISoCBlinker_TopLevel_TopLevel_Interconnect_readInterconnect_rangeDetectorArray0_rangeDetectors1, clock frequency is 1Hz, Embedded
+// System configuration name is AXISoCBlinker_TopLevel_Interconnect_readInterconnect_rangeDetectorArray0_rangeDetectors1, clock frequency is 1Hz, Embedded
 // FSM summary
 // -- Packages
-module AXISoCBlinker_TopLevel_TopLevel_Interconnect_readInterconnect_rangeDetectorArray0_rangeDetectors1
+module AXISoCBlinker_TopLevel_Interconnect_readInterconnect_rangeDetectorArray0_rangeDetectors1
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
