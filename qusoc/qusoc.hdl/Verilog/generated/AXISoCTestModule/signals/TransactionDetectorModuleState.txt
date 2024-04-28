@@ -1,0 +1,2 @@
+└Root    | TransactionDetectorModuleState | [1:0] | 2 | [1:0]
+ └Status | eTransactionStatus             | [1:0] | 2 | [1:0][1:0]
