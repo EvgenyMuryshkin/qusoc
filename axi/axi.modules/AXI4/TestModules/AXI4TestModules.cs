@@ -95,4 +95,9 @@ namespace axi.modules
             s2m[0] = Inputs.iS2M;
         }
     }
+
+    public class AXI4AutoIncrementCounterModuleB4 : AXI4AutoIncrementCounterModule
+    {
+        public AXI4AutoIncrementCounterModuleB4() : base(axiSize.B4) { }
+    }
 }

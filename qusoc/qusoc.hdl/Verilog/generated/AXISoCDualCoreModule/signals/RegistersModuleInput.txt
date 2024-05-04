@@ -1,0 +1,7 @@
+└Root       | RegistersModuleInput | [48:0]  | 49 | [48:0] 
+ ├WriteData | UInt32               | [48:17] | 32 | [48:0][48:17]
+ ├WE        | Boolean              | [16]    | 1  | [48:0][16]
+ ├RS2Addr   | RTLBitArray          | [15:11] | 5  | [48:0][15:11]
+ ├RS1Addr   | RTLBitArray          | [10:6]  | 5  | [48:0][10:6]
+ ├Read      | Boolean              | [5]     | 1  | [48:0][5]
+ └RD        | RTLBitArray          | [4:0]   | 5  | [48:0][4:0]

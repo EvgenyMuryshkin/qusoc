@@ -11,12 +11,6 @@ namespace qusoc.extension
     public class QuSoCExtension
     {
         [ExtensionMethod(icon: TopLevelIcon.Translate)]
-        public static void AXISoCBlinker_Translate()
-        {
-            QuokkaRunner.FromConfig(Env.RTLVerilogConfig, new[] { "AXISoCBlinker" });
-        }
-
-        [ExtensionMethod(icon: TopLevelIcon.Translate)]
         public static void IncrementModule_Translate()
         {
             QuokkaRunner.FromConfig(Env.RTLVerilogConfig, new[] { nameof(Increment.Increment) });

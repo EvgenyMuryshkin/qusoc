@@ -1057,6 +1057,8 @@ set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/AXI4SoC2x2
 
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4AutoIncrementCounterModuleB4/AXI4AutoIncrementCounterModuleB4_TopLevel_axiSlave.v
+set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4AutoIncrementCounterModuleB4/AXI4AutoIncrementCounterModuleB4_TopLevel.v
 set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4Encoder2Module/AXI4Encoder2Module_TopLevel_TopLevel.v
 set_global_assignment -name VERILOG_FILE Verilog/generated/AXI4Encoder2Module/AXI4Encoder2Module_TopLevel.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4Encoder2Module.vwf

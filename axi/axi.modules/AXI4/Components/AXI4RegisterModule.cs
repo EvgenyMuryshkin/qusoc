@@ -1,4 +1,5 @@
-﻿using Quokka.RTL;
+﻿using Quokka.Core.Attributes;
+using Quokka.RTL;
 using System;
 
 namespace axi.modules
@@ -18,7 +19,6 @@ namespace axi.modules
     public class AXI4RegisterModuleInputs
     {
         public AXI4RegisterModuleInputs() : this(axiSize.B4) { }
-
         public AXI4RegisterModuleInputs(axiSize size)
         {
             M2S = new AXI4_M2S(size);
@@ -26,6 +26,7 @@ namespace axi.modules
         }
 
         public AXI4_M2S M2S;
+        [OptionalIdentifier]
         public AXI4RegisterModuleInput Reg;
     }
 

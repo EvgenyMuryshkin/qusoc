@@ -1,0 +1,5 @@
+└Root            | InterconnectModuleState | [4:0] | 5 | [4:0]
+ ├rightAddrValid | Boolean                 | [4]   | 1 | [4:0][4]
+ ├rightAddr      | RTLBitArray             | [3:2] | 2 | [4:0][3:2]
+ ├leftAddrValid  | Boolean                 | [1]   | 1 | [4:0][1]
+ └leftAddr       | RTLBitArray             | [0]   | 1 | [4:0][0:0]

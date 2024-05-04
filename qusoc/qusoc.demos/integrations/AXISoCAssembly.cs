@@ -42,6 +42,30 @@ public class AXISoCAssembly : IQuokkaAssembly
                     return module;
                 }
             };
+            yield return new RTLModuleConfig()
+            {
+                Name = "AXISoCDualCoreModule",
+                InstanceFactory = (classFactory) =>
+                {
+                    var inst = new AsmInstructionsProvider();
+                    var instructions = inst.FromAsmFile("axisocdualcore");
+
+                    var module = new AXISoCDualCoreModule(instructions);
+                    return module;
+                }
+            };
+            yield return new RTLModuleConfig()
+            {
+                Name = "AXISoCQuadCoreModule",
+                InstanceFactory = (classFactory) =>
+                {
+                    var inst = new AsmInstructionsProvider();
+                    var instructions = inst.FromAsmFile("axisocdquadcore");
+
+                    var module = new AXISoCQuadCoreModule(instructions);
+                    return module;
+                }
+            };
         }
     }
 }

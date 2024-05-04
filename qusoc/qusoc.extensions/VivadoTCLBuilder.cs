@@ -22,6 +22,7 @@ namespace qusoc.extension
             tcl
                 .TCLContent(Path.Combine(Env.ScriptsLocation, "errors.tcl"))
                 .set_msg_config(id: "filemgmt 20-742", new_severity: "ERROR")
+                .set_msg_config(id: "Vivado 12-3645", new_severity: "WARNING")
                 .create_project("test", part: "xc7z020clg400-1", verbose: true)
                 .SetProperty("target_language", "Verilog", tcl.CurrentProject)
                 .SetProperty("board_part", "digilentinc.com:arty-z7-20:part0:1.0", tcl.CurrentProject)

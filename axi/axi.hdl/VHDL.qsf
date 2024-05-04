@@ -37,7 +37,7 @@
 
 set_global_assignment -name FAMILY "Cyclone II"
 set_global_assignment -name DEVICE EP2C70F896C6
-set_global_assignment -name TOP_LEVEL_ENTITY AXI4SoC2x2_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY AXI4AutoIncrementCounterModuleB4_TopLevel
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "20:45:17  JUNE 07, 2019"
 set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
@@ -61,6 +61,8 @@ set_global_assignment -name AUTO_SHIFT_REGISTER_RECOGNITION OFF
 
 set_global_assignment -name VHDL_INPUT_VERSION VHDL_1993
 set_global_assignment -name VHDL_SHOW_LMF_MAPPING_MESSAGES OFF
+
+set_global_assignment -name SDC_FILE axi.sdc
 
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
@@ -1055,13 +1057,11 @@ set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_W_B_BRESP
 set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_W_B_BUSER
 set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_W_B_BVALID
 set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_W_W_WREADY
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/AXI4AutoIncrementCounterModuleB4.vwf
 
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/AXI4SoC2x2_SequentialWrite.vwf
-
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-
-set_global_assignment -name SDC_FILE axi.sdc
-
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4AutoIncrementCounterModuleB4/AXI4AutoIncrementCounterModuleB4_TopLevel_axiSlave.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4AutoIncrementCounterModuleB4/AXI4AutoIncrementCounterModuleB4_TopLevel.vhdl
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4AutoIncrementCounterModuleB4.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/AXI4Encoder2Module/AXI4Encoder2Module_TopLevel_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/AXI4Encoder2Module/AXI4Encoder2Module_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4Encoder2Module.vwf
@@ -1301,3 +1301,5 @@ set_global_assignment -name VHDL_FILE Quokka.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/TransactionDetectorModule/TransactionDetectorModule_TopLevel_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/TransactionDetectorModule/TransactionDetectorModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/TransactionDetectorModule.vwf
+
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

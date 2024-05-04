@@ -1,0 +1,3 @@
+└Root     | AXI4AutoIncrementCounterModuleState | [32:0] | 33 | [32:0]
+ ├Written | Boolean                             | [32]   | 1  | [32:0][32]
+ └counter | RTLBitArray                         | [31:0] | 32 | [32:0][31:0]

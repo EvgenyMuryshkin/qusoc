@@ -46,25 +46,16 @@ namespace AXISoC
 
             Reg.Schedule(() => new AXI4RegisterModuleInputs()
             {
-                M2S = Interconnect.oM2S[1],
-                Reg = new AXI4RegisterModuleInput()
-                { 
-                    inWDATA = new byte[4] { 0, 0, 0, 0 },// TODO: no initializer support
-                    inWE = false
-                }
+                M2S = Interconnect.oM2S[1]
             });
 
             Interconnect.Schedule(() => new AXI4InteconnectModuleInputs()
             { 
-                iM2S = new[]
-                { 
-                    CPU.M2S 
-                },
-                iS2M = new[] 
-                {
-                    Memory.S2M,
+                iM2S = [CPU.M2S],
+                iS2M = [
+                    Memory.S2M, 
                     Reg.S2M
-                } 
+                ]
             });
         }
         public RTLBitArray oData => new RTLBitArray(Reg.outData);
