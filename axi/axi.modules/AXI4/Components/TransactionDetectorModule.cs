@@ -7,6 +7,7 @@ namespace axi.modules
         public bool iTXBegin;
         public bool iTXEnd;
         public bool iRestart;
+        public bool iActive;
     }
 
     public enum eTransactionStatus
@@ -27,6 +28,7 @@ namespace axi.modules
         {
         }
 
+        public bool oTXBegin => State.Status == eTransactionStatus.Ready && Inputs.iTXBegin;
         public bool oTransaction => State.Status == eTransactionStatus.Active;
         public bool oWaitForRestart => State.Status == eTransactionStatus.WaitForRestart;
 
@@ -35,7 +37,7 @@ namespace axi.modules
             switch (State.Status)
             {
                 case eTransactionStatus.Ready:
-                    if (Inputs.iTXBegin)
+                    if (Inputs.iTXBegin && Inputs.iActive)
                         NextState.Status = eTransactionStatus.Active;
                     break;
                 case eTransactionStatus.Active:

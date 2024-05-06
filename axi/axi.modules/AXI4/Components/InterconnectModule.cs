@@ -68,25 +68,26 @@ namespace axi.modules
             DuplexMux = new FullDuplexMuxModule<TLeft, TRight>(leftCount, leftFactory, rightCount, rightFactory);
         }
 
-        protected TransactionDetectorModule[] TransactionDetectors;
-        protected AXI4EncoderModule Encoder;
-        protected FullDuplexMuxModule<TLeft, TRight> DuplexMux;
+        internal TransactionDetectorModule[] TransactionDetectors;
+        internal AXI4EncoderModule Encoder;
+        internal FullDuplexMuxModule<TLeft, TRight> DuplexMux;
 
         protected abstract bool TXStart(int leftIndex, TLeft source);
-        protected abstract bool TXEnd(TLeft source);
+        protected abstract bool TXEnd(int sourceIndex, TLeft source);
         protected abstract RTLBitArray RightAddr();
-        protected bool[] ActiveTransactions => TransactionDetectors.Select(t => t.oTransaction).ToArray();
-        protected bool[] WaitForRestarts => TransactionDetectors.Select(t => t.oWaitForRestart).ToArray();
-        protected bool[] Transactions => TransactionDetectors.Select(t => t.oTransaction).ToArray();//dbg
+        internal bool[] ActiveTransactions => TransactionDetectors.Select(t => t.oTransaction).ToArray();
+        internal bool[] WaitForRestarts => TransactionDetectors.Select(t => t.oWaitForRestart).ToArray();
+        internal bool[] Transactions => TransactionDetectors.Select(t => t.oTransaction).ToArray();//dbg
+        internal bool[] TXBegin => TransactionDetectors.Select(t => t.oTXBegin || t.oTransaction).ToArray();//dbg
         protected TLeft muxLeftData => DuplexMux.oMuxLeftData;
         protected TRight muxRightData => DuplexMux.oMuxRightData;
         protected TLeft[] muxLeft => DuplexMux.oLeft;
         protected TRight[] muxRight => DuplexMux.oRight;
         protected RTLBitArray rightAddr => RightAddr();
-        protected bool currentTXEnd => TXEnd(Inputs.iLeft[State.leftAddr]);
+        protected bool currentTXEnd => TXEnd(State.leftAddr, Inputs.iLeft[State.leftAddr]);
 
         //protected bool[] TXBegin;
-        protected bool[] TXBegin => range(leftCount).Select(leftIndex => TXStart(leftIndex, Inputs.iLeft[leftIndex]) && !WaitForRestarts[leftIndex]).ToArray();
+        //protected bool[] TXBegin => range(leftCount).Select(leftIndex => TXStart(leftIndex, Inputs.iLeft[leftIndex]) && !WaitForRestarts[leftIndex]).ToArray();
         protected override void OnSchedule(Func<InterconnectModuleInputs<TLeft, TRight>> inputsFactory)
         {
             base.OnSchedule(inputsFactory);
@@ -101,9 +102,10 @@ namespace axi.modules
                 TransactionDetectors[leftIndex].Schedule(() => 
                     new TransactionDetectorModuleInputs()
                     {
-                        iTXBegin = TXBegin[leftIndex],//Encoder.MSBValue[leftIndex],//TXBegin[leftIndex],
-                        iTXEnd = TXEnd(Inputs.iLeft[leftIndex]),
+                        iTXBegin = TXStart(leftIndex, Inputs.iLeft[leftIndex]),//TXBegin[leftIndex],//Encoder.MSBValue[leftIndex],//TXBegin[leftIndex],
+                        iTXEnd = TXEnd(leftIndex, Inputs.iLeft[leftIndex]),
                         iRestart = !Encoder.HasActive,
+                        iActive = Encoder.HasActive && Encoder.MSBIndex == leftIndex
                     }
                 );
             }

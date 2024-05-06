@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Quokka.RTL;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -9,6 +11,7 @@ namespace QRV32.CPU
         public string Single(uint address, uint i)
         {
             var decoded = "";
+            Func<RTLBitArray, string> bitArrayFormat = (r) => $"{r:X}";
 
             switch (i)
             {
@@ -28,16 +31,16 @@ namespace QRV32.CPU
                         switch (id.OpTypeCode)
                         {
                             case OpTypeCodes.B:
-                                decoded = $"B{id.BranchTypeCode} x{(uint)id.RS1}, x{(uint)id.RS2}, {(uint)id.BTypeImm} (0x{(address + id.BTypeImm):X})";
+                                decoded = $"B{id.BranchTypeCode} x{(uint)id.RS1}, x{(uint)id.RS2}, {(uint)id.BTypeImm} ({bitArrayFormat(address + id.BTypeImm)})";
                                 break;
                             case OpTypeCodes.JALR:
-                                decoded += $" x{(uint)id.RD}, x{(uint)id.RS1}, {(uint)id.ITypeImm} (0x{id.ITypeImm})";
+                                decoded += $" x{(uint)id.RD}, x{(uint)id.RS1}, {(uint)id.ITypeImm} ({bitArrayFormat(id.ITypeImm)})";
                                 break;
                             case OpTypeCodes.LUI:
-                                decoded += $" x{(uint)id.RD}, {(uint)id.UTypeImm} (0x{id.UTypeImm})";
+                                decoded += $" x{(uint)id.RD}, {(uint)id.UTypeImm} ({bitArrayFormat(id.UTypeImm)})";
                                 break;
                             case OpTypeCodes.AUIPC:
-                                decoded += $" x{(uint)id.RD}, {(uint)id.UTypeImm} (0x{id.UTypeImm})";
+                                decoded += $" x{(uint)id.RD}, {(uint)id.UTypeImm} ({bitArrayFormat(id.UTypeImm)})";
                                 break;
                             case OpTypeCodes.JAL:
                                 if (id.RD == 0)
@@ -46,11 +49,11 @@ namespace QRV32.CPU
                                 }
                                 else
                                 {
-                                    decoded += $" x{(uint)id.RD}, 0x{(uint)(address + id.JTypeImm):X8} (0x{id.JTypeImm})";
+                                    decoded += $" x{(uint)id.RD}, 0x{(uint)(address + id.JTypeImm):X8} ({bitArrayFormat(id.JTypeImm)})";
                                 }
                                 break;
                             case OpTypeCodes.OPIMM:
-                                decoded = $"{id.OPIMMCode} x{(uint)id.RD}, x{(uint)id.RS1}, {(int)id.ITypeImm} (0x{id.ITypeImm})";
+                                decoded = $"{id.OPIMMCode} x{(uint)id.RD}, x{(uint)id.RS1}, {(int)id.ITypeImm} ({bitArrayFormat(id.ITypeImm)})";
                                 break;
                             case OpTypeCodes.OP:
                                 var op = id.OPCode.ToString();

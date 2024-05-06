@@ -60,7 +60,7 @@ public class AXISoCAssembly : IQuokkaAssembly
                 InstanceFactory = (classFactory) =>
                 {
                     var inst = new AsmInstructionsProvider();
-                    var instructions = inst.FromAsmFile("axisocdquadcore");
+                    var instructions = inst.FromAsmFile("axisocquadcore");
 
                     var module = new AXISoCQuadCoreModule(instructions);
                     return module;

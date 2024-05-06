@@ -14,7 +14,7 @@ namespace axi.modules
         {
             return source.IsActive;
         }
-        protected override bool TXEnd(MData source) => source.Payload.DataFlag;
+        protected override bool TXEnd(int sourceIndex, MData source) => source.Payload.DataFlag;
         protected override RTLBitArray RightAddr() => muxLeftData.Addr;
         public bool[] oTransactions => Transactions;
         public bool[] oWaitForRestarts => WaitForRestarts;

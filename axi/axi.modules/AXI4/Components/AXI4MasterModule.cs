@@ -13,6 +13,8 @@ namespace axi.modules
             AWADDR = new RTLBitArray().Resized(AXI4Tools.Bits(size));
         }
 
+        public byte ARUSER = 0;
+
         public RTLBitArray ARADDR;
         public bool RE = false;
         public bool RREADY;
@@ -79,6 +81,7 @@ namespace axi.modules
             {
                 AR =
                 {
+                    ARUSER = Inputs.Master.ARUSER,
                     ARADDR = Inputs.Master.ARADDR,
                     ARVALID = Inputs.Master.RE
                 },

@@ -20,10 +20,10 @@ namespace AXISoC
 
     public class AXISoCQuadCoreModule : RTLCombinationalModule<AXISoCQuadCoreModuleInputs>
     {
-        internal AXI4RISCVModule CPU0 = new AXI4RISCVModule(CPURegsType.RAM);
-        internal AXI4RISCVModule CPU1 = new AXI4RISCVModule(CPURegsType.RAM);
-        internal AXI4RISCVModule CPU2 = new AXI4RISCVModule(CPURegsType.RAM);
-        internal AXI4RISCVModule CPU3 = new AXI4RISCVModule(CPURegsType.RAM);
+        internal AXI4RISCVModule CPU0 = new AXI4RISCVModule(CPURegsType.RAM, 0);
+        internal AXI4RISCVModule CPU1 = new AXI4RISCVModule(CPURegsType.RAM, 1);
+        internal AXI4RISCVModule CPU2 = new AXI4RISCVModule(CPURegsType.RAM, 2);
+        internal AXI4RISCVModule CPU3 = new AXI4RISCVModule(CPURegsType.RAM, 3);
         internal AXI4MemoryModule Memory = new AXI4MemoryModule(axiSize.B4, 4096);
         internal AXI4AutoIncrementCounterModule AutoIncrementCounter = new AXI4AutoIncrementCounterModule(axiSize.B4);
         

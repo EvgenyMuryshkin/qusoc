@@ -40,7 +40,7 @@ namespace axi.modules
             //return rangeDetectorArray[Encoder.MSBIndex].oIndex;
         }
 
-        protected override bool TXEnd(AXI4_M2S_R source) => source.R.RREADY && muxRightData.R.RVALID;
+        protected override bool TXEnd(int sourceIndex, AXI4_M2S_R source) => source.R.RREADY && muxRightData.R.RVALID && State.leftAddr == sourceIndex;
         protected override bool TXStart(int sourceIndex, AXI4_M2S_R source) => source.AR.ARVALID && rangeDetectorActiveFlags[sourceIndex];// TODO: rangeDetectorActive[Encoder.MSBIndex];
 
         public AXI4_S2M_R[] S2M => muxRight;

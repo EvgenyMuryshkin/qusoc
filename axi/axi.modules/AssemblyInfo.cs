@@ -3,3 +3,4 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("axi.tests")]
+[assembly: InternalsVisibleTo("QuSoC.Tests")]

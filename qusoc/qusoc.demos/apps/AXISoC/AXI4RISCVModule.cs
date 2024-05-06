@@ -19,14 +19,17 @@ namespace AXISoC
     {
         internal RISCVModule CPU;
         internal AXI4MasterModule Master = new AXI4MasterModule(axiSize.B4);
+        internal readonly byte ARUSER = 0;
+
         public AXI4RISCVModule() : this(CPURegsType.RAM)
         {
 
         }
 
-        public AXI4RISCVModule(CPURegsType regsType)
+        public AXI4RISCVModule(CPURegsType regsType, byte ARUSER = 0)
         {
             CPU = new RISCVModule(regsType);
+            this.ARUSER = ARUSER;
         }
 
         RTLBitArray memAccessWSTRB
@@ -69,7 +72,8 @@ namespace AXISoC
                 { 
                     S2M = Inputs.S2M,
                     Master = new AXI4MasterModuleInput()
-                    { 
+                    {
+                        ARUSER = ARUSER,
                         WE = CPU.MemWrite,
                         AWADDR = CPU.MemAddress,
                         WDATA = internalWriteData,
