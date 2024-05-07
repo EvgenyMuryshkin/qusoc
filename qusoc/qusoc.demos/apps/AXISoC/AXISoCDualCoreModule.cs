@@ -17,7 +17,7 @@ namespace AXISoC
         internal AXI4RISCVModule CPU0 = new AXI4RISCVModule(CPURegsType.RAM);
         internal AXI4RISCVModule CPU1 = new AXI4RISCVModule(CPURegsType.RAM);
         internal AXI4MemoryModule Memory = new AXI4MemoryModule(axiSize.B4, 4096);
-        internal AXI4AutoIncrementCounterModule AutoIncrementCounter = new AXI4AutoIncrementCounterModule(axiSize.B4);
+        internal AXI4IncrementOnReadCounterModule AutoIncrementCounter = new AXI4IncrementOnReadCounterModule(axiSize.B4);
         internal AXI4RegisterModule Reg0 = new AXI4RegisterModule(axiSize.B4);
         internal AXI4RegisterModule Reg1 = new AXI4RegisterModule(axiSize.B4);
 

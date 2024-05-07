@@ -2,6 +2,8 @@
 
 module top (
     input wire clk,
+    input wire [3:0] btn,
+    input wire [1:0] sw,
     output wire [3:0] led
 );
 
@@ -79,21 +81,21 @@ module top (
   wire [31:0] reg2;
   wire [31:0] reg3;
 
-  assign led[0] = reg0[20];
-  assign led[1] = reg1[20];
-  assign led[2] = reg2[20];
-  assign led[3] = reg3[20];
+  assign led[0] = reg0[19];
+  assign led[1] = reg1[0];
+  assign led[2] = reg2[0];
+  assign led[3] = reg3[0];
   
   AXISoCQuadCoreModule_TopLevel AXISoCQuadCoreModule_TopLevel
   (
     .Clock (clk50),
     .Reset (!isRunning || !locked),
-    .iSwitch0(0),
-    .iSwitch1(0),
-    .iButton0(0),
-    .iButton1(0),
-    .iButton2(0),
-    .iButton3(0),
+    .iSwitch0(sw[0]),
+    .iSwitch1(sw[1]),
+    .iButton0(btn[0]),
+    .iButton1(btn[1]),
+    .iButton2(btn[2]),
+    .iButton3(btn[3]),
     .oReg0 (reg0),
     .oReg1 (reg1),
     .oReg2 (reg2),

@@ -54,15 +54,22 @@ namespace QuSoC.Tests
             {
                 var ti = topLevel.Interconnect.readInterconnect.TransactionDetectors.Select(t => t.Inputs).ToList();
 
-                var reg0 = (int)(new RTLBitArray(topLevel.Reg0.outData));
-                var reg1 = (int)(new RTLBitArray(topLevel.Reg1.outData));
-                var reg2 = (int)(new RTLBitArray(topLevel.Reg2.outData));
-                var reg3 = (int)(new RTLBitArray(topLevel.Reg3.outData));
+                int reg0 = new RTLBitArray(topLevel.Reg0.outData);
+                int reg1 = new RTLBitArray(topLevel.Reg1.outData);
+                int reg2 = new RTLBitArray(topLevel.Reg2.outData);
+                int reg3 = new RTLBitArray(topLevel.Reg3.outData);
 
-                return reg0 < 10 && reg1 < 10 && reg2 < 10 && reg3 < 10;
+                topLevel.Schedule(() => new AXISoCQuadCoreModuleInputs()
+                {
+                    iButton0 = true,
+                    iButton1 = true,
+                    iButton2 = true,
+                    iButton3 = true,
+                    iSwitch0 = true,
+                    iSwitch1 = true
+                });
+                return reg1 < 10;
             });
-            //Assert.AreEqual(10, (int)(new RTLBitArray(topLevel.Reg0.outData)));
-            //Assert.AreEqual(20, (int)(new RTLBitArray(topLevel.Reg1.outData)));
         }
     }
 }

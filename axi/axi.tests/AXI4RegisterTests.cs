@@ -8,6 +8,12 @@ using System;
 namespace axi.tests
 {
     [TestClass]
+    public class AXI4SignalBufferModuleTests : BaseRTLModuleTests
+    {
+
+    }
+
+    [TestClass]
     public class AXI4RegisterTests : BaseRTLModuleTests
     {
         (RTLSimulator<AXI4RegisterModuleB4, AXI4RegisterModuleInputs>, AXI4RegisterModuleB4) Setup

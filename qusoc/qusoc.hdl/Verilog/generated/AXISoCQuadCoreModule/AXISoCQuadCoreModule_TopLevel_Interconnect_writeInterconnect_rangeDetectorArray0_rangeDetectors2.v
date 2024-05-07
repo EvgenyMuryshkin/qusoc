@@ -34,8 +34,8 @@ module AXISoCQuadCoreModule_TopLevel_Interconnect_writeInterconnect_rangeDetecto
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [31: 0] rangeFrom = 32'b10000000000000000000000000000100;
-	wire [31: 0] rangeTo = 32'b10000000000000000000000000000100;
+	wire [28: 0] rangeFrom = 29'b10000000000000000000000000100;
+	wire [28: 0] rangeTo = 29'b10000000000000000000000000100;
 	wire [31: 0] Inputs_Value;
 	wire RangeDetectorModule_L33F33T85_Expr;
 	wire RangeDetectorModule_L33F33T85_Expr_1;
@@ -55,7 +55,7 @@ module AXISoCQuadCoreModule_TopLevel_Interconnect_writeInterconnect_rangeDetecto
 	}
 	;
 	assign RangeDetectorModule_L33F33T58_ExprRhs = {
-		1'b0,
+		{4{1'b0}},
 		rangeFrom
 	}
 	;
@@ -65,7 +65,7 @@ module AXISoCQuadCoreModule_TopLevel_Interconnect_writeInterconnect_rangeDetecto
 	}
 	;
 	assign RangeDetectorModule_L33F62T85_ExprRhs = {
-		1'b0,
+		{4{1'b0}},
 		rangeTo
 	}
 	;

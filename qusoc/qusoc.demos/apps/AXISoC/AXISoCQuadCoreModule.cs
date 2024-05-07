@@ -25,20 +25,21 @@ namespace AXISoC
         internal AXI4RISCVModule CPU2 = new AXI4RISCVModule(CPURegsType.RAM, 2);
         internal AXI4RISCVModule CPU3 = new AXI4RISCVModule(CPURegsType.RAM, 3);
         internal AXI4MemoryModule Memory = new AXI4MemoryModule(axiSize.B4, 4096);
-        internal AXI4AutoIncrementCounterModule AutoIncrementCounter = new AXI4AutoIncrementCounterModule(axiSize.B4);
-        
+        internal AXI4IncrementOnReadCounterModule AutoIncrementCounter = new AXI4IncrementOnReadCounterModule(axiSize.B4);
+        internal AXI4AutoDecrementRegisterModule AXI4AutoDecrementRegister = new AXI4AutoDecrementRegisterModule(axiSize.B4);
+
         internal AXI4RegisterModule Reg0 = new AXI4RegisterModule(axiSize.B4);
         internal AXI4RegisterModule Reg1 = new AXI4RegisterModule(axiSize.B4);
         internal AXI4RegisterModule Reg2 = new AXI4RegisterModule(axiSize.B4);
         internal AXI4RegisterModule Reg3 = new AXI4RegisterModule(axiSize.B4);
 
-        internal AXI4RegisterModule Switch0 = new AXI4RegisterModule(axiSize.B4);
-        internal AXI4RegisterModule Switch1 = new AXI4RegisterModule(axiSize.B4);
+        internal AXI4SignalBufferModule Switch0 = new AXI4SignalBufferModule(axiSize.B4);
+        internal AXI4SignalBufferModule Switch1 = new AXI4SignalBufferModule(axiSize.B4);
 
-        internal AXI4RegisterModule Button0 = new AXI4RegisterModule(axiSize.B4);
-        internal AXI4RegisterModule Button1 = new AXI4RegisterModule(axiSize.B4);
-        internal AXI4RegisterModule Button2 = new AXI4RegisterModule(axiSize.B4);
-        internal AXI4RegisterModule Button3 = new AXI4RegisterModule(axiSize.B4);
+        internal AXI4SignalBufferModule Button0 = new AXI4SignalBufferModule(axiSize.B4);
+        internal AXI4SignalBufferModule Button1 = new AXI4SignalBufferModule(axiSize.B4);
+        internal AXI4SignalBufferModule Button2 = new AXI4SignalBufferModule(axiSize.B4);
+        internal AXI4SignalBufferModule Button3 = new AXI4SignalBufferModule(axiSize.B4);
 
         internal AXI4InteconnectModule Interconnect = new AXI4InteconnectModule(
             axiSize.B4,
@@ -46,7 +47,8 @@ namespace AXISoC
             new List<RangeInfo>()
             {
                 new RangeInfo(0x00000000, 0x00001000),// instructions memory
-                new RangeInfo(0x80000000, 0x80000000),// auto increment
+                new RangeInfo(0x10000000, 0x10000000),// auto increment on read
+                new RangeInfo(0x10000004, 0x10000004),// auto decrement
                 new RangeInfo(0x80000004, 0x80000004),// reg0
                 new RangeInfo(0x80000008, 0x80000008),// reg1
                 new RangeInfo(0x8000000C, 0x8000000C),// reg2
@@ -95,86 +97,90 @@ namespace AXISoC
             {
                 M2S = Interconnect.oM2S[1]
             });
-
-            Reg0.Schedule(() => new ()
+            AXI4AutoDecrementRegister.Schedule(() => new()
             {
                 M2S = Interconnect.oM2S[2]
             });
-            Reg1.Schedule(() => new ()
+
+            Reg0.Schedule(() => new ()
             {
                 M2S = Interconnect.oM2S[3]
             });
-            Reg2.Schedule(() => new()
+            Reg1.Schedule(() => new ()
             {
                 M2S = Interconnect.oM2S[4]
             });
-            Reg3.Schedule(() => new()
+            Reg2.Schedule(() => new()
             {
                 M2S = Interconnect.oM2S[5]
+            });
+            Reg3.Schedule(() => new()
+            {
+                M2S = Interconnect.oM2S[6]
             });
 
             Switch0.Schedule(() => new()
             {
-                M2S = Interconnect.oM2S[6],
-                Reg =
+                M2S = Interconnect.oM2S[7],
+                Sig =
                 {
-                    inWDATA = new RTLBitArray(Inputs.iSwitch0),
-                    inWE = true,
+                    inWDATA = new RTLBitArray(Inputs.iSwitch0)
                 }
             });
             Switch1.Schedule(() => new()
             {
-                M2S = Interconnect.oM2S[7],
-                Reg =
+                M2S = Interconnect.oM2S[8],
+                Sig =
                 {
-                    inWDATA = new RTLBitArray(Inputs.iSwitch1),
-                    inWE = true,
+                    inWDATA = new RTLBitArray(Inputs.iSwitch1)
                 }
             });
 
             Button0.Schedule(() => new()
             {
-                M2S = Interconnect.oM2S[8],
-                Reg =
+                M2S = Interconnect.oM2S[9],
+                Sig =
                 {
-                    inWDATA = new RTLBitArray(Inputs.iButton0),
-                    inWE = true
+                    inWDATA = new RTLBitArray(Inputs.iButton0)
                 }
             });
             Button1.Schedule(() => new()
             {
-                M2S = Interconnect.oM2S[9],
-                Reg =
+                M2S = Interconnect.oM2S[10],
+                Sig =
                 {
-                    inWDATA = new RTLBitArray(Inputs.iButton1),
-                    inWE = true
+                    inWDATA = new RTLBitArray(Inputs.iButton1)
                 }
             });
             Button2.Schedule(() => new()
             {
-                M2S = Interconnect.oM2S[10],
-                Reg =
+                M2S = Interconnect.oM2S[11],
+                Sig =
                 {
-                    inWDATA = new RTLBitArray(Inputs.iButton2),
-                    inWE = true
+                    inWDATA = new RTLBitArray(Inputs.iButton2)
                 }
             });
             Button3.Schedule(() => new()
             {
-                M2S = Interconnect.oM2S[11],
-                Reg =
+                M2S = Interconnect.oM2S[12],
+                Sig =
                 {
-                    inWDATA = new RTLBitArray(Inputs.iButton3),
-                    inWE = true
+                    inWDATA = new RTLBitArray(Inputs.iButton3)
                 }
             });
 
             Interconnect.Schedule(() => new ()
             { 
-                iM2S = [CPU0.M2S, CPU1.M2S, CPU2.M2S, CPU3.M2S],
+                iM2S = [
+                    CPU0.M2S, 
+                    CPU1.M2S, 
+                    CPU2.M2S, 
+                    CPU3.M2S
+                ],
                 iS2M = [
                     Memory.S2M,
                     AutoIncrementCounter.S2M,
+                    AXI4AutoDecrementRegister.S2M,
                     Reg0.S2M,
                     Reg1.S2M,
                     Reg2.S2M,

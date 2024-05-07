@@ -27,12 +27,12 @@ namespace axi.modules
         public bool Written;
     }
 
-    public class AXI4AutoIncrementCounterModule : RTLSynchronousModule<AXI4AutoIncrementCounterModuleInputs, AXI4AutoIncrementCounterModuleState>
+    public class AXI4IncrementOnReadCounterModule : RTLSynchronousModule<AXI4AutoIncrementCounterModuleInputs, AXI4AutoIncrementCounterModuleState>
     {
         internal AXI4NonBufferedSlaveModule axiSlave;
         private readonly axiSize size;
         private readonly int axiBits;
-        public AXI4AutoIncrementCounterModule(axiSize size)
+        public AXI4IncrementOnReadCounterModule(axiSize size)
         {
             this.size = size;
             axiBits = AXI4Tools.Bits(size);

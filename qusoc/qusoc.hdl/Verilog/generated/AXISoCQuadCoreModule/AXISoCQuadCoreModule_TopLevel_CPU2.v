@@ -39,13 +39,14 @@ module AXISoCQuadCoreModule_TopLevel_CPU2
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [1: 0] AXI4RISCVModule_L47F52T53_Expr = 2'b11;
-	wire [3: 0] AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L36F69T75_Expr = 4'b1111;
-	wire AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L38F42T43_Expr = 1'b0;
-	wire [3: 0] AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L39F69T75_Expr = 4'b0001;
-	wire AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L40F47T48_Expr = 1'b1;
-	wire [3: 0] AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L41F69T75_Expr = 4'b0011;
-	wire AXI4RISCVModule_L61F35T36_Expr = 1'b0;
+	wire [1: 0] ARUSER = 2'b10;
+	wire [1: 0] AXI4RISCVModule_L50F52T53_Expr = 2'b11;
+	wire [3: 0] AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L39F69T75_Expr = 4'b1111;
+	wire AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L41F42T43_Expr = 1'b0;
+	wire [3: 0] AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L42F69T75_Expr = 4'b0001;
+	wire AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L43F47T48_Expr = 1'b1;
+	wire [3: 0] AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L44F69T75_Expr = 4'b0011;
+	wire AXI4RISCVModule_L64F35T36_Expr = 1'b0;
 	wire RISCVModule_Types_L11F30T35_Expr = 1'b0;
 	wire Inputs_S2M_R_AR_ARREADY;
 	wire [7: 0] Inputs_S2M_R_R_RID;
@@ -76,18 +77,18 @@ module AXISoCQuadCoreModule_TopLevel_CPU2
 	wire CPU_MemWrite;
 	wire [31: 0] CPU_MemWriteData;
 	wire CPU_RREADY;
-	wire [103: 0] Master_Master;
+	wire [111: 0] Master_Master;
 	wire [73: 0] Master_S2M;
 	wire [221: 0] Master_M2S;
 	wire Master_RACK;
 	wire Master_WACK;
-	wire [1: 0] AXI4RISCVModule_L46F36T73_Index;
-	wire [31: 0] AXI4RISCVModule_L50F42T88_Resize;
-	reg [3: 0] AXI4RISCVModule_L35F13L44T14_mask;
-	wire [3: 0] AXI4RISCVModule_L49F30T67_Index;
-	wire [65: 0] AXI4RISCVModule_L59F23L64T18_Object;
-	wire [31: 0] AXI4RISCVModule_L63F35T64_Source;
-	wire [177: 0] AXI4RISCVModule_L68F23L82T18_Object;
+	wire [1: 0] AXI4RISCVModule_L49F36T73_Index;
+	wire [31: 0] AXI4RISCVModule_L53F42T88_Resize;
+	reg [3: 0] AXI4RISCVModule_L38F13L47T14_mask;
+	wire [3: 0] AXI4RISCVModule_L52F30T67_Index;
+	wire [65: 0] AXI4RISCVModule_L62F23L67T18_Object;
+	wire [31: 0] AXI4RISCVModule_L66F35T64_Source;
+	wire [185: 0] AXI4RISCVModule_L71F23L86T18_Object;
 	wire [31: 0] CPU_BaseAddress_CPU_BaseAddress_HardLink;
 	wire CPU_ExtIRQ_CPU_ExtIRQ_HardLink;
 	wire [31: 0] CPU_MemReadData_CPU_MemReadData_HardLink;
@@ -100,7 +101,7 @@ module AXISoCQuadCoreModule_TopLevel_CPU2
 	wire CPU_MemWrite_CPU_MemWrite_HardLink;
 	wire [31: 0] CPU_MemWriteData_CPU_MemWriteData_HardLink;
 	wire CPU_RREADY_CPU_RREADY_HardLink;
-	wire [103: 0] Master_Master_Master_Master_HardLink;
+	wire [111: 0] Master_Master_Master_Master_HardLink;
 	wire [73: 0] Master_S2M_Master_S2M_HardLink;
 	wire [221: 0] Master_M2S_Master_M2S_HardLink;
 	wire Master_RACK_Master_RACK_HardLink;
@@ -109,36 +110,36 @@ module AXISoCQuadCoreModule_TopLevel_CPU2
 	wire [7: 0] Master_RDATA2_Master_RDATA_HardLink;
 	wire [7: 0] Master_RDATA3_Master_RDATA_HardLink;
 	wire Master_WACK_Master_WACK_HardLink;
-	wire [7: 0] AXI4RISCVModule_L47F37T53_Expr;
-	wire [7: 0] AXI4RISCVModule_L47F37T53_Expr_1;
-	wire [31: 0] AXI4RISCVModule_L50F43T75_Expr;
-	wire [31: 0] AXI4RISCVModule_L50F43T75_Expr_1;
-	wire [3: 0] AXI4RISCVModule_L49F31T60_Expr;
-	wire [3: 0] AXI4RISCVModule_L49F31T60_Expr_1;
-	wire AXI4RISCVModule_L62F32T58_Expr;
-	wire AXI4RISCVModule_L62F32T58_Expr_1;
-	wire AXI4RISCVModule_L62F32T58_Expr_2;
-	wire AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L38F21T43_Expr;
-	wire signed [3: 0] AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L38F21T43_ExprLhs;
-	wire signed [3: 0] AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L38F21T43_ExprRhs;
-	wire AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L40F26T48_Expr;
-	wire signed [3: 0] AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L40F26T48_ExprLhs;
-	wire signed [3: 0] AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L40F26T48_ExprRhs;
+	wire [7: 0] AXI4RISCVModule_L50F37T53_Expr;
+	wire [7: 0] AXI4RISCVModule_L50F37T53_Expr_1;
+	wire [31: 0] AXI4RISCVModule_L53F43T75_Expr;
+	wire [31: 0] AXI4RISCVModule_L53F43T75_Expr_1;
+	wire [3: 0] AXI4RISCVModule_L52F31T60_Expr;
+	wire [3: 0] AXI4RISCVModule_L52F31T60_Expr_1;
+	wire AXI4RISCVModule_L65F32T58_Expr;
+	wire AXI4RISCVModule_L65F32T58_Expr_1;
+	wire AXI4RISCVModule_L65F32T58_Expr_2;
+	wire AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L41F21T43_Expr;
+	wire signed [3: 0] AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L41F21T43_ExprLhs;
+	wire signed [3: 0] AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L41F21T43_ExprRhs;
+	wire AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L43F26T48_Expr;
+	wire signed [3: 0] AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L43F26T48_ExprLhs;
+	wire signed [3: 0] AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L43F26T48_ExprRhs;
 	wire [7 : 0] Inputs_S2M_R_R_RDATA [0 : 3];
 	wire [7 : 0] Master_RDATA [0 : 3];
-	assign AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L38F21T43_Expr = AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L38F21T43_ExprLhs == AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L38F21T43_ExprRhs ? 1'b1 : 1'b0;
-	assign AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L40F26T48_Expr = AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L40F26T48_ExprLhs == AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L40F26T48_ExprRhs ? 1'b1 : 1'b0;
-	assign AXI4RISCVModule_L47F37T53_Expr[0] = 0;
-	assign AXI4RISCVModule_L47F37T53_Expr[1] = 0;
-	assign AXI4RISCVModule_L47F37T53_Expr[2] = 0;
-	assign AXI4RISCVModule_L47F37T53_Expr[3] = AXI4RISCVModule_L47F37T53_Expr_1[0];
-	assign AXI4RISCVModule_L47F37T53_Expr[4] = AXI4RISCVModule_L47F37T53_Expr_1[1];
-	assign AXI4RISCVModule_L47F37T53_Expr[5] = 0;
-	assign AXI4RISCVModule_L47F37T53_Expr[6] = 0;
-	assign AXI4RISCVModule_L47F37T53_Expr[7] = 0;
-	assign AXI4RISCVModule_L50F43T75_Expr = (AXI4RISCVModule_L50F43T75_Expr_1 << internalByte);
-	assign AXI4RISCVModule_L49F31T60_Expr = (AXI4RISCVModule_L49F31T60_Expr_1 << addressBits);
-	assign AXI4RISCVModule_L62F32T58_Expr = AXI4RISCVModule_L62F32T58_Expr_1 | AXI4RISCVModule_L62F32T58_Expr_2;
+	assign AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L41F21T43_Expr = AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L41F21T43_ExprLhs == AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L41F21T43_ExprRhs ? 1'b1 : 1'b0;
+	assign AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L43F26T48_Expr = AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L43F26T48_ExprLhs == AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L43F26T48_ExprRhs ? 1'b1 : 1'b0;
+	assign AXI4RISCVModule_L50F37T53_Expr[0] = 0;
+	assign AXI4RISCVModule_L50F37T53_Expr[1] = 0;
+	assign AXI4RISCVModule_L50F37T53_Expr[2] = 0;
+	assign AXI4RISCVModule_L50F37T53_Expr[3] = AXI4RISCVModule_L50F37T53_Expr_1[0];
+	assign AXI4RISCVModule_L50F37T53_Expr[4] = AXI4RISCVModule_L50F37T53_Expr_1[1];
+	assign AXI4RISCVModule_L50F37T53_Expr[5] = 0;
+	assign AXI4RISCVModule_L50F37T53_Expr[6] = 0;
+	assign AXI4RISCVModule_L50F37T53_Expr[7] = 0;
+	assign AXI4RISCVModule_L53F43T75_Expr = (AXI4RISCVModule_L53F43T75_Expr_1 << internalByte);
+	assign AXI4RISCVModule_L52F31T60_Expr = (AXI4RISCVModule_L52F31T60_Expr_1 << addressBits);
+	assign AXI4RISCVModule_L65F32T58_Expr = AXI4RISCVModule_L65F32T58_Expr_1 | AXI4RISCVModule_L65F32T58_Expr_2;
 	AXISoCQuadCoreModule_TopLevel_CPU2_CPU
 	AXISoCQuadCoreModule_TopLevel_CPU2_CPU
 	(
@@ -184,45 +185,45 @@ module AXISoCQuadCoreModule_TopLevel_CPU2
 	);
 	always @ (*)
 	begin
-		AXI4RISCVModule_L35F13L44T14_mask = AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L36F69T75_Expr;
-		if ((AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L38F21T43_Expr == 1))
+		AXI4RISCVModule_L38F13L47T14_mask = AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L39F69T75_Expr;
+		if ((AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L41F21T43_Expr == 1))
 		begin
-			AXI4RISCVModule_L35F13L44T14_mask = AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L39F69T75_Expr;
+			AXI4RISCVModule_L38F13L47T14_mask = AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L42F69T75_Expr;
 		end
-		else if ((AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L40F26T48_Expr == 1))
+		else if ((AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L43F26T48_Expr == 1))
 		begin
-			AXI4RISCVModule_L35F13L44T14_mask = AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L41F69T75_Expr;
+			AXI4RISCVModule_L38F13L47T14_mask = AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L44F69T75_Expr;
 		end
 	end
-	assign AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L38F21T43_ExprLhs = {
+	assign AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L41F21T43_ExprLhs = {
 		1'b0,
 		CPU_MemAccessMode
 	}
 	;
-	assign AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L38F21T43_ExprRhs = {
+	assign AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L41F21T43_ExprRhs = {
 		{3{1'b0}},
-		AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L38F42T43_Expr
+		AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L41F42T43_Expr
 	}
 	;
-	assign AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L40F26T48_ExprLhs = {
+	assign AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L43F26T48_ExprLhs = {
 		1'b0,
 		CPU_MemAccessMode
 	}
 	;
-	assign AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L40F26T48_ExprRhs = {
+	assign AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L43F26T48_ExprRhs = {
 		{3{1'b0}},
-		AXI4RISCVModule_L35F13L44T14_AXI4RISCVModule_L40F47T48_Expr
+		AXI4RISCVModule_L38F13L47T14_AXI4RISCVModule_L43F47T48_Expr
 	}
 	;
-	assign AXI4RISCVModule_L47F37T53_Expr_1 = {
+	assign AXI4RISCVModule_L50F37T53_Expr_1 = {
 		{6{1'b0}},
 		addressBits
 	}
 	;
-	assign AXI4RISCVModule_L50F43T75_Expr_1 = CPU_MemWriteData;
-	assign AXI4RISCVModule_L49F31T60_Expr_1 = memAccessWSTRB;
-	assign AXI4RISCVModule_L62F32T58_Expr_1 = Master_RACK;
-	assign AXI4RISCVModule_L62F32T58_Expr_2 = Master_WACK;
+	assign AXI4RISCVModule_L53F43T75_Expr_1 = CPU_MemWriteData;
+	assign AXI4RISCVModule_L52F31T60_Expr_1 = memAccessWSTRB;
+	assign AXI4RISCVModule_L65F32T58_Expr_1 = Master_RACK;
+	assign AXI4RISCVModule_L65F32T58_Expr_2 = Master_WACK;
 	assign Inputs_S2M_W_W_WREADY = S2M[73];
 	assign Inputs_S2M_W_B_BVALID = S2M[72];
 	assign Inputs_S2M_W_B_BUSER = S2M[71:64];
@@ -239,62 +240,67 @@ module AXISoCQuadCoreModule_TopLevel_CPU2
 	assign Inputs_S2M_R_R_RDATA[0] = S2M[16:9];
 	assign Inputs_S2M_R_R_RID = S2M[8:1];
 	assign Inputs_S2M_R_AR_ARREADY = S2M[0];
-	assign AXI4RISCVModule_L46F36T73_Index = CPU_MemAddress[1:0];
-	assign addressBits = AXI4RISCVModule_L46F36T73_Index;
-	assign internalByte = AXI4RISCVModule_L47F37T53_Expr[4:0];
-	assign AXI4RISCVModule_L50F42T88_Resize = AXI4RISCVModule_L50F43T75_Expr;
-	assign internalWriteData = AXI4RISCVModule_L50F42T88_Resize;
-	assign memAccessWSTRB = AXI4RISCVModule_L35F13L44T14_mask;
-	assign AXI4RISCVModule_L49F30T67_Index = AXI4RISCVModule_L49F31T60_Expr[3:0];
-	assign wstrb = AXI4RISCVModule_L49F30T67_Index;
-	assign AXI4RISCVModule_L59F23L64T18_Object[31:0] = {
+	assign AXI4RISCVModule_L49F36T73_Index = CPU_MemAddress[1:0];
+	assign addressBits = AXI4RISCVModule_L49F36T73_Index;
+	assign internalByte = AXI4RISCVModule_L50F37T53_Expr[4:0];
+	assign AXI4RISCVModule_L53F42T88_Resize = AXI4RISCVModule_L53F43T75_Expr;
+	assign internalWriteData = AXI4RISCVModule_L53F42T88_Resize;
+	assign memAccessWSTRB = AXI4RISCVModule_L38F13L47T14_mask;
+	assign AXI4RISCVModule_L52F30T67_Index = AXI4RISCVModule_L52F31T60_Expr[3:0];
+	assign wstrb = AXI4RISCVModule_L52F30T67_Index;
+	assign AXI4RISCVModule_L62F23L67T18_Object[31:0] = {
 		{31{1'b0}},
-		AXI4RISCVModule_L61F35T36_Expr
+		AXI4RISCVModule_L64F35T36_Expr
 	}
 	;
-	assign AXI4RISCVModule_L59F23L64T18_Object[32] = RISCVModule_Types_L11F30T35_Expr;
-	assign AXI4RISCVModule_L63F35T64_Source = {
+	assign AXI4RISCVModule_L62F23L67T18_Object[32] = RISCVModule_Types_L11F30T35_Expr;
+	assign AXI4RISCVModule_L66F35T64_Source = {
 		Master_RDATA[3],
 		Master_RDATA[2],
 		Master_RDATA[1],
 		Master_RDATA[0]
 	}
 	;
-	assign AXI4RISCVModule_L59F23L64T18_Object[64:33] = AXI4RISCVModule_L63F35T64_Source;
-	assign AXI4RISCVModule_L59F23L64T18_Object[65] = AXI4RISCVModule_L62F32T58_Expr;
-	assign CPU_MemReady = AXI4RISCVModule_L59F23L64T18_Object[65];
-	assign CPU_MemReadData = AXI4RISCVModule_L59F23L64T18_Object[64:33];
-	assign CPU_ExtIRQ = AXI4RISCVModule_L59F23L64T18_Object[32];
-	assign CPU_BaseAddress = AXI4RISCVModule_L59F23L64T18_Object[31:0];
-	assign AXI4RISCVModule_L68F23L82T18_Object[31:0] = CPU_MemAddress;
-	assign AXI4RISCVModule_L68F23L82T18_Object[63:32] = CPU_MemAddress;
-	assign AXI4RISCVModule_L68F23L82T18_Object[64] = CPU_BREADY;
-	assign AXI4RISCVModule_L68F23L82T18_Object[65] = CPU_MemRead;
-	assign AXI4RISCVModule_L68F23L82T18_Object[66] = CPU_RREADY;
-	assign AXI4RISCVModule_L68F23L82T18_Object[98:67] = internalWriteData;
-	assign AXI4RISCVModule_L68F23L82T18_Object[99] = CPU_MemWrite;
-	assign AXI4RISCVModule_L68F23L82T18_Object[103:100] = wstrb;
-	assign AXI4RISCVModule_L68F23L82T18_Object[104] = Inputs_S2M_R_AR_ARREADY;
-	assign AXI4RISCVModule_L68F23L82T18_Object[112:105] = Inputs_S2M_R_R_RID;
-	assign AXI4RISCVModule_L68F23L82T18_Object[144:113] = {
+	assign AXI4RISCVModule_L62F23L67T18_Object[64:33] = AXI4RISCVModule_L66F35T64_Source;
+	assign AXI4RISCVModule_L62F23L67T18_Object[65] = AXI4RISCVModule_L65F32T58_Expr;
+	assign CPU_MemReady = AXI4RISCVModule_L62F23L67T18_Object[65];
+	assign CPU_MemReadData = AXI4RISCVModule_L62F23L67T18_Object[64:33];
+	assign CPU_ExtIRQ = AXI4RISCVModule_L62F23L67T18_Object[32];
+	assign CPU_BaseAddress = AXI4RISCVModule_L62F23L67T18_Object[31:0];
+	assign AXI4RISCVModule_L71F23L86T18_Object[31:0] = CPU_MemAddress;
+	assign AXI4RISCVModule_L71F23L86T18_Object[39:32] = {
+		{6{1'b0}},
+		ARUSER
+	}
+	;
+	assign AXI4RISCVModule_L71F23L86T18_Object[71:40] = CPU_MemAddress;
+	assign AXI4RISCVModule_L71F23L86T18_Object[72] = CPU_BREADY;
+	assign AXI4RISCVModule_L71F23L86T18_Object[73] = CPU_MemRead;
+	assign AXI4RISCVModule_L71F23L86T18_Object[74] = CPU_RREADY;
+	assign AXI4RISCVModule_L71F23L86T18_Object[106:75] = internalWriteData;
+	assign AXI4RISCVModule_L71F23L86T18_Object[107] = CPU_MemWrite;
+	assign AXI4RISCVModule_L71F23L86T18_Object[111:108] = wstrb;
+	assign AXI4RISCVModule_L71F23L86T18_Object[112] = Inputs_S2M_R_AR_ARREADY;
+	assign AXI4RISCVModule_L71F23L86T18_Object[120:113] = Inputs_S2M_R_R_RID;
+	assign AXI4RISCVModule_L71F23L86T18_Object[152:121] = {
 		Inputs_S2M_R_R_RDATA[3],
 		Inputs_S2M_R_R_RDATA[2],
 		Inputs_S2M_R_R_RDATA[1],
 		Inputs_S2M_R_R_RDATA[0]
 	}
 	;
-	assign AXI4RISCVModule_L68F23L82T18_Object[146:145] = Inputs_S2M_R_R_RRESP;
-	assign AXI4RISCVModule_L68F23L82T18_Object[147] = Inputs_S2M_R_R_RLAST;
-	assign AXI4RISCVModule_L68F23L82T18_Object[155:148] = Inputs_S2M_R_R_RUSER;
-	assign AXI4RISCVModule_L68F23L82T18_Object[156] = Inputs_S2M_R_R_RVALID;
-	assign AXI4RISCVModule_L68F23L82T18_Object[157] = Inputs_S2M_W_AW_AWREADY;
-	assign AXI4RISCVModule_L68F23L82T18_Object[165:158] = Inputs_S2M_W_B_BID;
-	assign AXI4RISCVModule_L68F23L82T18_Object[167:166] = Inputs_S2M_W_B_BRESP;
-	assign AXI4RISCVModule_L68F23L82T18_Object[175:168] = Inputs_S2M_W_B_BUSER;
-	assign AXI4RISCVModule_L68F23L82T18_Object[176] = Inputs_S2M_W_B_BVALID;
-	assign AXI4RISCVModule_L68F23L82T18_Object[177] = Inputs_S2M_W_W_WREADY;
-	assign Master_S2M = AXI4RISCVModule_L68F23L82T18_Object[177:104];
-	assign Master_Master = AXI4RISCVModule_L68F23L82T18_Object[103:0];
+	assign AXI4RISCVModule_L71F23L86T18_Object[154:153] = Inputs_S2M_R_R_RRESP;
+	assign AXI4RISCVModule_L71F23L86T18_Object[155] = Inputs_S2M_R_R_RLAST;
+	assign AXI4RISCVModule_L71F23L86T18_Object[163:156] = Inputs_S2M_R_R_RUSER;
+	assign AXI4RISCVModule_L71F23L86T18_Object[164] = Inputs_S2M_R_R_RVALID;
+	assign AXI4RISCVModule_L71F23L86T18_Object[165] = Inputs_S2M_W_AW_AWREADY;
+	assign AXI4RISCVModule_L71F23L86T18_Object[173:166] = Inputs_S2M_W_B_BID;
+	assign AXI4RISCVModule_L71F23L86T18_Object[175:174] = Inputs_S2M_W_B_BRESP;
+	assign AXI4RISCVModule_L71F23L86T18_Object[183:176] = Inputs_S2M_W_B_BUSER;
+	assign AXI4RISCVModule_L71F23L86T18_Object[184] = Inputs_S2M_W_B_BVALID;
+	assign AXI4RISCVModule_L71F23L86T18_Object[185] = Inputs_S2M_W_W_WREADY;
+	assign Master_S2M = AXI4RISCVModule_L71F23L86T18_Object[185:112];
+	assign Master_Master = AXI4RISCVModule_L71F23L86T18_Object[111:0];
 	assign M2S = Master_M2S;
 	assign CPU_BaseAddress_CPU_BaseAddress_HardLink = CPU_BaseAddress;
 	assign CPU_ExtIRQ_CPU_ExtIRQ_HardLink = CPU_ExtIRQ;

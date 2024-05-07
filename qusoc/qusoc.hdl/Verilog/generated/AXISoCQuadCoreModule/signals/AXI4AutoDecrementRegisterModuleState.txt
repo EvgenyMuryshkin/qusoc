@@ -1,0 +1,7 @@
+└Root     | AXI4AutoDecrementRegisterModuleState | [32:0]  | 33 | [32:0] 
+ ├Written | Boolean                              | [32]    | 1  | [32:0][32]
+ └bytes   | Byte[]                               | [31:0]  | 32 | [32:0][31:0]
+  ├bytes3 | Byte                                 | [31:24] | 8  | [32:0][31:0][31:24]
+  ├bytes2 | Byte                                 | [23:16] | 8  | [32:0][31:0][23:16]
+  ├bytes1 | Byte                                 | [15:8]  | 8  | [32:0][31:0][15:8]
+  └bytes0 | Byte                                 | [7:0]   | 8  | [32:0][31:0][7:0]

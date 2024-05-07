@@ -96,8 +96,13 @@ namespace axi.modules
         }
     }
 
-    public class AXI4AutoIncrementCounterModuleB4 : AXI4AutoIncrementCounterModule
+    public class AXI4IncrementOnReadCounterModuleB4 : AXI4IncrementOnReadCounterModule
     {
-        public AXI4AutoIncrementCounterModuleB4() : base(axiSize.B4) { }
+        public AXI4IncrementOnReadCounterModuleB4() : base(axiSize.B4) { }
+    }
+
+    public class AXI4AutoDecrementRegisterModuleB4 : AXI4AutoDecrementRegisterModule
+    {
+        public AXI4AutoDecrementRegisterModuleB4() : base(axiSize.B4) { }
     }
 }
