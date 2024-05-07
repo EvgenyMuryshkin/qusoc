@@ -12,8 +12,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Quokka.FPGA" Version="0.1.7.231" />
-    <PackageReference Include="Quokka.RTL" Version="0.1.6.563" />
+    <PackageReference Include="Quokka.FPGA" Version="0.1.8.232" />
+    <PackageReference Include="Quokka.RTL" Version="0.1.7.564" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Tools\Quokka.RTL.Simulator\Quokka.RTL.Simulator.csproj" />
