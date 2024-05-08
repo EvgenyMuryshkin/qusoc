@@ -41,6 +41,8 @@ namespace AXISoC
         internal AXI4SignalBufferModule Button2 = new AXI4SignalBufferModule(axiSize.B4);
         internal AXI4SignalBufferModule Button3 = new AXI4SignalBufferModule(axiSize.B4);
 
+        internal AXI4GatewayModule ioGateway = new AXI4GatewayModule(axiSize.B4);
+
         internal AXI4InteconnectModule Interconnect = new AXI4InteconnectModule(
             axiSize.B4,
             4,
@@ -53,6 +55,24 @@ namespace AXISoC
                 new RangeInfo(0x80000008, 0x80000008),// reg1
                 new RangeInfo(0x8000000C, 0x8000000C),// reg2
                 new RangeInfo(0x80000010, 0x80000010),// reg3
+                new RangeInfo(0x80000014, 0x80000028),// io interconnect
+                /*
+                new RangeInfo(0x80000014, 0x80000014),// switch 0
+                new RangeInfo(0x80000018, 0x80000018),// switch 1
+                new RangeInfo(0x8000001C, 0x8000001C),// button0
+                new RangeInfo(0x80000020, 0x80000020),// button1
+                new RangeInfo(0x80000024, 0x80000024),// button2
+                new RangeInfo(0x80000028, 0x80000028),// button3
+                */
+            }
+        );
+
+
+        internal AXI4InteconnectModule ioInterconnect = new AXI4InteconnectModule(
+            axiSize.B4,
+            1,
+            new List<RangeInfo>()
+            {
                 new RangeInfo(0x80000014, 0x80000014),// switch 0
                 new RangeInfo(0x80000018, 0x80000018),// switch 1
                 new RangeInfo(0x8000001C, 0x8000001C),// button0
@@ -118,10 +138,15 @@ namespace AXISoC
             {
                 M2S = Interconnect.oM2S[6]
             });
+            ioGateway.Schedule(() => new()
+            {
+                iM2S = Interconnect.oM2S[7],
+                iS2M = ioInterconnect.oS2M[0]
+            });
 
             Switch0.Schedule(() => new()
             {
-                M2S = Interconnect.oM2S[7],
+                M2S = ioInterconnect.oM2S[0],
                 Sig =
                 {
                     inWDATA = new RTLBitArray(Inputs.iSwitch0)
@@ -129,7 +154,7 @@ namespace AXISoC
             });
             Switch1.Schedule(() => new()
             {
-                M2S = Interconnect.oM2S[8],
+                M2S = ioInterconnect.oM2S[1],
                 Sig =
                 {
                     inWDATA = new RTLBitArray(Inputs.iSwitch1)
@@ -138,7 +163,7 @@ namespace AXISoC
 
             Button0.Schedule(() => new()
             {
-                M2S = Interconnect.oM2S[9],
+                M2S = ioInterconnect.oM2S[2],
                 Sig =
                 {
                     inWDATA = new RTLBitArray(Inputs.iButton0)
@@ -146,7 +171,7 @@ namespace AXISoC
             });
             Button1.Schedule(() => new()
             {
-                M2S = Interconnect.oM2S[10],
+                M2S = ioInterconnect.oM2S[3],
                 Sig =
                 {
                     inWDATA = new RTLBitArray(Inputs.iButton1)
@@ -154,7 +179,7 @@ namespace AXISoC
             });
             Button2.Schedule(() => new()
             {
-                M2S = Interconnect.oM2S[11],
+                M2S = ioInterconnect.oM2S[4],
                 Sig =
                 {
                     inWDATA = new RTLBitArray(Inputs.iButton2)
@@ -162,7 +187,7 @@ namespace AXISoC
             });
             Button3.Schedule(() => new()
             {
-                M2S = Interconnect.oM2S[12],
+                M2S = ioInterconnect.oM2S[5],
                 Sig =
                 {
                     inWDATA = new RTLBitArray(Inputs.iButton3)
@@ -185,12 +210,22 @@ namespace AXISoC
                     Reg1.S2M,
                     Reg2.S2M,
                     Reg3.S2M,
+                    ioGateway.oS2M
+                ]
+            });
+
+            ioInterconnect.Schedule(() => new ()
+            {
+                iM2S = [
+                    ioGateway.oM2S
+                ],
+                iS2M = [
                     Switch0.S2M,
                     Switch1.S2M,
                     Button0.S2M,
                     Button1.S2M,
                     Button2.S2M,
-                    Button3.S2M,
+                    Button3.S2M
                 ]
             });
         }

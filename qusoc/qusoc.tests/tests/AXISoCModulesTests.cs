@@ -50,6 +50,18 @@ namespace QuSoC.Tests
 
             var topLevel = new AXISoCQuadCoreModule(instructions);
             var sim = new AXISoCQuadCoreModuleSimulator<AXISoCQuadCoreModule>(topLevel);
+
+            // all pressed
+            topLevel.Schedule(() => new AXISoCQuadCoreModuleInputs()
+            {
+                iButton0 = true,
+                iButton1 = true,
+                iButton2 = true,
+                iButton3 = true,
+                iSwitch0 = true,
+                iSwitch1 = true
+            });
+
             sim.RunToCompletion(() =>
             {
                 var ti = topLevel.Interconnect.readInterconnect.TransactionDetectors.Select(t => t.Inputs).ToList();
@@ -59,15 +71,6 @@ namespace QuSoC.Tests
                 int reg2 = new RTLBitArray(topLevel.Reg2.outData);
                 int reg3 = new RTLBitArray(topLevel.Reg3.outData);
 
-                topLevel.Schedule(() => new AXISoCQuadCoreModuleInputs()
-                {
-                    iButton0 = true,
-                    iButton1 = true,
-                    iButton2 = true,
-                    iButton3 = true,
-                    iSwitch0 = true,
-                    iSwitch1 = true
-                });
                 return reg1 < 10;
             });
         }
