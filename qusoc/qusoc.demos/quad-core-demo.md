@@ -1,5 +1,8 @@
 # AXI SoC demo of quad-core riscv cpu
 
+## DEMO
+https://twitter.com/ITMayWorkDev/status/1788108065553985816
+
 ## Top-level interconnect configuration
 https://github.com/EvgenyMuryshkin/qusoc/blob/master/qusoc/qusoc.demos/apps/AXISoC/AXISoCQuadCoreModule.cs
 
