@@ -1,0 +1,2 @@
+└Root     | AXI4_S_AR | [0] | 1 | [0:0]
+ └ARREADY | Boolean   | [0] | 1 | [0:0][0]
