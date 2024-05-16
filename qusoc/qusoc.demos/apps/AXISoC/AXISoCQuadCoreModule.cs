@@ -16,6 +16,7 @@ namespace AXISoC
         public bool iButton1 { get; set; }
         public bool iButton2 { get; set; }
         public bool iButton3 { get; set; }
+        public bool iRX { get; set; }
     }
 
     public class AXISoCQuadCoreModule : RTLCombinationalModule<AXISoCQuadCoreModuleInputs>
@@ -41,6 +42,8 @@ namespace AXISoC
         internal AXI4SignalBufferModule Button2 = new AXI4SignalBufferModule(axiSize.B4);
         internal AXI4SignalBufferModule Button3 = new AXI4SignalBufferModule(axiSize.B4);
 
+        internal AXI4UARTModule uart = new AXI4UARTModule(axiSize.B4, 434);//115200
+
         internal AXI4GatewayModule ioGateway = new AXI4GatewayModule(axiSize.B4);
 
         internal AXI4InteconnectModule Interconnect = new AXI4InteconnectModule(
@@ -55,7 +58,7 @@ namespace AXISoC
                 new RangeInfo(0x80000008, 0x80000008),// reg1
                 new RangeInfo(0x8000000C, 0x8000000C),// reg2
                 new RangeInfo(0x80000010, 0x80000010),// reg3
-                new RangeInfo(0x80000014, 0x80000028),// io interconnect
+                new RangeInfo(0x80000014, 0xA0000000),// io interconnect
                 /*
                 new RangeInfo(0x80000014, 0x80000014),// switch 0
                 new RangeInfo(0x80000018, 0x80000018),// switch 1
@@ -79,6 +82,7 @@ namespace AXISoC
                 new RangeInfo(0x80000020, 0x80000020),// button1
                 new RangeInfo(0x80000024, 0x80000024),// button2
                 new RangeInfo(0x80000028, 0x80000028),// button3
+                new RangeInfo(0x90000000, 0x90000004),// uart
             }
         );
 
@@ -193,6 +197,12 @@ namespace AXISoC
                     inWDATA = new RTLBitArray(Inputs.iButton3)
                 }
             });
+            uart.Schedule(() => new()
+            {
+                M2S = ioInterconnect.oM2S[6],
+                iRX = Inputs.iRX
+            }
+            );
 
             Interconnect.Schedule(() => new ()
             { 
@@ -225,7 +235,8 @@ namespace AXISoC
                     Button0.S2M,
                     Button1.S2M,
                     Button2.S2M,
-                    Button3.S2M
+                    Button3.S2M,
+                    uart.oS2M
                 ]
             });
         }
@@ -233,5 +244,6 @@ namespace AXISoC
         public RTLBitArray oReg1 => new RTLBitArray(Reg1.outData);
         public RTLBitArray oReg2 => new RTLBitArray(Reg2.outData);
         public RTLBitArray oReg3 => new RTLBitArray(Reg3.outData);
+        public bool oTX => uart.oTX;
     }
 }

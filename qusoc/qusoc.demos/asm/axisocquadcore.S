@@ -25,6 +25,7 @@ cpu1:
 	li x10, 0x80000008 # reg1
 	li x11, 0x10000004 # auto decrement
 	li x12, 0x80000014 # switch0
+	li x13, 0x90000000 #uart
 cpu1main:
 	li x31, 50000000 # load 50M into decrement register
 	lw x30, 0(x12) # scheck switch 1
@@ -42,6 +43,9 @@ cpu1check:
 	addi x31, x31, 1
 	sw x31, 0(x10)
 	
+	li x31, 0x41
+	sw x31, 0(x13) # send counter to uart
+
 	j cpu1main
 
 cpu2:

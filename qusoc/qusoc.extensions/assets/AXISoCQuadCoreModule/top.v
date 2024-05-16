@@ -4,7 +4,8 @@ module top (
     input wire clk,
     input wire [3:0] btn,
     input wire [1:0] sw,
-    output wire [3:0] led
+    output wire [3:0] led,
+    output wire ck_io13
 );
 
    wire clk100;
@@ -99,6 +100,8 @@ module top (
     .oReg0 (reg0),
     .oReg1 (reg1),
     .oReg2 (reg2),
-    .oReg3 (reg3)
+    .oReg3 (reg3),
+    .iRX(1),
+    .oTX(ck_io13)
   );
 endmodule
