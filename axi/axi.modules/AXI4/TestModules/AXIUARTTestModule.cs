@@ -3,18 +3,18 @@ using System;
 
 namespace axi.modules
 {
-    public class AXIUARTModuleTestInputs
+    public class AXIUARTModuleTestModuleInputs
     {
         public AXI4MasterModuleInput Master = new AXI4MasterModuleInput(axiSize.B4);
         public bool iRX;
     }
 
-    public class AXIUARTModuleBaseTest : RTLCombinationalModule<AXIUARTModuleTestInputs>
+    public class AXIUARTModuleBaseTestModule : RTLCombinationalModule<AXIUARTModuleTestModuleInputs>
     {
-        internal AXI4UARTModule uart = new AXI4UARTModule(axiSize.B4, 0);
+        internal AXI4UARTModule uart;
         internal AXI4MasterModule master = new AXI4MasterModule(axiSize.B4);
 
-        public AXIUARTModuleBaseTest(int clocksPerBit)
+        public AXIUARTModuleBaseTestModule(int clocksPerBit)
         {
             uart = new AXI4UARTModule(axiSize.B4, clocksPerBit);
         }
@@ -22,8 +22,11 @@ namespace axi.modules
         public bool oWACK => master.WACK;
         public bool oTX => uart.oTX;
         public byte oRXData => uart.oRXData;
+        public bool oTransmitting => uart.oTransmitting;
+        public bool oCE => uart.oCE;
+        public int oTXCounter => uart.oTXCounter;
 
-        protected override void OnSchedule(Func<AXIUARTModuleTestInputs> inputsFactory)
+        protected override void OnSchedule(Func<AXIUARTModuleTestModuleInputs> inputsFactory)
         {
             base.OnSchedule(inputsFactory);
             uart.Schedule(() => new()
@@ -40,17 +43,17 @@ namespace axi.modules
         }
     }
 
-    public class AXIUARTModuleTest : AXIUARTModuleBaseTest
+    public class AXIUARTTestModule : AXIUARTModuleBaseTestModule
     {
-        public AXIUARTModuleTest() : base(0)
+        public AXIUARTTestModule() : base(0)
         {
 
         }
     }
 
-    public class AXIUARTModuleClocksTest : AXIUARTModuleBaseTest
+    public class AXIUARTModuleClocksTestModule : AXIUARTModuleBaseTestModule
     {
-        public AXIUARTModuleClocksTest() : base(10)
+        public AXIUARTModuleClocksTestModule() : base(10)
         {
 
         }

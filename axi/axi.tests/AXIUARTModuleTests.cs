@@ -57,6 +57,7 @@ namespace axi.tests
 
                     sim.ClockCycle(new UARTTransmitterModuleInputs() { iCE = true });
                     sim.ClockCycle(new UARTTransmitterModuleInputs() { iCE = false });
+                    sim.ClockCycle(new UARTTransmitterModuleInputs() { iCE = false });
                 }
 
                 Assert.AreEqual(10, bits.Count);
@@ -68,7 +69,7 @@ namespace axi.tests
         [TestMethod]
         public void AXIUARTModuleTest_LoopBack()
         {
-            var sim = new RTLSimulator<AXIUARTModuleClocksTest, AXIUARTModuleTestInputs>();
+            var sim = new RTLSimulator<AXIUARTModuleClocksTestModule, AXIUARTModuleTestModuleInputs>();
             //var sim = new RTLSimulator<AXIUARTModuleTest, AXIUARTModuleTestInputs>();
             var topLevel = sim.TopLevel;
 
@@ -80,7 +81,7 @@ namespace axi.tests
                 while (!topLevel.oWACK)
                 {
                     sim.ClockCycle(
-                        new AXIUARTModuleTestInputs()
+                        new AXIUARTModuleTestModuleInputs()
                         {
                             Master =
                             {
@@ -99,12 +100,12 @@ namespace axi.tests
                 for (var t = 0; t < 200; t++)
                 {
                     v.Add(topLevel.oTX);
-                    sim.ClockCycle(new AXIUARTModuleTestInputs() { iRX = true });
+                    sim.ClockCycle(new AXIUARTModuleTestModuleInputs() { iRX = true });
                 }
 
                 for (var t = 0; t < v.Count; t++)
                 {
-                    sim.ClockCycle(new AXIUARTModuleTestInputs() { iRX = v[t] });
+                    sim.ClockCycle(new AXIUARTModuleTestModuleInputs() { iRX = v[t] });
                 }
 
                 //Assert.AreEqual((byte)data, topLevel.uart.State.rxData);
@@ -126,22 +127,22 @@ namespace axi.tests
         [TestMethod]
         public void AXIUARTModuleTest_RX()
         {
-            var sim = new RTLSimulator<AXIUARTModuleTest, AXIUARTModuleTestInputs>();
+            var sim = new RTLSimulator<AXIUARTTestModule, AXIUARTModuleTestModuleInputs>();
             var topLevel = sim.TopLevel;
-            sim.ClockCycle(new AXIUARTModuleTestInputs() { iRX = true });
+            sim.ClockCycle(new AXIUARTModuleTestModuleInputs() { iRX = true });
 
             //while (topLevel.uart.State.rxUARTState != uartState.Idle)
             //    sim.ClockCycle();
 
             for (var i = 0; i < 256; i++)
             {
-                sim.ClockCycle(new AXIUARTModuleTestInputs() { iRX = true });
+                sim.ClockCycle(new AXIUARTModuleTestModuleInputs() { iRX = true });
 
                 //while (topLevel.uart.State.rxUARTState != uartState.Idle)
                 //    sim.ClockCycle(new AXIUARTModuleTestInputs());
 
                 // start bit
-                sim.ClockCycle(new AXIUARTModuleTestInputs() { iRX = false });
+                sim.ClockCycle(new AXIUARTModuleTestModuleInputs() { iRX = false });
                 //Assert.AreEqual(topLevel.uart.State.rxUARTState, uartState.Data);
 
                 var data = new RTLBitArray((byte)i);
@@ -150,14 +151,14 @@ namespace axi.tests
                 for (var b = 0; b < 8; b++)
                 {
                     //Assert.AreEqual(topLevel.uart.State.rxUARTState, uartState.Data);
-                    sim.ClockCycle(new AXIUARTModuleTestInputs() { iRX = data[0] });
+                    sim.ClockCycle(new AXIUARTModuleTestModuleInputs() { iRX = data[0] });
 
                     data = data >> 1;
                 }
 
                 // stop bit
                 //Assert.AreEqual(topLevel.uart.State.rxUARTState, uartState.StopBit);
-                sim.ClockCycle(new AXIUARTModuleTestInputs() { iRX = true });
+                sim.ClockCycle(new AXIUARTModuleTestModuleInputs() { iRX = true });
 
                 Assert.AreEqual((byte)i, topLevel.oRXData);
             }
@@ -167,7 +168,7 @@ namespace axi.tests
         [TestMethod]
         public void AXIUARTModuleTest_TX()
         {
-            var sim = new RTLSimulator<AXIUARTModuleTest, AXIUARTModuleTestInputs>();
+            var sim = new RTLSimulator<AXIUARTTestModule, AXIUARTModuleTestModuleInputs>();
             var topLevel = sim.TopLevel;
 
             //while (topLevel.uart.State.txUARTState != uartState.Idle)
@@ -178,7 +179,7 @@ namespace axi.tests
                 while (!topLevel.oWACK)
                 {
                     sim.ClockCycle(
-                        new AXIUARTModuleTestInputs()
+                        new AXIUARTModuleTestModuleInputs()
                         {
                             Master =
                             {
@@ -195,20 +196,20 @@ namespace axi.tests
 
                 // start bit
                 while (topLevel.oTX)
-                    sim.ClockCycle(new AXIUARTModuleTestInputs());
+                    sim.ClockCycle(new AXIUARTModuleTestModuleInputs());
 
                 //Assert.AreEqual(topLevel.uart.State.txUARTState, uartState.StartBit);
 
                 var invertedResult = new RTLBitArray(byte.MinValue);
                 for (var i = 0; i < 8; i++)
                 {
-                    sim.ClockCycle(new AXIUARTModuleTestInputs());
+                    sim.ClockCycle(new AXIUARTModuleTestModuleInputs());
                     //Assert.AreEqual(topLevel.uart.State.txUARTState, uartState.Data);
                     invertedResult = (invertedResult << 1) | topLevel.oTX;
                 }
 
                 // stop bit
-                sim.ClockCycle(new AXIUARTModuleTestInputs());
+                sim.ClockCycle(new AXIUARTModuleTestModuleInputs());
                 //Assert.AreEqual(topLevel.uart.State.txUARTState, uartState.StopBit);
                 Assert.IsTrue(topLevel.oTX);
 

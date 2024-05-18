@@ -245,5 +245,7 @@ namespace AXISoC
         public RTLBitArray oReg2 => new RTLBitArray(Reg2.outData);
         public RTLBitArray oReg3 => new RTLBitArray(Reg3.outData);
         public bool oTX => uart.oTX;
+        public bool oTransmitting => uart.oTransmitting;
+        public bool oCE => uart.oCE;
     }
 }

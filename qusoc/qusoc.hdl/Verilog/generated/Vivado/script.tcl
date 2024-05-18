@@ -225,6 +225,7 @@ add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoC
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray0_rangeDetectors3.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray0_rangeDetectors4.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray0_rangeDetectors5.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray0_rangeDetectors6.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_TransactionDetectors0.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_DuplexMux.v}
@@ -237,6 +238,7 @@ add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoC
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors3.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors4.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors5.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors6.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_TransactionDetectors0.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_Memory.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_Memory_axiSlave.v}
@@ -256,6 +258,10 @@ add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoC
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_Switch0_axiSlave.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_Switch1.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_Switch1_axiSlave.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_uart.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_uart_axiSlave.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_uart_uartReceiver.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_uart_uartTransmitter.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/Quokka.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/ALUModuleInputs.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/AXI4AutoDecrementRegisterModuleInput.txt}
@@ -280,6 +286,8 @@ add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoC
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/AXI4SignalBufferModuleInput.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/AXI4SignalBufferModuleInputs.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/AXI4SignalBufferModuleState.txt}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/AXI4UARTModuleInputs.txt}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/AXI4UARTModuleState.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/AXI4_M2S.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/AXI4_M2S_R.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/AXI4_M2S_W.txt}
@@ -310,6 +318,10 @@ add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoC
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/RISCVModuleInputs.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/TransactionDetectorModuleInputs.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/TransactionDetectorModuleState.txt}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/UARTReceiverModuleInputs.txt}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/UARTReceiverModuleState.txt}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/UARTTransmitterModuleInputs.txt}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/UARTTransmitterModuleState.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.extensions/assets/AXISoCQuadCoreModule/Arty-Z7-20-Master.xdc}
 add_files {C:/code/qusoc/qusoc/qusoc.extensions/assets/AXISoCQuadCoreModule/top.v}
 update_compile_order -fileset sources_1

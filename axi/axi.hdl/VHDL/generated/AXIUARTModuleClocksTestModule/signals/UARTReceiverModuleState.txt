@@ -1,0 +1,2 @@
+└Root     | UARTReceiverModuleState | [8:0] | 9 | [8:0]
+ └rxValue | RTLBitArray             | [8:0] | 9 | [8:0][8:0]

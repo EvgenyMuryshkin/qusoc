@@ -1,0 +1,6 @@
+└Root        | AXI4MasterModuleState | [6:0] | 7 | [6:0]
+ ├writeFSM   | axiMasterWriteFSM     | [6:5] | 2 | [6:0][6:5]
+ ├WREADYACK  | Boolean               | [4]   | 1 | [6:0][4]
+ ├readFSM    | axiMasterReadFSM      | [3:2] | 2 | [6:0][3:2]
+ ├AWREADYACK | Boolean               | [1]   | 1 | [6:0][1]
+ └ARREADYACK | Boolean               | [0]   | 1 | [6:0][0]

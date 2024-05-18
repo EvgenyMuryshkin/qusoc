@@ -1,0 +1,6 @@
+└Root            | AXI4UARTModuleState | [66:0]  | 67 | [66:0] 
+ ├txClockCounter | Int32               | [66:35] | 32 | [66:0][66:35]
+ ├txCE           | Boolean             | [34]    | 1  | [66:0][34]
+ ├rxReceiving    | Boolean             | [33]    | 1  | [66:0][33]
+ ├rxClockCounter | Int32               | [32:1]  | 32 | [66:0][32:1]
+ └rx             | Boolean             | [0]     | 1  | [66:0][0]

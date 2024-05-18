@@ -1,0 +1,2 @@
+└Root     | AXI4_S_AW | [0] | 1 | [0:0]
+ └AWREADY | Boolean   | [0] | 1 | [0:0][0]

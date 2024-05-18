@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Quokka.FPGA" Version="0.1.8.233" />
+    <PackageReference Include="Quokka.FPGA" Version="0.1.8.235" />
     <PackageReference Include="Quokka.RTL" Version="0.1.7.564" />
     <PackageReference Include="System.Drawing.Common" Version="8.0.0" />
   </ItemGroup>

@@ -6,7 +6,7 @@
 <Project Version="7" Minor="54" Path="C:/code/qusoc/qusoc/qusoc.hdl/Verilog/generated/Vivado/test.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
-    <Option Name="Id" Val="8f9148f29c1546d280a893bedc78c57d"/>
+    <Option Name="Id" Val="90fbebe643554587aba319bf0cfb1428"/>
     <Option Name="Part" Val="xc7z020clg400-1"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>
@@ -1222,6 +1222,13 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray0_rangeDetectors6.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -1300,6 +1307,41 @@
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors5.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors6.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_uart.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_uart_axiSlave.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_uart_uartReceiver.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_uart_uartTransmitter.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -1671,6 +1713,8 @@
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/AXI4SignalBufferModuleInput.txt"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/AXI4SignalBufferModuleInputs.txt"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/AXI4SignalBufferModuleState.txt"/>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/AXI4UARTModuleInputs.txt"/>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/AXI4UARTModuleState.txt"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/AXI4_M2S.txt"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/AXI4_M2S_R.txt"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/AXI4_M2S_W.txt"/>
@@ -1701,6 +1745,10 @@
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/RISCVModuleInputs.txt"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/TransactionDetectorModuleInputs.txt"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/TransactionDetectorModuleState.txt"/>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/UARTReceiverModuleInputs.txt"/>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/UARTReceiverModuleState.txt"/>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/UARTTransmitterModuleInputs.txt"/>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/UARTTransmitterModuleState.txt"/>
       <File Path="$PPRDIR/../../../../qusoc.extensions/assets/AXISoCQuadCoreModule/Arty-Z7-20-Master.xdc">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>

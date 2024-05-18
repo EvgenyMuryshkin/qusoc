@@ -27,25 +27,21 @@ namespace axi.modules
 
     public class AXI4UARTModuleState
     {
-        public AXI4UARTModuleState() : this(axiSize.B4) { }
-        public AXI4UARTModuleState(axiSize size)
+        public AXI4UARTModuleState() : this(axiSize.B4, 0) { }
+        public AXI4UARTModuleState(axiSize size, int clocksPerBit)
         {
+            txClockCounter = Math.Min(1, clocksPerBit);
+            rxClockCounter = Math.Min(1, clocksPerBit);
         }
 
         // TX
-        public uartState txUARTState = uartState.Reset;
-        public byte txData = 0;
-        public bool tx = true;
-        public bool hasTXData = false;
         public int txClockCounter = 0;
-        public byte txBitCounter;
+        public bool txCE = false;
 
         // RX
-        public uartState rxUARTState = uartState.Reset;
-        public byte rxData = 0;
         public int rxClockCounter = 0;
-        public byte rxBitCounter = 0;
-
+        public bool rxReceiving = false;
+        public bool rx = true;
     }
 
     public class AXI4UARTModule : RTLSynchronousModule<AXI4UARTModuleInputs, AXI4UARTModuleState>
@@ -55,6 +51,8 @@ namespace axi.modules
         private readonly axiSize size;
         private readonly int sizeBits;
         internal AXI4NonBufferedSlaveModule axiSlave;
+        internal UARTTransmitterModule uartTransmitter;
+        internal UARTReceiverModule uartReceiver;
 
         public AXI4UARTModule(axiSize size, int clocksPerBit)
         {
@@ -62,10 +60,13 @@ namespace axi.modules
             this.halfClocksPerBit = clocksPerBit / 2;
             this.size = size;
             this.sizeBits = AXI4Tools.Bits(size);
+
             axiSlave = new AXI4NonBufferedSlaveModule(size);
+            uartTransmitter = new UARTTransmitterModule();
+            uartReceiver = new UARTReceiverModule();
 
             InitInputs(new AXI4UARTModuleInputs(size));
-            InitState(new AXI4UARTModuleState(size));
+            InitState(new AXI4UARTModuleState(size, clocksPerBit));
         }
 
         protected override void OnSchedule(Func<AXI4UARTModuleInputs> inputsFactory)
@@ -77,157 +78,83 @@ namespace axi.modules
                 inARREADY = true,
                 inRVALID = true,
                 inAWREADY = true,
-                inWREADY = State.txUARTState == uartState.Idle,
+                inWREADY = true,//!uartTransmitter.oTransmitting,
                 inBVALID = true,
-                inRDATA = new RTLBitArray(State.rxData).Resized(sizeBits),
+                inRDATA = new RTLBitArray(uartReceiver.oValue).Resized(sizeBits),
+            });
+
+            uartReceiver.Schedule(() => new()
+            {
+                iCE = State.rxClockCounter == 0,
+                iRX = State.rx
+            });
+
+            uartTransmitter.Schedule(() => new()
+            {
+                iCE = State.txCE,//State.txClockCounter == 0,
+                iValid = axiSlave.outWREADYConfirming,
+                iValue = axiSlave.outWDATA[0]
             });
         }
+        public bool oTX => uartTransmitter.oTX;
+        public bool oTransmitting => uartTransmitter.oTransmitting;
+        public bool oCE => uartTransmitter.oCE;
 
-
-        public bool oTX => State.tx;
         public AXI4_S2M oS2M => axiSlave.S2M;
-        public byte oRXData => State.rxData;
-
-        bool txBit => new RTLBitArray(State.txData)[0];
-
-        void TXDataLogic()
-        {
-            NextState.txBitCounter = (byte)(State.txBitCounter + 1);
-            NextState.txData = (byte)(State.txData >> 1);
-            NextState.tx = txBit;
-        }
+        public byte oRXData => uartReceiver.oValue;
+        public int oTXCounter => State.txClockCounter;
 
         void TXLogic()
         {
-            if (axiSlave.outWREADYConfirming)
+            if (uartTransmitter.oTransmitting)
             {
-                NextState.hasTXData = true;
-                NextState.txData = axiSlave.outWDATA[0];
-                NextState.txClockCounter = 0;
-            }
-            
-            if (State.txClockCounter == 0)
-            {
-                switch (State.txUARTState)
+                if (State.txClockCounter == 0)
                 {
-                    case uartState.Reset:
-                        {
-                            NextState.txUARTState = uartState.Idle;
-                            NextState.tx = true;
-                        }
-                        break;
-                    case uartState.Idle:
-                        {
-                            if (State.hasTXData)
-                            {
-                                NextState.txUARTState = uartState.StartBit;
-                                NextState.tx = false;
-                                NextState.txBitCounter = 0;
-                            }
-                        }
-                        break;
-                    case uartState.StartBit:
-                        {
-                            NextState.txUARTState = uartState.Data;
-                            TXDataLogic();
-                        }
-                        break;
-                    case uartState.Data:
-                        {
-                            TXDataLogic();
-
-                            if (State.txBitCounter == 8)
-                            {
-                                NextState.txUARTState = uartState.StopBit;
-                                NextState.tx = true;
-                            }
-                        }
-                        break;
-                    case uartState.StopBit:
-                        NextState.txUARTState = uartState.Idle;
-                        NextState.hasTXData = false;
-                        break;
+                    NextState.txClockCounter = clocksPerBit;
                 }
-
-                NextState.txClockCounter = clocksPerBit;
+                else
+                {
+                    NextState.txClockCounter = State.txClockCounter - 1;
+                }
             }
             else
             {
-                NextState.txClockCounter = State.txClockCounter - 1;
+                NextState.txClockCounter = Math.Min(1, clocksPerBit);
             }
+
+            // TODO: State.txCE = ... writ to state should fail in translator
+            NextState.txCE = NextState.txClockCounter == 0;
         }
 
-        RTLBitArray rxPart => new RTLBitArray(Inputs.iRX) << 7;
+        // TODO: this should translate
+        //RTLBitArray rxPart => new RTLBitArray(Inputs.iRX) << 7;
         void RXLogic()
         {
-            if (State.rxClockCounter == 0)
+            NextState.rx = Inputs.iRX;
+
+            if (State.rxReceiving)
             {
-                NextState.rxClockCounter = clocksPerBit;
-
-                switch (State.rxUARTState)
+                /*if (uartReceiver.oReceivingLastBit)
                 {
-                    case uartState.Reset:
-                        {
-                            NextState.rxUARTState = uartState.Idle;
-                        }
-                        break;
-                    case uartState.Idle:
-                        {
-                            if (!Inputs.iRX)
-                            {
-                                NextState.rxClockCounter = halfClocksPerBit;
-
-                                if (halfClocksPerBit == 0)
-                                {
-                                    NextState.rxData = 0;
-                                    NextState.rxBitCounter = 0;
-                                    NextState.rxUARTState = uartState.Data;
-                                }
-                                else
-                                {
-                                    NextState.rxUARTState = uartState.StartBit;
-                                }
-                            }
-                        }
-                        break;
-                    case uartState.StartBit:
-                        {
-                            if (Inputs.iRX)
-                            {
-                                // failure
-                                NextState.rxUARTState = uartState.Idle;
-                            }
-                            else
-                            {
-                                NextState.rxData = 0;
-                                NextState.rxBitCounter = 0;
-                                NextState.rxUARTState = uartState.Data;
-                            }
-                        }
-                        break;
-                    case uartState.Data:
-                        {
-                            NextState.rxData = (byte)((State.rxData >> 1) | rxPart);
-                            NextState.rxBitCounter = (byte)(State.rxBitCounter + 1);
-
-                            Trace.WriteLine($"{NextState.rxBitCounter}: {NextState.rxData}");
-
-                            if (State.rxBitCounter == 7)
-                            {
-                                NextState.rxUARTState = uartState.StopBit;
-                            }
-                        }
-                        break;
-                    case uartState.StopBit:
-                        {
-                            NextState.rxUARTState = uartState.Idle;
-                        }
-                        break;
+                    NextState.rxReceiving = false;
                 }
+                else */if (State.rxClockCounter == 0)
+                {
+                    NextState.rxClockCounter = clocksPerBit;
+                }
+                else
+                {
+                    NextState.rxClockCounter = State.rxClockCounter - 1;
+                }
+            }
+            else if (!Inputs.iRX)
+            {
+                NextState.rxClockCounter = halfClocksPerBit;
+                NextState.rxReceiving = true;
             }
             else
             {
-                NextState.rxClockCounter = State.rxClockCounter - 1;
+                NextState.rxClockCounter = halfClocksPerBit;
             }
         }
 
