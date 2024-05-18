@@ -18,7 +18,7 @@ namespace axi.modules
         }
         public bool[] oTransactions => Transactions;
         public RTLBitArray[] oRangeDetectorIndex => rangeDetectorArray.Select(r => r.oIndex).ToArray();
-        public bool[] oRangeDetectorActive => rangeDetectorArray.Select(r => r.oActive).ToArray();//dbg
+        public bool[] oRangeDetectorActive => rangeDetectorArray.Select(r => r.oActive).ToArray();
         public RTLBitArray oStateRightAddr => State.rightAddr;
         public bool oStateRightAddrValid => State.rightAddrValid;
         public RTLBitArray oNextRightAddr => rightAddr;

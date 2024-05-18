@@ -122,12 +122,9 @@ namespace axi.modules
                 NextState.txClockCounter = Math.Min(1, clocksPerBit);
             }
 
-            // TODO: State.txCE = ... writ to state should fail in translator
             NextState.txCE = NextState.txClockCounter == 0;
         }
 
-        // TODO: this should translate
-        //RTLBitArray rxPart => new RTLBitArray(Inputs.iRX) << 7;
         void RXLogic()
         {
             NextState.rx = Inputs.iRX;

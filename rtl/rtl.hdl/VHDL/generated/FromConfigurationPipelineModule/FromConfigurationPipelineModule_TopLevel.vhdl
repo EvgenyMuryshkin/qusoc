@@ -90,11 +90,11 @@ architecture rtl of FromConfigurationPipelineModule_TopLevel is
 	constant Pipeline_stage2_State_readyDefault : std_logic := '0';
 	signal Pipeline_stage2_State_result : unsigned(15 downto 0) := "0000000000000000";
 	constant Pipeline_stage2_State_resultDefault : unsigned(15 downto 0) := "0000000000000000";
-	signal Pipeline_PipelineConfigurations_L38F39T81_Expr : unsigned(23 downto 0) := "000000000000000000000000";
-	signal Pipeline_PipelineConfigurations_L38F39T81_Expr_1 : unsigned(23 downto 0) := "000000000000000000000000";
-	signal Pipeline_PipelineConfigurations_L38F39T81_Expr_2 : unsigned(23 downto 0) := "000000000000000000000000";
-	signal Pipeline_PipelineConfigurations_L38F40T61_Expr : unsigned(23 downto 0) := "000000000000000000000000";
-	signal Pipeline_PipelineConfigurations_L38F40T61_Expr_1 : unsigned(23 downto 0) := "000000000000000000000000";
+	signal Pipeline_PipelineConfigurations_L38F39T81_Expr : unsigned(15 downto 0) := "0000000000000000";
+	signal Pipeline_PipelineConfigurations_L38F39T81_Expr_1 : unsigned(15 downto 0) := "0000000000000000";
+	signal Pipeline_PipelineConfigurations_L38F39T81_Expr_2 : unsigned(15 downto 0) := "0000000000000000";
+	signal Pipeline_PipelineConfigurations_L38F40T61_Expr : unsigned(15 downto 0) := "0000000000000000";
+	signal Pipeline_PipelineConfigurations_L38F40T61_Expr_1 : unsigned(15 downto 0) := "0000000000000000";
 	signal Pipeline_PipelineConfigurations_L25F29T54_Expr : unsigned(9 downto 0) := "0000000000";
 	signal Pipeline_PipelineConfigurations_L25F29T54_Expr_1 : signed(9 downto 0) := "0000000000";
 	signal Pipeline_PipelineConfigurations_L25F29T54_Expr_2 : signed(9 downto 0) := "0000000000";
@@ -170,14 +170,6 @@ begin
 		output(13) <= source0(5);
 		output(14) <= source0(6);
 		output(15) <= source0(7);
-		output(16) <= '0';
-		output(17) <= '0';
-		output(18) <= '0';
-		output(19) <= '0';
-		output(20) <= '0';
-		output(21) <= '0';
-		output(22) <= '0';
-		output(23) <= '0';
 	end process;
 	process (Pipeline_PipelineConfigurations_L25F29T54_Expr_1, Pipeline_PipelineConfigurations_L25F29T54_Expr_2)
 	begin
@@ -245,12 +237,12 @@ begin
 	process (inData0, inData1, inData2, inData3, inData4, inData5, inData6, inData7, Inputs_inData, Inputs_inReady, inReady, Pipeline_Inputs_inData, Pipeline_PipelineConfigurations_L38F39T81_Expr, Pipeline_PipelineConfigurations_L38F40T56_Cast, Pipeline_PipelineConfigurations_L38F40T61_Expr, Pipeline_PipelineConfigurations_L38F65T81_Cast, Pipeline_stage0_State_sum01, Pipeline_stage0_State_sum23, Pipeline_stage0_State_sum45, Pipeline_stage0_State_sum67, Pipeline_stage1_State_sum0123, Pipeline_stage1_State_sum4567, Pipeline_stage2_NextState_ready, Pipeline_stage2_NextState_result, Pipeline_stage2_State_ready, Pipeline_stage2_State_result, Pipeline_State_ready, Pipeline_State_result)
 	begin
 		Pipeline_PipelineConfigurations_L38F39T81_Expr_1 <= Pipeline_PipelineConfigurations_L38F40T61_Expr;
-		Pipeline_PipelineConfigurations_L38F39T81_Expr_2(23 downto 8) <= (
+		Pipeline_PipelineConfigurations_L38F39T81_Expr_2(15 downto 8) <= (
 			others => '0'
 		)
 		;
 		Pipeline_PipelineConfigurations_L38F39T81_Expr_2(7 downto 0) <= Pipeline_PipelineConfigurations_L38F65T81_Cast;
-		Pipeline_PipelineConfigurations_L38F40T61_Expr_1(23 downto 8) <= (
+		Pipeline_PipelineConfigurations_L38F40T61_Expr_1(15 downto 8) <= (
 			others => '0'
 		)
 		;
@@ -318,7 +310,7 @@ begin
 		Pipeline_NextState_result <= Pipeline_stage2_NextState_result;
 		Pipeline_PipelineConfigurations_L38F40T56_Cast <= unsigned(Pipeline_stage1_State_sum0123(7 downto 0));
 		Pipeline_PipelineConfigurations_L38F65T81_Cast <= unsigned(Pipeline_stage1_State_sum4567(7 downto 0));
-		Pipeline_PipelineConfigurations_L38F30T82_Cast <= Pipeline_PipelineConfigurations_L38F39T81_Expr(15 downto 0);
+		Pipeline_PipelineConfigurations_L38F30T82_Cast <= Pipeline_PipelineConfigurations_L38F39T81_Expr;
 		outReady <= Pipeline_State_ready;
 		outResult <= Pipeline_State_result;
 		Pipeline_Inputs_inData(0) <= Inputs_inData(0);

@@ -72,8 +72,8 @@ module AXISoCQuadCoreModule_TopLevel_CPU3_CPU_ALU
 	wire [31: 0] ALUModule_L22F38T61_Expr_2;
 	wire [31: 0] ALUModule_L23F37T63_Expr;
 	wire [31: 0] ALUModule_L23F37T63_Expr_1;
-	wire signed [31: 0] ALUModule_L25F37T72_Expr;
-	wire signed [31: 0] ALUModule_L25F37T72_Expr_1;
+	wire [31: 0] ALUModule_L25F37T72_Expr;
+	wire [31: 0] ALUModule_L25F37T72_Expr_1;
 	wire [31: 0] ALUModule_L24F37T74_Expr;
 	wire [31: 0] ALUModule_L24F37T74_Expr_1;
 	wire signed [32: 0] ALUModule_L15F46T87_Expr;

@@ -138,18 +138,18 @@ module CustomSchedulePipelineModule_TopLevel
 	wire Pipeline2_stage2_State_readyDefault = 1'b0;
 	reg [15: 0] Pipeline2_stage2_State_result = 16'b0000000000000000;
 	wire [15: 0] Pipeline2_stage2_State_resultDefault = 16'b0000000000000000;
-	wire [23: 0] Pipeline1_PipelineConfigurations_L38F39T81_Expr;
-	wire [23: 0] Pipeline1_PipelineConfigurations_L38F39T81_Expr_1;
-	wire [23: 0] Pipeline1_PipelineConfigurations_L38F39T81_Expr_2;
-	wire [23: 0] Pipeline1_PipelineConfigurations_L38F40T61_Expr;
-	wire [23: 0] Pipeline1_PipelineConfigurations_L38F40T61_Expr_1;
-	wire [23: 0] Pipeline2_PipelineConfigurations_L38F39T81_Expr;
-	wire [23: 0] Pipeline2_PipelineConfigurations_L38F39T81_Expr_1;
-	wire [23: 0] Pipeline2_PipelineConfigurations_L38F39T81_Expr_2;
-	wire [23: 0] Pipeline2_PipelineConfigurations_L38F40T61_Expr;
-	wire [23: 0] Pipeline2_PipelineConfigurations_L38F40T61_Expr_1;
-	wire [8: 0] CustomSchedulePipelineModule_L39F28T49_Expr;
-	wire [8: 0] CustomSchedulePipelineModule_L39F28T49_Expr_1;
+	wire [15: 0] Pipeline1_PipelineConfigurations_L38F39T81_Expr;
+	wire [15: 0] Pipeline1_PipelineConfigurations_L38F39T81_Expr_1;
+	wire [15: 0] Pipeline1_PipelineConfigurations_L38F39T81_Expr_2;
+	wire [15: 0] Pipeline1_PipelineConfigurations_L38F40T61_Expr;
+	wire [15: 0] Pipeline1_PipelineConfigurations_L38F40T61_Expr_1;
+	wire [15: 0] Pipeline2_PipelineConfigurations_L38F39T81_Expr;
+	wire [15: 0] Pipeline2_PipelineConfigurations_L38F39T81_Expr_1;
+	wire [15: 0] Pipeline2_PipelineConfigurations_L38F39T81_Expr_2;
+	wire [15: 0] Pipeline2_PipelineConfigurations_L38F40T61_Expr;
+	wire [15: 0] Pipeline2_PipelineConfigurations_L38F40T61_Expr_1;
+	wire [7: 0] CustomSchedulePipelineModule_L39F28T49_Expr;
+	wire [7: 0] CustomSchedulePipelineModule_L39F28T49_Expr_1;
 	wire [63: 0] CustomSchedulePipelineModule_L43F28T49_Expr;
 	wire [63: 0] CustomSchedulePipelineModule_L43F28T49_Expr_1;
 	wire [9: 0] Pipeline1_PipelineConfigurations_L25F29T54_Expr;
@@ -266,14 +266,6 @@ module CustomSchedulePipelineModule_TopLevel
 	assign Pipeline1_PipelineConfigurations_L38F40T61_Expr[13] = Pipeline1_PipelineConfigurations_L38F40T61_Expr_1[5];
 	assign Pipeline1_PipelineConfigurations_L38F40T61_Expr[14] = Pipeline1_PipelineConfigurations_L38F40T61_Expr_1[6];
 	assign Pipeline1_PipelineConfigurations_L38F40T61_Expr[15] = Pipeline1_PipelineConfigurations_L38F40T61_Expr_1[7];
-	assign Pipeline1_PipelineConfigurations_L38F40T61_Expr[16] = 0;
-	assign Pipeline1_PipelineConfigurations_L38F40T61_Expr[17] = 0;
-	assign Pipeline1_PipelineConfigurations_L38F40T61_Expr[18] = 0;
-	assign Pipeline1_PipelineConfigurations_L38F40T61_Expr[19] = 0;
-	assign Pipeline1_PipelineConfigurations_L38F40T61_Expr[20] = 0;
-	assign Pipeline1_PipelineConfigurations_L38F40T61_Expr[21] = 0;
-	assign Pipeline1_PipelineConfigurations_L38F40T61_Expr[22] = 0;
-	assign Pipeline1_PipelineConfigurations_L38F40T61_Expr[23] = 0;
 	assign Pipeline2_PipelineConfigurations_L38F39T81_Expr = Pipeline2_PipelineConfigurations_L38F39T81_Expr_1 | Pipeline2_PipelineConfigurations_L38F39T81_Expr_2;
 	assign Pipeline2_PipelineConfigurations_L38F40T61_Expr[0] = 0;
 	assign Pipeline2_PipelineConfigurations_L38F40T61_Expr[1] = 0;
@@ -291,14 +283,6 @@ module CustomSchedulePipelineModule_TopLevel
 	assign Pipeline2_PipelineConfigurations_L38F40T61_Expr[13] = Pipeline2_PipelineConfigurations_L38F40T61_Expr_1[5];
 	assign Pipeline2_PipelineConfigurations_L38F40T61_Expr[14] = Pipeline2_PipelineConfigurations_L38F40T61_Expr_1[6];
 	assign Pipeline2_PipelineConfigurations_L38F40T61_Expr[15] = Pipeline2_PipelineConfigurations_L38F40T61_Expr_1[7];
-	assign Pipeline2_PipelineConfigurations_L38F40T61_Expr[16] = 0;
-	assign Pipeline2_PipelineConfigurations_L38F40T61_Expr[17] = 0;
-	assign Pipeline2_PipelineConfigurations_L38F40T61_Expr[18] = 0;
-	assign Pipeline2_PipelineConfigurations_L38F40T61_Expr[19] = 0;
-	assign Pipeline2_PipelineConfigurations_L38F40T61_Expr[20] = 0;
-	assign Pipeline2_PipelineConfigurations_L38F40T61_Expr[21] = 0;
-	assign Pipeline2_PipelineConfigurations_L38F40T61_Expr[22] = 0;
-	assign Pipeline2_PipelineConfigurations_L38F40T61_Expr[23] = 0;
 	assign CustomSchedulePipelineModule_L39F28T49_Expr[0] = 0;
 	assign CustomSchedulePipelineModule_L39F28T49_Expr[1] = CustomSchedulePipelineModule_L39F28T49_Expr_1[0];
 	assign CustomSchedulePipelineModule_L39F28T49_Expr[2] = CustomSchedulePipelineModule_L39F28T49_Expr_1[1];
@@ -307,7 +291,6 @@ module CustomSchedulePipelineModule_TopLevel
 	assign CustomSchedulePipelineModule_L39F28T49_Expr[5] = CustomSchedulePipelineModule_L39F28T49_Expr_1[4];
 	assign CustomSchedulePipelineModule_L39F28T49_Expr[6] = CustomSchedulePipelineModule_L39F28T49_Expr_1[5];
 	assign CustomSchedulePipelineModule_L39F28T49_Expr[7] = CustomSchedulePipelineModule_L39F28T49_Expr_1[6];
-	assign CustomSchedulePipelineModule_L39F28T49_Expr[8] = CustomSchedulePipelineModule_L39F28T49_Expr_1[7];
 	// Output: CustomSchedulePipelineModule_L43F28T49_Expr, Width: 64, ShiftBy: 1, Sources: 1
 	assign CustomSchedulePipelineModule_L43F28T49_Expr[0] = CustomSchedulePipelineModule_L43F28T49_Expr_1[1];
 	assign CustomSchedulePipelineModule_L43F28T49_Expr[1] = CustomSchedulePipelineModule_L43F28T49_Expr_1[2];
@@ -465,31 +448,27 @@ module CustomSchedulePipelineModule_TopLevel
 	end
 	assign Pipeline1_PipelineConfigurations_L38F39T81_Expr_1 = Pipeline1_PipelineConfigurations_L38F40T61_Expr;
 	assign Pipeline1_PipelineConfigurations_L38F39T81_Expr_2 = {
-		{16{1'b0}},
+		{8{1'b0}},
 		Pipeline1_PipelineConfigurations_L38F65T81_Cast
 	}
 	;
 	assign Pipeline1_PipelineConfigurations_L38F40T61_Expr_1 = {
-		{16{1'b0}},
+		{8{1'b0}},
 		Pipeline1_PipelineConfigurations_L38F40T56_Cast
 	}
 	;
 	assign Pipeline2_PipelineConfigurations_L38F39T81_Expr_1 = Pipeline2_PipelineConfigurations_L38F40T61_Expr;
 	assign Pipeline2_PipelineConfigurations_L38F39T81_Expr_2 = {
-		{16{1'b0}},
+		{8{1'b0}},
 		Pipeline2_PipelineConfigurations_L38F65T81_Cast
 	}
 	;
 	assign Pipeline2_PipelineConfigurations_L38F40T61_Expr_1 = {
-		{16{1'b0}},
+		{8{1'b0}},
 		Pipeline2_PipelineConfigurations_L38F40T56_Cast
 	}
 	;
-	assign CustomSchedulePipelineModule_L39F28T49_Expr_1 = {
-		1'b0,
-		Inputs_inData[5]
-	}
-	;
+	assign CustomSchedulePipelineModule_L39F28T49_Expr_1 = Inputs_inData[5];
 	assign CustomSchedulePipelineModule_L43F28T49_Expr_1 = {
 		{56{1'b0}},
 		Inputs_inData[4]
@@ -660,14 +639,14 @@ module CustomSchedulePipelineModule_TopLevel
 	assign Pipeline1_NextState_result = Pipeline1_stage2_NextState_result;
 	assign Pipeline1_PipelineConfigurations_L38F40T56_Cast = Pipeline1_stage1_State_sum0123[7:0];
 	assign Pipeline1_PipelineConfigurations_L38F65T81_Cast = Pipeline1_stage1_State_sum4567[7:0];
-	assign Pipeline1_PipelineConfigurations_L38F30T82_Cast = Pipeline1_PipelineConfigurations_L38F39T81_Expr[15:0];
+	assign Pipeline1_PipelineConfigurations_L38F30T82_Cast = Pipeline1_PipelineConfigurations_L38F39T81_Expr;
 	assign Pipeline2_State_ready = Pipeline2_stage2_State_ready;
 	assign Pipeline2_State_result = Pipeline2_stage2_State_result;
 	assign Pipeline2_NextState_ready = Pipeline2_stage2_NextState_ready;
 	assign Pipeline2_NextState_result = Pipeline2_stage2_NextState_result;
 	assign Pipeline2_PipelineConfigurations_L38F40T56_Cast = Pipeline2_stage1_State_sum0123[7:0];
 	assign Pipeline2_PipelineConfigurations_L38F65T81_Cast = Pipeline2_stage1_State_sum4567[7:0];
-	assign Pipeline2_PipelineConfigurations_L38F30T82_Cast = Pipeline2_PipelineConfigurations_L38F39T81_Expr[15:0];
+	assign Pipeline2_PipelineConfigurations_L38F30T82_Cast = Pipeline2_PipelineConfigurations_L38F39T81_Expr;
 	assign outReady1 = Pipeline1_State_ready;
 	assign outReady2 = Pipeline2_State_ready;
 	assign outResult1 = Pipeline1_State_result;
@@ -695,7 +674,7 @@ module CustomSchedulePipelineModule_TopLevel
 	assign Pipeline1_Inputs_inData[0] = CustomSchedulePipelineModule_L27F38L31T14_Object[7:0];
 	assign CustomSchedulePipelineModule_L37F21T49_Cast = CustomSchedulePipelineModule_L37F28T48_Expr[7:0];
 	assign CustomSchedulePipelineModule_L38F21T49_Cast = CustomSchedulePipelineModule_L38F28T48_Expr[7:0];
-	assign CustomSchedulePipelineModule_L39F21T50_Cast = CustomSchedulePipelineModule_L39F28T49_Expr[7:0];
+	assign CustomSchedulePipelineModule_L39F21T50_Cast = CustomSchedulePipelineModule_L39F28T49_Expr;
 	assign CustomSchedulePipelineModule_L40F21T49_Cast = CustomSchedulePipelineModule_L40F28T48_Expr[7:0];
 	assign CustomSchedulePipelineModule_L43F21T50_Cast = CustomSchedulePipelineModule_L43F28T49_Expr[7:0];
 	assign CustomSchedulePipelineModule_L33F38L47T14_Object[63:0] = {

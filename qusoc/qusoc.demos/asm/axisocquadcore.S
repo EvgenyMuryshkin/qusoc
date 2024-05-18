@@ -43,7 +43,6 @@ cpu1check:
 	addi x31, x31, 1
 	sw x31, 0(x10)
 	
-	li x31, 0x41
 	sw x31, 0(x13) # send counter to uart
 
 	j cpu1main

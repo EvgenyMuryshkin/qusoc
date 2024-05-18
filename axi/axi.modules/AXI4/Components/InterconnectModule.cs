@@ -77,8 +77,8 @@ namespace axi.modules
         protected abstract RTLBitArray RightAddr();
         internal bool[] ActiveTransactions => TransactionDetectors.Select(t => t.oTransaction).ToArray();
         internal bool[] WaitForRestarts => TransactionDetectors.Select(t => t.oWaitForRestart).ToArray();
-        internal bool[] Transactions => TransactionDetectors.Select(t => t.oTransaction).ToArray();//dbg
-        internal bool[] TXBegin => TransactionDetectors.Select(t => t.oTXBegin || t.oTransaction).ToArray();//dbg
+        internal bool[] Transactions => TransactionDetectors.Select(t => t.oTransaction).ToArray();
+        internal bool[] TXBegin => TransactionDetectors.Select(t => t.oTXBegin || t.oTransaction).ToArray();
         protected TLeft muxLeftData => DuplexMux.oMuxLeftData;
         protected TRight muxRightData => DuplexMux.oMuxRightData;
         protected TLeft[] muxLeft => DuplexMux.oLeft;

@@ -85,11 +85,11 @@ module FromConfigurationPipelineModule_TopLevel
 	wire Pipeline_stage2_State_readyDefault = 1'b0;
 	reg [15: 0] Pipeline_stage2_State_result = 16'b0000000000000000;
 	wire [15: 0] Pipeline_stage2_State_resultDefault = 16'b0000000000000000;
-	wire [23: 0] Pipeline_PipelineConfigurations_L38F39T81_Expr;
-	wire [23: 0] Pipeline_PipelineConfigurations_L38F39T81_Expr_1;
-	wire [23: 0] Pipeline_PipelineConfigurations_L38F39T81_Expr_2;
-	wire [23: 0] Pipeline_PipelineConfigurations_L38F40T61_Expr;
-	wire [23: 0] Pipeline_PipelineConfigurations_L38F40T61_Expr_1;
+	wire [15: 0] Pipeline_PipelineConfigurations_L38F39T81_Expr;
+	wire [15: 0] Pipeline_PipelineConfigurations_L38F39T81_Expr_1;
+	wire [15: 0] Pipeline_PipelineConfigurations_L38F39T81_Expr_2;
+	wire [15: 0] Pipeline_PipelineConfigurations_L38F40T61_Expr;
+	wire [15: 0] Pipeline_PipelineConfigurations_L38F40T61_Expr_1;
 	wire [9: 0] Pipeline_PipelineConfigurations_L25F29T54_Expr;
 	wire signed [9: 0] Pipeline_PipelineConfigurations_L25F29T54_Expr_1;
 	wire signed [9: 0] Pipeline_PipelineConfigurations_L25F29T54_Expr_2;
@@ -156,14 +156,6 @@ module FromConfigurationPipelineModule_TopLevel
 	assign Pipeline_PipelineConfigurations_L38F40T61_Expr[13] = Pipeline_PipelineConfigurations_L38F40T61_Expr_1[5];
 	assign Pipeline_PipelineConfigurations_L38F40T61_Expr[14] = Pipeline_PipelineConfigurations_L38F40T61_Expr_1[6];
 	assign Pipeline_PipelineConfigurations_L38F40T61_Expr[15] = Pipeline_PipelineConfigurations_L38F40T61_Expr_1[7];
-	assign Pipeline_PipelineConfigurations_L38F40T61_Expr[16] = 0;
-	assign Pipeline_PipelineConfigurations_L38F40T61_Expr[17] = 0;
-	assign Pipeline_PipelineConfigurations_L38F40T61_Expr[18] = 0;
-	assign Pipeline_PipelineConfigurations_L38F40T61_Expr[19] = 0;
-	assign Pipeline_PipelineConfigurations_L38F40T61_Expr[20] = 0;
-	assign Pipeline_PipelineConfigurations_L38F40T61_Expr[21] = 0;
-	assign Pipeline_PipelineConfigurations_L38F40T61_Expr[22] = 0;
-	assign Pipeline_PipelineConfigurations_L38F40T61_Expr[23] = 0;
 	assign Pipeline_PipelineConfigurations_L25F29T54_Expr = Pipeline_PipelineConfigurations_L25F29T54_Expr_1 + Pipeline_PipelineConfigurations_L25F29T54_Expr_2;
 	assign Pipeline_PipelineConfigurations_L26F29T54_Expr = Pipeline_PipelineConfigurations_L26F29T54_Expr_1 + Pipeline_PipelineConfigurations_L26F29T54_Expr_2;
 	assign Pipeline_PipelineConfigurations_L27F29T54_Expr = Pipeline_PipelineConfigurations_L27F29T54_Expr_1 + Pipeline_PipelineConfigurations_L27F29T54_Expr_2;
@@ -211,12 +203,12 @@ module FromConfigurationPipelineModule_TopLevel
 	end
 	assign Pipeline_PipelineConfigurations_L38F39T81_Expr_1 = Pipeline_PipelineConfigurations_L38F40T61_Expr;
 	assign Pipeline_PipelineConfigurations_L38F39T81_Expr_2 = {
-		{16{1'b0}},
+		{8{1'b0}},
 		Pipeline_PipelineConfigurations_L38F65T81_Cast
 	}
 	;
 	assign Pipeline_PipelineConfigurations_L38F40T61_Expr_1 = {
-		{16{1'b0}},
+		{8{1'b0}},
 		Pipeline_PipelineConfigurations_L38F40T56_Cast
 	}
 	;
@@ -295,7 +287,7 @@ module FromConfigurationPipelineModule_TopLevel
 	assign Pipeline_NextState_result = Pipeline_stage2_NextState_result;
 	assign Pipeline_PipelineConfigurations_L38F40T56_Cast = Pipeline_stage1_State_sum0123[7:0];
 	assign Pipeline_PipelineConfigurations_L38F65T81_Cast = Pipeline_stage1_State_sum4567[7:0];
-	assign Pipeline_PipelineConfigurations_L38F30T82_Cast = Pipeline_PipelineConfigurations_L38F39T81_Expr[15:0];
+	assign Pipeline_PipelineConfigurations_L38F30T82_Cast = Pipeline_PipelineConfigurations_L38F39T81_Expr;
 	assign outReady = Pipeline_State_ready;
 	assign outResult = Pipeline_State_result;
 	assign Pipeline_Inputs_inData[0] = Inputs_inData[0];

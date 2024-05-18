@@ -110,8 +110,8 @@ module AXISoCQuadCoreModule_TopLevel_CPU0
 	wire [7: 0] Master_RDATA2_Master_RDATA_HardLink;
 	wire [7: 0] Master_RDATA3_Master_RDATA_HardLink;
 	wire Master_WACK_Master_WACK_HardLink;
-	wire [7: 0] AXI4RISCVModule_L50F37T53_Expr;
-	wire [7: 0] AXI4RISCVModule_L50F37T53_Expr_1;
+	wire [4: 0] AXI4RISCVModule_L50F37T53_Expr;
+	wire [4: 0] AXI4RISCVModule_L50F37T53_Expr_1;
 	wire [31: 0] AXI4RISCVModule_L53F43T75_Expr;
 	wire [31: 0] AXI4RISCVModule_L53F43T75_Expr_1;
 	wire [3: 0] AXI4RISCVModule_L52F31T60_Expr;
@@ -134,9 +134,6 @@ module AXISoCQuadCoreModule_TopLevel_CPU0
 	assign AXI4RISCVModule_L50F37T53_Expr[2] = 0;
 	assign AXI4RISCVModule_L50F37T53_Expr[3] = AXI4RISCVModule_L50F37T53_Expr_1[0];
 	assign AXI4RISCVModule_L50F37T53_Expr[4] = AXI4RISCVModule_L50F37T53_Expr_1[1];
-	assign AXI4RISCVModule_L50F37T53_Expr[5] = 0;
-	assign AXI4RISCVModule_L50F37T53_Expr[6] = 0;
-	assign AXI4RISCVModule_L50F37T53_Expr[7] = 0;
 	assign AXI4RISCVModule_L53F43T75_Expr = (AXI4RISCVModule_L53F43T75_Expr_1 << internalByte);
 	assign AXI4RISCVModule_L52F31T60_Expr = (AXI4RISCVModule_L52F31T60_Expr_1 << addressBits);
 	assign AXI4RISCVModule_L65F32T58_Expr = AXI4RISCVModule_L65F32T58_Expr_1 | AXI4RISCVModule_L65F32T58_Expr_2;
@@ -216,7 +213,7 @@ module AXISoCQuadCoreModule_TopLevel_CPU0
 	}
 	;
 	assign AXI4RISCVModule_L50F37T53_Expr_1 = {
-		{6{1'b0}},
+		{3{1'b0}},
 		addressBits
 	}
 	;
@@ -242,7 +239,7 @@ module AXISoCQuadCoreModule_TopLevel_CPU0
 	assign Inputs_S2M_R_AR_ARREADY = S2M[0];
 	assign AXI4RISCVModule_L49F36T73_Index = CPU_MemAddress[1:0];
 	assign addressBits = AXI4RISCVModule_L49F36T73_Index;
-	assign internalByte = AXI4RISCVModule_L50F37T53_Expr[4:0];
+	assign internalByte = AXI4RISCVModule_L50F37T53_Expr;
 	assign AXI4RISCVModule_L53F42T88_Resize = AXI4RISCVModule_L53F43T75_Expr;
 	assign internalWriteData = AXI4RISCVModule_L53F42T88_Resize;
 	assign memAccessWSTRB = AXI4RISCVModule_L38F13L47T14_mask;
