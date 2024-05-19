@@ -78,7 +78,7 @@ namespace axi.modules
                 inARREADY = true,
                 inRVALID = true,
                 inAWREADY = true,
-                inWREADY = true,//!uartTransmitter.oTransmitting,
+                inWREADY = !uartTransmitter.oTransmitting,
                 inBVALID = true,
                 inRDATA = new RTLBitArray(uartReceiver.oValue).Resized(sizeBits),
             });
