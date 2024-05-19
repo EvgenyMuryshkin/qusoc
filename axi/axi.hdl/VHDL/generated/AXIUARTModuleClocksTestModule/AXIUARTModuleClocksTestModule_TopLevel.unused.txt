@@ -1,3 +1,2 @@
 No reads:
-	master_RACK
 	master_RDATA

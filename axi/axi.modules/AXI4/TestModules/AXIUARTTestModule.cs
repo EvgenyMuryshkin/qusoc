@@ -20,11 +20,14 @@ namespace axi.modules
         }
 
         public bool oWACK => master.WACK;
+        public bool oRACK => master.RACK;
         public bool oTX => uart.oTX;
         public byte oRXData => uart.oRXData;
+        public bool oRXValid => uart.oRXValid;
         public bool oTransmitting => uart.oTransmitting;
         public bool oCE => uart.oCE;
         public int oTXCounter => uart.oTXCounter;
+        public int oRXCounter => uart.oRXCounter;
 
         protected override void OnSchedule(Func<AXIUARTModuleTestModuleInputs> inputsFactory)
         {

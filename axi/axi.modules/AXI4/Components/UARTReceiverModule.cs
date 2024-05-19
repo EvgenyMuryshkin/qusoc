@@ -6,6 +6,7 @@ namespace axi.modules
     {
         public bool iCE;
         public bool iRX;
+        public bool iACK;
     }
 
     public class UARTReceiverModuleState
@@ -21,7 +22,11 @@ namespace axi.modules
 
         protected override void OnStage()
         {
-            if (Inputs.iCE)
+            if (Inputs.iACK)
+            {
+                NextState.rxValue = new RTLBitArray(RTLBitArrayInitType.MSB, true, byte.MaxValue);
+            }
+            else if (Inputs.iCE)
             {
                 if (!iValid)
                 {

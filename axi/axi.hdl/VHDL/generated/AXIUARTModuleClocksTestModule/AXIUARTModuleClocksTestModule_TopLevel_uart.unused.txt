@@ -5,10 +5,8 @@ No reads:
 	axiSlave_outAWADDR
 	axiSlave_outAWREADYConfirming
 	axiSlave_outAWVALID
-	axiSlave_outReadTXCompleting
 	axiSlave_outWriteTXCompleting
 	axiSlave_outWSTRB
 	axiSlave_outWVALID
 	size
 	sizeBits
-	uartReceiver_oValid

@@ -39,7 +39,10 @@ module AXIUARTModuleClocksTestModule_TopLevel
 	input wire Master_WE,
 	input wire [3:0] Master_WSTRB,
 	output wire oCE,
+	output wire oRACK,
+	output wire signed [31:0] oRXCounter,
 	output wire [7:0] oRXData,
+	output wire oRXValid,
 	output wire oTransmitting,
 	output wire oTX,
 	output wire signed [31:0] oTXCounter,
@@ -70,13 +73,15 @@ module AXIUARTModuleClocksTestModule_TopLevel
 	wire uart_iRX;
 	wire [221: 0] uart_M2S;
 	wire uart_oCE;
+	wire signed [31: 0] uart_oRXCounter;
 	wire [7: 0] uart_oRXData;
+	wire uart_oRXValid;
 	wire [73: 0] uart_oS2M;
 	wire uart_oTransmitting;
 	wire uart_oTX;
 	wire signed [31: 0] uart_oTXCounter;
-	wire [222: 0] AXIUARTTestModule_L32F33L36T14_Object;
-	wire [185: 0] AXIUARTTestModule_L38F35L42T14_Object;
+	wire [222: 0] AXIUARTTestModule_L35F33L39T14_Object;
+	wire [185: 0] AXIUARTTestModule_L41F35L45T14_Object;
 	wire [111: 0] master_Master_master_Master_HardLink;
 	wire [73: 0] master_S2M_master_S2M_HardLink;
 	wire [221: 0] master_M2S_master_M2S_HardLink;
@@ -89,7 +94,9 @@ module AXIUARTModuleClocksTestModule_TopLevel
 	wire uart_iRX_uart_iRX_HardLink;
 	wire [221: 0] uart_M2S_uart_M2S_HardLink;
 	wire uart_oCE_uart_oCE_HardLink;
+	wire signed [31: 0] uart_oRXCounter_uart_oRXCounter_HardLink;
 	wire [7: 0] uart_oRXData_uart_oRXData_HardLink;
+	wire uart_oRXValid_uart_oRXValid_HardLink;
 	wire [73: 0] uart_oS2M_uart_oS2M_HardLink;
 	wire uart_oTransmitting_uart_oTransmitting_HardLink;
 	wire uart_oTX_uart_oTX_HardLink;
@@ -136,7 +143,9 @@ module AXIUARTModuleClocksTestModule_TopLevel
 		.iRX (uart_iRX_uart_iRX_HardLink),
 		.M2S (uart_M2S_uart_M2S_HardLink),
 		.oCE (uart_oCE_uart_oCE_HardLink),
+		.oRXCounter (uart_oRXCounter_uart_oRXCounter_HardLink),
 		.oRXData (uart_oRXData_uart_oRXData_HardLink),
+		.oRXValid (uart_oRXValid_uart_oRXValid_HardLink),
 		.oS2M (uart_oS2M_uart_oS2M_HardLink),
 		.oTransmitting (uart_oTransmitting_uart_oTransmitting_HardLink),
 		.oTX (uart_oTX_uart_oTX_HardLink),
@@ -155,73 +164,76 @@ module AXIUARTModuleClocksTestModule_TopLevel
 	assign Inputs_Master_WDATA[3] = Master_WDATA3;
 	assign Inputs_Master_WE = Master_WE;
 	assign Inputs_Master_WSTRB = Master_WSTRB;
-	assign AXIUARTTestModule_L32F33L36T14_Object[0] = Inputs_iRX;
-	assign AXIUARTTestModule_L32F33L36T14_Object[8:1] = master_M2S[7:0];
-	assign AXIUARTTestModule_L32F33L36T14_Object[40:9] = master_M2S[39:8];
-	assign AXIUARTTestModule_L32F33L36T14_Object[48:41] = master_M2S[47:40];
-	assign AXIUARTTestModule_L32F33L36T14_Object[51:49] = master_M2S[50:48];
-	assign AXIUARTTestModule_L32F33L36T14_Object[53:52] = master_M2S[52:51];
-	assign AXIUARTTestModule_L32F33L36T14_Object[55:54] = master_M2S[54:53];
-	assign AXIUARTTestModule_L32F33L36T14_Object[59:56] = master_M2S[58:55];
-	assign AXIUARTTestModule_L32F33L36T14_Object[62:60] = master_M2S[61:59];
-	assign AXIUARTTestModule_L32F33L36T14_Object[66:63] = master_M2S[65:62];
-	assign AXIUARTTestModule_L32F33L36T14_Object[74:67] = master_M2S[73:66];
-	assign AXIUARTTestModule_L32F33L36T14_Object[82:75] = master_M2S[81:74];
-	assign AXIUARTTestModule_L32F33L36T14_Object[83] = master_M2S[82];
-	assign AXIUARTTestModule_L32F33L36T14_Object[84] = master_M2S[83];
-	assign AXIUARTTestModule_L32F33L36T14_Object[92:85] = master_M2S[91:84];
-	assign AXIUARTTestModule_L32F33L36T14_Object[124:93] = master_M2S[123:92];
-	assign AXIUARTTestModule_L32F33L36T14_Object[132:125] = master_M2S[131:124];
-	assign AXIUARTTestModule_L32F33L36T14_Object[135:133] = master_M2S[134:132];
-	assign AXIUARTTestModule_L32F33L36T14_Object[137:136] = master_M2S[136:135];
-	assign AXIUARTTestModule_L32F33L36T14_Object[139:138] = master_M2S[138:137];
-	assign AXIUARTTestModule_L32F33L36T14_Object[143:140] = master_M2S[142:139];
-	assign AXIUARTTestModule_L32F33L36T14_Object[146:144] = master_M2S[145:143];
-	assign AXIUARTTestModule_L32F33L36T14_Object[150:147] = master_M2S[149:146];
-	assign AXIUARTTestModule_L32F33L36T14_Object[158:151] = master_M2S[157:150];
-	assign AXIUARTTestModule_L32F33L36T14_Object[166:159] = master_M2S[165:158];
-	assign AXIUARTTestModule_L32F33L36T14_Object[167] = master_M2S[166];
-	assign AXIUARTTestModule_L32F33L36T14_Object[175:168] = master_M2S[174:167];
-	assign AXIUARTTestModule_L32F33L36T14_Object[207:176] = master_M2S[206:175];
-	assign AXIUARTTestModule_L32F33L36T14_Object[211:208] = master_M2S[210:207];
-	assign AXIUARTTestModule_L32F33L36T14_Object[212] = master_M2S[211];
-	assign AXIUARTTestModule_L32F33L36T14_Object[220:213] = master_M2S[219:212];
-	assign AXIUARTTestModule_L32F33L36T14_Object[221] = master_M2S[220];
-	assign AXIUARTTestModule_L32F33L36T14_Object[222] = master_M2S[221];
-	assign uart_M2S = AXIUARTTestModule_L32F33L36T14_Object[222:1];
-	assign uart_iRX = AXIUARTTestModule_L32F33L36T14_Object[0];
-	assign AXIUARTTestModule_L38F35L42T14_Object[31:0] = Inputs_Master_ARADDR;
-	assign AXIUARTTestModule_L38F35L42T14_Object[39:32] = Inputs_Master_ARUSER;
-	assign AXIUARTTestModule_L38F35L42T14_Object[71:40] = Inputs_Master_AWADDR;
-	assign AXIUARTTestModule_L38F35L42T14_Object[72] = Inputs_Master_BREADY;
-	assign AXIUARTTestModule_L38F35L42T14_Object[73] = Inputs_Master_RE;
-	assign AXIUARTTestModule_L38F35L42T14_Object[74] = Inputs_Master_RREADY;
-	assign AXIUARTTestModule_L38F35L42T14_Object[106:75] = {
+	assign AXIUARTTestModule_L35F33L39T14_Object[0] = Inputs_iRX;
+	assign AXIUARTTestModule_L35F33L39T14_Object[8:1] = master_M2S[7:0];
+	assign AXIUARTTestModule_L35F33L39T14_Object[40:9] = master_M2S[39:8];
+	assign AXIUARTTestModule_L35F33L39T14_Object[48:41] = master_M2S[47:40];
+	assign AXIUARTTestModule_L35F33L39T14_Object[51:49] = master_M2S[50:48];
+	assign AXIUARTTestModule_L35F33L39T14_Object[53:52] = master_M2S[52:51];
+	assign AXIUARTTestModule_L35F33L39T14_Object[55:54] = master_M2S[54:53];
+	assign AXIUARTTestModule_L35F33L39T14_Object[59:56] = master_M2S[58:55];
+	assign AXIUARTTestModule_L35F33L39T14_Object[62:60] = master_M2S[61:59];
+	assign AXIUARTTestModule_L35F33L39T14_Object[66:63] = master_M2S[65:62];
+	assign AXIUARTTestModule_L35F33L39T14_Object[74:67] = master_M2S[73:66];
+	assign AXIUARTTestModule_L35F33L39T14_Object[82:75] = master_M2S[81:74];
+	assign AXIUARTTestModule_L35F33L39T14_Object[83] = master_M2S[82];
+	assign AXIUARTTestModule_L35F33L39T14_Object[84] = master_M2S[83];
+	assign AXIUARTTestModule_L35F33L39T14_Object[92:85] = master_M2S[91:84];
+	assign AXIUARTTestModule_L35F33L39T14_Object[124:93] = master_M2S[123:92];
+	assign AXIUARTTestModule_L35F33L39T14_Object[132:125] = master_M2S[131:124];
+	assign AXIUARTTestModule_L35F33L39T14_Object[135:133] = master_M2S[134:132];
+	assign AXIUARTTestModule_L35F33L39T14_Object[137:136] = master_M2S[136:135];
+	assign AXIUARTTestModule_L35F33L39T14_Object[139:138] = master_M2S[138:137];
+	assign AXIUARTTestModule_L35F33L39T14_Object[143:140] = master_M2S[142:139];
+	assign AXIUARTTestModule_L35F33L39T14_Object[146:144] = master_M2S[145:143];
+	assign AXIUARTTestModule_L35F33L39T14_Object[150:147] = master_M2S[149:146];
+	assign AXIUARTTestModule_L35F33L39T14_Object[158:151] = master_M2S[157:150];
+	assign AXIUARTTestModule_L35F33L39T14_Object[166:159] = master_M2S[165:158];
+	assign AXIUARTTestModule_L35F33L39T14_Object[167] = master_M2S[166];
+	assign AXIUARTTestModule_L35F33L39T14_Object[175:168] = master_M2S[174:167];
+	assign AXIUARTTestModule_L35F33L39T14_Object[207:176] = master_M2S[206:175];
+	assign AXIUARTTestModule_L35F33L39T14_Object[211:208] = master_M2S[210:207];
+	assign AXIUARTTestModule_L35F33L39T14_Object[212] = master_M2S[211];
+	assign AXIUARTTestModule_L35F33L39T14_Object[220:213] = master_M2S[219:212];
+	assign AXIUARTTestModule_L35F33L39T14_Object[221] = master_M2S[220];
+	assign AXIUARTTestModule_L35F33L39T14_Object[222] = master_M2S[221];
+	assign uart_M2S = AXIUARTTestModule_L35F33L39T14_Object[222:1];
+	assign uart_iRX = AXIUARTTestModule_L35F33L39T14_Object[0];
+	assign AXIUARTTestModule_L41F35L45T14_Object[31:0] = Inputs_Master_ARADDR;
+	assign AXIUARTTestModule_L41F35L45T14_Object[39:32] = Inputs_Master_ARUSER;
+	assign AXIUARTTestModule_L41F35L45T14_Object[71:40] = Inputs_Master_AWADDR;
+	assign AXIUARTTestModule_L41F35L45T14_Object[72] = Inputs_Master_BREADY;
+	assign AXIUARTTestModule_L41F35L45T14_Object[73] = Inputs_Master_RE;
+	assign AXIUARTTestModule_L41F35L45T14_Object[74] = Inputs_Master_RREADY;
+	assign AXIUARTTestModule_L41F35L45T14_Object[106:75] = {
 		Inputs_Master_WDATA[3],
 		Inputs_Master_WDATA[2],
 		Inputs_Master_WDATA[1],
 		Inputs_Master_WDATA[0]
 	}
 	;
-	assign AXIUARTTestModule_L38F35L42T14_Object[107] = Inputs_Master_WE;
-	assign AXIUARTTestModule_L38F35L42T14_Object[111:108] = Inputs_Master_WSTRB;
-	assign AXIUARTTestModule_L38F35L42T14_Object[112] = uart_oS2M[0];
-	assign AXIUARTTestModule_L38F35L42T14_Object[120:113] = uart_oS2M[8:1];
-	assign AXIUARTTestModule_L38F35L42T14_Object[152:121] = uart_oS2M[40:9];
-	assign AXIUARTTestModule_L38F35L42T14_Object[154:153] = uart_oS2M[42:41];
-	assign AXIUARTTestModule_L38F35L42T14_Object[155] = uart_oS2M[43];
-	assign AXIUARTTestModule_L38F35L42T14_Object[163:156] = uart_oS2M[51:44];
-	assign AXIUARTTestModule_L38F35L42T14_Object[164] = uart_oS2M[52];
-	assign AXIUARTTestModule_L38F35L42T14_Object[165] = uart_oS2M[53];
-	assign AXIUARTTestModule_L38F35L42T14_Object[173:166] = uart_oS2M[61:54];
-	assign AXIUARTTestModule_L38F35L42T14_Object[175:174] = uart_oS2M[63:62];
-	assign AXIUARTTestModule_L38F35L42T14_Object[183:176] = uart_oS2M[71:64];
-	assign AXIUARTTestModule_L38F35L42T14_Object[184] = uart_oS2M[72];
-	assign AXIUARTTestModule_L38F35L42T14_Object[185] = uart_oS2M[73];
-	assign master_S2M = AXIUARTTestModule_L38F35L42T14_Object[185:112];
-	assign master_Master = AXIUARTTestModule_L38F35L42T14_Object[111:0];
+	assign AXIUARTTestModule_L41F35L45T14_Object[107] = Inputs_Master_WE;
+	assign AXIUARTTestModule_L41F35L45T14_Object[111:108] = Inputs_Master_WSTRB;
+	assign AXIUARTTestModule_L41F35L45T14_Object[112] = uart_oS2M[0];
+	assign AXIUARTTestModule_L41F35L45T14_Object[120:113] = uart_oS2M[8:1];
+	assign AXIUARTTestModule_L41F35L45T14_Object[152:121] = uart_oS2M[40:9];
+	assign AXIUARTTestModule_L41F35L45T14_Object[154:153] = uart_oS2M[42:41];
+	assign AXIUARTTestModule_L41F35L45T14_Object[155] = uart_oS2M[43];
+	assign AXIUARTTestModule_L41F35L45T14_Object[163:156] = uart_oS2M[51:44];
+	assign AXIUARTTestModule_L41F35L45T14_Object[164] = uart_oS2M[52];
+	assign AXIUARTTestModule_L41F35L45T14_Object[165] = uart_oS2M[53];
+	assign AXIUARTTestModule_L41F35L45T14_Object[173:166] = uart_oS2M[61:54];
+	assign AXIUARTTestModule_L41F35L45T14_Object[175:174] = uart_oS2M[63:62];
+	assign AXIUARTTestModule_L41F35L45T14_Object[183:176] = uart_oS2M[71:64];
+	assign AXIUARTTestModule_L41F35L45T14_Object[184] = uart_oS2M[72];
+	assign AXIUARTTestModule_L41F35L45T14_Object[185] = uart_oS2M[73];
+	assign master_S2M = AXIUARTTestModule_L41F35L45T14_Object[185:112];
+	assign master_Master = AXIUARTTestModule_L41F35L45T14_Object[111:0];
 	assign oCE = uart_oCE;
+	assign oRACK = master_RACK;
+	assign oRXCounter = uart_oRXCounter;
 	assign oRXData = uart_oRXData;
+	assign oRXValid = uart_oRXValid;
 	assign oTransmitting = uart_oTransmitting;
 	assign oTX = uart_oTX;
 	assign oTXCounter = uart_oTXCounter;
@@ -238,7 +250,9 @@ module AXIUARTModuleClocksTestModule_TopLevel
 	assign uart_iRX_uart_iRX_HardLink = uart_iRX;
 	assign uart_M2S_uart_M2S_HardLink = uart_M2S;
 	assign uart_oCE = uart_oCE_uart_oCE_HardLink;
+	assign uart_oRXCounter = uart_oRXCounter_uart_oRXCounter_HardLink;
 	assign uart_oRXData = uart_oRXData_uart_oRXData_HardLink;
+	assign uart_oRXValid = uart_oRXValid_uart_oRXValid_HardLink;
 	assign uart_oS2M = uart_oS2M_uart_oS2M_HardLink;
 	assign uart_oTransmitting = uart_oTransmitting_uart_oTransmitting_HardLink;
 	assign uart_oTX = uart_oTX_uart_oTX_HardLink;

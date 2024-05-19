@@ -18,11 +18,9 @@ namespace axi.modules
 
     public enum uartState
     {
-        Reset,
         Idle,
         StartBit,
-        Data,
-        StopBit
+        Receiving
     }
 
     public class AXI4UARTModuleState
@@ -40,7 +38,8 @@ namespace axi.modules
 
         // RX
         public int rxClockCounter = 0;
-        public bool rxReceiving = false;
+        public bool rxCE = false;
+        public uartState rxState = uartState.Idle;
         public bool rx = true;
     }
 
@@ -85,13 +84,14 @@ namespace axi.modules
 
             uartReceiver.Schedule(() => new()
             {
-                iCE = State.rxClockCounter == 0,
-                iRX = State.rx
+                iCE = State.rxCE,
+                iRX = State.rx,
+                iACK = axiSlave.outReadTXCompleting
             });
 
             uartTransmitter.Schedule(() => new()
             {
-                iCE = State.txCE,//State.txClockCounter == 0,
+                iCE = State.txCE,
                 iValid = axiSlave.outWREADYConfirming,
                 iValue = axiSlave.outWDATA[0]
             });
@@ -102,7 +102,10 @@ namespace axi.modules
 
         public AXI4_S2M oS2M => axiSlave.S2M;
         public byte oRXData => uartReceiver.oValue;
+        public bool oRXValid => uartReceiver.oValid;
+
         public int oTXCounter => State.txClockCounter;
+        public int oRXCounter => State.rxClockCounter;
 
         void TXLogic()
         {
@@ -129,29 +132,56 @@ namespace axi.modules
         {
             NextState.rx = Inputs.iRX;
 
-            if (State.rxReceiving)
+            switch (State.rxState)
             {
-                /*if (uartReceiver.oReceivingLastBit)
-                {
-                    NextState.rxReceiving = false;
-                }
-                else */if (State.rxClockCounter == 0)
-                {
-                    NextState.rxClockCounter = clocksPerBit;
-                }
-                else
-                {
-                    NextState.rxClockCounter = State.rxClockCounter - 1;
-                }
-            }
-            else if (!Inputs.iRX)
-            {
-                NextState.rxClockCounter = halfClocksPerBit;
-                NextState.rxReceiving = true;
-            }
-            else
-            {
-                NextState.rxClockCounter = halfClocksPerBit;
+                case uartState.Idle:
+                    {
+                        if (!Inputs.iRX)
+                        {
+                            NextState.rxClockCounter = halfClocksPerBit;
+                            NextState.rxState = uartState.StartBit;
+                        }
+                    }
+                    break;
+                case uartState.StartBit:
+                    {
+                        if (State.rxClockCounter == 0)
+                        {
+                            if (!Inputs.iRX)
+                            {
+                                NextState.rxState = uartState.Receiving;
+                                NextState.rxCE = true;
+                            }
+                            else
+                            {
+                                NextState.rxState = uartState.Idle;
+                            }
+                        }
+                        else
+                        {
+                            NextState.rxClockCounter = State.rxClockCounter - 1;
+                        }
+                    }
+                    break;
+                case uartState.Receiving:
+                    {
+                        if (uartReceiver.oValid)
+                        {
+                            NextState.rxState = uartState.Idle;
+                            NextState.rxClockCounter = Math.Min(1, clocksPerBit);
+                        }
+                        else if (State.rxClockCounter == 0)
+                        {
+                            NextState.rxClockCounter = clocksPerBit;
+                        }
+                        else
+                        {
+                            NextState.rxClockCounter = State.rxClockCounter - 1;
+                        }
+
+                        NextState.rxCE = NextState.rxClockCounter == 0;
+                    }
+                    break;
             }
         }
 

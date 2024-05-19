@@ -28,6 +28,7 @@ module AXIUARTModuleClocksTestModule_TopLevel_uart_uartReceiver
 	input wire BoardSignals_Running,
 	input wire BoardSignals_Starting,
 	input wire BoardSignals_Started,
+	input wire iACK,
 	input wire iCE,
 	input wire iRX,
 	output wire oValid,
@@ -41,21 +42,25 @@ module AXIUARTModuleClocksTestModule_TopLevel_uart_uartReceiver
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [7: 0] UARTReceiverModule_L23F9L35T10_UARTReceiverModule_L25F13L34T14_UARTReceiverModule_L31F17L33T18_UARTReceiverModule_L32F94T107_Expr = 8'b11111111;
+	wire UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F78T82_Expr = 1'b1;
+	wire [7: 0] UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F84T97_Expr = 8'b11111111;
+	wire [7: 0] UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F94T107_Expr = 8'b11111111;
+	wire Inputs_iACK;
 	wire Inputs_iCE;
 	wire Inputs_iRX;
 	reg [8: 0] NextState_rxValue;
 	wire iValid;
-	wire [8: 0] UARTReceiverModule_L23F9L35T10_UARTReceiverModule_L25F13L34T14_UARTReceiverModule_L27F17L29T18_UARTReceiverModule_L28F41T114_Source;
-	wire [8: 0] UARTReceiverModule_L23F9L35T10_UARTReceiverModule_L25F13L34T14_UARTReceiverModule_L31F17L33T18_UARTReceiverModule_L32F41T108_Source;
+	wire [8: 0] UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F37T98_Source;
+	wire [8: 0] UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L32F17L34T18_UARTReceiverModule_L33F41T114_Source;
+	wire [8: 0] UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F41T108_Source;
 	reg [8: 0] State_rxValue = 9'b000000000;
 	wire [8: 0] State_rxValueDefault = 9'b111111111;
-	wire UARTReceiverModule_L18F24T41_Expr;
-	wire UARTReceiverModule_L18F24T41_Expr_1;
-	wire UARTReceiverModule_L23F9L35T10_UARTReceiverModule_L25F13L34T14_UARTReceiverModule_L26F21T28_Expr;
-	wire UARTReceiverModule_L23F9L35T10_UARTReceiverModule_L25F13L34T14_UARTReceiverModule_L26F21T28_Expr_1;
-	wire UARTReceiverModule_L23F9L35T10_UARTReceiverModule_L25F13L34T14_UARTReceiverModule_L30F26T37_Expr;
-	wire UARTReceiverModule_L23F9L35T10_UARTReceiverModule_L25F13L34T14_UARTReceiverModule_L30F26T37_Expr_1;
+	wire UARTReceiverModule_L19F24T41_Expr;
+	wire UARTReceiverModule_L19F24T41_Expr_1;
+	wire UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L31F21T28_Expr;
+	wire UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L31F21T28_Expr_1;
+	wire UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L35F26T37_Expr;
+	wire UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L35F26T37_Expr_1;
 	always @ (posedge BoardSignals_Clock)
 	begin
 		if ((BoardSignals_Reset == 1))
@@ -67,38 +72,48 @@ module AXIUARTModuleClocksTestModule_TopLevel_uart_uartReceiver
 			State_rxValue <= NextState_rxValue;
 		end
 	end
-	assign UARTReceiverModule_L18F24T41_Expr = ~UARTReceiverModule_L18F24T41_Expr_1;
-	assign UARTReceiverModule_L23F9L35T10_UARTReceiverModule_L25F13L34T14_UARTReceiverModule_L26F21T28_Expr = ~UARTReceiverModule_L23F9L35T10_UARTReceiverModule_L25F13L34T14_UARTReceiverModule_L26F21T28_Expr_1;
-	assign UARTReceiverModule_L23F9L35T10_UARTReceiverModule_L25F13L34T14_UARTReceiverModule_L30F26T37_Expr = ~UARTReceiverModule_L23F9L35T10_UARTReceiverModule_L25F13L34T14_UARTReceiverModule_L30F26T37_Expr_1;
+	assign UARTReceiverModule_L19F24T41_Expr = ~UARTReceiverModule_L19F24T41_Expr_1;
+	assign UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L31F21T28_Expr = ~UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L31F21T28_Expr_1;
+	assign UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L35F26T37_Expr = ~UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L35F26T37_Expr_1;
 	always @ (*)
 	begin
 		NextState_rxValue = State_rxValue;
-		if ((Inputs_iCE == 1))
+		if ((Inputs_iACK == 1))
 		begin
-			if ((UARTReceiverModule_L23F9L35T10_UARTReceiverModule_L25F13L34T14_UARTReceiverModule_L26F21T28_Expr == 1))
+			NextState_rxValue = UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F37T98_Source;
+		end
+		else if ((Inputs_iCE == 1))
+		begin
+			if ((UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L31F21T28_Expr == 1))
 			begin
-				NextState_rxValue = UARTReceiverModule_L23F9L35T10_UARTReceiverModule_L25F13L34T14_UARTReceiverModule_L27F17L29T18_UARTReceiverModule_L28F41T114_Source;
+				NextState_rxValue = UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L32F17L34T18_UARTReceiverModule_L33F41T114_Source;
 			end
-			else if ((UARTReceiverModule_L23F9L35T10_UARTReceiverModule_L25F13L34T14_UARTReceiverModule_L30F26T37_Expr == 1))
+			else if ((UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L35F26T37_Expr == 1))
 			begin
-				NextState_rxValue = UARTReceiverModule_L23F9L35T10_UARTReceiverModule_L25F13L34T14_UARTReceiverModule_L31F17L33T18_UARTReceiverModule_L32F41T108_Source;
+				NextState_rxValue = UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F41T108_Source;
 			end
 		end
 	end
-	assign UARTReceiverModule_L18F24T41_Expr_1 = State_rxValue[0];
-	assign UARTReceiverModule_L23F9L35T10_UARTReceiverModule_L25F13L34T14_UARTReceiverModule_L26F21T28_Expr_1 = iValid;
-	assign UARTReceiverModule_L23F9L35T10_UARTReceiverModule_L25F13L34T14_UARTReceiverModule_L30F26T37_Expr_1 = Inputs_iRX;
+	assign UARTReceiverModule_L19F24T41_Expr_1 = State_rxValue[0];
+	assign UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L31F21T28_Expr_1 = iValid;
+	assign UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L35F26T37_Expr_1 = Inputs_iRX;
+	assign Inputs_iACK = iACK;
 	assign Inputs_iCE = iCE;
 	assign Inputs_iRX = iRX;
-	assign iValid = UARTReceiverModule_L18F24T41_Expr;
-	assign UARTReceiverModule_L23F9L35T10_UARTReceiverModule_L25F13L34T14_UARTReceiverModule_L27F17L29T18_UARTReceiverModule_L28F41T114_Source = {
+	assign iValid = UARTReceiverModule_L19F24T41_Expr;
+	assign UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F37T98_Source = {
+		UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F78T82_Expr,
+		UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F84T97_Expr
+	}
+	;
+	assign UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L32F17L34T18_UARTReceiverModule_L33F41T114_Source = {
 		Inputs_iRX,
 		State_rxValue[8:1]
 	}
 	;
-	assign UARTReceiverModule_L23F9L35T10_UARTReceiverModule_L25F13L34T14_UARTReceiverModule_L31F17L33T18_UARTReceiverModule_L32F41T108_Source = {
+	assign UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F41T108_Source = {
 		Inputs_iRX,
-		UARTReceiverModule_L23F9L35T10_UARTReceiverModule_L25F13L34T14_UARTReceiverModule_L31F17L33T18_UARTReceiverModule_L32F94T107_Expr
+		UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F94T107_Expr
 	}
 	;
 	assign oValid = iValid;
