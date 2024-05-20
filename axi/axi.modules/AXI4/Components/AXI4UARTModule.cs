@@ -79,7 +79,7 @@ namespace axi.modules
                 inAWREADY = true,
                 inWREADY = !uartTransmitter.oTransmitting,
                 inBVALID = true,
-                inRDATA = new RTLBitArray(uartReceiver.oValue).Resized(sizeBits),
+                inRDATA = rdata,
             });
 
             uartReceiver.Schedule(() => new()
@@ -96,6 +96,15 @@ namespace axi.modules
                 iValue = axiSlave.outWDATA[0]
             });
         }
+
+        RTLBitArray rdata 
+            => new RTLBitArray(
+                RTLBitArrayInitType.MSB,
+                uartTransmitter.oTransmitting ? (byte)1 : (byte)0,
+                uartReceiver.oValid ? (byte)1 : (byte)0,
+                uartReceiver.oValue
+            ).Resized(sizeBits);
+
         public bool oTX => uartTransmitter.oTX;
         public bool oTransmitting => uartTransmitter.oTransmitting;
         public bool oCE => uartTransmitter.oCE;

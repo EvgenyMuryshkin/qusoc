@@ -44,18 +44,20 @@ architecture rtl of AXIUARTModuleClocksTestModule_TopLevel_uart_uartReceiver is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	constant UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F78T82_Expr : std_logic := '1';
-	constant UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F84T97_Expr : unsigned(7 downto 0) := "11111111";
-	constant UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F94T107_Expr : unsigned(7 downto 0) := "11111111";
+	constant UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F84T88_Expr : std_logic := '1';
+	constant UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F90T103_Expr : unsigned(7 downto 0) := "11111111";
+	constant UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F94T98_Expr : std_logic := '1';
+	constant UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F100T113_Expr : unsigned(7 downto 0) := "11111111";
 	signal Inputs_iACK : std_logic := '0';
 	signal Inputs_iCE : std_logic := '0';
 	signal Inputs_iRX : std_logic := '0';
-	signal NextState_rxValue : unsigned(8 downto 0) := (others => '0');
+	signal NextState_rxValue : unsigned(9 downto 0) := (others => '0');
 	signal iValid : std_logic := '0';
-	signal UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F37T98_Source : unsigned(8 downto 0) := (others => '0');
-	signal UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L32F17L34T18_UARTReceiverModule_L33F41T114_Source : unsigned(8 downto 0) := (others => '0');
-	signal UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F41T108_Source : unsigned(8 downto 0) := (others => '0');
-	signal State_rxValue : unsigned(8 downto 0) := "000000000";
-	constant State_rxValueDefault : unsigned(8 downto 0) := "111111111";
+	signal UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F37T104_Source : unsigned(9 downto 0) := (others => '0');
+	signal UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L32F17L34T18_UARTReceiverModule_L33F41T114_Source : unsigned(9 downto 0) := (others => '0');
+	signal UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F41T114_Source : unsigned(9 downto 0) := (others => '0');
+	signal State_rxValue : unsigned(9 downto 0) := "0000000000";
+	constant State_rxValueDefault : unsigned(9 downto 0) := "1111111111";
 	signal UARTReceiverModule_L19F24T41_Expr : std_logic := '0';
 	signal UARTReceiverModule_L19F24T41_Expr_1 : std_logic := '0';
 	signal UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L31F21T28_Expr : std_logic := '0';
@@ -85,16 +87,16 @@ begin
 	begin
 		UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L35F26T37_Expr <= NOT UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L35F26T37_Expr_1;
 	end process;
-	process (Inputs_iACK, Inputs_iCE, State_rxValue, UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F37T98_Source, UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L31F21T28_Expr, UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L32F17L34T18_UARTReceiverModule_L33F41T114_Source, UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L35F26T37_Expr, UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F41T108_Source)
+	process (Inputs_iACK, Inputs_iCE, State_rxValue, UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F37T104_Source, UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L31F21T28_Expr, UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L32F17L34T18_UARTReceiverModule_L33F41T114_Source, UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L35F26T37_Expr, UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F41T114_Source)
 	begin
 		NextState_rxValue <= State_rxValue;
 		if Inputs_iACK = '1' then
-			NextState_rxValue <= UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F37T98_Source;
+			NextState_rxValue <= UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F37T104_Source;
 		elsif Inputs_iCE = '1' then
 			if UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L31F21T28_Expr = '1' then
 				NextState_rxValue <= UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L32F17L34T18_UARTReceiverModule_L33F41T114_Source;
 			elsif UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L35F26T37_Expr = '1' then
-				NextState_rxValue <= UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F41T108_Source;
+				NextState_rxValue <= UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F41T114_Source;
 			end if;
 		end if;
 	end process;
@@ -107,12 +109,14 @@ begin
 		Inputs_iCE <= iCE;
 		Inputs_iRX <= iRX;
 		iValid <= UARTReceiverModule_L19F24T41_Expr;
-		UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F37T98_Source(8) <= UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F78T82_Expr;
-		UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F37T98_Source(7 downto 0) <= UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F84T97_Expr;
-		UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L32F17L34T18_UARTReceiverModule_L33F41T114_Source(8) <= Inputs_iRX;
-		UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L32F17L34T18_UARTReceiverModule_L33F41T114_Source(7 downto 0) <= State_rxValue(8 downto 1);
-		UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F41T108_Source(8) <= Inputs_iRX;
-		UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F41T108_Source(7 downto 0) <= UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F94T107_Expr;
+		UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F37T104_Source(9) <= UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F78T82_Expr;
+		UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F37T104_Source(8) <= UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F84T88_Expr;
+		UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F37T104_Source(7 downto 0) <= UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F90T103_Expr;
+		UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L32F17L34T18_UARTReceiverModule_L33F41T114_Source(9) <= Inputs_iRX;
+		UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L32F17L34T18_UARTReceiverModule_L33F41T114_Source(8 downto 0) <= State_rxValue(9 downto 1);
+		UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F41T114_Source(9) <= Inputs_iRX;
+		UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F41T114_Source(8) <= UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F94T98_Expr;
+		UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F41T114_Source(7 downto 0) <= UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F100T113_Expr;
 		oValid <= iValid;
 		oValue <= State_rxValue(8 downto 1);
 	end process;

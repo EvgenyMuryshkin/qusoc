@@ -21,6 +21,7 @@ namespace axi.modules
 
         public bool oWACK => master.WACK;
         public bool oRACK => master.RACK;
+        public byte[] oRData => master.RDATA;
         public bool oTX => uart.oTX;
         public byte oRXData => uart.oRXData;
         public bool oRXValid => uart.oRXValid;

@@ -11,7 +11,7 @@ namespace axi.modules
 
     public class UARTReceiverModuleState
     {
-        public RTLBitArray rxValue = new RTLBitArray(RTLBitArrayInitType.MSB, true, byte.MaxValue);
+        public RTLBitArray rxValue = new RTLBitArray(RTLBitArrayInitType.MSB, true, true, byte.MaxValue);
     }
 
     public class UARTReceiverModule : RTLSynchronousModule<UARTReceiverModuleInputs, UARTReceiverModuleState>
@@ -24,17 +24,17 @@ namespace axi.modules
         {
             if (Inputs.iACK)
             {
-                NextState.rxValue = new RTLBitArray(RTLBitArrayInitType.MSB, true, byte.MaxValue);
+                NextState.rxValue = new RTLBitArray(RTLBitArrayInitType.MSB, true, true, byte.MaxValue);
             }
             else if (Inputs.iCE)
             {
                 if (!iValid)
                 {
-                    NextState.rxValue = new RTLBitArray(RTLBitArrayInitType.MSB, Inputs.iRX, State.rxValue[8, 1]);
+                    NextState.rxValue = new RTLBitArray(RTLBitArrayInitType.MSB, Inputs.iRX, State.rxValue[9, 1]);
                 }
                 else if (!Inputs.iRX)
                 {
-                    NextState.rxValue = new RTLBitArray(RTLBitArrayInitType.MSB, Inputs.iRX, byte.MaxValue);
+                    NextState.rxValue = new RTLBitArray(RTLBitArrayInitType.MSB, Inputs.iRX, true, byte.MaxValue);
                 }
             }
         }

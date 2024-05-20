@@ -10,3 +10,8 @@ No reads:
 	axiSlave_outWVALID
 	size
 	sizeBits
+No writes:
+	AXI4UARTModule_L103F49T56_Cast
+	AXI4UARTModule_L103F59T66_Cast
+	AXI4UARTModule_L104F39T46_Cast
+	AXI4UARTModule_L104F49T56_Cast
