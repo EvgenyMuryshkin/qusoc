@@ -1,0 +1,24 @@
+﻿li x2, 0x01020304;
+
+li x1, 0x800
+sb x2, 0x0(x1)
+sb x2, 0x1(x1)
+sb x2, 0x2(x1)
+sb x2, 0x3(x1)
+
+li x1, 0x804
+sw x2, 0(x1)
+lb x10, 0x0(x1)
+lb x11, 0x1(x1)
+lb x12, 0x2(x1)
+lb x13, 0x3(x1)
+
+li x1, 0x808
+sb x13, 0x0(x1)
+sb x12, 0x1(x1)
+sb x11, 0x2(x1)
+sb x10, 0x3(x1)
+
+# infinite loop is the end of simulation
+end:
+	j end

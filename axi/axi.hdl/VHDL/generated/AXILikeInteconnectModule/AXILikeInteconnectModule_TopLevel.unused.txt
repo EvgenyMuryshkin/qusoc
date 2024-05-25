@@ -1,14 +1,6 @@
 No reads:
 	ActiveTransactions
 	Encoder_MSBValue
-	InterconnectModule_L99F13L109T14_0_leftIndex
-	InterconnectModule_L99F13L109T14_1_leftIndex
-	InterconnectModule_L99F13L109T14_2_leftIndex
-	InterconnectModule_L99F13L109T14_3_leftIndex
-	InterconnectModule_L99F13L109T14_4_leftIndex
-	InterconnectModule_L99F13L109T14_5_leftIndex
-	InterconnectModule_L99F13L109T14_6_leftIndex
-	InterconnectModule_L99F13L109T14_7_leftIndex
 	leftCount
 	muxRightData_IsActive
 	muxRightData_Payload_Data

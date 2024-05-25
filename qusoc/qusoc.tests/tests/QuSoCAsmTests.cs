@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using QRV32.CPU;
 using Quokka.Public.Tools;
+using Quokka.RTL;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -32,6 +33,19 @@ namespace QuSoC.Tests
         {
             var sim = PowerUp("interrupt");
             //Assert.ThrowsException<Exception>(() => sim.RunToCompletion(100));
+        }
+
+        [TestMethod]
+        public void LoadStoreTest()
+        {
+            var sim = PowerUp("load_store");
+            var tl = sim.TopLevel;
+
+            sim.RunToCompletion();
+            var v0 = new RTLBitArray(tl.InstructionsRAM.State.BlockRAM[0x200]);
+            var v1 = new RTLBitArray(tl.InstructionsRAM.State.BlockRAM[0x201]);
+            var v2 = new RTLBitArray(tl.InstructionsRAM.State.BlockRAM[0x202]);
+
         }
 
         [TestMethod]

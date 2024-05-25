@@ -96,6 +96,62 @@ namespace fir.modules
 
         RTLBitArray sxt(RTLBitArray source, int size) => source.Signed().Resized(size).Unsigned();
 
+
+        protected override void OnDeltaCycle()
+        {
+            // GEN_ramd
+            foreach (var a in range(firParams.Order))
+            {
+                ramd_dout[a].i = u_ram_srls_i[a].DOUT;
+                ramd_dout[a].q = u_ram_srls_q[a].DOUT;
+            }
+
+            ramd_din[0] = ib_iq;
+            foreach (var a in range(1, firParams.Order - 1))
+            {
+                ramd_din[a] = ramd_dout[a - 1];
+            }
+
+            // I channel
+            dsp48_a[0].i = sxt(ib_iq.i, 30);
+            dsp48_opmode[0].i = State.mult_reset.mult_reset_dsp[0] ? new RTLBitArray(RTLBitArrayInitType.MSB, "0000000") : new RTLBitArray(RTLBitArrayInitType.MSB, "0100000");
+            dsp48_d[0].i = sxt(State.filo.fir_dreg[0].i, 25);
+            dsp48_b[0].i = sxt(ramc_dout[0], 18);
+
+            foreach (var a in range(1, firParams.Order - 1))
+            {
+                dsp48_a[a].i = State.set_do_mux[a] != 0 ? sxt(ramd_dout[a - 1].i, 30) : sxt(State.dsp48.dsp48_srl[a * 2 - 1].i, 30);
+                dsp48_opmode[a].i = State.mult_reset.mult_reset_dsp[a] ? new RTLBitArray(RTLBitArrayInitType.MSB, "0010000") : new RTLBitArray(RTLBitArrayInitType.MSB, "0100000");
+                dsp48_d[a].i = sxt(State.filo.fir_dreg[a].i, 25);
+                dsp48_b[a].i = sxt(ramc_dout[a], 18);
+                dsp48_pcin[a].i = dsp48_pcout[a - 1].i;
+            }
+
+            // Q channel
+            dsp48_a[0].q = sxt(ib_iq.q, 30);
+            dsp48_opmode[0].q = State.mult_reset.mult_reset_dsp[0] ? new RTLBitArray(RTLBitArrayInitType.MSB, "0000000") : new RTLBitArray(RTLBitArrayInitType.MSB, "0100000");
+            dsp48_d[0].q = sxt(State.filo.fir_dreg[0].q, 25);
+            dsp48_b[0].q = sxt(ramc_dout[0], 18);
+
+            foreach (var a in range(1, firParams.Order - 1))
+            {
+                dsp48_a[a].q = State.set_do_mux[a] != 0 ? sxt(ramd_dout[a - 1].q, 30) : sxt(State.dsp48.dsp48_srl[a * 2 - 1].q, 30);
+                dsp48_opmode[a].q = State.mult_reset.mult_reset_dsp[a] ? new RTLBitArray(RTLBitArrayInitType.MSB, "0010000") : new RTLBitArray(RTLBitArrayInitType.MSB, "0100000");
+                dsp48_d[a].q = sxt(State.filo.fir_dreg[a].q, 25);
+                dsp48_b[a].q = sxt(ramc_dout[a], 18);
+                dsp48_pcin[a].q = dsp48_pcout[a - 1].q;
+            }
+
+            // P, PCOUT
+            foreach (var a in range(0, firParams.Order - 1))
+            {
+                dsp48_p[a].i = u_dsp48_i[a].P;
+                dsp48_pcout[a].i = u_dsp48_i[a].PCOUT;
+                dsp48_p[a].q = u_dsp48_q[a].P;
+                dsp48_pcout[a].q = u_dsp48_q[a].PCOUT;
+            }
+        }
+
         protected override void OnSchedule(Func<FIRModuleInputs> inputsFactory)
         {
             base.OnSchedule(inputsFactory);
@@ -112,19 +168,6 @@ namespace fir.modules
                     RD = ib_iq_v,
                     RD_ADDR = State.main.main_c_rd_addr[a]
                 });
-            }
-
-            // GEN_ramd
-            foreach (var a in range(firParams.Order))
-            {
-                ramd_dout[a].i = u_ram_srls_i[a].DOUT;
-                ramd_dout[a].q = u_ram_srls_q[a].DOUT;
-            }
-
-            ramd_din[0] = ib_iq;
-            for (var a = 1; a < firParams.Order; a++)
-            {
-                ramd_din[a] = ramd_dout[a - 1];
             }
 
             foreach (var a in range(firParams.Order))
@@ -199,45 +242,6 @@ namespace fir.modules
                     PCIN = dsp48_pcin[i].q,
                     OPMODE = dsp48_opmode[i].q[6, 4]
                 });
-            }
-
-            // I channel
-            dsp48_a[0].i = sxt(ib_iq.i, 30);
-            dsp48_opmode[0].i = State.mult_reset.mult_reset_dsp[0] ? new RTLBitArray(RTLBitArrayInitType.MSB, "0000000") : new RTLBitArray(RTLBitArrayInitType.MSB, "0100000");
-            dsp48_d[0].i = sxt(State.filo.fir_dreg[0].i, 25);
-            dsp48_b[0].i = sxt(ramc_dout[0], 18);
-
-            for (var a = 1; a < firParams.Order; a++)
-            {
-                dsp48_a[a].i = State.set_do_mux[a] != 0 ? sxt(ramd_dout[a - 1].i, 30) : sxt(State.dsp48.dsp48_srl[a * 2 - 1].i, 30);
-                dsp48_opmode[a].i = State.mult_reset.mult_reset_dsp[a] ? new RTLBitArray(RTLBitArrayInitType.MSB, "0010000") : new RTLBitArray(RTLBitArrayInitType.MSB, "0100000");
-                dsp48_d[a].i = sxt(State.filo.fir_dreg[a].i, 25);
-                dsp48_b[a].i = sxt(ramc_dout[a], 18);
-                dsp48_pcin[a].i = dsp48_pcout[a - 1].i;
-            }
-
-            // Q channel
-            dsp48_a[0].q = sxt(ib_iq.q, 30);
-            dsp48_opmode[0].q = State.mult_reset.mult_reset_dsp[0] ? new RTLBitArray(RTLBitArrayInitType.MSB, "0000000") : new RTLBitArray(RTLBitArrayInitType.MSB, "0100000");
-            dsp48_d[0].q = sxt(State.filo.fir_dreg[0].q, 25);
-            dsp48_b[0].q = sxt(ramc_dout[0], 18);
-
-            for (var a = 1; a < firParams.Order; a++)
-            {
-                dsp48_a[a].q = State.set_do_mux[a] != 0 ? sxt(ramd_dout[a - 1].q, 30) : sxt(State.dsp48.dsp48_srl[a * 2 - 1].q, 30);
-                dsp48_opmode[a].q = State.mult_reset.mult_reset_dsp[a] ? new RTLBitArray(RTLBitArrayInitType.MSB, "0010000") : new RTLBitArray(RTLBitArrayInitType.MSB, "0100000");
-                dsp48_d[a].q = sxt(State.filo.fir_dreg[a].q, 25);
-                dsp48_b[a].q = sxt(ramc_dout[a], 18);
-                dsp48_pcin[a].q = dsp48_pcout[a - 1].q;
-            }
-
-            // P, PCOUT
-            for (var a = 0; a < firParams.Order; a++)
-            {
-                dsp48_p[a].i = u_dsp48_i[a].P;
-                dsp48_pcout[a].i = u_dsp48_i[a].PCOUT;
-                dsp48_p[a].q = u_dsp48_q[a].P;
-                dsp48_pcout[a].q = u_dsp48_q[a].PCOUT;
             }
         }
 

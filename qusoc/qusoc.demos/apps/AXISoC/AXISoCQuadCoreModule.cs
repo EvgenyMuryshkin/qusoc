@@ -247,5 +247,6 @@ namespace AXISoC
         public bool oTX => uart.oTX;
         public bool oTransmitting => uart.oTransmitting;
         public bool oCE => uart.oCE;
+        public bool oRXValid => uart.oRXValid;
     }
 }

@@ -2,7 +2,6 @@ No reads:
 	ActiveTransactions
 	AXI4ReadInteconnectModule_L22F13L28T14_0_i
 	Encoder_MSBValue
-	InterconnectModule_L99F13L109T14_0_leftIndex
 	leftCount
 	muxLeftData_AR_ARADDR
 	muxLeftData_AR_ARBURST
@@ -25,3 +24,4 @@ No reads:
 	muxRightData_R_RUSER
 	rangeDetectorActive
 	rightCount
+	WaitForRestarts

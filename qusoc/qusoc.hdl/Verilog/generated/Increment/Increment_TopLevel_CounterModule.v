@@ -63,8 +63,8 @@ module Increment_TopLevel_CounterModule
 	wire SoCComponentModule_L50F48T157_Expr;
 	wire SoCComponentModule_L50F48T157_Expr_1;
 	wire SoCComponentModule_L50F48T157_Expr_2;
-	wire [7: 0] SoCComponentModule_L52F54T84_Expr;
-	wire [7: 0] SoCComponentModule_L52F54T84_Expr_1;
+	wire [4: 0] SoCComponentModule_L52F54T84_Expr;
+	wire [4: 0] SoCComponentModule_L52F54T84_Expr_1;
 	wire SoCRegisterModule_L31F9L36T10_SoCRegisterModule_L32F17T53_Expr;
 	wire SoCRegisterModule_L31F9L36T10_SoCRegisterModule_L32F17T53_Expr_1;
 	wire SoCRegisterModule_L31F9L36T10_SoCRegisterModule_L32F17T53_Expr_2;
@@ -98,9 +98,6 @@ module Increment_TopLevel_CounterModule
 	assign SoCComponentModule_L52F54T84_Expr[2] = 0;
 	assign SoCComponentModule_L52F54T84_Expr[3] = SoCComponentModule_L52F54T84_Expr_1[0];
 	assign SoCComponentModule_L52F54T84_Expr[4] = SoCComponentModule_L52F54T84_Expr_1[1];
-	assign SoCComponentModule_L52F54T84_Expr[5] = 0;
-	assign SoCComponentModule_L52F54T84_Expr[6] = 0;
-	assign SoCComponentModule_L52F54T84_Expr[7] = 0;
 	assign SoCRegisterModule_L31F9L36T10_SoCRegisterModule_L32F17T53_Expr = SoCRegisterModule_L31F9L36T10_SoCRegisterModule_L32F17T53_Expr_1 & SoCRegisterModule_L31F9L36T10_SoCRegisterModule_L32F17T53_Expr_2;
 	assign SoCRegisterModule_L26F43T77_Expr = (SoCRegisterModule_L26F43T77_Expr_1 >> internalByteAddress);
 	assign SoCComponentModule_L50F122T156_Expr = SoCComponentModule_L50F122T156_Expr_1 + SoCComponentModule_L50F122T156_Expr_2;
@@ -135,7 +132,7 @@ module Increment_TopLevel_CounterModule
 	assign SoCComponentModule_L50F48T157_Expr_1 = SoCComponentModule_L50F48T93_Expr;
 	assign SoCComponentModule_L50F48T157_Expr_2 = SoCComponentModule_L50F97T157_Expr;
 	assign SoCComponentModule_L52F54T84_Expr_1 = {
-		{6{1'b0}},
+		{3{1'b0}},
 		SoCComponentModule_L52F54T79_Index
 	}
 	;
@@ -161,7 +158,7 @@ module Increment_TopLevel_CounterModule
 	assign addressMatch = SoCComponentModule_L50F48T157_Expr;
 	assign internalAddressBits = Inputs_Common_Address;
 	assign SoCComponentModule_L52F54T79_Index = internalAddressBits[1:0];
-	assign internalByteAddress = SoCComponentModule_L52F54T84_Expr[4:0];
+	assign internalByteAddress = SoCComponentModule_L52F54T84_Expr;
 	assign internalIsActive = addressMatch;
 	assign IsActive = internalIsActive;
 	assign IsReady = SoCRegisterModule_L27F41T45_Expr;

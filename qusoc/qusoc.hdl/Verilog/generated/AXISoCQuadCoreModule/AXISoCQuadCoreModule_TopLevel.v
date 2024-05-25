@@ -37,6 +37,7 @@ module AXISoCQuadCoreModule_TopLevel
 	output wire [31:0] oReg1,
 	output wire [31:0] oReg2,
 	output wire [31:0] oReg3,
+	output wire oRXValid,
 	output wire oTransmitting,
 	output wire oTX
 );
@@ -121,7 +122,9 @@ module AXISoCQuadCoreModule_TopLevel
 	wire uart_iRX;
 	wire [221: 0] uart_M2S;
 	wire uart_oCE;
+	wire signed [31: 0] uart_oRXCounter;
 	wire [7: 0] uart_oRXData;
+	wire uart_oRXValid;
 	wire [73: 0] uart_oS2M;
 	wire uart_oTransmitting;
 	wire uart_oTX;
@@ -299,7 +302,9 @@ module AXISoCQuadCoreModule_TopLevel
 	wire uart_iRX_uart_iRX_HardLink;
 	wire [221: 0] uart_M2S_uart_M2S_HardLink;
 	wire uart_oCE_uart_oCE_HardLink;
+	wire signed [31: 0] uart_oRXCounter_uart_oRXCounter_HardLink;
 	wire [7: 0] uart_oRXData_uart_oRXData_HardLink;
+	wire uart_oRXValid_uart_oRXValid_HardLink;
 	wire [73: 0] uart_oS2M_uart_oS2M_HardLink;
 	wire uart_oTransmitting_uart_oTransmitting_HardLink;
 	wire uart_oTX_uart_oTX_HardLink;
@@ -703,7 +708,9 @@ module AXISoCQuadCoreModule_TopLevel
 		.iRX (uart_iRX_uart_iRX_HardLink),
 		.M2S (uart_M2S_uart_M2S_HardLink),
 		.oCE (uart_oCE_uart_oCE_HardLink),
+		.oRXCounter (uart_oRXCounter_uart_oRXCounter_HardLink),
 		.oRXData (uart_oRXData_uart_oRXData_HardLink),
+		.oRXValid (uart_oRXValid_uart_oRXValid_HardLink),
 		.oS2M (uart_oS2M_uart_oS2M_HardLink),
 		.oTransmitting (uart_oTransmitting_uart_oTransmitting_HardLink),
 		.oTX (uart_oTX_uart_oTX_HardLink),
@@ -886,6 +893,7 @@ module AXISoCQuadCoreModule_TopLevel
 	}
 	;
 	assign oReg3 = AXISoCQuadCoreModule_L246F37T66_Source;
+	assign oRXValid = uart_oRXValid;
 	assign oTransmitting = uart_oTransmitting;
 	assign oTX = uart_oTX;
 	assign AutoIncrementCounter_M2S_AutoIncrementCounter_M2S_HardLink = AutoIncrementCounter_M2S;
@@ -1036,7 +1044,9 @@ module AXISoCQuadCoreModule_TopLevel
 	assign uart_iRX_uart_iRX_HardLink = uart_iRX;
 	assign uart_M2S_uart_M2S_HardLink = uart_M2S;
 	assign uart_oCE = uart_oCE_uart_oCE_HardLink;
+	assign uart_oRXCounter = uart_oRXCounter_uart_oRXCounter_HardLink;
 	assign uart_oRXData = uart_oRXData_uart_oRXData_HardLink;
+	assign uart_oRXValid = uart_oRXValid_uart_oRXValid_HardLink;
 	assign uart_oS2M = uart_oS2M_uart_oS2M_HardLink;
 	assign uart_oTransmitting = uart_oTransmitting_uart_oTransmitting_HardLink;
 	assign uart_oTX = uart_oTX_uart_oTX_HardLink;

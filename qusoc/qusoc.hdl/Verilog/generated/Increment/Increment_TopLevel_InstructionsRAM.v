@@ -87,8 +87,8 @@ module Increment_TopLevel_InstructionsRAM
 	wire SoCComponentModule_L50F48T157_Expr;
 	wire SoCComponentModule_L50F48T157_Expr_1;
 	wire SoCComponentModule_L50F48T157_Expr_2;
-	wire [7: 0] SoCComponentModule_L52F54T84_Expr;
-	wire [7: 0] SoCComponentModule_L52F54T84_Expr_1;
+	wire [4: 0] SoCComponentModule_L52F54T84_Expr;
+	wire [4: 0] SoCComponentModule_L52F54T84_Expr_1;
 	wire SoCBlockRAMModule_L27F34T88_Expr;
 	wire SoCBlockRAMModule_L27F34T88_Expr_1;
 	wire SoCBlockRAMModule_L27F34T88_Expr_2;
@@ -198,9 +198,6 @@ $readmemh("Increment_TopLevel_InstructionsRAM_State_BlockRAM.hex", State_BlockRA
 	assign SoCComponentModule_L52F54T84_Expr[2] = 0;
 	assign SoCComponentModule_L52F54T84_Expr[3] = SoCComponentModule_L52F54T84_Expr_1[0];
 	assign SoCComponentModule_L52F54T84_Expr[4] = SoCComponentModule_L52F54T84_Expr_1[1];
-	assign SoCComponentModule_L52F54T84_Expr[5] = 0;
-	assign SoCComponentModule_L52F54T84_Expr[6] = 0;
-	assign SoCComponentModule_L52F54T84_Expr[7] = 0;
 	assign SoCBlockRAMModule_L27F34T88_Expr = SoCBlockRAMModule_L27F34T88_Expr_1 & SoCBlockRAMModule_L27F34T88_Expr_2;
 	assign SoCBlockRAMModule_L27F35T71_Expr = SoCBlockRAMModule_L27F35T71_Expr_1 | SoCBlockRAMModule_L27F35T71_Expr_2;
 	assign SoCBlockRAMModule_L42F28T69_Expr = SoCBlockRAMModule_L42F28T69_Expr_1 | SoCBlockRAMModule_L42F28T69_Expr_2;
@@ -303,7 +300,7 @@ $readmemh("Increment_TopLevel_InstructionsRAM_State_BlockRAM.hex", State_BlockRA
 	assign SoCComponentModule_L50F48T157_Expr_1 = SoCComponentModule_L50F48T93_Expr;
 	assign SoCComponentModule_L50F48T157_Expr_2 = SoCComponentModule_L50F97T157_Expr;
 	assign SoCComponentModule_L52F54T84_Expr_1 = {
-		{6{1'b0}},
+		{3{1'b0}},
 		SoCComponentModule_L52F54T79_Index
 	}
 	;
@@ -356,7 +353,7 @@ $readmemh("Increment_TopLevel_InstructionsRAM_State_BlockRAM.hex", State_BlockRA
 	assign addressMatch = SoCComponentModule_L50F48T157_Expr;
 	assign internalAddressBits = Inputs_Common_Address;
 	assign SoCComponentModule_L52F54T79_Index = internalAddressBits[1:0];
-	assign internalByteAddress = SoCComponentModule_L52F54T84_Expr[4:0];
+	assign internalByteAddress = SoCComponentModule_L52F54T84_Expr;
 	assign internalIsActive = SoCBlockRAMModule_L27F34T88_Expr;
 	assign internalWE = SoCBlockRAMModule_L42F28T69_Expr;
 	assign SoCBlockRAMModule_L26F44T70_Index = internalAddressBits[11:2];

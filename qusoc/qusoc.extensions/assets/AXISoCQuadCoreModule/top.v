@@ -6,8 +6,9 @@ module top (
     input wire [1:0] sw,
     output wire [3:0] led,
     output wire ck_io13,
-    output wire ck_io12,
-    output wire ck_io11
+    input wire ck_io12,
+    output wire ck_io11,
+    output wire ck_io10
 );
 
    wire clk100;
@@ -103,9 +104,9 @@ module top (
     .oReg1 (reg1),
     .oReg2 (reg2),
     .oReg3 (reg3),
-    .iRX(1),
     .oTX(ck_io13),
-    .oTransmitting(ck_io12),
-    .oCE(ck_io11)
+    .iRX(ck_io12),
+    .oCE(ck_io11),
+    .oRXValid(ck_io10)
   );
 endmodule

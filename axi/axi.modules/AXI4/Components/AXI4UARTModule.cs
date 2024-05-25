@@ -86,7 +86,7 @@ namespace axi.modules
             {
                 iCE = State.rxCE,
                 iRX = State.rx,
-                iACK = axiSlave.outReadTXCompleting
+                iACK = axiSlave.outReadTXCompleting && byteAddr == 0
             });
 
             uartTransmitter.Schedule(() => new()
@@ -96,6 +96,8 @@ namespace axi.modules
                 iValue = axiSlave.outWDATA[0]
             });
         }
+
+        RTLBitArray byteAddr => new RTLBitArray(axiSlave.outARADDR)[1, 0];
 
         RTLBitArray rdata 
             => new RTLBitArray(

@@ -3,8 +3,6 @@ No reads:
 	AXI4WriteInteconnectModule_L22F13L28T14_0_i
 	AXI4WriteInteconnectModule_L22F13L28T14_1_i
 	Encoder_MSBValue
-	InterconnectModule_L99F13L109T14_0_leftIndex
-	InterconnectModule_L99F13L109T14_1_leftIndex
 	leftCount
 	muxLeftData_AW_AWADDR
 	muxLeftData_AW_AWBURST
@@ -33,3 +31,4 @@ No reads:
 	rangeDetectorActive
 	rightCount
 	Transactions
+	WaitForRestarts

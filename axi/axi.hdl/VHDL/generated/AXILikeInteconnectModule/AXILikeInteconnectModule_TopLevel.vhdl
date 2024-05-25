@@ -146,18 +146,18 @@ architecture rtl of AXILikeInteconnectModule_TopLevel is
 	-- false is a reserved name, declaration skipped
 	constant leftCount : signed(4 downto 0) := "01000";
 	constant rightCount : signed(3 downto 0) := "0100";
-	constant InterconnectModule_L99F13L109T14_0_leftIndex : std_logic := '0';
-	constant InterconnectModule_L99F13L109T14_1_leftIndex : std_logic := '1';
-	constant InterconnectModule_L99F13L109T14_2_leftIndex : unsigned(1 downto 0) := "10";
-	constant InterconnectModule_L99F13L109T14_3_leftIndex : unsigned(1 downto 0) := "11";
-	constant InterconnectModule_L99F13L109T14_4_leftIndex : unsigned(2 downto 0) := "100";
-	constant InterconnectModule_L99F13L109T14_5_leftIndex : unsigned(2 downto 0) := "101";
-	constant InterconnectModule_L99F13L109T14_6_leftIndex : unsigned(2 downto 0) := "110";
-	constant InterconnectModule_L99F13L109T14_7_leftIndex : unsigned(2 downto 0) := "111";
-	constant InterconnectModule_L132F9L149T10_InterconnectModule_L134F13L140T14_InterconnectModule_L136F17L139T18_InterconnectModule_L137F47T52_Expr : std_logic := '0';
-	constant InterconnectModule_L132F9L149T10_InterconnectModule_L134F13L140T14_InterconnectModule_L136F17L139T18_InterconnectModule_L138F48T53_Expr : std_logic := '0';
-	constant InterconnectModule_L132F9L149T10_InterconnectModule_L142F13L148T14_InterconnectModule_L144F43T47_Expr : std_logic := '1';
-	constant InterconnectModule_L132F9L149T10_InterconnectModule_L142F13L148T14_InterconnectModule_L147F44T48_Expr : std_logic := '1';
+	constant InterconnectModule_L100F13L111T14_0_leftIndex : std_logic := '0';
+	constant InterconnectModule_L100F13L111T14_1_leftIndex : std_logic := '1';
+	constant InterconnectModule_L100F13L111T14_2_leftIndex : unsigned(1 downto 0) := "10";
+	constant InterconnectModule_L100F13L111T14_3_leftIndex : unsigned(1 downto 0) := "11";
+	constant InterconnectModule_L100F13L111T14_4_leftIndex : unsigned(2 downto 0) := "100";
+	constant InterconnectModule_L100F13L111T14_5_leftIndex : unsigned(2 downto 0) := "101";
+	constant InterconnectModule_L100F13L111T14_6_leftIndex : unsigned(2 downto 0) := "110";
+	constant InterconnectModule_L100F13L111T14_7_leftIndex : unsigned(2 downto 0) := "111";
+	constant InterconnectModule_L134F9L151T10_InterconnectModule_L136F13L142T14_InterconnectModule_L138F17L141T18_InterconnectModule_L139F47T52_Expr : std_logic := '0';
+	constant InterconnectModule_L134F9L151T10_InterconnectModule_L136F13L142T14_InterconnectModule_L138F17L141T18_InterconnectModule_L140F48T53_Expr : std_logic := '0';
+	constant InterconnectModule_L134F9L151T10_InterconnectModule_L144F13L150T14_InterconnectModule_L146F43T47_Expr : std_logic := '1';
+	constant InterconnectModule_L134F9L151T10_InterconnectModule_L144F13L150T14_InterconnectModule_L149F44T48_Expr : std_logic := '1';
 	signal NextState_leftAddr : unsigned(2 downto 0) := (others => '0');
 	signal NextState_leftAddrValid : std_logic := '0';
 	signal NextState_rightAddr : unsigned(1 downto 0) := (others => '0');
@@ -180,72 +180,72 @@ architecture rtl of AXILikeInteconnectModule_TopLevel is
 	signal Encoder_HasActive : std_logic := '0';
 	signal Encoder_MSBIndex : unsigned(2 downto 0) := (others => '0');
 	signal Encoder_MSBValue : unsigned(7 downto 0) := (others => '0');
+	signal TransactionDetectors0_iActive : std_logic := '0';
 	signal TransactionDetectors0_iRestart : std_logic := '0';
 	signal TransactionDetectors0_iTXBegin : std_logic := '0';
 	signal TransactionDetectors0_iTXEnd : std_logic := '0';
 	signal TransactionDetectors0_oTransaction : std_logic := '0';
+	signal TransactionDetectors0_oTXBegin : std_logic := '0';
 	signal TransactionDetectors0_oWaitForRestart : std_logic := '0';
+	signal TransactionDetectors1_iActive : std_logic := '0';
 	signal TransactionDetectors1_iRestart : std_logic := '0';
 	signal TransactionDetectors1_iTXBegin : std_logic := '0';
 	signal TransactionDetectors1_iTXEnd : std_logic := '0';
 	signal TransactionDetectors1_oTransaction : std_logic := '0';
+	signal TransactionDetectors1_oTXBegin : std_logic := '0';
 	signal TransactionDetectors1_oWaitForRestart : std_logic := '0';
+	signal TransactionDetectors2_iActive : std_logic := '0';
 	signal TransactionDetectors2_iRestart : std_logic := '0';
 	signal TransactionDetectors2_iTXBegin : std_logic := '0';
 	signal TransactionDetectors2_iTXEnd : std_logic := '0';
 	signal TransactionDetectors2_oTransaction : std_logic := '0';
+	signal TransactionDetectors2_oTXBegin : std_logic := '0';
 	signal TransactionDetectors2_oWaitForRestart : std_logic := '0';
+	signal TransactionDetectors3_iActive : std_logic := '0';
 	signal TransactionDetectors3_iRestart : std_logic := '0';
 	signal TransactionDetectors3_iTXBegin : std_logic := '0';
 	signal TransactionDetectors3_iTXEnd : std_logic := '0';
 	signal TransactionDetectors3_oTransaction : std_logic := '0';
+	signal TransactionDetectors3_oTXBegin : std_logic := '0';
 	signal TransactionDetectors3_oWaitForRestart : std_logic := '0';
+	signal TransactionDetectors4_iActive : std_logic := '0';
 	signal TransactionDetectors4_iRestart : std_logic := '0';
 	signal TransactionDetectors4_iTXBegin : std_logic := '0';
 	signal TransactionDetectors4_iTXEnd : std_logic := '0';
 	signal TransactionDetectors4_oTransaction : std_logic := '0';
+	signal TransactionDetectors4_oTXBegin : std_logic := '0';
 	signal TransactionDetectors4_oWaitForRestart : std_logic := '0';
+	signal TransactionDetectors5_iActive : std_logic := '0';
 	signal TransactionDetectors5_iRestart : std_logic := '0';
 	signal TransactionDetectors5_iTXBegin : std_logic := '0';
 	signal TransactionDetectors5_iTXEnd : std_logic := '0';
 	signal TransactionDetectors5_oTransaction : std_logic := '0';
+	signal TransactionDetectors5_oTXBegin : std_logic := '0';
 	signal TransactionDetectors5_oWaitForRestart : std_logic := '0';
+	signal TransactionDetectors6_iActive : std_logic := '0';
 	signal TransactionDetectors6_iRestart : std_logic := '0';
 	signal TransactionDetectors6_iTXBegin : std_logic := '0';
 	signal TransactionDetectors6_iTXEnd : std_logic := '0';
 	signal TransactionDetectors6_oTransaction : std_logic := '0';
+	signal TransactionDetectors6_oTXBegin : std_logic := '0';
 	signal TransactionDetectors6_oWaitForRestart : std_logic := '0';
+	signal TransactionDetectors7_iActive : std_logic := '0';
 	signal TransactionDetectors7_iRestart : std_logic := '0';
 	signal TransactionDetectors7_iTXBegin : std_logic := '0';
 	signal TransactionDetectors7_iTXEnd : std_logic := '0';
 	signal TransactionDetectors7_oTransaction : std_logic := '0';
+	signal TransactionDetectors7_oTXBegin : std_logic := '0';
 	signal TransactionDetectors7_oWaitForRestart : std_logic := '0';
-	signal InterconnectModule_L89F37T159_0_InterconnectModule_L89F122T148_Index : std_logic := '0';
-	signal InterconnectModule_L89F37T159_1_InterconnectModule_L89F122T148_Index : std_logic := '0';
-	signal InterconnectModule_L89F37T159_2_InterconnectModule_L89F122T148_Index : std_logic := '0';
-	signal InterconnectModule_L89F37T159_3_InterconnectModule_L89F122T148_Index : std_logic := '0';
-	signal InterconnectModule_L89F37T159_4_InterconnectModule_L89F122T148_Index : std_logic := '0';
-	signal InterconnectModule_L89F37T159_5_InterconnectModule_L89F122T148_Index : std_logic := '0';
-	signal InterconnectModule_L89F37T159_6_InterconnectModule_L89F122T148_Index : std_logic := '0';
-	signal InterconnectModule_L89F37T159_7_InterconnectModule_L89F122T148_Index : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_0_InterconnectModule_L102F21L107T22_Object : unsigned(2 downto 0) := (others => '0');
-	signal InterconnectModule_L99F13L109T14_0_InterconnectModule_L104F36T54_Index : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_1_InterconnectModule_L102F21L107T22_Object : unsigned(2 downto 0) := (others => '0');
-	signal InterconnectModule_L99F13L109T14_1_InterconnectModule_L104F36T54_Index : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_2_InterconnectModule_L102F21L107T22_Object : unsigned(2 downto 0) := (others => '0');
-	signal InterconnectModule_L99F13L109T14_2_InterconnectModule_L104F36T54_Index : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_3_InterconnectModule_L102F21L107T22_Object : unsigned(2 downto 0) := (others => '0');
-	signal InterconnectModule_L99F13L109T14_3_InterconnectModule_L104F36T54_Index : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_4_InterconnectModule_L102F21L107T22_Object : unsigned(2 downto 0) := (others => '0');
-	signal InterconnectModule_L99F13L109T14_4_InterconnectModule_L104F36T54_Index : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_5_InterconnectModule_L102F21L107T22_Object : unsigned(2 downto 0) := (others => '0');
-	signal InterconnectModule_L99F13L109T14_5_InterconnectModule_L104F36T54_Index : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_6_InterconnectModule_L102F21L107T22_Object : unsigned(2 downto 0) := (others => '0');
-	signal InterconnectModule_L99F13L109T14_6_InterconnectModule_L104F36T54_Index : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_7_InterconnectModule_L102F21L107T22_Object : unsigned(2 downto 0) := (others => '0');
-	signal InterconnectModule_L99F13L109T14_7_InterconnectModule_L104F36T54_Index : std_logic := '0';
-	signal InterconnectModule_L112F17L115T18_Object : unsigned(7 downto 0) := (others => '0');
-	signal InterconnectModule_L119F17L127T18_Object : unsigned(142 downto 0) := (others => '0');
+	signal InterconnectModule_L100F13L111T14_0_InterconnectModule_L103F21L109T22_Object : unsigned(3 downto 0) := (others => '0');
+	signal InterconnectModule_L100F13L111T14_1_InterconnectModule_L103F21L109T22_Object : unsigned(3 downto 0) := (others => '0');
+	signal InterconnectModule_L100F13L111T14_2_InterconnectModule_L103F21L109T22_Object : unsigned(3 downto 0) := (others => '0');
+	signal InterconnectModule_L100F13L111T14_3_InterconnectModule_L103F21L109T22_Object : unsigned(3 downto 0) := (others => '0');
+	signal InterconnectModule_L100F13L111T14_4_InterconnectModule_L103F21L109T22_Object : unsigned(3 downto 0) := (others => '0');
+	signal InterconnectModule_L100F13L111T14_5_InterconnectModule_L103F21L109T22_Object : unsigned(3 downto 0) := (others => '0');
+	signal InterconnectModule_L100F13L111T14_6_InterconnectModule_L103F21L109T22_Object : unsigned(3 downto 0) := (others => '0');
+	signal InterconnectModule_L100F13L111T14_7_InterconnectModule_L103F21L109T22_Object : unsigned(3 downto 0) := (others => '0');
+	signal InterconnectModule_L114F17L117T18_Object : unsigned(7 downto 0) := (others => '0');
+	signal InterconnectModule_L121F17L129T18_Object : unsigned(142 downto 0) := (others => '0');
 	signal DuplexMux_iLeft0_DuplexMux_iLeft_HardLink : unsigned(11 downto 0) := "000000000000";
 	signal DuplexMux_iLeft1_DuplexMux_iLeft_HardLink : unsigned(11 downto 0) := "000000000000";
 	signal DuplexMux_iLeft2_DuplexMux_iLeft_HardLink : unsigned(11 downto 0) := "000000000000";
@@ -287,45 +287,61 @@ architecture rtl of AXILikeInteconnectModule_TopLevel is
 	signal Encoder_HasActive_Encoder_HasActive_HardLink : std_logic := '0';
 	signal Encoder_MSBIndex_Encoder_MSBIndex_HardLink : unsigned(2 downto 0) := "000";
 	signal Encoder_MSBValue_Encoder_MSBValue_HardLink : unsigned(7 downto 0) := "00000000";
+	signal TransactionDetectors0_iActive_TransactionDetectors0_iActive_HardLink : std_logic := '0';
 	signal TransactionDetectors0_iRestart_TransactionDetectors0_iRestart_HardLink : std_logic := '0';
 	signal TransactionDetectors0_iTXBegin_TransactionDetectors0_iTXBegin_HardLink : std_logic := '0';
 	signal TransactionDetectors0_iTXEnd_TransactionDetectors0_iTXEnd_HardLink : std_logic := '0';
 	signal TransactionDetectors0_oTransaction_TransactionDetectors0_oTransaction_HardLink : std_logic := '0';
+	signal TransactionDetectors0_oTXBegin_TransactionDetectors0_oTXBegin_HardLink : std_logic := '0';
 	signal TransactionDetectors0_oWaitForRestart_TransactionDetectors0_oWaitForRestart_HardLink : std_logic := '0';
+	signal TransactionDetectors1_iActive_TransactionDetectors1_iActive_HardLink : std_logic := '0';
 	signal TransactionDetectors1_iRestart_TransactionDetectors1_iRestart_HardLink : std_logic := '0';
 	signal TransactionDetectors1_iTXBegin_TransactionDetectors1_iTXBegin_HardLink : std_logic := '0';
 	signal TransactionDetectors1_iTXEnd_TransactionDetectors1_iTXEnd_HardLink : std_logic := '0';
 	signal TransactionDetectors1_oTransaction_TransactionDetectors1_oTransaction_HardLink : std_logic := '0';
+	signal TransactionDetectors1_oTXBegin_TransactionDetectors1_oTXBegin_HardLink : std_logic := '0';
 	signal TransactionDetectors1_oWaitForRestart_TransactionDetectors1_oWaitForRestart_HardLink : std_logic := '0';
+	signal TransactionDetectors2_iActive_TransactionDetectors2_iActive_HardLink : std_logic := '0';
 	signal TransactionDetectors2_iRestart_TransactionDetectors2_iRestart_HardLink : std_logic := '0';
 	signal TransactionDetectors2_iTXBegin_TransactionDetectors2_iTXBegin_HardLink : std_logic := '0';
 	signal TransactionDetectors2_iTXEnd_TransactionDetectors2_iTXEnd_HardLink : std_logic := '0';
 	signal TransactionDetectors2_oTransaction_TransactionDetectors2_oTransaction_HardLink : std_logic := '0';
+	signal TransactionDetectors2_oTXBegin_TransactionDetectors2_oTXBegin_HardLink : std_logic := '0';
 	signal TransactionDetectors2_oWaitForRestart_TransactionDetectors2_oWaitForRestart_HardLink : std_logic := '0';
+	signal TransactionDetectors3_iActive_TransactionDetectors3_iActive_HardLink : std_logic := '0';
 	signal TransactionDetectors3_iRestart_TransactionDetectors3_iRestart_HardLink : std_logic := '0';
 	signal TransactionDetectors3_iTXBegin_TransactionDetectors3_iTXBegin_HardLink : std_logic := '0';
 	signal TransactionDetectors3_iTXEnd_TransactionDetectors3_iTXEnd_HardLink : std_logic := '0';
 	signal TransactionDetectors3_oTransaction_TransactionDetectors3_oTransaction_HardLink : std_logic := '0';
+	signal TransactionDetectors3_oTXBegin_TransactionDetectors3_oTXBegin_HardLink : std_logic := '0';
 	signal TransactionDetectors3_oWaitForRestart_TransactionDetectors3_oWaitForRestart_HardLink : std_logic := '0';
+	signal TransactionDetectors4_iActive_TransactionDetectors4_iActive_HardLink : std_logic := '0';
 	signal TransactionDetectors4_iRestart_TransactionDetectors4_iRestart_HardLink : std_logic := '0';
 	signal TransactionDetectors4_iTXBegin_TransactionDetectors4_iTXBegin_HardLink : std_logic := '0';
 	signal TransactionDetectors4_iTXEnd_TransactionDetectors4_iTXEnd_HardLink : std_logic := '0';
 	signal TransactionDetectors4_oTransaction_TransactionDetectors4_oTransaction_HardLink : std_logic := '0';
+	signal TransactionDetectors4_oTXBegin_TransactionDetectors4_oTXBegin_HardLink : std_logic := '0';
 	signal TransactionDetectors4_oWaitForRestart_TransactionDetectors4_oWaitForRestart_HardLink : std_logic := '0';
+	signal TransactionDetectors5_iActive_TransactionDetectors5_iActive_HardLink : std_logic := '0';
 	signal TransactionDetectors5_iRestart_TransactionDetectors5_iRestart_HardLink : std_logic := '0';
 	signal TransactionDetectors5_iTXBegin_TransactionDetectors5_iTXBegin_HardLink : std_logic := '0';
 	signal TransactionDetectors5_iTXEnd_TransactionDetectors5_iTXEnd_HardLink : std_logic := '0';
 	signal TransactionDetectors5_oTransaction_TransactionDetectors5_oTransaction_HardLink : std_logic := '0';
+	signal TransactionDetectors5_oTXBegin_TransactionDetectors5_oTXBegin_HardLink : std_logic := '0';
 	signal TransactionDetectors5_oWaitForRestart_TransactionDetectors5_oWaitForRestart_HardLink : std_logic := '0';
+	signal TransactionDetectors6_iActive_TransactionDetectors6_iActive_HardLink : std_logic := '0';
 	signal TransactionDetectors6_iRestart_TransactionDetectors6_iRestart_HardLink : std_logic := '0';
 	signal TransactionDetectors6_iTXBegin_TransactionDetectors6_iTXBegin_HardLink : std_logic := '0';
 	signal TransactionDetectors6_iTXEnd_TransactionDetectors6_iTXEnd_HardLink : std_logic := '0';
 	signal TransactionDetectors6_oTransaction_TransactionDetectors6_oTransaction_HardLink : std_logic := '0';
+	signal TransactionDetectors6_oTXBegin_TransactionDetectors6_oTXBegin_HardLink : std_logic := '0';
 	signal TransactionDetectors6_oWaitForRestart_TransactionDetectors6_oWaitForRestart_HardLink : std_logic := '0';
+	signal TransactionDetectors7_iActive_TransactionDetectors7_iActive_HardLink : std_logic := '0';
 	signal TransactionDetectors7_iRestart_TransactionDetectors7_iRestart_HardLink : std_logic := '0';
 	signal TransactionDetectors7_iTXBegin_TransactionDetectors7_iTXBegin_HardLink : std_logic := '0';
 	signal TransactionDetectors7_iTXEnd_TransactionDetectors7_iTXEnd_HardLink : std_logic := '0';
 	signal TransactionDetectors7_oTransaction_TransactionDetectors7_oTransaction_HardLink : std_logic := '0';
+	signal TransactionDetectors7_oTXBegin_TransactionDetectors7_oTXBegin_HardLink : std_logic := '0';
 	signal TransactionDetectors7_oWaitForRestart_TransactionDetectors7_oWaitForRestart_HardLink : std_logic := '0';
 	signal State_leftAddr : unsigned(2 downto 0) := "000";
 	constant State_leftAddrDefault : unsigned(2 downto 0) := "000";
@@ -335,62 +351,94 @@ architecture rtl of AXILikeInteconnectModule_TopLevel is
 	constant State_rightAddrDefault : unsigned(1 downto 0) := "00";
 	signal State_rightAddrValid : std_logic := '0';
 	constant State_rightAddrValidDefault : std_logic := '0';
-	signal InterconnectModule_L89F37T159_0_InterconnectModule_L89F74T148_Expr : std_logic := '0';
-	signal InterconnectModule_L89F37T159_0_InterconnectModule_L89F74T148_Expr_1 : std_logic := '0';
-	signal InterconnectModule_L89F37T159_0_InterconnectModule_L89F74T148_Expr_2 : std_logic := '0';
-	signal InterconnectModule_L89F37T159_0_InterconnectModule_L89F121T148_Expr : std_logic := '0';
-	signal InterconnectModule_L89F37T159_0_InterconnectModule_L89F121T148_Expr_1 : std_logic := '0';
-	signal InterconnectModule_L89F37T159_1_InterconnectModule_L89F74T148_Expr : std_logic := '0';
-	signal InterconnectModule_L89F37T159_1_InterconnectModule_L89F74T148_Expr_1 : std_logic := '0';
-	signal InterconnectModule_L89F37T159_1_InterconnectModule_L89F74T148_Expr_2 : std_logic := '0';
-	signal InterconnectModule_L89F37T159_1_InterconnectModule_L89F121T148_Expr : std_logic := '0';
-	signal InterconnectModule_L89F37T159_1_InterconnectModule_L89F121T148_Expr_1 : std_logic := '0';
-	signal InterconnectModule_L89F37T159_2_InterconnectModule_L89F74T148_Expr : std_logic := '0';
-	signal InterconnectModule_L89F37T159_2_InterconnectModule_L89F74T148_Expr_1 : std_logic := '0';
-	signal InterconnectModule_L89F37T159_2_InterconnectModule_L89F74T148_Expr_2 : std_logic := '0';
-	signal InterconnectModule_L89F37T159_2_InterconnectModule_L89F121T148_Expr : std_logic := '0';
-	signal InterconnectModule_L89F37T159_2_InterconnectModule_L89F121T148_Expr_1 : std_logic := '0';
-	signal InterconnectModule_L89F37T159_3_InterconnectModule_L89F74T148_Expr : std_logic := '0';
-	signal InterconnectModule_L89F37T159_3_InterconnectModule_L89F74T148_Expr_1 : std_logic := '0';
-	signal InterconnectModule_L89F37T159_3_InterconnectModule_L89F74T148_Expr_2 : std_logic := '0';
-	signal InterconnectModule_L89F37T159_3_InterconnectModule_L89F121T148_Expr : std_logic := '0';
-	signal InterconnectModule_L89F37T159_3_InterconnectModule_L89F121T148_Expr_1 : std_logic := '0';
-	signal InterconnectModule_L89F37T159_4_InterconnectModule_L89F74T148_Expr : std_logic := '0';
-	signal InterconnectModule_L89F37T159_4_InterconnectModule_L89F74T148_Expr_1 : std_logic := '0';
-	signal InterconnectModule_L89F37T159_4_InterconnectModule_L89F74T148_Expr_2 : std_logic := '0';
-	signal InterconnectModule_L89F37T159_4_InterconnectModule_L89F121T148_Expr : std_logic := '0';
-	signal InterconnectModule_L89F37T159_4_InterconnectModule_L89F121T148_Expr_1 : std_logic := '0';
-	signal InterconnectModule_L89F37T159_5_InterconnectModule_L89F74T148_Expr : std_logic := '0';
-	signal InterconnectModule_L89F37T159_5_InterconnectModule_L89F74T148_Expr_1 : std_logic := '0';
-	signal InterconnectModule_L89F37T159_5_InterconnectModule_L89F74T148_Expr_2 : std_logic := '0';
-	signal InterconnectModule_L89F37T159_5_InterconnectModule_L89F121T148_Expr : std_logic := '0';
-	signal InterconnectModule_L89F37T159_5_InterconnectModule_L89F121T148_Expr_1 : std_logic := '0';
-	signal InterconnectModule_L89F37T159_6_InterconnectModule_L89F74T148_Expr : std_logic := '0';
-	signal InterconnectModule_L89F37T159_6_InterconnectModule_L89F74T148_Expr_1 : std_logic := '0';
-	signal InterconnectModule_L89F37T159_6_InterconnectModule_L89F74T148_Expr_2 : std_logic := '0';
-	signal InterconnectModule_L89F37T159_6_InterconnectModule_L89F121T148_Expr : std_logic := '0';
-	signal InterconnectModule_L89F37T159_6_InterconnectModule_L89F121T148_Expr_1 : std_logic := '0';
-	signal InterconnectModule_L89F37T159_7_InterconnectModule_L89F74T148_Expr : std_logic := '0';
-	signal InterconnectModule_L89F37T159_7_InterconnectModule_L89F74T148_Expr_1 : std_logic := '0';
-	signal InterconnectModule_L89F37T159_7_InterconnectModule_L89F74T148_Expr_2 : std_logic := '0';
-	signal InterconnectModule_L89F37T159_7_InterconnectModule_L89F121T148_Expr : std_logic := '0';
-	signal InterconnectModule_L89F37T159_7_InterconnectModule_L89F121T148_Expr_1 : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_0_InterconnectModule_L106F36T54_Expr : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_0_InterconnectModule_L106F36T54_Expr_1 : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_1_InterconnectModule_L106F36T54_Expr : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_1_InterconnectModule_L106F36T54_Expr_1 : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_2_InterconnectModule_L106F36T54_Expr : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_2_InterconnectModule_L106F36T54_Expr_1 : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_3_InterconnectModule_L106F36T54_Expr : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_3_InterconnectModule_L106F36T54_Expr_1 : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_4_InterconnectModule_L106F36T54_Expr : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_4_InterconnectModule_L106F36T54_Expr_1 : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_5_InterconnectModule_L106F36T54_Expr : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_5_InterconnectModule_L106F36T54_Expr_1 : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_6_InterconnectModule_L106F36T54_Expr : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_6_InterconnectModule_L106F36T54_Expr_1 : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_7_InterconnectModule_L106F36T54_Expr : std_logic := '0';
-	signal InterconnectModule_L99F13L109T14_7_InterconnectModule_L106F36T54_Expr_1 : std_logic := '0';
+	signal InterconnectModule_L81F36T108_TransactionDetectors0_InterconnectModule_L81F69T97_Expr : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L81F36T108_TransactionDetectors0_InterconnectModule_L81F69T97_Expr_1 : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L81F36T108_TransactionDetectors0_InterconnectModule_L81F69T97_Expr_2 : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L81F36T108_TransactionDetectors1_InterconnectModule_L81F69T97_Expr : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L81F36T108_TransactionDetectors1_InterconnectModule_L81F69T97_Expr_1 : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L81F36T108_TransactionDetectors1_InterconnectModule_L81F69T97_Expr_2 : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L81F36T108_TransactionDetectors2_InterconnectModule_L81F69T97_Expr : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L81F36T108_TransactionDetectors2_InterconnectModule_L81F69T97_Expr_1 : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L81F36T108_TransactionDetectors2_InterconnectModule_L81F69T97_Expr_2 : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L81F36T108_TransactionDetectors3_InterconnectModule_L81F69T97_Expr : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L81F36T108_TransactionDetectors3_InterconnectModule_L81F69T97_Expr_1 : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L81F36T108_TransactionDetectors3_InterconnectModule_L81F69T97_Expr_2 : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L81F36T108_TransactionDetectors4_InterconnectModule_L81F69T97_Expr : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L81F36T108_TransactionDetectors4_InterconnectModule_L81F69T97_Expr_1 : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L81F36T108_TransactionDetectors4_InterconnectModule_L81F69T97_Expr_2 : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L81F36T108_TransactionDetectors5_InterconnectModule_L81F69T97_Expr : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L81F36T108_TransactionDetectors5_InterconnectModule_L81F69T97_Expr_1 : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L81F36T108_TransactionDetectors5_InterconnectModule_L81F69T97_Expr_2 : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L81F36T108_TransactionDetectors6_InterconnectModule_L81F69T97_Expr : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L81F36T108_TransactionDetectors6_InterconnectModule_L81F69T97_Expr_1 : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L81F36T108_TransactionDetectors6_InterconnectModule_L81F69T97_Expr_2 : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L81F36T108_TransactionDetectors7_InterconnectModule_L81F69T97_Expr : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L81F36T108_TransactionDetectors7_InterconnectModule_L81F69T97_Expr_1 : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L81F36T108_TransactionDetectors7_InterconnectModule_L81F69T97_Expr_2 : unsigned(7 downto 0) := "00000000";
+	signal InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F35T85_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F35T85_Expr_1 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F35T85_Expr_2 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_0_InterconnectModule_L107F36T54_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_0_InterconnectModule_L107F36T54_Expr_1 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F35T85_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F35T85_Expr_1 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F35T85_Expr_2 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_1_InterconnectModule_L107F36T54_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_1_InterconnectModule_L107F36T54_Expr_1 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F35T85_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F35T85_Expr_1 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F35T85_Expr_2 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_2_InterconnectModule_L107F36T54_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_2_InterconnectModule_L107F36T54_Expr_1 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F35T85_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F35T85_Expr_1 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F35T85_Expr_2 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_3_InterconnectModule_L107F36T54_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_3_InterconnectModule_L107F36T54_Expr_1 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F35T85_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F35T85_Expr_1 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F35T85_Expr_2 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_4_InterconnectModule_L107F36T54_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_4_InterconnectModule_L107F36T54_Expr_1 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F35T85_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F35T85_Expr_1 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F35T85_Expr_2 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_5_InterconnectModule_L107F36T54_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_5_InterconnectModule_L107F36T54_Expr_1 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F35T85_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F35T85_Expr_1 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F35T85_Expr_2 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_6_InterconnectModule_L107F36T54_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_6_InterconnectModule_L107F36T54_Expr_1 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F35T85_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F35T85_Expr_1 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F35T85_Expr_2 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_7_InterconnectModule_L107F36T54_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_7_InterconnectModule_L107F36T54_Expr_1 : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F56T85_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F56T85_ExprLhs : signed(3 downto 0) := "0000";
+	signal InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F56T85_ExprRhs : signed(3 downto 0) := "0000";
+	signal InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F56T85_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F56T85_ExprLhs : signed(3 downto 0) := "0000";
+	signal InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F56T85_ExprRhs : signed(3 downto 0) := "0000";
+	signal InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F56T85_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F56T85_ExprLhs : signed(3 downto 0) := "0000";
+	signal InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F56T85_ExprRhs : signed(3 downto 0) := "0000";
+	signal InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F56T85_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F56T85_ExprLhs : signed(3 downto 0) := "0000";
+	signal InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F56T85_ExprRhs : signed(3 downto 0) := "0000";
+	signal InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F56T85_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F56T85_ExprLhs : signed(3 downto 0) := "0000";
+	signal InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F56T85_ExprRhs : signed(3 downto 0) := "0000";
+	signal InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F56T85_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F56T85_ExprLhs : signed(3 downto 0) := "0000";
+	signal InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F56T85_ExprRhs : signed(3 downto 0) := "0000";
+	signal InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F56T85_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F56T85_ExprLhs : signed(3 downto 0) := "0000";
+	signal InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F56T85_ExprRhs : signed(3 downto 0) := "0000";
+	signal InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F56T85_Expr : std_logic := '0';
+	signal InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F56T85_ExprLhs : signed(3 downto 0) := "0000";
+	signal InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F56T85_ExprRhs : signed(3 downto 0) := "0000";
 	type Inputs_iLeftArray is array (0 to 7) of unsigned (11 downto 0);
 	signal Inputs_iLeft : Inputs_iLeftArray := (others => (others => '0'));
 	type Inputs_iRightArray is array (0 to 3) of unsigned (9 downto 0);
@@ -417,14 +465,14 @@ architecture rtl of AXILikeInteconnectModule_TopLevel is
 	signal DuplexMux_oRight : DuplexMux_oRightArray := (others => (others => '0'));
 	type Encoder_iValuesArray is array (0 to 7) of std_logic;
 	signal Encoder_iValues : Encoder_iValuesArray := (others => '0');
-	type InterconnectModule_L78F48T106_EnumerableArray is array (0 to 7) of std_logic;
-	signal InterconnectModule_L78F48T106_Enumerable : InterconnectModule_L78F48T106_EnumerableArray := (others => '0');
-	type InterconnectModule_L80F42T100_EnumerableArray is array (0 to 7) of std_logic;
-	signal InterconnectModule_L80F42T100_Enumerable : InterconnectModule_L80F42T100_EnumerableArray := (others => '0');
-	type InterconnectModule_L89F37T159_EnumerableArray is array (0 to 7) of unsigned (0 downto 0);
-	signal InterconnectModule_L89F37T159_Enumerable : InterconnectModule_L89F37T159_EnumerableArray := (others => (others => '0'));
-	type InterconnectModule_L79F45T106_EnumerableArray is array (0 to 7) of std_logic;
-	signal InterconnectModule_L79F45T106_Enumerable : InterconnectModule_L79F45T106_EnumerableArray := (others => '0');
+	type InterconnectModule_L78F47T105_EnumerableArray is array (0 to 7) of std_logic;
+	signal InterconnectModule_L78F47T105_Enumerable : InterconnectModule_L78F47T105_EnumerableArray := (others => '0');
+	type InterconnectModule_L80F41T99_EnumerableArray is array (0 to 7) of std_logic;
+	signal InterconnectModule_L80F41T99_Enumerable : InterconnectModule_L80F41T99_EnumerableArray := (others => '0');
+	type InterconnectModule_L81F36T108_EnumerableArray is array (0 to 7) of std_logic;
+	signal InterconnectModule_L81F36T108_Enumerable : InterconnectModule_L81F36T108_EnumerableArray := (others => '0');
+	type InterconnectModule_L79F44T105_EnumerableArray is array (0 to 7) of std_logic;
+	signal InterconnectModule_L79F44T105_Enumerable : InterconnectModule_L79F44T105_EnumerableArray := (others => '0');
 	signal BoardSignals : BoardSignalsType;
 	signal InternalReset : std_logic := '0';
 begin
@@ -445,101 +493,109 @@ begin
 			end if;
 		end if;
 	end process;
-	process (InterconnectModule_L89F37T159_0_InterconnectModule_L89F74T148_Expr_1, InterconnectModule_L89F37T159_0_InterconnectModule_L89F74T148_Expr_2)
+	InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F56T85_Expr <= '1' when (signed(resize(InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F56T85_ExprLhs, InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F56T85_ExprLhs'length + 1)) = signed(resize(InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F56T85_ExprRhs, InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F56T85_ExprRhs'length + 1))) else '0';
+	InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F56T85_Expr <= '1' when (signed(resize(InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F56T85_ExprLhs, InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F56T85_ExprLhs'length + 1)) = signed(resize(InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F56T85_ExprRhs, InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F56T85_ExprRhs'length + 1))) else '0';
+	InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F56T85_Expr <= '1' when (signed(resize(InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F56T85_ExprLhs, InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F56T85_ExprLhs'length + 1)) = signed(resize(InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F56T85_ExprRhs, InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F56T85_ExprRhs'length + 1))) else '0';
+	InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F56T85_Expr <= '1' when (signed(resize(InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F56T85_ExprLhs, InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F56T85_ExprLhs'length + 1)) = signed(resize(InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F56T85_ExprRhs, InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F56T85_ExprRhs'length + 1))) else '0';
+	InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F56T85_Expr <= '1' when (signed(resize(InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F56T85_ExprLhs, InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F56T85_ExprLhs'length + 1)) = signed(resize(InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F56T85_ExprRhs, InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F56T85_ExprRhs'length + 1))) else '0';
+	InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F56T85_Expr <= '1' when (signed(resize(InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F56T85_ExprLhs, InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F56T85_ExprLhs'length + 1)) = signed(resize(InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F56T85_ExprRhs, InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F56T85_ExprRhs'length + 1))) else '0';
+	InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F56T85_Expr <= '1' when (signed(resize(InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F56T85_ExprLhs, InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F56T85_ExprLhs'length + 1)) = signed(resize(InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F56T85_ExprRhs, InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F56T85_ExprRhs'length + 1))) else '0';
+	InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F56T85_Expr <= '1' when (signed(resize(InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F56T85_ExprLhs, InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F56T85_ExprLhs'length + 1)) = signed(resize(InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F56T85_ExprRhs, InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F56T85_ExprRhs'length + 1))) else '0';
+	process (InterconnectModule_L81F36T108_TransactionDetectors0_InterconnectModule_L81F69T97_Expr_1, InterconnectModule_L81F36T108_TransactionDetectors0_InterconnectModule_L81F69T97_Expr_2)
 	begin
-		InterconnectModule_L89F37T159_0_InterconnectModule_L89F74T148_Expr <= InterconnectModule_L89F37T159_0_InterconnectModule_L89F74T148_Expr_1 AND InterconnectModule_L89F37T159_0_InterconnectModule_L89F74T148_Expr_2;
+		InterconnectModule_L81F36T108_TransactionDetectors0_InterconnectModule_L81F69T97_Expr <= InterconnectModule_L81F36T108_TransactionDetectors0_InterconnectModule_L81F69T97_Expr_1 OR InterconnectModule_L81F36T108_TransactionDetectors0_InterconnectModule_L81F69T97_Expr_2;
 	end process;
-	process (InterconnectModule_L89F37T159_0_InterconnectModule_L89F121T148_Expr_1)
+	process (InterconnectModule_L81F36T108_TransactionDetectors1_InterconnectModule_L81F69T97_Expr_1, InterconnectModule_L81F36T108_TransactionDetectors1_InterconnectModule_L81F69T97_Expr_2)
 	begin
-		InterconnectModule_L89F37T159_0_InterconnectModule_L89F121T148_Expr <= NOT InterconnectModule_L89F37T159_0_InterconnectModule_L89F121T148_Expr_1;
+		InterconnectModule_L81F36T108_TransactionDetectors1_InterconnectModule_L81F69T97_Expr <= InterconnectModule_L81F36T108_TransactionDetectors1_InterconnectModule_L81F69T97_Expr_1 OR InterconnectModule_L81F36T108_TransactionDetectors1_InterconnectModule_L81F69T97_Expr_2;
 	end process;
-	process (InterconnectModule_L89F37T159_1_InterconnectModule_L89F74T148_Expr_1, InterconnectModule_L89F37T159_1_InterconnectModule_L89F74T148_Expr_2)
+	process (InterconnectModule_L81F36T108_TransactionDetectors2_InterconnectModule_L81F69T97_Expr_1, InterconnectModule_L81F36T108_TransactionDetectors2_InterconnectModule_L81F69T97_Expr_2)
 	begin
-		InterconnectModule_L89F37T159_1_InterconnectModule_L89F74T148_Expr <= InterconnectModule_L89F37T159_1_InterconnectModule_L89F74T148_Expr_1 AND InterconnectModule_L89F37T159_1_InterconnectModule_L89F74T148_Expr_2;
+		InterconnectModule_L81F36T108_TransactionDetectors2_InterconnectModule_L81F69T97_Expr <= InterconnectModule_L81F36T108_TransactionDetectors2_InterconnectModule_L81F69T97_Expr_1 OR InterconnectModule_L81F36T108_TransactionDetectors2_InterconnectModule_L81F69T97_Expr_2;
 	end process;
-	process (InterconnectModule_L89F37T159_1_InterconnectModule_L89F121T148_Expr_1)
+	process (InterconnectModule_L81F36T108_TransactionDetectors3_InterconnectModule_L81F69T97_Expr_1, InterconnectModule_L81F36T108_TransactionDetectors3_InterconnectModule_L81F69T97_Expr_2)
 	begin
-		InterconnectModule_L89F37T159_1_InterconnectModule_L89F121T148_Expr <= NOT InterconnectModule_L89F37T159_1_InterconnectModule_L89F121T148_Expr_1;
+		InterconnectModule_L81F36T108_TransactionDetectors3_InterconnectModule_L81F69T97_Expr <= InterconnectModule_L81F36T108_TransactionDetectors3_InterconnectModule_L81F69T97_Expr_1 OR InterconnectModule_L81F36T108_TransactionDetectors3_InterconnectModule_L81F69T97_Expr_2;
 	end process;
-	process (InterconnectModule_L89F37T159_2_InterconnectModule_L89F74T148_Expr_1, InterconnectModule_L89F37T159_2_InterconnectModule_L89F74T148_Expr_2)
+	process (InterconnectModule_L81F36T108_TransactionDetectors4_InterconnectModule_L81F69T97_Expr_1, InterconnectModule_L81F36T108_TransactionDetectors4_InterconnectModule_L81F69T97_Expr_2)
 	begin
-		InterconnectModule_L89F37T159_2_InterconnectModule_L89F74T148_Expr <= InterconnectModule_L89F37T159_2_InterconnectModule_L89F74T148_Expr_1 AND InterconnectModule_L89F37T159_2_InterconnectModule_L89F74T148_Expr_2;
+		InterconnectModule_L81F36T108_TransactionDetectors4_InterconnectModule_L81F69T97_Expr <= InterconnectModule_L81F36T108_TransactionDetectors4_InterconnectModule_L81F69T97_Expr_1 OR InterconnectModule_L81F36T108_TransactionDetectors4_InterconnectModule_L81F69T97_Expr_2;
 	end process;
-	process (InterconnectModule_L89F37T159_2_InterconnectModule_L89F121T148_Expr_1)
+	process (InterconnectModule_L81F36T108_TransactionDetectors5_InterconnectModule_L81F69T97_Expr_1, InterconnectModule_L81F36T108_TransactionDetectors5_InterconnectModule_L81F69T97_Expr_2)
 	begin
-		InterconnectModule_L89F37T159_2_InterconnectModule_L89F121T148_Expr <= NOT InterconnectModule_L89F37T159_2_InterconnectModule_L89F121T148_Expr_1;
+		InterconnectModule_L81F36T108_TransactionDetectors5_InterconnectModule_L81F69T97_Expr <= InterconnectModule_L81F36T108_TransactionDetectors5_InterconnectModule_L81F69T97_Expr_1 OR InterconnectModule_L81F36T108_TransactionDetectors5_InterconnectModule_L81F69T97_Expr_2;
 	end process;
-	process (InterconnectModule_L89F37T159_3_InterconnectModule_L89F74T148_Expr_1, InterconnectModule_L89F37T159_3_InterconnectModule_L89F74T148_Expr_2)
+	process (InterconnectModule_L81F36T108_TransactionDetectors6_InterconnectModule_L81F69T97_Expr_1, InterconnectModule_L81F36T108_TransactionDetectors6_InterconnectModule_L81F69T97_Expr_2)
 	begin
-		InterconnectModule_L89F37T159_3_InterconnectModule_L89F74T148_Expr <= InterconnectModule_L89F37T159_3_InterconnectModule_L89F74T148_Expr_1 AND InterconnectModule_L89F37T159_3_InterconnectModule_L89F74T148_Expr_2;
+		InterconnectModule_L81F36T108_TransactionDetectors6_InterconnectModule_L81F69T97_Expr <= InterconnectModule_L81F36T108_TransactionDetectors6_InterconnectModule_L81F69T97_Expr_1 OR InterconnectModule_L81F36T108_TransactionDetectors6_InterconnectModule_L81F69T97_Expr_2;
 	end process;
-	process (InterconnectModule_L89F37T159_3_InterconnectModule_L89F121T148_Expr_1)
+	process (InterconnectModule_L81F36T108_TransactionDetectors7_InterconnectModule_L81F69T97_Expr_1, InterconnectModule_L81F36T108_TransactionDetectors7_InterconnectModule_L81F69T97_Expr_2)
 	begin
-		InterconnectModule_L89F37T159_3_InterconnectModule_L89F121T148_Expr <= NOT InterconnectModule_L89F37T159_3_InterconnectModule_L89F121T148_Expr_1;
+		InterconnectModule_L81F36T108_TransactionDetectors7_InterconnectModule_L81F69T97_Expr <= InterconnectModule_L81F36T108_TransactionDetectors7_InterconnectModule_L81F69T97_Expr_1 OR InterconnectModule_L81F36T108_TransactionDetectors7_InterconnectModule_L81F69T97_Expr_2;
 	end process;
-	process (InterconnectModule_L89F37T159_4_InterconnectModule_L89F74T148_Expr_1, InterconnectModule_L89F37T159_4_InterconnectModule_L89F74T148_Expr_2)
+	process (InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F35T85_Expr_1, InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F35T85_Expr_2)
 	begin
-		InterconnectModule_L89F37T159_4_InterconnectModule_L89F74T148_Expr <= InterconnectModule_L89F37T159_4_InterconnectModule_L89F74T148_Expr_1 AND InterconnectModule_L89F37T159_4_InterconnectModule_L89F74T148_Expr_2;
+		InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F35T85_Expr <= InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F35T85_Expr_1 AND InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F35T85_Expr_2;
 	end process;
-	process (InterconnectModule_L89F37T159_4_InterconnectModule_L89F121T148_Expr_1)
+	process (InterconnectModule_L100F13L111T14_0_InterconnectModule_L107F36T54_Expr_1)
 	begin
-		InterconnectModule_L89F37T159_4_InterconnectModule_L89F121T148_Expr <= NOT InterconnectModule_L89F37T159_4_InterconnectModule_L89F121T148_Expr_1;
+		InterconnectModule_L100F13L111T14_0_InterconnectModule_L107F36T54_Expr <= NOT InterconnectModule_L100F13L111T14_0_InterconnectModule_L107F36T54_Expr_1;
 	end process;
-	process (InterconnectModule_L89F37T159_5_InterconnectModule_L89F74T148_Expr_1, InterconnectModule_L89F37T159_5_InterconnectModule_L89F74T148_Expr_2)
+	process (InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F35T85_Expr_1, InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F35T85_Expr_2)
 	begin
-		InterconnectModule_L89F37T159_5_InterconnectModule_L89F74T148_Expr <= InterconnectModule_L89F37T159_5_InterconnectModule_L89F74T148_Expr_1 AND InterconnectModule_L89F37T159_5_InterconnectModule_L89F74T148_Expr_2;
+		InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F35T85_Expr <= InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F35T85_Expr_1 AND InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F35T85_Expr_2;
 	end process;
-	process (InterconnectModule_L89F37T159_5_InterconnectModule_L89F121T148_Expr_1)
+	process (InterconnectModule_L100F13L111T14_1_InterconnectModule_L107F36T54_Expr_1)
 	begin
-		InterconnectModule_L89F37T159_5_InterconnectModule_L89F121T148_Expr <= NOT InterconnectModule_L89F37T159_5_InterconnectModule_L89F121T148_Expr_1;
+		InterconnectModule_L100F13L111T14_1_InterconnectModule_L107F36T54_Expr <= NOT InterconnectModule_L100F13L111T14_1_InterconnectModule_L107F36T54_Expr_1;
 	end process;
-	process (InterconnectModule_L89F37T159_6_InterconnectModule_L89F74T148_Expr_1, InterconnectModule_L89F37T159_6_InterconnectModule_L89F74T148_Expr_2)
+	process (InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F35T85_Expr_1, InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F35T85_Expr_2)
 	begin
-		InterconnectModule_L89F37T159_6_InterconnectModule_L89F74T148_Expr <= InterconnectModule_L89F37T159_6_InterconnectModule_L89F74T148_Expr_1 AND InterconnectModule_L89F37T159_6_InterconnectModule_L89F74T148_Expr_2;
+		InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F35T85_Expr <= InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F35T85_Expr_1 AND InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F35T85_Expr_2;
 	end process;
-	process (InterconnectModule_L89F37T159_6_InterconnectModule_L89F121T148_Expr_1)
+	process (InterconnectModule_L100F13L111T14_2_InterconnectModule_L107F36T54_Expr_1)
 	begin
-		InterconnectModule_L89F37T159_6_InterconnectModule_L89F121T148_Expr <= NOT InterconnectModule_L89F37T159_6_InterconnectModule_L89F121T148_Expr_1;
+		InterconnectModule_L100F13L111T14_2_InterconnectModule_L107F36T54_Expr <= NOT InterconnectModule_L100F13L111T14_2_InterconnectModule_L107F36T54_Expr_1;
 	end process;
-	process (InterconnectModule_L89F37T159_7_InterconnectModule_L89F74T148_Expr_1, InterconnectModule_L89F37T159_7_InterconnectModule_L89F74T148_Expr_2)
+	process (InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F35T85_Expr_1, InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F35T85_Expr_2)
 	begin
-		InterconnectModule_L89F37T159_7_InterconnectModule_L89F74T148_Expr <= InterconnectModule_L89F37T159_7_InterconnectModule_L89F74T148_Expr_1 AND InterconnectModule_L89F37T159_7_InterconnectModule_L89F74T148_Expr_2;
+		InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F35T85_Expr <= InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F35T85_Expr_1 AND InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F35T85_Expr_2;
 	end process;
-	process (InterconnectModule_L89F37T159_7_InterconnectModule_L89F121T148_Expr_1)
+	process (InterconnectModule_L100F13L111T14_3_InterconnectModule_L107F36T54_Expr_1)
 	begin
-		InterconnectModule_L89F37T159_7_InterconnectModule_L89F121T148_Expr <= NOT InterconnectModule_L89F37T159_7_InterconnectModule_L89F121T148_Expr_1;
+		InterconnectModule_L100F13L111T14_3_InterconnectModule_L107F36T54_Expr <= NOT InterconnectModule_L100F13L111T14_3_InterconnectModule_L107F36T54_Expr_1;
 	end process;
-	process (InterconnectModule_L99F13L109T14_0_InterconnectModule_L106F36T54_Expr_1)
+	process (InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F35T85_Expr_1, InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F35T85_Expr_2)
 	begin
-		InterconnectModule_L99F13L109T14_0_InterconnectModule_L106F36T54_Expr <= NOT InterconnectModule_L99F13L109T14_0_InterconnectModule_L106F36T54_Expr_1;
+		InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F35T85_Expr <= InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F35T85_Expr_1 AND InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F35T85_Expr_2;
 	end process;
-	process (InterconnectModule_L99F13L109T14_1_InterconnectModule_L106F36T54_Expr_1)
+	process (InterconnectModule_L100F13L111T14_4_InterconnectModule_L107F36T54_Expr_1)
 	begin
-		InterconnectModule_L99F13L109T14_1_InterconnectModule_L106F36T54_Expr <= NOT InterconnectModule_L99F13L109T14_1_InterconnectModule_L106F36T54_Expr_1;
+		InterconnectModule_L100F13L111T14_4_InterconnectModule_L107F36T54_Expr <= NOT InterconnectModule_L100F13L111T14_4_InterconnectModule_L107F36T54_Expr_1;
 	end process;
-	process (InterconnectModule_L99F13L109T14_2_InterconnectModule_L106F36T54_Expr_1)
+	process (InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F35T85_Expr_1, InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F35T85_Expr_2)
 	begin
-		InterconnectModule_L99F13L109T14_2_InterconnectModule_L106F36T54_Expr <= NOT InterconnectModule_L99F13L109T14_2_InterconnectModule_L106F36T54_Expr_1;
+		InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F35T85_Expr <= InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F35T85_Expr_1 AND InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F35T85_Expr_2;
 	end process;
-	process (InterconnectModule_L99F13L109T14_3_InterconnectModule_L106F36T54_Expr_1)
+	process (InterconnectModule_L100F13L111T14_5_InterconnectModule_L107F36T54_Expr_1)
 	begin
-		InterconnectModule_L99F13L109T14_3_InterconnectModule_L106F36T54_Expr <= NOT InterconnectModule_L99F13L109T14_3_InterconnectModule_L106F36T54_Expr_1;
+		InterconnectModule_L100F13L111T14_5_InterconnectModule_L107F36T54_Expr <= NOT InterconnectModule_L100F13L111T14_5_InterconnectModule_L107F36T54_Expr_1;
 	end process;
-	process (InterconnectModule_L99F13L109T14_4_InterconnectModule_L106F36T54_Expr_1)
+	process (InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F35T85_Expr_1, InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F35T85_Expr_2)
 	begin
-		InterconnectModule_L99F13L109T14_4_InterconnectModule_L106F36T54_Expr <= NOT InterconnectModule_L99F13L109T14_4_InterconnectModule_L106F36T54_Expr_1;
+		InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F35T85_Expr <= InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F35T85_Expr_1 AND InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F35T85_Expr_2;
 	end process;
-	process (InterconnectModule_L99F13L109T14_5_InterconnectModule_L106F36T54_Expr_1)
+	process (InterconnectModule_L100F13L111T14_6_InterconnectModule_L107F36T54_Expr_1)
 	begin
-		InterconnectModule_L99F13L109T14_5_InterconnectModule_L106F36T54_Expr <= NOT InterconnectModule_L99F13L109T14_5_InterconnectModule_L106F36T54_Expr_1;
+		InterconnectModule_L100F13L111T14_6_InterconnectModule_L107F36T54_Expr <= NOT InterconnectModule_L100F13L111T14_6_InterconnectModule_L107F36T54_Expr_1;
 	end process;
-	process (InterconnectModule_L99F13L109T14_6_InterconnectModule_L106F36T54_Expr_1)
+	process (InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F35T85_Expr_1, InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F35T85_Expr_2)
 	begin
-		InterconnectModule_L99F13L109T14_6_InterconnectModule_L106F36T54_Expr <= NOT InterconnectModule_L99F13L109T14_6_InterconnectModule_L106F36T54_Expr_1;
+		InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F35T85_Expr <= InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F35T85_Expr_1 AND InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F35T85_Expr_2;
 	end process;
-	process (InterconnectModule_L99F13L109T14_7_InterconnectModule_L106F36T54_Expr_1)
+	process (InterconnectModule_L100F13L111T14_7_InterconnectModule_L107F36T54_Expr_1)
 	begin
-		InterconnectModule_L99F13L109T14_7_InterconnectModule_L106F36T54_Expr <= NOT InterconnectModule_L99F13L109T14_7_InterconnectModule_L106F36T54_Expr_1;
+		InterconnectModule_L100F13L111T14_7_InterconnectModule_L107F36T54_Expr <= NOT InterconnectModule_L100F13L111T14_7_InterconnectModule_L107F36T54_Expr_1;
 	end process;
 	AXILikeInteconnectModule_TopLevel_DuplexMux : entity work.AXILikeInteconnectModule_TopLevel_DuplexMux
 	port map
@@ -602,10 +658,12 @@ begin
 		-- [BEGIN USER MAP FOR TransactionDetectors0]
 		-- [END USER MAP FOR TransactionDetectors0]
 		BoardSignals => BoardSignals,
+		iActive => TransactionDetectors0_iActive_TransactionDetectors0_iActive_HardLink,
 		iRestart => TransactionDetectors0_iRestart_TransactionDetectors0_iRestart_HardLink,
 		iTXBegin => TransactionDetectors0_iTXBegin_TransactionDetectors0_iTXBegin_HardLink,
 		iTXEnd => TransactionDetectors0_iTXEnd_TransactionDetectors0_iTXEnd_HardLink,
 		oTransaction => TransactionDetectors0_oTransaction_TransactionDetectors0_oTransaction_HardLink,
+		oTXBegin => TransactionDetectors0_oTXBegin_TransactionDetectors0_oTXBegin_HardLink,
 		oWaitForRestart => TransactionDetectors0_oWaitForRestart_TransactionDetectors0_oWaitForRestart_HardLink
 	)
 	;
@@ -615,10 +673,12 @@ begin
 		-- [BEGIN USER MAP FOR TransactionDetectors1]
 		-- [END USER MAP FOR TransactionDetectors1]
 		BoardSignals => BoardSignals,
+		iActive => TransactionDetectors1_iActive_TransactionDetectors1_iActive_HardLink,
 		iRestart => TransactionDetectors1_iRestart_TransactionDetectors1_iRestart_HardLink,
 		iTXBegin => TransactionDetectors1_iTXBegin_TransactionDetectors1_iTXBegin_HardLink,
 		iTXEnd => TransactionDetectors1_iTXEnd_TransactionDetectors1_iTXEnd_HardLink,
 		oTransaction => TransactionDetectors1_oTransaction_TransactionDetectors1_oTransaction_HardLink,
+		oTXBegin => TransactionDetectors1_oTXBegin_TransactionDetectors1_oTXBegin_HardLink,
 		oWaitForRestart => TransactionDetectors1_oWaitForRestart_TransactionDetectors1_oWaitForRestart_HardLink
 	)
 	;
@@ -628,10 +688,12 @@ begin
 		-- [BEGIN USER MAP FOR TransactionDetectors2]
 		-- [END USER MAP FOR TransactionDetectors2]
 		BoardSignals => BoardSignals,
+		iActive => TransactionDetectors2_iActive_TransactionDetectors2_iActive_HardLink,
 		iRestart => TransactionDetectors2_iRestart_TransactionDetectors2_iRestart_HardLink,
 		iTXBegin => TransactionDetectors2_iTXBegin_TransactionDetectors2_iTXBegin_HardLink,
 		iTXEnd => TransactionDetectors2_iTXEnd_TransactionDetectors2_iTXEnd_HardLink,
 		oTransaction => TransactionDetectors2_oTransaction_TransactionDetectors2_oTransaction_HardLink,
+		oTXBegin => TransactionDetectors2_oTXBegin_TransactionDetectors2_oTXBegin_HardLink,
 		oWaitForRestart => TransactionDetectors2_oWaitForRestart_TransactionDetectors2_oWaitForRestart_HardLink
 	)
 	;
@@ -641,10 +703,12 @@ begin
 		-- [BEGIN USER MAP FOR TransactionDetectors3]
 		-- [END USER MAP FOR TransactionDetectors3]
 		BoardSignals => BoardSignals,
+		iActive => TransactionDetectors3_iActive_TransactionDetectors3_iActive_HardLink,
 		iRestart => TransactionDetectors3_iRestart_TransactionDetectors3_iRestart_HardLink,
 		iTXBegin => TransactionDetectors3_iTXBegin_TransactionDetectors3_iTXBegin_HardLink,
 		iTXEnd => TransactionDetectors3_iTXEnd_TransactionDetectors3_iTXEnd_HardLink,
 		oTransaction => TransactionDetectors3_oTransaction_TransactionDetectors3_oTransaction_HardLink,
+		oTXBegin => TransactionDetectors3_oTXBegin_TransactionDetectors3_oTXBegin_HardLink,
 		oWaitForRestart => TransactionDetectors3_oWaitForRestart_TransactionDetectors3_oWaitForRestart_HardLink
 	)
 	;
@@ -654,10 +718,12 @@ begin
 		-- [BEGIN USER MAP FOR TransactionDetectors4]
 		-- [END USER MAP FOR TransactionDetectors4]
 		BoardSignals => BoardSignals,
+		iActive => TransactionDetectors4_iActive_TransactionDetectors4_iActive_HardLink,
 		iRestart => TransactionDetectors4_iRestart_TransactionDetectors4_iRestart_HardLink,
 		iTXBegin => TransactionDetectors4_iTXBegin_TransactionDetectors4_iTXBegin_HardLink,
 		iTXEnd => TransactionDetectors4_iTXEnd_TransactionDetectors4_iTXEnd_HardLink,
 		oTransaction => TransactionDetectors4_oTransaction_TransactionDetectors4_oTransaction_HardLink,
+		oTXBegin => TransactionDetectors4_oTXBegin_TransactionDetectors4_oTXBegin_HardLink,
 		oWaitForRestart => TransactionDetectors4_oWaitForRestart_TransactionDetectors4_oWaitForRestart_HardLink
 	)
 	;
@@ -667,10 +733,12 @@ begin
 		-- [BEGIN USER MAP FOR TransactionDetectors5]
 		-- [END USER MAP FOR TransactionDetectors5]
 		BoardSignals => BoardSignals,
+		iActive => TransactionDetectors5_iActive_TransactionDetectors5_iActive_HardLink,
 		iRestart => TransactionDetectors5_iRestart_TransactionDetectors5_iRestart_HardLink,
 		iTXBegin => TransactionDetectors5_iTXBegin_TransactionDetectors5_iTXBegin_HardLink,
 		iTXEnd => TransactionDetectors5_iTXEnd_TransactionDetectors5_iTXEnd_HardLink,
 		oTransaction => TransactionDetectors5_oTransaction_TransactionDetectors5_oTransaction_HardLink,
+		oTXBegin => TransactionDetectors5_oTXBegin_TransactionDetectors5_oTXBegin_HardLink,
 		oWaitForRestart => TransactionDetectors5_oWaitForRestart_TransactionDetectors5_oWaitForRestart_HardLink
 	)
 	;
@@ -680,10 +748,12 @@ begin
 		-- [BEGIN USER MAP FOR TransactionDetectors6]
 		-- [END USER MAP FOR TransactionDetectors6]
 		BoardSignals => BoardSignals,
+		iActive => TransactionDetectors6_iActive_TransactionDetectors6_iActive_HardLink,
 		iRestart => TransactionDetectors6_iRestart_TransactionDetectors6_iRestart_HardLink,
 		iTXBegin => TransactionDetectors6_iTXBegin_TransactionDetectors6_iTXBegin_HardLink,
 		iTXEnd => TransactionDetectors6_iTXEnd_TransactionDetectors6_iTXEnd_HardLink,
 		oTransaction => TransactionDetectors6_oTransaction_TransactionDetectors6_oTransaction_HardLink,
+		oTXBegin => TransactionDetectors6_oTXBegin_TransactionDetectors6_oTXBegin_HardLink,
 		oWaitForRestart => TransactionDetectors6_oWaitForRestart_TransactionDetectors6_oWaitForRestart_HardLink
 	)
 	;
@@ -693,10 +763,12 @@ begin
 		-- [BEGIN USER MAP FOR TransactionDetectors7]
 		-- [END USER MAP FOR TransactionDetectors7]
 		BoardSignals => BoardSignals,
+		iActive => TransactionDetectors7_iActive_TransactionDetectors7_iActive_HardLink,
 		iRestart => TransactionDetectors7_iRestart_TransactionDetectors7_iRestart_HardLink,
 		iTXBegin => TransactionDetectors7_iTXBegin_TransactionDetectors7_iTXBegin_HardLink,
 		iTXEnd => TransactionDetectors7_iTXEnd_TransactionDetectors7_iTXEnd_HardLink,
 		oTransaction => TransactionDetectors7_oTransaction_TransactionDetectors7_oTransaction_HardLink,
+		oTXBegin => TransactionDetectors7_oTXBegin_TransactionDetectors7_oTXBegin_HardLink,
 		oWaitForRestart => TransactionDetectors7_oWaitForRestart_TransactionDetectors7_oWaitForRestart_HardLink
 	)
 	;
@@ -708,50 +780,166 @@ begin
 		NextState_rightAddrValid <= State_rightAddrValid;
 		if State_rightAddrValid = '1' then
 			if currentTXEnd = '1' then
-				NextState_leftAddrValid <= InterconnectModule_L132F9L149T10_InterconnectModule_L134F13L140T14_InterconnectModule_L136F17L139T18_InterconnectModule_L137F47T52_Expr;
-				NextState_rightAddrValid <= InterconnectModule_L132F9L149T10_InterconnectModule_L134F13L140T14_InterconnectModule_L136F17L139T18_InterconnectModule_L138F48T53_Expr;
+				NextState_leftAddrValid <= InterconnectModule_L134F9L151T10_InterconnectModule_L136F13L142T14_InterconnectModule_L138F17L141T18_InterconnectModule_L139F47T52_Expr;
+				NextState_rightAddrValid <= InterconnectModule_L134F9L151T10_InterconnectModule_L136F13L142T14_InterconnectModule_L138F17L141T18_InterconnectModule_L140F48T53_Expr;
 			end if;
 		elsif Encoder_HasActive = '1' then
 			NextState_leftAddr <= Encoder_MSBIndex;
-			NextState_leftAddrValid <= InterconnectModule_L132F9L149T10_InterconnectModule_L142F13L148T14_InterconnectModule_L144F43T47_Expr;
+			NextState_leftAddrValid <= InterconnectModule_L134F9L151T10_InterconnectModule_L144F13L150T14_InterconnectModule_L146F43T47_Expr;
 			NextState_rightAddr <= rightAddr;
-			NextState_rightAddrValid <= InterconnectModule_L132F9L149T10_InterconnectModule_L142F13L148T14_InterconnectModule_L147F44T48_Expr;
+			NextState_rightAddrValid <= InterconnectModule_L134F9L151T10_InterconnectModule_L144F13L150T14_InterconnectModule_L149F44T48_Expr;
 		end if;
 	end process;
-	process (DuplexMux_iLeft, DuplexMux_iLeftAddr, DuplexMux_iLeftAddrValid, DuplexMux_iRight, DuplexMux_iRightAddr, DuplexMux_iRightAddrValid, DuplexMux_oLeft, DuplexMux_oLeft0_DuplexMux_oLeft_HardLink, DuplexMux_oLeft1_DuplexMux_oLeft_HardLink, DuplexMux_oLeft2_DuplexMux_oLeft_HardLink, DuplexMux_oLeft3_DuplexMux_oLeft_HardLink, DuplexMux_oMuxLeftData, DuplexMux_oMuxLeftData_DuplexMux_oMuxLeftData_HardLink, DuplexMux_oMuxRightData, DuplexMux_oMuxRightData_DuplexMux_oMuxRightData_HardLink, DuplexMux_oRight, DuplexMux_oRight0_DuplexMux_oRight_HardLink, DuplexMux_oRight1_DuplexMux_oRight_HardLink, DuplexMux_oRight2_DuplexMux_oRight_HardLink, DuplexMux_oRight3_DuplexMux_oRight_HardLink, DuplexMux_oRight4_DuplexMux_oRight_HardLink, DuplexMux_oRight5_DuplexMux_oRight_HardLink, DuplexMux_oRight6_DuplexMux_oRight_HardLink, DuplexMux_oRight7_DuplexMux_oRight_HardLink, Encoder_HasActive, Encoder_HasActive_Encoder_HasActive_HardLink, Encoder_iValues, Encoder_MSBIndex_Encoder_MSBIndex_HardLink, Encoder_MSBValue_Encoder_MSBValue_HardLink, iLeft0_Addr, iLeft0_IsActive, iLeft0_Payload_Data, iLeft0_Payload_DataFlag, iLeft1_Addr, iLeft1_IsActive, iLeft1_Payload_Data, iLeft1_Payload_DataFlag, iLeft2_Addr, iLeft2_IsActive, iLeft2_Payload_Data, iLeft2_Payload_DataFlag, iLeft3_Addr, iLeft3_IsActive, iLeft3_Payload_Data, iLeft3_Payload_DataFlag, iLeft4_Addr, iLeft4_IsActive, iLeft4_Payload_Data, iLeft4_Payload_DataFlag, iLeft5_Addr, iLeft5_IsActive, iLeft5_Payload_Data, iLeft5_Payload_DataFlag, iLeft6_Addr, iLeft6_IsActive, iLeft6_Payload_Data, iLeft6_Payload_DataFlag, iLeft7_Addr, iLeft7_IsActive, iLeft7_Payload_Data, iLeft7_Payload_DataFlag, Inputs_iLeft, Inputs_iRight, InterconnectModule_L112F17L115T18_Object, InterconnectModule_L119F17L127T18_Object, InterconnectModule_L78F48T106_Enumerable, InterconnectModule_L79F45T106_Enumerable, InterconnectModule_L80F42T100_Enumerable, InterconnectModule_L89F37T159_0_InterconnectModule_L89F121T148_Expr, InterconnectModule_L89F37T159_0_InterconnectModule_L89F122T148_Index, InterconnectModule_L89F37T159_0_InterconnectModule_L89F74T148_Expr, InterconnectModule_L89F37T159_1_InterconnectModule_L89F121T148_Expr, InterconnectModule_L89F37T159_1_InterconnectModule_L89F122T148_Index, InterconnectModule_L89F37T159_1_InterconnectModule_L89F74T148_Expr, InterconnectModule_L89F37T159_2_InterconnectModule_L89F121T148_Expr, InterconnectModule_L89F37T159_2_InterconnectModule_L89F122T148_Index, InterconnectModule_L89F37T159_2_InterconnectModule_L89F74T148_Expr, InterconnectModule_L89F37T159_3_InterconnectModule_L89F121T148_Expr, InterconnectModule_L89F37T159_3_InterconnectModule_L89F122T148_Index, InterconnectModule_L89F37T159_3_InterconnectModule_L89F74T148_Expr, InterconnectModule_L89F37T159_4_InterconnectModule_L89F121T148_Expr, InterconnectModule_L89F37T159_4_InterconnectModule_L89F122T148_Index, InterconnectModule_L89F37T159_4_InterconnectModule_L89F74T148_Expr, InterconnectModule_L89F37T159_5_InterconnectModule_L89F121T148_Expr, InterconnectModule_L89F37T159_5_InterconnectModule_L89F122T148_Index, InterconnectModule_L89F37T159_5_InterconnectModule_L89F74T148_Expr, InterconnectModule_L89F37T159_6_InterconnectModule_L89F121T148_Expr, InterconnectModule_L89F37T159_6_InterconnectModule_L89F122T148_Index, InterconnectModule_L89F37T159_6_InterconnectModule_L89F74T148_Expr, InterconnectModule_L89F37T159_7_InterconnectModule_L89F121T148_Expr, InterconnectModule_L89F37T159_7_InterconnectModule_L89F122T148_Index, InterconnectModule_L89F37T159_7_InterconnectModule_L89F74T148_Expr, InterconnectModule_L89F37T159_Enumerable, InterconnectModule_L99F13L109T14_0_InterconnectModule_L102F21L107T22_Object, InterconnectModule_L99F13L109T14_0_InterconnectModule_L104F36T54_Index, InterconnectModule_L99F13L109T14_0_InterconnectModule_L106F36T54_Expr, InterconnectModule_L99F13L109T14_1_InterconnectModule_L102F21L107T22_Object, InterconnectModule_L99F13L109T14_1_InterconnectModule_L104F36T54_Index, InterconnectModule_L99F13L109T14_1_InterconnectModule_L106F36T54_Expr, InterconnectModule_L99F13L109T14_2_InterconnectModule_L102F21L107T22_Object, InterconnectModule_L99F13L109T14_2_InterconnectModule_L104F36T54_Index, InterconnectModule_L99F13L109T14_2_InterconnectModule_L106F36T54_Expr, InterconnectModule_L99F13L109T14_3_InterconnectModule_L102F21L107T22_Object, InterconnectModule_L99F13L109T14_3_InterconnectModule_L104F36T54_Index, InterconnectModule_L99F13L109T14_3_InterconnectModule_L106F36T54_Expr, InterconnectModule_L99F13L109T14_4_InterconnectModule_L102F21L107T22_Object, InterconnectModule_L99F13L109T14_4_InterconnectModule_L104F36T54_Index, InterconnectModule_L99F13L109T14_4_InterconnectModule_L106F36T54_Expr, InterconnectModule_L99F13L109T14_5_InterconnectModule_L102F21L107T22_Object, InterconnectModule_L99F13L109T14_5_InterconnectModule_L104F36T54_Index, InterconnectModule_L99F13L109T14_5_InterconnectModule_L106F36T54_Expr, InterconnectModule_L99F13L109T14_6_InterconnectModule_L102F21L107T22_Object, InterconnectModule_L99F13L109T14_6_InterconnectModule_L104F36T54_Index, InterconnectModule_L99F13L109T14_6_InterconnectModule_L106F36T54_Expr, InterconnectModule_L99F13L109T14_7_InterconnectModule_L102F21L107T22_Object, InterconnectModule_L99F13L109T14_7_InterconnectModule_L104F36T54_Index, InterconnectModule_L99F13L109T14_7_InterconnectModule_L106F36T54_Expr, iRight0_IsActive, iRight0_Payload_Data, iRight0_Payload_DataFlag, iRight1_IsActive, iRight1_Payload_Data, iRight1_Payload_DataFlag, iRight2_IsActive, iRight2_Payload_Data, iRight2_Payload_DataFlag, iRight3_IsActive, iRight3_Payload_Data, iRight3_Payload_DataFlag, muxLeft, muxLeftData_Addr, muxLeftData_IsActive, muxLeftData_Payload_Data, muxLeftData_Payload_DataFlag, muxRight, State_leftAddr, State_leftAddrValid, State_rightAddr, State_rightAddrValid, TransactionDetectors0_iRestart, TransactionDetectors0_iTXBegin, TransactionDetectors0_iTXEnd, TransactionDetectors0_oTransaction, TransactionDetectors0_oTransaction_TransactionDetectors0_oTransaction_HardLink, TransactionDetectors0_oWaitForRestart, TransactionDetectors0_oWaitForRestart_TransactionDetectors0_oWaitForRestart_HardLink, TransactionDetectors1_iRestart, TransactionDetectors1_iTXBegin, TransactionDetectors1_iTXEnd, TransactionDetectors1_oTransaction, TransactionDetectors1_oTransaction_TransactionDetectors1_oTransaction_HardLink, TransactionDetectors1_oWaitForRestart, TransactionDetectors1_oWaitForRestart_TransactionDetectors1_oWaitForRestart_HardLink, TransactionDetectors2_iRestart, TransactionDetectors2_iTXBegin, TransactionDetectors2_iTXEnd, TransactionDetectors2_oTransaction, TransactionDetectors2_oTransaction_TransactionDetectors2_oTransaction_HardLink, TransactionDetectors2_oWaitForRestart, TransactionDetectors2_oWaitForRestart_TransactionDetectors2_oWaitForRestart_HardLink, TransactionDetectors3_iRestart, TransactionDetectors3_iTXBegin, TransactionDetectors3_iTXEnd, TransactionDetectors3_oTransaction, TransactionDetectors3_oTransaction_TransactionDetectors3_oTransaction_HardLink, TransactionDetectors3_oWaitForRestart, TransactionDetectors3_oWaitForRestart_TransactionDetectors3_oWaitForRestart_HardLink, TransactionDetectors4_iRestart, TransactionDetectors4_iTXBegin, TransactionDetectors4_iTXEnd, TransactionDetectors4_oTransaction, TransactionDetectors4_oTransaction_TransactionDetectors4_oTransaction_HardLink, TransactionDetectors4_oWaitForRestart, TransactionDetectors4_oWaitForRestart_TransactionDetectors4_oWaitForRestart_HardLink, TransactionDetectors5_iRestart, TransactionDetectors5_iTXBegin, TransactionDetectors5_iTXEnd, TransactionDetectors5_oTransaction, TransactionDetectors5_oTransaction_TransactionDetectors5_oTransaction_HardLink, TransactionDetectors5_oWaitForRestart, TransactionDetectors5_oWaitForRestart_TransactionDetectors5_oWaitForRestart_HardLink, TransactionDetectors6_iRestart, TransactionDetectors6_iTXBegin, TransactionDetectors6_iTXEnd, TransactionDetectors6_oTransaction, TransactionDetectors6_oTransaction_TransactionDetectors6_oTransaction_HardLink, TransactionDetectors6_oWaitForRestart, TransactionDetectors6_oWaitForRestart_TransactionDetectors6_oWaitForRestart_HardLink, TransactionDetectors7_iRestart, TransactionDetectors7_iTXBegin, TransactionDetectors7_iTXEnd, TransactionDetectors7_oTransaction, TransactionDetectors7_oTransaction_TransactionDetectors7_oTransaction_HardLink, TransactionDetectors7_oWaitForRestart, TransactionDetectors7_oWaitForRestart_TransactionDetectors7_oWaitForRestart_HardLink, Transactions, TXBegin, WaitForRestarts)
+	process (DuplexMux_iLeft, DuplexMux_iLeftAddr, DuplexMux_iLeftAddrValid, DuplexMux_iRight, DuplexMux_iRightAddr, DuplexMux_iRightAddrValid, DuplexMux_oLeft, DuplexMux_oLeft0_DuplexMux_oLeft_HardLink, DuplexMux_oLeft1_DuplexMux_oLeft_HardLink, DuplexMux_oLeft2_DuplexMux_oLeft_HardLink, DuplexMux_oLeft3_DuplexMux_oLeft_HardLink, DuplexMux_oMuxLeftData, DuplexMux_oMuxLeftData_DuplexMux_oMuxLeftData_HardLink, DuplexMux_oMuxRightData, DuplexMux_oMuxRightData_DuplexMux_oMuxRightData_HardLink, DuplexMux_oRight, DuplexMux_oRight0_DuplexMux_oRight_HardLink, DuplexMux_oRight1_DuplexMux_oRight_HardLink, DuplexMux_oRight2_DuplexMux_oRight_HardLink, DuplexMux_oRight3_DuplexMux_oRight_HardLink, DuplexMux_oRight4_DuplexMux_oRight_HardLink, DuplexMux_oRight5_DuplexMux_oRight_HardLink, DuplexMux_oRight6_DuplexMux_oRight_HardLink, DuplexMux_oRight7_DuplexMux_oRight_HardLink, Encoder_HasActive, Encoder_HasActive_Encoder_HasActive_HardLink, Encoder_iValues, Encoder_MSBIndex, Encoder_MSBIndex_Encoder_MSBIndex_HardLink, Encoder_MSBValue_Encoder_MSBValue_HardLink, iLeft0_Addr, iLeft0_IsActive, iLeft0_Payload_Data, iLeft0_Payload_DataFlag, iLeft1_Addr, iLeft1_IsActive, iLeft1_Payload_Data, iLeft1_Payload_DataFlag, iLeft2_Addr, iLeft2_IsActive, iLeft2_Payload_Data, iLeft2_Payload_DataFlag, iLeft3_Addr, iLeft3_IsActive, iLeft3_Payload_Data, iLeft3_Payload_DataFlag, iLeft4_Addr, iLeft4_IsActive, iLeft4_Payload_Data, iLeft4_Payload_DataFlag, iLeft5_Addr, iLeft5_IsActive, iLeft5_Payload_Data, iLeft5_Payload_DataFlag, iLeft6_Addr, iLeft6_IsActive, iLeft6_Payload_Data, iLeft6_Payload_DataFlag, iLeft7_Addr, iLeft7_IsActive, iLeft7_Payload_Data, iLeft7_Payload_DataFlag, Inputs_iLeft, Inputs_iRight, InterconnectModule_L100F13L111T14_0_InterconnectModule_L103F21L109T22_Object, InterconnectModule_L100F13L111T14_0_InterconnectModule_L107F36T54_Expr, InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F35T85_Expr, InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F56T85_Expr, InterconnectModule_L100F13L111T14_1_InterconnectModule_L103F21L109T22_Object, InterconnectModule_L100F13L111T14_1_InterconnectModule_L107F36T54_Expr, InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F35T85_Expr, InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F56T85_Expr, InterconnectModule_L100F13L111T14_2_InterconnectModule_L103F21L109T22_Object, InterconnectModule_L100F13L111T14_2_InterconnectModule_L107F36T54_Expr, InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F35T85_Expr, InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F56T85_Expr, InterconnectModule_L100F13L111T14_3_InterconnectModule_L103F21L109T22_Object, InterconnectModule_L100F13L111T14_3_InterconnectModule_L107F36T54_Expr, InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F35T85_Expr, InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F56T85_Expr, InterconnectModule_L100F13L111T14_4_InterconnectModule_L103F21L109T22_Object, InterconnectModule_L100F13L111T14_4_InterconnectModule_L107F36T54_Expr, InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F35T85_Expr, InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F56T85_Expr, InterconnectModule_L100F13L111T14_5_InterconnectModule_L103F21L109T22_Object, InterconnectModule_L100F13L111T14_5_InterconnectModule_L107F36T54_Expr, InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F35T85_Expr, InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F56T85_Expr, InterconnectModule_L100F13L111T14_6_InterconnectModule_L103F21L109T22_Object, InterconnectModule_L100F13L111T14_6_InterconnectModule_L107F36T54_Expr, InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F35T85_Expr, InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F56T85_Expr, InterconnectModule_L100F13L111T14_7_InterconnectModule_L103F21L109T22_Object, InterconnectModule_L100F13L111T14_7_InterconnectModule_L107F36T54_Expr, InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F35T85_Expr, InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F56T85_Expr, InterconnectModule_L114F17L117T18_Object, InterconnectModule_L121F17L129T18_Object, InterconnectModule_L78F47T105_Enumerable, InterconnectModule_L79F44T105_Enumerable, InterconnectModule_L80F41T99_Enumerable, InterconnectModule_L81F36T108_Enumerable, InterconnectModule_L81F36T108_TransactionDetectors0_InterconnectModule_L81F69T97_Expr, InterconnectModule_L81F36T108_TransactionDetectors1_InterconnectModule_L81F69T97_Expr, InterconnectModule_L81F36T108_TransactionDetectors2_InterconnectModule_L81F69T97_Expr, InterconnectModule_L81F36T108_TransactionDetectors3_InterconnectModule_L81F69T97_Expr, InterconnectModule_L81F36T108_TransactionDetectors4_InterconnectModule_L81F69T97_Expr, InterconnectModule_L81F36T108_TransactionDetectors5_InterconnectModule_L81F69T97_Expr, InterconnectModule_L81F36T108_TransactionDetectors6_InterconnectModule_L81F69T97_Expr, InterconnectModule_L81F36T108_TransactionDetectors7_InterconnectModule_L81F69T97_Expr, iRight0_IsActive, iRight0_Payload_Data, iRight0_Payload_DataFlag, iRight1_IsActive, iRight1_Payload_Data, iRight1_Payload_DataFlag, iRight2_IsActive, iRight2_Payload_Data, iRight2_Payload_DataFlag, iRight3_IsActive, iRight3_Payload_Data, iRight3_Payload_DataFlag, muxLeft, muxLeftData_Addr, muxLeftData_IsActive, muxLeftData_Payload_Data, muxLeftData_Payload_DataFlag, muxRight, State_leftAddr, State_leftAddrValid, State_rightAddr, State_rightAddrValid, TransactionDetectors0_iActive, TransactionDetectors0_iRestart, TransactionDetectors0_iTXBegin, TransactionDetectors0_iTXEnd, TransactionDetectors0_oTransaction, TransactionDetectors0_oTransaction_TransactionDetectors0_oTransaction_HardLink, TransactionDetectors0_oTXBegin, TransactionDetectors0_oTXBegin_TransactionDetectors0_oTXBegin_HardLink, TransactionDetectors0_oWaitForRestart, TransactionDetectors0_oWaitForRestart_TransactionDetectors0_oWaitForRestart_HardLink, TransactionDetectors1_iActive, TransactionDetectors1_iRestart, TransactionDetectors1_iTXBegin, TransactionDetectors1_iTXEnd, TransactionDetectors1_oTransaction, TransactionDetectors1_oTransaction_TransactionDetectors1_oTransaction_HardLink, TransactionDetectors1_oTXBegin, TransactionDetectors1_oTXBegin_TransactionDetectors1_oTXBegin_HardLink, TransactionDetectors1_oWaitForRestart, TransactionDetectors1_oWaitForRestart_TransactionDetectors1_oWaitForRestart_HardLink, TransactionDetectors2_iActive, TransactionDetectors2_iRestart, TransactionDetectors2_iTXBegin, TransactionDetectors2_iTXEnd, TransactionDetectors2_oTransaction, TransactionDetectors2_oTransaction_TransactionDetectors2_oTransaction_HardLink, TransactionDetectors2_oTXBegin, TransactionDetectors2_oTXBegin_TransactionDetectors2_oTXBegin_HardLink, TransactionDetectors2_oWaitForRestart, TransactionDetectors2_oWaitForRestart_TransactionDetectors2_oWaitForRestart_HardLink, TransactionDetectors3_iActive, TransactionDetectors3_iRestart, TransactionDetectors3_iTXBegin, TransactionDetectors3_iTXEnd, TransactionDetectors3_oTransaction, TransactionDetectors3_oTransaction_TransactionDetectors3_oTransaction_HardLink, TransactionDetectors3_oTXBegin, TransactionDetectors3_oTXBegin_TransactionDetectors3_oTXBegin_HardLink, TransactionDetectors3_oWaitForRestart, TransactionDetectors3_oWaitForRestart_TransactionDetectors3_oWaitForRestart_HardLink, TransactionDetectors4_iActive, TransactionDetectors4_iRestart, TransactionDetectors4_iTXBegin, TransactionDetectors4_iTXEnd, TransactionDetectors4_oTransaction, TransactionDetectors4_oTransaction_TransactionDetectors4_oTransaction_HardLink, TransactionDetectors4_oTXBegin, TransactionDetectors4_oTXBegin_TransactionDetectors4_oTXBegin_HardLink, TransactionDetectors4_oWaitForRestart, TransactionDetectors4_oWaitForRestart_TransactionDetectors4_oWaitForRestart_HardLink, TransactionDetectors5_iActive, TransactionDetectors5_iRestart, TransactionDetectors5_iTXBegin, TransactionDetectors5_iTXEnd, TransactionDetectors5_oTransaction, TransactionDetectors5_oTransaction_TransactionDetectors5_oTransaction_HardLink, TransactionDetectors5_oTXBegin, TransactionDetectors5_oTXBegin_TransactionDetectors5_oTXBegin_HardLink, TransactionDetectors5_oWaitForRestart, TransactionDetectors5_oWaitForRestart_TransactionDetectors5_oWaitForRestart_HardLink, TransactionDetectors6_iActive, TransactionDetectors6_iRestart, TransactionDetectors6_iTXBegin, TransactionDetectors6_iTXEnd, TransactionDetectors6_oTransaction, TransactionDetectors6_oTransaction_TransactionDetectors6_oTransaction_HardLink, TransactionDetectors6_oTXBegin, TransactionDetectors6_oTXBegin_TransactionDetectors6_oTXBegin_HardLink, TransactionDetectors6_oWaitForRestart, TransactionDetectors6_oWaitForRestart_TransactionDetectors6_oWaitForRestart_HardLink, TransactionDetectors7_iActive, TransactionDetectors7_iRestart, TransactionDetectors7_iTXBegin, TransactionDetectors7_iTXEnd, TransactionDetectors7_oTransaction, TransactionDetectors7_oTransaction_TransactionDetectors7_oTransaction_HardLink, TransactionDetectors7_oTXBegin, TransactionDetectors7_oTXBegin_TransactionDetectors7_oTXBegin_HardLink, TransactionDetectors7_oWaitForRestart, TransactionDetectors7_oWaitForRestart_TransactionDetectors7_oWaitForRestart_HardLink, Transactions, TXBegin, WaitForRestarts)
 	begin
-		InterconnectModule_L89F37T159_0_InterconnectModule_L89F74T148_Expr_1 <= Inputs_iLeft(0)(2);
-		InterconnectModule_L89F37T159_0_InterconnectModule_L89F74T148_Expr_2 <= InterconnectModule_L89F37T159_0_InterconnectModule_L89F121T148_Expr;
-		InterconnectModule_L89F37T159_0_InterconnectModule_L89F121T148_Expr_1 <= InterconnectModule_L89F37T159_0_InterconnectModule_L89F122T148_Index;
-		InterconnectModule_L89F37T159_1_InterconnectModule_L89F74T148_Expr_1 <= Inputs_iLeft(1)(2);
-		InterconnectModule_L89F37T159_1_InterconnectModule_L89F74T148_Expr_2 <= InterconnectModule_L89F37T159_1_InterconnectModule_L89F121T148_Expr;
-		InterconnectModule_L89F37T159_1_InterconnectModule_L89F121T148_Expr_1 <= InterconnectModule_L89F37T159_1_InterconnectModule_L89F122T148_Index;
-		InterconnectModule_L89F37T159_2_InterconnectModule_L89F74T148_Expr_1 <= Inputs_iLeft(2)(2);
-		InterconnectModule_L89F37T159_2_InterconnectModule_L89F74T148_Expr_2 <= InterconnectModule_L89F37T159_2_InterconnectModule_L89F121T148_Expr;
-		InterconnectModule_L89F37T159_2_InterconnectModule_L89F121T148_Expr_1 <= InterconnectModule_L89F37T159_2_InterconnectModule_L89F122T148_Index;
-		InterconnectModule_L89F37T159_3_InterconnectModule_L89F74T148_Expr_1 <= Inputs_iLeft(3)(2);
-		InterconnectModule_L89F37T159_3_InterconnectModule_L89F74T148_Expr_2 <= InterconnectModule_L89F37T159_3_InterconnectModule_L89F121T148_Expr;
-		InterconnectModule_L89F37T159_3_InterconnectModule_L89F121T148_Expr_1 <= InterconnectModule_L89F37T159_3_InterconnectModule_L89F122T148_Index;
-		InterconnectModule_L89F37T159_4_InterconnectModule_L89F74T148_Expr_1 <= Inputs_iLeft(4)(2);
-		InterconnectModule_L89F37T159_4_InterconnectModule_L89F74T148_Expr_2 <= InterconnectModule_L89F37T159_4_InterconnectModule_L89F121T148_Expr;
-		InterconnectModule_L89F37T159_4_InterconnectModule_L89F121T148_Expr_1 <= InterconnectModule_L89F37T159_4_InterconnectModule_L89F122T148_Index;
-		InterconnectModule_L89F37T159_5_InterconnectModule_L89F74T148_Expr_1 <= Inputs_iLeft(5)(2);
-		InterconnectModule_L89F37T159_5_InterconnectModule_L89F74T148_Expr_2 <= InterconnectModule_L89F37T159_5_InterconnectModule_L89F121T148_Expr;
-		InterconnectModule_L89F37T159_5_InterconnectModule_L89F121T148_Expr_1 <= InterconnectModule_L89F37T159_5_InterconnectModule_L89F122T148_Index;
-		InterconnectModule_L89F37T159_6_InterconnectModule_L89F74T148_Expr_1 <= Inputs_iLeft(6)(2);
-		InterconnectModule_L89F37T159_6_InterconnectModule_L89F74T148_Expr_2 <= InterconnectModule_L89F37T159_6_InterconnectModule_L89F121T148_Expr;
-		InterconnectModule_L89F37T159_6_InterconnectModule_L89F121T148_Expr_1 <= InterconnectModule_L89F37T159_6_InterconnectModule_L89F122T148_Index;
-		InterconnectModule_L89F37T159_7_InterconnectModule_L89F74T148_Expr_1 <= Inputs_iLeft(7)(2);
-		InterconnectModule_L89F37T159_7_InterconnectModule_L89F74T148_Expr_2 <= InterconnectModule_L89F37T159_7_InterconnectModule_L89F121T148_Expr;
-		InterconnectModule_L89F37T159_7_InterconnectModule_L89F121T148_Expr_1 <= InterconnectModule_L89F37T159_7_InterconnectModule_L89F122T148_Index;
-		InterconnectModule_L99F13L109T14_0_InterconnectModule_L106F36T54_Expr_1 <= Encoder_HasActive;
-		InterconnectModule_L99F13L109T14_1_InterconnectModule_L106F36T54_Expr_1 <= Encoder_HasActive;
-		InterconnectModule_L99F13L109T14_2_InterconnectModule_L106F36T54_Expr_1 <= Encoder_HasActive;
-		InterconnectModule_L99F13L109T14_3_InterconnectModule_L106F36T54_Expr_1 <= Encoder_HasActive;
-		InterconnectModule_L99F13L109T14_4_InterconnectModule_L106F36T54_Expr_1 <= Encoder_HasActive;
-		InterconnectModule_L99F13L109T14_5_InterconnectModule_L106F36T54_Expr_1 <= Encoder_HasActive;
-		InterconnectModule_L99F13L109T14_6_InterconnectModule_L106F36T54_Expr_1 <= Encoder_HasActive;
-		InterconnectModule_L99F13L109T14_7_InterconnectModule_L106F36T54_Expr_1 <= Encoder_HasActive;
+		InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F56T85_ExprLhs(3) <= '0';
+		InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F56T85_ExprLhs(2 downto 0) <= signed(Encoder_MSBIndex);
+		InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F56T85_ExprRhs(3 downto 1) <= (
+			others => '0'
+		)
+		;
+		InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F56T85_ExprRhs(0) <= InterconnectModule_L100F13L111T14_0_leftIndex;
+		InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F56T85_ExprLhs(3) <= '0';
+		InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F56T85_ExprLhs(2 downto 0) <= signed(Encoder_MSBIndex);
+		InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F56T85_ExprRhs(3 downto 1) <= (
+			others => '0'
+		)
+		;
+		InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F56T85_ExprRhs(0) <= InterconnectModule_L100F13L111T14_1_leftIndex;
+		InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F56T85_ExprLhs(3) <= '0';
+		InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F56T85_ExprLhs(2 downto 0) <= signed(Encoder_MSBIndex);
+		InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F56T85_ExprRhs(3 downto 2) <= (
+			others => '0'
+		)
+		;
+		InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F56T85_ExprRhs(1 downto 0) <= signed(InterconnectModule_L100F13L111T14_2_leftIndex);
+		InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F56T85_ExprLhs(3) <= '0';
+		InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F56T85_ExprLhs(2 downto 0) <= signed(Encoder_MSBIndex);
+		InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F56T85_ExprRhs(3 downto 2) <= (
+			others => '0'
+		)
+		;
+		InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F56T85_ExprRhs(1 downto 0) <= signed(InterconnectModule_L100F13L111T14_3_leftIndex);
+		InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F56T85_ExprLhs(3) <= '0';
+		InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F56T85_ExprLhs(2 downto 0) <= signed(Encoder_MSBIndex);
+		InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F56T85_ExprRhs(3) <= '0';
+		InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F56T85_ExprRhs(2 downto 0) <= signed(InterconnectModule_L100F13L111T14_4_leftIndex);
+		InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F56T85_ExprLhs(3) <= '0';
+		InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F56T85_ExprLhs(2 downto 0) <= signed(Encoder_MSBIndex);
+		InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F56T85_ExprRhs(3) <= '0';
+		InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F56T85_ExprRhs(2 downto 0) <= signed(InterconnectModule_L100F13L111T14_5_leftIndex);
+		InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F56T85_ExprLhs(3) <= '0';
+		InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F56T85_ExprLhs(2 downto 0) <= signed(Encoder_MSBIndex);
+		InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F56T85_ExprRhs(3) <= '0';
+		InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F56T85_ExprRhs(2 downto 0) <= signed(InterconnectModule_L100F13L111T14_6_leftIndex);
+		InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F56T85_ExprLhs(3) <= '0';
+		InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F56T85_ExprLhs(2 downto 0) <= signed(Encoder_MSBIndex);
+		InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F56T85_ExprRhs(3) <= '0';
+		InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F56T85_ExprRhs(2 downto 0) <= signed(InterconnectModule_L100F13L111T14_7_leftIndex);
+		InterconnectModule_L81F36T108_TransactionDetectors0_InterconnectModule_L81F69T97_Expr_1(7 downto 1) <= (
+			others => '0'
+		)
+		;
+		InterconnectModule_L81F36T108_TransactionDetectors0_InterconnectModule_L81F69T97_Expr_1(0) <= TransactionDetectors0_oTXBegin;
+		InterconnectModule_L81F36T108_TransactionDetectors0_InterconnectModule_L81F69T97_Expr_2(7 downto 1) <= (
+			others => '0'
+		)
+		;
+		InterconnectModule_L81F36T108_TransactionDetectors0_InterconnectModule_L81F69T97_Expr_2(0) <= TransactionDetectors0_oTransaction;
+		InterconnectModule_L81F36T108_TransactionDetectors1_InterconnectModule_L81F69T97_Expr_1(7 downto 1) <= (
+			others => '0'
+		)
+		;
+		InterconnectModule_L81F36T108_TransactionDetectors1_InterconnectModule_L81F69T97_Expr_1(0) <= TransactionDetectors1_oTXBegin;
+		InterconnectModule_L81F36T108_TransactionDetectors1_InterconnectModule_L81F69T97_Expr_2(7 downto 1) <= (
+			others => '0'
+		)
+		;
+		InterconnectModule_L81F36T108_TransactionDetectors1_InterconnectModule_L81F69T97_Expr_2(0) <= TransactionDetectors1_oTransaction;
+		InterconnectModule_L81F36T108_TransactionDetectors2_InterconnectModule_L81F69T97_Expr_1(7 downto 1) <= (
+			others => '0'
+		)
+		;
+		InterconnectModule_L81F36T108_TransactionDetectors2_InterconnectModule_L81F69T97_Expr_1(0) <= TransactionDetectors2_oTXBegin;
+		InterconnectModule_L81F36T108_TransactionDetectors2_InterconnectModule_L81F69T97_Expr_2(7 downto 1) <= (
+			others => '0'
+		)
+		;
+		InterconnectModule_L81F36T108_TransactionDetectors2_InterconnectModule_L81F69T97_Expr_2(0) <= TransactionDetectors2_oTransaction;
+		InterconnectModule_L81F36T108_TransactionDetectors3_InterconnectModule_L81F69T97_Expr_1(7 downto 1) <= (
+			others => '0'
+		)
+		;
+		InterconnectModule_L81F36T108_TransactionDetectors3_InterconnectModule_L81F69T97_Expr_1(0) <= TransactionDetectors3_oTXBegin;
+		InterconnectModule_L81F36T108_TransactionDetectors3_InterconnectModule_L81F69T97_Expr_2(7 downto 1) <= (
+			others => '0'
+		)
+		;
+		InterconnectModule_L81F36T108_TransactionDetectors3_InterconnectModule_L81F69T97_Expr_2(0) <= TransactionDetectors3_oTransaction;
+		InterconnectModule_L81F36T108_TransactionDetectors4_InterconnectModule_L81F69T97_Expr_1(7 downto 1) <= (
+			others => '0'
+		)
+		;
+		InterconnectModule_L81F36T108_TransactionDetectors4_InterconnectModule_L81F69T97_Expr_1(0) <= TransactionDetectors4_oTXBegin;
+		InterconnectModule_L81F36T108_TransactionDetectors4_InterconnectModule_L81F69T97_Expr_2(7 downto 1) <= (
+			others => '0'
+		)
+		;
+		InterconnectModule_L81F36T108_TransactionDetectors4_InterconnectModule_L81F69T97_Expr_2(0) <= TransactionDetectors4_oTransaction;
+		InterconnectModule_L81F36T108_TransactionDetectors5_InterconnectModule_L81F69T97_Expr_1(7 downto 1) <= (
+			others => '0'
+		)
+		;
+		InterconnectModule_L81F36T108_TransactionDetectors5_InterconnectModule_L81F69T97_Expr_1(0) <= TransactionDetectors5_oTXBegin;
+		InterconnectModule_L81F36T108_TransactionDetectors5_InterconnectModule_L81F69T97_Expr_2(7 downto 1) <= (
+			others => '0'
+		)
+		;
+		InterconnectModule_L81F36T108_TransactionDetectors5_InterconnectModule_L81F69T97_Expr_2(0) <= TransactionDetectors5_oTransaction;
+		InterconnectModule_L81F36T108_TransactionDetectors6_InterconnectModule_L81F69T97_Expr_1(7 downto 1) <= (
+			others => '0'
+		)
+		;
+		InterconnectModule_L81F36T108_TransactionDetectors6_InterconnectModule_L81F69T97_Expr_1(0) <= TransactionDetectors6_oTXBegin;
+		InterconnectModule_L81F36T108_TransactionDetectors6_InterconnectModule_L81F69T97_Expr_2(7 downto 1) <= (
+			others => '0'
+		)
+		;
+		InterconnectModule_L81F36T108_TransactionDetectors6_InterconnectModule_L81F69T97_Expr_2(0) <= TransactionDetectors6_oTransaction;
+		InterconnectModule_L81F36T108_TransactionDetectors7_InterconnectModule_L81F69T97_Expr_1(7 downto 1) <= (
+			others => '0'
+		)
+		;
+		InterconnectModule_L81F36T108_TransactionDetectors7_InterconnectModule_L81F69T97_Expr_1(0) <= TransactionDetectors7_oTXBegin;
+		InterconnectModule_L81F36T108_TransactionDetectors7_InterconnectModule_L81F69T97_Expr_2(7 downto 1) <= (
+			others => '0'
+		)
+		;
+		InterconnectModule_L81F36T108_TransactionDetectors7_InterconnectModule_L81F69T97_Expr_2(0) <= TransactionDetectors7_oTransaction;
+		InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F35T85_Expr_1 <= Encoder_HasActive;
+		InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F35T85_Expr_2 <= InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F56T85_Expr;
+		InterconnectModule_L100F13L111T14_0_InterconnectModule_L107F36T54_Expr_1 <= Encoder_HasActive;
+		InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F35T85_Expr_1 <= Encoder_HasActive;
+		InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F35T85_Expr_2 <= InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F56T85_Expr;
+		InterconnectModule_L100F13L111T14_1_InterconnectModule_L107F36T54_Expr_1 <= Encoder_HasActive;
+		InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F35T85_Expr_1 <= Encoder_HasActive;
+		InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F35T85_Expr_2 <= InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F56T85_Expr;
+		InterconnectModule_L100F13L111T14_2_InterconnectModule_L107F36T54_Expr_1 <= Encoder_HasActive;
+		InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F35T85_Expr_1 <= Encoder_HasActive;
+		InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F35T85_Expr_2 <= InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F56T85_Expr;
+		InterconnectModule_L100F13L111T14_3_InterconnectModule_L107F36T54_Expr_1 <= Encoder_HasActive;
+		InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F35T85_Expr_1 <= Encoder_HasActive;
+		InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F35T85_Expr_2 <= InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F56T85_Expr;
+		InterconnectModule_L100F13L111T14_4_InterconnectModule_L107F36T54_Expr_1 <= Encoder_HasActive;
+		InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F35T85_Expr_1 <= Encoder_HasActive;
+		InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F35T85_Expr_2 <= InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F56T85_Expr;
+		InterconnectModule_L100F13L111T14_5_InterconnectModule_L107F36T54_Expr_1 <= Encoder_HasActive;
+		InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F35T85_Expr_1 <= Encoder_HasActive;
+		InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F35T85_Expr_2 <= InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F56T85_Expr;
+		InterconnectModule_L100F13L111T14_6_InterconnectModule_L107F36T54_Expr_1 <= Encoder_HasActive;
+		InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F35T85_Expr_1 <= Encoder_HasActive;
+		InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F35T85_Expr_2 <= InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F56T85_Expr;
+		InterconnectModule_L100F13L111T14_7_InterconnectModule_L107F36T54_Expr_1 <= Encoder_HasActive;
 		Inputs_iLeft(0)(11) <= iLeft0_Payload_DataFlag;
 		Inputs_iLeft(0)(10 downto 3) <= iLeft0_Payload_Data;
 		Inputs_iLeft(0)(2) <= iLeft0_IsActive;
@@ -796,22 +984,22 @@ begin
 		Inputs_iRight(3)(9) <= iRight3_Payload_DataFlag;
 		Inputs_iRight(3)(8 downto 1) <= iRight3_Payload_Data;
 		Inputs_iRight(3)(0) <= iRight3_IsActive;
-		InterconnectModule_L78F48T106_Enumerable(0) <= TransactionDetectors0_oTransaction;
-		InterconnectModule_L78F48T106_Enumerable(1) <= TransactionDetectors1_oTransaction;
-		InterconnectModule_L78F48T106_Enumerable(2) <= TransactionDetectors2_oTransaction;
-		InterconnectModule_L78F48T106_Enumerable(3) <= TransactionDetectors3_oTransaction;
-		InterconnectModule_L78F48T106_Enumerable(4) <= TransactionDetectors4_oTransaction;
-		InterconnectModule_L78F48T106_Enumerable(5) <= TransactionDetectors5_oTransaction;
-		InterconnectModule_L78F48T106_Enumerable(6) <= TransactionDetectors6_oTransaction;
-		InterconnectModule_L78F48T106_Enumerable(7) <= TransactionDetectors7_oTransaction;
-		ActiveTransactions(0) <= InterconnectModule_L78F48T106_Enumerable(0);
-		ActiveTransactions(1) <= InterconnectModule_L78F48T106_Enumerable(1);
-		ActiveTransactions(2) <= InterconnectModule_L78F48T106_Enumerable(2);
-		ActiveTransactions(3) <= InterconnectModule_L78F48T106_Enumerable(3);
-		ActiveTransactions(4) <= InterconnectModule_L78F48T106_Enumerable(4);
-		ActiveTransactions(5) <= InterconnectModule_L78F48T106_Enumerable(5);
-		ActiveTransactions(6) <= InterconnectModule_L78F48T106_Enumerable(6);
-		ActiveTransactions(7) <= InterconnectModule_L78F48T106_Enumerable(7);
+		InterconnectModule_L78F47T105_Enumerable(0) <= TransactionDetectors0_oTransaction;
+		InterconnectModule_L78F47T105_Enumerable(1) <= TransactionDetectors1_oTransaction;
+		InterconnectModule_L78F47T105_Enumerable(2) <= TransactionDetectors2_oTransaction;
+		InterconnectModule_L78F47T105_Enumerable(3) <= TransactionDetectors3_oTransaction;
+		InterconnectModule_L78F47T105_Enumerable(4) <= TransactionDetectors4_oTransaction;
+		InterconnectModule_L78F47T105_Enumerable(5) <= TransactionDetectors5_oTransaction;
+		InterconnectModule_L78F47T105_Enumerable(6) <= TransactionDetectors6_oTransaction;
+		InterconnectModule_L78F47T105_Enumerable(7) <= TransactionDetectors7_oTransaction;
+		ActiveTransactions(0) <= InterconnectModule_L78F47T105_Enumerable(0);
+		ActiveTransactions(1) <= InterconnectModule_L78F47T105_Enumerable(1);
+		ActiveTransactions(2) <= InterconnectModule_L78F47T105_Enumerable(2);
+		ActiveTransactions(3) <= InterconnectModule_L78F47T105_Enumerable(3);
+		ActiveTransactions(4) <= InterconnectModule_L78F47T105_Enumerable(4);
+		ActiveTransactions(5) <= InterconnectModule_L78F47T105_Enumerable(5);
+		ActiveTransactions(6) <= InterconnectModule_L78F47T105_Enumerable(6);
+		ActiveTransactions(7) <= InterconnectModule_L78F47T105_Enumerable(7);
 		currentTXEnd <= Inputs_iLeft(TO_INTEGER(State_leftAddr))(11);
 		muxLeft(0) <= DuplexMux_oLeft(0);
 		muxLeft(1) <= DuplexMux_oLeft(1);
@@ -833,150 +1021,166 @@ begin
 		muxRightData_Payload_Data <= DuplexMux_oMuxRightData(8 downto 1);
 		muxRightData_Payload_DataFlag <= DuplexMux_oMuxRightData(9);
 		rightAddr <= muxLeftData_Addr;
-		InterconnectModule_L80F42T100_Enumerable(0) <= TransactionDetectors0_oTransaction;
-		InterconnectModule_L80F42T100_Enumerable(1) <= TransactionDetectors1_oTransaction;
-		InterconnectModule_L80F42T100_Enumerable(2) <= TransactionDetectors2_oTransaction;
-		InterconnectModule_L80F42T100_Enumerable(3) <= TransactionDetectors3_oTransaction;
-		InterconnectModule_L80F42T100_Enumerable(4) <= TransactionDetectors4_oTransaction;
-		InterconnectModule_L80F42T100_Enumerable(5) <= TransactionDetectors5_oTransaction;
-		InterconnectModule_L80F42T100_Enumerable(6) <= TransactionDetectors6_oTransaction;
-		InterconnectModule_L80F42T100_Enumerable(7) <= TransactionDetectors7_oTransaction;
-		Transactions(0) <= InterconnectModule_L80F42T100_Enumerable(0);
-		Transactions(1) <= InterconnectModule_L80F42T100_Enumerable(1);
-		Transactions(2) <= InterconnectModule_L80F42T100_Enumerable(2);
-		Transactions(3) <= InterconnectModule_L80F42T100_Enumerable(3);
-		Transactions(4) <= InterconnectModule_L80F42T100_Enumerable(4);
-		Transactions(5) <= InterconnectModule_L80F42T100_Enumerable(5);
-		Transactions(6) <= InterconnectModule_L80F42T100_Enumerable(6);
-		Transactions(7) <= InterconnectModule_L80F42T100_Enumerable(7);
-		InterconnectModule_L89F37T159_Enumerable(0)(0) <= InterconnectModule_L89F37T159_0_InterconnectModule_L89F74T148_Expr;
-		InterconnectModule_L89F37T159_Enumerable(1)(0) <= InterconnectModule_L89F37T159_1_InterconnectModule_L89F74T148_Expr;
-		InterconnectModule_L89F37T159_Enumerable(2)(0) <= InterconnectModule_L89F37T159_2_InterconnectModule_L89F74T148_Expr;
-		InterconnectModule_L89F37T159_Enumerable(3)(0) <= InterconnectModule_L89F37T159_3_InterconnectModule_L89F74T148_Expr;
-		InterconnectModule_L89F37T159_Enumerable(4)(0) <= InterconnectModule_L89F37T159_4_InterconnectModule_L89F74T148_Expr;
-		InterconnectModule_L89F37T159_Enumerable(5)(0) <= InterconnectModule_L89F37T159_5_InterconnectModule_L89F74T148_Expr;
-		InterconnectModule_L89F37T159_Enumerable(6)(0) <= InterconnectModule_L89F37T159_6_InterconnectModule_L89F74T148_Expr;
-		InterconnectModule_L89F37T159_Enumerable(7)(0) <= InterconnectModule_L89F37T159_7_InterconnectModule_L89F74T148_Expr;
-		TXBegin(0) <= InterconnectModule_L89F37T159_Enumerable(0)(0);
-		TXBegin(1) <= InterconnectModule_L89F37T159_Enumerable(1)(0);
-		TXBegin(2) <= InterconnectModule_L89F37T159_Enumerable(2)(0);
-		TXBegin(3) <= InterconnectModule_L89F37T159_Enumerable(3)(0);
-		TXBegin(4) <= InterconnectModule_L89F37T159_Enumerable(4)(0);
-		TXBegin(5) <= InterconnectModule_L89F37T159_Enumerable(5)(0);
-		TXBegin(6) <= InterconnectModule_L89F37T159_Enumerable(6)(0);
-		TXBegin(7) <= InterconnectModule_L89F37T159_Enumerable(7)(0);
-		InterconnectModule_L79F45T106_Enumerable(0) <= TransactionDetectors0_oWaitForRestart;
-		InterconnectModule_L79F45T106_Enumerable(1) <= TransactionDetectors1_oWaitForRestart;
-		InterconnectModule_L79F45T106_Enumerable(2) <= TransactionDetectors2_oWaitForRestart;
-		InterconnectModule_L79F45T106_Enumerable(3) <= TransactionDetectors3_oWaitForRestart;
-		InterconnectModule_L79F45T106_Enumerable(4) <= TransactionDetectors4_oWaitForRestart;
-		InterconnectModule_L79F45T106_Enumerable(5) <= TransactionDetectors5_oWaitForRestart;
-		InterconnectModule_L79F45T106_Enumerable(6) <= TransactionDetectors6_oWaitForRestart;
-		InterconnectModule_L79F45T106_Enumerable(7) <= TransactionDetectors7_oWaitForRestart;
-		WaitForRestarts(0) <= InterconnectModule_L79F45T106_Enumerable(0);
-		WaitForRestarts(1) <= InterconnectModule_L79F45T106_Enumerable(1);
-		WaitForRestarts(2) <= InterconnectModule_L79F45T106_Enumerable(2);
-		WaitForRestarts(3) <= InterconnectModule_L79F45T106_Enumerable(3);
-		WaitForRestarts(4) <= InterconnectModule_L79F45T106_Enumerable(4);
-		WaitForRestarts(5) <= InterconnectModule_L79F45T106_Enumerable(5);
-		WaitForRestarts(6) <= InterconnectModule_L79F45T106_Enumerable(6);
-		WaitForRestarts(7) <= InterconnectModule_L79F45T106_Enumerable(7);
-		InterconnectModule_L99F13L109T14_0_InterconnectModule_L102F21L107T22_Object(0) <= InterconnectModule_L99F13L109T14_0_InterconnectModule_L106F36T54_Expr;
-		InterconnectModule_L99F13L109T14_0_InterconnectModule_L102F21L107T22_Object(1) <= InterconnectModule_L99F13L109T14_0_InterconnectModule_L104F36T54_Index;
-		InterconnectModule_L99F13L109T14_0_InterconnectModule_L102F21L107T22_Object(2) <= Inputs_iLeft(0)(11);
-		TransactionDetectors0_iTXEnd <= InterconnectModule_L99F13L109T14_0_InterconnectModule_L102F21L107T22_Object(2);
-		TransactionDetectors0_iTXBegin <= InterconnectModule_L99F13L109T14_0_InterconnectModule_L102F21L107T22_Object(1);
-		TransactionDetectors0_iRestart <= InterconnectModule_L99F13L109T14_0_InterconnectModule_L102F21L107T22_Object(0);
-		InterconnectModule_L99F13L109T14_1_InterconnectModule_L102F21L107T22_Object(0) <= InterconnectModule_L99F13L109T14_1_InterconnectModule_L106F36T54_Expr;
-		InterconnectModule_L99F13L109T14_1_InterconnectModule_L102F21L107T22_Object(1) <= InterconnectModule_L99F13L109T14_1_InterconnectModule_L104F36T54_Index;
-		InterconnectModule_L99F13L109T14_1_InterconnectModule_L102F21L107T22_Object(2) <= Inputs_iLeft(1)(11);
-		TransactionDetectors1_iTXEnd <= InterconnectModule_L99F13L109T14_1_InterconnectModule_L102F21L107T22_Object(2);
-		TransactionDetectors1_iTXBegin <= InterconnectModule_L99F13L109T14_1_InterconnectModule_L102F21L107T22_Object(1);
-		TransactionDetectors1_iRestart <= InterconnectModule_L99F13L109T14_1_InterconnectModule_L102F21L107T22_Object(0);
-		InterconnectModule_L99F13L109T14_2_InterconnectModule_L102F21L107T22_Object(0) <= InterconnectModule_L99F13L109T14_2_InterconnectModule_L106F36T54_Expr;
-		InterconnectModule_L99F13L109T14_2_InterconnectModule_L102F21L107T22_Object(1) <= InterconnectModule_L99F13L109T14_2_InterconnectModule_L104F36T54_Index;
-		InterconnectModule_L99F13L109T14_2_InterconnectModule_L102F21L107T22_Object(2) <= Inputs_iLeft(2)(11);
-		TransactionDetectors2_iTXEnd <= InterconnectModule_L99F13L109T14_2_InterconnectModule_L102F21L107T22_Object(2);
-		TransactionDetectors2_iTXBegin <= InterconnectModule_L99F13L109T14_2_InterconnectModule_L102F21L107T22_Object(1);
-		TransactionDetectors2_iRestart <= InterconnectModule_L99F13L109T14_2_InterconnectModule_L102F21L107T22_Object(0);
-		InterconnectModule_L99F13L109T14_3_InterconnectModule_L102F21L107T22_Object(0) <= InterconnectModule_L99F13L109T14_3_InterconnectModule_L106F36T54_Expr;
-		InterconnectModule_L99F13L109T14_3_InterconnectModule_L102F21L107T22_Object(1) <= InterconnectModule_L99F13L109T14_3_InterconnectModule_L104F36T54_Index;
-		InterconnectModule_L99F13L109T14_3_InterconnectModule_L102F21L107T22_Object(2) <= Inputs_iLeft(3)(11);
-		TransactionDetectors3_iTXEnd <= InterconnectModule_L99F13L109T14_3_InterconnectModule_L102F21L107T22_Object(2);
-		TransactionDetectors3_iTXBegin <= InterconnectModule_L99F13L109T14_3_InterconnectModule_L102F21L107T22_Object(1);
-		TransactionDetectors3_iRestart <= InterconnectModule_L99F13L109T14_3_InterconnectModule_L102F21L107T22_Object(0);
-		InterconnectModule_L99F13L109T14_4_InterconnectModule_L102F21L107T22_Object(0) <= InterconnectModule_L99F13L109T14_4_InterconnectModule_L106F36T54_Expr;
-		InterconnectModule_L99F13L109T14_4_InterconnectModule_L102F21L107T22_Object(1) <= InterconnectModule_L99F13L109T14_4_InterconnectModule_L104F36T54_Index;
-		InterconnectModule_L99F13L109T14_4_InterconnectModule_L102F21L107T22_Object(2) <= Inputs_iLeft(4)(11);
-		TransactionDetectors4_iTXEnd <= InterconnectModule_L99F13L109T14_4_InterconnectModule_L102F21L107T22_Object(2);
-		TransactionDetectors4_iTXBegin <= InterconnectModule_L99F13L109T14_4_InterconnectModule_L102F21L107T22_Object(1);
-		TransactionDetectors4_iRestart <= InterconnectModule_L99F13L109T14_4_InterconnectModule_L102F21L107T22_Object(0);
-		InterconnectModule_L99F13L109T14_5_InterconnectModule_L102F21L107T22_Object(0) <= InterconnectModule_L99F13L109T14_5_InterconnectModule_L106F36T54_Expr;
-		InterconnectModule_L99F13L109T14_5_InterconnectModule_L102F21L107T22_Object(1) <= InterconnectModule_L99F13L109T14_5_InterconnectModule_L104F36T54_Index;
-		InterconnectModule_L99F13L109T14_5_InterconnectModule_L102F21L107T22_Object(2) <= Inputs_iLeft(5)(11);
-		TransactionDetectors5_iTXEnd <= InterconnectModule_L99F13L109T14_5_InterconnectModule_L102F21L107T22_Object(2);
-		TransactionDetectors5_iTXBegin <= InterconnectModule_L99F13L109T14_5_InterconnectModule_L102F21L107T22_Object(1);
-		TransactionDetectors5_iRestart <= InterconnectModule_L99F13L109T14_5_InterconnectModule_L102F21L107T22_Object(0);
-		InterconnectModule_L99F13L109T14_6_InterconnectModule_L102F21L107T22_Object(0) <= InterconnectModule_L99F13L109T14_6_InterconnectModule_L106F36T54_Expr;
-		InterconnectModule_L99F13L109T14_6_InterconnectModule_L102F21L107T22_Object(1) <= InterconnectModule_L99F13L109T14_6_InterconnectModule_L104F36T54_Index;
-		InterconnectModule_L99F13L109T14_6_InterconnectModule_L102F21L107T22_Object(2) <= Inputs_iLeft(6)(11);
-		TransactionDetectors6_iTXEnd <= InterconnectModule_L99F13L109T14_6_InterconnectModule_L102F21L107T22_Object(2);
-		TransactionDetectors6_iTXBegin <= InterconnectModule_L99F13L109T14_6_InterconnectModule_L102F21L107T22_Object(1);
-		TransactionDetectors6_iRestart <= InterconnectModule_L99F13L109T14_6_InterconnectModule_L102F21L107T22_Object(0);
-		InterconnectModule_L99F13L109T14_7_InterconnectModule_L102F21L107T22_Object(0) <= InterconnectModule_L99F13L109T14_7_InterconnectModule_L106F36T54_Expr;
-		InterconnectModule_L99F13L109T14_7_InterconnectModule_L102F21L107T22_Object(1) <= InterconnectModule_L99F13L109T14_7_InterconnectModule_L104F36T54_Index;
-		InterconnectModule_L99F13L109T14_7_InterconnectModule_L102F21L107T22_Object(2) <= Inputs_iLeft(7)(11);
-		TransactionDetectors7_iTXEnd <= InterconnectModule_L99F13L109T14_7_InterconnectModule_L102F21L107T22_Object(2);
-		TransactionDetectors7_iTXBegin <= InterconnectModule_L99F13L109T14_7_InterconnectModule_L102F21L107T22_Object(1);
-		TransactionDetectors7_iRestart <= InterconnectModule_L99F13L109T14_7_InterconnectModule_L102F21L107T22_Object(0);
-		InterconnectModule_L112F17L115T18_Object(7) <= TXBegin(7);
-		InterconnectModule_L112F17L115T18_Object(6) <= TXBegin(6);
-		InterconnectModule_L112F17L115T18_Object(5) <= TXBegin(5);
-		InterconnectModule_L112F17L115T18_Object(4) <= TXBegin(4);
-		InterconnectModule_L112F17L115T18_Object(3) <= TXBegin(3);
-		InterconnectModule_L112F17L115T18_Object(2) <= TXBegin(2);
-		InterconnectModule_L112F17L115T18_Object(1) <= TXBegin(1);
-		InterconnectModule_L112F17L115T18_Object(0) <= TXBegin(0);
-		Encoder_iValues(7) <= InterconnectModule_L112F17L115T18_Object(7);
-		Encoder_iValues(6) <= InterconnectModule_L112F17L115T18_Object(6);
-		Encoder_iValues(5) <= InterconnectModule_L112F17L115T18_Object(5);
-		Encoder_iValues(4) <= InterconnectModule_L112F17L115T18_Object(4);
-		Encoder_iValues(3) <= InterconnectModule_L112F17L115T18_Object(3);
-		Encoder_iValues(2) <= InterconnectModule_L112F17L115T18_Object(2);
-		Encoder_iValues(1) <= InterconnectModule_L112F17L115T18_Object(1);
-		Encoder_iValues(0) <= InterconnectModule_L112F17L115T18_Object(0);
-		InterconnectModule_L119F17L127T18_Object(95 downto 84) <= Inputs_iLeft(7);
-		InterconnectModule_L119F17L127T18_Object(83 downto 72) <= Inputs_iLeft(6);
-		InterconnectModule_L119F17L127T18_Object(71 downto 60) <= Inputs_iLeft(5);
-		InterconnectModule_L119F17L127T18_Object(59 downto 48) <= Inputs_iLeft(4);
-		InterconnectModule_L119F17L127T18_Object(47 downto 36) <= Inputs_iLeft(3);
-		InterconnectModule_L119F17L127T18_Object(35 downto 24) <= Inputs_iLeft(2);
-		InterconnectModule_L119F17L127T18_Object(23 downto 12) <= Inputs_iLeft(1);
-		InterconnectModule_L119F17L127T18_Object(11 downto 0) <= Inputs_iLeft(0);
-		InterconnectModule_L119F17L127T18_Object(98 downto 96) <= State_leftAddr;
-		InterconnectModule_L119F17L127T18_Object(99) <= State_leftAddrValid;
-		InterconnectModule_L119F17L127T18_Object(139 downto 130) <= Inputs_iRight(3);
-		InterconnectModule_L119F17L127T18_Object(129 downto 120) <= Inputs_iRight(2);
-		InterconnectModule_L119F17L127T18_Object(119 downto 110) <= Inputs_iRight(1);
-		InterconnectModule_L119F17L127T18_Object(109 downto 100) <= Inputs_iRight(0);
-		InterconnectModule_L119F17L127T18_Object(141 downto 140) <= State_rightAddr;
-		InterconnectModule_L119F17L127T18_Object(142) <= State_rightAddrValid;
-		DuplexMux_iRightAddrValid <= InterconnectModule_L119F17L127T18_Object(142);
-		DuplexMux_iRightAddr <= InterconnectModule_L119F17L127T18_Object(141 downto 140);
-		DuplexMux_iRight(3) <= InterconnectModule_L119F17L127T18_Object(139 downto 130);
-		DuplexMux_iRight(2) <= InterconnectModule_L119F17L127T18_Object(129 downto 120);
-		DuplexMux_iRight(1) <= InterconnectModule_L119F17L127T18_Object(119 downto 110);
-		DuplexMux_iRight(0) <= InterconnectModule_L119F17L127T18_Object(109 downto 100);
-		DuplexMux_iLeftAddrValid <= InterconnectModule_L119F17L127T18_Object(99);
-		DuplexMux_iLeftAddr <= InterconnectModule_L119F17L127T18_Object(98 downto 96);
-		DuplexMux_iLeft(7) <= InterconnectModule_L119F17L127T18_Object(95 downto 84);
-		DuplexMux_iLeft(6) <= InterconnectModule_L119F17L127T18_Object(83 downto 72);
-		DuplexMux_iLeft(5) <= InterconnectModule_L119F17L127T18_Object(71 downto 60);
-		DuplexMux_iLeft(4) <= InterconnectModule_L119F17L127T18_Object(59 downto 48);
-		DuplexMux_iLeft(3) <= InterconnectModule_L119F17L127T18_Object(47 downto 36);
-		DuplexMux_iLeft(2) <= InterconnectModule_L119F17L127T18_Object(35 downto 24);
-		DuplexMux_iLeft(1) <= InterconnectModule_L119F17L127T18_Object(23 downto 12);
-		DuplexMux_iLeft(0) <= InterconnectModule_L119F17L127T18_Object(11 downto 0);
+		InterconnectModule_L80F41T99_Enumerable(0) <= TransactionDetectors0_oTransaction;
+		InterconnectModule_L80F41T99_Enumerable(1) <= TransactionDetectors1_oTransaction;
+		InterconnectModule_L80F41T99_Enumerable(2) <= TransactionDetectors2_oTransaction;
+		InterconnectModule_L80F41T99_Enumerable(3) <= TransactionDetectors3_oTransaction;
+		InterconnectModule_L80F41T99_Enumerable(4) <= TransactionDetectors4_oTransaction;
+		InterconnectModule_L80F41T99_Enumerable(5) <= TransactionDetectors5_oTransaction;
+		InterconnectModule_L80F41T99_Enumerable(6) <= TransactionDetectors6_oTransaction;
+		InterconnectModule_L80F41T99_Enumerable(7) <= TransactionDetectors7_oTransaction;
+		Transactions(0) <= InterconnectModule_L80F41T99_Enumerable(0);
+		Transactions(1) <= InterconnectModule_L80F41T99_Enumerable(1);
+		Transactions(2) <= InterconnectModule_L80F41T99_Enumerable(2);
+		Transactions(3) <= InterconnectModule_L80F41T99_Enumerable(3);
+		Transactions(4) <= InterconnectModule_L80F41T99_Enumerable(4);
+		Transactions(5) <= InterconnectModule_L80F41T99_Enumerable(5);
+		Transactions(6) <= InterconnectModule_L80F41T99_Enumerable(6);
+		Transactions(7) <= InterconnectModule_L80F41T99_Enumerable(7);
+		InterconnectModule_L81F36T108_Enumerable(0) <= InterconnectModule_L81F36T108_TransactionDetectors0_InterconnectModule_L81F69T97_Expr(0 downto 0)(0);
+		InterconnectModule_L81F36T108_Enumerable(1) <= InterconnectModule_L81F36T108_TransactionDetectors1_InterconnectModule_L81F69T97_Expr(0 downto 0)(0);
+		InterconnectModule_L81F36T108_Enumerable(2) <= InterconnectModule_L81F36T108_TransactionDetectors2_InterconnectModule_L81F69T97_Expr(0 downto 0)(0);
+		InterconnectModule_L81F36T108_Enumerable(3) <= InterconnectModule_L81F36T108_TransactionDetectors3_InterconnectModule_L81F69T97_Expr(0 downto 0)(0);
+		InterconnectModule_L81F36T108_Enumerable(4) <= InterconnectModule_L81F36T108_TransactionDetectors4_InterconnectModule_L81F69T97_Expr(0 downto 0)(0);
+		InterconnectModule_L81F36T108_Enumerable(5) <= InterconnectModule_L81F36T108_TransactionDetectors5_InterconnectModule_L81F69T97_Expr(0 downto 0)(0);
+		InterconnectModule_L81F36T108_Enumerable(6) <= InterconnectModule_L81F36T108_TransactionDetectors6_InterconnectModule_L81F69T97_Expr(0 downto 0)(0);
+		InterconnectModule_L81F36T108_Enumerable(7) <= InterconnectModule_L81F36T108_TransactionDetectors7_InterconnectModule_L81F69T97_Expr(0 downto 0)(0);
+		TXBegin(0) <= InterconnectModule_L81F36T108_Enumerable(0);
+		TXBegin(1) <= InterconnectModule_L81F36T108_Enumerable(1);
+		TXBegin(2) <= InterconnectModule_L81F36T108_Enumerable(2);
+		TXBegin(3) <= InterconnectModule_L81F36T108_Enumerable(3);
+		TXBegin(4) <= InterconnectModule_L81F36T108_Enumerable(4);
+		TXBegin(5) <= InterconnectModule_L81F36T108_Enumerable(5);
+		TXBegin(6) <= InterconnectModule_L81F36T108_Enumerable(6);
+		TXBegin(7) <= InterconnectModule_L81F36T108_Enumerable(7);
+		InterconnectModule_L79F44T105_Enumerable(0) <= TransactionDetectors0_oWaitForRestart;
+		InterconnectModule_L79F44T105_Enumerable(1) <= TransactionDetectors1_oWaitForRestart;
+		InterconnectModule_L79F44T105_Enumerable(2) <= TransactionDetectors2_oWaitForRestart;
+		InterconnectModule_L79F44T105_Enumerable(3) <= TransactionDetectors3_oWaitForRestart;
+		InterconnectModule_L79F44T105_Enumerable(4) <= TransactionDetectors4_oWaitForRestart;
+		InterconnectModule_L79F44T105_Enumerable(5) <= TransactionDetectors5_oWaitForRestart;
+		InterconnectModule_L79F44T105_Enumerable(6) <= TransactionDetectors6_oWaitForRestart;
+		InterconnectModule_L79F44T105_Enumerable(7) <= TransactionDetectors7_oWaitForRestart;
+		WaitForRestarts(0) <= InterconnectModule_L79F44T105_Enumerable(0);
+		WaitForRestarts(1) <= InterconnectModule_L79F44T105_Enumerable(1);
+		WaitForRestarts(2) <= InterconnectModule_L79F44T105_Enumerable(2);
+		WaitForRestarts(3) <= InterconnectModule_L79F44T105_Enumerable(3);
+		WaitForRestarts(4) <= InterconnectModule_L79F44T105_Enumerable(4);
+		WaitForRestarts(5) <= InterconnectModule_L79F44T105_Enumerable(5);
+		WaitForRestarts(6) <= InterconnectModule_L79F44T105_Enumerable(6);
+		WaitForRestarts(7) <= InterconnectModule_L79F44T105_Enumerable(7);
+		InterconnectModule_L100F13L111T14_0_InterconnectModule_L103F21L109T22_Object(0) <= InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F35T85_Expr;
+		InterconnectModule_L100F13L111T14_0_InterconnectModule_L103F21L109T22_Object(1) <= InterconnectModule_L100F13L111T14_0_InterconnectModule_L107F36T54_Expr;
+		InterconnectModule_L100F13L111T14_0_InterconnectModule_L103F21L109T22_Object(2) <= Inputs_iLeft(0)(2);
+		InterconnectModule_L100F13L111T14_0_InterconnectModule_L103F21L109T22_Object(3) <= Inputs_iLeft(0)(11);
+		TransactionDetectors0_iTXEnd <= InterconnectModule_L100F13L111T14_0_InterconnectModule_L103F21L109T22_Object(3);
+		TransactionDetectors0_iTXBegin <= InterconnectModule_L100F13L111T14_0_InterconnectModule_L103F21L109T22_Object(2);
+		TransactionDetectors0_iRestart <= InterconnectModule_L100F13L111T14_0_InterconnectModule_L103F21L109T22_Object(1);
+		TransactionDetectors0_iActive <= InterconnectModule_L100F13L111T14_0_InterconnectModule_L103F21L109T22_Object(0);
+		InterconnectModule_L100F13L111T14_1_InterconnectModule_L103F21L109T22_Object(0) <= InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F35T85_Expr;
+		InterconnectModule_L100F13L111T14_1_InterconnectModule_L103F21L109T22_Object(1) <= InterconnectModule_L100F13L111T14_1_InterconnectModule_L107F36T54_Expr;
+		InterconnectModule_L100F13L111T14_1_InterconnectModule_L103F21L109T22_Object(2) <= Inputs_iLeft(1)(2);
+		InterconnectModule_L100F13L111T14_1_InterconnectModule_L103F21L109T22_Object(3) <= Inputs_iLeft(1)(11);
+		TransactionDetectors1_iTXEnd <= InterconnectModule_L100F13L111T14_1_InterconnectModule_L103F21L109T22_Object(3);
+		TransactionDetectors1_iTXBegin <= InterconnectModule_L100F13L111T14_1_InterconnectModule_L103F21L109T22_Object(2);
+		TransactionDetectors1_iRestart <= InterconnectModule_L100F13L111T14_1_InterconnectModule_L103F21L109T22_Object(1);
+		TransactionDetectors1_iActive <= InterconnectModule_L100F13L111T14_1_InterconnectModule_L103F21L109T22_Object(0);
+		InterconnectModule_L100F13L111T14_2_InterconnectModule_L103F21L109T22_Object(0) <= InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F35T85_Expr;
+		InterconnectModule_L100F13L111T14_2_InterconnectModule_L103F21L109T22_Object(1) <= InterconnectModule_L100F13L111T14_2_InterconnectModule_L107F36T54_Expr;
+		InterconnectModule_L100F13L111T14_2_InterconnectModule_L103F21L109T22_Object(2) <= Inputs_iLeft(2)(2);
+		InterconnectModule_L100F13L111T14_2_InterconnectModule_L103F21L109T22_Object(3) <= Inputs_iLeft(2)(11);
+		TransactionDetectors2_iTXEnd <= InterconnectModule_L100F13L111T14_2_InterconnectModule_L103F21L109T22_Object(3);
+		TransactionDetectors2_iTXBegin <= InterconnectModule_L100F13L111T14_2_InterconnectModule_L103F21L109T22_Object(2);
+		TransactionDetectors2_iRestart <= InterconnectModule_L100F13L111T14_2_InterconnectModule_L103F21L109T22_Object(1);
+		TransactionDetectors2_iActive <= InterconnectModule_L100F13L111T14_2_InterconnectModule_L103F21L109T22_Object(0);
+		InterconnectModule_L100F13L111T14_3_InterconnectModule_L103F21L109T22_Object(0) <= InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F35T85_Expr;
+		InterconnectModule_L100F13L111T14_3_InterconnectModule_L103F21L109T22_Object(1) <= InterconnectModule_L100F13L111T14_3_InterconnectModule_L107F36T54_Expr;
+		InterconnectModule_L100F13L111T14_3_InterconnectModule_L103F21L109T22_Object(2) <= Inputs_iLeft(3)(2);
+		InterconnectModule_L100F13L111T14_3_InterconnectModule_L103F21L109T22_Object(3) <= Inputs_iLeft(3)(11);
+		TransactionDetectors3_iTXEnd <= InterconnectModule_L100F13L111T14_3_InterconnectModule_L103F21L109T22_Object(3);
+		TransactionDetectors3_iTXBegin <= InterconnectModule_L100F13L111T14_3_InterconnectModule_L103F21L109T22_Object(2);
+		TransactionDetectors3_iRestart <= InterconnectModule_L100F13L111T14_3_InterconnectModule_L103F21L109T22_Object(1);
+		TransactionDetectors3_iActive <= InterconnectModule_L100F13L111T14_3_InterconnectModule_L103F21L109T22_Object(0);
+		InterconnectModule_L100F13L111T14_4_InterconnectModule_L103F21L109T22_Object(0) <= InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F35T85_Expr;
+		InterconnectModule_L100F13L111T14_4_InterconnectModule_L103F21L109T22_Object(1) <= InterconnectModule_L100F13L111T14_4_InterconnectModule_L107F36T54_Expr;
+		InterconnectModule_L100F13L111T14_4_InterconnectModule_L103F21L109T22_Object(2) <= Inputs_iLeft(4)(2);
+		InterconnectModule_L100F13L111T14_4_InterconnectModule_L103F21L109T22_Object(3) <= Inputs_iLeft(4)(11);
+		TransactionDetectors4_iTXEnd <= InterconnectModule_L100F13L111T14_4_InterconnectModule_L103F21L109T22_Object(3);
+		TransactionDetectors4_iTXBegin <= InterconnectModule_L100F13L111T14_4_InterconnectModule_L103F21L109T22_Object(2);
+		TransactionDetectors4_iRestart <= InterconnectModule_L100F13L111T14_4_InterconnectModule_L103F21L109T22_Object(1);
+		TransactionDetectors4_iActive <= InterconnectModule_L100F13L111T14_4_InterconnectModule_L103F21L109T22_Object(0);
+		InterconnectModule_L100F13L111T14_5_InterconnectModule_L103F21L109T22_Object(0) <= InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F35T85_Expr;
+		InterconnectModule_L100F13L111T14_5_InterconnectModule_L103F21L109T22_Object(1) <= InterconnectModule_L100F13L111T14_5_InterconnectModule_L107F36T54_Expr;
+		InterconnectModule_L100F13L111T14_5_InterconnectModule_L103F21L109T22_Object(2) <= Inputs_iLeft(5)(2);
+		InterconnectModule_L100F13L111T14_5_InterconnectModule_L103F21L109T22_Object(3) <= Inputs_iLeft(5)(11);
+		TransactionDetectors5_iTXEnd <= InterconnectModule_L100F13L111T14_5_InterconnectModule_L103F21L109T22_Object(3);
+		TransactionDetectors5_iTXBegin <= InterconnectModule_L100F13L111T14_5_InterconnectModule_L103F21L109T22_Object(2);
+		TransactionDetectors5_iRestart <= InterconnectModule_L100F13L111T14_5_InterconnectModule_L103F21L109T22_Object(1);
+		TransactionDetectors5_iActive <= InterconnectModule_L100F13L111T14_5_InterconnectModule_L103F21L109T22_Object(0);
+		InterconnectModule_L100F13L111T14_6_InterconnectModule_L103F21L109T22_Object(0) <= InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F35T85_Expr;
+		InterconnectModule_L100F13L111T14_6_InterconnectModule_L103F21L109T22_Object(1) <= InterconnectModule_L100F13L111T14_6_InterconnectModule_L107F36T54_Expr;
+		InterconnectModule_L100F13L111T14_6_InterconnectModule_L103F21L109T22_Object(2) <= Inputs_iLeft(6)(2);
+		InterconnectModule_L100F13L111T14_6_InterconnectModule_L103F21L109T22_Object(3) <= Inputs_iLeft(6)(11);
+		TransactionDetectors6_iTXEnd <= InterconnectModule_L100F13L111T14_6_InterconnectModule_L103F21L109T22_Object(3);
+		TransactionDetectors6_iTXBegin <= InterconnectModule_L100F13L111T14_6_InterconnectModule_L103F21L109T22_Object(2);
+		TransactionDetectors6_iRestart <= InterconnectModule_L100F13L111T14_6_InterconnectModule_L103F21L109T22_Object(1);
+		TransactionDetectors6_iActive <= InterconnectModule_L100F13L111T14_6_InterconnectModule_L103F21L109T22_Object(0);
+		InterconnectModule_L100F13L111T14_7_InterconnectModule_L103F21L109T22_Object(0) <= InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F35T85_Expr;
+		InterconnectModule_L100F13L111T14_7_InterconnectModule_L103F21L109T22_Object(1) <= InterconnectModule_L100F13L111T14_7_InterconnectModule_L107F36T54_Expr;
+		InterconnectModule_L100F13L111T14_7_InterconnectModule_L103F21L109T22_Object(2) <= Inputs_iLeft(7)(2);
+		InterconnectModule_L100F13L111T14_7_InterconnectModule_L103F21L109T22_Object(3) <= Inputs_iLeft(7)(11);
+		TransactionDetectors7_iTXEnd <= InterconnectModule_L100F13L111T14_7_InterconnectModule_L103F21L109T22_Object(3);
+		TransactionDetectors7_iTXBegin <= InterconnectModule_L100F13L111T14_7_InterconnectModule_L103F21L109T22_Object(2);
+		TransactionDetectors7_iRestart <= InterconnectModule_L100F13L111T14_7_InterconnectModule_L103F21L109T22_Object(1);
+		TransactionDetectors7_iActive <= InterconnectModule_L100F13L111T14_7_InterconnectModule_L103F21L109T22_Object(0);
+		InterconnectModule_L114F17L117T18_Object(7) <= TXBegin(7);
+		InterconnectModule_L114F17L117T18_Object(6) <= TXBegin(6);
+		InterconnectModule_L114F17L117T18_Object(5) <= TXBegin(5);
+		InterconnectModule_L114F17L117T18_Object(4) <= TXBegin(4);
+		InterconnectModule_L114F17L117T18_Object(3) <= TXBegin(3);
+		InterconnectModule_L114F17L117T18_Object(2) <= TXBegin(2);
+		InterconnectModule_L114F17L117T18_Object(1) <= TXBegin(1);
+		InterconnectModule_L114F17L117T18_Object(0) <= TXBegin(0);
+		Encoder_iValues(7) <= InterconnectModule_L114F17L117T18_Object(7);
+		Encoder_iValues(6) <= InterconnectModule_L114F17L117T18_Object(6);
+		Encoder_iValues(5) <= InterconnectModule_L114F17L117T18_Object(5);
+		Encoder_iValues(4) <= InterconnectModule_L114F17L117T18_Object(4);
+		Encoder_iValues(3) <= InterconnectModule_L114F17L117T18_Object(3);
+		Encoder_iValues(2) <= InterconnectModule_L114F17L117T18_Object(2);
+		Encoder_iValues(1) <= InterconnectModule_L114F17L117T18_Object(1);
+		Encoder_iValues(0) <= InterconnectModule_L114F17L117T18_Object(0);
+		InterconnectModule_L121F17L129T18_Object(95 downto 84) <= Inputs_iLeft(7);
+		InterconnectModule_L121F17L129T18_Object(83 downto 72) <= Inputs_iLeft(6);
+		InterconnectModule_L121F17L129T18_Object(71 downto 60) <= Inputs_iLeft(5);
+		InterconnectModule_L121F17L129T18_Object(59 downto 48) <= Inputs_iLeft(4);
+		InterconnectModule_L121F17L129T18_Object(47 downto 36) <= Inputs_iLeft(3);
+		InterconnectModule_L121F17L129T18_Object(35 downto 24) <= Inputs_iLeft(2);
+		InterconnectModule_L121F17L129T18_Object(23 downto 12) <= Inputs_iLeft(1);
+		InterconnectModule_L121F17L129T18_Object(11 downto 0) <= Inputs_iLeft(0);
+		InterconnectModule_L121F17L129T18_Object(98 downto 96) <= State_leftAddr;
+		InterconnectModule_L121F17L129T18_Object(99) <= State_leftAddrValid;
+		InterconnectModule_L121F17L129T18_Object(139 downto 130) <= Inputs_iRight(3);
+		InterconnectModule_L121F17L129T18_Object(129 downto 120) <= Inputs_iRight(2);
+		InterconnectModule_L121F17L129T18_Object(119 downto 110) <= Inputs_iRight(1);
+		InterconnectModule_L121F17L129T18_Object(109 downto 100) <= Inputs_iRight(0);
+		InterconnectModule_L121F17L129T18_Object(141 downto 140) <= State_rightAddr;
+		InterconnectModule_L121F17L129T18_Object(142) <= State_rightAddrValid;
+		DuplexMux_iRightAddrValid <= InterconnectModule_L121F17L129T18_Object(142);
+		DuplexMux_iRightAddr <= InterconnectModule_L121F17L129T18_Object(141 downto 140);
+		DuplexMux_iRight(3) <= InterconnectModule_L121F17L129T18_Object(139 downto 130);
+		DuplexMux_iRight(2) <= InterconnectModule_L121F17L129T18_Object(129 downto 120);
+		DuplexMux_iRight(1) <= InterconnectModule_L121F17L129T18_Object(119 downto 110);
+		DuplexMux_iRight(0) <= InterconnectModule_L121F17L129T18_Object(109 downto 100);
+		DuplexMux_iLeftAddrValid <= InterconnectModule_L121F17L129T18_Object(99);
+		DuplexMux_iLeftAddr <= InterconnectModule_L121F17L129T18_Object(98 downto 96);
+		DuplexMux_iLeft(7) <= InterconnectModule_L121F17L129T18_Object(95 downto 84);
+		DuplexMux_iLeft(6) <= InterconnectModule_L121F17L129T18_Object(83 downto 72);
+		DuplexMux_iLeft(5) <= InterconnectModule_L121F17L129T18_Object(71 downto 60);
+		DuplexMux_iLeft(4) <= InterconnectModule_L121F17L129T18_Object(59 downto 48);
+		DuplexMux_iLeft(3) <= InterconnectModule_L121F17L129T18_Object(47 downto 36);
+		DuplexMux_iLeft(2) <= InterconnectModule_L121F17L129T18_Object(35 downto 24);
+		DuplexMux_iLeft(1) <= InterconnectModule_L121F17L129T18_Object(23 downto 12);
+		DuplexMux_iLeft(0) <= InterconnectModule_L121F17L129T18_Object(11 downto 0);
 		oLeft0_Payload_DataFlag <= muxLeft(0)(11);
 		oLeft0_Payload_Data <= muxLeft(0)(10 downto 3);
 		oLeft0_IsActive <= muxLeft(0)(2);
@@ -1079,62 +1283,62 @@ begin
 		Encoder_HasActive <= Encoder_HasActive_Encoder_HasActive_HardLink;
 		Encoder_MSBIndex <= Encoder_MSBIndex_Encoder_MSBIndex_HardLink;
 		Encoder_MSBValue <= Encoder_MSBValue_Encoder_MSBValue_HardLink;
+		TransactionDetectors0_iActive_TransactionDetectors0_iActive_HardLink <= TransactionDetectors0_iActive;
 		TransactionDetectors0_iRestart_TransactionDetectors0_iRestart_HardLink <= TransactionDetectors0_iRestart;
 		TransactionDetectors0_iTXBegin_TransactionDetectors0_iTXBegin_HardLink <= TransactionDetectors0_iTXBegin;
 		TransactionDetectors0_iTXEnd_TransactionDetectors0_iTXEnd_HardLink <= TransactionDetectors0_iTXEnd;
 		TransactionDetectors0_oTransaction <= TransactionDetectors0_oTransaction_TransactionDetectors0_oTransaction_HardLink;
+		TransactionDetectors0_oTXBegin <= TransactionDetectors0_oTXBegin_TransactionDetectors0_oTXBegin_HardLink;
 		TransactionDetectors0_oWaitForRestart <= TransactionDetectors0_oWaitForRestart_TransactionDetectors0_oWaitForRestart_HardLink;
+		TransactionDetectors1_iActive_TransactionDetectors1_iActive_HardLink <= TransactionDetectors1_iActive;
 		TransactionDetectors1_iRestart_TransactionDetectors1_iRestart_HardLink <= TransactionDetectors1_iRestart;
 		TransactionDetectors1_iTXBegin_TransactionDetectors1_iTXBegin_HardLink <= TransactionDetectors1_iTXBegin;
 		TransactionDetectors1_iTXEnd_TransactionDetectors1_iTXEnd_HardLink <= TransactionDetectors1_iTXEnd;
 		TransactionDetectors1_oTransaction <= TransactionDetectors1_oTransaction_TransactionDetectors1_oTransaction_HardLink;
+		TransactionDetectors1_oTXBegin <= TransactionDetectors1_oTXBegin_TransactionDetectors1_oTXBegin_HardLink;
 		TransactionDetectors1_oWaitForRestart <= TransactionDetectors1_oWaitForRestart_TransactionDetectors1_oWaitForRestart_HardLink;
+		TransactionDetectors2_iActive_TransactionDetectors2_iActive_HardLink <= TransactionDetectors2_iActive;
 		TransactionDetectors2_iRestart_TransactionDetectors2_iRestart_HardLink <= TransactionDetectors2_iRestart;
 		TransactionDetectors2_iTXBegin_TransactionDetectors2_iTXBegin_HardLink <= TransactionDetectors2_iTXBegin;
 		TransactionDetectors2_iTXEnd_TransactionDetectors2_iTXEnd_HardLink <= TransactionDetectors2_iTXEnd;
 		TransactionDetectors2_oTransaction <= TransactionDetectors2_oTransaction_TransactionDetectors2_oTransaction_HardLink;
+		TransactionDetectors2_oTXBegin <= TransactionDetectors2_oTXBegin_TransactionDetectors2_oTXBegin_HardLink;
 		TransactionDetectors2_oWaitForRestart <= TransactionDetectors2_oWaitForRestart_TransactionDetectors2_oWaitForRestart_HardLink;
+		TransactionDetectors3_iActive_TransactionDetectors3_iActive_HardLink <= TransactionDetectors3_iActive;
 		TransactionDetectors3_iRestart_TransactionDetectors3_iRestart_HardLink <= TransactionDetectors3_iRestart;
 		TransactionDetectors3_iTXBegin_TransactionDetectors3_iTXBegin_HardLink <= TransactionDetectors3_iTXBegin;
 		TransactionDetectors3_iTXEnd_TransactionDetectors3_iTXEnd_HardLink <= TransactionDetectors3_iTXEnd;
 		TransactionDetectors3_oTransaction <= TransactionDetectors3_oTransaction_TransactionDetectors3_oTransaction_HardLink;
+		TransactionDetectors3_oTXBegin <= TransactionDetectors3_oTXBegin_TransactionDetectors3_oTXBegin_HardLink;
 		TransactionDetectors3_oWaitForRestart <= TransactionDetectors3_oWaitForRestart_TransactionDetectors3_oWaitForRestart_HardLink;
+		TransactionDetectors4_iActive_TransactionDetectors4_iActive_HardLink <= TransactionDetectors4_iActive;
 		TransactionDetectors4_iRestart_TransactionDetectors4_iRestart_HardLink <= TransactionDetectors4_iRestart;
 		TransactionDetectors4_iTXBegin_TransactionDetectors4_iTXBegin_HardLink <= TransactionDetectors4_iTXBegin;
 		TransactionDetectors4_iTXEnd_TransactionDetectors4_iTXEnd_HardLink <= TransactionDetectors4_iTXEnd;
 		TransactionDetectors4_oTransaction <= TransactionDetectors4_oTransaction_TransactionDetectors4_oTransaction_HardLink;
+		TransactionDetectors4_oTXBegin <= TransactionDetectors4_oTXBegin_TransactionDetectors4_oTXBegin_HardLink;
 		TransactionDetectors4_oWaitForRestart <= TransactionDetectors4_oWaitForRestart_TransactionDetectors4_oWaitForRestart_HardLink;
+		TransactionDetectors5_iActive_TransactionDetectors5_iActive_HardLink <= TransactionDetectors5_iActive;
 		TransactionDetectors5_iRestart_TransactionDetectors5_iRestart_HardLink <= TransactionDetectors5_iRestart;
 		TransactionDetectors5_iTXBegin_TransactionDetectors5_iTXBegin_HardLink <= TransactionDetectors5_iTXBegin;
 		TransactionDetectors5_iTXEnd_TransactionDetectors5_iTXEnd_HardLink <= TransactionDetectors5_iTXEnd;
 		TransactionDetectors5_oTransaction <= TransactionDetectors5_oTransaction_TransactionDetectors5_oTransaction_HardLink;
+		TransactionDetectors5_oTXBegin <= TransactionDetectors5_oTXBegin_TransactionDetectors5_oTXBegin_HardLink;
 		TransactionDetectors5_oWaitForRestart <= TransactionDetectors5_oWaitForRestart_TransactionDetectors5_oWaitForRestart_HardLink;
+		TransactionDetectors6_iActive_TransactionDetectors6_iActive_HardLink <= TransactionDetectors6_iActive;
 		TransactionDetectors6_iRestart_TransactionDetectors6_iRestart_HardLink <= TransactionDetectors6_iRestart;
 		TransactionDetectors6_iTXBegin_TransactionDetectors6_iTXBegin_HardLink <= TransactionDetectors6_iTXBegin;
 		TransactionDetectors6_iTXEnd_TransactionDetectors6_iTXEnd_HardLink <= TransactionDetectors6_iTXEnd;
 		TransactionDetectors6_oTransaction <= TransactionDetectors6_oTransaction_TransactionDetectors6_oTransaction_HardLink;
+		TransactionDetectors6_oTXBegin <= TransactionDetectors6_oTXBegin_TransactionDetectors6_oTXBegin_HardLink;
 		TransactionDetectors6_oWaitForRestart <= TransactionDetectors6_oWaitForRestart_TransactionDetectors6_oWaitForRestart_HardLink;
+		TransactionDetectors7_iActive_TransactionDetectors7_iActive_HardLink <= TransactionDetectors7_iActive;
 		TransactionDetectors7_iRestart_TransactionDetectors7_iRestart_HardLink <= TransactionDetectors7_iRestart;
 		TransactionDetectors7_iTXBegin_TransactionDetectors7_iTXBegin_HardLink <= TransactionDetectors7_iTXBegin;
 		TransactionDetectors7_iTXEnd_TransactionDetectors7_iTXEnd_HardLink <= TransactionDetectors7_iTXEnd;
 		TransactionDetectors7_oTransaction <= TransactionDetectors7_oTransaction_TransactionDetectors7_oTransaction_HardLink;
+		TransactionDetectors7_oTXBegin <= TransactionDetectors7_oTXBegin_TransactionDetectors7_oTXBegin_HardLink;
 		TransactionDetectors7_oWaitForRestart <= TransactionDetectors7_oWaitForRestart_TransactionDetectors7_oWaitForRestart_HardLink;
-		InterconnectModule_L99F13L109T14_0_InterconnectModule_L104F36T54_Index <= TXBegin(0);
-		InterconnectModule_L99F13L109T14_1_InterconnectModule_L104F36T54_Index <= TXBegin(1);
-		InterconnectModule_L99F13L109T14_2_InterconnectModule_L104F36T54_Index <= TXBegin(2);
-		InterconnectModule_L99F13L109T14_3_InterconnectModule_L104F36T54_Index <= TXBegin(3);
-		InterconnectModule_L99F13L109T14_4_InterconnectModule_L104F36T54_Index <= TXBegin(4);
-		InterconnectModule_L99F13L109T14_5_InterconnectModule_L104F36T54_Index <= TXBegin(5);
-		InterconnectModule_L99F13L109T14_6_InterconnectModule_L104F36T54_Index <= TXBegin(6);
-		InterconnectModule_L99F13L109T14_7_InterconnectModule_L104F36T54_Index <= TXBegin(7);
-		InterconnectModule_L89F37T159_0_InterconnectModule_L89F122T148_Index <= WaitForRestarts(0);
-		InterconnectModule_L89F37T159_1_InterconnectModule_L89F122T148_Index <= WaitForRestarts(1);
-		InterconnectModule_L89F37T159_2_InterconnectModule_L89F122T148_Index <= WaitForRestarts(2);
-		InterconnectModule_L89F37T159_3_InterconnectModule_L89F122T148_Index <= WaitForRestarts(3);
-		InterconnectModule_L89F37T159_4_InterconnectModule_L89F122T148_Index <= WaitForRestarts(4);
-		InterconnectModule_L89F37T159_5_InterconnectModule_L89F122T148_Index <= WaitForRestarts(5);
-		InterconnectModule_L89F37T159_6_InterconnectModule_L89F122T148_Index <= WaitForRestarts(6);
-		InterconnectModule_L89F37T159_7_InterconnectModule_L89F122T148_Index <= WaitForRestarts(7);
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

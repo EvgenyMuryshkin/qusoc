@@ -35,11 +35,7 @@ module AXISoCTestModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire AXISoCTestModule_L52F45T46_Expr = 1'b0;
-	wire AXISoCTestModule_L52F48T49_Expr = 1'b0;
-	wire AXISoCTestModule_L52F51T52_Expr = 1'b0;
-	wire AXISoCTestModule_L52F54T55_Expr = 1'b0;
-	wire AXISoCTestModule_L53F28T33_Expr = 1'b0;
+	wire [32: 0] AXI4RegisterModuleInputs_Reg = 33'b000000000000000000000000000000000;
 	wire [73: 0] CPU_S2M;
 	wire [221: 0] CPU_M2S;
 	wire [221: 0] Memory_M2S;
@@ -51,9 +47,9 @@ module AXISoCTestModule_TopLevel
 	wire [73: 0] Reg_S2M;
 	wire [73: 0] AXISoCTestModule_L37F32L40T14_Object;
 	wire [221: 0] AXISoCTestModule_L42F35L45T14_Object;
-	wire [254: 0] AXISoCTestModule_L47F32L55T14_Object;
-	wire [369: 0] AXISoCTestModule_L57F41L68T14_Object;
-	wire [31: 0] AXISoCTestModule_L70F37T65_Source;
+	wire [254: 0] AXISoCTestModule_L47F32L50T14_Object;
+	wire [369: 0] AXISoCTestModule_L52F41L59T14_Object;
+	wire [31: 0] AXISoCTestModule_L61F37T65_Source;
 	wire [73: 0] CPU_S2M_CPU_S2M_HardLink;
 	wire [221: 0] CPU_M2S_CPU_M2S_HardLink;
 	wire [221: 0] Interconnect_iM2S0_Interconnect_iM2S_HardLink;
@@ -78,7 +74,6 @@ module AXISoCTestModule_TopLevel
 	wire [221 : 0] Interconnect_oM2S [0 : 1];
 	wire [73 : 0] Interconnect_oS2M [0 : 0];
 	wire [7 : 0] Reg_outData [0 : 3];
-	wire [0 : 0] AXISoCTestModule_L52F31T57_Enumerable [0 : 3];
 	wire BoardSignals_Clock;
 	wire BoardSignals_Reset;
 	wire BoardSignals_Running;
@@ -153,39 +148,27 @@ module AXISoCTestModule_TopLevel
 	assign CPU_S2M = AXISoCTestModule_L37F32L40T14_Object[73:0];
 	assign AXISoCTestModule_L42F35L45T14_Object[221:0] = Interconnect_oM2S[0];
 	assign Memory_M2S = AXISoCTestModule_L42F35L45T14_Object[221:0];
-	assign AXISoCTestModule_L47F32L55T14_Object[221:0] = Interconnect_oM2S[1];
-	assign AXISoCTestModule_L52F31T57_Enumerable[0] = AXISoCTestModule_L52F45T46_Expr;
-	assign AXISoCTestModule_L52F31T57_Enumerable[1] = AXISoCTestModule_L52F48T49_Expr;
-	assign AXISoCTestModule_L52F31T57_Enumerable[2] = AXISoCTestModule_L52F51T52_Expr;
-	assign AXISoCTestModule_L52F31T57_Enumerable[3] = AXISoCTestModule_L52F54T55_Expr;
-	assign AXISoCTestModule_L47F32L55T14_Object[253:222] = {
-		{28{1'b0}},
-		AXISoCTestModule_L52F31T57_Enumerable[3],
-		AXISoCTestModule_L52F31T57_Enumerable[2],
-		AXISoCTestModule_L52F31T57_Enumerable[1],
-		AXISoCTestModule_L52F31T57_Enumerable[0]
-	}
-	;
-	assign AXISoCTestModule_L47F32L55T14_Object[254] = AXISoCTestModule_L53F28T33_Expr;
-	assign Reg_Reg = AXISoCTestModule_L47F32L55T14_Object[254:222];
-	assign Reg_M2S = AXISoCTestModule_L47F32L55T14_Object[221:0];
-	assign AXISoCTestModule_L57F41L68T14_Object[221:0] = CPU_M2S;
-	assign AXISoCTestModule_L57F41L68T14_Object[369:222] = {
+	assign AXISoCTestModule_L47F32L50T14_Object[221:0] = Interconnect_oM2S[1];
+	assign AXISoCTestModule_L47F32L50T14_Object[254:222] = AXI4RegisterModuleInputs_Reg;
+	assign Reg_Reg = AXISoCTestModule_L47F32L50T14_Object[254:222];
+	assign Reg_M2S = AXISoCTestModule_L47F32L50T14_Object[221:0];
+	assign AXISoCTestModule_L52F41L59T14_Object[221:0] = CPU_M2S;
+	assign AXISoCTestModule_L52F41L59T14_Object[369:222] = {
 		Reg_S2M,
 		Memory_S2M
 	}
 	;
-	assign Interconnect_iS2M[1] = AXISoCTestModule_L57F41L68T14_Object[369:296];
-	assign Interconnect_iS2M[0] = AXISoCTestModule_L57F41L68T14_Object[295:222];
-	assign Interconnect_iM2S[0] = AXISoCTestModule_L57F41L68T14_Object[221:0];
-	assign AXISoCTestModule_L70F37T65_Source = {
+	assign Interconnect_iS2M[1] = AXISoCTestModule_L52F41L59T14_Object[369:296];
+	assign Interconnect_iS2M[0] = AXISoCTestModule_L52F41L59T14_Object[295:222];
+	assign Interconnect_iM2S[0] = AXISoCTestModule_L52F41L59T14_Object[221:0];
+	assign AXISoCTestModule_L61F37T65_Source = {
 		Reg_outData[3],
 		Reg_outData[2],
 		Reg_outData[1],
 		Reg_outData[0]
 	}
 	;
-	assign oData = AXISoCTestModule_L70F37T65_Source;
+	assign oData = AXISoCTestModule_L61F37T65_Source;
 	assign CPU_S2M_CPU_S2M_HardLink = CPU_S2M;
 	assign CPU_M2S = CPU_M2S_CPU_M2S_HardLink;
 	assign Interconnect_iM2S0_Interconnect_iM2S_HardLink = Interconnect_iM2S[0];

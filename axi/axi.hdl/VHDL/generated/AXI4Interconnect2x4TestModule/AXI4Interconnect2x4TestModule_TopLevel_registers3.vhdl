@@ -49,14 +49,14 @@ architecture rtl of AXI4Interconnect2x4TestModule_TopLevel_registers3 is
 	-- false is a reserved name, declaration skipped
 	constant State_bytesDefault : unsigned(7 downto 0) := "00000000";
 	constant size : unsigned(1 downto 0) := "10";
-	constant AXI4RegisterModule_L68F29T33_Expr : std_logic := '1';
-	constant AXI4RegisterModule_L70F29T33_Expr : std_logic := '1';
-	constant AXI4RegisterModule_L72F28T32_Expr : std_logic := '1';
-	constant AXI4RegisterModule_L69F28T32_Expr : std_logic := '1';
-	constant AXI4RegisterModule_L77F9L92T10_AXI4RegisterModule_L85F13L91T14_AXI4RegisterModule_L86F17L90T18_0_w : std_logic := '0';
-	constant AXI4RegisterModule_L77F9L92T10_AXI4RegisterModule_L85F13L91T14_AXI4RegisterModule_L86F17L90T18_1_w : std_logic := '1';
-	constant AXI4RegisterModule_L77F9L92T10_AXI4RegisterModule_L85F13L91T14_AXI4RegisterModule_L86F17L90T18_2_w : unsigned(1 downto 0) := "10";
-	constant AXI4RegisterModule_L77F9L92T10_AXI4RegisterModule_L85F13L91T14_AXI4RegisterModule_L86F17L90T18_3_w : unsigned(1 downto 0) := "11";
+	constant AXI4RegisterModule_L69F29T33_Expr : std_logic := '1';
+	constant AXI4RegisterModule_L71F29T33_Expr : std_logic := '1';
+	constant AXI4RegisterModule_L73F28T32_Expr : std_logic := '1';
+	constant AXI4RegisterModule_L70F28T32_Expr : std_logic := '1';
+	constant AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_0_w : std_logic := '0';
+	constant AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_1_w : std_logic := '1';
+	constant AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_2_w : unsigned(1 downto 0) := "10";
+	constant AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_3_w : unsigned(1 downto 0) := "11";
 	signal Inputs_M2S_R_AR_ARID : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_M2S_R_AR_ARADDR : unsigned(31 downto 0) := (others => '0');
 	signal Inputs_M2S_R_AR_ARLEN : unsigned(7 downto 0) := (others => '0');
@@ -108,7 +108,7 @@ architecture rtl of AXI4Interconnect2x4TestModule_TopLevel_registers3 is
 	signal axiSlave_outWSTRB : unsigned(3 downto 0) := (others => '0');
 	signal axiSlave_outWVALID : std_logic := '0';
 	signal axiSlave_S2M : unsigned(73 downto 0) := (others => '0');
-	signal AXI4RegisterModule_L65F37L74T14_Object : unsigned(258 downto 0) := (others => '0');
+	signal AXI4RegisterModule_L66F37L75T14_Object : unsigned(258 downto 0) := (others => '0');
 	signal axiSlave_inARREADY_axiSlave_inARREADY_HardLink : std_logic := '0';
 	signal axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink : std_logic := '0';
 	signal axiSlave_inBVALID_axiSlave_inBVALID_HardLink : std_logic := '0';
@@ -137,11 +137,11 @@ architecture rtl of AXI4Interconnect2x4TestModule_TopLevel_registers3 is
 	signal axiSlave_S2M_axiSlave_S2M_HardLink : unsigned(73 downto 0) := "00000000000000000000000000000000000000000000000000000000000000000000000000";
 	signal State_Written : std_logic := '0';
 	constant State_WrittenDefault : std_logic := '0';
-	signal AXI4RegisterModule_L71F28T44_Expr : std_logic := '0';
-	signal AXI4RegisterModule_L71F28T44_Expr_1 : std_logic := '0';
-	signal AXI4RegisterModule_L77F9L92T10_AXI4RegisterModule_L78F33T80_Expr : std_logic := '0';
-	signal AXI4RegisterModule_L77F9L92T10_AXI4RegisterModule_L78F33T80_Expr_1 : std_logic := '0';
-	signal AXI4RegisterModule_L77F9L92T10_AXI4RegisterModule_L78F33T80_Expr_2 : std_logic := '0';
+	signal AXI4RegisterModule_L72F28T44_Expr : std_logic := '0';
+	signal AXI4RegisterModule_L72F28T44_Expr_1 : std_logic := '0';
+	signal AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr : std_logic := '0';
+	signal AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_1 : std_logic := '0';
+	signal AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_2 : std_logic := '0';
 	type Inputs_M2S_W_W_WDATAArray is array (0 to 3) of unsigned (7 downto 0);
 	signal Inputs_M2S_W_W_WDATA : Inputs_M2S_W_W_WDATAArray := (others => (others => '0'));
 	type Inputs_Reg_inWDATAArray is array (0 to 3) of unsigned (7 downto 0);
@@ -179,13 +179,13 @@ begin
 			end if;
 		end if;
 	end process;
-	process (AXI4RegisterModule_L71F28T44_Expr_1)
+	process (AXI4RegisterModule_L72F28T44_Expr_1)
 	begin
-		AXI4RegisterModule_L71F28T44_Expr <= NOT AXI4RegisterModule_L71F28T44_Expr_1;
+		AXI4RegisterModule_L72F28T44_Expr <= NOT AXI4RegisterModule_L72F28T44_Expr_1;
 	end process;
-	process (AXI4RegisterModule_L77F9L92T10_AXI4RegisterModule_L78F33T80_Expr_1, AXI4RegisterModule_L77F9L92T10_AXI4RegisterModule_L78F33T80_Expr_2)
+	process (AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_1, AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_2)
 	begin
-		AXI4RegisterModule_L77F9L92T10_AXI4RegisterModule_L78F33T80_Expr <= AXI4RegisterModule_L77F9L92T10_AXI4RegisterModule_L78F33T80_Expr_1 OR AXI4RegisterModule_L77F9L92T10_AXI4RegisterModule_L78F33T80_Expr_2;
+		AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr <= AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_1 OR AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_2;
 	end process;
 	AXI4Interconnect2x4TestModule_TopLevel_registers3_axiSlave : entity work.AXI4Interconnect2x4TestModule_TopLevel_registers3_axiSlave
 	port map
@@ -221,13 +221,13 @@ begin
 		S2M => axiSlave_S2M_axiSlave_S2M_HardLink
 	)
 	;
-	process (AXI4RegisterModule_L77F9L92T10_AXI4RegisterModule_L78F33T80_Expr, axiSlave_outWDATA, axiSlave_outWREADYConfirming, axiSlave_outWSTRB, Inputs_Reg_inWDATA, Inputs_Reg_inWE, State_bytes, State_Written)
+	process (AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr, axiSlave_outWDATA, axiSlave_outWREADYConfirming, axiSlave_outWSTRB, Inputs_Reg_inWDATA, Inputs_Reg_inWE, State_bytes, State_Written)
 	begin
 		for NextState_bytes_Iterator in 0 to 3 loop
 			NextState_bytes(NextState_bytes_Iterator) <= State_bytes(NextState_bytes_Iterator);
 		end loop;
 		NextState_Written <= State_Written;
-		NextState_Written <= AXI4RegisterModule_L77F9L92T10_AXI4RegisterModule_L78F33T80_Expr;
+		NextState_Written <= AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr;
 		if Inputs_Reg_inWE = '1' then
 			NextState_bytes(0) <= Inputs_Reg_inWDATA(0);
 			NextState_bytes(1) <= Inputs_Reg_inWDATA(1);
@@ -248,11 +248,11 @@ begin
 			end if;
 		end if;
 	end process;
-	process (AXI4RegisterModule_L65F37L74T14_Object, AXI4RegisterModule_L71F28T44_Expr, axiSlave_inARREADY, axiSlave_inAWREADY, axiSlave_inBVALID, axiSlave_inRDATA, axiSlave_inRVALID, axiSlave_inWREADY, axiSlave_M2S, axiSlave_outARADDR_axiSlave_outARADDR_HardLink, axiSlave_outARREADYConfirming_axiSlave_outARREADYConfirming_HardLink, axiSlave_outARVALID_axiSlave_outARVALID_HardLink, axiSlave_outAWADDR_axiSlave_outAWADDR_HardLink, axiSlave_outAWREADYConfirming_axiSlave_outAWREADYConfirming_HardLink, axiSlave_outAWVALID_axiSlave_outAWVALID_HardLink, axiSlave_outReadTXCompleting_axiSlave_outReadTXCompleting_HardLink, axiSlave_outWDATA0_axiSlave_outWDATA_HardLink, axiSlave_outWDATA1_axiSlave_outWDATA_HardLink, axiSlave_outWDATA2_axiSlave_outWDATA_HardLink, axiSlave_outWDATA3_axiSlave_outWDATA_HardLink, axiSlave_outWREADYConfirming, axiSlave_outWREADYConfirming_axiSlave_outWREADYConfirming_HardLink, axiSlave_outWriteTXCompleting_axiSlave_outWriteTXCompleting_HardLink, axiSlave_outWSTRB_axiSlave_outWSTRB_HardLink, axiSlave_outWVALID_axiSlave_outWVALID_HardLink, axiSlave_S2M, axiSlave_S2M_axiSlave_S2M_HardLink, Inputs_M2S_R_AR_ARADDR, Inputs_M2S_R_AR_ARBURST, Inputs_M2S_R_AR_ARCACHE, Inputs_M2S_R_AR_ARID, Inputs_M2S_R_AR_ARLEN, Inputs_M2S_R_AR_ARLOCK, Inputs_M2S_R_AR_ARPROT, Inputs_M2S_R_AR_ARQOS, Inputs_M2S_R_AR_ARREGION, Inputs_M2S_R_AR_ARSIZE, Inputs_M2S_R_AR_ARUSER, Inputs_M2S_R_AR_ARVALID, Inputs_M2S_R_R_RREADY, Inputs_M2S_W_AW_AWADDR, Inputs_M2S_W_AW_AWBURST, Inputs_M2S_W_AW_AWCACHE, Inputs_M2S_W_AW_AWID, Inputs_M2S_W_AW_AWLEN, Inputs_M2S_W_AW_AWLOCK, Inputs_M2S_W_AW_AWPROT, Inputs_M2S_W_AW_AWQOS, Inputs_M2S_W_AW_AWREGION, Inputs_M2S_W_AW_AWSIZE, Inputs_M2S_W_AW_AWUSER, Inputs_M2S_W_AW_AWVALID, Inputs_M2S_W_B_BREADY, Inputs_M2S_W_W_WDATA, Inputs_M2S_W_W_WID, Inputs_M2S_W_W_WLAST, Inputs_M2S_W_W_WSTRB, Inputs_M2S_W_W_WUSER, Inputs_M2S_W_W_WVALID, Inputs_Reg_inWE, M2S, Reg, State_bytes, State_Written)
+	process (AXI4RegisterModule_L66F37L75T14_Object, AXI4RegisterModule_L72F28T44_Expr, axiSlave_inARREADY, axiSlave_inAWREADY, axiSlave_inBVALID, axiSlave_inRDATA, axiSlave_inRVALID, axiSlave_inWREADY, axiSlave_M2S, axiSlave_outARADDR_axiSlave_outARADDR_HardLink, axiSlave_outARREADYConfirming_axiSlave_outARREADYConfirming_HardLink, axiSlave_outARVALID_axiSlave_outARVALID_HardLink, axiSlave_outAWADDR_axiSlave_outAWADDR_HardLink, axiSlave_outAWREADYConfirming_axiSlave_outAWREADYConfirming_HardLink, axiSlave_outAWVALID_axiSlave_outAWVALID_HardLink, axiSlave_outReadTXCompleting_axiSlave_outReadTXCompleting_HardLink, axiSlave_outWDATA0_axiSlave_outWDATA_HardLink, axiSlave_outWDATA1_axiSlave_outWDATA_HardLink, axiSlave_outWDATA2_axiSlave_outWDATA_HardLink, axiSlave_outWDATA3_axiSlave_outWDATA_HardLink, axiSlave_outWREADYConfirming, axiSlave_outWREADYConfirming_axiSlave_outWREADYConfirming_HardLink, axiSlave_outWriteTXCompleting_axiSlave_outWriteTXCompleting_HardLink, axiSlave_outWSTRB_axiSlave_outWSTRB_HardLink, axiSlave_outWVALID_axiSlave_outWVALID_HardLink, axiSlave_S2M, axiSlave_S2M_axiSlave_S2M_HardLink, Inputs_M2S_R_AR_ARADDR, Inputs_M2S_R_AR_ARBURST, Inputs_M2S_R_AR_ARCACHE, Inputs_M2S_R_AR_ARID, Inputs_M2S_R_AR_ARLEN, Inputs_M2S_R_AR_ARLOCK, Inputs_M2S_R_AR_ARPROT, Inputs_M2S_R_AR_ARQOS, Inputs_M2S_R_AR_ARREGION, Inputs_M2S_R_AR_ARSIZE, Inputs_M2S_R_AR_ARUSER, Inputs_M2S_R_AR_ARVALID, Inputs_M2S_R_R_RREADY, Inputs_M2S_W_AW_AWADDR, Inputs_M2S_W_AW_AWBURST, Inputs_M2S_W_AW_AWCACHE, Inputs_M2S_W_AW_AWID, Inputs_M2S_W_AW_AWLEN, Inputs_M2S_W_AW_AWLOCK, Inputs_M2S_W_AW_AWPROT, Inputs_M2S_W_AW_AWQOS, Inputs_M2S_W_AW_AWREGION, Inputs_M2S_W_AW_AWSIZE, Inputs_M2S_W_AW_AWUSER, Inputs_M2S_W_AW_AWVALID, Inputs_M2S_W_B_BREADY, Inputs_M2S_W_W_WDATA, Inputs_M2S_W_W_WID, Inputs_M2S_W_W_WLAST, Inputs_M2S_W_W_WSTRB, Inputs_M2S_W_W_WUSER, Inputs_M2S_W_W_WVALID, Inputs_Reg_inWE, M2S, Reg, State_bytes, State_Written)
 	begin
-		AXI4RegisterModule_L71F28T44_Expr_1 <= Inputs_Reg_inWE;
-		AXI4RegisterModule_L77F9L92T10_AXI4RegisterModule_L78F33T80_Expr_1 <= Inputs_Reg_inWE;
-		AXI4RegisterModule_L77F9L92T10_AXI4RegisterModule_L78F33T80_Expr_2 <= axiSlave_outWREADYConfirming;
+		AXI4RegisterModule_L72F28T44_Expr_1 <= Inputs_Reg_inWE;
+		AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_1 <= Inputs_Reg_inWE;
+		AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_2 <= axiSlave_outWREADYConfirming;
 		Inputs_M2S_W_B_BREADY <= M2S(221);
 		Inputs_M2S_W_W_WVALID <= M2S(220);
 		Inputs_M2S_W_W_WUSER <= M2S(219 downto 212);
@@ -293,60 +293,60 @@ begin
 		Inputs_Reg_inWDATA(2) <= Reg(23 downto 16);
 		Inputs_Reg_inWDATA(1) <= Reg(15 downto 8);
 		Inputs_Reg_inWDATA(0) <= Reg(7 downto 0);
-		AXI4RegisterModule_L65F37L74T14_Object(0) <= AXI4RegisterModule_L68F29T33_Expr;
-		AXI4RegisterModule_L65F37L74T14_Object(1) <= AXI4RegisterModule_L70F29T33_Expr;
-		AXI4RegisterModule_L65F37L74T14_Object(2) <= AXI4RegisterModule_L72F28T32_Expr;
-		AXI4RegisterModule_L65F37L74T14_Object(34 downto 27) <= State_bytes(3);
-		AXI4RegisterModule_L65F37L74T14_Object(26 downto 19) <= State_bytes(2);
-		AXI4RegisterModule_L65F37L74T14_Object(18 downto 11) <= State_bytes(1);
-		AXI4RegisterModule_L65F37L74T14_Object(10 downto 3) <= State_bytes(0);
-		AXI4RegisterModule_L65F37L74T14_Object(35) <= AXI4RegisterModule_L69F28T32_Expr;
-		AXI4RegisterModule_L65F37L74T14_Object(36) <= AXI4RegisterModule_L71F28T44_Expr;
-		AXI4RegisterModule_L65F37L74T14_Object(44 downto 37) <= Inputs_M2S_R_AR_ARID;
-		AXI4RegisterModule_L65F37L74T14_Object(76 downto 45) <= Inputs_M2S_R_AR_ARADDR;
-		AXI4RegisterModule_L65F37L74T14_Object(84 downto 77) <= Inputs_M2S_R_AR_ARLEN;
-		AXI4RegisterModule_L65F37L74T14_Object(87 downto 85) <= Inputs_M2S_R_AR_ARSIZE;
-		AXI4RegisterModule_L65F37L74T14_Object(89 downto 88) <= Inputs_M2S_R_AR_ARBURST;
-		AXI4RegisterModule_L65F37L74T14_Object(91 downto 90) <= Inputs_M2S_R_AR_ARLOCK;
-		AXI4RegisterModule_L65F37L74T14_Object(95 downto 92) <= Inputs_M2S_R_AR_ARCACHE;
-		AXI4RegisterModule_L65F37L74T14_Object(98 downto 96) <= Inputs_M2S_R_AR_ARPROT;
-		AXI4RegisterModule_L65F37L74T14_Object(102 downto 99) <= Inputs_M2S_R_AR_ARQOS;
-		AXI4RegisterModule_L65F37L74T14_Object(110 downto 103) <= Inputs_M2S_R_AR_ARREGION;
-		AXI4RegisterModule_L65F37L74T14_Object(118 downto 111) <= Inputs_M2S_R_AR_ARUSER;
-		AXI4RegisterModule_L65F37L74T14_Object(119) <= Inputs_M2S_R_AR_ARVALID;
-		AXI4RegisterModule_L65F37L74T14_Object(120) <= Inputs_M2S_R_R_RREADY;
-		AXI4RegisterModule_L65F37L74T14_Object(128 downto 121) <= Inputs_M2S_W_AW_AWID;
-		AXI4RegisterModule_L65F37L74T14_Object(160 downto 129) <= Inputs_M2S_W_AW_AWADDR;
-		AXI4RegisterModule_L65F37L74T14_Object(168 downto 161) <= Inputs_M2S_W_AW_AWLEN;
-		AXI4RegisterModule_L65F37L74T14_Object(171 downto 169) <= Inputs_M2S_W_AW_AWSIZE;
-		AXI4RegisterModule_L65F37L74T14_Object(173 downto 172) <= Inputs_M2S_W_AW_AWBURST;
-		AXI4RegisterModule_L65F37L74T14_Object(175 downto 174) <= Inputs_M2S_W_AW_AWLOCK;
-		AXI4RegisterModule_L65F37L74T14_Object(179 downto 176) <= Inputs_M2S_W_AW_AWCACHE;
-		AXI4RegisterModule_L65F37L74T14_Object(182 downto 180) <= Inputs_M2S_W_AW_AWPROT;
-		AXI4RegisterModule_L65F37L74T14_Object(186 downto 183) <= Inputs_M2S_W_AW_AWQOS;
-		AXI4RegisterModule_L65F37L74T14_Object(194 downto 187) <= Inputs_M2S_W_AW_AWREGION;
-		AXI4RegisterModule_L65F37L74T14_Object(202 downto 195) <= Inputs_M2S_W_AW_AWUSER;
-		AXI4RegisterModule_L65F37L74T14_Object(203) <= Inputs_M2S_W_AW_AWVALID;
-		AXI4RegisterModule_L65F37L74T14_Object(211 downto 204) <= Inputs_M2S_W_W_WID;
-		AXI4RegisterModule_L65F37L74T14_Object(243 downto 236) <= Inputs_M2S_W_W_WDATA(3);
-		AXI4RegisterModule_L65F37L74T14_Object(235 downto 228) <= Inputs_M2S_W_W_WDATA(2);
-		AXI4RegisterModule_L65F37L74T14_Object(227 downto 220) <= Inputs_M2S_W_W_WDATA(1);
-		AXI4RegisterModule_L65F37L74T14_Object(219 downto 212) <= Inputs_M2S_W_W_WDATA(0);
-		AXI4RegisterModule_L65F37L74T14_Object(247 downto 244) <= Inputs_M2S_W_W_WSTRB;
-		AXI4RegisterModule_L65F37L74T14_Object(248) <= Inputs_M2S_W_W_WLAST;
-		AXI4RegisterModule_L65F37L74T14_Object(256 downto 249) <= Inputs_M2S_W_W_WUSER;
-		AXI4RegisterModule_L65F37L74T14_Object(257) <= Inputs_M2S_W_W_WVALID;
-		AXI4RegisterModule_L65F37L74T14_Object(258) <= Inputs_M2S_W_B_BREADY;
-		axiSlave_M2S <= AXI4RegisterModule_L65F37L74T14_Object(258 downto 37);
-		axiSlave_inWREADY <= AXI4RegisterModule_L65F37L74T14_Object(36);
-		axiSlave_inRVALID <= AXI4RegisterModule_L65F37L74T14_Object(35);
-		axiSlave_inRDATA(3) <= AXI4RegisterModule_L65F37L74T14_Object(34 downto 27);
-		axiSlave_inRDATA(2) <= AXI4RegisterModule_L65F37L74T14_Object(26 downto 19);
-		axiSlave_inRDATA(1) <= AXI4RegisterModule_L65F37L74T14_Object(18 downto 11);
-		axiSlave_inRDATA(0) <= AXI4RegisterModule_L65F37L74T14_Object(10 downto 3);
-		axiSlave_inBVALID <= AXI4RegisterModule_L65F37L74T14_Object(2);
-		axiSlave_inAWREADY <= AXI4RegisterModule_L65F37L74T14_Object(1);
-		axiSlave_inARREADY <= AXI4RegisterModule_L65F37L74T14_Object(0);
+		AXI4RegisterModule_L66F37L75T14_Object(0) <= AXI4RegisterModule_L69F29T33_Expr;
+		AXI4RegisterModule_L66F37L75T14_Object(1) <= AXI4RegisterModule_L71F29T33_Expr;
+		AXI4RegisterModule_L66F37L75T14_Object(2) <= AXI4RegisterModule_L73F28T32_Expr;
+		AXI4RegisterModule_L66F37L75T14_Object(34 downto 27) <= State_bytes(3);
+		AXI4RegisterModule_L66F37L75T14_Object(26 downto 19) <= State_bytes(2);
+		AXI4RegisterModule_L66F37L75T14_Object(18 downto 11) <= State_bytes(1);
+		AXI4RegisterModule_L66F37L75T14_Object(10 downto 3) <= State_bytes(0);
+		AXI4RegisterModule_L66F37L75T14_Object(35) <= AXI4RegisterModule_L70F28T32_Expr;
+		AXI4RegisterModule_L66F37L75T14_Object(36) <= AXI4RegisterModule_L72F28T44_Expr;
+		AXI4RegisterModule_L66F37L75T14_Object(44 downto 37) <= Inputs_M2S_R_AR_ARID;
+		AXI4RegisterModule_L66F37L75T14_Object(76 downto 45) <= Inputs_M2S_R_AR_ARADDR;
+		AXI4RegisterModule_L66F37L75T14_Object(84 downto 77) <= Inputs_M2S_R_AR_ARLEN;
+		AXI4RegisterModule_L66F37L75T14_Object(87 downto 85) <= Inputs_M2S_R_AR_ARSIZE;
+		AXI4RegisterModule_L66F37L75T14_Object(89 downto 88) <= Inputs_M2S_R_AR_ARBURST;
+		AXI4RegisterModule_L66F37L75T14_Object(91 downto 90) <= Inputs_M2S_R_AR_ARLOCK;
+		AXI4RegisterModule_L66F37L75T14_Object(95 downto 92) <= Inputs_M2S_R_AR_ARCACHE;
+		AXI4RegisterModule_L66F37L75T14_Object(98 downto 96) <= Inputs_M2S_R_AR_ARPROT;
+		AXI4RegisterModule_L66F37L75T14_Object(102 downto 99) <= Inputs_M2S_R_AR_ARQOS;
+		AXI4RegisterModule_L66F37L75T14_Object(110 downto 103) <= Inputs_M2S_R_AR_ARREGION;
+		AXI4RegisterModule_L66F37L75T14_Object(118 downto 111) <= Inputs_M2S_R_AR_ARUSER;
+		AXI4RegisterModule_L66F37L75T14_Object(119) <= Inputs_M2S_R_AR_ARVALID;
+		AXI4RegisterModule_L66F37L75T14_Object(120) <= Inputs_M2S_R_R_RREADY;
+		AXI4RegisterModule_L66F37L75T14_Object(128 downto 121) <= Inputs_M2S_W_AW_AWID;
+		AXI4RegisterModule_L66F37L75T14_Object(160 downto 129) <= Inputs_M2S_W_AW_AWADDR;
+		AXI4RegisterModule_L66F37L75T14_Object(168 downto 161) <= Inputs_M2S_W_AW_AWLEN;
+		AXI4RegisterModule_L66F37L75T14_Object(171 downto 169) <= Inputs_M2S_W_AW_AWSIZE;
+		AXI4RegisterModule_L66F37L75T14_Object(173 downto 172) <= Inputs_M2S_W_AW_AWBURST;
+		AXI4RegisterModule_L66F37L75T14_Object(175 downto 174) <= Inputs_M2S_W_AW_AWLOCK;
+		AXI4RegisterModule_L66F37L75T14_Object(179 downto 176) <= Inputs_M2S_W_AW_AWCACHE;
+		AXI4RegisterModule_L66F37L75T14_Object(182 downto 180) <= Inputs_M2S_W_AW_AWPROT;
+		AXI4RegisterModule_L66F37L75T14_Object(186 downto 183) <= Inputs_M2S_W_AW_AWQOS;
+		AXI4RegisterModule_L66F37L75T14_Object(194 downto 187) <= Inputs_M2S_W_AW_AWREGION;
+		AXI4RegisterModule_L66F37L75T14_Object(202 downto 195) <= Inputs_M2S_W_AW_AWUSER;
+		AXI4RegisterModule_L66F37L75T14_Object(203) <= Inputs_M2S_W_AW_AWVALID;
+		AXI4RegisterModule_L66F37L75T14_Object(211 downto 204) <= Inputs_M2S_W_W_WID;
+		AXI4RegisterModule_L66F37L75T14_Object(243 downto 236) <= Inputs_M2S_W_W_WDATA(3);
+		AXI4RegisterModule_L66F37L75T14_Object(235 downto 228) <= Inputs_M2S_W_W_WDATA(2);
+		AXI4RegisterModule_L66F37L75T14_Object(227 downto 220) <= Inputs_M2S_W_W_WDATA(1);
+		AXI4RegisterModule_L66F37L75T14_Object(219 downto 212) <= Inputs_M2S_W_W_WDATA(0);
+		AXI4RegisterModule_L66F37L75T14_Object(247 downto 244) <= Inputs_M2S_W_W_WSTRB;
+		AXI4RegisterModule_L66F37L75T14_Object(248) <= Inputs_M2S_W_W_WLAST;
+		AXI4RegisterModule_L66F37L75T14_Object(256 downto 249) <= Inputs_M2S_W_W_WUSER;
+		AXI4RegisterModule_L66F37L75T14_Object(257) <= Inputs_M2S_W_W_WVALID;
+		AXI4RegisterModule_L66F37L75T14_Object(258) <= Inputs_M2S_W_B_BREADY;
+		axiSlave_M2S <= AXI4RegisterModule_L66F37L75T14_Object(258 downto 37);
+		axiSlave_inWREADY <= AXI4RegisterModule_L66F37L75T14_Object(36);
+		axiSlave_inRVALID <= AXI4RegisterModule_L66F37L75T14_Object(35);
+		axiSlave_inRDATA(3) <= AXI4RegisterModule_L66F37L75T14_Object(34 downto 27);
+		axiSlave_inRDATA(2) <= AXI4RegisterModule_L66F37L75T14_Object(26 downto 19);
+		axiSlave_inRDATA(1) <= AXI4RegisterModule_L66F37L75T14_Object(18 downto 11);
+		axiSlave_inRDATA(0) <= AXI4RegisterModule_L66F37L75T14_Object(10 downto 3);
+		axiSlave_inBVALID <= AXI4RegisterModule_L66F37L75T14_Object(2);
+		axiSlave_inAWREADY <= AXI4RegisterModule_L66F37L75T14_Object(1);
+		axiSlave_inARREADY <= AXI4RegisterModule_L66F37L75T14_Object(0);
 		outACK <= Inputs_Reg_inWE;
 		outData0 <= State_bytes(0);
 		outData1 <= State_bytes(1);

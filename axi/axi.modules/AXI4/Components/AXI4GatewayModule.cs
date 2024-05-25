@@ -3,6 +3,7 @@ using Quokka.RTL;
 
 namespace axi.modules
 {
+
     public class AXI4GatewayModuleInputs
     {
         public AXI4GatewayModuleInputs() : this(axiSize.B4) { }

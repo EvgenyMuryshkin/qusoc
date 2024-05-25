@@ -1,0 +1,4 @@
+No reads:
+	State_UnusedSignal
+No writes:
+	NextState_UnusedSignal

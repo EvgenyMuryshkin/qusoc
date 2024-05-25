@@ -97,19 +97,19 @@ namespace QRV32.CPU
                                 switch ((int)id.Funct3)
                                 {
                                     case 0:
-                                        decoded = $"LB x{(uint)id.RD}, {(int)id.STypeImm}(x{(uint)id.RS1})";
+                                        decoded = $"LB x{(uint)id.RD}, {(int)id.ITypeImm}(x{(uint)id.RS1})";
                                         break;
                                     case 1:
-                                        decoded = $"LH x{(uint)id.RD}, {(int)id.STypeImm}(x{(uint)id.RS1})";
+                                        decoded = $"LH x{(uint)id.RD}, {(int)id.ITypeImm}(x{(uint)id.RS1})";
                                         break;
                                     case 2:
-                                        decoded = $"LW x{(uint)id.RD}, {(int)id.STypeImm}(x{(uint)id.RS1})";
+                                        decoded = $"LW x{(uint)id.RD}, {(int)id.ITypeImm}(x{(uint)id.RS1})";
                                         break;
                                     case 4:
-                                        decoded = $"LBU x{(uint)id.RD}, {(int)id.STypeImm}(x{(uint)id.RS1})";
+                                        decoded = $"LBU x{(uint)id.RD}, {(int)id.ITypeImm}(x{(uint)id.RS1})";
                                         break;
                                     case 5:
-                                        decoded = $"LHU x{(uint)id.RD}, {(int)id.STypeImm}(x{(uint)id.RS1})";
+                                        decoded = $"LHU x{(uint)id.RD}, {(int)id.ITypeImm}(x{(uint)id.RS1})";
                                         break;
                                 }
                                 break;

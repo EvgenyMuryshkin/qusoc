@@ -1,4 +1,31 @@
-﻿li x1, 0x80000000 # reg blink storage
+﻿li x1, 0x800
+li x2, 0x01020304;
+sb x2, 0x0(x1)
+sb x2, 0x1(x1)
+sb x2, 0x2(x1)
+sb x2, 0x3(x1)
+li x1, 0x804
+sw x2, 0(x1)
+lb x10, 0x0(x1)
+lb x11, 0x1(x1)
+lb x12, 0x2(x1)
+lb x13, 0x3(x1)
+li x1, 0x808
+
+#addi x13, x0, 4
+#addi x12, x0, 3
+#addi x11, x0, 2
+#addi x10, x0, 1
+
+sb x13, 0x0(x1)
+sb x12, 0x1(x1)
+sb x11, 0x2(x1)
+sb x10, 0x3(x1)
+
+x:
+	j x
+
+li x1, 0x80000000 # reg blink storage
 li x20, 3 # number of iterations
 li x21, 5 # number of blinks per iteration
 

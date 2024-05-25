@@ -2,6 +2,7 @@
 using Quokka.RTL;
 using axi.modules;
 using System;
+using System.Diagnostics.Metrics;
 
 namespace AXISoC
 {
@@ -30,6 +31,27 @@ namespace AXISoC
         {
             CPU = new RISCVModule(regsType);
             this.ARUSER = ARUSER;
+        }
+
+        RTLBitArray internalAddressBits => CPU.MemAddress;
+        RTLBitArray internalByteAddress => internalAddressBits[1, 0] << 3;
+
+        RTLBitArray masterReadData => new RTLBitArray(Master.RDATA);
+        RTLBitArray readValue => (masterReadData >> internalByteAddress) & memAccessMask;
+
+        RTLBitArray memAccessMask
+        {
+            get
+            {
+                var mask = new RTLBitArray(uint.MaxValue);
+
+                if (CPU.MemAccessMode == 0)
+                    mask = new RTLBitArray(byte.MaxValue).Resized(32);
+                else if (CPU.MemAccessMode == 1)
+                    mask = new RTLBitArray(ushort.MaxValue).Resized(32);
+
+                return mask;
+            }
         }
 
         RTLBitArray memAccessWSTRB
@@ -63,7 +85,7 @@ namespace AXISoC
                 { 
                     BaseAddress = 0,
                     MemReady = Master.RACK || Master.WACK,
-                    MemReadData = new RTLBitArray(Master.RDATA)
+                    MemReadData = readValue
                 }
             );
 
