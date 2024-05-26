@@ -13,7 +13,6 @@ namespace QuSoC.Tests
     public abstract class AXISoCModuleSimulator<TModule> : RTLInstanceSimulator<TModule>
         where TModule : IRTLCombinationalModule
     {
-        protected HashSet<uint> InfiniteLoopAddresses = new HashSet<uint>();
         public uint ClockCycles = 0;
         Stopwatch runtime = new Stopwatch();
         public TimeSpan Duration => runtime.Elapsed;
@@ -21,23 +20,30 @@ namespace QuSoC.Tests
 
         protected AXISoCModuleSimulator() { }
 
-        protected abstract AXI4MemoryModule InstructionsMemory { get; }
+        protected Dictionary<string, HashSet<uint>> InfiniteLoopAddresses = new Dictionary<string, HashSet<uint>>();
+        protected abstract Dictionary<string, AXI4MemoryModule> InstructionsMemory { get; }
         protected abstract Dictionary<string, AXI4RISCVModule> CPUs { get; }
 
         public AXISoCModuleSimulator(TModule module, string vcdPath = null)
         {
             Initialize(module, vcdPath);
-            var instructionsMemory = InstructionsMemory;
 
-            InfiniteLoopAddresses.AddRange(
-                instructionsMemory
-                .State
-                .buff
-                .Select(bytes => (int)(new RTLBitArray(bytes)))
-                .Select((i, idx) => new { i, idx })
-                .Where(p => p.i == 0x6F) // j loop code
-                .Select(p => (uint)(p.idx * 4))
-            );
+            foreach (var p in InstructionsMemory)
+            {
+                var addresses = new HashSet<uint>();
+
+                addresses.AddRange(
+                    p.Value
+                    .State
+                    .buff
+                    .Select(bytes => (int)(new RTLBitArray(bytes)))
+                    .Select((i, idx) => new { i, idx })
+                    .Where(p => p.i == 0x6F) // j loop code
+                    .Select(p => (uint)(p.idx * 4))
+                );
+
+                InfiniteLoopAddresses[p.Key] = addresses;
+            }
         }
 
         public void RunToCompletion(uint maxClockCycles = 10000)
@@ -63,24 +69,28 @@ namespace QuSoC.Tests
 
                 foreach (var cpu in instructionFetch)
                 {
+                    var cpuName = cpuNames[cpu];
+                    var instructionsMemory = InstructionsMemory[cpuName];
+                    var infiniteLoopAddresses = InfiniteLoopAddresses[cpuName];
+
                     var addr = cpu.CPU.MemAddress >> 2;
-                    if (addr >= InstructionsMemory.State.buff.Length)
+                    if (addr >= instructionsMemory.State.buff.Length)
                         Debugger.Break();
 
                     if (cpu.CPU.Inputs.MemReady)
                     {
-                        var instruction = (uint)(new RTLBitArray(InstructionsMemory.State.buff[addr]));
+                        var instruction = (uint)(new RTLBitArray(instructionsMemory.State.buff[addr]));
                         var disasm = new Disassembler();
                         var code = disasm.Single(cpu.CPU.MemAddress, instruction);
                         if (Debugger.IsAttached)
                         {
-                            Trace.WriteLine($"{cpuNames[cpu]}: {code}");
+                            Trace.WriteLine($"{cpuName}: {code}");
                         }
                     }
 
-                    if (InfiniteLoopAddresses.Contains(cpu.CPU.MemAddress))
+                    if (infiniteLoopAddresses.Contains(cpu.CPU.MemAddress))
                     {
-                        Trace.WriteLine($"{cpuNames[cpu]} is in infinite loop");
+                        Trace.WriteLine($"{cpuName} is in infinite loop");
                         inInfiniteLoop[cpu] = true;
                     }
                 }
@@ -103,20 +113,29 @@ namespace QuSoC.Tests
 
                 ClockCycle();
             }
+            Trace.WriteLine($"Completed");
+            Trace.WriteLine($"CPS: {CPS} ");
 
             runtime.Stop();
         }
 
-        public List<string> MemoryDump()
+        public Dictionary<string, List<string>> MemoryDump()
         {
-            var memDump = InstructionsMemory.State.buff
-                .Select(bytes => (int)(new RTLBitArray(bytes)))
-                .Select((data, idx) => new { data, idx = idx * 4 })
-                .Where(d => d.data != 0)
-                .Select(d => $"[{d.idx:X6}]: {d.data:X8}")
-                .ToList();
+            var cpuDump = new Dictionary<string, List<string>>();
 
-            return memDump;
+            foreach (var p in InstructionsMemory)
+            {
+                var memDump = p.Value.State.buff
+                    .Select(bytes => (int)(new RTLBitArray(bytes)))
+                    .Select((data, idx) => new { data, idx = idx * 4 })
+                    .Where(d => d.data != 0)
+                    .Select(d => $"[{d.idx:X6}]: {d.data:X8}")
+                    .ToList();
+
+                cpuDump[p.Key] = memDump;
+            }
+
+            return cpuDump;
         }
     }
 }

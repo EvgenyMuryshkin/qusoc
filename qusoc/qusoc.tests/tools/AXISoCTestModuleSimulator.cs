@@ -20,8 +20,8 @@ namespace QuSoC.Tests
 
         }
 
-        protected override AXI4MemoryModule InstructionsMemory 
-            => _topLevel.Memory;
+        protected override Dictionary<string, AXI4MemoryModule> InstructionsMemory 
+            => new Dictionary<string, AXI4MemoryModule>() { { "CPU", _topLevel.Memory } };
 
         protected override Dictionary<string, AXI4RISCVModule> CPUs 
             => new Dictionary<string, AXI4RISCVModule>() { { "CPU", _topLevel.CPU }  };
@@ -36,9 +36,13 @@ namespace QuSoC.Tests
 
         }
 
-        protected override AXI4MemoryModule InstructionsMemory 
-            => _topLevel.Memory;
-
+        protected override Dictionary<string, AXI4MemoryModule> InstructionsMemory
+            => new Dictionary<string, AXI4MemoryModule>()
+            {
+                { "CPU0", _topLevel.Memory },
+                { "CPU1", _topLevel.Memory }
+            };
+            
         protected override Dictionary<string, AXI4RISCVModule> CPUs 
             => new Dictionary<string, AXI4RISCVModule>() 
             {
@@ -56,8 +60,14 @@ namespace QuSoC.Tests
 
         }
 
-        protected override AXI4MemoryModule InstructionsMemory
-            => _topLevel.Memory;
+        protected override Dictionary<string, AXI4MemoryModule> InstructionsMemory
+            => new Dictionary<string, AXI4MemoryModule>()
+            {
+                { "CPU0", _topLevel.cpu0Memory },
+                { "CPU1", _topLevel.cpu1Memory },
+                { "CPU2", _topLevel.cpu2Memory },
+                { "CPU3", _topLevel.cpu3Memory }
+            };
 
         protected override Dictionary<string, AXI4RISCVModule> CPUs
             => new Dictionary<string, AXI4RISCVModule>()

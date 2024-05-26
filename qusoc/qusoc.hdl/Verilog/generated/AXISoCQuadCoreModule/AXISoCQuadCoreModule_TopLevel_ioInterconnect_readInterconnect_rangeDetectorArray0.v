@@ -25,7 +25,7 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 	// [END USER PORTS]
 	input wire [31:0] iAddress,
 	output wire oActive,
-	output wire [2:0] oIndex
+	output wire [3:0] oIndex
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -35,7 +35,7 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire signed [3: 0] rangeDetectorsCount = 4'b0111;
+	wire signed [4: 0] rangeDetectorsCount = 5'b01011;
 	wire RangeDetectorArrayModule_L48F13L54T14_0_idx = 1'b0;
 	wire RangeDetectorArrayModule_L48F13L54T14_1_idx = 1'b1;
 	wire [1: 0] RangeDetectorArrayModule_L48F13L54T14_2_idx = 2'b10;
@@ -43,6 +43,10 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 	wire [2: 0] RangeDetectorArrayModule_L48F13L54T14_4_idx = 3'b100;
 	wire [2: 0] RangeDetectorArrayModule_L48F13L54T14_5_idx = 3'b101;
 	wire [2: 0] RangeDetectorArrayModule_L48F13L54T14_6_idx = 3'b110;
+	wire [2: 0] RangeDetectorArrayModule_L48F13L54T14_7_idx = 3'b111;
+	wire [3: 0] RangeDetectorArrayModule_L48F13L54T14_8_idx = 4'b1000;
+	wire [3: 0] RangeDetectorArrayModule_L48F13L54T14_9_idx = 4'b1001;
+	wire [3: 0] RangeDetectorArrayModule_L48F13L54T14_10_idx = 4'b1010;
 	wire RangeDetectorArrayModule_L56F13L59T14_0_idx = 1'b0;
 	wire RangeDetectorArrayModule_L56F13L59T14_1_idx = 1'b1;
 	wire [1: 0] RangeDetectorArrayModule_L56F13L59T14_2_idx = 2'b10;
@@ -50,10 +54,14 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 	wire [2: 0] RangeDetectorArrayModule_L56F13L59T14_4_idx = 3'b100;
 	wire [2: 0] RangeDetectorArrayModule_L56F13L59T14_5_idx = 3'b101;
 	wire [2: 0] RangeDetectorArrayModule_L56F13L59T14_6_idx = 3'b110;
+	wire [2: 0] RangeDetectorArrayModule_L56F13L59T14_7_idx = 3'b111;
+	wire [3: 0] RangeDetectorArrayModule_L56F13L59T14_8_idx = 4'b1000;
+	wire [3: 0] RangeDetectorArrayModule_L56F13L59T14_9_idx = 4'b1001;
+	wire [3: 0] RangeDetectorArrayModule_L56F13L59T14_10_idx = 4'b1010;
 	wire [31: 0] Inputs_iAddress;
 	wire encoder_HasActive;
-	wire [2: 0] encoder_MSBIndex;
-	wire [6: 0] encoder_MSBValue;
+	wire [3: 0] encoder_MSBIndex;
+	wire [10: 0] encoder_MSBValue;
 	wire [31: 0] rangeDetectors0_Value;
 	wire rangeDetectors0_IsActive;
 	wire [31: 0] rangeDetectors1_Value;
@@ -68,6 +76,14 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 	wire rangeDetectors5_IsActive;
 	wire [31: 0] rangeDetectors6_Value;
 	wire rangeDetectors6_IsActive;
+	wire [31: 0] rangeDetectors7_Value;
+	wire rangeDetectors7_IsActive;
+	wire [31: 0] rangeDetectors8_Value;
+	wire rangeDetectors8_IsActive;
+	wire [31: 0] rangeDetectors9_Value;
+	wire rangeDetectors9_IsActive;
+	wire [31: 0] rangeDetectors10_Value;
+	wire rangeDetectors10_IsActive;
 	wire [31: 0] RangeDetectorArrayModule_L48F13L54T14_0_RangeDetectorArrayModule_L50F52L53T18_Object;
 	wire [31: 0] RangeDetectorArrayModule_L48F13L54T14_1_RangeDetectorArrayModule_L50F52L53T18_Object;
 	wire [31: 0] RangeDetectorArrayModule_L48F13L54T14_2_RangeDetectorArrayModule_L50F52L53T18_Object;
@@ -75,7 +91,11 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 	wire [31: 0] RangeDetectorArrayModule_L48F13L54T14_4_RangeDetectorArrayModule_L50F52L53T18_Object;
 	wire [31: 0] RangeDetectorArrayModule_L48F13L54T14_5_RangeDetectorArrayModule_L50F52L53T18_Object;
 	wire [31: 0] RangeDetectorArrayModule_L48F13L54T14_6_RangeDetectorArrayModule_L50F52L53T18_Object;
-	wire [6: 0] RangeDetectorArrayModule_L36F36L40T14_Object;
+	wire [31: 0] RangeDetectorArrayModule_L48F13L54T14_7_RangeDetectorArrayModule_L50F52L53T18_Object;
+	wire [31: 0] RangeDetectorArrayModule_L48F13L54T14_8_RangeDetectorArrayModule_L50F52L53T18_Object;
+	wire [31: 0] RangeDetectorArrayModule_L48F13L54T14_9_RangeDetectorArrayModule_L50F52L53T18_Object;
+	wire [31: 0] RangeDetectorArrayModule_L48F13L54T14_10_RangeDetectorArrayModule_L50F52L53T18_Object;
+	wire [10: 0] RangeDetectorArrayModule_L36F36L40T14_Object;
 	wire encoder_iValues0_encoder_iValues_HardLink;
 	wire encoder_iValues1_encoder_iValues_HardLink;
 	wire encoder_iValues2_encoder_iValues_HardLink;
@@ -83,9 +103,13 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 	wire encoder_iValues4_encoder_iValues_HardLink;
 	wire encoder_iValues5_encoder_iValues_HardLink;
 	wire encoder_iValues6_encoder_iValues_HardLink;
+	wire encoder_iValues7_encoder_iValues_HardLink;
+	wire encoder_iValues8_encoder_iValues_HardLink;
+	wire encoder_iValues9_encoder_iValues_HardLink;
+	wire encoder_iValues10_encoder_iValues_HardLink;
 	wire encoder_HasActive_encoder_HasActive_HardLink;
-	wire [2: 0] encoder_MSBIndex_encoder_MSBIndex_HardLink;
-	wire [6: 0] encoder_MSBValue_encoder_MSBValue_HardLink;
+	wire [3: 0] encoder_MSBIndex_encoder_MSBIndex_HardLink;
+	wire [10: 0] encoder_MSBValue_encoder_MSBValue_HardLink;
 	wire [31: 0] rangeDetectors0_Value_rangeDetectors0_Value_HardLink;
 	wire rangeDetectors0_IsActive_rangeDetectors0_IsActive_HardLink;
 	wire [31: 0] rangeDetectors1_Value_rangeDetectors1_Value_HardLink;
@@ -100,8 +124,16 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 	wire rangeDetectors5_IsActive_rangeDetectors5_IsActive_HardLink;
 	wire [31: 0] rangeDetectors6_Value_rangeDetectors6_Value_HardLink;
 	wire rangeDetectors6_IsActive_rangeDetectors6_IsActive_HardLink;
-	wire rangeActive [0 : 6];
-	wire encoder_iValues [0 : 6];
+	wire [31: 0] rangeDetectors7_Value_rangeDetectors7_Value_HardLink;
+	wire rangeDetectors7_IsActive_rangeDetectors7_IsActive_HardLink;
+	wire [31: 0] rangeDetectors8_Value_rangeDetectors8_Value_HardLink;
+	wire rangeDetectors8_IsActive_rangeDetectors8_IsActive_HardLink;
+	wire [31: 0] rangeDetectors9_Value_rangeDetectors9_Value_HardLink;
+	wire rangeDetectors9_IsActive_rangeDetectors9_IsActive_HardLink;
+	wire [31: 0] rangeDetectors10_Value_rangeDetectors10_Value_HardLink;
+	wire rangeDetectors10_IsActive_rangeDetectors10_IsActive_HardLink;
+	wire rangeActive [0 : 10];
+	wire encoder_iValues [0 : 10];
 	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray0_encoder
 	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray0_encoder
 	(
@@ -114,6 +146,10 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 		.iValues4 (encoder_iValues4_encoder_iValues_HardLink),
 		.iValues5 (encoder_iValues5_encoder_iValues_HardLink),
 		.iValues6 (encoder_iValues6_encoder_iValues_HardLink),
+		.iValues7 (encoder_iValues7_encoder_iValues_HardLink),
+		.iValues8 (encoder_iValues8_encoder_iValues_HardLink),
+		.iValues9 (encoder_iValues9_encoder_iValues_HardLink),
+		.iValues10 (encoder_iValues10_encoder_iValues_HardLink),
 		.HasActive (encoder_HasActive_encoder_HasActive_HardLink),
 		.MSBIndex (encoder_MSBIndex_encoder_MSBIndex_HardLink),
 		.MSBValue (encoder_MSBValue_encoder_MSBValue_HardLink)
@@ -174,6 +210,38 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 		.Value (rangeDetectors6_Value_rangeDetectors6_Value_HardLink),
 		.IsActive (rangeDetectors6_IsActive_rangeDetectors6_IsActive_HardLink)
 	);
+	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray0_rangeDetectors7
+	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray0_rangeDetectors7
+	(
+		// [BEGIN USER MAP FOR rangeDetectors7]
+		// [END USER MAP FOR rangeDetectors7]
+		.Value (rangeDetectors7_Value_rangeDetectors7_Value_HardLink),
+		.IsActive (rangeDetectors7_IsActive_rangeDetectors7_IsActive_HardLink)
+	);
+	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray0_rangeDetectors8
+	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray0_rangeDetectors8
+	(
+		// [BEGIN USER MAP FOR rangeDetectors8]
+		// [END USER MAP FOR rangeDetectors8]
+		.Value (rangeDetectors8_Value_rangeDetectors8_Value_HardLink),
+		.IsActive (rangeDetectors8_IsActive_rangeDetectors8_IsActive_HardLink)
+	);
+	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray0_rangeDetectors9
+	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray0_rangeDetectors9
+	(
+		// [BEGIN USER MAP FOR rangeDetectors9]
+		// [END USER MAP FOR rangeDetectors9]
+		.Value (rangeDetectors9_Value_rangeDetectors9_Value_HardLink),
+		.IsActive (rangeDetectors9_IsActive_rangeDetectors9_IsActive_HardLink)
+	);
+	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray0_rangeDetectors10
+	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray0_rangeDetectors10
+	(
+		// [BEGIN USER MAP FOR rangeDetectors10]
+		// [END USER MAP FOR rangeDetectors10]
+		.Value (rangeDetectors10_Value_rangeDetectors10_Value_HardLink),
+		.IsActive (rangeDetectors10_IsActive_rangeDetectors10_IsActive_HardLink)
+	);
 	assign Inputs_iAddress = iAddress;
 	assign RangeDetectorArrayModule_L48F13L54T14_0_RangeDetectorArrayModule_L50F52L53T18_Object[31:0] = Inputs_iAddress;
 	assign rangeDetectors0_Value = RangeDetectorArrayModule_L48F13L54T14_0_RangeDetectorArrayModule_L50F52L53T18_Object[31:0];
@@ -189,6 +257,14 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 	assign rangeDetectors5_Value = RangeDetectorArrayModule_L48F13L54T14_5_RangeDetectorArrayModule_L50F52L53T18_Object[31:0];
 	assign RangeDetectorArrayModule_L48F13L54T14_6_RangeDetectorArrayModule_L50F52L53T18_Object[31:0] = Inputs_iAddress;
 	assign rangeDetectors6_Value = RangeDetectorArrayModule_L48F13L54T14_6_RangeDetectorArrayModule_L50F52L53T18_Object[31:0];
+	assign RangeDetectorArrayModule_L48F13L54T14_7_RangeDetectorArrayModule_L50F52L53T18_Object[31:0] = Inputs_iAddress;
+	assign rangeDetectors7_Value = RangeDetectorArrayModule_L48F13L54T14_7_RangeDetectorArrayModule_L50F52L53T18_Object[31:0];
+	assign RangeDetectorArrayModule_L48F13L54T14_8_RangeDetectorArrayModule_L50F52L53T18_Object[31:0] = Inputs_iAddress;
+	assign rangeDetectors8_Value = RangeDetectorArrayModule_L48F13L54T14_8_RangeDetectorArrayModule_L50F52L53T18_Object[31:0];
+	assign RangeDetectorArrayModule_L48F13L54T14_9_RangeDetectorArrayModule_L50F52L53T18_Object[31:0] = Inputs_iAddress;
+	assign rangeDetectors9_Value = RangeDetectorArrayModule_L48F13L54T14_9_RangeDetectorArrayModule_L50F52L53T18_Object[31:0];
+	assign RangeDetectorArrayModule_L48F13L54T14_10_RangeDetectorArrayModule_L50F52L53T18_Object[31:0] = Inputs_iAddress;
+	assign rangeDetectors10_Value = RangeDetectorArrayModule_L48F13L54T14_10_RangeDetectorArrayModule_L50F52L53T18_Object[31:0];
 	assign rangeActive[0] = rangeDetectors0_IsActive;
 	assign rangeActive[1] = rangeDetectors1_IsActive;
 	assign rangeActive[2] = rangeDetectors2_IsActive;
@@ -196,7 +272,15 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 	assign rangeActive[4] = rangeDetectors4_IsActive;
 	assign rangeActive[5] = rangeDetectors5_IsActive;
 	assign rangeActive[6] = rangeDetectors6_IsActive;
-	assign RangeDetectorArrayModule_L36F36L40T14_Object[6:0] = {
+	assign rangeActive[7] = rangeDetectors7_IsActive;
+	assign rangeActive[8] = rangeDetectors8_IsActive;
+	assign rangeActive[9] = rangeDetectors9_IsActive;
+	assign rangeActive[10] = rangeDetectors10_IsActive;
+	assign RangeDetectorArrayModule_L36F36L40T14_Object[10:0] = {
+		rangeActive[10],
+		rangeActive[9],
+		rangeActive[8],
+		rangeActive[7],
 		rangeActive[6],
 		rangeActive[5],
 		rangeActive[4],
@@ -206,6 +290,10 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 		rangeActive[0]
 	}
 	;
+	assign encoder_iValues[10] = RangeDetectorArrayModule_L36F36L40T14_Object[10];
+	assign encoder_iValues[9] = RangeDetectorArrayModule_L36F36L40T14_Object[9];
+	assign encoder_iValues[8] = RangeDetectorArrayModule_L36F36L40T14_Object[8];
+	assign encoder_iValues[7] = RangeDetectorArrayModule_L36F36L40T14_Object[7];
 	assign encoder_iValues[6] = RangeDetectorArrayModule_L36F36L40T14_Object[6];
 	assign encoder_iValues[5] = RangeDetectorArrayModule_L36F36L40T14_Object[5];
 	assign encoder_iValues[4] = RangeDetectorArrayModule_L36F36L40T14_Object[4];
@@ -222,6 +310,10 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 	assign encoder_iValues4_encoder_iValues_HardLink = encoder_iValues[4];
 	assign encoder_iValues5_encoder_iValues_HardLink = encoder_iValues[5];
 	assign encoder_iValues6_encoder_iValues_HardLink = encoder_iValues[6];
+	assign encoder_iValues7_encoder_iValues_HardLink = encoder_iValues[7];
+	assign encoder_iValues8_encoder_iValues_HardLink = encoder_iValues[8];
+	assign encoder_iValues9_encoder_iValues_HardLink = encoder_iValues[9];
+	assign encoder_iValues10_encoder_iValues_HardLink = encoder_iValues[10];
 	assign encoder_HasActive = encoder_HasActive_encoder_HasActive_HardLink;
 	assign encoder_MSBIndex = encoder_MSBIndex_encoder_MSBIndex_HardLink;
 	assign encoder_MSBValue = encoder_MSBValue_encoder_MSBValue_HardLink;
@@ -239,6 +331,14 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 	assign rangeDetectors5_IsActive = rangeDetectors5_IsActive_rangeDetectors5_IsActive_HardLink;
 	assign rangeDetectors6_Value_rangeDetectors6_Value_HardLink = rangeDetectors6_Value;
 	assign rangeDetectors6_IsActive = rangeDetectors6_IsActive_rangeDetectors6_IsActive_HardLink;
+	assign rangeDetectors7_Value_rangeDetectors7_Value_HardLink = rangeDetectors7_Value;
+	assign rangeDetectors7_IsActive = rangeDetectors7_IsActive_rangeDetectors7_IsActive_HardLink;
+	assign rangeDetectors8_Value_rangeDetectors8_Value_HardLink = rangeDetectors8_Value;
+	assign rangeDetectors8_IsActive = rangeDetectors8_IsActive_rangeDetectors8_IsActive_HardLink;
+	assign rangeDetectors9_Value_rangeDetectors9_Value_HardLink = rangeDetectors9_Value;
+	assign rangeDetectors9_IsActive = rangeDetectors9_IsActive_rangeDetectors9_IsActive_HardLink;
+	assign rangeDetectors10_Value_rangeDetectors10_Value_HardLink = rangeDetectors10_Value;
+	assign rangeDetectors10_IsActive = rangeDetectors10_IsActive_rangeDetectors10_IsActive_HardLink;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

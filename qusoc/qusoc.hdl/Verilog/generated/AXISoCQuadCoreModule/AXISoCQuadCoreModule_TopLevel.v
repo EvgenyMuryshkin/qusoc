@@ -58,15 +58,6 @@ module AXISoCQuadCoreModule_TopLevel
 	wire Inputs_iRX;
 	wire Inputs_iSwitch0;
 	wire Inputs_iSwitch1;
-	wire [221: 0] AutoIncrementCounter_M2S;
-	wire [31: 0] AutoIncrementCounter_oCounter;
-	wire AutoIncrementCounter_outWritten;
-	wire [73: 0] AutoIncrementCounter_S2M;
-	wire [221: 0] AXI4AutoDecrementRegister_M2S;
-	wire [32: 0] AXI4AutoDecrementRegister_Reg;
-	wire AXI4AutoDecrementRegister_outACK;
-	wire AXI4AutoDecrementRegister_outWritten;
-	wire [73: 0] AXI4AutoDecrementRegister_S2M;
 	wire [221: 0] Button0_M2S;
 	wire [31: 0] Button0_Sig;
 	wire [73: 0] Button0_S2M;
@@ -81,18 +72,72 @@ module AXISoCQuadCoreModule_TopLevel
 	wire [73: 0] Button3_S2M;
 	wire [73: 0] CPU0_S2M;
 	wire [221: 0] CPU0_M2S;
+	wire [221: 0] cpu0AutoDecrementRegister_M2S;
+	wire [32: 0] cpu0AutoDecrementRegister_Reg;
+	wire cpu0AutoDecrementRegister_outACK;
+	wire cpu0AutoDecrementRegister_outWritten;
+	wire [73: 0] cpu0AutoDecrementRegister_S2M;
+	wire [221: 0] cpu0AutoIncrementCounter_M2S;
+	wire [31: 0] cpu0AutoIncrementCounter_oCounter;
+	wire cpu0AutoIncrementCounter_outWritten;
+	wire [73: 0] cpu0AutoIncrementCounter_S2M;
+	wire [221: 0] cpu0IOGateway_iM2S;
+	wire [73: 0] cpu0IOGateway_iS2M;
+	wire [221: 0] cpu0IOGateway_oM2S;
+	wire [73: 0] cpu0IOGateway_oS2M;
+	wire [221: 0] cpu0Memory_M2S;
+	wire [73: 0] cpu0Memory_S2M;
 	wire [73: 0] CPU1_S2M;
 	wire [221: 0] CPU1_M2S;
+	wire [221: 0] cpu1AutoDecrementRegister_M2S;
+	wire [32: 0] cpu1AutoDecrementRegister_Reg;
+	wire cpu1AutoDecrementRegister_outACK;
+	wire cpu1AutoDecrementRegister_outWritten;
+	wire [73: 0] cpu1AutoDecrementRegister_S2M;
+	wire [221: 0] cpu1AutoIncrementCounter_M2S;
+	wire [31: 0] cpu1AutoIncrementCounter_oCounter;
+	wire cpu1AutoIncrementCounter_outWritten;
+	wire [73: 0] cpu1AutoIncrementCounter_S2M;
+	wire [221: 0] cpu1IOGateway_iM2S;
+	wire [73: 0] cpu1IOGateway_iS2M;
+	wire [221: 0] cpu1IOGateway_oM2S;
+	wire [73: 0] cpu1IOGateway_oS2M;
+	wire [221: 0] cpu1Memory_M2S;
+	wire [73: 0] cpu1Memory_S2M;
 	wire [73: 0] CPU2_S2M;
 	wire [221: 0] CPU2_M2S;
+	wire [221: 0] cpu2AutoDecrementRegister_M2S;
+	wire [32: 0] cpu2AutoDecrementRegister_Reg;
+	wire cpu2AutoDecrementRegister_outACK;
+	wire cpu2AutoDecrementRegister_outWritten;
+	wire [73: 0] cpu2AutoDecrementRegister_S2M;
+	wire [221: 0] cpu2AutoIncrementCounter_M2S;
+	wire [31: 0] cpu2AutoIncrementCounter_oCounter;
+	wire cpu2AutoIncrementCounter_outWritten;
+	wire [73: 0] cpu2AutoIncrementCounter_S2M;
+	wire [221: 0] cpu2IOGateway_iM2S;
+	wire [73: 0] cpu2IOGateway_iS2M;
+	wire [221: 0] cpu2IOGateway_oM2S;
+	wire [73: 0] cpu2IOGateway_oS2M;
+	wire [221: 0] cpu2Memory_M2S;
+	wire [73: 0] cpu2Memory_S2M;
 	wire [73: 0] CPU3_S2M;
 	wire [221: 0] CPU3_M2S;
-	wire [221: 0] ioGateway_iM2S;
-	wire [73: 0] ioGateway_iS2M;
-	wire [221: 0] ioGateway_oM2S;
-	wire [73: 0] ioGateway_oS2M;
-	wire [221: 0] Memory_M2S;
-	wire [73: 0] Memory_S2M;
+	wire [221: 0] cpu3AutoDecrementRegister_M2S;
+	wire [32: 0] cpu3AutoDecrementRegister_Reg;
+	wire cpu3AutoDecrementRegister_outACK;
+	wire cpu3AutoDecrementRegister_outWritten;
+	wire [73: 0] cpu3AutoDecrementRegister_S2M;
+	wire [221: 0] cpu3AutoIncrementCounter_M2S;
+	wire [31: 0] cpu3AutoIncrementCounter_oCounter;
+	wire cpu3AutoIncrementCounter_outWritten;
+	wire [73: 0] cpu3AutoIncrementCounter_S2M;
+	wire [221: 0] cpu3IOGateway_iM2S;
+	wire [73: 0] cpu3IOGateway_iS2M;
+	wire [221: 0] cpu3IOGateway_oM2S;
+	wire [73: 0] cpu3IOGateway_oS2M;
+	wire [221: 0] cpu3Memory_M2S;
+	wire [73: 0] cpu3Memory_S2M;
 	wire [221: 0] Reg0_M2S;
 	wire [32: 0] Reg0_Reg;
 	wire Reg0_outACK;
@@ -129,44 +174,46 @@ module AXISoCQuadCoreModule_TopLevel
 	wire uart_oTransmitting;
 	wire uart_oTX;
 	wire signed [31: 0] uart_oTXCounter;
-	wire [73: 0] AXISoCQuadCoreModule_L99F33L102T14_Object;
-	wire [73: 0] AXISoCQuadCoreModule_L103F33L106T14_Object;
-	wire [73: 0] AXISoCQuadCoreModule_L107F33L110T14_Object;
-	wire [73: 0] AXISoCQuadCoreModule_L111F33L114T14_Object;
-	wire [221: 0] AXISoCQuadCoreModule_L116F35L119T14_Object;
-	wire [221: 0] AXISoCQuadCoreModule_L120F49L123T14_Object;
-	wire [254: 0] AXISoCQuadCoreModule_L124F54L127T14_Object;
-	wire [254: 0] AXISoCQuadCoreModule_L129F33L132T14_Object;
-	wire [254: 0] AXISoCQuadCoreModule_L133F33L136T14_Object;
-	wire [254: 0] AXISoCQuadCoreModule_L137F33L140T14_Object;
-	wire [254: 0] AXISoCQuadCoreModule_L141F33L144T14_Object;
-	wire [295: 0] AXISoCQuadCoreModule_L145F38L149T14_Object;
-	wire [253: 0] AXISoCQuadCoreModule_L151F36L158T14_Object;
-	wire [253: 0] AXISoCQuadCoreModule_L159F36L166T14_Object;
-	wire [253: 0] AXISoCQuadCoreModule_L168F36L175T14_Object;
-	wire [253: 0] AXISoCQuadCoreModule_L176F36L183T14_Object;
-	wire [253: 0] AXISoCQuadCoreModule_L184F36L191T14_Object;
-	wire [253: 0] AXISoCQuadCoreModule_L192F36L199T14_Object;
-	wire [222: 0] AXISoCQuadCoreModule_L200F33L204T14_Object;
-	wire [1479: 0] AXISoCQuadCoreModule_L207F41L225T14_Object;
-	wire [739: 0] AXISoCQuadCoreModule_L227F43L241T14_Object;
-	wire [31: 0] AXISoCQuadCoreModule_L243F37T66_Source;
-	wire [31: 0] AXISoCQuadCoreModule_L244F37T66_Source;
-	wire [31: 0] AXISoCQuadCoreModule_L245F37T66_Source;
-	wire [31: 0] AXISoCQuadCoreModule_L246F37T66_Source;
-	wire [221: 0] AutoIncrementCounter_M2S_AutoIncrementCounter_M2S_HardLink;
-	wire [31: 0] AutoIncrementCounter_oCounter_AutoIncrementCounter_oCounter_HardLink;
-	wire AutoIncrementCounter_outWritten_AutoIncrementCounter_outWritten_HardLink;
-	wire [73: 0] AutoIncrementCounter_S2M_AutoIncrementCounter_S2M_HardLink;
-	wire [221: 0] AXI4AutoDecrementRegister_M2S_AXI4AutoDecrementRegister_M2S_HardLink;
-	wire [32: 0] AXI4AutoDecrementRegister_Reg_AXI4AutoDecrementRegister_Reg_HardLink;
-	wire AXI4AutoDecrementRegister_outACK_AXI4AutoDecrementRegister_outACK_HardLink;
-	wire [7: 0] AXI4AutoDecrementRegister_outData0_AXI4AutoDecrementRegister_outData_HardLink;
-	wire [7: 0] AXI4AutoDecrementRegister_outData1_AXI4AutoDecrementRegister_outData_HardLink;
-	wire [7: 0] AXI4AutoDecrementRegister_outData2_AXI4AutoDecrementRegister_outData_HardLink;
-	wire [7: 0] AXI4AutoDecrementRegister_outData3_AXI4AutoDecrementRegister_outData_HardLink;
-	wire AXI4AutoDecrementRegister_outWritten_AXI4AutoDecrementRegister_outWritten_HardLink;
-	wire [73: 0] AXI4AutoDecrementRegister_S2M_AXI4AutoDecrementRegister_S2M_HardLink;
+	wire [73: 0] AXISoCQuadCoreModule_L148F33L151T14_Object;
+	wire [221: 0] AXISoCQuadCoreModule_L152F39L155T14_Object;
+	wire [221: 0] AXISoCQuadCoreModule_L156F53L159T14_Object;
+	wire [254: 0] AXISoCQuadCoreModule_L160F54L163T14_Object;
+	wire [295: 0] AXISoCQuadCoreModule_L164F42L168T14_Object;
+	wire [517: 0] AXISoCQuadCoreModule_L169F45L180T14_Object;
+	wire [73: 0] AXISoCQuadCoreModule_L183F33L186T14_Object;
+	wire [221: 0] AXISoCQuadCoreModule_L187F39L190T14_Object;
+	wire [221: 0] AXISoCQuadCoreModule_L191F53L194T14_Object;
+	wire [254: 0] AXISoCQuadCoreModule_L195F54L198T14_Object;
+	wire [295: 0] AXISoCQuadCoreModule_L199F42L203T14_Object;
+	wire [517: 0] AXISoCQuadCoreModule_L204F45L215T14_Object;
+	wire [73: 0] AXISoCQuadCoreModule_L218F33L221T14_Object;
+	wire [221: 0] AXISoCQuadCoreModule_L222F39L225T14_Object;
+	wire [221: 0] AXISoCQuadCoreModule_L226F53L229T14_Object;
+	wire [254: 0] AXISoCQuadCoreModule_L230F54L233T14_Object;
+	wire [295: 0] AXISoCQuadCoreModule_L234F42L238T14_Object;
+	wire [517: 0] AXISoCQuadCoreModule_L239F45L250T14_Object;
+	wire [73: 0] AXISoCQuadCoreModule_L253F33L256T14_Object;
+	wire [221: 0] AXISoCQuadCoreModule_L257F39L260T14_Object;
+	wire [221: 0] AXISoCQuadCoreModule_L261F53L264T14_Object;
+	wire [254: 0] AXISoCQuadCoreModule_L265F54L268T14_Object;
+	wire [295: 0] AXISoCQuadCoreModule_L269F42L273T14_Object;
+	wire [517: 0] AXISoCQuadCoreModule_L274F45L285T14_Object;
+	wire [254: 0] AXISoCQuadCoreModule_L288F33L291T14_Object;
+	wire [254: 0] AXISoCQuadCoreModule_L292F33L295T14_Object;
+	wire [254: 0] AXISoCQuadCoreModule_L296F33L299T14_Object;
+	wire [254: 0] AXISoCQuadCoreModule_L300F33L303T14_Object;
+	wire [253: 0] AXISoCQuadCoreModule_L304F36L311T14_Object;
+	wire [253: 0] AXISoCQuadCoreModule_L312F36L319T14_Object;
+	wire [253: 0] AXISoCQuadCoreModule_L321F36L328T14_Object;
+	wire [253: 0] AXISoCQuadCoreModule_L329F36L336T14_Object;
+	wire [253: 0] AXISoCQuadCoreModule_L337F36L344T14_Object;
+	wire [253: 0] AXISoCQuadCoreModule_L345F36L352T14_Object;
+	wire [222: 0] AXISoCQuadCoreModule_L353F33L357T14_Object;
+	wire [1701: 0] AXISoCQuadCoreModule_L359F43L380T14_Object;
+	wire [31: 0] AXISoCQuadCoreModule_L383F37T66_Source;
+	wire [31: 0] AXISoCQuadCoreModule_L384F37T66_Source;
+	wire [31: 0] AXISoCQuadCoreModule_L385F37T66_Source;
+	wire [31: 0] AXISoCQuadCoreModule_L386F37T66_Source;
 	wire [221: 0] Button0_M2S_Button0_M2S_HardLink;
 	wire [31: 0] Button0_Sig_Button0_Sig_HardLink;
 	wire [7: 0] Button0_outData0_Button0_outData_HardLink;
@@ -197,41 +244,132 @@ module AXISoCQuadCoreModule_TopLevel
 	wire [73: 0] Button3_S2M_Button3_S2M_HardLink;
 	wire [73: 0] CPU0_S2M_CPU0_S2M_HardLink;
 	wire [221: 0] CPU0_M2S_CPU0_M2S_HardLink;
+	wire [221: 0] cpu0AutoDecrementRegister_M2S_cpu0AutoDecrementRegister_M2S_HardLink;
+	wire [32: 0] cpu0AutoDecrementRegister_Reg_cpu0AutoDecrementRegister_Reg_HardLink;
+	wire cpu0AutoDecrementRegister_outACK_cpu0AutoDecrementRegister_outACK_HardLink;
+	wire [7: 0] cpu0AutoDecrementRegister_outData0_cpu0AutoDecrementRegister_outData_HardLink;
+	wire [7: 0] cpu0AutoDecrementRegister_outData1_cpu0AutoDecrementRegister_outData_HardLink;
+	wire [7: 0] cpu0AutoDecrementRegister_outData2_cpu0AutoDecrementRegister_outData_HardLink;
+	wire [7: 0] cpu0AutoDecrementRegister_outData3_cpu0AutoDecrementRegister_outData_HardLink;
+	wire cpu0AutoDecrementRegister_outWritten_cpu0AutoDecrementRegister_outWritten_HardLink;
+	wire [73: 0] cpu0AutoDecrementRegister_S2M_cpu0AutoDecrementRegister_S2M_HardLink;
+	wire [221: 0] cpu0AutoIncrementCounter_M2S_cpu0AutoIncrementCounter_M2S_HardLink;
+	wire [31: 0] cpu0AutoIncrementCounter_oCounter_cpu0AutoIncrementCounter_oCounter_HardLink;
+	wire cpu0AutoIncrementCounter_outWritten_cpu0AutoIncrementCounter_outWritten_HardLink;
+	wire [73: 0] cpu0AutoIncrementCounter_S2M_cpu0AutoIncrementCounter_S2M_HardLink;
+	wire [221: 0] cpu0Interconnect_iM2S0_cpu0Interconnect_iM2S_HardLink;
+	wire [73: 0] cpu0Interconnect_iS2M0_cpu0Interconnect_iS2M_HardLink;
+	wire [73: 0] cpu0Interconnect_iS2M1_cpu0Interconnect_iS2M_HardLink;
+	wire [73: 0] cpu0Interconnect_iS2M2_cpu0Interconnect_iS2M_HardLink;
+	wire [73: 0] cpu0Interconnect_iS2M3_cpu0Interconnect_iS2M_HardLink;
+	wire [221: 0] cpu0Interconnect_oM2S0_cpu0Interconnect_oM2S_HardLink;
+	wire [221: 0] cpu0Interconnect_oM2S1_cpu0Interconnect_oM2S_HardLink;
+	wire [221: 0] cpu0Interconnect_oM2S2_cpu0Interconnect_oM2S_HardLink;
+	wire [221: 0] cpu0Interconnect_oM2S3_cpu0Interconnect_oM2S_HardLink;
+	wire [73: 0] cpu0Interconnect_oS2M0_cpu0Interconnect_oS2M_HardLink;
+	wire [221: 0] cpu0IOGateway_iM2S_cpu0IOGateway_iM2S_HardLink;
+	wire [73: 0] cpu0IOGateway_iS2M_cpu0IOGateway_iS2M_HardLink;
+	wire [221: 0] cpu0IOGateway_oM2S_cpu0IOGateway_oM2S_HardLink;
+	wire [73: 0] cpu0IOGateway_oS2M_cpu0IOGateway_oS2M_HardLink;
+	wire [221: 0] cpu0Memory_M2S_cpu0Memory_M2S_HardLink;
+	wire [73: 0] cpu0Memory_S2M_cpu0Memory_S2M_HardLink;
 	wire [73: 0] CPU1_S2M_CPU1_S2M_HardLink;
 	wire [221: 0] CPU1_M2S_CPU1_M2S_HardLink;
+	wire [221: 0] cpu1AutoDecrementRegister_M2S_cpu1AutoDecrementRegister_M2S_HardLink;
+	wire [32: 0] cpu1AutoDecrementRegister_Reg_cpu1AutoDecrementRegister_Reg_HardLink;
+	wire cpu1AutoDecrementRegister_outACK_cpu1AutoDecrementRegister_outACK_HardLink;
+	wire [7: 0] cpu1AutoDecrementRegister_outData0_cpu1AutoDecrementRegister_outData_HardLink;
+	wire [7: 0] cpu1AutoDecrementRegister_outData1_cpu1AutoDecrementRegister_outData_HardLink;
+	wire [7: 0] cpu1AutoDecrementRegister_outData2_cpu1AutoDecrementRegister_outData_HardLink;
+	wire [7: 0] cpu1AutoDecrementRegister_outData3_cpu1AutoDecrementRegister_outData_HardLink;
+	wire cpu1AutoDecrementRegister_outWritten_cpu1AutoDecrementRegister_outWritten_HardLink;
+	wire [73: 0] cpu1AutoDecrementRegister_S2M_cpu1AutoDecrementRegister_S2M_HardLink;
+	wire [221: 0] cpu1AutoIncrementCounter_M2S_cpu1AutoIncrementCounter_M2S_HardLink;
+	wire [31: 0] cpu1AutoIncrementCounter_oCounter_cpu1AutoIncrementCounter_oCounter_HardLink;
+	wire cpu1AutoIncrementCounter_outWritten_cpu1AutoIncrementCounter_outWritten_HardLink;
+	wire [73: 0] cpu1AutoIncrementCounter_S2M_cpu1AutoIncrementCounter_S2M_HardLink;
+	wire [221: 0] cpu1Interconnect_iM2S0_cpu1Interconnect_iM2S_HardLink;
+	wire [73: 0] cpu1Interconnect_iS2M0_cpu1Interconnect_iS2M_HardLink;
+	wire [73: 0] cpu1Interconnect_iS2M1_cpu1Interconnect_iS2M_HardLink;
+	wire [73: 0] cpu1Interconnect_iS2M2_cpu1Interconnect_iS2M_HardLink;
+	wire [73: 0] cpu1Interconnect_iS2M3_cpu1Interconnect_iS2M_HardLink;
+	wire [221: 0] cpu1Interconnect_oM2S0_cpu1Interconnect_oM2S_HardLink;
+	wire [221: 0] cpu1Interconnect_oM2S1_cpu1Interconnect_oM2S_HardLink;
+	wire [221: 0] cpu1Interconnect_oM2S2_cpu1Interconnect_oM2S_HardLink;
+	wire [221: 0] cpu1Interconnect_oM2S3_cpu1Interconnect_oM2S_HardLink;
+	wire [73: 0] cpu1Interconnect_oS2M0_cpu1Interconnect_oS2M_HardLink;
+	wire [221: 0] cpu1IOGateway_iM2S_cpu1IOGateway_iM2S_HardLink;
+	wire [73: 0] cpu1IOGateway_iS2M_cpu1IOGateway_iS2M_HardLink;
+	wire [221: 0] cpu1IOGateway_oM2S_cpu1IOGateway_oM2S_HardLink;
+	wire [73: 0] cpu1IOGateway_oS2M_cpu1IOGateway_oS2M_HardLink;
+	wire [221: 0] cpu1Memory_M2S_cpu1Memory_M2S_HardLink;
+	wire [73: 0] cpu1Memory_S2M_cpu1Memory_S2M_HardLink;
 	wire [73: 0] CPU2_S2M_CPU2_S2M_HardLink;
 	wire [221: 0] CPU2_M2S_CPU2_M2S_HardLink;
+	wire [221: 0] cpu2AutoDecrementRegister_M2S_cpu2AutoDecrementRegister_M2S_HardLink;
+	wire [32: 0] cpu2AutoDecrementRegister_Reg_cpu2AutoDecrementRegister_Reg_HardLink;
+	wire cpu2AutoDecrementRegister_outACK_cpu2AutoDecrementRegister_outACK_HardLink;
+	wire [7: 0] cpu2AutoDecrementRegister_outData0_cpu2AutoDecrementRegister_outData_HardLink;
+	wire [7: 0] cpu2AutoDecrementRegister_outData1_cpu2AutoDecrementRegister_outData_HardLink;
+	wire [7: 0] cpu2AutoDecrementRegister_outData2_cpu2AutoDecrementRegister_outData_HardLink;
+	wire [7: 0] cpu2AutoDecrementRegister_outData3_cpu2AutoDecrementRegister_outData_HardLink;
+	wire cpu2AutoDecrementRegister_outWritten_cpu2AutoDecrementRegister_outWritten_HardLink;
+	wire [73: 0] cpu2AutoDecrementRegister_S2M_cpu2AutoDecrementRegister_S2M_HardLink;
+	wire [221: 0] cpu2AutoIncrementCounter_M2S_cpu2AutoIncrementCounter_M2S_HardLink;
+	wire [31: 0] cpu2AutoIncrementCounter_oCounter_cpu2AutoIncrementCounter_oCounter_HardLink;
+	wire cpu2AutoIncrementCounter_outWritten_cpu2AutoIncrementCounter_outWritten_HardLink;
+	wire [73: 0] cpu2AutoIncrementCounter_S2M_cpu2AutoIncrementCounter_S2M_HardLink;
+	wire [221: 0] cpu2Interconnect_iM2S0_cpu2Interconnect_iM2S_HardLink;
+	wire [73: 0] cpu2Interconnect_iS2M0_cpu2Interconnect_iS2M_HardLink;
+	wire [73: 0] cpu2Interconnect_iS2M1_cpu2Interconnect_iS2M_HardLink;
+	wire [73: 0] cpu2Interconnect_iS2M2_cpu2Interconnect_iS2M_HardLink;
+	wire [73: 0] cpu2Interconnect_iS2M3_cpu2Interconnect_iS2M_HardLink;
+	wire [221: 0] cpu2Interconnect_oM2S0_cpu2Interconnect_oM2S_HardLink;
+	wire [221: 0] cpu2Interconnect_oM2S1_cpu2Interconnect_oM2S_HardLink;
+	wire [221: 0] cpu2Interconnect_oM2S2_cpu2Interconnect_oM2S_HardLink;
+	wire [221: 0] cpu2Interconnect_oM2S3_cpu2Interconnect_oM2S_HardLink;
+	wire [73: 0] cpu2Interconnect_oS2M0_cpu2Interconnect_oS2M_HardLink;
+	wire [221: 0] cpu2IOGateway_iM2S_cpu2IOGateway_iM2S_HardLink;
+	wire [73: 0] cpu2IOGateway_iS2M_cpu2IOGateway_iS2M_HardLink;
+	wire [221: 0] cpu2IOGateway_oM2S_cpu2IOGateway_oM2S_HardLink;
+	wire [73: 0] cpu2IOGateway_oS2M_cpu2IOGateway_oS2M_HardLink;
+	wire [221: 0] cpu2Memory_M2S_cpu2Memory_M2S_HardLink;
+	wire [73: 0] cpu2Memory_S2M_cpu2Memory_S2M_HardLink;
 	wire [73: 0] CPU3_S2M_CPU3_S2M_HardLink;
 	wire [221: 0] CPU3_M2S_CPU3_M2S_HardLink;
-	wire [221: 0] Interconnect_iM2S0_Interconnect_iM2S_HardLink;
-	wire [221: 0] Interconnect_iM2S1_Interconnect_iM2S_HardLink;
-	wire [221: 0] Interconnect_iM2S2_Interconnect_iM2S_HardLink;
-	wire [221: 0] Interconnect_iM2S3_Interconnect_iM2S_HardLink;
-	wire [73: 0] Interconnect_iS2M0_Interconnect_iS2M_HardLink;
-	wire [73: 0] Interconnect_iS2M1_Interconnect_iS2M_HardLink;
-	wire [73: 0] Interconnect_iS2M2_Interconnect_iS2M_HardLink;
-	wire [73: 0] Interconnect_iS2M3_Interconnect_iS2M_HardLink;
-	wire [73: 0] Interconnect_iS2M4_Interconnect_iS2M_HardLink;
-	wire [73: 0] Interconnect_iS2M5_Interconnect_iS2M_HardLink;
-	wire [73: 0] Interconnect_iS2M6_Interconnect_iS2M_HardLink;
-	wire [73: 0] Interconnect_iS2M7_Interconnect_iS2M_HardLink;
-	wire [221: 0] Interconnect_oM2S0_Interconnect_oM2S_HardLink;
-	wire [221: 0] Interconnect_oM2S1_Interconnect_oM2S_HardLink;
-	wire [221: 0] Interconnect_oM2S2_Interconnect_oM2S_HardLink;
-	wire [221: 0] Interconnect_oM2S3_Interconnect_oM2S_HardLink;
-	wire [221: 0] Interconnect_oM2S4_Interconnect_oM2S_HardLink;
-	wire [221: 0] Interconnect_oM2S5_Interconnect_oM2S_HardLink;
-	wire [221: 0] Interconnect_oM2S6_Interconnect_oM2S_HardLink;
-	wire [221: 0] Interconnect_oM2S7_Interconnect_oM2S_HardLink;
-	wire [73: 0] Interconnect_oS2M0_Interconnect_oS2M_HardLink;
-	wire [73: 0] Interconnect_oS2M1_Interconnect_oS2M_HardLink;
-	wire [73: 0] Interconnect_oS2M2_Interconnect_oS2M_HardLink;
-	wire [73: 0] Interconnect_oS2M3_Interconnect_oS2M_HardLink;
-	wire [221: 0] ioGateway_iM2S_ioGateway_iM2S_HardLink;
-	wire [73: 0] ioGateway_iS2M_ioGateway_iS2M_HardLink;
-	wire [221: 0] ioGateway_oM2S_ioGateway_oM2S_HardLink;
-	wire [73: 0] ioGateway_oS2M_ioGateway_oS2M_HardLink;
+	wire [221: 0] cpu3AutoDecrementRegister_M2S_cpu3AutoDecrementRegister_M2S_HardLink;
+	wire [32: 0] cpu3AutoDecrementRegister_Reg_cpu3AutoDecrementRegister_Reg_HardLink;
+	wire cpu3AutoDecrementRegister_outACK_cpu3AutoDecrementRegister_outACK_HardLink;
+	wire [7: 0] cpu3AutoDecrementRegister_outData0_cpu3AutoDecrementRegister_outData_HardLink;
+	wire [7: 0] cpu3AutoDecrementRegister_outData1_cpu3AutoDecrementRegister_outData_HardLink;
+	wire [7: 0] cpu3AutoDecrementRegister_outData2_cpu3AutoDecrementRegister_outData_HardLink;
+	wire [7: 0] cpu3AutoDecrementRegister_outData3_cpu3AutoDecrementRegister_outData_HardLink;
+	wire cpu3AutoDecrementRegister_outWritten_cpu3AutoDecrementRegister_outWritten_HardLink;
+	wire [73: 0] cpu3AutoDecrementRegister_S2M_cpu3AutoDecrementRegister_S2M_HardLink;
+	wire [221: 0] cpu3AutoIncrementCounter_M2S_cpu3AutoIncrementCounter_M2S_HardLink;
+	wire [31: 0] cpu3AutoIncrementCounter_oCounter_cpu3AutoIncrementCounter_oCounter_HardLink;
+	wire cpu3AutoIncrementCounter_outWritten_cpu3AutoIncrementCounter_outWritten_HardLink;
+	wire [73: 0] cpu3AutoIncrementCounter_S2M_cpu3AutoIncrementCounter_S2M_HardLink;
+	wire [221: 0] cpu3Interconnect_iM2S0_cpu3Interconnect_iM2S_HardLink;
+	wire [73: 0] cpu3Interconnect_iS2M0_cpu3Interconnect_iS2M_HardLink;
+	wire [73: 0] cpu3Interconnect_iS2M1_cpu3Interconnect_iS2M_HardLink;
+	wire [73: 0] cpu3Interconnect_iS2M2_cpu3Interconnect_iS2M_HardLink;
+	wire [73: 0] cpu3Interconnect_iS2M3_cpu3Interconnect_iS2M_HardLink;
+	wire [221: 0] cpu3Interconnect_oM2S0_cpu3Interconnect_oM2S_HardLink;
+	wire [221: 0] cpu3Interconnect_oM2S1_cpu3Interconnect_oM2S_HardLink;
+	wire [221: 0] cpu3Interconnect_oM2S2_cpu3Interconnect_oM2S_HardLink;
+	wire [221: 0] cpu3Interconnect_oM2S3_cpu3Interconnect_oM2S_HardLink;
+	wire [73: 0] cpu3Interconnect_oS2M0_cpu3Interconnect_oS2M_HardLink;
+	wire [221: 0] cpu3IOGateway_iM2S_cpu3IOGateway_iM2S_HardLink;
+	wire [73: 0] cpu3IOGateway_iS2M_cpu3IOGateway_iS2M_HardLink;
+	wire [221: 0] cpu3IOGateway_oM2S_cpu3IOGateway_oM2S_HardLink;
+	wire [73: 0] cpu3IOGateway_oS2M_cpu3IOGateway_oS2M_HardLink;
+	wire [221: 0] cpu3Memory_M2S_cpu3Memory_M2S_HardLink;
+	wire [73: 0] cpu3Memory_S2M_cpu3Memory_S2M_HardLink;
 	wire [221: 0] ioInterconnect_iM2S0_ioInterconnect_iM2S_HardLink;
+	wire [221: 0] ioInterconnect_iM2S1_ioInterconnect_iM2S_HardLink;
+	wire [221: 0] ioInterconnect_iM2S2_ioInterconnect_iM2S_HardLink;
+	wire [221: 0] ioInterconnect_iM2S3_ioInterconnect_iM2S_HardLink;
 	wire [73: 0] ioInterconnect_iS2M0_ioInterconnect_iS2M_HardLink;
 	wire [73: 0] ioInterconnect_iS2M1_ioInterconnect_iS2M_HardLink;
 	wire [73: 0] ioInterconnect_iS2M2_ioInterconnect_iS2M_HardLink;
@@ -239,6 +377,10 @@ module AXISoCQuadCoreModule_TopLevel
 	wire [73: 0] ioInterconnect_iS2M4_ioInterconnect_iS2M_HardLink;
 	wire [73: 0] ioInterconnect_iS2M5_ioInterconnect_iS2M_HardLink;
 	wire [73: 0] ioInterconnect_iS2M6_ioInterconnect_iS2M_HardLink;
+	wire [73: 0] ioInterconnect_iS2M7_ioInterconnect_iS2M_HardLink;
+	wire [73: 0] ioInterconnect_iS2M8_ioInterconnect_iS2M_HardLink;
+	wire [73: 0] ioInterconnect_iS2M9_ioInterconnect_iS2M_HardLink;
+	wire [73: 0] ioInterconnect_iS2M10_ioInterconnect_iS2M_HardLink;
 	wire [221: 0] ioInterconnect_oM2S0_ioInterconnect_oM2S_HardLink;
 	wire [221: 0] ioInterconnect_oM2S1_ioInterconnect_oM2S_HardLink;
 	wire [221: 0] ioInterconnect_oM2S2_ioInterconnect_oM2S_HardLink;
@@ -246,9 +388,14 @@ module AXISoCQuadCoreModule_TopLevel
 	wire [221: 0] ioInterconnect_oM2S4_ioInterconnect_oM2S_HardLink;
 	wire [221: 0] ioInterconnect_oM2S5_ioInterconnect_oM2S_HardLink;
 	wire [221: 0] ioInterconnect_oM2S6_ioInterconnect_oM2S_HardLink;
+	wire [221: 0] ioInterconnect_oM2S7_ioInterconnect_oM2S_HardLink;
+	wire [221: 0] ioInterconnect_oM2S8_ioInterconnect_oM2S_HardLink;
+	wire [221: 0] ioInterconnect_oM2S9_ioInterconnect_oM2S_HardLink;
+	wire [221: 0] ioInterconnect_oM2S10_ioInterconnect_oM2S_HardLink;
 	wire [73: 0] ioInterconnect_oS2M0_ioInterconnect_oS2M_HardLink;
-	wire [221: 0] Memory_M2S_Memory_M2S_HardLink;
-	wire [73: 0] Memory_S2M_Memory_S2M_HardLink;
+	wire [73: 0] ioInterconnect_oS2M1_ioInterconnect_oS2M_HardLink;
+	wire [73: 0] ioInterconnect_oS2M2_ioInterconnect_oS2M_HardLink;
+	wire [73: 0] ioInterconnect_oS2M3_ioInterconnect_oS2M_HardLink;
 	wire [221: 0] Reg0_M2S_Reg0_M2S_HardLink;
 	wire [32: 0] Reg0_Reg_Reg0_Reg_HardLink;
 	wire Reg0_outACK_Reg0_outACK_HardLink;
@@ -309,19 +456,34 @@ module AXISoCQuadCoreModule_TopLevel
 	wire uart_oTransmitting_uart_oTransmitting_HardLink;
 	wire uart_oTX_uart_oTX_HardLink;
 	wire signed [31: 0] uart_oTXCounter_uart_oTXCounter_HardLink;
-	wire [7 : 0] AXI4AutoDecrementRegister_outData [0 : 3];
 	wire [7 : 0] Button0_outData [0 : 3];
 	wire [7 : 0] Button1_outData [0 : 3];
 	wire [7 : 0] Button2_outData [0 : 3];
 	wire [7 : 0] Button3_outData [0 : 3];
-	wire [221 : 0] Interconnect_iM2S [0 : 3];
-	wire [73 : 0] Interconnect_iS2M [0 : 7];
-	wire [221 : 0] Interconnect_oM2S [0 : 7];
-	wire [73 : 0] Interconnect_oS2M [0 : 3];
-	wire [221 : 0] ioInterconnect_iM2S [0 : 0];
-	wire [73 : 0] ioInterconnect_iS2M [0 : 6];
-	wire [221 : 0] ioInterconnect_oM2S [0 : 6];
-	wire [73 : 0] ioInterconnect_oS2M [0 : 0];
+	wire [7 : 0] cpu0AutoDecrementRegister_outData [0 : 3];
+	wire [221 : 0] cpu0Interconnect_iM2S [0 : 0];
+	wire [73 : 0] cpu0Interconnect_iS2M [0 : 3];
+	wire [221 : 0] cpu0Interconnect_oM2S [0 : 3];
+	wire [73 : 0] cpu0Interconnect_oS2M [0 : 0];
+	wire [7 : 0] cpu1AutoDecrementRegister_outData [0 : 3];
+	wire [221 : 0] cpu1Interconnect_iM2S [0 : 0];
+	wire [73 : 0] cpu1Interconnect_iS2M [0 : 3];
+	wire [221 : 0] cpu1Interconnect_oM2S [0 : 3];
+	wire [73 : 0] cpu1Interconnect_oS2M [0 : 0];
+	wire [7 : 0] cpu2AutoDecrementRegister_outData [0 : 3];
+	wire [221 : 0] cpu2Interconnect_iM2S [0 : 0];
+	wire [73 : 0] cpu2Interconnect_iS2M [0 : 3];
+	wire [221 : 0] cpu2Interconnect_oM2S [0 : 3];
+	wire [73 : 0] cpu2Interconnect_oS2M [0 : 0];
+	wire [7 : 0] cpu3AutoDecrementRegister_outData [0 : 3];
+	wire [221 : 0] cpu3Interconnect_iM2S [0 : 0];
+	wire [73 : 0] cpu3Interconnect_iS2M [0 : 3];
+	wire [221 : 0] cpu3Interconnect_oM2S [0 : 3];
+	wire [73 : 0] cpu3Interconnect_oS2M [0 : 0];
+	wire [221 : 0] ioInterconnect_iM2S [0 : 3];
+	wire [73 : 0] ioInterconnect_iS2M [0 : 10];
+	wire [221 : 0] ioInterconnect_oM2S [0 : 10];
+	wire [73 : 0] ioInterconnect_oS2M [0 : 3];
 	wire [7 : 0] Reg0_outData [0 : 3];
 	wire [7 : 0] Reg1_outData [0 : 3];
 	wire [7 : 0] Reg2_outData [0 : 3];
@@ -335,41 +497,6 @@ module AXISoCQuadCoreModule_TopLevel
 	wire BoardSignals_Started;
 	reg InternalReset = 1'b0;
 	work_Quokka_BoardSignalsProc BoardSignalsConnection(BoardSignals_Clock, BoardSignals_Reset, BoardSignals_Running, BoardSignals_Starting, BoardSignals_Started, Clock, Reset, InternalReset);
-	AXISoCQuadCoreModule_TopLevel_AutoIncrementCounter
-	AXISoCQuadCoreModule_TopLevel_AutoIncrementCounter
-	(
-		// [BEGIN USER MAP FOR AutoIncrementCounter]
-		// [END USER MAP FOR AutoIncrementCounter]
-		.BoardSignals_Clock (BoardSignals_Clock),
-		.BoardSignals_Reset (BoardSignals_Reset),
-		.BoardSignals_Running (BoardSignals_Running),
-		.BoardSignals_Starting (BoardSignals_Starting),
-		.BoardSignals_Started (BoardSignals_Started),
-		.M2S (AutoIncrementCounter_M2S_AutoIncrementCounter_M2S_HardLink),
-		.oCounter (AutoIncrementCounter_oCounter_AutoIncrementCounter_oCounter_HardLink),
-		.outWritten (AutoIncrementCounter_outWritten_AutoIncrementCounter_outWritten_HardLink),
-		.S2M (AutoIncrementCounter_S2M_AutoIncrementCounter_S2M_HardLink)
-	);
-	AXISoCQuadCoreModule_TopLevel_AXI4AutoDecrementRegister
-	AXISoCQuadCoreModule_TopLevel_AXI4AutoDecrementRegister
-	(
-		// [BEGIN USER MAP FOR AXI4AutoDecrementRegister]
-		// [END USER MAP FOR AXI4AutoDecrementRegister]
-		.BoardSignals_Clock (BoardSignals_Clock),
-		.BoardSignals_Reset (BoardSignals_Reset),
-		.BoardSignals_Running (BoardSignals_Running),
-		.BoardSignals_Starting (BoardSignals_Starting),
-		.BoardSignals_Started (BoardSignals_Started),
-		.M2S (AXI4AutoDecrementRegister_M2S_AXI4AutoDecrementRegister_M2S_HardLink),
-		.Reg (AXI4AutoDecrementRegister_Reg_AXI4AutoDecrementRegister_Reg_HardLink),
-		.outACK (AXI4AutoDecrementRegister_outACK_AXI4AutoDecrementRegister_outACK_HardLink),
-		.outData0 (AXI4AutoDecrementRegister_outData0_AXI4AutoDecrementRegister_outData_HardLink),
-		.outData1 (AXI4AutoDecrementRegister_outData1_AXI4AutoDecrementRegister_outData_HardLink),
-		.outData2 (AXI4AutoDecrementRegister_outData2_AXI4AutoDecrementRegister_outData_HardLink),
-		.outData3 (AXI4AutoDecrementRegister_outData3_AXI4AutoDecrementRegister_outData_HardLink),
-		.outWritten (AXI4AutoDecrementRegister_outWritten_AXI4AutoDecrementRegister_outWritten_HardLink),
-		.S2M (AXI4AutoDecrementRegister_S2M_AXI4AutoDecrementRegister_S2M_HardLink)
-	);
 	AXISoCQuadCoreModule_TopLevel_Button0
 	AXISoCQuadCoreModule_TopLevel_Button0
 	(
@@ -455,6 +582,85 @@ module AXISoCQuadCoreModule_TopLevel
 		.S2M (CPU0_S2M_CPU0_S2M_HardLink),
 		.M2S (CPU0_M2S_CPU0_M2S_HardLink)
 	);
+	AXISoCQuadCoreModule_TopLevel_cpu0AutoDecrementRegister
+	AXISoCQuadCoreModule_TopLevel_cpu0AutoDecrementRegister
+	(
+		// [BEGIN USER MAP FOR cpu0AutoDecrementRegister]
+		// [END USER MAP FOR cpu0AutoDecrementRegister]
+		.BoardSignals_Clock (BoardSignals_Clock),
+		.BoardSignals_Reset (BoardSignals_Reset),
+		.BoardSignals_Running (BoardSignals_Running),
+		.BoardSignals_Starting (BoardSignals_Starting),
+		.BoardSignals_Started (BoardSignals_Started),
+		.M2S (cpu0AutoDecrementRegister_M2S_cpu0AutoDecrementRegister_M2S_HardLink),
+		.Reg (cpu0AutoDecrementRegister_Reg_cpu0AutoDecrementRegister_Reg_HardLink),
+		.outACK (cpu0AutoDecrementRegister_outACK_cpu0AutoDecrementRegister_outACK_HardLink),
+		.outData0 (cpu0AutoDecrementRegister_outData0_cpu0AutoDecrementRegister_outData_HardLink),
+		.outData1 (cpu0AutoDecrementRegister_outData1_cpu0AutoDecrementRegister_outData_HardLink),
+		.outData2 (cpu0AutoDecrementRegister_outData2_cpu0AutoDecrementRegister_outData_HardLink),
+		.outData3 (cpu0AutoDecrementRegister_outData3_cpu0AutoDecrementRegister_outData_HardLink),
+		.outWritten (cpu0AutoDecrementRegister_outWritten_cpu0AutoDecrementRegister_outWritten_HardLink),
+		.S2M (cpu0AutoDecrementRegister_S2M_cpu0AutoDecrementRegister_S2M_HardLink)
+	);
+	AXISoCQuadCoreModule_TopLevel_cpu0AutoIncrementCounter
+	AXISoCQuadCoreModule_TopLevel_cpu0AutoIncrementCounter
+	(
+		// [BEGIN USER MAP FOR cpu0AutoIncrementCounter]
+		// [END USER MAP FOR cpu0AutoIncrementCounter]
+		.BoardSignals_Clock (BoardSignals_Clock),
+		.BoardSignals_Reset (BoardSignals_Reset),
+		.BoardSignals_Running (BoardSignals_Running),
+		.BoardSignals_Starting (BoardSignals_Starting),
+		.BoardSignals_Started (BoardSignals_Started),
+		.M2S (cpu0AutoIncrementCounter_M2S_cpu0AutoIncrementCounter_M2S_HardLink),
+		.oCounter (cpu0AutoIncrementCounter_oCounter_cpu0AutoIncrementCounter_oCounter_HardLink),
+		.outWritten (cpu0AutoIncrementCounter_outWritten_cpu0AutoIncrementCounter_outWritten_HardLink),
+		.S2M (cpu0AutoIncrementCounter_S2M_cpu0AutoIncrementCounter_S2M_HardLink)
+	);
+	AXISoCQuadCoreModule_TopLevel_cpu0Interconnect
+	AXISoCQuadCoreModule_TopLevel_cpu0Interconnect
+	(
+		// [BEGIN USER MAP FOR cpu0Interconnect]
+		// [END USER MAP FOR cpu0Interconnect]
+		.BoardSignals_Clock (BoardSignals_Clock),
+		.BoardSignals_Reset (BoardSignals_Reset),
+		.BoardSignals_Running (BoardSignals_Running),
+		.BoardSignals_Starting (BoardSignals_Starting),
+		.BoardSignals_Started (BoardSignals_Started),
+		.iM2S0 (cpu0Interconnect_iM2S0_cpu0Interconnect_iM2S_HardLink),
+		.iS2M0 (cpu0Interconnect_iS2M0_cpu0Interconnect_iS2M_HardLink),
+		.iS2M1 (cpu0Interconnect_iS2M1_cpu0Interconnect_iS2M_HardLink),
+		.iS2M2 (cpu0Interconnect_iS2M2_cpu0Interconnect_iS2M_HardLink),
+		.iS2M3 (cpu0Interconnect_iS2M3_cpu0Interconnect_iS2M_HardLink),
+		.oM2S0 (cpu0Interconnect_oM2S0_cpu0Interconnect_oM2S_HardLink),
+		.oM2S1 (cpu0Interconnect_oM2S1_cpu0Interconnect_oM2S_HardLink),
+		.oM2S2 (cpu0Interconnect_oM2S2_cpu0Interconnect_oM2S_HardLink),
+		.oM2S3 (cpu0Interconnect_oM2S3_cpu0Interconnect_oM2S_HardLink),
+		.oS2M0 (cpu0Interconnect_oS2M0_cpu0Interconnect_oS2M_HardLink)
+	);
+	AXISoCQuadCoreModule_TopLevel_cpu0IOGateway
+	AXISoCQuadCoreModule_TopLevel_cpu0IOGateway
+	(
+		// [BEGIN USER MAP FOR cpu0IOGateway]
+		// [END USER MAP FOR cpu0IOGateway]
+		.iM2S (cpu0IOGateway_iM2S_cpu0IOGateway_iM2S_HardLink),
+		.iS2M (cpu0IOGateway_iS2M_cpu0IOGateway_iS2M_HardLink),
+		.oM2S (cpu0IOGateway_oM2S_cpu0IOGateway_oM2S_HardLink),
+		.oS2M (cpu0IOGateway_oS2M_cpu0IOGateway_oS2M_HardLink)
+	);
+	AXISoCQuadCoreModule_TopLevel_cpu0Memory
+	AXISoCQuadCoreModule_TopLevel_cpu0Memory
+	(
+		// [BEGIN USER MAP FOR cpu0Memory]
+		// [END USER MAP FOR cpu0Memory]
+		.BoardSignals_Clock (BoardSignals_Clock),
+		.BoardSignals_Reset (BoardSignals_Reset),
+		.BoardSignals_Running (BoardSignals_Running),
+		.BoardSignals_Starting (BoardSignals_Starting),
+		.BoardSignals_Started (BoardSignals_Started),
+		.M2S (cpu0Memory_M2S_cpu0Memory_M2S_HardLink),
+		.S2M (cpu0Memory_S2M_cpu0Memory_S2M_HardLink)
+	);
 	AXISoCQuadCoreModule_TopLevel_CPU1
 	AXISoCQuadCoreModule_TopLevel_CPU1
 	(
@@ -467,6 +673,85 @@ module AXISoCQuadCoreModule_TopLevel
 		.BoardSignals_Started (BoardSignals_Started),
 		.S2M (CPU1_S2M_CPU1_S2M_HardLink),
 		.M2S (CPU1_M2S_CPU1_M2S_HardLink)
+	);
+	AXISoCQuadCoreModule_TopLevel_cpu1AutoDecrementRegister
+	AXISoCQuadCoreModule_TopLevel_cpu1AutoDecrementRegister
+	(
+		// [BEGIN USER MAP FOR cpu1AutoDecrementRegister]
+		// [END USER MAP FOR cpu1AutoDecrementRegister]
+		.BoardSignals_Clock (BoardSignals_Clock),
+		.BoardSignals_Reset (BoardSignals_Reset),
+		.BoardSignals_Running (BoardSignals_Running),
+		.BoardSignals_Starting (BoardSignals_Starting),
+		.BoardSignals_Started (BoardSignals_Started),
+		.M2S (cpu1AutoDecrementRegister_M2S_cpu1AutoDecrementRegister_M2S_HardLink),
+		.Reg (cpu1AutoDecrementRegister_Reg_cpu1AutoDecrementRegister_Reg_HardLink),
+		.outACK (cpu1AutoDecrementRegister_outACK_cpu1AutoDecrementRegister_outACK_HardLink),
+		.outData0 (cpu1AutoDecrementRegister_outData0_cpu1AutoDecrementRegister_outData_HardLink),
+		.outData1 (cpu1AutoDecrementRegister_outData1_cpu1AutoDecrementRegister_outData_HardLink),
+		.outData2 (cpu1AutoDecrementRegister_outData2_cpu1AutoDecrementRegister_outData_HardLink),
+		.outData3 (cpu1AutoDecrementRegister_outData3_cpu1AutoDecrementRegister_outData_HardLink),
+		.outWritten (cpu1AutoDecrementRegister_outWritten_cpu1AutoDecrementRegister_outWritten_HardLink),
+		.S2M (cpu1AutoDecrementRegister_S2M_cpu1AutoDecrementRegister_S2M_HardLink)
+	);
+	AXISoCQuadCoreModule_TopLevel_cpu1AutoIncrementCounter
+	AXISoCQuadCoreModule_TopLevel_cpu1AutoIncrementCounter
+	(
+		// [BEGIN USER MAP FOR cpu1AutoIncrementCounter]
+		// [END USER MAP FOR cpu1AutoIncrementCounter]
+		.BoardSignals_Clock (BoardSignals_Clock),
+		.BoardSignals_Reset (BoardSignals_Reset),
+		.BoardSignals_Running (BoardSignals_Running),
+		.BoardSignals_Starting (BoardSignals_Starting),
+		.BoardSignals_Started (BoardSignals_Started),
+		.M2S (cpu1AutoIncrementCounter_M2S_cpu1AutoIncrementCounter_M2S_HardLink),
+		.oCounter (cpu1AutoIncrementCounter_oCounter_cpu1AutoIncrementCounter_oCounter_HardLink),
+		.outWritten (cpu1AutoIncrementCounter_outWritten_cpu1AutoIncrementCounter_outWritten_HardLink),
+		.S2M (cpu1AutoIncrementCounter_S2M_cpu1AutoIncrementCounter_S2M_HardLink)
+	);
+	AXISoCQuadCoreModule_TopLevel_cpu1Interconnect
+	AXISoCQuadCoreModule_TopLevel_cpu1Interconnect
+	(
+		// [BEGIN USER MAP FOR cpu1Interconnect]
+		// [END USER MAP FOR cpu1Interconnect]
+		.BoardSignals_Clock (BoardSignals_Clock),
+		.BoardSignals_Reset (BoardSignals_Reset),
+		.BoardSignals_Running (BoardSignals_Running),
+		.BoardSignals_Starting (BoardSignals_Starting),
+		.BoardSignals_Started (BoardSignals_Started),
+		.iM2S0 (cpu1Interconnect_iM2S0_cpu1Interconnect_iM2S_HardLink),
+		.iS2M0 (cpu1Interconnect_iS2M0_cpu1Interconnect_iS2M_HardLink),
+		.iS2M1 (cpu1Interconnect_iS2M1_cpu1Interconnect_iS2M_HardLink),
+		.iS2M2 (cpu1Interconnect_iS2M2_cpu1Interconnect_iS2M_HardLink),
+		.iS2M3 (cpu1Interconnect_iS2M3_cpu1Interconnect_iS2M_HardLink),
+		.oM2S0 (cpu1Interconnect_oM2S0_cpu1Interconnect_oM2S_HardLink),
+		.oM2S1 (cpu1Interconnect_oM2S1_cpu1Interconnect_oM2S_HardLink),
+		.oM2S2 (cpu1Interconnect_oM2S2_cpu1Interconnect_oM2S_HardLink),
+		.oM2S3 (cpu1Interconnect_oM2S3_cpu1Interconnect_oM2S_HardLink),
+		.oS2M0 (cpu1Interconnect_oS2M0_cpu1Interconnect_oS2M_HardLink)
+	);
+	AXISoCQuadCoreModule_TopLevel_cpu1IOGateway
+	AXISoCQuadCoreModule_TopLevel_cpu1IOGateway
+	(
+		// [BEGIN USER MAP FOR cpu1IOGateway]
+		// [END USER MAP FOR cpu1IOGateway]
+		.iM2S (cpu1IOGateway_iM2S_cpu1IOGateway_iM2S_HardLink),
+		.iS2M (cpu1IOGateway_iS2M_cpu1IOGateway_iS2M_HardLink),
+		.oM2S (cpu1IOGateway_oM2S_cpu1IOGateway_oM2S_HardLink),
+		.oS2M (cpu1IOGateway_oS2M_cpu1IOGateway_oS2M_HardLink)
+	);
+	AXISoCQuadCoreModule_TopLevel_cpu1Memory
+	AXISoCQuadCoreModule_TopLevel_cpu1Memory
+	(
+		// [BEGIN USER MAP FOR cpu1Memory]
+		// [END USER MAP FOR cpu1Memory]
+		.BoardSignals_Clock (BoardSignals_Clock),
+		.BoardSignals_Reset (BoardSignals_Reset),
+		.BoardSignals_Running (BoardSignals_Running),
+		.BoardSignals_Starting (BoardSignals_Starting),
+		.BoardSignals_Started (BoardSignals_Started),
+		.M2S (cpu1Memory_M2S_cpu1Memory_M2S_HardLink),
+		.S2M (cpu1Memory_S2M_cpu1Memory_S2M_HardLink)
 	);
 	AXISoCQuadCoreModule_TopLevel_CPU2
 	AXISoCQuadCoreModule_TopLevel_CPU2
@@ -481,6 +766,85 @@ module AXISoCQuadCoreModule_TopLevel
 		.S2M (CPU2_S2M_CPU2_S2M_HardLink),
 		.M2S (CPU2_M2S_CPU2_M2S_HardLink)
 	);
+	AXISoCQuadCoreModule_TopLevel_cpu2AutoDecrementRegister
+	AXISoCQuadCoreModule_TopLevel_cpu2AutoDecrementRegister
+	(
+		// [BEGIN USER MAP FOR cpu2AutoDecrementRegister]
+		// [END USER MAP FOR cpu2AutoDecrementRegister]
+		.BoardSignals_Clock (BoardSignals_Clock),
+		.BoardSignals_Reset (BoardSignals_Reset),
+		.BoardSignals_Running (BoardSignals_Running),
+		.BoardSignals_Starting (BoardSignals_Starting),
+		.BoardSignals_Started (BoardSignals_Started),
+		.M2S (cpu2AutoDecrementRegister_M2S_cpu2AutoDecrementRegister_M2S_HardLink),
+		.Reg (cpu2AutoDecrementRegister_Reg_cpu2AutoDecrementRegister_Reg_HardLink),
+		.outACK (cpu2AutoDecrementRegister_outACK_cpu2AutoDecrementRegister_outACK_HardLink),
+		.outData0 (cpu2AutoDecrementRegister_outData0_cpu2AutoDecrementRegister_outData_HardLink),
+		.outData1 (cpu2AutoDecrementRegister_outData1_cpu2AutoDecrementRegister_outData_HardLink),
+		.outData2 (cpu2AutoDecrementRegister_outData2_cpu2AutoDecrementRegister_outData_HardLink),
+		.outData3 (cpu2AutoDecrementRegister_outData3_cpu2AutoDecrementRegister_outData_HardLink),
+		.outWritten (cpu2AutoDecrementRegister_outWritten_cpu2AutoDecrementRegister_outWritten_HardLink),
+		.S2M (cpu2AutoDecrementRegister_S2M_cpu2AutoDecrementRegister_S2M_HardLink)
+	);
+	AXISoCQuadCoreModule_TopLevel_cpu2AutoIncrementCounter
+	AXISoCQuadCoreModule_TopLevel_cpu2AutoIncrementCounter
+	(
+		// [BEGIN USER MAP FOR cpu2AutoIncrementCounter]
+		// [END USER MAP FOR cpu2AutoIncrementCounter]
+		.BoardSignals_Clock (BoardSignals_Clock),
+		.BoardSignals_Reset (BoardSignals_Reset),
+		.BoardSignals_Running (BoardSignals_Running),
+		.BoardSignals_Starting (BoardSignals_Starting),
+		.BoardSignals_Started (BoardSignals_Started),
+		.M2S (cpu2AutoIncrementCounter_M2S_cpu2AutoIncrementCounter_M2S_HardLink),
+		.oCounter (cpu2AutoIncrementCounter_oCounter_cpu2AutoIncrementCounter_oCounter_HardLink),
+		.outWritten (cpu2AutoIncrementCounter_outWritten_cpu2AutoIncrementCounter_outWritten_HardLink),
+		.S2M (cpu2AutoIncrementCounter_S2M_cpu2AutoIncrementCounter_S2M_HardLink)
+	);
+	AXISoCQuadCoreModule_TopLevel_cpu2Interconnect
+	AXISoCQuadCoreModule_TopLevel_cpu2Interconnect
+	(
+		// [BEGIN USER MAP FOR cpu2Interconnect]
+		// [END USER MAP FOR cpu2Interconnect]
+		.BoardSignals_Clock (BoardSignals_Clock),
+		.BoardSignals_Reset (BoardSignals_Reset),
+		.BoardSignals_Running (BoardSignals_Running),
+		.BoardSignals_Starting (BoardSignals_Starting),
+		.BoardSignals_Started (BoardSignals_Started),
+		.iM2S0 (cpu2Interconnect_iM2S0_cpu2Interconnect_iM2S_HardLink),
+		.iS2M0 (cpu2Interconnect_iS2M0_cpu2Interconnect_iS2M_HardLink),
+		.iS2M1 (cpu2Interconnect_iS2M1_cpu2Interconnect_iS2M_HardLink),
+		.iS2M2 (cpu2Interconnect_iS2M2_cpu2Interconnect_iS2M_HardLink),
+		.iS2M3 (cpu2Interconnect_iS2M3_cpu2Interconnect_iS2M_HardLink),
+		.oM2S0 (cpu2Interconnect_oM2S0_cpu2Interconnect_oM2S_HardLink),
+		.oM2S1 (cpu2Interconnect_oM2S1_cpu2Interconnect_oM2S_HardLink),
+		.oM2S2 (cpu2Interconnect_oM2S2_cpu2Interconnect_oM2S_HardLink),
+		.oM2S3 (cpu2Interconnect_oM2S3_cpu2Interconnect_oM2S_HardLink),
+		.oS2M0 (cpu2Interconnect_oS2M0_cpu2Interconnect_oS2M_HardLink)
+	);
+	AXISoCQuadCoreModule_TopLevel_cpu2IOGateway
+	AXISoCQuadCoreModule_TopLevel_cpu2IOGateway
+	(
+		// [BEGIN USER MAP FOR cpu2IOGateway]
+		// [END USER MAP FOR cpu2IOGateway]
+		.iM2S (cpu2IOGateway_iM2S_cpu2IOGateway_iM2S_HardLink),
+		.iS2M (cpu2IOGateway_iS2M_cpu2IOGateway_iS2M_HardLink),
+		.oM2S (cpu2IOGateway_oM2S_cpu2IOGateway_oM2S_HardLink),
+		.oS2M (cpu2IOGateway_oS2M_cpu2IOGateway_oS2M_HardLink)
+	);
+	AXISoCQuadCoreModule_TopLevel_cpu2Memory
+	AXISoCQuadCoreModule_TopLevel_cpu2Memory
+	(
+		// [BEGIN USER MAP FOR cpu2Memory]
+		// [END USER MAP FOR cpu2Memory]
+		.BoardSignals_Clock (BoardSignals_Clock),
+		.BoardSignals_Reset (BoardSignals_Reset),
+		.BoardSignals_Running (BoardSignals_Running),
+		.BoardSignals_Starting (BoardSignals_Starting),
+		.BoardSignals_Started (BoardSignals_Started),
+		.M2S (cpu2Memory_M2S_cpu2Memory_M2S_HardLink),
+		.S2M (cpu2Memory_S2M_cpu2Memory_S2M_HardLink)
+	);
 	AXISoCQuadCoreModule_TopLevel_CPU3
 	AXISoCQuadCoreModule_TopLevel_CPU3
 	(
@@ -494,50 +858,84 @@ module AXISoCQuadCoreModule_TopLevel
 		.S2M (CPU3_S2M_CPU3_S2M_HardLink),
 		.M2S (CPU3_M2S_CPU3_M2S_HardLink)
 	);
-	AXISoCQuadCoreModule_TopLevel_Interconnect
-	AXISoCQuadCoreModule_TopLevel_Interconnect
+	AXISoCQuadCoreModule_TopLevel_cpu3AutoDecrementRegister
+	AXISoCQuadCoreModule_TopLevel_cpu3AutoDecrementRegister
 	(
-		// [BEGIN USER MAP FOR Interconnect]
-		// [END USER MAP FOR Interconnect]
+		// [BEGIN USER MAP FOR cpu3AutoDecrementRegister]
+		// [END USER MAP FOR cpu3AutoDecrementRegister]
 		.BoardSignals_Clock (BoardSignals_Clock),
 		.BoardSignals_Reset (BoardSignals_Reset),
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.iM2S0 (Interconnect_iM2S0_Interconnect_iM2S_HardLink),
-		.iM2S1 (Interconnect_iM2S1_Interconnect_iM2S_HardLink),
-		.iM2S2 (Interconnect_iM2S2_Interconnect_iM2S_HardLink),
-		.iM2S3 (Interconnect_iM2S3_Interconnect_iM2S_HardLink),
-		.iS2M0 (Interconnect_iS2M0_Interconnect_iS2M_HardLink),
-		.iS2M1 (Interconnect_iS2M1_Interconnect_iS2M_HardLink),
-		.iS2M2 (Interconnect_iS2M2_Interconnect_iS2M_HardLink),
-		.iS2M3 (Interconnect_iS2M3_Interconnect_iS2M_HardLink),
-		.iS2M4 (Interconnect_iS2M4_Interconnect_iS2M_HardLink),
-		.iS2M5 (Interconnect_iS2M5_Interconnect_iS2M_HardLink),
-		.iS2M6 (Interconnect_iS2M6_Interconnect_iS2M_HardLink),
-		.iS2M7 (Interconnect_iS2M7_Interconnect_iS2M_HardLink),
-		.oM2S0 (Interconnect_oM2S0_Interconnect_oM2S_HardLink),
-		.oM2S1 (Interconnect_oM2S1_Interconnect_oM2S_HardLink),
-		.oM2S2 (Interconnect_oM2S2_Interconnect_oM2S_HardLink),
-		.oM2S3 (Interconnect_oM2S3_Interconnect_oM2S_HardLink),
-		.oM2S4 (Interconnect_oM2S4_Interconnect_oM2S_HardLink),
-		.oM2S5 (Interconnect_oM2S5_Interconnect_oM2S_HardLink),
-		.oM2S6 (Interconnect_oM2S6_Interconnect_oM2S_HardLink),
-		.oM2S7 (Interconnect_oM2S7_Interconnect_oM2S_HardLink),
-		.oS2M0 (Interconnect_oS2M0_Interconnect_oS2M_HardLink),
-		.oS2M1 (Interconnect_oS2M1_Interconnect_oS2M_HardLink),
-		.oS2M2 (Interconnect_oS2M2_Interconnect_oS2M_HardLink),
-		.oS2M3 (Interconnect_oS2M3_Interconnect_oS2M_HardLink)
+		.M2S (cpu3AutoDecrementRegister_M2S_cpu3AutoDecrementRegister_M2S_HardLink),
+		.Reg (cpu3AutoDecrementRegister_Reg_cpu3AutoDecrementRegister_Reg_HardLink),
+		.outACK (cpu3AutoDecrementRegister_outACK_cpu3AutoDecrementRegister_outACK_HardLink),
+		.outData0 (cpu3AutoDecrementRegister_outData0_cpu3AutoDecrementRegister_outData_HardLink),
+		.outData1 (cpu3AutoDecrementRegister_outData1_cpu3AutoDecrementRegister_outData_HardLink),
+		.outData2 (cpu3AutoDecrementRegister_outData2_cpu3AutoDecrementRegister_outData_HardLink),
+		.outData3 (cpu3AutoDecrementRegister_outData3_cpu3AutoDecrementRegister_outData_HardLink),
+		.outWritten (cpu3AutoDecrementRegister_outWritten_cpu3AutoDecrementRegister_outWritten_HardLink),
+		.S2M (cpu3AutoDecrementRegister_S2M_cpu3AutoDecrementRegister_S2M_HardLink)
 	);
-	AXISoCQuadCoreModule_TopLevel_ioGateway
-	AXISoCQuadCoreModule_TopLevel_ioGateway
+	AXISoCQuadCoreModule_TopLevel_cpu3AutoIncrementCounter
+	AXISoCQuadCoreModule_TopLevel_cpu3AutoIncrementCounter
 	(
-		// [BEGIN USER MAP FOR ioGateway]
-		// [END USER MAP FOR ioGateway]
-		.iM2S (ioGateway_iM2S_ioGateway_iM2S_HardLink),
-		.iS2M (ioGateway_iS2M_ioGateway_iS2M_HardLink),
-		.oM2S (ioGateway_oM2S_ioGateway_oM2S_HardLink),
-		.oS2M (ioGateway_oS2M_ioGateway_oS2M_HardLink)
+		// [BEGIN USER MAP FOR cpu3AutoIncrementCounter]
+		// [END USER MAP FOR cpu3AutoIncrementCounter]
+		.BoardSignals_Clock (BoardSignals_Clock),
+		.BoardSignals_Reset (BoardSignals_Reset),
+		.BoardSignals_Running (BoardSignals_Running),
+		.BoardSignals_Starting (BoardSignals_Starting),
+		.BoardSignals_Started (BoardSignals_Started),
+		.M2S (cpu3AutoIncrementCounter_M2S_cpu3AutoIncrementCounter_M2S_HardLink),
+		.oCounter (cpu3AutoIncrementCounter_oCounter_cpu3AutoIncrementCounter_oCounter_HardLink),
+		.outWritten (cpu3AutoIncrementCounter_outWritten_cpu3AutoIncrementCounter_outWritten_HardLink),
+		.S2M (cpu3AutoIncrementCounter_S2M_cpu3AutoIncrementCounter_S2M_HardLink)
+	);
+	AXISoCQuadCoreModule_TopLevel_cpu3Interconnect
+	AXISoCQuadCoreModule_TopLevel_cpu3Interconnect
+	(
+		// [BEGIN USER MAP FOR cpu3Interconnect]
+		// [END USER MAP FOR cpu3Interconnect]
+		.BoardSignals_Clock (BoardSignals_Clock),
+		.BoardSignals_Reset (BoardSignals_Reset),
+		.BoardSignals_Running (BoardSignals_Running),
+		.BoardSignals_Starting (BoardSignals_Starting),
+		.BoardSignals_Started (BoardSignals_Started),
+		.iM2S0 (cpu3Interconnect_iM2S0_cpu3Interconnect_iM2S_HardLink),
+		.iS2M0 (cpu3Interconnect_iS2M0_cpu3Interconnect_iS2M_HardLink),
+		.iS2M1 (cpu3Interconnect_iS2M1_cpu3Interconnect_iS2M_HardLink),
+		.iS2M2 (cpu3Interconnect_iS2M2_cpu3Interconnect_iS2M_HardLink),
+		.iS2M3 (cpu3Interconnect_iS2M3_cpu3Interconnect_iS2M_HardLink),
+		.oM2S0 (cpu3Interconnect_oM2S0_cpu3Interconnect_oM2S_HardLink),
+		.oM2S1 (cpu3Interconnect_oM2S1_cpu3Interconnect_oM2S_HardLink),
+		.oM2S2 (cpu3Interconnect_oM2S2_cpu3Interconnect_oM2S_HardLink),
+		.oM2S3 (cpu3Interconnect_oM2S3_cpu3Interconnect_oM2S_HardLink),
+		.oS2M0 (cpu3Interconnect_oS2M0_cpu3Interconnect_oS2M_HardLink)
+	);
+	AXISoCQuadCoreModule_TopLevel_cpu3IOGateway
+	AXISoCQuadCoreModule_TopLevel_cpu3IOGateway
+	(
+		// [BEGIN USER MAP FOR cpu3IOGateway]
+		// [END USER MAP FOR cpu3IOGateway]
+		.iM2S (cpu3IOGateway_iM2S_cpu3IOGateway_iM2S_HardLink),
+		.iS2M (cpu3IOGateway_iS2M_cpu3IOGateway_iS2M_HardLink),
+		.oM2S (cpu3IOGateway_oM2S_cpu3IOGateway_oM2S_HardLink),
+		.oS2M (cpu3IOGateway_oS2M_cpu3IOGateway_oS2M_HardLink)
+	);
+	AXISoCQuadCoreModule_TopLevel_cpu3Memory
+	AXISoCQuadCoreModule_TopLevel_cpu3Memory
+	(
+		// [BEGIN USER MAP FOR cpu3Memory]
+		// [END USER MAP FOR cpu3Memory]
+		.BoardSignals_Clock (BoardSignals_Clock),
+		.BoardSignals_Reset (BoardSignals_Reset),
+		.BoardSignals_Running (BoardSignals_Running),
+		.BoardSignals_Starting (BoardSignals_Starting),
+		.BoardSignals_Started (BoardSignals_Started),
+		.M2S (cpu3Memory_M2S_cpu3Memory_M2S_HardLink),
+		.S2M (cpu3Memory_S2M_cpu3Memory_S2M_HardLink)
 	);
 	AXISoCQuadCoreModule_TopLevel_ioInterconnect
 	AXISoCQuadCoreModule_TopLevel_ioInterconnect
@@ -550,6 +948,9 @@ module AXISoCQuadCoreModule_TopLevel
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
 		.iM2S0 (ioInterconnect_iM2S0_ioInterconnect_iM2S_HardLink),
+		.iM2S1 (ioInterconnect_iM2S1_ioInterconnect_iM2S_HardLink),
+		.iM2S2 (ioInterconnect_iM2S2_ioInterconnect_iM2S_HardLink),
+		.iM2S3 (ioInterconnect_iM2S3_ioInterconnect_iM2S_HardLink),
 		.iS2M0 (ioInterconnect_iS2M0_ioInterconnect_iS2M_HardLink),
 		.iS2M1 (ioInterconnect_iS2M1_ioInterconnect_iS2M_HardLink),
 		.iS2M2 (ioInterconnect_iS2M2_ioInterconnect_iS2M_HardLink),
@@ -557,6 +958,10 @@ module AXISoCQuadCoreModule_TopLevel
 		.iS2M4 (ioInterconnect_iS2M4_ioInterconnect_iS2M_HardLink),
 		.iS2M5 (ioInterconnect_iS2M5_ioInterconnect_iS2M_HardLink),
 		.iS2M6 (ioInterconnect_iS2M6_ioInterconnect_iS2M_HardLink),
+		.iS2M7 (ioInterconnect_iS2M7_ioInterconnect_iS2M_HardLink),
+		.iS2M8 (ioInterconnect_iS2M8_ioInterconnect_iS2M_HardLink),
+		.iS2M9 (ioInterconnect_iS2M9_ioInterconnect_iS2M_HardLink),
+		.iS2M10 (ioInterconnect_iS2M10_ioInterconnect_iS2M_HardLink),
 		.oM2S0 (ioInterconnect_oM2S0_ioInterconnect_oM2S_HardLink),
 		.oM2S1 (ioInterconnect_oM2S1_ioInterconnect_oM2S_HardLink),
 		.oM2S2 (ioInterconnect_oM2S2_ioInterconnect_oM2S_HardLink),
@@ -564,20 +969,14 @@ module AXISoCQuadCoreModule_TopLevel
 		.oM2S4 (ioInterconnect_oM2S4_ioInterconnect_oM2S_HardLink),
 		.oM2S5 (ioInterconnect_oM2S5_ioInterconnect_oM2S_HardLink),
 		.oM2S6 (ioInterconnect_oM2S6_ioInterconnect_oM2S_HardLink),
-		.oS2M0 (ioInterconnect_oS2M0_ioInterconnect_oS2M_HardLink)
-	);
-	AXISoCQuadCoreModule_TopLevel_Memory
-	AXISoCQuadCoreModule_TopLevel_Memory
-	(
-		// [BEGIN USER MAP FOR Memory]
-		// [END USER MAP FOR Memory]
-		.BoardSignals_Clock (BoardSignals_Clock),
-		.BoardSignals_Reset (BoardSignals_Reset),
-		.BoardSignals_Running (BoardSignals_Running),
-		.BoardSignals_Starting (BoardSignals_Starting),
-		.BoardSignals_Started (BoardSignals_Started),
-		.M2S (Memory_M2S_Memory_M2S_HardLink),
-		.S2M (Memory_S2M_Memory_S2M_HardLink)
+		.oM2S7 (ioInterconnect_oM2S7_ioInterconnect_oM2S_HardLink),
+		.oM2S8 (ioInterconnect_oM2S8_ioInterconnect_oM2S_HardLink),
+		.oM2S9 (ioInterconnect_oM2S9_ioInterconnect_oM2S_HardLink),
+		.oM2S10 (ioInterconnect_oM2S10_ioInterconnect_oM2S_HardLink),
+		.oS2M0 (ioInterconnect_oS2M0_ioInterconnect_oS2M_HardLink),
+		.oS2M1 (ioInterconnect_oS2M1_ioInterconnect_oS2M_HardLink),
+		.oS2M2 (ioInterconnect_oS2M2_ioInterconnect_oS2M_HardLink),
+		.oS2M3 (ioInterconnect_oS2M3_ioInterconnect_oS2M_HardLink)
 	);
 	AXISoCQuadCoreModule_TopLevel_Reg0
 	AXISoCQuadCoreModule_TopLevel_Reg0
@@ -723,192 +1122,254 @@ module AXISoCQuadCoreModule_TopLevel
 	assign Inputs_iRX = iRX;
 	assign Inputs_iSwitch0 = iSwitch0;
 	assign Inputs_iSwitch1 = iSwitch1;
-	assign AXISoCQuadCoreModule_L99F33L102T14_Object[73:0] = Interconnect_oS2M[0];
-	assign CPU0_S2M = AXISoCQuadCoreModule_L99F33L102T14_Object[73:0];
-	assign AXISoCQuadCoreModule_L103F33L106T14_Object[73:0] = Interconnect_oS2M[1];
-	assign CPU1_S2M = AXISoCQuadCoreModule_L103F33L106T14_Object[73:0];
-	assign AXISoCQuadCoreModule_L107F33L110T14_Object[73:0] = Interconnect_oS2M[2];
-	assign CPU2_S2M = AXISoCQuadCoreModule_L107F33L110T14_Object[73:0];
-	assign AXISoCQuadCoreModule_L111F33L114T14_Object[73:0] = Interconnect_oS2M[3];
-	assign CPU3_S2M = AXISoCQuadCoreModule_L111F33L114T14_Object[73:0];
-	assign AXISoCQuadCoreModule_L116F35L119T14_Object[221:0] = Interconnect_oM2S[0];
-	assign Memory_M2S = AXISoCQuadCoreModule_L116F35L119T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L120F49L123T14_Object[221:0] = Interconnect_oM2S[1];
-	assign AutoIncrementCounter_M2S = AXISoCQuadCoreModule_L120F49L123T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L124F54L127T14_Object[221:0] = Interconnect_oM2S[2];
-	assign AXISoCQuadCoreModule_L124F54L127T14_Object[254:222] = AXI4AutoDecrementRegisterModuleInputs_Reg;
-	assign AXI4AutoDecrementRegister_Reg = AXISoCQuadCoreModule_L124F54L127T14_Object[254:222];
-	assign AXI4AutoDecrementRegister_M2S = AXISoCQuadCoreModule_L124F54L127T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L129F33L132T14_Object[221:0] = Interconnect_oM2S[3];
-	assign AXISoCQuadCoreModule_L129F33L132T14_Object[254:222] = AXI4RegisterModuleInputs_Reg;
-	assign Reg0_Reg = AXISoCQuadCoreModule_L129F33L132T14_Object[254:222];
-	assign Reg0_M2S = AXISoCQuadCoreModule_L129F33L132T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L133F33L136T14_Object[221:0] = Interconnect_oM2S[4];
-	assign AXISoCQuadCoreModule_L133F33L136T14_Object[254:222] = AXI4RegisterModuleInputs_Reg;
-	assign Reg1_Reg = AXISoCQuadCoreModule_L133F33L136T14_Object[254:222];
-	assign Reg1_M2S = AXISoCQuadCoreModule_L133F33L136T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L137F33L140T14_Object[221:0] = Interconnect_oM2S[5];
-	assign AXISoCQuadCoreModule_L137F33L140T14_Object[254:222] = AXI4RegisterModuleInputs_Reg;
-	assign Reg2_Reg = AXISoCQuadCoreModule_L137F33L140T14_Object[254:222];
-	assign Reg2_M2S = AXISoCQuadCoreModule_L137F33L140T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L141F33L144T14_Object[221:0] = Interconnect_oM2S[6];
-	assign AXISoCQuadCoreModule_L141F33L144T14_Object[254:222] = AXI4RegisterModuleInputs_Reg;
-	assign Reg3_Reg = AXISoCQuadCoreModule_L141F33L144T14_Object[254:222];
-	assign Reg3_M2S = AXISoCQuadCoreModule_L141F33L144T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L145F38L149T14_Object[221:0] = Interconnect_oM2S[7];
-	assign AXISoCQuadCoreModule_L145F38L149T14_Object[295:222] = ioInterconnect_oS2M[0];
-	assign ioGateway_iS2M = AXISoCQuadCoreModule_L145F38L149T14_Object[295:222];
-	assign ioGateway_iM2S = AXISoCQuadCoreModule_L145F38L149T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L151F36L158T14_Object[221:0] = ioInterconnect_oM2S[0];
-	assign AXISoCQuadCoreModule_L151F36L158T14_Object[253:222] = {
+	assign AXISoCQuadCoreModule_L148F33L151T14_Object[73:0] = cpu0Interconnect_oS2M[0];
+	assign CPU0_S2M = AXISoCQuadCoreModule_L148F33L151T14_Object[73:0];
+	assign AXISoCQuadCoreModule_L152F39L155T14_Object[221:0] = cpu0Interconnect_oM2S[0];
+	assign cpu0Memory_M2S = AXISoCQuadCoreModule_L152F39L155T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L156F53L159T14_Object[221:0] = cpu0Interconnect_oM2S[1];
+	assign cpu0AutoIncrementCounter_M2S = AXISoCQuadCoreModule_L156F53L159T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L160F54L163T14_Object[221:0] = cpu0Interconnect_oM2S[2];
+	assign AXISoCQuadCoreModule_L160F54L163T14_Object[254:222] = AXI4AutoDecrementRegisterModuleInputs_Reg;
+	assign cpu0AutoDecrementRegister_Reg = AXISoCQuadCoreModule_L160F54L163T14_Object[254:222];
+	assign cpu0AutoDecrementRegister_M2S = AXISoCQuadCoreModule_L160F54L163T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L164F42L168T14_Object[221:0] = cpu0Interconnect_oM2S[3];
+	assign AXISoCQuadCoreModule_L164F42L168T14_Object[295:222] = ioInterconnect_oS2M[0];
+	assign cpu0IOGateway_iS2M = AXISoCQuadCoreModule_L164F42L168T14_Object[295:222];
+	assign cpu0IOGateway_iM2S = AXISoCQuadCoreModule_L164F42L168T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L169F45L180T14_Object[221:0] = CPU0_M2S;
+	assign AXISoCQuadCoreModule_L169F45L180T14_Object[517:222] = {
+		cpu0IOGateway_oS2M,
+		cpu0AutoDecrementRegister_S2M,
+		cpu0AutoIncrementCounter_S2M,
+		cpu0Memory_S2M
+	}
+	;
+	assign cpu0Interconnect_iS2M[3] = AXISoCQuadCoreModule_L169F45L180T14_Object[517:444];
+	assign cpu0Interconnect_iS2M[2] = AXISoCQuadCoreModule_L169F45L180T14_Object[443:370];
+	assign cpu0Interconnect_iS2M[1] = AXISoCQuadCoreModule_L169F45L180T14_Object[369:296];
+	assign cpu0Interconnect_iS2M[0] = AXISoCQuadCoreModule_L169F45L180T14_Object[295:222];
+	assign cpu0Interconnect_iM2S[0] = AXISoCQuadCoreModule_L169F45L180T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L183F33L186T14_Object[73:0] = cpu1Interconnect_oS2M[0];
+	assign CPU1_S2M = AXISoCQuadCoreModule_L183F33L186T14_Object[73:0];
+	assign AXISoCQuadCoreModule_L187F39L190T14_Object[221:0] = cpu1Interconnect_oM2S[0];
+	assign cpu1Memory_M2S = AXISoCQuadCoreModule_L187F39L190T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L191F53L194T14_Object[221:0] = cpu1Interconnect_oM2S[1];
+	assign cpu1AutoIncrementCounter_M2S = AXISoCQuadCoreModule_L191F53L194T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L195F54L198T14_Object[221:0] = cpu1Interconnect_oM2S[2];
+	assign AXISoCQuadCoreModule_L195F54L198T14_Object[254:222] = AXI4AutoDecrementRegisterModuleInputs_Reg;
+	assign cpu1AutoDecrementRegister_Reg = AXISoCQuadCoreModule_L195F54L198T14_Object[254:222];
+	assign cpu1AutoDecrementRegister_M2S = AXISoCQuadCoreModule_L195F54L198T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L199F42L203T14_Object[221:0] = cpu1Interconnect_oM2S[3];
+	assign AXISoCQuadCoreModule_L199F42L203T14_Object[295:222] = ioInterconnect_oS2M[1];
+	assign cpu1IOGateway_iS2M = AXISoCQuadCoreModule_L199F42L203T14_Object[295:222];
+	assign cpu1IOGateway_iM2S = AXISoCQuadCoreModule_L199F42L203T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L204F45L215T14_Object[221:0] = CPU1_M2S;
+	assign AXISoCQuadCoreModule_L204F45L215T14_Object[517:222] = {
+		cpu1IOGateway_oS2M,
+		cpu1AutoDecrementRegister_S2M,
+		cpu1AutoIncrementCounter_S2M,
+		cpu1Memory_S2M
+	}
+	;
+	assign cpu1Interconnect_iS2M[3] = AXISoCQuadCoreModule_L204F45L215T14_Object[517:444];
+	assign cpu1Interconnect_iS2M[2] = AXISoCQuadCoreModule_L204F45L215T14_Object[443:370];
+	assign cpu1Interconnect_iS2M[1] = AXISoCQuadCoreModule_L204F45L215T14_Object[369:296];
+	assign cpu1Interconnect_iS2M[0] = AXISoCQuadCoreModule_L204F45L215T14_Object[295:222];
+	assign cpu1Interconnect_iM2S[0] = AXISoCQuadCoreModule_L204F45L215T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L218F33L221T14_Object[73:0] = cpu2Interconnect_oS2M[0];
+	assign CPU2_S2M = AXISoCQuadCoreModule_L218F33L221T14_Object[73:0];
+	assign AXISoCQuadCoreModule_L222F39L225T14_Object[221:0] = cpu2Interconnect_oM2S[0];
+	assign cpu2Memory_M2S = AXISoCQuadCoreModule_L222F39L225T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L226F53L229T14_Object[221:0] = cpu2Interconnect_oM2S[1];
+	assign cpu2AutoIncrementCounter_M2S = AXISoCQuadCoreModule_L226F53L229T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L230F54L233T14_Object[221:0] = cpu2Interconnect_oM2S[2];
+	assign AXISoCQuadCoreModule_L230F54L233T14_Object[254:222] = AXI4AutoDecrementRegisterModuleInputs_Reg;
+	assign cpu2AutoDecrementRegister_Reg = AXISoCQuadCoreModule_L230F54L233T14_Object[254:222];
+	assign cpu2AutoDecrementRegister_M2S = AXISoCQuadCoreModule_L230F54L233T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L234F42L238T14_Object[221:0] = cpu2Interconnect_oM2S[3];
+	assign AXISoCQuadCoreModule_L234F42L238T14_Object[295:222] = ioInterconnect_oS2M[2];
+	assign cpu2IOGateway_iS2M = AXISoCQuadCoreModule_L234F42L238T14_Object[295:222];
+	assign cpu2IOGateway_iM2S = AXISoCQuadCoreModule_L234F42L238T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L239F45L250T14_Object[221:0] = CPU2_M2S;
+	assign AXISoCQuadCoreModule_L239F45L250T14_Object[517:222] = {
+		cpu2IOGateway_oS2M,
+		cpu2AutoDecrementRegister_S2M,
+		cpu2AutoIncrementCounter_S2M,
+		cpu2Memory_S2M
+	}
+	;
+	assign cpu2Interconnect_iS2M[3] = AXISoCQuadCoreModule_L239F45L250T14_Object[517:444];
+	assign cpu2Interconnect_iS2M[2] = AXISoCQuadCoreModule_L239F45L250T14_Object[443:370];
+	assign cpu2Interconnect_iS2M[1] = AXISoCQuadCoreModule_L239F45L250T14_Object[369:296];
+	assign cpu2Interconnect_iS2M[0] = AXISoCQuadCoreModule_L239F45L250T14_Object[295:222];
+	assign cpu2Interconnect_iM2S[0] = AXISoCQuadCoreModule_L239F45L250T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L253F33L256T14_Object[73:0] = cpu3Interconnect_oS2M[0];
+	assign CPU3_S2M = AXISoCQuadCoreModule_L253F33L256T14_Object[73:0];
+	assign AXISoCQuadCoreModule_L257F39L260T14_Object[221:0] = cpu3Interconnect_oM2S[0];
+	assign cpu3Memory_M2S = AXISoCQuadCoreModule_L257F39L260T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L261F53L264T14_Object[221:0] = cpu3Interconnect_oM2S[1];
+	assign cpu3AutoIncrementCounter_M2S = AXISoCQuadCoreModule_L261F53L264T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L265F54L268T14_Object[221:0] = cpu3Interconnect_oM2S[2];
+	assign AXISoCQuadCoreModule_L265F54L268T14_Object[254:222] = AXI4AutoDecrementRegisterModuleInputs_Reg;
+	assign cpu3AutoDecrementRegister_Reg = AXISoCQuadCoreModule_L265F54L268T14_Object[254:222];
+	assign cpu3AutoDecrementRegister_M2S = AXISoCQuadCoreModule_L265F54L268T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L269F42L273T14_Object[221:0] = cpu3Interconnect_oM2S[3];
+	assign AXISoCQuadCoreModule_L269F42L273T14_Object[295:222] = ioInterconnect_oS2M[3];
+	assign cpu3IOGateway_iS2M = AXISoCQuadCoreModule_L269F42L273T14_Object[295:222];
+	assign cpu3IOGateway_iM2S = AXISoCQuadCoreModule_L269F42L273T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L274F45L285T14_Object[221:0] = CPU3_M2S;
+	assign AXISoCQuadCoreModule_L274F45L285T14_Object[517:222] = {
+		cpu3IOGateway_oS2M,
+		cpu3AutoDecrementRegister_S2M,
+		cpu3AutoIncrementCounter_S2M,
+		cpu3Memory_S2M
+	}
+	;
+	assign cpu3Interconnect_iS2M[3] = AXISoCQuadCoreModule_L274F45L285T14_Object[517:444];
+	assign cpu3Interconnect_iS2M[2] = AXISoCQuadCoreModule_L274F45L285T14_Object[443:370];
+	assign cpu3Interconnect_iS2M[1] = AXISoCQuadCoreModule_L274F45L285T14_Object[369:296];
+	assign cpu3Interconnect_iS2M[0] = AXISoCQuadCoreModule_L274F45L285T14_Object[295:222];
+	assign cpu3Interconnect_iM2S[0] = AXISoCQuadCoreModule_L274F45L285T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L288F33L291T14_Object[221:0] = ioInterconnect_oM2S[0];
+	assign AXISoCQuadCoreModule_L288F33L291T14_Object[254:222] = AXI4RegisterModuleInputs_Reg;
+	assign Reg0_Reg = AXISoCQuadCoreModule_L288F33L291T14_Object[254:222];
+	assign Reg0_M2S = AXISoCQuadCoreModule_L288F33L291T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L292F33L295T14_Object[221:0] = ioInterconnect_oM2S[1];
+	assign AXISoCQuadCoreModule_L292F33L295T14_Object[254:222] = AXI4RegisterModuleInputs_Reg;
+	assign Reg1_Reg = AXISoCQuadCoreModule_L292F33L295T14_Object[254:222];
+	assign Reg1_M2S = AXISoCQuadCoreModule_L292F33L295T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L296F33L299T14_Object[221:0] = ioInterconnect_oM2S[2];
+	assign AXISoCQuadCoreModule_L296F33L299T14_Object[254:222] = AXI4RegisterModuleInputs_Reg;
+	assign Reg2_Reg = AXISoCQuadCoreModule_L296F33L299T14_Object[254:222];
+	assign Reg2_M2S = AXISoCQuadCoreModule_L296F33L299T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L300F33L303T14_Object[221:0] = ioInterconnect_oM2S[3];
+	assign AXISoCQuadCoreModule_L300F33L303T14_Object[254:222] = AXI4RegisterModuleInputs_Reg;
+	assign Reg3_Reg = AXISoCQuadCoreModule_L300F33L303T14_Object[254:222];
+	assign Reg3_M2S = AXISoCQuadCoreModule_L300F33L303T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L304F36L311T14_Object[221:0] = ioInterconnect_oM2S[4];
+	assign AXISoCQuadCoreModule_L304F36L311T14_Object[253:222] = {
 		{31{1'b0}},
 		Inputs_iSwitch0
 	}
 	;
-	assign Switch0_Sig = AXISoCQuadCoreModule_L151F36L158T14_Object[253:222];
-	assign Switch0_M2S = AXISoCQuadCoreModule_L151F36L158T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L159F36L166T14_Object[221:0] = ioInterconnect_oM2S[1];
-	assign AXISoCQuadCoreModule_L159F36L166T14_Object[253:222] = {
+	assign Switch0_Sig = AXISoCQuadCoreModule_L304F36L311T14_Object[253:222];
+	assign Switch0_M2S = AXISoCQuadCoreModule_L304F36L311T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L312F36L319T14_Object[221:0] = ioInterconnect_oM2S[5];
+	assign AXISoCQuadCoreModule_L312F36L319T14_Object[253:222] = {
 		{31{1'b0}},
 		Inputs_iSwitch1
 	}
 	;
-	assign Switch1_Sig = AXISoCQuadCoreModule_L159F36L166T14_Object[253:222];
-	assign Switch1_M2S = AXISoCQuadCoreModule_L159F36L166T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L168F36L175T14_Object[221:0] = ioInterconnect_oM2S[2];
-	assign AXISoCQuadCoreModule_L168F36L175T14_Object[253:222] = {
+	assign Switch1_Sig = AXISoCQuadCoreModule_L312F36L319T14_Object[253:222];
+	assign Switch1_M2S = AXISoCQuadCoreModule_L312F36L319T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L321F36L328T14_Object[221:0] = ioInterconnect_oM2S[6];
+	assign AXISoCQuadCoreModule_L321F36L328T14_Object[253:222] = {
 		{31{1'b0}},
 		Inputs_iButton0
 	}
 	;
-	assign Button0_Sig = AXISoCQuadCoreModule_L168F36L175T14_Object[253:222];
-	assign Button0_M2S = AXISoCQuadCoreModule_L168F36L175T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L176F36L183T14_Object[221:0] = ioInterconnect_oM2S[3];
-	assign AXISoCQuadCoreModule_L176F36L183T14_Object[253:222] = {
+	assign Button0_Sig = AXISoCQuadCoreModule_L321F36L328T14_Object[253:222];
+	assign Button0_M2S = AXISoCQuadCoreModule_L321F36L328T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L329F36L336T14_Object[221:0] = ioInterconnect_oM2S[7];
+	assign AXISoCQuadCoreModule_L329F36L336T14_Object[253:222] = {
 		{31{1'b0}},
 		Inputs_iButton1
 	}
 	;
-	assign Button1_Sig = AXISoCQuadCoreModule_L176F36L183T14_Object[253:222];
-	assign Button1_M2S = AXISoCQuadCoreModule_L176F36L183T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L184F36L191T14_Object[221:0] = ioInterconnect_oM2S[4];
-	assign AXISoCQuadCoreModule_L184F36L191T14_Object[253:222] = {
+	assign Button1_Sig = AXISoCQuadCoreModule_L329F36L336T14_Object[253:222];
+	assign Button1_M2S = AXISoCQuadCoreModule_L329F36L336T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L337F36L344T14_Object[221:0] = ioInterconnect_oM2S[8];
+	assign AXISoCQuadCoreModule_L337F36L344T14_Object[253:222] = {
 		{31{1'b0}},
 		Inputs_iButton2
 	}
 	;
-	assign Button2_Sig = AXISoCQuadCoreModule_L184F36L191T14_Object[253:222];
-	assign Button2_M2S = AXISoCQuadCoreModule_L184F36L191T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L192F36L199T14_Object[221:0] = ioInterconnect_oM2S[5];
-	assign AXISoCQuadCoreModule_L192F36L199T14_Object[253:222] = {
+	assign Button2_Sig = AXISoCQuadCoreModule_L337F36L344T14_Object[253:222];
+	assign Button2_M2S = AXISoCQuadCoreModule_L337F36L344T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L345F36L352T14_Object[221:0] = ioInterconnect_oM2S[9];
+	assign AXISoCQuadCoreModule_L345F36L352T14_Object[253:222] = {
 		{31{1'b0}},
 		Inputs_iButton3
 	}
 	;
-	assign Button3_Sig = AXISoCQuadCoreModule_L192F36L199T14_Object[253:222];
-	assign Button3_M2S = AXISoCQuadCoreModule_L192F36L199T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L200F33L204T14_Object[0] = Inputs_iRX;
-	assign AXISoCQuadCoreModule_L200F33L204T14_Object[222:1] = ioInterconnect_oM2S[6];
-	assign uart_M2S = AXISoCQuadCoreModule_L200F33L204T14_Object[222:1];
-	assign uart_iRX = AXISoCQuadCoreModule_L200F33L204T14_Object[0];
-	assign AXISoCQuadCoreModule_L207F41L225T14_Object[887:0] = {
-		CPU3_M2S,
-		CPU2_M2S,
-		CPU1_M2S,
-		CPU0_M2S
+	assign Button3_Sig = AXISoCQuadCoreModule_L345F36L352T14_Object[253:222];
+	assign Button3_M2S = AXISoCQuadCoreModule_L345F36L352T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L353F33L357T14_Object[0] = Inputs_iRX;
+	assign AXISoCQuadCoreModule_L353F33L357T14_Object[222:1] = ioInterconnect_oM2S[10];
+	assign uart_M2S = AXISoCQuadCoreModule_L353F33L357T14_Object[222:1];
+	assign uart_iRX = AXISoCQuadCoreModule_L353F33L357T14_Object[0];
+	assign AXISoCQuadCoreModule_L359F43L380T14_Object[887:0] = {
+		cpu3IOGateway_oM2S,
+		cpu2IOGateway_oM2S,
+		cpu1IOGateway_oM2S,
+		cpu0IOGateway_oM2S
 	}
 	;
-	assign AXISoCQuadCoreModule_L207F41L225T14_Object[1479:888] = {
-		ioGateway_oS2M,
-		Reg3_S2M,
-		Reg2_S2M,
-		Reg1_S2M,
-		Reg0_S2M,
-		AXI4AutoDecrementRegister_S2M,
-		AutoIncrementCounter_S2M,
-		Memory_S2M
-	}
-	;
-	assign Interconnect_iS2M[7] = AXISoCQuadCoreModule_L207F41L225T14_Object[1479:1406];
-	assign Interconnect_iS2M[6] = AXISoCQuadCoreModule_L207F41L225T14_Object[1405:1332];
-	assign Interconnect_iS2M[5] = AXISoCQuadCoreModule_L207F41L225T14_Object[1331:1258];
-	assign Interconnect_iS2M[4] = AXISoCQuadCoreModule_L207F41L225T14_Object[1257:1184];
-	assign Interconnect_iS2M[3] = AXISoCQuadCoreModule_L207F41L225T14_Object[1183:1110];
-	assign Interconnect_iS2M[2] = AXISoCQuadCoreModule_L207F41L225T14_Object[1109:1036];
-	assign Interconnect_iS2M[1] = AXISoCQuadCoreModule_L207F41L225T14_Object[1035:962];
-	assign Interconnect_iS2M[0] = AXISoCQuadCoreModule_L207F41L225T14_Object[961:888];
-	assign Interconnect_iM2S[3] = AXISoCQuadCoreModule_L207F41L225T14_Object[887:666];
-	assign Interconnect_iM2S[2] = AXISoCQuadCoreModule_L207F41L225T14_Object[665:444];
-	assign Interconnect_iM2S[1] = AXISoCQuadCoreModule_L207F41L225T14_Object[443:222];
-	assign Interconnect_iM2S[0] = AXISoCQuadCoreModule_L207F41L225T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L227F43L241T14_Object[221:0] = ioGateway_oM2S;
-	assign AXISoCQuadCoreModule_L227F43L241T14_Object[739:222] = {
+	assign AXISoCQuadCoreModule_L359F43L380T14_Object[1701:888] = {
 		uart_oS2M,
 		Button3_S2M,
 		Button2_S2M,
 		Button1_S2M,
 		Button0_S2M,
 		Switch1_S2M,
-		Switch0_S2M
+		Switch0_S2M,
+		Reg3_S2M,
+		Reg2_S2M,
+		Reg1_S2M,
+		Reg0_S2M
 	}
 	;
-	assign ioInterconnect_iS2M[6] = AXISoCQuadCoreModule_L227F43L241T14_Object[739:666];
-	assign ioInterconnect_iS2M[5] = AXISoCQuadCoreModule_L227F43L241T14_Object[665:592];
-	assign ioInterconnect_iS2M[4] = AXISoCQuadCoreModule_L227F43L241T14_Object[591:518];
-	assign ioInterconnect_iS2M[3] = AXISoCQuadCoreModule_L227F43L241T14_Object[517:444];
-	assign ioInterconnect_iS2M[2] = AXISoCQuadCoreModule_L227F43L241T14_Object[443:370];
-	assign ioInterconnect_iS2M[1] = AXISoCQuadCoreModule_L227F43L241T14_Object[369:296];
-	assign ioInterconnect_iS2M[0] = AXISoCQuadCoreModule_L227F43L241T14_Object[295:222];
-	assign ioInterconnect_iM2S[0] = AXISoCQuadCoreModule_L227F43L241T14_Object[221:0];
+	assign ioInterconnect_iS2M[10] = AXISoCQuadCoreModule_L359F43L380T14_Object[1701:1628];
+	assign ioInterconnect_iS2M[9] = AXISoCQuadCoreModule_L359F43L380T14_Object[1627:1554];
+	assign ioInterconnect_iS2M[8] = AXISoCQuadCoreModule_L359F43L380T14_Object[1553:1480];
+	assign ioInterconnect_iS2M[7] = AXISoCQuadCoreModule_L359F43L380T14_Object[1479:1406];
+	assign ioInterconnect_iS2M[6] = AXISoCQuadCoreModule_L359F43L380T14_Object[1405:1332];
+	assign ioInterconnect_iS2M[5] = AXISoCQuadCoreModule_L359F43L380T14_Object[1331:1258];
+	assign ioInterconnect_iS2M[4] = AXISoCQuadCoreModule_L359F43L380T14_Object[1257:1184];
+	assign ioInterconnect_iS2M[3] = AXISoCQuadCoreModule_L359F43L380T14_Object[1183:1110];
+	assign ioInterconnect_iS2M[2] = AXISoCQuadCoreModule_L359F43L380T14_Object[1109:1036];
+	assign ioInterconnect_iS2M[1] = AXISoCQuadCoreModule_L359F43L380T14_Object[1035:962];
+	assign ioInterconnect_iS2M[0] = AXISoCQuadCoreModule_L359F43L380T14_Object[961:888];
+	assign ioInterconnect_iM2S[3] = AXISoCQuadCoreModule_L359F43L380T14_Object[887:666];
+	assign ioInterconnect_iM2S[2] = AXISoCQuadCoreModule_L359F43L380T14_Object[665:444];
+	assign ioInterconnect_iM2S[1] = AXISoCQuadCoreModule_L359F43L380T14_Object[443:222];
+	assign ioInterconnect_iM2S[0] = AXISoCQuadCoreModule_L359F43L380T14_Object[221:0];
 	assign oCE = uart_oCE;
-	assign AXISoCQuadCoreModule_L243F37T66_Source = {
+	assign AXISoCQuadCoreModule_L383F37T66_Source = {
 		Reg0_outData[3],
 		Reg0_outData[2],
 		Reg0_outData[1],
 		Reg0_outData[0]
 	}
 	;
-	assign oReg0 = AXISoCQuadCoreModule_L243F37T66_Source;
-	assign AXISoCQuadCoreModule_L244F37T66_Source = {
+	assign oReg0 = AXISoCQuadCoreModule_L383F37T66_Source;
+	assign AXISoCQuadCoreModule_L384F37T66_Source = {
 		Reg1_outData[3],
 		Reg1_outData[2],
 		Reg1_outData[1],
 		Reg1_outData[0]
 	}
 	;
-	assign oReg1 = AXISoCQuadCoreModule_L244F37T66_Source;
-	assign AXISoCQuadCoreModule_L245F37T66_Source = {
+	assign oReg1 = AXISoCQuadCoreModule_L384F37T66_Source;
+	assign AXISoCQuadCoreModule_L385F37T66_Source = {
 		Reg2_outData[3],
 		Reg2_outData[2],
 		Reg2_outData[1],
 		Reg2_outData[0]
 	}
 	;
-	assign oReg2 = AXISoCQuadCoreModule_L245F37T66_Source;
-	assign AXISoCQuadCoreModule_L246F37T66_Source = {
+	assign oReg2 = AXISoCQuadCoreModule_L385F37T66_Source;
+	assign AXISoCQuadCoreModule_L386F37T66_Source = {
 		Reg3_outData[3],
 		Reg3_outData[2],
 		Reg3_outData[1],
 		Reg3_outData[0]
 	}
 	;
-	assign oReg3 = AXISoCQuadCoreModule_L246F37T66_Source;
+	assign oReg3 = AXISoCQuadCoreModule_L386F37T66_Source;
 	assign oRXValid = uart_oRXValid;
 	assign oTransmitting = uart_oTransmitting;
 	assign oTX = uart_oTX;
-	assign AutoIncrementCounter_M2S_AutoIncrementCounter_M2S_HardLink = AutoIncrementCounter_M2S;
-	assign AutoIncrementCounter_oCounter = AutoIncrementCounter_oCounter_AutoIncrementCounter_oCounter_HardLink;
-	assign AutoIncrementCounter_outWritten = AutoIncrementCounter_outWritten_AutoIncrementCounter_outWritten_HardLink;
-	assign AutoIncrementCounter_S2M = AutoIncrementCounter_S2M_AutoIncrementCounter_S2M_HardLink;
-	assign AXI4AutoDecrementRegister_M2S_AXI4AutoDecrementRegister_M2S_HardLink = AXI4AutoDecrementRegister_M2S;
-	assign AXI4AutoDecrementRegister_Reg_AXI4AutoDecrementRegister_Reg_HardLink = AXI4AutoDecrementRegister_Reg;
-	assign AXI4AutoDecrementRegister_outACK = AXI4AutoDecrementRegister_outACK_AXI4AutoDecrementRegister_outACK_HardLink;
-	assign AXI4AutoDecrementRegister_outData[0] = AXI4AutoDecrementRegister_outData0_AXI4AutoDecrementRegister_outData_HardLink;
-	assign AXI4AutoDecrementRegister_outData[1] = AXI4AutoDecrementRegister_outData1_AXI4AutoDecrementRegister_outData_HardLink;
-	assign AXI4AutoDecrementRegister_outData[2] = AXI4AutoDecrementRegister_outData2_AXI4AutoDecrementRegister_outData_HardLink;
-	assign AXI4AutoDecrementRegister_outData[3] = AXI4AutoDecrementRegister_outData3_AXI4AutoDecrementRegister_outData_HardLink;
-	assign AXI4AutoDecrementRegister_outWritten = AXI4AutoDecrementRegister_outWritten_AXI4AutoDecrementRegister_outWritten_HardLink;
-	assign AXI4AutoDecrementRegister_S2M = AXI4AutoDecrementRegister_S2M_AXI4AutoDecrementRegister_S2M_HardLink;
 	assign Button0_M2S_Button0_M2S_HardLink = Button0_M2S;
 	assign Button0_Sig_Button0_Sig_HardLink = Button0_Sig;
 	assign Button0_outData[0] = Button0_outData0_Button0_outData_HardLink;
@@ -939,41 +1400,132 @@ module AXISoCQuadCoreModule_TopLevel
 	assign Button3_S2M = Button3_S2M_Button3_S2M_HardLink;
 	assign CPU0_S2M_CPU0_S2M_HardLink = CPU0_S2M;
 	assign CPU0_M2S = CPU0_M2S_CPU0_M2S_HardLink;
+	assign cpu0AutoDecrementRegister_M2S_cpu0AutoDecrementRegister_M2S_HardLink = cpu0AutoDecrementRegister_M2S;
+	assign cpu0AutoDecrementRegister_Reg_cpu0AutoDecrementRegister_Reg_HardLink = cpu0AutoDecrementRegister_Reg;
+	assign cpu0AutoDecrementRegister_outACK = cpu0AutoDecrementRegister_outACK_cpu0AutoDecrementRegister_outACK_HardLink;
+	assign cpu0AutoDecrementRegister_outData[0] = cpu0AutoDecrementRegister_outData0_cpu0AutoDecrementRegister_outData_HardLink;
+	assign cpu0AutoDecrementRegister_outData[1] = cpu0AutoDecrementRegister_outData1_cpu0AutoDecrementRegister_outData_HardLink;
+	assign cpu0AutoDecrementRegister_outData[2] = cpu0AutoDecrementRegister_outData2_cpu0AutoDecrementRegister_outData_HardLink;
+	assign cpu0AutoDecrementRegister_outData[3] = cpu0AutoDecrementRegister_outData3_cpu0AutoDecrementRegister_outData_HardLink;
+	assign cpu0AutoDecrementRegister_outWritten = cpu0AutoDecrementRegister_outWritten_cpu0AutoDecrementRegister_outWritten_HardLink;
+	assign cpu0AutoDecrementRegister_S2M = cpu0AutoDecrementRegister_S2M_cpu0AutoDecrementRegister_S2M_HardLink;
+	assign cpu0AutoIncrementCounter_M2S_cpu0AutoIncrementCounter_M2S_HardLink = cpu0AutoIncrementCounter_M2S;
+	assign cpu0AutoIncrementCounter_oCounter = cpu0AutoIncrementCounter_oCounter_cpu0AutoIncrementCounter_oCounter_HardLink;
+	assign cpu0AutoIncrementCounter_outWritten = cpu0AutoIncrementCounter_outWritten_cpu0AutoIncrementCounter_outWritten_HardLink;
+	assign cpu0AutoIncrementCounter_S2M = cpu0AutoIncrementCounter_S2M_cpu0AutoIncrementCounter_S2M_HardLink;
+	assign cpu0Interconnect_iM2S0_cpu0Interconnect_iM2S_HardLink = cpu0Interconnect_iM2S[0];
+	assign cpu0Interconnect_iS2M0_cpu0Interconnect_iS2M_HardLink = cpu0Interconnect_iS2M[0];
+	assign cpu0Interconnect_iS2M1_cpu0Interconnect_iS2M_HardLink = cpu0Interconnect_iS2M[1];
+	assign cpu0Interconnect_iS2M2_cpu0Interconnect_iS2M_HardLink = cpu0Interconnect_iS2M[2];
+	assign cpu0Interconnect_iS2M3_cpu0Interconnect_iS2M_HardLink = cpu0Interconnect_iS2M[3];
+	assign cpu0Interconnect_oM2S[0] = cpu0Interconnect_oM2S0_cpu0Interconnect_oM2S_HardLink;
+	assign cpu0Interconnect_oM2S[1] = cpu0Interconnect_oM2S1_cpu0Interconnect_oM2S_HardLink;
+	assign cpu0Interconnect_oM2S[2] = cpu0Interconnect_oM2S2_cpu0Interconnect_oM2S_HardLink;
+	assign cpu0Interconnect_oM2S[3] = cpu0Interconnect_oM2S3_cpu0Interconnect_oM2S_HardLink;
+	assign cpu0Interconnect_oS2M[0] = cpu0Interconnect_oS2M0_cpu0Interconnect_oS2M_HardLink;
+	assign cpu0IOGateway_iM2S_cpu0IOGateway_iM2S_HardLink = cpu0IOGateway_iM2S;
+	assign cpu0IOGateway_iS2M_cpu0IOGateway_iS2M_HardLink = cpu0IOGateway_iS2M;
+	assign cpu0IOGateway_oM2S = cpu0IOGateway_oM2S_cpu0IOGateway_oM2S_HardLink;
+	assign cpu0IOGateway_oS2M = cpu0IOGateway_oS2M_cpu0IOGateway_oS2M_HardLink;
+	assign cpu0Memory_M2S_cpu0Memory_M2S_HardLink = cpu0Memory_M2S;
+	assign cpu0Memory_S2M = cpu0Memory_S2M_cpu0Memory_S2M_HardLink;
 	assign CPU1_S2M_CPU1_S2M_HardLink = CPU1_S2M;
 	assign CPU1_M2S = CPU1_M2S_CPU1_M2S_HardLink;
+	assign cpu1AutoDecrementRegister_M2S_cpu1AutoDecrementRegister_M2S_HardLink = cpu1AutoDecrementRegister_M2S;
+	assign cpu1AutoDecrementRegister_Reg_cpu1AutoDecrementRegister_Reg_HardLink = cpu1AutoDecrementRegister_Reg;
+	assign cpu1AutoDecrementRegister_outACK = cpu1AutoDecrementRegister_outACK_cpu1AutoDecrementRegister_outACK_HardLink;
+	assign cpu1AutoDecrementRegister_outData[0] = cpu1AutoDecrementRegister_outData0_cpu1AutoDecrementRegister_outData_HardLink;
+	assign cpu1AutoDecrementRegister_outData[1] = cpu1AutoDecrementRegister_outData1_cpu1AutoDecrementRegister_outData_HardLink;
+	assign cpu1AutoDecrementRegister_outData[2] = cpu1AutoDecrementRegister_outData2_cpu1AutoDecrementRegister_outData_HardLink;
+	assign cpu1AutoDecrementRegister_outData[3] = cpu1AutoDecrementRegister_outData3_cpu1AutoDecrementRegister_outData_HardLink;
+	assign cpu1AutoDecrementRegister_outWritten = cpu1AutoDecrementRegister_outWritten_cpu1AutoDecrementRegister_outWritten_HardLink;
+	assign cpu1AutoDecrementRegister_S2M = cpu1AutoDecrementRegister_S2M_cpu1AutoDecrementRegister_S2M_HardLink;
+	assign cpu1AutoIncrementCounter_M2S_cpu1AutoIncrementCounter_M2S_HardLink = cpu1AutoIncrementCounter_M2S;
+	assign cpu1AutoIncrementCounter_oCounter = cpu1AutoIncrementCounter_oCounter_cpu1AutoIncrementCounter_oCounter_HardLink;
+	assign cpu1AutoIncrementCounter_outWritten = cpu1AutoIncrementCounter_outWritten_cpu1AutoIncrementCounter_outWritten_HardLink;
+	assign cpu1AutoIncrementCounter_S2M = cpu1AutoIncrementCounter_S2M_cpu1AutoIncrementCounter_S2M_HardLink;
+	assign cpu1Interconnect_iM2S0_cpu1Interconnect_iM2S_HardLink = cpu1Interconnect_iM2S[0];
+	assign cpu1Interconnect_iS2M0_cpu1Interconnect_iS2M_HardLink = cpu1Interconnect_iS2M[0];
+	assign cpu1Interconnect_iS2M1_cpu1Interconnect_iS2M_HardLink = cpu1Interconnect_iS2M[1];
+	assign cpu1Interconnect_iS2M2_cpu1Interconnect_iS2M_HardLink = cpu1Interconnect_iS2M[2];
+	assign cpu1Interconnect_iS2M3_cpu1Interconnect_iS2M_HardLink = cpu1Interconnect_iS2M[3];
+	assign cpu1Interconnect_oM2S[0] = cpu1Interconnect_oM2S0_cpu1Interconnect_oM2S_HardLink;
+	assign cpu1Interconnect_oM2S[1] = cpu1Interconnect_oM2S1_cpu1Interconnect_oM2S_HardLink;
+	assign cpu1Interconnect_oM2S[2] = cpu1Interconnect_oM2S2_cpu1Interconnect_oM2S_HardLink;
+	assign cpu1Interconnect_oM2S[3] = cpu1Interconnect_oM2S3_cpu1Interconnect_oM2S_HardLink;
+	assign cpu1Interconnect_oS2M[0] = cpu1Interconnect_oS2M0_cpu1Interconnect_oS2M_HardLink;
+	assign cpu1IOGateway_iM2S_cpu1IOGateway_iM2S_HardLink = cpu1IOGateway_iM2S;
+	assign cpu1IOGateway_iS2M_cpu1IOGateway_iS2M_HardLink = cpu1IOGateway_iS2M;
+	assign cpu1IOGateway_oM2S = cpu1IOGateway_oM2S_cpu1IOGateway_oM2S_HardLink;
+	assign cpu1IOGateway_oS2M = cpu1IOGateway_oS2M_cpu1IOGateway_oS2M_HardLink;
+	assign cpu1Memory_M2S_cpu1Memory_M2S_HardLink = cpu1Memory_M2S;
+	assign cpu1Memory_S2M = cpu1Memory_S2M_cpu1Memory_S2M_HardLink;
 	assign CPU2_S2M_CPU2_S2M_HardLink = CPU2_S2M;
 	assign CPU2_M2S = CPU2_M2S_CPU2_M2S_HardLink;
+	assign cpu2AutoDecrementRegister_M2S_cpu2AutoDecrementRegister_M2S_HardLink = cpu2AutoDecrementRegister_M2S;
+	assign cpu2AutoDecrementRegister_Reg_cpu2AutoDecrementRegister_Reg_HardLink = cpu2AutoDecrementRegister_Reg;
+	assign cpu2AutoDecrementRegister_outACK = cpu2AutoDecrementRegister_outACK_cpu2AutoDecrementRegister_outACK_HardLink;
+	assign cpu2AutoDecrementRegister_outData[0] = cpu2AutoDecrementRegister_outData0_cpu2AutoDecrementRegister_outData_HardLink;
+	assign cpu2AutoDecrementRegister_outData[1] = cpu2AutoDecrementRegister_outData1_cpu2AutoDecrementRegister_outData_HardLink;
+	assign cpu2AutoDecrementRegister_outData[2] = cpu2AutoDecrementRegister_outData2_cpu2AutoDecrementRegister_outData_HardLink;
+	assign cpu2AutoDecrementRegister_outData[3] = cpu2AutoDecrementRegister_outData3_cpu2AutoDecrementRegister_outData_HardLink;
+	assign cpu2AutoDecrementRegister_outWritten = cpu2AutoDecrementRegister_outWritten_cpu2AutoDecrementRegister_outWritten_HardLink;
+	assign cpu2AutoDecrementRegister_S2M = cpu2AutoDecrementRegister_S2M_cpu2AutoDecrementRegister_S2M_HardLink;
+	assign cpu2AutoIncrementCounter_M2S_cpu2AutoIncrementCounter_M2S_HardLink = cpu2AutoIncrementCounter_M2S;
+	assign cpu2AutoIncrementCounter_oCounter = cpu2AutoIncrementCounter_oCounter_cpu2AutoIncrementCounter_oCounter_HardLink;
+	assign cpu2AutoIncrementCounter_outWritten = cpu2AutoIncrementCounter_outWritten_cpu2AutoIncrementCounter_outWritten_HardLink;
+	assign cpu2AutoIncrementCounter_S2M = cpu2AutoIncrementCounter_S2M_cpu2AutoIncrementCounter_S2M_HardLink;
+	assign cpu2Interconnect_iM2S0_cpu2Interconnect_iM2S_HardLink = cpu2Interconnect_iM2S[0];
+	assign cpu2Interconnect_iS2M0_cpu2Interconnect_iS2M_HardLink = cpu2Interconnect_iS2M[0];
+	assign cpu2Interconnect_iS2M1_cpu2Interconnect_iS2M_HardLink = cpu2Interconnect_iS2M[1];
+	assign cpu2Interconnect_iS2M2_cpu2Interconnect_iS2M_HardLink = cpu2Interconnect_iS2M[2];
+	assign cpu2Interconnect_iS2M3_cpu2Interconnect_iS2M_HardLink = cpu2Interconnect_iS2M[3];
+	assign cpu2Interconnect_oM2S[0] = cpu2Interconnect_oM2S0_cpu2Interconnect_oM2S_HardLink;
+	assign cpu2Interconnect_oM2S[1] = cpu2Interconnect_oM2S1_cpu2Interconnect_oM2S_HardLink;
+	assign cpu2Interconnect_oM2S[2] = cpu2Interconnect_oM2S2_cpu2Interconnect_oM2S_HardLink;
+	assign cpu2Interconnect_oM2S[3] = cpu2Interconnect_oM2S3_cpu2Interconnect_oM2S_HardLink;
+	assign cpu2Interconnect_oS2M[0] = cpu2Interconnect_oS2M0_cpu2Interconnect_oS2M_HardLink;
+	assign cpu2IOGateway_iM2S_cpu2IOGateway_iM2S_HardLink = cpu2IOGateway_iM2S;
+	assign cpu2IOGateway_iS2M_cpu2IOGateway_iS2M_HardLink = cpu2IOGateway_iS2M;
+	assign cpu2IOGateway_oM2S = cpu2IOGateway_oM2S_cpu2IOGateway_oM2S_HardLink;
+	assign cpu2IOGateway_oS2M = cpu2IOGateway_oS2M_cpu2IOGateway_oS2M_HardLink;
+	assign cpu2Memory_M2S_cpu2Memory_M2S_HardLink = cpu2Memory_M2S;
+	assign cpu2Memory_S2M = cpu2Memory_S2M_cpu2Memory_S2M_HardLink;
 	assign CPU3_S2M_CPU3_S2M_HardLink = CPU3_S2M;
 	assign CPU3_M2S = CPU3_M2S_CPU3_M2S_HardLink;
-	assign Interconnect_iM2S0_Interconnect_iM2S_HardLink = Interconnect_iM2S[0];
-	assign Interconnect_iM2S1_Interconnect_iM2S_HardLink = Interconnect_iM2S[1];
-	assign Interconnect_iM2S2_Interconnect_iM2S_HardLink = Interconnect_iM2S[2];
-	assign Interconnect_iM2S3_Interconnect_iM2S_HardLink = Interconnect_iM2S[3];
-	assign Interconnect_iS2M0_Interconnect_iS2M_HardLink = Interconnect_iS2M[0];
-	assign Interconnect_iS2M1_Interconnect_iS2M_HardLink = Interconnect_iS2M[1];
-	assign Interconnect_iS2M2_Interconnect_iS2M_HardLink = Interconnect_iS2M[2];
-	assign Interconnect_iS2M3_Interconnect_iS2M_HardLink = Interconnect_iS2M[3];
-	assign Interconnect_iS2M4_Interconnect_iS2M_HardLink = Interconnect_iS2M[4];
-	assign Interconnect_iS2M5_Interconnect_iS2M_HardLink = Interconnect_iS2M[5];
-	assign Interconnect_iS2M6_Interconnect_iS2M_HardLink = Interconnect_iS2M[6];
-	assign Interconnect_iS2M7_Interconnect_iS2M_HardLink = Interconnect_iS2M[7];
-	assign Interconnect_oM2S[0] = Interconnect_oM2S0_Interconnect_oM2S_HardLink;
-	assign Interconnect_oM2S[1] = Interconnect_oM2S1_Interconnect_oM2S_HardLink;
-	assign Interconnect_oM2S[2] = Interconnect_oM2S2_Interconnect_oM2S_HardLink;
-	assign Interconnect_oM2S[3] = Interconnect_oM2S3_Interconnect_oM2S_HardLink;
-	assign Interconnect_oM2S[4] = Interconnect_oM2S4_Interconnect_oM2S_HardLink;
-	assign Interconnect_oM2S[5] = Interconnect_oM2S5_Interconnect_oM2S_HardLink;
-	assign Interconnect_oM2S[6] = Interconnect_oM2S6_Interconnect_oM2S_HardLink;
-	assign Interconnect_oM2S[7] = Interconnect_oM2S7_Interconnect_oM2S_HardLink;
-	assign Interconnect_oS2M[0] = Interconnect_oS2M0_Interconnect_oS2M_HardLink;
-	assign Interconnect_oS2M[1] = Interconnect_oS2M1_Interconnect_oS2M_HardLink;
-	assign Interconnect_oS2M[2] = Interconnect_oS2M2_Interconnect_oS2M_HardLink;
-	assign Interconnect_oS2M[3] = Interconnect_oS2M3_Interconnect_oS2M_HardLink;
-	assign ioGateway_iM2S_ioGateway_iM2S_HardLink = ioGateway_iM2S;
-	assign ioGateway_iS2M_ioGateway_iS2M_HardLink = ioGateway_iS2M;
-	assign ioGateway_oM2S = ioGateway_oM2S_ioGateway_oM2S_HardLink;
-	assign ioGateway_oS2M = ioGateway_oS2M_ioGateway_oS2M_HardLink;
+	assign cpu3AutoDecrementRegister_M2S_cpu3AutoDecrementRegister_M2S_HardLink = cpu3AutoDecrementRegister_M2S;
+	assign cpu3AutoDecrementRegister_Reg_cpu3AutoDecrementRegister_Reg_HardLink = cpu3AutoDecrementRegister_Reg;
+	assign cpu3AutoDecrementRegister_outACK = cpu3AutoDecrementRegister_outACK_cpu3AutoDecrementRegister_outACK_HardLink;
+	assign cpu3AutoDecrementRegister_outData[0] = cpu3AutoDecrementRegister_outData0_cpu3AutoDecrementRegister_outData_HardLink;
+	assign cpu3AutoDecrementRegister_outData[1] = cpu3AutoDecrementRegister_outData1_cpu3AutoDecrementRegister_outData_HardLink;
+	assign cpu3AutoDecrementRegister_outData[2] = cpu3AutoDecrementRegister_outData2_cpu3AutoDecrementRegister_outData_HardLink;
+	assign cpu3AutoDecrementRegister_outData[3] = cpu3AutoDecrementRegister_outData3_cpu3AutoDecrementRegister_outData_HardLink;
+	assign cpu3AutoDecrementRegister_outWritten = cpu3AutoDecrementRegister_outWritten_cpu3AutoDecrementRegister_outWritten_HardLink;
+	assign cpu3AutoDecrementRegister_S2M = cpu3AutoDecrementRegister_S2M_cpu3AutoDecrementRegister_S2M_HardLink;
+	assign cpu3AutoIncrementCounter_M2S_cpu3AutoIncrementCounter_M2S_HardLink = cpu3AutoIncrementCounter_M2S;
+	assign cpu3AutoIncrementCounter_oCounter = cpu3AutoIncrementCounter_oCounter_cpu3AutoIncrementCounter_oCounter_HardLink;
+	assign cpu3AutoIncrementCounter_outWritten = cpu3AutoIncrementCounter_outWritten_cpu3AutoIncrementCounter_outWritten_HardLink;
+	assign cpu3AutoIncrementCounter_S2M = cpu3AutoIncrementCounter_S2M_cpu3AutoIncrementCounter_S2M_HardLink;
+	assign cpu3Interconnect_iM2S0_cpu3Interconnect_iM2S_HardLink = cpu3Interconnect_iM2S[0];
+	assign cpu3Interconnect_iS2M0_cpu3Interconnect_iS2M_HardLink = cpu3Interconnect_iS2M[0];
+	assign cpu3Interconnect_iS2M1_cpu3Interconnect_iS2M_HardLink = cpu3Interconnect_iS2M[1];
+	assign cpu3Interconnect_iS2M2_cpu3Interconnect_iS2M_HardLink = cpu3Interconnect_iS2M[2];
+	assign cpu3Interconnect_iS2M3_cpu3Interconnect_iS2M_HardLink = cpu3Interconnect_iS2M[3];
+	assign cpu3Interconnect_oM2S[0] = cpu3Interconnect_oM2S0_cpu3Interconnect_oM2S_HardLink;
+	assign cpu3Interconnect_oM2S[1] = cpu3Interconnect_oM2S1_cpu3Interconnect_oM2S_HardLink;
+	assign cpu3Interconnect_oM2S[2] = cpu3Interconnect_oM2S2_cpu3Interconnect_oM2S_HardLink;
+	assign cpu3Interconnect_oM2S[3] = cpu3Interconnect_oM2S3_cpu3Interconnect_oM2S_HardLink;
+	assign cpu3Interconnect_oS2M[0] = cpu3Interconnect_oS2M0_cpu3Interconnect_oS2M_HardLink;
+	assign cpu3IOGateway_iM2S_cpu3IOGateway_iM2S_HardLink = cpu3IOGateway_iM2S;
+	assign cpu3IOGateway_iS2M_cpu3IOGateway_iS2M_HardLink = cpu3IOGateway_iS2M;
+	assign cpu3IOGateway_oM2S = cpu3IOGateway_oM2S_cpu3IOGateway_oM2S_HardLink;
+	assign cpu3IOGateway_oS2M = cpu3IOGateway_oS2M_cpu3IOGateway_oS2M_HardLink;
+	assign cpu3Memory_M2S_cpu3Memory_M2S_HardLink = cpu3Memory_M2S;
+	assign cpu3Memory_S2M = cpu3Memory_S2M_cpu3Memory_S2M_HardLink;
 	assign ioInterconnect_iM2S0_ioInterconnect_iM2S_HardLink = ioInterconnect_iM2S[0];
+	assign ioInterconnect_iM2S1_ioInterconnect_iM2S_HardLink = ioInterconnect_iM2S[1];
+	assign ioInterconnect_iM2S2_ioInterconnect_iM2S_HardLink = ioInterconnect_iM2S[2];
+	assign ioInterconnect_iM2S3_ioInterconnect_iM2S_HardLink = ioInterconnect_iM2S[3];
 	assign ioInterconnect_iS2M0_ioInterconnect_iS2M_HardLink = ioInterconnect_iS2M[0];
 	assign ioInterconnect_iS2M1_ioInterconnect_iS2M_HardLink = ioInterconnect_iS2M[1];
 	assign ioInterconnect_iS2M2_ioInterconnect_iS2M_HardLink = ioInterconnect_iS2M[2];
@@ -981,6 +1533,10 @@ module AXISoCQuadCoreModule_TopLevel
 	assign ioInterconnect_iS2M4_ioInterconnect_iS2M_HardLink = ioInterconnect_iS2M[4];
 	assign ioInterconnect_iS2M5_ioInterconnect_iS2M_HardLink = ioInterconnect_iS2M[5];
 	assign ioInterconnect_iS2M6_ioInterconnect_iS2M_HardLink = ioInterconnect_iS2M[6];
+	assign ioInterconnect_iS2M7_ioInterconnect_iS2M_HardLink = ioInterconnect_iS2M[7];
+	assign ioInterconnect_iS2M8_ioInterconnect_iS2M_HardLink = ioInterconnect_iS2M[8];
+	assign ioInterconnect_iS2M9_ioInterconnect_iS2M_HardLink = ioInterconnect_iS2M[9];
+	assign ioInterconnect_iS2M10_ioInterconnect_iS2M_HardLink = ioInterconnect_iS2M[10];
 	assign ioInterconnect_oM2S[0] = ioInterconnect_oM2S0_ioInterconnect_oM2S_HardLink;
 	assign ioInterconnect_oM2S[1] = ioInterconnect_oM2S1_ioInterconnect_oM2S_HardLink;
 	assign ioInterconnect_oM2S[2] = ioInterconnect_oM2S2_ioInterconnect_oM2S_HardLink;
@@ -988,9 +1544,14 @@ module AXISoCQuadCoreModule_TopLevel
 	assign ioInterconnect_oM2S[4] = ioInterconnect_oM2S4_ioInterconnect_oM2S_HardLink;
 	assign ioInterconnect_oM2S[5] = ioInterconnect_oM2S5_ioInterconnect_oM2S_HardLink;
 	assign ioInterconnect_oM2S[6] = ioInterconnect_oM2S6_ioInterconnect_oM2S_HardLink;
+	assign ioInterconnect_oM2S[7] = ioInterconnect_oM2S7_ioInterconnect_oM2S_HardLink;
+	assign ioInterconnect_oM2S[8] = ioInterconnect_oM2S8_ioInterconnect_oM2S_HardLink;
+	assign ioInterconnect_oM2S[9] = ioInterconnect_oM2S9_ioInterconnect_oM2S_HardLink;
+	assign ioInterconnect_oM2S[10] = ioInterconnect_oM2S10_ioInterconnect_oM2S_HardLink;
 	assign ioInterconnect_oS2M[0] = ioInterconnect_oS2M0_ioInterconnect_oS2M_HardLink;
-	assign Memory_M2S_Memory_M2S_HardLink = Memory_M2S;
-	assign Memory_S2M = Memory_S2M_Memory_S2M_HardLink;
+	assign ioInterconnect_oS2M[1] = ioInterconnect_oS2M1_ioInterconnect_oS2M_HardLink;
+	assign ioInterconnect_oS2M[2] = ioInterconnect_oS2M2_ioInterconnect_oS2M_HardLink;
+	assign ioInterconnect_oS2M[3] = ioInterconnect_oS2M3_ioInterconnect_oS2M_HardLink;
 	assign Reg0_M2S_Reg0_M2S_HardLink = Reg0_M2S;
 	assign Reg0_Reg_Reg0_Reg_HardLink = Reg0_Reg;
 	assign Reg0_outACK = Reg0_outACK_Reg0_outACK_HardLink;
