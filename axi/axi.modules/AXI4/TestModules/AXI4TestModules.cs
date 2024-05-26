@@ -105,4 +105,9 @@ namespace axi.modules
     {
         public AXI4AutoDecrementRegisterModuleB4() : base(axiSize.B4) { }
     }
+
+    public class AXI4GatewayAddressModuleB420 : AXI4GatewayAddressModule
+    {
+        public AXI4GatewayAddressModuleB420() : base(axiSize.B4, 20) { }
+    }
 }

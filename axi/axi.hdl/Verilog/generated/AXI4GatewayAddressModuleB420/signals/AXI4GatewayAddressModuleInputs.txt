@@ -1,0 +1,3 @@
+└Root              | AXI4GatewayAddressModuleInputs | [63:0]  | 64 | [63:0] 
+ ├iOriginalAddress | RTLBitArray                    | [63:32] | 32 | [63:0][63:32]
+ └iMapAddress      | RTLBitArray                    | [31:0]  | 32 | [63:0][31:0]
