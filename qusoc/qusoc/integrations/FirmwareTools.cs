@@ -121,7 +121,11 @@ namespace QuSoC
             }
 
             ModifyMakefile();
+            Make();
+        }
 
+        public void Make()
+        {
             if (File.Exists(MakefileFile))
             {
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
@@ -143,6 +147,7 @@ namespace QuSoC
             else
             {
                 Console.WriteLine($"Makefile was not found: {MakefileFile}");
+                // TODO: throw exception?
             }
         }
 
@@ -190,7 +195,7 @@ namespace QuSoC
 
         }
 
-        void ModifyMakefile()
+        public void ModifyMakefile()
         {
             if (!File.Exists(MakefileFile))
                 return;

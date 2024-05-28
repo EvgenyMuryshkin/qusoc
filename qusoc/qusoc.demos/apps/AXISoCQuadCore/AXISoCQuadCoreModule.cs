@@ -120,7 +120,7 @@ namespace AXISoC
                 new RangeInfo(0x80000020, 0x80000020),// button1
                 new RangeInfo(0x80000024, 0x80000024),// button2
                 new RangeInfo(0x80000028, 0x80000028),// button3
-                new RangeInfo(0x90000000, 0x90000004),// uart
+                new RangeInfo(0x90000000, 0x90000003),// uart
             }
         );
 

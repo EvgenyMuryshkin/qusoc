@@ -57,6 +57,13 @@ namespace QuSoC.Tests
         [TestMethod]
         public void AXISoCQuadCoreModule()
         {
+            var disasm = new Disassembler();
+            var tools = new FirmwareTools(@"C:\code\qusoc\qusoc\qusoc.demos\apps\AXISoCQuadCore");
+            tools.ModifyMakefile();
+            tools.Make();
+            var instructions = tools.Instructions();
+            var code = disasm.Disassemble(instructions);
+
             var cpu0Instructions = Inst.FromAsmFile("axisocquadcore_cpu0");
             var cpu1Instructions = Inst.FromAsmFile("axisocquadcore_cpu1");
             var cpu2Instructions = Inst.FromAsmFile("axisocquadcore_cpu2");
