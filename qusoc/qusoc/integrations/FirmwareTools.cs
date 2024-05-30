@@ -169,6 +169,13 @@ namespace QuSoC
                 FirmwareFromCS();
             }
 
+            Disassemble();
+
+            return File.Exists(FirmwareFile);
+        }
+
+        public void Disassemble()
+        {
             if (File.Exists(FirmwareFile))
             {
                 var disassembler = new Disassembler();
@@ -178,8 +185,6 @@ namespace QuSoC
             {
                 Console.WriteLine($"Firmware file was not found: {FirmwareFile}");
             }
-
-            return File.Exists(FirmwareFile);
         }
 
         public uint[] Instructions()

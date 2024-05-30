@@ -20,7 +20,7 @@ namespace qusoc.extension
         [ExtensionMethod(icon: TopLevelIcon.BitStream)]
         public static void BitStream()
         {
-            //Translate();
+            Translate();
             VivadoTCLBuilder.CreateBitStream(moduleName);
         }
 

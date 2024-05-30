@@ -3,6 +3,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using QRV32.CPU;
 using Quokka.RTL;
 using Quokka.RTL.Simulator;
+using System;
+using System.Diagnostics;
 using System.Linq;
 
 namespace QuSoC.Tests
@@ -55,14 +57,41 @@ namespace QuSoC.Tests
         }
 
         [TestMethod]
+        public void AXISoCQuadCoreCPU0()
+        {
+            if (!Debugger.IsAttached)
+                return;
+
+            while (true)
+            {
+                try
+                {
+                    var disasm = new Disassembler();
+                    var tools = new FirmwareTools(@"C:\code\qusoc\qusoc\qusoc.demos\apps\AXISoCQuadCore");
+                    tools.ModifyMakefile();
+                    tools.Make();
+                    tools.Disassemble();
+                    var instructions = tools.Instructions();
+                    var code = disasm.Disassemble(instructions);
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+        }
+
+        [TestMethod]
         public void AXISoCQuadCoreModule()
         {
             var disasm = new Disassembler();
             var tools = new FirmwareTools(@"C:\code\qusoc\qusoc\qusoc.demos\apps\AXISoCQuadCore");
             tools.ModifyMakefile();
             tools.Make();
+            tools.Disassemble();
             var instructions = tools.Instructions();
             var code = disasm.Disassemble(instructions);
+
 
             var cpu0Instructions = Inst.FromAsmFile("axisocquadcore_cpu0");
             var cpu1Instructions = Inst.FromAsmFile("axisocquadcore_cpu1");
@@ -70,7 +99,7 @@ namespace QuSoC.Tests
             var cpu3Instructions = Inst.FromAsmFile("axisocquadcore_cpu3");
 
             var topLevel = new AXISoCQuadCoreModule(
-                cpu0Instructions,
+                instructions,//cpu0Instructions,
                 cpu1Instructions,
                 cpu2Instructions,
                 cpu3Instructions

@@ -31,29 +31,29 @@ namespace QRV32.CPU
                         switch (id.OpTypeCode)
                         {
                             case OpTypeCodes.B:
-                                decoded = $"B{id.BranchTypeCode} x{(uint)id.RS1}, x{(uint)id.RS2}, {(uint)id.BTypeImm} ({bitArrayFormat(address + id.BTypeImm)})";
+                                decoded = $"B{id.BranchTypeCode} x{(uint)id.RS1}, x{(uint)id.RS2}, 0x{(uint)(address + id.BTypeImm):X8} (B: {bitArrayFormat(id.BTypeImm)})";
                                 break;
                             case OpTypeCodes.JALR:
-                                decoded += $" x{(uint)id.RD}, x{(uint)id.RS1}, {(uint)id.ITypeImm} ({bitArrayFormat(id.ITypeImm)})";
+                                decoded += $" x{(uint)id.RD}, x{(uint)id.RS1}, 0x{(uint)id.ITypeImm} (I: {bitArrayFormat(id.ITypeImm)})";
                                 break;
                             case OpTypeCodes.LUI:
-                                decoded += $" x{(uint)id.RD}, {(uint)id.UTypeImm} ({bitArrayFormat(id.UTypeImm)})";
+                                decoded += $" x{(uint)id.RD}, {(uint)id.UTypeImm} (U: {bitArrayFormat(id.UTypeImm)})";
                                 break;
                             case OpTypeCodes.AUIPC:
-                                decoded += $" x{(uint)id.RD}, {(uint)id.UTypeImm} ({bitArrayFormat(id.UTypeImm)})";
+                                decoded += $" x{(uint)id.RD}, {(uint)id.UTypeImm} (U: {bitArrayFormat(id.UTypeImm)})";
                                 break;
                             case OpTypeCodes.JAL:
                                 if (id.RD == 0)
                                 {
-                                    decoded = $"J 0x{(uint)(address + id.JTypeImm):X8}";
+                                    decoded = $"J 0x{(uint)(address + id.JTypeImm):X8} (J: {bitArrayFormat(id.JTypeImm)})";
                                 }
                                 else
                                 {
-                                    decoded += $" x{(uint)id.RD}, 0x{(uint)(address + id.JTypeImm):X8} ({bitArrayFormat(id.JTypeImm)})";
+                                    decoded += $" x{(uint)id.RD}, 0x{(uint)(address + id.JTypeImm):X8} (J: {bitArrayFormat(id.JTypeImm)})";
                                 }
                                 break;
                             case OpTypeCodes.OPIMM:
-                                decoded = $"{id.OPIMMCode} x{(uint)id.RD}, x{(uint)id.RS1}, {(int)id.ITypeImm} ({bitArrayFormat(id.ITypeImm)})";
+                                decoded = $"{id.OPIMMCode} x{(uint)id.RD}, x{(uint)id.RS1}, {(int)id.ITypeImm} (I: {bitArrayFormat(id.ITypeImm)})";
                                 break;
                             case OpTypeCodes.OP:
                                 var op = id.OPCode.ToString();
@@ -168,7 +168,8 @@ namespace QRV32.CPU
                     break;
             }
 
-            return $"[{address:X8}]: {decoded,-32} // 0x{i:X8}";
+            var line = $"[{address:X8}]: {decoded,-32}".PadRight(60);
+            return $"{line} // 0x{i:X8}";
         }
 
         public string Disassemble(uint[] instructions)
