@@ -8,74 +8,87 @@ RAM              0x0000000000000000 0x0000000000008000 xrw
 Linker script and memory map
 
 
-.text           0x0000000000000000      0x104
+.text           0x0000000000000000      0x310
                 0x0000000000000000                . = ALIGN (0x4)
  *(.text)
- .text          0x0000000000000000        0xc /tmp/ccgtEfpo.o
- .text          0x000000000000000c       0x68 /tmp/ccVZzg1H.o
-                0x000000000000000c                AXISoCQuadCore::CPU0::EntryPoint()
- .text          0x0000000000000074       0x28 /tmp/ccI6XVE1.o
-                0x0000000000000074                main
+ .text          0x0000000000000000        0xc /tmp/ccATmAsH.o
+ .text          0x000000000000000c      0x1d4 /tmp/ccPGXk2L.o
+                0x000000000000000c                AXISoCQuadCore::CPU0::SendByte(unsigned char)
+                0x000000000000005c                AXISoCQuadCore::CPU0::SendMessage(char*)
+                0x00000000000000b8                AXISoCQuadCore::CPU0::HasData()
+                0x00000000000000f0                AXISoCQuadCore::CPU0::ReadByte()
+                0x000000000000011c                AXISoCQuadCore::CPU0::EntryPoint()
+ .text          0x00000000000001e0       0x28 /tmp/cc7lRtEQ.o
+                0x00000000000001e0                main
  *(.text*)
  *(.rodata)
+ .rodata        0x0000000000000208        0xf /tmp/ccPGXk2L.o
  *(.rodata*)
  *(.srodata)
  *(.srodata*)
  *(.eh_frame)
- .eh_frame      0x000000000000009c       0x30 /tmp/ccVZzg1H.o
- .eh_frame      0x00000000000000cc       0x38 /tmp/ccI6XVE1.o
+ *fill*         0x0000000000000217        0x1 
+ .eh_frame      0x0000000000000218       0xc0 /tmp/ccPGXk2L.o
+ .eh_frame      0x00000000000002d8       0x38 /tmp/cc7lRtEQ.o
  *(.eh_frame*)
-                0x0000000000000104                . = ALIGN (0x4)
-                0x0000000000000104                _etext = .
-                0x0000000000000104                _sidata = _etext
+                0x0000000000000310                . = ALIGN (0x4)
+                0x0000000000000310                _etext = .
+                0x0000000000000310                _sidata = _etext
 
-.data           0x0000000000000104        0x0
-                0x0000000000000104                . = ALIGN (0x4)
-                0x0000000000000104                _sdata = .
-                0x0000000000000104                _ram_start = .
+.data           0x0000000000000310        0x4
+                0x0000000000000310                . = ALIGN (0x4)
+                0x0000000000000310                _sdata = .
+                0x0000000000000310                _ram_start = .
  *(.data)
- .data          0x0000000000000104        0x0 /tmp/ccgtEfpo.o
- .data          0x0000000000000104        0x0 /tmp/ccVZzg1H.o
- .data          0x0000000000000104        0x0 /tmp/ccI6XVE1.o
+ .data          0x0000000000000310        0x0 /tmp/ccATmAsH.o
+ .data          0x0000000000000310        0x0 /tmp/ccPGXk2L.o
+ .data          0x0000000000000310        0x0 /tmp/cc7lRtEQ.o
  *(.data*)
  *(.sdata)
+ .sdata         0x0000000000000310        0x4 /tmp/ccPGXk2L.o
+                0x0000000000000310                AXISoCQuadCore::uartBytes
  *(.sdata*)
  *(.init_array)
  *(.init_array*)
-                0x0000000000000104                . = ALIGN (0x4)
-                0x0000000000000104                _edata = .
+                0x0000000000000314                . = ALIGN (0x4)
+                0x0000000000000314                _edata = .
 
-.bss            0x0000000000000104        0x0
-                0x0000000000000104                . = ALIGN (0x4)
-                0x0000000000000104                _sbss = .
+.bss            0x0000000000000314        0x0
+                0x0000000000000314                . = ALIGN (0x4)
+                0x0000000000000314                _sbss = .
  *(.bss)
- .bss           0x0000000000000104        0x0 /tmp/ccgtEfpo.o
- .bss           0x0000000000000104        0x0 /tmp/ccVZzg1H.o
- .bss           0x0000000000000104        0x0 /tmp/ccI6XVE1.o
+ .bss           0x0000000000000314        0x0 /tmp/ccATmAsH.o
+ .bss           0x0000000000000314        0x0 /tmp/ccPGXk2L.o
+ .bss           0x0000000000000314        0x0 /tmp/cc7lRtEQ.o
  *(.bss*)
  *(.sbss)
  *(.sbss*)
  *(COMMON)
-                0x0000000000000104                . = ALIGN (0x4)
-                0x0000000000000104                _ebss = .
+                0x0000000000000314                . = ALIGN (0x4)
+                0x0000000000000314                _ebss = .
 
-.heap           0x0000000000000104        0x0
-                0x0000000000000104                . = ALIGN (0x4)
-                0x0000000000000104                _heap_start = .
-LOAD /tmp/ccgtEfpo.o
-LOAD /tmp/ccVZzg1H.o
-LOAD /tmp/ccI6XVE1.o
+.heap           0x0000000000000314        0x0
+                0x0000000000000314                . = ALIGN (0x4)
+                0x0000000000000314                _heap_start = .
+LOAD /tmp/ccATmAsH.o
+LOAD /tmp/ccPGXk2L.o
+LOAD /tmp/cc7lRtEQ.o
 OUTPUT(firmware.elf elf32-littleriscv)
 
 .comment        0x0000000000000000       0x11
- .comment       0x0000000000000000       0x11 /tmp/ccVZzg1H.o
+ .comment       0x0000000000000000       0x11 /tmp/ccPGXk2L.o
                                          0x12 (size before relaxing)
- .comment       0x0000000000000011       0x12 /tmp/ccI6XVE1.o
+ .comment       0x0000000000000011       0x12 /tmp/cc7lRtEQ.o
 
 Cross Reference Table
 
 Symbol                                            File
-AXISoCQuadCore::CPU0::EntryPoint()                /tmp/ccVZzg1H.o
-                                                  /tmp/ccI6XVE1.o
-main                                              /tmp/ccI6XVE1.o
-                                                  /tmp/ccgtEfpo.o
+AXISoCQuadCore::CPU0::EntryPoint()                /tmp/ccPGXk2L.o
+                                                  /tmp/cc7lRtEQ.o
+AXISoCQuadCore::CPU0::HasData()                   /tmp/ccPGXk2L.o
+AXISoCQuadCore::CPU0::ReadByte()                  /tmp/ccPGXk2L.o
+AXISoCQuadCore::CPU0::SendByte(unsigned char)     /tmp/ccPGXk2L.o
+AXISoCQuadCore::CPU0::SendMessage(char*)          /tmp/ccPGXk2L.o
+AXISoCQuadCore::uartBytes                         /tmp/ccPGXk2L.o
+main                                              /tmp/cc7lRtEQ.o
+                                                  /tmp/ccATmAsH.o

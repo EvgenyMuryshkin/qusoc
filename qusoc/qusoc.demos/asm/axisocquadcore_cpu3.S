@@ -1,5 +1,6 @@
 ﻿# CPU3 ======================================================
 cpu3:
+j cpu3 # cpu3 does notthing, will be subjected to runtime reload
 	li x10, 0x80000010 # reg3
 	li x11, 0x80000028 # button3
 cpu3main:
