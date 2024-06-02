@@ -8,87 +8,90 @@ RAM              0x0000000000000000 0x0000000000008000 xrw
 Linker script and memory map
 
 
-.text           0x0000000000000000      0x310
+.text           0x0000000000000000      0x7ac
                 0x0000000000000000                . = ALIGN (0x4)
  *(.text)
- .text          0x0000000000000000        0xc /tmp/ccATmAsH.o
- .text          0x000000000000000c      0x1d4 /tmp/ccPGXk2L.o
+ .text          0x0000000000000000        0xc /tmp/ccGBJj07.o
+ .text          0x000000000000000c      0x438 /tmp/ccUmQmEg.o
                 0x000000000000000c                AXISoCQuadCore::CPU0::SendByte(unsigned char)
                 0x000000000000005c                AXISoCQuadCore::CPU0::SendMessage(char*)
                 0x00000000000000b8                AXISoCQuadCore::CPU0::HasData()
                 0x00000000000000f0                AXISoCQuadCore::CPU0::ReadByte()
-                0x000000000000011c                AXISoCQuadCore::CPU0::EntryPoint()
- .text          0x00000000000001e0       0x28 /tmp/cc7lRtEQ.o
-                0x00000000000001e0                main
+                0x000000000000011c                AXISoCQuadCore::CPU0::ReadUint32()
+                0x00000000000001a0                AXISoCQuadCore::CPU0::ReadUint32FromText()
+                0x0000000000000324                AXISoCQuadCore::CPU0::EntryPoint()
+ .text          0x0000000000000444       0x28 /tmp/ccZkMilp.o
+                0x0000000000000444                main
  *(.text*)
  *(.rodata)
- .rodata        0x0000000000000208        0xf /tmp/ccPGXk2L.o
+ .rodata        0x000000000000046c      0x1f8 /tmp/ccUmQmEg.o
  *(.rodata*)
  *(.srodata)
  *(.srodata*)
  *(.eh_frame)
- *fill*         0x0000000000000217        0x1 
- .eh_frame      0x0000000000000218       0xc0 /tmp/ccPGXk2L.o
- .eh_frame      0x00000000000002d8       0x38 /tmp/cc7lRtEQ.o
+ .eh_frame      0x0000000000000664      0x110 /tmp/ccUmQmEg.o
+ .eh_frame      0x0000000000000774       0x38 /tmp/ccZkMilp.o
  *(.eh_frame*)
-                0x0000000000000310                . = ALIGN (0x4)
-                0x0000000000000310                _etext = .
-                0x0000000000000310                _sidata = _etext
+                0x00000000000007ac                . = ALIGN (0x4)
+                0x00000000000007ac                _etext = .
+                0x00000000000007ac                _sidata = _etext
 
-.data           0x0000000000000310        0x4
-                0x0000000000000310                . = ALIGN (0x4)
-                0x0000000000000310                _sdata = .
-                0x0000000000000310                _ram_start = .
+.data           0x00000000000007ac        0x4
+                0x00000000000007ac                . = ALIGN (0x4)
+                0x00000000000007ac                _sdata = .
+                0x00000000000007ac                _ram_start = .
  *(.data)
- .data          0x0000000000000310        0x0 /tmp/ccATmAsH.o
- .data          0x0000000000000310        0x0 /tmp/ccPGXk2L.o
- .data          0x0000000000000310        0x0 /tmp/cc7lRtEQ.o
+ .data          0x00000000000007ac        0x0 /tmp/ccGBJj07.o
+ .data          0x00000000000007ac        0x0 /tmp/ccUmQmEg.o
+ .data          0x00000000000007ac        0x0 /tmp/ccZkMilp.o
  *(.data*)
  *(.sdata)
- .sdata         0x0000000000000310        0x4 /tmp/ccPGXk2L.o
-                0x0000000000000310                AXISoCQuadCore::uartBytes
+ .sdata         0x00000000000007ac        0x4 /tmp/ccUmQmEg.o
+                0x00000000000007ac                AXISoCQuadCore::uartBytes
  *(.sdata*)
  *(.init_array)
  *(.init_array*)
-                0x0000000000000314                . = ALIGN (0x4)
-                0x0000000000000314                _edata = .
+                0x00000000000007b0                . = ALIGN (0x4)
+                0x00000000000007b0                _edata = .
 
-.bss            0x0000000000000314        0x0
-                0x0000000000000314                . = ALIGN (0x4)
-                0x0000000000000314                _sbss = .
+.bss            0x00000000000007b0        0x0
+                0x00000000000007b0                . = ALIGN (0x4)
+                0x00000000000007b0                _sbss = .
  *(.bss)
- .bss           0x0000000000000314        0x0 /tmp/ccATmAsH.o
- .bss           0x0000000000000314        0x0 /tmp/ccPGXk2L.o
- .bss           0x0000000000000314        0x0 /tmp/cc7lRtEQ.o
+ .bss           0x00000000000007b0        0x0 /tmp/ccGBJj07.o
+ .bss           0x00000000000007b0        0x0 /tmp/ccUmQmEg.o
+ .bss           0x00000000000007b0        0x0 /tmp/ccZkMilp.o
  *(.bss*)
  *(.sbss)
  *(.sbss*)
  *(COMMON)
-                0x0000000000000314                . = ALIGN (0x4)
-                0x0000000000000314                _ebss = .
+                0x00000000000007b0                . = ALIGN (0x4)
+                0x00000000000007b0                _ebss = .
 
-.heap           0x0000000000000314        0x0
-                0x0000000000000314                . = ALIGN (0x4)
-                0x0000000000000314                _heap_start = .
-LOAD /tmp/ccATmAsH.o
-LOAD /tmp/ccPGXk2L.o
-LOAD /tmp/cc7lRtEQ.o
+.heap           0x00000000000007b0        0x0
+                0x00000000000007b0                . = ALIGN (0x4)
+                0x00000000000007b0                _heap_start = .
+LOAD /tmp/ccGBJj07.o
+LOAD /tmp/ccUmQmEg.o
+LOAD /tmp/ccZkMilp.o
 OUTPUT(firmware.elf elf32-littleriscv)
 
 .comment        0x0000000000000000       0x11
- .comment       0x0000000000000000       0x11 /tmp/ccPGXk2L.o
+ .comment       0x0000000000000000       0x11 /tmp/ccUmQmEg.o
                                          0x12 (size before relaxing)
- .comment       0x0000000000000011       0x12 /tmp/cc7lRtEQ.o
+ .comment       0x0000000000000011       0x12 /tmp/ccZkMilp.o
 
 Cross Reference Table
 
 Symbol                                            File
-AXISoCQuadCore::CPU0::EntryPoint()                /tmp/ccPGXk2L.o
-                                                  /tmp/cc7lRtEQ.o
-AXISoCQuadCore::CPU0::HasData()                   /tmp/ccPGXk2L.o
-AXISoCQuadCore::CPU0::ReadByte()                  /tmp/ccPGXk2L.o
-AXISoCQuadCore::CPU0::SendByte(unsigned char)     /tmp/ccPGXk2L.o
-AXISoCQuadCore::CPU0::SendMessage(char*)          /tmp/ccPGXk2L.o
-AXISoCQuadCore::uartBytes                         /tmp/ccPGXk2L.o
-main                                              /tmp/cc7lRtEQ.o
-                                                  /tmp/ccATmAsH.o
+AXISoCQuadCore::CPU0::EntryPoint()                /tmp/ccUmQmEg.o
+                                                  /tmp/ccZkMilp.o
+AXISoCQuadCore::CPU0::HasData()                   /tmp/ccUmQmEg.o
+AXISoCQuadCore::CPU0::ReadByte()                  /tmp/ccUmQmEg.o
+AXISoCQuadCore::CPU0::ReadUint32()                /tmp/ccUmQmEg.o
+AXISoCQuadCore::CPU0::ReadUint32FromText()        /tmp/ccUmQmEg.o
+AXISoCQuadCore::CPU0::SendByte(unsigned char)     /tmp/ccUmQmEg.o
+AXISoCQuadCore::CPU0::SendMessage(char*)          /tmp/ccUmQmEg.o
+AXISoCQuadCore::uartBytes                         /tmp/ccUmQmEg.o
+main                                              /tmp/ccZkMilp.o
+                                                  /tmp/ccGBJj07.o

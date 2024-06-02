@@ -54,6 +54,7 @@ module AXISoCQuadCoreModule_TopLevel_CPU0
 	wire [3: 0] AXI4RISCVModule_L60F13L69T14_AXI4RISCVModule_L66F69T75_Expr = 4'b0011;
 	wire AXI4RISCVModule_L86F35T36_Expr = 1'b0;
 	wire RISCVModule_Types_L11F30T35_Expr = 1'b0;
+	wire RISCVModule_Types_L12F32T37_Expr = 1'b0;
 	wire Inputs_S2M_R_AR_ARREADY;
 	wire [7: 0] Inputs_S2M_R_R_RID;
 	wire [1: 0] Inputs_S2M_R_R_RRESP;
@@ -78,6 +79,7 @@ module AXISoCQuadCoreModule_TopLevel_CPU0
 	wire [3: 0] wstrb;
 	wire [31: 0] CPU_BaseAddress;
 	wire CPU_ExtIRQ;
+	wire CPU_ExtReset;
 	wire [31: 0] CPU_MemReadData;
 	wire CPU_MemReady;
 	wire CPU_BREADY;
@@ -102,10 +104,11 @@ module AXISoCQuadCoreModule_TopLevel_CPU0
 	wire [31: 0] AXI4RISCVModule_L45F13L54T14_AXI4RISCVModule_L51F28T72_Resize;
 	reg [3: 0] AXI4RISCVModule_L60F13L69T14_mask;
 	wire [3: 0] AXI4RISCVModule_L74F30T67_Index;
-	wire [65: 0] AXI4RISCVModule_L84F23L89T18_Object;
+	wire [66: 0] AXI4RISCVModule_L84F23L89T18_Object;
 	wire [185: 0] AXI4RISCVModule_L93F23L108T18_Object;
 	wire [31: 0] CPU_BaseAddress_CPU_BaseAddress_HardLink;
 	wire CPU_ExtIRQ_CPU_ExtIRQ_HardLink;
+	wire CPU_ExtReset_CPU_ExtReset_HardLink;
 	wire [31: 0] CPU_MemReadData_CPU_MemReadData_HardLink;
 	wire CPU_MemReady_CPU_MemReady_HardLink;
 	wire CPU_BREADY_CPU_BREADY_HardLink;
@@ -186,6 +189,7 @@ module AXISoCQuadCoreModule_TopLevel_CPU0
 		.BoardSignals_Started (BoardSignals_Started),
 		.BaseAddress (CPU_BaseAddress_CPU_BaseAddress_HardLink),
 		.ExtIRQ (CPU_ExtIRQ_CPU_ExtIRQ_HardLink),
+		.ExtReset (CPU_ExtReset_CPU_ExtReset_HardLink),
 		.MemReadData (CPU_MemReadData_CPU_MemReadData_HardLink),
 		.MemReady (CPU_MemReady_CPU_MemReady_HardLink),
 		.BREADY (CPU_BREADY_CPU_BREADY_HardLink),
@@ -351,10 +355,12 @@ module AXISoCQuadCoreModule_TopLevel_CPU0
 	}
 	;
 	assign AXI4RISCVModule_L84F23L89T18_Object[32] = RISCVModule_Types_L11F30T35_Expr;
-	assign AXI4RISCVModule_L84F23L89T18_Object[64:33] = readValue;
-	assign AXI4RISCVModule_L84F23L89T18_Object[65] = AXI4RISCVModule_L87F32T58_Expr;
-	assign CPU_MemReady = AXI4RISCVModule_L84F23L89T18_Object[65];
-	assign CPU_MemReadData = AXI4RISCVModule_L84F23L89T18_Object[64:33];
+	assign AXI4RISCVModule_L84F23L89T18_Object[33] = RISCVModule_Types_L12F32T37_Expr;
+	assign AXI4RISCVModule_L84F23L89T18_Object[65:34] = readValue;
+	assign AXI4RISCVModule_L84F23L89T18_Object[66] = AXI4RISCVModule_L87F32T58_Expr;
+	assign CPU_MemReady = AXI4RISCVModule_L84F23L89T18_Object[66];
+	assign CPU_MemReadData = AXI4RISCVModule_L84F23L89T18_Object[65:34];
+	assign CPU_ExtReset = AXI4RISCVModule_L84F23L89T18_Object[33];
 	assign CPU_ExtIRQ = AXI4RISCVModule_L84F23L89T18_Object[32];
 	assign CPU_BaseAddress = AXI4RISCVModule_L84F23L89T18_Object[31:0];
 	assign AXI4RISCVModule_L93F23L108T18_Object[31:0] = CPU_MemAddress;
@@ -394,6 +400,7 @@ module AXISoCQuadCoreModule_TopLevel_CPU0
 	assign M2S = Master_M2S;
 	assign CPU_BaseAddress_CPU_BaseAddress_HardLink = CPU_BaseAddress;
 	assign CPU_ExtIRQ_CPU_ExtIRQ_HardLink = CPU_ExtIRQ;
+	assign CPU_ExtReset_CPU_ExtReset_HardLink = CPU_ExtReset;
 	assign CPU_MemReadData_CPU_MemReadData_HardLink = CPU_MemReadData;
 	assign CPU_MemReady_CPU_MemReady_HardLink = CPU_MemReady;
 	assign CPU_BREADY = CPU_BREADY_CPU_BREADY_HardLink;

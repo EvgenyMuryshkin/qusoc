@@ -8,8 +8,11 @@ namespace QRV32.CPU
     {
         void ResetStage()
         {
-            NextState.State = CPUState.IF;
-            NextState.PC = Inputs.BaseAddress;
+            if (!Inputs.ExtReset)
+            {
+                SetIFStage();
+                NextState.PC = Inputs.BaseAddress;
+            }
         }
     }
 }

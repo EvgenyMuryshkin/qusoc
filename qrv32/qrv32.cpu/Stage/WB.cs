@@ -38,7 +38,7 @@ namespace QRV32.CPU
             }
             else
             {
-                NextState.State = CPUState.IF;
+                SetIFStage();
                 DisableInterrupts();
 
                 NextState.CSR[(byte)SupportedCSRAddr.mepc] = mepc;
@@ -60,7 +60,7 @@ namespace QRV32.CPU
             }
             else
             {
-                NextState.State = CPUState.IF;
+                SetIFStage();
 
                 if (isMIE && Inputs.ExtIRQ)
                 {

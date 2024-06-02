@@ -14,6 +14,8 @@ namespace AXISoCQuadCore
 			static void SendMessage(char* message);
 			static bool HasData();
 			static uint8_t ReadByte();
+			static uint32_t ReadUint32();
+			static uint32_t ReadUint32FromText();
 	};
 }
 #endif

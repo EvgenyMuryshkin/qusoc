@@ -38,7 +38,7 @@ namespace QRV32.CPU
 
             if (MemAddressMisaligned)
             {
-                NextState.State = CPUState.IF;
+                SetIFStage();
 
                 // address misalign caused trap, store current address
                 SwitchToTrapHandler(

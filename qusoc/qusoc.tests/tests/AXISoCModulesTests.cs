@@ -57,6 +57,39 @@ namespace QuSoC.Tests
         }
 
         [TestMethod]
+        public void T()
+        {
+            int result = 0;
+            var addr = "80000010";
+
+            for (int i = 0; i < 8; i++)
+            {
+                var b = addr[i];
+                var hexPart = 0;
+                switch (b)
+                {
+                    case '0': hexPart = 0; break;
+                    case '1': hexPart = 1; break;
+                    case '2': hexPart = 2; break;
+                    case '3': hexPart = 3; break;
+                    case '4': hexPart = 4; break;
+                    case '5': hexPart = 5; break;
+                    case '6': hexPart = 6; break;
+                    case '7': hexPart = 7; break;
+                    case '8': hexPart = 8; break;
+                    case '9': hexPart = 9; break;
+                    case 'a': hexPart = 10; break;
+                    case 'b': hexPart = 11; break;
+                    case 'c': hexPart = 12; break;
+                    case 'd': hexPart = 13; break;
+                    case 'e': hexPart = 14; break;
+                    case 'f': hexPart = 15; break;
+                }
+                result = (result << 4) | hexPart;
+            }
+        }
+
+        [TestMethod]
         public void AXISoCQuadCoreCPU0()
         {
             if (!Debugger.IsAttached)

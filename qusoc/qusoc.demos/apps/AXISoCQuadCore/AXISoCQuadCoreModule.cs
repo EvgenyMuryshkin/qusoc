@@ -45,6 +45,8 @@ namespace AXISoC
         internal AXI4AutoDecrementRegisterModule cpu3AutoDecrementRegister = new AXI4AutoDecrementRegisterModule(axiSize.B4);
         internal AXI4GatewayModule cpu3IOGateway = new AXI4GatewayModule(axiSize.B4);
 
+        internal AXI4RegisterModule CPUExtReset = new AXI4RegisterModule(axiSize.B4);
+
         internal AXI4RegisterModule Reg0 = new AXI4RegisterModule(axiSize.B4);
         internal AXI4RegisterModule Reg1 = new AXI4RegisterModule(axiSize.B4);
         internal AXI4RegisterModule Reg2 = new AXI4RegisterModule(axiSize.B4);
@@ -68,7 +70,7 @@ namespace AXISoC
                 new RangeInfo(0x00000000, 0x00001000),// instructions memory
                 new RangeInfo(0x10000000, 0x10000000),// auto increment on read
                 new RangeInfo(0x10000004, 0x10000004),// auto decrement
-                new RangeInfo(0x80000004, 0xA0000000),// io interconnect
+                new RangeInfo(0x80000000, 0xA0000000),// io interconnect
             }
         );
         internal AXI4InteconnectModule cpu1Interconnect = new AXI4InteconnectModule(
@@ -79,7 +81,7 @@ namespace AXISoC
                 new RangeInfo(0x00000000, 0x00001000),// instructions memory
                 new RangeInfo(0x10000000, 0x10000000),// auto increment on read
                 new RangeInfo(0x10000004, 0x10000004),// auto decrement
-                new RangeInfo(0x80000004, 0xA0000000),// io interconnect
+                new RangeInfo(0x80000000, 0xA0000000),// io interconnect
             }
         );
         internal AXI4InteconnectModule cpu2Interconnect = new AXI4InteconnectModule(
@@ -90,7 +92,7 @@ namespace AXISoC
                 new RangeInfo(0x00000000, 0x00001000),// instructions memory
                 new RangeInfo(0x10000000, 0x10000000),// auto increment on read
                 new RangeInfo(0x10000004, 0x10000004),// auto decrement
-                new RangeInfo(0x80000004, 0xA0000000),// io interconnect
+                new RangeInfo(0x80000000, 0xA0000000),// io interconnect
             }
         );
         internal AXI4InteconnectModule cpu3Interconnect = new AXI4InteconnectModule(
@@ -101,7 +103,7 @@ namespace AXISoC
                 new RangeInfo(0x00000000, 0x00001000),// instructions memory
                 new RangeInfo(0x10000000, 0x10000000),// auto increment on read
                 new RangeInfo(0x10000004, 0x10000004),// auto decrement
-                new RangeInfo(0x80000004, 0xA0000000),// io interconnect
+                new RangeInfo(0x80000000, 0xA0000000),// io interconnect
             }
         );
 
@@ -110,6 +112,7 @@ namespace AXISoC
             4,
             new List<RangeInfo>()
             {
+                new RangeInfo(0x80000000, 0x80000000),// ext reset
                 new RangeInfo(0x80000004, 0x80000004),// reg0
                 new RangeInfo(0x80000008, 0x80000008),// reg1
                 new RangeInfo(0x8000000C, 0x8000000C),// reg2
@@ -285,25 +288,29 @@ namespace AXISoC
             });
 
             // IO interconnect
-            Reg0.Schedule(() => new ()
-            {
-                M2S = ioInterconnect.oM2S[0]
+            CPUExtReset.Schedule(() => new()
+            { 
+                M2S = ioInterconnect.oM2S[0],
             });
-            Reg1.Schedule(() => new ()
+            Reg0.Schedule(() => new ()
             {
                 M2S = ioInterconnect.oM2S[1]
             });
-            Reg2.Schedule(() => new()
+            Reg1.Schedule(() => new ()
             {
                 M2S = ioInterconnect.oM2S[2]
             });
-            Reg3.Schedule(() => new()
+            Reg2.Schedule(() => new()
             {
                 M2S = ioInterconnect.oM2S[3]
             });
+            Reg3.Schedule(() => new()
+            {
+                M2S = ioInterconnect.oM2S[4]
+            });
             Switch0.Schedule(() => new()
             {
-                M2S = ioInterconnect.oM2S[4],
+                M2S = ioInterconnect.oM2S[5],
                 Sig =
                 {
                     inWDATA = new RTLBitArray(Inputs.iSwitch0)
@@ -311,7 +318,7 @@ namespace AXISoC
             });
             Switch1.Schedule(() => new()
             {
-                M2S = ioInterconnect.oM2S[5],
+                M2S = ioInterconnect.oM2S[6],
                 Sig =
                 {
                     inWDATA = new RTLBitArray(Inputs.iSwitch1)
@@ -320,7 +327,7 @@ namespace AXISoC
 
             Button0.Schedule(() => new()
             {
-                M2S = ioInterconnect.oM2S[6],
+                M2S = ioInterconnect.oM2S[7],
                 Sig =
                 {
                     inWDATA = new RTLBitArray(Inputs.iButton0)
@@ -328,7 +335,7 @@ namespace AXISoC
             });
             Button1.Schedule(() => new()
             {
-                M2S = ioInterconnect.oM2S[7],
+                M2S = ioInterconnect.oM2S[8],
                 Sig =
                 {
                     inWDATA = new RTLBitArray(Inputs.iButton1)
@@ -336,7 +343,7 @@ namespace AXISoC
             });
             Button2.Schedule(() => new()
             {
-                M2S = ioInterconnect.oM2S[8],
+                M2S = ioInterconnect.oM2S[9],
                 Sig =
                 {
                     inWDATA = new RTLBitArray(Inputs.iButton2)
@@ -344,7 +351,7 @@ namespace AXISoC
             });
             Button3.Schedule(() => new()
             {
-                M2S = ioInterconnect.oM2S[9],
+                M2S = ioInterconnect.oM2S[10],
                 Sig =
                 {
                     inWDATA = new RTLBitArray(Inputs.iButton3)
@@ -352,7 +359,7 @@ namespace AXISoC
             });
             uart.Schedule(() => new()
             {
-                M2S = ioInterconnect.oM2S[10],
+                M2S = ioInterconnect.oM2S[11],
                 iRX = Inputs.iRX
             });
 
@@ -365,6 +372,7 @@ namespace AXISoC
                     cpu3IOGateway.oM2S
                 ],
                 iS2M = [
+                    CPUExtReset.S2M,
                     Reg0.S2M,
                     Reg1.S2M,
                     Reg2.S2M,

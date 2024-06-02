@@ -9,6 +9,7 @@ namespace QRV32.CPU
         public RTLBitArray MemReadData = new RTLBitArray(uint.MinValue);
         public bool MemReady;
         public bool ExtIRQ = false;
+        public bool ExtReset = false;
     }
 
     public class CPUModuleState

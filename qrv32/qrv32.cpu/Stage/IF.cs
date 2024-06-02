@@ -14,5 +14,15 @@ namespace QRV32.CPU
                 NextState.Instruction = Inputs.MemReadData;
             }
         }
+
+        void SetIFStage()
+        {
+            NextState.State = CPUState.IF;
+
+            if (Inputs.ExtReset)
+            {
+                NextState.State = CPUState.Reset;
+            }
+        }
     }
 }
