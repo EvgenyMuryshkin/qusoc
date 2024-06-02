@@ -14,6 +14,7 @@ namespace AXISoC
         }
 
         public AXI4_S2M S2M;
+        public bool ExtReset = false;
     }
 
     public class AXI4RISCVModule : RTLCombinationalModule<AXI4RISCVModuleInputs>
@@ -85,7 +86,8 @@ namespace AXISoC
                 { 
                     BaseAddress = 0,
                     MemReady = Master.RACK || Master.WACK,
-                    MemReadData = readValue
+                    MemReadData = readValue,
+                    ExtReset = Inputs.ExtReset
                 }
             );
 
@@ -107,7 +109,6 @@ namespace AXISoC
                     }
                 }
             );
-
         }
     }
 }

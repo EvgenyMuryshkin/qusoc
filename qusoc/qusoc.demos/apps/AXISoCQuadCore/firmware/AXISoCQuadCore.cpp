@@ -71,12 +71,24 @@ namespace AXISoCQuadCore
 				case '7': hexPart = 7; break;
 				case '8': hexPart = 8; break;
 				case '9': hexPart = 9; break;
-				case 'a': hexPart = 10; break;
-				case 'b': hexPart = 11; break;
-				case 'c': hexPart = 12; break;
-				case 'd': hexPart = 13; break;
-				case 'e': hexPart = 14; break;
-				case 'f': hexPart = 15; break;
+				case 'a': 
+				case 'A':
+					hexPart = 10; break;
+				case 'b': 
+				case 'B': 
+					hexPart = 11; break;
+				case 'c': 
+				case 'C': 
+					hexPart = 12; break;
+				case 'd': 
+				case 'D': 
+					hexPart = 13; break;
+				case 'e': 
+				case 'E': 
+					hexPart = 14; break;
+				case 'f': 
+				case 'F': 
+					hexPart = 15; break;
 				case '\n': return result;
 			}
 			result = (result << 4) | hexPart;
@@ -86,6 +98,43 @@ namespace AXISoCQuadCore
 		SendMessage("\r\n");
 
 		return result;
+	}
+
+	void CPU0::Write4BitAsText(uint8_t data)
+	{
+		switch (data & 0xF)
+		{
+			case 0: SendByte('0'); break;
+			case 1: SendByte('1'); break;
+			case 2: SendByte('2'); break;
+			case 3: SendByte('3'); break;
+			case 4: SendByte('4'); break;
+			case 5: SendByte('5'); break;
+			case 6: SendByte('6'); break;
+			case 7: SendByte('7'); break;
+			case 8: SendByte('8'); break;
+			case 9: SendByte('9'); break;
+			case 10: SendByte('A'); break;
+			case 11: SendByte('B'); break;
+			case 12: SendByte('C'); break;
+			case 13: SendByte('D'); break;
+			case 14: SendByte('E'); break;
+			case 15: SendByte('F'); break;
+		}
+	}
+
+	void CPU0::WriteByteAsText(uint8_t data)
+	{
+		Write4BitAsText(data >> 4);
+		Write4BitAsText(data);
+	}
+
+	void CPU0::WriteUint32AsText(uint32_t data)
+	{
+		WriteByteAsText(data >> 24);
+		WriteByteAsText(data >> 16);
+		WriteByteAsText(data >> 8);
+		WriteByteAsText(data);
 	}
 
 	void CPU0::EntryPoint()
@@ -121,7 +170,7 @@ namespace AXISoCQuadCore
 					break;
 					case '2':
 					{
-						SendMessage("Enter address in 8-symbol hex:\r\n");
+						SendMessage("Enter write address in 8-symbol hex:\r\n");
 						uint32_t addr = ReadUint32FromText();
 						if ((addr & 0x3) != 0)
 						{
@@ -129,12 +178,28 @@ namespace AXISoCQuadCore
 							break;
 						}
 
-						SendMessage("Enter data in 8-symbol hex:\r\n");
+						SendMessage("Enter write data in 8-symbol hex:\r\n");
 						uint32_t data = ReadUint32FromText();
 
 						volatile uint32_t* addrPtr = (uint32_t*)addr;
 						*addrPtr = data;
 						SendMessage("Done!\r\n");
+					}
+					break;
+					case '3':
+					{
+						SendMessage("Enter read address in 8-symbol hex:\r\n");
+						uint32_t addr = ReadUint32FromText();
+						if ((addr & 0x3) != 0)
+						{
+							SendMessage("Address is not 4 byte aligned:\r\n");
+							break;
+						}
+						volatile uint32_t* addrPtr = (uint32_t*)addr;
+						uint32_t data = *addrPtr;
+						SendMessage("0x");
+						WriteUint32AsText(data);
+						SendMessage("\r\n");
 					}
 					break;
 					default:

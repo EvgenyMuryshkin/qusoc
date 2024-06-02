@@ -16,6 +16,9 @@ namespace AXISoCQuadCore
 			static uint8_t ReadByte();
 			static uint32_t ReadUint32();
 			static uint32_t ReadUint32FromText();
+			static void Write4BitAsText(uint8_t data);
+			static void WriteByteAsText(uint8_t data);
+			static void WriteUint32AsText(uint32_t data);
 	};
 }
 #endif

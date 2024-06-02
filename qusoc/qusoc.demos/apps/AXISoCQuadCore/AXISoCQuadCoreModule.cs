@@ -127,6 +127,8 @@ namespace AXISoC
             }
         );
 
+        internal RTLBitArray extReset => new RTLBitArray(CPUExtReset.outData);
+
         public AXISoCQuadCoreModule(
             uint[] cpu0Instructions,
             uint[] cpu1Instructions,
@@ -185,7 +187,8 @@ namespace AXISoC
             //CPU1
             CPU1.Schedule(() => new()
             {
-                S2M = cpu1Interconnect.oS2M[0]
+                S2M = cpu1Interconnect.oS2M[0],
+                ExtReset = extReset[1]
             });
             cpu1Memory.Schedule(() => new()
             {
@@ -220,7 +223,8 @@ namespace AXISoC
             //CPU2
             CPU2.Schedule(() => new()
             {
-                S2M = cpu2Interconnect.oS2M[0]
+                S2M = cpu2Interconnect.oS2M[0],
+                ExtReset = extReset[2]
             });
             cpu2Memory.Schedule(() => new()
             {
@@ -255,7 +259,8 @@ namespace AXISoC
             //CPU3
             CPU3.Schedule(() => new()
             {
-                S2M = cpu3Interconnect.oS2M[0]
+                S2M = cpu3Interconnect.oS2M[0],
+                ExtReset = extReset[3]
             });
             cpu3Memory.Schedule(() => new()
             {
