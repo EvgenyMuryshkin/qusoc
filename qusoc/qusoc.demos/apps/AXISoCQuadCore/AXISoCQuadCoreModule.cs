@@ -26,6 +26,9 @@ namespace AXISoC
         internal AXI4IncrementOnReadCounterModule cpu0AutoIncrementCounter = new AXI4IncrementOnReadCounterModule(axiSize.B4);
         internal AXI4AutoDecrementRegisterModule cpu0AutoDecrementRegister = new AXI4AutoDecrementRegisterModule(axiSize.B4);
         internal AXI4GatewayModule cpu0IOGateway = new AXI4GatewayModule(axiSize.B4);
+        internal AXI4GatewayModule cpu0cpu1Gateway = new AXI4GatewayModule(axiSize.B4, 12);
+        //internal AXI4GatewayModule cpu0cpu2Gateway = new AXI4GatewayModule(axiSize.B4);
+        //internal AXI4GatewayModule cpu0cpu3Gateway = new AXI4GatewayModule(axiSize.B4);
 
         internal AXI4RISCVModule CPU1 = new AXI4RISCVModule(CPURegsType.RAM, 1);
         internal AXI4MemoryModule cpu1Memory = new AXI4MemoryModule(axiSize.B4, 4096);
@@ -71,11 +74,14 @@ namespace AXISoC
                 new RangeInfo(0x10000000, 0x10000000),// auto increment on read
                 new RangeInfo(0x10000004, 0x10000004),// auto decrement
                 new RangeInfo(0x80000000, 0xA0000000),// io interconnect
+                new RangeInfo(0xF0001000, 0xF0001FFF),// cpu1 interconnect
+                //new RangeInfo(0xF0002000, 0xF0002FFF),// cpu2 interconnect
+                //new RangeInfo(0xF0003000, 0xF0003FFF),// cpu3 interconnect
             }
         );
         internal AXI4InteconnectModule cpu1Interconnect = new AXI4InteconnectModule(
             axiSize.B4,
-            1,
+            2,
             new List<RangeInfo>()
             {
                 new RangeInfo(0x00000000, 0x00001000),// instructions memory
@@ -86,7 +92,7 @@ namespace AXISoC
         );
         internal AXI4InteconnectModule cpu2Interconnect = new AXI4InteconnectModule(
             axiSize.B4,
-            1,
+            1,//2,
             new List<RangeInfo>()
             {
                 new RangeInfo(0x00000000, 0x00001000),// instructions memory
@@ -97,7 +103,7 @@ namespace AXISoC
         );
         internal AXI4InteconnectModule cpu3Interconnect = new AXI4InteconnectModule(
             axiSize.B4,
-            1,
+            1,//2,
             new List<RangeInfo>()
             {
                 new RangeInfo(0x00000000, 0x00001000),// instructions memory
@@ -171,6 +177,13 @@ namespace AXISoC
                 iM2S = cpu0Interconnect.oM2S[3],
                 iS2M = ioInterconnect.oS2M[0]
             });
+            cpu0cpu1Gateway.Schedule(() => new()
+            { 
+                iM2S = cpu0Interconnect.oM2S[4],
+                iS2M = cpu1Interconnect.oS2M[3],
+                
+            });
+
             cpu0Interconnect.Schedule(() => new()
             {
                 iM2S = [
@@ -180,7 +193,10 @@ namespace AXISoC
                     cpu0Memory.S2M,
                     cpu0AutoIncrementCounter.S2M,
                     cpu0AutoDecrementRegister.S2M,
-                    cpu0IOGateway.oS2M
+                    cpu0IOGateway.oS2M,
+                    cpu0cpu1Gateway.oS2M,
+                    //cpu0cpu2Gateway.oS2M,
+                    //cpu0cpu3Gateway.oS2M,
                 ]
             });
 
@@ -210,7 +226,8 @@ namespace AXISoC
             cpu1Interconnect.Schedule(() => new()
             {
                 iM2S = [
-                    CPU1.M2S
+                    CPU1.M2S,
+                    cpu0cpu1Gateway.oM2S,
                 ],
                 iS2M = [
                     cpu1Memory.S2M,

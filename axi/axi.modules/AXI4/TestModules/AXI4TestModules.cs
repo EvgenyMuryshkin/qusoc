@@ -110,4 +110,14 @@ namespace axi.modules
     {
         public AXI4GatewayAddressModuleB420() : base(axiSize.B4, 20) { }
     }
+
+    public class AXI4GatewayAddressModuleB40 : AXI4GatewayAddressModule
+    {
+        public AXI4GatewayAddressModuleB40() : base(axiSize.B4, 0) { }
+    }
+
+    public class AXI4GatewayModuleB420 : AXI4GatewayModule
+    {
+        public AXI4GatewayModuleB420() : base(axiSize.B4, 20) { }
+    }
 }

@@ -18,20 +18,22 @@ namespace axi.modules
 
     public class AXI4GatewayAddressModule : RTLCombinationalModule<AXI4GatewayAddressModuleInputs>
     {
-        private readonly int upperBits;
+        private readonly int originalLowerBits;
         private readonly int axiSize;
-        public AXI4GatewayAddressModule(axiSize size, int upperBits)
+        public AXI4GatewayAddressModule(axiSize size, int originalLowerBits)
         {
             InitInputs(new AXI4GatewayAddressModuleInputs(size));
-            this.upperBits = upperBits;
+            this.originalLowerBits = originalLowerBits;
             this.axiSize = AXI4Tools.Bits(size);
         }
 
-        public RTLBitArray oAddress => 
-            new RTLBitArray(
-                RTLBitArrayInitType.MSB, 
-                Inputs.iMapAddress[axiSize - 1, upperBits], 
-                Inputs.iOriginalAddress[upperBits - 1, 0]
-            );
+        public RTLBitArray oAddress =>
+            originalLowerBits == 0 
+            ?   Inputs.iOriginalAddress
+            :   new RTLBitArray(
+                    RTLBitArrayInitType.MSB, 
+                    Inputs.iMapAddress[axiSize - 1, originalLowerBits], 
+                    Inputs.iOriginalAddress[originalLowerBits - 1, 0]
+                ); //dbg
     }
 }
