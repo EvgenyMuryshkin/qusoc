@@ -36,13 +36,16 @@ module AXISoCDualCoreModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
+	wire AXI4RISCVModule_L17F32T37_Expr = 1'b0;
 	wire [32: 0] AXI4RegisterModuleInputs_Reg = 33'b000000000000000000000000000000000;
 	wire [221: 0] AutoIncrementCounter_M2S;
 	wire [31: 0] AutoIncrementCounter_oCounter;
 	wire AutoIncrementCounter_outWritten;
 	wire [73: 0] AutoIncrementCounter_S2M;
+	wire CPU0_ExtReset;
 	wire [73: 0] CPU0_S2M;
 	wire [221: 0] CPU0_M2S;
+	wire CPU1_ExtReset;
 	wire [73: 0] CPU1_S2M;
 	wire [221: 0] CPU1_M2S;
 	wire [221: 0] Memory_M2S;
@@ -57,8 +60,8 @@ module AXISoCDualCoreModule_TopLevel
 	wire Reg1_outACK;
 	wire Reg1_outWritten;
 	wire [73: 0] Reg1_S2M;
-	wire [73: 0] AXISoCDualCoreModule_L46F33L49T14_Object;
-	wire [73: 0] AXISoCDualCoreModule_L50F33L53T14_Object;
+	wire [74: 0] AXISoCDualCoreModule_L46F33L49T14_Object;
+	wire [74: 0] AXISoCDualCoreModule_L50F33L53T14_Object;
 	wire [221: 0] AXISoCDualCoreModule_L55F35L58T14_Object;
 	wire [221: 0] AXISoCDualCoreModule_L59F49L62T14_Object;
 	wire [254: 0] AXISoCDualCoreModule_L63F33L66T14_Object;
@@ -70,8 +73,10 @@ module AXISoCDualCoreModule_TopLevel
 	wire [31: 0] AutoIncrementCounter_oCounter_AutoIncrementCounter_oCounter_HardLink;
 	wire AutoIncrementCounter_outWritten_AutoIncrementCounter_outWritten_HardLink;
 	wire [73: 0] AutoIncrementCounter_S2M_AutoIncrementCounter_S2M_HardLink;
+	wire CPU0_ExtReset_CPU0_ExtReset_HardLink;
 	wire [73: 0] CPU0_S2M_CPU0_S2M_HardLink;
 	wire [221: 0] CPU0_M2S_CPU0_M2S_HardLink;
+	wire CPU1_ExtReset_CPU1_ExtReset_HardLink;
 	wire [73: 0] CPU1_S2M_CPU1_S2M_HardLink;
 	wire [221: 0] CPU1_M2S_CPU1_M2S_HardLink;
 	wire [221: 0] Interconnect_iM2S0_Interconnect_iM2S_HardLink;
@@ -144,6 +149,7 @@ module AXISoCDualCoreModule_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
+		.ExtReset (CPU0_ExtReset_CPU0_ExtReset_HardLink),
 		.S2M (CPU0_S2M_CPU0_S2M_HardLink),
 		.M2S (CPU0_M2S_CPU0_M2S_HardLink)
 	);
@@ -157,6 +163,7 @@ module AXISoCDualCoreModule_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
+		.ExtReset (CPU1_ExtReset_CPU1_ExtReset_HardLink),
 		.S2M (CPU1_S2M_CPU1_S2M_HardLink),
 		.M2S (CPU1_M2S_CPU1_M2S_HardLink)
 	);
@@ -236,10 +243,14 @@ module AXISoCDualCoreModule_TopLevel
 		.outWritten (Reg1_outWritten_Reg1_outWritten_HardLink),
 		.S2M (Reg1_S2M_Reg1_S2M_HardLink)
 	);
-	assign AXISoCDualCoreModule_L46F33L49T14_Object[73:0] = Interconnect_oS2M[0];
-	assign CPU0_S2M = AXISoCDualCoreModule_L46F33L49T14_Object[73:0];
-	assign AXISoCDualCoreModule_L50F33L53T14_Object[73:0] = Interconnect_oS2M[1];
-	assign CPU1_S2M = AXISoCDualCoreModule_L50F33L53T14_Object[73:0];
+	assign AXISoCDualCoreModule_L46F33L49T14_Object[0] = AXI4RISCVModule_L17F32T37_Expr;
+	assign AXISoCDualCoreModule_L46F33L49T14_Object[74:1] = Interconnect_oS2M[0];
+	assign CPU0_S2M = AXISoCDualCoreModule_L46F33L49T14_Object[74:1];
+	assign CPU0_ExtReset = AXISoCDualCoreModule_L46F33L49T14_Object[0];
+	assign AXISoCDualCoreModule_L50F33L53T14_Object[0] = AXI4RISCVModule_L17F32T37_Expr;
+	assign AXISoCDualCoreModule_L50F33L53T14_Object[74:1] = Interconnect_oS2M[1];
+	assign CPU1_S2M = AXISoCDualCoreModule_L50F33L53T14_Object[74:1];
+	assign CPU1_ExtReset = AXISoCDualCoreModule_L50F33L53T14_Object[0];
 	assign AXISoCDualCoreModule_L55F35L58T14_Object[221:0] = Interconnect_oM2S[0];
 	assign Memory_M2S = AXISoCDualCoreModule_L55F35L58T14_Object[221:0];
 	assign AXISoCDualCoreModule_L59F49L62T14_Object[221:0] = Interconnect_oM2S[1];
@@ -290,8 +301,10 @@ module AXISoCDualCoreModule_TopLevel
 	assign AutoIncrementCounter_oCounter = AutoIncrementCounter_oCounter_AutoIncrementCounter_oCounter_HardLink;
 	assign AutoIncrementCounter_outWritten = AutoIncrementCounter_outWritten_AutoIncrementCounter_outWritten_HardLink;
 	assign AutoIncrementCounter_S2M = AutoIncrementCounter_S2M_AutoIncrementCounter_S2M_HardLink;
+	assign CPU0_ExtReset_CPU0_ExtReset_HardLink = CPU0_ExtReset;
 	assign CPU0_S2M_CPU0_S2M_HardLink = CPU0_S2M;
 	assign CPU0_M2S = CPU0_M2S_CPU0_M2S_HardLink;
+	assign CPU1_ExtReset_CPU1_ExtReset_HardLink = CPU1_ExtReset;
 	assign CPU1_S2M_CPU1_S2M_HardLink = CPU1_S2M;
 	assign CPU1_M2S = CPU1_M2S_CPU1_M2S_HardLink;
 	assign Interconnect_iM2S0_Interconnect_iM2S_HardLink = Interconnect_iM2S[0];

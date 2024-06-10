@@ -53,10 +53,10 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Interconnect_writeInterconnect
 	wire signed [3: 0] rightCount = 4'b0101;
 	wire InterconnectModule_L100F13L111T14_0_leftIndex = 1'b0;
 	wire AXI4WriteInteconnectModule_L22F13L28T14_0_i = 1'b0;
-	wire InterconnectModule_L134F9L151T10_InterconnectModule_L136F13L142T14_InterconnectModule_L138F17L141T18_InterconnectModule_L139F47T52_Expr = 1'b0;
-	wire InterconnectModule_L134F9L151T10_InterconnectModule_L136F13L142T14_InterconnectModule_L138F17L141T18_InterconnectModule_L140F48T53_Expr = 1'b0;
-	wire InterconnectModule_L134F9L151T10_InterconnectModule_L144F13L150T14_InterconnectModule_L146F43T47_Expr = 1'b1;
-	wire InterconnectModule_L134F9L151T10_InterconnectModule_L144F13L150T14_InterconnectModule_L149F44T48_Expr = 1'b1;
+	wire InterconnectModule_L139F47T52_Expr = 1'b0;
+	wire InterconnectModule_L140F48T53_Expr = 1'b0;
+	wire InterconnectModule_L146F43T47_Expr = 1'b1;
+	wire InterconnectModule_L149F44T48_Expr = 1'b1;
 	reg [0: 0] NextState_leftAddr;
 	reg NextState_leftAddrValid;
 	reg [2: 0] NextState_rightAddr;
@@ -308,16 +308,16 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Interconnect_writeInterconnect
 		begin
 			if ((currentTXEnd == 1))
 			begin
-				NextState_leftAddrValid = InterconnectModule_L134F9L151T10_InterconnectModule_L136F13L142T14_InterconnectModule_L138F17L141T18_InterconnectModule_L139F47T52_Expr;
-				NextState_rightAddrValid = InterconnectModule_L134F9L151T10_InterconnectModule_L136F13L142T14_InterconnectModule_L138F17L141T18_InterconnectModule_L140F48T53_Expr;
+				NextState_leftAddrValid = InterconnectModule_L139F47T52_Expr;
+				NextState_rightAddrValid = InterconnectModule_L140F48T53_Expr;
 			end
 		end
 		else if ((Encoder_HasActive == 1))
 		begin
 			NextState_leftAddr = Encoder_MSBIndex;
-			NextState_leftAddrValid = InterconnectModule_L134F9L151T10_InterconnectModule_L144F13L150T14_InterconnectModule_L146F43T47_Expr;
+			NextState_leftAddrValid = InterconnectModule_L146F43T47_Expr;
 			NextState_rightAddr = rightAddr;
-			NextState_rightAddrValid = InterconnectModule_L134F9L151T10_InterconnectModule_L144F13L150T14_InterconnectModule_L149F44T48_Expr;
+			NextState_rightAddrValid = InterconnectModule_L149F44T48_Expr;
 		end
 	end
 	assign InterconnectModule_L87F40T91_AXI4WriteInteconnectModule_L43F122T151_ExprLhs = {

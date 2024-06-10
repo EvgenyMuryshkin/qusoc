@@ -1,0 +1,2 @@
+└Root    | AXI4_M_B | [0] | 1 | [0:0]
+ └BREADY | Boolean  | [0] | 1 | [0:0][0]

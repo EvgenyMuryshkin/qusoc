@@ -34,6 +34,6 @@ namespace axi.modules
                     RTLBitArrayInitType.MSB, 
                     Inputs.iMapAddress[axiSize - 1, originalLowerBits], 
                     Inputs.iOriginalAddress[originalLowerBits - 1, 0]
-                ); //dbg
+                );
     }
 }

@@ -132,7 +132,7 @@ namespace QuSoC.Tests
             var cpu3Instructions = Inst.FromAsmFile("axisocquadcore_cpu3");
 
             var topLevel = new AXISoCQuadCoreModule(
-                instructions,//cpu0Instructions,
+                cpu0Instructions,//instructions,//cpu0Instructions,
                 cpu1Instructions,
                 cpu2Instructions,
                 cpu3Instructions

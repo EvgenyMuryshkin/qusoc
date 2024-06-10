@@ -120,4 +120,19 @@ namespace axi.modules
     {
         public AXI4GatewayModuleB420() : base(axiSize.B4, 20) { }
     }
+
+    public class AXI4InSignalArrayBufferModule_B4_1_8 : AXI4InSignalArrayBufferModule
+    {
+        public AXI4InSignalArrayBufferModule_B4_1_8() : base(axiSize.B4, 1, 8) { }
+    }
+
+    public class AXI4InSignalArrayBufferModule_B4_4_8 : AXI4InSignalArrayBufferModule
+    {
+        public AXI4InSignalArrayBufferModule_B4_4_8() : base(axiSize.B4, 4, 8) { }
+    }
+
+    public class AXI4OutSignalArrayBufferModule_B4_1_8 : AXI4OutSignalArrayBufferModule
+    {
+        public AXI4OutSignalArrayBufferModule_B4_1_8() : base(axiSize.B4, 1, 8) {}
+    }
 }

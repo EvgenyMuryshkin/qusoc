@@ -1,0 +1,2 @@
+└Root    | AXI4_M_R | [0] | 1 | [0:0]
+ └RREADY | Boolean  | [0] | 1 | [0:0][0]

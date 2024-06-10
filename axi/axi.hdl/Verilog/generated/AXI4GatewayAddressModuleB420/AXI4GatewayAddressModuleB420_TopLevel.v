@@ -41,10 +41,6 @@ module AXI4GatewayAddressModuleB420_TopLevel
 	wire [31: 0] Inputs_iMapAddress;
 	wire [31: 0] Inputs_iOriginalAddress;
 	wire [31: 0] AXI4GatewayAddressModule_L33F17L37T18_Source;
-	wire [31: 0] AXI4GatewayAddressModule_L31F13L37T18_WhenTrue;
-	wire [31: 0] AXI4GatewayAddressModule_L31F13L37T18_WhenFalse;
-	wire [31: 0] AXI4GatewayAddressModule_L31F13L37T18_Ternary;
-	assign AXI4GatewayAddressModule_L31F13L37T18_Ternary = (AXI4GatewayAddressModule_L31F13T35_Expr ? AXI4GatewayAddressModule_L31F13L37T18_WhenTrue : AXI4GatewayAddressModule_L31F13L37T18_WhenFalse);
 	assign Inputs_iMapAddress = iMapAddress;
 	assign Inputs_iOriginalAddress = iOriginalAddress;
 	assign AXI4GatewayAddressModule_L33F17L37T18_Source = {
@@ -52,9 +48,7 @@ module AXI4GatewayAddressModuleB420_TopLevel
 		Inputs_iOriginalAddress[19:0]
 	}
 	;
-	assign AXI4GatewayAddressModule_L31F13L37T18_WhenTrue = Inputs_iOriginalAddress;
-	assign AXI4GatewayAddressModule_L31F13L37T18_WhenFalse = AXI4GatewayAddressModule_L33F17L37T18_Source;
-	assign oAddress = AXI4GatewayAddressModule_L31F13L37T18_Ternary;
+	assign oAddress = AXI4GatewayAddressModule_L33F17L37T18_Source;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

@@ -47,10 +47,10 @@ module AXISoCDualCoreModule_TopLevel_Memory
 	wire AXI4MemoryModule_L107F28T32_Expr = 1'b1;
 	wire AXI4MemoryModule_L104F28T32_Expr = 1'b1;
 	wire AXI4MemoryModule_L106F28T32_Expr = 1'b1;
-	wire AXI4MemoryModule_L112F9L144T10_AXI4MemoryModule_L114F13L117T14_AXI4MemoryModule_L116F38T42_Expr = 1'b1;
-	wire AXI4MemoryModule_L112F9L144T10_AXI4MemoryModule_L120F13L124T14_AXI4MemoryModule_L123F38T42_Expr = 1'b1;
-	wire AXI4MemoryModule_L112F9L144T10_AXI4MemoryModule_L127F13L130T14_AXI4MemoryModule_L128F38T43_Expr = 1'b0;
-	wire AXI4MemoryModule_L112F9L144T10_AXI4MemoryModule_L127F13L130T14_AXI4MemoryModule_L129F38T43_Expr = 1'b0;
+	wire AXI4MemoryModule_L116F38T42_Expr = 1'b1;
+	wire AXI4MemoryModule_L123F38T42_Expr = 1'b1;
+	wire AXI4MemoryModule_L128F38T43_Expr = 1'b0;
+	wire AXI4MemoryModule_L129F38T43_Expr = 1'b0;
 	wire AXI4MemoryModule_L112F9L144T10_AXI4MemoryModule_L132F13L136T14_0_w = 1'b0;
 	wire AXI4MemoryModule_L112F9L144T10_AXI4MemoryModule_L132F13L136T14_1_w = 1'b1;
 	wire [1: 0] AXI4MemoryModule_L112F9L144T10_AXI4MemoryModule_L132F13L136T14_2_w = 2'b10;
@@ -442,7 +442,7 @@ $readmemh("AXISoCDualCoreModule_TopLevel_Memory_State_buff3.hex", State_buff3);
 		if ((axiSlave_outAWREADYConfirming == 1))
 		begin
 			NextState_waddr = axiSlave_outAWADDR;
-			NextState_waddrSet = AXI4MemoryModule_L112F9L144T10_AXI4MemoryModule_L114F13L117T14_AXI4MemoryModule_L116F38T42_Expr;
+			NextState_waddrSet = AXI4MemoryModule_L116F38T42_Expr;
 		end
 		if ((axiSlave_outWREADYConfirming == 1))
 		begin
@@ -451,12 +451,12 @@ $readmemh("AXISoCDualCoreModule_TopLevel_Memory_State_buff3.hex", State_buff3);
 			NextState_wdata[2] = axiSlave_outWDATA[2];
 			NextState_wdata[3] = axiSlave_outWDATA[3];
 			NextState_wstrb = axiSlave_outWSTRB;
-			NextState_wdataSet = AXI4MemoryModule_L112F9L144T10_AXI4MemoryModule_L120F13L124T14_AXI4MemoryModule_L123F38T42_Expr;
+			NextState_wdataSet = AXI4MemoryModule_L123F38T42_Expr;
 		end
 		if ((axiSlave_outWriteTXCompleting == 1))
 		begin
-			NextState_waddrSet = AXI4MemoryModule_L112F9L144T10_AXI4MemoryModule_L127F13L130T14_AXI4MemoryModule_L128F38T43_Expr;
-			NextState_wdataSet = AXI4MemoryModule_L112F9L144T10_AXI4MemoryModule_L127F13L130T14_AXI4MemoryModule_L129F38T43_Expr;
+			NextState_waddrSet = AXI4MemoryModule_L128F38T43_Expr;
+			NextState_wdataSet = AXI4MemoryModule_L129F38T43_Expr;
 		end
 		if ((axiSlave_outARREADYConfirming == 1))
 		begin

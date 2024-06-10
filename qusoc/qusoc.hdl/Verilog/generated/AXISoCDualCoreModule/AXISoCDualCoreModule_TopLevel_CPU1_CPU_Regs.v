@@ -46,16 +46,16 @@ module AXISoCDualCoreModule_TopLevel_CPU1_CPU_Regs
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F45T46_Expr = 1'b0;
-	wire RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F48T49_Expr = 1'b0;
-	wire RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L34F31T36_Expr = 1'b0;
-	wire RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F46T47_Expr = 1'b0;
-	wire RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L37F13L39T14_RegistersRAMModule_L38F34T35_Expr = 1'b1;
-	wire RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L41F31T32_Expr = 1'b1;
-	wire [1: 0] RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L42F13L45T14_RegistersRAMModule_L43F34T35_Expr = 2'b10;
-	wire [1: 0] RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L47F31T32_Expr = 2'b10;
-	wire RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L48F13L52T14_RegistersRAMModule_L49F35T39_Expr = 1'b1;
-	wire RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L48F13L52T14_RegistersRAMModule_L50F34T35_Expr = 1'b0;
+	wire RegistersRAMModule_L26F45T46_Expr = 1'b0;
+	wire RegistersRAMModule_L27F48T49_Expr = 1'b0;
+	wire RegistersRAMModule_L34F31T36_Expr = 1'b0;
+	wire RegistersRAMModule_L36F46T47_Expr = 1'b0;
+	wire RegistersRAMModule_L38F34T35_Expr = 1'b1;
+	wire RegistersRAMModule_L41F31T32_Expr = 1'b1;
+	wire [1: 0] RegistersRAMModule_L43F34T35_Expr = 2'b10;
+	wire [1: 0] RegistersRAMModule_L47F31T32_Expr = 2'b10;
+	wire RegistersRAMModule_L49F35T39_Expr = 1'b1;
+	wire RegistersRAMModule_L50F34T35_Expr = 1'b0;
 	wire [4: 0] Inputs_RD;
 	wire Inputs_Read;
 	wire [4: 0] Inputs_RS1Addr;
@@ -156,12 +156,12 @@ module AXISoCDualCoreModule_TopLevel_CPU1_CPU_Regs
 		RegistersRAMModule_L25F9L53T10_we = Zero;
 		RegistersRAMModule_L25F9L53T10_readAddress = RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T80_Ternary;
 		RegistersRAMModule_L25F9L53T10_we = RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F22T49_Expr;
-		NextState_Ready = RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L34F31T36_Expr;
+		NextState_Ready = RegistersRAMModule_L34F31T36_Expr;
 		if ((RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F17T47_Expr == 1))
 		begin
 			NextState_Mode = {
 				{7{1'b0}},
-				RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L37F13L39T14_RegistersRAMModule_L38F34T35_Expr
+				RegistersRAMModule_L38F34T35_Expr
 			}
 			;
 		end
@@ -169,17 +169,17 @@ module AXISoCDualCoreModule_TopLevel_CPU1_CPU_Regs
 		begin
 			NextState_Mode = {
 				{6{1'b0}},
-				RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L42F13L45T14_RegistersRAMModule_L43F34T35_Expr
+				RegistersRAMModule_L43F34T35_Expr
 			}
 			;
 			NextState_RS1 = State_ReadData;
 		end
 		if ((RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L47F17T32_Expr == 1))
 		begin
-			NextState_Ready = RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L48F13L52T14_RegistersRAMModule_L49F35T39_Expr;
+			NextState_Ready = RegistersRAMModule_L49F35T39_Expr;
 			NextState_Mode = {
 				{7{1'b0}},
-				RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L48F13L52T14_RegistersRAMModule_L50F34T35_Expr
+				RegistersRAMModule_L50F34T35_Expr
 			}
 			;
 			NextState_RS2 = State_ReadData;
@@ -192,7 +192,7 @@ module AXISoCDualCoreModule_TopLevel_CPU1_CPU_Regs
 	;
 	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T46_ExprRhs = {
 		{8{1'b0}},
-		RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F45T46_Expr
+		RegistersRAMModule_L26F45T46_Expr
 	}
 	;
 	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F35T49_ExprLhs = {
@@ -202,7 +202,7 @@ module AXISoCDualCoreModule_TopLevel_CPU1_CPU_Regs
 	;
 	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F35T49_ExprRhs = {
 		{5{1'b0}},
-		RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F48T49_Expr
+		RegistersRAMModule_L27F48T49_Expr
 	}
 	;
 	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F32T47_ExprLhs = {
@@ -212,7 +212,7 @@ module AXISoCDualCoreModule_TopLevel_CPU1_CPU_Regs
 	;
 	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F32T47_ExprRhs = {
 		{8{1'b0}},
-		RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F46T47_Expr
+		RegistersRAMModule_L36F46T47_Expr
 	}
 	;
 	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L41F17T32_ExprLhs = {
@@ -222,7 +222,7 @@ module AXISoCDualCoreModule_TopLevel_CPU1_CPU_Regs
 	;
 	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L41F17T32_ExprRhs = {
 		{8{1'b0}},
-		RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L41F31T32_Expr
+		RegistersRAMModule_L41F31T32_Expr
 	}
 	;
 	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L47F17T32_ExprLhs = {
@@ -232,7 +232,7 @@ module AXISoCDualCoreModule_TopLevel_CPU1_CPU_Regs
 	;
 	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L47F17T32_ExprRhs = {
 		{7{1'b0}},
-		RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L47F31T32_Expr
+		RegistersRAMModule_L47F31T32_Expr
 	}
 	;
 	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F22T49_Expr_1 = Inputs_WE;

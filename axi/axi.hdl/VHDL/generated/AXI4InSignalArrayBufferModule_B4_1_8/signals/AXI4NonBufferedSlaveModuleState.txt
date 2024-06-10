@@ -1,0 +1,4 @@
+└Root        | AXI4NonBufferedSlaveModuleState | [5:0] | 6 | [5:0]
+ ├writeWFSM  | axiSlaveWriteFSM                | [5:4] | 2 | [5:0][5:4]
+ ├writeAWFSM | axiSlaveWriteFSM                | [3:2] | 2 | [5:0][3:2]
+ └readFSM    | axiSlaveReadFSM                 | [1:0] | 2 | [5:0][1:0]

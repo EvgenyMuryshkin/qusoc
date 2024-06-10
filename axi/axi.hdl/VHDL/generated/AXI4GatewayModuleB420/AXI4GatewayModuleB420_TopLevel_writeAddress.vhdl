@@ -41,25 +41,19 @@ architecture rtl of AXI4GatewayModuleB420_TopLevel_writeAddress is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	constant axiSize : signed(6 downto 0) := "0100000";
-	constant mapLowerBits : signed(5 downto 0) := "010100";
-	constant AXI4GatewayAddressModule_L31F13T30_Expr : std_logic := '0';
+	constant originalLowerBits : signed(5 downto 0) := "010100";
+	constant AXI4GatewayAddressModule_L31F13T35_Expr : std_logic := '0';
 	signal Inputs_iMapAddress : unsigned(31 downto 0) := (others => '0');
 	signal Inputs_iOriginalAddress : unsigned(31 downto 0) := (others => '0');
 	signal AXI4GatewayAddressModule_L33F17L37T18_Source : unsigned(31 downto 0) := (others => '0');
-	signal AXI4GatewayAddressModule_L31F13L37T18_WhenTrue : unsigned(31 downto 0) := "00000000000000000000000000000000";
-	signal AXI4GatewayAddressModule_L31F13L37T18_WhenFalse : unsigned(31 downto 0) := "00000000000000000000000000000000";
-	signal AXI4GatewayAddressModule_L31F13L37T18_Ternary : unsigned(31 downto 0) := "00000000000000000000000000000000";
 begin
-	AXI4GatewayAddressModule_L31F13L37T18_Ternary <= AXI4GatewayAddressModule_L31F13L37T18_WhenTrue when (AXI4GatewayAddressModule_L31F13T30_Expr = '1') else AXI4GatewayAddressModule_L31F13L37T18_WhenFalse;
-	process (AXI4GatewayAddressModule_L31F13L37T18_Ternary, AXI4GatewayAddressModule_L33F17L37T18_Source, iMapAddress, Inputs_iMapAddress, Inputs_iOriginalAddress, iOriginalAddress)
+	process (AXI4GatewayAddressModule_L33F17L37T18_Source, iMapAddress, Inputs_iMapAddress, Inputs_iOriginalAddress, iOriginalAddress)
 	begin
 		Inputs_iMapAddress <= iMapAddress;
 		Inputs_iOriginalAddress <= iOriginalAddress;
 		AXI4GatewayAddressModule_L33F17L37T18_Source(31 downto 20) <= Inputs_iMapAddress(31 downto 20);
 		AXI4GatewayAddressModule_L33F17L37T18_Source(19 downto 0) <= Inputs_iOriginalAddress(19 downto 0);
-		AXI4GatewayAddressModule_L31F13L37T18_WhenTrue <= Inputs_iOriginalAddress;
-		AXI4GatewayAddressModule_L31F13L37T18_WhenFalse <= AXI4GatewayAddressModule_L33F17L37T18_Source;
-		oAddress <= AXI4GatewayAddressModule_L31F13L37T18_Ternary;
+		oAddress <= AXI4GatewayAddressModule_L33F17L37T18_Source;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

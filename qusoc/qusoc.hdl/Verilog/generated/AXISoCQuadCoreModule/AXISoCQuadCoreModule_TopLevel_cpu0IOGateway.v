@@ -36,6 +36,9 @@ module AXISoCQuadCoreModule_TopLevel_cpu0IOGateway
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
+	wire signed [6: 0] axiSize = 7'b0100000;
+	wire AXI4GatewayModule_L41F47T52_Expr = 1'b0;
+	wire AXI4GatewayModule_L47F47T52_Expr = 1'b0;
 	wire [7: 0] Inputs_iM2S_R_AR_ARID;
 	wire [31: 0] Inputs_iM2S_R_AR_ARADDR;
 	wire [7: 0] Inputs_iM2S_R_AR_ARLEN;
@@ -79,8 +82,42 @@ module AXISoCQuadCoreModule_TopLevel_cpu0IOGateway
 	wire [7: 0] Inputs_iS2M_W_B_BUSER;
 	wire Inputs_iS2M_W_B_BVALID;
 	wire Inputs_iS2M_W_W_WREADY;
+	wire [31: 0] readAddress_iMapAddress;
+	wire [31: 0] readAddress_iOriginalAddress;
+	wire [31: 0] readAddress_oAddress;
+	wire [31: 0] writeAddress_iMapAddress;
+	wire [31: 0] writeAddress_iOriginalAddress;
+	wire [31: 0] writeAddress_oAddress;
+	wire [63: 0] AXI4GatewayModule_L38F40L42T14_Object;
+	wire [31: 0] AXI4GatewayModule_L41F31T70_Resize;
+	wire [63: 0] AXI4GatewayModule_L44F41L48T14_Object;
+	wire [31: 0] AXI4GatewayModule_L47F31T70_Resize;
+	wire [31: 0] readAddress_iMapAddress_readAddress_iMapAddress_HardLink;
+	wire [31: 0] readAddress_iOriginalAddress_readAddress_iOriginalAddress_HardLink;
+	wire [31: 0] readAddress_oAddress_readAddress_oAddress_HardLink;
+	wire [31: 0] writeAddress_iMapAddress_writeAddress_iMapAddress_HardLink;
+	wire [31: 0] writeAddress_iOriginalAddress_writeAddress_iOriginalAddress_HardLink;
+	wire [31: 0] writeAddress_oAddress_writeAddress_oAddress_HardLink;
 	wire [7 : 0] Inputs_iM2S_W_W_WDATA [0 : 3];
 	wire [7 : 0] Inputs_iS2M_R_R_RDATA [0 : 3];
+	AXISoCQuadCoreModule_TopLevel_cpu0IOGateway_readAddress
+	AXISoCQuadCoreModule_TopLevel_cpu0IOGateway_readAddress
+	(
+		// [BEGIN USER MAP FOR readAddress]
+		// [END USER MAP FOR readAddress]
+		.iMapAddress (readAddress_iMapAddress_readAddress_iMapAddress_HardLink),
+		.iOriginalAddress (readAddress_iOriginalAddress_readAddress_iOriginalAddress_HardLink),
+		.oAddress (readAddress_oAddress_readAddress_oAddress_HardLink)
+	);
+	AXISoCQuadCoreModule_TopLevel_cpu0IOGateway_writeAddress
+	AXISoCQuadCoreModule_TopLevel_cpu0IOGateway_writeAddress
+	(
+		// [BEGIN USER MAP FOR writeAddress]
+		// [END USER MAP FOR writeAddress]
+		.iMapAddress (writeAddress_iMapAddress_writeAddress_iMapAddress_HardLink),
+		.iOriginalAddress (writeAddress_iOriginalAddress_writeAddress_iOriginalAddress_HardLink),
+		.oAddress (writeAddress_oAddress_writeAddress_oAddress_HardLink)
+	);
 	assign Inputs_iM2S_W_B_BREADY = iM2S[221];
 	assign Inputs_iM2S_W_W_WVALID = iM2S[220];
 	assign Inputs_iM2S_W_W_WUSER = iM2S[219:212];
@@ -132,6 +169,24 @@ module AXISoCQuadCoreModule_TopLevel_cpu0IOGateway
 	assign Inputs_iS2M_R_R_RDATA[0] = iS2M[16:9];
 	assign Inputs_iS2M_R_R_RID = iS2M[8:1];
 	assign Inputs_iS2M_R_AR_ARREADY = iS2M[0];
+	assign AXI4GatewayModule_L41F31T70_Resize = {
+		{31{1'b0}},
+		AXI4GatewayModule_L41F47T52_Expr
+	}
+	;
+	assign AXI4GatewayModule_L38F40L42T14_Object[31:0] = AXI4GatewayModule_L41F31T70_Resize;
+	assign AXI4GatewayModule_L38F40L42T14_Object[63:32] = Inputs_iM2S_R_AR_ARADDR;
+	assign readAddress_iOriginalAddress = AXI4GatewayModule_L38F40L42T14_Object[63:32];
+	assign readAddress_iMapAddress = AXI4GatewayModule_L38F40L42T14_Object[31:0];
+	assign AXI4GatewayModule_L47F31T70_Resize = {
+		{31{1'b0}},
+		AXI4GatewayModule_L47F47T52_Expr
+	}
+	;
+	assign AXI4GatewayModule_L44F41L48T14_Object[31:0] = AXI4GatewayModule_L47F31T70_Resize;
+	assign AXI4GatewayModule_L44F41L48T14_Object[63:32] = Inputs_iM2S_W_AW_AWADDR;
+	assign writeAddress_iOriginalAddress = AXI4GatewayModule_L44F41L48T14_Object[63:32];
+	assign writeAddress_iMapAddress = AXI4GatewayModule_L44F41L48T14_Object[31:0];
 	assign oM2S[221] = Inputs_iM2S_W_B_BREADY;
 	assign oM2S[220] = Inputs_iM2S_W_W_WVALID;
 	assign oM2S[219:212] = Inputs_iM2S_W_W_WUSER;
@@ -152,7 +207,7 @@ module AXISoCQuadCoreModule_TopLevel_cpu0IOGateway
 	assign oM2S[136:135] = Inputs_iM2S_W_AW_AWBURST;
 	assign oM2S[134:132] = Inputs_iM2S_W_AW_AWSIZE;
 	assign oM2S[131:124] = Inputs_iM2S_W_AW_AWLEN;
-	assign oM2S[123:92] = Inputs_iM2S_W_AW_AWADDR;
+	assign oM2S[123:92] = writeAddress_oAddress;
 	assign oM2S[91:84] = Inputs_iM2S_W_AW_AWID;
 	assign oM2S[83] = Inputs_iM2S_R_R_RREADY;
 	assign oM2S[82] = Inputs_iM2S_R_AR_ARVALID;
@@ -165,7 +220,7 @@ module AXISoCQuadCoreModule_TopLevel_cpu0IOGateway
 	assign oM2S[52:51] = Inputs_iM2S_R_AR_ARBURST;
 	assign oM2S[50:48] = Inputs_iM2S_R_AR_ARSIZE;
 	assign oM2S[47:40] = Inputs_iM2S_R_AR_ARLEN;
-	assign oM2S[39:8] = Inputs_iM2S_R_AR_ARADDR;
+	assign oM2S[39:8] = readAddress_oAddress;
 	assign oM2S[7:0] = Inputs_iM2S_R_AR_ARID;
 	assign oS2M[73] = Inputs_iS2M_W_W_WREADY;
 	assign oS2M[72] = Inputs_iS2M_W_B_BVALID;
@@ -183,6 +238,12 @@ module AXISoCQuadCoreModule_TopLevel_cpu0IOGateway
 	assign oS2M[16:9] = Inputs_iS2M_R_R_RDATA[0];
 	assign oS2M[8:1] = Inputs_iS2M_R_R_RID;
 	assign oS2M[0] = Inputs_iS2M_R_AR_ARREADY;
+	assign readAddress_iMapAddress_readAddress_iMapAddress_HardLink = readAddress_iMapAddress;
+	assign readAddress_iOriginalAddress_readAddress_iOriginalAddress_HardLink = readAddress_iOriginalAddress;
+	assign readAddress_oAddress = readAddress_oAddress_readAddress_oAddress_HardLink;
+	assign writeAddress_iMapAddress_writeAddress_iMapAddress_HardLink = writeAddress_iMapAddress;
+	assign writeAddress_iOriginalAddress_writeAddress_iOriginalAddress_HardLink = writeAddress_iOriginalAddress;
+	assign writeAddress_oAddress = writeAddress_oAddress_writeAddress_oAddress_HardLink;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

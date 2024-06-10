@@ -180,9 +180,9 @@ namespace AXISoC
             cpu0cpu1Gateway.Schedule(() => new()
             { 
                 iM2S = cpu0Interconnect.oM2S[4],
-                iS2M = cpu1Interconnect.oS2M[3],
+                iS2M = cpu1Interconnect.oS2M[1],
                 
-            });
+            });//dbg
 
             cpu0Interconnect.Schedule(() => new()
             {

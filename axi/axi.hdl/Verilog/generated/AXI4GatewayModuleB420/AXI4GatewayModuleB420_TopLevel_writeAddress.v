@@ -36,15 +36,11 @@ module AXI4GatewayModuleB420_TopLevel_writeAddress
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire signed [6: 0] axiSize = 7'b0100000;
-	wire signed [5: 0] mapLowerBits = 6'b010100;
-	wire AXI4GatewayAddressModule_L31F13T30_Expr = 1'b0;
+	wire signed [5: 0] originalLowerBits = 6'b010100;
+	wire AXI4GatewayAddressModule_L31F13T35_Expr = 1'b0;
 	wire [31: 0] Inputs_iMapAddress;
 	wire [31: 0] Inputs_iOriginalAddress;
 	wire [31: 0] AXI4GatewayAddressModule_L33F17L37T18_Source;
-	wire [31: 0] AXI4GatewayAddressModule_L31F13L37T18_WhenTrue;
-	wire [31: 0] AXI4GatewayAddressModule_L31F13L37T18_WhenFalse;
-	wire [31: 0] AXI4GatewayAddressModule_L31F13L37T18_Ternary;
-	assign AXI4GatewayAddressModule_L31F13L37T18_Ternary = (AXI4GatewayAddressModule_L31F13T30_Expr ? AXI4GatewayAddressModule_L31F13L37T18_WhenTrue : AXI4GatewayAddressModule_L31F13L37T18_WhenFalse);
 	assign Inputs_iMapAddress = iMapAddress;
 	assign Inputs_iOriginalAddress = iOriginalAddress;
 	assign AXI4GatewayAddressModule_L33F17L37T18_Source = {
@@ -52,9 +48,7 @@ module AXI4GatewayModuleB420_TopLevel_writeAddress
 		Inputs_iOriginalAddress[19:0]
 	}
 	;
-	assign AXI4GatewayAddressModule_L31F13L37T18_WhenTrue = Inputs_iOriginalAddress;
-	assign AXI4GatewayAddressModule_L31F13L37T18_WhenFalse = AXI4GatewayAddressModule_L33F17L37T18_Source;
-	assign oAddress = AXI4GatewayAddressModule_L31F13L37T18_Ternary;
+	assign oAddress = AXI4GatewayAddressModule_L33F17L37T18_Source;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

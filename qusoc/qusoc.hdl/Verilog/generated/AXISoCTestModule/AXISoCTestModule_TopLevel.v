@@ -35,7 +35,9 @@ module AXISoCTestModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
+	wire AXI4RISCVModule_L17F32T37_Expr = 1'b0;
 	wire [32: 0] AXI4RegisterModuleInputs_Reg = 33'b000000000000000000000000000000000;
+	wire CPU_ExtReset;
 	wire [73: 0] CPU_S2M;
 	wire [221: 0] CPU_M2S;
 	wire [221: 0] Memory_M2S;
@@ -45,11 +47,12 @@ module AXISoCTestModule_TopLevel
 	wire Reg_outACK;
 	wire Reg_outWritten;
 	wire [73: 0] Reg_S2M;
-	wire [73: 0] AXISoCTestModule_L37F32L40T14_Object;
+	wire [74: 0] AXISoCTestModule_L37F32L40T14_Object;
 	wire [221: 0] AXISoCTestModule_L42F35L45T14_Object;
 	wire [254: 0] AXISoCTestModule_L47F32L50T14_Object;
 	wire [369: 0] AXISoCTestModule_L52F41L59T14_Object;
 	wire [31: 0] AXISoCTestModule_L61F37T65_Source;
+	wire CPU_ExtReset_CPU_ExtReset_HardLink;
 	wire [73: 0] CPU_S2M_CPU_S2M_HardLink;
 	wire [221: 0] CPU_M2S_CPU_M2S_HardLink;
 	wire [221: 0] Interconnect_iM2S0_Interconnect_iM2S_HardLink;
@@ -91,6 +94,7 @@ module AXISoCTestModule_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
+		.ExtReset (CPU_ExtReset_CPU_ExtReset_HardLink),
 		.S2M (CPU_S2M_CPU_S2M_HardLink),
 		.M2S (CPU_M2S_CPU_M2S_HardLink)
 	);
@@ -144,8 +148,10 @@ module AXISoCTestModule_TopLevel
 		.outWritten (Reg_outWritten_Reg_outWritten_HardLink),
 		.S2M (Reg_S2M_Reg_S2M_HardLink)
 	);
-	assign AXISoCTestModule_L37F32L40T14_Object[73:0] = Interconnect_oS2M[0];
-	assign CPU_S2M = AXISoCTestModule_L37F32L40T14_Object[73:0];
+	assign AXISoCTestModule_L37F32L40T14_Object[0] = AXI4RISCVModule_L17F32T37_Expr;
+	assign AXISoCTestModule_L37F32L40T14_Object[74:1] = Interconnect_oS2M[0];
+	assign CPU_S2M = AXISoCTestModule_L37F32L40T14_Object[74:1];
+	assign CPU_ExtReset = AXISoCTestModule_L37F32L40T14_Object[0];
 	assign AXISoCTestModule_L42F35L45T14_Object[221:0] = Interconnect_oM2S[0];
 	assign Memory_M2S = AXISoCTestModule_L42F35L45T14_Object[221:0];
 	assign AXISoCTestModule_L47F32L50T14_Object[221:0] = Interconnect_oM2S[1];
@@ -169,6 +175,7 @@ module AXISoCTestModule_TopLevel
 	}
 	;
 	assign oData = AXISoCTestModule_L61F37T65_Source;
+	assign CPU_ExtReset_CPU_ExtReset_HardLink = CPU_ExtReset;
 	assign CPU_S2M_CPU_S2M_HardLink = CPU_S2M;
 	assign CPU_M2S = CPU_M2S_CPU_M2S_HardLink;
 	assign Interconnect_iM2S0_Interconnect_iM2S_HardLink = Interconnect_iM2S[0];

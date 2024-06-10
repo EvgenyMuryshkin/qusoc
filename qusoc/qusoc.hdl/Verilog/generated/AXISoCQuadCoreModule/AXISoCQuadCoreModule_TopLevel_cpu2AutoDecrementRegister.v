@@ -54,7 +54,7 @@ module AXISoCQuadCoreModule_TopLevel_cpu2AutoDecrementRegister
 	wire AXI4AutoDecrementRegisterModule_L74F29T33_Expr = 1'b1;
 	wire AXI4AutoDecrementRegisterModule_L76F28T32_Expr = 1'b1;
 	wire AXI4AutoDecrementRegisterModule_L73F28T32_Expr = 1'b1;
-	wire AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L88F31T32_Expr = 1'b0;
+	wire AXI4AutoDecrementRegisterModule_L88F31T32_Expr = 1'b0;
 	wire AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L96F13L102T14_AXI4AutoDecrementRegisterModule_L97F17L101T18_0_w = 1'b0;
 	wire AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L96F13L102T14_AXI4AutoDecrementRegisterModule_L97F17L101T18_1_w = 1'b1;
 	wire [1: 0] AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L96F13L102T14_AXI4AutoDecrementRegisterModule_L97F17L101T18_2_w = 2'b10;
@@ -292,7 +292,7 @@ module AXISoCQuadCoreModule_TopLevel_cpu2AutoDecrementRegister
 	;
 	assign AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L88F17T32_ExprRhs = {
 		{32{1'b0}},
-		AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L88F31T32_Expr
+		AXI4AutoDecrementRegisterModule_L88F31T32_Expr
 	}
 	;
 	assign AXI4AutoDecrementRegisterModule_L75F28T44_Expr_1 = Inputs_Reg_inWE;

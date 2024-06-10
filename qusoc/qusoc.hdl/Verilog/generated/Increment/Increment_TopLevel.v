@@ -40,6 +40,7 @@ module Increment_TopLevel
 	wire [1: 0] QuSoCModule_L106F13L119T14_QuSoCModule_L110F17L116T18_CombinedModuleIsActive_Size = 2'b10;
 	wire QuSoCModule_L77F31T33_Expr = 1'b0;
 	wire RISCVModule_Types_L11F30T35_Expr = 1'b0;
+	wire RISCVModule_Types_L12F32T37_Expr = 1'b0;
 	wire QuSoCModule_L85F33T43_Expr = 1'b0;
 	wire [31: 0] Increment_generated_L15F104T114_Expr = 32'b10000000000000000000000000000000;
 	wire QuSoCModule_L131F9L151T10_QuSoCModule_L139F13L150T14_QuSoCModule_L145F17L149T18_QuSoCModule_L148F42T46_Expr = 1'b1;
@@ -60,6 +61,7 @@ module Increment_TopLevel
 	wire [7: 0] ModuleIndex;
 	wire [31: 0] CPU_BaseAddress;
 	wire CPU_ExtIRQ;
+	wire CPU_ExtReset;
 	wire [31: 0] CPU_MemReadData;
 	wire CPU_MemReady;
 	wire CPU_BREADY;
@@ -86,11 +88,12 @@ module Increment_TopLevel
 	integer idx;
 	wire [8: 0] QuSoCModule_L106F13L119T14_QuSoCModule_L118F24T44_Tuple;
 	wire [1: 0] QuSoCModule_L44F47T98_Source;
-	wire [65: 0] QuSoCModule_L75F32L80T14_Object;
+	wire [66: 0] QuSoCModule_L75F32L80T14_Object;
 	wire [99: 0] QuSoCModule_L82F44L86T14_Object;
 	wire [99: 0] Increment_generated_L15F33T116_Object;
 	wire [31: 0] CPU_BaseAddress_CPU_BaseAddress_HardLink;
 	wire CPU_ExtIRQ_CPU_ExtIRQ_HardLink;
+	wire CPU_ExtReset_CPU_ExtReset_HardLink;
 	wire [31: 0] CPU_MemReadData_CPU_MemReadData_HardLink;
 	wire CPU_MemReady_CPU_MemReady_HardLink;
 	wire CPU_BREADY_CPU_BREADY_HardLink;
@@ -153,6 +156,7 @@ module Increment_TopLevel
 		.BoardSignals_Started (BoardSignals_Started),
 		.BaseAddress (CPU_BaseAddress_CPU_BaseAddress_HardLink),
 		.ExtIRQ (CPU_ExtIRQ_CPU_ExtIRQ_HardLink),
+		.ExtReset (CPU_ExtReset_CPU_ExtReset_HardLink),
 		.MemReadData (CPU_MemReadData_CPU_MemReadData_HardLink),
 		.MemReady (CPU_MemReady_CPU_MemReady_HardLink),
 		.BREADY (CPU_BREADY_CPU_BREADY_HardLink),
@@ -294,10 +298,12 @@ module Increment_TopLevel
 	}
 	;
 	assign QuSoCModule_L75F32L80T14_Object[32] = RISCVModule_Types_L11F30T35_Expr;
-	assign QuSoCModule_L75F32L80T14_Object[64:33] = internalModuleReadData;
-	assign QuSoCModule_L75F32L80T14_Object[65] = internalMemReady;
-	assign CPU_MemReady = QuSoCModule_L75F32L80T14_Object[65];
-	assign CPU_MemReadData = QuSoCModule_L75F32L80T14_Object[64:33];
+	assign QuSoCModule_L75F32L80T14_Object[33] = RISCVModule_Types_L12F32T37_Expr;
+	assign QuSoCModule_L75F32L80T14_Object[65:34] = internalModuleReadData;
+	assign QuSoCModule_L75F32L80T14_Object[66] = internalMemReady;
+	assign CPU_MemReady = QuSoCModule_L75F32L80T14_Object[66];
+	assign CPU_MemReadData = QuSoCModule_L75F32L80T14_Object[65:34];
+	assign CPU_ExtReset = QuSoCModule_L75F32L80T14_Object[33];
 	assign CPU_ExtIRQ = QuSoCModule_L75F32L80T14_Object[32];
 	assign CPU_BaseAddress = QuSoCModule_L75F32L80T14_Object[31:0];
 	assign QuSoCModule_L82F44L86T14_Object[31:0] = ModuleCommon_Address;
@@ -323,6 +329,7 @@ module Increment_TopLevel
 	assign Counter = CounterModule_Value;
 	assign CPU_BaseAddress_CPU_BaseAddress_HardLink = CPU_BaseAddress;
 	assign CPU_ExtIRQ_CPU_ExtIRQ_HardLink = CPU_ExtIRQ;
+	assign CPU_ExtReset_CPU_ExtReset_HardLink = CPU_ExtReset;
 	assign CPU_MemReadData_CPU_MemReadData_HardLink = CPU_MemReadData;
 	assign CPU_MemReady_CPU_MemReady_HardLink = CPU_MemReady;
 	assign CPU_BREADY = CPU_BREADY_CPU_BREADY_HardLink;
