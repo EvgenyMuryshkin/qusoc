@@ -55,8 +55,9 @@ namespace AXISoC
         internal AXI4RegisterModule Reg2 = new AXI4RegisterModule(axiSize.B4);
         internal AXI4RegisterModule Reg3 = new AXI4RegisterModule(axiSize.B4);
 
-        internal AXI4SignalBufferModule Switch0 = new AXI4SignalBufferModule(axiSize.B4);
-        internal AXI4SignalBufferModule Switch1 = new AXI4SignalBufferModule(axiSize.B4);
+        //internal AXI4SignalBufferModule Switch0 = new AXI4SignalBufferModule(axiSize.B4);
+        //internal AXI4SignalBufferModule Switch1 = new AXI4SignalBufferModule(axiSize.B4);
+        internal AXI4InSignalArrayBufferModule Switches = new AXI4InSignalArrayBufferModule(axiSize.B4, 1, 2);
 
         //internal AXI4SignalBufferModule Button0 = new AXI4SignalBufferModule(axiSize.B4);
         //internal AXI4SignalBufferModule Button1 = new AXI4SignalBufferModule(axiSize.B4);
@@ -123,8 +124,9 @@ namespace AXISoC
                 new RangeInfo(0x80000008, 0x80000008),// reg1
                 new RangeInfo(0x8000000C, 0x8000000C),// reg2
                 new RangeInfo(0x80000010, 0x80000010),// reg3
-                new RangeInfo(0x80000014, 0x80000014),// switch 0
-                new RangeInfo(0x80000018, 0x80000018),// switch 1
+                //new RangeInfo(0x80000014, 0x80000014),// switch 0
+                //new RangeInfo(0x80000018, 0x80000018),// switch 1
+                new RangeInfo(0x80000014, 0x80000018),// switches
                 //new RangeInfo(0x8000001C, 0x8000001C),// button0
                 //new RangeInfo(0x80000020, 0x80000020),// button1
                 //new RangeInfo(0x80000024, 0x80000024),// button2
@@ -331,25 +333,37 @@ namespace AXISoC
             {
                 M2S = ioInterconnect.oM2S[4]
             });
-            Switch0.Schedule(() => new()
+            Switches.Schedule(() => new()
             {
                 M2S = ioInterconnect.oM2S[5],
                 Sig =
                 {
-                    inWDATA = new RTLBitArray(Inputs.iSwitch0)
+                    inWDATA = new RTLBitArray[]
+                    {
+                        Inputs.iSwitch0,
+                        Inputs.iSwitch1
+                    }
                 }
             });
-            Switch1.Schedule(() => new()
-            {
-                M2S = ioInterconnect.oM2S[6],
-                Sig =
-                {
-                    inWDATA = new RTLBitArray(Inputs.iSwitch1)
-                }
-            });
+            //Switch0.Schedule(() => new()
+            //{
+            //    M2S = ioInterconnect.oM2S[5],
+            //    Sig =
+            //    {
+            //        inWDATA = new RTLBitArray(Inputs.iSwitch0)
+            //    }
+            //});
+            //Switch1.Schedule(() => new()
+            //{
+            //    M2S = ioInterconnect.oM2S[6],
+            //    Sig =
+            //    {
+            //        inWDATA = new RTLBitArray(Inputs.iSwitch1)
+            //    }
+            //});
             Buttons.Schedule(() => new()
             {
-                M2S = ioInterconnect.oM2S[7],
+                M2S = ioInterconnect.oM2S[6],
                 Sig =
                 {
                     inWDATA = new RTLBitArray[] 
@@ -398,7 +412,7 @@ namespace AXISoC
             */
             uart.Schedule(() => new()
             {
-                M2S = ioInterconnect.oM2S[8],
+                M2S = ioInterconnect.oM2S[7],
                 iRX = Inputs.iRX
             });
             
@@ -416,8 +430,9 @@ namespace AXISoC
                     Reg1.S2M,
                     Reg2.S2M,
                     Reg3.S2M,
-                    Switch0.S2M,
-                    Switch1.S2M,
+                    //Switch0.S2M,
+                    //Switch1.S2M,
+                    Switches.S2M,
                     //Button0.S2M,
                     //Button1.S2M,
                     //Button2.S2M,
