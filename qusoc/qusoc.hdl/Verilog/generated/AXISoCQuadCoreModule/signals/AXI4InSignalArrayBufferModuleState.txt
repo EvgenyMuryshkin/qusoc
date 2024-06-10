@@ -1,0 +1,6 @@
+└Root      | AXI4InSignalArrayBufferModuleState | [3:0] | 4 | [3:0]
+ └buffer   | RTLBitArray[]                      | [3:0] | 4 | [3:0][3:0]
+  ├buffer3 | RTLBitArray                        | [3]   | 1 | [3:0][3:0][3:3]
+  ├buffer2 | RTLBitArray                        | [2]   | 1 | [3:0][3:0][2:2]
+  ├buffer1 | RTLBitArray                        | [1]   | 1 | [3:0][3:0][1:1]
+  └buffer0 | RTLBitArray                        | [0]   | 1 | [3:0][3:0][0:0]

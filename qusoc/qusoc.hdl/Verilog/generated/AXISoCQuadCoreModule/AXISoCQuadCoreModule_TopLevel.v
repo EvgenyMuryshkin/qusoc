@@ -60,18 +60,9 @@ module AXISoCQuadCoreModule_TopLevel
 	wire Inputs_iSwitch0;
 	wire Inputs_iSwitch1;
 	wire [31: 0] extReset;
-	wire [221: 0] Button0_M2S;
-	wire [31: 0] Button0_Sig;
-	wire [73: 0] Button0_S2M;
-	wire [221: 0] Button1_M2S;
-	wire [31: 0] Button1_Sig;
-	wire [73: 0] Button1_S2M;
-	wire [221: 0] Button2_M2S;
-	wire [31: 0] Button2_Sig;
-	wire [73: 0] Button2_S2M;
-	wire [221: 0] Button3_M2S;
-	wire [31: 0] Button3_Sig;
-	wire [73: 0] Button3_S2M;
+	wire [221: 0] Buttons_M2S;
+	wire [3: 0] Buttons_Sig;
+	wire [73: 0] Buttons_S2M;
 	wire CPU0_ExtReset;
 	wire [73: 0] CPU0_S2M;
 	wire [221: 0] CPU0_M2S;
@@ -189,80 +180,56 @@ module AXISoCQuadCoreModule_TopLevel
 	wire uart_oTransmitting;
 	wire uart_oTX;
 	wire signed [31: 0] uart_oTXCounter;
-	wire [31: 0] AXISoCQuadCoreModule_L136F42T78_Source;
-	wire [74: 0] AXISoCQuadCoreModule_L159F33L162T14_Object;
-	wire [221: 0] AXISoCQuadCoreModule_L163F39L166T14_Object;
-	wire [221: 0] AXISoCQuadCoreModule_L167F53L170T14_Object;
-	wire [254: 0] AXISoCQuadCoreModule_L171F54L174T14_Object;
-	wire [295: 0] AXISoCQuadCoreModule_L175F42L179T14_Object;
-	wire [295: 0] AXISoCQuadCoreModule_L180F44L185T14_Object;
-	wire [591: 0] AXISoCQuadCoreModule_L187F45L201T14_Object;
-	wire [74: 0] AXISoCQuadCoreModule_L204F33L208T14_Object;
-	wire AXISoCQuadCoreModule_L207F28T39_Index;
-	wire [221: 0] AXISoCQuadCoreModule_L209F39L212T14_Object;
-	wire [221: 0] AXISoCQuadCoreModule_L213F53L216T14_Object;
-	wire [254: 0] AXISoCQuadCoreModule_L217F54L220T14_Object;
-	wire [295: 0] AXISoCQuadCoreModule_L221F42L225T14_Object;
-	wire [739: 0] AXISoCQuadCoreModule_L226F45L238T14_Object;
-	wire [74: 0] AXISoCQuadCoreModule_L241F33L245T14_Object;
-	wire AXISoCQuadCoreModule_L244F28T39_Index;
-	wire [221: 0] AXISoCQuadCoreModule_L246F39L249T14_Object;
-	wire [221: 0] AXISoCQuadCoreModule_L250F53L253T14_Object;
-	wire [254: 0] AXISoCQuadCoreModule_L254F54L257T14_Object;
-	wire [295: 0] AXISoCQuadCoreModule_L258F42L262T14_Object;
-	wire [517: 0] AXISoCQuadCoreModule_L263F45L274T14_Object;
-	wire [74: 0] AXISoCQuadCoreModule_L277F33L281T14_Object;
-	wire AXISoCQuadCoreModule_L280F28T39_Index;
-	wire [221: 0] AXISoCQuadCoreModule_L282F39L285T14_Object;
-	wire [221: 0] AXISoCQuadCoreModule_L286F53L289T14_Object;
-	wire [254: 0] AXISoCQuadCoreModule_L290F54L293T14_Object;
-	wire [295: 0] AXISoCQuadCoreModule_L294F42L298T14_Object;
-	wire [517: 0] AXISoCQuadCoreModule_L299F45L310T14_Object;
-	wire [254: 0] AXISoCQuadCoreModule_L313F40L316T14_Object;
-	wire [254: 0] AXISoCQuadCoreModule_L317F33L320T14_Object;
-	wire [254: 0] AXISoCQuadCoreModule_L321F33L324T14_Object;
-	wire [254: 0] AXISoCQuadCoreModule_L325F33L328T14_Object;
-	wire [254: 0] AXISoCQuadCoreModule_L329F33L332T14_Object;
-	wire [253: 0] AXISoCQuadCoreModule_L333F36L340T14_Object;
-	wire [253: 0] AXISoCQuadCoreModule_L341F36L348T14_Object;
-	wire [253: 0] AXISoCQuadCoreModule_L350F36L357T14_Object;
-	wire [253: 0] AXISoCQuadCoreModule_L358F36L365T14_Object;
-	wire [253: 0] AXISoCQuadCoreModule_L366F36L373T14_Object;
-	wire [253: 0] AXISoCQuadCoreModule_L374F36L381T14_Object;
-	wire [222: 0] AXISoCQuadCoreModule_L382F33L386T14_Object;
-	wire [1775: 0] AXISoCQuadCoreModule_L388F43L410T14_Object;
-	wire [31: 0] AXISoCQuadCoreModule_L413F37T66_Source;
-	wire [31: 0] AXISoCQuadCoreModule_L414F37T66_Source;
-	wire [31: 0] AXISoCQuadCoreModule_L415F37T66_Source;
-	wire [31: 0] AXISoCQuadCoreModule_L416F37T66_Source;
-	wire [221: 0] Button0_M2S_Button0_M2S_HardLink;
-	wire [31: 0] Button0_Sig_Button0_Sig_HardLink;
-	wire [7: 0] Button0_outData0_Button0_outData_HardLink;
-	wire [7: 0] Button0_outData1_Button0_outData_HardLink;
-	wire [7: 0] Button0_outData2_Button0_outData_HardLink;
-	wire [7: 0] Button0_outData3_Button0_outData_HardLink;
-	wire [73: 0] Button0_S2M_Button0_S2M_HardLink;
-	wire [221: 0] Button1_M2S_Button1_M2S_HardLink;
-	wire [31: 0] Button1_Sig_Button1_Sig_HardLink;
-	wire [7: 0] Button1_outData0_Button1_outData_HardLink;
-	wire [7: 0] Button1_outData1_Button1_outData_HardLink;
-	wire [7: 0] Button1_outData2_Button1_outData_HardLink;
-	wire [7: 0] Button1_outData3_Button1_outData_HardLink;
-	wire [73: 0] Button1_S2M_Button1_S2M_HardLink;
-	wire [221: 0] Button2_M2S_Button2_M2S_HardLink;
-	wire [31: 0] Button2_Sig_Button2_Sig_HardLink;
-	wire [7: 0] Button2_outData0_Button2_outData_HardLink;
-	wire [7: 0] Button2_outData1_Button2_outData_HardLink;
-	wire [7: 0] Button2_outData2_Button2_outData_HardLink;
-	wire [7: 0] Button2_outData3_Button2_outData_HardLink;
-	wire [73: 0] Button2_S2M_Button2_S2M_HardLink;
-	wire [221: 0] Button3_M2S_Button3_M2S_HardLink;
-	wire [31: 0] Button3_Sig_Button3_Sig_HardLink;
-	wire [7: 0] Button3_outData0_Button3_outData_HardLink;
-	wire [7: 0] Button3_outData1_Button3_outData_HardLink;
-	wire [7: 0] Button3_outData2_Button3_outData_HardLink;
-	wire [7: 0] Button3_outData3_Button3_outData_HardLink;
-	wire [73: 0] Button3_S2M_Button3_S2M_HardLink;
+	wire [31: 0] AXISoCQuadCoreModule_L137F42T78_Source;
+	wire [74: 0] AXISoCQuadCoreModule_L160F33L163T14_Object;
+	wire [221: 0] AXISoCQuadCoreModule_L164F39L167T14_Object;
+	wire [221: 0] AXISoCQuadCoreModule_L168F53L171T14_Object;
+	wire [254: 0] AXISoCQuadCoreModule_L172F54L175T14_Object;
+	wire [295: 0] AXISoCQuadCoreModule_L176F42L180T14_Object;
+	wire [295: 0] AXISoCQuadCoreModule_L181F44L186T14_Object;
+	wire [591: 0] AXISoCQuadCoreModule_L188F45L202T14_Object;
+	wire [74: 0] AXISoCQuadCoreModule_L205F33L209T14_Object;
+	wire AXISoCQuadCoreModule_L208F28T39_Index;
+	wire [221: 0] AXISoCQuadCoreModule_L210F39L213T14_Object;
+	wire [221: 0] AXISoCQuadCoreModule_L214F53L217T14_Object;
+	wire [254: 0] AXISoCQuadCoreModule_L218F54L221T14_Object;
+	wire [295: 0] AXISoCQuadCoreModule_L222F42L226T14_Object;
+	wire [739: 0] AXISoCQuadCoreModule_L227F45L239T14_Object;
+	wire [74: 0] AXISoCQuadCoreModule_L242F33L246T14_Object;
+	wire AXISoCQuadCoreModule_L245F28T39_Index;
+	wire [221: 0] AXISoCQuadCoreModule_L247F39L250T14_Object;
+	wire [221: 0] AXISoCQuadCoreModule_L251F53L254T14_Object;
+	wire [254: 0] AXISoCQuadCoreModule_L255F54L258T14_Object;
+	wire [295: 0] AXISoCQuadCoreModule_L259F42L263T14_Object;
+	wire [517: 0] AXISoCQuadCoreModule_L264F45L275T14_Object;
+	wire [74: 0] AXISoCQuadCoreModule_L278F33L282T14_Object;
+	wire AXISoCQuadCoreModule_L281F28T39_Index;
+	wire [221: 0] AXISoCQuadCoreModule_L283F39L286T14_Object;
+	wire [221: 0] AXISoCQuadCoreModule_L287F53L290T14_Object;
+	wire [254: 0] AXISoCQuadCoreModule_L291F54L294T14_Object;
+	wire [295: 0] AXISoCQuadCoreModule_L295F42L299T14_Object;
+	wire [517: 0] AXISoCQuadCoreModule_L300F45L311T14_Object;
+	wire [254: 0] AXISoCQuadCoreModule_L314F40L317T14_Object;
+	wire [254: 0] AXISoCQuadCoreModule_L318F33L321T14_Object;
+	wire [254: 0] AXISoCQuadCoreModule_L322F33L325T14_Object;
+	wire [254: 0] AXISoCQuadCoreModule_L326F33L329T14_Object;
+	wire [254: 0] AXISoCQuadCoreModule_L330F33L333T14_Object;
+	wire [253: 0] AXISoCQuadCoreModule_L334F36L341T14_Object;
+	wire [253: 0] AXISoCQuadCoreModule_L342F36L349T14_Object;
+	wire [225: 0] AXISoCQuadCoreModule_L350F36L364T14_Object;
+	wire [222: 0] AXISoCQuadCoreModule_L399F33L403T14_Object;
+	wire [1553: 0] AXISoCQuadCoreModule_L405F43L428T14_Object;
+	wire [31: 0] AXISoCQuadCoreModule_L431F37T66_Source;
+	wire [31: 0] AXISoCQuadCoreModule_L432F37T66_Source;
+	wire [31: 0] AXISoCQuadCoreModule_L433F37T66_Source;
+	wire [31: 0] AXISoCQuadCoreModule_L434F37T66_Source;
+	wire [221: 0] Buttons_M2S_Buttons_M2S_HardLink;
+	wire [3: 0] Buttons_Sig_Buttons_Sig_HardLink;
+	wire [0: 0] Buttons_outBuffer0_Buttons_outBuffer_HardLink;
+	wire [0: 0] Buttons_outBuffer1_Buttons_outBuffer_HardLink;
+	wire [0: 0] Buttons_outBuffer2_Buttons_outBuffer_HardLink;
+	wire [0: 0] Buttons_outBuffer3_Buttons_outBuffer_HardLink;
+	wire [73: 0] Buttons_S2M_Buttons_S2M_HardLink;
 	wire CPU0_ExtReset_CPU0_ExtReset_HardLink;
 	wire [73: 0] CPU0_S2M_CPU0_S2M_HardLink;
 	wire [221: 0] CPU0_M2S_CPU0_M2S_HardLink;
@@ -421,9 +388,6 @@ module AXISoCQuadCoreModule_TopLevel
 	wire [73: 0] ioInterconnect_iS2M6_ioInterconnect_iS2M_HardLink;
 	wire [73: 0] ioInterconnect_iS2M7_ioInterconnect_iS2M_HardLink;
 	wire [73: 0] ioInterconnect_iS2M8_ioInterconnect_iS2M_HardLink;
-	wire [73: 0] ioInterconnect_iS2M9_ioInterconnect_iS2M_HardLink;
-	wire [73: 0] ioInterconnect_iS2M10_ioInterconnect_iS2M_HardLink;
-	wire [73: 0] ioInterconnect_iS2M11_ioInterconnect_iS2M_HardLink;
 	wire [221: 0] ioInterconnect_oM2S0_ioInterconnect_oM2S_HardLink;
 	wire [221: 0] ioInterconnect_oM2S1_ioInterconnect_oM2S_HardLink;
 	wire [221: 0] ioInterconnect_oM2S2_ioInterconnect_oM2S_HardLink;
@@ -433,9 +397,6 @@ module AXISoCQuadCoreModule_TopLevel
 	wire [221: 0] ioInterconnect_oM2S6_ioInterconnect_oM2S_HardLink;
 	wire [221: 0] ioInterconnect_oM2S7_ioInterconnect_oM2S_HardLink;
 	wire [221: 0] ioInterconnect_oM2S8_ioInterconnect_oM2S_HardLink;
-	wire [221: 0] ioInterconnect_oM2S9_ioInterconnect_oM2S_HardLink;
-	wire [221: 0] ioInterconnect_oM2S10_ioInterconnect_oM2S_HardLink;
-	wire [221: 0] ioInterconnect_oM2S11_ioInterconnect_oM2S_HardLink;
 	wire [73: 0] ioInterconnect_oS2M0_ioInterconnect_oS2M_HardLink;
 	wire [73: 0] ioInterconnect_oS2M1_ioInterconnect_oS2M_HardLink;
 	wire [73: 0] ioInterconnect_oS2M2_ioInterconnect_oS2M_HardLink;
@@ -500,10 +461,7 @@ module AXISoCQuadCoreModule_TopLevel
 	wire uart_oTransmitting_uart_oTransmitting_HardLink;
 	wire uart_oTX_uart_oTX_HardLink;
 	wire signed [31: 0] uart_oTXCounter_uart_oTXCounter_HardLink;
-	wire [7 : 0] Button0_outData [0 : 3];
-	wire [7 : 0] Button1_outData [0 : 3];
-	wire [7 : 0] Button2_outData [0 : 3];
-	wire [7 : 0] Button3_outData [0 : 3];
+	wire [0 : 0] Buttons_outBuffer [0 : 3];
 	wire [7 : 0] cpu0AutoDecrementRegister_outData [0 : 3];
 	wire [221 : 0] cpu0Interconnect_iM2S [0 : 0];
 	wire [73 : 0] cpu0Interconnect_iS2M [0 : 4];
@@ -526,8 +484,8 @@ module AXISoCQuadCoreModule_TopLevel
 	wire [73 : 0] cpu3Interconnect_oS2M [0 : 0];
 	wire [7 : 0] CPUExtReset_outData [0 : 3];
 	wire [221 : 0] ioInterconnect_iM2S [0 : 3];
-	wire [73 : 0] ioInterconnect_iS2M [0 : 11];
-	wire [221 : 0] ioInterconnect_oM2S [0 : 11];
+	wire [73 : 0] ioInterconnect_iS2M [0 : 8];
+	wire [221 : 0] ioInterconnect_oM2S [0 : 8];
 	wire [73 : 0] ioInterconnect_oS2M [0 : 3];
 	wire [7 : 0] Reg0_outData [0 : 3];
 	wire [7 : 0] Reg1_outData [0 : 3];
@@ -535,6 +493,7 @@ module AXISoCQuadCoreModule_TopLevel
 	wire [7 : 0] Reg3_outData [0 : 3];
 	wire [7 : 0] Switch0_outData [0 : 3];
 	wire [7 : 0] Switch1_outData [0 : 3];
+	wire AXISoCQuadCoreModule_L355F31L361T22_Enumerable [0 : 3];
 	wire BoardSignals_Clock;
 	wire BoardSignals_Reset;
 	wire BoardSignals_Running;
@@ -542,77 +501,23 @@ module AXISoCQuadCoreModule_TopLevel
 	wire BoardSignals_Started;
 	reg InternalReset = 1'b0;
 	work_Quokka_BoardSignalsProc BoardSignalsConnection(BoardSignals_Clock, BoardSignals_Reset, BoardSignals_Running, BoardSignals_Starting, BoardSignals_Started, Clock, Reset, InternalReset);
-	AXISoCQuadCoreModule_TopLevel_Button0
-	AXISoCQuadCoreModule_TopLevel_Button0
+	AXISoCQuadCoreModule_TopLevel_Buttons
+	AXISoCQuadCoreModule_TopLevel_Buttons
 	(
-		// [BEGIN USER MAP FOR Button0]
-		// [END USER MAP FOR Button0]
+		// [BEGIN USER MAP FOR Buttons]
+		// [END USER MAP FOR Buttons]
 		.BoardSignals_Clock (BoardSignals_Clock),
 		.BoardSignals_Reset (BoardSignals_Reset),
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
-		.M2S (Button0_M2S_Button0_M2S_HardLink),
-		.Sig (Button0_Sig_Button0_Sig_HardLink),
-		.outData0 (Button0_outData0_Button0_outData_HardLink),
-		.outData1 (Button0_outData1_Button0_outData_HardLink),
-		.outData2 (Button0_outData2_Button0_outData_HardLink),
-		.outData3 (Button0_outData3_Button0_outData_HardLink),
-		.S2M (Button0_S2M_Button0_S2M_HardLink)
-	);
-	AXISoCQuadCoreModule_TopLevel_Button1
-	AXISoCQuadCoreModule_TopLevel_Button1
-	(
-		// [BEGIN USER MAP FOR Button1]
-		// [END USER MAP FOR Button1]
-		.BoardSignals_Clock (BoardSignals_Clock),
-		.BoardSignals_Reset (BoardSignals_Reset),
-		.BoardSignals_Running (BoardSignals_Running),
-		.BoardSignals_Starting (BoardSignals_Starting),
-		.BoardSignals_Started (BoardSignals_Started),
-		.M2S (Button1_M2S_Button1_M2S_HardLink),
-		.Sig (Button1_Sig_Button1_Sig_HardLink),
-		.outData0 (Button1_outData0_Button1_outData_HardLink),
-		.outData1 (Button1_outData1_Button1_outData_HardLink),
-		.outData2 (Button1_outData2_Button1_outData_HardLink),
-		.outData3 (Button1_outData3_Button1_outData_HardLink),
-		.S2M (Button1_S2M_Button1_S2M_HardLink)
-	);
-	AXISoCQuadCoreModule_TopLevel_Button2
-	AXISoCQuadCoreModule_TopLevel_Button2
-	(
-		// [BEGIN USER MAP FOR Button2]
-		// [END USER MAP FOR Button2]
-		.BoardSignals_Clock (BoardSignals_Clock),
-		.BoardSignals_Reset (BoardSignals_Reset),
-		.BoardSignals_Running (BoardSignals_Running),
-		.BoardSignals_Starting (BoardSignals_Starting),
-		.BoardSignals_Started (BoardSignals_Started),
-		.M2S (Button2_M2S_Button2_M2S_HardLink),
-		.Sig (Button2_Sig_Button2_Sig_HardLink),
-		.outData0 (Button2_outData0_Button2_outData_HardLink),
-		.outData1 (Button2_outData1_Button2_outData_HardLink),
-		.outData2 (Button2_outData2_Button2_outData_HardLink),
-		.outData3 (Button2_outData3_Button2_outData_HardLink),
-		.S2M (Button2_S2M_Button2_S2M_HardLink)
-	);
-	AXISoCQuadCoreModule_TopLevel_Button3
-	AXISoCQuadCoreModule_TopLevel_Button3
-	(
-		// [BEGIN USER MAP FOR Button3]
-		// [END USER MAP FOR Button3]
-		.BoardSignals_Clock (BoardSignals_Clock),
-		.BoardSignals_Reset (BoardSignals_Reset),
-		.BoardSignals_Running (BoardSignals_Running),
-		.BoardSignals_Starting (BoardSignals_Starting),
-		.BoardSignals_Started (BoardSignals_Started),
-		.M2S (Button3_M2S_Button3_M2S_HardLink),
-		.Sig (Button3_Sig_Button3_Sig_HardLink),
-		.outData0 (Button3_outData0_Button3_outData_HardLink),
-		.outData1 (Button3_outData1_Button3_outData_HardLink),
-		.outData2 (Button3_outData2_Button3_outData_HardLink),
-		.outData3 (Button3_outData3_Button3_outData_HardLink),
-		.S2M (Button3_S2M_Button3_S2M_HardLink)
+		.M2S (Buttons_M2S_Buttons_M2S_HardLink),
+		.Sig (Buttons_Sig_Buttons_Sig_HardLink),
+		.outBuffer0 (Buttons_outBuffer0_Buttons_outBuffer_HardLink),
+		.outBuffer1 (Buttons_outBuffer1_Buttons_outBuffer_HardLink),
+		.outBuffer2 (Buttons_outBuffer2_Buttons_outBuffer_HardLink),
+		.outBuffer3 (Buttons_outBuffer3_Buttons_outBuffer_HardLink),
+		.S2M (Buttons_S2M_Buttons_S2M_HardLink)
 	);
 	AXISoCQuadCoreModule_TopLevel_CPU0
 	AXISoCQuadCoreModule_TopLevel_CPU0
@@ -1043,9 +948,6 @@ module AXISoCQuadCoreModule_TopLevel
 		.iS2M6 (ioInterconnect_iS2M6_ioInterconnect_iS2M_HardLink),
 		.iS2M7 (ioInterconnect_iS2M7_ioInterconnect_iS2M_HardLink),
 		.iS2M8 (ioInterconnect_iS2M8_ioInterconnect_iS2M_HardLink),
-		.iS2M9 (ioInterconnect_iS2M9_ioInterconnect_iS2M_HardLink),
-		.iS2M10 (ioInterconnect_iS2M10_ioInterconnect_iS2M_HardLink),
-		.iS2M11 (ioInterconnect_iS2M11_ioInterconnect_iS2M_HardLink),
 		.oM2S0 (ioInterconnect_oM2S0_ioInterconnect_oM2S_HardLink),
 		.oM2S1 (ioInterconnect_oM2S1_ioInterconnect_oM2S_HardLink),
 		.oM2S2 (ioInterconnect_oM2S2_ioInterconnect_oM2S_HardLink),
@@ -1055,9 +957,6 @@ module AXISoCQuadCoreModule_TopLevel
 		.oM2S6 (ioInterconnect_oM2S6_ioInterconnect_oM2S_HardLink),
 		.oM2S7 (ioInterconnect_oM2S7_ioInterconnect_oM2S_HardLink),
 		.oM2S8 (ioInterconnect_oM2S8_ioInterconnect_oM2S_HardLink),
-		.oM2S9 (ioInterconnect_oM2S9_ioInterconnect_oM2S_HardLink),
-		.oM2S10 (ioInterconnect_oM2S10_ioInterconnect_oM2S_HardLink),
-		.oM2S11 (ioInterconnect_oM2S11_ioInterconnect_oM2S_HardLink),
 		.oS2M0 (ioInterconnect_oS2M0_ioInterconnect_oS2M_HardLink),
 		.oS2M1 (ioInterconnect_oS2M1_ioInterconnect_oS2M_HardLink),
 		.oS2M2 (ioInterconnect_oS2M2_ioInterconnect_oS2M_HardLink),
@@ -1207,36 +1106,36 @@ module AXISoCQuadCoreModule_TopLevel
 	assign Inputs_iRX = iRX;
 	assign Inputs_iSwitch0 = iSwitch0;
 	assign Inputs_iSwitch1 = iSwitch1;
-	assign AXISoCQuadCoreModule_L136F42T78_Source = {
+	assign AXISoCQuadCoreModule_L137F42T78_Source = {
 		CPUExtReset_outData[3],
 		CPUExtReset_outData[2],
 		CPUExtReset_outData[1],
 		CPUExtReset_outData[0]
 	}
 	;
-	assign extReset = AXISoCQuadCoreModule_L136F42T78_Source;
-	assign AXISoCQuadCoreModule_L159F33L162T14_Object[0] = AXI4RISCVModule_L17F32T37_Expr;
-	assign AXISoCQuadCoreModule_L159F33L162T14_Object[74:1] = cpu0Interconnect_oS2M[0];
-	assign CPU0_S2M = AXISoCQuadCoreModule_L159F33L162T14_Object[74:1];
-	assign CPU0_ExtReset = AXISoCQuadCoreModule_L159F33L162T14_Object[0];
-	assign AXISoCQuadCoreModule_L163F39L166T14_Object[221:0] = cpu0Interconnect_oM2S[0];
-	assign cpu0Memory_M2S = AXISoCQuadCoreModule_L163F39L166T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L167F53L170T14_Object[221:0] = cpu0Interconnect_oM2S[1];
-	assign cpu0AutoIncrementCounter_M2S = AXISoCQuadCoreModule_L167F53L170T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L171F54L174T14_Object[221:0] = cpu0Interconnect_oM2S[2];
-	assign AXISoCQuadCoreModule_L171F54L174T14_Object[254:222] = AXI4AutoDecrementRegisterModuleInputs_Reg;
-	assign cpu0AutoDecrementRegister_Reg = AXISoCQuadCoreModule_L171F54L174T14_Object[254:222];
-	assign cpu0AutoDecrementRegister_M2S = AXISoCQuadCoreModule_L171F54L174T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L175F42L179T14_Object[221:0] = cpu0Interconnect_oM2S[3];
-	assign AXISoCQuadCoreModule_L175F42L179T14_Object[295:222] = ioInterconnect_oS2M[0];
-	assign cpu0IOGateway_iS2M = AXISoCQuadCoreModule_L175F42L179T14_Object[295:222];
-	assign cpu0IOGateway_iM2S = AXISoCQuadCoreModule_L175F42L179T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L180F44L185T14_Object[221:0] = cpu0Interconnect_oM2S[4];
-	assign AXISoCQuadCoreModule_L180F44L185T14_Object[295:222] = cpu1Interconnect_oS2M[1];
-	assign cpu0cpu1Gateway_iS2M = AXISoCQuadCoreModule_L180F44L185T14_Object[295:222];
-	assign cpu0cpu1Gateway_iM2S = AXISoCQuadCoreModule_L180F44L185T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L187F45L201T14_Object[221:0] = CPU0_M2S;
-	assign AXISoCQuadCoreModule_L187F45L201T14_Object[591:222] = {
+	assign extReset = AXISoCQuadCoreModule_L137F42T78_Source;
+	assign AXISoCQuadCoreModule_L160F33L163T14_Object[0] = AXI4RISCVModule_L17F32T37_Expr;
+	assign AXISoCQuadCoreModule_L160F33L163T14_Object[74:1] = cpu0Interconnect_oS2M[0];
+	assign CPU0_S2M = AXISoCQuadCoreModule_L160F33L163T14_Object[74:1];
+	assign CPU0_ExtReset = AXISoCQuadCoreModule_L160F33L163T14_Object[0];
+	assign AXISoCQuadCoreModule_L164F39L167T14_Object[221:0] = cpu0Interconnect_oM2S[0];
+	assign cpu0Memory_M2S = AXISoCQuadCoreModule_L164F39L167T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L168F53L171T14_Object[221:0] = cpu0Interconnect_oM2S[1];
+	assign cpu0AutoIncrementCounter_M2S = AXISoCQuadCoreModule_L168F53L171T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L172F54L175T14_Object[221:0] = cpu0Interconnect_oM2S[2];
+	assign AXISoCQuadCoreModule_L172F54L175T14_Object[254:222] = AXI4AutoDecrementRegisterModuleInputs_Reg;
+	assign cpu0AutoDecrementRegister_Reg = AXISoCQuadCoreModule_L172F54L175T14_Object[254:222];
+	assign cpu0AutoDecrementRegister_M2S = AXISoCQuadCoreModule_L172F54L175T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L176F42L180T14_Object[221:0] = cpu0Interconnect_oM2S[3];
+	assign AXISoCQuadCoreModule_L176F42L180T14_Object[295:222] = ioInterconnect_oS2M[0];
+	assign cpu0IOGateway_iS2M = AXISoCQuadCoreModule_L176F42L180T14_Object[295:222];
+	assign cpu0IOGateway_iM2S = AXISoCQuadCoreModule_L176F42L180T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L181F44L186T14_Object[221:0] = cpu0Interconnect_oM2S[4];
+	assign AXISoCQuadCoreModule_L181F44L186T14_Object[295:222] = cpu1Interconnect_oS2M[1];
+	assign cpu0cpu1Gateway_iS2M = AXISoCQuadCoreModule_L181F44L186T14_Object[295:222];
+	assign cpu0cpu1Gateway_iM2S = AXISoCQuadCoreModule_L181F44L186T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L188F45L202T14_Object[221:0] = CPU0_M2S;
+	assign AXISoCQuadCoreModule_L188F45L202T14_Object[591:222] = {
 		cpu0cpu1Gateway_oS2M,
 		cpu0IOGateway_oS2M,
 		cpu0AutoDecrementRegister_S2M,
@@ -1244,192 +1143,171 @@ module AXISoCQuadCoreModule_TopLevel
 		cpu0Memory_S2M
 	}
 	;
-	assign cpu0Interconnect_iS2M[4] = AXISoCQuadCoreModule_L187F45L201T14_Object[591:518];
-	assign cpu0Interconnect_iS2M[3] = AXISoCQuadCoreModule_L187F45L201T14_Object[517:444];
-	assign cpu0Interconnect_iS2M[2] = AXISoCQuadCoreModule_L187F45L201T14_Object[443:370];
-	assign cpu0Interconnect_iS2M[1] = AXISoCQuadCoreModule_L187F45L201T14_Object[369:296];
-	assign cpu0Interconnect_iS2M[0] = AXISoCQuadCoreModule_L187F45L201T14_Object[295:222];
-	assign cpu0Interconnect_iM2S[0] = AXISoCQuadCoreModule_L187F45L201T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L207F28T39_Index = extReset[1];
-	assign AXISoCQuadCoreModule_L204F33L208T14_Object[0] = AXISoCQuadCoreModule_L207F28T39_Index;
-	assign AXISoCQuadCoreModule_L204F33L208T14_Object[74:1] = cpu1Interconnect_oS2M[0];
-	assign CPU1_S2M = AXISoCQuadCoreModule_L204F33L208T14_Object[74:1];
-	assign CPU1_ExtReset = AXISoCQuadCoreModule_L204F33L208T14_Object[0];
-	assign AXISoCQuadCoreModule_L209F39L212T14_Object[221:0] = cpu1Interconnect_oM2S[0];
-	assign cpu1Memory_M2S = AXISoCQuadCoreModule_L209F39L212T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L213F53L216T14_Object[221:0] = cpu1Interconnect_oM2S[1];
-	assign cpu1AutoIncrementCounter_M2S = AXISoCQuadCoreModule_L213F53L216T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L217F54L220T14_Object[221:0] = cpu1Interconnect_oM2S[2];
-	assign AXISoCQuadCoreModule_L217F54L220T14_Object[254:222] = AXI4AutoDecrementRegisterModuleInputs_Reg;
-	assign cpu1AutoDecrementRegister_Reg = AXISoCQuadCoreModule_L217F54L220T14_Object[254:222];
-	assign cpu1AutoDecrementRegister_M2S = AXISoCQuadCoreModule_L217F54L220T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L221F42L225T14_Object[221:0] = cpu1Interconnect_oM2S[3];
-	assign AXISoCQuadCoreModule_L221F42L225T14_Object[295:222] = ioInterconnect_oS2M[1];
-	assign cpu1IOGateway_iS2M = AXISoCQuadCoreModule_L221F42L225T14_Object[295:222];
-	assign cpu1IOGateway_iM2S = AXISoCQuadCoreModule_L221F42L225T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L226F45L238T14_Object[443:0] = {
+	assign cpu0Interconnect_iS2M[4] = AXISoCQuadCoreModule_L188F45L202T14_Object[591:518];
+	assign cpu0Interconnect_iS2M[3] = AXISoCQuadCoreModule_L188F45L202T14_Object[517:444];
+	assign cpu0Interconnect_iS2M[2] = AXISoCQuadCoreModule_L188F45L202T14_Object[443:370];
+	assign cpu0Interconnect_iS2M[1] = AXISoCQuadCoreModule_L188F45L202T14_Object[369:296];
+	assign cpu0Interconnect_iS2M[0] = AXISoCQuadCoreModule_L188F45L202T14_Object[295:222];
+	assign cpu0Interconnect_iM2S[0] = AXISoCQuadCoreModule_L188F45L202T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L208F28T39_Index = extReset[1];
+	assign AXISoCQuadCoreModule_L205F33L209T14_Object[0] = AXISoCQuadCoreModule_L208F28T39_Index;
+	assign AXISoCQuadCoreModule_L205F33L209T14_Object[74:1] = cpu1Interconnect_oS2M[0];
+	assign CPU1_S2M = AXISoCQuadCoreModule_L205F33L209T14_Object[74:1];
+	assign CPU1_ExtReset = AXISoCQuadCoreModule_L205F33L209T14_Object[0];
+	assign AXISoCQuadCoreModule_L210F39L213T14_Object[221:0] = cpu1Interconnect_oM2S[0];
+	assign cpu1Memory_M2S = AXISoCQuadCoreModule_L210F39L213T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L214F53L217T14_Object[221:0] = cpu1Interconnect_oM2S[1];
+	assign cpu1AutoIncrementCounter_M2S = AXISoCQuadCoreModule_L214F53L217T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L218F54L221T14_Object[221:0] = cpu1Interconnect_oM2S[2];
+	assign AXISoCQuadCoreModule_L218F54L221T14_Object[254:222] = AXI4AutoDecrementRegisterModuleInputs_Reg;
+	assign cpu1AutoDecrementRegister_Reg = AXISoCQuadCoreModule_L218F54L221T14_Object[254:222];
+	assign cpu1AutoDecrementRegister_M2S = AXISoCQuadCoreModule_L218F54L221T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L222F42L226T14_Object[221:0] = cpu1Interconnect_oM2S[3];
+	assign AXISoCQuadCoreModule_L222F42L226T14_Object[295:222] = ioInterconnect_oS2M[1];
+	assign cpu1IOGateway_iS2M = AXISoCQuadCoreModule_L222F42L226T14_Object[295:222];
+	assign cpu1IOGateway_iM2S = AXISoCQuadCoreModule_L222F42L226T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L227F45L239T14_Object[443:0] = {
 		cpu0cpu1Gateway_oM2S,
 		CPU1_M2S
 	}
 	;
-	assign AXISoCQuadCoreModule_L226F45L238T14_Object[739:444] = {
+	assign AXISoCQuadCoreModule_L227F45L239T14_Object[739:444] = {
 		cpu1IOGateway_oS2M,
 		cpu1AutoDecrementRegister_S2M,
 		cpu1AutoIncrementCounter_S2M,
 		cpu1Memory_S2M
 	}
 	;
-	assign cpu1Interconnect_iS2M[3] = AXISoCQuadCoreModule_L226F45L238T14_Object[739:666];
-	assign cpu1Interconnect_iS2M[2] = AXISoCQuadCoreModule_L226F45L238T14_Object[665:592];
-	assign cpu1Interconnect_iS2M[1] = AXISoCQuadCoreModule_L226F45L238T14_Object[591:518];
-	assign cpu1Interconnect_iS2M[0] = AXISoCQuadCoreModule_L226F45L238T14_Object[517:444];
-	assign cpu1Interconnect_iM2S[1] = AXISoCQuadCoreModule_L226F45L238T14_Object[443:222];
-	assign cpu1Interconnect_iM2S[0] = AXISoCQuadCoreModule_L226F45L238T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L244F28T39_Index = extReset[2];
-	assign AXISoCQuadCoreModule_L241F33L245T14_Object[0] = AXISoCQuadCoreModule_L244F28T39_Index;
-	assign AXISoCQuadCoreModule_L241F33L245T14_Object[74:1] = cpu2Interconnect_oS2M[0];
-	assign CPU2_S2M = AXISoCQuadCoreModule_L241F33L245T14_Object[74:1];
-	assign CPU2_ExtReset = AXISoCQuadCoreModule_L241F33L245T14_Object[0];
-	assign AXISoCQuadCoreModule_L246F39L249T14_Object[221:0] = cpu2Interconnect_oM2S[0];
-	assign cpu2Memory_M2S = AXISoCQuadCoreModule_L246F39L249T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L250F53L253T14_Object[221:0] = cpu2Interconnect_oM2S[1];
-	assign cpu2AutoIncrementCounter_M2S = AXISoCQuadCoreModule_L250F53L253T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L254F54L257T14_Object[221:0] = cpu2Interconnect_oM2S[2];
-	assign AXISoCQuadCoreModule_L254F54L257T14_Object[254:222] = AXI4AutoDecrementRegisterModuleInputs_Reg;
-	assign cpu2AutoDecrementRegister_Reg = AXISoCQuadCoreModule_L254F54L257T14_Object[254:222];
-	assign cpu2AutoDecrementRegister_M2S = AXISoCQuadCoreModule_L254F54L257T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L258F42L262T14_Object[221:0] = cpu2Interconnect_oM2S[3];
-	assign AXISoCQuadCoreModule_L258F42L262T14_Object[295:222] = ioInterconnect_oS2M[2];
-	assign cpu2IOGateway_iS2M = AXISoCQuadCoreModule_L258F42L262T14_Object[295:222];
-	assign cpu2IOGateway_iM2S = AXISoCQuadCoreModule_L258F42L262T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L263F45L274T14_Object[221:0] = CPU2_M2S;
-	assign AXISoCQuadCoreModule_L263F45L274T14_Object[517:222] = {
+	assign cpu1Interconnect_iS2M[3] = AXISoCQuadCoreModule_L227F45L239T14_Object[739:666];
+	assign cpu1Interconnect_iS2M[2] = AXISoCQuadCoreModule_L227F45L239T14_Object[665:592];
+	assign cpu1Interconnect_iS2M[1] = AXISoCQuadCoreModule_L227F45L239T14_Object[591:518];
+	assign cpu1Interconnect_iS2M[0] = AXISoCQuadCoreModule_L227F45L239T14_Object[517:444];
+	assign cpu1Interconnect_iM2S[1] = AXISoCQuadCoreModule_L227F45L239T14_Object[443:222];
+	assign cpu1Interconnect_iM2S[0] = AXISoCQuadCoreModule_L227F45L239T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L245F28T39_Index = extReset[2];
+	assign AXISoCQuadCoreModule_L242F33L246T14_Object[0] = AXISoCQuadCoreModule_L245F28T39_Index;
+	assign AXISoCQuadCoreModule_L242F33L246T14_Object[74:1] = cpu2Interconnect_oS2M[0];
+	assign CPU2_S2M = AXISoCQuadCoreModule_L242F33L246T14_Object[74:1];
+	assign CPU2_ExtReset = AXISoCQuadCoreModule_L242F33L246T14_Object[0];
+	assign AXISoCQuadCoreModule_L247F39L250T14_Object[221:0] = cpu2Interconnect_oM2S[0];
+	assign cpu2Memory_M2S = AXISoCQuadCoreModule_L247F39L250T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L251F53L254T14_Object[221:0] = cpu2Interconnect_oM2S[1];
+	assign cpu2AutoIncrementCounter_M2S = AXISoCQuadCoreModule_L251F53L254T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L255F54L258T14_Object[221:0] = cpu2Interconnect_oM2S[2];
+	assign AXISoCQuadCoreModule_L255F54L258T14_Object[254:222] = AXI4AutoDecrementRegisterModuleInputs_Reg;
+	assign cpu2AutoDecrementRegister_Reg = AXISoCQuadCoreModule_L255F54L258T14_Object[254:222];
+	assign cpu2AutoDecrementRegister_M2S = AXISoCQuadCoreModule_L255F54L258T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L259F42L263T14_Object[221:0] = cpu2Interconnect_oM2S[3];
+	assign AXISoCQuadCoreModule_L259F42L263T14_Object[295:222] = ioInterconnect_oS2M[2];
+	assign cpu2IOGateway_iS2M = AXISoCQuadCoreModule_L259F42L263T14_Object[295:222];
+	assign cpu2IOGateway_iM2S = AXISoCQuadCoreModule_L259F42L263T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L264F45L275T14_Object[221:0] = CPU2_M2S;
+	assign AXISoCQuadCoreModule_L264F45L275T14_Object[517:222] = {
 		cpu2IOGateway_oS2M,
 		cpu2AutoDecrementRegister_S2M,
 		cpu2AutoIncrementCounter_S2M,
 		cpu2Memory_S2M
 	}
 	;
-	assign cpu2Interconnect_iS2M[3] = AXISoCQuadCoreModule_L263F45L274T14_Object[517:444];
-	assign cpu2Interconnect_iS2M[2] = AXISoCQuadCoreModule_L263F45L274T14_Object[443:370];
-	assign cpu2Interconnect_iS2M[1] = AXISoCQuadCoreModule_L263F45L274T14_Object[369:296];
-	assign cpu2Interconnect_iS2M[0] = AXISoCQuadCoreModule_L263F45L274T14_Object[295:222];
-	assign cpu2Interconnect_iM2S[0] = AXISoCQuadCoreModule_L263F45L274T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L280F28T39_Index = extReset[3];
-	assign AXISoCQuadCoreModule_L277F33L281T14_Object[0] = AXISoCQuadCoreModule_L280F28T39_Index;
-	assign AXISoCQuadCoreModule_L277F33L281T14_Object[74:1] = cpu3Interconnect_oS2M[0];
-	assign CPU3_S2M = AXISoCQuadCoreModule_L277F33L281T14_Object[74:1];
-	assign CPU3_ExtReset = AXISoCQuadCoreModule_L277F33L281T14_Object[0];
-	assign AXISoCQuadCoreModule_L282F39L285T14_Object[221:0] = cpu3Interconnect_oM2S[0];
-	assign cpu3Memory_M2S = AXISoCQuadCoreModule_L282F39L285T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L286F53L289T14_Object[221:0] = cpu3Interconnect_oM2S[1];
-	assign cpu3AutoIncrementCounter_M2S = AXISoCQuadCoreModule_L286F53L289T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L290F54L293T14_Object[221:0] = cpu3Interconnect_oM2S[2];
-	assign AXISoCQuadCoreModule_L290F54L293T14_Object[254:222] = AXI4AutoDecrementRegisterModuleInputs_Reg;
-	assign cpu3AutoDecrementRegister_Reg = AXISoCQuadCoreModule_L290F54L293T14_Object[254:222];
-	assign cpu3AutoDecrementRegister_M2S = AXISoCQuadCoreModule_L290F54L293T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L294F42L298T14_Object[221:0] = cpu3Interconnect_oM2S[3];
-	assign AXISoCQuadCoreModule_L294F42L298T14_Object[295:222] = ioInterconnect_oS2M[3];
-	assign cpu3IOGateway_iS2M = AXISoCQuadCoreModule_L294F42L298T14_Object[295:222];
-	assign cpu3IOGateway_iM2S = AXISoCQuadCoreModule_L294F42L298T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L299F45L310T14_Object[221:0] = CPU3_M2S;
-	assign AXISoCQuadCoreModule_L299F45L310T14_Object[517:222] = {
+	assign cpu2Interconnect_iS2M[3] = AXISoCQuadCoreModule_L264F45L275T14_Object[517:444];
+	assign cpu2Interconnect_iS2M[2] = AXISoCQuadCoreModule_L264F45L275T14_Object[443:370];
+	assign cpu2Interconnect_iS2M[1] = AXISoCQuadCoreModule_L264F45L275T14_Object[369:296];
+	assign cpu2Interconnect_iS2M[0] = AXISoCQuadCoreModule_L264F45L275T14_Object[295:222];
+	assign cpu2Interconnect_iM2S[0] = AXISoCQuadCoreModule_L264F45L275T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L281F28T39_Index = extReset[3];
+	assign AXISoCQuadCoreModule_L278F33L282T14_Object[0] = AXISoCQuadCoreModule_L281F28T39_Index;
+	assign AXISoCQuadCoreModule_L278F33L282T14_Object[74:1] = cpu3Interconnect_oS2M[0];
+	assign CPU3_S2M = AXISoCQuadCoreModule_L278F33L282T14_Object[74:1];
+	assign CPU3_ExtReset = AXISoCQuadCoreModule_L278F33L282T14_Object[0];
+	assign AXISoCQuadCoreModule_L283F39L286T14_Object[221:0] = cpu3Interconnect_oM2S[0];
+	assign cpu3Memory_M2S = AXISoCQuadCoreModule_L283F39L286T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L287F53L290T14_Object[221:0] = cpu3Interconnect_oM2S[1];
+	assign cpu3AutoIncrementCounter_M2S = AXISoCQuadCoreModule_L287F53L290T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L291F54L294T14_Object[221:0] = cpu3Interconnect_oM2S[2];
+	assign AXISoCQuadCoreModule_L291F54L294T14_Object[254:222] = AXI4AutoDecrementRegisterModuleInputs_Reg;
+	assign cpu3AutoDecrementRegister_Reg = AXISoCQuadCoreModule_L291F54L294T14_Object[254:222];
+	assign cpu3AutoDecrementRegister_M2S = AXISoCQuadCoreModule_L291F54L294T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L295F42L299T14_Object[221:0] = cpu3Interconnect_oM2S[3];
+	assign AXISoCQuadCoreModule_L295F42L299T14_Object[295:222] = ioInterconnect_oS2M[3];
+	assign cpu3IOGateway_iS2M = AXISoCQuadCoreModule_L295F42L299T14_Object[295:222];
+	assign cpu3IOGateway_iM2S = AXISoCQuadCoreModule_L295F42L299T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L300F45L311T14_Object[221:0] = CPU3_M2S;
+	assign AXISoCQuadCoreModule_L300F45L311T14_Object[517:222] = {
 		cpu3IOGateway_oS2M,
 		cpu3AutoDecrementRegister_S2M,
 		cpu3AutoIncrementCounter_S2M,
 		cpu3Memory_S2M
 	}
 	;
-	assign cpu3Interconnect_iS2M[3] = AXISoCQuadCoreModule_L299F45L310T14_Object[517:444];
-	assign cpu3Interconnect_iS2M[2] = AXISoCQuadCoreModule_L299F45L310T14_Object[443:370];
-	assign cpu3Interconnect_iS2M[1] = AXISoCQuadCoreModule_L299F45L310T14_Object[369:296];
-	assign cpu3Interconnect_iS2M[0] = AXISoCQuadCoreModule_L299F45L310T14_Object[295:222];
-	assign cpu3Interconnect_iM2S[0] = AXISoCQuadCoreModule_L299F45L310T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L313F40L316T14_Object[221:0] = ioInterconnect_oM2S[0];
-	assign AXISoCQuadCoreModule_L313F40L316T14_Object[254:222] = AXI4RegisterModuleInputs_Reg;
-	assign CPUExtReset_Reg = AXISoCQuadCoreModule_L313F40L316T14_Object[254:222];
-	assign CPUExtReset_M2S = AXISoCQuadCoreModule_L313F40L316T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L317F33L320T14_Object[221:0] = ioInterconnect_oM2S[1];
-	assign AXISoCQuadCoreModule_L317F33L320T14_Object[254:222] = AXI4RegisterModuleInputs_Reg;
-	assign Reg0_Reg = AXISoCQuadCoreModule_L317F33L320T14_Object[254:222];
-	assign Reg0_M2S = AXISoCQuadCoreModule_L317F33L320T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L321F33L324T14_Object[221:0] = ioInterconnect_oM2S[2];
-	assign AXISoCQuadCoreModule_L321F33L324T14_Object[254:222] = AXI4RegisterModuleInputs_Reg;
-	assign Reg1_Reg = AXISoCQuadCoreModule_L321F33L324T14_Object[254:222];
-	assign Reg1_M2S = AXISoCQuadCoreModule_L321F33L324T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L325F33L328T14_Object[221:0] = ioInterconnect_oM2S[3];
-	assign AXISoCQuadCoreModule_L325F33L328T14_Object[254:222] = AXI4RegisterModuleInputs_Reg;
-	assign Reg2_Reg = AXISoCQuadCoreModule_L325F33L328T14_Object[254:222];
-	assign Reg2_M2S = AXISoCQuadCoreModule_L325F33L328T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L329F33L332T14_Object[221:0] = ioInterconnect_oM2S[4];
-	assign AXISoCQuadCoreModule_L329F33L332T14_Object[254:222] = AXI4RegisterModuleInputs_Reg;
-	assign Reg3_Reg = AXISoCQuadCoreModule_L329F33L332T14_Object[254:222];
-	assign Reg3_M2S = AXISoCQuadCoreModule_L329F33L332T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L333F36L340T14_Object[221:0] = ioInterconnect_oM2S[5];
-	assign AXISoCQuadCoreModule_L333F36L340T14_Object[253:222] = {
+	assign cpu3Interconnect_iS2M[3] = AXISoCQuadCoreModule_L300F45L311T14_Object[517:444];
+	assign cpu3Interconnect_iS2M[2] = AXISoCQuadCoreModule_L300F45L311T14_Object[443:370];
+	assign cpu3Interconnect_iS2M[1] = AXISoCQuadCoreModule_L300F45L311T14_Object[369:296];
+	assign cpu3Interconnect_iS2M[0] = AXISoCQuadCoreModule_L300F45L311T14_Object[295:222];
+	assign cpu3Interconnect_iM2S[0] = AXISoCQuadCoreModule_L300F45L311T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L314F40L317T14_Object[221:0] = ioInterconnect_oM2S[0];
+	assign AXISoCQuadCoreModule_L314F40L317T14_Object[254:222] = AXI4RegisterModuleInputs_Reg;
+	assign CPUExtReset_Reg = AXISoCQuadCoreModule_L314F40L317T14_Object[254:222];
+	assign CPUExtReset_M2S = AXISoCQuadCoreModule_L314F40L317T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L318F33L321T14_Object[221:0] = ioInterconnect_oM2S[1];
+	assign AXISoCQuadCoreModule_L318F33L321T14_Object[254:222] = AXI4RegisterModuleInputs_Reg;
+	assign Reg0_Reg = AXISoCQuadCoreModule_L318F33L321T14_Object[254:222];
+	assign Reg0_M2S = AXISoCQuadCoreModule_L318F33L321T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L322F33L325T14_Object[221:0] = ioInterconnect_oM2S[2];
+	assign AXISoCQuadCoreModule_L322F33L325T14_Object[254:222] = AXI4RegisterModuleInputs_Reg;
+	assign Reg1_Reg = AXISoCQuadCoreModule_L322F33L325T14_Object[254:222];
+	assign Reg1_M2S = AXISoCQuadCoreModule_L322F33L325T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L326F33L329T14_Object[221:0] = ioInterconnect_oM2S[3];
+	assign AXISoCQuadCoreModule_L326F33L329T14_Object[254:222] = AXI4RegisterModuleInputs_Reg;
+	assign Reg2_Reg = AXISoCQuadCoreModule_L326F33L329T14_Object[254:222];
+	assign Reg2_M2S = AXISoCQuadCoreModule_L326F33L329T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L330F33L333T14_Object[221:0] = ioInterconnect_oM2S[4];
+	assign AXISoCQuadCoreModule_L330F33L333T14_Object[254:222] = AXI4RegisterModuleInputs_Reg;
+	assign Reg3_Reg = AXISoCQuadCoreModule_L330F33L333T14_Object[254:222];
+	assign Reg3_M2S = AXISoCQuadCoreModule_L330F33L333T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L334F36L341T14_Object[221:0] = ioInterconnect_oM2S[5];
+	assign AXISoCQuadCoreModule_L334F36L341T14_Object[253:222] = {
 		{31{1'b0}},
 		Inputs_iSwitch0
 	}
 	;
-	assign Switch0_Sig = AXISoCQuadCoreModule_L333F36L340T14_Object[253:222];
-	assign Switch0_M2S = AXISoCQuadCoreModule_L333F36L340T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L341F36L348T14_Object[221:0] = ioInterconnect_oM2S[6];
-	assign AXISoCQuadCoreModule_L341F36L348T14_Object[253:222] = {
+	assign Switch0_Sig = AXISoCQuadCoreModule_L334F36L341T14_Object[253:222];
+	assign Switch0_M2S = AXISoCQuadCoreModule_L334F36L341T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L342F36L349T14_Object[221:0] = ioInterconnect_oM2S[6];
+	assign AXISoCQuadCoreModule_L342F36L349T14_Object[253:222] = {
 		{31{1'b0}},
 		Inputs_iSwitch1
 	}
 	;
-	assign Switch1_Sig = AXISoCQuadCoreModule_L341F36L348T14_Object[253:222];
-	assign Switch1_M2S = AXISoCQuadCoreModule_L341F36L348T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L350F36L357T14_Object[221:0] = ioInterconnect_oM2S[7];
-	assign AXISoCQuadCoreModule_L350F36L357T14_Object[253:222] = {
-		{31{1'b0}},
-		Inputs_iButton0
+	assign Switch1_Sig = AXISoCQuadCoreModule_L342F36L349T14_Object[253:222];
+	assign Switch1_M2S = AXISoCQuadCoreModule_L342F36L349T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L350F36L364T14_Object[221:0] = ioInterconnect_oM2S[7];
+	assign AXISoCQuadCoreModule_L355F31L361T22_Enumerable[0] = Inputs_iButton0;
+	assign AXISoCQuadCoreModule_L355F31L361T22_Enumerable[1] = Inputs_iButton1;
+	assign AXISoCQuadCoreModule_L355F31L361T22_Enumerable[2] = Inputs_iButton2;
+	assign AXISoCQuadCoreModule_L355F31L361T22_Enumerable[3] = Inputs_iButton3;
+	assign AXISoCQuadCoreModule_L350F36L364T14_Object[225:222] = {
+		AXISoCQuadCoreModule_L355F31L361T22_Enumerable[3],
+		AXISoCQuadCoreModule_L355F31L361T22_Enumerable[2],
+		AXISoCQuadCoreModule_L355F31L361T22_Enumerable[1],
+		AXISoCQuadCoreModule_L355F31L361T22_Enumerable[0]
 	}
 	;
-	assign Button0_Sig = AXISoCQuadCoreModule_L350F36L357T14_Object[253:222];
-	assign Button0_M2S = AXISoCQuadCoreModule_L350F36L357T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L358F36L365T14_Object[221:0] = ioInterconnect_oM2S[8];
-	assign AXISoCQuadCoreModule_L358F36L365T14_Object[253:222] = {
-		{31{1'b0}},
-		Inputs_iButton1
-	}
-	;
-	assign Button1_Sig = AXISoCQuadCoreModule_L358F36L365T14_Object[253:222];
-	assign Button1_M2S = AXISoCQuadCoreModule_L358F36L365T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L366F36L373T14_Object[221:0] = ioInterconnect_oM2S[9];
-	assign AXISoCQuadCoreModule_L366F36L373T14_Object[253:222] = {
-		{31{1'b0}},
-		Inputs_iButton2
-	}
-	;
-	assign Button2_Sig = AXISoCQuadCoreModule_L366F36L373T14_Object[253:222];
-	assign Button2_M2S = AXISoCQuadCoreModule_L366F36L373T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L374F36L381T14_Object[221:0] = ioInterconnect_oM2S[10];
-	assign AXISoCQuadCoreModule_L374F36L381T14_Object[253:222] = {
-		{31{1'b0}},
-		Inputs_iButton3
-	}
-	;
-	assign Button3_Sig = AXISoCQuadCoreModule_L374F36L381T14_Object[253:222];
-	assign Button3_M2S = AXISoCQuadCoreModule_L374F36L381T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L382F33L386T14_Object[0] = Inputs_iRX;
-	assign AXISoCQuadCoreModule_L382F33L386T14_Object[222:1] = ioInterconnect_oM2S[11];
-	assign uart_M2S = AXISoCQuadCoreModule_L382F33L386T14_Object[222:1];
-	assign uart_iRX = AXISoCQuadCoreModule_L382F33L386T14_Object[0];
-	assign AXISoCQuadCoreModule_L388F43L410T14_Object[887:0] = {
+	assign Buttons_Sig = AXISoCQuadCoreModule_L350F36L364T14_Object[225:222];
+	assign Buttons_M2S = AXISoCQuadCoreModule_L350F36L364T14_Object[221:0];
+	assign AXISoCQuadCoreModule_L399F33L403T14_Object[0] = Inputs_iRX;
+	assign AXISoCQuadCoreModule_L399F33L403T14_Object[222:1] = ioInterconnect_oM2S[8];
+	assign uart_M2S = AXISoCQuadCoreModule_L399F33L403T14_Object[222:1];
+	assign uart_iRX = AXISoCQuadCoreModule_L399F33L403T14_Object[0];
+	assign AXISoCQuadCoreModule_L405F43L428T14_Object[887:0] = {
 		cpu3IOGateway_oM2S,
 		cpu2IOGateway_oM2S,
 		cpu1IOGateway_oM2S,
 		cpu0IOGateway_oM2S
 	}
 	;
-	assign AXISoCQuadCoreModule_L388F43L410T14_Object[1775:888] = {
+	assign AXISoCQuadCoreModule_L405F43L428T14_Object[1553:888] = {
 		uart_oS2M,
-		Button3_S2M,
-		Button2_S2M,
-		Button1_S2M,
-		Button0_S2M,
+		Buttons_S2M,
 		Switch1_S2M,
 		Switch0_S2M,
 		Reg3_S2M,
@@ -1439,86 +1317,62 @@ module AXISoCQuadCoreModule_TopLevel
 		CPUExtReset_S2M
 	}
 	;
-	assign ioInterconnect_iS2M[11] = AXISoCQuadCoreModule_L388F43L410T14_Object[1775:1702];
-	assign ioInterconnect_iS2M[10] = AXISoCQuadCoreModule_L388F43L410T14_Object[1701:1628];
-	assign ioInterconnect_iS2M[9] = AXISoCQuadCoreModule_L388F43L410T14_Object[1627:1554];
-	assign ioInterconnect_iS2M[8] = AXISoCQuadCoreModule_L388F43L410T14_Object[1553:1480];
-	assign ioInterconnect_iS2M[7] = AXISoCQuadCoreModule_L388F43L410T14_Object[1479:1406];
-	assign ioInterconnect_iS2M[6] = AXISoCQuadCoreModule_L388F43L410T14_Object[1405:1332];
-	assign ioInterconnect_iS2M[5] = AXISoCQuadCoreModule_L388F43L410T14_Object[1331:1258];
-	assign ioInterconnect_iS2M[4] = AXISoCQuadCoreModule_L388F43L410T14_Object[1257:1184];
-	assign ioInterconnect_iS2M[3] = AXISoCQuadCoreModule_L388F43L410T14_Object[1183:1110];
-	assign ioInterconnect_iS2M[2] = AXISoCQuadCoreModule_L388F43L410T14_Object[1109:1036];
-	assign ioInterconnect_iS2M[1] = AXISoCQuadCoreModule_L388F43L410T14_Object[1035:962];
-	assign ioInterconnect_iS2M[0] = AXISoCQuadCoreModule_L388F43L410T14_Object[961:888];
-	assign ioInterconnect_iM2S[3] = AXISoCQuadCoreModule_L388F43L410T14_Object[887:666];
-	assign ioInterconnect_iM2S[2] = AXISoCQuadCoreModule_L388F43L410T14_Object[665:444];
-	assign ioInterconnect_iM2S[1] = AXISoCQuadCoreModule_L388F43L410T14_Object[443:222];
-	assign ioInterconnect_iM2S[0] = AXISoCQuadCoreModule_L388F43L410T14_Object[221:0];
+	assign ioInterconnect_iS2M[8] = AXISoCQuadCoreModule_L405F43L428T14_Object[1553:1480];
+	assign ioInterconnect_iS2M[7] = AXISoCQuadCoreModule_L405F43L428T14_Object[1479:1406];
+	assign ioInterconnect_iS2M[6] = AXISoCQuadCoreModule_L405F43L428T14_Object[1405:1332];
+	assign ioInterconnect_iS2M[5] = AXISoCQuadCoreModule_L405F43L428T14_Object[1331:1258];
+	assign ioInterconnect_iS2M[4] = AXISoCQuadCoreModule_L405F43L428T14_Object[1257:1184];
+	assign ioInterconnect_iS2M[3] = AXISoCQuadCoreModule_L405F43L428T14_Object[1183:1110];
+	assign ioInterconnect_iS2M[2] = AXISoCQuadCoreModule_L405F43L428T14_Object[1109:1036];
+	assign ioInterconnect_iS2M[1] = AXISoCQuadCoreModule_L405F43L428T14_Object[1035:962];
+	assign ioInterconnect_iS2M[0] = AXISoCQuadCoreModule_L405F43L428T14_Object[961:888];
+	assign ioInterconnect_iM2S[3] = AXISoCQuadCoreModule_L405F43L428T14_Object[887:666];
+	assign ioInterconnect_iM2S[2] = AXISoCQuadCoreModule_L405F43L428T14_Object[665:444];
+	assign ioInterconnect_iM2S[1] = AXISoCQuadCoreModule_L405F43L428T14_Object[443:222];
+	assign ioInterconnect_iM2S[0] = AXISoCQuadCoreModule_L405F43L428T14_Object[221:0];
 	assign oCE = uart_oCE;
-	assign AXISoCQuadCoreModule_L413F37T66_Source = {
+	assign AXISoCQuadCoreModule_L431F37T66_Source = {
 		Reg0_outData[3],
 		Reg0_outData[2],
 		Reg0_outData[1],
 		Reg0_outData[0]
 	}
 	;
-	assign oReg0 = AXISoCQuadCoreModule_L413F37T66_Source;
-	assign AXISoCQuadCoreModule_L414F37T66_Source = {
+	assign oReg0 = AXISoCQuadCoreModule_L431F37T66_Source;
+	assign AXISoCQuadCoreModule_L432F37T66_Source = {
 		Reg1_outData[3],
 		Reg1_outData[2],
 		Reg1_outData[1],
 		Reg1_outData[0]
 	}
 	;
-	assign oReg1 = AXISoCQuadCoreModule_L414F37T66_Source;
-	assign AXISoCQuadCoreModule_L415F37T66_Source = {
+	assign oReg1 = AXISoCQuadCoreModule_L432F37T66_Source;
+	assign AXISoCQuadCoreModule_L433F37T66_Source = {
 		Reg2_outData[3],
 		Reg2_outData[2],
 		Reg2_outData[1],
 		Reg2_outData[0]
 	}
 	;
-	assign oReg2 = AXISoCQuadCoreModule_L415F37T66_Source;
-	assign AXISoCQuadCoreModule_L416F37T66_Source = {
+	assign oReg2 = AXISoCQuadCoreModule_L433F37T66_Source;
+	assign AXISoCQuadCoreModule_L434F37T66_Source = {
 		Reg3_outData[3],
 		Reg3_outData[2],
 		Reg3_outData[1],
 		Reg3_outData[0]
 	}
 	;
-	assign oReg3 = AXISoCQuadCoreModule_L416F37T66_Source;
+	assign oReg3 = AXISoCQuadCoreModule_L434F37T66_Source;
 	assign oRXValid = uart_oRXValid;
 	assign oTransmitting = uart_oTransmitting;
 	assign oTX = uart_oTX;
-	assign Button0_M2S_Button0_M2S_HardLink = Button0_M2S;
-	assign Button0_Sig_Button0_Sig_HardLink = Button0_Sig;
-	assign Button0_outData[0] = Button0_outData0_Button0_outData_HardLink;
-	assign Button0_outData[1] = Button0_outData1_Button0_outData_HardLink;
-	assign Button0_outData[2] = Button0_outData2_Button0_outData_HardLink;
-	assign Button0_outData[3] = Button0_outData3_Button0_outData_HardLink;
-	assign Button0_S2M = Button0_S2M_Button0_S2M_HardLink;
-	assign Button1_M2S_Button1_M2S_HardLink = Button1_M2S;
-	assign Button1_Sig_Button1_Sig_HardLink = Button1_Sig;
-	assign Button1_outData[0] = Button1_outData0_Button1_outData_HardLink;
-	assign Button1_outData[1] = Button1_outData1_Button1_outData_HardLink;
-	assign Button1_outData[2] = Button1_outData2_Button1_outData_HardLink;
-	assign Button1_outData[3] = Button1_outData3_Button1_outData_HardLink;
-	assign Button1_S2M = Button1_S2M_Button1_S2M_HardLink;
-	assign Button2_M2S_Button2_M2S_HardLink = Button2_M2S;
-	assign Button2_Sig_Button2_Sig_HardLink = Button2_Sig;
-	assign Button2_outData[0] = Button2_outData0_Button2_outData_HardLink;
-	assign Button2_outData[1] = Button2_outData1_Button2_outData_HardLink;
-	assign Button2_outData[2] = Button2_outData2_Button2_outData_HardLink;
-	assign Button2_outData[3] = Button2_outData3_Button2_outData_HardLink;
-	assign Button2_S2M = Button2_S2M_Button2_S2M_HardLink;
-	assign Button3_M2S_Button3_M2S_HardLink = Button3_M2S;
-	assign Button3_Sig_Button3_Sig_HardLink = Button3_Sig;
-	assign Button3_outData[0] = Button3_outData0_Button3_outData_HardLink;
-	assign Button3_outData[1] = Button3_outData1_Button3_outData_HardLink;
-	assign Button3_outData[2] = Button3_outData2_Button3_outData_HardLink;
-	assign Button3_outData[3] = Button3_outData3_Button3_outData_HardLink;
-	assign Button3_S2M = Button3_S2M_Button3_S2M_HardLink;
+	assign Buttons_M2S_Buttons_M2S_HardLink = Buttons_M2S;
+	assign Buttons_Sig_Buttons_Sig_HardLink = Buttons_Sig;
+	assign Buttons_outBuffer[0] = Buttons_outBuffer0_Buttons_outBuffer_HardLink;
+	assign Buttons_outBuffer[1] = Buttons_outBuffer1_Buttons_outBuffer_HardLink;
+	assign Buttons_outBuffer[2] = Buttons_outBuffer2_Buttons_outBuffer_HardLink;
+	assign Buttons_outBuffer[3] = Buttons_outBuffer3_Buttons_outBuffer_HardLink;
+	assign Buttons_S2M = Buttons_S2M_Buttons_S2M_HardLink;
 	assign CPU0_ExtReset_CPU0_ExtReset_HardLink = CPU0_ExtReset;
 	assign CPU0_S2M_CPU0_S2M_HardLink = CPU0_S2M;
 	assign CPU0_M2S = CPU0_M2S_CPU0_M2S_HardLink;
@@ -1677,9 +1531,6 @@ module AXISoCQuadCoreModule_TopLevel
 	assign ioInterconnect_iS2M6_ioInterconnect_iS2M_HardLink = ioInterconnect_iS2M[6];
 	assign ioInterconnect_iS2M7_ioInterconnect_iS2M_HardLink = ioInterconnect_iS2M[7];
 	assign ioInterconnect_iS2M8_ioInterconnect_iS2M_HardLink = ioInterconnect_iS2M[8];
-	assign ioInterconnect_iS2M9_ioInterconnect_iS2M_HardLink = ioInterconnect_iS2M[9];
-	assign ioInterconnect_iS2M10_ioInterconnect_iS2M_HardLink = ioInterconnect_iS2M[10];
-	assign ioInterconnect_iS2M11_ioInterconnect_iS2M_HardLink = ioInterconnect_iS2M[11];
 	assign ioInterconnect_oM2S[0] = ioInterconnect_oM2S0_ioInterconnect_oM2S_HardLink;
 	assign ioInterconnect_oM2S[1] = ioInterconnect_oM2S1_ioInterconnect_oM2S_HardLink;
 	assign ioInterconnect_oM2S[2] = ioInterconnect_oM2S2_ioInterconnect_oM2S_HardLink;
@@ -1689,9 +1540,6 @@ module AXISoCQuadCoreModule_TopLevel
 	assign ioInterconnect_oM2S[6] = ioInterconnect_oM2S6_ioInterconnect_oM2S_HardLink;
 	assign ioInterconnect_oM2S[7] = ioInterconnect_oM2S7_ioInterconnect_oM2S_HardLink;
 	assign ioInterconnect_oM2S[8] = ioInterconnect_oM2S8_ioInterconnect_oM2S_HardLink;
-	assign ioInterconnect_oM2S[9] = ioInterconnect_oM2S9_ioInterconnect_oM2S_HardLink;
-	assign ioInterconnect_oM2S[10] = ioInterconnect_oM2S10_ioInterconnect_oM2S_HardLink;
-	assign ioInterconnect_oM2S[11] = ioInterconnect_oM2S11_ioInterconnect_oM2S_HardLink;
 	assign ioInterconnect_oS2M[0] = ioInterconnect_oS2M0_ioInterconnect_oS2M_HardLink;
 	assign ioInterconnect_oS2M[1] = ioInterconnect_oS2M1_ioInterconnect_oS2M_HardLink;
 	assign ioInterconnect_oS2M[2] = ioInterconnect_oS2M2_ioInterconnect_oS2M_HardLink;
