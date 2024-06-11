@@ -9,8 +9,8 @@ cpu0main:
 uartEcho:
 	li x10, 0x80000008 # reg1
 	li x11, 0x10000004 # auto decrement
-	li x12, 0x80000014 # switch0
-	li x13, 0x90000000 #uart
+	li x12, 0x80000100 # switch 0
+	li x13, 0x90000000 # uart
 	
 uartEchoCheck:	
 	lb x31, 0x1(x13)

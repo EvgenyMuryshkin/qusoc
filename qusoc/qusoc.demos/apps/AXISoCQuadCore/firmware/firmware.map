@@ -11,8 +11,8 @@ Linker script and memory map
 .text           0x0000000000000000      0xb08
                 0x0000000000000000                . = ALIGN (0x4)
  *(.text)
- .text          0x0000000000000000        0xc /tmp/cc43CrJX.o
- .text          0x000000000000000c      0x6ac /tmp/ccN1gdMV.o
+ .text          0x0000000000000000        0xc /tmp/ccozE56C.o
+ .text          0x000000000000000c      0x6ac /tmp/ccdAeLu7.o
                 0x000000000000000c                AXISoCQuadCore::CPU0::SendByte(unsigned char)
                 0x0000000000000064                AXISoCQuadCore::CPU0::SendMessage(char*)
                 0x00000000000000c0                AXISoCQuadCore::CPU0::HasData()
@@ -23,18 +23,18 @@ Linker script and memory map
                 0x0000000000000448                AXISoCQuadCore::CPU0::WriteByteAsText(unsigned char)
                 0x0000000000000494                AXISoCQuadCore::CPU0::WriteUint32AsText(unsigned long)
                 0x0000000000000508                AXISoCQuadCore::CPU0::EntryPoint()
- .text          0x00000000000006b8       0x28 /tmp/ccgIhJRT.o
+ .text          0x00000000000006b8       0x28 /tmp/cchsO8WB.o
                 0x00000000000006b8                main
  *(.text*)
  *(.rodata)
- .rodata        0x00000000000006e0      0x26b /tmp/ccN1gdMV.o
+ .rodata        0x00000000000006e0      0x26b /tmp/ccdAeLu7.o
  *(.rodata*)
  *(.srodata)
  *(.srodata*)
  *(.eh_frame)
  *fill*         0x000000000000094b        0x1 
- .eh_frame      0x000000000000094c      0x184 /tmp/ccN1gdMV.o
- .eh_frame      0x0000000000000ad0       0x38 /tmp/ccgIhJRT.o
+ .eh_frame      0x000000000000094c      0x184 /tmp/ccdAeLu7.o
+ .eh_frame      0x0000000000000ad0       0x38 /tmp/cchsO8WB.o
  *(.eh_frame*)
                 0x0000000000000b08                . = ALIGN (0x4)
                 0x0000000000000b08                _etext = .
@@ -45,12 +45,12 @@ Linker script and memory map
                 0x0000000000000b08                _sdata = .
                 0x0000000000000b08                _ram_start = .
  *(.data)
- .data          0x0000000000000b08        0x0 /tmp/cc43CrJX.o
- .data          0x0000000000000b08        0x0 /tmp/ccN1gdMV.o
- .data          0x0000000000000b08        0x0 /tmp/ccgIhJRT.o
+ .data          0x0000000000000b08        0x0 /tmp/ccozE56C.o
+ .data          0x0000000000000b08        0x0 /tmp/ccdAeLu7.o
+ .data          0x0000000000000b08        0x0 /tmp/cchsO8WB.o
  *(.data*)
  *(.sdata)
- .sdata         0x0000000000000b08        0x4 /tmp/ccN1gdMV.o
+ .sdata         0x0000000000000b08        0x4 /tmp/ccdAeLu7.o
                 0x0000000000000b08                AXISoCQuadCore::uartBytes
  *(.sdata*)
  *(.init_array)
@@ -62,9 +62,9 @@ Linker script and memory map
                 0x0000000000000b0c                . = ALIGN (0x4)
                 0x0000000000000b0c                _sbss = .
  *(.bss)
- .bss           0x0000000000000b0c        0x0 /tmp/cc43CrJX.o
- .bss           0x0000000000000b0c        0x0 /tmp/ccN1gdMV.o
- .bss           0x0000000000000b0c        0x0 /tmp/ccgIhJRT.o
+ .bss           0x0000000000000b0c        0x0 /tmp/ccozE56C.o
+ .bss           0x0000000000000b0c        0x0 /tmp/ccdAeLu7.o
+ .bss           0x0000000000000b0c        0x0 /tmp/cchsO8WB.o
  *(.bss*)
  *(.sbss)
  *(.sbss*)
@@ -75,30 +75,30 @@ Linker script and memory map
 .heap           0x0000000000000b0c        0x0
                 0x0000000000000b0c                . = ALIGN (0x4)
                 0x0000000000000b0c                _heap_start = .
-LOAD /tmp/cc43CrJX.o
-LOAD /tmp/ccN1gdMV.o
-LOAD /tmp/ccgIhJRT.o
+LOAD /tmp/ccozE56C.o
+LOAD /tmp/ccdAeLu7.o
+LOAD /tmp/cchsO8WB.o
 OUTPUT(firmware.elf elf32-littleriscv)
 
 .comment        0x0000000000000000       0x11
- .comment       0x0000000000000000       0x11 /tmp/ccN1gdMV.o
+ .comment       0x0000000000000000       0x11 /tmp/ccdAeLu7.o
                                          0x12 (size before relaxing)
- .comment       0x0000000000000011       0x12 /tmp/ccgIhJRT.o
+ .comment       0x0000000000000011       0x12 /tmp/cchsO8WB.o
 
 Cross Reference Table
 
 Symbol                                            File
-AXISoCQuadCore::CPU0::EntryPoint()                /tmp/ccN1gdMV.o
-                                                  /tmp/ccgIhJRT.o
-AXISoCQuadCore::CPU0::HasData()                   /tmp/ccN1gdMV.o
-AXISoCQuadCore::CPU0::ReadByte()                  /tmp/ccN1gdMV.o
-AXISoCQuadCore::CPU0::ReadUint32()                /tmp/ccN1gdMV.o
-AXISoCQuadCore::CPU0::ReadUint32FromText()        /tmp/ccN1gdMV.o
-AXISoCQuadCore::CPU0::SendByte(unsigned char)     /tmp/ccN1gdMV.o
-AXISoCQuadCore::CPU0::SendMessage(char*)          /tmp/ccN1gdMV.o
-AXISoCQuadCore::CPU0::Write4BitAsText(unsigned char) /tmp/ccN1gdMV.o
-AXISoCQuadCore::CPU0::WriteByteAsText(unsigned char) /tmp/ccN1gdMV.o
-AXISoCQuadCore::CPU0::WriteUint32AsText(unsigned long) /tmp/ccN1gdMV.o
-AXISoCQuadCore::uartBytes                         /tmp/ccN1gdMV.o
-main                                              /tmp/ccgIhJRT.o
-                                                  /tmp/cc43CrJX.o
+AXISoCQuadCore::CPU0::EntryPoint()                /tmp/ccdAeLu7.o
+                                                  /tmp/cchsO8WB.o
+AXISoCQuadCore::CPU0::HasData()                   /tmp/ccdAeLu7.o
+AXISoCQuadCore::CPU0::ReadByte()                  /tmp/ccdAeLu7.o
+AXISoCQuadCore::CPU0::ReadUint32()                /tmp/ccdAeLu7.o
+AXISoCQuadCore::CPU0::ReadUint32FromText()        /tmp/ccdAeLu7.o
+AXISoCQuadCore::CPU0::SendByte(unsigned char)     /tmp/ccdAeLu7.o
+AXISoCQuadCore::CPU0::SendMessage(char*)          /tmp/ccdAeLu7.o
+AXISoCQuadCore::CPU0::Write4BitAsText(unsigned char) /tmp/ccdAeLu7.o
+AXISoCQuadCore::CPU0::WriteByteAsText(unsigned char) /tmp/ccdAeLu7.o
+AXISoCQuadCore::CPU0::WriteUint32AsText(unsigned long) /tmp/ccdAeLu7.o
+AXISoCQuadCore::uartBytes                         /tmp/ccdAeLu7.o
+main                                              /tmp/cchsO8WB.o
+                                                  /tmp/ccozE56C.o

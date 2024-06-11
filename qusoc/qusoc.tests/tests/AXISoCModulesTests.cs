@@ -4,8 +4,12 @@ using QRV32.CPU;
 using Quokka.RTL;
 using Quokka.RTL.Simulator;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO.Ports;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace QuSoC.Tests
 {
@@ -111,6 +115,85 @@ namespace QuSoC.Tests
                 {
 
                 }
+            }
+        }
+
+        [TestMethod]
+        public async Task AXISoCQuadCoreModule_UpdateCPU1()
+        {
+            var cpu1Instructions = Inst.FromAsmFile("axisocquadcore_cpu1_update");
+
+            using (var mPort = new SerialPort()
+            {
+                PortName = "COM12",
+                BaudRate = 115200,
+                Parity = Parity.None,
+                DataBits = 8,
+                StopBits = StopBits.One,
+                Handshake = Handshake.None,
+                ReceivedBytesThreshold = 1
+            })
+            {
+                //mPort.DataReceived += DataReceivedHandler;
+                //mPort.ErrorReceived += ErrorReceivedHandler;
+                mPort.ReceivedBytesThreshold = 1;
+                mPort.Open();
+
+                mPort.Write(new[] { '0' }, 0, 1);
+                var hello = mPort.ReadLine();
+
+                Action<uint> writeValueWthFeedback = (value) =>
+                {
+                    var s = value.ToString("X8");
+                    var chars = s.ToArray();
+                    var feedbackBytes = new byte[8];
+
+                    for (var idx = 0; idx < chars.Length; idx++)
+                    {
+                        mPort.Write(new[] { chars[idx] }, 0, 1);
+                        while (mPort.BytesToRead == 0) { }
+                        mPort.Read(feedbackBytes, idx, 1);
+                    }
+
+                    var feedbackString = Encoding.ASCII.GetString(feedbackBytes);
+                    Assert.AreEqual(s, feedbackString);
+                    var mewLine = mPort.ReadLine();
+                };
+
+                Func<uint, uint, Task> writeData = async (addr, value) =>
+                {
+                    mPort.Write(new[] { '2' }, 0, 1);
+                    var addrPrompt = mPort.ReadLine();
+                    writeValueWthFeedback(addr);
+
+                    /*
+                    List<byte> data = new List<byte>();
+
+                    while(mPort.BytesToRead != 0)
+                        data.Add((byte)mPort.ReadByte());
+
+                    var s = Encoding.ASCII.GetString(data.ToArray());
+                    */
+
+                    var dataPrompt = mPort.ReadLine();
+
+                    writeValueWthFeedback(value);
+
+                    var doneLine = mPort.ReadLine();
+                };
+
+                // stop CPU1
+                await writeData(0x80000000, 0x00000002);
+
+                //for (var i = 0; i < cpu1Instructions.Length; i++)
+                //{
+                //    var addr = 0xF0001000 + i * 4;
+                //    var addrHex = addr.ToString("X");
+                //}
+
+                // run all CPUs
+                await writeData(0x80000000, 0x00000000);
+
             }
         }
 

@@ -93,7 +93,7 @@ module top (
   AXISoCQuadCoreModule_TopLevel AXISoCQuadCoreModule_TopLevel
   (
     .Clock (clk50),
-    .Reset (!isRunning || !locked),
+    .Reset (!isRunning || !locked || btn[0]),
     .iSwitch0(sw[0]),
     .iSwitch1(sw[1]),
     .iButton0(btn[0]),
