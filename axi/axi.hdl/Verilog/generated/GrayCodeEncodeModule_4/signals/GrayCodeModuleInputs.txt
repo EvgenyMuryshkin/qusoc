@@ -1,0 +1,2 @@
+└Root    | GrayCodeModuleInputs | [3:0] | 4 | [3:0]
+ └iValue | RTLBitArray          | [3:0] | 4 | [3:0][3:0]

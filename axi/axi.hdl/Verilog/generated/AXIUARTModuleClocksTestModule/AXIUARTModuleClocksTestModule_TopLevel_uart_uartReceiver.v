@@ -42,10 +42,10 @@ module AXIUARTModuleClocksTestModule_TopLevel_uart_uartReceiver
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F78T82_Expr = 1'b1;
-	wire UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F84T88_Expr = 1'b1;
+	wire UARTReceiverModule_L27F78T82_Expr = 1'b1;
+	wire UARTReceiverModule_L27F84T88_Expr = 1'b1;
 	wire [7: 0] UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F90T103_Expr = 8'b11111111;
-	wire UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F94T98_Expr = 1'b1;
+	wire UARTReceiverModule_L37F94T98_Expr = 1'b1;
 	wire [7: 0] UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F100T113_Expr = 8'b11111111;
 	wire Inputs_iACK;
 	wire Inputs_iCE;
@@ -104,8 +104,8 @@ module AXIUARTModuleClocksTestModule_TopLevel_uart_uartReceiver
 	assign Inputs_iRX = iRX;
 	assign iValid = UARTReceiverModule_L19F24T41_Expr;
 	assign UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F37T104_Source = {
-		UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F78T82_Expr,
-		UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F84T88_Expr,
+		UARTReceiverModule_L27F78T82_Expr,
+		UARTReceiverModule_L27F84T88_Expr,
 		UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L26F13L28T14_UARTReceiverModule_L27F90T103_Expr
 	}
 	;
@@ -116,7 +116,7 @@ module AXIUARTModuleClocksTestModule_TopLevel_uart_uartReceiver
 	;
 	assign UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F41T114_Source = {
 		Inputs_iRX,
-		UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F94T98_Expr,
+		UARTReceiverModule_L37F94T98_Expr,
 		UARTReceiverModule_L24F9L40T10_UARTReceiverModule_L30F13L39T14_UARTReceiverModule_L36F17L38T18_UARTReceiverModule_L37F100T113_Expr
 	}
 	;

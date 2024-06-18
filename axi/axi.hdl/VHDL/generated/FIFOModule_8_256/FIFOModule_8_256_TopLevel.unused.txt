@@ -1,0 +1,4 @@
+No reads:
+	addrBits
+	depth
+	width

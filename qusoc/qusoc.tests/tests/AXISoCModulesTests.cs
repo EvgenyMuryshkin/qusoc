@@ -142,7 +142,7 @@ namespace QuSoC.Tests
                 mPort.Write(new[] { '0' }, 0, 1);
                 var hello = mPort.ReadLine();
 
-                Action<uint> writeValueWthFeedback = (value) =>
+                Action<uint> writeValueWithFeedback = (value) =>
                 {
                     var s = value.ToString("X8");
                     var chars = s.ToArray();
@@ -164,20 +164,11 @@ namespace QuSoC.Tests
                 {
                     mPort.Write(new[] { '2' }, 0, 1);
                     var addrPrompt = mPort.ReadLine();
-                    writeValueWthFeedback(addr);
-
-                    /*
-                    List<byte> data = new List<byte>();
-
-                    while(mPort.BytesToRead != 0)
-                        data.Add((byte)mPort.ReadByte());
-
-                    var s = Encoding.ASCII.GetString(data.ToArray());
-                    */
+                    writeValueWithFeedback(addr);
 
                     var dataPrompt = mPort.ReadLine();
 
-                    writeValueWthFeedback(value);
+                    writeValueWithFeedback(value);
 
                     var doneLine = mPort.ReadLine();
                 };
@@ -185,11 +176,11 @@ namespace QuSoC.Tests
                 // stop CPU1
                 await writeData(0x80000000, 0x00000002);
 
-                //for (var i = 0; i < cpu1Instructions.Length; i++)
-                //{
-                //    var addr = 0xF0001000 + i * 4;
-                //    var addrHex = addr.ToString("X");
-                //}
+                for (var i = 0; i < cpu1Instructions.Length; i++)
+                {
+                    uint addr = 0xF0001000 + (uint)(i * 4);
+                    await writeData(addr, cpu1Instructions[i]);
+                }
 
                 // run all CPUs
                 await writeData(0x80000000, 0x00000000);

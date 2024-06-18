@@ -62,4 +62,30 @@ namespace axi.modules
 
         }
     }
+
+    public class FIFOModule_8_8 : FIFOModule
+    {
+        public FIFOModule_8_8() : base(8, 8) { }
+    }
+
+    public class FIFOModule_8_256 : FIFOModule
+    {
+        public FIFOModule_8_256() : base(8, 256) { }
+    }
+
+    public class FIFOModule_8_2 : FIFOModule
+    {
+        public FIFOModule_8_2() : base(8, 2) { }
+
+        public bool oIsWrapAround => State.isWrapAround;
+        public RTLBitArray oWAddr => wAddr;
+        public RTLBitArray oWAddrNext => wAddrNext;
+        public RTLBitArray oRAddr => rAddr;
+        public RTLBitArray oRAddrNext => rAddrNext;
+    }
+
+    public class GrayCodeEncodeModule_4 : GrayCodeEncodeModule
+    {
+        public GrayCodeEncodeModule_4() : base(4) {}
+    }
 }

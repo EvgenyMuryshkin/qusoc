@@ -52,6 +52,7 @@ namespace axi.modules
         internal AXI4NonBufferedSlaveModule axiSlave;
         internal UARTTransmitterModule uartTransmitter;
         internal UARTReceiverModule uartReceiver;
+        internal FIFOModule readFIFO;
 
         public AXI4UARTModule(axiSize size, int clocksPerBit)
         {
@@ -63,6 +64,7 @@ namespace axi.modules
             axiSlave = new AXI4NonBufferedSlaveModule(size);
             uartTransmitter = new UARTTransmitterModule();
             uartReceiver = new UARTReceiverModule();
+            readFIFO = new FIFOModule(8, 256);
 
             InitInputs(new AXI4UARTModuleInputs(size));
             InitState(new AXI4UARTModuleState(size, clocksPerBit));
@@ -86,7 +88,7 @@ namespace axi.modules
             {
                 iCE = State.rxCE,
                 iRX = State.rx,
-                iACK = axiSlave.outReadTXCompleting && byteAddr == 0
+                iACK = true
             });
 
             uartTransmitter.Schedule(() => new()
@@ -94,6 +96,13 @@ namespace axi.modules
                 iCE = State.txCE,
                 iValid = axiSlave.outWREADYConfirming,
                 iValue = axiSlave.outWDATA[0]
+            });
+
+            readFIFO.Schedule(() => new()
+            {
+                iWE = uartReceiver.oValid,
+                iWData = uartReceiver.oValue,
+                iRE = axiReadTransactionCompleting
             });
         }
 
@@ -103,9 +112,12 @@ namespace axi.modules
             => new RTLBitArray(
                 RTLBitArrayInitType.MSB,
                 uartTransmitter.oTransmitting ? (byte)1 : (byte)0,
-                uartReceiver.oValid ? (byte)1 : (byte)0,
-                uartReceiver.oValue
+                //readFIFO.oCanRead ? (byte)1 : (byte)0,//uartReceiver.oValid ? (byte)1 : (byte)0,
+                readFIFO.oRValid ? (byte)1 : (byte)0,
+                readFIFO.oRData//uartReceiver.oValue
             ).Resized(sizeBits);
+
+        bool axiReadTransactionCompleting => axiSlave.outReadTXCompleting && byteAddr == 0;
 
         public bool oTX => uartTransmitter.oTX;
         public bool oTransmitting => uartTransmitter.oTransmitting;

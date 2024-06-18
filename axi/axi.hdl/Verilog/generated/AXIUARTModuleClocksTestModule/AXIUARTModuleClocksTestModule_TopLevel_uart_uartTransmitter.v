@@ -43,15 +43,15 @@ module AXIUARTModuleClocksTestModule_TopLevel_uart_uartTransmitter
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [3: 0] UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L33F13L46T14_UARTTransmitterModule_L35F17L45T18_UARTTransmitterModule_L36F44T46_Expr = 4'b1010;
-	wire UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L33F13L46T14_UARTTransmitterModule_L35F17L45T18_UARTTransmitterModule_L37F21L39T22_UARTTransmitterModule_L38F50T55_Expr = 1'b0;
-	wire UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L33F13L46T14_UARTTransmitterModule_L35F17L45T18_UARTTransmitterModule_L41F21L44T22_UARTTransmitterModule_L42F72T73_Expr = 1'b1;
-	wire UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L33F13L46T14_UARTTransmitterModule_L35F17L45T18_UARTTransmitterModule_L41F21L44T22_UARTTransmitterModule_L43F86T90_Expr = 1'b1;
-	wire UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L48F13L58T14_UARTTransmitterModule_L51F21T25_Expr = 1'b1;
-	wire UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L48F13L58T14_UARTTransmitterModule_L53F21T26_Expr = 1'b0;
-	wire UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L48F13L58T14_UARTTransmitterModule_L54F21T25_Expr = 1'b1;
-	wire UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L48F13L58T14_UARTTransmitterModule_L56F42T46_Expr = 1'b1;
-	wire UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L48F13L58T14_UARTTransmitterModule_L57F39T40_Expr = 1'b0;
+	wire [3: 0] UARTTransmitterModule_L36F44T46_Expr = 4'b1010;
+	wire UARTTransmitterModule_L38F50T55_Expr = 1'b0;
+	wire UARTTransmitterModule_L42F72T73_Expr = 1'b1;
+	wire UARTTransmitterModule_L43F86T90_Expr = 1'b1;
+	wire UARTTransmitterModule_L51F21T25_Expr = 1'b1;
+	wire UARTTransmitterModule_L53F21T26_Expr = 1'b0;
+	wire UARTTransmitterModule_L54F21T25_Expr = 1'b1;
+	wire UARTTransmitterModule_L56F42T46_Expr = 1'b1;
+	wire UARTTransmitterModule_L57F39T40_Expr = 1'b0;
 	wire Inputs_iCE;
 	wire Inputs_iValid;
 	wire [7: 0] Inputs_iValue;
@@ -101,7 +101,7 @@ module AXIUARTModuleClocksTestModule_TopLevel_uart_uartTransmitter
 			begin
 				if ((UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L33F13L46T14_UARTTransmitterModule_L35F17L45T18_UARTTransmitterModule_L36F25T46_Expr == 1))
 				begin
-					NextState_transmitting = UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L33F13L46T14_UARTTransmitterModule_L35F17L45T18_UARTTransmitterModule_L37F21L39T22_UARTTransmitterModule_L38F50T55_Expr;
+					NextState_transmitting = UARTTransmitterModule_L38F50T55_Expr;
 				end
 				else
 				begin
@@ -113,10 +113,10 @@ module AXIUARTModuleClocksTestModule_TopLevel_uart_uartTransmitter
 		else if ((Inputs_iValid == 1))
 		begin
 			NextState_txValue = UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L48F13L58T14_UARTTransmitterModule_L49F37L55T18_Source;
-			NextState_transmitting = UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L48F13L58T14_UARTTransmitterModule_L56F42T46_Expr;
+			NextState_transmitting = UARTTransmitterModule_L56F42T46_Expr;
 			NextState_txCounter = {
 				{7{1'b0}},
-				UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L48F13L58T14_UARTTransmitterModule_L57F39T40_Expr
+				UARTTransmitterModule_L57F39T40_Expr
 			}
 			;
 		end
@@ -128,7 +128,7 @@ module AXIUARTModuleClocksTestModule_TopLevel_uart_uartTransmitter
 	;
 	assign UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L33F13L46T14_UARTTransmitterModule_L35F17L45T18_UARTTransmitterModule_L36F25T46_ExprRhs = {
 		{5{1'b0}},
-		UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L33F13L46T14_UARTTransmitterModule_L35F17L45T18_UARTTransmitterModule_L36F44T46_Expr
+		UARTTransmitterModule_L36F44T46_Expr
 	}
 	;
 	assign UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L33F13L46T14_UARTTransmitterModule_L35F17L45T18_UARTTransmitterModule_L41F21L44T22_UARTTransmitterModule_L42F54T73_Expr_1 = {
@@ -138,7 +138,7 @@ module AXIUARTModuleClocksTestModule_TopLevel_uart_uartTransmitter
 	;
 	assign UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L33F13L46T14_UARTTransmitterModule_L35F17L45T18_UARTTransmitterModule_L41F21L44T22_UARTTransmitterModule_L42F54T73_Expr_2 = {
 		{9{1'b0}},
-		UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L33F13L46T14_UARTTransmitterModule_L35F17L45T18_UARTTransmitterModule_L41F21L44T22_UARTTransmitterModule_L42F72T73_Expr
+		UARTTransmitterModule_L42F72T73_Expr
 	}
 	;
 	assign Inputs_iCE = iCE;
@@ -146,15 +146,15 @@ module AXIUARTModuleClocksTestModule_TopLevel_uart_uartTransmitter
 	assign Inputs_iValue = iValue;
 	assign UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L33F13L46T14_UARTTransmitterModule_L35F17L45T18_UARTTransmitterModule_L41F21L44T22_UARTTransmitterModule_L42F47T74_Cast = UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L33F13L46T14_UARTTransmitterModule_L35F17L45T18_UARTTransmitterModule_L41F21L44T22_UARTTransmitterModule_L42F54T73_Expr[7:0];
 	assign UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L33F13L46T14_UARTTransmitterModule_L35F17L45T18_UARTTransmitterModule_L41F21L44T22_UARTTransmitterModule_L43F45T113_Source = {
-		UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L33F13L46T14_UARTTransmitterModule_L35F17L45T18_UARTTransmitterModule_L41F21L44T22_UARTTransmitterModule_L43F86T90_Expr,
+		UARTTransmitterModule_L43F86T90_Expr,
 		State_txValue[10:1]
 	}
 	;
 	assign UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L48F13L58T14_UARTTransmitterModule_L49F37L55T18_Source = {
-		UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L48F13L58T14_UARTTransmitterModule_L51F21T25_Expr,
+		UARTTransmitterModule_L51F21T25_Expr,
 		Inputs_iValue,
-		UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L48F13L58T14_UARTTransmitterModule_L53F21T26_Expr,
-		UARTTransmitterModule_L31F9L59T10_UARTTransmitterModule_L48F13L58T14_UARTTransmitterModule_L54F21T25_Expr
+		UARTTransmitterModule_L53F21T26_Expr,
+		UARTTransmitterModule_L54F21T25_Expr
 	}
 	;
 	assign oCE = Inputs_iCE;

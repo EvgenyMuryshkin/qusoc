@@ -3,7 +3,7 @@ cpu1:
 	li x10, 0x80000008 # reg1
 	li x11, 0x10000004 # auto decrement
 cpu1main:
-	li x31, 2500000
+	li x31, 4000000
 
 cpu1setCounter:
 	sw x31, 0(x11)

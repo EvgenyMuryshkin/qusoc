@@ -9,8 +9,9 @@ No reads:
 	axiSlave_outWVALID
 	size
 	sizeBits
+	State_rBufferData
 No writes:
-	AXI4UARTModule_L105F49T56_Cast
-	AXI4UARTModule_L105F59T66_Cast
-	AXI4UARTModule_L106F39T46_Cast
-	AXI4UARTModule_L106F49T56_Cast
+	AXI4UARTModule_L111F49T56_Cast
+	AXI4UARTModule_L111F59T66_Cast
+	AXI4UARTModule_L112F39T46_Cast
+	AXI4UARTModule_L112F49T56_Cast
