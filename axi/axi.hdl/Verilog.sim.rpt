@@ -1,5 +1,5 @@
 Simulator report for Verilog
-Sun Jun 16 21:47:45 2024
+Mon Jun 17 18:02:58 2024
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -45,9 +45,9 @@ applicable agreement for further details.
 +-----------------------------+--------------+
 ; Simulation Start Time       ; 0 ps         ;
 ; Simulation End Time         ; 1.0 ms       ;
-; Simulation Netlist Size     ; 98 nodes     ;
-; Simulation Coverage         ;      97.96 % ;
-; Total Number of Transitions ; 813          ;
+; Simulation Netlist Size     ; 111 nodes    ;
+; Simulation Coverage         ;      98.20 % ;
+; Total Number of Transitions ; 1247         ;
 ; Simulation Breakpoints      ; 0            ;
 ; Family                      ; Cyclone II   ;
 ; Device                      ; EP2C70F896C6 ;
@@ -95,10 +95,10 @@ Please use Quartus II to view the waveform report data.
 +-----------------------------------------------------+--------------+
 ; Type                                                ; Value        ;
 +-----------------------------------------------------+--------------+
-; Total coverage as a percentage                      ;      97.96 % ;
-; Total nodes checked                                 ; 98           ;
-; Total output ports checked                          ; 98           ;
-; Total output ports with complete 1/0-value coverage ; 96           ;
+; Total coverage as a percentage                      ;      98.20 % ;
+; Total nodes checked                                 ; 111          ;
+; Total output ports checked                          ; 111          ;
+; Total output ports with complete 1/0-value coverage ; 109          ;
 ; Total output ports with no 1/0-value coverage       ; 0            ;
 ; Total output ports with no 1-value coverage         ; 1            ;
 ; Total output ports with no 0-value coverage         ; 1            ;
@@ -106,108 +106,121 @@ Please use Quartus II to view the waveform report data.
 
 
 The following table displays output ports that toggle between 1 and 0 during simulation.
-+--------------------------------------------------------------------------------------------------------------------+
-; Complete 1/0-Value Coverage                                                                                        ;
-+------------------------------------------------+------------------------------------------------+------------------+
-; Node Name                                      ; Output Port Name                               ; Output Port Type ;
-+------------------------------------------------+------------------------------------------------+------------------+
-; |FIFOModule_8_2_TopLevel|State_isEmpty         ; |FIFOModule_8_2_TopLevel|State_isEmpty         ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_isFull          ; |FIFOModule_8_2_TopLevel|State_isFull          ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_rACK            ; |FIFOModule_8_2_TopLevel|State_rACK            ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_rData[0]        ; |FIFOModule_8_2_TopLevel|State_rData[0]        ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_rData[1]        ; |FIFOModule_8_2_TopLevel|State_rData[1]        ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_rData[2]        ; |FIFOModule_8_2_TopLevel|State_rData[2]        ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_rData[3]        ; |FIFOModule_8_2_TopLevel|State_rData[3]        ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_rData[4]        ; |FIFOModule_8_2_TopLevel|State_rData[4]        ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_rData[5]        ; |FIFOModule_8_2_TopLevel|State_rData[5]        ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_rData[6]        ; |FIFOModule_8_2_TopLevel|State_rData[6]        ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_rData[7]        ; |FIFOModule_8_2_TopLevel|State_rData[7]        ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_rValid          ; |FIFOModule_8_2_TopLevel|State_rValid          ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_isWrapAround    ; |FIFOModule_8_2_TopLevel|State_isWrapAround    ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_rAddr[0]        ; |FIFOModule_8_2_TopLevel|State_rAddr[0]        ; regout           ;
-; |FIFOModule_8_2_TopLevel|Add0~0                ; |FIFOModule_8_2_TopLevel|Add0~0                ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_rAddr[1]        ; |FIFOModule_8_2_TopLevel|State_rAddr[1]        ; regout           ;
-; |FIFOModule_8_2_TopLevel|Add0~1                ; |FIFOModule_8_2_TopLevel|Add0~1                ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_wAddr[0]        ; |FIFOModule_8_2_TopLevel|State_wAddr[0]        ; regout           ;
-; |FIFOModule_8_2_TopLevel|Add1~0                ; |FIFOModule_8_2_TopLevel|Add1~0                ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_wAddr[1]        ; |FIFOModule_8_2_TopLevel|State_wAddr[1]        ; regout           ;
-; |FIFOModule_8_2_TopLevel|Add1~1                ; |FIFOModule_8_2_TopLevel|Add1~1                ; combout          ;
-; |FIFOModule_8_2_TopLevel|Equal0~0              ; |FIFOModule_8_2_TopLevel|Equal0~0              ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_isEmpty~0       ; |FIFOModule_8_2_TopLevel|State_isEmpty~0       ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_isFull~0        ; |FIFOModule_8_2_TopLevel|State_isFull~0        ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_rACK~0          ; |FIFOModule_8_2_TopLevel|State_rACK~0          ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_buffer~0        ; |FIFOModule_8_2_TopLevel|State_buffer~0        ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_buffer~16       ; |FIFOModule_8_2_TopLevel|State_buffer~16       ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_buffer~9        ; |FIFOModule_8_2_TopLevel|State_buffer~9        ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_buffer~1        ; |FIFOModule_8_2_TopLevel|State_buffer~1        ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_buffer~17       ; |FIFOModule_8_2_TopLevel|State_buffer~17       ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_buffer~10       ; |FIFOModule_8_2_TopLevel|State_buffer~10       ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_buffer~2        ; |FIFOModule_8_2_TopLevel|State_buffer~2        ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_buffer~18       ; |FIFOModule_8_2_TopLevel|State_buffer~18       ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_buffer~11       ; |FIFOModule_8_2_TopLevel|State_buffer~11       ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_buffer~3        ; |FIFOModule_8_2_TopLevel|State_buffer~3        ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_buffer~19       ; |FIFOModule_8_2_TopLevel|State_buffer~19       ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_buffer~12       ; |FIFOModule_8_2_TopLevel|State_buffer~12       ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_buffer~4        ; |FIFOModule_8_2_TopLevel|State_buffer~4        ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_buffer~20       ; |FIFOModule_8_2_TopLevel|State_buffer~20       ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_buffer~13       ; |FIFOModule_8_2_TopLevel|State_buffer~13       ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_buffer~5        ; |FIFOModule_8_2_TopLevel|State_buffer~5        ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_buffer~21       ; |FIFOModule_8_2_TopLevel|State_buffer~21       ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_buffer~14       ; |FIFOModule_8_2_TopLevel|State_buffer~14       ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_buffer~6        ; |FIFOModule_8_2_TopLevel|State_buffer~6        ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_buffer~22       ; |FIFOModule_8_2_TopLevel|State_buffer~22       ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_buffer~15       ; |FIFOModule_8_2_TopLevel|State_buffer~15       ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_buffer~7        ; |FIFOModule_8_2_TopLevel|State_buffer~7        ; regout           ;
-; |FIFOModule_8_2_TopLevel|State_buffer~23       ; |FIFOModule_8_2_TopLevel|State_buffer~23       ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_rValid~0        ; |FIFOModule_8_2_TopLevel|State_rValid~0        ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_isWrapAround~0  ; |FIFOModule_8_2_TopLevel|State_isWrapAround~0  ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_rAddr~0         ; |FIFOModule_8_2_TopLevel|State_rAddr~0         ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_rAddr~1         ; |FIFOModule_8_2_TopLevel|State_rAddr~1         ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_wAddr~0         ; |FIFOModule_8_2_TopLevel|State_wAddr~0         ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_wAddr~1         ; |FIFOModule_8_2_TopLevel|State_wAddr~1         ; combout          ;
-; |FIFOModule_8_2_TopLevel|Add1~2                ; |FIFOModule_8_2_TopLevel|Add1~2                ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_buffer~24       ; |FIFOModule_8_2_TopLevel|State_buffer~24       ; combout          ;
-; |FIFOModule_8_2_TopLevel|oIsEmpty              ; |FIFOModule_8_2_TopLevel|oIsEmpty              ; padio            ;
-; |FIFOModule_8_2_TopLevel|oIsFull               ; |FIFOModule_8_2_TopLevel|oIsFull               ; padio            ;
-; |FIFOModule_8_2_TopLevel|oRACK                 ; |FIFOModule_8_2_TopLevel|oRACK                 ; padio            ;
-; |FIFOModule_8_2_TopLevel|oRData[0]             ; |FIFOModule_8_2_TopLevel|oRData[0]             ; padio            ;
-; |FIFOModule_8_2_TopLevel|oRData[1]             ; |FIFOModule_8_2_TopLevel|oRData[1]             ; padio            ;
-; |FIFOModule_8_2_TopLevel|oRData[2]             ; |FIFOModule_8_2_TopLevel|oRData[2]             ; padio            ;
-; |FIFOModule_8_2_TopLevel|oRData[3]             ; |FIFOModule_8_2_TopLevel|oRData[3]             ; padio            ;
-; |FIFOModule_8_2_TopLevel|oRData[4]             ; |FIFOModule_8_2_TopLevel|oRData[4]             ; padio            ;
-; |FIFOModule_8_2_TopLevel|oRData[5]             ; |FIFOModule_8_2_TopLevel|oRData[5]             ; padio            ;
-; |FIFOModule_8_2_TopLevel|oRData[6]             ; |FIFOModule_8_2_TopLevel|oRData[6]             ; padio            ;
-; |FIFOModule_8_2_TopLevel|oRData[7]             ; |FIFOModule_8_2_TopLevel|oRData[7]             ; padio            ;
-; |FIFOModule_8_2_TopLevel|oRValid               ; |FIFOModule_8_2_TopLevel|oRValid               ; padio            ;
-; |FIFOModule_8_2_TopLevel|oIsWrapAround         ; |FIFOModule_8_2_TopLevel|oIsWrapAround         ; padio            ;
-; |FIFOModule_8_2_TopLevel|oRAddr[0]             ; |FIFOModule_8_2_TopLevel|oRAddr[0]             ; padio            ;
-; |FIFOModule_8_2_TopLevel|oRAddrNext[0]         ; |FIFOModule_8_2_TopLevel|oRAddrNext[0]         ; padio            ;
-; |FIFOModule_8_2_TopLevel|oRAddrNext[1]         ; |FIFOModule_8_2_TopLevel|oRAddrNext[1]         ; padio            ;
-; |FIFOModule_8_2_TopLevel|oWAddr[0]             ; |FIFOModule_8_2_TopLevel|oWAddr[0]             ; padio            ;
-; |FIFOModule_8_2_TopLevel|oWAddrNext[0]         ; |FIFOModule_8_2_TopLevel|oWAddrNext[0]         ; padio            ;
-; |FIFOModule_8_2_TopLevel|oWAddrNext[1]         ; |FIFOModule_8_2_TopLevel|oWAddrNext[1]         ; padio            ;
-; |FIFOModule_8_2_TopLevel|iRE                   ; |FIFOModule_8_2_TopLevel|iRE~corein            ; combout          ;
-; |FIFOModule_8_2_TopLevel|iWE                   ; |FIFOModule_8_2_TopLevel|iWE~corein            ; combout          ;
-; |FIFOModule_8_2_TopLevel|Clock                 ; |FIFOModule_8_2_TopLevel|Clock~corein          ; combout          ;
-; |FIFOModule_8_2_TopLevel|iWData[0]             ; |FIFOModule_8_2_TopLevel|iWData[0]~corein      ; combout          ;
-; |FIFOModule_8_2_TopLevel|iWData[1]             ; |FIFOModule_8_2_TopLevel|iWData[1]~corein      ; combout          ;
-; |FIFOModule_8_2_TopLevel|iWData[2]             ; |FIFOModule_8_2_TopLevel|iWData[2]~corein      ; combout          ;
-; |FIFOModule_8_2_TopLevel|iWData[3]             ; |FIFOModule_8_2_TopLevel|iWData[3]~corein      ; combout          ;
-; |FIFOModule_8_2_TopLevel|iWData[4]             ; |FIFOModule_8_2_TopLevel|iWData[4]~corein      ; combout          ;
-; |FIFOModule_8_2_TopLevel|iWData[5]             ; |FIFOModule_8_2_TopLevel|iWData[5]~corein      ; combout          ;
-; |FIFOModule_8_2_TopLevel|iWData[6]             ; |FIFOModule_8_2_TopLevel|iWData[6]~corein      ; combout          ;
-; |FIFOModule_8_2_TopLevel|iWData[7]             ; |FIFOModule_8_2_TopLevel|iWData[7]~corein      ; combout          ;
-; |FIFOModule_8_2_TopLevel|Clock~clkctrl         ; |FIFOModule_8_2_TopLevel|Clock~clkctrl         ; outclk           ;
-; |FIFOModule_8_2_TopLevel|State_buffer~8feeder  ; |FIFOModule_8_2_TopLevel|State_buffer~8feeder  ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_buffer~0feeder  ; |FIFOModule_8_2_TopLevel|State_buffer~0feeder  ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_buffer~1feeder  ; |FIFOModule_8_2_TopLevel|State_buffer~1feeder  ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_buffer~9feeder  ; |FIFOModule_8_2_TopLevel|State_buffer~9feeder  ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_buffer~10feeder ; |FIFOModule_8_2_TopLevel|State_buffer~10feeder ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_buffer~3feeder  ; |FIFOModule_8_2_TopLevel|State_buffer~3feeder  ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_buffer~12feeder ; |FIFOModule_8_2_TopLevel|State_buffer~12feeder ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_buffer~4feeder  ; |FIFOModule_8_2_TopLevel|State_buffer~4feeder  ; combout          ;
-; |FIFOModule_8_2_TopLevel|State_buffer~13feeder ; |FIFOModule_8_2_TopLevel|State_buffer~13feeder ; combout          ;
-+------------------------------------------------+------------------------------------------------+------------------+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                                                          ;
++---------------------------------------------------------+---------------------------------------------------------+------------------+
+; Node Name                                               ; Output Port Name                                        ; Output Port Type ;
++---------------------------------------------------------+---------------------------------------------------------+------------------+
+; |FIFOModule_8_2_TopLevel|State_isEmpty                  ; |FIFOModule_8_2_TopLevel|State_isEmpty                  ; regout           ;
+; |FIFOModule_8_2_TopLevel|State_isFull                   ; |FIFOModule_8_2_TopLevel|State_isFull                   ; regout           ;
+; |FIFOModule_8_2_TopLevel|State_rACK                     ; |FIFOModule_8_2_TopLevel|State_rACK                     ; regout           ;
+; |FIFOModule_8_2_TopLevel|State_rData[0]                 ; |FIFOModule_8_2_TopLevel|State_rData[0]                 ; regout           ;
+; |FIFOModule_8_2_TopLevel|FIFOModule_L70F38T77_Ternary~0 ; |FIFOModule_8_2_TopLevel|FIFOModule_L70F38T77_Ternary~0 ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_rData[1]                 ; |FIFOModule_8_2_TopLevel|State_rData[1]                 ; regout           ;
+; |FIFOModule_8_2_TopLevel|FIFOModule_L70F38T77_Ternary~1 ; |FIFOModule_8_2_TopLevel|FIFOModule_L70F38T77_Ternary~1 ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_rData[2]                 ; |FIFOModule_8_2_TopLevel|State_rData[2]                 ; regout           ;
+; |FIFOModule_8_2_TopLevel|FIFOModule_L70F38T77_Ternary~2 ; |FIFOModule_8_2_TopLevel|FIFOModule_L70F38T77_Ternary~2 ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_rData[3]                 ; |FIFOModule_8_2_TopLevel|State_rData[3]                 ; regout           ;
+; |FIFOModule_8_2_TopLevel|FIFOModule_L70F38T77_Ternary~3 ; |FIFOModule_8_2_TopLevel|FIFOModule_L70F38T77_Ternary~3 ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_rData[4]                 ; |FIFOModule_8_2_TopLevel|State_rData[4]                 ; regout           ;
+; |FIFOModule_8_2_TopLevel|FIFOModule_L70F38T77_Ternary~4 ; |FIFOModule_8_2_TopLevel|FIFOModule_L70F38T77_Ternary~4 ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_rData[5]                 ; |FIFOModule_8_2_TopLevel|State_rData[5]                 ; regout           ;
+; |FIFOModule_8_2_TopLevel|FIFOModule_L70F38T77_Ternary~5 ; |FIFOModule_8_2_TopLevel|FIFOModule_L70F38T77_Ternary~5 ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_rData[6]                 ; |FIFOModule_8_2_TopLevel|State_rData[6]                 ; regout           ;
+; |FIFOModule_8_2_TopLevel|FIFOModule_L70F38T77_Ternary~6 ; |FIFOModule_8_2_TopLevel|FIFOModule_L70F38T77_Ternary~6 ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_rData[7]                 ; |FIFOModule_8_2_TopLevel|State_rData[7]                 ; regout           ;
+; |FIFOModule_8_2_TopLevel|FIFOModule_L70F38T77_Ternary~7 ; |FIFOModule_8_2_TopLevel|FIFOModule_L70F38T77_Ternary~7 ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_rValid                   ; |FIFOModule_8_2_TopLevel|State_rValid                   ; regout           ;
+; |FIFOModule_8_2_TopLevel|State_isWrapAround             ; |FIFOModule_8_2_TopLevel|State_isWrapAround             ; regout           ;
+; |FIFOModule_8_2_TopLevel|State_rAddr[0]                 ; |FIFOModule_8_2_TopLevel|State_rAddr[0]                 ; regout           ;
+; |FIFOModule_8_2_TopLevel|Add0~0                         ; |FIFOModule_8_2_TopLevel|Add0~0                         ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_rAddr[1]                 ; |FIFOModule_8_2_TopLevel|State_rAddr[1]                 ; regout           ;
+; |FIFOModule_8_2_TopLevel|Add0~1                         ; |FIFOModule_8_2_TopLevel|Add0~1                         ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_wAddr[0]                 ; |FIFOModule_8_2_TopLevel|State_wAddr[0]                 ; regout           ;
+; |FIFOModule_8_2_TopLevel|Add1~0                         ; |FIFOModule_8_2_TopLevel|Add1~0                         ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_wAddr[1]                 ; |FIFOModule_8_2_TopLevel|State_wAddr[1]                 ; regout           ;
+; |FIFOModule_8_2_TopLevel|Add1~1                         ; |FIFOModule_8_2_TopLevel|Add1~1                         ; combout          ;
+; |FIFOModule_8_2_TopLevel|Equal0~0                       ; |FIFOModule_8_2_TopLevel|Equal0~0                       ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_isEmpty~0                ; |FIFOModule_8_2_TopLevel|State_isEmpty~0                ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_isFull~0                 ; |FIFOModule_8_2_TopLevel|State_isFull~0                 ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_rACK~0                   ; |FIFOModule_8_2_TopLevel|State_rACK~0                   ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_buffer~0                 ; |FIFOModule_8_2_TopLevel|State_buffer~0                 ; regout           ;
+; |FIFOModule_8_2_TopLevel|State_buffer~16                ; |FIFOModule_8_2_TopLevel|State_buffer~16                ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_buffer~9                 ; |FIFOModule_8_2_TopLevel|State_buffer~9                 ; regout           ;
+; |FIFOModule_8_2_TopLevel|State_buffer~1                 ; |FIFOModule_8_2_TopLevel|State_buffer~1                 ; regout           ;
+; |FIFOModule_8_2_TopLevel|State_buffer~17                ; |FIFOModule_8_2_TopLevel|State_buffer~17                ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_buffer~10                ; |FIFOModule_8_2_TopLevel|State_buffer~10                ; regout           ;
+; |FIFOModule_8_2_TopLevel|State_buffer~2                 ; |FIFOModule_8_2_TopLevel|State_buffer~2                 ; regout           ;
+; |FIFOModule_8_2_TopLevel|State_buffer~18                ; |FIFOModule_8_2_TopLevel|State_buffer~18                ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_buffer~11                ; |FIFOModule_8_2_TopLevel|State_buffer~11                ; regout           ;
+; |FIFOModule_8_2_TopLevel|State_buffer~3                 ; |FIFOModule_8_2_TopLevel|State_buffer~3                 ; regout           ;
+; |FIFOModule_8_2_TopLevel|State_buffer~19                ; |FIFOModule_8_2_TopLevel|State_buffer~19                ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_buffer~12                ; |FIFOModule_8_2_TopLevel|State_buffer~12                ; regout           ;
+; |FIFOModule_8_2_TopLevel|State_buffer~4                 ; |FIFOModule_8_2_TopLevel|State_buffer~4                 ; regout           ;
+; |FIFOModule_8_2_TopLevel|State_buffer~20                ; |FIFOModule_8_2_TopLevel|State_buffer~20                ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_buffer~13                ; |FIFOModule_8_2_TopLevel|State_buffer~13                ; regout           ;
+; |FIFOModule_8_2_TopLevel|State_buffer~5                 ; |FIFOModule_8_2_TopLevel|State_buffer~5                 ; regout           ;
+; |FIFOModule_8_2_TopLevel|State_buffer~21                ; |FIFOModule_8_2_TopLevel|State_buffer~21                ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_buffer~14                ; |FIFOModule_8_2_TopLevel|State_buffer~14                ; regout           ;
+; |FIFOModule_8_2_TopLevel|State_buffer~6                 ; |FIFOModule_8_2_TopLevel|State_buffer~6                 ; regout           ;
+; |FIFOModule_8_2_TopLevel|State_buffer~22                ; |FIFOModule_8_2_TopLevel|State_buffer~22                ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_buffer~15                ; |FIFOModule_8_2_TopLevel|State_buffer~15                ; regout           ;
+; |FIFOModule_8_2_TopLevel|State_buffer~7                 ; |FIFOModule_8_2_TopLevel|State_buffer~7                 ; regout           ;
+; |FIFOModule_8_2_TopLevel|State_buffer~23                ; |FIFOModule_8_2_TopLevel|State_buffer~23                ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_rValid~0                 ; |FIFOModule_8_2_TopLevel|State_rValid~0                 ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_isWrapAround~0           ; |FIFOModule_8_2_TopLevel|State_isWrapAround~0           ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_rAddr~0                  ; |FIFOModule_8_2_TopLevel|State_rAddr~0                  ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_rAddr~1                  ; |FIFOModule_8_2_TopLevel|State_rAddr~1                  ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_wAddr~0                  ; |FIFOModule_8_2_TopLevel|State_wAddr~0                  ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_wAddr~1                  ; |FIFOModule_8_2_TopLevel|State_wAddr~1                  ; combout          ;
+; |FIFOModule_8_2_TopLevel|Add1~2                         ; |FIFOModule_8_2_TopLevel|Add1~2                         ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_buffer~24                ; |FIFOModule_8_2_TopLevel|State_buffer~24                ; combout          ;
+; |FIFOModule_8_2_TopLevel|oIsEmpty                       ; |FIFOModule_8_2_TopLevel|oIsEmpty                       ; padio            ;
+; |FIFOModule_8_2_TopLevel|oIsFull                        ; |FIFOModule_8_2_TopLevel|oIsFull                        ; padio            ;
+; |FIFOModule_8_2_TopLevel|oRACK                          ; |FIFOModule_8_2_TopLevel|oRACK                          ; padio            ;
+; |FIFOModule_8_2_TopLevel|oRData[0]                      ; |FIFOModule_8_2_TopLevel|oRData[0]                      ; padio            ;
+; |FIFOModule_8_2_TopLevel|oRData[1]                      ; |FIFOModule_8_2_TopLevel|oRData[1]                      ; padio            ;
+; |FIFOModule_8_2_TopLevel|oRData[2]                      ; |FIFOModule_8_2_TopLevel|oRData[2]                      ; padio            ;
+; |FIFOModule_8_2_TopLevel|oRData[3]                      ; |FIFOModule_8_2_TopLevel|oRData[3]                      ; padio            ;
+; |FIFOModule_8_2_TopLevel|oRData[4]                      ; |FIFOModule_8_2_TopLevel|oRData[4]                      ; padio            ;
+; |FIFOModule_8_2_TopLevel|oRData[5]                      ; |FIFOModule_8_2_TopLevel|oRData[5]                      ; padio            ;
+; |FIFOModule_8_2_TopLevel|oRData[6]                      ; |FIFOModule_8_2_TopLevel|oRData[6]                      ; padio            ;
+; |FIFOModule_8_2_TopLevel|oRData[7]                      ; |FIFOModule_8_2_TopLevel|oRData[7]                      ; padio            ;
+; |FIFOModule_8_2_TopLevel|oRValid                        ; |FIFOModule_8_2_TopLevel|oRValid                        ; padio            ;
+; |FIFOModule_8_2_TopLevel|oIsWrapAround                  ; |FIFOModule_8_2_TopLevel|oIsWrapAround                  ; padio            ;
+; |FIFOModule_8_2_TopLevel|oRAddr[0]                      ; |FIFOModule_8_2_TopLevel|oRAddr[0]                      ; padio            ;
+; |FIFOModule_8_2_TopLevel|oRAddrNext[0]                  ; |FIFOModule_8_2_TopLevel|oRAddrNext[0]                  ; padio            ;
+; |FIFOModule_8_2_TopLevel|oRAddrNext[1]                  ; |FIFOModule_8_2_TopLevel|oRAddrNext[1]                  ; padio            ;
+; |FIFOModule_8_2_TopLevel|oWAddr[0]                      ; |FIFOModule_8_2_TopLevel|oWAddr[0]                      ; padio            ;
+; |FIFOModule_8_2_TopLevel|oWAddrNext[0]                  ; |FIFOModule_8_2_TopLevel|oWAddrNext[0]                  ; padio            ;
+; |FIFOModule_8_2_TopLevel|oWAddrNext[1]                  ; |FIFOModule_8_2_TopLevel|oWAddrNext[1]                  ; padio            ;
+; |FIFOModule_8_2_TopLevel|iRE                            ; |FIFOModule_8_2_TopLevel|iRE~corein                     ; combout          ;
+; |FIFOModule_8_2_TopLevel|iWE                            ; |FIFOModule_8_2_TopLevel|iWE~corein                     ; combout          ;
+; |FIFOModule_8_2_TopLevel|Clock                          ; |FIFOModule_8_2_TopLevel|Clock~corein                   ; combout          ;
+; |FIFOModule_8_2_TopLevel|iWData[0]                      ; |FIFOModule_8_2_TopLevel|iWData[0]~corein               ; combout          ;
+; |FIFOModule_8_2_TopLevel|iWData[1]                      ; |FIFOModule_8_2_TopLevel|iWData[1]~corein               ; combout          ;
+; |FIFOModule_8_2_TopLevel|iWData[2]                      ; |FIFOModule_8_2_TopLevel|iWData[2]~corein               ; combout          ;
+; |FIFOModule_8_2_TopLevel|iWData[3]                      ; |FIFOModule_8_2_TopLevel|iWData[3]~corein               ; combout          ;
+; |FIFOModule_8_2_TopLevel|iWData[4]                      ; |FIFOModule_8_2_TopLevel|iWData[4]~corein               ; combout          ;
+; |FIFOModule_8_2_TopLevel|iWData[5]                      ; |FIFOModule_8_2_TopLevel|iWData[5]~corein               ; combout          ;
+; |FIFOModule_8_2_TopLevel|iWData[6]                      ; |FIFOModule_8_2_TopLevel|iWData[6]~corein               ; combout          ;
+; |FIFOModule_8_2_TopLevel|iWData[7]                      ; |FIFOModule_8_2_TopLevel|iWData[7]~corein               ; combout          ;
+; |FIFOModule_8_2_TopLevel|Clock~clkctrl                  ; |FIFOModule_8_2_TopLevel|Clock~clkctrl                  ; outclk           ;
+; |FIFOModule_8_2_TopLevel|State_buffer~0feeder           ; |FIFOModule_8_2_TopLevel|State_buffer~0feeder           ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_buffer~8feeder           ; |FIFOModule_8_2_TopLevel|State_buffer~8feeder           ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_buffer~1feeder           ; |FIFOModule_8_2_TopLevel|State_buffer~1feeder           ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_buffer~9feeder           ; |FIFOModule_8_2_TopLevel|State_buffer~9feeder           ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_buffer~2feeder           ; |FIFOModule_8_2_TopLevel|State_buffer~2feeder           ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_buffer~10feeder          ; |FIFOModule_8_2_TopLevel|State_buffer~10feeder          ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_buffer~11feeder          ; |FIFOModule_8_2_TopLevel|State_buffer~11feeder          ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_buffer~4feeder           ; |FIFOModule_8_2_TopLevel|State_buffer~4feeder           ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_buffer~12feeder          ; |FIFOModule_8_2_TopLevel|State_buffer~12feeder          ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_buffer~5feeder           ; |FIFOModule_8_2_TopLevel|State_buffer~5feeder           ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_buffer~6feeder           ; |FIFOModule_8_2_TopLevel|State_buffer~6feeder           ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_buffer~14feeder          ; |FIFOModule_8_2_TopLevel|State_buffer~14feeder          ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_buffer~7feeder           ; |FIFOModule_8_2_TopLevel|State_buffer~7feeder           ; combout          ;
+; |FIFOModule_8_2_TopLevel|State_buffer~15feeder          ; |FIFOModule_8_2_TopLevel|State_buffer~15feeder          ; combout          ;
++---------------------------------------------------------+---------------------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 1 during simulation.
@@ -243,7 +256,7 @@ The following table displays output ports that do not toggle to 0 during simulat
 Info: *******************************************************************
 Info: Running Quartus II Simulator
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Sun Jun 16 21:47:44 2024
+    Info: Processing started: Mon Jun 17 18:02:58 2024
 Info: Command: quartus_sim --read_settings_files=on --write_settings_files=off Verilog -c Verilog
 Info: Using vector source file "Waveforms/FIFOModule_8_2_ReadWrite.vwf"
 Info: Overwriting simulation input file with simulation results
@@ -251,13 +264,13 @@ Info: Overwriting simulation input file with simulation results
 Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
     Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
 Info: Simulation partitioned into 1 sub-simulations
-Info: Simulation coverage is      97.96 %
-Info: Number of transitions in simulation is 813
+Info: Simulation coverage is      98.20 %
+Info: Number of transitions in simulation is 1247
 Info: Vector file FIFOModule_8_2_ReadWrite.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
 Info: Quartus II Simulator was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 163 megabytes
-    Info: Processing ended: Sun Jun 16 21:47:45 2024
-    Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Processing ended: Mon Jun 17 18:02:58 2024
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:00
 
 

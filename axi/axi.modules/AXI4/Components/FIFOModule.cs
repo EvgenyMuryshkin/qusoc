@@ -44,6 +44,7 @@ namespace axi.modules
         private readonly int width;
         private readonly int depth;
         private readonly int addrBits;
+        private readonly RTLBitArray defaultValue;
 
         public FIFOModule(int width, int depth)
         {
@@ -55,6 +56,8 @@ namespace axi.modules
 
             InitInputs(new FIFOModuleInputs(width));
             InitState(new FIFOModuleState(width, depth, addrBits));
+
+            defaultValue = new RTLBitArray(false).Resized(width);
         }
 
         protected bool isEmptyNext => wAddrNext == rAddrNext;
@@ -64,7 +67,7 @@ namespace axi.modules
         protected RTLBitArray wAddr => State.wAddr[addrBits - 2, 0];
         protected RTLBitArray rAddr => State.rAddr[addrBits - 2, 0];
 
-        public RTLBitArray oRData => State.rData;
+        public RTLBitArray oRData => State.rACK ? State.rData : defaultValue;
         public bool oRACK => State.rACK;
 
         public bool oIsEmpty => State.isEmpty;

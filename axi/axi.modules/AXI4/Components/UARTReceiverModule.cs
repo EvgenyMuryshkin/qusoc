@@ -22,7 +22,7 @@ namespace axi.modules
 
         protected override void OnStage()
         {
-            if (Inputs.iACK)
+            if (Inputs.iACK && iValid)
             {
                 NextState.rxValue = new RTLBitArray(RTLBitArrayInitType.MSB, true, true, byte.MaxValue);
             }

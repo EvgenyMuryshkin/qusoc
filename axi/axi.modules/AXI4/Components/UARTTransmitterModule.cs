@@ -25,6 +25,8 @@ namespace axi.modules
 
         public bool oTX => State.txValue[0];
         public bool oTransmitting => State.transmitting;
+        public bool oWillStartTransmitting => !State.transmitting && NextState.transmitting;
+
         public bool oCE => Inputs.iCE;
 
         protected override void OnStage()

@@ -52,6 +52,8 @@ module AXISoCQuadCoreModule_TopLevel
 	wire AXI4RISCVModule_L17F32T37_Expr = 1'b0;
 	wire [32: 0] AXI4AutoDecrementRegisterModuleInputs_Reg = 33'b000000000000000000000000000000000;
 	wire [32: 0] AXI4RegisterModuleInputs_Reg = 33'b000000000000000000000000000000000;
+	wire AXI4UARTModule_L17F30T34_Expr = 1'b1;
+	wire AXI4UARTModule_L18F30T34_Expr = 1'b1;
 	wire Inputs_iButton0;
 	wire Inputs_iButton1;
 	wire Inputs_iButton2;
@@ -167,6 +169,8 @@ module AXISoCQuadCoreModule_TopLevel
 	wire [221: 0] Switches_M2S;
 	wire [1: 0] Switches_Sig;
 	wire [73: 0] Switches_S2M;
+	wire uart_iEN_RX;
+	wire uart_iEN_TX;
 	wire uart_iRX;
 	wire [221: 0] uart_M2S;
 	wire uart_oCE;
@@ -213,7 +217,7 @@ module AXISoCQuadCoreModule_TopLevel
 	wire [254: 0] AXISoCQuadCoreModule_L318F33L321T14_Object;
 	wire [223: 0] AXISoCQuadCoreModule_L322F37L333T14_Object;
 	wire [225: 0] AXISoCQuadCoreModule_L334F36L348T14_Object;
-	wire [222: 0] AXISoCQuadCoreModule_L349F33L353T14_Object;
+	wire [224: 0] AXISoCQuadCoreModule_L349F33L353T14_Object;
 	wire [1479: 0] AXISoCQuadCoreModule_L355F43L373T14_Object;
 	wire [31: 0] AXISoCQuadCoreModule_L376F37T66_Source;
 	wire [31: 0] AXISoCQuadCoreModule_L377F37T66_Source;
@@ -436,6 +440,8 @@ module AXISoCQuadCoreModule_TopLevel
 	wire [0: 0] Switches_outBuffer0_Switches_outBuffer_HardLink;
 	wire [0: 0] Switches_outBuffer1_Switches_outBuffer_HardLink;
 	wire [73: 0] Switches_S2M_Switches_S2M_HardLink;
+	wire uart_iEN_RX_uart_iEN_RX_HardLink;
+	wire uart_iEN_TX_uart_iEN_TX_HardLink;
 	wire uart_iRX_uart_iRX_HardLink;
 	wire [221: 0] uart_M2S_uart_M2S_HardLink;
 	wire uart_oCE_uart_oCE_HardLink;
@@ -1051,6 +1057,8 @@ module AXISoCQuadCoreModule_TopLevel
 		.BoardSignals_Running (BoardSignals_Running),
 		.BoardSignals_Starting (BoardSignals_Starting),
 		.BoardSignals_Started (BoardSignals_Started),
+		.iEN_RX (uart_iEN_RX_uart_iEN_RX_HardLink),
+		.iEN_TX (uart_iEN_TX_uart_iEN_TX_HardLink),
 		.iRX (uart_iRX_uart_iRX_HardLink),
 		.M2S (uart_M2S_uart_M2S_HardLink),
 		.oCE (uart_oCE_uart_oCE_HardLink),
@@ -1251,10 +1259,14 @@ module AXISoCQuadCoreModule_TopLevel
 	;
 	assign Buttons_Sig = AXISoCQuadCoreModule_L334F36L348T14_Object[225:222];
 	assign Buttons_M2S = AXISoCQuadCoreModule_L334F36L348T14_Object[221:0];
-	assign AXISoCQuadCoreModule_L349F33L353T14_Object[0] = Inputs_iRX;
-	assign AXISoCQuadCoreModule_L349F33L353T14_Object[222:1] = ioInterconnect_oM2S[7];
-	assign uart_M2S = AXISoCQuadCoreModule_L349F33L353T14_Object[222:1];
-	assign uart_iRX = AXISoCQuadCoreModule_L349F33L353T14_Object[0];
+	assign AXISoCQuadCoreModule_L349F33L353T14_Object[0] = AXI4UARTModule_L17F30T34_Expr;
+	assign AXISoCQuadCoreModule_L349F33L353T14_Object[1] = AXI4UARTModule_L18F30T34_Expr;
+	assign AXISoCQuadCoreModule_L349F33L353T14_Object[2] = Inputs_iRX;
+	assign AXISoCQuadCoreModule_L349F33L353T14_Object[224:3] = ioInterconnect_oM2S[7];
+	assign uart_M2S = AXISoCQuadCoreModule_L349F33L353T14_Object[224:3];
+	assign uart_iRX = AXISoCQuadCoreModule_L349F33L353T14_Object[2];
+	assign uart_iEN_TX = AXISoCQuadCoreModule_L349F33L353T14_Object[1];
+	assign uart_iEN_RX = AXISoCQuadCoreModule_L349F33L353T14_Object[0];
 	assign AXISoCQuadCoreModule_L355F43L373T14_Object[887:0] = {
 		cpu3IOGateway_oM2S,
 		cpu2IOGateway_oM2S,
@@ -1538,6 +1550,8 @@ module AXISoCQuadCoreModule_TopLevel
 	assign Switches_outBuffer[0] = Switches_outBuffer0_Switches_outBuffer_HardLink;
 	assign Switches_outBuffer[1] = Switches_outBuffer1_Switches_outBuffer_HardLink;
 	assign Switches_S2M = Switches_S2M_Switches_S2M_HardLink;
+	assign uart_iEN_RX_uart_iEN_RX_HardLink = uart_iEN_RX;
+	assign uart_iEN_TX_uart_iEN_TX_HardLink = uart_iEN_TX;
 	assign uart_iRX_uart_iRX_HardLink = uart_iRX;
 	assign uart_M2S_uart_M2S_HardLink = uart_M2S;
 	assign uart_oCE = uart_oCE_uart_oCE_HardLink;

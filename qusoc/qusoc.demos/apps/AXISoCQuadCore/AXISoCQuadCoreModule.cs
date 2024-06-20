@@ -56,7 +56,7 @@ namespace AXISoC
         internal AXI4InSignalArrayBufferModule Switches = new AXI4InSignalArrayBufferModule(axiSize.B4, 1, 2);
         internal AXI4InSignalArrayBufferModule Buttons = new AXI4InSignalArrayBufferModule(axiSize.B4, 1, 4);
         
-        internal AXI4UARTModule uart = new AXI4UARTModule(axiSize.B4, 434);//115200
+        internal AXI4UARTModule uart = new AXI4UARTModule(axiSize.B4, 256, 434);//115200
 
         internal AXI4InteconnectModule cpu0Interconnect = new AXI4InteconnectModule(
             axiSize.B4,

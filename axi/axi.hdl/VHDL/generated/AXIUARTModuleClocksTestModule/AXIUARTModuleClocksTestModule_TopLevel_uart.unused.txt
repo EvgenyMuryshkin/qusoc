@@ -1,4 +1,5 @@
 No reads:
+	axiReadTransactionCompleting
 	axiSlave_outARREADYConfirming
 	axiSlave_outARVALID
 	axiSlave_outAWADDR
@@ -7,11 +8,18 @@ No reads:
 	axiSlave_outWriteTXCompleting
 	axiSlave_outWSTRB
 	axiSlave_outWVALID
+	receiverFIFO_oIsEmpty
+	receiverFIFO_oIsFull
+	receiverFIFO_oRACK
 	size
 	sizeBits
-	State_rBufferData
+	transmitterFIFO_oIsEmpty
+	transmitterFIFO_oIsFull
+	transmitterFIFO_oRACK
+	transmitterFIFO_oRData
+	transmitterFIFO_oRValid
 No writes:
-	AXI4UARTModule_L111F49T56_Cast
-	AXI4UARTModule_L111F59T66_Cast
-	AXI4UARTModule_L112F39T46_Cast
-	AXI4UARTModule_L112F49T56_Cast
+	AXI4UARTModule_L125F49T56_Cast
+	AXI4UARTModule_L125F59T66_Cast
+	AXI4UARTModule_L127F40T47_Cast
+	AXI4UARTModule_L127F50T57_Cast

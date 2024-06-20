@@ -6,7 +6,7 @@
 <Project Version="7" Minor="54" Path="C:/code/qusoc/qusoc/qusoc.hdl/Verilog/generated/Vivado/test.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
-    <Option Name="Id" Val="1f491de779164661a95c3a9a7672d496"/>
+    <Option Name="Id" Val="74dbf2c954264df5b22ecf778e8d0298"/>
     <Option Name="Part" Val="xc7z020clg400-1"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>
@@ -2027,6 +2027,20 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_uart_receiverFIFO.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_uart_transmitterFIFO.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_uart_uartReceiver.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -2120,6 +2134,8 @@
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/AXISoCQuadCoreModuleInputs.txt"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/CompareModuleInputs.txt"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/CPUModuleState.txt"/>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/FIFOModuleInputs.txt"/>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/FIFOModuleState.txt"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/FullDuplexMuxModuleInputs_2.txt"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/InstructionDecoderInputs.txt"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/InterconnectModuleInputs_2.txt"/>

@@ -331,6 +331,8 @@ add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoC
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_Switches_axiSlave.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_uart.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_uart_axiSlave.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_uart_receiverFIFO.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_uart_transmitterFIFO.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_uart_uartReceiver.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_uart_uartTransmitter.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/Quokka.v}
@@ -379,6 +381,8 @@ add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoC
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/AXISoCQuadCoreModuleInputs.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/CompareModuleInputs.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/CPUModuleState.txt}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/FIFOModuleInputs.txt}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/FIFOModuleState.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/FullDuplexMuxModuleInputs_2.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/InstructionDecoderInputs.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/InterconnectModuleInputs_2.txt}

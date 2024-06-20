@@ -14,6 +14,8 @@ namespace axi.modules
 
         public AXI4_M2S M2S;
         public bool iRX;
+        public bool iEN_RX = true;
+        public bool iEN_TX = true;
     }
 
     public enum uartState
@@ -52,9 +54,10 @@ namespace axi.modules
         internal AXI4NonBufferedSlaveModule axiSlave;
         internal UARTTransmitterModule uartTransmitter;
         internal UARTReceiverModule uartReceiver;
-        internal FIFOModule readFIFO;
+        internal FIFOModule transmitterFIFO;
+        internal FIFOModule receiverFIFO;
 
-        public AXI4UARTModule(axiSize size, int clocksPerBit)
+        public AXI4UARTModule(axiSize size, int depth, int clocksPerBit)
         {
             this.clocksPerBit = clocksPerBit;
             this.halfClocksPerBit = clocksPerBit / 2;
@@ -64,7 +67,8 @@ namespace axi.modules
             axiSlave = new AXI4NonBufferedSlaveModule(size);
             uartTransmitter = new UARTTransmitterModule();
             uartReceiver = new UARTReceiverModule();
-            readFIFO = new FIFOModule(8, 256);
+            receiverFIFO = new FIFOModule(8, depth);
+            transmitterFIFO = new FIFOModule(8, depth);
 
             InitInputs(new AXI4UARTModuleInputs(size));
             InitState(new AXI4UARTModuleState(size, clocksPerBit));
@@ -77,9 +81,9 @@ namespace axi.modules
             {
                 M2S = Inputs.M2S,
                 inARREADY = true,
-                inRVALID = true,
+                inRVALID = true,//receiverFIFO.oRACK,// true,
                 inAWREADY = true,
-                inWREADY = !uartTransmitter.oTransmitting,
+                inWREADY = true,//!transmitterFIFO.oIsFull,
                 inBVALID = true,
                 inRDATA = rdata,
             });
@@ -88,21 +92,28 @@ namespace axi.modules
             {
                 iCE = State.rxCE,
                 iRX = State.rx,
-                iACK = true
+                iACK = !receiverFIFO.oIsFull
             });
 
             uartTransmitter.Schedule(() => new()
             {
                 iCE = State.txCE,
-                iValid = axiSlave.outWREADYConfirming,
-                iValue = axiSlave.outWDATA[0]
+                iValid = transmitterFIFO.oRACK,
+                iValue = transmitterFIFO.oRData
             });
 
-            readFIFO.Schedule(() => new()
+            transmitterFIFO.Schedule(() => new()
+            {
+                iWE = axiSlave.outWREADYConfirming,
+                iWData = axiSlave.outWDATA[0],
+                iRE = !uartTransmitter.oTransmitting && !uartTransmitter.oWillStartTransmitting
+            });
+
+            receiverFIFO.Schedule(() => new()
             {
                 iWE = uartReceiver.oValid,
                 iWData = uartReceiver.oValue,
-                iRE = axiReadTransactionCompleting
+                iRE = !receiverFIFO.oIsEmpty && axiSlave.outARREADYConfirming && byteAddr == 0,//axiReadTransactionCompleting
             });
         }
 
@@ -113,12 +124,12 @@ namespace axi.modules
                 RTLBitArrayInitType.MSB,
                 uartTransmitter.oTransmitting ? (byte)1 : (byte)0,
                 //readFIFO.oCanRead ? (byte)1 : (byte)0,//uartReceiver.oValid ? (byte)1 : (byte)0,
-                readFIFO.oRValid ? (byte)1 : (byte)0,
-                readFIFO.oRData//uartReceiver.oValue
+                receiverFIFO.oRValid ? (byte)1 : (byte)0,
+                receiverFIFO.oRData//uartReceiver.oValue
             ).Resized(sizeBits);
 
-        bool axiReadTransactionCompleting => axiSlave.outReadTXCompleting && byteAddr == 0;
-
+        //bool axiReadTransactionCompleting => axiSlave.outReadTXCompleting && byteAddr == 0;
+        //bool axiReadTransactionCompleting => axiSlave.outARREADYConfirming && byteAddr == 0;
         public bool oTX => uartTransmitter.oTX;
         public bool oTransmitting => uartTransmitter.oTransmitting;
         public bool oCE => uartTransmitter.oCE;
@@ -161,8 +172,16 @@ namespace axi.modules
                     {
                         if (!Inputs.iRX)
                         {
-                            NextState.rxClockCounter = halfClocksPerBit;
-                            NextState.rxState = uartState.StartBit;
+                            if (halfClocksPerBit == 0)
+                            {
+                                NextState.rxState = uartState.Receiving;
+                                NextState.rxCE = true;
+                            }
+                            else
+                            {
+                                NextState.rxClockCounter = halfClocksPerBit;
+                                NextState.rxState = uartState.StartBit;
+                            }
                         }
                     }
                     break;
@@ -210,8 +229,15 @@ namespace axi.modules
 
         protected override void OnStage()
         {
-            TXLogic();
-            RXLogic();
+            if (Inputs.iEN_TX)
+            {
+                TXLogic();
+            }
+
+            if (Inputs.iEN_RX)
+            {
+                RXLogic();
+            }
         }
     }
 }

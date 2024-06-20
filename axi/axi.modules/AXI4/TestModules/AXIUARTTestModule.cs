@@ -3,10 +3,17 @@ using System;
 
 namespace axi.modules
 {
+    public class AXIUARTModuleTestModuleUARTInputs
+    {
+        public bool iRX = true;
+        public bool iEN_RX = true;
+        public bool iEN_TX = true;
+    }
+
     public class AXIUARTModuleTestModuleInputs
     {
         public AXI4MasterModuleInput Master = new AXI4MasterModuleInput(axiSize.B4);
-        public bool iRX;
+        public AXIUARTModuleTestModuleUARTInputs UART = new AXIUARTModuleTestModuleUARTInputs();
     }
 
     public class AXIUARTModuleBaseTestModule : RTLCombinationalModule<AXIUARTModuleTestModuleInputs>
@@ -14,9 +21,9 @@ namespace axi.modules
         internal AXI4UARTModule uart;
         internal AXI4MasterModule master = new AXI4MasterModule(axiSize.B4);
 
-        public AXIUARTModuleBaseTestModule(int clocksPerBit)
+        public AXIUARTModuleBaseTestModule(int depth, int clocksPerBit)
         {
-            uart = new AXI4UARTModule(axiSize.B4, clocksPerBit);
+            uart = new AXI4UARTModule(axiSize.B4, depth, clocksPerBit);
         }
 
         public bool oWACK => master.WACK;
@@ -36,7 +43,9 @@ namespace axi.modules
             uart.Schedule(() => new()
             {
                 M2S = master.M2S,
-                iRX = Inputs.iRX
+                iRX = Inputs.UART.iRX,
+                iEN_RX = Inputs.UART.iEN_RX,
+                iEN_TX = Inputs.UART.iEN_TX
             });
 
             master.Schedule(() => new AXI4MasterModuleInputs()
@@ -49,7 +58,7 @@ namespace axi.modules
 
     public class AXIUARTTestModule : AXIUARTModuleBaseTestModule
     {
-        public AXIUARTTestModule() : base(0)
+        public AXIUARTTestModule() : base(16, 0)
         {
 
         }
@@ -57,7 +66,7 @@ namespace axi.modules
 
     public class AXIUARTModuleClocksTestModule : AXIUARTModuleBaseTestModule
     {
-        public AXIUARTModuleClocksTestModule() : base(10)
+        public AXIUARTModuleClocksTestModule() : base(16, 10)
         {
 
         }
