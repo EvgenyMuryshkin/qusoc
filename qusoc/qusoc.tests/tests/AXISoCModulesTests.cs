@@ -118,11 +118,8 @@ namespace QuSoC.Tests
             }
         }
 
-        [TestMethod]
-        public async Task AXISoCQuadCoreModule_UpdateCPU1()
+        async Task UpdateCPU1(uint[] instructions)
         {
-            var cpu1Instructions = Inst.FromAsmFile("axisocquadcore_cpu1_update");
-
             using (var mPort = new SerialPort()
             {
                 PortName = "COM12",
@@ -151,40 +148,64 @@ namespace QuSoC.Tests
                     for (var idx = 0; idx < chars.Length; idx++)
                     {
                         mPort.Write(new[] { chars[idx] }, 0, 1);
-                        while (mPort.BytesToRead == 0) { }
-                        mPort.Read(feedbackBytes, idx, 1);
+                        //while (mPort.BytesToRead == 0) { }
+                        //mPort.Read(feedbackBytes, idx, 1);
                     }
 
-                    var feedbackString = Encoding.ASCII.GetString(feedbackBytes);
+                    var feedbackString = mPort.ReadLine().Trim();
                     Assert.AreEqual(s, feedbackString);
-                    var mewLine = mPort.ReadLine();
+
+                    //var feedbackString = Encoding.ASCII.GetString(feedbackBytes);
+                    //Assert.AreEqual(s, feedbackString);
+                    //var mewLine = mPort.ReadLine();
                 };
 
                 Func<uint, uint, Task> writeData = async (addr, value) =>
                 {
                     mPort.Write(new[] { '2' }, 0, 1);
-                    var addrPrompt = mPort.ReadLine();
+                    var addrPrompt = mPort.ReadLine().Trim();
                     writeValueWithFeedback(addr);
 
-                    var dataPrompt = mPort.ReadLine();
+                    var dataPrompt = mPort.ReadLine().Trim();
 
                     writeValueWithFeedback(value);
 
-                    var doneLine = mPort.ReadLine();
+                    var doneLine = mPort.ReadLine().Trim();
                 };
 
                 // stop CPU1
                 await writeData(0x80000000, 0x00000002);
 
-                for (var i = 0; i < cpu1Instructions.Length; i++)
+                for (var i = 0; i < instructions.Length; i++)
                 {
                     uint addr = 0xF0001000 + (uint)(i * 4);
-                    await writeData(addr, cpu1Instructions[i]);
+                    await writeData(addr, instructions[i]);
                 }
 
                 // run all CPUs
                 await writeData(0x80000000, 0x00000000);
 
+            }
+        }
+
+        [TestMethod]
+        public async Task AXISoCQuadCoreModule_UpdateCPU1()
+        {
+            if (!Debugger.IsAttached)
+                return;
+
+            while (true)
+            {
+                try
+                {
+                    var cpu1Instructions = Inst.FromAsmFile("axisocquadcore_cpu1_update");
+
+                    await UpdateCPU1(cpu1Instructions);
+                }
+                catch (Exception ex)
+                {
+
+                }
             }
         }
 

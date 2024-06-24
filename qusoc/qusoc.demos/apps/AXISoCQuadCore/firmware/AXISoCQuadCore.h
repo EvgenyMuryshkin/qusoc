@@ -10,6 +10,7 @@ namespace AXISoCQuadCore
 		public: 
 			static void EntryPoint();
 		private:
+		/*
 			static void SendByte(uint8_t byte);
 			static void SendMessage(char* message);
 			static bool HasData();
@@ -19,6 +20,7 @@ namespace AXISoCQuadCore
 			static void Write4BitAsText(uint8_t data);
 			static void WriteByteAsText(uint8_t data);
 			static void WriteUint32AsText(uint32_t data);
+		*/
 	};
 }
 #endif

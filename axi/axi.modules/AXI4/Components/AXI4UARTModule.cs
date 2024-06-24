@@ -122,8 +122,8 @@ namespace axi.modules
         RTLBitArray rdata 
             => new RTLBitArray(
                 RTLBitArrayInitType.MSB,
-                uartTransmitter.oTransmitting ? (byte)1 : (byte)0,
-                //readFIFO.oCanRead ? (byte)1 : (byte)0,//uartReceiver.oValid ? (byte)1 : (byte)0,
+                transmitterFIFO.oIsFull ? (byte)1 : (byte)0,
+                transmitterFIFO.oIsEmpty ? (byte)1 : (byte)0,
                 receiverFIFO.oRValid ? (byte)1 : (byte)0,
                 receiverFIFO.oRData//uartReceiver.oValue
             ).Resized(sizeBits);

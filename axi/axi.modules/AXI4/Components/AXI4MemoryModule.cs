@@ -11,14 +11,9 @@ namespace axi.modules
         public AXI4MemoryModuleInputs(axiSize size)
         {
             M2S = new AXI4_M2S(size);
-            //WDATA = new byte[AXI4Tools.Bytes(size)];
         }
 
         public AXI4_M2S M2S;
-        /*
-        public bool WE = false;
-        public byte[] WDATA = null;
-        */
     }
 
     public class AXI4MemoryModuleState
@@ -63,10 +58,6 @@ namespace axi.modules
             data.CopyTo(State.buff, 0);
         }
 
-        /*
-        public byte[] OutData => State.bytes;
-        public bool OutACK => Inputs.WE;
-        */
         public AXI4_S2M S2M => axiSlave.S2M;
 
         bool internalSameTxWrite => Inputs.M2S.W.AW.AWVALID && Inputs.M2S.W.W.WVALID;

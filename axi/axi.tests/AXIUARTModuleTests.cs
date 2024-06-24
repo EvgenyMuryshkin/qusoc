@@ -128,7 +128,7 @@ namespace axi.tests
         [TestMethod]
         public void AXIUARTModuleTest_FIFO()
         {
-            var sim = new RTLSimulator<AXIUARTTestModule, AXIUARTModuleTestModuleInputs>();
+            var sim = new RTLSimulator<AXIUARTTestModule, AXIUARTModuleTestModuleInputs>(VCDOutputPath("axiuart"));
             var topLevel = sim.TopLevel;
             var txRacks = 0;
             var txBits = new List<bool>();

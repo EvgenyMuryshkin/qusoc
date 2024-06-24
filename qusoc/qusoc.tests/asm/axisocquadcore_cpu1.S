@@ -3,7 +3,15 @@ cpu1:
 	li x10, 0x80000008 # reg1
 	li x11, 0x10000004 # auto decrement
 	li x12, 0x80000100 # switch0
-	li x13, 0x90000000 #uart
+	li x13, 0x90000000 # uart
+	li x14, 0x90000100 # pwm
+
+pwm:
+	li x30, 0
+	addi x30, x30, 1
+	sw x30, 0(x14)
+	j pwm
+
 cpu1main:
 	li x31, 50000000 # load 50M into decrement register
 	lw x30, 0(x12) # scheck switch 0

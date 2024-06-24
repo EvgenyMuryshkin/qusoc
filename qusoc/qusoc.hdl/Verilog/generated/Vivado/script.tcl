@@ -238,6 +238,7 @@ add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoC
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray0_rangeDetectors5.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray0_rangeDetectors6.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray0_rangeDetectors7.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray0_rangeDetectors8.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray1.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray1_encoder.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray1_rangeDetectors0.v}
@@ -248,6 +249,7 @@ add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoC
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray1_rangeDetectors5.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray1_rangeDetectors6.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray1_rangeDetectors7.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray1_rangeDetectors8.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray2.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray2_encoder.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray2_rangeDetectors0.v}
@@ -258,6 +260,7 @@ add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoC
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray2_rangeDetectors5.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray2_rangeDetectors6.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray2_rangeDetectors7.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray2_rangeDetectors8.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray3.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray3_encoder.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray3_rangeDetectors0.v}
@@ -268,6 +271,7 @@ add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoC
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray3_rangeDetectors5.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray3_rangeDetectors6.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray3_rangeDetectors7.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray3_rangeDetectors8.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_TransactionDetectors0.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_TransactionDetectors1.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_TransactionDetectors2.v}
@@ -285,6 +289,7 @@ add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoC
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors5.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors6.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors7.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors8.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray1.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray1_encoder.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray1_rangeDetectors0.v}
@@ -295,6 +300,7 @@ add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoC
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray1_rangeDetectors5.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray1_rangeDetectors6.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray1_rangeDetectors7.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray1_rangeDetectors8.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray2.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray2_encoder.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray2_rangeDetectors0.v}
@@ -305,6 +311,7 @@ add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoC
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray2_rangeDetectors5.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray2_rangeDetectors6.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray2_rangeDetectors7.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray2_rangeDetectors8.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray3.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray3_encoder.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray3_rangeDetectors0.v}
@@ -315,10 +322,21 @@ add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoC
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray3_rangeDetectors5.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray3_rangeDetectors6.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray3_rangeDetectors7.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray3_rangeDetectors8.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_TransactionDetectors0.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_TransactionDetectors1.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_TransactionDetectors2.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_TransactionDetectors3.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_pwm.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_pwm_axiSlave.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_pwm_pwms0.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_pwm_pwms1.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_pwm_pwms2.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_pwm_pwms3.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_pwm_pwms4.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_pwm_pwms5.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_pwm_pwms6.v}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_pwm_pwms7.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_Reg0.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_Reg0_axiSlave.v}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_Reg1.v}
@@ -356,6 +374,8 @@ add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoC
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/AXI4MemoryModuleState.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/AXI4NonBufferedSlaveModuleInputs.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/AXI4NonBufferedSlaveModuleState.txt}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/AXI4PWMModuleInputs.txt}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/AXI4PWMModuleState.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/AXI4RegisterModuleInput.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/AXI4RegisterModuleInputs.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/AXI4RegisterModuleState.txt}
@@ -387,6 +407,8 @@ add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoC
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/InstructionDecoderInputs.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/InterconnectModuleInputs_2.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/InterconnectModuleState.txt}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/PWMModuleInputs.txt}
+add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/PWMModuleState.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/RangeDetectorArrayModuleInputs.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/RangeDetectorModuleInputs.txt}
 add_files {C:/code/qusoc/qusoc/qusoc.demos/../qusoc.hdl/verilog/generated/AXISoCQuadCoreModule/signals/RegistersModuleInput.txt}

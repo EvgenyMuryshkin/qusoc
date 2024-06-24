@@ -8,7 +8,15 @@ module top (
     output wire ck_io13,
     input wire ck_io12,
     output wire ck_io11,
-    output wire ck_io10
+    output wire ck_io10,
+    output wire ck_io26,
+    output wire ck_io27,
+    output wire ck_io28,
+    output wire ck_io29,
+    output wire ck_io30,
+    output wire ck_io31,
+    output wire ck_io32,
+    output wire ck_io33
 );
 
    wire clk100;
@@ -107,6 +115,14 @@ module top (
     .oTX(ck_io13),
     .iRX(ck_io12),
     .oCE(ck_io11),
-    .oRXValid(ck_io10)
+    .oRXValid(ck_io10),
+    .oPWM0(ck_io26),
+    .oPWM1(ck_io27),
+    .oPWM2(ck_io28),
+    .oPWM3(ck_io29),
+    .oPWM4(ck_io30),
+    .oPWM5(ck_io31),
+    .oPWM6(ck_io32),
+    .oPWM7(ck_io33)
   );
 endmodule

@@ -2,14 +2,17 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "soc.h"
+#include "HardwareUART.h"
+
 namespace AXISoCQuadCore
 {
+	/*
 	volatile uint8_t* uartBytes = ((volatile uint8_t*)0x90000000);
 
 	void CPU0::SendByte(uint8_t byte)
 	{
+		while (uartBytes[3] != 0);
 		uartBytes[0] = byte;
-		while (uartBytes[2] != 0);
 	}
 
 	void CPU0::SendMessage(char* message)
@@ -136,24 +139,27 @@ namespace AXISoCQuadCore
 		WriteByteAsText(data >> 8);
 		WriteByteAsText(data);
 	}
+	*/
 
 	void CPU0::EntryPoint()
 	{
 		uint32_t counter = 0;
+		struct qusoc::HardwareUART hardwareUART;//(/*0x90000000*/);
+
 		while (true)
 		{
 			(counter++);
 			AXISoCQuadCore_SOC_Reg0 = counter;
 
-			if (HasData())
+			if (hardwareUART.HasData())
 			{
-				uint8_t readData = ReadByte();
+				uint8_t readData = hardwareUART.ReadByte();
 
 				switch (readData)
 				{
 					case '0':
 					{
-						SendMessage("Hello World!\r\n");
+						hardwareUART.SendMessage("1 - reg3, 2 - write, 3 - read\r\n");
 					}
 					break;
 					case '1':
@@ -170,41 +176,41 @@ namespace AXISoCQuadCore
 					break;
 					case '2':
 					{
-						SendMessage("Enter write address in 8-symbol hex:\r\n");
-						uint32_t addr = ReadUint32FromText();
+						hardwareUART.SendMessage("Enter write address in 8-symbol hex:\r\n");
+						uint32_t addr = hardwareUART.ReadUint32FromText();
 						if ((addr & 0x3) != 0)
 						{
-							SendMessage("Address is not 4 byte aligned:\r\n");
+							hardwareUART.SendMessage("Address is not 4 byte aligned:\r\n");
 							break;
 						}
 
-						SendMessage("Enter write data in 8-symbol hex:\r\n");
-						uint32_t data = ReadUint32FromText();
+						hardwareUART.SendMessage("Enter write data in 8-symbol hex:\r\n");
+						uint32_t data = hardwareUART.ReadUint32FromText();
 
 						volatile uint32_t* addrPtr = (uint32_t*)addr;
 						*addrPtr = data;
-						SendMessage("Done!\r\n");
+						hardwareUART.SendMessage("Done!\r\n");
 					}
 					break;
 					case '3':
 					{
-						SendMessage("Enter read address in 8-symbol hex:\r\n");
-						uint32_t addr = ReadUint32FromText();
+						hardwareUART.SendMessage("Enter read address in 8-symbol hex:\r\n");
+						uint32_t addr = hardwareUART.ReadUint32FromText();
 						if ((addr & 0x3) != 0)
 						{
-							SendMessage("Address is not 4 byte aligned:\r\n");
+							hardwareUART.SendMessage("Address is not 4 byte aligned:\r\n");
 							break;
 						}
 						volatile uint32_t* addrPtr = (uint32_t*)addr;
 						uint32_t data = *addrPtr;
-						SendMessage("0x");
-						WriteUint32AsText(data);
-						SendMessage("\r\n");
+						hardwareUART.SendMessage("0x");
+						hardwareUART.WriteUint32AsText(data);
+						hardwareUART.SendMessage("\r\n");
 					}
 					break;
 					default:
 					{
-						SendByte(readData);
+						hardwareUART.SendByte(readData);
 					}
 					break;
 				}

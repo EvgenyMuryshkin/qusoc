@@ -1,0 +1,4 @@
+└Root             | PWMModuleInputs | [64:0]  | 65 | [64:0] 
+ ├iOnClock        | UInt32          | [64:33] | 32 | [64:0][64:33]
+ ├iDurationClocks | UInt32          | [32:1]  | 32 | [64:0][32:1]
+ └iActive         | Boolean         | [0]     | 1  | [64:0][0]

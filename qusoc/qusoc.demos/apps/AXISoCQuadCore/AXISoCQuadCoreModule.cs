@@ -57,6 +57,7 @@ namespace AXISoC
         internal AXI4InSignalArrayBufferModule Buttons = new AXI4InSignalArrayBufferModule(axiSize.B4, 1, 4);
         
         internal AXI4UARTModule uart = new AXI4UARTModule(axiSize.B4, 256, 434);//115200
+        internal AXI4PWMModule pwm = new AXI4PWMModule(axiSize.B4, 8, 1_000_000);// 20ms per pwm period, 1M clock on 50MHz
 
         internal AXI4InteconnectModule cpu0Interconnect = new AXI4InteconnectModule(
             axiSize.B4,
@@ -117,8 +118,9 @@ namespace AXISoC
                 new RangeInfo(0x8000000C, 0x8000000C),// reg2
                 new RangeInfo(0x80000010, 0x80000010),// reg3
                 new RangeInfo(0x80000100, 0x80000104),// switches
-                new RangeInfo(0x80000200, 0x8000020C), // buttons
+                new RangeInfo(0x80000200, 0x8000020C),// buttons
                 new RangeInfo(0x90000000, 0x90000003),// uart
+                new RangeInfo(0x90000100, 0x90000200),// pwm,
             }
         );
 
@@ -351,7 +353,11 @@ namespace AXISoC
                 M2S = ioInterconnect.oM2S[7],
                 iRX = Inputs.iRX
             });
-            
+            pwm.Schedule(() => new()
+            { 
+                M2S = ioInterconnect.oM2S[8]
+            });
+
             ioInterconnect.Schedule(() => new ()
             {
                 iM2S = [
@@ -368,7 +374,8 @@ namespace AXISoC
                     Reg3.S2M,
                     Switches.S2M,
                     Buttons.S2M,
-                    uart.oS2M
+                    uart.oS2M,
+                    pwm.oS2M
                 ]
             });
         }
@@ -381,5 +388,7 @@ namespace AXISoC
         public bool oTransmitting => uart.oTransmitting;
         public bool oCE => uart.oCE;
         public bool oRXValid => uart.oRXValid;
+
+        public bool[] oPWM => pwm.oPWM;
     }
 }

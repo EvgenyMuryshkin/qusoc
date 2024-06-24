@@ -8,97 +8,112 @@ RAM              0x0000000000000000 0x0000000000008000 xrw
 Linker script and memory map
 
 
-.text           0x0000000000000000      0xb08
+.text           0x0000000000000000      0xcbc
                 0x0000000000000000                . = ALIGN (0x4)
  *(.text)
- .text          0x0000000000000000        0xc /tmp/ccSumXcH.o
- .text          0x000000000000000c      0x6ac /tmp/ccpzbMmN.o
-                0x000000000000000c                AXISoCQuadCore::CPU0::SendByte(unsigned char)
-                0x0000000000000064                AXISoCQuadCore::CPU0::SendMessage(char*)
-                0x00000000000000c0                AXISoCQuadCore::CPU0::HasData()
-                0x00000000000000fc                AXISoCQuadCore::CPU0::ReadByte()
-                0x000000000000012c                AXISoCQuadCore::CPU0::ReadUint32()
-                0x00000000000001b0                AXISoCQuadCore::CPU0::ReadUint32FromText()
-                0x0000000000000334                AXISoCQuadCore::CPU0::Write4BitAsText(unsigned char)
-                0x0000000000000448                AXISoCQuadCore::CPU0::WriteByteAsText(unsigned char)
-                0x0000000000000494                AXISoCQuadCore::CPU0::WriteUint32AsText(unsigned long)
-                0x0000000000000508                AXISoCQuadCore::CPU0::EntryPoint()
- .text          0x00000000000006b8       0x28 /tmp/ccJPimAT.o
-                0x00000000000006b8                main
+ .text          0x0000000000000000        0xc /tmp/ccPhcXL4.o
+ .text          0x000000000000000c      0x24c /tmp/cc0uFrzy.o
+                0x000000000000000c                AXISoCQuadCore::CPU0::EntryPoint()
+ .text          0x0000000000000258      0x5c8 /tmp/ccZ5BAo3.o
+                0x0000000000000258                qusoc::HardwareUART::HardwareUART()
+                0x0000000000000258                qusoc::HardwareUART::HardwareUART()
+                0x0000000000000284                qusoc::HardwareUART::SendByte(unsigned char)
+                0x00000000000002e0                qusoc::HardwareUART::SendMessage(char*)
+                0x0000000000000344                qusoc::HardwareUART::HasData()
+                0x0000000000000384                qusoc::HardwareUART::ReadByte()
+                0x00000000000003b8                qusoc::HardwareUART::ReadUint32()
+                0x0000000000000448                qusoc::HardwareUART::ReadUint32FromText()
+                0x00000000000005e8                qusoc::HardwareUART::Write4BitAsText(unsigned char)
+                0x0000000000000740                qusoc::HardwareUART::WriteByteAsText(unsigned char)
+                0x0000000000000798                qusoc::HardwareUART::WriteUint32AsText(unsigned long)
+ .text          0x0000000000000820       0x28 /tmp/ccQCIzky.o
+                0x0000000000000820                main
  *(.text*)
  *(.rodata)
- .rodata        0x00000000000006e0      0x26b /tmp/ccpzbMmN.o
+ .rodata        0x0000000000000848       0xc7 /tmp/cc0uFrzy.o
+ *fill*         0x000000000000090f        0x1 
+ .rodata        0x0000000000000910      0x1b8 /tmp/ccZ5BAo3.o
  *(.rodata*)
  *(.srodata)
  *(.srodata*)
  *(.eh_frame)
- *fill*         0x000000000000094b        0x1 
- .eh_frame      0x000000000000094c      0x184 /tmp/ccpzbMmN.o
- .eh_frame      0x0000000000000ad0       0x38 /tmp/ccJPimAT.o
+ .eh_frame      0x0000000000000ac8       0x34 /tmp/cc0uFrzy.o
+ .eh_frame      0x0000000000000afc      0x188 /tmp/ccZ5BAo3.o
+ .eh_frame      0x0000000000000c84       0x38 /tmp/ccQCIzky.o
  *(.eh_frame*)
-                0x0000000000000b08                . = ALIGN (0x4)
-                0x0000000000000b08                _etext = .
-                0x0000000000000b08                _sidata = _etext
+                0x0000000000000cbc                . = ALIGN (0x4)
+                0x0000000000000cbc                _etext = .
+                0x0000000000000cbc                _sidata = _etext
 
-.data           0x0000000000000b08        0x4
-                0x0000000000000b08                . = ALIGN (0x4)
-                0x0000000000000b08                _sdata = .
-                0x0000000000000b08                _ram_start = .
+.data           0x0000000000000cbc        0x0
+                0x0000000000000cbc                . = ALIGN (0x4)
+                0x0000000000000cbc                _sdata = .
+                0x0000000000000cbc                _ram_start = .
  *(.data)
- .data          0x0000000000000b08        0x0 /tmp/ccSumXcH.o
- .data          0x0000000000000b08        0x0 /tmp/ccpzbMmN.o
- .data          0x0000000000000b08        0x0 /tmp/ccJPimAT.o
+ .data          0x0000000000000cbc        0x0 /tmp/ccPhcXL4.o
+ .data          0x0000000000000cbc        0x0 /tmp/cc0uFrzy.o
+ .data          0x0000000000000cbc        0x0 /tmp/ccZ5BAo3.o
+ .data          0x0000000000000cbc        0x0 /tmp/ccQCIzky.o
  *(.data*)
  *(.sdata)
- .sdata         0x0000000000000b08        0x4 /tmp/ccpzbMmN.o
-                0x0000000000000b08                AXISoCQuadCore::uartBytes
  *(.sdata*)
  *(.init_array)
  *(.init_array*)
-                0x0000000000000b0c                . = ALIGN (0x4)
-                0x0000000000000b0c                _edata = .
+                0x0000000000000cbc                . = ALIGN (0x4)
+                0x0000000000000cbc                _edata = .
 
-.bss            0x0000000000000b0c        0x0
-                0x0000000000000b0c                . = ALIGN (0x4)
-                0x0000000000000b0c                _sbss = .
+.bss            0x0000000000000cbc        0x0
+                0x0000000000000cbc                . = ALIGN (0x4)
+                0x0000000000000cbc                _sbss = .
  *(.bss)
- .bss           0x0000000000000b0c        0x0 /tmp/ccSumXcH.o
- .bss           0x0000000000000b0c        0x0 /tmp/ccpzbMmN.o
- .bss           0x0000000000000b0c        0x0 /tmp/ccJPimAT.o
+ .bss           0x0000000000000cbc        0x0 /tmp/ccPhcXL4.o
+ .bss           0x0000000000000cbc        0x0 /tmp/cc0uFrzy.o
+ .bss           0x0000000000000cbc        0x0 /tmp/ccZ5BAo3.o
+ .bss           0x0000000000000cbc        0x0 /tmp/ccQCIzky.o
  *(.bss*)
  *(.sbss)
  *(.sbss*)
  *(COMMON)
-                0x0000000000000b0c                . = ALIGN (0x4)
-                0x0000000000000b0c                _ebss = .
+                0x0000000000000cbc                . = ALIGN (0x4)
+                0x0000000000000cbc                _ebss = .
 
-.heap           0x0000000000000b0c        0x0
-                0x0000000000000b0c                . = ALIGN (0x4)
-                0x0000000000000b0c                _heap_start = .
-LOAD /tmp/ccSumXcH.o
-LOAD /tmp/ccpzbMmN.o
-LOAD /tmp/ccJPimAT.o
+.heap           0x0000000000000cbc        0x0
+                0x0000000000000cbc                . = ALIGN (0x4)
+                0x0000000000000cbc                _heap_start = .
+LOAD /tmp/ccPhcXL4.o
+LOAD /tmp/cc0uFrzy.o
+LOAD /tmp/ccZ5BAo3.o
+LOAD /tmp/ccQCIzky.o
 OUTPUT(firmware.elf elf32-littleriscv)
 
 .comment        0x0000000000000000       0x11
- .comment       0x0000000000000000       0x11 /tmp/ccpzbMmN.o
+ .comment       0x0000000000000000       0x11 /tmp/cc0uFrzy.o
                                          0x12 (size before relaxing)
- .comment       0x0000000000000011       0x12 /tmp/ccJPimAT.o
+ .comment       0x0000000000000011       0x12 /tmp/ccZ5BAo3.o
+ .comment       0x0000000000000011       0x12 /tmp/ccQCIzky.o
 
 Cross Reference Table
 
 Symbol                                            File
-AXISoCQuadCore::CPU0::EntryPoint()                /tmp/ccpzbMmN.o
-                                                  /tmp/ccJPimAT.o
-AXISoCQuadCore::CPU0::HasData()                   /tmp/ccpzbMmN.o
-AXISoCQuadCore::CPU0::ReadByte()                  /tmp/ccpzbMmN.o
-AXISoCQuadCore::CPU0::ReadUint32()                /tmp/ccpzbMmN.o
-AXISoCQuadCore::CPU0::ReadUint32FromText()        /tmp/ccpzbMmN.o
-AXISoCQuadCore::CPU0::SendByte(unsigned char)     /tmp/ccpzbMmN.o
-AXISoCQuadCore::CPU0::SendMessage(char*)          /tmp/ccpzbMmN.o
-AXISoCQuadCore::CPU0::Write4BitAsText(unsigned char) /tmp/ccpzbMmN.o
-AXISoCQuadCore::CPU0::WriteByteAsText(unsigned char) /tmp/ccpzbMmN.o
-AXISoCQuadCore::CPU0::WriteUint32AsText(unsigned long) /tmp/ccpzbMmN.o
-AXISoCQuadCore::uartBytes                         /tmp/ccpzbMmN.o
-main                                              /tmp/ccJPimAT.o
-                                                  /tmp/ccSumXcH.o
+AXISoCQuadCore::CPU0::EntryPoint()                /tmp/cc0uFrzy.o
+                                                  /tmp/ccQCIzky.o
+main                                              /tmp/ccQCIzky.o
+                                                  /tmp/ccPhcXL4.o
+qusoc::HardwareUART::HardwareUART()               /tmp/ccZ5BAo3.o
+qusoc::HardwareUART::HardwareUART()               /tmp/ccZ5BAo3.o
+                                                  /tmp/cc0uFrzy.o
+qusoc::HardwareUART::HasData()                    /tmp/ccZ5BAo3.o
+                                                  /tmp/cc0uFrzy.o
+qusoc::HardwareUART::ReadByte()                   /tmp/ccZ5BAo3.o
+                                                  /tmp/cc0uFrzy.o
+qusoc::HardwareUART::ReadUint32()                 /tmp/ccZ5BAo3.o
+qusoc::HardwareUART::ReadUint32FromText()         /tmp/ccZ5BAo3.o
+                                                  /tmp/cc0uFrzy.o
+qusoc::HardwareUART::SendByte(unsigned char)      /tmp/ccZ5BAo3.o
+                                                  /tmp/cc0uFrzy.o
+qusoc::HardwareUART::SendMessage(char*)           /tmp/ccZ5BAo3.o
+                                                  /tmp/cc0uFrzy.o
+qusoc::HardwareUART::Write4BitAsText(unsigned char) /tmp/ccZ5BAo3.o
+qusoc::HardwareUART::WriteByteAsText(unsigned char) /tmp/ccZ5BAo3.o
+qusoc::HardwareUART::WriteUint32AsText(unsigned long) /tmp/ccZ5BAo3.o
+                                                  /tmp/cc0uFrzy.o

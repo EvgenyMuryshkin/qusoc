@@ -1,0 +1,4 @@
+└Root           | PWMModuleState | [33:0] | 34 | [33:0]
+ ├pwm           | Boolean        | [33]   | 1  | [33:0][33]
+ ├cycle         | Boolean        | [32]   | 1  | [33:0][32]
+ └clocksCounter | UInt32         | [31:0] | 32 | [33:0][31:0]
