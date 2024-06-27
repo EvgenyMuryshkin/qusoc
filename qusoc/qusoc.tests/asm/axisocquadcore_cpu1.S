@@ -7,8 +7,8 @@ cpu1:
 	li x14, 0x90000100 # pwm
 
 pwm:
-	li x30, 0
-	addi x30, x30, 1
+	li x30, 10
+	#addi x30, x30, 1
 	sw x30, 0(x14)
 	j pwm
 

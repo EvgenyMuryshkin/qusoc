@@ -90,7 +90,16 @@ namespace QuSoC
 
         void FirmwareFromCS()
         {
-            var csFiles = Directory.EnumerateFiles(SourceFolder);
+            var csFiles = Enumerable.Empty<string>();
+            
+            if (Directory.Exists(SourceFolder))
+            {
+                csFiles = Directory
+                    .EnumerateFiles(SourceFolder)
+                    .Where(f => Path.GetExtension(f).ToLower() == ".cs")
+                    ;
+            }
+
             var csFilesContent = csFiles
                 .Select(path => new FSTextFile() { Name = path, Content = File.ReadAllText(path) })
                 .ToList();
@@ -237,6 +246,32 @@ namespace QuSoC
                 .OrderBy(f => sourceFiles.IndexOf(Path.GetExtension(f).ToLower()))
                 .Select(f => Path.GetFileName(f))
                 .ToList();
+        }
+
+        public static uint[] FromFolder(string path)
+        {
+            if (!Directory.Exists(path))
+                throw new DirectoryNotFoundException(path);
+
+            var tools = new FirmwareTools(path);
+
+            // delete old firmware before making new one
+            if (File.Exists(tools.FirmwareFile))
+                File.Delete(tools.FirmwareFile);
+
+            if (File.Exists(tools.MainFile))
+            {
+                tools.FirmwareFromMainFile();
+            }
+            else
+            {
+                tools.FirmwareFromCS();
+            }
+
+            if (!File.Exists(tools.FirmwareFile))
+                throw new Exception($"Failed to create firmware from folder {path}");
+           
+            return tools.Instructions();
         }
     }
 }

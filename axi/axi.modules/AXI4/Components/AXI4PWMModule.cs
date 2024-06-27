@@ -53,8 +53,8 @@ namespace axi.modules
             pwms = range(pwmCount).Select(i => new PWMModule()).ToArray();
         }
 
-        RTLBitArray rawAddr => new RTLBitArray(State.waddr >> addressLSB)[7, 0];
-        RTLBitArray pwmWADDR => new RTLBitArray(State.waddr >> addressLSB)[addressBits - 1, 0];
+        RTLBitArray rawAddr => new RTLBitArray(State.waddr)[7,0] >> addressLSB;
+        RTLBitArray pwmWADDR => rawAddr[addressBits - 1, 0];
 
         public AXI4_S2M oS2M => axiSlave.S2M;
         public bool[] oPWM => pwms.Select(p => p.oPWM).ToArray();
@@ -79,7 +79,7 @@ namespace axi.modules
                 pwms[pwm].Schedule(() => new()
                 {
                     iActive = true,
-                    iOnClock = 50000,//State.pwm[pwm],
+                    iOnClock = State.pwm[pwm],
                     iDurationClocks = 1000000//State.pwmDurationClocks
                 });
             }

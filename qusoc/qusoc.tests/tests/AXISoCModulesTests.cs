@@ -194,6 +194,8 @@ namespace QuSoC.Tests
             if (!Debugger.IsAttached)
                 return;
 
+            var t = FirmwareTools.FromFolder(@"C:\code\qusoc\qusoc\qusoc.demos\apps\AXISoCQuadCore\cpu0");
+
             while (true)
             {
                 try
