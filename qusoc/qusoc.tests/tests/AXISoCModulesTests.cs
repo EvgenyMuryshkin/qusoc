@@ -194,13 +194,12 @@ namespace QuSoC.Tests
             if (!Debugger.IsAttached)
                 return;
 
-            var t = FirmwareTools.FromFolder(@"C:\code\qusoc\qusoc\qusoc.demos\apps\AXISoCQuadCore\cpu0");
-
             while (true)
             {
                 try
                 {
-                    var cpu1Instructions = Inst.FromAsmFile("axisocquadcore_cpu1_update");
+                    //var cpu1Instructions = Inst.FromAsmFile("axisocquadcore_cpu1_update");
+                    var cpu1Instructions = FirmwareTools.FromFolder(@"C:\code\qusoc\qusoc\qusoc.demos\apps\AXISoCQuadCore\cpu1");
 
                     await UpdateCPU1(cpu1Instructions);
                 }

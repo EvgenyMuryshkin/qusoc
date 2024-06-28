@@ -1,0 +1,83 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+RAM              0x0000000000000000 0x0000000000008000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+
+.text           0x0000000000000000      0x27c
+                0x0000000000000000                . = ALIGN (0x4)
+ *(.text)
+ .text          0x0000000000000000        0xc /tmp/cc9UC1ED.o
+ .text          0x000000000000000c      0x1b8 /tmp/ccVRu6KR.o
+                0x000000000000000c                AXISoCQuadCore::CPU1::EntryPoint()
+                0x000000000000011c                AXISoCQuadCore::CPU1::PWMValue(unsigned long*, unsigned long*, unsigned long, unsigned long)
+ .text          0x00000000000001c4       0x28 /tmp/ccTfBmU5.o
+                0x00000000000001c4                main
+ *(.text*)
+ *(.rodata)
+ *(.rodata*)
+ *(.srodata)
+ *(.srodata*)
+ *(.eh_frame)
+ .eh_frame      0x00000000000001ec       0x58 /tmp/ccVRu6KR.o
+ .eh_frame      0x0000000000000244       0x38 /tmp/ccTfBmU5.o
+ *(.eh_frame*)
+                0x000000000000027c                . = ALIGN (0x4)
+                0x000000000000027c                _etext = .
+                0x000000000000027c                _sidata = _etext
+
+.data           0x000000000000027c        0x0
+                0x000000000000027c                . = ALIGN (0x4)
+                0x000000000000027c                _sdata = .
+                0x000000000000027c                _ram_start = .
+ *(.data)
+ .data          0x000000000000027c        0x0 /tmp/cc9UC1ED.o
+ .data          0x000000000000027c        0x0 /tmp/ccVRu6KR.o
+ .data          0x000000000000027c        0x0 /tmp/ccTfBmU5.o
+ *(.data*)
+ *(.sdata)
+ *(.sdata*)
+ *(.init_array)
+ *(.init_array*)
+                0x000000000000027c                . = ALIGN (0x4)
+                0x000000000000027c                _edata = .
+
+.bss            0x000000000000027c        0x0
+                0x000000000000027c                . = ALIGN (0x4)
+                0x000000000000027c                _sbss = .
+ *(.bss)
+ .bss           0x000000000000027c        0x0 /tmp/cc9UC1ED.o
+ .bss           0x000000000000027c        0x0 /tmp/ccVRu6KR.o
+ .bss           0x000000000000027c        0x0 /tmp/ccTfBmU5.o
+ *(.bss*)
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+                0x000000000000027c                . = ALIGN (0x4)
+                0x000000000000027c                _ebss = .
+
+.heap           0x000000000000027c        0x0
+                0x000000000000027c                . = ALIGN (0x4)
+                0x000000000000027c                _heap_start = .
+LOAD /tmp/cc9UC1ED.o
+LOAD /tmp/ccVRu6KR.o
+LOAD /tmp/ccTfBmU5.o
+OUTPUT(firmware.elf elf32-littleriscv)
+
+.comment        0x0000000000000000       0x11
+ .comment       0x0000000000000000       0x11 /tmp/ccVRu6KR.o
+                                         0x12 (size before relaxing)
+ .comment       0x0000000000000011       0x12 /tmp/ccTfBmU5.o
+
+Cross Reference Table
+
+Symbol                                            File
+AXISoCQuadCore::CPU1::EntryPoint()                /tmp/ccVRu6KR.o
+                                                  /tmp/ccTfBmU5.o
+AXISoCQuadCore::CPU1::PWMValue(unsigned long*, unsigned long*, unsigned long, unsigned long) /tmp/ccVRu6KR.o
+main                                              /tmp/ccTfBmU5.o
+                                                  /tmp/cc9UC1ED.o

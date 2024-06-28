@@ -270,7 +270,9 @@ namespace QuSoC
 
             if (!File.Exists(tools.FirmwareFile))
                 throw new Exception($"Failed to create firmware from folder {path}");
-           
+
+            tools.Disassemble();
+
             return tools.Instructions();
         }
     }
