@@ -1,4 +1,4 @@
-files = start.S CPU1.cpp main.cpp
+files = start.S libgcc/mulsi3.c CPU1.cpp main.cpp
 elf: $(files)
 	riscv32-unknown-elf-gcc -march=rv32i -nostartfiles -Wl,-Bstatic,-T,sections.lds,--strip-debug,-Map=firmware.map,--cref  -ffreestanding -nostdlib -o firmware.elf $(files)
 

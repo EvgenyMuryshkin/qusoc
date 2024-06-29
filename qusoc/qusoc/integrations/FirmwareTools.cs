@@ -215,7 +215,7 @@ namespace QuSoC
                 return;
 
             var sourceFiles = FirmwareSourceFiles();
-            var names = string.Join(" ", sourceFiles.Select(s => Path.GetFileName(s)));
+            var names = string.Join(" ", sourceFiles);
             var makefileLines = File.ReadAllLines(MakefileFile);
             var modifiedLines =
                 makefileLines
@@ -244,7 +244,9 @@ namespace QuSoC
                 .EnumerateFiles(FirmwareFolder, "*.*", SearchOption.AllDirectories)
                 .Where(f => sourceFiles.Contains(Path.GetExtension(f).ToLower()))
                 .OrderBy(f => sourceFiles.IndexOf(Path.GetExtension(f).ToLower()))
-                .Select(f => Path.GetFileName(f))
+                //.Select(f => Path.GetFileName(f))
+                .Select(f => f.Substring(FirmwareFolder.Length + 1))
+                .Select(f => f.Replace("\\", "/"))
                 .ToList();
         }
 
