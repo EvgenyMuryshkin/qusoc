@@ -35,6 +35,8 @@ namespace AXISoCQuadCore
 
 				AXISoCQuadCore_SOC_CPU1_AutoDecrement = 1000000; // 20ms
 				uint32_t m = pwm0 * pwm1;
+				//float f = 1.5;
+				//float d = f * pwm0;
 			}
 		}
 	}

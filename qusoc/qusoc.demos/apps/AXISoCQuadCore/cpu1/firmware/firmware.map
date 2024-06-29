@@ -8,84 +8,92 @@ RAM              0x0000000000000000 0x0000000000008000 xrw
 Linker script and memory map
 
 
-.text           0x0000000000000000      0x304
+.text           0x0000000000000000      0x350
                 0x0000000000000000                . = ALIGN (0x4)
  *(.text)
- .text          0x0000000000000000        0xc /tmp/ccYg2Dvq.o
- .text          0x000000000000000c       0x6c /tmp/ccBsWQu9.o
-                0x000000000000000c                __mulsi3
- .text          0x0000000000000078      0x1d4 /tmp/cciM6RxS.o
-                0x0000000000000078                AXISoCQuadCore::CPU1::EntryPoint()
-                0x00000000000001a4                AXISoCQuadCore::CPU1::PWMValue(unsigned long*, unsigned long*, unsigned long, unsigned long)
- .text          0x000000000000024c       0x28 /tmp/ccDM6SDB.o
-                0x000000000000024c                main
+ .text          0x0000000000000000        0xc /tmp/ccIAVRBZ.o
+ .text          0x000000000000000c       0x34 /tmp/ccZakwCD.o
+                0x000000000000000c                abs
+ .text          0x0000000000000040       0x84 /tmp/ccoBG7Fh.o
+                0x0000000000000040                __mulsi3
+ .text          0x00000000000000c4      0x1d4 /tmp/ccdzSnOV.o
+                0x00000000000000c4                AXISoCQuadCore::CPU1::EntryPoint()
+                0x00000000000001f0                AXISoCQuadCore::CPU1::PWMValue(unsigned long*, unsigned long*, unsigned long, unsigned long)
+ .text          0x0000000000000298       0x28 /tmp/cc8TSd0z.o
+                0x0000000000000298                main
  *(.text*)
  *(.rodata)
  *(.rodata*)
  *(.srodata)
  *(.srodata*)
  *(.eh_frame)
- .eh_frame      0x0000000000000274       0x58 /tmp/cciM6RxS.o
- .eh_frame      0x00000000000002cc       0x38 /tmp/ccDM6SDB.o
+ .eh_frame      0x00000000000002c0       0x58 /tmp/ccdzSnOV.o
+ .eh_frame      0x0000000000000318       0x38 /tmp/cc8TSd0z.o
  *(.eh_frame*)
-                0x0000000000000304                . = ALIGN (0x4)
-                0x0000000000000304                _etext = .
-                0x0000000000000304                _sidata = _etext
+                0x0000000000000350                . = ALIGN (0x4)
+                0x0000000000000350                _etext = .
+                0x0000000000000350                _sidata = _etext
 
-.data           0x0000000000000304        0x0
-                0x0000000000000304                . = ALIGN (0x4)
-                0x0000000000000304                _sdata = .
-                0x0000000000000304                _ram_start = .
+.data           0x0000000000000350        0x0
+                0x0000000000000350                . = ALIGN (0x4)
+                0x0000000000000350                _sdata = .
+                0x0000000000000350                _ram_start = .
  *(.data)
- .data          0x0000000000000304        0x0 /tmp/ccYg2Dvq.o
- .data          0x0000000000000304        0x0 /tmp/ccBsWQu9.o
- .data          0x0000000000000304        0x0 /tmp/cciM6RxS.o
- .data          0x0000000000000304        0x0 /tmp/ccDM6SDB.o
+ .data          0x0000000000000350        0x0 /tmp/ccIAVRBZ.o
+ .data          0x0000000000000350        0x0 /tmp/ccZakwCD.o
+ .data          0x0000000000000350        0x0 /tmp/ccoBG7Fh.o
+ .data          0x0000000000000350        0x0 /tmp/ccdzSnOV.o
+ .data          0x0000000000000350        0x0 /tmp/cc8TSd0z.o
  *(.data*)
  *(.sdata)
  *(.sdata*)
  *(.init_array)
  *(.init_array*)
-                0x0000000000000304                . = ALIGN (0x4)
-                0x0000000000000304                _edata = .
+                0x0000000000000350                . = ALIGN (0x4)
+                0x0000000000000350                _edata = .
 
-.bss            0x0000000000000304        0x0
-                0x0000000000000304                . = ALIGN (0x4)
-                0x0000000000000304                _sbss = .
+.bss            0x0000000000000350        0x0
+                0x0000000000000350                . = ALIGN (0x4)
+                0x0000000000000350                _sbss = .
  *(.bss)
- .bss           0x0000000000000304        0x0 /tmp/ccYg2Dvq.o
- .bss           0x0000000000000304        0x0 /tmp/ccBsWQu9.o
- .bss           0x0000000000000304        0x0 /tmp/cciM6RxS.o
- .bss           0x0000000000000304        0x0 /tmp/ccDM6SDB.o
+ .bss           0x0000000000000350        0x0 /tmp/ccIAVRBZ.o
+ .bss           0x0000000000000350        0x0 /tmp/ccZakwCD.o
+ .bss           0x0000000000000350        0x0 /tmp/ccoBG7Fh.o
+ .bss           0x0000000000000350        0x0 /tmp/ccdzSnOV.o
+ .bss           0x0000000000000350        0x0 /tmp/cc8TSd0z.o
  *(.bss*)
  *(.sbss)
  *(.sbss*)
  *(COMMON)
-                0x0000000000000304                . = ALIGN (0x4)
-                0x0000000000000304                _ebss = .
+                0x0000000000000350                . = ALIGN (0x4)
+                0x0000000000000350                _ebss = .
 
-.heap           0x0000000000000304        0x0
-                0x0000000000000304                . = ALIGN (0x4)
-                0x0000000000000304                _heap_start = .
-LOAD /tmp/ccYg2Dvq.o
-LOAD /tmp/ccBsWQu9.o
-LOAD /tmp/cciM6RxS.o
-LOAD /tmp/ccDM6SDB.o
+.heap           0x0000000000000350        0x0
+                0x0000000000000350                . = ALIGN (0x4)
+                0x0000000000000350                _heap_start = .
+LOAD /tmp/ccIAVRBZ.o
+LOAD /tmp/ccZakwCD.o
+LOAD /tmp/ccoBG7Fh.o
+LOAD /tmp/ccdzSnOV.o
+LOAD /tmp/cc8TSd0z.o
 OUTPUT(firmware.elf elf32-littleriscv)
 
 .comment        0x0000000000000000       0x11
- .comment       0x0000000000000000       0x11 /tmp/ccBsWQu9.o
+ .comment       0x0000000000000000       0x11 /tmp/ccZakwCD.o
                                          0x12 (size before relaxing)
- .comment       0x0000000000000011       0x12 /tmp/cciM6RxS.o
- .comment       0x0000000000000011       0x12 /tmp/ccDM6SDB.o
+ .comment       0x0000000000000011       0x12 /tmp/ccoBG7Fh.o
+ .comment       0x0000000000000011       0x12 /tmp/ccdzSnOV.o
+ .comment       0x0000000000000011       0x12 /tmp/cc8TSd0z.o
 
 Cross Reference Table
 
 Symbol                                            File
-AXISoCQuadCore::CPU1::EntryPoint()                /tmp/cciM6RxS.o
-                                                  /tmp/ccDM6SDB.o
-AXISoCQuadCore::CPU1::PWMValue(unsigned long*, unsigned long*, unsigned long, unsigned long) /tmp/cciM6RxS.o
-__mulsi3                                          /tmp/ccBsWQu9.o
-                                                  /tmp/cciM6RxS.o
-main                                              /tmp/ccDM6SDB.o
-                                                  /tmp/ccYg2Dvq.o
+AXISoCQuadCore::CPU1::EntryPoint()                /tmp/ccdzSnOV.o
+                                                  /tmp/cc8TSd0z.o
+AXISoCQuadCore::CPU1::PWMValue(unsigned long*, unsigned long*, unsigned long, unsigned long) /tmp/ccdzSnOV.o
+__mulsi3                                          /tmp/ccoBG7Fh.o
+                                                  /tmp/ccdzSnOV.o
+abs                                               /tmp/ccZakwCD.o
+                                                  /tmp/ccoBG7Fh.o
+main                                              /tmp/cc8TSd0z.o
+                                                  /tmp/ccIAVRBZ.o

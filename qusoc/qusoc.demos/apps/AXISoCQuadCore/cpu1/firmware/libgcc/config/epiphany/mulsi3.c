@@ -1,4 +1,4 @@
-﻿/* Generic 32 bit multiply.
+/* Generic 32 bit multiply.
    Copyright (C) 2009-2024 Free Software Foundation, Inc.
    Contributed by Embecosm on behalf of Adapteva, Inc.
 
@@ -27,7 +27,7 @@ unsigned int
 __mulsi3 (unsigned int a, unsigned int b)
 {
   unsigned int r = 0;
-
+  unsigned int t = abs(a); //tmp
   while (a)
     {
       if (a & 1)
