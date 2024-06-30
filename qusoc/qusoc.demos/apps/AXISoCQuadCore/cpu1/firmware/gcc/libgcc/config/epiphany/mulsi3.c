@@ -27,7 +27,7 @@ unsigned int
 __mulsi3 (unsigned int a, unsigned int b)
 {
   unsigned int r = 0;
-  unsigned int t = abs(a); //tmp
+
   while (a)
     {
       if (a & 1)
