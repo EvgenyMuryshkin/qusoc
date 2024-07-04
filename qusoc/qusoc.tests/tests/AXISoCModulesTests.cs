@@ -188,14 +188,31 @@ namespace QuSoC.Tests
             }
         }
 
-        (bool sign, byte exp, RTLBitArray mantissa) Unroll(float f)
+        //(bool sign, byte exp, RTLBitArray mantissa) Unroll(float f)
+        //{
+        //    var u = BitConverter.SingleToUInt32Bits(f);
+        //    var bits = new RTLBitArray(u);
+        //
+        //    var sign = bits[31];
+        //    var exp = bits[30, 23];
+        //    var mantissa = new RTLBitArray(RTLBitArrayInitType.MSB, true, bits[22, 0]);
+        //
+        //    return (sign, exp, mantissa);
+        //}
+
+
+        (bool sign, byte exp, uint mantissa) Unroll(float f)
         {
             var u = BitConverter.SingleToUInt32Bits(f);
-            var bits = new RTLBitArray(u);
+            //var bits = new RTLBitArray(u);
 
-            var sign = bits[31];
-            var exp = bits[30, 23];
-            var mantissa = new RTLBitArray(RTLBitArrayInitType.MSB, true, bits[22, 0]);
+            var sign = (u >> 31) == 1;// bits[31];
+            var exp = (byte)(u >> 23);// bits[30, 23];
+            //var mantissa = (u << 7);// new RTLBitArray(RTLBitArrayInitType.MSB, true, bits[22, 0]);
+            //mantissa = mantissa & 0x3FFFFFFF;
+            //mantissa = mantissa | 0x40000000;
+            var mantissa = u & 0x7FFFFF;
+            mantissa = mantissa | 0x800000;
 
             return (sign, exp, mantissa);
         }
@@ -231,19 +248,22 @@ namespace QuSoC.Tests
 
             if (signA && !signB)
             {
-                mantissaA = (!mantissaA + 1)[23, 0];
+                //mantissaA = (!mantissaA + 1)[23, 0];
+                mantissaA = (uint)-mantissaA;
             }
 
             if (signB && !signA)
             {
-                mantissaB = (!mantissaB + 1)[23, 0];
+                //mantissaB = (!mantissaB + 1)[23, 0];
+                mantissaB = (uint)-mantissaB;
             }
 
-            var resMantissa = (mantissaA + mantissaB)[24, 0];
-
+            //var resMantissa = (mantissaA + mantissaB)[24, 0];
+            var resMantissa = mantissaA + mantissaB;
             if (signA == signB)
             {
-                if (resMantissa[24])
+                //if (resMantissa[24])
+                if ((resMantissa & 0x01000000) != 0)
                 {
                     resMantissa = resMantissa >> 1;
                     resExp++;
@@ -253,12 +273,15 @@ namespace QuSoC.Tests
             {
                 if (resSign)
                 {
-                    resMantissa = (!resMantissa + 1)[24, 0];
+                    //resMantissa = (!resMantissa + 1)[24, 0];
+                    resMantissa = (uint)-resMantissa;
                 }
 
-                while (!resMantissa[23])
+                //while (!resMantissa[23])
+                while ((resMantissa & 0x800000) == 0)
                 {
-                    resMantissa = (resMantissa << 1)[24, 0];
+                    //resMantissa = (resMantissa << 1)[24, 0];
+                    resMantissa = resMantissa << 1;
                     resExp--;
 
                     if (resMantissa == 0)
@@ -269,7 +292,12 @@ namespace QuSoC.Tests
                 }
             }
 
-            var resValue = new RTLBitArray(RTLBitArrayInitType.MSB, resSign, resExp, resMantissa[22, 0]);
+            //var resValue = new RTLBitArray(RTLBitArrayInitType.MSB, resSign, resExp, resMantissa[22, 0]);
+            uint resValue = (uint)(
+                ((resSign ? 1U : 0U) << 31) |
+                (resExp << 23) |
+                (resMantissa & 0x7FFFFF)
+            );
             var resFloat = BitConverter.UInt32BitsToSingle(resValue);
 
             return resFloat;
