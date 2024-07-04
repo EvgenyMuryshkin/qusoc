@@ -188,6 +188,116 @@ namespace QuSoC.Tests
             }
         }
 
+        (bool sign, byte exp, RTLBitArray mantissa) Unroll(float f)
+        {
+            var u = BitConverter.SingleToUInt32Bits(f);
+            var bits = new RTLBitArray(u);
+
+            var sign = bits[31];
+            var exp = bits[30, 23];
+            var mantissa = new RTLBitArray(RTLBitArrayInitType.MSB, true, bits[22, 0]);
+
+            return (sign, exp, mantissa);
+        }
+
+        float SoftFP_Add(float a, float b)
+        {
+            var (signA, expA, mantissaA) = Unroll(a);
+            var (signB, expB, mantissaB) = Unroll(b);
+
+            if (expA == expB && mantissaA == mantissaB && signA != signB)
+                return 0;
+
+            while (expB != expA)
+            {
+                if (expB < expA)
+                {
+                    mantissaB = mantissaB >> 1;
+                    expB++;
+                }
+                else
+                {
+                    mantissaA = mantissaA >> 1;
+                    expA++;
+                }
+            }
+
+            var resExp = expA;
+            var resSign = signA == signB
+                ? signA
+                : signA
+                    ? mantissaA > mantissaB
+                    : mantissaA < mantissaB;
+
+            if (signA && !signB)
+            {
+                mantissaA = (!mantissaA + 1)[23, 0];
+            }
+
+            if (signB && !signA)
+            {
+                mantissaB = (!mantissaB + 1)[23, 0];
+            }
+
+            var resMantissa = (mantissaA + mantissaB)[24, 0];
+
+            if (signA == signB)
+            {
+                if (resMantissa[24])
+                {
+                    resMantissa = resMantissa >> 1;
+                    resExp++;
+                }
+            }
+            else
+            {
+                if (resSign)
+                {
+                    resMantissa = (!resMantissa + 1)[24, 0];
+                }
+
+                while (!resMantissa[23])
+                {
+                    resMantissa = (resMantissa << 1)[24, 0];
+                    resExp--;
+
+                    if (resMantissa == 0)
+                    {
+                        resExp = 0;
+                        break;
+                    }
+                }
+            }
+
+            var resValue = new RTLBitArray(RTLBitArrayInitType.MSB, resSign, resExp, resMantissa[22, 0]);
+            var resFloat = BitConverter.UInt32BitsToSingle(resValue);
+
+            return resFloat;
+        }
+
+        [TestMethod]
+        public void SoftFP_Add()
+        {
+            Action<float, float> floatOp = (a, b) =>
+            {
+                Assert.AreEqual(a + b, SoftFP_Add(a, b));
+            };
+
+            floatOp(1, -1f);
+
+            floatOp(1000f, 0.5f);
+            floatOp(1000f, -0.5f);
+            floatOp(1024f, -1f);
+            floatOp(12.75f, -12.5f);
+            floatOp(12.5f, 77.25f);
+            floatOp(-12.5f, -77.25f);
+
+            floatOp(12.5f, -77.25f);
+            floatOp(77.25f, -12.5f);
+            floatOp(-12.5f, 77.25f);
+            floatOp(-77.25f, 12.5f);
+        }
+
         [TestMethod]
         public async Task AXISoCQuadCoreModule_UpdateCPU1()
         {
