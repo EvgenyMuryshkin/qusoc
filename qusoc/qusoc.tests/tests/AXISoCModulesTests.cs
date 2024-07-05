@@ -188,39 +188,49 @@ namespace QuSoC.Tests
             }
         }
 
-        //(bool sign, byte exp, RTLBitArray mantissa) Unroll(float f)
-        //{
-        //    var u = BitConverter.SingleToUInt32Bits(f);
-        //    var bits = new RTLBitArray(u);
-        //
-        //    var sign = bits[31];
-        //    var exp = bits[30, 23];
-        //    var mantissa = new RTLBitArray(RTLBitArrayInitType.MSB, true, bits[22, 0]);
-        //
-        //    return (sign, exp, mantissa);
-        //}
-
 
         (bool sign, byte exp, uint mantissa) Unroll(float f)
         {
             var u = BitConverter.SingleToUInt32Bits(f);
-            //var bits = new RTLBitArray(u);
 
-            var sign = (u >> 31) == 1;// bits[31];
-            var exp = (byte)(u >> 23);// bits[30, 23];
-            //var mantissa = (u << 7);// new RTLBitArray(RTLBitArrayInitType.MSB, true, bits[22, 0]);
-            //mantissa = mantissa & 0x3FFFFFFF;
-            //mantissa = mantissa | 0x40000000;
-            var mantissa = u & 0x7FFFFF;
+            bool sign = (u >> 31) == 1;
+            byte exp = (byte)(u >> 23);
+            uint mantissa = u & 0x7FFFFF;
             mantissa = mantissa | 0x800000;
+            mantissa = mantissa << roundingBits;
 
             return (sign, exp, mantissa);
+        }
+
+        int roundingBits = 7;
+        uint overflowFlag => (uint)(0x01000000 << roundingBits);
+        uint baseFlag => (uint)(0x800000 << roundingBits);
+        uint roundingBit => (uint)(1 << roundingBits);
+        uint roundingGBit => (uint)(1 << (roundingBits - 1));
+        uint roundingMask => roundingBit - 1;
+
+        uint Round(uint mantissa, bool hasUndeflowBits)
+        {
+            var grs = mantissa & roundingMask;
+            if (grs < roundingGBit)
+                return mantissa;
+
+            if (grs == roundingGBit)
+            {
+                if (((mantissa & roundingBit) != 0) || hasUndeflowBits)
+                    return mantissa + roundingGBit;// roundingBit;
+
+                return mantissa;
+            }
+
+            return mantissa + roundingGBit;// roundingBit;
         }
 
         float SoftFP_Add(float a, float b)
         {
             var (signA, expA, mantissaA) = Unroll(a);
             var (signB, expB, mantissaB) = Unroll(b);
+            bool hasUndeflowBits = false;
 
             if (expA == expB && mantissaA == mantissaB && signA != signB)
                 return 0;
@@ -229,11 +239,13 @@ namespace QuSoC.Tests
             {
                 if (expB < expA)
                 {
+                    hasUndeflowBits |= (mantissaB & 0x1) != 0;
                     mantissaB = mantissaB >> 1;
                     expB++;
                 }
                 else
                 {
+                    hasUndeflowBits |= (mantissaA & 0x1) != 0;
                     mantissaA = mantissaA >> 1;
                     expA++;
                 }
@@ -248,39 +260,45 @@ namespace QuSoC.Tests
 
             if (signA && !signB)
             {
-                //mantissaA = (!mantissaA + 1)[23, 0];
                 mantissaA = (uint)-mantissaA;
             }
 
             if (signB && !signA)
             {
-                //mantissaB = (!mantissaB + 1)[23, 0];
                 mantissaB = (uint)-mantissaB;
             }
 
-            //var resMantissa = (mantissaA + mantissaB)[24, 0];
             var resMantissa = mantissaA + mantissaB;
             if (signA == signB)
             {
-                //if (resMantissa[24])
-                if ((resMantissa & 0x01000000) != 0)
+                for (var i = 0; i < 2; i++)//while (true)
                 {
-                    resMantissa = resMantissa >> 1;
-                    resExp++;
+                    if ((resMantissa & overflowFlag) != 0)
+                    {
+                        hasUndeflowBits |= (resMantissa & 0x1) != 0;
+                        resMantissa = resMantissa >> 1;
+                        resExp++;
+                    }
+                    //else
+                    //{
+                    //    break;
+                    //}
+
+                    resMantissa = Round(resMantissa, hasUndeflowBits);
                 }
+
             }
             else
             {
                 if (resSign)
                 {
-                    //resMantissa = (!resMantissa + 1)[24, 0];
                     resMantissa = (uint)-resMantissa;
                 }
 
-                //while (!resMantissa[23])
-                while ((resMantissa & 0x800000) == 0)
+                resMantissa = Round(resMantissa, hasUndeflowBits);
+
+                while ((resMantissa & baseFlag) == 0)
                 {
-                    //resMantissa = (resMantissa << 1)[24, 0];
                     resMantissa = resMantissa << 1;
                     resExp--;
 
@@ -292,12 +310,13 @@ namespace QuSoC.Tests
                 }
             }
 
-            //var resValue = new RTLBitArray(RTLBitArrayInitType.MSB, resSign, resExp, resMantissa[22, 0]);
-            uint resValue = (uint)(
-                ((resSign ? 1U : 0U) << 31) |
-                (resExp << 23) |
-                (resMantissa & 0x7FFFFF)
-            );
+            uint resValue = (resMantissa >> roundingBits) & 0x7FFFFF;
+
+            resValue |= ((uint)resExp << 23);
+
+            if (resSign)
+                resValue |= 0x80000000;
+
             var resFloat = BitConverter.UInt32BitsToSingle(resValue);
 
             return resFloat;
@@ -306,11 +325,46 @@ namespace QuSoC.Tests
         [TestMethod]
         public void SoftFP_Add()
         {
+            bool bulkMode = false;
+            int totalBulk = 0;
+            int failedBulk = 0;
+
             Action<float, float> floatOp = (a, b) =>
             {
-                Assert.AreEqual(a + b, SoftFP_Add(a, b));
+                if (bulkMode)
+                {
+                    totalBulk++;
+
+                    var result = SoftFP_Add(a, b);
+                    var resultUnsigned = BitConverter.SingleToUInt32Bits(result);
+                    var fpuUnsigned = BitConverter.SingleToUInt32Bits(a + b);
+
+                    if (resultUnsigned != fpuUnsigned)
+                    {
+                        failedBulk++;
+
+                        resultUnsigned = resultUnsigned & 0xFFFFFFFE;
+                        fpuUnsigned = fpuUnsigned & 0xFFFFFFFE;
+                        if (resultUnsigned != fpuUnsigned)
+                        {
+                            Assert.AreEqual(a + b, result);
+                        }
+                    }
+                }
+                else
+                {
+                    Assert.AreEqual(a + b, SoftFP_Add(a, b));
+                }
             };
 
+            floatOp(0.556257248f, 0.500910938f);
+            floatOp(0.444681585f, 0.299055785f);
+            floatOp(0.5499884f, 0.212284908f);
+            floatOp(0.931204557f, 0.104905911f);
+            floatOp(0.0076710307f, 0.952018857f);
+            floatOp(0.123259649f, 0.876740336f);
+            floatOp(0.0007939787f, 0.379645854f);
+            floatOp(0.362758845f, 0.000253781764f);
             floatOp(1, -1f);
 
             floatOp(1000f, 0.5f);
@@ -324,6 +378,17 @@ namespace QuSoC.Tests
             floatOp(77.25f, -12.5f);
             floatOp(-12.5f, 77.25f);
             floatOp(-77.25f, 12.5f);
+
+
+            bulkMode = true;
+            var rnd = new Random();
+
+            for (var i = 0; i < 10000000; i++)
+            {
+                var f1 = (float)rnd.NextDouble();
+                var f2 = (float)rnd.NextDouble();
+                floatOp(f1, f2);
+            }
         }
 
         [TestMethod]
