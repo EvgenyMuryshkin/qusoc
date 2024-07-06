@@ -209,8 +209,10 @@ namespace QuSoC.Tests
         uint roundingGBit => (uint)(1 << (roundingBits - 1));
         uint roundingMask => roundingBit - 1;
 
-        uint Round(uint mantissa, bool hasUndeflowBits)
+        uint Round(uint mantissa, bool hasUndeflowBits, ref bool rounded)
         {
+            rounded = true;
+
             var grs = mantissa & roundingMask;
             if (grs < roundingGBit)
                 return mantissa;
@@ -226,10 +228,19 @@ namespace QuSoC.Tests
             return mantissa + roundingGBit;// roundingBit;
         }
 
+        void ShiftRight(ref uint mantissa, ref byte exp, ref bool hasUndeflowBits)
+        {
+            hasUndeflowBits |= (mantissa & 0x1) != 0;
+            mantissa = mantissa >> 1;
+            exp++;
+        }
+
         float SoftFP_Add(float a, float b)
         {
             var (signA, expA, mantissaA) = Unroll(a);
             var (signB, expB, mantissaB) = Unroll(b);
+
+            // flag indicates that some valuable bits were lost during exponent adjustment, used in round if tie
             bool hasUndeflowBits = false;
 
             if (expA == expB && mantissaA == mantissaB && signA != signB)
@@ -239,15 +250,11 @@ namespace QuSoC.Tests
             {
                 if (expB < expA)
                 {
-                    hasUndeflowBits |= (mantissaB & 0x1) != 0;
-                    mantissaB = mantissaB >> 1;
-                    expB++;
+                    ShiftRight(ref mantissaB, ref expB, ref hasUndeflowBits);
                 }
                 else
                 {
-                    hasUndeflowBits |= (mantissaA & 0x1) != 0;
-                    mantissaA = mantissaA >> 1;
-                    expA++;
+                    ShiftRight(ref mantissaA, ref expA, ref hasUndeflowBits);
                 }
             }
 
@@ -269,33 +276,66 @@ namespace QuSoC.Tests
             }
 
             var resMantissa = mantissaA + mantissaB;
+
+            if (signA != signB && resSign)
+            {
+                resMantissa = (uint)-resMantissa;
+            }
+
+            var rounded = false;
+
+            if ((resMantissa & overflowFlag) != 0)
+            {
+                ShiftRight(ref resMantissa, ref resExp, ref hasUndeflowBits);
+            }
+
+            if ((resMantissa & baseFlag) != 0)
+                resMantissa = Round(resMantissa, hasUndeflowBits, ref rounded);
+
+            if ((resMantissa & overflowFlag) != 0)
+            {
+                ShiftRight(ref resMantissa, ref resExp, ref hasUndeflowBits);
+                //resMantissa = Round(resMantissa, hasUndeflowBits, ref rounded);
+            }
+
+            //if ((resMantissa & virtualBit) != 0 && !rounded)
+            //{
+            //    resMantissa = Round(resMantissa, hasUndeflowBits, ref rounded);
+            //}
+
+            //for (var i = 0; i < 2; i++)
+            //{
+            //    if ((resMantissa & overflowFlag) != 0)
+            //    {
+            //        ShiftRight(ref resMantissa, ref resExp, ref hasUndeflowBits);
+            //    }
+            //
+            //    // TODO: if it did not round, can break, no mantissa overflow
+            //    //if (signA == signB)
+            //        resMantissa = Round(resMantissa, hasUndeflowBits);
+            //}
+
             if (signA == signB)
             {
-                for (var i = 0; i < 2; i++)//while (true)
-                {
-                    if ((resMantissa & overflowFlag) != 0)
-                    {
-                        hasUndeflowBits |= (resMantissa & 0x1) != 0;
-                        resMantissa = resMantissa >> 1;
-                        resExp++;
-                    }
-                    //else
-                    //{
-                    //    break;
-                    //}
-
-                    resMantissa = Round(resMantissa, hasUndeflowBits);
-                }
-
+                //for (var i = 0; i < 2; i++)
+                //{
+                //    if ((resMantissa & overflowFlag) != 0)
+                //    {
+                //        ShiftRight(ref resMantissa, ref resExp, ref hasUndeflowBits);
+                //    }
+                //
+                //    // TODO: if it did not round, can break, no mantissa overflow
+                //    resMantissa = Round(resMantissa, hasUndeflowBits);
+                //}
             }
             else
             {
-                if (resSign)
-                {
-                    resMantissa = (uint)-resMantissa;
-                }
+                //if (resSign)
+                //{
+                //    resMantissa = (uint)-resMantissa;
+                //}
 
-                resMantissa = Round(resMantissa, hasUndeflowBits);
+                //resMantissa = Round(resMantissa, hasUndeflowBits);
 
                 while ((resMantissa & baseFlag) == 0)
                 {
@@ -307,6 +347,14 @@ namespace QuSoC.Tests
                         resExp = 0;
                         break;
                     }
+                }
+
+                if (!rounded)
+                {
+                    resMantissa = Round(resMantissa, hasUndeflowBits, ref rounded);
+
+                    if ((resMantissa & baseFlag) != 0)
+                        resExp++;
                 }
             }
 
@@ -343,17 +391,27 @@ namespace QuSoC.Tests
                     {
                         failedBulk++;
 
-                        resultUnsigned = resultUnsigned & 0xFFFFFFFE;
-                        fpuUnsigned = fpuUnsigned & 0xFFFFFFFE;
-                        if (resultUnsigned != fpuUnsigned)
+                        var delta = Math.Max(resultUnsigned, fpuUnsigned) - Math.Min(resultUnsigned, fpuUnsigned);
+                        if (delta > 1)
                         {
                             Assert.AreEqual(a + b, result);
                         }
+                        //resultUnsigned = resultUnsigned & 0xFFFFFFFE;
+                        //fpuUnsigned = fpuUnsigned & 0xFFFFFFFE;
+                        //
+                        //if (resultUnsigned != fpuUnsigned)
+                        //{
+                        //    Assert.AreEqual(a + b, result);
+                        //}
                     }
                 }
                 else
                 {
-                    Assert.AreEqual(a + b, SoftFP_Add(a, b));
+                    var expected = a + b;
+                    var actual = SoftFP_Add(a, b);
+
+                    if (expected != actual)
+                        Assert.AreEqual(expected, actual);
                 }
             };
 
@@ -379,6 +437,8 @@ namespace QuSoC.Tests
             floatOp(-12.5f, 77.25f);
             floatOp(-77.25f, 12.5f);
 
+            floatOp(-0.184847608f, 0.9391488f); // need rounding
+            floatOp(-0.0205731746f, 0.041971f); // does not need rounding
 
             bulkMode = true;
             var rnd = new Random();
@@ -389,6 +449,29 @@ namespace QuSoC.Tests
                 var f2 = (float)rnd.NextDouble();
                 floatOp(f1, f2);
             }
+
+            for (var i = 0; i < 10000000; i++)
+            {
+                var f1 = -(float)rnd.NextDouble();
+                var f2 = -(float)rnd.NextDouble();
+                floatOp(f1, f2);
+            }
+
+            for (var i = 0; i < 10000000; i++)
+            {
+                var f1 = -(float)rnd.NextDouble();
+                var f2 = (float)rnd.NextDouble();
+                floatOp(f1, f2);
+            }
+            //
+            //for (var i = 0; i < 10000000; i++)
+            //{
+            //    var f1 = (float)rnd.NextDouble();
+            //    var f2 = -(float)rnd.NextDouble();
+            //    floatOp(f1, f2);
+            //}
+
+            Assert.AreEqual(0, failedBulk);
         }
 
         [TestMethod]
