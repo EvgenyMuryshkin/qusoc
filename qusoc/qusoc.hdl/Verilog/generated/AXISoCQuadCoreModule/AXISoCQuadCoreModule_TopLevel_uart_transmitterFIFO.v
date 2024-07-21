@@ -49,8 +49,8 @@ module AXISoCQuadCoreModule_TopLevel_uart_transmitterFIFO
 	wire [3: 0] defaultValue = 4'b0000;
 	wire signed [9: 0] depth = 10'b0100000000;
 	wire signed [4: 0] width = 5'b01000;
-	wire FIFOModule_L82F64T65_Expr = 1'b1;
-	wire FIFOModule_L78F64T65_Expr = 1'b1;
+	wire FIFOModule_L83F64T65_Expr = 1'b1;
+	wire FIFOModule_L79F64T65_Expr = 1'b1;
 	wire Inputs_iRE;
 	wire [7: 0] Inputs_iWData;
 	wire Inputs_iWE;
@@ -70,21 +70,21 @@ module AXISoCQuadCoreModule_TopLevel_uart_transmitterFIFO
 	wire [7: 0] wAddr;
 	wire [8: 0] wAddrNext;
 	wire we;
-	wire [7: 0] FIFOModule_L64F38T64_Index;
-	wire [7: 0] FIFOModule_L64F68T94_Index;
-	wire FIFOModule_L65F44T67_Index;
-	wire FIFOModule_L65F71T94_Index;
-	wire [8: 0] FIFOModule_L82F49T83_Index;
-	wire [8: 0] FIFOModule_L82F44T97_WhenTrue;
-	wire [8: 0] FIFOModule_L82F44T97_WhenFalse;
-	wire [8: 0] FIFOModule_L82F44T97_Ternary;
-	wire [8: 0] FIFOModule_L78F49T83_Index;
-	wire [8: 0] FIFOModule_L78F44T97_WhenTrue;
-	wire [8: 0] FIFOModule_L78F44T97_WhenFalse;
-	wire [8: 0] FIFOModule_L78F44T97_Ternary;
-	wire [7: 0] FIFOModule_L70F38T77_WhenTrue;
-	wire [7: 0] FIFOModule_L70F38T77_WhenFalse;
-	wire [7: 0] FIFOModule_L70F38T77_Ternary;
+	wire [7: 0] FIFOModule_L65F38T64_Index;
+	wire [7: 0] FIFOModule_L65F68T94_Index;
+	wire FIFOModule_L66F44T67_Index;
+	wire FIFOModule_L66F71T94_Index;
+	wire [8: 0] FIFOModule_L83F49T83_Index;
+	wire [8: 0] FIFOModule_L83F44T97_WhenTrue;
+	wire [8: 0] FIFOModule_L83F44T97_WhenFalse;
+	wire [8: 0] FIFOModule_L83F44T97_Ternary;
+	wire [8: 0] FIFOModule_L79F49T83_Index;
+	wire [8: 0] FIFOModule_L79F44T97_WhenTrue;
+	wire [8: 0] FIFOModule_L79F44T97_WhenFalse;
+	wire [8: 0] FIFOModule_L79F44T97_Ternary;
+	wire [7: 0] FIFOModule_L71F38T77_WhenTrue;
+	wire [7: 0] FIFOModule_L71F38T77_WhenFalse;
+	wire [7: 0] FIFOModule_L71F38T77_Ternary;
 	reg State_isEmpty = 1'b0;
 	wire State_isEmptyDefault = 1'b1;
 	reg State_isFull = 1'b0;
@@ -100,36 +100,36 @@ module AXISoCQuadCoreModule_TopLevel_uart_transmitterFIFO
 	wire State_rValidDefault = 1'b0;
 	reg [8: 0] State_wAddr = 9'b000000000;
 	wire [8: 0] State_wAddrDefault = 9'b000000000;
-	wire FIFOModule_L64F38T114_Expr;
-	wire FIFOModule_L64F38T114_Expr_1;
-	wire FIFOModule_L64F38T114_Expr_2;
-	wire FIFOModule_L81F20T48_Expr;
-	wire FIFOModule_L81F20T48_Expr_1;
-	wire FIFOModule_L81F20T48_Expr_2;
-	wire FIFOModule_L81F34T48_Expr;
-	wire FIFOModule_L81F34T48_Expr_1;
-	wire FIFOModule_L77F20T47_Expr;
-	wire FIFOModule_L77F20T47_Expr_1;
-	wire FIFOModule_L77F20T47_Expr_2;
-	wire FIFOModule_L77F34T47_Expr;
-	wire FIFOModule_L77F34T47_Expr_1;
-	wire FIFOModule_L85F9L103T10_FIFOModule_L97F32T46_Expr;
-	wire FIFOModule_L85F9L103T10_FIFOModule_L97F32T46_Expr_1;
-	wire [10: 0] FIFOModule_L82F50T65_Expr;
-	wire signed [10: 0] FIFOModule_L82F50T65_Expr_1;
-	wire signed [10: 0] FIFOModule_L82F50T65_Expr_2;
-	wire [10: 0] FIFOModule_L78F50T65_Expr;
-	wire signed [10: 0] FIFOModule_L78F50T65_Expr_1;
-	wire signed [10: 0] FIFOModule_L78F50T65_Expr_2;
-	wire FIFOModule_L63F39T61_Expr;
-	wire signed [9: 0] FIFOModule_L63F39T61_ExprLhs;
-	wire signed [9: 0] FIFOModule_L63F39T61_ExprRhs;
-	wire FIFOModule_L64F38T94_Expr;
-	wire signed [8: 0] FIFOModule_L64F38T94_ExprLhs;
-	wire signed [8: 0] FIFOModule_L64F38T94_ExprRhs;
-	wire FIFOModule_L65F44T94_Expr;
-	wire FIFOModule_L65F44T94_ExprLhs;
-	wire FIFOModule_L65F44T94_ExprRhs;
+	wire FIFOModule_L65F38T114_Expr;
+	wire FIFOModule_L65F38T114_Expr_1;
+	wire FIFOModule_L65F38T114_Expr_2;
+	wire FIFOModule_L82F20T48_Expr;
+	wire FIFOModule_L82F20T48_Expr_1;
+	wire FIFOModule_L82F20T48_Expr_2;
+	wire FIFOModule_L82F34T48_Expr;
+	wire FIFOModule_L82F34T48_Expr_1;
+	wire FIFOModule_L78F20T47_Expr;
+	wire FIFOModule_L78F20T47_Expr_1;
+	wire FIFOModule_L78F20T47_Expr_2;
+	wire FIFOModule_L78F34T47_Expr;
+	wire FIFOModule_L78F34T47_Expr_1;
+	wire FIFOModule_L86F9L104T10_FIFOModule_L98F32T46_Expr;
+	wire FIFOModule_L86F9L104T10_FIFOModule_L98F32T46_Expr_1;
+	wire [10: 0] FIFOModule_L83F50T65_Expr;
+	wire signed [10: 0] FIFOModule_L83F50T65_Expr_1;
+	wire signed [10: 0] FIFOModule_L83F50T65_Expr_2;
+	wire [10: 0] FIFOModule_L79F50T65_Expr;
+	wire signed [10: 0] FIFOModule_L79F50T65_Expr_1;
+	wire signed [10: 0] FIFOModule_L79F50T65_Expr_2;
+	wire FIFOModule_L64F39T61_Expr;
+	wire signed [9: 0] FIFOModule_L64F39T61_ExprLhs;
+	wire signed [9: 0] FIFOModule_L64F39T61_ExprRhs;
+	wire FIFOModule_L65F38T94_Expr;
+	wire signed [8: 0] FIFOModule_L65F38T94_ExprLhs;
+	wire signed [8: 0] FIFOModule_L65F38T94_ExprRhs;
+	wire FIFOModule_L66F44T94_Expr;
+	wire FIFOModule_L66F44T94_ExprLhs;
+	wire FIFOModule_L66F44T94_ExprRhs;
 	integer State_buffer_Iterator;
 	reg [7 : 0] State_buffer [0 : 255];
 	initial
@@ -169,20 +169,20 @@ module AXISoCQuadCoreModule_TopLevel_uart_transmitterFIFO
 			State_wAddr <= NextState_wAddr;
 		end
 	end
-	assign FIFOModule_L63F39T61_Expr = FIFOModule_L63F39T61_ExprLhs == FIFOModule_L63F39T61_ExprRhs ? 1'b1 : 1'b0;
-	assign FIFOModule_L64F38T94_Expr = FIFOModule_L64F38T94_ExprLhs == FIFOModule_L64F38T94_ExprRhs ? 1'b1 : 1'b0;
-	assign FIFOModule_L65F44T94_Expr = FIFOModule_L65F44T94_ExprLhs != FIFOModule_L65F44T94_ExprRhs ? 1'b1 : 1'b0;
-	assign FIFOModule_L64F38T114_Expr = FIFOModule_L64F38T114_Expr_1 & FIFOModule_L64F38T114_Expr_2;
-	assign FIFOModule_L81F20T48_Expr = FIFOModule_L81F20T48_Expr_1 & FIFOModule_L81F20T48_Expr_2;
-	assign FIFOModule_L81F34T48_Expr = ~FIFOModule_L81F34T48_Expr_1;
-	assign FIFOModule_L77F20T47_Expr = FIFOModule_L77F20T47_Expr_1 & FIFOModule_L77F20T47_Expr_2;
-	assign FIFOModule_L77F34T47_Expr = ~FIFOModule_L77F34T47_Expr_1;
-	assign FIFOModule_L85F9L103T10_FIFOModule_L97F32T46_Expr = ~FIFOModule_L85F9L103T10_FIFOModule_L97F32T46_Expr_1;
-	assign FIFOModule_L82F50T65_Expr = FIFOModule_L82F50T65_Expr_1 + FIFOModule_L82F50T65_Expr_2;
-	assign FIFOModule_L78F50T65_Expr = FIFOModule_L78F50T65_Expr_1 + FIFOModule_L78F50T65_Expr_2;
-	assign FIFOModule_L82F44T97_Ternary = (re ? FIFOModule_L82F44T97_WhenTrue : FIFOModule_L82F44T97_WhenFalse);
-	assign FIFOModule_L78F44T97_Ternary = (we ? FIFOModule_L78F44T97_WhenTrue : FIFOModule_L78F44T97_WhenFalse);
-	assign FIFOModule_L70F38T77_Ternary = (State_rACK ? FIFOModule_L70F38T77_WhenTrue : FIFOModule_L70F38T77_WhenFalse);
+	assign FIFOModule_L64F39T61_Expr = FIFOModule_L64F39T61_ExprLhs == FIFOModule_L64F39T61_ExprRhs ? 1'b1 : 1'b0;
+	assign FIFOModule_L65F38T94_Expr = FIFOModule_L65F38T94_ExprLhs == FIFOModule_L65F38T94_ExprRhs ? 1'b1 : 1'b0;
+	assign FIFOModule_L66F44T94_Expr = FIFOModule_L66F44T94_ExprLhs != FIFOModule_L66F44T94_ExprRhs ? 1'b1 : 1'b0;
+	assign FIFOModule_L65F38T114_Expr = FIFOModule_L65F38T114_Expr_1 & FIFOModule_L65F38T114_Expr_2;
+	assign FIFOModule_L82F20T48_Expr = FIFOModule_L82F20T48_Expr_1 & FIFOModule_L82F20T48_Expr_2;
+	assign FIFOModule_L82F34T48_Expr = ~FIFOModule_L82F34T48_Expr_1;
+	assign FIFOModule_L78F20T47_Expr = FIFOModule_L78F20T47_Expr_1 & FIFOModule_L78F20T47_Expr_2;
+	assign FIFOModule_L78F34T47_Expr = ~FIFOModule_L78F34T47_Expr_1;
+	assign FIFOModule_L86F9L104T10_FIFOModule_L98F32T46_Expr = ~FIFOModule_L86F9L104T10_FIFOModule_L98F32T46_Expr_1;
+	assign FIFOModule_L83F50T65_Expr = FIFOModule_L83F50T65_Expr_1 + FIFOModule_L83F50T65_Expr_2;
+	assign FIFOModule_L79F50T65_Expr = FIFOModule_L79F50T65_Expr_1 + FIFOModule_L79F50T65_Expr_2;
+	assign FIFOModule_L83F44T97_Ternary = (re ? FIFOModule_L83F44T97_WhenTrue : FIFOModule_L83F44T97_WhenFalse);
+	assign FIFOModule_L79F44T97_Ternary = (we ? FIFOModule_L79F44T97_WhenTrue : FIFOModule_L79F44T97_WhenFalse);
+	assign FIFOModule_L71F38T77_Ternary = (State_rACK ? FIFOModule_L71F38T77_WhenTrue : FIFOModule_L71F38T77_WhenFalse);
 	always @ (*)
 	begin
 		NextState_isEmpty = State_isEmpty;
@@ -194,95 +194,95 @@ module AXISoCQuadCoreModule_TopLevel_uart_transmitterFIFO
 		NextState_wAddr = State_wAddr;
 		NextState_wAddr = wAddrNext;
 		NextState_rAddr = rAddrNext;
-		NextState_rValid = FIFOModule_L85F9L103T10_FIFOModule_L97F32T46_Expr;
+		NextState_rValid = FIFOModule_L86F9L104T10_FIFOModule_L98F32T46_Expr;
 		NextState_rACK = re;
 		NextState_isEmpty = isEmptyNext;
 		NextState_isFull = isFullNext;
 		NextState_isWrapAround = isWrapAroundNext;
 	end
-	assign FIFOModule_L63F39T61_ExprLhs = {
+	assign FIFOModule_L64F39T61_ExprLhs = {
 		1'b0,
 		wAddrNext
 	}
 	;
-	assign FIFOModule_L63F39T61_ExprRhs = {
+	assign FIFOModule_L64F39T61_ExprRhs = {
 		1'b0,
 		rAddrNext
 	}
 	;
-	assign FIFOModule_L64F38T94_ExprLhs = {
+	assign FIFOModule_L65F38T94_ExprLhs = {
 		1'b0,
-		FIFOModule_L64F38T64_Index
+		FIFOModule_L65F38T64_Index
 	}
 	;
-	assign FIFOModule_L64F38T94_ExprRhs = {
+	assign FIFOModule_L65F38T94_ExprRhs = {
 		1'b0,
-		FIFOModule_L64F68T94_Index
+		FIFOModule_L65F68T94_Index
 	}
 	;
-	assign FIFOModule_L65F44T94_ExprLhs = FIFOModule_L65F44T67_Index;
-	assign FIFOModule_L65F44T94_ExprRhs = FIFOModule_L65F71T94_Index;
-	assign FIFOModule_L64F38T114_Expr_1 = FIFOModule_L64F38T94_Expr;
-	assign FIFOModule_L64F38T114_Expr_2 = isWrapAroundNext;
-	assign FIFOModule_L81F20T48_Expr_1 = Inputs_iRE;
-	assign FIFOModule_L81F20T48_Expr_2 = FIFOModule_L81F34T48_Expr;
-	assign FIFOModule_L81F34T48_Expr_1 = State_isEmpty;
-	assign FIFOModule_L77F20T47_Expr_1 = Inputs_iWE;
-	assign FIFOModule_L77F20T47_Expr_2 = FIFOModule_L77F34T47_Expr;
-	assign FIFOModule_L77F34T47_Expr_1 = State_isFull;
-	assign FIFOModule_L85F9L103T10_FIFOModule_L97F32T46_Expr_1 = State_isEmpty;
-	assign FIFOModule_L82F50T65_Expr_1 = {
+	assign FIFOModule_L66F44T94_ExprLhs = FIFOModule_L66F44T67_Index;
+	assign FIFOModule_L66F44T94_ExprRhs = FIFOModule_L66F71T94_Index;
+	assign FIFOModule_L65F38T114_Expr_1 = FIFOModule_L65F38T94_Expr;
+	assign FIFOModule_L65F38T114_Expr_2 = isWrapAroundNext;
+	assign FIFOModule_L82F20T48_Expr_1 = Inputs_iRE;
+	assign FIFOModule_L82F20T48_Expr_2 = FIFOModule_L82F34T48_Expr;
+	assign FIFOModule_L82F34T48_Expr_1 = State_isEmpty;
+	assign FIFOModule_L78F20T47_Expr_1 = Inputs_iWE;
+	assign FIFOModule_L78F20T47_Expr_2 = FIFOModule_L78F34T47_Expr;
+	assign FIFOModule_L78F34T47_Expr_1 = State_isFull;
+	assign FIFOModule_L86F9L104T10_FIFOModule_L98F32T46_Expr_1 = State_isEmpty;
+	assign FIFOModule_L83F50T65_Expr_1 = {
 		{2{1'b0}},
 		State_rAddr
 	}
 	;
-	assign FIFOModule_L82F50T65_Expr_2 = {
+	assign FIFOModule_L83F50T65_Expr_2 = {
 		{10{1'b0}},
-		FIFOModule_L82F64T65_Expr
+		FIFOModule_L83F64T65_Expr
 	}
 	;
-	assign FIFOModule_L78F50T65_Expr_1 = {
+	assign FIFOModule_L79F50T65_Expr_1 = {
 		{2{1'b0}},
 		State_wAddr
 	}
 	;
-	assign FIFOModule_L78F50T65_Expr_2 = {
+	assign FIFOModule_L79F50T65_Expr_2 = {
 		{10{1'b0}},
-		FIFOModule_L78F64T65_Expr
+		FIFOModule_L79F64T65_Expr
 	}
 	;
 	assign Inputs_iRE = iRE;
 	assign Inputs_iWData = iWData;
 	assign Inputs_iWE = iWE;
-	assign isEmptyNext = FIFOModule_L63F39T61_Expr;
-	assign FIFOModule_L64F38T64_Index = wAddrNext[7:0];
-	assign FIFOModule_L64F68T94_Index = rAddrNext[7:0];
-	assign isFullNext = FIFOModule_L64F38T114_Expr;
-	assign FIFOModule_L65F44T67_Index = wAddrNext[8];
-	assign FIFOModule_L65F71T94_Index = rAddrNext[8];
-	assign isWrapAroundNext = FIFOModule_L65F44T94_Expr;
+	assign isEmptyNext = FIFOModule_L64F39T61_Expr;
+	assign FIFOModule_L65F38T64_Index = wAddrNext[7:0];
+	assign FIFOModule_L65F68T94_Index = rAddrNext[7:0];
+	assign isFullNext = FIFOModule_L65F38T114_Expr;
+	assign FIFOModule_L66F44T67_Index = wAddrNext[8];
+	assign FIFOModule_L66F71T94_Index = rAddrNext[8];
+	assign isWrapAroundNext = FIFOModule_L66F44T94_Expr;
 	assign rAddr = State_rAddr[7:0];
-	assign FIFOModule_L82F49T83_Index = FIFOModule_L82F50T65_Expr[8:0];
-	assign FIFOModule_L82F44T97_WhenTrue = FIFOModule_L82F49T83_Index;
-	assign FIFOModule_L82F44T97_WhenFalse = State_rAddr;
-	assign rAddrNext = FIFOModule_L82F44T97_Ternary;
-	assign re = FIFOModule_L81F20T48_Expr;
+	assign FIFOModule_L83F49T83_Index = FIFOModule_L83F50T65_Expr[8:0];
+	assign FIFOModule_L83F44T97_WhenTrue = FIFOModule_L83F49T83_Index;
+	assign FIFOModule_L83F44T97_WhenFalse = State_rAddr;
+	assign rAddrNext = FIFOModule_L83F44T97_Ternary;
+	assign re = FIFOModule_L82F20T48_Expr;
 	assign wAddr = State_wAddr[7:0];
-	assign FIFOModule_L78F49T83_Index = FIFOModule_L78F50T65_Expr[8:0];
-	assign FIFOModule_L78F44T97_WhenTrue = FIFOModule_L78F49T83_Index;
-	assign FIFOModule_L78F44T97_WhenFalse = State_wAddr;
-	assign wAddrNext = FIFOModule_L78F44T97_Ternary;
-	assign we = FIFOModule_L77F20T47_Expr;
+	assign FIFOModule_L79F49T83_Index = FIFOModule_L79F50T65_Expr[8:0];
+	assign FIFOModule_L79F44T97_WhenTrue = FIFOModule_L79F49T83_Index;
+	assign FIFOModule_L79F44T97_WhenFalse = State_wAddr;
+	assign wAddrNext = FIFOModule_L79F44T97_Ternary;
+	assign we = FIFOModule_L78F20T47_Expr;
 	assign oIsEmpty = State_isEmpty;
 	assign oIsFull = State_isFull;
 	assign oRACK = State_rACK;
-	assign FIFOModule_L70F38T77_WhenTrue = State_rData;
-	assign FIFOModule_L70F38T77_WhenFalse = {
+	assign FIFOModule_L71F38T77_WhenTrue = State_rData;
+	assign FIFOModule_L71F38T77_WhenFalse = {
 		{4{1'b0}},
 		defaultValue
 	}
 	;
-	assign oRData = FIFOModule_L70F38T77_Ternary;
+	assign oRData = FIFOModule_L71F38T77_Ternary;
 	assign oRValid = State_rValid;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]

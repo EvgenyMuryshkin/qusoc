@@ -8,12 +8,16 @@ using Quokka.RISCV.Integration.Client;
 using Quokka.RISCV.Integration.DTO;
 using Quokka.RISCV.Integration.Engine;
 using Quokka.RISCV.Integration.Generator.SOC;
+using Quokka.RTL.VHDL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace QuSoC
 {
@@ -133,12 +137,148 @@ namespace QuSoC
             Make();
         }
 
+        void WriteLine(string line)
+        {
+            Console.WriteLine(line);
+        }
+
+        internal static double ToMilliseconds(TimeSpan? timeout, TimeSpan defaultTimeout)
+        {
+            var t = timeout.HasValue ? timeout.Value : defaultTimeout;
+
+            return (ulong)t.TotalMilliseconds;
+        }
+
+        public void TryDelete(string path, TimeSpan? timeout = null)
+        {
+            var totalMilliseconds = ToMilliseconds(timeout, TimeSpan.FromSeconds(10));
+
+            var sw = new Stopwatch();
+            sw.Start();
+
+            Exception lastException = new InvalidOperationException("Cannot delete file");
+
+            while (File.Exists(path) && sw.ElapsedMilliseconds < totalMilliseconds)
+            {
+                try
+                {
+                    File.Delete(path);
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    lastException = ex;
+                    Task.Delay(100).Wait();
+                }
+            }
+
+            if (File.Exists(path))
+                throw lastException;
+        }
+
+        public string RunHiddenShell(
+            string app,
+            string args,
+            out int exitCode,
+            string outputPath = null,
+            bool throwOnException = true,
+            string workingDirectory = null
+            )
+        {
+            exitCode = -1;
+            var deleteOutputPath = outputPath == null;
+            outputPath = outputPath ?? Path.GetTempFileName();
+            workingDirectory = workingDirectory ?? Directory.GetCurrentDirectory();
+
+            var batchFile = $"{Path.GetTempFileName()}.cmd";
+            var batchBuilder = new StringBuilder();
+            batchBuilder.AppendLine("@echo off");
+
+            var runCommandLine = $"{(app.Contains(' ') ? app.Quote() : app)} {args ?? ""}";
+            batchBuilder.AppendLine(runCommandLine);
+            File.WriteAllText(batchFile, batchBuilder.ToString());
+
+            try
+            {
+                WriteLine($"Running at {workingDirectory} ({batchFile})");
+                WriteLine($"Command: {runCommandLine}");
+                WriteLine($"Output: {outputPath}");
+                var psi = new ProcessStartInfo()
+                {
+                    FileName = "cmd.exe",
+                    WorkingDirectory = workingDirectory,
+                    Arguments = $"/C {batchFile}",// >> {outputPath}",
+                    UseShellExecute = false,//true,
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    RedirectStandardError = true,
+                    RedirectStandardOutput = true
+                };
+
+                var pi = Process.Start(psi);
+                WriteLine($"PID: {pi.Id}");
+
+                pi.WaitForExit();
+
+                //var output = File.Exists(outputPath) ? File.ReadAllText(outputPath) : "";
+                var output = pi.StandardOutput.ReadToEnd();
+                var error = pi.StandardError.ReadToEnd();
+
+                WriteLine(output);
+                WriteLine(error);
+
+                WriteLine($"PID: {pi.Id} exited with code {pi.ExitCode}");
+
+                exitCode = pi.ExitCode;
+
+                if (exitCode != 0 && throwOnException)
+                    throw new Exception($"{app} {args} failed: {pi.ExitCode}");
+
+                if (error != "")
+                    return error;
+
+                return output;
+            }
+            finally
+            {
+                TryDelete(batchFile);
+
+                if (deleteOutputPath)
+                {
+                    try
+                    {
+                        TryDelete(outputPath);
+                    }
+                    catch (Exception ex)
+                    {
+                        WriteLine($"Cannot delete temporary output file '{outputPath}': {ex.Message}");
+                    }
+                }
+            }
+        }
+
         public void Make()
         {
             if (File.Exists(MakefileFile))
             {
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
+                    // run WSL
+                    var root = Path.GetPathRoot(FirmwareFolder);
+                    var relativePath = Path.GetRelativePath(root, FirmwareFolder);
+                    root = root.Replace(":", "").Replace("\\", "/").ToLower();
+                    var linuxPath = relativePath.Replace("\\", "/").Replace(":", "");
+                    var mntPath = $"/mnt/{root}{linuxPath}";
+
+                    var wslArgs = $"-e bash -c \"cd \\\"{mntPath}\\\" && echo ev | sudo -S make bin\"";
+                    var wslOutput = RunHiddenShell("wsl", wslArgs, out var exitCode, throwOnException: false);
+
+                    if (exitCode == 0)
+                        return;
+
+                    if (wslOutput != "")
+                        throw new Exception(wslOutput);
+
+                    // fallback to run docker
                     var context = RISCVIntegration
                         .DefaultContext(FirmwareFolder)
                         .WithMakeTarget("bin");

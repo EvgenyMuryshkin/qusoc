@@ -1,0 +1,7 @@
+└Root          | AXI4WS2812ModuleState | [68:0]  | 69 | [68:0] 
+ ├txCounter    | Byte                  | [68:61] | 8  | [68:0][68:61]
+ ├txBit        | Boolean               | [60]    | 1  | [68:0][60]
+ ├tx           | Boolean               | [59]    | 1  | [68:0][59]
+ ├state        | ws2812State           | [58:56] | 3  | [68:0][58:56]
+ ├data         | RTLBitArray           | [55:32] | 24 | [68:0][55:32]
+ └clockCounter | UInt32                | [31:0]  | 32 | [68:0][31:0]

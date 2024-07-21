@@ -135,4 +135,9 @@ namespace axi.modules
     {
         public AXI4OutSignalArrayBufferModule_B4_1_8() : base(axiSize.B4, 1, 8) {}
     }
+
+    public class AXI4WS2812Module_B4_50 : AXI4WS2812Module
+    {
+        public AXI4WS2812Module_B4_50() : base(axiSize.B4, 50000000) { }
+    }
 }

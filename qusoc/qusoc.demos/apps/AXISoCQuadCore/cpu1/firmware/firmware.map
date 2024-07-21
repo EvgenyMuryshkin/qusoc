@@ -1,168 +1,110 @@
-Archive member included to satisfy reference by file (symbol)
 
-/opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(mulsf3.o)
-                              /tmp/ccaZlH8M.o (__mulsf3)
-/opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(floatunsisf.o)
-                              /tmp/ccaZlH8M.o (__floatunsisf)
-/opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clzsi2.o)
-                              /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(mulsf3.o) (__clzsi2)
-/opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clz.o)
-                              /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clzsi2.o) (__clz_tab)
-
-Discarded input sections
-
- .debug_info    0x0000000000000000      0x3ac /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(mulsf3.o)
- .debug_abbrev  0x0000000000000000      0x17a /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(mulsf3.o)
- .debug_loc     0x0000000000000000      0x5e4 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(mulsf3.o)
- .debug_aranges
-                0x0000000000000000       0x20 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(mulsf3.o)
- .debug_ranges  0x0000000000000000       0xa8 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(mulsf3.o)
- .debug_line    0x0000000000000000      0x660 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(mulsf3.o)
- .debug_str     0x0000000000000000      0x30b /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(mulsf3.o)
- .debug_frame   0x0000000000000000       0x48 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(mulsf3.o)
- .debug_info    0x0000000000000000      0x24a /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(floatunsisf.o)
- .debug_abbrev  0x0000000000000000      0x1a9 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(floatunsisf.o)
- .debug_loc     0x0000000000000000      0x165 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(floatunsisf.o)
- .debug_aranges
-                0x0000000000000000       0x20 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(floatunsisf.o)
- .debug_ranges  0x0000000000000000       0x50 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(floatunsisf.o)
- .debug_line    0x0000000000000000      0x2f0 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(floatunsisf.o)
- .debug_str     0x0000000000000000      0x2ae /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(floatunsisf.o)
- .debug_frame   0x0000000000000000       0x34 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(floatunsisf.o)
- .debug_info    0x0000000000000000      0xbac /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clzsi2.o)
- .debug_abbrev  0x0000000000000000      0x242 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clzsi2.o)
- .debug_loc     0x0000000000000000       0x6b /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clzsi2.o)
- .debug_aranges
-                0x0000000000000000       0x20 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clzsi2.o)
- .debug_ranges  0x0000000000000000       0x20 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clzsi2.o)
- .debug_line    0x0000000000000000      0x27a /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clzsi2.o)
- .debug_str     0x0000000000000000      0x77b /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clzsi2.o)
- .debug_frame   0x0000000000000000       0x20 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clzsi2.o)
- .debug_info    0x0000000000000000      0xb3f /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clz.o)
- .debug_abbrev  0x0000000000000000      0x1e8 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clz.o)
- .debug_aranges
-                0x0000000000000000       0x18 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clz.o)
- .debug_line    0x0000000000000000      0x1f8 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clz.o)
- .debug_str     0x0000000000000000      0x75e /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clz.o)
+There are no discarded input sections
 
 Memory Configuration
 
 Name             Origin             Length             Attributes
-RAM              0x0000000000000000 0x0000000000008000 xrw
-*default*        0x0000000000000000 0xffffffffffffffff
+RAM              0x00000000         0x00008000         xrw
+*default*        0x00000000         0xffffffff
 
 Linker script and memory map
 
 
-.text           0x0000000000000000      0x6d4
-                0x0000000000000000                . = ALIGN (0x4)
+.text           0x00000000      0x4f8
+                0x00000000                        . = ALIGN (0x4)
  *(.text)
- .text          0x0000000000000000        0xc /tmp/ccaXVylM.o
- .text          0x000000000000000c      0x1e4 /tmp/ccaZlH8M.o
-                0x000000000000000c                AXISoCQuadCore::CPU1::EntryPoint()
-                0x0000000000000148                AXISoCQuadCore::CPU1::PWMValue(unsigned long*, unsigned long*, unsigned long, unsigned long)
- .text          0x00000000000001f0       0x28 /tmp/ccHCSW0N.o
-                0x00000000000001f0                main
- .text          0x0000000000000218      0x216 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(mulsf3.o)
-                0x0000000000000218                __mulsf3
- .text          0x000000000000042e       0x9c /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(floatunsisf.o)
-                0x000000000000042e                __floatunsisf
- .text          0x00000000000004ca       0x38 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clzsi2.o)
-                0x00000000000004ca                __clzsi2
- .text          0x0000000000000502        0x0 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clz.o)
+ .text          0x00000000        0xc /tmp/ccVCMfCj.o
+ .text          0x0000000c      0x370 /tmp/ccBOxWPg.o
+                0x0000000c                AXISoCQuadCore::CPU1::EntryPoint()
+                0x0000010c                AXISoCQuadCore::CPU1::PWMValue(unsigned long*, unsigned long*, unsigned long, unsigned long)
+                0x000001b4                AXISoCQuadCore::CPU1::HoldValue(bool, unsigned long)
+                0x0000021c                AXISoCQuadCore::CPU1::Bit(bool)
+                0x00000284                AXISoCQuadCore::CPU1::Byte(unsigned char)
+                0x000002f8                AXISoCQuadCore::CPU1::Word(unsigned long)
+                0x00000348                AXISoCQuadCore::CPU1::EndTX()
+ .text          0x0000037c       0x28 /tmp/ccLN13Uf.o
+                0x0000037c                main
  *(.text*)
  *(.rodata)
- *fill*         0x0000000000000502        0x2 
- .rodata        0x0000000000000504        0x4 /tmp/ccaZlH8M.o
- .rodata        0x0000000000000508       0x3c /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(mulsf3.o)
- .rodata        0x0000000000000544      0x100 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clz.o)
-                0x0000000000000544                __clz_tab
  *(.rodata*)
  *(.srodata)
  *(.srodata*)
  *(.eh_frame)
- .eh_frame      0x0000000000000644       0x58 /tmp/ccaZlH8M.o
- .eh_frame      0x000000000000069c       0x38 /tmp/ccHCSW0N.o
+ .eh_frame      0x000003a4      0x118 /tmp/ccBOxWPg.o
+ .eh_frame      0x000004bc       0x3c /tmp/ccLN13Uf.o
  *(.eh_frame*)
-                0x00000000000006d4                . = ALIGN (0x4)
-                0x00000000000006d4                _etext = .
-                0x00000000000006d4                _sidata = _etext
+                0x000004f8                        . = ALIGN (0x4)
+                0x000004f8                        _etext = .
+                0x000004f8                        _sidata = _etext
 
-.data           0x00000000000006d4        0x0
-                0x00000000000006d4                . = ALIGN (0x4)
-                0x00000000000006d4                _sdata = .
-                0x00000000000006d4                _ram_start = .
+.data           0x000004f8        0x0
+                0x000004f8                        . = ALIGN (0x4)
+                0x000004f8                        _sdata = .
+                0x000004f8                        _ram_start = .
  *(.data)
- .data          0x00000000000006d4        0x0 /tmp/ccaXVylM.o
- .data          0x00000000000006d4        0x0 /tmp/ccaZlH8M.o
- .data          0x00000000000006d4        0x0 /tmp/ccHCSW0N.o
- .data          0x00000000000006d4        0x0 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(mulsf3.o)
- .data          0x00000000000006d4        0x0 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(floatunsisf.o)
- .data          0x00000000000006d4        0x0 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clzsi2.o)
- .data          0x00000000000006d4        0x0 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clz.o)
+ .data          0x000004f8        0x0 /tmp/ccVCMfCj.o
+ .data          0x000004f8        0x0 /tmp/ccBOxWPg.o
+ .data          0x000004f8        0x0 /tmp/ccLN13Uf.o
  *(.data*)
  *(.sdata)
  *(.sdata*)
  *(.init_array)
  *(.init_array*)
-                0x00000000000006d4                . = ALIGN (0x4)
-                0x00000000000006d4                _edata = .
+                0x000004f8                        . = ALIGN (0x4)
+                0x000004f8                        _edata = .
 
-.bss            0x00000000000006d4        0x0
-                0x00000000000006d4                . = ALIGN (0x4)
-                0x00000000000006d4                _sbss = .
+.bss            0x000004f8        0x0
+                0x000004f8                        . = ALIGN (0x4)
+                0x000004f8                        _sbss = .
  *(.bss)
- .bss           0x00000000000006d4        0x0 /tmp/ccaXVylM.o
- .bss           0x00000000000006d4        0x0 /tmp/ccaZlH8M.o
- .bss           0x00000000000006d4        0x0 /tmp/ccHCSW0N.o
- .bss           0x00000000000006d4        0x0 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(mulsf3.o)
- .bss           0x00000000000006d4        0x0 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(floatunsisf.o)
- .bss           0x00000000000006d4        0x0 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clzsi2.o)
- .bss           0x00000000000006d4        0x0 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clz.o)
+ .bss           0x000004f8        0x0 /tmp/ccVCMfCj.o
+ .bss           0x000004f8        0x0 /tmp/ccBOxWPg.o
+ .bss           0x000004f8        0x0 /tmp/ccLN13Uf.o
  *(.bss*)
  *(.sbss)
  *(.sbss*)
  *(COMMON)
-                0x00000000000006d4                . = ALIGN (0x4)
-                0x00000000000006d4                _ebss = .
+                0x000004f8                        . = ALIGN (0x4)
+                0x000004f8                        _ebss = .
 
-.heap           0x00000000000006d4        0x0
-                0x00000000000006d4                . = ALIGN (0x4)
-                0x00000000000006d4                _heap_start = .
-LOAD /tmp/ccaXVylM.o
-LOAD /tmp/ccaZlH8M.o
-LOAD /tmp/ccHCSW0N.o
-LOAD /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a
+.heap           0x000004f8        0x0
+                0x000004f8                        . = ALIGN (0x4)
+                0x000004f8                        _heap_start = .
+LOAD /tmp/ccVCMfCj.o
+LOAD /tmp/ccBOxWPg.o
+LOAD /tmp/ccLN13Uf.o
+LOAD /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a
 START GROUP
-LOAD /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/../../../../riscv32-unknown-elf/lib/libc.a
-LOAD /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/../../../../riscv32-unknown-elf/lib/libgloss.a
+LOAD /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libc.a
+LOAD /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libgloss.a
 END GROUP
-LOAD /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a
+LOAD /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a
 OUTPUT(firmware.elf elf32-littleriscv)
 
-.comment        0x0000000000000000       0x11
- .comment       0x0000000000000000       0x11 /tmp/ccaZlH8M.o
-                                         0x12 (size before relaxing)
- .comment       0x0000000000000011       0x12 /tmp/ccHCSW0N.o
- .comment       0x0000000000000011       0x12 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(mulsf3.o)
- .comment       0x0000000000000011       0x12 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(floatunsisf.o)
- .comment       0x0000000000000011       0x12 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clzsi2.o)
- .comment       0x0000000000000011       0x12 /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clz.o)
+.riscv.attributes
+                0x00000000       0x1c
+ .riscv.attributes
+                0x00000000       0x1a /tmp/ccVCMfCj.o
+ .riscv.attributes
+                0x0000001a       0x1c /tmp/ccBOxWPg.o
+ .riscv.attributes
+                0x00000036       0x1c /tmp/ccLN13Uf.o
+
+.comment        0x00000000       0x33
+ .comment       0x00000000       0x33 /tmp/ccBOxWPg.o
+                                 0x34 (size before relaxing)
+ .comment       0x00000033       0x34 /tmp/ccLN13Uf.o
 
 Cross Reference Table
 
 Symbol                                            File
-AXISoCQuadCore::CPU1::EntryPoint()                /tmp/ccaZlH8M.o
-                                                  /tmp/ccHCSW0N.o
-AXISoCQuadCore::CPU1::PWMValue(unsigned long*, unsigned long*, unsigned long, unsigned long) /tmp/ccaZlH8M.o
-__clz_tab                                         /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clz.o)
-                                                  /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clzsi2.o)
-__clzsi2                                          /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(_clzsi2.o)
-                                                  /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(floatunsisf.o)
-                                                  /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(mulsf3.o)
-__floatunsisf                                     /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(floatunsisf.o)
-                                                  /tmp/ccaZlH8M.o
-__mulsf3                                          /opt/riscv32imc/lib/gcc/riscv32-unknown-elf/8.2.0/libgcc.a(mulsf3.o)
-                                                  /tmp/ccaZlH8M.o
-main                                              /tmp/ccHCSW0N.o
-                                                  /tmp/ccaXVylM.o
+AXISoCQuadCore::CPU1::Bit(bool)                   /tmp/ccBOxWPg.o
+AXISoCQuadCore::CPU1::Byte(unsigned char)         /tmp/ccBOxWPg.o
+AXISoCQuadCore::CPU1::EndTX()                     /tmp/ccBOxWPg.o
+AXISoCQuadCore::CPU1::EntryPoint()                /tmp/ccBOxWPg.o
+                                                  /tmp/ccLN13Uf.o
+AXISoCQuadCore::CPU1::HoldValue(bool, unsigned long) /tmp/ccBOxWPg.o
+AXISoCQuadCore::CPU1::PWMValue(unsigned long*, unsigned long*, unsigned long, unsigned long) /tmp/ccBOxWPg.o
+AXISoCQuadCore::CPU1::Word(unsigned long)         /tmp/ccBOxWPg.o
+main                                              /tmp/ccLN13Uf.o
+                                                  /tmp/ccVCMfCj.o

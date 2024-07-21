@@ -9,10 +9,11 @@ namespace axi.modules
         public FIFOModuleInputs() : this(8) { }
         public FIFOModuleInputs(int width)
         {
+            iWData = new RTLBitArray(false).Resized(width);
         }
 
         public bool iWE;
-        public byte iWData;
+        public RTLBitArray iWData;
         public bool iRE;
     }
 

@@ -113,7 +113,8 @@ namespace QuSoC.Tests
 
                 ClockCycle();
             }
-            Trace.WriteLine($"Completed");
+            Trace.WriteLine($"Completed in {Duration}");
+            Trace.WriteLine($"Clock: {ClockCycles}");
             Trace.WriteLine($"CPS: {CPS} ");
 
             runtime.Stop();

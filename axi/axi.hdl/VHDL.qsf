@@ -1288,6 +1288,8 @@ set_global_assignment -name VHDL_FILE VHDL/generated/AXI4WriteInteconnectModule_
 set_global_assignment -name VHDL_FILE VHDL/generated/AXI4WriteInteconnectModule_1x2/AXI4WriteInteconnectModule_1x2_TopLevel_TransactionDetectors0.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/AXI4WriteInteconnectModule_1x2/AXI4WriteInteconnectModule_1x2_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXI4WriteInteconnectModule_1x2.vwf
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4WS2812Module_B4_50/AXI4WS2812Module_B4_50_TopLevel_axiSlave.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4WS2812Module_B4_50/AXI4WS2812Module_B4_50_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/AXIConfirmModule/AXIConfirmModule_TopLevel_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/AXIConfirmModule/AXIConfirmModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AXIConfirmModule.vwf
@@ -1340,6 +1342,7 @@ set_global_assignment -name VHDL_FILE VHDL/generated/FIFOModule_8_8/FIFOModule_8
 set_global_assignment -name VHDL_FILE VHDL/generated/GrayCodeEncodeModule_4/GrayCodeEncodeModule_4_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/GrayCodeModule_4/GrayCodeModule_4_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/PWMModule/PWMModule_TopLevel.vhdl
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/PWMModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/RangeDetectorArrayModule4/RangeDetectorArrayModule4_TopLevel_encoder.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/RangeDetectorArrayModule4/RangeDetectorArrayModule4_TopLevel_rangeDetectors0.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/RangeDetectorArrayModule4/RangeDetectorArrayModule4_TopLevel_rangeDetectors1.vhdl
@@ -1363,5 +1366,3 @@ set_global_assignment -name VHDL_FILE Quokka.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/TransactionDetectorModule/TransactionDetectorModule_TopLevel_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/TransactionDetectorModule/TransactionDetectorModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/TransactionDetectorModule.vwf
-
-set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/PWMModule.vwf

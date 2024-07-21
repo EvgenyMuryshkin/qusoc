@@ -58,6 +58,7 @@ namespace AXISoC
         
         internal AXI4UARTModule uart = new AXI4UARTModule(axiSize.B4, 256, 434);//115200
         internal AXI4PWMModule pwm = new AXI4PWMModule(axiSize.B4, 8, 1_000_000);// 20ms per pwm period, 1M clock on 50MHz
+        internal AXI4WS2812Module ws2812 = new AXI4WS2812Module(axiSize.B4, 50000000);
 
         internal AXI4InteconnectModule cpu0Interconnect = new AXI4InteconnectModule(
             axiSize.B4,
@@ -120,7 +121,8 @@ namespace AXISoC
                 new RangeInfo(0x80000100, 0x80000104),// switches
                 new RangeInfo(0x80000200, 0x8000020C),// buttons
                 new RangeInfo(0x90000000, 0x90000003),// uart
-                new RangeInfo(0x90000100, 0x90000200),// pwm,
+                new RangeInfo(0x90000100, 0x900001FC),// pwm,
+                new RangeInfo(0x90000200, 0x90000204),// ws2812,
             }
         );
 
@@ -357,6 +359,10 @@ namespace AXISoC
             { 
                 M2S = ioInterconnect.oM2S[8]
             });
+            ws2812.Schedule(() => new()
+            { 
+                M2S = ioInterconnect.oM2S[9]
+            });
 
             ioInterconnect.Schedule(() => new ()
             {
@@ -375,7 +381,8 @@ namespace AXISoC
                     Switches.S2M,
                     Buttons.S2M,
                     uart.oS2M,
-                    pwm.oS2M
+                    pwm.oS2M,
+                    ws2812.oS2M
                 ]
             });
         }
@@ -390,5 +397,6 @@ namespace AXISoC
         public bool oRXValid => uart.oRXValid;
 
         public bool[] oPWM => pwm.oPWM;
+        public bool oWS2812 => ws2812.oTX;
     }
 }

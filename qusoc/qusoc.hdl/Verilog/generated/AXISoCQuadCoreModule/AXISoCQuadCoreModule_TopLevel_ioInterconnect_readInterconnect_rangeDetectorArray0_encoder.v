@@ -32,9 +32,10 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 	input wire iValues6,
 	input wire iValues7,
 	input wire iValues8,
+	input wire iValues9,
 	output wire HasActive,
 	output wire [3:0] MSBIndex,
-	output wire [8:0] MSBValue
+	output wire [9:0] MSBValue
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -44,7 +45,7 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire signed [4: 0] inputWidth = 5'b01001;
+	wire signed [4: 0] inputWidth = 5'b01010;
 	wire signed [3: 0] resultWidth = 4'b0100;
 	wire AXI4EncoderModule_L31F46T51_Expr = 1'b0;
 	wire AXI4EncoderModule_L46F31T36_Expr = 1'b0;
@@ -57,17 +58,17 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 	wire [3: 0] AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T62_Resize;
 	reg AXI4EncoderModule_L45F13L54T14_result;
 	integer idx1;
-	wire [8: 0] AXI4EncoderModule_L59F40T101_ShiftLeft;
-	wire [8: 0] AXI4EncoderModule_L59F40T121_Resize;
-	wire [8: 0] AXI4EncoderModule_L59F40T101_Expr;
-	wire [8: 0] AXI4EncoderModule_L59F40T101_Expr_1;
-	wire Inputs_iValues [0 : 8];
+	wire [9: 0] AXI4EncoderModule_L59F40T101_ShiftLeft;
+	wire [9: 0] AXI4EncoderModule_L59F40T121_Resize;
+	wire [9: 0] AXI4EncoderModule_L59F40T101_Expr;
+	wire [9: 0] AXI4EncoderModule_L59F40T101_Expr_1;
+	wire Inputs_iValues [0 : 9];
 	assign AXI4EncoderModule_L59F40T101_Expr = (AXI4EncoderModule_L59F40T101_Expr_1 << internalEncoded);
 	always @ (*)
 	begin
-		idx = 9;
+		idx = 10;
 		AXI4EncoderModule_L30F13L39T14_result = AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize;
-		for (idx = 9; (idx > 0); idx = (idx - 1))
+		for (idx = 10; (idx > 0); idx = (idx - 1))
 		begin
 			if (Inputs_iValues[(idx - 1)])
 			begin
@@ -79,7 +80,7 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 	begin
 		idx1 = 0;
 		AXI4EncoderModule_L45F13L54T14_result = AXI4EncoderModule_L46F31T36_Expr;
-		for (idx1 = 0; (idx1 < 9); idx1 = (idx1 + 1))
+		for (idx1 = 0; (idx1 < 10); idx1 = (idx1 + 1))
 		begin
 			if (Inputs_iValues[idx1])
 			begin
@@ -88,7 +89,7 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 		end
 	end
 	assign AXI4EncoderModule_L59F40T101_Expr_1 = {
-		{8{1'b0}},
+		{9{1'b0}},
 		internalHasActive
 	}
 	;
@@ -101,6 +102,7 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 	assign Inputs_iValues[6] = iValues6;
 	assign Inputs_iValues[7] = iValues7;
 	assign Inputs_iValues[8] = iValues8;
+	assign Inputs_iValues[9] = iValues9;
 	assign AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize = {
 		{3{1'b0}},
 		AXI4EncoderModule_L31F46T51_Expr

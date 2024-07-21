@@ -16,7 +16,12 @@ module top (
     output wire ck_io30,
     output wire ck_io31,
     output wire ck_io32,
-    output wire ck_io33
+    output wire ck_io33,
+    output wire ck_io41,    
+    output wire ck_io40,    
+    output wire ck_io39,    
+    output wire ck_io38,    
+    output wire ck_io37    
 );
 
    wire clk100;
@@ -98,6 +103,11 @@ module top (
   assign led[2] = reg2[0];
   assign led[3] = reg3[0];
   
+  assign ck_io41 = reg3[0];
+  assign ck_io40 = reg2[0];
+  assign ck_io39 = reg1[0];
+  assign ck_io38 = reg0[0];
+
   AXISoCQuadCoreModule_TopLevel AXISoCQuadCoreModule_TopLevel
   (
     .Clock (clk50),
@@ -123,6 +133,7 @@ module top (
     .oPWM4(ck_io30),
     .oPWM5(ck_io31),
     .oPWM6(ck_io32),
-    .oPWM7(ck_io33)
+    .oPWM7(ck_io33),
+    .oWS2812(ck_io37)
   );
 endmodule
