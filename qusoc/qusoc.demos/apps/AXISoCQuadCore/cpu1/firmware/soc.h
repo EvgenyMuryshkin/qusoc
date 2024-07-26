@@ -9,3 +9,4 @@
 #define AXISoCQuadCore_SOC_PWM1 (*(volatile uint32_t*)0x90000104)
 #define AXISoCQuadCore_SOC_PWM2 (*(volatile uint32_t*)0x90000108)
 #define AXISoCQuadCore_SOC_WS2812 (*(volatile uint32_t*)0x90000200)
+#define AXISoCQuadCore_SOC_WS2812_Ptr ((volatile uint32_t*)0x90000200)

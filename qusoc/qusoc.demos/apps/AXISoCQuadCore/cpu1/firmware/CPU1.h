@@ -11,10 +11,12 @@ namespace AXISoCQuadCore
 			static void EntryPoint();
 
 		private:
+			static void Run();
 			static uint8_t stopSign[];
 			static uint8_t rightArrow[];
 			static uint8_t leftArrow[];
-			static void PWMValue(uint32_t* pwmPtr, uint32_t* stepPtr, uint32_t min, uint32_t max);
+			void PWMTest();
+			void WS2812Test();
 			static void HoldValue(bool value, uint32_t clocks);
 			static void Bit(bool value);
 			static void Byte(uint8_t value);

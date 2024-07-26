@@ -2,6 +2,7 @@
 #define WAIT_H
 #include <stdint.h>
 #include <stdbool.h>
+#include "soc.h"
 
 namespace AXISoCQuadCore
 {
@@ -14,13 +15,36 @@ namespace AXISoCQuadCore
 	class Wait
 	{
 		public:
-			static void Clocks(volatile uint32_t* autoDecrement, uint32_t clocks);
+			static void Clocks(volatile uint32_t* autoDecrement, uint32_t clocks)
+			{
+				*autoDecrement = clocks;
+				while (*autoDecrement != 0) {}
+			}
 	};
 
-	class CPU1Wait : public IWait
+	class CPUWait : public IWait
+	{
+		protected:
+			volatile uint32_t* autoDecrement;
+		public:
+			CPUWait(volatile uint32_t* autoDecrement)
+			{
+				this->autoDecrement = autoDecrement;
+			}
+	};
+
+	class CPU1Wait : public CPUWait
 	{
 		public:
-			 void Clocks(uint32_t clocks);
+			CPU1Wait() : CPUWait(AXISoCQuadCore_SOC_CPU1_AutoDecrement_Ptr)
+			{
+
+			}
+
+			void Clocks(uint32_t clocks)
+			{
+				Wait::Clocks(autoDecrement, clocks);
+			}
 	};
 }
 #endif

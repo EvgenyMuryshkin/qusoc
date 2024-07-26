@@ -1,7 +1,18 @@
 
 Discarded input sections
 
- .group         0x00000000        0xc /tmp/ccTo6t0e.o
+ .group         0x00000000        0xc /tmp/ccCtgUx1.o
+ .group         0x00000000        0xc /tmp/ccCtgUx1.o
+ .group         0x00000000        0xc /tmp/ccCtgUx1.o
+ .group         0x00000000        0xc /tmp/ccCtgUx1.o
+ .group         0x00000000        0xc /tmp/ccCtgUx1.o
+ .group         0x00000000        0xc /tmp/ccCtgUx1.o
+ .group         0x00000000        0xc /tmp/ccCtgUx1.o
+ .group         0x00000000        0x8 /tmp/ccCtgUx1.o
+ .group         0x00000000        0xc /tmp/ccCtgUx1.o
+ .group         0x00000000        0xc /tmp/ccCtgUx1.o
+ .group         0x00000000        0xc /tmp/ccCtgUx1.o
+ .group         0x00000000        0xc /tmp/ccCtgUx1.o
 
 Memory Configuration
 
@@ -12,84 +23,130 @@ RAM              0x00000000         0x00008000         xrw
 Linker script and memory map
 
 
-.text           0x00000000      0x6cc
+.text           0x00000000      0xcac
                 0x00000000                        . = ALIGN (0x4)
  *(.text)
- .text          0x00000000        0xc /tmp/cclS4nue.o
- .text          0x0000000c      0x428 /tmp/ccIgMUhe.o
+ .text          0x00000000        0xc /tmp/ccppf0jY.o
+ .text          0x0000000c      0x5c4 /tmp/ccCtgUx1.o
                 0x0000000c                AXISoCQuadCore::CPU1::EntryPoint()
-                0x00000100                AXISoCQuadCore::CPU1::WS2812_ByteArray(unsigned long, unsigned long, unsigned char*)
-                0x000001c4                AXISoCQuadCore::CPU1::PWMValue(unsigned long*, unsigned long*, unsigned long, unsigned long)
-                0x0000026c                AXISoCQuadCore::CPU1::HoldValue(bool, unsigned long)
-                0x000002d4                AXISoCQuadCore::CPU1::Bit(bool)
-                0x0000033c                AXISoCQuadCore::CPU1::Byte(unsigned char)
-                0x000003b0                AXISoCQuadCore::CPU1::Word(unsigned long)
-                0x00000400                AXISoCQuadCore::CPU1::EndTX()
- .text          0x00000434       0x28 /tmp/ccskGuMd.o
-                0x00000434                main
- .text          0x0000045c       0x88 /tmp/ccTo6t0e.o
-                0x0000045c                AXISoCQuadCore::Wait::Clocks(unsigned long volatile*, unsigned long)
-                0x000004a8                AXISoCQuadCore::CPU1Wait::Clocks(unsigned long)
+                0x0000003c                AXISoCQuadCore::CPU1::Run()
+                0x00000124                AXISoCQuadCore::CPU1::WS2812Test()
+                0x00000230                AXISoCQuadCore::CPU1::PWMTest()
+                0x00000344                AXISoCQuadCore::CPU1::WS2812_ByteArray(unsigned long, unsigned long, unsigned char*)
+                0x00000408                AXISoCQuadCore::CPU1::HoldValue(bool, unsigned long)
+                0x00000470                AXISoCQuadCore::CPU1::Bit(bool)
+                0x000004d8                AXISoCQuadCore::CPU1::Byte(unsigned char)
+                0x0000054c                AXISoCQuadCore::CPU1::Word(unsigned long)
+                0x0000059c                AXISoCQuadCore::CPU1::EndTX()
+ .text          0x000005d0       0x28 /tmp/ccr2K7UY.o
+                0x000005d0                main
  *(.text*)
+ .text._ZN14AXISoCQuadCore4Wait6ClocksEPVmm
+                0x000005f8       0x4c /tmp/ccCtgUx1.o
+                0x000005f8                AXISoCQuadCore::Wait::Clocks(unsigned long volatile*, unsigned long)
+ .text._ZN14AXISoCQuadCore5IWaitC2Ev
+                0x00000644       0x30 /tmp/ccCtgUx1.o
+                0x00000644                AXISoCQuadCore::IWait::IWait()
+                0x00000644                AXISoCQuadCore::IWait::IWait()
+ .text._ZN14AXISoCQuadCore7CPUWaitC2EPVm
+                0x00000674       0x54 /tmp/ccCtgUx1.o
+                0x00000674                AXISoCQuadCore::CPUWait::CPUWait(unsigned long volatile*)
+                0x00000674                AXISoCQuadCore::CPUWait::CPUWait(unsigned long volatile*)
+ .text._ZN14AXISoCQuadCore8CPU1WaitC2Ev
+                0x000006c8       0x4c /tmp/ccCtgUx1.o
+                0x000006c8                AXISoCQuadCore::CPU1Wait::CPU1Wait()
+                0x000006c8                AXISoCQuadCore::CPU1Wait::CPU1Wait()
+ .text._ZN14AXISoCQuadCore8CPU1Wait6ClocksEm
+                0x00000714       0x40 /tmp/ccCtgUx1.o
+                0x00000714                AXISoCQuadCore::CPU1Wait::Clocks(unsigned long)
+ .text._ZN14AXISoCQuadCore11HardwarePWM4StepEPmS1_mm
+                0x00000754       0xa8 /tmp/ccCtgUx1.o
+                0x00000754                AXISoCQuadCore::HardwarePWM::Step(unsigned long*, unsigned long*, unsigned long, unsigned long)
+ .text._ZN14AXISoCQuadCore14HardwareWS28124WordEm
+                0x000007fc       0x54 /tmp/ccCtgUx1.o
+                0x000007fc                AXISoCQuadCore::HardwareWS2812::Word(unsigned long)
+ .text._ZN14AXISoCQuadCore14HardwareWS2812C2EPNS_5IWaitEPVm
+                0x00000850       0x40 /tmp/ccCtgUx1.o
+                0x00000850                AXISoCQuadCore::HardwareWS2812::HardwareWS2812(AXISoCQuadCore::IWait*, unsigned long volatile*)
+                0x00000850                AXISoCQuadCore::HardwareWS2812::HardwareWS2812(AXISoCQuadCore::IWait*, unsigned long volatile*)
+ .text._ZN14AXISoCQuadCore14HardwareWS28129ByteArrayEmmPh
+                0x00000890       0xe4 /tmp/ccCtgUx1.o
+                0x00000890                AXISoCQuadCore::HardwareWS2812::ByteArray(unsigned long, unsigned long, unsigned char*)
  *(.rodata)
  *(.rodata*)
  .rodata._ZTVN14AXISoCQuadCore8CPU1WaitE
-                0x000004e4        0xc /tmp/ccTo6t0e.o
-                0x000004e4                vtable for AXISoCQuadCore::CPU1Wait
+                0x00000974        0xc /tmp/ccCtgUx1.o
+                0x00000974                vtable for AXISoCQuadCore::CPU1Wait
+ .rodata._ZTVN14AXISoCQuadCore7CPUWaitE
+                0x00000980        0xc /tmp/ccCtgUx1.o
+                0x00000980                vtable for AXISoCQuadCore::CPUWait
+ .rodata._ZTVN14AXISoCQuadCore5IWaitE
+                0x0000098c        0xc /tmp/ccCtgUx1.o
+                0x0000098c                vtable for AXISoCQuadCore::IWait
  *(.srodata)
  *(.srodata*)
  *(.eh_frame)
- .eh_frame      0x000004f0      0x140 /tmp/ccIgMUhe.o
- .eh_frame      0x00000630       0x3c /tmp/ccskGuMd.o
- .eh_frame      0x0000066c       0x60 /tmp/ccTo6t0e.o
+ .eh_frame      0x00000998      0x2d8 /tmp/ccCtgUx1.o
+ .eh_frame      0x00000c70       0x3c /tmp/ccr2K7UY.o
  *(.eh_frame*)
-                0x000006cc                        . = ALIGN (0x4)
-                0x000006cc                        _etext = .
-                0x000006cc                        _sidata = _etext
+                0x00000cac                        . = ALIGN (0x4)
+                0x00000cac                        _etext = .
+                0x00000cac                        _sidata = _etext
 
-.data           0x000006cc       0x18
-                0x000006cc                        . = ALIGN (0x4)
-                0x000006cc                        _sdata = .
-                0x000006cc                        _ram_start = .
+.rela.dyn       0x00000cac        0x0
+ .rela.text._ZN14AXISoCQuadCore5IWaitC2Ev
+                0x00000cac        0x0 /tmp/ccppf0jY.o
+ .rela.text._ZN14AXISoCQuadCore7CPUWaitC2EPVm
+                0x00000cac        0x0 /tmp/ccppf0jY.o
+ .rela.text._ZN14AXISoCQuadCore8CPU1WaitC2Ev
+                0x00000cac        0x0 /tmp/ccppf0jY.o
+ .rela.rodata._ZTVN14AXISoCQuadCore8CPU1WaitE
+                0x00000cac        0x0 /tmp/ccppf0jY.o
+ .rela.rodata._ZTVN14AXISoCQuadCore7CPUWaitE
+                0x00000cac        0x0 /tmp/ccppf0jY.o
+ .rela.rodata._ZTVN14AXISoCQuadCore5IWaitE
+                0x00000cac        0x0 /tmp/ccppf0jY.o
+
+.data           0x00000cac       0x18
+                0x00000cac                        . = ALIGN (0x4)
+                0x00000cac                        _sdata = .
+                0x00000cac                        _ram_start = .
  *(.data)
- .data          0x000006cc        0x0 /tmp/cclS4nue.o
- .data          0x000006cc        0x0 /tmp/ccIgMUhe.o
- .data          0x000006cc        0x0 /tmp/ccskGuMd.o
- .data          0x000006cc        0x0 /tmp/ccTo6t0e.o
+ .data          0x00000cac        0x0 /tmp/ccppf0jY.o
+ .data          0x00000cac        0x0 /tmp/ccCtgUx1.o
+ .data          0x00000cac        0x0 /tmp/ccr2K7UY.o
  *(.data*)
  *(.sdata)
- .sdata         0x000006cc       0x18 /tmp/ccIgMUhe.o
-                0x000006cc                AXISoCQuadCore::CPU1::stopSign
-                0x000006d4                AXISoCQuadCore::CPU1::rightArrow
-                0x000006dc                AXISoCQuadCore::CPU1::leftArrow
+ .sdata         0x00000cac       0x18 /tmp/ccCtgUx1.o
+                0x00000cac                AXISoCQuadCore::CPU1::stopSign
+                0x00000cb4                AXISoCQuadCore::CPU1::rightArrow
+                0x00000cbc                AXISoCQuadCore::CPU1::leftArrow
  *(.sdata*)
  *(.init_array)
  *(.init_array*)
-                0x000006e4                        . = ALIGN (0x4)
-                0x000006e4                        _edata = .
+                0x00000cc4                        . = ALIGN (0x4)
+                0x00000cc4                        _edata = .
 
-.bss            0x000006e4        0x0
-                0x000006e4                        . = ALIGN (0x4)
-                0x000006e4                        _sbss = .
+.bss            0x00000cc4        0x0
+                0x00000cc4                        . = ALIGN (0x4)
+                0x00000cc4                        _sbss = .
  *(.bss)
- .bss           0x000006e4        0x0 /tmp/cclS4nue.o
- .bss           0x000006e4        0x0 /tmp/ccIgMUhe.o
- .bss           0x000006e4        0x0 /tmp/ccskGuMd.o
- .bss           0x000006e4        0x0 /tmp/ccTo6t0e.o
+ .bss           0x00000cc4        0x0 /tmp/ccppf0jY.o
+ .bss           0x00000cc4        0x0 /tmp/ccCtgUx1.o
+ .bss           0x00000cc4        0x0 /tmp/ccr2K7UY.o
  *(.bss*)
  *(.sbss)
  *(.sbss*)
  *(COMMON)
-                0x000006e4                        . = ALIGN (0x4)
-                0x000006e4                        _ebss = .
+                0x00000cc4                        . = ALIGN (0x4)
+                0x00000cc4                        _ebss = .
 
-.heap           0x000006e4        0x0
-                0x000006e4                        . = ALIGN (0x4)
-                0x000006e4                        _heap_start = .
-LOAD /tmp/cclS4nue.o
-LOAD /tmp/ccIgMUhe.o
-LOAD /tmp/ccskGuMd.o
-LOAD /tmp/ccTo6t0e.o
+.heap           0x00000cc4        0x0
+                0x00000cc4                        . = ALIGN (0x4)
+                0x00000cc4                        _heap_start = .
+LOAD /tmp/ccppf0jY.o
+LOAD /tmp/ccCtgUx1.o
+LOAD /tmp/ccr2K7UY.o
 LOAD /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a
 START GROUP
 LOAD /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libc.a
@@ -101,38 +158,50 @@ OUTPUT(firmware.elf elf32-littleriscv)
 .riscv.attributes
                 0x00000000       0x1c
  .riscv.attributes
-                0x00000000       0x1a /tmp/cclS4nue.o
+                0x00000000       0x1a /tmp/ccppf0jY.o
  .riscv.attributes
-                0x0000001a       0x1c /tmp/ccIgMUhe.o
+                0x0000001a       0x1c /tmp/ccCtgUx1.o
  .riscv.attributes
-                0x00000036       0x1c /tmp/ccskGuMd.o
- .riscv.attributes
-                0x00000052       0x1c /tmp/ccTo6t0e.o
+                0x00000036       0x1c /tmp/ccr2K7UY.o
 
 .comment        0x00000000       0x33
- .comment       0x00000000       0x33 /tmp/ccIgMUhe.o
+ .comment       0x00000000       0x33 /tmp/ccCtgUx1.o
                                  0x34 (size before relaxing)
- .comment       0x00000033       0x34 /tmp/ccskGuMd.o
- .comment       0x00000033       0x34 /tmp/ccTo6t0e.o
+ .comment       0x00000033       0x34 /tmp/ccr2K7UY.o
 
 Cross Reference Table
 
 Symbol                                            File
-AXISoCQuadCore::CPU1::Bit(bool)                   /tmp/ccIgMUhe.o
-AXISoCQuadCore::CPU1::Byte(unsigned char)         /tmp/ccIgMUhe.o
-AXISoCQuadCore::CPU1::EndTX()                     /tmp/ccIgMUhe.o
-AXISoCQuadCore::CPU1::EntryPoint()                /tmp/ccIgMUhe.o
-                                                  /tmp/ccskGuMd.o
-AXISoCQuadCore::CPU1::HoldValue(bool, unsigned long) /tmp/ccIgMUhe.o
-AXISoCQuadCore::CPU1::PWMValue(unsigned long*, unsigned long*, unsigned long, unsigned long) /tmp/ccIgMUhe.o
-AXISoCQuadCore::CPU1::WS2812_ByteArray(unsigned long, unsigned long, unsigned char*) /tmp/ccIgMUhe.o
-AXISoCQuadCore::CPU1::Word(unsigned long)         /tmp/ccIgMUhe.o
-AXISoCQuadCore::CPU1::leftArrow                   /tmp/ccIgMUhe.o
-AXISoCQuadCore::CPU1::rightArrow                  /tmp/ccIgMUhe.o
-AXISoCQuadCore::CPU1::stopSign                    /tmp/ccIgMUhe.o
-AXISoCQuadCore::CPU1Wait::Clocks(unsigned long)   /tmp/ccTo6t0e.o
-AXISoCQuadCore::Wait::Clocks(unsigned long volatile*, unsigned long) /tmp/ccTo6t0e.o
-                                                  /tmp/ccIgMUhe.o
-main                                              /tmp/ccskGuMd.o
-                                                  /tmp/cclS4nue.o
-vtable for AXISoCQuadCore::CPU1Wait               /tmp/ccTo6t0e.o
+AXISoCQuadCore::CPU1::Bit(bool)                   /tmp/ccCtgUx1.o
+AXISoCQuadCore::CPU1::Byte(unsigned char)         /tmp/ccCtgUx1.o
+AXISoCQuadCore::CPU1::EndTX()                     /tmp/ccCtgUx1.o
+AXISoCQuadCore::CPU1::EntryPoint()                /tmp/ccCtgUx1.o
+                                                  /tmp/ccr2K7UY.o
+AXISoCQuadCore::CPU1::HoldValue(bool, unsigned long) /tmp/ccCtgUx1.o
+AXISoCQuadCore::CPU1::PWMTest()                   /tmp/ccCtgUx1.o
+AXISoCQuadCore::CPU1::Run()                       /tmp/ccCtgUx1.o
+AXISoCQuadCore::CPU1::WS2812Test()                /tmp/ccCtgUx1.o
+AXISoCQuadCore::CPU1::WS2812_ByteArray(unsigned long, unsigned long, unsigned char*) /tmp/ccCtgUx1.o
+AXISoCQuadCore::CPU1::Word(unsigned long)         /tmp/ccCtgUx1.o
+AXISoCQuadCore::CPU1::leftArrow                   /tmp/ccCtgUx1.o
+AXISoCQuadCore::CPU1::rightArrow                  /tmp/ccCtgUx1.o
+AXISoCQuadCore::CPU1::stopSign                    /tmp/ccCtgUx1.o
+AXISoCQuadCore::CPU1Wait::CPU1Wait()              /tmp/ccCtgUx1.o
+AXISoCQuadCore::CPU1Wait::CPU1Wait()              /tmp/ccCtgUx1.o
+AXISoCQuadCore::CPU1Wait::Clocks(unsigned long)   /tmp/ccCtgUx1.o
+AXISoCQuadCore::CPUWait::CPUWait(unsigned long volatile*) /tmp/ccCtgUx1.o
+AXISoCQuadCore::CPUWait::CPUWait(unsigned long volatile*) /tmp/ccCtgUx1.o
+AXISoCQuadCore::HardwarePWM::Step(unsigned long*, unsigned long*, unsigned long, unsigned long) /tmp/ccCtgUx1.o
+AXISoCQuadCore::HardwareWS2812::ByteArray(unsigned long, unsigned long, unsigned char*) /tmp/ccCtgUx1.o
+AXISoCQuadCore::HardwareWS2812::HardwareWS2812(AXISoCQuadCore::IWait*, unsigned long volatile*) /tmp/ccCtgUx1.o
+AXISoCQuadCore::HardwareWS2812::HardwareWS2812(AXISoCQuadCore::IWait*, unsigned long volatile*) /tmp/ccCtgUx1.o
+AXISoCQuadCore::HardwareWS2812::Word(unsigned long) /tmp/ccCtgUx1.o
+AXISoCQuadCore::IWait::IWait()                    /tmp/ccCtgUx1.o
+AXISoCQuadCore::IWait::IWait()                    /tmp/ccCtgUx1.o
+AXISoCQuadCore::Wait::Clocks(unsigned long volatile*, unsigned long) /tmp/ccCtgUx1.o
+__cxa_pure_virtual                                /tmp/ccCtgUx1.o
+main                                              /tmp/ccr2K7UY.o
+                                                  /tmp/ccppf0jY.o
+vtable for AXISoCQuadCore::CPU1Wait               /tmp/ccCtgUx1.o
+vtable for AXISoCQuadCore::CPUWait                /tmp/ccCtgUx1.o
+vtable for AXISoCQuadCore::IWait                  /tmp/ccCtgUx1.o

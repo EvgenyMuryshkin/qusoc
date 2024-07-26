@@ -1,4 +1,4 @@
-files = start.S CPU1.cpp main.cpp Wait.cpp
+files = start.S CPU1.cpp main.cpp
 INC=-Igcc/libgcc/config/riscv -Igcc/include
 
 elf: $(files)
