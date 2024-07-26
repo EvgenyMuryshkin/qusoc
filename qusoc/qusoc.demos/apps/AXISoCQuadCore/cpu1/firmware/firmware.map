@@ -1,5 +1,7 @@
 
-There are no discarded input sections
+Discarded input sections
+
+ .group         0x00000000        0xc /tmp/ccTo6t0e.o
 
 Memory Configuration
 
@@ -10,69 +12,84 @@ RAM              0x00000000         0x00008000         xrw
 Linker script and memory map
 
 
-.text           0x00000000      0x4f8
+.text           0x00000000      0x6cc
                 0x00000000                        . = ALIGN (0x4)
  *(.text)
- .text          0x00000000        0xc /tmp/ccVCMfCj.o
- .text          0x0000000c      0x370 /tmp/ccBOxWPg.o
+ .text          0x00000000        0xc /tmp/cclS4nue.o
+ .text          0x0000000c      0x428 /tmp/ccIgMUhe.o
                 0x0000000c                AXISoCQuadCore::CPU1::EntryPoint()
-                0x0000010c                AXISoCQuadCore::CPU1::PWMValue(unsigned long*, unsigned long*, unsigned long, unsigned long)
-                0x000001b4                AXISoCQuadCore::CPU1::HoldValue(bool, unsigned long)
-                0x0000021c                AXISoCQuadCore::CPU1::Bit(bool)
-                0x00000284                AXISoCQuadCore::CPU1::Byte(unsigned char)
-                0x000002f8                AXISoCQuadCore::CPU1::Word(unsigned long)
-                0x00000348                AXISoCQuadCore::CPU1::EndTX()
- .text          0x0000037c       0x28 /tmp/ccLN13Uf.o
-                0x0000037c                main
+                0x00000100                AXISoCQuadCore::CPU1::WS2812_ByteArray(unsigned long, unsigned long, unsigned char*)
+                0x000001c4                AXISoCQuadCore::CPU1::PWMValue(unsigned long*, unsigned long*, unsigned long, unsigned long)
+                0x0000026c                AXISoCQuadCore::CPU1::HoldValue(bool, unsigned long)
+                0x000002d4                AXISoCQuadCore::CPU1::Bit(bool)
+                0x0000033c                AXISoCQuadCore::CPU1::Byte(unsigned char)
+                0x000003b0                AXISoCQuadCore::CPU1::Word(unsigned long)
+                0x00000400                AXISoCQuadCore::CPU1::EndTX()
+ .text          0x00000434       0x28 /tmp/ccskGuMd.o
+                0x00000434                main
+ .text          0x0000045c       0x88 /tmp/ccTo6t0e.o
+                0x0000045c                AXISoCQuadCore::Wait::Clocks(unsigned long volatile*, unsigned long)
+                0x000004a8                AXISoCQuadCore::CPU1Wait::Clocks(unsigned long)
  *(.text*)
  *(.rodata)
  *(.rodata*)
+ .rodata._ZTVN14AXISoCQuadCore8CPU1WaitE
+                0x000004e4        0xc /tmp/ccTo6t0e.o
+                0x000004e4                vtable for AXISoCQuadCore::CPU1Wait
  *(.srodata)
  *(.srodata*)
  *(.eh_frame)
- .eh_frame      0x000003a4      0x118 /tmp/ccBOxWPg.o
- .eh_frame      0x000004bc       0x3c /tmp/ccLN13Uf.o
+ .eh_frame      0x000004f0      0x140 /tmp/ccIgMUhe.o
+ .eh_frame      0x00000630       0x3c /tmp/ccskGuMd.o
+ .eh_frame      0x0000066c       0x60 /tmp/ccTo6t0e.o
  *(.eh_frame*)
-                0x000004f8                        . = ALIGN (0x4)
-                0x000004f8                        _etext = .
-                0x000004f8                        _sidata = _etext
+                0x000006cc                        . = ALIGN (0x4)
+                0x000006cc                        _etext = .
+                0x000006cc                        _sidata = _etext
 
-.data           0x000004f8        0x0
-                0x000004f8                        . = ALIGN (0x4)
-                0x000004f8                        _sdata = .
-                0x000004f8                        _ram_start = .
+.data           0x000006cc       0x18
+                0x000006cc                        . = ALIGN (0x4)
+                0x000006cc                        _sdata = .
+                0x000006cc                        _ram_start = .
  *(.data)
- .data          0x000004f8        0x0 /tmp/ccVCMfCj.o
- .data          0x000004f8        0x0 /tmp/ccBOxWPg.o
- .data          0x000004f8        0x0 /tmp/ccLN13Uf.o
+ .data          0x000006cc        0x0 /tmp/cclS4nue.o
+ .data          0x000006cc        0x0 /tmp/ccIgMUhe.o
+ .data          0x000006cc        0x0 /tmp/ccskGuMd.o
+ .data          0x000006cc        0x0 /tmp/ccTo6t0e.o
  *(.data*)
  *(.sdata)
+ .sdata         0x000006cc       0x18 /tmp/ccIgMUhe.o
+                0x000006cc                AXISoCQuadCore::CPU1::stopSign
+                0x000006d4                AXISoCQuadCore::CPU1::rightArrow
+                0x000006dc                AXISoCQuadCore::CPU1::leftArrow
  *(.sdata*)
  *(.init_array)
  *(.init_array*)
-                0x000004f8                        . = ALIGN (0x4)
-                0x000004f8                        _edata = .
+                0x000006e4                        . = ALIGN (0x4)
+                0x000006e4                        _edata = .
 
-.bss            0x000004f8        0x0
-                0x000004f8                        . = ALIGN (0x4)
-                0x000004f8                        _sbss = .
+.bss            0x000006e4        0x0
+                0x000006e4                        . = ALIGN (0x4)
+                0x000006e4                        _sbss = .
  *(.bss)
- .bss           0x000004f8        0x0 /tmp/ccVCMfCj.o
- .bss           0x000004f8        0x0 /tmp/ccBOxWPg.o
- .bss           0x000004f8        0x0 /tmp/ccLN13Uf.o
+ .bss           0x000006e4        0x0 /tmp/cclS4nue.o
+ .bss           0x000006e4        0x0 /tmp/ccIgMUhe.o
+ .bss           0x000006e4        0x0 /tmp/ccskGuMd.o
+ .bss           0x000006e4        0x0 /tmp/ccTo6t0e.o
  *(.bss*)
  *(.sbss)
  *(.sbss*)
  *(COMMON)
-                0x000004f8                        . = ALIGN (0x4)
-                0x000004f8                        _ebss = .
+                0x000006e4                        . = ALIGN (0x4)
+                0x000006e4                        _ebss = .
 
-.heap           0x000004f8        0x0
-                0x000004f8                        . = ALIGN (0x4)
-                0x000004f8                        _heap_start = .
-LOAD /tmp/ccVCMfCj.o
-LOAD /tmp/ccBOxWPg.o
-LOAD /tmp/ccLN13Uf.o
+.heap           0x000006e4        0x0
+                0x000006e4                        . = ALIGN (0x4)
+                0x000006e4                        _heap_start = .
+LOAD /tmp/cclS4nue.o
+LOAD /tmp/ccIgMUhe.o
+LOAD /tmp/ccskGuMd.o
+LOAD /tmp/ccTo6t0e.o
 LOAD /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a
 START GROUP
 LOAD /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libc.a
@@ -84,27 +101,38 @@ OUTPUT(firmware.elf elf32-littleriscv)
 .riscv.attributes
                 0x00000000       0x1c
  .riscv.attributes
-                0x00000000       0x1a /tmp/ccVCMfCj.o
+                0x00000000       0x1a /tmp/cclS4nue.o
  .riscv.attributes
-                0x0000001a       0x1c /tmp/ccBOxWPg.o
+                0x0000001a       0x1c /tmp/ccIgMUhe.o
  .riscv.attributes
-                0x00000036       0x1c /tmp/ccLN13Uf.o
+                0x00000036       0x1c /tmp/ccskGuMd.o
+ .riscv.attributes
+                0x00000052       0x1c /tmp/ccTo6t0e.o
 
 .comment        0x00000000       0x33
- .comment       0x00000000       0x33 /tmp/ccBOxWPg.o
+ .comment       0x00000000       0x33 /tmp/ccIgMUhe.o
                                  0x34 (size before relaxing)
- .comment       0x00000033       0x34 /tmp/ccLN13Uf.o
+ .comment       0x00000033       0x34 /tmp/ccskGuMd.o
+ .comment       0x00000033       0x34 /tmp/ccTo6t0e.o
 
 Cross Reference Table
 
 Symbol                                            File
-AXISoCQuadCore::CPU1::Bit(bool)                   /tmp/ccBOxWPg.o
-AXISoCQuadCore::CPU1::Byte(unsigned char)         /tmp/ccBOxWPg.o
-AXISoCQuadCore::CPU1::EndTX()                     /tmp/ccBOxWPg.o
-AXISoCQuadCore::CPU1::EntryPoint()                /tmp/ccBOxWPg.o
-                                                  /tmp/ccLN13Uf.o
-AXISoCQuadCore::CPU1::HoldValue(bool, unsigned long) /tmp/ccBOxWPg.o
-AXISoCQuadCore::CPU1::PWMValue(unsigned long*, unsigned long*, unsigned long, unsigned long) /tmp/ccBOxWPg.o
-AXISoCQuadCore::CPU1::Word(unsigned long)         /tmp/ccBOxWPg.o
-main                                              /tmp/ccLN13Uf.o
-                                                  /tmp/ccVCMfCj.o
+AXISoCQuadCore::CPU1::Bit(bool)                   /tmp/ccIgMUhe.o
+AXISoCQuadCore::CPU1::Byte(unsigned char)         /tmp/ccIgMUhe.o
+AXISoCQuadCore::CPU1::EndTX()                     /tmp/ccIgMUhe.o
+AXISoCQuadCore::CPU1::EntryPoint()                /tmp/ccIgMUhe.o
+                                                  /tmp/ccskGuMd.o
+AXISoCQuadCore::CPU1::HoldValue(bool, unsigned long) /tmp/ccIgMUhe.o
+AXISoCQuadCore::CPU1::PWMValue(unsigned long*, unsigned long*, unsigned long, unsigned long) /tmp/ccIgMUhe.o
+AXISoCQuadCore::CPU1::WS2812_ByteArray(unsigned long, unsigned long, unsigned char*) /tmp/ccIgMUhe.o
+AXISoCQuadCore::CPU1::Word(unsigned long)         /tmp/ccIgMUhe.o
+AXISoCQuadCore::CPU1::leftArrow                   /tmp/ccIgMUhe.o
+AXISoCQuadCore::CPU1::rightArrow                  /tmp/ccIgMUhe.o
+AXISoCQuadCore::CPU1::stopSign                    /tmp/ccIgMUhe.o
+AXISoCQuadCore::CPU1Wait::Clocks(unsigned long)   /tmp/ccTo6t0e.o
+AXISoCQuadCore::Wait::Clocks(unsigned long volatile*, unsigned long) /tmp/ccTo6t0e.o
+                                                  /tmp/ccIgMUhe.o
+main                                              /tmp/ccskGuMd.o
+                                                  /tmp/cclS4nue.o
+vtable for AXISoCQuadCore::CPU1Wait               /tmp/ccTo6t0e.o

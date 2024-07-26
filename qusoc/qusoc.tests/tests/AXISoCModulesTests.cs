@@ -234,15 +234,18 @@ namespace QuSoC.Tests
                     var cpu1Instructions = FirmwareTools.FromFolder(@"C:\code\qusoc\qusoc\qusoc.demos\apps\AXISoCQuadCore\cpu1");
                     //var tools = new FirmwareTools(@"C:\code\qusoc\qusoc\qusoc.demos\apps\AXISoCQuadCore\cpu1");
                     //var cpu1Instructions = tools.Instructions();
-
+                    var looped = new[] { 0x0000006FU };
                     var topLevel = new AXISoCQuadCoreModule(
                         cpu1Instructions,
-                        cpu1Instructions,
-                        cpu1Instructions,
-                        cpu1Instructions
+                        looped,
+                        looped,
+                        looped
                     );
 
                     var sim = new AXISoCQuadCoreModuleSimulator<AXISoCQuadCoreModule>(topLevel);
+
+                    var reg1Values = new List<int>();
+                    topLevel.Reg1.State.bytes[3] = 255;
 
                     sim.RunToCompletion(() =>
                     {
@@ -250,6 +253,21 @@ namespace QuSoC.Tests
                         int reg1 = new RTLBitArray(topLevel.Reg1.outData);
                         int reg2 = new RTLBitArray(topLevel.Reg2.outData);
                         int reg3 = new RTLBitArray(topLevel.Reg3.outData);
+
+                        //if (!reg1Values.Contains(reg1))
+                        //    reg1Values.Add(reg1);
+
+                        if (topLevel.Reg1.State.bytes[3] != 255)
+                        {
+                            reg1Values.Add(reg1);
+                            topLevel.Reg1.State.bytes[3] = 255;
+                        }
+
+
+                        if (topLevel.CPU0.CPU.State.State == CPUState.IF && topLevel.CPU0.CPU.NextState.State != CPUState.IF)
+                        {
+                            //Debugger.Break();
+                        }
 
                         return reg0 < 10;
                     });

@@ -2,6 +2,7 @@
 #define AXISoCQuadCore_SOC_Reg0_Float (*(volatile float*)0x80000004)
 #define AXISoCQuadCore_SOC_Reg1 (*(volatile uint32_t*)0x80000008)
 #define AXISoCQuadCore_SOC_CPU1_AutoDecrement (*(volatile uint32_t*)0x10000004)
+#define AXISoCQuadCore_SOC_CPU1_AutoDecrement_Ptr ((volatile uint32_t*)0x10000004)
 #define AXISoCQuadCore_SOC_UART ((volatile uint32_t*)0x90000000)
 #define AXISoCQuadCore_SOC_Switch0 (*(volatile uint32_t*)0x80000100)
 #define AXISoCQuadCore_SOC_PWM0 (*(volatile uint32_t*)0x90000100)
