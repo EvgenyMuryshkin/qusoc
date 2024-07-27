@@ -3,6 +3,9 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "soc.h"
+#include "utils/wait.h"
+using namespace qusoc;
+
 namespace AXISoCQuadCore
 {
 	class CPU1
@@ -11,9 +14,12 @@ namespace AXISoCQuadCore
 			static void EntryPoint();
 
 		private:
-			static void Run();
+			CPU1Wait _wait;
+
 			void PWMTest();
 			void WS2812Test();
+			void HardcodedValues();
+			void FPUTest();
 	};
 }
 #endif

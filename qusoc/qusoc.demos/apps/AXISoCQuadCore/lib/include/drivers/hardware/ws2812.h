@@ -1,5 +1,5 @@
-#ifndef Hardware_WS2812_H
-#define Hardware_WS2812_H
+#ifndef HARDWARE_WS2812_H
+#define HARDWARE_WS2812_H
 #include <stdint.h>
 #include <stdbool.h>
 #include "utils/wait.h"

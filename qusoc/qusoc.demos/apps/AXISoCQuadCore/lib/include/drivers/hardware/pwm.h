@@ -1,5 +1,5 @@
-#ifndef WHARDARE_PWM_H
-#define WHARDARE_PWM_H
+#ifndef HARDARE_PWM_H
+#define HARDARE_PWM_H
 #include <stdint.h>
 #include <stdbool.h>
 

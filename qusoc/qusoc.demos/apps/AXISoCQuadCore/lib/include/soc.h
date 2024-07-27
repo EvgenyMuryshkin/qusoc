@@ -1,3 +1,6 @@
+#ifndef SOC_H
+#define SOC_H
+
 #define AXISoCQuadCore_SOC_Reg0 (*(volatile uint32_t*)0x80000004)
 #define AXISoCQuadCore_SOC_Reg0_Float (*(volatile float*)0x80000004)
 #define AXISoCQuadCore_SOC_Reg1 (*(volatile uint32_t*)0x80000008)
@@ -16,3 +19,5 @@
 
 #define AXISoCQuadCore_SOC_WS2812_Ptr ((volatile uint32_t*)0x90000200)
 #define AXISoCQuadCore_SOC_WS2812 (*AXISoCQuadCore_SOC_WS2812_Ptr)
+
+#endif
