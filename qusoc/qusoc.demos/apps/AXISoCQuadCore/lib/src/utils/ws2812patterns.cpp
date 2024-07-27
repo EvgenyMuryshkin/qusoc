@@ -1,6 +1,6 @@
 #include <stdint.h>
 #include <stdbool.h>
-#include "ws2812patterns.h"
+#include "utils/ws2812patterns.h"
 
 namespace qusoc
 {

@@ -2,7 +2,7 @@
 #define Hardware_WS2812_H
 #include <stdint.h>
 #include <stdbool.h>
-#include "wait.h"
+#include "utils/wait.h"
 
 namespace qusoc
 {
@@ -23,6 +23,14 @@ namespace qusoc
 			{
 				_wait = wait;
 				_ptr = ptr;
+			}
+
+			void WordArray(uint32_t length, uint32_t buff[])
+			{
+				for (int i = 0; i < length; i++)
+				{
+					Word(buff[i]);
+				}
 			}
 
 			void ByteArray(uint32_t color, uint32_t length, uint8_t buff[])

@@ -2,10 +2,10 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "soc.h"
-#include "wait.h"
+#include "utils/wait.h"
 #include "drivers/hardware/pwm.h"
 #include "drivers/hardware/ws2812.h"
-#include "drivers/hardware/ws2812patterns.h"
+#include "utils/ws2812patterns.h"
 using namespace qusoc;
 
 namespace AXISoCQuadCore
@@ -99,7 +99,7 @@ namespace AXISoCQuadCore
 		{
 			for (uint8_t s = 0; s < 3; s++)
 			{
-				ws2812.ByteArray(colors[s], 8, data[0]);
+				ws2812.ByteArray(colors[s], 8, data[s]);
 				wait.Clocks(50000000);
 			}
 

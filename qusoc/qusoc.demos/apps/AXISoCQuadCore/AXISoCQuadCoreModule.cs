@@ -22,26 +22,26 @@ namespace AXISoC
     public class AXISoCQuadCoreModule : RTLCombinationalModule<AXISoCQuadCoreModuleInputs>
     {
         internal AXI4RISCVModule CPU0 = new AXI4RISCVModule(CPURegsType.RAM, 0);
-        internal AXI4MemoryModule cpu0Memory = new AXI4MemoryModule(axiSize.B4, 4096);
+        internal AXI4MemoryModule cpu0Memory = new AXI4MemoryModule(axiSize.B4, 0x1000);
         internal AXI4IncrementOnReadCounterModule cpu0AutoIncrementCounter = new AXI4IncrementOnReadCounterModule(axiSize.B4);
         internal AXI4AutoDecrementRegisterModule cpu0AutoDecrementRegister = new AXI4AutoDecrementRegisterModule(axiSize.B4);
         internal AXI4GatewayModule cpu0IOGateway = new AXI4GatewayModule(axiSize.B4);
         internal AXI4GatewayModule cpu0cpu1Gateway = new AXI4GatewayModule(axiSize.B4, 12);
 
         internal AXI4RISCVModule CPU1 = new AXI4RISCVModule(CPURegsType.RAM, 1);
-        internal AXI4MemoryModule cpu1Memory = new AXI4MemoryModule(axiSize.B4, 4096);
+        internal AXI4MemoryModule cpu1Memory = new AXI4MemoryModule(axiSize.B4, 0x1000);
         internal AXI4IncrementOnReadCounterModule cpu1AutoIncrementCounter = new AXI4IncrementOnReadCounterModule(axiSize.B4);
         internal AXI4AutoDecrementRegisterModule cpu1AutoDecrementRegister = new AXI4AutoDecrementRegisterModule(axiSize.B4);
         internal AXI4GatewayModule cpu1IOGateway = new AXI4GatewayModule(axiSize.B4);
 
         internal AXI4RISCVModule CPU2 = new AXI4RISCVModule(CPURegsType.RAM, 2);
-        internal AXI4MemoryModule cpu2Memory = new AXI4MemoryModule(axiSize.B4, 4096);
+        internal AXI4MemoryModule cpu2Memory = new AXI4MemoryModule(axiSize.B4, 0x1000);
         internal AXI4IncrementOnReadCounterModule cpu2AutoIncrementCounter = new AXI4IncrementOnReadCounterModule(axiSize.B4);
         internal AXI4AutoDecrementRegisterModule cpu2AutoDecrementRegister = new AXI4AutoDecrementRegisterModule(axiSize.B4);
         internal AXI4GatewayModule cpu2IOGateway = new AXI4GatewayModule(axiSize.B4);
 
         internal AXI4RISCVModule CPU3 = new AXI4RISCVModule(CPURegsType.RAM, 3);
-        internal AXI4MemoryModule cpu3Memory = new AXI4MemoryModule(axiSize.B4, 4096);
+        internal AXI4MemoryModule cpu3Memory = new AXI4MemoryModule(axiSize.B4, 0x1000);
         internal AXI4IncrementOnReadCounterModule cpu3AutoIncrementCounter = new AXI4IncrementOnReadCounterModule(axiSize.B4);
         internal AXI4AutoDecrementRegisterModule cpu3AutoDecrementRegister = new AXI4AutoDecrementRegisterModule(axiSize.B4);
         internal AXI4GatewayModule cpu3IOGateway = new AXI4GatewayModule(axiSize.B4);
@@ -65,7 +65,7 @@ namespace AXISoC
             1,
             new List<RangeInfo>()
             {
-                new RangeInfo(0x00000000, 0x00001000),// instructions memory
+                new RangeInfo(0x00000000, 0x00004000),// instructions memory
                 new RangeInfo(0x10000000, 0x10000000),// auto increment on read
                 new RangeInfo(0x10000004, 0x10000004),// auto decrement
                 new RangeInfo(0x80000000, 0xA0000000),// io interconnect
@@ -79,7 +79,7 @@ namespace AXISoC
             2,
             new List<RangeInfo>()
             {
-                new RangeInfo(0x00000000, 0x00001000),// instructions memory
+                new RangeInfo(0x00000000, 0x00004000),// instructions memory
                 new RangeInfo(0x10000000, 0x10000000),// auto increment on read
                 new RangeInfo(0x10000004, 0x10000004),// auto decrement
                 new RangeInfo(0x80000000, 0xA0000000),// io interconnect
@@ -90,7 +90,7 @@ namespace AXISoC
             1,//2,
             new List<RangeInfo>()
             {
-                new RangeInfo(0x00000000, 0x00001000),// instructions memory
+                new RangeInfo(0x00000000, 0x00004000),// instructions memory
                 new RangeInfo(0x10000000, 0x10000000),// auto increment on read
                 new RangeInfo(0x10000004, 0x10000004),// auto decrement
                 new RangeInfo(0x80000000, 0xA0000000),// io interconnect
@@ -101,7 +101,7 @@ namespace AXISoC
             1,//2,
             new List<RangeInfo>()
             {
-                new RangeInfo(0x00000000, 0x00001000),// instructions memory
+                new RangeInfo(0x00000000, 0x00004000),// instructions memory
                 new RangeInfo(0x10000000, 0x10000000),// auto increment on read
                 new RangeInfo(0x10000004, 0x10000004),// auto decrement
                 new RangeInfo(0x80000000, 0xA0000000),// io interconnect
