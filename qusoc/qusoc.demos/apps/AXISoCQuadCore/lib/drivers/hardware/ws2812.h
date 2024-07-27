@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include "wait.h"
 
-namespace AXISoCQuadCore
+namespace qusoc
 {
 	class HardwareWS2812
 	{

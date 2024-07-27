@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-namespace AXISoCQuadCore
+namespace qusoc
 {
 	class HardwarePWM
 	{

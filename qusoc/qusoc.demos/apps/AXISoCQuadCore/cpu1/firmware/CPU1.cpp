@@ -2,45 +2,14 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "soc.h"
-#include "Wait.h"
-#include "HardwarePWM.h"
-#include "HardwareWS2812.h"
+#include "wait.h"
+#include "drivers/hardware/pwm.h"
+#include "drivers/hardware/ws2812.h"
+#include "drivers/hardware/ws2812patterns.h"
+using namespace qusoc;
 
 namespace AXISoCQuadCore
 {
-	uint8_t CPU1::stopSign[] = {
-		0x3C,
-		0x42,
-		0x89,
-		0x9D,
-		0xB9,
-		0x91,
-		0x42,
-		0x3C
-	};
-
-	uint8_t CPU1::rightArrow[] = {
-		0x3F,
-		0x1F,
-		0x0F,
-		0x1F,
-		0x3B,
-		0x71,
-		0xE0,
-		0xC0
-	};
-
-	uint8_t CPU1::leftArrow[] = {
-		0x03,
-		0x07,
-		0x8E,
-		0xDC,
-		0xF8,
-		0xF0,
-		0xF8,
-		0xFC
-	};
-	
 	void CPU1::EntryPoint()
 	{
 		CPU1 instance;
@@ -123,14 +92,14 @@ namespace AXISoCQuadCore
 		HardwareWS2812 ws2812(&wait, AXISoCQuadCore_SOC_WS2812_Ptr);
 
 		uint32_t counter = 0;
-		uint8_t* data[] = { stopSign, rightArrow, leftArrow };
+		constexpr uint8_t* data[] = { LED8x8::StopSign, LED8x8::RightArrow, LED8x8::LeftArrow };
 		uint32_t colors[] = { 0x010000, 0x000100, 0x000100 };
 
 		while (true)
 		{
 			for (uint8_t s = 0; s < 3; s++)
 			{
-				ws2812.ByteArray(colors[s], 8, data[s]);
+				ws2812.ByteArray(colors[s], 8, data[0]);
 				wait.Clocks(50000000);
 			}
 
@@ -183,7 +152,7 @@ namespace AXISoCQuadCore
 
 		while (true)
 		{
-			if (AXISoCQuadCore_SOC_CPU1_AutoDecrement == 0)
+			if (AXISoCQuadCore_SOC_CPU_AutoDecrement == 0)
 			{
 				counter++;
 				AXISoCQuadCore_SOC_Reg1 = counter >> 4;
@@ -197,104 +166,8 @@ namespace AXISoCQuadCore
 					HardwarePWM::Step(&pwm1, &pwm1Delta, pwmMin, pwmMax);
 				}
 
-				AXISoCQuadCore_SOC_CPU1_AutoDecrement = 1000000; // 20ms
+				AXISoCQuadCore_SOC_CPU_AutoDecrement = 1000000; // 20ms
 			}
 		}
-	}
-
-	void CPU1::WS2812_ByteArray(uint32_t color, uint32_t length, uint8_t buff[])
-	{
-		for (int i = 0; i < length; i++)
-		{
-			uint32_t s = buff[i];
-
-			for (int p = 0; p < 8; p++)
-			{
-				if ((s & 0x80) == 0x80)
-				{
-					Word(color);
-				}
-				else
-				{
-					Word(0x000000);
-				}
-
-				s = s << 1;
-			}
-		}
-
-		Wait::Clocks(AXISoCQuadCore_SOC_CPU1_AutoDecrement_Ptr, 500000);
-
-		//AXISoCQuadCore_SOC_CPU1_AutoDecrement = 50000000; // 1ms
-		//while (AXISoCQuadCore_SOC_CPU1_AutoDecrement != 0) {}
-	}
-
-	//void CPU1::PWMValue(uint32_t* pwmPtr, uint32_t* stepPtr, uint32_t min, uint32_t max)
-	//{
-	//	uint32_t pwm = *pwmPtr;
-	//	uint32_t step = *stepPtr;
-	//
-	//	pwm += step;
-	//
-	//	if (pwm < min)
-	//	{
-	//		pwm = min;
-	//		*stepPtr = -step;
-	//	}
-	//
-	//	if (pwm > max)
-	//	{
-	//		pwm = max;
-	//		*stepPtr = -step;
-	//	}
-	//
-	//	*pwmPtr = pwm;
-	//}
-
-	void CPU1::HoldValue(bool value, uint32_t clocks)
-	{
-		AXISoCQuadCore_SOC_CPU1_AutoDecrement = clocks;
-		AXISoCQuadCore_SOC_PWM0 = value;
-		//AXISoCQuadCore_SOC_PWM2 = value;
-		while (AXISoCQuadCore_SOC_CPU1_AutoDecrement != 0) {}
-	}
-
-	void CPU1::Bit(bool value)
-	{
-		if (value)
-		{
-			HoldValue(true, 40); // 800 ns is 40 clocks
-			HoldValue(false, 12); // 450 ns is 12 clocks
-		}
-		else
-		{
-			HoldValue(true, 20); // 400 ns
-			HoldValue(false, 43); // 850 ns
-		}
-	}
-
-	void CPU1::Byte(uint8_t value)
-	{
-		for (int i = 0; i < 8; i++)
-		{
-			Bit(value & 0x80);
-			value = value << 1;
-		}
-	}
-
-	void CPU1::Word(uint32_t value)
-	{
-		while (AXISoCQuadCore_SOC_WS2812 != 1) {}
-		AXISoCQuadCore_SOC_WS2812 = value;//(uint8_t)counter;//0xA;
-
-		// send in GRB order
-		//Byte(value >> 8);
-		//Byte(value >> 16);
-		//Byte(value >> 16);
-	}
-
-	void CPU1::EndTX()
-	{
-		HoldValue(false, 300000);
 	}
 }

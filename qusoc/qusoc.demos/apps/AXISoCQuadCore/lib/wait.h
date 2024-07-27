@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include "soc.h"
 
-namespace AXISoCQuadCore
+namespace qusoc
 {
 	class IWait
 	{
@@ -36,7 +36,7 @@ namespace AXISoCQuadCore
 	class CPU1Wait : public CPUWait
 	{
 		public:
-			CPU1Wait() : CPUWait(AXISoCQuadCore_SOC_CPU1_AutoDecrement_Ptr)
+			CPU1Wait() : CPUWait(AXISoCQuadCore_SOC_CPU_AutoDecrement_Ptr)
 			{
 
 			}

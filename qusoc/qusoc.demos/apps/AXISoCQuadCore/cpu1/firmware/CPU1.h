@@ -12,17 +12,8 @@ namespace AXISoCQuadCore
 
 		private:
 			static void Run();
-			static uint8_t stopSign[];
-			static uint8_t rightArrow[];
-			static uint8_t leftArrow[];
 			void PWMTest();
 			void WS2812Test();
-			static void HoldValue(bool value, uint32_t clocks);
-			static void Bit(bool value);
-			static void Byte(uint8_t value);
-			static void Word(uint32_t value);
-			static void EndTX();
-			static void WS2812_ByteArray(uint32_t color, uint32_t length, uint8_t buff[]);
 	};
 }
 #endif
