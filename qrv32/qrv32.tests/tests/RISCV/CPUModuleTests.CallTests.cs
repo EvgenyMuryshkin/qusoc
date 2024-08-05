@@ -6,7 +6,7 @@ using System.Linq;
 namespace QRV32.Instructions.Tests
 {
     [TestClass]
-    public class CallTests : CPUModuleBaseTest
+    public class CallTests : CPUModuleTestsBase
     {
         [TestMethod]
         public void SP()

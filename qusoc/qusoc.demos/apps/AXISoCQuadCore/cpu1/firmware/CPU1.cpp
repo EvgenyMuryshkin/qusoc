@@ -13,7 +13,8 @@ namespace AXISoCQuadCore
 	void CPU1::EntryPoint()
 	{
 		CPU1 instance;
-		instance.WS2812Test();
+		//instance.WS2812Test();
+		instance.PWMTest();
 	}
 
 	void CPU1::HardcodedValues()
@@ -74,6 +75,147 @@ namespace AXISoCQuadCore
 	void CPU1::PWMTest()
 	{
 		uint32_t counter = 0;
+		/*
+		uint32_t min = 50000;
+		uint32_t max = 100000;
+		uint32_t delta = max - min;
+
+		uint8_t t[] = {
+			1,2,3,4,5,6,7,8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,22,23,24,25,26,27, 28, 29, 30,
+			1,2,3,4,5,6,7,8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19//, 20, 21,22,23,24,25,26,27, 28, 29, 30
+		};
+		while (true)
+		{
+			for (int i = 0; i < sizeof(t); i++)
+			{
+				counter++;
+				AXISoCQuadCore_SOC_Reg1 = counter;
+
+				float v = 1.0;
+				float dv = v * delta;
+				//float dv1 = dv * 1.3;
+				//float dv2 = dv1 * 1.3;
+				_wait.Clocks(10000000 + i);
+			}
+		}
+
+		return;
+
+		//AXISoCQuadCore_SOC_Reg1 = 1;
+		//float v = 1.0;
+		//float dv = v * delta;
+		//uint32_t cast = (uint32_t)(dv);
+
+		//HardwarePWM pwm0(AXISoCQuadCore_SOC_PWM0_Ptr, 50000, 100000);
+		
+
+		//pwm0.SetExact(100000);
+		//pwm0.SetRatio(1.0);
+		float v = 1.3;
+		float dv = v * delta;
+		//AXISoCQuadCore_SOC_Reg0_Float = dv; // works
+		//AXISoCQuadCore_SOC_Reg0 = dv; // works
+		uint32_t cast = (uint32_t)(dv);
+		AXISoCQuadCore_SOC_PWM0 = cast;
+
+		return;
+		*/
+
+		//while (true)
+		//{
+		//	_wait.Clocks(1000000); // 20ms
+		//	counter++;
+		//	AXISoCQuadCore_SOC_Reg1 = counter >> 4;
+		//	AXISoCQuadCore_SOC_PWM0 = cast;
+		//	//pwm0.SetExact(100000);
+		//	//pwm0.SetRatio(1.0);
+		//}
+
+		HardwarePWM pwm0(AXISoCQuadCore_SOC_PWM0_Ptr, 50000, 100000);
+
+		float step = 0.1;
+		float value = 0;
+		
+		//value += step;
+		//AXISoCQuadCore_SOC_Reg0_Float = value;
+		//value += step;
+		//AXISoCQuadCore_SOC_Reg0_Float = value;
+		//value += step;
+		//AXISoCQuadCore_SOC_Reg0_Float = value;
+		//
+		//return;
+
+		uint32_t min = 50000;
+		uint32_t max = 100000;
+		uint32_t delta = max - min;
+
+		float values[] = { 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 };
+
+		while (true)
+		{
+			for (int i = 0; i < 11; i++)
+			{
+				_wait.Clocks(2000000); // 40ms	
+				float s = 0.8;
+				float r = s/*values[8]*/ * delta;//0.9 * delta;
+				uint32_t ur = (uint32_t)r;
+				uint32_t f = min + ur;
+				pwm0.SetExact(f);
+				//pwm0.SetRatio(0.9/*values[8]*/);
+				AXISoCQuadCore_SOC_Reg1 = ur; 
+				AXISoCQuadCore_SOC_PWM0 = delta;// correct
+				AXISoCQuadCore_SOC_PWM1 = ur;//23616, wrong
+				AXISoCQuadCore_SOC_PWM2 = f;//73616
+				AXISoCQuadCore_SOC_PWM3 = *((uint32_t*)&r);
+				AXISoCQuadCore_SOC_PWM4 = *((uint32_t*)&s);
+			}
+		}
+		return;
+
+		/*
+		//while (true)
+		for (int i = 0; i < 30; i++)
+		{
+			//_wait.Clocks(1000000); // 20ms
+		
+			value += step;
+			
+			if (value <= 0.0)
+			{
+				value = 0;
+				step = -step;
+			}
+			
+			if (value >= 1.0) 
+			{
+				value = 1.0;
+				step = -step;
+			}
+
+			AXISoCQuadCore_SOC_Reg0_Float = value;
+			//AXISoCQuadCore_SOC_Reg0_Float = step;
+			//pwm0.SetRatio(value);
+			
+			/*
+			value = 0.5;
+			value += step;
+			
+			uint32_t rigth = min + (uint32_t)(delta * value);
+
+			//uint32_t r = min + t;
+			//pwm0.SetRatio(1.0);
+			//pwm0.SetExact(min);
+			pwm0.SetExact(rigth);
+			* /
+
+			//uint32_t r = 50000 * value;
+			//AXISoCQuadCore_SOC_PWM0 = r;
+		
+			//counter++;
+			//AXISoCQuadCore_SOC_Reg1 = counter >> 4;
+		}
+		*/
+		/*
 		uint32_t pwmMin = 50000;
 		uint32_t pwmMax = 100000;
 		uint32_t pwm0 = pwmMin;
@@ -85,12 +227,10 @@ namespace AXISoCQuadCore
 
 		while (true)
 		{
-			_wait.Clocks(1000000); // 20ms
-
 			counter++;
 			AXISoCQuadCore_SOC_Reg1 = counter >> 4;
 
-			if (AXISoCQuadCore_SOC_Switch0 == 1)
+			//if (AXISoCQuadCore_SOC_Switch0 == 1)
 			{
 				AXISoCQuadCore_SOC_PWM0 = pwm0;
 				AXISoCQuadCore_SOC_PWM1 = pwm1;
@@ -98,6 +238,9 @@ namespace AXISoCQuadCore
 				HardwarePWM::Step(&pwm0, &pwm0Delta, pwmMin, pwmMax);
 				HardwarePWM::Step(&pwm1, &pwm1Delta, pwmMin, pwmMax);
 			}
-		}
+
+			_wait.Clocks(1000000); // 20ms
+		}		
+		*/
 	}
 }

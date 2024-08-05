@@ -6,7 +6,7 @@ using Quokka.RTL;
 namespace QRV32.Instructions.Tests
 {
     [TestClass]
-    public class OPIMMTests : CPUModuleBaseTest
+    public class OPIMMTests : CPUModuleTestsBase
     {
         [TestMethod]
         public void ADDI()

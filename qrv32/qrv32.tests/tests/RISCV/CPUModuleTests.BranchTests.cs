@@ -8,7 +8,7 @@ namespace QRV32.Instructions.Tests
 {
 
     [TestClass]
-    public class BranchTests : CPUModuleBaseTest
+    public class BranchTests : CPUModuleTestsBase
     {
         [TestMethod]
         public void BEQ()

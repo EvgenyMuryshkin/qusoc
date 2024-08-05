@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace QRV32.Compliance
 {
-    public class ComplianceCPUSimilator : CPUSimulator
+    public class ComplianceCPUSimilator : RISCVModuleSimulator
     {
         int _dataMarkerAddress = 0;
         public int Asserts = 0;
@@ -23,7 +23,7 @@ namespace QRV32.Compliance
             var expected = MemoryBlock[_dataMarkerAddress + 1];
 
             if (actual == 0x87654321)
-                Assert.Fail($"Asserting data marker value, should not be like that");
+                Assert.Fail($"Asserting data marker value, should not be 0x87654321");
 
             Assert.AreEqual(expected, actual, "Value does not match");
 

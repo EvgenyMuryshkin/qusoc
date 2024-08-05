@@ -8,7 +8,7 @@ namespace QRV32.Instructions.Tests
 {
 
     [TestClass]
-    public class AUIPCTests : CPUModuleBaseTest
+    public class AUIPCTests : CPUModuleTestsBase
     {
         [TestMethod]
         public void AUIPC()

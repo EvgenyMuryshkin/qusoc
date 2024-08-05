@@ -1,12 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using QRV32.Compliance;
+using QRV32.ComplianceTools;
 
 namespace QRV32.Compliance
 {
     [TestClass]
     public class Runner : ComplianceTestsBase
     {
-        public Runner() : base("runner", "rv32i") { }
+        public Runner() : base(new QRV32ComplianceTestsBaseAdapter("runner", "rv32i")) { }
 
         [TestMethod]
         public void I_ShouldPass() => RunAndAssert("I-ShouldPass");

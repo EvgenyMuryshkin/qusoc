@@ -14,10 +14,12 @@ namespace QuSoC.Tests
         where TModule : IRTLCombinationalModule
     {
         public uint ClockCycles = 0;
+        public uint DebuggerCalls = 0;
+
         Stopwatch runtime = new Stopwatch();
         public TimeSpan Duration => runtime.Elapsed;
         public double CPS => ClockCycles / Duration.TotalSeconds;
-
+        public Action<AXI4RISCVModule> onECall;
         protected AXISoCModuleSimulator() { }
 
         protected Dictionary<string, HashSet<uint>> InfiniteLoopAddresses = new Dictionary<string, HashSet<uint>>();
@@ -110,6 +112,33 @@ namespace QuSoC.Tests
                 var haltedExceptions = halted.Select(c => new Exception($"CPU halted: {c.CPU.State.HaltCode}")).ToList();
                 if (haltedExceptions.Any())
                     throw new AggregateException(haltedExceptions);
+
+                foreach (var cpu in cpus)
+                {
+                    switch (cpu.CPU.State.State)
+                    {
+                        case CPUState.E:
+                            {
+                                switch (cpu.CPU.ID.SysTypeCode)
+                                {
+                                    case SysTypeCodes.CALL:
+                                        {
+                                            onECall?.Invoke(cpu);
+                                        }
+                                        break;
+                                    case SysTypeCodes.BREAK:
+                                        {
+                                            // ebreak
+                                            Debugger.Break();
+                                            DebuggerCalls++;
+                                        }
+                                        break;
+                                }
+
+                            }
+                            break;
+                    }
+                }
 
                 ClockCycle();
             }

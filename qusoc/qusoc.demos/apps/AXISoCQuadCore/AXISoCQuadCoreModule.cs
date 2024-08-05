@@ -26,7 +26,7 @@ namespace AXISoC
         internal AXI4IncrementOnReadCounterModule cpu0AutoIncrementCounter = new AXI4IncrementOnReadCounterModule(axiSize.B4);
         internal AXI4AutoDecrementRegisterModule cpu0AutoDecrementRegister = new AXI4AutoDecrementRegisterModule(axiSize.B4);
         internal AXI4GatewayModule cpu0IOGateway = new AXI4GatewayModule(axiSize.B4);
-        internal AXI4GatewayModule cpu0cpu1Gateway = new AXI4GatewayModule(axiSize.B4, 12);
+        internal AXI4GatewayModule cpu0cpu1Gateway = new AXI4GatewayModule(axiSize.B4, 14);
 
         internal AXI4RISCVModule CPU1 = new AXI4RISCVModule(CPURegsType.RAM, 1);
         internal AXI4MemoryModule cpu1Memory = new AXI4MemoryModule(axiSize.B4, 0x1000);
@@ -69,9 +69,9 @@ namespace AXISoC
                 new RangeInfo(0x10000000, 0x10000000),// auto increment on read
                 new RangeInfo(0x10000004, 0x10000004),// auto decrement
                 new RangeInfo(0x80000000, 0xA0000000),// io interconnect
-                new RangeInfo(0xF0001000, 0xF0001FFF),// cpu1 interconnect
-                //new RangeInfo(0xF0002000, 0xF0002FFF),// cpu2 interconnect
-                //new RangeInfo(0xF0003000, 0xF0003FFF),// cpu3 interconnect
+                new RangeInfo(0xF1000000, 0xF1003FFF),// cpu1 interconnect
+                //new RangeInfo(0xF2000000, 0xF2003FFF),// cpu2 interconnect
+                //new RangeInfo(0xF3000000, 0xF3003FFF),// cpu3 interconnect
             }
         );
         internal AXI4InteconnectModule cpu1Interconnect = new AXI4InteconnectModule(

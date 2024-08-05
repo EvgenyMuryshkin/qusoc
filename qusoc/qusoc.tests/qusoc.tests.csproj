@@ -16,6 +16,7 @@
     <PackageReference Include="Quokka.RISCV.Integration" Version="1.0.0.16" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\QRV32\QRV32.Tests\qrv32.tests.csproj" />
     <ProjectReference Include="..\..\tools\Quokka.RTL.Simulator\Quokka.RTL.Simulator.csproj" />
     <ProjectReference Include="..\qusoc.demos\qusoc.demos.csproj" />
     <ProjectReference Include="..\qusoc\qusoc.csproj" />

@@ -174,15 +174,28 @@ namespace QuSoC.Tests
                 };
 
                 // stop CPU1
+                Trace.WriteLine("Resetting");
                 await writeData(0x80000000, 0x00000002);
+
+                Trace.WriteLine($"Firmware size: {instructions.Length} words");
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
+                var reportPeriod = TimeSpan.FromSeconds(1);
 
                 for (var i = 0; i < instructions.Length; i++)
                 {
-                    uint addr = 0xF0001000 + (uint)(i * 4);
+                    uint addr = 0xF1000000 + (uint)(i * 4);
                     await writeData(addr, instructions[i]);
+
+                    if (sw.Elapsed > reportPeriod)
+                    {
+                        sw.Restart();
+                        Trace.WriteLine($"Firmware update {(int)(((float)i / instructions.Length) * 100.0)}%");
+                    }
                 }
 
                 // run all CPUs
+                Trace.WriteLine("Restaring");
                 await writeData(0x80000000, 0x00000000);
 
             }
@@ -245,7 +258,7 @@ namespace QuSoC.Tests
                     var sim = new AXISoCQuadCoreModuleSimulator<AXISoCQuadCoreModule>(topLevel);
 
                     var reg1Values = new List<int>();
-                    topLevel.Reg1.State.bytes[3] = 255;
+                    topLevel.Reg0.State.bytes[3] = 255;
 
                     sim.RunToCompletion(() =>
                     {
@@ -257,10 +270,10 @@ namespace QuSoC.Tests
                         //if (!reg1Values.Contains(reg1))
                         //    reg1Values.Add(reg1);
 
-                        if (topLevel.Reg1.State.bytes[3] != 255)
+                        if (topLevel.Reg0.State.bytes[3] != 255)
                         {
-                            reg1Values.Add(reg1);
-                            topLevel.Reg1.State.bytes[3] = 255;
+                            reg1Values.Add(reg0);
+                            topLevel.Reg0.State.bytes[3] = 255;
                         }
 
 
@@ -269,11 +282,13 @@ namespace QuSoC.Tests
                             //Debugger.Break();
                         }
 
-                        return reg0 < 10;
+                        return true;// reg0 < 10;
                     });
 
                     uint reg0Value = new RTLBitArray(topLevel.Reg0.outData);
                     var reg0FloatValue = BitConverter.UInt32BitsToSingle(reg0Value);
+
+                    var reg0Floats = reg1Values.Select(v => BitConverter.UInt32BitsToSingle(new RTLBitArray(v))).ToList();
                 }
                 catch (Exception ex)
                 {

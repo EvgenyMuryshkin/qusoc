@@ -2,13 +2,13 @@
 
 namespace QRV32.Tests
 {
-    public class CPUModuleBaseTest
+    public class CPUModuleTestsBase
     {
         protected InstructionsProvider Inst = new InstructionsProvider();
 
-        protected CPUSimulator PowerUp()
+        protected RISCVModuleSimulator PowerUp()
         {
-            var sim = new CPUSimulator();
+            var sim = new RISCVModuleSimulator();
             // first cycle handles CPU reset state
             sim.ClockCycle();
             return sim;

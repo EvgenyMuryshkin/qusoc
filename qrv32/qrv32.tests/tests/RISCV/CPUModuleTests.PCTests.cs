@@ -7,12 +7,12 @@ using System.Linq;
 namespace QRV32.Instructions.Tests
 {
     [TestClass]
-    public class PCTests : CPUModuleBaseTest
+    public class PCTests : CPUModuleTestsBase
     {
         [TestMethod]
         public void ResetTest()
         {
-            var sim = new CPUSimulator();
+            var sim = new RISCVModuleSimulator();
             var tl = sim.TopLevel;
             Assert.IsFalse(tl.MemRead);
             sim.ClockCycle(new RISCVModuleInputs() { BaseAddress = 0xF0000000 });

@@ -53,7 +53,9 @@ namespace axi.modules
             pwms = range(pwmCount).Select(i => new PWMModule()).ToArray();
         }
 
-        RTLBitArray rawAddr => new RTLBitArray(State.waddr)[7,0] >> addressLSB;
+        RTLBitArray readAddr => new RTLBitArray(Inputs.M2S.R.AR.ARADDR)[7, 0] >> addressLSB;
+
+        RTLBitArray rawAddr => (new RTLBitArray(State.waddr)[7,0] >> addressLSB)[addressBits - 1, 0];
         RTLBitArray pwmWADDR => rawAddr[addressBits - 1, 0];
 
         public AXI4_S2M oS2M => axiSlave.S2M;
@@ -66,7 +68,7 @@ namespace axi.modules
             axiSlave.Schedule(() => new AXI4NonBufferedSlaveModuleInputs()
             {
                 M2S = Inputs.M2S,
-                inRDATA = new RTLBitArray(0),
+                inRDATA = new RTLBitArray(State.pwm[readAddr]),
                 inARREADY = true,
                 inRVALID = true,
                 inAWREADY = true,

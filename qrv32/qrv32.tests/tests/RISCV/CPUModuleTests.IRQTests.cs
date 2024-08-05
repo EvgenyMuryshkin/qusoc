@@ -4,7 +4,7 @@ using QRV32.Tests;
 namespace QRV32.Instructions.Tests
 {
     [TestClass]
-    public class IRQTests : CPUModuleBaseTest
+    public class IRQTests : CPUModuleTestsBase
     {
         [TestMethod]
         public void Call()

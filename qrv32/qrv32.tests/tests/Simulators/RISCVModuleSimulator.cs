@@ -1,53 +1,21 @@
 ﻿using QRV32.CPU;
 using Quokka.RTL;
-using Quokka.RTL.Simulator;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace QRV32.Tests
 {
-    public class CPUSimulator : RTLSimulator<RISCVModule, RISCVModuleInputs>
+    public class RISCVModuleSimulator : CPUSimulator<RISCVModule, RISCVModuleInputs>
     {
-        public int DebuggerCalls = 0;
-        public List<uint> ECalls = new List<uint>();
+        protected override RISCVModule CPU => TopLevel;
 
-        public uint[] MemoryBlock = new uint[32768];
-        int instructionsCount = 0;
-
-        public Action<RISCVModuleInputs, RTLSimulatorCallback<RISCVModule>> inputsModifier = null;
-
-        public CPUSimulator()
+        public override void ClockCycle(RISCVModuleInputs inputs)
         {
-
+            inputsModifier?.Invoke(inputs, CallbackData);
+            base.ClockCycle(inputs);
         }
 
-        public void SetInstructions(uint[] instructions)
-        {
-            for (instructionsCount = 0; instructionsCount < instructions.Length; instructionsCount++)
-            {
-                MemoryBlock[instructionsCount] = instructions[instructionsCount];
-            }
-        }
-
-        public void RunAll(params uint[] instructions)
-        {
-            SetInstructions(instructions);
-            RunAllInstructions();
-        }
-
-        public void RunAllInstructions(uint maxInstructions = 1000)
-        {
-            while (--maxInstructions != 0)
-            {
-                if (!Step())
-                    return;
-            }
-
-            throw new Exception("CPU seems to hang");
-        }
-
-        public bool Step()
+        public override bool Step()
         {
             if (!RunTillInstructionFetch())
                 return false;
@@ -55,21 +23,10 @@ namespace QRV32.Tests
             if (!FeedNextInstruction())
                 return false;
 
-            if (!RunTillInstructionFetch())
-                return false;
+            //if (!RunTillInstructionFetch())
+            //    return false;
 
             return true;
-        }
-
-        RTLBitArray wordAddress => TopLevel.MemAddress >> 2;
-        byte byteAddress => (byte)((TopLevel.MemAddress & 0x3) << 3);
-
-        protected virtual void TraceLine(string value)
-        {
-            if (Debugger.IsAttached)
-            {
-                Trace.WriteLine(value);
-            }
         }
 
         bool FeedNextInstruction()
@@ -80,18 +37,18 @@ namespace QRV32.Tests
             // end state condition
             if (wordAddress >= instructionsCount)
             {
-                TraceLine($"Simulation finished, instruction read outside of program memory [{TopLevel.MemAddress.ToString("X6")}]");
+                TraceLine($"Simulation finished, instruction read outside of program memory [{CPU.MemAddress.ToString("X6")}]");
                 return false;
             }
 
             var instruction = MemoryBlock[wordAddress];
             var disasm = new Disassembler();
-            var code = disasm.Single(TopLevel.State.PC, instruction);
+            var code = disasm.Single(CPU.State.PC, instruction);
             TraceLine(code);
 
             if (instruction == 111)
             {
-                TraceLine($"Simulation finished, detected infinite loop at address [{TopLevel.MemAddress.ToString("X6")}]");
+                TraceLine($"Simulation finished, detected infinite loop at address [{CPU.MemAddress.ToString("X6")}]");
                 return false;
             }
 
@@ -100,37 +57,31 @@ namespace QRV32.Tests
             return true;
         }
 
-        protected virtual void ECall()
-        {
-            // ecall, do something with ecall
-            ECalls.Add(TopLevel.Regs.State.x[17]);
-        }
-
         public bool RunTillInstructionFetch()
         {
             int counter = 0;
 
             while (counter++ < 1000)
             {
-                switch (TopLevel.State.State)
+                switch (CPU.State.State)
                 {
                     case CPUState.Halt:
                         throw new Exception($"CPU Halted{Environment.NewLine}{TopLevel}");
                     case CPUState.E:
-                        switch (TopLevel.ID.SysTypeCode)
+                        switch (CPU.ID.SysTypeCode)
                         {
                             case SysTypeCodes.CALL:
-                            {
-                                ECall();
-                            }
-                            break;
+                                {
+                                    ECall();
+                                }
+                                break;
                             case SysTypeCodes.BREAK:
-                            {
-                                // ebreak
-                                Debugger.Break();
-                                DebuggerCalls++;
-                            }
-                            break;
+                                {
+                                    // ebreak
+                                    Debugger.Break();
+                                    DebuggerCalls++;
+                                }
+                                break;
                         }
                         ClockCycle();
                         break;
@@ -138,19 +89,19 @@ namespace QRV32.Tests
                         if (wordAddress >= MemoryBlock.Length)
                             throw new IndexOutOfRangeException($"Requested address in IF was outside of memory block: {wordAddress}");
 
-                        if (TopLevel.MemRead)
+                        if (CPU.MemRead)
                         {
                             var word = new RTLBitArray(MemoryBlock[wordAddress]);
                             var data = word >> byteAddress;
                             ClockCycle(new RISCVModuleInputs() { MemReady = true, MemReadData = data });
                         }
-                        else if (TopLevel.MemWrite)
+                        else if (CPU.MemWrite)
                         {
                             var word = new RTLBitArray(MemoryBlock[wordAddress]);
                             var mask = new RTLBitArray(uint.MinValue);
-                            var value = (TopLevel.MemWriteData << byteAddress).Resized(32);
+                            var value = (CPU.MemWriteData << byteAddress).Resized(32);
 
-                            switch ((byte)TopLevel.MemAccessMode)
+                            switch ((byte)CPU.MemAccessMode)
                             {
                                 case 0:
                                     mask = (new RTLBitArray(byte.MaxValue) << byteAddress).Resized(32);
@@ -162,7 +113,7 @@ namespace QRV32.Tests
                                     mask = new RTLBitArray(uint.MaxValue);
                                     break;
                                 default:
-                                    throw new Exception($"Unsupported mem write mode: {TopLevel.MemAccessMode}");
+                                    throw new Exception($"Unsupported mem write mode: {CPU.MemAccessMode}");
                             }
 
                             word &= !mask;
@@ -188,12 +139,6 @@ namespace QRV32.Tests
             }
 
             throw new Exception("CPU seems to hang");
-        }
-
-        public override void ClockCycle(RISCVModuleInputs inputs)
-        {
-            inputsModifier?.Invoke(inputs, CallbackData);
-            base.ClockCycle(inputs);
         }
     }
 }

@@ -3,9 +3,9 @@
 namespace QRV32.Compliance
 {
     [TestClass]
-    public class RV32Zicsr : ComplianceTestsBase
+    public class RV32Zicsr : RV32Base
     {
-        public RV32Zicsr() : base("rv32Zicsr", "rv32i") { }
+        public RV32Zicsr() : base(new QRV32ComplianceTestsBaseAdapter("rv32Zicsr", "rv32i")) { }
 
         [TestMethod]
         public void I_CSRRC_01() => RunAndAssert("I-CSRRC-01");

@@ -21,7 +21,13 @@ module top (
     output wire ck_io40,    
     output wire ck_io39,    
     output wire ck_io38,    
-    output wire ck_io37    
+    output wire ck_io37,
+    output wire led4_b,
+    output wire led4_g,
+    output wire led4_r,
+    output wire led5_b,
+    output wire led5_g,
+    output wire led5_r
 );
 
    wire clk100;
@@ -107,6 +113,13 @@ module top (
   assign ck_io40 = reg2[0];
   assign ck_io39 = reg1[0];
   assign ck_io38 = reg0[0];
+
+  assign led4_b = 1;
+  assign led4_g = 0;
+  assign led4_r = 0;
+  assign led5_b = 0;
+  assign led5_g = 0;
+  assign led5_r = 0;
 
   AXISoCQuadCoreModule_TopLevel AXISoCQuadCoreModule_TopLevel
   (

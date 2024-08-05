@@ -5,7 +5,7 @@ using QRV32.Tests;
 namespace QRV32.Instructions.Tests
 {
     [TestClass]
-    public class CSRTests : CPUModuleBaseTest
+    public class CSRTests : CPUModuleTestsBase
     {
         [TestMethod]
         public void CSRRW_mvendorid()

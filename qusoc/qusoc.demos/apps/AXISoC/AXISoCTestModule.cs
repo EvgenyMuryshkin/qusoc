@@ -14,14 +14,14 @@ namespace AXISoC
     public class AXISoCTestModule : RTLCombinationalModule<AXISoCTestModuleInputs>
     {
         internal AXI4RISCVModule CPU = new AXI4RISCVModule(CPURegsType.RAM);
-        internal AXI4MemoryModule Memory = new AXI4MemoryModule(axiSize.B4, 4096);
+        internal AXI4MemoryModule Memory = new AXI4MemoryModule(axiSize.B4, 0x1000);
         internal AXI4RegisterModule Reg = new AXI4RegisterModule(axiSize.B4);
         internal AXI4InteconnectModule Interconnect = new AXI4InteconnectModule(
             axiSize.B4,
             1,
             new List<RangeInfo>()
             {
-                new RangeInfo(0x00000000, 0x00001000),
+                new RangeInfo(0x00000000, 0x00004000),
                 new RangeInfo(0x80000000, 0x80000000)
             }
         );

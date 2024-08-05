@@ -7,7 +7,7 @@ using System.Linq;
 namespace QRV32.Instructions.Tests
 {
     [TestClass]
-    public class LUITests : CPUModuleBaseTest
+    public class LUITests : CPUModuleTestsBase
     {
         [TestMethod]
         public void LUI()

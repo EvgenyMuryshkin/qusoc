@@ -7,7 +7,7 @@ using System.Linq;
 namespace QRV32.Instructions.Tests
 {
     [TestClass]
-    public class JALRTests : CPUModuleBaseTest
+    public class JALRTests : CPUModuleTestsBase
     {
         [TestMethod]
         public void JALR()

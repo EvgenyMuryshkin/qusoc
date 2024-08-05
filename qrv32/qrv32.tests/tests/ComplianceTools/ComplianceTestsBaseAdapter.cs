@@ -3,23 +3,32 @@ using QRV32.CPU;
 using QRV32.Tests;
 using Quokka.Public.Tools;
 using Quokka.RISCV.Integration.Client;
-using QuokkaIntegrationTests;
 using System;
 using System.IO;
 using System.Linq;
 
-namespace QRV32.Compliance
+namespace QRV32.ComplianceTools
 {
-    public class ComplianceTestsBase
+    public interface IComplianceTestsBaseAdapter
+    {
+        string ComplianceTestsPath { get; }
+        void RunAndAssert(string testName);
+        void RunPlain(string testName);
+    }
+
+    public abstract class ComplianceTestsBaseAdapter<TSimulator> : IComplianceTestsBaseAdapter
     {
         string _isa, _arch;
-        public ComplianceTestsBase(string isa, string arch)
+        public ComplianceTestsBaseAdapter(string isa, string arch)
         {
             _isa = isa;
             _arch = arch;
         }
 
-        string ComplianceTestsPath => Path.Combine(TestPathTools.ProjectLocation(), "compliance");
+        public abstract string ComplianceTestsPath { get; }
+        protected abstract TSimulator Run();
+        protected abstract uint[] SimulatorMemory(TSimulator sim);
+
         string ISATestsPath => Path.Combine(ComplianceTestsPath, _isa);
         string SourcesLocation => Path.Combine(ISATestsPath, "src");
         string TestLocation => Path.Combine(ComplianceTestsPath, "test");
@@ -54,7 +63,7 @@ namespace QRV32.Compliance
             RISCVIntegrationClient.Make(context).Wait();
         }
 
-        uint[] Instructions()
+        protected uint[] Instructions()
         {
             var instructions = RISCVIntegrationClient.ToInstructions(File.ReadAllBytes(FirmwareFile)).ToArray();
             return instructions;
@@ -75,7 +84,7 @@ namespace QRV32.Compliance
             FileTools.WriteAllText(FirmwareAsmFile, disassembler.Disassemble(Instructions()));
         }
 
-        int DataMarkerAddress()
+        protected int DataMarkerAddress()
         {
             return Instructions().ToList().IndexOf(0x87654321);
         }
@@ -88,45 +97,37 @@ namespace QRV32.Compliance
             return Convert.ToInt32(address.Substring(2), 16);
         }
 
-        ComplianceCPUSimilator Run()
-        {
-            var dataMarkerAddress = DataMarkerAddress();
-            var sim = new ComplianceCPUSimilator(dataMarkerAddress);
-            sim.ClockCycle();
-            sim.RunAll(Instructions());
-
-            return sim;
-        }
-
-        void AssertReferenceOutput(string testName, ComplianceCPUSimilator sim)
+        void AssertReferenceOutput(string testName, TSimulator sim)
         {
             var dataSectionAddress = DataSectionAddress() >> 2;
             var referenceOutput = ReferenceOutput(testName);
             AssertMemory(sim, dataSectionAddress, referenceOutput);
         }
 
-        public ComplianceCPUSimilator Run(string testName)
+        public TSimulator Run(string testName)
         {
             CleanUp();
             Build(testName);
             Disassemble();
             return Run();
         }
+        public void RunPlain(string testName) 
+            => Run(testName);
 
-        public virtual ComplianceCPUSimilator RunAndAssert(string testName)
+        public virtual void RunAndAssert(string testName)
         {
             var sim = Run(testName);
             AssertReferenceOutput(testName, sim);
-            return sim;
         }
 
-        protected void AssertMemory(ComplianceCPUSimilator sim, int testAddress, uint[] expectedValues)
+        protected void AssertMemory(TSimulator sim, int testAddress, uint[] expectedValues)
         {
+            var memoryBlock = SimulatorMemory(sim);
             for (var i = 0; i < expectedValues.Length; i++)
             {
                 var actualWordAddress = testAddress + i;
                 var expected = expectedValues[i];
-                var actual = sim.MemoryBlock[actualWordAddress];
+                var actual = memoryBlock[actualWordAddress];
 
                 if (expected != actual)
                 {

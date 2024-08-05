@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using QRV32.Compliance;
+using QRV32.ComplianceTools;
 using QRV32.CPU;
 using System;
 using System.Collections.Generic;
@@ -8,11 +9,12 @@ using System.Text;
 
 namespace QRV32.Compliance
 {
-
-    [TestClass]
-    public class RV32I : ComplianceTestsBase
+    public class RV32Base : ComplianceTestsBase
     {
-        public RV32I() : base("rv32i", "rv32i") { }
+        public RV32Base(IComplianceTestsBaseAdapter adapter) 
+            : base(adapter) 
+        { 
+        }
 
         [TestMethod]
         public void I_ADD_01() => RunAndAssert("I-ADD-01");
@@ -124,5 +126,11 @@ namespace QRV32.Compliance
         public void I_XOR_01() => RunAndAssert("I-XOR-01");
         [TestMethod]
         public void I_XORI_01() => RunAndAssert("I-XORI-01");
+    }
+
+    [TestClass]
+    public class RV32I : RV32Base
+    {
+        public RV32I() : base(new QRV32ComplianceTestsBaseAdapter("rv32i", "rv32i")) { }
     }
 }

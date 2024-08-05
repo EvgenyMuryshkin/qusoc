@@ -3,13 +3,12 @@
 namespace QRV32.Compliance
 {
     //[TestClass]
-    public class RV32IM : ComplianceTestsBase
+    public class RV32IM : RV32Base
     {
-        public RV32IM() : base("rv32im", "rv32im") { }
-        public override ComplianceCPUSimilator RunAndAssert(string testName)
+        public RV32IM() : base(new QRV32ComplianceTestsBaseAdapter("rv32im", "rv32im")) { }
+        protected override void RunAndAssert(string testName)
         {
             Assert.Inconclusive($"Test was disabled: {testName}");
-            return null;
         }
 
         [TestMethod]

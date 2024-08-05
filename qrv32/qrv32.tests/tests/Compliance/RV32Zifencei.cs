@@ -3,13 +3,12 @@
 namespace QRV32.Compliance
 {
     //[TestClass]
-    public class RV32Zifencei : ComplianceTestsBase
+    public class RV32Zifencei : RV32Base
     {
-        public RV32Zifencei() : base("rv32Zifencei", "rv32i") { }
-        public override ComplianceCPUSimilator RunAndAssert(string testName)
+        public RV32Zifencei() : base(new QRV32ComplianceTestsBaseAdapter("rv32Zifencei", "rv32i")) { }
+        protected override void RunAndAssert(string testName)
         {
             Assert.Inconclusive($"Test was disabled: {testName}");
-            return null;
         }
 
         [TestMethod]
