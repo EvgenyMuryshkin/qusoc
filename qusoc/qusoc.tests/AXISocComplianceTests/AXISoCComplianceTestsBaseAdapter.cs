@@ -12,6 +12,12 @@ using System.Runtime.InteropServices.Marshalling;
 
 namespace AXISoC.ComplianceTests
 {
+    public class AXISoCComplianceTestStats
+    {
+        public int Asserts { get; set; }
+    }
+
+    
     public class AXISoCComplianceSimulator : AXISoCTestModuleSimulator<AXISoCTestModule>
     {
         private readonly int _dataMarkerAddress;
@@ -69,6 +75,10 @@ namespace AXISoC.ComplianceTests
             };
 
             sim.RunToCompletion();
+
+            var statsPath = TestStatsPath(_testName);
+            var stats = new AXISoCComplianceTestStats() { Asserts = Asserts };
+            File.WriteAllText(statsPath, DeepJSONCopy.Serialize(stats, DeepJSONCopy.indentedTypeSettings));
 
             //sim.ClockCycle();
             //sim.RunAll(Instructions());

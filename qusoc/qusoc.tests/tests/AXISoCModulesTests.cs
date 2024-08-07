@@ -289,6 +289,7 @@ namespace QuSoC.Tests
                     var reg0FloatValue = BitConverter.UInt32BitsToSingle(reg0Value);
 
                     var reg0Floats = reg1Values.Select(v => BitConverter.UInt32BitsToSingle(new RTLBitArray(v))).ToList();
+                    var pwmFloats = topLevel.pwm.State.pwm.Select(v => BitConverter.UInt32BitsToSingle(new RTLBitArray(v))).ToList();
                 }
                 catch (Exception ex)
                 {

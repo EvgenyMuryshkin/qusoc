@@ -19,6 +19,8 @@ namespace QRV32.ComplianceTools
     public abstract class ComplianceTestsBaseAdapter<TSimulator> : IComplianceTestsBaseAdapter
     {
         string _isa, _arch;
+        protected string _testName;
+
         public ComplianceTestsBaseAdapter(string isa, string arch)
         {
             _isa = isa;
@@ -78,6 +80,11 @@ namespace QRV32.ComplianceTools
             return lines.Select(l => Convert.ToUInt32(l, 16)).ToArray();
         }
 
+        protected string TestStatsPath(string testName)
+        {
+            return Path.Combine(ReferencesLocation, $"{testName}.stats.json");
+        }
+
         void Disassemble()
         {
             var disassembler = new Disassembler();
@@ -106,6 +113,7 @@ namespace QRV32.ComplianceTools
 
         public TSimulator Run(string testName)
         {
+            _testName = testName;
             CleanUp();
             Build(testName);
             Disassemble();

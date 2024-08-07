@@ -153,22 +153,35 @@ namespace AXISoCQuadCore
 
 		while (true)
 		{
-			for (int i = 0; i < 11; i++)
+			for (uint32_t i = 65; i < 80; i++)
 			{
-				_wait.Clocks(2000000); // 40ms	
-				float s = 0.8;
-				float r = s/*values[8]*/ * delta;//0.9 * delta;
-				uint32_t ur = (uint32_t)r;
-				uint32_t f = min + ur;
-				pwm0.SetExact(f);
-				//pwm0.SetRatio(0.9/*values[8]*/);
-				AXISoCQuadCore_SOC_Reg1 = ur; 
-				AXISoCQuadCore_SOC_PWM0 = delta;// correct
-				AXISoCQuadCore_SOC_PWM1 = ur;//23616, wrong
-				AXISoCQuadCore_SOC_PWM2 = f;//73616
-				AXISoCQuadCore_SOC_PWM3 = *((uint32_t*)&r);
-				AXISoCQuadCore_SOC_PWM4 = *((uint32_t*)&s);
+				_wait.Clocks(50000000);
+				*AXISoCQuadCore_SOC_UART_Ptr = i;
 			}
+			//for (int i = 0; i < 11; i++)
+			//{
+			//	//_wait.Clocks(2000000); // 40ms	
+			//	//float s = 0.8;
+			//	//float r = s/*values[8]*/ * delta;//0.9 * delta;
+			//	//uint32_t ur = (uint32_t)r;
+			//	//uint32_t f = min + ur;
+			//	//pwm0.SetExact(f);
+			//	////pwm0.SetRatio(0.9/*values[8]*/);
+			//	//AXISoCQuadCore_SOC_Reg1 = ur; 
+			//	//AXISoCQuadCore_SOC_PWM0 = delta;// correct
+			//	//AXISoCQuadCore_SOC_PWM1 = ur;//23616, wrong
+			//	//AXISoCQuadCore_SOC_PWM2 = f;//73616
+			//	//AXISoCQuadCore_SOC_PWM3 = *((uint32_t*)&r);
+			//	//AXISoCQuadCore_SOC_PWM4 = *((uint32_t*)&s);
+			//	//float s = 0.1;
+			//	//float d = 50000;
+			//	//float m = s * d;
+			//	////AXISoCQuadCore_SOC_PWM2 = *((uint32_t*)&s);
+			//	////AXISoCQuadCore_SOC_PWM3 = *((uint32_t*)&d);
+			//	//AXISoCQuadCore_SOC_PWM4 = *((uint32_t*)&m);
+			//	//AXISoCQuadCore_SOC_Reg0_Float = m;
+			//	//return;
+			//}
 		}
 		return;
 

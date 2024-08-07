@@ -8,7 +8,7 @@
 #define AXISoCQuadCore_SOC_CPU_AutoDecrement_Ptr ((volatile uint32_t*)0x10000004)
 #define AXISoCQuadCore_SOC_CPU_AutoDecrement (*AXISoCQuadCore_SOC_CPU_AutoDecrement_Ptr)
 
-#define AXISoCQuadCore_SOC_UART ((volatile uint32_t*)0x90000000)
+#define AXISoCQuadCore_SOC_UART_Ptr ((volatile uint32_t*)0x90000000)
 
 #define AXISoCQuadCore_SOC_Switch0 (*(volatile uint32_t*)0x80000100)
 #define AXISoCQuadCore_SOC_Switch1 (*(volatile uint32_t*)0x80000104)
