@@ -12,12 +12,6 @@ using System.Runtime.InteropServices.Marshalling;
 
 namespace AXISoC.ComplianceTests
 {
-    public class AXISoCComplianceTestStats
-    {
-        public int Asserts { get; set; }
-    }
-
-    
     public class AXISoCComplianceSimulator : AXISoCTestModuleSimulator<AXISoCTestModule>
     {
         private readonly int _dataMarkerAddress;
@@ -41,10 +35,7 @@ namespace AXISoC.ComplianceTests
             "compliance"
         );
 
-        protected override uint[] SimulatorMemory(AXISoCComplianceSimulator sim) 
-            => sim.TopLevel.Memory.State.buff.Select(s => (uint)new RTLBitArray(s)).ToArray();
-
-        protected override AXISoCComplianceSimulator Run()
+        protected override uint[] Run()
         {
             var Asserts = 0;
             var HasNonZeroValues = false;
@@ -83,7 +74,7 @@ namespace AXISoC.ComplianceTests
             //sim.ClockCycle();
             //sim.RunAll(Instructions());
 
-            return sim;
+            return sim.TopLevel.Memory.State.buff.Select(s => (uint)new RTLBitArray(s)).ToArray();
         }
 
     }

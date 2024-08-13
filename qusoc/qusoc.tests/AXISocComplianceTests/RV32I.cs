@@ -14,4 +14,10 @@ namespace AXISoC.ComplianceTests
     {
         public RV32I() : base(new AXISoCComplianceTestsBaseAdapter("rv32i", "rv32i")) { }
     }
+
+    [TestClass]
+    public class HardwareRV32I : RV32Base
+    {
+        public HardwareRV32I() : base(new AXISoCComplianceHardwareTestsBaseAdapter("rv32i", "rv32i")) { }
+    }
 }

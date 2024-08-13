@@ -73,6 +73,31 @@ namespace AXISoCQuadCore
 						hardwareUART.SendMessage("\r\n");
 					}
 					break;
+					case '4': // sync
+					{
+						hardwareUART.Sync();
+					}
+					break;
+					case '5': // write
+					{
+						uint32_t addr = hardwareUART.ReadUint32FromText();
+						uint32_t data = hardwareUART.ReadUint32FromText();
+						hardwareUART.Sync();
+
+						volatile uint32_t* addrPtr = (uint32_t*)addr;
+						*addrPtr = data;
+					}
+					break;
+					case '6': // read
+					{
+						uint32_t addr = hardwareUART.ReadUint32FromText();
+						volatile uint32_t* addrPtr = (uint32_t*)addr;
+						uint32_t data = *addrPtr;
+						hardwareUART.SendMessage("0x");
+						hardwareUART.WriteUint32AsText(data);
+						hardwareUART.SendMessage("\r\n");
+					}
+					break;
 					default:
 					{
 						hardwareUART.SendByte(readData);

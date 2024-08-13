@@ -118,90 +118,6 @@ namespace QuSoC.Tests
             }
         }
 
-        async Task UpdateCPU1(uint[] instructions)
-        {
-            using (var mPort = new SerialPort()
-            {
-                PortName = "COM12",
-                BaudRate = 115200,
-                Parity = Parity.None,
-                DataBits = 8,
-                StopBits = StopBits.One,
-                Handshake = Handshake.None,
-                ReceivedBytesThreshold = 1
-            })
-            {
-                //mPort.DataReceived += DataReceivedHandler;
-                //mPort.ErrorReceived += ErrorReceivedHandler;
-                mPort.ReceivedBytesThreshold = 1;
-                mPort.Open();
-
-                mPort.Write(new[] { '0' }, 0, 1);
-                var hello = mPort.ReadLine();
-
-                Action<uint> writeValueWithFeedback = (value) =>
-                {
-                    var s = value.ToString("X8");
-                    var chars = s.ToArray();
-                    var feedbackBytes = new byte[8];
-
-                    for (var idx = 0; idx < chars.Length; idx++)
-                    {
-                        mPort.Write(new[] { chars[idx] }, 0, 1);
-                        //while (mPort.BytesToRead == 0) { }
-                        //mPort.Read(feedbackBytes, idx, 1);
-                    }
-
-                    var feedbackString = mPort.ReadLine().Trim();
-                    Assert.AreEqual(s, feedbackString);
-
-                    //var feedbackString = Encoding.ASCII.GetString(feedbackBytes);
-                    //Assert.AreEqual(s, feedbackString);
-                    //var mewLine = mPort.ReadLine();
-                };
-
-                Func<uint, uint, Task> writeData = async (addr, value) =>
-                {
-                    mPort.Write(new[] { '2' }, 0, 1);
-                    var addrPrompt = mPort.ReadLine().Trim();
-                    writeValueWithFeedback(addr);
-
-                    var dataPrompt = mPort.ReadLine().Trim();
-
-                    writeValueWithFeedback(value);
-
-                    var doneLine = mPort.ReadLine().Trim();
-                };
-
-                // stop CPU1
-                Trace.WriteLine("Resetting");
-                await writeData(0x80000000, 0x00000002);
-
-                Trace.WriteLine($"Firmware size: {instructions.Length} words");
-                Stopwatch sw = new Stopwatch();
-                sw.Start();
-                var reportPeriod = TimeSpan.FromSeconds(1);
-
-                for (var i = 0; i < instructions.Length; i++)
-                {
-                    uint addr = 0xF1000000 + (uint)(i * 4);
-                    await writeData(addr, instructions[i]);
-
-                    if (sw.Elapsed > reportPeriod)
-                    {
-                        sw.Restart();
-                        Trace.WriteLine($"Firmware update {(int)(((float)i / instructions.Length) * 100.0)}%");
-                    }
-                }
-
-                // run all CPUs
-                Trace.WriteLine("Restaring");
-                await writeData(0x80000000, 0x00000000);
-
-            }
-        }
-
-
         [TestMethod]
         public async Task AXISoCQuadCoreModule_UpdateCPU1()
         {
@@ -215,7 +131,7 @@ namespace QuSoC.Tests
                     //var cpu1Instructions = Inst.FromAsmFile("axisocquadcore_cpu1_update");
                     var cpu1Instructions = FirmwareTools.FromFolder(@"C:\code\qusoc\qusoc\qusoc.demos\apps\AXISoCQuadCore\cpu1");
 
-                    await UpdateCPU1(cpu1Instructions);
+                    await AXISocCPUUpdater.UpdateCPU(1, cpu1Instructions);
                 }
                 catch (Exception ex)
                 {

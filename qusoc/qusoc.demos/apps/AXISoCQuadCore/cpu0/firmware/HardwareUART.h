@@ -21,6 +21,7 @@ namespace qusoc
 			void Write4BitAsText(uint8_t data);
 			void WriteByteAsText(uint8_t data);
 			void WriteUint32AsText(uint32_t data);
+			void Sync();
 	};
 }
 #endif

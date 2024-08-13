@@ -139,4 +139,9 @@ namespace qusoc
 		WriteByteAsText(data >> 8);
 		WriteByteAsText(data);
 	}
+
+	void HardwareUART::Sync()
+	{
+		SendByte(0x55);
+	}
 }

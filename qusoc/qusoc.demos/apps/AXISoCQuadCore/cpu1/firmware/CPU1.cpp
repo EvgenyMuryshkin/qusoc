@@ -155,7 +155,7 @@ namespace AXISoCQuadCore
 		{
 			for (uint32_t i = 65; i < 80; i++)
 			{
-				_wait.Clocks(50000000);
+				_wait.Clocks(50000001);
 				*AXISoCQuadCore_SOC_UART_Ptr = i;
 			}
 			//for (int i = 0; i < 11; i++)

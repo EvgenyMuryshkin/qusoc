@@ -56,7 +56,7 @@ namespace AXISoC
         internal AXI4InSignalArrayBufferModule Switches = new AXI4InSignalArrayBufferModule(axiSize.B4, 1, 2);
         internal AXI4InSignalArrayBufferModule Buttons = new AXI4InSignalArrayBufferModule(axiSize.B4, 1, 4);
         
-        internal AXI4UARTModule uart = new AXI4UARTModule(axiSize.B4, 256, 434);//115200
+        internal AXI4UARTModule uart = new AXI4UARTModule(axiSize.B4, 1024, 434);//115200
         internal AXI4PWMModule pwm = new AXI4PWMModule(axiSize.B4, 8, 1_000_000);// 20ms per pwm period, 1M clock on 50MHz
         internal AXI4WS2812Module ws2812 = new AXI4WS2812Module(axiSize.B4, 50000000);
 

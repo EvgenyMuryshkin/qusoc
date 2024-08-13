@@ -28,8 +28,7 @@ namespace QRV32.ComplianceTools
         }
 
         public abstract string ComplianceTestsPath { get; }
-        protected abstract TSimulator Run();
-        protected abstract uint[] SimulatorMemory(TSimulator sim);
+        protected abstract uint[] Run();
 
         string ISATestsPath => Path.Combine(ComplianceTestsPath, _isa);
         string SourcesLocation => Path.Combine(ISATestsPath, "src");
@@ -104,14 +103,14 @@ namespace QRV32.ComplianceTools
             return Convert.ToInt32(address.Substring(2), 16);
         }
 
-        void AssertReferenceOutput(string testName, TSimulator sim)
+        void AssertReferenceOutput(string testName, uint[] memoryBlock)
         {
             var dataSectionAddress = DataSectionAddress() >> 2;
             var referenceOutput = ReferenceOutput(testName);
-            AssertMemory(sim, dataSectionAddress, referenceOutput);
+            AssertMemory(memoryBlock, dataSectionAddress, referenceOutput);
         }
 
-        public TSimulator Run(string testName)
+        public uint[] Run(string testName)
         {
             _testName = testName;
             CleanUp();
@@ -124,13 +123,12 @@ namespace QRV32.ComplianceTools
 
         public virtual void RunAndAssert(string testName)
         {
-            var sim = Run(testName);
-            AssertReferenceOutput(testName, sim);
+            var memoryBlock = Run(testName);
+            AssertReferenceOutput(testName, memoryBlock);
         }
 
-        protected void AssertMemory(TSimulator sim, int testAddress, uint[] expectedValues)
+        protected void AssertMemory(uint[] memoryBlock, int testAddress, uint[] expectedValues)
         {
-            var memoryBlock = SimulatorMemory(sim);
             for (var i = 0; i < expectedValues.Length; i++)
             {
                 var actualWordAddress = testAddress + i;
