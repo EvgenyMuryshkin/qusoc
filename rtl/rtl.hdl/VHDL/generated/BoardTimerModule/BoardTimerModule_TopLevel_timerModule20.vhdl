@@ -42,8 +42,8 @@ architecture rtl of BoardTimerModule_TopLevel_timerModule20 is
 	-- false is a reserved name, declaration skipped
 	constant CapacityBits : unsigned(2 downto 0) := "101";
 	constant countTo : unsigned(7 downto 0) := "00010011";
-	constant TimerModule_L51F9L53T10_TimerModule_L52F79T80_Expr : std_logic := '0';
-	constant TimerModule_L51F9L53T10_TimerModule_L52F100T101_Expr : std_logic := '1';
+	constant TimerModule_L52F79T80_Expr : std_logic := '0';
+	constant TimerModule_L52F100T101_Expr : std_logic := '1';
 	signal Inputs_Restart : std_logic := '0';
 	signal NextState_counter : unsigned(4 downto 0) := (others => '0');
 	signal active : std_logic := '0';
@@ -109,14 +109,14 @@ begin
 			others => '0'
 		)
 		;
-		TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_2(0) <= TimerModule_L51F9L53T10_TimerModule_L52F100T101_Expr;
+		TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_2(0) <= TimerModule_L52F100T101_Expr;
 		Inputs_Restart <= Restart;
 		active <= TimerModule_L47F24T48_Expr;
 		TimerModule_L51F9L53T10_TimerModule_L52F34T101_WhenTrue(4 downto 1) <= (
 			others => '0'
 		)
 		;
-		TimerModule_L51F9L53T10_TimerModule_L52F34T101_WhenTrue(0) <= TimerModule_L51F9L53T10_TimerModule_L52F79T80_Expr;
+		TimerModule_L51F9L53T10_TimerModule_L52F34T101_WhenTrue(0) <= TimerModule_L52F79T80_Expr;
 		TimerModule_L51F9L53T10_TimerModule_L52F34T101_WhenFalse <= TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr(4 downto 0);
 		TimerModule_L51F9L53T10_TimerModule_L52F33T124_Resize <= TimerModule_L51F9L53T10_TimerModule_L52F34T101_Ternary;
 		TimerModule_L51F9L53T10_TimerModule_L52F33T135_SignChange <= TimerModule_L51F9L53T10_TimerModule_L52F33T124_Resize;

@@ -61,7 +61,7 @@ namespace AXISoC.ComplianceTests
 
             for (var i = 0; i < values.Count; i += 2)
             {
-                Assert.AreEqual(values[i], values[i + 1], $"Failed at position {i}");
+                Assert.AreEqual(values[i], values[i + 1], $"Failed at position {i / 2}");
             }
         }
 

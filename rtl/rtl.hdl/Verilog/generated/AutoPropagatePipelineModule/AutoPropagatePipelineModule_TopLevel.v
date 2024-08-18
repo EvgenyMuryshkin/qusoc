@@ -48,7 +48,7 @@ module AutoPropagatePipelineModule_TopLevel
 	wire [15: 0] Pipeline_stage0_State_sumsDefault = 16'b0000000000000000;
 	wire [15: 0] Pipeline_stage1_State_s0SumsDefault = 16'b0000000000000000;
 	wire [15: 0] Pipeline_stage1_State_sumsDefault = 16'b0000000000000000;
-	wire [5: 0] Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L54F21T23_Expr = 6'b101010;
+	wire [5: 0] AutoPropagatePipelineModule_L54F21T23_Expr = 6'b101010;
 	wire Inputs_inReady;
 	reg Pipeline_stage0_NextState_ready;
 	reg Pipeline_stage1_NextState_ready;
@@ -380,7 +380,7 @@ module AutoPropagatePipelineModule_TopLevel
 	assign Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L48F24L55T18_Enumerable[3] = Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F21T66_Cast;
 	assign Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L48F24L55T18_Enumerable[4] = {
 		{10{1'b0}},
-		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L54F21T23_Expr
+		AutoPropagatePipelineModule_L54F21T23_Expr
 	}
 	;
 	assign Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F21T62_Cast = Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F30T61_Expr[15:0];

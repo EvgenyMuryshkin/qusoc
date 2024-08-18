@@ -55,9 +55,9 @@ architecture rtl of StageStatePipelineModule_TopLevel is
 	-- false is a reserved name, declaration skipped
 	constant Pipeline_stage0_State_sumsDefault : unsigned(15 downto 0) := "0000000000000000";
 	constant Pipeline_stage1_State_sumsDefault : unsigned(15 downto 0) := "0000000000000000";
-	constant Pipeline_StageStatePipelineModule_L92F60T61_Expr : std_logic := '1';
-	constant Pipeline_StageStatePipelineModule_L97F64T65_Expr : std_logic := '1';
-	constant Pipeline_StageStatePipelineModule_L108F59T60_Expr : std_logic := '1';
+	constant StageStatePipelineModule_L92F60T61_Expr : std_logic := '1';
+	constant StageStatePipelineModule_L97F64T65_Expr : std_logic := '1';
+	constant StageStatePipelineModule_L108F59T60_Expr : std_logic := '1';
 	signal Inputs_inReady : std_logic := '0';
 	signal Pipeline_stage0_NextState_IsReady : std_logic := '0';
 	signal Pipeline_stage0_NextState_S0Counter : unsigned(15 downto 0) := (others => '0');
@@ -340,7 +340,7 @@ begin
 			others => '0'
 		)
 		;
-		Pipeline_StageStatePipelineModule_L92F42T61_Expr_2(0) <= Pipeline_StageStatePipelineModule_L92F60T61_Expr;
+		Pipeline_StageStatePipelineModule_L92F42T61_Expr_2(0) <= StageStatePipelineModule_L92F60T61_Expr;
 		Pipeline_StageStatePipelineModule_L97F42T65_Expr_1(17 downto 16) <= (
 			others => '0'
 		)
@@ -350,7 +350,7 @@ begin
 			others => '0'
 		)
 		;
-		Pipeline_StageStatePipelineModule_L97F42T65_Expr_2(0) <= Pipeline_StageStatePipelineModule_L97F64T65_Expr;
+		Pipeline_StageStatePipelineModule_L97F42T65_Expr_2(0) <= StageStatePipelineModule_L97F64T65_Expr;
 		Pipeline_StageStatePipelineModule_L100F34T57_Expr_1(17 downto 16) <= (
 			others => '0'
 		)
@@ -390,7 +390,7 @@ begin
 			others => '0'
 		)
 		;
-		Pipeline_StageStatePipelineModule_L108F42T60_Expr_2(0) <= Pipeline_StageStatePipelineModule_L108F59T60_Expr;
+		Pipeline_StageStatePipelineModule_L108F42T60_Expr_2(0) <= StageStatePipelineModule_L108F59T60_Expr;
 		Inputs_inData(0) <= inData0;
 		Inputs_inData(1) <= inData1;
 		Inputs_inData(2) <= inData2;

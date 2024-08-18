@@ -41,7 +41,7 @@ module CompositionModule_TopLevel_Emitter
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire EmitterModule_L22F9L25T10_EmitterModule_L24F54T55_Expr = 1'b1;
+	wire EmitterModule_L24F54T55_Expr = 1'b1;
 	wire Inputs_Ack;
 	wire Inputs_IsEnabled;
 	reg [7: 0] NextState_Data;
@@ -84,7 +84,7 @@ module CompositionModule_TopLevel_Emitter
 	;
 	assign EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_2 = {
 		{9{1'b0}},
-		EmitterModule_L22F9L25T10_EmitterModule_L24F54T55_Expr
+		EmitterModule_L24F54T55_Expr
 	}
 	;
 	assign Inputs_Ack = Ack;

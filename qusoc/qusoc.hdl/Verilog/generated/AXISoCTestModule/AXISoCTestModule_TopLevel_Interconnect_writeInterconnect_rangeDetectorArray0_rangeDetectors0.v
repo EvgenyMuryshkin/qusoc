@@ -35,7 +35,7 @@ module AXISoCTestModule_TopLevel_Interconnect_writeInterconnect_rangeDetectorArr
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire [0: 0] rangeFrom = 1'b0;
-	wire [12: 0] rangeTo = 13'b1000000000000;
+	wire [14: 0] rangeTo = 15'b100000000000000;
 	wire [31: 0] Inputs_Value;
 	wire RangeDetectorModule_L33F33T85_Expr;
 	wire RangeDetectorModule_L33F33T85_Expr_1;
@@ -65,7 +65,7 @@ module AXISoCTestModule_TopLevel_Interconnect_writeInterconnect_rangeDetectorArr
 	}
 	;
 	assign RangeDetectorModule_L33F62T85_ExprRhs = {
-		{20{1'b0}},
+		{18{1'b0}},
 		rangeTo
 	}
 	;

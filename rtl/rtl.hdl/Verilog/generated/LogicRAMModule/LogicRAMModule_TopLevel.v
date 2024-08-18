@@ -37,7 +37,7 @@ module LogicRAMModule_TopLevel
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire [7: 0] State_BuffDefault = 8'b00000000;
-	wire LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F46T47_Expr = 1'b1;
+	wire LogicRAMModule_L30F46T47_Expr = 1'b1;
 	wire [1: 0] LogicRAMModule_L25F102T103_Expr = 2'b10;
 	wire [7: 0] Inputs_Value;
 	reg [1: 0] NextState_Index;
@@ -136,7 +136,7 @@ module LogicRAMModule_TopLevel
 	;
 	assign LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F32T47_Expr_2 = {
 		{3{1'b0}},
-		LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F46T47_Expr
+		LogicRAMModule_L30F46T47_Expr
 	}
 	;
 	assign LogicRAMModule_L25F36T97_Expr_1 = {

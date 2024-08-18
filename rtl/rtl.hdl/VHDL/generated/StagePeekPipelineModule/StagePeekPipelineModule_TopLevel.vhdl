@@ -57,7 +57,7 @@ architecture rtl of StagePeekPipelineModule_TopLevel is
 	constant Pipeline_stage0_State_sumsDefault : unsigned(15 downto 0) := "0000000000000000";
 	constant Pipeline_stage1_State_s0SumsDefault : unsigned(15 downto 0) := "0000000000000000";
 	constant Pipeline_stage1_State_sumsDefault : unsigned(15 downto 0) := "0000000000000000";
-	constant Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L56F29T31_Expr : unsigned(5 downto 0) := "101010";
+	constant PipelineConfigurations_L56F29T31_Expr : unsigned(5 downto 0) := "101010";
 	signal Inputs_inReady : std_logic := '0';
 	signal Pipeline_stage0_NextState_ready : std_logic := '0';
 	signal Pipeline_stage1_NextState_ready : std_logic := '0';
@@ -378,7 +378,7 @@ begin
 			others => '0'
 		)
 		;
-		Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L50F32L57T26_Enumerable(4)(5 downto 0) <= Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L56F29T31_Expr;
+		Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L50F32L57T26_Enumerable(4)(5 downto 0) <= PipelineConfigurations_L56F29T31_Expr;
 		Pipeline_PipelineConfigurations_L66F25T66_Cast <= Pipeline_PipelineConfigurations_L66F34T65_Expr(15 downto 0);
 		Pipeline_PipelineConfigurations_L67F25T66_Cast <= Pipeline_PipelineConfigurations_L67F34T65_Expr(15 downto 0);
 		Pipeline_PipelineConfigurations_L64F28L68T22_Enumerable(0) <= Pipeline_PipelineConfigurations_L66F25T66_Cast;

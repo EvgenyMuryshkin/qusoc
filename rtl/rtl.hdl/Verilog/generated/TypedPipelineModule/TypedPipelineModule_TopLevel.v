@@ -48,7 +48,7 @@ module TypedPipelineModule_TopLevel
 	wire [15: 0] Pipeline_stage0_State_sumsDefault = 16'b0000000000000000;
 	wire [15: 0] Pipeline_stage1_State_s0SumsDefault = 16'b0000000000000000;
 	wire [15: 0] Pipeline_stage1_State_sumsDefault = 16'b0000000000000000;
-	wire [5: 0] Pipeline_TypedPipelineModule_L86F29T43_TypedPipelineModule_L53F9L67T10_TypedPipelineModule_L64F21T23_Expr = 6'b101010;
+	wire [5: 0] TypedPipelineModule_L64F21T23_Expr = 6'b101010;
 	wire Inputs_inReady;
 	reg Pipeline_stage0_NextState_ready;
 	reg Pipeline_stage1_NextState_ready;
@@ -379,7 +379,7 @@ module TypedPipelineModule_TopLevel
 	assign Pipeline_TypedPipelineModule_L86F29T43_TypedPipelineModule_L53F9L67T10_TypedPipelineModule_L58F24L65T18_Enumerable[3] = Pipeline_TypedPipelineModule_L86F29T43_TypedPipelineModule_L53F9L67T10_TypedPipelineModule_L63F21T66_Cast;
 	assign Pipeline_TypedPipelineModule_L86F29T43_TypedPipelineModule_L53F9L67T10_TypedPipelineModule_L58F24L65T18_Enumerable[4] = {
 		{10{1'b0}},
-		Pipeline_TypedPipelineModule_L86F29T43_TypedPipelineModule_L53F9L67T10_TypedPipelineModule_L64F21T23_Expr
+		TypedPipelineModule_L64F21T23_Expr
 	}
 	;
 	assign Pipeline_TypedPipelineModule_L87F30T45_TypedPipelineModule_L70F9L81T10_TypedPipelineModule_L77F21T62_Cast = Pipeline_TypedPipelineModule_L87F30T45_TypedPipelineModule_L70F9L81T10_TypedPipelineModule_L77F30T61_Expr[15:0];

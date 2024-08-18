@@ -11,6 +11,6 @@
     "Vendor": "intel",
     "Device": "generic"
   },
-  "HDL": "Verilog",
-  "ProjectLocation": "../qrv32.hdl/verilog/generated"
+  "HDL": "VHDL",
+  "ProjectLocation": "../qrv32.hdl/VHDL/generated"
 }

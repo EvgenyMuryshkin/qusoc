@@ -99,7 +99,7 @@ architecture rtl of AXI4IncrementOnReadCounterModuleB4_TopLevel is
 	constant AXI4IncrementOnReadCounterModule_L58F28T33_Expr : std_logic := '0';
 	constant AXI4IncrementOnReadCounterModule_L55F28T32_Expr : std_logic := '1';
 	constant AXI4IncrementOnReadCounterModule_L57F28T33_Expr : std_logic := '0';
-	constant AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F54T55_Expr : std_logic := '1';
+	constant AXI4IncrementOnReadCounterModule_L68F54T55_Expr : std_logic := '1';
 	signal Inputs_M2S_R_AR_ARID : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_M2S_R_AR_ARADDR : unsigned(31 downto 0) := (others => '0');
 	signal Inputs_M2S_R_AR_ARLEN : unsigned(7 downto 0) := (others => '0');
@@ -267,7 +267,7 @@ begin
 			others => '0'
 		)
 		;
-		AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr_2(0) <= AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F54T55_Expr;
+		AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr_2(0) <= AXI4IncrementOnReadCounterModule_L68F54T55_Expr;
 		Inputs_M2S_R_AR_ARID <= M2S_R_AR_ARID;
 		Inputs_M2S_R_AR_ARADDR <= M2S_R_AR_ARADDR;
 		Inputs_M2S_R_AR_ARLEN <= M2S_R_AR_ARLEN;

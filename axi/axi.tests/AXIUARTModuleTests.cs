@@ -137,7 +137,7 @@ namespace axi.tests
 
             sim.OnPostCommit = (_) =>
             {
-                if (topLevel.uart.transmitterFIFO.oRACK)
+                if (topLevel.uartModule.transmitterFIFO.oRACK)
                     txRacks++;
 
                 if (txBitsEnabled)
@@ -166,8 +166,8 @@ namespace axi.tests
                         }
                     );
                 }
-                Assert.AreEqual(data, (byte)topLevel.uart.transmitterFIFO.State.buffer[idx]);
-                Assert.AreEqual((idx + 1), (int)topLevel.uart.transmitterFIFO.State.wAddr);
+                Assert.AreEqual(data, (byte)topLevel.uartModule.transmitterFIFO.State.buffer[idx]);
+                Assert.AreEqual((idx + 1), (int)topLevel.uartModule.transmitterFIFO.State.wAddr);
 
                 sim.ClockCycle(new AXIUARTModuleTestModuleInputs());
             }
@@ -187,7 +187,7 @@ namespace axi.tests
 
             for (var idx = 0; idx < testData.Count; idx++)
             {
-                Assert.AreEqual(testData[idx], (byte)topLevel.uart.receiverFIFO.State.buffer[idx], $"ReceiverFIFO does not match at {idx}");
+                Assert.AreEqual(testData[idx], (byte)topLevel.uartModule.receiverFIFO.State.buffer[idx], $"ReceiverFIFO does not match at {idx}");
             }
 
             for (var idx = 0; idx < testData.Count; idx++)

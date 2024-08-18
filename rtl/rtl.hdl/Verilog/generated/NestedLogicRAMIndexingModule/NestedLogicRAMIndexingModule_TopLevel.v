@@ -40,7 +40,7 @@ module NestedLogicRAMIndexingModule_TopLevel
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire [7: 0] State_Nested_BuffDefault = 8'b00000000;
-	wire NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F60T61_Expr = 1'b1;
+	wire NestedLogicRAMIndexingModule_L33F60T61_Expr = 1'b1;
 	wire [1: 0] Inputs_ReadAddr;
 	wire Inputs_WE;
 	wire [1: 0] Inputs_WriteAddr;
@@ -116,7 +116,7 @@ module NestedLogicRAMIndexingModule_TopLevel
 	;
 	assign NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_2 = {
 		{9{1'b0}},
-		NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F60T61_Expr
+		NestedLogicRAMIndexingModule_L33F60T61_Expr
 	}
 	;
 	assign Inputs_ReadAddr = ReadAddr;

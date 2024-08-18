@@ -28,4 +28,14 @@ namespace RTL.Modules
         //public bool CtorMuxCondition => Inputs.Bit == 0;
         public RTLBitArray CtorMux => Inputs.Bit == 0 ? new RTLBitArray(RTLBitArrayInitType.MSB, "00000000") : new RTLBitArray(RTLBitArrayInitType.MSB, "01000000");
     }
+
+    public class BitArrayMuxInputs
+    {
+        public RTLBitArray Bit = new RTLBitArray().Resized(3);
+    }
+
+    public class BitArrayMuxModule : RTLCombinationalModule<BitArrayMuxInputs>
+    {
+        public RTLBitArray CtorMux => Inputs.Bit == 0 ? new RTLBitArray(RTLBitArrayInitType.MSB, "00000000") : new RTLBitArray(RTLBitArrayInitType.MSB, "01000000");
+    }
 }

@@ -41,7 +41,7 @@ architecture rtl of OverrideScheduleComposition_TopLevel_GetOverride is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	constant CombinationalOverridesBase_L16F50T51_Expr : std_logic := '1';
-	constant CombinationalGetValueOverride_L12F13L19T14_CombinationalGetValueOverride_L16F54T55_Expr : unsigned(1 downto 0) := "11";
+	constant CombinationalGetValueOverride_L16F54T55_Expr : unsigned(1 downto 0) := "11";
 	signal Inputs_InOverride : std_logic := '0';
 	signal Inputs_InValue : unsigned(7 downto 0) := (others => '0');
 	signal InternalOffset : unsigned(7 downto 0) := (others => '0');
@@ -113,7 +113,7 @@ begin
 			others => '0'
 		)
 		;
-		CombinationalGetValueOverride_L12F13L19T14_CombinationalGetValueOverride_L16F37T55_Expr_2(1 downto 0) <= signed(CombinationalGetValueOverride_L12F13L19T14_CombinationalGetValueOverride_L16F54T55_Expr);
+		CombinationalGetValueOverride_L12F13L19T14_CombinationalGetValueOverride_L16F37T55_Expr_2(1 downto 0) <= signed(CombinationalGetValueOverride_L16F54T55_Expr);
 		Inputs_InOverride <= InOverride;
 		Inputs_InValue <= InValue;
 		InternalOffset(7 downto 1) <= (

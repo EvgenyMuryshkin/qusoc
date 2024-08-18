@@ -35,7 +35,7 @@ module NativeGetterModule_TopLevel
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire [7: 0] BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L35F30T43_Expr = 8'b11111111;
-	wire [6: 0] BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F36T39_Expr = 7'b1100100;
+	wire [6: 0] BitArrayGetterModule_L37F36T39_Expr = 7'b1100100;
 	wire [7: 0] Inputs_Value;
 	reg [7: 0] BitArrayGetterModule_L34F13L41T14_result;
 	wire BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_Expr;
@@ -57,7 +57,7 @@ module NativeGetterModule_TopLevel
 	;
 	assign BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprRhs = {
 		{2{1'b0}},
-		BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F36T39_Expr
+		BitArrayGetterModule_L37F36T39_Expr
 	}
 	;
 	assign Inputs_Value = Value;

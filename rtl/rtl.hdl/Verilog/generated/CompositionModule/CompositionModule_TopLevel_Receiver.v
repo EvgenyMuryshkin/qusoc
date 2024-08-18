@@ -47,11 +47,11 @@ module CompositionModule_TopLevel_Receiver
 	wire [1: 0] ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L16F22T38_Expr = 2'b00;
 	wire [1: 0] ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L18F21L21T22_ReceiverModule_L20F41T62_Expr = 2'b01;
 	wire [1: 0] ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L23F22T43_Expr = 2'b01;
-	wire ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F64T65_Expr = 1'b1;
+	wire ReceiverModule_L26F64T65_Expr = 1'b1;
 	wire [1: 0] ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L29F21L31T22_ReceiverModule_L30F41T66_Expr = 2'b10;
 	wire [1: 0] ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L33F22T47_Expr = 2'b10;
 	wire [1: 0] ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L35F21L38T22_ReceiverModule_L36F41T57_Expr = 2'b00;
-	wire ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L35F21L38T22_ReceiverModule_L37F42T43_Expr = 1'b0;
+	wire ReceiverModule_L37F42T43_Expr = 1'b0;
 	wire [1: 0] ReceiverModule_L8F46T71_Expr = 2'b10;
 	wire Inputs_Ack;
 	wire Inputs_Bit;
@@ -143,7 +143,7 @@ module CompositionModule_TopLevel_Receiver
 				NextState_FSM = ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L35F21L38T22_ReceiverModule_L36F41T57_Expr;
 				NextState_Data = {
 					{7{1'b0}},
-					ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L35F21L38T22_ReceiverModule_L37F42T43_Expr
+					ReceiverModule_L37F42T43_Expr
 				}
 				;
 			end

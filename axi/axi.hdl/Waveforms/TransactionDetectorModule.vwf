@@ -24,6 +24,18 @@ HEADER
 {
 	VERSION = 1;
 	TIME_UNIT = ns;
+	PRINT_OPTIONS = "Print_options_version 6\
+range_start 0ps\
+range_end 1.0ms\
+width 1\
+names_percentage 25\
+comments 1\
+grid_lines 1\
+time_bars 1\
+name_every_page 0\
+expand_groups 0\
+print_all 1\
+print_row_height 100";
 	DATA_OFFSET = 0.0;
 	DATA_DURATION = 1000000.0;
 	SIMULATION_TIME = 1000000.0;
@@ -89,6 +101,36 @@ SIGNAL("oTransaction")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("oTXBegin")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("oWaitForRestart")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("iActive")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
 	PARENT = "";
 }
 
@@ -158,11 +200,44 @@ TRANSITION_LIST("oTransaction")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 0 FOR 30006.609;
-		LEVEL 1 FOR 40000.0;
-		LEVEL 0 FOR 80000.0;
+		LEVEL 0 FOR 30006.811;
+		LEVEL 1 FOR 39999.866;
+		LEVEL 0 FOR 80000.134;
 		LEVEL 1 FOR 20000.0;
-		LEVEL 0 FOR 829993.391;
+		LEVEL 0 FOR 829993.189;
+	}
+}
+
+TRANSITION_LIST("oTXBegin")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 19845.025;
+		LEVEL 1 FOR 10161.788;
+		LEVEL 0 FOR 110158.212;
+		LEVEL 1 FOR 9841.788;
+		LEVEL 0 FOR 849993.187;
+	}
+}
+
+TRANSITION_LIST("oWaitForRestart")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 70006.791;
+		LEVEL 1 FOR 39999.858;
+		LEVEL 0 FOR 889993.351;
+	}
+}
+
+TRANSITION_LIST("iActive")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 1000000.0;
 	}
 }
 
@@ -195,7 +270,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "iTXBegin";
+	CHANNEL = "iActive";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Hexadecimal;
 	TREE_INDEX = 3;
@@ -204,7 +279,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "iTXEnd";
+	CHANNEL = "iTXBegin";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Hexadecimal;
 	TREE_INDEX = 4;
@@ -213,10 +288,37 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "oTransaction";
+	CHANNEL = "iTXEnd";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Hexadecimal;
 	TREE_INDEX = 5;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "oTransaction";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 6;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "oTXBegin";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 7;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "oWaitForRestart";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 8;
 	TREE_LEVEL = 0;
 }
 

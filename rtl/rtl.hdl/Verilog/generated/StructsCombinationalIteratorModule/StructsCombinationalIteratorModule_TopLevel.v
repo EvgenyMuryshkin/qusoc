@@ -73,8 +73,8 @@ module StructsCombinationalIteratorModule_TopLevel
 	wire [7: 0] State_i1Default = 8'b00000000;
 	wire [7: 0] State_i2Default = 8'b00000000;
 	wire [23: 0] State_oDefault = 24'b000000000000000000000000;
-	wire [3: 0] StructsCombinationalIteratorModule_L75F9L101T10_StructsCombinationalIteratorModule_L90F13L94T14_StructsCombinationalIteratorModule_L92F71T73_Expr = 4'b1010;
-	wire [3: 0] StructsCombinationalIteratorModule_L75F9L101T10_StructsCombinationalIteratorModule_L90F13L94T14_StructsCombinationalIteratorModule_L93F71T73_Expr = 4'b1011;
+	wire [3: 0] StructsCombinationalIteratorModule_L92F71T73_Expr = 4'b1010;
+	wire [3: 0] StructsCombinationalIteratorModule_L93F71T73_Expr = 4'b1011;
 	wire [1: 0] Inputs_addr;
 	wire [3: 0] Inputs_i1_a;
 	wire [3: 0] Inputs_i1_b;
@@ -304,8 +304,8 @@ module StructsCombinationalIteratorModule_TopLevel
 		end
 		for (i1 = 0; (i1 < 4); i1 = (i1 + 1))
 		begin
-			NextState_c[i1][3:0] = (((Inputs_addr == 0)) ? StructsCombinationalIteratorModule_L75F9L101T10_StructsCombinationalIteratorModule_L90F13L94T14_StructsCombinationalIteratorModule_L92F71T73_Expr : Inputs_i1_a);
-			NextState_c[i1][7:4] = (((Inputs_addr != 0)) ? StructsCombinationalIteratorModule_L75F9L101T10_StructsCombinationalIteratorModule_L90F13L94T14_StructsCombinationalIteratorModule_L93F71T73_Expr : Inputs_i1_b);
+			NextState_c[i1][3:0] = (((Inputs_addr == 0)) ? StructsCombinationalIteratorModule_L92F71T73_Expr : Inputs_i1_a);
+			NextState_c[i1][7:4] = (((Inputs_addr != 0)) ? StructsCombinationalIteratorModule_L93F71T73_Expr : Inputs_i1_b);
 		end
 		for (i2 = 0; (i2 < 4); i2 = (i2 + 1))
 		begin

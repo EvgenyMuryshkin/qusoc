@@ -26,7 +26,6 @@ entity AXIUARTModuleClocksTestModule_TopLevel is
 		-- [END USER PORTS]
 		Clock : in std_logic;
 		Reset : in std_logic;
-		iRX : in std_logic;
 		Master_ARADDR : in unsigned (31 downto 0);
 		Master_ARUSER : in unsigned (7 downto 0);
 		Master_AWADDR : in unsigned (31 downto 0);
@@ -39,6 +38,9 @@ entity AXIUARTModuleClocksTestModule_TopLevel is
 		Master_WDATA3 : in unsigned (7 downto 0);
 		Master_WE : in std_logic;
 		Master_WSTRB : in unsigned (3 downto 0);
+		UART_iEN_RX : in std_logic;
+		UART_iEN_TX : in std_logic;
+		UART_iRX : in std_logic;
 		oCE : out std_logic;
 		oRACK : out std_logic;
 		oRData0 : out unsigned (7 downto 0);
@@ -65,9 +67,6 @@ architecture rtl of AXIUARTModuleClocksTestModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant AXI4UARTModule_L17F30T34_Expr : std_logic := '1';
-	constant AXI4UARTModule_L18F30T34_Expr : std_logic := '1';
-	signal Inputs_iRX : std_logic := '0';
 	signal Inputs_Master_ARADDR : unsigned(31 downto 0) := (others => '0');
 	signal Inputs_Master_ARUSER : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_Master_AWADDR : unsigned(31 downto 0) := (others => '0');
@@ -76,94 +75,96 @@ architecture rtl of AXIUARTModuleClocksTestModule_TopLevel is
 	signal Inputs_Master_RREADY : std_logic := '0';
 	signal Inputs_Master_WE : std_logic := '0';
 	signal Inputs_Master_WSTRB : unsigned(3 downto 0) := (others => '0');
-	signal master_Master : unsigned(111 downto 0) := (others => '0');
-	signal master_S2M : unsigned(73 downto 0) := (others => '0');
-	signal master_M2S : unsigned(221 downto 0) := (others => '0');
-	signal master_RACK : std_logic := '0';
-	signal master_WACK : std_logic := '0';
-	signal uart_iEN_RX : std_logic := '0';
-	signal uart_iEN_TX : std_logic := '0';
-	signal uart_iRX : std_logic := '0';
-	signal uart_M2S : unsigned(221 downto 0) := (others => '0');
-	signal uart_oCE : std_logic := '0';
-	signal uart_oRXCounter : signed(31 downto 0) := (others => '0');
-	signal uart_oRXData : unsigned(7 downto 0) := (others => '0');
-	signal uart_oRXValid : std_logic := '0';
-	signal uart_oS2M : unsigned(73 downto 0) := (others => '0');
-	signal uart_oTransmitting : std_logic := '0';
-	signal uart_oTX : std_logic := '0';
-	signal uart_oTXCounter : signed(31 downto 0) := (others => '0');
-	signal AXIUARTTestModule_L36F33L40T14_Object : unsigned(224 downto 0) := (others => '0');
-	signal AXIUARTTestModule_L42F35L46T14_Object : unsigned(185 downto 0) := (others => '0');
-	signal master_Master_master_Master_HardLink : unsigned(111 downto 0) := "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
-	signal master_S2M_master_S2M_HardLink : unsigned(73 downto 0) := "00000000000000000000000000000000000000000000000000000000000000000000000000";
-	signal master_M2S_master_M2S_HardLink : unsigned(221 downto 0) := "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
-	signal master_RACK_master_RACK_HardLink : std_logic := '0';
-	signal master_RDATA0_master_RDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal master_RDATA1_master_RDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal master_RDATA2_master_RDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal master_RDATA3_master_RDATA_HardLink : unsigned(7 downto 0) := "00000000";
-	signal master_WACK_master_WACK_HardLink : std_logic := '0';
-	signal uart_iEN_RX_uart_iEN_RX_HardLink : std_logic := '0';
-	signal uart_iEN_TX_uart_iEN_TX_HardLink : std_logic := '0';
-	signal uart_iRX_uart_iRX_HardLink : std_logic := '0';
-	signal uart_M2S_uart_M2S_HardLink : unsigned(221 downto 0) := "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
-	signal uart_oCE_uart_oCE_HardLink : std_logic := '0';
-	signal uart_oRXCounter_uart_oRXCounter_HardLink : signed(31 downto 0) := "00000000000000000000000000000000";
-	signal uart_oRXData_uart_oRXData_HardLink : unsigned(7 downto 0) := "00000000";
-	signal uart_oRXValid_uart_oRXValid_HardLink : std_logic := '0';
-	signal uart_oS2M_uart_oS2M_HardLink : unsigned(73 downto 0) := "00000000000000000000000000000000000000000000000000000000000000000000000000";
-	signal uart_oTransmitting_uart_oTransmitting_HardLink : std_logic := '0';
-	signal uart_oTX_uart_oTX_HardLink : std_logic := '0';
-	signal uart_oTXCounter_uart_oTXCounter_HardLink : signed(31 downto 0) := "00000000000000000000000000000000";
+	signal Inputs_UART_iEN_RX : std_logic := '0';
+	signal Inputs_UART_iEN_TX : std_logic := '0';
+	signal Inputs_UART_iRX : std_logic := '0';
+	signal masterModule_Master : unsigned(111 downto 0) := (others => '0');
+	signal masterModule_S2M : unsigned(73 downto 0) := (others => '0');
+	signal masterModule_M2S : unsigned(221 downto 0) := (others => '0');
+	signal masterModule_RACK : std_logic := '0';
+	signal masterModule_WACK : std_logic := '0';
+	signal uartModule_iEN_RX : std_logic := '0';
+	signal uartModule_iEN_TX : std_logic := '0';
+	signal uartModule_iRX : std_logic := '0';
+	signal uartModule_M2S : unsigned(221 downto 0) := (others => '0');
+	signal uartModule_oCE : std_logic := '0';
+	signal uartModule_oRXCounter : signed(31 downto 0) := (others => '0');
+	signal uartModule_oRXData : unsigned(7 downto 0) := (others => '0');
+	signal uartModule_oRXValid : std_logic := '0';
+	signal uartModule_oS2M : unsigned(73 downto 0) := (others => '0');
+	signal uartModule_oTransmitting : std_logic := '0';
+	signal uartModule_oTX : std_logic := '0';
+	signal uartModule_oTXCounter : signed(31 downto 0) := (others => '0');
+	signal AXIUARTTestModule_L43F39L49T14_Object : unsigned(224 downto 0) := (others => '0');
+	signal AXIUARTTestModule_L51F41L55T14_Object : unsigned(185 downto 0) := (others => '0');
+	signal masterModule_Master_masterModule_Master_HardLink : unsigned(111 downto 0) := "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+	signal masterModule_S2M_masterModule_S2M_HardLink : unsigned(73 downto 0) := "00000000000000000000000000000000000000000000000000000000000000000000000000";
+	signal masterModule_M2S_masterModule_M2S_HardLink : unsigned(221 downto 0) := "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+	signal masterModule_RACK_masterModule_RACK_HardLink : std_logic := '0';
+	signal masterModule_RDATA0_masterModule_RDATA_HardLink : unsigned(7 downto 0) := "00000000";
+	signal masterModule_RDATA1_masterModule_RDATA_HardLink : unsigned(7 downto 0) := "00000000";
+	signal masterModule_RDATA2_masterModule_RDATA_HardLink : unsigned(7 downto 0) := "00000000";
+	signal masterModule_RDATA3_masterModule_RDATA_HardLink : unsigned(7 downto 0) := "00000000";
+	signal masterModule_WACK_masterModule_WACK_HardLink : std_logic := '0';
+	signal uartModule_iEN_RX_uartModule_iEN_RX_HardLink : std_logic := '0';
+	signal uartModule_iEN_TX_uartModule_iEN_TX_HardLink : std_logic := '0';
+	signal uartModule_iRX_uartModule_iRX_HardLink : std_logic := '0';
+	signal uartModule_M2S_uartModule_M2S_HardLink : unsigned(221 downto 0) := "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+	signal uartModule_oCE_uartModule_oCE_HardLink : std_logic := '0';
+	signal uartModule_oRXCounter_uartModule_oRXCounter_HardLink : signed(31 downto 0) := "00000000000000000000000000000000";
+	signal uartModule_oRXData_uartModule_oRXData_HardLink : unsigned(7 downto 0) := "00000000";
+	signal uartModule_oRXValid_uartModule_oRXValid_HardLink : std_logic := '0';
+	signal uartModule_oS2M_uartModule_oS2M_HardLink : unsigned(73 downto 0) := "00000000000000000000000000000000000000000000000000000000000000000000000000";
+	signal uartModule_oTransmitting_uartModule_oTransmitting_HardLink : std_logic := '0';
+	signal uartModule_oTX_uartModule_oTX_HardLink : std_logic := '0';
+	signal uartModule_oTXCounter_uartModule_oTXCounter_HardLink : signed(31 downto 0) := "00000000000000000000000000000000";
 	type Inputs_Master_WDATAArray is array (0 to 3) of unsigned (7 downto 0);
 	signal Inputs_Master_WDATA : Inputs_Master_WDATAArray := (others => (others => '0'));
-	type master_RDATAArray is array (0 to 3) of unsigned (7 downto 0);
-	signal master_RDATA : master_RDATAArray := (others => (others => '0'));
+	type masterModule_RDATAArray is array (0 to 3) of unsigned (7 downto 0);
+	signal masterModule_RDATA : masterModule_RDATAArray := (others => (others => '0'));
 	signal BoardSignals : BoardSignalsType;
 	signal InternalReset : std_logic := '0';
 begin
 	work.Quokka.BoardSignalsProc(BoardSignals, Clock, Reset, InternalReset);
-	AXIUARTModuleClocksTestModule_TopLevel_master : entity work.AXIUARTModuleClocksTestModule_TopLevel_master
+	AXIUARTModuleClocksTestModule_TopLevel_masterModule : entity work.AXIUARTModuleClocksTestModule_TopLevel_masterModule
 	port map
 	(
-		-- [BEGIN USER MAP FOR master]
-		-- [END USER MAP FOR master]
+		-- [BEGIN USER MAP FOR masterModule]
+		-- [END USER MAP FOR masterModule]
 		BoardSignals => BoardSignals,
-		Master => master_Master_master_Master_HardLink,
-		S2M => master_S2M_master_S2M_HardLink,
-		M2S => master_M2S_master_M2S_HardLink,
-		RACK => master_RACK_master_RACK_HardLink,
-		RDATA0 => master_RDATA0_master_RDATA_HardLink,
-		RDATA1 => master_RDATA1_master_RDATA_HardLink,
-		RDATA2 => master_RDATA2_master_RDATA_HardLink,
-		RDATA3 => master_RDATA3_master_RDATA_HardLink,
-		WACK => master_WACK_master_WACK_HardLink
+		Master => masterModule_Master_masterModule_Master_HardLink,
+		S2M => masterModule_S2M_masterModule_S2M_HardLink,
+		M2S => masterModule_M2S_masterModule_M2S_HardLink,
+		RACK => masterModule_RACK_masterModule_RACK_HardLink,
+		RDATA0 => masterModule_RDATA0_masterModule_RDATA_HardLink,
+		RDATA1 => masterModule_RDATA1_masterModule_RDATA_HardLink,
+		RDATA2 => masterModule_RDATA2_masterModule_RDATA_HardLink,
+		RDATA3 => masterModule_RDATA3_masterModule_RDATA_HardLink,
+		WACK => masterModule_WACK_masterModule_WACK_HardLink
 	)
 	;
-	AXIUARTModuleClocksTestModule_TopLevel_uart : entity work.AXIUARTModuleClocksTestModule_TopLevel_uart
+	AXIUARTModuleClocksTestModule_TopLevel_uartModule : entity work.AXIUARTModuleClocksTestModule_TopLevel_uartModule
 	port map
 	(
-		-- [BEGIN USER MAP FOR uart]
-		-- [END USER MAP FOR uart]
+		-- [BEGIN USER MAP FOR uartModule]
+		-- [END USER MAP FOR uartModule]
 		BoardSignals => BoardSignals,
-		iEN_RX => uart_iEN_RX_uart_iEN_RX_HardLink,
-		iEN_TX => uart_iEN_TX_uart_iEN_TX_HardLink,
-		iRX => uart_iRX_uart_iRX_HardLink,
-		M2S => uart_M2S_uart_M2S_HardLink,
-		oCE => uart_oCE_uart_oCE_HardLink,
-		oRXCounter => uart_oRXCounter_uart_oRXCounter_HardLink,
-		oRXData => uart_oRXData_uart_oRXData_HardLink,
-		oRXValid => uart_oRXValid_uart_oRXValid_HardLink,
-		oS2M => uart_oS2M_uart_oS2M_HardLink,
-		oTransmitting => uart_oTransmitting_uart_oTransmitting_HardLink,
-		oTX => uart_oTX_uart_oTX_HardLink,
-		oTXCounter => uart_oTXCounter_uart_oTXCounter_HardLink
+		iEN_RX => uartModule_iEN_RX_uartModule_iEN_RX_HardLink,
+		iEN_TX => uartModule_iEN_TX_uartModule_iEN_TX_HardLink,
+		iRX => uartModule_iRX_uartModule_iRX_HardLink,
+		M2S => uartModule_M2S_uartModule_M2S_HardLink,
+		oCE => uartModule_oCE_uartModule_oCE_HardLink,
+		oRXCounter => uartModule_oRXCounter_uartModule_oRXCounter_HardLink,
+		oRXData => uartModule_oRXData_uartModule_oRXData_HardLink,
+		oRXValid => uartModule_oRXValid_uartModule_oRXValid_HardLink,
+		oS2M => uartModule_oS2M_uartModule_oS2M_HardLink,
+		oTransmitting => uartModule_oTransmitting_uartModule_oTransmitting_HardLink,
+		oTX => uartModule_oTX_uartModule_oTX_HardLink,
+		oTXCounter => uartModule_oTXCounter_uartModule_oTXCounter_HardLink
 	)
 	;
-	process (AXIUARTTestModule_L36F33L40T14_Object, AXIUARTTestModule_L42F35L46T14_Object, Inputs_iRX, Inputs_Master_ARADDR, Inputs_Master_ARUSER, Inputs_Master_AWADDR, Inputs_Master_BREADY, Inputs_Master_RE, Inputs_Master_RREADY, Inputs_Master_WDATA, Inputs_Master_WE, Inputs_Master_WSTRB, iRX, Master_ARADDR, Master_ARUSER, Master_AWADDR, Master_BREADY, master_M2S, master_M2S_master_M2S_HardLink, master_Master, master_RACK, master_RACK_master_RACK_HardLink, master_RDATA, master_RDATA0_master_RDATA_HardLink, master_RDATA1_master_RDATA_HardLink, master_RDATA2_master_RDATA_HardLink, master_RDATA3_master_RDATA_HardLink, Master_RE, Master_RREADY, master_S2M, master_WACK, master_WACK_master_WACK_HardLink, Master_WDATA0, Master_WDATA1, Master_WDATA2, Master_WDATA3, Master_WE, Master_WSTRB, uart_iEN_RX, uart_iEN_TX, uart_iRX, uart_M2S, uart_oCE, uart_oCE_uart_oCE_HardLink, uart_oRXCounter, uart_oRXCounter_uart_oRXCounter_HardLink, uart_oRXData, uart_oRXData_uart_oRXData_HardLink, uart_oRXValid, uart_oRXValid_uart_oRXValid_HardLink, uart_oS2M, uart_oS2M_uart_oS2M_HardLink, uart_oTransmitting, uart_oTransmitting_uart_oTransmitting_HardLink, uart_oTX, uart_oTX_uart_oTX_HardLink, uart_oTXCounter, uart_oTXCounter_uart_oTXCounter_HardLink)
+	process (AXIUARTTestModule_L43F39L49T14_Object, AXIUARTTestModule_L51F41L55T14_Object, Inputs_Master_ARADDR, Inputs_Master_ARUSER, Inputs_Master_AWADDR, Inputs_Master_BREADY, Inputs_Master_RE, Inputs_Master_RREADY, Inputs_Master_WDATA, Inputs_Master_WE, Inputs_Master_WSTRB, Inputs_UART_iEN_RX, Inputs_UART_iEN_TX, Inputs_UART_iRX, Master_ARADDR, Master_ARUSER, Master_AWADDR, Master_BREADY, Master_RE, Master_RREADY, Master_WDATA0, Master_WDATA1, Master_WDATA2, Master_WDATA3, Master_WE, Master_WSTRB, masterModule_M2S, masterModule_M2S_masterModule_M2S_HardLink, masterModule_Master, masterModule_RACK, masterModule_RACK_masterModule_RACK_HardLink, masterModule_RDATA, masterModule_RDATA0_masterModule_RDATA_HardLink, masterModule_RDATA1_masterModule_RDATA_HardLink, masterModule_RDATA2_masterModule_RDATA_HardLink, masterModule_RDATA3_masterModule_RDATA_HardLink, masterModule_S2M, masterModule_WACK, masterModule_WACK_masterModule_WACK_HardLink, UART_iEN_RX, UART_iEN_TX, UART_iRX, uartModule_iEN_RX, uartModule_iEN_TX, uartModule_iRX, uartModule_M2S, uartModule_oCE, uartModule_oCE_uartModule_oCE_HardLink, uartModule_oRXCounter, uartModule_oRXCounter_uartModule_oRXCounter_HardLink, uartModule_oRXData, uartModule_oRXData_uartModule_oRXData_HardLink, uartModule_oRXValid, uartModule_oRXValid_uartModule_oRXValid_HardLink, uartModule_oS2M, uartModule_oS2M_uartModule_oS2M_HardLink, uartModule_oTransmitting, uartModule_oTransmitting_uartModule_oTransmitting_HardLink, uartModule_oTX, uartModule_oTX_uartModule_oTX_HardLink, uartModule_oTXCounter, uartModule_oTXCounter_uartModule_oTXCounter_HardLink)
 	begin
-		Inputs_iRX <= iRX;
 		Inputs_Master_ARADDR <= Master_ARADDR;
 		Inputs_Master_ARUSER <= Master_ARUSER;
 		Inputs_Master_AWADDR <= Master_AWADDR;
@@ -176,106 +177,109 @@ begin
 		Inputs_Master_WDATA(3) <= Master_WDATA3;
 		Inputs_Master_WE <= Master_WE;
 		Inputs_Master_WSTRB <= Master_WSTRB;
-		AXIUARTTestModule_L36F33L40T14_Object(0) <= AXI4UARTModule_L17F30T34_Expr;
-		AXIUARTTestModule_L36F33L40T14_Object(1) <= AXI4UARTModule_L18F30T34_Expr;
-		AXIUARTTestModule_L36F33L40T14_Object(2) <= Inputs_iRX;
-		AXIUARTTestModule_L36F33L40T14_Object(10 downto 3) <= master_M2S(7 downto 0);
-		AXIUARTTestModule_L36F33L40T14_Object(42 downto 11) <= master_M2S(39 downto 8);
-		AXIUARTTestModule_L36F33L40T14_Object(50 downto 43) <= master_M2S(47 downto 40);
-		AXIUARTTestModule_L36F33L40T14_Object(53 downto 51) <= master_M2S(50 downto 48);
-		AXIUARTTestModule_L36F33L40T14_Object(55 downto 54) <= master_M2S(52 downto 51);
-		AXIUARTTestModule_L36F33L40T14_Object(57 downto 56) <= master_M2S(54 downto 53);
-		AXIUARTTestModule_L36F33L40T14_Object(61 downto 58) <= master_M2S(58 downto 55);
-		AXIUARTTestModule_L36F33L40T14_Object(64 downto 62) <= master_M2S(61 downto 59);
-		AXIUARTTestModule_L36F33L40T14_Object(68 downto 65) <= master_M2S(65 downto 62);
-		AXIUARTTestModule_L36F33L40T14_Object(76 downto 69) <= master_M2S(73 downto 66);
-		AXIUARTTestModule_L36F33L40T14_Object(84 downto 77) <= master_M2S(81 downto 74);
-		AXIUARTTestModule_L36F33L40T14_Object(85) <= master_M2S(82);
-		AXIUARTTestModule_L36F33L40T14_Object(86) <= master_M2S(83);
-		AXIUARTTestModule_L36F33L40T14_Object(94 downto 87) <= master_M2S(91 downto 84);
-		AXIUARTTestModule_L36F33L40T14_Object(126 downto 95) <= master_M2S(123 downto 92);
-		AXIUARTTestModule_L36F33L40T14_Object(134 downto 127) <= master_M2S(131 downto 124);
-		AXIUARTTestModule_L36F33L40T14_Object(137 downto 135) <= master_M2S(134 downto 132);
-		AXIUARTTestModule_L36F33L40T14_Object(139 downto 138) <= master_M2S(136 downto 135);
-		AXIUARTTestModule_L36F33L40T14_Object(141 downto 140) <= master_M2S(138 downto 137);
-		AXIUARTTestModule_L36F33L40T14_Object(145 downto 142) <= master_M2S(142 downto 139);
-		AXIUARTTestModule_L36F33L40T14_Object(148 downto 146) <= master_M2S(145 downto 143);
-		AXIUARTTestModule_L36F33L40T14_Object(152 downto 149) <= master_M2S(149 downto 146);
-		AXIUARTTestModule_L36F33L40T14_Object(160 downto 153) <= master_M2S(157 downto 150);
-		AXIUARTTestModule_L36F33L40T14_Object(168 downto 161) <= master_M2S(165 downto 158);
-		AXIUARTTestModule_L36F33L40T14_Object(169) <= master_M2S(166);
-		AXIUARTTestModule_L36F33L40T14_Object(177 downto 170) <= master_M2S(174 downto 167);
-		AXIUARTTestModule_L36F33L40T14_Object(209 downto 178) <= master_M2S(206 downto 175);
-		AXIUARTTestModule_L36F33L40T14_Object(213 downto 210) <= master_M2S(210 downto 207);
-		AXIUARTTestModule_L36F33L40T14_Object(214) <= master_M2S(211);
-		AXIUARTTestModule_L36F33L40T14_Object(222 downto 215) <= master_M2S(219 downto 212);
-		AXIUARTTestModule_L36F33L40T14_Object(223) <= master_M2S(220);
-		AXIUARTTestModule_L36F33L40T14_Object(224) <= master_M2S(221);
-		uart_M2S <= AXIUARTTestModule_L36F33L40T14_Object(224 downto 3);
-		uart_iRX <= AXIUARTTestModule_L36F33L40T14_Object(2);
-		uart_iEN_TX <= AXIUARTTestModule_L36F33L40T14_Object(1);
-		uart_iEN_RX <= AXIUARTTestModule_L36F33L40T14_Object(0);
-		AXIUARTTestModule_L42F35L46T14_Object(31 downto 0) <= Inputs_Master_ARADDR;
-		AXIUARTTestModule_L42F35L46T14_Object(39 downto 32) <= Inputs_Master_ARUSER;
-		AXIUARTTestModule_L42F35L46T14_Object(71 downto 40) <= Inputs_Master_AWADDR;
-		AXIUARTTestModule_L42F35L46T14_Object(72) <= Inputs_Master_BREADY;
-		AXIUARTTestModule_L42F35L46T14_Object(73) <= Inputs_Master_RE;
-		AXIUARTTestModule_L42F35L46T14_Object(74) <= Inputs_Master_RREADY;
-		AXIUARTTestModule_L42F35L46T14_Object(106 downto 99) <= Inputs_Master_WDATA(3);
-		AXIUARTTestModule_L42F35L46T14_Object(98 downto 91) <= Inputs_Master_WDATA(2);
-		AXIUARTTestModule_L42F35L46T14_Object(90 downto 83) <= Inputs_Master_WDATA(1);
-		AXIUARTTestModule_L42F35L46T14_Object(82 downto 75) <= Inputs_Master_WDATA(0);
-		AXIUARTTestModule_L42F35L46T14_Object(107) <= Inputs_Master_WE;
-		AXIUARTTestModule_L42F35L46T14_Object(111 downto 108) <= Inputs_Master_WSTRB;
-		AXIUARTTestModule_L42F35L46T14_Object(112) <= uart_oS2M(0);
-		AXIUARTTestModule_L42F35L46T14_Object(120 downto 113) <= uart_oS2M(8 downto 1);
-		AXIUARTTestModule_L42F35L46T14_Object(152 downto 121) <= uart_oS2M(40 downto 9);
-		AXIUARTTestModule_L42F35L46T14_Object(154 downto 153) <= uart_oS2M(42 downto 41);
-		AXIUARTTestModule_L42F35L46T14_Object(155) <= uart_oS2M(43);
-		AXIUARTTestModule_L42F35L46T14_Object(163 downto 156) <= uart_oS2M(51 downto 44);
-		AXIUARTTestModule_L42F35L46T14_Object(164) <= uart_oS2M(52);
-		AXIUARTTestModule_L42F35L46T14_Object(165) <= uart_oS2M(53);
-		AXIUARTTestModule_L42F35L46T14_Object(173 downto 166) <= uart_oS2M(61 downto 54);
-		AXIUARTTestModule_L42F35L46T14_Object(175 downto 174) <= uart_oS2M(63 downto 62);
-		AXIUARTTestModule_L42F35L46T14_Object(183 downto 176) <= uart_oS2M(71 downto 64);
-		AXIUARTTestModule_L42F35L46T14_Object(184) <= uart_oS2M(72);
-		AXIUARTTestModule_L42F35L46T14_Object(185) <= uart_oS2M(73);
-		master_S2M <= AXIUARTTestModule_L42F35L46T14_Object(185 downto 112);
-		master_Master <= AXIUARTTestModule_L42F35L46T14_Object(111 downto 0);
-		oCE <= uart_oCE;
-		oRACK <= master_RACK;
-		oRData0 <= master_RDATA(0);
-		oRData1 <= master_RDATA(1);
-		oRData2 <= master_RDATA(2);
-		oRData3 <= master_RDATA(3);
-		oRXCounter <= uart_oRXCounter;
-		oRXData <= uart_oRXData;
-		oRXValid <= uart_oRXValid;
-		oTransmitting <= uart_oTransmitting;
-		oTX <= uart_oTX;
-		oTXCounter <= uart_oTXCounter;
-		oWACK <= master_WACK;
-		master_Master_master_Master_HardLink <= master_Master;
-		master_S2M_master_S2M_HardLink <= master_S2M;
-		master_M2S <= master_M2S_master_M2S_HardLink;
-		master_RACK <= master_RACK_master_RACK_HardLink;
-		master_RDATA(0) <= master_RDATA0_master_RDATA_HardLink;
-		master_RDATA(1) <= master_RDATA1_master_RDATA_HardLink;
-		master_RDATA(2) <= master_RDATA2_master_RDATA_HardLink;
-		master_RDATA(3) <= master_RDATA3_master_RDATA_HardLink;
-		master_WACK <= master_WACK_master_WACK_HardLink;
-		uart_iEN_RX_uart_iEN_RX_HardLink <= uart_iEN_RX;
-		uart_iEN_TX_uart_iEN_TX_HardLink <= uart_iEN_TX;
-		uart_iRX_uart_iRX_HardLink <= uart_iRX;
-		uart_M2S_uart_M2S_HardLink <= uart_M2S;
-		uart_oCE <= uart_oCE_uart_oCE_HardLink;
-		uart_oRXCounter <= uart_oRXCounter_uart_oRXCounter_HardLink;
-		uart_oRXData <= uart_oRXData_uart_oRXData_HardLink;
-		uart_oRXValid <= uart_oRXValid_uart_oRXValid_HardLink;
-		uart_oS2M <= uart_oS2M_uart_oS2M_HardLink;
-		uart_oTransmitting <= uart_oTransmitting_uart_oTransmitting_HardLink;
-		uart_oTX <= uart_oTX_uart_oTX_HardLink;
-		uart_oTXCounter <= uart_oTXCounter_uart_oTXCounter_HardLink;
+		Inputs_UART_iEN_RX <= UART_iEN_RX;
+		Inputs_UART_iEN_TX <= UART_iEN_TX;
+		Inputs_UART_iRX <= UART_iRX;
+		AXIUARTTestModule_L43F39L49T14_Object(0) <= Inputs_UART_iEN_RX;
+		AXIUARTTestModule_L43F39L49T14_Object(1) <= Inputs_UART_iEN_TX;
+		AXIUARTTestModule_L43F39L49T14_Object(2) <= Inputs_UART_iRX;
+		AXIUARTTestModule_L43F39L49T14_Object(10 downto 3) <= masterModule_M2S(7 downto 0);
+		AXIUARTTestModule_L43F39L49T14_Object(42 downto 11) <= masterModule_M2S(39 downto 8);
+		AXIUARTTestModule_L43F39L49T14_Object(50 downto 43) <= masterModule_M2S(47 downto 40);
+		AXIUARTTestModule_L43F39L49T14_Object(53 downto 51) <= masterModule_M2S(50 downto 48);
+		AXIUARTTestModule_L43F39L49T14_Object(55 downto 54) <= masterModule_M2S(52 downto 51);
+		AXIUARTTestModule_L43F39L49T14_Object(57 downto 56) <= masterModule_M2S(54 downto 53);
+		AXIUARTTestModule_L43F39L49T14_Object(61 downto 58) <= masterModule_M2S(58 downto 55);
+		AXIUARTTestModule_L43F39L49T14_Object(64 downto 62) <= masterModule_M2S(61 downto 59);
+		AXIUARTTestModule_L43F39L49T14_Object(68 downto 65) <= masterModule_M2S(65 downto 62);
+		AXIUARTTestModule_L43F39L49T14_Object(76 downto 69) <= masterModule_M2S(73 downto 66);
+		AXIUARTTestModule_L43F39L49T14_Object(84 downto 77) <= masterModule_M2S(81 downto 74);
+		AXIUARTTestModule_L43F39L49T14_Object(85) <= masterModule_M2S(82);
+		AXIUARTTestModule_L43F39L49T14_Object(86) <= masterModule_M2S(83);
+		AXIUARTTestModule_L43F39L49T14_Object(94 downto 87) <= masterModule_M2S(91 downto 84);
+		AXIUARTTestModule_L43F39L49T14_Object(126 downto 95) <= masterModule_M2S(123 downto 92);
+		AXIUARTTestModule_L43F39L49T14_Object(134 downto 127) <= masterModule_M2S(131 downto 124);
+		AXIUARTTestModule_L43F39L49T14_Object(137 downto 135) <= masterModule_M2S(134 downto 132);
+		AXIUARTTestModule_L43F39L49T14_Object(139 downto 138) <= masterModule_M2S(136 downto 135);
+		AXIUARTTestModule_L43F39L49T14_Object(141 downto 140) <= masterModule_M2S(138 downto 137);
+		AXIUARTTestModule_L43F39L49T14_Object(145 downto 142) <= masterModule_M2S(142 downto 139);
+		AXIUARTTestModule_L43F39L49T14_Object(148 downto 146) <= masterModule_M2S(145 downto 143);
+		AXIUARTTestModule_L43F39L49T14_Object(152 downto 149) <= masterModule_M2S(149 downto 146);
+		AXIUARTTestModule_L43F39L49T14_Object(160 downto 153) <= masterModule_M2S(157 downto 150);
+		AXIUARTTestModule_L43F39L49T14_Object(168 downto 161) <= masterModule_M2S(165 downto 158);
+		AXIUARTTestModule_L43F39L49T14_Object(169) <= masterModule_M2S(166);
+		AXIUARTTestModule_L43F39L49T14_Object(177 downto 170) <= masterModule_M2S(174 downto 167);
+		AXIUARTTestModule_L43F39L49T14_Object(209 downto 178) <= masterModule_M2S(206 downto 175);
+		AXIUARTTestModule_L43F39L49T14_Object(213 downto 210) <= masterModule_M2S(210 downto 207);
+		AXIUARTTestModule_L43F39L49T14_Object(214) <= masterModule_M2S(211);
+		AXIUARTTestModule_L43F39L49T14_Object(222 downto 215) <= masterModule_M2S(219 downto 212);
+		AXIUARTTestModule_L43F39L49T14_Object(223) <= masterModule_M2S(220);
+		AXIUARTTestModule_L43F39L49T14_Object(224) <= masterModule_M2S(221);
+		uartModule_M2S <= AXIUARTTestModule_L43F39L49T14_Object(224 downto 3);
+		uartModule_iRX <= AXIUARTTestModule_L43F39L49T14_Object(2);
+		uartModule_iEN_TX <= AXIUARTTestModule_L43F39L49T14_Object(1);
+		uartModule_iEN_RX <= AXIUARTTestModule_L43F39L49T14_Object(0);
+		AXIUARTTestModule_L51F41L55T14_Object(31 downto 0) <= Inputs_Master_ARADDR;
+		AXIUARTTestModule_L51F41L55T14_Object(39 downto 32) <= Inputs_Master_ARUSER;
+		AXIUARTTestModule_L51F41L55T14_Object(71 downto 40) <= Inputs_Master_AWADDR;
+		AXIUARTTestModule_L51F41L55T14_Object(72) <= Inputs_Master_BREADY;
+		AXIUARTTestModule_L51F41L55T14_Object(73) <= Inputs_Master_RE;
+		AXIUARTTestModule_L51F41L55T14_Object(74) <= Inputs_Master_RREADY;
+		AXIUARTTestModule_L51F41L55T14_Object(106 downto 99) <= Inputs_Master_WDATA(3);
+		AXIUARTTestModule_L51F41L55T14_Object(98 downto 91) <= Inputs_Master_WDATA(2);
+		AXIUARTTestModule_L51F41L55T14_Object(90 downto 83) <= Inputs_Master_WDATA(1);
+		AXIUARTTestModule_L51F41L55T14_Object(82 downto 75) <= Inputs_Master_WDATA(0);
+		AXIUARTTestModule_L51F41L55T14_Object(107) <= Inputs_Master_WE;
+		AXIUARTTestModule_L51F41L55T14_Object(111 downto 108) <= Inputs_Master_WSTRB;
+		AXIUARTTestModule_L51F41L55T14_Object(112) <= uartModule_oS2M(0);
+		AXIUARTTestModule_L51F41L55T14_Object(120 downto 113) <= uartModule_oS2M(8 downto 1);
+		AXIUARTTestModule_L51F41L55T14_Object(152 downto 121) <= uartModule_oS2M(40 downto 9);
+		AXIUARTTestModule_L51F41L55T14_Object(154 downto 153) <= uartModule_oS2M(42 downto 41);
+		AXIUARTTestModule_L51F41L55T14_Object(155) <= uartModule_oS2M(43);
+		AXIUARTTestModule_L51F41L55T14_Object(163 downto 156) <= uartModule_oS2M(51 downto 44);
+		AXIUARTTestModule_L51F41L55T14_Object(164) <= uartModule_oS2M(52);
+		AXIUARTTestModule_L51F41L55T14_Object(165) <= uartModule_oS2M(53);
+		AXIUARTTestModule_L51F41L55T14_Object(173 downto 166) <= uartModule_oS2M(61 downto 54);
+		AXIUARTTestModule_L51F41L55T14_Object(175 downto 174) <= uartModule_oS2M(63 downto 62);
+		AXIUARTTestModule_L51F41L55T14_Object(183 downto 176) <= uartModule_oS2M(71 downto 64);
+		AXIUARTTestModule_L51F41L55T14_Object(184) <= uartModule_oS2M(72);
+		AXIUARTTestModule_L51F41L55T14_Object(185) <= uartModule_oS2M(73);
+		masterModule_S2M <= AXIUARTTestModule_L51F41L55T14_Object(185 downto 112);
+		masterModule_Master <= AXIUARTTestModule_L51F41L55T14_Object(111 downto 0);
+		oCE <= uartModule_oCE;
+		oRACK <= masterModule_RACK;
+		oRData0 <= masterModule_RDATA(0);
+		oRData1 <= masterModule_RDATA(1);
+		oRData2 <= masterModule_RDATA(2);
+		oRData3 <= masterModule_RDATA(3);
+		oRXCounter <= uartModule_oRXCounter;
+		oRXData <= uartModule_oRXData;
+		oRXValid <= uartModule_oRXValid;
+		oTransmitting <= uartModule_oTransmitting;
+		oTX <= uartModule_oTX;
+		oTXCounter <= uartModule_oTXCounter;
+		oWACK <= masterModule_WACK;
+		masterModule_Master_masterModule_Master_HardLink <= masterModule_Master;
+		masterModule_S2M_masterModule_S2M_HardLink <= masterModule_S2M;
+		masterModule_M2S <= masterModule_M2S_masterModule_M2S_HardLink;
+		masterModule_RACK <= masterModule_RACK_masterModule_RACK_HardLink;
+		masterModule_RDATA(0) <= masterModule_RDATA0_masterModule_RDATA_HardLink;
+		masterModule_RDATA(1) <= masterModule_RDATA1_masterModule_RDATA_HardLink;
+		masterModule_RDATA(2) <= masterModule_RDATA2_masterModule_RDATA_HardLink;
+		masterModule_RDATA(3) <= masterModule_RDATA3_masterModule_RDATA_HardLink;
+		masterModule_WACK <= masterModule_WACK_masterModule_WACK_HardLink;
+		uartModule_iEN_RX_uartModule_iEN_RX_HardLink <= uartModule_iEN_RX;
+		uartModule_iEN_TX_uartModule_iEN_TX_HardLink <= uartModule_iEN_TX;
+		uartModule_iRX_uartModule_iRX_HardLink <= uartModule_iRX;
+		uartModule_M2S_uartModule_M2S_HardLink <= uartModule_M2S;
+		uartModule_oCE <= uartModule_oCE_uartModule_oCE_HardLink;
+		uartModule_oRXCounter <= uartModule_oRXCounter_uartModule_oRXCounter_HardLink;
+		uartModule_oRXData <= uartModule_oRXData_uartModule_oRXData_HardLink;
+		uartModule_oRXValid <= uartModule_oRXValid_uartModule_oRXValid_HardLink;
+		uartModule_oS2M <= uartModule_oS2M_uartModule_oS2M_HardLink;
+		uartModule_oTransmitting <= uartModule_oTransmitting_uartModule_oTransmitting_HardLink;
+		uartModule_oTX <= uartModule_oTX_uartModule_oTX_HardLink;
+		uartModule_oTXCounter <= uartModule_oTXCounter_uartModule_oTXCounter_HardLink;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

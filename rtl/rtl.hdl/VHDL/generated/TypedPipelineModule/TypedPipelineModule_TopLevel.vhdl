@@ -53,7 +53,7 @@ architecture rtl of TypedPipelineModule_TopLevel is
 	constant Pipeline_stage0_State_sumsDefault : unsigned(15 downto 0) := "0000000000000000";
 	constant Pipeline_stage1_State_s0SumsDefault : unsigned(15 downto 0) := "0000000000000000";
 	constant Pipeline_stage1_State_sumsDefault : unsigned(15 downto 0) := "0000000000000000";
-	constant Pipeline_TypedPipelineModule_L86F29T43_TypedPipelineModule_L53F9L67T10_TypedPipelineModule_L64F21T23_Expr : unsigned(5 downto 0) := "101010";
+	constant TypedPipelineModule_L64F21T23_Expr : unsigned(5 downto 0) := "101010";
 	signal Inputs_inReady : std_logic := '0';
 	signal Pipeline_stage0_NextState_ready : std_logic := '0';
 	signal Pipeline_stage1_NextState_ready : std_logic := '0';
@@ -377,7 +377,7 @@ begin
 			others => '0'
 		)
 		;
-		Pipeline_TypedPipelineModule_L86F29T43_TypedPipelineModule_L53F9L67T10_TypedPipelineModule_L58F24L65T18_Enumerable(4)(5 downto 0) <= Pipeline_TypedPipelineModule_L86F29T43_TypedPipelineModule_L53F9L67T10_TypedPipelineModule_L64F21T23_Expr;
+		Pipeline_TypedPipelineModule_L86F29T43_TypedPipelineModule_L53F9L67T10_TypedPipelineModule_L58F24L65T18_Enumerable(4)(5 downto 0) <= TypedPipelineModule_L64F21T23_Expr;
 		Pipeline_TypedPipelineModule_L87F30T45_TypedPipelineModule_L70F9L81T10_TypedPipelineModule_L77F21T62_Cast <= Pipeline_TypedPipelineModule_L87F30T45_TypedPipelineModule_L70F9L81T10_TypedPipelineModule_L77F30T61_Expr(15 downto 0);
 		Pipeline_TypedPipelineModule_L87F30T45_TypedPipelineModule_L70F9L81T10_TypedPipelineModule_L78F21T62_Cast <= Pipeline_TypedPipelineModule_L87F30T45_TypedPipelineModule_L70F9L81T10_TypedPipelineModule_L78F30T61_Expr(15 downto 0);
 		Pipeline_TypedPipelineModule_L87F30T45_TypedPipelineModule_L70F9L81T10_TypedPipelineModule_L75F24L79T18_Enumerable(0) <= Pipeline_TypedPipelineModule_L87F30T45_TypedPipelineModule_L70F9L81T10_TypedPipelineModule_L77F21T62_Cast;

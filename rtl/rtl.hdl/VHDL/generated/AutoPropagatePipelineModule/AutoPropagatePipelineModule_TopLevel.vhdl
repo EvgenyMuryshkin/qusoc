@@ -53,7 +53,7 @@ architecture rtl of AutoPropagatePipelineModule_TopLevel is
 	constant Pipeline_stage0_State_sumsDefault : unsigned(15 downto 0) := "0000000000000000";
 	constant Pipeline_stage1_State_s0SumsDefault : unsigned(15 downto 0) := "0000000000000000";
 	constant Pipeline_stage1_State_sumsDefault : unsigned(15 downto 0) := "0000000000000000";
-	constant Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L54F21T23_Expr : unsigned(5 downto 0) := "101010";
+	constant AutoPropagatePipelineModule_L54F21T23_Expr : unsigned(5 downto 0) := "101010";
 	signal Inputs_inReady : std_logic := '0';
 	signal Pipeline_stage0_NextState_ready : std_logic := '0';
 	signal Pipeline_stage1_NextState_ready : std_logic := '0';
@@ -378,7 +378,7 @@ begin
 			others => '0'
 		)
 		;
-		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L48F24L55T18_Enumerable(4)(5 downto 0) <= Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L54F21T23_Expr;
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L48F24L55T18_Enumerable(4)(5 downto 0) <= AutoPropagatePipelineModule_L54F21T23_Expr;
 		Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F21T62_Cast <= Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F30T61_Expr(15 downto 0);
 		Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F21T62_Cast <= Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F30T61_Expr(15 downto 0);
 		Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L64F24L68T18_Enumerable(0) <= Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F21T62_Cast;

@@ -78,8 +78,8 @@ architecture rtl of StructsCombinationalIteratorModule_TopLevel is
 	constant State_i1Default : unsigned(7 downto 0) := "00000000";
 	constant State_i2Default : unsigned(7 downto 0) := "00000000";
 	constant State_oDefault : unsigned(23 downto 0) := "000000000000000000000000";
-	constant StructsCombinationalIteratorModule_L75F9L101T10_StructsCombinationalIteratorModule_L90F13L94T14_StructsCombinationalIteratorModule_L92F71T73_Expr : unsigned(3 downto 0) := "1010";
-	constant StructsCombinationalIteratorModule_L75F9L101T10_StructsCombinationalIteratorModule_L90F13L94T14_StructsCombinationalIteratorModule_L93F71T73_Expr : unsigned(3 downto 0) := "1011";
+	constant StructsCombinationalIteratorModule_L92F71T73_Expr : unsigned(3 downto 0) := "1010";
+	constant StructsCombinationalIteratorModule_L93F71T73_Expr : unsigned(3 downto 0) := "1011";
 	signal Inputs_addr : unsigned(1 downto 0) := (others => '0');
 	signal Inputs_i1_a : unsigned(3 downto 0) := (others => '0');
 	signal Inputs_i1_b : unsigned(3 downto 0) := (others => '0');
@@ -237,8 +237,8 @@ begin
 			end loop;
 		end if;
 		for i1 in 0 to 3 loop
-			NextState_c(i1)(3 downto 0) <= ternary_unsigned_4(Inputs_addr = 0, resize(StructsCombinationalIteratorModule_L75F9L101T10_StructsCombinationalIteratorModule_L90F13L94T14_StructsCombinationalIteratorModule_L92F71T73_Expr, 4), Inputs_i1_a);
-			NextState_c(i1)(7 downto 4) <= ternary_unsigned_4(Inputs_addr /= 0, resize(StructsCombinationalIteratorModule_L75F9L101T10_StructsCombinationalIteratorModule_L90F13L94T14_StructsCombinationalIteratorModule_L93F71T73_Expr, 4), Inputs_i1_b);
+			NextState_c(i1)(3 downto 0) <= ternary_unsigned_4(Inputs_addr = 0, resize(StructsCombinationalIteratorModule_L92F71T73_Expr, 4), Inputs_i1_a);
+			NextState_c(i1)(7 downto 4) <= ternary_unsigned_4(Inputs_addr /= 0, resize(StructsCombinationalIteratorModule_L93F71T73_Expr, 4), Inputs_i1_b);
 		end loop;
 		for i2 in 0 to 3 loop
 			NextState_f(i2)(3 downto 0) <= ternary_unsigned_4(bit_to_boolean(Inputs_store), Inputs_i1_b, Inputs_i1_a);

@@ -1,14 +1,16 @@
 No reads:
+	addressBits
 	addressLSB
-	AXI4PWMModule_L54F31T56_Expr_1
-	AXI4PWMModule_L74F13L82T14_0_pwm
-	AXI4PWMModule_L74F13L82T14_1_pwm
-	AXI4PWMModule_L74F13L82T14_2_pwm
-	AXI4PWMModule_L74F13L82T14_3_pwm
-	AXI4PWMModule_L74F13L82T14_4_pwm
-	AXI4PWMModule_L74F13L82T14_5_pwm
-	AXI4PWMModule_L74F13L82T14_6_pwm
-	AXI4PWMModule_L74F13L82T14_7_pwm
+	AXI4PWMModule_L56F33T92_Expr_1
+	AXI4PWMModule_L58F33T80_Expr_1
+	AXI4PWMModule_L79F13L87T14_0_pwm
+	AXI4PWMModule_L79F13L87T14_1_pwm
+	AXI4PWMModule_L79F13L87T14_2_pwm
+	AXI4PWMModule_L79F13L87T14_3_pwm
+	AXI4PWMModule_L79F13L87T14_4_pwm
+	AXI4PWMModule_L79F13L87T14_5_pwm
+	AXI4PWMModule_L79F13L87T14_6_pwm
+	AXI4PWMModule_L79F13L87T14_7_pwm
 	axiSlave_outARADDR
 	axiSlave_outARREADYConfirming
 	axiSlave_outARVALID
@@ -16,7 +18,6 @@ No reads:
 	axiSlave_outReadTXCompleting
 	axiSlave_outWSTRB
 	axiSlave_outWVALID
-	pwmCount
 	pwms0_oCycle
 	pwms1_oCycle
 	pwms2_oCycle
@@ -25,5 +26,7 @@ No reads:
 	pwms5_oCycle
 	pwms6_oCycle
 	pwms7_oCycle
+	State_pwmDurationClocks
 No writes:
-	AXI4PWMModule_L54F31T56_Expr
+	AXI4PWMModule_L56F33T92_Expr
+	AXI4PWMModule_L58F33T80_Expr

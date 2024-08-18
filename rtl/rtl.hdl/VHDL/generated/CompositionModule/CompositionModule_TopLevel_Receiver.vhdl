@@ -48,11 +48,11 @@ architecture rtl of CompositionModule_TopLevel_Receiver is
 	constant ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L16F22T38_Expr : unsigned(1 downto 0) := "00";
 	constant ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L18F21L21T22_ReceiverModule_L20F41T62_Expr : unsigned(1 downto 0) := "01";
 	constant ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L23F22T43_Expr : unsigned(1 downto 0) := "01";
-	constant ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L25F21L27T22_ReceiverModule_L26F64T65_Expr : std_logic := '1';
+	constant ReceiverModule_L26F64T65_Expr : std_logic := '1';
 	constant ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L29F21L31T22_ReceiverModule_L30F41T66_Expr : unsigned(1 downto 0) := "10";
 	constant ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L33F22T47_Expr : unsigned(1 downto 0) := "10";
 	constant ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L35F21L38T22_ReceiverModule_L36F41T57_Expr : unsigned(1 downto 0) := "00";
-	constant ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L35F21L38T22_ReceiverModule_L37F42T43_Expr : std_logic := '0';
+	constant ReceiverModule_L37F42T43_Expr : std_logic := '0';
 	constant ReceiverModule_L8F46T71_Expr : unsigned(1 downto 0) := "10";
 	signal Inputs_Ack : std_logic := '0';
 	signal Inputs_Bit : std_logic := '0';
@@ -144,7 +144,7 @@ begin
 					others => '0'
 				)
 				;
-				NextState_Data(0) <= ReceiverModule_L13F9L41T10_ReceiverModule_L14F13L40T14_ReceiverModule_L35F21L38T22_ReceiverModule_L37F42T43_Expr;
+				NextState_Data(0) <= ReceiverModule_L37F42T43_Expr;
 			end if;
 		end if;
 	end process;

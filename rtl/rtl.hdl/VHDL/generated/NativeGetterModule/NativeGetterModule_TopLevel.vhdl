@@ -40,7 +40,7 @@ architecture rtl of NativeGetterModule_TopLevel is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	constant BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L35F30T43_Expr : unsigned(7 downto 0) := "11111111";
-	constant BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F36T39_Expr : unsigned(6 downto 0) := "1100100";
+	constant BitArrayGetterModule_L37F36T39_Expr : unsigned(6 downto 0) := "1100100";
 	signal Inputs_Value : unsigned(7 downto 0) := (others => '0');
 	signal BitArrayGetterModule_L34F13L41T14_result : unsigned(7 downto 0) := "11111111";
 	signal BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_Expr : std_logic := '0';
@@ -63,7 +63,7 @@ begin
 			others => '0'
 		)
 		;
-		BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprRhs(6 downto 0) <= signed(BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F36T39_Expr);
+		BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprRhs(6 downto 0) <= signed(BitArrayGetterModule_L37F36T39_Expr);
 		Inputs_Value <= Value;
 		Getter <= BitArrayGetterModule_L34F13L41T14_result;
 	end process;

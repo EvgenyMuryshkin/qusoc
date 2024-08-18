@@ -41,8 +41,8 @@ module BoardTimerModule_TopLevel_timerModule20
 	wire false = 1'b0;
 	wire [2: 0] CapacityBits = 3'b101;
 	wire [7: 0] countTo = 8'b00010011;
-	wire TimerModule_L51F9L53T10_TimerModule_L52F79T80_Expr = 1'b0;
-	wire TimerModule_L51F9L53T10_TimerModule_L52F100T101_Expr = 1'b1;
+	wire TimerModule_L52F79T80_Expr = 1'b0;
+	wire TimerModule_L52F100T101_Expr = 1'b1;
 	wire Inputs_Restart;
 	reg [4: 0] NextState_counter;
 	wire active;
@@ -101,14 +101,14 @@ module BoardTimerModule_TopLevel_timerModule20
 	;
 	assign TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_2 = {
 		{6{1'b0}},
-		TimerModule_L51F9L53T10_TimerModule_L52F100T101_Expr
+		TimerModule_L52F100T101_Expr
 	}
 	;
 	assign Inputs_Restart = Restart;
 	assign active = TimerModule_L47F24T48_Expr;
 	assign TimerModule_L51F9L53T10_TimerModule_L52F34T101_WhenTrue = {
 		{4{1'b0}},
-		TimerModule_L51F9L53T10_TimerModule_L52F79T80_Expr
+		TimerModule_L52F79T80_Expr
 	}
 	;
 	assign TimerModule_L51F9L53T10_TimerModule_L52F34T101_WhenFalse = TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr[4:0];

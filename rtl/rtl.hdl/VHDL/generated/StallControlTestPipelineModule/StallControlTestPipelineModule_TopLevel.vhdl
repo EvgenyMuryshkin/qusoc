@@ -59,10 +59,10 @@ architecture rtl of StallControlTestPipelineModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant Pipeline_StallControlTestPipelineModule_L96F17L105T18_StallControlTestPipelineModule_L103F70T71_Expr : std_logic := '1';
-	constant Pipeline_StallControlTestPipelineModule_L107F17L117T18_StallControlTestPipelineModule_L115F70T71_Expr : std_logic := '1';
-	constant Pipeline_StallControlTestPipelineModule_L119F17L130T18_StallControlTestPipelineModule_L128F70T71_Expr : std_logic := '1';
-	constant Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L142F70T71_Expr : std_logic := '1';
+	constant StallControlTestPipelineModule_L103F70T71_Expr : std_logic := '1';
+	constant StallControlTestPipelineModule_L115F70T71_Expr : std_logic := '1';
+	constant StallControlTestPipelineModule_L128F70T71_Expr : std_logic := '1';
+	constant StallControlTestPipelineModule_L142F70T71_Expr : std_logic := '1';
 	signal Inputs_stallPipeline : std_logic := '0';
 	signal Inputs_stallPrev : std_logic := '0';
 	signal Inputs_stallStage0 : std_logic := '0';
@@ -800,7 +800,7 @@ begin
 			others => '0'
 		)
 		;
-		Pipeline_StallControlTestPipelineModule_L96F17L105T18_StallControlTestPipelineModule_L103F48T71_Expr_2(0) <= Pipeline_StallControlTestPipelineModule_L96F17L105T18_StallControlTestPipelineModule_L103F70T71_Expr;
+		Pipeline_StallControlTestPipelineModule_L96F17L105T18_StallControlTestPipelineModule_L103F48T71_Expr_2(0) <= StallControlTestPipelineModule_L103F70T71_Expr;
 		Pipeline_StallControlTestPipelineModule_L107F17L117T18_StallControlTestPipelineModule_L115F48T71_Expr_1(9 downto 8) <= (
 			others => '0'
 		)
@@ -810,7 +810,7 @@ begin
 			others => '0'
 		)
 		;
-		Pipeline_StallControlTestPipelineModule_L107F17L117T18_StallControlTestPipelineModule_L115F48T71_Expr_2(0) <= Pipeline_StallControlTestPipelineModule_L107F17L117T18_StallControlTestPipelineModule_L115F70T71_Expr;
+		Pipeline_StallControlTestPipelineModule_L107F17L117T18_StallControlTestPipelineModule_L115F48T71_Expr_2(0) <= StallControlTestPipelineModule_L115F70T71_Expr;
 		Pipeline_StallControlTestPipelineModule_L119F17L130T18_StallControlTestPipelineModule_L128F48T71_Expr_1(9 downto 8) <= (
 			others => '0'
 		)
@@ -820,7 +820,7 @@ begin
 			others => '0'
 		)
 		;
-		Pipeline_StallControlTestPipelineModule_L119F17L130T18_StallControlTestPipelineModule_L128F48T71_Expr_2(0) <= Pipeline_StallControlTestPipelineModule_L119F17L130T18_StallControlTestPipelineModule_L128F70T71_Expr;
+		Pipeline_StallControlTestPipelineModule_L119F17L130T18_StallControlTestPipelineModule_L128F48T71_Expr_2(0) <= StallControlTestPipelineModule_L128F70T71_Expr;
 		Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L142F48T71_Expr_1(9 downto 8) <= (
 			others => '0'
 		)
@@ -830,7 +830,7 @@ begin
 			others => '0'
 		)
 		;
-		Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L142F48T71_Expr_2(0) <= Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L142F70T71_Expr;
+		Pipeline_StallControlTestPipelineModule_L132F17L144T18_StallControlTestPipelineModule_L142F48T71_Expr_2(0) <= StallControlTestPipelineModule_L142F70T71_Expr;
 		Pipeline_PipelinePreview_PipelineWillStall <= Pipeline_PipelinePreview_PipelineWillStall_Source;
 		Pipeline_stage0_Preview_StageWillStall <= Pipeline_stage0_Preview_StageWillStall_Source;
 		Pipeline_stage1_Preview_StageWillStall <= Pipeline_stage1_Preview_StageWillStall_Source;

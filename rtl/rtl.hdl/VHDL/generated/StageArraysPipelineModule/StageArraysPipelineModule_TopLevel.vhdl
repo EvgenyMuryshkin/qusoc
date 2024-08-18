@@ -53,7 +53,7 @@ architecture rtl of StageArraysPipelineModule_TopLevel is
 	constant Pipeline_stage0_State_sumsDefault : unsigned(15 downto 0) := "0000000000000000";
 	constant Pipeline_stage1_State_s0SumsDefault : unsigned(15 downto 0) := "0000000000000000";
 	constant Pipeline_stage1_State_sumsDefault : unsigned(15 downto 0) := "0000000000000000";
-	constant Pipeline_StageArraysPipelineModule_L30F25T27_Expr : unsigned(5 downto 0) := "101010";
+	constant StageArraysPipelineModule_L30F25T27_Expr : unsigned(5 downto 0) := "101010";
 	signal Inputs_inReady : std_logic := '0';
 	signal Pipeline_stage0_NextState_IsS0Ready : std_logic := '0';
 	signal Pipeline_stage1_NextState_IsS1Ready : std_logic := '0';
@@ -372,7 +372,7 @@ begin
 			others => '0'
 		)
 		;
-		Pipeline_StageArraysPipelineModule_L24F28L31T22_Enumerable(4)(5 downto 0) <= Pipeline_StageArraysPipelineModule_L30F25T27_Expr;
+		Pipeline_StageArraysPipelineModule_L24F28L31T22_Enumerable(4)(5 downto 0) <= StageArraysPipelineModule_L30F25T27_Expr;
 		Pipeline_StageArraysPipelineModule_L38F25T58_Cast <= Pipeline_StageArraysPipelineModule_L38F34T57_Expr(15 downto 0);
 		Pipeline_StageArraysPipelineModule_L39F25T58_Cast <= Pipeline_StageArraysPipelineModule_L39F34T57_Expr(15 downto 0);
 		Pipeline_StageArraysPipelineModule_L36F28L40T22_Enumerable(0) <= Pipeline_StageArraysPipelineModule_L38F25T58_Cast;

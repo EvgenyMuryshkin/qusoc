@@ -1,4 +1,5 @@
 No reads:
 	addrBits
 	depth
+	State_isWrapAround
 	width

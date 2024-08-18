@@ -109,7 +109,7 @@ architecture rtl of AXI4AutoDecrementRegisterModuleB4_TopLevel is
 	constant AXI4AutoDecrementRegisterModule_L74F29T33_Expr : std_logic := '1';
 	constant AXI4AutoDecrementRegisterModule_L76F28T32_Expr : std_logic := '1';
 	constant AXI4AutoDecrementRegisterModule_L73F28T32_Expr : std_logic := '1';
-	constant AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L88F31T32_Expr : std_logic := '0';
+	constant AXI4AutoDecrementRegisterModule_L88F31T32_Expr : std_logic := '0';
 	constant AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L96F13L102T14_AXI4AutoDecrementRegisterModule_L97F17L101T18_0_w : std_logic := '0';
 	constant AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L96F13L102T14_AXI4AutoDecrementRegisterModule_L97F17L101T18_1_w : std_logic := '1';
 	constant AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L96F13L102T14_AXI4AutoDecrementRegisterModule_L97F17L101T18_2_w : unsigned(1 downto 0) := "10";
@@ -338,7 +338,7 @@ begin
 			others => '0'
 		)
 		;
-		AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L88F17T32_ExprRhs(0) <= AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L88F31T32_Expr;
+		AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L88F17T32_ExprRhs(0) <= AXI4AutoDecrementRegisterModule_L88F31T32_Expr;
 		AXI4AutoDecrementRegisterModule_L75F28T44_Expr_1 <= Inputs_Reg_inWE;
 		AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L86F33T80_Expr_1 <= Inputs_Reg_inWE;
 		AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L86F33T80_Expr_2 <= axiSlave_outWREADYConfirming;

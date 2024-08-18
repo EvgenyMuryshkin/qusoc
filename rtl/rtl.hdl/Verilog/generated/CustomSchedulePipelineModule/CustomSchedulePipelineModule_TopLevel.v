@@ -47,8 +47,7 @@ module CustomSchedulePipelineModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [3: 0] Pipeline1_PipelineConfigurations_L38F60T61_Expr = 4'b1000;
-	wire [3: 0] Pipeline2_PipelineConfigurations_L38F60T61_Expr = 4'b1000;
+	wire [3: 0] PipelineConfigurations_L38F60T61_Expr = 4'b1000;
 	wire CustomSchedulePipelineModule_L37F47T48_Expr = 1'b1;
 	wire [1: 0] CustomSchedulePipelineModule_L38F47T48_Expr = 2'b10;
 	wire CustomSchedulePipelineModule_L39F48T49_Expr = 1'b1;

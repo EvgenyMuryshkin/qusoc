@@ -3,4 +3,8 @@
     public class DefaultRISCVModule : RISCVModule
     {
     }
+
+    public class DefaultCompareModule : CompareModule
+    {
+    }
 }

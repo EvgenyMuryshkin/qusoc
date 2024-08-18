@@ -50,9 +50,9 @@ module StageStatePipelineModule_TopLevel
 	wire false = 1'b0;
 	wire [15: 0] Pipeline_stage0_State_sumsDefault = 16'b0000000000000000;
 	wire [15: 0] Pipeline_stage1_State_sumsDefault = 16'b0000000000000000;
-	wire Pipeline_StageStatePipelineModule_L92F60T61_Expr = 1'b1;
-	wire Pipeline_StageStatePipelineModule_L97F64T65_Expr = 1'b1;
-	wire Pipeline_StageStatePipelineModule_L108F59T60_Expr = 1'b1;
+	wire StageStatePipelineModule_L92F60T61_Expr = 1'b1;
+	wire StageStatePipelineModule_L97F64T65_Expr = 1'b1;
+	wire StageStatePipelineModule_L108F59T60_Expr = 1'b1;
 	wire Inputs_inReady;
 	reg Pipeline_stage0_NextState_IsReady;
 	reg [15: 0] Pipeline_stage0_NextState_S0Counter;
@@ -323,7 +323,7 @@ module StageStatePipelineModule_TopLevel
 	;
 	assign Pipeline_StageStatePipelineModule_L92F42T61_Expr_2 = {
 		{17{1'b0}},
-		Pipeline_StageStatePipelineModule_L92F60T61_Expr
+		StageStatePipelineModule_L92F60T61_Expr
 	}
 	;
 	assign Pipeline_StageStatePipelineModule_L97F42T65_Expr_1 = {
@@ -333,7 +333,7 @@ module StageStatePipelineModule_TopLevel
 	;
 	assign Pipeline_StageStatePipelineModule_L97F42T65_Expr_2 = {
 		{17{1'b0}},
-		Pipeline_StageStatePipelineModule_L97F64T65_Expr
+		StageStatePipelineModule_L97F64T65_Expr
 	}
 	;
 	assign Pipeline_StageStatePipelineModule_L100F34T57_Expr_1 = {
@@ -373,7 +373,7 @@ module StageStatePipelineModule_TopLevel
 	;
 	assign Pipeline_StageStatePipelineModule_L108F42T60_Expr_2 = {
 		{17{1'b0}},
-		Pipeline_StageStatePipelineModule_L108F59T60_Expr
+		StageStatePipelineModule_L108F59T60_Expr
 	}
 	;
 	assign Inputs_inData[0] = inData0;

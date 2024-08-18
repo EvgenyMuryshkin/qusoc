@@ -52,7 +52,7 @@ module StagePeekPipelineModule_TopLevel
 	wire [15: 0] Pipeline_stage0_State_sumsDefault = 16'b0000000000000000;
 	wire [15: 0] Pipeline_stage1_State_s0SumsDefault = 16'b0000000000000000;
 	wire [15: 0] Pipeline_stage1_State_sumsDefault = 16'b0000000000000000;
-	wire [5: 0] Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L56F29T31_Expr = 6'b101010;
+	wire [5: 0] PipelineConfigurations_L56F29T31_Expr = 6'b101010;
 	wire Inputs_inReady;
 	reg Pipeline_stage0_NextState_ready;
 	reg Pipeline_stage1_NextState_ready;
@@ -380,7 +380,7 @@ module StagePeekPipelineModule_TopLevel
 	assign Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L50F32L57T26_Enumerable[3] = Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L55F29T74_Cast;
 	assign Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L50F32L57T26_Enumerable[4] = {
 		{10{1'b0}},
-		Pipeline_PipelineConfigurations_L45F17L59T18_PipelineConfigurations_L56F29T31_Expr
+		PipelineConfigurations_L56F29T31_Expr
 	}
 	;
 	assign Pipeline_PipelineConfigurations_L66F25T66_Cast = Pipeline_PipelineConfigurations_L66F34T65_Expr[15:0];

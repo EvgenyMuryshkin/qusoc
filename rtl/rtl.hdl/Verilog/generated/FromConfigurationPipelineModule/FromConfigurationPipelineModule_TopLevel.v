@@ -45,7 +45,7 @@ module FromConfigurationPipelineModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [3: 0] Pipeline_PipelineConfigurations_L38F60T61_Expr = 4'b1000;
+	wire [3: 0] PipelineConfigurations_L38F60T61_Expr = 4'b1000;
 	wire Inputs_inReady;
 	reg Pipeline_stage0_NextState_IsS0Ready;
 	reg signed [31: 0] Pipeline_stage0_NextState_sum01;

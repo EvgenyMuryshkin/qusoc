@@ -52,8 +52,7 @@ architecture rtl of CustomSchedulePipelineModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant Pipeline1_PipelineConfigurations_L38F60T61_Expr : unsigned(3 downto 0) := "1000";
-	constant Pipeline2_PipelineConfigurations_L38F60T61_Expr : unsigned(3 downto 0) := "1000";
+	constant PipelineConfigurations_L38F60T61_Expr : unsigned(3 downto 0) := "1000";
 	constant CustomSchedulePipelineModule_L37F47T48_Expr : std_logic := '1';
 	constant CustomSchedulePipelineModule_L38F47T48_Expr : unsigned(1 downto 0) := "10";
 	constant CustomSchedulePipelineModule_L39F48T49_Expr : std_logic := '1';

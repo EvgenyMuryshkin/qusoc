@@ -25,7 +25,7 @@ module AXISoCTestModule_TopLevel_Interconnect_readInterconnect_rangeDetectorArra
 	// [END USER PORTS]
 	input wire [31:0] iAddress,
 	output wire oActive,
-	output wire [0:0] oIndex
+	output wire [1:0] oIndex
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -35,33 +35,41 @@ module AXISoCTestModule_TopLevel_Interconnect_readInterconnect_rangeDetectorArra
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire signed [2: 0] rangeDetectorsCount = 3'b010;
+	wire signed [2: 0] rangeDetectorsCount = 3'b011;
 	wire RangeDetectorArrayModule_L48F13L54T14_0_idx = 1'b0;
 	wire RangeDetectorArrayModule_L48F13L54T14_1_idx = 1'b1;
+	wire [1: 0] RangeDetectorArrayModule_L48F13L54T14_2_idx = 2'b10;
 	wire RangeDetectorArrayModule_L56F13L59T14_0_idx = 1'b0;
 	wire RangeDetectorArrayModule_L56F13L59T14_1_idx = 1'b1;
+	wire [1: 0] RangeDetectorArrayModule_L56F13L59T14_2_idx = 2'b10;
 	wire [31: 0] Inputs_iAddress;
 	wire encoder_HasActive;
-	wire [0: 0] encoder_MSBIndex;
-	wire [1: 0] encoder_MSBValue;
+	wire [1: 0] encoder_MSBIndex;
+	wire [2: 0] encoder_MSBValue;
 	wire [31: 0] rangeDetectors0_Value;
 	wire rangeDetectors0_IsActive;
 	wire [31: 0] rangeDetectors1_Value;
 	wire rangeDetectors1_IsActive;
+	wire [31: 0] rangeDetectors2_Value;
+	wire rangeDetectors2_IsActive;
 	wire [31: 0] RangeDetectorArrayModule_L48F13L54T14_0_RangeDetectorArrayModule_L50F52L53T18_Object;
 	wire [31: 0] RangeDetectorArrayModule_L48F13L54T14_1_RangeDetectorArrayModule_L50F52L53T18_Object;
-	wire [1: 0] RangeDetectorArrayModule_L36F36L40T14_Object;
+	wire [31: 0] RangeDetectorArrayModule_L48F13L54T14_2_RangeDetectorArrayModule_L50F52L53T18_Object;
+	wire [2: 0] RangeDetectorArrayModule_L36F36L40T14_Object;
 	wire encoder_iValues0_encoder_iValues_HardLink;
 	wire encoder_iValues1_encoder_iValues_HardLink;
+	wire encoder_iValues2_encoder_iValues_HardLink;
 	wire encoder_HasActive_encoder_HasActive_HardLink;
-	wire [0: 0] encoder_MSBIndex_encoder_MSBIndex_HardLink;
-	wire [1: 0] encoder_MSBValue_encoder_MSBValue_HardLink;
+	wire [1: 0] encoder_MSBIndex_encoder_MSBIndex_HardLink;
+	wire [2: 0] encoder_MSBValue_encoder_MSBValue_HardLink;
 	wire [31: 0] rangeDetectors0_Value_rangeDetectors0_Value_HardLink;
 	wire rangeDetectors0_IsActive_rangeDetectors0_IsActive_HardLink;
 	wire [31: 0] rangeDetectors1_Value_rangeDetectors1_Value_HardLink;
 	wire rangeDetectors1_IsActive_rangeDetectors1_IsActive_HardLink;
-	wire rangeActive [0 : 1];
-	wire encoder_iValues [0 : 1];
+	wire [31: 0] rangeDetectors2_Value_rangeDetectors2_Value_HardLink;
+	wire rangeDetectors2_IsActive_rangeDetectors2_IsActive_HardLink;
+	wire rangeActive [0 : 2];
+	wire encoder_iValues [0 : 2];
 	AXISoCTestModule_TopLevel_Interconnect_readInterconnect_rangeDetectorArray0_encoder
 	AXISoCTestModule_TopLevel_Interconnect_readInterconnect_rangeDetectorArray0_encoder
 	(
@@ -69,6 +77,7 @@ module AXISoCTestModule_TopLevel_Interconnect_readInterconnect_rangeDetectorArra
 		// [END USER MAP FOR encoder]
 		.iValues0 (encoder_iValues0_encoder_iValues_HardLink),
 		.iValues1 (encoder_iValues1_encoder_iValues_HardLink),
+		.iValues2 (encoder_iValues2_encoder_iValues_HardLink),
 		.HasActive (encoder_HasActive_encoder_HasActive_HardLink),
 		.MSBIndex (encoder_MSBIndex_encoder_MSBIndex_HardLink),
 		.MSBValue (encoder_MSBValue_encoder_MSBValue_HardLink)
@@ -89,24 +98,38 @@ module AXISoCTestModule_TopLevel_Interconnect_readInterconnect_rangeDetectorArra
 		.Value (rangeDetectors1_Value_rangeDetectors1_Value_HardLink),
 		.IsActive (rangeDetectors1_IsActive_rangeDetectors1_IsActive_HardLink)
 	);
+	AXISoCTestModule_TopLevel_Interconnect_readInterconnect_rangeDetectorArray0_rangeDetectors2
+	AXISoCTestModule_TopLevel_Interconnect_readInterconnect_rangeDetectorArray0_rangeDetectors2
+	(
+		// [BEGIN USER MAP FOR rangeDetectors2]
+		// [END USER MAP FOR rangeDetectors2]
+		.Value (rangeDetectors2_Value_rangeDetectors2_Value_HardLink),
+		.IsActive (rangeDetectors2_IsActive_rangeDetectors2_IsActive_HardLink)
+	);
 	assign Inputs_iAddress = iAddress;
 	assign RangeDetectorArrayModule_L48F13L54T14_0_RangeDetectorArrayModule_L50F52L53T18_Object[31:0] = Inputs_iAddress;
 	assign rangeDetectors0_Value = RangeDetectorArrayModule_L48F13L54T14_0_RangeDetectorArrayModule_L50F52L53T18_Object[31:0];
 	assign RangeDetectorArrayModule_L48F13L54T14_1_RangeDetectorArrayModule_L50F52L53T18_Object[31:0] = Inputs_iAddress;
 	assign rangeDetectors1_Value = RangeDetectorArrayModule_L48F13L54T14_1_RangeDetectorArrayModule_L50F52L53T18_Object[31:0];
+	assign RangeDetectorArrayModule_L48F13L54T14_2_RangeDetectorArrayModule_L50F52L53T18_Object[31:0] = Inputs_iAddress;
+	assign rangeDetectors2_Value = RangeDetectorArrayModule_L48F13L54T14_2_RangeDetectorArrayModule_L50F52L53T18_Object[31:0];
 	assign rangeActive[0] = rangeDetectors0_IsActive;
 	assign rangeActive[1] = rangeDetectors1_IsActive;
-	assign RangeDetectorArrayModule_L36F36L40T14_Object[1:0] = {
+	assign rangeActive[2] = rangeDetectors2_IsActive;
+	assign RangeDetectorArrayModule_L36F36L40T14_Object[2:0] = {
+		rangeActive[2],
 		rangeActive[1],
 		rangeActive[0]
 	}
 	;
+	assign encoder_iValues[2] = RangeDetectorArrayModule_L36F36L40T14_Object[2];
 	assign encoder_iValues[1] = RangeDetectorArrayModule_L36F36L40T14_Object[1];
 	assign encoder_iValues[0] = RangeDetectorArrayModule_L36F36L40T14_Object[0];
 	assign oActive = encoder_HasActive;
 	assign oIndex = encoder_MSBIndex;
 	assign encoder_iValues0_encoder_iValues_HardLink = encoder_iValues[0];
 	assign encoder_iValues1_encoder_iValues_HardLink = encoder_iValues[1];
+	assign encoder_iValues2_encoder_iValues_HardLink = encoder_iValues[2];
 	assign encoder_HasActive = encoder_HasActive_encoder_HasActive_HardLink;
 	assign encoder_MSBIndex = encoder_MSBIndex_encoder_MSBIndex_HardLink;
 	assign encoder_MSBValue = encoder_MSBValue_encoder_MSBValue_HardLink;
@@ -114,6 +137,8 @@ module AXISoCTestModule_TopLevel_Interconnect_readInterconnect_rangeDetectorArra
 	assign rangeDetectors0_IsActive = rangeDetectors0_IsActive_rangeDetectors0_IsActive_HardLink;
 	assign rangeDetectors1_Value_rangeDetectors1_Value_HardLink = rangeDetectors1_Value;
 	assign rangeDetectors1_IsActive = rangeDetectors1_IsActive_rangeDetectors1_IsActive_HardLink;
+	assign rangeDetectors2_Value_rangeDetectors2_Value_HardLink = rangeDetectors2_Value;
+	assign rangeDetectors2_IsActive = rangeDetectors2_IsActive_rangeDetectors2_IsActive_HardLink;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

@@ -18,40 +18,40 @@ namespace axi.modules
 
     public class AXIUARTModuleBaseTestModule : RTLCombinationalModule<AXIUARTModuleTestModuleInputs>
     {
-        internal AXI4UARTModule uart;
-        internal AXI4MasterModule master = new AXI4MasterModule(axiSize.B4);
+        internal AXI4UARTModule uartModule;
+        internal AXI4MasterModule masterModule = new AXI4MasterModule(axiSize.B4);
 
         public AXIUARTModuleBaseTestModule(int depth, int clocksPerBit)
         {
-            uart = new AXI4UARTModule(axiSize.B4, depth, clocksPerBit);
+            uartModule = new AXI4UARTModule(axiSize.B4, depth, clocksPerBit);
         }
 
-        public bool oWACK => master.WACK;
-        public bool oRACK => master.RACK;
-        public byte[] oRData => master.RDATA;
-        public bool oTX => uart.oTX;
-        public byte oRXData => uart.oRXData;
-        public bool oRXValid => uart.oRXValid;
-        public bool oTransmitting => uart.oTransmitting;
-        public bool oCE => uart.oCE;
-        public int oTXCounter => uart.oTXCounter;
-        public int oRXCounter => uart.oRXCounter;
+        public bool oWACK => masterModule.WACK;
+        public bool oRACK => masterModule.RACK;
+        public byte[] oRData => masterModule.RDATA;
+        public bool oTX => uartModule.oTX;
+        public byte oRXData => uartModule.oRXData;
+        public bool oRXValid => uartModule.oRXValid;
+        public bool oTransmitting => uartModule.oTransmitting;
+        public bool oCE => uartModule.oCE;
+        public int oTXCounter => uartModule.oTXCounter;
+        public int oRXCounter => uartModule.oRXCounter;
 
         protected override void OnSchedule(Func<AXIUARTModuleTestModuleInputs> inputsFactory)
         {
             base.OnSchedule(inputsFactory);
-            uart.Schedule(() => new()
+            uartModule.Schedule(() => new()
             {
-                M2S = master.M2S,
+                M2S = masterModule.M2S,
                 iRX = Inputs.UART.iRX,
                 iEN_RX = Inputs.UART.iEN_RX,
                 iEN_TX = Inputs.UART.iEN_TX
             });
 
-            master.Schedule(() => new AXI4MasterModuleInputs()
+            masterModule.Schedule(() => new AXI4MasterModuleInputs()
             {
                 Master = Inputs.Master,
-                S2M = uart.oS2M
+                S2M = uartModule.oS2M
             });
         }
     }

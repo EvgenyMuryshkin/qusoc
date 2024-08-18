@@ -36,7 +36,7 @@ module OverridesComposition_TopLevel_GetOverride
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire CombinationalOverridesBase_L16F50T51_Expr = 1'b1;
-	wire [1: 0] CombinationalGetValueOverride_L12F13L19T14_CombinationalGetValueOverride_L16F54T55_Expr = 2'b11;
+	wire [1: 0] CombinationalGetValueOverride_L16F54T55_Expr = 2'b11;
 	wire Inputs_InOverride;
 	wire [7: 0] Inputs_InValue;
 	wire [7: 0] InternalOffset;
@@ -95,7 +95,7 @@ module OverridesComposition_TopLevel_GetOverride
 	;
 	assign CombinationalGetValueOverride_L12F13L19T14_CombinationalGetValueOverride_L16F37T55_Expr_2 = {
 		{8{1'b0}},
-		CombinationalGetValueOverride_L12F13L19T14_CombinationalGetValueOverride_L16F54T55_Expr
+		CombinationalGetValueOverride_L16F54T55_Expr
 	}
 	;
 	assign Inputs_InOverride = InOverride;

@@ -41,8 +41,8 @@ architecture rtl of OverrideScheduleComposition_TopLevel_L1Override is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	constant CombinationalOverridesBase_L16F50T51_Expr : std_logic := '1';
-	constant CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F44T45_Expr : unsigned(1 downto 0) := "10";
-	constant CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F44T45_Expr : unsigned(1 downto 0) := "10";
+	constant CombinationalL1Override_L16F44T45_Expr : unsigned(1 downto 0) := "10";
+	constant CombinationalL1Override_L11F44T45_Expr : unsigned(1 downto 0) := "10";
 	signal Inputs_InOverride : std_logic := '0';
 	signal Inputs_InValue : unsigned(7 downto 0) := (others => '0');
 	signal InternalOffset : unsigned(7 downto 0) := (others => '0');
@@ -78,7 +78,7 @@ begin
 			others => '0'
 		)
 		;
-		CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr_2(1 downto 0) <= signed(CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F44T45_Expr);
+		CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr_2(1 downto 0) <= signed(CombinationalL1Override_L16F44T45_Expr);
 		CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr_1(9 downto 8) <= (
 			others => '0'
 		)
@@ -88,7 +88,7 @@ begin
 			others => '0'
 		)
 		;
-		CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr_2(1 downto 0) <= signed(CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F44T45_Expr);
+		CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr_2(1 downto 0) <= signed(CombinationalL1Override_L11F44T45_Expr);
 		Inputs_InOverride <= InOverride;
 		Inputs_InValue <= InValue;
 		InternalOffset(7 downto 1) <= (

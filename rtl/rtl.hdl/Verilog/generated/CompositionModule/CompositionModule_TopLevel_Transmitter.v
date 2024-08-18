@@ -45,13 +45,13 @@ module CompositionModule_TopLevel_Transmitter
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire [1: 0] TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L16F22T41_Expr = 2'b00;
-	wire TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L18F21L22T22_TransmitterModule_L19F45T46_Expr = 1'b0;
+	wire TransmitterModule_L19F45T46_Expr = 1'b0;
 	wire [1: 0] TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L18F21L22T22_TransmitterModule_L21F41T68_Expr = 2'b01;
 	wire [1: 0] TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L24F22T49_Expr = 2'b01;
-	wire [2: 0] TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L25F42T43_Expr = 3'b111;
+	wire [2: 0] TransmitterModule_L25F42T43_Expr = 3'b111;
 	wire [1: 0] TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L26F21L28T22_TransmitterModule_L27F41T69_Expr = 2'b10;
-	wire TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F68T69_Expr = 1'b1;
-	wire TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L33F52T53_Expr = 1'b1;
+	wire TransmitterModule_L31F68T69_Expr = 1'b1;
+	wire TransmitterModule_L33F52T53_Expr = 1'b1;
 	wire [1: 0] TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L35F22T50_Expr = 2'b10;
 	wire [1: 0] TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L37F41T60_Expr = 2'b00;
 	wire [1: 0] TransmitterModule_L9F46T65_Expr = 2'b00;
@@ -148,7 +148,7 @@ module CompositionModule_TopLevel_Transmitter
 			begin
 				NextState_Counter = {
 					{7{1'b0}},
-					TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L18F21L22T22_TransmitterModule_L19F45T46_Expr
+					TransmitterModule_L19F45T46_Expr
 				}
 				;
 				NextState_Data = Inputs_Data;
@@ -202,7 +202,7 @@ module CompositionModule_TopLevel_Transmitter
 	;
 	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L25F25T43_ExprRhs = {
 		{6{1'b0}},
-		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L25F42T43_Expr
+		TransmitterModule_L25F42T43_Expr
 	}
 	;
 	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L35F17L38T27_CaseLhs = {
@@ -265,7 +265,7 @@ module CompositionModule_TopLevel_Transmitter
 	;
 	assign TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F52T69_Expr_2 = {
 		{9{1'b0}},
-		TransmitterModule_L13F9L40T10_TransmitterModule_L14F13L39T14_TransmitterModule_L30F21L32T22_TransmitterModule_L31F68T69_Expr
+		TransmitterModule_L31F68T69_Expr
 	}
 	;
 	assign Inputs_Ack = Ack;

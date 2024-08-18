@@ -48,7 +48,7 @@ module StageArraysPipelineModule_TopLevel
 	wire [15: 0] Pipeline_stage0_State_sumsDefault = 16'b0000000000000000;
 	wire [15: 0] Pipeline_stage1_State_s0SumsDefault = 16'b0000000000000000;
 	wire [15: 0] Pipeline_stage1_State_sumsDefault = 16'b0000000000000000;
-	wire [5: 0] Pipeline_StageArraysPipelineModule_L30F25T27_Expr = 6'b101010;
+	wire [5: 0] StageArraysPipelineModule_L30F25T27_Expr = 6'b101010;
 	wire Inputs_inReady;
 	reg Pipeline_stage0_NextState_IsS0Ready;
 	reg Pipeline_stage1_NextState_IsS1Ready;
@@ -374,7 +374,7 @@ module StageArraysPipelineModule_TopLevel
 	assign Pipeline_StageArraysPipelineModule_L24F28L31T22_Enumerable[3] = Pipeline_StageArraysPipelineModule_L29F25T60_Cast;
 	assign Pipeline_StageArraysPipelineModule_L24F28L31T22_Enumerable[4] = {
 		{10{1'b0}},
-		Pipeline_StageArraysPipelineModule_L30F25T27_Expr
+		StageArraysPipelineModule_L30F25T27_Expr
 	}
 	;
 	assign Pipeline_StageArraysPipelineModule_L38F25T58_Cast = Pipeline_StageArraysPipelineModule_L38F34T57_Expr[15:0];

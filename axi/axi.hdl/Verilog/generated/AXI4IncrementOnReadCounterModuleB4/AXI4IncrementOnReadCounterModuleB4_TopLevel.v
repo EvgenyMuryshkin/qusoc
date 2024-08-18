@@ -94,7 +94,7 @@ module AXI4IncrementOnReadCounterModuleB4_TopLevel
 	wire AXI4IncrementOnReadCounterModule_L58F28T33_Expr = 1'b0;
 	wire AXI4IncrementOnReadCounterModule_L55F28T32_Expr = 1'b1;
 	wire AXI4IncrementOnReadCounterModule_L57F28T33_Expr = 1'b0;
-	wire AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F54T55_Expr = 1'b1;
+	wire AXI4IncrementOnReadCounterModule_L68F54T55_Expr = 1'b1;
 	wire [7: 0] Inputs_M2S_R_AR_ARID;
 	wire [31: 0] Inputs_M2S_R_AR_ARADDR;
 	wire [7: 0] Inputs_M2S_R_AR_ARLEN;
@@ -260,7 +260,7 @@ module AXI4IncrementOnReadCounterModuleB4_TopLevel
 	;
 	assign AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr_2 = {
 		{33{1'b0}},
-		AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F54T55_Expr
+		AXI4IncrementOnReadCounterModule_L68F54T55_Expr
 	}
 	;
 	assign Inputs_M2S_R_AR_ARID = M2S_R_AR_ARID;

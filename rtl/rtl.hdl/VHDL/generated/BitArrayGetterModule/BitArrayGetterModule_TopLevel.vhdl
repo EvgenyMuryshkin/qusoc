@@ -40,8 +40,8 @@ architecture rtl of BitArrayGetterModule_TopLevel is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	constant BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L17F46T59_Expr : unsigned(7 downto 0) := "11111111";
-	constant BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F36T38_Expr : unsigned(5 downto 0) := "110010";
-	constant BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F41T44_Expr : unsigned(6 downto 0) := "1100100";
+	constant BitArrayGetterModule_L19F36T38_Expr : unsigned(5 downto 0) := "110010";
+	constant BitArrayGetterModule_L21F41T44_Expr : unsigned(6 downto 0) := "1100100";
 	signal Inputs_Value : unsigned(7 downto 0) := (others => '0');
 	signal BitArrayGetterModule_L16F13L25T14_result : unsigned(7 downto 0) := (others => '0');
 	signal BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L20F30T38_Cast : unsigned(7 downto 0) := "00101010";
@@ -72,14 +72,14 @@ begin
 			others => '0'
 		)
 		;
-		BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_ExprRhs(5 downto 0) <= signed(BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F36T38_Expr);
+		BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_ExprRhs(5 downto 0) <= signed(BitArrayGetterModule_L19F36T38_Expr);
 		BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_ExprLhs(8) <= '0';
 		BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_ExprLhs(7 downto 0) <= signed(Inputs_Value);
 		BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_ExprRhs(8 downto 7) <= (
 			others => '0'
 		)
 		;
-		BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_ExprRhs(6 downto 0) <= signed(BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F41T44_Expr);
+		BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_ExprRhs(6 downto 0) <= signed(BitArrayGetterModule_L21F41T44_Expr);
 		Inputs_Value <= Value;
 		BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L22F30T70_Resize <= Inputs_Value;
 		Getter <= BitArrayGetterModule_L16F13L25T14_result;

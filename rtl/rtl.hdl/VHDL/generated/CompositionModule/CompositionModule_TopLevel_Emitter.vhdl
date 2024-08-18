@@ -42,7 +42,7 @@ architecture rtl of CompositionModule_TopLevel_Emitter is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant EmitterModule_L22F9L25T10_EmitterModule_L24F54T55_Expr : std_logic := '1';
+	constant EmitterModule_L24F54T55_Expr : std_logic := '1';
 	signal Inputs_Ack : std_logic := '0';
 	signal Inputs_IsEnabled : std_logic := '0';
 	signal NextState_Data : unsigned(7 downto 0) := (others => '0');
@@ -94,7 +94,7 @@ begin
 			others => '0'
 		)
 		;
-		EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_2(0) <= EmitterModule_L22F9L25T10_EmitterModule_L24F54T55_Expr;
+		EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_2(0) <= EmitterModule_L24F54T55_Expr;
 		Inputs_Ack <= Ack;
 		Inputs_IsEnabled <= IsEnabled;
 		EmitterModule_L22F9L25T10_EmitterModule_L24F34T56_Cast <= EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr(7 downto 0);

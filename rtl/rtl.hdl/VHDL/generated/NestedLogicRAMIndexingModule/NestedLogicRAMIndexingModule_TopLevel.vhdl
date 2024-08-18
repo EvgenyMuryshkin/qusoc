@@ -45,7 +45,7 @@ architecture rtl of NestedLogicRAMIndexingModule_TopLevel is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	constant State_Nested_BuffDefault : unsigned(7 downto 0) := "00000000";
-	constant NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F60T61_Expr : std_logic := '1';
+	constant NestedLogicRAMIndexingModule_L33F60T61_Expr : std_logic := '1';
 	signal Inputs_ReadAddr : unsigned(1 downto 0) := (others => '0');
 	signal Inputs_WE : std_logic := '0';
 	signal Inputs_WriteAddr : unsigned(1 downto 0) := (others => '0');
@@ -112,7 +112,7 @@ begin
 			others => '0'
 		)
 		;
-		NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_2(0) <= NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F60T61_Expr;
+		NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_2(0) <= NestedLogicRAMIndexingModule_L33F60T61_Expr;
 		Inputs_ReadAddr <= ReadAddr;
 		Inputs_WE <= WE;
 		Inputs_WriteAddr <= WriteAddr;

@@ -39,8 +39,8 @@ module AXI4InteconnectModule_2x2_TopLevel_readInterconnect_rangeDetectorArray1_e
 	wire false = 1'b0;
 	wire signed [2: 0] inputWidth = 3'b010;
 	wire signed [1: 0] resultWidth = 2'b01;
-	wire AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F46T51_Expr = 1'b0;
-	wire AXI4EncoderModule_L45F13L54T14_AXI4EncoderModule_L46F31T36_Expr = 1'b0;
+	wire AXI4EncoderModule_L31F46T51_Expr = 1'b0;
+	wire AXI4EncoderModule_L46F31T36_Expr = 1'b0;
 	wire [0: 0] internalEncoded;
 	wire internalHasActive;
 	wire [0: 0] AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize;
@@ -71,7 +71,7 @@ module AXI4InteconnectModule_2x2_TopLevel_readInterconnect_rangeDetectorArray1_e
 	always @ (*)
 	begin
 		idx1 = 0;
-		AXI4EncoderModule_L45F13L54T14_result = AXI4EncoderModule_L45F13L54T14_AXI4EncoderModule_L46F31T36_Expr;
+		AXI4EncoderModule_L45F13L54T14_result = AXI4EncoderModule_L46F31T36_Expr;
 		for (idx1 = 0; (idx1 < 2); idx1 = (idx1 + 1))
 		begin
 			if (Inputs_iValues[idx1])
@@ -87,7 +87,7 @@ module AXI4InteconnectModule_2x2_TopLevel_readInterconnect_rangeDetectorArray1_e
 	;
 	assign Inputs_iValues[0] = iValues0;
 	assign Inputs_iValues[1] = iValues1;
-	assign AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize[0] = AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F46T51_Expr;
+	assign AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize[0] = AXI4EncoderModule_L31F46T51_Expr;
 	assign AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T41_SignChange = AXI4EncoderModule_L30F13L39T14_result;
 	assign AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T62_Resize = AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T41_SignChange;
 	assign internalEncoded = AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T62_Resize;

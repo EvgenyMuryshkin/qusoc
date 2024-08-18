@@ -4,6 +4,7 @@ using QRV32.Tests;
 using Quokka.Public.Tools;
 using Quokka.RISCV.Integration.Client;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -129,6 +130,7 @@ namespace QRV32.ComplianceTools
 
         protected void AssertMemory(uint[] memoryBlock, int testAddress, uint[] expectedValues)
         {
+            Trace.WriteLine($"AssertMemory: {memoryBlock.Length} words, {expectedValues.Length} values, from {(testAddress * 4):X8}");
             for (var i = 0; i < expectedValues.Length; i++)
             {
                 var actualWordAddress = testAddress + i;

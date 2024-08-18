@@ -4,8 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Quokka.FPGA" Version="0.1.8.245" />
-    <PackageReference Include="Quokka.RTL" Version="0.1.7.568" />
+    <PackageReference Include="Quokka.FPGA" Version="0.1.8.248" />
+    <PackageReference Include="Quokka.RTL" Version="0.1.7.571" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\tools\Quokka.RTL.Local\Quokka.RTL.Local.csproj" />
