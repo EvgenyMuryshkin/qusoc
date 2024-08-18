@@ -40,8 +40,8 @@ module RTLBitArrayCompareUnsignedAsSignedEqModule_TopLevel
 	wire signed [31: 0] RTLBitArrayCompareModules_L35F30T49_SignChange;
 	wire signed [31: 0] RTLBitArrayCompareModules_L35F53T72_SignChange;
 	wire RTLBitArrayCompareModules_L35F30T72_Expr;
-	wire [31: 0] RTLBitArrayCompareModules_L35F30T72_ExprLhs;
-	wire [31: 0] RTLBitArrayCompareModules_L35F30T72_ExprRhs;
+	wire signed [31: 0] RTLBitArrayCompareModules_L35F30T72_ExprLhs;
+	wire signed [31: 0] RTLBitArrayCompareModules_L35F30T72_ExprRhs;
 	assign RTLBitArrayCompareModules_L35F30T72_Expr = RTLBitArrayCompareModules_L35F30T72_ExprLhs == RTLBitArrayCompareModules_L35F30T72_ExprRhs ? 1'b1 : 1'b0;
 	assign RTLBitArrayCompareModules_L35F30T72_ExprLhs = RTLBitArrayCompareModules_L35F30T49_SignChange;
 	assign RTLBitArrayCompareModules_L35F30T72_ExprRhs = RTLBitArrayCompareModules_L35F53T72_SignChange;

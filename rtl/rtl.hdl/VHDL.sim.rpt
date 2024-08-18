@@ -1,5 +1,5 @@
 Simulator report for VHDL
-Sun Aug 18 15:26:22 2024
+Sun Aug 18 15:56:36 2024
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -45,9 +45,9 @@ applicable agreement for further details.
 +-----------------------------+--------------+
 ; Simulation Start Time       ; 0 ps         ;
 ; Simulation End Time         ; 1.0 ms       ;
-; Simulation Netlist Size     ; 155 nodes    ;
-; Simulation Coverage         ;     100.00 % ;
-; Total Number of Transitions ; 768          ;
+; Simulation Netlist Size     ; 218 nodes    ;
+; Simulation Coverage         ;      98.62 % ;
+; Total Number of Transitions ; 1008         ;
 ; Simulation Breakpoints      ; 0            ;
 ; Family                      ; Cyclone II   ;
 ; Device                      ; EP2C70F896C6 ;
@@ -96,13 +96,13 @@ Please use Quartus II to view the waveform report data.
 +-----------------------------------------------------+--------------+
 ; Type                                                ; Value        ;
 +-----------------------------------------------------+--------------+
-; Total coverage as a percentage                      ;     100.00 % ;
-; Total nodes checked                                 ; 155          ;
-; Total output ports checked                          ; 155          ;
-; Total output ports with complete 1/0-value coverage ; 155          ;
-; Total output ports with no 1/0-value coverage       ; 0            ;
-; Total output ports with no 1-value coverage         ; 0            ;
-; Total output ports with no 0-value coverage         ; 0            ;
+; Total coverage as a percentage                      ;      98.62 % ;
+; Total nodes checked                                 ; 218          ;
+; Total output ports checked                          ; 218          ;
+; Total output ports with complete 1/0-value coverage ; 215          ;
+; Total output ports with no 1/0-value coverage       ; 3            ;
+; Total output ports with no 1-value coverage         ; 3            ;
+; Total output ports with no 0-value coverage         ; 3            ;
 +-----------------------------------------------------+--------------+
 
 
@@ -112,178 +112,246 @@ The following table displays output ports that toggle between 1 and 0 during sim
 +---------------------------------------------+-----------------------------------------------+------------------+
 ; Node Name                                   ; Output Port Name                              ; Output Port Type ;
 +---------------------------------------------+-----------------------------------------------+------------------+
-; |DefaultCompareModule_TopLevel|LessThan0~1  ; |DefaultCompareModule_TopLevel|LessThan0~1    ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~3  ; |DefaultCompareModule_TopLevel|LessThan0~3    ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~5  ; |DefaultCompareModule_TopLevel|LessThan0~5    ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~7  ; |DefaultCompareModule_TopLevel|LessThan0~7    ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~9  ; |DefaultCompareModule_TopLevel|LessThan0~9    ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~11 ; |DefaultCompareModule_TopLevel|LessThan0~11   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~13 ; |DefaultCompareModule_TopLevel|LessThan0~13   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~15 ; |DefaultCompareModule_TopLevel|LessThan0~15   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~17 ; |DefaultCompareModule_TopLevel|LessThan0~17   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~19 ; |DefaultCompareModule_TopLevel|LessThan0~19   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~21 ; |DefaultCompareModule_TopLevel|LessThan0~21   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~23 ; |DefaultCompareModule_TopLevel|LessThan0~23   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~25 ; |DefaultCompareModule_TopLevel|LessThan0~25   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~27 ; |DefaultCompareModule_TopLevel|LessThan0~27   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~29 ; |DefaultCompareModule_TopLevel|LessThan0~29   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~31 ; |DefaultCompareModule_TopLevel|LessThan0~31   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~33 ; |DefaultCompareModule_TopLevel|LessThan0~33   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~35 ; |DefaultCompareModule_TopLevel|LessThan0~35   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~37 ; |DefaultCompareModule_TopLevel|LessThan0~37   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~39 ; |DefaultCompareModule_TopLevel|LessThan0~39   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~41 ; |DefaultCompareModule_TopLevel|LessThan0~41   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~43 ; |DefaultCompareModule_TopLevel|LessThan0~43   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~45 ; |DefaultCompareModule_TopLevel|LessThan0~45   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~47 ; |DefaultCompareModule_TopLevel|LessThan0~47   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~49 ; |DefaultCompareModule_TopLevel|LessThan0~49   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~51 ; |DefaultCompareModule_TopLevel|LessThan0~51   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~53 ; |DefaultCompareModule_TopLevel|LessThan0~53   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~55 ; |DefaultCompareModule_TopLevel|LessThan0~55   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~57 ; |DefaultCompareModule_TopLevel|LessThan0~57   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~59 ; |DefaultCompareModule_TopLevel|LessThan0~59   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~61 ; |DefaultCompareModule_TopLevel|LessThan0~61   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan0~62 ; |DefaultCompareModule_TopLevel|LessThan0~62   ; combout          ;
-; |DefaultCompareModule_TopLevel|LessThan2~1  ; |DefaultCompareModule_TopLevel|LessThan2~1    ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~3  ; |DefaultCompareModule_TopLevel|LessThan2~3    ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~5  ; |DefaultCompareModule_TopLevel|LessThan2~5    ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~7  ; |DefaultCompareModule_TopLevel|LessThan2~7    ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~9  ; |DefaultCompareModule_TopLevel|LessThan2~9    ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~11 ; |DefaultCompareModule_TopLevel|LessThan2~11   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~13 ; |DefaultCompareModule_TopLevel|LessThan2~13   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~15 ; |DefaultCompareModule_TopLevel|LessThan2~15   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~17 ; |DefaultCompareModule_TopLevel|LessThan2~17   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~19 ; |DefaultCompareModule_TopLevel|LessThan2~19   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~21 ; |DefaultCompareModule_TopLevel|LessThan2~21   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~23 ; |DefaultCompareModule_TopLevel|LessThan2~23   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~25 ; |DefaultCompareModule_TopLevel|LessThan2~25   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~27 ; |DefaultCompareModule_TopLevel|LessThan2~27   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~29 ; |DefaultCompareModule_TopLevel|LessThan2~29   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~31 ; |DefaultCompareModule_TopLevel|LessThan2~31   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~33 ; |DefaultCompareModule_TopLevel|LessThan2~33   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~35 ; |DefaultCompareModule_TopLevel|LessThan2~35   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~37 ; |DefaultCompareModule_TopLevel|LessThan2~37   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~39 ; |DefaultCompareModule_TopLevel|LessThan2~39   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~41 ; |DefaultCompareModule_TopLevel|LessThan2~41   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~43 ; |DefaultCompareModule_TopLevel|LessThan2~43   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~45 ; |DefaultCompareModule_TopLevel|LessThan2~45   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~47 ; |DefaultCompareModule_TopLevel|LessThan2~47   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~49 ; |DefaultCompareModule_TopLevel|LessThan2~49   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~51 ; |DefaultCompareModule_TopLevel|LessThan2~51   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~53 ; |DefaultCompareModule_TopLevel|LessThan2~53   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~55 ; |DefaultCompareModule_TopLevel|LessThan2~55   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~57 ; |DefaultCompareModule_TopLevel|LessThan2~57   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~59 ; |DefaultCompareModule_TopLevel|LessThan2~59   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~61 ; |DefaultCompareModule_TopLevel|LessThan2~61   ; cout             ;
-; |DefaultCompareModule_TopLevel|LessThan2~62 ; |DefaultCompareModule_TopLevel|LessThan2~62   ; combout          ;
-; |DefaultCompareModule_TopLevel|Equal0~0     ; |DefaultCompareModule_TopLevel|Equal0~0       ; combout          ;
-; |DefaultCompareModule_TopLevel|Equal0~1     ; |DefaultCompareModule_TopLevel|Equal0~1       ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan1~1  ; |DefaultCompareModule_TopLevel|LessThan1~1    ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~3  ; |DefaultCompareModule_TopLevel|LessThan1~3    ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~5  ; |DefaultCompareModule_TopLevel|LessThan1~5    ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~7  ; |DefaultCompareModule_TopLevel|LessThan1~7    ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~9  ; |DefaultCompareModule_TopLevel|LessThan1~9    ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~11 ; |DefaultCompareModule_TopLevel|LessThan1~11   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~13 ; |DefaultCompareModule_TopLevel|LessThan1~13   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~15 ; |DefaultCompareModule_TopLevel|LessThan1~15   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~17 ; |DefaultCompareModule_TopLevel|LessThan1~17   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~19 ; |DefaultCompareModule_TopLevel|LessThan1~19   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~21 ; |DefaultCompareModule_TopLevel|LessThan1~21   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~23 ; |DefaultCompareModule_TopLevel|LessThan1~23   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~25 ; |DefaultCompareModule_TopLevel|LessThan1~25   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~27 ; |DefaultCompareModule_TopLevel|LessThan1~27   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~29 ; |DefaultCompareModule_TopLevel|LessThan1~29   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~31 ; |DefaultCompareModule_TopLevel|LessThan1~31   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~33 ; |DefaultCompareModule_TopLevel|LessThan1~33   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~35 ; |DefaultCompareModule_TopLevel|LessThan1~35   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~37 ; |DefaultCompareModule_TopLevel|LessThan1~37   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~39 ; |DefaultCompareModule_TopLevel|LessThan1~39   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~41 ; |DefaultCompareModule_TopLevel|LessThan1~41   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~43 ; |DefaultCompareModule_TopLevel|LessThan1~43   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~45 ; |DefaultCompareModule_TopLevel|LessThan1~45   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~47 ; |DefaultCompareModule_TopLevel|LessThan1~47   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~49 ; |DefaultCompareModule_TopLevel|LessThan1~49   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~51 ; |DefaultCompareModule_TopLevel|LessThan1~51   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~53 ; |DefaultCompareModule_TopLevel|LessThan1~53   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~55 ; |DefaultCompareModule_TopLevel|LessThan1~55   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~57 ; |DefaultCompareModule_TopLevel|LessThan1~57   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~59 ; |DefaultCompareModule_TopLevel|LessThan1~59   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~61 ; |DefaultCompareModule_TopLevel|LessThan1~61   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan1~62 ; |DefaultCompareModule_TopLevel|LessThan1~62   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan3~1  ; |DefaultCompareModule_TopLevel|LessThan3~1    ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~3  ; |DefaultCompareModule_TopLevel|LessThan3~3    ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~5  ; |DefaultCompareModule_TopLevel|LessThan3~5    ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~7  ; |DefaultCompareModule_TopLevel|LessThan3~7    ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~9  ; |DefaultCompareModule_TopLevel|LessThan3~9    ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~11 ; |DefaultCompareModule_TopLevel|LessThan3~11   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~13 ; |DefaultCompareModule_TopLevel|LessThan3~13   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~15 ; |DefaultCompareModule_TopLevel|LessThan3~15   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~17 ; |DefaultCompareModule_TopLevel|LessThan3~17   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~19 ; |DefaultCompareModule_TopLevel|LessThan3~19   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~21 ; |DefaultCompareModule_TopLevel|LessThan3~21   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~23 ; |DefaultCompareModule_TopLevel|LessThan3~23   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~25 ; |DefaultCompareModule_TopLevel|LessThan3~25   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~27 ; |DefaultCompareModule_TopLevel|LessThan3~27   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~29 ; |DefaultCompareModule_TopLevel|LessThan3~29   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~31 ; |DefaultCompareModule_TopLevel|LessThan3~31   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~33 ; |DefaultCompareModule_TopLevel|LessThan3~33   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~35 ; |DefaultCompareModule_TopLevel|LessThan3~35   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~37 ; |DefaultCompareModule_TopLevel|LessThan3~37   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~39 ; |DefaultCompareModule_TopLevel|LessThan3~39   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~41 ; |DefaultCompareModule_TopLevel|LessThan3~41   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~43 ; |DefaultCompareModule_TopLevel|LessThan3~43   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~45 ; |DefaultCompareModule_TopLevel|LessThan3~45   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~47 ; |DefaultCompareModule_TopLevel|LessThan3~47   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~49 ; |DefaultCompareModule_TopLevel|LessThan3~49   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~51 ; |DefaultCompareModule_TopLevel|LessThan3~51   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~53 ; |DefaultCompareModule_TopLevel|LessThan3~53   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~55 ; |DefaultCompareModule_TopLevel|LessThan3~55   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~57 ; |DefaultCompareModule_TopLevel|LessThan3~57   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~59 ; |DefaultCompareModule_TopLevel|LessThan3~59   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~61 ; |DefaultCompareModule_TopLevel|LessThan3~61   ; cout             ;
+; |DefaultCompareModule_TopLevel|LessThan3~62 ; |DefaultCompareModule_TopLevel|LessThan3~62   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~0  ; |DefaultCompareModule_TopLevel|LessThan0~0    ; combout          ;
 ; |DefaultCompareModule_TopLevel|Equal0~2     ; |DefaultCompareModule_TopLevel|Equal0~2       ; combout          ;
 ; |DefaultCompareModule_TopLevel|Equal0~3     ; |DefaultCompareModule_TopLevel|Equal0~3       ; combout          ;
 ; |DefaultCompareModule_TopLevel|Equal0~4     ; |DefaultCompareModule_TopLevel|Equal0~4       ; combout          ;
 ; |DefaultCompareModule_TopLevel|Equal0~5     ; |DefaultCompareModule_TopLevel|Equal0~5       ; combout          ;
 ; |DefaultCompareModule_TopLevel|Equal0~6     ; |DefaultCompareModule_TopLevel|Equal0~6       ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~1  ; |DefaultCompareModule_TopLevel|LessThan0~1    ; combout          ;
 ; |DefaultCompareModule_TopLevel|Equal0~7     ; |DefaultCompareModule_TopLevel|Equal0~7       ; combout          ;
 ; |DefaultCompareModule_TopLevel|Equal0~8     ; |DefaultCompareModule_TopLevel|Equal0~8       ; combout          ;
 ; |DefaultCompareModule_TopLevel|Equal0~9     ; |DefaultCompareModule_TopLevel|Equal0~9       ; combout          ;
 ; |DefaultCompareModule_TopLevel|Equal0~10    ; |DefaultCompareModule_TopLevel|Equal0~10      ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~0  ; |DefaultCompareModule_TopLevel|LessThan2~0    ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~1  ; |DefaultCompareModule_TopLevel|LessThan2~1    ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~2  ; |DefaultCompareModule_TopLevel|LessThan2~2    ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~3  ; |DefaultCompareModule_TopLevel|LessThan2~3    ; combout          ;
 ; |DefaultCompareModule_TopLevel|Equal0~11    ; |DefaultCompareModule_TopLevel|Equal0~11      ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~4  ; |DefaultCompareModule_TopLevel|LessThan2~4    ; combout          ;
 ; |DefaultCompareModule_TopLevel|Equal0~12    ; |DefaultCompareModule_TopLevel|Equal0~12      ; combout          ;
 ; |DefaultCompareModule_TopLevel|Equal0~13    ; |DefaultCompareModule_TopLevel|Equal0~13      ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~2  ; |DefaultCompareModule_TopLevel|LessThan0~2    ; combout          ;
 ; |DefaultCompareModule_TopLevel|Equal0~14    ; |DefaultCompareModule_TopLevel|Equal0~14      ; combout          ;
 ; |DefaultCompareModule_TopLevel|Equal0~15    ; |DefaultCompareModule_TopLevel|Equal0~15      ; combout          ;
 ; |DefaultCompareModule_TopLevel|Equal0~16    ; |DefaultCompareModule_TopLevel|Equal0~16      ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~3  ; |DefaultCompareModule_TopLevel|LessThan0~3    ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~4  ; |DefaultCompareModule_TopLevel|LessThan0~4    ; combout          ;
 ; |DefaultCompareModule_TopLevel|Equal0~17    ; |DefaultCompareModule_TopLevel|Equal0~17      ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~5  ; |DefaultCompareModule_TopLevel|LessThan0~5    ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~6  ; |DefaultCompareModule_TopLevel|LessThan0~6    ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~7  ; |DefaultCompareModule_TopLevel|LessThan0~7    ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~8  ; |DefaultCompareModule_TopLevel|LessThan0~8    ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~9  ; |DefaultCompareModule_TopLevel|LessThan0~9    ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~10 ; |DefaultCompareModule_TopLevel|LessThan0~10   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~11 ; |DefaultCompareModule_TopLevel|LessThan0~11   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~12 ; |DefaultCompareModule_TopLevel|LessThan0~12   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~13 ; |DefaultCompareModule_TopLevel|LessThan0~13   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~14 ; |DefaultCompareModule_TopLevel|LessThan0~14   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~15 ; |DefaultCompareModule_TopLevel|LessThan0~15   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~16 ; |DefaultCompareModule_TopLevel|LessThan0~16   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~17 ; |DefaultCompareModule_TopLevel|LessThan0~17   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~18 ; |DefaultCompareModule_TopLevel|LessThan0~18   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~19 ; |DefaultCompareModule_TopLevel|LessThan0~19   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~20 ; |DefaultCompareModule_TopLevel|LessThan0~20   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~21 ; |DefaultCompareModule_TopLevel|LessThan0~21   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~22 ; |DefaultCompareModule_TopLevel|LessThan0~22   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~23 ; |DefaultCompareModule_TopLevel|LessThan0~23   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~24 ; |DefaultCompareModule_TopLevel|LessThan0~24   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~25 ; |DefaultCompareModule_TopLevel|LessThan0~25   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~26 ; |DefaultCompareModule_TopLevel|LessThan0~26   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~28 ; |DefaultCompareModule_TopLevel|LessThan0~28   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~29 ; |DefaultCompareModule_TopLevel|LessThan0~29   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~30 ; |DefaultCompareModule_TopLevel|LessThan0~30   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~31 ; |DefaultCompareModule_TopLevel|LessThan0~31   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan0~32 ; |DefaultCompareModule_TopLevel|LessThan0~32   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~5  ; |DefaultCompareModule_TopLevel|LessThan2~5    ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~6  ; |DefaultCompareModule_TopLevel|LessThan2~6    ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~7  ; |DefaultCompareModule_TopLevel|LessThan2~7    ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~8  ; |DefaultCompareModule_TopLevel|LessThan2~8    ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~9  ; |DefaultCompareModule_TopLevel|LessThan2~9    ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~10 ; |DefaultCompareModule_TopLevel|LessThan2~10   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~11 ; |DefaultCompareModule_TopLevel|LessThan2~11   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~12 ; |DefaultCompareModule_TopLevel|LessThan2~12   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~13 ; |DefaultCompareModule_TopLevel|LessThan2~13   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~14 ; |DefaultCompareModule_TopLevel|LessThan2~14   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~15 ; |DefaultCompareModule_TopLevel|LessThan2~15   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~16 ; |DefaultCompareModule_TopLevel|LessThan2~16   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~17 ; |DefaultCompareModule_TopLevel|LessThan2~17   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~18 ; |DefaultCompareModule_TopLevel|LessThan2~18   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~19 ; |DefaultCompareModule_TopLevel|LessThan2~19   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~20 ; |DefaultCompareModule_TopLevel|LessThan2~20   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~21 ; |DefaultCompareModule_TopLevel|LessThan2~21   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~23 ; |DefaultCompareModule_TopLevel|LessThan2~23   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~24 ; |DefaultCompareModule_TopLevel|LessThan2~24   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~26 ; |DefaultCompareModule_TopLevel|LessThan2~26   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~27 ; |DefaultCompareModule_TopLevel|LessThan2~27   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~28 ; |DefaultCompareModule_TopLevel|LessThan2~28   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~29 ; |DefaultCompareModule_TopLevel|LessThan2~29   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~30 ; |DefaultCompareModule_TopLevel|LessThan2~30   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~31 ; |DefaultCompareModule_TopLevel|LessThan2~31   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~32 ; |DefaultCompareModule_TopLevel|LessThan2~32   ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~33 ; |DefaultCompareModule_TopLevel|LessThan2~33   ; combout          ;
 ; |DefaultCompareModule_TopLevel|Equal0~18    ; |DefaultCompareModule_TopLevel|Equal0~18      ; combout          ;
-; |DefaultCompareModule_TopLevel|Equal0~19    ; |DefaultCompareModule_TopLevel|Equal0~19      ; combout          ;
-; |DefaultCompareModule_TopLevel|Equal0~20    ; |DefaultCompareModule_TopLevel|Equal0~20      ; combout          ;
 ; |DefaultCompareModule_TopLevel|EQ           ; |DefaultCompareModule_TopLevel|EQ             ; padio            ;
 ; |DefaultCompareModule_TopLevel|GTS          ; |DefaultCompareModule_TopLevel|GTS            ; padio            ;
 ; |DefaultCompareModule_TopLevel|GTU          ; |DefaultCompareModule_TopLevel|GTU            ; padio            ;
 ; |DefaultCompareModule_TopLevel|LTS          ; |DefaultCompareModule_TopLevel|LTS            ; padio            ;
 ; |DefaultCompareModule_TopLevel|LTU          ; |DefaultCompareModule_TopLevel|LTU            ; padio            ;
 ; |DefaultCompareModule_TopLevel|NE           ; |DefaultCompareModule_TopLevel|NE             ; padio            ;
-; |DefaultCompareModule_TopLevel|Lhs[0]       ; |DefaultCompareModule_TopLevel|Lhs[0]~corein  ; combout          ;
-; |DefaultCompareModule_TopLevel|Lhs[1]       ; |DefaultCompareModule_TopLevel|Lhs[1]~corein  ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[1]       ; |DefaultCompareModule_TopLevel|Rhs[1]~corein  ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[0]       ; |DefaultCompareModule_TopLevel|Rhs[0]~corein  ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[27]      ; |DefaultCompareModule_TopLevel|Lhs[27]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[28]      ; |DefaultCompareModule_TopLevel|Lhs[28]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[28]      ; |DefaultCompareModule_TopLevel|Rhs[28]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[27]      ; |DefaultCompareModule_TopLevel|Rhs[27]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[25]      ; |DefaultCompareModule_TopLevel|Lhs[25]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[25]      ; |DefaultCompareModule_TopLevel|Rhs[25]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[24]      ; |DefaultCompareModule_TopLevel|Lhs[24]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[24]      ; |DefaultCompareModule_TopLevel|Rhs[24]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[26]      ; |DefaultCompareModule_TopLevel|Lhs[26]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[26]      ; |DefaultCompareModule_TopLevel|Rhs[26]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[23]      ; |DefaultCompareModule_TopLevel|Lhs[23]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[23]      ; |DefaultCompareModule_TopLevel|Rhs[23]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[22]      ; |DefaultCompareModule_TopLevel|Lhs[22]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[22]      ; |DefaultCompareModule_TopLevel|Rhs[22]~corein ; combout          ;
 ; |DefaultCompareModule_TopLevel|Lhs[2]       ; |DefaultCompareModule_TopLevel|Lhs[2]~corein  ; combout          ;
 ; |DefaultCompareModule_TopLevel|Lhs[3]       ; |DefaultCompareModule_TopLevel|Lhs[3]~corein  ; combout          ;
 ; |DefaultCompareModule_TopLevel|Rhs[3]       ; |DefaultCompareModule_TopLevel|Rhs[3]~corein  ; combout          ;
 ; |DefaultCompareModule_TopLevel|Rhs[2]       ; |DefaultCompareModule_TopLevel|Rhs[2]~corein  ; combout          ;
-; |DefaultCompareModule_TopLevel|Lhs[4]       ; |DefaultCompareModule_TopLevel|Lhs[4]~corein  ; combout          ;
-; |DefaultCompareModule_TopLevel|Lhs[5]       ; |DefaultCompareModule_TopLevel|Lhs[5]~corein  ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[5]       ; |DefaultCompareModule_TopLevel|Rhs[5]~corein  ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[4]       ; |DefaultCompareModule_TopLevel|Rhs[4]~corein  ; combout          ;
-; |DefaultCompareModule_TopLevel|Lhs[6]       ; |DefaultCompareModule_TopLevel|Lhs[6]~corein  ; combout          ;
-; |DefaultCompareModule_TopLevel|Lhs[7]       ; |DefaultCompareModule_TopLevel|Lhs[7]~corein  ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[7]       ; |DefaultCompareModule_TopLevel|Rhs[7]~corein  ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[6]       ; |DefaultCompareModule_TopLevel|Rhs[6]~corein  ; combout          ;
 ; |DefaultCompareModule_TopLevel|Lhs[8]       ; |DefaultCompareModule_TopLevel|Lhs[8]~corein  ; combout          ;
 ; |DefaultCompareModule_TopLevel|Lhs[9]       ; |DefaultCompareModule_TopLevel|Lhs[9]~corein  ; combout          ;
 ; |DefaultCompareModule_TopLevel|Rhs[9]       ; |DefaultCompareModule_TopLevel|Rhs[9]~corein  ; combout          ;
 ; |DefaultCompareModule_TopLevel|Rhs[8]       ; |DefaultCompareModule_TopLevel|Rhs[8]~corein  ; combout          ;
-; |DefaultCompareModule_TopLevel|Lhs[10]      ; |DefaultCompareModule_TopLevel|Lhs[10]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Lhs[11]      ; |DefaultCompareModule_TopLevel|Lhs[11]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[11]      ; |DefaultCompareModule_TopLevel|Rhs[11]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[10]      ; |DefaultCompareModule_TopLevel|Rhs[10]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Lhs[12]      ; |DefaultCompareModule_TopLevel|Lhs[12]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Lhs[13]      ; |DefaultCompareModule_TopLevel|Lhs[13]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[13]      ; |DefaultCompareModule_TopLevel|Rhs[13]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[12]      ; |DefaultCompareModule_TopLevel|Rhs[12]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Lhs[14]      ; |DefaultCompareModule_TopLevel|Lhs[14]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Lhs[15]      ; |DefaultCompareModule_TopLevel|Lhs[15]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[15]      ; |DefaultCompareModule_TopLevel|Rhs[15]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[14]      ; |DefaultCompareModule_TopLevel|Rhs[14]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Lhs[16]      ; |DefaultCompareModule_TopLevel|Lhs[16]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Lhs[17]      ; |DefaultCompareModule_TopLevel|Lhs[17]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[17]      ; |DefaultCompareModule_TopLevel|Rhs[17]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[16]      ; |DefaultCompareModule_TopLevel|Rhs[16]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Lhs[18]      ; |DefaultCompareModule_TopLevel|Lhs[18]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Lhs[19]      ; |DefaultCompareModule_TopLevel|Lhs[19]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[19]      ; |DefaultCompareModule_TopLevel|Rhs[19]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[18]      ; |DefaultCompareModule_TopLevel|Rhs[18]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[6]       ; |DefaultCompareModule_TopLevel|Lhs[6]~corein  ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[7]       ; |DefaultCompareModule_TopLevel|Lhs[7]~corein  ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[7]       ; |DefaultCompareModule_TopLevel|Rhs[7]~corein  ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[6]       ; |DefaultCompareModule_TopLevel|Rhs[6]~corein  ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[4]       ; |DefaultCompareModule_TopLevel|Lhs[4]~corein  ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[5]       ; |DefaultCompareModule_TopLevel|Lhs[5]~corein  ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[5]       ; |DefaultCompareModule_TopLevel|Rhs[5]~corein  ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[4]       ; |DefaultCompareModule_TopLevel|Rhs[4]~corein  ; combout          ;
 ; |DefaultCompareModule_TopLevel|Lhs[20]      ; |DefaultCompareModule_TopLevel|Lhs[20]~corein ; combout          ;
 ; |DefaultCompareModule_TopLevel|Lhs[21]      ; |DefaultCompareModule_TopLevel|Lhs[21]~corein ; combout          ;
 ; |DefaultCompareModule_TopLevel|Rhs[21]      ; |DefaultCompareModule_TopLevel|Rhs[21]~corein ; combout          ;
 ; |DefaultCompareModule_TopLevel|Rhs[20]      ; |DefaultCompareModule_TopLevel|Rhs[20]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Lhs[22]      ; |DefaultCompareModule_TopLevel|Lhs[22]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Lhs[23]      ; |DefaultCompareModule_TopLevel|Lhs[23]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[23]      ; |DefaultCompareModule_TopLevel|Rhs[23]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[22]      ; |DefaultCompareModule_TopLevel|Rhs[22]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Lhs[24]      ; |DefaultCompareModule_TopLevel|Lhs[24]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Lhs[25]      ; |DefaultCompareModule_TopLevel|Lhs[25]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[25]      ; |DefaultCompareModule_TopLevel|Rhs[25]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[24]      ; |DefaultCompareModule_TopLevel|Rhs[24]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Lhs[26]      ; |DefaultCompareModule_TopLevel|Lhs[26]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Lhs[27]      ; |DefaultCompareModule_TopLevel|Lhs[27]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[27]      ; |DefaultCompareModule_TopLevel|Rhs[27]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[26]      ; |DefaultCompareModule_TopLevel|Rhs[26]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Lhs[28]      ; |DefaultCompareModule_TopLevel|Lhs[28]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Lhs[29]      ; |DefaultCompareModule_TopLevel|Lhs[29]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[29]      ; |DefaultCompareModule_TopLevel|Rhs[29]~corein ; combout          ;
-; |DefaultCompareModule_TopLevel|Rhs[28]      ; |DefaultCompareModule_TopLevel|Rhs[28]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[18]      ; |DefaultCompareModule_TopLevel|Lhs[18]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[19]      ; |DefaultCompareModule_TopLevel|Lhs[19]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[19]      ; |DefaultCompareModule_TopLevel|Rhs[19]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[18]      ; |DefaultCompareModule_TopLevel|Rhs[18]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[16]      ; |DefaultCompareModule_TopLevel|Lhs[16]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[17]      ; |DefaultCompareModule_TopLevel|Lhs[17]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[17]      ; |DefaultCompareModule_TopLevel|Rhs[17]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[16]      ; |DefaultCompareModule_TopLevel|Rhs[16]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[14]      ; |DefaultCompareModule_TopLevel|Lhs[14]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[15]      ; |DefaultCompareModule_TopLevel|Lhs[15]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[15]      ; |DefaultCompareModule_TopLevel|Rhs[15]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[14]      ; |DefaultCompareModule_TopLevel|Rhs[14]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[12]      ; |DefaultCompareModule_TopLevel|Lhs[12]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[13]      ; |DefaultCompareModule_TopLevel|Lhs[13]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[13]      ; |DefaultCompareModule_TopLevel|Rhs[13]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[12]      ; |DefaultCompareModule_TopLevel|Rhs[12]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[10]      ; |DefaultCompareModule_TopLevel|Lhs[10]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[11]      ; |DefaultCompareModule_TopLevel|Lhs[11]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[11]      ; |DefaultCompareModule_TopLevel|Rhs[11]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[10]      ; |DefaultCompareModule_TopLevel|Rhs[10]~corein ; combout          ;
 ; |DefaultCompareModule_TopLevel|Lhs[30]      ; |DefaultCompareModule_TopLevel|Lhs[30]~corein ; combout          ;
 ; |DefaultCompareModule_TopLevel|Lhs[31]      ; |DefaultCompareModule_TopLevel|Lhs[31]~corein ; combout          ;
 ; |DefaultCompareModule_TopLevel|Rhs[31]      ; |DefaultCompareModule_TopLevel|Rhs[31]~corein ; combout          ;
 ; |DefaultCompareModule_TopLevel|Rhs[30]      ; |DefaultCompareModule_TopLevel|Rhs[30]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[29]      ; |DefaultCompareModule_TopLevel|Lhs[29]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[29]      ; |DefaultCompareModule_TopLevel|Rhs[29]~corein ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[0]       ; |DefaultCompareModule_TopLevel|Lhs[0]~corein  ; combout          ;
+; |DefaultCompareModule_TopLevel|Lhs[1]       ; |DefaultCompareModule_TopLevel|Lhs[1]~corein  ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[1]       ; |DefaultCompareModule_TopLevel|Rhs[1]~corein  ; combout          ;
+; |DefaultCompareModule_TopLevel|Rhs[0]       ; |DefaultCompareModule_TopLevel|Rhs[0]~corein  ; combout          ;
 +---------------------------------------------+-----------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 1 during simulation.
-+-------------------------------------------------+
-; Missing 1-Value Coverage                        ;
-+-----------+------------------+------------------+
-; Node Name ; Output Port Name ; Output Port Type ;
-+-----------+------------------+------------------+
++--------------------------------------------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                                                     ;
++---------------------------------------------+---------------------------------------------+------------------+
+; Node Name                                   ; Output Port Name                            ; Output Port Type ;
++---------------------------------------------+---------------------------------------------+------------------+
+; |DefaultCompareModule_TopLevel|LessThan0~27 ; |DefaultCompareModule_TopLevel|LessThan0~27 ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~22 ; |DefaultCompareModule_TopLevel|LessThan2~22 ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~25 ; |DefaultCompareModule_TopLevel|LessThan2~25 ; combout          ;
++---------------------------------------------+---------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 0 during simulation.
-+-------------------------------------------------+
-; Missing 0-Value Coverage                        ;
-+-----------+------------------+------------------+
-; Node Name ; Output Port Name ; Output Port Type ;
-+-----------+------------------+------------------+
++--------------------------------------------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                                                     ;
++---------------------------------------------+---------------------------------------------+------------------+
+; Node Name                                   ; Output Port Name                            ; Output Port Type ;
++---------------------------------------------+---------------------------------------------+------------------+
+; |DefaultCompareModule_TopLevel|LessThan0~27 ; |DefaultCompareModule_TopLevel|LessThan0~27 ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~22 ; |DefaultCompareModule_TopLevel|LessThan2~22 ; combout          ;
+; |DefaultCompareModule_TopLevel|LessThan2~25 ; |DefaultCompareModule_TopLevel|LessThan2~25 ; combout          ;
++---------------------------------------------+---------------------------------------------+------------------+
 
 
 +---------------------+
@@ -312,7 +380,7 @@ Info: Running Quartus II Simulator
     Info: programming logic devices manufactured by Altera and sold by 
     Info: Altera or its authorized distributors.  Please refer to the 
     Info: applicable agreement for further details.
-    Info: Processing started: Sun Aug 18 15:26:19 2024
+    Info: Processing started: Sun Aug 18 15:56:33 2024
 Info: Command: quartus_sim C:\code\qusoc\rtl\rtl.hdl\VHDL.qpf --read_settings_files=on --write_settings_files=off --overwrite_waveform=on -c VHDL
 Info: Using vector source file "Waveforms/DefaultCompareModule.vwf"
 Info: Overwriting simulation input file with simulation results
@@ -320,13 +388,13 @@ Info: Overwriting simulation input file with simulation results
 Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
     Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
 Info: Simulation partitioned into 1 sub-simulations
-Info: Simulation coverage is     100.00 %
-Info: Number of transitions in simulation is 768
+Info: Simulation coverage is      98.62 %
+Info: Number of transitions in simulation is 1008
 Info: Vector file DefaultCompareModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
 Info: Quartus II Simulator was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 163 megabytes
-    Info: Processing ended: Sun Aug 18 15:26:22 2024
+    Info: Peak virtual memory: 164 megabytes
+    Info: Processing ended: Sun Aug 18 15:56:36 2024
     Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:12
+    Info: Total CPU time (on all processors): 00:00:08
 
 

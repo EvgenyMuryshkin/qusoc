@@ -38,8 +38,8 @@ module RTLBitArrayCompareSignedEqModule_TopLevel
 	wire signed [31: 0] Inputs_LHS;
 	wire signed [31: 0] Inputs_RHS;
 	wire RTLBitArrayCompareModules_L40F30T54_Expr;
-	wire [31: 0] RTLBitArrayCompareModules_L40F30T54_ExprLhs;
-	wire [31: 0] RTLBitArrayCompareModules_L40F30T54_ExprRhs;
+	wire signed [31: 0] RTLBitArrayCompareModules_L40F30T54_ExprLhs;
+	wire signed [31: 0] RTLBitArrayCompareModules_L40F30T54_ExprRhs;
 	assign RTLBitArrayCompareModules_L40F30T54_Expr = RTLBitArrayCompareModules_L40F30T54_ExprLhs == RTLBitArrayCompareModules_L40F30T54_ExprRhs ? 1'b1 : 1'b0;
 	assign RTLBitArrayCompareModules_L40F30T54_ExprLhs = Inputs_LHS;
 	assign RTLBitArrayCompareModules_L40F30T54_ExprRhs = Inputs_RHS;
