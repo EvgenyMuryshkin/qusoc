@@ -139,6 +139,7 @@ namespace QuSoC
 
         void WriteLine(string line)
         {
+            Trace.WriteLine(line);
             Console.WriteLine(line);
         }
 

@@ -70,7 +70,7 @@ namespace AXISoC
             }
         }
         RTLBitArray addressBits => new RTLBitArray(CPU.MemAddress)[1, 0];
-        RTLBitArray internalByte => addressBits << 3;
+        RTLBitArray internalByte => addressBits << 3;//dbg
 
         RTLBitArray wstrb => (memAccessWSTRB << addressBits)[3, 0];
         RTLBitArray internalWriteData => (CPU.MemWriteData << internalByte).Resized(32);

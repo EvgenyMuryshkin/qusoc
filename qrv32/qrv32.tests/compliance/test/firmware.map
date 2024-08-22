@@ -8,41 +8,41 @@ RAM              0x0000000000000000 0x0000000000008000 xrw
 Linker script and memory map
 
 
-.text           0x0000000000000000      0xee0
+.text           0x0000000000000000      0xf7c
                 0x0000000000000000                . = ALIGN (0x4)
  *(.text)
- .text          0x0000000000000000      0xee0 /tmp/cckPtqhX.o
-                0x0000000000000ee0                . = ALIGN (0x4)
-                0x0000000000000ee0                _etext = .
-                0x0000000000000ee0                _sidata = _etext
+ .text          0x0000000000000000      0xf7c /tmp/ccRtHx8h.o
+                0x0000000000000f7c                . = ALIGN (0x4)
+                0x0000000000000f7c                _etext = .
+                0x0000000000000f7c                _sidata = _etext
 
-.data           0x0000000000000f00      0x20c
-                0x0000000000000f00                . = ALIGN (0x4)
+.data           0x0000000000001000      0x20c
+                0x0000000000001000                . = ALIGN (0x4)
  *(.data)
- .data          0x0000000000000f00      0x20c /tmp/cckPtqhX.o
-                0x0000000000000f00                begin_signature
-                0x0000000000000f90                end_signature
-                0x0000000000001000                begin_regstate
-                0x0000000000001100                end_regstate
-                0x000000000000110c                . = ALIGN (0x4)
-                0x000000000000110c                _edata = .
-LOAD /tmp/cckPtqhX.o
+ .data          0x0000000000001000      0x20c /tmp/ccRtHx8h.o
+                0x0000000000001000                begin_signature
+                0x0000000000001090                end_signature
+                0x0000000000001100                begin_regstate
+                0x0000000000001200                end_regstate
+                0x000000000000120c                . = ALIGN (0x4)
+                0x000000000000120c                _edata = .
+LOAD /tmp/ccRtHx8h.o
 OUTPUT(firmware.elf elf32-littleriscv)
 
-.tohost         0x0000000000001200      0x108
- .tohost        0x0000000000001200      0x108 /tmp/cckPtqhX.o
-                0x0000000000001200                tohost
-                0x0000000000001300                fromhost
+.tohost         0x0000000000001300      0x108
+ .tohost        0x0000000000001300      0x108 /tmp/ccRtHx8h.o
+                0x0000000000001300                tohost
+                0x0000000000001400                fromhost
 
-.bss            0x0000000000001308        0x0
- .bss           0x0000000000001308        0x0 /tmp/cckPtqhX.o
+.bss            0x0000000000001408        0x0
+ .bss           0x0000000000001408        0x0 /tmp/ccRtHx8h.o
 
 Cross Reference Table
 
 Symbol                                            File
-begin_regstate                                    /tmp/cckPtqhX.o
-begin_signature                                   /tmp/cckPtqhX.o
-end_regstate                                      /tmp/cckPtqhX.o
-end_signature                                     /tmp/cckPtqhX.o
-fromhost                                          /tmp/cckPtqhX.o
-tohost                                            /tmp/cckPtqhX.o
+begin_regstate                                    /tmp/ccRtHx8h.o
+begin_signature                                   /tmp/ccRtHx8h.o
+end_regstate                                      /tmp/ccRtHx8h.o
+end_signature                                     /tmp/ccRtHx8h.o
+fromhost                                          /tmp/ccRtHx8h.o
+tohost                                            /tmp/ccRtHx8h.o

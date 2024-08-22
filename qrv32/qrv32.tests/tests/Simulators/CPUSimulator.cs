@@ -45,7 +45,7 @@ namespace QRV32.Tests
             RunAllInstructions();
         }
 
-        public void RunAllInstructions(uint maxInstructions = 1000)
+        public void RunAllInstructions(uint maxInstructions = 5000)
         {
             while (--maxInstructions != 0)
             {

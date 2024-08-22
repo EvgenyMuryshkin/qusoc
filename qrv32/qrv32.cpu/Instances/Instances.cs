@@ -7,4 +7,8 @@
     public class DefaultCompareModule : CompareModule
     {
     }
+
+    public class DefaultALUModule : ALUModule
+    {
+    }
 }

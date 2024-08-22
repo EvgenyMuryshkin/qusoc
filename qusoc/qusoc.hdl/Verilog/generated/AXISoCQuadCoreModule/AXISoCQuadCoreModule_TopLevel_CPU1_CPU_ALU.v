@@ -72,8 +72,8 @@ module AXISoCQuadCoreModule_TopLevel_CPU1_CPU_ALU
 	wire [31: 0] ALUModule_L22F38T61_Expr_2;
 	wire [31: 0] ALUModule_L23F37T63_Expr;
 	wire [31: 0] ALUModule_L23F37T63_Expr_1;
-	wire [31: 0] ALUModule_L25F37T72_Expr;
-	wire [31: 0] ALUModule_L25F37T72_Expr_1;
+	wire signed [31: 0] ALUModule_L25F37T72_Expr;
+	wire signed [31: 0] ALUModule_L25F37T72_Expr_1;
 	wire [31: 0] ALUModule_L24F37T74_Expr;
 	wire [31: 0] ALUModule_L24F37T74_Expr_1;
 	wire signed [32: 0] ALUModule_L15F46T87_Expr;
@@ -86,7 +86,7 @@ module AXISoCQuadCoreModule_TopLevel_CPU1_CPU_ALU
 	assign ALUModule_L21F37T60_Expr = ALUModule_L21F37T60_Expr_1 | ALUModule_L21F37T60_Expr_2;
 	assign ALUModule_L22F38T61_Expr = ALUModule_L22F38T61_Expr_1 ^ ALUModule_L22F38T61_Expr_2;
 	assign ALUModule_L23F37T63_Expr = (ALUModule_L23F37T63_Expr_1 << Inputs_SHAMT);
-	assign ALUModule_L25F37T72_Expr = (ALUModule_L25F37T72_Expr_1 >> Inputs_SHAMT);
+	assign ALUModule_L25F37T72_Expr = (ALUModule_L25F37T72_Expr_1 >>> Inputs_SHAMT);
 	assign ALUModule_L24F37T74_Expr = (ALUModule_L24F37T74_Expr_1 >> Inputs_SHAMT);
 	assign ALUModule_L15F46T87_Expr = ALUModule_L15F46T87_Expr_1 + ALUModule_L15F46T87_Expr_2;
 	assign ALUModule_L16F46T111_Expr = ALUModule_L16F46T111_Expr_1 - ALUModule_L16F46T111_Expr_2;

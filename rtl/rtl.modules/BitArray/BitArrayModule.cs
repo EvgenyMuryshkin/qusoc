@@ -38,4 +38,15 @@ namespace RTL.Modules
     {
         public RTLBitArray CtorMux => Inputs.Bit == 0 ? new RTLBitArray(RTLBitArrayInitType.MSB, "00000000") : new RTLBitArray(RTLBitArrayInitType.MSB, "01000000");
     }
+
+    public class BitArraySHInputs
+    {
+        public RTLBitArray Op = new RTLBitArray().Resized(32);
+        public RTLBitArray By = new RTLBitArray().Resized(5);
+    }
+
+    public class BitArraySHRAModule : RTLCombinationalModule<BitArraySHInputs>
+    {
+        public RTLBitArray Res => (Inputs.Op.Signed() >> Inputs.By)[31,0];
+    }
 }

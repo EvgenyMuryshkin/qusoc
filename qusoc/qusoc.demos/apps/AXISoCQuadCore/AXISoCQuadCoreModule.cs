@@ -175,7 +175,7 @@ namespace AXISoC
                 iM2S = cpu0Interconnect.oM2S[4],
                 iS2M = cpu1Interconnect.oS2M[1],
                 
-            });//dbg
+            });
 
             cpu0Interconnect.Schedule(() => new()
             {

@@ -63,6 +63,7 @@
 		sw _R, 0(_TMP); \
 		srli _R, _R, 8; \
 		sw _R, 0(_TMP); \
+		li _R, _I; \
 
 		//li _R, _I; \
 		//sw _R, 4(_TMP); \

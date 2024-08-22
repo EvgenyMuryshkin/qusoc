@@ -1,20 +1,35 @@
+Archive member included to satisfy reference by file (symbol)
+
+/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(mulsf3.o)
+                              /tmp/ccfbEXfR.o (__mulsf3)
+/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixunssfsi.o)
+                              /tmp/ccfbEXfR.o (__fixunssfsi)
+/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatunsisf.o)
+                              /tmp/ccfbEXfR.o (__floatunsisf)
+/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(muldi3.o)
+                              /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(mulsf3.o) (__mulsi3)
+/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clzsi2.o)
+                              /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(mulsf3.o) (__clzsi2)
+/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clz.o)
+                              /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clzsi2.o) (__clz_tab)
 
 Discarded input sections
 
- .group         0x00000000        0xc /tmp/ccWVXPQH.o
- .group         0x00000000        0xc /tmp/ccWVXPQH.o
- .group         0x00000000        0xc /tmp/ccWVXPQH.o
- .group         0x00000000        0xc /tmp/ccWVXPQH.o
- .group         0x00000000        0xc /tmp/ccWVXPQH.o
- .group         0x00000000        0x8 /tmp/ccWVXPQH.o
- .group         0x00000000        0xc /tmp/ccWVXPQH.o
- .group         0x00000000        0xc /tmp/ccWVXPQH.o
- .group         0x00000000        0x8 /tmp/ccWVXPQH.o
- .group         0x00000000        0xc /tmp/ccWVXPQH.o
- .group         0x00000000        0xc /tmp/ccWVXPQH.o
- .group         0x00000000        0xc /tmp/ccWVXPQH.o
- .group         0x00000000        0xc /tmp/ccWVXPQH.o
- .group         0x00000000        0xc /tmp/ccWVXPQH.o
+ .group         0x00000000        0xc /tmp/ccfbEXfR.o
+ .group         0x00000000        0xc /tmp/ccfbEXfR.o
+ .group         0x00000000        0xc /tmp/ccfbEXfR.o
+ .group         0x00000000        0xc /tmp/ccfbEXfR.o
+ .group         0x00000000        0xc /tmp/ccfbEXfR.o
+ .group         0x00000000        0x8 /tmp/ccfbEXfR.o
+ .group         0x00000000        0xc /tmp/ccfbEXfR.o
+ .group         0x00000000        0xc /tmp/ccfbEXfR.o
+ .group         0x00000000        0xc /tmp/ccfbEXfR.o
+ .group         0x00000000        0x8 /tmp/ccfbEXfR.o
+ .group         0x00000000        0xc /tmp/ccfbEXfR.o
+ .group         0x00000000        0xc /tmp/ccfbEXfR.o
+ .group         0x00000000        0xc /tmp/ccfbEXfR.o
+ .group         0x00000000        0xc /tmp/ccfbEXfR.o
+ .group         0x00000000        0xc /tmp/ccfbEXfR.o
 
 Memory Configuration
 
@@ -25,138 +40,175 @@ RAM              0x00000000         0x00008000         xrw
 Linker script and memory map
 
 
-.text           0x00000000      0x9d8
+.text           0x00000000     0x11e8
                 0x00000000                        . = ALIGN (0x4)
  *(.text)
- .text          0x00000000       0x10 /tmp/cc9mdq0F.o
- .text          0x00000010      0x310 /tmp/ccWVXPQH.o
+ .text          0x00000000       0x10 /tmp/ccOFERzR.o
+ .text          0x00000010      0x32c /tmp/ccfbEXfR.o
                 0x00000010                AXISoCQuadCore::CPU1::EntryPoint()
                 0x0000004c                AXISoCQuadCore::CPU1::HardcodedValues()
                 0x000000e8                AXISoCQuadCore::CPU1::FPUTest()
                 0x00000108                AXISoCQuadCore::CPU1::WS2812Test()
                 0x00000208                AXISoCQuadCore::CPU1::PWMTest()
- .text          0x00000320       0x28 /tmp/ccBzgvrE.o
-                0x00000320                main
- .text          0x00000348        0x0 /tmp/ccQo18FH.o
+ .text          0x0000033c       0x28 /tmp/ccoFrKDR.o
+                0x0000033c                main
+ .text          0x00000364        0x0 /tmp/ccgpe5mS.o
+ .text          0x00000364        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(mulsf3.o)
+ .text          0x00000364        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixunssfsi.o)
+ .text          0x00000364        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatunsisf.o)
+ .text          0x00000364       0x24 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(muldi3.o)
+                0x00000364                __mulsi3
+ .text          0x00000388        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clzsi2.o)
+ .text          0x00000388        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clz.o)
  *(.text*)
  .text._ZN5qusoc4Wait6ClocksEPVmm
-                0x00000348       0x4c /tmp/ccWVXPQH.o
-                0x00000348                qusoc::Wait::Clocks(unsigned long volatile*, unsigned long)
+                0x00000388       0x4c /tmp/ccfbEXfR.o
+                0x00000388                qusoc::Wait::Clocks(unsigned long volatile*, unsigned long)
  .text._ZN5qusoc5IWaitC2Ev
-                0x00000394       0x2c /tmp/ccWVXPQH.o
-                0x00000394                qusoc::IWait::IWait()
-                0x00000394                qusoc::IWait::IWait()
+                0x000003d4       0x30 /tmp/ccfbEXfR.o
+                0x000003d4                qusoc::IWait::IWait()
+                0x000003d4                qusoc::IWait::IWait()
  .text._ZN5qusoc7CPUWaitC2EPVm
-                0x000003c0       0x50 /tmp/ccWVXPQH.o
-                0x000003c0                qusoc::CPUWait::CPUWait(unsigned long volatile*)
-                0x000003c0                qusoc::CPUWait::CPUWait(unsigned long volatile*)
+                0x00000404       0x54 /tmp/ccfbEXfR.o
+                0x00000404                qusoc::CPUWait::CPUWait(unsigned long volatile*)
+                0x00000404                qusoc::CPUWait::CPUWait(unsigned long volatile*)
  .text._ZN5qusoc8CPU1WaitC2Ev
-                0x00000410       0x48 /tmp/ccWVXPQH.o
-                0x00000410                qusoc::CPU1Wait::CPU1Wait()
-                0x00000410                qusoc::CPU1Wait::CPU1Wait()
+                0x00000458       0x4c /tmp/ccfbEXfR.o
+                0x00000458                qusoc::CPU1Wait::CPU1Wait()
+                0x00000458                qusoc::CPU1Wait::CPU1Wait()
  .text._ZN5qusoc8CPU1Wait6ClocksEm
-                0x00000458       0x40 /tmp/ccWVXPQH.o
-                0x00000458                qusoc::CPU1Wait::Clocks(unsigned long)
+                0x000004a4       0x40 /tmp/ccfbEXfR.o
+                0x000004a4                qusoc::CPU1Wait::Clocks(unsigned long)
  .text._ZN5qusoc11HardwarePWM9UpdatePtrEv
-                0x00000498       0x34 /tmp/ccWVXPQH.o
-                0x00000498                qusoc::HardwarePWM::UpdatePtr()
+                0x000004e4       0x34 /tmp/ccfbEXfR.o
+                0x000004e4                qusoc::HardwarePWM::UpdatePtr()
  .text._ZN5qusoc11HardwarePWMC2EPVmmm
-                0x000004cc       0x70 /tmp/ccWVXPQH.o
-                0x000004cc                qusoc::HardwarePWM::HardwarePWM(unsigned long volatile*, unsigned long, unsigned long)
-                0x000004cc                qusoc::HardwarePWM::HardwarePWM(unsigned long volatile*, unsigned long, unsigned long)
+                0x00000518       0x70 /tmp/ccfbEXfR.o
+                0x00000518                qusoc::HardwarePWM::HardwarePWM(unsigned long volatile*, unsigned long, unsigned long)
+                0x00000518                qusoc::HardwarePWM::HardwarePWM(unsigned long volatile*, unsigned long, unsigned long)
+ .text._ZN5qusoc11HardwarePWM8SetRatioEf
+                0x00000588       0x90 /tmp/ccfbEXfR.o
+                0x00000588                qusoc::HardwarePWM::SetRatio(float)
  .text._ZN5qusoc14HardwareWS28124WordEm
-                0x0000053c       0x54 /tmp/ccWVXPQH.o
-                0x0000053c                qusoc::HardwareWS2812::Word(unsigned long)
+                0x00000618       0x54 /tmp/ccfbEXfR.o
+                0x00000618                qusoc::HardwareWS2812::Word(unsigned long)
  .text._ZN5qusoc14HardwareWS2812C2EPNS_5IWaitEPVm
-                0x00000590       0x40 /tmp/ccWVXPQH.o
-                0x00000590                qusoc::HardwareWS2812::HardwareWS2812(qusoc::IWait*, unsigned long volatile*)
-                0x00000590                qusoc::HardwareWS2812::HardwareWS2812(qusoc::IWait*, unsigned long volatile*)
+                0x0000066c       0x40 /tmp/ccfbEXfR.o
+                0x0000066c                qusoc::HardwareWS2812::HardwareWS2812(qusoc::IWait*, unsigned long volatile*)
+                0x0000066c                qusoc::HardwareWS2812::HardwareWS2812(qusoc::IWait*, unsigned long volatile*)
  .text._ZN5qusoc14HardwareWS28129ByteArrayEmmPh
-                0x000005d0       0xe4 /tmp/ccWVXPQH.o
-                0x000005d0                qusoc::HardwareWS2812::ByteArray(unsigned long, unsigned long, unsigned char*)
+                0x000006ac       0xe4 /tmp/ccfbEXfR.o
+                0x000006ac                qusoc::HardwareWS2812::ByteArray(unsigned long, unsigned long, unsigned char*)
  .text._ZN14AXISoCQuadCore4CPU1C2Ev
-                0x000006b4       0x34 /tmp/ccWVXPQH.o
-                0x000006b4                AXISoCQuadCore::CPU1::CPU1()
-                0x000006b4                AXISoCQuadCore::CPU1::CPU1()
+                0x00000790       0x34 /tmp/ccfbEXfR.o
+                0x00000790                AXISoCQuadCore::CPU1::CPU1()
+                0x00000790                AXISoCQuadCore::CPU1::CPU1()
+ .text.__mulsf3
+                0x000007c4      0x40c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(mulsf3.o)
+                0x000007c4                __mulsf3
+ .text.__fixunssfsi
+                0x00000bd0       0x60 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixunssfsi.o)
+                0x00000bd0                __fixunssfsi
+ .text.__floatunsisf
+                0x00000c30      0x118 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatunsisf.o)
+                0x00000c30                __floatunsisf
+ .text.__clzsi2
+                0x00000d48       0x88 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clzsi2.o)
+                0x00000d48                __clzsi2
  *(.rodata)
- .rodata        0x000006e8       0x30 /tmp/ccWVXPQH.o
+ .rodata        0x00000dd0       0x30 /tmp/ccfbEXfR.o
  *(.rodata*)
  .rodata._ZTVN5qusoc8CPU1WaitE
-                0x00000718        0xc /tmp/ccWVXPQH.o
-                0x00000718                vtable for qusoc::CPU1Wait
+                0x00000e00        0xc /tmp/ccfbEXfR.o
+                0x00000e00                vtable for qusoc::CPU1Wait
  .rodata._ZTVN5qusoc7CPUWaitE
-                0x00000724        0xc /tmp/ccWVXPQH.o
-                0x00000724                vtable for qusoc::CPUWait
+                0x00000e0c        0xc /tmp/ccfbEXfR.o
+                0x00000e0c                vtable for qusoc::CPUWait
  .rodata._ZTVN5qusoc5IWaitE
-                0x00000730        0xc /tmp/ccWVXPQH.o
-                0x00000730                vtable for qusoc::IWait
+                0x00000e18        0xc /tmp/ccfbEXfR.o
+                0x00000e18                vtable for qusoc::IWait
+ .rodata.__clz_tab
+                0x00000e24      0x100 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clz.o)
+                0x00000e24                __clz_tab
  *(.srodata)
  *(.srodata*)
  *(.eh_frame)
- .eh_frame      0x0000073c      0x260 /tmp/ccWVXPQH.o
- .eh_frame      0x0000099c       0x3c /tmp/ccBzgvrE.o
+ .eh_frame      0x00000f24      0x288 /tmp/ccfbEXfR.o
+ .eh_frame      0x000011ac       0x3c /tmp/ccoFrKDR.o
  *(.eh_frame*)
-                0x000009d8                        . = ALIGN (0x4)
-                0x000009d8                        _etext = .
-                0x000009d8                        _sidata = _etext
+                0x000011e8                        . = ALIGN (0x4)
+                0x000011e8                        _etext = .
+                0x000011e8                        _sidata = _etext
 
-.rela.dyn       0x000009d8        0x0
+.rela.dyn       0x000011e8        0x0
  .rela.text._ZN5qusoc5IWaitC2Ev
-                0x000009d8        0x0 /tmp/cc9mdq0F.o
+                0x000011e8        0x0 /tmp/ccOFERzR.o
  .rela.text._ZN5qusoc7CPUWaitC2EPVm
-                0x000009d8        0x0 /tmp/cc9mdq0F.o
+                0x000011e8        0x0 /tmp/ccOFERzR.o
  .rela.text._ZN5qusoc8CPU1WaitC2Ev
-                0x000009d8        0x0 /tmp/cc9mdq0F.o
+                0x000011e8        0x0 /tmp/ccOFERzR.o
  .rela.rodata._ZTVN5qusoc8CPU1WaitE
-                0x000009d8        0x0 /tmp/cc9mdq0F.o
+                0x000011e8        0x0 /tmp/ccOFERzR.o
  .rela.rodata._ZTVN5qusoc7CPUWaitE
-                0x000009d8        0x0 /tmp/cc9mdq0F.o
+                0x000011e8        0x0 /tmp/ccOFERzR.o
  .rela.rodata._ZTVN5qusoc5IWaitE
-                0x000009d8        0x0 /tmp/cc9mdq0F.o
+                0x000011e8        0x0 /tmp/ccOFERzR.o
 
-.data           0x000009d8       0x18
-                0x000009d8                        . = ALIGN (0x4)
-                0x000009d8                        _sdata = .
-                0x000009d8                        _ram_start = .
+.data           0x000011e8       0x18
+                0x000011e8                        . = ALIGN (0x4)
+                0x000011e8                        _sdata = .
+                0x000011e8                        _ram_start = .
  *(.data)
- .data          0x000009d8        0x0 /tmp/cc9mdq0F.o
- .data          0x000009d8        0x0 /tmp/ccWVXPQH.o
- .data          0x000009d8        0x0 /tmp/ccBzgvrE.o
- .data          0x000009d8        0x0 /tmp/ccQo18FH.o
+ .data          0x000011e8        0x0 /tmp/ccOFERzR.o
+ .data          0x000011e8        0x0 /tmp/ccfbEXfR.o
+ .data          0x000011e8        0x0 /tmp/ccoFrKDR.o
+ .data          0x000011e8        0x0 /tmp/ccgpe5mS.o
+ .data          0x000011e8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(mulsf3.o)
+ .data          0x000011e8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixunssfsi.o)
+ .data          0x000011e8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatunsisf.o)
+ .data          0x000011e8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(muldi3.o)
+ .data          0x000011e8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clzsi2.o)
+ .data          0x000011e8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clz.o)
  *(.data*)
  *(.sdata)
- .sdata         0x000009d8       0x18 /tmp/ccQo18FH.o
-                0x000009d8                qusoc::LED8x8::StopSign
-                0x000009e0                qusoc::LED8x8::RightArrow
-                0x000009e8                qusoc::LED8x8::LeftArrow
+ .sdata         0x000011e8       0x18 /tmp/ccgpe5mS.o
+                0x000011e8                qusoc::LED8x8::StopSign
+                0x000011f0                qusoc::LED8x8::RightArrow
+                0x000011f8                qusoc::LED8x8::LeftArrow
  *(.sdata*)
  *(.init_array)
  *(.init_array*)
-                0x000009f0                        . = ALIGN (0x4)
-                0x000009f0                        _edata = .
+                0x00001200                        . = ALIGN (0x4)
+                0x00001200                        _edata = .
 
-.bss            0x000009f0        0x0
-                0x000009f0                        . = ALIGN (0x4)
-                0x000009f0                        _sbss = .
+.bss            0x00001200        0x0
+                0x00001200                        . = ALIGN (0x4)
+                0x00001200                        _sbss = .
  *(.bss)
- .bss           0x000009f0        0x0 /tmp/cc9mdq0F.o
- .bss           0x000009f0        0x0 /tmp/ccWVXPQH.o
- .bss           0x000009f0        0x0 /tmp/ccBzgvrE.o
- .bss           0x000009f0        0x0 /tmp/ccQo18FH.o
+ .bss           0x00001200        0x0 /tmp/ccOFERzR.o
+ .bss           0x00001200        0x0 /tmp/ccfbEXfR.o
+ .bss           0x00001200        0x0 /tmp/ccoFrKDR.o
+ .bss           0x00001200        0x0 /tmp/ccgpe5mS.o
+ .bss           0x00001200        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(mulsf3.o)
+ .bss           0x00001200        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixunssfsi.o)
+ .bss           0x00001200        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatunsisf.o)
+ .bss           0x00001200        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(muldi3.o)
+ .bss           0x00001200        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clzsi2.o)
+ .bss           0x00001200        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clz.o)
  *(.bss*)
  *(.sbss)
  *(.sbss*)
  *(COMMON)
-                0x000009f0                        . = ALIGN (0x4)
-                0x000009f0                        _ebss = .
+                0x00001200                        . = ALIGN (0x4)
+                0x00001200                        _ebss = .
 
-.heap           0x000009f0        0x0
-                0x000009f0                        . = ALIGN (0x4)
-                0x000009f0                        _heap_start = .
-LOAD /tmp/cc9mdq0F.o
-LOAD /tmp/ccWVXPQH.o
-LOAD /tmp/ccBzgvrE.o
-LOAD /tmp/ccQo18FH.o
+.heap           0x00001200        0x0
+                0x00001200                        . = ALIGN (0x4)
+                0x00001200                        _heap_start = .
+LOAD /tmp/ccOFERzR.o
+LOAD /tmp/ccfbEXfR.o
+LOAD /tmp/ccoFrKDR.o
+LOAD /tmp/ccgpe5mS.o
 LOAD /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a
 START GROUP
 LOAD /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libc.a
@@ -168,55 +220,86 @@ OUTPUT(firmware.elf elf32-littleriscv)
 .riscv.attributes
                 0x00000000       0x1c
  .riscv.attributes
-                0x00000000       0x1a /tmp/cc9mdq0F.o
+                0x00000000       0x1a /tmp/ccOFERzR.o
  .riscv.attributes
-                0x0000001a       0x1c /tmp/ccWVXPQH.o
+                0x0000001a       0x1c /tmp/ccfbEXfR.o
  .riscv.attributes
-                0x00000036       0x1c /tmp/ccBzgvrE.o
+                0x00000036       0x1c /tmp/ccoFrKDR.o
  .riscv.attributes
-                0x00000052       0x1c /tmp/ccQo18FH.o
+                0x00000052       0x1c /tmp/ccgpe5mS.o
+ .riscv.attributes
+                0x0000006e       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(mulsf3.o)
+ .riscv.attributes
+                0x0000008a       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixunssfsi.o)
+ .riscv.attributes
+                0x000000a6       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatunsisf.o)
+ .riscv.attributes
+                0x000000c2       0x1a /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(muldi3.o)
+ .riscv.attributes
+                0x000000dc       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clzsi2.o)
+ .riscv.attributes
+                0x000000f8       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clz.o)
 
 .comment        0x00000000       0x33
- .comment       0x00000000       0x33 /tmp/ccWVXPQH.o
+ .comment       0x00000000       0x33 /tmp/ccfbEXfR.o
                                  0x34 (size before relaxing)
- .comment       0x00000033       0x34 /tmp/ccBzgvrE.o
- .comment       0x00000033       0x34 /tmp/ccQo18FH.o
+ .comment       0x00000033       0x34 /tmp/ccoFrKDR.o
+ .comment       0x00000033       0x34 /tmp/ccgpe5mS.o
+ .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(mulsf3.o)
+ .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixunssfsi.o)
+ .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatunsisf.o)
+ .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clzsi2.o)
+ .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clz.o)
 
 Cross Reference Table
 
 Symbol                                            File
-AXISoCQuadCore::CPU1::CPU1()                      /tmp/ccWVXPQH.o
-AXISoCQuadCore::CPU1::CPU1()                      /tmp/ccWVXPQH.o
-AXISoCQuadCore::CPU1::EntryPoint()                /tmp/ccWVXPQH.o
-                                                  /tmp/ccBzgvrE.o
-AXISoCQuadCore::CPU1::FPUTest()                   /tmp/ccWVXPQH.o
-AXISoCQuadCore::CPU1::HardcodedValues()           /tmp/ccWVXPQH.o
-AXISoCQuadCore::CPU1::PWMTest()                   /tmp/ccWVXPQH.o
-AXISoCQuadCore::CPU1::WS2812Test()                /tmp/ccWVXPQH.o
-__cxa_pure_virtual                                /tmp/ccWVXPQH.o
-main                                              /tmp/ccBzgvrE.o
-                                                  /tmp/cc9mdq0F.o
-qusoc::CPU1Wait::CPU1Wait()                       /tmp/ccWVXPQH.o
-qusoc::CPU1Wait::CPU1Wait()                       /tmp/ccWVXPQH.o
-qusoc::CPU1Wait::Clocks(unsigned long)            /tmp/ccWVXPQH.o
-qusoc::CPUWait::CPUWait(unsigned long volatile*)  /tmp/ccWVXPQH.o
-qusoc::CPUWait::CPUWait(unsigned long volatile*)  /tmp/ccWVXPQH.o
-qusoc::HardwarePWM::HardwarePWM(unsigned long volatile*, unsigned long, unsigned long) /tmp/ccWVXPQH.o
-qusoc::HardwarePWM::HardwarePWM(unsigned long volatile*, unsigned long, unsigned long) /tmp/ccWVXPQH.o
-qusoc::HardwarePWM::UpdatePtr()                   /tmp/ccWVXPQH.o
-qusoc::HardwareWS2812::ByteArray(unsigned long, unsigned long, unsigned char*) /tmp/ccWVXPQH.o
-qusoc::HardwareWS2812::HardwareWS2812(qusoc::IWait*, unsigned long volatile*) /tmp/ccWVXPQH.o
-qusoc::HardwareWS2812::HardwareWS2812(qusoc::IWait*, unsigned long volatile*) /tmp/ccWVXPQH.o
-qusoc::HardwareWS2812::Word(unsigned long)        /tmp/ccWVXPQH.o
-qusoc::IWait::IWait()                             /tmp/ccWVXPQH.o
-qusoc::IWait::IWait()                             /tmp/ccWVXPQH.o
-qusoc::LED8x8::LeftArrow                          /tmp/ccQo18FH.o
-                                                  /tmp/ccWVXPQH.o
-qusoc::LED8x8::RightArrow                         /tmp/ccQo18FH.o
-                                                  /tmp/ccWVXPQH.o
-qusoc::LED8x8::StopSign                           /tmp/ccQo18FH.o
-                                                  /tmp/ccWVXPQH.o
-qusoc::Wait::Clocks(unsigned long volatile*, unsigned long) /tmp/ccWVXPQH.o
-vtable for qusoc::CPU1Wait                        /tmp/ccWVXPQH.o
-vtable for qusoc::CPUWait                         /tmp/ccWVXPQH.o
-vtable for qusoc::IWait                           /tmp/ccWVXPQH.o
+AXISoCQuadCore::CPU1::CPU1()                      /tmp/ccfbEXfR.o
+AXISoCQuadCore::CPU1::CPU1()                      /tmp/ccfbEXfR.o
+AXISoCQuadCore::CPU1::EntryPoint()                /tmp/ccfbEXfR.o
+                                                  /tmp/ccoFrKDR.o
+AXISoCQuadCore::CPU1::FPUTest()                   /tmp/ccfbEXfR.o
+AXISoCQuadCore::CPU1::HardcodedValues()           /tmp/ccfbEXfR.o
+AXISoCQuadCore::CPU1::PWMTest()                   /tmp/ccfbEXfR.o
+AXISoCQuadCore::CPU1::WS2812Test()                /tmp/ccfbEXfR.o
+__clz_tab                                         /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clz.o)
+                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clzsi2.o)
+__clzsi2                                          /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clzsi2.o)
+                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatunsisf.o)
+                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(mulsf3.o)
+__cxa_pure_virtual                                /tmp/ccfbEXfR.o
+__fixunssfsi                                      /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixunssfsi.o)
+                                                  /tmp/ccfbEXfR.o
+__floatunsisf                                     /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatunsisf.o)
+                                                  /tmp/ccfbEXfR.o
+__mulsf3                                          /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(mulsf3.o)
+                                                  /tmp/ccfbEXfR.o
+__mulsi3                                          /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(muldi3.o)
+                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(mulsf3.o)
+main                                              /tmp/ccoFrKDR.o
+                                                  /tmp/ccOFERzR.o
+qusoc::CPU1Wait::CPU1Wait()                       /tmp/ccfbEXfR.o
+qusoc::CPU1Wait::CPU1Wait()                       /tmp/ccfbEXfR.o
+qusoc::CPU1Wait::Clocks(unsigned long)            /tmp/ccfbEXfR.o
+qusoc::CPUWait::CPUWait(unsigned long volatile*)  /tmp/ccfbEXfR.o
+qusoc::CPUWait::CPUWait(unsigned long volatile*)  /tmp/ccfbEXfR.o
+qusoc::HardwarePWM::HardwarePWM(unsigned long volatile*, unsigned long, unsigned long) /tmp/ccfbEXfR.o
+qusoc::HardwarePWM::HardwarePWM(unsigned long volatile*, unsigned long, unsigned long) /tmp/ccfbEXfR.o
+qusoc::HardwarePWM::SetRatio(float)               /tmp/ccfbEXfR.o
+qusoc::HardwarePWM::UpdatePtr()                   /tmp/ccfbEXfR.o
+qusoc::HardwareWS2812::ByteArray(unsigned long, unsigned long, unsigned char*) /tmp/ccfbEXfR.o
+qusoc::HardwareWS2812::HardwareWS2812(qusoc::IWait*, unsigned long volatile*) /tmp/ccfbEXfR.o
+qusoc::HardwareWS2812::HardwareWS2812(qusoc::IWait*, unsigned long volatile*) /tmp/ccfbEXfR.o
+qusoc::HardwareWS2812::Word(unsigned long)        /tmp/ccfbEXfR.o
+qusoc::IWait::IWait()                             /tmp/ccfbEXfR.o
+qusoc::IWait::IWait()                             /tmp/ccfbEXfR.o
+qusoc::LED8x8::LeftArrow                          /tmp/ccgpe5mS.o
+                                                  /tmp/ccfbEXfR.o
+qusoc::LED8x8::RightArrow                         /tmp/ccgpe5mS.o
+                                                  /tmp/ccfbEXfR.o
+qusoc::LED8x8::StopSign                           /tmp/ccgpe5mS.o
+                                                  /tmp/ccfbEXfR.o
+qusoc::Wait::Clocks(unsigned long volatile*, unsigned long) /tmp/ccfbEXfR.o
+vtable for qusoc::CPU1Wait                        /tmp/ccfbEXfR.o
+vtable for qusoc::CPUWait                         /tmp/ccfbEXfR.o
+vtable for qusoc::IWait                           /tmp/ccfbEXfR.o

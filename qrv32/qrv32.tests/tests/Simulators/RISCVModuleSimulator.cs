@@ -86,6 +86,18 @@ namespace QRV32.Tests
                         ClockCycle();
                         break;
                     case CPUState.MEM:
+                        if (wordAddress == 0x24000000)
+                        {
+                            if (CPU.MemRead)
+                            {
+                                ClockCycle(new RISCVModuleInputs() { MemReady = true });
+                            }
+                            else
+                            {
+                                ClockCycle(new RISCVModuleInputs() { MemReady = true });
+                            }
+                            break;
+                        }
                         if (wordAddress >= MemoryBlock.Length)
                             throw new IndexOutOfRangeException($"Requested address in IF was outside of memory block: {wordAddress}");
 
