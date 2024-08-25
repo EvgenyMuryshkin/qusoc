@@ -213,68 +213,68 @@ module AXISoCQuadCoreModule_TopLevel_cpu1Memory
 	wire [7 : 0] internalWDATA [0 : 3];
 	wire [7 : 0] axiSlave_inRDATA [0 : 3];
 	wire [7 : 0] axiSlave_outWDATA [0 : 3];
-	reg [7 : 0] State_buff0 [0 : 4095];
+	reg [7 : 0] State_buff0 [0 : 32767];
 	initial
 	begin : Init_State_buff0
 $readmemh("AXISoCQuadCoreModule_TopLevel_cpu1Memory_State_buff0.hex", State_buff0);
 	end
-	reg [7 : 0] State_buff1 [0 : 4095];
+	reg [7 : 0] State_buff1 [0 : 32767];
 	initial
 	begin : Init_State_buff1
 $readmemh("AXISoCQuadCoreModule_TopLevel_cpu1Memory_State_buff1.hex", State_buff1);
 	end
-	reg [7 : 0] State_buff2 [0 : 4095];
+	reg [7 : 0] State_buff2 [0 : 32767];
 	initial
 	begin : Init_State_buff2
 $readmemh("AXISoCQuadCoreModule_TopLevel_cpu1Memory_State_buff2.hex", State_buff2);
 	end
-	reg [7 : 0] State_buff3 [0 : 4095];
+	reg [7 : 0] State_buff3 [0 : 32767];
 	initial
 	begin : Init_State_buff3
 $readmemh("AXISoCQuadCoreModule_TopLevel_cpu1Memory_State_buff3.hex", State_buff3);
 	end
 	// inferred simple dual port RAM with write-first behaviour
-	reg [11: 0] internalRADDR_reg0;
+	reg [14: 0] internalRADDR_reg0;
 	always @ (posedge BoardSignals_Clock)
 	begin
 		if (AXI4MemoryModule_L103F9L135T10_AXI4MemoryModule_L123F13L127T14_0_AXI4MemoryModule_L124F13L127T14_AXI4MemoryModule_L125F21T51_Expr)
 		begin
 			State_buff0[internalWADDR] <= internalWDATA[0];
 		end
-		internalRADDR_reg0 <= internalRADDR[11:0];
+		internalRADDR_reg0 <= internalRADDR[14:0];
 	end
 	assign State_rdata[0] = State_buff0[internalRADDR_reg0];
 	// inferred simple dual port RAM with write-first behaviour
-	reg [11: 0] internalRADDR_reg1;
+	reg [14: 0] internalRADDR_reg1;
 	always @ (posedge BoardSignals_Clock)
 	begin
 		if (AXI4MemoryModule_L103F9L135T10_AXI4MemoryModule_L123F13L127T14_1_AXI4MemoryModule_L124F13L127T14_AXI4MemoryModule_L125F21T51_Expr)
 		begin
 			State_buff1[internalWADDR] <= internalWDATA[1];
 		end
-		internalRADDR_reg1 <= internalRADDR[11:0];
+		internalRADDR_reg1 <= internalRADDR[14:0];
 	end
 	assign State_rdata[1] = State_buff1[internalRADDR_reg1];
 	// inferred simple dual port RAM with write-first behaviour
-	reg [11: 0] internalRADDR_reg2;
+	reg [14: 0] internalRADDR_reg2;
 	always @ (posedge BoardSignals_Clock)
 	begin
 		if (AXI4MemoryModule_L103F9L135T10_AXI4MemoryModule_L123F13L127T14_2_AXI4MemoryModule_L124F13L127T14_AXI4MemoryModule_L125F21T51_Expr)
 		begin
 			State_buff2[internalWADDR] <= internalWDATA[2];
 		end
-		internalRADDR_reg2 <= internalRADDR[11:0];
+		internalRADDR_reg2 <= internalRADDR[14:0];
 	end
 	assign State_rdata[2] = State_buff2[internalRADDR_reg2];
 	// inferred simple dual port RAM with write-first behaviour
-	reg [11: 0] internalRADDR_reg3;
+	reg [14: 0] internalRADDR_reg3;
 	always @ (posedge BoardSignals_Clock)
 	begin
 		if (AXI4MemoryModule_L103F9L135T10_AXI4MemoryModule_L123F13L127T14_3_AXI4MemoryModule_L124F13L127T14_AXI4MemoryModule_L125F21T51_Expr)
 		begin
 			State_buff3[internalWADDR] <= internalWDATA[3];
 		end
-		internalRADDR_reg3 <= internalRADDR[11:0];
+		internalRADDR_reg3 <= internalRADDR[14:0];
 	end
 	assign State_rdata[3] = State_buff3[internalRADDR_reg3];
 	always @ (posedge BoardSignals_Clock)

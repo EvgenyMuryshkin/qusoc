@@ -1,7 +1,7 @@
 #include "CPU1.h"
 #include <stdint.h>
 #include <stdbool.h>
-//#include <math.h>
+#include <math.h>
 #include "soc.h"
 #include "utils/wait.h"
 #include "drivers/hardware/pwm.h"
@@ -15,7 +15,8 @@ namespace AXISoCQuadCore
 	{
 		CPU1 instance;
 		//instance.WS2812Test();
-		instance.PWMTest();
+		//instance.PWMTest();
+		instance.TrigTest();
 	}
 
 	void CPU1::HardcodedValues()
@@ -70,6 +71,62 @@ namespace AXISoCQuadCore
 			counter++;
 			AXISoCQuadCore_SOC_Reg1 = counter;
 			//_wait.Clocks(50000000);
+		}
+	}
+
+	void CPU1::TrigTest()
+	{
+		uint32_t counter = 0;
+		float s = 3.14;
+		float delta = 0.1;
+
+		while (true)
+		{
+			uint32_t operation = AXISoCQuadCore_SOC_PWM0;
+			if (operation) 
+			{
+				float result = 0;
+				float op1 = *((volatile float*)AXISoCQuadCore_SOC_PWM1_Ptr);
+				float op2 = *((volatile float*)AXISoCQuadCore_SOC_PWM2_Ptr);
+
+				switch (operation)
+				{
+					case 1:
+						result = op1 + op2;
+						break;
+					case 2:
+						result = op1 - op2;
+						break;
+					case 3:
+						result = op1 * op2;
+						break;
+					case 4:
+						result = op1 / op2;
+						break;
+					case 5:
+						result = sin(op1);
+						break;
+					case 6:
+						result = cos(op1);
+						break;
+				}
+
+				AXISoCQuadCore_SOC_PWM3 = *((uint32_t*)&result);
+				AXISoCQuadCore_SOC_PWM0 = 0;
+			}
+
+			//float sinValue = sin(s);
+			//float cosValue = cos(s);
+			//
+			//AXISoCQuadCore_SOC_PWM3 = *((uint32_t*)&result);
+			//AXISoCQuadCore_SOC_PWM1 = *((uint32_t*)&sinValue);
+			//AXISoCQuadCore_SOC_PWM2 = *((uint32_t*)&cosValue);
+
+
+			counter++;
+			AXISoCQuadCore_SOC_Reg1 = counter >> 14;
+
+			//_wait.Clocks(500000000);
 		}
 	}
 

@@ -35,7 +35,7 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Interconnect_readInterconnect_rangeDete
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire [31: 0] rangeFrom = 32'b11110001000000000000000000000000;
-	wire [31: 0] rangeTo = 32'b11110001000000000011111111111111;
+	wire [31: 0] rangeTo = 32'b11110001000000011111111111111111;
 	wire [31: 0] Inputs_Value;
 	wire RangeDetectorModule_L33F33T85_Expr;
 	wire RangeDetectorModule_L33F33T85_Expr_1;

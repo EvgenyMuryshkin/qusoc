@@ -20,6 +20,7 @@ namespace AXISoCQuadCore
 			void WS2812Test();
 			void HardcodedValues();
 			void FPUTest();
+			void TrigTest();
 	};
 }
 #endif

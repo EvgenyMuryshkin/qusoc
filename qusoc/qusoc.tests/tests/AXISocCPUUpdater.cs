@@ -81,7 +81,7 @@ namespace QuSoC.Tests
             return Task.FromResult(result);
         }
 
-        Task writeData(uint addr, uint value, bool expectSync = true)
+        public Task writeData(uint addr, uint value, bool expectSync = true)
         {
             _port.Write(new[] { '5' }, 0, 1);
             //var addrPrompt = _port.ReadLine().Trim();
@@ -125,14 +125,16 @@ namespace QuSoC.Tests
             ReadSync();
             //var hello = _port.ReadLine();
 
-            Trace.WriteLine($"Firmware size: {instructions.Length} words");
+            var baseAddr = 0xF1000000;
+
+            Trace.WriteLine($"Firmware size: {instructions.Length} words [{baseAddr:X} - {(baseAddr + instructions.Length * 4):X}]");
             Stopwatch sw = new Stopwatch();
             sw.Start();
             var reportPeriod = TimeSpan.FromSeconds(1);
 
             for (var i = 0; i < instructions.Length; i++)
             {
-                uint addr = 0xF1000000 + (uint)(i * 4);
+                uint addr = baseAddr + (uint)(i * 4);
                 await writeData(addr, instructions[i]);
 
                 if (sw.Elapsed > reportPeriod)

@@ -5,6 +5,7 @@
 #include "CPU1.h"
 
 // main is called from start.S assembly file
-void main() {
+int main() {
 	AXISoCQuadCore::CPU1::EntryPoint();
+	return 0;
 }

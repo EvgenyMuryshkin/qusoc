@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO.Ports;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -119,6 +120,150 @@ namespace QuSoC.Tests
         }
 
         [TestMethod]
+        public async Task FloatTest()
+        {
+            using (var u = new AXISocCPUUpdater())
+            {
+                var cpu1Instructions = FirmwareTools.FromFolder(@"C:\code\qusoc\qusoc\qusoc.demos\apps\AXISoCQuadCore\cpu1");
+                await u.Update(1, cpu1Instructions);
+
+                Func<float, float, Task> genericFloatOp = async (float1, float2) =>
+                {
+                    var op1 = BitConverter.SingleToUInt32Bits(float1);
+                    var op2 = BitConverter.SingleToUInt32Bits(float2);
+                    await u.writeData(0x90000104, op1);
+                    await u.writeData(0x90000108, op2);
+
+                    float[] values = new float[7];
+                    for (uint i = 1; i <= 6; i++)
+                    {
+                        await u.writeData(0x90000100, i);
+                        while (true)
+                        {
+                            var status = await u.readData(0x90000100);
+                            if (status == 0)
+                                break;
+
+                            await Task.Delay(50);
+                        }
+
+                        var result = await u.readData(0x9000010C);
+                        var floatResult = BitConverter.UInt32BitsToSingle(result);
+                        values[i] = floatResult;
+                    }
+
+                    float[] expValues = new float[7]
+                    {
+                        0,
+                        float1 + float2,
+                        float1 - float2,
+                        float1 * float2,
+                        float1 / float2,
+                        (float)Math.Sin(float1),
+                        (float)Math.Cos(float1),
+                    };
+
+                    var checks = values.Zip(expValues, (a, e) => new { a, e }).ToList();
+
+                    Func<float, float, bool> compareFloats = (f1, f2) =>
+                    {
+                        if (f1 == f2)
+                            return true;
+
+                        if (float.IsNaN(f1) && float.IsNaN(f2))
+                            return true;
+
+                        var u1 = BitConverter.SingleToUInt32Bits(f1);
+                        var u2 = BitConverter.SingleToUInt32Bits(f2);
+
+                        var delta = Math.Abs((int)(u1 - u2));
+                        if (delta <= 1)
+                            return true;
+
+                        return false;
+                    };
+
+                    if (checks.Any(c => !compareFloats(c.a, c.e)))
+                    {
+                        Debugger.Break();
+                    }
+                };
+
+                Func<float, float, Task> floatOp = async (op1, op2) =>
+                {
+                    await genericFloatOp(op1, op2);
+                    await genericFloatOp(op1, -op2);
+                    await genericFloatOp(-op1, op2);
+                    await genericFloatOp(-op1, -op2);
+
+                    await genericFloatOp(op2, op1);
+                    await genericFloatOp(op2, -op1);
+                    await genericFloatOp(-op2, op1);
+                    await genericFloatOp(-op2, -op1);
+                };
+
+                await floatOp(0f, 0f);
+                await floatOp(0f, 0.5f);
+                await floatOp(0f, 1f);
+
+                await floatOp(float.MaxValue, float.MaxValue);
+                await floatOp(float.MinValue, float.MinValue);
+                await floatOp(float.MinValue, float.MaxValue);
+                await floatOp(float.Epsilon, float.Epsilon);
+                await floatOp(5.877472e-39f, 5.877472e-39f);
+                await floatOp(1.1754942e-38f, 1e-45f);
+                await floatOp(1.1754941e-38f, -1.1754942e-38f);
+                await floatOp(1.1754944e-38f, -float.Epsilon);
+
+                await floatOp(0.556257248f, 0.500910938f);
+                await floatOp(0.444681585f, 0.299055785f);
+                await floatOp(0.5499884f, 0.212284908f);
+                await floatOp(0.931204557f, 0.104905911f);
+                await floatOp(0.0076710307f, 0.952018857f);
+                await floatOp(0.123259649f, 0.876740336f);
+                await floatOp(0.0007939787f, 0.379645854f);
+                await floatOp(0.362758845f, 0.000253781764f);
+
+                await floatOp(-0.00204727077f, 0.59962666f);
+                await floatOp(0.00204727077f, -0.59962666f);
+                await floatOp(-0.59962666f, 0.00204727077f);
+                await floatOp(0.59962666f, -0.00204727077f);
+
+                await floatOp(-0.4337583f, 0.0008127541f);
+                await floatOp(1, -1f);
+
+                await floatOp(1000f, 0.5f);
+                await floatOp(1000f, -0.5f);
+                await floatOp(1024f, -1f);
+                await floatOp(12.75f, -12.5f);
+                await floatOp(12.5f, 77.25f);
+                await floatOp(-12.5f, -77.25f);
+
+                await floatOp(12.5f, -77.25f);
+                await floatOp(77.25f, -12.5f);
+                await floatOp(-12.5f, 77.25f);
+                await floatOp(-77.25f, 12.5f);
+
+                await floatOp(-0.184847608f, 0.9391488f); // need rounding
+                await floatOp(-0.0205731746f, 0.041971f); // does not need rounding
+
+                var rnd = new Random();
+                for (var t = 0; t < 10000; t++)
+                {
+                    if (t % 100 == 0)
+                    {
+                        Trace.WriteLine($"Iteration: {t}");
+                    }
+                    var scale = rnd.Next();
+
+                    var float1 = rnd.NextSingle();
+                    var float2 = scale * rnd.NextSingle();
+                    await floatOp(float1, float2);
+                }
+            }
+        }
+
+        [TestMethod]
         public async Task AXISoCQuadCoreModule_UpdateCPU1()
         {
             if (!Debugger.IsAttached)
@@ -175,6 +320,9 @@ namespace QuSoC.Tests
 
                     var reg1Values = new List<int>();
                     topLevel.Reg0.State.bytes[3] = 255;
+                    topLevel.pwm.State.pwm[0] = 2;
+                    topLevel.pwm.State.pwm[1] = BitConverter.SingleToUInt32Bits(0.3f);
+                    topLevel.pwm.State.pwm[2] = BitConverter.SingleToUInt32Bits(0.1f);
 
                     sim.RunToCompletion(() =>
                     {
@@ -198,10 +346,13 @@ namespace QuSoC.Tests
                             //Debugger.Break();
                         }
 
+                        if (topLevel.pwm.State.pwm[3] != 0)
+                            return false;
+
                         return true;// reg0 < 10;
                     });
 
-                    uint reg0Value = new RTLBitArray(topLevel.Reg0.outData);
+                    uint reg0Value = new RTLBitArray(topLevel.pwm.State.pwm[3]/*topLevel.Reg0.outData*/);
                     var reg0FloatValue = BitConverter.UInt32BitsToSingle(reg0Value);
 
                     var reg0Floats = reg1Values.Select(v => BitConverter.UInt32BitsToSingle(new RTLBitArray(v))).ToList();
