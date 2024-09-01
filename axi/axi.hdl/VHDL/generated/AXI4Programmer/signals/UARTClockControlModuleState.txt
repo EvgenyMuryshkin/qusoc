@@ -1,0 +1,7 @@
+└Root            | UARTClockControlModuleState | [68:0]  | 69 | [68:0] 
+ ├txClockCounter | Int32                       | [68:37] | 32 | [68:0][68:37]
+ ├txCE           | Boolean                     | [36]    | 1  | [68:0][36]
+ ├rxState        | uartState                   | [35:34] | 2  | [68:0][35:34]
+ ├rxClockCounter | Int32                       | [33:2]  | 32 | [68:0][33:2]
+ ├rxCE           | Boolean                     | [1]     | 1  | [68:0][1]
+ └rx             | Boolean                     | [0]     | 1  | [68:0][0]

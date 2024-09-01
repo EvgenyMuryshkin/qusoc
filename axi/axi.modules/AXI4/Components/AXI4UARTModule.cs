@@ -18,34 +18,7 @@ namespace axi.modules
         public bool iEN_TX = true;
     }
 
-    public enum uartState
-    {
-        Idle,
-        StartBit,
-        Receiving
-    }
-
-    public class AXI4UARTModuleState
-    {
-        public AXI4UARTModuleState() : this(axiSize.B4, 0) { }
-        public AXI4UARTModuleState(axiSize size, int clocksPerBit)
-        {
-            txClockCounter = Math.Min(1, clocksPerBit);
-            rxClockCounter = Math.Min(1, clocksPerBit);
-        }
-
-        // TX
-        public int txClockCounter = 0;
-        public bool txCE = false;
-
-        // RX
-        public int rxClockCounter = 0;
-        public bool rxCE = false;
-        public uartState rxState = uartState.Idle;
-        public bool rx = true;
-    }
-
-    public class AXI4UARTModule : RTLSynchronousModule<AXI4UARTModuleInputs, AXI4UARTModuleState>
+    public class AXI4UARTModule : RTLCombinationalModule<AXI4UARTModuleInputs>
     {
         private readonly int clocksPerBit = 0;
         private readonly int halfClocksPerBit = 0;
@@ -56,6 +29,7 @@ namespace axi.modules
         internal UARTReceiverModule uartReceiver;
         internal FIFOModule transmitterFIFO;
         internal FIFOModule receiverFIFO;
+        internal UARTClockControlModule uartClockControl;
 
         public AXI4UARTModule(axiSize size, int depth, int clocksPerBit)
         {
@@ -69,9 +43,9 @@ namespace axi.modules
             uartReceiver = new UARTReceiverModule();
             receiverFIFO = new FIFOModule(8, depth);
             transmitterFIFO = new FIFOModule(8, depth);
+            uartClockControl = new UARTClockControlModule(clocksPerBit);
 
             InitInputs(new AXI4UARTModuleInputs(size));
-            InitState(new AXI4UARTModuleState(size, clocksPerBit));
         }
 
         protected override void OnSchedule(Func<AXI4UARTModuleInputs> inputsFactory)
@@ -88,16 +62,25 @@ namespace axi.modules
                 inRDATA = rdata,
             });
 
+            uartClockControl.Schedule(() => new()
+            {
+                iEN_RX = Inputs.iEN_RX,
+                iEN_TX = Inputs.iEN_TX,
+                iRX = Inputs.iRX,
+                iReceiverValid = uartReceiver.oValid,
+                iTransmitting = uartTransmitter.oTransmitting
+            });
+
             uartReceiver.Schedule(() => new()
             {
-                iCE = State.rxCE,
-                iRX = State.rx,
+                iCE = uartClockControl.oRXCE,
+                iRX = uartClockControl.oRX,
                 iACK = !receiverFIFO.oIsFull
             });
 
             uartTransmitter.Schedule(() => new()
             {
-                iCE = State.txCE,
+                iCE = uartClockControl.oTXCE,
                 iValid = transmitterFIFO.oRACK,
                 iValue = transmitterFIFO.oRData
             });
@@ -138,106 +121,7 @@ namespace axi.modules
         public byte oRXData => uartReceiver.oValue;
         public bool oRXValid => uartReceiver.oValid;
 
-        public int oTXCounter => State.txClockCounter;
-        public int oRXCounter => State.rxClockCounter;
-
-        void TXLogic()
-        {
-            if (uartTransmitter.oTransmitting)
-            {
-                if (State.txClockCounter == 0)
-                {
-                    NextState.txClockCounter = clocksPerBit;
-                }
-                else
-                {
-                    NextState.txClockCounter = State.txClockCounter - 1;
-                }
-            }
-            else
-            {
-                NextState.txClockCounter = Math.Min(1, clocksPerBit);
-            }
-
-            NextState.txCE = NextState.txClockCounter == 0;
-        }
-
-        void RXLogic()
-        {
-            NextState.rx = Inputs.iRX;
-
-            switch (State.rxState)
-            {
-                case uartState.Idle:
-                    {
-                        if (!Inputs.iRX)
-                        {
-                            if (halfClocksPerBit == 0)
-                            {
-                                NextState.rxState = uartState.Receiving;
-                                NextState.rxCE = true;
-                            }
-                            else
-                            {
-                                NextState.rxClockCounter = halfClocksPerBit;
-                                NextState.rxState = uartState.StartBit;
-                            }
-                        }
-                    }
-                    break;
-                case uartState.StartBit:
-                    {
-                        if (State.rxClockCounter == 0)
-                        {
-                            if (!Inputs.iRX)
-                            {
-                                NextState.rxState = uartState.Receiving;
-                                NextState.rxCE = true;
-                            }
-                            else
-                            {
-                                NextState.rxState = uartState.Idle;
-                            }
-                        }
-                        else
-                        {
-                            NextState.rxClockCounter = State.rxClockCounter - 1;
-                        }
-                    }
-                    break;
-                case uartState.Receiving:
-                    {
-                        if (uartReceiver.oValid)
-                        {
-                            NextState.rxState = uartState.Idle;
-                            NextState.rxClockCounter = Math.Min(1, clocksPerBit);
-                        }
-                        else if (State.rxClockCounter == 0)
-                        {
-                            NextState.rxClockCounter = clocksPerBit;
-                        }
-                        else
-                        {
-                            NextState.rxClockCounter = State.rxClockCounter - 1;
-                        }
-
-                        NextState.rxCE = NextState.rxClockCounter == 0;
-                    }
-                    break;
-            }
-        }
-
-        protected override void OnStage()
-        {
-            if (Inputs.iEN_TX)
-            {
-                TXLogic();
-            }
-
-            if (Inputs.iEN_RX)
-            {
-                RXLogic();
-            }
-        }
+        public int oTXCounter => uartClockControl.oTXCounter;
+        public int oRXCounter => uartClockControl.oRXCounter;
     }
 }

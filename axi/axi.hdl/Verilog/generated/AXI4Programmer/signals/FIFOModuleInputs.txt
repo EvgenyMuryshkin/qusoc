@@ -1,0 +1,4 @@
+└Root    | FIFOModuleInputs | [9:0] | 10 | [9:0]
+ ├iWE    | Boolean          | [9]   | 1  | [9:0][9]
+ ├iWData | RTLBitArray      | [8:1] | 8  | [9:0][8:1]
+ └iRE    | Boolean          | [0]   | 1  | [9:0][0]

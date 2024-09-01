@@ -1,4 +1,6 @@
-﻿namespace axi.modules
+﻿using Quokka.RTL;
+
+namespace axi.modules
 {
     public class AXI4FullDuplexMuxModule : FullDuplexMuxModule<AXI4_M2S, AXI4_S2M>
     { 

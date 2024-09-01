@@ -1,0 +1,5 @@
+└Root  | CollectionInitializerModuleInputs | [10:0] | 11 | [10:0]
+ ├i3   | Boolean                           | [10]   | 1  | [10:0][10]
+ ├i2   | Boolean                           | [9]    | 1  | [10:0][9]
+ ├i1   | Boolean                           | [8]    | 1  | [10:0][8]
+ └data | Byte                              | [7:0]  | 8  | [10:0][7:0]

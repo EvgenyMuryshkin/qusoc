@@ -111,8 +111,6 @@ module top (
   
   assign ck_io41 = reg3[0];
   assign ck_io40 = reg2[0];
-  assign ck_io39 = reg1[0];
-  assign ck_io38 = reg0[0];
 
   assign led4_b = 1;
   assign led4_g = 0;
@@ -137,6 +135,8 @@ module top (
     .oReg3 (reg3),
     .oTX(ck_io13),
     .iRX(ck_io12),
+    .oProgrammerTX(ck_io39),
+    .iProgrammerRX(ck_io38),
     .oCE(ck_io11),
     .oRXValid(ck_io10),
     .oPWM0(ck_io26),

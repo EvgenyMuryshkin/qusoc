@@ -38,14 +38,16 @@ namespace axi.modules
         public bool isEmpty = true;
         public bool isFull = false;
         public bool isWrapAround = false;
+
+        public bool wACK = false;
     }
 
     public class FIFOModule : RTLSynchronousModule<FIFOModuleInputs, FIFOModuleState>
     {
-        private readonly int width;
-        private readonly int depth;
-        private readonly int addrBits;
-        private readonly RTLBitArray defaultValue;
+        internal readonly int width;
+        internal readonly int depth;
+        internal readonly int addrBits;
+        internal readonly RTLBitArray defaultValue;
 
         public FIFOModule(int width, int depth)
         {
@@ -69,11 +71,15 @@ namespace axi.modules
         protected RTLBitArray rAddr => State.rAddr[addrBits - 2, 0];
 
         public RTLBitArray oRData => State.rACK ? State.rData : defaultValue;
+        public RTLBitArray oRRawData => State.rData;
+
         public bool oRACK => State.rACK;
 
         public bool oIsEmpty => State.isEmpty;
         public bool oIsFull => State.isFull;
         public bool oRValid => State.rValid;
+
+        public bool oWACK => State.wACK;
 
         bool we => Inputs.iWE && !State.isFull;
         protected RTLBitArray wAddrNext => we ? (State.wAddr + 1)[addrBits - 1, 0] : State.wAddr;
@@ -101,6 +107,8 @@ namespace axi.modules
             NextState.isEmpty = isEmptyNext;
             NextState.isFull = isFullNext;
             NextState.isWrapAround = isWrapAroundNext;
+
+            NextState.wACK = we;
         }
     }
 }

@@ -250,7 +250,7 @@ namespace QuSoC.Tests
                 var rnd = new Random();
                 for (var t = 0; t < 10000; t++)
                 {
-                    if (t % 100 == 0)
+                    if (t % 10 == 0)
                     {
                         Trace.WriteLine($"Iteration: {t}");
                     }

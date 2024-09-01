@@ -1,0 +1,4 @@
+└Root  | UARTReceiverModuleInputs | [2:0] | 3 | [2:0]
+ ├iRX  | Boolean                  | [2]   | 1 | [2:0][2]
+ ├iCE  | Boolean                  | [1]   | 1 | [2:0][1]
+ └iACK | Boolean                  | [0]   | 1 | [2:0][0]

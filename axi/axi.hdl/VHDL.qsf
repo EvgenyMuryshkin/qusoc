@@ -37,7 +37,7 @@
 
 set_global_assignment -name FAMILY "Cyclone II"
 set_global_assignment -name DEVICE EP2C70F896C6
-set_global_assignment -name TOP_LEVEL_ENTITY AXILikeInteconnectModule_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY AXI4Programmer_TopLevel
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "20:45:17  JUNE 07, 2019"
 set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
@@ -1149,6 +1149,13 @@ set_global_assignment -name VHDL_FILE VHDL/generated/AXI4NonBufferedSlaveModuleB
 set_global_assignment -name VHDL_FILE VHDL/generated/AXI4OutSignalArrayBufferModule_B4_1_8/AXI4OutSignalArrayBufferModule_B4_1_8_TopLevel_axiSlave.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/AXI4OutSignalArrayBufferModule_B4_1_8/AXI4OutSignalArrayBufferModule_B4_1_8_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/AXI4PassThroughModule/AXI4PassThroughModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4Programmer/AXI4Programmer_TopLevel_masterModule.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4Programmer/AXI4Programmer_TopLevel_receiverFIFO.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4Programmer/AXI4Programmer_TopLevel_transmitterFIFO.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4Programmer/AXI4Programmer_TopLevel_uartClockControl.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4Programmer/AXI4Programmer_TopLevel_uartReceiver.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4Programmer/AXI4Programmer_TopLevel_uartTransmitter.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/AXI4Programmer/AXI4Programmer_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/AXI4PWMModule_8_20/AXI4PWMModule_8_20_TopLevel_axiSlave.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/AXI4PWMModule_8_20/AXI4PWMModule_8_20_TopLevel_pwms0.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/AXI4PWMModule_8_20/AXI4PWMModule_8_20_TopLevel_pwms1.vhdl

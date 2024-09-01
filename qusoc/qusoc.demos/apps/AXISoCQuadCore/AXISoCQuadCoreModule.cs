@@ -17,6 +17,7 @@ namespace AXISoC
         public bool iButton2 { get; set; }
         public bool iButton3 { get; set; }
         public bool iRX { get; set; }
+        public bool iProgrammerRX { get; set; }
     }
 
     public class AXISoCQuadCoreModule : RTLCombinationalModule<AXISoCQuadCoreModuleInputs>
@@ -27,6 +28,7 @@ namespace AXISoC
         internal AXI4AutoDecrementRegisterModule cpu0AutoDecrementRegister = new AXI4AutoDecrementRegisterModule(axiSize.B4);
         internal AXI4GatewayModule cpu0IOGateway = new AXI4GatewayModule(axiSize.B4);
         internal AXI4GatewayModule cpu0cpu1Gateway = new AXI4GatewayModule(axiSize.B4, 17);
+        internal AXI4Programmer programmer = new AXI4Programmer(); 
 
         internal AXI4RISCVModule CPU1 = new AXI4RISCVModule(CPURegsType.RAM, 1);
         internal AXI4MemoryModule cpu1Memory = new AXI4MemoryModule(axiSize.B4, 0x8000);
@@ -62,7 +64,7 @@ namespace AXISoC
 
         internal AXI4InteconnectModule cpu0Interconnect = new AXI4InteconnectModule(
             axiSize.B4,
-            1,
+            2,
             new List<RangeInfo>()
             {
                 new RangeInfo(0x00000000, 0x00020000),// instructions memory
@@ -173,14 +175,14 @@ namespace AXISoC
             cpu0cpu1Gateway.Schedule(() => new()
             { 
                 iM2S = cpu0Interconnect.oM2S[4],
-                iS2M = cpu1Interconnect.oS2M[1],
-                
+                iS2M = cpu1Interconnect.oS2M[1],                
             });
 
             cpu0Interconnect.Schedule(() => new()
             {
                 iM2S = [
-                    CPU0.M2S
+                    CPU0.M2S,
+                    programmer.M2S
                 ],
                 iS2M = [
                     cpu0Memory.S2M,
@@ -191,6 +193,12 @@ namespace AXISoC
                     //cpu0cpu2Gateway.oS2M,
                     //cpu0cpu3Gateway.oS2M,
                 ]
+            });
+
+            programmer.Schedule(() => new()
+            {
+                iRX = Inputs.iProgrammerRX,
+                S2M = cpu0Interconnect.oS2M[1]
             });
 
             //CPU1
@@ -398,5 +406,6 @@ namespace AXISoC
 
         public bool[] oPWM => pwm.oPWM;
         public bool oWS2812 => ws2812.oTX;
+        public bool oProgrammerTX => programmer.oTX;
     }
 }

@@ -36,7 +36,7 @@ module AXISoCQuadCoreModule_TopLevel_cpu0cpu1Gateway_writeAddress
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire signed [6: 0] axiSize = 7'b0100000;
-	wire signed [4: 0] originalLowerBits = 5'b01111;
+	wire signed [5: 0] originalLowerBits = 6'b010001;
 	wire AXI4GatewayAddressModule_L31F13T35_Expr = 1'b0;
 	wire [31: 0] Inputs_iMapAddress;
 	wire [31: 0] Inputs_iOriginalAddress;
@@ -44,8 +44,8 @@ module AXISoCQuadCoreModule_TopLevel_cpu0cpu1Gateway_writeAddress
 	assign Inputs_iMapAddress = iMapAddress;
 	assign Inputs_iOriginalAddress = iOriginalAddress;
 	assign AXI4GatewayAddressModule_L33F17L37T18_Source = {
-		Inputs_iMapAddress[31:15],
-		Inputs_iOriginalAddress[14:0]
+		Inputs_iMapAddress[31:17],
+		Inputs_iOriginalAddress[16:0]
 	}
 	;
 	assign oAddress = AXI4GatewayAddressModule_L33F17L37T18_Source;
