@@ -1,9 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using QRV32.ComplianceTools;
 
 namespace QRV32.Compliance
 {
     //[TestClass]
-    public class RV32IMC : RV32Base
+    public class RV32IMC : ComplianceTestsBase
     {
         public RV32IMC() : base(new QRV32ComplianceTestsBaseAdapter("rv32imc", "rv32imc")) { }
         protected override void RunAndAssert(string testName)

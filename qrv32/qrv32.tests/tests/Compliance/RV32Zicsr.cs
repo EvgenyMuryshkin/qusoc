@@ -1,9 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using QRV32.ComplianceTools;
 
 namespace QRV32.Compliance
 {
     [TestClass]
-    public class RV32Zicsr : RV32Base
+    public class RV32Zicsr : ComplianceTestsBase
     {
         public RV32Zicsr() : base(new QRV32ComplianceTestsBaseAdapter("rv32Zicsr", "rv32i")) { }
 

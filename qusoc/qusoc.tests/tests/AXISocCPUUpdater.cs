@@ -10,7 +10,7 @@ namespace QuSoC.Tests
     public class AXISocCPUUpdater : IDisposable
     {
         SerialPort _port;
-        public AXISocCPUUpdater(string port = "COM12")
+        public AXISocCPUUpdater(string port = "COM4")
         {
             _port = new SerialPort()
             {

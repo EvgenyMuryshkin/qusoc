@@ -1,71 +1,15 @@
-Archive member included to satisfy reference by file (symbol)
-
-/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_cos.o)
-                              /tmp/ccwgTEZf.o (cosf)
-/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_sin.o)
-                              /tmp/ccwgTEZf.o (sinf)
-/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_cos.o)
-                              /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_cos.o) (__kernel_cosf)
-/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_sin.o)
-                              /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_cos.o) (__kernel_sinf)
-/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-ef_rem_pio2.o)
-                              /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_cos.o) (__ieee754_rem_pio2f)
-/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_fabs.o)
-                              /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-ef_rem_pio2.o) (fabsf)
-/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_rem_pio2.o)
-                              /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-ef_rem_pio2.o) (__kernel_rem_pio2f)
-/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_floor.o)
-                              /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_rem_pio2.o) (floorf)
-/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_scalbn.o)
-                              /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_rem_pio2.o) (scalbnf)
-/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(addsf3.o)
-                              /tmp/ccwgTEZf.o (__addsf3)
-/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(divsf3.o)
-                              /tmp/ccwgTEZf.o (__divsf3)
-/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(eqsf2.o)
-                              /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-ef_rem_pio2.o) (__eqsf2)
-/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(gesf2.o)
-                              /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_rem_pio2.o) (__gesf2)
-/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(mulsf3.o)
-                              /tmp/ccwgTEZf.o (__mulsf3)
-/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(subsf3.o)
-                              /tmp/ccwgTEZf.o (__subsf3)
-/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixsfsi.o)
-                              /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_cos.o) (__fixsfsi)
-/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixunssfsi.o)
-                              /tmp/ccwgTEZf.o (__fixunssfsi)
-/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatsisf.o)
-                              /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-ef_rem_pio2.o) (__floatsisf)
-/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatunsisf.o)
-                              /tmp/ccwgTEZf.o (__floatunsisf)
-/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(muldi3.o)
-                              /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(divsf3.o) (__mulsi3)
-/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(div.o)
-                              /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(divsf3.o) (__divsi3)
-/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clzsi2.o)
-                              /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(addsf3.o) (__clzsi2)
-/home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clz.o)
-                              /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clzsi2.o) (__clz_tab)
 
 Discarded input sections
 
- .group         0x00000000        0xc /tmp/ccwgTEZf.o
- .group         0x00000000        0xc /tmp/ccwgTEZf.o
- .group         0x00000000        0xc /tmp/ccwgTEZf.o
- .group         0x00000000        0xc /tmp/ccwgTEZf.o
- .group         0x00000000        0xc /tmp/ccwgTEZf.o
- .group         0x00000000        0xc /tmp/ccwgTEZf.o
- .group         0x00000000        0xc /tmp/ccwgTEZf.o
- .group         0x00000000        0x8 /tmp/ccwgTEZf.o
- .group         0x00000000        0xc /tmp/ccwgTEZf.o
- .group         0x00000000        0xc /tmp/ccwgTEZf.o
- .group         0x00000000        0xc /tmp/ccwgTEZf.o
- .group         0x00000000        0x8 /tmp/ccwgTEZf.o
- .group         0x00000000        0xc /tmp/ccwgTEZf.o
- .group         0x00000000        0xc /tmp/ccwgTEZf.o
- .group         0x00000000        0xc /tmp/ccwgTEZf.o
- .group         0x00000000        0xc /tmp/ccwgTEZf.o
- .group         0x00000000        0xc /tmp/ccwgTEZf.o
+ .group         0x00000000        0xc /tmp/ccALqGob.o
+ .group         0x00000000        0xc /tmp/ccALqGob.o
+ .group         0x00000000        0xc /tmp/ccALqGob.o
+ .group         0x00000000        0xc /tmp/ccALqGob.o
+ .group         0x00000000        0xc /tmp/ccALqGob.o
+ .group         0x00000000        0xc /tmp/ccALqGob.o
+ .group         0x00000000        0xc /tmp/ccALqGob.o
+ .group         0x00000000        0xc /tmp/ccALqGob.o
+ .group         0x00000000        0xc /tmp/ccALqGob.o
 
 Memory Configuration
 
@@ -76,297 +20,122 @@ RAM              0x00000000         0x00008000         xrw
 Linker script and memory map
 
 
-.text           0x00000000     0x437c
+.text           0x00000000      0x5b4
                 0x00000000                        . = ALIGN (0x4)
  *(.text)
- .text          0x00000000        0xc /tmp/ccV3yBng.o
- .text          0x0000000c      0x490 /tmp/ccwgTEZf.o
+ .text          0x00000000        0xc /tmp/ccMym6fc.o
+ .text          0x0000000c      0x1a8 /tmp/ccALqGob.o
                 0x0000000c                AXISoCQuadCore::CPU1::EntryPoint()
-                0x00000048                AXISoCQuadCore::CPU1::HardcodedValues()
-                0x000000e4                AXISoCQuadCore::CPU1::FPUTest()
-                0x00000104                AXISoCQuadCore::CPU1::WS2812Test()
-                0x00000204                AXISoCQuadCore::CPU1::TrigTest()
-                0x00000368                AXISoCQuadCore::CPU1::PWMTest()
- .text          0x0000049c       0x2c /tmp/ccFMdYmf.o
-                0x0000049c                main
- .text          0x000004c8        0x0 /tmp/ccdchCVg.o
- .text          0x000004c8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_cos.o)
- .text          0x000004c8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_sin.o)
- .text          0x000004c8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_cos.o)
- .text          0x000004c8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_sin.o)
- .text          0x000004c8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-ef_rem_pio2.o)
- .text          0x000004c8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_fabs.o)
- .text          0x000004c8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_rem_pio2.o)
- .text          0x000004c8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_floor.o)
- .text          0x000004c8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_scalbn.o)
- .text          0x000004c8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(addsf3.o)
- .text          0x000004c8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(divsf3.o)
- .text          0x000004c8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(eqsf2.o)
- .text          0x000004c8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(gesf2.o)
- .text          0x000004c8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(mulsf3.o)
- .text          0x000004c8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(subsf3.o)
- .text          0x000004c8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixsfsi.o)
- .text          0x000004c8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixunssfsi.o)
- .text          0x000004c8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatsisf.o)
- .text          0x000004c8        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatunsisf.o)
- .text          0x000004c8       0x24 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(muldi3.o)
-                0x000004c8                __mulsi3
- .text          0x000004ec       0xb4 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(div.o)
-                0x000004ec                __divsi3
-                0x000004f4                __hidden___udivsi3
-                0x000004f4                __udivsi3
-                0x0000053c                __umodsi3
-                0x00000570                __modsi3
- .text          0x000005a0        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clzsi2.o)
- .text          0x000005a0        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clz.o)
+                0x00000048                AXISoCQuadCore::CPU1::CounterTest()
+                0x00000094                AXISoCQuadCore::CPU1::HardcodedValues()
+                0x00000130                AXISoCQuadCore::CPU1::FPUTest()
+                0x00000150                AXISoCQuadCore::CPU1::WS2812Test()
+                0x00000170                AXISoCQuadCore::CPU1::TrigTest()
+                0x00000190                AXISoCQuadCore::CPU1::PWMTest()
+ .text          0x000001b4       0x2c /tmp/ccgnBAQb.o
+                0x000001b4                main
+ .text          0x000001e0        0x0 /tmp/ccAQ0IOc.o
  *(.text*)
  .text._ZN5qusoc4Wait6ClocksEPVmm
-                0x000005a0       0x4c /tmp/ccwgTEZf.o
-                0x000005a0                qusoc::Wait::Clocks(unsigned long volatile*, unsigned long)
+                0x000001e0       0x4c /tmp/ccALqGob.o
+                0x000001e0                qusoc::Wait::Clocks(unsigned long volatile*, unsigned long)
  .text._ZN5qusoc5IWaitC2Ev
-                0x000005ec       0x30 /tmp/ccwgTEZf.o
-                0x000005ec                qusoc::IWait::IWait()
-                0x000005ec                qusoc::IWait::IWait()
+                0x0000022c       0x2c /tmp/ccALqGob.o
+                0x0000022c                qusoc::IWait::IWait()
+                0x0000022c                qusoc::IWait::IWait()
  .text._ZN5qusoc7CPUWaitC2EPVm
-                0x0000061c       0x54 /tmp/ccwgTEZf.o
-                0x0000061c                qusoc::CPUWait::CPUWait(unsigned long volatile*)
-                0x0000061c                qusoc::CPUWait::CPUWait(unsigned long volatile*)
+                0x00000258       0x50 /tmp/ccALqGob.o
+                0x00000258                qusoc::CPUWait::CPUWait(unsigned long volatile*)
+                0x00000258                qusoc::CPUWait::CPUWait(unsigned long volatile*)
  .text._ZN5qusoc8CPU1WaitC2Ev
-                0x00000670       0x4c /tmp/ccwgTEZf.o
-                0x00000670                qusoc::CPU1Wait::CPU1Wait()
-                0x00000670                qusoc::CPU1Wait::CPU1Wait()
+                0x000002a8       0x48 /tmp/ccALqGob.o
+                0x000002a8                qusoc::CPU1Wait::CPU1Wait()
+                0x000002a8                qusoc::CPU1Wait::CPU1Wait()
  .text._ZN5qusoc8CPU1Wait6ClocksEm
-                0x000006bc       0x40 /tmp/ccwgTEZf.o
-                0x000006bc                qusoc::CPU1Wait::Clocks(unsigned long)
- .text._ZSt3cosf
-                0x000006fc       0x34 /tmp/ccwgTEZf.o
-                0x000006fc                std::cos(float)
- .text._ZSt3sinf
-                0x00000730       0x34 /tmp/ccwgTEZf.o
-                0x00000730                std::sin(float)
- .text._ZN5qusoc11HardwarePWM9UpdatePtrEv
-                0x00000764       0x34 /tmp/ccwgTEZf.o
-                0x00000764                qusoc::HardwarePWM::UpdatePtr()
- .text._ZN5qusoc11HardwarePWMC2EPVmmm
-                0x00000798       0x70 /tmp/ccwgTEZf.o
-                0x00000798                qusoc::HardwarePWM::HardwarePWM(unsigned long volatile*, unsigned long, unsigned long)
-                0x00000798                qusoc::HardwarePWM::HardwarePWM(unsigned long volatile*, unsigned long, unsigned long)
- .text._ZN5qusoc11HardwarePWM8SetRatioEf
-                0x00000808       0x90 /tmp/ccwgTEZf.o
-                0x00000808                qusoc::HardwarePWM::SetRatio(float)
- .text._ZN5qusoc14HardwareWS28124WordEm
-                0x00000898       0x54 /tmp/ccwgTEZf.o
-                0x00000898                qusoc::HardwareWS2812::Word(unsigned long)
- .text._ZN5qusoc14HardwareWS2812C2EPNS_5IWaitEPVm
-                0x000008ec       0x40 /tmp/ccwgTEZf.o
-                0x000008ec                qusoc::HardwareWS2812::HardwareWS2812(qusoc::IWait*, unsigned long volatile*)
-                0x000008ec                qusoc::HardwareWS2812::HardwareWS2812(qusoc::IWait*, unsigned long volatile*)
- .text._ZN5qusoc14HardwareWS28129ByteArrayEmmPh
-                0x0000092c       0xe4 /tmp/ccwgTEZf.o
-                0x0000092c                qusoc::HardwareWS2812::ByteArray(unsigned long, unsigned long, unsigned char*)
+                0x000002f0       0x40 /tmp/ccALqGob.o
+                0x000002f0                qusoc::CPU1Wait::Clocks(unsigned long)
  .text._ZN14AXISoCQuadCore4CPU1C2Ev
-                0x00000a10       0x34 /tmp/ccwgTEZf.o
-                0x00000a10                AXISoCQuadCore::CPU1::CPU1()
-                0x00000a10                AXISoCQuadCore::CPU1::CPU1()
- .text.cosf     0x00000a44       0xc0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_cos.o)
-                0x00000a44                cosf
- .text.sinf     0x00000b04       0xc4 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_sin.o)
-                0x00000b04                sinf
- .text.__kernel_cosf
-                0x00000bc8      0x2b0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_cos.o)
-                0x00000bc8                __kernel_cosf
- .text.__kernel_sinf
-                0x00000e78      0x1a8 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_sin.o)
-                0x00000e78                __kernel_sinf
- .text.__ieee754_rem_pio2f
-                0x00001020      0x500 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-ef_rem_pio2.o)
-                0x00001020                __ieee754_rem_pio2f
- .text.fabsf    0x00001520        0xc /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_fabs.o)
-                0x00001520                fabsf
- .text.__kernel_rem_pio2f
-                0x0000152c      0xa98 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_rem_pio2.o)
-                0x0000152c                __kernel_rem_pio2f
- .text.floorf   0x00001fc4      0x16c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_floor.o)
-                0x00001fc4                floorf
- .text.scalbnf  0x00002130      0x164 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_scalbn.o)
-                0x00002130                scalbnf
- .text.__addsf3
-                0x00002294      0x4d8 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(addsf3.o)
-                0x00002294                __addsf3
- .text.__divsf3
-                0x0000276c      0x470 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(divsf3.o)
-                0x0000276c                __divsf3
- .text.__eqsf2  0x00002bdc       0x74 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(eqsf2.o)
-                0x00002bdc                __nesf2
-                0x00002bdc                __eqsf2
- .text.__gesf2  0x00002c50       0xc8 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(gesf2.o)
-                0x00002c50                __gtsf2
-                0x00002c50                __gesf2
- .text.__mulsf3
-                0x00002d18      0x40c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(mulsf3.o)
-                0x00002d18                __mulsf3
- .text.__subsf3
-                0x00003124      0x520 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(subsf3.o)
-                0x00003124                __subsf3
- .text.__fixsfsi
-                0x00003644       0x74 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixsfsi.o)
-                0x00003644                __fixsfsi
- .text.__fixunssfsi
-                0x000036b8       0x60 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixunssfsi.o)
-                0x000036b8                __fixunssfsi
- .text.__floatsisf
-                0x00003718      0x118 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatsisf.o)
-                0x00003718                __floatsisf
- .text.__floatunsisf
-                0x00003830      0x118 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatunsisf.o)
-                0x00003830                __floatunsisf
- .text.__clzsi2
-                0x00003948       0x88 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clzsi2.o)
-                0x00003948                __clzsi2
+                0x00000330       0x34 /tmp/ccALqGob.o
+                0x00000330                AXISoCQuadCore::CPU1::CPU1()
+                0x00000330                AXISoCQuadCore::CPU1::CPU1()
  *(.rodata)
- .rodata        0x000039d0       0x50 /tmp/ccwgTEZf.o
  *(.rodata*)
  .rodata._ZTVN5qusoc8CPU1WaitE
-                0x00003a20        0xc /tmp/ccwgTEZf.o
-                0x00003a20                vtable for qusoc::CPU1Wait
+                0x00000364        0xc /tmp/ccALqGob.o
+                0x00000364                vtable for qusoc::CPU1Wait
  .rodata._ZTVN5qusoc7CPUWaitE
-                0x00003a2c        0xc /tmp/ccwgTEZf.o
-                0x00003a2c                vtable for qusoc::CPUWait
+                0x00000370        0xc /tmp/ccALqGob.o
+                0x00000370                vtable for qusoc::CPUWait
  .rodata._ZTVN5qusoc5IWaitE
-                0x00003a38        0xc /tmp/ccwgTEZf.o
-                0x00003a38                vtable for qusoc::IWait
- .rodata.npio2_hw
-                0x00003a44       0x80 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-ef_rem_pio2.o)
- .rodata.two_over_pi
-                0x00003ac4      0x318 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-ef_rem_pio2.o)
- .rodata.PIo2   0x00003ddc       0x2c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_rem_pio2.o)
- .rodata.init_jk
-                0x00003e08        0xc /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_rem_pio2.o)
- .rodata.__divsf3
-                0x00003e14       0xa8 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(divsf3.o)
- .rodata.__clz_tab
-                0x00003ebc      0x100 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clz.o)
-                0x00003ebc                __clz_tab
+                0x0000037c        0xc /tmp/ccALqGob.o
+                0x0000037c                vtable for qusoc::IWait
  *(.srodata)
  *(.srodata*)
- .srodata.cst4  0x00003fbc       0x8c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_cos.o)
-                                 0x28 (size before relaxing)
- .srodata.cst4  0x00004048       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_sin.o)
- .srodata.cst4  0x00004048       0x24 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-ef_rem_pio2.o)
- .srodata.cst4  0x00004048       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_rem_pio2.o)
- .srodata.cst4  0x00004048        0xc /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_floor.o)
- .srodata.cst4  0x00004048       0x18 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_scalbn.o)
  *(.eh_frame)
- .eh_frame      0x00004048      0x2f8 /tmp/ccwgTEZf.o
- .eh_frame      0x00004340       0x3c /tmp/ccFMdYmf.o
+ .eh_frame      0x00000388      0x1f0 /tmp/ccALqGob.o
+ .eh_frame      0x00000578       0x3c /tmp/ccgnBAQb.o
  *(.eh_frame*)
-                0x0000437c                        . = ALIGN (0x4)
-                0x0000437c                        _etext = .
-                0x0000437c                        _sidata = _etext
+                0x000005b4                        . = ALIGN (0x4)
+                0x000005b4                        _etext = .
+                0x000005b4                        _sidata = _etext
 
-.rela.dyn       0x0000437c        0x0
+.rela.dyn       0x000005b4        0x0
  .rela.text._ZN5qusoc5IWaitC2Ev
-                0x0000437c        0x0 /tmp/ccV3yBng.o
+                0x000005b4        0x0 /tmp/ccMym6fc.o
  .rela.text._ZN5qusoc7CPUWaitC2EPVm
-                0x0000437c        0x0 /tmp/ccV3yBng.o
+                0x000005b4        0x0 /tmp/ccMym6fc.o
  .rela.text._ZN5qusoc8CPU1WaitC2Ev
-                0x0000437c        0x0 /tmp/ccV3yBng.o
+                0x000005b4        0x0 /tmp/ccMym6fc.o
  .rela.rodata._ZTVN5qusoc8CPU1WaitE
-                0x0000437c        0x0 /tmp/ccV3yBng.o
+                0x000005b4        0x0 /tmp/ccMym6fc.o
  .rela.rodata._ZTVN5qusoc7CPUWaitE
-                0x0000437c        0x0 /tmp/ccV3yBng.o
+                0x000005b4        0x0 /tmp/ccMym6fc.o
  .rela.rodata._ZTVN5qusoc5IWaitE
-                0x0000437c        0x0 /tmp/ccV3yBng.o
+                0x000005b4        0x0 /tmp/ccMym6fc.o
 
-.data           0x0000437c       0x18
-                0x0000437c                        . = ALIGN (0x4)
-                0x0000437c                        _sdata = .
-                0x0000437c                        _ram_start = .
+.data           0x000005b4       0x18
+                0x000005b4                        . = ALIGN (0x4)
+                0x000005b4                        _sdata = .
+                0x000005b4                        _ram_start = .
  *(.data)
- .data          0x0000437c        0x0 /tmp/ccV3yBng.o
- .data          0x0000437c        0x0 /tmp/ccwgTEZf.o
- .data          0x0000437c        0x0 /tmp/ccFMdYmf.o
- .data          0x0000437c        0x0 /tmp/ccdchCVg.o
- .data          0x0000437c        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_cos.o)
- .data          0x0000437c        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_sin.o)
- .data          0x0000437c        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_cos.o)
- .data          0x0000437c        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_sin.o)
- .data          0x0000437c        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-ef_rem_pio2.o)
- .data          0x0000437c        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_fabs.o)
- .data          0x0000437c        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_rem_pio2.o)
- .data          0x0000437c        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_floor.o)
- .data          0x0000437c        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_scalbn.o)
- .data          0x0000437c        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(addsf3.o)
- .data          0x0000437c        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(divsf3.o)
- .data          0x0000437c        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(eqsf2.o)
- .data          0x0000437c        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(gesf2.o)
- .data          0x0000437c        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(mulsf3.o)
- .data          0x0000437c        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(subsf3.o)
- .data          0x0000437c        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixsfsi.o)
- .data          0x0000437c        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixunssfsi.o)
- .data          0x0000437c        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatsisf.o)
- .data          0x0000437c        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatunsisf.o)
- .data          0x0000437c        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(muldi3.o)
- .data          0x0000437c        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(div.o)
- .data          0x0000437c        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clzsi2.o)
- .data          0x0000437c        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clz.o)
+ .data          0x000005b4        0x0 /tmp/ccMym6fc.o
+ .data          0x000005b4        0x0 /tmp/ccALqGob.o
+ .data          0x000005b4        0x0 /tmp/ccgnBAQb.o
+ .data          0x000005b4        0x0 /tmp/ccAQ0IOc.o
  *(.data*)
  *(.sdata)
- .sdata         0x0000437c       0x18 /tmp/ccdchCVg.o
-                0x0000437c                qusoc::LED8x8::StopSign
-                0x00004384                qusoc::LED8x8::RightArrow
-                0x0000438c                qusoc::LED8x8::LeftArrow
+ .sdata         0x000005b4       0x18 /tmp/ccAQ0IOc.o
+                0x000005b4                qusoc::LED8x8::StopSign
+                0x000005bc                qusoc::LED8x8::RightArrow
+                0x000005c4                qusoc::LED8x8::LeftArrow
  *(.sdata*)
  *(.init_array)
  *(.init_array*)
-                0x00004394                        . = ALIGN (0x4)
-                0x00004394                        _edata = .
+                0x000005cc                        . = ALIGN (0x4)
+                0x000005cc                        _edata = .
 
-.bss            0x00004394        0x0
-                0x00004394                        . = ALIGN (0x4)
-                0x00004394                        _sbss = .
+.bss            0x000005cc        0x0
+                0x000005cc                        . = ALIGN (0x4)
+                0x000005cc                        _sbss = .
  *(.bss)
- .bss           0x00004394        0x0 /tmp/ccV3yBng.o
- .bss           0x00004394        0x0 /tmp/ccwgTEZf.o
- .bss           0x00004394        0x0 /tmp/ccFMdYmf.o
- .bss           0x00004394        0x0 /tmp/ccdchCVg.o
- .bss           0x00004394        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_cos.o)
- .bss           0x00004394        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_sin.o)
- .bss           0x00004394        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_cos.o)
- .bss           0x00004394        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_sin.o)
- .bss           0x00004394        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-ef_rem_pio2.o)
- .bss           0x00004394        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_fabs.o)
- .bss           0x00004394        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_rem_pio2.o)
- .bss           0x00004394        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_floor.o)
- .bss           0x00004394        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_scalbn.o)
- .bss           0x00004394        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(addsf3.o)
- .bss           0x00004394        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(divsf3.o)
- .bss           0x00004394        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(eqsf2.o)
- .bss           0x00004394        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(gesf2.o)
- .bss           0x00004394        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(mulsf3.o)
- .bss           0x00004394        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(subsf3.o)
- .bss           0x00004394        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixsfsi.o)
- .bss           0x00004394        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixunssfsi.o)
- .bss           0x00004394        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatsisf.o)
- .bss           0x00004394        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatunsisf.o)
- .bss           0x00004394        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(muldi3.o)
- .bss           0x00004394        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(div.o)
- .bss           0x00004394        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clzsi2.o)
- .bss           0x00004394        0x0 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clz.o)
+ .bss           0x000005cc        0x0 /tmp/ccMym6fc.o
+ .bss           0x000005cc        0x0 /tmp/ccALqGob.o
+ .bss           0x000005cc        0x0 /tmp/ccgnBAQb.o
+ .bss           0x000005cc        0x0 /tmp/ccAQ0IOc.o
  *(.bss*)
  *(.sbss)
  *(.sbss*)
  *(COMMON)
-                0x00004394                        . = ALIGN (0x4)
-                0x00004394                        _ebss = .
+                0x000005cc                        . = ALIGN (0x4)
+                0x000005cc                        _ebss = .
 
-.heap           0x00004394        0x0
-                0x00004394                        . = ALIGN (0x4)
-                0x00004394                        _heap_start = .
-LOAD /tmp/ccV3yBng.o
-LOAD /tmp/ccwgTEZf.o
-LOAD /tmp/ccFMdYmf.o
-LOAD /tmp/ccdchCVg.o
+.heap           0x000005cc        0x0
+                0x000005cc                        . = ALIGN (0x4)
+                0x000005cc                        _heap_start = .
+LOAD /tmp/ccMym6fc.o
+LOAD /tmp/ccALqGob.o
+LOAD /tmp/ccgnBAQb.o
+LOAD /tmp/ccAQ0IOc.o
 LOAD /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a
 LOAD /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a
 START GROUP
@@ -379,212 +148,47 @@ OUTPUT(firmware.elf elf32-littleriscv)
 .riscv.attributes
                 0x00000000       0x1c
  .riscv.attributes
-                0x00000000       0x1a /tmp/ccV3yBng.o
+                0x00000000       0x1a /tmp/ccMym6fc.o
  .riscv.attributes
-                0x0000001a       0x1c /tmp/ccwgTEZf.o
+                0x0000001a       0x1c /tmp/ccALqGob.o
  .riscv.attributes
-                0x00000036       0x1c /tmp/ccFMdYmf.o
+                0x00000036       0x1c /tmp/ccgnBAQb.o
  .riscv.attributes
-                0x00000052       0x1c /tmp/ccdchCVg.o
- .riscv.attributes
-                0x0000006e       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_cos.o)
- .riscv.attributes
-                0x0000008a       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_sin.o)
- .riscv.attributes
-                0x000000a6       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_cos.o)
- .riscv.attributes
-                0x000000c2       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_sin.o)
- .riscv.attributes
-                0x000000de       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-ef_rem_pio2.o)
- .riscv.attributes
-                0x000000fa       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_fabs.o)
- .riscv.attributes
-                0x00000116       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_rem_pio2.o)
- .riscv.attributes
-                0x00000132       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_floor.o)
- .riscv.attributes
-                0x0000014e       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_scalbn.o)
- .riscv.attributes
-                0x0000016a       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(addsf3.o)
- .riscv.attributes
-                0x00000186       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(divsf3.o)
- .riscv.attributes
-                0x000001a2       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(eqsf2.o)
- .riscv.attributes
-                0x000001be       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(gesf2.o)
- .riscv.attributes
-                0x000001da       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(mulsf3.o)
- .riscv.attributes
-                0x000001f6       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(subsf3.o)
- .riscv.attributes
-                0x00000212       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixsfsi.o)
- .riscv.attributes
-                0x0000022e       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixunssfsi.o)
- .riscv.attributes
-                0x0000024a       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatsisf.o)
- .riscv.attributes
-                0x00000266       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatunsisf.o)
- .riscv.attributes
-                0x00000282       0x1a /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(muldi3.o)
- .riscv.attributes
-                0x0000029c       0x1a /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(div.o)
- .riscv.attributes
-                0x000002b6       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clzsi2.o)
- .riscv.attributes
-                0x000002d2       0x1c /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clz.o)
+                0x00000052       0x1c /tmp/ccAQ0IOc.o
 
 .comment        0x00000000       0x33
- .comment       0x00000000       0x33 /tmp/ccwgTEZf.o
+ .comment       0x00000000       0x33 /tmp/ccALqGob.o
                                  0x34 (size before relaxing)
- .comment       0x00000033       0x34 /tmp/ccFMdYmf.o
- .comment       0x00000033       0x34 /tmp/ccdchCVg.o
- .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_cos.o)
- .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_sin.o)
- .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_cos.o)
- .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_sin.o)
- .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-ef_rem_pio2.o)
- .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_fabs.o)
- .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_rem_pio2.o)
- .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_floor.o)
- .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_scalbn.o)
- .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(addsf3.o)
- .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(divsf3.o)
- .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(eqsf2.o)
- .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(gesf2.o)
- .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(mulsf3.o)
- .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(subsf3.o)
- .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixsfsi.o)
- .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixunssfsi.o)
- .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatsisf.o)
- .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatunsisf.o)
- .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clzsi2.o)
- .comment       0x00000033       0x34 /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clz.o)
+ .comment       0x00000033       0x34 /tmp/ccgnBAQb.o
+ .comment       0x00000033       0x34 /tmp/ccAQ0IOc.o
 
 Cross Reference Table
 
 Symbol                                            File
-AXISoCQuadCore::CPU1::CPU1()                      /tmp/ccwgTEZf.o
-AXISoCQuadCore::CPU1::CPU1()                      /tmp/ccwgTEZf.o
-AXISoCQuadCore::CPU1::EntryPoint()                /tmp/ccwgTEZf.o
-                                                  /tmp/ccFMdYmf.o
-AXISoCQuadCore::CPU1::FPUTest()                   /tmp/ccwgTEZf.o
-AXISoCQuadCore::CPU1::HardcodedValues()           /tmp/ccwgTEZf.o
-AXISoCQuadCore::CPU1::PWMTest()                   /tmp/ccwgTEZf.o
-AXISoCQuadCore::CPU1::TrigTest()                  /tmp/ccwgTEZf.o
-AXISoCQuadCore::CPU1::WS2812Test()                /tmp/ccwgTEZf.o
-__addsf3                                          /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(addsf3.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_scalbn.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_floor.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_rem_pio2.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-ef_rem_pio2.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_sin.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_cos.o)
-                                                  /tmp/ccwgTEZf.o
-__clz_tab                                         /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clz.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clzsi2.o)
-__clzsi2                                          /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(_clzsi2.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatunsisf.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatsisf.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(subsf3.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(mulsf3.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(divsf3.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(addsf3.o)
-__cxa_pure_virtual                                /tmp/ccwgTEZf.o
-__divsf3                                          /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(divsf3.o)
-                                                  /tmp/ccwgTEZf.o
-__divsi3                                          /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(div.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(divsf3.o)
-__eqsf2                                           /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(eqsf2.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_rem_pio2.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-ef_rem_pio2.o)
-__fixsfsi                                         /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixsfsi.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_rem_pio2.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-ef_rem_pio2.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_sin.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_cos.o)
-__fixunssfsi                                      /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(fixunssfsi.o)
-                                                  /tmp/ccwgTEZf.o
-__floatsisf                                       /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatsisf.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_rem_pio2.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-ef_rem_pio2.o)
-__floatunsisf                                     /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(floatunsisf.o)
-                                                  /tmp/ccwgTEZf.o
-__gesf2                                           /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(gesf2.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_rem_pio2.o)
-__gtsf2                                           /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(gesf2.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_floor.o)
-__hidden___udivsi3                                /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(div.o)
-__ieee754_rem_pio2f                               /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-ef_rem_pio2.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_sin.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_cos.o)
-__kernel_cosf                                     /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_cos.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_sin.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_cos.o)
-__kernel_rem_pio2f                                /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_rem_pio2.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-ef_rem_pio2.o)
-__kernel_sinf                                     /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_sin.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_sin.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_cos.o)
-__modsi3                                          /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(div.o)
-__mulsf3                                          /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(mulsf3.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_scalbn.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_rem_pio2.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-ef_rem_pio2.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_sin.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_cos.o)
-                                                  /tmp/ccwgTEZf.o
-__mulsi3                                          /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(muldi3.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(mulsf3.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(divsf3.o)
-__nesf2                                           /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(eqsf2.o)
-__subsf3                                          /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(subsf3.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_rem_pio2.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-ef_rem_pio2.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_sin.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_cos.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_sin.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_cos.o)
-                                                  /tmp/ccwgTEZf.o
-__udivsi3                                         /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(div.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(divsf3.o)
-__umodsi3                                         /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(div.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a(divsf3.o)
-cosf                                              /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_cos.o)
-                                                  /tmp/ccwgTEZf.o
-fabsf                                             /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_fabs.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-ef_rem_pio2.o)
-floorf                                            /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_floor.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_rem_pio2.o)
-main                                              /tmp/ccFMdYmf.o
-                                                  /tmp/ccV3yBng.o
-qusoc::CPU1Wait::CPU1Wait()                       /tmp/ccwgTEZf.o
-qusoc::CPU1Wait::CPU1Wait()                       /tmp/ccwgTEZf.o
-qusoc::CPU1Wait::Clocks(unsigned long)            /tmp/ccwgTEZf.o
-qusoc::CPUWait::CPUWait(unsigned long volatile*)  /tmp/ccwgTEZf.o
-qusoc::CPUWait::CPUWait(unsigned long volatile*)  /tmp/ccwgTEZf.o
-qusoc::HardwarePWM::HardwarePWM(unsigned long volatile*, unsigned long, unsigned long) /tmp/ccwgTEZf.o
-qusoc::HardwarePWM::HardwarePWM(unsigned long volatile*, unsigned long, unsigned long) /tmp/ccwgTEZf.o
-qusoc::HardwarePWM::SetRatio(float)               /tmp/ccwgTEZf.o
-qusoc::HardwarePWM::UpdatePtr()                   /tmp/ccwgTEZf.o
-qusoc::HardwareWS2812::ByteArray(unsigned long, unsigned long, unsigned char*) /tmp/ccwgTEZf.o
-qusoc::HardwareWS2812::HardwareWS2812(qusoc::IWait*, unsigned long volatile*) /tmp/ccwgTEZf.o
-qusoc::HardwareWS2812::HardwareWS2812(qusoc::IWait*, unsigned long volatile*) /tmp/ccwgTEZf.o
-qusoc::HardwareWS2812::Word(unsigned long)        /tmp/ccwgTEZf.o
-qusoc::IWait::IWait()                             /tmp/ccwgTEZf.o
-qusoc::IWait::IWait()                             /tmp/ccwgTEZf.o
-qusoc::LED8x8::LeftArrow                          /tmp/ccdchCVg.o
-                                                  /tmp/ccwgTEZf.o
-qusoc::LED8x8::RightArrow                         /tmp/ccdchCVg.o
-                                                  /tmp/ccwgTEZf.o
-qusoc::LED8x8::StopSign                           /tmp/ccdchCVg.o
-                                                  /tmp/ccwgTEZf.o
-qusoc::Wait::Clocks(unsigned long volatile*, unsigned long) /tmp/ccwgTEZf.o
-scalbnf                                           /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_scalbn.o)
-                                                  /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-kf_rem_pio2.o)
-sinf                                              /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a(libm_a-sf_sin.o)
-                                                  /tmp/ccwgTEZf.o
-std::cos(float)                                   /tmp/ccwgTEZf.o
-std::sin(float)                                   /tmp/ccwgTEZf.o
-vtable for qusoc::CPU1Wait                        /tmp/ccwgTEZf.o
-vtable for qusoc::CPUWait                         /tmp/ccwgTEZf.o
-vtable for qusoc::IWait                           /tmp/ccwgTEZf.o
+AXISoCQuadCore::CPU1::CPU1()                      /tmp/ccALqGob.o
+AXISoCQuadCore::CPU1::CPU1()                      /tmp/ccALqGob.o
+AXISoCQuadCore::CPU1::CounterTest()               /tmp/ccALqGob.o
+AXISoCQuadCore::CPU1::EntryPoint()                /tmp/ccALqGob.o
+                                                  /tmp/ccgnBAQb.o
+AXISoCQuadCore::CPU1::FPUTest()                   /tmp/ccALqGob.o
+AXISoCQuadCore::CPU1::HardcodedValues()           /tmp/ccALqGob.o
+AXISoCQuadCore::CPU1::PWMTest()                   /tmp/ccALqGob.o
+AXISoCQuadCore::CPU1::TrigTest()                  /tmp/ccALqGob.o
+AXISoCQuadCore::CPU1::WS2812Test()                /tmp/ccALqGob.o
+__cxa_pure_virtual                                /tmp/ccALqGob.o
+main                                              /tmp/ccgnBAQb.o
+                                                  /tmp/ccMym6fc.o
+qusoc::CPU1Wait::CPU1Wait()                       /tmp/ccALqGob.o
+qusoc::CPU1Wait::CPU1Wait()                       /tmp/ccALqGob.o
+qusoc::CPU1Wait::Clocks(unsigned long)            /tmp/ccALqGob.o
+qusoc::CPUWait::CPUWait(unsigned long volatile*)  /tmp/ccALqGob.o
+qusoc::CPUWait::CPUWait(unsigned long volatile*)  /tmp/ccALqGob.o
+qusoc::IWait::IWait()                             /tmp/ccALqGob.o
+qusoc::IWait::IWait()                             /tmp/ccALqGob.o
+qusoc::LED8x8::LeftArrow                          /tmp/ccAQ0IOc.o
+qusoc::LED8x8::RightArrow                         /tmp/ccAQ0IOc.o
+qusoc::LED8x8::StopSign                           /tmp/ccAQ0IOc.o
+qusoc::Wait::Clocks(unsigned long volatile*, unsigned long) /tmp/ccALqGob.o
+vtable for qusoc::CPU1Wait                        /tmp/ccALqGob.o
+vtable for qusoc::CPUWait                         /tmp/ccALqGob.o
+vtable for qusoc::IWait                           /tmp/ccALqGob.o

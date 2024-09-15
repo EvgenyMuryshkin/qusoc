@@ -110,5 +110,32 @@ namespace axi.modules
 
             NextState.wACK = we;
         }
+
+        [RTLNonSynthesizable]
+        public void PushByteToFIFO(byte data)
+        {
+            State.buffer[State.wAddr] = data;
+            State.wAddr = (State.wAddr + 1)[addrBits - 1, 0];
+        }
+
+        [RTLNonSynthesizable]
+        public void PushUint32ToFIFO(uint data)
+        {
+            var bits = new RTLBitArray(data);
+            PushByteToFIFO(bits[31, 24]);
+            PushByteToFIFO(bits[23, 16]);
+            PushByteToFIFO(bits[15, 8]);
+            PushByteToFIFO(bits[7, 0]);
+        }
+
+        [RTLNonSynthesizable]
+        public void PushUint32AsStringToFIFO(uint data)
+        {
+            var text = data.ToString("X8");
+            for (var i = 0; i < 8; i++)
+            {
+                PushByteToFIFO((byte)text[i]);
+            }
+        }
     }
 }

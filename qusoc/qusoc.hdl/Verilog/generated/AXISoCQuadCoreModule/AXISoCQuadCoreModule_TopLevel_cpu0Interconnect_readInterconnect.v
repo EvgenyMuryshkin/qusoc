@@ -34,12 +34,10 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Interconnect_readInterconnect
 	input wire [52:0] iRight1,
 	input wire [52:0] iRight2,
 	input wire [52:0] iRight3,
-	input wire [52:0] iRight4,
 	output wire [83:0] M2S0,
 	output wire [83:0] M2S1,
 	output wire [83:0] M2S2,
 	output wire [83:0] M2S3,
-	output wire [83:0] M2S4,
 	output wire [52:0] S2M0,
 	output wire [52:0] S2M1
 );
@@ -52,7 +50,7 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Interconnect_readInterconnect
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire signed [2: 0] leftCount = 3'b010;
-	wire signed [3: 0] rightCount = 4'b0101;
+	wire signed [3: 0] rightCount = 4'b0100;
 	wire InterconnectModule_L100F13L111T14_0_leftIndex = 1'b0;
 	wire InterconnectModule_L100F13L111T14_1_leftIndex = 1'b1;
 	wire AXI4ReadInteconnectModule_L22F13L28T14_0_i = 1'b0;
@@ -63,7 +61,7 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Interconnect_readInterconnect
 	wire InterconnectModule_L149F44T48_Expr = 1'b1;
 	reg [0: 0] NextState_leftAddr;
 	reg NextState_leftAddrValid;
-	reg [2: 0] NextState_rightAddr;
+	reg [1: 0] NextState_rightAddr;
 	reg NextState_rightAddrValid;
 	wire currentTXEnd;
 	wire [7: 0] muxLeftData_AR_ARID;
@@ -85,12 +83,12 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Interconnect_readInterconnect
 	wire muxRightData_R_RLAST;
 	wire [7: 0] muxRightData_R_RUSER;
 	wire muxRightData_R_RVALID;
-	wire [2: 0] rightAddr;
-	wire [2: 0] axiRightAddr;
+	wire [1: 0] rightAddr;
+	wire [1: 0] axiRightAddr;
 	wire rangeDetectorActive;
 	wire [0: 0] DuplexMux_iLeftAddr;
 	wire DuplexMux_iLeftAddrValid;
-	wire [2: 0] DuplexMux_iRightAddr;
+	wire [1: 0] DuplexMux_iRightAddr;
 	wire DuplexMux_iRightAddrValid;
 	wire [83: 0] DuplexMux_oMuxLeftData;
 	wire [52: 0] DuplexMux_oMuxRightData;
@@ -113,18 +111,18 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Interconnect_readInterconnect
 	wire TransactionDetectors1_oWaitForRestart;
 	wire [31: 0] rangeDetectorArray0_iAddress;
 	wire rangeDetectorArray0_oActive;
-	wire [2: 0] rangeDetectorArray0_oIndex;
+	wire [1: 0] rangeDetectorArray0_oIndex;
 	wire [31: 0] rangeDetectorArray1_iAddress;
 	wire rangeDetectorArray1_oActive;
-	wire [2: 0] rangeDetectorArray1_oIndex;
-	wire [2: 0] AXI4ReadInteconnectModule_L32F37T75_Index;
+	wire [1: 0] rangeDetectorArray1_oIndex;
+	wire [1: 0] AXI4ReadInteconnectModule_L32F37T75_Index;
 	wire AXI4ReadInteconnectModule_L35F46T88_Index;
 	wire [3: 0] InterconnectModule_L100F13L111T14_0_InterconnectModule_L103F21L109T22_Object;
 	wire InterconnectModule_L100F13L111T14_0_InterconnectModule_L105F36T79_AXI4ReadInteconnectModule_L44F101T138_Index;
 	wire [3: 0] InterconnectModule_L100F13L111T14_1_InterconnectModule_L103F21L109T22_Object;
 	wire InterconnectModule_L100F13L111T14_1_InterconnectModule_L105F36T79_AXI4ReadInteconnectModule_L44F101T138_Index;
 	wire [1: 0] InterconnectModule_L114F17L117T18_Object;
-	wire [438: 0] InterconnectModule_L121F17L129T18_Object;
+	wire [384: 0] InterconnectModule_L121F17L129T18_Object;
 	wire [31: 0] AXI4ReadInteconnectModule_L22F13L28T14_0_AXI4ReadInteconnectModule_L24F54L27T18_Object;
 	wire [31: 0] AXI4ReadInteconnectModule_L22F13L28T14_1_AXI4ReadInteconnectModule_L24F54L27T18_Object;
 	wire [83: 0] DuplexMux_iLeft0_DuplexMux_iLeft_HardLink;
@@ -135,14 +133,12 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Interconnect_readInterconnect
 	wire [52: 0] DuplexMux_iRight1_DuplexMux_iRight_HardLink;
 	wire [52: 0] DuplexMux_iRight2_DuplexMux_iRight_HardLink;
 	wire [52: 0] DuplexMux_iRight3_DuplexMux_iRight_HardLink;
-	wire [52: 0] DuplexMux_iRight4_DuplexMux_iRight_HardLink;
-	wire [2: 0] DuplexMux_iRightAddr_DuplexMux_iRightAddr_HardLink;
+	wire [1: 0] DuplexMux_iRightAddr_DuplexMux_iRightAddr_HardLink;
 	wire DuplexMux_iRightAddrValid_DuplexMux_iRightAddrValid_HardLink;
 	wire [83: 0] DuplexMux_oLeft0_DuplexMux_oLeft_HardLink;
 	wire [83: 0] DuplexMux_oLeft1_DuplexMux_oLeft_HardLink;
 	wire [83: 0] DuplexMux_oLeft2_DuplexMux_oLeft_HardLink;
 	wire [83: 0] DuplexMux_oLeft3_DuplexMux_oLeft_HardLink;
-	wire [83: 0] DuplexMux_oLeft4_DuplexMux_oLeft_HardLink;
 	wire [83: 0] DuplexMux_oMuxLeftData_DuplexMux_oMuxLeftData_HardLink;
 	wire [52: 0] DuplexMux_oMuxRightData_DuplexMux_oMuxRightData_HardLink;
 	wire [52: 0] DuplexMux_oRight0_DuplexMux_oRight_HardLink;
@@ -168,16 +164,16 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Interconnect_readInterconnect
 	wire TransactionDetectors1_oWaitForRestart_TransactionDetectors1_oWaitForRestart_HardLink;
 	wire [31: 0] rangeDetectorArray0_iAddress_rangeDetectorArray0_iAddress_HardLink;
 	wire rangeDetectorArray0_oActive_rangeDetectorArray0_oActive_HardLink;
-	wire [2: 0] rangeDetectorArray0_oIndex_rangeDetectorArray0_oIndex_HardLink;
+	wire [1: 0] rangeDetectorArray0_oIndex_rangeDetectorArray0_oIndex_HardLink;
 	wire [31: 0] rangeDetectorArray1_iAddress_rangeDetectorArray1_iAddress_HardLink;
 	wire rangeDetectorArray1_oActive_rangeDetectorArray1_oActive_HardLink;
-	wire [2: 0] rangeDetectorArray1_oIndex_rangeDetectorArray1_oIndex_HardLink;
+	wire [1: 0] rangeDetectorArray1_oIndex_rangeDetectorArray1_oIndex_HardLink;
 	reg [0: 0] State_leftAddr = 1'b0;
 	wire [0: 0] State_leftAddrDefault = 1'b0;
 	reg State_leftAddrValid = 1'b0;
 	wire State_leftAddrValidDefault = 1'b0;
-	reg [2: 0] State_rightAddr = 3'b000;
-	wire [2: 0] State_rightAddrDefault = 3'b000;
+	reg [1: 0] State_rightAddr = 2'b00;
+	wire [1: 0] State_rightAddrDefault = 2'b00;
 	reg State_rightAddrValid = 1'b0;
 	wire State_rightAddrValidDefault = 1'b0;
 	wire InterconnectModule_L87F40T91_AXI4ReadInteconnectModule_L43F78T151_Expr;
@@ -236,19 +232,19 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Interconnect_readInterconnect
 	wire signed [1: 0] InterconnectModule_L100F13L111T14_1_InterconnectModule_L106F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprLhs;
 	wire signed [1: 0] InterconnectModule_L100F13L111T14_1_InterconnectModule_L106F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprRhs;
 	wire [83 : 0] Inputs_iLeft [0 : 1];
-	wire [52 : 0] Inputs_iRight [0 : 4];
+	wire [52 : 0] Inputs_iRight [0 : 3];
 	wire ActiveTransactions [0 : 1];
-	wire [83 : 0] muxLeft [0 : 4];
+	wire [83 : 0] muxLeft [0 : 3];
 	wire [52 : 0] muxRight [0 : 1];
 	wire [7 : 0] muxRightData_R_RDATA [0 : 3];
 	wire Transactions [0 : 1];
 	wire TXBegin [0 : 1];
 	wire WaitForRestarts [0 : 1];
 	wire rangeDetectorActiveFlags [0 : 1];
-	wire [2 : 0] rangeDetectorIndexes [0 : 1];
+	wire [1 : 0] rangeDetectorIndexes [0 : 1];
 	wire [83 : 0] DuplexMux_iLeft [0 : 1];
-	wire [52 : 0] DuplexMux_iRight [0 : 4];
-	wire [83 : 0] DuplexMux_oLeft [0 : 4];
+	wire [52 : 0] DuplexMux_iRight [0 : 3];
+	wire [83 : 0] DuplexMux_oLeft [0 : 3];
 	wire [52 : 0] DuplexMux_oRight [0 : 1];
 	wire Encoder_iValues [0 : 1];
 	wire InterconnectModule_L78F47T105_Enumerable [0 : 1];
@@ -256,7 +252,7 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Interconnect_readInterconnect
 	wire InterconnectModule_L81F36T108_Enumerable [0 : 1];
 	wire InterconnectModule_L79F44T105_Enumerable [0 : 1];
 	wire AXI4ReadInteconnectModule_L34F53T104_Enumerable [0 : 1];
-	wire [2 : 0] AXI4ReadInteconnectModule_L31F47T97_Enumerable [0 : 1];
+	wire [1 : 0] AXI4ReadInteconnectModule_L31F47T97_Enumerable [0 : 1];
 	always @ (posedge BoardSignals_Clock)
 	begin
 		if ((BoardSignals_Reset == 1))
@@ -306,14 +302,12 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Interconnect_readInterconnect
 		.iRight1 (DuplexMux_iRight1_DuplexMux_iRight_HardLink),
 		.iRight2 (DuplexMux_iRight2_DuplexMux_iRight_HardLink),
 		.iRight3 (DuplexMux_iRight3_DuplexMux_iRight_HardLink),
-		.iRight4 (DuplexMux_iRight4_DuplexMux_iRight_HardLink),
 		.iRightAddr (DuplexMux_iRightAddr_DuplexMux_iRightAddr_HardLink),
 		.iRightAddrValid (DuplexMux_iRightAddrValid_DuplexMux_iRightAddrValid_HardLink),
 		.oLeft0 (DuplexMux_oLeft0_DuplexMux_oLeft_HardLink),
 		.oLeft1 (DuplexMux_oLeft1_DuplexMux_oLeft_HardLink),
 		.oLeft2 (DuplexMux_oLeft2_DuplexMux_oLeft_HardLink),
 		.oLeft3 (DuplexMux_oLeft3_DuplexMux_oLeft_HardLink),
-		.oLeft4 (DuplexMux_oLeft4_DuplexMux_oLeft_HardLink),
 		.oMuxLeftData (DuplexMux_oMuxLeftData_DuplexMux_oMuxLeftData_HardLink),
 		.oMuxRightData (DuplexMux_oMuxRightData_DuplexMux_oMuxRightData_HardLink),
 		.oRight0 (DuplexMux_oRight0_DuplexMux_oRight_HardLink),
@@ -488,7 +482,6 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Interconnect_readInterconnect
 	assign Inputs_iRight[1] = iRight1;
 	assign Inputs_iRight[2] = iRight2;
 	assign Inputs_iRight[3] = iRight3;
-	assign Inputs_iRight[4] = iRight4;
 	assign InterconnectModule_L78F47T105_Enumerable[0] = TransactionDetectors0_oTransaction;
 	assign InterconnectModule_L78F47T105_Enumerable[1] = TransactionDetectors1_oTransaction;
 	assign ActiveTransactions[0] = InterconnectModule_L78F47T105_Enumerable[0];
@@ -498,7 +491,6 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Interconnect_readInterconnect
 	assign muxLeft[1] = DuplexMux_oLeft[1];
 	assign muxLeft[2] = DuplexMux_oLeft[2];
 	assign muxLeft[3] = DuplexMux_oLeft[3];
-	assign muxLeft[4] = DuplexMux_oLeft[4];
 	assign muxLeftData_AR_ARID = DuplexMux_oMuxLeftData[7:0];
 	assign muxLeftData_AR_ARADDR = DuplexMux_oMuxLeftData[39:8];
 	assign muxLeftData_AR_ARLEN = DuplexMux_oMuxLeftData[47:40];
@@ -577,19 +569,17 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Interconnect_readInterconnect
 	;
 	assign InterconnectModule_L121F17L129T18_Object[168:168] = State_leftAddr;
 	assign InterconnectModule_L121F17L129T18_Object[169] = State_leftAddrValid;
-	assign InterconnectModule_L121F17L129T18_Object[434:170] = {
-		Inputs_iRight[4],
+	assign InterconnectModule_L121F17L129T18_Object[381:170] = {
 		Inputs_iRight[3],
 		Inputs_iRight[2],
 		Inputs_iRight[1],
 		Inputs_iRight[0]
 	}
 	;
-	assign InterconnectModule_L121F17L129T18_Object[437:435] = State_rightAddr;
-	assign InterconnectModule_L121F17L129T18_Object[438] = State_rightAddrValid;
-	assign DuplexMux_iRightAddrValid = InterconnectModule_L121F17L129T18_Object[438];
-	assign DuplexMux_iRightAddr = InterconnectModule_L121F17L129T18_Object[437:435];
-	assign DuplexMux_iRight[4] = InterconnectModule_L121F17L129T18_Object[434:382];
+	assign InterconnectModule_L121F17L129T18_Object[383:382] = State_rightAddr;
+	assign InterconnectModule_L121F17L129T18_Object[384] = State_rightAddrValid;
+	assign DuplexMux_iRightAddrValid = InterconnectModule_L121F17L129T18_Object[384];
+	assign DuplexMux_iRightAddr = InterconnectModule_L121F17L129T18_Object[383:382];
 	assign DuplexMux_iRight[3] = InterconnectModule_L121F17L129T18_Object[381:329];
 	assign DuplexMux_iRight[2] = InterconnectModule_L121F17L129T18_Object[328:276];
 	assign DuplexMux_iRight[1] = InterconnectModule_L121F17L129T18_Object[275:223];
@@ -606,7 +596,6 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Interconnect_readInterconnect
 	assign M2S1 = muxLeft[1];
 	assign M2S2 = muxLeft[2];
 	assign M2S3 = muxLeft[3];
-	assign M2S4 = muxLeft[4];
 	assign S2M0 = muxRight[0];
 	assign S2M1 = muxRight[1];
 	assign DuplexMux_iLeft0_DuplexMux_iLeft_HardLink = DuplexMux_iLeft[0];
@@ -617,14 +606,12 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Interconnect_readInterconnect
 	assign DuplexMux_iRight1_DuplexMux_iRight_HardLink = DuplexMux_iRight[1];
 	assign DuplexMux_iRight2_DuplexMux_iRight_HardLink = DuplexMux_iRight[2];
 	assign DuplexMux_iRight3_DuplexMux_iRight_HardLink = DuplexMux_iRight[3];
-	assign DuplexMux_iRight4_DuplexMux_iRight_HardLink = DuplexMux_iRight[4];
 	assign DuplexMux_iRightAddr_DuplexMux_iRightAddr_HardLink = DuplexMux_iRightAddr;
 	assign DuplexMux_iRightAddrValid_DuplexMux_iRightAddrValid_HardLink = DuplexMux_iRightAddrValid;
 	assign DuplexMux_oLeft[0] = DuplexMux_oLeft0_DuplexMux_oLeft_HardLink;
 	assign DuplexMux_oLeft[1] = DuplexMux_oLeft1_DuplexMux_oLeft_HardLink;
 	assign DuplexMux_oLeft[2] = DuplexMux_oLeft2_DuplexMux_oLeft_HardLink;
 	assign DuplexMux_oLeft[3] = DuplexMux_oLeft3_DuplexMux_oLeft_HardLink;
-	assign DuplexMux_oLeft[4] = DuplexMux_oLeft4_DuplexMux_oLeft_HardLink;
 	assign DuplexMux_oMuxLeftData = DuplexMux_oMuxLeftData_DuplexMux_oMuxLeftData_HardLink;
 	assign DuplexMux_oMuxRightData = DuplexMux_oMuxRightData_DuplexMux_oMuxRightData_HardLink;
 	assign DuplexMux_oRight[0] = DuplexMux_oRight0_DuplexMux_oRight_HardLink;

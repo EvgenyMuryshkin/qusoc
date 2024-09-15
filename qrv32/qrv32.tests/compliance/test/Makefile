@@ -1,4 +1,4 @@
-files = I-SLL-01.S
+files = I-ShouldPass.S
 arch = rv32i
 
 elf: $(files)

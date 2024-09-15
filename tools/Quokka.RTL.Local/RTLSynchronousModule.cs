@@ -11,6 +11,21 @@ using System.Text.RegularExpressions;
 
 namespace Quokka.RTL
 {
+    class RTLSimulatorStateOverwrite : DeepReflectionOverwrite
+    {
+        public override void DeepValueOverwrite(object value, Action<object> setResultValue, Func<object> getResultValue, Action<string, Type> unsupported)
+        {
+            base.DeepValueOverwrite(value, setResultValue, getResultValue, unsupported);
+
+            if (value is IRTLMemoryBlock memoryBlock)
+            {
+                memoryBlock.CommitSelf();
+                var resultMemoryBlock = getResultValue() as IRTLMemoryBlock;
+                resultMemoryBlock.CommitSelf();
+            }
+        }
+    }
+
     /// <summary>
     /// Base class for hardware state machine module, will be in toolkit
     /// </summary>
@@ -32,6 +47,9 @@ namespace Quokka.RTL
 
         IEnumerable<IRTLPipeline> Pipelines => PipelineProps.Select(p => p.GetValue(this)).OfType<IRTLPipeline>();
         StateBitArrayAdjust<TState> stateAdjust = new StateBitArrayAdjust<TState>();
+        RTLSimulatorStateOverwrite stateOverwrite = new RTLSimulatorStateOverwrite();
+
+        protected virtual bool UseStateDeepOverwrite => true;
 
         public RTLSynchronousModule()
         {
@@ -209,7 +227,15 @@ namespace Quokka.RTL
             foreach (var pl in Pipelines)
                 pl.Diag.Head.DeltaCycle(deltaCycle);
 
-            NextState = CopyState();
+            if (UseStateDeepOverwrite)
+            {
+                DeepReflectionOverwrite.Run(State, NextState);
+            }
+            else
+            {
+                NextState = CopyState();
+            }
+
             OnStage();
 
             stateAdjust.Run(State, NextState);
@@ -297,8 +323,15 @@ namespace Quokka.RTL
             foreach (var pl in Pipelines)
                 pl.Diag.Head.Commit();
 
-            State = NextState;
-            NextState = CopyState();
+            if (UseStateDeepOverwrite)
+            {
+                stateOverwrite.DeepOverwrite(NextState, State);
+            }
+            else
+            {
+                State = NextState;
+                NextState = CopyState();
+            }
         }
     }
 }

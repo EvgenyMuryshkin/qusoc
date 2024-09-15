@@ -243,6 +243,17 @@ namespace Quokka.RTL
                         return result;
                     }
 
+                    if (value is IRTLMemoryBlock memoryBlock)
+                    {
+                        var result = new List<VCDVariable>();
+                        // TODO: array of objects
+                        for (var idx = 0; idx < memoryBlock.Length; idx++)
+                        {
+                            result.AddRange(ToVCDVariables($"{name}{idx++}", memoryBlock.ValueAt(idx), includeToolkitTypes));
+                        }
+                        return result;
+                    }
+
                     if (RTLTypeCheck.IsSynthesizableObject(valueType))
                     {
                         var result = new List<VCDVariable>();

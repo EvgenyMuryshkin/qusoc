@@ -15,7 +15,7 @@ namespace AXISoCQuadCore
 
 		private:
 			CPU1Wait _wait;
-
+			void CounterTest();
 			void PWMTest();
 			void WS2812Test();
 			void HardcodedValues();

@@ -15,6 +15,7 @@ namespace QuSoC.Tests
     {
         public uint ClockCycles = 0;
         public uint DebuggerCalls = 0;
+        public bool BreakOnInfiniteLoops = true;
 
         Stopwatch runtime = new Stopwatch();
         public TimeSpan Duration => runtime.Elapsed;
@@ -97,7 +98,7 @@ namespace QuSoC.Tests
                     }
                 }
 
-                if (inInfiniteLoop.All(p => p.Value))
+                if (BreakOnInfiniteLoops && inInfiniteLoop.All(p => p.Value))
                     break;
 
                 if (keepRunningCheck != null && !keepRunningCheck())

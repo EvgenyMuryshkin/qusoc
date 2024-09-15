@@ -22,12 +22,14 @@ namespace axi.modules
         public AXI4MemoryModuleState(axiSize size, int depth) 
         {
             buff = Enumerable.Range(0, depth).Select(i => new byte[AXI4Tools.Bytes(size)]).ToArray();
+            //buff = new RTLMemoryBlock<byte[]>(Enumerable.Range(0, depth).Select(i => new byte[AXI4Tools.Bytes(size)]));
             rdata = new byte[AXI4Tools.Bytes(size)];
             wdata = new byte[AXI4Tools.Bytes(size)];
             wstrb = new RTLBitArray().Resized(AXI4Tools.Bytes(size));
         }
 
         public byte[][] buff;
+        //public RTLMemoryBlock<byte[]> buff;
         public byte[] rdata;
         public uint raddr;
 
@@ -56,6 +58,11 @@ namespace axi.modules
         public void Initialize(byte[][] data)
         {
             data.CopyTo(State.buff, 0);
+            //State.buff.Initialize(data);
+            //State.buff.MarkForModifications();
+            //
+            //NextState.buff.Initialize(data);
+            //NextState.buff.MarkForModifications();
         }
 
         public AXI4_S2M S2M => axiSlave.S2M;
@@ -123,7 +130,10 @@ namespace axi.modules
             foreach (var w in range(AXI4Tools.Bytes(size)))
             {
                 if (internalWE && internalWSTRB[w])
+                {
                     NextState.buff[internalWADDR][w] = internalWDATA[w];
+                    //NextState.buff.Modified((int)internalWADDR);
+                }
             }
 
             if (axiSlave.outARREADYConfirming)

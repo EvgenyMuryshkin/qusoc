@@ -221,7 +221,7 @@ namespace axi.modules
                         else if (transmitterFIFO.oWACK)
                         {
                             NextState.counter = (byte)(State.counter + 1);
-                            NextState.txWDATA = (NextState.txWDATA << 8)[31, 0];
+                            NextState.txWDATA = (State.txWDATA << 8)[31, 0];
                         }
                         else if (!transmitterFIFO.oIsFull && !State.txWE)
                         {

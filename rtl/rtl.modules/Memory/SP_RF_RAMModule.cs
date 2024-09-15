@@ -33,4 +33,27 @@ namespace RTL.Modules
             NextState.ReadData = State.Buff[Inputs.Address];
         }
     }
+
+    public class MB_SP_RF_RAMModule_State
+    {
+        public byte ReadData;
+        public RTLMemoryBlock<byte> Buff = new RTLMemoryBlock<byte>(256);
+    }
+
+    public class MB_SP_RF_RAMModule : RTLSynchronousModule<SP_RF_RAMModule_Inputs, MB_SP_RF_RAMModule_State>
+    {
+        public MB_SP_RF_RAMModule()
+        {
+        }
+
+        public byte Data => State.ReadData;
+
+        protected override void OnStage()
+        {
+            if (Inputs.WE)
+                NextState.Buff[Inputs.Address] = Inputs.WriteData;
+
+            NextState.ReadData = State.Buff[Inputs.Address];
+        }
+    }
 }

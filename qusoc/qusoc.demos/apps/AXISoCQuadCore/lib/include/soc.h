@@ -4,6 +4,8 @@
 #define AXISoCQuadCore_SOC_Reg0 (*(volatile uint32_t*)0x80000004)
 #define AXISoCQuadCore_SOC_Reg0_Float (*(volatile float*)0x80000004)
 #define AXISoCQuadCore_SOC_Reg1 (*(volatile uint32_t*)0x80000008)
+#define AXISoCQuadCore_SOC_Reg2 (*(volatile uint32_t*)0x8000000C)
+#define AXISoCQuadCore_SOC_Reg3 (*(volatile uint32_t*)0x80000010)
 
 #define AXISoCQuadCore_SOC_CPU_AutoDecrement_Ptr ((volatile uint32_t*)0x10000004)
 #define AXISoCQuadCore_SOC_CPU_AutoDecrement (*AXISoCQuadCore_SOC_CPU_AutoDecrement_Ptr)

@@ -1,6 +1,7 @@
 ﻿using AXISoC;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using QRV32.CPU;
+using Quokka.RISCV.CS2CPP.CodeModels.CPP;
 using Quokka.RTL;
 using Quokka.RTL.Simulator;
 using System;
@@ -119,6 +120,61 @@ namespace QuSoC.Tests
             }
         }
 
+        [TestMethod]
+        public async Task AXIProgrammer_ToggleReg4()
+        {
+            if (!Debugger.IsAttached)
+                return;
+
+            using (var u = new AXIProgrammerClient())
+            {
+                for (var i = 0; i < 10; i++)
+                {
+                    var reg4 = await u.readData(0x80000010);
+                    reg4 = reg4 ^ 0x1;
+                    await u.writeData(0x80000010, reg4);
+                    await Task.Delay(TimeSpan.FromMilliseconds(500));
+                }
+            }
+        }
+
+        [TestMethod]
+        public async Task AXIProgrammer_Update_CPU0_With_CPU1()
+        {
+            while (true)
+            {
+                try
+                {
+                    var cpu1Instructions = FirmwareTools.FromFolder(@"C:\code\qusoc\qusoc\qusoc.demos\apps\AXISoCQuadCore\cpu1");
+
+                    using (var u = new AXIProgrammerClient())
+                    {
+                        await u.Update(0, cpu1Instructions);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+
+        }
+
+        [TestMethod]
+        public async Task ToggleReg4()
+        {
+            using (var u = new AXISocCPUUpdater())
+            {
+                for (var i = 0; i < 10; i++)
+                {
+                    var reg4 = await u.readData(0x80000010);
+                    reg4 = reg4 ^ 0x1;
+                    await u.writeData(0x80000010, reg4);
+                    await Task.Delay(TimeSpan.FromSeconds(1));
+                }
+            }
+        }
+         
         [TestMethod]
         public async Task FloatTest()
         {
@@ -305,24 +361,47 @@ namespace QuSoC.Tests
                 try
                 {
                     //var cpu1Instructions = Inst.FromAsmFile("axisocquadcore_cpu1_update");
+                    var cpu0Instructions = FirmwareTools.FromFolder(@"C:\code\qusoc\qusoc\qusoc.demos\apps\AXISoCQuadCore\cpu0");
                     var cpu1Instructions = FirmwareTools.FromFolder(@"C:\code\qusoc\qusoc\qusoc.demos\apps\AXISoCQuadCore\cpu1");
                     //var tools = new FirmwareTools(@"C:\code\qusoc\qusoc\qusoc.demos\apps\AXISoCQuadCore\cpu1");
                     //var cpu1Instructions = tools.Instructions();
                     var looped = new[] { 0x0000006FU };
                     var topLevel = new AXISoCQuadCoreModule(
-                        cpu1Instructions,
+                        cpu0Instructions,//cpu1Instructions,
                         looped,
                         looped,
                         looped
                     );
 
-                    var sim = new AXISoCQuadCoreModuleSimulator<AXISoCQuadCoreModule>(topLevel);
+                    var programmer = topLevel.programmer;
+                    programmer.receiverFIFO.PushByteToFIFO(0x55);
+                    programmer.receiverFIFO.PushByteToFIFO(2);// Write
+                    programmer.receiverFIFO.PushUint32ToFIFO(0x80000004); // Write Address - PWM0
+                    programmer.receiverFIFO.PushUint32ToFIFO(0xAA5581FF); // Write Data
+                    programmer.receiverFIFO.PushByteToFIFO(0x55);
+                    programmer.receiverFIFO.PushByteToFIFO(1);// Read
+                    programmer.receiverFIFO.PushUint32ToFIFO(0x80000004); // Write Address - Reg0
 
-                    var reg1Values = new List<int>();
-                    topLevel.Reg0.State.bytes[3] = 255;
-                    topLevel.pwm.State.pwm[0] = 2;
-                    topLevel.pwm.State.pwm[1] = BitConverter.SingleToUInt32Bits(0.3f);
-                    topLevel.pwm.State.pwm[2] = BitConverter.SingleToUInt32Bits(0.1f);
+                    //var uart = topLevel.uart;
+                    //uart.receiverFIFO.PushByteToFIFO((byte)('5')); // write
+                    //uart.receiverFIFO.PushUint32AsStringToFIFO(0x90000100);
+                    //uart.receiverFIFO.PushUint32AsStringToFIFO(0x12345678);
+                    //var s = uart.receiverFIFO.oIsEmpty;
+
+                    var sim = new AXISoCQuadCoreModuleSimulator<AXISoCQuadCoreModule>(topLevel);
+                    sim.BreakOnInfiniteLoops = false;
+
+
+                    //var reg1Values = new List<int>();
+                    //topLevel.Reg0.State.bytes[3] = 255;
+                    //topLevel.pwm.State.pwm[0] = 2;
+                    //topLevel.pwm.State.pwm[1] = BitConverter.SingleToUInt32Bits(0.3f);
+                    //topLevel.pwm.State.pwm[2] = BitConverter.SingleToUInt32Bits(0.1f);
+                    
+                    //topLevel.Reg0.State.bytes[3] = 255;
+                    //topLevel.Reg0.State.bytes[2] = 1;
+                    //topLevel.Reg0.State.bytes[1] = 2;
+                    //topLevel.Reg0.State.bytes[0] = 3;
 
                     sim.RunToCompletion(() =>
                     {
@@ -334,11 +413,11 @@ namespace QuSoC.Tests
                         //if (!reg1Values.Contains(reg1))
                         //    reg1Values.Add(reg1);
 
-                        if (topLevel.Reg0.State.bytes[3] != 255)
-                        {
-                            reg1Values.Add(reg0);
-                            topLevel.Reg0.State.bytes[3] = 255;
-                        }
+                        //if (topLevel.Reg0.State.bytes[3] != 255)
+                        //{
+                        //    reg1Values.Add(reg0);
+                        //    topLevel.Reg0.State.bytes[3] = 255;
+                        //}
 
 
                         if (topLevel.CPU0.CPU.State.State == CPUState.IF && topLevel.CPU0.CPU.NextState.State != CPUState.IF)
@@ -346,17 +425,37 @@ namespace QuSoC.Tests
                             //Debugger.Break();
                         }
 
-                        if (topLevel.pwm.State.pwm[3] != 0)
+                        //if (topLevel.pwm.State.pwm[3] != 0)
+                        //    return false;
+
+                        var pwm0 = topLevel.pwm.State.pwm[0];
+                        var pwm1 = topLevel.pwm.State.pwm[1];
+
+                        //if (reg1 == 7)
+                        //    return false;
+
+                        //if (pwm0 != 0 && pwm1 != 0)
+                        //    return false;
+
+                        if (programmer.State.fsm == axi.modules.AXI4ProgrammerFSM.AXIReadEnd &&
+                            programmer.NextState.fsm == axi.modules.AXI4ProgrammerFSM.DispatchIdle)
+                        {
+                            var writeSync = programmer.transmitterFIFO.State.buffer[0];
+                            var readSync = programmer.transmitterFIFO.State.buffer[1];
+                            var readData = new RTLBitArray(RTLBitArrayInitType.MSB, programmer.transmitterFIFO.State.buffer.Skip(2).Take(4).ToArray());
+
+                            Assert.AreEqual<uint>(0xAA5581FF, readData);
                             return false;
+                        }
 
                         return true;// reg0 < 10;
                     });
 
-                    uint reg0Value = new RTLBitArray(topLevel.pwm.State.pwm[3]/*topLevel.Reg0.outData*/);
-                    var reg0FloatValue = BitConverter.UInt32BitsToSingle(reg0Value);
-
-                    var reg0Floats = reg1Values.Select(v => BitConverter.UInt32BitsToSingle(new RTLBitArray(v))).ToList();
-                    var pwmFloats = topLevel.pwm.State.pwm.Select(v => BitConverter.UInt32BitsToSingle(new RTLBitArray(v))).ToList();
+                    //uint reg0Value = new RTLBitArray(topLevel.pwm.State.pwm[3]/*topLevel.Reg0.outData*/);
+                    //var reg0FloatValue = BitConverter.UInt32BitsToSingle(reg0Value);
+                    //
+                    //var reg0Floats = reg1Values.Select(v => BitConverter.UInt32BitsToSingle(new RTLBitArray(v))).ToList();
+                    //var pwmFloats = topLevel.pwm.State.pwm.Select(v => BitConverter.UInt32BitsToSingle(new RTLBitArray(v))).ToList();
                 }
                 catch (Exception ex)
                 {

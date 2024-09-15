@@ -22,31 +22,62 @@ namespace AXISoC
 
     public class AXISoCQuadCoreModule : RTLCombinationalModule<AXISoCQuadCoreModuleInputs>
     {
+        internal AXI4Programmer programmer = new AXI4Programmer();
+        internal AXI4GatewayModule programmerIOGateway = new AXI4GatewayModule(axiSize.B4);
+        internal AXI4GatewayModule programmerCPU0Gateway = new AXI4GatewayModule(axiSize.B4, 17);
+
+        internal AXI4InteconnectModule programmerInterconnect = new AXI4InteconnectModule(
+            axiSize.B4,
+            1,
+            new List<RangeInfo>()
+            {
+                new RangeInfo(0x80000000, 0xA0000000),// io interconnect
+                new RangeInfo(0xF0000000, 0xF001FFFF),// cpu0 interconnect
+                //new RangeInfo(0xF1000000, 0xF101FFFF),// cpu1 interconnect
+                //new RangeInfo(0xF2000000, 0xF201FFFF),// cpu2 interconnect
+                //new RangeInfo(0xF3000000, 0xF301FFFF),// cpu3 interconnect
+            }
+        );
+
         internal AXI4RISCVModule CPU0 = new AXI4RISCVModule(CPURegsType.RAM, 0);
-        internal AXI4MemoryModule cpu0Memory = new AXI4MemoryModule(axiSize.B4, 0x8000);
+        internal AXI4MemoryModule cpu0Memory = new AXI4MemoryModule(axiSize.B4, 0x1000);
         internal AXI4IncrementOnReadCounterModule cpu0AutoIncrementCounter = new AXI4IncrementOnReadCounterModule(axiSize.B4);
         internal AXI4AutoDecrementRegisterModule cpu0AutoDecrementRegister = new AXI4AutoDecrementRegisterModule(axiSize.B4);
         internal AXI4GatewayModule cpu0IOGateway = new AXI4GatewayModule(axiSize.B4);
-        internal AXI4GatewayModule cpu0cpu1Gateway = new AXI4GatewayModule(axiSize.B4, 17);
-        internal AXI4Programmer programmer = new AXI4Programmer(); 
+        internal AXI4InteconnectModule cpu0Interconnect = new AXI4InteconnectModule(
+            axiSize.B4,
+            2,
+            new List<RangeInfo>()
+            {
+                new RangeInfo(0x00000000, 0x00020000),// instructions memory
+                new RangeInfo(0x10000000, 0x10000000),// auto increment on read
+                new RangeInfo(0x10000004, 0x10000004),// auto decrement
+                new RangeInfo(0x80000000, 0xA0000000),// io interconnect
+                //new RangeInfo(0xF1000000, 0xF101FFFF),// cpu1 interconnect
+                //new RangeInfo(0xF2000000, 0xF2003FFF),// cpu2 interconnect
+                //new RangeInfo(0xF3000000, 0xF3003FFF),// cpu3 interconnect
+            }
+        );
 
-        internal AXI4RISCVModule CPU1 = new AXI4RISCVModule(CPURegsType.RAM, 1);
-        internal AXI4MemoryModule cpu1Memory = new AXI4MemoryModule(axiSize.B4, 0x8000);
-        internal AXI4IncrementOnReadCounterModule cpu1AutoIncrementCounter = new AXI4IncrementOnReadCounterModule(axiSize.B4);
-        internal AXI4AutoDecrementRegisterModule cpu1AutoDecrementRegister = new AXI4AutoDecrementRegisterModule(axiSize.B4);
-        internal AXI4GatewayModule cpu1IOGateway = new AXI4GatewayModule(axiSize.B4);
+        //internal AXI4GatewayModule cpu0cpu1Gateway = new AXI4GatewayModule(axiSize.B4, 17);
 
-        internal AXI4RISCVModule CPU2 = new AXI4RISCVModule(CPURegsType.RAM, 2);
-        internal AXI4MemoryModule cpu2Memory = new AXI4MemoryModule(axiSize.B4, 0x8000);
-        internal AXI4IncrementOnReadCounterModule cpu2AutoIncrementCounter = new AXI4IncrementOnReadCounterModule(axiSize.B4);
-        internal AXI4AutoDecrementRegisterModule cpu2AutoDecrementRegister = new AXI4AutoDecrementRegisterModule(axiSize.B4);
-        internal AXI4GatewayModule cpu2IOGateway = new AXI4GatewayModule(axiSize.B4);
-
-        internal AXI4RISCVModule CPU3 = new AXI4RISCVModule(CPURegsType.RAM, 3);
-        internal AXI4MemoryModule cpu3Memory = new AXI4MemoryModule(axiSize.B4, 0x8000);
-        internal AXI4IncrementOnReadCounterModule cpu3AutoIncrementCounter = new AXI4IncrementOnReadCounterModule(axiSize.B4);
-        internal AXI4AutoDecrementRegisterModule cpu3AutoDecrementRegister = new AXI4AutoDecrementRegisterModule(axiSize.B4);
-        internal AXI4GatewayModule cpu3IOGateway = new AXI4GatewayModule(axiSize.B4);
+        //internal AXI4RISCVModule CPU1 = new AXI4RISCVModule(CPURegsType.RAM, 1);
+        //internal AXI4MemoryModule cpu1Memory = new AXI4MemoryModule(axiSize.B4, 0x1000);
+        //internal AXI4IncrementOnReadCounterModule cpu1AutoIncrementCounter = new AXI4IncrementOnReadCounterModule(axiSize.B4);
+        //internal AXI4AutoDecrementRegisterModule cpu1AutoDecrementRegister = new AXI4AutoDecrementRegisterModule(axiSize.B4);
+        //internal AXI4GatewayModule cpu1IOGateway = new AXI4GatewayModule(axiSize.B4);
+        //
+        //internal AXI4RISCVModule CPU2 = new AXI4RISCVModule(CPURegsType.RAM, 2);
+        //internal AXI4MemoryModule cpu2Memory = new AXI4MemoryModule(axiSize.B4, 0x1000);
+        //internal AXI4IncrementOnReadCounterModule cpu2AutoIncrementCounter = new AXI4IncrementOnReadCounterModule(axiSize.B4);
+        //internal AXI4AutoDecrementRegisterModule cpu2AutoDecrementRegister = new AXI4AutoDecrementRegisterModule(axiSize.B4);
+        //internal AXI4GatewayModule cpu2IOGateway = new AXI4GatewayModule(axiSize.B4);
+        //
+        //internal AXI4RISCVModule CPU3 = new AXI4RISCVModule(CPURegsType.RAM, 3);
+        //internal AXI4MemoryModule cpu3Memory = new AXI4MemoryModule(axiSize.B4, 0x1000);
+        //internal AXI4IncrementOnReadCounterModule cpu3AutoIncrementCounter = new AXI4IncrementOnReadCounterModule(axiSize.B4);
+        //internal AXI4AutoDecrementRegisterModule cpu3AutoDecrementRegister = new AXI4AutoDecrementRegisterModule(axiSize.B4);
+        //internal AXI4GatewayModule cpu3IOGateway = new AXI4GatewayModule(axiSize.B4);
 
         internal AXI4RegisterModule CPUExtReset = new AXI4RegisterModule(axiSize.B4);
 
@@ -62,57 +93,43 @@ namespace AXISoC
         internal AXI4PWMModule pwm = new AXI4PWMModule(axiSize.B4, 8, 1_000_000);// 20ms per pwm period, 1M clock on 50MHz
         internal AXI4WS2812Module ws2812 = new AXI4WS2812Module(axiSize.B4, 50000000);
 
-        internal AXI4InteconnectModule cpu0Interconnect = new AXI4InteconnectModule(
-            axiSize.B4,
-            2,
-            new List<RangeInfo>()
-            {
-                new RangeInfo(0x00000000, 0x00020000),// instructions memory
-                new RangeInfo(0x10000000, 0x10000000),// auto increment on read
-                new RangeInfo(0x10000004, 0x10000004),// auto decrement
-                new RangeInfo(0x80000000, 0xA0000000),// io interconnect
-                new RangeInfo(0xF1000000, 0xF101FFFF),// cpu1 interconnect
-                //new RangeInfo(0xF2000000, 0xF2003FFF),// cpu2 interconnect
-                //new RangeInfo(0xF3000000, 0xF3003FFF),// cpu3 interconnect
-            }
-        );
-        internal AXI4InteconnectModule cpu1Interconnect = new AXI4InteconnectModule(
-            axiSize.B4,
-            2,
-            new List<RangeInfo>()
-            {
-                new RangeInfo(0x00000000, 0x00020000),// instructions memory
-                new RangeInfo(0x10000000, 0x10000000),// auto increment on read
-                new RangeInfo(0x10000004, 0x10000004),// auto decrement
-                new RangeInfo(0x80000000, 0xA0000000),// io interconnect
-            }
-        );
-        internal AXI4InteconnectModule cpu2Interconnect = new AXI4InteconnectModule(
-            axiSize.B4,
-            1,//2,
-            new List<RangeInfo>()
-            {
-                new RangeInfo(0x00000000, 0x00020000),// instructions memory
-                new RangeInfo(0x10000000, 0x10000000),// auto increment on read
-                new RangeInfo(0x10000004, 0x10000004),// auto decrement
-                new RangeInfo(0x80000000, 0xA0000000),// io interconnect
-            }
-        );
-        internal AXI4InteconnectModule cpu3Interconnect = new AXI4InteconnectModule(
-            axiSize.B4,
-            1,//2,
-            new List<RangeInfo>()
-            {
-                new RangeInfo(0x00000000, 0x00020000),// instructions memory
-                new RangeInfo(0x10000000, 0x10000000),// auto increment on read
-                new RangeInfo(0x10000004, 0x10000004),// auto decrement
-                new RangeInfo(0x80000000, 0xA0000000),// io interconnect
-            }
-        );
+        //internal AXI4InteconnectModule cpu1Interconnect = new AXI4InteconnectModule(
+        //    axiSize.B4,
+        //    2,
+        //    new List<RangeInfo>()
+        //    {
+        //        new RangeInfo(0x00000000, 0x00020000),// instructions memory
+        //        new RangeInfo(0x10000000, 0x10000000),// auto increment on read
+        //        new RangeInfo(0x10000004, 0x10000004),// auto decrement
+        //        new RangeInfo(0x80000000, 0xA0000000),// io interconnect
+        //    }
+        //);
+        //internal AXI4InteconnectModule cpu2Interconnect = new AXI4InteconnectModule(
+        //    axiSize.B4,
+        //    1,//2,
+        //    new List<RangeInfo>()
+        //    {
+        //        new RangeInfo(0x00000000, 0x00020000),// instructions memory
+        //        new RangeInfo(0x10000000, 0x10000000),// auto increment on read
+        //        new RangeInfo(0x10000004, 0x10000004),// auto decrement
+        //        new RangeInfo(0x80000000, 0xA0000000),// io interconnect
+        //    }
+        //);
+        //internal AXI4InteconnectModule cpu3Interconnect = new AXI4InteconnectModule(
+        //    axiSize.B4,
+        //    1,//2,
+        //    new List<RangeInfo>()
+        //    {
+        //        new RangeInfo(0x00000000, 0x00020000),// instructions memory
+        //        new RangeInfo(0x10000000, 0x10000000),// auto increment on read
+        //        new RangeInfo(0x10000004, 0x10000004),// auto decrement
+        //        new RangeInfo(0x80000000, 0xA0000000),// io interconnect
+        //    }
+        //);
 
         internal AXI4InteconnectModule ioInterconnect = new AXI4InteconnectModule(
             axiSize.B4,
-            4,
+            2,//5,
             new List<RangeInfo>()
             {
                 new RangeInfo(0x80000000, 0x80000000),// ext reset
@@ -141,19 +158,49 @@ namespace AXISoC
                 (instructions) => instructions.Select(i => new RTLBitArray(i)).Select((r) => (byte[])r).ToArray();
 
             cpu0Memory.Initialize(toBytes(cpu0Instructions));
-            cpu1Memory.Initialize(toBytes(cpu1Instructions));
-            cpu2Memory.Initialize(toBytes(cpu2Instructions));
-            cpu3Memory.Initialize(toBytes(cpu3Instructions));
+            //cpu1Memory.Initialize(toBytes(cpu1Instructions));
+            //cpu2Memory.Initialize(toBytes(cpu2Instructions));
+            //cpu3Memory.Initialize(toBytes(cpu3Instructions));
         }
 
         protected override void OnSchedule(Func<AXISoCQuadCoreModuleInputs> inputsFactory)
         {
             base.OnSchedule(inputsFactory);
+            // programmer
+            programmer.Schedule(() => new()
+            {
+                iRX = Inputs.iProgrammerRX,
+                S2M = programmerInterconnect.oS2M[0]
+            });
 
+            programmerIOGateway.Schedule(() => new()
+            {
+                iM2S = programmerInterconnect.oM2S[0],
+                iS2M = ioInterconnect.oS2M[0]
+            });
+
+            programmerCPU0Gateway.Schedule(() => new()
+            {
+                iM2S = programmerInterconnect.oM2S[1],
+                iS2M = cpu0Interconnect.oS2M[0]
+            });
+
+            programmerInterconnect.Schedule(() => new()
+            {
+                iM2S = [
+                    programmer.M2S
+                ],
+                iS2M =
+                [
+                    programmerIOGateway.oS2M,
+                    programmerCPU0Gateway.oS2M
+                ]
+            });
             // CPU0
             CPU0.Schedule(() => new ()
             {
-                S2M = cpu0Interconnect.oS2M[0]
+                S2M = cpu0Interconnect.oS2M[1],
+                ExtReset = extReset[0]
             });
             cpu0Memory.Schedule(() => new()
             {
@@ -170,145 +217,139 @@ namespace AXISoC
             cpu0IOGateway.Schedule(() => new()
             {
                 iM2S = cpu0Interconnect.oM2S[3],
-                iS2M = ioInterconnect.oS2M[0]
+                iS2M = ioInterconnect.oS2M[1]
             });
-            cpu0cpu1Gateway.Schedule(() => new()
-            { 
-                iM2S = cpu0Interconnect.oM2S[4],
-                iS2M = cpu1Interconnect.oS2M[1],                
-            });
+            //cpu0cpu1Gateway.Schedule(() => new()
+            //{ 
+            //    iM2S = cpu0Interconnect.oM2S[4],
+            //    iS2M = cpu1Interconnect.oS2M[1],                
+            //});
 
             cpu0Interconnect.Schedule(() => new()
             {
                 iM2S = [
-                    CPU0.M2S,
-                    programmer.M2S
+                    programmerCPU0Gateway.oM2S,
+                    CPU0.M2S
                 ],
                 iS2M = [
                     cpu0Memory.S2M,
                     cpu0AutoIncrementCounter.S2M,
                     cpu0AutoDecrementRegister.S2M,
                     cpu0IOGateway.oS2M,
-                    cpu0cpu1Gateway.oS2M,
+                    //cpu0cpu1Gateway.oS2M,
                     //cpu0cpu2Gateway.oS2M,
                     //cpu0cpu3Gateway.oS2M,
                 ]
             });
 
-            programmer.Schedule(() => new()
-            {
-                iRX = Inputs.iProgrammerRX,
-                S2M = cpu0Interconnect.oS2M[1]
-            });
-
-            //CPU1
-            CPU1.Schedule(() => new()
-            {
-                S2M = cpu1Interconnect.oS2M[0],
-                ExtReset = extReset[1]
-            });
-            cpu1Memory.Schedule(() => new()
-            {
-                M2S = cpu1Interconnect.oM2S[0]
-            });
-            cpu1AutoIncrementCounter.Schedule(() => new()
-            {
-                M2S = cpu1Interconnect.oM2S[1]
-            });
-            cpu1AutoDecrementRegister.Schedule(() => new()
-            {
-                M2S = cpu1Interconnect.oM2S[2]
-            });
-            cpu1IOGateway.Schedule(() => new()
-            {
-                iM2S = cpu1Interconnect.oM2S[3],
-                iS2M = ioInterconnect.oS2M[1]
-            });
-            cpu1Interconnect.Schedule(() => new()
-            {
-                iM2S = [
-                    CPU1.M2S,
-                    cpu0cpu1Gateway.oM2S,
-                ],
-                iS2M = [
-                    cpu1Memory.S2M,
-                    cpu1AutoIncrementCounter.S2M,
-                    cpu1AutoDecrementRegister.S2M,
-                    cpu1IOGateway.oS2M
-                ]
-            });
-
-            //CPU2
-            CPU2.Schedule(() => new()
-            {
-                S2M = cpu2Interconnect.oS2M[0],
-                ExtReset = extReset[2]
-            });
-            cpu2Memory.Schedule(() => new()
-            {
-                M2S = cpu2Interconnect.oM2S[0]
-            });
-            cpu2AutoIncrementCounter.Schedule(() => new()
-            {
-                M2S = cpu2Interconnect.oM2S[1]
-            });
-            cpu2AutoDecrementRegister.Schedule(() => new()
-            {
-                M2S = cpu2Interconnect.oM2S[2]
-            });
-            cpu2IOGateway.Schedule(() => new()
-            {
-                iM2S = cpu2Interconnect.oM2S[3],
-                iS2M = ioInterconnect.oS2M[2]
-            });
-            cpu2Interconnect.Schedule(() => new()
-            {
-                iM2S = [
-                    CPU2.M2S
-                ],
-                iS2M = [
-                    cpu2Memory.S2M,
-                    cpu2AutoIncrementCounter.S2M,
-                    cpu2AutoDecrementRegister.S2M,
-                    cpu2IOGateway.oS2M
-                ]
-            });
-
-            //CPU3
-            CPU3.Schedule(() => new()
-            {
-                S2M = cpu3Interconnect.oS2M[0],
-                ExtReset = extReset[3]
-            });
-            cpu3Memory.Schedule(() => new()
-            {
-                M2S = cpu3Interconnect.oM2S[0]
-            });
-            cpu3AutoIncrementCounter.Schedule(() => new()
-            {
-                M2S = cpu3Interconnect.oM2S[1]
-            });
-            cpu3AutoDecrementRegister.Schedule(() => new()
-            {
-                M2S = cpu3Interconnect.oM2S[2]
-            });
-            cpu3IOGateway.Schedule(() => new()
-            {
-                iM2S = cpu3Interconnect.oM2S[3],
-                iS2M = ioInterconnect.oS2M[3]
-            });
-            cpu3Interconnect.Schedule(() => new()
-            {
-                iM2S = [
-                    CPU3.M2S
-                ],
-                iS2M = [
-                    cpu3Memory.S2M,
-                    cpu3AutoIncrementCounter.S2M,
-                    cpu3AutoDecrementRegister.S2M,
-                    cpu3IOGateway.oS2M
-                ]
-            });
+            ////CPU1
+            //CPU1.Schedule(() => new()
+            //{
+            //    S2M = cpu1Interconnect.oS2M[0],
+            //    ExtReset = extReset[1]
+            //});
+            //cpu1Memory.Schedule(() => new()
+            //{
+            //    M2S = cpu1Interconnect.oM2S[0]
+            //});
+            //cpu1AutoIncrementCounter.Schedule(() => new()
+            //{
+            //    M2S = cpu1Interconnect.oM2S[1]
+            //});
+            //cpu1AutoDecrementRegister.Schedule(() => new()
+            //{
+            //    M2S = cpu1Interconnect.oM2S[2]
+            //});
+            //cpu1IOGateway.Schedule(() => new()
+            //{
+            //    iM2S = cpu1Interconnect.oM2S[3],
+            //    iS2M = ioInterconnect.oS2M[1]
+            //});
+            //cpu1Interconnect.Schedule(() => new()
+            //{
+            //    iM2S = [
+            //        CPU1.M2S,
+            //        cpu0cpu1Gateway.oM2S,
+            //    ],
+            //    iS2M = [
+            //        cpu1Memory.S2M,
+            //        cpu1AutoIncrementCounter.S2M,
+            //        cpu1AutoDecrementRegister.S2M,
+            //        cpu1IOGateway.oS2M
+            //    ]
+            //});
+            //
+            ////CPU2
+            //CPU2.Schedule(() => new()
+            //{
+            //    S2M = cpu2Interconnect.oS2M[0],
+            //    ExtReset = extReset[2]
+            //});
+            //cpu2Memory.Schedule(() => new()
+            //{
+            //    M2S = cpu2Interconnect.oM2S[0]
+            //});
+            //cpu2AutoIncrementCounter.Schedule(() => new()
+            //{
+            //    M2S = cpu2Interconnect.oM2S[1]
+            //});
+            //cpu2AutoDecrementRegister.Schedule(() => new()
+            //{
+            //    M2S = cpu2Interconnect.oM2S[2]
+            //});
+            //cpu2IOGateway.Schedule(() => new()
+            //{
+            //    iM2S = cpu2Interconnect.oM2S[3],
+            //    iS2M = ioInterconnect.oS2M[2]
+            //});
+            //cpu2Interconnect.Schedule(() => new()
+            //{
+            //    iM2S = [
+            //        CPU2.M2S
+            //    ],
+            //    iS2M = [
+            //        cpu2Memory.S2M,
+            //        cpu2AutoIncrementCounter.S2M,
+            //        cpu2AutoDecrementRegister.S2M,
+            //        cpu2IOGateway.oS2M
+            //    ]
+            //});
+            //
+            ////CPU3
+            //CPU3.Schedule(() => new()
+            //{
+            //    S2M = cpu3Interconnect.oS2M[0],
+            //    ExtReset = extReset[3]
+            //});
+            //cpu3Memory.Schedule(() => new()
+            //{
+            //    M2S = cpu3Interconnect.oM2S[0]
+            //});
+            //cpu3AutoIncrementCounter.Schedule(() => new()
+            //{
+            //    M2S = cpu3Interconnect.oM2S[1]
+            //});
+            //cpu3AutoDecrementRegister.Schedule(() => new()
+            //{
+            //    M2S = cpu3Interconnect.oM2S[2]
+            //});
+            //cpu3IOGateway.Schedule(() => new()
+            //{
+            //    iM2S = cpu3Interconnect.oM2S[3],
+            //    iS2M = ioInterconnect.oS2M[3]
+            //});
+            //cpu3Interconnect.Schedule(() => new()
+            //{
+            //    iM2S = [
+            //        CPU3.M2S
+            //    ],
+            //    iS2M = [
+            //        cpu3Memory.S2M,
+            //        cpu3AutoIncrementCounter.S2M,
+            //        cpu3AutoDecrementRegister.S2M,
+            //        cpu3IOGateway.oS2M
+            //    ]
+            //});
 
             // IO interconnect
             CPUExtReset.Schedule(() => new()
@@ -375,10 +416,11 @@ namespace AXISoC
             ioInterconnect.Schedule(() => new ()
             {
                 iM2S = [
+                    programmerIOGateway.oM2S,
                     cpu0IOGateway.oM2S,
-                    cpu1IOGateway.oM2S,
-                    cpu2IOGateway.oM2S,
-                    cpu3IOGateway.oM2S
+                    //cpu1IOGateway.oM2S,
+                    //cpu2IOGateway.oM2S,
+                    //cpu3IOGateway.oM2S
                 ],
                 iS2M = [
                     CPUExtReset.S2M,

@@ -20,7 +20,7 @@ module top (
     output wire ck_io41,    
     output wire ck_io40,    
     output wire ck_io39,    
-    output wire ck_io38,    
+    input wire ck_io38,    
     output wire ck_io37,
     output wire led4_b,
     output wire led4_g,
