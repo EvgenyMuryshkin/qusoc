@@ -32,9 +32,6 @@ module AXISoCQuadCoreModule_TopLevel_Switches_axiSlave
 	input wire inAWREADY,
 	input wire inBVALID,
 	input wire [7:0] inRDATA0,
-	input wire [7:0] inRDATA1,
-	input wire [7:0] inRDATA2,
-	input wire [7:0] inRDATA3,
 	input wire inRVALID,
 	input wire inWREADY,
 	input wire [221:0] M2S,
@@ -53,7 +50,7 @@ module AXISoCQuadCoreModule_TopLevel_Switches_axiSlave
 	output wire outWriteTXCompleting,
 	output wire [3:0] outWSTRB,
 	output wire outWVALID,
-	output wire [73:0] S2M
+	output wire [49:0] S2M
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -254,7 +251,7 @@ module AXISoCQuadCoreModule_TopLevel_Switches_axiSlave
 	wire AXI4NonBufferedSlaveModule_L108F88T131_Expr;
 	wire signed [2: 0] AXI4NonBufferedSlaveModule_L108F88T131_ExprLhs;
 	wire signed [2: 0] AXI4NonBufferedSlaveModule_L108F88T131_ExprRhs;
-	wire [7 : 0] Inputs_inRDATA [0 : 3];
+	wire [7 : 0] Inputs_inRDATA [0 : 0];
 	wire [7 : 0] Inputs_M2S_W_W_WDATA [0 : 3];
 	always @ (posedge BoardSignals_Clock)
 	begin
@@ -608,9 +605,6 @@ module AXISoCQuadCoreModule_TopLevel_Switches_axiSlave
 	assign Inputs_inAWREADY = inAWREADY;
 	assign Inputs_inBVALID = inBVALID;
 	assign Inputs_inRDATA[0] = inRDATA0;
-	assign Inputs_inRDATA[1] = inRDATA1;
-	assign Inputs_inRDATA[2] = inRDATA2;
-	assign Inputs_inRDATA[3] = inRDATA3;
 	assign Inputs_inRVALID = inRVALID;
 	assign Inputs_inWREADY = inWREADY;
 	assign Inputs_M2S_W_B_BREADY = M2S[221];
@@ -670,19 +664,16 @@ module AXISoCQuadCoreModule_TopLevel_Switches_axiSlave
 	assign outWriteTXCompleting = writeTXCompleting;
 	assign outWSTRB = Inputs_M2S_W_W_WSTRB;
 	assign outWVALID = Inputs_M2S_W_W_WVALID;
-	assign S2M[73] = internalWREADY;
-	assign S2M[72] = internalBVALID;
-	assign S2M[71:64] = Inputs_M2S_W_W_WUSER;
-	assign S2M[63:62] = AXI4NonBufferedSlaveModule_L75F29T41_Expr;
-	assign S2M[61:54] = Inputs_M2S_W_W_WID;
-	assign S2M[53] = internalAWREADY;
-	assign S2M[52] = internalRVALID;
-	assign S2M[51:44] = Inputs_M2S_R_AR_ARUSER;
-	assign S2M[43] = AXI4_S_R_L26F29T33_Expr;
-	assign S2M[42:41] = AXI4NonBufferedSlaveModule_L59F29T41_Expr;
-	assign S2M[40:33] = Inputs_inRDATA[3];
-	assign S2M[32:25] = Inputs_inRDATA[2];
-	assign S2M[24:17] = Inputs_inRDATA[1];
+	assign S2M[49] = internalWREADY;
+	assign S2M[48] = internalBVALID;
+	assign S2M[47:40] = Inputs_M2S_W_W_WUSER;
+	assign S2M[39:38] = AXI4NonBufferedSlaveModule_L75F29T41_Expr;
+	assign S2M[37:30] = Inputs_M2S_W_W_WID;
+	assign S2M[29] = internalAWREADY;
+	assign S2M[28] = internalRVALID;
+	assign S2M[27:20] = Inputs_M2S_R_AR_ARUSER;
+	assign S2M[19] = AXI4_S_R_L26F29T33_Expr;
+	assign S2M[18:17] = AXI4NonBufferedSlaveModule_L59F29T41_Expr;
 	assign S2M[16:9] = Inputs_inRDATA[0];
 	assign S2M[8:1] = Inputs_M2S_R_AR_ARID;
 	assign S2M[0] = internalARREADY;

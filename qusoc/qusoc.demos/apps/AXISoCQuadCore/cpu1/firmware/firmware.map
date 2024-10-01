@@ -1,15 +1,15 @@
 
 Discarded input sections
 
- .group         0x00000000        0xc /tmp/ccALqGob.o
- .group         0x00000000        0xc /tmp/ccALqGob.o
- .group         0x00000000        0xc /tmp/ccALqGob.o
- .group         0x00000000        0xc /tmp/ccALqGob.o
- .group         0x00000000        0xc /tmp/ccALqGob.o
- .group         0x00000000        0xc /tmp/ccALqGob.o
- .group         0x00000000        0xc /tmp/ccALqGob.o
- .group         0x00000000        0xc /tmp/ccALqGob.o
- .group         0x00000000        0xc /tmp/ccALqGob.o
+ .group         0x00000000        0xc /tmp/ccazfQz5.o
+ .group         0x00000000        0xc /tmp/ccazfQz5.o
+ .group         0x00000000        0xc /tmp/ccazfQz5.o
+ .group         0x00000000        0xc /tmp/ccazfQz5.o
+ .group         0x00000000        0xc /tmp/ccazfQz5.o
+ .group         0x00000000        0xc /tmp/ccazfQz5.o
+ .group         0x00000000        0xc /tmp/ccazfQz5.o
+ .group         0x00000000        0xc /tmp/ccazfQz5.o
+ .group         0x00000000        0xc /tmp/ccazfQz5.o
 
 Memory Configuration
 
@@ -23,8 +23,8 @@ Linker script and memory map
 .text           0x00000000      0x5b4
                 0x00000000                        . = ALIGN (0x4)
  *(.text)
- .text          0x00000000        0xc /tmp/ccMym6fc.o
- .text          0x0000000c      0x1a8 /tmp/ccALqGob.o
+ .text          0x00000000        0xc /tmp/cclw76L1.o
+ .text          0x0000000c      0x1a8 /tmp/ccazfQz5.o
                 0x0000000c                AXISoCQuadCore::CPU1::EntryPoint()
                 0x00000048                AXISoCQuadCore::CPU1::CounterTest()
                 0x00000094                AXISoCQuadCore::CPU1::HardcodedValues()
@@ -32,48 +32,48 @@ Linker script and memory map
                 0x00000150                AXISoCQuadCore::CPU1::WS2812Test()
                 0x00000170                AXISoCQuadCore::CPU1::TrigTest()
                 0x00000190                AXISoCQuadCore::CPU1::PWMTest()
- .text          0x000001b4       0x2c /tmp/ccgnBAQb.o
+ .text          0x000001b4       0x2c /tmp/cctQJ8L2.o
                 0x000001b4                main
- .text          0x000001e0        0x0 /tmp/ccAQ0IOc.o
+ .text          0x000001e0        0x0 /tmp/ccRff0q3.o
  *(.text*)
  .text._ZN5qusoc4Wait6ClocksEPVmm
-                0x000001e0       0x4c /tmp/ccALqGob.o
+                0x000001e0       0x4c /tmp/ccazfQz5.o
                 0x000001e0                qusoc::Wait::Clocks(unsigned long volatile*, unsigned long)
  .text._ZN5qusoc5IWaitC2Ev
-                0x0000022c       0x2c /tmp/ccALqGob.o
+                0x0000022c       0x2c /tmp/ccazfQz5.o
                 0x0000022c                qusoc::IWait::IWait()
                 0x0000022c                qusoc::IWait::IWait()
  .text._ZN5qusoc7CPUWaitC2EPVm
-                0x00000258       0x50 /tmp/ccALqGob.o
+                0x00000258       0x50 /tmp/ccazfQz5.o
                 0x00000258                qusoc::CPUWait::CPUWait(unsigned long volatile*)
                 0x00000258                qusoc::CPUWait::CPUWait(unsigned long volatile*)
  .text._ZN5qusoc8CPU1WaitC2Ev
-                0x000002a8       0x48 /tmp/ccALqGob.o
+                0x000002a8       0x48 /tmp/ccazfQz5.o
                 0x000002a8                qusoc::CPU1Wait::CPU1Wait()
                 0x000002a8                qusoc::CPU1Wait::CPU1Wait()
  .text._ZN5qusoc8CPU1Wait6ClocksEm
-                0x000002f0       0x40 /tmp/ccALqGob.o
+                0x000002f0       0x40 /tmp/ccazfQz5.o
                 0x000002f0                qusoc::CPU1Wait::Clocks(unsigned long)
  .text._ZN14AXISoCQuadCore4CPU1C2Ev
-                0x00000330       0x34 /tmp/ccALqGob.o
+                0x00000330       0x34 /tmp/ccazfQz5.o
                 0x00000330                AXISoCQuadCore::CPU1::CPU1()
                 0x00000330                AXISoCQuadCore::CPU1::CPU1()
  *(.rodata)
  *(.rodata*)
  .rodata._ZTVN5qusoc8CPU1WaitE
-                0x00000364        0xc /tmp/ccALqGob.o
+                0x00000364        0xc /tmp/ccazfQz5.o
                 0x00000364                vtable for qusoc::CPU1Wait
  .rodata._ZTVN5qusoc7CPUWaitE
-                0x00000370        0xc /tmp/ccALqGob.o
+                0x00000370        0xc /tmp/ccazfQz5.o
                 0x00000370                vtable for qusoc::CPUWait
  .rodata._ZTVN5qusoc5IWaitE
-                0x0000037c        0xc /tmp/ccALqGob.o
+                0x0000037c        0xc /tmp/ccazfQz5.o
                 0x0000037c                vtable for qusoc::IWait
  *(.srodata)
  *(.srodata*)
  *(.eh_frame)
- .eh_frame      0x00000388      0x1f0 /tmp/ccALqGob.o
- .eh_frame      0x00000578       0x3c /tmp/ccgnBAQb.o
+ .eh_frame      0x00000388      0x1f0 /tmp/ccazfQz5.o
+ .eh_frame      0x00000578       0x3c /tmp/cctQJ8L2.o
  *(.eh_frame*)
                 0x000005b4                        . = ALIGN (0x4)
                 0x000005b4                        _etext = .
@@ -81,30 +81,30 @@ Linker script and memory map
 
 .rela.dyn       0x000005b4        0x0
  .rela.text._ZN5qusoc5IWaitC2Ev
-                0x000005b4        0x0 /tmp/ccMym6fc.o
+                0x000005b4        0x0 /tmp/cclw76L1.o
  .rela.text._ZN5qusoc7CPUWaitC2EPVm
-                0x000005b4        0x0 /tmp/ccMym6fc.o
+                0x000005b4        0x0 /tmp/cclw76L1.o
  .rela.text._ZN5qusoc8CPU1WaitC2Ev
-                0x000005b4        0x0 /tmp/ccMym6fc.o
+                0x000005b4        0x0 /tmp/cclw76L1.o
  .rela.rodata._ZTVN5qusoc8CPU1WaitE
-                0x000005b4        0x0 /tmp/ccMym6fc.o
+                0x000005b4        0x0 /tmp/cclw76L1.o
  .rela.rodata._ZTVN5qusoc7CPUWaitE
-                0x000005b4        0x0 /tmp/ccMym6fc.o
+                0x000005b4        0x0 /tmp/cclw76L1.o
  .rela.rodata._ZTVN5qusoc5IWaitE
-                0x000005b4        0x0 /tmp/ccMym6fc.o
+                0x000005b4        0x0 /tmp/cclw76L1.o
 
 .data           0x000005b4       0x18
                 0x000005b4                        . = ALIGN (0x4)
                 0x000005b4                        _sdata = .
                 0x000005b4                        _ram_start = .
  *(.data)
- .data          0x000005b4        0x0 /tmp/ccMym6fc.o
- .data          0x000005b4        0x0 /tmp/ccALqGob.o
- .data          0x000005b4        0x0 /tmp/ccgnBAQb.o
- .data          0x000005b4        0x0 /tmp/ccAQ0IOc.o
+ .data          0x000005b4        0x0 /tmp/cclw76L1.o
+ .data          0x000005b4        0x0 /tmp/ccazfQz5.o
+ .data          0x000005b4        0x0 /tmp/cctQJ8L2.o
+ .data          0x000005b4        0x0 /tmp/ccRff0q3.o
  *(.data*)
  *(.sdata)
- .sdata         0x000005b4       0x18 /tmp/ccAQ0IOc.o
+ .sdata         0x000005b4       0x18 /tmp/ccRff0q3.o
                 0x000005b4                qusoc::LED8x8::StopSign
                 0x000005bc                qusoc::LED8x8::RightArrow
                 0x000005c4                qusoc::LED8x8::LeftArrow
@@ -118,10 +118,10 @@ Linker script and memory map
                 0x000005cc                        . = ALIGN (0x4)
                 0x000005cc                        _sbss = .
  *(.bss)
- .bss           0x000005cc        0x0 /tmp/ccMym6fc.o
- .bss           0x000005cc        0x0 /tmp/ccALqGob.o
- .bss           0x000005cc        0x0 /tmp/ccgnBAQb.o
- .bss           0x000005cc        0x0 /tmp/ccAQ0IOc.o
+ .bss           0x000005cc        0x0 /tmp/cclw76L1.o
+ .bss           0x000005cc        0x0 /tmp/ccazfQz5.o
+ .bss           0x000005cc        0x0 /tmp/cctQJ8L2.o
+ .bss           0x000005cc        0x0 /tmp/ccRff0q3.o
  *(.bss*)
  *(.sbss)
  *(.sbss*)
@@ -132,10 +132,10 @@ Linker script and memory map
 .heap           0x000005cc        0x0
                 0x000005cc                        . = ALIGN (0x4)
                 0x000005cc                        _heap_start = .
-LOAD /tmp/ccMym6fc.o
-LOAD /tmp/ccALqGob.o
-LOAD /tmp/ccgnBAQb.o
-LOAD /tmp/ccAQ0IOc.o
+LOAD /tmp/cclw76L1.o
+LOAD /tmp/ccazfQz5.o
+LOAD /tmp/cctQJ8L2.o
+LOAD /tmp/ccRff0q3.o
 LOAD /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32/libm.a
 LOAD /home/ev/.local/xPacks/@xpack-dev-tools/riscv-none-elf-gcc/13.2.0-2.1/.content/bin/../lib/gcc/riscv-none-elf/13.2.0/rv32i/ilp32/libgcc.a
 START GROUP
@@ -148,47 +148,47 @@ OUTPUT(firmware.elf elf32-littleriscv)
 .riscv.attributes
                 0x00000000       0x1c
  .riscv.attributes
-                0x00000000       0x1a /tmp/ccMym6fc.o
+                0x00000000       0x1a /tmp/cclw76L1.o
  .riscv.attributes
-                0x0000001a       0x1c /tmp/ccALqGob.o
+                0x0000001a       0x1c /tmp/ccazfQz5.o
  .riscv.attributes
-                0x00000036       0x1c /tmp/ccgnBAQb.o
+                0x00000036       0x1c /tmp/cctQJ8L2.o
  .riscv.attributes
-                0x00000052       0x1c /tmp/ccAQ0IOc.o
+                0x00000052       0x1c /tmp/ccRff0q3.o
 
 .comment        0x00000000       0x33
- .comment       0x00000000       0x33 /tmp/ccALqGob.o
+ .comment       0x00000000       0x33 /tmp/ccazfQz5.o
                                  0x34 (size before relaxing)
- .comment       0x00000033       0x34 /tmp/ccgnBAQb.o
- .comment       0x00000033       0x34 /tmp/ccAQ0IOc.o
+ .comment       0x00000033       0x34 /tmp/cctQJ8L2.o
+ .comment       0x00000033       0x34 /tmp/ccRff0q3.o
 
 Cross Reference Table
 
 Symbol                                            File
-AXISoCQuadCore::CPU1::CPU1()                      /tmp/ccALqGob.o
-AXISoCQuadCore::CPU1::CPU1()                      /tmp/ccALqGob.o
-AXISoCQuadCore::CPU1::CounterTest()               /tmp/ccALqGob.o
-AXISoCQuadCore::CPU1::EntryPoint()                /tmp/ccALqGob.o
-                                                  /tmp/ccgnBAQb.o
-AXISoCQuadCore::CPU1::FPUTest()                   /tmp/ccALqGob.o
-AXISoCQuadCore::CPU1::HardcodedValues()           /tmp/ccALqGob.o
-AXISoCQuadCore::CPU1::PWMTest()                   /tmp/ccALqGob.o
-AXISoCQuadCore::CPU1::TrigTest()                  /tmp/ccALqGob.o
-AXISoCQuadCore::CPU1::WS2812Test()                /tmp/ccALqGob.o
-__cxa_pure_virtual                                /tmp/ccALqGob.o
-main                                              /tmp/ccgnBAQb.o
-                                                  /tmp/ccMym6fc.o
-qusoc::CPU1Wait::CPU1Wait()                       /tmp/ccALqGob.o
-qusoc::CPU1Wait::CPU1Wait()                       /tmp/ccALqGob.o
-qusoc::CPU1Wait::Clocks(unsigned long)            /tmp/ccALqGob.o
-qusoc::CPUWait::CPUWait(unsigned long volatile*)  /tmp/ccALqGob.o
-qusoc::CPUWait::CPUWait(unsigned long volatile*)  /tmp/ccALqGob.o
-qusoc::IWait::IWait()                             /tmp/ccALqGob.o
-qusoc::IWait::IWait()                             /tmp/ccALqGob.o
-qusoc::LED8x8::LeftArrow                          /tmp/ccAQ0IOc.o
-qusoc::LED8x8::RightArrow                         /tmp/ccAQ0IOc.o
-qusoc::LED8x8::StopSign                           /tmp/ccAQ0IOc.o
-qusoc::Wait::Clocks(unsigned long volatile*, unsigned long) /tmp/ccALqGob.o
-vtable for qusoc::CPU1Wait                        /tmp/ccALqGob.o
-vtable for qusoc::CPUWait                         /tmp/ccALqGob.o
-vtable for qusoc::IWait                           /tmp/ccALqGob.o
+AXISoCQuadCore::CPU1::CPU1()                      /tmp/ccazfQz5.o
+AXISoCQuadCore::CPU1::CPU1()                      /tmp/ccazfQz5.o
+AXISoCQuadCore::CPU1::CounterTest()               /tmp/ccazfQz5.o
+AXISoCQuadCore::CPU1::EntryPoint()                /tmp/ccazfQz5.o
+                                                  /tmp/cctQJ8L2.o
+AXISoCQuadCore::CPU1::FPUTest()                   /tmp/ccazfQz5.o
+AXISoCQuadCore::CPU1::HardcodedValues()           /tmp/ccazfQz5.o
+AXISoCQuadCore::CPU1::PWMTest()                   /tmp/ccazfQz5.o
+AXISoCQuadCore::CPU1::TrigTest()                  /tmp/ccazfQz5.o
+AXISoCQuadCore::CPU1::WS2812Test()                /tmp/ccazfQz5.o
+__cxa_pure_virtual                                /tmp/ccazfQz5.o
+main                                              /tmp/cctQJ8L2.o
+                                                  /tmp/cclw76L1.o
+qusoc::CPU1Wait::CPU1Wait()                       /tmp/ccazfQz5.o
+qusoc::CPU1Wait::CPU1Wait()                       /tmp/ccazfQz5.o
+qusoc::CPU1Wait::Clocks(unsigned long)            /tmp/ccazfQz5.o
+qusoc::CPUWait::CPUWait(unsigned long volatile*)  /tmp/ccazfQz5.o
+qusoc::CPUWait::CPUWait(unsigned long volatile*)  /tmp/ccazfQz5.o
+qusoc::IWait::IWait()                             /tmp/ccazfQz5.o
+qusoc::IWait::IWait()                             /tmp/ccazfQz5.o
+qusoc::LED8x8::LeftArrow                          /tmp/ccRff0q3.o
+qusoc::LED8x8::RightArrow                         /tmp/ccRff0q3.o
+qusoc::LED8x8::StopSign                           /tmp/ccRff0q3.o
+qusoc::Wait::Clocks(unsigned long volatile*, unsigned long) /tmp/ccazfQz5.o
+vtable for qusoc::CPU1Wait                        /tmp/ccazfQz5.o
+vtable for qusoc::CPUWait                         /tmp/ccazfQz5.o
+vtable for qusoc::IWait                           /tmp/ccazfQz5.o

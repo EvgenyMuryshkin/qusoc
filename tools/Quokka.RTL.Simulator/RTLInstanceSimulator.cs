@@ -1,6 +1,12 @@
-﻿using Quokka.VCD;
+﻿using Quokka.RTL.Local;
+using Quokka.Schema.HLS;
+using Quokka.VCD;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 
 namespace Quokka.RTL.Simulator
 {

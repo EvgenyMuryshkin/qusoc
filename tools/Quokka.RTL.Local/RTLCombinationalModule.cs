@@ -122,18 +122,89 @@ namespace Quokka.RTL
 
         protected virtual void OnSetupCompleted()
         {
-
+            DeltaCycle(0);
         }
 
         public virtual bool OnRelatedObjectCreating(object data) => false;
 
+        List<(string, IRTLCombinationalModule)> UnrollModules(IRTLCombinationalModule source, string prefix)
+        {
+            var result = new List<(string, IRTLCombinationalModule)>();
+            result.Add((prefix, source));
+
+            if (source.ModuleProps != null)
+            {
+                foreach (var prop in source.ModuleProps)
+                {
+                    var value = prop.GetValue(source);
+                    var valueType = value.GetType();
+                    if (valueType.IsArray)
+                    {
+                        var modules = (value as IEnumerable).OfType<IRTLCombinationalModule>().ToList();
+                        for (var i = 0; i < modules.Count; i++)
+                        {
+                            result.AddRange(
+                                UnrollModules(
+                                    modules[0],
+                                    string.Join(".", new[] { prefix, $"{prop.Name}{i}" }.Where(s => !string.IsNullOrWhiteSpace(s)))
+                                )
+                            );
+                        }
+                    }
+                    else if (valueType.IsClass)
+                    {
+                        result.AddRange(
+                            UnrollModules(
+                                value as IRTLCombinationalModule,
+                                string.Join(".", new[] { prefix, prop.Name }.Where(s => !string.IsNullOrWhiteSpace(s)))
+                            )
+                        );
+                    }
+                    else
+                    {
+                        throw new Exception($"Unsupported module property {source.GetType()}.{prop.Name}");
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        List<(string, IRTLCombinationalModule)> UnrollModules()
+            => UnrollModules(this, "Root");
+
         public void Setup()
         {
-            OnSetup();
+            try
+            {
+                OnSetup();
 
-            Schedule(() => Inputs);
+                Schedule(() => Inputs);
 
-            OnSetupCompleted();
+                OnSetupCompleted();
+            }
+            catch (ModuleException ex)
+            {
+                var flatModules = UnrollModules();
+                var matchingModule = flatModules
+                    .Where(s => s.Item2 == ex.Module)
+                    .Select(s => s.Item1)
+                    .FirstOrDefault();
+
+                
+                throw new Exception($"ModuleException: {matchingModule}: {ex.Message}", ex);
+
+                if (matchingModule != null)
+                    throw new Exception($"{matchingModule}: {ex.Message}", ex);
+                else
+                    throw new Exception($"{ex.Module?.GetType()?.Name}: {ex.Message}", ex);
+            
+                throw;
+            }
+            catch (Exception ex) 
+            {
+                throw new Exception($"Ex: {ex.GetType()}");
+            }
         }
 
         public TInput Inputs { get; private set; }
@@ -167,6 +238,11 @@ namespace Quokka.RTL
             return !DeepEquals(Inputs, nextInputs);
         }
 
+        protected virtual void OnNextInputs(TInput newInput)
+        {
+
+        }
+
         public virtual RTLModuleStageResult DeltaCycle(int deltaCycle)
         {
             if (InputsFactory == null)
@@ -177,6 +253,7 @@ namespace Quokka.RTL
             bool selfModified = deltaCycle == 0 || ShouldStage(nextInputs);
             bool childrenModified = false;
 
+            OnNextInputs(nextInputs);
             Inputs = nextInputs;
 
             OnDeltaCycle();
@@ -433,5 +510,8 @@ namespace Quokka.RTL
             var members = GetType().GetMembers(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy).ToList();// RTLReflectionTools.SerializableMembers(topType);
             return members;
         }
+
+        public virtual IEnumerable<IRTLModuleValidator> Validators(IRTLClassFactory classFactory)
+            => Enumerable.Empty<IRTLModuleValidator>();
     }
 }

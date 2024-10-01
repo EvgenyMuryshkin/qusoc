@@ -9,7 +9,7 @@ namespace QuSoC.Tests
     public class AXIProgrammerClient : IDisposable
     {
         SerialPort _port;
-        public AXIProgrammerClient(string port = "COM4")
+        public AXIProgrammerClient(string port = "COM12")
         {
             _port = new SerialPort()
             {
@@ -124,7 +124,8 @@ namespace QuSoC.Tests
             uint cpuMask = 1U << cpu;
             await writeData(0x80000000, cpuMask);
 
-            var baseAddr = 0xF1000000;
+            var baseAddrMask = (uint)(cpu << 24); 
+            var baseAddr = 0xF0000000 | baseAddrMask;
 
             Trace.WriteLine($"Firmware size: {instructions.Length} words [{baseAddr:X} - {(baseAddr + instructions.Length * 4):X}]");
             Stopwatch sw = new Stopwatch();

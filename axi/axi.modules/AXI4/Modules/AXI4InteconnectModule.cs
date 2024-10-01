@@ -1,4 +1,5 @@
 ﻿using Quokka.RTL;
+using Quokka.RTL.Local;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,15 @@ namespace axi.modules
 
             readInterconnect = new AXI4ReadInteconnectModule(mCount, slaveRange);
             writeInterconnect = new AXI4WriteInteconnectModule(mCount, slaveRange);
+        }
+
+        protected override void OnNextInputs(AXI4InteconnectModuleInputs newInput)
+        {
+            if (mCount != newInput.iM2S.Length)
+                throw new ModuleException(this, $"Interconnect misconfiguration. Expecting to get {mCount} masters in Schedule, got {newInput.iM2S.Length}");
+
+            if (sCount != newInput.iS2M.Length)
+                throw new ModuleException(this, $"Interconnect misconfiguration. Expecting to get {sCount} slaves in Schedule, got {newInput.iS2M.Length}");
         }
 
         protected override void OnSchedule(Func<AXI4InteconnectModuleInputs> inputsFactory)
