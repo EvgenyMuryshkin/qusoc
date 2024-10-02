@@ -433,5 +433,8 @@ namespace Quokka.RTL
             var members = GetType().GetMembers(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy).ToList();// RTLReflectionTools.SerializableMembers(topType);
             return members;
         }
+
+        public virtual IEnumerable<IRTLModuleValidator> Validators(IRTLClassFactory classFactory)
+            => Enumerable.Empty<IRTLModuleValidator>();
     }
 }

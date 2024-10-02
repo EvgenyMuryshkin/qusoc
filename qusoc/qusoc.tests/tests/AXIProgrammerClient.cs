@@ -9,7 +9,7 @@ namespace QuSoC.Tests
     public class AXIProgrammerClient : IDisposable
     {
         SerialPort _port;
-        public AXIProgrammerClient(string port = "COM4")
+        public AXIProgrammerClient(string port = "COM12")
         {
             _port = new SerialPort()
             {

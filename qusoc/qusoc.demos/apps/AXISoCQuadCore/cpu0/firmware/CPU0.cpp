@@ -22,7 +22,7 @@ namespace AXISoCQuadCore
 				//AXISoCQuadCore_SOC_Reg1 = readData;
 				//AXISoCQuadCore_SOC_Reg2 = 0;
 				//continue;
-				AXISoCQuadCore_SOC_Reg1 = 1;
+				//AXISoCQuadCore_SOC_Reg1 = 1;
 
 				switch (readData)
 				{
@@ -84,22 +84,22 @@ namespace AXISoCQuadCore
 					break;
 					case '5': // write
 					{
-						AXISoCQuadCore_SOC_Reg1 = 2;
+						//AXISoCQuadCore_SOC_Reg1 = 2;
 
 						uint32_t addr = hardwareUART.ReadUint32FromText();
-						AXISoCQuadCore_SOC_Reg1 = 3;
+						//AXISoCQuadCore_SOC_Reg1 = 3;
 
 						uint32_t data = hardwareUART.ReadUint32FromText();
-						AXISoCQuadCore_SOC_Reg1 = 4;
+						//AXISoCQuadCore_SOC_Reg1 = 4;
 
 						hardwareUART.Sync();
-						AXISoCQuadCore_SOC_Reg1 = 5;
+						//AXISoCQuadCore_SOC_Reg1 = 5;
 
 						volatile uint32_t* addrPtr = (uint32_t*)addr;
-						AXISoCQuadCore_SOC_Reg1 = 6;
+						//AXISoCQuadCore_SOC_Reg1 = 6;
 
 						*addrPtr = data;
-						AXISoCQuadCore_SOC_Reg1 = 7;
+						//AXISoCQuadCore_SOC_Reg1 = 7;
 					}
 					break;
 					case '6': // read
@@ -121,7 +121,7 @@ namespace AXISoCQuadCore
 			}
 			else
 			{
-				AXISoCQuadCore_SOC_Reg2 = 1;
+				//AXISoCQuadCore_SOC_Reg2 = 1;
 			}
 		}
 	}

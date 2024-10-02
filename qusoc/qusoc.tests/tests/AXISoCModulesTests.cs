@@ -130,9 +130,13 @@ namespace QuSoC.Tests
             {
                 for (var i = 0; i < 10; i++)
                 {
-                    var reg4 = await u.readData(0x80000010);
-                    reg4 = reg4 ^ 0x1;
-                    await u.writeData(0x80000010, reg4);
+                    await u.Sync();
+                    var reg0 = await u.readData(0x80000004);
+                    var reg1 = await u.readData(0x80000008);
+                    var reg2 = await u.readData(0x8000000C);
+                    var reg3 = await u.readData(0x80000010);
+                    reg3 = reg3 ^ 0x1;
+                    await u.writeData(0x80000010, reg3);
                     await Task.Delay(TimeSpan.FromMilliseconds(500));
                 }
             }
