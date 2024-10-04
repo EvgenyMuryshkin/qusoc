@@ -44,6 +44,7 @@ module AXISoCQuadCoreModule_TopLevel_Switches
 	wire false = 1'b0;
 	wire [0: 0] State_bufferDefault = 1'b0;
 	wire signed [2: 0] addressLSB = 3'b010;
+	wire signed [6: 0] axiWidth = 7'b0100000;
 	wire [1: 0] depth = 2'b10;
 	wire signed [1: 0] rAddrBits = 2'b01;
 	wire [1: 0] size = 2'b10;
@@ -84,6 +85,7 @@ module AXISoCQuadCoreModule_TopLevel_Switches
 	wire [7: 0] Inputs_M2S_W_W_WUSER;
 	wire Inputs_M2S_W_W_WVALID;
 	wire Inputs_M2S_W_B_BREADY;
+	wire [31: 0] axiInData;
 	wire [0: 0] rAddr;
 	wire axiSlave_inARREADY;
 	wire axiSlave_inAWREADY;
@@ -103,6 +105,7 @@ module AXISoCQuadCoreModule_TopLevel_Switches
 	wire [3: 0] axiSlave_outWSTRB;
 	wire axiSlave_outWVALID;
 	wire [73: 0] axiSlave_S2M;
+	wire [31: 0] AXI4InSignalArrayBufferModule_L85F34T71_Resize;
 	wire [0: 0] AXI4InSignalArrayBufferModule_L84F30T101_Index;
 	wire [258: 0] AXI4InSignalArrayBufferModule_L72F37L81T14_Object;
 	wire axiSlave_inARREADY_axiSlave_inARREADY_HardLink;
@@ -293,16 +296,18 @@ module AXISoCQuadCoreModule_TopLevel_Switches
 	assign Inputs_M2S_R_AR_ARID = M2S[7:0];
 	assign Inputs_Sig_inWDATA[1] = Sig[1:1];
 	assign Inputs_Sig_inWDATA[0] = Sig[0:0];
+	assign AXI4InSignalArrayBufferModule_L85F34T71_Resize = {
+		{31{1'b0}},
+		State_buffer[rAddr]
+	}
+	;
+	assign axiInData = AXI4InSignalArrayBufferModule_L85F34T71_Resize;
 	assign AXI4InSignalArrayBufferModule_L84F30T101_Index = AXI4InSignalArrayBufferModule_L84F46T82_Expr[0:0];
 	assign rAddr = AXI4InSignalArrayBufferModule_L84F30T101_Index;
 	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[0] = AXI4InSignalArrayBufferModule_L75F29T33_Expr;
 	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[1] = AXI4InSignalArrayBufferModule_L77F29T34_Expr;
 	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[2] = AXI4InSignalArrayBufferModule_L79F28T33_Expr;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[34:3] = {
-		{31{1'b0}},
-		State_buffer[rAddr]
-	}
-	;
+	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[34:3] = axiInData;
 	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[35] = AXI4InSignalArrayBufferModule_L76F28T32_Expr;
 	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[36] = AXI4InSignalArrayBufferModule_L78F28T33_Expr;
 	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[44:37] = Inputs_M2S_R_AR_ARID;

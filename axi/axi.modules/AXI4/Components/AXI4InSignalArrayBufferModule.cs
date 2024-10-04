@@ -48,7 +48,7 @@ namespace axi.modules
         private readonly uint depth;
         private readonly int rAddrBits;
         private readonly int addressLSB;
-
+        private readonly int axiWidth;
         public AXI4InSignalArrayBufferModule(axiSize size, int width, int depth)
         {
             this.size = size;
@@ -56,7 +56,7 @@ namespace axi.modules
             this.depth = (uint)depth;
             this.addressLSB = AXI4Tools.AddressLSB(size);
             this.rAddrBits = AXITools.log2(depth);
-
+            this.axiWidth = AXI4Tools.Bits(size);
             axiSlave = new AXI4NonBufferedSlaveModule(size);
             InitInputs(new AXI4InSignalArrayBufferModuleInputs(size, width, depth));
             InitState(new AXI4InSignalArrayBufferModuleState(size, width, depth));
@@ -77,12 +77,12 @@ namespace axi.modules
                 inAWREADY = false,
                 inWREADY = false,
                 inBVALID = false,
-                inRDATA = State.buffer[rAddr],
+                inRDATA = axiInData//State.buffer[rAddr],
             });
         }
 
         RTLBitArray rAddr => new RTLBitArray(Inputs.M2S.R.AR.ARADDR >> addressLSB)[rAddrBits - 1, 0];
-        
+        RTLBitArray axiInData => State.buffer[rAddr].Resized(axiWidth);
         protected override void OnStage()
         {
             if (!axiSlave.outARREADYConfirming)
