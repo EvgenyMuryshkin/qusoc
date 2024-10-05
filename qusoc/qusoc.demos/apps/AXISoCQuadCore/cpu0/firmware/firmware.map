@@ -13,10 +13,10 @@ Linker script and memory map
 .text           0x00000000      0xe04
                 0x00000000                        . = ALIGN (0x4)
  *(.text)
- .text          0x00000000        0xc /tmp/cc78eydH.o
- .text          0x0000000c      0x300 /tmp/cca5z29F.o
+ .text          0x00000000        0xc /tmp/ccCwVkwE.o
+ .text          0x0000000c      0x300 /tmp/ccU4wVZG.o
                 0x0000000c                AXISoCQuadCore::CPU0::EntryPoint()
- .text          0x0000030c      0x600 /tmp/ccn2P0UG.o
+ .text          0x0000030c      0x600 /tmp/ccIMUmbF.o
                 0x0000030c                qusoc::HardwareUART::HardwareUART()
                 0x0000030c                qusoc::HardwareUART::HardwareUART()
                 0x00000338                qusoc::HardwareUART::SendByte(unsigned char)
@@ -29,19 +29,19 @@ Linker script and memory map
                 0x000007f8                qusoc::HardwareUART::WriteByteAsText(unsigned char)
                 0x00000850                qusoc::HardwareUART::WriteUint32AsText(unsigned long)
                 0x000008d8                qusoc::HardwareUART::Sync()
- .text          0x0000090c       0x28 /tmp/ccHtcmNF.o
+ .text          0x0000090c       0x28 /tmp/ccaGsDeE.o
                 0x0000090c                main
  *(.text*)
  *(.rodata)
- .rodata        0x00000934       0xe4 /tmp/cca5z29F.o
- .rodata        0x00000a18      0x1b8 /tmp/ccn2P0UG.o
+ .rodata        0x00000934       0xe4 /tmp/ccU4wVZG.o
+ .rodata        0x00000a18      0x1b8 /tmp/ccIMUmbF.o
  *(.rodata*)
  *(.srodata)
  *(.srodata*)
  *(.eh_frame)
- .eh_frame      0x00000bd0       0x34 /tmp/cca5z29F.o
- .eh_frame      0x00000c04      0x1c4 /tmp/ccn2P0UG.o
- .eh_frame      0x00000dc8       0x3c /tmp/ccHtcmNF.o
+ .eh_frame      0x00000bd0       0x34 /tmp/ccU4wVZG.o
+ .eh_frame      0x00000c04      0x1c4 /tmp/ccIMUmbF.o
+ .eh_frame      0x00000dc8       0x3c /tmp/ccaGsDeE.o
  *(.eh_frame*)
                 0x00000e04                        . = ALIGN (0x4)
                 0x00000e04                        _etext = .
@@ -52,10 +52,10 @@ Linker script and memory map
                 0x00000e04                        _sdata = .
                 0x00000e04                        _ram_start = .
  *(.data)
- .data          0x00000e04        0x0 /tmp/cc78eydH.o
- .data          0x00000e04        0x0 /tmp/cca5z29F.o
- .data          0x00000e04        0x0 /tmp/ccn2P0UG.o
- .data          0x00000e04        0x0 /tmp/ccHtcmNF.o
+ .data          0x00000e04        0x0 /tmp/ccCwVkwE.o
+ .data          0x00000e04        0x0 /tmp/ccU4wVZG.o
+ .data          0x00000e04        0x0 /tmp/ccIMUmbF.o
+ .data          0x00000e04        0x0 /tmp/ccaGsDeE.o
  *(.data*)
  *(.sdata)
  *(.sdata*)
@@ -68,10 +68,10 @@ Linker script and memory map
                 0x00000e04                        . = ALIGN (0x4)
                 0x00000e04                        _sbss = .
  *(.bss)
- .bss           0x00000e04        0x0 /tmp/cc78eydH.o
- .bss           0x00000e04        0x0 /tmp/cca5z29F.o
- .bss           0x00000e04        0x0 /tmp/ccn2P0UG.o
- .bss           0x00000e04        0x0 /tmp/ccHtcmNF.o
+ .bss           0x00000e04        0x0 /tmp/ccCwVkwE.o
+ .bss           0x00000e04        0x0 /tmp/ccU4wVZG.o
+ .bss           0x00000e04        0x0 /tmp/ccIMUmbF.o
+ .bss           0x00000e04        0x0 /tmp/ccaGsDeE.o
  *(.bss*)
  *(.sbss)
  *(.sbss*)
@@ -82,53 +82,53 @@ Linker script and memory map
 .heap           0x00000e04        0x0
                 0x00000e04                        . = ALIGN (0x4)
                 0x00000e04                        _heap_start = .
-LOAD /tmp/cc78eydH.o
-LOAD /tmp/cca5z29F.o
-LOAD /tmp/ccn2P0UG.o
-LOAD /tmp/ccHtcmNF.o
+LOAD /tmp/ccCwVkwE.o
+LOAD /tmp/ccU4wVZG.o
+LOAD /tmp/ccIMUmbF.o
+LOAD /tmp/ccaGsDeE.o
 OUTPUT(firmware.elf elf32-littleriscv)
 
 .riscv.attributes
                 0x00000000       0x1c
  .riscv.attributes
-                0x00000000       0x1a /tmp/cc78eydH.o
+                0x00000000       0x1a /tmp/ccCwVkwE.o
  .riscv.attributes
-                0x0000001a       0x1c /tmp/cca5z29F.o
+                0x0000001a       0x1c /tmp/ccU4wVZG.o
  .riscv.attributes
-                0x00000036       0x1c /tmp/ccn2P0UG.o
+                0x00000036       0x1c /tmp/ccIMUmbF.o
  .riscv.attributes
-                0x00000052       0x1c /tmp/ccHtcmNF.o
+                0x00000052       0x1c /tmp/ccaGsDeE.o
 
 .comment        0x00000000       0x33
- .comment       0x00000000       0x33 /tmp/cca5z29F.o
+ .comment       0x00000000       0x33 /tmp/ccU4wVZG.o
                                  0x34 (size before relaxing)
- .comment       0x00000033       0x34 /tmp/ccn2P0UG.o
- .comment       0x00000033       0x34 /tmp/ccHtcmNF.o
+ .comment       0x00000033       0x34 /tmp/ccIMUmbF.o
+ .comment       0x00000033       0x34 /tmp/ccaGsDeE.o
 
 Cross Reference Table
 
 Symbol                                            File
-AXISoCQuadCore::CPU0::EntryPoint()                /tmp/cca5z29F.o
-                                                  /tmp/ccHtcmNF.o
-main                                              /tmp/ccHtcmNF.o
-                                                  /tmp/cc78eydH.o
-qusoc::HardwareUART::HardwareUART()               /tmp/ccn2P0UG.o
-qusoc::HardwareUART::HardwareUART()               /tmp/ccn2P0UG.o
-                                                  /tmp/cca5z29F.o
-qusoc::HardwareUART::HasData()                    /tmp/ccn2P0UG.o
-                                                  /tmp/cca5z29F.o
-qusoc::HardwareUART::ReadByte()                   /tmp/ccn2P0UG.o
-                                                  /tmp/cca5z29F.o
-qusoc::HardwareUART::ReadUint32()                 /tmp/ccn2P0UG.o
-qusoc::HardwareUART::ReadUint32FromText()         /tmp/ccn2P0UG.o
-                                                  /tmp/cca5z29F.o
-qusoc::HardwareUART::SendByte(unsigned char)      /tmp/ccn2P0UG.o
-                                                  /tmp/cca5z29F.o
-qusoc::HardwareUART::SendMessage(char*)           /tmp/ccn2P0UG.o
-                                                  /tmp/cca5z29F.o
-qusoc::HardwareUART::Sync()                       /tmp/ccn2P0UG.o
-                                                  /tmp/cca5z29F.o
-qusoc::HardwareUART::Write4BitAsText(unsigned char) /tmp/ccn2P0UG.o
-qusoc::HardwareUART::WriteByteAsText(unsigned char) /tmp/ccn2P0UG.o
-qusoc::HardwareUART::WriteUint32AsText(unsigned long) /tmp/ccn2P0UG.o
-                                                  /tmp/cca5z29F.o
+AXISoCQuadCore::CPU0::EntryPoint()                /tmp/ccU4wVZG.o
+                                                  /tmp/ccaGsDeE.o
+main                                              /tmp/ccaGsDeE.o
+                                                  /tmp/ccCwVkwE.o
+qusoc::HardwareUART::HardwareUART()               /tmp/ccIMUmbF.o
+qusoc::HardwareUART::HardwareUART()               /tmp/ccIMUmbF.o
+                                                  /tmp/ccU4wVZG.o
+qusoc::HardwareUART::HasData()                    /tmp/ccIMUmbF.o
+                                                  /tmp/ccU4wVZG.o
+qusoc::HardwareUART::ReadByte()                   /tmp/ccIMUmbF.o
+                                                  /tmp/ccU4wVZG.o
+qusoc::HardwareUART::ReadUint32()                 /tmp/ccIMUmbF.o
+qusoc::HardwareUART::ReadUint32FromText()         /tmp/ccIMUmbF.o
+                                                  /tmp/ccU4wVZG.o
+qusoc::HardwareUART::SendByte(unsigned char)      /tmp/ccIMUmbF.o
+                                                  /tmp/ccU4wVZG.o
+qusoc::HardwareUART::SendMessage(char*)           /tmp/ccIMUmbF.o
+                                                  /tmp/ccU4wVZG.o
+qusoc::HardwareUART::Sync()                       /tmp/ccIMUmbF.o
+                                                  /tmp/ccU4wVZG.o
+qusoc::HardwareUART::Write4BitAsText(unsigned char) /tmp/ccIMUmbF.o
+qusoc::HardwareUART::WriteByteAsText(unsigned char) /tmp/ccIMUmbF.o
+qusoc::HardwareUART::WriteUint32AsText(unsigned long) /tmp/ccIMUmbF.o
+                                                  /tmp/ccU4wVZG.o
