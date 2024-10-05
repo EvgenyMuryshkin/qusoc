@@ -4,6 +4,7 @@ using axi.modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Quokka.RTL.Tools;
 
 namespace AXISoC
 {
@@ -162,6 +163,9 @@ namespace AXISoC
             //cpu2Memory.Initialize(toBytes(cpu2Instructions));
             //cpu3Memory.Initialize(toBytes(cpu3Instructions));
         }
+
+        public override IEnumerable<IRTLModuleValidator> Validators(IRTLClassFactory classFactory)
+            => [classFactory.Create<AXI4InterconnectScheduleValidator>()];
 
         protected override void OnSchedule(Func<AXISoCQuadCoreModuleInputs> inputsFactory)
         {

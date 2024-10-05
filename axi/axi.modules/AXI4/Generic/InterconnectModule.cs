@@ -1,5 +1,7 @@
 ﻿using Quokka.RTL;
+using Quokka.RTL.Local;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 
@@ -88,6 +90,18 @@ namespace axi.modules
 
         //protected bool[] TXBegin;
         //protected bool[] TXBegin => range(leftCount).Select(leftIndex => TXStart(leftIndex, Inputs.iLeft[leftIndex]) && !WaitForRestarts[leftIndex]).ToArray();
+
+        protected override void OnNextInputs(InterconnectModuleInputs<TLeft, TRight> newInput)
+        {
+            base.OnNextInputs(newInput);
+
+            if (leftCount != newInput.iLeft.Length)
+                throw new ModuleException(this, $"Interconnect misconfiguration. Expecting to get {leftCount} lhs ({typeof(TLeft).Name}) in {GetType()}.Schedule, got {newInput.iLeft.Length}");
+
+            if (rightCount != newInput.iRight.Length)
+                throw new ModuleException(this, $"Interconnect misconfiguration. Expecting to get {rightAddr} rhs ({typeof(TRight).Name}) in {GetType()}.Schedule, got {newInput.iRight.Length}");
+        }
+
         protected override void OnSchedule(Func<InterconnectModuleInputs<TLeft, TRight>> inputsFactory)
         {
             base.OnSchedule(inputsFactory);
@@ -96,7 +110,7 @@ namespace axi.modules
             //{
             //    TXBegin[leftIndex] = TXStart(Inputs.iLeft[leftIndex]) && !WaitForRestarts[leftIndex];
             //}
-            
+
             foreach (var leftIndex in range(leftCount))
             {
                 TransactionDetectors[leftIndex].Schedule(() => 
