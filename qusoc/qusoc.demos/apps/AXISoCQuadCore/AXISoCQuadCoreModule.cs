@@ -28,7 +28,7 @@ namespace AXISoC
         internal AXI4GatewayModule programmerCPU0Gateway = new AXI4GatewayModule(axiSize.B4, 17);
         internal AXI4GatewayModule programmerCPU1Gateway = new AXI4GatewayModule(axiSize.B4, 17);
         internal AXI4GatewayModule programmerCPU2Gateway = new AXI4GatewayModule(axiSize.B4, 17);
-        //internal AXI4GatewayModule programmerCPU3Gateway = new AXI4GatewayModule(axiSize.B4, 17);
+        internal AXI4GatewayModule programmerCPU3Gateway = new AXI4GatewayModule(axiSize.B4, 17);
 
         internal AXI4InteconnectModule programmerInterconnect = new AXI4InteconnectModule(
             axiSize.B4,
@@ -39,7 +39,7 @@ namespace AXISoC
                 new RangeInfo(0xF0000000, 0xF001FFFF),// cpu0 interconnect
                 new RangeInfo(0xF1000000, 0xF101FFFF),// cpu1 interconnect
                 new RangeInfo(0xF2000000, 0xF201FFFF),// cpu2 interconnect
-                //new RangeInfo(0xF3000000, 0xF301FFFF),// cpu3 interconnect
+                new RangeInfo(0xF3000000, 0xF301FFFF),// cpu3 interconnect
             }
         );
 
@@ -95,7 +95,7 @@ namespace AXISoC
                 new RangeInfo(0x80000000, 0xA0000000),// io interconnect
             }
         );
-        /*
+        
         internal AXI4RISCVModule CPU3 = new AXI4RISCVModule(CPURegsType.RAM, 3);
         internal AXI4MemoryModule cpu3Memory = new AXI4MemoryModule(axiSize.B4, 0x1000);
         internal AXI4IncrementOnReadCounterModule cpu3AutoIncrementCounter = new AXI4IncrementOnReadCounterModule(axiSize.B4);
@@ -113,7 +113,7 @@ namespace AXISoC
                 new RangeInfo(0x80000000, 0xA0000000),// io interconnect
             }
         );
-        */
+        
         internal AXI4RegisterModule CPUExtReset = new AXI4RegisterModule(axiSize.B4);
 
         internal AXI4RegisterModule Reg0 = new AXI4RegisterModule(axiSize.B4);
@@ -130,7 +130,7 @@ namespace AXISoC
 
         internal AXI4InteconnectModule ioInterconnect = new AXI4InteconnectModule(
             axiSize.B4,
-            4,//5,
+            5,
             new List<RangeInfo>()
             {
                 new RangeInfo(0x80000000, 0x80000000),// ext reset
@@ -161,7 +161,7 @@ namespace AXISoC
             cpu0Memory.Initialize(toBytes(cpu0Instructions));
             cpu1Memory.Initialize(toBytes(cpu1Instructions));
             cpu2Memory.Initialize(toBytes(cpu2Instructions));
-            //cpu3Memory.Initialize(toBytes(cpu3Instructions));
+            cpu3Memory.Initialize(toBytes(cpu3Instructions));
         }
 
         public override IEnumerable<IRTLModuleValidator> Validators(IRTLClassFactory classFactory)
@@ -201,11 +201,11 @@ namespace AXISoC
                 iS2M = cpu2Interconnect.oS2M[0]
             });
 
-            //programmerCPU3Gateway.Schedule(() => new()
-            //{
-            //    iM2S = programmerInterconnect.oM2S[4],
-            //    iS2M = cpu3Interconnect.oS2M[0]
-            //});
+            programmerCPU3Gateway.Schedule(() => new()
+            {
+                iM2S = programmerInterconnect.oM2S[4],
+                iS2M = cpu3Interconnect.oS2M[0]
+            });
 
             programmerInterconnect.Schedule(() => new()
             {
@@ -218,7 +218,7 @@ namespace AXISoC
                     programmerCPU0Gateway.oS2M,
                     programmerCPU1Gateway.oS2M,
                     programmerCPU2Gateway.oS2M,
-                    //programmerCPU3Gateway.oS2M,
+                    programmerCPU3Gateway.oS2M,
                 ]
             });
             // CPU0
@@ -332,7 +332,7 @@ namespace AXISoC
                     cpu2IOGateway.oS2M
                 ]
             });
-            /*
+            
             //CPU3
             CPU3.Schedule(() => new()
             {
@@ -369,7 +369,7 @@ namespace AXISoC
                     cpu3IOGateway.oS2M
                 ]
             });
-            */
+            
             // IO interconnect
             CPUExtReset.Schedule(() => new()
             { 
@@ -439,7 +439,7 @@ namespace AXISoC
                     cpu0IOGateway.oM2S,
                     cpu1IOGateway.oM2S,
                     cpu2IOGateway.oM2S,
-                    //cpu3IOGateway.oM2S
+                    cpu3IOGateway.oM2S
                 ],
                 iS2M = [
                     CPUExtReset.S2M,

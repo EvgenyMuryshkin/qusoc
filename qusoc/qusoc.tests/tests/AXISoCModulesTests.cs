@@ -135,8 +135,8 @@ namespace QuSoC.Tests
                     var reg1 = await u.readData(0x80000008);
                     var reg2 = await u.readData(0x8000000C);
                     var reg3 = await u.readData(0x80000010);
-                    reg3 = reg3 ^ 0x1;
-                    await u.writeData(0x80000010, reg3);
+                    reg1 = reg1 ^ 0x1;
+                    await u.writeData(0x80000008, reg1);
                     await Task.Delay(TimeSpan.FromMilliseconds(500));
                 }
             }
