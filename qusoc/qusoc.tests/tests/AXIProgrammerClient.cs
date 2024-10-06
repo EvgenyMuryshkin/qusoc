@@ -124,7 +124,8 @@ namespace QuSoC.Tests
             uint cpuMask = 1U << cpu;
             await writeData(0x80000000, cpuMask);
 
-            var baseAddr = 0xF1000000;
+            var baseAddrMask = (uint)(cpu << 24); 
+            var baseAddr = 0xF0000000 | baseAddrMask;
 
             Trace.WriteLine($"Firmware size: {instructions.Length} words [{baseAddr:X} - {(baseAddr + instructions.Length * 4):X}]");
             Stopwatch sw = new Stopwatch();

@@ -9,6 +9,8 @@ namespace AXISoCQuadCore
 	{
 		public: 
 			static void EntryPoint();
+			static void Counter(uint32_t delay);
+			static void Increment(uint32_t* counter);
 	};
 }
 #endif

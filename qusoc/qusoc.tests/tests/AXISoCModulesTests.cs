@@ -128,6 +128,7 @@ namespace QuSoC.Tests
 
             using (var u = new AXIProgrammerClient())
             {
+                await u.Sync();
                 for (var i = 0; i < 10; i++)
                 {
                     await u.Sync();
@@ -153,7 +154,7 @@ namespace QuSoC.Tests
 
                     using (var u = new AXIProgrammerClient())
                     {
-                        await u.Update(0, cpu1Instructions);
+                        await u.Update(1, cpu1Instructions);
                     }
                 }
                 catch (Exception ex)
@@ -377,14 +378,35 @@ namespace QuSoC.Tests
                         looped
                     );
 
+                    
                     var programmer = topLevel.programmer;
+                    /*
+                    programmer.receiverFIFO.PushByteToFIFO(0x55);
+                    programmer.receiverFIFO.PushByteToFIFO(2);// Write to cpu0
+                    programmer.receiverFIFO.PushUint32ToFIFO(0xF0000004); // Write Address
+                    programmer.receiverFIFO.PushUint32ToFIFO(0xAA5580FF); // Write Data
+
+                    programmer.receiverFIFO.PushByteToFIFO(2);// Write to cpu1
+                    programmer.receiverFIFO.PushUint32ToFIFO(0xF1000004); // Write Address
+                    programmer.receiverFIFO.PushUint32ToFIFO(0xAA5581FF); // Write Data
+
+                    programmer.receiverFIFO.PushByteToFIFO(2);// Write to cpu2
+                    programmer.receiverFIFO.PushUint32ToFIFO(0xF2000004); // Write Address
+                    programmer.receiverFIFO.PushUint32ToFIFO(0xAA5582FF); // Write Data
+
+                    programmer.receiverFIFO.PushByteToFIFO(2);// Write to cpu3
+                    programmer.receiverFIFO.PushUint32ToFIFO(0xF3000004); // Write Address
+                    programmer.receiverFIFO.PushUint32ToFIFO(0xAA5583FF); // Write Data
+
                     programmer.receiverFIFO.PushByteToFIFO(0x55);
                     programmer.receiverFIFO.PushByteToFIFO(2);// Write
                     programmer.receiverFIFO.PushUint32ToFIFO(0x80000004); // Write Address - PWM0
                     programmer.receiverFIFO.PushUint32ToFIFO(0xAA5581FF); // Write Data
+
                     programmer.receiverFIFO.PushByteToFIFO(0x55);
                     programmer.receiverFIFO.PushByteToFIFO(1);// Read
                     programmer.receiverFIFO.PushUint32ToFIFO(0x80000004); // Write Address - Reg0
+                    */
 
                     //var uart = topLevel.uart;
                     //uart.receiverFIFO.PushByteToFIFO((byte)('5')); // write
@@ -426,7 +448,7 @@ namespace QuSoC.Tests
 
                         if (topLevel.CPU0.CPU.State.State == CPUState.IF && topLevel.CPU0.CPU.NextState.State != CPUState.IF)
                         {
-                            //Debugger.Break();
+                            Debugger.Break();
                         }
 
                         //if (topLevel.pwm.State.pwm[3] != 0)
@@ -446,7 +468,7 @@ namespace QuSoC.Tests
                         {
                             var writeSync = programmer.transmitterFIFO.State.buffer[0];
                             var readSync = programmer.transmitterFIFO.State.buffer[1];
-                            var readData = new RTLBitArray(RTLBitArrayInitType.MSB, programmer.transmitterFIFO.State.buffer.Skip(2).Take(4).ToArray());
+                            var readData = new RTLBitArray(RTLBitArrayInitType.MSB, programmer.transmitterFIFO.State.buffer.SkipWhile(c => c == 0x55).Take(4).ToArray());
 
                             Assert.AreEqual<uint>(0xAA5581FF, readData);
                             return false;

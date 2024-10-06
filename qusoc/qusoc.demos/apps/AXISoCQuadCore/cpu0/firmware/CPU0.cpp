@@ -6,8 +6,25 @@
 
 namespace AXISoCQuadCore
 {
+	void CPU0::Increment(uint32_t* counter)
+	{
+		*counter++;
+	}
+
+	void CPU0::Counter(uint32_t delay)
+	{
+		uint32_t counter = 0;
+		while (true)
+		{
+			CPU0::Increment(&counter);
+			AXISoCQuadCore_SOC_Reg0 = counter;
+		}
+	}
+
 	void CPU0::EntryPoint()
 	{
+		CPU0::Counter(50000000);
+
 		uint32_t counter = 0;
 		struct qusoc::HardwareUART hardwareUART;//(/*0x90000000*/);
 
@@ -19,10 +36,6 @@ namespace AXISoCQuadCore
 			if (hardwareUART.HasData())
 			{
 				uint8_t readData = hardwareUART.ReadByte();
-				//AXISoCQuadCore_SOC_Reg1 = readData;
-				//AXISoCQuadCore_SOC_Reg2 = 0;
-				//continue;
-				//AXISoCQuadCore_SOC_Reg1 = 1;
 
 				switch (readData)
 				{
@@ -84,22 +97,11 @@ namespace AXISoCQuadCore
 					break;
 					case '5': // write
 					{
-						//AXISoCQuadCore_SOC_Reg1 = 2;
-
 						uint32_t addr = hardwareUART.ReadUint32FromText();
-						//AXISoCQuadCore_SOC_Reg1 = 3;
-
 						uint32_t data = hardwareUART.ReadUint32FromText();
-						//AXISoCQuadCore_SOC_Reg1 = 4;
-
 						hardwareUART.Sync();
-						//AXISoCQuadCore_SOC_Reg1 = 5;
-
 						volatile uint32_t* addrPtr = (uint32_t*)addr;
-						//AXISoCQuadCore_SOC_Reg1 = 6;
-
 						*addrPtr = data;
-						//AXISoCQuadCore_SOC_Reg1 = 7;
 					}
 					break;
 					case '6': // read
@@ -118,10 +120,6 @@ namespace AXISoCQuadCore
 					}
 					break;
 				}
-			}
-			else
-			{
-				//AXISoCQuadCore_SOC_Reg2 = 1;
 			}
 		}
 	}
