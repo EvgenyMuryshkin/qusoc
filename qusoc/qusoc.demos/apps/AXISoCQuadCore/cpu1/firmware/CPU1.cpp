@@ -26,7 +26,7 @@ namespace AXISoCQuadCore
 		while (true)
 		{
 			counter++;
-			AXISoCQuadCore_SOC_Reg3 = counter;
+			AXISoCQuadCore_SOC_Reg1 = counter;
 			_wait.Clocks(50000000);
 		}
 	}

@@ -30,6 +30,8 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect
 	input wire BoardSignals_Started,
 	input wire [221:0] iM2S0,
 	input wire [221:0] iM2S1,
+	input wire [221:0] iM2S2,
+	input wire [221:0] iM2S3,
 	input wire [73:0] iS2M0,
 	input wire [73:0] iS2M1,
 	input wire [73:0] iS2M2,
@@ -51,7 +53,9 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect
 	output wire [221:0] oM2S8,
 	output wire [221:0] oM2S9,
 	output wire [73:0] oS2M0,
-	output wire [73:0] oS2M1
+	output wire [73:0] oS2M1,
+	output wire [73:0] oS2M2,
+	output wire [73:0] oS2M3
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -61,10 +65,10 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire signed [2: 0] mCount = 3'b010;
+	wire signed [3: 0] mCount = 4'b0100;
 	wire signed [4: 0] sCount = 5'b01010;
-	wire [697: 0] AXI4InteconnectModule_L54F17L58T18_Object;
-	wire [485: 0] AXI4InteconnectModule_L62F17L66T18_Object;
+	wire [865: 0] AXI4InteconnectModule_L54F17L58T18_Object;
+	wire [761: 0] AXI4InteconnectModule_L62F17L66T18_Object;
 	wire [221: 0] AXI4InteconnectModule_L79F35L86T24_0_AXI4InteconnectModule_L81F17L85T18_Object;
 	wire [221: 0] AXI4InteconnectModule_L79F35L86T24_1_AXI4InteconnectModule_L81F17L85T18_Object;
 	wire [221: 0] AXI4InteconnectModule_L79F35L86T24_2_AXI4InteconnectModule_L81F17L85T18_Object;
@@ -77,8 +81,12 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect
 	wire [221: 0] AXI4InteconnectModule_L79F35L86T24_9_AXI4InteconnectModule_L81F17L85T18_Object;
 	wire [73: 0] AXI4InteconnectModule_L70F35L77T24_0_AXI4InteconnectModule_L72F17L76T18_Object;
 	wire [73: 0] AXI4InteconnectModule_L70F35L77T24_1_AXI4InteconnectModule_L72F17L76T18_Object;
+	wire [73: 0] AXI4InteconnectModule_L70F35L77T24_2_AXI4InteconnectModule_L72F17L76T18_Object;
+	wire [73: 0] AXI4InteconnectModule_L70F35L77T24_3_AXI4InteconnectModule_L72F17L76T18_Object;
 	wire [83: 0] readInterconnect_iLeft0_readInterconnect_iLeft_HardLink;
 	wire [83: 0] readInterconnect_iLeft1_readInterconnect_iLeft_HardLink;
+	wire [83: 0] readInterconnect_iLeft2_readInterconnect_iLeft_HardLink;
+	wire [83: 0] readInterconnect_iLeft3_readInterconnect_iLeft_HardLink;
 	wire [52: 0] readInterconnect_iRight0_readInterconnect_iRight_HardLink;
 	wire [52: 0] readInterconnect_iRight1_readInterconnect_iRight_HardLink;
 	wire [52: 0] readInterconnect_iRight2_readInterconnect_iRight_HardLink;
@@ -101,8 +109,12 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect
 	wire [83: 0] readInterconnect_M2S9_readInterconnect_M2S_HardLink;
 	wire [52: 0] readInterconnect_S2M0_readInterconnect_S2M_HardLink;
 	wire [52: 0] readInterconnect_S2M1_readInterconnect_S2M_HardLink;
+	wire [52: 0] readInterconnect_S2M2_readInterconnect_S2M_HardLink;
+	wire [52: 0] readInterconnect_S2M3_readInterconnect_S2M_HardLink;
 	wire [137: 0] writeInterconnect_iLeft0_writeInterconnect_iLeft_HardLink;
 	wire [137: 0] writeInterconnect_iLeft1_writeInterconnect_iLeft_HardLink;
+	wire [137: 0] writeInterconnect_iLeft2_writeInterconnect_iLeft_HardLink;
+	wire [137: 0] writeInterconnect_iLeft3_writeInterconnect_iLeft_HardLink;
 	wire [20: 0] writeInterconnect_iRight0_writeInterconnect_iRight_HardLink;
 	wire [20: 0] writeInterconnect_iRight1_writeInterconnect_iRight_HardLink;
 	wire [20: 0] writeInterconnect_iRight2_writeInterconnect_iRight_HardLink;
@@ -125,22 +137,24 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect
 	wire [137: 0] writeInterconnect_M2S9_writeInterconnect_M2S_HardLink;
 	wire [20: 0] writeInterconnect_S2M0_writeInterconnect_S2M_HardLink;
 	wire [20: 0] writeInterconnect_S2M1_writeInterconnect_S2M_HardLink;
-	wire [221 : 0] Inputs_iM2S [0 : 1];
+	wire [20: 0] writeInterconnect_S2M2_writeInterconnect_S2M_HardLink;
+	wire [20: 0] writeInterconnect_S2M3_writeInterconnect_S2M_HardLink;
+	wire [221 : 0] Inputs_iM2S [0 : 3];
 	wire [73 : 0] Inputs_iS2M [0 : 9];
-	wire [83 : 0] readInterconnect_iLeft [0 : 1];
+	wire [83 : 0] readInterconnect_iLeft [0 : 3];
 	wire [52 : 0] readInterconnect_iRight [0 : 9];
 	wire [83 : 0] readInterconnect_M2S [0 : 9];
-	wire [52 : 0] readInterconnect_S2M [0 : 1];
-	wire [137 : 0] writeInterconnect_iLeft [0 : 1];
+	wire [52 : 0] readInterconnect_S2M [0 : 3];
+	wire [137 : 0] writeInterconnect_iLeft [0 : 3];
 	wire [20 : 0] writeInterconnect_iRight [0 : 9];
 	wire [137 : 0] writeInterconnect_M2S [0 : 9];
-	wire [20 : 0] writeInterconnect_S2M [0 : 1];
-	wire [83 : 0] AXI4InteconnectModule_L56F29T67_Enumerable [0 : 1];
+	wire [20 : 0] writeInterconnect_S2M [0 : 3];
+	wire [83 : 0] AXI4InteconnectModule_L56F29T67_Enumerable [0 : 3];
 	wire [52 : 0] AXI4InteconnectModule_L57F30T68_Enumerable [0 : 9];
-	wire [137 : 0] AXI4InteconnectModule_L64F29T67_Enumerable [0 : 1];
+	wire [137 : 0] AXI4InteconnectModule_L64F29T67_Enumerable [0 : 3];
 	wire [20 : 0] AXI4InteconnectModule_L65F30T68_Enumerable [0 : 9];
 	wire [221 : 0] AXI4InteconnectModule_L79F35L86T24_Enumerable [0 : 9];
-	wire [73 : 0] AXI4InteconnectModule_L70F35L77T24_Enumerable [0 : 1];
+	wire [73 : 0] AXI4InteconnectModule_L70F35L77T24_Enumerable [0 : 3];
 	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	(
@@ -153,6 +167,8 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect
 		.BoardSignals_Started (BoardSignals_Started),
 		.iLeft0 (readInterconnect_iLeft0_readInterconnect_iLeft_HardLink),
 		.iLeft1 (readInterconnect_iLeft1_readInterconnect_iLeft_HardLink),
+		.iLeft2 (readInterconnect_iLeft2_readInterconnect_iLeft_HardLink),
+		.iLeft3 (readInterconnect_iLeft3_readInterconnect_iLeft_HardLink),
 		.iRight0 (readInterconnect_iRight0_readInterconnect_iRight_HardLink),
 		.iRight1 (readInterconnect_iRight1_readInterconnect_iRight_HardLink),
 		.iRight2 (readInterconnect_iRight2_readInterconnect_iRight_HardLink),
@@ -174,7 +190,9 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect
 		.M2S8 (readInterconnect_M2S8_readInterconnect_M2S_HardLink),
 		.M2S9 (readInterconnect_M2S9_readInterconnect_M2S_HardLink),
 		.S2M0 (readInterconnect_S2M0_readInterconnect_S2M_HardLink),
-		.S2M1 (readInterconnect_S2M1_readInterconnect_S2M_HardLink)
+		.S2M1 (readInterconnect_S2M1_readInterconnect_S2M_HardLink),
+		.S2M2 (readInterconnect_S2M2_readInterconnect_S2M_HardLink),
+		.S2M3 (readInterconnect_S2M3_readInterconnect_S2M_HardLink)
 	);
 	AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect
 	AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect
@@ -188,6 +206,8 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect
 		.BoardSignals_Started (BoardSignals_Started),
 		.iLeft0 (writeInterconnect_iLeft0_writeInterconnect_iLeft_HardLink),
 		.iLeft1 (writeInterconnect_iLeft1_writeInterconnect_iLeft_HardLink),
+		.iLeft2 (writeInterconnect_iLeft2_writeInterconnect_iLeft_HardLink),
+		.iLeft3 (writeInterconnect_iLeft3_writeInterconnect_iLeft_HardLink),
 		.iRight0 (writeInterconnect_iRight0_writeInterconnect_iRight_HardLink),
 		.iRight1 (writeInterconnect_iRight1_writeInterconnect_iRight_HardLink),
 		.iRight2 (writeInterconnect_iRight2_writeInterconnect_iRight_HardLink),
@@ -209,10 +229,14 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect
 		.M2S8 (writeInterconnect_M2S8_writeInterconnect_M2S_HardLink),
 		.M2S9 (writeInterconnect_M2S9_writeInterconnect_M2S_HardLink),
 		.S2M0 (writeInterconnect_S2M0_writeInterconnect_S2M_HardLink),
-		.S2M1 (writeInterconnect_S2M1_writeInterconnect_S2M_HardLink)
+		.S2M1 (writeInterconnect_S2M1_writeInterconnect_S2M_HardLink),
+		.S2M2 (writeInterconnect_S2M2_writeInterconnect_S2M_HardLink),
+		.S2M3 (writeInterconnect_S2M3_writeInterconnect_S2M_HardLink)
 	);
 	assign Inputs_iM2S[0] = iM2S0;
 	assign Inputs_iM2S[1] = iM2S1;
+	assign Inputs_iM2S[2] = iM2S2;
+	assign Inputs_iM2S[3] = iM2S3;
 	assign Inputs_iS2M[0] = iS2M0;
 	assign Inputs_iS2M[1] = iS2M1;
 	assign Inputs_iS2M[2] = iS2M2;
@@ -225,7 +249,11 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect
 	assign Inputs_iS2M[9] = iS2M9;
 	assign AXI4InteconnectModule_L56F29T67_Enumerable[0] = Inputs_iM2S[0][83:0];
 	assign AXI4InteconnectModule_L56F29T67_Enumerable[1] = Inputs_iM2S[1][83:0];
-	assign AXI4InteconnectModule_L54F17L58T18_Object[167:0] = {
+	assign AXI4InteconnectModule_L56F29T67_Enumerable[2] = Inputs_iM2S[2][83:0];
+	assign AXI4InteconnectModule_L56F29T67_Enumerable[3] = Inputs_iM2S[3][83:0];
+	assign AXI4InteconnectModule_L54F17L58T18_Object[335:0] = {
+		AXI4InteconnectModule_L56F29T67_Enumerable[3],
+		AXI4InteconnectModule_L56F29T67_Enumerable[2],
 		AXI4InteconnectModule_L56F29T67_Enumerable[1],
 		AXI4InteconnectModule_L56F29T67_Enumerable[0]
 	}
@@ -240,7 +268,7 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect
 	assign AXI4InteconnectModule_L57F30T68_Enumerable[7] = Inputs_iS2M[7][52:0];
 	assign AXI4InteconnectModule_L57F30T68_Enumerable[8] = Inputs_iS2M[8][52:0];
 	assign AXI4InteconnectModule_L57F30T68_Enumerable[9] = Inputs_iS2M[9][52:0];
-	assign AXI4InteconnectModule_L54F17L58T18_Object[697:168] = {
+	assign AXI4InteconnectModule_L54F17L58T18_Object[865:336] = {
 		AXI4InteconnectModule_L57F30T68_Enumerable[9],
 		AXI4InteconnectModule_L57F30T68_Enumerable[8],
 		AXI4InteconnectModule_L57F30T68_Enumerable[7],
@@ -253,21 +281,27 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect
 		AXI4InteconnectModule_L57F30T68_Enumerable[0]
 	}
 	;
-	assign readInterconnect_iRight[9] = AXI4InteconnectModule_L54F17L58T18_Object[697:645];
-	assign readInterconnect_iRight[8] = AXI4InteconnectModule_L54F17L58T18_Object[644:592];
-	assign readInterconnect_iRight[7] = AXI4InteconnectModule_L54F17L58T18_Object[591:539];
-	assign readInterconnect_iRight[6] = AXI4InteconnectModule_L54F17L58T18_Object[538:486];
-	assign readInterconnect_iRight[5] = AXI4InteconnectModule_L54F17L58T18_Object[485:433];
-	assign readInterconnect_iRight[4] = AXI4InteconnectModule_L54F17L58T18_Object[432:380];
-	assign readInterconnect_iRight[3] = AXI4InteconnectModule_L54F17L58T18_Object[379:327];
-	assign readInterconnect_iRight[2] = AXI4InteconnectModule_L54F17L58T18_Object[326:274];
-	assign readInterconnect_iRight[1] = AXI4InteconnectModule_L54F17L58T18_Object[273:221];
-	assign readInterconnect_iRight[0] = AXI4InteconnectModule_L54F17L58T18_Object[220:168];
+	assign readInterconnect_iRight[9] = AXI4InteconnectModule_L54F17L58T18_Object[865:813];
+	assign readInterconnect_iRight[8] = AXI4InteconnectModule_L54F17L58T18_Object[812:760];
+	assign readInterconnect_iRight[7] = AXI4InteconnectModule_L54F17L58T18_Object[759:707];
+	assign readInterconnect_iRight[6] = AXI4InteconnectModule_L54F17L58T18_Object[706:654];
+	assign readInterconnect_iRight[5] = AXI4InteconnectModule_L54F17L58T18_Object[653:601];
+	assign readInterconnect_iRight[4] = AXI4InteconnectModule_L54F17L58T18_Object[600:548];
+	assign readInterconnect_iRight[3] = AXI4InteconnectModule_L54F17L58T18_Object[547:495];
+	assign readInterconnect_iRight[2] = AXI4InteconnectModule_L54F17L58T18_Object[494:442];
+	assign readInterconnect_iRight[1] = AXI4InteconnectModule_L54F17L58T18_Object[441:389];
+	assign readInterconnect_iRight[0] = AXI4InteconnectModule_L54F17L58T18_Object[388:336];
+	assign readInterconnect_iLeft[3] = AXI4InteconnectModule_L54F17L58T18_Object[335:252];
+	assign readInterconnect_iLeft[2] = AXI4InteconnectModule_L54F17L58T18_Object[251:168];
 	assign readInterconnect_iLeft[1] = AXI4InteconnectModule_L54F17L58T18_Object[167:84];
 	assign readInterconnect_iLeft[0] = AXI4InteconnectModule_L54F17L58T18_Object[83:0];
 	assign AXI4InteconnectModule_L64F29T67_Enumerable[0] = Inputs_iM2S[0][221:84];
 	assign AXI4InteconnectModule_L64F29T67_Enumerable[1] = Inputs_iM2S[1][221:84];
-	assign AXI4InteconnectModule_L62F17L66T18_Object[275:0] = {
+	assign AXI4InteconnectModule_L64F29T67_Enumerable[2] = Inputs_iM2S[2][221:84];
+	assign AXI4InteconnectModule_L64F29T67_Enumerable[3] = Inputs_iM2S[3][221:84];
+	assign AXI4InteconnectModule_L62F17L66T18_Object[551:0] = {
+		AXI4InteconnectModule_L64F29T67_Enumerable[3],
+		AXI4InteconnectModule_L64F29T67_Enumerable[2],
 		AXI4InteconnectModule_L64F29T67_Enumerable[1],
 		AXI4InteconnectModule_L64F29T67_Enumerable[0]
 	}
@@ -282,7 +316,7 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect
 	assign AXI4InteconnectModule_L65F30T68_Enumerable[7] = Inputs_iS2M[7][73:53];
 	assign AXI4InteconnectModule_L65F30T68_Enumerable[8] = Inputs_iS2M[8][73:53];
 	assign AXI4InteconnectModule_L65F30T68_Enumerable[9] = Inputs_iS2M[9][73:53];
-	assign AXI4InteconnectModule_L62F17L66T18_Object[485:276] = {
+	assign AXI4InteconnectModule_L62F17L66T18_Object[761:552] = {
 		AXI4InteconnectModule_L65F30T68_Enumerable[9],
 		AXI4InteconnectModule_L65F30T68_Enumerable[8],
 		AXI4InteconnectModule_L65F30T68_Enumerable[7],
@@ -295,16 +329,18 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect
 		AXI4InteconnectModule_L65F30T68_Enumerable[0]
 	}
 	;
-	assign writeInterconnect_iRight[9] = AXI4InteconnectModule_L62F17L66T18_Object[485:465];
-	assign writeInterconnect_iRight[8] = AXI4InteconnectModule_L62F17L66T18_Object[464:444];
-	assign writeInterconnect_iRight[7] = AXI4InteconnectModule_L62F17L66T18_Object[443:423];
-	assign writeInterconnect_iRight[6] = AXI4InteconnectModule_L62F17L66T18_Object[422:402];
-	assign writeInterconnect_iRight[5] = AXI4InteconnectModule_L62F17L66T18_Object[401:381];
-	assign writeInterconnect_iRight[4] = AXI4InteconnectModule_L62F17L66T18_Object[380:360];
-	assign writeInterconnect_iRight[3] = AXI4InteconnectModule_L62F17L66T18_Object[359:339];
-	assign writeInterconnect_iRight[2] = AXI4InteconnectModule_L62F17L66T18_Object[338:318];
-	assign writeInterconnect_iRight[1] = AXI4InteconnectModule_L62F17L66T18_Object[317:297];
-	assign writeInterconnect_iRight[0] = AXI4InteconnectModule_L62F17L66T18_Object[296:276];
+	assign writeInterconnect_iRight[9] = AXI4InteconnectModule_L62F17L66T18_Object[761:741];
+	assign writeInterconnect_iRight[8] = AXI4InteconnectModule_L62F17L66T18_Object[740:720];
+	assign writeInterconnect_iRight[7] = AXI4InteconnectModule_L62F17L66T18_Object[719:699];
+	assign writeInterconnect_iRight[6] = AXI4InteconnectModule_L62F17L66T18_Object[698:678];
+	assign writeInterconnect_iRight[5] = AXI4InteconnectModule_L62F17L66T18_Object[677:657];
+	assign writeInterconnect_iRight[4] = AXI4InteconnectModule_L62F17L66T18_Object[656:636];
+	assign writeInterconnect_iRight[3] = AXI4InteconnectModule_L62F17L66T18_Object[635:615];
+	assign writeInterconnect_iRight[2] = AXI4InteconnectModule_L62F17L66T18_Object[614:594];
+	assign writeInterconnect_iRight[1] = AXI4InteconnectModule_L62F17L66T18_Object[593:573];
+	assign writeInterconnect_iRight[0] = AXI4InteconnectModule_L62F17L66T18_Object[572:552];
+	assign writeInterconnect_iLeft[3] = AXI4InteconnectModule_L62F17L66T18_Object[551:414];
+	assign writeInterconnect_iLeft[2] = AXI4InteconnectModule_L62F17L66T18_Object[413:276];
 	assign writeInterconnect_iLeft[1] = AXI4InteconnectModule_L62F17L66T18_Object[275:138];
 	assign writeInterconnect_iLeft[0] = AXI4InteconnectModule_L62F17L66T18_Object[137:0];
 	assign AXI4InteconnectModule_L79F35L86T24_0_AXI4InteconnectModule_L81F17L85T18_Object[83:0] = readInterconnect_M2S[0];
@@ -351,12 +387,22 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect
 	assign AXI4InteconnectModule_L70F35L77T24_0_AXI4InteconnectModule_L72F17L76T18_Object[73:53] = writeInterconnect_S2M[0];
 	assign AXI4InteconnectModule_L70F35L77T24_1_AXI4InteconnectModule_L72F17L76T18_Object[52:0] = readInterconnect_S2M[1];
 	assign AXI4InteconnectModule_L70F35L77T24_1_AXI4InteconnectModule_L72F17L76T18_Object[73:53] = writeInterconnect_S2M[1];
+	assign AXI4InteconnectModule_L70F35L77T24_2_AXI4InteconnectModule_L72F17L76T18_Object[52:0] = readInterconnect_S2M[2];
+	assign AXI4InteconnectModule_L70F35L77T24_2_AXI4InteconnectModule_L72F17L76T18_Object[73:53] = writeInterconnect_S2M[2];
+	assign AXI4InteconnectModule_L70F35L77T24_3_AXI4InteconnectModule_L72F17L76T18_Object[52:0] = readInterconnect_S2M[3];
+	assign AXI4InteconnectModule_L70F35L77T24_3_AXI4InteconnectModule_L72F17L76T18_Object[73:53] = writeInterconnect_S2M[3];
 	assign AXI4InteconnectModule_L70F35L77T24_Enumerable[0] = AXI4InteconnectModule_L70F35L77T24_0_AXI4InteconnectModule_L72F17L76T18_Object;
 	assign AXI4InteconnectModule_L70F35L77T24_Enumerable[1] = AXI4InteconnectModule_L70F35L77T24_1_AXI4InteconnectModule_L72F17L76T18_Object;
+	assign AXI4InteconnectModule_L70F35L77T24_Enumerable[2] = AXI4InteconnectModule_L70F35L77T24_2_AXI4InteconnectModule_L72F17L76T18_Object;
+	assign AXI4InteconnectModule_L70F35L77T24_Enumerable[3] = AXI4InteconnectModule_L70F35L77T24_3_AXI4InteconnectModule_L72F17L76T18_Object;
 	assign oS2M0 = AXI4InteconnectModule_L70F35L77T24_Enumerable[0];
 	assign oS2M1 = AXI4InteconnectModule_L70F35L77T24_Enumerable[1];
+	assign oS2M2 = AXI4InteconnectModule_L70F35L77T24_Enumerable[2];
+	assign oS2M3 = AXI4InteconnectModule_L70F35L77T24_Enumerable[3];
 	assign readInterconnect_iLeft0_readInterconnect_iLeft_HardLink = readInterconnect_iLeft[0];
 	assign readInterconnect_iLeft1_readInterconnect_iLeft_HardLink = readInterconnect_iLeft[1];
+	assign readInterconnect_iLeft2_readInterconnect_iLeft_HardLink = readInterconnect_iLeft[2];
+	assign readInterconnect_iLeft3_readInterconnect_iLeft_HardLink = readInterconnect_iLeft[3];
 	assign readInterconnect_iRight0_readInterconnect_iRight_HardLink = readInterconnect_iRight[0];
 	assign readInterconnect_iRight1_readInterconnect_iRight_HardLink = readInterconnect_iRight[1];
 	assign readInterconnect_iRight2_readInterconnect_iRight_HardLink = readInterconnect_iRight[2];
@@ -379,8 +425,12 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect
 	assign readInterconnect_M2S[9] = readInterconnect_M2S9_readInterconnect_M2S_HardLink;
 	assign readInterconnect_S2M[0] = readInterconnect_S2M0_readInterconnect_S2M_HardLink;
 	assign readInterconnect_S2M[1] = readInterconnect_S2M1_readInterconnect_S2M_HardLink;
+	assign readInterconnect_S2M[2] = readInterconnect_S2M2_readInterconnect_S2M_HardLink;
+	assign readInterconnect_S2M[3] = readInterconnect_S2M3_readInterconnect_S2M_HardLink;
 	assign writeInterconnect_iLeft0_writeInterconnect_iLeft_HardLink = writeInterconnect_iLeft[0];
 	assign writeInterconnect_iLeft1_writeInterconnect_iLeft_HardLink = writeInterconnect_iLeft[1];
+	assign writeInterconnect_iLeft2_writeInterconnect_iLeft_HardLink = writeInterconnect_iLeft[2];
+	assign writeInterconnect_iLeft3_writeInterconnect_iLeft_HardLink = writeInterconnect_iLeft[3];
 	assign writeInterconnect_iRight0_writeInterconnect_iRight_HardLink = writeInterconnect_iRight[0];
 	assign writeInterconnect_iRight1_writeInterconnect_iRight_HardLink = writeInterconnect_iRight[1];
 	assign writeInterconnect_iRight2_writeInterconnect_iRight_HardLink = writeInterconnect_iRight[2];
@@ -403,6 +453,8 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect
 	assign writeInterconnect_M2S[9] = writeInterconnect_M2S9_writeInterconnect_M2S_HardLink;
 	assign writeInterconnect_S2M[0] = writeInterconnect_S2M0_writeInterconnect_S2M_HardLink;
 	assign writeInterconnect_S2M[1] = writeInterconnect_S2M1_writeInterconnect_S2M_HardLink;
+	assign writeInterconnect_S2M[2] = writeInterconnect_S2M2_writeInterconnect_S2M_HardLink;
+	assign writeInterconnect_S2M[3] = writeInterconnect_S2M3_writeInterconnect_S2M_HardLink;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule
