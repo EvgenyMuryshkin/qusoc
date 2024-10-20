@@ -169,17 +169,17 @@ namespace AXISoC
         public override IEnumerable<IRTLModuleValidator> Validators(IRTLClassFactory classFactory)
             => [classFactory.Create<AXI4InterconnectScheduleValidator>()];
 
-        AXI4_M2S[] cpu0M2S => [
-            programmerCPU0Gateway.oM2S,
-            CPU0.M2S
-        ];
+        //AXI4_M2S[] cpu0M2S => [
+        //    programmerCPU0Gateway.oM2S,
+        //    CPU0.M2S
+        //];
 
-        AXI4_S2M[] cpu0S2M => [
-            cpu0Memory.S2M,
-            cpu0AutoIncrementCounter.S2M,
-            cpu0AutoDecrementRegister.S2M,
-            cpu0IOGateway.oS2M
-        ];
+        //AXI4_S2M[] cpu0S2M => [
+        //    cpu0Memory.S2M,
+        //    cpu0AutoIncrementCounter.S2M,
+        //    cpu0AutoDecrementRegister.S2M,
+        //    cpu0IOGateway.oS2M
+        //];
 
         protected override void OnSchedule(Func<AXISoCQuadCoreModuleInputs> inputsFactory)
         {
@@ -242,16 +242,16 @@ namespace AXISoC
                 new ()
                 {
                     iExtReset = extReset[0],
-                    iM2S = cpu0M2S,
-                    iS2M = cpu0S2M
-                    //iProgrammerM2S = programmerCPU0Gateway.oM2S,
-                    //iCPUM2S = CPU0.M2S,
-                    //iMemoryS2M = cpu0Memory.S2M,
-                    //iIncrementS2M = cpu0AutoIncrementCounter.S2M,
-                    //iDecrementS2M = cpu0AutoDecrementRegister.S2M,
-                    //iIOGatewayS2M = cpu0IOGateway.oS2M
-                    //iCPUM2S = cpu0Interconnect.oM2S[3],
-                    //iIOInterconnectS2M = ioInterconnect.oS2M[1],
+                    iM2S = [
+                        programmerCPU0Gateway.oM2S,
+                        CPU0.M2S
+                    ],
+                    iS2M = [
+                        cpu0Memory.S2M,
+                        cpu0AutoIncrementCounter.S2M,
+                        cpu0AutoDecrementRegister.S2M,
+                        cpu0IOGateway.oS2M
+                    ]
                     //iCPUS2M = cpu0Interconnect.oS2M[1],
                     //iMemoryM2S = cpu0Interconnect.oM2S[0],
                     //iIncrementM2S = cpu0Interconnect.oM2S[1],

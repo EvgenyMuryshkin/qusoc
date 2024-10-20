@@ -341,8 +341,6 @@ module AXISoCQuadCoreModule_TopLevel
 	wire [73: 0] ws2812_oS2M_ws2812_oS2M_HardLink;
 	wire ws2812_oTX_ws2812_oTX_HardLink;
 	wire ws2812_oTXBit_ws2812_oTXBit_HardLink;
-	wire [221 : 0] cpu0M2S [0 : 1];
-	wire [73 : 0] cpu0S2M [0 : 3];
 	wire [0 : 0] Buttons_outBuffer [0 : 3];
 	wire [7 : 0] cpu0AutoDecrementRegister_outData [0 : 3];
 	wire [221 : 0] cpu0Core_iM2S [0 : 1];
@@ -364,8 +362,6 @@ module AXISoCQuadCoreModule_TopLevel
 	wire [7 : 0] Reg2_outData [0 : 3];
 	wire [7 : 0] Reg3_outData [0 : 3];
 	wire [0 : 0] Switches_outBuffer [0 : 1];
-	wire [221 : 0] AXISoCQuadCoreModule_L172F31L175T10_Enumerable [0 : 1];
-	wire [73 : 0] AXISoCQuadCoreModule_L177F31L182T10_Enumerable [0 : 3];
 	wire AXISoCQuadCoreModule_L453F31L457T22_Enumerable [0 : 1];
 	wire AXISoCQuadCoreModule_L465F31L471T22_Enumerable [0 : 3];
 	wire BoardSignals_Clock;
@@ -759,18 +755,6 @@ module AXISoCQuadCoreModule_TopLevel
 	assign Inputs_iRX = iRX;
 	assign Inputs_iSwitch0 = iSwitch0;
 	assign Inputs_iSwitch1 = iSwitch1;
-	assign AXISoCQuadCoreModule_L172F31L175T10_Enumerable[0] = programmerCPU0Gateway_oM2S;
-	assign AXISoCQuadCoreModule_L172F31L175T10_Enumerable[1] = CPU0_M2S;
-	assign cpu0M2S[0] = AXISoCQuadCoreModule_L172F31L175T10_Enumerable[0];
-	assign cpu0M2S[1] = AXISoCQuadCoreModule_L172F31L175T10_Enumerable[1];
-	assign AXISoCQuadCoreModule_L177F31L182T10_Enumerable[0] = cpu0Memory_S2M;
-	assign AXISoCQuadCoreModule_L177F31L182T10_Enumerable[1] = cpu0AutoIncrementCounter_S2M;
-	assign AXISoCQuadCoreModule_L177F31L182T10_Enumerable[2] = cpu0AutoDecrementRegister_S2M;
-	assign AXISoCQuadCoreModule_L177F31L182T10_Enumerable[3] = cpu0IOGateway_oS2M;
-	assign cpu0S2M[0] = AXISoCQuadCoreModule_L177F31L182T10_Enumerable[0];
-	assign cpu0S2M[1] = AXISoCQuadCoreModule_L177F31L182T10_Enumerable[1];
-	assign cpu0S2M[2] = AXISoCQuadCoreModule_L177F31L182T10_Enumerable[2];
-	assign cpu0S2M[3] = AXISoCQuadCoreModule_L177F31L182T10_Enumerable[3];
 	assign AXISoCQuadCoreModule_L151F42T78_Source = {
 		CPUExtReset_outData[3],
 		CPUExtReset_outData[2],
@@ -803,15 +787,15 @@ module AXISoCQuadCoreModule_TopLevel
 	assign AXISoCQuadCoreModule_L244F33T44_Index = extReset[0];
 	assign AXISoCQuadCoreModule_L242F17L259T18_Object[0] = AXISoCQuadCoreModule_L244F33T44_Index;
 	assign AXISoCQuadCoreModule_L242F17L259T18_Object[444:1] = {
-		cpu0M2S[1],
-		cpu0M2S[0]
+		CPU0_M2S,
+		programmerCPU0Gateway_oM2S
 	}
 	;
 	assign AXISoCQuadCoreModule_L242F17L259T18_Object[740:445] = {
-		cpu0S2M[3],
-		cpu0S2M[2],
-		cpu0S2M[1],
-		cpu0S2M[0]
+		cpu0IOGateway_oS2M,
+		cpu0AutoDecrementRegister_S2M,
+		cpu0AutoIncrementCounter_S2M,
+		cpu0Memory_S2M
 	}
 	;
 	assign cpu0Core_iS2M[3] = AXISoCQuadCoreModule_L242F17L259T18_Object[740:667];
