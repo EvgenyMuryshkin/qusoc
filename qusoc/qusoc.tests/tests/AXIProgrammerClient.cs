@@ -123,6 +123,7 @@ namespace QuSoC.Tests
             Trace.WriteLine("Resetting");
             uint cpuMask = 1U << cpu;
             await writeData(0x80000000, cpuMask);
+            var updatedMask = await readData(0x80000000);
 
             var baseAddrMask = (uint)(cpu << 24); 
             var baseAddr = 0xF0000000 | baseAddrMask;

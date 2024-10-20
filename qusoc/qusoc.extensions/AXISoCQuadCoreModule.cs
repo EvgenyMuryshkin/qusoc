@@ -39,6 +39,17 @@ namespace qusoc.extension
             VivadoTCLBuilder.ProgramBitStream(bitStreamPath[0]);
         }
 
+        [ExtensionMethod(icon: TopLevelIcon.Program)]
+        public static void ProgramNextPnR()
+        {
+            var bitPath = @"C:\code\AXISoCQuadCoreModule\build\top.bit";
+            if (!File.Exists(bitPath))
+                throw new Exception($"NextPnR bitstream was not found");
+
+            VivadoTCLBuilder.ProgramBitStream(bitPath);
+        }
+
+
         [ExtensionMethod(icon: TopLevelIcon.Generic)]
         public static void All()
         {

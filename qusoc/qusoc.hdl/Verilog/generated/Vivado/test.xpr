@@ -6,7 +6,7 @@
 <Project Version="7" Minor="54" Path="C:/code/qusoc/qusoc/qusoc.hdl/Verilog/generated/Vivado/test.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
-    <Option Name="Id" Val="0017fa2d66634f79a9c0a7e0cc72869c"/>
+    <Option Name="Id" Val="31df330223f84b7d942d4fcde74a715b"/>
     <Option Name="Part" Val="xc7z020clg400-1"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>
@@ -89,202 +89,6 @@
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_Buttons_axiSlave.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU0_CPU.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU0_CPU_ALU.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU0_CPU_CMP.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU0_CPU_ID.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU0_CPU_Regs.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU0_Master.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU1_CPU.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU1_CPU_ALU.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU1_CPU_CMP.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU1_CPU_ID.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU1_CPU_Regs.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU1_Master.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU2_CPU.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU2_CPU_ALU.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU2_CPU_CMP.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU2_CPU_ID.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU2_CPU_Regs.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU2_Master.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU3_CPU.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU3_CPU_ALU.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU3_CPU_CMP.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU3_CPU_ID.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU3_CPU_Regs.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU3_Master.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -375,49 +179,119 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0AutoDecrementRegister.v">
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Core.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0AutoDecrementRegister_axiSlave.v">
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Core_CPU0.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0AutoIncrementCounter.v">
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Core_CPU0_CPU.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0AutoIncrementCounter_axiSlave.v">
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Core_CPU0_CPU_ALU.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0IOGateway.v">
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Core_CPU0_CPU_CMP.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0IOGateway_readAddress.v">
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Core_CPU0_CPU_ID.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0IOGateway_writeAddress.v">
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Core_CPU0_CPU_Regs.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Core_CPU0_Master.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0AutoDecrementRegister.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0AutoDecrementRegister_axiSlave.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0AutoIncrementCounter.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0AutoIncrementCounter_axiSlave.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0IOGateway.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0IOGateway_readAddress.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0IOGateway_writeAddress.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0Memory.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0Memory_axiSlave.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -669,944 +543,6 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Memory.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Memory_axiSlave.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1AutoDecrementRegister.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1AutoDecrementRegister_axiSlave.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1AutoIncrementCounter.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1AutoIncrementCounter_axiSlave.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1IOGateway.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1IOGateway_readAddress.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1IOGateway_writeAddress.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_readInterconnect.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_readInterconnect_DuplexMux.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_readInterconnect_Encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_readInterconnect_TransactionDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_readInterconnect_TransactionDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_readInterconnect_rangeDetectorArray0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_readInterconnect_rangeDetectorArray0_encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_readInterconnect_rangeDetectorArray0_rangeDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_readInterconnect_rangeDetectorArray0_rangeDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_readInterconnect_rangeDetectorArray0_rangeDetectors2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_readInterconnect_rangeDetectorArray0_rangeDetectors3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_readInterconnect_rangeDetectorArray1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_readInterconnect_rangeDetectorArray1_encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_readInterconnect_rangeDetectorArray1_rangeDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_readInterconnect_rangeDetectorArray1_rangeDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_readInterconnect_rangeDetectorArray1_rangeDetectors2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_readInterconnect_rangeDetectorArray1_rangeDetectors3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_writeInterconnect.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_writeInterconnect_DuplexMux.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_writeInterconnect_Encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_writeInterconnect_TransactionDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_writeInterconnect_TransactionDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_writeInterconnect_rangeDetectorArray0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_writeInterconnect_rangeDetectorArray0_encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_writeInterconnect_rangeDetectorArray1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_writeInterconnect_rangeDetectorArray1_encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_writeInterconnect_rangeDetectorArray1_rangeDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_writeInterconnect_rangeDetectorArray1_rangeDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_writeInterconnect_rangeDetectorArray1_rangeDetectors2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Interconnect_writeInterconnect_rangeDetectorArray1_rangeDetectors3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Memory.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Memory_axiSlave.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2AutoDecrementRegister.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2AutoDecrementRegister_axiSlave.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2AutoIncrementCounter.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2AutoIncrementCounter_axiSlave.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2IOGateway.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2IOGateway_readAddress.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2IOGateway_writeAddress.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_readInterconnect.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_readInterconnect_DuplexMux.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_readInterconnect_Encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_readInterconnect_TransactionDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_readInterconnect_TransactionDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_readInterconnect_rangeDetectorArray0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_readInterconnect_rangeDetectorArray0_encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_readInterconnect_rangeDetectorArray0_rangeDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_readInterconnect_rangeDetectorArray0_rangeDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_readInterconnect_rangeDetectorArray0_rangeDetectors2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_readInterconnect_rangeDetectorArray0_rangeDetectors3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_readInterconnect_rangeDetectorArray1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_readInterconnect_rangeDetectorArray1_encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_readInterconnect_rangeDetectorArray1_rangeDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_readInterconnect_rangeDetectorArray1_rangeDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_readInterconnect_rangeDetectorArray1_rangeDetectors2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_readInterconnect_rangeDetectorArray1_rangeDetectors3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_writeInterconnect.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_writeInterconnect_DuplexMux.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_writeInterconnect_Encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_writeInterconnect_TransactionDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_writeInterconnect_TransactionDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_writeInterconnect_rangeDetectorArray0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_writeInterconnect_rangeDetectorArray0_encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_writeInterconnect_rangeDetectorArray1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_writeInterconnect_rangeDetectorArray1_encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_writeInterconnect_rangeDetectorArray1_rangeDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_writeInterconnect_rangeDetectorArray1_rangeDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_writeInterconnect_rangeDetectorArray1_rangeDetectors2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Interconnect_writeInterconnect_rangeDetectorArray1_rangeDetectors3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Memory.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Memory_axiSlave.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3AutoDecrementRegister.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3AutoDecrementRegister_axiSlave.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3AutoIncrementCounter.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3AutoIncrementCounter_axiSlave.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3IOGateway.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3IOGateway_readAddress.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3IOGateway_writeAddress.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_readInterconnect.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_readInterconnect_DuplexMux.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_readInterconnect_Encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_readInterconnect_TransactionDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_readInterconnect_TransactionDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_readInterconnect_rangeDetectorArray0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_readInterconnect_rangeDetectorArray0_encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_readInterconnect_rangeDetectorArray0_rangeDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_readInterconnect_rangeDetectorArray0_rangeDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_readInterconnect_rangeDetectorArray0_rangeDetectors2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_readInterconnect_rangeDetectorArray0_rangeDetectors3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_readInterconnect_rangeDetectorArray1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_readInterconnect_rangeDetectorArray1_encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_readInterconnect_rangeDetectorArray1_rangeDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_readInterconnect_rangeDetectorArray1_rangeDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_readInterconnect_rangeDetectorArray1_rangeDetectors2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_readInterconnect_rangeDetectorArray1_rangeDetectors3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_writeInterconnect.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_writeInterconnect_DuplexMux.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_writeInterconnect_Encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_writeInterconnect_TransactionDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_writeInterconnect_TransactionDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_writeInterconnect_rangeDetectorArray0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_writeInterconnect_rangeDetectorArray0_encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_writeInterconnect_rangeDetectorArray1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_writeInterconnect_rangeDetectorArray1_encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_writeInterconnect_rangeDetectorArray1_rangeDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_writeInterconnect_rangeDetectorArray1_rangeDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_writeInterconnect_rangeDetectorArray1_rangeDetectors2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Interconnect_writeInterconnect_rangeDetectorArray1_rangeDetectors3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Memory.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Memory_axiSlave.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -1643,27 +579,6 @@
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_TransactionDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_TransactionDetectors2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_TransactionDetectors3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_TransactionDetectors4.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -1838,258 +753,6 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray2_encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray2_rangeDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray2_rangeDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray2_rangeDetectors2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray2_rangeDetectors3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray2_rangeDetectors4.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray2_rangeDetectors5.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray2_rangeDetectors6.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray2_rangeDetectors7.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray2_rangeDetectors8.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray2_rangeDetectors9.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray3_encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray3_rangeDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray3_rangeDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray3_rangeDetectors2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray3_rangeDetectors3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray3_rangeDetectors4.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray3_rangeDetectors5.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray3_rangeDetectors6.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray3_rangeDetectors7.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray3_rangeDetectors8.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray3_rangeDetectors9.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray4.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray4_encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray4_rangeDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray4_rangeDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray4_rangeDetectors2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray4_rangeDetectors3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray4_rangeDetectors4.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray4_rangeDetectors5.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray4_rangeDetectors6.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray4_rangeDetectors7.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray4_rangeDetectors8.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray4_rangeDetectors9.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -2119,27 +782,6 @@
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_TransactionDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_TransactionDetectors2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_TransactionDetectors3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_TransactionDetectors4.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -2314,258 +956,6 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray2_encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray2_rangeDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray2_rangeDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray2_rangeDetectors2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray2_rangeDetectors3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray2_rangeDetectors4.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray2_rangeDetectors5.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray2_rangeDetectors6.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray2_rangeDetectors7.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray2_rangeDetectors8.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray2_rangeDetectors9.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray3_encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray3_rangeDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray3_rangeDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray3_rangeDetectors2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray3_rangeDetectors3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray3_rangeDetectors4.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray3_rangeDetectors5.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray3_rangeDetectors6.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray3_rangeDetectors7.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray3_rangeDetectors8.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray3_rangeDetectors9.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray4.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray4_encoder.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray4_rangeDetectors0.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray4_rangeDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray4_rangeDetectors2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray4_rangeDetectors3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray4_rangeDetectors4.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray4_rangeDetectors5.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray4_rangeDetectors6.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray4_rangeDetectors7.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray4_rangeDetectors8.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetectorArray4_rangeDetectors9.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_programmer.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -2588,69 +978,6 @@
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_programmerCPU0Gateway_writeAddress.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_programmerCPU1Gateway.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_programmerCPU1Gateway_readAddress.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_programmerCPU1Gateway_writeAddress.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_programmerCPU2Gateway.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_programmerCPU2Gateway_readAddress.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_programmerCPU2Gateway_writeAddress.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_programmerCPU3Gateway.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_programmerCPU3Gateway_readAddress.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_programmerCPU3Gateway_writeAddress.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -2741,27 +1068,6 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_programmerInterconnect_readInterconnect_rangeDetectorArray0_rangeDetectors2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_programmerInterconnect_readInterconnect_rangeDetectorArray0_rangeDetectors3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_programmerInterconnect_readInterconnect_rangeDetectorArray0_rangeDetectors4.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_programmerInterconnect_writeInterconnect.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -2812,27 +1118,6 @@
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_programmerInterconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_programmerInterconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors2.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_programmerInterconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors3.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_programmerInterconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors4.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -3028,7 +1313,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Interconnect_readInterconnect_rangeDetectorArray0_rangeDetectors4.v">
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU0.v">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -3036,7 +1321,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Interconnect_readInterconnect_rangeDetectorArray1_rangeDetectors4.v">
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU0_CPU.v">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -3044,7 +1329,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Interconnect_writeInterconnect_rangeDetectorArray0_rangeDetectors4.v">
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU0_CPU_ALU.v">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -3052,7 +1337,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Interconnect_writeInterconnect_rangeDetectorArray1_rangeDetectors4.v">
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU0_CPU_CMP.v">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -3060,7 +1345,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0cpu1Gateway.v">
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU0_CPU_ID.v">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -3068,7 +1353,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0cpu1Gateway_readAddress.v">
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU0_CPU_Regs.v">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -3076,7 +1361,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0cpu1Gateway_writeAddress.v">
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU0_Master.v">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -3084,26 +1369,88 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0AutoDecrementRegister.v">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0AutoDecrementRegister_axiSlave.v">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0AutoIncrementCounter.v">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0AutoIncrementCounter_axiSlave.v">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0IOGateway.v">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0IOGateway_readAddress.v">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0IOGateway_writeAddress.v">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Memory.v">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Memory_axiSlave.v">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0Memory_State_buff0.hex"/>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0Memory_State_buff1.hex"/>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0Memory_State_buff2.hex"/>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0Memory_State_buff3.hex"/>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Core_CPU0_CPU_State_CSR.hex"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Memory_State_buff0.hex"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Memory_State_buff1.hex"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Memory_State_buff2.hex"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu0Memory_State_buff3.hex"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU0_CPU_State_CSR.hex"/>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Memory_State_buff0.hex"/>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Memory_State_buff1.hex"/>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Memory_State_buff2.hex"/>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu1Memory_State_buff3.hex"/>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU1_CPU_State_CSR.hex"/>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Memory_State_buff0.hex"/>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Memory_State_buff1.hex"/>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Memory_State_buff2.hex"/>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu2Memory_State_buff3.hex"/>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU2_CPU_State_CSR.hex"/>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Memory_State_buff0.hex"/>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Memory_State_buff1.hex"/>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Memory_State_buff2.hex"/>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_cpu3Memory_State_buff3.hex"/>
-      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/AXISoCQuadCoreModule_TopLevel_CPU3_CPU_State_CSR.hex"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/ALUModuleInputs.txt"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/AXI4AutoDecrementRegisterModuleInput.txt"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/AXI4AutoDecrementRegisterModuleInputs.txt"/>
@@ -3152,6 +1499,7 @@
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/AXI4_S_B.txt"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/AXI4_S_R.txt"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/AXI4_S_W.txt"/>
+      <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/AXISoCCoreModuleInputs.txt"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/AXISoCQuadCoreModuleInputs.txt"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/CompareModuleInputs.txt"/>
       <File Path="$PPRDIR/../../../verilog/generated/AXISoCQuadCoreModule/signals/CPUModuleState.txt"/>

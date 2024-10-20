@@ -30,9 +30,6 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	input wire BoardSignals_Started,
 	input wire [83:0] iLeft0,
 	input wire [83:0] iLeft1,
-	input wire [83:0] iLeft2,
-	input wire [83:0] iLeft3,
-	input wire [83:0] iLeft4,
 	input wire [52:0] iRight0,
 	input wire [52:0] iRight1,
 	input wire [52:0] iRight2,
@@ -54,10 +51,7 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	output wire [83:0] M2S8,
 	output wire [83:0] M2S9,
 	output wire [52:0] S2M0,
-	output wire [52:0] S2M1,
-	output wire [52:0] S2M2,
-	output wire [52:0] S2M3,
-	output wire [52:0] S2M4
+	output wire [52:0] S2M1
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -67,23 +61,17 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire signed [3: 0] leftCount = 4'b0101;
+	wire signed [2: 0] leftCount = 3'b010;
 	wire signed [4: 0] rightCount = 5'b01010;
 	wire InterconnectModule_L114F13L125T14_0_leftIndex = 1'b0;
 	wire InterconnectModule_L114F13L125T14_1_leftIndex = 1'b1;
-	wire [1: 0] InterconnectModule_L114F13L125T14_2_leftIndex = 2'b10;
-	wire [1: 0] InterconnectModule_L114F13L125T14_3_leftIndex = 2'b11;
-	wire [2: 0] InterconnectModule_L114F13L125T14_4_leftIndex = 3'b100;
 	wire AXI4ReadInteconnectModule_L22F13L28T14_0_i = 1'b0;
 	wire AXI4ReadInteconnectModule_L22F13L28T14_1_i = 1'b1;
-	wire [1: 0] AXI4ReadInteconnectModule_L22F13L28T14_2_i = 2'b10;
-	wire [1: 0] AXI4ReadInteconnectModule_L22F13L28T14_3_i = 2'b11;
-	wire [2: 0] AXI4ReadInteconnectModule_L22F13L28T14_4_i = 3'b100;
 	wire InterconnectModule_L153F47T52_Expr = 1'b0;
 	wire InterconnectModule_L154F48T53_Expr = 1'b0;
 	wire InterconnectModule_L160F43T47_Expr = 1'b1;
 	wire InterconnectModule_L163F44T48_Expr = 1'b1;
-	reg [2: 0] NextState_leftAddr;
+	reg [0: 0] NextState_leftAddr;
 	reg NextState_leftAddrValid;
 	reg [3: 0] NextState_rightAddr;
 	reg NextState_rightAddrValid;
@@ -110,15 +98,15 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	wire [3: 0] rightAddr;
 	wire [3: 0] axiRightAddr;
 	wire rangeDetectorActive;
-	wire [2: 0] DuplexMux_iLeftAddr;
+	wire [0: 0] DuplexMux_iLeftAddr;
 	wire DuplexMux_iLeftAddrValid;
 	wire [3: 0] DuplexMux_iRightAddr;
 	wire DuplexMux_iRightAddrValid;
 	wire [83: 0] DuplexMux_oMuxLeftData;
 	wire [52: 0] DuplexMux_oMuxRightData;
 	wire Encoder_HasActive;
-	wire [2: 0] Encoder_MSBIndex;
-	wire [4: 0] Encoder_MSBValue;
+	wire [0: 0] Encoder_MSBIndex;
+	wire [1: 0] Encoder_MSBValue;
 	wire TransactionDetectors0_iActive;
 	wire TransactionDetectors0_iRestart;
 	wire TransactionDetectors0_iTXBegin;
@@ -133,67 +121,25 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	wire TransactionDetectors1_oTransaction;
 	wire TransactionDetectors1_oTXBegin;
 	wire TransactionDetectors1_oWaitForRestart;
-	wire TransactionDetectors2_iActive;
-	wire TransactionDetectors2_iRestart;
-	wire TransactionDetectors2_iTXBegin;
-	wire TransactionDetectors2_iTXEnd;
-	wire TransactionDetectors2_oTransaction;
-	wire TransactionDetectors2_oTXBegin;
-	wire TransactionDetectors2_oWaitForRestart;
-	wire TransactionDetectors3_iActive;
-	wire TransactionDetectors3_iRestart;
-	wire TransactionDetectors3_iTXBegin;
-	wire TransactionDetectors3_iTXEnd;
-	wire TransactionDetectors3_oTransaction;
-	wire TransactionDetectors3_oTXBegin;
-	wire TransactionDetectors3_oWaitForRestart;
-	wire TransactionDetectors4_iActive;
-	wire TransactionDetectors4_iRestart;
-	wire TransactionDetectors4_iTXBegin;
-	wire TransactionDetectors4_iTXEnd;
-	wire TransactionDetectors4_oTransaction;
-	wire TransactionDetectors4_oTXBegin;
-	wire TransactionDetectors4_oWaitForRestart;
 	wire [31: 0] rangeDetectorArray0_iAddress;
 	wire rangeDetectorArray0_oActive;
 	wire [3: 0] rangeDetectorArray0_oIndex;
 	wire [31: 0] rangeDetectorArray1_iAddress;
 	wire rangeDetectorArray1_oActive;
 	wire [3: 0] rangeDetectorArray1_oIndex;
-	wire [31: 0] rangeDetectorArray2_iAddress;
-	wire rangeDetectorArray2_oActive;
-	wire [3: 0] rangeDetectorArray2_oIndex;
-	wire [31: 0] rangeDetectorArray3_iAddress;
-	wire rangeDetectorArray3_oActive;
-	wire [3: 0] rangeDetectorArray3_oIndex;
-	wire [31: 0] rangeDetectorArray4_iAddress;
-	wire rangeDetectorArray4_oActive;
-	wire [3: 0] rangeDetectorArray4_oIndex;
 	wire [3: 0] AXI4ReadInteconnectModule_L32F37T75_Index;
 	wire AXI4ReadInteconnectModule_L35F46T88_Index;
 	wire [3: 0] InterconnectModule_L114F13L125T14_0_InterconnectModule_L117F21L123T22_Object;
 	wire InterconnectModule_L114F13L125T14_0_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F101T138_Index;
 	wire [3: 0] InterconnectModule_L114F13L125T14_1_InterconnectModule_L117F21L123T22_Object;
 	wire InterconnectModule_L114F13L125T14_1_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F101T138_Index;
-	wire [3: 0] InterconnectModule_L114F13L125T14_2_InterconnectModule_L117F21L123T22_Object;
-	wire InterconnectModule_L114F13L125T14_2_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F101T138_Index;
-	wire [3: 0] InterconnectModule_L114F13L125T14_3_InterconnectModule_L117F21L123T22_Object;
-	wire InterconnectModule_L114F13L125T14_3_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F101T138_Index;
-	wire [3: 0] InterconnectModule_L114F13L125T14_4_InterconnectModule_L117F21L123T22_Object;
-	wire InterconnectModule_L114F13L125T14_4_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F101T138_Index;
-	wire [4: 0] InterconnectModule_L128F17L131T18_Object;
-	wire [958: 0] InterconnectModule_L135F17L143T18_Object;
+	wire [1: 0] InterconnectModule_L128F17L131T18_Object;
+	wire [704: 0] InterconnectModule_L135F17L143T18_Object;
 	wire [31: 0] AXI4ReadInteconnectModule_L22F13L28T14_0_AXI4ReadInteconnectModule_L24F54L27T18_Object;
 	wire [31: 0] AXI4ReadInteconnectModule_L22F13L28T14_1_AXI4ReadInteconnectModule_L24F54L27T18_Object;
-	wire [31: 0] AXI4ReadInteconnectModule_L22F13L28T14_2_AXI4ReadInteconnectModule_L24F54L27T18_Object;
-	wire [31: 0] AXI4ReadInteconnectModule_L22F13L28T14_3_AXI4ReadInteconnectModule_L24F54L27T18_Object;
-	wire [31: 0] AXI4ReadInteconnectModule_L22F13L28T14_4_AXI4ReadInteconnectModule_L24F54L27T18_Object;
 	wire [83: 0] DuplexMux_iLeft0_DuplexMux_iLeft_HardLink;
 	wire [83: 0] DuplexMux_iLeft1_DuplexMux_iLeft_HardLink;
-	wire [83: 0] DuplexMux_iLeft2_DuplexMux_iLeft_HardLink;
-	wire [83: 0] DuplexMux_iLeft3_DuplexMux_iLeft_HardLink;
-	wire [83: 0] DuplexMux_iLeft4_DuplexMux_iLeft_HardLink;
-	wire [2: 0] DuplexMux_iLeftAddr_DuplexMux_iLeftAddr_HardLink;
+	wire [0: 0] DuplexMux_iLeftAddr_DuplexMux_iLeftAddr_HardLink;
 	wire DuplexMux_iLeftAddrValid_DuplexMux_iLeftAddrValid_HardLink;
 	wire [52: 0] DuplexMux_iRight0_DuplexMux_iRight_HardLink;
 	wire [52: 0] DuplexMux_iRight1_DuplexMux_iRight_HardLink;
@@ -221,17 +167,11 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	wire [52: 0] DuplexMux_oMuxRightData_DuplexMux_oMuxRightData_HardLink;
 	wire [52: 0] DuplexMux_oRight0_DuplexMux_oRight_HardLink;
 	wire [52: 0] DuplexMux_oRight1_DuplexMux_oRight_HardLink;
-	wire [52: 0] DuplexMux_oRight2_DuplexMux_oRight_HardLink;
-	wire [52: 0] DuplexMux_oRight3_DuplexMux_oRight_HardLink;
-	wire [52: 0] DuplexMux_oRight4_DuplexMux_oRight_HardLink;
 	wire Encoder_iValues0_Encoder_iValues_HardLink;
 	wire Encoder_iValues1_Encoder_iValues_HardLink;
-	wire Encoder_iValues2_Encoder_iValues_HardLink;
-	wire Encoder_iValues3_Encoder_iValues_HardLink;
-	wire Encoder_iValues4_Encoder_iValues_HardLink;
 	wire Encoder_HasActive_Encoder_HasActive_HardLink;
-	wire [2: 0] Encoder_MSBIndex_Encoder_MSBIndex_HardLink;
-	wire [4: 0] Encoder_MSBValue_Encoder_MSBValue_HardLink;
+	wire [0: 0] Encoder_MSBIndex_Encoder_MSBIndex_HardLink;
+	wire [1: 0] Encoder_MSBValue_Encoder_MSBValue_HardLink;
 	wire TransactionDetectors0_iActive_TransactionDetectors0_iActive_HardLink;
 	wire TransactionDetectors0_iRestart_TransactionDetectors0_iRestart_HardLink;
 	wire TransactionDetectors0_iTXBegin_TransactionDetectors0_iTXBegin_HardLink;
@@ -246,44 +186,14 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	wire TransactionDetectors1_oTransaction_TransactionDetectors1_oTransaction_HardLink;
 	wire TransactionDetectors1_oTXBegin_TransactionDetectors1_oTXBegin_HardLink;
 	wire TransactionDetectors1_oWaitForRestart_TransactionDetectors1_oWaitForRestart_HardLink;
-	wire TransactionDetectors2_iActive_TransactionDetectors2_iActive_HardLink;
-	wire TransactionDetectors2_iRestart_TransactionDetectors2_iRestart_HardLink;
-	wire TransactionDetectors2_iTXBegin_TransactionDetectors2_iTXBegin_HardLink;
-	wire TransactionDetectors2_iTXEnd_TransactionDetectors2_iTXEnd_HardLink;
-	wire TransactionDetectors2_oTransaction_TransactionDetectors2_oTransaction_HardLink;
-	wire TransactionDetectors2_oTXBegin_TransactionDetectors2_oTXBegin_HardLink;
-	wire TransactionDetectors2_oWaitForRestart_TransactionDetectors2_oWaitForRestart_HardLink;
-	wire TransactionDetectors3_iActive_TransactionDetectors3_iActive_HardLink;
-	wire TransactionDetectors3_iRestart_TransactionDetectors3_iRestart_HardLink;
-	wire TransactionDetectors3_iTXBegin_TransactionDetectors3_iTXBegin_HardLink;
-	wire TransactionDetectors3_iTXEnd_TransactionDetectors3_iTXEnd_HardLink;
-	wire TransactionDetectors3_oTransaction_TransactionDetectors3_oTransaction_HardLink;
-	wire TransactionDetectors3_oTXBegin_TransactionDetectors3_oTXBegin_HardLink;
-	wire TransactionDetectors3_oWaitForRestart_TransactionDetectors3_oWaitForRestart_HardLink;
-	wire TransactionDetectors4_iActive_TransactionDetectors4_iActive_HardLink;
-	wire TransactionDetectors4_iRestart_TransactionDetectors4_iRestart_HardLink;
-	wire TransactionDetectors4_iTXBegin_TransactionDetectors4_iTXBegin_HardLink;
-	wire TransactionDetectors4_iTXEnd_TransactionDetectors4_iTXEnd_HardLink;
-	wire TransactionDetectors4_oTransaction_TransactionDetectors4_oTransaction_HardLink;
-	wire TransactionDetectors4_oTXBegin_TransactionDetectors4_oTXBegin_HardLink;
-	wire TransactionDetectors4_oWaitForRestart_TransactionDetectors4_oWaitForRestart_HardLink;
 	wire [31: 0] rangeDetectorArray0_iAddress_rangeDetectorArray0_iAddress_HardLink;
 	wire rangeDetectorArray0_oActive_rangeDetectorArray0_oActive_HardLink;
 	wire [3: 0] rangeDetectorArray0_oIndex_rangeDetectorArray0_oIndex_HardLink;
 	wire [31: 0] rangeDetectorArray1_iAddress_rangeDetectorArray1_iAddress_HardLink;
 	wire rangeDetectorArray1_oActive_rangeDetectorArray1_oActive_HardLink;
 	wire [3: 0] rangeDetectorArray1_oIndex_rangeDetectorArray1_oIndex_HardLink;
-	wire [31: 0] rangeDetectorArray2_iAddress_rangeDetectorArray2_iAddress_HardLink;
-	wire rangeDetectorArray2_oActive_rangeDetectorArray2_oActive_HardLink;
-	wire [3: 0] rangeDetectorArray2_oIndex_rangeDetectorArray2_oIndex_HardLink;
-	wire [31: 0] rangeDetectorArray3_iAddress_rangeDetectorArray3_iAddress_HardLink;
-	wire rangeDetectorArray3_oActive_rangeDetectorArray3_oActive_HardLink;
-	wire [3: 0] rangeDetectorArray3_oIndex_rangeDetectorArray3_oIndex_HardLink;
-	wire [31: 0] rangeDetectorArray4_iAddress_rangeDetectorArray4_iAddress_HardLink;
-	wire rangeDetectorArray4_oActive_rangeDetectorArray4_oActive_HardLink;
-	wire [3: 0] rangeDetectorArray4_oIndex_rangeDetectorArray4_oIndex_HardLink;
-	reg [2: 0] State_leftAddr = 3'b000;
-	wire [2: 0] State_leftAddrDefault = 3'b000;
+	reg [0: 0] State_leftAddr = 1'b0;
+	wire [0: 0] State_leftAddrDefault = 1'b0;
 	reg State_leftAddrValid = 1'b0;
 	wire State_leftAddrValidDefault = 1'b0;
 	reg [3: 0] State_rightAddr = 4'b0000;
@@ -302,15 +212,6 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	wire InterconnectModule_L83F36T108_TransactionDetectors1_InterconnectModule_L83F69T97_Expr;
 	wire InterconnectModule_L83F36T108_TransactionDetectors1_InterconnectModule_L83F69T97_Expr_1;
 	wire InterconnectModule_L83F36T108_TransactionDetectors1_InterconnectModule_L83F69T97_Expr_2;
-	wire InterconnectModule_L83F36T108_TransactionDetectors2_InterconnectModule_L83F69T97_Expr;
-	wire InterconnectModule_L83F36T108_TransactionDetectors2_InterconnectModule_L83F69T97_Expr_1;
-	wire InterconnectModule_L83F36T108_TransactionDetectors2_InterconnectModule_L83F69T97_Expr_2;
-	wire InterconnectModule_L83F36T108_TransactionDetectors3_InterconnectModule_L83F69T97_Expr;
-	wire InterconnectModule_L83F36T108_TransactionDetectors3_InterconnectModule_L83F69T97_Expr_1;
-	wire InterconnectModule_L83F36T108_TransactionDetectors3_InterconnectModule_L83F69T97_Expr_2;
-	wire InterconnectModule_L83F36T108_TransactionDetectors4_InterconnectModule_L83F69T97_Expr;
-	wire InterconnectModule_L83F36T108_TransactionDetectors4_InterconnectModule_L83F69T97_Expr_1;
-	wire InterconnectModule_L83F36T108_TransactionDetectors4_InterconnectModule_L83F69T97_Expr_2;
 	wire InterconnectModule_L114F13L125T14_0_InterconnectModule_L122F35T85_Expr;
 	wire InterconnectModule_L114F13L125T14_0_InterconnectModule_L122F35T85_Expr_1;
 	wire InterconnectModule_L114F13L125T14_0_InterconnectModule_L122F35T85_Expr_2;
@@ -339,103 +240,43 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	wire InterconnectModule_L114F13L125T14_1_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr;
 	wire InterconnectModule_L114F13L125T14_1_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_1;
 	wire InterconnectModule_L114F13L125T14_1_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_2;
-	wire InterconnectModule_L114F13L125T14_2_InterconnectModule_L122F35T85_Expr;
-	wire InterconnectModule_L114F13L125T14_2_InterconnectModule_L122F35T85_Expr_1;
-	wire InterconnectModule_L114F13L125T14_2_InterconnectModule_L122F35T85_Expr_2;
-	wire InterconnectModule_L114F13L125T14_2_InterconnectModule_L121F36T54_Expr;
-	wire InterconnectModule_L114F13L125T14_2_InterconnectModule_L121F36T54_Expr_1;
-	wire InterconnectModule_L114F13L125T14_2_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr;
-	wire InterconnectModule_L114F13L125T14_2_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr_1;
-	wire InterconnectModule_L114F13L125T14_2_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr_2;
-	wire InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr;
-	wire InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr_1;
-	wire InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr_2;
-	wire InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr;
-	wire InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_1;
-	wire InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_2;
-	wire InterconnectModule_L114F13L125T14_3_InterconnectModule_L122F35T85_Expr;
-	wire InterconnectModule_L114F13L125T14_3_InterconnectModule_L122F35T85_Expr_1;
-	wire InterconnectModule_L114F13L125T14_3_InterconnectModule_L122F35T85_Expr_2;
-	wire InterconnectModule_L114F13L125T14_3_InterconnectModule_L121F36T54_Expr;
-	wire InterconnectModule_L114F13L125T14_3_InterconnectModule_L121F36T54_Expr_1;
-	wire InterconnectModule_L114F13L125T14_3_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr;
-	wire InterconnectModule_L114F13L125T14_3_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr_1;
-	wire InterconnectModule_L114F13L125T14_3_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr_2;
-	wire InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr;
-	wire InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr_1;
-	wire InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr_2;
-	wire InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr;
-	wire InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_1;
-	wire InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_2;
-	wire InterconnectModule_L114F13L125T14_4_InterconnectModule_L122F35T85_Expr;
-	wire InterconnectModule_L114F13L125T14_4_InterconnectModule_L122F35T85_Expr_1;
-	wire InterconnectModule_L114F13L125T14_4_InterconnectModule_L122F35T85_Expr_2;
-	wire InterconnectModule_L114F13L125T14_4_InterconnectModule_L121F36T54_Expr;
-	wire InterconnectModule_L114F13L125T14_4_InterconnectModule_L121F36T54_Expr_1;
-	wire InterconnectModule_L114F13L125T14_4_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr;
-	wire InterconnectModule_L114F13L125T14_4_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr_1;
-	wire InterconnectModule_L114F13L125T14_4_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr_2;
-	wire InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr;
-	wire InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr_1;
-	wire InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr_2;
-	wire InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr;
-	wire InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_1;
-	wire InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_2;
 	wire InterconnectModule_L89F40T91_AXI4ReadInteconnectModule_L43F122T151_Expr;
-	wire signed [3: 0] InterconnectModule_L89F40T91_AXI4ReadInteconnectModule_L43F122T151_ExprLhs;
-	wire signed [3: 0] InterconnectModule_L89F40T91_AXI4ReadInteconnectModule_L43F122T151_ExprRhs;
+	wire signed [1: 0] InterconnectModule_L89F40T91_AXI4ReadInteconnectModule_L43F122T151_ExprLhs;
+	wire signed [1: 0] InterconnectModule_L89F40T91_AXI4ReadInteconnectModule_L43F122T151_ExprRhs;
 	wire InterconnectModule_L114F13L125T14_0_InterconnectModule_L122F56T85_Expr;
-	wire signed [3: 0] InterconnectModule_L114F13L125T14_0_InterconnectModule_L122F56T85_ExprLhs;
-	wire signed [3: 0] InterconnectModule_L114F13L125T14_0_InterconnectModule_L122F56T85_ExprRhs;
+	wire signed [1: 0] InterconnectModule_L114F13L125T14_0_InterconnectModule_L122F56T85_ExprLhs;
+	wire signed [1: 0] InterconnectModule_L114F13L125T14_0_InterconnectModule_L122F56T85_ExprRhs;
 	wire InterconnectModule_L114F13L125T14_0_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_Expr;
-	wire signed [3: 0] InterconnectModule_L114F13L125T14_0_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprLhs;
-	wire signed [3: 0] InterconnectModule_L114F13L125T14_0_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprRhs;
+	wire signed [1: 0] InterconnectModule_L114F13L125T14_0_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprLhs;
+	wire signed [1: 0] InterconnectModule_L114F13L125T14_0_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprRhs;
 	wire InterconnectModule_L114F13L125T14_1_InterconnectModule_L122F56T85_Expr;
-	wire signed [3: 0] InterconnectModule_L114F13L125T14_1_InterconnectModule_L122F56T85_ExprLhs;
-	wire signed [3: 0] InterconnectModule_L114F13L125T14_1_InterconnectModule_L122F56T85_ExprRhs;
+	wire signed [1: 0] InterconnectModule_L114F13L125T14_1_InterconnectModule_L122F56T85_ExprLhs;
+	wire signed [1: 0] InterconnectModule_L114F13L125T14_1_InterconnectModule_L122F56T85_ExprRhs;
 	wire InterconnectModule_L114F13L125T14_1_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_Expr;
-	wire signed [3: 0] InterconnectModule_L114F13L125T14_1_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprLhs;
-	wire signed [3: 0] InterconnectModule_L114F13L125T14_1_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprRhs;
-	wire InterconnectModule_L114F13L125T14_2_InterconnectModule_L122F56T85_Expr;
-	wire signed [3: 0] InterconnectModule_L114F13L125T14_2_InterconnectModule_L122F56T85_ExprLhs;
-	wire signed [3: 0] InterconnectModule_L114F13L125T14_2_InterconnectModule_L122F56T85_ExprRhs;
-	wire InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_Expr;
-	wire signed [3: 0] InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprLhs;
-	wire signed [3: 0] InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprRhs;
-	wire InterconnectModule_L114F13L125T14_3_InterconnectModule_L122F56T85_Expr;
-	wire signed [3: 0] InterconnectModule_L114F13L125T14_3_InterconnectModule_L122F56T85_ExprLhs;
-	wire signed [3: 0] InterconnectModule_L114F13L125T14_3_InterconnectModule_L122F56T85_ExprRhs;
-	wire InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_Expr;
-	wire signed [3: 0] InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprLhs;
-	wire signed [3: 0] InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprRhs;
-	wire InterconnectModule_L114F13L125T14_4_InterconnectModule_L122F56T85_Expr;
-	wire signed [3: 0] InterconnectModule_L114F13L125T14_4_InterconnectModule_L122F56T85_ExprLhs;
-	wire signed [3: 0] InterconnectModule_L114F13L125T14_4_InterconnectModule_L122F56T85_ExprRhs;
-	wire InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_Expr;
-	wire signed [3: 0] InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprLhs;
-	wire signed [3: 0] InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprRhs;
-	wire [83 : 0] Inputs_iLeft [0 : 4];
+	wire signed [1: 0] InterconnectModule_L114F13L125T14_1_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprLhs;
+	wire signed [1: 0] InterconnectModule_L114F13L125T14_1_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprRhs;
+	wire [83 : 0] Inputs_iLeft [0 : 1];
 	wire [52 : 0] Inputs_iRight [0 : 9];
-	wire ActiveTransactions [0 : 4];
+	wire ActiveTransactions [0 : 1];
 	wire [83 : 0] muxLeft [0 : 9];
-	wire [52 : 0] muxRight [0 : 4];
+	wire [52 : 0] muxRight [0 : 1];
 	wire [7 : 0] muxRightData_R_RDATA [0 : 3];
-	wire Transactions [0 : 4];
-	wire TXBegin [0 : 4];
-	wire WaitForRestarts [0 : 4];
-	wire rangeDetectorActiveFlags [0 : 4];
-	wire [3 : 0] rangeDetectorIndexes [0 : 4];
-	wire [83 : 0] DuplexMux_iLeft [0 : 4];
+	wire Transactions [0 : 1];
+	wire TXBegin [0 : 1];
+	wire WaitForRestarts [0 : 1];
+	wire rangeDetectorActiveFlags [0 : 1];
+	wire [3 : 0] rangeDetectorIndexes [0 : 1];
+	wire [83 : 0] DuplexMux_iLeft [0 : 1];
 	wire [52 : 0] DuplexMux_iRight [0 : 9];
 	wire [83 : 0] DuplexMux_oLeft [0 : 9];
-	wire [52 : 0] DuplexMux_oRight [0 : 4];
-	wire Encoder_iValues [0 : 4];
-	wire InterconnectModule_L80F47T105_Enumerable [0 : 4];
-	wire InterconnectModule_L82F41T99_Enumerable [0 : 4];
-	wire InterconnectModule_L83F36T108_Enumerable [0 : 4];
-	wire InterconnectModule_L81F44T105_Enumerable [0 : 4];
-	wire AXI4ReadInteconnectModule_L34F53T104_Enumerable [0 : 4];
-	wire [3 : 0] AXI4ReadInteconnectModule_L31F47T97_Enumerable [0 : 4];
+	wire [52 : 0] DuplexMux_oRight [0 : 1];
+	wire Encoder_iValues [0 : 1];
+	wire InterconnectModule_L80F47T105_Enumerable [0 : 1];
+	wire InterconnectModule_L82F41T99_Enumerable [0 : 1];
+	wire InterconnectModule_L83F36T108_Enumerable [0 : 1];
+	wire InterconnectModule_L81F44T105_Enumerable [0 : 1];
+	wire AXI4ReadInteconnectModule_L34F53T104_Enumerable [0 : 1];
+	wire [3 : 0] AXI4ReadInteconnectModule_L31F47T97_Enumerable [0 : 1];
 	always @ (posedge BoardSignals_Clock)
 	begin
 		if ((BoardSignals_Reset == 1))
@@ -458,19 +299,10 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	assign InterconnectModule_L114F13L125T14_0_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_Expr = InterconnectModule_L114F13L125T14_0_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprLhs == InterconnectModule_L114F13L125T14_0_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprRhs ? 1'b1 : 1'b0;
 	assign InterconnectModule_L114F13L125T14_1_InterconnectModule_L122F56T85_Expr = InterconnectModule_L114F13L125T14_1_InterconnectModule_L122F56T85_ExprLhs == InterconnectModule_L114F13L125T14_1_InterconnectModule_L122F56T85_ExprRhs ? 1'b1 : 1'b0;
 	assign InterconnectModule_L114F13L125T14_1_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_Expr = InterconnectModule_L114F13L125T14_1_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprLhs == InterconnectModule_L114F13L125T14_1_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprRhs ? 1'b1 : 1'b0;
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L122F56T85_Expr = InterconnectModule_L114F13L125T14_2_InterconnectModule_L122F56T85_ExprLhs == InterconnectModule_L114F13L125T14_2_InterconnectModule_L122F56T85_ExprRhs ? 1'b1 : 1'b0;
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_Expr = InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprLhs == InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprRhs ? 1'b1 : 1'b0;
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L122F56T85_Expr = InterconnectModule_L114F13L125T14_3_InterconnectModule_L122F56T85_ExprLhs == InterconnectModule_L114F13L125T14_3_InterconnectModule_L122F56T85_ExprRhs ? 1'b1 : 1'b0;
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_Expr = InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprLhs == InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprRhs ? 1'b1 : 1'b0;
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L122F56T85_Expr = InterconnectModule_L114F13L125T14_4_InterconnectModule_L122F56T85_ExprLhs == InterconnectModule_L114F13L125T14_4_InterconnectModule_L122F56T85_ExprRhs ? 1'b1 : 1'b0;
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_Expr = InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprLhs == InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprRhs ? 1'b1 : 1'b0;
 	assign InterconnectModule_L89F40T91_AXI4ReadInteconnectModule_L43F78T151_Expr = InterconnectModule_L89F40T91_AXI4ReadInteconnectModule_L43F78T151_Expr_1 & InterconnectModule_L89F40T91_AXI4ReadInteconnectModule_L43F78T151_Expr_2;
 	assign InterconnectModule_L89F40T91_AXI4ReadInteconnectModule_L43F78T118_Expr = InterconnectModule_L89F40T91_AXI4ReadInteconnectModule_L43F78T118_Expr_1 & InterconnectModule_L89F40T91_AXI4ReadInteconnectModule_L43F78T118_Expr_2;
 	assign InterconnectModule_L83F36T108_TransactionDetectors0_InterconnectModule_L83F69T97_Expr = InterconnectModule_L83F36T108_TransactionDetectors0_InterconnectModule_L83F69T97_Expr_1 | InterconnectModule_L83F36T108_TransactionDetectors0_InterconnectModule_L83F69T97_Expr_2;
 	assign InterconnectModule_L83F36T108_TransactionDetectors1_InterconnectModule_L83F69T97_Expr = InterconnectModule_L83F36T108_TransactionDetectors1_InterconnectModule_L83F69T97_Expr_1 | InterconnectModule_L83F36T108_TransactionDetectors1_InterconnectModule_L83F69T97_Expr_2;
-	assign InterconnectModule_L83F36T108_TransactionDetectors2_InterconnectModule_L83F69T97_Expr = InterconnectModule_L83F36T108_TransactionDetectors2_InterconnectModule_L83F69T97_Expr_1 | InterconnectModule_L83F36T108_TransactionDetectors2_InterconnectModule_L83F69T97_Expr_2;
-	assign InterconnectModule_L83F36T108_TransactionDetectors3_InterconnectModule_L83F69T97_Expr = InterconnectModule_L83F36T108_TransactionDetectors3_InterconnectModule_L83F69T97_Expr_1 | InterconnectModule_L83F36T108_TransactionDetectors3_InterconnectModule_L83F69T97_Expr_2;
-	assign InterconnectModule_L83F36T108_TransactionDetectors4_InterconnectModule_L83F69T97_Expr = InterconnectModule_L83F36T108_TransactionDetectors4_InterconnectModule_L83F69T97_Expr_1 | InterconnectModule_L83F36T108_TransactionDetectors4_InterconnectModule_L83F69T97_Expr_2;
 	assign InterconnectModule_L114F13L125T14_0_InterconnectModule_L122F35T85_Expr = InterconnectModule_L114F13L125T14_0_InterconnectModule_L122F35T85_Expr_1 & InterconnectModule_L114F13L125T14_0_InterconnectModule_L122F35T85_Expr_2;
 	assign InterconnectModule_L114F13L125T14_0_InterconnectModule_L121F36T54_Expr = ~InterconnectModule_L114F13L125T14_0_InterconnectModule_L121F36T54_Expr_1;
 	assign InterconnectModule_L114F13L125T14_0_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr = InterconnectModule_L114F13L125T14_0_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr_1 & InterconnectModule_L114F13L125T14_0_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr_2;
@@ -481,21 +313,6 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	assign InterconnectModule_L114F13L125T14_1_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr = InterconnectModule_L114F13L125T14_1_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr_1 & InterconnectModule_L114F13L125T14_1_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr_2;
 	assign InterconnectModule_L114F13L125T14_1_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr = InterconnectModule_L114F13L125T14_1_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr_1 & InterconnectModule_L114F13L125T14_1_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr_2;
 	assign InterconnectModule_L114F13L125T14_1_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr = InterconnectModule_L114F13L125T14_1_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_1 & InterconnectModule_L114F13L125T14_1_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_2;
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L122F35T85_Expr = InterconnectModule_L114F13L125T14_2_InterconnectModule_L122F35T85_Expr_1 & InterconnectModule_L114F13L125T14_2_InterconnectModule_L122F35T85_Expr_2;
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L121F36T54_Expr = ~InterconnectModule_L114F13L125T14_2_InterconnectModule_L121F36T54_Expr_1;
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr = InterconnectModule_L114F13L125T14_2_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr_1 & InterconnectModule_L114F13L125T14_2_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr_2;
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr = InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr_1 & InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr_2;
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr = InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_1 & InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_2;
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L122F35T85_Expr = InterconnectModule_L114F13L125T14_3_InterconnectModule_L122F35T85_Expr_1 & InterconnectModule_L114F13L125T14_3_InterconnectModule_L122F35T85_Expr_2;
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L121F36T54_Expr = ~InterconnectModule_L114F13L125T14_3_InterconnectModule_L121F36T54_Expr_1;
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr = InterconnectModule_L114F13L125T14_3_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr_1 & InterconnectModule_L114F13L125T14_3_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr_2;
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr = InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr_1 & InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr_2;
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr = InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_1 & InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_2;
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L122F35T85_Expr = InterconnectModule_L114F13L125T14_4_InterconnectModule_L122F35T85_Expr_1 & InterconnectModule_L114F13L125T14_4_InterconnectModule_L122F35T85_Expr_2;
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L121F36T54_Expr = ~InterconnectModule_L114F13L125T14_4_InterconnectModule_L121F36T54_Expr_1;
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr = InterconnectModule_L114F13L125T14_4_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr_1 & InterconnectModule_L114F13L125T14_4_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr_2;
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr = InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr_1 & InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr_2;
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr = InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_1 & InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_2;
 	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_DuplexMux
 	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_DuplexMux
 	(
@@ -503,9 +320,6 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 		// [END USER MAP FOR DuplexMux]
 		.iLeft0 (DuplexMux_iLeft0_DuplexMux_iLeft_HardLink),
 		.iLeft1 (DuplexMux_iLeft1_DuplexMux_iLeft_HardLink),
-		.iLeft2 (DuplexMux_iLeft2_DuplexMux_iLeft_HardLink),
-		.iLeft3 (DuplexMux_iLeft3_DuplexMux_iLeft_HardLink),
-		.iLeft4 (DuplexMux_iLeft4_DuplexMux_iLeft_HardLink),
 		.iLeftAddr (DuplexMux_iLeftAddr_DuplexMux_iLeftAddr_HardLink),
 		.iLeftAddrValid (DuplexMux_iLeftAddrValid_DuplexMux_iLeftAddrValid_HardLink),
 		.iRight0 (DuplexMux_iRight0_DuplexMux_iRight_HardLink),
@@ -533,10 +347,7 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 		.oMuxLeftData (DuplexMux_oMuxLeftData_DuplexMux_oMuxLeftData_HardLink),
 		.oMuxRightData (DuplexMux_oMuxRightData_DuplexMux_oMuxRightData_HardLink),
 		.oRight0 (DuplexMux_oRight0_DuplexMux_oRight_HardLink),
-		.oRight1 (DuplexMux_oRight1_DuplexMux_oRight_HardLink),
-		.oRight2 (DuplexMux_oRight2_DuplexMux_oRight_HardLink),
-		.oRight3 (DuplexMux_oRight3_DuplexMux_oRight_HardLink),
-		.oRight4 (DuplexMux_oRight4_DuplexMux_oRight_HardLink)
+		.oRight1 (DuplexMux_oRight1_DuplexMux_oRight_HardLink)
 	);
 	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_Encoder
 	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_Encoder
@@ -545,9 +356,6 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 		// [END USER MAP FOR Encoder]
 		.iValues0 (Encoder_iValues0_Encoder_iValues_HardLink),
 		.iValues1 (Encoder_iValues1_Encoder_iValues_HardLink),
-		.iValues2 (Encoder_iValues2_Encoder_iValues_HardLink),
-		.iValues3 (Encoder_iValues3_Encoder_iValues_HardLink),
-		.iValues4 (Encoder_iValues4_Encoder_iValues_HardLink),
 		.HasActive (Encoder_HasActive_Encoder_HasActive_HardLink),
 		.MSBIndex (Encoder_MSBIndex_Encoder_MSBIndex_HardLink),
 		.MSBValue (Encoder_MSBValue_Encoder_MSBValue_HardLink)
@@ -588,60 +396,6 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 		.oTXBegin (TransactionDetectors1_oTXBegin_TransactionDetectors1_oTXBegin_HardLink),
 		.oWaitForRestart (TransactionDetectors1_oWaitForRestart_TransactionDetectors1_oWaitForRestart_HardLink)
 	);
-	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_TransactionDetectors2
-	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_TransactionDetectors2
-	(
-		// [BEGIN USER MAP FOR TransactionDetectors2]
-		// [END USER MAP FOR TransactionDetectors2]
-		.BoardSignals_Clock (BoardSignals_Clock),
-		.BoardSignals_Reset (BoardSignals_Reset),
-		.BoardSignals_Running (BoardSignals_Running),
-		.BoardSignals_Starting (BoardSignals_Starting),
-		.BoardSignals_Started (BoardSignals_Started),
-		.iActive (TransactionDetectors2_iActive_TransactionDetectors2_iActive_HardLink),
-		.iRestart (TransactionDetectors2_iRestart_TransactionDetectors2_iRestart_HardLink),
-		.iTXBegin (TransactionDetectors2_iTXBegin_TransactionDetectors2_iTXBegin_HardLink),
-		.iTXEnd (TransactionDetectors2_iTXEnd_TransactionDetectors2_iTXEnd_HardLink),
-		.oTransaction (TransactionDetectors2_oTransaction_TransactionDetectors2_oTransaction_HardLink),
-		.oTXBegin (TransactionDetectors2_oTXBegin_TransactionDetectors2_oTXBegin_HardLink),
-		.oWaitForRestart (TransactionDetectors2_oWaitForRestart_TransactionDetectors2_oWaitForRestart_HardLink)
-	);
-	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_TransactionDetectors3
-	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_TransactionDetectors3
-	(
-		// [BEGIN USER MAP FOR TransactionDetectors3]
-		// [END USER MAP FOR TransactionDetectors3]
-		.BoardSignals_Clock (BoardSignals_Clock),
-		.BoardSignals_Reset (BoardSignals_Reset),
-		.BoardSignals_Running (BoardSignals_Running),
-		.BoardSignals_Starting (BoardSignals_Starting),
-		.BoardSignals_Started (BoardSignals_Started),
-		.iActive (TransactionDetectors3_iActive_TransactionDetectors3_iActive_HardLink),
-		.iRestart (TransactionDetectors3_iRestart_TransactionDetectors3_iRestart_HardLink),
-		.iTXBegin (TransactionDetectors3_iTXBegin_TransactionDetectors3_iTXBegin_HardLink),
-		.iTXEnd (TransactionDetectors3_iTXEnd_TransactionDetectors3_iTXEnd_HardLink),
-		.oTransaction (TransactionDetectors3_oTransaction_TransactionDetectors3_oTransaction_HardLink),
-		.oTXBegin (TransactionDetectors3_oTXBegin_TransactionDetectors3_oTXBegin_HardLink),
-		.oWaitForRestart (TransactionDetectors3_oWaitForRestart_TransactionDetectors3_oWaitForRestart_HardLink)
-	);
-	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_TransactionDetectors4
-	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_TransactionDetectors4
-	(
-		// [BEGIN USER MAP FOR TransactionDetectors4]
-		// [END USER MAP FOR TransactionDetectors4]
-		.BoardSignals_Clock (BoardSignals_Clock),
-		.BoardSignals_Reset (BoardSignals_Reset),
-		.BoardSignals_Running (BoardSignals_Running),
-		.BoardSignals_Starting (BoardSignals_Starting),
-		.BoardSignals_Started (BoardSignals_Started),
-		.iActive (TransactionDetectors4_iActive_TransactionDetectors4_iActive_HardLink),
-		.iRestart (TransactionDetectors4_iRestart_TransactionDetectors4_iRestart_HardLink),
-		.iTXBegin (TransactionDetectors4_iTXBegin_TransactionDetectors4_iTXBegin_HardLink),
-		.iTXEnd (TransactionDetectors4_iTXEnd_TransactionDetectors4_iTXEnd_HardLink),
-		.oTransaction (TransactionDetectors4_oTransaction_TransactionDetectors4_oTransaction_HardLink),
-		.oTXBegin (TransactionDetectors4_oTXBegin_TransactionDetectors4_oTXBegin_HardLink),
-		.oWaitForRestart (TransactionDetectors4_oWaitForRestart_TransactionDetectors4_oWaitForRestart_HardLink)
-	);
 	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray0
 	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray0
 	(
@@ -659,33 +413,6 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 		.iAddress (rangeDetectorArray1_iAddress_rangeDetectorArray1_iAddress_HardLink),
 		.oActive (rangeDetectorArray1_oActive_rangeDetectorArray1_oActive_HardLink),
 		.oIndex (rangeDetectorArray1_oIndex_rangeDetectorArray1_oIndex_HardLink)
-	);
-	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray2
-	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray2
-	(
-		// [BEGIN USER MAP FOR rangeDetectorArray2]
-		// [END USER MAP FOR rangeDetectorArray2]
-		.iAddress (rangeDetectorArray2_iAddress_rangeDetectorArray2_iAddress_HardLink),
-		.oActive (rangeDetectorArray2_oActive_rangeDetectorArray2_oActive_HardLink),
-		.oIndex (rangeDetectorArray2_oIndex_rangeDetectorArray2_oIndex_HardLink)
-	);
-	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray3
-	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray3
-	(
-		// [BEGIN USER MAP FOR rangeDetectorArray3]
-		// [END USER MAP FOR rangeDetectorArray3]
-		.iAddress (rangeDetectorArray3_iAddress_rangeDetectorArray3_iAddress_HardLink),
-		.oActive (rangeDetectorArray3_oActive_rangeDetectorArray3_oActive_HardLink),
-		.oIndex (rangeDetectorArray3_oIndex_rangeDetectorArray3_oIndex_HardLink)
-	);
-	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray4
-	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray4
-	(
-		// [BEGIN USER MAP FOR rangeDetectorArray4]
-		// [END USER MAP FOR rangeDetectorArray4]
-		.iAddress (rangeDetectorArray4_iAddress_rangeDetectorArray4_iAddress_HardLink),
-		.oActive (rangeDetectorArray4_oActive_rangeDetectorArray4_oActive_HardLink),
-		.oIndex (rangeDetectorArray4_oIndex_rangeDetectorArray4_oIndex_HardLink)
 	);
 	always @ (*)
 	begin
@@ -725,7 +452,7 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	}
 	;
 	assign InterconnectModule_L114F13L125T14_0_InterconnectModule_L122F56T85_ExprRhs = {
-		{3{1'b0}},
+		1'b0,
 		InterconnectModule_L114F13L125T14_0_leftIndex
 	}
 	;
@@ -735,7 +462,7 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	}
 	;
 	assign InterconnectModule_L114F13L125T14_0_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprRhs = {
-		{3{1'b0}},
+		1'b0,
 		InterconnectModule_L114F13L125T14_0_leftIndex
 	}
 	;
@@ -745,7 +472,7 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	}
 	;
 	assign InterconnectModule_L114F13L125T14_1_InterconnectModule_L122F56T85_ExprRhs = {
-		{3{1'b0}},
+		1'b0,
 		InterconnectModule_L114F13L125T14_1_leftIndex
 	}
 	;
@@ -755,68 +482,8 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	}
 	;
 	assign InterconnectModule_L114F13L125T14_1_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprRhs = {
-		{3{1'b0}},
+		1'b0,
 		InterconnectModule_L114F13L125T14_1_leftIndex
-	}
-	;
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L122F56T85_ExprLhs = {
-		1'b0,
-		Encoder_MSBIndex
-	}
-	;
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L122F56T85_ExprRhs = {
-		{2{1'b0}},
-		InterconnectModule_L114F13L125T14_2_leftIndex
-	}
-	;
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprLhs = {
-		1'b0,
-		State_leftAddr
-	}
-	;
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprRhs = {
-		{2{1'b0}},
-		InterconnectModule_L114F13L125T14_2_leftIndex
-	}
-	;
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L122F56T85_ExprLhs = {
-		1'b0,
-		Encoder_MSBIndex
-	}
-	;
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L122F56T85_ExprRhs = {
-		{2{1'b0}},
-		InterconnectModule_L114F13L125T14_3_leftIndex
-	}
-	;
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprLhs = {
-		1'b0,
-		State_leftAddr
-	}
-	;
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprRhs = {
-		{2{1'b0}},
-		InterconnectModule_L114F13L125T14_3_leftIndex
-	}
-	;
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L122F56T85_ExprLhs = {
-		1'b0,
-		Encoder_MSBIndex
-	}
-	;
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L122F56T85_ExprRhs = {
-		1'b0,
-		InterconnectModule_L114F13L125T14_4_leftIndex
-	}
-	;
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprLhs = {
-		1'b0,
-		State_leftAddr
-	}
-	;
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_ExprRhs = {
-		1'b0,
-		InterconnectModule_L114F13L125T14_4_leftIndex
 	}
 	;
 	assign InterconnectModule_L89F40T91_AXI4ReadInteconnectModule_L43F78T151_Expr_1 = InterconnectModule_L89F40T91_AXI4ReadInteconnectModule_L43F78T118_Expr;
@@ -827,12 +494,6 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	assign InterconnectModule_L83F36T108_TransactionDetectors0_InterconnectModule_L83F69T97_Expr_2 = TransactionDetectors0_oTransaction;
 	assign InterconnectModule_L83F36T108_TransactionDetectors1_InterconnectModule_L83F69T97_Expr_1 = TransactionDetectors1_oTXBegin;
 	assign InterconnectModule_L83F36T108_TransactionDetectors1_InterconnectModule_L83F69T97_Expr_2 = TransactionDetectors1_oTransaction;
-	assign InterconnectModule_L83F36T108_TransactionDetectors2_InterconnectModule_L83F69T97_Expr_1 = TransactionDetectors2_oTXBegin;
-	assign InterconnectModule_L83F36T108_TransactionDetectors2_InterconnectModule_L83F69T97_Expr_2 = TransactionDetectors2_oTransaction;
-	assign InterconnectModule_L83F36T108_TransactionDetectors3_InterconnectModule_L83F69T97_Expr_1 = TransactionDetectors3_oTXBegin;
-	assign InterconnectModule_L83F36T108_TransactionDetectors3_InterconnectModule_L83F69T97_Expr_2 = TransactionDetectors3_oTransaction;
-	assign InterconnectModule_L83F36T108_TransactionDetectors4_InterconnectModule_L83F69T97_Expr_1 = TransactionDetectors4_oTXBegin;
-	assign InterconnectModule_L83F36T108_TransactionDetectors4_InterconnectModule_L83F69T97_Expr_2 = TransactionDetectors4_oTransaction;
 	assign InterconnectModule_L114F13L125T14_0_InterconnectModule_L122F35T85_Expr_1 = Encoder_HasActive;
 	assign InterconnectModule_L114F13L125T14_0_InterconnectModule_L122F35T85_Expr_2 = InterconnectModule_L114F13L125T14_0_InterconnectModule_L122F56T85_Expr;
 	assign InterconnectModule_L114F13L125T14_0_InterconnectModule_L121F36T54_Expr_1 = Encoder_HasActive;
@@ -851,38 +512,8 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	assign InterconnectModule_L114F13L125T14_1_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr_2 = InterconnectModule_L114F13L125T14_1_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_Expr;
 	assign InterconnectModule_L114F13L125T14_1_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_1 = Inputs_iLeft[1][83];
 	assign InterconnectModule_L114F13L125T14_1_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_2 = muxRightData_R_RVALID;
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L122F35T85_Expr_1 = Encoder_HasActive;
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L122F35T85_Expr_2 = InterconnectModule_L114F13L125T14_2_InterconnectModule_L122F56T85_Expr;
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L121F36T54_Expr_1 = Encoder_HasActive;
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr_1 = Inputs_iLeft[2][82];
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr_2 = InterconnectModule_L114F13L125T14_2_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F101T138_Index;
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr_1 = InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr;
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr_2 = InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_Expr;
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_1 = Inputs_iLeft[2][83];
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_2 = muxRightData_R_RVALID;
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L122F35T85_Expr_1 = Encoder_HasActive;
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L122F35T85_Expr_2 = InterconnectModule_L114F13L125T14_3_InterconnectModule_L122F56T85_Expr;
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L121F36T54_Expr_1 = Encoder_HasActive;
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr_1 = Inputs_iLeft[3][82];
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr_2 = InterconnectModule_L114F13L125T14_3_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F101T138_Index;
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr_1 = InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr;
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr_2 = InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_Expr;
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_1 = Inputs_iLeft[3][83];
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_2 = muxRightData_R_RVALID;
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L122F35T85_Expr_1 = Encoder_HasActive;
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L122F35T85_Expr_2 = InterconnectModule_L114F13L125T14_4_InterconnectModule_L122F56T85_Expr;
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L121F36T54_Expr_1 = Encoder_HasActive;
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr_1 = Inputs_iLeft[4][82];
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr_2 = InterconnectModule_L114F13L125T14_4_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F101T138_Index;
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr_1 = InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr;
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr_2 = InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F122T151_Expr;
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_1 = Inputs_iLeft[4][83];
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T118_Expr_2 = muxRightData_R_RVALID;
 	assign Inputs_iLeft[0] = iLeft0;
 	assign Inputs_iLeft[1] = iLeft1;
-	assign Inputs_iLeft[2] = iLeft2;
-	assign Inputs_iLeft[3] = iLeft3;
-	assign Inputs_iLeft[4] = iLeft4;
 	assign Inputs_iRight[0] = iRight0;
 	assign Inputs_iRight[1] = iRight1;
 	assign Inputs_iRight[2] = iRight2;
@@ -895,14 +526,8 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	assign Inputs_iRight[9] = iRight9;
 	assign InterconnectModule_L80F47T105_Enumerable[0] = TransactionDetectors0_oTransaction;
 	assign InterconnectModule_L80F47T105_Enumerable[1] = TransactionDetectors1_oTransaction;
-	assign InterconnectModule_L80F47T105_Enumerable[2] = TransactionDetectors2_oTransaction;
-	assign InterconnectModule_L80F47T105_Enumerable[3] = TransactionDetectors3_oTransaction;
-	assign InterconnectModule_L80F47T105_Enumerable[4] = TransactionDetectors4_oTransaction;
 	assign ActiveTransactions[0] = InterconnectModule_L80F47T105_Enumerable[0];
 	assign ActiveTransactions[1] = InterconnectModule_L80F47T105_Enumerable[1];
-	assign ActiveTransactions[2] = InterconnectModule_L80F47T105_Enumerable[2];
-	assign ActiveTransactions[3] = InterconnectModule_L80F47T105_Enumerable[3];
-	assign ActiveTransactions[4] = InterconnectModule_L80F47T105_Enumerable[4];
 	assign currentTXEnd = InterconnectModule_L89F40T91_AXI4ReadInteconnectModule_L43F78T151_Expr;
 	assign muxLeft[0] = DuplexMux_oLeft[0];
 	assign muxLeft[1] = DuplexMux_oLeft[1];
@@ -929,9 +554,6 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	assign muxLeftData_R_RREADY = DuplexMux_oMuxLeftData[83];
 	assign muxRight[0] = DuplexMux_oRight[0];
 	assign muxRight[1] = DuplexMux_oRight[1];
-	assign muxRight[2] = DuplexMux_oRight[2];
-	assign muxRight[3] = DuplexMux_oRight[3];
-	assign muxRight[4] = DuplexMux_oRight[4];
 	assign muxRightData_AR_ARREADY = DuplexMux_oMuxRightData[0];
 	assign muxRightData_R_RID = DuplexMux_oMuxRightData[8:1];
 	assign muxRightData_R_RDATA[0] = DuplexMux_oMuxRightData[16:9];
@@ -945,56 +567,26 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	assign rightAddr = axiRightAddr;
 	assign InterconnectModule_L82F41T99_Enumerable[0] = TransactionDetectors0_oTransaction;
 	assign InterconnectModule_L82F41T99_Enumerable[1] = TransactionDetectors1_oTransaction;
-	assign InterconnectModule_L82F41T99_Enumerable[2] = TransactionDetectors2_oTransaction;
-	assign InterconnectModule_L82F41T99_Enumerable[3] = TransactionDetectors3_oTransaction;
-	assign InterconnectModule_L82F41T99_Enumerable[4] = TransactionDetectors4_oTransaction;
 	assign Transactions[0] = InterconnectModule_L82F41T99_Enumerable[0];
 	assign Transactions[1] = InterconnectModule_L82F41T99_Enumerable[1];
-	assign Transactions[2] = InterconnectModule_L82F41T99_Enumerable[2];
-	assign Transactions[3] = InterconnectModule_L82F41T99_Enumerable[3];
-	assign Transactions[4] = InterconnectModule_L82F41T99_Enumerable[4];
 	assign InterconnectModule_L83F36T108_Enumerable[0] = InterconnectModule_L83F36T108_TransactionDetectors0_InterconnectModule_L83F69T97_Expr;
 	assign InterconnectModule_L83F36T108_Enumerable[1] = InterconnectModule_L83F36T108_TransactionDetectors1_InterconnectModule_L83F69T97_Expr;
-	assign InterconnectModule_L83F36T108_Enumerable[2] = InterconnectModule_L83F36T108_TransactionDetectors2_InterconnectModule_L83F69T97_Expr;
-	assign InterconnectModule_L83F36T108_Enumerable[3] = InterconnectModule_L83F36T108_TransactionDetectors3_InterconnectModule_L83F69T97_Expr;
-	assign InterconnectModule_L83F36T108_Enumerable[4] = InterconnectModule_L83F36T108_TransactionDetectors4_InterconnectModule_L83F69T97_Expr;
 	assign TXBegin[0] = InterconnectModule_L83F36T108_Enumerable[0];
 	assign TXBegin[1] = InterconnectModule_L83F36T108_Enumerable[1];
-	assign TXBegin[2] = InterconnectModule_L83F36T108_Enumerable[2];
-	assign TXBegin[3] = InterconnectModule_L83F36T108_Enumerable[3];
-	assign TXBegin[4] = InterconnectModule_L83F36T108_Enumerable[4];
 	assign InterconnectModule_L81F44T105_Enumerable[0] = TransactionDetectors0_oWaitForRestart;
 	assign InterconnectModule_L81F44T105_Enumerable[1] = TransactionDetectors1_oWaitForRestart;
-	assign InterconnectModule_L81F44T105_Enumerable[2] = TransactionDetectors2_oWaitForRestart;
-	assign InterconnectModule_L81F44T105_Enumerable[3] = TransactionDetectors3_oWaitForRestart;
-	assign InterconnectModule_L81F44T105_Enumerable[4] = TransactionDetectors4_oWaitForRestart;
 	assign WaitForRestarts[0] = InterconnectModule_L81F44T105_Enumerable[0];
 	assign WaitForRestarts[1] = InterconnectModule_L81F44T105_Enumerable[1];
-	assign WaitForRestarts[2] = InterconnectModule_L81F44T105_Enumerable[2];
-	assign WaitForRestarts[3] = InterconnectModule_L81F44T105_Enumerable[3];
-	assign WaitForRestarts[4] = InterconnectModule_L81F44T105_Enumerable[4];
 	assign axiRightAddr = AXI4ReadInteconnectModule_L32F37T75_Index;
 	assign rangeDetectorActive = AXI4ReadInteconnectModule_L35F46T88_Index;
 	assign AXI4ReadInteconnectModule_L34F53T104_Enumerable[0] = rangeDetectorArray0_oActive;
 	assign AXI4ReadInteconnectModule_L34F53T104_Enumerable[1] = rangeDetectorArray1_oActive;
-	assign AXI4ReadInteconnectModule_L34F53T104_Enumerable[2] = rangeDetectorArray2_oActive;
-	assign AXI4ReadInteconnectModule_L34F53T104_Enumerable[3] = rangeDetectorArray3_oActive;
-	assign AXI4ReadInteconnectModule_L34F53T104_Enumerable[4] = rangeDetectorArray4_oActive;
 	assign rangeDetectorActiveFlags[0] = AXI4ReadInteconnectModule_L34F53T104_Enumerable[0];
 	assign rangeDetectorActiveFlags[1] = AXI4ReadInteconnectModule_L34F53T104_Enumerable[1];
-	assign rangeDetectorActiveFlags[2] = AXI4ReadInteconnectModule_L34F53T104_Enumerable[2];
-	assign rangeDetectorActiveFlags[3] = AXI4ReadInteconnectModule_L34F53T104_Enumerable[3];
-	assign rangeDetectorActiveFlags[4] = AXI4ReadInteconnectModule_L34F53T104_Enumerable[4];
 	assign AXI4ReadInteconnectModule_L31F47T97_Enumerable[0] = rangeDetectorArray0_oIndex;
 	assign AXI4ReadInteconnectModule_L31F47T97_Enumerable[1] = rangeDetectorArray1_oIndex;
-	assign AXI4ReadInteconnectModule_L31F47T97_Enumerable[2] = rangeDetectorArray2_oIndex;
-	assign AXI4ReadInteconnectModule_L31F47T97_Enumerable[3] = rangeDetectorArray3_oIndex;
-	assign AXI4ReadInteconnectModule_L31F47T97_Enumerable[4] = rangeDetectorArray4_oIndex;
 	assign rangeDetectorIndexes[0] = AXI4ReadInteconnectModule_L31F47T97_Enumerable[0];
 	assign rangeDetectorIndexes[1] = AXI4ReadInteconnectModule_L31F47T97_Enumerable[1];
-	assign rangeDetectorIndexes[2] = AXI4ReadInteconnectModule_L31F47T97_Enumerable[2];
-	assign rangeDetectorIndexes[3] = AXI4ReadInteconnectModule_L31F47T97_Enumerable[3];
-	assign rangeDetectorIndexes[4] = AXI4ReadInteconnectModule_L31F47T97_Enumerable[4];
 	assign InterconnectModule_L114F13L125T14_0_InterconnectModule_L117F21L123T22_Object[0] = InterconnectModule_L114F13L125T14_0_InterconnectModule_L122F35T85_Expr;
 	assign InterconnectModule_L114F13L125T14_0_InterconnectModule_L117F21L123T22_Object[1] = InterconnectModule_L114F13L125T14_0_InterconnectModule_L121F36T54_Expr;
 	assign InterconnectModule_L114F13L125T14_0_InterconnectModule_L117F21L123T22_Object[2] = InterconnectModule_L114F13L125T14_0_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr;
@@ -1011,54 +603,21 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	assign TransactionDetectors1_iTXBegin = InterconnectModule_L114F13L125T14_1_InterconnectModule_L117F21L123T22_Object[2];
 	assign TransactionDetectors1_iRestart = InterconnectModule_L114F13L125T14_1_InterconnectModule_L117F21L123T22_Object[1];
 	assign TransactionDetectors1_iActive = InterconnectModule_L114F13L125T14_1_InterconnectModule_L117F21L123T22_Object[0];
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L117F21L123T22_Object[0] = InterconnectModule_L114F13L125T14_2_InterconnectModule_L122F35T85_Expr;
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L117F21L123T22_Object[1] = InterconnectModule_L114F13L125T14_2_InterconnectModule_L121F36T54_Expr;
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L117F21L123T22_Object[2] = InterconnectModule_L114F13L125T14_2_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr;
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L117F21L123T22_Object[3] = InterconnectModule_L114F13L125T14_2_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr;
-	assign TransactionDetectors2_iTXEnd = InterconnectModule_L114F13L125T14_2_InterconnectModule_L117F21L123T22_Object[3];
-	assign TransactionDetectors2_iTXBegin = InterconnectModule_L114F13L125T14_2_InterconnectModule_L117F21L123T22_Object[2];
-	assign TransactionDetectors2_iRestart = InterconnectModule_L114F13L125T14_2_InterconnectModule_L117F21L123T22_Object[1];
-	assign TransactionDetectors2_iActive = InterconnectModule_L114F13L125T14_2_InterconnectModule_L117F21L123T22_Object[0];
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L117F21L123T22_Object[0] = InterconnectModule_L114F13L125T14_3_InterconnectModule_L122F35T85_Expr;
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L117F21L123T22_Object[1] = InterconnectModule_L114F13L125T14_3_InterconnectModule_L121F36T54_Expr;
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L117F21L123T22_Object[2] = InterconnectModule_L114F13L125T14_3_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr;
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L117F21L123T22_Object[3] = InterconnectModule_L114F13L125T14_3_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr;
-	assign TransactionDetectors3_iTXEnd = InterconnectModule_L114F13L125T14_3_InterconnectModule_L117F21L123T22_Object[3];
-	assign TransactionDetectors3_iTXBegin = InterconnectModule_L114F13L125T14_3_InterconnectModule_L117F21L123T22_Object[2];
-	assign TransactionDetectors3_iRestart = InterconnectModule_L114F13L125T14_3_InterconnectModule_L117F21L123T22_Object[1];
-	assign TransactionDetectors3_iActive = InterconnectModule_L114F13L125T14_3_InterconnectModule_L117F21L123T22_Object[0];
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L117F21L123T22_Object[0] = InterconnectModule_L114F13L125T14_4_InterconnectModule_L122F35T85_Expr;
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L117F21L123T22_Object[1] = InterconnectModule_L114F13L125T14_4_InterconnectModule_L121F36T54_Expr;
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L117F21L123T22_Object[2] = InterconnectModule_L114F13L125T14_4_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F80T138_Expr;
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L117F21L123T22_Object[3] = InterconnectModule_L114F13L125T14_4_InterconnectModule_L120F34T75_AXI4ReadInteconnectModule_L43F78T151_Expr;
-	assign TransactionDetectors4_iTXEnd = InterconnectModule_L114F13L125T14_4_InterconnectModule_L117F21L123T22_Object[3];
-	assign TransactionDetectors4_iTXBegin = InterconnectModule_L114F13L125T14_4_InterconnectModule_L117F21L123T22_Object[2];
-	assign TransactionDetectors4_iRestart = InterconnectModule_L114F13L125T14_4_InterconnectModule_L117F21L123T22_Object[1];
-	assign TransactionDetectors4_iActive = InterconnectModule_L114F13L125T14_4_InterconnectModule_L117F21L123T22_Object[0];
-	assign InterconnectModule_L128F17L131T18_Object[4:0] = {
-		TXBegin[4],
-		TXBegin[3],
-		TXBegin[2],
+	assign InterconnectModule_L128F17L131T18_Object[1:0] = {
 		TXBegin[1],
 		TXBegin[0]
 	}
 	;
-	assign Encoder_iValues[4] = InterconnectModule_L128F17L131T18_Object[4];
-	assign Encoder_iValues[3] = InterconnectModule_L128F17L131T18_Object[3];
-	assign Encoder_iValues[2] = InterconnectModule_L128F17L131T18_Object[2];
 	assign Encoder_iValues[1] = InterconnectModule_L128F17L131T18_Object[1];
 	assign Encoder_iValues[0] = InterconnectModule_L128F17L131T18_Object[0];
-	assign InterconnectModule_L135F17L143T18_Object[419:0] = {
-		Inputs_iLeft[4],
-		Inputs_iLeft[3],
-		Inputs_iLeft[2],
+	assign InterconnectModule_L135F17L143T18_Object[167:0] = {
 		Inputs_iLeft[1],
 		Inputs_iLeft[0]
 	}
 	;
-	assign InterconnectModule_L135F17L143T18_Object[422:420] = State_leftAddr;
-	assign InterconnectModule_L135F17L143T18_Object[423] = State_leftAddrValid;
-	assign InterconnectModule_L135F17L143T18_Object[953:424] = {
+	assign InterconnectModule_L135F17L143T18_Object[168:168] = State_leftAddr;
+	assign InterconnectModule_L135F17L143T18_Object[169] = State_leftAddrValid;
+	assign InterconnectModule_L135F17L143T18_Object[699:170] = {
 		Inputs_iRight[9],
 		Inputs_iRight[8],
 		Inputs_iRight[7],
@@ -1071,37 +630,28 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 		Inputs_iRight[0]
 	}
 	;
-	assign InterconnectModule_L135F17L143T18_Object[957:954] = State_rightAddr;
-	assign InterconnectModule_L135F17L143T18_Object[958] = State_rightAddrValid;
-	assign DuplexMux_iRightAddrValid = InterconnectModule_L135F17L143T18_Object[958];
-	assign DuplexMux_iRightAddr = InterconnectModule_L135F17L143T18_Object[957:954];
-	assign DuplexMux_iRight[9] = InterconnectModule_L135F17L143T18_Object[953:901];
-	assign DuplexMux_iRight[8] = InterconnectModule_L135F17L143T18_Object[900:848];
-	assign DuplexMux_iRight[7] = InterconnectModule_L135F17L143T18_Object[847:795];
-	assign DuplexMux_iRight[6] = InterconnectModule_L135F17L143T18_Object[794:742];
-	assign DuplexMux_iRight[5] = InterconnectModule_L135F17L143T18_Object[741:689];
-	assign DuplexMux_iRight[4] = InterconnectModule_L135F17L143T18_Object[688:636];
-	assign DuplexMux_iRight[3] = InterconnectModule_L135F17L143T18_Object[635:583];
-	assign DuplexMux_iRight[2] = InterconnectModule_L135F17L143T18_Object[582:530];
-	assign DuplexMux_iRight[1] = InterconnectModule_L135F17L143T18_Object[529:477];
-	assign DuplexMux_iRight[0] = InterconnectModule_L135F17L143T18_Object[476:424];
-	assign DuplexMux_iLeftAddrValid = InterconnectModule_L135F17L143T18_Object[423];
-	assign DuplexMux_iLeftAddr = InterconnectModule_L135F17L143T18_Object[422:420];
-	assign DuplexMux_iLeft[4] = InterconnectModule_L135F17L143T18_Object[419:336];
-	assign DuplexMux_iLeft[3] = InterconnectModule_L135F17L143T18_Object[335:252];
-	assign DuplexMux_iLeft[2] = InterconnectModule_L135F17L143T18_Object[251:168];
+	assign InterconnectModule_L135F17L143T18_Object[703:700] = State_rightAddr;
+	assign InterconnectModule_L135F17L143T18_Object[704] = State_rightAddrValid;
+	assign DuplexMux_iRightAddrValid = InterconnectModule_L135F17L143T18_Object[704];
+	assign DuplexMux_iRightAddr = InterconnectModule_L135F17L143T18_Object[703:700];
+	assign DuplexMux_iRight[9] = InterconnectModule_L135F17L143T18_Object[699:647];
+	assign DuplexMux_iRight[8] = InterconnectModule_L135F17L143T18_Object[646:594];
+	assign DuplexMux_iRight[7] = InterconnectModule_L135F17L143T18_Object[593:541];
+	assign DuplexMux_iRight[6] = InterconnectModule_L135F17L143T18_Object[540:488];
+	assign DuplexMux_iRight[5] = InterconnectModule_L135F17L143T18_Object[487:435];
+	assign DuplexMux_iRight[4] = InterconnectModule_L135F17L143T18_Object[434:382];
+	assign DuplexMux_iRight[3] = InterconnectModule_L135F17L143T18_Object[381:329];
+	assign DuplexMux_iRight[2] = InterconnectModule_L135F17L143T18_Object[328:276];
+	assign DuplexMux_iRight[1] = InterconnectModule_L135F17L143T18_Object[275:223];
+	assign DuplexMux_iRight[0] = InterconnectModule_L135F17L143T18_Object[222:170];
+	assign DuplexMux_iLeftAddrValid = InterconnectModule_L135F17L143T18_Object[169];
+	assign DuplexMux_iLeftAddr = InterconnectModule_L135F17L143T18_Object[168:168];
 	assign DuplexMux_iLeft[1] = InterconnectModule_L135F17L143T18_Object[167:84];
 	assign DuplexMux_iLeft[0] = InterconnectModule_L135F17L143T18_Object[83:0];
 	assign AXI4ReadInteconnectModule_L22F13L28T14_0_AXI4ReadInteconnectModule_L24F54L27T18_Object[31:0] = Inputs_iLeft[0][39:8];
 	assign rangeDetectorArray0_iAddress = AXI4ReadInteconnectModule_L22F13L28T14_0_AXI4ReadInteconnectModule_L24F54L27T18_Object[31:0];
 	assign AXI4ReadInteconnectModule_L22F13L28T14_1_AXI4ReadInteconnectModule_L24F54L27T18_Object[31:0] = Inputs_iLeft[1][39:8];
 	assign rangeDetectorArray1_iAddress = AXI4ReadInteconnectModule_L22F13L28T14_1_AXI4ReadInteconnectModule_L24F54L27T18_Object[31:0];
-	assign AXI4ReadInteconnectModule_L22F13L28T14_2_AXI4ReadInteconnectModule_L24F54L27T18_Object[31:0] = Inputs_iLeft[2][39:8];
-	assign rangeDetectorArray2_iAddress = AXI4ReadInteconnectModule_L22F13L28T14_2_AXI4ReadInteconnectModule_L24F54L27T18_Object[31:0];
-	assign AXI4ReadInteconnectModule_L22F13L28T14_3_AXI4ReadInteconnectModule_L24F54L27T18_Object[31:0] = Inputs_iLeft[3][39:8];
-	assign rangeDetectorArray3_iAddress = AXI4ReadInteconnectModule_L22F13L28T14_3_AXI4ReadInteconnectModule_L24F54L27T18_Object[31:0];
-	assign AXI4ReadInteconnectModule_L22F13L28T14_4_AXI4ReadInteconnectModule_L24F54L27T18_Object[31:0] = Inputs_iLeft[4][39:8];
-	assign rangeDetectorArray4_iAddress = AXI4ReadInteconnectModule_L22F13L28T14_4_AXI4ReadInteconnectModule_L24F54L27T18_Object[31:0];
 	assign M2S0 = muxLeft[0];
 	assign M2S1 = muxLeft[1];
 	assign M2S2 = muxLeft[2];
@@ -1114,14 +664,8 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	assign M2S9 = muxLeft[9];
 	assign S2M0 = muxRight[0];
 	assign S2M1 = muxRight[1];
-	assign S2M2 = muxRight[2];
-	assign S2M3 = muxRight[3];
-	assign S2M4 = muxRight[4];
 	assign DuplexMux_iLeft0_DuplexMux_iLeft_HardLink = DuplexMux_iLeft[0];
 	assign DuplexMux_iLeft1_DuplexMux_iLeft_HardLink = DuplexMux_iLeft[1];
-	assign DuplexMux_iLeft2_DuplexMux_iLeft_HardLink = DuplexMux_iLeft[2];
-	assign DuplexMux_iLeft3_DuplexMux_iLeft_HardLink = DuplexMux_iLeft[3];
-	assign DuplexMux_iLeft4_DuplexMux_iLeft_HardLink = DuplexMux_iLeft[4];
 	assign DuplexMux_iLeftAddr_DuplexMux_iLeftAddr_HardLink = DuplexMux_iLeftAddr;
 	assign DuplexMux_iLeftAddrValid_DuplexMux_iLeftAddrValid_HardLink = DuplexMux_iLeftAddrValid;
 	assign DuplexMux_iRight0_DuplexMux_iRight_HardLink = DuplexMux_iRight[0];
@@ -1150,14 +694,8 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	assign DuplexMux_oMuxRightData = DuplexMux_oMuxRightData_DuplexMux_oMuxRightData_HardLink;
 	assign DuplexMux_oRight[0] = DuplexMux_oRight0_DuplexMux_oRight_HardLink;
 	assign DuplexMux_oRight[1] = DuplexMux_oRight1_DuplexMux_oRight_HardLink;
-	assign DuplexMux_oRight[2] = DuplexMux_oRight2_DuplexMux_oRight_HardLink;
-	assign DuplexMux_oRight[3] = DuplexMux_oRight3_DuplexMux_oRight_HardLink;
-	assign DuplexMux_oRight[4] = DuplexMux_oRight4_DuplexMux_oRight_HardLink;
 	assign Encoder_iValues0_Encoder_iValues_HardLink = Encoder_iValues[0];
 	assign Encoder_iValues1_Encoder_iValues_HardLink = Encoder_iValues[1];
-	assign Encoder_iValues2_Encoder_iValues_HardLink = Encoder_iValues[2];
-	assign Encoder_iValues3_Encoder_iValues_HardLink = Encoder_iValues[3];
-	assign Encoder_iValues4_Encoder_iValues_HardLink = Encoder_iValues[4];
 	assign Encoder_HasActive = Encoder_HasActive_Encoder_HasActive_HardLink;
 	assign Encoder_MSBIndex = Encoder_MSBIndex_Encoder_MSBIndex_HardLink;
 	assign Encoder_MSBValue = Encoder_MSBValue_Encoder_MSBValue_HardLink;
@@ -1175,48 +713,15 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	assign TransactionDetectors1_oTransaction = TransactionDetectors1_oTransaction_TransactionDetectors1_oTransaction_HardLink;
 	assign TransactionDetectors1_oTXBegin = TransactionDetectors1_oTXBegin_TransactionDetectors1_oTXBegin_HardLink;
 	assign TransactionDetectors1_oWaitForRestart = TransactionDetectors1_oWaitForRestart_TransactionDetectors1_oWaitForRestart_HardLink;
-	assign TransactionDetectors2_iActive_TransactionDetectors2_iActive_HardLink = TransactionDetectors2_iActive;
-	assign TransactionDetectors2_iRestart_TransactionDetectors2_iRestart_HardLink = TransactionDetectors2_iRestart;
-	assign TransactionDetectors2_iTXBegin_TransactionDetectors2_iTXBegin_HardLink = TransactionDetectors2_iTXBegin;
-	assign TransactionDetectors2_iTXEnd_TransactionDetectors2_iTXEnd_HardLink = TransactionDetectors2_iTXEnd;
-	assign TransactionDetectors2_oTransaction = TransactionDetectors2_oTransaction_TransactionDetectors2_oTransaction_HardLink;
-	assign TransactionDetectors2_oTXBegin = TransactionDetectors2_oTXBegin_TransactionDetectors2_oTXBegin_HardLink;
-	assign TransactionDetectors2_oWaitForRestart = TransactionDetectors2_oWaitForRestart_TransactionDetectors2_oWaitForRestart_HardLink;
-	assign TransactionDetectors3_iActive_TransactionDetectors3_iActive_HardLink = TransactionDetectors3_iActive;
-	assign TransactionDetectors3_iRestart_TransactionDetectors3_iRestart_HardLink = TransactionDetectors3_iRestart;
-	assign TransactionDetectors3_iTXBegin_TransactionDetectors3_iTXBegin_HardLink = TransactionDetectors3_iTXBegin;
-	assign TransactionDetectors3_iTXEnd_TransactionDetectors3_iTXEnd_HardLink = TransactionDetectors3_iTXEnd;
-	assign TransactionDetectors3_oTransaction = TransactionDetectors3_oTransaction_TransactionDetectors3_oTransaction_HardLink;
-	assign TransactionDetectors3_oTXBegin = TransactionDetectors3_oTXBegin_TransactionDetectors3_oTXBegin_HardLink;
-	assign TransactionDetectors3_oWaitForRestart = TransactionDetectors3_oWaitForRestart_TransactionDetectors3_oWaitForRestart_HardLink;
-	assign TransactionDetectors4_iActive_TransactionDetectors4_iActive_HardLink = TransactionDetectors4_iActive;
-	assign TransactionDetectors4_iRestart_TransactionDetectors4_iRestart_HardLink = TransactionDetectors4_iRestart;
-	assign TransactionDetectors4_iTXBegin_TransactionDetectors4_iTXBegin_HardLink = TransactionDetectors4_iTXBegin;
-	assign TransactionDetectors4_iTXEnd_TransactionDetectors4_iTXEnd_HardLink = TransactionDetectors4_iTXEnd;
-	assign TransactionDetectors4_oTransaction = TransactionDetectors4_oTransaction_TransactionDetectors4_oTransaction_HardLink;
-	assign TransactionDetectors4_oTXBegin = TransactionDetectors4_oTXBegin_TransactionDetectors4_oTXBegin_HardLink;
-	assign TransactionDetectors4_oWaitForRestart = TransactionDetectors4_oWaitForRestart_TransactionDetectors4_oWaitForRestart_HardLink;
 	assign rangeDetectorArray0_iAddress_rangeDetectorArray0_iAddress_HardLink = rangeDetectorArray0_iAddress;
 	assign rangeDetectorArray0_oActive = rangeDetectorArray0_oActive_rangeDetectorArray0_oActive_HardLink;
 	assign rangeDetectorArray0_oIndex = rangeDetectorArray0_oIndex_rangeDetectorArray0_oIndex_HardLink;
 	assign rangeDetectorArray1_iAddress_rangeDetectorArray1_iAddress_HardLink = rangeDetectorArray1_iAddress;
 	assign rangeDetectorArray1_oActive = rangeDetectorArray1_oActive_rangeDetectorArray1_oActive_HardLink;
 	assign rangeDetectorArray1_oIndex = rangeDetectorArray1_oIndex_rangeDetectorArray1_oIndex_HardLink;
-	assign rangeDetectorArray2_iAddress_rangeDetectorArray2_iAddress_HardLink = rangeDetectorArray2_iAddress;
-	assign rangeDetectorArray2_oActive = rangeDetectorArray2_oActive_rangeDetectorArray2_oActive_HardLink;
-	assign rangeDetectorArray2_oIndex = rangeDetectorArray2_oIndex_rangeDetectorArray2_oIndex_HardLink;
-	assign rangeDetectorArray3_iAddress_rangeDetectorArray3_iAddress_HardLink = rangeDetectorArray3_iAddress;
-	assign rangeDetectorArray3_oActive = rangeDetectorArray3_oActive_rangeDetectorArray3_oActive_HardLink;
-	assign rangeDetectorArray3_oIndex = rangeDetectorArray3_oIndex_rangeDetectorArray3_oIndex_HardLink;
-	assign rangeDetectorArray4_iAddress_rangeDetectorArray4_iAddress_HardLink = rangeDetectorArray4_iAddress;
-	assign rangeDetectorArray4_oActive = rangeDetectorArray4_oActive_rangeDetectorArray4_oActive_HardLink;
-	assign rangeDetectorArray4_oIndex = rangeDetectorArray4_oIndex_rangeDetectorArray4_oIndex_HardLink;
 	assign AXI4ReadInteconnectModule_L35F46T88_Index = rangeDetectorActiveFlags[Encoder_MSBIndex];
 	assign InterconnectModule_L114F13L125T14_0_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F101T138_Index = rangeDetectorActiveFlags[0];
 	assign InterconnectModule_L114F13L125T14_1_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F101T138_Index = rangeDetectorActiveFlags[1];
-	assign InterconnectModule_L114F13L125T14_2_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F101T138_Index = rangeDetectorActiveFlags[2];
-	assign InterconnectModule_L114F13L125T14_3_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F101T138_Index = rangeDetectorActiveFlags[3];
-	assign InterconnectModule_L114F13L125T14_4_InterconnectModule_L119F36T79_AXI4ReadInteconnectModule_L44F101T138_Index = rangeDetectorActiveFlags[4];
 	assign AXI4ReadInteconnectModule_L32F37T75_Index = rangeDetectorIndexes[Encoder_MSBIndex];
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]

@@ -8,7 +8,7 @@ namespace AXISoCQuadCore
 {
 	void CPU0::Increment(uint32_t* counter)
 	{
-		*counter++;
+		(*counter)++;
 	}
 
 	void CPU0::Counter(uint32_t delay)

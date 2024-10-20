@@ -66,24 +66,24 @@ namespace AXISoCQuadCore
 
 	void CPU1::WS2812Test()
 	{
-		//HardwareWS2812 ws2812(&_wait, AXISoCQuadCore_SOC_WS2812_Ptr);
-		//
-		//uint32_t counter = 0;
-		//constexpr uint8_t* data[] = { LED8x8::StopSign, LED8x8::RightArrow, LED8x8::LeftArrow };
-		//uint32_t colors[] = { 0x010000, 0x000100, 0x000100 };
-		//
-		//while (true)
-		//{
-		//	for (uint8_t s = 0; s < 3; s++)
-		//	{
-		//		ws2812.ByteArray(colors[s], 8, data[s]);
-		//		_wait.Clocks(50000000);
-		//	}
-		//
-		//	counter++;
-		//	AXISoCQuadCore_SOC_Reg1 = counter;
-		//	//_wait.Clocks(50000000);
-		//}
+		HardwareWS2812 ws2812(&_wait, AXISoCQuadCore_SOC_WS2812_Ptr);
+		
+		uint32_t counter = 0;
+		constexpr uint8_t* data[] = { LED8x8::StopSign, LED8x8::RightArrow, LED8x8::LeftArrow };
+		uint32_t colors[] = { 0x010000, 0x000100, 0x000100 };
+		
+		while (true)
+		{
+			for (uint8_t s = 0; s < 3; s++)
+			{
+				ws2812.ByteArray(colors[s], 8, data[s]);
+				_wait.Clocks(50000000);
+			}
+		
+			counter++;
+			AXISoCQuadCore_SOC_Reg1 = counter;
+			//_wait.Clocks(50000000);
+		}
 	}
 
 	void CPU1::TrigTest()

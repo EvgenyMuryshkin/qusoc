@@ -34,7 +34,7 @@
 */
 		# example QuSoC has 1K 32 bits words of memory
 		# set stack pointer to the the end of available memory
-start:	li x2, 0x20000
+start:	li x2, 0x8000
 		call main
 loop:
         j loop

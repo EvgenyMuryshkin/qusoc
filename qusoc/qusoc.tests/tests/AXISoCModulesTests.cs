@@ -131,14 +131,49 @@ namespace QuSoC.Tests
                 await u.Sync();
                 for (var i = 0; i < 10; i++)
                 {
+                    var mem0 = await u.readData(0xF0000000);
+
                     await u.Sync();
                     var reg0 = await u.readData(0x80000004);
                     var reg1 = await u.readData(0x80000008);
                     var reg2 = await u.readData(0x8000000C);
                     var reg3 = await u.readData(0x80000010);
+                    reg0 = reg0 == 0 ? uint.MaxValue : 0;
                     reg1 = reg1 ^ 0x1;
+                    reg2 = reg2 ^ 0x1;
+                    reg3 = reg3 ^ 0x1;
+                    await u.writeData(0x80000004, reg0);
                     await u.writeData(0x80000008, reg1);
+                    await u.writeData(0x8000000C, reg2);
+                    await u.writeData(0x80000010, reg3);
                     await Task.Delay(TimeSpan.FromMilliseconds(500));
+                }
+            }
+        }
+
+        [TestMethod]
+        public async Task AXIProgrammer_Update_All_CPUs()
+        {
+            while (true)
+            {
+                try
+                {
+                    using (var u = new AXIProgrammerClient())
+                    {
+                        var cpu0Instructions = FirmwareTools.FromFolder(@"C:\code\qusoc\qusoc\qusoc.demos\apps\AXISoCQuadCore\cpu0");
+                        var cpu1Instructions = FirmwareTools.FromFolder(@"C:\code\qusoc\qusoc\qusoc.demos\apps\AXISoCQuadCore\cpu1");
+                        var cpu2Instructions = FirmwareTools.FromFolder(@"C:\code\qusoc\qusoc\qusoc.demos\apps\AXISoCQuadCore\cpu2");
+                        var cpu3Instructions = FirmwareTools.FromFolder(@"C:\code\qusoc\qusoc\qusoc.demos\apps\AXISoCQuadCore\cpu3");
+
+                        await u.Update(0, cpu0Instructions);
+                        await u.Update(1, cpu1Instructions);
+                        await u.Update(2, cpu2Instructions);
+                        await u.Update(3, cpu3Instructions);
+                    }
+                }
+                catch (Exception ex)
+                {
+
                 }
             }
         }
@@ -446,10 +481,10 @@ namespace QuSoC.Tests
                         //}
 
 
-                        if (topLevel.CPU0.CPU.State.State == CPUState.IF && topLevel.CPU0.CPU.NextState.State != CPUState.IF)
-                        {
-                            Debugger.Break();
-                        }
+                        //if (topLevel.CPU0.CPU.State.State == CPUState.IF && topLevel.CPU0.CPU.NextState.State != CPUState.IF)
+                        //{
+                        //    Debugger.Break();
+                        //}
 
                         //if (topLevel.pwm.State.pwm[3] != 0)
                         //    return false;
@@ -473,6 +508,9 @@ namespace QuSoC.Tests
                             Assert.AreEqual<uint>(0xAA5581FF, readData);
                             return false;
                         }
+
+                        if (reg0 != 0)
+                            return false;
 
                         return true;// reg0 < 10;
                     });

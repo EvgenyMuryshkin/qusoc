@@ -63,7 +63,7 @@ namespace QuSoC.Tests
         protected override Dictionary<string, AXI4MemoryModule> InstructionsMemory
             => new Dictionary<string, AXI4MemoryModule>()
             {
-                { "CPU0", _topLevel.cpu0Memory },
+                { "CPU0", _topLevel.cpu0.cpu0Memory },
                 //{ "CPU1", _topLevel.cpu1Memory },
                 //{ "CPU2", _topLevel.cpu2Memory },
                 //{ "CPU3", _topLevel.cpu3Memory }
@@ -72,7 +72,7 @@ namespace QuSoC.Tests
         protected override Dictionary<string, AXI4RISCVModule> CPUs
             => new Dictionary<string, AXI4RISCVModule>()
             {
-                { "CPU0", _topLevel.CPU0 },
+                { "CPU0", _topLevel.cpu0.CPU0 },
                 //{ "CPU1",  _topLevel.CPU1 },
                 //{ "CPU2",  _topLevel.CPU2 },
                 //{ "CPU3",  _topLevel.CPU3 },
