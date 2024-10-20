@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0IOGateway, clock frequency is 1Hz, Embedded
+// System configuration name is AXISoCQuadCoreModule_TopLevel_cpu0IOGateway, clock frequency is 1Hz, Embedded
 // FSM summary
 // -- Packages
-module AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0IOGateway
+module AXISoCQuadCoreModule_TopLevel_cpu0IOGateway
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
@@ -100,8 +100,8 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0IOGateway
 	wire [31: 0] writeAddress_oAddress_writeAddress_oAddress_HardLink;
 	wire [7 : 0] Inputs_iM2S_W_W_WDATA [0 : 3];
 	wire [7 : 0] Inputs_iS2M_R_R_RDATA [0 : 3];
-	AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0IOGateway_readAddress
-	AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0IOGateway_readAddress
+	AXISoCQuadCoreModule_TopLevel_cpu0IOGateway_readAddress
+	AXISoCQuadCoreModule_TopLevel_cpu0IOGateway_readAddress
 	(
 		// [BEGIN USER MAP FOR readAddress]
 		// [END USER MAP FOR readAddress]
@@ -109,8 +109,8 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0IOGateway
 		.iOriginalAddress (readAddress_iOriginalAddress_readAddress_iOriginalAddress_HardLink),
 		.oAddress (readAddress_oAddress_readAddress_oAddress_HardLink)
 	);
-	AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0IOGateway_writeAddress
-	AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0IOGateway_writeAddress
+	AXISoCQuadCoreModule_TopLevel_cpu0IOGateway_writeAddress
+	AXISoCQuadCoreModule_TopLevel_cpu0IOGateway_writeAddress
 	(
 		// [BEGIN USER MAP FOR writeAddress]
 		// [END USER MAP FOR writeAddress]

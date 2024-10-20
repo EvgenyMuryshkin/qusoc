@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0Memory, clock frequency is 1Hz, Embedded
+// System configuration name is AXISoCQuadCoreModule_TopLevel_cpu0Memory, clock frequency is 1Hz, Embedded
 // FSM summary
 // -- Packages
-module AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0Memory
+module AXISoCQuadCoreModule_TopLevel_cpu0Memory
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
@@ -216,22 +216,22 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0Memory
 	reg [7 : 0] State_buff0 [0 : 32767];
 	initial
 	begin : Init_State_buff0
-$readmemh("AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0Memory_State_buff0.hex", State_buff0);
+$readmemh("AXISoCQuadCoreModule_TopLevel_cpu0Memory_State_buff0.hex", State_buff0);
 	end
 	reg [7 : 0] State_buff1 [0 : 32767];
 	initial
 	begin : Init_State_buff1
-$readmemh("AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0Memory_State_buff1.hex", State_buff1);
+$readmemh("AXISoCQuadCoreModule_TopLevel_cpu0Memory_State_buff1.hex", State_buff1);
 	end
 	reg [7 : 0] State_buff2 [0 : 32767];
 	initial
 	begin : Init_State_buff2
-$readmemh("AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0Memory_State_buff2.hex", State_buff2);
+$readmemh("AXISoCQuadCoreModule_TopLevel_cpu0Memory_State_buff2.hex", State_buff2);
 	end
 	reg [7 : 0] State_buff3 [0 : 32767];
 	initial
 	begin : Init_State_buff3
-$readmemh("AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0Memory_State_buff3.hex", State_buff3);
+$readmemh("AXISoCQuadCoreModule_TopLevel_cpu0Memory_State_buff3.hex", State_buff3);
 	end
 	// inferred simple dual port RAM with write-first behaviour
 	reg [14: 0] internalRADDR_reg0;
@@ -386,8 +386,8 @@ $readmemh("AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0Memory_State_buff3.hex", S
 	assign AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_1_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr = AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_1_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_1 & AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_1_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_2;
 	assign AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_2_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr = AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_2_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_1 & AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_2_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_2;
 	assign AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_3_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr = AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_3_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_1 & AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_3_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_2;
-	AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0Memory_axiSlave
-	AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0Memory_axiSlave
+	AXISoCQuadCoreModule_TopLevel_cpu0Memory_axiSlave
+	AXISoCQuadCoreModule_TopLevel_cpu0Memory_axiSlave
 	(
 		// [BEGIN USER MAP FOR axiSlave]
 		// [END USER MAP FOR axiSlave]

@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0IOGateway_writeAddress, clock frequency is 1Hz, Embedded
+// System configuration name is AXISoCQuadCoreModule_TopLevel_cpu0IOGateway_writeAddress, clock frequency is 1Hz, Embedded
 // FSM summary
 // -- Packages
-module AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0IOGateway_writeAddress
+module AXISoCQuadCoreModule_TopLevel_cpu0IOGateway_writeAddress
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]

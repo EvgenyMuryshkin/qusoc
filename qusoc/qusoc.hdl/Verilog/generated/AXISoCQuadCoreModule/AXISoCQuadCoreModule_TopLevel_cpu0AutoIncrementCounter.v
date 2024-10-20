@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0AutoIncrementCounter, clock frequency is 1Hz, Embedded
+// System configuration name is AXISoCQuadCoreModule_TopLevel_cpu0AutoIncrementCounter, clock frequency is 1Hz, Embedded
 // FSM summary
 // -- Packages
-module AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0AutoIncrementCounter
+module AXISoCQuadCoreModule_TopLevel_cpu0AutoIncrementCounter
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
@@ -153,8 +153,8 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0AutoIncrementCounter
 		end
 	end
 	assign AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr = AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr_1 + AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr_2;
-	AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0AutoIncrementCounter_axiSlave
-	AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0AutoIncrementCounter_axiSlave
+	AXISoCQuadCoreModule_TopLevel_cpu0AutoIncrementCounter_axiSlave
+	AXISoCQuadCoreModule_TopLevel_cpu0AutoIncrementCounter_axiSlave
 	(
 		// [BEGIN USER MAP FOR axiSlave]
 		// [END USER MAP FOR axiSlave]

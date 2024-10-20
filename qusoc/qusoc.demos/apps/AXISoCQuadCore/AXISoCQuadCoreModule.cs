@@ -24,7 +24,7 @@ namespace AXISoC
     public class AXISoCQuadCoreModule : RTLCombinationalModule<AXISoCQuadCoreModuleInputs>
     {
         internal AXI4Programmer programmer = new AXI4Programmer();
-        internal AXISoCCoreModule cpu0Core = new AXISoCCoreModule();
+        //internal AXISoCCoreModule cpu0Core = new AXISoCCoreModule();
 
         internal AXI4GatewayModule programmerIOGateway = new AXI4GatewayModule(axiSize.B4);
         internal AXI4GatewayModule programmerCPU0Gateway = new AXI4GatewayModule(axiSize.B4, 17);
@@ -45,11 +45,11 @@ namespace AXISoC
             }
         );
         
-        //internal AXI4RISCVModule CPU0 = new AXI4RISCVModule(CPURegsType.RAM, 0);
-        //internal AXI4MemoryModule cpu0Memory = new AXI4MemoryModule(axiSize.B4, 0x8000);
-        //internal AXI4IncrementOnReadCounterModule cpu0AutoIncrementCounter = new AXI4IncrementOnReadCounterModule(axiSize.B4);
-        //internal AXI4AutoDecrementRegisterModule cpu0AutoDecrementRegister = new AXI4AutoDecrementRegisterModule(axiSize.B4);
-        //internal AXI4GatewayModule cpu0IOGateway = new AXI4GatewayModule(axiSize.B4);
+        internal AXI4RISCVModule CPU0 = new AXI4RISCVModule(CPURegsType.RAM, 0);
+        internal AXI4MemoryModule cpu0Memory = new AXI4MemoryModule(axiSize.B4, 0x8000);
+        internal AXI4IncrementOnReadCounterModule cpu0AutoIncrementCounter = new AXI4IncrementOnReadCounterModule(axiSize.B4);
+        internal AXI4AutoDecrementRegisterModule cpu0AutoDecrementRegister = new AXI4AutoDecrementRegisterModule(axiSize.B4);
+        internal AXI4GatewayModule cpu0IOGateway = new AXI4GatewayModule(axiSize.B4);
         internal AXI4InteconnectModule cpu0Interconnect = new AXI4InteconnectModule(
             axiSize.B4,
             2,
@@ -159,15 +159,27 @@ namespace AXISoC
         {
             Func<uint[], byte[][]> toBytes = 
                 (instructions) => instructions.Select(i => new RTLBitArray(i)).Select((r) => (byte[])r).ToArray();
-            cpu0Core.Initialize(cpu0Instructions);
-            //cpu0Memory.Initialize(toBytes(cpu0Instructions));
+            //cpu0Core.Initialize(cpu0Instructions);
+            cpu0Memory.Initialize(toBytes(cpu0Instructions));
             //cpu1Memory.Initialize(toBytes(cpu1Instructions));
             //cpu2Memory.Initialize(toBytes(cpu2Instructions));
             //cpu3Memory.Initialize(toBytes(cpu3Instructions));
         }
 
-        //public override IEnumerable<IRTLModuleValidator> Validators(IRTLClassFactory classFactory)
-        //    => [classFactory.Create<AXI4InterconnectScheduleValidator>()];
+        public override IEnumerable<IRTLModuleValidator> Validators(IRTLClassFactory classFactory)
+            => [classFactory.Create<AXI4InterconnectScheduleValidator>()];
+
+        AXI4_M2S[] cpu0M2S => [
+            programmerCPU0Gateway.oM2S,
+            CPU0.M2S
+        ];
+
+        AXI4_S2M[] cpu0S2M => [
+            cpu0Memory.S2M,
+            cpu0AutoIncrementCounter.S2M,
+            cpu0AutoDecrementRegister.S2M,
+            cpu0IOGateway.oS2M
+        ];
 
         protected override void OnSchedule(Func<AXISoCQuadCoreModuleInputs> inputsFactory)
         {
@@ -189,7 +201,8 @@ namespace AXISoC
             {
                 iM2S = programmerInterconnect.oM2S[1],
                 //iS2M = cpu0.oProgrammerInterconnectS2M
-                iS2M = cpu0Interconnect.oS2M[0]
+                iS2M = cpu0Interconnect.oS2M[0],
+                //iS2M = cpu0Core.oS2M[0]// cpu0Interconnect.oS2M[0]
             });
             /*
             programmerCPU1Gateway.Schedule(() => new()
@@ -225,57 +238,80 @@ namespace AXISoC
                 ]
             });
 
-            cpu0Core.Schedule(() =>
-                new ()
-                {
-                    iExtReset = extReset[0],
-                    iProgrammerM2S = programmerCPU0Gateway.oM2S,
-                    iCPUM2S = cpu0Interconnect.oM2S[3],
-                    iIOInterconnectS2M = ioInterconnect.oS2M[1],
-                    iCPUS2M = cpu0Interconnect.oS2M[1],
-                    iMemoryM2S = cpu0Interconnect.oM2S[0],
-                    iIncrementM2S = cpu0Interconnect.oM2S[1],
-                    iDecrementM2S = cpu0Interconnect.oM2S[2]
-                }
-            );
+            //cpu0Core.Schedule(() =>
+            //    new ()
+            //    {
+            //        iExtReset = extReset[0],
+            //        iM2S = cpu0M2S,
+            //        iS2M = cpu0S2M
+            //        //iProgrammerM2S = programmerCPU0Gateway.oM2S,
+            //        //iCPUM2S = CPU0.M2S,
+            //        //iMemoryS2M = cpu0Memory.S2M,
+            //        //iIncrementS2M = cpu0AutoIncrementCounter.S2M,
+            //        //iDecrementS2M = cpu0AutoDecrementRegister.S2M,
+            //        //iIOGatewayS2M = cpu0IOGateway.oS2M
+            //        //iCPUM2S = cpu0Interconnect.oM2S[3],
+            //        //iIOInterconnectS2M = ioInterconnect.oS2M[1],
+            //        //iCPUS2M = cpu0Interconnect.oS2M[1],
+            //        //iMemoryM2S = cpu0Interconnect.oM2S[0],
+            //        //iIncrementM2S = cpu0Interconnect.oM2S[1],
+            //        //iDecrementM2S = cpu0Interconnect.oM2S[2]
+            //    }
+            //);
             
             // CPU0
-            //CPU0.Schedule(() => new ()
-            //{
-            //    S2M = cpu0Interconnect.oS2M[1],
-            //    ExtReset = extReset[0]
-            //});
-            //cpu0Memory.Schedule(() => new()
-            //{
-            //    M2S = cpu0Interconnect.oM2S[0]
-            //});
-            //cpu0AutoIncrementCounter.Schedule(() => new()
-            //{
-            //    M2S = cpu0Interconnect.oM2S[1]
-            //});
-            //cpu0AutoDecrementRegister.Schedule(() => new()
-            //{
-            //    M2S = cpu0Interconnect.oM2S[2]
-            //});
-            //cpu0IOGateway.Schedule(() => new()
-            //{
-            //    iM2S = cpu0Interconnect.oM2S[3],
-            //    iS2M = ioInterconnect.oS2M[1]
-            //});
+            CPU0.Schedule(() => new ()
+            {
+                //S2M = cpu0Core.oS2M[1]
+                //S2M = cpu0Interconnect.oS2M[1],
+                S2M = cpu0Interconnect.oS2M[1],
+                ExtReset = extReset[0]
+            });
+            cpu0Memory.Schedule(() => new()
+            {
+                //M2S = cpu0Core.oM2S[0]
+                //M2S = cpu0Interconnect.oM2S[0]
+                M2S = cpu0Interconnect.oM2S[0]
+            });
+            cpu0AutoIncrementCounter.Schedule(() => new()
+            {
+                //M2S = cpu0Core.oM2S[1]
+                //M2S = cpu0Interconnect.oM2S[1]
+                M2S = cpu0Interconnect.oM2S[1]
+            });
+            cpu0AutoDecrementRegister.Schedule(() => new()
+            {
+                //M2S = cpu0Core.oM2S[2]
+                //M2S = cpu0Interconnect.oM2S[2]
+                M2S = cpu0Interconnect.oM2S[2]
+            });
+            cpu0IOGateway.Schedule(() => new()
+            {
+                //iM2S = cpu0Core.oM2S[3],
+                //iM2S = cpu0Interconnect.oM2S[3],
+                iM2S = cpu0Interconnect.oM2S[3],
+                iS2M = ioInterconnect.oS2M[1]
+            });
 
             cpu0Interconnect.Schedule(() => new()
             {
-                iM2S = [
-                    programmerCPU0Gateway.oM2S,
-                    cpu0Core.oCPUM2S,//CPU0.M2S
-                ],
-                iS2M = [
-                    cpu0Core.oMemoryS2M,//cpu0Memory.S2M,
-                    cpu0Core.oIncrementS2M,//cpu0AutoIncrementCounter.S2M,
-                    cpu0Core.oDecrementS2M,//cpu0AutoDecrementRegister.S2M,
-                    cpu0Core.oIOGatewayS2M//cpu0IOGateway.oS2M,
-                ]
+                iM2S = cpu0M2S,
+                iS2M = cpu0S2M
             });
+
+            //cpu0Interconnect.Schedule(() => new()
+            //{
+            //    iM2S = [
+            //        programmerCPU0Gateway.oM2S,
+            //        cpu0Core.oCPUM2S,//CPU0.M2S
+            //    ],
+            //    iS2M = [
+            //        cpu0Core.oMemoryS2M,//cpu0Memory.S2M,
+            //        cpu0Core.oIncrementS2M,//cpu0AutoIncrementCounter.S2M,
+            //        cpu0Core.oDecrementS2M,//cpu0AutoDecrementRegister.S2M,
+            //        cpu0Core.oIOGatewayS2M//cpu0IOGateway.oS2M,
+            //    ]
+            //});
             /*
             //CPU1
             CPU1.Schedule(() => new()
@@ -455,7 +491,7 @@ namespace AXISoC
                 iM2S = [
                     programmerIOGateway.oM2S,
                     //cpu0.oIOInterconnectM2S
-                    cpu0Core.oIOGatewayM2S,// cpu0IOGateway.oM2S,
+                    cpu0IOGateway.oM2S,
                     //cpu1IOGateway.oM2S,
                     //cpu2IOGateway.oM2S,
                     //cpu3IOGateway.oM2S

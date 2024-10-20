@@ -16,10 +16,10 @@
 //   Code comes AS-IS, it is your responsibility to make sure it is working as expected
 //   no responsibility will be taken for any loss or damage caused by use of Quokka toolkit.
 //
-// System configuration name is AXISoCQuadCoreModule_TopLevel_cpu0Core_CPU0, clock frequency is 1Hz, Embedded
+// System configuration name is AXISoCQuadCoreModule_TopLevel_CPU0, clock frequency is 1Hz, Embedded
 // FSM summary
 // -- Packages
-module AXISoCQuadCoreModule_TopLevel_cpu0Core_CPU0
+module AXISoCQuadCoreModule_TopLevel_CPU0
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
@@ -178,8 +178,8 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Core_CPU0
 	assign AXI4RISCVModule_L41F35T72_Expr = (AXI4RISCVModule_L41F35T72_Expr_1 >> internalByteAddress);
 	assign AXI4RISCVModule_L75F31T60_Expr = (AXI4RISCVModule_L75F31T60_Expr_1 << addressBits);
 	assign AXI4RISCVModule_L88F32T58_Expr = AXI4RISCVModule_L88F32T58_Expr_1 | AXI4RISCVModule_L88F32T58_Expr_2;
-	AXISoCQuadCoreModule_TopLevel_cpu0Core_CPU0_CPU
-	AXISoCQuadCoreModule_TopLevel_cpu0Core_CPU0_CPU
+	AXISoCQuadCoreModule_TopLevel_CPU0_CPU
+	AXISoCQuadCoreModule_TopLevel_CPU0_CPU
 	(
 		// [BEGIN USER MAP FOR CPU]
 		// [END USER MAP FOR CPU]
@@ -202,8 +202,8 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Core_CPU0
 		.MemWriteData (CPU_MemWriteData_CPU_MemWriteData_HardLink),
 		.RREADY (CPU_RREADY_CPU_RREADY_HardLink)
 	);
-	AXISoCQuadCoreModule_TopLevel_cpu0Core_CPU0_Master
-	AXISoCQuadCoreModule_TopLevel_cpu0Core_CPU0_Master
+	AXISoCQuadCoreModule_TopLevel_CPU0_Master
+	AXISoCQuadCoreModule_TopLevel_CPU0_Master
 	(
 		// [BEGIN USER MAP FOR Master]
 		// [END USER MAP FOR Master]
