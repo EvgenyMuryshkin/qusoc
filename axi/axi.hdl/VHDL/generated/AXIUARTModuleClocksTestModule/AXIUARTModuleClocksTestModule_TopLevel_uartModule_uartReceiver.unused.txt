@@ -1,0 +1,9 @@
+No reads:
+	Inputs_iACK
+	Inputs_iCE
+	Inputs_iRX
+	iValid
+	State_rxValue
+No writes:
+	iValid
+	NextState_rxValue

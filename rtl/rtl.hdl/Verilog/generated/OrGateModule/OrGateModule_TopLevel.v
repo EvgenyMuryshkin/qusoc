@@ -37,15 +37,8 @@ module OrGateModule_TopLevel
 	wire false = 1'b0;
 	wire Inputs_I1;
 	wire Inputs_I2;
-	wire OrGateModule_L7F26T48_Expr;
-	wire OrGateModule_L7F26T48_Expr_1;
-	wire OrGateModule_L7F26T48_Expr_2;
-	assign OrGateModule_L7F26T48_Expr = OrGateModule_L7F26T48_Expr_1 | OrGateModule_L7F26T48_Expr_2;
-	assign OrGateModule_L7F26T48_Expr_1 = Inputs_I1;
-	assign OrGateModule_L7F26T48_Expr_2 = Inputs_I2;
 	assign Inputs_I1 = I1;
 	assign Inputs_I2 = I2;
-	assign O = OrGateModule_L7F26T48_Expr;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

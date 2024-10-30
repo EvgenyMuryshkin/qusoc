@@ -11,11 +11,11 @@ namespace AXISoC
     public class AXISoCCoreModuleInputs
     {
         public bool iExtReset;
-        public AXI4_M2S[] iM2S;
+        //public AXI4_M2S[] iM2S;
         public AXI4_S2M[] iS2M;
 
-        //public AXI4_M2S iProgrammerM2S;
-        //public AXI4_M2S iCPUM2S;
+        public AXI4_M2S iProgrammerM2S;
+        public AXI4_M2S iCPUM2S;
         //
         //public AXI4_S2M iMemoryS2M;
         //public AXI4_S2M iIncrementS2M;
@@ -29,11 +29,11 @@ namespace AXISoC
 
         public AXISoCCoreModuleInputs()
         {
-            iM2S = Enumerable.Range(0, 2).Select(_ => new AXI4_M2S(axiSize.B4)).ToArray();
+            //iM2S = Enumerable.Range(0, 2).Select(_ => new AXI4_M2S(axiSize.B4)).ToArray();
             iS2M = Enumerable.Range(0, 4).Select(_ => new AXI4_S2M(axiSize.B4)).ToArray();
 
-            //iProgrammerM2S = new AXI4_M2S(axiSize.B4);
-            //iCPUM2S = new AXI4_M2S(axiSize.B4);
+            iProgrammerM2S = new AXI4_M2S(axiSize.B4);
+            iCPUM2S = new AXI4_M2S(axiSize.B4);
             //iMemoryS2M = new AXI4_S2M(axiSize.B4);
             //iIncrementS2M = new AXI4_S2M(axiSize.B4);
             //iDecrementS2M = new AXI4_S2M(axiSize.B4);
@@ -105,12 +105,12 @@ namespace AXISoC
 
             cpu0Interconnect.Schedule(() => new()
             {
-                iM2S = Inputs.iM2S,
-                iS2M = Inputs.iS2M
-                //iM2S = [
-                //    Inputs.iProgrammerM2S,
-                //    Inputs.iCPUM2S
-                //],
+                //iM2S = Inputs.iM2S,
+                iS2M = Inputs.iS2M,
+                iM2S = [
+                    Inputs.iProgrammerM2S,
+                    Inputs.iCPUM2S
+                ],
                 //iS2M = [
                 //    Inputs.iMemoryS2M,// cpu0Memory.S2M,
                 //    Inputs.iIncrementS2M,// cpu0AutoIncrementCounter.S2M,

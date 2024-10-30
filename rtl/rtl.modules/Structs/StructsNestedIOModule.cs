@@ -79,6 +79,8 @@ namespace RTL.Modules
 
         protected override void OnSchedule(Func<StructCompositionModuleInput> inputsFactory)
         {
+            base.OnSchedule(inputsFactory);
+
             child.Schedule(() => new StructCompositionModuleInput()
             {
                 iValue = Inputs.iValue

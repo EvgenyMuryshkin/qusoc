@@ -1,2 +1,11 @@
 No reads:
 	axiSize
+	Inputs_iM2S
+	Inputs_iS2M
+	readAddress_oAddress
+	writeAddress_oAddress
+No writes:
+	readAddress_iMapAddress
+	readAddress_iOriginalAddress
+	writeAddress_iMapAddress
+	writeAddress_iOriginalAddress

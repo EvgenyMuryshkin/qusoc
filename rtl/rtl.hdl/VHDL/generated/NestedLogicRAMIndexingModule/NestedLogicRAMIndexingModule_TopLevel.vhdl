@@ -45,18 +45,13 @@ architecture rtl of NestedLogicRAMIndexingModule_TopLevel is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	constant State_Nested_BuffDefault : unsigned(7 downto 0) := "00000000";
-	constant NestedLogicRAMIndexingModule_L33F60T61_Expr : std_logic := '1';
 	signal Inputs_ReadAddr : unsigned(1 downto 0) := (others => '0');
 	signal Inputs_WE : std_logic := '0';
 	signal Inputs_WriteAddr : unsigned(1 downto 0) := (others => '0');
 	signal Inputs_WriteData : unsigned(7 downto 0) := (others => '0');
 	signal NextState_Counter : unsigned(7 downto 0) := (others => '0');
-	signal NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F37T62_Cast : unsigned(7 downto 0) := (others => '0');
 	signal State_Counter : unsigned(7 downto 0) := "00000000";
 	constant State_CounterDefault : unsigned(7 downto 0) := "00000000";
-	signal NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr : unsigned(9 downto 0) := "0000000000";
-	signal NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_1 : signed(9 downto 0) := "0000000000";
-	signal NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_2 : signed(9 downto 0) := "0000000000";
 	type State_Nested_BuffArray is array (0 to 3) of unsigned (7 downto 0);
 	signal State_Nested_Buff : State_Nested_BuffArray := (others => (others => '0'));
 	type NextState_Nested_BuffArray is array (0 to 3) of unsigned (7 downto 0);
@@ -86,39 +81,12 @@ begin
 			end if;
 		end if;
 	end process;
-	process (NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_1, NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_2)
+	process (ReadAddr, WE, WriteAddr, WriteData)
 	begin
-		NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr <= resize(unsigned(signed(resize(NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_1, NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_1'length + 1)) + signed(resize(NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_2, NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_2'length + 1))), NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr'length);
-	end process;
-	process (Inputs_WE, Inputs_WriteData, NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F37T62_Cast, State_Counter, State_Nested_Buff)
-	begin
-		for NextState_Nested_Buff_Iterator in 0 to 3 loop
-			NextState_Nested_Buff(NextState_Nested_Buff_Iterator) <= State_Nested_Buff(NextState_Nested_Buff_Iterator);
-		end loop;
-		NextState_Counter <= State_Counter;
-		if Inputs_WE = '1' then
-			NextState_Counter <= NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F37T62_Cast;
-			NextState_Nested_Buff(TO_INTEGER(Inputs_WriteAddr)) <= Inputs_WriteData;
-		end if;
-	end process;
-	process (NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr, ReadAddr, State_Counter, State_Nested_Buff, WE, WriteAddr, WriteData)
-	begin
-		NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_1(9 downto 8) <= (
-			others => '0'
-		)
-		;
-		NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_1(7 downto 0) <= signed(State_Counter);
-		NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_2(9 downto 1) <= (
-			others => '0'
-		)
-		;
-		NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_2(0) <= NestedLogicRAMIndexingModule_L33F60T61_Expr;
 		Inputs_ReadAddr <= ReadAddr;
 		Inputs_WE <= WE;
 		Inputs_WriteAddr <= WriteAddr;
 		Inputs_WriteData <= WriteData;
-		NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F37T62_Cast <= NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr(7 downto 0);
-		oValue <= State_Nested_Buff(TO_INTEGER(Inputs_ReadAddr));
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

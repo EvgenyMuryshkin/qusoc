@@ -1,0 +1,7 @@
+No reads:
+	Inputs_boolValue
+	Inputs_byteValue
+	l2_oValues
+No writes:
+	l2_i1
+	l2_i2

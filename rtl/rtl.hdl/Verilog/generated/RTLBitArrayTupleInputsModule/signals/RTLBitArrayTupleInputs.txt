@@ -1,0 +1,4 @@
+└Root           | RTLBitArrayTupleInputs | [42:0] | 43 | [42:0]
+ └iValue        | ValueTuple`2           | [42:0] | 43 | [42:0][42:0]
+  ├iValue_Item1 | Boolean                | [42]   | 1  | [42:0][42:0][42]
+  └iValue_Item2 | RTLBitArray            | [41:0] | 42 | [42:0][42:0][41:0]

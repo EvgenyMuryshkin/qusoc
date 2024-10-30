@@ -1,0 +1,7 @@
+No reads:
+	Inputs_Enabled
+	NextValue
+	State_Value
+No writes:
+	NextState_Value
+	NextValue

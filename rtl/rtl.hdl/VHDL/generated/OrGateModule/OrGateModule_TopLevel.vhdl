@@ -42,21 +42,11 @@ architecture rtl of OrGateModule_TopLevel is
 	-- false is a reserved name, declaration skipped
 	signal Inputs_I1 : std_logic := '0';
 	signal Inputs_I2 : std_logic := '0';
-	signal OrGateModule_L7F26T48_Expr : std_logic := '0';
-	signal OrGateModule_L7F26T48_Expr_1 : std_logic := '0';
-	signal OrGateModule_L7F26T48_Expr_2 : std_logic := '0';
 begin
-	process (OrGateModule_L7F26T48_Expr_1, OrGateModule_L7F26T48_Expr_2)
+	process (I1, I2)
 	begin
-		OrGateModule_L7F26T48_Expr <= OrGateModule_L7F26T48_Expr_1 OR OrGateModule_L7F26T48_Expr_2;
-	end process;
-	process (I1, I2, Inputs_I1, Inputs_I2, OrGateModule_L7F26T48_Expr)
-	begin
-		OrGateModule_L7F26T48_Expr_1 <= Inputs_I1;
-		OrGateModule_L7F26T48_Expr_2 <= Inputs_I2;
 		Inputs_I1 <= I1;
 		Inputs_I2 <= I2;
-		O <= OrGateModule_L7F26T48_Expr;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

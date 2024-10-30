@@ -42,23 +42,11 @@ architecture rtl of BitArraySHRAModule_TopLevel is
 	-- false is a reserved name, declaration skipped
 	signal Inputs_By : unsigned(4 downto 0) := (others => '0');
 	signal Inputs_Op : unsigned(31 downto 0) := (others => '0');
-	signal BitArrayModule_L50F36T54_SignChange : signed(31 downto 0) := (others => '0');
-	signal BitArrayModule_L50F35T74_Index : unsigned(31 downto 0) := (others => '0');
-	signal BitArrayModule_L50F36T67_Expr : signed(31 downto 0) := "00000000000000000000000000000000";
-	signal BitArrayModule_L50F36T67_Expr_1 : signed(31 downto 0) := "00000000000000000000000000000000";
 begin
-	process (BitArrayModule_L50F36T67_Expr_1, Inputs_By)
+	process (By, Op)
 	begin
-		BitArrayModule_L50F36T67_Expr <= shift_right(signed(BitArrayModule_L50F36T67_Expr_1), to_integer(Inputs_By));
-	end process;
-	process (BitArrayModule_L50F35T74_Index, BitArrayModule_L50F36T54_SignChange, BitArrayModule_L50F36T67_Expr, By, Inputs_Op, Op)
-	begin
-		BitArrayModule_L50F36T67_Expr_1 <= BitArrayModule_L50F36T54_SignChange;
 		Inputs_By <= By;
 		Inputs_Op <= Op;
-		BitArrayModule_L50F36T54_SignChange <= signed(Inputs_Op);
-		BitArrayModule_L50F35T74_Index <= unsigned(BitArrayModule_L50F36T67_Expr);
-		Res <= BitArrayModule_L50F35T74_Index;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

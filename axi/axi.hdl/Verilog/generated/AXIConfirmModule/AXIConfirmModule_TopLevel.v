@@ -40,43 +40,12 @@ module AXIConfirmModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [0: 0] AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L32F13L34T14_AXIConfirmModule_L33F33T58_Expr = 1'b0;
-	wire [0: 0] AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F26T51_Expr = 1'b0;
-	wire [0: 0] AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L41F45T74_Expr = 1'b1;
-	wire [0: 0] AXIConfirmModule_L25F50T79_Expr = 1'b1;
-	wire [0: 0] AXIConfirmModule_L26F51T76_Expr = 1'b0;
-	wire [0: 0] AXIConfirmModule_L26F97T126_Expr = 1'b1;
-	wire [0: 0] AXIConfirmModule_L27F64T89_Expr = 1'b0;
 	wire Inputs_inReady;
 	wire Inputs_inRestart;
 	wire Inputs_inValid;
 	reg [0: 0] NextState_fsm;
 	reg [0: 0] State_fsm = 1'b0;
 	wire [0: 0] State_fsmDefault = 1'b0;
-	wire AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L40F29T61_Expr;
-	wire AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L40F29T61_Expr_1;
-	wire AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L40F29T61_Expr_2;
-	wire AXIConfirmModule_L26F38T126_Expr;
-	wire AXIConfirmModule_L26F38T126_Expr_1;
-	wire AXIConfirmModule_L26F38T126_Expr_2;
-	wire AXIConfirmModule_L27F33T89_Expr;
-	wire AXIConfirmModule_L27F33T89_Expr_1;
-	wire AXIConfirmModule_L27F33T89_Expr_2;
-	wire AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F21L42T31_Case;
-	wire signed [1: 0] AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F21L42T31_CaseLhs;
-	wire signed [1: 0] AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F21L42T31_CaseRhs;
-	wire AXIConfirmModule_L25F37T79_Expr;
-	wire signed [1: 0] AXIConfirmModule_L25F37T79_ExprLhs;
-	wire signed [1: 0] AXIConfirmModule_L25F37T79_ExprRhs;
-	wire AXIConfirmModule_L26F38T76_Expr;
-	wire signed [1: 0] AXIConfirmModule_L26F38T76_ExprLhs;
-	wire signed [1: 0] AXIConfirmModule_L26F38T76_ExprRhs;
-	wire AXIConfirmModule_L26F80T126_Expr;
-	wire signed [1: 0] AXIConfirmModule_L26F80T126_ExprLhs;
-	wire signed [1: 0] AXIConfirmModule_L26F80T126_ExprRhs;
-	wire AXIConfirmModule_L27F51T89_Expr;
-	wire signed [1: 0] AXIConfirmModule_L27F51T89_ExprLhs;
-	wire signed [1: 0] AXIConfirmModule_L27F51T89_ExprRhs;
 	always @ (posedge Clock)
 	begin
 		if ((Reset == 1))
@@ -88,94 +57,9 @@ module AXIConfirmModule_TopLevel
 			State_fsm <= NextState_fsm;
 		end
 	end
-	assign AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F21L42T31_Case = AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F21L42T31_CaseLhs == AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F21L42T31_CaseRhs ? 1'b1 : 1'b0;
-	assign AXIConfirmModule_L25F37T79_Expr = AXIConfirmModule_L25F37T79_ExprLhs == AXIConfirmModule_L25F37T79_ExprRhs ? 1'b1 : 1'b0;
-	assign AXIConfirmModule_L26F38T76_Expr = AXIConfirmModule_L26F38T76_ExprLhs == AXIConfirmModule_L26F38T76_ExprRhs ? 1'b1 : 1'b0;
-	assign AXIConfirmModule_L26F80T126_Expr = AXIConfirmModule_L26F80T126_ExprLhs == AXIConfirmModule_L26F80T126_ExprRhs ? 1'b1 : 1'b0;
-	assign AXIConfirmModule_L27F51T89_Expr = AXIConfirmModule_L27F51T89_ExprLhs == AXIConfirmModule_L27F51T89_ExprRhs ? 1'b1 : 1'b0;
-	assign AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L40F29T61_Expr = AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L40F29T61_Expr_1 & AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L40F29T61_Expr_2;
-	assign AXIConfirmModule_L26F38T126_Expr = AXIConfirmModule_L26F38T126_Expr_1 & AXIConfirmModule_L26F38T126_Expr_2;
-	assign AXIConfirmModule_L27F33T89_Expr = AXIConfirmModule_L27F33T89_Expr_1 & AXIConfirmModule_L27F33T89_Expr_2;
-	always @ (*)
-	begin
-		NextState_fsm = State_fsm;
-		if ((Inputs_inRestart == 1))
-		begin
-			NextState_fsm = AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L32F13L34T14_AXIConfirmModule_L33F33T58_Expr;
-		end
-		else
-		begin
-			if ((AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F21L42T31_Case == 1))
-			begin
-				if ((AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L40F29T61_Expr == 1))
-				begin
-					NextState_fsm = AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L41F45T74_Expr;
-				end
-			end
-		end
-	end
-	assign AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F21L42T31_CaseLhs = {
-		1'b0,
-		State_fsm
-	}
-	;
-	assign AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F21L42T31_CaseRhs = {
-		1'b0,
-		AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F26T51_Expr
-	}
-	;
-	assign AXIConfirmModule_L25F37T79_ExprLhs = {
-		1'b0,
-		State_fsm
-	}
-	;
-	assign AXIConfirmModule_L25F37T79_ExprRhs = {
-		1'b0,
-		AXIConfirmModule_L25F50T79_Expr
-	}
-	;
-	assign AXIConfirmModule_L26F38T76_ExprLhs = {
-		1'b0,
-		State_fsm
-	}
-	;
-	assign AXIConfirmModule_L26F38T76_ExprRhs = {
-		1'b0,
-		AXIConfirmModule_L26F51T76_Expr
-	}
-	;
-	assign AXIConfirmModule_L26F80T126_ExprLhs = {
-		1'b0,
-		NextState_fsm
-	}
-	;
-	assign AXIConfirmModule_L26F80T126_ExprRhs = {
-		1'b0,
-		AXIConfirmModule_L26F97T126_Expr
-	}
-	;
-	assign AXIConfirmModule_L27F51T89_ExprLhs = {
-		1'b0,
-		State_fsm
-	}
-	;
-	assign AXIConfirmModule_L27F51T89_ExprRhs = {
-		1'b0,
-		AXIConfirmModule_L27F64T89_Expr
-	}
-	;
-	assign AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L40F29T61_Expr_1 = Inputs_inValid;
-	assign AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L40F29T61_Expr_2 = Inputs_inReady;
-	assign AXIConfirmModule_L26F38T126_Expr_1 = AXIConfirmModule_L26F38T76_Expr;
-	assign AXIConfirmModule_L26F38T126_Expr_2 = AXIConfirmModule_L26F80T126_Expr;
-	assign AXIConfirmModule_L27F33T89_Expr_1 = Inputs_inReady;
-	assign AXIConfirmModule_L27F33T89_Expr_2 = AXIConfirmModule_L27F51T89_Expr;
 	assign Inputs_inReady = inReady;
 	assign Inputs_inRestart = inRestart;
 	assign Inputs_inValid = inValid;
-	assign outConfirmed = AXIConfirmModule_L25F37T79_Expr;
-	assign outConfirming = AXIConfirmModule_L26F38T126_Expr;
-	assign outReady = AXIConfirmModule_L27F33T89_Expr;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

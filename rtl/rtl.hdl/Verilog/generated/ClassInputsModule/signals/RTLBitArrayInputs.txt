@@ -1,0 +1,2 @@
+└Root    | RTLBitArrayInputs | [41:0] | 42 | [41:0]
+ └iValue | RTLBitArray       | [41:0] | 42 | [41:0][41:0]

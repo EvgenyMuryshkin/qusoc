@@ -1,4 +1,30 @@
 No reads:
+	Inputs_iDSP_A
+	Inputs_iDSP_CE
+	Inputs_iDSP_D
+	Inputs_iDSP_OPMODE
+	Inputs_iDSP_PCIN
+	Inputs_iRAM_RD
+	Inputs_iRAM_RD_ADDR
+	Inputs_iRAM_WR
+	Inputs_iRAM_WR_ADDR
+	Inputs_iRAM_WR_DATA
 	State_UnusedSignal
+	u_dsp_P
+	u_dsp_PCOUT
+	u_ram_DOUT
 No writes:
 	NextState_UnusedSignal
+	u_dsp_A
+	u_dsp_B
+	u_dsp_CE
+	u_dsp_D
+	u_dsp_OPMODE
+	u_dsp_PCIN
+	u_dsp_RST
+	u_ram_CE
+	u_ram_DIN
+	u_ram_RD
+	u_ram_RD_ADDR
+	u_ram_WR
+	u_ram_WR_ADDR

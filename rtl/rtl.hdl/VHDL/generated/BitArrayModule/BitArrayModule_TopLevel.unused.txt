@@ -1,4 +1,6 @@
 No reads:
-	BitArrayModule_L17F46T61_Expr_1
+	Bits
+	Inputs_Bit
+	Inputs_Value
 No writes:
-	BitArrayModule_L17F46T61_Expr
+	Bits

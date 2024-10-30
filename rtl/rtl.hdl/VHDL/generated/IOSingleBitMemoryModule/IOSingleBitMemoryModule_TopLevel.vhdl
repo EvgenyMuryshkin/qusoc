@@ -117,38 +117,11 @@ begin
 			end if;
 		end if;
 	end process;
-	process (bitArrayBlock, boolBlock, Inputs_iBit, intBit, State_bit, State_bitArrayBlock, State_bitInternal, State_boolBlock)
-	begin
-		for NextState_bitArrayBlock_Iterator in 0 to 0 loop
-			NextState_bitArrayBlock(NextState_bitArrayBlock_Iterator) <= State_bitArrayBlock(NextState_bitArrayBlock_Iterator);
-		end loop;
-		for NextState_boolBlock_Iterator in 0 to 0 loop
-			NextState_boolBlock(NextState_boolBlock_Iterator) <= State_boolBlock(NextState_boolBlock_Iterator);
-		end loop;
-		NextState_bit <= State_bit;
-		NextState_bitInternal <= State_bitInternal;
-		NextState_bit <= Inputs_iBit;
-		NextState_bitInternal <= intBit;
-		NextState_bitArrayBlock(0) <= bitArrayBlock(0);
-		NextState_boolBlock(0) <= boolBlock(0);
-	end process;
-	process (boolBlock, iBit, iBitArrayBlock0, iBoolBlock0, Inputs_iBit, Inputs_iBitArrayBlock, Inputs_iBoolBlock, intBit, State_bit, State_bitArrayBlock, State_bitInternal, State_boolBlock)
+	process (iBit, iBitArrayBlock0, iBoolBlock0)
 	begin
 		Inputs_iBit <= iBit;
 		Inputs_iBitArrayBlock(0) <= iBitArrayBlock0;
 		Inputs_iBoolBlock(0) <= iBoolBlock0;
-		bitArrayBlock(0) <= Inputs_iBitArrayBlock(0);
-		boolBlock(0) <= Inputs_iBoolBlock(0);
-		intBit <= Inputs_iBit;
-		oBit <= Inputs_iBit;
-		oBit0 <= Inputs_iBit(0);
-		oBitInternal <= intBit;
-		oBitState <= State_bit;
-		oBitStateInternal <= State_bitInternal;
-		oInputBoolBlock0 <= Inputs_iBoolBlock(0);
-		oInternalBoolBlock0 <= boolBlock(0);
-		oStateBitArrayBlock0 <= State_bitArrayBlock(0);
-		oStateBoolBlock0 <= State_boolBlock(0);
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

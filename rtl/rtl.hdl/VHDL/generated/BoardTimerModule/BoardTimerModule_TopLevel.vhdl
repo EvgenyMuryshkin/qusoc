@@ -43,7 +43,7 @@ architecture rtl of BoardTimerModule_TopLevel is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	signal Inputs_Restart : std_logic := '0';
-	signal nestedTimerInputs_Restart : std_logic := '0';
+	signal nestedTimerInputs : unsigned(0 downto 0) := (others => '0');
 	signal timerModule10_Restart : std_logic := '0';
 	signal timerModule10_OutActive : std_logic := '0';
 	signal timerModule20_Restart : std_logic := '0';
@@ -76,14 +76,9 @@ begin
 		OutActive => timerModule20_OutActive_timerModule20_OutActive_HardLink
 	)
 	;
-	process (Inputs_Restart, nestedTimerInputs_Restart, Restart, timerModule10_OutActive, timerModule10_OutActive_timerModule10_OutActive_HardLink, timerModule10_Restart, timerModule20_OutActive, timerModule20_OutActive_timerModule20_OutActive_HardLink, timerModule20_Restart)
+	process (Restart, timerModule10_OutActive_timerModule10_OutActive_HardLink, timerModule10_Restart, timerModule20_OutActive_timerModule20_OutActive_HardLink, timerModule20_Restart)
 	begin
 		Inputs_Restart <= Restart;
-		nestedTimerInputs_Restart <= Inputs_Restart;
-		timerModule10_Restart <= nestedTimerInputs_Restart;
-		timerModule20_Restart <= nestedTimerInputs_Restart;
-		OutActive10 <= timerModule10_OutActive;
-		OutActive20 <= timerModule20_OutActive;
 		timerModule10_Restart_timerModule10_Restart_HardLink <= timerModule10_Restart;
 		timerModule10_OutActive <= timerModule10_OutActive_timerModule10_OutActive_HardLink;
 		timerModule20_Restart_timerModule20_Restart_HardLink <= timerModule20_Restart;

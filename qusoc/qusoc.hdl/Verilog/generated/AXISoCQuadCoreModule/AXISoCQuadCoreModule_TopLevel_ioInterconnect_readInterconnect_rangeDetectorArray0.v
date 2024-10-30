@@ -36,61 +36,30 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire signed [4: 0] rangeDetectorsCount = 5'b01010;
-	wire RangeDetectorArrayModule_L48F13L54T14_0_idx = 1'b0;
-	wire RangeDetectorArrayModule_L48F13L54T14_1_idx = 1'b1;
-	wire [1: 0] RangeDetectorArrayModule_L48F13L54T14_2_idx = 2'b10;
-	wire [1: 0] RangeDetectorArrayModule_L48F13L54T14_3_idx = 2'b11;
-	wire [2: 0] RangeDetectorArrayModule_L48F13L54T14_4_idx = 3'b100;
-	wire [2: 0] RangeDetectorArrayModule_L48F13L54T14_5_idx = 3'b101;
-	wire [2: 0] RangeDetectorArrayModule_L48F13L54T14_6_idx = 3'b110;
-	wire [2: 0] RangeDetectorArrayModule_L48F13L54T14_7_idx = 3'b111;
-	wire [3: 0] RangeDetectorArrayModule_L48F13L54T14_8_idx = 4'b1000;
-	wire [3: 0] RangeDetectorArrayModule_L48F13L54T14_9_idx = 4'b1001;
-	wire RangeDetectorArrayModule_L56F13L59T14_0_idx = 1'b0;
-	wire RangeDetectorArrayModule_L56F13L59T14_1_idx = 1'b1;
-	wire [1: 0] RangeDetectorArrayModule_L56F13L59T14_2_idx = 2'b10;
-	wire [1: 0] RangeDetectorArrayModule_L56F13L59T14_3_idx = 2'b11;
-	wire [2: 0] RangeDetectorArrayModule_L56F13L59T14_4_idx = 3'b100;
-	wire [2: 0] RangeDetectorArrayModule_L56F13L59T14_5_idx = 3'b101;
-	wire [2: 0] RangeDetectorArrayModule_L56F13L59T14_6_idx = 3'b110;
-	wire [2: 0] RangeDetectorArrayModule_L56F13L59T14_7_idx = 3'b111;
-	wire [3: 0] RangeDetectorArrayModule_L56F13L59T14_8_idx = 4'b1000;
-	wire [3: 0] RangeDetectorArrayModule_L56F13L59T14_9_idx = 4'b1001;
 	wire [31: 0] Inputs_iAddress;
 	wire encoder_HasActive;
 	wire [3: 0] encoder_MSBIndex;
 	wire [9: 0] encoder_MSBValue;
-	wire [31: 0] rangeDetectors0_Value;
+	reg [31: 0] rangeDetectors0_Value = 32'b00000000000000000000000000000000;
 	wire rangeDetectors0_IsActive;
-	wire [31: 0] rangeDetectors1_Value;
+	reg [31: 0] rangeDetectors1_Value = 32'b00000000000000000000000000000000;
 	wire rangeDetectors1_IsActive;
-	wire [31: 0] rangeDetectors2_Value;
+	reg [31: 0] rangeDetectors2_Value = 32'b00000000000000000000000000000000;
 	wire rangeDetectors2_IsActive;
-	wire [31: 0] rangeDetectors3_Value;
+	reg [31: 0] rangeDetectors3_Value = 32'b00000000000000000000000000000000;
 	wire rangeDetectors3_IsActive;
-	wire [31: 0] rangeDetectors4_Value;
+	reg [31: 0] rangeDetectors4_Value = 32'b00000000000000000000000000000000;
 	wire rangeDetectors4_IsActive;
-	wire [31: 0] rangeDetectors5_Value;
+	reg [31: 0] rangeDetectors5_Value = 32'b00000000000000000000000000000000;
 	wire rangeDetectors5_IsActive;
-	wire [31: 0] rangeDetectors6_Value;
+	reg [31: 0] rangeDetectors6_Value = 32'b00000000000000000000000000000000;
 	wire rangeDetectors6_IsActive;
-	wire [31: 0] rangeDetectors7_Value;
+	reg [31: 0] rangeDetectors7_Value = 32'b00000000000000000000000000000000;
 	wire rangeDetectors7_IsActive;
-	wire [31: 0] rangeDetectors8_Value;
+	reg [31: 0] rangeDetectors8_Value = 32'b00000000000000000000000000000000;
 	wire rangeDetectors8_IsActive;
-	wire [31: 0] rangeDetectors9_Value;
+	reg [31: 0] rangeDetectors9_Value = 32'b00000000000000000000000000000000;
 	wire rangeDetectors9_IsActive;
-	wire [31: 0] RangeDetectorArrayModule_L48F13L54T14_0_RangeDetectorArrayModule_L50F52L53T18_Object;
-	wire [31: 0] RangeDetectorArrayModule_L48F13L54T14_1_RangeDetectorArrayModule_L50F52L53T18_Object;
-	wire [31: 0] RangeDetectorArrayModule_L48F13L54T14_2_RangeDetectorArrayModule_L50F52L53T18_Object;
-	wire [31: 0] RangeDetectorArrayModule_L48F13L54T14_3_RangeDetectorArrayModule_L50F52L53T18_Object;
-	wire [31: 0] RangeDetectorArrayModule_L48F13L54T14_4_RangeDetectorArrayModule_L50F52L53T18_Object;
-	wire [31: 0] RangeDetectorArrayModule_L48F13L54T14_5_RangeDetectorArrayModule_L50F52L53T18_Object;
-	wire [31: 0] RangeDetectorArrayModule_L48F13L54T14_6_RangeDetectorArrayModule_L50F52L53T18_Object;
-	wire [31: 0] RangeDetectorArrayModule_L48F13L54T14_7_RangeDetectorArrayModule_L50F52L53T18_Object;
-	wire [31: 0] RangeDetectorArrayModule_L48F13L54T14_8_RangeDetectorArrayModule_L50F52L53T18_Object;
-	wire [31: 0] RangeDetectorArrayModule_L48F13L54T14_9_RangeDetectorArrayModule_L50F52L53T18_Object;
-	wire [9: 0] RangeDetectorArrayModule_L36F36L40T14_Object;
 	wire encoder_iValues0_encoder_iValues_HardLink;
 	wire encoder_iValues1_encoder_iValues_HardLink;
 	wire encoder_iValues2_encoder_iValues_HardLink;
@@ -124,8 +93,14 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 	wire rangeDetectors8_IsActive_rangeDetectors8_IsActive_HardLink;
 	wire [31: 0] rangeDetectors9_Value_rangeDetectors9_Value_HardLink;
 	wire rangeDetectors9_IsActive_rangeDetectors9_IsActive_HardLink;
-	wire rangeActive [0 : 9];
-	wire encoder_iValues [0 : 9];
+	reg rangeActive [0 : 9];
+	integer rangeActive_i;
+	initial
+	begin : Init_rangeActive
+		for (rangeActive_i = 0; rangeActive_i < 10; rangeActive_i = rangeActive_i + 1)
+			rangeActive[rangeActive_i] = 0;
+	end
+	reg encoder_iValues [0 : 9];
 	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray0_encoder
 	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetectorArray0_encoder
 	(
@@ -226,61 +201,6 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect_rangeDetect
 		.IsActive (rangeDetectors9_IsActive_rangeDetectors9_IsActive_HardLink)
 	);
 	assign Inputs_iAddress = iAddress;
-	assign RangeDetectorArrayModule_L48F13L54T14_0_RangeDetectorArrayModule_L50F52L53T18_Object[31:0] = Inputs_iAddress;
-	assign rangeDetectors0_Value = RangeDetectorArrayModule_L48F13L54T14_0_RangeDetectorArrayModule_L50F52L53T18_Object[31:0];
-	assign RangeDetectorArrayModule_L48F13L54T14_1_RangeDetectorArrayModule_L50F52L53T18_Object[31:0] = Inputs_iAddress;
-	assign rangeDetectors1_Value = RangeDetectorArrayModule_L48F13L54T14_1_RangeDetectorArrayModule_L50F52L53T18_Object[31:0];
-	assign RangeDetectorArrayModule_L48F13L54T14_2_RangeDetectorArrayModule_L50F52L53T18_Object[31:0] = Inputs_iAddress;
-	assign rangeDetectors2_Value = RangeDetectorArrayModule_L48F13L54T14_2_RangeDetectorArrayModule_L50F52L53T18_Object[31:0];
-	assign RangeDetectorArrayModule_L48F13L54T14_3_RangeDetectorArrayModule_L50F52L53T18_Object[31:0] = Inputs_iAddress;
-	assign rangeDetectors3_Value = RangeDetectorArrayModule_L48F13L54T14_3_RangeDetectorArrayModule_L50F52L53T18_Object[31:0];
-	assign RangeDetectorArrayModule_L48F13L54T14_4_RangeDetectorArrayModule_L50F52L53T18_Object[31:0] = Inputs_iAddress;
-	assign rangeDetectors4_Value = RangeDetectorArrayModule_L48F13L54T14_4_RangeDetectorArrayModule_L50F52L53T18_Object[31:0];
-	assign RangeDetectorArrayModule_L48F13L54T14_5_RangeDetectorArrayModule_L50F52L53T18_Object[31:0] = Inputs_iAddress;
-	assign rangeDetectors5_Value = RangeDetectorArrayModule_L48F13L54T14_5_RangeDetectorArrayModule_L50F52L53T18_Object[31:0];
-	assign RangeDetectorArrayModule_L48F13L54T14_6_RangeDetectorArrayModule_L50F52L53T18_Object[31:0] = Inputs_iAddress;
-	assign rangeDetectors6_Value = RangeDetectorArrayModule_L48F13L54T14_6_RangeDetectorArrayModule_L50F52L53T18_Object[31:0];
-	assign RangeDetectorArrayModule_L48F13L54T14_7_RangeDetectorArrayModule_L50F52L53T18_Object[31:0] = Inputs_iAddress;
-	assign rangeDetectors7_Value = RangeDetectorArrayModule_L48F13L54T14_7_RangeDetectorArrayModule_L50F52L53T18_Object[31:0];
-	assign RangeDetectorArrayModule_L48F13L54T14_8_RangeDetectorArrayModule_L50F52L53T18_Object[31:0] = Inputs_iAddress;
-	assign rangeDetectors8_Value = RangeDetectorArrayModule_L48F13L54T14_8_RangeDetectorArrayModule_L50F52L53T18_Object[31:0];
-	assign RangeDetectorArrayModule_L48F13L54T14_9_RangeDetectorArrayModule_L50F52L53T18_Object[31:0] = Inputs_iAddress;
-	assign rangeDetectors9_Value = RangeDetectorArrayModule_L48F13L54T14_9_RangeDetectorArrayModule_L50F52L53T18_Object[31:0];
-	assign rangeActive[0] = rangeDetectors0_IsActive;
-	assign rangeActive[1] = rangeDetectors1_IsActive;
-	assign rangeActive[2] = rangeDetectors2_IsActive;
-	assign rangeActive[3] = rangeDetectors3_IsActive;
-	assign rangeActive[4] = rangeDetectors4_IsActive;
-	assign rangeActive[5] = rangeDetectors5_IsActive;
-	assign rangeActive[6] = rangeDetectors6_IsActive;
-	assign rangeActive[7] = rangeDetectors7_IsActive;
-	assign rangeActive[8] = rangeDetectors8_IsActive;
-	assign rangeActive[9] = rangeDetectors9_IsActive;
-	assign RangeDetectorArrayModule_L36F36L40T14_Object[9:0] = {
-		rangeActive[9],
-		rangeActive[8],
-		rangeActive[7],
-		rangeActive[6],
-		rangeActive[5],
-		rangeActive[4],
-		rangeActive[3],
-		rangeActive[2],
-		rangeActive[1],
-		rangeActive[0]
-	}
-	;
-	assign encoder_iValues[9] = RangeDetectorArrayModule_L36F36L40T14_Object[9];
-	assign encoder_iValues[8] = RangeDetectorArrayModule_L36F36L40T14_Object[8];
-	assign encoder_iValues[7] = RangeDetectorArrayModule_L36F36L40T14_Object[7];
-	assign encoder_iValues[6] = RangeDetectorArrayModule_L36F36L40T14_Object[6];
-	assign encoder_iValues[5] = RangeDetectorArrayModule_L36F36L40T14_Object[5];
-	assign encoder_iValues[4] = RangeDetectorArrayModule_L36F36L40T14_Object[4];
-	assign encoder_iValues[3] = RangeDetectorArrayModule_L36F36L40T14_Object[3];
-	assign encoder_iValues[2] = RangeDetectorArrayModule_L36F36L40T14_Object[2];
-	assign encoder_iValues[1] = RangeDetectorArrayModule_L36F36L40T14_Object[1];
-	assign encoder_iValues[0] = RangeDetectorArrayModule_L36F36L40T14_Object[0];
-	assign oActive = encoder_HasActive;
-	assign oIndex = encoder_MSBIndex;
 	assign encoder_iValues0_encoder_iValues_HardLink = encoder_iValues[0];
 	assign encoder_iValues1_encoder_iValues_HardLink = encoder_iValues[1];
 	assign encoder_iValues2_encoder_iValues_HardLink = encoder_iValues[2];

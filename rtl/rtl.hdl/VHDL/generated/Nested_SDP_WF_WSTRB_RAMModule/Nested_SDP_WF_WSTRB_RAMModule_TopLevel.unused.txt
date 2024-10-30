@@ -1,6 +1,11 @@
 No reads:
+	Inputs_ReadAddress
 	Inputs_WE
-	Nested_SDP_WF_WSTRB_RAMModule_L36F9L44T10_Nested_SDP_WF_WSTRB_RAMModule_L37F13L41T14_0_w
-	Nested_SDP_WF_WSTRB_RAMModule_L36F9L44T10_Nested_SDP_WF_WSTRB_RAMModule_L37F13L41T14_1_w
-	Nested_SDP_WF_WSTRB_RAMModule_L36F9L44T10_Nested_SDP_WF_WSTRB_RAMModule_L37F13L41T14_2_w
-	Nested_SDP_WF_WSTRB_RAMModule_L36F9L44T10_Nested_SDP_WF_WSTRB_RAMModule_L37F13L41T14_3_w
+	Inputs_WriteAddress
+	Inputs_WriteData
+	Inputs_WSTRB
+	State_Data_Buff
+	State_Data_ReadData
+No writes:
+	NextState_Data_Buff
+	NextState_Data_ReadData

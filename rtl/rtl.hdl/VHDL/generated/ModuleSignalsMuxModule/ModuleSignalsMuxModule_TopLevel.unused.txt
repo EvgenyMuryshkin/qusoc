@@ -1,0 +1,14 @@
+No reads:
+	AndGate_O
+	Inputs_Addr
+	Inputs_I1
+	Inputs_I2
+	OrGate_O
+	XorGate_O
+No writes:
+	AndGate_I1
+	AndGate_I2
+	OrGate_I1
+	OrGate_I2
+	XorGate_I1
+	XorGate_I2

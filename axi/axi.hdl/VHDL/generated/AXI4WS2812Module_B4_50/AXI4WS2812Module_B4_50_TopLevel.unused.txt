@@ -1,7 +1,4 @@
 No reads:
-	AXI4WS2812Module_L125F9L170T10_AXI4WS2812Module_L127F13L169T14_AXI4WS2812Module_L134F21L141T22_AXI4WS2812Module_L138F42T159_Expr_1
-	AXI4WS2812Module_L125F9L170T10_AXI4WS2812Module_L127F13L169T14_AXI4WS2812Module_L148F21L161T22_AXI4WS2812Module_L150F42T57_Expr_1
-	AXI4WS2812Module_L150F56T57_Expr
 	axiSlave_outARADDR
 	axiSlave_outARREADYConfirming
 	axiSlave_outARVALID
@@ -9,11 +6,36 @@ No reads:
 	axiSlave_outAWREADYConfirming
 	axiSlave_outAWVALID
 	axiSlave_outReadTXCompleting
+	axiSlave_outWDATA
 	axiSlave_outWREADYConfirming
 	axiSlave_outWriteTXCompleting
 	axiSlave_outWSTRB
+	axiSlave_outWVALID
+	axiSlave_S2M
+	Inputs_M2S
+	oneHigh
+	oneLow
+	rData
+	State_clockCounter
+	State_data
+	State_state
+	State_tx
+	State_txBit
+	State_txCounter
+	zeroHigh
+	zeroLow
 No writes:
-	AXI4WS2812Module_L125F9L170T10_AXI4WS2812Module_L127F13L169T14_AXI4WS2812Module_L134F21L141T22_AXI4WS2812Module_L138F42T159_Expr
-	AXI4WS2812Module_L125F9L170T10_AXI4WS2812Module_L127F13L169T14_AXI4WS2812Module_L148F21L161T22_AXI4WS2812Module_L150F42T57_Expr
-	AXI4WS2812Module_L96F47T54_Cast
-	AXI4WS2812Module_L96F57T64_Cast
+	axiSlave_inARREADY
+	axiSlave_inAWREADY
+	axiSlave_inBVALID
+	axiSlave_inRDATA
+	axiSlave_inRVALID
+	axiSlave_inWREADY
+	axiSlave_M2S
+	NextState_clockCounter
+	NextState_data
+	NextState_state
+	NextState_tx
+	NextState_txBit
+	NextState_txCounter
+	rData

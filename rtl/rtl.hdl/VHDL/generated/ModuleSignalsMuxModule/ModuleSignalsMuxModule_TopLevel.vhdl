@@ -57,10 +57,6 @@ architecture rtl of ModuleSignalsMuxModule_TopLevel is
 	signal XorGate_I1 : std_logic := '0';
 	signal XorGate_I2 : std_logic := '0';
 	signal XorGate_O : std_logic := '0';
-	signal ModuleSignalsMuxModule_L38F36T87_Object : unsigned(1 downto 0) := (others => '0');
-	signal ModuleSignalsMuxModule_L39F35T86_Object : unsigned(1 downto 0) := (others => '0');
-	signal ModuleSignalsMuxModule_L40F36T87_Object : unsigned(1 downto 0) := (others => '0');
-	signal ModuleSignalsMuxModule_L32F41T105_Source : unsigned(2 downto 0) := (others => '0');
 	signal AndGate_I1_AndGate_I1_HardLink : std_logic := '0';
 	signal AndGate_I2_AndGate_I2_HardLink : std_logic := '0';
 	signal AndGate_O_AndGate_O_HardLink : std_logic := '0';
@@ -70,13 +66,6 @@ architecture rtl of ModuleSignalsMuxModule_TopLevel is
 	signal XorGate_I1_XorGate_I1_HardLink : std_logic := '0';
 	signal XorGate_I2_XorGate_I2_HardLink : std_logic := '0';
 	signal XorGate_O_XorGate_O_HardLink : std_logic := '0';
-	signal ModuleSignalsMuxModule_L27F26T46_Mux : std_logic := '0';
-	signal ModuleSignalsMuxModule_L27F26T46_MuxMultiplexerAddress : unsigned(1 downto 0) := "00";
-	signal ModuleSignalsMuxModule_L27F26T46_Mux1 : std_logic := '0';
-	signal ModuleSignalsMuxModule_L27F26T46_Mux2 : std_logic := '0';
-	signal ModuleSignalsMuxModule_L27F26T46_Mux3 : std_logic := '0';
-	type ModuleSignalsMuxModule_L32F82T104_EnumerableArray is array (0 to 2) of std_logic;
-	signal ModuleSignalsMuxModule_L32F82T104_Enumerable : ModuleSignalsMuxModule_L32F82T104_EnumerableArray := (others => '0');
 begin
 	ModuleSignalsMuxModule_TopLevel_AndGate : entity work.ModuleSignalsMuxModule_TopLevel_AndGate
 	port map
@@ -108,47 +97,11 @@ begin
 		O => XorGate_O_XorGate_O_HardLink
 	)
 	;
-	process (ModuleSignalsMuxModule_L27F26T46_Mux1, ModuleSignalsMuxModule_L27F26T46_Mux2, ModuleSignalsMuxModule_L27F26T46_Mux3, ModuleSignalsMuxModule_L27F26T46_MuxMultiplexerAddress)
-	begin
-		case ModuleSignalsMuxModule_L27F26T46_MuxMultiplexerAddress is
-			when "00" =>
-				ModuleSignalsMuxModule_L27F26T46_Mux <= ModuleSignalsMuxModule_L27F26T46_Mux1;
-			when "01" =>
-				ModuleSignalsMuxModule_L27F26T46_Mux <= ModuleSignalsMuxModule_L27F26T46_Mux2;
-			when "10" =>
-				ModuleSignalsMuxModule_L27F26T46_Mux <= ModuleSignalsMuxModule_L27F26T46_Mux3;
-			when others =>
-				ModuleSignalsMuxModule_L27F26T46_Mux <= '0';
-		end case;
-	end process;
-	process (Addr, AndGate_I1, AndGate_I2, AndGate_O, AndGate_O_AndGate_O_HardLink, I1, I2, Inputs_Addr, Inputs_I1, Inputs_I2, ModuleSignalsMuxModule_L27F26T46_Mux, ModuleSignalsMuxModule_L32F41T105_Source, ModuleSignalsMuxModule_L32F82T104_Enumerable, ModuleSignalsMuxModule_L38F36T87_Object, ModuleSignalsMuxModule_L39F35T86_Object, ModuleSignalsMuxModule_L40F36T87_Object, OrGate_I1, OrGate_I2, OrGate_O, OrGate_O_OrGate_O_HardLink, XorGate_I1, XorGate_I2, XorGate_O, XorGate_O_XorGate_O_HardLink)
+	process (Addr, AndGate_I1, AndGate_I2, AndGate_O_AndGate_O_HardLink, I1, I2, OrGate_I1, OrGate_I2, OrGate_O_OrGate_O_HardLink, XorGate_I1, XorGate_I2, XorGate_O_XorGate_O_HardLink)
 	begin
 		Inputs_Addr <= Addr;
 		Inputs_I1 <= I1;
 		Inputs_I2 <= I2;
-		ModuleSignalsMuxModule_L38F36T87_Object(0) <= Inputs_I1;
-		ModuleSignalsMuxModule_L38F36T87_Object(1) <= Inputs_I2;
-		AndGate_I2 <= ModuleSignalsMuxModule_L38F36T87_Object(1);
-		AndGate_I1 <= ModuleSignalsMuxModule_L38F36T87_Object(0);
-		ModuleSignalsMuxModule_L39F35T86_Object(0) <= Inputs_I1;
-		ModuleSignalsMuxModule_L39F35T86_Object(1) <= Inputs_I2;
-		OrGate_I2 <= ModuleSignalsMuxModule_L39F35T86_Object(1);
-		OrGate_I1 <= ModuleSignalsMuxModule_L39F35T86_Object(0);
-		ModuleSignalsMuxModule_L40F36T87_Object(0) <= Inputs_I1;
-		ModuleSignalsMuxModule_L40F36T87_Object(1) <= Inputs_I2;
-		XorGate_I2 <= ModuleSignalsMuxModule_L40F36T87_Object(1);
-		XorGate_I1 <= ModuleSignalsMuxModule_L40F36T87_Object(0);
-		ModuleSignalsMuxModule_L32F82T104_Enumerable(0) <= AndGate_O;
-		ModuleSignalsMuxModule_L32F82T104_Enumerable(1) <= OrGate_O;
-		ModuleSignalsMuxModule_L32F82T104_Enumerable(2) <= XorGate_O;
-		ModuleSignalsMuxModule_L32F41T105_Source(2) <= ModuleSignalsMuxModule_L32F82T104_Enumerable(0);
-		ModuleSignalsMuxModule_L32F41T105_Source(1) <= ModuleSignalsMuxModule_L32F82T104_Enumerable(1);
-		ModuleSignalsMuxModule_L32F41T105_Source(0) <= ModuleSignalsMuxModule_L32F82T104_Enumerable(2);
-		CombinedO <= ModuleSignalsMuxModule_L32F41T105_Source;
-		O <= ModuleSignalsMuxModule_L27F26T46_Mux;
-		oAnd <= AndGate_O;
-		oOr <= OrGate_O;
-		oXor <= XorGate_O;
 		AndGate_I1_AndGate_I1_HardLink <= AndGate_I1;
 		AndGate_I2_AndGate_I2_HardLink <= AndGate_I2;
 		AndGate_O <= AndGate_O_AndGate_O_HardLink;
@@ -158,10 +111,6 @@ begin
 		XorGate_I1_XorGate_I1_HardLink <= XorGate_I1;
 		XorGate_I2_XorGate_I2_HardLink <= XorGate_I2;
 		XorGate_O <= XorGate_O_XorGate_O_HardLink;
-		ModuleSignalsMuxModule_L27F26T46_Mux1 <= AndGate_O;
-		ModuleSignalsMuxModule_L27F26T46_Mux2 <= OrGate_O;
-		ModuleSignalsMuxModule_L27F26T46_Mux3 <= XorGate_O;
-		ModuleSignalsMuxModule_L27F26T46_MuxMultiplexerAddress <= Inputs_Addr;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

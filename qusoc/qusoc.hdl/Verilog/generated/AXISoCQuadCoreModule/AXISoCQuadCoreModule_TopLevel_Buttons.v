@@ -51,50 +51,16 @@ module AXISoCQuadCoreModule_TopLevel_Buttons
 	wire signed [2: 0] rAddrBits = 3'b010;
 	wire [1: 0] size = 2'b10;
 	wire [0: 0] width = 1'b1;
-	wire AXI4InSignalArrayBufferModule_L75F29T33_Expr = 1'b1;
-	wire AXI4InSignalArrayBufferModule_L77F29T34_Expr = 1'b0;
-	wire AXI4InSignalArrayBufferModule_L79F28T33_Expr = 1'b0;
-	wire AXI4InSignalArrayBufferModule_L76F28T32_Expr = 1'b1;
-	wire AXI4InSignalArrayBufferModule_L78F28T33_Expr = 1'b0;
-	wire [7: 0] Inputs_M2S_R_AR_ARID;
-	wire [31: 0] Inputs_M2S_R_AR_ARADDR;
-	wire [7: 0] Inputs_M2S_R_AR_ARLEN;
-	wire [2: 0] Inputs_M2S_R_AR_ARSIZE;
-	wire [1: 0] Inputs_M2S_R_AR_ARBURST;
-	wire [1: 0] Inputs_M2S_R_AR_ARLOCK;
-	wire [3: 0] Inputs_M2S_R_AR_ARCACHE;
-	wire [2: 0] Inputs_M2S_R_AR_ARPROT;
-	wire [3: 0] Inputs_M2S_R_AR_ARQOS;
-	wire [7: 0] Inputs_M2S_R_AR_ARREGION;
-	wire [7: 0] Inputs_M2S_R_AR_ARUSER;
-	wire Inputs_M2S_R_AR_ARVALID;
-	wire Inputs_M2S_R_R_RREADY;
-	wire [7: 0] Inputs_M2S_W_AW_AWID;
-	wire [31: 0] Inputs_M2S_W_AW_AWADDR;
-	wire [7: 0] Inputs_M2S_W_AW_AWLEN;
-	wire [2: 0] Inputs_M2S_W_AW_AWSIZE;
-	wire [1: 0] Inputs_M2S_W_AW_AWBURST;
-	wire [1: 0] Inputs_M2S_W_AW_AWLOCK;
-	wire [3: 0] Inputs_M2S_W_AW_AWCACHE;
-	wire [2: 0] Inputs_M2S_W_AW_AWPROT;
-	wire [3: 0] Inputs_M2S_W_AW_AWQOS;
-	wire [7: 0] Inputs_M2S_W_AW_AWREGION;
-	wire [7: 0] Inputs_M2S_W_AW_AWUSER;
-	wire Inputs_M2S_W_AW_AWVALID;
-	wire [7: 0] Inputs_M2S_W_W_WID;
-	wire [3: 0] Inputs_M2S_W_W_WSTRB;
-	wire Inputs_M2S_W_W_WLAST;
-	wire [7: 0] Inputs_M2S_W_W_WUSER;
-	wire Inputs_M2S_W_W_WVALID;
-	wire Inputs_M2S_W_B_BREADY;
-	wire [31: 0] axiInData;
-	wire [1: 0] rAddr;
-	wire axiSlave_inARREADY;
-	wire axiSlave_inAWREADY;
-	wire axiSlave_inBVALID;
-	wire axiSlave_inRVALID;
-	wire axiSlave_inWREADY;
-	wire [221: 0] axiSlave_M2S;
+	wire [221: 0] Inputs_M2S;
+	wire [3: 0] Inputs_Sig;
+	reg [31: 0] axiInData;
+	reg [1: 0] rAddr;
+	reg axiSlave_inARREADY = 1'b0;
+	reg axiSlave_inAWREADY = 1'b0;
+	reg axiSlave_inBVALID = 1'b0;
+	reg axiSlave_inRVALID = 1'b0;
+	reg axiSlave_inWREADY = 1'b0;
+	reg [221: 0] axiSlave_M2S = 222'b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
 	wire [31: 0] axiSlave_outARADDR;
 	wire axiSlave_outARREADYConfirming;
 	wire axiSlave_outARVALID;
@@ -107,9 +73,6 @@ module AXISoCQuadCoreModule_TopLevel_Buttons
 	wire [3: 0] axiSlave_outWSTRB;
 	wire axiSlave_outWVALID;
 	wire [73: 0] axiSlave_S2M;
-	wire [31: 0] AXI4InSignalArrayBufferModule_L85F34T71_Resize;
-	wire [1: 0] AXI4InSignalArrayBufferModule_L84F30T101_Index;
-	wire [258: 0] AXI4InSignalArrayBufferModule_L72F37L81T14_Object;
 	wire axiSlave_inARREADY_axiSlave_inARREADY_HardLink;
 	wire axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink;
 	wire axiSlave_inBVALID_axiSlave_inBVALID_HardLink;
@@ -136,12 +99,6 @@ module AXISoCQuadCoreModule_TopLevel_Buttons
 	wire [3: 0] axiSlave_outWSTRB_axiSlave_outWSTRB_HardLink;
 	wire axiSlave_outWVALID_axiSlave_outWVALID_HardLink;
 	wire [73: 0] axiSlave_S2M_axiSlave_S2M_HardLink;
-	wire [31: 0] AXI4InSignalArrayBufferModule_L84F46T82_Expr;
-	wire [31: 0] AXI4InSignalArrayBufferModule_L84F46T82_Expr_1;
-	wire AXI4InSignalArrayBufferModule_L87F9L92T10_AXI4InSignalArrayBufferModule_L88F17T47_Expr;
-	wire AXI4InSignalArrayBufferModule_L87F9L92T10_AXI4InSignalArrayBufferModule_L88F17T47_Expr_1;
-	wire [7 : 0] Inputs_M2S_W_W_WDATA [0 : 3];
-	wire [0 : 0] Inputs_Sig_inWDATA [0 : 3];
 	integer State_buffer_Iterator;
 	reg [0 : 0] State_buffer [0 : 3];
 	initial
@@ -156,7 +113,7 @@ module AXISoCQuadCoreModule_TopLevel_Buttons
 		for (NextState_buffer_Iterator = 0; NextState_buffer_Iterator < 4; NextState_buffer_Iterator = NextState_buffer_Iterator + 1)
 			NextState_buffer[NextState_buffer_Iterator] = 0;
 	end
-	wire [7 : 0] axiSlave_inRDATA [0 : 3];
+	reg [7 : 0] axiSlave_inRDATA [0 : 3];
 	wire [7 : 0] axiSlave_outWDATA [0 : 3];
 	always @ (posedge BoardSignals_Clock)
 	begin
@@ -175,40 +132,6 @@ module AXISoCQuadCoreModule_TopLevel_Buttons
 			end
 		end
 	end
-	// Output: AXI4InSignalArrayBufferModule_L84F46T82_Expr, Width: 32, ShiftBy: 2, Sources: 1
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[0] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[2];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[1] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[3];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[2] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[4];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[3] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[5];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[4] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[6];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[5] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[7];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[6] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[8];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[7] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[9];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[8] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[10];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[9] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[11];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[10] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[12];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[11] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[13];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[12] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[14];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[13] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[15];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[14] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[16];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[15] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[17];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[16] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[18];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[17] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[19];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[18] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[20];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[19] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[21];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[20] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[22];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[21] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[23];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[22] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[24];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[23] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[25];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[24] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[26];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[25] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[27];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[26] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[28];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[27] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[29];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[28] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[30];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[29] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[31];
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[30] = 0;
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[31] = 0;
-	assign AXI4InSignalArrayBufferModule_L87F9L92T10_AXI4InSignalArrayBufferModule_L88F17T47_Expr = ~AXI4InSignalArrayBufferModule_L87F9L92T10_AXI4InSignalArrayBufferModule_L88F17T47_Expr_1;
 	AXISoCQuadCoreModule_TopLevel_Buttons_axiSlave
 	AXISoCQuadCoreModule_TopLevel_Buttons_axiSlave
 	(
@@ -246,129 +169,8 @@ module AXISoCQuadCoreModule_TopLevel_Buttons
 		.outWVALID (axiSlave_outWVALID_axiSlave_outWVALID_HardLink),
 		.S2M (axiSlave_S2M_axiSlave_S2M_HardLink)
 	);
-	always @ (*)
-	begin
-		NextState_buffer_Iterator = 0;
-		for (NextState_buffer_Iterator = 0; (NextState_buffer_Iterator < 4); NextState_buffer_Iterator = (NextState_buffer_Iterator + 1))
-		begin
-			NextState_buffer[NextState_buffer_Iterator] = State_buffer[NextState_buffer_Iterator];
-		end
-		if ((AXI4InSignalArrayBufferModule_L87F9L92T10_AXI4InSignalArrayBufferModule_L88F17T47_Expr == 1))
-		begin
-			NextState_buffer[0] = Inputs_Sig_inWDATA[0];
-			NextState_buffer[1] = Inputs_Sig_inWDATA[1];
-			NextState_buffer[2] = Inputs_Sig_inWDATA[2];
-			NextState_buffer[3] = Inputs_Sig_inWDATA[3];
-		end
-	end
-	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr_1 = Inputs_M2S_R_AR_ARADDR;
-	assign AXI4InSignalArrayBufferModule_L87F9L92T10_AXI4InSignalArrayBufferModule_L88F17T47_Expr_1 = axiSlave_outARREADYConfirming;
-	assign Inputs_M2S_W_B_BREADY = M2S[221];
-	assign Inputs_M2S_W_W_WVALID = M2S[220];
-	assign Inputs_M2S_W_W_WUSER = M2S[219:212];
-	assign Inputs_M2S_W_W_WLAST = M2S[211];
-	assign Inputs_M2S_W_W_WSTRB = M2S[210:207];
-	assign Inputs_M2S_W_W_WDATA[3] = M2S[206:199];
-	assign Inputs_M2S_W_W_WDATA[2] = M2S[198:191];
-	assign Inputs_M2S_W_W_WDATA[1] = M2S[190:183];
-	assign Inputs_M2S_W_W_WDATA[0] = M2S[182:175];
-	assign Inputs_M2S_W_W_WID = M2S[174:167];
-	assign Inputs_M2S_W_AW_AWVALID = M2S[166];
-	assign Inputs_M2S_W_AW_AWUSER = M2S[165:158];
-	assign Inputs_M2S_W_AW_AWREGION = M2S[157:150];
-	assign Inputs_M2S_W_AW_AWQOS = M2S[149:146];
-	assign Inputs_M2S_W_AW_AWPROT = M2S[145:143];
-	assign Inputs_M2S_W_AW_AWCACHE = M2S[142:139];
-	assign Inputs_M2S_W_AW_AWLOCK = M2S[138:137];
-	assign Inputs_M2S_W_AW_AWBURST = M2S[136:135];
-	assign Inputs_M2S_W_AW_AWSIZE = M2S[134:132];
-	assign Inputs_M2S_W_AW_AWLEN = M2S[131:124];
-	assign Inputs_M2S_W_AW_AWADDR = M2S[123:92];
-	assign Inputs_M2S_W_AW_AWID = M2S[91:84];
-	assign Inputs_M2S_R_R_RREADY = M2S[83];
-	assign Inputs_M2S_R_AR_ARVALID = M2S[82];
-	assign Inputs_M2S_R_AR_ARUSER = M2S[81:74];
-	assign Inputs_M2S_R_AR_ARREGION = M2S[73:66];
-	assign Inputs_M2S_R_AR_ARQOS = M2S[65:62];
-	assign Inputs_M2S_R_AR_ARPROT = M2S[61:59];
-	assign Inputs_M2S_R_AR_ARCACHE = M2S[58:55];
-	assign Inputs_M2S_R_AR_ARLOCK = M2S[54:53];
-	assign Inputs_M2S_R_AR_ARBURST = M2S[52:51];
-	assign Inputs_M2S_R_AR_ARSIZE = M2S[50:48];
-	assign Inputs_M2S_R_AR_ARLEN = M2S[47:40];
-	assign Inputs_M2S_R_AR_ARADDR = M2S[39:8];
-	assign Inputs_M2S_R_AR_ARID = M2S[7:0];
-	assign Inputs_Sig_inWDATA[3] = Sig[3:3];
-	assign Inputs_Sig_inWDATA[2] = Sig[2:2];
-	assign Inputs_Sig_inWDATA[1] = Sig[1:1];
-	assign Inputs_Sig_inWDATA[0] = Sig[0:0];
-	assign AXI4InSignalArrayBufferModule_L85F34T71_Resize = {
-		{31{1'b0}},
-		State_buffer[rAddr]
-	}
-	;
-	assign axiInData = AXI4InSignalArrayBufferModule_L85F34T71_Resize;
-	assign AXI4InSignalArrayBufferModule_L84F30T101_Index = AXI4InSignalArrayBufferModule_L84F46T82_Expr[1:0];
-	assign rAddr = AXI4InSignalArrayBufferModule_L84F30T101_Index;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[0] = AXI4InSignalArrayBufferModule_L75F29T33_Expr;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[1] = AXI4InSignalArrayBufferModule_L77F29T34_Expr;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[2] = AXI4InSignalArrayBufferModule_L79F28T33_Expr;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[34:3] = axiInData;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[35] = AXI4InSignalArrayBufferModule_L76F28T32_Expr;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[36] = AXI4InSignalArrayBufferModule_L78F28T33_Expr;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[44:37] = Inputs_M2S_R_AR_ARID;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[76:45] = Inputs_M2S_R_AR_ARADDR;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[84:77] = Inputs_M2S_R_AR_ARLEN;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[87:85] = Inputs_M2S_R_AR_ARSIZE;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[89:88] = Inputs_M2S_R_AR_ARBURST;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[91:90] = Inputs_M2S_R_AR_ARLOCK;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[95:92] = Inputs_M2S_R_AR_ARCACHE;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[98:96] = Inputs_M2S_R_AR_ARPROT;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[102:99] = Inputs_M2S_R_AR_ARQOS;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[110:103] = Inputs_M2S_R_AR_ARREGION;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[118:111] = Inputs_M2S_R_AR_ARUSER;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[119] = Inputs_M2S_R_AR_ARVALID;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[120] = Inputs_M2S_R_R_RREADY;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[128:121] = Inputs_M2S_W_AW_AWID;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[160:129] = Inputs_M2S_W_AW_AWADDR;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[168:161] = Inputs_M2S_W_AW_AWLEN;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[171:169] = Inputs_M2S_W_AW_AWSIZE;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[173:172] = Inputs_M2S_W_AW_AWBURST;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[175:174] = Inputs_M2S_W_AW_AWLOCK;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[179:176] = Inputs_M2S_W_AW_AWCACHE;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[182:180] = Inputs_M2S_W_AW_AWPROT;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[186:183] = Inputs_M2S_W_AW_AWQOS;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[194:187] = Inputs_M2S_W_AW_AWREGION;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[202:195] = Inputs_M2S_W_AW_AWUSER;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[203] = Inputs_M2S_W_AW_AWVALID;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[211:204] = Inputs_M2S_W_W_WID;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[243:212] = {
-		Inputs_M2S_W_W_WDATA[3],
-		Inputs_M2S_W_W_WDATA[2],
-		Inputs_M2S_W_W_WDATA[1],
-		Inputs_M2S_W_W_WDATA[0]
-	}
-	;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[247:244] = Inputs_M2S_W_W_WSTRB;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[248] = Inputs_M2S_W_W_WLAST;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[256:249] = Inputs_M2S_W_W_WUSER;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[257] = Inputs_M2S_W_W_WVALID;
-	assign AXI4InSignalArrayBufferModule_L72F37L81T14_Object[258] = Inputs_M2S_W_B_BREADY;
-	assign axiSlave_M2S = AXI4InSignalArrayBufferModule_L72F37L81T14_Object[258:37];
-	assign axiSlave_inWREADY = AXI4InSignalArrayBufferModule_L72F37L81T14_Object[36];
-	assign axiSlave_inRVALID = AXI4InSignalArrayBufferModule_L72F37L81T14_Object[35];
-	assign axiSlave_inRDATA[3] = AXI4InSignalArrayBufferModule_L72F37L81T14_Object[34:27];
-	assign axiSlave_inRDATA[2] = AXI4InSignalArrayBufferModule_L72F37L81T14_Object[26:19];
-	assign axiSlave_inRDATA[1] = AXI4InSignalArrayBufferModule_L72F37L81T14_Object[18:11];
-	assign axiSlave_inRDATA[0] = AXI4InSignalArrayBufferModule_L72F37L81T14_Object[10:3];
-	assign axiSlave_inBVALID = AXI4InSignalArrayBufferModule_L72F37L81T14_Object[2];
-	assign axiSlave_inAWREADY = AXI4InSignalArrayBufferModule_L72F37L81T14_Object[1];
-	assign axiSlave_inARREADY = AXI4InSignalArrayBufferModule_L72F37L81T14_Object[0];
-	assign outBuffer0 = State_buffer[0];
-	assign outBuffer1 = State_buffer[1];
-	assign outBuffer2 = State_buffer[2];
-	assign outBuffer3 = State_buffer[3];
-	assign S2M = axiSlave_S2M;
+	assign Inputs_M2S = M2S;
+	assign Inputs_Sig = Sig;
 	assign axiSlave_inARREADY_axiSlave_inARREADY_HardLink = axiSlave_inARREADY;
 	assign axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink = axiSlave_inAWREADY;
 	assign axiSlave_inBVALID_axiSlave_inBVALID_HardLink = axiSlave_inBVALID;

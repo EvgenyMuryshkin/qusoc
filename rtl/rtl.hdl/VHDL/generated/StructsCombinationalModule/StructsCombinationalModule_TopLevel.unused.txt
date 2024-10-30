@@ -1,0 +1,7 @@
+No reads:
+	Inputs_In
+	internalDirect
+	internalSum
+No writes:
+	internalDirect
+	internalSum

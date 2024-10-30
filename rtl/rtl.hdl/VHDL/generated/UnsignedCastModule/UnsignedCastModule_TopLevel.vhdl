@@ -44,31 +44,10 @@ architecture rtl of UnsignedCastModule_TopLevel is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	signal Inputs_UShortValue : unsigned(15 downto 0) := (others => '0');
-	signal UnsignedCastModule_L13F34T58_Cast : unsigned(7 downto 0) := (others => '0');
-	signal UnsignedCastModule_L14F36T61_Cast : signed(7 downto 0) := (others => '0');
-	signal UnsignedCastModule_L15F36T61_Cast : signed(15 downto 0) := (others => '0');
-	signal UnsignedCastModule_L17F34T58_Cast : unsigned(31 downto 0) := (others => '0');
 begin
-	process (Inputs_UShortValue, UnsignedCastModule_L13F34T58_Cast, UnsignedCastModule_L14F36T61_Cast, UnsignedCastModule_L15F36T61_Cast, UnsignedCastModule_L17F34T58_Cast, UShortValue)
+	process (UShortValue)
 	begin
 		Inputs_UShortValue <= UShortValue;
-		UnsignedCastModule_L13F34T58_Cast <= Inputs_UShortValue(7 downto 0);
-		ByteValue <= UnsignedCastModule_L13F34T58_Cast;
-		IntValue(31 downto 16) <= (
-			others => '0'
-		)
-		;
-		IntValue(15 downto 0) <= signed(Inputs_UShortValue);
-		UnsignedCastModule_L14F36T61_Cast <= signed(Inputs_UShortValue(7 downto 0));
-		SByteValue <= UnsignedCastModule_L14F36T61_Cast;
-		UnsignedCastModule_L15F36T61_Cast <= signed(Inputs_UShortValue);
-		ShortValue <= UnsignedCastModule_L15F36T61_Cast;
-		UnsignedCastModule_L17F34T58_Cast(31 downto 16) <= (
-			others => '0'
-		)
-		;
-		UnsignedCastModule_L17F34T58_Cast(15 downto 0) <= Inputs_UShortValue;
-		UIntValue <= UnsignedCastModule_L17F34T58_Cast;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

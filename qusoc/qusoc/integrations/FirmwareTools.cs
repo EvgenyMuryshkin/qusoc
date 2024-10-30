@@ -264,6 +264,7 @@ namespace QuSoC
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
                     // run WSL
+                    /*
                     var root = Path.GetPathRoot(FirmwareFolder);
                     var relativePath = Path.GetRelativePath(root, FirmwareFolder);
                     root = root.Replace(":", "").Replace("\\", "/").ToLower();
@@ -278,6 +279,7 @@ namespace QuSoC
 
                     if (wslOutput != "")
                         throw new Exception(wslOutput);
+                    */
 
                     // fallback to run docker
                     var context = RISCVIntegration

@@ -63,20 +63,6 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect
 	wire false = 1'b0;
 	wire signed [2: 0] mCount = 3'b010;
 	wire signed [4: 0] sCount = 5'b01010;
-	wire [697: 0] AXI4InteconnectModule_L54F17L58T18_Object;
-	wire [485: 0] AXI4InteconnectModule_L62F17L66T18_Object;
-	wire [221: 0] AXI4InteconnectModule_L79F35L86T24_0_AXI4InteconnectModule_L81F17L85T18_Object;
-	wire [221: 0] AXI4InteconnectModule_L79F35L86T24_1_AXI4InteconnectModule_L81F17L85T18_Object;
-	wire [221: 0] AXI4InteconnectModule_L79F35L86T24_2_AXI4InteconnectModule_L81F17L85T18_Object;
-	wire [221: 0] AXI4InteconnectModule_L79F35L86T24_3_AXI4InteconnectModule_L81F17L85T18_Object;
-	wire [221: 0] AXI4InteconnectModule_L79F35L86T24_4_AXI4InteconnectModule_L81F17L85T18_Object;
-	wire [221: 0] AXI4InteconnectModule_L79F35L86T24_5_AXI4InteconnectModule_L81F17L85T18_Object;
-	wire [221: 0] AXI4InteconnectModule_L79F35L86T24_6_AXI4InteconnectModule_L81F17L85T18_Object;
-	wire [221: 0] AXI4InteconnectModule_L79F35L86T24_7_AXI4InteconnectModule_L81F17L85T18_Object;
-	wire [221: 0] AXI4InteconnectModule_L79F35L86T24_8_AXI4InteconnectModule_L81F17L85T18_Object;
-	wire [221: 0] AXI4InteconnectModule_L79F35L86T24_9_AXI4InteconnectModule_L81F17L85T18_Object;
-	wire [73: 0] AXI4InteconnectModule_L70F35L77T24_0_AXI4InteconnectModule_L72F17L76T18_Object;
-	wire [73: 0] AXI4InteconnectModule_L70F35L77T24_1_AXI4InteconnectModule_L72F17L76T18_Object;
 	wire [83: 0] readInterconnect_iLeft0_readInterconnect_iLeft_HardLink;
 	wire [83: 0] readInterconnect_iLeft1_readInterconnect_iLeft_HardLink;
 	wire [52: 0] readInterconnect_iRight0_readInterconnect_iRight_HardLink;
@@ -127,20 +113,14 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect
 	wire [20: 0] writeInterconnect_S2M1_writeInterconnect_S2M_HardLink;
 	wire [221 : 0] Inputs_iM2S [0 : 1];
 	wire [73 : 0] Inputs_iS2M [0 : 9];
-	wire [83 : 0] readInterconnect_iLeft [0 : 1];
-	wire [52 : 0] readInterconnect_iRight [0 : 9];
+	reg [83 : 0] readInterconnect_iLeft [0 : 1];
+	reg [52 : 0] readInterconnect_iRight [0 : 9];
 	wire [83 : 0] readInterconnect_M2S [0 : 9];
 	wire [52 : 0] readInterconnect_S2M [0 : 1];
-	wire [137 : 0] writeInterconnect_iLeft [0 : 1];
-	wire [20 : 0] writeInterconnect_iRight [0 : 9];
+	reg [137 : 0] writeInterconnect_iLeft [0 : 1];
+	reg [20 : 0] writeInterconnect_iRight [0 : 9];
 	wire [137 : 0] writeInterconnect_M2S [0 : 9];
 	wire [20 : 0] writeInterconnect_S2M [0 : 1];
-	wire [83 : 0] AXI4InteconnectModule_L56F29T67_Enumerable [0 : 1];
-	wire [52 : 0] AXI4InteconnectModule_L57F30T68_Enumerable [0 : 9];
-	wire [137 : 0] AXI4InteconnectModule_L64F29T67_Enumerable [0 : 1];
-	wire [20 : 0] AXI4InteconnectModule_L65F30T68_Enumerable [0 : 9];
-	wire [221 : 0] AXI4InteconnectModule_L79F35L86T24_Enumerable [0 : 9];
-	wire [73 : 0] AXI4InteconnectModule_L70F35L77T24_Enumerable [0 : 1];
 	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	AXISoCQuadCoreModule_TopLevel_ioInterconnect_readInterconnect
 	(
@@ -223,138 +203,6 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect
 	assign Inputs_iS2M[7] = iS2M7;
 	assign Inputs_iS2M[8] = iS2M8;
 	assign Inputs_iS2M[9] = iS2M9;
-	assign AXI4InteconnectModule_L56F29T67_Enumerable[0] = Inputs_iM2S[0][83:0];
-	assign AXI4InteconnectModule_L56F29T67_Enumerable[1] = Inputs_iM2S[1][83:0];
-	assign AXI4InteconnectModule_L54F17L58T18_Object[167:0] = {
-		AXI4InteconnectModule_L56F29T67_Enumerable[1],
-		AXI4InteconnectModule_L56F29T67_Enumerable[0]
-	}
-	;
-	assign AXI4InteconnectModule_L57F30T68_Enumerable[0] = Inputs_iS2M[0][52:0];
-	assign AXI4InteconnectModule_L57F30T68_Enumerable[1] = Inputs_iS2M[1][52:0];
-	assign AXI4InteconnectModule_L57F30T68_Enumerable[2] = Inputs_iS2M[2][52:0];
-	assign AXI4InteconnectModule_L57F30T68_Enumerable[3] = Inputs_iS2M[3][52:0];
-	assign AXI4InteconnectModule_L57F30T68_Enumerable[4] = Inputs_iS2M[4][52:0];
-	assign AXI4InteconnectModule_L57F30T68_Enumerable[5] = Inputs_iS2M[5][52:0];
-	assign AXI4InteconnectModule_L57F30T68_Enumerable[6] = Inputs_iS2M[6][52:0];
-	assign AXI4InteconnectModule_L57F30T68_Enumerable[7] = Inputs_iS2M[7][52:0];
-	assign AXI4InteconnectModule_L57F30T68_Enumerable[8] = Inputs_iS2M[8][52:0];
-	assign AXI4InteconnectModule_L57F30T68_Enumerable[9] = Inputs_iS2M[9][52:0];
-	assign AXI4InteconnectModule_L54F17L58T18_Object[697:168] = {
-		AXI4InteconnectModule_L57F30T68_Enumerable[9],
-		AXI4InteconnectModule_L57F30T68_Enumerable[8],
-		AXI4InteconnectModule_L57F30T68_Enumerable[7],
-		AXI4InteconnectModule_L57F30T68_Enumerable[6],
-		AXI4InteconnectModule_L57F30T68_Enumerable[5],
-		AXI4InteconnectModule_L57F30T68_Enumerable[4],
-		AXI4InteconnectModule_L57F30T68_Enumerable[3],
-		AXI4InteconnectModule_L57F30T68_Enumerable[2],
-		AXI4InteconnectModule_L57F30T68_Enumerable[1],
-		AXI4InteconnectModule_L57F30T68_Enumerable[0]
-	}
-	;
-	assign readInterconnect_iRight[9] = AXI4InteconnectModule_L54F17L58T18_Object[697:645];
-	assign readInterconnect_iRight[8] = AXI4InteconnectModule_L54F17L58T18_Object[644:592];
-	assign readInterconnect_iRight[7] = AXI4InteconnectModule_L54F17L58T18_Object[591:539];
-	assign readInterconnect_iRight[6] = AXI4InteconnectModule_L54F17L58T18_Object[538:486];
-	assign readInterconnect_iRight[5] = AXI4InteconnectModule_L54F17L58T18_Object[485:433];
-	assign readInterconnect_iRight[4] = AXI4InteconnectModule_L54F17L58T18_Object[432:380];
-	assign readInterconnect_iRight[3] = AXI4InteconnectModule_L54F17L58T18_Object[379:327];
-	assign readInterconnect_iRight[2] = AXI4InteconnectModule_L54F17L58T18_Object[326:274];
-	assign readInterconnect_iRight[1] = AXI4InteconnectModule_L54F17L58T18_Object[273:221];
-	assign readInterconnect_iRight[0] = AXI4InteconnectModule_L54F17L58T18_Object[220:168];
-	assign readInterconnect_iLeft[1] = AXI4InteconnectModule_L54F17L58T18_Object[167:84];
-	assign readInterconnect_iLeft[0] = AXI4InteconnectModule_L54F17L58T18_Object[83:0];
-	assign AXI4InteconnectModule_L64F29T67_Enumerable[0] = Inputs_iM2S[0][221:84];
-	assign AXI4InteconnectModule_L64F29T67_Enumerable[1] = Inputs_iM2S[1][221:84];
-	assign AXI4InteconnectModule_L62F17L66T18_Object[275:0] = {
-		AXI4InteconnectModule_L64F29T67_Enumerable[1],
-		AXI4InteconnectModule_L64F29T67_Enumerable[0]
-	}
-	;
-	assign AXI4InteconnectModule_L65F30T68_Enumerable[0] = Inputs_iS2M[0][73:53];
-	assign AXI4InteconnectModule_L65F30T68_Enumerable[1] = Inputs_iS2M[1][73:53];
-	assign AXI4InteconnectModule_L65F30T68_Enumerable[2] = Inputs_iS2M[2][73:53];
-	assign AXI4InteconnectModule_L65F30T68_Enumerable[3] = Inputs_iS2M[3][73:53];
-	assign AXI4InteconnectModule_L65F30T68_Enumerable[4] = Inputs_iS2M[4][73:53];
-	assign AXI4InteconnectModule_L65F30T68_Enumerable[5] = Inputs_iS2M[5][73:53];
-	assign AXI4InteconnectModule_L65F30T68_Enumerable[6] = Inputs_iS2M[6][73:53];
-	assign AXI4InteconnectModule_L65F30T68_Enumerable[7] = Inputs_iS2M[7][73:53];
-	assign AXI4InteconnectModule_L65F30T68_Enumerable[8] = Inputs_iS2M[8][73:53];
-	assign AXI4InteconnectModule_L65F30T68_Enumerable[9] = Inputs_iS2M[9][73:53];
-	assign AXI4InteconnectModule_L62F17L66T18_Object[485:276] = {
-		AXI4InteconnectModule_L65F30T68_Enumerable[9],
-		AXI4InteconnectModule_L65F30T68_Enumerable[8],
-		AXI4InteconnectModule_L65F30T68_Enumerable[7],
-		AXI4InteconnectModule_L65F30T68_Enumerable[6],
-		AXI4InteconnectModule_L65F30T68_Enumerable[5],
-		AXI4InteconnectModule_L65F30T68_Enumerable[4],
-		AXI4InteconnectModule_L65F30T68_Enumerable[3],
-		AXI4InteconnectModule_L65F30T68_Enumerable[2],
-		AXI4InteconnectModule_L65F30T68_Enumerable[1],
-		AXI4InteconnectModule_L65F30T68_Enumerable[0]
-	}
-	;
-	assign writeInterconnect_iRight[9] = AXI4InteconnectModule_L62F17L66T18_Object[485:465];
-	assign writeInterconnect_iRight[8] = AXI4InteconnectModule_L62F17L66T18_Object[464:444];
-	assign writeInterconnect_iRight[7] = AXI4InteconnectModule_L62F17L66T18_Object[443:423];
-	assign writeInterconnect_iRight[6] = AXI4InteconnectModule_L62F17L66T18_Object[422:402];
-	assign writeInterconnect_iRight[5] = AXI4InteconnectModule_L62F17L66T18_Object[401:381];
-	assign writeInterconnect_iRight[4] = AXI4InteconnectModule_L62F17L66T18_Object[380:360];
-	assign writeInterconnect_iRight[3] = AXI4InteconnectModule_L62F17L66T18_Object[359:339];
-	assign writeInterconnect_iRight[2] = AXI4InteconnectModule_L62F17L66T18_Object[338:318];
-	assign writeInterconnect_iRight[1] = AXI4InteconnectModule_L62F17L66T18_Object[317:297];
-	assign writeInterconnect_iRight[0] = AXI4InteconnectModule_L62F17L66T18_Object[296:276];
-	assign writeInterconnect_iLeft[1] = AXI4InteconnectModule_L62F17L66T18_Object[275:138];
-	assign writeInterconnect_iLeft[0] = AXI4InteconnectModule_L62F17L66T18_Object[137:0];
-	assign AXI4InteconnectModule_L79F35L86T24_0_AXI4InteconnectModule_L81F17L85T18_Object[83:0] = readInterconnect_M2S[0];
-	assign AXI4InteconnectModule_L79F35L86T24_0_AXI4InteconnectModule_L81F17L85T18_Object[221:84] = writeInterconnect_M2S[0];
-	assign AXI4InteconnectModule_L79F35L86T24_1_AXI4InteconnectModule_L81F17L85T18_Object[83:0] = readInterconnect_M2S[1];
-	assign AXI4InteconnectModule_L79F35L86T24_1_AXI4InteconnectModule_L81F17L85T18_Object[221:84] = writeInterconnect_M2S[1];
-	assign AXI4InteconnectModule_L79F35L86T24_2_AXI4InteconnectModule_L81F17L85T18_Object[83:0] = readInterconnect_M2S[2];
-	assign AXI4InteconnectModule_L79F35L86T24_2_AXI4InteconnectModule_L81F17L85T18_Object[221:84] = writeInterconnect_M2S[2];
-	assign AXI4InteconnectModule_L79F35L86T24_3_AXI4InteconnectModule_L81F17L85T18_Object[83:0] = readInterconnect_M2S[3];
-	assign AXI4InteconnectModule_L79F35L86T24_3_AXI4InteconnectModule_L81F17L85T18_Object[221:84] = writeInterconnect_M2S[3];
-	assign AXI4InteconnectModule_L79F35L86T24_4_AXI4InteconnectModule_L81F17L85T18_Object[83:0] = readInterconnect_M2S[4];
-	assign AXI4InteconnectModule_L79F35L86T24_4_AXI4InteconnectModule_L81F17L85T18_Object[221:84] = writeInterconnect_M2S[4];
-	assign AXI4InteconnectModule_L79F35L86T24_5_AXI4InteconnectModule_L81F17L85T18_Object[83:0] = readInterconnect_M2S[5];
-	assign AXI4InteconnectModule_L79F35L86T24_5_AXI4InteconnectModule_L81F17L85T18_Object[221:84] = writeInterconnect_M2S[5];
-	assign AXI4InteconnectModule_L79F35L86T24_6_AXI4InteconnectModule_L81F17L85T18_Object[83:0] = readInterconnect_M2S[6];
-	assign AXI4InteconnectModule_L79F35L86T24_6_AXI4InteconnectModule_L81F17L85T18_Object[221:84] = writeInterconnect_M2S[6];
-	assign AXI4InteconnectModule_L79F35L86T24_7_AXI4InteconnectModule_L81F17L85T18_Object[83:0] = readInterconnect_M2S[7];
-	assign AXI4InteconnectModule_L79F35L86T24_7_AXI4InteconnectModule_L81F17L85T18_Object[221:84] = writeInterconnect_M2S[7];
-	assign AXI4InteconnectModule_L79F35L86T24_8_AXI4InteconnectModule_L81F17L85T18_Object[83:0] = readInterconnect_M2S[8];
-	assign AXI4InteconnectModule_L79F35L86T24_8_AXI4InteconnectModule_L81F17L85T18_Object[221:84] = writeInterconnect_M2S[8];
-	assign AXI4InteconnectModule_L79F35L86T24_9_AXI4InteconnectModule_L81F17L85T18_Object[83:0] = readInterconnect_M2S[9];
-	assign AXI4InteconnectModule_L79F35L86T24_9_AXI4InteconnectModule_L81F17L85T18_Object[221:84] = writeInterconnect_M2S[9];
-	assign AXI4InteconnectModule_L79F35L86T24_Enumerable[0] = AXI4InteconnectModule_L79F35L86T24_0_AXI4InteconnectModule_L81F17L85T18_Object;
-	assign AXI4InteconnectModule_L79F35L86T24_Enumerable[1] = AXI4InteconnectModule_L79F35L86T24_1_AXI4InteconnectModule_L81F17L85T18_Object;
-	assign AXI4InteconnectModule_L79F35L86T24_Enumerable[2] = AXI4InteconnectModule_L79F35L86T24_2_AXI4InteconnectModule_L81F17L85T18_Object;
-	assign AXI4InteconnectModule_L79F35L86T24_Enumerable[3] = AXI4InteconnectModule_L79F35L86T24_3_AXI4InteconnectModule_L81F17L85T18_Object;
-	assign AXI4InteconnectModule_L79F35L86T24_Enumerable[4] = AXI4InteconnectModule_L79F35L86T24_4_AXI4InteconnectModule_L81F17L85T18_Object;
-	assign AXI4InteconnectModule_L79F35L86T24_Enumerable[5] = AXI4InteconnectModule_L79F35L86T24_5_AXI4InteconnectModule_L81F17L85T18_Object;
-	assign AXI4InteconnectModule_L79F35L86T24_Enumerable[6] = AXI4InteconnectModule_L79F35L86T24_6_AXI4InteconnectModule_L81F17L85T18_Object;
-	assign AXI4InteconnectModule_L79F35L86T24_Enumerable[7] = AXI4InteconnectModule_L79F35L86T24_7_AXI4InteconnectModule_L81F17L85T18_Object;
-	assign AXI4InteconnectModule_L79F35L86T24_Enumerable[8] = AXI4InteconnectModule_L79F35L86T24_8_AXI4InteconnectModule_L81F17L85T18_Object;
-	assign AXI4InteconnectModule_L79F35L86T24_Enumerable[9] = AXI4InteconnectModule_L79F35L86T24_9_AXI4InteconnectModule_L81F17L85T18_Object;
-	assign oM2S0 = AXI4InteconnectModule_L79F35L86T24_Enumerable[0];
-	assign oM2S1 = AXI4InteconnectModule_L79F35L86T24_Enumerable[1];
-	assign oM2S2 = AXI4InteconnectModule_L79F35L86T24_Enumerable[2];
-	assign oM2S3 = AXI4InteconnectModule_L79F35L86T24_Enumerable[3];
-	assign oM2S4 = AXI4InteconnectModule_L79F35L86T24_Enumerable[4];
-	assign oM2S5 = AXI4InteconnectModule_L79F35L86T24_Enumerable[5];
-	assign oM2S6 = AXI4InteconnectModule_L79F35L86T24_Enumerable[6];
-	assign oM2S7 = AXI4InteconnectModule_L79F35L86T24_Enumerable[7];
-	assign oM2S8 = AXI4InteconnectModule_L79F35L86T24_Enumerable[8];
-	assign oM2S9 = AXI4InteconnectModule_L79F35L86T24_Enumerable[9];
-	assign AXI4InteconnectModule_L70F35L77T24_0_AXI4InteconnectModule_L72F17L76T18_Object[52:0] = readInterconnect_S2M[0];
-	assign AXI4InteconnectModule_L70F35L77T24_0_AXI4InteconnectModule_L72F17L76T18_Object[73:53] = writeInterconnect_S2M[0];
-	assign AXI4InteconnectModule_L70F35L77T24_1_AXI4InteconnectModule_L72F17L76T18_Object[52:0] = readInterconnect_S2M[1];
-	assign AXI4InteconnectModule_L70F35L77T24_1_AXI4InteconnectModule_L72F17L76T18_Object[73:53] = writeInterconnect_S2M[1];
-	assign AXI4InteconnectModule_L70F35L77T24_Enumerable[0] = AXI4InteconnectModule_L70F35L77T24_0_AXI4InteconnectModule_L72F17L76T18_Object;
-	assign AXI4InteconnectModule_L70F35L77T24_Enumerable[1] = AXI4InteconnectModule_L70F35L77T24_1_AXI4InteconnectModule_L72F17L76T18_Object;
-	assign oS2M0 = AXI4InteconnectModule_L70F35L77T24_Enumerable[0];
-	assign oS2M1 = AXI4InteconnectModule_L70F35L77T24_Enumerable[1];
 	assign readInterconnect_iLeft0_readInterconnect_iLeft_HardLink = readInterconnect_iLeft[0];
 	assign readInterconnect_iLeft1_readInterconnect_iLeft_HardLink = readInterconnect_iLeft[1];
 	assign readInterconnect_iRight0_readInterconnect_iRight_HardLink = readInterconnect_iRight[0];

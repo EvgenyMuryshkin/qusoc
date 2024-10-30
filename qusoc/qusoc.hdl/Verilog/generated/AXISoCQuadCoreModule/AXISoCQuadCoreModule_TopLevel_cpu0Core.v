@@ -28,9 +28,9 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Core
 	input wire BoardSignals_Running,
 	input wire BoardSignals_Starting,
 	input wire BoardSignals_Started,
+	input wire [221:0] iCPUM2S,
 	input wire iExtReset,
-	input wire [221:0] iM2S0,
-	input wire [221:0] iM2S1,
+	input wire [221:0] iProgrammerM2S,
 	input wire [73:0] iS2M0,
 	input wire [73:0] iS2M1,
 	input wire [73:0] iS2M2,
@@ -50,8 +50,9 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Core
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
+	wire [221: 0] Inputs_iCPUM2S;
 	wire Inputs_iExtReset;
-	wire [739: 0] AXISoCCoreModule_L106F45L120T14_Object;
+	wire [221: 0] Inputs_iProgrammerM2S;
 	wire [221: 0] cpu0Interconnect_iM2S0_cpu0Interconnect_iM2S_HardLink;
 	wire [221: 0] cpu0Interconnect_iM2S1_cpu0Interconnect_iM2S_HardLink;
 	wire [73: 0] cpu0Interconnect_iS2M0_cpu0Interconnect_iS2M_HardLink;
@@ -64,10 +65,9 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Core
 	wire [221: 0] cpu0Interconnect_oM2S3_cpu0Interconnect_oM2S_HardLink;
 	wire [73: 0] cpu0Interconnect_oS2M0_cpu0Interconnect_oS2M_HardLink;
 	wire [73: 0] cpu0Interconnect_oS2M1_cpu0Interconnect_oS2M_HardLink;
-	wire [221 : 0] Inputs_iM2S [0 : 1];
 	wire [73 : 0] Inputs_iS2M [0 : 3];
-	wire [221 : 0] cpu0Interconnect_iM2S [0 : 1];
-	wire [73 : 0] cpu0Interconnect_iS2M [0 : 3];
+	reg [221 : 0] cpu0Interconnect_iM2S [0 : 1];
+	reg [73 : 0] cpu0Interconnect_iS2M [0 : 3];
 	wire [221 : 0] cpu0Interconnect_oM2S [0 : 3];
 	wire [73 : 0] cpu0Interconnect_oS2M [0 : 1];
 	AXISoCQuadCoreModule_TopLevel_cpu0Core_cpu0Interconnect
@@ -93,37 +93,13 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Core
 		.oS2M0 (cpu0Interconnect_oS2M0_cpu0Interconnect_oS2M_HardLink),
 		.oS2M1 (cpu0Interconnect_oS2M1_cpu0Interconnect_oS2M_HardLink)
 	);
+	assign Inputs_iCPUM2S = iCPUM2S;
 	assign Inputs_iExtReset = iExtReset;
-	assign Inputs_iM2S[0] = iM2S0;
-	assign Inputs_iM2S[1] = iM2S1;
+	assign Inputs_iProgrammerM2S = iProgrammerM2S;
 	assign Inputs_iS2M[0] = iS2M0;
 	assign Inputs_iS2M[1] = iS2M1;
 	assign Inputs_iS2M[2] = iS2M2;
 	assign Inputs_iS2M[3] = iS2M3;
-	assign AXISoCCoreModule_L106F45L120T14_Object[443:0] = {
-		Inputs_iM2S[1],
-		Inputs_iM2S[0]
-	}
-	;
-	assign AXISoCCoreModule_L106F45L120T14_Object[739:444] = {
-		Inputs_iS2M[3],
-		Inputs_iS2M[2],
-		Inputs_iS2M[1],
-		Inputs_iS2M[0]
-	}
-	;
-	assign cpu0Interconnect_iS2M[3] = AXISoCCoreModule_L106F45L120T14_Object[739:666];
-	assign cpu0Interconnect_iS2M[2] = AXISoCCoreModule_L106F45L120T14_Object[665:592];
-	assign cpu0Interconnect_iS2M[1] = AXISoCCoreModule_L106F45L120T14_Object[591:518];
-	assign cpu0Interconnect_iS2M[0] = AXISoCCoreModule_L106F45L120T14_Object[517:444];
-	assign cpu0Interconnect_iM2S[1] = AXISoCCoreModule_L106F45L120T14_Object[443:222];
-	assign cpu0Interconnect_iM2S[0] = AXISoCCoreModule_L106F45L120T14_Object[221:0];
-	assign oM2S0 = cpu0Interconnect_oM2S[0];
-	assign oM2S1 = cpu0Interconnect_oM2S[1];
-	assign oM2S2 = cpu0Interconnect_oM2S[2];
-	assign oM2S3 = cpu0Interconnect_oM2S[3];
-	assign oS2M0 = cpu0Interconnect_oS2M[0];
-	assign oS2M1 = cpu0Interconnect_oS2M[1];
 	assign cpu0Interconnect_iM2S0_cpu0Interconnect_iM2S_HardLink = cpu0Interconnect_iM2S[0];
 	assign cpu0Interconnect_iM2S1_cpu0Interconnect_iM2S_HardLink = cpu0Interconnect_iM2S[1];
 	assign cpu0Interconnect_iS2M0_cpu0Interconnect_iS2M_HardLink = cpu0Interconnect_iS2M[0];

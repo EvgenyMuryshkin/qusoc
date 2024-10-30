@@ -41,10 +41,9 @@ architecture rtl of IOSingleBitMemoryCompositionModule_2_TopLevel_children1 is
 	-- false is a reserved name, declaration skipped
 	signal Inputs_iValue : std_logic := '0';
 begin
-	process (Inputs_iValue, iValue)
+	process (iValue)
 	begin
 		Inputs_iValue <= iValue;
-		oValue <= Inputs_iValue;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

@@ -38,10 +38,10 @@ module BoardTimerModule_TopLevel
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire Inputs_Restart;
-	wire nestedTimerInputs_Restart;
-	wire timerModule10_Restart;
+	reg [0: 0] nestedTimerInputs;
+	reg timerModule10_Restart = 1'b0;
 	wire timerModule10_OutActive;
-	wire timerModule20_Restart;
+	reg timerModule20_Restart = 1'b0;
 	wire timerModule20_OutActive;
 	wire timerModule10_Restart_timerModule10_Restart_HardLink;
 	wire timerModule10_OutActive_timerModule10_OutActive_HardLink;
@@ -81,11 +81,6 @@ module BoardTimerModule_TopLevel
 		.OutActive (timerModule20_OutActive_timerModule20_OutActive_HardLink)
 	);
 	assign Inputs_Restart = Restart;
-	assign nestedTimerInputs_Restart = Inputs_Restart;
-	assign timerModule10_Restart = nestedTimerInputs_Restart;
-	assign timerModule20_Restart = nestedTimerInputs_Restart;
-	assign OutActive10 = timerModule10_OutActive;
-	assign OutActive20 = timerModule20_OutActive;
 	assign timerModule10_Restart_timerModule10_Restart_HardLink = timerModule10_Restart;
 	assign timerModule10_OutActive = timerModule10_OutActive_timerModule10_OutActive_HardLink;
 	assign timerModule20_Restart_timerModule20_Restart_HardLink = timerModule20_Restart;

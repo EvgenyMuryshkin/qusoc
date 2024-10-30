@@ -570,6 +570,19 @@ namespace RTL.Modules
             iteration(empty, false, 3, true); // result at stage 4, third case
             iteration(empty, false, 0, false); // result at stage 4, empty
         }
+
+        [TestMethod]
+        public void StructCompositionParentModule()
+        {
+            var sim = new RTLSimulator<StructCompositionParentModule>();
+        }
+
+        [TestMethod]
+        public void StructsCombinationalModule()
+        {
+            var sim = new RTLSimulator<StructsCombinationalModule>();
+        }
+
     }
 }
 

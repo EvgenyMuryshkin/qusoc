@@ -1,2 +1,13 @@
 No reads:
 	decrementCounter
+	Inputs_iActive
+	Inputs_iDurationClocks
+	Inputs_iOnClock
+	State_clocksCounter
+	State_cycle
+	State_pwm
+No writes:
+	decrementCounter
+	NextState_clocksCounter
+	NextState_cycle
+	NextState_pwm

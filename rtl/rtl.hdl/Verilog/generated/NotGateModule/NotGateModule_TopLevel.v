@@ -35,12 +35,7 @@ module NotGateModule_TopLevel
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire Inputs_Input;
-	wire NotGateModule_L17F31T44_Expr;
-	wire NotGateModule_L17F31T44_Expr_1;
-	assign NotGateModule_L17F31T44_Expr = ~NotGateModule_L17F31T44_Expr_1;
-	assign NotGateModule_L17F31T44_Expr_1 = Inputs_Input;
 	assign Inputs_Input = Input;
-	assign Output = NotGateModule_L17F31T44_Expr;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

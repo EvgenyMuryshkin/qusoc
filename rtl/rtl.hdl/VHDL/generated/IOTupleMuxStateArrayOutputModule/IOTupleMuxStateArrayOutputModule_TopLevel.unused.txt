@@ -1,4 +1,9 @@
 No reads:
+	Inputs_Sel0
+	Inputs_Sel1
+	Inputs_Selector
+	State_Sel
 	State_SelDefault
 No writes:
+	NextState_Sel
 	State_SelArrayInit

@@ -37,12 +37,10 @@ module AXISoCQuadCoreModule_TopLevel_programmerIOGateway_writeAddress
 	wire false = 1'b0;
 	wire signed [6: 0] axiSize = 7'b0100000;
 	wire signed [1: 0] originalLowerBits = 2'b00;
-	wire AXI4GatewayAddressModule_L31F13T35_Expr = 1'b1;
 	wire [31: 0] Inputs_iMapAddress;
 	wire [31: 0] Inputs_iOriginalAddress;
 	assign Inputs_iMapAddress = iMapAddress;
 	assign Inputs_iOriginalAddress = iOriginalAddress;
-	assign oAddress = Inputs_iOriginalAddress;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

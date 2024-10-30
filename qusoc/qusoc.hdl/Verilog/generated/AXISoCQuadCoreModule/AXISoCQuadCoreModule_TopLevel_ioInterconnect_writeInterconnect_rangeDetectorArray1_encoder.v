@@ -47,52 +47,9 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetec
 	wire false = 1'b0;
 	wire signed [4: 0] inputWidth = 5'b01010;
 	wire signed [3: 0] resultWidth = 4'b0100;
-	wire AXI4EncoderModule_L31F46T51_Expr = 1'b0;
-	wire AXI4EncoderModule_L46F31T36_Expr = 1'b0;
-	wire [3: 0] internalEncoded;
-	wire internalHasActive;
-	wire [3: 0] AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize;
-	reg [3: 0] AXI4EncoderModule_L30F13L39T14_result;
-	integer idx;
-	wire [3: 0] AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T41_SignChange;
-	wire [3: 0] AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T62_Resize;
-	reg AXI4EncoderModule_L45F13L54T14_result;
-	integer idx1;
-	wire [9: 0] AXI4EncoderModule_L59F40T101_ShiftLeft;
-	wire [9: 0] AXI4EncoderModule_L59F40T121_Resize;
-	wire [9: 0] AXI4EncoderModule_L59F40T101_Expr;
-	wire [9: 0] AXI4EncoderModule_L59F40T101_Expr_1;
+	reg [3: 0] internalEncoded;
+	reg internalHasActive;
 	wire Inputs_iValues [0 : 9];
-	assign AXI4EncoderModule_L59F40T101_Expr = (AXI4EncoderModule_L59F40T101_Expr_1 << internalEncoded);
-	always @ (*)
-	begin
-		idx = 10;
-		AXI4EncoderModule_L30F13L39T14_result = AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize;
-		for (idx = 10; (idx > 0); idx = (idx - 1))
-		begin
-			if (Inputs_iValues[(idx - 1)])
-			begin
-				AXI4EncoderModule_L30F13L39T14_result = (idx - 1);
-			end
-		end
-	end
-	always @ (*)
-	begin
-		idx1 = 0;
-		AXI4EncoderModule_L45F13L54T14_result = AXI4EncoderModule_L46F31T36_Expr;
-		for (idx1 = 0; (idx1 < 10); idx1 = (idx1 + 1))
-		begin
-			if (Inputs_iValues[idx1])
-			begin
-				AXI4EncoderModule_L45F13L54T14_result = (AXI4EncoderModule_L45F13L54T14_result | Inputs_iValues[idx1]);
-			end
-		end
-	end
-	assign AXI4EncoderModule_L59F40T101_Expr_1 = {
-		{9{1'b0}},
-		internalHasActive
-	}
-	;
 	assign Inputs_iValues[0] = iValues0;
 	assign Inputs_iValues[1] = iValues1;
 	assign Inputs_iValues[2] = iValues2;
@@ -103,20 +60,6 @@ module AXISoCQuadCoreModule_TopLevel_ioInterconnect_writeInterconnect_rangeDetec
 	assign Inputs_iValues[7] = iValues7;
 	assign Inputs_iValues[8] = iValues8;
 	assign Inputs_iValues[9] = iValues9;
-	assign AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L31F30T73_Resize = {
-		{3{1'b0}},
-		AXI4EncoderModule_L31F46T51_Expr
-	}
-	;
-	assign AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T41_SignChange = AXI4EncoderModule_L30F13L39T14_result;
-	assign AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T62_Resize = AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T41_SignChange;
-	assign internalEncoded = AXI4EncoderModule_L30F13L39T14_AXI4EncoderModule_L38F24T62_Resize;
-	assign internalHasActive = AXI4EncoderModule_L45F13L54T14_result;
-	assign HasActive = internalHasActive;
-	assign MSBIndex = internalEncoded;
-	assign AXI4EncoderModule_L59F40T101_ShiftLeft = AXI4EncoderModule_L59F40T101_Expr;
-	assign AXI4EncoderModule_L59F40T121_Resize = AXI4EncoderModule_L59F40T101_ShiftLeft;
-	assign MSBValue = AXI4EncoderModule_L59F40T121_Resize;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

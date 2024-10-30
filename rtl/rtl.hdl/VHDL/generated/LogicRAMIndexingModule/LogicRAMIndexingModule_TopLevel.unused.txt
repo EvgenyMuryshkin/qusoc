@@ -1,0 +1,9 @@
+No reads:
+	Inputs_OpData
+	Inputs_ReadAddr
+	Inputs_WE
+	Inputs_WriteAddr
+	Inputs_WriteData
+	State_Buff
+No writes:
+	NextState_Buff

@@ -34,22 +34,8 @@ module StructCompositionParentModule_TopLevel_child
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [15: 0] Inputs_iValue_intValue;
-	wire [7: 0] Inputs_iValue_l1_byteValue;
-	wire [1: 0] Inputs_iValue_l1_l2_bitArray;
-	wire Inputs_iValue_l1_l2_boolValue [0 : 1];
-	wire [3 : 0] Inputs_iValue_l1_l2Array [0 : 1];
-	wire [19 : 0] Inputs_iValue_l1Array [0 : 1];
-	assign Inputs_iValue_l1Array[1] = iValue[75:56];
-	assign Inputs_iValue_l1Array[0] = iValue[55:36];
-	assign Inputs_iValue_l1_l2Array[1] = iValue[35:32];
-	assign Inputs_iValue_l1_l2Array[0] = iValue[31:28];
-	assign Inputs_iValue_l1_l2_boolValue[1] = iValue[27];
-	assign Inputs_iValue_l1_l2_boolValue[0] = iValue[26];
-	assign Inputs_iValue_l1_l2_bitArray = iValue[25:24];
-	assign Inputs_iValue_l1_byteValue = iValue[23:16];
-	assign Inputs_iValue_intValue = iValue[15:0];
-	assign Output[75:0] = iValue;
+	wire [75: 0] Inputs_iValue;
+	assign Inputs_iValue = iValue;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

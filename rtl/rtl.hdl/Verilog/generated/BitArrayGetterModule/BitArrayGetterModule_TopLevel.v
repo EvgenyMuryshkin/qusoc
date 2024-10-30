@@ -34,56 +34,8 @@ module BitArrayGetterModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [7: 0] BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L17F46T59_Expr = 8'b11111111;
-	wire [5: 0] BitArrayGetterModule_L19F36T38_Expr = 6'b110010;
-	wire [6: 0] BitArrayGetterModule_L21F41T44_Expr = 7'b1100100;
 	wire [7: 0] Inputs_Value;
-	reg [7: 0] BitArrayGetterModule_L16F13L25T14_result;
-	reg [7: 0] BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L20F30T38_Cast = 8'b00101010;
-	wire [7: 0] BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L22F30T70_Resize;
-	wire BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_Expr;
-	wire signed [8: 0] BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_ExprLhs;
-	wire signed [8: 0] BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_ExprRhs;
-	wire BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_Expr;
-	wire signed [8: 0] BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_ExprLhs;
-	wire signed [8: 0] BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_ExprRhs;
-	assign BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_Expr = BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_ExprLhs < BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_ExprRhs ? 1'b1 : 1'b0;
-	assign BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_Expr = BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_ExprLhs < BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_ExprRhs ? 1'b1 : 1'b0;
-	always @ (*)
-	begin
-		BitArrayGetterModule_L16F13L25T14_result = BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L17F46T59_Expr;
-		if ((BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_Expr == 1))
-		begin
-			BitArrayGetterModule_L16F13L25T14_result = BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L20F30T38_Cast;
-		end
-		else if ((BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_Expr == 1))
-		begin
-			BitArrayGetterModule_L16F13L25T14_result = BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L22F30T70_Resize;
-		end
-	end
-	assign BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_ExprLhs = {
-		1'b0,
-		Inputs_Value
-	}
-	;
-	assign BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L19F21T38_ExprRhs = {
-		{3{1'b0}},
-		BitArrayGetterModule_L19F36T38_Expr
-	}
-	;
-	assign BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_ExprLhs = {
-		1'b0,
-		Inputs_Value
-	}
-	;
-	assign BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L21F26T44_ExprRhs = {
-		{2{1'b0}},
-		BitArrayGetterModule_L21F41T44_Expr
-	}
-	;
 	assign Inputs_Value = Value;
-	assign BitArrayGetterModule_L16F13L25T14_BitArrayGetterModule_L22F30T70_Resize = Inputs_Value;
-	assign Getter = BitArrayGetterModule_L16F13L25T14_result;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

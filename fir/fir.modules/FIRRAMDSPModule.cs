@@ -42,6 +42,8 @@ namespace fir.modules
 
         protected override void OnSchedule(Func<FIRRAMDSPModuleInputs> inputsFactory)
         {
+            base.OnSchedule(inputsFactory);
+
             u_ram.Schedule(() => new FIRDecimatorRAMInputs()
             {
                 CE = true,

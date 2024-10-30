@@ -1,0 +1,914 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+
+/*
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+
+HEADER
+{
+	VERSION = 1;
+	TIME_UNIT = ns;
+	DATA_OFFSET = 0.0;
+	DATA_DURATION = 1000.0;
+	SIMULATION_TIME = 1000.0;
+	GRID_PHASE = 0.0;
+	GRID_PERIOD = 10.0;
+	GRID_DUTY_CYCLE = 50;
+}
+
+SIGNAL("boolValue")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("byteValue")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = BUS;
+	WIDTH = 8;
+	LSB_INDEX = 0;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("byteValue[7]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "byteValue";
+}
+
+SIGNAL("byteValue[6]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "byteValue";
+}
+
+SIGNAL("byteValue[5]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "byteValue";
+}
+
+SIGNAL("byteValue[4]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "byteValue";
+}
+
+SIGNAL("byteValue[3]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "byteValue";
+}
+
+SIGNAL("byteValue[2]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "byteValue";
+}
+
+SIGNAL("byteValue[1]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "byteValue";
+}
+
+SIGNAL("byteValue[0]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "byteValue";
+}
+
+SIGNAL("oValues0_boolValue")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("oValues0_byteValue")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = BUS;
+	WIDTH = 8;
+	LSB_INDEX = 0;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("oValues0_byteValue[7]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "oValues0_byteValue";
+}
+
+SIGNAL("oValues0_byteValue[6]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "oValues0_byteValue";
+}
+
+SIGNAL("oValues0_byteValue[5]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "oValues0_byteValue";
+}
+
+SIGNAL("oValues0_byteValue[4]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "oValues0_byteValue";
+}
+
+SIGNAL("oValues0_byteValue[3]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "oValues0_byteValue";
+}
+
+SIGNAL("oValues0_byteValue[2]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "oValues0_byteValue";
+}
+
+SIGNAL("oValues0_byteValue[1]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "oValues0_byteValue";
+}
+
+SIGNAL("oValues0_byteValue[0]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "oValues0_byteValue";
+}
+
+SIGNAL("oValues1_boolValue")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("oValues1_byteValue")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = BUS;
+	WIDTH = 8;
+	LSB_INDEX = 0;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("oValues1_byteValue[7]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "oValues1_byteValue";
+}
+
+SIGNAL("oValues1_byteValue[6]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "oValues1_byteValue";
+}
+
+SIGNAL("oValues1_byteValue[5]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "oValues1_byteValue";
+}
+
+SIGNAL("oValues1_byteValue[4]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "oValues1_byteValue";
+}
+
+SIGNAL("oValues1_byteValue[3]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "oValues1_byteValue";
+}
+
+SIGNAL("oValues1_byteValue[2]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "oValues1_byteValue";
+}
+
+SIGNAL("oValues1_byteValue[1]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "oValues1_byteValue";
+}
+
+SIGNAL("oValues1_byteValue[0]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "oValues1_byteValue";
+}
+
+TRANSITION_LIST("boolValue")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 100.0;
+		LEVEL 0 FOR 900.0;
+	}
+}
+
+TRANSITION_LIST("byteValue[7]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 100.0;
+		LEVEL 0 FOR 900.0;
+	}
+}
+
+TRANSITION_LIST("byteValue[6]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 100.0;
+		LEVEL 0 FOR 900.0;
+	}
+}
+
+TRANSITION_LIST("byteValue[5]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 100.0;
+		LEVEL 0 FOR 900.0;
+	}
+}
+
+TRANSITION_LIST("byteValue[4]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 100.0;
+		LEVEL 0 FOR 900.0;
+	}
+}
+
+TRANSITION_LIST("byteValue[3]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 100.0;
+		LEVEL 0 FOR 900.0;
+	}
+}
+
+TRANSITION_LIST("byteValue[2]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 100.0;
+		LEVEL 0 FOR 900.0;
+	}
+}
+
+TRANSITION_LIST("byteValue[1]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 100.0;
+		LEVEL 0 FOR 900.0;
+	}
+}
+
+TRANSITION_LIST("byteValue[0]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 100.0;
+		LEVEL 0 FOR 900.0;
+	}
+}
+
+TRANSITION_LIST("oValues0_boolValue")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 104.518;
+		LEVEL 0 FOR 895.482;
+	}
+}
+
+TRANSITION_LIST("oValues0_byteValue[7]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 108.523;
+		LEVEL 0 FOR 891.477;
+	}
+}
+
+TRANSITION_LIST("oValues0_byteValue[6]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 108.58;
+		LEVEL 0 FOR 891.42;
+	}
+}
+
+TRANSITION_LIST("oValues0_byteValue[5]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 108.514;
+		LEVEL 0 FOR 891.486;
+	}
+}
+
+TRANSITION_LIST("oValues0_byteValue[4]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 108.485;
+		LEVEL 0 FOR 891.515;
+	}
+}
+
+TRANSITION_LIST("oValues0_byteValue[3]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 108.458;
+		LEVEL 0 FOR 891.542;
+	}
+}
+
+TRANSITION_LIST("oValues0_byteValue[2]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 108.431;
+		LEVEL 0 FOR 891.569;
+	}
+}
+
+TRANSITION_LIST("oValues0_byteValue[1]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 108.518;
+		LEVEL 0 FOR 891.482;
+	}
+}
+
+TRANSITION_LIST("oValues0_byteValue[0]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 104.433;
+		LEVEL 0 FOR 895.567;
+	}
+}
+
+TRANSITION_LIST("oValues1_boolValue")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 104.548;
+		LEVEL 1 FOR 895.452;
+	}
+}
+
+TRANSITION_LIST("oValues1_byteValue[7]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 106.565;
+		LEVEL 1 FOR 2.747;
+		LEVEL 0 FOR 890.688;
+	}
+}
+
+TRANSITION_LIST("oValues1_byteValue[6]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 106.268;
+		LEVEL 1 FOR 3.092;
+		LEVEL 0 FOR 890.64;
+	}
+}
+
+TRANSITION_LIST("oValues1_byteValue[5]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 106.423;
+		LEVEL 1 FOR 2.92;
+		LEVEL 0 FOR 890.657;
+	}
+}
+
+TRANSITION_LIST("oValues1_byteValue[4]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 106.037;
+		LEVEL 1 FOR 4.583;
+		LEVEL 0 FOR 889.38;
+	}
+}
+
+TRANSITION_LIST("oValues1_byteValue[3]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 105.966;
+		LEVEL 1 FOR 3.349;
+		LEVEL 0 FOR 890.685;
+	}
+}
+
+TRANSITION_LIST("oValues1_byteValue[2]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 105.865;
+		LEVEL 1 FOR 3.699;
+		LEVEL 0 FOR 890.436;
+	}
+}
+
+TRANSITION_LIST("oValues1_byteValue[1]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 105.768;
+		LEVEL 1 FOR 4.114;
+		LEVEL 0 FOR 890.118;
+	}
+}
+
+TRANSITION_LIST("oValues1_byteValue[0]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 104.555;
+		LEVEL 1 FOR 895.445;
+	}
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "boolValue";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 0;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "byteValue";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 1;
+	TREE_LEVEL = 0;
+	CHILDREN = 2, 3, 4, 5, 6, 7, 8, 9;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "byteValue[7]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 2;
+	TREE_LEVEL = 1;
+	PARENT = 1;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "byteValue[6]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 3;
+	TREE_LEVEL = 1;
+	PARENT = 1;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "byteValue[5]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 4;
+	TREE_LEVEL = 1;
+	PARENT = 1;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "byteValue[4]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 5;
+	TREE_LEVEL = 1;
+	PARENT = 1;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "byteValue[3]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 6;
+	TREE_LEVEL = 1;
+	PARENT = 1;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "byteValue[2]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 7;
+	TREE_LEVEL = 1;
+	PARENT = 1;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "byteValue[1]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 8;
+	TREE_LEVEL = 1;
+	PARENT = 1;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "byteValue[0]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 9;
+	TREE_LEVEL = 1;
+	PARENT = 1;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "oValues0_boolValue";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 10;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "oValues0_byteValue";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 11;
+	TREE_LEVEL = 0;
+	CHILDREN = 12, 13, 14, 15, 16, 17, 18, 19;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "oValues0_byteValue[7]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 12;
+	TREE_LEVEL = 1;
+	PARENT = 11;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "oValues0_byteValue[6]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 13;
+	TREE_LEVEL = 1;
+	PARENT = 11;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "oValues0_byteValue[5]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 14;
+	TREE_LEVEL = 1;
+	PARENT = 11;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "oValues0_byteValue[4]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 15;
+	TREE_LEVEL = 1;
+	PARENT = 11;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "oValues0_byteValue[3]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 16;
+	TREE_LEVEL = 1;
+	PARENT = 11;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "oValues0_byteValue[2]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 17;
+	TREE_LEVEL = 1;
+	PARENT = 11;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "oValues0_byteValue[1]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 18;
+	TREE_LEVEL = 1;
+	PARENT = 11;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "oValues0_byteValue[0]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 19;
+	TREE_LEVEL = 1;
+	PARENT = 11;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "oValues1_boolValue";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 20;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "oValues1_byteValue";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 21;
+	TREE_LEVEL = 0;
+	CHILDREN = 22, 23, 24, 25, 26, 27, 28, 29;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "oValues1_byteValue[7]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 22;
+	TREE_LEVEL = 1;
+	PARENT = 21;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "oValues1_byteValue[6]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 23;
+	TREE_LEVEL = 1;
+	PARENT = 21;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "oValues1_byteValue[5]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 24;
+	TREE_LEVEL = 1;
+	PARENT = 21;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "oValues1_byteValue[4]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 25;
+	TREE_LEVEL = 1;
+	PARENT = 21;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "oValues1_byteValue[3]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 26;
+	TREE_LEVEL = 1;
+	PARENT = 21;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "oValues1_byteValue[2]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 27;
+	TREE_LEVEL = 1;
+	PARENT = 21;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "oValues1_byteValue[1]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 28;
+	TREE_LEVEL = 1;
+	PARENT = 21;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "oValues1_byteValue[0]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Hexadecimal;
+	TREE_INDEX = 29;
+	TREE_LEVEL = 1;
+	PARENT = 21;
+}
+
+TIME_BAR
+{
+	TIME = 12075;
+	MASTER = TRUE;
+}
+;

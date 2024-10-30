@@ -1,0 +1,7 @@
+└Root           | L2NestedIOObjectModuleInputs | [17:0]  | 18 | [17:0] 
+ ├i2            | L1NestedIOObjectModuleInputs | [17:9]  | 9  | [17:0][17:9]
+ │├i2_byteValue | Byte                         | [17:10] | 8  | [17:0][17:9][8:1]
+ │└i2_boolValue | Boolean                      | [9]     | 1  | [17:0][17:9][0]
+ └i1            | L1NestedIOObjectModuleInputs | [8:0]   | 9  | [17:0][8:0]
+  ├i1_byteValue | Byte                         | [8:1]   | 8  | [17:0][8:0][8:1]
+  └i1_boolValue | Boolean                      | [0]     | 1  | [17:0][8:0][0]

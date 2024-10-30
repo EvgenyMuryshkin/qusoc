@@ -1,0 +1,8 @@
+No reads:
+	Inputs_iM2S
+	Inputs_iS2M
+	m2s
+	s2m
+No writes:
+	m2s
+	s2m

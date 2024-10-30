@@ -47,40 +47,13 @@ architecture rtl of IOSimpleTupleModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_iValue_Item1 : std_logic := '0';
-	signal Inputs_iValue_Item2 : unsigned(7 downto 0) := (others => '0');
-	signal value_Item1 : std_logic := '0';
-	signal value_Item2 : unsigned(7 downto 0) := (others => '0');
-	signal IOSimpleTupleModule_L12F31T44_Tuple : unsigned(8 downto 0) := (others => '0');
-	signal IOSimpleTupleModule_L14F45T58_Tuple : unsigned(8 downto 0) := (others => '0');
-	signal IOSimpleTupleModule_L17F47T52_Tuple : unsigned(8 downto 0) := (others => '0');
-	signal IOSimpleTupleModule_L19F52T78_Tuple : unsigned(8 downto 0) := (others => '0');
-	signal IOSimpleTupleModule_L15F44T86_Tuple : unsigned(8 downto 0) := (others => '0');
+	signal Inputs_iValue : unsigned(8 downto 0) := (others => '0');
+	signal value : unsigned(8 downto 0) := (others => '0');
 begin
-	process (Inputs_iValue_Item1, Inputs_iValue_Item2, IOSimpleTupleModule_L12F31T44_Tuple, IOSimpleTupleModule_L14F45T58_Tuple, IOSimpleTupleModule_L15F44T86_Tuple, IOSimpleTupleModule_L17F47T52_Tuple, IOSimpleTupleModule_L19F52T78_Tuple, iValue_Item1, iValue_Item2, value_Item1, value_Item2)
+	process (iValue_Item1, iValue_Item2)
 	begin
-		Inputs_iValue_Item1 <= iValue_Item1;
-		Inputs_iValue_Item2 <= iValue_Item2;
-		IOSimpleTupleModule_L12F31T44_Tuple(8) <= Inputs_iValue_Item1;
-		IOSimpleTupleModule_L12F31T44_Tuple(7 downto 0) <= Inputs_iValue_Item2;
-		value_Item1 <= IOSimpleTupleModule_L12F31T44_Tuple(8);
-		value_Item2 <= IOSimpleTupleModule_L12F31T44_Tuple(7 downto 0);
-		IOSimpleTupleModule_L14F45T58_Tuple(8) <= Inputs_iValue_Item1;
-		IOSimpleTupleModule_L14F45T58_Tuple(7 downto 0) <= Inputs_iValue_Item2;
-		oValueDirect_Item1 <= IOSimpleTupleModule_L14F45T58_Tuple(8);
-		oValueDirect_Item2 <= IOSimpleTupleModule_L14F45T58_Tuple(7 downto 0);
-		IOSimpleTupleModule_L17F47T52_Tuple(8) <= value_Item1;
-		IOSimpleTupleModule_L17F47T52_Tuple(7 downto 0) <= value_Item2;
-		oValueInternal_Item1 <= IOSimpleTupleModule_L17F47T52_Tuple(8);
-		oValueInternal_Item2 <= IOSimpleTupleModule_L17F47T52_Tuple(7 downto 0);
-		IOSimpleTupleModule_L19F52T78_Tuple(8) <= value_Item1;
-		IOSimpleTupleModule_L19F52T78_Tuple(7 downto 0) <= value_Item2;
-		oValueInternalParts_Item1 <= IOSimpleTupleModule_L19F52T78_Tuple(8);
-		oValueInternalParts_Item2 <= IOSimpleTupleModule_L19F52T78_Tuple(7 downto 0);
-		IOSimpleTupleModule_L15F44T86_Tuple(8) <= Inputs_iValue_Item1;
-		IOSimpleTupleModule_L15F44T86_Tuple(7 downto 0) <= Inputs_iValue_Item2;
-		oValueParts_Item1 <= IOSimpleTupleModule_L15F44T86_Tuple(8);
-		oValueParts_Item2 <= IOSimpleTupleModule_L15F44T86_Tuple(7 downto 0);
+		Inputs_iValue(8) <= iValue_Item1;
+		Inputs_iValue(7 downto 0) <= iValue_Item2;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

@@ -104,75 +104,15 @@ module AXI4MasterModuleB4_TopLevel
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire [1: 0] size = 2'b10;
-	wire [1: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L131F22T44_Expr = 2'b00;
-	wire [1: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L132F21T32_AXI4MasterModule_L115F9L118T10_AXI4MasterModule_L116F33T54_Expr = 2'b01;
-	wire AXI4MasterModule_L117F36T41_Expr = 1'b0;
-	wire [1: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L134F22T43_Expr = 2'b01;
-	wire [1: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L136F21L139T22_AXI4MasterModule_L137F45T64_Expr = 2'b10;
-	wire [1: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L141F22T41_Expr = 2'b10;
-	wire AXI4MasterModule_L144F48T52_Expr = 1'b1;
-	wire [1: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L148F21L150T22_AXI4MasterModule_L149F25T36_AXI4MasterModule_L115F9L118T10_AXI4MasterModule_L116F33T54_Expr = 2'b01;
-	wire [1: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L157F22T45_Expr = 2'b00;
-	wire [1: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L158F21T33_AXI4MasterModule_L121F9L125T10_AXI4MasterModule_L122F34T56_Expr = 2'b01;
-	wire AXI4MasterModule_L123F36T41_Expr = 1'b0;
-	wire AXI4MasterModule_L124F35T40_Expr = 1'b0;
-	wire [1: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L160F22T44_Expr = 2'b01;
-	wire [1: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L162F21L166T22_AXI4MasterModule_L163F46T66_Expr = 2'b10;
-	wire [1: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L168F22T42_Expr = 2'b10;
-	wire AXI4MasterModule_L171F48T52_Expr = 1'b1;
-	wire AXI4MasterModule_L176F47T51_Expr = 1'b1;
-	wire [1: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L180F21L182T22_AXI4MasterModule_L181F25T37_AXI4MasterModule_L121F9L125T10_AXI4MasterModule_L122F34T56_Expr = 2'b01;
-	wire AXI4_M_AR_L18F28T29_Expr = 1'b0;
-	wire AXI4_M_AR_L24F29T30_Expr = 1'b1;
-	wire [2: 0] AXI4_M_AR_L27F33T43_Expr = 3'b010;
-	wire [1: 0] AXI4_M_AR_L30F35T48_Expr = 2'b01;
-	wire [1: 0] AXI4_M_AR_L33F33T47_Expr = 2'b00;
-	wire [3: 0] AXI4_M_AR_L36F35T63_Expr = 4'b0000;
-	wire [2: 0] AXI4_M_AR_L39F33T66_Expr = 3'b010;
-	wire [3: 0] AXI4_M_AR_L42F31T44_Expr = 4'b0000;
-	wire AXI4_M_AR_L45F32T33_Expr = 1'b0;
-	wire AXI4_M_AW_L17F28T29_Expr = 1'b0;
-	wire AXI4_M_AW_L23F29T30_Expr = 1'b1;
-	wire [2: 0] AXI4_M_AW_L26F33T43_Expr = 3'b010;
-	wire [1: 0] AXI4_M_AW_L29F35T48_Expr = 2'b01;
-	wire [1: 0] AXI4_M_AW_L32F33T47_Expr = 2'b00;
-	wire [3: 0] AXI4_M_AW_L35F35T63_Expr = 4'b0000;
-	wire [2: 0] AXI4_M_AW_L38F33T66_Expr = 3'b010;
-	wire [3: 0] AXI4_M_AW_L41F31T44_Expr = 4'b0000;
-	wire AXI4_M_AW_L44F32T33_Expr = 1'b0;
-	wire AXI4_M_AW_L47F30T31_Expr = 1'b0;
-	wire AXI4MasterModule_L102F27T28_Expr = 1'b0;
-	wire AXI4_M_W_L24F29T33_Expr = 1'b1;
-	wire AXI4_M_W_L27F29T30_Expr = 1'b0;
-	wire [1: 0] AXI4MasterModule_L73F46T65_Expr = 2'b10;
-	wire [1: 0] AXI4MasterModule_L76F47T67_Expr = 2'b10;
-	wire [31: 0] Inputs_Master_ARADDR;
-	wire [7: 0] Inputs_Master_ARUSER;
-	wire [31: 0] Inputs_Master_AWADDR;
-	wire Inputs_Master_BREADY;
-	wire Inputs_Master_RE;
-	wire Inputs_Master_RREADY;
-	wire Inputs_Master_WE;
-	wire [3: 0] Inputs_Master_WSTRB;
-	wire Inputs_S2M_R_AR_ARREADY;
-	wire [7: 0] Inputs_S2M_R_R_RID;
-	wire [1: 0] Inputs_S2M_R_R_RRESP;
-	wire Inputs_S2M_R_R_RLAST;
-	wire [7: 0] Inputs_S2M_R_R_RUSER;
-	wire Inputs_S2M_R_R_RVALID;
-	wire Inputs_S2M_W_AW_AWREADY;
-	wire [7: 0] Inputs_S2M_W_B_BID;
-	wire [1: 0] Inputs_S2M_W_B_BRESP;
-	wire [7: 0] Inputs_S2M_W_B_BUSER;
-	wire Inputs_S2M_W_B_BVALID;
-	wire Inputs_S2M_W_W_WREADY;
+	wire [111: 0] Inputs_Master;
+	wire [73: 0] Inputs_S2M;
 	reg NextState_ARREADYACK;
 	reg NextState_AWREADYACK;
 	reg [1: 0] NextState_readFSM;
 	reg NextState_WREADYACK;
 	reg [1: 0] NextState_writeFSM;
-	wire readAck;
-	wire writeAck;
+	reg readAck;
+	reg writeAck;
 	reg State_ARREADYACK = 1'b0;
 	wire State_ARREADYACKDefault = 1'b0;
 	reg State_AWREADYACK = 1'b0;
@@ -183,47 +123,6 @@ module AXI4MasterModuleB4_TopLevel
 	wire State_WREADYACKDefault = 1'b0;
 	reg [1: 0] State_writeFSM = 2'b00;
 	wire [1: 0] State_writeFSMDefault = 2'b00;
-	wire AXI4MasterModule_L70F25T66_Expr;
-	wire AXI4MasterModule_L70F25T66_Expr_1;
-	wire AXI4MasterModule_L70F25T66_Expr_2;
-	wire AXI4MasterModule_L71F26T86_Expr;
-	wire AXI4MasterModule_L71F26T86_Expr_1;
-	wire AXI4MasterModule_L71F26T86_Expr_2;
-	wire AXI4MasterModule_L71F26T61_Expr;
-	wire AXI4MasterModule_L71F26T61_Expr_1;
-	wire AXI4MasterModule_L71F26T61_Expr_2;
-	wire AXI4MasterModule_L73F29T76_Expr;
-	wire AXI4MasterModule_L73F29T76_Expr_1;
-	wire AXI4MasterModule_L73F29T76_Expr_2;
-	wire AXI4MasterModule_L76F29T79_Expr;
-	wire AXI4MasterModule_L76F29T79_Expr_1;
-	wire AXI4MasterModule_L76F29T79_Expr_2;
-	wire AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L131F17L133T27_Case;
-	wire signed [2: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L131F17L133T27_CaseLhs;
-	wire signed [2: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L131F17L133T27_CaseRhs;
-	wire AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L134F17L140T27_Case;
-	wire signed [2: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L134F17L140T27_CaseLhs;
-	wire signed [2: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L134F17L140T27_CaseRhs;
-	wire AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L141F17L152T27_Case;
-	wire signed [2: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L141F17L152T27_CaseLhs;
-	wire signed [2: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L141F17L152T27_CaseRhs;
-	wire AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L157F17L159T27_Case;
-	wire signed [2: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L157F17L159T27_CaseLhs;
-	wire signed [2: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L157F17L159T27_CaseRhs;
-	wire AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L160F17L167T27_Case;
-	wire signed [2: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L160F17L167T27_CaseLhs;
-	wire signed [2: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L160F17L167T27_CaseRhs;
-	wire AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L168F17L183T27_Case;
-	wire signed [2: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L168F17L183T27_CaseLhs;
-	wire signed [2: 0] AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L168F17L183T27_CaseRhs;
-	wire AXI4MasterModule_L73F29T65_Expr;
-	wire signed [2: 0] AXI4MasterModule_L73F29T65_ExprLhs;
-	wire signed [2: 0] AXI4MasterModule_L73F29T65_ExprRhs;
-	wire AXI4MasterModule_L76F29T67_Expr;
-	wire signed [2: 0] AXI4MasterModule_L76F29T67_ExprLhs;
-	wire signed [2: 0] AXI4MasterModule_L76F29T67_ExprRhs;
-	wire [7 : 0] Inputs_Master_WDATA [0 : 3];
-	wire [7 : 0] Inputs_S2M_R_R_RDATA [0 : 3];
 	always @ (posedge Clock)
 	begin
 		if ((Reset == 1))
@@ -243,281 +142,34 @@ module AXI4MasterModuleB4_TopLevel
 			State_writeFSM <= NextState_writeFSM;
 		end
 	end
-	assign AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L131F17L133T27_Case = AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L131F17L133T27_CaseLhs == AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L131F17L133T27_CaseRhs ? 1'b1 : 1'b0;
-	assign AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L134F17L140T27_Case = AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L134F17L140T27_CaseLhs == AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L134F17L140T27_CaseRhs ? 1'b1 : 1'b0;
-	assign AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L141F17L152T27_Case = AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L141F17L152T27_CaseLhs == AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L141F17L152T27_CaseRhs ? 1'b1 : 1'b0;
-	assign AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L157F17L159T27_Case = AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L157F17L159T27_CaseLhs == AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L157F17L159T27_CaseRhs ? 1'b1 : 1'b0;
-	assign AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L160F17L167T27_Case = AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L160F17L167T27_CaseLhs == AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L160F17L167T27_CaseRhs ? 1'b1 : 1'b0;
-	assign AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L168F17L183T27_Case = AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L168F17L183T27_CaseLhs == AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L168F17L183T27_CaseRhs ? 1'b1 : 1'b0;
-	assign AXI4MasterModule_L73F29T65_Expr = AXI4MasterModule_L73F29T65_ExprLhs == AXI4MasterModule_L73F29T65_ExprRhs ? 1'b1 : 1'b0;
-	assign AXI4MasterModule_L76F29T67_Expr = AXI4MasterModule_L76F29T67_ExprLhs == AXI4MasterModule_L76F29T67_ExprRhs ? 1'b1 : 1'b0;
-	assign AXI4MasterModule_L70F25T66_Expr = AXI4MasterModule_L70F25T66_Expr_1 & AXI4MasterModule_L70F25T66_Expr_2;
-	assign AXI4MasterModule_L71F26T86_Expr = AXI4MasterModule_L71F26T86_Expr_1 & AXI4MasterModule_L71F26T86_Expr_2;
-	assign AXI4MasterModule_L71F26T61_Expr = AXI4MasterModule_L71F26T61_Expr_1 & AXI4MasterModule_L71F26T61_Expr_2;
-	assign AXI4MasterModule_L73F29T76_Expr = AXI4MasterModule_L73F29T76_Expr_1 & AXI4MasterModule_L73F29T76_Expr_2;
-	assign AXI4MasterModule_L76F29T79_Expr = AXI4MasterModule_L76F29T79_Expr_1 & AXI4MasterModule_L76F29T79_Expr_2;
-	always @ (*)
-	begin
-		NextState_ARREADYACK = State_ARREADYACK;
-		NextState_AWREADYACK = State_AWREADYACK;
-		NextState_readFSM = State_readFSM;
-		NextState_WREADYACK = State_WREADYACK;
-		NextState_writeFSM = State_writeFSM;
-		if ((AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L131F17L133T27_Case == 1))
-		begin
-			NextState_readFSM = AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L132F21T32_AXI4MasterModule_L115F9L118T10_AXI4MasterModule_L116F33T54_Expr;
-			NextState_ARREADYACK = AXI4MasterModule_L117F36T41_Expr;
-		end
-		else if ((AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L134F17L140T27_Case == 1))
-		begin
-			if ((Inputs_Master_RE == 1))
-			begin
-				NextState_readFSM = AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L136F21L139T22_AXI4MasterModule_L137F45T64_Expr;
-				NextState_ARREADYACK = Inputs_S2M_R_AR_ARREADY;
-			end
-		end
-		else if ((AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L141F17L152T27_Case == 1))
-		begin
-			if ((Inputs_S2M_R_AR_ARREADY == 1))
-			begin
-				NextState_ARREADYACK = AXI4MasterModule_L144F48T52_Expr;
-			end
-			if ((readAck == 1))
-			begin
-				NextState_readFSM = AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L148F21L150T22_AXI4MasterModule_L149F25T36_AXI4MasterModule_L115F9L118T10_AXI4MasterModule_L116F33T54_Expr;
-				NextState_ARREADYACK = AXI4MasterModule_L117F36T41_Expr;
-			end
-		end
-		if ((AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L157F17L159T27_Case == 1))
-		begin
-			NextState_writeFSM = AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L158F21T33_AXI4MasterModule_L121F9L125T10_AXI4MasterModule_L122F34T56_Expr;
-			NextState_AWREADYACK = AXI4MasterModule_L123F36T41_Expr;
-			NextState_WREADYACK = AXI4MasterModule_L124F35T40_Expr;
-		end
-		else if ((AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L160F17L167T27_Case == 1))
-		begin
-			if ((Inputs_Master_WE == 1))
-			begin
-				NextState_writeFSM = AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L162F21L166T22_AXI4MasterModule_L163F46T66_Expr;
-				NextState_AWREADYACK = Inputs_S2M_W_AW_AWREADY;
-				NextState_WREADYACK = Inputs_S2M_W_W_WREADY;
-			end
-		end
-		else if ((AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L168F17L183T27_Case == 1))
-		begin
-			if ((Inputs_S2M_W_AW_AWREADY == 1))
-			begin
-				NextState_AWREADYACK = AXI4MasterModule_L171F48T52_Expr;
-			end
-			if ((Inputs_S2M_W_W_WREADY == 1))
-			begin
-				NextState_WREADYACK = AXI4MasterModule_L176F47T51_Expr;
-			end
-			if ((writeAck == 1))
-			begin
-				NextState_writeFSM = AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L180F21L182T22_AXI4MasterModule_L181F25T37_AXI4MasterModule_L121F9L125T10_AXI4MasterModule_L122F34T56_Expr;
-				NextState_AWREADYACK = AXI4MasterModule_L123F36T41_Expr;
-				NextState_WREADYACK = AXI4MasterModule_L124F35T40_Expr;
-			end
-		end
-	end
-	assign AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L131F17L133T27_CaseLhs = {
-		1'b0,
-		State_readFSM
-	}
-	;
-	assign AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L131F17L133T27_CaseRhs = {
-		1'b0,
-		AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L131F22T44_Expr
-	}
-	;
-	assign AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L134F17L140T27_CaseLhs = {
-		1'b0,
-		State_readFSM
-	}
-	;
-	assign AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L134F17L140T27_CaseRhs = {
-		1'b0,
-		AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L134F22T43_Expr
-	}
-	;
-	assign AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L141F17L152T27_CaseLhs = {
-		1'b0,
-		State_readFSM
-	}
-	;
-	assign AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L141F17L152T27_CaseRhs = {
-		1'b0,
-		AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L129F13L153T14_AXI4MasterModule_L141F22T41_Expr
-	}
-	;
-	assign AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L157F17L159T27_CaseLhs = {
-		1'b0,
-		State_writeFSM
-	}
-	;
-	assign AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L157F17L159T27_CaseRhs = {
-		1'b0,
-		AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L157F22T45_Expr
-	}
-	;
-	assign AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L160F17L167T27_CaseLhs = {
-		1'b0,
-		State_writeFSM
-	}
-	;
-	assign AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L160F17L167T27_CaseRhs = {
-		1'b0,
-		AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L160F22T44_Expr
-	}
-	;
-	assign AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L168F17L183T27_CaseLhs = {
-		1'b0,
-		State_writeFSM
-	}
-	;
-	assign AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L168F17L183T27_CaseRhs = {
-		1'b0,
-		AXI4MasterModule_L128F9L185T10_AXI4MasterModule_L155F13L184T14_AXI4MasterModule_L168F22T42_Expr
-	}
-	;
-	assign AXI4MasterModule_L73F29T65_ExprLhs = {
-		1'b0,
-		State_readFSM
-	}
-	;
-	assign AXI4MasterModule_L73F29T65_ExprRhs = {
-		1'b0,
-		AXI4MasterModule_L73F46T65_Expr
-	}
-	;
-	assign AXI4MasterModule_L76F29T67_ExprLhs = {
-		1'b0,
-		State_writeFSM
-	}
-	;
-	assign AXI4MasterModule_L76F29T67_ExprRhs = {
-		1'b0,
-		AXI4MasterModule_L76F47T67_Expr
-	}
-	;
-	assign AXI4MasterModule_L70F25T66_Expr_1 = State_ARREADYACK;
-	assign AXI4MasterModule_L70F25T66_Expr_2 = Inputs_S2M_R_R_RVALID;
-	assign AXI4MasterModule_L71F26T86_Expr_1 = AXI4MasterModule_L71F26T61_Expr;
-	assign AXI4MasterModule_L71F26T86_Expr_2 = Inputs_S2M_W_B_BVALID;
-	assign AXI4MasterModule_L71F26T61_Expr_1 = State_AWREADYACK;
-	assign AXI4MasterModule_L71F26T61_Expr_2 = State_WREADYACK;
-	assign AXI4MasterModule_L73F29T76_Expr_1 = AXI4MasterModule_L73F29T65_Expr;
-	assign AXI4MasterModule_L73F29T76_Expr_2 = readAck;
-	assign AXI4MasterModule_L76F29T79_Expr_1 = AXI4MasterModule_L76F29T67_Expr;
-	assign AXI4MasterModule_L76F29T79_Expr_2 = writeAck;
-	assign Inputs_Master_ARADDR = Master_ARADDR;
-	assign Inputs_Master_ARUSER = Master_ARUSER;
-	assign Inputs_Master_AWADDR = Master_AWADDR;
-	assign Inputs_Master_BREADY = Master_BREADY;
-	assign Inputs_Master_RE = Master_RE;
-	assign Inputs_Master_RREADY = Master_RREADY;
-	assign Inputs_Master_WDATA[0] = Master_WDATA0;
-	assign Inputs_Master_WDATA[1] = Master_WDATA1;
-	assign Inputs_Master_WDATA[2] = Master_WDATA2;
-	assign Inputs_Master_WDATA[3] = Master_WDATA3;
-	assign Inputs_Master_WE = Master_WE;
-	assign Inputs_Master_WSTRB = Master_WSTRB;
-	assign Inputs_S2M_R_AR_ARREADY = S2M_R_AR_ARREADY;
-	assign Inputs_S2M_R_R_RID = S2M_R_R_RID;
-	assign Inputs_S2M_R_R_RDATA[0] = S2M_R_R_RDATA0;
-	assign Inputs_S2M_R_R_RDATA[1] = S2M_R_R_RDATA1;
-	assign Inputs_S2M_R_R_RDATA[2] = S2M_R_R_RDATA2;
-	assign Inputs_S2M_R_R_RDATA[3] = S2M_R_R_RDATA3;
-	assign Inputs_S2M_R_R_RRESP = S2M_R_R_RRESP;
-	assign Inputs_S2M_R_R_RLAST = S2M_R_R_RLAST;
-	assign Inputs_S2M_R_R_RUSER = S2M_R_R_RUSER;
-	assign Inputs_S2M_R_R_RVALID = S2M_R_R_RVALID;
-	assign Inputs_S2M_W_AW_AWREADY = S2M_W_AW_AWREADY;
-	assign Inputs_S2M_W_B_BID = S2M_W_B_BID;
-	assign Inputs_S2M_W_B_BRESP = S2M_W_B_BRESP;
-	assign Inputs_S2M_W_B_BUSER = S2M_W_B_BUSER;
-	assign Inputs_S2M_W_B_BVALID = S2M_W_B_BVALID;
-	assign Inputs_S2M_W_W_WREADY = S2M_W_W_WREADY;
-	assign readAck = AXI4MasterModule_L70F25T66_Expr;
-	assign writeAck = AXI4MasterModule_L71F26T86_Expr;
-	assign M2S_R_AR_ARID = {
-		{7{1'b0}},
-		AXI4_M_AR_L18F28T29_Expr
-	}
-	;
-	assign M2S_R_AR_ARADDR = Inputs_Master_ARADDR;
-	assign M2S_R_AR_ARLEN = {
-		{7{1'b0}},
-		AXI4_M_AR_L24F29T30_Expr
-	}
-	;
-	assign M2S_R_AR_ARSIZE = AXI4_M_AR_L27F33T43_Expr;
-	assign M2S_R_AR_ARBURST = AXI4_M_AR_L30F35T48_Expr;
-	assign M2S_R_AR_ARLOCK = AXI4_M_AR_L33F33T47_Expr;
-	assign M2S_R_AR_ARCACHE = AXI4_M_AR_L36F35T63_Expr;
-	assign M2S_R_AR_ARPROT = AXI4_M_AR_L39F33T66_Expr;
-	assign M2S_R_AR_ARQOS = AXI4_M_AR_L42F31T44_Expr;
-	assign M2S_R_AR_ARREGION = {
-		{7{1'b0}},
-		AXI4_M_AR_L45F32T33_Expr
-	}
-	;
-	assign M2S_R_AR_ARUSER = Inputs_Master_ARUSER;
-	assign M2S_R_AR_ARVALID = Inputs_Master_RE;
-	assign M2S_R_R_RREADY = Inputs_Master_RREADY;
-	assign M2S_W_AW_AWID = {
-		{7{1'b0}},
-		AXI4_M_AW_L17F28T29_Expr
-	}
-	;
-	assign M2S_W_AW_AWADDR = Inputs_Master_AWADDR;
-	assign M2S_W_AW_AWLEN = {
-		{7{1'b0}},
-		AXI4_M_AW_L23F29T30_Expr
-	}
-	;
-	assign M2S_W_AW_AWSIZE = AXI4_M_AW_L26F33T43_Expr;
-	assign M2S_W_AW_AWBURST = AXI4_M_AW_L29F35T48_Expr;
-	assign M2S_W_AW_AWLOCK = AXI4_M_AW_L32F33T47_Expr;
-	assign M2S_W_AW_AWCACHE = AXI4_M_AW_L35F35T63_Expr;
-	assign M2S_W_AW_AWPROT = AXI4_M_AW_L38F33T66_Expr;
-	assign M2S_W_AW_AWQOS = AXI4_M_AW_L41F31T44_Expr;
-	assign M2S_W_AW_AWREGION = {
-		{7{1'b0}},
-		AXI4_M_AW_L44F32T33_Expr
-	}
-	;
-	assign M2S_W_AW_AWUSER = {
-		{7{1'b0}},
-		AXI4_M_AW_L47F30T31_Expr
-	}
-	;
-	assign M2S_W_AW_AWVALID = Inputs_Master_WE;
-	assign M2S_W_W_WID = {
-		{7{1'b0}},
-		AXI4MasterModule_L102F27T28_Expr
-	}
-	;
-	assign M2S_W_W_WDATA0 = Inputs_Master_WDATA[0];
-	assign M2S_W_W_WDATA1 = Inputs_Master_WDATA[1];
-	assign M2S_W_W_WDATA2 = Inputs_Master_WDATA[2];
-	assign M2S_W_W_WDATA3 = Inputs_Master_WDATA[3];
-	assign M2S_W_W_WSTRB = Inputs_Master_WSTRB;
-	assign M2S_W_W_WLAST = AXI4_M_W_L24F29T33_Expr;
-	assign M2S_W_W_WUSER = {
-		{7{1'b0}},
-		AXI4_M_W_L27F29T30_Expr
-	}
-	;
-	assign M2S_W_W_WVALID = Inputs_Master_WE;
-	assign M2S_W_B_BREADY = Inputs_Master_BREADY;
-	assign RACK = AXI4MasterModule_L73F29T76_Expr;
-	assign RDATA0 = Inputs_S2M_R_R_RDATA[0];
-	assign RDATA1 = Inputs_S2M_R_R_RDATA[1];
-	assign RDATA2 = Inputs_S2M_R_R_RDATA[2];
-	assign RDATA3 = Inputs_S2M_R_R_RDATA[3];
-	assign WACK = AXI4MasterModule_L76F29T79_Expr;
+	assign Inputs_Master[111:108] = Master_WSTRB;
+	assign Inputs_Master[107] = Master_WE;
+	assign Inputs_Master[106:99] = Master_WDATA3;
+	assign Inputs_Master[98:91] = Master_WDATA2;
+	assign Inputs_Master[90:83] = Master_WDATA1;
+	assign Inputs_Master[82:75] = Master_WDATA0;
+	assign Inputs_Master[74] = Master_RREADY;
+	assign Inputs_Master[73] = Master_RE;
+	assign Inputs_Master[72] = Master_BREADY;
+	assign Inputs_Master[71:40] = Master_AWADDR;
+	assign Inputs_Master[39:32] = Master_ARUSER;
+	assign Inputs_Master[31:0] = Master_ARADDR;
+	assign Inputs_S2M[73] = S2M_W_W_WREADY;
+	assign Inputs_S2M[72] = S2M_W_B_BVALID;
+	assign Inputs_S2M[71:64] = S2M_W_B_BUSER;
+	assign Inputs_S2M[63:62] = S2M_W_B_BRESP;
+	assign Inputs_S2M[61:54] = S2M_W_B_BID;
+	assign Inputs_S2M[53] = S2M_W_AW_AWREADY;
+	assign Inputs_S2M[52] = S2M_R_R_RVALID;
+	assign Inputs_S2M[51:44] = S2M_R_R_RUSER;
+	assign Inputs_S2M[43] = S2M_R_R_RLAST;
+	assign Inputs_S2M[42:41] = S2M_R_R_RRESP;
+	assign Inputs_S2M[40:33] = S2M_R_R_RDATA3;
+	assign Inputs_S2M[32:25] = S2M_R_R_RDATA2;
+	assign Inputs_S2M[24:17] = S2M_R_R_RDATA1;
+	assign Inputs_S2M[16:9] = S2M_R_R_RDATA0;
+	assign Inputs_S2M[8:1] = S2M_R_R_RID;
+	assign Inputs_S2M[0] = S2M_R_AR_ARREADY;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

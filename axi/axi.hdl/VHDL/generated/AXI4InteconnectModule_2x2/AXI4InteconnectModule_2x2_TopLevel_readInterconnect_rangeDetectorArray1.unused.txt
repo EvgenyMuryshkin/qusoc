@@ -1,7 +1,14 @@
 No reads:
+	encoder_HasActive
+	encoder_MSBIndex
 	encoder_MSBValue
-	RangeDetectorArrayModule_L48F13L54T14_0_idx
-	RangeDetectorArrayModule_L48F13L54T14_1_idx
-	RangeDetectorArrayModule_L56F13L59T14_0_idx
-	RangeDetectorArrayModule_L56F13L59T14_1_idx
+	Inputs_iAddress
+	rangeActive
+	rangeDetectors0_IsActive
+	rangeDetectors1_IsActive
 	rangeDetectorsCount
+No writes:
+	encoder_iValues
+	rangeActive
+	rangeDetectors0_Value
+	rangeDetectors1_Value

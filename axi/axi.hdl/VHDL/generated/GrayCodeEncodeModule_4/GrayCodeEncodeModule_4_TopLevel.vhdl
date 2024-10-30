@@ -39,35 +39,11 @@ architecture rtl of GrayCodeEncodeModule_4_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant GrayCodeEncodeModule_L24F72T73_Expr : std_logic := '1';
 	signal Inputs_iValue : unsigned(3 downto 0) := (others => '0');
-	signal GrayCodeEncodeModule_L24F38T74_Expr : unsigned(3 downto 0) := "0000";
-	signal GrayCodeEncodeModule_L24F38T74_Expr_1 : unsigned(3 downto 0) := "0000";
-	signal GrayCodeEncodeModule_L24F38T74_Expr_2 : unsigned(3 downto 0) := "0000";
-	signal GrayCodeEncodeModule_L24F55T73_Expr : unsigned(3 downto 0) := "0000";
-	signal GrayCodeEncodeModule_L24F55T73_Expr_1 : unsigned(3 downto 0) := "0000";
 begin
-	process (GrayCodeEncodeModule_L24F38T74_Expr_1, GrayCodeEncodeModule_L24F38T74_Expr_2)
+	process (iValue)
 	begin
-		GrayCodeEncodeModule_L24F38T74_Expr <= GrayCodeEncodeModule_L24F38T74_Expr_1 XOR GrayCodeEncodeModule_L24F38T74_Expr_2;
-	end process;
-	process (GrayCodeEncodeModule_L24F55T73_Expr_1)
-		alias output is GrayCodeEncodeModule_L24F55T73_Expr;
-		alias source0 is GrayCodeEncodeModule_L24F55T73_Expr_1;
-	begin
-		-- Output: GrayCodeEncodeModule_L24F55T73_Expr, Width: 4, ShiftBy: 1, Sources: 1
-		output(0) <= source0(1);
-		output(1) <= source0(2);
-		output(2) <= source0(3);
-		output(3) <= '0';
-	end process;
-	process (GrayCodeEncodeModule_L24F38T74_Expr, GrayCodeEncodeModule_L24F55T73_Expr, Inputs_iValue, iValue)
-	begin
-		GrayCodeEncodeModule_L24F38T74_Expr_1 <= Inputs_iValue;
-		GrayCodeEncodeModule_L24F38T74_Expr_2 <= GrayCodeEncodeModule_L24F55T73_Expr;
-		GrayCodeEncodeModule_L24F55T73_Expr_1 <= Inputs_iValue;
 		Inputs_iValue <= iValue;
-		oValue <= GrayCodeEncodeModule_L24F38T74_Expr;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

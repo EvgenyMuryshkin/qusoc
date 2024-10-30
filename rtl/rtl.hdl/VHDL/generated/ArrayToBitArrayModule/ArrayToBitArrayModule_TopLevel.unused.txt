@@ -1,0 +1,5 @@
+No reads:
+	Inputs_InArray
+	State_ReadData
+No writes:
+	NextState_ReadData

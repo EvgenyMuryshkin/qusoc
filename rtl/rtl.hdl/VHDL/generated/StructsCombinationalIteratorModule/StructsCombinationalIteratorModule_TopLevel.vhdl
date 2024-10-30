@@ -78,24 +78,12 @@ architecture rtl of StructsCombinationalIteratorModule_TopLevel is
 	constant State_i1Default : unsigned(7 downto 0) := "00000000";
 	constant State_i2Default : unsigned(7 downto 0) := "00000000";
 	constant State_oDefault : unsigned(23 downto 0) := "000000000000000000000000";
-	constant StructsCombinationalIteratorModule_L92F71T73_Expr : unsigned(3 downto 0) := "1010";
-	constant StructsCombinationalIteratorModule_L93F71T73_Expr : unsigned(3 downto 0) := "1011";
 	signal Inputs_addr : unsigned(1 downto 0) := (others => '0');
-	signal Inputs_i1_a : unsigned(3 downto 0) := (others => '0');
-	signal Inputs_i1_b : unsigned(3 downto 0) := (others => '0');
-	signal Inputs_i2_a : unsigned(3 downto 0) := (others => '0');
-	signal Inputs_i2_b : unsigned(3 downto 0) := (others => '0');
+	signal Inputs_i1 : unsigned(7 downto 0) := (others => '0');
+	signal Inputs_i2 : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_s1 : signed(7 downto 0) := (others => '0');
 	signal Inputs_s2 : signed(7 downto 0) := (others => '0');
 	signal Inputs_store : std_logic := '0';
-	signal StructsCombinationalIteratorModule_L69F31T61_Cast : signed(7 downto 0) := (others => '0');
-	signal StructsCombinationalIteratorModule_L68F30T60_Cast : signed(15 downto 0) := (others => '0');
-	signal StructsCombinationalIteratorModule_L69F39T60_Expr : signed(15 downto 0) := "0000000000000000";
-	signal StructsCombinationalIteratorModule_L69F39T60_Expr_1 : signed(15 downto 0) := "0000000000000000";
-	signal StructsCombinationalIteratorModule_L69F39T60_Expr_2 : signed(15 downto 0) := "0000000000000000";
-	signal StructsCombinationalIteratorModule_L68F38T59_Expr : signed(15 downto 0) := "0000000000000000";
-	signal StructsCombinationalIteratorModule_L68F38T59_Expr_1 : signed(15 downto 0) := "0000000000000000";
-	signal StructsCombinationalIteratorModule_L68F38T59_Expr_2 : signed(15 downto 0) := "0000000000000000";
 	type State_cArray is array (0 to 3) of unsigned (7 downto 0);
 	signal State_c : State_cArray := (others => (others => '0'));
 	type NextState_cArray is array (0 to 3) of unsigned (7 downto 0);
@@ -116,19 +104,6 @@ architecture rtl of StructsCombinationalIteratorModule_TopLevel is
 	signal State_o : State_oArray := (others => (others => '0'));
 	type NextState_oArray is array (0 to 3) of unsigned (23 downto 0);
 	signal NextState_o : NextState_oArray := (others => (others => '0'));
-	subtype unsigned4 is unsigned (3 downto 0);
-	function ternary_unsigned_4(condition : boolean; whenTrue : unsigned4; whenFalse : unsigned4) return unsigned4 is
-	begin
-		if condition then
-			return whenTrue;
-		else
-			return whenFalse;
-		end if;
-	end function;
-	function bit_to_boolean(source : std_logic) return boolean is
-	begin
-		return source /= '0';
-	end function;
 begin
 	process (Clock, NextState_c, Reset)
 	begin
@@ -200,109 +175,16 @@ begin
 			end if;
 		end if;
 	end process;
-	process (StructsCombinationalIteratorModule_L69F39T60_Expr_1, StructsCombinationalIteratorModule_L69F39T60_Expr_2)
+	process (addr, i1_a, i1_b, i2_a, i2_b, s1, s2, store)
 	begin
-		StructsCombinationalIteratorModule_L69F39T60_Expr <= resize(signed(signed(resize(StructsCombinationalIteratorModule_L69F39T60_Expr_1, StructsCombinationalIteratorModule_L69F39T60_Expr_1'length + 1)) * signed(resize(StructsCombinationalIteratorModule_L69F39T60_Expr_2, StructsCombinationalIteratorModule_L69F39T60_Expr_2'length + 1))), StructsCombinationalIteratorModule_L69F39T60_Expr'length);
-	end process;
-	process (StructsCombinationalIteratorModule_L68F38T59_Expr_1, StructsCombinationalIteratorModule_L68F38T59_Expr_2)
-	begin
-		StructsCombinationalIteratorModule_L68F38T59_Expr <= resize(signed(signed(resize(StructsCombinationalIteratorModule_L68F38T59_Expr_1, StructsCombinationalIteratorModule_L68F38T59_Expr_1'length + 1)) * signed(resize(StructsCombinationalIteratorModule_L68F38T59_Expr_2, StructsCombinationalIteratorModule_L68F38T59_Expr_2'length + 1))), StructsCombinationalIteratorModule_L68F38T59_Expr'length);
-	end process;
-	process (Inputs_i1_a, Inputs_i1_b, Inputs_i2_a, Inputs_i2_b, Inputs_store, State_c, State_f, State_i1, State_i2, State_o)
-	begin
-		for NextState_c_Iterator in 0 to 3 loop
-			NextState_c(NextState_c_Iterator) <= State_c(NextState_c_Iterator);
-		end loop;
-		for NextState_f_Iterator in 0 to 3 loop
-			NextState_f(NextState_f_Iterator) <= State_f(NextState_f_Iterator);
-		end loop;
-		for NextState_i1_Iterator in 0 to 3 loop
-			NextState_i1(NextState_i1_Iterator) <= State_i1(NextState_i1_Iterator);
-		end loop;
-		for NextState_i2_Iterator in 0 to 3 loop
-			NextState_i2(NextState_i2_Iterator) <= State_i2(NextState_i2_Iterator);
-		end loop;
-		for NextState_o_Iterator in 0 to 3 loop
-			NextState_o(NextState_o_Iterator) <= State_o(NextState_o_Iterator);
-		end loop;
-		if Inputs_store = '1' then
-			NextState_i1(TO_INTEGER(Inputs_addr))(7 downto 4) <= Inputs_i1_b;
-			NextState_i1(TO_INTEGER(Inputs_addr))(3 downto 0) <= Inputs_i1_a;
-			NextState_i2(TO_INTEGER(Inputs_addr))(7 downto 4) <= Inputs_i2_b;
-			NextState_i2(TO_INTEGER(Inputs_addr))(3 downto 0) <= Inputs_i2_a;
-		else
-			for i in 0 to 3 loop
-				NextState_o(i)(11 downto 0) <= unsigned(((resize(signed(State_i1(i)(3 downto 0)), 6)) * (resize(signed(State_i2(i)(3 downto 0)), 6))));
-				NextState_o(i)(23 downto 12) <= unsigned(((resize(unsigned(State_i1(i)(7 downto 4)), 6)) * (resize(unsigned(State_i2(i)(7 downto 4)), 6))));
-			end loop;
-		end if;
-		for i1 in 0 to 3 loop
-			NextState_c(i1)(3 downto 0) <= ternary_unsigned_4(Inputs_addr = 0, resize(StructsCombinationalIteratorModule_L92F71T73_Expr, 4), Inputs_i1_a);
-			NextState_c(i1)(7 downto 4) <= ternary_unsigned_4(Inputs_addr /= 0, resize(StructsCombinationalIteratorModule_L93F71T73_Expr, 4), Inputs_i1_b);
-		end loop;
-		for i2 in 0 to 3 loop
-			NextState_f(i2)(3 downto 0) <= ternary_unsigned_4(bit_to_boolean(Inputs_store), Inputs_i1_b, Inputs_i1_a);
-			NextState_f(i2)(7 downto 4) <= ternary_unsigned_4(bit_to_boolean(NOT Inputs_store), Inputs_i1_a, Inputs_i1_b);
-		end loop;
-	end process;
-	process (addr, i1_a, i1_b, i2_a, i2_b, Inputs_s1, Inputs_s2, s1, s2, State_c, State_f, State_o, store, StructsCombinationalIteratorModule_L68F30T60_Cast, StructsCombinationalIteratorModule_L68F38T59_Expr, StructsCombinationalIteratorModule_L69F31T61_Cast, StructsCombinationalIteratorModule_L69F39T60_Expr)
-	begin
-		StructsCombinationalIteratorModule_L69F39T60_Expr_1(15 downto 8) <= (
-			others => Inputs_s1(7)
-		)
-		;
-		StructsCombinationalIteratorModule_L69F39T60_Expr_1(7 downto 0) <= Inputs_s1;
-		StructsCombinationalIteratorModule_L69F39T60_Expr_2(15 downto 8) <= (
-			others => Inputs_s2(7)
-		)
-		;
-		StructsCombinationalIteratorModule_L69F39T60_Expr_2(7 downto 0) <= Inputs_s2;
-		StructsCombinationalIteratorModule_L68F38T59_Expr_1(15 downto 8) <= (
-			others => Inputs_s1(7)
-		)
-		;
-		StructsCombinationalIteratorModule_L68F38T59_Expr_1(7 downto 0) <= Inputs_s1;
-		StructsCombinationalIteratorModule_L68F38T59_Expr_2(15 downto 8) <= (
-			others => Inputs_s2(7)
-		)
-		;
-		StructsCombinationalIteratorModule_L68F38T59_Expr_2(7 downto 0) <= Inputs_s2;
 		Inputs_addr <= addr;
-		Inputs_i1_a <= i1_a;
-		Inputs_i1_b <= i1_b;
-		Inputs_i2_a <= i2_a;
-		Inputs_i2_b <= i2_b;
+		Inputs_i1(7 downto 4) <= i1_b;
+		Inputs_i1(3 downto 0) <= i1_a;
+		Inputs_i2(7 downto 4) <= i2_b;
+		Inputs_i2(3 downto 0) <= i2_a;
 		Inputs_s1 <= s1;
 		Inputs_s2 <= s2;
 		Inputs_store <= store;
-		cStruct0_b <= State_c(0)(7 downto 4);
-		cStruct0_a <= State_c(0)(3 downto 0);
-		cStruct1_b <= State_c(1)(7 downto 4);
-		cStruct1_a <= State_c(1)(3 downto 0);
-		cStruct2_b <= State_c(2)(7 downto 4);
-		cStruct2_a <= State_c(2)(3 downto 0);
-		cStruct3_b <= State_c(3)(7 downto 4);
-		cStruct3_a <= State_c(3)(3 downto 0);
-		fStruct0_b <= State_f(0)(7 downto 4);
-		fStruct0_a <= State_f(0)(3 downto 0);
-		fStruct1_b <= State_f(1)(7 downto 4);
-		fStruct1_a <= State_f(1)(3 downto 0);
-		fStruct2_b <= State_f(2)(7 downto 4);
-		fStruct2_a <= State_f(2)(3 downto 0);
-		fStruct3_b <= State_f(3)(7 downto 4);
-		fStruct3_a <= State_f(3)(3 downto 0);
-		StructsCombinationalIteratorModule_L69F31T61_Cast <= StructsCombinationalIteratorModule_L69F39T60_Expr(7 downto 0);
-		sByte <= StructsCombinationalIteratorModule_L69F31T61_Cast;
-		StructsCombinationalIteratorModule_L68F30T60_Cast <= StructsCombinationalIteratorModule_L68F38T59_Expr;
-		sOut <= StructsCombinationalIteratorModule_L68F30T60_Cast;
-		sStruct0_b <= State_o(0)(23 downto 12);
-		sStruct0_a <= State_o(0)(11 downto 0);
-		sStruct1_b <= State_o(1)(23 downto 12);
-		sStruct1_a <= State_o(1)(11 downto 0);
-		sStruct2_b <= State_o(2)(23 downto 12);
-		sStruct2_a <= State_o(2)(11 downto 0);
-		sStruct3_b <= State_o(3)(23 downto 12);
-		sStruct3_a <= State_o(3)(11 downto 0);
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

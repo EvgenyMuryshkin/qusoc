@@ -1,3 +1,14 @@
 No reads:
+	Inputs_iM2S
+	Inputs_iS2M
 	mCount
+	readInterconnect_M2S
+	readInterconnect_S2M
 	sCount
+	writeInterconnect_M2S
+	writeInterconnect_S2M
+No writes:
+	readInterconnect_iLeft
+	readInterconnect_iRight
+	writeInterconnect_iLeft
+	writeInterconnect_iRight

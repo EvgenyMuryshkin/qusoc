@@ -61,12 +61,6 @@ architecture rtl of AnonymousPipelineModule_TopLevel is
 	signal Pipeline_stage1_NextState_sum4567 : signed(31 downto 0) := (others => '0');
 	signal Pipeline_stage2_NextState_ready : std_logic := '0';
 	signal Pipeline_stage2_NextState_result : unsigned(15 downto 0) := (others => '0');
-	signal Pipeline_Inputs_inReady : std_logic := '0';
-	signal Pipeline_State_ready : std_logic := '0';
-	signal Pipeline_State_result : unsigned(15 downto 0) := (others => '0');
-	signal Pipeline_NextState_ready : std_logic := '0';
-	signal Pipeline_NextState_result : unsigned(15 downto 0) := (others => '0');
-	signal Pipeline_AnonymousPipelineModule_L41F30T63_Cast : unsigned(15 downto 0) := (others => '0');
 	signal Pipeline_stage0_State_IsS0Ready : std_logic := '0';
 	constant Pipeline_stage0_State_IsS0ReadyDefault : std_logic := '0';
 	signal Pipeline_stage0_State_sum01 : signed(31 downto 0) := "00000000000000000000000000000000";
@@ -87,31 +81,8 @@ architecture rtl of AnonymousPipelineModule_TopLevel is
 	constant Pipeline_stage2_State_readyDefault : std_logic := '0';
 	signal Pipeline_stage2_State_result : unsigned(15 downto 0) := "0000000000000000";
 	constant Pipeline_stage2_State_resultDefault : unsigned(15 downto 0) := "0000000000000000";
-	signal Pipeline_AnonymousPipelineModule_L29F29T54_Expr : unsigned(9 downto 0) := "0000000000";
-	signal Pipeline_AnonymousPipelineModule_L29F29T54_Expr_1 : signed(9 downto 0) := "0000000000";
-	signal Pipeline_AnonymousPipelineModule_L29F29T54_Expr_2 : signed(9 downto 0) := "0000000000";
-	signal Pipeline_AnonymousPipelineModule_L30F29T54_Expr : unsigned(9 downto 0) := "0000000000";
-	signal Pipeline_AnonymousPipelineModule_L30F29T54_Expr_1 : signed(9 downto 0) := "0000000000";
-	signal Pipeline_AnonymousPipelineModule_L30F29T54_Expr_2 : signed(9 downto 0) := "0000000000";
-	signal Pipeline_AnonymousPipelineModule_L31F29T54_Expr : unsigned(9 downto 0) := "0000000000";
-	signal Pipeline_AnonymousPipelineModule_L31F29T54_Expr_1 : signed(9 downto 0) := "0000000000";
-	signal Pipeline_AnonymousPipelineModule_L31F29T54_Expr_2 : signed(9 downto 0) := "0000000000";
-	signal Pipeline_AnonymousPipelineModule_L32F29T54_Expr : unsigned(9 downto 0) := "0000000000";
-	signal Pipeline_AnonymousPipelineModule_L32F29T54_Expr_1 : signed(9 downto 0) := "0000000000";
-	signal Pipeline_AnonymousPipelineModule_L32F29T54_Expr_2 : signed(9 downto 0) := "0000000000";
-	signal Pipeline_AnonymousPipelineModule_L36F31T50_Expr : signed(32 downto 0) := "000000000000000000000000000000000";
-	signal Pipeline_AnonymousPipelineModule_L36F31T50_Expr_1 : signed(32 downto 0) := "000000000000000000000000000000000";
-	signal Pipeline_AnonymousPipelineModule_L36F31T50_Expr_2 : signed(32 downto 0) := "000000000000000000000000000000000";
-	signal Pipeline_AnonymousPipelineModule_L37F31T50_Expr : signed(32 downto 0) := "000000000000000000000000000000000";
-	signal Pipeline_AnonymousPipelineModule_L37F31T50_Expr_1 : signed(32 downto 0) := "000000000000000000000000000000000";
-	signal Pipeline_AnonymousPipelineModule_L37F31T50_Expr_2 : signed(32 downto 0) := "000000000000000000000000000000000";
-	signal Pipeline_AnonymousPipelineModule_L41F39T62_Expr : signed(32 downto 0) := "000000000000000000000000000000000";
-	signal Pipeline_AnonymousPipelineModule_L41F39T62_Expr_1 : signed(32 downto 0) := "000000000000000000000000000000000";
-	signal Pipeline_AnonymousPipelineModule_L41F39T62_Expr_2 : signed(32 downto 0) := "000000000000000000000000000000000";
 	type Inputs_inDataArray is array (0 to 7) of unsigned (7 downto 0);
 	signal Inputs_inData : Inputs_inDataArray := (others => (others => '0'));
-	type Pipeline_Inputs_inDataArray is array (0 to 7) of unsigned (7 downto 0);
-	signal Pipeline_Inputs_inData : Pipeline_Inputs_inDataArray := (others => (others => '0'));
 begin
 	process (Clock, Pipeline_stage0_NextState_IsS0Ready, Pipeline_stage0_NextState_sum01, Pipeline_stage0_NextState_sum23, Pipeline_stage0_NextState_sum45, Pipeline_stage0_NextState_sum67, Pipeline_stage1_NextState_IsS1Ready, Pipeline_stage1_NextState_sum0123, Pipeline_stage1_NextState_sum4567, Pipeline_stage2_NextState_ready, Pipeline_stage2_NextState_result, Reset)
 	begin
@@ -141,127 +112,8 @@ begin
 			end if;
 		end if;
 	end process;
-	process (Pipeline_AnonymousPipelineModule_L29F29T54_Expr_1, Pipeline_AnonymousPipelineModule_L29F29T54_Expr_2)
+	process (inData0, inData1, inData2, inData3, inData4, inData5, inData6, inData7, inReady)
 	begin
-		Pipeline_AnonymousPipelineModule_L29F29T54_Expr <= resize(unsigned(signed(resize(Pipeline_AnonymousPipelineModule_L29F29T54_Expr_1, Pipeline_AnonymousPipelineModule_L29F29T54_Expr_1'length + 1)) + signed(resize(Pipeline_AnonymousPipelineModule_L29F29T54_Expr_2, Pipeline_AnonymousPipelineModule_L29F29T54_Expr_2'length + 1))), Pipeline_AnonymousPipelineModule_L29F29T54_Expr'length);
-	end process;
-	process (Pipeline_AnonymousPipelineModule_L30F29T54_Expr_1, Pipeline_AnonymousPipelineModule_L30F29T54_Expr_2)
-	begin
-		Pipeline_AnonymousPipelineModule_L30F29T54_Expr <= resize(unsigned(signed(resize(Pipeline_AnonymousPipelineModule_L30F29T54_Expr_1, Pipeline_AnonymousPipelineModule_L30F29T54_Expr_1'length + 1)) + signed(resize(Pipeline_AnonymousPipelineModule_L30F29T54_Expr_2, Pipeline_AnonymousPipelineModule_L30F29T54_Expr_2'length + 1))), Pipeline_AnonymousPipelineModule_L30F29T54_Expr'length);
-	end process;
-	process (Pipeline_AnonymousPipelineModule_L31F29T54_Expr_1, Pipeline_AnonymousPipelineModule_L31F29T54_Expr_2)
-	begin
-		Pipeline_AnonymousPipelineModule_L31F29T54_Expr <= resize(unsigned(signed(resize(Pipeline_AnonymousPipelineModule_L31F29T54_Expr_1, Pipeline_AnonymousPipelineModule_L31F29T54_Expr_1'length + 1)) + signed(resize(Pipeline_AnonymousPipelineModule_L31F29T54_Expr_2, Pipeline_AnonymousPipelineModule_L31F29T54_Expr_2'length + 1))), Pipeline_AnonymousPipelineModule_L31F29T54_Expr'length);
-	end process;
-	process (Pipeline_AnonymousPipelineModule_L32F29T54_Expr_1, Pipeline_AnonymousPipelineModule_L32F29T54_Expr_2)
-	begin
-		Pipeline_AnonymousPipelineModule_L32F29T54_Expr <= resize(unsigned(signed(resize(Pipeline_AnonymousPipelineModule_L32F29T54_Expr_1, Pipeline_AnonymousPipelineModule_L32F29T54_Expr_1'length + 1)) + signed(resize(Pipeline_AnonymousPipelineModule_L32F29T54_Expr_2, Pipeline_AnonymousPipelineModule_L32F29T54_Expr_2'length + 1))), Pipeline_AnonymousPipelineModule_L32F29T54_Expr'length);
-	end process;
-	process (Pipeline_AnonymousPipelineModule_L36F31T50_Expr_1, Pipeline_AnonymousPipelineModule_L36F31T50_Expr_2)
-	begin
-		Pipeline_AnonymousPipelineModule_L36F31T50_Expr <= resize(signed(signed(resize(Pipeline_AnonymousPipelineModule_L36F31T50_Expr_1, Pipeline_AnonymousPipelineModule_L36F31T50_Expr_1'length + 1)) + signed(resize(Pipeline_AnonymousPipelineModule_L36F31T50_Expr_2, Pipeline_AnonymousPipelineModule_L36F31T50_Expr_2'length + 1))), Pipeline_AnonymousPipelineModule_L36F31T50_Expr'length);
-	end process;
-	process (Pipeline_AnonymousPipelineModule_L37F31T50_Expr_1, Pipeline_AnonymousPipelineModule_L37F31T50_Expr_2)
-	begin
-		Pipeline_AnonymousPipelineModule_L37F31T50_Expr <= resize(signed(signed(resize(Pipeline_AnonymousPipelineModule_L37F31T50_Expr_1, Pipeline_AnonymousPipelineModule_L37F31T50_Expr_1'length + 1)) + signed(resize(Pipeline_AnonymousPipelineModule_L37F31T50_Expr_2, Pipeline_AnonymousPipelineModule_L37F31T50_Expr_2'length + 1))), Pipeline_AnonymousPipelineModule_L37F31T50_Expr'length);
-	end process;
-	process (Pipeline_AnonymousPipelineModule_L41F39T62_Expr_1, Pipeline_AnonymousPipelineModule_L41F39T62_Expr_2)
-	begin
-		Pipeline_AnonymousPipelineModule_L41F39T62_Expr <= resize(signed(signed(resize(Pipeline_AnonymousPipelineModule_L41F39T62_Expr_1, Pipeline_AnonymousPipelineModule_L41F39T62_Expr_1'length + 1)) + signed(resize(Pipeline_AnonymousPipelineModule_L41F39T62_Expr_2, Pipeline_AnonymousPipelineModule_L41F39T62_Expr_2'length + 1))), Pipeline_AnonymousPipelineModule_L41F39T62_Expr'length);
-	end process;
-	process (Pipeline_AnonymousPipelineModule_L29F29T54_Expr, Pipeline_AnonymousPipelineModule_L30F29T54_Expr, Pipeline_AnonymousPipelineModule_L31F29T54_Expr, Pipeline_AnonymousPipelineModule_L32F29T54_Expr, Pipeline_AnonymousPipelineModule_L36F31T50_Expr, Pipeline_AnonymousPipelineModule_L37F31T50_Expr, Pipeline_AnonymousPipelineModule_L41F30T63_Cast, Pipeline_Inputs_inReady, Pipeline_stage0_State_IsS0Ready, Pipeline_stage0_State_sum01, Pipeline_stage0_State_sum23, Pipeline_stage0_State_sum45, Pipeline_stage0_State_sum67, Pipeline_stage1_State_IsS1Ready, Pipeline_stage1_State_sum0123, Pipeline_stage1_State_sum4567, Pipeline_stage2_State_ready, Pipeline_stage2_State_result)
-	begin
-		Pipeline_stage0_NextState_IsS0Ready <= Pipeline_stage0_State_IsS0Ready;
-		Pipeline_stage0_NextState_sum01 <= Pipeline_stage0_State_sum01;
-		Pipeline_stage0_NextState_sum23 <= Pipeline_stage0_State_sum23;
-		Pipeline_stage0_NextState_sum45 <= Pipeline_stage0_State_sum45;
-		Pipeline_stage0_NextState_sum67 <= Pipeline_stage0_State_sum67;
-		Pipeline_stage1_NextState_IsS1Ready <= Pipeline_stage1_State_IsS1Ready;
-		Pipeline_stage1_NextState_sum0123 <= Pipeline_stage1_State_sum0123;
-		Pipeline_stage1_NextState_sum4567 <= Pipeline_stage1_State_sum4567;
-		Pipeline_stage2_NextState_ready <= Pipeline_stage2_State_ready;
-		Pipeline_stage2_NextState_result <= Pipeline_stage2_State_result;
-		Pipeline_stage0_NextState_IsS0Ready <= Pipeline_Inputs_inReady;
-		Pipeline_stage0_NextState_sum01(31 downto 10) <= (
-			others => '0'
-		)
-		;
-		Pipeline_stage0_NextState_sum01(9 downto 0) <= signed(Pipeline_AnonymousPipelineModule_L29F29T54_Expr);
-		Pipeline_stage0_NextState_sum23(31 downto 10) <= (
-			others => '0'
-		)
-		;
-		Pipeline_stage0_NextState_sum23(9 downto 0) <= signed(Pipeline_AnonymousPipelineModule_L30F29T54_Expr);
-		Pipeline_stage0_NextState_sum45(31 downto 10) <= (
-			others => '0'
-		)
-		;
-		Pipeline_stage0_NextState_sum45(9 downto 0) <= signed(Pipeline_AnonymousPipelineModule_L31F29T54_Expr);
-		Pipeline_stage0_NextState_sum67(31 downto 10) <= (
-			others => '0'
-		)
-		;
-		Pipeline_stage0_NextState_sum67(9 downto 0) <= signed(Pipeline_AnonymousPipelineModule_L32F29T54_Expr);
-		Pipeline_stage1_NextState_IsS1Ready <= Pipeline_stage0_State_IsS0Ready;
-		Pipeline_stage1_NextState_sum0123 <= Pipeline_AnonymousPipelineModule_L36F31T50_Expr(31 downto 0);
-		Pipeline_stage1_NextState_sum4567 <= Pipeline_AnonymousPipelineModule_L37F31T50_Expr(31 downto 0);
-		Pipeline_stage2_NextState_ready <= Pipeline_stage1_State_IsS1Ready;
-		Pipeline_stage2_NextState_result <= Pipeline_AnonymousPipelineModule_L41F30T63_Cast;
-	end process;
-	process (inData0, inData1, inData2, inData3, inData4, inData5, inData6, inData7, Inputs_inData, Inputs_inReady, inReady, Pipeline_AnonymousPipelineModule_L41F39T62_Expr, Pipeline_Inputs_inData, Pipeline_stage0_State_sum01, Pipeline_stage0_State_sum23, Pipeline_stage0_State_sum45, Pipeline_stage0_State_sum67, Pipeline_stage1_State_sum0123, Pipeline_stage1_State_sum4567, Pipeline_stage2_NextState_ready, Pipeline_stage2_NextState_result, Pipeline_stage2_State_ready, Pipeline_stage2_State_result, Pipeline_State_ready, Pipeline_State_result)
-	begin
-		Pipeline_AnonymousPipelineModule_L29F29T54_Expr_1(9 downto 8) <= (
-			others => '0'
-		)
-		;
-		Pipeline_AnonymousPipelineModule_L29F29T54_Expr_1(7 downto 0) <= signed(Pipeline_Inputs_inData(0));
-		Pipeline_AnonymousPipelineModule_L29F29T54_Expr_2(9 downto 8) <= (
-			others => '0'
-		)
-		;
-		Pipeline_AnonymousPipelineModule_L29F29T54_Expr_2(7 downto 0) <= signed(Pipeline_Inputs_inData(1));
-		Pipeline_AnonymousPipelineModule_L30F29T54_Expr_1(9 downto 8) <= (
-			others => '0'
-		)
-		;
-		Pipeline_AnonymousPipelineModule_L30F29T54_Expr_1(7 downto 0) <= signed(Pipeline_Inputs_inData(2));
-		Pipeline_AnonymousPipelineModule_L30F29T54_Expr_2(9 downto 8) <= (
-			others => '0'
-		)
-		;
-		Pipeline_AnonymousPipelineModule_L30F29T54_Expr_2(7 downto 0) <= signed(Pipeline_Inputs_inData(3));
-		Pipeline_AnonymousPipelineModule_L31F29T54_Expr_1(9 downto 8) <= (
-			others => '0'
-		)
-		;
-		Pipeline_AnonymousPipelineModule_L31F29T54_Expr_1(7 downto 0) <= signed(Pipeline_Inputs_inData(4));
-		Pipeline_AnonymousPipelineModule_L31F29T54_Expr_2(9 downto 8) <= (
-			others => '0'
-		)
-		;
-		Pipeline_AnonymousPipelineModule_L31F29T54_Expr_2(7 downto 0) <= signed(Pipeline_Inputs_inData(5));
-		Pipeline_AnonymousPipelineModule_L32F29T54_Expr_1(9 downto 8) <= (
-			others => '0'
-		)
-		;
-		Pipeline_AnonymousPipelineModule_L32F29T54_Expr_1(7 downto 0) <= signed(Pipeline_Inputs_inData(6));
-		Pipeline_AnonymousPipelineModule_L32F29T54_Expr_2(9 downto 8) <= (
-			others => '0'
-		)
-		;
-		Pipeline_AnonymousPipelineModule_L32F29T54_Expr_2(7 downto 0) <= signed(Pipeline_Inputs_inData(7));
-		Pipeline_AnonymousPipelineModule_L36F31T50_Expr_1(32) <= Pipeline_stage0_State_sum01(31);
-		Pipeline_AnonymousPipelineModule_L36F31T50_Expr_1(31 downto 0) <= Pipeline_stage0_State_sum01;
-		Pipeline_AnonymousPipelineModule_L36F31T50_Expr_2(32) <= Pipeline_stage0_State_sum23(31);
-		Pipeline_AnonymousPipelineModule_L36F31T50_Expr_2(31 downto 0) <= Pipeline_stage0_State_sum23;
-		Pipeline_AnonymousPipelineModule_L37F31T50_Expr_1(32) <= Pipeline_stage0_State_sum45(31);
-		Pipeline_AnonymousPipelineModule_L37F31T50_Expr_1(31 downto 0) <= Pipeline_stage0_State_sum45;
-		Pipeline_AnonymousPipelineModule_L37F31T50_Expr_2(32) <= Pipeline_stage0_State_sum67(31);
-		Pipeline_AnonymousPipelineModule_L37F31T50_Expr_2(31 downto 0) <= Pipeline_stage0_State_sum67;
-		Pipeline_AnonymousPipelineModule_L41F39T62_Expr_1(32) <= Pipeline_stage1_State_sum0123(31);
-		Pipeline_AnonymousPipelineModule_L41F39T62_Expr_1(31 downto 0) <= Pipeline_stage1_State_sum0123;
-		Pipeline_AnonymousPipelineModule_L41F39T62_Expr_2(32) <= Pipeline_stage1_State_sum4567(31);
-		Pipeline_AnonymousPipelineModule_L41F39T62_Expr_2(31 downto 0) <= Pipeline_stage1_State_sum4567;
 		Inputs_inData(0) <= inData0;
 		Inputs_inData(1) <= inData1;
 		Inputs_inData(2) <= inData2;
@@ -271,22 +123,6 @@ begin
 		Inputs_inData(6) <= inData6;
 		Inputs_inData(7) <= inData7;
 		Inputs_inReady <= inReady;
-		Pipeline_State_ready <= Pipeline_stage2_State_ready;
-		Pipeline_State_result <= Pipeline_stage2_State_result;
-		Pipeline_NextState_ready <= Pipeline_stage2_NextState_ready;
-		Pipeline_NextState_result <= Pipeline_stage2_NextState_result;
-		Pipeline_AnonymousPipelineModule_L41F30T63_Cast <= unsigned(Pipeline_AnonymousPipelineModule_L41F39T62_Expr(15 downto 0));
-		outReady <= Pipeline_State_ready;
-		outResult <= Pipeline_State_result;
-		Pipeline_Inputs_inData(0) <= Inputs_inData(0);
-		Pipeline_Inputs_inData(1) <= Inputs_inData(1);
-		Pipeline_Inputs_inData(2) <= Inputs_inData(2);
-		Pipeline_Inputs_inData(3) <= Inputs_inData(3);
-		Pipeline_Inputs_inData(4) <= Inputs_inData(4);
-		Pipeline_Inputs_inData(5) <= Inputs_inData(5);
-		Pipeline_Inputs_inData(6) <= Inputs_inData(6);
-		Pipeline_Inputs_inData(7) <= Inputs_inData(7);
-		Pipeline_Inputs_inReady <= Inputs_inReady;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

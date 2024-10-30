@@ -43,17 +43,6 @@ module CollectionInitializerModule_TopLevel
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire [7: 0] State_stateDefault = 8'b00000000;
-	wire [6: 0] CollectionInitializerModule_L26F36T40_Expr = 7'b1010101;
-	wire CollectionInitializerModule_L26F42T43_Expr = 1'b1;
-	wire [1: 0] CollectionInitializerModule_L26F45T46_Expr = 2'b10;
-	wire [1: 0] CollectionInitializerModule_L26F48T49_Expr = 2'b11;
-	wire [7: 0] CollectionInitializerModule_L30F48T52_Expr = 8'b10101010;
-	wire [2: 0] CollectionInitializerModule_L30F54T55_Expr = 3'b100;
-	wire [2: 0] CollectionInitializerModule_L30F57T58_Expr = 3'b101;
-	wire [2: 0] CollectionInitializerModule_L30F60T61_Expr = 3'b110;
-	wire [7: 0] CollectionInitializerModule_L34F61T65_Expr = 8'b10000000;
-	wire [7: 0] CollectionInitializerModule_L34F67T71_Expr = 8'b10000010;
-	wire CollectionInitializerModule_L34F73T77_Expr = 1'b1;
 	wire [7: 0] Inputs_data;
 	wire Inputs_i1;
 	wire Inputs_i2;
@@ -72,9 +61,6 @@ module CollectionInitializerModule_TopLevel
 		for (NextState_state_Iterator = 0; NextState_state_Iterator < 4; NextState_state_Iterator = NextState_state_Iterator + 1)
 			NextState_state[NextState_state_Iterator] = 0;
 	end
-	wire [6 : 0] CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_Enumerable [0 : 3];
-	wire [7 : 0] CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_Enumerable [0 : 3];
-	wire [7 : 0] CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F35T79_Enumerable [0 : 3];
 	always @ (posedge Clock)
 	begin
 		if ((Reset == 1))
@@ -92,99 +78,10 @@ module CollectionInitializerModule_TopLevel
 			end
 		end
 	end
-	always @ (*)
-	begin
-		NextState_state_Iterator = 0;
-		for (NextState_state_Iterator = 0; (NextState_state_Iterator < 4); NextState_state_Iterator = (NextState_state_Iterator + 1))
-		begin
-			NextState_state[NextState_state_Iterator] = State_state[NextState_state_Iterator];
-		end
-		if ((Inputs_i1 == 1))
-		begin
-			NextState_state[0] = {
-				1'b0,
-				CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_Enumerable[0]
-			}
-			;
-			NextState_state[1] = {
-				1'b0,
-				CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_Enumerable[1]
-			}
-			;
-			NextState_state[2] = {
-				1'b0,
-				CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_Enumerable[2]
-			}
-			;
-			NextState_state[3] = {
-				1'b0,
-				CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_Enumerable[3]
-			}
-			;
-		end
-		else if ((Inputs_i2 == 1))
-		begin
-			NextState_state[0] = CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_Enumerable[0];
-			NextState_state[1] = CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_Enumerable[1];
-			NextState_state[2] = CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_Enumerable[2];
-			NextState_state[3] = CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_Enumerable[3];
-		end
-		else if ((Inputs_i3 == 1))
-		begin
-			NextState_state[0] = CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F35T79_Enumerable[0];
-			NextState_state[1] = CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F35T79_Enumerable[1];
-			NextState_state[2] = CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F35T79_Enumerable[2];
-			NextState_state[3] = CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F35T79_Enumerable[3];
-		end
-	end
 	assign Inputs_data = data;
 	assign Inputs_i1 = i1;
 	assign Inputs_i2 = i2;
 	assign Inputs_i3 = i3;
-	assign CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_Enumerable[0] = CollectionInitializerModule_L26F36T40_Expr;
-	assign CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_Enumerable[1] = {
-		{6{1'b0}},
-		CollectionInitializerModule_L26F42T43_Expr
-	}
-	;
-	assign CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_Enumerable[2] = {
-		{5{1'b0}},
-		CollectionInitializerModule_L26F45T46_Expr
-	}
-	;
-	assign CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_Enumerable[3] = {
-		{5{1'b0}},
-		CollectionInitializerModule_L26F48T49_Expr
-	}
-	;
-	assign CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_Enumerable[0] = CollectionInitializerModule_L30F48T52_Expr;
-	assign CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_Enumerable[1] = {
-		{5{1'b0}},
-		CollectionInitializerModule_L30F54T55_Expr
-	}
-	;
-	assign CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_Enumerable[2] = {
-		{5{1'b0}},
-		CollectionInitializerModule_L30F57T58_Expr
-	}
-	;
-	assign CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_Enumerable[3] = {
-		{5{1'b0}},
-		CollectionInitializerModule_L30F60T61_Expr
-	}
-	;
-	assign CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F35T79_Enumerable[0] = Inputs_data;
-	assign CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F35T79_Enumerable[1] = CollectionInitializerModule_L34F61T65_Expr;
-	assign CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F35T79_Enumerable[2] = CollectionInitializerModule_L34F67T71_Expr;
-	assign CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F35T79_Enumerable[3] = {
-		{7{1'b0}},
-		CollectionInitializerModule_L34F73T77_Expr
-	}
-	;
-	assign oState0 = State_state[0];
-	assign oState1 = State_state[1];
-	assign oState2 = State_state[2];
-	assign oState3 = State_state[3];
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

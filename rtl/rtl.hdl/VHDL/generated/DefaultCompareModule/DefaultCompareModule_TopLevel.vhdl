@@ -48,77 +48,11 @@ architecture rtl of DefaultCompareModule_TopLevel is
 	signal Inputs_Lhs : unsigned(31 downto 0) := (others => '0');
 	signal Inputs_Rhs : unsigned(31 downto 0) := (others => '0');
 	signal internalEQ : std_logic := '0';
-	signal CompareModule_L19F28T47_SignChange : signed(31 downto 0) := (others => '0');
-	signal CompareModule_L19F50T69_SignChange : signed(31 downto 0) := (others => '0');
-	signal CompareModule_L16F28T49_SignChange : unsigned(31 downto 0) := (others => '0');
-	signal CompareModule_L16F52T73_SignChange : unsigned(31 downto 0) := (others => '0');
-	signal CompareModule_L20F28T47_SignChange : signed(31 downto 0) := (others => '0');
-	signal CompareModule_L20F50T69_SignChange : signed(31 downto 0) := (others => '0');
-	signal CompareModule_L17F28T49_SignChange : unsigned(31 downto 0) := (others => '0');
-	signal CompareModule_L17F52T73_SignChange : unsigned(31 downto 0) := (others => '0');
-	signal CompareModule_L15F27T38_Expr : std_logic := '0';
-	signal CompareModule_L15F27T38_Expr_1 : std_logic := '0';
-	signal CompareModule_L13F28T52_Expr : std_logic := '0';
-	signal CompareModule_L13F28T52_ExprLhs : signed(32 downto 0) := "000000000000000000000000000000000";
-	signal CompareModule_L13F28T52_ExprRhs : signed(32 downto 0) := "000000000000000000000000000000000";
-	signal CompareModule_L19F28T69_Expr : std_logic := '0';
-	signal CompareModule_L19F28T69_ExprLhs : signed(31 downto 0) := "00000000000000000000000000000000";
-	signal CompareModule_L19F28T69_ExprRhs : signed(31 downto 0) := "00000000000000000000000000000000";
-	signal CompareModule_L16F28T73_Expr : std_logic := '0';
-	signal CompareModule_L16F28T73_ExprLhs : signed(32 downto 0) := "000000000000000000000000000000000";
-	signal CompareModule_L16F28T73_ExprRhs : signed(32 downto 0) := "000000000000000000000000000000000";
-	signal CompareModule_L20F28T69_Expr : std_logic := '0';
-	signal CompareModule_L20F28T69_ExprLhs : signed(31 downto 0) := "00000000000000000000000000000000";
-	signal CompareModule_L20F28T69_ExprRhs : signed(31 downto 0) := "00000000000000000000000000000000";
-	signal CompareModule_L17F28T73_Expr : std_logic := '0';
-	signal CompareModule_L17F28T73_ExprLhs : signed(32 downto 0) := "000000000000000000000000000000000";
-	signal CompareModule_L17F28T73_ExprRhs : signed(32 downto 0) := "000000000000000000000000000000000";
 begin
-	CompareModule_L13F28T52_Expr <= '1' when (signed(resize(CompareModule_L13F28T52_ExprLhs, CompareModule_L13F28T52_ExprLhs'length + 1)) = signed(resize(CompareModule_L13F28T52_ExprRhs, CompareModule_L13F28T52_ExprRhs'length + 1))) else '0';
-	CompareModule_L19F28T69_Expr <= '1' when (signed(resize(CompareModule_L19F28T69_ExprLhs, CompareModule_L19F28T69_ExprLhs'length + 1)) > signed(resize(CompareModule_L19F28T69_ExprRhs, CompareModule_L19F28T69_ExprRhs'length + 1))) else '0';
-	CompareModule_L16F28T73_Expr <= '1' when (signed(resize(CompareModule_L16F28T73_ExprLhs, CompareModule_L16F28T73_ExprLhs'length + 1)) > signed(resize(CompareModule_L16F28T73_ExprRhs, CompareModule_L16F28T73_ExprRhs'length + 1))) else '0';
-	CompareModule_L20F28T69_Expr <= '1' when (signed(resize(CompareModule_L20F28T69_ExprLhs, CompareModule_L20F28T69_ExprLhs'length + 1)) < signed(resize(CompareModule_L20F28T69_ExprRhs, CompareModule_L20F28T69_ExprRhs'length + 1))) else '0';
-	CompareModule_L17F28T73_Expr <= '1' when (signed(resize(CompareModule_L17F28T73_ExprLhs, CompareModule_L17F28T73_ExprLhs'length + 1)) < signed(resize(CompareModule_L17F28T73_ExprRhs, CompareModule_L17F28T73_ExprRhs'length + 1))) else '0';
-	process (CompareModule_L15F27T38_Expr_1)
+	process (Lhs, Rhs)
 	begin
-		CompareModule_L15F27T38_Expr <= NOT CompareModule_L15F27T38_Expr_1;
-	end process;
-	process (CompareModule_L13F28T52_Expr, CompareModule_L15F27T38_Expr, CompareModule_L16F28T49_SignChange, CompareModule_L16F28T73_Expr, CompareModule_L16F52T73_SignChange, CompareModule_L17F28T49_SignChange, CompareModule_L17F28T73_Expr, CompareModule_L17F52T73_SignChange, CompareModule_L19F28T47_SignChange, CompareModule_L19F28T69_Expr, CompareModule_L19F50T69_SignChange, CompareModule_L20F28T47_SignChange, CompareModule_L20F28T69_Expr, CompareModule_L20F50T69_SignChange, Inputs_Lhs, Inputs_Rhs, internalEQ, Lhs, Rhs)
-	begin
-		CompareModule_L13F28T52_ExprLhs(32) <= '0';
-		CompareModule_L13F28T52_ExprLhs(31 downto 0) <= signed(Inputs_Lhs);
-		CompareModule_L13F28T52_ExprRhs(32) <= '0';
-		CompareModule_L13F28T52_ExprRhs(31 downto 0) <= signed(Inputs_Rhs);
-		CompareModule_L19F28T69_ExprLhs <= CompareModule_L19F28T47_SignChange;
-		CompareModule_L19F28T69_ExprRhs <= CompareModule_L19F50T69_SignChange;
-		CompareModule_L16F28T73_ExprLhs(32) <= '0';
-		CompareModule_L16F28T73_ExprLhs(31 downto 0) <= signed(CompareModule_L16F28T49_SignChange);
-		CompareModule_L16F28T73_ExprRhs(32) <= '0';
-		CompareModule_L16F28T73_ExprRhs(31 downto 0) <= signed(CompareModule_L16F52T73_SignChange);
-		CompareModule_L20F28T69_ExprLhs <= CompareModule_L20F28T47_SignChange;
-		CompareModule_L20F28T69_ExprRhs <= CompareModule_L20F50T69_SignChange;
-		CompareModule_L17F28T73_ExprLhs(32) <= '0';
-		CompareModule_L17F28T73_ExprLhs(31 downto 0) <= signed(CompareModule_L17F28T49_SignChange);
-		CompareModule_L17F28T73_ExprRhs(32) <= '0';
-		CompareModule_L17F28T73_ExprRhs(31 downto 0) <= signed(CompareModule_L17F52T73_SignChange);
-		CompareModule_L15F27T38_Expr_1 <= internalEQ;
 		Inputs_Lhs <= Lhs;
 		Inputs_Rhs <= Rhs;
-		internalEQ <= CompareModule_L13F28T52_Expr;
-		EQ <= internalEQ;
-		CompareModule_L19F28T47_SignChange <= signed(Inputs_Lhs);
-		CompareModule_L19F50T69_SignChange <= signed(Inputs_Rhs);
-		GTS <= CompareModule_L19F28T69_Expr;
-		CompareModule_L16F28T49_SignChange <= Inputs_Lhs;
-		CompareModule_L16F52T73_SignChange <= Inputs_Rhs;
-		GTU <= CompareModule_L16F28T73_Expr;
-		CompareModule_L20F28T47_SignChange <= signed(Inputs_Lhs);
-		CompareModule_L20F50T69_SignChange <= signed(Inputs_Rhs);
-		LTS <= CompareModule_L20F28T69_Expr;
-		CompareModule_L17F28T49_SignChange <= Inputs_Lhs;
-		CompareModule_L17F52T73_SignChange <= Inputs_Rhs;
-		LTU <= CompareModule_L17F28T73_Expr;
-		NE <= CompareModule_L15F27T38_Expr;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

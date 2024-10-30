@@ -1,4 +1,8 @@
 No reads:
+	Inputs_iTuple
+	Inputs_iTupleArray
+	State_Value
 	State_ValueDefault
 No writes:
+	NextState_Value
 	State_ValueArrayInit

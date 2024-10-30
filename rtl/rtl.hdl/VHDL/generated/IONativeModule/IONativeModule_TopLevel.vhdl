@@ -57,16 +57,9 @@ begin
 			end if;
 		end if;
 	end process;
-	process (Inputs_iByteValue, State_sByteValue)
-	begin
-		NextState_sByteValue <= State_sByteValue;
-		NextState_sByteValue <= Inputs_iByteValue;
-	end process;
-	process (iByteValue, Inputs_iByteValue, State_sByteValue)
+	process (iByteValue)
 	begin
 		Inputs_iByteValue <= iByteValue;
-		oiByteValue <= Inputs_iByteValue;
-		osByteValue <= State_sByteValue;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

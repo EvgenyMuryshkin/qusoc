@@ -1,3 +1,9 @@
 No reads:
+	Inputs_iValues
 	inputWidth
+	internalEncoded
+	internalHasActive
 	resultWidth
+No writes:
+	internalEncoded
+	internalHasActive

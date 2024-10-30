@@ -42,28 +42,10 @@ architecture rtl of LogicRAMModule_TopLevel is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	constant State_BuffDefault : unsigned(7 downto 0) := "00000000";
-	constant LogicRAMModule_L30F46T47_Expr : std_logic := '1';
-	constant LogicRAMModule_L25F102T103_Expr : unsigned(1 downto 0) := "10";
 	signal Inputs_Value : unsigned(7 downto 0) := (others => '0');
 	signal NextState_Index : unsigned(1 downto 0) := (others => '0');
-	signal LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F31T54_Index : unsigned(1 downto 0) := (others => '0');
-	signal LogicRAMModule_L25F28T104_Cast : unsigned(7 downto 0) := (others => '0');
 	signal State_Index : unsigned(1 downto 0) := "00";
 	constant State_IndexDefault : unsigned(1 downto 0) := "00";
-	signal LogicRAMModule_L25F35T103_Expr : unsigned(10 downto 0) := "00000000000";
-	signal LogicRAMModule_L25F35T103_Expr_1 : unsigned(10 downto 0) := "00000000000";
-	signal LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F32T47_Expr : unsigned(3 downto 0) := "0000";
-	signal LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F32T47_Expr_1 : signed(3 downto 0) := "0000";
-	signal LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F32T47_Expr_2 : signed(3 downto 0) := "0000";
-	signal LogicRAMModule_L25F36T97_Expr : unsigned(13 downto 0) := "00000000000000";
-	signal LogicRAMModule_L25F36T97_Expr_1 : signed(13 downto 0) := "00000000000000";
-	signal LogicRAMModule_L25F36T97_Expr_2 : signed(13 downto 0) := "00000000000000";
-	signal LogicRAMModule_L25F36T81_Expr : unsigned(11 downto 0) := "000000000000";
-	signal LogicRAMModule_L25F36T81_Expr_1 : signed(11 downto 0) := "000000000000";
-	signal LogicRAMModule_L25F36T81_Expr_2 : signed(11 downto 0) := "000000000000";
-	signal LogicRAMModule_L25F36T65_Expr : unsigned(9 downto 0) := "0000000000";
-	signal LogicRAMModule_L25F36T65_Expr_1 : signed(9 downto 0) := "0000000000";
-	signal LogicRAMModule_L25F36T65_Expr_2 : signed(9 downto 0) := "0000000000";
 	type State_BuffArray is array (0 to 3) of unsigned (7 downto 0);
 	signal State_Buff : State_BuffArray := (others => (others => '0'));
 	type NextState_BuffArray is array (0 to 3) of unsigned (7 downto 0);
@@ -93,95 +75,9 @@ begin
 			end if;
 		end if;
 	end process;
-	process (LogicRAMModule_L25F35T103_Expr_1)
-		alias output is LogicRAMModule_L25F35T103_Expr;
-		alias source0 is LogicRAMModule_L25F35T103_Expr_1;
+	process (Value)
 	begin
-		-- Output: LogicRAMModule_L25F35T103_Expr, Width: 11, ShiftBy: 2, Sources: 1
-		output(0) <= source0(2);
-		output(1) <= source0(3);
-		output(2) <= source0(4);
-		output(3) <= source0(5);
-		output(4) <= source0(6);
-		output(5) <= source0(7);
-		output(6) <= source0(8);
-		output(7) <= source0(9);
-		output(8) <= source0(10);
-		output(9) <= '0';
-		output(10) <= '0';
-	end process;
-	process (LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F32T47_Expr_1, LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F32T47_Expr_2)
-	begin
-		LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F32T47_Expr <= resize(unsigned(signed(resize(LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F32T47_Expr_1, LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F32T47_Expr_1'length + 1)) + signed(resize(LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F32T47_Expr_2, LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F32T47_Expr_2'length + 1))), LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F32T47_Expr'length);
-	end process;
-	process (LogicRAMModule_L25F36T97_Expr_1, LogicRAMModule_L25F36T97_Expr_2)
-	begin
-		LogicRAMModule_L25F36T97_Expr <= resize(unsigned(signed(resize(LogicRAMModule_L25F36T97_Expr_1, LogicRAMModule_L25F36T97_Expr_1'length + 1)) + signed(resize(LogicRAMModule_L25F36T97_Expr_2, LogicRAMModule_L25F36T97_Expr_2'length + 1))), LogicRAMModule_L25F36T97_Expr'length);
-	end process;
-	process (LogicRAMModule_L25F36T81_Expr_1, LogicRAMModule_L25F36T81_Expr_2)
-	begin
-		LogicRAMModule_L25F36T81_Expr <= resize(unsigned(signed(resize(LogicRAMModule_L25F36T81_Expr_1, LogicRAMModule_L25F36T81_Expr_1'length + 1)) + signed(resize(LogicRAMModule_L25F36T81_Expr_2, LogicRAMModule_L25F36T81_Expr_2'length + 1))), LogicRAMModule_L25F36T81_Expr'length);
-	end process;
-	process (LogicRAMModule_L25F36T65_Expr_1, LogicRAMModule_L25F36T65_Expr_2)
-	begin
-		LogicRAMModule_L25F36T65_Expr <= resize(unsigned(signed(resize(LogicRAMModule_L25F36T65_Expr_1, LogicRAMModule_L25F36T65_Expr_1'length + 1)) + signed(resize(LogicRAMModule_L25F36T65_Expr_2, LogicRAMModule_L25F36T65_Expr_2'length + 1))), LogicRAMModule_L25F36T65_Expr'length);
-	end process;
-	process (Inputs_Value, LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F31T54_Index, State_Buff, State_Index)
-	begin
-		for NextState_Buff_Iterator in 0 to 3 loop
-			NextState_Buff(NextState_Buff_Iterator) <= State_Buff(NextState_Buff_Iterator);
-		end loop;
-		NextState_Index <= State_Index;
-		NextState_Buff(TO_INTEGER(State_Index)) <= Inputs_Value;
-		NextState_Index <= LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F31T54_Index;
-	end process;
-	process (LogicRAMModule_L25F28T104_Cast, LogicRAMModule_L25F35T103_Expr, LogicRAMModule_L25F36T65_Expr, LogicRAMModule_L25F36T81_Expr, LogicRAMModule_L25F36T97_Expr, LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F32T47_Expr, State_Buff, State_Index, Value)
-	begin
-		LogicRAMModule_L25F35T103_Expr_1 <= LogicRAMModule_L25F36T97_Expr(10 downto 0);
-		LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F32T47_Expr_1(3 downto 2) <= (
-			others => '0'
-		)
-		;
-		LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F32T47_Expr_1(1 downto 0) <= signed(State_Index);
-		LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F32T47_Expr_2(3 downto 1) <= (
-			others => '0'
-		)
-		;
-		LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F32T47_Expr_2(0) <= LogicRAMModule_L30F46T47_Expr;
-		LogicRAMModule_L25F36T97_Expr_1(13 downto 12) <= (
-			others => '0'
-		)
-		;
-		LogicRAMModule_L25F36T97_Expr_1(11 downto 0) <= signed(LogicRAMModule_L25F36T81_Expr);
-		LogicRAMModule_L25F36T97_Expr_2(13 downto 8) <= (
-			others => '0'
-		)
-		;
-		LogicRAMModule_L25F36T97_Expr_2(7 downto 0) <= signed(State_Buff(3));
-		LogicRAMModule_L25F36T81_Expr_1(11 downto 10) <= (
-			others => '0'
-		)
-		;
-		LogicRAMModule_L25F36T81_Expr_1(9 downto 0) <= signed(LogicRAMModule_L25F36T65_Expr);
-		LogicRAMModule_L25F36T81_Expr_2(11 downto 8) <= (
-			others => '0'
-		)
-		;
-		LogicRAMModule_L25F36T81_Expr_2(7 downto 0) <= signed(State_Buff(2));
-		LogicRAMModule_L25F36T65_Expr_1(9 downto 8) <= (
-			others => '0'
-		)
-		;
-		LogicRAMModule_L25F36T65_Expr_1(7 downto 0) <= signed(State_Buff(0));
-		LogicRAMModule_L25F36T65_Expr_2(9 downto 8) <= (
-			others => '0'
-		)
-		;
-		LogicRAMModule_L25F36T65_Expr_2(7 downto 0) <= signed(State_Buff(1));
 		Inputs_Value <= Value;
-		LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F31T54_Index <= LogicRAMModule_L28F9L31T10_LogicRAMModule_L30F32T47_Expr(1 downto 0);
-		LogicRAMModule_L25F28T104_Cast <= LogicRAMModule_L25F35T103_Expr(7 downto 0);
-		Avg <= LogicRAMModule_L25F28T104_Cast;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

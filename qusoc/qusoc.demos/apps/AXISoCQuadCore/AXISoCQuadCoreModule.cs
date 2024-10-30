@@ -242,10 +242,10 @@ namespace AXISoC
                 new ()
                 {
                     iExtReset = extReset[0],
-                    iM2S = [
-                        programmerCPU0Gateway.oM2S,
-                        CPU0.M2S
-                    ],
+                    iProgrammerM2S = programmerCPU0Gateway.oM2S,//iM2S = [
+                    iCPUM2S = CPU0.M2S,//    programmerCPU0Gateway.oM2S,
+                    //    CPU0.M2S
+                    //],
                     iS2M = [
                         cpu0Memory.S2M,
                         cpu0AutoIncrementCounter.S2M,

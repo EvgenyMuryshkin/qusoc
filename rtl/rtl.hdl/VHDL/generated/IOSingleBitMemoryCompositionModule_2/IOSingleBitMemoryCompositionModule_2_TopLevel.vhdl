@@ -42,22 +42,16 @@ architecture rtl of IOSingleBitMemoryCompositionModule_2_TopLevel is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	constant size : signed(2 downto 0) := "010";
-	constant IOSingleBitMemoryCompositionModule_L46F13L49T14_0_i : std_logic := '0';
-	constant IOSingleBitMemoryCompositionModule_L46F13L49T14_1_i : std_logic := '1';
 	signal children0_iValue : std_logic := '0';
 	signal children0_oValue : std_logic := '0';
 	signal children1_iValue : std_logic := '0';
 	signal children1_oValue : std_logic := '0';
-	signal IOSingleBitMemoryCompositionModule_L46F13L49T14_0_IOSingleBitMemoryCompositionModule_L48F44T126_Object : unsigned(0 downto 0) := (others => '0');
-	signal IOSingleBitMemoryCompositionModule_L46F13L49T14_1_IOSingleBitMemoryCompositionModule_L48F44T126_Object : unsigned(0 downto 0) := (others => '0');
 	signal children0_iValue_children0_iValue_HardLink : std_logic := '0';
 	signal children0_oValue_children0_oValue_HardLink : std_logic := '0';
 	signal children1_iValue_children1_iValue_HardLink : std_logic := '0';
 	signal children1_oValue_children1_oValue_HardLink : std_logic := '0';
 	type Inputs_iValuesArray is array (0 to 1) of std_logic;
 	signal Inputs_iValues : Inputs_iValuesArray := (others => '0');
-	type IOSingleBitMemoryCompositionModule_L52F34T74_EnumerableArray is array (0 to 1) of std_logic;
-	signal IOSingleBitMemoryCompositionModule_L52F34T74_Enumerable : IOSingleBitMemoryCompositionModule_L52F34T74_EnumerableArray := (others => '0');
 begin
 	IOSingleBitMemoryCompositionModule_2_TopLevel_children0 : entity work.IOSingleBitMemoryCompositionModule_2_TopLevel_children0
 	port map
@@ -77,18 +71,10 @@ begin
 		oValue => children1_oValue_children1_oValue_HardLink
 	)
 	;
-	process (children0_iValue, children0_oValue, children0_oValue_children0_oValue_HardLink, children1_iValue, children1_oValue, children1_oValue_children1_oValue_HardLink, Inputs_iValues, IOSingleBitMemoryCompositionModule_L46F13L49T14_0_IOSingleBitMemoryCompositionModule_L48F44T126_Object, IOSingleBitMemoryCompositionModule_L46F13L49T14_1_IOSingleBitMemoryCompositionModule_L48F44T126_Object, IOSingleBitMemoryCompositionModule_L52F34T74_Enumerable, iValues0, iValues1)
+	process (children0_iValue, children0_oValue_children0_oValue_HardLink, children1_iValue, children1_oValue_children1_oValue_HardLink, iValues0, iValues1)
 	begin
 		Inputs_iValues(0) <= iValues0;
 		Inputs_iValues(1) <= iValues1;
-		IOSingleBitMemoryCompositionModule_L46F13L49T14_0_IOSingleBitMemoryCompositionModule_L48F44T126_Object(0) <= Inputs_iValues(0);
-		children0_iValue <= IOSingleBitMemoryCompositionModule_L46F13L49T14_0_IOSingleBitMemoryCompositionModule_L48F44T126_Object(0);
-		IOSingleBitMemoryCompositionModule_L46F13L49T14_1_IOSingleBitMemoryCompositionModule_L48F44T126_Object(0) <= Inputs_iValues(1);
-		children1_iValue <= IOSingleBitMemoryCompositionModule_L46F13L49T14_1_IOSingleBitMemoryCompositionModule_L48F44T126_Object(0);
-		IOSingleBitMemoryCompositionModule_L52F34T74_Enumerable(0) <= children0_oValue;
-		IOSingleBitMemoryCompositionModule_L52F34T74_Enumerable(1) <= children1_oValue;
-		oValues0 <= IOSingleBitMemoryCompositionModule_L52F34T74_Enumerable(0);
-		oValues1 <= IOSingleBitMemoryCompositionModule_L52F34T74_Enumerable(1);
 		children0_iValue_children0_iValue_HardLink <= children0_iValue;
 		children0_oValue <= children0_oValue_children0_oValue_HardLink;
 		children1_iValue_children1_iValue_HardLink <= children1_iValue;

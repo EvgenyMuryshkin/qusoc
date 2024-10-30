@@ -37,19 +37,8 @@ module RTLBitArrayCompareUnsignedAsSignedEqModule_TopLevel
 	wire false = 1'b0;
 	wire [31: 0] Inputs_LHS;
 	wire [31: 0] Inputs_RHS;
-	wire signed [31: 0] RTLBitArrayCompareModules_L35F30T49_SignChange;
-	wire signed [31: 0] RTLBitArrayCompareModules_L35F53T72_SignChange;
-	wire RTLBitArrayCompareModules_L35F30T72_Expr;
-	wire signed [31: 0] RTLBitArrayCompareModules_L35F30T72_ExprLhs;
-	wire signed [31: 0] RTLBitArrayCompareModules_L35F30T72_ExprRhs;
-	assign RTLBitArrayCompareModules_L35F30T72_Expr = RTLBitArrayCompareModules_L35F30T72_ExprLhs == RTLBitArrayCompareModules_L35F30T72_ExprRhs ? 1'b1 : 1'b0;
-	assign RTLBitArrayCompareModules_L35F30T72_ExprLhs = RTLBitArrayCompareModules_L35F30T49_SignChange;
-	assign RTLBitArrayCompareModules_L35F30T72_ExprRhs = RTLBitArrayCompareModules_L35F53T72_SignChange;
 	assign Inputs_LHS = LHS;
 	assign Inputs_RHS = RHS;
-	assign RTLBitArrayCompareModules_L35F30T49_SignChange = Inputs_LHS;
-	assign RTLBitArrayCompareModules_L35F53T72_SignChange = Inputs_RHS;
-	assign Value = RTLBitArrayCompareModules_L35F30T72_Expr;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

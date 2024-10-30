@@ -1,0 +1,5 @@
+No reads:
+	Inputs_iByteValue
+	State_sByteValue
+No writes:
+	NextState_sByteValue

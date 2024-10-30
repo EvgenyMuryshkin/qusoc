@@ -61,8 +61,6 @@ architecture rtl of IOTestModule_TopLevel is
 	constant State_ArrayDefault : unsigned(7 downto 0) := "00000000";
 	constant State_IteratorArrayDefault : unsigned(7 downto 0) := "00000000";
 	constant size : unsigned(1 downto 0) := "10";
-	constant IOTestModule_L73F9L81T10_IOTestModule_L79F13L80T68_0_idx : std_logic := '0';
-	constant IOTestModule_L73F9L81T10_IOTestModule_L79F13L80T68_1_idx : std_logic := '1';
 	signal Inputs_InFlag : std_logic := '0';
 	signal NextState_Flag : std_logic := '0';
 	signal State_Flag : std_logic := '0';
@@ -116,44 +114,11 @@ begin
 			end if;
 		end if;
 	end process;
-	process (Inputs_InArray, Inputs_InFlag, State_Array, State_Flag, State_IteratorArray)
-	begin
-		for NextState_Array_Iterator in 0 to 1 loop
-			NextState_Array(NextState_Array_Iterator) <= State_Array(NextState_Array_Iterator);
-		end loop;
-		for NextState_IteratorArray_Iterator in 0 to 1 loop
-			NextState_IteratorArray(NextState_IteratorArray_Iterator) <= State_IteratorArray(NextState_IteratorArray_Iterator);
-		end loop;
-		NextState_Flag <= State_Flag;
-		NextState_Flag <= Inputs_InFlag;
-		if Inputs_InFlag = '1' then
-			NextState_Array(0) <= Inputs_InArray(0);
-			NextState_Array(1) <= Inputs_InArray(1);
-		end if;
-		NextState_IteratorArray(0) <= Inputs_InArray(0);
-		NextState_IteratorArray(1) <= Inputs_InArray(1);
-	end process;
-	process (InArray0, InArray1, InFlag, Inputs_InArray, State_Array, State_Flag, State_IteratorArray)
+	process (InArray0, InArray1, InFlag)
 	begin
 		Inputs_InArray(0) <= InArray0;
 		Inputs_InArray(1) <= InArray1;
 		Inputs_InFlag <= InFlag;
-		ClassOut_Array0 <= State_Array(0);
-		ClassOut_Array1 <= State_Array(1);
-		ClassOut_Flag <= State_Flag;
-		ClassOut_Nested_Array0 <= State_IteratorArray(0);
-		ClassOut_Nested_Array1 <= State_IteratorArray(1);
-		ClassOut_Nested_Flag <= State_Flag;
-		NestedClassOut_Array0 <= State_Array(0);
-		NestedClassOut_Array1 <= State_Array(1);
-		NestedClassOut_Flag <= State_Flag;
-		OutDirectArray0 <= Inputs_InArray(0);
-		OutDirectArray1 <= Inputs_InArray(1);
-		OutFlag <= State_Flag;
-		OutIteratorArray0 <= State_IteratorArray(0);
-		OutIteratorArray1 <= State_IteratorArray(1);
-		OutStateArray0 <= State_Array(0);
-		OutStateArray1 <= State_Array(1);
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

@@ -1,0 +1,3 @@
+└Root       | L1NestedIOObjectModuleInputs | [8:0] | 9 | [8:0]
+ ├byteValue | Byte                         | [8:1] | 8 | [8:0][8:1]
+ └boolValue | Boolean                      | [0]   | 1 | [8:0][0]

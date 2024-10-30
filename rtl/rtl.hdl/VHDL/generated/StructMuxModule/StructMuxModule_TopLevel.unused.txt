@@ -1,0 +1,11 @@
+No reads:
+	ii1
+	Inputs_s1
+	Inputs_s2
+	Inputs_selector
+	is2
+	is3
+No writes:
+	ii1
+	is2
+	is3

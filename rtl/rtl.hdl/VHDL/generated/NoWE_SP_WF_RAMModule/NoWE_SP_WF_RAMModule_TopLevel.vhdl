@@ -42,27 +42,45 @@ architecture rtl of NoWE_SP_WF_RAMModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
+	constant State_BuffDefault : unsigned(7 downto 0) := "00000000";
 	signal Inputs_Address : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_WriteData : unsigned(7 downto 0) := (others => '0');
-	signal State_ReadData : unsigned(7 downto 0) := (others => '0');
+	signal NextState_ReadData : unsigned(7 downto 0) := (others => '0');
+	signal State_ReadData : unsigned(7 downto 0) := "00000000";
+	constant State_ReadDataDefault : unsigned(7 downto 0) := "00000000";
 	type State_BuffArray is array (0 to 255) of unsigned (7 downto 0);
 	signal State_Buff : State_BuffArray := (others => (others => '0'));
-	signal Inputs_Address_reg : unsigned(7 downto 0);
+	type NextState_BuffArray is array (0 to 255) of unsigned (7 downto 0);
+	signal NextState_Buff : NextState_BuffArray := (others => (others => '0'));
 begin
-	process (Address, State_ReadData, WriteData)
+	process (Clock, NextState_ReadData, Reset)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				State_ReadData <= State_ReadDataDefault;
+			else
+				State_ReadData <= NextState_ReadData;
+			end if;
+		end if;
+	end process;
+	process (Clock, NextState_Buff, Reset)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				for State_Buff_Iterator in 0 to 255 loop
+					State_Buff(State_Buff_Iterator) <= State_BuffDefault;
+				end loop;
+			else
+				for State_Buff_Iterator in 0 to 255 loop
+					State_Buff(State_Buff_Iterator) <= NextState_Buff(State_Buff_Iterator);
+				end loop;
+			end if;
+		end if;
+	end process;
+	process (Address, WriteData)
 	begin
 		Inputs_Address <= Address;
 		Inputs_WriteData <= WriteData;
-		Data <= State_ReadData;
-	end process;
-	-- inferred single port RAM with write-first behaviour
-	process (Clock, Inputs_Address, Inputs_WriteData, Inputs_Address_reg, State_Buff)
-	begin
-		if rising_edge(Clock) then
-			State_Buff(TO_INTEGER(Inputs_Address)) <= Inputs_WriteData;
-			Inputs_Address_reg <= Inputs_Address(7 downto 0);
-		end if;
-		State_ReadData <= State_Buff(TO_INTEGER(Inputs_Address_reg));
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

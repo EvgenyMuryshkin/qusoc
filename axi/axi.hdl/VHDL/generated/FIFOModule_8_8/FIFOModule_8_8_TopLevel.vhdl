@@ -33,7 +33,9 @@ entity FIFOModule_8_8_TopLevel is
 		oIsFull : out std_logic;
 		oRACK : out std_logic;
 		oRData : out unsigned (7 downto 0);
-		oRValid : out std_logic
+		oRRawData : out unsigned (7 downto 0);
+		oRValid : out std_logic;
+		oWACK : out std_logic
 	);
 end entity;
 -- FSM summary
@@ -47,12 +49,11 @@ architecture rtl of FIFOModule_8_8_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
+	constant State_bufferDefault : unsigned(7 downto 0) := "00000000";
 	constant addrBits : signed(3 downto 0) := "0100";
 	constant defaultValue : unsigned(3 downto 0) := "0000";
 	constant depth : signed(4 downto 0) := "01000";
 	constant width : signed(4 downto 0) := "01000";
-	constant FIFOModule_L83F64T65_Expr : std_logic := '1';
-	constant FIFOModule_L79F64T65_Expr : std_logic := '1';
 	signal Inputs_iRE : std_logic := '0';
 	signal Inputs_iWData : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_iWE : std_logic := '0';
@@ -61,7 +62,9 @@ architecture rtl of FIFOModule_8_8_TopLevel is
 	signal NextState_isWrapAround : std_logic := '0';
 	signal NextState_rACK : std_logic := '0';
 	signal NextState_rAddr : unsigned(3 downto 0) := (others => '0');
+	signal NextState_rData : unsigned(7 downto 0) := (others => '0');
 	signal NextState_rValid : std_logic := '0';
+	signal NextState_wACK : std_logic := '0';
 	signal NextState_wAddr : unsigned(3 downto 0) := (others => '0');
 	signal isEmptyNext : std_logic := '0';
 	signal isFullNext : std_logic := '0';
@@ -72,21 +75,6 @@ architecture rtl of FIFOModule_8_8_TopLevel is
 	signal wAddr : unsigned(2 downto 0) := (others => '0');
 	signal wAddrNext : unsigned(3 downto 0) := (others => '0');
 	signal we : std_logic := '0';
-	signal FIFOModule_L65F38T64_Index : unsigned(2 downto 0) := (others => '0');
-	signal FIFOModule_L65F68T94_Index : unsigned(2 downto 0) := (others => '0');
-	signal FIFOModule_L66F44T67_Index : std_logic := '0';
-	signal FIFOModule_L66F71T94_Index : std_logic := '0';
-	signal FIFOModule_L83F49T83_Index : unsigned(3 downto 0) := (others => '0');
-	signal FIFOModule_L83F44T97_WhenTrue : unsigned(3 downto 0) := "0000";
-	signal FIFOModule_L83F44T97_WhenFalse : unsigned(3 downto 0) := "0000";
-	signal FIFOModule_L83F44T97_Ternary : unsigned(3 downto 0) := "0000";
-	signal FIFOModule_L79F49T83_Index : unsigned(3 downto 0) := (others => '0');
-	signal FIFOModule_L79F44T97_WhenTrue : unsigned(3 downto 0) := "0000";
-	signal FIFOModule_L79F44T97_WhenFalse : unsigned(3 downto 0) := "0000";
-	signal FIFOModule_L79F44T97_Ternary : unsigned(3 downto 0) := "0000";
-	signal FIFOModule_L71F38T77_WhenTrue : unsigned(7 downto 0) := "00000000";
-	signal FIFOModule_L71F38T77_WhenFalse : unsigned(7 downto 0) := "00000000";
-	signal FIFOModule_L71F38T77_Ternary : unsigned(7 downto 0) := "00000000";
 	signal State_isEmpty : std_logic := '0';
 	constant State_isEmptyDefault : std_logic := '1';
 	signal State_isFull : std_logic := '0';
@@ -97,45 +85,20 @@ architecture rtl of FIFOModule_8_8_TopLevel is
 	constant State_rACKDefault : std_logic := '0';
 	signal State_rAddr : unsigned(3 downto 0) := "0000";
 	constant State_rAddrDefault : unsigned(3 downto 0) := "0000";
-	signal State_rData : unsigned(7 downto 0) := (others => '0');
+	signal State_rData : unsigned(7 downto 0) := "00000000";
+	constant State_rDataDefault : unsigned(7 downto 0) := "00000000";
 	signal State_rValid : std_logic := '0';
 	constant State_rValidDefault : std_logic := '0';
+	signal State_wACK : std_logic := '0';
+	constant State_wACKDefault : std_logic := '0';
 	signal State_wAddr : unsigned(3 downto 0) := "0000";
 	constant State_wAddrDefault : unsigned(3 downto 0) := "0000";
-	signal FIFOModule_L65F38T114_Expr : std_logic := '0';
-	signal FIFOModule_L65F38T114_Expr_1 : std_logic := '0';
-	signal FIFOModule_L65F38T114_Expr_2 : std_logic := '0';
-	signal FIFOModule_L82F20T48_Expr : std_logic := '0';
-	signal FIFOModule_L82F20T48_Expr_1 : std_logic := '0';
-	signal FIFOModule_L82F20T48_Expr_2 : std_logic := '0';
-	signal FIFOModule_L82F34T48_Expr : std_logic := '0';
-	signal FIFOModule_L82F34T48_Expr_1 : std_logic := '0';
-	signal FIFOModule_L78F20T47_Expr : std_logic := '0';
-	signal FIFOModule_L78F20T47_Expr_1 : std_logic := '0';
-	signal FIFOModule_L78F20T47_Expr_2 : std_logic := '0';
-	signal FIFOModule_L78F34T47_Expr : std_logic := '0';
-	signal FIFOModule_L78F34T47_Expr_1 : std_logic := '0';
-	signal FIFOModule_L86F9L104T10_FIFOModule_L98F32T46_Expr : std_logic := '0';
-	signal FIFOModule_L86F9L104T10_FIFOModule_L98F32T46_Expr_1 : std_logic := '0';
-	signal FIFOModule_L83F50T65_Expr : unsigned(5 downto 0) := "000000";
-	signal FIFOModule_L83F50T65_Expr_1 : signed(5 downto 0) := "000000";
-	signal FIFOModule_L83F50T65_Expr_2 : signed(5 downto 0) := "000000";
-	signal FIFOModule_L79F50T65_Expr : unsigned(5 downto 0) := "000000";
-	signal FIFOModule_L79F50T65_Expr_1 : signed(5 downto 0) := "000000";
-	signal FIFOModule_L79F50T65_Expr_2 : signed(5 downto 0) := "000000";
-	signal FIFOModule_L64F39T61_Expr : std_logic := '0';
-	signal FIFOModule_L64F39T61_ExprLhs : signed(4 downto 0) := "00000";
-	signal FIFOModule_L64F39T61_ExprRhs : signed(4 downto 0) := "00000";
-	signal FIFOModule_L65F38T94_Expr : std_logic := '0';
-	signal FIFOModule_L65F38T94_ExprLhs : signed(3 downto 0) := "0000";
-	signal FIFOModule_L65F38T94_ExprRhs : signed(3 downto 0) := "0000";
-	signal FIFOModule_L66F44T94_Expr : std_logic := '0';
-	signal FIFOModule_L66F44T94_ExprLhs : std_logic := '0';
-	signal FIFOModule_L66F44T94_ExprRhs : std_logic := '0';
 	type State_bufferArray is array (0 to 7) of unsigned (7 downto 0);
 	signal State_buffer : State_bufferArray := (others => (others => '0'));
+	type NextState_bufferArray is array (0 to 7) of unsigned (7 downto 0);
+	signal NextState_buffer : NextState_bufferArray := (others => (others => '0'));
 begin
-	process (Clock, NextState_isEmpty, NextState_isFull, NextState_isWrapAround, NextState_rACK, NextState_rAddr, NextState_rValid, NextState_wAddr, Reset)
+	process (Clock, NextState_isEmpty, NextState_isFull, NextState_isWrapAround, NextState_rACK, NextState_rAddr, NextState_rData, NextState_rValid, NextState_wACK, NextState_wAddr, Reset)
 	begin
 		if rising_edge(Clock) then
 			if Reset = '1' then
@@ -144,7 +107,9 @@ begin
 				State_isWrapAround <= State_isWrapAroundDefault;
 				State_rACK <= State_rACKDefault;
 				State_rAddr <= State_rAddrDefault;
+				State_rData <= State_rDataDefault;
 				State_rValid <= State_rValidDefault;
+				State_wACK <= State_wACKDefault;
 				State_wAddr <= State_wAddrDefault;
 			else
 				State_isEmpty <= NextState_isEmpty;
@@ -152,150 +117,32 @@ begin
 				State_isWrapAround <= NextState_isWrapAround;
 				State_rACK <= NextState_rACK;
 				State_rAddr <= NextState_rAddr;
+				State_rData <= NextState_rData;
 				State_rValid <= NextState_rValid;
+				State_wACK <= NextState_wACK;
 				State_wAddr <= NextState_wAddr;
 			end if;
 		end if;
 	end process;
-	FIFOModule_L64F39T61_Expr <= '1' when (signed(resize(FIFOModule_L64F39T61_ExprLhs, FIFOModule_L64F39T61_ExprLhs'length + 1)) = signed(resize(FIFOModule_L64F39T61_ExprRhs, FIFOModule_L64F39T61_ExprRhs'length + 1))) else '0';
-	FIFOModule_L65F38T94_Expr <= '1' when (signed(resize(FIFOModule_L65F38T94_ExprLhs, FIFOModule_L65F38T94_ExprLhs'length + 1)) = signed(resize(FIFOModule_L65F38T94_ExprRhs, FIFOModule_L65F38T94_ExprRhs'length + 1))) else '0';
-	FIFOModule_L66F44T94_Expr <= '1' when (FIFOModule_L66F44T94_ExprLhs /= FIFOModule_L66F44T94_ExprRhs) else '0';
-	process (FIFOModule_L65F38T114_Expr_1, FIFOModule_L65F38T114_Expr_2)
+	process (Clock, NextState_buffer, Reset)
 	begin
-		FIFOModule_L65F38T114_Expr <= FIFOModule_L65F38T114_Expr_1 AND FIFOModule_L65F38T114_Expr_2;
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				for State_buffer_Iterator in 0 to 7 loop
+					State_buffer(State_buffer_Iterator) <= State_bufferDefault;
+				end loop;
+			else
+				for State_buffer_Iterator in 0 to 7 loop
+					State_buffer(State_buffer_Iterator) <= NextState_buffer(State_buffer_Iterator);
+				end loop;
+			end if;
+		end if;
 	end process;
-	process (FIFOModule_L82F20T48_Expr_1, FIFOModule_L82F20T48_Expr_2)
+	process (iRE, iWData, iWE)
 	begin
-		FIFOModule_L82F20T48_Expr <= FIFOModule_L82F20T48_Expr_1 AND FIFOModule_L82F20T48_Expr_2;
-	end process;
-	process (FIFOModule_L82F34T48_Expr_1)
-	begin
-		FIFOModule_L82F34T48_Expr <= NOT FIFOModule_L82F34T48_Expr_1;
-	end process;
-	process (FIFOModule_L78F20T47_Expr_1, FIFOModule_L78F20T47_Expr_2)
-	begin
-		FIFOModule_L78F20T47_Expr <= FIFOModule_L78F20T47_Expr_1 AND FIFOModule_L78F20T47_Expr_2;
-	end process;
-	process (FIFOModule_L78F34T47_Expr_1)
-	begin
-		FIFOModule_L78F34T47_Expr <= NOT FIFOModule_L78F34T47_Expr_1;
-	end process;
-	process (FIFOModule_L86F9L104T10_FIFOModule_L98F32T46_Expr_1)
-	begin
-		FIFOModule_L86F9L104T10_FIFOModule_L98F32T46_Expr <= NOT FIFOModule_L86F9L104T10_FIFOModule_L98F32T46_Expr_1;
-	end process;
-	process (FIFOModule_L83F50T65_Expr_1, FIFOModule_L83F50T65_Expr_2)
-	begin
-		FIFOModule_L83F50T65_Expr <= resize(unsigned(signed(resize(FIFOModule_L83F50T65_Expr_1, FIFOModule_L83F50T65_Expr_1'length + 1)) + signed(resize(FIFOModule_L83F50T65_Expr_2, FIFOModule_L83F50T65_Expr_2'length + 1))), FIFOModule_L83F50T65_Expr'length);
-	end process;
-	process (FIFOModule_L79F50T65_Expr_1, FIFOModule_L79F50T65_Expr_2)
-	begin
-		FIFOModule_L79F50T65_Expr <= resize(unsigned(signed(resize(FIFOModule_L79F50T65_Expr_1, FIFOModule_L79F50T65_Expr_1'length + 1)) + signed(resize(FIFOModule_L79F50T65_Expr_2, FIFOModule_L79F50T65_Expr_2'length + 1))), FIFOModule_L79F50T65_Expr'length);
-	end process;
-	FIFOModule_L83F44T97_Ternary <= FIFOModule_L83F44T97_WhenTrue when (re = '1') else FIFOModule_L83F44T97_WhenFalse;
-	FIFOModule_L79F44T97_Ternary <= FIFOModule_L79F44T97_WhenTrue when (we = '1') else FIFOModule_L79F44T97_WhenFalse;
-	FIFOModule_L71F38T77_Ternary <= FIFOModule_L71F38T77_WhenTrue when (State_rACK = '1') else FIFOModule_L71F38T77_WhenFalse;
-	process (FIFOModule_L86F9L104T10_FIFOModule_L98F32T46_Expr, isEmptyNext, isFullNext, isWrapAroundNext, rAddrNext, re, State_isEmpty, State_isFull, State_isWrapAround, State_rACK, State_rAddr, State_rValid, State_wAddr, wAddrNext)
-	begin
-		NextState_isEmpty <= State_isEmpty;
-		NextState_isFull <= State_isFull;
-		NextState_isWrapAround <= State_isWrapAround;
-		NextState_rACK <= State_rACK;
-		NextState_rAddr <= State_rAddr;
-		NextState_rValid <= State_rValid;
-		NextState_wAddr <= State_wAddr;
-		NextState_wAddr <= wAddrNext;
-		NextState_rAddr <= rAddrNext;
-		NextState_rValid <= FIFOModule_L86F9L104T10_FIFOModule_L98F32T46_Expr;
-		NextState_rACK <= re;
-		NextState_isEmpty <= isEmptyNext;
-		NextState_isFull <= isFullNext;
-		NextState_isWrapAround <= isWrapAroundNext;
-	end process;
-	process (FIFOModule_L64F39T61_Expr, FIFOModule_L65F38T114_Expr, FIFOModule_L65F38T64_Index, FIFOModule_L65F38T94_Expr, FIFOModule_L65F68T94_Index, FIFOModule_L66F44T67_Index, FIFOModule_L66F44T94_Expr, FIFOModule_L66F71T94_Index, FIFOModule_L71F38T77_Ternary, FIFOModule_L78F20T47_Expr, FIFOModule_L78F34T47_Expr, FIFOModule_L79F44T97_Ternary, FIFOModule_L79F49T83_Index, FIFOModule_L79F50T65_Expr, FIFOModule_L82F20T48_Expr, FIFOModule_L82F34T48_Expr, FIFOModule_L83F44T97_Ternary, FIFOModule_L83F49T83_Index, FIFOModule_L83F50T65_Expr, Inputs_iRE, Inputs_iWE, iRE, isWrapAroundNext, iWData, iWE, rAddrNext, State_isEmpty, State_isFull, State_rACK, State_rAddr, State_rData, State_rValid, State_wAddr, wAddrNext)
-	begin
-		FIFOModule_L64F39T61_ExprLhs(4) <= '0';
-		FIFOModule_L64F39T61_ExprLhs(3 downto 0) <= signed(wAddrNext);
-		FIFOModule_L64F39T61_ExprRhs(4) <= '0';
-		FIFOModule_L64F39T61_ExprRhs(3 downto 0) <= signed(rAddrNext);
-		FIFOModule_L65F38T94_ExprLhs(3) <= '0';
-		FIFOModule_L65F38T94_ExprLhs(2 downto 0) <= signed(FIFOModule_L65F38T64_Index);
-		FIFOModule_L65F38T94_ExprRhs(3) <= '0';
-		FIFOModule_L65F38T94_ExprRhs(2 downto 0) <= signed(FIFOModule_L65F68T94_Index);
-		FIFOModule_L66F44T94_ExprLhs <= FIFOModule_L66F44T67_Index;
-		FIFOModule_L66F44T94_ExprRhs <= FIFOModule_L66F71T94_Index;
-		FIFOModule_L65F38T114_Expr_1 <= FIFOModule_L65F38T94_Expr;
-		FIFOModule_L65F38T114_Expr_2 <= isWrapAroundNext;
-		FIFOModule_L82F20T48_Expr_1 <= Inputs_iRE;
-		FIFOModule_L82F20T48_Expr_2 <= FIFOModule_L82F34T48_Expr;
-		FIFOModule_L82F34T48_Expr_1 <= State_isEmpty;
-		FIFOModule_L78F20T47_Expr_1 <= Inputs_iWE;
-		FIFOModule_L78F20T47_Expr_2 <= FIFOModule_L78F34T47_Expr;
-		FIFOModule_L78F34T47_Expr_1 <= State_isFull;
-		FIFOModule_L86F9L104T10_FIFOModule_L98F32T46_Expr_1 <= State_isEmpty;
-		FIFOModule_L83F50T65_Expr_1(5 downto 4) <= (
-			others => '0'
-		)
-		;
-		FIFOModule_L83F50T65_Expr_1(3 downto 0) <= signed(State_rAddr);
-		FIFOModule_L83F50T65_Expr_2(5 downto 1) <= (
-			others => '0'
-		)
-		;
-		FIFOModule_L83F50T65_Expr_2(0) <= FIFOModule_L83F64T65_Expr;
-		FIFOModule_L79F50T65_Expr_1(5 downto 4) <= (
-			others => '0'
-		)
-		;
-		FIFOModule_L79F50T65_Expr_1(3 downto 0) <= signed(State_wAddr);
-		FIFOModule_L79F50T65_Expr_2(5 downto 1) <= (
-			others => '0'
-		)
-		;
-		FIFOModule_L79F50T65_Expr_2(0) <= FIFOModule_L79F64T65_Expr;
 		Inputs_iRE <= iRE;
 		Inputs_iWData <= iWData;
 		Inputs_iWE <= iWE;
-		isEmptyNext <= FIFOModule_L64F39T61_Expr;
-		FIFOModule_L65F38T64_Index <= wAddrNext(2 downto 0);
-		FIFOModule_L65F68T94_Index <= rAddrNext(2 downto 0);
-		isFullNext <= FIFOModule_L65F38T114_Expr;
-		FIFOModule_L66F44T67_Index <= wAddrNext(3);
-		FIFOModule_L66F71T94_Index <= rAddrNext(3);
-		isWrapAroundNext <= FIFOModule_L66F44T94_Expr;
-		rAddr <= State_rAddr(2 downto 0);
-		FIFOModule_L83F49T83_Index <= FIFOModule_L83F50T65_Expr(3 downto 0);
-		FIFOModule_L83F44T97_WhenTrue <= FIFOModule_L83F49T83_Index;
-		FIFOModule_L83F44T97_WhenFalse <= State_rAddr;
-		rAddrNext <= FIFOModule_L83F44T97_Ternary;
-		re <= FIFOModule_L82F20T48_Expr;
-		wAddr <= State_wAddr(2 downto 0);
-		FIFOModule_L79F49T83_Index <= FIFOModule_L79F50T65_Expr(3 downto 0);
-		FIFOModule_L79F44T97_WhenTrue <= FIFOModule_L79F49T83_Index;
-		FIFOModule_L79F44T97_WhenFalse <= State_wAddr;
-		wAddrNext <= FIFOModule_L79F44T97_Ternary;
-		we <= FIFOModule_L78F20T47_Expr;
-		oIsEmpty <= State_isEmpty;
-		oIsFull <= State_isFull;
-		oRACK <= State_rACK;
-		FIFOModule_L71F38T77_WhenTrue <= State_rData;
-		FIFOModule_L71F38T77_WhenFalse(7 downto 4) <= (
-			others => '0'
-		)
-		;
-		FIFOModule_L71F38T77_WhenFalse(3 downto 0) <= defaultValue;
-		oRData <= FIFOModule_L71F38T77_Ternary;
-		oRValid <= State_rValid;
-	end process;
-	-- inferred simple dual port RAM with read-first behaviour
-	process (Clock, we, wAddr, Inputs_iWData, State_buffer, rAddr)
-	begin
-		if rising_edge(Clock) then
-			if we = '1' then
-				State_buffer(TO_INTEGER(wAddr)) <= Inputs_iWData;
-			end if;
-			State_rData <= State_buffer(TO_INTEGER(rAddr));
-		end if;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

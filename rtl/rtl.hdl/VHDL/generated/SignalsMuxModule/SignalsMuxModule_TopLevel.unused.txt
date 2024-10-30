@@ -1,0 +1,9 @@
+No reads:
+	Inputs_Addr
+	Inputs_Sig0
+	Inputs_Sig1
+	Inputs_Sig2
+	Inputs_Sig3
+	signals
+No writes:
+	signals

@@ -1,4 +1,5 @@
 No reads:
-	AXI4GatewayAddressModule_L31F13T35_Expr
 	axiSize
+	Inputs_iMapAddress
+	Inputs_iOriginalAddress
 	originalLowerBits

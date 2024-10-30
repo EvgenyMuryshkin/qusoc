@@ -1,5 +1,5 @@
 Simulator report for VHDL
-Thu Aug 29 18:21:36 2024
+Sun Oct 27 20:52:55 2024
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -45,43 +45,43 @@ applicable agreement for further details.
 +-----------------------------+--------------+
 ; Simulation Start Time       ; 0 ps         ;
 ; Simulation End Time         ; 1.0 us       ;
-; Simulation Netlist Size     ; 73 nodes     ;
-; Simulation Coverage         ;      69.86 % ;
-; Total Number of Transitions ; 186          ;
+; Simulation Netlist Size     ; 325 nodes    ;
+; Simulation Coverage         ;       0.00 % ;
+; Total Number of Transitions ; 0            ;
 ; Simulation Breakpoints      ; 0            ;
 ; Family                      ; Cyclone II   ;
 ; Device                      ; EP2C70F896C6 ;
 +-----------------------------+--------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Simulator Settings                                                                                                                                     ;
-+--------------------------------------------------------------------------------------------+-------------------------------------------+---------------+
-; Option                                                                                     ; Setting                                   ; Default Value ;
-+--------------------------------------------------------------------------------------------+-------------------------------------------+---------------+
-; Simulation mode                                                                            ; Timing                                    ; Timing        ;
-; Start time                                                                                 ; 0 ns                                      ; 0 ns          ;
-; Simulation results format                                                                  ; CVWF                                      ;               ;
-; Vector input source                                                                        ; Waveforms/CollectionInitializerModule.vwf ;               ;
-; Add pins automatically to simulation output waveforms                                      ; On                                        ; On            ;
-; Check outputs                                                                              ; Off                                       ; Off           ;
-; Report simulation coverage                                                                 ; On                                        ; On            ;
-; Display complete 1/0 value coverage report                                                 ; On                                        ; On            ;
-; Display missing 1-value coverage report                                                    ; On                                        ; On            ;
-; Display missing 0-value coverage report                                                    ; On                                        ; On            ;
-; Detect setup and hold time violations                                                      ; Off                                       ; Off           ;
-; Detect glitches                                                                            ; Off                                       ; Off           ;
-; Disable timing delays in Timing Simulation                                                 ; Off                                       ; Off           ;
-; Generate Signal Activity File                                                              ; Off                                       ; Off           ;
-; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                                       ; Off           ;
-; Group bus channels in simulation results                                                   ; Off                                       ; Off           ;
-; Preserve fewer signal transitions to reduce memory requirements                            ; On                                        ; On            ;
-; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                                ; INPUT_EDGE    ;
-; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                                       ; Off           ;
-; Overwrite waveform inputs                                                                  ; on                                        ;               ;
-; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                                        ;               ;
-; Perform Glitch Filtering in Timing Simulation                                              ; Auto                                      ; Auto          ;
-+--------------------------------------------------------------------------------------------+-------------------------------------------+---------------+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                                          ;
++--------------------------------------------------------------------------------------------+--------------------------------+---------------+
+; Option                                                                                     ; Setting                        ; Default Value ;
++--------------------------------------------------------------------------------------------+--------------------------------+---------------+
+; Simulation mode                                                                            ; Timing                         ; Timing        ;
+; Start time                                                                                 ; 0 ns                           ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF                           ;               ;
+; Vector input source                                                                        ; Waveforms/DefaultALUModule.vwf ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On                             ; On            ;
+; Check outputs                                                                              ; Off                            ; Off           ;
+; Report simulation coverage                                                                 ; On                             ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On                             ; On            ;
+; Display missing 1-value coverage report                                                    ; On                             ; On            ;
+; Display missing 0-value coverage report                                                    ; On                             ; On            ;
+; Detect setup and hold time violations                                                      ; Off                            ; Off           ;
+; Detect glitches                                                                            ; Off                            ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off                            ; Off           ;
+; Generate Signal Activity File                                                              ; Off                            ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                            ; Off           ;
+; Group bus channels in simulation results                                                   ; Off                            ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On                             ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                     ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                            ; Off           ;
+; Overwrite waveform inputs                                                                  ; on                             ;               ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                             ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto                           ; Auto          ;
++--------------------------------------------------------------------------------------------+--------------------------------+---------------+
 
 
 +----------------------+
@@ -96,136 +96,552 @@ Please use Quartus II to view the waveform report data.
 +-----------------------------------------------------+--------------+
 ; Type                                                ; Value        ;
 +-----------------------------------------------------+--------------+
-; Total coverage as a percentage                      ;      69.86 % ;
-; Total nodes checked                                 ; 73           ;
-; Total output ports checked                          ; 73           ;
-; Total output ports with complete 1/0-value coverage ; 51           ;
-; Total output ports with no 1/0-value coverage       ; 22           ;
-; Total output ports with no 1-value coverage         ; 22           ;
-; Total output ports with no 0-value coverage         ; 22           ;
+; Total coverage as a percentage                      ;       0.00 % ;
+; Total nodes checked                                 ; 325          ;
+; Total output ports checked                          ; 256          ;
+; Total output ports with complete 1/0-value coverage ; 0            ;
+; Total output ports with no 1/0-value coverage       ; 256          ;
+; Total output ports with no 1-value coverage         ; 256          ;
+; Total output ports with no 0-value coverage         ; 256          ;
 +-----------------------------------------------------+--------------+
 
 
 The following table displays output ports that toggle between 1 and 0 during simulation.
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Complete 1/0-Value Coverage                                                                                                                                  ;
-+---------------------------------------------------------------------+---------------------------------------------------------------------+------------------+
-; Node Name                                                           ; Output Port Name                                                    ; Output Port Type ;
-+---------------------------------------------------------------------+---------------------------------------------------------------------+------------------+
-; |CollectionInitializerModule_TopLevel|State_state[3][2]             ; |CollectionInitializerModule_TopLevel|State_state[3][2]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[2][7]             ; |CollectionInitializerModule_TopLevel|State_state[2][7]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[3][0]             ; |CollectionInitializerModule_TopLevel|State_state[3][0]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[3][1]             ; |CollectionInitializerModule_TopLevel|State_state[3][1]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[0][0]             ; |CollectionInitializerModule_TopLevel|State_state[0][0]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[0][1]             ; |CollectionInitializerModule_TopLevel|State_state[0][1]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[0][2]             ; |CollectionInitializerModule_TopLevel|State_state[0][2]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[0][3]             ; |CollectionInitializerModule_TopLevel|State_state[0][3]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[0][4]             ; |CollectionInitializerModule_TopLevel|State_state[0][4]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[0][5]             ; |CollectionInitializerModule_TopLevel|State_state[0][5]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[0][6]             ; |CollectionInitializerModule_TopLevel|State_state[0][6]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[0][7]             ; |CollectionInitializerModule_TopLevel|State_state[0][7]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[1][0]             ; |CollectionInitializerModule_TopLevel|State_state[1][0]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state~0                 ; |CollectionInitializerModule_TopLevel|State_state~0                 ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state[0][0]~1           ; |CollectionInitializerModule_TopLevel|State_state[0][0]~1           ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state~2                 ; |CollectionInitializerModule_TopLevel|State_state~2                 ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state~3                 ; |CollectionInitializerModule_TopLevel|State_state~3                 ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state~4                 ; |CollectionInitializerModule_TopLevel|State_state~4                 ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state~5                 ; |CollectionInitializerModule_TopLevel|State_state~5                 ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state~6                 ; |CollectionInitializerModule_TopLevel|State_state~6                 ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state~7                 ; |CollectionInitializerModule_TopLevel|State_state~7                 ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state~8                 ; |CollectionInitializerModule_TopLevel|State_state~8                 ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state~9                 ; |CollectionInitializerModule_TopLevel|State_state~9                 ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state~10                ; |CollectionInitializerModule_TopLevel|State_state~10                ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state[0][0]~11          ; |CollectionInitializerModule_TopLevel|State_state[0][0]~11          ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state[0][0]~11_wirecell ; |CollectionInitializerModule_TopLevel|State_state[0][0]~11_wirecell ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state~10_wirecell       ; |CollectionInitializerModule_TopLevel|State_state~10_wirecell       ; combout          ;
-; |CollectionInitializerModule_TopLevel|oState0[0]                    ; |CollectionInitializerModule_TopLevel|oState0[0]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState0[1]                    ; |CollectionInitializerModule_TopLevel|oState0[1]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState0[2]                    ; |CollectionInitializerModule_TopLevel|oState0[2]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState0[3]                    ; |CollectionInitializerModule_TopLevel|oState0[3]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState0[4]                    ; |CollectionInitializerModule_TopLevel|oState0[4]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState0[5]                    ; |CollectionInitializerModule_TopLevel|oState0[5]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState0[6]                    ; |CollectionInitializerModule_TopLevel|oState0[6]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState0[7]                    ; |CollectionInitializerModule_TopLevel|oState0[7]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState1[0]                    ; |CollectionInitializerModule_TopLevel|oState1[0]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState1[2]                    ; |CollectionInitializerModule_TopLevel|oState1[2]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState1[7]                    ; |CollectionInitializerModule_TopLevel|oState1[7]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[0]                    ; |CollectionInitializerModule_TopLevel|oState2[0]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[1]                    ; |CollectionInitializerModule_TopLevel|oState2[1]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[2]                    ; |CollectionInitializerModule_TopLevel|oState2[2]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[7]                    ; |CollectionInitializerModule_TopLevel|oState2[7]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[0]                    ; |CollectionInitializerModule_TopLevel|oState3[0]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[1]                    ; |CollectionInitializerModule_TopLevel|oState3[1]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[2]                    ; |CollectionInitializerModule_TopLevel|oState3[2]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|i1                            ; |CollectionInitializerModule_TopLevel|i1~corein                     ; combout          ;
-; |CollectionInitializerModule_TopLevel|i2                            ; |CollectionInitializerModule_TopLevel|i2~corein                     ; combout          ;
-; |CollectionInitializerModule_TopLevel|Reset                         ; |CollectionInitializerModule_TopLevel|Reset~corein                  ; combout          ;
-; |CollectionInitializerModule_TopLevel|Clock                         ; |CollectionInitializerModule_TopLevel|Clock~corein                  ; combout          ;
-; |CollectionInitializerModule_TopLevel|i3                            ; |CollectionInitializerModule_TopLevel|i3~corein                     ; combout          ;
-; |CollectionInitializerModule_TopLevel|Clock~clkctrl                 ; |CollectionInitializerModule_TopLevel|Clock~clkctrl                 ; outclk           ;
-+---------------------------------------------------------------------+---------------------------------------------------------------------+------------------+
++-------------------------------------------------+
+; Complete 1/0-Value Coverage                     ;
++-----------+------------------+------------------+
+; Node Name ; Output Port Name ; Output Port Type ;
++-----------+------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 1 during simulation.
-+----------------------------------------------------------------------------------------------------------------------------+
-; Missing 1-Value Coverage                                                                                                   ;
-+--------------------------------------------------+------------------------------------------------------+------------------+
-; Node Name                                        ; Output Port Name                                     ; Output Port Type ;
-+--------------------------------------------------+------------------------------------------------------+------------------+
-; |CollectionInitializerModule_TopLevel|oState1[1] ; |CollectionInitializerModule_TopLevel|oState1[1]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState1[3] ; |CollectionInitializerModule_TopLevel|oState1[3]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState1[4] ; |CollectionInitializerModule_TopLevel|oState1[4]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState1[5] ; |CollectionInitializerModule_TopLevel|oState1[5]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState1[6] ; |CollectionInitializerModule_TopLevel|oState1[6]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[3] ; |CollectionInitializerModule_TopLevel|oState2[3]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[4] ; |CollectionInitializerModule_TopLevel|oState2[4]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[5] ; |CollectionInitializerModule_TopLevel|oState2[5]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[6] ; |CollectionInitializerModule_TopLevel|oState2[6]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[3] ; |CollectionInitializerModule_TopLevel|oState3[3]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[4] ; |CollectionInitializerModule_TopLevel|oState3[4]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[5] ; |CollectionInitializerModule_TopLevel|oState3[5]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[6] ; |CollectionInitializerModule_TopLevel|oState3[6]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[7] ; |CollectionInitializerModule_TopLevel|oState3[7]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|data[0]    ; |CollectionInitializerModule_TopLevel|data[0]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[1]    ; |CollectionInitializerModule_TopLevel|data[1]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[2]    ; |CollectionInitializerModule_TopLevel|data[2]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[3]    ; |CollectionInitializerModule_TopLevel|data[3]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[4]    ; |CollectionInitializerModule_TopLevel|data[4]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[5]    ; |CollectionInitializerModule_TopLevel|data[5]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[6]    ; |CollectionInitializerModule_TopLevel|data[6]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[7]    ; |CollectionInitializerModule_TopLevel|data[7]~corein ; combout          ;
-+--------------------------------------------------+------------------------------------------------------+------------------+
++--------------------------------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                                         ;
++---------------------------------------+---------------------------------------+------------------+
+; Node Name                             ; Output Port Name                      ; Output Port Type ;
++---------------------------------------+---------------------------------------+------------------+
+; |DefaultALUModule_TopLevel|ADD[0]     ; |DefaultALUModule_TopLevel|ADD[0]     ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[1]     ; |DefaultALUModule_TopLevel|ADD[1]     ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[2]     ; |DefaultALUModule_TopLevel|ADD[2]     ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[3]     ; |DefaultALUModule_TopLevel|ADD[3]     ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[4]     ; |DefaultALUModule_TopLevel|ADD[4]     ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[5]     ; |DefaultALUModule_TopLevel|ADD[5]     ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[6]     ; |DefaultALUModule_TopLevel|ADD[6]     ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[7]     ; |DefaultALUModule_TopLevel|ADD[7]     ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[8]     ; |DefaultALUModule_TopLevel|ADD[8]     ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[9]     ; |DefaultALUModule_TopLevel|ADD[9]     ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[10]    ; |DefaultALUModule_TopLevel|ADD[10]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[11]    ; |DefaultALUModule_TopLevel|ADD[11]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[12]    ; |DefaultALUModule_TopLevel|ADD[12]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[13]    ; |DefaultALUModule_TopLevel|ADD[13]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[14]    ; |DefaultALUModule_TopLevel|ADD[14]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[15]    ; |DefaultALUModule_TopLevel|ADD[15]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[16]    ; |DefaultALUModule_TopLevel|ADD[16]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[17]    ; |DefaultALUModule_TopLevel|ADD[17]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[18]    ; |DefaultALUModule_TopLevel|ADD[18]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[19]    ; |DefaultALUModule_TopLevel|ADD[19]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[20]    ; |DefaultALUModule_TopLevel|ADD[20]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[21]    ; |DefaultALUModule_TopLevel|ADD[21]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[22]    ; |DefaultALUModule_TopLevel|ADD[22]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[23]    ; |DefaultALUModule_TopLevel|ADD[23]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[24]    ; |DefaultALUModule_TopLevel|ADD[24]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[25]    ; |DefaultALUModule_TopLevel|ADD[25]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[26]    ; |DefaultALUModule_TopLevel|ADD[26]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[27]    ; |DefaultALUModule_TopLevel|ADD[27]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[28]    ; |DefaultALUModule_TopLevel|ADD[28]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[29]    ; |DefaultALUModule_TopLevel|ADD[29]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[30]    ; |DefaultALUModule_TopLevel|ADD[30]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[31]    ; |DefaultALUModule_TopLevel|ADD[31]    ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[0]  ; |DefaultALUModule_TopLevel|resAND[0]  ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[1]  ; |DefaultALUModule_TopLevel|resAND[1]  ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[2]  ; |DefaultALUModule_TopLevel|resAND[2]  ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[3]  ; |DefaultALUModule_TopLevel|resAND[3]  ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[4]  ; |DefaultALUModule_TopLevel|resAND[4]  ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[5]  ; |DefaultALUModule_TopLevel|resAND[5]  ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[6]  ; |DefaultALUModule_TopLevel|resAND[6]  ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[7]  ; |DefaultALUModule_TopLevel|resAND[7]  ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[8]  ; |DefaultALUModule_TopLevel|resAND[8]  ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[9]  ; |DefaultALUModule_TopLevel|resAND[9]  ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[10] ; |DefaultALUModule_TopLevel|resAND[10] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[11] ; |DefaultALUModule_TopLevel|resAND[11] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[12] ; |DefaultALUModule_TopLevel|resAND[12] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[13] ; |DefaultALUModule_TopLevel|resAND[13] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[14] ; |DefaultALUModule_TopLevel|resAND[14] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[15] ; |DefaultALUModule_TopLevel|resAND[15] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[16] ; |DefaultALUModule_TopLevel|resAND[16] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[17] ; |DefaultALUModule_TopLevel|resAND[17] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[18] ; |DefaultALUModule_TopLevel|resAND[18] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[19] ; |DefaultALUModule_TopLevel|resAND[19] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[20] ; |DefaultALUModule_TopLevel|resAND[20] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[21] ; |DefaultALUModule_TopLevel|resAND[21] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[22] ; |DefaultALUModule_TopLevel|resAND[22] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[23] ; |DefaultALUModule_TopLevel|resAND[23] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[24] ; |DefaultALUModule_TopLevel|resAND[24] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[25] ; |DefaultALUModule_TopLevel|resAND[25] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[26] ; |DefaultALUModule_TopLevel|resAND[26] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[27] ; |DefaultALUModule_TopLevel|resAND[27] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[28] ; |DefaultALUModule_TopLevel|resAND[28] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[29] ; |DefaultALUModule_TopLevel|resAND[29] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[30] ; |DefaultALUModule_TopLevel|resAND[30] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[31] ; |DefaultALUModule_TopLevel|resAND[31] ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[0]   ; |DefaultALUModule_TopLevel|resOR[0]   ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[1]   ; |DefaultALUModule_TopLevel|resOR[1]   ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[2]   ; |DefaultALUModule_TopLevel|resOR[2]   ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[3]   ; |DefaultALUModule_TopLevel|resOR[3]   ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[4]   ; |DefaultALUModule_TopLevel|resOR[4]   ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[5]   ; |DefaultALUModule_TopLevel|resOR[5]   ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[6]   ; |DefaultALUModule_TopLevel|resOR[6]   ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[7]   ; |DefaultALUModule_TopLevel|resOR[7]   ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[8]   ; |DefaultALUModule_TopLevel|resOR[8]   ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[9]   ; |DefaultALUModule_TopLevel|resOR[9]   ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[10]  ; |DefaultALUModule_TopLevel|resOR[10]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[11]  ; |DefaultALUModule_TopLevel|resOR[11]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[12]  ; |DefaultALUModule_TopLevel|resOR[12]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[13]  ; |DefaultALUModule_TopLevel|resOR[13]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[14]  ; |DefaultALUModule_TopLevel|resOR[14]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[15]  ; |DefaultALUModule_TopLevel|resOR[15]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[16]  ; |DefaultALUModule_TopLevel|resOR[16]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[17]  ; |DefaultALUModule_TopLevel|resOR[17]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[18]  ; |DefaultALUModule_TopLevel|resOR[18]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[19]  ; |DefaultALUModule_TopLevel|resOR[19]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[20]  ; |DefaultALUModule_TopLevel|resOR[20]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[21]  ; |DefaultALUModule_TopLevel|resOR[21]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[22]  ; |DefaultALUModule_TopLevel|resOR[22]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[23]  ; |DefaultALUModule_TopLevel|resOR[23]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[24]  ; |DefaultALUModule_TopLevel|resOR[24]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[25]  ; |DefaultALUModule_TopLevel|resOR[25]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[26]  ; |DefaultALUModule_TopLevel|resOR[26]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[27]  ; |DefaultALUModule_TopLevel|resOR[27]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[28]  ; |DefaultALUModule_TopLevel|resOR[28]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[29]  ; |DefaultALUModule_TopLevel|resOR[29]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[30]  ; |DefaultALUModule_TopLevel|resOR[30]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[31]  ; |DefaultALUModule_TopLevel|resOR[31]  ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[0]  ; |DefaultALUModule_TopLevel|resXOR[0]  ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[1]  ; |DefaultALUModule_TopLevel|resXOR[1]  ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[2]  ; |DefaultALUModule_TopLevel|resXOR[2]  ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[3]  ; |DefaultALUModule_TopLevel|resXOR[3]  ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[4]  ; |DefaultALUModule_TopLevel|resXOR[4]  ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[5]  ; |DefaultALUModule_TopLevel|resXOR[5]  ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[6]  ; |DefaultALUModule_TopLevel|resXOR[6]  ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[7]  ; |DefaultALUModule_TopLevel|resXOR[7]  ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[8]  ; |DefaultALUModule_TopLevel|resXOR[8]  ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[9]  ; |DefaultALUModule_TopLevel|resXOR[9]  ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[10] ; |DefaultALUModule_TopLevel|resXOR[10] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[11] ; |DefaultALUModule_TopLevel|resXOR[11] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[12] ; |DefaultALUModule_TopLevel|resXOR[12] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[13] ; |DefaultALUModule_TopLevel|resXOR[13] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[14] ; |DefaultALUModule_TopLevel|resXOR[14] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[15] ; |DefaultALUModule_TopLevel|resXOR[15] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[16] ; |DefaultALUModule_TopLevel|resXOR[16] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[17] ; |DefaultALUModule_TopLevel|resXOR[17] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[18] ; |DefaultALUModule_TopLevel|resXOR[18] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[19] ; |DefaultALUModule_TopLevel|resXOR[19] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[20] ; |DefaultALUModule_TopLevel|resXOR[20] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[21] ; |DefaultALUModule_TopLevel|resXOR[21] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[22] ; |DefaultALUModule_TopLevel|resXOR[22] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[23] ; |DefaultALUModule_TopLevel|resXOR[23] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[24] ; |DefaultALUModule_TopLevel|resXOR[24] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[25] ; |DefaultALUModule_TopLevel|resXOR[25] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[26] ; |DefaultALUModule_TopLevel|resXOR[26] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[27] ; |DefaultALUModule_TopLevel|resXOR[27] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[28] ; |DefaultALUModule_TopLevel|resXOR[28] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[29] ; |DefaultALUModule_TopLevel|resXOR[29] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[30] ; |DefaultALUModule_TopLevel|resXOR[30] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[31] ; |DefaultALUModule_TopLevel|resXOR[31] ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[0]    ; |DefaultALUModule_TopLevel|SHLL[0]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[1]    ; |DefaultALUModule_TopLevel|SHLL[1]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[2]    ; |DefaultALUModule_TopLevel|SHLL[2]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[3]    ; |DefaultALUModule_TopLevel|SHLL[3]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[4]    ; |DefaultALUModule_TopLevel|SHLL[4]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[5]    ; |DefaultALUModule_TopLevel|SHLL[5]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[6]    ; |DefaultALUModule_TopLevel|SHLL[6]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[7]    ; |DefaultALUModule_TopLevel|SHLL[7]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[8]    ; |DefaultALUModule_TopLevel|SHLL[8]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[9]    ; |DefaultALUModule_TopLevel|SHLL[9]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[10]   ; |DefaultALUModule_TopLevel|SHLL[10]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[11]   ; |DefaultALUModule_TopLevel|SHLL[11]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[12]   ; |DefaultALUModule_TopLevel|SHLL[12]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[13]   ; |DefaultALUModule_TopLevel|SHLL[13]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[14]   ; |DefaultALUModule_TopLevel|SHLL[14]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[15]   ; |DefaultALUModule_TopLevel|SHLL[15]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[16]   ; |DefaultALUModule_TopLevel|SHLL[16]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[17]   ; |DefaultALUModule_TopLevel|SHLL[17]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[18]   ; |DefaultALUModule_TopLevel|SHLL[18]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[19]   ; |DefaultALUModule_TopLevel|SHLL[19]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[20]   ; |DefaultALUModule_TopLevel|SHLL[20]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[21]   ; |DefaultALUModule_TopLevel|SHLL[21]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[22]   ; |DefaultALUModule_TopLevel|SHLL[22]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[23]   ; |DefaultALUModule_TopLevel|SHLL[23]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[24]   ; |DefaultALUModule_TopLevel|SHLL[24]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[25]   ; |DefaultALUModule_TopLevel|SHLL[25]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[26]   ; |DefaultALUModule_TopLevel|SHLL[26]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[27]   ; |DefaultALUModule_TopLevel|SHLL[27]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[28]   ; |DefaultALUModule_TopLevel|SHLL[28]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[29]   ; |DefaultALUModule_TopLevel|SHLL[29]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[30]   ; |DefaultALUModule_TopLevel|SHLL[30]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[31]   ; |DefaultALUModule_TopLevel|SHLL[31]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[0]    ; |DefaultALUModule_TopLevel|SHRA[0]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[1]    ; |DefaultALUModule_TopLevel|SHRA[1]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[2]    ; |DefaultALUModule_TopLevel|SHRA[2]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[3]    ; |DefaultALUModule_TopLevel|SHRA[3]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[4]    ; |DefaultALUModule_TopLevel|SHRA[4]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[5]    ; |DefaultALUModule_TopLevel|SHRA[5]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[6]    ; |DefaultALUModule_TopLevel|SHRA[6]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[7]    ; |DefaultALUModule_TopLevel|SHRA[7]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[8]    ; |DefaultALUModule_TopLevel|SHRA[8]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[9]    ; |DefaultALUModule_TopLevel|SHRA[9]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[10]   ; |DefaultALUModule_TopLevel|SHRA[10]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[11]   ; |DefaultALUModule_TopLevel|SHRA[11]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[12]   ; |DefaultALUModule_TopLevel|SHRA[12]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[13]   ; |DefaultALUModule_TopLevel|SHRA[13]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[14]   ; |DefaultALUModule_TopLevel|SHRA[14]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[15]   ; |DefaultALUModule_TopLevel|SHRA[15]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[16]   ; |DefaultALUModule_TopLevel|SHRA[16]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[17]   ; |DefaultALUModule_TopLevel|SHRA[17]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[18]   ; |DefaultALUModule_TopLevel|SHRA[18]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[19]   ; |DefaultALUModule_TopLevel|SHRA[19]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[20]   ; |DefaultALUModule_TopLevel|SHRA[20]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[21]   ; |DefaultALUModule_TopLevel|SHRA[21]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[22]   ; |DefaultALUModule_TopLevel|SHRA[22]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[23]   ; |DefaultALUModule_TopLevel|SHRA[23]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[24]   ; |DefaultALUModule_TopLevel|SHRA[24]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[25]   ; |DefaultALUModule_TopLevel|SHRA[25]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[26]   ; |DefaultALUModule_TopLevel|SHRA[26]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[27]   ; |DefaultALUModule_TopLevel|SHRA[27]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[28]   ; |DefaultALUModule_TopLevel|SHRA[28]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[29]   ; |DefaultALUModule_TopLevel|SHRA[29]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[30]   ; |DefaultALUModule_TopLevel|SHRA[30]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[31]   ; |DefaultALUModule_TopLevel|SHRA[31]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[0]    ; |DefaultALUModule_TopLevel|SHRL[0]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[1]    ; |DefaultALUModule_TopLevel|SHRL[1]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[2]    ; |DefaultALUModule_TopLevel|SHRL[2]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[3]    ; |DefaultALUModule_TopLevel|SHRL[3]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[4]    ; |DefaultALUModule_TopLevel|SHRL[4]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[5]    ; |DefaultALUModule_TopLevel|SHRL[5]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[6]    ; |DefaultALUModule_TopLevel|SHRL[6]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[7]    ; |DefaultALUModule_TopLevel|SHRL[7]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[8]    ; |DefaultALUModule_TopLevel|SHRL[8]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[9]    ; |DefaultALUModule_TopLevel|SHRL[9]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[10]   ; |DefaultALUModule_TopLevel|SHRL[10]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[11]   ; |DefaultALUModule_TopLevel|SHRL[11]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[12]   ; |DefaultALUModule_TopLevel|SHRL[12]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[13]   ; |DefaultALUModule_TopLevel|SHRL[13]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[14]   ; |DefaultALUModule_TopLevel|SHRL[14]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[15]   ; |DefaultALUModule_TopLevel|SHRL[15]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[16]   ; |DefaultALUModule_TopLevel|SHRL[16]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[17]   ; |DefaultALUModule_TopLevel|SHRL[17]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[18]   ; |DefaultALUModule_TopLevel|SHRL[18]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[19]   ; |DefaultALUModule_TopLevel|SHRL[19]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[20]   ; |DefaultALUModule_TopLevel|SHRL[20]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[21]   ; |DefaultALUModule_TopLevel|SHRL[21]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[22]   ; |DefaultALUModule_TopLevel|SHRL[22]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[23]   ; |DefaultALUModule_TopLevel|SHRL[23]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[24]   ; |DefaultALUModule_TopLevel|SHRL[24]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[25]   ; |DefaultALUModule_TopLevel|SHRL[25]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[26]   ; |DefaultALUModule_TopLevel|SHRL[26]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[27]   ; |DefaultALUModule_TopLevel|SHRL[27]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[28]   ; |DefaultALUModule_TopLevel|SHRL[28]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[29]   ; |DefaultALUModule_TopLevel|SHRL[29]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[30]   ; |DefaultALUModule_TopLevel|SHRL[30]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[31]   ; |DefaultALUModule_TopLevel|SHRL[31]   ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[0]     ; |DefaultALUModule_TopLevel|SUB[0]     ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[1]     ; |DefaultALUModule_TopLevel|SUB[1]     ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[2]     ; |DefaultALUModule_TopLevel|SUB[2]     ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[3]     ; |DefaultALUModule_TopLevel|SUB[3]     ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[4]     ; |DefaultALUModule_TopLevel|SUB[4]     ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[5]     ; |DefaultALUModule_TopLevel|SUB[5]     ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[6]     ; |DefaultALUModule_TopLevel|SUB[6]     ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[7]     ; |DefaultALUModule_TopLevel|SUB[7]     ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[8]     ; |DefaultALUModule_TopLevel|SUB[8]     ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[9]     ; |DefaultALUModule_TopLevel|SUB[9]     ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[10]    ; |DefaultALUModule_TopLevel|SUB[10]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[11]    ; |DefaultALUModule_TopLevel|SUB[11]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[12]    ; |DefaultALUModule_TopLevel|SUB[12]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[13]    ; |DefaultALUModule_TopLevel|SUB[13]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[14]    ; |DefaultALUModule_TopLevel|SUB[14]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[15]    ; |DefaultALUModule_TopLevel|SUB[15]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[16]    ; |DefaultALUModule_TopLevel|SUB[16]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[17]    ; |DefaultALUModule_TopLevel|SUB[17]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[18]    ; |DefaultALUModule_TopLevel|SUB[18]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[19]    ; |DefaultALUModule_TopLevel|SUB[19]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[20]    ; |DefaultALUModule_TopLevel|SUB[20]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[21]    ; |DefaultALUModule_TopLevel|SUB[21]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[22]    ; |DefaultALUModule_TopLevel|SUB[22]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[23]    ; |DefaultALUModule_TopLevel|SUB[23]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[24]    ; |DefaultALUModule_TopLevel|SUB[24]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[25]    ; |DefaultALUModule_TopLevel|SUB[25]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[26]    ; |DefaultALUModule_TopLevel|SUB[26]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[27]    ; |DefaultALUModule_TopLevel|SUB[27]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[28]    ; |DefaultALUModule_TopLevel|SUB[28]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[29]    ; |DefaultALUModule_TopLevel|SUB[29]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[30]    ; |DefaultALUModule_TopLevel|SUB[30]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[31]    ; |DefaultALUModule_TopLevel|SUB[31]    ; padio            ;
++---------------------------------------+---------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 0 during simulation.
-+----------------------------------------------------------------------------------------------------------------------------+
-; Missing 0-Value Coverage                                                                                                   ;
-+--------------------------------------------------+------------------------------------------------------+------------------+
-; Node Name                                        ; Output Port Name                                     ; Output Port Type ;
-+--------------------------------------------------+------------------------------------------------------+------------------+
-; |CollectionInitializerModule_TopLevel|oState1[1] ; |CollectionInitializerModule_TopLevel|oState1[1]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState1[3] ; |CollectionInitializerModule_TopLevel|oState1[3]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState1[4] ; |CollectionInitializerModule_TopLevel|oState1[4]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState1[5] ; |CollectionInitializerModule_TopLevel|oState1[5]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState1[6] ; |CollectionInitializerModule_TopLevel|oState1[6]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[3] ; |CollectionInitializerModule_TopLevel|oState2[3]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[4] ; |CollectionInitializerModule_TopLevel|oState2[4]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[5] ; |CollectionInitializerModule_TopLevel|oState2[5]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[6] ; |CollectionInitializerModule_TopLevel|oState2[6]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[3] ; |CollectionInitializerModule_TopLevel|oState3[3]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[4] ; |CollectionInitializerModule_TopLevel|oState3[4]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[5] ; |CollectionInitializerModule_TopLevel|oState3[5]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[6] ; |CollectionInitializerModule_TopLevel|oState3[6]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[7] ; |CollectionInitializerModule_TopLevel|oState3[7]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|data[0]    ; |CollectionInitializerModule_TopLevel|data[0]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[1]    ; |CollectionInitializerModule_TopLevel|data[1]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[2]    ; |CollectionInitializerModule_TopLevel|data[2]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[3]    ; |CollectionInitializerModule_TopLevel|data[3]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[4]    ; |CollectionInitializerModule_TopLevel|data[4]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[5]    ; |CollectionInitializerModule_TopLevel|data[5]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[6]    ; |CollectionInitializerModule_TopLevel|data[6]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[7]    ; |CollectionInitializerModule_TopLevel|data[7]~corein ; combout          ;
-+--------------------------------------------------+------------------------------------------------------+------------------+
++--------------------------------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                                         ;
++---------------------------------------+---------------------------------------+------------------+
+; Node Name                             ; Output Port Name                      ; Output Port Type ;
++---------------------------------------+---------------------------------------+------------------+
+; |DefaultALUModule_TopLevel|ADD[0]     ; |DefaultALUModule_TopLevel|ADD[0]     ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[1]     ; |DefaultALUModule_TopLevel|ADD[1]     ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[2]     ; |DefaultALUModule_TopLevel|ADD[2]     ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[3]     ; |DefaultALUModule_TopLevel|ADD[3]     ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[4]     ; |DefaultALUModule_TopLevel|ADD[4]     ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[5]     ; |DefaultALUModule_TopLevel|ADD[5]     ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[6]     ; |DefaultALUModule_TopLevel|ADD[6]     ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[7]     ; |DefaultALUModule_TopLevel|ADD[7]     ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[8]     ; |DefaultALUModule_TopLevel|ADD[8]     ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[9]     ; |DefaultALUModule_TopLevel|ADD[9]     ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[10]    ; |DefaultALUModule_TopLevel|ADD[10]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[11]    ; |DefaultALUModule_TopLevel|ADD[11]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[12]    ; |DefaultALUModule_TopLevel|ADD[12]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[13]    ; |DefaultALUModule_TopLevel|ADD[13]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[14]    ; |DefaultALUModule_TopLevel|ADD[14]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[15]    ; |DefaultALUModule_TopLevel|ADD[15]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[16]    ; |DefaultALUModule_TopLevel|ADD[16]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[17]    ; |DefaultALUModule_TopLevel|ADD[17]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[18]    ; |DefaultALUModule_TopLevel|ADD[18]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[19]    ; |DefaultALUModule_TopLevel|ADD[19]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[20]    ; |DefaultALUModule_TopLevel|ADD[20]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[21]    ; |DefaultALUModule_TopLevel|ADD[21]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[22]    ; |DefaultALUModule_TopLevel|ADD[22]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[23]    ; |DefaultALUModule_TopLevel|ADD[23]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[24]    ; |DefaultALUModule_TopLevel|ADD[24]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[25]    ; |DefaultALUModule_TopLevel|ADD[25]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[26]    ; |DefaultALUModule_TopLevel|ADD[26]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[27]    ; |DefaultALUModule_TopLevel|ADD[27]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[28]    ; |DefaultALUModule_TopLevel|ADD[28]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[29]    ; |DefaultALUModule_TopLevel|ADD[29]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[30]    ; |DefaultALUModule_TopLevel|ADD[30]    ; padio            ;
+; |DefaultALUModule_TopLevel|ADD[31]    ; |DefaultALUModule_TopLevel|ADD[31]    ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[0]  ; |DefaultALUModule_TopLevel|resAND[0]  ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[1]  ; |DefaultALUModule_TopLevel|resAND[1]  ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[2]  ; |DefaultALUModule_TopLevel|resAND[2]  ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[3]  ; |DefaultALUModule_TopLevel|resAND[3]  ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[4]  ; |DefaultALUModule_TopLevel|resAND[4]  ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[5]  ; |DefaultALUModule_TopLevel|resAND[5]  ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[6]  ; |DefaultALUModule_TopLevel|resAND[6]  ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[7]  ; |DefaultALUModule_TopLevel|resAND[7]  ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[8]  ; |DefaultALUModule_TopLevel|resAND[8]  ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[9]  ; |DefaultALUModule_TopLevel|resAND[9]  ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[10] ; |DefaultALUModule_TopLevel|resAND[10] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[11] ; |DefaultALUModule_TopLevel|resAND[11] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[12] ; |DefaultALUModule_TopLevel|resAND[12] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[13] ; |DefaultALUModule_TopLevel|resAND[13] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[14] ; |DefaultALUModule_TopLevel|resAND[14] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[15] ; |DefaultALUModule_TopLevel|resAND[15] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[16] ; |DefaultALUModule_TopLevel|resAND[16] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[17] ; |DefaultALUModule_TopLevel|resAND[17] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[18] ; |DefaultALUModule_TopLevel|resAND[18] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[19] ; |DefaultALUModule_TopLevel|resAND[19] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[20] ; |DefaultALUModule_TopLevel|resAND[20] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[21] ; |DefaultALUModule_TopLevel|resAND[21] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[22] ; |DefaultALUModule_TopLevel|resAND[22] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[23] ; |DefaultALUModule_TopLevel|resAND[23] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[24] ; |DefaultALUModule_TopLevel|resAND[24] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[25] ; |DefaultALUModule_TopLevel|resAND[25] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[26] ; |DefaultALUModule_TopLevel|resAND[26] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[27] ; |DefaultALUModule_TopLevel|resAND[27] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[28] ; |DefaultALUModule_TopLevel|resAND[28] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[29] ; |DefaultALUModule_TopLevel|resAND[29] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[30] ; |DefaultALUModule_TopLevel|resAND[30] ; padio            ;
+; |DefaultALUModule_TopLevel|resAND[31] ; |DefaultALUModule_TopLevel|resAND[31] ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[0]   ; |DefaultALUModule_TopLevel|resOR[0]   ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[1]   ; |DefaultALUModule_TopLevel|resOR[1]   ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[2]   ; |DefaultALUModule_TopLevel|resOR[2]   ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[3]   ; |DefaultALUModule_TopLevel|resOR[3]   ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[4]   ; |DefaultALUModule_TopLevel|resOR[4]   ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[5]   ; |DefaultALUModule_TopLevel|resOR[5]   ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[6]   ; |DefaultALUModule_TopLevel|resOR[6]   ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[7]   ; |DefaultALUModule_TopLevel|resOR[7]   ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[8]   ; |DefaultALUModule_TopLevel|resOR[8]   ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[9]   ; |DefaultALUModule_TopLevel|resOR[9]   ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[10]  ; |DefaultALUModule_TopLevel|resOR[10]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[11]  ; |DefaultALUModule_TopLevel|resOR[11]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[12]  ; |DefaultALUModule_TopLevel|resOR[12]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[13]  ; |DefaultALUModule_TopLevel|resOR[13]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[14]  ; |DefaultALUModule_TopLevel|resOR[14]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[15]  ; |DefaultALUModule_TopLevel|resOR[15]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[16]  ; |DefaultALUModule_TopLevel|resOR[16]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[17]  ; |DefaultALUModule_TopLevel|resOR[17]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[18]  ; |DefaultALUModule_TopLevel|resOR[18]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[19]  ; |DefaultALUModule_TopLevel|resOR[19]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[20]  ; |DefaultALUModule_TopLevel|resOR[20]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[21]  ; |DefaultALUModule_TopLevel|resOR[21]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[22]  ; |DefaultALUModule_TopLevel|resOR[22]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[23]  ; |DefaultALUModule_TopLevel|resOR[23]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[24]  ; |DefaultALUModule_TopLevel|resOR[24]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[25]  ; |DefaultALUModule_TopLevel|resOR[25]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[26]  ; |DefaultALUModule_TopLevel|resOR[26]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[27]  ; |DefaultALUModule_TopLevel|resOR[27]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[28]  ; |DefaultALUModule_TopLevel|resOR[28]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[29]  ; |DefaultALUModule_TopLevel|resOR[29]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[30]  ; |DefaultALUModule_TopLevel|resOR[30]  ; padio            ;
+; |DefaultALUModule_TopLevel|resOR[31]  ; |DefaultALUModule_TopLevel|resOR[31]  ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[0]  ; |DefaultALUModule_TopLevel|resXOR[0]  ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[1]  ; |DefaultALUModule_TopLevel|resXOR[1]  ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[2]  ; |DefaultALUModule_TopLevel|resXOR[2]  ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[3]  ; |DefaultALUModule_TopLevel|resXOR[3]  ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[4]  ; |DefaultALUModule_TopLevel|resXOR[4]  ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[5]  ; |DefaultALUModule_TopLevel|resXOR[5]  ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[6]  ; |DefaultALUModule_TopLevel|resXOR[6]  ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[7]  ; |DefaultALUModule_TopLevel|resXOR[7]  ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[8]  ; |DefaultALUModule_TopLevel|resXOR[8]  ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[9]  ; |DefaultALUModule_TopLevel|resXOR[9]  ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[10] ; |DefaultALUModule_TopLevel|resXOR[10] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[11] ; |DefaultALUModule_TopLevel|resXOR[11] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[12] ; |DefaultALUModule_TopLevel|resXOR[12] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[13] ; |DefaultALUModule_TopLevel|resXOR[13] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[14] ; |DefaultALUModule_TopLevel|resXOR[14] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[15] ; |DefaultALUModule_TopLevel|resXOR[15] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[16] ; |DefaultALUModule_TopLevel|resXOR[16] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[17] ; |DefaultALUModule_TopLevel|resXOR[17] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[18] ; |DefaultALUModule_TopLevel|resXOR[18] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[19] ; |DefaultALUModule_TopLevel|resXOR[19] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[20] ; |DefaultALUModule_TopLevel|resXOR[20] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[21] ; |DefaultALUModule_TopLevel|resXOR[21] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[22] ; |DefaultALUModule_TopLevel|resXOR[22] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[23] ; |DefaultALUModule_TopLevel|resXOR[23] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[24] ; |DefaultALUModule_TopLevel|resXOR[24] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[25] ; |DefaultALUModule_TopLevel|resXOR[25] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[26] ; |DefaultALUModule_TopLevel|resXOR[26] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[27] ; |DefaultALUModule_TopLevel|resXOR[27] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[28] ; |DefaultALUModule_TopLevel|resXOR[28] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[29] ; |DefaultALUModule_TopLevel|resXOR[29] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[30] ; |DefaultALUModule_TopLevel|resXOR[30] ; padio            ;
+; |DefaultALUModule_TopLevel|resXOR[31] ; |DefaultALUModule_TopLevel|resXOR[31] ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[0]    ; |DefaultALUModule_TopLevel|SHLL[0]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[1]    ; |DefaultALUModule_TopLevel|SHLL[1]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[2]    ; |DefaultALUModule_TopLevel|SHLL[2]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[3]    ; |DefaultALUModule_TopLevel|SHLL[3]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[4]    ; |DefaultALUModule_TopLevel|SHLL[4]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[5]    ; |DefaultALUModule_TopLevel|SHLL[5]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[6]    ; |DefaultALUModule_TopLevel|SHLL[6]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[7]    ; |DefaultALUModule_TopLevel|SHLL[7]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[8]    ; |DefaultALUModule_TopLevel|SHLL[8]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[9]    ; |DefaultALUModule_TopLevel|SHLL[9]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[10]   ; |DefaultALUModule_TopLevel|SHLL[10]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[11]   ; |DefaultALUModule_TopLevel|SHLL[11]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[12]   ; |DefaultALUModule_TopLevel|SHLL[12]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[13]   ; |DefaultALUModule_TopLevel|SHLL[13]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[14]   ; |DefaultALUModule_TopLevel|SHLL[14]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[15]   ; |DefaultALUModule_TopLevel|SHLL[15]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[16]   ; |DefaultALUModule_TopLevel|SHLL[16]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[17]   ; |DefaultALUModule_TopLevel|SHLL[17]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[18]   ; |DefaultALUModule_TopLevel|SHLL[18]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[19]   ; |DefaultALUModule_TopLevel|SHLL[19]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[20]   ; |DefaultALUModule_TopLevel|SHLL[20]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[21]   ; |DefaultALUModule_TopLevel|SHLL[21]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[22]   ; |DefaultALUModule_TopLevel|SHLL[22]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[23]   ; |DefaultALUModule_TopLevel|SHLL[23]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[24]   ; |DefaultALUModule_TopLevel|SHLL[24]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[25]   ; |DefaultALUModule_TopLevel|SHLL[25]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[26]   ; |DefaultALUModule_TopLevel|SHLL[26]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[27]   ; |DefaultALUModule_TopLevel|SHLL[27]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[28]   ; |DefaultALUModule_TopLevel|SHLL[28]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[29]   ; |DefaultALUModule_TopLevel|SHLL[29]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[30]   ; |DefaultALUModule_TopLevel|SHLL[30]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHLL[31]   ; |DefaultALUModule_TopLevel|SHLL[31]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[0]    ; |DefaultALUModule_TopLevel|SHRA[0]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[1]    ; |DefaultALUModule_TopLevel|SHRA[1]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[2]    ; |DefaultALUModule_TopLevel|SHRA[2]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[3]    ; |DefaultALUModule_TopLevel|SHRA[3]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[4]    ; |DefaultALUModule_TopLevel|SHRA[4]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[5]    ; |DefaultALUModule_TopLevel|SHRA[5]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[6]    ; |DefaultALUModule_TopLevel|SHRA[6]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[7]    ; |DefaultALUModule_TopLevel|SHRA[7]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[8]    ; |DefaultALUModule_TopLevel|SHRA[8]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[9]    ; |DefaultALUModule_TopLevel|SHRA[9]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[10]   ; |DefaultALUModule_TopLevel|SHRA[10]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[11]   ; |DefaultALUModule_TopLevel|SHRA[11]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[12]   ; |DefaultALUModule_TopLevel|SHRA[12]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[13]   ; |DefaultALUModule_TopLevel|SHRA[13]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[14]   ; |DefaultALUModule_TopLevel|SHRA[14]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[15]   ; |DefaultALUModule_TopLevel|SHRA[15]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[16]   ; |DefaultALUModule_TopLevel|SHRA[16]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[17]   ; |DefaultALUModule_TopLevel|SHRA[17]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[18]   ; |DefaultALUModule_TopLevel|SHRA[18]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[19]   ; |DefaultALUModule_TopLevel|SHRA[19]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[20]   ; |DefaultALUModule_TopLevel|SHRA[20]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[21]   ; |DefaultALUModule_TopLevel|SHRA[21]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[22]   ; |DefaultALUModule_TopLevel|SHRA[22]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[23]   ; |DefaultALUModule_TopLevel|SHRA[23]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[24]   ; |DefaultALUModule_TopLevel|SHRA[24]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[25]   ; |DefaultALUModule_TopLevel|SHRA[25]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[26]   ; |DefaultALUModule_TopLevel|SHRA[26]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[27]   ; |DefaultALUModule_TopLevel|SHRA[27]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[28]   ; |DefaultALUModule_TopLevel|SHRA[28]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[29]   ; |DefaultALUModule_TopLevel|SHRA[29]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[30]   ; |DefaultALUModule_TopLevel|SHRA[30]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRA[31]   ; |DefaultALUModule_TopLevel|SHRA[31]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[0]    ; |DefaultALUModule_TopLevel|SHRL[0]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[1]    ; |DefaultALUModule_TopLevel|SHRL[1]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[2]    ; |DefaultALUModule_TopLevel|SHRL[2]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[3]    ; |DefaultALUModule_TopLevel|SHRL[3]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[4]    ; |DefaultALUModule_TopLevel|SHRL[4]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[5]    ; |DefaultALUModule_TopLevel|SHRL[5]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[6]    ; |DefaultALUModule_TopLevel|SHRL[6]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[7]    ; |DefaultALUModule_TopLevel|SHRL[7]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[8]    ; |DefaultALUModule_TopLevel|SHRL[8]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[9]    ; |DefaultALUModule_TopLevel|SHRL[9]    ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[10]   ; |DefaultALUModule_TopLevel|SHRL[10]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[11]   ; |DefaultALUModule_TopLevel|SHRL[11]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[12]   ; |DefaultALUModule_TopLevel|SHRL[12]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[13]   ; |DefaultALUModule_TopLevel|SHRL[13]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[14]   ; |DefaultALUModule_TopLevel|SHRL[14]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[15]   ; |DefaultALUModule_TopLevel|SHRL[15]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[16]   ; |DefaultALUModule_TopLevel|SHRL[16]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[17]   ; |DefaultALUModule_TopLevel|SHRL[17]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[18]   ; |DefaultALUModule_TopLevel|SHRL[18]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[19]   ; |DefaultALUModule_TopLevel|SHRL[19]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[20]   ; |DefaultALUModule_TopLevel|SHRL[20]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[21]   ; |DefaultALUModule_TopLevel|SHRL[21]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[22]   ; |DefaultALUModule_TopLevel|SHRL[22]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[23]   ; |DefaultALUModule_TopLevel|SHRL[23]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[24]   ; |DefaultALUModule_TopLevel|SHRL[24]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[25]   ; |DefaultALUModule_TopLevel|SHRL[25]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[26]   ; |DefaultALUModule_TopLevel|SHRL[26]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[27]   ; |DefaultALUModule_TopLevel|SHRL[27]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[28]   ; |DefaultALUModule_TopLevel|SHRL[28]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[29]   ; |DefaultALUModule_TopLevel|SHRL[29]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[30]   ; |DefaultALUModule_TopLevel|SHRL[30]   ; padio            ;
+; |DefaultALUModule_TopLevel|SHRL[31]   ; |DefaultALUModule_TopLevel|SHRL[31]   ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[0]     ; |DefaultALUModule_TopLevel|SUB[0]     ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[1]     ; |DefaultALUModule_TopLevel|SUB[1]     ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[2]     ; |DefaultALUModule_TopLevel|SUB[2]     ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[3]     ; |DefaultALUModule_TopLevel|SUB[3]     ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[4]     ; |DefaultALUModule_TopLevel|SUB[4]     ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[5]     ; |DefaultALUModule_TopLevel|SUB[5]     ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[6]     ; |DefaultALUModule_TopLevel|SUB[6]     ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[7]     ; |DefaultALUModule_TopLevel|SUB[7]     ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[8]     ; |DefaultALUModule_TopLevel|SUB[8]     ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[9]     ; |DefaultALUModule_TopLevel|SUB[9]     ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[10]    ; |DefaultALUModule_TopLevel|SUB[10]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[11]    ; |DefaultALUModule_TopLevel|SUB[11]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[12]    ; |DefaultALUModule_TopLevel|SUB[12]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[13]    ; |DefaultALUModule_TopLevel|SUB[13]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[14]    ; |DefaultALUModule_TopLevel|SUB[14]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[15]    ; |DefaultALUModule_TopLevel|SUB[15]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[16]    ; |DefaultALUModule_TopLevel|SUB[16]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[17]    ; |DefaultALUModule_TopLevel|SUB[17]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[18]    ; |DefaultALUModule_TopLevel|SUB[18]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[19]    ; |DefaultALUModule_TopLevel|SUB[19]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[20]    ; |DefaultALUModule_TopLevel|SUB[20]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[21]    ; |DefaultALUModule_TopLevel|SUB[21]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[22]    ; |DefaultALUModule_TopLevel|SUB[22]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[23]    ; |DefaultALUModule_TopLevel|SUB[23]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[24]    ; |DefaultALUModule_TopLevel|SUB[24]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[25]    ; |DefaultALUModule_TopLevel|SUB[25]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[26]    ; |DefaultALUModule_TopLevel|SUB[26]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[27]    ; |DefaultALUModule_TopLevel|SUB[27]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[28]    ; |DefaultALUModule_TopLevel|SUB[28]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[29]    ; |DefaultALUModule_TopLevel|SUB[29]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[30]    ; |DefaultALUModule_TopLevel|SUB[30]    ; padio            ;
+; |DefaultALUModule_TopLevel|SUB[31]    ; |DefaultALUModule_TopLevel|SUB[31]    ; padio            ;
++---------------------------------------+---------------------------------------+------------------+
 
 
 +---------------------+
@@ -254,21 +670,21 @@ Info: Running Quartus II Simulator
     Info: programming logic devices manufactured by Altera and sold by 
     Info: Altera or its authorized distributors.  Please refer to the 
     Info: applicable agreement for further details.
-    Info: Processing started: Thu Aug 29 18:21:31 2024
+    Info: Processing started: Sun Oct 27 20:52:52 2024
 Info: Command: quartus_sim C:\code\qusoc\rtl\rtl.hdl\VHDL.qpf --read_settings_files=on --write_settings_files=off --overwrite_waveform=on -c VHDL
-Info: Using vector source file "Waveforms/CollectionInitializerModule.vwf"
+Info: Using vector source file "Waveforms/DefaultALUModule.vwf"
 Info: Overwriting simulation input file with simulation results
-    Info: A backup of CollectionInitializerModule.vwf called VHDL.sim_ori.vwf has been created in the db folder
+    Info: A backup of DefaultALUModule.vwf called VHDL.sim_ori.vwf has been created in the db folder
 Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
     Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
 Info: Simulation partitioned into 1 sub-simulations
-Info: Simulation coverage is      69.86 %
-Info: Number of transitions in simulation is 186
-Info: Vector file CollectionInitializerModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
+Info: Simulation coverage is       0.00 %
+Info: Number of transitions in simulation is 0
+Info: Vector file DefaultALUModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
 Info: Quartus II Simulator was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 163 megabytes
-    Info: Processing ended: Thu Aug 29 18:21:36 2024
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:27
+    Info: Peak virtual memory: 164 megabytes
+    Info: Processing ended: Sun Oct 27 20:52:55 2024
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:15
 
 

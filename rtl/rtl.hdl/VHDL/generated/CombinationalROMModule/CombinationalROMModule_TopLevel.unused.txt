@@ -1,3 +1,6 @@
+No reads:
+	buff
+	Inputs_ReadAddress1
+	Inputs_ReadAddress2
 No writes:
 	buff
-	buffArrayInit

@@ -50,27 +50,51 @@ architecture rtl of SP_RF_WSTRB_RAMModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_0_w : std_logic := '0';
-	constant SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_1_w : std_logic := '1';
-	constant SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_2_w : unsigned(1 downto 0) := "10";
-	constant SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_3_w : unsigned(1 downto 0) := "11";
+	constant State_BuffDefault : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	constant State_ReadDataDefault : unsigned(7 downto 0) := "00000000";
 	signal Inputs_Address : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_WE : std_logic := '0';
 	signal Inputs_WSTRB : unsigned(3 downto 0) := (others => '0');
 	type Inputs_WriteDataArray is array (0 to 3) of unsigned (7 downto 0);
 	signal Inputs_WriteData : Inputs_WriteDataArray := (others => (others => '0'));
+	type State_BuffArray is array (0 to 31) of unsigned (31 downto 0);
+	signal State_Buff : State_BuffArray := (others => (others => '0'));
+	type NextState_BuffArray is array (0 to 31) of unsigned (31 downto 0);
+	signal NextState_Buff : NextState_BuffArray := (others => (others => '0'));
 	type State_ReadDataArray is array (0 to 3) of unsigned (7 downto 0);
 	signal State_ReadData : State_ReadDataArray := (others => (others => '0'));
-	type State_Buff0Array is array (0 to 31) of unsigned (7 downto 0);
-	signal State_Buff0 : State_Buff0Array := (others => (others => '0'));
-	type State_Buff1Array is array (0 to 31) of unsigned (7 downto 0);
-	signal State_Buff1 : State_Buff1Array := (others => (others => '0'));
-	type State_Buff2Array is array (0 to 31) of unsigned (7 downto 0);
-	signal State_Buff2 : State_Buff2Array := (others => (others => '0'));
-	type State_Buff3Array is array (0 to 31) of unsigned (7 downto 0);
-	signal State_Buff3 : State_Buff3Array := (others => (others => '0'));
+	type NextState_ReadDataArray is array (0 to 3) of unsigned (7 downto 0);
+	signal NextState_ReadData : NextState_ReadDataArray := (others => (others => '0'));
 begin
-	process (Address, State_ReadData, WE, WriteData0, WriteData1, WriteData2, WriteData3, WSTRB)
+	process (Clock, NextState_Buff, Reset)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				for State_Buff_Iterator in 0 to 31 loop
+					State_Buff(State_Buff_Iterator) <= State_BuffDefault;
+				end loop;
+			else
+				for State_Buff_Iterator in 0 to 31 loop
+					State_Buff(State_Buff_Iterator) <= NextState_Buff(State_Buff_Iterator);
+				end loop;
+			end if;
+		end if;
+	end process;
+	process (Clock, NextState_ReadData, Reset)
+	begin
+		if rising_edge(Clock) then
+			if Reset = '1' then
+				for State_ReadData_Iterator in 0 to 3 loop
+					State_ReadData(State_ReadData_Iterator) <= State_ReadDataDefault;
+				end loop;
+			else
+				for State_ReadData_Iterator in 0 to 3 loop
+					State_ReadData(State_ReadData_Iterator) <= NextState_ReadData(State_ReadData_Iterator);
+				end loop;
+			end if;
+		end if;
+	end process;
+	process (Address, WE, WriteData0, WriteData1, WriteData2, WriteData3, WSTRB)
 	begin
 		Inputs_Address <= Address;
 		Inputs_WE <= WE;
@@ -79,50 +103,6 @@ begin
 		Inputs_WriteData(2) <= WriteData2;
 		Inputs_WriteData(3) <= WriteData3;
 		Inputs_WSTRB <= WSTRB;
-		Data0 <= State_ReadData(0);
-		Data1 <= State_ReadData(1);
-		Data2 <= State_ReadData(2);
-		Data3 <= State_ReadData(3);
-	end process;
-	-- inferred single port RAM with read-first behaviour
-	process (Clock, Inputs_WSTRB(0), Inputs_Address, Inputs_WriteData, State_Buff0)
-	begin
-		if rising_edge(Clock) then
-			if Inputs_WSTRB(0) = '1' then
-				State_Buff0(TO_INTEGER(Inputs_Address)) <= Inputs_WriteData(0);
-			end if;
-			State_ReadData(0) <= State_Buff0(TO_INTEGER(Inputs_Address));
-		end if;
-	end process;
-	-- inferred single port RAM with read-first behaviour
-	process (Clock, Inputs_WSTRB(1), Inputs_Address, Inputs_WriteData, State_Buff1)
-	begin
-		if rising_edge(Clock) then
-			if Inputs_WSTRB(1) = '1' then
-				State_Buff1(TO_INTEGER(Inputs_Address)) <= Inputs_WriteData(1);
-			end if;
-			State_ReadData(1) <= State_Buff1(TO_INTEGER(Inputs_Address));
-		end if;
-	end process;
-	-- inferred single port RAM with read-first behaviour
-	process (Clock, Inputs_WSTRB(2), Inputs_Address, Inputs_WriteData, State_Buff2)
-	begin
-		if rising_edge(Clock) then
-			if Inputs_WSTRB(2) = '1' then
-				State_Buff2(TO_INTEGER(Inputs_Address)) <= Inputs_WriteData(2);
-			end if;
-			State_ReadData(2) <= State_Buff2(TO_INTEGER(Inputs_Address));
-		end if;
-	end process;
-	-- inferred single port RAM with read-first behaviour
-	process (Clock, Inputs_WSTRB(3), Inputs_Address, Inputs_WriteData, State_Buff3)
-	begin
-		if rising_edge(Clock) then
-			if Inputs_WSTRB(3) = '1' then
-				State_Buff3(TO_INTEGER(Inputs_Address)) <= Inputs_WriteData(3);
-			end if;
-			State_ReadData(3) <= State_Buff3(TO_INTEGER(Inputs_Address));
-		end if;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

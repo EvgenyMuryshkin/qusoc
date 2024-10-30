@@ -1,18 +1,22 @@
 No reads:
-	iInput_L1Byte
-	iInput_L1Object_L2BooleanArray
-	iInput_L1Object_L2ObjectArray
-	iInput_L1Tuple_Item1
-	iInput_L1Tuple_Item2
+	iInput
+	Inputs_Object
 	Inputs_Objects
 	State_Object_L1Byte
+	State_Object_L1Object_L2BooleanArray
+	State_Object_L1Object_L2ObjectArray
 	State_Object_L1Object_L2ObjectArrayDefault
 	State_Object_L1Tuple_Item1
 	State_Object_L1Tuple_Item2
+	State_Objects
 	State_ObjectsDefault
 No writes:
+	iInput
 	NextState_Object_L1Byte
+	NextState_Object_L1Object_L2BooleanArray
+	NextState_Object_L1Object_L2ObjectArray
 	NextState_Object_L1Tuple_Item1
 	NextState_Object_L1Tuple_Item2
+	NextState_Objects
 	State_Object_L1Object_L2ObjectArrayArrayInit
 	State_ObjectsArrayInit

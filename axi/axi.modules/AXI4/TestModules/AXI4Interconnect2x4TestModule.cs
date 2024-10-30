@@ -58,6 +58,8 @@ namespace axi.modules
 
         protected override void OnSchedule(Func<AXI4Interconnect2x4TestModuleInputs> inputsFactory)
         {
+            base.OnSchedule(inputsFactory);
+
             foreach (var i in range(mCount))
             {
                 masters[i].Schedule(() => new AXI4MasterModuleInputs()

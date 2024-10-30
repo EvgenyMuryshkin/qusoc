@@ -1,0 +1,4 @@
+No reads:
+	Inputs_iBool
+	Inputs_iByte
+	Inputs_iValue

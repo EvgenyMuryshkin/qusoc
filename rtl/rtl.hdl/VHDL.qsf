@@ -37,7 +37,7 @@
 
 set_global_assignment -name FAMILY "Cyclone II"
 set_global_assignment -name DEVICE EP2C70F896C6
-set_global_assignment -name TOP_LEVEL_ENTITY CollectionInitializerModule_TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY DefaultALUModule_TopLevel
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "20:45:17  JUNE 07, 2019"
 set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
@@ -1057,9 +1057,8 @@ set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_W_B_BRESP
 set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_W_B_BUSER
 set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_W_B_BVALID
 set_instance_assignment -name VIRTUAL_PIN ON -to oS2M1_W_W_WREADY
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/CollectionInitializerModule.vwf
-
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveforms/DefaultALUModule.vwf
 
 set_global_assignment -name VHDL_FILE VHDL/generated/AndGateModule/AndGateModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/AndGateModule.vwf
@@ -1205,6 +1204,9 @@ set_global_assignment -name VHDL_FILE VHDL/generated/BoardTimerModule/BoardTimer
 set_global_assignment -name VHDL_FILE VHDL/generated/BoardTimerModule/BoardTimerModule_TopLevel_timerModule20.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/BoardTimerModule/BoardTimerModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/BoardTimerModule.vwf
+set_global_assignment -name VHDL_FILE VHDL/generated/ClassArrayInputsModule/ClassArrayInputsModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/ClassInputsModule/ClassInputsModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/ClassTupleInputsModule/ClassTupleInputsModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/CollectionInitializerModule/CollectionInitializerModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/CollectionInitializerModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/CombinationalROMModule/CombinationalROMModule_TopLevel.vhdl
@@ -1286,6 +1288,11 @@ set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleStateInternalL7Compo
 set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleStateInternalL8ComponentsOutputModule/IOTupleStateInternalL8ComponentsOutputModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleStateInternalL9ComponentsOutputModule/IOTupleStateInternalL9ComponentsOutputModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/IOTupleStateInternalOutputModule/IOTupleStateInternalOutputModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/L1NestedIOObjectModule/L1NestedIOObjectModule_TopLevel_l2.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/L1NestedIOObjectModule/L1NestedIOObjectModule_TopLevel.vhdl
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/L1NestedIOObjectModule.vwf
+set_global_assignment -name VHDL_FILE VHDL/generated/L1ToArrayIOObjectModule/L1ToArrayIOObjectModule_TopLevel.vhdl
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/L1ToArrayIOObjectModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/LiteralsModule/LiteralsModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LiteralsModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/LogicRAMIndexingModule/LogicRAMIndexingModule_TopLevel.vhdl
@@ -1294,13 +1301,17 @@ set_global_assignment -name VHDL_FILE VHDL/generated/LogicRAMModule/LogicRAMModu
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicRAMModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/LoopModule/LoopModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LoopModule.vwf
+set_global_assignment -name VHDL_FILE VHDL/generated/MB_SP_RF_RAMModule/MB_SP_RF_RAMModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/ModuleSignalsMuxModule/ModuleSignalsMuxModule_TopLevel_AndGate.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/ModuleSignalsMuxModule/ModuleSignalsMuxModule_TopLevel_OrGate.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/ModuleSignalsMuxModule/ModuleSignalsMuxModule_TopLevel_XorGate.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/ModuleSignalsMuxModule/ModuleSignalsMuxModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/ModuleSignalsMuxModule.vwf
+set_global_assignment -name VHDL_FILE VHDL/generated/NativeArrayInputsModule/NativeArrayInputsModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/NativeGetterModule/NativeGetterModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/NativeGetterModule.vwf
+set_global_assignment -name VHDL_FILE VHDL/generated/NativeInputsModule/NativeInputsModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/NativeTupleInputsModule/NativeTupleInputsModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/Nested_SDP_RF_RAMModule/Nested_SDP_RF_RAMModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/Nested_SDP_RF_RAMModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/Nested_SDP_WF_WSTRB_RAMModule/Nested_SDP_WF_WSTRB_RAMModule_TopLevel.vhdl
@@ -1348,10 +1359,13 @@ set_global_assignment -name VHDL_FILE VHDL/generated/RangeDetectorArrayModule4/R
 set_global_assignment -name VHDL_FILE VHDL/generated/RangeDetectorArrayModule4/RangeDetectorArrayModule4_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/ReceiverModule/ReceiverModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/ReceiverModule.vwf
+set_global_assignment -name VHDL_FILE VHDL/generated/RTLBitArrayArrayInputsModule/RTLBitArrayArrayInputsModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/RTLBitArrayCompareMixedEqModule/RTLBitArrayCompareMixedEqModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/RTLBitArrayCompareSignedEqModule/RTLBitArrayCompareSignedEqModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/RTLBitArrayCompareUnsignedAsSignedEqModule/RTLBitArrayCompareUnsignedAsSignedEqModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/RTLBitArrayCompareUnsignedEqModule/RTLBitArrayCompareUnsignedEqModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/RTLBitArrayInputsModule/RTLBitArrayInputsModule_TopLevel.vhdl
+set_global_assignment -name VHDL_FILE VHDL/generated/RTLBitArrayTupleInputsModule/RTLBitArrayTupleInputsModule_TopLevel.vhdl
 set_global_assignment -name VHDL_FILE VHDL/generated/SDP_RF_RAMModule/SDP_RF_RAMModule_TopLevel.vhdl
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/SDP_RF_RAMModule.vwf
 set_global_assignment -name VHDL_FILE VHDL/generated/SDP_RF_WSTRB_RAMModule/SDP_RF_WSTRB_RAMModule_TopLevel.vhdl

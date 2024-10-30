@@ -34,24 +34,8 @@ module GrayCodeEncodeModule_4_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire GrayCodeEncodeModule_L24F72T73_Expr = 1'b1;
 	wire [3: 0] Inputs_iValue;
-	wire [3: 0] GrayCodeEncodeModule_L24F38T74_Expr;
-	wire [3: 0] GrayCodeEncodeModule_L24F38T74_Expr_1;
-	wire [3: 0] GrayCodeEncodeModule_L24F38T74_Expr_2;
-	wire [3: 0] GrayCodeEncodeModule_L24F55T73_Expr;
-	wire [3: 0] GrayCodeEncodeModule_L24F55T73_Expr_1;
-	assign GrayCodeEncodeModule_L24F38T74_Expr = GrayCodeEncodeModule_L24F38T74_Expr_1 ^ GrayCodeEncodeModule_L24F38T74_Expr_2;
-	// Output: GrayCodeEncodeModule_L24F55T73_Expr, Width: 4, ShiftBy: 1, Sources: 1
-	assign GrayCodeEncodeModule_L24F55T73_Expr[0] = GrayCodeEncodeModule_L24F55T73_Expr_1[1];
-	assign GrayCodeEncodeModule_L24F55T73_Expr[1] = GrayCodeEncodeModule_L24F55T73_Expr_1[2];
-	assign GrayCodeEncodeModule_L24F55T73_Expr[2] = GrayCodeEncodeModule_L24F55T73_Expr_1[3];
-	assign GrayCodeEncodeModule_L24F55T73_Expr[3] = 0;
-	assign GrayCodeEncodeModule_L24F38T74_Expr_1 = Inputs_iValue;
-	assign GrayCodeEncodeModule_L24F38T74_Expr_2 = GrayCodeEncodeModule_L24F55T73_Expr;
-	assign GrayCodeEncodeModule_L24F55T73_Expr_1 = Inputs_iValue;
 	assign Inputs_iValue = iValue;
-	assign oValue = GrayCodeEncodeModule_L24F38T74_Expr;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

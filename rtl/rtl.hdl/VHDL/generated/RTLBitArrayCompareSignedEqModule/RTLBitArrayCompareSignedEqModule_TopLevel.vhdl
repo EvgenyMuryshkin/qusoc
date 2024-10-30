@@ -42,18 +42,11 @@ architecture rtl of RTLBitArrayCompareSignedEqModule_TopLevel is
 	-- false is a reserved name, declaration skipped
 	signal Inputs_LHS : signed(31 downto 0) := (others => '0');
 	signal Inputs_RHS : signed(31 downto 0) := (others => '0');
-	signal RTLBitArrayCompareModules_L40F30T54_Expr : std_logic := '0';
-	signal RTLBitArrayCompareModules_L40F30T54_ExprLhs : signed(31 downto 0) := "00000000000000000000000000000000";
-	signal RTLBitArrayCompareModules_L40F30T54_ExprRhs : signed(31 downto 0) := "00000000000000000000000000000000";
 begin
-	RTLBitArrayCompareModules_L40F30T54_Expr <= '1' when (signed(resize(RTLBitArrayCompareModules_L40F30T54_ExprLhs, RTLBitArrayCompareModules_L40F30T54_ExprLhs'length + 1)) = signed(resize(RTLBitArrayCompareModules_L40F30T54_ExprRhs, RTLBitArrayCompareModules_L40F30T54_ExprRhs'length + 1))) else '0';
-	process (Inputs_LHS, Inputs_RHS, LHS, RHS, RTLBitArrayCompareModules_L40F30T54_Expr)
+	process (LHS, RHS)
 	begin
-		RTLBitArrayCompareModules_L40F30T54_ExprLhs <= Inputs_LHS;
-		RTLBitArrayCompareModules_L40F30T54_ExprRhs <= Inputs_RHS;
 		Inputs_LHS <= LHS;
 		Inputs_RHS <= RHS;
-		Value <= RTLBitArrayCompareModules_L40F30T54_Expr;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

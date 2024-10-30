@@ -48,53 +48,15 @@ module AXISoCDualCoreModule_TopLevel_Reg0
 	wire false = 1'b0;
 	wire [7: 0] State_bytesDefault = 8'b00000000;
 	wire [1: 0] size = 2'b10;
-	wire AXI4RegisterModule_L69F29T33_Expr = 1'b1;
-	wire AXI4RegisterModule_L71F29T33_Expr = 1'b1;
-	wire AXI4RegisterModule_L73F28T32_Expr = 1'b1;
-	wire AXI4RegisterModule_L70F28T32_Expr = 1'b1;
-	wire AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_0_w = 1'b0;
-	wire AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_1_w = 1'b1;
-	wire [1: 0] AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_2_w = 2'b10;
-	wire [1: 0] AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_3_w = 2'b11;
-	wire [7: 0] Inputs_M2S_R_AR_ARID;
-	wire [31: 0] Inputs_M2S_R_AR_ARADDR;
-	wire [7: 0] Inputs_M2S_R_AR_ARLEN;
-	wire [2: 0] Inputs_M2S_R_AR_ARSIZE;
-	wire [1: 0] Inputs_M2S_R_AR_ARBURST;
-	wire [1: 0] Inputs_M2S_R_AR_ARLOCK;
-	wire [3: 0] Inputs_M2S_R_AR_ARCACHE;
-	wire [2: 0] Inputs_M2S_R_AR_ARPROT;
-	wire [3: 0] Inputs_M2S_R_AR_ARQOS;
-	wire [7: 0] Inputs_M2S_R_AR_ARREGION;
-	wire [7: 0] Inputs_M2S_R_AR_ARUSER;
-	wire Inputs_M2S_R_AR_ARVALID;
-	wire Inputs_M2S_R_R_RREADY;
-	wire [7: 0] Inputs_M2S_W_AW_AWID;
-	wire [31: 0] Inputs_M2S_W_AW_AWADDR;
-	wire [7: 0] Inputs_M2S_W_AW_AWLEN;
-	wire [2: 0] Inputs_M2S_W_AW_AWSIZE;
-	wire [1: 0] Inputs_M2S_W_AW_AWBURST;
-	wire [1: 0] Inputs_M2S_W_AW_AWLOCK;
-	wire [3: 0] Inputs_M2S_W_AW_AWCACHE;
-	wire [2: 0] Inputs_M2S_W_AW_AWPROT;
-	wire [3: 0] Inputs_M2S_W_AW_AWQOS;
-	wire [7: 0] Inputs_M2S_W_AW_AWREGION;
-	wire [7: 0] Inputs_M2S_W_AW_AWUSER;
-	wire Inputs_M2S_W_AW_AWVALID;
-	wire [7: 0] Inputs_M2S_W_W_WID;
-	wire [3: 0] Inputs_M2S_W_W_WSTRB;
-	wire Inputs_M2S_W_W_WLAST;
-	wire [7: 0] Inputs_M2S_W_W_WUSER;
-	wire Inputs_M2S_W_W_WVALID;
-	wire Inputs_M2S_W_B_BREADY;
-	wire Inputs_Reg_inWE;
+	wire [221: 0] Inputs_M2S;
+	wire [32: 0] Inputs_Reg;
 	reg NextState_Written;
-	wire axiSlave_inARREADY;
-	wire axiSlave_inAWREADY;
-	wire axiSlave_inBVALID;
-	wire axiSlave_inRVALID;
-	wire axiSlave_inWREADY;
-	wire [221: 0] axiSlave_M2S;
+	reg axiSlave_inARREADY = 1'b0;
+	reg axiSlave_inAWREADY = 1'b0;
+	reg axiSlave_inBVALID = 1'b0;
+	reg axiSlave_inRVALID = 1'b0;
+	reg axiSlave_inWREADY = 1'b0;
+	reg [221: 0] axiSlave_M2S = 222'b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
 	wire [31: 0] axiSlave_outARADDR;
 	wire axiSlave_outARREADYConfirming;
 	wire axiSlave_outARVALID;
@@ -107,7 +69,6 @@ module AXISoCDualCoreModule_TopLevel_Reg0
 	wire [3: 0] axiSlave_outWSTRB;
 	wire axiSlave_outWVALID;
 	wire [73: 0] axiSlave_S2M;
-	wire [258: 0] AXI4RegisterModule_L66F37L75T14_Object;
 	wire axiSlave_inARREADY_axiSlave_inARREADY_HardLink;
 	wire axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink;
 	wire axiSlave_inBVALID_axiSlave_inBVALID_HardLink;
@@ -136,13 +97,6 @@ module AXISoCDualCoreModule_TopLevel_Reg0
 	wire [73: 0] axiSlave_S2M_axiSlave_S2M_HardLink;
 	reg State_Written = 1'b0;
 	wire State_WrittenDefault = 1'b0;
-	wire AXI4RegisterModule_L72F28T44_Expr;
-	wire AXI4RegisterModule_L72F28T44_Expr_1;
-	wire AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr;
-	wire AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_1;
-	wire AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_2;
-	wire [7 : 0] Inputs_M2S_W_W_WDATA [0 : 3];
-	wire [7 : 0] Inputs_Reg_inWDATA [0 : 3];
 	integer State_bytes_Iterator;
 	reg [7 : 0] State_bytes [0 : 3];
 	initial
@@ -157,7 +111,7 @@ module AXISoCDualCoreModule_TopLevel_Reg0
 		for (NextState_bytes_Iterator = 0; NextState_bytes_Iterator < 4; NextState_bytes_Iterator = NextState_bytes_Iterator + 1)
 			NextState_bytes[NextState_bytes_Iterator] = 0;
 	end
-	wire [7 : 0] axiSlave_inRDATA [0 : 3];
+	reg [7 : 0] axiSlave_inRDATA [0 : 3];
 	wire [7 : 0] axiSlave_outWDATA [0 : 3];
 	always @ (posedge BoardSignals_Clock)
 	begin
@@ -187,8 +141,6 @@ module AXISoCDualCoreModule_TopLevel_Reg0
 			end
 		end
 	end
-	assign AXI4RegisterModule_L72F28T44_Expr = ~AXI4RegisterModule_L72F28T44_Expr_1;
-	assign AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr = AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_1 | AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_2;
 	AXISoCDualCoreModule_TopLevel_Reg0_axiSlave
 	AXISoCDualCoreModule_TopLevel_Reg0_axiSlave
 	(
@@ -226,152 +178,8 @@ module AXISoCDualCoreModule_TopLevel_Reg0
 		.outWVALID (axiSlave_outWVALID_axiSlave_outWVALID_HardLink),
 		.S2M (axiSlave_S2M_axiSlave_S2M_HardLink)
 	);
-	always @ (*)
-	begin
-		NextState_bytes_Iterator = 0;
-		for (NextState_bytes_Iterator = 0; (NextState_bytes_Iterator < 4); NextState_bytes_Iterator = (NextState_bytes_Iterator + 1))
-		begin
-			NextState_bytes[NextState_bytes_Iterator] = State_bytes[NextState_bytes_Iterator];
-		end
-		NextState_Written = State_Written;
-		NextState_Written = AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr;
-		if ((Inputs_Reg_inWE == 1))
-		begin
-			NextState_bytes[0] = Inputs_Reg_inWDATA[0];
-			NextState_bytes[1] = Inputs_Reg_inWDATA[1];
-			NextState_bytes[2] = Inputs_Reg_inWDATA[2];
-			NextState_bytes[3] = Inputs_Reg_inWDATA[3];
-		end
-		else if ((axiSlave_outWREADYConfirming == 1))
-		begin
-			if ((axiSlave_outWSTRB[0] == 1))
-			begin
-				NextState_bytes[0] = axiSlave_outWDATA[0];
-			end
-			if ((axiSlave_outWSTRB[1] == 1))
-			begin
-				NextState_bytes[1] = axiSlave_outWDATA[1];
-			end
-			if ((axiSlave_outWSTRB[2] == 1))
-			begin
-				NextState_bytes[2] = axiSlave_outWDATA[2];
-			end
-			if ((axiSlave_outWSTRB[3] == 1))
-			begin
-				NextState_bytes[3] = axiSlave_outWDATA[3];
-			end
-		end
-	end
-	assign AXI4RegisterModule_L72F28T44_Expr_1 = Inputs_Reg_inWE;
-	assign AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_1 = Inputs_Reg_inWE;
-	assign AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_2 = axiSlave_outWREADYConfirming;
-	assign Inputs_M2S_W_B_BREADY = M2S[221];
-	assign Inputs_M2S_W_W_WVALID = M2S[220];
-	assign Inputs_M2S_W_W_WUSER = M2S[219:212];
-	assign Inputs_M2S_W_W_WLAST = M2S[211];
-	assign Inputs_M2S_W_W_WSTRB = M2S[210:207];
-	assign Inputs_M2S_W_W_WDATA[3] = M2S[206:199];
-	assign Inputs_M2S_W_W_WDATA[2] = M2S[198:191];
-	assign Inputs_M2S_W_W_WDATA[1] = M2S[190:183];
-	assign Inputs_M2S_W_W_WDATA[0] = M2S[182:175];
-	assign Inputs_M2S_W_W_WID = M2S[174:167];
-	assign Inputs_M2S_W_AW_AWVALID = M2S[166];
-	assign Inputs_M2S_W_AW_AWUSER = M2S[165:158];
-	assign Inputs_M2S_W_AW_AWREGION = M2S[157:150];
-	assign Inputs_M2S_W_AW_AWQOS = M2S[149:146];
-	assign Inputs_M2S_W_AW_AWPROT = M2S[145:143];
-	assign Inputs_M2S_W_AW_AWCACHE = M2S[142:139];
-	assign Inputs_M2S_W_AW_AWLOCK = M2S[138:137];
-	assign Inputs_M2S_W_AW_AWBURST = M2S[136:135];
-	assign Inputs_M2S_W_AW_AWSIZE = M2S[134:132];
-	assign Inputs_M2S_W_AW_AWLEN = M2S[131:124];
-	assign Inputs_M2S_W_AW_AWADDR = M2S[123:92];
-	assign Inputs_M2S_W_AW_AWID = M2S[91:84];
-	assign Inputs_M2S_R_R_RREADY = M2S[83];
-	assign Inputs_M2S_R_AR_ARVALID = M2S[82];
-	assign Inputs_M2S_R_AR_ARUSER = M2S[81:74];
-	assign Inputs_M2S_R_AR_ARREGION = M2S[73:66];
-	assign Inputs_M2S_R_AR_ARQOS = M2S[65:62];
-	assign Inputs_M2S_R_AR_ARPROT = M2S[61:59];
-	assign Inputs_M2S_R_AR_ARCACHE = M2S[58:55];
-	assign Inputs_M2S_R_AR_ARLOCK = M2S[54:53];
-	assign Inputs_M2S_R_AR_ARBURST = M2S[52:51];
-	assign Inputs_M2S_R_AR_ARSIZE = M2S[50:48];
-	assign Inputs_M2S_R_AR_ARLEN = M2S[47:40];
-	assign Inputs_M2S_R_AR_ARADDR = M2S[39:8];
-	assign Inputs_M2S_R_AR_ARID = M2S[7:0];
-	assign Inputs_Reg_inWE = Reg[32];
-	assign Inputs_Reg_inWDATA[3] = Reg[31:24];
-	assign Inputs_Reg_inWDATA[2] = Reg[23:16];
-	assign Inputs_Reg_inWDATA[1] = Reg[15:8];
-	assign Inputs_Reg_inWDATA[0] = Reg[7:0];
-	assign AXI4RegisterModule_L66F37L75T14_Object[0] = AXI4RegisterModule_L69F29T33_Expr;
-	assign AXI4RegisterModule_L66F37L75T14_Object[1] = AXI4RegisterModule_L71F29T33_Expr;
-	assign AXI4RegisterModule_L66F37L75T14_Object[2] = AXI4RegisterModule_L73F28T32_Expr;
-	assign AXI4RegisterModule_L66F37L75T14_Object[34:3] = {
-		State_bytes[3],
-		State_bytes[2],
-		State_bytes[1],
-		State_bytes[0]
-	}
-	;
-	assign AXI4RegisterModule_L66F37L75T14_Object[35] = AXI4RegisterModule_L70F28T32_Expr;
-	assign AXI4RegisterModule_L66F37L75T14_Object[36] = AXI4RegisterModule_L72F28T44_Expr;
-	assign AXI4RegisterModule_L66F37L75T14_Object[44:37] = Inputs_M2S_R_AR_ARID;
-	assign AXI4RegisterModule_L66F37L75T14_Object[76:45] = Inputs_M2S_R_AR_ARADDR;
-	assign AXI4RegisterModule_L66F37L75T14_Object[84:77] = Inputs_M2S_R_AR_ARLEN;
-	assign AXI4RegisterModule_L66F37L75T14_Object[87:85] = Inputs_M2S_R_AR_ARSIZE;
-	assign AXI4RegisterModule_L66F37L75T14_Object[89:88] = Inputs_M2S_R_AR_ARBURST;
-	assign AXI4RegisterModule_L66F37L75T14_Object[91:90] = Inputs_M2S_R_AR_ARLOCK;
-	assign AXI4RegisterModule_L66F37L75T14_Object[95:92] = Inputs_M2S_R_AR_ARCACHE;
-	assign AXI4RegisterModule_L66F37L75T14_Object[98:96] = Inputs_M2S_R_AR_ARPROT;
-	assign AXI4RegisterModule_L66F37L75T14_Object[102:99] = Inputs_M2S_R_AR_ARQOS;
-	assign AXI4RegisterModule_L66F37L75T14_Object[110:103] = Inputs_M2S_R_AR_ARREGION;
-	assign AXI4RegisterModule_L66F37L75T14_Object[118:111] = Inputs_M2S_R_AR_ARUSER;
-	assign AXI4RegisterModule_L66F37L75T14_Object[119] = Inputs_M2S_R_AR_ARVALID;
-	assign AXI4RegisterModule_L66F37L75T14_Object[120] = Inputs_M2S_R_R_RREADY;
-	assign AXI4RegisterModule_L66F37L75T14_Object[128:121] = Inputs_M2S_W_AW_AWID;
-	assign AXI4RegisterModule_L66F37L75T14_Object[160:129] = Inputs_M2S_W_AW_AWADDR;
-	assign AXI4RegisterModule_L66F37L75T14_Object[168:161] = Inputs_M2S_W_AW_AWLEN;
-	assign AXI4RegisterModule_L66F37L75T14_Object[171:169] = Inputs_M2S_W_AW_AWSIZE;
-	assign AXI4RegisterModule_L66F37L75T14_Object[173:172] = Inputs_M2S_W_AW_AWBURST;
-	assign AXI4RegisterModule_L66F37L75T14_Object[175:174] = Inputs_M2S_W_AW_AWLOCK;
-	assign AXI4RegisterModule_L66F37L75T14_Object[179:176] = Inputs_M2S_W_AW_AWCACHE;
-	assign AXI4RegisterModule_L66F37L75T14_Object[182:180] = Inputs_M2S_W_AW_AWPROT;
-	assign AXI4RegisterModule_L66F37L75T14_Object[186:183] = Inputs_M2S_W_AW_AWQOS;
-	assign AXI4RegisterModule_L66F37L75T14_Object[194:187] = Inputs_M2S_W_AW_AWREGION;
-	assign AXI4RegisterModule_L66F37L75T14_Object[202:195] = Inputs_M2S_W_AW_AWUSER;
-	assign AXI4RegisterModule_L66F37L75T14_Object[203] = Inputs_M2S_W_AW_AWVALID;
-	assign AXI4RegisterModule_L66F37L75T14_Object[211:204] = Inputs_M2S_W_W_WID;
-	assign AXI4RegisterModule_L66F37L75T14_Object[243:212] = {
-		Inputs_M2S_W_W_WDATA[3],
-		Inputs_M2S_W_W_WDATA[2],
-		Inputs_M2S_W_W_WDATA[1],
-		Inputs_M2S_W_W_WDATA[0]
-	}
-	;
-	assign AXI4RegisterModule_L66F37L75T14_Object[247:244] = Inputs_M2S_W_W_WSTRB;
-	assign AXI4RegisterModule_L66F37L75T14_Object[248] = Inputs_M2S_W_W_WLAST;
-	assign AXI4RegisterModule_L66F37L75T14_Object[256:249] = Inputs_M2S_W_W_WUSER;
-	assign AXI4RegisterModule_L66F37L75T14_Object[257] = Inputs_M2S_W_W_WVALID;
-	assign AXI4RegisterModule_L66F37L75T14_Object[258] = Inputs_M2S_W_B_BREADY;
-	assign axiSlave_M2S = AXI4RegisterModule_L66F37L75T14_Object[258:37];
-	assign axiSlave_inWREADY = AXI4RegisterModule_L66F37L75T14_Object[36];
-	assign axiSlave_inRVALID = AXI4RegisterModule_L66F37L75T14_Object[35];
-	assign axiSlave_inRDATA[3] = AXI4RegisterModule_L66F37L75T14_Object[34:27];
-	assign axiSlave_inRDATA[2] = AXI4RegisterModule_L66F37L75T14_Object[26:19];
-	assign axiSlave_inRDATA[1] = AXI4RegisterModule_L66F37L75T14_Object[18:11];
-	assign axiSlave_inRDATA[0] = AXI4RegisterModule_L66F37L75T14_Object[10:3];
-	assign axiSlave_inBVALID = AXI4RegisterModule_L66F37L75T14_Object[2];
-	assign axiSlave_inAWREADY = AXI4RegisterModule_L66F37L75T14_Object[1];
-	assign axiSlave_inARREADY = AXI4RegisterModule_L66F37L75T14_Object[0];
-	assign outACK = Inputs_Reg_inWE;
-	assign outData0 = State_bytes[0];
-	assign outData1 = State_bytes[1];
-	assign outData2 = State_bytes[2];
-	assign outData3 = State_bytes[3];
-	assign outWritten = State_Written;
-	assign S2M = axiSlave_S2M;
+	assign Inputs_M2S = M2S;
+	assign Inputs_Reg = Reg;
 	assign axiSlave_inARREADY_axiSlave_inARREADY_HardLink = axiSlave_inARREADY;
 	assign axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink = axiSlave_inAWREADY;
 	assign axiSlave_inBVALID_axiSlave_inBVALID_HardLink = axiSlave_inBVALID;

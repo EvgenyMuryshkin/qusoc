@@ -1,0 +1,8 @@
+No reads:
+	Inputs_data
+	Inputs_i1
+	Inputs_i2
+	Inputs_i3
+	State_state
+No writes:
+	NextState_state

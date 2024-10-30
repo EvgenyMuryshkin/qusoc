@@ -1,2 +1,9 @@
 No reads:
+	active
 	CapacityBits
+	countTo
+	Inputs_Restart
+	State_counter
+No writes:
+	active
+	NextState_counter

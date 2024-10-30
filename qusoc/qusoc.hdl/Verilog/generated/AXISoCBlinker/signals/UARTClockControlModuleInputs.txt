@@ -1,0 +1,6 @@
+└Root            | UARTClockControlModuleInputs | [4:0] | 5 | [4:0]
+ ├iTransmitting  | Boolean                      | [4]   | 1 | [4:0][4]
+ ├iRX            | Boolean                      | [3]   | 1 | [4:0][3]
+ ├iReceiverValid | Boolean                      | [2]   | 1 | [4:0][2]
+ ├iEN_TX         | Boolean                      | [1]   | 1 | [4:0][1]
+ └iEN_RX         | Boolean                      | [0]   | 1 | [4:0][0]

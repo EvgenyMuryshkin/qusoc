@@ -1,20 +1,76 @@
 No reads:
+	axiSlave_outARADDR
+	axiSlave_outARREADYConfirming
 	axiSlave_outARVALID
 	axiSlave_outAWADDR
 	axiSlave_outAWREADYConfirming
 	axiSlave_outAWVALID
 	axiSlave_outReadTXCompleting
+	axiSlave_outWDATA
+	axiSlave_outWREADYConfirming
 	axiSlave_outWriteTXCompleting
 	axiSlave_outWSTRB
 	axiSlave_outWVALID
+	axiSlave_S2M
+	byteAddr
+	clocksPerBit
+	halfClocksPerBit
+	Inputs_iEN_RX
+	Inputs_iEN_TX
+	Inputs_iRX
+	Inputs_M2S
+	rdata
+	receiverFIFO_oIsEmpty
+	receiverFIFO_oIsFull
 	receiverFIFO_oRACK
+	receiverFIFO_oRData
+	receiverFIFO_oRRawData
+	receiverFIFO_oRValid
+	receiverFIFO_oWACK
 	size
 	sizeBits
+	transmitterFIFO_oIsEmpty
+	transmitterFIFO_oIsFull
+	transmitterFIFO_oRACK
+	transmitterFIFO_oRData
+	transmitterFIFO_oRRawData
 	transmitterFIFO_oRValid
+	transmitterFIFO_oWACK
+	uartClockControl_oRX
+	uartClockControl_oRXCE
+	uartClockControl_oRXCounter
+	uartClockControl_oTXCE
+	uartClockControl_oTXCounter
+	uartReceiver_oValid
+	uartReceiver_oValue
+	uartTransmitter_oCE
+	uartTransmitter_oTransmitting
+	uartTransmitter_oTX
+	uartTransmitter_oWillStartTransmitting
 No writes:
-	AXI4UARTModule_L125F43T50_Cast
-	AXI4UARTModule_L125F53T60_Cast
-	AXI4UARTModule_L126F44T51_Cast
-	AXI4UARTModule_L126F54T61_Cast
-	AXI4UARTModule_L127F40T47_Cast
-	AXI4UARTModule_L127F50T57_Cast
+	axiSlave_inARREADY
+	axiSlave_inAWREADY
+	axiSlave_inBVALID
+	axiSlave_inRDATA
+	axiSlave_inRVALID
+	axiSlave_inWREADY
+	axiSlave_M2S
+	byteAddr
+	rdata
+	receiverFIFO_iRE
+	receiverFIFO_iWData
+	receiverFIFO_iWE
+	transmitterFIFO_iRE
+	transmitterFIFO_iWData
+	transmitterFIFO_iWE
+	uartClockControl_iEN_RX
+	uartClockControl_iEN_TX
+	uartClockControl_iReceiverValid
+	uartClockControl_iRX
+	uartClockControl_iTransmitting
+	uartReceiver_iACK
+	uartReceiver_iCE
+	uartReceiver_iRX
+	uartTransmitter_iCE
+	uartTransmitter_iValid
+	uartTransmitter_iValue

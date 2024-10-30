@@ -1,9 +1,19 @@
 No reads:
-	Inputs_S2M_R_R_RID
-	Inputs_S2M_R_R_RLAST
-	Inputs_S2M_R_R_RRESP
-	Inputs_S2M_R_R_RUSER
-	Inputs_S2M_W_B_BID
-	Inputs_S2M_W_B_BRESP
-	Inputs_S2M_W_B_BUSER
+	Inputs_Master
+	Inputs_S2M
+	readAck
 	size
+	State_ARREADYACK
+	State_AWREADYACK
+	State_readFSM
+	State_WREADYACK
+	State_writeFSM
+	writeAck
+No writes:
+	NextState_ARREADYACK
+	NextState_AWREADYACK
+	NextState_readFSM
+	NextState_WREADYACK
+	NextState_writeFSM
+	readAck
+	writeAck

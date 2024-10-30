@@ -63,15 +63,13 @@ module StructByMemberStateDirectModule_TopLevel
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire [36: 0] State_sL1_L2Default = 37'b0000000000000000000000000000000000000;
-	wire [0: 0] Inputs_iL1_L1OptionalValue;
-	wire Inputs_iL1_L1RequiredValue;
+	wire [75: 0] Inputs_iL1;
 	reg [0: 0] NextState_sL1_L1OptionalValue;
 	reg NextState_sL1_L1RequiredValue;
 	reg [0: 0] State_sL1_L1OptionalValue = 1'b0;
 	wire [0: 0] State_sL1_L1OptionalValueDefault = 1'b0;
 	reg State_sL1_L1RequiredValue = 1'b0;
 	wire State_sL1_L1RequiredValueDefault = 1'b0;
-	wire [36 : 0] Inputs_iL1_L2 [0 : 1];
 	integer State_sL1_L2_Iterator;
 	reg [36 : 0] State_sL1_L2 [0 : 1];
 	initial
@@ -116,48 +114,20 @@ module StructByMemberStateDirectModule_TopLevel
 			end
 		end
 	end
-	always @ (*)
-	begin
-		NextState_sL1_L2_Iterator = 0;
-		for (NextState_sL1_L2_Iterator = 0; (NextState_sL1_L2_Iterator < 2); NextState_sL1_L2_Iterator = (NextState_sL1_L2_Iterator + 1))
-		begin
-			NextState_sL1_L2[NextState_sL1_L2_Iterator] = State_sL1_L2[NextState_sL1_L2_Iterator];
-		end
-		NextState_sL1_L1OptionalValue = State_sL1_L1OptionalValue;
-		NextState_sL1_L1RequiredValue = State_sL1_L1RequiredValue;
-		NextState_sL1_L1OptionalValue = Inputs_iL1_L1OptionalValue;
-		NextState_sL1_L1RequiredValue = Inputs_iL1_L1RequiredValue;
-		NextState_sL1_L2[0] = Inputs_iL1_L2[0];
-		NextState_sL1_L2[1] = Inputs_iL1_L2[1];
-	end
-	assign Inputs_iL1_L1OptionalValue = iL1_L1OptionalValue;
-	assign Inputs_iL1_L1RequiredValue = iL1_L1RequiredValue;
-	assign Inputs_iL1_L2[0][36] = iL1_L20_L3Tuple_Item1;
-	assign Inputs_iL1_L2[0][35:20] = iL1_L20_L3Tuple_Item2_L3RequiredValue;
-	assign Inputs_iL1_L2[0][19] = iL1_L20_L3Tuple_Item2_L3OptionalValue;
-	assign Inputs_iL1_L2[0][18:3] = iL1_L20_L3_L3RequiredValue;
-	assign Inputs_iL1_L2[0][2] = iL1_L20_L3_L3OptionalValue;
-	assign Inputs_iL1_L2[0][1:0] = iL1_L20_L2OptionalValue;
-	assign Inputs_iL1_L2[1][36] = iL1_L21_L3Tuple_Item1;
-	assign Inputs_iL1_L2[1][35:20] = iL1_L21_L3Tuple_Item2_L3RequiredValue;
-	assign Inputs_iL1_L2[1][19] = iL1_L21_L3Tuple_Item2_L3OptionalValue;
-	assign Inputs_iL1_L2[1][18:3] = iL1_L21_L3_L3RequiredValue;
-	assign Inputs_iL1_L2[1][2] = iL1_L21_L3_L3OptionalValue;
-	assign Inputs_iL1_L2[1][1:0] = iL1_L21_L2OptionalValue;
-	assign oL1_L1OptionalValue = State_sL1_L1OptionalValue;
-	assign oL1_L1RequiredValue = State_sL1_L1RequiredValue;
-	assign oL1_L20_L3Tuple_Item1 = State_sL1_L2[0][36];
-	assign oL1_L20_L3Tuple_Item2_L3RequiredValue = State_sL1_L2[0][35:20];
-	assign oL1_L20_L3Tuple_Item2_L3OptionalValue = State_sL1_L2[0][19];
-	assign oL1_L20_L3_L3RequiredValue = State_sL1_L2[0][18:3];
-	assign oL1_L20_L3_L3OptionalValue = State_sL1_L2[0][2];
-	assign oL1_L20_L2OptionalValue = State_sL1_L2[0][1:0];
-	assign oL1_L21_L3Tuple_Item1 = State_sL1_L2[1][36];
-	assign oL1_L21_L3Tuple_Item2_L3RequiredValue = State_sL1_L2[1][35:20];
-	assign oL1_L21_L3Tuple_Item2_L3OptionalValue = State_sL1_L2[1][19];
-	assign oL1_L21_L3_L3RequiredValue = State_sL1_L2[1][18:3];
-	assign oL1_L21_L3_L3OptionalValue = State_sL1_L2[1][2];
-	assign oL1_L21_L2OptionalValue = State_sL1_L2[1][1:0];
+	assign Inputs_iL1[75] = iL1_L21_L3Tuple_Item1;
+	assign Inputs_iL1[74:59] = iL1_L21_L3Tuple_Item2_L3RequiredValue;
+	assign Inputs_iL1[58] = iL1_L21_L3Tuple_Item2_L3OptionalValue;
+	assign Inputs_iL1[57:42] = iL1_L21_L3_L3RequiredValue;
+	assign Inputs_iL1[41] = iL1_L21_L3_L3OptionalValue;
+	assign Inputs_iL1[40:39] = iL1_L21_L2OptionalValue;
+	assign Inputs_iL1[38] = iL1_L20_L3Tuple_Item1;
+	assign Inputs_iL1[37:22] = iL1_L20_L3Tuple_Item2_L3RequiredValue;
+	assign Inputs_iL1[21] = iL1_L20_L3Tuple_Item2_L3OptionalValue;
+	assign Inputs_iL1[20:5] = iL1_L20_L3_L3RequiredValue;
+	assign Inputs_iL1[4] = iL1_L20_L3_L3OptionalValue;
+	assign Inputs_iL1[3:2] = iL1_L20_L2OptionalValue;
+	assign Inputs_iL1[1] = iL1_L1RequiredValue;
+	assign Inputs_iL1[0:0] = iL1_L1OptionalValue;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

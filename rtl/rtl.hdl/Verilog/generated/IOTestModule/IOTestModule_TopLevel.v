@@ -56,8 +56,6 @@ module IOTestModule_TopLevel
 	wire [7: 0] State_ArrayDefault = 8'b00000000;
 	wire [7: 0] State_IteratorArrayDefault = 8'b00000000;
 	wire [1: 0] size = 2'b10;
-	wire IOTestModule_L73F9L81T10_IOTestModule_L79F13L80T68_0_idx = 1'b0;
-	wire IOTestModule_L73F9L81T10_IOTestModule_L79F13L80T68_1_idx = 1'b1;
 	wire Inputs_InFlag;
 	reg NextState_Flag;
 	reg State_Flag = 1'b0;
@@ -136,47 +134,9 @@ module IOTestModule_TopLevel
 			end
 		end
 	end
-	always @ (*)
-	begin
-		NextState_Array_Iterator = 0;
-		NextState_IteratorArray_Iterator = 0;
-		for (NextState_Array_Iterator = 0; (NextState_Array_Iterator < 2); NextState_Array_Iterator = (NextState_Array_Iterator + 1))
-		begin
-			NextState_Array[NextState_Array_Iterator] = State_Array[NextState_Array_Iterator];
-		end
-		for (NextState_IteratorArray_Iterator = 0; (NextState_IteratorArray_Iterator < 2); NextState_IteratorArray_Iterator = (NextState_IteratorArray_Iterator + 1))
-		begin
-			NextState_IteratorArray[NextState_IteratorArray_Iterator] = State_IteratorArray[NextState_IteratorArray_Iterator];
-		end
-		NextState_Flag = State_Flag;
-		NextState_Flag = Inputs_InFlag;
-		if ((Inputs_InFlag == 1))
-		begin
-			NextState_Array[0] = Inputs_InArray[0];
-			NextState_Array[1] = Inputs_InArray[1];
-		end
-		NextState_IteratorArray[0] = Inputs_InArray[0];
-		NextState_IteratorArray[1] = Inputs_InArray[1];
-	end
 	assign Inputs_InArray[0] = InArray0;
 	assign Inputs_InArray[1] = InArray1;
 	assign Inputs_InFlag = InFlag;
-	assign ClassOut_Array0 = State_Array[0];
-	assign ClassOut_Array1 = State_Array[1];
-	assign ClassOut_Flag = State_Flag;
-	assign ClassOut_Nested_Array0 = State_IteratorArray[0];
-	assign ClassOut_Nested_Array1 = State_IteratorArray[1];
-	assign ClassOut_Nested_Flag = State_Flag;
-	assign NestedClassOut_Array0 = State_Array[0];
-	assign NestedClassOut_Array1 = State_Array[1];
-	assign NestedClassOut_Flag = State_Flag;
-	assign OutDirectArray0 = Inputs_InArray[0];
-	assign OutDirectArray1 = Inputs_InArray[1];
-	assign OutFlag = State_Flag;
-	assign OutIteratorArray0 = State_IteratorArray[0];
-	assign OutIteratorArray1 = State_IteratorArray[1];
-	assign OutStateArray0 = State_Array[0];
-	assign OutStateArray1 = State_Array[1];
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

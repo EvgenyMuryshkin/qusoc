@@ -1,0 +1,5 @@
+└Root            | ClassInputs       | [50:0] | 51 | [50:0]
+ ├iValue         | RTLBitArrayInputs | [50:9] | 42 | [50:0][50:9]
+ │└iValue_iValue | RTLBitArray       | [50:9] | 42 | [50:0][50:9][41:0]
+ ├iByte          | Byte              | [8:1]  | 8  | [50:0][8:1]
+ └iBool          | Boolean           | [0]    | 1  | [50:0][0]

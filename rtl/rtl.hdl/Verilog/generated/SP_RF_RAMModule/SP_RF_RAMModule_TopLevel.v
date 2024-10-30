@@ -38,10 +38,13 @@ module SP_RF_RAMModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
+	wire [7: 0] State_BuffDefault = 8'b00000000;
 	wire [7: 0] Inputs_Address;
 	wire Inputs_WE;
 	wire [7: 0] Inputs_WriteData;
-	reg [7: 0] State_ReadData;
+	reg [7: 0] NextState_ReadData;
+	reg [7: 0] State_ReadData = 8'b00000000;
+	wire [7: 0] State_ReadDataDefault = 8'b00000000;
 	integer State_Buff_Iterator;
 	reg [7 : 0] State_Buff [0 : 255];
 	initial
@@ -49,19 +52,44 @@ module SP_RF_RAMModule_TopLevel
 		for (State_Buff_Iterator = 0; State_Buff_Iterator < 256; State_Buff_Iterator = State_Buff_Iterator + 1)
 			State_Buff[State_Buff_Iterator] = 0;
 	end
-	// inferred single port RAM with read-first behaviour
+	integer NextState_Buff_Iterator;
+	reg [7 : 0] NextState_Buff [0 : 255];
+	initial
+	begin : Init_NextState_Buff
+		for (NextState_Buff_Iterator = 0; NextState_Buff_Iterator < 256; NextState_Buff_Iterator = NextState_Buff_Iterator + 1)
+			NextState_Buff[NextState_Buff_Iterator] = 0;
+	end
 	always @ (posedge Clock)
 	begin
-		if (Inputs_WE)
+		if ((Reset == 1))
 		begin
-			State_Buff[Inputs_Address] <= Inputs_WriteData;
+			State_ReadData <= State_ReadDataDefault;
 		end
-		State_ReadData <= State_Buff[Inputs_Address];
+		else
+		begin
+			State_ReadData <= NextState_ReadData;
+		end
+	end
+	always @ (posedge Clock)
+	begin
+		if ((Reset == 1))
+		begin
+			for (State_Buff_Iterator = 0; (State_Buff_Iterator < 256); State_Buff_Iterator = (State_Buff_Iterator + 1))
+			begin
+				State_Buff[State_Buff_Iterator] <= State_BuffDefault;
+			end
+		end
+		else
+		begin
+			for (State_Buff_Iterator = 0; (State_Buff_Iterator < 256); State_Buff_Iterator = (State_Buff_Iterator + 1))
+			begin
+				State_Buff[State_Buff_Iterator] <= NextState_Buff[State_Buff_Iterator];
+			end
+		end
 	end
 	assign Inputs_Address = Address;
 	assign Inputs_WE = WE;
 	assign Inputs_WriteData = WriteData;
-	assign Data = State_ReadData;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

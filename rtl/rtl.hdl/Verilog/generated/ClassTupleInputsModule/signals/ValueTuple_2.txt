@@ -1,0 +1,7 @@
+└Root                   | ValueTuple`2      | [51:0] | 52 | [51:0]
+ ├Item1                 | Boolean           | [51]   | 1  | [51:0][51]
+ └Item2                 | ClassInputs       | [50:0] | 51 | [51:0][50:0]
+  ├Item2_iValue         | RTLBitArrayInputs | [50:9] | 42 | [51:0][50:0][50:9]
+  │└Item2_iValue_iValue | RTLBitArray       | [50:9] | 42 | [51:0][50:0][50:9][41:0]
+  ├Item2_iByte          | Byte              | [8:1]  | 8  | [51:0][50:0][8:1]
+  └Item2_iBool          | Boolean           | [0]    | 1  | [51:0][50:0][0]

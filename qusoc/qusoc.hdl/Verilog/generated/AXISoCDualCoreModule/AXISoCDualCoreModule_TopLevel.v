@@ -36,39 +36,28 @@ module AXISoCDualCoreModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire AXI4RISCVModule_L17F32T37_Expr = 1'b0;
-	wire [32: 0] AXI4RegisterModuleInputs_Reg = 33'b000000000000000000000000000000000;
-	wire [221: 0] AutoIncrementCounter_M2S;
+	reg [221: 0] AutoIncrementCounter_M2S = 222'b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
 	wire [31: 0] AutoIncrementCounter_oCounter;
 	wire AutoIncrementCounter_outWritten;
 	wire [73: 0] AutoIncrementCounter_S2M;
-	wire CPU0_ExtReset;
-	wire [73: 0] CPU0_S2M;
+	reg CPU0_ExtReset = 1'b0;
+	reg [73: 0] CPU0_S2M = 74'b00000000000000000000000000000000000000000000000000000000000000000000000000;
 	wire [221: 0] CPU0_M2S;
-	wire CPU1_ExtReset;
-	wire [73: 0] CPU1_S2M;
+	reg CPU1_ExtReset = 1'b0;
+	reg [73: 0] CPU1_S2M = 74'b00000000000000000000000000000000000000000000000000000000000000000000000000;
 	wire [221: 0] CPU1_M2S;
-	wire [221: 0] Memory_M2S;
+	reg [221: 0] Memory_M2S = 222'b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
 	wire [73: 0] Memory_S2M;
-	wire [221: 0] Reg0_M2S;
-	wire [32: 0] Reg0_Reg;
+	reg [221: 0] Reg0_M2S = 222'b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+	reg [32: 0] Reg0_Reg = 33'b000000000000000000000000000000000;
 	wire Reg0_outACK;
 	wire Reg0_outWritten;
 	wire [73: 0] Reg0_S2M;
-	wire [221: 0] Reg1_M2S;
-	wire [32: 0] Reg1_Reg;
+	reg [221: 0] Reg1_M2S = 222'b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+	reg [32: 0] Reg1_Reg = 33'b000000000000000000000000000000000;
 	wire Reg1_outACK;
 	wire Reg1_outWritten;
 	wire [73: 0] Reg1_S2M;
-	wire [74: 0] AXISoCDualCoreModule_L46F33L49T14_Object;
-	wire [74: 0] AXISoCDualCoreModule_L50F33L53T14_Object;
-	wire [221: 0] AXISoCDualCoreModule_L55F35L58T14_Object;
-	wire [221: 0] AXISoCDualCoreModule_L59F49L62T14_Object;
-	wire [254: 0] AXISoCDualCoreModule_L63F33L66T14_Object;
-	wire [254: 0] AXISoCDualCoreModule_L67F33L70T14_Object;
-	wire [739: 0] AXISoCDualCoreModule_L72F41L81T14_Object;
-	wire [31: 0] AXISoCDualCoreModule_L83F37T66_Source;
-	wire [31: 0] AXISoCDualCoreModule_L84F37T66_Source;
 	wire [221: 0] AutoIncrementCounter_M2S_AutoIncrementCounter_M2S_HardLink;
 	wire [31: 0] AutoIncrementCounter_oCounter_AutoIncrementCounter_oCounter_HardLink;
 	wire AutoIncrementCounter_outWritten_AutoIncrementCounter_outWritten_HardLink;
@@ -111,8 +100,8 @@ module AXISoCDualCoreModule_TopLevel
 	wire [7: 0] Reg1_outData3_Reg1_outData_HardLink;
 	wire Reg1_outWritten_Reg1_outWritten_HardLink;
 	wire [73: 0] Reg1_S2M_Reg1_S2M_HardLink;
-	wire [221 : 0] Interconnect_iM2S [0 : 1];
-	wire [73 : 0] Interconnect_iS2M [0 : 3];
+	reg [221 : 0] Interconnect_iM2S [0 : 1];
+	reg [73 : 0] Interconnect_iS2M [0 : 3];
 	wire [221 : 0] Interconnect_oM2S [0 : 3];
 	wire [73 : 0] Interconnect_oS2M [0 : 1];
 	wire [7 : 0] Reg0_outData [0 : 3];
@@ -243,60 +232,6 @@ module AXISoCDualCoreModule_TopLevel
 		.outWritten (Reg1_outWritten_Reg1_outWritten_HardLink),
 		.S2M (Reg1_S2M_Reg1_S2M_HardLink)
 	);
-	assign AXISoCDualCoreModule_L46F33L49T14_Object[0] = AXI4RISCVModule_L17F32T37_Expr;
-	assign AXISoCDualCoreModule_L46F33L49T14_Object[74:1] = Interconnect_oS2M[0];
-	assign CPU0_S2M = AXISoCDualCoreModule_L46F33L49T14_Object[74:1];
-	assign CPU0_ExtReset = AXISoCDualCoreModule_L46F33L49T14_Object[0];
-	assign AXISoCDualCoreModule_L50F33L53T14_Object[0] = AXI4RISCVModule_L17F32T37_Expr;
-	assign AXISoCDualCoreModule_L50F33L53T14_Object[74:1] = Interconnect_oS2M[1];
-	assign CPU1_S2M = AXISoCDualCoreModule_L50F33L53T14_Object[74:1];
-	assign CPU1_ExtReset = AXISoCDualCoreModule_L50F33L53T14_Object[0];
-	assign AXISoCDualCoreModule_L55F35L58T14_Object[221:0] = Interconnect_oM2S[0];
-	assign Memory_M2S = AXISoCDualCoreModule_L55F35L58T14_Object[221:0];
-	assign AXISoCDualCoreModule_L59F49L62T14_Object[221:0] = Interconnect_oM2S[1];
-	assign AutoIncrementCounter_M2S = AXISoCDualCoreModule_L59F49L62T14_Object[221:0];
-	assign AXISoCDualCoreModule_L63F33L66T14_Object[221:0] = Interconnect_oM2S[2];
-	assign AXISoCDualCoreModule_L63F33L66T14_Object[254:222] = AXI4RegisterModuleInputs_Reg;
-	assign Reg0_Reg = AXISoCDualCoreModule_L63F33L66T14_Object[254:222];
-	assign Reg0_M2S = AXISoCDualCoreModule_L63F33L66T14_Object[221:0];
-	assign AXISoCDualCoreModule_L67F33L70T14_Object[221:0] = Interconnect_oM2S[3];
-	assign AXISoCDualCoreModule_L67F33L70T14_Object[254:222] = AXI4RegisterModuleInputs_Reg;
-	assign Reg1_Reg = AXISoCDualCoreModule_L67F33L70T14_Object[254:222];
-	assign Reg1_M2S = AXISoCDualCoreModule_L67F33L70T14_Object[221:0];
-	assign AXISoCDualCoreModule_L72F41L81T14_Object[443:0] = {
-		CPU1_M2S,
-		CPU0_M2S
-	}
-	;
-	assign AXISoCDualCoreModule_L72F41L81T14_Object[739:444] = {
-		Reg1_S2M,
-		Reg0_S2M,
-		AutoIncrementCounter_S2M,
-		Memory_S2M
-	}
-	;
-	assign Interconnect_iS2M[3] = AXISoCDualCoreModule_L72F41L81T14_Object[739:666];
-	assign Interconnect_iS2M[2] = AXISoCDualCoreModule_L72F41L81T14_Object[665:592];
-	assign Interconnect_iS2M[1] = AXISoCDualCoreModule_L72F41L81T14_Object[591:518];
-	assign Interconnect_iS2M[0] = AXISoCDualCoreModule_L72F41L81T14_Object[517:444];
-	assign Interconnect_iM2S[1] = AXISoCDualCoreModule_L72F41L81T14_Object[443:222];
-	assign Interconnect_iM2S[0] = AXISoCDualCoreModule_L72F41L81T14_Object[221:0];
-	assign AXISoCDualCoreModule_L83F37T66_Source = {
-		Reg0_outData[3],
-		Reg0_outData[2],
-		Reg0_outData[1],
-		Reg0_outData[0]
-	}
-	;
-	assign oReg0 = AXISoCDualCoreModule_L83F37T66_Source;
-	assign AXISoCDualCoreModule_L84F37T66_Source = {
-		Reg1_outData[3],
-		Reg1_outData[2],
-		Reg1_outData[1],
-		Reg1_outData[0]
-	}
-	;
-	assign oReg1 = AXISoCDualCoreModule_L84F37T66_Source;
 	assign AutoIncrementCounter_M2S_AutoIncrementCounter_M2S_HardLink = AutoIncrementCounter_M2S;
 	assign AutoIncrementCounter_oCounter = AutoIncrementCounter_oCounter_AutoIncrementCounter_oCounter_HardLink;
 	assign AutoIncrementCounter_outWritten = AutoIncrementCounter_outWritten_AutoIncrementCounter_outWritten_HardLink;

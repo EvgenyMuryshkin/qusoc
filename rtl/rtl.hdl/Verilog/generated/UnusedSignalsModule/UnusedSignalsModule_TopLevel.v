@@ -70,26 +70,19 @@ module UnusedSignalsModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire Inputs_iObject_Tuple_Item1;
-	wire Inputs_iObject_Tuple_Item2;
-	wire Inputs_iObject_UnusedValue;
-	wire Inputs_iObject_UsedValue;
-	wire Inputs_iUnusedTuple_Item1;
-	wire Inputs_iUnusedTuple_Item2;
+	wire [11: 0] Inputs_iObject;
+	wire [1: 0] Inputs_iUnusedTuple;
 	wire Inputs_iUnusedValue;
-	wire Inputs_iUsedTuple_Item1;
-	wire Inputs_iUsedTuple_Item2;
+	wire [1: 0] Inputs_iUsedTuple;
 	wire Inputs_iUsedValue;
 	reg NextState_UnusedState;
 	reg NextState_UsedState;
-	wire unusedInternal;
-	wire usedInternal;
+	reg unusedInternal;
+	reg usedInternal;
 	reg State_UnusedState = 1'b0;
 	wire State_UnusedStateDefault = 1'b0;
 	reg State_UsedState = 1'b0;
 	wire State_UsedStateDefault = 1'b0;
-	wire Inputs_iObject_UnusedValueArray [0 : 3];
-	wire Inputs_iObject_UsedValueArray [0 : 3];
 	wire Inputs_iUnusedValueArray [0 : 3];
 	wire Inputs_iUsedValueArray [0 : 3];
 	always @ (posedge Clock)
@@ -105,49 +98,32 @@ module UnusedSignalsModule_TopLevel
 			State_UsedState <= NextState_UsedState;
 		end
 	end
-	always @ (*)
-	begin
-		NextState_UnusedState = State_UnusedState;
-		NextState_UsedState = State_UsedState;
-	end
-	assign Inputs_iObject_Tuple_Item1 = iObject_Tuple_Item1;
-	assign Inputs_iObject_Tuple_Item2 = iObject_Tuple_Item2;
-	assign Inputs_iObject_UnusedValue = iObject_UnusedValue;
-	assign Inputs_iObject_UnusedValueArray[0] = iObject_UnusedValueArray0;
-	assign Inputs_iObject_UnusedValueArray[1] = iObject_UnusedValueArray1;
-	assign Inputs_iObject_UnusedValueArray[2] = iObject_UnusedValueArray2;
-	assign Inputs_iObject_UnusedValueArray[3] = iObject_UnusedValueArray3;
-	assign Inputs_iObject_UsedValue = iObject_UsedValue;
-	assign Inputs_iObject_UsedValueArray[0] = iObject_UsedValueArray0;
-	assign Inputs_iObject_UsedValueArray[1] = iObject_UsedValueArray1;
-	assign Inputs_iObject_UsedValueArray[2] = iObject_UsedValueArray2;
-	assign Inputs_iObject_UsedValueArray[3] = iObject_UsedValueArray3;
-	assign Inputs_iUnusedTuple_Item1 = iUnusedTuple_Item1;
-	assign Inputs_iUnusedTuple_Item2 = iUnusedTuple_Item2;
+	assign Inputs_iObject[11] = iObject_UsedValueArray3;
+	assign Inputs_iObject[10] = iObject_UsedValueArray2;
+	assign Inputs_iObject[9] = iObject_UsedValueArray1;
+	assign Inputs_iObject[8] = iObject_UsedValueArray0;
+	assign Inputs_iObject[7] = iObject_UsedValue;
+	assign Inputs_iObject[6] = iObject_UnusedValueArray3;
+	assign Inputs_iObject[5] = iObject_UnusedValueArray2;
+	assign Inputs_iObject[4] = iObject_UnusedValueArray1;
+	assign Inputs_iObject[3] = iObject_UnusedValueArray0;
+	assign Inputs_iObject[2] = iObject_UnusedValue;
+	assign Inputs_iObject[1] = iObject_Tuple_Item1;
+	assign Inputs_iObject[0] = iObject_Tuple_Item2;
+	assign Inputs_iUnusedTuple[1] = iUnusedTuple_Item1;
+	assign Inputs_iUnusedTuple[0] = iUnusedTuple_Item2;
 	assign Inputs_iUnusedValue = iUnusedValue;
 	assign Inputs_iUnusedValueArray[0] = iUnusedValueArray0;
 	assign Inputs_iUnusedValueArray[1] = iUnusedValueArray1;
 	assign Inputs_iUnusedValueArray[2] = iUnusedValueArray2;
 	assign Inputs_iUnusedValueArray[3] = iUnusedValueArray3;
-	assign Inputs_iUsedTuple_Item1 = iUsedTuple_Item1;
-	assign Inputs_iUsedTuple_Item2 = iUsedTuple_Item2;
+	assign Inputs_iUsedTuple[1] = iUsedTuple_Item1;
+	assign Inputs_iUsedTuple[0] = iUsedTuple_Item2;
 	assign Inputs_iUsedValue = iUsedValue;
 	assign Inputs_iUsedValueArray[0] = iUsedValueArray0;
 	assign Inputs_iUsedValueArray[1] = iUsedValueArray1;
 	assign Inputs_iUsedValueArray[2] = iUsedValueArray2;
 	assign Inputs_iUsedValueArray[3] = iUsedValueArray3;
-	assign unusedInternal = Inputs_iUsedValue;
-	assign usedInternal = Inputs_iUsedValue;
-	assign oInputArray0 = Inputs_iUsedValueArray[0];
-	assign oInputArray1 = Inputs_iUsedValueArray[1];
-	assign oInputArray2 = Inputs_iUsedValueArray[2];
-	assign oInputArray3 = Inputs_iUsedValueArray[3];
-	assign oInputArrayValue = Inputs_iUsedValueArray[1];
-	assign oInputClassArrayValue = Inputs_iUsedValue;
-	assign oInputClassValue = Inputs_iUsedValue;
-	assign oInputValue = Inputs_iUsedValue;
-	assign oInternal = usedInternal;
-	assign oStateValue = State_UsedState;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

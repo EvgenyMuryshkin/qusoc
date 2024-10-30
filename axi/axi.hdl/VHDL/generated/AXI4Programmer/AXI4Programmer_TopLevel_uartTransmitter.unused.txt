@@ -1,0 +1,11 @@
+No reads:
+	Inputs_iCE
+	Inputs_iValid
+	Inputs_iValue
+	State_transmitting
+	State_txCounter
+	State_txValue
+No writes:
+	NextState_transmitting
+	NextState_txCounter
+	NextState_txValue

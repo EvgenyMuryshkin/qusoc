@@ -46,16 +46,7 @@ module AXISoCBlinker_TopLevel_CPU_CPU_Regs
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire RegistersRAMModule_L26F45T46_Expr = 1'b0;
-	wire RegistersRAMModule_L27F48T49_Expr = 1'b0;
-	wire RegistersRAMModule_L34F31T36_Expr = 1'b0;
-	wire RegistersRAMModule_L36F46T47_Expr = 1'b0;
-	wire RegistersRAMModule_L38F34T35_Expr = 1'b1;
-	wire RegistersRAMModule_L41F31T32_Expr = 1'b1;
-	wire [1: 0] RegistersRAMModule_L43F34T35_Expr = 2'b10;
-	wire [1: 0] RegistersRAMModule_L47F31T32_Expr = 2'b10;
-	wire RegistersRAMModule_L49F35T39_Expr = 1'b1;
-	wire RegistersRAMModule_L50F34T35_Expr = 1'b0;
+	wire [31: 0] State_xDefault = 32'b00000000000000000000000000000000;
 	wire [4: 0] Inputs_RD;
 	wire Inputs_Read;
 	wire [4: 0] Inputs_RS1Addr;
@@ -63,44 +54,20 @@ module AXISoCBlinker_TopLevel_CPU_CPU_Regs
 	wire Inputs_WE;
 	wire [31: 0] Inputs_WriteData;
 	reg [7: 0] NextState_Mode;
+	reg [31: 0] NextState_ReadData;
 	reg NextState_Ready;
 	reg [31: 0] NextState_RS1;
 	reg [31: 0] NextState_RS2;
-	wire [4: 0] RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T80_WhenTrue;
-	wire [4: 0] RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T80_WhenFalse;
-	wire [4: 0] RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T80_Ternary;
-	reg [4: 0] RegistersRAMModule_L25F9L53T10_readAddress;
-	reg RegistersRAMModule_L25F9L53T10_we;
 	reg [7: 0] State_Mode = 8'b00000000;
 	wire [7: 0] State_ModeDefault = 8'b00000000;
-	reg [31: 0] State_ReadData;
+	reg [31: 0] State_ReadData = 32'b00000000000000000000000000000000;
+	wire [31: 0] State_ReadDataDefault = 32'b00000000000000000000000000000000;
 	reg State_Ready = 1'b0;
 	wire State_ReadyDefault = 1'b0;
 	reg [31: 0] State_RS1 = 32'b00000000000000000000000000000000;
 	wire [31: 0] State_RS1Default = 32'b00000000000000000000000000000000;
 	reg [31: 0] State_RS2 = 32'b00000000000000000000000000000000;
 	wire [31: 0] State_RS2Default = 32'b00000000000000000000000000000000;
-	wire RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F22T49_Expr;
-	wire RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F22T49_Expr_1;
-	wire RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F22T49_Expr_2;
-	wire RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F17T47_Expr;
-	wire RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F17T47_Expr_1;
-	wire RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F17T47_Expr_2;
-	wire RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T46_Expr;
-	wire signed [8: 0] RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T46_ExprLhs;
-	wire signed [8: 0] RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T46_ExprRhs;
-	wire RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F35T49_Expr;
-	wire signed [5: 0] RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F35T49_ExprLhs;
-	wire signed [5: 0] RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F35T49_ExprRhs;
-	wire RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F32T47_Expr;
-	wire signed [8: 0] RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F32T47_ExprLhs;
-	wire signed [8: 0] RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F32T47_ExprRhs;
-	wire RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L41F17T32_Expr;
-	wire signed [8: 0] RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L41F17T32_ExprLhs;
-	wire signed [8: 0] RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L41F17T32_ExprRhs;
-	wire RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L47F17T32_Expr;
-	wire signed [8: 0] RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L47F17T32_ExprLhs;
-	wire signed [8: 0] RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L47F17T32_ExprRhs;
 	integer State_x_Iterator;
 	reg [31 : 0] State_x [0 : 31];
 	initial
@@ -108,20 +75,19 @@ module AXISoCBlinker_TopLevel_CPU_CPU_Regs
 		for (State_x_Iterator = 0; State_x_Iterator < 32; State_x_Iterator = State_x_Iterator + 1)
 			State_x[State_x_Iterator] = 0;
 	end
-	// inferred simple dual port RAM with read-first behaviour
-	always @ (posedge BoardSignals_Clock)
-	begin
-		if (RegistersRAMModule_L25F9L53T10_we)
-		begin
-			State_x[Inputs_RD] <= Inputs_WriteData;
-		end
-		State_ReadData <= State_x[RegistersRAMModule_L25F9L53T10_readAddress];
+	integer NextState_x_Iterator;
+	reg [31 : 0] NextState_x [0 : 31];
+	initial
+	begin : Init_NextState_x
+		for (NextState_x_Iterator = 0; NextState_x_Iterator < 32; NextState_x_Iterator = NextState_x_Iterator + 1)
+			NextState_x[NextState_x_Iterator] = 0;
 	end
 	always @ (posedge BoardSignals_Clock)
 	begin
 		if ((BoardSignals_Reset == 1))
 		begin
 			State_Mode <= State_ModeDefault;
+			State_ReadData <= State_ReadDataDefault;
 			State_Ready <= State_ReadyDefault;
 			State_RS1 <= State_RS1Default;
 			State_RS2 <= State_RS2Default;
@@ -129,127 +95,35 @@ module AXISoCBlinker_TopLevel_CPU_CPU_Regs
 		else
 		begin
 			State_Mode <= NextState_Mode;
+			State_ReadData <= NextState_ReadData;
 			State_Ready <= NextState_Ready;
 			State_RS1 <= NextState_RS1;
 			State_RS2 <= NextState_RS2;
 		end
 	end
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T46_Expr = RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T46_ExprLhs == RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T46_ExprRhs ? 1'b1 : 1'b0;
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F35T49_Expr = RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F35T49_ExprLhs != RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F35T49_ExprRhs ? 1'b1 : 1'b0;
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F32T47_Expr = RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F32T47_ExprLhs == RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F32T47_ExprRhs ? 1'b1 : 1'b0;
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L41F17T32_Expr = RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L41F17T32_ExprLhs == RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L41F17T32_ExprRhs ? 1'b1 : 1'b0;
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L47F17T32_Expr = RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L47F17T32_ExprLhs == RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L47F17T32_ExprRhs ? 1'b1 : 1'b0;
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F22T49_Expr = RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F22T49_Expr_1 & RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F22T49_Expr_2;
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F17T47_Expr = RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F17T47_Expr_1 & RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F17T47_Expr_2;
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T80_Ternary = (RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T46_Expr ? RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T80_WhenTrue : RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T80_WhenFalse);
-	always @ (*)
+	always @ (posedge BoardSignals_Clock)
 	begin
-		NextState_Mode = State_Mode;
-		NextState_Ready = State_Ready;
-		NextState_RS1 = State_RS1;
-		NextState_RS2 = State_RS2;
-		RegistersRAMModule_L25F9L53T10_readAddress = {
-			{4{1'b0}},
-			Zero
-		}
-		;
-		RegistersRAMModule_L25F9L53T10_we = Zero;
-		RegistersRAMModule_L25F9L53T10_readAddress = RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T80_Ternary;
-		RegistersRAMModule_L25F9L53T10_we = RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F22T49_Expr;
-		NextState_Ready = RegistersRAMModule_L34F31T36_Expr;
-		if ((RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F17T47_Expr == 1))
+		if ((BoardSignals_Reset == 1))
 		begin
-			NextState_Mode = {
-				{7{1'b0}},
-				RegistersRAMModule_L38F34T35_Expr
-			}
-			;
+			for (State_x_Iterator = 0; (State_x_Iterator < 32); State_x_Iterator = (State_x_Iterator + 1))
+			begin
+				State_x[State_x_Iterator] <= State_xDefault;
+			end
 		end
-		if ((RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L41F17T32_Expr == 1))
+		else
 		begin
-			NextState_Mode = {
-				{6{1'b0}},
-				RegistersRAMModule_L43F34T35_Expr
-			}
-			;
-			NextState_RS1 = State_ReadData;
-		end
-		if ((RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L47F17T32_Expr == 1))
-		begin
-			NextState_Ready = RegistersRAMModule_L49F35T39_Expr;
-			NextState_Mode = {
-				{7{1'b0}},
-				RegistersRAMModule_L50F34T35_Expr
-			}
-			;
-			NextState_RS2 = State_ReadData;
+			for (State_x_Iterator = 0; (State_x_Iterator < 32); State_x_Iterator = (State_x_Iterator + 1))
+			begin
+				State_x[State_x_Iterator] <= NextState_x[State_x_Iterator];
+			end
 		end
 	end
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T46_ExprLhs = {
-		1'b0,
-		State_Mode
-	}
-	;
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T46_ExprRhs = {
-		{8{1'b0}},
-		RegistersRAMModule_L26F45T46_Expr
-	}
-	;
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F35T49_ExprLhs = {
-		1'b0,
-		Inputs_RD
-	}
-	;
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F35T49_ExprRhs = {
-		{5{1'b0}},
-		RegistersRAMModule_L27F48T49_Expr
-	}
-	;
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F32T47_ExprLhs = {
-		1'b0,
-		State_Mode
-	}
-	;
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F32T47_ExprRhs = {
-		{8{1'b0}},
-		RegistersRAMModule_L36F46T47_Expr
-	}
-	;
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L41F17T32_ExprLhs = {
-		1'b0,
-		State_Mode
-	}
-	;
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L41F17T32_ExprRhs = {
-		{8{1'b0}},
-		RegistersRAMModule_L41F31T32_Expr
-	}
-	;
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L47F17T32_ExprLhs = {
-		1'b0,
-		State_Mode
-	}
-	;
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L47F17T32_ExprRhs = {
-		{7{1'b0}},
-		RegistersRAMModule_L47F31T32_Expr
-	}
-	;
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F22T49_Expr_1 = Inputs_WE;
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F22T49_Expr_2 = RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L27F35T49_Expr;
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F17T47_Expr_1 = Inputs_Read;
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F17T47_Expr_2 = RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L36F32T47_Expr;
 	assign Inputs_RD = RD;
 	assign Inputs_Read = Read;
 	assign Inputs_RS1Addr = RS1Addr;
 	assign Inputs_RS2Addr = RS2Addr;
 	assign Inputs_WE = WE;
 	assign Inputs_WriteData = WriteData;
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T80_WhenTrue = Inputs_RS1Addr;
-	assign RegistersRAMModule_L25F9L53T10_RegistersRAMModule_L26F31T80_WhenFalse = Inputs_RS2Addr;
-	assign Ready = State_Ready;
-	assign RS1 = State_RS1;
-	assign RS2 = State_RS2;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

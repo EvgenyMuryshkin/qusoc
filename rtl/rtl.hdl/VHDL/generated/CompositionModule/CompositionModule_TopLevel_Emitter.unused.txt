@@ -1,0 +1,6 @@
+No reads:
+	Inputs_Ack
+	Inputs_IsEnabled
+	State_Data
+No writes:
+	NextState_Data

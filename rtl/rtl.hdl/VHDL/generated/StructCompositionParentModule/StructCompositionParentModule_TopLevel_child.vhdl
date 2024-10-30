@@ -39,28 +39,11 @@ architecture rtl of StructCompositionParentModule_TopLevel_child is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_iValue_intValue : unsigned(15 downto 0) := (others => '0');
-	signal Inputs_iValue_l1_byteValue : unsigned(7 downto 0) := (others => '0');
-	signal Inputs_iValue_l1_l2_bitArray : unsigned(1 downto 0) := (others => '0');
-	type Inputs_iValue_l1_l2_boolValueArray is array (0 to 1) of std_logic;
-	signal Inputs_iValue_l1_l2_boolValue : Inputs_iValue_l1_l2_boolValueArray := (others => '0');
-	type Inputs_iValue_l1_l2ArrayArray is array (0 to 1) of unsigned (3 downto 0);
-	signal Inputs_iValue_l1_l2Array : Inputs_iValue_l1_l2ArrayArray := (others => (others => '0'));
-	type Inputs_iValue_l1ArrayArray is array (0 to 1) of unsigned (19 downto 0);
-	signal Inputs_iValue_l1Array : Inputs_iValue_l1ArrayArray := (others => (others => '0'));
+	signal Inputs_iValue : unsigned(75 downto 0) := (others => '0');
 begin
 	process (iValue)
 	begin
-		Inputs_iValue_l1Array(1) <= iValue(75 downto 56);
-		Inputs_iValue_l1Array(0) <= iValue(55 downto 36);
-		Inputs_iValue_l1_l2Array(1) <= iValue(35 downto 32);
-		Inputs_iValue_l1_l2Array(0) <= iValue(31 downto 28);
-		Inputs_iValue_l1_l2_boolValue(1) <= iValue(27);
-		Inputs_iValue_l1_l2_boolValue(0) <= iValue(26);
-		Inputs_iValue_l1_l2_bitArray <= iValue(25 downto 24);
-		Inputs_iValue_l1_byteValue <= iValue(23 downto 16);
-		Inputs_iValue_intValue <= iValue(15 downto 0);
-		Output <= iValue;
+		Inputs_iValue <= iValue;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

@@ -1,3 +1,6 @@
 No reads:
-	IOSingleBitMemoryCompositionModule_L46F13L49T14_0_i
+	children0_oValue
+	Inputs_iValues
 	size
+No writes:
+	children0_iValue

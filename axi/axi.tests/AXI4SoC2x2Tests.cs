@@ -9,6 +9,12 @@ namespace axi.tests
     public class AXI4SoC2x2Tests : BaseRTLModuleTests
     {
         [TestMethod]
+        public void AXI4Interconnect2x4TestModule()
+        {
+            var sim = new RTLSimulator<AXI4Interconnect2x4TestModule, AXI4Interconnect2x4TestModuleInputs>();
+        }
+
+        [TestMethod]
         public void AXI4SoC2x2Module()
         {
             var sim = new RTLSimulator<AXI4SoC2x2, AXI4SoC2x2Inputs>();

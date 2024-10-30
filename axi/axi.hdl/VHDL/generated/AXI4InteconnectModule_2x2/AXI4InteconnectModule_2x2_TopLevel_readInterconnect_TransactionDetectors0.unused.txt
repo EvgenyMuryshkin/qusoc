@@ -1,0 +1,8 @@
+No reads:
+	Inputs_iActive
+	Inputs_iRestart
+	Inputs_iTXBegin
+	Inputs_iTXEnd
+	State_Status
+No writes:
+	NextState_Status

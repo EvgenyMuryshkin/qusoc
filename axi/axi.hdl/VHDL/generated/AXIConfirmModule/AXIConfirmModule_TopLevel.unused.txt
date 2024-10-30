@@ -1,0 +1,7 @@
+No reads:
+	Inputs_inReady
+	Inputs_inRestart
+	Inputs_inValid
+	State_fsm
+No writes:
+	NextState_fsm

@@ -1,2 +1,19 @@
 No reads:
+	Emitter_Data
+	Emitter_HasData
+	Inputs_IsEnabled
+	Receiver_Data
+	Receiver_HasData
+	Transmitter_Bit
+	Transmitter_IsReady
 	Transmitter_IsTransmissionStarted
+	Transmitter_IsTransmitting
+No writes:
+	Emitter_Ack
+	Emitter_IsEnabled
+	Receiver_Ack
+	Receiver_Bit
+	Receiver_IsValid
+	Transmitter_Ack
+	Transmitter_Data
+	Transmitter_Trigger

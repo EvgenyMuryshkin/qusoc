@@ -40,43 +40,14 @@ architecture rtl of BitsMuxModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant BitsMuxModule_L14F76T77_Expr : unsigned(1 downto 0) := "10";
 	signal Inputs_Addr : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_Value : unsigned(7 downto 0) := (others => '0');
 	signal pixelAddress : unsigned(1 downto 0) := (others => '0');
-	signal BitsMuxModule_L14F41T100_Index : unsigned(1 downto 0) := (others => '0');
-	signal BitsMuxModule_L14F42T93_Expr : unsigned(7 downto 0) := "00000000";
-	signal BitsMuxModule_L14F42T93_Expr_1 : unsigned(7 downto 0) := "00000000";
-	signal BitsMuxModule_L14F76T92_Expr : unsigned(4 downto 0) := "00000";
-	signal BitsMuxModule_L14F76T92_Expr_1 : signed(4 downto 0) := "00000";
-	signal BitsMuxModule_L14F76T92_Expr_2 : signed(4 downto 0) := "00000";
 begin
-	process (BitsMuxModule_L14F42T93_Expr_1, BitsMuxModule_L14F76T92_Expr)
+	process (Addr, Value)
 	begin
-		BitsMuxModule_L14F42T93_Expr <= shift_right(unsigned(BitsMuxModule_L14F42T93_Expr_1), to_integer(BitsMuxModule_L14F76T92_Expr));
-	end process;
-	process (BitsMuxModule_L14F76T92_Expr_1, BitsMuxModule_L14F76T92_Expr_2)
-	begin
-		BitsMuxModule_L14F76T92_Expr <= resize(unsigned(signed(resize(BitsMuxModule_L14F76T92_Expr_1, BitsMuxModule_L14F76T92_Expr_1'length + 1)) * signed(resize(BitsMuxModule_L14F76T92_Expr_2, BitsMuxModule_L14F76T92_Expr_2'length + 1))), BitsMuxModule_L14F76T92_Expr'length);
-	end process;
-	process (Addr, BitsMuxModule_L14F41T100_Index, BitsMuxModule_L14F42T93_Expr, Inputs_Addr, Inputs_Value, pixelAddress, Value)
-	begin
-		BitsMuxModule_L14F42T93_Expr_1 <= Inputs_Value;
-		BitsMuxModule_L14F76T92_Expr_1(4 downto 2) <= (
-			others => '0'
-		)
-		;
-		BitsMuxModule_L14F76T92_Expr_1(1 downto 0) <= signed(BitsMuxModule_L14F76T77_Expr);
-		BitsMuxModule_L14F76T92_Expr_2(4 downto 2) <= (
-			others => '0'
-		)
-		;
-		BitsMuxModule_L14F76T92_Expr_2(1 downto 0) <= signed(pixelAddress);
 		Inputs_Addr <= Addr;
 		Inputs_Value <= Value;
-		pixelAddress <= Inputs_Addr(1 downto 0);
-		BitsMuxModule_L14F41T100_Index <= BitsMuxModule_L14F42T93_Expr(1 downto 0);
-		pixelBits <= BitsMuxModule_L14F41T100_Index;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

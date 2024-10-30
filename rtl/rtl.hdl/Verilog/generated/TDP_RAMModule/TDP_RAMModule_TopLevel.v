@@ -43,29 +43,22 @@ module TDP_RAMModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
+	wire [7: 0] State_BuffDefault = 8'b00000000;
 	wire [7: 0] Inputs_Addr_A;
 	wire [7: 0] Inputs_Addr_B;
 	wire Inputs_WE_A;
 	wire Inputs_WE_B;
 	wire [7: 0] Inputs_WriteData_A;
 	wire [7: 0] Inputs_WriteData_B;
+	reg [7: 0] NextState_DataA;
+	reg [7: 0] NextState_DataB;
 	reg NextState_SameAddressWrite;
-	reg [7: 0] State_DataA;
-	reg [7: 0] State_DataB;
+	reg [7: 0] State_DataA = 8'b00000000;
+	wire [7: 0] State_DataADefault = 8'b00000000;
+	reg [7: 0] State_DataB = 8'b00000000;
+	wire [7: 0] State_DataBDefault = 8'b00000000;
 	reg State_SameAddressWrite = 1'b0;
 	wire State_SameAddressWriteDefault = 1'b0;
-	wire TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr;
-	wire TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr_1;
-	wire TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr_2;
-	wire TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T129_Expr;
-	wire TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T129_Expr_1;
-	wire TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T129_Expr_2;
-	wire TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr;
-	wire TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr_1;
-	wire TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr_2;
-	wire TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_Expr;
-	wire signed [8: 0] TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_ExprLhs;
-	wire signed [8: 0] TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_ExprRhs;
 	integer State_Buff_Iterator;
 	reg [7 : 0] State_Buff [0 : 255];
 	initial
@@ -73,77 +66,51 @@ module TDP_RAMModule_TopLevel
 		for (State_Buff_Iterator = 0; State_Buff_Iterator < 256; State_Buff_Iterator = State_Buff_Iterator + 1)
 			State_Buff[State_Buff_Iterator] = 0;
 	end
-	// Port A
-	always @ (posedge Clock)
-	begin
-		if (Inputs_WE_A)
-		begin
-			State_Buff[Inputs_Addr_A] <= Inputs_WriteData_A;
-			State_DataA <= Inputs_WriteData_A;
-		end
-		else
-		begin
-			State_DataA <= State_Buff[Inputs_Addr_A];
-		end
+	integer NextState_Buff_Iterator;
+	reg [7 : 0] NextState_Buff [0 : 255];
+	initial
+	begin : Init_NextState_Buff
+		for (NextState_Buff_Iterator = 0; NextState_Buff_Iterator < 256; NextState_Buff_Iterator = NextState_Buff_Iterator + 1)
+			NextState_Buff[NextState_Buff_Iterator] = 0;
 	end
-	// Port B
 	always @ (posedge Clock)
 	begin
-		if (Inputs_WE_B)
+		if ((Reset == 1))
 		begin
-			State_Buff[Inputs_Addr_B] <= Inputs_WriteData_B;
-			State_DataB <= Inputs_WriteData_B;
+			State_DataA <= State_DataADefault;
+			State_DataB <= State_DataBDefault;
+			State_SameAddressWrite <= State_SameAddressWriteDefault;
 		end
 		else
 		begin
-			State_DataB <= State_Buff[Inputs_Addr_B];
+			State_DataA <= NextState_DataA;
+			State_DataB <= NextState_DataB;
+			State_SameAddressWrite <= NextState_SameAddressWrite;
 		end
 	end
 	always @ (posedge Clock)
 	begin
 		if ((Reset == 1))
 		begin
-			State_SameAddressWrite <= State_SameAddressWriteDefault;
+			for (State_Buff_Iterator = 0; (State_Buff_Iterator < 256); State_Buff_Iterator = (State_Buff_Iterator + 1))
+			begin
+				State_Buff[State_Buff_Iterator] <= State_BuffDefault;
+			end
 		end
 		else
 		begin
-			State_SameAddressWrite <= NextState_SameAddressWrite;
+			for (State_Buff_Iterator = 0; (State_Buff_Iterator < 256); State_Buff_Iterator = (State_Buff_Iterator + 1))
+			begin
+				State_Buff[State_Buff_Iterator] <= NextState_Buff[State_Buff_Iterator];
+			end
 		end
 	end
-	assign TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_Expr = TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_ExprLhs == TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_ExprRhs ? 1'b1 : 1'b0;
-	assign TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr = TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr_1 | TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr_2;
-	assign TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T129_Expr = TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T129_Expr_1 & TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T129_Expr_2;
-	assign TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr = TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr_1 & TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr_2;
-	always @ (*)
-	begin
-		NextState_SameAddressWrite = State_SameAddressWrite;
-		NextState_SameAddressWrite = TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr;
-	end
-	assign TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_ExprLhs = {
-		1'b0,
-		Inputs_Addr_A
-	}
-	;
-	assign TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_ExprRhs = {
-		1'b0,
-		Inputs_Addr_B
-	}
-	;
-	assign TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr_1 = State_SameAddressWrite;
-	assign TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr_2 = TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T129_Expr;
-	assign TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T129_Expr_1 = TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr;
-	assign TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T129_Expr_2 = TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_Expr;
-	assign TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr_1 = Inputs_WE_A;
-	assign TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr_2 = Inputs_WE_B;
 	assign Inputs_Addr_A = Addr_A;
 	assign Inputs_Addr_B = Addr_B;
 	assign Inputs_WE_A = WE_A;
 	assign Inputs_WE_B = WE_B;
 	assign Inputs_WriteData_A = WriteData_A;
 	assign Inputs_WriteData_B = WriteData_B;
-	assign OutCorrupted = State_SameAddressWrite;
-	assign OutDataA = State_DataA;
-	assign OutDataB = State_DataB;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

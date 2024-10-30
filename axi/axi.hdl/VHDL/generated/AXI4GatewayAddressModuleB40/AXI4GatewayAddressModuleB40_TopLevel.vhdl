@@ -42,15 +42,13 @@ architecture rtl of AXI4GatewayAddressModuleB40_TopLevel is
 	-- false is a reserved name, declaration skipped
 	constant axiSize : signed(6 downto 0) := "0100000";
 	constant originalLowerBits : signed(1 downto 0) := "00";
-	constant AXI4GatewayAddressModule_L31F13T35_Expr : std_logic := '1';
 	signal Inputs_iMapAddress : unsigned(31 downto 0) := (others => '0');
 	signal Inputs_iOriginalAddress : unsigned(31 downto 0) := (others => '0');
 begin
-	process (iMapAddress, Inputs_iOriginalAddress, iOriginalAddress)
+	process (iMapAddress, iOriginalAddress)
 	begin
 		Inputs_iMapAddress <= iMapAddress;
 		Inputs_iOriginalAddress <= iOriginalAddress;
-		oAddress <= Inputs_iOriginalAddress;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

@@ -52,53 +52,7 @@ architecture rtl of AXI4PWMTestModule_TopLevel_pwm is
 	constant addressBits : signed(2 downto 0) := "011";
 	constant addressLSB : signed(2 downto 0) := "010";
 	constant pwmCount : signed(4 downto 0) := "01000";
-	constant AXI4PWMModule_L90F73T77_Expr : unsigned(5 downto 0) := "111111";
-	constant AXI4PWMModule_L72F29T33_Expr : std_logic := '1';
-	constant AXI4PWMModule_L74F29T33_Expr : std_logic := '1';
-	constant AXI4PWMModule_L76F28T32_Expr : std_logic := '1';
-	constant AXI4PWMModule_L73F28T32_Expr : std_logic := '1';
-	constant AXI4PWMModule_L75F28T32_Expr : std_logic := '1';
-	constant AXI4PWMModule_L79F13L87T14_0_pwm : std_logic := '0';
-	constant AXI4PWMModule_L83F31T35_Expr : std_logic := '1';
-	constant AXI4PWMModule_L85F39T46_Expr : unsigned(19 downto 0) := "11110100001001000000";
-	constant AXI4PWMModule_L79F13L87T14_1_pwm : std_logic := '1';
-	constant AXI4PWMModule_L79F13L87T14_2_pwm : unsigned(1 downto 0) := "10";
-	constant AXI4PWMModule_L79F13L87T14_3_pwm : unsigned(1 downto 0) := "11";
-	constant AXI4PWMModule_L79F13L87T14_4_pwm : unsigned(2 downto 0) := "100";
-	constant AXI4PWMModule_L79F13L87T14_5_pwm : unsigned(2 downto 0) := "101";
-	constant AXI4PWMModule_L79F13L87T14_6_pwm : unsigned(2 downto 0) := "110";
-	constant AXI4PWMModule_L79F13L87T14_7_pwm : unsigned(2 downto 0) := "111";
-	signal Inputs_M2S_R_AR_ARID : unsigned(7 downto 0) := (others => '0');
-	signal Inputs_M2S_R_AR_ARADDR : unsigned(31 downto 0) := (others => '0');
-	signal Inputs_M2S_R_AR_ARLEN : unsigned(7 downto 0) := (others => '0');
-	signal Inputs_M2S_R_AR_ARSIZE : unsigned(2 downto 0) := (others => '0');
-	signal Inputs_M2S_R_AR_ARBURST : unsigned(1 downto 0) := (others => '0');
-	signal Inputs_M2S_R_AR_ARLOCK : unsigned(1 downto 0) := (others => '0');
-	signal Inputs_M2S_R_AR_ARCACHE : unsigned(3 downto 0) := (others => '0');
-	signal Inputs_M2S_R_AR_ARPROT : unsigned(2 downto 0) := (others => '0');
-	signal Inputs_M2S_R_AR_ARQOS : unsigned(3 downto 0) := (others => '0');
-	signal Inputs_M2S_R_AR_ARREGION : unsigned(7 downto 0) := (others => '0');
-	signal Inputs_M2S_R_AR_ARUSER : unsigned(7 downto 0) := (others => '0');
-	signal Inputs_M2S_R_AR_ARVALID : std_logic := '0';
-	signal Inputs_M2S_R_R_RREADY : std_logic := '0';
-	signal Inputs_M2S_W_AW_AWID : unsigned(7 downto 0) := (others => '0');
-	signal Inputs_M2S_W_AW_AWADDR : unsigned(31 downto 0) := (others => '0');
-	signal Inputs_M2S_W_AW_AWLEN : unsigned(7 downto 0) := (others => '0');
-	signal Inputs_M2S_W_AW_AWSIZE : unsigned(2 downto 0) := (others => '0');
-	signal Inputs_M2S_W_AW_AWBURST : unsigned(1 downto 0) := (others => '0');
-	signal Inputs_M2S_W_AW_AWLOCK : unsigned(1 downto 0) := (others => '0');
-	signal Inputs_M2S_W_AW_AWCACHE : unsigned(3 downto 0) := (others => '0');
-	signal Inputs_M2S_W_AW_AWPROT : unsigned(2 downto 0) := (others => '0');
-	signal Inputs_M2S_W_AW_AWQOS : unsigned(3 downto 0) := (others => '0');
-	signal Inputs_M2S_W_AW_AWREGION : unsigned(7 downto 0) := (others => '0');
-	signal Inputs_M2S_W_AW_AWUSER : unsigned(7 downto 0) := (others => '0');
-	signal Inputs_M2S_W_AW_AWVALID : std_logic := '0';
-	signal Inputs_M2S_W_W_WID : unsigned(7 downto 0) := (others => '0');
-	signal Inputs_M2S_W_W_WSTRB : unsigned(3 downto 0) := (others => '0');
-	signal Inputs_M2S_W_W_WLAST : std_logic := '0';
-	signal Inputs_M2S_W_W_WUSER : unsigned(7 downto 0) := (others => '0');
-	signal Inputs_M2S_W_W_WVALID : std_logic := '0';
-	signal Inputs_M2S_W_B_BREADY : std_logic := '0';
+	signal Inputs_M2S : unsigned(221 downto 0) := (others => '0');
 	signal NextState_pwmDurationClocks : unsigned(31 downto 0) := (others => '0');
 	signal NextState_waddr : unsigned(31 downto 0) := (others => '0');
 	signal NextState_wdata : unsigned(31 downto 0) := (others => '0');
@@ -165,20 +119,6 @@ architecture rtl of AXI4PWMTestModule_TopLevel_pwm is
 	signal pwms7_iOnClock : unsigned(31 downto 0) := (others => '0');
 	signal pwms7_oCycle : std_logic := '0';
 	signal pwms7_oPWM : std_logic := '0';
-	signal AXI4PWMModule_L59F33T60_Index : unsigned(2 downto 0) := (others => '0');
-	signal AXI4PWMModule_L58F33T66_Index : unsigned(7 downto 0) := (others => '0');
-	signal AXI4PWMModule_L58F32T101_Index : unsigned(2 downto 0) := (others => '0');
-	signal AXI4PWMModule_L56F33T78_Index : unsigned(7 downto 0) := (others => '0');
-	signal AXI4PWMModule_L68F37L77T14_Object : unsigned(258 downto 0) := (others => '0');
-	signal AXI4PWMModule_L79F13L87T14_0_AXI4PWMModule_L81F42L86T18_Object : unsigned(64 downto 0) := (others => '0');
-	signal AXI4PWMModule_L79F13L87T14_1_AXI4PWMModule_L81F42L86T18_Object : unsigned(64 downto 0) := (others => '0');
-	signal AXI4PWMModule_L79F13L87T14_2_AXI4PWMModule_L81F42L86T18_Object : unsigned(64 downto 0) := (others => '0');
-	signal AXI4PWMModule_L79F13L87T14_3_AXI4PWMModule_L81F42L86T18_Object : unsigned(64 downto 0) := (others => '0');
-	signal AXI4PWMModule_L79F13L87T14_4_AXI4PWMModule_L81F42L86T18_Object : unsigned(64 downto 0) := (others => '0');
-	signal AXI4PWMModule_L79F13L87T14_5_AXI4PWMModule_L81F42L86T18_Object : unsigned(64 downto 0) := (others => '0');
-	signal AXI4PWMModule_L79F13L87T14_6_AXI4PWMModule_L81F42L86T18_Object : unsigned(64 downto 0) := (others => '0');
-	signal AXI4PWMModule_L79F13L87T14_7_AXI4PWMModule_L81F42L86T18_Object : unsigned(64 downto 0) := (others => '0');
-	signal AXI4PWMModule_L94F9L108T10_AXI4PWMModule_L99F35T69_Source : unsigned(31 downto 0) := (others => '0');
 	signal axiSlave_inARREADY_axiSlave_inARREADY_HardLink : std_logic := '0';
 	signal axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink : std_logic := '0';
 	signal axiSlave_inBVALID_axiSlave_inBVALID_HardLink : std_logic := '0';
@@ -251,29 +191,6 @@ architecture rtl of AXI4PWMTestModule_TopLevel_pwm is
 	constant State_waddrDefault : unsigned(31 downto 0) := "00000000000000000000000000000000";
 	signal State_wdata : unsigned(31 downto 0) := "00000000000000000000000000000000";
 	constant State_wdataDefault : unsigned(31 downto 0) := "00000000000000000000000000000000";
-	signal AXI4PWMModule_L90F29T77_Expr : std_logic := '0';
-	signal AXI4PWMModule_L90F29T77_Expr_1 : std_logic := '0';
-	signal AXI4PWMModule_L90F29T77_Expr_2 : std_logic := '0';
-	signal AXI4PWMModule_L91F23T90_Expr : std_logic := '0';
-	signal AXI4PWMModule_L91F23T90_Expr_1 : std_logic := '0';
-	signal AXI4PWMModule_L91F23T90_Expr_2 : std_logic := '0';
-	signal AXI4PWMModule_L91F23T74_Expr : std_logic := '0';
-	signal AXI4PWMModule_L91F23T74_Expr_1 : std_logic := '0';
-	signal AXI4PWMModule_L91F23T74_Expr_2 : std_logic := '0';
-	signal AXI4PWMModule_L91F78T90_Expr : std_logic := '0';
-	signal AXI4PWMModule_L91F78T90_Expr_1 : std_logic := '0';
-	signal AXI4PWMModule_L58F33T80_Expr : unsigned(7 downto 0) := "00000000";
-	signal AXI4PWMModule_L58F33T80_Expr_1 : unsigned(7 downto 0) := "00000000";
-	signal AXI4PWMModule_L56F33T92_Expr : unsigned(7 downto 0) := "00000000";
-	signal AXI4PWMModule_L56F33T92_Expr_1 : unsigned(7 downto 0) := "00000000";
-	signal AXI4PWMModule_L90F62T77_Expr : std_logic := '0';
-	signal AXI4PWMModule_L90F62T77_ExprLhs : signed(6 downto 0) := "0000000";
-	signal AXI4PWMModule_L90F62T77_ExprRhs : signed(6 downto 0) := "0000000";
-	signal AXI4PWMModule_L91F56T74_Expr : std_logic := '0';
-	signal AXI4PWMModule_L91F56T74_ExprLhs : signed(5 downto 0) := "000000";
-	signal AXI4PWMModule_L91F56T74_ExprRhs : signed(5 downto 0) := "000000";
-	type Inputs_M2S_W_W_WDATAArray is array (0 to 3) of unsigned (7 downto 0);
-	signal Inputs_M2S_W_W_WDATA : Inputs_M2S_W_W_WDATAArray := (others => (others => '0'));
 	type State_pwmArray is array (0 to 7) of unsigned (31 downto 0);
 	signal State_pwm : State_pwmArray := (others => (others => '0'));
 	type NextState_pwmArray is array (0 to 7) of unsigned (31 downto 0);
@@ -282,8 +199,6 @@ architecture rtl of AXI4PWMTestModule_TopLevel_pwm is
 	signal axiSlave_inRDATA : axiSlave_inRDATAArray := (others => (others => '0'));
 	type axiSlave_outWDATAArray is array (0 to 3) of unsigned (7 downto 0);
 	signal axiSlave_outWDATA : axiSlave_outWDATAArray := (others => (others => '0'));
-	type AXI4PWMModule_L62F31T65_EnumerableArray is array (0 to 7) of std_logic;
-	signal AXI4PWMModule_L62F31T65_Enumerable : AXI4PWMModule_L62F31T65_EnumerableArray := (others => '0');
 begin
 	process (BoardSignals, NextState_pwmDurationClocks, NextState_waddr, NextState_wdata)
 	begin
@@ -312,52 +227,6 @@ begin
 				end loop;
 			end if;
 		end if;
-	end process;
-	AXI4PWMModule_L90F62T77_Expr <= '1' when (signed(resize(AXI4PWMModule_L90F62T77_ExprLhs, AXI4PWMModule_L90F62T77_ExprLhs'length + 1)) = signed(resize(AXI4PWMModule_L90F62T77_ExprRhs, AXI4PWMModule_L90F62T77_ExprRhs'length + 1))) else '0';
-	AXI4PWMModule_L91F56T74_Expr <= '1' when (signed(resize(AXI4PWMModule_L91F56T74_ExprLhs, AXI4PWMModule_L91F56T74_ExprLhs'length + 1)) < signed(resize(AXI4PWMModule_L91F56T74_ExprRhs, AXI4PWMModule_L91F56T74_ExprRhs'length + 1))) else '0';
-	process (AXI4PWMModule_L90F29T77_Expr_1, AXI4PWMModule_L90F29T77_Expr_2)
-	begin
-		AXI4PWMModule_L90F29T77_Expr <= AXI4PWMModule_L90F29T77_Expr_1 AND AXI4PWMModule_L90F29T77_Expr_2;
-	end process;
-	process (AXI4PWMModule_L91F23T90_Expr_1, AXI4PWMModule_L91F23T90_Expr_2)
-	begin
-		AXI4PWMModule_L91F23T90_Expr <= AXI4PWMModule_L91F23T90_Expr_1 AND AXI4PWMModule_L91F23T90_Expr_2;
-	end process;
-	process (AXI4PWMModule_L91F23T74_Expr_1, AXI4PWMModule_L91F23T74_Expr_2)
-	begin
-		AXI4PWMModule_L91F23T74_Expr <= AXI4PWMModule_L91F23T74_Expr_1 AND AXI4PWMModule_L91F23T74_Expr_2;
-	end process;
-	process (AXI4PWMModule_L91F78T90_Expr_1)
-	begin
-		AXI4PWMModule_L91F78T90_Expr <= NOT AXI4PWMModule_L91F78T90_Expr_1;
-	end process;
-	process (AXI4PWMModule_L58F33T80_Expr_1)
-		alias output is AXI4PWMModule_L58F33T80_Expr;
-		alias source0 is AXI4PWMModule_L58F33T80_Expr_1;
-	begin
-		-- Output: AXI4PWMModule_L58F33T80_Expr, Width: 8, ShiftBy: 2, Sources: 1
-		output(0) <= source0(2);
-		output(1) <= source0(3);
-		output(2) <= source0(4);
-		output(3) <= source0(5);
-		output(4) <= source0(6);
-		output(5) <= source0(7);
-		output(6) <= '0';
-		output(7) <= '0';
-	end process;
-	process (AXI4PWMModule_L56F33T92_Expr_1)
-		alias output is AXI4PWMModule_L56F33T92_Expr;
-		alias source0 is AXI4PWMModule_L56F33T92_Expr_1;
-	begin
-		-- Output: AXI4PWMModule_L56F33T92_Expr, Width: 8, ShiftBy: 2, Sources: 1
-		output(0) <= source0(2);
-		output(1) <= source0(3);
-		output(2) <= source0(4);
-		output(3) <= source0(5);
-		output(4) <= source0(6);
-		output(5) <= source0(7);
-		output(6) <= '0';
-		output(7) <= '0';
 	end process;
 	AXI4PWMTestModule_TopLevel_pwm_axiSlave : entity work.AXI4PWMTestModule_TopLevel_pwm_axiSlave
 	port map
@@ -497,248 +366,9 @@ begin
 		oPWM => pwms7_oPWM_pwms7_oPWM_HardLink
 	)
 	;
-	process (AXI4PWMModule_L94F9L108T10_AXI4PWMModule_L99F35T69_Source, axiSlave_outAWADDR, axiSlave_outAWREADYConfirming, axiSlave_outWREADYConfirming, pwmClocksWE, pwmWE, State_pwm, State_pwmDurationClocks, State_waddr, State_wdata)
+	process (axiSlave_inARREADY, axiSlave_inAWREADY, axiSlave_inBVALID, axiSlave_inRDATA, axiSlave_inRVALID, axiSlave_inWREADY, axiSlave_M2S, axiSlave_outARADDR_axiSlave_outARADDR_HardLink, axiSlave_outARREADYConfirming_axiSlave_outARREADYConfirming_HardLink, axiSlave_outARVALID_axiSlave_outARVALID_HardLink, axiSlave_outAWADDR_axiSlave_outAWADDR_HardLink, axiSlave_outAWREADYConfirming_axiSlave_outAWREADYConfirming_HardLink, axiSlave_outAWVALID_axiSlave_outAWVALID_HardLink, axiSlave_outReadTXCompleting_axiSlave_outReadTXCompleting_HardLink, axiSlave_outWDATA0_axiSlave_outWDATA_HardLink, axiSlave_outWDATA1_axiSlave_outWDATA_HardLink, axiSlave_outWDATA2_axiSlave_outWDATA_HardLink, axiSlave_outWDATA3_axiSlave_outWDATA_HardLink, axiSlave_outWREADYConfirming_axiSlave_outWREADYConfirming_HardLink, axiSlave_outWriteTXCompleting_axiSlave_outWriteTXCompleting_HardLink, axiSlave_outWSTRB_axiSlave_outWSTRB_HardLink, axiSlave_outWVALID_axiSlave_outWVALID_HardLink, axiSlave_S2M_axiSlave_S2M_HardLink, M2S, pwms0_iActive, pwms0_iDurationClocks, pwms0_iOnClock, pwms0_oCycle_pwms0_oCycle_HardLink, pwms0_oPWM_pwms0_oPWM_HardLink, pwms1_iActive, pwms1_iDurationClocks, pwms1_iOnClock, pwms1_oCycle_pwms1_oCycle_HardLink, pwms1_oPWM_pwms1_oPWM_HardLink, pwms2_iActive, pwms2_iDurationClocks, pwms2_iOnClock, pwms2_oCycle_pwms2_oCycle_HardLink, pwms2_oPWM_pwms2_oPWM_HardLink, pwms3_iActive, pwms3_iDurationClocks, pwms3_iOnClock, pwms3_oCycle_pwms3_oCycle_HardLink, pwms3_oPWM_pwms3_oPWM_HardLink, pwms4_iActive, pwms4_iDurationClocks, pwms4_iOnClock, pwms4_oCycle_pwms4_oCycle_HardLink, pwms4_oPWM_pwms4_oPWM_HardLink, pwms5_iActive, pwms5_iDurationClocks, pwms5_iOnClock, pwms5_oCycle_pwms5_oCycle_HardLink, pwms5_oPWM_pwms5_oPWM_HardLink, pwms6_iActive, pwms6_iDurationClocks, pwms6_iOnClock, pwms6_oCycle_pwms6_oCycle_HardLink, pwms6_oPWM_pwms6_oPWM_HardLink, pwms7_iActive, pwms7_iDurationClocks, pwms7_iOnClock, pwms7_oCycle_pwms7_oCycle_HardLink, pwms7_oPWM_pwms7_oPWM_HardLink)
 	begin
-		for NextState_pwm_Iterator in 0 to 7 loop
-			NextState_pwm(NextState_pwm_Iterator) <= State_pwm(NextState_pwm_Iterator);
-		end loop;
-		NextState_pwmDurationClocks <= State_pwmDurationClocks;
-		NextState_waddr <= State_waddr;
-		NextState_wdata <= State_wdata;
-		if axiSlave_outAWREADYConfirming = '1' then
-			NextState_waddr <= axiSlave_outAWADDR;
-		end if;
-		if axiSlave_outWREADYConfirming = '1' then
-			NextState_wdata <= AXI4PWMModule_L94F9L108T10_AXI4PWMModule_L99F35T69_Source;
-		end if;
-		if pwmClocksWE = '1' then
-			NextState_pwmDurationClocks <= State_wdata;
-		end if;
-		if pwmWE = '1' then
-			NextState_pwm(TO_INTEGER(pwmWADDR)) <= State_wdata;
-		end if;
-	end process;
-	process (AXI4PWMModule_L56F33T78_Index, AXI4PWMModule_L56F33T92_Expr, AXI4PWMModule_L58F32T101_Index, AXI4PWMModule_L58F33T66_Index, AXI4PWMModule_L58F33T80_Expr, AXI4PWMModule_L59F33T60_Index, AXI4PWMModule_L62F31T65_Enumerable, AXI4PWMModule_L68F37L77T14_Object, AXI4PWMModule_L79F13L87T14_0_AXI4PWMModule_L81F42L86T18_Object, AXI4PWMModule_L79F13L87T14_1_AXI4PWMModule_L81F42L86T18_Object, AXI4PWMModule_L79F13L87T14_2_AXI4PWMModule_L81F42L86T18_Object, AXI4PWMModule_L79F13L87T14_3_AXI4PWMModule_L81F42L86T18_Object, AXI4PWMModule_L79F13L87T14_4_AXI4PWMModule_L81F42L86T18_Object, AXI4PWMModule_L79F13L87T14_5_AXI4PWMModule_L81F42L86T18_Object, AXI4PWMModule_L79F13L87T14_6_AXI4PWMModule_L81F42L86T18_Object, AXI4PWMModule_L79F13L87T14_7_AXI4PWMModule_L81F42L86T18_Object, AXI4PWMModule_L90F29T77_Expr, AXI4PWMModule_L90F62T77_Expr, AXI4PWMModule_L91F23T74_Expr, AXI4PWMModule_L91F23T90_Expr, AXI4PWMModule_L91F56T74_Expr, AXI4PWMModule_L91F78T90_Expr, axiSlave_inARREADY, axiSlave_inAWREADY, axiSlave_inBVALID, axiSlave_inRDATA, axiSlave_inRVALID, axiSlave_inWREADY, axiSlave_M2S, axiSlave_outARADDR_axiSlave_outARADDR_HardLink, axiSlave_outARREADYConfirming_axiSlave_outARREADYConfirming_HardLink, axiSlave_outARVALID_axiSlave_outARVALID_HardLink, axiSlave_outAWADDR_axiSlave_outAWADDR_HardLink, axiSlave_outAWREADYConfirming_axiSlave_outAWREADYConfirming_HardLink, axiSlave_outAWVALID_axiSlave_outAWVALID_HardLink, axiSlave_outReadTXCompleting_axiSlave_outReadTXCompleting_HardLink, axiSlave_outWDATA, axiSlave_outWDATA0_axiSlave_outWDATA_HardLink, axiSlave_outWDATA1_axiSlave_outWDATA_HardLink, axiSlave_outWDATA2_axiSlave_outWDATA_HardLink, axiSlave_outWDATA3_axiSlave_outWDATA_HardLink, axiSlave_outWREADYConfirming_axiSlave_outWREADYConfirming_HardLink, axiSlave_outWriteTXCompleting, axiSlave_outWriteTXCompleting_axiSlave_outWriteTXCompleting_HardLink, axiSlave_outWSTRB_axiSlave_outWSTRB_HardLink, axiSlave_outWVALID_axiSlave_outWVALID_HardLink, axiSlave_S2M, axiSlave_S2M_axiSlave_S2M_HardLink, Inputs_M2S_R_AR_ARADDR, Inputs_M2S_R_AR_ARBURST, Inputs_M2S_R_AR_ARCACHE, Inputs_M2S_R_AR_ARID, Inputs_M2S_R_AR_ARLEN, Inputs_M2S_R_AR_ARLOCK, Inputs_M2S_R_AR_ARPROT, Inputs_M2S_R_AR_ARQOS, Inputs_M2S_R_AR_ARREGION, Inputs_M2S_R_AR_ARSIZE, Inputs_M2S_R_AR_ARUSER, Inputs_M2S_R_AR_ARVALID, Inputs_M2S_R_R_RREADY, Inputs_M2S_W_AW_AWADDR, Inputs_M2S_W_AW_AWBURST, Inputs_M2S_W_AW_AWCACHE, Inputs_M2S_W_AW_AWID, Inputs_M2S_W_AW_AWLEN, Inputs_M2S_W_AW_AWLOCK, Inputs_M2S_W_AW_AWPROT, Inputs_M2S_W_AW_AWQOS, Inputs_M2S_W_AW_AWREGION, Inputs_M2S_W_AW_AWSIZE, Inputs_M2S_W_AW_AWUSER, Inputs_M2S_W_AW_AWVALID, Inputs_M2S_W_B_BREADY, Inputs_M2S_W_W_WDATA, Inputs_M2S_W_W_WID, Inputs_M2S_W_W_WLAST, Inputs_M2S_W_W_WSTRB, Inputs_M2S_W_W_WUSER, Inputs_M2S_W_W_WVALID, M2S, pwmClocksWE, pwms0_iActive, pwms0_iDurationClocks, pwms0_iOnClock, pwms0_oCycle_pwms0_oCycle_HardLink, pwms0_oPWM, pwms0_oPWM_pwms0_oPWM_HardLink, pwms1_iActive, pwms1_iDurationClocks, pwms1_iOnClock, pwms1_oCycle_pwms1_oCycle_HardLink, pwms1_oPWM, pwms1_oPWM_pwms1_oPWM_HardLink, pwms2_iActive, pwms2_iDurationClocks, pwms2_iOnClock, pwms2_oCycle_pwms2_oCycle_HardLink, pwms2_oPWM, pwms2_oPWM_pwms2_oPWM_HardLink, pwms3_iActive, pwms3_iDurationClocks, pwms3_iOnClock, pwms3_oCycle_pwms3_oCycle_HardLink, pwms3_oPWM, pwms3_oPWM_pwms3_oPWM_HardLink, pwms4_iActive, pwms4_iDurationClocks, pwms4_iOnClock, pwms4_oCycle_pwms4_oCycle_HardLink, pwms4_oPWM, pwms4_oPWM_pwms4_oPWM_HardLink, pwms5_iActive, pwms5_iDurationClocks, pwms5_iOnClock, pwms5_oCycle_pwms5_oCycle_HardLink, pwms5_oPWM, pwms5_oPWM_pwms5_oPWM_HardLink, pwms6_iActive, pwms6_iDurationClocks, pwms6_iOnClock, pwms6_oCycle_pwms6_oCycle_HardLink, pwms6_oPWM, pwms6_oPWM_pwms6_oPWM_HardLink, pwms7_iActive, pwms7_iDurationClocks, pwms7_iOnClock, pwms7_oCycle_pwms7_oCycle_HardLink, pwms7_oPWM, pwms7_oPWM_pwms7_oPWM_HardLink, rawAddr, State_pwm, State_waddr)
-	begin
-		AXI4PWMModule_L90F62T77_ExprLhs(6 downto 3) <= (
-			others => '0'
-		)
-		;
-		AXI4PWMModule_L90F62T77_ExprLhs(2 downto 0) <= signed(rawAddr);
-		AXI4PWMModule_L90F62T77_ExprRhs(6) <= '0';
-		AXI4PWMModule_L90F62T77_ExprRhs(5 downto 0) <= signed(AXI4PWMModule_L90F73T77_Expr);
-		AXI4PWMModule_L91F56T74_ExprLhs(5 downto 3) <= (
-			others => '0'
-		)
-		;
-		AXI4PWMModule_L91F56T74_ExprLhs(2 downto 0) <= signed(rawAddr);
-		AXI4PWMModule_L91F56T74_ExprRhs(5) <= pwmCount(4);
-		AXI4PWMModule_L91F56T74_ExprRhs(4 downto 0) <= pwmCount;
-		AXI4PWMModule_L90F29T77_Expr_1 <= axiSlave_outWriteTXCompleting;
-		AXI4PWMModule_L90F29T77_Expr_2 <= AXI4PWMModule_L90F62T77_Expr;
-		AXI4PWMModule_L91F23T90_Expr_1 <= AXI4PWMModule_L91F23T74_Expr;
-		AXI4PWMModule_L91F23T90_Expr_2 <= AXI4PWMModule_L91F78T90_Expr;
-		AXI4PWMModule_L91F23T74_Expr_1 <= axiSlave_outWriteTXCompleting;
-		AXI4PWMModule_L91F23T74_Expr_2 <= AXI4PWMModule_L91F56T74_Expr;
-		AXI4PWMModule_L91F78T90_Expr_1 <= pwmClocksWE;
-		AXI4PWMModule_L58F33T80_Expr_1 <= AXI4PWMModule_L58F33T66_Index;
-		AXI4PWMModule_L56F33T92_Expr_1 <= AXI4PWMModule_L56F33T78_Index;
-		Inputs_M2S_W_B_BREADY <= M2S(221);
-		Inputs_M2S_W_W_WVALID <= M2S(220);
-		Inputs_M2S_W_W_WUSER <= M2S(219 downto 212);
-		Inputs_M2S_W_W_WLAST <= M2S(211);
-		Inputs_M2S_W_W_WSTRB <= M2S(210 downto 207);
-		Inputs_M2S_W_W_WDATA(3) <= M2S(206 downto 199);
-		Inputs_M2S_W_W_WDATA(2) <= M2S(198 downto 191);
-		Inputs_M2S_W_W_WDATA(1) <= M2S(190 downto 183);
-		Inputs_M2S_W_W_WDATA(0) <= M2S(182 downto 175);
-		Inputs_M2S_W_W_WID <= M2S(174 downto 167);
-		Inputs_M2S_W_AW_AWVALID <= M2S(166);
-		Inputs_M2S_W_AW_AWUSER <= M2S(165 downto 158);
-		Inputs_M2S_W_AW_AWREGION <= M2S(157 downto 150);
-		Inputs_M2S_W_AW_AWQOS <= M2S(149 downto 146);
-		Inputs_M2S_W_AW_AWPROT <= M2S(145 downto 143);
-		Inputs_M2S_W_AW_AWCACHE <= M2S(142 downto 139);
-		Inputs_M2S_W_AW_AWLOCK <= M2S(138 downto 137);
-		Inputs_M2S_W_AW_AWBURST <= M2S(136 downto 135);
-		Inputs_M2S_W_AW_AWSIZE <= M2S(134 downto 132);
-		Inputs_M2S_W_AW_AWLEN <= M2S(131 downto 124);
-		Inputs_M2S_W_AW_AWADDR <= M2S(123 downto 92);
-		Inputs_M2S_W_AW_AWID <= M2S(91 downto 84);
-		Inputs_M2S_R_R_RREADY <= M2S(83);
-		Inputs_M2S_R_AR_ARVALID <= M2S(82);
-		Inputs_M2S_R_AR_ARUSER <= M2S(81 downto 74);
-		Inputs_M2S_R_AR_ARREGION <= M2S(73 downto 66);
-		Inputs_M2S_R_AR_ARQOS <= M2S(65 downto 62);
-		Inputs_M2S_R_AR_ARPROT <= M2S(61 downto 59);
-		Inputs_M2S_R_AR_ARCACHE <= M2S(58 downto 55);
-		Inputs_M2S_R_AR_ARLOCK <= M2S(54 downto 53);
-		Inputs_M2S_R_AR_ARBURST <= M2S(52 downto 51);
-		Inputs_M2S_R_AR_ARSIZE <= M2S(50 downto 48);
-		Inputs_M2S_R_AR_ARLEN <= M2S(47 downto 40);
-		Inputs_M2S_R_AR_ARADDR <= M2S(39 downto 8);
-		Inputs_M2S_R_AR_ARID <= M2S(7 downto 0);
-		pwmClocksWE <= AXI4PWMModule_L90F29T77_Expr;
-		AXI4PWMModule_L59F33T60_Index <= rawAddr;
-		pwmWADDR <= AXI4PWMModule_L59F33T60_Index;
-		pwmWE <= AXI4PWMModule_L91F23T90_Expr;
-		AXI4PWMModule_L58F33T66_Index <= State_waddr(7 downto 0);
-		AXI4PWMModule_L58F32T101_Index <= AXI4PWMModule_L58F33T80_Expr(2 downto 0);
-		rawAddr <= AXI4PWMModule_L58F32T101_Index;
-		AXI4PWMModule_L56F33T78_Index <= Inputs_M2S_R_AR_ARADDR(7 downto 0);
-		readAddr <= AXI4PWMModule_L56F33T92_Expr;
-		AXI4PWMModule_L68F37L77T14_Object(0) <= AXI4PWMModule_L72F29T33_Expr;
-		AXI4PWMModule_L68F37L77T14_Object(1) <= AXI4PWMModule_L74F29T33_Expr;
-		AXI4PWMModule_L68F37L77T14_Object(2) <= AXI4PWMModule_L76F28T32_Expr;
-		AXI4PWMModule_L68F37L77T14_Object(34 downto 3) <= State_pwm(TO_INTEGER(readAddr));
-		AXI4PWMModule_L68F37L77T14_Object(35) <= AXI4PWMModule_L73F28T32_Expr;
-		AXI4PWMModule_L68F37L77T14_Object(36) <= AXI4PWMModule_L75F28T32_Expr;
-		AXI4PWMModule_L68F37L77T14_Object(44 downto 37) <= Inputs_M2S_R_AR_ARID;
-		AXI4PWMModule_L68F37L77T14_Object(76 downto 45) <= Inputs_M2S_R_AR_ARADDR;
-		AXI4PWMModule_L68F37L77T14_Object(84 downto 77) <= Inputs_M2S_R_AR_ARLEN;
-		AXI4PWMModule_L68F37L77T14_Object(87 downto 85) <= Inputs_M2S_R_AR_ARSIZE;
-		AXI4PWMModule_L68F37L77T14_Object(89 downto 88) <= Inputs_M2S_R_AR_ARBURST;
-		AXI4PWMModule_L68F37L77T14_Object(91 downto 90) <= Inputs_M2S_R_AR_ARLOCK;
-		AXI4PWMModule_L68F37L77T14_Object(95 downto 92) <= Inputs_M2S_R_AR_ARCACHE;
-		AXI4PWMModule_L68F37L77T14_Object(98 downto 96) <= Inputs_M2S_R_AR_ARPROT;
-		AXI4PWMModule_L68F37L77T14_Object(102 downto 99) <= Inputs_M2S_R_AR_ARQOS;
-		AXI4PWMModule_L68F37L77T14_Object(110 downto 103) <= Inputs_M2S_R_AR_ARREGION;
-		AXI4PWMModule_L68F37L77T14_Object(118 downto 111) <= Inputs_M2S_R_AR_ARUSER;
-		AXI4PWMModule_L68F37L77T14_Object(119) <= Inputs_M2S_R_AR_ARVALID;
-		AXI4PWMModule_L68F37L77T14_Object(120) <= Inputs_M2S_R_R_RREADY;
-		AXI4PWMModule_L68F37L77T14_Object(128 downto 121) <= Inputs_M2S_W_AW_AWID;
-		AXI4PWMModule_L68F37L77T14_Object(160 downto 129) <= Inputs_M2S_W_AW_AWADDR;
-		AXI4PWMModule_L68F37L77T14_Object(168 downto 161) <= Inputs_M2S_W_AW_AWLEN;
-		AXI4PWMModule_L68F37L77T14_Object(171 downto 169) <= Inputs_M2S_W_AW_AWSIZE;
-		AXI4PWMModule_L68F37L77T14_Object(173 downto 172) <= Inputs_M2S_W_AW_AWBURST;
-		AXI4PWMModule_L68F37L77T14_Object(175 downto 174) <= Inputs_M2S_W_AW_AWLOCK;
-		AXI4PWMModule_L68F37L77T14_Object(179 downto 176) <= Inputs_M2S_W_AW_AWCACHE;
-		AXI4PWMModule_L68F37L77T14_Object(182 downto 180) <= Inputs_M2S_W_AW_AWPROT;
-		AXI4PWMModule_L68F37L77T14_Object(186 downto 183) <= Inputs_M2S_W_AW_AWQOS;
-		AXI4PWMModule_L68F37L77T14_Object(194 downto 187) <= Inputs_M2S_W_AW_AWREGION;
-		AXI4PWMModule_L68F37L77T14_Object(202 downto 195) <= Inputs_M2S_W_AW_AWUSER;
-		AXI4PWMModule_L68F37L77T14_Object(203) <= Inputs_M2S_W_AW_AWVALID;
-		AXI4PWMModule_L68F37L77T14_Object(211 downto 204) <= Inputs_M2S_W_W_WID;
-		AXI4PWMModule_L68F37L77T14_Object(243 downto 236) <= Inputs_M2S_W_W_WDATA(3);
-		AXI4PWMModule_L68F37L77T14_Object(235 downto 228) <= Inputs_M2S_W_W_WDATA(2);
-		AXI4PWMModule_L68F37L77T14_Object(227 downto 220) <= Inputs_M2S_W_W_WDATA(1);
-		AXI4PWMModule_L68F37L77T14_Object(219 downto 212) <= Inputs_M2S_W_W_WDATA(0);
-		AXI4PWMModule_L68F37L77T14_Object(247 downto 244) <= Inputs_M2S_W_W_WSTRB;
-		AXI4PWMModule_L68F37L77T14_Object(248) <= Inputs_M2S_W_W_WLAST;
-		AXI4PWMModule_L68F37L77T14_Object(256 downto 249) <= Inputs_M2S_W_W_WUSER;
-		AXI4PWMModule_L68F37L77T14_Object(257) <= Inputs_M2S_W_W_WVALID;
-		AXI4PWMModule_L68F37L77T14_Object(258) <= Inputs_M2S_W_B_BREADY;
-		axiSlave_M2S <= AXI4PWMModule_L68F37L77T14_Object(258 downto 37);
-		axiSlave_inWREADY <= AXI4PWMModule_L68F37L77T14_Object(36);
-		axiSlave_inRVALID <= AXI4PWMModule_L68F37L77T14_Object(35);
-		axiSlave_inRDATA(3) <= AXI4PWMModule_L68F37L77T14_Object(34 downto 27);
-		axiSlave_inRDATA(2) <= AXI4PWMModule_L68F37L77T14_Object(26 downto 19);
-		axiSlave_inRDATA(1) <= AXI4PWMModule_L68F37L77T14_Object(18 downto 11);
-		axiSlave_inRDATA(0) <= AXI4PWMModule_L68F37L77T14_Object(10 downto 3);
-		axiSlave_inBVALID <= AXI4PWMModule_L68F37L77T14_Object(2);
-		axiSlave_inAWREADY <= AXI4PWMModule_L68F37L77T14_Object(1);
-		axiSlave_inARREADY <= AXI4PWMModule_L68F37L77T14_Object(0);
-		AXI4PWMModule_L79F13L87T14_0_AXI4PWMModule_L81F42L86T18_Object(0) <= AXI4PWMModule_L83F31T35_Expr;
-		AXI4PWMModule_L79F13L87T14_0_AXI4PWMModule_L81F42L86T18_Object(32 downto 21) <= (
-			others => '0'
-		)
-		;
-		AXI4PWMModule_L79F13L87T14_0_AXI4PWMModule_L81F42L86T18_Object(20 downto 1) <= AXI4PWMModule_L85F39T46_Expr;
-		AXI4PWMModule_L79F13L87T14_0_AXI4PWMModule_L81F42L86T18_Object(64 downto 33) <= State_pwm(0);
-		pwms0_iOnClock <= AXI4PWMModule_L79F13L87T14_0_AXI4PWMModule_L81F42L86T18_Object(64 downto 33);
-		pwms0_iDurationClocks <= AXI4PWMModule_L79F13L87T14_0_AXI4PWMModule_L81F42L86T18_Object(32 downto 1);
-		pwms0_iActive <= AXI4PWMModule_L79F13L87T14_0_AXI4PWMModule_L81F42L86T18_Object(0);
-		AXI4PWMModule_L79F13L87T14_1_AXI4PWMModule_L81F42L86T18_Object(0) <= AXI4PWMModule_L83F31T35_Expr;
-		AXI4PWMModule_L79F13L87T14_1_AXI4PWMModule_L81F42L86T18_Object(32 downto 21) <= (
-			others => '0'
-		)
-		;
-		AXI4PWMModule_L79F13L87T14_1_AXI4PWMModule_L81F42L86T18_Object(20 downto 1) <= AXI4PWMModule_L85F39T46_Expr;
-		AXI4PWMModule_L79F13L87T14_1_AXI4PWMModule_L81F42L86T18_Object(64 downto 33) <= State_pwm(1);
-		pwms1_iOnClock <= AXI4PWMModule_L79F13L87T14_1_AXI4PWMModule_L81F42L86T18_Object(64 downto 33);
-		pwms1_iDurationClocks <= AXI4PWMModule_L79F13L87T14_1_AXI4PWMModule_L81F42L86T18_Object(32 downto 1);
-		pwms1_iActive <= AXI4PWMModule_L79F13L87T14_1_AXI4PWMModule_L81F42L86T18_Object(0);
-		AXI4PWMModule_L79F13L87T14_2_AXI4PWMModule_L81F42L86T18_Object(0) <= AXI4PWMModule_L83F31T35_Expr;
-		AXI4PWMModule_L79F13L87T14_2_AXI4PWMModule_L81F42L86T18_Object(32 downto 21) <= (
-			others => '0'
-		)
-		;
-		AXI4PWMModule_L79F13L87T14_2_AXI4PWMModule_L81F42L86T18_Object(20 downto 1) <= AXI4PWMModule_L85F39T46_Expr;
-		AXI4PWMModule_L79F13L87T14_2_AXI4PWMModule_L81F42L86T18_Object(64 downto 33) <= State_pwm(2);
-		pwms2_iOnClock <= AXI4PWMModule_L79F13L87T14_2_AXI4PWMModule_L81F42L86T18_Object(64 downto 33);
-		pwms2_iDurationClocks <= AXI4PWMModule_L79F13L87T14_2_AXI4PWMModule_L81F42L86T18_Object(32 downto 1);
-		pwms2_iActive <= AXI4PWMModule_L79F13L87T14_2_AXI4PWMModule_L81F42L86T18_Object(0);
-		AXI4PWMModule_L79F13L87T14_3_AXI4PWMModule_L81F42L86T18_Object(0) <= AXI4PWMModule_L83F31T35_Expr;
-		AXI4PWMModule_L79F13L87T14_3_AXI4PWMModule_L81F42L86T18_Object(32 downto 21) <= (
-			others => '0'
-		)
-		;
-		AXI4PWMModule_L79F13L87T14_3_AXI4PWMModule_L81F42L86T18_Object(20 downto 1) <= AXI4PWMModule_L85F39T46_Expr;
-		AXI4PWMModule_L79F13L87T14_3_AXI4PWMModule_L81F42L86T18_Object(64 downto 33) <= State_pwm(3);
-		pwms3_iOnClock <= AXI4PWMModule_L79F13L87T14_3_AXI4PWMModule_L81F42L86T18_Object(64 downto 33);
-		pwms3_iDurationClocks <= AXI4PWMModule_L79F13L87T14_3_AXI4PWMModule_L81F42L86T18_Object(32 downto 1);
-		pwms3_iActive <= AXI4PWMModule_L79F13L87T14_3_AXI4PWMModule_L81F42L86T18_Object(0);
-		AXI4PWMModule_L79F13L87T14_4_AXI4PWMModule_L81F42L86T18_Object(0) <= AXI4PWMModule_L83F31T35_Expr;
-		AXI4PWMModule_L79F13L87T14_4_AXI4PWMModule_L81F42L86T18_Object(32 downto 21) <= (
-			others => '0'
-		)
-		;
-		AXI4PWMModule_L79F13L87T14_4_AXI4PWMModule_L81F42L86T18_Object(20 downto 1) <= AXI4PWMModule_L85F39T46_Expr;
-		AXI4PWMModule_L79F13L87T14_4_AXI4PWMModule_L81F42L86T18_Object(64 downto 33) <= State_pwm(4);
-		pwms4_iOnClock <= AXI4PWMModule_L79F13L87T14_4_AXI4PWMModule_L81F42L86T18_Object(64 downto 33);
-		pwms4_iDurationClocks <= AXI4PWMModule_L79F13L87T14_4_AXI4PWMModule_L81F42L86T18_Object(32 downto 1);
-		pwms4_iActive <= AXI4PWMModule_L79F13L87T14_4_AXI4PWMModule_L81F42L86T18_Object(0);
-		AXI4PWMModule_L79F13L87T14_5_AXI4PWMModule_L81F42L86T18_Object(0) <= AXI4PWMModule_L83F31T35_Expr;
-		AXI4PWMModule_L79F13L87T14_5_AXI4PWMModule_L81F42L86T18_Object(32 downto 21) <= (
-			others => '0'
-		)
-		;
-		AXI4PWMModule_L79F13L87T14_5_AXI4PWMModule_L81F42L86T18_Object(20 downto 1) <= AXI4PWMModule_L85F39T46_Expr;
-		AXI4PWMModule_L79F13L87T14_5_AXI4PWMModule_L81F42L86T18_Object(64 downto 33) <= State_pwm(5);
-		pwms5_iOnClock <= AXI4PWMModule_L79F13L87T14_5_AXI4PWMModule_L81F42L86T18_Object(64 downto 33);
-		pwms5_iDurationClocks <= AXI4PWMModule_L79F13L87T14_5_AXI4PWMModule_L81F42L86T18_Object(32 downto 1);
-		pwms5_iActive <= AXI4PWMModule_L79F13L87T14_5_AXI4PWMModule_L81F42L86T18_Object(0);
-		AXI4PWMModule_L79F13L87T14_6_AXI4PWMModule_L81F42L86T18_Object(0) <= AXI4PWMModule_L83F31T35_Expr;
-		AXI4PWMModule_L79F13L87T14_6_AXI4PWMModule_L81F42L86T18_Object(32 downto 21) <= (
-			others => '0'
-		)
-		;
-		AXI4PWMModule_L79F13L87T14_6_AXI4PWMModule_L81F42L86T18_Object(20 downto 1) <= AXI4PWMModule_L85F39T46_Expr;
-		AXI4PWMModule_L79F13L87T14_6_AXI4PWMModule_L81F42L86T18_Object(64 downto 33) <= State_pwm(6);
-		pwms6_iOnClock <= AXI4PWMModule_L79F13L87T14_6_AXI4PWMModule_L81F42L86T18_Object(64 downto 33);
-		pwms6_iDurationClocks <= AXI4PWMModule_L79F13L87T14_6_AXI4PWMModule_L81F42L86T18_Object(32 downto 1);
-		pwms6_iActive <= AXI4PWMModule_L79F13L87T14_6_AXI4PWMModule_L81F42L86T18_Object(0);
-		AXI4PWMModule_L79F13L87T14_7_AXI4PWMModule_L81F42L86T18_Object(0) <= AXI4PWMModule_L83F31T35_Expr;
-		AXI4PWMModule_L79F13L87T14_7_AXI4PWMModule_L81F42L86T18_Object(32 downto 21) <= (
-			others => '0'
-		)
-		;
-		AXI4PWMModule_L79F13L87T14_7_AXI4PWMModule_L81F42L86T18_Object(20 downto 1) <= AXI4PWMModule_L85F39T46_Expr;
-		AXI4PWMModule_L79F13L87T14_7_AXI4PWMModule_L81F42L86T18_Object(64 downto 33) <= State_pwm(7);
-		pwms7_iOnClock <= AXI4PWMModule_L79F13L87T14_7_AXI4PWMModule_L81F42L86T18_Object(64 downto 33);
-		pwms7_iDurationClocks <= AXI4PWMModule_L79F13L87T14_7_AXI4PWMModule_L81F42L86T18_Object(32 downto 1);
-		pwms7_iActive <= AXI4PWMModule_L79F13L87T14_7_AXI4PWMModule_L81F42L86T18_Object(0);
-		AXI4PWMModule_L94F9L108T10_AXI4PWMModule_L99F35T69_Source(31 downto 24) <= axiSlave_outWDATA(3);
-		AXI4PWMModule_L94F9L108T10_AXI4PWMModule_L99F35T69_Source(23 downto 16) <= axiSlave_outWDATA(2);
-		AXI4PWMModule_L94F9L108T10_AXI4PWMModule_L99F35T69_Source(15 downto 8) <= axiSlave_outWDATA(1);
-		AXI4PWMModule_L94F9L108T10_AXI4PWMModule_L99F35T69_Source(7 downto 0) <= axiSlave_outWDATA(0);
-		AXI4PWMModule_L62F31T65_Enumerable(0) <= pwms0_oPWM;
-		AXI4PWMModule_L62F31T65_Enumerable(1) <= pwms1_oPWM;
-		AXI4PWMModule_L62F31T65_Enumerable(2) <= pwms2_oPWM;
-		AXI4PWMModule_L62F31T65_Enumerable(3) <= pwms3_oPWM;
-		AXI4PWMModule_L62F31T65_Enumerable(4) <= pwms4_oPWM;
-		AXI4PWMModule_L62F31T65_Enumerable(5) <= pwms5_oPWM;
-		AXI4PWMModule_L62F31T65_Enumerable(6) <= pwms6_oPWM;
-		AXI4PWMModule_L62F31T65_Enumerable(7) <= pwms7_oPWM;
-		oPWM0 <= AXI4PWMModule_L62F31T65_Enumerable(0);
-		oPWM1 <= AXI4PWMModule_L62F31T65_Enumerable(1);
-		oPWM2 <= AXI4PWMModule_L62F31T65_Enumerable(2);
-		oPWM3 <= AXI4PWMModule_L62F31T65_Enumerable(3);
-		oPWM4 <= AXI4PWMModule_L62F31T65_Enumerable(4);
-		oPWM5 <= AXI4PWMModule_L62F31T65_Enumerable(5);
-		oPWM6 <= AXI4PWMModule_L62F31T65_Enumerable(6);
-		oPWM7 <= AXI4PWMModule_L62F31T65_Enumerable(7);
-		oS2M <= axiSlave_S2M;
+		Inputs_M2S <= M2S;
 		axiSlave_inARREADY_axiSlave_inARREADY_HardLink <= axiSlave_inARREADY;
 		axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink <= axiSlave_inAWREADY;
 		axiSlave_inBVALID_axiSlave_inBVALID_HardLink <= axiSlave_inBVALID;

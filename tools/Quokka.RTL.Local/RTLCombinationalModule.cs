@@ -204,7 +204,7 @@ namespace Quokka.RTL
             }
             catch (Exception ex)
             {
-                throw new Exception($"Ex: {ex.GetType()}");
+                throw;// new Exception($"Ex: {ex.GetType()}");
             }
         }
 
@@ -246,7 +246,7 @@ namespace Quokka.RTL
         public virtual RTLModuleStageResult DeltaCycle(int deltaCycle)
         {
             if (InputsFactory == null)
-                throw new InvalidOperationException($"InputsFactory is not specified. Did you forget to schedule module?");
+                throw new InvalidOperationException($"{GetType().Name}: InputsFactory is not specified. Did you forget to schedule module or call base.OnSchedule() in override?");
 
             var nextInputs = InputsFactory();
 

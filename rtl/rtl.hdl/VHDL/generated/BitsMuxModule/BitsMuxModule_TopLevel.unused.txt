@@ -1,0 +1,6 @@
+No reads:
+	Inputs_Addr
+	Inputs_Value
+	pixelAddress
+No writes:
+	pixelAddress

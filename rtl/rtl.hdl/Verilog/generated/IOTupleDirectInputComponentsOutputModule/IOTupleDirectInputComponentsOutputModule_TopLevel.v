@@ -192,43 +192,32 @@ module IOTupleDirectInputComponentsOutputModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire Inputs_iTuple_Item1;
-	wire [7: 0] Inputs_iTuple_Item2;
-	wire Inputs_iTuple_Item4_L1Flag;
-	wire Inputs_iTuple_Item4_L2_L2Flag;
-	wire [7: 0] Inputs_iTuple_Item4_L2Tuple_Item1;
-	wire Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag;
-	wire [59: 0] IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple;
-	wire [3 : 0] Inputs_iTuple_Item3 [0 : 1];
-	wire Inputs_iTuple_Item4_L2_L2Values [0 : 1];
-	wire [6 : 0] Inputs_iTuple_Item4_L2Array [0 : 1];
-	wire Inputs_iTuple_Item4_L2Tuple_Item2_L2Values [0 : 1];
-	wire [6 : 0] Inputs_iTuple_Item4_L2Tuple_Item3 [0 : 1];
+	wire [59: 0] Inputs_iTuple;
 	wire [53 : 0] Inputs_iTupleArray [0 : 1];
-	assign Inputs_iTuple_Item1 = iTuple_Item1;
-	assign Inputs_iTuple_Item2 = iTuple_Item2;
-	assign Inputs_iTuple_Item3[0] = iTuple_Item30;
-	assign Inputs_iTuple_Item3[1] = iTuple_Item31;
-	assign Inputs_iTuple_Item4_L1Flag = iTuple_Item4_L1Flag;
-	assign Inputs_iTuple_Item4_L2_L2Flag = iTuple_Item4_L2_L2Flag;
-	assign Inputs_iTuple_Item4_L2_L2Values[0] = iTuple_Item4_L2_L2Values0;
-	assign Inputs_iTuple_Item4_L2_L2Values[1] = iTuple_Item4_L2_L2Values1;
-	assign Inputs_iTuple_Item4_L2Array[0][6:4] = iTuple_Item4_L2Array0_L2Values1;
-	assign Inputs_iTuple_Item4_L2Array[0][3:1] = iTuple_Item4_L2Array0_L2Values0;
-	assign Inputs_iTuple_Item4_L2Array[0][0] = iTuple_Item4_L2Array0_L2Flag;
-	assign Inputs_iTuple_Item4_L2Array[1][6:4] = iTuple_Item4_L2Array1_L2Values1;
-	assign Inputs_iTuple_Item4_L2Array[1][3:1] = iTuple_Item4_L2Array1_L2Values0;
-	assign Inputs_iTuple_Item4_L2Array[1][0] = iTuple_Item4_L2Array1_L2Flag;
-	assign Inputs_iTuple_Item4_L2Tuple_Item1 = iTuple_Item4_L2Tuple_Item1;
-	assign Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag = iTuple_Item4_L2Tuple_Item2_L2Flag;
-	assign Inputs_iTuple_Item4_L2Tuple_Item2_L2Values[0] = iTuple_Item4_L2Tuple_Item2_L2Values0;
-	assign Inputs_iTuple_Item4_L2Tuple_Item2_L2Values[1] = iTuple_Item4_L2Tuple_Item2_L2Values1;
-	assign Inputs_iTuple_Item4_L2Tuple_Item3[0][6:4] = iTuple_Item4_L2Tuple_Item30_L2Values1;
-	assign Inputs_iTuple_Item4_L2Tuple_Item3[0][3:1] = iTuple_Item4_L2Tuple_Item30_L2Values0;
-	assign Inputs_iTuple_Item4_L2Tuple_Item3[0][0] = iTuple_Item4_L2Tuple_Item30_L2Flag;
-	assign Inputs_iTuple_Item4_L2Tuple_Item3[1][6:4] = iTuple_Item4_L2Tuple_Item31_L2Values1;
-	assign Inputs_iTuple_Item4_L2Tuple_Item3[1][3:1] = iTuple_Item4_L2Tuple_Item31_L2Values0;
-	assign Inputs_iTuple_Item4_L2Tuple_Item3[1][0] = iTuple_Item4_L2Tuple_Item31_L2Flag;
+	assign Inputs_iTuple[59] = iTuple_Item1;
+	assign Inputs_iTuple[58:51] = iTuple_Item2;
+	assign Inputs_iTuple[50:47] = iTuple_Item31;
+	assign Inputs_iTuple[46:43] = iTuple_Item30;
+	assign Inputs_iTuple[42:35] = iTuple_Item4_L2Tuple_Item1;
+	assign Inputs_iTuple[34] = iTuple_Item4_L2Tuple_Item2_L2Values1;
+	assign Inputs_iTuple[33] = iTuple_Item4_L2Tuple_Item2_L2Values0;
+	assign Inputs_iTuple[32] = iTuple_Item4_L2Tuple_Item2_L2Flag;
+	assign Inputs_iTuple[31:29] = iTuple_Item4_L2Tuple_Item31_L2Values1;
+	assign Inputs_iTuple[28:26] = iTuple_Item4_L2Tuple_Item31_L2Values0;
+	assign Inputs_iTuple[25] = iTuple_Item4_L2Tuple_Item31_L2Flag;
+	assign Inputs_iTuple[24:22] = iTuple_Item4_L2Tuple_Item30_L2Values1;
+	assign Inputs_iTuple[21:19] = iTuple_Item4_L2Tuple_Item30_L2Values0;
+	assign Inputs_iTuple[18] = iTuple_Item4_L2Tuple_Item30_L2Flag;
+	assign Inputs_iTuple[17:15] = iTuple_Item4_L2Array1_L2Values1;
+	assign Inputs_iTuple[14:12] = iTuple_Item4_L2Array1_L2Values0;
+	assign Inputs_iTuple[11] = iTuple_Item4_L2Array1_L2Flag;
+	assign Inputs_iTuple[10:8] = iTuple_Item4_L2Array0_L2Values1;
+	assign Inputs_iTuple[7:5] = iTuple_Item4_L2Array0_L2Values0;
+	assign Inputs_iTuple[4] = iTuple_Item4_L2Array0_L2Flag;
+	assign Inputs_iTuple[3] = iTuple_Item4_L2_L2Values1;
+	assign Inputs_iTuple[2] = iTuple_Item4_L2_L2Values0;
+	assign Inputs_iTuple[1] = iTuple_Item4_L2_L2Flag;
+	assign Inputs_iTuple[0] = iTuple_Item4_L1Flag;
 	assign Inputs_iTupleArray[0][53] = iTupleArray0_Item1;
 	assign Inputs_iTupleArray[0][52:49] = iTupleArray0_Item2;
 	assign Inputs_iTupleArray[0][48:41] = iTupleArray0_Item3_L2Tuple_Item1;
@@ -285,105 +274,6 @@ module IOTupleDirectInputComponentsOutputModule_TopLevel
 	assign Inputs_iTupleArray[1][2] = iTupleArray1_Item40_L2Values1;
 	assign Inputs_iTupleArray[1][1] = iTupleArray1_Item40_L2Values0;
 	assign Inputs_iTupleArray[1][0] = iTupleArray1_Item40_L2Flag;
-	assign IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple = {
-		Inputs_iTuple_Item1,
-		Inputs_iTuple_Item2,
-		Inputs_iTuple_Item3[1],
-		Inputs_iTuple_Item3[0],
-		Inputs_iTuple_Item4_L2Tuple_Item1,
-		Inputs_iTuple_Item4_L2Tuple_Item2_L2Values[1],
-		Inputs_iTuple_Item4_L2Tuple_Item2_L2Values[0],
-		Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag,
-		Inputs_iTuple_Item4_L2Tuple_Item3[1],
-		Inputs_iTuple_Item4_L2Tuple_Item3[0],
-		Inputs_iTuple_Item4_L2Array[1],
-		Inputs_iTuple_Item4_L2Array[0],
-		Inputs_iTuple_Item4_L2_L2Values[1],
-		Inputs_iTuple_Item4_L2_L2Values[0],
-		Inputs_iTuple_Item4_L2_L2Flag,
-		Inputs_iTuple_Item4_L1Flag
-	}
-	;
-	assign Output_iTuple_Item1 = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[59];
-	assign Output_iTuple_Item2 = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[58:51];
-	assign Output_iTuple_Item31 = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[50:47];
-	assign Output_iTuple_Item30 = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[46:43];
-	assign Output_iTuple_Item4_L2Tuple_Item1 = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[42:35];
-	assign Output_iTuple_Item4_L2Tuple_Item2_L2Values1 = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[34];
-	assign Output_iTuple_Item4_L2Tuple_Item2_L2Values0 = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[33];
-	assign Output_iTuple_Item4_L2Tuple_Item2_L2Flag = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[32];
-	assign Output_iTuple_Item4_L2Tuple_Item31_L2Values1 = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[31:29];
-	assign Output_iTuple_Item4_L2Tuple_Item31_L2Values0 = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[28:26];
-	assign Output_iTuple_Item4_L2Tuple_Item31_L2Flag = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[25];
-	assign Output_iTuple_Item4_L2Tuple_Item30_L2Values1 = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[24:22];
-	assign Output_iTuple_Item4_L2Tuple_Item30_L2Values0 = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[21:19];
-	assign Output_iTuple_Item4_L2Tuple_Item30_L2Flag = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[18];
-	assign Output_iTuple_Item4_L2Array1_L2Values1 = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[17:15];
-	assign Output_iTuple_Item4_L2Array1_L2Values0 = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[14:12];
-	assign Output_iTuple_Item4_L2Array1_L2Flag = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[11];
-	assign Output_iTuple_Item4_L2Array0_L2Values1 = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[10:8];
-	assign Output_iTuple_Item4_L2Array0_L2Values0 = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[7:5];
-	assign Output_iTuple_Item4_L2Array0_L2Flag = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[4];
-	assign Output_iTuple_Item4_L2_L2Values1 = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[3];
-	assign Output_iTuple_Item4_L2_L2Values0 = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[2];
-	assign Output_iTuple_Item4_L2_L2Flag = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[1];
-	assign Output_iTuple_Item4_L1Flag = IOTupleDirectInputComponentsOutputModule_L9F30T43_Tuple[0];
-	assign Output_iTupleArray0_Item1 = Inputs_iTupleArray[0][53];
-	assign Output_iTupleArray0_Item2 = Inputs_iTupleArray[0][52:49];
-	assign Output_iTupleArray0_Item3_L2Tuple_Item1 = Inputs_iTupleArray[0][48:41];
-	assign Output_iTupleArray0_Item3_L2Tuple_Item2_L2Values1 = Inputs_iTupleArray[0][40];
-	assign Output_iTupleArray0_Item3_L2Tuple_Item2_L2Values0 = Inputs_iTupleArray[0][39];
-	assign Output_iTupleArray0_Item3_L2Tuple_Item2_L2Flag = Inputs_iTupleArray[0][38];
-	assign Output_iTupleArray0_Item3_L2Tuple_Item31_L2Values1 = Inputs_iTupleArray[0][37:35];
-	assign Output_iTupleArray0_Item3_L2Tuple_Item31_L2Values0 = Inputs_iTupleArray[0][34:32];
-	assign Output_iTupleArray0_Item3_L2Tuple_Item31_L2Flag = Inputs_iTupleArray[0][31];
-	assign Output_iTupleArray0_Item3_L2Tuple_Item30_L2Values1 = Inputs_iTupleArray[0][30:28];
-	assign Output_iTupleArray0_Item3_L2Tuple_Item30_L2Values0 = Inputs_iTupleArray[0][27:25];
-	assign Output_iTupleArray0_Item3_L2Tuple_Item30_L2Flag = Inputs_iTupleArray[0][24];
-	assign Output_iTupleArray0_Item3_L2Array1_L2Values1 = Inputs_iTupleArray[0][23:21];
-	assign Output_iTupleArray0_Item3_L2Array1_L2Values0 = Inputs_iTupleArray[0][20:18];
-	assign Output_iTupleArray0_Item3_L2Array1_L2Flag = Inputs_iTupleArray[0][17];
-	assign Output_iTupleArray0_Item3_L2Array0_L2Values1 = Inputs_iTupleArray[0][16:14];
-	assign Output_iTupleArray0_Item3_L2Array0_L2Values0 = Inputs_iTupleArray[0][13:11];
-	assign Output_iTupleArray0_Item3_L2Array0_L2Flag = Inputs_iTupleArray[0][10];
-	assign Output_iTupleArray0_Item3_L2_L2Values1 = Inputs_iTupleArray[0][9];
-	assign Output_iTupleArray0_Item3_L2_L2Values0 = Inputs_iTupleArray[0][8];
-	assign Output_iTupleArray0_Item3_L2_L2Flag = Inputs_iTupleArray[0][7];
-	assign Output_iTupleArray0_Item3_L1Flag = Inputs_iTupleArray[0][6];
-	assign Output_iTupleArray0_Item41_L2Values1 = Inputs_iTupleArray[0][5];
-	assign Output_iTupleArray0_Item41_L2Values0 = Inputs_iTupleArray[0][4];
-	assign Output_iTupleArray0_Item41_L2Flag = Inputs_iTupleArray[0][3];
-	assign Output_iTupleArray0_Item40_L2Values1 = Inputs_iTupleArray[0][2];
-	assign Output_iTupleArray0_Item40_L2Values0 = Inputs_iTupleArray[0][1];
-	assign Output_iTupleArray0_Item40_L2Flag = Inputs_iTupleArray[0][0];
-	assign Output_iTupleArray1_Item1 = Inputs_iTupleArray[1][53];
-	assign Output_iTupleArray1_Item2 = Inputs_iTupleArray[1][52:49];
-	assign Output_iTupleArray1_Item3_L2Tuple_Item1 = Inputs_iTupleArray[1][48:41];
-	assign Output_iTupleArray1_Item3_L2Tuple_Item2_L2Values1 = Inputs_iTupleArray[1][40];
-	assign Output_iTupleArray1_Item3_L2Tuple_Item2_L2Values0 = Inputs_iTupleArray[1][39];
-	assign Output_iTupleArray1_Item3_L2Tuple_Item2_L2Flag = Inputs_iTupleArray[1][38];
-	assign Output_iTupleArray1_Item3_L2Tuple_Item31_L2Values1 = Inputs_iTupleArray[1][37:35];
-	assign Output_iTupleArray1_Item3_L2Tuple_Item31_L2Values0 = Inputs_iTupleArray[1][34:32];
-	assign Output_iTupleArray1_Item3_L2Tuple_Item31_L2Flag = Inputs_iTupleArray[1][31];
-	assign Output_iTupleArray1_Item3_L2Tuple_Item30_L2Values1 = Inputs_iTupleArray[1][30:28];
-	assign Output_iTupleArray1_Item3_L2Tuple_Item30_L2Values0 = Inputs_iTupleArray[1][27:25];
-	assign Output_iTupleArray1_Item3_L2Tuple_Item30_L2Flag = Inputs_iTupleArray[1][24];
-	assign Output_iTupleArray1_Item3_L2Array1_L2Values1 = Inputs_iTupleArray[1][23:21];
-	assign Output_iTupleArray1_Item3_L2Array1_L2Values0 = Inputs_iTupleArray[1][20:18];
-	assign Output_iTupleArray1_Item3_L2Array1_L2Flag = Inputs_iTupleArray[1][17];
-	assign Output_iTupleArray1_Item3_L2Array0_L2Values1 = Inputs_iTupleArray[1][16:14];
-	assign Output_iTupleArray1_Item3_L2Array0_L2Values0 = Inputs_iTupleArray[1][13:11];
-	assign Output_iTupleArray1_Item3_L2Array0_L2Flag = Inputs_iTupleArray[1][10];
-	assign Output_iTupleArray1_Item3_L2_L2Values1 = Inputs_iTupleArray[1][9];
-	assign Output_iTupleArray1_Item3_L2_L2Values0 = Inputs_iTupleArray[1][8];
-	assign Output_iTupleArray1_Item3_L2_L2Flag = Inputs_iTupleArray[1][7];
-	assign Output_iTupleArray1_Item3_L1Flag = Inputs_iTupleArray[1][6];
-	assign Output_iTupleArray1_Item41_L2Values1 = Inputs_iTupleArray[1][5];
-	assign Output_iTupleArray1_Item41_L2Values0 = Inputs_iTupleArray[1][4];
-	assign Output_iTupleArray1_Item41_L2Flag = Inputs_iTupleArray[1][3];
-	assign Output_iTupleArray1_Item40_L2Values1 = Inputs_iTupleArray[1][2];
-	assign Output_iTupleArray1_Item40_L2Values0 = Inputs_iTupleArray[1][1];
-	assign Output_iTupleArray1_Item40_L2Flag = Inputs_iTupleArray[1][0];
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

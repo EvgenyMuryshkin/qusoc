@@ -134,25 +134,17 @@ architecture rtl of IOObjectModule_TopLevel is
 	constant State_Object_L1Object_L2BooleanArrayDefault : std_logic := '0';
 	constant State_Object_L1Object_L2ObjectArrayDefault : unsigned(13 downto 0) := "00000000000000";
 	constant State_ObjectsDefault : unsigned(41 downto 0) := "000000000000000000000000000000000000000000";
-	signal Inputs_Object_L1Byte : unsigned(7 downto 0) := (others => '0');
-	signal Inputs_Object_L1Tuple_Item1 : std_logic := '0';
-	signal Inputs_Object_L1Tuple_Item2 : unsigned(2 downto 0) := (others => '0');
+	signal Inputs_Object : unsigned(41 downto 0) := (others => '0');
 	signal NextState_Object_L1Byte : unsigned(7 downto 0) := (others => '0');
 	signal NextState_Object_L1Tuple_Item1 : std_logic := '0';
 	signal NextState_Object_L1Tuple_Item2 : unsigned(2 downto 0) := (others => '0');
-	signal iInput_L1Byte : unsigned(7 downto 0) := (others => '0');
-	signal iInput_L1Tuple_Item1 : std_logic := '0';
-	signal iInput_L1Tuple_Item2 : unsigned(2 downto 0) := (others => '0');
+	signal iInput : unsigned(41 downto 0) := (others => '0');
 	signal State_Object_L1Byte : unsigned(7 downto 0) := "00000000";
 	constant State_Object_L1ByteDefault : unsigned(7 downto 0) := "00000000";
 	signal State_Object_L1Tuple_Item1 : std_logic := '0';
 	constant State_Object_L1Tuple_Item1Default : std_logic := '1';
 	signal State_Object_L1Tuple_Item2 : unsigned(2 downto 0) := "000";
 	constant State_Object_L1Tuple_Item2Default : unsigned(2 downto 0) := "000";
-	type Inputs_Object_L1Object_L2BooleanArrayArray is array (0 to 1) of std_logic;
-	signal Inputs_Object_L1Object_L2BooleanArray : Inputs_Object_L1Object_L2BooleanArrayArray := (others => '0');
-	type Inputs_Object_L1Object_L2ObjectArrayArray is array (0 to 1) of unsigned (13 downto 0);
-	signal Inputs_Object_L1Object_L2ObjectArray : Inputs_Object_L1Object_L2ObjectArrayArray := (others => (others => '0'));
 	type Inputs_ObjectsArray is array (0 to 1) of unsigned (41 downto 0);
 	signal Inputs_Objects : Inputs_ObjectsArray := (others => (others => '0'));
 	type State_Object_L1Object_L2BooleanArrayArray is array (0 to 1) of std_logic;
@@ -175,10 +167,6 @@ architecture rtl of IOObjectModule_TopLevel is
 	signal State_Objects : State_ObjectsArray := State_ObjectsArrayInit;
 	type NextState_ObjectsArray is array (0 to 1) of unsigned (41 downto 0);
 	signal NextState_Objects : NextState_ObjectsArray := (others => (others => '0'));
-	type iInput_L1Object_L2BooleanArrayArray is array (0 to 1) of std_logic;
-	signal iInput_L1Object_L2BooleanArray : iInput_L1Object_L2BooleanArrayArray := (others => '0');
-	type iInput_L1Object_L2ObjectArrayArray is array (0 to 1) of unsigned (13 downto 0);
-	signal iInput_L1Object_L2ObjectArray : iInput_L1Object_L2ObjectArrayArray := (others => (others => '0'));
 begin
 	process (Clock, NextState_Object_L1Byte, NextState_Object_L1Tuple_Item1, NextState_Object_L1Tuple_Item2, Reset)
 	begin
@@ -232,46 +220,31 @@ begin
 			end if;
 		end if;
 	end process;
-	process (State_Object_L1Byte, State_Object_L1Object_L2BooleanArray, State_Object_L1Object_L2ObjectArray, State_Object_L1Tuple_Item1, State_Object_L1Tuple_Item2, State_Objects)
+	process (Object_L1Byte, Object_L1Object_L2BooleanArray0, Object_L1Object_L2BooleanArray1, Object_L1Object_L2ObjectArray0_L3Boolean, Object_L1Object_L2ObjectArray0_L3RTLBitArray0, Object_L1Object_L2ObjectArray0_L3RTLBitArray1, Object_L1Object_L2ObjectArray0_L3Tuple_Item1, Object_L1Object_L2ObjectArray0_L3Tuple_Item2, Object_L1Object_L2ObjectArray0_L3TupleArray0_Item1, Object_L1Object_L2ObjectArray0_L3TupleArray0_Item2, Object_L1Object_L2ObjectArray0_L3TupleArray1_Item1, Object_L1Object_L2ObjectArray0_L3TupleArray1_Item2, Object_L1Object_L2ObjectArray1_L3Boolean, Object_L1Object_L2ObjectArray1_L3RTLBitArray0, Object_L1Object_L2ObjectArray1_L3RTLBitArray1, Object_L1Object_L2ObjectArray1_L3Tuple_Item1, Object_L1Object_L2ObjectArray1_L3Tuple_Item2, Object_L1Object_L2ObjectArray1_L3TupleArray0_Item1, Object_L1Object_L2ObjectArray1_L3TupleArray0_Item2, Object_L1Object_L2ObjectArray1_L3TupleArray1_Item1, Object_L1Object_L2ObjectArray1_L3TupleArray1_Item2, Object_L1Tuple_Item1, Object_L1Tuple_Item2, Objects0_L1Byte, Objects0_L1Object_L2BooleanArray0, Objects0_L1Object_L2BooleanArray1, Objects0_L1Object_L2ObjectArray0_L3Boolean, Objects0_L1Object_L2ObjectArray0_L3RTLBitArray0, Objects0_L1Object_L2ObjectArray0_L3RTLBitArray1, Objects0_L1Object_L2ObjectArray0_L3Tuple_Item1, Objects0_L1Object_L2ObjectArray0_L3Tuple_Item2, Objects0_L1Object_L2ObjectArray0_L3TupleArray0_Item1, Objects0_L1Object_L2ObjectArray0_L3TupleArray0_Item2, Objects0_L1Object_L2ObjectArray0_L3TupleArray1_Item1, Objects0_L1Object_L2ObjectArray0_L3TupleArray1_Item2, Objects0_L1Object_L2ObjectArray1_L3Boolean, Objects0_L1Object_L2ObjectArray1_L3RTLBitArray0, Objects0_L1Object_L2ObjectArray1_L3RTLBitArray1, Objects0_L1Object_L2ObjectArray1_L3Tuple_Item1, Objects0_L1Object_L2ObjectArray1_L3Tuple_Item2, Objects0_L1Object_L2ObjectArray1_L3TupleArray0_Item1, Objects0_L1Object_L2ObjectArray1_L3TupleArray0_Item2, Objects0_L1Object_L2ObjectArray1_L3TupleArray1_Item1, Objects0_L1Object_L2ObjectArray1_L3TupleArray1_Item2, Objects0_L1Tuple_Item1, Objects0_L1Tuple_Item2, Objects1_L1Byte, Objects1_L1Object_L2BooleanArray0, Objects1_L1Object_L2BooleanArray1, Objects1_L1Object_L2ObjectArray0_L3Boolean, Objects1_L1Object_L2ObjectArray0_L3RTLBitArray0, Objects1_L1Object_L2ObjectArray0_L3RTLBitArray1, Objects1_L1Object_L2ObjectArray0_L3Tuple_Item1, Objects1_L1Object_L2ObjectArray0_L3Tuple_Item2, Objects1_L1Object_L2ObjectArray0_L3TupleArray0_Item1, Objects1_L1Object_L2ObjectArray0_L3TupleArray0_Item2, Objects1_L1Object_L2ObjectArray0_L3TupleArray1_Item1, Objects1_L1Object_L2ObjectArray0_L3TupleArray1_Item2, Objects1_L1Object_L2ObjectArray1_L3Boolean, Objects1_L1Object_L2ObjectArray1_L3RTLBitArray0, Objects1_L1Object_L2ObjectArray1_L3RTLBitArray1, Objects1_L1Object_L2ObjectArray1_L3Tuple_Item1, Objects1_L1Object_L2ObjectArray1_L3Tuple_Item2, Objects1_L1Object_L2ObjectArray1_L3TupleArray0_Item1, Objects1_L1Object_L2ObjectArray1_L3TupleArray0_Item2, Objects1_L1Object_L2ObjectArray1_L3TupleArray1_Item1, Objects1_L1Object_L2ObjectArray1_L3TupleArray1_Item2, Objects1_L1Tuple_Item1, Objects1_L1Tuple_Item2)
 	begin
-		for NextState_Object_L1Object_L2BooleanArray_Iterator in 0 to 1 loop
-			NextState_Object_L1Object_L2BooleanArray(NextState_Object_L1Object_L2BooleanArray_Iterator) <= State_Object_L1Object_L2BooleanArray(NextState_Object_L1Object_L2BooleanArray_Iterator);
-		end loop;
-		for NextState_Object_L1Object_L2ObjectArray_Iterator in 0 to 1 loop
-			NextState_Object_L1Object_L2ObjectArray(NextState_Object_L1Object_L2ObjectArray_Iterator) <= State_Object_L1Object_L2ObjectArray(NextState_Object_L1Object_L2ObjectArray_Iterator);
-		end loop;
-		for NextState_Objects_Iterator in 0 to 1 loop
-			NextState_Objects(NextState_Objects_Iterator) <= State_Objects(NextState_Objects_Iterator);
-		end loop;
-		NextState_Object_L1Byte <= State_Object_L1Byte;
-		NextState_Object_L1Tuple_Item1 <= State_Object_L1Tuple_Item1;
-		NextState_Object_L1Tuple_Item2 <= State_Object_L1Tuple_Item2;
-	end process;
-	process (Inputs_Object_L1Byte, Inputs_Object_L1Object_L2BooleanArray, Inputs_Object_L1Object_L2ObjectArray, Inputs_Object_L1Tuple_Item1, Inputs_Object_L1Tuple_Item2, Object_L1Byte, Object_L1Object_L2BooleanArray0, Object_L1Object_L2BooleanArray1, Object_L1Object_L2ObjectArray0_L3Boolean, Object_L1Object_L2ObjectArray0_L3RTLBitArray0, Object_L1Object_L2ObjectArray0_L3RTLBitArray1, Object_L1Object_L2ObjectArray0_L3Tuple_Item1, Object_L1Object_L2ObjectArray0_L3Tuple_Item2, Object_L1Object_L2ObjectArray0_L3TupleArray0_Item1, Object_L1Object_L2ObjectArray0_L3TupleArray0_Item2, Object_L1Object_L2ObjectArray0_L3TupleArray1_Item1, Object_L1Object_L2ObjectArray0_L3TupleArray1_Item2, Object_L1Object_L2ObjectArray1_L3Boolean, Object_L1Object_L2ObjectArray1_L3RTLBitArray0, Object_L1Object_L2ObjectArray1_L3RTLBitArray1, Object_L1Object_L2ObjectArray1_L3Tuple_Item1, Object_L1Object_L2ObjectArray1_L3Tuple_Item2, Object_L1Object_L2ObjectArray1_L3TupleArray0_Item1, Object_L1Object_L2ObjectArray1_L3TupleArray0_Item2, Object_L1Object_L2ObjectArray1_L3TupleArray1_Item1, Object_L1Object_L2ObjectArray1_L3TupleArray1_Item2, Object_L1Tuple_Item1, Object_L1Tuple_Item2, Objects0_L1Byte, Objects0_L1Object_L2BooleanArray0, Objects0_L1Object_L2BooleanArray1, Objects0_L1Object_L2ObjectArray0_L3Boolean, Objects0_L1Object_L2ObjectArray0_L3RTLBitArray0, Objects0_L1Object_L2ObjectArray0_L3RTLBitArray1, Objects0_L1Object_L2ObjectArray0_L3Tuple_Item1, Objects0_L1Object_L2ObjectArray0_L3Tuple_Item2, Objects0_L1Object_L2ObjectArray0_L3TupleArray0_Item1, Objects0_L1Object_L2ObjectArray0_L3TupleArray0_Item2, Objects0_L1Object_L2ObjectArray0_L3TupleArray1_Item1, Objects0_L1Object_L2ObjectArray0_L3TupleArray1_Item2, Objects0_L1Object_L2ObjectArray1_L3Boolean, Objects0_L1Object_L2ObjectArray1_L3RTLBitArray0, Objects0_L1Object_L2ObjectArray1_L3RTLBitArray1, Objects0_L1Object_L2ObjectArray1_L3Tuple_Item1, Objects0_L1Object_L2ObjectArray1_L3Tuple_Item2, Objects0_L1Object_L2ObjectArray1_L3TupleArray0_Item1, Objects0_L1Object_L2ObjectArray1_L3TupleArray0_Item2, Objects0_L1Object_L2ObjectArray1_L3TupleArray1_Item1, Objects0_L1Object_L2ObjectArray1_L3TupleArray1_Item2, Objects0_L1Tuple_Item1, Objects0_L1Tuple_Item2, Objects1_L1Byte, Objects1_L1Object_L2BooleanArray0, Objects1_L1Object_L2BooleanArray1, Objects1_L1Object_L2ObjectArray0_L3Boolean, Objects1_L1Object_L2ObjectArray0_L3RTLBitArray0, Objects1_L1Object_L2ObjectArray0_L3RTLBitArray1, Objects1_L1Object_L2ObjectArray0_L3Tuple_Item1, Objects1_L1Object_L2ObjectArray0_L3Tuple_Item2, Objects1_L1Object_L2ObjectArray0_L3TupleArray0_Item1, Objects1_L1Object_L2ObjectArray0_L3TupleArray0_Item2, Objects1_L1Object_L2ObjectArray0_L3TupleArray1_Item1, Objects1_L1Object_L2ObjectArray0_L3TupleArray1_Item2, Objects1_L1Object_L2ObjectArray1_L3Boolean, Objects1_L1Object_L2ObjectArray1_L3RTLBitArray0, Objects1_L1Object_L2ObjectArray1_L3RTLBitArray1, Objects1_L1Object_L2ObjectArray1_L3Tuple_Item1, Objects1_L1Object_L2ObjectArray1_L3Tuple_Item2, Objects1_L1Object_L2ObjectArray1_L3TupleArray0_Item1, Objects1_L1Object_L2ObjectArray1_L3TupleArray0_Item2, Objects1_L1Object_L2ObjectArray1_L3TupleArray1_Item1, Objects1_L1Object_L2ObjectArray1_L3TupleArray1_Item2, Objects1_L1Tuple_Item1, Objects1_L1Tuple_Item2)
-	begin
-		Inputs_Object_L1Byte <= Object_L1Byte;
-		Inputs_Object_L1Object_L2BooleanArray(0) <= Object_L1Object_L2BooleanArray0;
-		Inputs_Object_L1Object_L2BooleanArray(1) <= Object_L1Object_L2BooleanArray1;
-		Inputs_Object_L1Object_L2ObjectArray(0)(13) <= Object_L1Object_L2ObjectArray0_L3TupleArray1_Item1;
-		Inputs_Object_L1Object_L2ObjectArray(0)(12 downto 11) <= Object_L1Object_L2ObjectArray0_L3TupleArray1_Item2;
-		Inputs_Object_L1Object_L2ObjectArray(0)(10) <= Object_L1Object_L2ObjectArray0_L3TupleArray0_Item1;
-		Inputs_Object_L1Object_L2ObjectArray(0)(9 downto 8) <= Object_L1Object_L2ObjectArray0_L3TupleArray0_Item2;
-		Inputs_Object_L1Object_L2ObjectArray(0)(7) <= Object_L1Object_L2ObjectArray0_L3Tuple_Item1;
-		Inputs_Object_L1Object_L2ObjectArray(0)(6 downto 5) <= Object_L1Object_L2ObjectArray0_L3Tuple_Item2;
-		Inputs_Object_L1Object_L2ObjectArray(0)(4 downto 3) <= Object_L1Object_L2ObjectArray0_L3RTLBitArray1;
-		Inputs_Object_L1Object_L2ObjectArray(0)(2 downto 1) <= Object_L1Object_L2ObjectArray0_L3RTLBitArray0;
-		Inputs_Object_L1Object_L2ObjectArray(0)(0) <= Object_L1Object_L2ObjectArray0_L3Boolean;
-		Inputs_Object_L1Object_L2ObjectArray(1)(13) <= Object_L1Object_L2ObjectArray1_L3TupleArray1_Item1;
-		Inputs_Object_L1Object_L2ObjectArray(1)(12 downto 11) <= Object_L1Object_L2ObjectArray1_L3TupleArray1_Item2;
-		Inputs_Object_L1Object_L2ObjectArray(1)(10) <= Object_L1Object_L2ObjectArray1_L3TupleArray0_Item1;
-		Inputs_Object_L1Object_L2ObjectArray(1)(9 downto 8) <= Object_L1Object_L2ObjectArray1_L3TupleArray0_Item2;
-		Inputs_Object_L1Object_L2ObjectArray(1)(7) <= Object_L1Object_L2ObjectArray1_L3Tuple_Item1;
-		Inputs_Object_L1Object_L2ObjectArray(1)(6 downto 5) <= Object_L1Object_L2ObjectArray1_L3Tuple_Item2;
-		Inputs_Object_L1Object_L2ObjectArray(1)(4 downto 3) <= Object_L1Object_L2ObjectArray1_L3RTLBitArray1;
-		Inputs_Object_L1Object_L2ObjectArray(1)(2 downto 1) <= Object_L1Object_L2ObjectArray1_L3RTLBitArray0;
-		Inputs_Object_L1Object_L2ObjectArray(1)(0) <= Object_L1Object_L2ObjectArray1_L3Boolean;
-		Inputs_Object_L1Tuple_Item1 <= Object_L1Tuple_Item1;
-		Inputs_Object_L1Tuple_Item2 <= Object_L1Tuple_Item2;
+		Inputs_Object(41) <= Object_L1Tuple_Item1;
+		Inputs_Object(40 downto 38) <= Object_L1Tuple_Item2;
+		Inputs_Object(37) <= Object_L1Object_L2ObjectArray1_L3TupleArray1_Item1;
+		Inputs_Object(36 downto 35) <= Object_L1Object_L2ObjectArray1_L3TupleArray1_Item2;
+		Inputs_Object(34) <= Object_L1Object_L2ObjectArray1_L3TupleArray0_Item1;
+		Inputs_Object(33 downto 32) <= Object_L1Object_L2ObjectArray1_L3TupleArray0_Item2;
+		Inputs_Object(31) <= Object_L1Object_L2ObjectArray1_L3Tuple_Item1;
+		Inputs_Object(30 downto 29) <= Object_L1Object_L2ObjectArray1_L3Tuple_Item2;
+		Inputs_Object(28 downto 27) <= Object_L1Object_L2ObjectArray1_L3RTLBitArray1;
+		Inputs_Object(26 downto 25) <= Object_L1Object_L2ObjectArray1_L3RTLBitArray0;
+		Inputs_Object(24) <= Object_L1Object_L2ObjectArray1_L3Boolean;
+		Inputs_Object(23) <= Object_L1Object_L2ObjectArray0_L3TupleArray1_Item1;
+		Inputs_Object(22 downto 21) <= Object_L1Object_L2ObjectArray0_L3TupleArray1_Item2;
+		Inputs_Object(20) <= Object_L1Object_L2ObjectArray0_L3TupleArray0_Item1;
+		Inputs_Object(19 downto 18) <= Object_L1Object_L2ObjectArray0_L3TupleArray0_Item2;
+		Inputs_Object(17) <= Object_L1Object_L2ObjectArray0_L3Tuple_Item1;
+		Inputs_Object(16 downto 15) <= Object_L1Object_L2ObjectArray0_L3Tuple_Item2;
+		Inputs_Object(14 downto 13) <= Object_L1Object_L2ObjectArray0_L3RTLBitArray1;
+		Inputs_Object(12 downto 11) <= Object_L1Object_L2ObjectArray0_L3RTLBitArray0;
+		Inputs_Object(10) <= Object_L1Object_L2ObjectArray0_L3Boolean;
+		Inputs_Object(9) <= Object_L1Object_L2BooleanArray1;
+		Inputs_Object(8) <= Object_L1Object_L2BooleanArray0;
+		Inputs_Object(7 downto 0) <= Object_L1Byte;
 		Inputs_Objects(0)(41) <= Objects0_L1Tuple_Item1;
 		Inputs_Objects(0)(40 downto 38) <= Objects0_L1Tuple_Item2;
 		Inputs_Objects(0)(37) <= Objects0_L1Object_L2ObjectArray1_L3TupleArray1_Item1;
@@ -318,36 +291,6 @@ begin
 		Inputs_Objects(1)(9) <= Objects1_L1Object_L2BooleanArray1;
 		Inputs_Objects(1)(8) <= Objects1_L1Object_L2BooleanArray0;
 		Inputs_Objects(1)(7 downto 0) <= Objects1_L1Byte;
-		iInput_L1Byte <= Inputs_Object_L1Byte;
-		iInput_L1Object_L2BooleanArray(0) <= Inputs_Object_L1Object_L2BooleanArray(0);
-		iInput_L1Object_L2BooleanArray(1) <= Inputs_Object_L1Object_L2BooleanArray(1);
-		iInput_L1Object_L2ObjectArray(0) <= Inputs_Object_L1Object_L2ObjectArray(0);
-		iInput_L1Object_L2ObjectArray(1) <= Inputs_Object_L1Object_L2ObjectArray(1);
-		iInput_L1Tuple_Item1 <= Inputs_Object_L1Tuple_Item1;
-		iInput_L1Tuple_Item2 <= Inputs_Object_L1Tuple_Item2;
-		oInput_L1Byte <= Inputs_Object_L1Byte;
-		oInput_L1Object_L2BooleanArray0 <= Inputs_Object_L1Object_L2BooleanArray(0);
-		oInput_L1Object_L2BooleanArray1 <= Inputs_Object_L1Object_L2BooleanArray(1);
-		oInput_L1Object_L2ObjectArray0_L3TupleArray1_Item1 <= Inputs_Object_L1Object_L2ObjectArray(0)(13);
-		oInput_L1Object_L2ObjectArray0_L3TupleArray1_Item2 <= Inputs_Object_L1Object_L2ObjectArray(0)(12 downto 11);
-		oInput_L1Object_L2ObjectArray0_L3TupleArray0_Item1 <= Inputs_Object_L1Object_L2ObjectArray(0)(10);
-		oInput_L1Object_L2ObjectArray0_L3TupleArray0_Item2 <= Inputs_Object_L1Object_L2ObjectArray(0)(9 downto 8);
-		oInput_L1Object_L2ObjectArray0_L3Tuple_Item1 <= Inputs_Object_L1Object_L2ObjectArray(0)(7);
-		oInput_L1Object_L2ObjectArray0_L3Tuple_Item2 <= Inputs_Object_L1Object_L2ObjectArray(0)(6 downto 5);
-		oInput_L1Object_L2ObjectArray0_L3RTLBitArray1 <= Inputs_Object_L1Object_L2ObjectArray(0)(4 downto 3);
-		oInput_L1Object_L2ObjectArray0_L3RTLBitArray0 <= Inputs_Object_L1Object_L2ObjectArray(0)(2 downto 1);
-		oInput_L1Object_L2ObjectArray0_L3Boolean <= Inputs_Object_L1Object_L2ObjectArray(0)(0);
-		oInput_L1Object_L2ObjectArray1_L3TupleArray1_Item1 <= Inputs_Object_L1Object_L2ObjectArray(1)(13);
-		oInput_L1Object_L2ObjectArray1_L3TupleArray1_Item2 <= Inputs_Object_L1Object_L2ObjectArray(1)(12 downto 11);
-		oInput_L1Object_L2ObjectArray1_L3TupleArray0_Item1 <= Inputs_Object_L1Object_L2ObjectArray(1)(10);
-		oInput_L1Object_L2ObjectArray1_L3TupleArray0_Item2 <= Inputs_Object_L1Object_L2ObjectArray(1)(9 downto 8);
-		oInput_L1Object_L2ObjectArray1_L3Tuple_Item1 <= Inputs_Object_L1Object_L2ObjectArray(1)(7);
-		oInput_L1Object_L2ObjectArray1_L3Tuple_Item2 <= Inputs_Object_L1Object_L2ObjectArray(1)(6 downto 5);
-		oInput_L1Object_L2ObjectArray1_L3RTLBitArray1 <= Inputs_Object_L1Object_L2ObjectArray(1)(4 downto 3);
-		oInput_L1Object_L2ObjectArray1_L3RTLBitArray0 <= Inputs_Object_L1Object_L2ObjectArray(1)(2 downto 1);
-		oInput_L1Object_L2ObjectArray1_L3Boolean <= Inputs_Object_L1Object_L2ObjectArray(1)(0);
-		oInput_L1Tuple_Item1 <= Inputs_Object_L1Tuple_Item1;
-		oInput_L1Tuple_Item2 <= Inputs_Object_L1Tuple_Item2;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

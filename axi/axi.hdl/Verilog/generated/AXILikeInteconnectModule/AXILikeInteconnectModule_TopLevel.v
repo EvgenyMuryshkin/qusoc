@@ -141,106 +141,79 @@ module AXILikeInteconnectModule_TopLevel
 	wire false = 1'b0;
 	wire signed [4: 0] leftCount = 5'b01000;
 	wire signed [3: 0] rightCount = 4'b0100;
-	wire InterconnectModule_L100F13L111T14_0_leftIndex = 1'b0;
-	wire InterconnectModule_L100F13L111T14_1_leftIndex = 1'b1;
-	wire [1: 0] InterconnectModule_L100F13L111T14_2_leftIndex = 2'b10;
-	wire [1: 0] InterconnectModule_L100F13L111T14_3_leftIndex = 2'b11;
-	wire [2: 0] InterconnectModule_L100F13L111T14_4_leftIndex = 3'b100;
-	wire [2: 0] InterconnectModule_L100F13L111T14_5_leftIndex = 3'b101;
-	wire [2: 0] InterconnectModule_L100F13L111T14_6_leftIndex = 3'b110;
-	wire [2: 0] InterconnectModule_L100F13L111T14_7_leftIndex = 3'b111;
-	wire InterconnectModule_L139F47T52_Expr = 1'b0;
-	wire InterconnectModule_L140F48T53_Expr = 1'b0;
-	wire InterconnectModule_L146F43T47_Expr = 1'b1;
-	wire InterconnectModule_L149F44T48_Expr = 1'b1;
 	reg [2: 0] NextState_leftAddr;
 	reg NextState_leftAddrValid;
 	reg [1: 0] NextState_rightAddr;
 	reg NextState_rightAddrValid;
-	wire currentTXEnd;
-	wire [1: 0] muxLeftData_Addr;
-	wire muxLeftData_IsActive;
-	wire [7: 0] muxLeftData_Payload_Data;
-	wire muxLeftData_Payload_DataFlag;
-	wire muxRightData_IsActive;
-	wire [7: 0] muxRightData_Payload_Data;
-	wire muxRightData_Payload_DataFlag;
-	wire [1: 0] rightAddr;
-	wire [2: 0] DuplexMux_iLeftAddr;
-	wire DuplexMux_iLeftAddrValid;
-	wire [1: 0] DuplexMux_iRightAddr;
-	wire DuplexMux_iRightAddrValid;
+	reg currentTXEnd;
+	reg [11: 0] muxLeftData;
+	reg [9: 0] muxRightData;
+	reg [1: 0] rightAddr;
+	reg [2: 0] DuplexMux_iLeftAddr = 3'b000;
+	reg DuplexMux_iLeftAddrValid = 1'b0;
+	reg [1: 0] DuplexMux_iRightAddr = 2'b00;
+	reg DuplexMux_iRightAddrValid = 1'b0;
 	wire [11: 0] DuplexMux_oMuxLeftData;
 	wire [9: 0] DuplexMux_oMuxRightData;
 	wire Encoder_HasActive;
 	wire [2: 0] Encoder_MSBIndex;
 	wire [7: 0] Encoder_MSBValue;
-	wire TransactionDetectors0_iActive;
-	wire TransactionDetectors0_iRestart;
-	wire TransactionDetectors0_iTXBegin;
-	wire TransactionDetectors0_iTXEnd;
+	reg TransactionDetectors0_iActive = 1'b0;
+	reg TransactionDetectors0_iRestart = 1'b0;
+	reg TransactionDetectors0_iTXBegin = 1'b0;
+	reg TransactionDetectors0_iTXEnd = 1'b0;
 	wire TransactionDetectors0_oTransaction;
 	wire TransactionDetectors0_oTXBegin;
 	wire TransactionDetectors0_oWaitForRestart;
-	wire TransactionDetectors1_iActive;
-	wire TransactionDetectors1_iRestart;
-	wire TransactionDetectors1_iTXBegin;
-	wire TransactionDetectors1_iTXEnd;
+	reg TransactionDetectors1_iActive = 1'b0;
+	reg TransactionDetectors1_iRestart = 1'b0;
+	reg TransactionDetectors1_iTXBegin = 1'b0;
+	reg TransactionDetectors1_iTXEnd = 1'b0;
 	wire TransactionDetectors1_oTransaction;
 	wire TransactionDetectors1_oTXBegin;
 	wire TransactionDetectors1_oWaitForRestart;
-	wire TransactionDetectors2_iActive;
-	wire TransactionDetectors2_iRestart;
-	wire TransactionDetectors2_iTXBegin;
-	wire TransactionDetectors2_iTXEnd;
+	reg TransactionDetectors2_iActive = 1'b0;
+	reg TransactionDetectors2_iRestart = 1'b0;
+	reg TransactionDetectors2_iTXBegin = 1'b0;
+	reg TransactionDetectors2_iTXEnd = 1'b0;
 	wire TransactionDetectors2_oTransaction;
 	wire TransactionDetectors2_oTXBegin;
 	wire TransactionDetectors2_oWaitForRestart;
-	wire TransactionDetectors3_iActive;
-	wire TransactionDetectors3_iRestart;
-	wire TransactionDetectors3_iTXBegin;
-	wire TransactionDetectors3_iTXEnd;
+	reg TransactionDetectors3_iActive = 1'b0;
+	reg TransactionDetectors3_iRestart = 1'b0;
+	reg TransactionDetectors3_iTXBegin = 1'b0;
+	reg TransactionDetectors3_iTXEnd = 1'b0;
 	wire TransactionDetectors3_oTransaction;
 	wire TransactionDetectors3_oTXBegin;
 	wire TransactionDetectors3_oWaitForRestart;
-	wire TransactionDetectors4_iActive;
-	wire TransactionDetectors4_iRestart;
-	wire TransactionDetectors4_iTXBegin;
-	wire TransactionDetectors4_iTXEnd;
+	reg TransactionDetectors4_iActive = 1'b0;
+	reg TransactionDetectors4_iRestart = 1'b0;
+	reg TransactionDetectors4_iTXBegin = 1'b0;
+	reg TransactionDetectors4_iTXEnd = 1'b0;
 	wire TransactionDetectors4_oTransaction;
 	wire TransactionDetectors4_oTXBegin;
 	wire TransactionDetectors4_oWaitForRestart;
-	wire TransactionDetectors5_iActive;
-	wire TransactionDetectors5_iRestart;
-	wire TransactionDetectors5_iTXBegin;
-	wire TransactionDetectors5_iTXEnd;
+	reg TransactionDetectors5_iActive = 1'b0;
+	reg TransactionDetectors5_iRestart = 1'b0;
+	reg TransactionDetectors5_iTXBegin = 1'b0;
+	reg TransactionDetectors5_iTXEnd = 1'b0;
 	wire TransactionDetectors5_oTransaction;
 	wire TransactionDetectors5_oTXBegin;
 	wire TransactionDetectors5_oWaitForRestart;
-	wire TransactionDetectors6_iActive;
-	wire TransactionDetectors6_iRestart;
-	wire TransactionDetectors6_iTXBegin;
-	wire TransactionDetectors6_iTXEnd;
+	reg TransactionDetectors6_iActive = 1'b0;
+	reg TransactionDetectors6_iRestart = 1'b0;
+	reg TransactionDetectors6_iTXBegin = 1'b0;
+	reg TransactionDetectors6_iTXEnd = 1'b0;
 	wire TransactionDetectors6_oTransaction;
 	wire TransactionDetectors6_oTXBegin;
 	wire TransactionDetectors6_oWaitForRestart;
-	wire TransactionDetectors7_iActive;
-	wire TransactionDetectors7_iRestart;
-	wire TransactionDetectors7_iTXBegin;
-	wire TransactionDetectors7_iTXEnd;
+	reg TransactionDetectors7_iActive = 1'b0;
+	reg TransactionDetectors7_iRestart = 1'b0;
+	reg TransactionDetectors7_iTXBegin = 1'b0;
+	reg TransactionDetectors7_iTXEnd = 1'b0;
 	wire TransactionDetectors7_oTransaction;
 	wire TransactionDetectors7_oTXBegin;
 	wire TransactionDetectors7_oWaitForRestart;
-	wire [3: 0] InterconnectModule_L100F13L111T14_0_InterconnectModule_L103F21L109T22_Object;
-	wire [3: 0] InterconnectModule_L100F13L111T14_1_InterconnectModule_L103F21L109T22_Object;
-	wire [3: 0] InterconnectModule_L100F13L111T14_2_InterconnectModule_L103F21L109T22_Object;
-	wire [3: 0] InterconnectModule_L100F13L111T14_3_InterconnectModule_L103F21L109T22_Object;
-	wire [3: 0] InterconnectModule_L100F13L111T14_4_InterconnectModule_L103F21L109T22_Object;
-	wire [3: 0] InterconnectModule_L100F13L111T14_5_InterconnectModule_L103F21L109T22_Object;
-	wire [3: 0] InterconnectModule_L100F13L111T14_6_InterconnectModule_L103F21L109T22_Object;
-	wire [3: 0] InterconnectModule_L100F13L111T14_7_InterconnectModule_L103F21L109T22_Object;
-	wire [7: 0] InterconnectModule_L114F17L117T18_Object;
-	wire [142: 0] InterconnectModule_L121F17L129T18_Object;
 	wire [11: 0] DuplexMux_iLeft0_DuplexMux_iLeft_HardLink;
 	wire [11: 0] DuplexMux_iLeft1_DuplexMux_iLeft_HardLink;
 	wire [11: 0] DuplexMux_iLeft2_DuplexMux_iLeft_HardLink;
@@ -346,111 +319,19 @@ module AXILikeInteconnectModule_TopLevel
 	wire [1: 0] State_rightAddrDefault = 2'b00;
 	reg State_rightAddrValid = 1'b0;
 	wire State_rightAddrValidDefault = 1'b0;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors0_InterconnectModule_L81F69T97_Expr;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors0_InterconnectModule_L81F69T97_Expr_1;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors0_InterconnectModule_L81F69T97_Expr_2;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors1_InterconnectModule_L81F69T97_Expr;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors1_InterconnectModule_L81F69T97_Expr_1;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors1_InterconnectModule_L81F69T97_Expr_2;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors2_InterconnectModule_L81F69T97_Expr;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors2_InterconnectModule_L81F69T97_Expr_1;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors2_InterconnectModule_L81F69T97_Expr_2;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors3_InterconnectModule_L81F69T97_Expr;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors3_InterconnectModule_L81F69T97_Expr_1;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors3_InterconnectModule_L81F69T97_Expr_2;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors4_InterconnectModule_L81F69T97_Expr;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors4_InterconnectModule_L81F69T97_Expr_1;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors4_InterconnectModule_L81F69T97_Expr_2;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors5_InterconnectModule_L81F69T97_Expr;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors5_InterconnectModule_L81F69T97_Expr_1;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors5_InterconnectModule_L81F69T97_Expr_2;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors6_InterconnectModule_L81F69T97_Expr;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors6_InterconnectModule_L81F69T97_Expr_1;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors6_InterconnectModule_L81F69T97_Expr_2;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors7_InterconnectModule_L81F69T97_Expr;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors7_InterconnectModule_L81F69T97_Expr_1;
-	wire [7: 0] InterconnectModule_L81F36T108_TransactionDetectors7_InterconnectModule_L81F69T97_Expr_2;
-	wire InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F35T85_Expr;
-	wire InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F35T85_Expr_1;
-	wire InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F35T85_Expr_2;
-	wire InterconnectModule_L100F13L111T14_0_InterconnectModule_L107F36T54_Expr;
-	wire InterconnectModule_L100F13L111T14_0_InterconnectModule_L107F36T54_Expr_1;
-	wire InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F35T85_Expr;
-	wire InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F35T85_Expr_1;
-	wire InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F35T85_Expr_2;
-	wire InterconnectModule_L100F13L111T14_1_InterconnectModule_L107F36T54_Expr;
-	wire InterconnectModule_L100F13L111T14_1_InterconnectModule_L107F36T54_Expr_1;
-	wire InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F35T85_Expr;
-	wire InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F35T85_Expr_1;
-	wire InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F35T85_Expr_2;
-	wire InterconnectModule_L100F13L111T14_2_InterconnectModule_L107F36T54_Expr;
-	wire InterconnectModule_L100F13L111T14_2_InterconnectModule_L107F36T54_Expr_1;
-	wire InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F35T85_Expr;
-	wire InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F35T85_Expr_1;
-	wire InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F35T85_Expr_2;
-	wire InterconnectModule_L100F13L111T14_3_InterconnectModule_L107F36T54_Expr;
-	wire InterconnectModule_L100F13L111T14_3_InterconnectModule_L107F36T54_Expr_1;
-	wire InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F35T85_Expr;
-	wire InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F35T85_Expr_1;
-	wire InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F35T85_Expr_2;
-	wire InterconnectModule_L100F13L111T14_4_InterconnectModule_L107F36T54_Expr;
-	wire InterconnectModule_L100F13L111T14_4_InterconnectModule_L107F36T54_Expr_1;
-	wire InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F35T85_Expr;
-	wire InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F35T85_Expr_1;
-	wire InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F35T85_Expr_2;
-	wire InterconnectModule_L100F13L111T14_5_InterconnectModule_L107F36T54_Expr;
-	wire InterconnectModule_L100F13L111T14_5_InterconnectModule_L107F36T54_Expr_1;
-	wire InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F35T85_Expr;
-	wire InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F35T85_Expr_1;
-	wire InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F35T85_Expr_2;
-	wire InterconnectModule_L100F13L111T14_6_InterconnectModule_L107F36T54_Expr;
-	wire InterconnectModule_L100F13L111T14_6_InterconnectModule_L107F36T54_Expr_1;
-	wire InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F35T85_Expr;
-	wire InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F35T85_Expr_1;
-	wire InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F35T85_Expr_2;
-	wire InterconnectModule_L100F13L111T14_7_InterconnectModule_L107F36T54_Expr;
-	wire InterconnectModule_L100F13L111T14_7_InterconnectModule_L107F36T54_Expr_1;
-	wire InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F56T85_Expr;
-	wire signed [3: 0] InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F56T85_ExprLhs;
-	wire signed [3: 0] InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F56T85_ExprRhs;
-	wire InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F56T85_Expr;
-	wire signed [3: 0] InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F56T85_ExprLhs;
-	wire signed [3: 0] InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F56T85_ExprRhs;
-	wire InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F56T85_Expr;
-	wire signed [3: 0] InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F56T85_ExprLhs;
-	wire signed [3: 0] InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F56T85_ExprRhs;
-	wire InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F56T85_Expr;
-	wire signed [3: 0] InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F56T85_ExprLhs;
-	wire signed [3: 0] InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F56T85_ExprRhs;
-	wire InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F56T85_Expr;
-	wire signed [3: 0] InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F56T85_ExprLhs;
-	wire signed [3: 0] InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F56T85_ExprRhs;
-	wire InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F56T85_Expr;
-	wire signed [3: 0] InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F56T85_ExprLhs;
-	wire signed [3: 0] InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F56T85_ExprRhs;
-	wire InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F56T85_Expr;
-	wire signed [3: 0] InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F56T85_ExprLhs;
-	wire signed [3: 0] InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F56T85_ExprRhs;
-	wire InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F56T85_Expr;
-	wire signed [3: 0] InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F56T85_ExprLhs;
-	wire signed [3: 0] InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F56T85_ExprRhs;
 	wire [11 : 0] Inputs_iLeft [0 : 7];
 	wire [9 : 0] Inputs_iRight [0 : 3];
-	wire ActiveTransactions [0 : 7];
-	wire [11 : 0] muxLeft [0 : 3];
-	wire [9 : 0] muxRight [0 : 7];
-	wire Transactions [0 : 7];
-	wire TXBegin [0 : 7];
-	wire WaitForRestarts [0 : 7];
-	wire [11 : 0] DuplexMux_iLeft [0 : 7];
-	wire [9 : 0] DuplexMux_iRight [0 : 3];
+	reg ActiveTransactions [0 : 7];
+	reg [11 : 0] muxLeft [0 : 3];
+	reg [9 : 0] muxRight [0 : 7];
+	reg Transactions [0 : 7];
+	reg TXBegin [0 : 7];
+	reg WaitForRestarts [0 : 7];
+	reg [11 : 0] DuplexMux_iLeft [0 : 7];
+	reg [9 : 0] DuplexMux_iRight [0 : 3];
 	wire [11 : 0] DuplexMux_oLeft [0 : 3];
 	wire [9 : 0] DuplexMux_oRight [0 : 7];
-	wire Encoder_iValues [0 : 7];
-	wire InterconnectModule_L78F47T105_Enumerable [0 : 7];
-	wire InterconnectModule_L80F41T99_Enumerable [0 : 7];
-	wire InterconnectModule_L81F36T108_Enumerable [0 : 7];
-	wire InterconnectModule_L79F44T105_Enumerable [0 : 7];
+	reg Encoder_iValues [0 : 7];
 	wire BoardSignals_Clock;
 	wire BoardSignals_Reset;
 	wire BoardSignals_Running;
@@ -475,38 +356,6 @@ module AXILikeInteconnectModule_TopLevel
 			State_rightAddrValid <= NextState_rightAddrValid;
 		end
 	end
-	assign InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F56T85_Expr = InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F56T85_ExprLhs == InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F56T85_ExprRhs ? 1'b1 : 1'b0;
-	assign InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F56T85_Expr = InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F56T85_ExprLhs == InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F56T85_ExprRhs ? 1'b1 : 1'b0;
-	assign InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F56T85_Expr = InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F56T85_ExprLhs == InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F56T85_ExprRhs ? 1'b1 : 1'b0;
-	assign InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F56T85_Expr = InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F56T85_ExprLhs == InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F56T85_ExprRhs ? 1'b1 : 1'b0;
-	assign InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F56T85_Expr = InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F56T85_ExprLhs == InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F56T85_ExprRhs ? 1'b1 : 1'b0;
-	assign InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F56T85_Expr = InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F56T85_ExprLhs == InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F56T85_ExprRhs ? 1'b1 : 1'b0;
-	assign InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F56T85_Expr = InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F56T85_ExprLhs == InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F56T85_ExprRhs ? 1'b1 : 1'b0;
-	assign InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F56T85_Expr = InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F56T85_ExprLhs == InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F56T85_ExprRhs ? 1'b1 : 1'b0;
-	assign InterconnectModule_L81F36T108_TransactionDetectors0_InterconnectModule_L81F69T97_Expr = InterconnectModule_L81F36T108_TransactionDetectors0_InterconnectModule_L81F69T97_Expr_1 | InterconnectModule_L81F36T108_TransactionDetectors0_InterconnectModule_L81F69T97_Expr_2;
-	assign InterconnectModule_L81F36T108_TransactionDetectors1_InterconnectModule_L81F69T97_Expr = InterconnectModule_L81F36T108_TransactionDetectors1_InterconnectModule_L81F69T97_Expr_1 | InterconnectModule_L81F36T108_TransactionDetectors1_InterconnectModule_L81F69T97_Expr_2;
-	assign InterconnectModule_L81F36T108_TransactionDetectors2_InterconnectModule_L81F69T97_Expr = InterconnectModule_L81F36T108_TransactionDetectors2_InterconnectModule_L81F69T97_Expr_1 | InterconnectModule_L81F36T108_TransactionDetectors2_InterconnectModule_L81F69T97_Expr_2;
-	assign InterconnectModule_L81F36T108_TransactionDetectors3_InterconnectModule_L81F69T97_Expr = InterconnectModule_L81F36T108_TransactionDetectors3_InterconnectModule_L81F69T97_Expr_1 | InterconnectModule_L81F36T108_TransactionDetectors3_InterconnectModule_L81F69T97_Expr_2;
-	assign InterconnectModule_L81F36T108_TransactionDetectors4_InterconnectModule_L81F69T97_Expr = InterconnectModule_L81F36T108_TransactionDetectors4_InterconnectModule_L81F69T97_Expr_1 | InterconnectModule_L81F36T108_TransactionDetectors4_InterconnectModule_L81F69T97_Expr_2;
-	assign InterconnectModule_L81F36T108_TransactionDetectors5_InterconnectModule_L81F69T97_Expr = InterconnectModule_L81F36T108_TransactionDetectors5_InterconnectModule_L81F69T97_Expr_1 | InterconnectModule_L81F36T108_TransactionDetectors5_InterconnectModule_L81F69T97_Expr_2;
-	assign InterconnectModule_L81F36T108_TransactionDetectors6_InterconnectModule_L81F69T97_Expr = InterconnectModule_L81F36T108_TransactionDetectors6_InterconnectModule_L81F69T97_Expr_1 | InterconnectModule_L81F36T108_TransactionDetectors6_InterconnectModule_L81F69T97_Expr_2;
-	assign InterconnectModule_L81F36T108_TransactionDetectors7_InterconnectModule_L81F69T97_Expr = InterconnectModule_L81F36T108_TransactionDetectors7_InterconnectModule_L81F69T97_Expr_1 | InterconnectModule_L81F36T108_TransactionDetectors7_InterconnectModule_L81F69T97_Expr_2;
-	assign InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F35T85_Expr = InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F35T85_Expr_1 & InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F35T85_Expr_2;
-	assign InterconnectModule_L100F13L111T14_0_InterconnectModule_L107F36T54_Expr = ~InterconnectModule_L100F13L111T14_0_InterconnectModule_L107F36T54_Expr_1;
-	assign InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F35T85_Expr = InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F35T85_Expr_1 & InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F35T85_Expr_2;
-	assign InterconnectModule_L100F13L111T14_1_InterconnectModule_L107F36T54_Expr = ~InterconnectModule_L100F13L111T14_1_InterconnectModule_L107F36T54_Expr_1;
-	assign InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F35T85_Expr = InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F35T85_Expr_1 & InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F35T85_Expr_2;
-	assign InterconnectModule_L100F13L111T14_2_InterconnectModule_L107F36T54_Expr = ~InterconnectModule_L100F13L111T14_2_InterconnectModule_L107F36T54_Expr_1;
-	assign InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F35T85_Expr = InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F35T85_Expr_1 & InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F35T85_Expr_2;
-	assign InterconnectModule_L100F13L111T14_3_InterconnectModule_L107F36T54_Expr = ~InterconnectModule_L100F13L111T14_3_InterconnectModule_L107F36T54_Expr_1;
-	assign InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F35T85_Expr = InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F35T85_Expr_1 & InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F35T85_Expr_2;
-	assign InterconnectModule_L100F13L111T14_4_InterconnectModule_L107F36T54_Expr = ~InterconnectModule_L100F13L111T14_4_InterconnectModule_L107F36T54_Expr_1;
-	assign InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F35T85_Expr = InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F35T85_Expr_1 & InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F35T85_Expr_2;
-	assign InterconnectModule_L100F13L111T14_5_InterconnectModule_L107F36T54_Expr = ~InterconnectModule_L100F13L111T14_5_InterconnectModule_L107F36T54_Expr_1;
-	assign InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F35T85_Expr = InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F35T85_Expr_1 & InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F35T85_Expr_2;
-	assign InterconnectModule_L100F13L111T14_6_InterconnectModule_L107F36T54_Expr = ~InterconnectModule_L100F13L111T14_6_InterconnectModule_L107F36T54_Expr_1;
-	assign InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F35T85_Expr = InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F35T85_Expr_1 & InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F35T85_Expr_2;
-	assign InterconnectModule_L100F13L111T14_7_InterconnectModule_L107F36T54_Expr = ~InterconnectModule_L100F13L111T14_7_InterconnectModule_L107F36T54_Expr_1;
 	AXILikeInteconnectModule_TopLevel_DuplexMux
 	AXILikeInteconnectModule_TopLevel_DuplexMux
 	(
@@ -704,212 +553,6 @@ module AXILikeInteconnectModule_TopLevel
 		.oTXBegin (TransactionDetectors7_oTXBegin_TransactionDetectors7_oTXBegin_HardLink),
 		.oWaitForRestart (TransactionDetectors7_oWaitForRestart_TransactionDetectors7_oWaitForRestart_HardLink)
 	);
-	always @ (*)
-	begin
-		NextState_leftAddr = State_leftAddr;
-		NextState_leftAddrValid = State_leftAddrValid;
-		NextState_rightAddr = State_rightAddr;
-		NextState_rightAddrValid = State_rightAddrValid;
-		if ((State_rightAddrValid == 1))
-		begin
-			if ((currentTXEnd == 1))
-			begin
-				NextState_leftAddrValid = InterconnectModule_L139F47T52_Expr;
-				NextState_rightAddrValid = InterconnectModule_L140F48T53_Expr;
-			end
-		end
-		else if ((Encoder_HasActive == 1))
-		begin
-			NextState_leftAddr = Encoder_MSBIndex;
-			NextState_leftAddrValid = InterconnectModule_L146F43T47_Expr;
-			NextState_rightAddr = rightAddr;
-			NextState_rightAddrValid = InterconnectModule_L149F44T48_Expr;
-		end
-	end
-	assign InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F56T85_ExprLhs = {
-		1'b0,
-		Encoder_MSBIndex
-	}
-	;
-	assign InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F56T85_ExprRhs = {
-		{3{1'b0}},
-		InterconnectModule_L100F13L111T14_0_leftIndex
-	}
-	;
-	assign InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F56T85_ExprLhs = {
-		1'b0,
-		Encoder_MSBIndex
-	}
-	;
-	assign InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F56T85_ExprRhs = {
-		{3{1'b0}},
-		InterconnectModule_L100F13L111T14_1_leftIndex
-	}
-	;
-	assign InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F56T85_ExprLhs = {
-		1'b0,
-		Encoder_MSBIndex
-	}
-	;
-	assign InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F56T85_ExprRhs = {
-		{2{1'b0}},
-		InterconnectModule_L100F13L111T14_2_leftIndex
-	}
-	;
-	assign InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F56T85_ExprLhs = {
-		1'b0,
-		Encoder_MSBIndex
-	}
-	;
-	assign InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F56T85_ExprRhs = {
-		{2{1'b0}},
-		InterconnectModule_L100F13L111T14_3_leftIndex
-	}
-	;
-	assign InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F56T85_ExprLhs = {
-		1'b0,
-		Encoder_MSBIndex
-	}
-	;
-	assign InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F56T85_ExprRhs = {
-		1'b0,
-		InterconnectModule_L100F13L111T14_4_leftIndex
-	}
-	;
-	assign InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F56T85_ExprLhs = {
-		1'b0,
-		Encoder_MSBIndex
-	}
-	;
-	assign InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F56T85_ExprRhs = {
-		1'b0,
-		InterconnectModule_L100F13L111T14_5_leftIndex
-	}
-	;
-	assign InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F56T85_ExprLhs = {
-		1'b0,
-		Encoder_MSBIndex
-	}
-	;
-	assign InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F56T85_ExprRhs = {
-		1'b0,
-		InterconnectModule_L100F13L111T14_6_leftIndex
-	}
-	;
-	assign InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F56T85_ExprLhs = {
-		1'b0,
-		Encoder_MSBIndex
-	}
-	;
-	assign InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F56T85_ExprRhs = {
-		1'b0,
-		InterconnectModule_L100F13L111T14_7_leftIndex
-	}
-	;
-	assign InterconnectModule_L81F36T108_TransactionDetectors0_InterconnectModule_L81F69T97_Expr_1 = {
-		{7{1'b0}},
-		TransactionDetectors0_oTXBegin
-	}
-	;
-	assign InterconnectModule_L81F36T108_TransactionDetectors0_InterconnectModule_L81F69T97_Expr_2 = {
-		{7{1'b0}},
-		TransactionDetectors0_oTransaction
-	}
-	;
-	assign InterconnectModule_L81F36T108_TransactionDetectors1_InterconnectModule_L81F69T97_Expr_1 = {
-		{7{1'b0}},
-		TransactionDetectors1_oTXBegin
-	}
-	;
-	assign InterconnectModule_L81F36T108_TransactionDetectors1_InterconnectModule_L81F69T97_Expr_2 = {
-		{7{1'b0}},
-		TransactionDetectors1_oTransaction
-	}
-	;
-	assign InterconnectModule_L81F36T108_TransactionDetectors2_InterconnectModule_L81F69T97_Expr_1 = {
-		{7{1'b0}},
-		TransactionDetectors2_oTXBegin
-	}
-	;
-	assign InterconnectModule_L81F36T108_TransactionDetectors2_InterconnectModule_L81F69T97_Expr_2 = {
-		{7{1'b0}},
-		TransactionDetectors2_oTransaction
-	}
-	;
-	assign InterconnectModule_L81F36T108_TransactionDetectors3_InterconnectModule_L81F69T97_Expr_1 = {
-		{7{1'b0}},
-		TransactionDetectors3_oTXBegin
-	}
-	;
-	assign InterconnectModule_L81F36T108_TransactionDetectors3_InterconnectModule_L81F69T97_Expr_2 = {
-		{7{1'b0}},
-		TransactionDetectors3_oTransaction
-	}
-	;
-	assign InterconnectModule_L81F36T108_TransactionDetectors4_InterconnectModule_L81F69T97_Expr_1 = {
-		{7{1'b0}},
-		TransactionDetectors4_oTXBegin
-	}
-	;
-	assign InterconnectModule_L81F36T108_TransactionDetectors4_InterconnectModule_L81F69T97_Expr_2 = {
-		{7{1'b0}},
-		TransactionDetectors4_oTransaction
-	}
-	;
-	assign InterconnectModule_L81F36T108_TransactionDetectors5_InterconnectModule_L81F69T97_Expr_1 = {
-		{7{1'b0}},
-		TransactionDetectors5_oTXBegin
-	}
-	;
-	assign InterconnectModule_L81F36T108_TransactionDetectors5_InterconnectModule_L81F69T97_Expr_2 = {
-		{7{1'b0}},
-		TransactionDetectors5_oTransaction
-	}
-	;
-	assign InterconnectModule_L81F36T108_TransactionDetectors6_InterconnectModule_L81F69T97_Expr_1 = {
-		{7{1'b0}},
-		TransactionDetectors6_oTXBegin
-	}
-	;
-	assign InterconnectModule_L81F36T108_TransactionDetectors6_InterconnectModule_L81F69T97_Expr_2 = {
-		{7{1'b0}},
-		TransactionDetectors6_oTransaction
-	}
-	;
-	assign InterconnectModule_L81F36T108_TransactionDetectors7_InterconnectModule_L81F69T97_Expr_1 = {
-		{7{1'b0}},
-		TransactionDetectors7_oTXBegin
-	}
-	;
-	assign InterconnectModule_L81F36T108_TransactionDetectors7_InterconnectModule_L81F69T97_Expr_2 = {
-		{7{1'b0}},
-		TransactionDetectors7_oTransaction
-	}
-	;
-	assign InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F35T85_Expr_1 = Encoder_HasActive;
-	assign InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F35T85_Expr_2 = InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F56T85_Expr;
-	assign InterconnectModule_L100F13L111T14_0_InterconnectModule_L107F36T54_Expr_1 = Encoder_HasActive;
-	assign InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F35T85_Expr_1 = Encoder_HasActive;
-	assign InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F35T85_Expr_2 = InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F56T85_Expr;
-	assign InterconnectModule_L100F13L111T14_1_InterconnectModule_L107F36T54_Expr_1 = Encoder_HasActive;
-	assign InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F35T85_Expr_1 = Encoder_HasActive;
-	assign InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F35T85_Expr_2 = InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F56T85_Expr;
-	assign InterconnectModule_L100F13L111T14_2_InterconnectModule_L107F36T54_Expr_1 = Encoder_HasActive;
-	assign InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F35T85_Expr_1 = Encoder_HasActive;
-	assign InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F35T85_Expr_2 = InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F56T85_Expr;
-	assign InterconnectModule_L100F13L111T14_3_InterconnectModule_L107F36T54_Expr_1 = Encoder_HasActive;
-	assign InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F35T85_Expr_1 = Encoder_HasActive;
-	assign InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F35T85_Expr_2 = InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F56T85_Expr;
-	assign InterconnectModule_L100F13L111T14_4_InterconnectModule_L107F36T54_Expr_1 = Encoder_HasActive;
-	assign InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F35T85_Expr_1 = Encoder_HasActive;
-	assign InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F35T85_Expr_2 = InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F56T85_Expr;
-	assign InterconnectModule_L100F13L111T14_5_InterconnectModule_L107F36T54_Expr_1 = Encoder_HasActive;
-	assign InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F35T85_Expr_1 = Encoder_HasActive;
-	assign InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F35T85_Expr_2 = InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F56T85_Expr;
-	assign InterconnectModule_L100F13L111T14_6_InterconnectModule_L107F36T54_Expr_1 = Encoder_HasActive;
-	assign InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F35T85_Expr_1 = Encoder_HasActive;
-	assign InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F35T85_Expr_2 = InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F56T85_Expr;
-	assign InterconnectModule_L100F13L111T14_7_InterconnectModule_L107F36T54_Expr_1 = Encoder_HasActive;
 	assign Inputs_iLeft[0][11] = iLeft0_Payload_DataFlag;
 	assign Inputs_iLeft[0][10:3] = iLeft0_Payload_Data;
 	assign Inputs_iLeft[0][2] = iLeft0_IsActive;
@@ -954,273 +597,6 @@ module AXILikeInteconnectModule_TopLevel
 	assign Inputs_iRight[3][9] = iRight3_Payload_DataFlag;
 	assign Inputs_iRight[3][8:1] = iRight3_Payload_Data;
 	assign Inputs_iRight[3][0] = iRight3_IsActive;
-	assign InterconnectModule_L78F47T105_Enumerable[0] = TransactionDetectors0_oTransaction;
-	assign InterconnectModule_L78F47T105_Enumerable[1] = TransactionDetectors1_oTransaction;
-	assign InterconnectModule_L78F47T105_Enumerable[2] = TransactionDetectors2_oTransaction;
-	assign InterconnectModule_L78F47T105_Enumerable[3] = TransactionDetectors3_oTransaction;
-	assign InterconnectModule_L78F47T105_Enumerable[4] = TransactionDetectors4_oTransaction;
-	assign InterconnectModule_L78F47T105_Enumerable[5] = TransactionDetectors5_oTransaction;
-	assign InterconnectModule_L78F47T105_Enumerable[6] = TransactionDetectors6_oTransaction;
-	assign InterconnectModule_L78F47T105_Enumerable[7] = TransactionDetectors7_oTransaction;
-	assign ActiveTransactions[0] = InterconnectModule_L78F47T105_Enumerable[0];
-	assign ActiveTransactions[1] = InterconnectModule_L78F47T105_Enumerable[1];
-	assign ActiveTransactions[2] = InterconnectModule_L78F47T105_Enumerable[2];
-	assign ActiveTransactions[3] = InterconnectModule_L78F47T105_Enumerable[3];
-	assign ActiveTransactions[4] = InterconnectModule_L78F47T105_Enumerable[4];
-	assign ActiveTransactions[5] = InterconnectModule_L78F47T105_Enumerable[5];
-	assign ActiveTransactions[6] = InterconnectModule_L78F47T105_Enumerable[6];
-	assign ActiveTransactions[7] = InterconnectModule_L78F47T105_Enumerable[7];
-	assign currentTXEnd = Inputs_iLeft[State_leftAddr][11];
-	assign muxLeft[0] = DuplexMux_oLeft[0];
-	assign muxLeft[1] = DuplexMux_oLeft[1];
-	assign muxLeft[2] = DuplexMux_oLeft[2];
-	assign muxLeft[3] = DuplexMux_oLeft[3];
-	assign muxLeftData_Addr = DuplexMux_oMuxLeftData[1:0];
-	assign muxLeftData_IsActive = DuplexMux_oMuxLeftData[2];
-	assign muxLeftData_Payload_Data = DuplexMux_oMuxLeftData[10:3];
-	assign muxLeftData_Payload_DataFlag = DuplexMux_oMuxLeftData[11];
-	assign muxRight[0] = DuplexMux_oRight[0];
-	assign muxRight[1] = DuplexMux_oRight[1];
-	assign muxRight[2] = DuplexMux_oRight[2];
-	assign muxRight[3] = DuplexMux_oRight[3];
-	assign muxRight[4] = DuplexMux_oRight[4];
-	assign muxRight[5] = DuplexMux_oRight[5];
-	assign muxRight[6] = DuplexMux_oRight[6];
-	assign muxRight[7] = DuplexMux_oRight[7];
-	assign muxRightData_IsActive = DuplexMux_oMuxRightData[0];
-	assign muxRightData_Payload_Data = DuplexMux_oMuxRightData[8:1];
-	assign muxRightData_Payload_DataFlag = DuplexMux_oMuxRightData[9];
-	assign rightAddr = muxLeftData_Addr;
-	assign InterconnectModule_L80F41T99_Enumerable[0] = TransactionDetectors0_oTransaction;
-	assign InterconnectModule_L80F41T99_Enumerable[1] = TransactionDetectors1_oTransaction;
-	assign InterconnectModule_L80F41T99_Enumerable[2] = TransactionDetectors2_oTransaction;
-	assign InterconnectModule_L80F41T99_Enumerable[3] = TransactionDetectors3_oTransaction;
-	assign InterconnectModule_L80F41T99_Enumerable[4] = TransactionDetectors4_oTransaction;
-	assign InterconnectModule_L80F41T99_Enumerable[5] = TransactionDetectors5_oTransaction;
-	assign InterconnectModule_L80F41T99_Enumerable[6] = TransactionDetectors6_oTransaction;
-	assign InterconnectModule_L80F41T99_Enumerable[7] = TransactionDetectors7_oTransaction;
-	assign Transactions[0] = InterconnectModule_L80F41T99_Enumerable[0];
-	assign Transactions[1] = InterconnectModule_L80F41T99_Enumerable[1];
-	assign Transactions[2] = InterconnectModule_L80F41T99_Enumerable[2];
-	assign Transactions[3] = InterconnectModule_L80F41T99_Enumerable[3];
-	assign Transactions[4] = InterconnectModule_L80F41T99_Enumerable[4];
-	assign Transactions[5] = InterconnectModule_L80F41T99_Enumerable[5];
-	assign Transactions[6] = InterconnectModule_L80F41T99_Enumerable[6];
-	assign Transactions[7] = InterconnectModule_L80F41T99_Enumerable[7];
-	assign InterconnectModule_L81F36T108_Enumerable[0] = InterconnectModule_L81F36T108_TransactionDetectors0_InterconnectModule_L81F69T97_Expr[0:0];
-	assign InterconnectModule_L81F36T108_Enumerable[1] = InterconnectModule_L81F36T108_TransactionDetectors1_InterconnectModule_L81F69T97_Expr[0:0];
-	assign InterconnectModule_L81F36T108_Enumerable[2] = InterconnectModule_L81F36T108_TransactionDetectors2_InterconnectModule_L81F69T97_Expr[0:0];
-	assign InterconnectModule_L81F36T108_Enumerable[3] = InterconnectModule_L81F36T108_TransactionDetectors3_InterconnectModule_L81F69T97_Expr[0:0];
-	assign InterconnectModule_L81F36T108_Enumerable[4] = InterconnectModule_L81F36T108_TransactionDetectors4_InterconnectModule_L81F69T97_Expr[0:0];
-	assign InterconnectModule_L81F36T108_Enumerable[5] = InterconnectModule_L81F36T108_TransactionDetectors5_InterconnectModule_L81F69T97_Expr[0:0];
-	assign InterconnectModule_L81F36T108_Enumerable[6] = InterconnectModule_L81F36T108_TransactionDetectors6_InterconnectModule_L81F69T97_Expr[0:0];
-	assign InterconnectModule_L81F36T108_Enumerable[7] = InterconnectModule_L81F36T108_TransactionDetectors7_InterconnectModule_L81F69T97_Expr[0:0];
-	assign TXBegin[0] = InterconnectModule_L81F36T108_Enumerable[0];
-	assign TXBegin[1] = InterconnectModule_L81F36T108_Enumerable[1];
-	assign TXBegin[2] = InterconnectModule_L81F36T108_Enumerable[2];
-	assign TXBegin[3] = InterconnectModule_L81F36T108_Enumerable[3];
-	assign TXBegin[4] = InterconnectModule_L81F36T108_Enumerable[4];
-	assign TXBegin[5] = InterconnectModule_L81F36T108_Enumerable[5];
-	assign TXBegin[6] = InterconnectModule_L81F36T108_Enumerable[6];
-	assign TXBegin[7] = InterconnectModule_L81F36T108_Enumerable[7];
-	assign InterconnectModule_L79F44T105_Enumerable[0] = TransactionDetectors0_oWaitForRestart;
-	assign InterconnectModule_L79F44T105_Enumerable[1] = TransactionDetectors1_oWaitForRestart;
-	assign InterconnectModule_L79F44T105_Enumerable[2] = TransactionDetectors2_oWaitForRestart;
-	assign InterconnectModule_L79F44T105_Enumerable[3] = TransactionDetectors3_oWaitForRestart;
-	assign InterconnectModule_L79F44T105_Enumerable[4] = TransactionDetectors4_oWaitForRestart;
-	assign InterconnectModule_L79F44T105_Enumerable[5] = TransactionDetectors5_oWaitForRestart;
-	assign InterconnectModule_L79F44T105_Enumerable[6] = TransactionDetectors6_oWaitForRestart;
-	assign InterconnectModule_L79F44T105_Enumerable[7] = TransactionDetectors7_oWaitForRestart;
-	assign WaitForRestarts[0] = InterconnectModule_L79F44T105_Enumerable[0];
-	assign WaitForRestarts[1] = InterconnectModule_L79F44T105_Enumerable[1];
-	assign WaitForRestarts[2] = InterconnectModule_L79F44T105_Enumerable[2];
-	assign WaitForRestarts[3] = InterconnectModule_L79F44T105_Enumerable[3];
-	assign WaitForRestarts[4] = InterconnectModule_L79F44T105_Enumerable[4];
-	assign WaitForRestarts[5] = InterconnectModule_L79F44T105_Enumerable[5];
-	assign WaitForRestarts[6] = InterconnectModule_L79F44T105_Enumerable[6];
-	assign WaitForRestarts[7] = InterconnectModule_L79F44T105_Enumerable[7];
-	assign InterconnectModule_L100F13L111T14_0_InterconnectModule_L103F21L109T22_Object[0] = InterconnectModule_L100F13L111T14_0_InterconnectModule_L108F35T85_Expr;
-	assign InterconnectModule_L100F13L111T14_0_InterconnectModule_L103F21L109T22_Object[1] = InterconnectModule_L100F13L111T14_0_InterconnectModule_L107F36T54_Expr;
-	assign InterconnectModule_L100F13L111T14_0_InterconnectModule_L103F21L109T22_Object[2] = Inputs_iLeft[0][2];
-	assign InterconnectModule_L100F13L111T14_0_InterconnectModule_L103F21L109T22_Object[3] = Inputs_iLeft[0][11];
-	assign TransactionDetectors0_iTXEnd = InterconnectModule_L100F13L111T14_0_InterconnectModule_L103F21L109T22_Object[3];
-	assign TransactionDetectors0_iTXBegin = InterconnectModule_L100F13L111T14_0_InterconnectModule_L103F21L109T22_Object[2];
-	assign TransactionDetectors0_iRestart = InterconnectModule_L100F13L111T14_0_InterconnectModule_L103F21L109T22_Object[1];
-	assign TransactionDetectors0_iActive = InterconnectModule_L100F13L111T14_0_InterconnectModule_L103F21L109T22_Object[0];
-	assign InterconnectModule_L100F13L111T14_1_InterconnectModule_L103F21L109T22_Object[0] = InterconnectModule_L100F13L111T14_1_InterconnectModule_L108F35T85_Expr;
-	assign InterconnectModule_L100F13L111T14_1_InterconnectModule_L103F21L109T22_Object[1] = InterconnectModule_L100F13L111T14_1_InterconnectModule_L107F36T54_Expr;
-	assign InterconnectModule_L100F13L111T14_1_InterconnectModule_L103F21L109T22_Object[2] = Inputs_iLeft[1][2];
-	assign InterconnectModule_L100F13L111T14_1_InterconnectModule_L103F21L109T22_Object[3] = Inputs_iLeft[1][11];
-	assign TransactionDetectors1_iTXEnd = InterconnectModule_L100F13L111T14_1_InterconnectModule_L103F21L109T22_Object[3];
-	assign TransactionDetectors1_iTXBegin = InterconnectModule_L100F13L111T14_1_InterconnectModule_L103F21L109T22_Object[2];
-	assign TransactionDetectors1_iRestart = InterconnectModule_L100F13L111T14_1_InterconnectModule_L103F21L109T22_Object[1];
-	assign TransactionDetectors1_iActive = InterconnectModule_L100F13L111T14_1_InterconnectModule_L103F21L109T22_Object[0];
-	assign InterconnectModule_L100F13L111T14_2_InterconnectModule_L103F21L109T22_Object[0] = InterconnectModule_L100F13L111T14_2_InterconnectModule_L108F35T85_Expr;
-	assign InterconnectModule_L100F13L111T14_2_InterconnectModule_L103F21L109T22_Object[1] = InterconnectModule_L100F13L111T14_2_InterconnectModule_L107F36T54_Expr;
-	assign InterconnectModule_L100F13L111T14_2_InterconnectModule_L103F21L109T22_Object[2] = Inputs_iLeft[2][2];
-	assign InterconnectModule_L100F13L111T14_2_InterconnectModule_L103F21L109T22_Object[3] = Inputs_iLeft[2][11];
-	assign TransactionDetectors2_iTXEnd = InterconnectModule_L100F13L111T14_2_InterconnectModule_L103F21L109T22_Object[3];
-	assign TransactionDetectors2_iTXBegin = InterconnectModule_L100F13L111T14_2_InterconnectModule_L103F21L109T22_Object[2];
-	assign TransactionDetectors2_iRestart = InterconnectModule_L100F13L111T14_2_InterconnectModule_L103F21L109T22_Object[1];
-	assign TransactionDetectors2_iActive = InterconnectModule_L100F13L111T14_2_InterconnectModule_L103F21L109T22_Object[0];
-	assign InterconnectModule_L100F13L111T14_3_InterconnectModule_L103F21L109T22_Object[0] = InterconnectModule_L100F13L111T14_3_InterconnectModule_L108F35T85_Expr;
-	assign InterconnectModule_L100F13L111T14_3_InterconnectModule_L103F21L109T22_Object[1] = InterconnectModule_L100F13L111T14_3_InterconnectModule_L107F36T54_Expr;
-	assign InterconnectModule_L100F13L111T14_3_InterconnectModule_L103F21L109T22_Object[2] = Inputs_iLeft[3][2];
-	assign InterconnectModule_L100F13L111T14_3_InterconnectModule_L103F21L109T22_Object[3] = Inputs_iLeft[3][11];
-	assign TransactionDetectors3_iTXEnd = InterconnectModule_L100F13L111T14_3_InterconnectModule_L103F21L109T22_Object[3];
-	assign TransactionDetectors3_iTXBegin = InterconnectModule_L100F13L111T14_3_InterconnectModule_L103F21L109T22_Object[2];
-	assign TransactionDetectors3_iRestart = InterconnectModule_L100F13L111T14_3_InterconnectModule_L103F21L109T22_Object[1];
-	assign TransactionDetectors3_iActive = InterconnectModule_L100F13L111T14_3_InterconnectModule_L103F21L109T22_Object[0];
-	assign InterconnectModule_L100F13L111T14_4_InterconnectModule_L103F21L109T22_Object[0] = InterconnectModule_L100F13L111T14_4_InterconnectModule_L108F35T85_Expr;
-	assign InterconnectModule_L100F13L111T14_4_InterconnectModule_L103F21L109T22_Object[1] = InterconnectModule_L100F13L111T14_4_InterconnectModule_L107F36T54_Expr;
-	assign InterconnectModule_L100F13L111T14_4_InterconnectModule_L103F21L109T22_Object[2] = Inputs_iLeft[4][2];
-	assign InterconnectModule_L100F13L111T14_4_InterconnectModule_L103F21L109T22_Object[3] = Inputs_iLeft[4][11];
-	assign TransactionDetectors4_iTXEnd = InterconnectModule_L100F13L111T14_4_InterconnectModule_L103F21L109T22_Object[3];
-	assign TransactionDetectors4_iTXBegin = InterconnectModule_L100F13L111T14_4_InterconnectModule_L103F21L109T22_Object[2];
-	assign TransactionDetectors4_iRestart = InterconnectModule_L100F13L111T14_4_InterconnectModule_L103F21L109T22_Object[1];
-	assign TransactionDetectors4_iActive = InterconnectModule_L100F13L111T14_4_InterconnectModule_L103F21L109T22_Object[0];
-	assign InterconnectModule_L100F13L111T14_5_InterconnectModule_L103F21L109T22_Object[0] = InterconnectModule_L100F13L111T14_5_InterconnectModule_L108F35T85_Expr;
-	assign InterconnectModule_L100F13L111T14_5_InterconnectModule_L103F21L109T22_Object[1] = InterconnectModule_L100F13L111T14_5_InterconnectModule_L107F36T54_Expr;
-	assign InterconnectModule_L100F13L111T14_5_InterconnectModule_L103F21L109T22_Object[2] = Inputs_iLeft[5][2];
-	assign InterconnectModule_L100F13L111T14_5_InterconnectModule_L103F21L109T22_Object[3] = Inputs_iLeft[5][11];
-	assign TransactionDetectors5_iTXEnd = InterconnectModule_L100F13L111T14_5_InterconnectModule_L103F21L109T22_Object[3];
-	assign TransactionDetectors5_iTXBegin = InterconnectModule_L100F13L111T14_5_InterconnectModule_L103F21L109T22_Object[2];
-	assign TransactionDetectors5_iRestart = InterconnectModule_L100F13L111T14_5_InterconnectModule_L103F21L109T22_Object[1];
-	assign TransactionDetectors5_iActive = InterconnectModule_L100F13L111T14_5_InterconnectModule_L103F21L109T22_Object[0];
-	assign InterconnectModule_L100F13L111T14_6_InterconnectModule_L103F21L109T22_Object[0] = InterconnectModule_L100F13L111T14_6_InterconnectModule_L108F35T85_Expr;
-	assign InterconnectModule_L100F13L111T14_6_InterconnectModule_L103F21L109T22_Object[1] = InterconnectModule_L100F13L111T14_6_InterconnectModule_L107F36T54_Expr;
-	assign InterconnectModule_L100F13L111T14_6_InterconnectModule_L103F21L109T22_Object[2] = Inputs_iLeft[6][2];
-	assign InterconnectModule_L100F13L111T14_6_InterconnectModule_L103F21L109T22_Object[3] = Inputs_iLeft[6][11];
-	assign TransactionDetectors6_iTXEnd = InterconnectModule_L100F13L111T14_6_InterconnectModule_L103F21L109T22_Object[3];
-	assign TransactionDetectors6_iTXBegin = InterconnectModule_L100F13L111T14_6_InterconnectModule_L103F21L109T22_Object[2];
-	assign TransactionDetectors6_iRestart = InterconnectModule_L100F13L111T14_6_InterconnectModule_L103F21L109T22_Object[1];
-	assign TransactionDetectors6_iActive = InterconnectModule_L100F13L111T14_6_InterconnectModule_L103F21L109T22_Object[0];
-	assign InterconnectModule_L100F13L111T14_7_InterconnectModule_L103F21L109T22_Object[0] = InterconnectModule_L100F13L111T14_7_InterconnectModule_L108F35T85_Expr;
-	assign InterconnectModule_L100F13L111T14_7_InterconnectModule_L103F21L109T22_Object[1] = InterconnectModule_L100F13L111T14_7_InterconnectModule_L107F36T54_Expr;
-	assign InterconnectModule_L100F13L111T14_7_InterconnectModule_L103F21L109T22_Object[2] = Inputs_iLeft[7][2];
-	assign InterconnectModule_L100F13L111T14_7_InterconnectModule_L103F21L109T22_Object[3] = Inputs_iLeft[7][11];
-	assign TransactionDetectors7_iTXEnd = InterconnectModule_L100F13L111T14_7_InterconnectModule_L103F21L109T22_Object[3];
-	assign TransactionDetectors7_iTXBegin = InterconnectModule_L100F13L111T14_7_InterconnectModule_L103F21L109T22_Object[2];
-	assign TransactionDetectors7_iRestart = InterconnectModule_L100F13L111T14_7_InterconnectModule_L103F21L109T22_Object[1];
-	assign TransactionDetectors7_iActive = InterconnectModule_L100F13L111T14_7_InterconnectModule_L103F21L109T22_Object[0];
-	assign InterconnectModule_L114F17L117T18_Object[7:0] = {
-		TXBegin[7],
-		TXBegin[6],
-		TXBegin[5],
-		TXBegin[4],
-		TXBegin[3],
-		TXBegin[2],
-		TXBegin[1],
-		TXBegin[0]
-	}
-	;
-	assign Encoder_iValues[7] = InterconnectModule_L114F17L117T18_Object[7];
-	assign Encoder_iValues[6] = InterconnectModule_L114F17L117T18_Object[6];
-	assign Encoder_iValues[5] = InterconnectModule_L114F17L117T18_Object[5];
-	assign Encoder_iValues[4] = InterconnectModule_L114F17L117T18_Object[4];
-	assign Encoder_iValues[3] = InterconnectModule_L114F17L117T18_Object[3];
-	assign Encoder_iValues[2] = InterconnectModule_L114F17L117T18_Object[2];
-	assign Encoder_iValues[1] = InterconnectModule_L114F17L117T18_Object[1];
-	assign Encoder_iValues[0] = InterconnectModule_L114F17L117T18_Object[0];
-	assign InterconnectModule_L121F17L129T18_Object[95:0] = {
-		Inputs_iLeft[7],
-		Inputs_iLeft[6],
-		Inputs_iLeft[5],
-		Inputs_iLeft[4],
-		Inputs_iLeft[3],
-		Inputs_iLeft[2],
-		Inputs_iLeft[1],
-		Inputs_iLeft[0]
-	}
-	;
-	assign InterconnectModule_L121F17L129T18_Object[98:96] = State_leftAddr;
-	assign InterconnectModule_L121F17L129T18_Object[99] = State_leftAddrValid;
-	assign InterconnectModule_L121F17L129T18_Object[139:100] = {
-		Inputs_iRight[3],
-		Inputs_iRight[2],
-		Inputs_iRight[1],
-		Inputs_iRight[0]
-	}
-	;
-	assign InterconnectModule_L121F17L129T18_Object[141:140] = State_rightAddr;
-	assign InterconnectModule_L121F17L129T18_Object[142] = State_rightAddrValid;
-	assign DuplexMux_iRightAddrValid = InterconnectModule_L121F17L129T18_Object[142];
-	assign DuplexMux_iRightAddr = InterconnectModule_L121F17L129T18_Object[141:140];
-	assign DuplexMux_iRight[3] = InterconnectModule_L121F17L129T18_Object[139:130];
-	assign DuplexMux_iRight[2] = InterconnectModule_L121F17L129T18_Object[129:120];
-	assign DuplexMux_iRight[1] = InterconnectModule_L121F17L129T18_Object[119:110];
-	assign DuplexMux_iRight[0] = InterconnectModule_L121F17L129T18_Object[109:100];
-	assign DuplexMux_iLeftAddrValid = InterconnectModule_L121F17L129T18_Object[99];
-	assign DuplexMux_iLeftAddr = InterconnectModule_L121F17L129T18_Object[98:96];
-	assign DuplexMux_iLeft[7] = InterconnectModule_L121F17L129T18_Object[95:84];
-	assign DuplexMux_iLeft[6] = InterconnectModule_L121F17L129T18_Object[83:72];
-	assign DuplexMux_iLeft[5] = InterconnectModule_L121F17L129T18_Object[71:60];
-	assign DuplexMux_iLeft[4] = InterconnectModule_L121F17L129T18_Object[59:48];
-	assign DuplexMux_iLeft[3] = InterconnectModule_L121F17L129T18_Object[47:36];
-	assign DuplexMux_iLeft[2] = InterconnectModule_L121F17L129T18_Object[35:24];
-	assign DuplexMux_iLeft[1] = InterconnectModule_L121F17L129T18_Object[23:12];
-	assign DuplexMux_iLeft[0] = InterconnectModule_L121F17L129T18_Object[11:0];
-	assign oLeft0_Payload_DataFlag = muxLeft[0][11];
-	assign oLeft0_Payload_Data = muxLeft[0][10:3];
-	assign oLeft0_IsActive = muxLeft[0][2];
-	assign oLeft0_Addr = muxLeft[0][1:0];
-	assign oLeft1_Payload_DataFlag = muxLeft[1][11];
-	assign oLeft1_Payload_Data = muxLeft[1][10:3];
-	assign oLeft1_IsActive = muxLeft[1][2];
-	assign oLeft1_Addr = muxLeft[1][1:0];
-	assign oLeft2_Payload_DataFlag = muxLeft[2][11];
-	assign oLeft2_Payload_Data = muxLeft[2][10:3];
-	assign oLeft2_IsActive = muxLeft[2][2];
-	assign oLeft2_Addr = muxLeft[2][1:0];
-	assign oLeft3_Payload_DataFlag = muxLeft[3][11];
-	assign oLeft3_Payload_Data = muxLeft[3][10:3];
-	assign oLeft3_IsActive = muxLeft[3][2];
-	assign oLeft3_Addr = muxLeft[3][1:0];
-	assign oMuxLeftData_Addr = muxLeftData_Addr;
-	assign oMuxLeftData_IsActive = muxLeftData_IsActive;
-	assign oMuxLeftData_Payload_Data = muxLeftData_Payload_Data;
-	assign oMuxLeftData_Payload_DataFlag = muxLeftData_Payload_DataFlag;
-	assign oRight0_Payload_DataFlag = muxRight[0][9];
-	assign oRight0_Payload_Data = muxRight[0][8:1];
-	assign oRight0_IsActive = muxRight[0][0];
-	assign oRight1_Payload_DataFlag = muxRight[1][9];
-	assign oRight1_Payload_Data = muxRight[1][8:1];
-	assign oRight1_IsActive = muxRight[1][0];
-	assign oRight2_Payload_DataFlag = muxRight[2][9];
-	assign oRight2_Payload_Data = muxRight[2][8:1];
-	assign oRight2_IsActive = muxRight[2][0];
-	assign oRight3_Payload_DataFlag = muxRight[3][9];
-	assign oRight3_Payload_Data = muxRight[3][8:1];
-	assign oRight3_IsActive = muxRight[3][0];
-	assign oRight4_Payload_DataFlag = muxRight[4][9];
-	assign oRight4_Payload_Data = muxRight[4][8:1];
-	assign oRight4_IsActive = muxRight[4][0];
-	assign oRight5_Payload_DataFlag = muxRight[5][9];
-	assign oRight5_Payload_Data = muxRight[5][8:1];
-	assign oRight5_IsActive = muxRight[5][0];
-	assign oRight6_Payload_DataFlag = muxRight[6][9];
-	assign oRight6_Payload_Data = muxRight[6][8:1];
-	assign oRight6_IsActive = muxRight[6][0];
-	assign oRight7_Payload_DataFlag = muxRight[7][9];
-	assign oRight7_Payload_Data = muxRight[7][8:1];
-	assign oRight7_IsActive = muxRight[7][0];
-	assign oRightAddr = muxLeftData_Addr;
-	assign oTransactions0 = Transactions[0];
-	assign oTransactions1 = Transactions[1];
-	assign oTransactions2 = Transactions[2];
-	assign oTransactions3 = Transactions[3];
-	assign oTransactions4 = Transactions[4];
-	assign oTransactions5 = Transactions[5];
-	assign oTransactions6 = Transactions[6];
-	assign oTransactions7 = Transactions[7];
-	assign oWaitForRestarts0 = WaitForRestarts[0];
-	assign oWaitForRestarts1 = WaitForRestarts[1];
-	assign oWaitForRestarts2 = WaitForRestarts[2];
-	assign oWaitForRestarts3 = WaitForRestarts[3];
-	assign oWaitForRestarts4 = WaitForRestarts[4];
-	assign oWaitForRestarts5 = WaitForRestarts[5];
-	assign oWaitForRestarts6 = WaitForRestarts[6];
-	assign oWaitForRestarts7 = WaitForRestarts[7];
 	assign DuplexMux_iLeft0_DuplexMux_iLeft_HardLink = DuplexMux_iLeft[0];
 	assign DuplexMux_iLeft1_DuplexMux_iLeft_HardLink = DuplexMux_iLeft[1];
 	assign DuplexMux_iLeft2_DuplexMux_iLeft_HardLink = DuplexMux_iLeft[2];
