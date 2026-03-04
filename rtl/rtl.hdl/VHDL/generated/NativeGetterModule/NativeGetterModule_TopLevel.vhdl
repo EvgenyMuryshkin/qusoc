@@ -39,11 +39,33 @@ architecture rtl of NativeGetterModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_Value : unsigned(7 downto 0) := (others => '0');
+	constant BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L35F28T43_Expr : unsigned(7 downto 0) := "11111111";
+	constant BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F36T39_Expr : unsigned(6 downto 0) := "1100100";
+	signal Inputs_Value : unsigned(7 downto 0);
+	signal BitArrayGetterModule_L34F13L41T14_result : unsigned(7 downto 0) := "11111111";
+	signal BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_Expr : std_logic := '0';
+	signal BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprLhs : signed(8 downto 0) := "000000000";
+	signal BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprRhs : signed(8 downto 0) := "000000000";
 begin
-	process (Value)
+	BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_Expr <= '1' when (signed(resize(BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprLhs, BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprLhs'length + 1)) < signed(resize(BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprRhs, BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprRhs'length + 1))) else '0';
+	process (BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_Expr, Inputs_Value)
 	begin
+		BitArrayGetterModule_L34F13L41T14_result <= BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L35F28T43_Expr;
+		if BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_Expr = '1' then
+			BitArrayGetterModule_L34F13L41T14_result <= Inputs_Value;
+		end if;
+	end process;
+	process (BitArrayGetterModule_L34F13L41T14_result, Inputs_Value, Value)
+	begin
+		BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprLhs(8) <= '0';
+		BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprLhs(7 downto 0) <= signed(Inputs_Value);
+		BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprRhs(8 downto 7) <= (
+			others => '0'
+		)
+		;
+		BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F21T39_ExprRhs(6 downto 0) <= signed(BitArrayGetterModule_L34F13L41T14_BitArrayGetterModule_L37F36T39_Expr);
 		Inputs_Value <= Value;
+		Getter <= BitArrayGetterModule_L34F13L41T14_result;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

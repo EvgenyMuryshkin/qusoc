@@ -40,12 +40,30 @@ module L1ToArrayIOObjectModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [8: 0] Inputs_i1;
-	wire [8: 0] Inputs_i2;
-	assign Inputs_i1[8:1] = i1_byteValue;
-	assign Inputs_i1[0] = i1_boolValue;
-	assign Inputs_i2[8:1] = i2_byteValue;
-	assign Inputs_i2[0] = i2_boolValue;
+	wire Inputs_i1_boolValue;
+	wire [7: 0] Inputs_i1_byteValue;
+	wire Inputs_i2_boolValue;
+	wire [7: 0] Inputs_i2_byteValue;
+	wire [8: 0] NestedIOObjectModule_L20F58L23T10_0;
+	wire [8: 0] NestedIOObjectModule_L20F58L23T10_1;
+	wire [8 : 0] oValues [0 : 1];
+	wire [8 : 0] NestedIOObjectModule_L20F58L23T10_Array [0 : 1];
+	assign oValues0_byteValue = oValues[0][8:1];
+	assign oValues0_boolValue = oValues[0][0];
+	assign oValues1_byteValue = oValues[1][8:1];
+	assign oValues1_boolValue = oValues[1][0];
+	assign Inputs_i1_boolValue = i1_boolValue;
+	assign Inputs_i1_byteValue = i1_byteValue;
+	assign Inputs_i2_boolValue = i2_boolValue;
+	assign Inputs_i2_byteValue = i2_byteValue;
+	assign NestedIOObjectModule_L20F58L23T10_0[8:1] = Inputs_i1_byteValue;
+	assign NestedIOObjectModule_L20F58L23T10_0[0] = Inputs_i1_boolValue;
+	assign NestedIOObjectModule_L20F58L23T10_Array[0] = NestedIOObjectModule_L20F58L23T10_0;
+	assign NestedIOObjectModule_L20F58L23T10_1[8:1] = Inputs_i2_byteValue;
+	assign NestedIOObjectModule_L20F58L23T10_1[0] = Inputs_i2_boolValue;
+	assign NestedIOObjectModule_L20F58L23T10_Array[1] = NestedIOObjectModule_L20F58L23T10_1;
+	assign oValues[0] = NestedIOObjectModule_L20F58L23T10_Array[0];
+	assign oValues[1] = NestedIOObjectModule_L20F58L23T10_Array[1];
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

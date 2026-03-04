@@ -49,7 +49,11 @@ module ArrayToBitArrayModule_TopLevel
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire [7: 0] State_ReadDataDefault = 8'b00000000;
+	wire [31: 0] ArrayToBitArrayModule_L21F47T78_Source;
+	wire [31: 0] ArrayToBitArrayModule_L20F49T80_Source;
 	wire [7 : 0] Inputs_InArray [0 : 3];
+	wire [7 : 0] OutDataArray [0 : 3];
+	wire [7 : 0] OutInputsArray [0 : 3];
 	integer State_ReadData_Iterator;
 	reg [7 : 0] State_ReadData [0 : 3];
 	initial
@@ -81,10 +85,54 @@ module ArrayToBitArrayModule_TopLevel
 			end
 		end
 	end
+	always @ (*)
+	begin
+		NextState_ReadData_Iterator = 0;
+		for (NextState_ReadData_Iterator = 0; (NextState_ReadData_Iterator < 4); NextState_ReadData_Iterator = (NextState_ReadData_Iterator + 1))
+		begin
+			NextState_ReadData[NextState_ReadData_Iterator] = State_ReadData[NextState_ReadData_Iterator];
+		end
+		NextState_ReadData[0] = Inputs_InArray[0];
+		NextState_ReadData[1] = Inputs_InArray[1];
+		NextState_ReadData[2] = Inputs_InArray[2];
+		NextState_ReadData[3] = Inputs_InArray[3];
+	end
+	assign OutDataArray0 = OutDataArray[0];
+	assign OutDataArray1 = OutDataArray[1];
+	assign OutDataArray2 = OutDataArray[2];
+	assign OutDataArray3 = OutDataArray[3];
+	assign OutInputsArray0 = OutInputsArray[0];
+	assign OutInputsArray1 = OutInputsArray[1];
+	assign OutInputsArray2 = OutInputsArray[2];
+	assign OutInputsArray3 = OutInputsArray[3];
 	assign Inputs_InArray[0] = InArray0;
 	assign Inputs_InArray[1] = InArray1;
 	assign Inputs_InArray[2] = InArray2;
 	assign Inputs_InArray[3] = InArray3;
+	assign OutDataArray[0] = State_ReadData[0];
+	assign OutDataArray[1] = State_ReadData[1];
+	assign OutDataArray[2] = State_ReadData[2];
+	assign OutDataArray[3] = State_ReadData[3];
+	assign ArrayToBitArrayModule_L21F47T78_Source = {
+		State_ReadData[3],
+		State_ReadData[2],
+		State_ReadData[1],
+		State_ReadData[0]
+	}
+	;
+	assign OutDataBitArray = ArrayToBitArrayModule_L21F47T78_Source;
+	assign OutInputsArray[0] = Inputs_InArray[0];
+	assign OutInputsArray[1] = Inputs_InArray[1];
+	assign OutInputsArray[2] = Inputs_InArray[2];
+	assign OutInputsArray[3] = Inputs_InArray[3];
+	assign ArrayToBitArrayModule_L20F49T80_Source = {
+		Inputs_InArray[3],
+		Inputs_InArray[2],
+		Inputs_InArray[1],
+		Inputs_InArray[0]
+	}
+	;
+	assign OutInputsBitArray = ArrayToBitArrayModule_L20F49T80_Source;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

@@ -43,6 +43,9 @@ module YandexTestModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
+	wire [1: 0] YandexTestModule_L127F49T50_Expr = 2'b10;
+	wire YandexTestModule_L127F71T72_Expr = 1'b1;
+	wire YandexTestModule_L127F75T76_Expr = 1'b0;
 	wire Inputs_inReady;
 	reg [7: 0] NextState_stage0_max01;
 	reg [7: 0] NextState_stage0_max23;
@@ -70,12 +73,74 @@ module YandexTestModule_TopLevel
 	reg [15: 0] NextState_stage3_sum;
 	reg NextState_stage4_ready;
 	reg [15: 0] NextState_stage4_sum_ave;
-	reg [96: 0] nextStage0;
-	reg [64: 0] nextStage1;
-	reg [32: 0] nextStage2;
-	reg [32: 0] nextStage3;
-	reg [16: 0] nextStage4;
-	reg [15: 0] sumAveBits;
+	wire [7: 0] nextStage0_max01;
+	wire [7: 0] nextStage0_max23;
+	wire [7: 0] nextStage0_max45;
+	wire [7: 0] nextStage0_min01;
+	wire [7: 0] nextStage0_min23;
+	wire [7: 0] nextStage0_min45;
+	wire nextStage0_ready;
+	wire [15: 0] nextStage0_sum01;
+	wire [15: 0] nextStage0_sum23;
+	wire [15: 0] nextStage0_sum45;
+	wire [7: 0] nextStage1_max0123;
+	wire [7: 0] nextStage1_max45;
+	wire [7: 0] nextStage1_min0123;
+	wire [7: 0] nextStage1_min45;
+	wire nextStage1_ready;
+	wire [15: 0] nextStage1_sum0123;
+	wire [15: 0] nextStage1_sum45;
+	wire [7: 0] nextStage2_max;
+	wire [7: 0] nextStage2_min;
+	wire nextStage2_ready;
+	wire [15: 0] nextStage2_sum;
+	wire [15: 0] nextStage3_max_min;
+	wire nextStage3_ready;
+	wire [15: 0] nextStage3_sum;
+	wire nextStage4_ready;
+	wire [15: 0] nextStage4_sum_ave;
+	wire [15: 0] sumAveBits;
+	wire [15: 0] YandexTestModule_L81F21T66_Cast;
+	wire [15: 0] YandexTestModule_L82F21T66_Cast;
+	wire [15: 0] YandexTestModule_L83F21T66_Cast;
+	wire [7: 0] YandexTestModule_L84F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenTrue;
+	wire [7: 0] YandexTestModule_L84F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenFalse;
+	wire [7: 0] YandexTestModule_L84F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_Ternary;
+	wire [7: 0] YandexTestModule_L85F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenTrue;
+	wire [7: 0] YandexTestModule_L85F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenFalse;
+	wire [7: 0] YandexTestModule_L85F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_Ternary;
+	wire [7: 0] YandexTestModule_L86F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenTrue;
+	wire [7: 0] YandexTestModule_L86F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenFalse;
+	wire [7: 0] YandexTestModule_L86F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_Ternary;
+	wire [7: 0] YandexTestModule_L87F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenTrue;
+	wire [7: 0] YandexTestModule_L87F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenFalse;
+	wire [7: 0] YandexTestModule_L87F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_Ternary;
+	wire [7: 0] YandexTestModule_L88F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenTrue;
+	wire [7: 0] YandexTestModule_L88F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenFalse;
+	wire [7: 0] YandexTestModule_L88F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_Ternary;
+	wire [7: 0] YandexTestModule_L89F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenTrue;
+	wire [7: 0] YandexTestModule_L89F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenFalse;
+	wire [7: 0] YandexTestModule_L89F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_Ternary;
+	wire [7: 0] YandexTestModule_L95F23T66_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenTrue;
+	wire [7: 0] YandexTestModule_L95F23T66_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenFalse;
+	wire [7: 0] YandexTestModule_L95F23T66_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_Ternary;
+	wire [7: 0] YandexTestModule_L97F23T66_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenTrue;
+	wire [7: 0] YandexTestModule_L97F23T66_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenFalse;
+	wire [7: 0] YandexTestModule_L97F23T66_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_Ternary;
+	wire [15: 0] YandexTestModule_L99F23T72_Cast;
+	wire [7: 0] YandexTestModule_L106F19T64_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenTrue;
+	wire [7: 0] YandexTestModule_L106F19T64_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenFalse;
+	wire [7: 0] YandexTestModule_L106F19T64_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_Ternary;
+	wire [7: 0] YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenTrue;
+	wire [7: 0] YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenFalse;
+	wire [7: 0] YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_Ternary;
+	wire [15: 0] YandexTestModule_L108F19T70_Cast;
+	wire [15: 0] YandexTestModule_L114F23T68_Cast;
+	wire [15: 0] YandexTestModule_L121F23T72_Cast;
+	wire YandexTestModule_L127F55T68_Index;
+	wire [7: 0] YandexTestModule_L127F55T76_WhenTrue;
+	wire [7: 0] YandexTestModule_L127F55T76_WhenFalse;
+	wire [7: 0] YandexTestModule_L127F55T76_Ternary;
 	reg [7: 0] State_stage0_max01 = 8'b00000000;
 	wire [7: 0] State_stage0_max01Default = 8'b00000000;
 	reg [7: 0] State_stage0_max23 = 8'b00000000;
@@ -128,6 +193,62 @@ module YandexTestModule_TopLevel
 	wire State_stage4_readyDefault = 1'b0;
 	reg [15: 0] State_stage4_sum_ave = 16'b0000000000000000;
 	wire [15: 0] State_stage4_sum_aveDefault = 16'b0000000000000000;
+	wire [15: 0] YandexTestModule_L127F35T50_Expr;
+	wire [15: 0] YandexTestModule_L127F35T50_Expr_1;
+	wire [9: 0] YandexTestModule_L81F30T65_Expr;
+	wire signed [9: 0] YandexTestModule_L81F30T65_Expr_1;
+	wire signed [9: 0] YandexTestModule_L81F30T65_Expr_2;
+	wire [9: 0] YandexTestModule_L82F30T65_Expr;
+	wire signed [9: 0] YandexTestModule_L82F30T65_Expr_1;
+	wire signed [9: 0] YandexTestModule_L82F30T65_Expr_2;
+	wire [9: 0] YandexTestModule_L83F30T65_Expr;
+	wire signed [9: 0] YandexTestModule_L83F30T65_Expr_1;
+	wire signed [9: 0] YandexTestModule_L83F30T65_Expr_2;
+	wire [17: 0] YandexTestModule_L99F32T71_Expr;
+	wire signed [17: 0] YandexTestModule_L99F32T71_Expr_1;
+	wire signed [17: 0] YandexTestModule_L99F32T71_Expr_2;
+	wire [17: 0] YandexTestModule_L108F28T69_Expr;
+	wire signed [17: 0] YandexTestModule_L108F28T69_Expr_1;
+	wire signed [17: 0] YandexTestModule_L108F28T69_Expr_2;
+	wire [9: 0] YandexTestModule_L114F32T67_Expr;
+	wire signed [9: 0] YandexTestModule_L114F32T67_Expr_1;
+	wire signed [9: 0] YandexTestModule_L114F32T67_Expr_2;
+	wire signed [17: 0] YandexTestModule_L121F32T71_Expr;
+	wire signed [17: 0] YandexTestModule_L121F32T71_Expr_1;
+	wire signed [17: 0] YandexTestModule_L121F32T71_Expr_2;
+	wire [17: 0] YandexTestModule_L127F34T77_Expr;
+	wire signed [17: 0] YandexTestModule_L127F34T77_Expr_1;
+	wire signed [17: 0] YandexTestModule_L127F34T77_Expr_2;
+	wire YandexTestModule_L84F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_Expr;
+	wire signed [8: 0] YandexTestModule_L84F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprLhs;
+	wire signed [8: 0] YandexTestModule_L84F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprRhs;
+	wire YandexTestModule_L85F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_Expr;
+	wire signed [8: 0] YandexTestModule_L85F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprLhs;
+	wire signed [8: 0] YandexTestModule_L85F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprRhs;
+	wire YandexTestModule_L86F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_Expr;
+	wire signed [8: 0] YandexTestModule_L86F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprLhs;
+	wire signed [8: 0] YandexTestModule_L86F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprRhs;
+	wire YandexTestModule_L87F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_Expr;
+	wire signed [8: 0] YandexTestModule_L87F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprLhs;
+	wire signed [8: 0] YandexTestModule_L87F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprRhs;
+	wire YandexTestModule_L88F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_Expr;
+	wire signed [8: 0] YandexTestModule_L88F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprLhs;
+	wire signed [8: 0] YandexTestModule_L88F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprRhs;
+	wire YandexTestModule_L89F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_Expr;
+	wire signed [8: 0] YandexTestModule_L89F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprLhs;
+	wire signed [8: 0] YandexTestModule_L89F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprRhs;
+	wire YandexTestModule_L95F23T66_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_Expr;
+	wire signed [8: 0] YandexTestModule_L95F23T66_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprLhs;
+	wire signed [8: 0] YandexTestModule_L95F23T66_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprRhs;
+	wire YandexTestModule_L97F23T66_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_Expr;
+	wire signed [8: 0] YandexTestModule_L97F23T66_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprLhs;
+	wire signed [8: 0] YandexTestModule_L97F23T66_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprRhs;
+	wire YandexTestModule_L106F19T64_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_Expr;
+	wire signed [8: 0] YandexTestModule_L106F19T64_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprLhs;
+	wire signed [8: 0] YandexTestModule_L106F19T64_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprRhs;
+	wire YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_Expr;
+	wire signed [8: 0] YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprLhs;
+	wire signed [8: 0] YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprRhs;
 	wire [7 : 0] Inputs_inData [0 : 5];
 	always @ (posedge Clock)
 	begin
@@ -190,6 +311,288 @@ module YandexTestModule_TopLevel
 			State_stage4_sum_ave <= NextState_stage4_sum_ave;
 		end
 	end
+	assign YandexTestModule_L84F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_Expr = YandexTestModule_L84F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprLhs > YandexTestModule_L84F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprRhs ? 1'b1 : 1'b0;
+	assign YandexTestModule_L85F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_Expr = YandexTestModule_L85F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprLhs > YandexTestModule_L85F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprRhs ? 1'b1 : 1'b0;
+	assign YandexTestModule_L86F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_Expr = YandexTestModule_L86F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprLhs > YandexTestModule_L86F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprRhs ? 1'b1 : 1'b0;
+	assign YandexTestModule_L87F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_Expr = YandexTestModule_L87F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprLhs < YandexTestModule_L87F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprRhs ? 1'b1 : 1'b0;
+	assign YandexTestModule_L88F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_Expr = YandexTestModule_L88F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprLhs < YandexTestModule_L88F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprRhs ? 1'b1 : 1'b0;
+	assign YandexTestModule_L89F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_Expr = YandexTestModule_L89F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprLhs < YandexTestModule_L89F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprRhs ? 1'b1 : 1'b0;
+	assign YandexTestModule_L95F23T66_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_Expr = YandexTestModule_L95F23T66_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprLhs > YandexTestModule_L95F23T66_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprRhs ? 1'b1 : 1'b0;
+	assign YandexTestModule_L97F23T66_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_Expr = YandexTestModule_L97F23T66_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprLhs < YandexTestModule_L97F23T66_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprRhs ? 1'b1 : 1'b0;
+	assign YandexTestModule_L106F19T64_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_Expr = YandexTestModule_L106F19T64_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprLhs > YandexTestModule_L106F19T64_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprRhs ? 1'b1 : 1'b0;
+	assign YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_Expr = YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprLhs < YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprRhs ? 1'b1 : 1'b0;
+	// Output: YandexTestModule_L127F35T50_Expr, Width: 16, ShiftBy: 2, Sources: 1
+	assign YandexTestModule_L127F35T50_Expr[0] = YandexTestModule_L127F35T50_Expr_1[2];
+	assign YandexTestModule_L127F35T50_Expr[1] = YandexTestModule_L127F35T50_Expr_1[3];
+	assign YandexTestModule_L127F35T50_Expr[2] = YandexTestModule_L127F35T50_Expr_1[4];
+	assign YandexTestModule_L127F35T50_Expr[3] = YandexTestModule_L127F35T50_Expr_1[5];
+	assign YandexTestModule_L127F35T50_Expr[4] = YandexTestModule_L127F35T50_Expr_1[6];
+	assign YandexTestModule_L127F35T50_Expr[5] = YandexTestModule_L127F35T50_Expr_1[7];
+	assign YandexTestModule_L127F35T50_Expr[6] = YandexTestModule_L127F35T50_Expr_1[8];
+	assign YandexTestModule_L127F35T50_Expr[7] = YandexTestModule_L127F35T50_Expr_1[9];
+	assign YandexTestModule_L127F35T50_Expr[8] = YandexTestModule_L127F35T50_Expr_1[10];
+	assign YandexTestModule_L127F35T50_Expr[9] = YandexTestModule_L127F35T50_Expr_1[11];
+	assign YandexTestModule_L127F35T50_Expr[10] = YandexTestModule_L127F35T50_Expr_1[12];
+	assign YandexTestModule_L127F35T50_Expr[11] = YandexTestModule_L127F35T50_Expr_1[13];
+	assign YandexTestModule_L127F35T50_Expr[12] = YandexTestModule_L127F35T50_Expr_1[14];
+	assign YandexTestModule_L127F35T50_Expr[13] = YandexTestModule_L127F35T50_Expr_1[15];
+	assign YandexTestModule_L127F35T50_Expr[14] = 0;
+	assign YandexTestModule_L127F35T50_Expr[15] = 0;
+	assign YandexTestModule_L81F30T65_Expr = YandexTestModule_L81F30T65_Expr_1 + YandexTestModule_L81F30T65_Expr_2;
+	assign YandexTestModule_L82F30T65_Expr = YandexTestModule_L82F30T65_Expr_1 + YandexTestModule_L82F30T65_Expr_2;
+	assign YandexTestModule_L83F30T65_Expr = YandexTestModule_L83F30T65_Expr_1 + YandexTestModule_L83F30T65_Expr_2;
+	assign YandexTestModule_L99F32T71_Expr = YandexTestModule_L99F32T71_Expr_1 + YandexTestModule_L99F32T71_Expr_2;
+	assign YandexTestModule_L108F28T69_Expr = YandexTestModule_L108F28T69_Expr_1 + YandexTestModule_L108F28T69_Expr_2;
+	assign YandexTestModule_L114F32T67_Expr = YandexTestModule_L114F32T67_Expr_1 + YandexTestModule_L114F32T67_Expr_2;
+	assign YandexTestModule_L121F32T71_Expr = YandexTestModule_L121F32T71_Expr_1 - YandexTestModule_L121F32T71_Expr_2;
+	assign YandexTestModule_L127F34T77_Expr = YandexTestModule_L127F34T77_Expr_1 + YandexTestModule_L127F34T77_Expr_2;
+	assign YandexTestModule_L84F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_Ternary = (YandexTestModule_L84F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_Expr ? YandexTestModule_L84F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenTrue : YandexTestModule_L84F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenFalse);
+	assign YandexTestModule_L85F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_Ternary = (YandexTestModule_L85F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_Expr ? YandexTestModule_L85F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenTrue : YandexTestModule_L85F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenFalse);
+	assign YandexTestModule_L86F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_Ternary = (YandexTestModule_L86F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_Expr ? YandexTestModule_L86F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenTrue : YandexTestModule_L86F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenFalse);
+	assign YandexTestModule_L87F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_Ternary = (YandexTestModule_L87F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_Expr ? YandexTestModule_L87F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenTrue : YandexTestModule_L87F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenFalse);
+	assign YandexTestModule_L88F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_Ternary = (YandexTestModule_L88F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_Expr ? YandexTestModule_L88F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenTrue : YandexTestModule_L88F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenFalse);
+	assign YandexTestModule_L89F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_Ternary = (YandexTestModule_L89F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_Expr ? YandexTestModule_L89F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenTrue : YandexTestModule_L89F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenFalse);
+	assign YandexTestModule_L95F23T66_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_Ternary = (YandexTestModule_L95F23T66_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_Expr ? YandexTestModule_L95F23T66_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenTrue : YandexTestModule_L95F23T66_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenFalse);
+	assign YandexTestModule_L97F23T66_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_Ternary = (YandexTestModule_L97F23T66_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_Expr ? YandexTestModule_L97F23T66_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenTrue : YandexTestModule_L97F23T66_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenFalse);
+	assign YandexTestModule_L106F19T64_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_Ternary = (YandexTestModule_L106F19T64_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_Expr ? YandexTestModule_L106F19T64_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenTrue : YandexTestModule_L106F19T64_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenFalse);
+	assign YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_Ternary = (YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_Expr ? YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenTrue : YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenFalse);
+	assign YandexTestModule_L127F55T76_Ternary = (YandexTestModule_L127F55T68_Index ? YandexTestModule_L127F55T76_WhenTrue : YandexTestModule_L127F55T76_WhenFalse);
+	always @ (*)
+	begin
+		NextState_stage0_max01 = State_stage0_max01;
+		NextState_stage0_max23 = State_stage0_max23;
+		NextState_stage0_max45 = State_stage0_max45;
+		NextState_stage0_min01 = State_stage0_min01;
+		NextState_stage0_min23 = State_stage0_min23;
+		NextState_stage0_min45 = State_stage0_min45;
+		NextState_stage0_ready = State_stage0_ready;
+		NextState_stage0_sum01 = State_stage0_sum01;
+		NextState_stage0_sum23 = State_stage0_sum23;
+		NextState_stage0_sum45 = State_stage0_sum45;
+		NextState_stage1_max0123 = State_stage1_max0123;
+		NextState_stage1_max45 = State_stage1_max45;
+		NextState_stage1_min0123 = State_stage1_min0123;
+		NextState_stage1_min45 = State_stage1_min45;
+		NextState_stage1_ready = State_stage1_ready;
+		NextState_stage1_sum0123 = State_stage1_sum0123;
+		NextState_stage1_sum45 = State_stage1_sum45;
+		NextState_stage2_max = State_stage2_max;
+		NextState_stage2_min = State_stage2_min;
+		NextState_stage2_ready = State_stage2_ready;
+		NextState_stage2_sum = State_stage2_sum;
+		NextState_stage3_max_min = State_stage3_max_min;
+		NextState_stage3_ready = State_stage3_ready;
+		NextState_stage3_sum = State_stage3_sum;
+		NextState_stage4_ready = State_stage4_ready;
+		NextState_stage4_sum_ave = State_stage4_sum_ave;
+		NextState_stage0_max01 = nextStage0_max01;
+		NextState_stage0_max23 = nextStage0_max23;
+		NextState_stage0_max45 = nextStage0_max45;
+		NextState_stage0_min01 = nextStage0_min01;
+		NextState_stage0_min23 = nextStage0_min23;
+		NextState_stage0_min45 = nextStage0_min45;
+		NextState_stage0_ready = nextStage0_ready;
+		NextState_stage0_sum01 = nextStage0_sum01;
+		NextState_stage0_sum23 = nextStage0_sum23;
+		NextState_stage0_sum45 = nextStage0_sum45;
+		NextState_stage1_max0123 = nextStage1_max0123;
+		NextState_stage1_max45 = nextStage1_max45;
+		NextState_stage1_min0123 = nextStage1_min0123;
+		NextState_stage1_min45 = nextStage1_min45;
+		NextState_stage1_ready = nextStage1_ready;
+		NextState_stage1_sum0123 = nextStage1_sum0123;
+		NextState_stage1_sum45 = nextStage1_sum45;
+		NextState_stage2_max = nextStage2_max;
+		NextState_stage2_min = nextStage2_min;
+		NextState_stage2_ready = nextStage2_ready;
+		NextState_stage2_sum = nextStage2_sum;
+		NextState_stage3_max_min = nextStage3_max_min;
+		NextState_stage3_ready = nextStage3_ready;
+		NextState_stage3_sum = nextStage3_sum;
+		NextState_stage4_ready = nextStage4_ready;
+		NextState_stage4_sum_ave = nextStage4_sum_ave;
+	end
+	assign YandexTestModule_L84F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprLhs = {
+		1'b0,
+		Inputs_inData[0]
+	}
+	;
+	assign YandexTestModule_L84F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprRhs = {
+		1'b0,
+		Inputs_inData[1]
+	}
+	;
+	assign YandexTestModule_L85F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprLhs = {
+		1'b0,
+		Inputs_inData[2]
+	}
+	;
+	assign YandexTestModule_L85F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprRhs = {
+		1'b0,
+		Inputs_inData[3]
+	}
+	;
+	assign YandexTestModule_L86F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprLhs = {
+		1'b0,
+		Inputs_inData[4]
+	}
+	;
+	assign YandexTestModule_L86F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprRhs = {
+		1'b0,
+		Inputs_inData[5]
+	}
+	;
+	assign YandexTestModule_L87F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprLhs = {
+		1'b0,
+		Inputs_inData[0]
+	}
+	;
+	assign YandexTestModule_L87F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprRhs = {
+		1'b0,
+		Inputs_inData[1]
+	}
+	;
+	assign YandexTestModule_L88F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprLhs = {
+		1'b0,
+		Inputs_inData[2]
+	}
+	;
+	assign YandexTestModule_L88F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprRhs = {
+		1'b0,
+		Inputs_inData[3]
+	}
+	;
+	assign YandexTestModule_L89F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprLhs = {
+		1'b0,
+		Inputs_inData[4]
+	}
+	;
+	assign YandexTestModule_L89F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprRhs = {
+		1'b0,
+		Inputs_inData[5]
+	}
+	;
+	assign YandexTestModule_L95F23T66_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprLhs = {
+		1'b0,
+		State_stage0_max01
+	}
+	;
+	assign YandexTestModule_L95F23T66_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprRhs = {
+		1'b0,
+		State_stage0_max23
+	}
+	;
+	assign YandexTestModule_L97F23T66_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprLhs = {
+		1'b0,
+		State_stage0_min01
+	}
+	;
+	assign YandexTestModule_L97F23T66_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprRhs = {
+		1'b0,
+		State_stage0_min23
+	}
+	;
+	assign YandexTestModule_L106F19T64_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprLhs = {
+		1'b0,
+		State_stage1_max0123
+	}
+	;
+	assign YandexTestModule_L106F19T64_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T29_ExprRhs = {
+		1'b0,
+		State_stage1_max45
+	}
+	;
+	assign YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprLhs = {
+		1'b0,
+		State_stage1_min0123
+	}
+	;
+	assign YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T29_ExprRhs = {
+		1'b0,
+		State_stage1_min45
+	}
+	;
+	assign YandexTestModule_L127F35T50_Expr_1 = sumAveBits;
+	assign YandexTestModule_L81F30T65_Expr_1 = {
+		{2{1'b0}},
+		Inputs_inData[0]
+	}
+	;
+	assign YandexTestModule_L81F30T65_Expr_2 = {
+		{2{1'b0}},
+		Inputs_inData[1]
+	}
+	;
+	assign YandexTestModule_L82F30T65_Expr_1 = {
+		{2{1'b0}},
+		Inputs_inData[2]
+	}
+	;
+	assign YandexTestModule_L82F30T65_Expr_2 = {
+		{2{1'b0}},
+		Inputs_inData[3]
+	}
+	;
+	assign YandexTestModule_L83F30T65_Expr_1 = {
+		{2{1'b0}},
+		Inputs_inData[4]
+	}
+	;
+	assign YandexTestModule_L83F30T65_Expr_2 = {
+		{2{1'b0}},
+		Inputs_inData[5]
+	}
+	;
+	assign YandexTestModule_L99F32T71_Expr_1 = {
+		{2{1'b0}},
+		State_stage0_sum01
+	}
+	;
+	assign YandexTestModule_L99F32T71_Expr_2 = {
+		{2{1'b0}},
+		State_stage0_sum23
+	}
+	;
+	assign YandexTestModule_L108F28T69_Expr_1 = {
+		{2{1'b0}},
+		State_stage1_sum0123
+	}
+	;
+	assign YandexTestModule_L108F28T69_Expr_2 = {
+		{2{1'b0}},
+		State_stage1_sum45
+	}
+	;
+	assign YandexTestModule_L114F32T67_Expr_1 = {
+		{2{1'b0}},
+		State_stage2_min
+	}
+	;
+	assign YandexTestModule_L114F32T67_Expr_2 = {
+		{2{1'b0}},
+		State_stage2_max
+	}
+	;
+	assign YandexTestModule_L121F32T71_Expr_1 = {
+		{2{1'b0}},
+		State_stage3_sum
+	}
+	;
+	assign YandexTestModule_L121F32T71_Expr_2 = {
+		{2{1'b0}},
+		State_stage3_max_min
+	}
+	;
+	assign YandexTestModule_L127F34T77_Expr_1 = {
+		{2{1'b0}},
+		YandexTestModule_L127F35T50_Expr
+	}
+	;
+	assign YandexTestModule_L127F34T77_Expr_2 = {
+		{10{1'b0}},
+		YandexTestModule_L127F55T76_Ternary
+	}
+	;
 	assign Inputs_inData[0] = inData0;
 	assign Inputs_inData[1] = inData1;
 	assign Inputs_inData[2] = inData2;
@@ -197,6 +600,89 @@ module YandexTestModule_TopLevel
 	assign Inputs_inData[4] = inData4;
 	assign Inputs_inData[5] = inData5;
 	assign Inputs_inReady = inReady;
+	assign YandexTestModule_L81F21T66_Cast = {
+		{6{1'b0}},
+		YandexTestModule_L81F30T65_Expr
+	}
+	;
+	assign YandexTestModule_L82F21T66_Cast = {
+		{6{1'b0}},
+		YandexTestModule_L82F30T65_Expr
+	}
+	;
+	assign YandexTestModule_L83F21T66_Cast = {
+		{6{1'b0}},
+		YandexTestModule_L83F30T65_Expr
+	}
+	;
+	assign YandexTestModule_L84F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenTrue = Inputs_inData[0];
+	assign YandexTestModule_L84F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenFalse = Inputs_inData[1];
+	assign YandexTestModule_L85F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenTrue = Inputs_inData[2];
+	assign YandexTestModule_L85F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenFalse = Inputs_inData[3];
+	assign YandexTestModule_L86F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenTrue = Inputs_inData[4];
+	assign YandexTestModule_L86F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenFalse = Inputs_inData[5];
+	assign YandexTestModule_L87F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenTrue = Inputs_inData[0];
+	assign YandexTestModule_L87F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenFalse = Inputs_inData[1];
+	assign YandexTestModule_L88F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenTrue = Inputs_inData[2];
+	assign YandexTestModule_L88F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenFalse = Inputs_inData[3];
+	assign YandexTestModule_L89F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenTrue = Inputs_inData[4];
+	assign YandexTestModule_L89F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenFalse = Inputs_inData[5];
+	assign nextStage0_max01 = YandexTestModule_L84F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_Ternary;
+	assign nextStage0_max23 = YandexTestModule_L85F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_Ternary;
+	assign nextStage0_max45 = YandexTestModule_L86F21T60_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_Ternary;
+	assign nextStage0_min01 = YandexTestModule_L87F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_Ternary;
+	assign nextStage0_min23 = YandexTestModule_L88F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_Ternary;
+	assign nextStage0_min45 = YandexTestModule_L89F21T60_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_Ternary;
+	assign nextStage0_ready = Inputs_inReady;
+	assign nextStage0_sum01 = YandexTestModule_L81F21T66_Cast;
+	assign nextStage0_sum23 = YandexTestModule_L82F21T66_Cast;
+	assign nextStage0_sum45 = YandexTestModule_L83F21T66_Cast;
+	assign YandexTestModule_L95F23T66_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenTrue = State_stage0_max01;
+	assign YandexTestModule_L95F23T66_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenFalse = State_stage0_max23;
+	assign YandexTestModule_L97F23T66_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenTrue = State_stage0_min01;
+	assign YandexTestModule_L97F23T66_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenFalse = State_stage0_min23;
+	assign YandexTestModule_L99F23T72_Cast = YandexTestModule_L99F32T71_Expr[15:0];
+	assign nextStage1_max0123 = YandexTestModule_L95F23T66_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_Ternary;
+	assign nextStage1_max45 = State_stage0_max45;
+	assign nextStage1_min0123 = YandexTestModule_L97F23T66_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_Ternary;
+	assign nextStage1_min45 = State_stage0_min45;
+	assign nextStage1_ready = State_stage0_ready;
+	assign nextStage1_sum0123 = YandexTestModule_L99F23T72_Cast;
+	assign nextStage1_sum45 = State_stage0_sum45;
+	assign YandexTestModule_L106F19T64_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenTrue = State_stage1_max0123;
+	assign YandexTestModule_L106F19T64_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_WhenFalse = State_stage1_max45;
+	assign YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenTrue = State_stage1_min0123;
+	assign YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_WhenFalse = State_stage1_min45;
+	assign YandexTestModule_L108F19T70_Cast = YandexTestModule_L108F28T69_Expr[15:0];
+	assign nextStage2_max = YandexTestModule_L106F19T64_YandexTestModule_L69F9L71T10_YandexTestModule_L70F20T41_Ternary;
+	assign nextStage2_min = YandexTestModule_L107F19T64_YandexTestModule_L74F9L76T10_YandexTestModule_L75F20T41_Ternary;
+	assign nextStage2_ready = State_stage1_ready;
+	assign nextStage2_sum = YandexTestModule_L108F19T70_Cast;
+	assign YandexTestModule_L114F23T68_Cast = {
+		{6{1'b0}},
+		YandexTestModule_L114F32T67_Expr
+	}
+	;
+	assign nextStage3_max_min = YandexTestModule_L114F23T68_Cast;
+	assign nextStage3_ready = State_stage2_ready;
+	assign nextStage3_sum = State_stage2_sum;
+	assign YandexTestModule_L121F23T72_Cast = YandexTestModule_L121F32T71_Expr[15:0];
+	assign nextStage4_ready = State_stage3_ready;
+	assign nextStage4_sum_ave = YandexTestModule_L121F23T72_Cast;
+	assign sumAveBits = State_stage4_sum_ave;
+	assign outReady = State_stage4_ready;
+	assign YandexTestModule_L127F55T68_Index = sumAveBits[1];
+	assign YandexTestModule_L127F55T76_WhenTrue = {
+		{7{1'b0}},
+		YandexTestModule_L127F71T72_Expr
+	}
+	;
+	assign YandexTestModule_L127F55T76_WhenFalse = {
+		{7{1'b0}},
+		YandexTestModule_L127F75T76_Expr
+	}
+	;
+	assign outResult = YandexTestModule_L127F34T77_Expr[7:0];
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

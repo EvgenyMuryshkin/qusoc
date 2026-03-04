@@ -1,23 +1,20 @@
 No reads:
+	AXI4Interconnect2x4TestModule_L63F13L80T14_0_i
+	AXI4Interconnect2x4TestModule_L63F13L80T14_1_i
+	AXI4Interconnect2x4TestModule_L82F13L93T14_0_i
+	AXI4Interconnect2x4TestModule_L82F13L93T14_1_i
+	AXI4Interconnect2x4TestModule_L82F13L93T14_2_i
+	AXI4Interconnect2x4TestModule_L82F13L93T14_3_i
 	axiSize
-	Inputs_InData
-	Inputs_MRE
-	Inputs_MWE
-	Inputs_SWE
-	Inputs_WSTRB
 	interconnectM2S
 	interconnectS2M
-	masters0_M2S
 	masters0_RACK
 	masters0_RDATA
 	masters0_WACK
-	masters1_M2S
 	masters1_RACK
 	masters1_RDATA
 	masters1_WACK
 	mCount
-	notActiveM2S
-	notActiveS2M
 	registers0_outACK
 	registers0_outData
 	registers0_outWritten
@@ -36,19 +33,49 @@ No reads:
 	registers3_S2M
 	sCount
 No writes:
-	interconnectM2S
 	interconnectS2M
-	masters0_Master
-	masters0_S2M
-	masters1_Master
-	masters1_S2M
-	notActiveM2S
-	notActiveS2M
-	registers0_M2S
-	registers0_Reg
-	registers1_M2S
-	registers1_Reg
-	registers2_M2S
-	registers2_Reg
-	registers3_M2S
-	registers3_Reg
+	notActiveM2S_R_AR_ARADDR
+	notActiveM2S_R_AR_ARBURST
+	notActiveM2S_R_AR_ARCACHE
+	notActiveM2S_R_AR_ARID
+	notActiveM2S_R_AR_ARLEN
+	notActiveM2S_R_AR_ARLOCK
+	notActiveM2S_R_AR_ARPROT
+	notActiveM2S_R_AR_ARQOS
+	notActiveM2S_R_AR_ARREGION
+	notActiveM2S_R_AR_ARSIZE
+	notActiveM2S_R_AR_ARUSER
+	notActiveM2S_R_AR_ARVALID
+	notActiveM2S_R_R_RREADY
+	notActiveM2S_W_AW_AWADDR
+	notActiveM2S_W_AW_AWBURST
+	notActiveM2S_W_AW_AWCACHE
+	notActiveM2S_W_AW_AWID
+	notActiveM2S_W_AW_AWLEN
+	notActiveM2S_W_AW_AWLOCK
+	notActiveM2S_W_AW_AWPROT
+	notActiveM2S_W_AW_AWQOS
+	notActiveM2S_W_AW_AWREGION
+	notActiveM2S_W_AW_AWSIZE
+	notActiveM2S_W_AW_AWUSER
+	notActiveM2S_W_AW_AWVALID
+	notActiveM2S_W_B_BREADY
+	notActiveM2S_W_W_WDATA
+	notActiveM2S_W_W_WID
+	notActiveM2S_W_W_WLAST
+	notActiveM2S_W_W_WSTRB
+	notActiveM2S_W_W_WUSER
+	notActiveM2S_W_W_WVALID
+	notActiveS2M_R_AR_ARREADY
+	notActiveS2M_R_R_RDATA
+	notActiveS2M_R_R_RID
+	notActiveS2M_R_R_RLAST
+	notActiveS2M_R_R_RRESP
+	notActiveS2M_R_R_RUSER
+	notActiveS2M_R_R_RVALID
+	notActiveS2M_W_AW_AWREADY
+	notActiveS2M_W_B_BID
+	notActiveS2M_W_B_BRESP
+	notActiveS2M_W_B_BUSER
+	notActiveS2M_W_B_BVALID
+	notActiveS2M_W_W_WREADY

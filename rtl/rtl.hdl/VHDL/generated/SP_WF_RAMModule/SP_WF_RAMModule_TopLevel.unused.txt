@@ -1,9 +1,0 @@
-No reads:
-	Inputs_Address
-	Inputs_WE
-	Inputs_WriteData
-	State_Buff
-	State_ReadData
-No writes:
-	NextState_Buff
-	NextState_ReadData

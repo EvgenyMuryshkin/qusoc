@@ -42,9 +42,24 @@ module AXISoCQuadCoreModule_TopLevel_CPU0_CPU_CMP
 	wire false = 1'b0;
 	wire [31: 0] Inputs_Lhs;
 	wire [31: 0] Inputs_Rhs;
-	reg internalEQ;
+	wire internalEQ;
+	wire CompareModule_L13F28T52_Expr;
+	wire signed [32: 0] CompareModule_L13F28T52_ExprLhs;
+	wire signed [32: 0] CompareModule_L13F28T52_ExprRhs;
+	assign CompareModule_L13F28T52_Expr = CompareModule_L13F28T52_ExprLhs == CompareModule_L13F28T52_ExprRhs ? 1'b1 : 1'b0;
+	assign CompareModule_L13F28T52_ExprLhs = {
+		1'b0,
+		Inputs_Lhs
+	}
+	;
+	assign CompareModule_L13F28T52_ExprRhs = {
+		1'b0,
+		Inputs_Rhs
+	}
+	;
 	assign Inputs_Lhs = Lhs;
 	assign Inputs_Rhs = Rhs;
+	assign internalEQ = CompareModule_L13F28T52_Expr;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

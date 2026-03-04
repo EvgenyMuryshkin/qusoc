@@ -1,7 +1,0 @@
-No reads:
-	Inputs_A
-	Inputs_B
-	Inputs_CIn
-	P
-No writes:
-	P

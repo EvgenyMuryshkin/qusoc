@@ -35,20 +35,25 @@ module AXISoCTestModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	reg CPU_ExtReset = 1'b0;
-	reg [73: 0] CPU_S2M = 74'b00000000000000000000000000000000000000000000000000000000000000000000000000;
+	wire AXI4RISCVModule_L17F32T37_Expr = 1'b0;
+	wire [32: 0] AXI4RegisterModuleInputs_Reg = 33'b000000000000000000000000000000000;
+	wire AXI4UARTModule_L17F30T34_Expr = 1'b1;
+	wire AXI4UARTModule_L18F30T34_Expr = 1'b1;
+	wire AXISoCTestModule_L57F23T27_Expr = 1'b1;
+	wire CPU_ExtReset;
+	wire [73: 0] CPU_S2M;
 	wire [221: 0] CPU_M2S;
-	reg [221: 0] Memory_M2S = 222'b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+	wire [221: 0] Memory_M2S;
 	wire [73: 0] Memory_S2M;
-	reg [221: 0] Reg_M2S = 222'b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
-	reg [32: 0] Reg_Reg = 33'b000000000000000000000000000000000;
+	wire [221: 0] Reg_M2S;
+	wire [32: 0] Reg_Reg;
 	wire Reg_outACK;
 	wire Reg_outWritten;
 	wire [73: 0] Reg_S2M;
-	reg uart_iEN_RX = 1'b0;
-	reg uart_iEN_TX = 1'b0;
-	reg uart_iRX = 1'b0;
-	reg [221: 0] uart_M2S = 222'b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+	wire uart_iEN_RX;
+	wire uart_iEN_TX;
+	wire uart_iRX;
+	wire [221: 0] uart_M2S;
 	wire uart_oCE;
 	wire signed [31: 0] uart_oRXCounter;
 	wire [7: 0] uart_oRXData;
@@ -57,6 +62,12 @@ module AXISoCTestModule_TopLevel
 	wire uart_oTransmitting;
 	wire uart_oTX;
 	wire signed [31: 0] uart_oTXCounter;
+	wire [74: 0] AXISoCTestModule_L40F32L43T14_Object;
+	wire [221: 0] AXISoCTestModule_L45F35L48T14_Object;
+	wire [254: 0] AXISoCTestModule_L50F32L53T14_Object;
+	wire [224: 0] AXISoCTestModule_L54F33L58T14_Object;
+	wire [443: 0] AXISoCTestModule_L59F41L67T14_Object;
+	wire [31: 0] AXISoCTestModule_L69F37T65_Source;
 	wire CPU_ExtReset_CPU_ExtReset_HardLink;
 	wire [73: 0] CPU_S2M_CPU_S2M_HardLink;
 	wire [221: 0] CPU_M2S_CPU_M2S_HardLink;
@@ -91,8 +102,8 @@ module AXISoCTestModule_TopLevel
 	wire uart_oTransmitting_uart_oTransmitting_HardLink;
 	wire uart_oTX_uart_oTX_HardLink;
 	wire signed [31: 0] uart_oTXCounter_uart_oTXCounter_HardLink;
-	reg [221 : 0] Interconnect_iM2S [0 : 0];
-	reg [73 : 0] Interconnect_iS2M [0 : 2];
+	wire [221 : 0] Interconnect_iM2S [0 : 0];
+	wire [73 : 0] Interconnect_iS2M [0 : 2];
 	wire [221 : 0] Interconnect_oM2S [0 : 2];
 	wire [73 : 0] Interconnect_oS2M [0 : 0];
 	wire [7 : 0] Reg_outData [0 : 3];
@@ -192,6 +203,43 @@ module AXISoCTestModule_TopLevel
 		.oTX (uart_oTX_uart_oTX_HardLink),
 		.oTXCounter (uart_oTXCounter_uart_oTXCounter_HardLink)
 	);
+	assign AXISoCTestModule_L40F32L43T14_Object[0] = AXI4RISCVModule_L17F32T37_Expr;
+	assign AXISoCTestModule_L40F32L43T14_Object[74:1] = Interconnect_oS2M[0];
+	assign CPU_S2M = AXISoCTestModule_L40F32L43T14_Object[74:1];
+	assign CPU_ExtReset = AXISoCTestModule_L40F32L43T14_Object[0];
+	assign AXISoCTestModule_L45F35L48T14_Object[221:0] = Interconnect_oM2S[0];
+	assign Memory_M2S = AXISoCTestModule_L45F35L48T14_Object[221:0];
+	assign AXISoCTestModule_L50F32L53T14_Object[221:0] = Interconnect_oM2S[1];
+	assign AXISoCTestModule_L50F32L53T14_Object[254:222] = AXI4RegisterModuleInputs_Reg;
+	assign Reg_Reg = AXISoCTestModule_L50F32L53T14_Object[254:222];
+	assign Reg_M2S = AXISoCTestModule_L50F32L53T14_Object[221:0];
+	assign AXISoCTestModule_L54F33L58T14_Object[0] = AXI4UARTModule_L17F30T34_Expr;
+	assign AXISoCTestModule_L54F33L58T14_Object[1] = AXI4UARTModule_L18F30T34_Expr;
+	assign AXISoCTestModule_L54F33L58T14_Object[2] = AXISoCTestModule_L57F23T27_Expr;
+	assign AXISoCTestModule_L54F33L58T14_Object[224:3] = Interconnect_oM2S[2];
+	assign uart_M2S = AXISoCTestModule_L54F33L58T14_Object[224:3];
+	assign uart_iRX = AXISoCTestModule_L54F33L58T14_Object[2];
+	assign uart_iEN_TX = AXISoCTestModule_L54F33L58T14_Object[1];
+	assign uart_iEN_RX = AXISoCTestModule_L54F33L58T14_Object[0];
+	assign AXISoCTestModule_L59F41L67T14_Object[221:0] = CPU_M2S;
+	assign AXISoCTestModule_L59F41L67T14_Object[443:222] = {
+		uart_oS2M,
+		Reg_S2M,
+		Memory_S2M
+	}
+	;
+	assign Interconnect_iS2M[2] = AXISoCTestModule_L59F41L67T14_Object[443:370];
+	assign Interconnect_iS2M[1] = AXISoCTestModule_L59F41L67T14_Object[369:296];
+	assign Interconnect_iS2M[0] = AXISoCTestModule_L59F41L67T14_Object[295:222];
+	assign Interconnect_iM2S[0] = AXISoCTestModule_L59F41L67T14_Object[221:0];
+	assign AXISoCTestModule_L69F37T65_Source = {
+		Reg_outData[3],
+		Reg_outData[2],
+		Reg_outData[1],
+		Reg_outData[0]
+	}
+	;
+	assign oData = AXISoCTestModule_L69F37T65_Source;
 	assign CPU_ExtReset_CPU_ExtReset_HardLink = CPU_ExtReset;
 	assign CPU_S2M_CPU_S2M_HardLink = CPU_S2M;
 	assign CPU_M2S = CPU_M2S_CPU_M2S_HardLink;

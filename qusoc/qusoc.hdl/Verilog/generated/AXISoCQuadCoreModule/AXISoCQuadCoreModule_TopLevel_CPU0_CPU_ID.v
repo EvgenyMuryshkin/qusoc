@@ -59,15 +59,45 @@ module AXISoCQuadCoreModule_TopLevel_CPU0_CPU_ID
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
+	wire InstructionDecoders_L20F42T43_Expr = 1'b0;
 	wire [31: 0] Inputs_Instruction;
-	reg [31: 0] internalBits;
-	reg [2: 0] internalFunct3;
-	reg [6: 0] internalFunct7;
-	reg signed [31: 0] internalITypeImm;
-	reg [6: 0] internalOpCode;
-	reg [4: 0] internalRS2;
-	reg signed [31: 0] ZeroU32;
+	wire [31: 0] internalBits;
+	wire [2: 0] internalFunct3;
+	wire [6: 0] internalFunct7;
+	wire signed [31: 0] internalITypeImm;
+	wire [6: 0] internalOpCode;
+	wire [4: 0] internalRS2;
+	wire signed [31: 0] ZeroU32;
+	wire [2: 0] InstructionDecoders_L16F49T69_Index;
+	wire [6: 0] InstructionDecoders_L17F49T69_Index;
+	wire [11: 0] InstructionDecoders_L14F67T87_Index;
+	wire signed [11: 0] InstructionDecoders_L14F51T97_SignChange;
+	wire signed [31: 0] InstructionDecoders_L14F51T109_Resize;
+	wire [6: 0] InstructionDecoders_L15F49T67_Index;
+	wire [4: 0] InstructionDecoders_L18F46T66_Index;
 	assign Inputs_Instruction = Instruction;
+	assign internalBits = Inputs_Instruction;
+	assign InstructionDecoders_L16F49T69_Index = internalBits[14:12];
+	assign internalFunct3 = InstructionDecoders_L16F49T69_Index;
+	assign InstructionDecoders_L17F49T69_Index = internalBits[31:25];
+	assign internalFunct7 = InstructionDecoders_L17F49T69_Index;
+	assign InstructionDecoders_L14F67T87_Index = internalBits[31:20];
+	assign InstructionDecoders_L14F51T97_SignChange = InstructionDecoders_L14F67T87_Index;
+	assign InstructionDecoders_L14F51T109_Resize = {
+		{20{InstructionDecoders_L14F51T97_SignChange[11]}},
+		InstructionDecoders_L14F51T97_SignChange
+	}
+	;
+	assign internalITypeImm = InstructionDecoders_L14F51T109_Resize;
+	assign InstructionDecoders_L15F49T67_Index = internalBits[6:0];
+	assign internalOpCode = InstructionDecoders_L15F49T67_Index;
+	assign InstructionDecoders_L18F46T66_Index = internalBits[24:20];
+	assign internalRS2 = InstructionDecoders_L18F46T66_Index;
+	assign ZeroU32 = {
+		{31{1'b0}},
+		InstructionDecoders_L20F42T43_Expr
+	}
+	;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

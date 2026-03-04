@@ -1,84 +1,32 @@
 No reads:
 	addressBits
 	addressLSB
+	AXI4PWMModule_L56F33T92_Expr_1
+	AXI4PWMModule_L58F33T80_Expr_1
+	AXI4PWMModule_L79F13L87T14_0_pwm
+	AXI4PWMModule_L79F13L87T14_1_pwm
+	AXI4PWMModule_L79F13L87T14_2_pwm
+	AXI4PWMModule_L79F13L87T14_3_pwm
+	AXI4PWMModule_L79F13L87T14_4_pwm
+	AXI4PWMModule_L79F13L87T14_5_pwm
+	AXI4PWMModule_L79F13L87T14_6_pwm
+	AXI4PWMModule_L79F13L87T14_7_pwm
 	axiSlave_outARADDR
 	axiSlave_outARREADYConfirming
 	axiSlave_outARVALID
-	axiSlave_outAWADDR
-	axiSlave_outAWREADYConfirming
 	axiSlave_outAWVALID
 	axiSlave_outReadTXCompleting
-	axiSlave_outWDATA
-	axiSlave_outWREADYConfirming
-	axiSlave_outWriteTXCompleting
 	axiSlave_outWSTRB
 	axiSlave_outWVALID
-	axiSlave_S2M
-	Inputs_M2S
-	pwmClocksWE
-	pwmCount
 	pwms0_oCycle
-	pwms0_oPWM
 	pwms1_oCycle
-	pwms1_oPWM
 	pwms2_oCycle
-	pwms2_oPWM
 	pwms3_oCycle
-	pwms3_oPWM
 	pwms4_oCycle
-	pwms4_oPWM
 	pwms5_oCycle
-	pwms5_oPWM
 	pwms6_oCycle
-	pwms6_oPWM
 	pwms7_oCycle
-	pwms7_oPWM
-	pwmWADDR
-	pwmWE
-	rawAddr
-	readAddr
-	State_pwm
 	State_pwmDurationClocks
-	State_waddr
-	State_wdata
 No writes:
-	axiSlave_inARREADY
-	axiSlave_inAWREADY
-	axiSlave_inBVALID
-	axiSlave_inRDATA
-	axiSlave_inRVALID
-	axiSlave_inWREADY
-	axiSlave_M2S
-	NextState_pwm
-	NextState_pwmDurationClocks
-	NextState_waddr
-	NextState_wdata
-	pwmClocksWE
-	pwms0_iActive
-	pwms0_iDurationClocks
-	pwms0_iOnClock
-	pwms1_iActive
-	pwms1_iDurationClocks
-	pwms1_iOnClock
-	pwms2_iActive
-	pwms2_iDurationClocks
-	pwms2_iOnClock
-	pwms3_iActive
-	pwms3_iDurationClocks
-	pwms3_iOnClock
-	pwms4_iActive
-	pwms4_iDurationClocks
-	pwms4_iOnClock
-	pwms5_iActive
-	pwms5_iDurationClocks
-	pwms5_iOnClock
-	pwms6_iActive
-	pwms6_iDurationClocks
-	pwms6_iOnClock
-	pwms7_iActive
-	pwms7_iDurationClocks
-	pwms7_iOnClock
-	pwmWADDR
-	pwmWE
-	rawAddr
-	readAddr
+	AXI4PWMModule_L56F33T92_Expr
+	AXI4PWMModule_L58F33T80_Expr

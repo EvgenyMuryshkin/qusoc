@@ -1,6 +1,0 @@
-No reads:
-	Inputs_Lhs
-	Inputs_Rhs
-	internalEQ
-No writes:
-	internalEQ

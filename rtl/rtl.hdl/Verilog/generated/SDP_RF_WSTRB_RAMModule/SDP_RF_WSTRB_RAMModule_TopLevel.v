@@ -46,74 +46,80 @@ module SDP_RF_WSTRB_RAMModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [31: 0] State_BuffDefault = 32'b00000000000000000000000000000000;
-	wire [7: 0] State_ReadDataDefault = 8'b00000000;
+	wire SDP_RF_WSTRB_RAMModule_L31F9L39T10_SDP_RF_WSTRB_RAMModule_L32F13L36T14_0_w = 1'b0;
+	wire SDP_RF_WSTRB_RAMModule_L31F9L39T10_SDP_RF_WSTRB_RAMModule_L32F13L36T14_1_w = 1'b1;
+	wire [1: 0] SDP_RF_WSTRB_RAMModule_L31F9L39T10_SDP_RF_WSTRB_RAMModule_L32F13L36T14_2_w = 2'b10;
+	wire [1: 0] SDP_RF_WSTRB_RAMModule_L31F9L39T10_SDP_RF_WSTRB_RAMModule_L32F13L36T14_3_w = 2'b11;
 	wire [7: 0] Inputs_ReadAddress;
 	wire Inputs_WE;
 	wire [7: 0] Inputs_WriteAddress;
 	wire [3: 0] Inputs_WSTRB;
 	wire [7 : 0] Inputs_WriteData [0 : 3];
-	integer State_Buff_Iterator;
-	reg [31 : 0] State_Buff [0 : 31];
-	initial
-	begin : Init_State_Buff
-		for (State_Buff_Iterator = 0; State_Buff_Iterator < 32; State_Buff_Iterator = State_Buff_Iterator + 1)
-			State_Buff[State_Buff_Iterator] = 0;
-	end
-	integer NextState_Buff_Iterator;
-	reg [31 : 0] NextState_Buff [0 : 31];
-	initial
-	begin : Init_NextState_Buff
-		for (NextState_Buff_Iterator = 0; NextState_Buff_Iterator < 32; NextState_Buff_Iterator = NextState_Buff_Iterator + 1)
-			NextState_Buff[NextState_Buff_Iterator] = 0;
-	end
 	integer State_ReadData_Iterator;
 	reg [7 : 0] State_ReadData [0 : 3];
+	reg [7 : 0] State_Buff0 [0 : 31];
+	integer State_Buff0_i;
 	initial
-	begin : Init_State_ReadData
-		for (State_ReadData_Iterator = 0; State_ReadData_Iterator < 4; State_ReadData_Iterator = State_ReadData_Iterator + 1)
-			State_ReadData[State_ReadData_Iterator] = 0;
+	begin : Init_State_Buff0
+		for (State_Buff0_i = 0; State_Buff0_i < 32; State_Buff0_i = State_Buff0_i + 1)
+			State_Buff0[State_Buff0_i] = 0;
 	end
-	integer NextState_ReadData_Iterator;
-	reg [7 : 0] NextState_ReadData [0 : 3];
+	reg [7 : 0] State_Buff1 [0 : 31];
+	integer State_Buff1_i;
 	initial
-	begin : Init_NextState_ReadData
-		for (NextState_ReadData_Iterator = 0; NextState_ReadData_Iterator < 4; NextState_ReadData_Iterator = NextState_ReadData_Iterator + 1)
-			NextState_ReadData[NextState_ReadData_Iterator] = 0;
+	begin : Init_State_Buff1
+		for (State_Buff1_i = 0; State_Buff1_i < 32; State_Buff1_i = State_Buff1_i + 1)
+			State_Buff1[State_Buff1_i] = 0;
 	end
+	reg [7 : 0] State_Buff2 [0 : 31];
+	integer State_Buff2_i;
+	initial
+	begin : Init_State_Buff2
+		for (State_Buff2_i = 0; State_Buff2_i < 32; State_Buff2_i = State_Buff2_i + 1)
+			State_Buff2[State_Buff2_i] = 0;
+	end
+	reg [7 : 0] State_Buff3 [0 : 31];
+	integer State_Buff3_i;
+	initial
+	begin : Init_State_Buff3
+		for (State_Buff3_i = 0; State_Buff3_i < 32; State_Buff3_i = State_Buff3_i + 1)
+			State_Buff3[State_Buff3_i] = 0;
+	end
+	// inferred simple dual port RAM with read-first behaviour
 	always @ (posedge Clock)
 	begin
-		if ((Reset == 1))
+		if (Inputs_WSTRB[0])
 		begin
-			for (State_Buff_Iterator = 0; (State_Buff_Iterator < 32); State_Buff_Iterator = (State_Buff_Iterator + 1))
-			begin
-				State_Buff[State_Buff_Iterator] <= State_BuffDefault;
-			end
+			State_Buff0[Inputs_WriteAddress] <= Inputs_WriteData[0];
 		end
-		else
-		begin
-			for (State_Buff_Iterator = 0; (State_Buff_Iterator < 32); State_Buff_Iterator = (State_Buff_Iterator + 1))
-			begin
-				State_Buff[State_Buff_Iterator] <= NextState_Buff[State_Buff_Iterator];
-			end
-		end
+		State_ReadData[0] <= State_Buff0[Inputs_ReadAddress];
 	end
+	// inferred simple dual port RAM with read-first behaviour
 	always @ (posedge Clock)
 	begin
-		if ((Reset == 1))
+		if (Inputs_WSTRB[1])
 		begin
-			for (State_ReadData_Iterator = 0; (State_ReadData_Iterator < 4); State_ReadData_Iterator = (State_ReadData_Iterator + 1))
-			begin
-				State_ReadData[State_ReadData_Iterator] <= State_ReadDataDefault;
-			end
+			State_Buff1[Inputs_WriteAddress] <= Inputs_WriteData[1];
 		end
-		else
+		State_ReadData[1] <= State_Buff1[Inputs_ReadAddress];
+	end
+	// inferred simple dual port RAM with read-first behaviour
+	always @ (posedge Clock)
+	begin
+		if (Inputs_WSTRB[2])
 		begin
-			for (State_ReadData_Iterator = 0; (State_ReadData_Iterator < 4); State_ReadData_Iterator = (State_ReadData_Iterator + 1))
-			begin
-				State_ReadData[State_ReadData_Iterator] <= NextState_ReadData[State_ReadData_Iterator];
-			end
+			State_Buff2[Inputs_WriteAddress] <= Inputs_WriteData[2];
 		end
+		State_ReadData[2] <= State_Buff2[Inputs_ReadAddress];
+	end
+	// inferred simple dual port RAM with read-first behaviour
+	always @ (posedge Clock)
+	begin
+		if (Inputs_WSTRB[3])
+		begin
+			State_Buff3[Inputs_WriteAddress] <= Inputs_WriteData[3];
+		end
+		State_ReadData[3] <= State_Buff3[Inputs_ReadAddress];
 	end
 	assign Inputs_ReadAddress = ReadAddress;
 	assign Inputs_WE = WE;
@@ -123,6 +129,10 @@ module SDP_RF_WSTRB_RAMModule_TopLevel
 	assign Inputs_WriteData[2] = WriteData2;
 	assign Inputs_WriteData[3] = WriteData3;
 	assign Inputs_WSTRB = WSTRB;
+	assign Data0 = State_ReadData[0];
+	assign Data1 = State_ReadData[1];
+	assign Data2 = State_ReadData[2];
+	assign Data3 = State_ReadData[3];
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

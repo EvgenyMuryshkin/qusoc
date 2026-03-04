@@ -1,2 +1,5 @@
 No reads:
-	Inputs_iValue
+	GrayCodeEncodeModule_L24F55T73_Expr_1
+	GrayCodeEncodeModule_L24F72T73_Expr
+No writes:
+	GrayCodeEncodeModule_L24F55T73_Expr

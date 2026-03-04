@@ -46,11 +46,65 @@ module AXISoCQuadCoreModule_TopLevel_CPU0_CPU_ALU
 	wire [31: 0] Inputs_Op1;
 	wire [31: 0] Inputs_Op2;
 	wire [4: 0] Inputs_SHAMT;
-	reg signed [32: 0] internalAdd;
-	reg signed [34: 0] internalSub;
+	wire signed [32: 0] internalAdd;
+	wire signed [34: 0] internalSub;
+	wire signed [31: 0] ALUModule_L15F46T65_SignChange;
+	wire signed [31: 0] ALUModule_L15F68T87_SignChange;
+	wire signed [31: 0] ALUModule_L16F46T65_SignChange;
+	wire signed [32: 0] ALUModule_L16F46T77_Resize;
+	wire signed [31: 0] ALUModule_L16F80T99_SignChange;
+	wire signed [32: 0] ALUModule_L16F80T111_Resize;
+	wire signed [32: 0] ALUModule_L15F46T87_Expr;
+	wire signed [32: 0] ALUModule_L15F46T87_Expr_1;
+	wire signed [32: 0] ALUModule_L15F46T87_Expr_2;
+	wire signed [33: 0] ALUModule_L16F46T111_Expr;
+	wire signed [33: 0] ALUModule_L16F46T111_Expr_1;
+	wire signed [33: 0] ALUModule_L16F46T111_Expr_2;
+	assign ALUModule_L15F46T87_Expr = ALUModule_L15F46T87_Expr_1 + ALUModule_L15F46T87_Expr_2;
+	assign ALUModule_L16F46T111_Expr = ALUModule_L16F46T111_Expr_1 - ALUModule_L16F46T111_Expr_2;
+	assign ALUModule_L15F46T87_Expr_1 = {
+		ALUModule_L15F46T65_SignChange[31],
+		ALUModule_L15F46T65_SignChange
+	}
+	;
+	assign ALUModule_L15F46T87_Expr_2 = {
+		ALUModule_L15F68T87_SignChange[31],
+		ALUModule_L15F68T87_SignChange
+	}
+	;
+	assign ALUModule_L16F46T111_Expr_1 = {
+		ALUModule_L16F46T77_Resize[32],
+		ALUModule_L16F46T77_Resize
+	}
+	;
+	assign ALUModule_L16F46T111_Expr_2 = {
+		ALUModule_L16F80T111_Resize[32],
+		ALUModule_L16F80T111_Resize
+	}
+	;
 	assign Inputs_Op1 = Op1;
 	assign Inputs_Op2 = Op2;
 	assign Inputs_SHAMT = SHAMT;
+	assign ALUModule_L15F46T65_SignChange = Inputs_Op1;
+	assign ALUModule_L15F68T87_SignChange = Inputs_Op2;
+	assign internalAdd = ALUModule_L15F46T87_Expr;
+	assign ALUModule_L16F46T65_SignChange = Inputs_Op1;
+	assign ALUModule_L16F46T77_Resize = {
+		ALUModule_L16F46T65_SignChange[31],
+		ALUModule_L16F46T65_SignChange
+	}
+	;
+	assign ALUModule_L16F80T99_SignChange = Inputs_Op2;
+	assign ALUModule_L16F80T111_Resize = {
+		ALUModule_L16F80T99_SignChange[31],
+		ALUModule_L16F80T99_SignChange
+	}
+	;
+	assign internalSub = {
+		ALUModule_L16F46T111_Expr[33],
+		ALUModule_L16F46T111_Expr
+	}
+	;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

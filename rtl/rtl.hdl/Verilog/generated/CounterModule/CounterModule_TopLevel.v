@@ -36,11 +36,18 @@ module CounterModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
+	wire [0: 0] CounterModule_L19F65T66_Expr = 1'b1;
 	wire Inputs_Enabled;
 	reg [7: 0] NextState_Value;
-	reg [7: 0] NextValue;
+	wire [7: 0] NextValue;
+	wire [7: 0] CounterModule_L19F27T81_Cast;
+	wire [7: 0] CounterModule_L19F34T80_TernarySignal;
+	wire [7: 0] CounterModule_L19F34T80_Ternary;
 	reg [7: 0] State_Value = 8'b00000000;
 	wire [7: 0] State_ValueDefault = 8'b00000000;
+	wire [8: 0] CounterModule_L19F51T66_Expr;
+	wire signed [8: 0] CounterModule_L19F51T66_Expr_1;
+	wire signed [8: 0] CounterModule_L19F51T66_Expr_2;
 	always @ (posedge Clock)
 	begin
 		if ((Reset == 1))
@@ -52,7 +59,35 @@ module CounterModule_TopLevel
 			State_Value <= NextState_Value;
 		end
 	end
+	assign CounterModule_L19F51T66_Expr = CounterModule_L19F51T66_Expr_1 + CounterModule_L19F51T66_Expr_2;
+	assign CounterModule_L19F34T80_TernarySignal = (Inputs_Enabled ? (resize_unsigned_9_8(CounterModule_L19F51T66_Expr)) : State_Value);
+	always @ (*)
+	begin
+		NextState_Value = State_Value;
+		NextState_Value = NextValue;
+	end
+	assign CounterModule_L19F51T66_Expr_1 = {
+		1'b0,
+		State_Value
+	}
+	;
+	assign CounterModule_L19F51T66_Expr_2 = {
+		{8{1'b0}},
+		CounterModule_L19F65T66_Expr
+	}
+	;
 	assign Inputs_Enabled = Enabled;
+	assign CounterModule_L19F34T80_Ternary = CounterModule_L19F34T80_TernarySignal;
+	assign CounterModule_L19F27T81_Cast = CounterModule_L19F34T80_Ternary;
+	assign NextValue = CounterModule_L19F27T81_Cast;
+	assign Value = State_Value;
+	function
+	[7: 0] resize_unsigned_9_8;
+		input wire [8:0] source;
+		begin
+			resize_unsigned_9_8 = source[7:0];
+		end
+	endfunction
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

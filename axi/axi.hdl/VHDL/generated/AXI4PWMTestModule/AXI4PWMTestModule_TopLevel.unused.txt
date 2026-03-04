@@ -1,12 +1,3 @@
 No reads:
-	Inputs_Master
-	master_M2S
 	master_RACK
 	master_RDATA
-	master_WACK
-	pwm_oPWM
-	pwm_oS2M
-No writes:
-	master_Master
-	master_S2M
-	pwm_M2S

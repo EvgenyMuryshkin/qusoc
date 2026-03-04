@@ -1,9 +1,0 @@
-No reads:
-	Inputs_Restart
-	nestedTimerInputs
-	timerModule10_OutActive
-	timerModule20_OutActive
-No writes:
-	nestedTimerInputs
-	timerModule10_Restart
-	timerModule20_Restart

@@ -24,10 +24,40 @@ entity IOTupleDirectInputComponentsOutputParentModule_TopLevel_child is
 	(
 		-- [BEGIN USER PORTS]
 		-- [END USER PORTS]
-		iTuple : in unsigned (59 downto 0);
+		iTuple_Item1 : in std_logic;
+		iTuple_Item2 : in unsigned (7 downto 0);
+		iTuple_Item30 : in unsigned (3 downto 0);
+		iTuple_Item31 : in unsigned (3 downto 0);
+		iTuple_Item4_L1Flag : in std_logic;
+		iTuple_Item4_L2_L2Flag : in std_logic;
+		iTuple_Item4_L2_L2Values0 : in std_logic;
+		iTuple_Item4_L2_L2Values1 : in std_logic;
+		iTuple_Item4_L2Array0 : in unsigned (6 downto 0);
+		iTuple_Item4_L2Array1 : in unsigned (6 downto 0);
+		iTuple_Item4_L2Tuple_Item1 : in unsigned (7 downto 0);
+		iTuple_Item4_L2Tuple_Item2_L2Flag : in std_logic;
+		iTuple_Item4_L2Tuple_Item2_L2Values0 : in std_logic;
+		iTuple_Item4_L2Tuple_Item2_L2Values1 : in std_logic;
+		iTuple_Item4_L2Tuple_Item30 : in unsigned (6 downto 0);
+		iTuple_Item4_L2Tuple_Item31 : in unsigned (6 downto 0);
 		iTupleArray0 : in unsigned (53 downto 0);
 		iTupleArray1 : in unsigned (53 downto 0);
-		Output_iTuple : out unsigned (59 downto 0);
+		Output_iTuple_Item1 : out std_logic;
+		Output_iTuple_Item2 : out unsigned (7 downto 0);
+		Output_iTuple_Item30 : out unsigned (3 downto 0);
+		Output_iTuple_Item31 : out unsigned (3 downto 0);
+		Output_iTuple_Item4_L1Flag : out std_logic;
+		Output_iTuple_Item4_L2_L2Flag : out std_logic;
+		Output_iTuple_Item4_L2_L2Values0 : out std_logic;
+		Output_iTuple_Item4_L2_L2Values1 : out std_logic;
+		Output_iTuple_Item4_L2Array0 : out unsigned (6 downto 0);
+		Output_iTuple_Item4_L2Array1 : out unsigned (6 downto 0);
+		Output_iTuple_Item4_L2Tuple_Item1 : out unsigned (7 downto 0);
+		Output_iTuple_Item4_L2Tuple_Item2_L2Flag : out std_logic;
+		Output_iTuple_Item4_L2Tuple_Item2_L2Values0 : out std_logic;
+		Output_iTuple_Item4_L2Tuple_Item2_L2Values1 : out std_logic;
+		Output_iTuple_Item4_L2Tuple_Item30 : out unsigned (6 downto 0);
+		Output_iTuple_Item4_L2Tuple_Item31 : out unsigned (6 downto 0);
 		Output_iTupleArray0 : out unsigned (53 downto 0);
 		Output_iTupleArray1 : out unsigned (53 downto 0)
 	);
@@ -43,15 +73,95 @@ architecture rtl of IOTupleDirectInputComponentsOutputParentModule_TopLevel_chil
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_iTuple : unsigned(59 downto 0) := (others => '0');
+	signal Inputs_iTuple_Item1 : std_logic;
+	signal Inputs_iTuple_Item2 : unsigned(7 downto 0);
+	signal Inputs_iTuple_Item4_L1Flag : std_logic;
+	signal Inputs_iTuple_Item4_L2_L2Flag : std_logic;
+	signal Inputs_iTuple_Item4_L2Tuple_Item1 : unsigned(7 downto 0);
+	signal Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag : std_logic;
+	type Inputs_iTuple_Item3Array is array (0 to 1) of unsigned (3 downto 0);
+	signal Inputs_iTuple_Item3 : Inputs_iTuple_Item3Array;
+	type Inputs_iTuple_Item4_L2_L2ValuesArray is array (0 to 1) of std_logic;
+	signal Inputs_iTuple_Item4_L2_L2Values : Inputs_iTuple_Item4_L2_L2ValuesArray;
+	type Inputs_iTuple_Item4_L2ArrayArray is array (0 to 1) of unsigned (6 downto 0);
+	signal Inputs_iTuple_Item4_L2Array : Inputs_iTuple_Item4_L2ArrayArray;
+	type Inputs_iTuple_Item4_L2Tuple_Item2_L2ValuesArray is array (0 to 1) of std_logic;
+	signal Inputs_iTuple_Item4_L2Tuple_Item2_L2Values : Inputs_iTuple_Item4_L2Tuple_Item2_L2ValuesArray;
+	type Inputs_iTuple_Item4_L2Tuple_Item3Array is array (0 to 1) of unsigned (6 downto 0);
+	signal Inputs_iTuple_Item4_L2Tuple_Item3 : Inputs_iTuple_Item4_L2Tuple_Item3Array;
 	type Inputs_iTupleArrayArray is array (0 to 1) of unsigned (53 downto 0);
-	signal Inputs_iTupleArray : Inputs_iTupleArrayArray := (others => (others => '0'));
+	signal Inputs_iTupleArray : Inputs_iTupleArrayArray;
+	type Output_iTuple_Item3Array is array (0 to 1) of unsigned (3 downto 0);
+	signal Output_iTuple_Item3 : Output_iTuple_Item3Array := (others => (others => '0'));
+	type Output_iTuple_Item4_L2_L2ValuesArray is array (0 to 1) of std_logic;
+	constant Output_iTuple_Item4_L2_L2ValuesArrayInit : Output_iTuple_Item4_L2_L2ValuesArray := (
+		'1',
+		'1'
+	);
+	signal Output_iTuple_Item4_L2_L2Values : Output_iTuple_Item4_L2_L2ValuesArray := Output_iTuple_Item4_L2_L2ValuesArrayInit;
+	type Output_iTuple_Item4_L2ArrayArray is array (0 to 1) of unsigned (6 downto 0);
+	signal Output_iTuple_Item4_L2Array : Output_iTuple_Item4_L2ArrayArray := (others => (others => '0'));
+	type Output_iTuple_Item4_L2Tuple_Item2_L2ValuesArray is array (0 to 1) of std_logic;
+	constant Output_iTuple_Item4_L2Tuple_Item2_L2ValuesArrayInit : Output_iTuple_Item4_L2Tuple_Item2_L2ValuesArray := (
+		'1',
+		'1'
+	);
+	signal Output_iTuple_Item4_L2Tuple_Item2_L2Values : Output_iTuple_Item4_L2Tuple_Item2_L2ValuesArray := Output_iTuple_Item4_L2Tuple_Item2_L2ValuesArrayInit;
+	type Output_iTuple_Item4_L2Tuple_Item3Array is array (0 to 1) of unsigned (6 downto 0);
+	signal Output_iTuple_Item4_L2Tuple_Item3 : Output_iTuple_Item4_L2Tuple_Item3Array := (others => (others => '0'));
+	type Output_iTupleArrayArray is array (0 to 1) of unsigned (53 downto 0);
+	signal Output_iTupleArray : Output_iTupleArrayArray;
 begin
-	process (iTuple, iTupleArray0, iTupleArray1)
+	process (Inputs_iTuple_Item1, Inputs_iTuple_Item2, Inputs_iTuple_Item3, Inputs_iTuple_Item4_L1Flag, Inputs_iTuple_Item4_L2_L2Flag, Inputs_iTuple_Item4_L2_L2Values, Inputs_iTuple_Item4_L2Array, Inputs_iTuple_Item4_L2Tuple_Item1, Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag, Inputs_iTuple_Item4_L2Tuple_Item2_L2Values, Inputs_iTuple_Item4_L2Tuple_Item3, Inputs_iTupleArray, iTuple_Item1, iTuple_Item2, iTuple_Item30, iTuple_Item31, iTuple_Item4_L1Flag, iTuple_Item4_L2_L2Flag, iTuple_Item4_L2_L2Values0, iTuple_Item4_L2_L2Values1, iTuple_Item4_L2Array0, iTuple_Item4_L2Array1, iTuple_Item4_L2Tuple_Item1, iTuple_Item4_L2Tuple_Item2_L2Flag, iTuple_Item4_L2Tuple_Item2_L2Values0, iTuple_Item4_L2Tuple_Item2_L2Values1, iTuple_Item4_L2Tuple_Item30, iTuple_Item4_L2Tuple_Item31, iTupleArray0, iTupleArray1, Output_iTuple_Item3, Output_iTuple_Item4_L2_L2Values, Output_iTuple_Item4_L2Array, Output_iTuple_Item4_L2Tuple_Item2_L2Values, Output_iTuple_Item4_L2Tuple_Item3, Output_iTupleArray)
 	begin
-		Inputs_iTuple <= iTuple;
+		Output_iTuple_Item30 <= Output_iTuple_Item3(0);
+		Output_iTuple_Item31 <= Output_iTuple_Item3(1);
+		Output_iTuple_Item4_L2_L2Values0 <= Output_iTuple_Item4_L2_L2Values(0);
+		Output_iTuple_Item4_L2_L2Values1 <= Output_iTuple_Item4_L2_L2Values(1);
+		Output_iTuple_Item4_L2Array0 <= Output_iTuple_Item4_L2Array(0);
+		Output_iTuple_Item4_L2Array1 <= Output_iTuple_Item4_L2Array(1);
+		Output_iTuple_Item4_L2Tuple_Item2_L2Values0 <= Output_iTuple_Item4_L2Tuple_Item2_L2Values(0);
+		Output_iTuple_Item4_L2Tuple_Item2_L2Values1 <= Output_iTuple_Item4_L2Tuple_Item2_L2Values(1);
+		Output_iTuple_Item4_L2Tuple_Item30 <= Output_iTuple_Item4_L2Tuple_Item3(0);
+		Output_iTuple_Item4_L2Tuple_Item31 <= Output_iTuple_Item4_L2Tuple_Item3(1);
+		Output_iTupleArray0 <= Output_iTupleArray(0);
+		Output_iTupleArray1 <= Output_iTupleArray(1);
+		Inputs_iTuple_Item1 <= iTuple_Item1;
+		Inputs_iTuple_Item2 <= iTuple_Item2;
+		Inputs_iTuple_Item3(0) <= iTuple_Item30;
+		Inputs_iTuple_Item3(1) <= iTuple_Item31;
+		Inputs_iTuple_Item4_L1Flag <= iTuple_Item4_L1Flag;
+		Inputs_iTuple_Item4_L2_L2Flag <= iTuple_Item4_L2_L2Flag;
+		Inputs_iTuple_Item4_L2_L2Values(0) <= iTuple_Item4_L2_L2Values0;
+		Inputs_iTuple_Item4_L2_L2Values(1) <= iTuple_Item4_L2_L2Values1;
+		Inputs_iTuple_Item4_L2Array(0) <= iTuple_Item4_L2Array0;
+		Inputs_iTuple_Item4_L2Array(1) <= iTuple_Item4_L2Array1;
+		Inputs_iTuple_Item4_L2Tuple_Item1 <= iTuple_Item4_L2Tuple_Item1;
+		Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag <= iTuple_Item4_L2Tuple_Item2_L2Flag;
+		Inputs_iTuple_Item4_L2Tuple_Item2_L2Values(0) <= iTuple_Item4_L2Tuple_Item2_L2Values0;
+		Inputs_iTuple_Item4_L2Tuple_Item2_L2Values(1) <= iTuple_Item4_L2Tuple_Item2_L2Values1;
+		Inputs_iTuple_Item4_L2Tuple_Item3(0) <= iTuple_Item4_L2Tuple_Item30;
+		Inputs_iTuple_Item4_L2Tuple_Item3(1) <= iTuple_Item4_L2Tuple_Item31;
 		Inputs_iTupleArray(0) <= iTupleArray0;
 		Inputs_iTupleArray(1) <= iTupleArray1;
+		Output_iTuple_Item1 <= Inputs_iTuple_Item1;
+		Output_iTuple_Item2 <= Inputs_iTuple_Item2;
+		Output_iTuple_Item3(0) <= Inputs_iTuple_Item3(0);
+		Output_iTuple_Item3(1) <= Inputs_iTuple_Item3(1);
+		Output_iTuple_Item4_L2Tuple_Item1 <= Inputs_iTuple_Item4_L2Tuple_Item1;
+		Output_iTuple_Item4_L2Tuple_Item2_L2Values(0) <= Inputs_iTuple_Item4_L2Tuple_Item2_L2Values(0);
+		Output_iTuple_Item4_L2Tuple_Item2_L2Values(1) <= Inputs_iTuple_Item4_L2Tuple_Item2_L2Values(1);
+		Output_iTuple_Item4_L2Tuple_Item2_L2Flag <= Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag;
+		Output_iTuple_Item4_L2Tuple_Item3(0) <= Inputs_iTuple_Item4_L2Tuple_Item3(0);
+		Output_iTuple_Item4_L2Tuple_Item3(1) <= Inputs_iTuple_Item4_L2Tuple_Item3(1);
+		Output_iTuple_Item4_L2Array(0) <= Inputs_iTuple_Item4_L2Array(0);
+		Output_iTuple_Item4_L2Array(1) <= Inputs_iTuple_Item4_L2Array(1);
+		Output_iTuple_Item4_L2_L2Values(0) <= Inputs_iTuple_Item4_L2_L2Values(0);
+		Output_iTuple_Item4_L2_L2Values(1) <= Inputs_iTuple_Item4_L2_L2Values(1);
+		Output_iTuple_Item4_L2_L2Flag <= Inputs_iTuple_Item4_L2_L2Flag;
+		Output_iTuple_Item4_L1Flag <= Inputs_iTuple_Item4_L1Flag;
+		Output_iTupleArray(0) <= Inputs_iTupleArray(0);
+		Output_iTupleArray(1) <= Inputs_iTupleArray(1);
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

@@ -1,6 +1,2 @@
 No reads:
-	Inputs_Ack
-	Inputs_IsEnabled
-	State_Data
-No writes:
-	NextState_Data
+	EmitterModule_L22F9L25T10_EmitterModule_L24F34T56_Cast_Init

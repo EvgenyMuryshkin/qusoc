@@ -1,3 +1,3 @@
-No reads:
-	Inputs_iTuple
-	Inputs_iTupleArray
+No writes:
+	Output_iTuple_Item4_L2_L2ValuesArrayInit
+	Output_iTuple_Item4_L2Tuple_Item2_L2ValuesArrayInit

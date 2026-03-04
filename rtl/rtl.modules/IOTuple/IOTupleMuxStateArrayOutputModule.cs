@@ -24,7 +24,7 @@ namespace rtl.modules
 
         protected override void OnStage()
         {
-            NextState.Sel[0] = Inputs.Sel0;
+            NextState.Sel[0] = Inputs.Sel0;//dbg
             NextState.Sel[1] = Inputs.Sel1;
         }
     }

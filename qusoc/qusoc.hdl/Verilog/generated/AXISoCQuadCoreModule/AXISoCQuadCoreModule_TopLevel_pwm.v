@@ -51,15 +51,16 @@ module AXISoCQuadCoreModule_TopLevel_pwm
 	wire signed [2: 0] addressBits = 3'b011;
 	wire signed [2: 0] addressLSB = 3'b010;
 	wire signed [4: 0] pwmCount = 5'b01000;
+	wire [5: 0] AXI4PWMModule_L90F73T77_Expr = 6'b111111;
 	wire [221: 0] Inputs_M2S;
 	reg [31: 0] NextState_pwmDurationClocks;
 	reg [31: 0] NextState_waddr;
 	reg [31: 0] NextState_wdata;
-	reg pwmClocksWE;
-	reg [2: 0] pwmWADDR;
-	reg pwmWE;
-	reg [2: 0] rawAddr;
-	reg [7: 0] readAddr;
+	wire pwmClocksWE;
+	wire [2: 0] pwmWADDR;
+	wire pwmWE;
+	wire [2: 0] rawAddr;
+	wire [7: 0] readAddr;
 	reg axiSlave_inARREADY = 1'b0;
 	reg axiSlave_inAWREADY = 1'b0;
 	reg axiSlave_inBVALID = 1'b0;
@@ -118,6 +119,11 @@ module AXISoCQuadCoreModule_TopLevel_pwm
 	reg [31: 0] pwms7_iOnClock = 32'b00000000000000000000000000000000;
 	wire pwms7_oCycle;
 	wire pwms7_oPWM;
+	wire [2: 0] AXI4PWMModule_L59F33T60_Index;
+	wire [7: 0] AXI4PWMModule_L58F33T66_Index;
+	wire [2: 0] AXI4PWMModule_L58F32T101_Index;
+	wire [7: 0] AXI4PWMModule_L56F33T78_Index;
+	wire [31: 0] AXI4PWMModule_L94F9L108T10_AXI4PWMModule_L99F35T69_Source;
 	wire axiSlave_inARREADY_axiSlave_inARREADY_HardLink;
 	wire axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink;
 	wire axiSlave_inBVALID_axiSlave_inBVALID_HardLink;
@@ -190,6 +196,28 @@ module AXISoCQuadCoreModule_TopLevel_pwm
 	wire [31: 0] State_waddrDefault = 32'b00000000000000000000000000000000;
 	reg [31: 0] State_wdata = 32'b00000000000000000000000000000000;
 	wire [31: 0] State_wdataDefault = 32'b00000000000000000000000000000000;
+	wire AXI4PWMModule_L90F29T77_Expr;
+	wire AXI4PWMModule_L90F29T77_Expr_1;
+	wire AXI4PWMModule_L90F29T77_Expr_2;
+	wire AXI4PWMModule_L91F23T90_Expr;
+	wire AXI4PWMModule_L91F23T90_Expr_1;
+	wire AXI4PWMModule_L91F23T90_Expr_2;
+	wire AXI4PWMModule_L91F23T74_Expr;
+	wire AXI4PWMModule_L91F23T74_Expr_1;
+	wire AXI4PWMModule_L91F23T74_Expr_2;
+	wire AXI4PWMModule_L91F78T90_Expr;
+	wire AXI4PWMModule_L91F78T90_Expr_1;
+	wire [7: 0] AXI4PWMModule_L58F33T80_Expr;
+	wire [7: 0] AXI4PWMModule_L58F33T80_Expr_1;
+	wire [7: 0] AXI4PWMModule_L56F33T92_Expr;
+	wire [7: 0] AXI4PWMModule_L56F33T92_Expr_1;
+	wire AXI4PWMModule_L90F62T77_Expr;
+	wire signed [6: 0] AXI4PWMModule_L90F62T77_ExprLhs;
+	wire signed [6: 0] AXI4PWMModule_L90F62T77_ExprRhs;
+	wire AXI4PWMModule_L91F56T74_Expr;
+	wire signed [5: 0] AXI4PWMModule_L91F56T74_ExprLhs;
+	wire signed [5: 0] AXI4PWMModule_L91F56T74_ExprRhs;
+	reg oPWM [0 : 7];
 	integer State_pwm_Iterator;
 	reg [31 : 0] State_pwm [0 : 7];
 	initial
@@ -238,6 +266,30 @@ module AXISoCQuadCoreModule_TopLevel_pwm
 			end
 		end
 	end
+	assign AXI4PWMModule_L90F62T77_Expr = AXI4PWMModule_L90F62T77_ExprLhs == AXI4PWMModule_L90F62T77_ExprRhs ? 1'b1 : 1'b0;
+	assign AXI4PWMModule_L91F56T74_Expr = AXI4PWMModule_L91F56T74_ExprLhs < AXI4PWMModule_L91F56T74_ExprRhs ? 1'b1 : 1'b0;
+	assign AXI4PWMModule_L90F29T77_Expr = AXI4PWMModule_L90F29T77_Expr_1 & AXI4PWMModule_L90F29T77_Expr_2;
+	assign AXI4PWMModule_L91F23T90_Expr = AXI4PWMModule_L91F23T90_Expr_1 & AXI4PWMModule_L91F23T90_Expr_2;
+	assign AXI4PWMModule_L91F23T74_Expr = AXI4PWMModule_L91F23T74_Expr_1 & AXI4PWMModule_L91F23T74_Expr_2;
+	assign AXI4PWMModule_L91F78T90_Expr = ~AXI4PWMModule_L91F78T90_Expr_1;
+	// Output: AXI4PWMModule_L58F33T80_Expr, Width: 8, ShiftBy: 2, Sources: 1
+	assign AXI4PWMModule_L58F33T80_Expr[0] = AXI4PWMModule_L58F33T80_Expr_1[2];
+	assign AXI4PWMModule_L58F33T80_Expr[1] = AXI4PWMModule_L58F33T80_Expr_1[3];
+	assign AXI4PWMModule_L58F33T80_Expr[2] = AXI4PWMModule_L58F33T80_Expr_1[4];
+	assign AXI4PWMModule_L58F33T80_Expr[3] = AXI4PWMModule_L58F33T80_Expr_1[5];
+	assign AXI4PWMModule_L58F33T80_Expr[4] = AXI4PWMModule_L58F33T80_Expr_1[6];
+	assign AXI4PWMModule_L58F33T80_Expr[5] = AXI4PWMModule_L58F33T80_Expr_1[7];
+	assign AXI4PWMModule_L58F33T80_Expr[6] = 0;
+	assign AXI4PWMModule_L58F33T80_Expr[7] = 0;
+	// Output: AXI4PWMModule_L56F33T92_Expr, Width: 8, ShiftBy: 2, Sources: 1
+	assign AXI4PWMModule_L56F33T92_Expr[0] = AXI4PWMModule_L56F33T92_Expr_1[2];
+	assign AXI4PWMModule_L56F33T92_Expr[1] = AXI4PWMModule_L56F33T92_Expr_1[3];
+	assign AXI4PWMModule_L56F33T92_Expr[2] = AXI4PWMModule_L56F33T92_Expr_1[4];
+	assign AXI4PWMModule_L56F33T92_Expr[3] = AXI4PWMModule_L56F33T92_Expr_1[5];
+	assign AXI4PWMModule_L56F33T92_Expr[4] = AXI4PWMModule_L56F33T92_Expr_1[6];
+	assign AXI4PWMModule_L56F33T92_Expr[5] = AXI4PWMModule_L56F33T92_Expr_1[7];
+	assign AXI4PWMModule_L56F33T92_Expr[6] = 0;
+	assign AXI4PWMModule_L56F33T92_Expr[7] = 0;
 	AXISoCQuadCoreModule_TopLevel_pwm_axiSlave
 	AXISoCQuadCoreModule_TopLevel_pwm_axiSlave
 	(
@@ -403,7 +455,79 @@ module AXISoCQuadCoreModule_TopLevel_pwm
 		.oCycle (pwms7_oCycle_pwms7_oCycle_HardLink),
 		.oPWM (pwms7_oPWM_pwms7_oPWM_HardLink)
 	);
+	always @ (*)
+	begin
+		NextState_pwm_Iterator = 0;
+		for (NextState_pwm_Iterator = 0; (NextState_pwm_Iterator < 8); NextState_pwm_Iterator = (NextState_pwm_Iterator + 1))
+		begin
+			NextState_pwm[NextState_pwm_Iterator] = State_pwm[NextState_pwm_Iterator];
+		end
+		NextState_pwmDurationClocks = State_pwmDurationClocks;
+		NextState_waddr = State_waddr;
+		NextState_wdata = State_wdata;
+		if ((axiSlave_outAWREADYConfirming == 1))
+		begin
+			NextState_waddr = axiSlave_outAWADDR;
+		end
+		if ((axiSlave_outWREADYConfirming == 1))
+		begin
+			NextState_wdata = AXI4PWMModule_L94F9L108T10_AXI4PWMModule_L99F35T69_Source;
+		end
+		if ((pwmClocksWE == 1))
+		begin
+			NextState_pwmDurationClocks = State_wdata;
+		end
+		if ((pwmWE == 1))
+		begin
+			NextState_pwm[pwmWADDR] = State_wdata;
+		end
+	end
+	assign AXI4PWMModule_L90F62T77_ExprLhs = {
+		{4{1'b0}},
+		rawAddr
+	}
+	;
+	assign AXI4PWMModule_L90F62T77_ExprRhs = {
+		1'b0,
+		AXI4PWMModule_L90F73T77_Expr
+	}
+	;
+	assign AXI4PWMModule_L91F56T74_ExprLhs = {
+		{3{1'b0}},
+		rawAddr
+	}
+	;
+	assign AXI4PWMModule_L91F56T74_ExprRhs = {
+		pwmCount[4],
+		pwmCount
+	}
+	;
+	assign AXI4PWMModule_L90F29T77_Expr_1 = axiSlave_outWriteTXCompleting;
+	assign AXI4PWMModule_L90F29T77_Expr_2 = AXI4PWMModule_L90F62T77_Expr;
+	assign AXI4PWMModule_L91F23T90_Expr_1 = AXI4PWMModule_L91F23T74_Expr;
+	assign AXI4PWMModule_L91F23T90_Expr_2 = AXI4PWMModule_L91F78T90_Expr;
+	assign AXI4PWMModule_L91F23T74_Expr_1 = axiSlave_outWriteTXCompleting;
+	assign AXI4PWMModule_L91F23T74_Expr_2 = AXI4PWMModule_L91F56T74_Expr;
+	assign AXI4PWMModule_L91F78T90_Expr_1 = pwmClocksWE;
+	assign AXI4PWMModule_L58F33T80_Expr_1 = AXI4PWMModule_L58F33T66_Index;
+	assign AXI4PWMModule_L56F33T92_Expr_1 = AXI4PWMModule_L56F33T78_Index;
 	assign Inputs_M2S = M2S;
+	assign pwmClocksWE = AXI4PWMModule_L90F29T77_Expr;
+	assign AXI4PWMModule_L59F33T60_Index = rawAddr[2:0];
+	assign pwmWADDR = AXI4PWMModule_L59F33T60_Index;
+	assign pwmWE = AXI4PWMModule_L91F23T90_Expr;
+	assign AXI4PWMModule_L58F33T66_Index = State_waddr[7:0];
+	assign AXI4PWMModule_L58F32T101_Index = AXI4PWMModule_L58F33T80_Expr[2:0];
+	assign rawAddr = AXI4PWMModule_L58F32T101_Index;
+	assign AXI4PWMModule_L56F33T78_Index = Inputs_M2S[15:8];
+	assign readAddr = AXI4PWMModule_L56F33T92_Expr;
+	assign AXI4PWMModule_L94F9L108T10_AXI4PWMModule_L99F35T69_Source = {
+		axiSlave_outWDATA[3],
+		axiSlave_outWDATA[2],
+		axiSlave_outWDATA[1],
+		axiSlave_outWDATA[0]
+	}
+	;
 	assign axiSlave_inARREADY_axiSlave_inARREADY_HardLink = axiSlave_inARREADY;
 	assign axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink = axiSlave_inAWREADY;
 	assign axiSlave_inBVALID_axiSlave_inBVALID_HardLink = axiSlave_inBVALID;

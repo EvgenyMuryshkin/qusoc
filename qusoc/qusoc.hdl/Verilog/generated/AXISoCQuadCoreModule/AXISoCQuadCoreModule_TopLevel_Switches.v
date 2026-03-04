@@ -51,8 +51,8 @@ module AXISoCQuadCoreModule_TopLevel_Switches
 	wire [0: 0] width = 1'b1;
 	wire [221: 0] Inputs_M2S;
 	wire [1: 0] Inputs_Sig;
-	reg [31: 0] axiInData;
-	reg [0: 0] rAddr;
+	wire [31: 0] axiInData;
+	wire [0: 0] rAddr;
 	reg axiSlave_inARREADY = 1'b0;
 	reg axiSlave_inAWREADY = 1'b0;
 	reg axiSlave_inBVALID = 1'b0;
@@ -71,6 +71,8 @@ module AXISoCQuadCoreModule_TopLevel_Switches
 	wire [3: 0] axiSlave_outWSTRB;
 	wire axiSlave_outWVALID;
 	wire [73: 0] axiSlave_S2M;
+	wire [31: 0] AXI4InSignalArrayBufferModule_L85F34T71_Resize;
+	wire [0: 0] AXI4InSignalArrayBufferModule_L84F30T101_Index;
 	wire axiSlave_inARREADY_axiSlave_inARREADY_HardLink;
 	wire axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink;
 	wire axiSlave_inBVALID_axiSlave_inBVALID_HardLink;
@@ -97,6 +99,11 @@ module AXISoCQuadCoreModule_TopLevel_Switches
 	wire [3: 0] axiSlave_outWSTRB_axiSlave_outWSTRB_HardLink;
 	wire axiSlave_outWVALID_axiSlave_outWVALID_HardLink;
 	wire [73: 0] axiSlave_S2M_axiSlave_S2M_HardLink;
+	wire [221: 0] AXI4InSignalArrayBufferModule_L84F46T82_Expr;
+	wire [221: 0] AXI4InSignalArrayBufferModule_L84F46T82_Expr_1;
+	wire AXI4InSignalArrayBufferModule_L87F9L92T10_AXI4InSignalArrayBufferModule_L88F17T47_Expr;
+	wire AXI4InSignalArrayBufferModule_L87F9L92T10_AXI4InSignalArrayBufferModule_L88F17T47_Expr_1;
+	reg [0 : 0] outBuffer [0 : 1];
 	integer State_buffer_Iterator;
 	reg [0 : 0] State_buffer [0 : 1];
 	initial
@@ -130,6 +137,230 @@ module AXISoCQuadCoreModule_TopLevel_Switches
 			end
 		end
 	end
+	// Output: AXI4InSignalArrayBufferModule_L84F46T82_Expr, Width: 222, ShiftBy: 2, Sources: 1
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[0] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[2];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[1] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[3];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[2] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[4];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[3] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[5];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[4] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[6];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[5] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[7];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[6] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[8];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[7] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[9];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[8] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[10];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[9] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[11];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[10] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[12];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[11] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[13];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[12] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[14];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[13] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[15];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[14] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[16];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[15] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[17];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[16] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[18];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[17] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[19];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[18] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[20];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[19] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[21];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[20] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[22];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[21] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[23];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[22] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[24];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[23] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[25];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[24] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[26];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[25] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[27];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[26] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[28];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[27] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[29];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[28] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[30];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[29] = AXI4InSignalArrayBufferModule_L84F46T82_Expr_1[31];
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[30] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[31] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[32] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[33] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[34] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[35] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[36] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[37] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[38] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[39] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[40] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[41] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[42] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[43] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[44] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[45] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[46] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[47] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[48] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[49] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[50] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[51] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[52] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[53] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[54] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[55] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[56] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[57] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[58] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[59] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[60] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[61] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[62] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[63] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[64] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[65] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[66] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[67] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[68] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[69] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[70] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[71] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[72] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[73] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[74] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[75] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[76] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[77] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[78] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[79] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[80] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[81] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[82] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[83] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[84] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[85] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[86] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[87] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[88] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[89] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[90] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[91] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[92] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[93] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[94] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[95] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[96] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[97] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[98] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[99] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[100] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[101] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[102] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[103] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[104] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[105] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[106] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[107] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[108] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[109] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[110] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[111] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[112] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[113] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[114] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[115] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[116] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[117] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[118] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[119] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[120] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[121] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[122] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[123] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[124] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[125] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[126] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[127] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[128] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[129] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[130] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[131] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[132] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[133] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[134] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[135] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[136] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[137] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[138] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[139] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[140] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[141] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[142] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[143] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[144] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[145] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[146] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[147] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[148] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[149] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[150] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[151] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[152] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[153] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[154] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[155] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[156] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[157] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[158] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[159] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[160] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[161] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[162] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[163] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[164] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[165] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[166] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[167] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[168] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[169] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[170] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[171] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[172] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[173] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[174] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[175] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[176] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[177] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[178] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[179] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[180] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[181] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[182] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[183] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[184] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[185] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[186] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[187] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[188] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[189] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[190] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[191] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[192] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[193] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[194] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[195] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[196] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[197] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[198] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[199] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[200] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[201] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[202] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[203] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[204] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[205] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[206] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[207] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[208] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[209] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[210] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[211] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[212] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[213] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[214] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[215] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[216] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[217] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[218] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[219] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[220] = 0;
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr[221] = 0;
+	assign AXI4InSignalArrayBufferModule_L87F9L92T10_AXI4InSignalArrayBufferModule_L88F17T47_Expr = ~AXI4InSignalArrayBufferModule_L87F9L92T10_AXI4InSignalArrayBufferModule_L88F17T47_Expr_1;
 	AXISoCQuadCoreModule_TopLevel_Switches_axiSlave
 	AXISoCQuadCoreModule_TopLevel_Switches_axiSlave
 	(
@@ -167,8 +398,35 @@ module AXISoCQuadCoreModule_TopLevel_Switches
 		.outWVALID (axiSlave_outWVALID_axiSlave_outWVALID_HardLink),
 		.S2M (axiSlave_S2M_axiSlave_S2M_HardLink)
 	);
+	always @ (*)
+	begin
+		NextState_buffer_Iterator = 0;
+		for (NextState_buffer_Iterator = 0; (NextState_buffer_Iterator < 2); NextState_buffer_Iterator = (NextState_buffer_Iterator + 1))
+		begin
+			NextState_buffer[NextState_buffer_Iterator] = State_buffer[NextState_buffer_Iterator];
+		end
+		if ((AXI4InSignalArrayBufferModule_L87F9L92T10_AXI4InSignalArrayBufferModule_L88F17T47_Expr == 1))
+		begin
+			NextState_buffer[0] = Inputs_Sig[0:0];
+			NextState_buffer[1] = Inputs_Sig[1:1];
+		end
+	end
+	assign AXI4InSignalArrayBufferModule_L84F46T82_Expr_1 = {
+		{190{1'b0}},
+		Inputs_M2S[39:8]
+	}
+	;
+	assign AXI4InSignalArrayBufferModule_L87F9L92T10_AXI4InSignalArrayBufferModule_L88F17T47_Expr_1 = axiSlave_outARREADYConfirming;
 	assign Inputs_M2S = M2S;
 	assign Inputs_Sig = Sig;
+	assign AXI4InSignalArrayBufferModule_L85F34T71_Resize = {
+		{31{1'b0}},
+		State_buffer[rAddr]
+	}
+	;
+	assign axiInData = AXI4InSignalArrayBufferModule_L85F34T71_Resize;
+	assign AXI4InSignalArrayBufferModule_L84F30T101_Index = AXI4InSignalArrayBufferModule_L84F46T82_Expr[0:0];
+	assign rAddr = AXI4InSignalArrayBufferModule_L84F30T101_Index;
 	assign axiSlave_inARREADY_axiSlave_inARREADY_HardLink = axiSlave_inARREADY;
 	assign axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink = axiSlave_inAWREADY;
 	assign axiSlave_inBVALID_axiSlave_inBVALID_HardLink = axiSlave_inBVALID;

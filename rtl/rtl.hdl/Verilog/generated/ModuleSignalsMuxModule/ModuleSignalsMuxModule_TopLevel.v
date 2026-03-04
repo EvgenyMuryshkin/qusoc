@@ -43,15 +43,19 @@ module ModuleSignalsMuxModule_TopLevel
 	wire [1: 0] Inputs_Addr;
 	wire Inputs_I1;
 	wire Inputs_I2;
-	reg AndGate_I1 = 1'b0;
-	reg AndGate_I2 = 1'b0;
+	wire AndGate_I1;
+	wire AndGate_I2;
 	wire AndGate_O;
-	reg OrGate_I1 = 1'b0;
-	reg OrGate_I2 = 1'b0;
+	wire OrGate_I1;
+	wire OrGate_I2;
 	wire OrGate_O;
-	reg XorGate_I1 = 1'b0;
-	reg XorGate_I2 = 1'b0;
+	wire XorGate_I1;
+	wire XorGate_I2;
 	wire XorGate_O;
+	wire [1: 0] ModuleSignalsMuxModule_L38F36T87_Object;
+	wire [1: 0] ModuleSignalsMuxModule_L39F35T86_Object;
+	wire [1: 0] ModuleSignalsMuxModule_L40F36T87_Object;
+	wire [2: 0] ModuleSignalsMuxModule_L32F41T105_Source;
 	wire AndGate_I1_AndGate_I1_HardLink;
 	wire AndGate_I2_AndGate_I2_HardLink;
 	wire AndGate_O_AndGate_O_HardLink;
@@ -61,6 +65,12 @@ module ModuleSignalsMuxModule_TopLevel
 	wire XorGate_I1_XorGate_I1_HardLink;
 	wire XorGate_I2_XorGate_I2_HardLink;
 	wire XorGate_O_XorGate_O_HardLink;
+	reg ModuleSignalsMuxModule_L27F26T46_Mux;
+	wire [1: 0] ModuleSignalsMuxModule_L27F26T46_MuxMultiplexerAddress;
+	wire ModuleSignalsMuxModule_L27F26T46_Mux1;
+	wire ModuleSignalsMuxModule_L27F26T46_Mux2;
+	wire ModuleSignalsMuxModule_L27F26T46_Mux3;
+	wire ModuleSignalsMuxModule_L32F82T104_Enumerable [0 : 2];
 	ModuleSignalsMuxModule_TopLevel_AndGate
 	ModuleSignalsMuxModule_TopLevel_AndGate
 	(
@@ -88,9 +98,56 @@ module ModuleSignalsMuxModule_TopLevel
 		.I2 (XorGate_I2_XorGate_I2_HardLink),
 		.O (XorGate_O_XorGate_O_HardLink)
 	);
+	always @ (*)
+	begin
+		case (ModuleSignalsMuxModule_L27F26T46_MuxMultiplexerAddress)
+			'b00:
+			begin
+				ModuleSignalsMuxModule_L27F26T46_Mux = ModuleSignalsMuxModule_L27F26T46_Mux1;
+			end
+			'b01:
+			begin
+				ModuleSignalsMuxModule_L27F26T46_Mux = ModuleSignalsMuxModule_L27F26T46_Mux2;
+			end
+			'b10:
+			begin
+				ModuleSignalsMuxModule_L27F26T46_Mux = ModuleSignalsMuxModule_L27F26T46_Mux3;
+			end
+			default:
+			begin
+				ModuleSignalsMuxModule_L27F26T46_Mux = 'b0;
+			end
+		endcase
+	end
 	assign Inputs_Addr = Addr;
 	assign Inputs_I1 = I1;
 	assign Inputs_I2 = I2;
+	assign ModuleSignalsMuxModule_L38F36T87_Object[0] = Inputs_I1;
+	assign ModuleSignalsMuxModule_L38F36T87_Object[1] = Inputs_I2;
+	assign AndGate_I2 = ModuleSignalsMuxModule_L38F36T87_Object[1];
+	assign AndGate_I1 = ModuleSignalsMuxModule_L38F36T87_Object[0];
+	assign ModuleSignalsMuxModule_L39F35T86_Object[0] = Inputs_I1;
+	assign ModuleSignalsMuxModule_L39F35T86_Object[1] = Inputs_I2;
+	assign OrGate_I2 = ModuleSignalsMuxModule_L39F35T86_Object[1];
+	assign OrGate_I1 = ModuleSignalsMuxModule_L39F35T86_Object[0];
+	assign ModuleSignalsMuxModule_L40F36T87_Object[0] = Inputs_I1;
+	assign ModuleSignalsMuxModule_L40F36T87_Object[1] = Inputs_I2;
+	assign XorGate_I2 = ModuleSignalsMuxModule_L40F36T87_Object[1];
+	assign XorGate_I1 = ModuleSignalsMuxModule_L40F36T87_Object[0];
+	assign ModuleSignalsMuxModule_L32F82T104_Enumerable[0] = AndGate_O;
+	assign ModuleSignalsMuxModule_L32F82T104_Enumerable[1] = OrGate_O;
+	assign ModuleSignalsMuxModule_L32F82T104_Enumerable[2] = XorGate_O;
+	assign ModuleSignalsMuxModule_L32F41T105_Source = {
+		ModuleSignalsMuxModule_L32F82T104_Enumerable[0],
+		ModuleSignalsMuxModule_L32F82T104_Enumerable[1],
+		ModuleSignalsMuxModule_L32F82T104_Enumerable[2]
+	}
+	;
+	assign CombinedO = ModuleSignalsMuxModule_L32F41T105_Source;
+	assign O = ModuleSignalsMuxModule_L27F26T46_Mux;
+	assign oAnd = AndGate_O;
+	assign oOr = OrGate_O;
+	assign oXor = XorGate_O;
 	assign AndGate_I1_AndGate_I1_HardLink = AndGate_I1;
 	assign AndGate_I2_AndGate_I2_HardLink = AndGate_I2;
 	assign AndGate_O = AndGate_O_AndGate_O_HardLink;
@@ -100,6 +157,10 @@ module ModuleSignalsMuxModule_TopLevel
 	assign XorGate_I1_XorGate_I1_HardLink = XorGate_I1;
 	assign XorGate_I2_XorGate_I2_HardLink = XorGate_I2;
 	assign XorGate_O = XorGate_O_XorGate_O_HardLink;
+	assign ModuleSignalsMuxModule_L27F26T46_Mux1 = AndGate_O;
+	assign ModuleSignalsMuxModule_L27F26T46_Mux2 = OrGate_O;
+	assign ModuleSignalsMuxModule_L27F26T46_Mux3 = XorGate_O;
+	assign ModuleSignalsMuxModule_L27F26T46_MuxMultiplexerAddress = Inputs_Addr;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

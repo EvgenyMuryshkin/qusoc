@@ -45,15 +45,35 @@ architecture rtl of L1ToArrayIOObjectModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_i1 : unsigned(8 downto 0) := (others => '0');
-	signal Inputs_i2 : unsigned(8 downto 0) := (others => '0');
+	signal Inputs_i1_boolValue : std_logic;
+	signal Inputs_i1_byteValue : unsigned(7 downto 0);
+	signal Inputs_i2_boolValue : std_logic;
+	signal Inputs_i2_byteValue : unsigned(7 downto 0);
+	signal NestedIOObjectModule_L20F58L23T10_0 : unsigned(8 downto 0);
+	signal NestedIOObjectModule_L20F58L23T10_1 : unsigned(8 downto 0);
+	type oValuesArray is array (0 to 1) of unsigned (8 downto 0);
+	signal oValues : oValuesArray;
+	type NestedIOObjectModule_L20F58L23T10_ArrayArray is array (0 to 1) of unsigned (8 downto 0);
+	signal NestedIOObjectModule_L20F58L23T10_Array : NestedIOObjectModule_L20F58L23T10_ArrayArray;
 begin
-	process (i1_boolValue, i1_byteValue, i2_boolValue, i2_byteValue)
+	process (i1_boolValue, i1_byteValue, i2_boolValue, i2_byteValue, Inputs_i1_boolValue, Inputs_i1_byteValue, Inputs_i2_boolValue, Inputs_i2_byteValue, NestedIOObjectModule_L20F58L23T10_0, NestedIOObjectModule_L20F58L23T10_1, NestedIOObjectModule_L20F58L23T10_Array, oValues)
 	begin
-		Inputs_i1(8 downto 1) <= i1_byteValue;
-		Inputs_i1(0) <= i1_boolValue;
-		Inputs_i2(8 downto 1) <= i2_byteValue;
-		Inputs_i2(0) <= i2_boolValue;
+		oValues0_byteValue <= oValues(0)(8 downto 1);
+		oValues0_boolValue <= oValues(0)(0);
+		oValues1_byteValue <= oValues(1)(8 downto 1);
+		oValues1_boolValue <= oValues(1)(0);
+		Inputs_i1_boolValue <= i1_boolValue;
+		Inputs_i1_byteValue <= i1_byteValue;
+		Inputs_i2_boolValue <= i2_boolValue;
+		Inputs_i2_byteValue <= i2_byteValue;
+		NestedIOObjectModule_L20F58L23T10_0(8 downto 1) <= Inputs_i1_byteValue;
+		NestedIOObjectModule_L20F58L23T10_0(0) <= Inputs_i1_boolValue;
+		NestedIOObjectModule_L20F58L23T10_Array(0) <= NestedIOObjectModule_L20F58L23T10_0;
+		NestedIOObjectModule_L20F58L23T10_1(8 downto 1) <= Inputs_i2_byteValue;
+		NestedIOObjectModule_L20F58L23T10_1(0) <= Inputs_i2_boolValue;
+		NestedIOObjectModule_L20F58L23T10_Array(1) <= NestedIOObjectModule_L20F58L23T10_1;
+		oValues(0) <= NestedIOObjectModule_L20F58L23T10_Array(0);
+		oValues(1) <= NestedIOObjectModule_L20F58L23T10_Array(1);
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

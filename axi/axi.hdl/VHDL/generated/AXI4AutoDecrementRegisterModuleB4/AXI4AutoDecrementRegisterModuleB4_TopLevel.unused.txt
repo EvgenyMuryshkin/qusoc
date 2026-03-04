@@ -1,4 +1,8 @@
 No reads:
+	AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L96F13L102T14_AXI4AutoDecrementRegisterModule_L97F17L101T18_0_w
+	AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L96F13L102T14_AXI4AutoDecrementRegisterModule_L97F17L101T18_1_w
+	AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L96F13L102T14_AXI4AutoDecrementRegisterModule_L97F17L101T18_2_w
+	AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L96F13L102T14_AXI4AutoDecrementRegisterModule_L97F17L101T18_3_w
 	axiSlave_outARADDR
 	axiSlave_outARREADYConfirming
 	axiSlave_outARVALID
@@ -6,29 +10,7 @@ No reads:
 	axiSlave_outAWREADYConfirming
 	axiSlave_outAWVALID
 	axiSlave_outReadTXCompleting
-	axiSlave_outWDATA
-	axiSlave_outWREADYConfirming
 	axiSlave_outWriteTXCompleting
-	axiSlave_outWSTRB
 	axiSlave_outWVALID
-	axiSlave_S2M
-	decrement
-	Inputs_M2S
-	Inputs_Reg
 	size
 	sizeBits
-	State_bytes
-	State_Written
-	stateValue
-No writes:
-	axiSlave_inARREADY
-	axiSlave_inAWREADY
-	axiSlave_inBVALID
-	axiSlave_inRDATA
-	axiSlave_inRVALID
-	axiSlave_inWREADY
-	axiSlave_M2S
-	decrement
-	NextState_bytes
-	NextState_Written
-	stateValue

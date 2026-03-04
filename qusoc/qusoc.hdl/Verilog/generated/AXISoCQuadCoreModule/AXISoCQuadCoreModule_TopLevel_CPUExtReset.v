@@ -48,6 +48,10 @@ module AXISoCQuadCoreModule_TopLevel_CPUExtReset
 	wire false = 1'b0;
 	wire [7: 0] State_bytesDefault = 8'b00000000;
 	wire [1: 0] size = 2'b10;
+	wire AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_0_w = 1'b0;
+	wire AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_1_w = 1'b1;
+	wire [1: 0] AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_2_w = 2'b10;
+	wire [1: 0] AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_3_w = 2'b11;
 	wire [221: 0] Inputs_M2S;
 	wire [32: 0] Inputs_Reg;
 	reg NextState_Written;
@@ -97,6 +101,10 @@ module AXISoCQuadCoreModule_TopLevel_CPUExtReset
 	wire [73: 0] axiSlave_S2M_axiSlave_S2M_HardLink;
 	reg State_Written = 1'b0;
 	wire State_WrittenDefault = 1'b0;
+	wire AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr;
+	wire AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_1;
+	wire AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_2;
+	reg [7 : 0] outData [0 : 3];
 	integer State_bytes_Iterator;
 	reg [7 : 0] State_bytes [0 : 3];
 	initial
@@ -141,6 +149,7 @@ module AXISoCQuadCoreModule_TopLevel_CPUExtReset
 			end
 		end
 	end
+	assign AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr = AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_1 | AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_2;
 	AXISoCQuadCoreModule_TopLevel_CPUExtReset_axiSlave
 	AXISoCQuadCoreModule_TopLevel_CPUExtReset_axiSlave
 	(
@@ -178,6 +187,44 @@ module AXISoCQuadCoreModule_TopLevel_CPUExtReset
 		.outWVALID (axiSlave_outWVALID_axiSlave_outWVALID_HardLink),
 		.S2M (axiSlave_S2M_axiSlave_S2M_HardLink)
 	);
+	always @ (*)
+	begin
+		NextState_bytes_Iterator = 0;
+		for (NextState_bytes_Iterator = 0; (NextState_bytes_Iterator < 4); NextState_bytes_Iterator = (NextState_bytes_Iterator + 1))
+		begin
+			NextState_bytes[NextState_bytes_Iterator] = State_bytes[NextState_bytes_Iterator];
+		end
+		NextState_Written = State_Written;
+		NextState_Written = AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr;
+		if ((Inputs_Reg[32] == 1))
+		begin
+			NextState_bytes[0] = Inputs_Reg[7:0];
+			NextState_bytes[1] = Inputs_Reg[15:8];
+			NextState_bytes[2] = Inputs_Reg[23:16];
+			NextState_bytes[3] = Inputs_Reg[31:24];
+		end
+		else if ((axiSlave_outWREADYConfirming == 1))
+		begin
+			if ((axiSlave_outWSTRB[0] == 1))
+			begin
+				NextState_bytes[0] = axiSlave_outWDATA[0];
+			end
+			if ((axiSlave_outWSTRB[1] == 1))
+			begin
+				NextState_bytes[1] = axiSlave_outWDATA[1];
+			end
+			if ((axiSlave_outWSTRB[2] == 1))
+			begin
+				NextState_bytes[2] = axiSlave_outWDATA[2];
+			end
+			if ((axiSlave_outWSTRB[3] == 1))
+			begin
+				NextState_bytes[3] = axiSlave_outWDATA[3];
+			end
+		end
+	end
+	assign AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_1 = Inputs_Reg[32];
+	assign AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L79F33T80_Expr_2 = axiSlave_outWREADYConfirming;
 	assign Inputs_M2S = M2S;
 	assign Inputs_Reg = Reg;
 	assign axiSlave_inARREADY_axiSlave_inARREADY_HardLink = axiSlave_inARREADY;

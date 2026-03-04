@@ -45,16 +45,20 @@ module AXISoCQuadCoreModule_TopLevel_programmerInterconnect_writeInterconnect
 	wire false = 1'b0;
 	wire signed [1: 0] leftCount = 2'b01;
 	wire signed [2: 0] rightCount = 3'b010;
+	wire InterconnectModule_L153F47T52_Expr = 1'b0;
+	wire InterconnectModule_L154F48T53_Expr = 1'b0;
+	wire InterconnectModule_L160F43T47_Expr = 1'b1;
+	wire InterconnectModule_L163F44T48_Expr = 1'b1;
 	reg [0: 0] NextState_leftAddr;
 	reg NextState_leftAddrValid;
 	reg [0: 0] NextState_rightAddr;
 	reg NextState_rightAddrValid;
-	reg currentTXEnd;
-	reg [137: 0] muxLeftData;
-	reg [20: 0] muxRightData;
-	reg [0: 0] rightAddr;
-	reg [0: 0] axiRightAddr;
-	reg rangeDetectorActive;
+	wire currentTXEnd;
+	wire [137: 0] muxLeftData;
+	wire [20: 0] muxRightData;
+	wire [0: 0] rightAddr;
+	wire [0: 0] axiRightAddr;
+	wire rangeDetectorActive;
 	reg [0: 0] DuplexMux_iLeftAddr = 1'b0;
 	reg DuplexMux_iLeftAddrValid = 1'b0;
 	reg [0: 0] DuplexMux_iRightAddr = 1'b0;
@@ -74,6 +78,8 @@ module AXISoCQuadCoreModule_TopLevel_programmerInterconnect_writeInterconnect
 	reg [31: 0] rangeDetectorArray0_iAddress = 32'b00000000000000000000000000000000;
 	wire rangeDetectorArray0_oActive;
 	wire [0: 0] rangeDetectorArray0_oIndex;
+	wire [0: 0] AXI4WriteInteconnectModule_L32F37T75_Index;
+	wire AXI4WriteInteconnectModule_L35F37T79_Index;
 	wire [137: 0] DuplexMux_iLeft0_DuplexMux_iLeft_HardLink;
 	wire [0: 0] DuplexMux_iLeftAddr_DuplexMux_iLeftAddr_HardLink;
 	wire DuplexMux_iLeftAddrValid_DuplexMux_iLeftAddrValid_HardLink;
@@ -108,21 +114,41 @@ module AXISoCQuadCoreModule_TopLevel_programmerInterconnect_writeInterconnect
 	wire [0: 0] State_rightAddrDefault = 1'b0;
 	reg State_rightAddrValid = 1'b0;
 	wire State_rightAddrValidDefault = 1'b0;
+	wire InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F78T151_Expr;
+	wire InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F78T151_Expr_1;
+	wire InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F78T151_Expr_2;
+	wire InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F78T118_Expr;
+	wire InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F78T118_Expr_1;
+	wire InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F78T118_Expr_2;
+	wire InterconnectModule_L83F36T108_TransactionDetectors0_InterconnectModule_L83F69T97_Expr;
+	wire InterconnectModule_L83F36T108_TransactionDetectors0_InterconnectModule_L83F69T97_Expr_1;
+	wire InterconnectModule_L83F36T108_TransactionDetectors0_InterconnectModule_L83F69T97_Expr_2;
+	wire InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F122T151_Expr;
+	wire signed [1: 0] InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F122T151_ExprLhs;
+	wire signed [1: 0] InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F122T151_ExprRhs;
 	wire [137 : 0] Inputs_iLeft [0 : 0];
 	wire [20 : 0] Inputs_iRight [0 : 1];
-	reg ActiveTransactions [0 : 0];
-	reg [137 : 0] muxLeft [0 : 1];
-	reg [20 : 0] muxRight [0 : 0];
-	reg Transactions [0 : 0];
-	reg TXBegin [0 : 0];
-	reg WaitForRestarts [0 : 0];
-	reg rangeDetectorActiveFlags [0 : 0];
-	reg [0 : 0] rangeDetectorIndexes [0 : 0];
+	reg [137 : 0] M2S [0 : 1];
+	reg [20 : 0] S2M [0 : 0];
+	wire ActiveTransactions [0 : 0];
+	wire [137 : 0] muxLeft [0 : 1];
+	wire [20 : 0] muxRight [0 : 0];
+	wire Transactions [0 : 0];
+	wire TXBegin [0 : 0];
+	wire WaitForRestarts [0 : 0];
+	wire rangeDetectorActiveFlags [0 : 0];
+	wire [0 : 0] rangeDetectorIndexes [0 : 0];
 	reg [137 : 0] DuplexMux_iLeft [0 : 0];
 	reg [20 : 0] DuplexMux_iRight [0 : 1];
 	wire [137 : 0] DuplexMux_oLeft [0 : 1];
 	wire [20 : 0] DuplexMux_oRight [0 : 0];
 	reg Encoder_iValues [0 : 0];
+	wire InterconnectModule_L80F47T105_Enumerable [0 : 0];
+	wire InterconnectModule_L82F41T99_Enumerable [0 : 0];
+	wire InterconnectModule_L83F36T108_Enumerable [0 : 0];
+	wire InterconnectModule_L81F44T105_Enumerable [0 : 0];
+	wire AXI4WriteInteconnectModule_L34F44T95_Enumerable [0 : 0];
+	wire [0 : 0] AXI4WriteInteconnectModule_L31F47T97_Enumerable [0 : 0];
 	always @ (posedge BoardSignals_Clock)
 	begin
 		if ((BoardSignals_Reset == 1))
@@ -140,6 +166,10 @@ module AXISoCQuadCoreModule_TopLevel_programmerInterconnect_writeInterconnect
 			State_rightAddrValid <= NextState_rightAddrValid;
 		end
 	end
+	assign InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F122T151_Expr = InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F122T151_ExprLhs == InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F122T151_ExprRhs ? 1'b1 : 1'b0;
+	assign InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F78T151_Expr = InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F78T151_Expr_1 & InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F78T151_Expr_2;
+	assign InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F78T118_Expr = InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F78T118_Expr_1 & InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F78T118_Expr_2;
+	assign InterconnectModule_L83F36T108_TransactionDetectors0_InterconnectModule_L83F69T97_Expr = InterconnectModule_L83F36T108_TransactionDetectors0_InterconnectModule_L83F69T97_Expr_1 | InterconnectModule_L83F36T108_TransactionDetectors0_InterconnectModule_L83F69T97_Expr_2;
 	AXISoCQuadCoreModule_TopLevel_programmerInterconnect_writeInterconnect_DuplexMux
 	AXISoCQuadCoreModule_TopLevel_programmerInterconnect_writeInterconnect_DuplexMux
 	(
@@ -195,9 +225,68 @@ module AXISoCQuadCoreModule_TopLevel_programmerInterconnect_writeInterconnect
 		.oActive (rangeDetectorArray0_oActive_rangeDetectorArray0_oActive_HardLink),
 		.oIndex (rangeDetectorArray0_oIndex_rangeDetectorArray0_oIndex_HardLink)
 	);
+	always @ (*)
+	begin
+		NextState_leftAddr = State_leftAddr;
+		NextState_leftAddrValid = State_leftAddrValid;
+		NextState_rightAddr = State_rightAddr;
+		NextState_rightAddrValid = State_rightAddrValid;
+		if ((State_rightAddrValid == 1))
+		begin
+			if ((currentTXEnd == 1))
+			begin
+				NextState_leftAddrValid = InterconnectModule_L153F47T52_Expr;
+				NextState_rightAddrValid = InterconnectModule_L154F48T53_Expr;
+			end
+		end
+		else if ((Encoder_HasActive == 1))
+		begin
+			NextState_leftAddr = Encoder_MSBIndex;
+			NextState_leftAddrValid = InterconnectModule_L160F43T47_Expr;
+			NextState_rightAddr = rightAddr;
+			NextState_rightAddrValid = InterconnectModule_L163F44T48_Expr;
+		end
+	end
+	assign InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F122T151_ExprLhs = {
+		1'b0,
+		State_leftAddr
+	}
+	;
+	assign InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F122T151_ExprRhs = {
+		1'b0,
+		State_leftAddr
+	}
+	;
+	assign InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F78T151_Expr_1 = InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F78T118_Expr;
+	assign InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F78T151_Expr_2 = InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F122T151_Expr;
+	assign InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F78T118_Expr_1 = Inputs_iLeft[State_leftAddr][137];
+	assign InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F78T118_Expr_2 = muxRightData[19];
+	assign InterconnectModule_L83F36T108_TransactionDetectors0_InterconnectModule_L83F69T97_Expr_1 = TransactionDetectors0_oTXBegin;
+	assign InterconnectModule_L83F36T108_TransactionDetectors0_InterconnectModule_L83F69T97_Expr_2 = TransactionDetectors0_oTransaction;
 	assign Inputs_iLeft[0] = iLeft0;
 	assign Inputs_iRight[0] = iRight0;
 	assign Inputs_iRight[1] = iRight1;
+	assign InterconnectModule_L80F47T105_Enumerable[0] = TransactionDetectors0_oTransaction;
+	assign ActiveTransactions[0] = InterconnectModule_L80F47T105_Enumerable[0];
+	assign currentTXEnd = InterconnectModule_L89F40T91_AXI4WriteInteconnectModule_L43F78T151_Expr;
+	assign muxLeft[0] = DuplexMux_oLeft[0];
+	assign muxLeft[1] = DuplexMux_oLeft[1];
+	assign muxLeftData = DuplexMux_oMuxLeftData;
+	assign muxRight[0] = DuplexMux_oRight[0];
+	assign muxRightData = DuplexMux_oMuxRightData;
+	assign rightAddr = axiRightAddr;
+	assign InterconnectModule_L82F41T99_Enumerable[0] = TransactionDetectors0_oTransaction;
+	assign Transactions[0] = InterconnectModule_L82F41T99_Enumerable[0];
+	assign InterconnectModule_L83F36T108_Enumerable[0] = InterconnectModule_L83F36T108_TransactionDetectors0_InterconnectModule_L83F69T97_Expr;
+	assign TXBegin[0] = InterconnectModule_L83F36T108_Enumerable[0];
+	assign InterconnectModule_L81F44T105_Enumerable[0] = TransactionDetectors0_oWaitForRestart;
+	assign WaitForRestarts[0] = InterconnectModule_L81F44T105_Enumerable[0];
+	assign axiRightAddr = AXI4WriteInteconnectModule_L32F37T75_Index;
+	assign rangeDetectorActive = AXI4WriteInteconnectModule_L35F37T79_Index;
+	assign AXI4WriteInteconnectModule_L34F44T95_Enumerable[0] = rangeDetectorArray0_oActive;
+	assign rangeDetectorActiveFlags[0] = AXI4WriteInteconnectModule_L34F44T95_Enumerable[0];
+	assign AXI4WriteInteconnectModule_L31F47T97_Enumerable[0] = rangeDetectorArray0_oIndex;
+	assign rangeDetectorIndexes[0] = AXI4WriteInteconnectModule_L31F47T97_Enumerable[0];
 	assign DuplexMux_iLeft0_DuplexMux_iLeft_HardLink = DuplexMux_iLeft[0];
 	assign DuplexMux_iLeftAddr_DuplexMux_iLeftAddr_HardLink = DuplexMux_iLeftAddr;
 	assign DuplexMux_iLeftAddrValid_DuplexMux_iLeftAddrValid_HardLink = DuplexMux_iLeftAddrValid;
@@ -224,6 +313,8 @@ module AXISoCQuadCoreModule_TopLevel_programmerInterconnect_writeInterconnect
 	assign rangeDetectorArray0_iAddress_rangeDetectorArray0_iAddress_HardLink = rangeDetectorArray0_iAddress;
 	assign rangeDetectorArray0_oActive = rangeDetectorArray0_oActive_rangeDetectorArray0_oActive_HardLink;
 	assign rangeDetectorArray0_oIndex = rangeDetectorArray0_oIndex_rangeDetectorArray0_oIndex_HardLink;
+	assign AXI4WriteInteconnectModule_L35F37T79_Index = rangeDetectorActiveFlags[Encoder_MSBIndex];
+	assign AXI4WriteInteconnectModule_L32F37T75_Index = rangeDetectorIndexes[Encoder_MSBIndex];
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

@@ -53,14 +53,128 @@ architecture rtl of BitArrayModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_Bit : unsigned(2 downto 0) := (others => '0');
-	signal Inputs_Value : unsigned(7 downto 0) := (others => '0');
-	signal Bits : unsigned(7 downto 0) := (others => '0');
-begin
-	process (Bit, Value)
+	constant BitArrayModule_L29F53T54_Expr : std_logic := '0';
+	constant BitArrayModule_L29F98T108_Expr : unsigned(7 downto 0) := "00000000";
+	constant BitArrayModule_L29F153T163_Expr : unsigned(7 downto 0) := "01000000";
+	constant BitArrayModule_L24F82T86_Expr : std_logic := '1';
+	constant BitArrayModule_L24F88T92_Expr : std_logic := '1';
+	constant BitArrayModule_L24F94T99_Expr : std_logic := '0';
+	constant BitArrayModule_L24F101T105_Expr : std_logic := '1';
+	constant BitArrayModule_L25F82T87_Expr : std_logic := '0';
+	constant BitArrayModule_L25F89T93_Expr : std_logic := '1';
+	constant BitArrayModule_L25F95T99_Expr : std_logic := '1';
+	constant BitArrayModule_L25F101T105_Expr : std_logic := '1';
+	constant BitArrayModule_L18F41T42_Expr : unsigned(2 downto 0) := "111";
+	constant BitArrayModule_L18F44T45_Expr : unsigned(2 downto 0) := "100";
+	constant BitArrayModule_L19F40T41_Expr : unsigned(1 downto 0) := "11";
+	constant BitArrayModule_L19F43T44_Expr : unsigned(0 downto 0) := "0";
+	constant BitArrayModule_L20F45T46_Expr : unsigned(0 downto 0) := "0";
+	constant BitArrayModule_L20F48T49_Expr : unsigned(2 downto 0) := "111";
+	constant BitArrayModule_L21F49T50_Expr : unsigned(2 downto 0) := "100";
+	constant BitArrayModule_L21F52T53_Expr : unsigned(2 downto 0) := "111";
+	constant BitArrayModule_L22F48T49_Expr : unsigned(0 downto 0) := "0";
+	constant BitArrayModule_L22F51T52_Expr : unsigned(1 downto 0) := "11";
+	constant BitArrayModule_L27F84T94_Expr : unsigned(7 downto 0) := "01000000";
+	constant BitArrayModule_L26F83T93_Expr : unsigned(7 downto 0) := "00000000";
+	signal Inputs_Bit : unsigned(2 downto 0);
+	signal Inputs_Value : unsigned(7 downto 0);
+	signal Bits : unsigned(7 downto 0);
+	signal BitArrayModule_L29F57T109_Source : unsigned(7 downto 0);
+	signal BitArrayModule_L29F112T164_Source : unsigned(7 downto 0);
+	signal BitArrayModule_L29F39T164_TernarySignal : unsigned(7 downto 0) := (others => '0');
+	signal BitArrayModule_L29F39T164_Ternary : unsigned(7 downto 0);
+	signal BitArrayModule_L24F41T106_Source : unsigned(3 downto 0) := (others => '0');
+	signal BitArrayModule_L25F41T106_Source : unsigned(3 downto 0) := (others => '0');
+	signal BitArrayModule_L23F78T87_Index : unsigned(1 downto 0);
+	signal BitArrayModule_L23F89T98_Index : unsigned(1 downto 0);
+	signal BitArrayModule_L23F37T99_Source : unsigned(3 downto 0) := (others => '0');
+	signal BitArrayModule_L27F43T95_Source : unsigned(7 downto 0);
+	signal BitArrayModule_L26F42T94_Source : unsigned(7 downto 0);
+	signal BitArrayModule_L17F46T61_Expr : unsigned(7 downto 0) := "00000000";
+	signal BitArrayModule_L17F46T61_Expr_1 : unsigned(7 downto 0) := "00000000";
+	signal BitArrayModule_L29F39T54_Expr : std_logic := '0';
+	signal BitArrayModule_L29F39T54_ExprLhs : signed(3 downto 0) := "0000";
+	signal BitArrayModule_L29F39T54_ExprRhs : signed(3 downto 0) := "0000";
+	subtype unsigned8 is unsigned (7 downto 0);
+	function resize_unsigned8_unsigned8(source : unsigned8) return unsigned8 is
 	begin
+		return resize(source, 8);
+	end function;
+	function ternary_unsigned8_unsigned8_unsigned8(condition : boolean; whenTrue : unsigned8; whenFalse : unsigned8) return unsigned8 is
+	begin
+		if condition then
+			return whenTrue;
+		else
+			return whenFalse;
+		end if;
+	end function;
+begin
+	BitArrayModule_L29F39T54_Expr <= '1' when (signed(resize(BitArrayModule_L29F39T54_ExprLhs, BitArrayModule_L29F39T54_ExprLhs'length + 1)) = signed(resize(BitArrayModule_L29F39T54_ExprRhs, BitArrayModule_L29F39T54_ExprRhs'length + 1))) else '0';
+	process (BitArrayModule_L17F46T61_Expr_1)
+	begin
+		for i in 7 downto 0 loop
+			BitArrayModule_L17F46T61_Expr(i) <= BitArrayModule_L17F46T61_Expr_1(7 - i);
+		end loop;
+	end process;
+	BitArrayModule_L29F39T164_TernarySignal <= ternary_unsigned8_unsigned8_unsigned8(BitArrayModule_L29F39T54_Expr = '1', resize_unsigned8_unsigned8(BitArrayModule_L29F57T109_Source), resize_unsigned8_unsigned8(BitArrayModule_L29F112T164_Source));
+	process (Bit, BitArrayModule_L17F46T61_Expr, BitArrayModule_L23F37T99_Source, BitArrayModule_L23F78T87_Index, BitArrayModule_L23F89T98_Index, BitArrayModule_L24F41T106_Source, BitArrayModule_L25F41T106_Source, BitArrayModule_L26F42T94_Source, BitArrayModule_L27F43T95_Source, BitArrayModule_L29F39T164_Ternary, BitArrayModule_L29F39T164_TernarySignal, Bits, Inputs_Bit, Inputs_Value, Value)
+	begin
+		BitArrayModule_L29F39T54_ExprLhs(3) <= '0';
+		BitArrayModule_L29F39T54_ExprLhs(2 downto 0) <= signed(Inputs_Bit);
+		BitArrayModule_L29F39T54_ExprRhs(3 downto 1) <= (
+			others => '0'
+		)
+		;
+		BitArrayModule_L29F39T54_ExprRhs(0) <= BitArrayModule_L29F53T54_Expr;
+		BitArrayModule_L17F46T61_Expr_1 <= Bits;
 		Inputs_Bit <= Bit;
 		Inputs_Value <= Value;
+		Bits <= Inputs_Value;
+		BitArrayModule_L29F57T109_Source <= BitArrayModule_L29F98T108_Expr;
+		BitArrayModule_L29F112T164_Source <= BitArrayModule_L29F153T163_Expr;
+		BitArrayModule_L29F39T164_Ternary <= BitArrayModule_L29F39T164_TernarySignal;
+		CtorMux <= BitArrayModule_L29F39T164_Ternary;
+		Direct <= Bits;
+		BitArrayModule_L24F41T106_Source(3) <= BitArrayModule_L24F82T86_Expr;
+		BitArrayModule_L24F41T106_Source(2) <= BitArrayModule_L24F88T92_Expr;
+		BitArrayModule_L24F41T106_Source(1) <= BitArrayModule_L24F94T99_Expr;
+		BitArrayModule_L24F41T106_Source(0) <= BitArrayModule_L24F101T105_Expr;
+		FromBits1 <= BitArrayModule_L24F41T106_Source;
+		BitArrayModule_L25F41T106_Source(3) <= BitArrayModule_L25F82T87_Expr;
+		BitArrayModule_L25F41T106_Source(2) <= BitArrayModule_L25F89T93_Expr;
+		BitArrayModule_L25F41T106_Source(1) <= BitArrayModule_L25F95T99_Expr;
+		BitArrayModule_L25F41T106_Source(0) <= BitArrayModule_L25F101T105_Expr;
+		FromBits2 <= BitArrayModule_L25F41T106_Source;
+		High <= Bits(7 downto 4);
+		Low <= Bits(3 downto 0);
+		BitArrayModule_L23F78T87_Index <= Bits(6 downto 5);
+		BitArrayModule_L23F89T98_Index(0) <= Bits(1);
+		BitArrayModule_L23F89T98_Index(1) <= Bits(0);
+		BitArrayModule_L23F37T99_Source(3 downto 2) <= BitArrayModule_L23F78T87_Index;
+		BitArrayModule_L23F37T99_Source(1 downto 0) <= BitArrayModule_L23F89T98_Index;
+		Picks <= BitArrayModule_L23F37T99_Source;
+		Reversed(0) <= Bits(7);
+		Reversed(1) <= Bits(6);
+		Reversed(2) <= Bits(5);
+		Reversed(3) <= Bits(4);
+		Reversed(4) <= Bits(3);
+		Reversed(5) <= Bits(2);
+		Reversed(6) <= Bits(1);
+		Reversed(7) <= Bits(0);
+		ReversedByCall <= BitArrayModule_L17F46T61_Expr;
+		ReversedHigh(0) <= Bits(7);
+		ReversedHigh(1) <= Bits(6);
+		ReversedHigh(2) <= Bits(5);
+		ReversedHigh(3) <= Bits(4);
+		ReversedLow(0) <= Bits(3);
+		ReversedLow(1) <= Bits(2);
+		ReversedLow(2) <= Bits(1);
+		ReversedLow(3) <= Bits(0);
+		ValueBit <= Bits(TO_INTEGER(Inputs_Bit));
+		BitArrayModule_L27F43T95_Source <= BitArrayModule_L27F84T94_Expr;
+		ValueString <= BitArrayModule_L27F43T95_Source;
+		BitArrayModule_L26F42T94_Source <= BitArrayModule_L26F83T93_Expr;
+		ZeroString <= BitArrayModule_L26F42T94_Source;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

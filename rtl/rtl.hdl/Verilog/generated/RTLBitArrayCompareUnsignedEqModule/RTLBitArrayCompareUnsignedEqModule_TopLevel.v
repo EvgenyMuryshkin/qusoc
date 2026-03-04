@@ -37,8 +37,23 @@ module RTLBitArrayCompareUnsignedEqModule_TopLevel
 	wire false = 1'b0;
 	wire [31: 0] Inputs_LHS;
 	wire [31: 0] Inputs_RHS;
+	wire RTLBitArrayCompareModules_L30F30T54_Expr;
+	wire signed [32: 0] RTLBitArrayCompareModules_L30F30T54_ExprLhs;
+	wire signed [32: 0] RTLBitArrayCompareModules_L30F30T54_ExprRhs;
+	assign RTLBitArrayCompareModules_L30F30T54_Expr = RTLBitArrayCompareModules_L30F30T54_ExprLhs == RTLBitArrayCompareModules_L30F30T54_ExprRhs ? 1'b1 : 1'b0;
+	assign RTLBitArrayCompareModules_L30F30T54_ExprLhs = {
+		1'b0,
+		Inputs_LHS
+	}
+	;
+	assign RTLBitArrayCompareModules_L30F30T54_ExprRhs = {
+		1'b0,
+		Inputs_RHS
+	}
+	;
 	assign Inputs_LHS = LHS;
 	assign Inputs_RHS = RHS;
+	assign Value = RTLBitArrayCompareModules_L30F30T54_Expr;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

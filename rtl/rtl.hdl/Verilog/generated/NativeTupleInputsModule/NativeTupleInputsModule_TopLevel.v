@@ -34,9 +34,10 @@ module NativeTupleInputsModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [8: 0] Inputs_iValue;
-	assign Inputs_iValue[8] = iValue_Item1;
-	assign Inputs_iValue[7:0] = iValue_Item2;
+	wire Inputs_iValue_Item1;
+	wire [7: 0] Inputs_iValue_Item2;
+	assign Inputs_iValue_Item1 = iValue_Item1;
+	assign Inputs_iValue_Item2 = iValue_Item2;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

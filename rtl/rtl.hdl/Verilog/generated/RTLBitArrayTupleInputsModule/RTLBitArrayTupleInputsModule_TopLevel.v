@@ -34,9 +34,10 @@ module RTLBitArrayTupleInputsModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [42: 0] Inputs_iValue;
-	assign Inputs_iValue[42] = iValue_Item1;
-	assign Inputs_iValue[41:0] = iValue_Item2;
+	wire Inputs_iValue_Item1;
+	wire [41: 0] Inputs_iValue_Item2;
+	assign Inputs_iValue_Item1 = iValue_Item1;
+	assign Inputs_iValue_Item2 = iValue_Item2;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

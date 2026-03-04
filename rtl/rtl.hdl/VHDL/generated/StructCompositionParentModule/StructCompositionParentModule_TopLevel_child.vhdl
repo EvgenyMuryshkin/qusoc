@@ -24,8 +24,24 @@ entity StructCompositionParentModule_TopLevel_child is
 	(
 		-- [BEGIN USER PORTS]
 		-- [END USER PORTS]
-		iValue : in unsigned (75 downto 0);
-		Output : out unsigned (75 downto 0)
+		iValue_intValue : in unsigned (15 downto 0);
+		iValue_l1_byteValue : in unsigned (7 downto 0);
+		iValue_l1_l2_bitArray : in unsigned (1 downto 0);
+		iValue_l1_l2_boolValue0 : in std_logic;
+		iValue_l1_l2_boolValue1 : in std_logic;
+		iValue_l1_l2Array0 : in unsigned (3 downto 0);
+		iValue_l1_l2Array1 : in unsigned (3 downto 0);
+		iValue_l1Array0 : in unsigned (19 downto 0);
+		iValue_l1Array1 : in unsigned (19 downto 0);
+		Output_iValue_intValue : out unsigned (15 downto 0);
+		Output_iValue_l1_byteValue : out unsigned (7 downto 0);
+		Output_iValue_l1_l2_bitArray : out unsigned (1 downto 0);
+		Output_iValue_l1_l2_boolValue0 : out std_logic;
+		Output_iValue_l1_l2_boolValue1 : out std_logic;
+		Output_iValue_l1_l2Array0 : out unsigned (3 downto 0);
+		Output_iValue_l1_l2Array1 : out unsigned (3 downto 0);
+		Output_iValue_l1Array0 : out unsigned (19 downto 0);
+		Output_iValue_l1Array1 : out unsigned (19 downto 0)
 	);
 end entity;
 -- FSM summary
@@ -39,11 +55,48 @@ architecture rtl of StructCompositionParentModule_TopLevel_child is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_iValue : unsigned(75 downto 0) := (others => '0');
+	signal Inputs_iValue_intValue : unsigned(15 downto 0);
+	signal Inputs_iValue_l1_byteValue : unsigned(7 downto 0);
+	signal Inputs_iValue_l1_l2_bitArray : unsigned(1 downto 0);
+	type Inputs_iValue_l1_l2_boolValueArray is array (0 to 1) of std_logic;
+	signal Inputs_iValue_l1_l2_boolValue : Inputs_iValue_l1_l2_boolValueArray;
+	type Inputs_iValue_l1_l2ArrayArray is array (0 to 1) of unsigned (3 downto 0);
+	signal Inputs_iValue_l1_l2Array : Inputs_iValue_l1_l2ArrayArray;
+	type Inputs_iValue_l1ArrayArray is array (0 to 1) of unsigned (19 downto 0);
+	signal Inputs_iValue_l1Array : Inputs_iValue_l1ArrayArray;
+	type Output_iValue_l1_l2_boolValueArray is array (0 to 1) of std_logic;
+	signal Output_iValue_l1_l2_boolValue : Output_iValue_l1_l2_boolValueArray := (others => '0');
+	type Output_iValue_l1_l2ArrayArray is array (0 to 1) of unsigned (3 downto 0);
+	signal Output_iValue_l1_l2Array : Output_iValue_l1_l2ArrayArray := (others => (others => '0'));
+	type Output_iValue_l1ArrayArray is array (0 to 1) of unsigned (19 downto 0);
+	signal Output_iValue_l1Array : Output_iValue_l1ArrayArray := (others => (others => '0'));
 begin
-	process (iValue)
+	process (Inputs_iValue_intValue, Inputs_iValue_l1_byteValue, Inputs_iValue_l1_l2_bitArray, Inputs_iValue_l1_l2_boolValue, Inputs_iValue_l1_l2Array, Inputs_iValue_l1Array, iValue_intValue, iValue_l1_byteValue, iValue_l1_l2_bitArray, iValue_l1_l2_boolValue0, iValue_l1_l2_boolValue1, iValue_l1_l2Array0, iValue_l1_l2Array1, iValue_l1Array0, iValue_l1Array1, Output_iValue_l1_l2_boolValue, Output_iValue_l1_l2Array, Output_iValue_l1Array)
 	begin
-		Inputs_iValue <= iValue;
+		Output_iValue_l1_l2_boolValue0 <= Output_iValue_l1_l2_boolValue(0);
+		Output_iValue_l1_l2_boolValue1 <= Output_iValue_l1_l2_boolValue(1);
+		Output_iValue_l1_l2Array0 <= Output_iValue_l1_l2Array(0);
+		Output_iValue_l1_l2Array1 <= Output_iValue_l1_l2Array(1);
+		Output_iValue_l1Array0 <= Output_iValue_l1Array(0);
+		Output_iValue_l1Array1 <= Output_iValue_l1Array(1);
+		Inputs_iValue_intValue <= iValue_intValue;
+		Inputs_iValue_l1_byteValue <= iValue_l1_byteValue;
+		Inputs_iValue_l1_l2_bitArray <= iValue_l1_l2_bitArray;
+		Inputs_iValue_l1_l2_boolValue(0) <= iValue_l1_l2_boolValue0;
+		Inputs_iValue_l1_l2_boolValue(1) <= iValue_l1_l2_boolValue1;
+		Inputs_iValue_l1_l2Array(0) <= iValue_l1_l2Array0;
+		Inputs_iValue_l1_l2Array(1) <= iValue_l1_l2Array1;
+		Inputs_iValue_l1Array(0) <= iValue_l1Array0;
+		Inputs_iValue_l1Array(1) <= iValue_l1Array1;
+		Output_iValue_l1Array(0) <= Inputs_iValue_l1Array(0);
+		Output_iValue_l1Array(1) <= Inputs_iValue_l1Array(1);
+		Output_iValue_l1_l2Array(0) <= Inputs_iValue_l1_l2Array(0);
+		Output_iValue_l1_l2Array(1) <= Inputs_iValue_l1_l2Array(1);
+		Output_iValue_l1_l2_boolValue(0) <= Inputs_iValue_l1_l2_boolValue(0);
+		Output_iValue_l1_l2_boolValue(1) <= Inputs_iValue_l1_l2_boolValue(1);
+		Output_iValue_l1_l2_bitArray <= Inputs_iValue_l1_l2_bitArray;
+		Output_iValue_l1_byteValue <= Inputs_iValue_l1_byteValue;
+		Output_iValue_intValue <= Inputs_iValue_intValue;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

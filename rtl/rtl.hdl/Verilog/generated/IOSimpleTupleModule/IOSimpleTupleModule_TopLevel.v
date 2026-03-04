@@ -42,10 +42,22 @@ module IOSimpleTupleModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [8: 0] Inputs_iValue;
-	reg [8: 0] value;
-	assign Inputs_iValue[8] = iValue_Item1;
-	assign Inputs_iValue[7:0] = iValue_Item2;
+	wire Inputs_iValue_Item1;
+	wire [7: 0] Inputs_iValue_Item2;
+	wire value_Item1;
+	wire [7: 0] value_Item2;
+	assign Inputs_iValue_Item1 = iValue_Item1;
+	assign Inputs_iValue_Item2 = iValue_Item2;
+	assign value_Item1 = Inputs_iValue_Item1;
+	assign value_Item2 = Inputs_iValue_Item2;
+	assign oValueDirect_Item1 = Inputs_iValue_Item1;
+	assign oValueDirect_Item2 = Inputs_iValue_Item2;
+	assign oValueInternal_Item1 = value_Item1;
+	assign oValueInternal_Item2 = value_Item2;
+	assign oValueInternalParts_Item1 = value_Item1;
+	assign oValueInternalParts_Item2 = value_Item2;
+	assign oValueParts_Item1 = Inputs_iValue_Item1;
+	assign oValueParts_Item2 = Inputs_iValue_Item2;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

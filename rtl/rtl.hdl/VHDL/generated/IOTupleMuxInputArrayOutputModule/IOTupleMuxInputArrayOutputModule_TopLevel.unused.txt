@@ -1,3 +1,7 @@
 No reads:
-	Inputs_Sel
-	Inputs_Selector
+	IOTupleMuxInputArrayOutputModule_L22F75T76_Expr
+	IOTupleMuxInputArrayOutputModule_L22F91T92_Expr
+No writes:
+	Output_iTuple_Item4_L2_L2ValuesArrayInit
+	Output_iTuple_Item4_L2Tuple_Item2_L2ValuesArrayInit
+	Output_iTupleArrayArrayInit

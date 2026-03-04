@@ -75,10 +75,15 @@ architecture rtl of UnusedSignalsModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_iObject : unsigned(11 downto 0) := (others => '0');
-	signal Inputs_iUnusedTuple : unsigned(1 downto 0) := (others => '0');
+	signal Inputs_iObject_Tuple_Item1 : std_logic := '0';
+	signal Inputs_iObject_Tuple_Item2 : std_logic := '0';
+	signal Inputs_iObject_UnusedValue : std_logic := '0';
+	signal Inputs_iObject_UsedValue : std_logic := '0';
+	signal Inputs_iUnusedTuple_Item1 : std_logic := '0';
+	signal Inputs_iUnusedTuple_Item2 : std_logic := '0';
 	signal Inputs_iUnusedValue : std_logic := '0';
-	signal Inputs_iUsedTuple : unsigned(1 downto 0) := (others => '0');
+	signal Inputs_iUsedTuple_Item1 : std_logic := '0';
+	signal Inputs_iUsedTuple_Item2 : std_logic := '0';
 	signal Inputs_iUsedValue : std_logic := '0';
 	signal NextState_UnusedState : std_logic := '0';
 	signal NextState_UsedState : std_logic := '0';
@@ -88,6 +93,10 @@ architecture rtl of UnusedSignalsModule_TopLevel is
 	constant State_UnusedStateDefault : std_logic := '0';
 	signal State_UsedState : std_logic := '0';
 	constant State_UsedStateDefault : std_logic := '0';
+	type Inputs_iObject_UnusedValueArrayArray is array (0 to 3) of std_logic;
+	signal Inputs_iObject_UnusedValueArray : Inputs_iObject_UnusedValueArrayArray := (others => '0');
+	type Inputs_iObject_UsedValueArrayArray is array (0 to 3) of std_logic;
+	signal Inputs_iObject_UsedValueArray : Inputs_iObject_UsedValueArrayArray := (others => '0');
 	type Inputs_iUnusedValueArrayArray is array (0 to 3) of std_logic;
 	signal Inputs_iUnusedValueArray : Inputs_iUnusedValueArrayArray := (others => '0');
 	type Inputs_iUsedValueArrayArray is array (0 to 3) of std_logic;
@@ -105,34 +114,51 @@ begin
 			end if;
 		end if;
 	end process;
-	process (iObject_Tuple_Item1, iObject_Tuple_Item2, iObject_UnusedValue, iObject_UnusedValueArray0, iObject_UnusedValueArray1, iObject_UnusedValueArray2, iObject_UnusedValueArray3, iObject_UsedValue, iObject_UsedValueArray0, iObject_UsedValueArray1, iObject_UsedValueArray2, iObject_UsedValueArray3, iUnusedTuple_Item1, iUnusedTuple_Item2, iUnusedValue, iUnusedValueArray0, iUnusedValueArray1, iUnusedValueArray2, iUnusedValueArray3, iUsedTuple_Item1, iUsedTuple_Item2, iUsedValue, iUsedValueArray0, iUsedValueArray1, iUsedValueArray2, iUsedValueArray3)
+	process (State_UnusedState, State_UsedState)
 	begin
-		Inputs_iObject(11) <= iObject_UsedValueArray3;
-		Inputs_iObject(10) <= iObject_UsedValueArray2;
-		Inputs_iObject(9) <= iObject_UsedValueArray1;
-		Inputs_iObject(8) <= iObject_UsedValueArray0;
-		Inputs_iObject(7) <= iObject_UsedValue;
-		Inputs_iObject(6) <= iObject_UnusedValueArray3;
-		Inputs_iObject(5) <= iObject_UnusedValueArray2;
-		Inputs_iObject(4) <= iObject_UnusedValueArray1;
-		Inputs_iObject(3) <= iObject_UnusedValueArray0;
-		Inputs_iObject(2) <= iObject_UnusedValue;
-		Inputs_iObject(1) <= iObject_Tuple_Item1;
-		Inputs_iObject(0) <= iObject_Tuple_Item2;
-		Inputs_iUnusedTuple(1) <= iUnusedTuple_Item1;
-		Inputs_iUnusedTuple(0) <= iUnusedTuple_Item2;
+		NextState_UnusedState <= State_UnusedState;
+		NextState_UsedState <= State_UsedState;
+	end process;
+	process (Inputs_iUsedValue, Inputs_iUsedValueArray, iObject_Tuple_Item1, iObject_Tuple_Item2, iObject_UnusedValue, iObject_UnusedValueArray0, iObject_UnusedValueArray1, iObject_UnusedValueArray2, iObject_UnusedValueArray3, iObject_UsedValue, iObject_UsedValueArray0, iObject_UsedValueArray1, iObject_UsedValueArray2, iObject_UsedValueArray3, iUnusedTuple_Item1, iUnusedTuple_Item2, iUnusedValue, iUnusedValueArray0, iUnusedValueArray1, iUnusedValueArray2, iUnusedValueArray3, iUsedTuple_Item1, iUsedTuple_Item2, iUsedValue, iUsedValueArray0, iUsedValueArray1, iUsedValueArray2, iUsedValueArray3, State_UsedState, usedInternal)
+	begin
+		Inputs_iObject_Tuple_Item1 <= iObject_Tuple_Item1;
+		Inputs_iObject_Tuple_Item2 <= iObject_Tuple_Item2;
+		Inputs_iObject_UnusedValue <= iObject_UnusedValue;
+		Inputs_iObject_UnusedValueArray(0) <= iObject_UnusedValueArray0;
+		Inputs_iObject_UnusedValueArray(1) <= iObject_UnusedValueArray1;
+		Inputs_iObject_UnusedValueArray(2) <= iObject_UnusedValueArray2;
+		Inputs_iObject_UnusedValueArray(3) <= iObject_UnusedValueArray3;
+		Inputs_iObject_UsedValue <= iObject_UsedValue;
+		Inputs_iObject_UsedValueArray(0) <= iObject_UsedValueArray0;
+		Inputs_iObject_UsedValueArray(1) <= iObject_UsedValueArray1;
+		Inputs_iObject_UsedValueArray(2) <= iObject_UsedValueArray2;
+		Inputs_iObject_UsedValueArray(3) <= iObject_UsedValueArray3;
+		Inputs_iUnusedTuple_Item1 <= iUnusedTuple_Item1;
+		Inputs_iUnusedTuple_Item2 <= iUnusedTuple_Item2;
 		Inputs_iUnusedValue <= iUnusedValue;
 		Inputs_iUnusedValueArray(0) <= iUnusedValueArray0;
 		Inputs_iUnusedValueArray(1) <= iUnusedValueArray1;
 		Inputs_iUnusedValueArray(2) <= iUnusedValueArray2;
 		Inputs_iUnusedValueArray(3) <= iUnusedValueArray3;
-		Inputs_iUsedTuple(1) <= iUsedTuple_Item1;
-		Inputs_iUsedTuple(0) <= iUsedTuple_Item2;
+		Inputs_iUsedTuple_Item1 <= iUsedTuple_Item1;
+		Inputs_iUsedTuple_Item2 <= iUsedTuple_Item2;
 		Inputs_iUsedValue <= iUsedValue;
 		Inputs_iUsedValueArray(0) <= iUsedValueArray0;
 		Inputs_iUsedValueArray(1) <= iUsedValueArray1;
 		Inputs_iUsedValueArray(2) <= iUsedValueArray2;
 		Inputs_iUsedValueArray(3) <= iUsedValueArray3;
+		unusedInternal <= Inputs_iUsedValue;
+		usedInternal <= Inputs_iUsedValue;
+		oInputArray0 <= Inputs_iUsedValueArray(0);
+		oInputArray1 <= Inputs_iUsedValueArray(1);
+		oInputArray2 <= Inputs_iUsedValueArray(2);
+		oInputArray3 <= Inputs_iUsedValueArray(3);
+		oInputArrayValue <= Inputs_iUsedValueArray(1);
+		oInputClassArrayValue <= Inputs_iUsedValue;
+		oInputClassValue <= Inputs_iUsedValue;
+		oInputValue <= Inputs_iUsedValue;
+		oInternal <= usedInternal;
+		oStateValue <= State_UsedState;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

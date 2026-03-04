@@ -49,11 +49,17 @@ module AXISoCQuadCoreModule_TopLevel_cpu0AutoDecrementRegister
 	wire [7: 0] State_bytesDefault = 8'b00000000;
 	wire [1: 0] size = 2'b10;
 	wire signed [6: 0] sizeBits = 7'b0100000;
+	wire AXI4AutoDecrementRegisterModule_L82F48T49_Expr = 1'b1;
+	wire AXI4AutoDecrementRegisterModule_L88F31T32_Expr = 1'b0;
+	wire AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L96F13L102T14_AXI4AutoDecrementRegisterModule_L97F17L101T18_0_w = 1'b0;
+	wire AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L96F13L102T14_AXI4AutoDecrementRegisterModule_L97F17L101T18_1_w = 1'b1;
+	wire [1: 0] AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L96F13L102T14_AXI4AutoDecrementRegisterModule_L97F17L101T18_2_w = 2'b10;
+	wire [1: 0] AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L96F13L102T14_AXI4AutoDecrementRegisterModule_L97F17L101T18_3_w = 2'b11;
 	wire [221: 0] Inputs_M2S;
 	wire [32: 0] Inputs_Reg;
 	reg NextState_Written;
-	reg [31: 0] decrement;
-	reg [31: 0] stateValue;
+	wire [31: 0] decrement;
+	wire [31: 0] stateValue;
 	reg axiSlave_inARREADY = 1'b0;
 	reg axiSlave_inAWREADY = 1'b0;
 	reg axiSlave_inBVALID = 1'b0;
@@ -72,6 +78,9 @@ module AXISoCQuadCoreModule_TopLevel_cpu0AutoDecrementRegister
 	wire [3: 0] axiSlave_outWSTRB;
 	wire axiSlave_outWVALID;
 	wire [73: 0] axiSlave_S2M;
+	wire [31: 0] AXI4AutoDecrementRegisterModule_L82F34T61_SignChange;
+	wire [31: 0] AXI4AutoDecrementRegisterModule_L82F34T79_Resize;
+	wire [31: 0] AXI4AutoDecrementRegisterModule_L81F35T63_Source;
 	wire axiSlave_inARREADY_axiSlave_inARREADY_HardLink;
 	wire axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink;
 	wire axiSlave_inBVALID_axiSlave_inBVALID_HardLink;
@@ -100,6 +109,16 @@ module AXISoCQuadCoreModule_TopLevel_cpu0AutoDecrementRegister
 	wire [73: 0] axiSlave_S2M_axiSlave_S2M_HardLink;
 	reg State_Written = 1'b0;
 	wire State_WrittenDefault = 1'b0;
+	wire AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L86F33T80_Expr;
+	wire AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L86F33T80_Expr_1;
+	wire AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L86F33T80_Expr_2;
+	wire signed [33: 0] AXI4AutoDecrementRegisterModule_L82F35T49_Expr;
+	wire signed [33: 0] AXI4AutoDecrementRegisterModule_L82F35T49_Expr_1;
+	wire signed [33: 0] AXI4AutoDecrementRegisterModule_L82F35T49_Expr_2;
+	wire AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L88F17T32_Expr;
+	wire signed [32: 0] AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L88F17T32_ExprLhs;
+	wire signed [32: 0] AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L88F17T32_ExprRhs;
+	reg [7 : 0] outData [0 : 3];
 	integer State_bytes_Iterator;
 	reg [7 : 0] State_bytes [0 : 3];
 	initial
@@ -144,6 +163,9 @@ module AXISoCQuadCoreModule_TopLevel_cpu0AutoDecrementRegister
 			end
 		end
 	end
+	assign AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L88F17T32_Expr = AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L88F17T32_ExprLhs != AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L88F17T32_ExprRhs ? 1'b1 : 1'b0;
+	assign AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L86F33T80_Expr = AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L86F33T80_Expr_1 | AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L86F33T80_Expr_2;
+	assign AXI4AutoDecrementRegisterModule_L82F35T49_Expr = AXI4AutoDecrementRegisterModule_L82F35T49_Expr_1 - AXI4AutoDecrementRegisterModule_L82F35T49_Expr_2;
 	AXISoCQuadCoreModule_TopLevel_cpu0AutoDecrementRegister_axiSlave
 	AXISoCQuadCoreModule_TopLevel_cpu0AutoDecrementRegister_axiSlave
 	(
@@ -181,8 +203,84 @@ module AXISoCQuadCoreModule_TopLevel_cpu0AutoDecrementRegister
 		.outWVALID (axiSlave_outWVALID_axiSlave_outWVALID_HardLink),
 		.S2M (axiSlave_S2M_axiSlave_S2M_HardLink)
 	);
+	always @ (*)
+	begin
+		NextState_bytes_Iterator = 0;
+		for (NextState_bytes_Iterator = 0; (NextState_bytes_Iterator < 4); NextState_bytes_Iterator = (NextState_bytes_Iterator + 1))
+		begin
+			NextState_bytes[NextState_bytes_Iterator] = State_bytes[NextState_bytes_Iterator];
+		end
+		NextState_Written = State_Written;
+		NextState_Written = AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L86F33T80_Expr;
+		if ((AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L88F17T32_Expr == 1))
+		begin
+			NextState_bytes[0] = decrement[7:0];
+			NextState_bytes[1] = decrement[15:8];
+			NextState_bytes[2] = decrement[23:16];
+			NextState_bytes[3] = decrement[31:24];
+		end
+		if ((Inputs_Reg[32] == 1))
+		begin
+			NextState_bytes[0] = Inputs_Reg[7:0];
+			NextState_bytes[1] = Inputs_Reg[15:8];
+			NextState_bytes[2] = Inputs_Reg[23:16];
+			NextState_bytes[3] = Inputs_Reg[31:24];
+		end
+		else if ((axiSlave_outWREADYConfirming == 1))
+		begin
+			if ((axiSlave_outWSTRB[0] == 1))
+			begin
+				NextState_bytes[0] = axiSlave_outWDATA[0];
+			end
+			if ((axiSlave_outWSTRB[1] == 1))
+			begin
+				NextState_bytes[1] = axiSlave_outWDATA[1];
+			end
+			if ((axiSlave_outWSTRB[2] == 1))
+			begin
+				NextState_bytes[2] = axiSlave_outWDATA[2];
+			end
+			if ((axiSlave_outWSTRB[3] == 1))
+			begin
+				NextState_bytes[3] = axiSlave_outWDATA[3];
+			end
+		end
+	end
+	assign AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L88F17T32_ExprLhs = {
+		1'b0,
+		stateValue
+	}
+	;
+	assign AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L88F17T32_ExprRhs = {
+		{32{1'b0}},
+		AXI4AutoDecrementRegisterModule_L88F31T32_Expr
+	}
+	;
+	assign AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L86F33T80_Expr_1 = Inputs_Reg[32];
+	assign AXI4AutoDecrementRegisterModule_L85F9L103T10_AXI4AutoDecrementRegisterModule_L86F33T80_Expr_2 = axiSlave_outWREADYConfirming;
+	assign AXI4AutoDecrementRegisterModule_L82F35T49_Expr_1 = {
+		{2{1'b0}},
+		stateValue
+	}
+	;
+	assign AXI4AutoDecrementRegisterModule_L82F35T49_Expr_2 = {
+		{33{1'b0}},
+		AXI4AutoDecrementRegisterModule_L82F48T49_Expr
+	}
+	;
 	assign Inputs_M2S = M2S;
 	assign Inputs_Reg = Reg;
+	assign AXI4AutoDecrementRegisterModule_L82F34T61_SignChange = AXI4AutoDecrementRegisterModule_L82F35T49_Expr[31:0];
+	assign AXI4AutoDecrementRegisterModule_L82F34T79_Resize = AXI4AutoDecrementRegisterModule_L82F34T61_SignChange;
+	assign decrement = AXI4AutoDecrementRegisterModule_L82F34T79_Resize;
+	assign AXI4AutoDecrementRegisterModule_L81F35T63_Source = {
+		State_bytes[3],
+		State_bytes[2],
+		State_bytes[1],
+		State_bytes[0]
+	}
+	;
+	assign stateValue = AXI4AutoDecrementRegisterModule_L81F35T63_Source;
 	assign axiSlave_inARREADY_axiSlave_inARREADY_HardLink = axiSlave_inARREADY;
 	assign axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink = axiSlave_inAWREADY;
 	assign axiSlave_inBVALID_axiSlave_inBVALID_HardLink = axiSlave_inBVALID;

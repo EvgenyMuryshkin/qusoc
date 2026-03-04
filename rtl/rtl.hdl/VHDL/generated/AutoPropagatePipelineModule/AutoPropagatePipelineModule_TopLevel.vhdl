@@ -53,11 +53,26 @@ architecture rtl of AutoPropagatePipelineModule_TopLevel is
 	constant Pipeline_stage0_State_sumsDefault : unsigned(15 downto 0) := "0000000000000000";
 	constant Pipeline_stage1_State_s0SumsDefault : unsigned(15 downto 0) := "0000000000000000";
 	constant Pipeline_stage1_State_sumsDefault : unsigned(15 downto 0) := "0000000000000000";
+	constant AutoPropagatePipelineModule_L54F21T23_Expr : unsigned(5 downto 0) := "101010";
 	signal Inputs_inReady : std_logic := '0';
 	signal Pipeline_stage0_NextState_ready : std_logic := '0';
 	signal Pipeline_stage1_NextState_ready : std_logic := '0';
 	signal Pipeline_stage2_NextState_ready : std_logic := '0';
 	signal Pipeline_stage2_NextState_result : unsigned(15 downto 0) := (others => '0');
+	signal Pipeline_Inputs_inReady : std_logic := '0';
+	signal Pipeline_State_ready : std_logic := '0';
+	signal Pipeline_State_result : unsigned(15 downto 0) := (others => '0');
+	signal Pipeline_NextState_ready : std_logic := '0';
+	signal Pipeline_NextState_result : unsigned(15 downto 0) := (others => '0');
+	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_sum0 : unsigned(15 downto 0) := "0000000000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F24T69_Cast : unsigned(15 downto 0) := (others => '0');
+	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F21T66_Cast : unsigned(15 downto 0) := (others => '0');
+	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F21T66_Cast : unsigned(15 downto 0) := (others => '0');
+	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F21T66_Cast : unsigned(15 downto 0) := (others => '0');
+	signal Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F21T62_Cast : unsigned(15 downto 0) := (others => '0');
+	signal Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F21T62_Cast : unsigned(15 downto 0) := (others => '0');
+	signal Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F26T86_Cast : unsigned(15 downto 0) := (others => '0');
+	signal AutoPropagatePipelineModule_L33F33T59_Cast : std_logic := '0';
 	signal Pipeline_stage0_State_ready : std_logic := '0';
 	constant Pipeline_stage0_State_readyDefault : std_logic := '0';
 	signal Pipeline_stage1_State_ready : std_logic := '0';
@@ -66,6 +81,30 @@ architecture rtl of AutoPropagatePipelineModule_TopLevel is
 	constant Pipeline_stage2_State_readyDefault : std_logic := '0';
 	signal Pipeline_stage2_State_result : unsigned(15 downto 0) := "0000000000000000";
 	constant Pipeline_stage2_State_resultDefault : unsigned(15 downto 0) := "0000000000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr : unsigned(9 downto 0) := "0000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr_1 : signed(9 downto 0) := "0000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr_2 : signed(9 downto 0) := "0000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F30T65_Expr : unsigned(9 downto 0) := "0000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F30T65_Expr_1 : signed(9 downto 0) := "0000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F30T65_Expr_2 : signed(9 downto 0) := "0000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F30T65_Expr : unsigned(9 downto 0) := "0000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F30T65_Expr_1 : signed(9 downto 0) := "0000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F30T65_Expr_2 : signed(9 downto 0) := "0000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F30T65_Expr : unsigned(9 downto 0) := "0000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F30T65_Expr_1 : signed(9 downto 0) := "0000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F30T65_Expr_2 : signed(9 downto 0) := "0000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F30T61_Expr : unsigned(17 downto 0) := "000000000000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F30T61_Expr_1 : signed(17 downto 0) := "000000000000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F30T61_Expr_2 : signed(17 downto 0) := "000000000000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F30T61_Expr : unsigned(17 downto 0) := "000000000000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F30T61_Expr_1 : signed(17 downto 0) := "000000000000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F30T61_Expr_2 : signed(17 downto 0) := "000000000000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T85_Expr : unsigned(19 downto 0) := "00000000000000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T85_Expr_1 : signed(19 downto 0) := "00000000000000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T85_Expr_2 : signed(19 downto 0) := "00000000000000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T66_Expr : unsigned(17 downto 0) := "000000000000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T66_Expr_1 : signed(17 downto 0) := "000000000000000000";
+	signal Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T66_Expr_2 : signed(17 downto 0) := "000000000000000000";
 	type Inputs_inDataArray is array (0 to 7) of unsigned (7 downto 0);
 	signal Inputs_inData : Inputs_inDataArray := (others => (others => '0'));
 	type Pipeline_stage0_State_sumsArray is array (0 to 4) of unsigned (15 downto 0);
@@ -80,6 +119,12 @@ architecture rtl of AutoPropagatePipelineModule_TopLevel is
 	signal Pipeline_stage1_State_sums : Pipeline_stage1_State_sumsArray := (others => (others => '0'));
 	type Pipeline_stage1_NextState_sumsArray is array (0 to 1) of unsigned (15 downto 0);
 	signal Pipeline_stage1_NextState_sums : Pipeline_stage1_NextState_sumsArray := (others => (others => '0'));
+	type Pipeline_Inputs_inDataArray is array (0 to 7) of unsigned (7 downto 0);
+	signal Pipeline_Inputs_inData : Pipeline_Inputs_inDataArray := (others => (others => '0'));
+	type Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L48F24L55T18_EnumerableArray is array (0 to 4) of unsigned (15 downto 0);
+	signal Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L48F24L55T18_Enumerable : Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L48F24L55T18_EnumerableArray := (others => (others => '0'));
+	type Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L64F24L68T18_EnumerableArray is array (0 to 1) of unsigned (15 downto 0);
+	signal Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L64F24L68T18_Enumerable : Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L64F24L68T18_EnumerableArray := (others => (others => '0'));
 begin
 	process (Clock, Pipeline_stage0_NextState_ready, Pipeline_stage1_NextState_ready, Pipeline_stage2_NextState_ready, Pipeline_stage2_NextState_result, Reset)
 	begin
@@ -139,8 +184,159 @@ begin
 			end if;
 		end if;
 	end process;
-	process (inData0, inData1, inData2, inData3, inData4, inData5, inData6, inData7, inReady)
+	process (Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr_1, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr_2)
 	begin
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr <= resize(unsigned(signed(resize(Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr_1, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr_1'length + 1)) + signed(resize(Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr_2, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr_2'length + 1))), Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr'length);
+	end process;
+	process (Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F30T65_Expr_1, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F30T65_Expr_2)
+	begin
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F30T65_Expr <= resize(unsigned(signed(resize(Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F30T65_Expr_1, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F30T65_Expr_1'length + 1)) + signed(resize(Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F30T65_Expr_2, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F30T65_Expr_2'length + 1))), Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F30T65_Expr'length);
+	end process;
+	process (Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F30T65_Expr_1, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F30T65_Expr_2)
+	begin
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F30T65_Expr <= resize(unsigned(signed(resize(Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F30T65_Expr_1, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F30T65_Expr_1'length + 1)) + signed(resize(Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F30T65_Expr_2, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F30T65_Expr_2'length + 1))), Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F30T65_Expr'length);
+	end process;
+	process (Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F30T65_Expr_1, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F30T65_Expr_2)
+	begin
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F30T65_Expr <= resize(unsigned(signed(resize(Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F30T65_Expr_1, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F30T65_Expr_1'length + 1)) + signed(resize(Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F30T65_Expr_2, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F30T65_Expr_2'length + 1))), Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F30T65_Expr'length);
+	end process;
+	process (Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F30T61_Expr_1, Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F30T61_Expr_2)
+	begin
+		Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F30T61_Expr <= resize(unsigned(signed(resize(Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F30T61_Expr_1, Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F30T61_Expr_1'length + 1)) + signed(resize(Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F30T61_Expr_2, Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F30T61_Expr_2'length + 1))), Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F30T61_Expr'length);
+	end process;
+	process (Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F30T61_Expr_1, Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F30T61_Expr_2)
+	begin
+		Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F30T61_Expr <= resize(unsigned(signed(resize(Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F30T61_Expr_1, Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F30T61_Expr_1'length + 1)) + signed(resize(Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F30T61_Expr_2, Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F30T61_Expr_2'length + 1))), Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F30T61_Expr'length);
+	end process;
+	process (Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T85_Expr_1, Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T85_Expr_2)
+	begin
+		Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T85_Expr <= resize(unsigned(signed(resize(Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T85_Expr_1, Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T85_Expr_1'length + 1)) + signed(resize(Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T85_Expr_2, Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T85_Expr_2'length + 1))), Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T85_Expr'length);
+	end process;
+	process (Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T66_Expr_1, Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T66_Expr_2)
+	begin
+		Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T66_Expr <= resize(unsigned(signed(resize(Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T66_Expr_1, Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T66_Expr_1'length + 1)) + signed(resize(Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T66_Expr_2, Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T66_Expr_2'length + 1))), Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T66_Expr'length);
+	end process;
+	process (Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F24T69_Cast)
+	begin
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_sum0 <= Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F24T69_Cast;
+	end process;
+	process (Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L48F24L55T18_Enumerable, Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L64F24L68T18_Enumerable, Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F26T86_Cast, Pipeline_Inputs_inReady, Pipeline_stage0_State_ready, Pipeline_stage0_State_sums, Pipeline_stage1_State_ready, Pipeline_stage1_State_s0Sums, Pipeline_stage1_State_sums, Pipeline_stage2_State_ready, Pipeline_stage2_State_result)
+	begin
+		Pipeline_stage0_NextState_ready <= Pipeline_stage0_State_ready;
+		Pipeline_stage0_NextState_sums(0) <= Pipeline_stage0_State_sums(0);
+		Pipeline_stage0_NextState_sums(1) <= Pipeline_stage0_State_sums(1);
+		Pipeline_stage0_NextState_sums(2) <= Pipeline_stage0_State_sums(2);
+		Pipeline_stage0_NextState_sums(3) <= Pipeline_stage0_State_sums(3);
+		Pipeline_stage0_NextState_sums(4) <= Pipeline_stage0_State_sums(4);
+		Pipeline_stage1_NextState_ready <= Pipeline_stage1_State_ready;
+		Pipeline_stage1_NextState_s0Sums(0) <= Pipeline_stage1_State_s0Sums(0);
+		Pipeline_stage1_NextState_s0Sums(1) <= Pipeline_stage1_State_s0Sums(1);
+		Pipeline_stage1_NextState_s0Sums(2) <= Pipeline_stage1_State_s0Sums(2);
+		Pipeline_stage1_NextState_s0Sums(3) <= Pipeline_stage1_State_s0Sums(3);
+		Pipeline_stage1_NextState_s0Sums(4) <= Pipeline_stage1_State_s0Sums(4);
+		Pipeline_stage1_NextState_sums(0) <= Pipeline_stage1_State_sums(0);
+		Pipeline_stage1_NextState_sums(1) <= Pipeline_stage1_State_sums(1);
+		Pipeline_stage2_NextState_ready <= Pipeline_stage2_State_ready;
+		Pipeline_stage2_NextState_result <= Pipeline_stage2_State_result;
+		Pipeline_stage0_NextState_ready <= Pipeline_Inputs_inReady;
+		Pipeline_stage0_NextState_sums(0) <= Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L48F24L55T18_Enumerable(0);
+		Pipeline_stage0_NextState_sums(1) <= Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L48F24L55T18_Enumerable(1);
+		Pipeline_stage0_NextState_sums(2) <= Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L48F24L55T18_Enumerable(2);
+		Pipeline_stage0_NextState_sums(3) <= Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L48F24L55T18_Enumerable(3);
+		Pipeline_stage0_NextState_sums(4) <= Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L48F24L55T18_Enumerable(4);
+		Pipeline_stage1_NextState_ready <= Pipeline_stage0_State_ready;
+		Pipeline_stage1_NextState_s0Sums(0) <= Pipeline_stage0_State_sums(0);
+		Pipeline_stage1_NextState_s0Sums(1) <= Pipeline_stage0_State_sums(1);
+		Pipeline_stage1_NextState_s0Sums(2) <= Pipeline_stage0_State_sums(2);
+		Pipeline_stage1_NextState_s0Sums(3) <= Pipeline_stage0_State_sums(3);
+		Pipeline_stage1_NextState_s0Sums(4) <= Pipeline_stage0_State_sums(4);
+		Pipeline_stage1_NextState_sums(0) <= Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L64F24L68T18_Enumerable(0);
+		Pipeline_stage1_NextState_sums(1) <= Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L64F24L68T18_Enumerable(1);
+		Pipeline_stage2_NextState_ready <= Pipeline_stage1_State_ready;
+		Pipeline_stage2_NextState_result <= Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F26T86_Cast;
+	end process;
+	process (AutoPropagatePipelineModule_L33F33T59_Cast, inData0, inData1, inData2, inData3, inData4, inData5, inData6, inData7, Inputs_inData, Inputs_inReady, inReady, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F21T66_Cast, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F30T65_Expr, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F21T66_Cast, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F30T65_Expr, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F21T66_Cast, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F30T65_Expr, Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_sum0, Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F21T62_Cast, Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F30T61_Expr, Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F21T62_Cast, Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F30T61_Expr, Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T66_Expr, Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T85_Expr, Pipeline_Inputs_inData, Pipeline_stage0_State_sums, Pipeline_stage1_State_s0Sums, Pipeline_stage1_State_sums, Pipeline_stage2_NextState_ready, Pipeline_stage2_NextState_result, Pipeline_stage2_State_ready, Pipeline_stage2_State_result, Pipeline_State_ready, Pipeline_State_result)
+	begin
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr_1(9 downto 8) <= (
+			others => '0'
+		)
+		;
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr_1(7 downto 0) <= signed(Pipeline_Inputs_inData(0));
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr_2(9 downto 8) <= (
+			others => '0'
+		)
+		;
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr_2(7 downto 0) <= signed(Pipeline_Inputs_inData(1));
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F30T65_Expr_1(9 downto 8) <= (
+			others => '0'
+		)
+		;
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F30T65_Expr_1(7 downto 0) <= signed(Pipeline_Inputs_inData(2));
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F30T65_Expr_2(9 downto 8) <= (
+			others => '0'
+		)
+		;
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F30T65_Expr_2(7 downto 0) <= signed(Pipeline_Inputs_inData(3));
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F30T65_Expr_1(9 downto 8) <= (
+			others => '0'
+		)
+		;
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F30T65_Expr_1(7 downto 0) <= signed(Pipeline_Inputs_inData(4));
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F30T65_Expr_2(9 downto 8) <= (
+			others => '0'
+		)
+		;
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F30T65_Expr_2(7 downto 0) <= signed(Pipeline_Inputs_inData(5));
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F30T65_Expr_1(9 downto 8) <= (
+			others => '0'
+		)
+		;
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F30T65_Expr_1(7 downto 0) <= signed(Pipeline_Inputs_inData(6));
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F30T65_Expr_2(9 downto 8) <= (
+			others => '0'
+		)
+		;
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F30T65_Expr_2(7 downto 0) <= signed(Pipeline_Inputs_inData(7));
+		Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F30T61_Expr_1(17 downto 16) <= (
+			others => '0'
+		)
+		;
+		Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F30T61_Expr_1(15 downto 0) <= signed(Pipeline_stage0_State_sums(0));
+		Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F30T61_Expr_2(17 downto 16) <= (
+			others => '0'
+		)
+		;
+		Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F30T61_Expr_2(15 downto 0) <= signed(Pipeline_stage0_State_sums(1));
+		Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F30T61_Expr_1(17 downto 16) <= (
+			others => '0'
+		)
+		;
+		Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F30T61_Expr_1(15 downto 0) <= signed(Pipeline_stage0_State_sums(2));
+		Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F30T61_Expr_2(17 downto 16) <= (
+			others => '0'
+		)
+		;
+		Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F30T61_Expr_2(15 downto 0) <= signed(Pipeline_stage0_State_sums(3));
+		Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T85_Expr_1(19 downto 18) <= (
+			others => '0'
+		)
+		;
+		Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T85_Expr_1(17 downto 0) <= signed(Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T66_Expr);
+		Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T85_Expr_2(19 downto 16) <= (
+			others => '0'
+		)
+		;
+		Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T85_Expr_2(15 downto 0) <= signed(Pipeline_stage1_State_s0Sums(4));
+		Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T66_Expr_1(17 downto 16) <= (
+			others => '0'
+		)
+		;
+		Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T66_Expr_1(15 downto 0) <= signed(Pipeline_stage1_State_sums(0));
+		Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T66_Expr_2(17 downto 16) <= (
+			others => '0'
+		)
+		;
+		Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T66_Expr_2(15 downto 0) <= signed(Pipeline_stage1_State_sums(0));
 		Inputs_inData(0) <= inData0;
 		Inputs_inData(1) <= inData1;
 		Inputs_inData(2) <= inData2;
@@ -150,6 +346,56 @@ begin
 		Inputs_inData(6) <= inData6;
 		Inputs_inData(7) <= inData7;
 		Inputs_inReady <= inReady;
+		Pipeline_State_ready <= Pipeline_stage2_State_ready;
+		Pipeline_State_result <= Pipeline_stage2_State_result;
+		Pipeline_NextState_ready <= Pipeline_stage2_NextState_ready;
+		Pipeline_NextState_result <= Pipeline_stage2_NextState_result;
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F24T69_Cast(15 downto 10) <= (
+			others => '0'
+		)
+		;
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F24T69_Cast(9 downto 0) <= Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L43F33T68_Expr;
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F21T66_Cast(15 downto 10) <= (
+			others => '0'
+		)
+		;
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F21T66_Cast(9 downto 0) <= Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F30T65_Expr;
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F21T66_Cast(15 downto 10) <= (
+			others => '0'
+		)
+		;
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F21T66_Cast(9 downto 0) <= Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F30T65_Expr;
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F21T66_Cast(15 downto 10) <= (
+			others => '0'
+		)
+		;
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F21T66_Cast(9 downto 0) <= Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F30T65_Expr;
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L48F24L55T18_Enumerable(0) <= Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_sum0;
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L48F24L55T18_Enumerable(1) <= Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L51F21T66_Cast;
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L48F24L55T18_Enumerable(2) <= Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L52F21T66_Cast;
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L48F24L55T18_Enumerable(3) <= Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L53F21T66_Cast;
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L48F24L55T18_Enumerable(4)(15 downto 6) <= (
+			others => '0'
+		)
+		;
+		Pipeline_AutoPropagatePipelineModule_L83F29T43_AutoPropagatePipelineModule_L42F9L57T10_AutoPropagatePipelineModule_L48F24L55T18_Enumerable(4)(5 downto 0) <= AutoPropagatePipelineModule_L54F21T23_Expr;
+		Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F21T62_Cast <= Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F30T61_Expr(15 downto 0);
+		Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F21T62_Cast <= Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F30T61_Expr(15 downto 0);
+		Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L64F24L68T18_Enumerable(0) <= Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L66F21T62_Cast;
+		Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L64F24L68T18_Enumerable(1) <= Pipeline_AutoPropagatePipelineModule_L84F30T45_AutoPropagatePipelineModule_L60F9L70T10_AutoPropagatePipelineModule_L67F21T62_Cast;
+		Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F26T86_Cast <= Pipeline_AutoPropagatePipelineModule_L85F30T45_AutoPropagatePipelineModule_L73F9L78T10_AutoPropagatePipelineModule_L76F35T85_Expr(15 downto 0);
+		AutoPropagatePipelineModule_L33F33T59_Cast <= Pipeline_State_ready;
+		outReady <= AutoPropagatePipelineModule_L33F33T59_Cast;
+		outResult <= Pipeline_State_result;
+		Pipeline_Inputs_inData(0) <= Inputs_inData(0);
+		Pipeline_Inputs_inData(1) <= Inputs_inData(1);
+		Pipeline_Inputs_inData(2) <= Inputs_inData(2);
+		Pipeline_Inputs_inData(3) <= Inputs_inData(3);
+		Pipeline_Inputs_inData(4) <= Inputs_inData(4);
+		Pipeline_Inputs_inData(5) <= Inputs_inData(5);
+		Pipeline_Inputs_inData(6) <= Inputs_inData(6);
+		Pipeline_Inputs_inData(7) <= Inputs_inData(7);
+		Pipeline_Inputs_inReady <= Inputs_inReady;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

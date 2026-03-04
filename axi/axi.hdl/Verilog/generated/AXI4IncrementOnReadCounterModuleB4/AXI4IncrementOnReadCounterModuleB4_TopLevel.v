@@ -89,15 +89,51 @@ module AXI4IncrementOnReadCounterModuleB4_TopLevel
 	wire false = 1'b0;
 	wire signed [6: 0] axiBits = 7'b0100000;
 	wire [1: 0] size = 2'b10;
-	wire [221: 0] Inputs_M2S;
+	wire AXI4IncrementOnReadCounterModule_L54F29T33_Expr = 1'b1;
+	wire AXI4IncrementOnReadCounterModule_L56F29T34_Expr = 1'b0;
+	wire AXI4IncrementOnReadCounterModule_L58F28T33_Expr = 1'b0;
+	wire AXI4IncrementOnReadCounterModule_L55F28T32_Expr = 1'b1;
+	wire AXI4IncrementOnReadCounterModule_L57F28T33_Expr = 1'b0;
+	wire AXI4IncrementOnReadCounterModule_L68F54T55_Expr = 1'b1;
+	wire [7: 0] Inputs_M2S_R_AR_ARID;
+	wire [31: 0] Inputs_M2S_R_AR_ARADDR;
+	wire [7: 0] Inputs_M2S_R_AR_ARLEN;
+	wire [2: 0] Inputs_M2S_R_AR_ARSIZE;
+	wire [1: 0] Inputs_M2S_R_AR_ARBURST;
+	wire [1: 0] Inputs_M2S_R_AR_ARLOCK;
+	wire [3: 0] Inputs_M2S_R_AR_ARCACHE;
+	wire [2: 0] Inputs_M2S_R_AR_ARPROT;
+	wire [3: 0] Inputs_M2S_R_AR_ARQOS;
+	wire [7: 0] Inputs_M2S_R_AR_ARREGION;
+	wire [7: 0] Inputs_M2S_R_AR_ARUSER;
+	wire Inputs_M2S_R_AR_ARVALID;
+	wire Inputs_M2S_R_R_RREADY;
+	wire [7: 0] Inputs_M2S_W_AW_AWID;
+	wire [31: 0] Inputs_M2S_W_AW_AWADDR;
+	wire [7: 0] Inputs_M2S_W_AW_AWLEN;
+	wire [2: 0] Inputs_M2S_W_AW_AWSIZE;
+	wire [1: 0] Inputs_M2S_W_AW_AWBURST;
+	wire [1: 0] Inputs_M2S_W_AW_AWLOCK;
+	wire [3: 0] Inputs_M2S_W_AW_AWCACHE;
+	wire [2: 0] Inputs_M2S_W_AW_AWPROT;
+	wire [3: 0] Inputs_M2S_W_AW_AWQOS;
+	wire [7: 0] Inputs_M2S_W_AW_AWREGION;
+	wire [7: 0] Inputs_M2S_W_AW_AWUSER;
+	wire Inputs_M2S_W_AW_AWVALID;
+	wire [7: 0] Inputs_M2S_W_W_WID;
+	wire [3: 0] Inputs_M2S_W_W_WSTRB;
+	wire Inputs_M2S_W_W_WLAST;
+	wire [7: 0] Inputs_M2S_W_W_WUSER;
+	wire Inputs_M2S_W_W_WVALID;
+	wire Inputs_M2S_W_B_BREADY;
 	reg [31: 0] NextState_counter;
 	reg NextState_Written;
-	reg axiSlave_inARREADY = 1'b0;
-	reg axiSlave_inAWREADY = 1'b0;
-	reg axiSlave_inBVALID = 1'b0;
-	reg axiSlave_inRVALID = 1'b0;
-	reg axiSlave_inWREADY = 1'b0;
-	reg [221: 0] axiSlave_M2S = 222'b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+	wire axiSlave_inARREADY;
+	wire axiSlave_inAWREADY;
+	wire axiSlave_inBVALID;
+	wire axiSlave_inRVALID;
+	wire axiSlave_inWREADY;
+	wire [221: 0] axiSlave_M2S;
 	wire [31: 0] axiSlave_outARADDR;
 	wire axiSlave_outARREADYConfirming;
 	wire axiSlave_outARVALID;
@@ -110,6 +146,9 @@ module AXI4IncrementOnReadCounterModuleB4_TopLevel
 	wire [3: 0] axiSlave_outWSTRB;
 	wire axiSlave_outWVALID;
 	wire [73: 0] axiSlave_S2M;
+	wire [258: 0] AXI4IncrementOnReadCounterModule_L51F37L60T14_Object;
+	wire [32: 0] AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F37T67_SignChange;
+	wire [31: 0] AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F37T84_Resize;
 	wire axiSlave_inARREADY_axiSlave_inARREADY_HardLink;
 	wire axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink;
 	wire axiSlave_inBVALID_axiSlave_inBVALID_HardLink;
@@ -140,7 +179,11 @@ module AXI4IncrementOnReadCounterModuleB4_TopLevel
 	wire [31: 0] State_counterDefault = 32'b00000000000000000000000000000000;
 	reg State_Written = 1'b0;
 	wire State_WrittenDefault = 1'b0;
-	reg [7 : 0] axiSlave_inRDATA [0 : 3];
+	wire [33: 0] AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr;
+	wire signed [33: 0] AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr_1;
+	wire signed [33: 0] AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr_2;
+	wire [7 : 0] Inputs_M2S_W_W_WDATA [0 : 3];
+	wire [7 : 0] axiSlave_inRDATA [0 : 3];
 	wire [7 : 0] axiSlave_outWDATA [0 : 3];
 	wire BoardSignals_Clock;
 	wire BoardSignals_Reset;
@@ -162,6 +205,7 @@ module AXI4IncrementOnReadCounterModuleB4_TopLevel
 			State_Written <= NextState_Written;
 		end
 	end
+	assign AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr = AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr_1 + AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr_2;
 	AXI4IncrementOnReadCounterModuleB4_TopLevel_axiSlave
 	AXI4IncrementOnReadCounterModuleB4_TopLevel_axiSlave
 	(
@@ -199,41 +243,135 @@ module AXI4IncrementOnReadCounterModuleB4_TopLevel
 		.outWVALID (axiSlave_outWVALID_axiSlave_outWVALID_HardLink),
 		.S2M (axiSlave_S2M_axiSlave_S2M_HardLink)
 	);
-	assign Inputs_M2S[221] = M2S_W_B_BREADY;
-	assign Inputs_M2S[220] = M2S_W_W_WVALID;
-	assign Inputs_M2S[219:212] = M2S_W_W_WUSER;
-	assign Inputs_M2S[211] = M2S_W_W_WLAST;
-	assign Inputs_M2S[210:207] = M2S_W_W_WSTRB;
-	assign Inputs_M2S[206:199] = M2S_W_W_WDATA3;
-	assign Inputs_M2S[198:191] = M2S_W_W_WDATA2;
-	assign Inputs_M2S[190:183] = M2S_W_W_WDATA1;
-	assign Inputs_M2S[182:175] = M2S_W_W_WDATA0;
-	assign Inputs_M2S[174:167] = M2S_W_W_WID;
-	assign Inputs_M2S[166] = M2S_W_AW_AWVALID;
-	assign Inputs_M2S[165:158] = M2S_W_AW_AWUSER;
-	assign Inputs_M2S[157:150] = M2S_W_AW_AWREGION;
-	assign Inputs_M2S[149:146] = M2S_W_AW_AWQOS;
-	assign Inputs_M2S[145:143] = M2S_W_AW_AWPROT;
-	assign Inputs_M2S[142:139] = M2S_W_AW_AWCACHE;
-	assign Inputs_M2S[138:137] = M2S_W_AW_AWLOCK;
-	assign Inputs_M2S[136:135] = M2S_W_AW_AWBURST;
-	assign Inputs_M2S[134:132] = M2S_W_AW_AWSIZE;
-	assign Inputs_M2S[131:124] = M2S_W_AW_AWLEN;
-	assign Inputs_M2S[123:92] = M2S_W_AW_AWADDR;
-	assign Inputs_M2S[91:84] = M2S_W_AW_AWID;
-	assign Inputs_M2S[83] = M2S_R_R_RREADY;
-	assign Inputs_M2S[82] = M2S_R_AR_ARVALID;
-	assign Inputs_M2S[81:74] = M2S_R_AR_ARUSER;
-	assign Inputs_M2S[73:66] = M2S_R_AR_ARREGION;
-	assign Inputs_M2S[65:62] = M2S_R_AR_ARQOS;
-	assign Inputs_M2S[61:59] = M2S_R_AR_ARPROT;
-	assign Inputs_M2S[58:55] = M2S_R_AR_ARCACHE;
-	assign Inputs_M2S[54:53] = M2S_R_AR_ARLOCK;
-	assign Inputs_M2S[52:51] = M2S_R_AR_ARBURST;
-	assign Inputs_M2S[50:48] = M2S_R_AR_ARSIZE;
-	assign Inputs_M2S[47:40] = M2S_R_AR_ARLEN;
-	assign Inputs_M2S[39:8] = M2S_R_AR_ARADDR;
-	assign Inputs_M2S[7:0] = M2S_R_AR_ARID;
+	always @ (*)
+	begin
+		NextState_counter = State_counter;
+		NextState_Written = State_Written;
+		NextState_Written = axiSlave_outReadTXCompleting;
+		if ((axiSlave_outReadTXCompleting == 1))
+		begin
+			NextState_counter = AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F37T84_Resize;
+		end
+	end
+	assign AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr_1 = {
+		{2{1'b0}},
+		State_counter
+	}
+	;
+	assign AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr_2 = {
+		{33{1'b0}},
+		AXI4IncrementOnReadCounterModule_L68F54T55_Expr
+	}
+	;
+	assign Inputs_M2S_R_AR_ARID = M2S_R_AR_ARID;
+	assign Inputs_M2S_R_AR_ARADDR = M2S_R_AR_ARADDR;
+	assign Inputs_M2S_R_AR_ARLEN = M2S_R_AR_ARLEN;
+	assign Inputs_M2S_R_AR_ARSIZE = M2S_R_AR_ARSIZE;
+	assign Inputs_M2S_R_AR_ARBURST = M2S_R_AR_ARBURST;
+	assign Inputs_M2S_R_AR_ARLOCK = M2S_R_AR_ARLOCK;
+	assign Inputs_M2S_R_AR_ARCACHE = M2S_R_AR_ARCACHE;
+	assign Inputs_M2S_R_AR_ARPROT = M2S_R_AR_ARPROT;
+	assign Inputs_M2S_R_AR_ARQOS = M2S_R_AR_ARQOS;
+	assign Inputs_M2S_R_AR_ARREGION = M2S_R_AR_ARREGION;
+	assign Inputs_M2S_R_AR_ARUSER = M2S_R_AR_ARUSER;
+	assign Inputs_M2S_R_AR_ARVALID = M2S_R_AR_ARVALID;
+	assign Inputs_M2S_R_R_RREADY = M2S_R_R_RREADY;
+	assign Inputs_M2S_W_AW_AWID = M2S_W_AW_AWID;
+	assign Inputs_M2S_W_AW_AWADDR = M2S_W_AW_AWADDR;
+	assign Inputs_M2S_W_AW_AWLEN = M2S_W_AW_AWLEN;
+	assign Inputs_M2S_W_AW_AWSIZE = M2S_W_AW_AWSIZE;
+	assign Inputs_M2S_W_AW_AWBURST = M2S_W_AW_AWBURST;
+	assign Inputs_M2S_W_AW_AWLOCK = M2S_W_AW_AWLOCK;
+	assign Inputs_M2S_W_AW_AWCACHE = M2S_W_AW_AWCACHE;
+	assign Inputs_M2S_W_AW_AWPROT = M2S_W_AW_AWPROT;
+	assign Inputs_M2S_W_AW_AWQOS = M2S_W_AW_AWQOS;
+	assign Inputs_M2S_W_AW_AWREGION = M2S_W_AW_AWREGION;
+	assign Inputs_M2S_W_AW_AWUSER = M2S_W_AW_AWUSER;
+	assign Inputs_M2S_W_AW_AWVALID = M2S_W_AW_AWVALID;
+	assign Inputs_M2S_W_W_WID = M2S_W_W_WID;
+	assign Inputs_M2S_W_W_WDATA[0] = M2S_W_W_WDATA0;
+	assign Inputs_M2S_W_W_WDATA[1] = M2S_W_W_WDATA1;
+	assign Inputs_M2S_W_W_WDATA[2] = M2S_W_W_WDATA2;
+	assign Inputs_M2S_W_W_WDATA[3] = M2S_W_W_WDATA3;
+	assign Inputs_M2S_W_W_WSTRB = M2S_W_W_WSTRB;
+	assign Inputs_M2S_W_W_WLAST = M2S_W_W_WLAST;
+	assign Inputs_M2S_W_W_WUSER = M2S_W_W_WUSER;
+	assign Inputs_M2S_W_W_WVALID = M2S_W_W_WVALID;
+	assign Inputs_M2S_W_B_BREADY = M2S_W_B_BREADY;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[0] = AXI4IncrementOnReadCounterModule_L54F29T33_Expr;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[1] = AXI4IncrementOnReadCounterModule_L56F29T34_Expr;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[2] = AXI4IncrementOnReadCounterModule_L58F28T33_Expr;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[34:3] = State_counter;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[35] = AXI4IncrementOnReadCounterModule_L55F28T32_Expr;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[36] = AXI4IncrementOnReadCounterModule_L57F28T33_Expr;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[44:37] = Inputs_M2S_R_AR_ARID;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[76:45] = Inputs_M2S_R_AR_ARADDR;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[84:77] = Inputs_M2S_R_AR_ARLEN;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[87:85] = Inputs_M2S_R_AR_ARSIZE;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[89:88] = Inputs_M2S_R_AR_ARBURST;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[91:90] = Inputs_M2S_R_AR_ARLOCK;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[95:92] = Inputs_M2S_R_AR_ARCACHE;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[98:96] = Inputs_M2S_R_AR_ARPROT;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[102:99] = Inputs_M2S_R_AR_ARQOS;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[110:103] = Inputs_M2S_R_AR_ARREGION;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[118:111] = Inputs_M2S_R_AR_ARUSER;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[119] = Inputs_M2S_R_AR_ARVALID;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[120] = Inputs_M2S_R_R_RREADY;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[128:121] = Inputs_M2S_W_AW_AWID;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[160:129] = Inputs_M2S_W_AW_AWADDR;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[168:161] = Inputs_M2S_W_AW_AWLEN;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[171:169] = Inputs_M2S_W_AW_AWSIZE;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[173:172] = Inputs_M2S_W_AW_AWBURST;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[175:174] = Inputs_M2S_W_AW_AWLOCK;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[179:176] = Inputs_M2S_W_AW_AWCACHE;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[182:180] = Inputs_M2S_W_AW_AWPROT;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[186:183] = Inputs_M2S_W_AW_AWQOS;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[194:187] = Inputs_M2S_W_AW_AWREGION;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[202:195] = Inputs_M2S_W_AW_AWUSER;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[203] = Inputs_M2S_W_AW_AWVALID;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[211:204] = Inputs_M2S_W_W_WID;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[243:212] = {
+		Inputs_M2S_W_W_WDATA[3],
+		Inputs_M2S_W_W_WDATA[2],
+		Inputs_M2S_W_W_WDATA[1],
+		Inputs_M2S_W_W_WDATA[0]
+	}
+	;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[247:244] = Inputs_M2S_W_W_WSTRB;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[248] = Inputs_M2S_W_W_WLAST;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[256:249] = Inputs_M2S_W_W_WUSER;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[257] = Inputs_M2S_W_W_WVALID;
+	assign AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[258] = Inputs_M2S_W_B_BREADY;
+	assign axiSlave_M2S = AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[258:37];
+	assign axiSlave_inWREADY = AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[36];
+	assign axiSlave_inRVALID = AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[35];
+	assign axiSlave_inRDATA[3] = AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[34:27];
+	assign axiSlave_inRDATA[2] = AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[26:19];
+	assign axiSlave_inRDATA[1] = AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[18:11];
+	assign axiSlave_inRDATA[0] = AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[10:3];
+	assign axiSlave_inBVALID = AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[2];
+	assign axiSlave_inAWREADY = AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[1];
+	assign axiSlave_inARREADY = AXI4IncrementOnReadCounterModule_L51F37L60T14_Object[0];
+	assign AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F37T67_SignChange = AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr[32:0];
+	assign AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F37T84_Resize = AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F37T67_SignChange[31:0];
+	assign oCounter = State_counter;
+	assign outWritten = State_Written;
+	assign S2M_W_W_WREADY = axiSlave_S2M[73];
+	assign S2M_W_B_BVALID = axiSlave_S2M[72];
+	assign S2M_W_B_BUSER = axiSlave_S2M[71:64];
+	assign S2M_W_B_BRESP = axiSlave_S2M[63:62];
+	assign S2M_W_B_BID = axiSlave_S2M[61:54];
+	assign S2M_W_AW_AWREADY = axiSlave_S2M[53];
+	assign S2M_R_R_RVALID = axiSlave_S2M[52];
+	assign S2M_R_R_RUSER = axiSlave_S2M[51:44];
+	assign S2M_R_R_RLAST = axiSlave_S2M[43];
+	assign S2M_R_R_RRESP = axiSlave_S2M[42:41];
+	assign S2M_R_R_RDATA3 = axiSlave_S2M[40:33];
+	assign S2M_R_R_RDATA2 = axiSlave_S2M[32:25];
+	assign S2M_R_R_RDATA1 = axiSlave_S2M[24:17];
+	assign S2M_R_R_RDATA0 = axiSlave_S2M[16:9];
+	assign S2M_R_R_RID = axiSlave_S2M[8:1];
+	assign S2M_R_AR_ARREADY = axiSlave_S2M[0];
 	assign axiSlave_inARREADY_axiSlave_inARREADY_HardLink = axiSlave_inARREADY;
 	assign axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink = axiSlave_inAWREADY;
 	assign axiSlave_inBVALID_axiSlave_inBVALID_HardLink = axiSlave_inBVALID;

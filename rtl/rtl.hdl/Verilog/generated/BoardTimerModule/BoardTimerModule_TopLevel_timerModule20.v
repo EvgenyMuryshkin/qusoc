@@ -41,11 +41,30 @@ module BoardTimerModule_TopLevel_timerModule20
 	wire false = 1'b0;
 	wire [2: 0] CapacityBits = 3'b101;
 	wire [7: 0] countTo = 8'b00010011;
+	wire TimerModule_L51F9L53T10_TimerModule_L52F79T80_Expr = 1'b0;
+	wire TimerModule_L51F9L53T10_TimerModule_L52F100T101_Expr = 1'b1;
+	wire [4: 0] TimerModule_L51F9L53T10_TimerModule_L52F34T101_WhenTrue_Init = 5'b00000;
+	wire [4: 0] TimerModule_L51F9L53T10_TimerModule_L52F34T101_WhenFalse_Init = 5'b00000;
 	wire Inputs_Restart;
 	reg [4: 0] NextState_counter;
-	reg active;
+	wire active;
+	wire [0: 0] TimerModule_L51F9L53T10_TimerModule_L52F63T81_Source;
+	wire [4: 0] TimerModule_L51F9L53T10_TimerModule_L52F34T101_WhenTrue;
+	wire [4: 0] TimerModule_L51F9L53T10_TimerModule_L52F34T101_WhenFalse;
+	wire [4: 0] TimerModule_L51F9L53T10_TimerModule_L52F34T101_Ternary;
+	wire [4: 0] TimerModule_L51F9L53T10_TimerModule_L52F33T124_Resize;
+	wire [4: 0] TimerModule_L51F9L53T10_TimerModule_L52F33T135_SignChange;
 	reg [4: 0] State_counter = 5'b00000;
 	wire [4: 0] State_counterDefault = 5'b00000;
+	wire TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr;
+	wire TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr_1;
+	wire TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr_2;
+	wire [5: 0] TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr;
+	wire signed [5: 0] TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_1;
+	wire signed [5: 0] TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_2;
+	wire TimerModule_L47F24T48_Expr;
+	wire signed [8: 0] TimerModule_L47F24T48_ExprLhs;
+	wire signed [8: 0] TimerModule_L47F24T48_ExprRhs;
 	always @ (posedge BoardSignals_Clock)
 	begin
 		if ((BoardSignals_Reset == 1))
@@ -57,7 +76,49 @@ module BoardTimerModule_TopLevel_timerModule20
 			State_counter <= NextState_counter;
 		end
 	end
+	assign TimerModule_L47F24T48_Expr = TimerModule_L47F24T48_ExprLhs == TimerModule_L47F24T48_ExprRhs ? 1'b1 : 1'b0;
+	assign TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr = TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr_1 | TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr_2;
+	assign TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr = TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_1 + TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_2;
+	assign TimerModule_L51F9L53T10_TimerModule_L52F34T101_Ternary = (TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr ? TimerModule_L51F9L53T10_TimerModule_L52F34T101_WhenTrue : TimerModule_L51F9L53T10_TimerModule_L52F34T101_WhenFalse);
+	always @ (*)
+	begin
+		NextState_counter = State_counter;
+		NextState_counter = TimerModule_L51F9L53T10_TimerModule_L52F33T135_SignChange;
+	end
+	assign TimerModule_L47F24T48_ExprLhs = {
+		{4{1'b0}},
+		State_counter
+	}
+	;
+	assign TimerModule_L47F24T48_ExprRhs = {
+		1'b0,
+		countTo
+	}
+	;
+	assign TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr_1 = Inputs_Restart;
+	assign TimerModule_L51F9L53T10_TimerModule_L52F35T59_Expr_2 = active;
+	assign TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_1 = {
+		1'b0,
+		State_counter
+	}
+	;
+	assign TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr_2 = {
+		{5{1'b0}},
+		TimerModule_L51F9L53T10_TimerModule_L52F100T101_Expr
+	}
+	;
 	assign Inputs_Restart = Restart;
+	assign active = TimerModule_L47F24T48_Expr;
+	assign TimerModule_L51F9L53T10_TimerModule_L52F63T81_Source[0] = TimerModule_L51F9L53T10_TimerModule_L52F79T80_Expr;
+	assign TimerModule_L51F9L53T10_TimerModule_L52F34T101_WhenTrue = {
+		{4{1'b0}},
+		TimerModule_L51F9L53T10_TimerModule_L52F63T81_Source
+	}
+	;
+	assign TimerModule_L51F9L53T10_TimerModule_L52F34T101_WhenFalse = TimerModule_L51F9L53T10_TimerModule_L52F84T101_Expr[4:0];
+	assign TimerModule_L51F9L53T10_TimerModule_L52F33T124_Resize = TimerModule_L51F9L53T10_TimerModule_L52F34T101_Ternary;
+	assign TimerModule_L51F9L53T10_TimerModule_L52F33T135_SignChange = TimerModule_L51F9L53T10_TimerModule_L52F33T124_Resize;
+	assign OutActive = active;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

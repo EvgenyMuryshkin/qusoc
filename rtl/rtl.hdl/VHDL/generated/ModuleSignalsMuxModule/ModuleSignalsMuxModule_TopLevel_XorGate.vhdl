@@ -42,11 +42,21 @@ architecture rtl of ModuleSignalsMuxModule_TopLevel_XorGate is
 	-- false is a reserved name, declaration skipped
 	signal Inputs_I1 : std_logic := '0';
 	signal Inputs_I2 : std_logic := '0';
+	signal XorGateModule_L8F26T47_Expr : std_logic := '0';
+	signal XorGateModule_L8F26T47_Expr_1 : std_logic := '0';
+	signal XorGateModule_L8F26T47_Expr_2 : std_logic := '0';
 begin
-	process (I1, I2)
+	process (XorGateModule_L8F26T47_Expr_1, XorGateModule_L8F26T47_Expr_2)
 	begin
+		XorGateModule_L8F26T47_Expr <= XorGateModule_L8F26T47_Expr_1 XOR XorGateModule_L8F26T47_Expr_2;
+	end process;
+	process (I1, I2, Inputs_I1, Inputs_I2, XorGateModule_L8F26T47_Expr)
+	begin
+		XorGateModule_L8F26T47_Expr_1 <= Inputs_I1;
+		XorGateModule_L8F26T47_Expr_2 <= Inputs_I2;
 		Inputs_I1 <= I1;
 		Inputs_I2 <= I2;
+		O <= XorGateModule_L8F26T47_Expr;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

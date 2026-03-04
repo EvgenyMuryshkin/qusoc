@@ -37,12 +37,9 @@ module NoWE_SP_WF_RAMModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [7: 0] State_BuffDefault = 8'b00000000;
 	wire [7: 0] Inputs_Address;
 	wire [7: 0] Inputs_WriteData;
-	reg [7: 0] NextState_ReadData;
-	reg [7: 0] State_ReadData = 8'b00000000;
-	wire [7: 0] State_ReadDataDefault = 8'b00000000;
+	wire [7: 0] State_ReadData;
 	integer State_Buff_Iterator;
 	reg [7 : 0] State_Buff [0 : 255];
 	initial
@@ -50,43 +47,17 @@ module NoWE_SP_WF_RAMModule_TopLevel
 		for (State_Buff_Iterator = 0; State_Buff_Iterator < 256; State_Buff_Iterator = State_Buff_Iterator + 1)
 			State_Buff[State_Buff_Iterator] = 0;
 	end
-	integer NextState_Buff_Iterator;
-	reg [7 : 0] NextState_Buff [0 : 255];
-	initial
-	begin : Init_NextState_Buff
-		for (NextState_Buff_Iterator = 0; NextState_Buff_Iterator < 256; NextState_Buff_Iterator = NextState_Buff_Iterator + 1)
-			NextState_Buff[NextState_Buff_Iterator] = 0;
-	end
+	// inferred single port RAM with write-first behaviour
+	reg [7: 0] Inputs_Address_reg;
 	always @ (posedge Clock)
 	begin
-		if ((Reset == 1))
-		begin
-			State_ReadData <= State_ReadDataDefault;
-		end
-		else
-		begin
-			State_ReadData <= NextState_ReadData;
-		end
+		State_Buff[Inputs_Address] <= Inputs_WriteData;
+		Inputs_Address_reg <= Inputs_Address[7:0];
 	end
-	always @ (posedge Clock)
-	begin
-		if ((Reset == 1))
-		begin
-			for (State_Buff_Iterator = 0; (State_Buff_Iterator < 256); State_Buff_Iterator = (State_Buff_Iterator + 1))
-			begin
-				State_Buff[State_Buff_Iterator] <= State_BuffDefault;
-			end
-		end
-		else
-		begin
-			for (State_Buff_Iterator = 0; (State_Buff_Iterator < 256); State_Buff_Iterator = (State_Buff_Iterator + 1))
-			begin
-				State_Buff[State_Buff_Iterator] <= NextState_Buff[State_Buff_Iterator];
-			end
-		end
-	end
+	assign State_ReadData = State_Buff[Inputs_Address_reg];
 	assign Inputs_Address = Address;
 	assign Inputs_WriteData = WriteData;
+	assign Data = State_ReadData;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

@@ -26,7 +26,7 @@ namespace RTL.Modules
         public RTLBitArray ZeroString => new RTLBitArray(RTLBitArrayInitType.MSB, "00000000");
         public RTLBitArray ValueString => new RTLBitArray(RTLBitArrayInitType.MSB, "01000000");
         //public bool CtorMuxCondition => Inputs.Bit == 0;
-        public RTLBitArray CtorMux => Inputs.Bit == 0 ? new RTLBitArray(RTLBitArrayInitType.MSB, "00000000") : new RTLBitArray(RTLBitArrayInitType.MSB, "01000000");
+        public RTLBitArray CtorMux => Inputs.Bit == 0 ? new RTLBitArray(RTLBitArrayInitType.MSB, "00000000") : new RTLBitArray(RTLBitArrayInitType.MSB, "01000000");//dbg
     }
 
     public class BitArrayMuxInputs
@@ -48,5 +48,12 @@ namespace RTL.Modules
     public class BitArraySHRAModule : RTLCombinationalModule<BitArraySHInputs>
     {
         public RTLBitArray Res => (Inputs.Op.Signed() >> Inputs.By)[31,0];
+    }
+
+    public class BitArraySignedModuleInputs { }
+    public class BitArraySignedModule : RTLCombinationalModule<BitArraySignedModuleInputs>
+    {
+        public RTLBitArray SByte => new RTLBitArray(sbyte.MinValue);
+        public RTLBitArray Short => new RTLBitArray(sbyte.MinValue).Resized(16);
     }
 }

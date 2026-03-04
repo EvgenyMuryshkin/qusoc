@@ -39,11 +39,19 @@ architecture rtl of NotGateModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_Input : std_logic := '0';
+	signal Inputs_Input : std_logic;
+	signal NotGateModule_L17F31T44_Expr : std_logic := '0';
+	signal NotGateModule_L17F31T44_Expr_1 : std_logic := '0';
 begin
-	process (Input)
+	process (NotGateModule_L17F31T44_Expr_1)
 	begin
+		NotGateModule_L17F31T44_Expr <= NOT NotGateModule_L17F31T44_Expr_1;
+	end process;
+	process (Input, Inputs_Input, NotGateModule_L17F31T44_Expr)
+	begin
+		NotGateModule_L17F31T44_Expr_1 <= Inputs_Input;
 		Inputs_Input <= Input;
+		Output <= NotGateModule_L17F31T44_Expr;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

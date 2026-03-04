@@ -57,8 +57,8 @@ module AXISoCQuadCoreModule_TopLevel_uart
 	wire Inputs_iEN_TX;
 	wire Inputs_iRX;
 	wire [221: 0] Inputs_M2S;
-	reg [1: 0] byteAddr;
-	reg [31: 0] rdata;
+	wire [1: 0] byteAddr;
+	wire [31: 0] rdata;
 	reg axiSlave_inARREADY = 1'b0;
 	reg axiSlave_inAWREADY = 1'b0;
 	reg axiSlave_inBVALID = 1'b0;
@@ -119,6 +119,24 @@ module AXISoCQuadCoreModule_TopLevel_uart
 	wire uartTransmitter_oTransmitting;
 	wire uartTransmitter_oTX;
 	wire uartTransmitter_oWillStartTransmitting;
+	wire [1: 0] AXI4UARTModule_L103F33T74_Index;
+	reg [7: 0] AXI4UARTModule_L108F43T50_Cast = 8'b00000001;
+	reg [7: 0] AXI4UARTModule_L108F53T60_Cast = 8'b00000000;
+	wire [7: 0] AXI4UARTModule_L108F17T60_WhenTrue;
+	wire [7: 0] AXI4UARTModule_L108F17T60_WhenFalse;
+	wire [7: 0] AXI4UARTModule_L108F17T60_Ternary;
+	reg [7: 0] AXI4UARTModule_L109F44T51_Cast = 8'b00000001;
+	reg [7: 0] AXI4UARTModule_L109F54T61_Cast = 8'b00000000;
+	wire [7: 0] AXI4UARTModule_L109F17T61_WhenTrue;
+	wire [7: 0] AXI4UARTModule_L109F17T61_WhenFalse;
+	wire [7: 0] AXI4UARTModule_L109F17T61_Ternary;
+	reg [7: 0] AXI4UARTModule_L110F40T47_Cast = 8'b00000001;
+	reg [7: 0] AXI4UARTModule_L110F50T57_Cast = 8'b00000000;
+	wire [7: 0] AXI4UARTModule_L110F17T57_WhenTrue;
+	wire [7: 0] AXI4UARTModule_L110F17T57_WhenFalse;
+	wire [7: 0] AXI4UARTModule_L110F17T57_Ternary;
+	wire [31: 0] AXI4UARTModule_L106F16L112T14_Source;
+	wire [31: 0] AXI4UARTModule_L106F16L112T32_Resize;
 	wire axiSlave_inARREADY_axiSlave_inARREADY_HardLink;
 	wire axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink;
 	wire axiSlave_inBVALID_axiSlave_inBVALID_HardLink;
@@ -323,10 +341,30 @@ module AXISoCQuadCoreModule_TopLevel_uart
 		.oTX (uartTransmitter_oTX_uartTransmitter_oTX_HardLink),
 		.oWillStartTransmitting (uartTransmitter_oWillStartTransmitting_uartTransmitter_oWillStartTransmitting_HardLink)
 	);
+	assign AXI4UARTModule_L108F17T60_Ternary = (transmitterFIFO_oIsFull ? AXI4UARTModule_L108F17T60_WhenTrue : AXI4UARTModule_L108F17T60_WhenFalse);
+	assign AXI4UARTModule_L109F17T61_Ternary = (transmitterFIFO_oIsEmpty ? AXI4UARTModule_L109F17T61_WhenTrue : AXI4UARTModule_L109F17T61_WhenFalse);
+	assign AXI4UARTModule_L110F17T57_Ternary = (receiverFIFO_oRValid ? AXI4UARTModule_L110F17T57_WhenTrue : AXI4UARTModule_L110F17T57_WhenFalse);
 	assign Inputs_iEN_RX = iEN_RX;
 	assign Inputs_iEN_TX = iEN_TX;
 	assign Inputs_iRX = iRX;
 	assign Inputs_M2S = M2S;
+	assign AXI4UARTModule_L103F33T74_Index = axiSlave_outARADDR[1:0];
+	assign byteAddr = AXI4UARTModule_L103F33T74_Index;
+	assign AXI4UARTModule_L108F17T60_WhenTrue = AXI4UARTModule_L108F43T50_Cast;
+	assign AXI4UARTModule_L108F17T60_WhenFalse = AXI4UARTModule_L108F53T60_Cast;
+	assign AXI4UARTModule_L109F17T61_WhenTrue = AXI4UARTModule_L109F44T51_Cast;
+	assign AXI4UARTModule_L109F17T61_WhenFalse = AXI4UARTModule_L109F54T61_Cast;
+	assign AXI4UARTModule_L110F17T57_WhenTrue = AXI4UARTModule_L110F40T47_Cast;
+	assign AXI4UARTModule_L110F17T57_WhenFalse = AXI4UARTModule_L110F50T57_Cast;
+	assign AXI4UARTModule_L106F16L112T14_Source = {
+		AXI4UARTModule_L108F17T60_Ternary,
+		AXI4UARTModule_L109F17T61_Ternary,
+		AXI4UARTModule_L110F17T57_Ternary,
+		receiverFIFO_oRData
+	}
+	;
+	assign AXI4UARTModule_L106F16L112T32_Resize = AXI4UARTModule_L106F16L112T14_Source;
+	assign rdata = AXI4UARTModule_L106F16L112T32_Resize;
 	assign axiSlave_inARREADY_axiSlave_inARREADY_HardLink = axiSlave_inARREADY;
 	assign axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink = axiSlave_inAWREADY;
 	assign axiSlave_inBVALID_axiSlave_inBVALID_HardLink = axiSlave_inBVALID;

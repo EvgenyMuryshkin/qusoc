@@ -1,0 +1,12 @@
+No reads:
+	Value_L2_ClassArray
+No writes:
+	ClassCreationModules_L11F13L14T14_result_ByteArray
+	ClassCreationModules_L11F13L14T14_result_L2_ByteArray
+	ClassCreationModules_L11F13L14T14_result_L2_ClassArray
+	ClassCreationModules_L11F13L14T14_result_L2_Value
+	ClassCreationModules_L11F13L14T14_result_Value
+	Value_L2_ClassArray0_ByteArray
+	Value_L2_ClassArray1_ByteArray
+	Value_L2_ClassArray2_ByteArray
+	Value_L2_ClassArray3_ByteArray

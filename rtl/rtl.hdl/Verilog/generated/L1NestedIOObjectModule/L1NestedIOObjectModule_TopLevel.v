@@ -38,29 +38,74 @@ module L1NestedIOObjectModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
+	wire NestedIOObjectModule_L42F59T60_Expr = 1'b1;
 	wire Inputs_boolValue;
 	wire [7: 0] Inputs_byteValue;
-	reg [8: 0] l2_i1 = 9'b000000000;
-	reg [8: 0] l2_i2 = 9'b000000000;
-	wire [8: 0] l2_i1_l2_i1_HardLink;
-	wire [8: 0] l2_i2_l2_i2_HardLink;
+	wire l2_i1_boolValue;
+	wire [7: 0] l2_i1_byteValue;
+	wire l2_i2_boolValue;
+	wire [7: 0] l2_i2_byteValue;
+	wire [17: 0] NestedIOObjectModule_L32F31L44T14_Object;
+	wire [7: 0] NestedIOObjectModule_L42F33T61_Cast;
+	wire l2_i1_boolValue_l2_i1_boolValue_HardLink;
+	wire [7: 0] l2_i1_byteValue_l2_i1_byteValue_HardLink;
+	wire l2_i2_boolValue_l2_i2_boolValue_HardLink;
+	wire [7: 0] l2_i2_byteValue_l2_i2_byteValue_HardLink;
 	wire [8: 0] l2_oValues0_l2_oValues_HardLink;
 	wire [8: 0] l2_oValues1_l2_oValues_HardLink;
+	wire NestedIOObjectModule_L41F33T50_Expr;
+	wire NestedIOObjectModule_L41F33T50_Expr_1;
+	wire [8: 0] NestedIOObjectModule_L42F40T60_Expr;
+	wire signed [8: 0] NestedIOObjectModule_L42F40T60_Expr_1;
+	wire signed [8: 0] NestedIOObjectModule_L42F40T60_Expr_2;
+	wire [8 : 0] oValues [0 : 1];
 	wire [8 : 0] l2_oValues [0 : 1];
+	assign NestedIOObjectModule_L41F33T50_Expr = ~NestedIOObjectModule_L41F33T50_Expr_1;
+	assign NestedIOObjectModule_L42F40T60_Expr = NestedIOObjectModule_L42F40T60_Expr_1 + NestedIOObjectModule_L42F40T60_Expr_2;
 	L1NestedIOObjectModule_TopLevel_l2
 	L1NestedIOObjectModule_TopLevel_l2
 	(
 		// [BEGIN USER MAP FOR l2]
 		// [END USER MAP FOR l2]
-		.i1 (l2_i1_l2_i1_HardLink),
-		.i2 (l2_i2_l2_i2_HardLink),
+		.i1_boolValue (l2_i1_boolValue_l2_i1_boolValue_HardLink),
+		.i1_byteValue (l2_i1_byteValue_l2_i1_byteValue_HardLink),
+		.i2_boolValue (l2_i2_boolValue_l2_i2_boolValue_HardLink),
+		.i2_byteValue (l2_i2_byteValue_l2_i2_byteValue_HardLink),
 		.oValues0 (l2_oValues0_l2_oValues_HardLink),
 		.oValues1 (l2_oValues1_l2_oValues_HardLink)
 	);
+	assign NestedIOObjectModule_L41F33T50_Expr_1 = Inputs_boolValue;
+	assign NestedIOObjectModule_L42F40T60_Expr_1 = {
+		1'b0,
+		Inputs_byteValue
+	}
+	;
+	assign NestedIOObjectModule_L42F40T60_Expr_2 = {
+		{8{1'b0}},
+		NestedIOObjectModule_L42F59T60_Expr
+	}
+	;
+	assign oValues0_byteValue = oValues[0][8:1];
+	assign oValues0_boolValue = oValues[0][0];
+	assign oValues1_byteValue = oValues[1][8:1];
+	assign oValues1_boolValue = oValues[1][0];
 	assign Inputs_boolValue = boolValue;
 	assign Inputs_byteValue = byteValue;
-	assign l2_i1_l2_i1_HardLink = l2_i1;
-	assign l2_i2_l2_i2_HardLink = l2_i2;
+	assign NestedIOObjectModule_L32F31L44T14_Object[0] = Inputs_boolValue;
+	assign NestedIOObjectModule_L32F31L44T14_Object[8:1] = Inputs_byteValue;
+	assign NestedIOObjectModule_L42F33T61_Cast = NestedIOObjectModule_L42F40T60_Expr[7:0];
+	assign NestedIOObjectModule_L32F31L44T14_Object[9] = NestedIOObjectModule_L41F33T50_Expr;
+	assign NestedIOObjectModule_L32F31L44T14_Object[17:10] = NestedIOObjectModule_L42F33T61_Cast;
+	assign l2_i2_byteValue = NestedIOObjectModule_L32F31L44T14_Object[17:10];
+	assign l2_i2_boolValue = NestedIOObjectModule_L32F31L44T14_Object[9];
+	assign l2_i1_byteValue = NestedIOObjectModule_L32F31L44T14_Object[8:1];
+	assign l2_i1_boolValue = NestedIOObjectModule_L32F31L44T14_Object[0];
+	assign oValues[0] = l2_oValues[0];
+	assign oValues[1] = l2_oValues[1];
+	assign l2_i1_boolValue_l2_i1_boolValue_HardLink = l2_i1_boolValue;
+	assign l2_i1_byteValue_l2_i1_byteValue_HardLink = l2_i1_byteValue;
+	assign l2_i2_boolValue_l2_i2_boolValue_HardLink = l2_i2_boolValue;
+	assign l2_i2_byteValue_l2_i2_byteValue_HardLink = l2_i2_byteValue;
 	assign l2_oValues[0] = l2_oValues0_l2_oValues_HardLink;
 	assign l2_oValues[1] = l2_oValues1_l2_oValues_HardLink;
 	// [BEGIN USER ARCHITECTURE]

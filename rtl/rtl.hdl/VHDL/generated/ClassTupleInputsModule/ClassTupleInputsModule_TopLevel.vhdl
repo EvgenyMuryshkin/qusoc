@@ -41,14 +41,17 @@ architecture rtl of ClassTupleInputsModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_iValue : unsigned(51 downto 0) := (others => '0');
+	signal Inputs_iValue_Item1 : std_logic := '0';
+	signal Inputs_iValue_Item2_iBool : std_logic := '0';
+	signal Inputs_iValue_Item2_iByte : unsigned(7 downto 0) := (others => '0');
+	signal Inputs_iValue_Item2_iValue_iValue : unsigned(41 downto 0) := (others => '0');
 begin
 	process (iValue_Item1, iValue_Item2_iBool, iValue_Item2_iByte, iValue_Item2_iValue_iValue)
 	begin
-		Inputs_iValue(51) <= iValue_Item1;
-		Inputs_iValue(50 downto 9) <= iValue_Item2_iValue_iValue;
-		Inputs_iValue(8 downto 1) <= iValue_Item2_iByte;
-		Inputs_iValue(0) <= iValue_Item2_iBool;
+		Inputs_iValue_Item1 <= iValue_Item1;
+		Inputs_iValue_Item2_iBool <= iValue_Item2_iBool;
+		Inputs_iValue_Item2_iByte <= iValue_Item2_iByte;
+		Inputs_iValue_Item2_iValue_iValue <= iValue_Item2_iValue_iValue;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

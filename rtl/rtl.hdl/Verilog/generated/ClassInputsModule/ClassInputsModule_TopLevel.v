@@ -37,10 +37,10 @@ module ClassInputsModule_TopLevel
 	wire false = 1'b0;
 	wire Inputs_iBool;
 	wire [7: 0] Inputs_iByte;
-	wire [41: 0] Inputs_iValue;
+	wire [41: 0] Inputs_iValue_iValue;
 	assign Inputs_iBool = iBool;
 	assign Inputs_iByte = iByte;
-	assign Inputs_iValue[41:0] = iValue_iValue;
+	assign Inputs_iValue_iValue = iValue_iValue;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

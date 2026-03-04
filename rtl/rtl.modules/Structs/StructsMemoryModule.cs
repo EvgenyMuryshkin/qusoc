@@ -23,7 +23,7 @@ namespace RTL.Modules
             InitState(new StructsMemoryModuleState(4));
         }
 
-        public Data Out => State.Out;
+        public Data oOut => State.Out;
         //public Data Out0 => State.Buff[0];
         //public Data Out1 => State.Buff[1];
         //public Data Out2 => State.Buff[2];

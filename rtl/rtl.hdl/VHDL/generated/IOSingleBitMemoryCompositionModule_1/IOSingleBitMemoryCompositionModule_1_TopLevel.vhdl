@@ -40,12 +40,16 @@ architecture rtl of IOSingleBitMemoryCompositionModule_1_TopLevel is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	constant size : signed(1 downto 0) := "01";
+	constant IOSingleBitMemoryCompositionModule_L46F13L49T14_0_i : std_logic := '0';
 	signal children0_iValue : std_logic := '0';
 	signal children0_oValue : std_logic := '0';
+	signal IOSingleBitMemoryCompositionModule_L46F13L49T14_0_IOSingleBitMemoryCompositionModule_L48F44T126_Object : unsigned(0 downto 0) := (others => '0');
 	signal children0_iValue_children0_iValue_HardLink : std_logic := '0';
 	signal children0_oValue_children0_oValue_HardLink : std_logic := '0';
 	type Inputs_iValuesArray is array (0 to 0) of std_logic;
 	signal Inputs_iValues : Inputs_iValuesArray := (others => '0');
+	type IOSingleBitMemoryCompositionModule_L52F34T74_EnumerableArray is array (0 to 0) of std_logic;
+	signal IOSingleBitMemoryCompositionModule_L52F34T74_Enumerable : IOSingleBitMemoryCompositionModule_L52F34T74_EnumerableArray := (others => '0');
 begin
 	IOSingleBitMemoryCompositionModule_1_TopLevel_children0 : entity work.IOSingleBitMemoryCompositionModule_1_TopLevel_children0
 	port map
@@ -56,9 +60,13 @@ begin
 		oValue => children0_oValue_children0_oValue_HardLink
 	)
 	;
-	process (children0_iValue, children0_oValue_children0_oValue_HardLink, iValues0)
+	process (children0_iValue, children0_oValue, children0_oValue_children0_oValue_HardLink, Inputs_iValues, IOSingleBitMemoryCompositionModule_L46F13L49T14_0_IOSingleBitMemoryCompositionModule_L48F44T126_Object, IOSingleBitMemoryCompositionModule_L52F34T74_Enumerable, iValues0)
 	begin
 		Inputs_iValues(0) <= iValues0;
+		IOSingleBitMemoryCompositionModule_L46F13L49T14_0_IOSingleBitMemoryCompositionModule_L48F44T126_Object(0) <= Inputs_iValues(0);
+		children0_iValue <= IOSingleBitMemoryCompositionModule_L46F13L49T14_0_IOSingleBitMemoryCompositionModule_L48F44T126_Object(0);
+		IOSingleBitMemoryCompositionModule_L52F34T74_Enumerable(0) <= children0_oValue;
+		oValues0 <= IOSingleBitMemoryCompositionModule_L52F34T74_Enumerable(0);
 		children0_iValue_children0_iValue_HardLink <= children0_iValue;
 		children0_oValue <= children0_oValue_children0_oValue_HardLink;
 	end process;

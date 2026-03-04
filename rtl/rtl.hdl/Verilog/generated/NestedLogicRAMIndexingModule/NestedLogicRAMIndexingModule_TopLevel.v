@@ -40,13 +40,18 @@ module NestedLogicRAMIndexingModule_TopLevel
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire [7: 0] State_Nested_BuffDefault = 8'b00000000;
+	wire NestedLogicRAMIndexingModule_L33F60T61_Expr = 1'b1;
 	wire [1: 0] Inputs_ReadAddr;
 	wire Inputs_WE;
 	wire [1: 0] Inputs_WriteAddr;
 	wire [7: 0] Inputs_WriteData;
 	reg [7: 0] NextState_Counter;
+	wire [7: 0] NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F37T62_Cast;
 	reg [7: 0] State_Counter = 8'b00000000;
 	wire [7: 0] State_CounterDefault = 8'b00000000;
+	wire [9: 0] NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr;
+	wire signed [9: 0] NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_1;
+	wire signed [9: 0] NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_2;
 	integer State_Nested_Buff_Iterator;
 	reg [7 : 0] State_Nested_Buff [0 : 3];
 	initial
@@ -89,10 +94,37 @@ module NestedLogicRAMIndexingModule_TopLevel
 			end
 		end
 	end
+	assign NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr = NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_1 + NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_2;
+	always @ (*)
+	begin
+		NextState_Nested_Buff_Iterator = 0;
+		for (NextState_Nested_Buff_Iterator = 0; (NextState_Nested_Buff_Iterator < 4); NextState_Nested_Buff_Iterator = (NextState_Nested_Buff_Iterator + 1))
+		begin
+			NextState_Nested_Buff[NextState_Nested_Buff_Iterator] = State_Nested_Buff[NextState_Nested_Buff_Iterator];
+		end
+		NextState_Counter = State_Counter;
+		if ((Inputs_WE == 1))
+		begin
+			NextState_Counter = NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F37T62_Cast;
+			NextState_Nested_Buff[Inputs_WriteAddr] = Inputs_WriteData;
+		end
+	end
+	assign NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_1 = {
+		{2{1'b0}},
+		State_Counter
+	}
+	;
+	assign NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr_2 = {
+		{9{1'b0}},
+		NestedLogicRAMIndexingModule_L33F60T61_Expr
+	}
+	;
 	assign Inputs_ReadAddr = ReadAddr;
 	assign Inputs_WE = WE;
 	assign Inputs_WriteAddr = WriteAddr;
 	assign Inputs_WriteData = WriteData;
+	assign NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F37T62_Cast = NestedLogicRAMIndexingModule_L30F9L36T10_NestedLogicRAMIndexingModule_L32F13L35T14_NestedLogicRAMIndexingModule_L33F44T61_Expr[7:0];
+	assign oValue = State_Nested_Buff[Inputs_ReadAddr];
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

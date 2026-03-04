@@ -27,8 +27,8 @@ module StructsMemoryModule_TopLevel
 	input wire Reset,
 	input wire [7:0] In_Op1,
 	input wire [7:0] In_Op2,
-	output wire [7:0] Out_Op1,
-	output wire [7:0] Out_Op2
+	output wire [7:0] oOut_Op1,
+	output wire [7:0] oOut_Op2
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -39,7 +39,19 @@ module StructsMemoryModule_TopLevel
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire [15: 0] State_BuffDefault = 16'b0000000000000000;
-	wire [15: 0] Inputs_In;
+	wire [0: 0] StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L34F28T29_Expr = 1'b0;
+	wire StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_0_idx = 1'b0;
+	wire [0: 0] StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_0_StructsMemoryModule_L36F13L38T14_StructsMemoryModule_L37F32T39_Expr = 1'b1;
+	wire [0: 0] StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_0_StructsMemoryModule_L36F13L38T14_StructsMemoryModule_L37F54T57_Expr = 1'b0;
+	wire StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_1_idx = 1'b1;
+	wire [1: 0] StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_1_StructsMemoryModule_L36F13L38T14_StructsMemoryModule_L37F32T39_Expr = 2'b10;
+	wire [0: 0] StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_1_StructsMemoryModule_L36F13L38T14_StructsMemoryModule_L37F54T57_Expr = 1'b1;
+	wire [1: 0] StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_2_idx = 2'b10;
+	wire [1: 0] StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_2_StructsMemoryModule_L36F13L38T14_StructsMemoryModule_L37F32T39_Expr = 2'b11;
+	wire [1: 0] StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_2_StructsMemoryModule_L36F13L38T14_StructsMemoryModule_L37F54T57_Expr = 2'b10;
+	wire [1: 0] StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L39F40T41_Expr = 2'b11;
+	wire [7: 0] Inputs_In_Op1;
+	wire [7: 0] Inputs_In_Op2;
 	reg [7: 0] NextState_Out_Op1;
 	reg [7: 0] NextState_Out_Op2;
 	reg [7: 0] State_Out_Op1 = 8'b00000000;
@@ -50,7 +62,7 @@ module StructsMemoryModule_TopLevel
 	reg [15 : 0] State_Buff [0 : 3];
 	initial
 	begin : Init_State_Buff
-$readmemh("StructsMemoryModule_TopLevel_State_Buff.hex", State_Buff);
+		$readmemh("StructsMemoryModule_TopLevel_State_Buff.hex", State_Buff);
 	end
 	integer NextState_Buff_Iterator;
 	reg [15 : 0] NextState_Buff [0 : 3];
@@ -85,8 +97,30 @@ $readmemh("StructsMemoryModule_TopLevel_State_Buff.hex", State_Buff);
 			end
 		end
 	end
-	assign Inputs_In[15:8] = In_Op2;
-	assign Inputs_In[7:0] = In_Op1;
+	always @ (*)
+	begin
+		NextState_Buff_Iterator = 0;
+		for (NextState_Buff_Iterator = 0; (NextState_Buff_Iterator < 4); NextState_Buff_Iterator = (NextState_Buff_Iterator + 1))
+		begin
+			NextState_Buff[NextState_Buff_Iterator] = State_Buff[NextState_Buff_Iterator];
+		end
+		NextState_Out_Op1 = State_Out_Op1;
+		NextState_Out_Op2 = State_Out_Op2;
+		NextState_Buff[0][15:8] = Inputs_In_Op2;
+		NextState_Buff[0][7:0] = Inputs_In_Op1;
+		NextState_Buff[1][15:8] = State_Buff[0][15:8];
+		NextState_Buff[1][7:0] = State_Buff[0][7:0];
+		NextState_Buff[2][15:8] = State_Buff[1][15:8];
+		NextState_Buff[2][7:0] = State_Buff[1][7:0];
+		NextState_Buff[3][15:8] = State_Buff[2][15:8];
+		NextState_Buff[3][7:0] = State_Buff[2][7:0];
+		NextState_Out_Op2 = State_Buff[3][15:8];
+		NextState_Out_Op1 = State_Buff[3][7:0];
+	end
+	assign Inputs_In_Op1 = In_Op1;
+	assign Inputs_In_Op2 = In_Op2;
+	assign oOut_Op2 = State_Out_Op2;
+	assign oOut_Op1 = State_Out_Op1;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

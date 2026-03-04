@@ -43,34 +43,87 @@ architecture rtl of L1NestedIOObjectModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_boolValue : std_logic := '0';
-	signal Inputs_byteValue : unsigned(7 downto 0) := (others => '0');
-	signal l2_i1 : unsigned(8 downto 0) := (others => '0');
-	signal l2_i2 : unsigned(8 downto 0) := (others => '0');
-	signal l2_i1_l2_i1_HardLink : unsigned(8 downto 0) := "000000000";
-	signal l2_i2_l2_i2_HardLink : unsigned(8 downto 0) := "000000000";
+	constant NestedIOObjectModule_L42F59T60_Expr : std_logic := '1';
+	signal Inputs_boolValue : std_logic;
+	signal Inputs_byteValue : unsigned(7 downto 0);
+	signal l2_i1_boolValue : std_logic;
+	signal l2_i1_byteValue : unsigned(7 downto 0);
+	signal l2_i2_boolValue : std_logic;
+	signal l2_i2_byteValue : unsigned(7 downto 0);
+	signal NestedIOObjectModule_L32F31L44T14_Object : unsigned(17 downto 0) := (others => '0');
+	signal NestedIOObjectModule_L42F33T61_Cast : unsigned(7 downto 0) := (others => '0');
+	signal l2_i1_boolValue_l2_i1_boolValue_HardLink : std_logic := '0';
+	signal l2_i1_byteValue_l2_i1_byteValue_HardLink : unsigned(7 downto 0) := "00000000";
+	signal l2_i2_boolValue_l2_i2_boolValue_HardLink : std_logic := '0';
+	signal l2_i2_byteValue_l2_i2_byteValue_HardLink : unsigned(7 downto 0) := "00000000";
 	signal l2_oValues0_l2_oValues_HardLink : unsigned(8 downto 0) := "000000000";
 	signal l2_oValues1_l2_oValues_HardLink : unsigned(8 downto 0) := "000000000";
+	signal NestedIOObjectModule_L41F33T50_Expr : std_logic := '0';
+	signal NestedIOObjectModule_L41F33T50_Expr_1 : std_logic := '0';
+	signal NestedIOObjectModule_L42F40T60_Expr : unsigned(8 downto 0) := "000000000";
+	signal NestedIOObjectModule_L42F40T60_Expr_1 : signed(8 downto 0) := "000000000";
+	signal NestedIOObjectModule_L42F40T60_Expr_2 : signed(8 downto 0) := "000000000";
+	type oValuesArray is array (0 to 1) of unsigned (8 downto 0);
+	signal oValues : oValuesArray;
 	type l2_oValuesArray is array (0 to 1) of unsigned (8 downto 0);
-	signal l2_oValues : l2_oValuesArray := (others => (others => '0'));
+	constant l2_oValuesArrayInit : l2_oValuesArray := (
+		"000000000",
+		"000000011"
+	);
+	signal l2_oValues : l2_oValuesArray := l2_oValuesArrayInit;
 begin
+	process (NestedIOObjectModule_L41F33T50_Expr_1)
+	begin
+		NestedIOObjectModule_L41F33T50_Expr <= NOT NestedIOObjectModule_L41F33T50_Expr_1;
+	end process;
+	process (NestedIOObjectModule_L42F40T60_Expr_1, NestedIOObjectModule_L42F40T60_Expr_2)
+	begin
+		NestedIOObjectModule_L42F40T60_Expr <= resize(unsigned(signed(resize(NestedIOObjectModule_L42F40T60_Expr_1, NestedIOObjectModule_L42F40T60_Expr_1'length + 1)) + signed(resize(NestedIOObjectModule_L42F40T60_Expr_2, NestedIOObjectModule_L42F40T60_Expr_2'length + 1))), NestedIOObjectModule_L42F40T60_Expr'length);
+	end process;
 	L1NestedIOObjectModule_TopLevel_l2 : entity work.L1NestedIOObjectModule_TopLevel_l2
 	port map
 	(
 		-- [BEGIN USER MAP FOR l2]
 		-- [END USER MAP FOR l2]
-		i1 => l2_i1_l2_i1_HardLink,
-		i2 => l2_i2_l2_i2_HardLink,
+		i1_boolValue => l2_i1_boolValue_l2_i1_boolValue_HardLink,
+		i1_byteValue => l2_i1_byteValue_l2_i1_byteValue_HardLink,
+		i2_boolValue => l2_i2_boolValue_l2_i2_boolValue_HardLink,
+		i2_byteValue => l2_i2_byteValue_l2_i2_byteValue_HardLink,
 		oValues0 => l2_oValues0_l2_oValues_HardLink,
 		oValues1 => l2_oValues1_l2_oValues_HardLink
 	)
 	;
-	process (boolValue, byteValue, l2_i1, l2_i2, l2_oValues0_l2_oValues_HardLink, l2_oValues1_l2_oValues_HardLink)
+	process (boolValue, byteValue, Inputs_boolValue, Inputs_byteValue, l2_i1_boolValue, l2_i1_byteValue, l2_i2_boolValue, l2_i2_byteValue, l2_oValues, l2_oValues0_l2_oValues_HardLink, l2_oValues1_l2_oValues_HardLink, NestedIOObjectModule_L32F31L44T14_Object, NestedIOObjectModule_L41F33T50_Expr, NestedIOObjectModule_L42F33T61_Cast, NestedIOObjectModule_L42F40T60_Expr, oValues)
 	begin
+		NestedIOObjectModule_L41F33T50_Expr_1 <= Inputs_boolValue;
+		NestedIOObjectModule_L42F40T60_Expr_1(8) <= '0';
+		NestedIOObjectModule_L42F40T60_Expr_1(7 downto 0) <= signed(Inputs_byteValue);
+		NestedIOObjectModule_L42F40T60_Expr_2(8 downto 1) <= (
+			others => '0'
+		)
+		;
+		NestedIOObjectModule_L42F40T60_Expr_2(0) <= NestedIOObjectModule_L42F59T60_Expr;
+		oValues0_byteValue <= oValues(0)(8 downto 1);
+		oValues0_boolValue <= oValues(0)(0);
+		oValues1_byteValue <= oValues(1)(8 downto 1);
+		oValues1_boolValue <= oValues(1)(0);
 		Inputs_boolValue <= boolValue;
 		Inputs_byteValue <= byteValue;
-		l2_i1_l2_i1_HardLink <= l2_i1;
-		l2_i2_l2_i2_HardLink <= l2_i2;
+		NestedIOObjectModule_L32F31L44T14_Object(0) <= Inputs_boolValue;
+		NestedIOObjectModule_L32F31L44T14_Object(8 downto 1) <= Inputs_byteValue;
+		NestedIOObjectModule_L42F33T61_Cast <= NestedIOObjectModule_L42F40T60_Expr(7 downto 0);
+		NestedIOObjectModule_L32F31L44T14_Object(9) <= NestedIOObjectModule_L41F33T50_Expr;
+		NestedIOObjectModule_L32F31L44T14_Object(17 downto 10) <= NestedIOObjectModule_L42F33T61_Cast;
+		l2_i2_byteValue <= NestedIOObjectModule_L32F31L44T14_Object(17 downto 10);
+		l2_i2_boolValue <= NestedIOObjectModule_L32F31L44T14_Object(9);
+		l2_i1_byteValue <= NestedIOObjectModule_L32F31L44T14_Object(8 downto 1);
+		l2_i1_boolValue <= NestedIOObjectModule_L32F31L44T14_Object(0);
+		oValues(0) <= l2_oValues(0);
+		oValues(1) <= l2_oValues(1);
+		l2_i1_boolValue_l2_i1_boolValue_HardLink <= l2_i1_boolValue;
+		l2_i1_byteValue_l2_i1_byteValue_HardLink <= l2_i1_byteValue;
+		l2_i2_boolValue_l2_i2_boolValue_HardLink <= l2_i2_boolValue;
+		l2_i2_byteValue_l2_i2_byteValue_HardLink <= l2_i2_byteValue;
 		l2_oValues(0) <= l2_oValues0_l2_oValues_HardLink;
 		l2_oValues(1) <= l2_oValues1_l2_oValues_HardLink;
 	end process;

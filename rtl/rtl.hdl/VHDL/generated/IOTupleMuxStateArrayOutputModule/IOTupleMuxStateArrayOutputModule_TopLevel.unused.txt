@@ -1,9 +1,11 @@
 No reads:
-	Inputs_Sel0
-	Inputs_Sel1
-	Inputs_Selector
-	State_Sel
+	IOTupleMuxStateArrayOutputModule_L23F74T75_Expr
+	IOTupleMuxStateArrayOutputModule_L23F89T90_Expr
+	IOTupleMuxStateArrayOutputModule_L26F9L29T10_IOTupleMuxStateArrayOutputModule_L27F27T28_Expr
+	IOTupleMuxStateArrayOutputModule_L26F9L29T10_IOTupleMuxStateArrayOutputModule_L28F27T28_Expr
 	State_SelDefault
 No writes:
-	NextState_Sel
+	Output_iTuple_Item4_L2_L2ValuesArrayInit
+	Output_iTuple_Item4_L2Tuple_Item2_L2ValuesArrayInit
+	Output_iTupleArrayArrayInit
 	State_SelArrayInit

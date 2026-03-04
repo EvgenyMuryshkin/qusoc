@@ -1,22 +1,11 @@
 No reads:
-	Inputs_iLeft
-	Inputs_iLeftAddr
-	Inputs_iLeftAddrValid
-	Inputs_iRight
-	Inputs_iRightAddr
-	Inputs_iRightAddrValid
 	leftCount
-	mEmptyLeftData
-	mEmptyRightData
-	mMuxLeftData
-	mMuxRightData
-	mOutLeftData
-	mOutRightData
 	rightCount
 No writes:
-	mEmptyLeftData
-	mEmptyRightData
-	mMuxLeftData
-	mMuxRightData
-	mOutLeftData
-	mOutRightData
+	mEmptyLeftData_Addr
+	mEmptyLeftData_IsActive
+	mEmptyLeftData_Payload_Data
+	mEmptyLeftData_Payload_DataFlag
+	mEmptyRightData_IsActive
+	mEmptyRightData_Payload_Data
+	mEmptyRightData_Payload_DataFlag

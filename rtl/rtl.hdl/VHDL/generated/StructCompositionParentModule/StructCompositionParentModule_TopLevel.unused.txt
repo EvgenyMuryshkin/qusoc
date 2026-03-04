@@ -1,5 +1,0 @@
-No reads:
-	child_Output
-	Inputs_iValue
-No writes:
-	child_iValue

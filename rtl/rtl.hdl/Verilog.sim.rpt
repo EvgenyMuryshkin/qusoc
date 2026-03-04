@@ -1,5 +1,5 @@
 Simulator report for Verilog
-Wed Oct 23 20:57:24 2024
+Sun Sep 14 20:48:34 2025
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -44,44 +44,44 @@ applicable agreement for further details.
 ; Type                        ; Value        ;
 +-----------------------------+--------------+
 ; Simulation Start Time       ; 0 ps         ;
-; Simulation End Time         ; 1.0 us       ;
-; Simulation Netlist Size     ; 73 nodes     ;
-; Simulation Coverage         ;      69.86 % ;
-; Total Number of Transitions ; 186          ;
+; Simulation End Time         ; 1.0 ms       ;
+; Simulation Netlist Size     ; 174 nodes    ;
+; Simulation Coverage         ;      54.02 % ;
+; Total Number of Transitions ; 461          ;
 ; Simulation Breakpoints      ; 0            ;
 ; Family                      ; Cyclone II   ;
 ; Device                      ; EP2C70F896C6 ;
 +-----------------------------+--------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Simulator Settings                                                                                                                                     ;
-+--------------------------------------------------------------------------------------------+-------------------------------------------+---------------+
-; Option                                                                                     ; Setting                                   ; Default Value ;
-+--------------------------------------------------------------------------------------------+-------------------------------------------+---------------+
-; Simulation mode                                                                            ; Timing                                    ; Timing        ;
-; Start time                                                                                 ; 0 ns                                      ; 0 ns          ;
-; Simulation results format                                                                  ; CVWF                                      ;               ;
-; Vector input source                                                                        ; Waveforms/CollectionInitializerModule.vwf ;               ;
-; Add pins automatically to simulation output waveforms                                      ; On                                        ; On            ;
-; Check outputs                                                                              ; Off                                       ; Off           ;
-; Report simulation coverage                                                                 ; On                                        ; On            ;
-; Display complete 1/0 value coverage report                                                 ; On                                        ; On            ;
-; Display missing 1-value coverage report                                                    ; On                                        ; On            ;
-; Display missing 0-value coverage report                                                    ; On                                        ; On            ;
-; Detect setup and hold time violations                                                      ; Off                                       ; Off           ;
-; Detect glitches                                                                            ; Off                                       ; Off           ;
-; Disable timing delays in Timing Simulation                                                 ; Off                                       ; Off           ;
-; Generate Signal Activity File                                                              ; Off                                       ; Off           ;
-; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                                       ; Off           ;
-; Group bus channels in simulation results                                                   ; Off                                       ; Off           ;
-; Preserve fewer signal transitions to reduce memory requirements                            ; On                                        ; On            ;
-; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                                ; INPUT_EDGE    ;
-; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                                       ; Off           ;
-; Overwrite waveform inputs                                                                  ; on                                        ;               ;
-; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                                        ;               ;
-; Perform Glitch Filtering in Timing Simulation                                              ; Auto                                      ; Auto          ;
-+--------------------------------------------------------------------------------------------+-------------------------------------------+---------------+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                                             ;
++--------------------------------------------------------------------------------------------+-----------------------------------+---------------+
+; Option                                                                                     ; Setting                           ; Default Value ;
++--------------------------------------------------------------------------------------------+-----------------------------------+---------------+
+; Simulation mode                                                                            ; Timing                            ; Timing        ;
+; Start time                                                                                 ; 0 ns                              ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF                              ;               ;
+; Vector input source                                                                        ; Waveforms/StructsMemoryModule.vwf ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On                                ; On            ;
+; Check outputs                                                                              ; Off                               ; Off           ;
+; Report simulation coverage                                                                 ; On                                ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On                                ; On            ;
+; Display missing 1-value coverage report                                                    ; On                                ; On            ;
+; Display missing 0-value coverage report                                                    ; On                                ; On            ;
+; Detect setup and hold time violations                                                      ; Off                               ; Off           ;
+; Detect glitches                                                                            ; Off                               ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off                               ; Off           ;
+; Generate Signal Activity File                                                              ; Off                               ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                               ; Off           ;
+; Group bus channels in simulation results                                                   ; Off                               ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On                                ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                        ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                               ; Off           ;
+; Overwrite waveform inputs                                                                  ; on                                ;               ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                                ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto                              ; Auto          ;
++--------------------------------------------------------------------------------------------+-----------------------------------+---------------+
 
 
 +----------------------+
@@ -96,136 +96,274 @@ Please use Quartus II to view the waveform report data.
 +-----------------------------------------------------+--------------+
 ; Type                                                ; Value        ;
 +-----------------------------------------------------+--------------+
-; Total coverage as a percentage                      ;      69.86 % ;
-; Total nodes checked                                 ; 73           ;
-; Total output ports checked                          ; 73           ;
-; Total output ports with complete 1/0-value coverage ; 51           ;
-; Total output ports with no 1/0-value coverage       ; 22           ;
-; Total output ports with no 1-value coverage         ; 22           ;
-; Total output ports with no 0-value coverage         ; 22           ;
+; Total coverage as a percentage                      ;      54.02 % ;
+; Total nodes checked                                 ; 174          ;
+; Total output ports checked                          ; 174          ;
+; Total output ports with complete 1/0-value coverage ; 94           ;
+; Total output ports with no 1/0-value coverage       ; 59           ;
+; Total output ports with no 1-value coverage         ; 63           ;
+; Total output ports with no 0-value coverage         ; 76           ;
 +-----------------------------------------------------+--------------+
 
 
 The following table displays output ports that toggle between 1 and 0 during simulation.
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Complete 1/0-Value Coverage                                                                                                                                  ;
-+---------------------------------------------------------------------+---------------------------------------------------------------------+------------------+
-; Node Name                                                           ; Output Port Name                                                    ; Output Port Type ;
-+---------------------------------------------------------------------+---------------------------------------------------------------------+------------------+
-; |CollectionInitializerModule_TopLevel|State_state[1][2]             ; |CollectionInitializerModule_TopLevel|State_state[1][2]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[1][7]             ; |CollectionInitializerModule_TopLevel|State_state[1][7]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[2][1]             ; |CollectionInitializerModule_TopLevel|State_state[2][1]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[3][1]             ; |CollectionInitializerModule_TopLevel|State_state[3][1]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[0][0]             ; |CollectionInitializerModule_TopLevel|State_state[0][0]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[0][1]             ; |CollectionInitializerModule_TopLevel|State_state[0][1]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[0][2]             ; |CollectionInitializerModule_TopLevel|State_state[0][2]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[0][3]             ; |CollectionInitializerModule_TopLevel|State_state[0][3]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[0][4]             ; |CollectionInitializerModule_TopLevel|State_state[0][4]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[0][5]             ; |CollectionInitializerModule_TopLevel|State_state[0][5]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[0][6]             ; |CollectionInitializerModule_TopLevel|State_state[0][6]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[0][7]             ; |CollectionInitializerModule_TopLevel|State_state[0][7]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state[1][0]             ; |CollectionInitializerModule_TopLevel|State_state[1][0]             ; regout           ;
-; |CollectionInitializerModule_TopLevel|State_state~0                 ; |CollectionInitializerModule_TopLevel|State_state~0                 ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state[0][0]~1           ; |CollectionInitializerModule_TopLevel|State_state[0][0]~1           ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state~2                 ; |CollectionInitializerModule_TopLevel|State_state~2                 ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state~3                 ; |CollectionInitializerModule_TopLevel|State_state~3                 ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state~4                 ; |CollectionInitializerModule_TopLevel|State_state~4                 ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state~5                 ; |CollectionInitializerModule_TopLevel|State_state~5                 ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state~6                 ; |CollectionInitializerModule_TopLevel|State_state~6                 ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state~7                 ; |CollectionInitializerModule_TopLevel|State_state~7                 ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state~8                 ; |CollectionInitializerModule_TopLevel|State_state~8                 ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state~9                 ; |CollectionInitializerModule_TopLevel|State_state~9                 ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state~10                ; |CollectionInitializerModule_TopLevel|State_state~10                ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state[0][0]~11          ; |CollectionInitializerModule_TopLevel|State_state[0][0]~11          ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state[0][0]~11_wirecell ; |CollectionInitializerModule_TopLevel|State_state[0][0]~11_wirecell ; combout          ;
-; |CollectionInitializerModule_TopLevel|State_state~10_wirecell       ; |CollectionInitializerModule_TopLevel|State_state~10_wirecell       ; combout          ;
-; |CollectionInitializerModule_TopLevel|oState0[0]                    ; |CollectionInitializerModule_TopLevel|oState0[0]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState0[1]                    ; |CollectionInitializerModule_TopLevel|oState0[1]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState0[2]                    ; |CollectionInitializerModule_TopLevel|oState0[2]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState0[3]                    ; |CollectionInitializerModule_TopLevel|oState0[3]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState0[4]                    ; |CollectionInitializerModule_TopLevel|oState0[4]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState0[5]                    ; |CollectionInitializerModule_TopLevel|oState0[5]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState0[6]                    ; |CollectionInitializerModule_TopLevel|oState0[6]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState0[7]                    ; |CollectionInitializerModule_TopLevel|oState0[7]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState1[0]                    ; |CollectionInitializerModule_TopLevel|oState1[0]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState1[2]                    ; |CollectionInitializerModule_TopLevel|oState1[2]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState1[7]                    ; |CollectionInitializerModule_TopLevel|oState1[7]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[0]                    ; |CollectionInitializerModule_TopLevel|oState2[0]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[1]                    ; |CollectionInitializerModule_TopLevel|oState2[1]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[2]                    ; |CollectionInitializerModule_TopLevel|oState2[2]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[7]                    ; |CollectionInitializerModule_TopLevel|oState2[7]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[0]                    ; |CollectionInitializerModule_TopLevel|oState3[0]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[1]                    ; |CollectionInitializerModule_TopLevel|oState3[1]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[2]                    ; |CollectionInitializerModule_TopLevel|oState3[2]                    ; padio            ;
-; |CollectionInitializerModule_TopLevel|i1                            ; |CollectionInitializerModule_TopLevel|i1~corein                     ; combout          ;
-; |CollectionInitializerModule_TopLevel|i2                            ; |CollectionInitializerModule_TopLevel|i2~corein                     ; combout          ;
-; |CollectionInitializerModule_TopLevel|Reset                         ; |CollectionInitializerModule_TopLevel|Reset~corein                  ; combout          ;
-; |CollectionInitializerModule_TopLevel|Clock                         ; |CollectionInitializerModule_TopLevel|Clock~corein                  ; combout          ;
-; |CollectionInitializerModule_TopLevel|i3                            ; |CollectionInitializerModule_TopLevel|i3~corein                     ; combout          ;
-; |CollectionInitializerModule_TopLevel|Clock~clkctrl                 ; |CollectionInitializerModule_TopLevel|Clock~clkctrl                 ; outclk           ;
-+---------------------------------------------------------------------+---------------------------------------------------------------------+------------------+
++------------------------------------------------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                                                        ;
++--------------------------------------------------------+--------------------------------------------------------+------------------+
+; Node Name                                              ; Output Port Name                                       ; Output Port Type ;
++--------------------------------------------------------+--------------------------------------------------------+------------------+
+; |StructsMemoryModule_TopLevel|State_Out_Op1[0]         ; |StructsMemoryModule_TopLevel|State_Out_Op1[0]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op1[1]         ; |StructsMemoryModule_TopLevel|State_Out_Op1[1]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op1[2]         ; |StructsMemoryModule_TopLevel|State_Out_Op1[2]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op1[3]         ; |StructsMemoryModule_TopLevel|State_Out_Op1[3]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op2[0]         ; |StructsMemoryModule_TopLevel|State_Out_Op2[0]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op2[1]         ; |StructsMemoryModule_TopLevel|State_Out_Op2[1]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op2[2]         ; |StructsMemoryModule_TopLevel|State_Out_Op2[2]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op2[4]         ; |StructsMemoryModule_TopLevel|State_Out_Op2[4]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op2[5]         ; |StructsMemoryModule_TopLevel|State_Out_Op2[5]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op2[6]         ; |StructsMemoryModule_TopLevel|State_Out_Op2[6]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op2[7]         ; |StructsMemoryModule_TopLevel|State_Out_Op2[7]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][0]         ; |StructsMemoryModule_TopLevel|State_Buff[3][0]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op1~0          ; |StructsMemoryModule_TopLevel|State_Out_Op1~0          ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][1]         ; |StructsMemoryModule_TopLevel|State_Buff[3][1]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op1~1          ; |StructsMemoryModule_TopLevel|State_Out_Op1~1          ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][2]         ; |StructsMemoryModule_TopLevel|State_Buff[3][2]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op1~2          ; |StructsMemoryModule_TopLevel|State_Out_Op1~2          ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][8]         ; |StructsMemoryModule_TopLevel|State_Buff[3][8]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op2~0          ; |StructsMemoryModule_TopLevel|State_Out_Op2~0          ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][9]         ; |StructsMemoryModule_TopLevel|State_Buff[3][9]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op2~1          ; |StructsMemoryModule_TopLevel|State_Out_Op2~1          ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][13]        ; |StructsMemoryModule_TopLevel|State_Buff[3][13]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op2~5          ; |StructsMemoryModule_TopLevel|State_Out_Op2~5          ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][14]        ; |StructsMemoryModule_TopLevel|State_Buff[3][14]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op2~6          ; |StructsMemoryModule_TopLevel|State_Out_Op2~6          ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][15]        ; |StructsMemoryModule_TopLevel|State_Buff[3][15]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op2~7          ; |StructsMemoryModule_TopLevel|State_Out_Op2~7          ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][0]         ; |StructsMemoryModule_TopLevel|State_Buff[2][0]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][1]         ; |StructsMemoryModule_TopLevel|State_Buff[2][1]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][2]         ; |StructsMemoryModule_TopLevel|State_Buff[2][2]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][8]         ; |StructsMemoryModule_TopLevel|State_Buff[2][8]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][9]         ; |StructsMemoryModule_TopLevel|State_Buff[2][9]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][13]        ; |StructsMemoryModule_TopLevel|State_Buff[2][13]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][14]        ; |StructsMemoryModule_TopLevel|State_Buff[2][14]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][15]        ; |StructsMemoryModule_TopLevel|State_Buff[2][15]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][0]         ; |StructsMemoryModule_TopLevel|State_Buff[1][0]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][1]         ; |StructsMemoryModule_TopLevel|State_Buff[1][1]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][2]         ; |StructsMemoryModule_TopLevel|State_Buff[1][2]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][8]         ; |StructsMemoryModule_TopLevel|State_Buff[1][8]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][9]         ; |StructsMemoryModule_TopLevel|State_Buff[1][9]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][13]        ; |StructsMemoryModule_TopLevel|State_Buff[1][13]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][14]        ; |StructsMemoryModule_TopLevel|State_Buff[1][14]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][15]        ; |StructsMemoryModule_TopLevel|State_Buff[1][15]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][0]         ; |StructsMemoryModule_TopLevel|State_Buff[0][0]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][1]         ; |StructsMemoryModule_TopLevel|State_Buff[0][1]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][2]         ; |StructsMemoryModule_TopLevel|State_Buff[0][2]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][8]         ; |StructsMemoryModule_TopLevel|State_Buff[0][8]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][9]         ; |StructsMemoryModule_TopLevel|State_Buff[0][9]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][13]        ; |StructsMemoryModule_TopLevel|State_Buff[0][13]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][14]        ; |StructsMemoryModule_TopLevel|State_Buff[0][14]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][15]        ; |StructsMemoryModule_TopLevel|State_Buff[0][15]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][1]~0       ; |StructsMemoryModule_TopLevel|State_Buff[0][1]~0       ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][12]~3      ; |StructsMemoryModule_TopLevel|State_Buff[0][12]~3      ; combout          ;
+; |StructsMemoryModule_TopLevel|oOut_Op1[0]              ; |StructsMemoryModule_TopLevel|oOut_Op1[0]              ; padio            ;
+; |StructsMemoryModule_TopLevel|oOut_Op1[1]              ; |StructsMemoryModule_TopLevel|oOut_Op1[1]              ; padio            ;
+; |StructsMemoryModule_TopLevel|oOut_Op1[2]              ; |StructsMemoryModule_TopLevel|oOut_Op1[2]              ; padio            ;
+; |StructsMemoryModule_TopLevel|oOut_Op1[3]              ; |StructsMemoryModule_TopLevel|oOut_Op1[3]              ; padio            ;
+; |StructsMemoryModule_TopLevel|oOut_Op2[0]              ; |StructsMemoryModule_TopLevel|oOut_Op2[0]              ; padio            ;
+; |StructsMemoryModule_TopLevel|oOut_Op2[1]              ; |StructsMemoryModule_TopLevel|oOut_Op2[1]              ; padio            ;
+; |StructsMemoryModule_TopLevel|oOut_Op2[2]              ; |StructsMemoryModule_TopLevel|oOut_Op2[2]              ; padio            ;
+; |StructsMemoryModule_TopLevel|oOut_Op2[4]              ; |StructsMemoryModule_TopLevel|oOut_Op2[4]              ; padio            ;
+; |StructsMemoryModule_TopLevel|oOut_Op2[5]              ; |StructsMemoryModule_TopLevel|oOut_Op2[5]              ; padio            ;
+; |StructsMemoryModule_TopLevel|oOut_Op2[6]              ; |StructsMemoryModule_TopLevel|oOut_Op2[6]              ; padio            ;
+; |StructsMemoryModule_TopLevel|oOut_Op2[7]              ; |StructsMemoryModule_TopLevel|oOut_Op2[7]              ; padio            ;
+; |StructsMemoryModule_TopLevel|Clock                    ; |StructsMemoryModule_TopLevel|Clock~corein             ; combout          ;
+; |StructsMemoryModule_TopLevel|In_Op1[0]                ; |StructsMemoryModule_TopLevel|In_Op1[0]~corein         ; combout          ;
+; |StructsMemoryModule_TopLevel|In_Op1[1]                ; |StructsMemoryModule_TopLevel|In_Op1[1]~corein         ; combout          ;
+; |StructsMemoryModule_TopLevel|In_Op1[2]                ; |StructsMemoryModule_TopLevel|In_Op1[2]~corein         ; combout          ;
+; |StructsMemoryModule_TopLevel|In_Op2[0]                ; |StructsMemoryModule_TopLevel|In_Op2[0]~corein         ; combout          ;
+; |StructsMemoryModule_TopLevel|In_Op2[1]                ; |StructsMemoryModule_TopLevel|In_Op2[1]~corein         ; combout          ;
+; |StructsMemoryModule_TopLevel|In_Op2[4]                ; |StructsMemoryModule_TopLevel|In_Op2[4]~corein         ; combout          ;
+; |StructsMemoryModule_TopLevel|In_Op2[5]                ; |StructsMemoryModule_TopLevel|In_Op2[5]~corein         ; combout          ;
+; |StructsMemoryModule_TopLevel|In_Op2[6]                ; |StructsMemoryModule_TopLevel|In_Op2[6]~corein         ; combout          ;
+; |StructsMemoryModule_TopLevel|In_Op2[7]                ; |StructsMemoryModule_TopLevel|In_Op2[7]~corein         ; combout          ;
+; |StructsMemoryModule_TopLevel|Clock~clkctrl            ; |StructsMemoryModule_TopLevel|Clock~clkctrl            ; outclk           ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][0]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[3][0]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][2]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[3][2]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][8]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[3][8]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][9]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[3][9]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][13]~feeder ; |StructsMemoryModule_TopLevel|State_Buff[3][13]~feeder ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][14]~feeder ; |StructsMemoryModule_TopLevel|State_Buff[3][14]~feeder ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][15]~feeder ; |StructsMemoryModule_TopLevel|State_Buff[3][15]~feeder ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][0]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[2][0]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][1]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[2][1]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][8]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[2][8]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][14]~feeder ; |StructsMemoryModule_TopLevel|State_Buff[2][14]~feeder ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][0]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[1][0]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][8]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[1][8]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][9]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[1][9]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][0]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[0][0]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][2]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[0][2]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][8]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[0][8]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][13]~feeder ; |StructsMemoryModule_TopLevel|State_Buff[0][13]~feeder ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][15]~feeder ; |StructsMemoryModule_TopLevel|State_Buff[0][15]~feeder ; combout          ;
++--------------------------------------------------------+--------------------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 1 during simulation.
-+----------------------------------------------------------------------------------------------------------------------------+
-; Missing 1-Value Coverage                                                                                                   ;
-+--------------------------------------------------+------------------------------------------------------+------------------+
-; Node Name                                        ; Output Port Name                                     ; Output Port Type ;
-+--------------------------------------------------+------------------------------------------------------+------------------+
-; |CollectionInitializerModule_TopLevel|oState1[1] ; |CollectionInitializerModule_TopLevel|oState1[1]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState1[3] ; |CollectionInitializerModule_TopLevel|oState1[3]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState1[4] ; |CollectionInitializerModule_TopLevel|oState1[4]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState1[5] ; |CollectionInitializerModule_TopLevel|oState1[5]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState1[6] ; |CollectionInitializerModule_TopLevel|oState1[6]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[3] ; |CollectionInitializerModule_TopLevel|oState2[3]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[4] ; |CollectionInitializerModule_TopLevel|oState2[4]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[5] ; |CollectionInitializerModule_TopLevel|oState2[5]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[6] ; |CollectionInitializerModule_TopLevel|oState2[6]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[3] ; |CollectionInitializerModule_TopLevel|oState3[3]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[4] ; |CollectionInitializerModule_TopLevel|oState3[4]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[5] ; |CollectionInitializerModule_TopLevel|oState3[5]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[6] ; |CollectionInitializerModule_TopLevel|oState3[6]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[7] ; |CollectionInitializerModule_TopLevel|oState3[7]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|data[0]    ; |CollectionInitializerModule_TopLevel|data[0]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[1]    ; |CollectionInitializerModule_TopLevel|data[1]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[2]    ; |CollectionInitializerModule_TopLevel|data[2]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[3]    ; |CollectionInitializerModule_TopLevel|data[3]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[4]    ; |CollectionInitializerModule_TopLevel|data[4]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[5]    ; |CollectionInitializerModule_TopLevel|data[5]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[6]    ; |CollectionInitializerModule_TopLevel|data[6]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[7]    ; |CollectionInitializerModule_TopLevel|data[7]~corein ; combout          ;
-+--------------------------------------------------+------------------------------------------------------+------------------+
++------------------------------------------------------------------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                                                                           ;
++--------------------------------------------------------+--------------------------------------------------------+------------------+
+; Node Name                                              ; Output Port Name                                       ; Output Port Type ;
++--------------------------------------------------------+--------------------------------------------------------+------------------+
+; |StructsMemoryModule_TopLevel|State_Out_Op1[4]         ; |StructsMemoryModule_TopLevel|State_Out_Op1[4]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op1[5]         ; |StructsMemoryModule_TopLevel|State_Out_Op1[5]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op1[6]         ; |StructsMemoryModule_TopLevel|State_Out_Op1[6]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op1[7]         ; |StructsMemoryModule_TopLevel|State_Out_Op1[7]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op2[3]         ; |StructsMemoryModule_TopLevel|State_Out_Op2[3]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op1~3          ; |StructsMemoryModule_TopLevel|State_Out_Op1~3          ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][4]         ; |StructsMemoryModule_TopLevel|State_Buff[3][4]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op1~4          ; |StructsMemoryModule_TopLevel|State_Out_Op1~4          ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][5]         ; |StructsMemoryModule_TopLevel|State_Buff[3][5]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op1~5          ; |StructsMemoryModule_TopLevel|State_Out_Op1~5          ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][6]         ; |StructsMemoryModule_TopLevel|State_Buff[3][6]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op1~6          ; |StructsMemoryModule_TopLevel|State_Out_Op1~6          ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][7]         ; |StructsMemoryModule_TopLevel|State_Buff[3][7]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op1~7          ; |StructsMemoryModule_TopLevel|State_Out_Op1~7          ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Out_Op2~2          ; |StructsMemoryModule_TopLevel|State_Out_Op2~2          ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][11]        ; |StructsMemoryModule_TopLevel|State_Buff[3][11]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op2~3          ; |StructsMemoryModule_TopLevel|State_Out_Op2~3          ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Out_Op2~4          ; |StructsMemoryModule_TopLevel|State_Out_Op2~4          ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][4]         ; |StructsMemoryModule_TopLevel|State_Buff[2][4]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][5]         ; |StructsMemoryModule_TopLevel|State_Buff[2][5]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][6]         ; |StructsMemoryModule_TopLevel|State_Buff[2][6]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][7]         ; |StructsMemoryModule_TopLevel|State_Buff[2][7]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][11]        ; |StructsMemoryModule_TopLevel|State_Buff[2][11]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][4]         ; |StructsMemoryModule_TopLevel|State_Buff[1][4]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][5]         ; |StructsMemoryModule_TopLevel|State_Buff[1][5]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][6]         ; |StructsMemoryModule_TopLevel|State_Buff[1][6]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][7]         ; |StructsMemoryModule_TopLevel|State_Buff[1][7]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][11]        ; |StructsMemoryModule_TopLevel|State_Buff[1][11]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][4]         ; |StructsMemoryModule_TopLevel|State_Buff[0][4]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][5]         ; |StructsMemoryModule_TopLevel|State_Buff[0][5]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][6]         ; |StructsMemoryModule_TopLevel|State_Buff[0][6]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][7]         ; |StructsMemoryModule_TopLevel|State_Buff[0][7]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][11]        ; |StructsMemoryModule_TopLevel|State_Buff[0][11]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][3]~1       ; |StructsMemoryModule_TopLevel|State_Buff[0][3]~1       ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][10]~2      ; |StructsMemoryModule_TopLevel|State_Buff[0][10]~2      ; combout          ;
+; |StructsMemoryModule_TopLevel|oOut_Op1[4]              ; |StructsMemoryModule_TopLevel|oOut_Op1[4]              ; padio            ;
+; |StructsMemoryModule_TopLevel|oOut_Op1[5]              ; |StructsMemoryModule_TopLevel|oOut_Op1[5]              ; padio            ;
+; |StructsMemoryModule_TopLevel|oOut_Op1[6]              ; |StructsMemoryModule_TopLevel|oOut_Op1[6]              ; padio            ;
+; |StructsMemoryModule_TopLevel|oOut_Op1[7]              ; |StructsMemoryModule_TopLevel|oOut_Op1[7]              ; padio            ;
+; |StructsMemoryModule_TopLevel|oOut_Op2[3]              ; |StructsMemoryModule_TopLevel|oOut_Op2[3]              ; padio            ;
+; |StructsMemoryModule_TopLevel|Reset                    ; |StructsMemoryModule_TopLevel|Reset~corein             ; combout          ;
+; |StructsMemoryModule_TopLevel|In_Op1[3]                ; |StructsMemoryModule_TopLevel|In_Op1[3]~corein         ; combout          ;
+; |StructsMemoryModule_TopLevel|In_Op1[4]                ; |StructsMemoryModule_TopLevel|In_Op1[4]~corein         ; combout          ;
+; |StructsMemoryModule_TopLevel|In_Op1[5]                ; |StructsMemoryModule_TopLevel|In_Op1[5]~corein         ; combout          ;
+; |StructsMemoryModule_TopLevel|In_Op1[6]                ; |StructsMemoryModule_TopLevel|In_Op1[6]~corein         ; combout          ;
+; |StructsMemoryModule_TopLevel|In_Op1[7]                ; |StructsMemoryModule_TopLevel|In_Op1[7]~corein         ; combout          ;
+; |StructsMemoryModule_TopLevel|In_Op2[2]                ; |StructsMemoryModule_TopLevel|In_Op2[2]~corein         ; combout          ;
+; |StructsMemoryModule_TopLevel|In_Op2[3]                ; |StructsMemoryModule_TopLevel|In_Op2[3]~corein         ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][6]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[3][6]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][7]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[3][7]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][11]~feeder ; |StructsMemoryModule_TopLevel|State_Buff[3][11]~feeder ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][4]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[2][4]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][5]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[2][5]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][7]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[2][7]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][11]~feeder ; |StructsMemoryModule_TopLevel|State_Buff[2][11]~feeder ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][4]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[1][4]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][6]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[1][6]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][7]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[1][7]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][11]~feeder ; |StructsMemoryModule_TopLevel|State_Buff[1][11]~feeder ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][4]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[0][4]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][5]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[0][5]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][6]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[0][6]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][7]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[0][7]~feeder  ; combout          ;
++--------------------------------------------------------+--------------------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 0 during simulation.
-+----------------------------------------------------------------------------------------------------------------------------+
-; Missing 0-Value Coverage                                                                                                   ;
-+--------------------------------------------------+------------------------------------------------------+------------------+
-; Node Name                                        ; Output Port Name                                     ; Output Port Type ;
-+--------------------------------------------------+------------------------------------------------------+------------------+
-; |CollectionInitializerModule_TopLevel|oState1[1] ; |CollectionInitializerModule_TopLevel|oState1[1]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState1[3] ; |CollectionInitializerModule_TopLevel|oState1[3]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState1[4] ; |CollectionInitializerModule_TopLevel|oState1[4]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState1[5] ; |CollectionInitializerModule_TopLevel|oState1[5]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState1[6] ; |CollectionInitializerModule_TopLevel|oState1[6]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[3] ; |CollectionInitializerModule_TopLevel|oState2[3]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[4] ; |CollectionInitializerModule_TopLevel|oState2[4]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[5] ; |CollectionInitializerModule_TopLevel|oState2[5]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState2[6] ; |CollectionInitializerModule_TopLevel|oState2[6]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[3] ; |CollectionInitializerModule_TopLevel|oState3[3]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[4] ; |CollectionInitializerModule_TopLevel|oState3[4]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[5] ; |CollectionInitializerModule_TopLevel|oState3[5]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[6] ; |CollectionInitializerModule_TopLevel|oState3[6]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|oState3[7] ; |CollectionInitializerModule_TopLevel|oState3[7]     ; padio            ;
-; |CollectionInitializerModule_TopLevel|data[0]    ; |CollectionInitializerModule_TopLevel|data[0]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[1]    ; |CollectionInitializerModule_TopLevel|data[1]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[2]    ; |CollectionInitializerModule_TopLevel|data[2]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[3]    ; |CollectionInitializerModule_TopLevel|data[3]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[4]    ; |CollectionInitializerModule_TopLevel|data[4]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[5]    ; |CollectionInitializerModule_TopLevel|data[5]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[6]    ; |CollectionInitializerModule_TopLevel|data[6]~corein ; combout          ;
-; |CollectionInitializerModule_TopLevel|data[7]    ; |CollectionInitializerModule_TopLevel|data[7]~corein ; combout          ;
-+--------------------------------------------------+------------------------------------------------------+------------------+
++------------------------------------------------------------------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                                                                           ;
++--------------------------------------------------------+--------------------------------------------------------+------------------+
+; Node Name                                              ; Output Port Name                                       ; Output Port Type ;
++--------------------------------------------------------+--------------------------------------------------------+------------------+
+; |StructsMemoryModule_TopLevel|State_Out_Op1[4]         ; |StructsMemoryModule_TopLevel|State_Out_Op1[4]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op1[5]         ; |StructsMemoryModule_TopLevel|State_Out_Op1[5]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op1[6]         ; |StructsMemoryModule_TopLevel|State_Out_Op1[6]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op1[7]         ; |StructsMemoryModule_TopLevel|State_Out_Op1[7]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op2[3]         ; |StructsMemoryModule_TopLevel|State_Out_Op2[3]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][3]         ; |StructsMemoryModule_TopLevel|State_Buff[3][3]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][4]         ; |StructsMemoryModule_TopLevel|State_Buff[3][4]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op1~4          ; |StructsMemoryModule_TopLevel|State_Out_Op1~4          ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][5]         ; |StructsMemoryModule_TopLevel|State_Buff[3][5]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op1~5          ; |StructsMemoryModule_TopLevel|State_Out_Op1~5          ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][6]         ; |StructsMemoryModule_TopLevel|State_Buff[3][6]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op1~6          ; |StructsMemoryModule_TopLevel|State_Out_Op1~6          ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][7]         ; |StructsMemoryModule_TopLevel|State_Buff[3][7]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op1~7          ; |StructsMemoryModule_TopLevel|State_Out_Op1~7          ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][10]        ; |StructsMemoryModule_TopLevel|State_Buff[3][10]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][11]        ; |StructsMemoryModule_TopLevel|State_Buff[3][11]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Out_Op2~3          ; |StructsMemoryModule_TopLevel|State_Out_Op2~3          ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][12]        ; |StructsMemoryModule_TopLevel|State_Buff[3][12]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][3]         ; |StructsMemoryModule_TopLevel|State_Buff[2][3]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][4]         ; |StructsMemoryModule_TopLevel|State_Buff[2][4]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][5]         ; |StructsMemoryModule_TopLevel|State_Buff[2][5]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][6]         ; |StructsMemoryModule_TopLevel|State_Buff[2][6]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][7]         ; |StructsMemoryModule_TopLevel|State_Buff[2][7]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][10]        ; |StructsMemoryModule_TopLevel|State_Buff[2][10]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][11]        ; |StructsMemoryModule_TopLevel|State_Buff[2][11]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][12]        ; |StructsMemoryModule_TopLevel|State_Buff[2][12]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][3]         ; |StructsMemoryModule_TopLevel|State_Buff[1][3]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][4]         ; |StructsMemoryModule_TopLevel|State_Buff[1][4]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][5]         ; |StructsMemoryModule_TopLevel|State_Buff[1][5]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][6]         ; |StructsMemoryModule_TopLevel|State_Buff[1][6]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][7]         ; |StructsMemoryModule_TopLevel|State_Buff[1][7]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][10]        ; |StructsMemoryModule_TopLevel|State_Buff[1][10]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][11]        ; |StructsMemoryModule_TopLevel|State_Buff[1][11]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][12]        ; |StructsMemoryModule_TopLevel|State_Buff[1][12]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][3]         ; |StructsMemoryModule_TopLevel|State_Buff[0][3]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][4]         ; |StructsMemoryModule_TopLevel|State_Buff[0][4]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][5]         ; |StructsMemoryModule_TopLevel|State_Buff[0][5]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][6]         ; |StructsMemoryModule_TopLevel|State_Buff[0][6]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][7]         ; |StructsMemoryModule_TopLevel|State_Buff[0][7]         ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][10]        ; |StructsMemoryModule_TopLevel|State_Buff[0][10]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][11]        ; |StructsMemoryModule_TopLevel|State_Buff[0][11]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][12]        ; |StructsMemoryModule_TopLevel|State_Buff[0][12]        ; regout           ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][3]~1       ; |StructsMemoryModule_TopLevel|State_Buff[0][3]~1       ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][10]~2      ; |StructsMemoryModule_TopLevel|State_Buff[0][10]~2      ; combout          ;
+; |StructsMemoryModule_TopLevel|oOut_Op1[4]              ; |StructsMemoryModule_TopLevel|oOut_Op1[4]              ; padio            ;
+; |StructsMemoryModule_TopLevel|oOut_Op1[5]              ; |StructsMemoryModule_TopLevel|oOut_Op1[5]              ; padio            ;
+; |StructsMemoryModule_TopLevel|oOut_Op1[6]              ; |StructsMemoryModule_TopLevel|oOut_Op1[6]              ; padio            ;
+; |StructsMemoryModule_TopLevel|oOut_Op1[7]              ; |StructsMemoryModule_TopLevel|oOut_Op1[7]              ; padio            ;
+; |StructsMemoryModule_TopLevel|oOut_Op2[3]              ; |StructsMemoryModule_TopLevel|oOut_Op2[3]              ; padio            ;
+; |StructsMemoryModule_TopLevel|In_Op1[3]                ; |StructsMemoryModule_TopLevel|In_Op1[3]~corein         ; combout          ;
+; |StructsMemoryModule_TopLevel|In_Op1[4]                ; |StructsMemoryModule_TopLevel|In_Op1[4]~corein         ; combout          ;
+; |StructsMemoryModule_TopLevel|In_Op1[5]                ; |StructsMemoryModule_TopLevel|In_Op1[5]~corein         ; combout          ;
+; |StructsMemoryModule_TopLevel|In_Op1[6]                ; |StructsMemoryModule_TopLevel|In_Op1[6]~corein         ; combout          ;
+; |StructsMemoryModule_TopLevel|In_Op1[7]                ; |StructsMemoryModule_TopLevel|In_Op1[7]~corein         ; combout          ;
+; |StructsMemoryModule_TopLevel|In_Op2[2]                ; |StructsMemoryModule_TopLevel|In_Op2[2]~corein         ; combout          ;
+; |StructsMemoryModule_TopLevel|In_Op2[3]                ; |StructsMemoryModule_TopLevel|In_Op2[3]~corein         ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][3]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[3][3]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][6]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[3][6]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][7]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[3][7]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][10]~feeder ; |StructsMemoryModule_TopLevel|State_Buff[3][10]~feeder ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[3][11]~feeder ; |StructsMemoryModule_TopLevel|State_Buff[3][11]~feeder ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][4]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[2][4]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][5]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[2][5]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][7]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[2][7]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][10]~feeder ; |StructsMemoryModule_TopLevel|State_Buff[2][10]~feeder ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][11]~feeder ; |StructsMemoryModule_TopLevel|State_Buff[2][11]~feeder ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[2][12]~feeder ; |StructsMemoryModule_TopLevel|State_Buff[2][12]~feeder ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][4]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[1][4]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][6]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[1][6]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][7]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[1][7]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][10]~feeder ; |StructsMemoryModule_TopLevel|State_Buff[1][10]~feeder ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[1][11]~feeder ; |StructsMemoryModule_TopLevel|State_Buff[1][11]~feeder ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][4]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[0][4]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][5]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[0][5]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][6]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[0][6]~feeder  ; combout          ;
+; |StructsMemoryModule_TopLevel|State_Buff[0][7]~feeder  ; |StructsMemoryModule_TopLevel|State_Buff[0][7]~feeder  ; combout          ;
++--------------------------------------------------------+--------------------------------------------------------+------------------+
 
 
 +---------------------+
@@ -254,21 +392,38 @@ Info: Running Quartus II Simulator
     Info: programming logic devices manufactured by Altera and sold by 
     Info: Altera or its authorized distributors.  Please refer to the 
     Info: applicable agreement for further details.
-    Info: Processing started: Wed Oct 23 20:57:21 2024
+    Info: Processing started: Sun Sep 14 20:48:33 2025
 Info: Command: quartus_sim C:\code\qusoc\rtl\rtl.hdl\Verilog.qpf --read_settings_files=on --write_settings_files=off --overwrite_waveform=on -c Verilog
-Info: Using vector source file "Waveforms/CollectionInitializerModule.vwf"
+Info: Using vector source file "Waveforms/StructsMemoryModule.vwf"
 Info: Overwriting simulation input file with simulation results
-    Info: A backup of CollectionInitializerModule.vwf called Verilog.sim_ori.vwf has been created in the db folder
+    Info: A backup of StructsMemoryModule.vwf called Verilog.sim_ori.vwf has been created in the db folder
+Info: Inverted registers were found during simulation
+    Info: Register: |StructsMemoryModule_TopLevel|State_Buff[3][1]
+    Info: Register: |StructsMemoryModule_TopLevel|State_Buff[3][3]
+    Info: Register: |StructsMemoryModule_TopLevel|State_Buff[3][10]
+    Info: Register: |StructsMemoryModule_TopLevel|State_Buff[3][12]
+    Info: Register: |StructsMemoryModule_TopLevel|State_Buff[2][1]
+    Info: Register: |StructsMemoryModule_TopLevel|State_Buff[2][3]
+    Info: Register: |StructsMemoryModule_TopLevel|State_Buff[2][10]
+    Info: Register: |StructsMemoryModule_TopLevel|State_Buff[2][12]
+    Info: Register: |StructsMemoryModule_TopLevel|State_Buff[1][1]
+    Info: Register: |StructsMemoryModule_TopLevel|State_Buff[1][3]
+    Info: Register: |StructsMemoryModule_TopLevel|State_Buff[1][10]
+    Info: Register: |StructsMemoryModule_TopLevel|State_Buff[1][12]
+    Info: Register: |StructsMemoryModule_TopLevel|State_Buff[0][1]
+    Info: Register: |StructsMemoryModule_TopLevel|State_Buff[0][3]
+    Info: Register: |StructsMemoryModule_TopLevel|State_Buff[0][10]
+    Info: Register: |StructsMemoryModule_TopLevel|State_Buff[0][12]
 Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
     Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
 Info: Simulation partitioned into 1 sub-simulations
-Info: Simulation coverage is      69.86 %
-Info: Number of transitions in simulation is 186
-Info: Vector file CollectionInitializerModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
+Info: Simulation coverage is      54.02 %
+Info: Number of transitions in simulation is 461
+Info: Vector file StructsMemoryModule.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
 Info: Quartus II Simulator was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 163 megabytes
-    Info: Processing ended: Wed Oct 23 20:57:24 2024
-    Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:10
+    Info: Peak virtual memory: 164 megabytes
+    Info: Processing ended: Sun Sep 14 20:48:34 2025
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
 
 

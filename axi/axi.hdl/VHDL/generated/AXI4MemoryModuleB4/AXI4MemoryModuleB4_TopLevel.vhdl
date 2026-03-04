@@ -90,12 +90,53 @@ architecture rtl of AXI4MemoryModuleB4_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant State_buffDefault : unsigned(31 downto 0) := "00000000000000000000000000000000";
-	constant State_rdataDefault : unsigned(7 downto 0) := "00000000";
 	constant State_wdataDefault : unsigned(7 downto 0) := "00000000";
 	constant addressLSB : signed(2 downto 0) := "010";
 	constant size : unsigned(1 downto 0) := "10";
-	signal Inputs_M2S : unsigned(221 downto 0) := (others => '0');
+	constant AXI4MemoryModule_L101F29T33_Expr : std_logic := '1';
+	constant AXI4MemoryModule_L103F29T33_Expr : std_logic := '1';
+	constant AXI4MemoryModule_L105F28T32_Expr : std_logic := '1';
+	constant AXI4MemoryModule_L102F28T32_Expr : std_logic := '1';
+	constant AXI4MemoryModule_L104F28T32_Expr : std_logic := '1';
+	constant AXI4MemoryModule_L114F38T42_Expr : std_logic := '1';
+	constant AXI4MemoryModule_L121F38T42_Expr : std_logic := '1';
+	constant AXI4MemoryModule_L126F38T43_Expr : std_logic := '0';
+	constant AXI4MemoryModule_L127F38T43_Expr : std_logic := '0';
+	constant AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_0_w : std_logic := '0';
+	constant AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_1_w : std_logic := '1';
+	constant AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_2_w : unsigned(1 downto 0) := "10";
+	constant AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_3_w : unsigned(1 downto 0) := "11";
+	signal Inputs_M2S_R_AR_ARID : unsigned(7 downto 0) := (others => '0');
+	signal Inputs_M2S_R_AR_ARADDR : unsigned(31 downto 0) := (others => '0');
+	signal Inputs_M2S_R_AR_ARLEN : unsigned(7 downto 0) := (others => '0');
+	signal Inputs_M2S_R_AR_ARSIZE : unsigned(2 downto 0) := (others => '0');
+	signal Inputs_M2S_R_AR_ARBURST : unsigned(1 downto 0) := (others => '0');
+	signal Inputs_M2S_R_AR_ARLOCK : unsigned(1 downto 0) := (others => '0');
+	signal Inputs_M2S_R_AR_ARCACHE : unsigned(3 downto 0) := (others => '0');
+	signal Inputs_M2S_R_AR_ARPROT : unsigned(2 downto 0) := (others => '0');
+	signal Inputs_M2S_R_AR_ARQOS : unsigned(3 downto 0) := (others => '0');
+	signal Inputs_M2S_R_AR_ARREGION : unsigned(7 downto 0) := (others => '0');
+	signal Inputs_M2S_R_AR_ARUSER : unsigned(7 downto 0) := (others => '0');
+	signal Inputs_M2S_R_AR_ARVALID : std_logic := '0';
+	signal Inputs_M2S_R_R_RREADY : std_logic := '0';
+	signal Inputs_M2S_W_AW_AWID : unsigned(7 downto 0) := (others => '0');
+	signal Inputs_M2S_W_AW_AWADDR : unsigned(31 downto 0) := (others => '0');
+	signal Inputs_M2S_W_AW_AWLEN : unsigned(7 downto 0) := (others => '0');
+	signal Inputs_M2S_W_AW_AWSIZE : unsigned(2 downto 0) := (others => '0');
+	signal Inputs_M2S_W_AW_AWBURST : unsigned(1 downto 0) := (others => '0');
+	signal Inputs_M2S_W_AW_AWLOCK : unsigned(1 downto 0) := (others => '0');
+	signal Inputs_M2S_W_AW_AWCACHE : unsigned(3 downto 0) := (others => '0');
+	signal Inputs_M2S_W_AW_AWPROT : unsigned(2 downto 0) := (others => '0');
+	signal Inputs_M2S_W_AW_AWQOS : unsigned(3 downto 0) := (others => '0');
+	signal Inputs_M2S_W_AW_AWREGION : unsigned(7 downto 0) := (others => '0');
+	signal Inputs_M2S_W_AW_AWUSER : unsigned(7 downto 0) := (others => '0');
+	signal Inputs_M2S_W_AW_AWVALID : std_logic := '0';
+	signal Inputs_M2S_W_W_WID : unsigned(7 downto 0) := (others => '0');
+	signal Inputs_M2S_W_W_WSTRB : unsigned(3 downto 0) := (others => '0');
+	signal Inputs_M2S_W_W_WLAST : std_logic := '0';
+	signal Inputs_M2S_W_W_WUSER : unsigned(7 downto 0) := (others => '0');
+	signal Inputs_M2S_W_W_WVALID : std_logic := '0';
+	signal Inputs_M2S_W_B_BREADY : std_logic := '0';
 	signal NextState_raddr : unsigned(31 downto 0) := (others => '0');
 	signal NextState_waddr : unsigned(31 downto 0) := (others => '0');
 	signal NextState_waddrSet : std_logic := '0';
@@ -125,6 +166,23 @@ architecture rtl of AXI4MemoryModuleB4_TopLevel is
 	signal axiSlave_outWSTRB : unsigned(3 downto 0) := (others => '0');
 	signal axiSlave_outWVALID : std_logic := '0';
 	signal axiSlave_S2M : unsigned(73 downto 0) := (others => '0');
+	signal AXI4MemoryModule_L90F14L92T26_WhenTrue : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal AXI4MemoryModule_L90F14L92T26_WhenFalse : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal AXI4MemoryModule_L90F14L92T26_Ternary : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal AXI4MemoryModule_L80F14L82T26_WhenTrue : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal AXI4MemoryModule_L80F14L82T26_WhenFalse : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal AXI4MemoryModule_L80F14L82T26_Ternary : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal AXI4MemoryModule_L85F13L87T26_WhenTrue : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal AXI4MemoryModule_L85F13L87T26_WhenFalse : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal AXI4MemoryModule_L85F13L87T26_Ternary : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal AXI4MemoryModule_L75F13L77T26_WhenTrue : unsigned(3 downto 0) := "0000";
+	signal AXI4MemoryModule_L75F13L77T26_WhenFalse : unsigned(3 downto 0) := "0000";
+	signal AXI4MemoryModule_L75F13L77T26_Ternary : unsigned(3 downto 0) := "0000";
+	signal AXI4MemoryModule_L97F37L106T14_Object : unsigned(258 downto 0) := (others => '0');
+	signal AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_0_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F35T51_Index : std_logic := '0';
+	signal AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_1_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F35T51_Index : std_logic := '0';
+	signal AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_2_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F35T51_Index : std_logic := '0';
+	signal AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_3_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F35T51_Index : std_logic := '0';
 	signal axiSlave_inARREADY_axiSlave_inARREADY_HardLink : std_logic := '0';
 	signal axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink : std_logic := '0';
 	signal axiSlave_inBVALID_axiSlave_inBVALID_HardLink : std_logic := '0';
@@ -161,14 +219,35 @@ architecture rtl of AXI4MemoryModuleB4_TopLevel is
 	constant State_wdataSetDefault : std_logic := '0';
 	signal State_wstrb : unsigned(3 downto 0) := "0000";
 	constant State_wstrbDefault : unsigned(3 downto 0) := "0000";
-	type State_buffArray is array (0 to 1023) of unsigned (31 downto 0);
-	signal State_buff : State_buffArray := (others => (others => '0'));
-	type NextState_buffArray is array (0 to 1023) of unsigned (31 downto 0);
-	signal NextState_buff : NextState_buffArray := (others => (others => '0'));
+	signal AXI4MemoryModule_L71F40T72_Expr : std_logic := '0';
+	signal AXI4MemoryModule_L71F40T72_Expr_1 : std_logic := '0';
+	signal AXI4MemoryModule_L71F40T72_Expr_2 : std_logic := '0';
+	signal AXI4MemoryModule_L90F13L92T41_Expr : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal AXI4MemoryModule_L90F13L92T41_Expr_1 : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal AXI4MemoryModule_L70F37T85_Expr : std_logic := '0';
+	signal AXI4MemoryModule_L70F37T85_Expr_1 : std_logic := '0';
+	signal AXI4MemoryModule_L70F37T85_Expr_2 : std_logic := '0';
+	signal AXI4MemoryModule_L80F13L82T41_Expr : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal AXI4MemoryModule_L80F13L82T41_Expr_1 : unsigned(31 downto 0) := "00000000000000000000000000000000";
+	signal AXI4MemoryModule_L72F28T73_Expr : std_logic := '0';
+	signal AXI4MemoryModule_L72F28T73_Expr_1 : std_logic := '0';
+	signal AXI4MemoryModule_L72F28T73_Expr_2 : std_logic := '0';
+	signal AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_0_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr : std_logic := '0';
+	signal AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_0_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_1 : std_logic := '0';
+	signal AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_0_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_2 : std_logic := '0';
+	signal AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_1_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr : std_logic := '0';
+	signal AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_1_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_1 : std_logic := '0';
+	signal AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_1_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_2 : std_logic := '0';
+	signal AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_2_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr : std_logic := '0';
+	signal AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_2_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_1 : std_logic := '0';
+	signal AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_2_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_2 : std_logic := '0';
+	signal AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_3_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr : std_logic := '0';
+	signal AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_3_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_1 : std_logic := '0';
+	signal AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_3_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_2 : std_logic := '0';
+	type Inputs_M2S_W_W_WDATAArray is array (0 to 3) of unsigned (7 downto 0);
+	signal Inputs_M2S_W_W_WDATA : Inputs_M2S_W_W_WDATAArray := (others => (others => '0'));
 	type State_rdataArray is array (0 to 3) of unsigned (7 downto 0);
 	signal State_rdata : State_rdataArray := (others => (others => '0'));
-	type NextState_rdataArray is array (0 to 3) of unsigned (7 downto 0);
-	signal NextState_rdata : NextState_rdataArray := (others => (others => '0'));
 	type State_wdataArray is array (0 to 3) of unsigned (7 downto 0);
 	signal State_wdata : State_wdataArray := (others => (others => '0'));
 	type NextState_wdataArray is array (0 to 3) of unsigned (7 downto 0);
@@ -179,8 +258,20 @@ architecture rtl of AXI4MemoryModuleB4_TopLevel is
 	signal axiSlave_inRDATA : axiSlave_inRDATAArray := (others => (others => '0'));
 	type axiSlave_outWDATAArray is array (0 to 3) of unsigned (7 downto 0);
 	signal axiSlave_outWDATA : axiSlave_outWDATAArray := (others => (others => '0'));
+	type State_buff0Array is array (0 to 1023) of unsigned (7 downto 0);
+	signal State_buff0 : State_buff0Array := (others => (others => '0'));
+	type State_buff1Array is array (0 to 1023) of unsigned (7 downto 0);
+	signal State_buff1 : State_buff1Array := (others => (others => '0'));
+	type State_buff2Array is array (0 to 1023) of unsigned (7 downto 0);
+	signal State_buff2 : State_buff2Array := (others => (others => '0'));
+	type State_buff3Array is array (0 to 1023) of unsigned (7 downto 0);
+	signal State_buff3 : State_buff3Array := (others => (others => '0'));
 	signal BoardSignals : BoardSignalsType;
 	signal InternalReset : std_logic := '0';
+	signal internalRADDR_reg0 : unsigned(9 downto 0);
+	signal internalRADDR_reg1 : unsigned(9 downto 0);
+	signal internalRADDR_reg2 : unsigned(9 downto 0);
+	signal internalRADDR_reg3 : unsigned(9 downto 0);
 begin
 	work.Quokka.BoardSignalsProc(BoardSignals, Clock, Reset, InternalReset);
 	process (Clock, NextState_raddr, NextState_waddr, NextState_waddrSet, NextState_wdataSet, NextState_wstrb, Reset)
@@ -201,34 +292,6 @@ begin
 			end if;
 		end if;
 	end process;
-	process (Clock, NextState_buff, Reset)
-	begin
-		if rising_edge(Clock) then
-			if Reset = '1' then
-				for State_buff_Iterator in 0 to 1023 loop
-					State_buff(State_buff_Iterator) <= State_buffDefault;
-				end loop;
-			else
-				for State_buff_Iterator in 0 to 1023 loop
-					State_buff(State_buff_Iterator) <= NextState_buff(State_buff_Iterator);
-				end loop;
-			end if;
-		end if;
-	end process;
-	process (Clock, NextState_rdata, Reset)
-	begin
-		if rising_edge(Clock) then
-			if Reset = '1' then
-				for State_rdata_Iterator in 0 to 3 loop
-					State_rdata(State_rdata_Iterator) <= State_rdataDefault;
-				end loop;
-			else
-				for State_rdata_Iterator in 0 to 3 loop
-					State_rdata(State_rdata_Iterator) <= NextState_rdata(State_rdata_Iterator);
-				end loop;
-			end if;
-		end if;
-	end process;
 	process (Clock, NextState_wdata, Reset)
 	begin
 		if rising_edge(Clock) then
@@ -242,6 +305,110 @@ begin
 				end loop;
 			end if;
 		end if;
+	end process;
+	process (AXI4MemoryModule_L71F40T72_Expr_1, AXI4MemoryModule_L71F40T72_Expr_2)
+	begin
+		AXI4MemoryModule_L71F40T72_Expr <= AXI4MemoryModule_L71F40T72_Expr_1 AND AXI4MemoryModule_L71F40T72_Expr_2;
+	end process;
+	process (AXI4MemoryModule_L90F13L92T41_Expr_1)
+		alias output is AXI4MemoryModule_L90F13L92T41_Expr;
+		alias source0 is AXI4MemoryModule_L90F13L92T41_Expr_1;
+	begin
+		-- Output: AXI4MemoryModule_L90F13L92T41_Expr, Width: 32, ShiftBy: 2, Sources: 1
+		output(0) <= source0(2);
+		output(1) <= source0(3);
+		output(2) <= source0(4);
+		output(3) <= source0(5);
+		output(4) <= source0(6);
+		output(5) <= source0(7);
+		output(6) <= source0(8);
+		output(7) <= source0(9);
+		output(8) <= source0(10);
+		output(9) <= source0(11);
+		output(10) <= source0(12);
+		output(11) <= source0(13);
+		output(12) <= source0(14);
+		output(13) <= source0(15);
+		output(14) <= source0(16);
+		output(15) <= source0(17);
+		output(16) <= source0(18);
+		output(17) <= source0(19);
+		output(18) <= source0(20);
+		output(19) <= source0(21);
+		output(20) <= source0(22);
+		output(21) <= source0(23);
+		output(22) <= source0(24);
+		output(23) <= source0(25);
+		output(24) <= source0(26);
+		output(25) <= source0(27);
+		output(26) <= source0(28);
+		output(27) <= source0(29);
+		output(28) <= source0(30);
+		output(29) <= source0(31);
+		output(30) <= '0';
+		output(31) <= '0';
+	end process;
+	process (AXI4MemoryModule_L70F37T85_Expr_1, AXI4MemoryModule_L70F37T85_Expr_2)
+	begin
+		AXI4MemoryModule_L70F37T85_Expr <= AXI4MemoryModule_L70F37T85_Expr_1 AND AXI4MemoryModule_L70F37T85_Expr_2;
+	end process;
+	process (AXI4MemoryModule_L80F13L82T41_Expr_1)
+		alias output is AXI4MemoryModule_L80F13L82T41_Expr;
+		alias source0 is AXI4MemoryModule_L80F13L82T41_Expr_1;
+	begin
+		-- Output: AXI4MemoryModule_L80F13L82T41_Expr, Width: 32, ShiftBy: 2, Sources: 1
+		output(0) <= source0(2);
+		output(1) <= source0(3);
+		output(2) <= source0(4);
+		output(3) <= source0(5);
+		output(4) <= source0(6);
+		output(5) <= source0(7);
+		output(6) <= source0(8);
+		output(7) <= source0(9);
+		output(8) <= source0(10);
+		output(9) <= source0(11);
+		output(10) <= source0(12);
+		output(11) <= source0(13);
+		output(12) <= source0(14);
+		output(13) <= source0(15);
+		output(14) <= source0(16);
+		output(15) <= source0(17);
+		output(16) <= source0(18);
+		output(17) <= source0(19);
+		output(18) <= source0(20);
+		output(19) <= source0(21);
+		output(20) <= source0(22);
+		output(21) <= source0(23);
+		output(22) <= source0(24);
+		output(23) <= source0(25);
+		output(24) <= source0(26);
+		output(25) <= source0(27);
+		output(26) <= source0(28);
+		output(27) <= source0(29);
+		output(28) <= source0(30);
+		output(29) <= source0(31);
+		output(30) <= '0';
+		output(31) <= '0';
+	end process;
+	process (AXI4MemoryModule_L72F28T73_Expr_1, AXI4MemoryModule_L72F28T73_Expr_2)
+	begin
+		AXI4MemoryModule_L72F28T73_Expr <= AXI4MemoryModule_L72F28T73_Expr_1 OR AXI4MemoryModule_L72F28T73_Expr_2;
+	end process;
+	process (AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_0_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_1, AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_0_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_2)
+	begin
+		AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_0_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr <= AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_0_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_1 AND AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_0_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_2;
+	end process;
+	process (AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_1_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_1, AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_1_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_2)
+	begin
+		AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_1_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr <= AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_1_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_1 AND AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_1_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_2;
+	end process;
+	process (AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_2_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_1, AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_2_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_2)
+	begin
+		AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_2_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr <= AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_2_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_1 AND AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_2_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_2;
+	end process;
+	process (AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_3_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_1, AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_3_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_2)
+	begin
+		AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_3_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr <= AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_3_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_1 AND AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_3_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_2;
 	end process;
 	AXI4MemoryModuleB4_TopLevel_axiSlave : entity work.AXI4MemoryModuleB4_TopLevel_axiSlave
 	port map
@@ -277,43 +444,191 @@ begin
 		S2M => axiSlave_S2M_axiSlave_S2M_HardLink
 	)
 	;
-	process (axiSlave_inARREADY, axiSlave_inAWREADY, axiSlave_inBVALID, axiSlave_inRDATA, axiSlave_inRVALID, axiSlave_inWREADY, axiSlave_M2S, axiSlave_outARADDR_axiSlave_outARADDR_HardLink, axiSlave_outARREADYConfirming_axiSlave_outARREADYConfirming_HardLink, axiSlave_outARVALID_axiSlave_outARVALID_HardLink, axiSlave_outAWADDR_axiSlave_outAWADDR_HardLink, axiSlave_outAWREADYConfirming_axiSlave_outAWREADYConfirming_HardLink, axiSlave_outAWVALID_axiSlave_outAWVALID_HardLink, axiSlave_outReadTXCompleting_axiSlave_outReadTXCompleting_HardLink, axiSlave_outWDATA0_axiSlave_outWDATA_HardLink, axiSlave_outWDATA1_axiSlave_outWDATA_HardLink, axiSlave_outWDATA2_axiSlave_outWDATA_HardLink, axiSlave_outWDATA3_axiSlave_outWDATA_HardLink, axiSlave_outWREADYConfirming_axiSlave_outWREADYConfirming_HardLink, axiSlave_outWriteTXCompleting_axiSlave_outWriteTXCompleting_HardLink, axiSlave_outWSTRB_axiSlave_outWSTRB_HardLink, axiSlave_outWVALID_axiSlave_outWVALID_HardLink, axiSlave_S2M_axiSlave_S2M_HardLink, M2S_R_AR_ARADDR, M2S_R_AR_ARBURST, M2S_R_AR_ARCACHE, M2S_R_AR_ARID, M2S_R_AR_ARLEN, M2S_R_AR_ARLOCK, M2S_R_AR_ARPROT, M2S_R_AR_ARQOS, M2S_R_AR_ARREGION, M2S_R_AR_ARSIZE, M2S_R_AR_ARUSER, M2S_R_AR_ARVALID, M2S_R_R_RREADY, M2S_W_AW_AWADDR, M2S_W_AW_AWBURST, M2S_W_AW_AWCACHE, M2S_W_AW_AWID, M2S_W_AW_AWLEN, M2S_W_AW_AWLOCK, M2S_W_AW_AWPROT, M2S_W_AW_AWQOS, M2S_W_AW_AWREGION, M2S_W_AW_AWSIZE, M2S_W_AW_AWUSER, M2S_W_AW_AWVALID, M2S_W_B_BREADY, M2S_W_W_WDATA0, M2S_W_W_WDATA1, M2S_W_W_WDATA2, M2S_W_W_WDATA3, M2S_W_W_WID, M2S_W_W_WLAST, M2S_W_W_WSTRB, M2S_W_W_WUSER, M2S_W_W_WVALID)
+	AXI4MemoryModule_L90F14L92T26_Ternary <= AXI4MemoryModule_L90F14L92T26_WhenTrue when (axiSlave_outARREADYConfirming = '1') else AXI4MemoryModule_L90F14L92T26_WhenFalse;
+	AXI4MemoryModule_L80F14L82T26_Ternary <= AXI4MemoryModule_L80F14L82T26_WhenTrue when (internalSameTxWrite = '1') else AXI4MemoryModule_L80F14L82T26_WhenFalse;
+	AXI4MemoryModule_L85F13L87T26_Ternary <= AXI4MemoryModule_L85F13L87T26_WhenTrue when (internalSameTxWrite = '1') else AXI4MemoryModule_L85F13L87T26_WhenFalse;
+	AXI4MemoryModule_L75F13L77T26_Ternary <= AXI4MemoryModule_L75F13L77T26_WhenTrue when (internalSameTxWrite = '1') else AXI4MemoryModule_L75F13L77T26_WhenFalse;
+	process (axiSlave_outARADDR, axiSlave_outARREADYConfirming, axiSlave_outAWADDR, axiSlave_outAWREADYConfirming, axiSlave_outWDATA, axiSlave_outWREADYConfirming, axiSlave_outWriteTXCompleting, axiSlave_outWSTRB, State_raddr, State_waddr, State_waddrSet, State_wdata, State_wdataSet, State_wstrb)
 	begin
-		Inputs_M2S(221) <= M2S_W_B_BREADY;
-		Inputs_M2S(220) <= M2S_W_W_WVALID;
-		Inputs_M2S(219 downto 212) <= M2S_W_W_WUSER;
-		Inputs_M2S(211) <= M2S_W_W_WLAST;
-		Inputs_M2S(210 downto 207) <= M2S_W_W_WSTRB;
-		Inputs_M2S(206 downto 199) <= M2S_W_W_WDATA3;
-		Inputs_M2S(198 downto 191) <= M2S_W_W_WDATA2;
-		Inputs_M2S(190 downto 183) <= M2S_W_W_WDATA1;
-		Inputs_M2S(182 downto 175) <= M2S_W_W_WDATA0;
-		Inputs_M2S(174 downto 167) <= M2S_W_W_WID;
-		Inputs_M2S(166) <= M2S_W_AW_AWVALID;
-		Inputs_M2S(165 downto 158) <= M2S_W_AW_AWUSER;
-		Inputs_M2S(157 downto 150) <= M2S_W_AW_AWREGION;
-		Inputs_M2S(149 downto 146) <= M2S_W_AW_AWQOS;
-		Inputs_M2S(145 downto 143) <= M2S_W_AW_AWPROT;
-		Inputs_M2S(142 downto 139) <= M2S_W_AW_AWCACHE;
-		Inputs_M2S(138 downto 137) <= M2S_W_AW_AWLOCK;
-		Inputs_M2S(136 downto 135) <= M2S_W_AW_AWBURST;
-		Inputs_M2S(134 downto 132) <= M2S_W_AW_AWSIZE;
-		Inputs_M2S(131 downto 124) <= M2S_W_AW_AWLEN;
-		Inputs_M2S(123 downto 92) <= M2S_W_AW_AWADDR;
-		Inputs_M2S(91 downto 84) <= M2S_W_AW_AWID;
-		Inputs_M2S(83) <= M2S_R_R_RREADY;
-		Inputs_M2S(82) <= M2S_R_AR_ARVALID;
-		Inputs_M2S(81 downto 74) <= M2S_R_AR_ARUSER;
-		Inputs_M2S(73 downto 66) <= M2S_R_AR_ARREGION;
-		Inputs_M2S(65 downto 62) <= M2S_R_AR_ARQOS;
-		Inputs_M2S(61 downto 59) <= M2S_R_AR_ARPROT;
-		Inputs_M2S(58 downto 55) <= M2S_R_AR_ARCACHE;
-		Inputs_M2S(54 downto 53) <= M2S_R_AR_ARLOCK;
-		Inputs_M2S(52 downto 51) <= M2S_R_AR_ARBURST;
-		Inputs_M2S(50 downto 48) <= M2S_R_AR_ARSIZE;
-		Inputs_M2S(47 downto 40) <= M2S_R_AR_ARLEN;
-		Inputs_M2S(39 downto 8) <= M2S_R_AR_ARADDR;
-		Inputs_M2S(7 downto 0) <= M2S_R_AR_ARID;
+		for NextState_wdata_Iterator in 0 to 3 loop
+			NextState_wdata(NextState_wdata_Iterator) <= State_wdata(NextState_wdata_Iterator);
+		end loop;
+		NextState_raddr <= State_raddr;
+		NextState_waddr <= State_waddr;
+		NextState_waddrSet <= State_waddrSet;
+		NextState_wdataSet <= State_wdataSet;
+		NextState_wstrb <= State_wstrb;
+		if axiSlave_outAWREADYConfirming = '1' then
+			NextState_waddr <= axiSlave_outAWADDR;
+			NextState_waddrSet <= AXI4MemoryModule_L114F38T42_Expr;
+		end if;
+		if axiSlave_outWREADYConfirming = '1' then
+			NextState_wdata(0) <= axiSlave_outWDATA(0);
+			NextState_wdata(1) <= axiSlave_outWDATA(1);
+			NextState_wdata(2) <= axiSlave_outWDATA(2);
+			NextState_wdata(3) <= axiSlave_outWDATA(3);
+			NextState_wstrb <= axiSlave_outWSTRB;
+			NextState_wdataSet <= AXI4MemoryModule_L121F38T42_Expr;
+		end if;
+		if axiSlave_outWriteTXCompleting = '1' then
+			NextState_waddrSet <= AXI4MemoryModule_L126F38T43_Expr;
+			NextState_wdataSet <= AXI4MemoryModule_L127F38T43_Expr;
+		end if;
+		if axiSlave_outARREADYConfirming = '1' then
+			NextState_raddr <= axiSlave_outARADDR;
+		end if;
+	end process;
+	process (AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_0_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F35T51_Index, AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_1_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F35T51_Index, AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_2_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F35T51_Index, AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_3_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F35T51_Index, AXI4MemoryModule_L70F37T85_Expr, AXI4MemoryModule_L71F40T72_Expr, AXI4MemoryModule_L72F28T73_Expr, AXI4MemoryModule_L75F13L77T26_Ternary, AXI4MemoryModule_L80F13L82T41_Expr, AXI4MemoryModule_L80F14L82T26_Ternary, AXI4MemoryModule_L85F13L87T26_Ternary, AXI4MemoryModule_L90F13L92T41_Expr, AXI4MemoryModule_L90F14L92T26_Ternary, AXI4MemoryModule_L97F37L106T14_Object, axiSlave_inARREADY, axiSlave_inAWREADY, axiSlave_inBVALID, axiSlave_inRDATA, axiSlave_inRVALID, axiSlave_inWREADY, axiSlave_M2S, axiSlave_outARADDR, axiSlave_outARADDR_axiSlave_outARADDR_HardLink, axiSlave_outARREADYConfirming_axiSlave_outARREADYConfirming_HardLink, axiSlave_outARVALID_axiSlave_outARVALID_HardLink, axiSlave_outAWADDR, axiSlave_outAWADDR_axiSlave_outAWADDR_HardLink, axiSlave_outAWREADYConfirming_axiSlave_outAWREADYConfirming_HardLink, axiSlave_outAWVALID_axiSlave_outAWVALID_HardLink, axiSlave_outReadTXCompleting_axiSlave_outReadTXCompleting_HardLink, axiSlave_outWDATA, axiSlave_outWDATA0_axiSlave_outWDATA_HardLink, axiSlave_outWDATA1_axiSlave_outWDATA_HardLink, axiSlave_outWDATA2_axiSlave_outWDATA_HardLink, axiSlave_outWDATA3_axiSlave_outWDATA_HardLink, axiSlave_outWREADYConfirming_axiSlave_outWREADYConfirming_HardLink, axiSlave_outWriteTXCompleting_axiSlave_outWriteTXCompleting_HardLink, axiSlave_outWSTRB, axiSlave_outWSTRB_axiSlave_outWSTRB_HardLink, axiSlave_outWVALID_axiSlave_outWVALID_HardLink, axiSlave_S2M, axiSlave_S2M_axiSlave_S2M_HardLink, Inputs_M2S_R_AR_ARADDR, Inputs_M2S_R_AR_ARBURST, Inputs_M2S_R_AR_ARCACHE, Inputs_M2S_R_AR_ARID, Inputs_M2S_R_AR_ARLEN, Inputs_M2S_R_AR_ARLOCK, Inputs_M2S_R_AR_ARPROT, Inputs_M2S_R_AR_ARQOS, Inputs_M2S_R_AR_ARREGION, Inputs_M2S_R_AR_ARSIZE, Inputs_M2S_R_AR_ARUSER, Inputs_M2S_R_AR_ARVALID, Inputs_M2S_R_R_RREADY, Inputs_M2S_W_AW_AWADDR, Inputs_M2S_W_AW_AWBURST, Inputs_M2S_W_AW_AWCACHE, Inputs_M2S_W_AW_AWID, Inputs_M2S_W_AW_AWLEN, Inputs_M2S_W_AW_AWLOCK, Inputs_M2S_W_AW_AWPROT, Inputs_M2S_W_AW_AWQOS, Inputs_M2S_W_AW_AWREGION, Inputs_M2S_W_AW_AWSIZE, Inputs_M2S_W_AW_AWUSER, Inputs_M2S_W_AW_AWVALID, Inputs_M2S_W_B_BREADY, Inputs_M2S_W_W_WDATA, Inputs_M2S_W_W_WID, Inputs_M2S_W_W_WLAST, Inputs_M2S_W_W_WSTRB, Inputs_M2S_W_W_WUSER, Inputs_M2S_W_W_WVALID, internalDelayedTxWrite, internalSameTxWrite, internalWE, internalWSTRB, M2S_R_AR_ARADDR, M2S_R_AR_ARBURST, M2S_R_AR_ARCACHE, M2S_R_AR_ARID, M2S_R_AR_ARLEN, M2S_R_AR_ARLOCK, M2S_R_AR_ARPROT, M2S_R_AR_ARQOS, M2S_R_AR_ARREGION, M2S_R_AR_ARSIZE, M2S_R_AR_ARUSER, M2S_R_AR_ARVALID, M2S_R_R_RREADY, M2S_W_AW_AWADDR, M2S_W_AW_AWBURST, M2S_W_AW_AWCACHE, M2S_W_AW_AWID, M2S_W_AW_AWLEN, M2S_W_AW_AWLOCK, M2S_W_AW_AWPROT, M2S_W_AW_AWQOS, M2S_W_AW_AWREGION, M2S_W_AW_AWSIZE, M2S_W_AW_AWUSER, M2S_W_AW_AWVALID, M2S_W_B_BREADY, M2S_W_W_WDATA0, M2S_W_W_WDATA1, M2S_W_W_WDATA2, M2S_W_W_WDATA3, M2S_W_W_WID, M2S_W_W_WLAST, M2S_W_W_WSTRB, M2S_W_W_WUSER, M2S_W_W_WVALID, State_raddr, State_rdata, State_waddr, State_waddrSet, State_wdata, State_wdataSet, State_wstrb)
+	begin
+		AXI4MemoryModule_L71F40T72_Expr_1 <= State_waddrSet;
+		AXI4MemoryModule_L71F40T72_Expr_2 <= State_wdataSet;
+		AXI4MemoryModule_L90F13L92T41_Expr_1 <= AXI4MemoryModule_L90F14L92T26_Ternary;
+		AXI4MemoryModule_L70F37T85_Expr_1 <= Inputs_M2S_W_AW_AWVALID;
+		AXI4MemoryModule_L70F37T85_Expr_2 <= Inputs_M2S_W_W_WVALID;
+		AXI4MemoryModule_L80F13L82T41_Expr_1 <= AXI4MemoryModule_L80F14L82T26_Ternary;
+		AXI4MemoryModule_L72F28T73_Expr_1 <= internalSameTxWrite;
+		AXI4MemoryModule_L72F28T73_Expr_2 <= internalDelayedTxWrite;
+		AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_0_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_1 <= internalWE;
+		AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_0_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_2 <= AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_0_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F35T51_Index;
+		AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_1_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_1 <= internalWE;
+		AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_1_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_2 <= AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_1_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F35T51_Index;
+		AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_2_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_1 <= internalWE;
+		AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_2_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_2 <= AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_2_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F35T51_Index;
+		AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_3_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_1 <= internalWE;
+		AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_3_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr_2 <= AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_3_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F35T51_Index;
+		Inputs_M2S_R_AR_ARID <= M2S_R_AR_ARID;
+		Inputs_M2S_R_AR_ARADDR <= M2S_R_AR_ARADDR;
+		Inputs_M2S_R_AR_ARLEN <= M2S_R_AR_ARLEN;
+		Inputs_M2S_R_AR_ARSIZE <= M2S_R_AR_ARSIZE;
+		Inputs_M2S_R_AR_ARBURST <= M2S_R_AR_ARBURST;
+		Inputs_M2S_R_AR_ARLOCK <= M2S_R_AR_ARLOCK;
+		Inputs_M2S_R_AR_ARCACHE <= M2S_R_AR_ARCACHE;
+		Inputs_M2S_R_AR_ARPROT <= M2S_R_AR_ARPROT;
+		Inputs_M2S_R_AR_ARQOS <= M2S_R_AR_ARQOS;
+		Inputs_M2S_R_AR_ARREGION <= M2S_R_AR_ARREGION;
+		Inputs_M2S_R_AR_ARUSER <= M2S_R_AR_ARUSER;
+		Inputs_M2S_R_AR_ARVALID <= M2S_R_AR_ARVALID;
+		Inputs_M2S_R_R_RREADY <= M2S_R_R_RREADY;
+		Inputs_M2S_W_AW_AWID <= M2S_W_AW_AWID;
+		Inputs_M2S_W_AW_AWADDR <= M2S_W_AW_AWADDR;
+		Inputs_M2S_W_AW_AWLEN <= M2S_W_AW_AWLEN;
+		Inputs_M2S_W_AW_AWSIZE <= M2S_W_AW_AWSIZE;
+		Inputs_M2S_W_AW_AWBURST <= M2S_W_AW_AWBURST;
+		Inputs_M2S_W_AW_AWLOCK <= M2S_W_AW_AWLOCK;
+		Inputs_M2S_W_AW_AWCACHE <= M2S_W_AW_AWCACHE;
+		Inputs_M2S_W_AW_AWPROT <= M2S_W_AW_AWPROT;
+		Inputs_M2S_W_AW_AWQOS <= M2S_W_AW_AWQOS;
+		Inputs_M2S_W_AW_AWREGION <= M2S_W_AW_AWREGION;
+		Inputs_M2S_W_AW_AWUSER <= M2S_W_AW_AWUSER;
+		Inputs_M2S_W_AW_AWVALID <= M2S_W_AW_AWVALID;
+		Inputs_M2S_W_W_WID <= M2S_W_W_WID;
+		Inputs_M2S_W_W_WDATA(0) <= M2S_W_W_WDATA0;
+		Inputs_M2S_W_W_WDATA(1) <= M2S_W_W_WDATA1;
+		Inputs_M2S_W_W_WDATA(2) <= M2S_W_W_WDATA2;
+		Inputs_M2S_W_W_WDATA(3) <= M2S_W_W_WDATA3;
+		Inputs_M2S_W_W_WSTRB <= M2S_W_W_WSTRB;
+		Inputs_M2S_W_W_WLAST <= M2S_W_W_WLAST;
+		Inputs_M2S_W_W_WUSER <= M2S_W_W_WUSER;
+		Inputs_M2S_W_W_WVALID <= M2S_W_W_WVALID;
+		Inputs_M2S_W_B_BREADY <= M2S_W_B_BREADY;
+		internalDelayedTxWrite <= AXI4MemoryModule_L71F40T72_Expr;
+		AXI4MemoryModule_L90F14L92T26_WhenTrue <= axiSlave_outARADDR;
+		AXI4MemoryModule_L90F14L92T26_WhenFalse <= State_raddr;
+		internalRADDR <= AXI4MemoryModule_L90F13L92T41_Expr;
+		internalSameTxWrite <= AXI4MemoryModule_L70F37T85_Expr;
+		AXI4MemoryModule_L80F14L82T26_WhenTrue <= axiSlave_outAWADDR;
+		AXI4MemoryModule_L80F14L82T26_WhenFalse <= State_waddr;
+		internalWADDR <= AXI4MemoryModule_L80F13L82T41_Expr;
+		AXI4MemoryModule_L85F13L87T26_WhenTrue(31 downto 24) <= axiSlave_outWDATA(3);
+		AXI4MemoryModule_L85F13L87T26_WhenTrue(23 downto 16) <= axiSlave_outWDATA(2);
+		AXI4MemoryModule_L85F13L87T26_WhenTrue(15 downto 8) <= axiSlave_outWDATA(1);
+		AXI4MemoryModule_L85F13L87T26_WhenTrue(7 downto 0) <= axiSlave_outWDATA(0);
+		AXI4MemoryModule_L85F13L87T26_WhenFalse(31 downto 24) <= State_wdata(3);
+		AXI4MemoryModule_L85F13L87T26_WhenFalse(23 downto 16) <= State_wdata(2);
+		AXI4MemoryModule_L85F13L87T26_WhenFalse(15 downto 8) <= State_wdata(1);
+		AXI4MemoryModule_L85F13L87T26_WhenFalse(7 downto 0) <= State_wdata(0);
+		internalWDATA(0) <= AXI4MemoryModule_L85F13L87T26_Ternary(7 downto 0);
+		internalWDATA(1) <= AXI4MemoryModule_L85F13L87T26_Ternary(15 downto 8);
+		internalWDATA(2) <= AXI4MemoryModule_L85F13L87T26_Ternary(23 downto 16);
+		internalWDATA(3) <= AXI4MemoryModule_L85F13L87T26_Ternary(31 downto 24);
+		internalWE <= AXI4MemoryModule_L72F28T73_Expr;
+		AXI4MemoryModule_L75F13L77T26_WhenTrue <= axiSlave_outWSTRB;
+		AXI4MemoryModule_L75F13L77T26_WhenFalse <= State_wstrb;
+		internalWSTRB <= AXI4MemoryModule_L75F13L77T26_Ternary;
+		AXI4MemoryModule_L97F37L106T14_Object(0) <= AXI4MemoryModule_L101F29T33_Expr;
+		AXI4MemoryModule_L97F37L106T14_Object(1) <= AXI4MemoryModule_L103F29T33_Expr;
+		AXI4MemoryModule_L97F37L106T14_Object(2) <= AXI4MemoryModule_L105F28T32_Expr;
+		AXI4MemoryModule_L97F37L106T14_Object(34 downto 27) <= State_rdata(3);
+		AXI4MemoryModule_L97F37L106T14_Object(26 downto 19) <= State_rdata(2);
+		AXI4MemoryModule_L97F37L106T14_Object(18 downto 11) <= State_rdata(1);
+		AXI4MemoryModule_L97F37L106T14_Object(10 downto 3) <= State_rdata(0);
+		AXI4MemoryModule_L97F37L106T14_Object(35) <= AXI4MemoryModule_L102F28T32_Expr;
+		AXI4MemoryModule_L97F37L106T14_Object(36) <= AXI4MemoryModule_L104F28T32_Expr;
+		AXI4MemoryModule_L97F37L106T14_Object(44 downto 37) <= Inputs_M2S_R_AR_ARID;
+		AXI4MemoryModule_L97F37L106T14_Object(76 downto 45) <= Inputs_M2S_R_AR_ARADDR;
+		AXI4MemoryModule_L97F37L106T14_Object(84 downto 77) <= Inputs_M2S_R_AR_ARLEN;
+		AXI4MemoryModule_L97F37L106T14_Object(87 downto 85) <= Inputs_M2S_R_AR_ARSIZE;
+		AXI4MemoryModule_L97F37L106T14_Object(89 downto 88) <= Inputs_M2S_R_AR_ARBURST;
+		AXI4MemoryModule_L97F37L106T14_Object(91 downto 90) <= Inputs_M2S_R_AR_ARLOCK;
+		AXI4MemoryModule_L97F37L106T14_Object(95 downto 92) <= Inputs_M2S_R_AR_ARCACHE;
+		AXI4MemoryModule_L97F37L106T14_Object(98 downto 96) <= Inputs_M2S_R_AR_ARPROT;
+		AXI4MemoryModule_L97F37L106T14_Object(102 downto 99) <= Inputs_M2S_R_AR_ARQOS;
+		AXI4MemoryModule_L97F37L106T14_Object(110 downto 103) <= Inputs_M2S_R_AR_ARREGION;
+		AXI4MemoryModule_L97F37L106T14_Object(118 downto 111) <= Inputs_M2S_R_AR_ARUSER;
+		AXI4MemoryModule_L97F37L106T14_Object(119) <= Inputs_M2S_R_AR_ARVALID;
+		AXI4MemoryModule_L97F37L106T14_Object(120) <= Inputs_M2S_R_R_RREADY;
+		AXI4MemoryModule_L97F37L106T14_Object(128 downto 121) <= Inputs_M2S_W_AW_AWID;
+		AXI4MemoryModule_L97F37L106T14_Object(160 downto 129) <= Inputs_M2S_W_AW_AWADDR;
+		AXI4MemoryModule_L97F37L106T14_Object(168 downto 161) <= Inputs_M2S_W_AW_AWLEN;
+		AXI4MemoryModule_L97F37L106T14_Object(171 downto 169) <= Inputs_M2S_W_AW_AWSIZE;
+		AXI4MemoryModule_L97F37L106T14_Object(173 downto 172) <= Inputs_M2S_W_AW_AWBURST;
+		AXI4MemoryModule_L97F37L106T14_Object(175 downto 174) <= Inputs_M2S_W_AW_AWLOCK;
+		AXI4MemoryModule_L97F37L106T14_Object(179 downto 176) <= Inputs_M2S_W_AW_AWCACHE;
+		AXI4MemoryModule_L97F37L106T14_Object(182 downto 180) <= Inputs_M2S_W_AW_AWPROT;
+		AXI4MemoryModule_L97F37L106T14_Object(186 downto 183) <= Inputs_M2S_W_AW_AWQOS;
+		AXI4MemoryModule_L97F37L106T14_Object(194 downto 187) <= Inputs_M2S_W_AW_AWREGION;
+		AXI4MemoryModule_L97F37L106T14_Object(202 downto 195) <= Inputs_M2S_W_AW_AWUSER;
+		AXI4MemoryModule_L97F37L106T14_Object(203) <= Inputs_M2S_W_AW_AWVALID;
+		AXI4MemoryModule_L97F37L106T14_Object(211 downto 204) <= Inputs_M2S_W_W_WID;
+		AXI4MemoryModule_L97F37L106T14_Object(243 downto 236) <= Inputs_M2S_W_W_WDATA(3);
+		AXI4MemoryModule_L97F37L106T14_Object(235 downto 228) <= Inputs_M2S_W_W_WDATA(2);
+		AXI4MemoryModule_L97F37L106T14_Object(227 downto 220) <= Inputs_M2S_W_W_WDATA(1);
+		AXI4MemoryModule_L97F37L106T14_Object(219 downto 212) <= Inputs_M2S_W_W_WDATA(0);
+		AXI4MemoryModule_L97F37L106T14_Object(247 downto 244) <= Inputs_M2S_W_W_WSTRB;
+		AXI4MemoryModule_L97F37L106T14_Object(248) <= Inputs_M2S_W_W_WLAST;
+		AXI4MemoryModule_L97F37L106T14_Object(256 downto 249) <= Inputs_M2S_W_W_WUSER;
+		AXI4MemoryModule_L97F37L106T14_Object(257) <= Inputs_M2S_W_W_WVALID;
+		AXI4MemoryModule_L97F37L106T14_Object(258) <= Inputs_M2S_W_B_BREADY;
+		axiSlave_M2S <= AXI4MemoryModule_L97F37L106T14_Object(258 downto 37);
+		axiSlave_inWREADY <= AXI4MemoryModule_L97F37L106T14_Object(36);
+		axiSlave_inRVALID <= AXI4MemoryModule_L97F37L106T14_Object(35);
+		axiSlave_inRDATA(3) <= AXI4MemoryModule_L97F37L106T14_Object(34 downto 27);
+		axiSlave_inRDATA(2) <= AXI4MemoryModule_L97F37L106T14_Object(26 downto 19);
+		axiSlave_inRDATA(1) <= AXI4MemoryModule_L97F37L106T14_Object(18 downto 11);
+		axiSlave_inRDATA(0) <= AXI4MemoryModule_L97F37L106T14_Object(10 downto 3);
+		axiSlave_inBVALID <= AXI4MemoryModule_L97F37L106T14_Object(2);
+		axiSlave_inAWREADY <= AXI4MemoryModule_L97F37L106T14_Object(1);
+		axiSlave_inARREADY <= AXI4MemoryModule_L97F37L106T14_Object(0);
+		AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_0_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F35T51_Index <= internalWSTRB(0);
+		AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_1_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F35T51_Index <= internalWSTRB(1);
+		AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_2_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F35T51_Index <= internalWSTRB(2);
+		AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_3_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F35T51_Index <= internalWSTRB(3);
+		S2M_W_W_WREADY <= axiSlave_S2M(73);
+		S2M_W_B_BVALID <= axiSlave_S2M(72);
+		S2M_W_B_BUSER <= axiSlave_S2M(71 downto 64);
+		S2M_W_B_BRESP <= axiSlave_S2M(63 downto 62);
+		S2M_W_B_BID <= axiSlave_S2M(61 downto 54);
+		S2M_W_AW_AWREADY <= axiSlave_S2M(53);
+		S2M_R_R_RVALID <= axiSlave_S2M(52);
+		S2M_R_R_RUSER <= axiSlave_S2M(51 downto 44);
+		S2M_R_R_RLAST <= axiSlave_S2M(43);
+		S2M_R_R_RRESP <= axiSlave_S2M(42 downto 41);
+		S2M_R_R_RDATA3 <= axiSlave_S2M(40 downto 33);
+		S2M_R_R_RDATA2 <= axiSlave_S2M(32 downto 25);
+		S2M_R_R_RDATA1 <= axiSlave_S2M(24 downto 17);
+		S2M_R_R_RDATA0 <= axiSlave_S2M(16 downto 9);
+		S2M_R_R_RID <= axiSlave_S2M(8 downto 1);
+		S2M_R_AR_ARREADY <= axiSlave_S2M(0);
 		axiSlave_inARREADY_axiSlave_inARREADY_HardLink <= axiSlave_inARREADY;
 		axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink <= axiSlave_inAWREADY;
 		axiSlave_inBVALID_axiSlave_inBVALID_HardLink <= axiSlave_inBVALID;
@@ -340,6 +655,50 @@ begin
 		axiSlave_outWSTRB <= axiSlave_outWSTRB_axiSlave_outWSTRB_HardLink;
 		axiSlave_outWVALID <= axiSlave_outWVALID_axiSlave_outWVALID_HardLink;
 		axiSlave_S2M <= axiSlave_S2M_axiSlave_S2M_HardLink;
+	end process;
+	-- inferred simple dual port RAM with write-first behaviour
+	process (Clock, AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_0_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr, internalWADDR, internalWDATA, internalRADDR_reg0, State_buff0, internalRADDR)
+	begin
+		if rising_edge(Clock) then
+			if AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_0_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr = '1' then
+				State_buff0(TO_INTEGER(internalWADDR)) <= internalWDATA(0);
+			end if;
+			internalRADDR_reg0 <= internalRADDR(9 downto 0);
+		end if;
+		State_rdata(0) <= State_buff0(TO_INTEGER(internalRADDR_reg0));
+	end process;
+	-- inferred simple dual port RAM with write-first behaviour
+	process (Clock, AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_1_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr, internalWADDR, internalWDATA, internalRADDR_reg1, State_buff1, internalRADDR)
+	begin
+		if rising_edge(Clock) then
+			if AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_1_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr = '1' then
+				State_buff1(TO_INTEGER(internalWADDR)) <= internalWDATA(1);
+			end if;
+			internalRADDR_reg1 <= internalRADDR(9 downto 0);
+		end if;
+		State_rdata(1) <= State_buff1(TO_INTEGER(internalRADDR_reg1));
+	end process;
+	-- inferred simple dual port RAM with write-first behaviour
+	process (Clock, AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_2_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr, internalWADDR, internalWDATA, internalRADDR_reg2, State_buff2, internalRADDR)
+	begin
+		if rising_edge(Clock) then
+			if AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_2_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr = '1' then
+				State_buff2(TO_INTEGER(internalWADDR)) <= internalWDATA(2);
+			end if;
+			internalRADDR_reg2 <= internalRADDR(9 downto 0);
+		end if;
+		State_rdata(2) <= State_buff2(TO_INTEGER(internalRADDR_reg2));
+	end process;
+	-- inferred simple dual port RAM with write-first behaviour
+	process (Clock, AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_3_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr, internalWADDR, internalWDATA, internalRADDR_reg3, State_buff3, internalRADDR)
+	begin
+		if rising_edge(Clock) then
+			if AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_3_AXI4MemoryModule_L131F13L137T14_AXI4MemoryModule_L132F21T51_Expr = '1' then
+				State_buff3(TO_INTEGER(internalWADDR)) <= internalWDATA(3);
+			end if;
+			internalRADDR_reg3 <= internalRADDR(9 downto 0);
+		end if;
+		State_rdata(3) <= State_buff3(TO_INTEGER(internalRADDR_reg3));
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

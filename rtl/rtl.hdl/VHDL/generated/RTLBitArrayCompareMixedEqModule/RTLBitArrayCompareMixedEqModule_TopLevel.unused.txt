@@ -1,3 +1,0 @@
-No reads:
-	Inputs_LHS
-	Inputs_RHS

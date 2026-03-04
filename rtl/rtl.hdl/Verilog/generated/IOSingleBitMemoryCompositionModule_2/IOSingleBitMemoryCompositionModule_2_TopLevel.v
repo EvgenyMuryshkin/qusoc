@@ -37,15 +37,20 @@ module IOSingleBitMemoryCompositionModule_2_TopLevel
 	wire true = 1'b1;
 	wire false = 1'b0;
 	wire signed [2: 0] size = 3'b010;
-	reg children0_iValue = 1'b0;
+	wire IOSingleBitMemoryCompositionModule_L46F13L49T14_0_i = 1'b0;
+	wire IOSingleBitMemoryCompositionModule_L46F13L49T14_1_i = 1'b1;
+	wire children0_iValue;
 	wire children0_oValue;
-	reg children1_iValue = 1'b0;
+	wire children1_iValue;
 	wire children1_oValue;
+	wire [0: 0] IOSingleBitMemoryCompositionModule_L46F13L49T14_0_IOSingleBitMemoryCompositionModule_L48F44T126_Object;
+	wire [0: 0] IOSingleBitMemoryCompositionModule_L46F13L49T14_1_IOSingleBitMemoryCompositionModule_L48F44T126_Object;
 	wire children0_iValue_children0_iValue_HardLink;
 	wire children0_oValue_children0_oValue_HardLink;
 	wire children1_iValue_children1_iValue_HardLink;
 	wire children1_oValue_children1_oValue_HardLink;
 	wire Inputs_iValues [0 : 1];
+	wire IOSingleBitMemoryCompositionModule_L52F34T74_Enumerable [0 : 1];
 	IOSingleBitMemoryCompositionModule_2_TopLevel_children0
 	IOSingleBitMemoryCompositionModule_2_TopLevel_children0
 	(
@@ -64,6 +69,14 @@ module IOSingleBitMemoryCompositionModule_2_TopLevel
 	);
 	assign Inputs_iValues[0] = iValues0;
 	assign Inputs_iValues[1] = iValues1;
+	assign IOSingleBitMemoryCompositionModule_L46F13L49T14_0_IOSingleBitMemoryCompositionModule_L48F44T126_Object[0] = Inputs_iValues[0];
+	assign children0_iValue = IOSingleBitMemoryCompositionModule_L46F13L49T14_0_IOSingleBitMemoryCompositionModule_L48F44T126_Object[0];
+	assign IOSingleBitMemoryCompositionModule_L46F13L49T14_1_IOSingleBitMemoryCompositionModule_L48F44T126_Object[0] = Inputs_iValues[1];
+	assign children1_iValue = IOSingleBitMemoryCompositionModule_L46F13L49T14_1_IOSingleBitMemoryCompositionModule_L48F44T126_Object[0];
+	assign IOSingleBitMemoryCompositionModule_L52F34T74_Enumerable[0] = children0_oValue;
+	assign IOSingleBitMemoryCompositionModule_L52F34T74_Enumerable[1] = children1_oValue;
+	assign oValues0 = IOSingleBitMemoryCompositionModule_L52F34T74_Enumerable[0];
+	assign oValues1 = IOSingleBitMemoryCompositionModule_L52F34T74_Enumerable[1];
 	assign children0_iValue_children0_iValue_HardLink = children0_iValue;
 	assign children0_oValue = children0_oValue_children0_oValue_HardLink;
 	assign children1_iValue_children1_iValue_HardLink = children1_iValue;

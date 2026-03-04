@@ -1,8 +1,6 @@
-No reads:
-	child_Output_iTuple
-	child_Output_iTupleArray
-	Inputs_iTuple
-	Inputs_iTupleArray
 No writes:
-	child_iTuple
-	child_iTupleArray
+	child_Output_iTuple_Item4_L2_L2ValuesArrayInit
+	child_Output_iTuple_Item4_L2Tuple_Item2_L2ValuesArrayInit
+	child_Output_iTupleArrayArrayInit
+	Output_iTuple_Item4_L2_L2ValuesArrayInit
+	Output_iTuple_Item4_L2Tuple_Item2_L2ValuesArrayInit

@@ -36,6 +36,7 @@ module IOSingleBitMemoryCompositionModule_1_TopLevel_children0
 	wire false = 1'b0;
 	wire Inputs_iValue;
 	assign Inputs_iValue = iValue;
+	assign oValue = Inputs_iValue;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

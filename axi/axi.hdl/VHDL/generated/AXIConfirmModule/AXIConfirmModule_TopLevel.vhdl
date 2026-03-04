@@ -45,12 +45,43 @@ architecture rtl of AXIConfirmModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
+	constant AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L32F13L34T14_AXIConfirmModule_L33F33T58_Expr : unsigned(0 downto 0) := "0";
+	constant AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F26T51_Expr : unsigned(0 downto 0) := "0";
+	constant AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L41F45T74_Expr : unsigned(0 downto 0) := "1";
+	constant AXIConfirmModule_L25F50T79_Expr : unsigned(0 downto 0) := "1";
+	constant AXIConfirmModule_L26F51T76_Expr : unsigned(0 downto 0) := "0";
+	constant AXIConfirmModule_L26F97T126_Expr : unsigned(0 downto 0) := "1";
+	constant AXIConfirmModule_L27F64T89_Expr : unsigned(0 downto 0) := "0";
 	signal Inputs_inReady : std_logic := '0';
 	signal Inputs_inRestart : std_logic := '0';
 	signal Inputs_inValid : std_logic := '0';
 	signal NextState_fsm : unsigned(0 downto 0) := (others => '0');
 	signal State_fsm : unsigned(0 downto 0) := "0";
 	constant State_fsmDefault : unsigned(0 downto 0) := "0";
+	signal AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L40F29T61_Expr : std_logic := '0';
+	signal AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L40F29T61_Expr_1 : std_logic := '0';
+	signal AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L40F29T61_Expr_2 : std_logic := '0';
+	signal AXIConfirmModule_L26F38T126_Expr : std_logic := '0';
+	signal AXIConfirmModule_L26F38T126_Expr_1 : std_logic := '0';
+	signal AXIConfirmModule_L26F38T126_Expr_2 : std_logic := '0';
+	signal AXIConfirmModule_L27F33T89_Expr : std_logic := '0';
+	signal AXIConfirmModule_L27F33T89_Expr_1 : std_logic := '0';
+	signal AXIConfirmModule_L27F33T89_Expr_2 : std_logic := '0';
+	signal AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F21L42T31_Case : std_logic := '0';
+	signal AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F21L42T31_CaseLhs : signed(1 downto 0) := "00";
+	signal AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F21L42T31_CaseRhs : signed(1 downto 0) := "00";
+	signal AXIConfirmModule_L25F37T79_Expr : std_logic := '0';
+	signal AXIConfirmModule_L25F37T79_ExprLhs : signed(1 downto 0) := "00";
+	signal AXIConfirmModule_L25F37T79_ExprRhs : signed(1 downto 0) := "00";
+	signal AXIConfirmModule_L26F38T76_Expr : std_logic := '0';
+	signal AXIConfirmModule_L26F38T76_ExprLhs : signed(1 downto 0) := "00";
+	signal AXIConfirmModule_L26F38T76_ExprRhs : signed(1 downto 0) := "00";
+	signal AXIConfirmModule_L26F80T126_Expr : std_logic := '0';
+	signal AXIConfirmModule_L26F80T126_ExprLhs : signed(1 downto 0) := "00";
+	signal AXIConfirmModule_L26F80T126_ExprRhs : signed(1 downto 0) := "00";
+	signal AXIConfirmModule_L27F51T89_Expr : std_logic := '0';
+	signal AXIConfirmModule_L27F51T89_ExprLhs : signed(1 downto 0) := "00";
+	signal AXIConfirmModule_L27F51T89_ExprRhs : signed(1 downto 0) := "00";
 begin
 	process (Clock, NextState_fsm, Reset)
 	begin
@@ -62,11 +93,70 @@ begin
 			end if;
 		end if;
 	end process;
-	process (inReady, inRestart, inValid)
+	AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F21L42T31_Case <= '1' when (signed(resize(AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F21L42T31_CaseLhs, AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F21L42T31_CaseLhs'length + 1)) = signed(resize(AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F21L42T31_CaseRhs, AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F21L42T31_CaseRhs'length + 1))) else '0';
+	AXIConfirmModule_L25F37T79_Expr <= '1' when (signed(resize(AXIConfirmModule_L25F37T79_ExprLhs, AXIConfirmModule_L25F37T79_ExprLhs'length + 1)) = signed(resize(AXIConfirmModule_L25F37T79_ExprRhs, AXIConfirmModule_L25F37T79_ExprRhs'length + 1))) else '0';
+	AXIConfirmModule_L26F38T76_Expr <= '1' when (signed(resize(AXIConfirmModule_L26F38T76_ExprLhs, AXIConfirmModule_L26F38T76_ExprLhs'length + 1)) = signed(resize(AXIConfirmModule_L26F38T76_ExprRhs, AXIConfirmModule_L26F38T76_ExprRhs'length + 1))) else '0';
+	AXIConfirmModule_L26F80T126_Expr <= '1' when (signed(resize(AXIConfirmModule_L26F80T126_ExprLhs, AXIConfirmModule_L26F80T126_ExprLhs'length + 1)) = signed(resize(AXIConfirmModule_L26F80T126_ExprRhs, AXIConfirmModule_L26F80T126_ExprRhs'length + 1))) else '0';
+	AXIConfirmModule_L27F51T89_Expr <= '1' when (signed(resize(AXIConfirmModule_L27F51T89_ExprLhs, AXIConfirmModule_L27F51T89_ExprLhs'length + 1)) = signed(resize(AXIConfirmModule_L27F51T89_ExprRhs, AXIConfirmModule_L27F51T89_ExprRhs'length + 1))) else '0';
+	process (AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L40F29T61_Expr_1, AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L40F29T61_Expr_2)
 	begin
+		AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L40F29T61_Expr <= AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L40F29T61_Expr_1 AND AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L40F29T61_Expr_2;
+	end process;
+	process (AXIConfirmModule_L26F38T126_Expr_1, AXIConfirmModule_L26F38T126_Expr_2)
+	begin
+		AXIConfirmModule_L26F38T126_Expr <= AXIConfirmModule_L26F38T126_Expr_1 AND AXIConfirmModule_L26F38T126_Expr_2;
+	end process;
+	process (AXIConfirmModule_L27F33T89_Expr_1, AXIConfirmModule_L27F33T89_Expr_2)
+	begin
+		AXIConfirmModule_L27F33T89_Expr <= AXIConfirmModule_L27F33T89_Expr_1 AND AXIConfirmModule_L27F33T89_Expr_2;
+	end process;
+	process (AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F21L42T31_Case, AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L40F29T61_Expr, Inputs_inRestart, State_fsm)
+	begin
+		NextState_fsm <= State_fsm;
+		if Inputs_inRestart = '1' then
+			NextState_fsm <= AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L32F13L34T14_AXIConfirmModule_L33F33T58_Expr;
+		else
+			if AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F21L42T31_Case = '1' then
+				if AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L40F29T61_Expr = '1' then
+					NextState_fsm <= AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L41F45T74_Expr;
+				end if;
+			end if;
+		end if;
+	end process;
+	process (AXIConfirmModule_L25F37T79_Expr, AXIConfirmModule_L26F38T126_Expr, AXIConfirmModule_L26F38T76_Expr, AXIConfirmModule_L26F80T126_Expr, AXIConfirmModule_L27F33T89_Expr, AXIConfirmModule_L27F51T89_Expr, Inputs_inReady, Inputs_inValid, inReady, inRestart, inValid, NextState_fsm, State_fsm)
+	begin
+		AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F21L42T31_CaseLhs(1) <= '0';
+		AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F21L42T31_CaseLhs(0) <= State_fsm(0);
+		AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F21L42T31_CaseRhs(1) <= '0';
+		AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F21L42T31_CaseRhs(0) <= AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L39F26T51_Expr(0);
+		AXIConfirmModule_L25F37T79_ExprLhs(1) <= '0';
+		AXIConfirmModule_L25F37T79_ExprLhs(0) <= State_fsm(0);
+		AXIConfirmModule_L25F37T79_ExprRhs(1) <= '0';
+		AXIConfirmModule_L25F37T79_ExprRhs(0) <= AXIConfirmModule_L25F50T79_Expr(0);
+		AXIConfirmModule_L26F38T76_ExprLhs(1) <= '0';
+		AXIConfirmModule_L26F38T76_ExprLhs(0) <= State_fsm(0);
+		AXIConfirmModule_L26F38T76_ExprRhs(1) <= '0';
+		AXIConfirmModule_L26F38T76_ExprRhs(0) <= AXIConfirmModule_L26F51T76_Expr(0);
+		AXIConfirmModule_L26F80T126_ExprLhs(1) <= '0';
+		AXIConfirmModule_L26F80T126_ExprLhs(0) <= NextState_fsm(0);
+		AXIConfirmModule_L26F80T126_ExprRhs(1) <= '0';
+		AXIConfirmModule_L26F80T126_ExprRhs(0) <= AXIConfirmModule_L26F97T126_Expr(0);
+		AXIConfirmModule_L27F51T89_ExprLhs(1) <= '0';
+		AXIConfirmModule_L27F51T89_ExprLhs(0) <= State_fsm(0);
+		AXIConfirmModule_L27F51T89_ExprRhs(1) <= '0';
+		AXIConfirmModule_L27F51T89_ExprRhs(0) <= AXIConfirmModule_L27F64T89_Expr(0);
+		AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L40F29T61_Expr_1 <= Inputs_inValid;
+		AXIConfirmModule_L30F9L45T10_AXIConfirmModule_L36F13L44T14_AXIConfirmModule_L37F17L43T18_AXIConfirmModule_L40F29T61_Expr_2 <= Inputs_inReady;
+		AXIConfirmModule_L26F38T126_Expr_1 <= AXIConfirmModule_L26F38T76_Expr;
+		AXIConfirmModule_L26F38T126_Expr_2 <= AXIConfirmModule_L26F80T126_Expr;
+		AXIConfirmModule_L27F33T89_Expr_1 <= Inputs_inReady;
+		AXIConfirmModule_L27F33T89_Expr_2 <= AXIConfirmModule_L27F51T89_Expr;
 		Inputs_inReady <= inReady;
 		Inputs_inRestart <= inRestart;
 		Inputs_inValid <= inValid;
+		outConfirmed <= AXIConfirmModule_L25F37T79_Expr;
+		outConfirming <= AXIConfirmModule_L26F38T126_Expr;
+		outReady <= AXIConfirmModule_L27F33T89_Expr;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

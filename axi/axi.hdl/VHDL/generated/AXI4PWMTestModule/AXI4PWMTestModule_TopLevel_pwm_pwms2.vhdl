@@ -43,6 +43,17 @@ architecture rtl of AXI4PWMTestModule_TopLevel_pwm_pwms2 is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
+	constant PWMModule_L27F56T57_Expr : std_logic := '1';
+	constant PWMModule_L31F31T36_Expr : std_logic := '0';
+	constant PWMModule_L33F54T55_Expr : std_logic := '0';
+	constant PWMModule_L33F85T86_Expr : std_logic := '0';
+	constant PWMModule_L35F69T70_Expr : std_logic := '1';
+	constant PWMModule_L37F47T48_Expr : std_logic := '0';
+	constant PWMModule_L38F39T43_Expr : std_logic := '1';
+	constant PWMModule_L39F37T41_Expr : std_logic := '1';
+	constant PWMModule_L43F66T67_Expr : std_logic := '1';
+	constant PWMModule_L45F41T46_Expr : std_logic := '0';
+	constant PWMModule_L48F69T70_Expr : std_logic := '1';
 	signal Inputs_iActive : std_logic := '0';
 	signal Inputs_iDurationClocks : unsigned(31 downto 0) := (others => '0');
 	signal Inputs_iOnClock : unsigned(31 downto 0) := (others => '0');
@@ -56,6 +67,36 @@ architecture rtl of AXI4PWMTestModule_TopLevel_pwm_pwms2 is
 	constant State_cycleDefault : std_logic := '0';
 	signal State_pwm : std_logic := '0';
 	constant State_pwmDefault : std_logic := '0';
+	signal PWMModule_L30F9L51T10_PWMModule_L33F17T86_Expr : std_logic := '0';
+	signal PWMModule_L30F9L51T10_PWMModule_L33F17T86_Expr_1 : std_logic := '0';
+	signal PWMModule_L30F9L51T10_PWMModule_L33F17T86_Expr_2 : std_logic := '0';
+	signal PWMModule_L30F9L51T10_PWMModule_L33F17T55_Expr : std_logic := '0';
+	signal PWMModule_L30F9L51T10_PWMModule_L33F17T55_Expr_1 : std_logic := '0';
+	signal PWMModule_L30F9L51T10_PWMModule_L33F17T55_Expr_2 : std_logic := '0';
+	signal PWMModule_L27F34T57_Expr : signed(33 downto 0) := "0000000000000000000000000000000000";
+	signal PWMModule_L27F34T57_Expr_1 : signed(33 downto 0) := "0000000000000000000000000000000000";
+	signal PWMModule_L27F34T57_Expr_2 : signed(33 downto 0) := "0000000000000000000000000000000000";
+	signal PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F44T70_Expr : signed(33 downto 0) := "0000000000000000000000000000000000";
+	signal PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F44T70_Expr_1 : signed(33 downto 0) := "0000000000000000000000000000000000";
+	signal PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F44T70_Expr_2 : signed(33 downto 0) := "0000000000000000000000000000000000";
+	signal PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F48T67_Expr : signed(33 downto 0) := "0000000000000000000000000000000000";
+	signal PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F48T67_Expr_1 : signed(33 downto 0) := "0000000000000000000000000000000000";
+	signal PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F48T67_Expr_2 : signed(33 downto 0) := "0000000000000000000000000000000000";
+	signal PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L48F47T70_Expr : unsigned(33 downto 0) := "0000000000000000000000000000000000";
+	signal PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L48F47T70_Expr_1 : signed(33 downto 0) := "0000000000000000000000000000000000";
+	signal PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L48F47T70_Expr_2 : signed(33 downto 0) := "0000000000000000000000000000000000";
+	signal PWMModule_L30F9L51T10_PWMModule_L33F35T55_Expr : std_logic := '0';
+	signal PWMModule_L30F9L51T10_PWMModule_L33F35T55_ExprLhs : signed(32 downto 0) := "000000000000000000000000000000000";
+	signal PWMModule_L30F9L51T10_PWMModule_L33F35T55_ExprRhs : signed(32 downto 0) := "000000000000000000000000000000000";
+	signal PWMModule_L30F9L51T10_PWMModule_L33F59T86_Expr : std_logic := '0';
+	signal PWMModule_L30F9L51T10_PWMModule_L33F59T86_ExprLhs : signed(32 downto 0) := "000000000000000000000000000000000";
+	signal PWMModule_L30F9L51T10_PWMModule_L33F59T86_ExprRhs : signed(32 downto 0) := "000000000000000000000000000000000";
+	signal PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F21T70_Expr : std_logic := '0';
+	signal PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F21T70_ExprLhs : signed(34 downto 0) := "00000000000000000000000000000000000";
+	signal PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F21T70_ExprRhs : signed(34 downto 0) := "00000000000000000000000000000000000";
+	signal PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F25T67_Expr : std_logic := '0';
+	signal PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F25T67_ExprLhs : signed(34 downto 0) := "00000000000000000000000000000000000";
+	signal PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F25T67_ExprRhs : signed(34 downto 0) := "00000000000000000000000000000000000";
 begin
 	process (BoardSignals, NextState_clocksCounter, NextState_cycle, NextState_pwm)
 	begin
@@ -71,11 +112,137 @@ begin
 			end if;
 		end if;
 	end process;
-	process (iActive, iDurationClocks, iOnClock)
+	PWMModule_L30F9L51T10_PWMModule_L33F35T55_Expr <= '1' when (signed(resize(PWMModule_L30F9L51T10_PWMModule_L33F35T55_ExprLhs, PWMModule_L30F9L51T10_PWMModule_L33F35T55_ExprLhs'length + 1)) /= signed(resize(PWMModule_L30F9L51T10_PWMModule_L33F35T55_ExprRhs, PWMModule_L30F9L51T10_PWMModule_L33F35T55_ExprRhs'length + 1))) else '0';
+	PWMModule_L30F9L51T10_PWMModule_L33F59T86_Expr <= '1' when (signed(resize(PWMModule_L30F9L51T10_PWMModule_L33F59T86_ExprLhs, PWMModule_L30F9L51T10_PWMModule_L33F59T86_ExprLhs'length + 1)) /= signed(resize(PWMModule_L30F9L51T10_PWMModule_L33F59T86_ExprRhs, PWMModule_L30F9L51T10_PWMModule_L33F59T86_ExprRhs'length + 1))) else '0';
+	PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F21T70_Expr <= '1' when (signed(resize(PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F21T70_ExprLhs, PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F21T70_ExprLhs'length + 1)) = signed(resize(PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F21T70_ExprRhs, PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F21T70_ExprRhs'length + 1))) else '0';
+	PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F25T67_Expr <= '1' when (signed(resize(PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F25T67_ExprLhs, PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F25T67_ExprLhs'length + 1)) = signed(resize(PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F25T67_ExprRhs, PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F25T67_ExprRhs'length + 1))) else '0';
+	process (PWMModule_L30F9L51T10_PWMModule_L33F17T86_Expr_1, PWMModule_L30F9L51T10_PWMModule_L33F17T86_Expr_2)
 	begin
+		PWMModule_L30F9L51T10_PWMModule_L33F17T86_Expr <= PWMModule_L30F9L51T10_PWMModule_L33F17T86_Expr_1 AND PWMModule_L30F9L51T10_PWMModule_L33F17T86_Expr_2;
+	end process;
+	process (PWMModule_L30F9L51T10_PWMModule_L33F17T55_Expr_1, PWMModule_L30F9L51T10_PWMModule_L33F17T55_Expr_2)
+	begin
+		PWMModule_L30F9L51T10_PWMModule_L33F17T55_Expr <= PWMModule_L30F9L51T10_PWMModule_L33F17T55_Expr_1 AND PWMModule_L30F9L51T10_PWMModule_L33F17T55_Expr_2;
+	end process;
+	process (PWMModule_L27F34T57_Expr_1, PWMModule_L27F34T57_Expr_2)
+	begin
+		PWMModule_L27F34T57_Expr <= resize(signed(signed(resize(PWMModule_L27F34T57_Expr_1, PWMModule_L27F34T57_Expr_1'length + 1)) - signed(resize(PWMModule_L27F34T57_Expr_2, PWMModule_L27F34T57_Expr_2'length + 1))), PWMModule_L27F34T57_Expr'length);
+	end process;
+	process (PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F44T70_Expr_1, PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F44T70_Expr_2)
+	begin
+		PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F44T70_Expr <= resize(signed(signed(resize(PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F44T70_Expr_1, PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F44T70_Expr_1'length + 1)) - signed(resize(PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F44T70_Expr_2, PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F44T70_Expr_2'length + 1))), PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F44T70_Expr'length);
+	end process;
+	process (PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F48T67_Expr_1, PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F48T67_Expr_2)
+	begin
+		PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F48T67_Expr <= resize(signed(signed(resize(PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F48T67_Expr_1, PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F48T67_Expr_1'length + 1)) - signed(resize(PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F48T67_Expr_2, PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F48T67_Expr_2'length + 1))), PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F48T67_Expr'length);
+	end process;
+	process (PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L48F47T70_Expr_1, PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L48F47T70_Expr_2)
+	begin
+		PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L48F47T70_Expr <= resize(unsigned(signed(resize(PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L48F47T70_Expr_1, PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L48F47T70_Expr_1'length + 1)) + signed(resize(PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L48F47T70_Expr_2, PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L48F47T70_Expr_2'length + 1))), PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L48F47T70_Expr'length);
+	end process;
+	process (PWMModule_L30F9L51T10_PWMModule_L33F17T86_Expr, PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F21T70_Expr, PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F25T67_Expr, PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L48F47T70_Expr, State_clocksCounter, State_cycle, State_pwm)
+	begin
+		NextState_clocksCounter <= State_clocksCounter;
+		NextState_cycle <= State_cycle;
+		NextState_pwm <= State_pwm;
+		NextState_cycle <= PWMModule_L31F31T36_Expr;
+		if PWMModule_L30F9L51T10_PWMModule_L33F17T86_Expr = '1' then
+			if PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F21T70_Expr = '1' then
+				NextState_clocksCounter(31 downto 1) <= (
+					others => '0'
+				)
+				;
+				NextState_clocksCounter(0) <= PWMModule_L37F47T48_Expr;
+				NextState_cycle <= PWMModule_L38F39T43_Expr;
+				NextState_pwm <= PWMModule_L39F37T41_Expr;
+			else
+				if PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F25T67_Expr = '1' then
+					NextState_pwm <= PWMModule_L45F41T46_Expr;
+				end if;
+				NextState_clocksCounter <= PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L48F47T70_Expr(31 downto 0);
+			end if;
+		end if;
+	end process;
+	process (iActive, iDurationClocks, Inputs_iActive, Inputs_iDurationClocks, Inputs_iOnClock, iOnClock, PWMModule_L27F34T57_Expr, PWMModule_L30F9L51T10_PWMModule_L33F17T55_Expr, PWMModule_L30F9L51T10_PWMModule_L33F35T55_Expr, PWMModule_L30F9L51T10_PWMModule_L33F59T86_Expr, PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F44T70_Expr, PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F48T67_Expr, State_clocksCounter, State_cycle, State_pwm)
+	begin
+		PWMModule_L30F9L51T10_PWMModule_L33F35T55_ExprLhs(32) <= '0';
+		PWMModule_L30F9L51T10_PWMModule_L33F35T55_ExprLhs(31 downto 0) <= signed(Inputs_iOnClock);
+		PWMModule_L30F9L51T10_PWMModule_L33F35T55_ExprRhs(32 downto 1) <= (
+			others => '0'
+		)
+		;
+		PWMModule_L30F9L51T10_PWMModule_L33F35T55_ExprRhs(0) <= PWMModule_L33F54T55_Expr;
+		PWMModule_L30F9L51T10_PWMModule_L33F59T86_ExprLhs(32) <= '0';
+		PWMModule_L30F9L51T10_PWMModule_L33F59T86_ExprLhs(31 downto 0) <= signed(Inputs_iDurationClocks);
+		PWMModule_L30F9L51T10_PWMModule_L33F59T86_ExprRhs(32 downto 1) <= (
+			others => '0'
+		)
+		;
+		PWMModule_L30F9L51T10_PWMModule_L33F59T86_ExprRhs(0) <= PWMModule_L33F85T86_Expr;
+		PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F21T70_ExprLhs(34 downto 32) <= (
+			others => '0'
+		)
+		;
+		PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F21T70_ExprLhs(31 downto 0) <= signed(State_clocksCounter);
+		PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F21T70_ExprRhs(34) <= PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F44T70_Expr(33);
+		PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F21T70_ExprRhs(33 downto 0) <= PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F44T70_Expr;
+		PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F25T67_ExprLhs(34 downto 32) <= (
+			others => '0'
+		)
+		;
+		PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F25T67_ExprLhs(31 downto 0) <= signed(State_clocksCounter);
+		PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F25T67_ExprRhs(34) <= PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F48T67_Expr(33);
+		PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F25T67_ExprRhs(33 downto 0) <= PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F48T67_Expr;
+		PWMModule_L30F9L51T10_PWMModule_L33F17T86_Expr_1 <= PWMModule_L30F9L51T10_PWMModule_L33F17T55_Expr;
+		PWMModule_L30F9L51T10_PWMModule_L33F17T86_Expr_2 <= PWMModule_L30F9L51T10_PWMModule_L33F59T86_Expr;
+		PWMModule_L30F9L51T10_PWMModule_L33F17T55_Expr_1 <= Inputs_iActive;
+		PWMModule_L30F9L51T10_PWMModule_L33F17T55_Expr_2 <= PWMModule_L30F9L51T10_PWMModule_L33F35T55_Expr;
+		PWMModule_L27F34T57_Expr_1(33 downto 32) <= (
+			others => '0'
+		)
+		;
+		PWMModule_L27F34T57_Expr_1(31 downto 0) <= signed(State_clocksCounter);
+		PWMModule_L27F34T57_Expr_2(33 downto 1) <= (
+			others => '0'
+		)
+		;
+		PWMModule_L27F34T57_Expr_2(0) <= PWMModule_L27F56T57_Expr;
+		PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F44T70_Expr_1(33 downto 32) <= (
+			others => '0'
+		)
+		;
+		PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F44T70_Expr_1(31 downto 0) <= signed(Inputs_iDurationClocks);
+		PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F44T70_Expr_2(33 downto 1) <= (
+			others => '0'
+		)
+		;
+		PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L35F44T70_Expr_2(0) <= PWMModule_L35F69T70_Expr;
+		PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F48T67_Expr_1(33 downto 32) <= (
+			others => '0'
+		)
+		;
+		PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F48T67_Expr_1(31 downto 0) <= signed(Inputs_iOnClock);
+		PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F48T67_Expr_2(33 downto 1) <= (
+			others => '0'
+		)
+		;
+		PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L43F48T67_Expr_2(0) <= PWMModule_L43F66T67_Expr;
+		PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L48F47T70_Expr_1(33 downto 32) <= (
+			others => '0'
+		)
+		;
+		PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L48F47T70_Expr_1(31 downto 0) <= signed(State_clocksCounter);
+		PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L48F47T70_Expr_2(33 downto 1) <= (
+			others => '0'
+		)
+		;
+		PWMModule_L30F9L51T10_PWMModule_L34F13L50T14_PWMModule_L42F17L49T18_PWMModule_L48F47T70_Expr_2(0) <= PWMModule_L48F69T70_Expr;
 		Inputs_iActive <= iActive;
 		Inputs_iDurationClocks <= iDurationClocks;
 		Inputs_iOnClock <= iOnClock;
+		decrementCounter <= unsigned(PWMModule_L27F34T57_Expr(31 downto 0));
+		oCycle <= State_cycle;
+		oPWM <= State_pwm;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

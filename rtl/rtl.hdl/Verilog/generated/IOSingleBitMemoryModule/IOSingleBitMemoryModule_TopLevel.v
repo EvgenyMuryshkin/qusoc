@@ -48,21 +48,26 @@ module IOSingleBitMemoryModule_TopLevel
 	wire false = 1'b0;
 	wire [0: 0] State_bitArrayBlockDefault = 1'b0;
 	wire State_boolBlockDefault = 1'b0;
+	wire [0: 0] IOSingleBitMemoryModule_L28F42T43_Expr = 1'b0;
 	wire [0: 0] Inputs_iBit;
 	reg [0: 0] NextState_bit;
 	reg [0: 0] NextState_bitInternal;
-	reg [0: 0] intBit;
+	wire [0: 0] intBit;
 	reg [0: 0] State_bit = 1'b0;
 	wire [0: 0] State_bitDefault = 1'b0;
 	reg [0: 0] State_bitInternal = 1'b0;
 	wire [0: 0] State_bitInternalDefault = 1'b0;
 	wire [0 : 0] Inputs_iBitArrayBlock [0 : 0];
 	wire Inputs_iBoolBlock [0 : 0];
+	wire oInputBoolBlock [0 : 0];
+	wire oInternalBoolBlock [0 : 0];
+	wire [0 : 0] oStateBitArrayBlock [0 : 0];
+	wire oStateBoolBlock [0 : 0];
 	integer State_bitArrayBlock_Iterator;
 	reg [0 : 0] State_bitArrayBlock [0 : 0];
 	initial
 	begin : Init_State_bitArrayBlock
-$readmemh("IOSingleBitMemoryModule_TopLevel_State_bitArrayBlock.hex", State_bitArrayBlock);
+		$readmemh("IOSingleBitMemoryModule_TopLevel_State_bitArrayBlock.hex", State_bitArrayBlock);
 	end
 	integer NextState_bitArrayBlock_Iterator;
 	reg [0 : 0] NextState_bitArrayBlock [0 : 0];
@@ -85,8 +90,8 @@ $readmemh("IOSingleBitMemoryModule_TopLevel_State_bitArrayBlock.hex", State_bitA
 		for (NextState_boolBlock_Iterator = 0; NextState_boolBlock_Iterator < 1; NextState_boolBlock_Iterator = NextState_boolBlock_Iterator + 1)
 			NextState_boolBlock[NextState_boolBlock_Iterator] = 0;
 	end
-	reg [0 : 0] bitArrayBlock [0 : 0];
-	reg boolBlock [0 : 0];
+	wire [0 : 0] bitArrayBlock [0 : 0];
+	wire boolBlock [0 : 0];
 	always @ (posedge Clock)
 	begin
 		if ((Reset == 1))
@@ -130,9 +135,44 @@ $readmemh("IOSingleBitMemoryModule_TopLevel_State_bitArrayBlock.hex", State_bitA
 			end
 		end
 	end
+	always @ (*)
+	begin
+		NextState_bitArrayBlock_Iterator = 0;
+		NextState_boolBlock_Iterator = 0;
+		for (NextState_bitArrayBlock_Iterator = 0; (NextState_bitArrayBlock_Iterator < 1); NextState_bitArrayBlock_Iterator = (NextState_bitArrayBlock_Iterator + 1))
+		begin
+			NextState_bitArrayBlock[NextState_bitArrayBlock_Iterator] = State_bitArrayBlock[NextState_bitArrayBlock_Iterator];
+		end
+		for (NextState_boolBlock_Iterator = 0; (NextState_boolBlock_Iterator < 1); NextState_boolBlock_Iterator = (NextState_boolBlock_Iterator + 1))
+		begin
+			NextState_boolBlock[NextState_boolBlock_Iterator] = State_boolBlock[NextState_boolBlock_Iterator];
+		end
+		NextState_bit = State_bit;
+		NextState_bitInternal = State_bitInternal;
+		NextState_bit = Inputs_iBit;
+		NextState_bitInternal = intBit;
+		NextState_bitArrayBlock[0] = bitArrayBlock[0];
+		NextState_boolBlock[0] = boolBlock[0];
+	end
+	assign oInputBoolBlock0 = oInputBoolBlock[0];
+	assign oInternalBoolBlock0 = oInternalBoolBlock[0];
+	assign oStateBitArrayBlock0 = oStateBitArrayBlock[0];
+	assign oStateBoolBlock0 = oStateBoolBlock[0];
 	assign Inputs_iBit = iBit;
 	assign Inputs_iBitArrayBlock[0] = iBitArrayBlock0;
 	assign Inputs_iBoolBlock[0] = iBoolBlock0;
+	assign bitArrayBlock[0] = Inputs_iBitArrayBlock[0];
+	assign boolBlock[0] = Inputs_iBoolBlock[0];
+	assign intBit = Inputs_iBit;
+	assign oBit = Inputs_iBit;
+	assign oBit0 = Inputs_iBit[0];
+	assign oBitInternal = intBit;
+	assign oBitState = State_bit;
+	assign oBitStateInternal = State_bitInternal;
+	assign oInputBoolBlock[0] = Inputs_iBoolBlock[0];
+	assign oInternalBoolBlock[0] = boolBlock[0];
+	assign oStateBitArrayBlock[0] = State_bitArrayBlock[0];
+	assign oStateBoolBlock[0] = State_boolBlock[0];
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

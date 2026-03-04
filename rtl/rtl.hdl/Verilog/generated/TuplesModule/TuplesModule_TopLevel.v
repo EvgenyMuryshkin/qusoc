@@ -38,9 +38,33 @@ module TuplesModule_TopLevel
 	wire false = 1'b0;
 	wire Inputs_Value1;
 	wire Inputs_Value2;
-	reg [1: 0] Logic;
+	wire Logic_Item1;
+	wire Logic_Item2;
+	reg TuplesModule_L16F13L21T14_same = 1'b0;
+	reg TuplesModule_L16F13L21T14_diff = 1'b0;
+	wire TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_Expr;
+	wire TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprLhs;
+	wire TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprRhs;
+	wire TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_Expr;
+	wire TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprLhs;
+	wire TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprRhs;
+	assign TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_Expr = TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprLhs == TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprRhs ? 1'b1 : 1'b0;
+	assign TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_Expr = TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprLhs != TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprRhs ? 1'b1 : 1'b0;
+	always @ (*)
+	begin
+		TuplesModule_L16F13L21T14_same = TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_Expr;
+		TuplesModule_L16F13L21T14_diff = TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_Expr;
+	end
+	assign TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprLhs = Inputs_Value1;
+	assign TuplesModule_L16F13L21T14_TuplesModule_L17F28T58_ExprRhs = Inputs_Value2;
+	assign TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprLhs = Inputs_Value1;
+	assign TuplesModule_L16F13L21T14_TuplesModule_L18F28T58_ExprRhs = Inputs_Value2;
 	assign Inputs_Value1 = Value1;
 	assign Inputs_Value2 = Value2;
+	assign Logic_Item1 = TuplesModule_L16F13L21T14_same;
+	assign Logic_Item2 = TuplesModule_L16F13L21T14_diff;
+	assign Diff = Logic_Item2;
+	assign Same = Logic_Item1;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

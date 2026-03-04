@@ -48,11 +48,125 @@ module BitArrayModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
+	wire BitArrayModule_L29F53T54_Expr = 1'b0;
+	wire [7: 0] BitArrayModule_L29F98T108_Expr = 8'b00000000;
+	wire [7: 0] BitArrayModule_L29F153T163_Expr = 8'b01000000;
+	wire BitArrayModule_L24F82T86_Expr = 1'b1;
+	wire BitArrayModule_L24F88T92_Expr = 1'b1;
+	wire BitArrayModule_L24F94T99_Expr = 1'b0;
+	wire BitArrayModule_L24F101T105_Expr = 1'b1;
+	wire BitArrayModule_L25F82T87_Expr = 1'b0;
+	wire BitArrayModule_L25F89T93_Expr = 1'b1;
+	wire BitArrayModule_L25F95T99_Expr = 1'b1;
+	wire BitArrayModule_L25F101T105_Expr = 1'b1;
+	wire [2: 0] BitArrayModule_L18F41T42_Expr = 3'b111;
+	wire [2: 0] BitArrayModule_L18F44T45_Expr = 3'b100;
+	wire [1: 0] BitArrayModule_L19F40T41_Expr = 2'b11;
+	wire [0: 0] BitArrayModule_L19F43T44_Expr = 1'b0;
+	wire [0: 0] BitArrayModule_L20F45T46_Expr = 1'b0;
+	wire [2: 0] BitArrayModule_L20F48T49_Expr = 3'b111;
+	wire [2: 0] BitArrayModule_L21F49T50_Expr = 3'b100;
+	wire [2: 0] BitArrayModule_L21F52T53_Expr = 3'b111;
+	wire [0: 0] BitArrayModule_L22F48T49_Expr = 1'b0;
+	wire [1: 0] BitArrayModule_L22F51T52_Expr = 2'b11;
+	wire [7: 0] BitArrayModule_L27F84T94_Expr = 8'b01000000;
+	wire [7: 0] BitArrayModule_L26F83T93_Expr = 8'b00000000;
 	wire [2: 0] Inputs_Bit;
 	wire [7: 0] Inputs_Value;
-	reg [7: 0] Bits;
+	wire [7: 0] Bits;
+	wire [7: 0] BitArrayModule_L29F57T109_Source;
+	wire [7: 0] BitArrayModule_L29F112T164_Source;
+	wire [7: 0] BitArrayModule_L29F39T164_TernarySignal;
+	wire [7: 0] BitArrayModule_L29F39T164_Ternary;
+	wire [3: 0] BitArrayModule_L24F41T106_Source;
+	wire [3: 0] BitArrayModule_L25F41T106_Source;
+	wire [1: 0] BitArrayModule_L23F78T87_Index;
+	wire [1: 0] BitArrayModule_L23F89T98_Index;
+	wire [3: 0] BitArrayModule_L23F37T99_Source;
+	wire [7: 0] BitArrayModule_L27F43T95_Source;
+	wire [7: 0] BitArrayModule_L26F42T94_Source;
+	wire [7: 0] BitArrayModule_L17F46T61_Expr;
+	wire [7: 0] BitArrayModule_L17F46T61_Expr_1;
+	wire BitArrayModule_L29F39T54_Expr;
+	wire signed [3: 0] BitArrayModule_L29F39T54_ExprLhs;
+	wire signed [3: 0] BitArrayModule_L29F39T54_ExprRhs;
+	assign BitArrayModule_L29F39T54_Expr = BitArrayModule_L29F39T54_ExprLhs == BitArrayModule_L29F39T54_ExprRhs ? 1'b1 : 1'b0;
+	genvar LogicalFunctionLogicalFunction1_idx;
+	generate
+		for (LogicalFunctionLogicalFunction1_idx = 7; (LogicalFunctionLogicalFunction1_idx >= 0); LogicalFunctionLogicalFunction1_idx = (LogicalFunctionLogicalFunction1_idx - 1))
+		begin : LogicalFunctionLogicalFunction1_idxReverse
+			assign BitArrayModule_L17F46T61_Expr[LogicalFunctionLogicalFunction1_idx] = BitArrayModule_L17F46T61_Expr_1[7 - LogicalFunctionLogicalFunction1_idx];
+		end
+	endgenerate
+	assign BitArrayModule_L29F39T164_TernarySignal = (BitArrayModule_L29F39T54_Expr ? BitArrayModule_L29F57T109_Source : BitArrayModule_L29F112T164_Source);
+	assign BitArrayModule_L29F39T54_ExprLhs = {
+		1'b0,
+		Inputs_Bit
+	}
+	;
+	assign BitArrayModule_L29F39T54_ExprRhs = {
+		{3{1'b0}},
+		BitArrayModule_L29F53T54_Expr
+	}
+	;
+	assign BitArrayModule_L17F46T61_Expr_1 = Bits;
 	assign Inputs_Bit = Bit;
 	assign Inputs_Value = Value;
+	assign Bits = Inputs_Value;
+	assign BitArrayModule_L29F57T109_Source = BitArrayModule_L29F98T108_Expr;
+	assign BitArrayModule_L29F112T164_Source = BitArrayModule_L29F153T163_Expr;
+	assign BitArrayModule_L29F39T164_Ternary = BitArrayModule_L29F39T164_TernarySignal;
+	assign CtorMux = BitArrayModule_L29F39T164_Ternary;
+	assign Direct = Bits;
+	assign BitArrayModule_L24F41T106_Source = {
+		BitArrayModule_L24F82T86_Expr,
+		BitArrayModule_L24F88T92_Expr,
+		BitArrayModule_L24F94T99_Expr,
+		BitArrayModule_L24F101T105_Expr
+	}
+	;
+	assign FromBits1 = BitArrayModule_L24F41T106_Source;
+	assign BitArrayModule_L25F41T106_Source = {
+		BitArrayModule_L25F82T87_Expr,
+		BitArrayModule_L25F89T93_Expr,
+		BitArrayModule_L25F95T99_Expr,
+		BitArrayModule_L25F101T105_Expr
+	}
+	;
+	assign FromBits2 = BitArrayModule_L25F41T106_Source;
+	assign High = Bits[7:4];
+	assign Low = Bits[3:0];
+	assign BitArrayModule_L23F78T87_Index = Bits[6:5];
+	assign BitArrayModule_L23F89T98_Index[0] = Bits[1];
+	assign BitArrayModule_L23F89T98_Index[1] = Bits[0];
+	assign BitArrayModule_L23F37T99_Source = {
+		BitArrayModule_L23F78T87_Index,
+		BitArrayModule_L23F89T98_Index
+	}
+	;
+	assign Picks = BitArrayModule_L23F37T99_Source;
+	assign Reversed[0] = Bits[7];
+	assign Reversed[1] = Bits[6];
+	assign Reversed[2] = Bits[5];
+	assign Reversed[3] = Bits[4];
+	assign Reversed[4] = Bits[3];
+	assign Reversed[5] = Bits[2];
+	assign Reversed[6] = Bits[1];
+	assign Reversed[7] = Bits[0];
+	assign ReversedByCall = BitArrayModule_L17F46T61_Expr;
+	assign ReversedHigh[0] = Bits[7];
+	assign ReversedHigh[1] = Bits[6];
+	assign ReversedHigh[2] = Bits[5];
+	assign ReversedHigh[3] = Bits[4];
+	assign ReversedLow[0] = Bits[3];
+	assign ReversedLow[1] = Bits[2];
+	assign ReversedLow[2] = Bits[1];
+	assign ReversedLow[3] = Bits[0];
+	assign ValueBit = Bits[Inputs_Bit];
+	assign BitArrayModule_L27F43T95_Source = BitArrayModule_L27F84T94_Expr;
+	assign ValueString = BitArrayModule_L27F43T95_Source;
+	assign BitArrayModule_L26F42T94_Source = BitArrayModule_L26F83T93_Expr;
+	assign ZeroString = BitArrayModule_L26F42T94_Source;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

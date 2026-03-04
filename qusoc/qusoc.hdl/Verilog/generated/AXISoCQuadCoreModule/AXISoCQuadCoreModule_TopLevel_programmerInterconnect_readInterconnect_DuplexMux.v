@@ -56,6 +56,8 @@ module AXISoCQuadCoreModule_TopLevel_programmerInterconnect_readInterconnect_Dup
 	reg [52: 0] mMuxRightData;
 	wire [83 : 0] Inputs_iLeft [0 : 0];
 	wire [52 : 0] Inputs_iRight [0 : 1];
+	reg [83 : 0] oLeft [0 : 1];
+	reg [52 : 0] oRight [0 : 0];
 	reg [83 : 0] mOutLeftData [0 : 1];
 	integer mOutLeftData_i;
 	initial

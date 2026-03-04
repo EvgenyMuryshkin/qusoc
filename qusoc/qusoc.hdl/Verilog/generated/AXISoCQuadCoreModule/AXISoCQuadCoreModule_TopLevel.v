@@ -68,7 +68,7 @@ module AXISoCQuadCoreModule_TopLevel
 	wire Inputs_iRX;
 	wire Inputs_iSwitch0;
 	wire Inputs_iSwitch1;
-	reg [31: 0] extReset;
+	wire [31: 0] extReset;
 	reg [221: 0] Buttons_M2S = 222'b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
 	reg [3: 0] Buttons_Sig = 4'b0000;
 	wire [73: 0] Buttons_S2M;
@@ -151,6 +151,7 @@ module AXISoCQuadCoreModule_TopLevel
 	wire [73: 0] ws2812_oS2M;
 	wire ws2812_oTX;
 	wire ws2812_oTXBit;
+	wire [31: 0] AXISoCQuadCoreModule_L151F42T78_Source;
 	wire [221: 0] Buttons_M2S_Buttons_M2S_HardLink;
 	wire [3: 0] Buttons_Sig_Buttons_Sig_HardLink;
 	wire [0: 0] Buttons_outBuffer0_Buttons_outBuffer_HardLink;
@@ -311,6 +312,7 @@ module AXISoCQuadCoreModule_TopLevel
 	wire [73: 0] ws2812_oS2M_ws2812_oS2M_HardLink;
 	wire ws2812_oTX_ws2812_oTX_HardLink;
 	wire ws2812_oTXBit_ws2812_oTXBit_HardLink;
+	reg oPWM [0 : 7];
 	wire [0 : 0] Buttons_outBuffer [0 : 3];
 	wire [7 : 0] cpu0AutoDecrementRegister_outData [0 : 3];
 	reg [73 : 0] cpu0Core_iS2M [0 : 3];
@@ -722,6 +724,22 @@ module AXISoCQuadCoreModule_TopLevel
 	assign Inputs_iRX = iRX;
 	assign Inputs_iSwitch0 = iSwitch0;
 	assign Inputs_iSwitch1 = iSwitch1;
+	assign AXISoCQuadCoreModule_L151F42T78_Source = {
+		CPUExtReset_outData[3],
+		CPUExtReset_outData[2],
+		CPUExtReset_outData[1],
+		CPUExtReset_outData[0]
+	}
+	;
+	assign extReset = AXISoCQuadCoreModule_L151F42T78_Source;
+	assign oPWM7 = oPWM[7];
+	assign oPWM6 = oPWM[6];
+	assign oPWM5 = oPWM[5];
+	assign oPWM4 = oPWM[4];
+	assign oPWM3 = oPWM[3];
+	assign oPWM2 = oPWM[2];
+	assign oPWM1 = oPWM[1];
+	assign oPWM0 = oPWM[0];
 	assign Buttons_M2S_Buttons_M2S_HardLink = Buttons_M2S;
 	assign Buttons_Sig_Buttons_Sig_HardLink = Buttons_Sig;
 	assign Buttons_outBuffer[0] = Buttons_outBuffer0_Buttons_outBuffer_HardLink;

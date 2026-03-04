@@ -1,47 +1,5 @@
 No reads:
 	addrBits
-	defaultValue
 	depth
-	Inputs_iRE
-	Inputs_iWData
-	Inputs_iWE
-	isEmptyNext
-	isFullNext
-	isWrapAroundNext
-	rAddr
-	rAddrNext
-	re
-	State_buffer
-	State_isEmpty
-	State_isFull
 	State_isWrapAround
-	State_rACK
-	State_rAddr
-	State_rData
-	State_rValid
-	State_wACK
-	State_wAddr
-	wAddr
-	wAddrNext
-	we
 	width
-No writes:
-	isEmptyNext
-	isFullNext
-	isWrapAroundNext
-	NextState_buffer
-	NextState_isEmpty
-	NextState_isFull
-	NextState_isWrapAround
-	NextState_rACK
-	NextState_rAddr
-	NextState_rData
-	NextState_rValid
-	NextState_wACK
-	NextState_wAddr
-	rAddr
-	rAddrNext
-	re
-	wAddr
-	wAddrNext
-	we

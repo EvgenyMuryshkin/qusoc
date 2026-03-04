@@ -1,6 +1,5 @@
 No reads:
-	Inputs_Addr
-	Inputs_Value
-	pixelAddress
-No writes:
-	pixelAddress
+	BitsMuxModule_L13F49T50_Expr
+	BitsMuxModule_L13F52T53_Expr
+	BitsMuxModule_L14F95T96_Expr
+	BitsMuxModule_L14F98T99_Expr

@@ -1,6 +1,0 @@
-No reads:
-	Inputs_Value1
-	Inputs_Value2
-	Logic
-No writes:
-	Logic

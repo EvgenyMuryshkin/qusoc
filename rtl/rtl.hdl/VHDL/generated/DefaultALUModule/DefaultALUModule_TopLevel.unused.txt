@@ -1,9 +1,0 @@
-No reads:
-	Inputs_Op1
-	Inputs_Op2
-	Inputs_SHAMT
-	internalAdd
-	internalSub
-No writes:
-	internalAdd
-	internalSub

@@ -42,11 +42,21 @@ architecture rtl of ModuleSignalsMuxModule_TopLevel_AndGate is
 	-- false is a reserved name, declaration skipped
 	signal Inputs_I1 : std_logic := '0';
 	signal Inputs_I2 : std_logic := '0';
+	signal AndGateModule_L7F26T48_Expr : std_logic := '0';
+	signal AndGateModule_L7F26T48_Expr_1 : std_logic := '0';
+	signal AndGateModule_L7F26T48_Expr_2 : std_logic := '0';
 begin
-	process (I1, I2)
+	process (AndGateModule_L7F26T48_Expr_1, AndGateModule_L7F26T48_Expr_2)
 	begin
+		AndGateModule_L7F26T48_Expr <= AndGateModule_L7F26T48_Expr_1 AND AndGateModule_L7F26T48_Expr_2;
+	end process;
+	process (AndGateModule_L7F26T48_Expr, I1, I2, Inputs_I1, Inputs_I2)
+	begin
+		AndGateModule_L7F26T48_Expr_1 <= Inputs_I1;
+		AndGateModule_L7F26T48_Expr_2 <= Inputs_I2;
 		Inputs_I1 <= I1;
 		Inputs_I2 <= I2;
+		O <= AndGateModule_L7F26T48_Expr;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

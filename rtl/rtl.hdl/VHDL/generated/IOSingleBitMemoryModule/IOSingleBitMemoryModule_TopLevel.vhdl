@@ -53,18 +53,27 @@ architecture rtl of IOSingleBitMemoryModule_TopLevel is
 	-- false is a reserved name, declaration skipped
 	constant State_bitArrayBlockDefault : unsigned(0 downto 0) := "0";
 	constant State_boolBlockDefault : std_logic := '0';
-	signal Inputs_iBit : unsigned(0 downto 0) := (others => '0');
-	signal NextState_bit : unsigned(0 downto 0) := (others => '0');
-	signal NextState_bitInternal : unsigned(0 downto 0) := (others => '0');
-	signal intBit : unsigned(0 downto 0) := (others => '0');
+	constant IOSingleBitMemoryModule_L28F42T43_Expr : unsigned(0 downto 0) := "0";
+	signal Inputs_iBit : unsigned(0 downto 0);
+	signal NextState_bit : unsigned(0 downto 0);
+	signal NextState_bitInternal : unsigned(0 downto 0);
+	signal intBit : unsigned(0 downto 0);
 	signal State_bit : unsigned(0 downto 0) := "0";
 	constant State_bitDefault : unsigned(0 downto 0) := "0";
 	signal State_bitInternal : unsigned(0 downto 0) := "0";
 	constant State_bitInternalDefault : unsigned(0 downto 0) := "0";
 	type Inputs_iBitArrayBlockArray is array (0 to 0) of unsigned (0 downto 0);
-	signal Inputs_iBitArrayBlock : Inputs_iBitArrayBlockArray := (others => (others => '0'));
+	signal Inputs_iBitArrayBlock : Inputs_iBitArrayBlockArray;
 	type Inputs_iBoolBlockArray is array (0 to 0) of std_logic;
-	signal Inputs_iBoolBlock : Inputs_iBoolBlockArray := (others => '0');
+	signal Inputs_iBoolBlock : Inputs_iBoolBlockArray;
+	type oInputBoolBlockArray is array (0 to 0) of std_logic;
+	signal oInputBoolBlock : oInputBoolBlockArray;
+	type oInternalBoolBlockArray is array (0 to 0) of std_logic;
+	signal oInternalBoolBlock : oInternalBoolBlockArray;
+	type oStateBitArrayBlockArray is array (0 to 0) of unsigned (0 downto 0);
+	signal oStateBitArrayBlock : oStateBitArrayBlockArray;
+	type oStateBoolBlockArray is array (0 to 0) of std_logic;
+	signal oStateBoolBlock : oStateBoolBlockArray;
 	type State_bitArrayBlockArray is array (0 to 0) of unsigned (0 downto 0);
 	constant State_bitArrayBlockArrayInit : State_bitArrayBlockArray := (0 => "1");
 	signal State_bitArrayBlock : State_bitArrayBlockArray := State_bitArrayBlockArrayInit;
@@ -75,9 +84,9 @@ architecture rtl of IOSingleBitMemoryModule_TopLevel is
 	type NextState_boolBlockArray is array (0 to 0) of std_logic;
 	signal NextState_boolBlock : NextState_boolBlockArray := (others => '0');
 	type bitArrayBlockArray is array (0 to 0) of unsigned (0 downto 0);
-	signal bitArrayBlock : bitArrayBlockArray := (others => (others => '0'));
+	signal bitArrayBlock : bitArrayBlockArray;
 	type boolBlockArray is array (0 to 0) of std_logic;
-	signal boolBlock : boolBlockArray := (others => '0');
+	signal boolBlock : boolBlockArray;
 begin
 	process (Clock, NextState_bit, NextState_bitInternal, Reset)
 	begin
@@ -117,11 +126,42 @@ begin
 			end if;
 		end if;
 	end process;
-	process (iBit, iBitArrayBlock0, iBoolBlock0)
+	process (bitArrayBlock, boolBlock, Inputs_iBit, intBit, State_bit, State_bitArrayBlock, State_bitInternal, State_boolBlock)
 	begin
+		for NextState_bitArrayBlock_Iterator in 0 to 0 loop
+			NextState_bitArrayBlock(NextState_bitArrayBlock_Iterator) <= State_bitArrayBlock(NextState_bitArrayBlock_Iterator);
+		end loop;
+		for NextState_boolBlock_Iterator in 0 to 0 loop
+			NextState_boolBlock(NextState_boolBlock_Iterator) <= State_boolBlock(NextState_boolBlock_Iterator);
+		end loop;
+		NextState_bit <= State_bit;
+		NextState_bitInternal <= State_bitInternal;
+		NextState_bit <= Inputs_iBit;
+		NextState_bitInternal <= intBit;
+		NextState_bitArrayBlock(0) <= bitArrayBlock(0);
+		NextState_boolBlock(0) <= boolBlock(0);
+	end process;
+	process (boolBlock, iBit, iBitArrayBlock0, iBoolBlock0, Inputs_iBit, Inputs_iBitArrayBlock, Inputs_iBoolBlock, intBit, oInputBoolBlock, oInternalBoolBlock, oStateBitArrayBlock, oStateBoolBlock, State_bit, State_bitArrayBlock, State_bitInternal, State_boolBlock)
+	begin
+		oInputBoolBlock0 <= oInputBoolBlock(0);
+		oInternalBoolBlock0 <= oInternalBoolBlock(0);
+		oStateBitArrayBlock0 <= oStateBitArrayBlock(0);
+		oStateBoolBlock0 <= oStateBoolBlock(0);
 		Inputs_iBit <= iBit;
 		Inputs_iBitArrayBlock(0) <= iBitArrayBlock0;
 		Inputs_iBoolBlock(0) <= iBoolBlock0;
+		bitArrayBlock(0) <= Inputs_iBitArrayBlock(0);
+		boolBlock(0) <= Inputs_iBoolBlock(0);
+		intBit <= Inputs_iBit;
+		oBit <= Inputs_iBit;
+		oBit0 <= Inputs_iBit(0);
+		oBitInternal <= intBit;
+		oBitState <= State_bit;
+		oBitStateInternal <= State_bitInternal;
+		oInputBoolBlock(0) <= Inputs_iBoolBlock(0);
+		oInternalBoolBlock(0) <= boolBlock(0);
+		oStateBitArrayBlock(0) <= State_bitArrayBlock(0);
+		oStateBoolBlock(0) <= State_boolBlock(0);
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

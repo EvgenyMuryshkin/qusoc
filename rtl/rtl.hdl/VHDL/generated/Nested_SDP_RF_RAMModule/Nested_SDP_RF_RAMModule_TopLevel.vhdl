@@ -44,49 +44,31 @@ architecture rtl of Nested_SDP_RF_RAMModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant State_Data_BuffDefault : unsigned(7 downto 0) := "00000000";
 	signal Inputs_ReadAddress : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_WE : std_logic := '0';
 	signal Inputs_WriteAddress : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_WriteData : unsigned(7 downto 0) := (others => '0');
-	signal NextState_Data_ReadData : unsigned(7 downto 0) := (others => '0');
-	signal State_Data_ReadData : unsigned(7 downto 0) := "00000000";
-	constant State_Data_ReadDataDefault : unsigned(7 downto 0) := "00000000";
+	signal State_Data_ReadData : unsigned(7 downto 0) := (others => '0');
 	type State_Data_BuffArray is array (0 to 255) of unsigned (7 downto 0);
 	signal State_Data_Buff : State_Data_BuffArray := (others => (others => '0'));
-	type NextState_Data_BuffArray is array (0 to 255) of unsigned (7 downto 0);
-	signal NextState_Data_Buff : NextState_Data_BuffArray := (others => (others => '0'));
 begin
-	process (Clock, NextState_Data_ReadData, Reset)
-	begin
-		if rising_edge(Clock) then
-			if Reset = '1' then
-				State_Data_ReadData <= State_Data_ReadDataDefault;
-			else
-				State_Data_ReadData <= NextState_Data_ReadData;
-			end if;
-		end if;
-	end process;
-	process (Clock, NextState_Data_Buff, Reset)
-	begin
-		if rising_edge(Clock) then
-			if Reset = '1' then
-				for State_Data_Buff_Iterator in 0 to 255 loop
-					State_Data_Buff(State_Data_Buff_Iterator) <= State_Data_BuffDefault;
-				end loop;
-			else
-				for State_Data_Buff_Iterator in 0 to 255 loop
-					State_Data_Buff(State_Data_Buff_Iterator) <= NextState_Data_Buff(State_Data_Buff_Iterator);
-				end loop;
-			end if;
-		end if;
-	end process;
-	process (ReadAddress, WE, WriteAddress, WriteData)
+	process (ReadAddress, State_Data_ReadData, WE, WriteAddress, WriteData)
 	begin
 		Inputs_ReadAddress <= ReadAddress;
 		Inputs_WE <= WE;
 		Inputs_WriteAddress <= WriteAddress;
 		Inputs_WriteData <= WriteData;
+		Data <= State_Data_ReadData;
+	end process;
+	-- inferred simple dual port RAM with read-first behaviour
+	process (Clock, Inputs_WE, Inputs_WriteAddress, Inputs_WriteData, State_Data_Buff, Inputs_ReadAddress)
+	begin
+		if rising_edge(Clock) then
+			if Inputs_WE = '1' then
+				State_Data_Buff(TO_INTEGER(Inputs_WriteAddress)) <= Inputs_WriteData;
+			end if;
+			State_Data_ReadData <= State_Data_Buff(TO_INTEGER(Inputs_ReadAddress));
+		end if;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

@@ -43,11 +43,20 @@ architecture rtl of EmitterModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_Ack : std_logic := '0';
-	signal Inputs_IsEnabled : std_logic := '0';
-	signal NextState_Data : unsigned(7 downto 0) := (others => '0');
+	constant EmitterModule_L22F9L25T10_EmitterModule_L24F34T56_Cast_Init : unsigned(7 downto 0) := "00000000";
+	constant EmitterModule_L22F9L25T10_EmitterModule_L24F54T55_Expr : unsigned(0 downto 0) := "1";
+	signal Inputs_Ack : std_logic;
+	signal Inputs_IsEnabled : std_logic;
+	signal NextState_Data : unsigned(7 downto 0);
+	signal EmitterModule_L22F9L25T10_EmitterModule_L24F34T56_Cast : unsigned(7 downto 0) := "00000000";
 	signal State_Data : unsigned(7 downto 0) := "00000000";
 	constant State_DataDefault : unsigned(7 downto 0) := "00000000";
+	signal EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr : std_logic := '0';
+	signal EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr_1 : std_logic := '0';
+	signal EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr_2 : std_logic := '0';
+	signal EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr : unsigned(8 downto 0) := "000000000";
+	signal EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_1 : signed(8 downto 0) := "000000000";
+	signal EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_2 : signed(8 downto 0) := "000000000";
 begin
 	process (Clock, NextState_Data, Reset)
 	begin
@@ -59,10 +68,38 @@ begin
 			end if;
 		end if;
 	end process;
-	process (Ack, IsEnabled)
+	process (EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr_1, EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr_2)
 	begin
+		EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr <= EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr_1 AND EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr_2;
+	end process;
+	process (EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_1, EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_2)
+	begin
+		EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr <= resize(unsigned(signed(resize(EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_1, EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_1'length + 1)) + signed(resize(EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_2, EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_2'length + 1))), EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr'length);
+	end process;
+	process (EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr, EmitterModule_L22F9L25T10_EmitterModule_L24F34T56_Cast, EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr, State_Data)
+	begin
+		NextState_Data <= State_Data;
+		EmitterModule_L22F9L25T10_EmitterModule_L24F34T56_Cast <= EmitterModule_L22F9L25T10_EmitterModule_L24F34T56_Cast_Init;
+		if EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr = '1' then
+			EmitterModule_L22F9L25T10_EmitterModule_L24F34T56_Cast <= EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr(7 downto 0);
+			NextState_Data <= EmitterModule_L22F9L25T10_EmitterModule_L24F34T56_Cast;
+		end if;
+	end process;
+	process (Ack, Inputs_Ack, Inputs_IsEnabled, IsEnabled, State_Data)
+	begin
+		EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr_1 <= Inputs_IsEnabled;
+		EmitterModule_L22F9L25T10_EmitterModule_L23F17T47_Expr_2 <= Inputs_Ack;
+		EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_1(8) <= '0';
+		EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_1(7 downto 0) <= signed(State_Data);
+		EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_2(8 downto 1) <= (
+			others => '0'
+		)
+		;
+		EmitterModule_L22F9L25T10_EmitterModule_L24F41T55_Expr_2(0) <= EmitterModule_L22F9L25T10_EmitterModule_L24F54T55_Expr(0);
 		Inputs_Ack <= Ack;
 		Inputs_IsEnabled <= IsEnabled;
+		Data <= State_Data;
+		HasData <= Inputs_IsEnabled;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

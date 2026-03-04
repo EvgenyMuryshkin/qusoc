@@ -48,63 +48,101 @@ architecture rtl of TDP_RAMModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant State_BuffDefault : unsigned(7 downto 0) := "00000000";
 	signal Inputs_Addr_A : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_Addr_B : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_WE_A : std_logic := '0';
 	signal Inputs_WE_B : std_logic := '0';
 	signal Inputs_WriteData_A : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_WriteData_B : unsigned(7 downto 0) := (others => '0');
-	signal NextState_DataA : unsigned(7 downto 0) := (others => '0');
-	signal NextState_DataB : unsigned(7 downto 0) := (others => '0');
 	signal NextState_SameAddressWrite : std_logic := '0';
-	signal State_DataA : unsigned(7 downto 0) := "00000000";
-	constant State_DataADefault : unsigned(7 downto 0) := "00000000";
-	signal State_DataB : unsigned(7 downto 0) := "00000000";
-	constant State_DataBDefault : unsigned(7 downto 0) := "00000000";
+	signal State_DataA : unsigned(7 downto 0) := (others => '0');
+	signal State_DataB : unsigned(7 downto 0) := (others => '0');
 	signal State_SameAddressWrite : std_logic := '0';
 	constant State_SameAddressWriteDefault : std_logic := '0';
+	signal TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr : std_logic := '0';
+	signal TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr_1 : std_logic := '0';
+	signal TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr_2 : std_logic := '0';
+	signal TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T129_Expr : std_logic := '0';
+	signal TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T129_Expr_1 : std_logic := '0';
+	signal TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T129_Expr_2 : std_logic := '0';
+	signal TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr : std_logic := '0';
+	signal TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr_1 : std_logic := '0';
+	signal TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr_2 : std_logic := '0';
+	signal TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_Expr : std_logic := '0';
+	signal TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_ExprLhs : signed(8 downto 0) := "000000000";
+	signal TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_ExprRhs : signed(8 downto 0) := "000000000";
 	type State_BuffArray is array (0 to 255) of unsigned (7 downto 0);
-	signal State_Buff : State_BuffArray := (others => (others => '0'));
-	type NextState_BuffArray is array (0 to 255) of unsigned (7 downto 0);
-	signal NextState_Buff : NextState_BuffArray := (others => (others => '0'));
+	shared variable State_Buff : State_BuffArray := (others => (others => '0'));
 begin
-	process (Clock, NextState_DataA, NextState_DataB, NextState_SameAddressWrite, Reset)
+	process (Clock, NextState_SameAddressWrite, Reset)
 	begin
 		if rising_edge(Clock) then
 			if Reset = '1' then
-				State_DataA <= State_DataADefault;
-				State_DataB <= State_DataBDefault;
 				State_SameAddressWrite <= State_SameAddressWriteDefault;
 			else
-				State_DataA <= NextState_DataA;
-				State_DataB <= NextState_DataB;
 				State_SameAddressWrite <= NextState_SameAddressWrite;
 			end if;
 		end if;
 	end process;
-	process (Clock, NextState_Buff, Reset)
+	TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_Expr <= '1' when (signed(resize(TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_ExprLhs, TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_ExprLhs'length + 1)) = signed(resize(TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_ExprRhs, TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_ExprRhs'length + 1))) else '0';
+	process (TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr_1, TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr_2)
 	begin
-		if rising_edge(Clock) then
-			if Reset = '1' then
-				for State_Buff_Iterator in 0 to 255 loop
-					State_Buff(State_Buff_Iterator) <= State_BuffDefault;
-				end loop;
-			else
-				for State_Buff_Iterator in 0 to 255 loop
-					State_Buff(State_Buff_Iterator) <= NextState_Buff(State_Buff_Iterator);
-				end loop;
-			end if;
-		end if;
+		TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr <= TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr_1 OR TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr_2;
 	end process;
-	process (Addr_A, Addr_B, WE_A, WE_B, WriteData_A, WriteData_B)
+	process (TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T129_Expr_1, TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T129_Expr_2)
 	begin
+		TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T129_Expr <= TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T129_Expr_1 AND TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T129_Expr_2;
+	end process;
+	process (TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr_1, TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr_2)
+	begin
+		TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr <= TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr_1 AND TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr_2;
+	end process;
+	process (State_SameAddressWrite, TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr)
+	begin
+		NextState_SameAddressWrite <= State_SameAddressWrite;
+		NextState_SameAddressWrite <= TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr;
+	end process;
+	process (Addr_A, Addr_B, Inputs_Addr_A, Inputs_Addr_B, Inputs_WE_A, Inputs_WE_B, State_DataA, State_DataB, State_SameAddressWrite, TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T129_Expr, TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr, TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_Expr, WE_A, WE_B, WriteData_A, WriteData_B)
+	begin
+		TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_ExprLhs(8) <= '0';
+		TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_ExprLhs(7 downto 0) <= signed(Inputs_Addr_A);
+		TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_ExprRhs(8) <= '0';
+		TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_ExprRhs(7 downto 0) <= signed(Inputs_Addr_B);
+		TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr_1 <= State_SameAddressWrite;
+		TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F42T130_Expr_2 <= TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T129_Expr;
+		TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T129_Expr_1 <= TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr;
+		TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T129_Expr_2 <= TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F99T129_Expr;
+		TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr_1 <= Inputs_WE_A;
+		TDP_RAMModule_L36F9L48T10_TDP_RAMModule_L37F69T95_Expr_2 <= Inputs_WE_B;
 		Inputs_Addr_A <= Addr_A;
 		Inputs_Addr_B <= Addr_B;
 		Inputs_WE_A <= WE_A;
 		Inputs_WE_B <= WE_B;
 		Inputs_WriteData_A <= WriteData_A;
 		Inputs_WriteData_B <= WriteData_B;
+		OutCorrupted <= State_SameAddressWrite;
+		OutDataA <= State_DataA;
+		OutDataB <= State_DataB;
+	end process;
+	-- Port A
+	process (Clock, Inputs_WE_A, Inputs_Addr_A)
+	begin
+		if rising_edge(Clock) then
+			if Inputs_WE_A = '1' then
+				State_Buff(TO_INTEGER(Inputs_Addr_A)) := Inputs_WriteData_A;
+			end if;
+			State_DataA <= State_Buff(TO_INTEGER(Inputs_Addr_A));
+		end if;
+	end process;
+	-- Port B
+	process (Clock, Inputs_WE_B, Inputs_Addr_B)
+	begin
+		if rising_edge(Clock) then
+			if Inputs_WE_B = '1' then
+				State_Buff(TO_INTEGER(Inputs_Addr_B)) := Inputs_WriteData_B;
+			end if;
+			State_DataB <= State_Buff(TO_INTEGER(Inputs_Addr_B));
+		end if;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

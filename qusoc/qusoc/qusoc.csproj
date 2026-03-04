@@ -4,9 +4,9 @@
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Quokka.FPGA" Version="0.1.8.264" />
+    <PackageReference Include="Quokka.FPGA" Version="0.1.8.269" />
     <PackageReference Include="Quokka.RISCV.CS2CPP" Version="1.0.0.10" />
-    <PackageReference Include="Quokka.RTL" Version="0.1.8.593" />
+    <PackageReference Include="Quokka.RTL" Version="0.1.8.620" />
     <PackageReference Include="Quokka.RISCV.Integration" Version="1.0.0.16" />
   </ItemGroup>
   <ItemGroup>

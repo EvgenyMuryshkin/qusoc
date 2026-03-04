@@ -1,20 +1,5 @@
 No reads:
-	fullDuplexMux_oLeft
 	fullDuplexMux_oMuxLeftData
 	fullDuplexMux_oMuxRightData
-	fullDuplexMux_oRight
-	Inputs_MAddr
-	Inputs_MAddrValid
-	Inputs_MArr
-	Inputs_SAddr
-	Inputs_SAddrValid
-	Inputs_SArr
 	mastersCount
 	slavesCount
-No writes:
-	fullDuplexMux_iLeft
-	fullDuplexMux_iLeftAddr
-	fullDuplexMux_iLeftAddrValid
-	fullDuplexMux_iRight
-	fullDuplexMux_iRightAddr
-	fullDuplexMux_iRightAddrValid

@@ -35,11 +35,58 @@ module OverridesComposition_TopLevel_L1Override
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
+	wire CombinationalOverridesBase_L16F50T51_Expr = 1'b1;
+	wire [1: 0] CombinationalL1Override_L16F44T45_Expr = 2'b10;
+	wire [1: 0] CombinationalL1Override_L11F44T45_Expr = 2'b10;
 	wire Inputs_InOverride;
 	wire [7: 0] Inputs_InValue;
-	reg [7: 0] InternalOffset;
+	wire [7: 0] InternalOffset;
+	wire [7: 0] CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F20T46_Cast;
+	wire [7: 0] CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F20T46_Cast;
+	wire [7: 0] CombinationalOverridesBase_L14F41T96_WhenTrue;
+	wire [7: 0] CombinationalOverridesBase_L14F41T96_WhenFalse;
+	wire [7: 0] CombinationalOverridesBase_L14F41T96_Ternary;
+	wire [9: 0] CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr;
+	wire signed [9: 0] CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr_1;
+	wire signed [9: 0] CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr_2;
+	wire signed [9: 0] CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr;
+	wire signed [9: 0] CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr_1;
+	wire signed [9: 0] CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr_2;
+	assign CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr = CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr_1 + CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr_2;
+	assign CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr = CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr_1 - CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr_2;
+	assign CombinationalOverridesBase_L14F41T96_Ternary = (Inputs_InOverride ? CombinationalOverridesBase_L14F41T96_WhenTrue : CombinationalOverridesBase_L14F41T96_WhenFalse);
+	assign CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr_1 = {
+		{2{1'b0}},
+		Inputs_InValue
+	}
+	;
+	assign CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr_2 = {
+		{8{1'b0}},
+		CombinationalL1Override_L16F44T45_Expr
+	}
+	;
+	assign CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr_1 = {
+		{2{1'b0}},
+		Inputs_InValue
+	}
+	;
+	assign CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr_2 = {
+		{8{1'b0}},
+		CombinationalL1Override_L11F44T45_Expr
+	}
+	;
 	assign Inputs_InOverride = InOverride;
 	assign Inputs_InValue = InValue;
+	assign InternalOffset = {
+		{7{1'b0}},
+		CombinationalOverridesBase_L16F50T51_Expr
+	}
+	;
+	assign CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F20T46_Cast = CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F27T45_Expr[7:0];
+	assign CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F20T46_Cast = CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F27T45_Expr[7:0];
+	assign CombinationalOverridesBase_L14F41T96_WhenTrue = CombinationalOverridesBase_L14F61T77_CombinationalL1Override_L15F9L17T10_CombinationalL1Override_L16F20T46_Cast;
+	assign CombinationalOverridesBase_L14F41T96_WhenFalse = CombinationalOverridesBase_L14F80T96_CombinationalL1Override_L10F9L12T10_CombinationalL1Override_L11F20T46_Cast;
+	assign OutValue = CombinationalOverridesBase_L14F41T96_Ternary;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

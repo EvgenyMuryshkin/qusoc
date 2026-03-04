@@ -45,18 +45,41 @@ architecture rtl of AXI4Programmer_TopLevel_uartTransmitter is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
+	constant UARTTransmitterModule_L38F44T46_Expr : unsigned(3 downto 0) := "1010";
+	constant UARTTransmitterModule_L40F50T55_Expr : std_logic := '0';
+	constant UARTTransmitterModule_L44F72T73_Expr : std_logic := '1';
+	constant UARTTransmitterModule_L45F86T90_Expr : std_logic := '1';
+	constant UARTTransmitterModule_L53F21T25_Expr : std_logic := '1';
+	constant UARTTransmitterModule_L55F21T26_Expr : std_logic := '0';
+	constant UARTTransmitterModule_L56F21T25_Expr : std_logic := '1';
+	constant UARTTransmitterModule_L58F42T46_Expr : std_logic := '1';
+	constant UARTTransmitterModule_L59F39T40_Expr : std_logic := '0';
 	signal Inputs_iCE : std_logic := '0';
 	signal Inputs_iValid : std_logic := '0';
 	signal Inputs_iValue : unsigned(7 downto 0) := (others => '0');
 	signal NextState_transmitting : std_logic := '0';
 	signal NextState_txCounter : unsigned(7 downto 0) := (others => '0');
 	signal NextState_txValue : unsigned(10 downto 0) := (others => '0');
+	signal UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L44F47T74_Cast : unsigned(7 downto 0) := (others => '0');
+	signal UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L45F45T113_Source : unsigned(10 downto 0) := (others => '0');
+	signal UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L50F13L60T14_UARTTransmitterModule_L51F37L57T18_Source : unsigned(10 downto 0) := (others => '0');
 	signal State_transmitting : std_logic := '0';
 	constant State_transmittingDefault : std_logic := '0';
 	signal State_txCounter : unsigned(7 downto 0) := "00000000";
 	constant State_txCounterDefault : unsigned(7 downto 0) := "00000000";
 	signal State_txValue : unsigned(10 downto 0) := "00000000000";
 	constant State_txValueDefault : unsigned(10 downto 0) := "01111111111";
+	signal UARTTransmitterModule_L28F47T92_Expr : std_logic := '0';
+	signal UARTTransmitterModule_L28F47T92_Expr_1 : std_logic := '0';
+	signal UARTTransmitterModule_L28F47T92_Expr_2 : std_logic := '0';
+	signal UARTTransmitterModule_L28F47T66_Expr : std_logic := '0';
+	signal UARTTransmitterModule_L28F47T66_Expr_1 : std_logic := '0';
+	signal UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L44F54T73_Expr : unsigned(9 downto 0) := "0000000000";
+	signal UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L44F54T73_Expr_1 : signed(9 downto 0) := "0000000000";
+	signal UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L44F54T73_Expr_2 : signed(9 downto 0) := "0000000000";
+	signal UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L38F25T46_Expr : std_logic := '0';
+	signal UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L38F25T46_ExprLhs : signed(8 downto 0) := "000000000";
+	signal UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L38F25T46_ExprRhs : signed(8 downto 0) := "000000000";
 begin
 	process (BoardSignals, NextState_transmitting, NextState_txCounter, NextState_txValue)
 	begin
@@ -72,11 +95,79 @@ begin
 			end if;
 		end if;
 	end process;
-	process (iCE, iValid, iValue)
+	UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L38F25T46_Expr <= '1' when (signed(resize(UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L38F25T46_ExprLhs, UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L38F25T46_ExprLhs'length + 1)) = signed(resize(UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L38F25T46_ExprRhs, UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L38F25T46_ExprRhs'length + 1))) else '0';
+	process (UARTTransmitterModule_L28F47T92_Expr_1, UARTTransmitterModule_L28F47T92_Expr_2)
 	begin
+		UARTTransmitterModule_L28F47T92_Expr <= UARTTransmitterModule_L28F47T92_Expr_1 AND UARTTransmitterModule_L28F47T92_Expr_2;
+	end process;
+	process (UARTTransmitterModule_L28F47T66_Expr_1)
+	begin
+		UARTTransmitterModule_L28F47T66_Expr <= NOT UARTTransmitterModule_L28F47T66_Expr_1;
+	end process;
+	process (UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L44F54T73_Expr_1, UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L44F54T73_Expr_2)
+	begin
+		UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L44F54T73_Expr <= resize(unsigned(signed(resize(UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L44F54T73_Expr_1, UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L44F54T73_Expr_1'length + 1)) + signed(resize(UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L44F54T73_Expr_2, UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L44F54T73_Expr_2'length + 1))), UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L44F54T73_Expr'length);
+	end process;
+	process (Inputs_iCE, Inputs_iValid, State_transmitting, State_txCounter, State_txValue, UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L38F25T46_Expr, UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L44F47T74_Cast, UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L45F45T113_Source, UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L50F13L60T14_UARTTransmitterModule_L51F37L57T18_Source)
+	begin
+		NextState_transmitting <= State_transmitting;
+		NextState_txCounter <= State_txCounter;
+		NextState_txValue <= State_txValue;
+		if State_transmitting = '1' then
+			if Inputs_iCE = '1' then
+				if UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L38F25T46_Expr = '1' then
+					NextState_transmitting <= UARTTransmitterModule_L40F50T55_Expr;
+				else
+					NextState_txCounter <= UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L44F47T74_Cast;
+					NextState_txValue <= UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L45F45T113_Source;
+				end if;
+			end if;
+		elsif Inputs_iValid = '1' then
+			NextState_txValue <= UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L50F13L60T14_UARTTransmitterModule_L51F37L57T18_Source;
+			NextState_transmitting <= UARTTransmitterModule_L58F42T46_Expr;
+			NextState_txCounter(7 downto 1) <= (
+				others => '0'
+			)
+			;
+			NextState_txCounter(0) <= UARTTransmitterModule_L59F39T40_Expr;
+		end if;
+	end process;
+	process (iCE, Inputs_iCE, Inputs_iValue, iValid, iValue, NextState_transmitting, State_transmitting, State_txCounter, State_txValue, UARTTransmitterModule_L28F47T66_Expr, UARTTransmitterModule_L28F47T92_Expr, UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L44F54T73_Expr)
+	begin
+		UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L38F25T46_ExprLhs(8) <= '0';
+		UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L38F25T46_ExprLhs(7 downto 0) <= signed(State_txCounter);
+		UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L38F25T46_ExprRhs(8 downto 4) <= (
+			others => '0'
+		)
+		;
+		UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L38F25T46_ExprRhs(3 downto 0) <= signed(UARTTransmitterModule_L38F44T46_Expr);
+		UARTTransmitterModule_L28F47T92_Expr_1 <= UARTTransmitterModule_L28F47T66_Expr;
+		UARTTransmitterModule_L28F47T92_Expr_2 <= NextState_transmitting;
+		UARTTransmitterModule_L28F47T66_Expr_1 <= State_transmitting;
+		UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L44F54T73_Expr_1(9 downto 8) <= (
+			others => '0'
+		)
+		;
+		UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L44F54T73_Expr_1(7 downto 0) <= signed(State_txCounter);
+		UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L44F54T73_Expr_2(9 downto 1) <= (
+			others => '0'
+		)
+		;
+		UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L44F54T73_Expr_2(0) <= UARTTransmitterModule_L44F72T73_Expr;
 		Inputs_iCE <= iCE;
 		Inputs_iValid <= iValid;
 		Inputs_iValue <= iValue;
+		UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L44F47T74_Cast <= UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L44F54T73_Expr(7 downto 0);
+		UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L45F45T113_Source(10) <= UARTTransmitterModule_L45F86T90_Expr;
+		UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L35F13L48T14_UARTTransmitterModule_L37F17L47T18_UARTTransmitterModule_L43F21L46T22_UARTTransmitterModule_L45F45T113_Source(9 downto 0) <= State_txValue(10 downto 1);
+		UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L50F13L60T14_UARTTransmitterModule_L51F37L57T18_Source(10) <= UARTTransmitterModule_L53F21T25_Expr;
+		UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L50F13L60T14_UARTTransmitterModule_L51F37L57T18_Source(9 downto 2) <= Inputs_iValue;
+		UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L50F13L60T14_UARTTransmitterModule_L51F37L57T18_Source(1) <= UARTTransmitterModule_L55F21T26_Expr;
+		UARTTransmitterModule_L33F9L61T10_UARTTransmitterModule_L50F13L60T14_UARTTransmitterModule_L51F37L57T18_Source(0) <= UARTTransmitterModule_L56F21T25_Expr;
+		oCE <= Inputs_iCE;
+		oTransmitting <= State_transmitting;
+		oTX <= State_txValue(0);
+		oWillStartTransmitting <= UARTTransmitterModule_L28F47T92_Expr;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

@@ -43,21 +43,32 @@ architecture rtl of SignalsMuxModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_Addr : unsigned(1 downto 0) := (others => '0');
-	signal Inputs_Sig0 : unsigned(7 downto 0) := (others => '0');
-	signal Inputs_Sig1 : unsigned(7 downto 0) := (others => '0');
-	signal Inputs_Sig2 : unsigned(7 downto 0) := (others => '0');
-	signal Inputs_Sig3 : unsigned(7 downto 0) := (others => '0');
+	signal Inputs_Addr : unsigned(1 downto 0);
+	signal Inputs_Sig0 : unsigned(7 downto 0);
+	signal Inputs_Sig1 : unsigned(7 downto 0);
+	signal Inputs_Sig2 : unsigned(7 downto 0);
+	signal Inputs_Sig3 : unsigned(7 downto 0);
 	type signalsArray is array (0 to 3) of unsigned (7 downto 0);
-	signal signals : signalsArray := (others => (others => '0'));
+	signal signals : signalsArray;
+	type SignalsMuxModule_L16F27L22T10_ArrayArray is array (0 to 3) of unsigned (7 downto 0);
+	signal SignalsMuxModule_L16F27L22T10_Array : SignalsMuxModule_L16F27L22T10_ArrayArray;
 begin
-	process (Addr, Sig0, Sig1, Sig2, Sig3)
+	process (Addr, Inputs_Sig0, Inputs_Sig1, Inputs_Sig2, Inputs_Sig3, Sig0, Sig1, Sig2, Sig3, signals, SignalsMuxModule_L16F27L22T10_Array)
 	begin
 		Inputs_Addr <= Addr;
 		Inputs_Sig0 <= Sig0;
 		Inputs_Sig1 <= Sig1;
 		Inputs_Sig2 <= Sig2;
 		Inputs_Sig3 <= Sig3;
+		SignalsMuxModule_L16F27L22T10_Array(0) <= Inputs_Sig0;
+		SignalsMuxModule_L16F27L22T10_Array(1) <= Inputs_Sig1;
+		SignalsMuxModule_L16F27L22T10_Array(2) <= Inputs_Sig2;
+		SignalsMuxModule_L16F27L22T10_Array(3) <= Inputs_Sig3;
+		signals(0) <= SignalsMuxModule_L16F27L22T10_Array(0);
+		signals(1) <= SignalsMuxModule_L16F27L22T10_Array(1);
+		signals(2) <= SignalsMuxModule_L16F27L22T10_Array(2);
+		signals(3) <= SignalsMuxModule_L16F27L22T10_Array(3);
+		Value <= signals(TO_INTEGER(Inputs_Addr));
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

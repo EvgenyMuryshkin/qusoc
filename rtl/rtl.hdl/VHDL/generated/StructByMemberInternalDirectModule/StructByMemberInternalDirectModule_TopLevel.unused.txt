@@ -1,5 +1,0 @@
-No reads:
-	Inputs_iL1
-	internalL1
-No writes:
-	internalL1

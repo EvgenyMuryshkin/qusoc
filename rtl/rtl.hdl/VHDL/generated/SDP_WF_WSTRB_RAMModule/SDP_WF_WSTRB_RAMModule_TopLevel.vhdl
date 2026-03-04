@@ -51,52 +51,32 @@ architecture rtl of SDP_WF_WSTRB_RAMModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	constant State_BuffDefault : unsigned(31 downto 0) := "00000000000000000000000000000000";
-	constant State_ReadDataDefault : unsigned(7 downto 0) := "00000000";
+	constant SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_0_w : std_logic := '0';
+	constant SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_1_w : std_logic := '1';
+	constant SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_2_w : unsigned(1 downto 0) := "10";
+	constant SDP_WF_WSTRB_RAMModule_L31F9L39T10_SDP_WF_WSTRB_RAMModule_L32F13L36T14_3_w : unsigned(1 downto 0) := "11";
 	signal Inputs_ReadAddress : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_WE : std_logic := '0';
 	signal Inputs_WriteAddress : unsigned(7 downto 0) := (others => '0');
 	signal Inputs_WSTRB : unsigned(3 downto 0) := (others => '0');
 	type Inputs_WriteDataArray is array (0 to 3) of unsigned (7 downto 0);
 	signal Inputs_WriteData : Inputs_WriteDataArray := (others => (others => '0'));
-	type State_BuffArray is array (0 to 31) of unsigned (31 downto 0);
-	signal State_Buff : State_BuffArray := (others => (others => '0'));
-	type NextState_BuffArray is array (0 to 31) of unsigned (31 downto 0);
-	signal NextState_Buff : NextState_BuffArray := (others => (others => '0'));
 	type State_ReadDataArray is array (0 to 3) of unsigned (7 downto 0);
 	signal State_ReadData : State_ReadDataArray := (others => (others => '0'));
-	type NextState_ReadDataArray is array (0 to 3) of unsigned (7 downto 0);
-	signal NextState_ReadData : NextState_ReadDataArray := (others => (others => '0'));
+	type State_Buff0Array is array (0 to 31) of unsigned (7 downto 0);
+	signal State_Buff0 : State_Buff0Array := (others => (others => '0'));
+	type State_Buff1Array is array (0 to 31) of unsigned (7 downto 0);
+	signal State_Buff1 : State_Buff1Array := (others => (others => '0'));
+	type State_Buff2Array is array (0 to 31) of unsigned (7 downto 0);
+	signal State_Buff2 : State_Buff2Array := (others => (others => '0'));
+	type State_Buff3Array is array (0 to 31) of unsigned (7 downto 0);
+	signal State_Buff3 : State_Buff3Array := (others => (others => '0'));
+	signal Inputs_ReadAddress_reg0 : unsigned(4 downto 0);
+	signal Inputs_ReadAddress_reg1 : unsigned(4 downto 0);
+	signal Inputs_ReadAddress_reg2 : unsigned(4 downto 0);
+	signal Inputs_ReadAddress_reg3 : unsigned(4 downto 0);
 begin
-	process (Clock, NextState_Buff, Reset)
-	begin
-		if rising_edge(Clock) then
-			if Reset = '1' then
-				for State_Buff_Iterator in 0 to 31 loop
-					State_Buff(State_Buff_Iterator) <= State_BuffDefault;
-				end loop;
-			else
-				for State_Buff_Iterator in 0 to 31 loop
-					State_Buff(State_Buff_Iterator) <= NextState_Buff(State_Buff_Iterator);
-				end loop;
-			end if;
-		end if;
-	end process;
-	process (Clock, NextState_ReadData, Reset)
-	begin
-		if rising_edge(Clock) then
-			if Reset = '1' then
-				for State_ReadData_Iterator in 0 to 3 loop
-					State_ReadData(State_ReadData_Iterator) <= State_ReadDataDefault;
-				end loop;
-			else
-				for State_ReadData_Iterator in 0 to 3 loop
-					State_ReadData(State_ReadData_Iterator) <= NextState_ReadData(State_ReadData_Iterator);
-				end loop;
-			end if;
-		end if;
-	end process;
-	process (ReadAddress, WE, WriteAddress, WriteData0, WriteData1, WriteData2, WriteData3, WSTRB)
+	process (ReadAddress, State_ReadData, WE, WriteAddress, WriteData0, WriteData1, WriteData2, WriteData3, WSTRB)
 	begin
 		Inputs_ReadAddress <= ReadAddress;
 		Inputs_WE <= WE;
@@ -106,6 +86,54 @@ begin
 		Inputs_WriteData(2) <= WriteData2;
 		Inputs_WriteData(3) <= WriteData3;
 		Inputs_WSTRB <= WSTRB;
+		Data0 <= State_ReadData(0);
+		Data1 <= State_ReadData(1);
+		Data2 <= State_ReadData(2);
+		Data3 <= State_ReadData(3);
+	end process;
+	-- inferred simple dual port RAM with write-first behaviour
+	process (Clock, Inputs_WSTRB(0), Inputs_WriteAddress, Inputs_WriteData, Inputs_ReadAddress_reg0, State_Buff0, Inputs_ReadAddress)
+	begin
+		if rising_edge(Clock) then
+			if Inputs_WSTRB(0) = '1' then
+				State_Buff0(TO_INTEGER(Inputs_WriteAddress)) <= Inputs_WriteData(0);
+			end if;
+			Inputs_ReadAddress_reg0 <= Inputs_ReadAddress(4 downto 0);
+		end if;
+		State_ReadData(0) <= State_Buff0(TO_INTEGER(Inputs_ReadAddress_reg0));
+	end process;
+	-- inferred simple dual port RAM with write-first behaviour
+	process (Clock, Inputs_WSTRB(1), Inputs_WriteAddress, Inputs_WriteData, Inputs_ReadAddress_reg1, State_Buff1, Inputs_ReadAddress)
+	begin
+		if rising_edge(Clock) then
+			if Inputs_WSTRB(1) = '1' then
+				State_Buff1(TO_INTEGER(Inputs_WriteAddress)) <= Inputs_WriteData(1);
+			end if;
+			Inputs_ReadAddress_reg1 <= Inputs_ReadAddress(4 downto 0);
+		end if;
+		State_ReadData(1) <= State_Buff1(TO_INTEGER(Inputs_ReadAddress_reg1));
+	end process;
+	-- inferred simple dual port RAM with write-first behaviour
+	process (Clock, Inputs_WSTRB(2), Inputs_WriteAddress, Inputs_WriteData, Inputs_ReadAddress_reg2, State_Buff2, Inputs_ReadAddress)
+	begin
+		if rising_edge(Clock) then
+			if Inputs_WSTRB(2) = '1' then
+				State_Buff2(TO_INTEGER(Inputs_WriteAddress)) <= Inputs_WriteData(2);
+			end if;
+			Inputs_ReadAddress_reg2 <= Inputs_ReadAddress(4 downto 0);
+		end if;
+		State_ReadData(2) <= State_Buff2(TO_INTEGER(Inputs_ReadAddress_reg2));
+	end process;
+	-- inferred simple dual port RAM with write-first behaviour
+	process (Clock, Inputs_WSTRB(3), Inputs_WriteAddress, Inputs_WriteData, Inputs_ReadAddress_reg3, State_Buff3, Inputs_ReadAddress)
+	begin
+		if rising_edge(Clock) then
+			if Inputs_WSTRB(3) = '1' then
+				State_Buff3(TO_INTEGER(Inputs_WriteAddress)) <= Inputs_WriteData(3);
+			end if;
+			Inputs_ReadAddress_reg3 <= Inputs_ReadAddress(4 downto 0);
+		end if;
+		State_ReadData(3) <= State_Buff3(TO_INTEGER(Inputs_ReadAddress_reg3));
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

@@ -61,12 +61,30 @@ architecture rtl of IOTestModule_TopLevel is
 	constant State_ArrayDefault : unsigned(7 downto 0) := "00000000";
 	constant State_IteratorArrayDefault : unsigned(7 downto 0) := "00000000";
 	constant size : unsigned(1 downto 0) := "10";
-	signal Inputs_InFlag : std_logic := '0';
-	signal NextState_Flag : std_logic := '0';
+	constant IOTestModule_L73F9L81T10_IOTestModule_L79F13L80T68_0_idx : std_logic := '0';
+	constant IOTestModule_L73F9L81T10_IOTestModule_L79F13L80T68_1_idx : std_logic := '1';
+	signal Inputs_InFlag : std_logic;
+	signal NextState_Flag : std_logic;
+	signal IOTestModule_L52F52L61T10_Instance_Flag : std_logic;
+	signal IOTestModule_L52F52L61T10_Instance_Nested_Flag : std_logic;
+	signal IOTestModule_L56F22L60T14_Instance_Flag : std_logic;
+	signal IOTestModule_L62F64L66T10_Instance_Flag : std_logic;
 	signal State_Flag : std_logic := '0';
 	constant State_FlagDefault : std_logic := '0';
 	type Inputs_InArrayArray is array (0 to 1) of unsigned (7 downto 0);
-	signal Inputs_InArray : Inputs_InArrayArray := (others => (others => '0'));
+	signal Inputs_InArray : Inputs_InArrayArray;
+	type ClassOut_ArrayArray is array (0 to 1) of unsigned (7 downto 0);
+	signal ClassOut_Array : ClassOut_ArrayArray := (others => (others => '0'));
+	type ClassOut_Nested_ArrayArray is array (0 to 1) of unsigned (7 downto 0);
+	signal ClassOut_Nested_Array : ClassOut_Nested_ArrayArray := (others => (others => '0'));
+	type NestedClassOut_ArrayArray is array (0 to 1) of unsigned (7 downto 0);
+	signal NestedClassOut_Array : NestedClassOut_ArrayArray := (others => (others => '0'));
+	type OutDirectArrayArray is array (0 to 1) of unsigned (7 downto 0);
+	signal OutDirectArray : OutDirectArrayArray;
+	type OutIteratorArrayArray is array (0 to 1) of unsigned (7 downto 0);
+	signal OutIteratorArray : OutIteratorArrayArray;
+	type OutStateArrayArray is array (0 to 1) of unsigned (7 downto 0);
+	signal OutStateArray : OutStateArrayArray;
 	type State_ArrayArray is array (0 to 1) of unsigned (7 downto 0);
 	signal State_Array : State_ArrayArray := (others => (others => '0'));
 	type NextState_ArrayArray is array (0 to 1) of unsigned (7 downto 0);
@@ -75,6 +93,14 @@ architecture rtl of IOTestModule_TopLevel is
 	signal State_IteratorArray : State_IteratorArrayArray := (others => (others => '0'));
 	type NextState_IteratorArrayArray is array (0 to 1) of unsigned (7 downto 0);
 	signal NextState_IteratorArray : NextState_IteratorArrayArray := (others => (others => '0'));
+	type IOTestModule_L52F52L61T10_Instance_ArrayArray is array (0 to 1) of unsigned (7 downto 0);
+	signal IOTestModule_L52F52L61T10_Instance_Array : IOTestModule_L52F52L61T10_Instance_ArrayArray;
+	type IOTestModule_L52F52L61T10_Instance_Nested_ArrayArray is array (0 to 1) of unsigned (7 downto 0);
+	signal IOTestModule_L52F52L61T10_Instance_Nested_Array : IOTestModule_L52F52L61T10_Instance_Nested_ArrayArray;
+	type IOTestModule_L56F22L60T14_Instance_ArrayArray is array (0 to 1) of unsigned (7 downto 0);
+	signal IOTestModule_L56F22L60T14_Instance_Array : IOTestModule_L56F22L60T14_Instance_ArrayArray;
+	type IOTestModule_L62F64L66T10_Instance_ArrayArray is array (0 to 1) of unsigned (7 downto 0);
+	signal IOTestModule_L62F64L66T10_Instance_Array : IOTestModule_L62F64L66T10_Instance_ArrayArray;
 begin
 	process (Clock, NextState_Flag, Reset)
 	begin
@@ -114,11 +140,68 @@ begin
 			end if;
 		end if;
 	end process;
-	process (InArray0, InArray1, InFlag)
+	process (Inputs_InArray, Inputs_InFlag, State_Array, State_Flag, State_IteratorArray)
 	begin
+		for NextState_Array_Iterator in 0 to 1 loop
+			NextState_Array(NextState_Array_Iterator) <= State_Array(NextState_Array_Iterator);
+		end loop;
+		for NextState_IteratorArray_Iterator in 0 to 1 loop
+			NextState_IteratorArray(NextState_IteratorArray_Iterator) <= State_IteratorArray(NextState_IteratorArray_Iterator);
+		end loop;
+		NextState_Flag <= State_Flag;
+		NextState_Flag <= Inputs_InFlag;
+		if Inputs_InFlag = '1' then
+			NextState_Array(0) <= Inputs_InArray(0);
+			NextState_Array(1) <= Inputs_InArray(1);
+		end if;
+		NextState_IteratorArray(0) <= Inputs_InArray(0);
+		NextState_IteratorArray(1) <= Inputs_InArray(1);
+	end process;
+	process (ClassOut_Array, ClassOut_Nested_Array, InArray0, InArray1, InFlag, Inputs_InArray, IOTestModule_L52F52L61T10_Instance_Array, IOTestModule_L52F52L61T10_Instance_Flag, IOTestModule_L52F52L61T10_Instance_Nested_Array, IOTestModule_L52F52L61T10_Instance_Nested_Flag, IOTestModule_L56F22L60T14_Instance_Array, IOTestModule_L56F22L60T14_Instance_Flag, IOTestModule_L62F64L66T10_Instance_Array, IOTestModule_L62F64L66T10_Instance_Flag, NestedClassOut_Array, OutDirectArray, OutIteratorArray, OutStateArray, State_Array, State_Flag, State_IteratorArray)
+	begin
+		ClassOut_Array0 <= ClassOut_Array(0);
+		ClassOut_Array1 <= ClassOut_Array(1);
+		ClassOut_Nested_Array0 <= ClassOut_Nested_Array(0);
+		ClassOut_Nested_Array1 <= ClassOut_Nested_Array(1);
+		NestedClassOut_Array0 <= NestedClassOut_Array(0);
+		NestedClassOut_Array1 <= NestedClassOut_Array(1);
+		OutDirectArray0 <= OutDirectArray(0);
+		OutDirectArray1 <= OutDirectArray(1);
+		OutIteratorArray0 <= OutIteratorArray(0);
+		OutIteratorArray1 <= OutIteratorArray(1);
+		OutStateArray0 <= OutStateArray(0);
+		OutStateArray1 <= OutStateArray(1);
 		Inputs_InArray(0) <= InArray0;
 		Inputs_InArray(1) <= InArray1;
 		Inputs_InFlag <= InFlag;
+		IOTestModule_L56F22L60T14_Instance_Flag <= State_Flag;
+		IOTestModule_L56F22L60T14_Instance_Array(0) <= State_IteratorArray(0);
+		IOTestModule_L56F22L60T14_Instance_Array(1) <= State_IteratorArray(1);
+		IOTestModule_L52F52L61T10_Instance_Nested_Flag <= IOTestModule_L56F22L60T14_Instance_Flag;
+		IOTestModule_L52F52L61T10_Instance_Nested_Array(0) <= IOTestModule_L56F22L60T14_Instance_Array(0);
+		IOTestModule_L52F52L61T10_Instance_Nested_Array(1) <= IOTestModule_L56F22L60T14_Instance_Array(1);
+		IOTestModule_L52F52L61T10_Instance_Flag <= State_Flag;
+		IOTestModule_L52F52L61T10_Instance_Array(0) <= State_Array(0);
+		IOTestModule_L52F52L61T10_Instance_Array(1) <= State_Array(1);
+		ClassOut_Nested_Flag <= IOTestModule_L52F52L61T10_Instance_Nested_Flag;
+		ClassOut_Nested_Array(0) <= IOTestModule_L52F52L61T10_Instance_Nested_Array(0);
+		ClassOut_Nested_Array(1) <= IOTestModule_L52F52L61T10_Instance_Nested_Array(1);
+		ClassOut_Flag <= IOTestModule_L52F52L61T10_Instance_Flag;
+		ClassOut_Array(0) <= IOTestModule_L52F52L61T10_Instance_Array(0);
+		ClassOut_Array(1) <= IOTestModule_L52F52L61T10_Instance_Array(1);
+		IOTestModule_L62F64L66T10_Instance_Flag <= State_Flag;
+		IOTestModule_L62F64L66T10_Instance_Array(0) <= State_Array(0);
+		IOTestModule_L62F64L66T10_Instance_Array(1) <= State_Array(1);
+		NestedClassOut_Flag <= IOTestModule_L62F64L66T10_Instance_Flag;
+		NestedClassOut_Array(0) <= IOTestModule_L62F64L66T10_Instance_Array(0);
+		NestedClassOut_Array(1) <= IOTestModule_L62F64L66T10_Instance_Array(1);
+		OutDirectArray(0) <= Inputs_InArray(0);
+		OutDirectArray(1) <= Inputs_InArray(1);
+		OutFlag <= State_Flag;
+		OutIteratorArray(0) <= State_IteratorArray(0);
+		OutIteratorArray(1) <= State_IteratorArray(1);
+		OutStateArray(0) <= State_Array(0);
+		OutStateArray(1) <= State_Array(1);
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

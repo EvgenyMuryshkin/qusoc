@@ -66,6 +66,8 @@ module AXISoCQuadCoreModule_TopLevel_cpu0Core
 	wire [73: 0] cpu0Interconnect_oS2M0_cpu0Interconnect_oS2M_HardLink;
 	wire [73: 0] cpu0Interconnect_oS2M1_cpu0Interconnect_oS2M_HardLink;
 	wire [73 : 0] Inputs_iS2M [0 : 3];
+	reg [221 : 0] oM2S [0 : 3];
+	reg [73 : 0] oS2M [0 : 1];
 	reg [221 : 0] cpu0Interconnect_iM2S [0 : 1];
 	reg [73 : 0] cpu0Interconnect_iS2M [0 : 3];
 	wire [221 : 0] cpu0Interconnect_oM2S [0 : 3];

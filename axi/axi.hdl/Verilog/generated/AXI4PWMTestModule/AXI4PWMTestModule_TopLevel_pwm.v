@@ -51,21 +51,67 @@ module AXI4PWMTestModule_TopLevel_pwm
 	wire signed [2: 0] addressBits = 3'b011;
 	wire signed [2: 0] addressLSB = 3'b010;
 	wire signed [4: 0] pwmCount = 5'b01000;
-	wire [221: 0] Inputs_M2S;
+	wire [5: 0] AXI4PWMModule_L90F73T77_Expr = 6'b111111;
+	wire AXI4PWMModule_L72F29T33_Expr = 1'b1;
+	wire AXI4PWMModule_L74F29T33_Expr = 1'b1;
+	wire AXI4PWMModule_L76F28T32_Expr = 1'b1;
+	wire AXI4PWMModule_L73F28T32_Expr = 1'b1;
+	wire AXI4PWMModule_L75F28T32_Expr = 1'b1;
+	wire AXI4PWMModule_L79F13L87T14_0_pwm = 1'b0;
+	wire AXI4PWMModule_L83F31T35_Expr = 1'b1;
+	wire [19: 0] AXI4PWMModule_L85F39T46_Expr = 20'b11110100001001000000;
+	wire AXI4PWMModule_L79F13L87T14_1_pwm = 1'b1;
+	wire [1: 0] AXI4PWMModule_L79F13L87T14_2_pwm = 2'b10;
+	wire [1: 0] AXI4PWMModule_L79F13L87T14_3_pwm = 2'b11;
+	wire [2: 0] AXI4PWMModule_L79F13L87T14_4_pwm = 3'b100;
+	wire [2: 0] AXI4PWMModule_L79F13L87T14_5_pwm = 3'b101;
+	wire [2: 0] AXI4PWMModule_L79F13L87T14_6_pwm = 3'b110;
+	wire [2: 0] AXI4PWMModule_L79F13L87T14_7_pwm = 3'b111;
+	wire [7: 0] Inputs_M2S_R_AR_ARID;
+	wire [31: 0] Inputs_M2S_R_AR_ARADDR;
+	wire [7: 0] Inputs_M2S_R_AR_ARLEN;
+	wire [2: 0] Inputs_M2S_R_AR_ARSIZE;
+	wire [1: 0] Inputs_M2S_R_AR_ARBURST;
+	wire [1: 0] Inputs_M2S_R_AR_ARLOCK;
+	wire [3: 0] Inputs_M2S_R_AR_ARCACHE;
+	wire [2: 0] Inputs_M2S_R_AR_ARPROT;
+	wire [3: 0] Inputs_M2S_R_AR_ARQOS;
+	wire [7: 0] Inputs_M2S_R_AR_ARREGION;
+	wire [7: 0] Inputs_M2S_R_AR_ARUSER;
+	wire Inputs_M2S_R_AR_ARVALID;
+	wire Inputs_M2S_R_R_RREADY;
+	wire [7: 0] Inputs_M2S_W_AW_AWID;
+	wire [31: 0] Inputs_M2S_W_AW_AWADDR;
+	wire [7: 0] Inputs_M2S_W_AW_AWLEN;
+	wire [2: 0] Inputs_M2S_W_AW_AWSIZE;
+	wire [1: 0] Inputs_M2S_W_AW_AWBURST;
+	wire [1: 0] Inputs_M2S_W_AW_AWLOCK;
+	wire [3: 0] Inputs_M2S_W_AW_AWCACHE;
+	wire [2: 0] Inputs_M2S_W_AW_AWPROT;
+	wire [3: 0] Inputs_M2S_W_AW_AWQOS;
+	wire [7: 0] Inputs_M2S_W_AW_AWREGION;
+	wire [7: 0] Inputs_M2S_W_AW_AWUSER;
+	wire Inputs_M2S_W_AW_AWVALID;
+	wire [7: 0] Inputs_M2S_W_W_WID;
+	wire [3: 0] Inputs_M2S_W_W_WSTRB;
+	wire Inputs_M2S_W_W_WLAST;
+	wire [7: 0] Inputs_M2S_W_W_WUSER;
+	wire Inputs_M2S_W_W_WVALID;
+	wire Inputs_M2S_W_B_BREADY;
 	reg [31: 0] NextState_pwmDurationClocks;
 	reg [31: 0] NextState_waddr;
 	reg [31: 0] NextState_wdata;
-	reg pwmClocksWE;
-	reg [2: 0] pwmWADDR;
-	reg pwmWE;
-	reg [2: 0] rawAddr;
-	reg [7: 0] readAddr;
-	reg axiSlave_inARREADY = 1'b0;
-	reg axiSlave_inAWREADY = 1'b0;
-	reg axiSlave_inBVALID = 1'b0;
-	reg axiSlave_inRVALID = 1'b0;
-	reg axiSlave_inWREADY = 1'b0;
-	reg [221: 0] axiSlave_M2S = 222'b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+	wire pwmClocksWE;
+	wire [2: 0] pwmWADDR;
+	wire pwmWE;
+	wire [2: 0] rawAddr;
+	wire [7: 0] readAddr;
+	wire axiSlave_inARREADY;
+	wire axiSlave_inAWREADY;
+	wire axiSlave_inBVALID;
+	wire axiSlave_inRVALID;
+	wire axiSlave_inWREADY;
+	wire [221: 0] axiSlave_M2S;
 	wire [31: 0] axiSlave_outARADDR;
 	wire axiSlave_outARREADYConfirming;
 	wire axiSlave_outARVALID;
@@ -78,46 +124,60 @@ module AXI4PWMTestModule_TopLevel_pwm
 	wire [3: 0] axiSlave_outWSTRB;
 	wire axiSlave_outWVALID;
 	wire [73: 0] axiSlave_S2M;
-	reg pwms0_iActive = 1'b0;
-	reg [31: 0] pwms0_iDurationClocks = 32'b00000000000000000000000000000000;
-	reg [31: 0] pwms0_iOnClock = 32'b00000000000000000000000000000000;
+	wire pwms0_iActive;
+	wire [31: 0] pwms0_iDurationClocks;
+	wire [31: 0] pwms0_iOnClock;
 	wire pwms0_oCycle;
 	wire pwms0_oPWM;
-	reg pwms1_iActive = 1'b0;
-	reg [31: 0] pwms1_iDurationClocks = 32'b00000000000000000000000000000000;
-	reg [31: 0] pwms1_iOnClock = 32'b00000000000000000000000000000000;
+	wire pwms1_iActive;
+	wire [31: 0] pwms1_iDurationClocks;
+	wire [31: 0] pwms1_iOnClock;
 	wire pwms1_oCycle;
 	wire pwms1_oPWM;
-	reg pwms2_iActive = 1'b0;
-	reg [31: 0] pwms2_iDurationClocks = 32'b00000000000000000000000000000000;
-	reg [31: 0] pwms2_iOnClock = 32'b00000000000000000000000000000000;
+	wire pwms2_iActive;
+	wire [31: 0] pwms2_iDurationClocks;
+	wire [31: 0] pwms2_iOnClock;
 	wire pwms2_oCycle;
 	wire pwms2_oPWM;
-	reg pwms3_iActive = 1'b0;
-	reg [31: 0] pwms3_iDurationClocks = 32'b00000000000000000000000000000000;
-	reg [31: 0] pwms3_iOnClock = 32'b00000000000000000000000000000000;
+	wire pwms3_iActive;
+	wire [31: 0] pwms3_iDurationClocks;
+	wire [31: 0] pwms3_iOnClock;
 	wire pwms3_oCycle;
 	wire pwms3_oPWM;
-	reg pwms4_iActive = 1'b0;
-	reg [31: 0] pwms4_iDurationClocks = 32'b00000000000000000000000000000000;
-	reg [31: 0] pwms4_iOnClock = 32'b00000000000000000000000000000000;
+	wire pwms4_iActive;
+	wire [31: 0] pwms4_iDurationClocks;
+	wire [31: 0] pwms4_iOnClock;
 	wire pwms4_oCycle;
 	wire pwms4_oPWM;
-	reg pwms5_iActive = 1'b0;
-	reg [31: 0] pwms5_iDurationClocks = 32'b00000000000000000000000000000000;
-	reg [31: 0] pwms5_iOnClock = 32'b00000000000000000000000000000000;
+	wire pwms5_iActive;
+	wire [31: 0] pwms5_iDurationClocks;
+	wire [31: 0] pwms5_iOnClock;
 	wire pwms5_oCycle;
 	wire pwms5_oPWM;
-	reg pwms6_iActive = 1'b0;
-	reg [31: 0] pwms6_iDurationClocks = 32'b00000000000000000000000000000000;
-	reg [31: 0] pwms6_iOnClock = 32'b00000000000000000000000000000000;
+	wire pwms6_iActive;
+	wire [31: 0] pwms6_iDurationClocks;
+	wire [31: 0] pwms6_iOnClock;
 	wire pwms6_oCycle;
 	wire pwms6_oPWM;
-	reg pwms7_iActive = 1'b0;
-	reg [31: 0] pwms7_iDurationClocks = 32'b00000000000000000000000000000000;
-	reg [31: 0] pwms7_iOnClock = 32'b00000000000000000000000000000000;
+	wire pwms7_iActive;
+	wire [31: 0] pwms7_iDurationClocks;
+	wire [31: 0] pwms7_iOnClock;
 	wire pwms7_oCycle;
 	wire pwms7_oPWM;
+	wire [2: 0] AXI4PWMModule_L59F33T60_Index;
+	wire [7: 0] AXI4PWMModule_L58F33T66_Index;
+	wire [2: 0] AXI4PWMModule_L58F32T101_Index;
+	wire [7: 0] AXI4PWMModule_L56F33T78_Index;
+	wire [258: 0] AXI4PWMModule_L68F37L77T14_Object;
+	wire [64: 0] AXI4PWMModule_L79F13L87T14_0_AXI4PWMModule_L81F42L86T18_Object;
+	wire [64: 0] AXI4PWMModule_L79F13L87T14_1_AXI4PWMModule_L81F42L86T18_Object;
+	wire [64: 0] AXI4PWMModule_L79F13L87T14_2_AXI4PWMModule_L81F42L86T18_Object;
+	wire [64: 0] AXI4PWMModule_L79F13L87T14_3_AXI4PWMModule_L81F42L86T18_Object;
+	wire [64: 0] AXI4PWMModule_L79F13L87T14_4_AXI4PWMModule_L81F42L86T18_Object;
+	wire [64: 0] AXI4PWMModule_L79F13L87T14_5_AXI4PWMModule_L81F42L86T18_Object;
+	wire [64: 0] AXI4PWMModule_L79F13L87T14_6_AXI4PWMModule_L81F42L86T18_Object;
+	wire [64: 0] AXI4PWMModule_L79F13L87T14_7_AXI4PWMModule_L81F42L86T18_Object;
+	wire [31: 0] AXI4PWMModule_L94F9L108T10_AXI4PWMModule_L99F35T69_Source;
 	wire axiSlave_inARREADY_axiSlave_inARREADY_HardLink;
 	wire axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink;
 	wire axiSlave_inBVALID_axiSlave_inBVALID_HardLink;
@@ -190,6 +250,28 @@ module AXI4PWMTestModule_TopLevel_pwm
 	wire [31: 0] State_waddrDefault = 32'b00000000000000000000000000000000;
 	reg [31: 0] State_wdata = 32'b00000000000000000000000000000000;
 	wire [31: 0] State_wdataDefault = 32'b00000000000000000000000000000000;
+	wire AXI4PWMModule_L90F29T77_Expr;
+	wire AXI4PWMModule_L90F29T77_Expr_1;
+	wire AXI4PWMModule_L90F29T77_Expr_2;
+	wire AXI4PWMModule_L91F23T90_Expr;
+	wire AXI4PWMModule_L91F23T90_Expr_1;
+	wire AXI4PWMModule_L91F23T90_Expr_2;
+	wire AXI4PWMModule_L91F23T74_Expr;
+	wire AXI4PWMModule_L91F23T74_Expr_1;
+	wire AXI4PWMModule_L91F23T74_Expr_2;
+	wire AXI4PWMModule_L91F78T90_Expr;
+	wire AXI4PWMModule_L91F78T90_Expr_1;
+	wire [7: 0] AXI4PWMModule_L58F33T80_Expr;
+	wire [7: 0] AXI4PWMModule_L58F33T80_Expr_1;
+	wire [7: 0] AXI4PWMModule_L56F33T92_Expr;
+	wire [7: 0] AXI4PWMModule_L56F33T92_Expr_1;
+	wire AXI4PWMModule_L90F62T77_Expr;
+	wire signed [6: 0] AXI4PWMModule_L90F62T77_ExprLhs;
+	wire signed [6: 0] AXI4PWMModule_L90F62T77_ExprRhs;
+	wire AXI4PWMModule_L91F56T74_Expr;
+	wire signed [5: 0] AXI4PWMModule_L91F56T74_ExprLhs;
+	wire signed [5: 0] AXI4PWMModule_L91F56T74_ExprRhs;
+	wire [7 : 0] Inputs_M2S_W_W_WDATA [0 : 3];
 	integer State_pwm_Iterator;
 	reg [31 : 0] State_pwm [0 : 7];
 	initial
@@ -204,8 +286,9 @@ module AXI4PWMTestModule_TopLevel_pwm
 		for (NextState_pwm_Iterator = 0; NextState_pwm_Iterator < 8; NextState_pwm_Iterator = NextState_pwm_Iterator + 1)
 			NextState_pwm[NextState_pwm_Iterator] = 0;
 	end
-	reg [7 : 0] axiSlave_inRDATA [0 : 3];
+	wire [7 : 0] axiSlave_inRDATA [0 : 3];
 	wire [7 : 0] axiSlave_outWDATA [0 : 3];
+	wire AXI4PWMModule_L62F31T65_Enumerable [0 : 7];
 	always @ (posedge BoardSignals_Clock)
 	begin
 		if ((BoardSignals_Reset == 1))
@@ -238,6 +321,30 @@ module AXI4PWMTestModule_TopLevel_pwm
 			end
 		end
 	end
+	assign AXI4PWMModule_L90F62T77_Expr = AXI4PWMModule_L90F62T77_ExprLhs == AXI4PWMModule_L90F62T77_ExprRhs ? 1'b1 : 1'b0;
+	assign AXI4PWMModule_L91F56T74_Expr = AXI4PWMModule_L91F56T74_ExprLhs < AXI4PWMModule_L91F56T74_ExprRhs ? 1'b1 : 1'b0;
+	assign AXI4PWMModule_L90F29T77_Expr = AXI4PWMModule_L90F29T77_Expr_1 & AXI4PWMModule_L90F29T77_Expr_2;
+	assign AXI4PWMModule_L91F23T90_Expr = AXI4PWMModule_L91F23T90_Expr_1 & AXI4PWMModule_L91F23T90_Expr_2;
+	assign AXI4PWMModule_L91F23T74_Expr = AXI4PWMModule_L91F23T74_Expr_1 & AXI4PWMModule_L91F23T74_Expr_2;
+	assign AXI4PWMModule_L91F78T90_Expr = ~AXI4PWMModule_L91F78T90_Expr_1;
+	// Output: AXI4PWMModule_L58F33T80_Expr, Width: 8, ShiftBy: 2, Sources: 1
+	assign AXI4PWMModule_L58F33T80_Expr[0] = AXI4PWMModule_L58F33T80_Expr_1[2];
+	assign AXI4PWMModule_L58F33T80_Expr[1] = AXI4PWMModule_L58F33T80_Expr_1[3];
+	assign AXI4PWMModule_L58F33T80_Expr[2] = AXI4PWMModule_L58F33T80_Expr_1[4];
+	assign AXI4PWMModule_L58F33T80_Expr[3] = AXI4PWMModule_L58F33T80_Expr_1[5];
+	assign AXI4PWMModule_L58F33T80_Expr[4] = AXI4PWMModule_L58F33T80_Expr_1[6];
+	assign AXI4PWMModule_L58F33T80_Expr[5] = AXI4PWMModule_L58F33T80_Expr_1[7];
+	assign AXI4PWMModule_L58F33T80_Expr[6] = 0;
+	assign AXI4PWMModule_L58F33T80_Expr[7] = 0;
+	// Output: AXI4PWMModule_L56F33T92_Expr, Width: 8, ShiftBy: 2, Sources: 1
+	assign AXI4PWMModule_L56F33T92_Expr[0] = AXI4PWMModule_L56F33T92_Expr_1[2];
+	assign AXI4PWMModule_L56F33T92_Expr[1] = AXI4PWMModule_L56F33T92_Expr_1[3];
+	assign AXI4PWMModule_L56F33T92_Expr[2] = AXI4PWMModule_L56F33T92_Expr_1[4];
+	assign AXI4PWMModule_L56F33T92_Expr[3] = AXI4PWMModule_L56F33T92_Expr_1[5];
+	assign AXI4PWMModule_L56F33T92_Expr[4] = AXI4PWMModule_L56F33T92_Expr_1[6];
+	assign AXI4PWMModule_L56F33T92_Expr[5] = AXI4PWMModule_L56F33T92_Expr_1[7];
+	assign AXI4PWMModule_L56F33T92_Expr[6] = 0;
+	assign AXI4PWMModule_L56F33T92_Expr[7] = 0;
 	AXI4PWMTestModule_TopLevel_pwm_axiSlave
 	AXI4PWMTestModule_TopLevel_pwm_axiSlave
 	(
@@ -403,7 +510,264 @@ module AXI4PWMTestModule_TopLevel_pwm
 		.oCycle (pwms7_oCycle_pwms7_oCycle_HardLink),
 		.oPWM (pwms7_oPWM_pwms7_oPWM_HardLink)
 	);
-	assign Inputs_M2S = M2S;
+	always @ (*)
+	begin
+		NextState_pwm_Iterator = 0;
+		for (NextState_pwm_Iterator = 0; (NextState_pwm_Iterator < 8); NextState_pwm_Iterator = (NextState_pwm_Iterator + 1))
+		begin
+			NextState_pwm[NextState_pwm_Iterator] = State_pwm[NextState_pwm_Iterator];
+		end
+		NextState_pwmDurationClocks = State_pwmDurationClocks;
+		NextState_waddr = State_waddr;
+		NextState_wdata = State_wdata;
+		if ((axiSlave_outAWREADYConfirming == 1))
+		begin
+			NextState_waddr = axiSlave_outAWADDR;
+		end
+		if ((axiSlave_outWREADYConfirming == 1))
+		begin
+			NextState_wdata = AXI4PWMModule_L94F9L108T10_AXI4PWMModule_L99F35T69_Source;
+		end
+		if ((pwmClocksWE == 1))
+		begin
+			NextState_pwmDurationClocks = State_wdata;
+		end
+		if ((pwmWE == 1))
+		begin
+			NextState_pwm[pwmWADDR] = State_wdata;
+		end
+	end
+	assign AXI4PWMModule_L90F62T77_ExprLhs = {
+		{4{1'b0}},
+		rawAddr
+	}
+	;
+	assign AXI4PWMModule_L90F62T77_ExprRhs = {
+		1'b0,
+		AXI4PWMModule_L90F73T77_Expr
+	}
+	;
+	assign AXI4PWMModule_L91F56T74_ExprLhs = {
+		{3{1'b0}},
+		rawAddr
+	}
+	;
+	assign AXI4PWMModule_L91F56T74_ExprRhs = {
+		pwmCount[4],
+		pwmCount
+	}
+	;
+	assign AXI4PWMModule_L90F29T77_Expr_1 = axiSlave_outWriteTXCompleting;
+	assign AXI4PWMModule_L90F29T77_Expr_2 = AXI4PWMModule_L90F62T77_Expr;
+	assign AXI4PWMModule_L91F23T90_Expr_1 = AXI4PWMModule_L91F23T74_Expr;
+	assign AXI4PWMModule_L91F23T90_Expr_2 = AXI4PWMModule_L91F78T90_Expr;
+	assign AXI4PWMModule_L91F23T74_Expr_1 = axiSlave_outWriteTXCompleting;
+	assign AXI4PWMModule_L91F23T74_Expr_2 = AXI4PWMModule_L91F56T74_Expr;
+	assign AXI4PWMModule_L91F78T90_Expr_1 = pwmClocksWE;
+	assign AXI4PWMModule_L58F33T80_Expr_1 = AXI4PWMModule_L58F33T66_Index;
+	assign AXI4PWMModule_L56F33T92_Expr_1 = AXI4PWMModule_L56F33T78_Index;
+	assign Inputs_M2S_W_B_BREADY = M2S[221];
+	assign Inputs_M2S_W_W_WVALID = M2S[220];
+	assign Inputs_M2S_W_W_WUSER = M2S[219:212];
+	assign Inputs_M2S_W_W_WLAST = M2S[211];
+	assign Inputs_M2S_W_W_WSTRB = M2S[210:207];
+	assign Inputs_M2S_W_W_WDATA[3] = M2S[206:199];
+	assign Inputs_M2S_W_W_WDATA[2] = M2S[198:191];
+	assign Inputs_M2S_W_W_WDATA[1] = M2S[190:183];
+	assign Inputs_M2S_W_W_WDATA[0] = M2S[182:175];
+	assign Inputs_M2S_W_W_WID = M2S[174:167];
+	assign Inputs_M2S_W_AW_AWVALID = M2S[166];
+	assign Inputs_M2S_W_AW_AWUSER = M2S[165:158];
+	assign Inputs_M2S_W_AW_AWREGION = M2S[157:150];
+	assign Inputs_M2S_W_AW_AWQOS = M2S[149:146];
+	assign Inputs_M2S_W_AW_AWPROT = M2S[145:143];
+	assign Inputs_M2S_W_AW_AWCACHE = M2S[142:139];
+	assign Inputs_M2S_W_AW_AWLOCK = M2S[138:137];
+	assign Inputs_M2S_W_AW_AWBURST = M2S[136:135];
+	assign Inputs_M2S_W_AW_AWSIZE = M2S[134:132];
+	assign Inputs_M2S_W_AW_AWLEN = M2S[131:124];
+	assign Inputs_M2S_W_AW_AWADDR = M2S[123:92];
+	assign Inputs_M2S_W_AW_AWID = M2S[91:84];
+	assign Inputs_M2S_R_R_RREADY = M2S[83];
+	assign Inputs_M2S_R_AR_ARVALID = M2S[82];
+	assign Inputs_M2S_R_AR_ARUSER = M2S[81:74];
+	assign Inputs_M2S_R_AR_ARREGION = M2S[73:66];
+	assign Inputs_M2S_R_AR_ARQOS = M2S[65:62];
+	assign Inputs_M2S_R_AR_ARPROT = M2S[61:59];
+	assign Inputs_M2S_R_AR_ARCACHE = M2S[58:55];
+	assign Inputs_M2S_R_AR_ARLOCK = M2S[54:53];
+	assign Inputs_M2S_R_AR_ARBURST = M2S[52:51];
+	assign Inputs_M2S_R_AR_ARSIZE = M2S[50:48];
+	assign Inputs_M2S_R_AR_ARLEN = M2S[47:40];
+	assign Inputs_M2S_R_AR_ARADDR = M2S[39:8];
+	assign Inputs_M2S_R_AR_ARID = M2S[7:0];
+	assign pwmClocksWE = AXI4PWMModule_L90F29T77_Expr;
+	assign AXI4PWMModule_L59F33T60_Index = rawAddr[2:0];
+	assign pwmWADDR = AXI4PWMModule_L59F33T60_Index;
+	assign pwmWE = AXI4PWMModule_L91F23T90_Expr;
+	assign AXI4PWMModule_L58F33T66_Index = State_waddr[7:0];
+	assign AXI4PWMModule_L58F32T101_Index = AXI4PWMModule_L58F33T80_Expr[2:0];
+	assign rawAddr = AXI4PWMModule_L58F32T101_Index;
+	assign AXI4PWMModule_L56F33T78_Index = Inputs_M2S_R_AR_ARADDR[7:0];
+	assign readAddr = AXI4PWMModule_L56F33T92_Expr;
+	assign AXI4PWMModule_L68F37L77T14_Object[0] = AXI4PWMModule_L72F29T33_Expr;
+	assign AXI4PWMModule_L68F37L77T14_Object[1] = AXI4PWMModule_L74F29T33_Expr;
+	assign AXI4PWMModule_L68F37L77T14_Object[2] = AXI4PWMModule_L76F28T32_Expr;
+	assign AXI4PWMModule_L68F37L77T14_Object[34:3] = State_pwm[readAddr];
+	assign AXI4PWMModule_L68F37L77T14_Object[35] = AXI4PWMModule_L73F28T32_Expr;
+	assign AXI4PWMModule_L68F37L77T14_Object[36] = AXI4PWMModule_L75F28T32_Expr;
+	assign AXI4PWMModule_L68F37L77T14_Object[44:37] = Inputs_M2S_R_AR_ARID;
+	assign AXI4PWMModule_L68F37L77T14_Object[76:45] = Inputs_M2S_R_AR_ARADDR;
+	assign AXI4PWMModule_L68F37L77T14_Object[84:77] = Inputs_M2S_R_AR_ARLEN;
+	assign AXI4PWMModule_L68F37L77T14_Object[87:85] = Inputs_M2S_R_AR_ARSIZE;
+	assign AXI4PWMModule_L68F37L77T14_Object[89:88] = Inputs_M2S_R_AR_ARBURST;
+	assign AXI4PWMModule_L68F37L77T14_Object[91:90] = Inputs_M2S_R_AR_ARLOCK;
+	assign AXI4PWMModule_L68F37L77T14_Object[95:92] = Inputs_M2S_R_AR_ARCACHE;
+	assign AXI4PWMModule_L68F37L77T14_Object[98:96] = Inputs_M2S_R_AR_ARPROT;
+	assign AXI4PWMModule_L68F37L77T14_Object[102:99] = Inputs_M2S_R_AR_ARQOS;
+	assign AXI4PWMModule_L68F37L77T14_Object[110:103] = Inputs_M2S_R_AR_ARREGION;
+	assign AXI4PWMModule_L68F37L77T14_Object[118:111] = Inputs_M2S_R_AR_ARUSER;
+	assign AXI4PWMModule_L68F37L77T14_Object[119] = Inputs_M2S_R_AR_ARVALID;
+	assign AXI4PWMModule_L68F37L77T14_Object[120] = Inputs_M2S_R_R_RREADY;
+	assign AXI4PWMModule_L68F37L77T14_Object[128:121] = Inputs_M2S_W_AW_AWID;
+	assign AXI4PWMModule_L68F37L77T14_Object[160:129] = Inputs_M2S_W_AW_AWADDR;
+	assign AXI4PWMModule_L68F37L77T14_Object[168:161] = Inputs_M2S_W_AW_AWLEN;
+	assign AXI4PWMModule_L68F37L77T14_Object[171:169] = Inputs_M2S_W_AW_AWSIZE;
+	assign AXI4PWMModule_L68F37L77T14_Object[173:172] = Inputs_M2S_W_AW_AWBURST;
+	assign AXI4PWMModule_L68F37L77T14_Object[175:174] = Inputs_M2S_W_AW_AWLOCK;
+	assign AXI4PWMModule_L68F37L77T14_Object[179:176] = Inputs_M2S_W_AW_AWCACHE;
+	assign AXI4PWMModule_L68F37L77T14_Object[182:180] = Inputs_M2S_W_AW_AWPROT;
+	assign AXI4PWMModule_L68F37L77T14_Object[186:183] = Inputs_M2S_W_AW_AWQOS;
+	assign AXI4PWMModule_L68F37L77T14_Object[194:187] = Inputs_M2S_W_AW_AWREGION;
+	assign AXI4PWMModule_L68F37L77T14_Object[202:195] = Inputs_M2S_W_AW_AWUSER;
+	assign AXI4PWMModule_L68F37L77T14_Object[203] = Inputs_M2S_W_AW_AWVALID;
+	assign AXI4PWMModule_L68F37L77T14_Object[211:204] = Inputs_M2S_W_W_WID;
+	assign AXI4PWMModule_L68F37L77T14_Object[243:212] = {
+		Inputs_M2S_W_W_WDATA[3],
+		Inputs_M2S_W_W_WDATA[2],
+		Inputs_M2S_W_W_WDATA[1],
+		Inputs_M2S_W_W_WDATA[0]
+	}
+	;
+	assign AXI4PWMModule_L68F37L77T14_Object[247:244] = Inputs_M2S_W_W_WSTRB;
+	assign AXI4PWMModule_L68F37L77T14_Object[248] = Inputs_M2S_W_W_WLAST;
+	assign AXI4PWMModule_L68F37L77T14_Object[256:249] = Inputs_M2S_W_W_WUSER;
+	assign AXI4PWMModule_L68F37L77T14_Object[257] = Inputs_M2S_W_W_WVALID;
+	assign AXI4PWMModule_L68F37L77T14_Object[258] = Inputs_M2S_W_B_BREADY;
+	assign axiSlave_M2S = AXI4PWMModule_L68F37L77T14_Object[258:37];
+	assign axiSlave_inWREADY = AXI4PWMModule_L68F37L77T14_Object[36];
+	assign axiSlave_inRVALID = AXI4PWMModule_L68F37L77T14_Object[35];
+	assign axiSlave_inRDATA[3] = AXI4PWMModule_L68F37L77T14_Object[34:27];
+	assign axiSlave_inRDATA[2] = AXI4PWMModule_L68F37L77T14_Object[26:19];
+	assign axiSlave_inRDATA[1] = AXI4PWMModule_L68F37L77T14_Object[18:11];
+	assign axiSlave_inRDATA[0] = AXI4PWMModule_L68F37L77T14_Object[10:3];
+	assign axiSlave_inBVALID = AXI4PWMModule_L68F37L77T14_Object[2];
+	assign axiSlave_inAWREADY = AXI4PWMModule_L68F37L77T14_Object[1];
+	assign axiSlave_inARREADY = AXI4PWMModule_L68F37L77T14_Object[0];
+	assign AXI4PWMModule_L79F13L87T14_0_AXI4PWMModule_L81F42L86T18_Object[0] = AXI4PWMModule_L83F31T35_Expr;
+	assign AXI4PWMModule_L79F13L87T14_0_AXI4PWMModule_L81F42L86T18_Object[32:1] = {
+		{12{1'b0}},
+		AXI4PWMModule_L85F39T46_Expr
+	}
+	;
+	assign AXI4PWMModule_L79F13L87T14_0_AXI4PWMModule_L81F42L86T18_Object[64:33] = State_pwm[0];
+	assign pwms0_iOnClock = AXI4PWMModule_L79F13L87T14_0_AXI4PWMModule_L81F42L86T18_Object[64:33];
+	assign pwms0_iDurationClocks = AXI4PWMModule_L79F13L87T14_0_AXI4PWMModule_L81F42L86T18_Object[32:1];
+	assign pwms0_iActive = AXI4PWMModule_L79F13L87T14_0_AXI4PWMModule_L81F42L86T18_Object[0];
+	assign AXI4PWMModule_L79F13L87T14_1_AXI4PWMModule_L81F42L86T18_Object[0] = AXI4PWMModule_L83F31T35_Expr;
+	assign AXI4PWMModule_L79F13L87T14_1_AXI4PWMModule_L81F42L86T18_Object[32:1] = {
+		{12{1'b0}},
+		AXI4PWMModule_L85F39T46_Expr
+	}
+	;
+	assign AXI4PWMModule_L79F13L87T14_1_AXI4PWMModule_L81F42L86T18_Object[64:33] = State_pwm[1];
+	assign pwms1_iOnClock = AXI4PWMModule_L79F13L87T14_1_AXI4PWMModule_L81F42L86T18_Object[64:33];
+	assign pwms1_iDurationClocks = AXI4PWMModule_L79F13L87T14_1_AXI4PWMModule_L81F42L86T18_Object[32:1];
+	assign pwms1_iActive = AXI4PWMModule_L79F13L87T14_1_AXI4PWMModule_L81F42L86T18_Object[0];
+	assign AXI4PWMModule_L79F13L87T14_2_AXI4PWMModule_L81F42L86T18_Object[0] = AXI4PWMModule_L83F31T35_Expr;
+	assign AXI4PWMModule_L79F13L87T14_2_AXI4PWMModule_L81F42L86T18_Object[32:1] = {
+		{12{1'b0}},
+		AXI4PWMModule_L85F39T46_Expr
+	}
+	;
+	assign AXI4PWMModule_L79F13L87T14_2_AXI4PWMModule_L81F42L86T18_Object[64:33] = State_pwm[2];
+	assign pwms2_iOnClock = AXI4PWMModule_L79F13L87T14_2_AXI4PWMModule_L81F42L86T18_Object[64:33];
+	assign pwms2_iDurationClocks = AXI4PWMModule_L79F13L87T14_2_AXI4PWMModule_L81F42L86T18_Object[32:1];
+	assign pwms2_iActive = AXI4PWMModule_L79F13L87T14_2_AXI4PWMModule_L81F42L86T18_Object[0];
+	assign AXI4PWMModule_L79F13L87T14_3_AXI4PWMModule_L81F42L86T18_Object[0] = AXI4PWMModule_L83F31T35_Expr;
+	assign AXI4PWMModule_L79F13L87T14_3_AXI4PWMModule_L81F42L86T18_Object[32:1] = {
+		{12{1'b0}},
+		AXI4PWMModule_L85F39T46_Expr
+	}
+	;
+	assign AXI4PWMModule_L79F13L87T14_3_AXI4PWMModule_L81F42L86T18_Object[64:33] = State_pwm[3];
+	assign pwms3_iOnClock = AXI4PWMModule_L79F13L87T14_3_AXI4PWMModule_L81F42L86T18_Object[64:33];
+	assign pwms3_iDurationClocks = AXI4PWMModule_L79F13L87T14_3_AXI4PWMModule_L81F42L86T18_Object[32:1];
+	assign pwms3_iActive = AXI4PWMModule_L79F13L87T14_3_AXI4PWMModule_L81F42L86T18_Object[0];
+	assign AXI4PWMModule_L79F13L87T14_4_AXI4PWMModule_L81F42L86T18_Object[0] = AXI4PWMModule_L83F31T35_Expr;
+	assign AXI4PWMModule_L79F13L87T14_4_AXI4PWMModule_L81F42L86T18_Object[32:1] = {
+		{12{1'b0}},
+		AXI4PWMModule_L85F39T46_Expr
+	}
+	;
+	assign AXI4PWMModule_L79F13L87T14_4_AXI4PWMModule_L81F42L86T18_Object[64:33] = State_pwm[4];
+	assign pwms4_iOnClock = AXI4PWMModule_L79F13L87T14_4_AXI4PWMModule_L81F42L86T18_Object[64:33];
+	assign pwms4_iDurationClocks = AXI4PWMModule_L79F13L87T14_4_AXI4PWMModule_L81F42L86T18_Object[32:1];
+	assign pwms4_iActive = AXI4PWMModule_L79F13L87T14_4_AXI4PWMModule_L81F42L86T18_Object[0];
+	assign AXI4PWMModule_L79F13L87T14_5_AXI4PWMModule_L81F42L86T18_Object[0] = AXI4PWMModule_L83F31T35_Expr;
+	assign AXI4PWMModule_L79F13L87T14_5_AXI4PWMModule_L81F42L86T18_Object[32:1] = {
+		{12{1'b0}},
+		AXI4PWMModule_L85F39T46_Expr
+	}
+	;
+	assign AXI4PWMModule_L79F13L87T14_5_AXI4PWMModule_L81F42L86T18_Object[64:33] = State_pwm[5];
+	assign pwms5_iOnClock = AXI4PWMModule_L79F13L87T14_5_AXI4PWMModule_L81F42L86T18_Object[64:33];
+	assign pwms5_iDurationClocks = AXI4PWMModule_L79F13L87T14_5_AXI4PWMModule_L81F42L86T18_Object[32:1];
+	assign pwms5_iActive = AXI4PWMModule_L79F13L87T14_5_AXI4PWMModule_L81F42L86T18_Object[0];
+	assign AXI4PWMModule_L79F13L87T14_6_AXI4PWMModule_L81F42L86T18_Object[0] = AXI4PWMModule_L83F31T35_Expr;
+	assign AXI4PWMModule_L79F13L87T14_6_AXI4PWMModule_L81F42L86T18_Object[32:1] = {
+		{12{1'b0}},
+		AXI4PWMModule_L85F39T46_Expr
+	}
+	;
+	assign AXI4PWMModule_L79F13L87T14_6_AXI4PWMModule_L81F42L86T18_Object[64:33] = State_pwm[6];
+	assign pwms6_iOnClock = AXI4PWMModule_L79F13L87T14_6_AXI4PWMModule_L81F42L86T18_Object[64:33];
+	assign pwms6_iDurationClocks = AXI4PWMModule_L79F13L87T14_6_AXI4PWMModule_L81F42L86T18_Object[32:1];
+	assign pwms6_iActive = AXI4PWMModule_L79F13L87T14_6_AXI4PWMModule_L81F42L86T18_Object[0];
+	assign AXI4PWMModule_L79F13L87T14_7_AXI4PWMModule_L81F42L86T18_Object[0] = AXI4PWMModule_L83F31T35_Expr;
+	assign AXI4PWMModule_L79F13L87T14_7_AXI4PWMModule_L81F42L86T18_Object[32:1] = {
+		{12{1'b0}},
+		AXI4PWMModule_L85F39T46_Expr
+	}
+	;
+	assign AXI4PWMModule_L79F13L87T14_7_AXI4PWMModule_L81F42L86T18_Object[64:33] = State_pwm[7];
+	assign pwms7_iOnClock = AXI4PWMModule_L79F13L87T14_7_AXI4PWMModule_L81F42L86T18_Object[64:33];
+	assign pwms7_iDurationClocks = AXI4PWMModule_L79F13L87T14_7_AXI4PWMModule_L81F42L86T18_Object[32:1];
+	assign pwms7_iActive = AXI4PWMModule_L79F13L87T14_7_AXI4PWMModule_L81F42L86T18_Object[0];
+	assign AXI4PWMModule_L94F9L108T10_AXI4PWMModule_L99F35T69_Source = {
+		axiSlave_outWDATA[3],
+		axiSlave_outWDATA[2],
+		axiSlave_outWDATA[1],
+		axiSlave_outWDATA[0]
+	}
+	;
+	assign AXI4PWMModule_L62F31T65_Enumerable[0] = pwms0_oPWM;
+	assign AXI4PWMModule_L62F31T65_Enumerable[1] = pwms1_oPWM;
+	assign AXI4PWMModule_L62F31T65_Enumerable[2] = pwms2_oPWM;
+	assign AXI4PWMModule_L62F31T65_Enumerable[3] = pwms3_oPWM;
+	assign AXI4PWMModule_L62F31T65_Enumerable[4] = pwms4_oPWM;
+	assign AXI4PWMModule_L62F31T65_Enumerable[5] = pwms5_oPWM;
+	assign AXI4PWMModule_L62F31T65_Enumerable[6] = pwms6_oPWM;
+	assign AXI4PWMModule_L62F31T65_Enumerable[7] = pwms7_oPWM;
+	assign oPWM0 = AXI4PWMModule_L62F31T65_Enumerable[0];
+	assign oPWM1 = AXI4PWMModule_L62F31T65_Enumerable[1];
+	assign oPWM2 = AXI4PWMModule_L62F31T65_Enumerable[2];
+	assign oPWM3 = AXI4PWMModule_L62F31T65_Enumerable[3];
+	assign oPWM4 = AXI4PWMModule_L62F31T65_Enumerable[4];
+	assign oPWM5 = AXI4PWMModule_L62F31T65_Enumerable[5];
+	assign oPWM6 = AXI4PWMModule_L62F31T65_Enumerable[6];
+	assign oPWM7 = AXI4PWMModule_L62F31T65_Enumerable[7];
+	assign oS2M = axiSlave_S2M;
 	assign axiSlave_inARREADY_axiSlave_inARREADY_HardLink = axiSlave_inARREADY;
 	assign axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink = axiSlave_inAWREADY;
 	assign axiSlave_inBVALID_axiSlave_inBVALID_HardLink = axiSlave_inBVALID;

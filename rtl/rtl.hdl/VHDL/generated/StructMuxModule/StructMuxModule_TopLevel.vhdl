@@ -50,20 +50,116 @@ architecture rtl of StructMuxModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_s1 : unsigned(15 downto 0) := (others => '0');
-	signal Inputs_s2 : unsigned(15 downto 0) := (others => '0');
-	signal Inputs_selector : std_logic := '0';
-	signal ii1 : unsigned(15 downto 0) := (others => '0');
-	signal is2 : unsigned(15 downto 0) := (others => '0');
-	signal is3 : unsigned(15 downto 0) := (others => '0');
-begin
-	process (s1_i1, s1_i2, s2_i1, s2_i2, selector)
+	signal Inputs_s1_i1 : unsigned(7 downto 0);
+	signal Inputs_s1_i2 : unsigned(7 downto 0);
+	signal Inputs_s2_i1 : unsigned(7 downto 0);
+	signal Inputs_s2_i2 : unsigned(7 downto 0);
+	signal Inputs_selector : std_logic;
+	signal ii1_i1 : unsigned(7 downto 0) := "00000000";
+	signal ii1_i2 : unsigned(7 downto 0) := "00000000";
+	signal is2_i1 : unsigned(7 downto 0) := "00000000";
+	signal is2_i2 : unsigned(7 downto 0) := "00000000";
+	signal is3_i1 : unsigned(7 downto 0) := "00000000";
+	signal is3_i2 : unsigned(7 downto 0) := "00000000";
+	signal StructMuxModule_L24F30T63_WhenTrueSignal : unsigned(15 downto 0);
+	signal StructMuxModule_L24F30T63_WhenFalseSignal : unsigned(15 downto 0);
+	signal StructMuxModule_L24F30T63_TernarySignal : unsigned(15 downto 0) := (others => '0');
+	signal StructMuxModule_L24F30T63_Ternary_i1 : unsigned(7 downto 0);
+	signal StructMuxModule_L24F30T63_Ternary_i2 : unsigned(7 downto 0);
+	signal StructMuxModule_L27F15L31T14_Instance_i1 : unsigned(7 downto 0);
+	signal StructMuxModule_L27F15L31T14_Instance_i2 : unsigned(7 downto 0);
+	signal StructMuxModule_L26F30L36T14_WhenTrueSignal : unsigned(15 downto 0);
+	signal StructMuxModule_L32F15L36T14_Instance_i1 : unsigned(7 downto 0);
+	signal StructMuxModule_L32F15L36T14_Instance_i2 : unsigned(7 downto 0);
+	signal StructMuxModule_L26F30L36T14_WhenFalseSignal : unsigned(15 downto 0);
+	signal StructMuxModule_L26F30L36T14_TernarySignal : unsigned(15 downto 0) := (others => '0');
+	signal StructMuxModule_L26F30L36T14_Ternary_i1 : unsigned(7 downto 0);
+	signal StructMuxModule_L26F30L36T14_Ternary_i2 : unsigned(7 downto 0);
+	signal StructMuxModule_L21F37T76_WhenTrueSignal : unsigned(15 downto 0);
+	signal StructMuxModule_L21F37T76_WhenFalseSignal : unsigned(15 downto 0);
+	signal StructMuxModule_L21F37T76_TernarySignal : unsigned(15 downto 0) := (others => '0');
+	signal StructMuxModule_L21F37T76_Ternary_i1 : unsigned(7 downto 0);
+	signal StructMuxModule_L21F37T76_Ternary_i2 : unsigned(7 downto 0);
+	signal StructMuxModule_L39F15L43T14_Instance_i1 : unsigned(7 downto 0);
+	signal StructMuxModule_L39F15L43T14_Instance_i2 : unsigned(7 downto 0);
+	signal StructMuxModule_L38F37L48T14_WhenTrueSignal : unsigned(15 downto 0);
+	signal StructMuxModule_L44F15L48T14_Instance_i1 : unsigned(7 downto 0);
+	signal StructMuxModule_L44F15L48T14_Instance_i2 : unsigned(7 downto 0);
+	signal StructMuxModule_L38F37L48T14_WhenFalseSignal : unsigned(15 downto 0);
+	signal StructMuxModule_L38F37L48T14_TernarySignal : unsigned(15 downto 0) := (others => '0');
+	signal StructMuxModule_L38F37L48T14_Ternary_i1 : unsigned(7 downto 0);
+	signal StructMuxModule_L38F37L48T14_Ternary_i2 : unsigned(7 downto 0);
+	subtype unsigned16 is unsigned (15 downto 0);
+	function resize_unsigned16_unsigned16(source : unsigned16) return unsigned16 is
 	begin
-		Inputs_s1(15 downto 8) <= s1_i2;
-		Inputs_s1(7 downto 0) <= s1_i1;
-		Inputs_s2(15 downto 8) <= s2_i2;
-		Inputs_s2(7 downto 0) <= s2_i1;
+		return resize(source, 16);
+	end function;
+	function ternary_unsigned16_unsigned16_unsigned16(condition : boolean; whenTrue : unsigned16; whenFalse : unsigned16) return unsigned16 is
+	begin
+		if condition then
+			return whenTrue;
+		else
+			return whenFalse;
+		end if;
+	end function;
+begin
+	StructMuxModule_L24F30T63_TernarySignal <= ternary_unsigned16_unsigned16_unsigned16(Inputs_selector = '1', resize_unsigned16_unsigned16(StructMuxModule_L24F30T63_WhenTrueSignal), resize_unsigned16_unsigned16(StructMuxModule_L24F30T63_WhenFalseSignal));
+	StructMuxModule_L26F30L36T14_TernarySignal <= ternary_unsigned16_unsigned16_unsigned16(Inputs_selector = '1', resize_unsigned16_unsigned16(StructMuxModule_L26F30L36T14_WhenTrueSignal), resize_unsigned16_unsigned16(StructMuxModule_L26F30L36T14_WhenFalseSignal));
+	StructMuxModule_L21F37T76_TernarySignal <= ternary_unsigned16_unsigned16_unsigned16(Inputs_selector = '1', resize_unsigned16_unsigned16(StructMuxModule_L21F37T76_WhenTrueSignal), resize_unsigned16_unsigned16(StructMuxModule_L21F37T76_WhenFalseSignal));
+	StructMuxModule_L38F37L48T14_TernarySignal <= ternary_unsigned16_unsigned16_unsigned16(Inputs_selector = '1', resize_unsigned16_unsigned16(StructMuxModule_L38F37L48T14_WhenTrueSignal), resize_unsigned16_unsigned16(StructMuxModule_L38F37L48T14_WhenFalseSignal));
+	process (ii1_i1, ii1_i2, Inputs_s1_i1, Inputs_s1_i2, Inputs_s2_i1, Inputs_s2_i2, is2_i1, is2_i2, is3_i1, is3_i2, s1_i1, s1_i2, s2_i1, s2_i2, selector, StructMuxModule_L21F37T76_Ternary_i1, StructMuxModule_L21F37T76_Ternary_i2, StructMuxModule_L21F37T76_TernarySignal, StructMuxModule_L24F30T63_Ternary_i1, StructMuxModule_L24F30T63_Ternary_i2, StructMuxModule_L24F30T63_TernarySignal, StructMuxModule_L26F30L36T14_Ternary_i1, StructMuxModule_L26F30L36T14_Ternary_i2, StructMuxModule_L26F30L36T14_TernarySignal, StructMuxModule_L27F15L31T14_Instance_i1, StructMuxModule_L27F15L31T14_Instance_i2, StructMuxModule_L32F15L36T14_Instance_i1, StructMuxModule_L32F15L36T14_Instance_i2, StructMuxModule_L38F37L48T14_Ternary_i1, StructMuxModule_L38F37L48T14_Ternary_i2, StructMuxModule_L38F37L48T14_TernarySignal, StructMuxModule_L39F15L43T14_Instance_i1, StructMuxModule_L39F15L43T14_Instance_i2, StructMuxModule_L44F15L48T14_Instance_i1, StructMuxModule_L44F15L48T14_Instance_i2)
+	begin
+		Inputs_s1_i1 <= s1_i1;
+		Inputs_s1_i2 <= s1_i2;
+		Inputs_s2_i1 <= s2_i1;
+		Inputs_s2_i2 <= s2_i2;
 		Inputs_selector <= selector;
+		ii1_i2 <= Inputs_s1_i2;
+		ii1_i1 <= Inputs_s1_i1;
+		StructMuxModule_L24F30T63_WhenTrueSignal(15 downto 8) <= ii1_i2;
+		StructMuxModule_L24F30T63_WhenTrueSignal(7 downto 0) <= ii1_i1;
+		StructMuxModule_L24F30T63_WhenFalseSignal(15 downto 8) <= Inputs_s2_i2;
+		StructMuxModule_L24F30T63_WhenFalseSignal(7 downto 0) <= Inputs_s2_i1;
+		StructMuxModule_L24F30T63_Ternary_i2 <= StructMuxModule_L24F30T63_TernarySignal(15 downto 8);
+		StructMuxModule_L24F30T63_Ternary_i1 <= StructMuxModule_L24F30T63_TernarySignal(7 downto 0);
+		is2_i2 <= StructMuxModule_L24F30T63_Ternary_i2;
+		is2_i1 <= StructMuxModule_L24F30T63_Ternary_i1;
+		StructMuxModule_L27F15L31T14_Instance_i2 <= Inputs_s1_i2;
+		StructMuxModule_L27F15L31T14_Instance_i1 <= ii1_i1;
+		StructMuxModule_L26F30L36T14_WhenTrueSignal(15 downto 8) <= StructMuxModule_L27F15L31T14_Instance_i2;
+		StructMuxModule_L26F30L36T14_WhenTrueSignal(7 downto 0) <= StructMuxModule_L27F15L31T14_Instance_i1;
+		StructMuxModule_L32F15L36T14_Instance_i2 <= Inputs_s2_i2;
+		StructMuxModule_L32F15L36T14_Instance_i1 <= is2_i1;
+		StructMuxModule_L26F30L36T14_WhenFalseSignal(15 downto 8) <= StructMuxModule_L32F15L36T14_Instance_i2;
+		StructMuxModule_L26F30L36T14_WhenFalseSignal(7 downto 0) <= StructMuxModule_L32F15L36T14_Instance_i1;
+		StructMuxModule_L26F30L36T14_Ternary_i2 <= StructMuxModule_L26F30L36T14_TernarySignal(15 downto 8);
+		StructMuxModule_L26F30L36T14_Ternary_i1 <= StructMuxModule_L26F30L36T14_TernarySignal(7 downto 0);
+		is3_i2 <= StructMuxModule_L26F30L36T14_Ternary_i2;
+		is3_i1 <= StructMuxModule_L26F30L36T14_Ternary_i1;
+		StructMuxModule_L21F37T76_WhenTrueSignal(15 downto 8) <= Inputs_s1_i2;
+		StructMuxModule_L21F37T76_WhenTrueSignal(7 downto 0) <= Inputs_s1_i1;
+		StructMuxModule_L21F37T76_WhenFalseSignal(15 downto 8) <= Inputs_s2_i2;
+		StructMuxModule_L21F37T76_WhenFalseSignal(7 downto 0) <= Inputs_s2_i1;
+		StructMuxModule_L21F37T76_Ternary_i2 <= StructMuxModule_L21F37T76_TernarySignal(15 downto 8);
+		StructMuxModule_L21F37T76_Ternary_i1 <= StructMuxModule_L21F37T76_TernarySignal(7 downto 0);
+		os1_i2 <= StructMuxModule_L21F37T76_Ternary_i2;
+		os1_i1 <= StructMuxModule_L21F37T76_Ternary_i1;
+		os2_i2 <= is2_i2;
+		os2_i1 <= is2_i1;
+		os3_i2 <= is3_i2;
+		os3_i1 <= is3_i1;
+		StructMuxModule_L39F15L43T14_Instance_i2 <= Inputs_s1_i2;
+		StructMuxModule_L39F15L43T14_Instance_i1 <= ii1_i1;
+		StructMuxModule_L38F37L48T14_WhenTrueSignal(15 downto 8) <= StructMuxModule_L39F15L43T14_Instance_i2;
+		StructMuxModule_L38F37L48T14_WhenTrueSignal(7 downto 0) <= StructMuxModule_L39F15L43T14_Instance_i1;
+		StructMuxModule_L44F15L48T14_Instance_i2 <= Inputs_s2_i2;
+		StructMuxModule_L44F15L48T14_Instance_i1 <= is2_i1;
+		StructMuxModule_L38F37L48T14_WhenFalseSignal(15 downto 8) <= StructMuxModule_L44F15L48T14_Instance_i2;
+		StructMuxModule_L38F37L48T14_WhenFalseSignal(7 downto 0) <= StructMuxModule_L44F15L48T14_Instance_i1;
+		StructMuxModule_L38F37L48T14_Ternary_i2 <= StructMuxModule_L38F37L48T14_TernarySignal(15 downto 8);
+		StructMuxModule_L38F37L48T14_Ternary_i1 <= StructMuxModule_L38F37L48T14_TernarySignal(7 downto 0);
+		os4_i2 <= StructMuxModule_L38F37L48T14_Ternary_i2;
+		os4_i1 <= StructMuxModule_L38F37L48T14_Ternary_i1;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

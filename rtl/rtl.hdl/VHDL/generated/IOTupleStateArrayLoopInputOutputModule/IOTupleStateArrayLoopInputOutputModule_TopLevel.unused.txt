@@ -1,8 +1,6 @@
 No reads:
-	Inputs_iTuple
-	Inputs_iTupleArray
-	State_Value
+	IOTupleStateArrayLoopInputOutputModule_L15F9L21T10_IOTupleStateArrayLoopInputOutputModule_L16F29T30_Expr
+	IOTupleStateArrayLoopInputOutputModule_L7F58T59_Expr
 	State_ValueDefault
 No writes:
-	NextState_Value
 	State_ValueArrayInit

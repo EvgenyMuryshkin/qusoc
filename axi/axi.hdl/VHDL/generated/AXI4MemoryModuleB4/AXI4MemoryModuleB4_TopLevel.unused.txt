@@ -1,55 +1,16 @@
 No reads:
 	addressLSB
-	axiSlave_outARADDR
-	axiSlave_outARREADYConfirming
+	AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_0_w
+	AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_1_w
+	AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_2_w
+	AXI4MemoryModule_L110F9L145T10_AXI4MemoryModule_L130F13L137T14_3_w
+	AXI4MemoryModule_L80F13L82T41_Expr_1
+	AXI4MemoryModule_L90F13L92T41_Expr_1
 	axiSlave_outARVALID
-	axiSlave_outAWADDR
-	axiSlave_outAWREADYConfirming
 	axiSlave_outAWVALID
 	axiSlave_outReadTXCompleting
-	axiSlave_outWDATA
-	axiSlave_outWREADYConfirming
-	axiSlave_outWriteTXCompleting
-	axiSlave_outWSTRB
 	axiSlave_outWVALID
-	axiSlave_S2M
-	Inputs_M2S
-	internalDelayedTxWrite
-	internalRADDR
-	internalSameTxWrite
-	internalWADDR
-	internalWDATA
-	internalWE
-	internalWSTRB
 	size
-	State_buff
-	State_raddr
-	State_rdata
-	State_waddr
-	State_waddrSet
-	State_wdata
-	State_wdataSet
-	State_wstrb
 No writes:
-	axiSlave_inARREADY
-	axiSlave_inAWREADY
-	axiSlave_inBVALID
-	axiSlave_inRDATA
-	axiSlave_inRVALID
-	axiSlave_inWREADY
-	axiSlave_M2S
-	internalDelayedTxWrite
-	internalRADDR
-	internalSameTxWrite
-	internalWADDR
-	internalWDATA
-	internalWE
-	internalWSTRB
-	NextState_buff
-	NextState_raddr
-	NextState_rdata
-	NextState_waddr
-	NextState_waddrSet
-	NextState_wdata
-	NextState_wdataSet
-	NextState_wstrb
+	AXI4MemoryModule_L80F13L82T41_Expr
+	AXI4MemoryModule_L90F13L92T41_Expr

@@ -1,18 +1,8 @@
 No reads:
-	Inputs_M2S
 	Inputs_S2M
-	mARVALID
-	masterReadEncoderModule_HasActive
 	masterReadEncoderModule_MSBIndex
 	masterReadEncoderModule_MSBValue
-	masterWriteEncoderModule_HasActive
 	masterWriteEncoderModule_MSBIndex
 	masterWriteEncoderModule_MSBValue
-	mAWVALID
 	mCount
 	sCount
-No writes:
-	mARVALID
-	masterReadEncoderModule_iValues
-	masterWriteEncoderModule_iValues
-	mAWVALID

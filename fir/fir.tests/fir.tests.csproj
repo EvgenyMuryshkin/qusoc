@@ -5,15 +5,15 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
-    <PackageReference Include="MSTest.TestAdapter" Version="2.1.1" />
-    <PackageReference Include="MSTest.TestFramework" Version="2.1.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.8.2" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.8.2" />
     <PackageReference Include="coverlet.collector" Version="1.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Quokka.FPGA" Version="0.1.8.264" />
-    <PackageReference Include="Quokka.RTL" Version="0.1.8.593" />
+    <PackageReference Include="Quokka.FPGA" Version="0.1.8.269" />
+    <PackageReference Include="Quokka.RTL" Version="0.1.8.620" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Tools\Quokka.RTL.Simulator\Quokka.RTL.Simulator.csproj" />

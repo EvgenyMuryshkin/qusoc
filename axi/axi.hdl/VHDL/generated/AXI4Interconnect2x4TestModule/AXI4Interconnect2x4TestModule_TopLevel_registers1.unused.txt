@@ -1,4 +1,8 @@
 No reads:
+	AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_0_w
+	AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_1_w
+	AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_2_w
+	AXI4RegisterModule_L78F9L93T10_AXI4RegisterModule_L86F13L92T14_AXI4RegisterModule_L87F17L91T18_3_w
 	axiSlave_outARADDR
 	axiSlave_outARREADYConfirming
 	axiSlave_outARVALID
@@ -6,24 +10,6 @@ No reads:
 	axiSlave_outAWREADYConfirming
 	axiSlave_outAWVALID
 	axiSlave_outReadTXCompleting
-	axiSlave_outWDATA
-	axiSlave_outWREADYConfirming
 	axiSlave_outWriteTXCompleting
-	axiSlave_outWSTRB
 	axiSlave_outWVALID
-	axiSlave_S2M
-	Inputs_M2S
-	Inputs_Reg
 	size
-	State_bytes
-	State_Written
-No writes:
-	axiSlave_inARREADY
-	axiSlave_inAWREADY
-	axiSlave_inBVALID
-	axiSlave_inRDATA
-	axiSlave_inRVALID
-	axiSlave_inWREADY
-	axiSlave_M2S
-	NextState_bytes
-	NextState_Written

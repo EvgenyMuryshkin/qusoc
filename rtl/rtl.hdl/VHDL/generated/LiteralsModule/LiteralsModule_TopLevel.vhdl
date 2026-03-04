@@ -50,7 +50,72 @@ architecture rtl of LiteralsModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
+	constant LiteralsModule_L20F35T47_Expr : unsigned(7 downto 0) := "10010110";
+	constant LiteralsModule_L22F33T60_Expr : unsigned(19 downto 0) := "10010110101011110000";
+	constant LiteralsModule_L21F37T54_Expr : unsigned(11 downto 0) := "100101101010";
+	constant LiteralsModule_L10F29T31_Expr : unsigned(5 downto 0) := "101010";
+	constant LiteralsModule_L14F27T29_Expr : signed(2 downto 0) := "111";
+	constant LiteralsModule_L16F29T50_Expr : signed(63 downto 0) := "1000000000000000000000000000000000000000000000000000000000000000";
+	constant LiteralsModule_L18F32T53_Expr : signed(63 downto 0) := "0111000000000000111111111111111111111111111111111111111111111111";
+	constant LiteralsModule_L11F31T33_Expr : signed(2 downto 0) := "111";
+	constant LiteralsModule_L12F31T33_Expr : signed(2 downto 0) := "111";
+	constant LiteralsModule_L15F29T31_Expr : unsigned(5 downto 0) := "101110";
+	constant LiteralsModule_L17F31T35_Expr : unsigned(5 downto 0) := "110000";
+	constant LiteralsModule_L19F34T55_Expr : unsigned(63 downto 0) := "1000000000000000111111111111111111111111111111111111111111111111";
+	constant LiteralsModule_L13F33T35_Expr : unsigned(5 downto 0) := "101100";
 begin
+	process (all)
+	begin
+		BinaryByte <= LiteralsModule_L20F35T47_Expr;
+		BinaryInt(31 downto 20) <= (
+			others => '0'
+		)
+		;
+		BinaryInt(19 downto 0) <= signed(LiteralsModule_L22F33T60_Expr);
+		BinaryShort(15 downto 12) <= (
+			others => '0'
+		)
+		;
+		BinaryShort(11 downto 0) <= signed(LiteralsModule_L21F37T54_Expr);
+		Byte(7 downto 6) <= (
+			others => '0'
+		)
+		;
+		Byte(5 downto 0) <= LiteralsModule_L10F29T31_Expr;
+		Int(31 downto 3) <= (
+			others => LiteralsModule_L14F27T29_Expr(2)
+		)
+		;
+		Int(2 downto 0) <= LiteralsModule_L14F27T29_Expr;
+		Long <= LiteralsModule_L16F29T50_Expr;
+		LongHex <= LiteralsModule_L18F32T53_Expr;
+		SByte(7 downto 3) <= (
+			others => LiteralsModule_L11F31T33_Expr(2)
+		)
+		;
+		SByte(2 downto 0) <= LiteralsModule_L11F31T33_Expr;
+		Short(15 downto 3) <= (
+			others => LiteralsModule_L12F31T33_Expr(2)
+		)
+		;
+		Short(2 downto 0) <= LiteralsModule_L12F31T33_Expr;
+		UInt(31 downto 6) <= (
+			others => '0'
+		)
+		;
+		UInt(5 downto 0) <= LiteralsModule_L15F29T31_Expr;
+		ULong(63 downto 6) <= (
+			others => '0'
+		)
+		;
+		ULong(5 downto 0) <= LiteralsModule_L17F31T35_Expr;
+		ULongHex <= LiteralsModule_L19F34T55_Expr;
+		UShort(15 downto 6) <= (
+			others => '0'
+		)
+		;
+		UShort(5 downto 0) <= LiteralsModule_L13F33T35_Expr;
+	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]
 end architecture;

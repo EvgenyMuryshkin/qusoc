@@ -1,3 +1,0 @@
-No reads:
-	Inputs_i1
-	Inputs_i2

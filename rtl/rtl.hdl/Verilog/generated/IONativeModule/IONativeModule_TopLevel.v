@@ -52,7 +52,14 @@ module IONativeModule_TopLevel
 			State_sByteValue <= NextState_sByteValue;
 		end
 	end
+	always @ (*)
+	begin
+		NextState_sByteValue = State_sByteValue;
+		NextState_sByteValue = Inputs_iByteValue;
+	end
 	assign Inputs_iByteValue = iByteValue;
+	assign oiByteValue = Inputs_iByteValue;
+	assign osByteValue = State_sByteValue;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

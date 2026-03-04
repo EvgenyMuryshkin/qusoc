@@ -65,24 +65,77 @@ architecture rtl of StructByMemberL2MembersModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_iL1 : unsigned(75 downto 0) := (others => '0');
+	constant StructByMemberModule_L53F31T32_Expr : unsigned(0 downto 0) := "0";
+	signal Inputs_iL1_L1OptionalValue : unsigned(0 downto 0);
+	signal Inputs_iL1_L1RequiredValue : std_logic;
+	signal StructByMemberModule_L47F40L61T10_Instance_L1OptionalValue : unsigned(0 downto 0);
+	signal StructByMemberModule_L47F40L61T10_Instance_L1RequiredValue : std_logic;
+	signal StructByMemberModule_L54F17L59T18_Instance_L2OptionalValue : unsigned(1 downto 0);
+	signal StructByMemberModule_L54F17L59T18_Instance_L3_L3OptionalValue : std_logic;
+	signal StructByMemberModule_L54F17L59T18_Instance_L3_L3RequiredValue : signed(15 downto 0);
+	signal StructByMemberModule_L54F17L59T18_Instance_L3Tuple_Item1 : std_logic;
+	signal StructByMemberModule_L54F17L59T18_Instance_L3Tuple_Item2_L3OptionalValue : std_logic;
+	signal StructByMemberModule_L54F17L59T18_Instance_L3Tuple_Item2_L3RequiredValue : signed(15 downto 0);
+	signal StructByMemberModule_L51F18L60T14_1 : unsigned(36 downto 0);
+	type Inputs_iL1_L2Array is array (0 to 1) of unsigned (36 downto 0);
+	signal Inputs_iL1_L2 : Inputs_iL1_L2Array;
+	type oL1_L2Array is array (0 to 1) of unsigned (36 downto 0);
+	signal oL1_L2 : oL1_L2Array := (others => (others => '0'));
+	type StructByMemberModule_L47F40L61T10_Instance_L2Array is array (0 to 1) of unsigned (36 downto 0);
+	signal StructByMemberModule_L47F40L61T10_Instance_L2 : StructByMemberModule_L47F40L61T10_Instance_L2Array;
+	type StructByMemberModule_L51F18L60T14_ArrayArray is array (0 to 1) of unsigned (36 downto 0);
+	signal StructByMemberModule_L51F18L60T14_Array : StructByMemberModule_L51F18L60T14_ArrayArray;
 begin
-	process (iL1_L1OptionalValue, iL1_L1RequiredValue, iL1_L20_L2OptionalValue, iL1_L20_L3_L3OptionalValue, iL1_L20_L3_L3RequiredValue, iL1_L20_L3Tuple_Item1, iL1_L20_L3Tuple_Item2_L3OptionalValue, iL1_L20_L3Tuple_Item2_L3RequiredValue, iL1_L21_L2OptionalValue, iL1_L21_L3_L3OptionalValue, iL1_L21_L3_L3RequiredValue, iL1_L21_L3Tuple_Item1, iL1_L21_L3Tuple_Item2_L3OptionalValue, iL1_L21_L3Tuple_Item2_L3RequiredValue)
+	process (iL1_L1OptionalValue, iL1_L1RequiredValue, iL1_L20_L2OptionalValue, iL1_L20_L3_L3OptionalValue, iL1_L20_L3_L3RequiredValue, iL1_L20_L3Tuple_Item1, iL1_L20_L3Tuple_Item2_L3OptionalValue, iL1_L20_L3Tuple_Item2_L3RequiredValue, iL1_L21_L2OptionalValue, iL1_L21_L3_L3OptionalValue, iL1_L21_L3_L3RequiredValue, iL1_L21_L3Tuple_Item1, iL1_L21_L3Tuple_Item2_L3OptionalValue, iL1_L21_L3Tuple_Item2_L3RequiredValue, Inputs_iL1_L1OptionalValue, Inputs_iL1_L1RequiredValue, Inputs_iL1_L2, oL1_L2, StructByMemberModule_L47F40L61T10_Instance_L1OptionalValue, StructByMemberModule_L47F40L61T10_Instance_L1RequiredValue, StructByMemberModule_L47F40L61T10_Instance_L2, StructByMemberModule_L51F18L60T14_1, StructByMemberModule_L51F18L60T14_Array, StructByMemberModule_L54F17L59T18_Instance_L2OptionalValue, StructByMemberModule_L54F17L59T18_Instance_L3_L3OptionalValue, StructByMemberModule_L54F17L59T18_Instance_L3_L3RequiredValue, StructByMemberModule_L54F17L59T18_Instance_L3Tuple_Item1, StructByMemberModule_L54F17L59T18_Instance_L3Tuple_Item2_L3OptionalValue, StructByMemberModule_L54F17L59T18_Instance_L3Tuple_Item2_L3RequiredValue)
 	begin
-		Inputs_iL1(75) <= iL1_L21_L3Tuple_Item1;
-		Inputs_iL1(74 downto 59) <= unsigned(iL1_L21_L3Tuple_Item2_L3RequiredValue);
-		Inputs_iL1(58) <= iL1_L21_L3Tuple_Item2_L3OptionalValue;
-		Inputs_iL1(57 downto 42) <= unsigned(iL1_L21_L3_L3RequiredValue);
-		Inputs_iL1(41) <= iL1_L21_L3_L3OptionalValue;
-		Inputs_iL1(40 downto 39) <= iL1_L21_L2OptionalValue;
-		Inputs_iL1(38) <= iL1_L20_L3Tuple_Item1;
-		Inputs_iL1(37 downto 22) <= unsigned(iL1_L20_L3Tuple_Item2_L3RequiredValue);
-		Inputs_iL1(21) <= iL1_L20_L3Tuple_Item2_L3OptionalValue;
-		Inputs_iL1(20 downto 5) <= unsigned(iL1_L20_L3_L3RequiredValue);
-		Inputs_iL1(4) <= iL1_L20_L3_L3OptionalValue;
-		Inputs_iL1(3 downto 2) <= iL1_L20_L2OptionalValue;
-		Inputs_iL1(1) <= iL1_L1RequiredValue;
-		Inputs_iL1(0 downto 0) <= iL1_L1OptionalValue;
+		oL1_L20_L3Tuple_Item1 <= oL1_L2(0)(36);
+		oL1_L20_L3Tuple_Item2_L3RequiredValue <= signed(oL1_L2(0)(35 downto 20));
+		oL1_L20_L3Tuple_Item2_L3OptionalValue <= oL1_L2(0)(19);
+		oL1_L20_L3_L3RequiredValue <= signed(oL1_L2(0)(18 downto 3));
+		oL1_L20_L3_L3OptionalValue <= oL1_L2(0)(2);
+		oL1_L20_L2OptionalValue <= oL1_L2(0)(1 downto 0);
+		oL1_L21_L3Tuple_Item1 <= oL1_L2(1)(36);
+		oL1_L21_L3Tuple_Item2_L3RequiredValue <= signed(oL1_L2(1)(35 downto 20));
+		oL1_L21_L3Tuple_Item2_L3OptionalValue <= oL1_L2(1)(19);
+		oL1_L21_L3_L3RequiredValue <= signed(oL1_L2(1)(18 downto 3));
+		oL1_L21_L3_L3OptionalValue <= oL1_L2(1)(2);
+		oL1_L21_L2OptionalValue <= oL1_L2(1)(1 downto 0);
+		Inputs_iL1_L1OptionalValue <= iL1_L1OptionalValue;
+		Inputs_iL1_L1RequiredValue <= iL1_L1RequiredValue;
+		Inputs_iL1_L2(0)(36) <= iL1_L20_L3Tuple_Item1;
+		Inputs_iL1_L2(0)(35 downto 20) <= unsigned(iL1_L20_L3Tuple_Item2_L3RequiredValue);
+		Inputs_iL1_L2(0)(19) <= iL1_L20_L3Tuple_Item2_L3OptionalValue;
+		Inputs_iL1_L2(0)(18 downto 3) <= unsigned(iL1_L20_L3_L3RequiredValue);
+		Inputs_iL1_L2(0)(2) <= iL1_L20_L3_L3OptionalValue;
+		Inputs_iL1_L2(0)(1 downto 0) <= iL1_L20_L2OptionalValue;
+		Inputs_iL1_L2(1)(36) <= iL1_L21_L3Tuple_Item1;
+		Inputs_iL1_L2(1)(35 downto 20) <= unsigned(iL1_L21_L3Tuple_Item2_L3RequiredValue);
+		Inputs_iL1_L2(1)(19) <= iL1_L21_L3Tuple_Item2_L3OptionalValue;
+		Inputs_iL1_L2(1)(18 downto 3) <= unsigned(iL1_L21_L3_L3RequiredValue);
+		Inputs_iL1_L2(1)(2) <= iL1_L21_L3_L3OptionalValue;
+		Inputs_iL1_L2(1)(1 downto 0) <= iL1_L21_L2OptionalValue;
+		StructByMemberModule_L51F18L60T14_Array(0) <= Inputs_iL1_L2(0);
+		StructByMemberModule_L54F17L59T18_Instance_L2OptionalValue <= Inputs_iL1_L2(1)(1 downto 0);
+		StructByMemberModule_L54F17L59T18_Instance_L3_L3OptionalValue <= Inputs_iL1_L2(1)(2);
+		StructByMemberModule_L54F17L59T18_Instance_L3_L3RequiredValue <= signed(Inputs_iL1_L2(1)(18 downto 3));
+		StructByMemberModule_L54F17L59T18_Instance_L3Tuple_Item1 <= Inputs_iL1_L2(1)(36);
+		StructByMemberModule_L54F17L59T18_Instance_L3Tuple_Item2_L3OptionalValue <= Inputs_iL1_L2(1)(19);
+		StructByMemberModule_L54F17L59T18_Instance_L3Tuple_Item2_L3RequiredValue <= signed(Inputs_iL1_L2(1)(35 downto 20));
+		StructByMemberModule_L51F18L60T14_1(36) <= StructByMemberModule_L54F17L59T18_Instance_L3Tuple_Item1;
+		StructByMemberModule_L51F18L60T14_1(35 downto 20) <= unsigned(StructByMemberModule_L54F17L59T18_Instance_L3Tuple_Item2_L3RequiredValue);
+		StructByMemberModule_L51F18L60T14_1(19) <= StructByMemberModule_L54F17L59T18_Instance_L3Tuple_Item2_L3OptionalValue;
+		StructByMemberModule_L51F18L60T14_1(18 downto 3) <= unsigned(StructByMemberModule_L54F17L59T18_Instance_L3_L3RequiredValue);
+		StructByMemberModule_L51F18L60T14_1(2) <= StructByMemberModule_L54F17L59T18_Instance_L3_L3OptionalValue;
+		StructByMemberModule_L51F18L60T14_1(1 downto 0) <= StructByMemberModule_L54F17L59T18_Instance_L2OptionalValue;
+		StructByMemberModule_L51F18L60T14_Array(1) <= StructByMemberModule_L51F18L60T14_1;
+		StructByMemberModule_L47F40L61T10_Instance_L1OptionalValue <= Inputs_iL1_L1OptionalValue;
+		StructByMemberModule_L47F40L61T10_Instance_L1RequiredValue <= Inputs_iL1_L1RequiredValue;
+		StructByMemberModule_L47F40L61T10_Instance_L2(0) <= StructByMemberModule_L51F18L60T14_Array(0);
+		StructByMemberModule_L47F40L61T10_Instance_L2(1) <= StructByMemberModule_L51F18L60T14_Array(1);
+		oL1_L1OptionalValue <= StructByMemberModule_L47F40L61T10_Instance_L1OptionalValue;
+		oL1_L1RequiredValue <= StructByMemberModule_L47F40L61T10_Instance_L1RequiredValue;
+		oL1_L2(0) <= StructByMemberModule_L47F40L61T10_Instance_L2(0);
+		oL1_L2(1) <= StructByMemberModule_L47F40L61T10_Instance_L2(1);
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

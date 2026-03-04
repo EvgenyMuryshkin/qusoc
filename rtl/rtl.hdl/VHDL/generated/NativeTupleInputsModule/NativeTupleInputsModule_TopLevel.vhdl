@@ -39,12 +39,13 @@ architecture rtl of NativeTupleInputsModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_iValue : unsigned(8 downto 0) := (others => '0');
+	signal Inputs_iValue_Item1 : std_logic := '0';
+	signal Inputs_iValue_Item2 : unsigned(7 downto 0) := (others => '0');
 begin
 	process (iValue_Item1, iValue_Item2)
 	begin
-		Inputs_iValue(8) <= iValue_Item1;
-		Inputs_iValue(7 downto 0) <= iValue_Item2;
+		Inputs_iValue_Item1 <= iValue_Item1;
+		Inputs_iValue_Item2 <= iValue_Item2;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

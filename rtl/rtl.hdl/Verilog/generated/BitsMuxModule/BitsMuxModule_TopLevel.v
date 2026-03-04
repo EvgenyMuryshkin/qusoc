@@ -35,11 +35,36 @@ module BitsMuxModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
+	wire [0: 0] BitsMuxModule_L13F49T50_Expr = 1'b1;
+	wire [0: 0] BitsMuxModule_L13F52T53_Expr = 1'b0;
+	wire [0: 0] BitsMuxModule_L14F95T96_Expr = 1'b1;
+	wire [0: 0] BitsMuxModule_L14F98T99_Expr = 1'b0;
+	wire [1: 0] BitsMuxModule_L14F76T77_Expr = 2'b10;
 	wire [7: 0] Inputs_Addr;
 	wire [7: 0] Inputs_Value;
-	reg [1: 0] pixelAddress;
+	wire [1: 0] pixelAddress;
+	wire [7: 0] BitsMuxModule_L14F42T93_Expr;
+	wire [7: 0] BitsMuxModule_L14F42T93_Expr_1;
+	wire [3: 0] BitsMuxModule_L14F76T92_Expr;
+	wire signed [3: 0] BitsMuxModule_L14F76T92_Expr_1;
+	wire signed [3: 0] BitsMuxModule_L14F76T92_Expr_2;
+	assign BitsMuxModule_L14F42T93_Expr = (BitsMuxModule_L14F42T93_Expr_1 >> BitsMuxModule_L14F76T92_Expr);
+	assign BitsMuxModule_L14F76T92_Expr = BitsMuxModule_L14F76T92_Expr_1 * BitsMuxModule_L14F76T92_Expr_2;
+	assign BitsMuxModule_L14F42T93_Expr_1 = Inputs_Value;
+	assign BitsMuxModule_L14F76T92_Expr_1 = {
+		{2{1'b0}},
+		BitsMuxModule_L14F76T77_Expr
+	}
+	;
+	assign BitsMuxModule_L14F76T92_Expr_2 = {
+		{2{1'b0}},
+		pixelAddress
+	}
+	;
 	assign Inputs_Addr = Addr;
 	assign Inputs_Value = Value;
+	assign pixelAddress = Inputs_Addr[1:0];
+	assign pixelBits = BitsMuxModule_L14F42T93_Expr[1:0];
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

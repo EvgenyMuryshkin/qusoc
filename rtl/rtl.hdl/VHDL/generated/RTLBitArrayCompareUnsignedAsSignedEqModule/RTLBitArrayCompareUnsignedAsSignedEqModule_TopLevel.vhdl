@@ -42,11 +42,22 @@ architecture rtl of RTLBitArrayCompareUnsignedAsSignedEqModule_TopLevel is
 	-- false is a reserved name, declaration skipped
 	signal Inputs_LHS : unsigned(31 downto 0) := (others => '0');
 	signal Inputs_RHS : unsigned(31 downto 0) := (others => '0');
+	signal RTLBitArrayCompareModules_L35F30T49_SignChange : signed(31 downto 0) := (others => '0');
+	signal RTLBitArrayCompareModules_L35F53T72_SignChange : signed(31 downto 0) := (others => '0');
+	signal RTLBitArrayCompareModules_L35F30T72_Expr : std_logic := '0';
+	signal RTLBitArrayCompareModules_L35F30T72_ExprLhs : signed(31 downto 0) := "00000000000000000000000000000000";
+	signal RTLBitArrayCompareModules_L35F30T72_ExprRhs : signed(31 downto 0) := "00000000000000000000000000000000";
 begin
-	process (LHS, RHS)
+	RTLBitArrayCompareModules_L35F30T72_Expr <= '1' when (signed(resize(RTLBitArrayCompareModules_L35F30T72_ExprLhs, RTLBitArrayCompareModules_L35F30T72_ExprLhs'length + 1)) = signed(resize(RTLBitArrayCompareModules_L35F30T72_ExprRhs, RTLBitArrayCompareModules_L35F30T72_ExprRhs'length + 1))) else '0';
+	process (Inputs_LHS, Inputs_RHS, LHS, RHS, RTLBitArrayCompareModules_L35F30T49_SignChange, RTLBitArrayCompareModules_L35F30T72_Expr, RTLBitArrayCompareModules_L35F53T72_SignChange)
 	begin
+		RTLBitArrayCompareModules_L35F30T72_ExprLhs <= RTLBitArrayCompareModules_L35F30T49_SignChange;
+		RTLBitArrayCompareModules_L35F30T72_ExprRhs <= RTLBitArrayCompareModules_L35F53T72_SignChange;
 		Inputs_LHS <= LHS;
 		Inputs_RHS <= RHS;
+		RTLBitArrayCompareModules_L35F30T49_SignChange <= signed(Inputs_LHS);
+		RTLBitArrayCompareModules_L35F53T72_SignChange <= signed(Inputs_RHS);
+		Value <= RTLBitArrayCompareModules_L35F30T72_Expr;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

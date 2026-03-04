@@ -1,21 +1,5 @@
 No reads:
-	bitArrayBlock
-	boolBlock
-	Inputs_iBit
-	Inputs_iBitArrayBlock
-	Inputs_iBoolBlock
-	intBit
-	State_bit
-	State_bitArrayBlock
+	IOSingleBitMemoryModule_L28F42T43_Expr
 	State_bitArrayBlockDefault
-	State_bitInternal
-	State_boolBlock
 No writes:
-	bitArrayBlock
-	boolBlock
-	intBit
-	NextState_bit
-	NextState_bitArrayBlock
-	NextState_bitInternal
-	NextState_boolBlock
 	State_bitArrayBlockArrayInit

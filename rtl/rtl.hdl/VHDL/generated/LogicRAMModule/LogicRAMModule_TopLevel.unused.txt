@@ -1,7 +1,5 @@
 No reads:
-	Inputs_Value
-	State_Buff
-	State_Index
+	LogicRAMModule_L25F102T103_Expr
+	LogicRAMModule_L25F35T103_Expr_1
 No writes:
-	NextState_Buff
-	NextState_Index
+	LogicRAMModule_L25F35T103_Expr

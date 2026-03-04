@@ -263,23 +263,26 @@ namespace QuSoC
             {
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
-                    // run WSL
-                    /*
-                    var root = Path.GetPathRoot(FirmwareFolder);
-                    var relativePath = Path.GetRelativePath(root, FirmwareFolder);
-                    root = root.Replace(":", "").Replace("\\", "/").ToLower();
-                    var linuxPath = relativePath.Replace("\\", "/").Replace(":", "");
-                    var mntPath = $"/mnt/{root}{linuxPath}";
+                    var makeFileContent = File.ReadAllText(MakefileFile);
+                    if (makeFileContent.Contains("xpacks"))
+                    {
+                        // run WSL for xpack riscv toolchain
 
-                    var wslArgs = $"-e bash -c \"cd \\\"{mntPath}\\\" && echo ev | sudo -S make bin\"";
-                    var wslOutput = RunHiddenShell("wsl", wslArgs, out var exitCode, throwOnException: false);
+                        var root = Path.GetPathRoot(FirmwareFolder);
+                        var relativePath = Path.GetRelativePath(root, FirmwareFolder);
+                        root = root.Replace(":", "").Replace("\\", "/").ToLower();
+                        var linuxPath = relativePath.Replace("\\", "/").Replace(":", "");
+                        var mntPath = $"/mnt/{root}{linuxPath}";
 
-                    if (exitCode == 0)
-                        return;
+                        var wslArgs = $"-e bash -c \"cd \\\"{mntPath}\\\" && echo ev | sudo -S make bin\"";
+                        var wslOutput = RunHiddenShell("wsl", wslArgs, out var exitCode, throwOnException: false);
 
-                    if (wslOutput != "")
-                        throw new Exception(wslOutput);
-                    */
+                        if (exitCode == 0)
+                            return;
+
+                        if (wslOutput != "")
+                            throw new Exception(wslOutput);
+                    }
 
                     // fallback to run docker
                     var context = RISCVIntegration

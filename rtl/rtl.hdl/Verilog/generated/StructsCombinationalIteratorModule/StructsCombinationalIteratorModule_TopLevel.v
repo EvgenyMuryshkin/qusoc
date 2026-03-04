@@ -73,12 +73,32 @@ module StructsCombinationalIteratorModule_TopLevel
 	wire [7: 0] State_i1Default = 8'b00000000;
 	wire [7: 0] State_i2Default = 8'b00000000;
 	wire [23: 0] State_oDefault = 24'b000000000000000000000000;
+	wire [3: 0] StructsCombinationalIteratorModule_L75F9L101T10_StructsCombinationalIteratorModule_L90F13L94T14_StructsCombinationalIteratorModule_L92F71T73_Expr = 4'b1010;
+	wire [3: 0] StructsCombinationalIteratorModule_L75F9L101T10_StructsCombinationalIteratorModule_L90F13L94T14_StructsCombinationalIteratorModule_L93F71T73_Expr = 4'b1011;
 	wire [1: 0] Inputs_addr;
-	wire [7: 0] Inputs_i1;
-	wire [7: 0] Inputs_i2;
+	wire [3: 0] Inputs_i1_a;
+	wire [3: 0] Inputs_i1_b;
+	wire [3: 0] Inputs_i2_a;
+	wire [3: 0] Inputs_i2_b;
 	wire signed [7: 0] Inputs_s1;
 	wire signed [7: 0] Inputs_s2;
 	wire Inputs_store;
+	integer i;
+	integer i1;
+	wire [3: 0] StructsCombinationalIteratorModule_L75F9L101T10_StructsCombinationalIteratorModule_L90F13L94T14_StructsCombinationalIteratorModule_L92F55T74_Source;
+	wire [3: 0] StructsCombinationalIteratorModule_L75F9L101T10_StructsCombinationalIteratorModule_L90F13L94T14_StructsCombinationalIteratorModule_L93F55T74_Source;
+	integer i2;
+	wire signed [7: 0] StructsCombinationalIteratorModule_L69F31T61_Cast;
+	wire signed [15: 0] StructsCombinationalIteratorModule_L68F30T60_Cast;
+	wire signed [15: 0] StructsCombinationalIteratorModule_L69F39T60_Expr;
+	wire signed [15: 0] StructsCombinationalIteratorModule_L69F39T60_Expr_1;
+	wire signed [15: 0] StructsCombinationalIteratorModule_L69F39T60_Expr_2;
+	wire signed [15: 0] StructsCombinationalIteratorModule_L68F38T59_Expr;
+	wire signed [15: 0] StructsCombinationalIteratorModule_L68F38T59_Expr_1;
+	wire signed [15: 0] StructsCombinationalIteratorModule_L68F38T59_Expr_2;
+	wire [7 : 0] cStruct [0 : 3];
+	wire [7 : 0] fStruct [0 : 3];
+	wire [23 : 0] sStruct [0 : 3];
 	integer State_c_Iterator;
 	reg [7 : 0] State_c [0 : 3];
 	initial
@@ -234,14 +254,178 @@ module StructsCombinationalIteratorModule_TopLevel
 			end
 		end
 	end
+	assign StructsCombinationalIteratorModule_L69F39T60_Expr = StructsCombinationalIteratorModule_L69F39T60_Expr_1 * StructsCombinationalIteratorModule_L69F39T60_Expr_2;
+	assign StructsCombinationalIteratorModule_L68F38T59_Expr = StructsCombinationalIteratorModule_L68F38T59_Expr_1 * StructsCombinationalIteratorModule_L68F38T59_Expr_2;
+	always @ (*)
+	begin
+		NextState_c_Iterator = 0;
+		NextState_f_Iterator = 0;
+		NextState_i1_Iterator = 0;
+		NextState_i2_Iterator = 0;
+		NextState_o_Iterator = 0;
+		i = 0;
+		i1 = 0;
+		i2 = 0;
+		for (NextState_c_Iterator = 0; (NextState_c_Iterator < 4); NextState_c_Iterator = (NextState_c_Iterator + 1))
+		begin
+			NextState_c[NextState_c_Iterator] = State_c[NextState_c_Iterator];
+		end
+		for (NextState_f_Iterator = 0; (NextState_f_Iterator < 4); NextState_f_Iterator = (NextState_f_Iterator + 1))
+		begin
+			NextState_f[NextState_f_Iterator] = State_f[NextState_f_Iterator];
+		end
+		for (NextState_i1_Iterator = 0; (NextState_i1_Iterator < 4); NextState_i1_Iterator = (NextState_i1_Iterator + 1))
+		begin
+			NextState_i1[NextState_i1_Iterator] = State_i1[NextState_i1_Iterator];
+		end
+		for (NextState_i2_Iterator = 0; (NextState_i2_Iterator < 4); NextState_i2_Iterator = (NextState_i2_Iterator + 1))
+		begin
+			NextState_i2[NextState_i2_Iterator] = State_i2[NextState_i2_Iterator];
+		end
+		for (NextState_o_Iterator = 0; (NextState_o_Iterator < 4); NextState_o_Iterator = (NextState_o_Iterator + 1))
+		begin
+			NextState_o[NextState_o_Iterator] = State_o[NextState_o_Iterator];
+		end
+		if ((Inputs_store == 1))
+		begin
+			NextState_i1[Inputs_addr][7:4] = Inputs_i1_b;
+			NextState_i1[Inputs_addr][3:0] = Inputs_i1_a;
+			NextState_i2[Inputs_addr][7:4] = Inputs_i2_b;
+			NextState_i2[Inputs_addr][3:0] = Inputs_i2_a;
+		end
+		else
+		begin
+			for (i = 0; (i < 4); i = (i + 1))
+			begin
+				NextState_o[i][11:0] = ((resize_signed_6_12(resize_signed_4_6(State_i1[i][3:0]))) * (resize_signed_6_12(resize_signed_4_6(State_i2[i][3:0]))));
+				NextState_o[i][23:12] = ((resize_unsigned_6_12(resize_unsigned_4_6(State_i1[i][7:4]))) * (resize_unsigned_6_12(resize_unsigned_4_6(State_i2[i][7:4]))));
+			end
+		end
+		for (i1 = 0; (i1 < 4); i1 = (i1 + 1))
+		begin
+			NextState_c[i1][3:0] = (((Inputs_addr == 0)) ? StructsCombinationalIteratorModule_L75F9L101T10_StructsCombinationalIteratorModule_L90F13L94T14_StructsCombinationalIteratorModule_L92F55T74_Source : Inputs_i1_a);
+			NextState_c[i1][7:4] = (((Inputs_addr != 0)) ? StructsCombinationalIteratorModule_L75F9L101T10_StructsCombinationalIteratorModule_L90F13L94T14_StructsCombinationalIteratorModule_L93F55T74_Source : Inputs_i1_b);
+		end
+		for (i2 = 0; (i2 < 4); i2 = (i2 + 1))
+		begin
+			NextState_f[i2][3:0] = (Inputs_store ? Inputs_i1_b : Inputs_i1_a);
+			NextState_f[i2][7:4] = (((~Inputs_store)) ? Inputs_i1_a : Inputs_i1_b);
+		end
+	end
+	assign StructsCombinationalIteratorModule_L69F39T60_Expr_1 = {
+		{8{Inputs_s1[7]}},
+		Inputs_s1
+	}
+	;
+	assign StructsCombinationalIteratorModule_L69F39T60_Expr_2 = {
+		{8{Inputs_s2[7]}},
+		Inputs_s2
+	}
+	;
+	assign StructsCombinationalIteratorModule_L68F38T59_Expr_1 = {
+		{8{Inputs_s1[7]}},
+		Inputs_s1
+	}
+	;
+	assign StructsCombinationalIteratorModule_L68F38T59_Expr_2 = {
+		{8{Inputs_s2[7]}},
+		Inputs_s2
+	}
+	;
+	assign cStruct0_b = cStruct[0][7:4];
+	assign cStruct0_a = cStruct[0][3:0];
+	assign cStruct1_b = cStruct[1][7:4];
+	assign cStruct1_a = cStruct[1][3:0];
+	assign cStruct2_b = cStruct[2][7:4];
+	assign cStruct2_a = cStruct[2][3:0];
+	assign cStruct3_b = cStruct[3][7:4];
+	assign cStruct3_a = cStruct[3][3:0];
+	assign fStruct0_b = fStruct[0][7:4];
+	assign fStruct0_a = fStruct[0][3:0];
+	assign fStruct1_b = fStruct[1][7:4];
+	assign fStruct1_a = fStruct[1][3:0];
+	assign fStruct2_b = fStruct[2][7:4];
+	assign fStruct2_a = fStruct[2][3:0];
+	assign fStruct3_b = fStruct[3][7:4];
+	assign fStruct3_a = fStruct[3][3:0];
+	assign sStruct0_b = sStruct[0][23:12];
+	assign sStruct0_a = sStruct[0][11:0];
+	assign sStruct1_b = sStruct[1][23:12];
+	assign sStruct1_a = sStruct[1][11:0];
+	assign sStruct2_b = sStruct[2][23:12];
+	assign sStruct2_a = sStruct[2][11:0];
+	assign sStruct3_b = sStruct[3][23:12];
+	assign sStruct3_a = sStruct[3][11:0];
 	assign Inputs_addr = addr;
-	assign Inputs_i1[7:4] = i1_b;
-	assign Inputs_i1[3:0] = i1_a;
-	assign Inputs_i2[7:4] = i2_b;
-	assign Inputs_i2[3:0] = i2_a;
+	assign Inputs_i1_a = i1_a;
+	assign Inputs_i1_b = i1_b;
+	assign Inputs_i2_a = i2_a;
+	assign Inputs_i2_b = i2_b;
 	assign Inputs_s1 = s1;
 	assign Inputs_s2 = s2;
 	assign Inputs_store = store;
+	assign StructsCombinationalIteratorModule_L75F9L101T10_StructsCombinationalIteratorModule_L90F13L94T14_StructsCombinationalIteratorModule_L92F55T74_Source = StructsCombinationalIteratorModule_L75F9L101T10_StructsCombinationalIteratorModule_L90F13L94T14_StructsCombinationalIteratorModule_L92F71T73_Expr;
+	assign StructsCombinationalIteratorModule_L75F9L101T10_StructsCombinationalIteratorModule_L90F13L94T14_StructsCombinationalIteratorModule_L93F55T74_Source = StructsCombinationalIteratorModule_L75F9L101T10_StructsCombinationalIteratorModule_L90F13L94T14_StructsCombinationalIteratorModule_L93F71T73_Expr;
+	assign cStruct[0] = State_c[0];
+	assign cStruct[1] = State_c[1];
+	assign cStruct[2] = State_c[2];
+	assign cStruct[3] = State_c[3];
+	assign fStruct[0] = State_f[0];
+	assign fStruct[1] = State_f[1];
+	assign fStruct[2] = State_f[2];
+	assign fStruct[3] = State_f[3];
+	assign StructsCombinationalIteratorModule_L69F31T61_Cast = StructsCombinationalIteratorModule_L69F39T60_Expr[7:0];
+	assign sByte = StructsCombinationalIteratorModule_L69F31T61_Cast;
+	assign StructsCombinationalIteratorModule_L68F30T60_Cast = StructsCombinationalIteratorModule_L68F38T59_Expr;
+	assign sOut = StructsCombinationalIteratorModule_L68F30T60_Cast;
+	assign sStruct[0] = State_o[0];
+	assign sStruct[1] = State_o[1];
+	assign sStruct[2] = State_o[2];
+	assign sStruct[3] = State_o[3];
+	function
+	[5: 0] resize_signed_4_6;
+		input wire signed [3:0] source;
+		begin
+			resize_signed_4_6 = {
+				{2{source[3]}},
+				source
+			}
+			;
+		end
+	endfunction
+	function
+	[11: 0] resize_signed_6_12;
+		input wire signed [5:0] source;
+		begin
+			resize_signed_6_12 = {
+				{6{source[5]}},
+				source
+			}
+			;
+		end
+	endfunction
+	function
+	[5: 0] resize_unsigned_4_6;
+		input wire [3:0] source;
+		begin
+			resize_unsigned_4_6 = {
+				{2{1'b0}},
+				source
+			}
+			;
+		end
+	endfunction
+	function
+	[11: 0] resize_unsigned_6_12;
+		input wire [5:0] source;
+		begin
+			resize_unsigned_6_12 = {
+				{6{1'b0}},
+				source
+			}
+			;
+		end
+	endfunction
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

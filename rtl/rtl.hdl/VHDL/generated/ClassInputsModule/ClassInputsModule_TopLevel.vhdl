@@ -42,13 +42,13 @@ architecture rtl of ClassInputsModule_TopLevel is
 	-- false is a reserved name, declaration skipped
 	signal Inputs_iBool : std_logic := '0';
 	signal Inputs_iByte : unsigned(7 downto 0) := (others => '0');
-	signal Inputs_iValue : unsigned(41 downto 0) := (others => '0');
+	signal Inputs_iValue_iValue : unsigned(41 downto 0) := (others => '0');
 begin
 	process (iBool, iByte, iValue_iValue)
 	begin
 		Inputs_iBool <= iBool;
 		Inputs_iByte <= iByte;
-		Inputs_iValue <= iValue_iValue;
+		Inputs_iValue_iValue <= iValue_iValue;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

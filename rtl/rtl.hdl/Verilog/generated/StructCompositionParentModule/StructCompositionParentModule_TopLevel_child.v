@@ -23,8 +23,24 @@ module StructCompositionParentModule_TopLevel_child
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
-	input wire [75:0] iValue,
-	output wire [75:0] Output
+	input wire [15:0] iValue_intValue,
+	input wire [7:0] iValue_l1_byteValue,
+	input wire [1:0] iValue_l1_l2_bitArray,
+	input wire iValue_l1_l2_boolValue0,
+	input wire iValue_l1_l2_boolValue1,
+	input wire [3:0] iValue_l1_l2Array0,
+	input wire [3:0] iValue_l1_l2Array1,
+	input wire [19:0] iValue_l1Array0,
+	input wire [19:0] iValue_l1Array1,
+	output wire [15:0] Output_iValue_intValue,
+	output wire [7:0] Output_iValue_l1_byteValue,
+	output wire [1:0] Output_iValue_l1_l2_bitArray,
+	output wire Output_iValue_l1_l2_boolValue0,
+	output wire Output_iValue_l1_l2_boolValue1,
+	output wire [3:0] Output_iValue_l1_l2Array0,
+	output wire [3:0] Output_iValue_l1_l2Array1,
+	output wire [19:0] Output_iValue_l1Array0,
+	output wire [19:0] Output_iValue_l1Array1
 );
 	// [BEGIN USER SIGNALS]
 	// [END USER SIGNALS]
@@ -34,8 +50,39 @@ module StructCompositionParentModule_TopLevel_child
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [75: 0] Inputs_iValue;
-	assign Inputs_iValue = iValue;
+	wire [15: 0] Inputs_iValue_intValue;
+	wire [7: 0] Inputs_iValue_l1_byteValue;
+	wire [1: 0] Inputs_iValue_l1_l2_bitArray;
+	wire Inputs_iValue_l1_l2_boolValue [0 : 1];
+	wire [3 : 0] Inputs_iValue_l1_l2Array [0 : 1];
+	wire [19 : 0] Inputs_iValue_l1Array [0 : 1];
+	wire Output_iValue_l1_l2_boolValue [0 : 1];
+	wire [3 : 0] Output_iValue_l1_l2Array [0 : 1];
+	wire [19 : 0] Output_iValue_l1Array [0 : 1];
+	assign Output_iValue_l1_l2_boolValue0 = Output_iValue_l1_l2_boolValue[0];
+	assign Output_iValue_l1_l2_boolValue1 = Output_iValue_l1_l2_boolValue[1];
+	assign Output_iValue_l1_l2Array0 = Output_iValue_l1_l2Array[0];
+	assign Output_iValue_l1_l2Array1 = Output_iValue_l1_l2Array[1];
+	assign Output_iValue_l1Array0 = Output_iValue_l1Array[0];
+	assign Output_iValue_l1Array1 = Output_iValue_l1Array[1];
+	assign Inputs_iValue_intValue = iValue_intValue;
+	assign Inputs_iValue_l1_byteValue = iValue_l1_byteValue;
+	assign Inputs_iValue_l1_l2_bitArray = iValue_l1_l2_bitArray;
+	assign Inputs_iValue_l1_l2_boolValue[0] = iValue_l1_l2_boolValue0;
+	assign Inputs_iValue_l1_l2_boolValue[1] = iValue_l1_l2_boolValue1;
+	assign Inputs_iValue_l1_l2Array[0] = iValue_l1_l2Array0;
+	assign Inputs_iValue_l1_l2Array[1] = iValue_l1_l2Array1;
+	assign Inputs_iValue_l1Array[0] = iValue_l1Array0;
+	assign Inputs_iValue_l1Array[1] = iValue_l1Array1;
+	assign Output_iValue_l1Array[0] = Inputs_iValue_l1Array[0];
+	assign Output_iValue_l1Array[1] = Inputs_iValue_l1Array[1];
+	assign Output_iValue_l1_l2Array[0] = Inputs_iValue_l1_l2Array[0];
+	assign Output_iValue_l1_l2Array[1] = Inputs_iValue_l1_l2Array[1];
+	assign Output_iValue_l1_l2_boolValue[0] = Inputs_iValue_l1_l2_boolValue[0];
+	assign Output_iValue_l1_l2_boolValue[1] = Inputs_iValue_l1_l2_boolValue[1];
+	assign Output_iValue_l1_l2_bitArray = Inputs_iValue_l1_l2_bitArray;
+	assign Output_iValue_l1_byteValue = Inputs_iValue_l1_byteValue;
+	assign Output_iValue_intValue = Inputs_iValue_intValue;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

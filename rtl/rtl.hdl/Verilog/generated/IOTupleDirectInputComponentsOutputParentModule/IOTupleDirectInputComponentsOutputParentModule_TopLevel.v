@@ -192,54 +192,302 @@ module IOTupleDirectInputComponentsOutputParentModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [59: 0] Inputs_iTuple;
-	reg [59: 0] child_iTuple = 60'b000000000000000000000000000000000000000000000000000000000000;
-	wire [59: 0] child_Output_iTuple;
-	wire [59: 0] child_iTuple_child_iTuple_HardLink;
+	wire Inputs_iTuple_Item1;
+	wire [7: 0] Inputs_iTuple_Item2;
+	wire Inputs_iTuple_Item4_L1Flag;
+	wire Inputs_iTuple_Item4_L2_L2Flag;
+	wire [7: 0] Inputs_iTuple_Item4_L2Tuple_Item1;
+	wire Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag;
+	wire child_iTuple_Item1;
+	wire [7: 0] child_iTuple_Item2;
+	wire child_iTuple_Item4_L1Flag;
+	wire child_iTuple_Item4_L2_L2Flag;
+	wire [7: 0] child_iTuple_Item4_L2Tuple_Item1;
+	wire child_iTuple_Item4_L2Tuple_Item2_L2Flag;
+	wire child_Output_iTuple_Item1;
+	wire [7: 0] child_Output_iTuple_Item2;
+	wire child_Output_iTuple_Item4_L1Flag;
+	wire child_Output_iTuple_Item4_L2_L2Flag;
+	wire [7: 0] child_Output_iTuple_Item4_L2Tuple_Item1;
+	wire child_Output_iTuple_Item4_L2Tuple_Item2_L2Flag;
+	wire child_iTuple_Item1_child_iTuple_Item1_HardLink;
+	wire [7: 0] child_iTuple_Item2_child_iTuple_Item2_HardLink;
+	wire [3: 0] child_iTuple_Item30_child_iTuple_Item3_HardLink;
+	wire [3: 0] child_iTuple_Item31_child_iTuple_Item3_HardLink;
+	wire child_iTuple_Item4_L1Flag_child_iTuple_Item4_L1Flag_HardLink;
+	wire child_iTuple_Item4_L2_L2Flag_child_iTuple_Item4_L2_L2Flag_HardLink;
+	wire child_iTuple_Item4_L2_L2Values0_child_iTuple_Item4_L2_L2Values_HardLink;
+	wire child_iTuple_Item4_L2_L2Values1_child_iTuple_Item4_L2_L2Values_HardLink;
+	wire [6: 0] child_iTuple_Item4_L2Array0_child_iTuple_Item4_L2Array_HardLink;
+	wire [6: 0] child_iTuple_Item4_L2Array1_child_iTuple_Item4_L2Array_HardLink;
+	wire [7: 0] child_iTuple_Item4_L2Tuple_Item1_child_iTuple_Item4_L2Tuple_Item1_HardLink;
+	wire child_iTuple_Item4_L2Tuple_Item2_L2Flag_child_iTuple_Item4_L2Tuple_Item2_L2Flag_HardLink;
+	wire child_iTuple_Item4_L2Tuple_Item2_L2Values0_child_iTuple_Item4_L2Tuple_Item2_L2Values_HardLink;
+	wire child_iTuple_Item4_L2Tuple_Item2_L2Values1_child_iTuple_Item4_L2Tuple_Item2_L2Values_HardLink;
+	wire [6: 0] child_iTuple_Item4_L2Tuple_Item30_child_iTuple_Item4_L2Tuple_Item3_HardLink;
+	wire [6: 0] child_iTuple_Item4_L2Tuple_Item31_child_iTuple_Item4_L2Tuple_Item3_HardLink;
 	wire [53: 0] child_iTupleArray0_child_iTupleArray_HardLink;
 	wire [53: 0] child_iTupleArray1_child_iTupleArray_HardLink;
-	wire [59: 0] child_Output_iTuple_child_Output_iTuple_HardLink;
+	wire child_Output_iTuple_Item1_child_Output_iTuple_Item1_HardLink;
+	wire [7: 0] child_Output_iTuple_Item2_child_Output_iTuple_Item2_HardLink;
+	wire [3: 0] child_Output_iTuple_Item30_child_Output_iTuple_Item3_HardLink;
+	wire [3: 0] child_Output_iTuple_Item31_child_Output_iTuple_Item3_HardLink;
+	wire child_Output_iTuple_Item4_L1Flag_child_Output_iTuple_Item4_L1Flag_HardLink;
+	wire child_Output_iTuple_Item4_L2_L2Flag_child_Output_iTuple_Item4_L2_L2Flag_HardLink;
+	wire child_Output_iTuple_Item4_L2_L2Values0_child_Output_iTuple_Item4_L2_L2Values_HardLink;
+	wire child_Output_iTuple_Item4_L2_L2Values1_child_Output_iTuple_Item4_L2_L2Values_HardLink;
+	wire [6: 0] child_Output_iTuple_Item4_L2Array0_child_Output_iTuple_Item4_L2Array_HardLink;
+	wire [6: 0] child_Output_iTuple_Item4_L2Array1_child_Output_iTuple_Item4_L2Array_HardLink;
+	wire [7: 0] child_Output_iTuple_Item4_L2Tuple_Item1_child_Output_iTuple_Item4_L2Tuple_Item1_HardLink;
+	wire child_Output_iTuple_Item4_L2Tuple_Item2_L2Flag_child_Output_iTuple_Item4_L2Tuple_Item2_L2Flag_HardLink;
+	wire child_Output_iTuple_Item4_L2Tuple_Item2_L2Values0_child_Output_iTuple_Item4_L2Tuple_Item2_L2Values_HardLink;
+	wire child_Output_iTuple_Item4_L2Tuple_Item2_L2Values1_child_Output_iTuple_Item4_L2Tuple_Item2_L2Values_HardLink;
+	wire [6: 0] child_Output_iTuple_Item4_L2Tuple_Item30_child_Output_iTuple_Item4_L2Tuple_Item3_HardLink;
+	wire [6: 0] child_Output_iTuple_Item4_L2Tuple_Item31_child_Output_iTuple_Item4_L2Tuple_Item3_HardLink;
 	wire [53: 0] child_Output_iTupleArray0_child_Output_iTupleArray_HardLink;
 	wire [53: 0] child_Output_iTupleArray1_child_Output_iTupleArray_HardLink;
+	wire [3 : 0] Inputs_iTuple_Item3 [0 : 1];
+	wire Inputs_iTuple_Item4_L2_L2Values [0 : 1];
+	wire [6 : 0] Inputs_iTuple_Item4_L2Array [0 : 1];
+	wire Inputs_iTuple_Item4_L2Tuple_Item2_L2Values [0 : 1];
+	wire [6 : 0] Inputs_iTuple_Item4_L2Tuple_Item3 [0 : 1];
 	wire [53 : 0] Inputs_iTupleArray [0 : 1];
-	reg [53 : 0] child_iTupleArray [0 : 1];
+	wire [3 : 0] Output_iTuple_Item3 [0 : 1];
+	wire Output_iTuple_Item4_L2_L2Values [0 : 1];
+	wire [6 : 0] Output_iTuple_Item4_L2Array [0 : 1];
+	wire [2 : 0] Output_iTuple_Item4_L2Array0_L2Values [0 : 1];
+	wire [2 : 0] Output_iTuple_Item4_L2Array1_L2Values [0 : 1];
+	wire Output_iTuple_Item4_L2Tuple_Item2_L2Values [0 : 1];
+	wire [6 : 0] Output_iTuple_Item4_L2Tuple_Item3 [0 : 1];
+	wire [2 : 0] Output_iTuple_Item4_L2Tuple_Item30_L2Values [0 : 1];
+	wire [2 : 0] Output_iTuple_Item4_L2Tuple_Item31_L2Values [0 : 1];
+	wire [53 : 0] Output_iTupleArray [0 : 1];
+	wire Output_iTupleArray0_Item3_L2_L2Values [0 : 1];
+	wire [6 : 0] Output_iTupleArray0_Item3_L2Array [0 : 1];
+	wire [2 : 0] Output_iTupleArray0_Item3_L2Array0_L2Values [0 : 1];
+	wire [2 : 0] Output_iTupleArray0_Item3_L2Array1_L2Values [0 : 1];
+	wire Output_iTupleArray0_Item3_L2Tuple_Item2_L2Values [0 : 1];
+	wire [6 : 0] Output_iTupleArray0_Item3_L2Tuple_Item3 [0 : 1];
+	wire [2 : 0] Output_iTupleArray0_Item3_L2Tuple_Item30_L2Values [0 : 1];
+	wire [2 : 0] Output_iTupleArray0_Item3_L2Tuple_Item31_L2Values [0 : 1];
+	wire [2 : 0] Output_iTupleArray0_Item4 [0 : 1];
+	wire Output_iTupleArray0_Item40_L2Values [0 : 1];
+	wire Output_iTupleArray0_Item41_L2Values [0 : 1];
+	wire Output_iTupleArray1_Item3_L2_L2Values [0 : 1];
+	wire [6 : 0] Output_iTupleArray1_Item3_L2Array [0 : 1];
+	wire [2 : 0] Output_iTupleArray1_Item3_L2Array0_L2Values [0 : 1];
+	wire [2 : 0] Output_iTupleArray1_Item3_L2Array1_L2Values [0 : 1];
+	wire Output_iTupleArray1_Item3_L2Tuple_Item2_L2Values [0 : 1];
+	wire [6 : 0] Output_iTupleArray1_Item3_L2Tuple_Item3 [0 : 1];
+	wire [2 : 0] Output_iTupleArray1_Item3_L2Tuple_Item30_L2Values [0 : 1];
+	wire [2 : 0] Output_iTupleArray1_Item3_L2Tuple_Item31_L2Values [0 : 1];
+	wire [2 : 0] Output_iTupleArray1_Item4 [0 : 1];
+	wire Output_iTupleArray1_Item40_L2Values [0 : 1];
+	wire Output_iTupleArray1_Item41_L2Values [0 : 1];
+	wire [3 : 0] child_iTuple_Item3 [0 : 1];
+	wire child_iTuple_Item4_L2_L2Values [0 : 1];
+	wire [6 : 0] child_iTuple_Item4_L2Array [0 : 1];
+	wire child_iTuple_Item4_L2Tuple_Item2_L2Values [0 : 1];
+	wire [6 : 0] child_iTuple_Item4_L2Tuple_Item3 [0 : 1];
+	wire [53 : 0] child_iTupleArray [0 : 1];
+	wire [3 : 0] child_Output_iTuple_Item3 [0 : 1];
+	wire child_Output_iTuple_Item4_L2_L2Values [0 : 1];
+	wire [6 : 0] child_Output_iTuple_Item4_L2Array [0 : 1];
+	wire child_Output_iTuple_Item4_L2Tuple_Item2_L2Values [0 : 1];
+	wire [6 : 0] child_Output_iTuple_Item4_L2Tuple_Item3 [0 : 1];
 	wire [53 : 0] child_Output_iTupleArray [0 : 1];
 	IOTupleDirectInputComponentsOutputParentModule_TopLevel_child
 	IOTupleDirectInputComponentsOutputParentModule_TopLevel_child
 	(
 		// [BEGIN USER MAP FOR child]
 		// [END USER MAP FOR child]
-		.iTuple (child_iTuple_child_iTuple_HardLink),
+		.iTuple_Item1 (child_iTuple_Item1_child_iTuple_Item1_HardLink),
+		.iTuple_Item2 (child_iTuple_Item2_child_iTuple_Item2_HardLink),
+		.iTuple_Item30 (child_iTuple_Item30_child_iTuple_Item3_HardLink),
+		.iTuple_Item31 (child_iTuple_Item31_child_iTuple_Item3_HardLink),
+		.iTuple_Item4_L1Flag (child_iTuple_Item4_L1Flag_child_iTuple_Item4_L1Flag_HardLink),
+		.iTuple_Item4_L2_L2Flag (child_iTuple_Item4_L2_L2Flag_child_iTuple_Item4_L2_L2Flag_HardLink),
+		.iTuple_Item4_L2_L2Values0 (child_iTuple_Item4_L2_L2Values0_child_iTuple_Item4_L2_L2Values_HardLink),
+		.iTuple_Item4_L2_L2Values1 (child_iTuple_Item4_L2_L2Values1_child_iTuple_Item4_L2_L2Values_HardLink),
+		.iTuple_Item4_L2Array0 (child_iTuple_Item4_L2Array0_child_iTuple_Item4_L2Array_HardLink),
+		.iTuple_Item4_L2Array1 (child_iTuple_Item4_L2Array1_child_iTuple_Item4_L2Array_HardLink),
+		.iTuple_Item4_L2Tuple_Item1 (child_iTuple_Item4_L2Tuple_Item1_child_iTuple_Item4_L2Tuple_Item1_HardLink),
+		.iTuple_Item4_L2Tuple_Item2_L2Flag (child_iTuple_Item4_L2Tuple_Item2_L2Flag_child_iTuple_Item4_L2Tuple_Item2_L2Flag_HardLink),
+		.iTuple_Item4_L2Tuple_Item2_L2Values0 (child_iTuple_Item4_L2Tuple_Item2_L2Values0_child_iTuple_Item4_L2Tuple_Item2_L2Values_HardLink),
+		.iTuple_Item4_L2Tuple_Item2_L2Values1 (child_iTuple_Item4_L2Tuple_Item2_L2Values1_child_iTuple_Item4_L2Tuple_Item2_L2Values_HardLink),
+		.iTuple_Item4_L2Tuple_Item30 (child_iTuple_Item4_L2Tuple_Item30_child_iTuple_Item4_L2Tuple_Item3_HardLink),
+		.iTuple_Item4_L2Tuple_Item31 (child_iTuple_Item4_L2Tuple_Item31_child_iTuple_Item4_L2Tuple_Item3_HardLink),
 		.iTupleArray0 (child_iTupleArray0_child_iTupleArray_HardLink),
 		.iTupleArray1 (child_iTupleArray1_child_iTupleArray_HardLink),
-		.Output_iTuple (child_Output_iTuple_child_Output_iTuple_HardLink),
+		.Output_iTuple_Item1 (child_Output_iTuple_Item1_child_Output_iTuple_Item1_HardLink),
+		.Output_iTuple_Item2 (child_Output_iTuple_Item2_child_Output_iTuple_Item2_HardLink),
+		.Output_iTuple_Item30 (child_Output_iTuple_Item30_child_Output_iTuple_Item3_HardLink),
+		.Output_iTuple_Item31 (child_Output_iTuple_Item31_child_Output_iTuple_Item3_HardLink),
+		.Output_iTuple_Item4_L1Flag (child_Output_iTuple_Item4_L1Flag_child_Output_iTuple_Item4_L1Flag_HardLink),
+		.Output_iTuple_Item4_L2_L2Flag (child_Output_iTuple_Item4_L2_L2Flag_child_Output_iTuple_Item4_L2_L2Flag_HardLink),
+		.Output_iTuple_Item4_L2_L2Values0 (child_Output_iTuple_Item4_L2_L2Values0_child_Output_iTuple_Item4_L2_L2Values_HardLink),
+		.Output_iTuple_Item4_L2_L2Values1 (child_Output_iTuple_Item4_L2_L2Values1_child_Output_iTuple_Item4_L2_L2Values_HardLink),
+		.Output_iTuple_Item4_L2Array0 (child_Output_iTuple_Item4_L2Array0_child_Output_iTuple_Item4_L2Array_HardLink),
+		.Output_iTuple_Item4_L2Array1 (child_Output_iTuple_Item4_L2Array1_child_Output_iTuple_Item4_L2Array_HardLink),
+		.Output_iTuple_Item4_L2Tuple_Item1 (child_Output_iTuple_Item4_L2Tuple_Item1_child_Output_iTuple_Item4_L2Tuple_Item1_HardLink),
+		.Output_iTuple_Item4_L2Tuple_Item2_L2Flag (child_Output_iTuple_Item4_L2Tuple_Item2_L2Flag_child_Output_iTuple_Item4_L2Tuple_Item2_L2Flag_HardLink),
+		.Output_iTuple_Item4_L2Tuple_Item2_L2Values0 (child_Output_iTuple_Item4_L2Tuple_Item2_L2Values0_child_Output_iTuple_Item4_L2Tuple_Item2_L2Values_HardLink),
+		.Output_iTuple_Item4_L2Tuple_Item2_L2Values1 (child_Output_iTuple_Item4_L2Tuple_Item2_L2Values1_child_Output_iTuple_Item4_L2Tuple_Item2_L2Values_HardLink),
+		.Output_iTuple_Item4_L2Tuple_Item30 (child_Output_iTuple_Item4_L2Tuple_Item30_child_Output_iTuple_Item4_L2Tuple_Item3_HardLink),
+		.Output_iTuple_Item4_L2Tuple_Item31 (child_Output_iTuple_Item4_L2Tuple_Item31_child_Output_iTuple_Item4_L2Tuple_Item3_HardLink),
 		.Output_iTupleArray0 (child_Output_iTupleArray0_child_Output_iTupleArray_HardLink),
 		.Output_iTupleArray1 (child_Output_iTupleArray1_child_Output_iTupleArray_HardLink)
 	);
-	assign Inputs_iTuple[59] = iTuple_Item1;
-	assign Inputs_iTuple[58:51] = iTuple_Item2;
-	assign Inputs_iTuple[50:47] = iTuple_Item31;
-	assign Inputs_iTuple[46:43] = iTuple_Item30;
-	assign Inputs_iTuple[42:35] = iTuple_Item4_L2Tuple_Item1;
-	assign Inputs_iTuple[34] = iTuple_Item4_L2Tuple_Item2_L2Values1;
-	assign Inputs_iTuple[33] = iTuple_Item4_L2Tuple_Item2_L2Values0;
-	assign Inputs_iTuple[32] = iTuple_Item4_L2Tuple_Item2_L2Flag;
-	assign Inputs_iTuple[31:29] = iTuple_Item4_L2Tuple_Item31_L2Values1;
-	assign Inputs_iTuple[28:26] = iTuple_Item4_L2Tuple_Item31_L2Values0;
-	assign Inputs_iTuple[25] = iTuple_Item4_L2Tuple_Item31_L2Flag;
-	assign Inputs_iTuple[24:22] = iTuple_Item4_L2Tuple_Item30_L2Values1;
-	assign Inputs_iTuple[21:19] = iTuple_Item4_L2Tuple_Item30_L2Values0;
-	assign Inputs_iTuple[18] = iTuple_Item4_L2Tuple_Item30_L2Flag;
-	assign Inputs_iTuple[17:15] = iTuple_Item4_L2Array1_L2Values1;
-	assign Inputs_iTuple[14:12] = iTuple_Item4_L2Array1_L2Values0;
-	assign Inputs_iTuple[11] = iTuple_Item4_L2Array1_L2Flag;
-	assign Inputs_iTuple[10:8] = iTuple_Item4_L2Array0_L2Values1;
-	assign Inputs_iTuple[7:5] = iTuple_Item4_L2Array0_L2Values0;
-	assign Inputs_iTuple[4] = iTuple_Item4_L2Array0_L2Flag;
-	assign Inputs_iTuple[3] = iTuple_Item4_L2_L2Values1;
-	assign Inputs_iTuple[2] = iTuple_Item4_L2_L2Values0;
-	assign Inputs_iTuple[1] = iTuple_Item4_L2_L2Flag;
-	assign Inputs_iTuple[0] = iTuple_Item4_L1Flag;
+	assign Output_iTuple_Item30 = Output_iTuple_Item3[0];
+	assign Output_iTuple_Item31 = Output_iTuple_Item3[1];
+	assign Output_iTuple_Item4_L2_L2Values0 = Output_iTuple_Item4_L2_L2Values[0];
+	assign Output_iTuple_Item4_L2_L2Values1 = Output_iTuple_Item4_L2_L2Values[1];
+	assign Output_iTuple_Item4_L2Array0_L2Values0 = Output_iTuple_Item4_L2Array0_L2Values[0];
+	assign Output_iTuple_Item4_L2Array0_L2Values1 = Output_iTuple_Item4_L2Array0_L2Values[1];
+	assign Output_iTuple_Item4_L2Array0_L2Values[1] = Output_iTuple_Item4_L2Array[0][6:4];
+	assign Output_iTuple_Item4_L2Array0_L2Values[0] = Output_iTuple_Item4_L2Array[0][3:1];
+	assign Output_iTuple_Item4_L2Array0_L2Flag = Output_iTuple_Item4_L2Array[0][0];
+	assign Output_iTuple_Item4_L2Array1_L2Values0 = Output_iTuple_Item4_L2Array1_L2Values[0];
+	assign Output_iTuple_Item4_L2Array1_L2Values1 = Output_iTuple_Item4_L2Array1_L2Values[1];
+	assign Output_iTuple_Item4_L2Array1_L2Values[1] = Output_iTuple_Item4_L2Array[1][6:4];
+	assign Output_iTuple_Item4_L2Array1_L2Values[0] = Output_iTuple_Item4_L2Array[1][3:1];
+	assign Output_iTuple_Item4_L2Array1_L2Flag = Output_iTuple_Item4_L2Array[1][0];
+	assign Output_iTuple_Item4_L2Tuple_Item2_L2Values0 = Output_iTuple_Item4_L2Tuple_Item2_L2Values[0];
+	assign Output_iTuple_Item4_L2Tuple_Item2_L2Values1 = Output_iTuple_Item4_L2Tuple_Item2_L2Values[1];
+	assign Output_iTuple_Item4_L2Tuple_Item30_L2Values0 = Output_iTuple_Item4_L2Tuple_Item30_L2Values[0];
+	assign Output_iTuple_Item4_L2Tuple_Item30_L2Values1 = Output_iTuple_Item4_L2Tuple_Item30_L2Values[1];
+	assign Output_iTuple_Item4_L2Tuple_Item30_L2Values[1] = Output_iTuple_Item4_L2Tuple_Item3[0][6:4];
+	assign Output_iTuple_Item4_L2Tuple_Item30_L2Values[0] = Output_iTuple_Item4_L2Tuple_Item3[0][3:1];
+	assign Output_iTuple_Item4_L2Tuple_Item30_L2Flag = Output_iTuple_Item4_L2Tuple_Item3[0][0];
+	assign Output_iTuple_Item4_L2Tuple_Item31_L2Values0 = Output_iTuple_Item4_L2Tuple_Item31_L2Values[0];
+	assign Output_iTuple_Item4_L2Tuple_Item31_L2Values1 = Output_iTuple_Item4_L2Tuple_Item31_L2Values[1];
+	assign Output_iTuple_Item4_L2Tuple_Item31_L2Values[1] = Output_iTuple_Item4_L2Tuple_Item3[1][6:4];
+	assign Output_iTuple_Item4_L2Tuple_Item31_L2Values[0] = Output_iTuple_Item4_L2Tuple_Item3[1][3:1];
+	assign Output_iTuple_Item4_L2Tuple_Item31_L2Flag = Output_iTuple_Item4_L2Tuple_Item3[1][0];
+	assign Output_iTupleArray0_Item3_L2_L2Values0 = Output_iTupleArray0_Item3_L2_L2Values[0];
+	assign Output_iTupleArray0_Item3_L2_L2Values1 = Output_iTupleArray0_Item3_L2_L2Values[1];
+	assign Output_iTupleArray0_Item3_L2Array0_L2Values0 = Output_iTupleArray0_Item3_L2Array0_L2Values[0];
+	assign Output_iTupleArray0_Item3_L2Array0_L2Values1 = Output_iTupleArray0_Item3_L2Array0_L2Values[1];
+	assign Output_iTupleArray0_Item3_L2Array0_L2Values[1] = Output_iTupleArray0_Item3_L2Array[0][6:4];
+	assign Output_iTupleArray0_Item3_L2Array0_L2Values[0] = Output_iTupleArray0_Item3_L2Array[0][3:1];
+	assign Output_iTupleArray0_Item3_L2Array0_L2Flag = Output_iTupleArray0_Item3_L2Array[0][0];
+	assign Output_iTupleArray0_Item3_L2Array1_L2Values0 = Output_iTupleArray0_Item3_L2Array1_L2Values[0];
+	assign Output_iTupleArray0_Item3_L2Array1_L2Values1 = Output_iTupleArray0_Item3_L2Array1_L2Values[1];
+	assign Output_iTupleArray0_Item3_L2Array1_L2Values[1] = Output_iTupleArray0_Item3_L2Array[1][6:4];
+	assign Output_iTupleArray0_Item3_L2Array1_L2Values[0] = Output_iTupleArray0_Item3_L2Array[1][3:1];
+	assign Output_iTupleArray0_Item3_L2Array1_L2Flag = Output_iTupleArray0_Item3_L2Array[1][0];
+	assign Output_iTupleArray0_Item3_L2Tuple_Item2_L2Values0 = Output_iTupleArray0_Item3_L2Tuple_Item2_L2Values[0];
+	assign Output_iTupleArray0_Item3_L2Tuple_Item2_L2Values1 = Output_iTupleArray0_Item3_L2Tuple_Item2_L2Values[1];
+	assign Output_iTupleArray0_Item3_L2Tuple_Item30_L2Values0 = Output_iTupleArray0_Item3_L2Tuple_Item30_L2Values[0];
+	assign Output_iTupleArray0_Item3_L2Tuple_Item30_L2Values1 = Output_iTupleArray0_Item3_L2Tuple_Item30_L2Values[1];
+	assign Output_iTupleArray0_Item3_L2Tuple_Item30_L2Values[1] = Output_iTupleArray0_Item3_L2Tuple_Item3[0][6:4];
+	assign Output_iTupleArray0_Item3_L2Tuple_Item30_L2Values[0] = Output_iTupleArray0_Item3_L2Tuple_Item3[0][3:1];
+	assign Output_iTupleArray0_Item3_L2Tuple_Item30_L2Flag = Output_iTupleArray0_Item3_L2Tuple_Item3[0][0];
+	assign Output_iTupleArray0_Item3_L2Tuple_Item31_L2Values0 = Output_iTupleArray0_Item3_L2Tuple_Item31_L2Values[0];
+	assign Output_iTupleArray0_Item3_L2Tuple_Item31_L2Values1 = Output_iTupleArray0_Item3_L2Tuple_Item31_L2Values[1];
+	assign Output_iTupleArray0_Item3_L2Tuple_Item31_L2Values[1] = Output_iTupleArray0_Item3_L2Tuple_Item3[1][6:4];
+	assign Output_iTupleArray0_Item3_L2Tuple_Item31_L2Values[0] = Output_iTupleArray0_Item3_L2Tuple_Item3[1][3:1];
+	assign Output_iTupleArray0_Item3_L2Tuple_Item31_L2Flag = Output_iTupleArray0_Item3_L2Tuple_Item3[1][0];
+	assign Output_iTupleArray0_Item40_L2Values0 = Output_iTupleArray0_Item40_L2Values[0];
+	assign Output_iTupleArray0_Item40_L2Values1 = Output_iTupleArray0_Item40_L2Values[1];
+	assign Output_iTupleArray0_Item40_L2Values[1] = Output_iTupleArray0_Item4[0][2];
+	assign Output_iTupleArray0_Item40_L2Values[0] = Output_iTupleArray0_Item4[0][1];
+	assign Output_iTupleArray0_Item40_L2Flag = Output_iTupleArray0_Item4[0][0];
+	assign Output_iTupleArray0_Item41_L2Values0 = Output_iTupleArray0_Item41_L2Values[0];
+	assign Output_iTupleArray0_Item41_L2Values1 = Output_iTupleArray0_Item41_L2Values[1];
+	assign Output_iTupleArray0_Item41_L2Values[1] = Output_iTupleArray0_Item4[1][2];
+	assign Output_iTupleArray0_Item41_L2Values[0] = Output_iTupleArray0_Item4[1][1];
+	assign Output_iTupleArray0_Item41_L2Flag = Output_iTupleArray0_Item4[1][0];
+	assign Output_iTupleArray0_Item1 = Output_iTupleArray[0][53];
+	assign Output_iTupleArray0_Item2 = Output_iTupleArray[0][52:49];
+	assign Output_iTupleArray0_Item3_L2Tuple_Item1 = Output_iTupleArray[0][48:41];
+	assign Output_iTupleArray0_Item3_L2Tuple_Item2_L2Values[1] = Output_iTupleArray[0][40];
+	assign Output_iTupleArray0_Item3_L2Tuple_Item2_L2Values[0] = Output_iTupleArray[0][39];
+	assign Output_iTupleArray0_Item3_L2Tuple_Item2_L2Flag = Output_iTupleArray[0][38];
+	assign Output_iTupleArray0_Item3_L2Tuple_Item3[1] = Output_iTupleArray[0][37:31];
+	assign Output_iTupleArray0_Item3_L2Tuple_Item3[0] = Output_iTupleArray[0][30:24];
+	assign Output_iTupleArray0_Item3_L2Array[1] = Output_iTupleArray[0][23:17];
+	assign Output_iTupleArray0_Item3_L2Array[0] = Output_iTupleArray[0][16:10];
+	assign Output_iTupleArray0_Item3_L2_L2Values[1] = Output_iTupleArray[0][9];
+	assign Output_iTupleArray0_Item3_L2_L2Values[0] = Output_iTupleArray[0][8];
+	assign Output_iTupleArray0_Item3_L2_L2Flag = Output_iTupleArray[0][7];
+	assign Output_iTupleArray0_Item3_L1Flag = Output_iTupleArray[0][6];
+	assign Output_iTupleArray0_Item4[1] = Output_iTupleArray[0][5:3];
+	assign Output_iTupleArray0_Item4[0] = Output_iTupleArray[0][2:0];
+	assign Output_iTupleArray1_Item3_L2_L2Values0 = Output_iTupleArray1_Item3_L2_L2Values[0];
+	assign Output_iTupleArray1_Item3_L2_L2Values1 = Output_iTupleArray1_Item3_L2_L2Values[1];
+	assign Output_iTupleArray1_Item3_L2Array0_L2Values0 = Output_iTupleArray1_Item3_L2Array0_L2Values[0];
+	assign Output_iTupleArray1_Item3_L2Array0_L2Values1 = Output_iTupleArray1_Item3_L2Array0_L2Values[1];
+	assign Output_iTupleArray1_Item3_L2Array0_L2Values[1] = Output_iTupleArray1_Item3_L2Array[0][6:4];
+	assign Output_iTupleArray1_Item3_L2Array0_L2Values[0] = Output_iTupleArray1_Item3_L2Array[0][3:1];
+	assign Output_iTupleArray1_Item3_L2Array0_L2Flag = Output_iTupleArray1_Item3_L2Array[0][0];
+	assign Output_iTupleArray1_Item3_L2Array1_L2Values0 = Output_iTupleArray1_Item3_L2Array1_L2Values[0];
+	assign Output_iTupleArray1_Item3_L2Array1_L2Values1 = Output_iTupleArray1_Item3_L2Array1_L2Values[1];
+	assign Output_iTupleArray1_Item3_L2Array1_L2Values[1] = Output_iTupleArray1_Item3_L2Array[1][6:4];
+	assign Output_iTupleArray1_Item3_L2Array1_L2Values[0] = Output_iTupleArray1_Item3_L2Array[1][3:1];
+	assign Output_iTupleArray1_Item3_L2Array1_L2Flag = Output_iTupleArray1_Item3_L2Array[1][0];
+	assign Output_iTupleArray1_Item3_L2Tuple_Item2_L2Values0 = Output_iTupleArray1_Item3_L2Tuple_Item2_L2Values[0];
+	assign Output_iTupleArray1_Item3_L2Tuple_Item2_L2Values1 = Output_iTupleArray1_Item3_L2Tuple_Item2_L2Values[1];
+	assign Output_iTupleArray1_Item3_L2Tuple_Item30_L2Values0 = Output_iTupleArray1_Item3_L2Tuple_Item30_L2Values[0];
+	assign Output_iTupleArray1_Item3_L2Tuple_Item30_L2Values1 = Output_iTupleArray1_Item3_L2Tuple_Item30_L2Values[1];
+	assign Output_iTupleArray1_Item3_L2Tuple_Item30_L2Values[1] = Output_iTupleArray1_Item3_L2Tuple_Item3[0][6:4];
+	assign Output_iTupleArray1_Item3_L2Tuple_Item30_L2Values[0] = Output_iTupleArray1_Item3_L2Tuple_Item3[0][3:1];
+	assign Output_iTupleArray1_Item3_L2Tuple_Item30_L2Flag = Output_iTupleArray1_Item3_L2Tuple_Item3[0][0];
+	assign Output_iTupleArray1_Item3_L2Tuple_Item31_L2Values0 = Output_iTupleArray1_Item3_L2Tuple_Item31_L2Values[0];
+	assign Output_iTupleArray1_Item3_L2Tuple_Item31_L2Values1 = Output_iTupleArray1_Item3_L2Tuple_Item31_L2Values[1];
+	assign Output_iTupleArray1_Item3_L2Tuple_Item31_L2Values[1] = Output_iTupleArray1_Item3_L2Tuple_Item3[1][6:4];
+	assign Output_iTupleArray1_Item3_L2Tuple_Item31_L2Values[0] = Output_iTupleArray1_Item3_L2Tuple_Item3[1][3:1];
+	assign Output_iTupleArray1_Item3_L2Tuple_Item31_L2Flag = Output_iTupleArray1_Item3_L2Tuple_Item3[1][0];
+	assign Output_iTupleArray1_Item40_L2Values0 = Output_iTupleArray1_Item40_L2Values[0];
+	assign Output_iTupleArray1_Item40_L2Values1 = Output_iTupleArray1_Item40_L2Values[1];
+	assign Output_iTupleArray1_Item40_L2Values[1] = Output_iTupleArray1_Item4[0][2];
+	assign Output_iTupleArray1_Item40_L2Values[0] = Output_iTupleArray1_Item4[0][1];
+	assign Output_iTupleArray1_Item40_L2Flag = Output_iTupleArray1_Item4[0][0];
+	assign Output_iTupleArray1_Item41_L2Values0 = Output_iTupleArray1_Item41_L2Values[0];
+	assign Output_iTupleArray1_Item41_L2Values1 = Output_iTupleArray1_Item41_L2Values[1];
+	assign Output_iTupleArray1_Item41_L2Values[1] = Output_iTupleArray1_Item4[1][2];
+	assign Output_iTupleArray1_Item41_L2Values[0] = Output_iTupleArray1_Item4[1][1];
+	assign Output_iTupleArray1_Item41_L2Flag = Output_iTupleArray1_Item4[1][0];
+	assign Output_iTupleArray1_Item1 = Output_iTupleArray[1][53];
+	assign Output_iTupleArray1_Item2 = Output_iTupleArray[1][52:49];
+	assign Output_iTupleArray1_Item3_L2Tuple_Item1 = Output_iTupleArray[1][48:41];
+	assign Output_iTupleArray1_Item3_L2Tuple_Item2_L2Values[1] = Output_iTupleArray[1][40];
+	assign Output_iTupleArray1_Item3_L2Tuple_Item2_L2Values[0] = Output_iTupleArray[1][39];
+	assign Output_iTupleArray1_Item3_L2Tuple_Item2_L2Flag = Output_iTupleArray[1][38];
+	assign Output_iTupleArray1_Item3_L2Tuple_Item3[1] = Output_iTupleArray[1][37:31];
+	assign Output_iTupleArray1_Item3_L2Tuple_Item3[0] = Output_iTupleArray[1][30:24];
+	assign Output_iTupleArray1_Item3_L2Array[1] = Output_iTupleArray[1][23:17];
+	assign Output_iTupleArray1_Item3_L2Array[0] = Output_iTupleArray[1][16:10];
+	assign Output_iTupleArray1_Item3_L2_L2Values[1] = Output_iTupleArray[1][9];
+	assign Output_iTupleArray1_Item3_L2_L2Values[0] = Output_iTupleArray[1][8];
+	assign Output_iTupleArray1_Item3_L2_L2Flag = Output_iTupleArray[1][7];
+	assign Output_iTupleArray1_Item3_L1Flag = Output_iTupleArray[1][6];
+	assign Output_iTupleArray1_Item4[1] = Output_iTupleArray[1][5:3];
+	assign Output_iTupleArray1_Item4[0] = Output_iTupleArray[1][2:0];
+	assign Inputs_iTuple_Item1 = iTuple_Item1;
+	assign Inputs_iTuple_Item2 = iTuple_Item2;
+	assign Inputs_iTuple_Item3[0] = iTuple_Item30;
+	assign Inputs_iTuple_Item3[1] = iTuple_Item31;
+	assign Inputs_iTuple_Item4_L1Flag = iTuple_Item4_L1Flag;
+	assign Inputs_iTuple_Item4_L2_L2Flag = iTuple_Item4_L2_L2Flag;
+	assign Inputs_iTuple_Item4_L2_L2Values[0] = iTuple_Item4_L2_L2Values0;
+	assign Inputs_iTuple_Item4_L2_L2Values[1] = iTuple_Item4_L2_L2Values1;
+	assign Inputs_iTuple_Item4_L2Array[0][6:4] = iTuple_Item4_L2Array0_L2Values1;
+	assign Inputs_iTuple_Item4_L2Array[0][3:1] = iTuple_Item4_L2Array0_L2Values0;
+	assign Inputs_iTuple_Item4_L2Array[0][0] = iTuple_Item4_L2Array0_L2Flag;
+	assign Inputs_iTuple_Item4_L2Array[1][6:4] = iTuple_Item4_L2Array1_L2Values1;
+	assign Inputs_iTuple_Item4_L2Array[1][3:1] = iTuple_Item4_L2Array1_L2Values0;
+	assign Inputs_iTuple_Item4_L2Array[1][0] = iTuple_Item4_L2Array1_L2Flag;
+	assign Inputs_iTuple_Item4_L2Tuple_Item1 = iTuple_Item4_L2Tuple_Item1;
+	assign Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag = iTuple_Item4_L2Tuple_Item2_L2Flag;
+	assign Inputs_iTuple_Item4_L2Tuple_Item2_L2Values[0] = iTuple_Item4_L2Tuple_Item2_L2Values0;
+	assign Inputs_iTuple_Item4_L2Tuple_Item2_L2Values[1] = iTuple_Item4_L2Tuple_Item2_L2Values1;
+	assign Inputs_iTuple_Item4_L2Tuple_Item3[0][6:4] = iTuple_Item4_L2Tuple_Item30_L2Values1;
+	assign Inputs_iTuple_Item4_L2Tuple_Item3[0][3:1] = iTuple_Item4_L2Tuple_Item30_L2Values0;
+	assign Inputs_iTuple_Item4_L2Tuple_Item3[0][0] = iTuple_Item4_L2Tuple_Item30_L2Flag;
+	assign Inputs_iTuple_Item4_L2Tuple_Item3[1][6:4] = iTuple_Item4_L2Tuple_Item31_L2Values1;
+	assign Inputs_iTuple_Item4_L2Tuple_Item3[1][3:1] = iTuple_Item4_L2Tuple_Item31_L2Values0;
+	assign Inputs_iTuple_Item4_L2Tuple_Item3[1][0] = iTuple_Item4_L2Tuple_Item31_L2Flag;
 	assign Inputs_iTupleArray[0][53] = iTupleArray0_Item1;
 	assign Inputs_iTupleArray[0][52:49] = iTupleArray0_Item2;
 	assign Inputs_iTupleArray[0][48:41] = iTupleArray0_Item3_L2Tuple_Item1;
@@ -296,10 +544,76 @@ module IOTupleDirectInputComponentsOutputParentModule_TopLevel
 	assign Inputs_iTupleArray[1][2] = iTupleArray1_Item40_L2Values1;
 	assign Inputs_iTupleArray[1][1] = iTupleArray1_Item40_L2Values0;
 	assign Inputs_iTupleArray[1][0] = iTupleArray1_Item40_L2Flag;
-	assign child_iTuple_child_iTuple_HardLink = child_iTuple;
+	assign child_iTuple_Item1 = Inputs_iTuple_Item1;
+	assign child_iTuple_Item2 = Inputs_iTuple_Item2;
+	assign child_iTuple_Item3[0] = Inputs_iTuple_Item3[0];
+	assign child_iTuple_Item3[1] = Inputs_iTuple_Item3[1];
+	assign child_iTuple_Item4_L1Flag = Inputs_iTuple_Item4_L1Flag;
+	assign child_iTuple_Item4_L2_L2Flag = Inputs_iTuple_Item4_L2_L2Flag;
+	assign child_iTuple_Item4_L2_L2Values[0] = Inputs_iTuple_Item4_L2_L2Values[0];
+	assign child_iTuple_Item4_L2_L2Values[1] = Inputs_iTuple_Item4_L2_L2Values[1];
+	assign child_iTuple_Item4_L2Array[0] = Inputs_iTuple_Item4_L2Array[0];
+	assign child_iTuple_Item4_L2Array[1] = Inputs_iTuple_Item4_L2Array[1];
+	assign child_iTuple_Item4_L2Tuple_Item1 = Inputs_iTuple_Item4_L2Tuple_Item1;
+	assign child_iTuple_Item4_L2Tuple_Item2_L2Flag = Inputs_iTuple_Item4_L2Tuple_Item2_L2Flag;
+	assign child_iTuple_Item4_L2Tuple_Item2_L2Values[0] = Inputs_iTuple_Item4_L2Tuple_Item2_L2Values[0];
+	assign child_iTuple_Item4_L2Tuple_Item2_L2Values[1] = Inputs_iTuple_Item4_L2Tuple_Item2_L2Values[1];
+	assign child_iTuple_Item4_L2Tuple_Item3[0] = Inputs_iTuple_Item4_L2Tuple_Item3[0];
+	assign child_iTuple_Item4_L2Tuple_Item3[1] = Inputs_iTuple_Item4_L2Tuple_Item3[1];
+	assign child_iTupleArray[0] = Inputs_iTupleArray[0];
+	assign child_iTupleArray[1] = Inputs_iTupleArray[1];
+	assign Output_iTuple_Item1 = child_Output_iTuple_Item1;
+	assign Output_iTuple_Item2 = child_Output_iTuple_Item2;
+	assign Output_iTuple_Item3[0] = child_Output_iTuple_Item3[0];
+	assign Output_iTuple_Item3[1] = child_Output_iTuple_Item3[1];
+	assign Output_iTuple_Item4_L2Tuple_Item1 = child_Output_iTuple_Item4_L2Tuple_Item1;
+	assign Output_iTuple_Item4_L2Tuple_Item2_L2Values[0] = child_Output_iTuple_Item4_L2Tuple_Item2_L2Values[0];
+	assign Output_iTuple_Item4_L2Tuple_Item2_L2Values[1] = child_Output_iTuple_Item4_L2Tuple_Item2_L2Values[1];
+	assign Output_iTuple_Item4_L2Tuple_Item2_L2Flag = child_Output_iTuple_Item4_L2Tuple_Item2_L2Flag;
+	assign Output_iTuple_Item4_L2Tuple_Item3[0] = child_Output_iTuple_Item4_L2Tuple_Item3[0];
+	assign Output_iTuple_Item4_L2Tuple_Item3[1] = child_Output_iTuple_Item4_L2Tuple_Item3[1];
+	assign Output_iTuple_Item4_L2Array[0] = child_Output_iTuple_Item4_L2Array[0];
+	assign Output_iTuple_Item4_L2Array[1] = child_Output_iTuple_Item4_L2Array[1];
+	assign Output_iTuple_Item4_L2_L2Values[0] = child_Output_iTuple_Item4_L2_L2Values[0];
+	assign Output_iTuple_Item4_L2_L2Values[1] = child_Output_iTuple_Item4_L2_L2Values[1];
+	assign Output_iTuple_Item4_L2_L2Flag = child_Output_iTuple_Item4_L2_L2Flag;
+	assign Output_iTuple_Item4_L1Flag = child_Output_iTuple_Item4_L1Flag;
+	assign Output_iTupleArray[0] = child_Output_iTupleArray[0];
+	assign Output_iTupleArray[1] = child_Output_iTupleArray[1];
+	assign child_iTuple_Item1_child_iTuple_Item1_HardLink = child_iTuple_Item1;
+	assign child_iTuple_Item2_child_iTuple_Item2_HardLink = child_iTuple_Item2;
+	assign child_iTuple_Item30_child_iTuple_Item3_HardLink = child_iTuple_Item3[0];
+	assign child_iTuple_Item31_child_iTuple_Item3_HardLink = child_iTuple_Item3[1];
+	assign child_iTuple_Item4_L1Flag_child_iTuple_Item4_L1Flag_HardLink = child_iTuple_Item4_L1Flag;
+	assign child_iTuple_Item4_L2_L2Flag_child_iTuple_Item4_L2_L2Flag_HardLink = child_iTuple_Item4_L2_L2Flag;
+	assign child_iTuple_Item4_L2_L2Values0_child_iTuple_Item4_L2_L2Values_HardLink = child_iTuple_Item4_L2_L2Values[0];
+	assign child_iTuple_Item4_L2_L2Values1_child_iTuple_Item4_L2_L2Values_HardLink = child_iTuple_Item4_L2_L2Values[1];
+	assign child_iTuple_Item4_L2Array0_child_iTuple_Item4_L2Array_HardLink = child_iTuple_Item4_L2Array[0];
+	assign child_iTuple_Item4_L2Array1_child_iTuple_Item4_L2Array_HardLink = child_iTuple_Item4_L2Array[1];
+	assign child_iTuple_Item4_L2Tuple_Item1_child_iTuple_Item4_L2Tuple_Item1_HardLink = child_iTuple_Item4_L2Tuple_Item1;
+	assign child_iTuple_Item4_L2Tuple_Item2_L2Flag_child_iTuple_Item4_L2Tuple_Item2_L2Flag_HardLink = child_iTuple_Item4_L2Tuple_Item2_L2Flag;
+	assign child_iTuple_Item4_L2Tuple_Item2_L2Values0_child_iTuple_Item4_L2Tuple_Item2_L2Values_HardLink = child_iTuple_Item4_L2Tuple_Item2_L2Values[0];
+	assign child_iTuple_Item4_L2Tuple_Item2_L2Values1_child_iTuple_Item4_L2Tuple_Item2_L2Values_HardLink = child_iTuple_Item4_L2Tuple_Item2_L2Values[1];
+	assign child_iTuple_Item4_L2Tuple_Item30_child_iTuple_Item4_L2Tuple_Item3_HardLink = child_iTuple_Item4_L2Tuple_Item3[0];
+	assign child_iTuple_Item4_L2Tuple_Item31_child_iTuple_Item4_L2Tuple_Item3_HardLink = child_iTuple_Item4_L2Tuple_Item3[1];
 	assign child_iTupleArray0_child_iTupleArray_HardLink = child_iTupleArray[0];
 	assign child_iTupleArray1_child_iTupleArray_HardLink = child_iTupleArray[1];
-	assign child_Output_iTuple = child_Output_iTuple_child_Output_iTuple_HardLink;
+	assign child_Output_iTuple_Item1 = child_Output_iTuple_Item1_child_Output_iTuple_Item1_HardLink;
+	assign child_Output_iTuple_Item2 = child_Output_iTuple_Item2_child_Output_iTuple_Item2_HardLink;
+	assign child_Output_iTuple_Item3[0] = child_Output_iTuple_Item30_child_Output_iTuple_Item3_HardLink;
+	assign child_Output_iTuple_Item3[1] = child_Output_iTuple_Item31_child_Output_iTuple_Item3_HardLink;
+	assign child_Output_iTuple_Item4_L1Flag = child_Output_iTuple_Item4_L1Flag_child_Output_iTuple_Item4_L1Flag_HardLink;
+	assign child_Output_iTuple_Item4_L2_L2Flag = child_Output_iTuple_Item4_L2_L2Flag_child_Output_iTuple_Item4_L2_L2Flag_HardLink;
+	assign child_Output_iTuple_Item4_L2_L2Values[0] = child_Output_iTuple_Item4_L2_L2Values0_child_Output_iTuple_Item4_L2_L2Values_HardLink;
+	assign child_Output_iTuple_Item4_L2_L2Values[1] = child_Output_iTuple_Item4_L2_L2Values1_child_Output_iTuple_Item4_L2_L2Values_HardLink;
+	assign child_Output_iTuple_Item4_L2Array[0] = child_Output_iTuple_Item4_L2Array0_child_Output_iTuple_Item4_L2Array_HardLink;
+	assign child_Output_iTuple_Item4_L2Array[1] = child_Output_iTuple_Item4_L2Array1_child_Output_iTuple_Item4_L2Array_HardLink;
+	assign child_Output_iTuple_Item4_L2Tuple_Item1 = child_Output_iTuple_Item4_L2Tuple_Item1_child_Output_iTuple_Item4_L2Tuple_Item1_HardLink;
+	assign child_Output_iTuple_Item4_L2Tuple_Item2_L2Flag = child_Output_iTuple_Item4_L2Tuple_Item2_L2Flag_child_Output_iTuple_Item4_L2Tuple_Item2_L2Flag_HardLink;
+	assign child_Output_iTuple_Item4_L2Tuple_Item2_L2Values[0] = child_Output_iTuple_Item4_L2Tuple_Item2_L2Values0_child_Output_iTuple_Item4_L2Tuple_Item2_L2Values_HardLink;
+	assign child_Output_iTuple_Item4_L2Tuple_Item2_L2Values[1] = child_Output_iTuple_Item4_L2Tuple_Item2_L2Values1_child_Output_iTuple_Item4_L2Tuple_Item2_L2Values_HardLink;
+	assign child_Output_iTuple_Item4_L2Tuple_Item3[0] = child_Output_iTuple_Item4_L2Tuple_Item30_child_Output_iTuple_Item4_L2Tuple_Item3_HardLink;
+	assign child_Output_iTuple_Item4_L2Tuple_Item3[1] = child_Output_iTuple_Item4_L2Tuple_Item31_child_Output_iTuple_Item4_L2Tuple_Item3_HardLink;
 	assign child_Output_iTupleArray[0] = child_Output_iTupleArray0_child_Output_iTupleArray_HardLink;
 	assign child_Output_iTupleArray[1] = child_Output_iTupleArray1_child_Output_iTupleArray_HardLink;
 	// [BEGIN USER ARCHITECTURE]

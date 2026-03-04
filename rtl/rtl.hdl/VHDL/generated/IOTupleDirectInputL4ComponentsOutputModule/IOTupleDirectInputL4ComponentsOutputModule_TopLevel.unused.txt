@@ -1,3 +1,8 @@
 No reads:
-	Inputs_iTuple
-	Inputs_iTupleArray
+	IOTupleDirectInputL4ComponentsOutputModule_L10F72T73_Expr
+	IOTupleDirectInputL4ComponentsOutputModule_L11F72T73_Expr
+	IOTupleDirectInputL4ComponentsOutputModule_L16F110T111_Expr
+	IOTupleDirectInputL4ComponentsOutputModule_L17F110T111_Expr
+	IOTupleDirectInputL4ComponentsOutputModule_L18F105T106_Expr
+No writes:
+	Output_iTuple_Item4_L2Tuple_Item2_L2ValuesArrayInit

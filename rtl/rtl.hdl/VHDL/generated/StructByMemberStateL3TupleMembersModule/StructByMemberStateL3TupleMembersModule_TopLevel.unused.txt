@@ -1,9 +1,2 @@
 No reads:
-	Inputs_iL1
-	State_sL1_L1OptionalValue
-	State_sL1_L1RequiredValue
-	State_sL1_L2
-No writes:
-	NextState_sL1_L1OptionalValue
-	NextState_sL1_L1RequiredValue
-	NextState_sL1_L2
+	StructByMemberStateModule_L65F30T31_Expr

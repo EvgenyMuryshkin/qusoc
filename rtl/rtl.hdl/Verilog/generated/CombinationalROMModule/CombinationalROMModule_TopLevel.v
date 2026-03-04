@@ -38,15 +38,19 @@ module CombinationalROMModule_TopLevel
 	wire false = 1'b0;
 	wire [7: 0] Inputs_ReadAddress1;
 	wire [7: 0] Inputs_ReadAddress2;
+	wire [7: 0] CombinationalROMModule_L22F31T56_Index;
+	wire [7: 0] CombinationalROMModule_L23F31T56_Index;
 	reg [7 : 0] buff [0 : 255];
-	integer buff_i;
 	initial
 	begin : Init_buff
-		for (buff_i = 0; buff_i < 256; buff_i = buff_i + 1)
-			buff[buff_i] = 0;
+$readmemh("CombinationalROMModule_TopLevel_buff.hex", buff);
 	end
 	assign Inputs_ReadAddress1 = ReadAddress1;
 	assign Inputs_ReadAddress2 = ReadAddress2;
+	assign Value1 = CombinationalROMModule_L22F31T56_Index;
+	assign Value2 = CombinationalROMModule_L23F31T56_Index;
+	assign CombinationalROMModule_L22F31T56_Index = buff[Inputs_ReadAddress1];
+	assign CombinationalROMModule_L23F31T56_Index = buff[Inputs_ReadAddress2];
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

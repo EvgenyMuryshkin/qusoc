@@ -45,6 +45,68 @@ module LiteralsModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
+	wire [7: 0] LiteralsModule_L20F35T47_Expr = 8'b10010110;
+	wire [19: 0] LiteralsModule_L22F33T60_Expr = 20'b10010110101011110000;
+	wire [11: 0] LiteralsModule_L21F37T54_Expr = 12'b100101101010;
+	wire [5: 0] LiteralsModule_L10F29T31_Expr = 6'b101010;
+	wire signed [2: 0] LiteralsModule_L14F27T29_Expr = 3'b111;
+	wire signed [63: 0] LiteralsModule_L16F29T50_Expr = 64'b1000000000000000000000000000000000000000000000000000000000000000;
+	wire signed [63: 0] LiteralsModule_L18F32T53_Expr = 64'b0111000000000000111111111111111111111111111111111111111111111111;
+	wire signed [2: 0] LiteralsModule_L11F31T33_Expr = 3'b111;
+	wire signed [2: 0] LiteralsModule_L12F31T33_Expr = 3'b111;
+	wire [5: 0] LiteralsModule_L15F29T31_Expr = 6'b101110;
+	wire [5: 0] LiteralsModule_L17F31T35_Expr = 6'b110000;
+	wire [63: 0] LiteralsModule_L19F34T55_Expr = 64'b1000000000000000111111111111111111111111111111111111111111111111;
+	wire [5: 0] LiteralsModule_L13F33T35_Expr = 6'b101100;
+	assign BinaryByte = LiteralsModule_L20F35T47_Expr;
+	assign BinaryInt = {
+		{12{1'b0}},
+		LiteralsModule_L22F33T60_Expr
+	}
+	;
+	assign BinaryShort = {
+		{4{1'b0}},
+		LiteralsModule_L21F37T54_Expr
+	}
+	;
+	assign Byte = {
+		{2{1'b0}},
+		LiteralsModule_L10F29T31_Expr
+	}
+	;
+	assign Int = {
+		{29{LiteralsModule_L14F27T29_Expr[2]}},
+		LiteralsModule_L14F27T29_Expr
+	}
+	;
+	assign Long = LiteralsModule_L16F29T50_Expr;
+	assign LongHex = LiteralsModule_L18F32T53_Expr;
+	assign SByte = {
+		{5{LiteralsModule_L11F31T33_Expr[2]}},
+		LiteralsModule_L11F31T33_Expr
+	}
+	;
+	assign Short = {
+		{13{LiteralsModule_L12F31T33_Expr[2]}},
+		LiteralsModule_L12F31T33_Expr
+	}
+	;
+	assign UInt = {
+		{26{1'b0}},
+		LiteralsModule_L15F29T31_Expr
+	}
+	;
+	assign ULong = {
+		{58{1'b0}},
+		LiteralsModule_L17F31T35_Expr
+	}
+	;
+	assign ULongHex = LiteralsModule_L19F34T55_Expr;
+	assign UShort = {
+		{10{1'b0}},
+		LiteralsModule_L13F33T35_Expr
+	}
+	;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

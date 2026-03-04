@@ -1,9 +1,4 @@
 No reads:
-	active
 	CapacityBits
-	countTo
-	Inputs_Restart
-	State_counter
-No writes:
-	active
-	NextState_counter
+	TimerModule_L51F9L53T10_TimerModule_L52F34T101_WhenFalse_Init
+	TimerModule_L51F9L53T10_TimerModule_L52F34T101_WhenTrue_Init

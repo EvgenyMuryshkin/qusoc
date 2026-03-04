@@ -126,12 +126,13 @@ module AXILikeMuxModule_TopLevel
 	wire Inputs_MAddrValid;
 	wire [1: 0] Inputs_SAddr;
 	wire Inputs_SAddrValid;
-	reg [2: 0] fullDuplexMux_iLeftAddr = 3'b000;
-	reg fullDuplexMux_iLeftAddrValid = 1'b0;
-	reg [1: 0] fullDuplexMux_iRightAddr = 2'b00;
-	reg fullDuplexMux_iRightAddrValid = 1'b0;
+	wire [2: 0] fullDuplexMux_iLeftAddr;
+	wire fullDuplexMux_iLeftAddrValid;
+	wire [1: 0] fullDuplexMux_iRightAddr;
+	wire fullDuplexMux_iRightAddrValid;
 	wire [11: 0] fullDuplexMux_oMuxLeftData;
 	wire [9: 0] fullDuplexMux_oMuxRightData;
+	wire [142: 0] AXILikeMuxModule_L73F42L81T14_Object;
 	wire [11: 0] fullDuplexMux_iLeft0_fullDuplexMux_iLeft_HardLink;
 	wire [11: 0] fullDuplexMux_iLeft1_fullDuplexMux_iLeft_HardLink;
 	wire [11: 0] fullDuplexMux_iLeft2_fullDuplexMux_iLeft_HardLink;
@@ -164,8 +165,8 @@ module AXILikeMuxModule_TopLevel
 	wire [9: 0] fullDuplexMux_oRight7_fullDuplexMux_oRight_HardLink;
 	wire [11 : 0] Inputs_MArr [0 : 7];
 	wire [9 : 0] Inputs_SArr [0 : 3];
-	reg [11 : 0] fullDuplexMux_iLeft [0 : 7];
-	reg [9 : 0] fullDuplexMux_iRight [0 : 3];
+	wire [11 : 0] fullDuplexMux_iLeft [0 : 7];
+	wire [9 : 0] fullDuplexMux_iRight [0 : 3];
 	wire [11 : 0] fullDuplexMux_oLeft [0 : 3];
 	wire [9 : 0] fullDuplexMux_oRight [0 : 7];
 	AXILikeMuxModule_TopLevel_fullDuplexMux
@@ -252,6 +253,84 @@ module AXILikeMuxModule_TopLevel
 	assign Inputs_SArr[3][9] = SArr3_Payload_DataFlag;
 	assign Inputs_SArr[3][8:1] = SArr3_Payload_Data;
 	assign Inputs_SArr[3][0] = SArr3_IsActive;
+	assign AXILikeMuxModule_L73F42L81T14_Object[95:0] = {
+		Inputs_MArr[7],
+		Inputs_MArr[6],
+		Inputs_MArr[5],
+		Inputs_MArr[4],
+		Inputs_MArr[3],
+		Inputs_MArr[2],
+		Inputs_MArr[1],
+		Inputs_MArr[0]
+	}
+	;
+	assign AXILikeMuxModule_L73F42L81T14_Object[98:96] = Inputs_MAddr;
+	assign AXILikeMuxModule_L73F42L81T14_Object[99] = Inputs_MAddrValid;
+	assign AXILikeMuxModule_L73F42L81T14_Object[139:100] = {
+		Inputs_SArr[3],
+		Inputs_SArr[2],
+		Inputs_SArr[1],
+		Inputs_SArr[0]
+	}
+	;
+	assign AXILikeMuxModule_L73F42L81T14_Object[141:140] = Inputs_SAddr;
+	assign AXILikeMuxModule_L73F42L81T14_Object[142] = Inputs_SAddrValid;
+	assign fullDuplexMux_iRightAddrValid = AXILikeMuxModule_L73F42L81T14_Object[142];
+	assign fullDuplexMux_iRightAddr = AXILikeMuxModule_L73F42L81T14_Object[141:140];
+	assign fullDuplexMux_iRight[3] = AXILikeMuxModule_L73F42L81T14_Object[139:130];
+	assign fullDuplexMux_iRight[2] = AXILikeMuxModule_L73F42L81T14_Object[129:120];
+	assign fullDuplexMux_iRight[1] = AXILikeMuxModule_L73F42L81T14_Object[119:110];
+	assign fullDuplexMux_iRight[0] = AXILikeMuxModule_L73F42L81T14_Object[109:100];
+	assign fullDuplexMux_iLeftAddrValid = AXILikeMuxModule_L73F42L81T14_Object[99];
+	assign fullDuplexMux_iLeftAddr = AXILikeMuxModule_L73F42L81T14_Object[98:96];
+	assign fullDuplexMux_iLeft[7] = AXILikeMuxModule_L73F42L81T14_Object[95:84];
+	assign fullDuplexMux_iLeft[6] = AXILikeMuxModule_L73F42L81T14_Object[83:72];
+	assign fullDuplexMux_iLeft[5] = AXILikeMuxModule_L73F42L81T14_Object[71:60];
+	assign fullDuplexMux_iLeft[4] = AXILikeMuxModule_L73F42L81T14_Object[59:48];
+	assign fullDuplexMux_iLeft[3] = AXILikeMuxModule_L73F42L81T14_Object[47:36];
+	assign fullDuplexMux_iLeft[2] = AXILikeMuxModule_L73F42L81T14_Object[35:24];
+	assign fullDuplexMux_iLeft[1] = AXILikeMuxModule_L73F42L81T14_Object[23:12];
+	assign fullDuplexMux_iLeft[0] = AXILikeMuxModule_L73F42L81T14_Object[11:0];
+	assign OutMData0_Payload_DataFlag = fullDuplexMux_oLeft[0][11];
+	assign OutMData0_Payload_Data = fullDuplexMux_oLeft[0][10:3];
+	assign OutMData0_IsActive = fullDuplexMux_oLeft[0][2];
+	assign OutMData0_Addr = fullDuplexMux_oLeft[0][1:0];
+	assign OutMData1_Payload_DataFlag = fullDuplexMux_oLeft[1][11];
+	assign OutMData1_Payload_Data = fullDuplexMux_oLeft[1][10:3];
+	assign OutMData1_IsActive = fullDuplexMux_oLeft[1][2];
+	assign OutMData1_Addr = fullDuplexMux_oLeft[1][1:0];
+	assign OutMData2_Payload_DataFlag = fullDuplexMux_oLeft[2][11];
+	assign OutMData2_Payload_Data = fullDuplexMux_oLeft[2][10:3];
+	assign OutMData2_IsActive = fullDuplexMux_oLeft[2][2];
+	assign OutMData2_Addr = fullDuplexMux_oLeft[2][1:0];
+	assign OutMData3_Payload_DataFlag = fullDuplexMux_oLeft[3][11];
+	assign OutMData3_Payload_Data = fullDuplexMux_oLeft[3][10:3];
+	assign OutMData3_IsActive = fullDuplexMux_oLeft[3][2];
+	assign OutMData3_Addr = fullDuplexMux_oLeft[3][1:0];
+	assign OutSData0_Payload_DataFlag = fullDuplexMux_oRight[0][9];
+	assign OutSData0_Payload_Data = fullDuplexMux_oRight[0][8:1];
+	assign OutSData0_IsActive = fullDuplexMux_oRight[0][0];
+	assign OutSData1_Payload_DataFlag = fullDuplexMux_oRight[1][9];
+	assign OutSData1_Payload_Data = fullDuplexMux_oRight[1][8:1];
+	assign OutSData1_IsActive = fullDuplexMux_oRight[1][0];
+	assign OutSData2_Payload_DataFlag = fullDuplexMux_oRight[2][9];
+	assign OutSData2_Payload_Data = fullDuplexMux_oRight[2][8:1];
+	assign OutSData2_IsActive = fullDuplexMux_oRight[2][0];
+	assign OutSData3_Payload_DataFlag = fullDuplexMux_oRight[3][9];
+	assign OutSData3_Payload_Data = fullDuplexMux_oRight[3][8:1];
+	assign OutSData3_IsActive = fullDuplexMux_oRight[3][0];
+	assign OutSData4_Payload_DataFlag = fullDuplexMux_oRight[4][9];
+	assign OutSData4_Payload_Data = fullDuplexMux_oRight[4][8:1];
+	assign OutSData4_IsActive = fullDuplexMux_oRight[4][0];
+	assign OutSData5_Payload_DataFlag = fullDuplexMux_oRight[5][9];
+	assign OutSData5_Payload_Data = fullDuplexMux_oRight[5][8:1];
+	assign OutSData5_IsActive = fullDuplexMux_oRight[5][0];
+	assign OutSData6_Payload_DataFlag = fullDuplexMux_oRight[6][9];
+	assign OutSData6_Payload_Data = fullDuplexMux_oRight[6][8:1];
+	assign OutSData6_IsActive = fullDuplexMux_oRight[6][0];
+	assign OutSData7_Payload_DataFlag = fullDuplexMux_oRight[7][9];
+	assign OutSData7_Payload_Data = fullDuplexMux_oRight[7][8:1];
+	assign OutSData7_IsActive = fullDuplexMux_oRight[7][0];
 	assign fullDuplexMux_iLeft0_fullDuplexMux_iLeft_HardLink = fullDuplexMux_iLeft[0];
 	assign fullDuplexMux_iLeft1_fullDuplexMux_iLeft_HardLink = fullDuplexMux_iLeft[1];
 	assign fullDuplexMux_iLeft2_fullDuplexMux_iLeft_HardLink = fullDuplexMux_iLeft[2];

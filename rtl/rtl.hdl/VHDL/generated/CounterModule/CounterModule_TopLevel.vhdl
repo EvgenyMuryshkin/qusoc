@@ -41,11 +41,36 @@ architecture rtl of CounterModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_Enabled : std_logic := '0';
-	signal NextState_Value : unsigned(7 downto 0) := (others => '0');
-	signal NextValue : unsigned(7 downto 0) := (others => '0');
+	constant CounterModule_L19F65T66_Expr : unsigned(0 downto 0) := "1";
+	signal Inputs_Enabled : std_logic;
+	signal NextState_Value : unsigned(7 downto 0);
+	signal NextValue : unsigned(7 downto 0);
+	signal CounterModule_L19F27T81_Cast : unsigned(7 downto 0);
+	signal CounterModule_L19F34T80_TernarySignal : unsigned(7 downto 0) := (others => '0');
+	signal CounterModule_L19F34T80_Ternary : unsigned(7 downto 0);
 	signal State_Value : unsigned(7 downto 0) := "00000000";
 	constant State_ValueDefault : unsigned(7 downto 0) := "00000000";
+	signal CounterModule_L19F51T66_Expr : unsigned(8 downto 0) := "000000000";
+	signal CounterModule_L19F51T66_Expr_1 : signed(8 downto 0) := "000000000";
+	signal CounterModule_L19F51T66_Expr_2 : signed(8 downto 0) := "000000000";
+	subtype unsigned9 is unsigned (8 downto 0);
+	subtype unsigned8 is unsigned (7 downto 0);
+	function resize_unsigned9_unsigned8(source : unsigned9) return unsigned8 is
+	begin
+		return resize(source, 8);
+	end function;
+	function resize_unsigned8_unsigned8(source : unsigned8) return unsigned8 is
+	begin
+		return resize(source, 8);
+	end function;
+	function ternary_unsigned8_unsigned8_unsigned8(condition : boolean; whenTrue : unsigned8; whenFalse : unsigned8) return unsigned8 is
+	begin
+		if condition then
+			return whenTrue;
+		else
+			return whenFalse;
+		end if;
+	end function;
 begin
 	process (Clock, NextState_Value, Reset)
 	begin
@@ -57,9 +82,30 @@ begin
 			end if;
 		end if;
 	end process;
-	process (Enabled)
+	process (CounterModule_L19F51T66_Expr_1, CounterModule_L19F51T66_Expr_2)
 	begin
+		CounterModule_L19F51T66_Expr <= resize(unsigned(signed(resize(CounterModule_L19F51T66_Expr_1, CounterModule_L19F51T66_Expr_1'length + 1)) + signed(resize(CounterModule_L19F51T66_Expr_2, CounterModule_L19F51T66_Expr_2'length + 1))), CounterModule_L19F51T66_Expr'length);
+	end process;
+	CounterModule_L19F34T80_TernarySignal <= ternary_unsigned8_unsigned8_unsigned8(Inputs_Enabled = '1', resize_unsigned9_unsigned8(CounterModule_L19F51T66_Expr), resize_unsigned8_unsigned8(State_Value));
+	process (NextValue, State_Value)
+	begin
+		NextState_Value <= State_Value;
+		NextState_Value <= NextValue;
+	end process;
+	process (CounterModule_L19F27T81_Cast, CounterModule_L19F34T80_Ternary, CounterModule_L19F34T80_TernarySignal, Enabled, State_Value)
+	begin
+		CounterModule_L19F51T66_Expr_1(8) <= '0';
+		CounterModule_L19F51T66_Expr_1(7 downto 0) <= signed(State_Value);
+		CounterModule_L19F51T66_Expr_2(8 downto 1) <= (
+			others => '0'
+		)
+		;
+		CounterModule_L19F51T66_Expr_2(0) <= CounterModule_L19F65T66_Expr(0);
 		Inputs_Enabled <= Enabled;
+		CounterModule_L19F34T80_Ternary <= CounterModule_L19F34T80_TernarySignal;
+		CounterModule_L19F27T81_Cast <= CounterModule_L19F34T80_Ternary;
+		NextValue <= CounterModule_L19F27T81_Cast;
+		Value <= State_Value;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

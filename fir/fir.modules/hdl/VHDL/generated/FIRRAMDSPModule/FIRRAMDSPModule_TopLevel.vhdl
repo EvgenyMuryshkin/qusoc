@@ -51,6 +51,8 @@ architecture rtl of FIRRAMDSPModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
+	constant FIRRAMDSPModule_L49F22T26_Expr : std_logic := '1';
+	constant FIRRAMDSPModule_L60F23T28_Expr : std_logic := '0';
 	signal Inputs_iDSP_A : unsigned(29 downto 0) := (others => '0');
 	signal Inputs_iDSP_CE : std_logic := '0';
 	signal Inputs_iDSP_D : unsigned(24 downto 0) := (others => '0');
@@ -78,6 +80,9 @@ architecture rtl of FIRRAMDSPModule_TopLevel is
 	signal u_ram_WR : std_logic := '0';
 	signal u_ram_WR_ADDR : unsigned(7 downto 0) := (others => '0');
 	signal u_ram_DOUT : unsigned(15 downto 0) := (others => '0');
+	signal FIRRAMDSPModule_L47F34L55T14_Object : unsigned(34 downto 0) := (others => '0');
+	signal FIRRAMDSPModule_L57F34L66T14_Object : unsigned(125 downto 0) := (others => '0');
+	signal FIRRAMDSPModule_L62F21T43_Resize : unsigned(17 downto 0) := (others => '0');
 	signal u_dsp_A_u_dsp_A_HardLink : unsigned(29 downto 0) := "000000000000000000000000000000";
 	signal u_dsp_B_u_dsp_B_HardLink : unsigned(17 downto 0) := "000000000000000000";
 	signal u_dsp_CE_u_dsp_CE_HardLink : std_logic := '0';
@@ -142,7 +147,11 @@ begin
 		DOUT => u_ram_DOUT_u_ram_DOUT_HardLink
 	)
 	;
-	process (iDSP_A, iDSP_CE, iDSP_D, iDSP_OPMODE, iDSP_PCIN, iRAM_RD, iRAM_RD_ADDR, iRAM_WR, iRAM_WR_ADDR, iRAM_WR_DATA, u_dsp_A, u_dsp_B, u_dsp_CE, u_dsp_D, u_dsp_OPMODE, u_dsp_P_u_dsp_P_HardLink, u_dsp_PCIN, u_dsp_PCOUT_u_dsp_PCOUT_HardLink, u_dsp_RST, u_ram_CE, u_ram_DIN, u_ram_DOUT_u_ram_DOUT_HardLink, u_ram_RD, u_ram_RD_ADDR, u_ram_WR, u_ram_WR_ADDR)
+	process (State_UnusedSignal)
+	begin
+		NextState_UnusedSignal <= State_UnusedSignal;
+	end process;
+	process (FIRRAMDSPModule_L47F34L55T14_Object, FIRRAMDSPModule_L57F34L66T14_Object, FIRRAMDSPModule_L62F21T43_Resize, iDSP_A, iDSP_CE, iDSP_D, iDSP_OPMODE, iDSP_PCIN, Inputs_iDSP_A, Inputs_iDSP_CE, Inputs_iDSP_D, Inputs_iDSP_OPMODE, Inputs_iDSP_PCIN, Inputs_iRAM_RD, Inputs_iRAM_RD_ADDR, Inputs_iRAM_WR, Inputs_iRAM_WR_ADDR, Inputs_iRAM_WR_DATA, iRAM_RD, iRAM_RD_ADDR, iRAM_WR, iRAM_WR_ADDR, iRAM_WR_DATA, u_dsp_A, u_dsp_B, u_dsp_CE, u_dsp_D, u_dsp_OPMODE, u_dsp_P, u_dsp_P_u_dsp_P_HardLink, u_dsp_PCIN, u_dsp_PCOUT, u_dsp_PCOUT_u_dsp_PCOUT_HardLink, u_dsp_RST, u_ram_CE, u_ram_DIN, u_ram_DOUT, u_ram_DOUT_u_ram_DOUT_HardLink, u_ram_RD, u_ram_RD_ADDR, u_ram_WR, u_ram_WR_ADDR)
 	begin
 		Inputs_iDSP_A <= iDSP_A;
 		Inputs_iDSP_CE <= iDSP_CE;
@@ -154,6 +163,39 @@ begin
 		Inputs_iRAM_WR <= iRAM_WR;
 		Inputs_iRAM_WR_ADDR <= iRAM_WR_ADDR;
 		Inputs_iRAM_WR_DATA <= iRAM_WR_DATA;
+		FIRRAMDSPModule_L47F34L55T14_Object(0) <= FIRRAMDSPModule_L49F22T26_Expr;
+		FIRRAMDSPModule_L47F34L55T14_Object(16 downto 1) <= Inputs_iRAM_WR_DATA;
+		FIRRAMDSPModule_L47F34L55T14_Object(17) <= Inputs_iRAM_RD;
+		FIRRAMDSPModule_L47F34L55T14_Object(25 downto 18) <= Inputs_iRAM_RD_ADDR;
+		FIRRAMDSPModule_L47F34L55T14_Object(26) <= Inputs_iRAM_WR;
+		FIRRAMDSPModule_L47F34L55T14_Object(34 downto 27) <= Inputs_iRAM_WR_ADDR;
+		u_ram_WR_ADDR <= FIRRAMDSPModule_L47F34L55T14_Object(34 downto 27);
+		u_ram_WR <= FIRRAMDSPModule_L47F34L55T14_Object(26);
+		u_ram_RD_ADDR <= FIRRAMDSPModule_L47F34L55T14_Object(25 downto 18);
+		u_ram_RD <= FIRRAMDSPModule_L47F34L55T14_Object(17);
+		u_ram_DIN <= FIRRAMDSPModule_L47F34L55T14_Object(16 downto 1);
+		u_ram_CE <= FIRRAMDSPModule_L47F34L55T14_Object(0);
+		FIRRAMDSPModule_L57F34L66T14_Object(29 downto 0) <= Inputs_iDSP_A;
+		FIRRAMDSPModule_L62F21T43_Resize(17 downto 16) <= (
+			others => '0'
+		)
+		;
+		FIRRAMDSPModule_L62F21T43_Resize(15 downto 0) <= u_ram_DOUT;
+		FIRRAMDSPModule_L57F34L66T14_Object(47 downto 30) <= FIRRAMDSPModule_L62F21T43_Resize;
+		FIRRAMDSPModule_L57F34L66T14_Object(48) <= Inputs_iDSP_CE;
+		FIRRAMDSPModule_L57F34L66T14_Object(73 downto 49) <= Inputs_iDSP_D;
+		FIRRAMDSPModule_L57F34L66T14_Object(76 downto 74) <= Inputs_iDSP_OPMODE;
+		FIRRAMDSPModule_L57F34L66T14_Object(124 downto 77) <= Inputs_iDSP_PCIN;
+		FIRRAMDSPModule_L57F34L66T14_Object(125) <= FIRRAMDSPModule_L60F23T28_Expr;
+		u_dsp_RST <= FIRRAMDSPModule_L57F34L66T14_Object(125);
+		u_dsp_PCIN <= FIRRAMDSPModule_L57F34L66T14_Object(124 downto 77);
+		u_dsp_OPMODE <= FIRRAMDSPModule_L57F34L66T14_Object(76 downto 74);
+		u_dsp_D <= FIRRAMDSPModule_L57F34L66T14_Object(73 downto 49);
+		u_dsp_CE <= FIRRAMDSPModule_L57F34L66T14_Object(48);
+		u_dsp_B <= FIRRAMDSPModule_L57F34L66T14_Object(47 downto 30);
+		u_dsp_A <= FIRRAMDSPModule_L57F34L66T14_Object(29 downto 0);
+		oDSP_P <= u_dsp_P;
+		oDSP_PCOUT <= u_dsp_PCOUT;
 		u_dsp_A_u_dsp_A_HardLink <= u_dsp_A;
 		u_dsp_B_u_dsp_B_HardLink <= u_dsp_B;
 		u_dsp_CE_u_dsp_CE_HardLink <= u_dsp_CE;

@@ -1,2 +1,5 @@
 No reads:
-	Inputs_iValue
+	Inputs_iValue_Item1
+	Inputs_iValue_Item2_iBool
+	Inputs_iValue_Item2_iByte
+	Inputs_iValue_Item2_iValue_iValue

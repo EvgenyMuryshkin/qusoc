@@ -43,6 +43,7 @@ module AXISoCQuadCoreModule_TopLevel_cpu0AutoIncrementCounter
 	wire false = 1'b0;
 	wire signed [6: 0] axiBits = 7'b0100000;
 	wire [1: 0] size = 2'b10;
+	wire AXI4IncrementOnReadCounterModule_L68F54T55_Expr = 1'b1;
 	wire [221: 0] Inputs_M2S;
 	reg [31: 0] NextState_counter;
 	reg NextState_Written;
@@ -64,6 +65,8 @@ module AXISoCQuadCoreModule_TopLevel_cpu0AutoIncrementCounter
 	wire [3: 0] axiSlave_outWSTRB;
 	wire axiSlave_outWVALID;
 	wire [73: 0] axiSlave_S2M;
+	wire [32: 0] AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F37T67_SignChange;
+	wire [31: 0] AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F37T84_Resize;
 	wire axiSlave_inARREADY_axiSlave_inARREADY_HardLink;
 	wire axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink;
 	wire axiSlave_inBVALID_axiSlave_inBVALID_HardLink;
@@ -94,6 +97,9 @@ module AXISoCQuadCoreModule_TopLevel_cpu0AutoIncrementCounter
 	wire [31: 0] State_counterDefault = 32'b00000000000000000000000000000000;
 	reg State_Written = 1'b0;
 	wire State_WrittenDefault = 1'b0;
+	wire [33: 0] AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr;
+	wire signed [33: 0] AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr_1;
+	wire signed [33: 0] AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr_2;
 	reg [7 : 0] axiSlave_inRDATA [0 : 3];
 	wire [7 : 0] axiSlave_outWDATA [0 : 3];
 	always @ (posedge BoardSignals_Clock)
@@ -109,6 +115,7 @@ module AXISoCQuadCoreModule_TopLevel_cpu0AutoIncrementCounter
 			State_Written <= NextState_Written;
 		end
 	end
+	assign AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr = AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr_1 + AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr_2;
 	AXISoCQuadCoreModule_TopLevel_cpu0AutoIncrementCounter_axiSlave
 	AXISoCQuadCoreModule_TopLevel_cpu0AutoIncrementCounter_axiSlave
 	(
@@ -146,7 +153,29 @@ module AXISoCQuadCoreModule_TopLevel_cpu0AutoIncrementCounter
 		.outWVALID (axiSlave_outWVALID_axiSlave_outWVALID_HardLink),
 		.S2M (axiSlave_S2M_axiSlave_S2M_HardLink)
 	);
+	always @ (*)
+	begin
+		NextState_counter = State_counter;
+		NextState_Written = State_Written;
+		NextState_Written = axiSlave_outReadTXCompleting;
+		if ((axiSlave_outReadTXCompleting == 1))
+		begin
+			NextState_counter = AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F37T84_Resize;
+		end
+	end
+	assign AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr_1 = {
+		{2{1'b0}},
+		State_counter
+	}
+	;
+	assign AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr_2 = {
+		{33{1'b0}},
+		AXI4IncrementOnReadCounterModule_L68F54T55_Expr
+	}
+	;
 	assign Inputs_M2S = M2S;
+	assign AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F37T67_SignChange = AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F38T55_Expr[32:0];
+	assign AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F37T84_Resize = AXI4IncrementOnReadCounterModule_L63F9L70T10_AXI4IncrementOnReadCounterModule_L67F13L69T14_AXI4IncrementOnReadCounterModule_L68F37T67_SignChange[31:0];
 	assign axiSlave_inARREADY_axiSlave_inARREADY_HardLink = axiSlave_inARREADY;
 	assign axiSlave_inAWREADY_axiSlave_inAWREADY_HardLink = axiSlave_inAWREADY;
 	assign axiSlave_inBVALID_axiSlave_inBVALID_HardLink = axiSlave_inBVALID;

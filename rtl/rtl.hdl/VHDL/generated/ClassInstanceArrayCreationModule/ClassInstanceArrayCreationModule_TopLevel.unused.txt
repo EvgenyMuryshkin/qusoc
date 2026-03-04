@@ -1,0 +1,15 @@
+No reads:
+	Value
+No writes:
+	Value0_ByteArray
+	Value0_L2_ByteArray
+	Value0_L2_ClassArray0_ByteArray
+	Value0_L2_ClassArray1_ByteArray
+	Value0_L2_ClassArray2_ByteArray
+	Value0_L2_ClassArray3_ByteArray
+	Value1_ByteArray
+	Value1_L2_ByteArray
+	Value1_L2_ClassArray0_ByteArray
+	Value1_L2_ClassArray1_ByteArray
+	Value1_L2_ClassArray2_ByteArray
+	Value1_L2_ClassArray3_ByteArray

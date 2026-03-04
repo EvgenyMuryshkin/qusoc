@@ -24,8 +24,10 @@ entity L1NestedIOObjectModule_TopLevel_l2 is
 	(
 		-- [BEGIN USER PORTS]
 		-- [END USER PORTS]
-		i1 : in unsigned (8 downto 0);
-		i2 : in unsigned (8 downto 0);
+		i1_boolValue : in std_logic;
+		i1_byteValue : in unsigned (7 downto 0);
+		i2_boolValue : in std_logic;
+		i2_byteValue : in unsigned (7 downto 0);
 		oValues0 : out unsigned (8 downto 0);
 		oValues1 : out unsigned (8 downto 0)
 	);
@@ -41,13 +43,33 @@ architecture rtl of L1NestedIOObjectModule_TopLevel_l2 is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_i1 : unsigned(8 downto 0) := (others => '0');
-	signal Inputs_i2 : unsigned(8 downto 0) := (others => '0');
+	signal Inputs_i1_boolValue : std_logic;
+	signal Inputs_i1_byteValue : unsigned(7 downto 0);
+	signal Inputs_i2_boolValue : std_logic;
+	signal Inputs_i2_byteValue : unsigned(7 downto 0);
+	signal NestedIOObjectModule_L52F58L55T10_0 : unsigned(8 downto 0);
+	signal NestedIOObjectModule_L52F58L55T10_1 : unsigned(8 downto 0);
+	type oValuesArray is array (0 to 1) of unsigned (8 downto 0);
+	signal oValues : oValuesArray;
+	type NestedIOObjectModule_L52F58L55T10_ArrayArray is array (0 to 1) of unsigned (8 downto 0);
+	signal NestedIOObjectModule_L52F58L55T10_Array : NestedIOObjectModule_L52F58L55T10_ArrayArray;
 begin
-	process (i1, i2)
+	process (i1_boolValue, i1_byteValue, i2_boolValue, i2_byteValue, Inputs_i1_boolValue, Inputs_i1_byteValue, Inputs_i2_boolValue, Inputs_i2_byteValue, NestedIOObjectModule_L52F58L55T10_0, NestedIOObjectModule_L52F58L55T10_1, NestedIOObjectModule_L52F58L55T10_Array, oValues)
 	begin
-		Inputs_i1 <= i1;
-		Inputs_i2 <= i2;
+		oValues0 <= oValues(0);
+		oValues1 <= oValues(1);
+		Inputs_i1_boolValue <= i1_boolValue;
+		Inputs_i1_byteValue <= i1_byteValue;
+		Inputs_i2_boolValue <= i2_boolValue;
+		Inputs_i2_byteValue <= i2_byteValue;
+		NestedIOObjectModule_L52F58L55T10_0(8 downto 1) <= Inputs_i1_byteValue;
+		NestedIOObjectModule_L52F58L55T10_0(0) <= Inputs_i1_boolValue;
+		NestedIOObjectModule_L52F58L55T10_Array(0) <= NestedIOObjectModule_L52F58L55T10_0;
+		NestedIOObjectModule_L52F58L55T10_1(8 downto 1) <= Inputs_i2_byteValue;
+		NestedIOObjectModule_L52F58L55T10_1(0) <= Inputs_i2_boolValue;
+		NestedIOObjectModule_L52F58L55T10_Array(1) <= NestedIOObjectModule_L52F58L55T10_1;
+		oValues(0) <= NestedIOObjectModule_L52F58L55T10_Array(0);
+		oValues(1) <= NestedIOObjectModule_L52F58L55T10_Array(1);
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

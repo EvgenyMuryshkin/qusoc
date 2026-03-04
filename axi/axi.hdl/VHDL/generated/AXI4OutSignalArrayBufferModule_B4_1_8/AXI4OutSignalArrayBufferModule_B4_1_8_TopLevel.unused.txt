@@ -1,5 +1,6 @@
 No reads:
 	addressLSB
+	AXI4OutSignalArrayBufferModule_L52F46T82_Expr_1
 	axiSlave_outARADDR
 	axiSlave_outARREADYConfirming
 	axiSlave_outARVALID
@@ -9,26 +10,11 @@ No reads:
 	axiSlave_outReadTXCompleting
 	axiSlave_outWDATA
 	axiSlave_outWREADYConfirming
-	axiSlave_outWriteTXCompleting
 	axiSlave_outWSTRB
 	axiSlave_outWVALID
-	axiSlave_S2M
 	depth
-	Inputs_M2S
 	size
-	State_buffer
-	wAddr
 	wAddrBits
-	wData
 	width
 No writes:
-	axiSlave_inARREADY
-	axiSlave_inAWREADY
-	axiSlave_inBVALID
-	axiSlave_inRDATA
-	axiSlave_inRVALID
-	axiSlave_inWREADY
-	axiSlave_M2S
-	NextState_buffer
-	wAddr
-	wData
+	AXI4OutSignalArrayBufferModule_L52F46T82_Expr

@@ -5,11 +5,11 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
-    <PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
-    <PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
-    <PackageReference Include="Quokka.FPGA" Version="0.1.8.264" />
-    <PackageReference Include="Quokka.RTL" Version="0.1.8.593" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.8.2" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.8.2" />
+    <PackageReference Include="Quokka.FPGA" Version="0.1.8.269" />
+    <PackageReference Include="Quokka.RTL" Version="0.1.8.620" />
     <PackageReference Include="Quokka.TCL" Version="1.0.7.23" />
     <PackageReference Include="System.Drawing.Common" Version="8.0.0" />
   </ItemGroup>

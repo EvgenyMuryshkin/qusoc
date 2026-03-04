@@ -36,11 +36,14 @@ module ClassTupleInputsModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [51: 0] Inputs_iValue;
-	assign Inputs_iValue[51] = iValue_Item1;
-	assign Inputs_iValue[50:9] = iValue_Item2_iValue_iValue;
-	assign Inputs_iValue[8:1] = iValue_Item2_iByte;
-	assign Inputs_iValue[0] = iValue_Item2_iBool;
+	wire Inputs_iValue_Item1;
+	wire Inputs_iValue_Item2_iBool;
+	wire [7: 0] Inputs_iValue_Item2_iByte;
+	wire [41: 0] Inputs_iValue_Item2_iValue_iValue;
+	assign Inputs_iValue_Item1 = iValue_Item1;
+	assign Inputs_iValue_Item2_iBool = iValue_Item2_iBool;
+	assign Inputs_iValue_Item2_iByte = iValue_Item2_iByte;
+	assign Inputs_iValue_Item2_iValue_iValue = iValue_Item2_iValue_iValue;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

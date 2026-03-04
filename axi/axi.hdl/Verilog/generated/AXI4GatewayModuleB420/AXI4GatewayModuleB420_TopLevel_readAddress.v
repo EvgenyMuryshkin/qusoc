@@ -37,10 +37,18 @@ module AXI4GatewayModuleB420_TopLevel_readAddress
 	wire false = 1'b0;
 	wire signed [6: 0] axiSize = 7'b0100000;
 	wire signed [5: 0] originalLowerBits = 6'b010100;
+	wire AXI4GatewayAddressModule_L31F13T35_Expr = 1'b0;
 	wire [31: 0] Inputs_iMapAddress;
 	wire [31: 0] Inputs_iOriginalAddress;
+	wire [31: 0] AXI4GatewayAddressModule_L33F17L37T18_Source;
 	assign Inputs_iMapAddress = iMapAddress;
 	assign Inputs_iOriginalAddress = iOriginalAddress;
+	assign AXI4GatewayAddressModule_L33F17L37T18_Source = {
+		Inputs_iMapAddress[31:20],
+		Inputs_iOriginalAddress[19:0]
+	}
+	;
+	assign oAddress = AXI4GatewayAddressModule_L33F17L37T18_Source;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

@@ -1,10 +1,6 @@
 No reads:
-	Inputs_Address
 	Inputs_WE
-	Inputs_WriteData
-	Inputs_WSTRB
-	State_Buff
-	State_ReadData
-No writes:
-	NextState_Buff
-	NextState_ReadData
+	SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_0_w
+	SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_1_w
+	SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_2_w
+	SP_RF_WSTRB_RAMModule_L30F9L38T10_SP_RF_WSTRB_RAMModule_L31F13L35T14_3_w

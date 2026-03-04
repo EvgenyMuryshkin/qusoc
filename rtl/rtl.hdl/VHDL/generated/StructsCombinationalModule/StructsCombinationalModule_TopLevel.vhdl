@@ -53,14 +53,87 @@ architecture rtl of StructsCombinationalModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_In : unsigned(15 downto 0) := (others => '0');
-	signal internalDirect : unsigned(15 downto 0) := (others => '0');
-	signal internalSum : unsigned(7 downto 0) := (others => '0');
+	constant StructsModule_L38F52T54_Expr : unsigned(5 downto 0) := "101010";
+	signal Inputs_In_Op1 : unsigned(7 downto 0);
+	signal Inputs_In_Op2 : unsigned(7 downto 0);
+	signal internalDirect_Op1 : unsigned(7 downto 0) := "00001010";
+	signal internalDirect_Op2 : unsigned(7 downto 0) := "00010100";
+	signal internalSum : unsigned(7 downto 0);
+	signal StructsModule_L25F29T66_Cast : unsigned(7 downto 0);
+	signal StructsModule_L38F33T56_Instance_Op1 : unsigned(7 downto 0) := "00101010";
+	signal StructsModule_L38F33T56_Instance_Op2 : unsigned(7 downto 0) := "00010100";
+	signal StructsModule_L39F33T43_Instance_Op1 : unsigned(7 downto 0) := "00001010";
+	signal StructsModule_L39F33T43_Instance_Op2 : unsigned(7 downto 0) := "00010100";
+	signal StructsModule_L32F32L36T10_Instance_Op1 : unsigned(7 downto 0) := "00000000";
+	signal StructsModule_L32F32L36T10_Instance_Op2 : unsigned(7 downto 0) := "00000000";
+	signal StructsModule_L34F19T56_Cast : unsigned(7 downto 0);
+	signal StructsModule_L35F19T56_Cast : unsigned(7 downto 0);
+	signal StructsModule_L31F35T90_Instance_Op1 : unsigned(7 downto 0) := "00010100";
+	signal StructsModule_L31F35T90_Instance_Op2 : unsigned(7 downto 0) := "00001010";
+	signal StructsModule_L25F36T65_Expr : unsigned(8 downto 0) := "000000000";
+	signal StructsModule_L25F36T65_Expr_1 : signed(8 downto 0) := "000000000";
+	signal StructsModule_L25F36T65_Expr_2 : signed(8 downto 0) := "000000000";
+	signal StructsModule_L34F26T55_Expr : unsigned(8 downto 0) := "000000000";
+	signal StructsModule_L34F26T55_Expr_1 : signed(8 downto 0) := "000000000";
+	signal StructsModule_L34F26T55_Expr_2 : signed(8 downto 0) := "000000000";
+	signal StructsModule_L35F26T55_Expr : signed(8 downto 0) := "000000000";
+	signal StructsModule_L35F26T55_Expr_1 : signed(8 downto 0) := "000000000";
+	signal StructsModule_L35F26T55_Expr_2 : signed(8 downto 0) := "000000000";
 begin
-	process (In_Op1, In_Op2)
+	process (StructsModule_L25F36T65_Expr_1, StructsModule_L25F36T65_Expr_2)
 	begin
-		Inputs_In(15 downto 8) <= In_Op2;
-		Inputs_In(7 downto 0) <= In_Op1;
+		StructsModule_L25F36T65_Expr <= resize(unsigned(signed(resize(StructsModule_L25F36T65_Expr_1, StructsModule_L25F36T65_Expr_1'length + 1)) + signed(resize(StructsModule_L25F36T65_Expr_2, StructsModule_L25F36T65_Expr_2'length + 1))), StructsModule_L25F36T65_Expr'length);
+	end process;
+	process (StructsModule_L34F26T55_Expr_1, StructsModule_L34F26T55_Expr_2)
+	begin
+		StructsModule_L34F26T55_Expr <= resize(unsigned(signed(resize(StructsModule_L34F26T55_Expr_1, StructsModule_L34F26T55_Expr_1'length + 1)) + signed(resize(StructsModule_L34F26T55_Expr_2, StructsModule_L34F26T55_Expr_2'length + 1))), StructsModule_L34F26T55_Expr'length);
+	end process;
+	process (StructsModule_L35F26T55_Expr_1, StructsModule_L35F26T55_Expr_2)
+	begin
+		StructsModule_L35F26T55_Expr <= resize(signed(signed(resize(StructsModule_L35F26T55_Expr_1, StructsModule_L35F26T55_Expr_1'length + 1)) - signed(resize(StructsModule_L35F26T55_Expr_2, StructsModule_L35F26T55_Expr_2'length + 1))), StructsModule_L35F26T55_Expr'length);
+	end process;
+	process (In_Op1, In_Op2, Inputs_In_Op1, Inputs_In_Op2, internalDirect_Op1, internalDirect_Op2, internalSum, StructsModule_L25F29T66_Cast, StructsModule_L25F36T65_Expr, StructsModule_L31F35T90_Instance_Op1, StructsModule_L31F35T90_Instance_Op2, StructsModule_L32F32L36T10_Instance_Op1, StructsModule_L32F32L36T10_Instance_Op2, StructsModule_L34F19T56_Cast, StructsModule_L34F26T55_Expr, StructsModule_L35F19T56_Cast, StructsModule_L35F26T55_Expr, StructsModule_L38F33T56_Instance_Op1)
+	begin
+		StructsModule_L25F36T65_Expr_1(8) <= '0';
+		StructsModule_L25F36T65_Expr_1(7 downto 0) <= signed(Inputs_In_Op1);
+		StructsModule_L25F36T65_Expr_2(8) <= '0';
+		StructsModule_L25F36T65_Expr_2(7 downto 0) <= signed(Inputs_In_Op2);
+		StructsModule_L34F26T55_Expr_1(8) <= '0';
+		StructsModule_L34F26T55_Expr_1(7 downto 0) <= signed(Inputs_In_Op1);
+		StructsModule_L34F26T55_Expr_2(8) <= '0';
+		StructsModule_L34F26T55_Expr_2(7 downto 0) <= signed(Inputs_In_Op2);
+		StructsModule_L35F26T55_Expr_1(8) <= '0';
+		StructsModule_L35F26T55_Expr_1(7 downto 0) <= signed(Inputs_In_Op1);
+		StructsModule_L35F26T55_Expr_2(8) <= '0';
+		StructsModule_L35F26T55_Expr_2(7 downto 0) <= signed(Inputs_In_Op2);
+		Inputs_In_Op1 <= In_Op1;
+		Inputs_In_Op2 <= In_Op2;
+		internalDirect_Op2 <= Inputs_In_Op2;
+		internalDirect_Op1 <= Inputs_In_Op1;
+		StructsModule_L25F29T66_Cast <= StructsModule_L25F36T65_Expr(7 downto 0);
+		internalSum <= StructsModule_L25F29T66_Cast;
+		StructsModule_L38F33T56_Instance_Op1(7 downto 6) <= (
+			others => '0'
+		)
+		;
+		StructsModule_L38F33T56_Instance_Op1(5 downto 0) <= StructsModule_L38F52T54_Expr;
+		Default1_Op1 <= StructsModule_L38F33T56_Instance_Op1;
+		Op1 <= Inputs_In_Op1;
+		OutDirect_Op2 <= Inputs_In_Op2;
+		OutDirect_Op1 <= Inputs_In_Op1;
+		OutInternal_Op2 <= internalDirect_Op2;
+		OutInternal_Op1 <= internalDirect_Op1;
+		StructsModule_L34F19T56_Cast <= StructsModule_L34F26T55_Expr(7 downto 0);
+		StructsModule_L35F19T56_Cast <= unsigned(StructsModule_L35F26T55_Expr(7 downto 0));
+		StructsModule_L32F32L36T10_Instance_Op2 <= StructsModule_L35F19T56_Cast;
+		StructsModule_L32F32L36T10_Instance_Op1 <= StructsModule_L34F19T56_Cast;
+		OutMath_Op2 <= StructsModule_L32F32L36T10_Instance_Op2;
+		OutMath_Op1 <= StructsModule_L32F32L36T10_Instance_Op1;
+		StructsModule_L31F35T90_Instance_Op2 <= Inputs_In_Op1;
+		StructsModule_L31F35T90_Instance_Op1 <= Inputs_In_Op2;
+		OutSwapped_Op2 <= StructsModule_L31F35T90_Instance_Op2;
+		OutSwapped_Op1 <= StructsModule_L31F35T90_Instance_Op1;
+		Sum <= internalSum;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

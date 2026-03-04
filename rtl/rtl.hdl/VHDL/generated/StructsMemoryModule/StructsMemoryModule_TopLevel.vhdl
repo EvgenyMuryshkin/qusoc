@@ -28,8 +28,8 @@ entity StructsMemoryModule_TopLevel is
 		Reset : in std_logic;
 		In_Op1 : in unsigned (7 downto 0);
 		In_Op2 : in unsigned (7 downto 0);
-		Out_Op1 : out unsigned (7 downto 0);
-		Out_Op2 : out unsigned (7 downto 0)
+		oOut_Op1 : out unsigned (7 downto 0);
+		oOut_Op2 : out unsigned (7 downto 0)
 	);
 end entity;
 -- FSM summary
@@ -44,9 +44,21 @@ architecture rtl of StructsMemoryModule_TopLevel is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	constant State_BuffDefault : unsigned(15 downto 0) := "0000000000000000";
-	signal Inputs_In : unsigned(15 downto 0) := (others => '0');
-	signal NextState_Out_Op1 : unsigned(7 downto 0) := (others => '0');
-	signal NextState_Out_Op2 : unsigned(7 downto 0) := (others => '0');
+	constant StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L34F28T29_Expr : unsigned(0 downto 0) := "0";
+	constant StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_0_idx : std_logic := '0';
+	constant StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_0_StructsMemoryModule_L36F13L38T14_StructsMemoryModule_L37F32T39_Expr : unsigned(0 downto 0) := "1";
+	constant StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_0_StructsMemoryModule_L36F13L38T14_StructsMemoryModule_L37F54T57_Expr : unsigned(0 downto 0) := "0";
+	constant StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_1_idx : std_logic := '1';
+	constant StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_1_StructsMemoryModule_L36F13L38T14_StructsMemoryModule_L37F32T39_Expr : unsigned(1 downto 0) := "10";
+	constant StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_1_StructsMemoryModule_L36F13L38T14_StructsMemoryModule_L37F54T57_Expr : unsigned(0 downto 0) := "1";
+	constant StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_2_idx : unsigned(1 downto 0) := "10";
+	constant StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_2_StructsMemoryModule_L36F13L38T14_StructsMemoryModule_L37F32T39_Expr : unsigned(1 downto 0) := "11";
+	constant StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L35F13L38T14_2_StructsMemoryModule_L36F13L38T14_StructsMemoryModule_L37F54T57_Expr : unsigned(1 downto 0) := "10";
+	constant StructsMemoryModule_L33F9L40T10_StructsMemoryModule_L39F40T41_Expr : unsigned(1 downto 0) := "11";
+	signal Inputs_In_Op1 : unsigned(7 downto 0);
+	signal Inputs_In_Op2 : unsigned(7 downto 0);
+	signal NextState_Out_Op1 : unsigned(7 downto 0);
+	signal NextState_Out_Op2 : unsigned(7 downto 0);
 	signal State_Out_Op1 : unsigned(7 downto 0) := "00000000";
 	constant State_Out_Op1Default : unsigned(7 downto 0) := "00001010";
 	signal State_Out_Op2 : unsigned(7 downto 0) := "00000000";
@@ -86,10 +98,30 @@ begin
 			end if;
 		end if;
 	end process;
-	process (In_Op1, In_Op2)
+	process (Inputs_In_Op1, Inputs_In_Op2, State_Buff, State_Out_Op1, State_Out_Op2)
 	begin
-		Inputs_In(15 downto 8) <= In_Op2;
-		Inputs_In(7 downto 0) <= In_Op1;
+		for NextState_Buff_Iterator in 0 to 3 loop
+			NextState_Buff(NextState_Buff_Iterator) <= State_Buff(NextState_Buff_Iterator);
+		end loop;
+		NextState_Out_Op1 <= State_Out_Op1;
+		NextState_Out_Op2 <= State_Out_Op2;
+		NextState_Buff(0)(15 downto 8) <= Inputs_In_Op2;
+		NextState_Buff(0)(7 downto 0) <= Inputs_In_Op1;
+		NextState_Buff(1)(15 downto 8) <= State_Buff(0)(15 downto 8);
+		NextState_Buff(1)(7 downto 0) <= State_Buff(0)(7 downto 0);
+		NextState_Buff(2)(15 downto 8) <= State_Buff(1)(15 downto 8);
+		NextState_Buff(2)(7 downto 0) <= State_Buff(1)(7 downto 0);
+		NextState_Buff(3)(15 downto 8) <= State_Buff(2)(15 downto 8);
+		NextState_Buff(3)(7 downto 0) <= State_Buff(2)(7 downto 0);
+		NextState_Out_Op2 <= State_Buff(3)(15 downto 8);
+		NextState_Out_Op1 <= State_Buff(3)(7 downto 0);
+	end process;
+	process (In_Op1, In_Op2, State_Out_Op1, State_Out_Op2)
+	begin
+		Inputs_In_Op1 <= In_Op1;
+		Inputs_In_Op2 <= In_Op2;
+		oOut_Op2 <= State_Out_Op2;
+		oOut_Op1 <= State_Out_Op1;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

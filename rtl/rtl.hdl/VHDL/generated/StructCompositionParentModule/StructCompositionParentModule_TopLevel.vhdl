@@ -99,56 +99,230 @@ architecture rtl of StructCompositionParentModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_iValue : unsigned(75 downto 0) := (others => '0');
-	signal child_iValue : unsigned(75 downto 0) := (others => '0');
-	signal child_Output : unsigned(75 downto 0) := (others => '0');
-	signal child_iValue_child_iValue_HardLink : unsigned(75 downto 0) := "0000000000000000000000000000000000000000000000000000000000000000000000000000";
-	signal child_Output_child_Output_HardLink : unsigned(75 downto 0) := "0000000000000000000000000000000000000000000000000000000000000000000000000000";
+	signal Inputs_iValue_intValue : unsigned(15 downto 0);
+	signal Inputs_iValue_l1_byteValue : unsigned(7 downto 0);
+	signal Inputs_iValue_l1_l2_bitArray : unsigned(1 downto 0);
+	signal child_iValue_intValue : unsigned(15 downto 0);
+	signal child_iValue_l1_byteValue : unsigned(7 downto 0);
+	signal child_iValue_l1_l2_bitArray : unsigned(1 downto 0);
+	signal child_Output_iValue_intValue : unsigned(15 downto 0) := "0000000000000000";
+	signal child_Output_iValue_l1_byteValue : unsigned(7 downto 0) := "00000000";
+	signal child_Output_iValue_l1_l2_bitArray : unsigned(1 downto 0) := "00";
+	signal StructsNestedIOModule_L84F34L87T14_Object : unsigned(75 downto 0) := (others => '0');
+	signal child_iValue_intValue_child_iValue_intValue_HardLink : unsigned(15 downto 0) := "0000000000000000";
+	signal child_iValue_l1_byteValue_child_iValue_l1_byteValue_HardLink : unsigned(7 downto 0) := "00000000";
+	signal child_iValue_l1_l2_bitArray_child_iValue_l1_l2_bitArray_HardLink : unsigned(1 downto 0) := "00";
+	signal child_iValue_l1_l2_boolValue0_child_iValue_l1_l2_boolValue_HardLink : std_logic := '0';
+	signal child_iValue_l1_l2_boolValue1_child_iValue_l1_l2_boolValue_HardLink : std_logic := '0';
+	signal child_iValue_l1_l2Array0_child_iValue_l1_l2Array_HardLink : unsigned(3 downto 0) := "0000";
+	signal child_iValue_l1_l2Array1_child_iValue_l1_l2Array_HardLink : unsigned(3 downto 0) := "0000";
+	signal child_iValue_l1Array0_child_iValue_l1Array_HardLink : unsigned(19 downto 0) := "00000000000000000000";
+	signal child_iValue_l1Array1_child_iValue_l1Array_HardLink : unsigned(19 downto 0) := "00000000000000000000";
+	signal child_Output_iValue_intValue_child_Output_iValue_intValue_HardLink : unsigned(15 downto 0) := "0000000000000000";
+	signal child_Output_iValue_l1_byteValue_child_Output_iValue_l1_byteValue_HardLink : unsigned(7 downto 0) := "00000000";
+	signal child_Output_iValue_l1_l2_bitArray_child_Output_iValue_l1_l2_bitArray_HardLink : unsigned(1 downto 0) := "00";
+	signal child_Output_iValue_l1_l2_boolValue0_child_Output_iValue_l1_l2_boolValue_HardLink : std_logic := '0';
+	signal child_Output_iValue_l1_l2_boolValue1_child_Output_iValue_l1_l2_boolValue_HardLink : std_logic := '0';
+	signal child_Output_iValue_l1_l2Array0_child_Output_iValue_l1_l2Array_HardLink : unsigned(3 downto 0) := "0000";
+	signal child_Output_iValue_l1_l2Array1_child_Output_iValue_l1_l2Array_HardLink : unsigned(3 downto 0) := "0000";
+	signal child_Output_iValue_l1Array0_child_Output_iValue_l1Array_HardLink : unsigned(19 downto 0) := "00000000000000000000";
+	signal child_Output_iValue_l1Array1_child_Output_iValue_l1Array_HardLink : unsigned(19 downto 0) := "00000000000000000000";
+	type Inputs_iValue_l1_l2_boolValueArray is array (0 to 1) of std_logic;
+	signal Inputs_iValue_l1_l2_boolValue : Inputs_iValue_l1_l2_boolValueArray;
+	type Inputs_iValue_l1_l2ArrayArray is array (0 to 1) of unsigned (3 downto 0);
+	signal Inputs_iValue_l1_l2Array : Inputs_iValue_l1_l2ArrayArray;
+	type Inputs_iValue_l1ArrayArray is array (0 to 1) of unsigned (19 downto 0);
+	signal Inputs_iValue_l1Array : Inputs_iValue_l1ArrayArray;
+	type oOutput_iValue_l1_l2_boolValueArray is array (0 to 1) of std_logic;
+	signal oOutput_iValue_l1_l2_boolValue : oOutput_iValue_l1_l2_boolValueArray := (others => '0');
+	type oOutput_iValue_l1_l2ArrayArray is array (0 to 1) of unsigned (3 downto 0);
+	signal oOutput_iValue_l1_l2Array : oOutput_iValue_l1_l2ArrayArray := (others => (others => '0'));
+	type oOutput_iValue_l1_l2Array0_boolValueArray is array (0 to 1) of std_logic;
+	signal oOutput_iValue_l1_l2Array0_boolValue : oOutput_iValue_l1_l2Array0_boolValueArray;
+	type oOutput_iValue_l1_l2Array1_boolValueArray is array (0 to 1) of std_logic;
+	signal oOutput_iValue_l1_l2Array1_boolValue : oOutput_iValue_l1_l2Array1_boolValueArray;
+	type oOutput_iValue_l1ArrayArray is array (0 to 1) of unsigned (19 downto 0);
+	signal oOutput_iValue_l1Array : oOutput_iValue_l1ArrayArray := (others => (others => '0'));
+	type oOutput_iValue_l1Array0_l2_boolValueArray is array (0 to 1) of std_logic;
+	signal oOutput_iValue_l1Array0_l2_boolValue : oOutput_iValue_l1Array0_l2_boolValueArray;
+	type oOutput_iValue_l1Array0_l2ArrayArray is array (0 to 1) of unsigned (3 downto 0);
+	signal oOutput_iValue_l1Array0_l2Array : oOutput_iValue_l1Array0_l2ArrayArray;
+	type oOutput_iValue_l1Array0_l2Array0_boolValueArray is array (0 to 1) of std_logic;
+	signal oOutput_iValue_l1Array0_l2Array0_boolValue : oOutput_iValue_l1Array0_l2Array0_boolValueArray;
+	type oOutput_iValue_l1Array0_l2Array1_boolValueArray is array (0 to 1) of std_logic;
+	signal oOutput_iValue_l1Array0_l2Array1_boolValue : oOutput_iValue_l1Array0_l2Array1_boolValueArray;
+	type oOutput_iValue_l1Array1_l2_boolValueArray is array (0 to 1) of std_logic;
+	signal oOutput_iValue_l1Array1_l2_boolValue : oOutput_iValue_l1Array1_l2_boolValueArray;
+	type oOutput_iValue_l1Array1_l2ArrayArray is array (0 to 1) of unsigned (3 downto 0);
+	signal oOutput_iValue_l1Array1_l2Array : oOutput_iValue_l1Array1_l2ArrayArray;
+	type oOutput_iValue_l1Array1_l2Array0_boolValueArray is array (0 to 1) of std_logic;
+	signal oOutput_iValue_l1Array1_l2Array0_boolValue : oOutput_iValue_l1Array1_l2Array0_boolValueArray;
+	type oOutput_iValue_l1Array1_l2Array1_boolValueArray is array (0 to 1) of std_logic;
+	signal oOutput_iValue_l1Array1_l2Array1_boolValue : oOutput_iValue_l1Array1_l2Array1_boolValueArray;
+	type child_iValue_l1_l2_boolValueArray is array (0 to 1) of std_logic;
+	signal child_iValue_l1_l2_boolValue : child_iValue_l1_l2_boolValueArray;
+	type child_iValue_l1_l2ArrayArray is array (0 to 1) of unsigned (3 downto 0);
+	signal child_iValue_l1_l2Array : child_iValue_l1_l2ArrayArray;
+	type child_iValue_l1ArrayArray is array (0 to 1) of unsigned (19 downto 0);
+	signal child_iValue_l1Array : child_iValue_l1ArrayArray;
+	type child_Output_iValue_l1_l2_boolValueArray is array (0 to 1) of std_logic;
+	signal child_Output_iValue_l1_l2_boolValue : child_Output_iValue_l1_l2_boolValueArray := (others => '0');
+	type child_Output_iValue_l1_l2ArrayArray is array (0 to 1) of unsigned (3 downto 0);
+	signal child_Output_iValue_l1_l2Array : child_Output_iValue_l1_l2ArrayArray := (others => (others => '0'));
+	type child_Output_iValue_l1ArrayArray is array (0 to 1) of unsigned (19 downto 0);
+	signal child_Output_iValue_l1Array : child_Output_iValue_l1ArrayArray := (others => (others => '0'));
 begin
 	StructCompositionParentModule_TopLevel_child : entity work.StructCompositionParentModule_TopLevel_child
 	port map
 	(
 		-- [BEGIN USER MAP FOR child]
 		-- [END USER MAP FOR child]
-		iValue => child_iValue_child_iValue_HardLink,
-		Output => child_Output_child_Output_HardLink
+		iValue_intValue => child_iValue_intValue_child_iValue_intValue_HardLink,
+		iValue_l1_byteValue => child_iValue_l1_byteValue_child_iValue_l1_byteValue_HardLink,
+		iValue_l1_l2_bitArray => child_iValue_l1_l2_bitArray_child_iValue_l1_l2_bitArray_HardLink,
+		iValue_l1_l2_boolValue0 => child_iValue_l1_l2_boolValue0_child_iValue_l1_l2_boolValue_HardLink,
+		iValue_l1_l2_boolValue1 => child_iValue_l1_l2_boolValue1_child_iValue_l1_l2_boolValue_HardLink,
+		iValue_l1_l2Array0 => child_iValue_l1_l2Array0_child_iValue_l1_l2Array_HardLink,
+		iValue_l1_l2Array1 => child_iValue_l1_l2Array1_child_iValue_l1_l2Array_HardLink,
+		iValue_l1Array0 => child_iValue_l1Array0_child_iValue_l1Array_HardLink,
+		iValue_l1Array1 => child_iValue_l1Array1_child_iValue_l1Array_HardLink,
+		Output_iValue_intValue => child_Output_iValue_intValue_child_Output_iValue_intValue_HardLink,
+		Output_iValue_l1_byteValue => child_Output_iValue_l1_byteValue_child_Output_iValue_l1_byteValue_HardLink,
+		Output_iValue_l1_l2_bitArray => child_Output_iValue_l1_l2_bitArray_child_Output_iValue_l1_l2_bitArray_HardLink,
+		Output_iValue_l1_l2_boolValue0 => child_Output_iValue_l1_l2_boolValue0_child_Output_iValue_l1_l2_boolValue_HardLink,
+		Output_iValue_l1_l2_boolValue1 => child_Output_iValue_l1_l2_boolValue1_child_Output_iValue_l1_l2_boolValue_HardLink,
+		Output_iValue_l1_l2Array0 => child_Output_iValue_l1_l2Array0_child_Output_iValue_l1_l2Array_HardLink,
+		Output_iValue_l1_l2Array1 => child_Output_iValue_l1_l2Array1_child_Output_iValue_l1_l2Array_HardLink,
+		Output_iValue_l1Array0 => child_Output_iValue_l1Array0_child_Output_iValue_l1Array_HardLink,
+		Output_iValue_l1Array1 => child_Output_iValue_l1Array1_child_Output_iValue_l1Array_HardLink
 	)
 	;
-	process (child_iValue, child_Output_child_Output_HardLink, iValue_intValue, iValue_l1_byteValue, iValue_l1_l2_bitArray, iValue_l1_l2_boolValue0, iValue_l1_l2_boolValue1, iValue_l1_l2Array0_bitArray, iValue_l1_l2Array0_boolValue0, iValue_l1_l2Array0_boolValue1, iValue_l1_l2Array1_bitArray, iValue_l1_l2Array1_boolValue0, iValue_l1_l2Array1_boolValue1, iValue_l1Array0_byteValue, iValue_l1Array0_l2_bitArray, iValue_l1Array0_l2_boolValue0, iValue_l1Array0_l2_boolValue1, iValue_l1Array0_l2Array0_bitArray, iValue_l1Array0_l2Array0_boolValue0, iValue_l1Array0_l2Array0_boolValue1, iValue_l1Array0_l2Array1_bitArray, iValue_l1Array0_l2Array1_boolValue0, iValue_l1Array0_l2Array1_boolValue1, iValue_l1Array1_byteValue, iValue_l1Array1_l2_bitArray, iValue_l1Array1_l2_boolValue0, iValue_l1Array1_l2_boolValue1, iValue_l1Array1_l2Array0_bitArray, iValue_l1Array1_l2Array0_boolValue0, iValue_l1Array1_l2Array0_boolValue1, iValue_l1Array1_l2Array1_bitArray, iValue_l1Array1_l2Array1_boolValue0, iValue_l1Array1_l2Array1_boolValue1)
+	process (child_iValue_intValue, child_iValue_l1_byteValue, child_iValue_l1_l2_bitArray, child_iValue_l1_l2_boolValue, child_iValue_l1_l2Array, child_iValue_l1Array, child_Output_iValue_intValue, child_Output_iValue_intValue_child_Output_iValue_intValue_HardLink, child_Output_iValue_l1_byteValue, child_Output_iValue_l1_byteValue_child_Output_iValue_l1_byteValue_HardLink, child_Output_iValue_l1_l2_bitArray, child_Output_iValue_l1_l2_bitArray_child_Output_iValue_l1_l2_bitArray_HardLink, child_Output_iValue_l1_l2_boolValue, child_Output_iValue_l1_l2_boolValue0_child_Output_iValue_l1_l2_boolValue_HardLink, child_Output_iValue_l1_l2_boolValue1_child_Output_iValue_l1_l2_boolValue_HardLink, child_Output_iValue_l1_l2Array, child_Output_iValue_l1_l2Array0_child_Output_iValue_l1_l2Array_HardLink, child_Output_iValue_l1_l2Array1_child_Output_iValue_l1_l2Array_HardLink, child_Output_iValue_l1Array, child_Output_iValue_l1Array0_child_Output_iValue_l1Array_HardLink, child_Output_iValue_l1Array1_child_Output_iValue_l1Array_HardLink, Inputs_iValue_intValue, Inputs_iValue_l1_byteValue, Inputs_iValue_l1_l2_bitArray, Inputs_iValue_l1_l2_boolValue, Inputs_iValue_l1_l2Array, Inputs_iValue_l1Array, iValue_intValue, iValue_l1_byteValue, iValue_l1_l2_bitArray, iValue_l1_l2_boolValue0, iValue_l1_l2_boolValue1, iValue_l1_l2Array0_bitArray, iValue_l1_l2Array0_boolValue0, iValue_l1_l2Array0_boolValue1, iValue_l1_l2Array1_bitArray, iValue_l1_l2Array1_boolValue0, iValue_l1_l2Array1_boolValue1, iValue_l1Array0_byteValue, iValue_l1Array0_l2_bitArray, iValue_l1Array0_l2_boolValue0, iValue_l1Array0_l2_boolValue1, iValue_l1Array0_l2Array0_bitArray, iValue_l1Array0_l2Array0_boolValue0, iValue_l1Array0_l2Array0_boolValue1, iValue_l1Array0_l2Array1_bitArray, iValue_l1Array0_l2Array1_boolValue0, iValue_l1Array0_l2Array1_boolValue1, iValue_l1Array1_byteValue, iValue_l1Array1_l2_bitArray, iValue_l1Array1_l2_boolValue0, iValue_l1Array1_l2_boolValue1, iValue_l1Array1_l2Array0_bitArray, iValue_l1Array1_l2Array0_boolValue0, iValue_l1Array1_l2Array0_boolValue1, iValue_l1Array1_l2Array1_bitArray, iValue_l1Array1_l2Array1_boolValue0, iValue_l1Array1_l2Array1_boolValue1, oOutput_iValue_l1_l2_boolValue, oOutput_iValue_l1_l2Array, oOutput_iValue_l1_l2Array0_boolValue, oOutput_iValue_l1_l2Array1_boolValue, oOutput_iValue_l1Array, oOutput_iValue_l1Array0_l2_boolValue, oOutput_iValue_l1Array0_l2Array, oOutput_iValue_l1Array0_l2Array0_boolValue, oOutput_iValue_l1Array0_l2Array1_boolValue, oOutput_iValue_l1Array1_l2_boolValue, oOutput_iValue_l1Array1_l2Array, oOutput_iValue_l1Array1_l2Array0_boolValue, oOutput_iValue_l1Array1_l2Array1_boolValue, StructsNestedIOModule_L84F34L87T14_Object)
 	begin
-		Inputs_iValue(75) <= iValue_l1Array1_l2Array1_boolValue1;
-		Inputs_iValue(74) <= iValue_l1Array1_l2Array1_boolValue0;
-		Inputs_iValue(73 downto 72) <= iValue_l1Array1_l2Array1_bitArray;
-		Inputs_iValue(71) <= iValue_l1Array1_l2Array0_boolValue1;
-		Inputs_iValue(70) <= iValue_l1Array1_l2Array0_boolValue0;
-		Inputs_iValue(69 downto 68) <= iValue_l1Array1_l2Array0_bitArray;
-		Inputs_iValue(67) <= iValue_l1Array1_l2_boolValue1;
-		Inputs_iValue(66) <= iValue_l1Array1_l2_boolValue0;
-		Inputs_iValue(65 downto 64) <= iValue_l1Array1_l2_bitArray;
-		Inputs_iValue(63 downto 56) <= iValue_l1Array1_byteValue;
-		Inputs_iValue(55) <= iValue_l1Array0_l2Array1_boolValue1;
-		Inputs_iValue(54) <= iValue_l1Array0_l2Array1_boolValue0;
-		Inputs_iValue(53 downto 52) <= iValue_l1Array0_l2Array1_bitArray;
-		Inputs_iValue(51) <= iValue_l1Array0_l2Array0_boolValue1;
-		Inputs_iValue(50) <= iValue_l1Array0_l2Array0_boolValue0;
-		Inputs_iValue(49 downto 48) <= iValue_l1Array0_l2Array0_bitArray;
-		Inputs_iValue(47) <= iValue_l1Array0_l2_boolValue1;
-		Inputs_iValue(46) <= iValue_l1Array0_l2_boolValue0;
-		Inputs_iValue(45 downto 44) <= iValue_l1Array0_l2_bitArray;
-		Inputs_iValue(43 downto 36) <= iValue_l1Array0_byteValue;
-		Inputs_iValue(35) <= iValue_l1_l2Array1_boolValue1;
-		Inputs_iValue(34) <= iValue_l1_l2Array1_boolValue0;
-		Inputs_iValue(33 downto 32) <= iValue_l1_l2Array1_bitArray;
-		Inputs_iValue(31) <= iValue_l1_l2Array0_boolValue1;
-		Inputs_iValue(30) <= iValue_l1_l2Array0_boolValue0;
-		Inputs_iValue(29 downto 28) <= iValue_l1_l2Array0_bitArray;
-		Inputs_iValue(27) <= iValue_l1_l2_boolValue1;
-		Inputs_iValue(26) <= iValue_l1_l2_boolValue0;
-		Inputs_iValue(25 downto 24) <= iValue_l1_l2_bitArray;
-		Inputs_iValue(23 downto 16) <= iValue_l1_byteValue;
-		Inputs_iValue(15 downto 0) <= iValue_intValue;
-		child_iValue_child_iValue_HardLink <= child_iValue;
-		child_Output <= child_Output_child_Output_HardLink;
+		oOutput_iValue_l1_l2_boolValue0 <= oOutput_iValue_l1_l2_boolValue(0);
+		oOutput_iValue_l1_l2_boolValue1 <= oOutput_iValue_l1_l2_boolValue(1);
+		oOutput_iValue_l1_l2Array0_boolValue0 <= oOutput_iValue_l1_l2Array0_boolValue(0);
+		oOutput_iValue_l1_l2Array0_boolValue1 <= oOutput_iValue_l1_l2Array0_boolValue(1);
+		oOutput_iValue_l1_l2Array0_boolValue(1) <= oOutput_iValue_l1_l2Array(0)(3);
+		oOutput_iValue_l1_l2Array0_boolValue(0) <= oOutput_iValue_l1_l2Array(0)(2);
+		oOutput_iValue_l1_l2Array0_bitArray <= oOutput_iValue_l1_l2Array(0)(1 downto 0);
+		oOutput_iValue_l1_l2Array1_boolValue0 <= oOutput_iValue_l1_l2Array1_boolValue(0);
+		oOutput_iValue_l1_l2Array1_boolValue1 <= oOutput_iValue_l1_l2Array1_boolValue(1);
+		oOutput_iValue_l1_l2Array1_boolValue(1) <= oOutput_iValue_l1_l2Array(1)(3);
+		oOutput_iValue_l1_l2Array1_boolValue(0) <= oOutput_iValue_l1_l2Array(1)(2);
+		oOutput_iValue_l1_l2Array1_bitArray <= oOutput_iValue_l1_l2Array(1)(1 downto 0);
+		oOutput_iValue_l1Array0_l2_boolValue0 <= oOutput_iValue_l1Array0_l2_boolValue(0);
+		oOutput_iValue_l1Array0_l2_boolValue1 <= oOutput_iValue_l1Array0_l2_boolValue(1);
+		oOutput_iValue_l1Array0_l2Array0_boolValue0 <= oOutput_iValue_l1Array0_l2Array0_boolValue(0);
+		oOutput_iValue_l1Array0_l2Array0_boolValue1 <= oOutput_iValue_l1Array0_l2Array0_boolValue(1);
+		oOutput_iValue_l1Array0_l2Array0_boolValue(1) <= oOutput_iValue_l1Array0_l2Array(0)(3);
+		oOutput_iValue_l1Array0_l2Array0_boolValue(0) <= oOutput_iValue_l1Array0_l2Array(0)(2);
+		oOutput_iValue_l1Array0_l2Array0_bitArray <= oOutput_iValue_l1Array0_l2Array(0)(1 downto 0);
+		oOutput_iValue_l1Array0_l2Array1_boolValue0 <= oOutput_iValue_l1Array0_l2Array1_boolValue(0);
+		oOutput_iValue_l1Array0_l2Array1_boolValue1 <= oOutput_iValue_l1Array0_l2Array1_boolValue(1);
+		oOutput_iValue_l1Array0_l2Array1_boolValue(1) <= oOutput_iValue_l1Array0_l2Array(1)(3);
+		oOutput_iValue_l1Array0_l2Array1_boolValue(0) <= oOutput_iValue_l1Array0_l2Array(1)(2);
+		oOutput_iValue_l1Array0_l2Array1_bitArray <= oOutput_iValue_l1Array0_l2Array(1)(1 downto 0);
+		oOutput_iValue_l1Array0_l2Array(1) <= oOutput_iValue_l1Array(0)(19 downto 16);
+		oOutput_iValue_l1Array0_l2Array(0) <= oOutput_iValue_l1Array(0)(15 downto 12);
+		oOutput_iValue_l1Array0_l2_boolValue(1) <= oOutput_iValue_l1Array(0)(11);
+		oOutput_iValue_l1Array0_l2_boolValue(0) <= oOutput_iValue_l1Array(0)(10);
+		oOutput_iValue_l1Array0_l2_bitArray <= oOutput_iValue_l1Array(0)(9 downto 8);
+		oOutput_iValue_l1Array0_byteValue <= oOutput_iValue_l1Array(0)(7 downto 0);
+		oOutput_iValue_l1Array1_l2_boolValue0 <= oOutput_iValue_l1Array1_l2_boolValue(0);
+		oOutput_iValue_l1Array1_l2_boolValue1 <= oOutput_iValue_l1Array1_l2_boolValue(1);
+		oOutput_iValue_l1Array1_l2Array0_boolValue0 <= oOutput_iValue_l1Array1_l2Array0_boolValue(0);
+		oOutput_iValue_l1Array1_l2Array0_boolValue1 <= oOutput_iValue_l1Array1_l2Array0_boolValue(1);
+		oOutput_iValue_l1Array1_l2Array0_boolValue(1) <= oOutput_iValue_l1Array1_l2Array(0)(3);
+		oOutput_iValue_l1Array1_l2Array0_boolValue(0) <= oOutput_iValue_l1Array1_l2Array(0)(2);
+		oOutput_iValue_l1Array1_l2Array0_bitArray <= oOutput_iValue_l1Array1_l2Array(0)(1 downto 0);
+		oOutput_iValue_l1Array1_l2Array1_boolValue0 <= oOutput_iValue_l1Array1_l2Array1_boolValue(0);
+		oOutput_iValue_l1Array1_l2Array1_boolValue1 <= oOutput_iValue_l1Array1_l2Array1_boolValue(1);
+		oOutput_iValue_l1Array1_l2Array1_boolValue(1) <= oOutput_iValue_l1Array1_l2Array(1)(3);
+		oOutput_iValue_l1Array1_l2Array1_boolValue(0) <= oOutput_iValue_l1Array1_l2Array(1)(2);
+		oOutput_iValue_l1Array1_l2Array1_bitArray <= oOutput_iValue_l1Array1_l2Array(1)(1 downto 0);
+		oOutput_iValue_l1Array1_l2Array(1) <= oOutput_iValue_l1Array(1)(19 downto 16);
+		oOutput_iValue_l1Array1_l2Array(0) <= oOutput_iValue_l1Array(1)(15 downto 12);
+		oOutput_iValue_l1Array1_l2_boolValue(1) <= oOutput_iValue_l1Array(1)(11);
+		oOutput_iValue_l1Array1_l2_boolValue(0) <= oOutput_iValue_l1Array(1)(10);
+		oOutput_iValue_l1Array1_l2_bitArray <= oOutput_iValue_l1Array(1)(9 downto 8);
+		oOutput_iValue_l1Array1_byteValue <= oOutput_iValue_l1Array(1)(7 downto 0);
+		Inputs_iValue_intValue <= iValue_intValue;
+		Inputs_iValue_l1_byteValue <= iValue_l1_byteValue;
+		Inputs_iValue_l1_l2_bitArray <= iValue_l1_l2_bitArray;
+		Inputs_iValue_l1_l2_boolValue(0) <= iValue_l1_l2_boolValue0;
+		Inputs_iValue_l1_l2_boolValue(1) <= iValue_l1_l2_boolValue1;
+		Inputs_iValue_l1_l2Array(0)(3) <= iValue_l1_l2Array0_boolValue1;
+		Inputs_iValue_l1_l2Array(0)(2) <= iValue_l1_l2Array0_boolValue0;
+		Inputs_iValue_l1_l2Array(0)(1 downto 0) <= iValue_l1_l2Array0_bitArray;
+		Inputs_iValue_l1_l2Array(1)(3) <= iValue_l1_l2Array1_boolValue1;
+		Inputs_iValue_l1_l2Array(1)(2) <= iValue_l1_l2Array1_boolValue0;
+		Inputs_iValue_l1_l2Array(1)(1 downto 0) <= iValue_l1_l2Array1_bitArray;
+		Inputs_iValue_l1Array(0)(19) <= iValue_l1Array0_l2Array1_boolValue1;
+		Inputs_iValue_l1Array(0)(18) <= iValue_l1Array0_l2Array1_boolValue0;
+		Inputs_iValue_l1Array(0)(17 downto 16) <= iValue_l1Array0_l2Array1_bitArray;
+		Inputs_iValue_l1Array(0)(15) <= iValue_l1Array0_l2Array0_boolValue1;
+		Inputs_iValue_l1Array(0)(14) <= iValue_l1Array0_l2Array0_boolValue0;
+		Inputs_iValue_l1Array(0)(13 downto 12) <= iValue_l1Array0_l2Array0_bitArray;
+		Inputs_iValue_l1Array(0)(11) <= iValue_l1Array0_l2_boolValue1;
+		Inputs_iValue_l1Array(0)(10) <= iValue_l1Array0_l2_boolValue0;
+		Inputs_iValue_l1Array(0)(9 downto 8) <= iValue_l1Array0_l2_bitArray;
+		Inputs_iValue_l1Array(0)(7 downto 0) <= iValue_l1Array0_byteValue;
+		Inputs_iValue_l1Array(1)(19) <= iValue_l1Array1_l2Array1_boolValue1;
+		Inputs_iValue_l1Array(1)(18) <= iValue_l1Array1_l2Array1_boolValue0;
+		Inputs_iValue_l1Array(1)(17 downto 16) <= iValue_l1Array1_l2Array1_bitArray;
+		Inputs_iValue_l1Array(1)(15) <= iValue_l1Array1_l2Array0_boolValue1;
+		Inputs_iValue_l1Array(1)(14) <= iValue_l1Array1_l2Array0_boolValue0;
+		Inputs_iValue_l1Array(1)(13 downto 12) <= iValue_l1Array1_l2Array0_bitArray;
+		Inputs_iValue_l1Array(1)(11) <= iValue_l1Array1_l2_boolValue1;
+		Inputs_iValue_l1Array(1)(10) <= iValue_l1Array1_l2_boolValue0;
+		Inputs_iValue_l1Array(1)(9 downto 8) <= iValue_l1Array1_l2_bitArray;
+		Inputs_iValue_l1Array(1)(7 downto 0) <= iValue_l1Array1_byteValue;
+		StructsNestedIOModule_L84F34L87T14_Object(15 downto 0) <= Inputs_iValue_intValue;
+		StructsNestedIOModule_L84F34L87T14_Object(23 downto 16) <= Inputs_iValue_l1_byteValue;
+		StructsNestedIOModule_L84F34L87T14_Object(25 downto 24) <= Inputs_iValue_l1_l2_bitArray;
+		StructsNestedIOModule_L84F34L87T14_Object(27) <= Inputs_iValue_l1_l2_boolValue(1);
+		StructsNestedIOModule_L84F34L87T14_Object(26) <= Inputs_iValue_l1_l2_boolValue(0);
+		StructsNestedIOModule_L84F34L87T14_Object(35 downto 32) <= Inputs_iValue_l1_l2Array(1);
+		StructsNestedIOModule_L84F34L87T14_Object(31 downto 28) <= Inputs_iValue_l1_l2Array(0);
+		StructsNestedIOModule_L84F34L87T14_Object(75 downto 56) <= Inputs_iValue_l1Array(1);
+		StructsNestedIOModule_L84F34L87T14_Object(55 downto 36) <= Inputs_iValue_l1Array(0);
+		child_iValue_l1Array(1) <= StructsNestedIOModule_L84F34L87T14_Object(75 downto 56);
+		child_iValue_l1Array(0) <= StructsNestedIOModule_L84F34L87T14_Object(55 downto 36);
+		child_iValue_l1_l2Array(1) <= StructsNestedIOModule_L84F34L87T14_Object(35 downto 32);
+		child_iValue_l1_l2Array(0) <= StructsNestedIOModule_L84F34L87T14_Object(31 downto 28);
+		child_iValue_l1_l2_boolValue(1) <= StructsNestedIOModule_L84F34L87T14_Object(27);
+		child_iValue_l1_l2_boolValue(0) <= StructsNestedIOModule_L84F34L87T14_Object(26);
+		child_iValue_l1_l2_bitArray <= StructsNestedIOModule_L84F34L87T14_Object(25 downto 24);
+		child_iValue_l1_byteValue <= StructsNestedIOModule_L84F34L87T14_Object(23 downto 16);
+		child_iValue_intValue <= StructsNestedIOModule_L84F34L87T14_Object(15 downto 0);
+		oOutput_iValue_l1Array(0) <= child_Output_iValue_l1Array(0);
+		oOutput_iValue_l1Array(1) <= child_Output_iValue_l1Array(1);
+		oOutput_iValue_l1_l2Array(0) <= child_Output_iValue_l1_l2Array(0);
+		oOutput_iValue_l1_l2Array(1) <= child_Output_iValue_l1_l2Array(1);
+		oOutput_iValue_l1_l2_boolValue(0) <= child_Output_iValue_l1_l2_boolValue(0);
+		oOutput_iValue_l1_l2_boolValue(1) <= child_Output_iValue_l1_l2_boolValue(1);
+		oOutput_iValue_l1_l2_bitArray <= child_Output_iValue_l1_l2_bitArray;
+		oOutput_iValue_l1_byteValue <= child_Output_iValue_l1_byteValue;
+		oOutput_iValue_intValue <= child_Output_iValue_intValue;
+		child_iValue_intValue_child_iValue_intValue_HardLink <= child_iValue_intValue;
+		child_iValue_l1_byteValue_child_iValue_l1_byteValue_HardLink <= child_iValue_l1_byteValue;
+		child_iValue_l1_l2_bitArray_child_iValue_l1_l2_bitArray_HardLink <= child_iValue_l1_l2_bitArray;
+		child_iValue_l1_l2_boolValue0_child_iValue_l1_l2_boolValue_HardLink <= child_iValue_l1_l2_boolValue(0);
+		child_iValue_l1_l2_boolValue1_child_iValue_l1_l2_boolValue_HardLink <= child_iValue_l1_l2_boolValue(1);
+		child_iValue_l1_l2Array0_child_iValue_l1_l2Array_HardLink <= child_iValue_l1_l2Array(0);
+		child_iValue_l1_l2Array1_child_iValue_l1_l2Array_HardLink <= child_iValue_l1_l2Array(1);
+		child_iValue_l1Array0_child_iValue_l1Array_HardLink <= child_iValue_l1Array(0);
+		child_iValue_l1Array1_child_iValue_l1Array_HardLink <= child_iValue_l1Array(1);
+		child_Output_iValue_intValue <= child_Output_iValue_intValue_child_Output_iValue_intValue_HardLink;
+		child_Output_iValue_l1_byteValue <= child_Output_iValue_l1_byteValue_child_Output_iValue_l1_byteValue_HardLink;
+		child_Output_iValue_l1_l2_bitArray <= child_Output_iValue_l1_l2_bitArray_child_Output_iValue_l1_l2_bitArray_HardLink;
+		child_Output_iValue_l1_l2_boolValue(0) <= child_Output_iValue_l1_l2_boolValue0_child_Output_iValue_l1_l2_boolValue_HardLink;
+		child_Output_iValue_l1_l2_boolValue(1) <= child_Output_iValue_l1_l2_boolValue1_child_Output_iValue_l1_l2_boolValue_HardLink;
+		child_Output_iValue_l1_l2Array(0) <= child_Output_iValue_l1_l2Array0_child_Output_iValue_l1_l2Array_HardLink;
+		child_Output_iValue_l1_l2Array(1) <= child_Output_iValue_l1_l2Array1_child_Output_iValue_l1_l2Array_HardLink;
+		child_Output_iValue_l1Array(0) <= child_Output_iValue_l1Array0_child_Output_iValue_l1Array_HardLink;
+		child_Output_iValue_l1Array(1) <= child_Output_iValue_l1Array1_child_Output_iValue_l1Array_HardLink;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

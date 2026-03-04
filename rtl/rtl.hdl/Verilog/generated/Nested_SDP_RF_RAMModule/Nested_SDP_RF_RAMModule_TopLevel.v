@@ -39,14 +39,11 @@ module Nested_SDP_RF_RAMModule_TopLevel
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [7: 0] State_Data_BuffDefault = 8'b00000000;
 	wire [7: 0] Inputs_ReadAddress;
 	wire Inputs_WE;
 	wire [7: 0] Inputs_WriteAddress;
 	wire [7: 0] Inputs_WriteData;
-	reg [7: 0] NextState_Data_ReadData;
-	reg [7: 0] State_Data_ReadData = 8'b00000000;
-	wire [7: 0] State_Data_ReadDataDefault = 8'b00000000;
+	reg [7: 0] State_Data_ReadData;
 	integer State_Data_Buff_Iterator;
 	reg [7 : 0] State_Data_Buff [0 : 255];
 	initial
@@ -54,45 +51,20 @@ module Nested_SDP_RF_RAMModule_TopLevel
 		for (State_Data_Buff_Iterator = 0; State_Data_Buff_Iterator < 256; State_Data_Buff_Iterator = State_Data_Buff_Iterator + 1)
 			State_Data_Buff[State_Data_Buff_Iterator] = 0;
 	end
-	integer NextState_Data_Buff_Iterator;
-	reg [7 : 0] NextState_Data_Buff [0 : 255];
-	initial
-	begin : Init_NextState_Data_Buff
-		for (NextState_Data_Buff_Iterator = 0; NextState_Data_Buff_Iterator < 256; NextState_Data_Buff_Iterator = NextState_Data_Buff_Iterator + 1)
-			NextState_Data_Buff[NextState_Data_Buff_Iterator] = 0;
-	end
+	// inferred simple dual port RAM with read-first behaviour
 	always @ (posedge Clock)
 	begin
-		if ((Reset == 1))
+		if (Inputs_WE)
 		begin
-			State_Data_ReadData <= State_Data_ReadDataDefault;
+			State_Data_Buff[Inputs_WriteAddress] <= Inputs_WriteData;
 		end
-		else
-		begin
-			State_Data_ReadData <= NextState_Data_ReadData;
-		end
-	end
-	always @ (posedge Clock)
-	begin
-		if ((Reset == 1))
-		begin
-			for (State_Data_Buff_Iterator = 0; (State_Data_Buff_Iterator < 256); State_Data_Buff_Iterator = (State_Data_Buff_Iterator + 1))
-			begin
-				State_Data_Buff[State_Data_Buff_Iterator] <= State_Data_BuffDefault;
-			end
-		end
-		else
-		begin
-			for (State_Data_Buff_Iterator = 0; (State_Data_Buff_Iterator < 256); State_Data_Buff_Iterator = (State_Data_Buff_Iterator + 1))
-			begin
-				State_Data_Buff[State_Data_Buff_Iterator] <= NextState_Data_Buff[State_Data_Buff_Iterator];
-			end
-		end
+		State_Data_ReadData <= State_Data_Buff[Inputs_ReadAddress];
 	end
 	assign Inputs_ReadAddress = ReadAddress;
 	assign Inputs_WE = WE;
 	assign Inputs_WriteAddress = WriteAddress;
 	assign Inputs_WriteData = WriteData;
+	assign Data = State_Data_ReadData;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

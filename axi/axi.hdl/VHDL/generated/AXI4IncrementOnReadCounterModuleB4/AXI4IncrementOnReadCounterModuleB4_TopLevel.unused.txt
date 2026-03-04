@@ -6,24 +6,9 @@ No reads:
 	axiSlave_outAWADDR
 	axiSlave_outAWREADYConfirming
 	axiSlave_outAWVALID
-	axiSlave_outReadTXCompleting
 	axiSlave_outWDATA
 	axiSlave_outWREADYConfirming
 	axiSlave_outWriteTXCompleting
 	axiSlave_outWSTRB
 	axiSlave_outWVALID
-	axiSlave_S2M
-	Inputs_M2S
 	size
-	State_counter
-	State_Written
-No writes:
-	axiSlave_inARREADY
-	axiSlave_inAWREADY
-	axiSlave_inBVALID
-	axiSlave_inRDATA
-	axiSlave_inRVALID
-	axiSlave_inWREADY
-	axiSlave_M2S
-	NextState_counter
-	NextState_Written

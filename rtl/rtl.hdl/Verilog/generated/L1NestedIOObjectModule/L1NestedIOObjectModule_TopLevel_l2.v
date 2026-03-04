@@ -23,8 +23,10 @@ module L1NestedIOObjectModule_TopLevel_l2
 (
 	// [BEGIN USER PORTS]
 	// [END USER PORTS]
-	input wire [8:0] i1,
-	input wire [8:0] i2,
+	input wire i1_boolValue,
+	input wire [7:0] i1_byteValue,
+	input wire i2_boolValue,
+	input wire [7:0] i2_byteValue,
 	output wire [8:0] oValues0,
 	output wire [8:0] oValues1
 );
@@ -36,10 +38,28 @@ module L1NestedIOObjectModule_TopLevel_l2
 	wire One = 1'b1;
 	wire true = 1'b1;
 	wire false = 1'b0;
-	wire [8: 0] Inputs_i1;
-	wire [8: 0] Inputs_i2;
-	assign Inputs_i1 = i1;
-	assign Inputs_i2 = i2;
+	wire Inputs_i1_boolValue;
+	wire [7: 0] Inputs_i1_byteValue;
+	wire Inputs_i2_boolValue;
+	wire [7: 0] Inputs_i2_byteValue;
+	wire [8: 0] NestedIOObjectModule_L52F58L55T10_0;
+	wire [8: 0] NestedIOObjectModule_L52F58L55T10_1;
+	wire [8 : 0] oValues [0 : 1];
+	wire [8 : 0] NestedIOObjectModule_L52F58L55T10_Array [0 : 1];
+	assign oValues0 = oValues[0];
+	assign oValues1 = oValues[1];
+	assign Inputs_i1_boolValue = i1_boolValue;
+	assign Inputs_i1_byteValue = i1_byteValue;
+	assign Inputs_i2_boolValue = i2_boolValue;
+	assign Inputs_i2_byteValue = i2_byteValue;
+	assign NestedIOObjectModule_L52F58L55T10_0[8:1] = Inputs_i1_byteValue;
+	assign NestedIOObjectModule_L52F58L55T10_0[0] = Inputs_i1_boolValue;
+	assign NestedIOObjectModule_L52F58L55T10_Array[0] = NestedIOObjectModule_L52F58L55T10_0;
+	assign NestedIOObjectModule_L52F58L55T10_1[8:1] = Inputs_i2_byteValue;
+	assign NestedIOObjectModule_L52F58L55T10_1[0] = Inputs_i2_boolValue;
+	assign NestedIOObjectModule_L52F58L55T10_Array[1] = NestedIOObjectModule_L52F58L55T10_1;
+	assign oValues[0] = NestedIOObjectModule_L52F58L55T10_Array[0];
+	assign oValues[1] = NestedIOObjectModule_L52F58L55T10_Array[1];
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

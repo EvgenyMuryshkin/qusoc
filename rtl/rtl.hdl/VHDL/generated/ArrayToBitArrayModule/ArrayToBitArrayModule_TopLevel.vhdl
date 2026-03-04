@@ -54,8 +54,14 @@ architecture rtl of ArrayToBitArrayModule_TopLevel is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	constant State_ReadDataDefault : unsigned(7 downto 0) := "00000000";
+	signal ArrayToBitArrayModule_L21F47T78_Source : unsigned(31 downto 0) := (others => '0');
+	signal ArrayToBitArrayModule_L20F49T80_Source : unsigned(31 downto 0) := (others => '0');
 	type Inputs_InArrayArray is array (0 to 3) of unsigned (7 downto 0);
-	signal Inputs_InArray : Inputs_InArrayArray := (others => (others => '0'));
+	signal Inputs_InArray : Inputs_InArrayArray;
+	type OutDataArrayArray is array (0 to 3) of unsigned (7 downto 0);
+	signal OutDataArray : OutDataArrayArray;
+	type OutInputsArrayArray is array (0 to 3) of unsigned (7 downto 0);
+	signal OutInputsArray : OutInputsArrayArray;
 	type State_ReadDataArray is array (0 to 3) of unsigned (7 downto 0);
 	signal State_ReadData : State_ReadDataArray := (others => (others => '0'));
 	type NextState_ReadDataArray is array (0 to 3) of unsigned (7 downto 0);
@@ -75,12 +81,48 @@ begin
 			end if;
 		end if;
 	end process;
-	process (InArray0, InArray1, InArray2, InArray3)
+	process (Inputs_InArray, State_ReadData)
 	begin
+		for NextState_ReadData_Iterator in 0 to 3 loop
+			NextState_ReadData(NextState_ReadData_Iterator) <= State_ReadData(NextState_ReadData_Iterator);
+		end loop;
+		NextState_ReadData(0) <= Inputs_InArray(0);
+		NextState_ReadData(1) <= Inputs_InArray(1);
+		NextState_ReadData(2) <= Inputs_InArray(2);
+		NextState_ReadData(3) <= Inputs_InArray(3);
+	end process;
+	process (ArrayToBitArrayModule_L20F49T80_Source, ArrayToBitArrayModule_L21F47T78_Source, InArray0, InArray1, InArray2, InArray3, Inputs_InArray, OutDataArray, OutInputsArray, State_ReadData)
+	begin
+		OutDataArray0 <= OutDataArray(0);
+		OutDataArray1 <= OutDataArray(1);
+		OutDataArray2 <= OutDataArray(2);
+		OutDataArray3 <= OutDataArray(3);
+		OutInputsArray0 <= OutInputsArray(0);
+		OutInputsArray1 <= OutInputsArray(1);
+		OutInputsArray2 <= OutInputsArray(2);
+		OutInputsArray3 <= OutInputsArray(3);
 		Inputs_InArray(0) <= InArray0;
 		Inputs_InArray(1) <= InArray1;
 		Inputs_InArray(2) <= InArray2;
 		Inputs_InArray(3) <= InArray3;
+		OutDataArray(0) <= State_ReadData(0);
+		OutDataArray(1) <= State_ReadData(1);
+		OutDataArray(2) <= State_ReadData(2);
+		OutDataArray(3) <= State_ReadData(3);
+		ArrayToBitArrayModule_L21F47T78_Source(31 downto 24) <= State_ReadData(3);
+		ArrayToBitArrayModule_L21F47T78_Source(23 downto 16) <= State_ReadData(2);
+		ArrayToBitArrayModule_L21F47T78_Source(15 downto 8) <= State_ReadData(1);
+		ArrayToBitArrayModule_L21F47T78_Source(7 downto 0) <= State_ReadData(0);
+		OutDataBitArray <= ArrayToBitArrayModule_L21F47T78_Source;
+		OutInputsArray(0) <= Inputs_InArray(0);
+		OutInputsArray(1) <= Inputs_InArray(1);
+		OutInputsArray(2) <= Inputs_InArray(2);
+		OutInputsArray(3) <= Inputs_InArray(3);
+		ArrayToBitArrayModule_L20F49T80_Source(31 downto 24) <= Inputs_InArray(3);
+		ArrayToBitArrayModule_L20F49T80_Source(23 downto 16) <= Inputs_InArray(2);
+		ArrayToBitArrayModule_L20F49T80_Source(15 downto 8) <= Inputs_InArray(1);
+		ArrayToBitArrayModule_L20F49T80_Source(7 downto 0) <= Inputs_InArray(0);
+		OutInputsBitArray <= ArrayToBitArrayModule_L20F49T80_Source;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

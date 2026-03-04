@@ -1,7 +1,8 @@
 No reads:
-	Inputs_In
-	internalDirect
-	internalSum
+	StructsModule_L38F33T56_Instance_Op2
+	StructsModule_L39F33T43_Instance_Op1
+	StructsModule_L39F33T43_Instance_Op2
 No writes:
-	internalDirect
-	internalSum
+	StructsModule_L38F33T56_Instance_Op2
+	StructsModule_L39F33T43_Instance_Op1
+	StructsModule_L39F33T43_Instance_Op2

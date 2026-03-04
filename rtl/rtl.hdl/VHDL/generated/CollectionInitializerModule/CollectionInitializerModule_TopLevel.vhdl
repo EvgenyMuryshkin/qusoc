@@ -48,14 +48,33 @@ architecture rtl of CollectionInitializerModule_TopLevel is
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
 	constant State_stateDefault : unsigned(7 downto 0) := "00000000";
-	signal Inputs_data : unsigned(7 downto 0) := (others => '0');
-	signal Inputs_i1 : std_logic := '0';
-	signal Inputs_i2 : std_logic := '0';
-	signal Inputs_i3 : std_logic := '0';
+	constant CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F36T40_Expr : unsigned(6 downto 0) := "1010101";
+	constant CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F42T43_Expr : unsigned(0 downto 0) := "1";
+	constant CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F45T46_Expr : unsigned(1 downto 0) := "10";
+	constant CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F48T49_Expr : unsigned(1 downto 0) := "11";
+	constant CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F48T52_Expr : unsigned(7 downto 0) := "10101010";
+	constant CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F54T55_Expr : unsigned(2 downto 0) := "100";
+	constant CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F57T58_Expr : unsigned(2 downto 0) := "101";
+	constant CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F60T61_Expr : unsigned(2 downto 0) := "110";
+	constant CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F61T65_Expr : unsigned(7 downto 0) := "10000000";
+	constant CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F67T71_Expr : unsigned(7 downto 0) := "10000010";
+	constant CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F73T77_Expr : unsigned(0 downto 0) := "1";
+	signal Inputs_data : unsigned(7 downto 0);
+	signal Inputs_i1 : std_logic;
+	signal Inputs_i2 : std_logic;
+	signal Inputs_i3 : std_logic;
+	type oStateArray is array (0 to 3) of unsigned (7 downto 0);
+	signal oState : oStateArray;
 	type State_stateArray is array (0 to 3) of unsigned (7 downto 0);
 	signal State_state : State_stateArray := (others => (others => '0'));
 	type NextState_stateArray is array (0 to 3) of unsigned (7 downto 0);
 	signal NextState_state : NextState_stateArray := (others => (others => '0'));
+	type CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_ArrayArray is array (0 to 3) of unsigned (7 downto 0);
+	signal CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_Array : CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_ArrayArray;
+	type CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_ArrayArray is array (0 to 3) of unsigned (7 downto 0);
+	signal CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_Array : CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_ArrayArray;
+	type CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F35T79_ArrayArray is array (0 to 3) of unsigned (7 downto 0);
+	signal CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F35T79_Array : CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F35T79_ArrayArray;
 begin
 	process (Clock, NextState_state, Reset)
 	begin
@@ -71,12 +90,83 @@ begin
 			end if;
 		end if;
 	end process;
-	process (data, i1, i2, i3)
+	process (CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_Array, CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_Array, CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F35T79_Array, Inputs_data, Inputs_i1, Inputs_i2, Inputs_i3, State_state)
 	begin
+		for NextState_state_Iterator in 0 to 3 loop
+			NextState_state(NextState_state_Iterator) <= State_state(NextState_state_Iterator);
+		end loop;
+		if Inputs_i1 = '1' then
+			CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_Array(0)(7) <= '0';
+			CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_Array(0)(6 downto 0) <= CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F36T40_Expr;
+			CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_Array(1)(7 downto 1) <= (
+				others => '0'
+			)
+			;
+			CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_Array(1)(0) <= CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F42T43_Expr(0);
+			CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_Array(2)(7 downto 2) <= (
+				others => '0'
+			)
+			;
+			CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_Array(2)(1 downto 0) <= CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F45T46_Expr;
+			CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_Array(3)(7 downto 2) <= (
+				others => '0'
+			)
+			;
+			CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_Array(3)(1 downto 0) <= CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F48T49_Expr;
+			NextState_state(0) <= CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_Array(0);
+			NextState_state(1) <= CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_Array(1);
+			NextState_state(2) <= CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_Array(2);
+			NextState_state(3) <= CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L25F13L27T14_CollectionInitializerModule_L26F35T50_Array(3);
+		elsif Inputs_i2 = '1' then
+			CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_Array(0) <= CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F48T52_Expr;
+			CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_Array(1)(7 downto 3) <= (
+				others => '0'
+			)
+			;
+			CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_Array(1)(2 downto 0) <= CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F54T55_Expr;
+			CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_Array(2)(7 downto 3) <= (
+				others => '0'
+			)
+			;
+			CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_Array(2)(2 downto 0) <= CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F57T58_Expr;
+			CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_Array(3)(7 downto 3) <= (
+				others => '0'
+			)
+			;
+			CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_Array(3)(2 downto 0) <= CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F60T61_Expr;
+			NextState_state(0) <= CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_Array(0);
+			NextState_state(1) <= CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_Array(1);
+			NextState_state(2) <= CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_Array(2);
+			NextState_state(3) <= CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L29F13L31T14_CollectionInitializerModule_L30F35T63_Array(3);
+		elsif Inputs_i3 = '1' then
+			CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F35T79_Array(0) <= Inputs_data;
+			CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F35T79_Array(1) <= CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F61T65_Expr;
+			CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F35T79_Array(2) <= CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F67T71_Expr;
+			CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F35T79_Array(3)(7 downto 1) <= (
+				others => '0'
+			)
+			;
+			CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F35T79_Array(3)(0) <= CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F73T77_Expr(0);
+			NextState_state(0) <= CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F35T79_Array(0);
+			NextState_state(1) <= CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F35T79_Array(1);
+			NextState_state(2) <= CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F35T79_Array(2);
+			NextState_state(3) <= CollectionInitializerModule_L23F9L36T10_CollectionInitializerModule_L33F13L35T14_CollectionInitializerModule_L34F35T79_Array(3);
+		end if;
+	end process;
+	process (data, i1, i2, i3, oState, State_state)
+	begin
+		oState0 <= oState(0);
+		oState1 <= oState(1);
+		oState2 <= oState(2);
+		oState3 <= oState(3);
 		Inputs_data <= data;
 		Inputs_i1 <= i1;
 		Inputs_i2 <= i2;
 		Inputs_i3 <= i3;
+		oState(0) <= State_state(0);
+		oState(1) <= State_state(1);
+		oState(2) <= State_state(2);
+		oState(3) <= State_state(3);
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

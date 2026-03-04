@@ -47,13 +47,25 @@ architecture rtl of IOSimpleTupleModule_TopLevel is
 	constant One : std_logic := '1';
 	-- true is a reserved name, declaration skipped
 	-- false is a reserved name, declaration skipped
-	signal Inputs_iValue : unsigned(8 downto 0) := (others => '0');
-	signal value : unsigned(8 downto 0) := (others => '0');
+	signal Inputs_iValue_Item1 : std_logic;
+	signal Inputs_iValue_Item2 : unsigned(7 downto 0);
+	signal value_Item1 : std_logic := '0';
+	signal value_Item2 : unsigned(7 downto 0) := "00000000";
 begin
-	process (iValue_Item1, iValue_Item2)
+	process (Inputs_iValue_Item1, Inputs_iValue_Item2, iValue_Item1, iValue_Item2, value_Item1, value_Item2)
 	begin
-		Inputs_iValue(8) <= iValue_Item1;
-		Inputs_iValue(7 downto 0) <= iValue_Item2;
+		Inputs_iValue_Item1 <= iValue_Item1;
+		Inputs_iValue_Item2 <= iValue_Item2;
+		value_Item1 <= Inputs_iValue_Item1;
+		value_Item2 <= Inputs_iValue_Item2;
+		oValueDirect_Item1 <= Inputs_iValue_Item1;
+		oValueDirect_Item2 <= Inputs_iValue_Item2;
+		oValueInternal_Item1 <= value_Item1;
+		oValueInternal_Item2 <= value_Item2;
+		oValueInternalParts_Item1 <= value_Item1;
+		oValueInternalParts_Item2 <= value_Item2;
+		oValueParts_Item1 <= Inputs_iValue_Item1;
+		oValueParts_Item2 <= Inputs_iValue_Item2;
 	end process;
 	-- [BEGIN USER ARCHITECTURE]
 	-- [END USER ARCHITECTURE]

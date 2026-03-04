@@ -37,8 +37,17 @@ module BitArraySHRAModule_TopLevel
 	wire false = 1'b0;
 	wire [4: 0] Inputs_By;
 	wire [31: 0] Inputs_Op;
+	wire signed [31: 0] BitArrayModule_L50F36T54_SignChange;
+	wire [31: 0] BitArrayModule_L50F35T74_Index;
+	wire signed [31: 0] BitArrayModule_L50F36T67_Expr;
+	wire signed [31: 0] BitArrayModule_L50F36T67_Expr_1;
+	assign BitArrayModule_L50F36T67_Expr = (BitArrayModule_L50F36T67_Expr_1 >>> Inputs_By);
+	assign BitArrayModule_L50F36T67_Expr_1 = BitArrayModule_L50F36T54_SignChange;
 	assign Inputs_By = By;
 	assign Inputs_Op = Op;
+	assign BitArrayModule_L50F36T54_SignChange = Inputs_Op;
+	assign BitArrayModule_L50F35T74_Index = BitArrayModule_L50F36T67_Expr[31:0];
+	assign Res = BitArrayModule_L50F35T74_Index;
 	// [BEGIN USER ARCHITECTURE]
 	// [END USER ARCHITECTURE]
 endmodule

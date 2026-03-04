@@ -51,7 +51,8 @@ architecture rtl of OverrideScheduleComposition_TopLevel is
 	-- false is a reserved name, declaration skipped
 	signal Inputs_InOverride : std_logic := '0';
 	signal Inputs_InValue : unsigned(7 downto 0) := (others => '0');
-	signal ModulesInputs : unsigned(8 downto 0) := (others => '0');
+	signal ModulesInputs_InOverride : std_logic := '0';
+	signal ModulesInputs_InValue : unsigned(7 downto 0) := (others => '0');
 	signal InvertedInput : unsigned(7 downto 0) := (others => '0');
 	signal AutoOverride_InOverride : std_logic := '0';
 	signal AutoOverride_InValue : unsigned(7 downto 0) := (others => '0');
@@ -89,7 +90,19 @@ architecture rtl of OverrideScheduleComposition_TopLevel is
 	signal NoOverride_InOverride_NoOverride_InOverride_HardLink : std_logic := '0';
 	signal NoOverride_InValue_NoOverride_InValue_HardLink : unsigned(7 downto 0) := "00000000";
 	signal NoOverride_OutValue_NoOverride_OutValue_HardLink : unsigned(7 downto 0) := "00000000";
+	signal OverrideInputsComposition_L14F30T48_Expr : std_logic := '0';
+	signal OverrideInputsComposition_L14F30T48_Expr_1 : std_logic := '0';
+	signal OverrideInputsComposition_L7F38T72_Expr : unsigned(7 downto 0) := "00000000";
+	signal OverrideInputsComposition_L7F38T72_Expr_1 : unsigned(7 downto 0) := "00000000";
 begin
+	process (OverrideInputsComposition_L14F30T48_Expr_1)
+	begin
+		OverrideInputsComposition_L14F30T48_Expr <= NOT OverrideInputsComposition_L14F30T48_Expr_1;
+	end process;
+	process (OverrideInputsComposition_L7F38T72_Expr_1)
+	begin
+		OverrideInputsComposition_L7F38T72_Expr <= NOT OverrideInputsComposition_L7F38T72_Expr_1;
+	end process;
 	OverrideScheduleComposition_TopLevel_AutoOverride : entity work.OverrideScheduleComposition_TopLevel_AutoOverride
 	port map
 	(
@@ -150,10 +163,37 @@ begin
 		OutValue => NoOverride_OutValue_NoOverride_OutValue_HardLink
 	)
 	;
-	process (AutoOverride_InOverride, AutoOverride_InValue, AutoOverride_OutValue_AutoOverride_OutValue_HardLink, GetOverride_InOverride, GetOverride_InValue, GetOverride_OutValue_GetOverride_OutValue_HardLink, InOverride, InValue, L1Override_InOverride, L1Override_InValue, L1Override_OutValue_L1Override_OutValue_HardLink, L2Override_InOverride, L2Override_InValue, L2Override_OutValue_L2Override_OutValue_HardLink, L3Override_InOverride, L3Override_InValue, L3Override_OutValue_L3Override_OutValue_HardLink, NoOverride_InOverride, NoOverride_InValue, NoOverride_OutValue_NoOverride_OutValue_HardLink)
+	process (AutoOverride_InOverride, AutoOverride_InValue, AutoOverride_OutValue, AutoOverride_OutValue_AutoOverride_OutValue_HardLink, GetOverride_InOverride, GetOverride_InValue, GetOverride_OutValue, GetOverride_OutValue_GetOverride_OutValue_HardLink, InOverride, Inputs_InOverride, Inputs_InValue, InValue, InvertedInput, L1Override_InOverride, L1Override_InValue, L1Override_OutValue, L1Override_OutValue_L1Override_OutValue_HardLink, L2Override_InOverride, L2Override_InValue, L2Override_OutValue, L2Override_OutValue_L2Override_OutValue_HardLink, L3Override_InOverride, L3Override_InValue, L3Override_OutValue, L3Override_OutValue_L3Override_OutValue_HardLink, ModulesInputs_InOverride, ModulesInputs_InValue, NoOverride_InOverride, NoOverride_InValue, NoOverride_OutValue, NoOverride_OutValue_NoOverride_OutValue_HardLink, OverrideInputsComposition_L14F30T48_Expr, OverrideInputsComposition_L7F38T72_Expr)
 	begin
+		OverrideInputsComposition_L14F30T48_Expr_1 <= Inputs_InOverride;
+		OverrideInputsComposition_L7F38T72_Expr_1 <= Inputs_InValue;
 		Inputs_InOverride <= InOverride;
 		Inputs_InValue <= InValue;
+		ModulesInputs_InOverride <= OverrideInputsComposition_L14F30T48_Expr;
+		ModulesInputs_InValue <= InvertedInput;
+		InvertedInput <= OverrideInputsComposition_L7F38T72_Expr;
+		L1Override_InOverride <= ModulesInputs_InOverride;
+		L1Override_InValue <= ModulesInputs_InValue;
+		L2Override_InOverride <= ModulesInputs_InOverride;
+		L2Override_InValue <= ModulesInputs_InValue;
+		L3Override_InOverride <= ModulesInputs_InOverride;
+		L3Override_InValue <= ModulesInputs_InValue;
+		GetOverride_InOverride <= ModulesInputs_InOverride;
+		GetOverride_InValue <= ModulesInputs_InValue;
+		NoOverride_InOverride <= Inputs_InOverride;
+		NoOverride_InValue <= Inputs_InValue;
+		AutoOverride_InOverride <= Inputs_InOverride;
+		AutoOverride_InValue <= Inputs_InValue;
+		AutoOverrideValue <= AutoOverride_OutValue;
+		GetValue <= GetOverride_OutValue;
+		L1Value <= L1Override_OutValue;
+		L2Value <= L2Override_OutValue;
+		L3Value <= L3Override_OutValue;
+		NoOverrideValue <= NoOverride_OutValue;
+		OverrideInputs_InOverride <= ModulesInputs_InOverride;
+		OverrideInputs_InValue <= ModulesInputs_InValue;
+		RawInputs_InOverride <= Inputs_InOverride;
+		RawInputs_InValue <= Inputs_InValue;
 		AutoOverride_InOverride_AutoOverride_InOverride_HardLink <= AutoOverride_InOverride;
 		AutoOverride_InValue_AutoOverride_InValue_HardLink <= AutoOverride_InValue;
 		AutoOverride_OutValue <= AutoOverride_OutValue_AutoOverride_OutValue_HardLink;
